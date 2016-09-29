@@ -13,6 +13,7 @@
   "author": "ndla@knowit.no",
   "license": "GPL-3.0",
   "devDependencies": {
+    "eslint-config-ndla": "0.0.2",
     "lerna": "2.0.0-beta.29"
   }
 }

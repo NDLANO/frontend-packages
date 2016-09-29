@@ -7,9 +7,6 @@ Overrides some settings to better suit NDLA.
 ## Installing
 
 ```bash
-# Recommended dependencies
-npm install --save-dev eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y eslint eslint-config-airbnb
-
 # Install
 npm install --save-dev eslint-config-ndla
 ```

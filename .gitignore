@@ -1,6 +1,9 @@
 node_modules
-npm-debug.log
-lerna-debug.log
+*.log
+es/
+lib/
 .DS_Store
 *.iml
 /.idea
+*.iml
+*.log.1

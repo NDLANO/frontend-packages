@@ -2,6 +2,9 @@
   "private": true,
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
+  "scripts": {
+    "lint": "eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git"

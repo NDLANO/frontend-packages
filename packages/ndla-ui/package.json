@@ -6,17 +6,12 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
-  "config": {
-    "bin": "../../node_modules/.bin"
-  },
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib && cpx './src/**/*.css' ./lib",
     "build:es": "cross-env BABEL_ENV=es $npm_package_config_bin/babel src --out-dir es && cpx './src/**/*.css' ./es",
     "clean": "rimraf lib es",
-    "lint": "eslint --ext .js --ext .jsx ./src",
     "prepublish": "npm run test && npm run clean && npm run build",
-    "storybook": "start-storybook -p 9001",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "repository": {
@@ -34,6 +29,7 @@
     "es"
   ],
   "peerDependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },

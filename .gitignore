@@ -2,6 +2,7 @@ node_modules
 *.log
 es/
 lib/
+dist/
 .DS_Store
 *.iml
 /.idea

@@ -7,7 +7,7 @@
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
-    "build": "npm run build:commonjs && npm run build:es && webpack -p",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:css",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:css": "webpack -p && cp ./dist/style.css ./es && cp ./dist/style.css ./lib",

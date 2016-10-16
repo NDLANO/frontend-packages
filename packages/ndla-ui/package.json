@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib && cpx './src/**/*.css' ./lib",
-    "build:es": "cross-env BABEL_ENV=es $npm_package_config_bin/babel src --out-dir es && cpx './src/**/*.css' ./es",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es && cpx './src/**/*.css' ./es",
     "clean": "rimraf lib es",
     "prepublish": "npm run test && npm run clean && npm run build",
     "test": "echo \"No tests specified\" && exit 0"

@@ -13,7 +13,9 @@
     "build:css": "webpack -p && cp ./dist/style.css ./es && cp ./dist/style.css ./lib",
     "clean": "rimraf lib es",
     "prepublish": "npm run test && npm run clean && npm run build",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "postcss-loader": "1.0.0",
     "postcss-reporter": "1.4.1",
     "style-loader": "0.13.1",
-    "webpack": "1.13.2"
+    "webpack": "1.13.2",
+    "@kadira/storybook": "2.21.0"
   }
 }

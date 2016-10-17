@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
+import '../src/index.css';
 import { Button } from '../src';
 import Welcome from './Welcome';
 
@@ -13,8 +14,11 @@ storiesOf('Atoms', module)
     <div>
       <h1>Buttons</h1>
       <p>Buttons are for clicking, not linking.</p>
-      <Button onClick={action('clicked')}>Click button</Button>
-      <Button submit onClick={action('clicked')}>Submit button</Button>
+      <div>
+        <Button onClick={action('clicked')}>Click button</Button>
+        <Button outline onClick={action('clicked')}>Click button</Button>
+        <Button submit onClick={action('clicked')}>Submit button</Button>
+      </div>
       <div>
         <Button submit disabled onClick={action('clicked')}>submit disabled</Button>
         <Button disabled onClick={action('clicked')}>button disabled</Button>

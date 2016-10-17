@@ -19,6 +19,11 @@ button, .button, .button:any-link {
   text-decoration: none;
 }
 
+.button.disabled, .button[disabled], fieldset[disabled] .button {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
 .button:hover {
   background-color: color(#4D4D4D lightness(+ 10%));
   outline: 0;

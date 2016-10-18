@@ -1,8 +1,12 @@
 import React from 'react';
-import { storiesOf, action, linkTo } from '@kadira/storybook';
+import { storiesOf, action, linkTo, setAddon } from '@kadira/storybook';
+import infoAddon from '@kadira/react-storybook-addon-info';
+
 import '../src/index.css';
 import { Button } from '../src';
 import Welcome from './Welcome';
+
+setAddon(infoAddon);
 
 storiesOf('Welcome', module)
   .add('to NDLA styleguide', () => (
@@ -10,7 +14,7 @@ storiesOf('Welcome', module)
   ));
 
 storiesOf('Atoms', module)
-  .add('Buttons', () => (
+  .addWithInfo('Buttons', () => (
     <div>
       <h1>Buttons</h1>
       <p>Buttons are for clicking, not linking.</p>
@@ -24,5 +28,4 @@ storiesOf('Atoms', module)
         <Button disabled onClick={action('clicked')}>button disabled</Button>
       </div>
     </div>
-  ))
-  ;
+  ));

@@ -6,9 +6,6 @@ import '../src/index.css';
 import { Button } from '../src';
 import Welcome from './Welcome';
 
-
-import './TypographyStories';
-
 setAddon(infoAddon);
 
 storiesOf('Welcome', module)
@@ -16,6 +13,7 @@ storiesOf('Welcome', module)
     <Welcome showApp={linkTo('Button')} />
   ));
 
+require('./TypographyStories');
 
 storiesOf('Atoms', module)
   .addWithInfo('Buttons', () => (

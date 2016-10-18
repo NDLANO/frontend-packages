@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import { storiesOf, linkTo } from '@kadira/storybook';
+
 const styles = {
   code: {
     fontSize: 15,
@@ -12,7 +14,7 @@ const styles = {
   },
 };
 
-export default class Welcome extends Component {
+class Welcome extends Component {
   constructor(props) {
     super(props);
     this.showApp = this.showApp.bind(this);
@@ -37,3 +39,8 @@ export default class Welcome extends Component {
 Welcome.propTypes = {
   showApp: PropTypes.func,
 };
+
+storiesOf('Welcome', module)
+  .add('to NDLA styleguide', () => (
+    <Welcome showApp={linkTo('Button')} />
+  ));

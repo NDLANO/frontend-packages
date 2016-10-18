@@ -1,0 +1,58 @@
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  /*background-color: #f8f8f8;*/
+  color: #303030;
+  font-size: 14px;
+  height: 100%;
+}
+
+h1, h2, h3, h4 {
+  margin: 20px 0 0 0;
+  font-family: 'Signika', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 1.87em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.1em;
+}
+
+h3 {
+  font-size: 1.1em;
+  line-height: 1.1em;
+}
+
+h4 {
+  font-size: 1em;
+  line-height: 1.1em;
+}
+
+p {
+  line-height: 1.8em;
+  font-size: 1em;
+}
+
+li {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}

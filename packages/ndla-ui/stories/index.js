@@ -6,12 +6,16 @@ import '../src/index.css';
 import { Button } from '../src';
 import Welcome from './Welcome';
 
+
+import './TypographyStories';
+
 setAddon(infoAddon);
 
 storiesOf('Welcome', module)
   .add('to NDLA styleguide', () => (
     <Welcome showApp={linkTo('Button')} />
   ));
+
 
 storiesOf('Atoms', module)
   .addWithInfo('Buttons', () => (
@@ -28,4 +32,5 @@ storiesOf('Atoms', module)
         <Button disabled onClick={action('clicked')}>button disabled</Button>
       </div>
     </div>
-  ));
+  ))
+  ;

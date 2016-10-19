@@ -1,18 +1,19 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
+import { Center } from './helpers';
 
 storiesOf('Typography', module)
   .addWithInfo('Headlines', () => (
-    <div>
+    <Center>
       <h1>Headline 1</h1>
       <h2>Headline 2</h2>
       <h3>Headline 3</h3>
       <h4>Headline 4</h4>
-    </div>
+    </Center>
   ))
   .addWithInfo('Paragraphs', () => (
-    <div>
+    <Center>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -34,10 +35,10 @@ storiesOf('Typography', module)
         fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </p>
-    </div>
+    </Center>
   ))
   .addWithInfo('Lists', () => (
-    <div>
+    <Center>
       <p>Un-ordered</p>
       <ul>
         <li>list item 1</li>
@@ -53,6 +54,6 @@ storiesOf('Typography', module)
         <li>list item 3</li>
         <li>list item 4</li>
       </ol>
-    </div>
+    </Center>
   ))
   ;

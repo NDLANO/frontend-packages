@@ -2,11 +2,12 @@ import React from 'react';
 
 import { storiesOf, action } from '@kadira/storybook';
 
+import { Center } from './helpers';
 import { Button } from '../src';
 
 storiesOf('Atoms', module)
   .addWithInfo('Buttons', () => (
-    <div>
+    <Center>
       <h1>Buttons</h1>
       <p>Buttons are for clicking, not linking.</p>
       <div>
@@ -18,6 +19,6 @@ storiesOf('Atoms', module)
         <Button submit disabled onClick={action('clicked')}>submit disabled</Button>
         <Button disabled onClick={action('clicked')}>button disabled</Button>
       </div>
-    </div>
+    </Center>
   ))
   ;

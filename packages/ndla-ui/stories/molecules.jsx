@@ -35,7 +35,7 @@ storiesOf('Molecules', module)
     <Center>
       <Masthead>
         <MastheadItem left>
-          <Logo />
+          <Logo to="#" altText="Nasjonal digital læringsarena" />
         </MastheadItem>
         <MastheadItem right>
           <SiteNav>

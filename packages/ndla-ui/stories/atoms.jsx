@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf, action } from '@kadira/storybook';
 
-import { Center, InlineComponentsContainer } from './helpers';
+import { Center, InlineContainer } from './helpers';
 import { Button } from '../src';
 
 storiesOf('Atoms', module)
@@ -10,15 +10,15 @@ storiesOf('Atoms', module)
     <Center>
       <h1>Buttons</h1>
       <p>Buttons are for clicking, not linking.</p>
-      <InlineComponentsContainer>
+      <InlineContainer>
         <Button onClick={action('clicked')}>Click button</Button>
         <Button outline onClick={action('clicked')}>Click button</Button>
         <Button submit onClick={action('clicked')}>Submit button</Button>
-      </InlineComponentsContainer>
-      <InlineComponentsContainer>
+      </InlineContainer>
+      <InlineContainer>
         <Button submit disabled onClick={action('clicked')}>submit disabled</Button>
         <Button disabled onClick={action('clicked')}>button disabled</Button>
-      </InlineComponentsContainer>
+      </InlineContainer>
     </Center>
   ))
   ;

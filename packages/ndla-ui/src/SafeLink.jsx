@@ -22,4 +22,6 @@ const SafeLink = (props, context) => {
 
 SafeLink.propTypes = Link.propTypes;
 
+SafeLink.defaultProps = Link.defaultProps;
+
 export default SafeLink;

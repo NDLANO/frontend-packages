@@ -1,6 +1,6 @@
 const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
-const postcssImport = require('postcss-import');
+const postcssImport = require('postcss-easy-import');
 const postcssReporter = require('postcss-reporter');
 
 module.exports = self =>

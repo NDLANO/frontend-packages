@@ -34,7 +34,8 @@
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "3.2.2",
@@ -44,12 +45,13 @@
     "css-loader": "0.25.0",
     "extract-text-webpack-plugin": "1.0.1",
     "postcss-cssnext": "2.8.0",
+    "postcss-easy-import": "1.0.1",
     "postcss-focus": "1.0.0",
-    "postcss-import": "8.1.2",
     "postcss-loader": "0.13.0",
     "postcss-reporter": "1.4.1",
     "react": "15.3.2",
     "react-dom": "15.3.2",
+    "react-router": "2.8.1",
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
     "webpack": "1.13.2"

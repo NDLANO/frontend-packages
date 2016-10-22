@@ -3,7 +3,9 @@
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
   "scripts": {
-    "lint": "eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore"
+    "lint": "eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
+    "postinstall": "lerna bootstrap",
+    "build-storybook": "lerna run build-storybook"
   },
   "repository": {
     "type": "git",

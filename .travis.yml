@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '6'
+script:
+- npm run lint
+notifications:
+  slack:
+    on_success: change
+    on_failure: always
+    rooms:
+      secure: WNfcwzr+3A/WTIkYjrrM5d90+UByJG+w8ziuTM0/Bm3CihpO72/GZVmBant9/GRBlA1O+Xtm+Ll4QHmsP8ICtwtYcX25nnJznf5/XsanYicyfjqtsJfdLCthfX4QaJNoIPr9oY+B2cG/1va5fBDjl7FOU9PctfimakhhACbvJb96N7q+ANgh9uNxHVPIHFX1Enq+eML+Cah0knx3M8pvnEKVnBkB18dbb6hkievzFiVym92141lDMzc7StD9WHklyp6at7f51ZBpIF/COAc+dBkJs4f3jRhhH2hvUW0J2oyXYHeU7LOIY9TtQJqQdsa2AmqBSGV8LRk4FdK8FvkdU32MgvfoElwgSRpIXJYtUwpfuwnjBNLCScsj41v9yb5eQ/T2AT370tn6TBMu3xJLPJij7Ph0WeZ03OOynldnNFz4jJyGtcQnOsiyIiDqp1n+K2RzmO8e0Gm0GHuMAudHL0I8NTfoY7ZUZlBgSf9czj0m6Ig2MsZMdjzcI83GT0n/oxvzPxIrG+kt4Msj8roPpiVTpH+gS1wsYnGf8UflGc6xagtKM40ytO0SWjFKWbXeOvweNhgI8rf9aWqX6zNh1A/XSu/Ln6mefUQQ/h56b4Jni8EMQGHCZYX6VJJm7JyWGV6Sf7Wy9A85fW0L3Ca+NrYhQN7aRUGRGmdzHVriDEE=

@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { Center, DottedContainer } from './helpers';
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo } from '../src';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager } from '../src';
 
 storiesOf('Molecules', module)
   .addWithInfo('Logo', () => (
@@ -46,6 +46,15 @@ storiesOf('Molecules', module)
           </SiteNav>
         </MastheadItem>
       </Masthead>
+    </Center>
+  ))
+  .addWithInfo('Pager', () => (
+    <Center>
+      <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
   ))
   ;

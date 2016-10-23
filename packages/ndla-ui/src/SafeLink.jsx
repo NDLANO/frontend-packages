@@ -13,7 +13,8 @@ import Link from 'react-router/lib/Link';
 const SafeLink = (props, context) => {
   if (!context.router) {
     const { to, className } = props;
-    return <a href={to} className={className}>{props.children}</a>;
+    const href = typeof to === 'string' ? to : '#';
+    return <a href={href} className={className}>{props.children}</a>;
   }
 
   return <Link {...props}>{props.children}</Link>;

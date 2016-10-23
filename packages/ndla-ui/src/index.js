@@ -8,6 +8,7 @@
 
 import Button from './button/Button';
 import Logo from './logo/Logo';
+import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 
@@ -16,6 +17,7 @@ export {
   Logo,
   Masthead,
   MastheadItem,
+  Pager,
   SiteNav,
   SiteNavItem,
 };

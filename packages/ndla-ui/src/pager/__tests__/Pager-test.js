@@ -6,6 +6,8 @@
  *
  */
 
+ /* eslint-env jest */
+
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -13,7 +15,7 @@ import Pager, { PageLink } from '../Pager';
 
 
 function pagerTest({ setup, expected }) {
-  it(`component/LinkPager page ${setup.page}/${setup.lastPage}`, () => {
+  test(`component/LinkPager page ${setup.page}/${setup.lastPage}`, () => {
     const steps = shallow(<Pager pathname="somepath" query={{}} {...setup} />)
       .children();
 

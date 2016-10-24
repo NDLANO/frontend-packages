@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { Center, DottedContainer } from './helpers';
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager } from '../src';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
 
 storiesOf('Molecules', module)
   .addWithInfo('Logo', () => (
@@ -55,6 +55,25 @@ storiesOf('Molecules', module)
       <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
+    </Center>
+  ))
+  .addWithInfo('Footer', () => (
+    <Center>
+      <Footer>
+        <div className="footer_form">
+          <label htmlFor="language-select" className="footer_label footer--bold">Velg språk</label>
+          <select id="language-select" className="footer_language-select">
+            <option value="Norsk">Norsk</option>
+            <option value="English">English</option>
+          </select>
+        </div>
+        <Footer.Ruler />
+        <Footer.Text>
+          <Footer.Editor title="Ansvarlig redaktør:" name=" Øivind Høines" />
+          <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
+        </Footer.Text>
+        <Footer.Text>Nettstedet er utarbeidet av NDLA som åpen kildekode.</Footer.Text>
+      </Footer>
     </Center>
   ))
   ;

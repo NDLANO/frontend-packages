@@ -6,7 +6,8 @@
     "lint": "eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
     "test": "jest",
     "postinstall": "lerna bootstrap",
-    "build-storybook": "lerna run build-storybook"
+    "prebuild-storybook": "lerna bootstrap",
+    "build-storybook": "cd packages/ndla-ui && node_modules/.bin/build-storybook -c .storybook -o .out"
   },
   "repository": {
     "type": "git",

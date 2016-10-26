@@ -1,0 +1,9 @@
+.one-column {
+  flex: 1 0 auto;
+}
+
+.one-column--narrow {
+  padding-top: 2em;
+  width: 600px;
+  margin: 0 auto;
+}

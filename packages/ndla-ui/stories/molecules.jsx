@@ -6,12 +6,12 @@ import { Center, DottedContainer } from './helpers';
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
 
 storiesOf('Molecules', module)
-  .addWithInfo('Logo', () => (
+  .add('Logo', () => (
     <Center>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
     </Center>
   ))
-  .addWithInfo('SiteNav', () => (
+  .add('SiteNav', () => (
     <Center>
       <DottedContainer>
         <SiteNav>
@@ -23,7 +23,7 @@ storiesOf('Molecules', module)
       </DottedContainer>
     </Center>
   ))
-  .addWithInfo('Masthead', () => (
+  .add('Masthead', () => (
     <Center>
       <Masthead>
         <MastheadItem left>Left</MastheadItem>
@@ -31,7 +31,7 @@ storiesOf('Molecules', module)
       </Masthead>
     </Center>
   ))
-  .addWithInfo('Masthead with logo and site nav', () => (
+  .add('Masthead with logo and site nav', () => (
     <Center>
       <Masthead>
         <MastheadItem left>
@@ -48,7 +48,7 @@ storiesOf('Molecules', module)
       </Masthead>
     </Center>
   ))
-  .addWithInfo('Pager', () => (
+  .add('Pager', () => (
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
@@ -57,7 +57,7 @@ storiesOf('Molecules', module)
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
   ))
-  .addWithInfo('Footer', () => (
+  .add('Footer', () => (
     <Center>
       <Footer>
         <div className="footer_form">

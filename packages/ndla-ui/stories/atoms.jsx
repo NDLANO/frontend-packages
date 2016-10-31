@@ -6,7 +6,7 @@ import { Center, InlineContainer } from './helpers';
 import { Button } from '../src';
 
 storiesOf('Atoms', module)
-  .addWithInfo('Buttons', () => (
+  .add('Buttons', () => (
     <Center>
       <h1>Buttons</h1>
       <p>Buttons are for clicking, not linking.</p>

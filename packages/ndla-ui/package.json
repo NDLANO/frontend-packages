@@ -39,7 +39,6 @@
     "react-router": "^2.8.1"
   },
   "devDependencies": {
-    "@kadira/react-storybook-addon-info": "3.2.2",
     "@kadira/storybook": "2.21.0",
     "babel-cli": "6.16.0",
     "cross-env": "3.1.2",

@@ -4,7 +4,7 @@ import { storiesOf } from '@kadira/storybook';
 import { Center } from './helpers';
 
 storiesOf('Typography', module)
-  .addWithInfo('Headlines', () => (
+  .add('Headlines', () => (
     <Center>
       <h1>Headline 1</h1>
       <h2>Headline 2</h2>
@@ -12,7 +12,7 @@ storiesOf('Typography', module)
       <h4>Headline 4</h4>
     </Center>
   ))
-  .addWithInfo('Paragraphs', () => (
+  .add('Paragraphs', () => (
     <Center>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -37,7 +37,7 @@ storiesOf('Typography', module)
       </p>
     </Center>
   ))
-  .addWithInfo('Lists', () => (
+  .add('Lists', () => (
     <Center>
       <p>Un-ordered</p>
       <ul>

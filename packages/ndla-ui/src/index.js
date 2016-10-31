@@ -12,6 +12,7 @@ import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 import { OneColumn } from './layout/OneColumn';
+import PageContainer from './layout/PageContainer';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 
 // expose the children to top level exports for ease of use
@@ -25,6 +26,7 @@ export {
   Logo,
   Masthead,
   MastheadItem,
+  PageContainer,
   OneColumn,
   Pager,
   SiteNav,

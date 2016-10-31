@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
+import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
 
 const FooterExample = () => (
   <Footer>
@@ -39,13 +39,13 @@ const MastheadExample = () => (
 );
 
 storiesOf('Pages', module)
-  .addWithInfo('Empty page', () => (
-    <div>
+  .add('Empty page', () => (
+    <PageContainer>
       <MastheadExample />
       <OneColumn>
         Empty Page
       </OneColumn>
       <FooterExample />
-    </div>
+    </PageContainer>
   ))
   ;

@@ -7,6 +7,7 @@
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
+    "start": "npm run storybook",
     "build": "npm run build:commonjs && npm run build:es && npm run build:css",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",

@@ -7,7 +7,7 @@
     "test": "jest",
     "postinstall": "lerna bootstrap",
     "prebuild-storybook": "lerna bootstrap",
-    "build-storybook": "cd packages/ndla-ui && node_modules/.bin/build-storybook -c .storybook -o .out"
+    "build-storybook": "packages/ndla-ui/node_modules/.bin/build-storybook -c packages/ndla-ui/.storybook -o .out"
   },
   "repository": {
     "type": "git",

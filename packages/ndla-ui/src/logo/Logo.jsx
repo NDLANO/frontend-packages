@@ -8,14 +8,20 @@
 /* eslint-disable max-len */
 
 import React, { PropTypes } from 'react';
-import classNames from 'classnames';
+import BEMHelper from 'react-bem-helper';
+
 import SafeLink from '../SafeLink';
 
+const classes = new BEMHelper({
+  name: 'logo',
+  prefix: 'c-',
+});
+
 export const Logo = ({ to, cssModifier, altText }) =>
-  <h1 className={classNames('logo', { [`logo--${cssModifier}`]: cssModifier })}>
-    <SafeLink to={to} className="logo_link">
-      <title>{altText}</title>
-      <svg viewBox="0 0 58 19" version="1.1" >
+  <h1 {...classes('', cssModifier)}>
+    <SafeLink to={to} {...classes('link')}>
+      <svg viewBox="0 0 58 19" version="1.1">
+        <title {...classes('title')}>{altText}</title>
         <g id="COLLECTED" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" >
           <g id="category-B-Expanded" transform="translate(-102.000000, -13.000000)">
             <g id="topNav">

@@ -57,6 +57,7 @@
     "postcss-reporter": "1.4.1",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
+    "react-bem-helper": "^1.2.0",
     "react-dom": "15.3.2",
     "react-router": "2.8.1",
     "rimraf": "2.5.4",

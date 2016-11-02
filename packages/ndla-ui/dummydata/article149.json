@@ -1,0 +1,80 @@
+{
+  "id": "149",
+  "metaUrl": "http://api.staging.ndla.no/images/149",
+  "titles": [
+    {
+      "title": "Voksen hånd og babyhånd"
+    }
+  ],
+  "alttexts": [
+    {
+      "alttext": "En stor hånd som holder en liten babyhånd. Foto."
+    }
+  ],
+  "images": {
+    "small": {
+      "url": "http://api.staging.ndla.no/images/thumbs/ta889276.jpg",
+      "size": 4784,
+      "contentType": "image/jpeg"
+    },
+    "full": {
+      "url": "http://api.staging.ndla.no/images/full/ta889276.jpg",
+      "size": 394768,
+      "contentType": "image/jpeg"
+    }
+  },
+  "copyright": {
+    "license": {
+      "license": "by-nc-sa",
+      "description": "Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic",
+      "url": "https://creativecommons.org/licenses/by-nc-sa/2.0/"
+    },
+    "origin": "http://www.scanpix.no",
+    "authors": [
+      {
+        "type": "Fotograf",
+        "name": "Nathalie Savey"
+      },
+      {
+        "type": "Leverandør",
+        "name": "Millennium"
+      },
+      {
+        "type": "Leverandør",
+        "name": "NTB scanpix"
+      }
+    ]
+  },
+  "tags": [
+    {
+      "tags": [
+        "hand",
+        "kontakt mellom menneske",
+        "småbarn"
+      ],
+      "language": "nn"
+    },
+    {
+      "tags": [
+        "hånd",
+        "kontakt mellom mennesker",
+        "småbarn"
+      ],
+      "language": "nb"
+    },
+    {
+      "tags": [
+        "contact between people",
+        "baby"
+      ]
+    },
+    {
+      "tags": [
+        "contact between people",
+        "baby"
+      ],
+      "language": "en"
+    }
+  ],
+  "captions": []
+}

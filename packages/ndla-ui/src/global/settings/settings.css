@@ -17,7 +17,7 @@ html {
 body {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   background-color: #f8f8f8;
-  color: #303030;
+  color: $primary-color;
   font-size: 14px;
   height: 100%;
 }

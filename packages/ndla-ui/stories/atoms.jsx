@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { Center, InlineContainer } from './helpers';
-import { Button } from '../src';
+import { Aside, Button, Table } from '../src';
 
 storiesOf('Atoms', module)
   .add('Buttons', () => (
@@ -19,6 +19,30 @@ storiesOf('Atoms', module)
         <Button submit disabled onClick={action('clicked')}>submit disabled</Button>
         <Button disabled onClick={action('clicked')}>button disabled</Button>
       </InlineContainer>
+    </Center>
+  ))
+  .add('Table', () => (
+    <Center>
+      <h1>Tables</h1>
+      <p>Tables are for tabular data, not text layout</p>
+      <h2>Basic Table Layout</h2>
+      <Table>
+        <tr>
+          <td>Col 1</td>
+          <td>Col 2</td>
+        </tr>
+        <tr>
+          <td>Col 3</td>
+          <td>Col 4</td>
+        </tr>
+      </Table>
+    </Center>
+  ))
+  .add('Aside', () => (
+    <Center>
+      <h1>Aside</h1>
+      <p>Asides are for extra information</p>
+      <Aside>Extra information</Aside>
     </Center>
   ))
   ;

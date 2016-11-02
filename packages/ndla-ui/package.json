@@ -48,6 +48,7 @@
     "css-loader": "0.25.0",
     "enzyme": "2.5.1",
     "extract-text-webpack-plugin": "1.0.1",
+    "inuitcss": "^6.0.0-beta.4",
     "node-sass": "^3.10.1",
     "postcss-cssnext": "2.8.0",
     "postcss-easy-import": "1.0.1",

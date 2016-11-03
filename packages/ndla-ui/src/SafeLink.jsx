@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Link from 'react-router/lib/Link';
 
 // Fallback to normal link if app is missing RouterContext
@@ -24,5 +24,9 @@ const SafeLink = (props, context) => {
 SafeLink.propTypes = Link.propTypes;
 
 SafeLink.defaultProps = Link.defaultProps;
+
+SafeLink.contextTypes = {
+  router: PropTypes.object,
+};
 
 export default SafeLink;

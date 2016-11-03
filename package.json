@@ -6,6 +6,7 @@
     "lint": "eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
     "test": "jest",
     "postinstall": "lerna bootstrap",
+    "deploy-storybook": "storybook-to-ghpages",
     "prebuild-storybook": "lerna bootstrap",
     "build-storybook": "packages/ndla-ui/node_modules/.bin/build-storybook -c packages/ndla-ui/.storybook -o .out"
   },
@@ -20,6 +21,7 @@
   "author": "ndla@knowit.no",
   "license": "GPL-3.0",
   "devDependencies": {
+    "@kadira/storybook-deployer": "1.2.0",
     "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-jest": "16.0.0",

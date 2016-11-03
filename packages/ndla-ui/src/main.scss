@@ -16,10 +16,10 @@
 @import "node_modules/inuitcss/generic/generic.shared";
 
 // ELEMENTS
-@import "node_modules/inuitcss/elements/elements.page";
+@import "global/elements/elements.page";
 @import "node_modules/inuitcss/elements/elements.headings";
-/* @import "elements/elements.links";
-@import "elements/elements.quotes"; */
+@import "global/elements/elements.images";
+@import "global/elements/elements.tables";
 
 // OBJECTS
 @import "node_modules/inuitcss/objects/objects.layout";

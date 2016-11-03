@@ -14,6 +14,7 @@ storiesOf('Atoms', module)
       <InlineContainer>
         <Button onClick={action('clicked')}>Click button</Button>
         <Button outline onClick={action('clicked')}>Click button</Button>
+        <Button square onClick={action('clicked')}>Click button</Button>
         <Button submit onClick={action('clicked')}>Submit button</Button>
       </InlineContainer>
       <InlineContainer>

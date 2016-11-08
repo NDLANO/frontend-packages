@@ -9,6 +9,7 @@
 import Button from './button/Button';
 import Logo from './logo/Logo';
 import Aside from './aside/Aside';
+import LicenseByline from './licenseByline/LicenseByline';
 import { Table } from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
@@ -26,6 +27,7 @@ export {
   Aside,
   Button,
   Footer,
+  LicenseByline,
   Logo,
   Masthead,
   MastheadItem,

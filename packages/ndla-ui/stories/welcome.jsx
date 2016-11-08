@@ -28,7 +28,7 @@ class Welcome extends Component {
     return (
       <Center>
         <div style={styles.main}>
-          <h2>NDLA: Plattform for brukskvalitet</h2>
+          <h2>NDLA</h2>
           <h1>Designmanual</h1>
           <ul>Typografi
             <li>Overskrifter</li>

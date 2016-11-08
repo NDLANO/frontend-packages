@@ -6,45 +6,28 @@ import { Center, InlineContainer } from './helpers';
 import { Aside, Button, Table } from '../src';
 
 
-storiesOf('Atoms', module)
-  .add('Buttons', () => (
+storiesOf('Atomer', module)
+  .add('Knapper', () => (
     <Center>
-      <h1>Buttons</h1>
-      <p>Buttons are for clicking, not linking.</p>
+      <h1 className="e-heading">Knapper</h1>
+      <p>Knapper er til å klikke på, ikke for å lenke til.</p>
       <InlineContainer>
-        <Button onClick={action('clicked')}>Click button</Button>
-        <Button outline onClick={action('clicked')}>Click button</Button>
-        <Button square onClick={action('clicked')}>Click button</Button>
-        <Button submit onClick={action('clicked')}>Submit button</Button>
+        <Button onClick={action('clicked')}>Knapp</Button>
+        <Button outline onClick={action('clicked')}>Knapp</Button>
+        <Button square onClick={action('clicked')}>Knapp</Button>
+        <Button submit onClick={action('clicked')}>Sendeknapp</Button>
       </InlineContainer>
       <InlineContainer>
-        <Button submit disabled onClick={action('clicked')}>submit disabled</Button>
-        <Button disabled onClick={action('clicked')}>button disabled</Button>
+        <Button submit disabled onClick={action('clicked')}>Sendeknapp deaktivert</Button>
+        <Button disabled onClick={action('clicked')}>Knapp deaktivet</Button>
       </InlineContainer>
     </Center>
   ))
-  .add('Table', () => (
+  .add('Faktaboks', () => (
     <Center>
-      <h1>Tables</h1>
-      <p>Tables are for tabular data, not text layout</p>
-      <h2>Basic Table Layout</h2>
-      <Table>
-        <tr>
-          <td>Col 1</td>
-          <td>Col 2</td>
-        </tr>
-        <tr>
-          <td>Col 3</td>
-          <td>Col 4</td>
-        </tr>
-      </Table>
-    </Center>
-  ))
-  .add('Aside', () => (
-    <Center>
-      <h1>Aside</h1>
-      <p>Asides are for extra information</p>
-      <Aside>Extra information</Aside>
+      <h1 className="e-heading">Faktaboks</h1>
+      <p>Faktabokser er for ekstra informasjon og veier videre.</p>
+      <Aside>Ekstra informasjon</Aside>
     </Center>
   ))
   ;

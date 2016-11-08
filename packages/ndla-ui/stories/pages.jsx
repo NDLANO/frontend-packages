@@ -4,6 +4,8 @@ import { storiesOf } from '@kadira/storybook';
 
 import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
 
+import article from '../dummydata/article89.json';
+
 const FooterExample = () => (
   <Footer>
     <div className="footer_form">
@@ -44,6 +46,17 @@ storiesOf('Pages', module)
       <MastheadExample />
       <OneColumn>
         Empty Page
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('ArticlePAge', () => (
+    <PageContainer>
+      <MastheadExample />
+      <OneColumn>
+        <article>
+          <div dangerouslySetInnerHTML={{ __html: article.content[0].content }} />
+        </article>
       </OneColumn>
       <FooterExample />
     </PageContainer>

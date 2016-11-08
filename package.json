@@ -8,7 +8,7 @@
     "postinstall": "lerna bootstrap",
     "deploy-storybook": "storybook-to-ghpages",
     "prebuild-storybook": "lerna bootstrap",
-    "build-storybook": "packages/ndla-ui/node_modules/.bin/build-storybook -c packages/ndla-ui/.storybook -o .out"
+    "build-storybook": "cd packages/ndla-ui && node_modules/.bin/build-storybook -c .storybook -o .out"
   },
   "repository": {
     "type": "git",

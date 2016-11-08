@@ -9,3 +9,7 @@
 table {
   width: 100%; /* [1] */
 }
+th{
+  text-align: left;
+  border-bottom: 3px solid $primary-color;
+}

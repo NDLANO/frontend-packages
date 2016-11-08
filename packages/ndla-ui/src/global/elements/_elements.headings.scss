@@ -14,33 +14,9 @@
 // `font-size` with a pixel fallback, as well as generating a `line-height` that
 // will sit on our baseline grid.
 
-$inuit-font-size-h1:  36px !default;
-$inuit-font-size-h2:  28px !default;
-$inuit-font-size-h3:  24px !default;
-$inuit-font-size-h4:  20px !default;
-$inuit-font-size-h5:  18px !default;
-$inuit-font-size-h6:  16px !default;
+
+.e-heading {
+  border-bottom: $primary-color 3px solid;
 
 
-h1 {
-  @include inuit-font-size($inuit-font-size-h1);
 }
-
-h2 {
-  @include inuit-font-size($inuit-font-size-h2);
-}
-
-h3 {
-  @include inuit-font-size($inuit-font-size-h3);
-}
-
-h4 {
-  @include inuit-font-size($inuit-font-size-h4);
-}
-
-h5 {
-  @include inuit-font-size($inuit-font-size-h5);
-}
-
-h6 {
-  @include inuit-font-size($inuit-font-size-h6);

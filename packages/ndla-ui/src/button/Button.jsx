@@ -1,15 +1,19 @@
 import React, { PropTypes } from 'react';
+import BEMHelper from 'react-bem-helper';
 import classNames from 'classnames';
+require('./component.button.scss');
 
+
+const classes = new BEMHelper({
+  name: 'button',
+  prefix: 'c-',
+})
 const Button = ({ className, outline, square, submit, loading, ...rest }) => {
-  const classes = classNames(
-      'button',
-    {
-      'button--outline': outline,
-      'button--square': square,
-    },
-      className
-    );
+  const modifiers = {
+    'outline': outline,
+    'square': square
+  };
+
 
   const type = submit ? 'submit' : rest.type || 'button';
 
@@ -17,7 +21,7 @@ const Button = ({ className, outline, square, submit, loading, ...rest }) => {
   const disabled = (rest.disabled !== undefined ? rest.disabled : loading) || false;
 
   return (
-    <button {...rest} type={type} disabled={disabled} className={classes} >
+    <button {...classes('', modifiers)} {...rest} type={type} disabled={disabled}>
       {rest.children}
     </button>
   );

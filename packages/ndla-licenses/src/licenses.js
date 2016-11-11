@@ -120,5 +120,3 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       description: abbreviation };
   }
 }
-
-export default getLicenseByAbbreviation;

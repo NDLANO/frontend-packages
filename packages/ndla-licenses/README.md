@@ -16,15 +16,20 @@ import getLicenseByAbbreviation from 'ndla-licenses';
 
 const license = getLicenseByAbbreviation('by-nc', 'en');
 
-console.log(license); //> { short: 'Free use', title: 'Attribution-NonCommercial', description: 'This license lets others...', rights: ['by', 'sa'] }
+console.log(license);
+//> { short: 'Free use', title: 'Attribution-NonCommercial', description: 'This license...', rights: ['by', 'sa'] }
+
 
 // defaults to Norsk Bokmål (nb)
-const license = getLicenseByAbbreviation('by-nc', 'unknown');
-console.log(license); //> { short: 'Fri bruk', title: 'Navngivelse-IkkeKommersiell', description: 'Denne lisensen gir mulighet...', rights: ['by', 'sa'] }
+const license = getLicenseByAbbreviation('by-nc', 'unknown-locale');
+console.log(license);
+//> { short: 'Fri bruk', title: 'Navngivelse-IkkeKommersiell', description: 'Denne lisensen...', rights: ['by', 'sa'] }
+
 
 // returns abbreviation if license is unknown
 const license = getLicenseByAbbreviation('unknown-license', 'en');
-console.log(license); //> { short: 'unknown-license', title: 'unknown-license', description: 'unknown-license', rights: [] }
+console.log(license);
+//> { short: 'unknown-license', title: 'unknown-license', description: 'unknown-license', rights: [] }
 ```
 
 ### License right constants
@@ -44,7 +49,7 @@ const LicenseIcon = ({ licenseRight }) => {
 };
 ```
 
-**Available constants: **
+**Available constants:**
 
 | Exported name | Value | Description |
 | --- | --- | --- |

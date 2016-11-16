@@ -40,7 +40,7 @@ const MastheadExample = () => (
   </Masthead>
 );
 
-storiesOf('Pages', module)
+storiesOf('Sidevisninger', module)
   .add('Empty page', () => (
     <PageContainer>
       <MastheadExample />

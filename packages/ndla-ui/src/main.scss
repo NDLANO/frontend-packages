@@ -28,8 +28,6 @@
 // OBJECTS
 $inuit-wrapper-width: 1480px;
 @import "../node_modules/inuitcss/objects/objects.wrapper";
-$inuit-fractions: 1 2 3 4 12;
-@import "node_modules/inuitcss/utilities/utilities.widths";
 @import "../node_modules/inuitcss/objects/objects.layout";
 @import "../node_modules/inuitcss/objects/objects.media";
 @import "../node_modules/inuitcss/objects/objects.flag";
@@ -48,6 +46,7 @@ $inuit-fractions: 1 2 3 4 12;
 @import "components/components.promo";
  */
 // UTILITIES
+$inuit-fractions: 1 2 3 4 12;
 @import "../node_modules/inuitcss/utilities/utilities.widths";
 @import "../node_modules/inuitcss/utilities/utilities.headings";
 @import "../node_modules/inuitcss/utilities/utilities.spacing";

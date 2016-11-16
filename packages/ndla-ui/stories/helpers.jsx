@@ -19,3 +19,5 @@ export const DottedContainer = ({ children }) => <div className="dotted-containe
 DottedContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export const articleUrl = id => <span>Hentet fra <a href={`http://api.test.ndla.no:8082/article/${id}`}>{`http://api.test.ndla.no:8082/article/${id}`}</a></span>;

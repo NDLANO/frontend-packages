@@ -6,15 +6,23 @@
  * FRI OG BEGRENSET
  */
 import React, { Component, PropTypes } from 'react';
-import Icons from '../icons/Icons';
+import BEMHelper from 'react-bem-helper';
+import Icon from '../icons/Icons';
 import LicenseBox from './LicenseBox';
+
+
+const classes = new BEMHelper({
+  name: 'licenseByline',
+  prefix: 'c-',
+});
+
 
 class LicenseByline extends Component {
   constructor() {
     super();
     this.licenseExpander = this.licenseExpander.bind(this);
     this.state = {
-      expandLicense: false,
+      expandLicense: true,
     };
   }
 
@@ -23,16 +31,64 @@ class LicenseByline extends Component {
       expandLicense: !this.state.expandLicense,
     });
   }
+
+  licenseMap() {
+    const { licenseType } = this.props;
+    const expandedIcon = {
+      'u-expanded--svg': this.state.expandLicense,
+    };
+    switch (licenseType.replace(/-/g, '')) {
+      case 'cc' : return { img: [<Icon.LicenseCc className={expandedIcon} />] };
+      case 'byncnd' : return {
+        img: [
+          <Icon.LicenseCc className={expandedIcon} />,
+          <Icon.LicenseBy className={expandedIcon} />,
+          <Icon.LicenseNc className={expandedIcon} />,
+          <Icon.LicenseNd className={expandedIcon} />] };
+      case 'byncsa' : return {
+        img: [
+          <Icon.LicenseCc className={expandedIcon} />,
+          <Icon.LicenseBy className={expandedIcon} />,
+          <Icon.LicenseNc className={expandedIcon} />,
+          <Icon.LicenseSa className={expandedIcon} />],
+      };
+      case 'bync' : return { img: [<Icon.LicenseCc className={expandedIcon} />, <Icon.LicenseBy className={expandedIcon} />, <Icon.LicenseNc className={expandedIcon} />] };
+      case 'bynd' : return { img: [<Icon.LicenseCc className={expandedIcon} />, <Icon.LicenseBy className={expandedIcon} />, <Icon.LicenseNd className={expandedIcon} />] };
+      case 'bysa' : return { img: [<Icon.LicenseCc className={expandedIcon} />, <Icon.LicenseBy className={expandedIcon} />, <Icon.LicenseSa className={expandedIcon} />] };
+      default : return { img: [] };
+    }
+  }
+
   render() {
+    const { expandLicense } = this.state;
+    const { licenseHandler, modifiers, contentType, article, licenseType } = this.props;
+    const authors = article.copyright.authors.map(author => author.name).join(', ') || 'license.unknown';
+    const extra = {
+      'u-expanded': expandLicense,
+    };
     return (
-      <div>
-        <button>Open</button>
-        <div>
-          <div><Icons.bysa /></div>
-          <div>Usephrase</div>
-          <div>Authors</div>
+      <div {...classes('', modifiers, extra)}>
+        <div {...classes('icons')}>
+          {
+            this.licenseMap(licenseType).img.map(((licenseIcon, index) => (<span className="license__icon" key={index}>{licenseIcon}</span>)))
+          }
         </div>
-        <LicenseBox />
+        <div {...classes('body')}>
+          <span>{licenseType}</span>. <span className="article_meta">{authors}. {article.published}: {article.created}</span>.
+        </div>
+        {
+          licenseHandler && contentType ?
+            <button {...classes('toggler')} onClick={this.licenseExpander}>
+              {expandLicense ? 'Lukk' : 'Gjenbruke eller sitere'}
+            </button> : null
+        }
+        {
+          expandLicense &&
+            <LicenseBox
+              article={article}
+              licenseType={licenseType}
+            />
+        }
       </div>);
   }
 
@@ -134,20 +190,21 @@ class LicenseByline extends Component {
   }
   // render end */
 }
-/*
+
 LicenseByline.propTypes = {
   article: PropTypes.object,
   contentType: PropTypes.string,
   licenseType: PropTypes.string,
   licenseHandler: PropTypes.func,
   top: PropTypes.bool,
+  modifiers: PropTypes.string,
 };
-*/
 LicenseByline.defaultProps = {
   hideLicenseByline: false,
-  licenseType: null,
-  contentType: null,
-  t: () => false,
+  licenseType: 'bysa',
+  modifiers: null,
+  contentType: 'Fagstoff',
+  t: () => true,
   article: {
     copyright: {
       authors: [],

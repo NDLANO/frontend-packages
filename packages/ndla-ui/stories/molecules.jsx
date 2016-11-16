@@ -5,7 +5,7 @@ import { storiesOf } from '@kadira/storybook';
 import { Center, DottedContainer } from './helpers';
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, LicenseByline, Logo, Pager, Footer } from '../src';
 
-storiesOf('Molekyler', module)
+storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
       <Logo to="#" altText="Nasjonal digital læringsarena" />

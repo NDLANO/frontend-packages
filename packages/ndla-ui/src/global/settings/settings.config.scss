@@ -1,3 +1,9 @@
-$inuit-global-font-size:   16px;
-$inuit-global-line-height: 18px;
+$inuit-global-font-size: 18px;
+$inuit-global-line-height: 24px;
 $inuit-global-radius: 3px;
+
+$darken-factor: 10%;
+
+@mixin max-width() {
+  max-width: 620px;
+}

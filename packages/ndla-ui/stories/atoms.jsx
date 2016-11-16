@@ -11,7 +11,7 @@ articleHTML.innerHTML = article.article4.content[0].content;
 storiesOf('Enkle komponenter', module)
   .add('Knapper', () => (
     <Center>
-      <h1 className="e-heading">Knapper</h1>
+      <h1 className="u-heading">Knapper</h1>
       <p>Knapper er til å klikke på, ikke for å lenke til.</p>
       <InlineContainer>
         <Button onClick={action('clicked')}>Knapp</Button>
@@ -27,7 +27,7 @@ storiesOf('Enkle komponenter', module)
   ))
   .add('Faktaboks', () => (
     <Center>
-      <h1 className="e-heading">Faktaboks</h1>
+      <h1 className="u-heading">Faktaboks</h1>
       <p>Faktabokser er for ekstra informasjon og veier videre.</p>
       <Aside>Ekstra informasjon</Aside>
       <div dangerouslySetInnerHTML={{ __html: articleHTML.outerHTML }} />

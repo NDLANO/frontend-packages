@@ -32,7 +32,7 @@ storiesOf('Typografi', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="e-heading">Overskrifter på NDLA</h1>
+          <h1 className="u-heading">Overskrifter på NDLA</h1>
           <p>Overskrifter på NDLA skal markeres semantisk med riktige HTML-tagger
             (for eksempel <code>{'<h1>Overskrift<h1>'}</code>). Vi bruker ikke <b>fet-skrift</b> (eller
             &laquo;bold&raquo;) for å markere overskrifter. Overskrifter støtter heller ikke kursiv.
@@ -41,7 +41,7 @@ storiesOf('Typografi', module)
             Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Sans Pro, Bold (700)</a>
           </p>
         </section>
-        <h2 className="e-heading">Eksempel</h2>
+        <h2 className="u-heading">Eksempel</h2>
         <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 1) }} />
         <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 2) }} />
         <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 3) }} />
@@ -53,7 +53,7 @@ storiesOf('Typografi', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="e-heading">Avsnitt på NDLA</h1>
+          <h1 className="u-heading">Avsnitt på NDLA</h1>
           <p>
             Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å lese.
             Dette betyr at linjelengden ikke skal være for lang, og at vi
@@ -74,7 +74,7 @@ storiesOf('Typografi', module)
           </p>
 
         </section>
-        <h2 className="e-heading">Eksempel</h2>
+        <h2 className="u-heading">Eksempel</h2>
         <p>{articleUrl(93)}</p>
         {
           Array.from(articleHMTL(93).paragraphs).slice(0, 4).map(paragraph => <div dangerouslySetInnerHTML={{ __html: paragraph.outerHTML }} />)
@@ -86,7 +86,7 @@ storiesOf('Typografi', module)
   .add('Lenker', () => (
     <Center>
       <section className="c-factbox">
-        <h1 className="e-heading">Lenker på NDLA</h1>
+        <h1 className="u-heading">Lenker på NDLA</h1>
         <p><a>Lenker</a> på <a href="//ndla.no">ndla.no</a> bruker den vanlige
           konvensjonen med underlinje. Ingen lenker skal åpne i et nytt vindu
           (det vil si, bruke <code>target=&quot;_blank&quot;</code>), med mindre den inngår i
@@ -94,7 +94,7 @@ storiesOf('Typografi', module)
         </p>
         <p>Lenker kan enten være eksterne, interne eller vise til innhold på samme side ved hjelp av en <code>id</code>-attributt på for eksempel en overskrift.</p>
       </section>
-      <h2 className="e-heading">Eksempel</h2>
+      <h2 className="u-heading">Eksempel</h2>
       <p>Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en <a href="/">intern lenke</a>, og dette er en <a href="#overskrift">lenke som viser til innhold på samme side</a></p>
       <h2 id="overskrift">Overskrift</h2>
     </Center>
@@ -102,10 +102,10 @@ storiesOf('Typografi', module)
   .add('Tabeller', () => (
     <Center>
       <section className="c-factbox">
-        <h1 className="e-heading">Tabeller på NDLA</h1>
+        <h1 className="u-heading">Tabeller på NDLA</h1>
         <p>Tabeller skal brukes til tabulær data, ikke for tekstutforming</p>
       </section>
-      <h2 className="e-heading">Eksempel</h2>
+      <h2 className="u-heading">Eksempel</h2>
       <p>
         {articleUrl(93)}
       </p>
@@ -115,7 +115,7 @@ storiesOf('Typografi', module)
   .add('Lister', () => (
     <Center>
       <section className="c-factbox">
-        <h1 className="e-heading">Lister på NDLA</h1>
+        <h1 className="u-heading">Lister på NDLA</h1>
       </section>
       <p>Punktlister</p>
       <ul>
@@ -137,10 +137,10 @@ storiesOf('Typografi', module)
   .add('Sitater', () => (
     <Center>
       <section className="c-factbox">
-        <h1 className="e-heading">Sitater på NDLA</h1>
+        <h1 className="u-heading">Sitater på NDLA</h1>
         <p>Sitater på NDLA</p>
       </section>
-      <h2 className="e-heading">Eksempel</h2>
+      <h2 className="u-heading">Eksempel</h2>
       {articleUrl(89)}
       <div dangerouslySetInnerHTML={{ __html: articleHMTL(89).articleHTML.outerHTML }} />
     </Center>

@@ -1,0 +1,5 @@
+$spacing: $inuit-global-spacing-unit;
+
+@mixin font-size($args...) {
+  @include inuit-font-size($args...);
+}

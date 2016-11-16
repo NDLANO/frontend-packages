@@ -3,7 +3,7 @@ import { setOptions } from '@kadira/storybook-addon-options';
 import '../src/main.scss';
 
 setOptions({
-  name: 'NDLA Styleguide',
+  name: 'NDLA Designmanual',
   url: 'https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-ui',
   goFullScreen: false,
   showLeftPanel: true,

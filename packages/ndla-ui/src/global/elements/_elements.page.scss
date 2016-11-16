@@ -21,13 +21,42 @@ html {
   min-height: 100%; /* [3] */
 }
 body {
-  font-family: $font-body;
+  font-family: $font;
   background-color: $background-color;
   color: $primary-color;
   height: 100%;
+}
+p {
+  @include max-width();
+}
+a:not([class]) {
+  color: $primary-color;
+  box-shadow: inset 0 -1px 0 rgba($primary-color, 0.6);
+  transition: box-shadow 0.2s ease;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $brand-color;
+    box-shadow: inset 0 -1px 0 rgba($brand-color, 1);
+  }
 }
 
 
 li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}
+aside {
+
+
+    @include font-size(16px);
+    float: right;
+    clear: right;
+    margin-right: 0px;
+    max-width: 260px;
+    padding: $spacing;
+    background: $background-color--light;
+    opacity: 0.9;
+    clip: rect(0px,100px,100px,0px);
+
 }

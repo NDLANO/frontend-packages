@@ -38,7 +38,7 @@ storiesOf('Typografi', module)
             &laquo;bold&raquo;) for å markere overskrifter. Overskrifter støtter heller ikke kursiv.
           </p>
           <p>
-            Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Sans Pro, Black (900)</a>
+            Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Sans Pro, Bold (700)</a>
           </p>
         </section>
         <h2 className="e-heading">Eksempel</h2>

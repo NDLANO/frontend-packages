@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
-import classNames from 'classnames';
+
 require('./component.button.scss');
 
 

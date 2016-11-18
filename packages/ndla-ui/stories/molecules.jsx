@@ -57,11 +57,6 @@ storiesOf('Sammensatte moduler', module)
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
   ))
-  .add('Lisensbyline', () => (
-    <Center>
-      <LicenseByline />
-    </Center>
-  ))
   .add('Sidefot', () => (
     <Center>
       <Footer>

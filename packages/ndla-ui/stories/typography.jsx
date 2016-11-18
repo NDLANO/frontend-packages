@@ -35,7 +35,7 @@ storiesOf('Typografi', module)
           <h1 className="u-heading">Overskrifter på NDLA</h1>
           <p>Overskrifter på NDLA skal markeres semantisk med riktige HTML-tagger
             (for eksempel <code>{'<h1>Overskrift<h1>'}</code>). Vi bruker ikke <b>fet-skrift</b> (eller
-            &laquo;bold&raquo;) for å markere overskrifter. Overskrifter støtter heller ikke kursiv.
+            &laquo;bold&raquo;) for å markere overskrifter.
           </p>
           <p>
             Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Sans Pro, Bold (700)</a>
@@ -138,7 +138,7 @@ storiesOf('Typografi', module)
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">Sitater på NDLA</h1>
-        <p>Sitater på NDLA</p>
+        <p>Sitater som strekker seg over tre linjer i vanlig linjelengde er best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere sitater, men «»</p>
       </section>
       <h2 className="u-heading">Eksempel</h2>
       {articleUrl(89)}

@@ -4,7 +4,7 @@ import { storiesOf } from '@kadira/storybook';
 
 import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
 
-import article from '../dummydata/article89.json';
+import article from '../dummydata/article40.json';
 
 const FooterExample = () => (
   <Footer>

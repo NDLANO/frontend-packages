@@ -47,16 +47,18 @@ li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 aside {
+  width: 100%;
+  background: $secondary-color;
+  padding: $spacing;
+  opacity: 0.9;
+  margin: 0 0 $spacing 0;
+  @include max-width();
 
-
+  @include mq(desktop) {
     @include font-size(16px);
-    float: right;
+    position: absolute;;
+    left: 720px;
     clear: right;
-    margin-right: 0px;
     max-width: 260px;
-    padding: $spacing;
-    background: $background-color--light;
-    opacity: 0.9;
-    clip: rect(0px,100px,100px,0px);
-
+  }
 }

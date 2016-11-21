@@ -28,15 +28,13 @@ SiteNavItem.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-export const SiteNav = ({ children, cssModifier }) => {
-  return (
-    <div {...classes('container', cssModifier)}>
-      <ul {...classes('list')}>
-        {children}
-      </ul>
-    </div>
-  );
-};
+export const SiteNav = ({ children, cssModifier }) => (
+  <div {...classes('container', cssModifier)}>
+    <ul {...classes('list')}>
+      {children}
+    </ul>
+  </div>
+);
 
 SiteNav.propTypes = {
   children: PropTypes.node,

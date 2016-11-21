@@ -7,11 +7,11 @@ require('./component.button.scss');
 const classes = new BEMHelper({
   name: 'button',
   prefix: 'c-',
-})
+});
 const Button = ({ className, outline, square, submit, loading, ...rest }) => {
   const modifiers = {
-    'outline': outline,
-    'square': square
+    outline,
+    square,
   };
 
 

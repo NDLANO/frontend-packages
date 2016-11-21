@@ -1,3 +1,6 @@
 module.exports = {
-  extends: 'ndla'
+ extends: 'ndla',
+ rules: {
+  'react/prop-types': [ 2, {'ignore': ['className'] }]
+ }
 };

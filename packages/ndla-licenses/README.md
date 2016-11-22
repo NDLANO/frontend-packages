@@ -32,6 +32,28 @@ console.log(license);
 //> { short: 'unknown-license', title: 'unknown-license', description: 'unknown-license', rights: [] }
 ```
 
+### Get license right info by abbreviation/constant
+```js
+import { getLicenseRightByAbbreviation, BY, CC } from 'ndla-licenses';
+
+const licenseRight = getLicenseRightByAbbreviation(BY, 'en');
+
+console.log(licenseRight);
+//> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Copyright', description: 'Only the creator can derive...' }
+
+
+// defaults to Norsk Bokmål (nb)
+const licenseRight = getLicenseRightByAbbreviation(CC, 'unknown-locale');
+console.log(licenseRight);
+//> { short: 'cc', title: 'Copyright', userFriendlyTitle: 'Opphavsrett', description: 'Bare opphavspersonen kan bearbeide...' }
+
+
+// returns abbreviation if licenseRight is unknown
+const licenseRight = getLicenseRightByAbbreviation('unknown-lr', 'en');
+console.log(licenseRight);
+//> { short: 'unknown-lr', title: 'unknown-lr', userFriendlyTitle: 'unknown-lr', description: 'unknown-lr'}
+```
+
 ### License right constants
 
 ```js
@@ -57,3 +79,6 @@ const LicenseIcon = ({ licenseRight }) => {
 | `SA` | `'sa'` | Share-alike |
 | `NC` | `'nc'` | Non-commercial |
 | `ND` | `'nd'` | No derivative work |
+| `PD` | `'pd'` | Public Domain |
+| `CC0` | `'cc0'` | Public Domain Dedication |
+| `CC` | `'cc'` | Copyright |

@@ -9,12 +9,10 @@
  /* eslint-env jest */
 
 import {
-  BY,
-  SA,
-  NC,
   getLicenseByAbbreviation,
 } from '../licenses';
 
+import { BY, SA, NC } from '../licenseRights';
 
 test('licenses/getLicenseByAbbreviation get license for by-sa in english', () => {
   const license = getLicenseByAbbreviation('by-sa', 'en');

@@ -7,19 +7,30 @@
  */
 
 import {
+  getLicenseByAbbreviation,
+} from './licenses';
+
+import {
   BY,
   SA,
   NC,
   ND,
-  getLicenseByAbbreviation,
-} from './licenses';
+  PD,
+  CC0,
+  CC,
+  getLicenseRightByAbbreviation,
+} from './licenseRights';
 
 export {
   BY,
   SA,
   NC,
   ND,
+  PD,
+  CC0,
+  CC,
   getLicenseByAbbreviation,
+  getLicenseRightByAbbreviation,
 };
 
 export default getLicenseByAbbreviation;

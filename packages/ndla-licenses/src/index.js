@@ -21,7 +21,7 @@ import {
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
-export default {
+export {
   BY,
   SA,
   NC,
@@ -32,3 +32,5 @@ export default {
   getLicenseByAbbreviation,
   getLicenseRightByAbbreviation,
 };
+
+export default getLicenseByAbbreviation;

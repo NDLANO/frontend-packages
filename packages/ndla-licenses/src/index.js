@@ -15,6 +15,9 @@ import {
   SA,
   NC,
   ND,
+  PD,
+  CC0,
+  CC,
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
@@ -23,6 +26,9 @@ export default {
   SA,
   NC,
   ND,
+  PD,
+  CC0,
+  CC,
   getLicenseByAbbreviation,
   getLicenseRightByAbbreviation,
 };

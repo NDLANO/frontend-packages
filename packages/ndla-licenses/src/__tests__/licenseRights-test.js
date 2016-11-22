@@ -8,12 +8,20 @@
 
  /* eslint-env jest */
 
-import { getLicenseRightByAbbreviation, BY } from '../licenseRights';
+import { getLicenseRightByAbbreviation, BY, CC } from '../licenseRights';
 
-test('lisence/getLicenseRightByAbbreviation get component for by in bokmål', () => {
-  const licenseRight = getLicenseRightByAbbreviation('by');
+test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
+  const licenseRight = getLicenseRightByAbbreviation('by', 'nb');
   expect(licenseRight.title).toBe('Navngivelse');
   expect(licenseRight.short).toBe(BY);
   expect(licenseRight.userFriendlyTitle).toBe('Navngivelse');
   expect(licenseRight.description).toBe('Opphavspersonen til verket må navngis.');
+});
+
+test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {
+  const licenseRight = getLicenseRightByAbbreviation(CC, 'en');
+  expect(licenseRight.title).toBe('Copyright');
+  expect(licenseRight.short).toBe(CC);
+  expect(licenseRight.userFriendlyTitle).toBe('Copyright');
+  expect(licenseRight.description).toBe('Only the creator can derive, publish, or license the work. It can not be shared without permission.');
 });

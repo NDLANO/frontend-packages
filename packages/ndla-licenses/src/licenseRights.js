@@ -85,7 +85,6 @@ const pd = {
     description: 'Verket er identifisert som fritt for kjente opphavsrettsbegrensninger.',
   },
   en: {
-    short: 'PD',
     title: 'Public Domain',
     userFriendlyTitle: 'Public Domain',
     description: 'The work is free of all known.',
@@ -109,7 +108,7 @@ const cc0 = {
 const cc = {
   short: CC,
   nb: {
-    title: 'Copyright',
+    title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
     description: 'Bare opphavspersonen kan bearbeide, publisere og gi bruksrett. Verket kan ikke deles.',
   },
@@ -141,7 +140,6 @@ export function getLicenseRightByAbbreviation(abbreviation, locale) {
       short: abbreviation,
       title: abbreviation,
       userFriendlyTitle: abbreviation,
-      rights: [],
       description: abbreviation };
   }
 }

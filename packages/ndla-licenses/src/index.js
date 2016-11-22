@@ -14,12 +14,23 @@ import {
   getLicenseByAbbreviation,
 } from './licenses';
 
-export {
+import {
+  ByComponent,
+  SaComponent,
+  NcComponent,
+  NdComponent,
+  getLicenseComponentByAbbreviation,
+} from './components';
+
+export default {
   BY,
   SA,
   NC,
   ND,
   getLicenseByAbbreviation,
+  ByComponent,
+  SaComponent,
+  NcComponent,
+  NdComponent,
+  getLicenseComponentByAbbreviation,
 };
-
-export default getLicenseByAbbreviation;

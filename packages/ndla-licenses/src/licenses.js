@@ -9,17 +9,13 @@
 /* eslint max-len: 0 */
 
 import defined from 'defined';
+import { BY, SA, NC, ND } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseEN = 'Free reuse';
 const restrictedUseNB = 'Begrenset bruk';
 const restrictedUseEN = 'Restricted use';
 
-// License rights
-export const BY = 'by'; // Attribution
-export const SA = 'sa'; // Share-alike
-export const NC = 'nc'; // Non-commercial
-export const ND = 'nd'; // No derivative work
 
 const byncnd = {
   nb: {

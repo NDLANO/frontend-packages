@@ -7,20 +7,16 @@
  */
 
 import {
-  BY,
-  SA,
-  NC,
-  ND,
   getLicenseByAbbreviation,
 } from './licenses';
 
 import {
-  ByComponent,
-  SaComponent,
-  NcComponent,
-  NdComponent,
-  getLicenseComponentByAbbreviation,
-} from './components';
+  BY,
+  SA,
+  NC,
+  ND,
+  getLicenseRightByAbbreviation,
+} from './licenseRights';
 
 export default {
   BY,
@@ -28,9 +24,5 @@ export default {
   NC,
   ND,
   getLicenseByAbbreviation,
-  ByComponent,
-  SaComponent,
-  NcComponent,
-  NdComponent,
-  getLicenseComponentByAbbreviation,
+  getLicenseRightByAbbreviation,
 };

@@ -46,6 +46,7 @@ $inuit-wrapper-width: 1480px;
 
 // COMPONENTS
 @import "global/components/component.factbox";
+@import "global/components/component.bodybox";
 /* @import "components/components.buttons";
 @import "components/components.page-foot";
 @import "components/components.site-nav";
@@ -57,4 +58,5 @@ $inuit-fractions: 1 2 3 4 12;
 @import "../node_modules/inuitcss/utilities/utilities.widths";
 @import "../node_modules/inuitcss/utilities/utilities.headings";
 @import "../node_modules/inuitcss/utilities/utilities.spacing";
-@import "global/utilities/utilities.typographic.scss";
+@import "global/utilities/utilities.typographic";
+@import "global/utilities/utilities.shame";

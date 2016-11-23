@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { Center, DottedContainer } from './helpers';
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, LicenseByline, Logo, Pager, Footer } from '../src';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
 
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (

@@ -5,9 +5,6 @@
 * LICENSE file in the root directory of this source tree.
 *
 */
-div {
-  background: #000 !important;
-}
 .masthead {
   background-color: #fff;
   padding-top: 3px;
@@ -40,7 +37,7 @@ div {
   padding: 0;
 }
 
-.c-site-navigation__link:any-link {
+.c-site-navigation__link {
   color: #000;
   text-decoration: none;
   font-size: 1.125em;
@@ -50,4 +47,105 @@ div {
 
 .c-site-navigation__link:hover, .c-site-navigation__link:active {
   text-decoration: underline;
+}
+.pager {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.pager_step {
+  display: inline;
+  border: 2px solid #888;
+  background-color: white;
+  padding: 1em 1.45em;
+  margin: 1em .3em 0;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: transparent;
+  color: #000;
+}
+
+.pager_step--active, .pager_step:hover {
+  background-color: #d8d8d8;
+}
+.logo {
+  margin: 0;
+  height: 19px;
+  width: 58px;
+}
+
+.logo_link {
+  width: 100%;
+
+  &:any-link {
+    text-decoration: none;
+  }
+}
+
+
+
+.footer {
+  color: #4d4d4d;
+  flex: none;
+  background-color: #fff;
+  padding: 3.5em 10%;
+  margin-top: 3em;
+}
+
+.footer--bold {
+  font-weight: 600;
+}
+
+
+.footer_form {
+  padding-left: 5%;
+  display: inline;
+}
+
+.footer_label {
+  padding-right: 1em;
+  display: inline-block;
+}
+
+.footer_ruler {
+  width: 100%;
+  border-top: 1px solid #303030;
+  padding-bottom: 1em;
+  margin-top: 1em;
+}
+
+.footer_text {
+  padding-left: 5%;
+  margin-bottom: 0;
+  margin-top: 0.3em;
+}
+
+.footer_editor:last-child {
+  padding-left: 2em;
+}
+
+@media (--xlarge-viewport) {
+  .footer {
+    padding: 3.5em 15%;
+  }
+}
+
+
+@media (--medium-viewport) {
+  .footer {
+    padding: 2em;
+  }
+
+  .footer_editor {
+    display: block;
+  }
+
+  .footer_editor:last-child {
+    padding-left: 0;
+  }
+
+  .footer_form {
+    display: block;
+  }
 }

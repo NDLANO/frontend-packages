@@ -7,12 +7,17 @@
  */
 
 import React, { PropTypes } from 'react';
-import classNames from 'classnames';
+import BEMHelper from 'react-bem-helper';
 import SafeLink from '../SafeLink';
 
+const classes = new BEMHelper({
+  name: 'site-navigation',
+  prefix: 'c-',
+});
+
 export const SiteNavItem = ({ to, children, cssModifier }) =>
-  <li className={classNames('site-nav_item', `site-nav_item--${cssModifier}`)}>
-    <SafeLink to={to} className="site-nav_link">
+  <li {...classes('item', cssModifier)}>
+    <SafeLink to={to} {...classes('link')}>
       {children}
     </SafeLink>
   </li>;
@@ -23,17 +28,13 @@ SiteNavItem.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-export const SiteNav = ({ children, cssModifier }) => {
-  const classes = classNames('site-nav', `site-nav--${cssModifier}`);
-
-  return (
-    <div className={classes}>
-      <ul className="site-nav_list">
-        {children}
-      </ul>
-    </div>
-  );
-};
+export const SiteNav = ({ children, cssModifier }) => (
+  <div {...classes('container', cssModifier)}>
+    <ul {...classes('list')}>
+      {children}
+    </ul>
+  </div>
+);
 
 SiteNav.propTypes = {
   children: PropTypes.node,

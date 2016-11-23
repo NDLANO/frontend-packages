@@ -5,13 +5,13 @@ import { storiesOf } from '@kadira/storybook';
 import { Center, DottedContainer } from './helpers';
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
 
-storiesOf('Molecules', module)
+storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
     </Center>
   ))
-  .add('SiteNav', () => (
+  .add('Sidenavigasjon', () => (
     <Center>
       <DottedContainer>
         <SiteNav>
@@ -23,7 +23,7 @@ storiesOf('Molecules', module)
       </DottedContainer>
     </Center>
   ))
-  .add('Masthead', () => (
+  .add('Hovedhode', () => (
     <Center>
       <Masthead>
         <MastheadItem left>Left</MastheadItem>
@@ -31,7 +31,7 @@ storiesOf('Molecules', module)
       </Masthead>
     </Center>
   ))
-  .add('Masthead with logo and site nav', () => (
+  .add('Hovedhode med logo og Sidenavigasjon', () => (
     <Center>
       <Masthead>
         <MastheadItem left>
@@ -48,7 +48,7 @@ storiesOf('Molecules', module)
       </Masthead>
     </Center>
   ))
-  .add('Pager', () => (
+  .add('Paginering', () => (
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
@@ -57,7 +57,7 @@ storiesOf('Molecules', module)
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
   ))
-  .add('Footer', () => (
+  .add('Sidefot', () => (
     <Center>
       <Footer>
         <div className="footer_form">

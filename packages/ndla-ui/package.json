@@ -12,7 +12,7 @@
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
     "build:css": "webpack -p && cp ./dist/style.css ./es && cp ./dist/style.css ./lib",
-    "clean": "rimraf lib es",
+    "clean": "rimraf lib es dist",
     "prepublish": "npm run clean && npm run build",
     "test": "../../node_modules/.bin/jest",
     "storybook": "start-storybook -p 6006",
@@ -48,6 +48,8 @@
     "css-loader": "0.25.0",
     "enzyme": "2.5.1",
     "extract-text-webpack-plugin": "1.0.1",
+    "inuitcss": "^6.0.0-beta.4",
+    "node-sass": "^3.10.1",
     "postcss-cssnext": "2.8.0",
     "postcss-easy-import": "1.0.1",
     "postcss-focus": "1.0.0",
@@ -55,10 +57,15 @@
     "postcss-reporter": "1.4.1",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
+    "react-bem-helper": "^1.2.0",
     "react-dom": "15.3.2",
     "react-router": "2.8.1",
     "rimraf": "2.5.4",
+    "sass-loader": "^4.0.2",
     "style-loader": "0.13.1",
     "webpack": "1.13.2"
+  },
+  "dependencies": {
+    "react-tabs": "^0.8.2"
   }
 }

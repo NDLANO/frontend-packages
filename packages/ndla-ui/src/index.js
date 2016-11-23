@@ -8,6 +8,8 @@
 
 import Button from './button/Button';
 import Logo from './logo/Logo';
+import Aside from './aside/Aside';
+import { Table } from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
@@ -21,6 +23,7 @@ Footer.Ruler = FooterRuler;
 Footer.Editor = FooterEditor;
 
 export {
+  Aside,
   Button,
   Footer,
   Logo,
@@ -31,4 +34,5 @@ export {
   Pager,
   SiteNav,
   SiteNavItem,
+  Table,
 };

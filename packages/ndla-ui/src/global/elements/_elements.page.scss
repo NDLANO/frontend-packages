@@ -1,0 +1,111 @@
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+
+/**
+ * Simple page-level setup.
+ *
+ * 1. Set the default `font-size` and `line-height` for the entire project,
+ *    sourced from our default variables. The `font-size` is calculated to exist
+ *    in ems, the `line-height` is calculated to exist unitlessly.
+ * 2. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
+ *    navigating between pages that do/do not have enough content to produce
+ *    scrollbars naturally.
+ * 3. Ensure the page always fills at least the entire height of the viewport.
+ */
+
+html {
+  font-size: ($inuit-global-font-size / 16px) * 1em; /* [1] */
+  line-height: $inuit-global-line-height / $inuit-global-font-size; /* [1] */
+  overflow-y: scroll; /* [2] */
+  min-height: 100%; /* [3] */
+}
+body {
+  font-family: $font;
+  background-color: $background-color;
+  color: $primary-color;
+  height: 100%;
+}
+p {
+  @include max-width();
+}
+a:not([class]) {
+  color: $primary-color;
+  box-shadow: inset 0 -1px 0 rgba($primary-color, 0.6);
+  transition: box-shadow 0.2s ease;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $brand-color;
+    box-shadow: inset 0 -1px 0 rgba($brand-color, 1);
+  }
+}
+
+
+li {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}
+aside {
+  width: 100%;
+  background: $secondary-color;
+  padding: $spacing;
+  opacity: 0.9;
+  margin: 0 0 $spacing 0;
+  @include max-width();
+
+  > div {
+    overflow: hidden;
+    max-height: 150px;
+    transition: max-height .5s;
+    position: relative;
+    &:before {
+      content: "";
+      text-align: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      background: linear-gradient(rgba(255,255,255,0),$secondary-color)
+    }
+    &:after {
+      content: "ÅPNE";
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      cursor: pointer;
+    }
+  }
+  > .expanded {
+    max-height: none;
+
+    &:after {
+      background: none;
+    }
+  }
+
+  @include mq(desktop) {
+    @include font-size(16px);
+    float: right;
+    left: 720px;
+    clear: both;
+    max-width: 260px;
+
+    > div {
+      max-height: none;
+
+      &:before {
+        background: none;
+      }
+      &:after {
+        content: "";
+      }
+    }
+  }
+}
+article, section {
+  overflow: auto;
+}

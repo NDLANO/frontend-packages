@@ -1,0 +1,31 @@
+@import '../main';
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+.c-button {
+  color: $white;
+  background-color: $brand-color;
+  border: 0px solid $background-color--dark;
+  border-radius: $inuit-global-radius;
+  padding: 0.4em;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);;
+  outline: none;
+  cursor: pointer;
+  &:hover, &:focus {
+    background-color: lighten($brand-color, 20%);
+  }
+  &:active {
+    transform: translateY(1px) translateX(1px);
+    box-shadow: 0 1px 0px 0 rgba(0,0,0,0.14),0 0px 5px 0 rgba(0,0,0,0.12),0 2px 0px -2px rgba(0,0,0,0.2);
+  }
+  &:disabled {
+    color: $background-color--light;
+    background-color: $background-color--dark;
+    cursor: not-allowed;
+  }
+}

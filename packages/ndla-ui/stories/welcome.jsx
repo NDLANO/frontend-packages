@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-
 import { storiesOf, linkTo } from '@kadira/storybook';
+import { Center } from './helpers';
 
 const styles = {
   code: {
@@ -26,12 +26,30 @@ class Welcome extends Component {
 
   render() {
     return (
-      <div style={styles.main}>
-        <h1>Welcome to NDLA styleguide and component gallery</h1>
-        <p>
-          See: <button onClick={this.showApp}>stories</button> for a component called <code style={styles.code}>Button</code>.
-        </p>
-      </div>
+      <Center>
+        <div style={styles.main}>
+          <h2>NDLA</h2>
+          <h1>Designmanual</h1>
+          <ul>Typografi
+            <li>Overskrifter</li>
+            <li>Brødtekst</li>
+            <li>Tabeller</li>
+            <li>Lister</li>
+          </ul>
+          <ul>Atomer
+            <li>Ikoner</li>
+            <li>Media</li>
+            <li>Flagg</li>
+          </ul>
+          <ul>Molekyler
+            <li>Logo</li>
+            <li>Lisensbyline</li>
+            <li>Fagressurs</li>
+            <li>Sidefot</li>
+            <li>Sidehode</li>
+          </ul>
+        </div>
+      </Center>
     );
   }
 }
@@ -40,7 +58,7 @@ Welcome.propTypes = {
   showApp: PropTypes.func,
 };
 
-storiesOf('Welcome', module)
-  .add('to NDLA styleguide', () => (
+storiesOf('Velkommen', module)
+  .add('til NDLAs designmanual', () => (
     <Welcome showApp={linkTo('Button')} />
   ));

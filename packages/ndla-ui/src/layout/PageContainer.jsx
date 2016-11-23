@@ -8,7 +8,7 @@
 
 import React, { PropTypes } from 'react';
 
-export const PageContainer = ({ children }) => <div className="page-container">{children}</div>;
+export const PageContainer = ({ children }) => <div>{children}</div>;
 
 PageContainer.propTypes = {
   children: PropTypes.node,

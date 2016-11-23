@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+
+quote {
+
+}
+blockquote {
+  @include max-width();
+  margin: 0;
+  padding-left: $spacing;
+  border-left: $spacing / 3 solid $background-color--dark;
+  @include font-size(16px);
+}

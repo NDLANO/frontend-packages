@@ -10,8 +10,8 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 export const OneColumn = ({ children, className, cssModifier }) => {
-  const modifierClass = cssModifier ? `one-column--${cssModifier}` : '';
-  const classes = classNames('one-column', modifierClass, className);
+  const modifierClass = cssModifier ? `o-wrapper--${cssModifier}` : '';
+  const classes = classNames('o-wrapper', modifierClass, className);
   return <div className={classes}>{children}</div>;
 };
 

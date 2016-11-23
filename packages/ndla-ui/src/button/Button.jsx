@@ -8,7 +8,7 @@ const classes = new BEMHelper({
   name: 'button',
   prefix: 'c-',
 });
-const Button = ({ className, outline, square, submit, loading, ...rest }) => {
+const Button = ({ outline, square, submit, loading, ...rest }) => {
   const modifiers = {
     outline,
     square,

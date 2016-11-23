@@ -25,6 +25,13 @@ storiesOf('Enkle komponenter', module)
       </InlineContainer>
     </Center>
   ))
+  .add('Boks i tekst', () => (
+    <Center>
+      <h1 className="u-heading">Boks i tekst</h1>
+      <p>Boks i tekst</p>
+      <div className="c-bodybox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, praesentium.</div>
+    </Center>
+  ))
   .add('Faktaboks', () => (
     <Center>
       <h1 className="u-heading">Faktaboks</h1>

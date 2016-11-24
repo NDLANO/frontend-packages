@@ -35,6 +35,7 @@
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.2",
+    "react-bem-helper": "^1.2.0",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1"
   },
@@ -60,12 +61,10 @@
     "react-bem-helper": "^1.2.0",
     "react-dom": "15.3.2",
     "react-router": "2.8.1",
+    "react-tabs": "^0.8.2",
     "rimraf": "2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "0.13.1",
     "webpack": "1.13.2"
-  },
-  "dependencies": {
-    "react-tabs": "^0.8.2"
   }
 }

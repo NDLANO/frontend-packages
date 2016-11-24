@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
 
-require('./component.button.scss');
-
-
 const classes = new BEMHelper({
   name: 'button',
   prefix: 'c-',
 });
+
 const Button = ({ outline, square, submit, loading, ...rest }) => {
   const modifiers = {
     outline,

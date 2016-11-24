@@ -91,7 +91,7 @@ const bysa = {
     short: freeUseNB,
     title: 'Navngivelse-DelPåSammeVilkår',
     userFriendlyTitle: '',
-    description: 'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphavspersonen og avledete verk må bære en tilsvarende lisens. Denne lisensen blir ofte sidestilt med "copyleft" og åpen kildekode-lisenser. Alle nye verk basert på ditt vil være utstyrt ned den samme lisensen, slik at eventuelle avledete verk vil også tillate kommersiell bruk. Dette er den lisensen som brukes av Wikipedia, og som anbefales for materiale som ville ha nytte av å kunne inkludere innhold fra Wikipedia og fra andre prosjekter med tilsvarende lisenser.',
+    description: 'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til den som har laget verket (eller opphavspersonen?). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
   },
 
   en: {

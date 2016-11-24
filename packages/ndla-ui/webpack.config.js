@@ -1,5 +1,4 @@
 const path = require('path');
-const postcss = require('./postcss.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -22,6 +21,4 @@ module.exports = {
   },
 
   plugins: [new ExtractTextPlugin('style.css')],
-
-  postcss,
 };

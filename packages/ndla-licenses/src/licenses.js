@@ -91,7 +91,7 @@ const bysa = {
     short: freeUseNB,
     title: 'Navngivelse-DelPåSammeVilkår',
     userFriendlyTitle: '',
-    description: 'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til den som har laget verket eller opphavspersonen. Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
+    description: 'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphavspersonen(e). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
   },
 
   en: {

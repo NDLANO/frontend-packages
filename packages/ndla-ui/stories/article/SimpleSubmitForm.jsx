@@ -30,16 +30,18 @@ class SimpleSubmitForm extends Component {
   }
 
   render() {
+    const { errorMessage, labelText, submitText } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="query">{ this.props.labelText }</label>
+        <label htmlFor="query">{ labelText }</label>
         <input
           id="query"
           type="text"
           onChange={this.handleChange}
           value={this.state.articleId}
         />
-        <Button submit> { this.props.submitText }</Button>
+        <Button submit> { submitText }</Button>
+        { errorMessage ? <p>{ errorMessage }</p> : null }
       </form>
     );
   }
@@ -49,6 +51,7 @@ SimpleSubmitForm.propTypes = {
   query: PropTypes.string,
   labelText: PropTypes.string,
   submitText: PropTypes.string,
+  errorMessage: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
 };
 

@@ -46,11 +46,11 @@ class ArticleLoader extends Component {
   }
 
   render() {
-    const { article } = this.state;
+    const { article, message } = this.state;
     return (
       <div>
         { article ? <button className="dm-close-button" onClick={() => this.setState({ article: undefined })}>X</button> : null}
-        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} labelText="Article ID:" />}
+        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Article ID:" />}
       </div>
     );
   }

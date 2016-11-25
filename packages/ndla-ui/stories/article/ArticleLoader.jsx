@@ -49,8 +49,8 @@ class ArticleLoader extends Component {
     const { article } = this.state;
     return (
       <div>
-        <SimpleSubmitForm onSubmit={this.handleSubmit} labelText="Article ID:" />
-        { article ? <ArticleExample article={article} /> : null}
+        { article ? <button className="dm-close-button" onClick={() => this.setState({ article: undefined })}>X</button> : null}
+        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} labelText="Article ID:" />}
       </div>
     );
   }

@@ -50,6 +50,7 @@
     "enzyme": "2.5.1",
     "extract-text-webpack-plugin": "1.0.1",
     "inuitcss": "^6.0.0-beta.4",
+    "isomorphic-fetch": "^2.2.1",
     "node-sass": "^3.10.1",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",

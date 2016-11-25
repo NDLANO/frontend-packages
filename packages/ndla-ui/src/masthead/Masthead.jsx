@@ -13,7 +13,7 @@ export const MastheadItem = ({ children, className, left, right }) => {
   const classes = classNames(
     className,
     { masthead_left: left },
-    { masthead_right: right }
+    { masthead_right: right },
   );
   return (
     <div className={classes}>

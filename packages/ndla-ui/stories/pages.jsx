@@ -5,6 +5,7 @@ import { storiesOf } from '@kadira/storybook';
 import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
 
 import article from '../dummydata/article40.json';
+import ArticleLoader from './article/ArticleLoader';
 
 const FooterExample = () => (
   <Footer>
@@ -50,13 +51,31 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('ArticlePAge', () => (
+  .add('ArticlePage', () => (
     <PageContainer>
       <MastheadExample />
       <OneColumn>
         <article>
           <div dangerouslySetInnerHTML={{ __html: article.content[0].content }} />
         </article>
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('ArticlePage loader', () => (
+    <PageContainer>
+      <MastheadExample />
+      <OneColumn>
+        <ArticleLoader />
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('ArticlePage Preloaded', () => (
+    <PageContainer>
+      <MastheadExample />
+      <OneColumn>
+        <ArticleLoader articleId="34" />
       </OneColumn>
       <FooterExample />
     </PageContainer>

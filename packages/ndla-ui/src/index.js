@@ -16,11 +16,14 @@ import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 import { OneColumn } from './layout/OneColumn';
 import PageContainer from './layout/PageContainer';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
+import ArticleIntroduction from './article/ArticleIntroduction';
+import Article from './article/Article';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
 Footer.Ruler = FooterRuler;
 Footer.Editor = FooterEditor;
+Article.Introduction = ArticleIntroduction;
 
 export {
   Aside,
@@ -35,4 +38,5 @@ export {
   SiteNav,
   SiteNavItem,
   Table,
+  Article,
 };

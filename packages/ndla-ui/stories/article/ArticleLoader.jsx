@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import ArticleExample from './ArticleExample';
@@ -18,6 +18,13 @@ class ArticleLoader extends Component {
       fetching: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const { articleId } = this.props;
+    if (articleId) {
+      this.handleSubmit(articleId);
+    }
   }
 
   handleSubmit(articleId) {
@@ -49,5 +56,8 @@ class ArticleLoader extends Component {
   }
 }
 
+ArticleLoader.propTypes = {
+  articleId: PropTypes.string,
+};
 
 export default ArticleLoader;

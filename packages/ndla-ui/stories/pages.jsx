@@ -71,4 +71,13 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
+  .add('ArticlePage Preloaded', () => (
+    <PageContainer>
+      <MastheadExample />
+      <OneColumn>
+        <ArticleLoader articleId="34" />
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
   ;

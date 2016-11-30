@@ -5,6 +5,10 @@
 * LICENSE file in the root directory of this source tree.
 *
 */
+#root > * {
+  min-height: 100vh;
+}
+
 .masthead {
   background-color: #fff;
   padding-top: 3px;

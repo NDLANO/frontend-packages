@@ -23,6 +23,10 @@ AuthorsList.propTypes = {
 
 const LastUpdated = ({ date }) => <span {...classes('date')}>Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
 
+LastUpdated.propTypes = {
+  date: PropTypes.string,
+};
+
 const ArticleByline = ({ article, authors, date }) => {
   if (!article) {
     return null;
@@ -38,7 +42,7 @@ const ArticleByline = ({ article, authors, date }) => {
 
 ArticleByline.propTypes = {
   article: PropTypes.object,
-  date: PropTypes.bool,
+  date: PropTypes.string,
   authors: PropTypes.array,
 };
 

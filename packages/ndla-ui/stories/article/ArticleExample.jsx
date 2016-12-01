@@ -9,11 +9,12 @@
 import React, { PropTypes } from 'react';
 
 import { Article } from '../../src';
+import ArticleByline from './ArticleByline';
 
 const ArticleExample = ({ article }) => (
   <Article>
     <h1>{article.title}</h1>
-    <Article.Byline date article={article} />
+    <ArticleByline date article={article} />
     <Article.Introduction introduction={article.introduction} />
     <div dangerouslySetInnerHTML={{ __html: article.content }} />
     { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }

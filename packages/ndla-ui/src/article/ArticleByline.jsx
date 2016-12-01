@@ -8,6 +8,7 @@
 
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
+import moment from 'moment';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -20,7 +21,7 @@ AuthorsList.propTypes = {
   authors: PropTypes.array,
 };
 
-const LastUpdated = ({ date }) => <span {...classes('date')}>{date}</span>;
+const LastUpdated = ({ date }) => <span {...classes('date')}>Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
 
 const ArticleByline = ({ article, authors, date }) => {
   if (!article) {

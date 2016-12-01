@@ -13,6 +13,7 @@ import { Article } from '../../src';
 const ArticleExample = ({ article }) => (
   <Article>
     <h1>{article.title}</h1>
+    <Article.Byline date article={article} />
     <Article.Introduction introduction={article.introduction} />
     <div dangerouslySetInnerHTML={{ __html: article.content }} />
     { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }

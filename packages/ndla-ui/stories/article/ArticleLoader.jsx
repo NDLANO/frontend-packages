@@ -10,6 +10,7 @@ import React, { Component, PropTypes } from 'react';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import ArticleExample from './ArticleExample';
+import { Button } from '../../src/';
 
 class ArticleLoader extends Component {
   constructor(props) {
@@ -49,8 +50,8 @@ class ArticleLoader extends Component {
     const { article, message } = this.state;
     return (
       <div>
-        { article ? <button className="dm-close-button" onClick={() => this.setState({ article: undefined })}>X</button> : null}
-        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Article ID:" />}
+        { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
+        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
       </div>
     );
   }

@@ -7,8 +7,14 @@
  */
 
  import React, { PropTypes } from 'react';
+ import BEMHelper from 'react-bem-helper';
 
- export const Article = ({ children }) => <article className="article"> { children } </article>;
+ const classes = new BEMHelper({
+   name: 'article',
+   prefix: 'c-',
+ });
+
+ export const Article = ({ children }) => <article {...classes()}> { children } </article>;
 
  Article.propTypes = {
    children: PropTypes.node.isRequired,

@@ -28,13 +28,14 @@ $mq-breakpoints: (
 @import "global/elements/elements.page";
 @import "../node_modules/inuitcss/elements/elements.headings";
 @import "global/elements/elements.headings";
+@import "global/elements/elements.figure";
 @import "global/elements/elements.quotations";
 @import "global/elements/elements.navigation";
 @import "global/elements/elements.images";
 @import "global/elements/elements.tables";
 
 // OBJECTS
-$inuit-wrapper-width: 1250px;
+$inuit-wrapper-width: 1024px;
 @import "../node_modules/inuitcss/objects/objects.wrapper";
 @import "../node_modules/inuitcss/objects/objects.layout";
 @import "../node_modules/inuitcss/objects/objects.media";

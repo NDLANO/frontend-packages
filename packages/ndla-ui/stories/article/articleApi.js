@@ -8,7 +8,7 @@
 
 import fetch from 'isomorphic-fetch';
 
-export const fetchArticle = id => fetch(`http://api.test.ndla.no/article-oembed/raw/nb/${id}/`).then(res => (
+export const fetchArticle = id => fetch(`${window.location.protocol}//api.test.ndla.no/article-oembed/raw/nb/${id}/`).then(res => (
   new Promise((resolve, reject) => {
     if (res.ok) {
       return res.json()
@@ -17,5 +17,5 @@ export const fetchArticle = id => fetch(`http://api.test.ndla.no/article-oembed/
     }
     return res.json()
         .then(json => reject(json));
-  }))
+  })),
 );

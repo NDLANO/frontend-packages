@@ -26,7 +26,7 @@ body {
   color: $primary-color;
   height: 100%;
 }
-p {
+p, ul, table, figure {
   @include max-width();
 }
 a:not([class]) {

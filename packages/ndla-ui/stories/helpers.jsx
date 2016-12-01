@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import format from 'date-fns/format';
 
 export const Center = ({ children, style }) =>
   <div style={{ margin: '0 auto', padding: '10px', maxWidth: '900px', ...style }}>{ children }</div>;

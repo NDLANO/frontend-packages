@@ -17,5 +17,5 @@ export const fetchArticle = id => fetch(`${window.location.protocol}//api.test.n
     }
     return res.json()
         .then(json => reject(json));
-  }))
+  })),
 );

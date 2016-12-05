@@ -12,6 +12,19 @@
   justify-content: space-between;
 }
 
+.c-button--stripped {
+  transition: background-color none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  background-color: transparent;
+  box-shadow: none;
+  &:hover, &:focus, &:active, &:disabled  {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
 .masthead {
   background-color: #fff;
   padding-top: 3px;

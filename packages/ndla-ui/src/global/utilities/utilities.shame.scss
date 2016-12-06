@@ -5,11 +5,14 @@
 * LICENSE file in the root directory of this source tree.
 *
 */
-#root > footer {
+#root, #root [data-reactroot] {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  width: 100%;
+}
+#root [data-reactroot] > .o-wrapper {
+  flex: 1;
 }
 
 .masthead {
@@ -23,6 +26,7 @@
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .18);
   flex: none
 }
+
 
 .c-site-navigation__list {
   display: inline;

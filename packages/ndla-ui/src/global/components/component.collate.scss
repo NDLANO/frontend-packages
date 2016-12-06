@@ -1,0 +1,14 @@
+.c-collate {
+  position: relative;
+  overflow: visible;
+}
+.c-collate__info {
+  position: absolute;
+  margin: ($spacing / 2) 0;
+  width: $spacing * 2;
+  height: $spacing * 2;
+  background: grey;
+  top: 0;
+  left: 0;
+  transform: translateX(-$spacing);
+}

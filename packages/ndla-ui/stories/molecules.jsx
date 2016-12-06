@@ -11,6 +11,48 @@ storiesOf('Sammensatte moduler', module)
       <Logo to="#" altText="Nasjonal digital læringsarena" />
     </Center>
   ))
+  .add('Sammensatte noder', () => (
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">Sammensatte fagressurser</h1>
+        <p>test</p>
+      </section>
+      <section className="c-collate" data-origin="a">
+        <div className="c-collate__info">Info</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Ex perferendis quo nobis dolores architecto esse obcaecati vero quia atque dolor assumenda laudantium repellat consequatur id, incidunt
+          consequuntur commodi accusamus molestias quibusdam vel
+          quam labore expedita magni eos, quod? Excepturi deleniti
+          velit, illum numquam sequi. Asperiores, suscipit nihil
+          corporis, officiis, libero consectetur facilis laboriosam
+          voluptatibus ratione harum voluptatum illum laudantium
+          atque et doloribus totam at nemo deleniti distinctio incidunt
+          non sequi dicta quas! Eius autem architecto aperiam quam,
+          officia minima nobis voluptates vel inventore doloremque
+          aliquam nulla ratione a, quae, ducimus alias. Autem
+          cumque sunt ducimus laborum placeat, vitae illo. Alias?
+        </p>
+      </section>
+      <section className="c-collate" data-origin="b">
+        <div className="c-collate__info">Info</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Ex perferendis quo nobis dolores architecto esse obcaecati vero quia atque dolor assumenda laudantium repellat consequatur id, incidunt
+          consequuntur commodi accusamus molestias quibusdam vel
+          quam labore expedita magni eos, quod? Excepturi deleniti
+          velit, illum numquam sequi. Asperiores, suscipit nihil
+          corporis, officiis, libero consectetur facilis laboriosam
+          voluptatibus ratione harum voluptatum illum laudantium
+          atque et doloribus totam at nemo deleniti distinctio incidunt
+          non sequi dicta quas! Eius autem architecto aperiam quam,
+          officia minima nobis voluptates vel inventore doloremque
+          aliquam nulla ratione a, quae, ducimus alias. Autem
+          cumque sunt ducimus laborum placeat, vitae illo. Alias?
+        </p>
+      </section>
+    </Center>
+  ))
   .add('Sidenavigasjon', () => (
     <Center>
       <DottedContainer>

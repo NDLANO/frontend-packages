@@ -53,6 +53,7 @@ storiesOf('Typografi', module)
             dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
             corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
           </p>
+          <hr />
           <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
             ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad

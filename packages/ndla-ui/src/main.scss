@@ -49,7 +49,12 @@ $inuit-wrapper-width: 1024px;
 // COMPONENTS
 @import "global/components/component.factbox";
 @import "global/components/component.bodybox";
+<<<<<<< Updated upstream
 
+=======
+@import "global/components/component.collate";
+@import "logo/component.logo";
+>>>>>>> Stashed changes
 @import "button/component.button";
 /* @import "components/components.page-foot";
 @import "components/components.site-nav";

@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
@@ -39,7 +41,7 @@ storiesOf('Sammensatte moduler', module)
         </MastheadItem>
         <MastheadItem right>
           <SiteNav>
-            <SiteNavItem to="#">Velg fag</SiteNavItem>
+            <SiteNavItem onClick={() => alert('clicked')}>Velg fag</SiteNavItem>
             <SiteNavItem to="#">Søk</SiteNavItem>
             <SiteNavItem to="#">Kontakt</SiteNavItem>
             <SiteNavItem to="#">Hjelp</SiteNavItem>

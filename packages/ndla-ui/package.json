@@ -52,12 +52,6 @@
     "moment": "^2.17.1",
     "ndla-tabs": "0.0.0",
     "node-sass": "^3.13.0",
-    "react": "15.4.1",
-    "react-addons-test-utils": "15.4.1",
-    "react-bem-helper": "^1.2.0",
-    "react-dom": "15.4.1",
-    "react-router": "2.8.1",
-    "react-tabs": "^0.8.2",
     "sass-loader": "^4.0.2",
     "style-loader": "0.13.1",
     "webpack": "1.13.3"

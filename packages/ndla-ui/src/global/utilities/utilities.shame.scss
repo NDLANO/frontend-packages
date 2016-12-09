@@ -169,3 +169,40 @@
     display: block;
   }
 }
+
+$font-size--huge: 24px;
+$brand-color: #20588F;
+$spacing: 12px;
+
+/* React Tabs Stylining */
+.ReactTabs__TabList {
+  font-size: $font-size--huge;
+  font-weight: 900;
+  list-style: none;
+  padding: 0;
+  border-bottom: 1px $brand-color solid;
+}
+
+.ReactTabs__Tab {
+  display: inline-block;
+  padding: calc(#{$spacing} / 2) $spacing;
+  transform: translateY(3px);
+}
+
+.ReactTabs__Tab:hover {
+  color: $brand-color;
+  cursor: pointer;
+}
+
+.ReactTabs__Tab + .ReactTabs__Tab {
+  margin-left: $spacing;
+}
+
+.ReactTabs__Tab--selected {
+  color: $brand-color;
+  border-bottom: 5px solid $brand-color;
+}
+
+.ReactTabs__TabPanel {
+  padding: calc(#{$spacing}  / 2) $spacing;
+}

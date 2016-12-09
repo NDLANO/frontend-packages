@@ -169,3 +169,40 @@
     display: block;
   }
 }
+
+/* Tabs Styling */
+$tab-spacing: 12px;
+
+.c-tabs {
+  &__list {
+    font-size: 24px;
+    font-weight: 900;
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px $brand-color solid;
+  }
+
+  &__tab {
+    display: inline-block;
+    padding: ($tab-spacing / 2) $tab-spacing;
+    transform: translateY(3px);
+
+    &--selected {
+      color: $brand-color;
+      border-bottom: 5px solid $brand-color;
+    }
+
+    &:hover {
+      color: $brand-color;
+      cursor: pointer;
+    }
+  }
+
+  &__tab + &__tab {
+      margin-left: $tab-spacing;
+  }
+
+  &__panel {
+    padding: ($tab-spacing / 2) $tab-spacing;
+  }
+}

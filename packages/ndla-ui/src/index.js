@@ -13,6 +13,7 @@ import { Table } from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
+import Icon from './icons/Icon';
 import { OneColumn } from './layout/OneColumn';
 import PageContainer from './layout/PageContainer';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
@@ -29,6 +30,7 @@ export {
   Aside,
   Button,
   Footer,
+  Icon,
   Logo,
   Masthead,
   MastheadItem,

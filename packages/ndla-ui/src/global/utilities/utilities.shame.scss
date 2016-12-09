@@ -170,14 +170,12 @@
   }
 }
 
-/* Tabs Stylining */
-$font-size--huge: 24px;
-$brand-color: #20588F;
-$spacing: 12px;
+/* Tabs Styling */
+$tab-spacing: 12px;
 
 .c-tabs {
   &__list {
-    font-size: $font-size--huge;
+    font-size: 24px;
     font-weight: 900;
     list-style: none;
     padding: 0;
@@ -186,7 +184,7 @@ $spacing: 12px;
 
   &__tab {
     display: inline-block;
-    padding: ($spacing / 2) $spacing;
+    padding: ($tab-spacing / 2) $tab-spacing;
     transform: translateY(3px);
 
     &--selected {
@@ -201,10 +199,10 @@ $spacing: 12px;
   }
 
   &__tab + &__tab {
-      margin-left: $spacing;
+      margin-left: $tab-spacing;
   }
 
   &__panel {
-    padding: ($spacing / 2) $spacing;
+    padding: ($tab-spacing / 2) $tab-spacing;
   }
 }

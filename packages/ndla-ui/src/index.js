@@ -19,6 +19,7 @@ import PageContainer from './layout/PageContainer';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import Article from './article/Article';
+import LicenseIconList from './license/LicenseIconList';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -31,6 +32,7 @@ export {
   Button,
   Footer,
   Icon,
+  LicenseIconList,
   Logo,
   Masthead,
   MastheadItem,

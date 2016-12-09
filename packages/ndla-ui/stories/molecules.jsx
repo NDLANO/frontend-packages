@@ -4,9 +4,10 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 import Tabs from 'ndla-tabs';
+import { BY, NC, ND, SA } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList } from '../src';
 
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
@@ -77,6 +78,13 @@ storiesOf('Sammensatte moduler', module)
         </Footer.Text>
         <Footer.Text>Nettstedet er utarbeidet av NDLA som åpen kildekode.</Footer.Text>
       </Footer>
+    </Center>
+  ))
+  .add('Lisens ikonstripe', () => (
+    <Center>
+      <LicenseIconList licenseRights={[BY, SA]} />
+      <LicenseIconList licenseRights={[BY, NC, SA]} />
+      <LicenseIconList licenseRights={[BY, NC, ND]} />
     </Center>
   ))
   .add('Fane', () => (

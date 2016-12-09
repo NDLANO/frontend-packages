@@ -9,9 +9,15 @@
 import React, { Component, PropTypes } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import isFunction from 'lodash/isFunction';
+import BEMHelper from 'react-bem-helper';
 
 /* Disable default styles for tabs */
 Tabs.setUseDefaultStyles(false);
+
+const classes = new BEMHelper({
+  name: 'tabs',
+  prefix: 'c-',
+});
 
 const TabPanelContainer = ({ content }) => <TabPanel> { isFunction(content) ? content() : content } </TabPanel>;
 
@@ -40,13 +46,14 @@ class TabsContainer extends Component {
 
   render() {
     const { tabs } = this.props;
+    const { index } = this.state;
 
     return (
-      <Tabs onSelect={this.handleSelect} selectedIndex={this.state.index} >
-        <TabList>
-          { tabs.map(tab => <Tab key={tab.key}>{tab.displayName}</Tab>) }
+      <Tabs {...classes()} onSelect={this.handleSelect} selectedIndex={this.state.index} >
+        <TabList {...classes('list')}>
+          { tabs.map((tab, i) => <Tab {...classes('tab', (i === index ? 'selected' : ''))} key={tab.key}>{tab.displayName}</Tab>) }
         </TabList>
-        { tabs.map(tab => <TabPanel key={tab.key}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
+        { tabs.map(tab => <TabPanel {...classes('panel')} key={tab.key}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
       </Tabs>
     );
   }

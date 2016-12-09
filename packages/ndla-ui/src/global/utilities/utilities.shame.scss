@@ -186,7 +186,7 @@ $spacing: 12px;
 
   &__tab {
     display: inline-block;
-    padding: calc(#{$spacing} / 2) $spacing;
+    padding: ($spacing / 2) $spacing;
     transform: translateY(3px);
 
     &--selected {
@@ -205,6 +205,6 @@ $spacing: 12px;
   }
 
   &__panel {
-    padding: calc(#{$spacing}  / 2) $spacing;
+    padding: ($spacing / 2) $spacing;
   }
 }

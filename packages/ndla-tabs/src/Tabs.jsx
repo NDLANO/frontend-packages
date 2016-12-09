@@ -7,29 +7,19 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
 import isFunction from 'lodash/isFunction';
 import BEMHelper from 'react-bem-helper';
 
 /* Disable default styles for tabs */
-Tabs.setUseDefaultStyles(false);
+ReactTabs.setUseDefaultStyles(false);
 
 const classes = new BEMHelper({
   name: 'tabs',
   prefix: 'c-',
 });
 
-const TabPanelContainer = ({ content }) => <TabPanel> { isFunction(content) ? content() : content } </TabPanel>;
-
-TabPanelContainer.propTypes = {
-  content: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.node,
-  ]),
-};
-
-
-class TabsContainer extends Component {
+class Tabs extends Component {
   constructor() {
     super();
     this.handleSelect = this.handleSelect.bind(this);
@@ -49,17 +39,17 @@ class TabsContainer extends Component {
     const { index } = this.state;
 
     return (
-      <Tabs {...classes()} onSelect={this.handleSelect} selectedIndex={this.state.index} >
+      <ReactTabs {...classes()} onSelect={this.handleSelect} selectedIndex={this.state.index} >
         <TabList {...classes('list')}>
           { tabs.map((tab, i) => <Tab {...classes('tab', (i === index ? 'selected' : ''))} key={tab.key}>{tab.displayName}</Tab>) }
         </TabList>
         { tabs.map(tab => <TabPanel {...classes('panel')} key={tab.key}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
-      </Tabs>
+      </ReactTabs>
     );
   }
 }
 
-TabsContainer.propTypes = {
+Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.shape({
     key: PropTypes.string.isRequired,
     displayName: PropTypes.string.isRequired,
@@ -71,4 +61,4 @@ TabsContainer.propTypes = {
 };
 
 
-export default TabsContainer;
+export default Tabs;

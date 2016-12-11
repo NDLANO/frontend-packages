@@ -10,6 +10,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { BY, NC, ND, SA, CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
 import Icon from '../icons/Icon';
+import Button from '../button/Button';
 
 const LicenseIcon = ({ licenseRight, className }) => {
   switch (licenseRight) {
@@ -33,12 +34,12 @@ const LicenseIconList = ({ licenseRights, iconsClassName, activeLicenseRight, on
     <div className="license-byline__icons">
       {
         licenseRightsWithCC.map(licenseRight =>
-          <button className="un-button" onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} key={licenseRight}>
+          <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} key={licenseRight}>
             <LicenseIcon
               licenseRight={licenseRight}
               className={classNames('license__icon', 'license__icon--mini', iconsClassName, { 'license__icon--active': activeLicenseRight === licenseRight })}
             />
-          </button>,
+          </Button>,
         )
       }
     </div>

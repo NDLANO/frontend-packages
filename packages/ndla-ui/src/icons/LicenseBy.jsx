@@ -13,7 +13,7 @@ const LicenseBy = ({ className }) => (
 );
 
 LicenseBy.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
 };
 
 export default LicenseBy;

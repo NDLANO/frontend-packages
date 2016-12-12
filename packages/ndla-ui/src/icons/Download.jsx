@@ -15,7 +15,7 @@ const Download = ({ className }) => (
 );
 
 Download.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
 };
 
 export default Download;

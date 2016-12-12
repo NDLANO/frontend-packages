@@ -82,12 +82,16 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Lisens ikonstripe', () => (
     <Center>
+      <h2 className="u-heading">Lisens ikon stripe</h2>
       <LicenseIconList licenseRights={[BY, SA]} />
       <LicenseIconList licenseRights={[BY, NC, SA]} />
       <LicenseIconList licenseRights={[BY, NC, ND]} />
+      <h2 className="u-heading">Lisens ikon stripe med et frehevet ikon</h2>
       <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
       <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
       <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
+      <h2 className="u-heading">Klikbar lisens ikon stripe</h2>
+      <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
     </Center>
   ))
   .add('Fane', () => (

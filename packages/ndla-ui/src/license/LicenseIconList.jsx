@@ -7,10 +7,15 @@
  */
 
 import React, { PropTypes } from 'react';
-import classNames from 'classnames';
 import { BY, NC, ND, SA, CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
+import BEMHelper from 'react-bem-helper';
 import Icon from '../icons/Icon';
 import Button from '../button/Button';
+
+const classes = new BEMHelper({
+  name: 'license-icons',
+  prefix: 'c-',
+});
 
 const LicenseIcon = ({ licenseRight, className }) => {
   switch (licenseRight) {
@@ -28,27 +33,33 @@ LicenseIcon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-const LicenseIconList = ({ licenseRights, iconsClassName, activeLicenseRight, onLicenseIconClick }) => {
+const LicenseIconItem = ({ licenseRight, activeLicenseRight, onLicenseIconClick }) => (
+  <li {...classes('item', (activeLicenseRight === licenseRight && 'active'))}>
+    <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
+      <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+    </Button>
+  </li>
+);
+
+LicenseIconItem.propTypes = {
+  licenseRight: PropTypes.string.isRequired,
+  activeLicenseRight: PropTypes.string,
+  onLicenseIconClick: PropTypes.func.isRequired,
+};
+
+const LicenseIconList = ({ licenseRights, ...rest }) => {
   const licenseRightsWithCC = [CC, ...licenseRights];
   return (
-    <div className="license-byline__icons">
+    <ul {...classes('list')}>
       {
-        licenseRightsWithCC.map(licenseRight =>
-          <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} key={licenseRight}>
-            <LicenseIcon
-              licenseRight={licenseRight}
-              className={classNames('license__icon', 'license__icon--mini', iconsClassName, { 'license__icon--active': activeLicenseRight === licenseRight })}
-            />
-          </Button>,
-        )
+        licenseRightsWithCC.map(licenseRight => <LicenseIconItem key={licenseRight} licenseRight={licenseRight} {...rest} />)
       }
-    </div>
+    </ul>
   );
 };
 
 LicenseIconList.propTypes = {
-  licenseRights: PropTypes.array.isRequired,
-  iconsClassName: PropTypes.string,
+  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeLicenseRight: PropTypes.string,
   onLicenseIconClick: PropTypes.func.isRequired,
 };

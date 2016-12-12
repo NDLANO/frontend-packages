@@ -4,7 +4,7 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 import Tabs from 'ndla-tabs';
-import { BY, NC, ND, SA } from 'ndla-licenses';
+import { CC, BY, NC, ND, SA } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList } from '../src';
@@ -85,6 +85,9 @@ storiesOf('Sammensatte moduler', module)
       <LicenseIconList licenseRights={[BY, SA]} />
       <LicenseIconList licenseRights={[BY, NC, SA]} />
       <LicenseIconList licenseRights={[BY, NC, ND]} />
+      <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
+      <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
+      <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
     </Center>
   ))
   .add('Fane', () => (

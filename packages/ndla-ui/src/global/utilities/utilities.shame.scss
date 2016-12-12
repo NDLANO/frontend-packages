@@ -171,7 +171,7 @@
 }
 
 /* Tabs Styling */
-$tab-spacing: 12px;
+$shame-spacing: 12px;
 
 .c-tabs {
   &__list {
@@ -184,7 +184,7 @@ $tab-spacing: 12px;
 
   &__tab {
     display: inline-block;
-    padding: ($tab-spacing / 2) $tab-spacing;
+    padding: ($shame-spacing / 2) $shame-spacing;
     transform: translateY(3px);
 
     &--selected {
@@ -199,11 +199,11 @@ $tab-spacing: 12px;
   }
 
   &__tab + &__tab {
-      margin-left: $tab-spacing;
+      margin-left: $shame-spacing;
   }
 
   &__panel {
-    padding: ($tab-spacing / 2) $tab-spacing;
+    padding: ($shame-spacing / 2) $shame-spacing;
   }
 }
 
@@ -216,15 +216,26 @@ $tab-spacing: 12px;
   vertical-align: bottom;
 }
 
-.license__icon--mini {
-  width: $tab-spacing * 2;
-  height: $tab-spacing * 2;
-}
+.c-license-icons {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-.license__icon--active {
-  color: var(--brand-color);
-}
+  &__item {
+    display: inline-block;
+    &--active {
+      color: $brand-color;
+    }
+  }
 
-.license__icon + .license__icon {
-  margin-left: 0.2em;
+  &__item + &__item {
+    margin-left: 0.2em;
+  }
+
+  &__icon {
+    width: $shame-spacing * 2;
+    height: $shame-spacing * 2;
+  }
 }

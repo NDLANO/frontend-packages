@@ -150,7 +150,7 @@ storiesOf('Typografi', module)
         <h1 className="u-heading">Lister på NDLA</h1>
       </section>
       <p>Punktlister</p>
-      <ul>
+      <ul class="o-list--arrows">
         <li>Listepunkt 1</li>
         <li>Listepunkt 2</li>
         <li>Listepunkt 3</li>

@@ -23,7 +23,7 @@
     transform: translateY(1px) translateX(1px);
   }
   &:active {
-    transform: translateY(1px) translateX(1px);
+    transform: translateY(2px) translateX(2px);
     // box-shadow: 0 1px 0px 0 rgba(0,0,0,0.1),0 0px 3px 0 rgba(0,0,0,0.2),0 2px 0px -2px rgba(0,0,0,0.2);
   }
   &:disabled {
@@ -31,6 +31,7 @@
     background-color: $background-color--dark;
     border: 0;
     cursor: not-allowed;
+    transform: translateY(0) translateX(0);
   }
 }
 

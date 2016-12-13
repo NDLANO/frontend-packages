@@ -4,14 +4,77 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 import Tabs from 'ndla-tabs';
+import { CC, BY, NC, ND, SA } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList } from '../src';
 
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
-      <Logo to="#" altText="Nasjonal digital læringsarena" />
+      <section className="c-factbox">
+        <h1 className="u-heading">Logo</h1>
+        <p>
+          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
+          for kommunikasjon. Den skal inspirere målgruppen elever og
+          lærere i videregående opplæring og gjøre dem nysgjerrige på
+          NDLA.
+        </p>
+        <p>
+          Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
+          Logo uten undertekst kan benyttes i tilfeller der det
+          kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
+        </p>
+        <p>
+          Logo uten undertekst kan kompletteres med en beskrivende tekst
+          til høyre. Logoen benyttes i svart eller hvitt avhengig av
+          bakgrunn. Den skal plasseres i det øverste eller nederste
+          hjørnet av en ytterkant. Logoen skal ikke sentreres.
+        </p>
+      </section>
+      <Logo name to="#" altText="Nasjonal digital læringsarena" />
+    </Center>
+  ))
+  .add('Sammensatte noder', () => (
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">Sammensatte fagressurser</h1>
+        <p>test</p>
+      </section>
+      <section className="c-collate" data-origin="a">
+        <div className="c-collate__info">Info</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Ex perferendis quo nobis dolores architecto esse obcaecati vero quia atque dolor assumenda laudantium repellat consequatur id, incidunt
+          consequuntur commodi accusamus molestias quibusdam vel
+          quam labore expedita magni eos, quod? Excepturi deleniti
+          velit, illum numquam sequi. Asperiores, suscipit nihil
+          corporis, officiis, libero consectetur facilis laboriosam
+          voluptatibus ratione harum voluptatum illum laudantium
+          atque et doloribus totam at nemo deleniti distinctio incidunt
+          non sequi dicta quas! Eius autem architecto aperiam quam,
+          officia minima nobis voluptates vel inventore doloremque
+          aliquam nulla ratione a, quae, ducimus alias. Autem
+          cumque sunt ducimus laborum placeat, vitae illo. Alias?
+        </p>
+      </section>
+      <section className="c-collate" data-origin="b">
+        <div className="c-collate__info">Info</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Ex perferendis quo nobis dolores architecto esse obcaecati vero quia atque dolor assumenda laudantium repellat consequatur id, incidunt
+          consequuntur commodi accusamus molestias quibusdam vel
+          quam labore expedita magni eos, quod? Excepturi deleniti
+          velit, illum numquam sequi. Asperiores, suscipit nihil
+          corporis, officiis, libero consectetur facilis laboriosam
+          voluptatibus ratione harum voluptatum illum laudantium
+          atque et doloribus totam at nemo deleniti distinctio incidunt
+          non sequi dicta quas! Eius autem architecto aperiam quam,
+          officia minima nobis voluptates vel inventore doloremque
+          aliquam nulla ratione a, quae, ducimus alias. Autem
+          cumque sunt ducimus laborum placeat, vitae illo. Alias?
+        </p>
+      </section>
     </Center>
   ))
   .add('Sidenavigasjon', () => (
@@ -77,6 +140,20 @@ storiesOf('Sammensatte moduler', module)
         </Footer.Text>
         <Footer.Text>Nettstedet er utarbeidet av NDLA som åpen kildekode.</Footer.Text>
       </Footer>
+    </Center>
+  ))
+  .add('Lisens ikonstripe', () => (
+    <Center>
+      <h2 className="u-heading">Lisens ikon stripe</h2>
+      <LicenseIconList licenseRights={[BY, SA]} />
+      <LicenseIconList licenseRights={[BY, NC, SA]} />
+      <LicenseIconList licenseRights={[BY, NC, ND]} />
+      <h2 className="u-heading">Lisens ikon stripe med et frehevet ikon</h2>
+      <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
+      <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
+      <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
+      <h2 className="u-heading">Klikbar lisens ikon stripe</h2>
+      <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
     </Center>
   ))
   .add('Fane', () => (

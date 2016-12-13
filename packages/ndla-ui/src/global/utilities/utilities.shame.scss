@@ -5,11 +5,14 @@
 * LICENSE file in the root directory of this source tree.
 *
 */
-#root > * {
+#root, #root [data-reactroot] {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  width: 100%;
+}
+#root [data-reactroot] > .o-wrapper {
+  flex: 1;
 }
 
 .c-button--stripped {
@@ -36,6 +39,7 @@
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .18);
   flex: none
 }
+
 
 .c-site-navigation__list {
   display: inline;
@@ -171,7 +175,7 @@
 }
 
 /* Tabs Styling */
-$tab-spacing: 12px;
+$shame-spacing: 12px;
 
 .c-tabs {
   &__list {
@@ -184,7 +188,7 @@ $tab-spacing: 12px;
 
   &__tab {
     display: inline-block;
-    padding: ($tab-spacing / 2) $tab-spacing;
+    padding: ($shame-spacing / 2) $shame-spacing;
     transform: translateY(3px);
 
     &--selected {
@@ -199,10 +203,43 @@ $tab-spacing: 12px;
   }
 
   &__tab + &__tab {
-      margin-left: $tab-spacing;
+      margin-left: $shame-spacing;
   }
 
   &__panel {
-    padding: ($tab-spacing / 2) $tab-spacing;
+    padding: ($shame-spacing / 2) $shame-spacing;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  font-size: 1em;
+  vertical-align: bottom;
+}
+
+.c-license-icons {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+    &--active {
+      color: $brand-color;
+    }
+  }
+
+  &__item + &__item {
+    margin-left: 0.2em;
+  }
+
+  &__icon {
+    width: $shame-spacing * 2;
+    height: $shame-spacing * 2;
   }
 }

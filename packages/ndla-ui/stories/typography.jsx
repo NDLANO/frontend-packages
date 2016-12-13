@@ -21,11 +21,10 @@ const articleHMTL = (id) => {
 };
 
 const heading = (articleHTML, level) => {
-  if (!articleHTML.getElementsByTagName(`h${level}`)[0]) return `<span>Overskrift ${level}:</span><h${level}>Overskrift ${level}</h${level}>`;
-  return `<span>Overskrift ${level}:</span><h${level}>${articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML} <h${level}>`;
+  if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
+  if (!articleHTML.getElementsByTagName(`h${level}`)[0]) return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${level}>`;
+  return `<div>Overskrift ${level}:</div><h${level}>${articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML} <h${level}>`;
 };
-const exampleArticle = articleHMTL(89).articleHTML;
-
 
 storiesOf('Typografi', module)
   .add('Overskrifter', () => (
@@ -41,11 +40,44 @@ storiesOf('Typografi', module)
             Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Sans Pro, Bold (700)</a>
           </p>
         </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 1) }} />
-        <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 2) }} />
-        <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 3) }} />
-        <div dangerouslySetInnerHTML={{ __html: heading(exampleArticle, 4) }} />
+        <section>
+          <h2 className="u-heading">Eksempel</h2>
+          <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+            ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad
+            consectetur. Nemo obcaecati assumenda explicabo blanditiis. Error quia, perferendis eaque.
+            Ipsum quae, pariatur unde, nihil harum molestiae, consequuntur ea corrupti quod et impedit
+            incidunt consectetur vero velit. Earum quibusdam vel dignissimos obcaecati rem, reiciendis
+            ipsam, fuga, aliquam aperiam consequatur doloribus. Similique aliquid ea sit aperiam,
+            laborum dolor itaque! Unde expedita itaque porro exercitationem natus accusantium
+            dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
+            corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
+          </p>
+          <hr />
+          <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+            ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad
+            consectetur. Nemo obcaecati assumenda explicabo blanditiis. Error quia, perferendis eaque.
+            Ipsum quae, pariatur unde, nihil harum molestiae, consequuntur ea corrupti quod et impedit
+            incidunt consectetur vero velit. Earum quibusdam vel dignissimos obcaecati rem, reiciendis
+            ipsam, fuga, aliquam aperiam consequatur doloribus. Similique aliquid ea sit aperiam,
+            laborum dolor itaque! Unde expedita itaque porro exercitationem natus accusantium
+            dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
+            corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
+          </p>
+          <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
+            ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad
+            consectetur. Nemo obcaecati assumenda explicabo blanditiis. Error quia, perferendis eaque.
+            Ipsum quae, pariatur unde, nihil harum molestiae, consequuntur ea corrupti quod et impedit
+            incidunt consectetur vero velit. Earum quibusdam vel dignissimos obcaecati rem, reiciendis
+            ipsam, fuga, aliquam aperiam consequatur doloribus. Similique aliquid ea sit aperiam,
+            laborum dolor itaque! Unde expedita itaque porro exercitationem natus accusantium
+            dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
+            corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
+          </p>
+          <div dangerouslySetInnerHTML={{ __html: heading('', 4) }} />
+        </section>
       </article>
     </Center>
   ))

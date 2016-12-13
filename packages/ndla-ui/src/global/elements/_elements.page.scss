@@ -26,9 +26,7 @@ body {
   color: $primary-color;
   height: 100%;
 }
-p, ul, table, figure {
-  @include max-width();
-}
+
 a:not([class]) {
   color: $primary-color;
   box-shadow: inset 0 -1px 0 rgba($primary-color, 0.6);
@@ -41,7 +39,21 @@ a:not([class]) {
     box-shadow: inset 0 -1px 0 rgba($brand-color, 1);
   }
 }
-
+hr {
+  border: none;
+  margin: $spacing * 2 0;
+  position: relative;
+  text-align: center;
+  font-size: ($inuit-global-font-size / 5px) * 1em; /* [1] */
+  line-height: $inuit-global-line-height / ($inuit-global-font-size / 5px); /* [1] */
+  &:before {
+    content: '...';
+    display: inline-block;
+    color: $background-color--darker;
+    position: relative;
+    top: -$spacing;
+  }
+}
 
 li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -106,6 +118,15 @@ aside {
     }
   }
 }
-article, section {
+section {
   overflow: auto;
+  padding: 0 $spacing / 2;
+
+  @include mq(tablet) {
+    padding: 0 $spacing * 1.5;
+  }
+
+  @include mq(desktop) {
+    padding: 0;
+  }
 }

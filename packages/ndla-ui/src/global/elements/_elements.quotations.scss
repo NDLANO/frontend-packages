@@ -9,6 +9,6 @@ blockquote {
   @include max-width();
   margin: 0;
   padding-left: $spacing;
-  border-left: $spacing / 3 solid $background-color--dark;
+  border-left: $inuit-global-border-width * 2 solid $background-color--dark;
   @include font-size(16px);
 }

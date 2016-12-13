@@ -243,3 +243,19 @@ $shame-spacing: 12px;
     height: $shame-spacing * 2;
   }
 }
+
+.license-byline {
+  display: table;
+  margin-bottom: $shame-spacing * 2;
+}
+
+.license-byline > * {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 0.5em 0 0;
+}
+
+.license-byline__body--black {
+  color: white;
+  background-color: black;
+}

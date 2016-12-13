@@ -4,10 +4,10 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 import Tabs from 'ndla-tabs';
-import { CC, BY, NC, ND, SA } from 'ndla-licenses';
+import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList } from '../src';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList, LicenseByline, ClickableLicenseByline } from '../src';
 
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
@@ -148,12 +148,21 @@ storiesOf('Sammensatte moduler', module)
       <LicenseIconList licenseRights={[BY, SA]} />
       <LicenseIconList licenseRights={[BY, NC, SA]} />
       <LicenseIconList licenseRights={[BY, NC, ND]} />
-      <h2 className="u-heading">Lisens ikon stripe med et frehevet ikon</h2>
+      <h2 className="u-heading">Lisens ikon stripe med et fremhevet ikon</h2>
       <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
       <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
       <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
-      <h2 className="u-heading">Klikbar lisens ikon stripe</h2>
+      <h2 className="u-heading">Klikkbar lisens ikon stripe</h2>
       <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
+    </Center>
+  ))
+  .add('Lisens byline', () => (
+    <Center>
+      <h2 className="u-heading">Lisens byline</h2>
+      <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
+      <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      <h2 className="u-heading">Klikkbar lisens byline</h2>
+      <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
     </Center>
   ))
   .add('Fane', () => (

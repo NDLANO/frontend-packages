@@ -80,18 +80,17 @@
 
 .pager_step {
   display: inline;
-  border: 2px solid #888;
-  background-color: white;
+  border-top: 2px solid $background-color--dark;
+  background-color: rgba($background-color--light, 0.5);
   padding: 1em 1.45em;
   margin: 1em .3em 0;
-  border-radius: 5px;
   text-decoration: none;
-  background-color: transparent;
   color: #000;
 }
 
 .pager_step--active, .pager_step:hover {
-  background-color: #d8d8d8;
+  border-top: 2px solid $brand-color;
+  background-color: $background-color--light;
 }
 .logo {
   margin: 0;
@@ -107,6 +106,28 @@
   }
 }
 
+
+/* Aside utils */
+.u-featured-border {
+  // border: 3px solid $brand-color;
+  background: $secondary-color;
+  padding: $spacing/1.5 $spacing;
+  margin-bottom: $spacing;
+  h2,h3,h4,h5 {
+    margin: 0;
+  }
+}
+
+
+/* Width utils */
+.u-full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
 
 
 .footer {

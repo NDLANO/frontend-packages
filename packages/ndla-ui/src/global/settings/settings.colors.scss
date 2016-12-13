@@ -18,5 +18,6 @@ $background-color: #f8f8f8;
 $background-color--dark: darken($background-color, $darken-factor);
 $background-color--darker: darken($background-color, $darken-factor * 2);
 $background-color--light: lighten($background-color, $darken-factor);
+$background-color--gray: #f8f8f8;
 $mark-color: #FE5F55;
 $white: #fff;

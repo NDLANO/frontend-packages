@@ -7,20 +7,21 @@
  */
 
 .c-button {
-  color: $white;
-  background-color: $brand-color;
-  border: 0px solid $background-color--dark;
+  color: black;
+  background-color: transparent;
+  border: 2px solid $brand-color;
   border-radius: $inuit-global-radius;
-  padding: 0.4em;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1),0 1px 3px 0 rgba(0,0,0,0.2),0 3px 1px -2px rgba(0,0,0,0.2);;
+  padding: $spacing/2 $spacing/1.5;
+  // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1),0 1px 3px 0 rgba(0,0,0,0.2),0 3px 1px -2px rgba(0,0,0,0.2);;
   outline: none;
   cursor: pointer;
   &:hover, &:focus {
-    background-color: lighten($brand-color, 20%);
+    background-color: $brand-color;
+    color: white;
   }
   &:active {
     transform: translateY(1px) translateX(1px);
-    box-shadow: 0 1px 0px 0 rgba(0,0,0,0.1),0 0px 3px 0 rgba(0,0,0,0.2),0 2px 0px -2px rgba(0,0,0,0.2);
+    // box-shadow: 0 1px 0px 0 rgba(0,0,0,0.1),0 0px 3px 0 rgba(0,0,0,0.2),0 2px 0px -2px rgba(0,0,0,0.2);
   }
   &:disabled {
     color: $background-color--light;

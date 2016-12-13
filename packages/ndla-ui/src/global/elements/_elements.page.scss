@@ -60,10 +60,8 @@ li {
 }
 aside {
   width: 100%;
-  background: $secondary-color;
-  padding: $spacing;
+  // background: $background-color--light;
   opacity: 0.9;
-  margin: 0 0 $spacing 0;
   @include max-width();
 
   > div {
@@ -99,12 +97,23 @@ aside {
     }
   }
 
+  *:first-child {
+    margin-top: 0;
+  }
+  h2,h3,h4,h5 {
+    border-bottom: 3px solid $brand-color;
+  }
+  img {
+    margin-bottom: $spacing;
+  }
+
   @include mq(desktop) {
     @include font-size(16px);
     float: right;
     left: 720px;
     clear: both;
-    max-width: 260px;
+    max-width: 300px;
+    padding: 0 0 0 $spacing;
 
     > div {
       max-height: none;

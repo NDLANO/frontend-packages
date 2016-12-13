@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { PropTypes } from 'react';
 
 export default function Info({ width = '50px', height = '50px' }) {

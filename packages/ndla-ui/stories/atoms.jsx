@@ -1,8 +1,10 @@
-import React from 'react';
+// import React from 'react';
+import React, { createElement } from 'react';
 
 import { storiesOf, action } from '@kadira/storybook';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
+import Icon from '../src/icons/Icon';
 import { Button } from '../src';
 
 const articleHTML = document.createElement('div');
@@ -46,6 +48,31 @@ storiesOf('Enkle komponenter', module)
       </section>
       <h2 className="u-heading">Eksempel</h2>
       <div dangerouslySetInnerHTML={{ __html: articleHTML.outerHTML }} />
+    </Center>
+  ))
+  .add('Ikoner', () => (
+    <Center>
+      <h1 className="u-heading">Ikoner</h1>
+      <table>
+        <thead>
+          <tr>
+            <td>Icon</td>
+            <td>Name</td>
+            <td>JSX</td>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            Object.keys(Icon).map(key => (
+              <tr>
+                <td>{createElement(Icon[key])}</td>
+                <td>{key}</td>
+                <td><code>&lt;Icon.{key} /&gt;</code></td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </Center>
   ))
   ;

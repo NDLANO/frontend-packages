@@ -104,7 +104,7 @@ aside {
     border-bottom: 3px solid $brand-color--lighter;
   }
   img {
-    margin-bottom: $spacing;
+    margin-bottom: $spacing/2;
   }
 
   @include mq(desktop) {

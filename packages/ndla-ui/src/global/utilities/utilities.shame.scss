@@ -5,6 +5,9 @@
 * LICENSE file in the root directory of this source tree.
 *
 */
+#root {
+  overflow-x: hidden;
+}
 #root, #root [data-reactroot] {
   min-height: 100vh;
   display: flex;

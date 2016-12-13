@@ -1,6 +1,9 @@
+/* eslint-disable no-alert */
+
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
+import Tabs from 'ndla-tabs';
 
 import { Center, DottedContainer } from './helpers';
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer } from '../src';
@@ -101,7 +104,7 @@ storiesOf('Sammensatte moduler', module)
         </MastheadItem>
         <MastheadItem right>
           <SiteNav>
-            <SiteNavItem to="#">Velg fag</SiteNavItem>
+            <SiteNavItem onClick={() => alert('clicked')}>Velg fag</SiteNavItem>
             <SiteNavItem to="#">Søk</SiteNavItem>
             <SiteNavItem to="#">Kontakt</SiteNavItem>
             <SiteNavItem to="#">Hjelp</SiteNavItem>
@@ -136,6 +139,17 @@ storiesOf('Sammensatte moduler', module)
         </Footer.Text>
         <Footer.Text>Nettstedet er utarbeidet av NDLA som åpen kildekode.</Footer.Text>
       </Footer>
+    </Center>
+  ))
+  .add('Fane', () => (
+    <Center>
+      <Tabs
+        tabs={[
+          { key: 'image', displayName: 'Bilde', content: <p>Bilde innhold</p> },
+          { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },
+          { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
+        ]}
+      />
     </Center>
   ))
   ;

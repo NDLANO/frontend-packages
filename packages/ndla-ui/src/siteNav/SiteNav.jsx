@@ -9,23 +9,30 @@
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../SafeLink';
+import Button from '../button/Button';
 
 const classes = new BEMHelper({
   name: 'site-navigation',
   prefix: 'c-',
 });
 
-export const SiteNavItem = ({ to, children, cssModifier }) =>
-  <li {...classes('item', cssModifier)}>
-    <SafeLink to={to} {...classes('link')}>
-      {children}
-    </SafeLink>
-  </li>;
+export const SiteNavItem = ({ to, cssModifier, ...rest }) => {
+  const link = to ?
+    <SafeLink to={to} {...classes('link')} {...rest} />
+    : <Button {...classes('link')} stripped {...rest} />;
+
+  return (
+    <li {...classes('item', cssModifier)}>
+      {link}
+    </li>
+  );
+};
 
 SiteNavItem.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   cssModifier: PropTypes.string,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export const SiteNav = ({ children, cssModifier }) => (

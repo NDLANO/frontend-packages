@@ -14,10 +14,11 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Button = ({ outline, square, submit, loading, ...rest }) => {
+const Button = ({ outline, square, stripped, submit, loading, className, ...rest }) => {
   const modifiers = {
     outline,
     square,
+    stripped,
   };
 
 
@@ -27,7 +28,7 @@ const Button = ({ outline, square, submit, loading, ...rest }) => {
   const disabled = (rest.disabled !== undefined ? rest.disabled : loading) || false;
 
   return (
-    <button {...classes('', modifiers)} {...rest} type={type} disabled={disabled}>
+    <button {...classes('', modifiers, className)} {...rest} type={type} disabled={disabled}>
       {rest.children}
     </button>
   );
@@ -40,6 +41,7 @@ Button.propTypes = {
 
   outline: PropTypes.bool,
   square: PropTypes.bool,
+  stripped: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
 

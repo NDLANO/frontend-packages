@@ -13,7 +13,8 @@ module.exports = {
   rules: {
     'max-len': [2, 200, 2, {
       ignoreUrls: true,
-      ignoreComments: false
+      ignoreComments: false,
+      ignoreStrings: true
     }],
 
     'no-constant-condition': [2, { checkLoops: false }],

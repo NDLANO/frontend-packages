@@ -259,3 +259,21 @@ $shame-spacing: 12px;
   color: white;
   background-color: black;
 }
+
+.license {
+  padding: ($shame-spacing * 2) ($shame-spacing * 4);
+  margin: 0 -1em;
+  transition: all 200ms ease-in;
+  font-size: var(--font-size--medium);
+}
+
+.license-toggler {
+  text-decoration: underline;
+  text-align: right;
+  float: right;
+}
+
+.u-expanded {
+  background: #e8e8e8;
+  height: auto;
+}

@@ -8,6 +8,7 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList, LicenseByline, ClickableLicenseByline } from '../src';
+import LicenseExample from './article/LicenseExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
@@ -163,6 +164,12 @@ storiesOf('Sammensatte moduler', module)
       <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
       <h2 className="u-heading">Klikkbar lisens byline</h2>
       <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+    </Center>
+  ))
+  .add('Lisens boks', () => (
+    <Center>
+      <h2 className="u-heading">Lisens boks</h2>
+      <LicenseExample />
     </Center>
   ))
   .add('Fane', () => (

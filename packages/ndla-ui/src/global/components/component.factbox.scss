@@ -1,5 +1,6 @@
 .c-factbox {
-  background: $secondary-color;
+  background: $brand-color;
+  color: $white;
   padding: $spacing / 2;
   margin-bottom: $spacing;
 
@@ -11,4 +12,17 @@
      margin: 0  calc(-50vw / 2) $spacing;
      padding: $spacing calc(50vw/2);
   }
+  a:not([class]) {
+  color: $white;
+  box-shadow: inset 0 -1px 0 rgba($white, 0.6);
+  transition: box-shadow 0.2s ease;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: lighten($brand-color--lighter, 0.8);
+    box-shadow: inset 0 -1px 0 rgba($brand-color--lighter, 1);
+  }
+}
+
 }

@@ -13,6 +13,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
       <section className="c-factbox">
+
         <h1 className="u-heading">Logo</h1>
         <p>
           Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
@@ -39,41 +40,25 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">Sammensatte fagressurser</h1>
-        <p>test</p>
       </section>
-      <section className="c-collate" data-origin="a">
-        <div className="c-collate__info">Info</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-         Ex perferendis quo nobis dolores architecto esse obcaecati vero quia atque dolor assumenda laudantium repellat consequatur id, incidunt
-          consequuntur commodi accusamus molestias quibusdam vel
-          quam labore expedita magni eos, quod? Excepturi deleniti
-          velit, illum numquam sequi. Asperiores, suscipit nihil
-          corporis, officiis, libero consectetur facilis laboriosam
-          voluptatibus ratione harum voluptatum illum laudantium
-          atque et doloribus totam at nemo deleniti distinctio incidunt
-          non sequi dicta quas! Eius autem architecto aperiam quam,
-          officia minima nobis voluptates vel inventore doloremque
-          aliquam nulla ratione a, quae, ducimus alias. Autem
-          cumque sunt ducimus laborum placeat, vitae illo. Alias?
-        </p>
-      </section>
-      <section className="c-collate" data-origin="b">
-        <div className="c-collate__info">Info</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-         Ex perferendis quo nobis dolores architecto esse obcaecati vero quia atque dolor assumenda laudantium repellat consequatur id, incidunt
-          consequuntur commodi accusamus molestias quibusdam vel
-          quam labore expedita magni eos, quod? Excepturi deleniti
-          velit, illum numquam sequi. Asperiores, suscipit nihil
-          corporis, officiis, libero consectetur facilis laboriosam
-          voluptatibus ratione harum voluptatum illum laudantium
-          atque et doloribus totam at nemo deleniti distinctio incidunt
-          non sequi dicta quas! Eius autem architecto aperiam quam,
-          officia minima nobis voluptates vel inventore doloremque
-          aliquam nulla ratione a, quae, ducimus alias. Autem
-          cumque sunt ducimus laborum placeat, vitae illo. Alias?
-        </p>
+      <section>
+        <section>
+          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten. Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten god omsorg».</p>
+          <p>
+            Ved internkontroll skal det sikres at tilbudet til pasientene er i samsvar med regelverket. Internkontroll skal bidra til faglig forsvarlige sosial- og helsetjenester, og er et verktøy som skal sikre at daglige arbeidsoppgaver blir utført, styrt og forbedret i henhold til lovens krav. Dette er særlig viktig på områder der svikt kan få alvorlige følger.
+
+            Kilde: <em>Nasjonale faglige retningslinjer for forebygging og behandling av underernæring og internkontroll i helsetjenesten</em>. Helsedirektoratet
+          </p>
+        </section>
+        <section>
+          <h3>Utfordringer til deg:</h3>
+          <ol><details><summary>Oppgaver til  "Ansvar og regelverk. Ernæring"</summary>
+            <ol>
+              <li>Beskriv hva internkontroll er.</li>
+              <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får dekket sine behov for ernæring. Ta gjerne utgangspunkt i en arbeidsplass. Diskuter deretter i klassen.</li>
+            </ol>
+          </details></ol>
+        </section>
       </section>
     </Center>
   ))

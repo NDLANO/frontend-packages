@@ -8,10 +8,21 @@
 
 table {
   width: 100%;
-  max-width: 570px;
+  @include max-width();
   border-collapse: collapse;
   text-align: left;
 }
+tr {
+  border-bottom: 1px solid $brand-color--lightest;
+}
+td, th {
+  padding: 4px;
+}
 th {
-  border-bottom: 3px solid $primary-color;
+  color: $brand-color;
+  border-bottom: 3px solid $brand-color--lightest;
+}
+tr:hover, tr:active, tr:focus {
+  background-color: $brand-color--lightest;
+  border-bottom: 1px solid $brand-color--light;
 }

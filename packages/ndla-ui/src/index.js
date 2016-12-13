@@ -13,11 +13,13 @@ import { Table } from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
+import Icon from './icons/Icon';
 import { OneColumn } from './layout/OneColumn';
 import PageContainer from './layout/PageContainer';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import Article from './article/Article';
+import LicenseIconList from './license/LicenseIconList';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -29,6 +31,8 @@ export {
   Aside,
   Button,
   Footer,
+  Icon,
+  LicenseIconList,
   Logo,
   Masthead,
   MastheadItem,

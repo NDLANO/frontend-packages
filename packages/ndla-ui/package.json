@@ -50,6 +50,7 @@
     "inuitcss": "^6.0.0-beta.4",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
+    "ndla-licenses": "^0.0.5",
     "ndla-tabs": "^0.0.1",
     "node-sass": "^3.13.0",
     "sass-loader": "^4.0.2",

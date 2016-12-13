@@ -175,7 +175,7 @@
 }
 
 /* Tabs Styling */
-$tab-spacing: 12px;
+$shame-spacing: 12px;
 
 .c-tabs {
   &__list {
@@ -188,7 +188,7 @@ $tab-spacing: 12px;
 
   &__tab {
     display: inline-block;
-    padding: ($tab-spacing / 2) $tab-spacing;
+    padding: ($shame-spacing / 2) $shame-spacing;
     transform: translateY(3px);
 
     &--selected {
@@ -203,10 +203,43 @@ $tab-spacing: 12px;
   }
 
   &__tab + &__tab {
-      margin-left: $tab-spacing;
+      margin-left: $shame-spacing;
   }
 
   &__panel {
-    padding: ($tab-spacing / 2) $tab-spacing;
+    padding: ($shame-spacing / 2) $shame-spacing;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  font-size: 1em;
+  vertical-align: bottom;
+}
+
+.c-license-icons {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+    &--active {
+      color: $brand-color;
+    }
+  }
+
+  &__item + &__item {
+    margin-left: 0.2em;
+  }
+
+  &__icon {
+    width: $shame-spacing * 2;
+    height: $shame-spacing * 2;
   }
 }

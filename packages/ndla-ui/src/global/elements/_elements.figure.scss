@@ -2,3 +2,16 @@ figure {
   margin: 0;
   @include max-width();
 }
+//
+// .article_figure {
+//
+//   img {
+//     width: 100%;
+//     height: auto;
+//     margin: 0  calc(-50vw / 2) $spacing;
+//     padding: $spacing calc(50vw/2);
+//   }
+// }
+// .article_caption {
+//   width: 100%;
+// }

@@ -30,18 +30,18 @@ class Welcome extends Component {
         <div style={styles.main}>
           <h2>NDLA</h2>
           <h1>Designmanual</h1>
-          <ul>Typografi
+          <ul class="o-list--arrows">Typografi
             <li>Overskrifter</li>
             <li>Brødtekst</li>
             <li>Tabeller</li>
             <li>Lister</li>
           </ul>
-          <ul>Atomer
+          <ul class="o-list--arrows">Atomer
             <li>Ikoner</li>
             <li>Media</li>
             <li>Flagg</li>
           </ul>
-          <ul>Molekyler
+          <ul class="o-list--arrows">Molekyler
             <li>Logo</li>
             <li>Lisensbyline</li>
             <li>Fagressurs</li>

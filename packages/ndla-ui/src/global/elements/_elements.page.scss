@@ -58,12 +58,12 @@ hr {
 li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
-aside {
+aside, article aside {
   width: 100%;
-  background: $secondary-color;
-  padding: $spacing;
+  display: inline-block;
+  border-left: 1px solid $brand-color--lightest;
+  // background: $background-color--light;
   opacity: 0.9;
-  margin: 0 0 $spacing 0;
   @include max-width();
 
   > div {
@@ -99,12 +99,31 @@ aside {
     }
   }
 
+  *:first-child {
+    margin-top: 0;
+  }
+  h2,h3,h4,h5 {
+    display: block;
+    font-size: 110%;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom:10px;
+    border-bottom: 1px solid $brand-color--lightest;
+  }
+  p {
+    margin-top: 0;
+  }
+  img {
+    margin-bottom: $spacing/2;
+  }
+
   @include mq(desktop) {
     @include font-size(16px);
     float: right;
     left: 720px;
     clear: both;
-    max-width: 260px;
+    max-width: 300px;
+    padding: 0 0 0 $spacing*1.5;
 
     > div {
       max-height: none;

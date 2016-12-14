@@ -7,3 +7,7 @@ $darken-factor: 10%;
 @mixin max-width() {
   max-width: 620px;
 }
+@mixin full-width() {
+  margin: 0 calc(-50vw / 2) $spacing;
+  padding: $spacing calc(50vw / 2);
+}

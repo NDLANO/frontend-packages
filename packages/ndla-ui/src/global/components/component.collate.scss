@@ -2,6 +2,32 @@
   position: relative;
   overflow: visible;
 }
+.c-collate__panel {
+  position: relative;
+  z-index: 10;
+  transition: all 200ms ease-in;
+  padding: $spacing / 2;
+
+  &:before {
+    content: "";
+
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: block;
+
+    background-color: $background-color--dark;
+    z-index: -10;
+     width: 100vw;
+
+
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+}
 .c-collate__info {
   position: absolute;
   margin: ($spacing / 2) 0;

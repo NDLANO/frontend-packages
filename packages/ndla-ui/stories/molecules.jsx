@@ -43,21 +43,47 @@ storiesOf('Sammensatte moduler', module)
       </section>
       <section>
         <section>
-          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten. Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten god omsorg».</p>
+
+          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
+            eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
+            Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten
+            god omsorg».</p>
           <p>
-            Ved internkontroll skal det sikres at tilbudet til pasientene er i samsvar med regelverket. Internkontroll skal bidra til faglig forsvarlige sosial- og helsetjenester, og er et verktøy som skal sikre at daglige arbeidsoppgaver blir utført, styrt og forbedret i henhold til lovens krav. Dette er særlig viktig på områder der svikt kan få alvorlige følger.
+            Ved internkontroll skal det sikres at tilbudet til pasientene er i samsvar
+            med regelverket. Internkontroll skal bidra til faglig forsvarlige sosial- og helsetjenester,
+            og er et verktøy som skal sikre at daglige arbeidsoppgaver blir utført, styrt og forbedret i henhold til lovens krav. Dette er særlig viktig på områder der svikt kan få alvorlige følger.
 
             Kilde: <em>Nasjonale faglige retningslinjer for forebygging og behandling av underernæring og internkontroll i helsetjenesten</em>. Helsedirektoratet
           </p>
         </section>
+        <div className="c-collate__panel">
+          <div className="o-layout">
+            <div className="o-layout__item u-1/2@desktop">
+              <h2>Oppgaver til &laquo;Ansvar og regelverk. Ernæring&raquo; (Oppgave)</h2>
+              <ul>Forfatter
+                  <li>Wenche Heir</li>
+                <li>Marit Smith Sørhøy</li>
+              </ul>
+            </div>
+            <div className="o-layout__item u-1/2@desktop">
+              <ul>
+                <li>Dele</li>
+                <li>Sitere</li>
+                <li>Bruke</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <section>
           <h3>Utfordringer til deg:</h3>
-          <ol><details><summary>Oppgaver til  "Ansvar og regelverk. Ernæring"</summary>
-            <ol>
-              <li>Beskriv hva internkontroll er.</li>
-              <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får dekket sine behov for ernæring. Ta gjerne utgangspunkt i en arbeidsplass. Diskuter deretter i klassen.</li>
-            </ol>
-          </details></ol>
+          <ol>
+            <details>
+              <ol>
+                <li>Beskriv hva internkontroll er.</li>
+                <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får dekket sine behov for ernæring. Ta gjerne utgangspunkt i en arbeidsplass. Diskuter deretter i klassen.</li>
+              </ol>
+            </details></ol>
         </section>
       </section>
     </Center>

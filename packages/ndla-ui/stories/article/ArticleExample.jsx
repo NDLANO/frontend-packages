@@ -11,8 +11,13 @@ import React, { PropTypes } from 'react';
 import { Article } from '../../src';
 import ArticleByline from './ArticleByline';
 
+const toggle = (el) => {
+  document.querySelectorAll(`${el.target.dataset.target} div`).forEach(target => target.classList.toggle('expanded'));
+};
+
 const ArticleExample = ({ article }) => (
   <Article>
+    <button className="c-button c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
     <h1>{article.title}</h1>
     <ArticleByline date article={article} />
     <Article.Introduction introduction={article.introduction} />

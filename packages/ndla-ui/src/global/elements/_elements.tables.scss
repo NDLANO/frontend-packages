@@ -5,13 +5,7 @@
 /**
  * 1. Ensure tables fill up as much space as possible.
  */
-
 table {
-  width: 100%;
-  max-width: 600px;
   border-collapse: collapse;
   text-align: left;
-}
-th {
-  border-bottom: 3px solid $primary-color;
 }

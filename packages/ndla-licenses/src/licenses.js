@@ -102,6 +102,7 @@ const bysa = {
   },
   rights: [BY, SA],
 };
+
 const by = {
   nb: {
     short: freeUseNB,

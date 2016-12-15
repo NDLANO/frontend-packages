@@ -10,7 +10,60 @@ import React, { PropTypes } from 'react';
 import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { Button, LicenseByline } from '../../src';
+import { Icon, Button, LicenseByline } from '../../src';
+
+const AudioContent = () => (
+  <div>
+    <h2>Du kan laste ned, eller innbygge innhold fra NDLA på ditt eget nettsted</h2>
+    <ul className="license__list">
+      <li className="license__list-item">
+        <ul className="license__list">
+          <li className="license__list-item">
+            <LicenseByline license={getLicenseByAbbreviation('by-sa')} >
+              <i>Lydklipp tittel 1</i> Ola Nordmann, Kari Nordmann
+            </LicenseByline>
+            <a href="http://api.test.ndla.no/audio/files/siri_knudsen_mars13.mp3" download><Icon.Download /></a>
+          </li>
+          <li className="license__list-item">
+            <LicenseByline
+              license={getLicenseByAbbreviation('by-sa')}
+            >
+              <i>Lydklipp tittel 2</i>
+            Ola Nordmann, Kari Nordmann
+          </LicenseByline>
+            <a href="http://api.test.ndla.no/audio/files/siri_knudsen_mars13.mp3" download><Icon.Download /></a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+);
+
+const ImageContent = () => (
+  <div>
+    <h2>Du kan laste ned, eller innbygge innhold fra NDLA på ditt eget nettsted</h2>
+    <ul className="license__list">
+      <li className="license__list-item">
+        <ul className="license__list">
+          <li className="license__list-item">
+            <img alt="alt" src="http://api.test.ndla.no/images/full/nokken_ny_1.jpg" />
+            <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
+              Fotograf: Ola Nordmann, Kari Nordmann
+              <div><a target="_blank" rel="noopener noreferrer" href="http://api.test.ndla.no/images/full/nokken_ny_1.jpg">Åpne bilde i stort format</a></div>
+            </LicenseByline>
+          </li>
+          <li className="license__list-item">
+            <img alt="alt" src="http://api.test.ndla.no/images/full/nokken_ny_1.jpg" />
+            <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
+              Fotograf: Ola Nordmann, Kari Nordmann
+              <div><a target="_blank" rel="noopener noreferrer" href="http://api.test.ndla.no/images/full/nokken_ny_1.jpg">Åpne bilde i stort format</a></div>
+            </LicenseByline>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+);
 
 const LicenseExample = ({ article }) => (
   <article className="article">
@@ -26,9 +79,9 @@ const LicenseExample = ({ article }) => (
         <p className="license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
         <Tabs
           tabs={[
-            { key: 'image', displayName: 'Bilder', content: <p>Bilde</p> },
-            { key: 'aricle', displayName: 'Artikkel', content: <p>Video</p> },
-            { key: 'audio', displayName: 'Lyd', content: <p>Lyd</p> },
+            { key: 'image', displayName: 'Bilder', content: <ImageContent /> },
+            { key: 'article', displayName: 'Artikkel', content: <p>Artikkel</p> },
+            { key: 'audio', displayName: 'Lyd', content: <AudioContent /> },
             { key: 'text', displayName: 'Tekst', content: <p>Tekst</p> },
             { key: 'cite', displayName: 'Sitere', content: <p>Sitere</p> },
           ]}

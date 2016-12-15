@@ -273,6 +273,30 @@ $shame-spacing: 12px;
   float: right;
 }
 
+.license__list {
+  flex-basis: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.license__list-item {
+  margin: 0 0 $shame-spacing 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+}
+
+.license__list-item > img, .license__list-item > div {
+  margin: 0 $shame-spacing 0 0;
+  width: 45%;
+  float: left;
+}
+
+.license__list-item > .license-byline > * {
+  display: block;
+}
+
 .u-expanded {
   background: #e8e8e8;
   height: auto;

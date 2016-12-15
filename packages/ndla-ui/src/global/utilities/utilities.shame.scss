@@ -25,9 +25,12 @@
   color: inherit;
   background-color: transparent;
   box-shadow: none;
+  border: none;
   &:hover, &:focus, &:active, &:disabled  {
     box-shadow: none;
+    color: inherit;
     background-color: transparent;
+    transform: none;
   }
 }
 

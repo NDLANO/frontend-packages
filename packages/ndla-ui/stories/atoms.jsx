@@ -20,13 +20,17 @@ storiesOf('Enkle komponenter', module)
       <h2 className="u-heading">Eksempel</h2>
       <InlineContainer>
         <Button onClick={action('clicked')}>Knapp</Button>
-        <Button outline onClick={action('clicked')}>Knapp</Button>
-        <Button square onClick={action('clicked')}>Knapp</Button>
+        <Button outline onClick={action('clicked')}>Knapp outlined</Button>
+        <Button square onClick={action('clicked')}>Knapp squared</Button>
         <Button submit onClick={action('clicked')}>Sendeknapp</Button>
       </InlineContainer>
       <InlineContainer>
         <Button submit disabled onClick={action('clicked')}>Sendeknapp deaktivert</Button>
-        <Button disabled onClick={action('clicked')}>Knapp deaktivet</Button>
+        <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
+      </InlineContainer>
+      <InlineContainer>
+
+        <p>Ser <Button stripped onClick={action('clicked')}>dette</Button> ut som en knapp?</p>
       </InlineContainer>
     </Center>
   ))

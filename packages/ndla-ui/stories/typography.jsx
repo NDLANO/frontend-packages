@@ -150,7 +150,7 @@ storiesOf('Typografi', module)
         <h1 className="u-heading">Lister på NDLA</h1>
       </section>
       <p>Punktlister</p>
-      <ul>
+      <ul className="o-list--arrows">
         <li>Listepunkt 1</li>
         <li>Listepunkt 2</li>
         <li>Listepunkt 3</li>
@@ -170,7 +170,7 @@ storiesOf('Typografi', module)
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">Sitater på NDLA</h1>
-        <p>Sitater som strekker seg over tre linjer i vanlig linjelengde er best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere sitater, men «»</p>
+        <p>Sitater som strekker seg over tre linjer i vanlig linjelengde er best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere sitater, men &laquo;&raquo;</p>
       </section>
       <h2 className="u-heading">Eksempel</h2>
       {articleUrl(89)}

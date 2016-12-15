@@ -55,10 +55,11 @@ storiesOf('Sidevisninger', module)
       <MastheadExample />
       <OneColumn>
         <article>
-          <ArticleLoader articleId="50" />
+          <ArticleLoader articleId="44" />
         </article>
       </OneColumn>
       <FooterExample />
+
     </PageContainer>
   ))
   .add('ArticlePage loader', () => (

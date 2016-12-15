@@ -58,18 +58,20 @@ hr {
 li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
-aside {
+aside, article aside {
   width: 100%;
-  background: $secondary-color;
-  padding: $spacing;
+  display: inline-block;
+  margin: $spacing 0;
+  border: 2px solid $brand-color--lightest;
+  background: $brand-color--lightest;
   opacity: 0.9;
-  margin: 0 0 $spacing 0;
   @include max-width();
 
   > div {
+    padding: $spacing / 2;
     overflow: hidden;
     max-height: 150px;
-    transition: max-height .5s;
+    transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
     position: relative;
     &:before {
       content: "";
@@ -79,10 +81,11 @@ aside {
       bottom: 0;
       right: 0;
       width: 100%;
-      background: linear-gradient(rgba(255,255,255,0),$secondary-color)
+      transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
+      background: linear-gradient(rgba($brand-color--lightest,0),$brand-color--lightest)
     }
     &:after {
-      content: "ÅPNE";
+      content: "LES MER";
       bottom: 0;
       right: 0;
       width: 100%;
@@ -91,12 +94,33 @@ aside {
       cursor: pointer;
     }
   }
-  > .expanded {
-    max-height: none;
+  .expanded {
+    max-height: 100vh;
 
-    &:after {
+    &:before {
       background: none;
     }
+    &:after {
+      content: "";
+    }
+  }
+
+  *:first-child {
+    margin-top: 0;
+  }
+  h2,h3,h4,h5 {
+    display: block;
+    font-size: 110%;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom:10px;
+    border-bottom: 1px solid $brand-color--lightest;
+  }
+  p {
+    margin-top: 0;
+  }
+  img {
+    margin-bottom: $spacing/2;
   }
 
   @include mq(desktop) {
@@ -104,7 +128,13 @@ aside {
     float: right;
     left: 720px;
     clear: both;
-    max-width: 260px;
+    max-width: 300px;
+    padding: 0 0 0 $spacing*1.5;
+    border: none;
+    border-left: 1px solid $brand-color--lightest;
+    background: none;
+    border-top: none;
+    border-bottom: none;
 
     > div {
       max-height: none;

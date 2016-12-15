@@ -1,0 +1,20 @@
+.c-table {
+  width: 100%;
+  @include max-width();
+  border-collapse: collapse;
+  text-align: left;
+
+  tr {
+    border-bottom: 1px solid $brand-color--lightest;
+  }
+  td, th {
+    padding: 8px;
+  }
+  th {
+    color: $brand-color;
+    border-bottom: 3px solid $brand-color--lightest;
+  }
+  tr:hover, tr:active, tr:focus {
+    background-color: $brand-color--lightest;
+  }
+}

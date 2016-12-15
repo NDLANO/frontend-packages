@@ -166,10 +166,12 @@ storiesOf('Sammensatte moduler', module)
       <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
     </Center>
   ))
-  .add('Lisens boks', () => (
+  .add('Lisensboks', () => (
     <Center>
-      <h2 className="u-heading">Lisens boks</h2>
-      <LicenseExample />
+      <h2 className="u-heading">Lisensboks</h2>
+      <article className="article">
+        <LicenseExample />
+      </article>
     </Center>
   ))
   .add('Fane', () => (

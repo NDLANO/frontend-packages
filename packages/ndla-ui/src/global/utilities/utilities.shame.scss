@@ -297,6 +297,14 @@ $shame-spacing: 12px;
   display: block;
 }
 
+.license__heading {
+  margin-bottom: $shame-spacing;
+}
+
+.license h2 {
+  margin-bottom: $shame-spacing;
+}
+
 .u-expanded {
   background: #e8e8e8;
   height: auto;

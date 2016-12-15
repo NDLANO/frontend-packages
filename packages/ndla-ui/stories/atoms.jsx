@@ -64,7 +64,7 @@ storiesOf('Enkle komponenter', module)
         <tbody>
           {
             Object.keys(Icon).map(key => (
-              <tr>
+              <tr key={key}>
                 <td>{createElement(Icon[key])}</td>
                 <td>{key}</td>
                 <td><code>&lt;Icon.{key} /&gt;</code></td>

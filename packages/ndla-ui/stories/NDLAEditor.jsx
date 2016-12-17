@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-import { convertToRaw } from 'draft-js';
+// import { convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import {
@@ -56,13 +56,12 @@ export default class NDLAEditor extends Component {
   onChange(editorState) {
     this.setState({ editorState });
 
-    const raw = convertToRaw(editorState.getCurrentContent());
-    console.log(JSON.stringify(raw));
+    // const raw = convertToRaw(editorState.getCurrentContent());
+    // console.log(JSON.stringify(raw));
   }
 
 
   focus() {
-    console.log(this.editor);
     this.editor.focus();
   }
 

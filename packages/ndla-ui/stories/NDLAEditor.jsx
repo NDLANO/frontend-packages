@@ -18,7 +18,6 @@ import {
   CodeButton, HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
-import createUndoPlugin from 'draft-js-undo-plugin';
 
 const focusPlugin = createFocusPlugin();
 
@@ -34,10 +33,8 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 const { InlineToolbar } = inlineToolbarPlugin;
 
 /* Undo Redo */
-const undoPlugin = createUndoPlugin();
-const { UndoButton, RedoButton } = undoPlugin;
 const plugins = [
-  focusPlugin, inlineToolbarPlugin, undoPlugin,
+  focusPlugin, inlineToolbarPlugin,
 ];
 
 export default class NDLAEditor extends Component {
@@ -77,10 +74,6 @@ export default class NDLAEditor extends Component {
             ref={(element) => { this.editor = element; }}
           />
           <InlineToolbar />
-          <div className="options">
-            <UndoButton />
-            <RedoButton />
-          </div>
         </div>
       </div>
     );

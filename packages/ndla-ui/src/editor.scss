@@ -1,0 +1,51 @@
+.editor-container {
+  margin: 0 auto;
+}
+
+.editor {
+  min-width: 400px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  cursor: text;
+  padding: 16px;
+  border-radius: 2px;
+  margin-bottom: 2em;
+  box-shadow: inset 0px 1px 8px -3px #ABABAB;
+  background: #fefefe;
+}
+
+.editor :global(.public-DraftEditor-content) {
+  min-height: 140px;
+}
+
+.c-toolbar {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5em 0;
+  border: 1px #ddd solid;
+  background: $white;
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__button {
+    background: $white;
+    color: #888;
+    font-size: 18px;
+    border: 0;
+    padding-top: 5px;
+    vertical-align: bottom;
+    height: 34px;
+    width: 36px;
+
+    &--active {
+      background: #efefef;
+      color: #444;
+    }
+
+    svg {
+      fill: #888;
+    }
+  }
+}

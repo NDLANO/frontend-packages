@@ -15,9 +15,10 @@ import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import {
   ItalicButton, BoldButton, UnderlineButton,
-  CodeButton, HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
+  HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
+import createToolbarPlugin from './ToolbarPlugin';
 
 const focusPlugin = createFocusPlugin();
 
@@ -25,16 +26,25 @@ const focusPlugin = createFocusPlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
     ItalicButton, BoldButton, UnderlineButton,
-    CodeButton, HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
+    HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
+    UnorderedListButton, BlockquoteButton,
+  ],
+});
+
+const toolbarPlugin = createToolbarPlugin({
+  structure: [
+    ItalicButton, BoldButton, UnderlineButton,
+    HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
     UnorderedListButton, BlockquoteButton,
   ],
 });
 
 const { InlineToolbar } = inlineToolbarPlugin;
+const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
-  focusPlugin, inlineToolbarPlugin,
+  focusPlugin, inlineToolbarPlugin, toolbarPlugin,
 ];
 
 export default class NDLAEditor extends Component {
@@ -64,7 +74,9 @@ export default class NDLAEditor extends Component {
 
   render() {
     return (
-      <div>
+      <div className="editor-container">
+        {/* Wait for editor initialization before rendering toolbar */}
+        {this.editor && <Toolbar />}
         {/* // eslint-disable-next-line */}
         <div className="editor" onClick={this.focus}>
           <Editor

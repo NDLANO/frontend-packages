@@ -21,6 +21,9 @@ import ArticleIntroduction from './article/ArticleIntroduction';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 
+// Function to make tables (more) responsive
+require('./table/tables-collapse.js');
+
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
 Footer.Ruler = FooterRuler;

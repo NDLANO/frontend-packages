@@ -1,20 +1,87 @@
 .c-table {
-  width: 100%;
   @include max-width();
-  border-collapse: collapse;
-  text-align: left;
+  padding: 0;
+  margin: 0;
+
+
+
+
+  // Styling
+  td, th {
+    padding: $spacing/3;
+  }
+  th, tbody td:before {
+    color: $brand-color;
+    border-bottom: 1px solid $brand-color--lightest;
+    font-weight: bold;
+    font-size: 90%;
+    padding: 4px 10px 4px 4px;
+  }
+  tr:hover td, tr:active td, tr:focus td {
+    background-color: $brand-color--lightest;
+  }
+
+
+
+  // Responsive tables (mobile first)
+  border-collapse:separate;
+  border-spacing:5em;
 
   tr {
-    border-bottom: 1px solid $brand-color--lightest;
-  }
-  td, th {
+    background: white;
+    border: 1px solid $brand-color--lighter;
     padding: 8px;
+    margin: 0 0 20px;
+    display: block;
   }
-  th {
-    color: $brand-color;
-    border-bottom: 3px solid $brand-color--lightest;
+  tr:first-child {
+    display: none;
   }
-  tr:hover, tr:active, tr:focus {
-    background-color: $brand-color--lightest;
+  tbody {
+    display: block;
+  }
+  thead, th {
+    display: none;
+  }
+  tbody td {
+    display: block;
+  }
+  tbody td:before {
+    content: attr(data-th);
+    display: block;
+  }
+}
+
+@include mq(tablet) {
+  .c-table {
+    border-spacing:0;
+
+    table {
+      background: white;
+      // box-shadow: 1px 2px 25px rgba(black, 0.2);
+      border: 1px solid $brand-color--lightest;
+    }
+    thead, th {
+      display:table-cell;
+    }
+    tbody {
+      display: table;
+    }
+    tr, tr:first-child {
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid $brand-color--lightest;
+      margin: 0;
+      display: table-row;
+    }
+    tr:nth-child(2n) {
+      background-color: rgba($brand-color--lightest, 0.3);
+    }
+    tbody td {
+      display: table-cell;
+    }
+    tbody td:before {
+      display: none;
+    }
   }
 }

@@ -16,6 +16,7 @@ import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 import Icon from './icons/Icon';
 import { OneColumn } from './layout/OneColumn';
 import PageContainer from './layout/PageContainer';
+import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import Article from './article/Article';
@@ -34,6 +35,7 @@ export {
   Aside,
   Button,
   Footer,
+  Hero,
   Icon,
   LicenseIconList,
   Logo,

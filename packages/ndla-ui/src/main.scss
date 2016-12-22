@@ -48,13 +48,17 @@ $inuit-wrapper-width: 1024px;
 
 
 // COMPONENTS
+@import "global/components/component.article";
 @import "global/components/component.factbox";
 @import "global/components/component.bodybox";
+@import "global/components/component.breadcrumbs";
 @import "global/components/component.collate";
 @import "global/components/component.site-navigation";
 @import "global/components/component.tables";
+@import "global/components/component.resources";
 @import "logo/component.logo";
 @import "button/component.button";
+@import "hero/component.hero";
 /* @import "components/components.page-foot";
 @import "components/components.site-nav";
 @import "components/components.ads";

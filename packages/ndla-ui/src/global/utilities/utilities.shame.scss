@@ -53,7 +53,7 @@
 .pager_step {
   display: inline;
   border-top: 2px solid $background-color--dark;
-  background-color: rgba($background-color--light, 0.5);
+  background-color: rgba($background-color--gray-dark, 0.5);
   padding: 1em 1.45em;
   margin: 1em .3em 0;
   text-decoration: none;
@@ -62,7 +62,7 @@
 
 .pager_step--active, .pager_step:hover {
   border-top: 2px solid $brand-color;
-  background-color: $background-color--light;
+  background-color: $background-color--dark;
 }
 .logo {
   margin: 0;
@@ -171,11 +171,13 @@ $shame-spacing: 12px;
 
 .c-tabs {
   &__list {
-    font-size: 24px;
-    font-weight: 900;
+    max-width: 100%;
+    font-size: 18px;
+    font-weight: 700;
     list-style: none;
     padding: 0;
-    border-bottom: 1px $brand-color solid;
+    margin-left: 0;
+    border-bottom: 1px $background-color--dark solid;
   }
 
   &__tab {
@@ -202,6 +204,12 @@ $shame-spacing: 12px;
     padding: ($shame-spacing / 2) $shame-spacing;
   }
 }
+// .c-tabs__list:before {
+//   content: '';
+//   display: inline-block;
+//   width: 100px;
+//   height: 30px;
+// }
 
 .icon {
   display: inline-block;

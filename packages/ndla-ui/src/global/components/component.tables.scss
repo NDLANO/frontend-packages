@@ -77,6 +77,9 @@
     tr:nth-child(2n) {
       background-color: rgba($brand-color--lightest, 0.3);
     }
+    tr:last-child {
+      border: none;
+    }
     tbody td {
       display: table-cell;
     }

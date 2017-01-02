@@ -62,6 +62,18 @@ storiesOf('Sidevisninger', module)
 
     </PageContainer>
   ))
+  .add('ArticlePage with licensebox', () => (
+    <PageContainer>
+      <MastheadExample />
+      <OneColumn>
+        <article>
+          <ArticleLoader articleId="44" withLicenseExample />
+        </article>
+      </OneColumn>
+      <FooterExample />
+
+    </PageContainer>
+  ))
   .add('ArticlePage loader', () => (
     <PageContainer>
       <MastheadExample />

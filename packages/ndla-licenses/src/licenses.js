@@ -103,6 +103,22 @@ const bysa = {
   rights: [BY, SA],
 };
 
+const by = {
+  nb: {
+    short: freeUseNB,
+    title: 'Navngivelse',
+    userFriendlyTitle: '',
+    description: 'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphavspersonen. Dette er den mest fleksible og åpne av de lisendene vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC lisens.',
+  },
+
+  en: {
+    short: freeUseEN,
+    title: 'Attribution',
+    userFriendlyTitle: '',
+    description: 'This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.',
+  },
+  rights: [BY],
+};
 
 function licenseByLocale(license, locale) {
   const texts = defined(license[locale], license.nb);
@@ -119,6 +135,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
     case 'by-nc' : return licenseByLocale(bync, locale);
     case 'by-nd' : return licenseByLocale(bynd, locale);
     case 'by-sa' : return licenseByLocale(bysa, locale);
+    case 'by' : return licenseByLocale(by, locale);
     default : return {
       short: abbreviation,
       title: abbreviation,

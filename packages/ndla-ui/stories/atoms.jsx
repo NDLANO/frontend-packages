@@ -28,6 +28,10 @@ storiesOf('Enkle komponenter', module)
         <Button submit disabled onClick={action('clicked')}>Sendeknapp deaktivert</Button>
         <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
       </InlineContainer>
+      <InlineContainer>
+
+        <p>Ser <Button stripped onClick={action('clicked')}>dette</Button> ut som en knapp?</p>
+      </InlineContainer>
     </Center>
   ))
   .add('Boks i tekst', () => (
@@ -64,7 +68,7 @@ storiesOf('Enkle komponenter', module)
         <tbody>
           {
             Object.keys(Icon).map(key => (
-              <tr>
+              <tr key={key}>
                 <td>{createElement(Icon[key])}</td>
                 <td>{key}</td>
                 <td><code>&lt;Icon.{key} /&gt;</code></td>

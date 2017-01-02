@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-// import { convertToRaw } from 'draft-js';
+import { convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import {
@@ -19,6 +19,9 @@ import {
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
 import createToolbarPlugin from './ToolbarPlugin';
+import createImagePlugin from './ImagePlugin';
+// import createImagePlugin from 'draft-js-image-plugin';
+import ImageAdd from './ImageAdd';
 
 const focusPlugin = createFocusPlugin();
 
@@ -39,12 +42,14 @@ const toolbarPlugin = createToolbarPlugin({
   ],
 });
 
+const imagePlugin = createImagePlugin();
+
 const { InlineToolbar } = inlineToolbarPlugin;
 const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
-  focusPlugin, inlineToolbarPlugin, toolbarPlugin,
+  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin,
 ];
 
 export default class NDLAEditor extends Component {
@@ -63,7 +68,8 @@ export default class NDLAEditor extends Component {
   onChange(editorState) {
     this.setState({ editorState });
 
-    // const raw = convertToRaw(editorState.getCurrentContent());
+    const raw = convertToRaw(editorState.getCurrentContent());
+    console.log(raw);
     // console.log(JSON.stringify(raw));
   }
 
@@ -87,6 +93,11 @@ export default class NDLAEditor extends Component {
           />
           <InlineToolbar />
         </div>
+        <ImageAdd
+          editorState={this.state.editorState}
+          onChange={this.onChange}
+          modifier={imagePlugin.addImage}
+        />
       </div>
     );
   }

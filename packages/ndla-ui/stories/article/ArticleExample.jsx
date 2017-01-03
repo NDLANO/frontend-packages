@@ -18,7 +18,7 @@ const toggle = (el) => {
 
 const ArticleExample = ({ article, withLicenseExample }) => (
   <Article>
-    <button className="c-button c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
+    <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
     { withLicenseExample && <LicenseExample /> }
     <h1>{article.title}</h1>
     <ArticleByline date article={article} />

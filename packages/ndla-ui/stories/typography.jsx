@@ -27,6 +27,50 @@ const heading = (articleHTML, level) => {
 };
 
 storiesOf('Typografi', module)
+  .add('Farger', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <h1 className="u-heading">Farger på NDLA</h1>
+        </section>
+        <section>
+          <ul className="o-list--arrows">
+            <li style={{ backgroundColor: '#20588F' }}>#20588F</li>
+            <li style={{ backgroundColor: '#507AA4' }}>#507AA4</li>
+            <li style={{ backgroundColor: '#A5BCD3' }}>#A5BCD3</li>
+            <li style={{ backgroundColor: '#CEDDEA' }}>#CEDDEA</li>
+          </ul>
+          <ul className="o-list--arrows">
+
+            <li style={{ backgroundColor: '#8A8888' }}>#8A8888</li>
+            <li style={{ backgroundColor: '#E8E3E3' }}>#E8E3E3</li>
+            <li style={{ backgroundColor: '#EFF0F2' }}>#EFF0F2</li>
+            <li style={{ backgroundColor: '#F8F8F8' }}>#F8F8F8</li>
+          </ul>
+          <ul className="o-list--arrows">
+            <li style={{ backgroundColor: '#1C1717' }}>#1C1717</li>
+            <li style={{ backgroundColor: '#FFFFFF' }}>#FFFFFF</li>
+            <li style={{ backgroundColor: '#FE5F55' }}>#FE5F55</li>
+          </ul>
+        </section>
+      </article>
+    </Center>
+  ))
+  .add('Fonter', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <h1 className="u-heading">Fonter</h1>
+          <p>NDLA bruker Source Sans Pro fra <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Google Fonts</a>.</p>
+          <ul className="o-list--arrows o-list--arrows--invert">
+            <li>Brødtekst: Source Sans Pro, 400 inkludert <em>kursiv</em></li>
+            <li style={{ fontWeight: 700 }}>Overskrifter: Source Sans Pro, 700 inkludert <em>kursiv</em></li>
+          </ul>
+          <p>Tilbakefallsfonter er <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og <span style={{ fontFamily: 'Arial' }}>Arial</span></p>
+        </section>
+      </article>
+    </Center>
+  ))
   .add('Overskrifter', () => (
     <Center>
       <article>

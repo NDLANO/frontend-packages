@@ -2,7 +2,7 @@
 /** Runs through tables, finds th-tags, copies them over to data-th-attributes, for usage in CSS responsive tables
 **/
 
-function ResponsiveTables() {
+export function responsiveTables() {
   const headertext = [];
   const headers = document.querySelectorAll('th');
   const tablebody = document.querySelectorAll('tbody');
@@ -27,4 +27,4 @@ function ResponsiveTables() {
     }
   }
 }
-ResponsiveTables();
+// ResponsiveTables();

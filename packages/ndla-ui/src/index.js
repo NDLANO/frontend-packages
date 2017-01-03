@@ -21,6 +21,8 @@ import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
+import LicenseByline from './license/LicenseByline';
+import ClickableLicenseByline from './license/ClickableLicenseByline';
 
 import { responsiveTables } from './table/tables-collapse';
 
@@ -35,20 +37,22 @@ Footer.Editor = FooterEditor;
 Article.Introduction = ArticleIntroduction;
 
 export {
+  Article,
   Aside,
   Button,
+  ClickableLicenseByline,
   Footer,
   Hero,
   Icon,
+  LicenseByline,
   LicenseIconList,
   Logo,
   Masthead,
   MastheadItem,
-  PageContainer,
   OneColumn,
+  PageContainer,
   Pager,
   SiteNav,
   SiteNavItem,
   Table,
-  Article,
 };

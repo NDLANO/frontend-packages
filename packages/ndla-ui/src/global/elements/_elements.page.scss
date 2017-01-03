@@ -62,7 +62,7 @@ aside, article aside {
   width: 100%;
   display: inline-block;
   margin: $spacing 0;
-  border: 2px solid $brand-color--lightest;
+  border: 1px solid $brand-color--lightest;
   background: $brand-color--lightest;
   opacity: 0.9;
   @include max-width();
@@ -86,6 +86,8 @@ aside, article aside {
     }
     &:after {
       content: "LES MER";
+      @include font-size(14px);
+      font-weight: 700;
       bottom: 0;
       right: 0;
       width: 100%;
@@ -95,7 +97,7 @@ aside, article aside {
     }
   }
   .expanded {
-    max-height: 100vh;
+    max-height: 500vh;
 
     &:before {
       background: none;

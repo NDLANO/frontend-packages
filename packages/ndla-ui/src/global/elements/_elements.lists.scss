@@ -2,8 +2,9 @@ aside ul, .o-list--arrows {
   margin: 0;
   padding: 0 1em;
   list-style: none;
+
   li {
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid $background-color--light;
     list-style:none;
 
     &:before {
@@ -11,7 +12,7 @@ aside ul, .o-list--arrows {
       border-color: transparent $brand-color;
       border-style: solid;
       border-width: 0.30em 0 0.30em 0.40em;
-      display: block;
+      display: inline-block;
       height: 0;
       width: 0;
       left: -1em;
@@ -20,4 +21,13 @@ aside ul, .o-list--arrows {
     }
   }
 
+  &--invert {
+    li {
+      border-bottom: none;
+
+      &:before {
+        border-color: transparent $background-color;
+      }
+    }
+  }
 }

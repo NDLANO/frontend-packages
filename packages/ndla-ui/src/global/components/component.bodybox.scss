@@ -1,7 +1,7 @@
 .c-bodybox {
   padding: $spacing * 1.5;
   margin-bottom: $spacing;
-  border-style: dashed;
-  border-color: $brand-color;
+  border-style: solid;
+  border-color: $brand-color--lighter;
   border-width: 1px;
 }

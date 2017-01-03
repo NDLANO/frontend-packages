@@ -20,6 +20,7 @@ import {
 } from 'draft-js-buttons';
 import createToolbarPlugin from './ToolbarPlugin';
 import createImagePlugin from './ImagePlugin';
+import createHandleKeyCommandPlugin from './handleKeyCommandPlugin';
 // import createImagePlugin from 'draft-js-image-plugin';
 import ImageAdd from './ImageAdd';
 
@@ -49,7 +50,7 @@ const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
-  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin,
+  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, createHandleKeyCommandPlugin(),
 ];
 
 export default class NDLAEditor extends Component {
@@ -61,6 +62,11 @@ export default class NDLAEditor extends Component {
       editorState: createEditorStateWithText('Dette er en tekst'), //EditorState.createEmpty(),
     };
 
+    this.logState = () => {
+      const content = this.state.editorState.getCurrentContent();
+      console.log(convertToRaw(content)); //eslint-disable-line
+    };
+
     this.onChange = this.onChange.bind(this);
     this.focus = this.focus.bind(this);
   }
@@ -68,9 +74,7 @@ export default class NDLAEditor extends Component {
   onChange(editorState) {
     this.setState({ editorState });
 
-    const raw = convertToRaw(editorState.getCurrentContent());
-    console.log(raw);
-    // console.log(JSON.stringify(raw));
+    // console.log(convertToRaw(editorState.getCurrentContent()));
   }
 
 
@@ -89,6 +93,7 @@ export default class NDLAEditor extends Component {
             editorState={this.state.editorState}
             onChange={this.onChange}
             plugins={plugins}
+            handleKeyCommand={this.handleKeyCommand}
             ref={(element) => { this.editor = element; }}
           />
           <InlineToolbar />
@@ -97,6 +102,11 @@ export default class NDLAEditor extends Component {
           editorState={this.state.editorState}
           onChange={this.onChange}
           modifier={imagePlugin.addImage}
+        />
+        <input
+          onClick={this.logState}
+          type="button"
+          value="Log State"
         />
       </div>
     );

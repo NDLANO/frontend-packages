@@ -8,7 +8,6 @@
 
 import React, { PropTypes } from 'react';
 import { Entity, EditorState, AtomicBlockUtils } from 'draft-js';
-import handleImageRemoval from './handleImageRemoval';
 
 const Image = ({ block, className }) => {
   const { src } = Entity.get(block.getEntityAt(0)).getData();
@@ -30,7 +29,7 @@ Image.propTypes = {
 export default () => ({
   blockRendererFn: (block) => {
     if (block.getType() === 'atomic') {
-      console.log(block.toJS());
+      // console.log(block.toJS());
       const entity = Entity.get(block.getEntityAt(0));
       const type = entity.getType();
       if (type === 'image') {
@@ -40,15 +39,19 @@ export default () => ({
         };
       }
     }
-    console.log(block.toJS());
+    // console.log(block.toJS());
     return null;
   },
 
-  onChange: handleImageRemoval,
+  // onChange: handleImageRemoval,
+  // handleKeyCommand: (command) => {
+  //   console.log(`called ${command}`);
+  // },
 
   addImage: (editorState, url) => {
     const entityKey = Entity.create('image', 'IMMUTABLE', { src: url });
     const newEditorState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
-    return EditorState.forceSelection(newEditorState, editorState.getCurrentContent().getSelectionAfter());
+    return newEditorState;
+    // return EditorState.forceSelection(newEditorState, editorState.getCurrentContent().getSelectionAfter());
   },
 });

@@ -36,23 +36,23 @@ storiesOf('Typografi', module)
         <section>
           <strong>Variasjoner av NDLA-fargen</strong>
           <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted">NDLA primærfarge: #20588F</li>
-            <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted">NDLA sekundærfarge: #507AA4</li>
-            <li style={{ backgroundColor: '#A5BCD3' }}>NDLA tertiærfarge: #A5BCD3</li>
-            <li style={{ backgroundColor: '#CEDDEA' }}>NDLA lys farge: #CEDDEA</li>
+            <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted u-padding-tiny">NDLA primærfarge: #20588F</li>
+            <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted u-padding-tiny">NDLA sekundærfarge: #507AA4</li>
+            <li style={{ backgroundColor: '#A5BCD3' }} className="u-padding-tiny">NDLA tertiærfarge: #A5BCD3</li>
+            <li style={{ backgroundColor: '#CEDDEA' }} className="u-padding-tiny">NDLA lys farge: #CEDDEA</li>
           </ul>
           <strong>Gråtoner</strong>
           <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted">#8A8888</li>
-            <li style={{ backgroundColor: '#E8E3E3' }}>#E8E3E3</li>
-            <li style={{ backgroundColor: '#EFF0F2' }}>#EFF0F2</li>
-            <li style={{ backgroundColor: '#F8F8F8' }}>#F8F8F8</li>
+            <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">#8A8888</li>
+            <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">#E8E3E3</li>
+            <li style={{ backgroundColor: '#EFF0F2' }} className="u-padding-tiny">#EFF0F2</li>
+            <li style={{ backgroundColor: '#F8F8F8' }} className="u-padding-tiny">#F8F8F8</li>
           </ul>
           <strong>Tilleggsfarger</strong>
           <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted">#1C1717</li>
-            <li style={{ backgroundColor: '#FFFFFF' }}>#FFFFFF</li>
-            <li style={{ backgroundColor: '#FE5F55' }}>#FE5F55</li>
+            <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">#1C1717</li>
+            <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">#FFFFFF</li>
+            <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">#FE5F55</li>
           </ul>
         </section>
       </article>
@@ -195,15 +195,22 @@ storiesOf('Typografi', module)
       <section className="c-factbox">
         <h1 className="u-heading">Lister på NDLA</h1>
       </section>
-      <p>Punktlister</p>
-      <ul className="o-list--arrows">
+
+      <strong>Ren liste</strong>
+      <ul className="o-list--clean">
         <li>Listepunkt 1</li>
         <li>Listepunkt 2</li>
         <li>Listepunkt 3</li>
         <li>Listepunkt 4</li>
       </ul>
-
-      <p>Nummererte lister</p>
+      <strong>Lister med lenker</strong>
+      <ul className="o-list--arrows">
+        <li><a href="">Listepunkt 1</a></li>
+        <li><a href="">Listepunkt 2</a></li>
+        <li><a href="">Listepunkt 3</a></li>
+        <li><a href="">Listepunkt 4</a></li>
+      </ul>
+      <strong>Nummererte lister</strong>
       <ol>
         <li>Listepunkt 1</li>
         <li>Listepunkt 2</li>

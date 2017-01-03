@@ -10,7 +10,7 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 
-import NDLAEditor from './NDLAEditor';
+import NDLAEditor from './editor/NDLAEditor';
 
 
 storiesOf('Lekegrind', module)

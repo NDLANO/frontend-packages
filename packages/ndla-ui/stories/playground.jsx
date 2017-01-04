@@ -11,13 +11,20 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import NDLAEditor from './editor/NDLAEditor';
+import ExampleEditor from './editor/ExampleEditor';
 
 
 storiesOf('Lekegrind', module)
-  .add('NDLA editor', () => (
+  .add('Empty NDLA editor', () => (
     <div>
       <h1>NDLA Editor</h1>
       <NDLAEditor />
+    </div>
+  ))
+  .add('NDLA editor med innhold', () => (
+    <div>
+      <h1>NDLA Editor</h1>
+      <ExampleEditor />
     </div>
   ))
 ;

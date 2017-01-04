@@ -8,9 +8,9 @@
 
  /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-import { convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import {
@@ -59,12 +59,12 @@ export default class NDLAEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorState: createEditorStateWithText('Dette er en tekst'), //EditorState.createEmpty(),
+      editorState: props.editorState ? props.editorState : EditorState.createEmpty(),
     };
 
     this.logState = () => {
       const content = this.state.editorState.getCurrentContent();
-      console.log(convertToRaw(content)); //eslint-disable-line
+      console.info(convertToRaw(content)); //eslint-disable-line
     };
 
     this.onChange = this.onChange.bind(this);
@@ -87,7 +87,6 @@ export default class NDLAEditor extends Component {
       <div className="editor-container">
         {/* Wait for editor initialization before rendering toolbar */}
         {this.editor && <Toolbar />}
-        {/* // eslint-disable-next-line */}
         <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
@@ -112,3 +111,7 @@ export default class NDLAEditor extends Component {
     );
   }
 }
+
+NDLAEditor.propTypes = {
+  editorState: PropTypes.object,
+};

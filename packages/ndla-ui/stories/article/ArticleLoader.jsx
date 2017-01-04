@@ -9,7 +9,6 @@
 import React, { Component, PropTypes } from 'react';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import ArticleExample from './ArticleExample';
 import { Button } from '../../src/';
 
 class ArticleLoader extends Component {
@@ -51,13 +50,14 @@ class ArticleLoader extends Component {
     return (
       <div>
         { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
-        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+        { article ? React.cloneElement(this.props.children, { article }) : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
       </div>
     );
   }
 }
 
 ArticleLoader.propTypes = {
+  children: PropTypes.node.isRequired,
   articleId: PropTypes.string,
 };
 

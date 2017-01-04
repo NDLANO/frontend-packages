@@ -5,6 +5,7 @@ import { storiesOf } from '@kadira/storybook';
 import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
+import ArticleExample from './article/ArticleExample';
 
 const FooterExample = () => (
   <Footer>
@@ -55,7 +56,9 @@ storiesOf('Sidevisninger', module)
       <MastheadExample />
       <OneColumn>
         <article>
-          <ArticleLoader articleId="50" />
+          <ArticleLoader articleId="50">
+            <ArticleExample />
+          </ArticleLoader>
         </article>
       </OneColumn>
       <FooterExample />
@@ -65,7 +68,9 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <MastheadExample />
       <OneColumn>
-        <ArticleLoader />
+        <ArticleLoader>
+          <ArticleExample />
+        </ArticleLoader>
       </OneColumn>
       <FooterExample />
     </PageContainer>
@@ -74,7 +79,9 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <MastheadExample />
       <OneColumn>
-        <ArticleLoader articleId="34" />
+        <ArticleLoader articleId="34">
+          <ArticleExample />
+        </ArticleLoader>
       </OneColumn>
       <FooterExample />
     </PageContainer>

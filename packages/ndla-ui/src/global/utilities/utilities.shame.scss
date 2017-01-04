@@ -98,7 +98,7 @@
 
 /* Move this elsewhere later? */
 .c-article__byline {
-  color: $grey-color;
+  color: $brand-grey;
 }
 .article_introduction {
   font-size: 115%;
@@ -179,6 +179,7 @@ $shame-spacing: 12px;
     font-size: 18px;
     font-weight: 700;
     list-style: none;
+    margin-top:1em;
     padding: 0;
     margin-left: 0;
     border-bottom: 1px $background-color--dark solid;
@@ -310,6 +311,6 @@ $shame-spacing: 12px;
 }
 
 .u-expanded {
-  background: #e8e8e8;
+  background: $background-color--gray;
   height: auto;
 }

@@ -43,16 +43,16 @@ storiesOf('Typografi', module)
           </ul>
           <strong>Gråtoner</strong>
           <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">#8A8888</li>
-            <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">#E8E3E3</li>
-            <li style={{ backgroundColor: '#EFF0F2' }} className="u-padding-tiny">#EFF0F2</li>
-            <li style={{ backgroundColor: '#F8F8F8' }} className="u-padding-tiny">#F8F8F8</li>
+            <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">Grå 1: #8A8888</li>
+            <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">Grå 2: #E8E3E3</li>
+            <li style={{ backgroundColor: '#EFF0F2' }} className="u-padding-tiny">Grå 3: #EFF0F2</li>
+            <li style={{ backgroundColor: '#F8F8F8' }} className="u-padding-tiny">Grå 4: #F8F8F8</li>
           </ul>
           <strong>Tilleggsfarger</strong>
           <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">#1C1717</li>
-            <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">#FFFFFF</li>
-            <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">#FE5F55</li>
+            <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">Mørk: #1C1717</li>
+            <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">Hvit: #FFFFFF</li>
+            <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Kontrast: #FE5F55</li>
           </ul>
         </section>
       </article>

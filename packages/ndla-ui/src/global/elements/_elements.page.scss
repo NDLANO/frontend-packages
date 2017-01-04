@@ -62,8 +62,8 @@ aside, article aside {
   width: 100%;
   display: inline-block;
   margin: $spacing 0;
-  border: 1px solid $brand-color--lightest;
-  background: $brand-color--lightest;
+  border: 1px solid $brand-color--light;
+  background: $brand-color--light;
   opacity: 0.9;
   @include max-width();
 
@@ -82,7 +82,7 @@ aside, article aside {
       right: 0;
       width: 100%;
       transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
-      background: linear-gradient(rgba($brand-color--lightest,0),$brand-color--lightest)
+      background: linear-gradient(rgba($brand-color--light,0),$brand-color--light)
     }
     &:after {
       content: "LES MER";
@@ -116,7 +116,7 @@ aside, article aside {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom:10px;
-    border-bottom: 1px solid $brand-color--lightest;
+    border-bottom: 1px solid $brand-color--light;
   }
   p {
     margin-top: 0;
@@ -133,7 +133,7 @@ aside, article aside {
     max-width: 300px;
     padding: 0 0 0 $spacing*1.5;
     border: none;
-    border-left: 1px solid $brand-color--lightest;
+    border-left: 1px solid $brand-color--light;
     background: none;
     border-top: none;
     border-bottom: none;

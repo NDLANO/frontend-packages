@@ -14,10 +14,9 @@ export default () => ({
 
     const newEditorState = RichUtils.handleKeyCommand(editorState, command);
     if (newEditorState) {
-      // setEditorState(newEditorState);
-      setTimeout(() => setEditorState(newEditorState), 0);
-      return true;
+      setEditorState(newEditorState);
+      return 'handled';
     }
-    return false;
+    return 'not-handled';
   },
 });

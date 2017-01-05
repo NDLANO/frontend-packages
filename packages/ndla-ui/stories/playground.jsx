@@ -12,19 +12,26 @@ import { storiesOf } from '@kadira/storybook';
 
 import NDLAEditor from './editor/NDLAEditor';
 import ExampleEditor from './editor/ExampleEditor';
+import ArticleEditor from './editor/ArticleEditor';
 
 
 storiesOf('Lekegrind', module)
-  .add('Empty NDLA editor', () => (
+  .add('NDLA editor uten innhold', () => (
     <div>
       <h1>NDLA Editor</h1>
       <NDLAEditor />
     </div>
   ))
-  .add('NDLA editor med innhold', () => (
+  .add('NDLA editor med eksempel innhold', () => (
     <div>
       <h1>NDLA Editor</h1>
       <ExampleEditor />
+    </div>
+  ))
+  .add('NDLA editor med innhold', () => (
+    <div>
+      <h1>NDLA Editor</h1>
+      <ArticleEditor />
     </div>
   ))
 ;

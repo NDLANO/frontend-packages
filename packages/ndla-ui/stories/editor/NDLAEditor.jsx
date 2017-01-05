@@ -9,7 +9,7 @@
  /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import React, { Component, PropTypes } from 'react';
-import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
+import Editor from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';

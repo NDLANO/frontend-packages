@@ -27,7 +27,6 @@ const Button = ({ outline, square, stripped, submit, loading, className, ...rest
     // Unless the disabled state is explicitly set, the button is disabled when loading.
   const disabled = (rest.disabled !== undefined ? rest.disabled : loading) || false;
 
-  console.log(rest);
   return (
     <button {...classes('', modifiers, className)} {...rest} type={type} disabled={disabled}>
       {rest.children}

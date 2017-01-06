@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import { fetchArticleFromApi } from '../article/articleApi';
@@ -111,6 +111,7 @@ class ArticleEditor extends Component {
 }
 
 ArticleEditor.propTypes = {
+  articleId: PropTypes.string,
 };
 
 export default ArticleEditor;

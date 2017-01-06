@@ -8,32 +8,89 @@
 
 import React, { Component } from 'react';
 import { convertFromHTML } from 'draft-convert';
-import { EditorState, convertToRaw } from 'draft-js';
+import { Entity, EditorState } from 'draft-js';
 import { fetchArticleFromApi } from '../article/articleApi';
 import NDLAEditor from './NDLAEditor';
+
+function findEmbedDataInContentState(constentState) {
+  return constentState.getBlocksAsArray().filter(block => block.getEntityAt(0)).map((block) => {
+    const key = block.getEntityAt(0);
+    return Entity.get(key).getData();
+  });
+}
+
+function updateEnitiesInContentState(constentState, embedsWithResources) {
+  const blockMap = constentState.getBlockMap().map((block) => {
+    const key = block.getEntityAt(0);
+    if (key) {
+      const id = Entity.get(key).getData().id;
+      const embed = embedsWithResources.find(e => e.id === id);
+      Entity.mergeData(key, { src: embed.image.imageUrl });
+      return block.set('text', ' '); // Fix 'a' hack (See https://github.com/HubSpot/draft-convert/blob/master/src/convertFromHTML.js#L381-L388)
+    }
+    return block;
+  });
+  return constentState.set('blockMap', blockMap);
+}
+
+function reduceAttributesArrayToObject(attributes) {
+  // Reduce attributes array to object with attribute name (striped of data-) as keys.
+  return attributes.reduce((all, attr) => Object.assign({}, all, { [attr.nodeName.replace('data-', '')]: attr.nodeValue }), {});
+}
+
+function fetchEmbedData(embed) {
+  if (embed.resource === 'image') {
+    return fetch(embed.url)
+          .then(res => res.json())
+          .then(image => ({ ...embed, image }));
+  }
+  return embed;
+}
+
+function convertContentToContentState(content) {
+  return convertFromHTML({
+    htmlToBlock: (nodeName) => {
+      if (nodeName === 'embed') {
+        return 'atomic';
+      }
+      return undefined;
+    },
+    htmlToEntity: (nodeName, node) => {
+      if (nodeName === 'embed' && node.attributes['data-resource'].nodeValue === 'image') {
+        const data = reduceAttributesArrayToObject(Array.from(node.attributes));
+        return Entity.create('image', 'IMMUTABLE', data);
+      }
+      return undefined;
+    },
+  })(content);
+}
 
 class ArticleEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { article: undefined };
+    this.state = { };
   }
 
   componentDidMount() {
     fetchArticleFromApi('86')
       .then((article) => {
-        const initialState = convertFromHTML(article.content);
-        console.info(convertToRaw(initialState)); //eslint-disable-line
-        this.setState({
-          initialState,
-          article,
+        const contentState = convertContentToContentState(article.content);
+
+        const embeds = findEmbedDataInContentState(contentState);
+
+        Promise.all(embeds.map(fetchEmbedData)).then((embedsWithResources) => {
+          const updatedContentState = updateEnitiesInContentState(contentState, embedsWithResources);
+          this.setState({
+            contentState: updatedContentState,
+          });
         });
       })
     ;
   }
 
   render() {
-    const { initialState } = this.state;
-    const editorState = initialState ? EditorState.createWithContent(initialState) : undefined;
+    const { contentState } = this.state;
+    const editorState = contentState ? EditorState.createWithContent(contentState) : undefined;
     return editorState ? <NDLAEditor editorState={editorState} /> : null;
   }
 }

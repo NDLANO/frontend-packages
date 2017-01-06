@@ -10,6 +10,8 @@ import React, { Component } from 'react';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import { fetchArticleFromApi } from '../article/articleApi';
+import SimpleSubmitForm from '../article/SimpleSubmitForm';
+import { Button } from '../../src/';
 import NDLAEditor from './NDLAEditor';
 
 function findEmbedDataInContentState(constentState) {
@@ -69,10 +71,18 @@ class ArticleEditor extends Component {
   constructor(props) {
     super(props);
     this.state = { };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    fetchArticleFromApi('86')
+    const { articleId } = this.props;
+    if (articleId) {
+      this.handleSubmit(articleId);
+    }
+  }
+
+  handleSubmit(articleId) {
+    fetchArticleFromApi(articleId)
       .then((article) => {
         const contentState = convertContentToContentState(article.content);
 
@@ -89,9 +99,14 @@ class ArticleEditor extends Component {
   }
 
   render() {
-    const { contentState } = this.state;
+    const { contentState, message } = this.state;
     const editorState = contentState ? EditorState.createWithContent(contentState) : undefined;
-    return editorState ? <NDLAEditor editorState={editorState} /> : null;
+    return (
+      <div>
+        { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>Lukk</Button> : null}
+        { editorState ? <NDLAEditor editorState={editorState} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+      </div>
+    );
   }
 }
 

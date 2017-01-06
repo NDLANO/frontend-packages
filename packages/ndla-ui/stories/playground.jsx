@@ -10,6 +10,7 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 
+import { Center } from './helpers';
 import NDLAEditor from './editor/NDLAEditor';
 import ExampleEditor from './editor/ExampleEditor';
 import ArticleEditor from './editor/ArticleEditor';
@@ -29,9 +30,19 @@ storiesOf('Lekegrind', module)
     </div>
   ))
   .add('NDLA editor med innhold', () => (
-    <div>
-      <h1>NDLA Editor</h1>
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">NDLA Editor</h1>
+      </section>
+      <ArticleEditor articleId="79" />
+    </Center>
+  ))
+  .add('Last artikkel i NDLAEditor', () => (
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">NDLA Editor</h1>
+      </section>
       <ArticleEditor />
-    </div>
+    </Center>
   ))
 ;

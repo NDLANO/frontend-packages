@@ -20,9 +20,11 @@ import {
 } from 'draft-js-buttons';
 import createToolbarPlugin from './ToolbarPlugin';
 import createImagePlugin from './ImagePlugin';
+import createParagraphPlugin from './paragraphPlugin';
 import createHandleKeyCommandPlugin from './handleKeyCommandPlugin';
 // import createImagePlugin from 'draft-js-image-plugin';
 import ImageAdd from './ImageAdd';
+
 
 const focusPlugin = createFocusPlugin();
 
@@ -50,7 +52,7 @@ const { InlineToolbar } = inlineToolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
-  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, createHandleKeyCommandPlugin(),
+  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, createHandleKeyCommandPlugin(), createParagraphPlugin(),
 ];
 
 export default class NDLAEditor extends Component {

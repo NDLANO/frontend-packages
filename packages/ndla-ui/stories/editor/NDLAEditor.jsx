@@ -15,7 +15,7 @@ import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import {
   ItalicButton, BoldButton, UnderlineButton,
-  HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
+  HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
 import createToolbarPlugin from './ToolbarPlugin';
@@ -30,7 +30,7 @@ const focusPlugin = createFocusPlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
     ItalicButton, BoldButton, UnderlineButton,
-    HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
+    HeadlineTwoButton, HeadlineThreeButton,
     UnorderedListButton, BlockquoteButton,
   ],
 });
@@ -38,7 +38,7 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 const toolbarPlugin = createToolbarPlugin({
   structure: [
     ItalicButton, BoldButton, UnderlineButton,
-    HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton,
+    HeadlineTwoButton, HeadlineThreeButton,
     UnorderedListButton, BlockquoteButton,
   ],
 });
@@ -46,7 +46,7 @@ const toolbarPlugin = createToolbarPlugin({
 const imagePlugin = createImagePlugin();
 
 const { InlineToolbar } = inlineToolbarPlugin;
-const { Toolbar } = toolbarPlugin;
+// const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
@@ -84,9 +84,9 @@ export default class NDLAEditor extends Component {
 
   render() {
     return (
-      <div className="editor-container">
+      <article className="editor-container article">
         {/* Wait for editor initialization before rendering toolbar */}
-        {this.editor && <Toolbar />}
+        {/* {this.editor && <Toolbar />} */}
         <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
@@ -107,7 +107,7 @@ export default class NDLAEditor extends Component {
           type="button"
           value="Log State"
         />
-      </div>
+      </article>
     );
   }
 }

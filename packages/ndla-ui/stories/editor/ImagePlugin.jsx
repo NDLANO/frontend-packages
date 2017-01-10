@@ -6,35 +6,42 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { Entity, EditorState, AtomicBlockUtils } from 'draft-js';
-
-const Image = ({ block, className }) => {
-  const { src } = Entity.get(block.getEntityAt(0)).getData();
-  return (
-    <img
-      src={src}
-      role="presentation"
-      className={className}
-    />
-  );
-};
-
-Image.propTypes = {
-  className: PropTypes.string,
-  block: PropTypes.object.isRequired,
-};
-
+import { Entity, EditorState, Modifier, AtomicBlockUtils, SelectionState } from 'draft-js';
+import ImageBlock from './ImageBlock';
 
 export default () => ({
-  blockRendererFn: (block) => {
+  blockRendererFn: (block, { getEditorState, setEditorState, setReadOnly }) => {
     if (block.getType() === 'atomic') {
       const entity = Entity.get(block.getEntityAt(0));
       const type = entity.getType();
       if (type === 'image') {
         return {
-          component: Image,
+          component: ImageBlock,
           editable: false,
+          props: {
+            setReadOnly,
+            updateData: (data) => {
+              const editorState = getEditorState();
+              const content = editorState.getCurrentContent();
+              const selection = new SelectionState({
+                anchorKey: block.key,
+                anchorOffset: 0,
+                focusKey: block.key,
+                focusOffset: block.getLength(),
+              });
+                // Merge caption changes in contentState until: https://github.com/facebook/draft-js/issues/839
+              const newContentState = Modifier.mergeBlockData(content, selection, data);
+
+              const newEditorState = EditorState.push(editorState, newContentState);
+              setEditorState(newEditorState);
+
+                // Test storing and updating caption in Entity, when the entity module is moved to contentState: https://github.com/facebook/draft-js/issues/839
+                // const key = block.getEntityAt(0);
+                // Entity.mergeData(key, data);
+                // const newEditorState = EditorState.forceSelection(editorState, getEditorState().getCurrentContent().getSelectionAfter());// getCurrentContent().getSelectionAfter());
+                // setEditorState(newEditorState);
+            },
+          },
         };
       }
     }
@@ -46,4 +53,5 @@ export default () => ({
     const newEditorState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
     return EditorState.forceSelection(newEditorState, editorState.getCurrentContent().getSelectionAfter());
   },
+
 });

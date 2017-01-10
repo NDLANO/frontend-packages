@@ -24,7 +24,7 @@ const Toolbar = ({ store, structure }) => (
           setEditorState={store.setEditorState}
         />
       </li>
-       ))}
+    ))}
   </ul>
 );
 

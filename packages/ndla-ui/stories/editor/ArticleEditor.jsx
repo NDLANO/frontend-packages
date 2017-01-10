@@ -30,7 +30,6 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
       Entity.mergeData(key, { src: embed.image.imageUrl });
 
       const data = block.getData();
-      console.log(Entity.get(key).getData());
       const newData = data.set('caption', Entity.get(key).getData().caption); // Store caption in contentState until: https://github.com/facebook/draft-js/issues/839
       return block.set('data', newData).set('text', ' '); // Fix 'a' hack (See https://github.com/HubSpot/draft-convert/blob/master/src/convertFromHTML.js#L381-L388)
     }

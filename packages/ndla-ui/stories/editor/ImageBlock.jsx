@@ -41,15 +41,16 @@ export default class ImageBlock extends Component {
     const caption = block.getData().get('caption');
 
     return (
-      <div onBlur={this.handleBlur} onFocus={this.handleFocus}>
+      <div className="block" onBlur={this.handleBlur} onFocus={this.handleFocus}>
         <img
           src={src}
           role="presentation"
           className={className}
         />
 
-        <div>
+        <div className="block__data">
           <input
+            className="block__input"
             placeholder="Caption"
             value={caption}
             onChange={this.handleCaptionChange}

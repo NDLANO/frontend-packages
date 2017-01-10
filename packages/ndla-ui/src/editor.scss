@@ -26,6 +26,34 @@
   margin: 20px 0;
 }
 
+.block {
+  border-radius: 3px;
+  border: solid 1px #ddd;
+  padding: 1em;
+
+  &__data {
+    padding-top: 0.6em;
+    background-color: $white;
+  }
+
+  &__input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px dashed transparent;
+    padding: 0.3em 0;
+
+    &:hover {
+      border-color: #ddd;
+    }
+
+    &:focus {
+      outline: none;
+      border-style: solid;
+      border-color: lighten($brand-color, 20%);
+    }
+  }
+}
+
 .c-toolbar {
   list-style: none;
   padding: 0;

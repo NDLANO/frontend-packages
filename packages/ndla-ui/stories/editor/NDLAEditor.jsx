@@ -19,12 +19,12 @@ import {
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
 import createToolbarPlugin from './ToolbarPlugin';
-import createImagePlugin from './ImagePlugin';
+import createImagePlugin from './imagePlugin';
 import createParagraphPlugin from './paragraphPlugin';
 import createHandleKeyCommandPlugin from './handleKeyCommandPlugin';
 import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
 // import createImagePlugin from 'draft-js-image-plugin';
-import ImageAdd from './ImageAdd';
+import ImageAdd from './imagePlugin/ImageAdd';
 
 
 const focusPlugin = createFocusPlugin();

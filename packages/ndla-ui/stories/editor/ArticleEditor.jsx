@@ -27,6 +27,11 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
     if (key) {
       const id = Entity.get(key).getData().id;
       const embed = embedsWithResources.find(e => e.id === id);
+
+      if (!embed || embed.resource !== 'image') {
+        return block;
+      }
+
       Entity.mergeData(key, { src: embed.image.imageUrl });
 
       const data = block.getData();
@@ -70,6 +75,9 @@ function convertContentToContentState(content) {
       if (nodeName === 'embed' && node.attributes['data-resource'].nodeValue === 'image') {
         const data = reduceAttributesArrayToObject(Array.from(node.attributes));
         return Entity.create('image', 'IMMUTABLE', data);
+      } else if (nodeName === 'embed') {
+        const data = reduceAttributesArrayToObject(Array.from(node.attributes));
+        return Entity.create('resource-placeholder', 'IMMUTABLE', data);
       }
       return undefined;
     },
@@ -103,8 +111,7 @@ class ArticleEditor extends Component {
             contentState: updatedContentState,
           });
         });
-      })
-    ;
+      });
   }
 
   render() {

@@ -54,6 +54,7 @@
     "draft-js-inline-toolbar-plugin": "^2.0.0-beta9",
     "draft-js-plugins-editor": "^2.0.0-beta9",
     "draft-js-undo-plugin": "^2.0.0-beta9",
+    "draftjs-utils": "^0.4.0",
     "enzyme": "2.6.0",
     "extract-text-webpack-plugin": "1.0.1",
     "inuitcss": "^6.0.0-beta.4",

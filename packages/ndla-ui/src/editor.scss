@@ -29,11 +29,11 @@
 .block {
   border-radius: 3px;
   border: solid 1px #ddd;
+  background-color: $white;
   padding: 1em;
 
   &__data {
     padding-top: 0.6em;
-    background-color: $white;
   }
 
   &__input {

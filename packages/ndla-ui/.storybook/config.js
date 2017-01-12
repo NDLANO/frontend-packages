@@ -1,6 +1,7 @@
 import { configure } from '@kadira/storybook';
 import { setOptions } from '@kadira/storybook-addon-options';
 import '../src/main.scss';
+import '../src/editor.scss';
 
 setOptions({
   name: 'NDLA Designmanual',

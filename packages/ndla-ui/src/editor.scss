@@ -1,6 +1,10 @@
-.editor-container {
-  margin: 0 auto;
-}
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
 .c-editor {
   width: 620px;
@@ -25,10 +29,12 @@
     border: none;
     box-shadow: none;
     background: transparent;
-    .block {
-      border: none;
-      background-color: transparent;
-      padding: 0;
+    .c-block {
+      &__image {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+      }
 
       &__input {
         background-color: transparent;
@@ -37,19 +43,27 @@
   }
 }
 
+.c-block {
 
-.editor__paragraph {
-  margin: 1em 0 1em 0;
-}
+  &__paragraph {
+    margin: 1em 0 1em 0;
+  }
 
+  &__image {
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    background-color: $white;
+    padding: 1em;
+  }
 
-.block {
-  border-radius: 3px;
-  border: solid 1px #ddd;
-  background-color: $white;
-  padding: 1em;
+  &__resource-placeholder {
+    color: #e4655f;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #e4655f;
+  }
 
-  &__data {
+  &__metadata {
     padding-top: 0.6em;
   }
 
@@ -69,13 +83,6 @@
       border-color: lighten($brand-color, 20%);
     }
   }
-}
-
-.resource-placeholder-block {
-  color: #e4655f;
-  padding-left: 5px;
-  padding-right: 5px;
-  border: 1px solid #e4655f;
 }
 
 .c-toolbar {

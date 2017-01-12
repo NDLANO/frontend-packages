@@ -8,7 +8,13 @@
 
 
 import React, { PropTypes, Component } from 'react';
+import BEMHelper from 'react-bem-helper';
 import { Entity } from 'draft-js';
+
+const classes = new BEMHelper({
+  name: 'block',
+  prefix: 'c-',
+});
 
 export default class ImageBlock extends Component {
   constructor(props) {
@@ -47,22 +53,22 @@ export default class ImageBlock extends Component {
     const alt = block.getData().get('alt');
 
     return (
-      <div className="block" onBlur={this.handleBlur} onFocus={this.handleFocus}>
+      <div {...classes('image')} onBlur={this.handleBlur} onFocus={this.handleFocus}>
         <img
           src={src}
           role="presentation"
           className={className}
         />
 
-        <div className="block__data">
+        <div {...classes('metadata')}>
           <input
-            className="block__input"
+            {...classes('input')}
             placeholder="Alternative text"
             value={alt}
             onChange={this.handleAltChange}
           />
           <input
-            className="block__input"
+            {...classes('input')}
             placeholder="Caption"
             value={caption}
             onChange={this.handleCaptionChange}

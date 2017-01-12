@@ -9,7 +9,7 @@
 import React, { PropTypes } from 'react';
 
 const ResourcePlaceholderBlock = ({ blockProps: { data } }) => (
-  <span className="resource-placeholder-block">
+  <span className="c-block__resource-placeholder">
     Uhåndtert embed av følgende type: <b>{ data.resource }</b>
   </span>
   );

@@ -9,7 +9,7 @@
 export default () => ({
   blockStyleFn: (contentBlock) => {
     if (contentBlock.getType() === 'unstyled') {
-      return 'editor__paragraph';
+      return 'c-block__paragraph';
     }
     return null;
   },

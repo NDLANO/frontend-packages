@@ -13,17 +13,22 @@ import Editor from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
   ItalicButton, BoldButton, UnderlineButton,
   HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
 import BEMHelper from 'react-bem-helper';
+import decorateComponentWithProps from 'decorate-component-with-props';
+
+import BlockTypeSelect from './BlockTypeSelect';
 import createToolbarPlugin from './ToolbarPlugin';
 import createImagePlugin from './imagePlugin';
 import createBasicStylePlugin from './basicStylePlugin';
 import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
 import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
+
 // import createImagePlugin from 'draft-js-image-plugin';
 import ImageAdd from './imagePlugin/ImageAdd';
 
@@ -47,6 +52,14 @@ const toolbarPlugin = createToolbarPlugin({
   ],
 });
 
+const sideToolbarPlugin = createSideToolbarPlugin({
+  structure: [
+    decorateComponentWithProps(BlockTypeSelect, { structure: [HeadlineTwoButton, HeadlineThreeButton, UnorderedListButton, BlockquoteButton] }),
+  ],
+});
+
+const { SideToolbar } = sideToolbarPlugin;
+
 const imagePlugin = createImagePlugin();
 
 const { InlineToolbar } = inlineToolbarPlugin;
@@ -54,7 +67,7 @@ const { InlineToolbar } = inlineToolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
-  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin,
+  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, sideToolbarPlugin,
   createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
 ];
 
@@ -110,6 +123,7 @@ export default class NDLAEditor extends Component {
             ref={(element) => { this.editor = element; }}
           />
           <InlineToolbar />
+          <SideToolbar />
         </div>
         <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
           <li style={{ marginTop: '10px' }}>

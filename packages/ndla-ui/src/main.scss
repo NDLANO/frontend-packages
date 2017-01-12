@@ -65,7 +65,3 @@ $inuit-fractions: 1 2 3 4 12;
 @import "../node_modules/inuitcss/utilities/utilities.spacing";
 @import "global/utilities/utilities.typographic";
 @import "global/utilities/utilities.shame";
-
-@import "../node_modules/draft-js/dist/Draft.css";
-@import "../node_modules/draft-js-inline-toolbar-plugin/lib/plugin";
-@import "../node_modules/draft-js-undo-plugin/lib/plugin";

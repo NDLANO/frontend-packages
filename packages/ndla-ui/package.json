@@ -53,6 +53,7 @@
     "draft-js-image-plugin": "^2.0.0-beta9",
     "draft-js-inline-toolbar-plugin": "^2.0.0-beta9",
     "draft-js-plugins-editor": "^2.0.0-beta9",
+    "draft-js-side-toolbar-plugin": "^2.0.0-beta9",
     "draft-js-undo-plugin": "^2.0.0-beta9",
     "draftjs-utils": "^0.4.0",
     "enzyme": "2.6.0",

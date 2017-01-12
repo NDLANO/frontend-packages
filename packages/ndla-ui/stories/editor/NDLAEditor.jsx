@@ -18,6 +18,7 @@ import {
   HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
+import BEMHelper from 'react-bem-helper';
 import createToolbarPlugin from './ToolbarPlugin';
 import createImagePlugin from './imagePlugin';
 import createBasicStylePlugin from './basicStylePlugin';
@@ -57,13 +58,18 @@ const plugins = [
   createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
 ];
 
-export default class NDLAEditor extends Component {
+const classes = new BEMHelper({
+  name: 'editor',
+  prefix: 'c-',
+});
 
+export default class NDLAEditor extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       editorState: props.editorState ? props.editorState : EditorState.createEmpty(),
+      useAltStyle: false,
     };
 
     this.logState = () => {
@@ -73,6 +79,7 @@ export default class NDLAEditor extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.focus = this.focus.bind(this);
+    this.toogleAltStyle = this.toogleAltStyle.bind(this);
   }
 
   onChange(editorState) {
@@ -81,6 +88,9 @@ export default class NDLAEditor extends Component {
     // console.log(convertToRaw(editorState.getCurrentContent()));
   }
 
+  toogleAltStyle() {
+    this.setState({ useAltStyle: !this.state.useAltStyle });
+  }
 
   focus() {
     this.editor.focus();
@@ -88,10 +98,10 @@ export default class NDLAEditor extends Component {
 
   render() {
     return (
-      <article className="editor-container article">
+      <article>
         {/* Wait for editor initialization before rendering toolbar */}
         {/* {this.editor && <Toolbar />} */}
-        <div className="editor" onClick={this.focus}>
+        <div {...classes(undefined, (this.state.useAltStyle && 'alt'))} onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
@@ -101,16 +111,29 @@ export default class NDLAEditor extends Component {
           />
           <InlineToolbar />
         </div>
-        <ImageAdd
-          editorState={this.state.editorState}
-          onChange={this.onChange}
-          modifier={imagePlugin.addImage}
-        />
-        <input
-          onClick={this.logState}
-          type="button"
-          value="Log State"
-        />
+        <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
+          <li style={{ marginTop: '10px' }}>
+            <ImageAdd
+              editorState={this.state.editorState}
+              onChange={this.onChange}
+              modifier={imagePlugin.addImage}
+            />
+          </li>
+          <li style={{ marginTop: '10px' }}>
+            <input
+              onClick={this.logState}
+              type="button"
+              value="Log State"
+            />
+          </li>
+          <li style={{ marginTop: '10px' }}>
+            <input
+              onClick={this.toogleAltStyle}
+              type="button"
+              value="Toggle alternative style"
+            />
+          </li>
+        </ul>
       </article>
     );
   }

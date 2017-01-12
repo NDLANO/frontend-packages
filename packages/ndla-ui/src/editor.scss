@@ -2,7 +2,7 @@
   margin: 0 auto;
 }
 
-.editor {
+.c-editor {
   width: 620px;
   box-sizing: border-box;
   border: 1px solid #ddd;
@@ -12,19 +12,36 @@
   margin-bottom: 2em;
   box-shadow: inset 0px 1px 8px -3px #ABABAB;
   background: #fefefe;
+
+  .public-DraftEditor-content figure {
+    margin: 20px 0;
+  }
+
+  :global(.public-DraftEditor-content) {
+    min-height: 140px;
+  }
+
+  &--alt {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    .block {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+
+      &__input {
+        background-color: transparent;
+      }
+    }
+  }
 }
 
-.editor :global(.public-DraftEditor-content) {
-  min-height: 140px;
-}
 
 .editor__paragraph {
   margin: 1em 0 1em 0;
 }
 
-.editor .public-DraftEditor-content figure {
-  margin: 20px 0;
-}
 
 .block {
   border-radius: 3px;

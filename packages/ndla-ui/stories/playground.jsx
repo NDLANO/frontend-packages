@@ -18,16 +18,20 @@ import ArticleEditor from './editor/ArticleEditor';
 
 storiesOf('Lekegrind', module)
   .add('NDLA editor uten innhold', () => (
-    <div>
-      <h1>NDLA Editor</h1>
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">NDLA Editor</h1>
+      </section>
       <NDLAEditor />
-    </div>
+    </Center>
   ))
   .add('NDLA editor med eksempel innhold', () => (
-    <div>
-      <h1>NDLA Editor</h1>
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">NDLA Editor</h1>
+      </section>
       <ExampleEditor />
-    </div>
+    </Center>
   ))
   .add('NDLA editor med innhold', () => (
     <Center>

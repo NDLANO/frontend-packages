@@ -1,14 +1,40 @@
 .c-collate {
   position: relative;
-  overflow: visible;
+
+}
+.c-collate__panel {
+  position: relative;
+  transition: all 200ms ease-in;
+  background-color: $background-color--dark;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
+  transition: padding .1s;
+  padding: 0;
+  background-color: $background-color--dark;
+  height: 0;
+  &--expanded {
+    padding: $spacing / 2;
+    max-height: 100vh;
+    overflow: visible;
+    height: auto;
+    box-shadow: inset 1px 1px 5px $background-color--darker;
+
+    + .c-collate__article {
+      background: $background-color--darker;
+    }
+  }
+
 }
 .c-collate__info {
+  opacity: 0.5;
   position: absolute;
-  margin: ($spacing / 2) 0;
-  width: $spacing * 2;
-  height: $spacing * 2;
-  background: grey;
   top: 0;
   left: 0;
-  transform: translateX(-$spacing);
+  transform: translateX(-$spacing * 1.5) translateY($spacing);
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 }

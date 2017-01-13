@@ -48,10 +48,11 @@ class ArticleLoader extends Component {
 
   render() {
     const { article, message } = this.state;
+    const { withLicenseExample } = this.props;
     return (
       <div>
         { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
-        { article ? <ArticleExample article={article} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+        { article ? <ArticleExample article={article} withLicenseExample={withLicenseExample} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
       </div>
     );
   }
@@ -59,6 +60,7 @@ class ArticleLoader extends Component {
 
 ArticleLoader.propTypes = {
   articleId: PropTypes.string,
+  withLicenseExample: PropTypes.bool,
 };
 
 export default ArticleLoader;

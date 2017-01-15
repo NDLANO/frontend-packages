@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+ /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 
 import React, { PropTypes, Component } from 'react';
@@ -47,28 +48,41 @@ export default class ImageBlock extends Component {
   }
 
   render() {
-    const { className, block } = this.props;
-    const { src } = Entity.get(block.getEntityAt(0)).getData();
+    const { className, block, onClick, direction } = this.props;
+    const { src, alignment } = Entity.get(block.getEntityAt(0)).getData();
     const caption = block.getData().get('caption');
     const alt = block.getData().get('alt');
 
     return (
-      <div {...classes('image')} onBlur={this.handleBlur} onFocus={this.handleFocus}>
+      <div {...classes('image', alignment)} onBlur={this.handleBlur} onFocus={this.handleFocus} >
+        {/* <button
+          direction={direction}
+          onClick={onClick}
+          className={`c-button c-button--stripped ${className}`}
+          >
+          <img
+          src={src}
+          role="presentation"
+          />
+        </button> */}
         <img
           src={src}
           role="presentation"
-          className={className}
+          direction={direction}
+          onClick={onClick}
+          className={`${className}`}
         />
-
-        <div {...classes('metadata')}>
+        <div {...classes('metadata')} >
           <input
             {...classes('input')}
+            type="text"
             placeholder="Alternative text"
             value={alt}
             onChange={this.handleAltChange}
           />
           <input
             {...classes('input')}
+            type="text"
             placeholder="Caption"
             value={caption}
             onChange={this.handleCaptionChange}
@@ -82,6 +96,8 @@ ImageBlock.propTypes = {
   className: PropTypes.string,
   block: PropTypes.shape({
   }).isRequired,
+  onClick: PropTypes.func.isRequired,
+  direction: PropTypes.string.isRequired,
   blockProps: PropTypes.shape({
     setReadOnly: PropTypes.func.isRequired,
     updateData: PropTypes.func.isRequired,

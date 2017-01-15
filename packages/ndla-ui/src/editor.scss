@@ -11,6 +11,8 @@
 @import "../node_modules/draft-js/dist/Draft.css";
 @import "../node_modules/draft-js-inline-toolbar-plugin/lib/plugin";
 @import "../node_modules/draft-js-side-toolbar-plugin/lib/plugin";
+@import "../node_modules/draft-js-alignment-plugin/lib/plugin";
+@import "../node_modules/draft-js-focus-plugin/lib/plugin";
 
 
 .c-editor {
@@ -51,6 +53,7 @@
 }
 
 .c-block {
+  width: 100%
 
   &__paragraph {
     margin: 1em 0 1em 0;
@@ -61,6 +64,20 @@
     border: solid 1px #ddd;
     background-color: $white;
     padding: 1em;
+    position: relative;
+    z-index: 1;
+    cursor: default;
+
+    &--left {
+      margin-right: 1em;
+      float: left;
+      width: 50%;
+    }
+    &--right {
+      margin-left: 1em;
+      float: right;
+      width: 50%;
+    }
   }
 
   &__resource-placeholder {

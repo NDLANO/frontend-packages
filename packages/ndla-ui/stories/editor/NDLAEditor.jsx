@@ -9,9 +9,10 @@
  /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import React, { Component, PropTypes } from 'react';
-import Editor from 'draft-js-plugins-editor';
+import Editor, { composeDecorators } from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
+import createAlignmentPlugin from 'draft-js-alignment-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
@@ -29,11 +30,20 @@ import createBasicStylePlugin from './basicStylePlugin';
 import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
 import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
 
-// import createImagePlugin from 'draft-js-image-plugin';
 import ImageAdd from './imagePlugin/ImageAdd';
 
 
 const focusPlugin = createFocusPlugin();
+const alignmentPlugin = createAlignmentPlugin();
+const { AlignmentTool } = alignmentPlugin;
+
+const decorator = composeDecorators(
+  focusPlugin.decorator,
+  alignmentPlugin.decorator,
+);
+
+
+const imagePlugin = createImagePlugin({ decorator });
 
 /* inline toolbar */
 const inlineToolbarPlugin = createInlineToolbarPlugin({
@@ -60,14 +70,12 @@ const sideToolbarPlugin = createSideToolbarPlugin({
 
 const { SideToolbar } = sideToolbarPlugin;
 
-const imagePlugin = createImagePlugin();
-
 const { InlineToolbar } = inlineToolbarPlugin;
 // const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [
-  focusPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, sideToolbarPlugin,
+  focusPlugin, alignmentPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, sideToolbarPlugin,
   createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
 ];
 
@@ -82,7 +90,7 @@ export default class NDLAEditor extends Component {
     super(props);
     this.state = {
       editorState: props.editorState ? props.editorState : EditorState.createEmpty(),
-      useAltStyle: false,
+      useAltStyle: true,
     };
 
     this.logState = () => {
@@ -122,32 +130,36 @@ export default class NDLAEditor extends Component {
             handleKeyCommand={this.handleKeyCommand}
             ref={(element) => { this.editor = element; }}
           />
+          <AlignmentTool />
           <InlineToolbar />
           <SideToolbar />
         </div>
-        <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
-          <li style={{ marginTop: '10px' }}>
-            <ImageAdd
-              editorState={this.state.editorState}
-              onChange={this.onChange}
-              modifier={imagePlugin.addImage}
-            />
-          </li>
-          <li style={{ marginTop: '10px' }}>
-            <input
-              onClick={this.logState}
-              type="button"
-              value="Log State"
-            />
-          </li>
-          <li style={{ marginTop: '10px' }}>
-            <input
-              onClick={this.toogleAltStyle}
-              type="button"
-              value="Toggle alternative style"
-            />
-          </li>
-        </ul>
+        <div style={{ clear: 'both' }}>
+          <ul style={{ listStyleType: 'none', padding: '10px 0 0 0', margin: 0 }}>
+            <li style={{ marginTop: '10px' }}>
+              <ImageAdd
+                editorState={this.state.editorState}
+                onChange={this.onChange}
+                modifier={imagePlugin.addImage}
+              />
+            </li>
+            <li style={{ marginTop: '10px' }}>
+              <input
+                onClick={this.logState}
+                type="button"
+                value="Log State"
+              />
+            </li>
+            <li style={{ marginTop: '10px' }}>
+              <input
+                onClick={this.toogleAltStyle}
+                type="button"
+                value="Toggle alternative style"
+              />
+            </li>
+          </ul>
+
+        </div>
       </article>
     );
   }

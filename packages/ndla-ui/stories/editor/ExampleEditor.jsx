@@ -18,8 +18,9 @@ const initialState = {
     0: {
       type: 'image',
       mutability: 'IMMUTABLE',
+      align: 'right',
       data: {
-        src: 'http://api.test.ndla.no/images/full/ux_vs._ui_bm.png',
+        src: 'http://cdn.c.photoshelter.com/img-get2/I0000ej7TThAXh1g/sec=wdfsdfoeflwefms1000ed20161218PVDpmOVXSJ8u6zh/fit=1440x1440/.jpg',
       },
     },
   },

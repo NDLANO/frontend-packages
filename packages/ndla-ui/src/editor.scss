@@ -15,8 +15,10 @@
 @import "../node_modules/draft-js-focus-plugin/lib/plugin";
 
 
+$editor-width: 620px;
+
 .c-editor {
-  width: 620px;
+  width: $editor-width;
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
@@ -32,6 +34,10 @@
 
   :global(.public-DraftEditor-content) {
     min-height: 140px;
+  }
+
+  figure: {
+    max-width: $editor-width;
   }
 
   &--alt {

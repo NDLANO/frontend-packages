@@ -18,16 +18,15 @@ const initialState = {
     0: {
       type: 'image',
       mutability: 'IMMUTABLE',
-      align: 'right',
       data: {
-        src: 'http://cdn.c.photoshelter.com/img-get2/I0000ej7TThAXh1g/sec=wdfsdfoeflwefms1000ed20161218PVDpmOVXSJ8u6zh/fit=1440x1440/.jpg',
+        src: 'http://staging.api.ndla.no/image-api/v1/images/full/20131111-212116-pi.jpg',
       },
     },
   },
   blocks: [
     {
       key: '9gm3s',
-      text: 'Brukeropplevelse og brukergrensesnitt',
+      text: 'Lorem ipsum',
       type: 'header-one',
       depth: 0,
       inlineStyleRanges: [],
@@ -43,7 +42,7 @@ const initialState = {
       data: {},
     }, {
       key: '9xgmxs',
-      text: 'I første rekke handler utvikling av nettsider om å skape en god brukeropplevelse. Det vil si at brukerne av et nettsted skal forstå strukturen og klare å orientere seg, slik at de finner det de leter etter.',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],
@@ -62,8 +61,8 @@ const initialState = {
       }],
       data: {},
     }, {
-      key: 'e23a8',
-      text: 'Hva er forskjellen på design av UX, brukeropplevelse, og design av UI, brukergrensesnitt?',
+      key: '93gmxs',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

@@ -38,7 +38,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
-      <ArticleEditor articleId="99" />
+      <ArticleEditor articleId="36" />
     </Center>
   ))
   .add('Last artikkel i NDLAEditor', () => (

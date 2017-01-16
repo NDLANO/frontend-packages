@@ -20,7 +20,7 @@ export const fetchArticle = id => fetch(`${window.location.protocol}//api.test.n
   })),
 );
 
-export const fetchArticleFromApi = id => fetch(`${window.location.protocol}//api.test.ndla.no/articles/${id}`).then(res => (
+export const fetchArticleFromApi = id => fetch(`${window.location.protocol}//staging.api.ndla.no/article-api/v1/articles/${id}`).then(res => (
   new Promise((resolve, reject) => {
     if (res.ok) {
       return res.json()

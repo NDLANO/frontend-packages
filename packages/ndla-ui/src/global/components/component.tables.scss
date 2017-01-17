@@ -9,7 +9,7 @@
   tbody {
     display: inline-block;
     overflow-x: auto;
-    max-width: 100%;
+    // max-width: 100%;
 
     // optional - enable iOS momentum scrolling
     -webkit-overflow-scrolling: touch;
@@ -32,14 +32,20 @@
     padding: 4px 10px 4px 4px;
   }
 
-  tr {
-    padding: 0;
-    border: 0;
-    border: 1px solid $brand-color--light;
-    margin: 0;
-  }
   th {
     border-bottom: 3px solid $brand-color--light;
+  }
+  td {
+    border-top: 1px solid $brand-color--light;
+    border-bottom: 1px solid $brand-color--light;
+  }
+  td:first-child {
+    border-top: 1px solid $brand-color--light;
+    border-bottom: 1px solid $brand-color--light;
+  }
+  td:last-child {
+    border-top: 1px solid $brand-color--light;
+    border-bottom: 1px solid $brand-color--light;
   }
   td:first-child{
     background-color: none;
@@ -75,7 +81,7 @@
       background-repeat: no-repeat;
       background-size: 25px 100%;
     }
-    td:last-child, th:last-child {
+    td:last-child {
       background-color: none;
       background-image: linear-gradient(to left, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
       background-repeat: no-repeat;
@@ -92,14 +98,32 @@
     }
     td:first-child {
       border-top: 1px solid $brand-color;
-      border-left: 1px solid $brand-color;
       border-bottom: 1px solid $brand-color;
     }
     td:last-child {
       border-top: 1px solid $brand-color;
-      border-right: 1px solid $brand-color;
       border-bottom: 1px solid $brand-color;
     }
   }
 
+}
+// If not proper markup
+.c-article table {
+  display: inline-block;
+  overflow-x: auto;
+  max-width: 100%;
+
+  // optional - enable iOS momentum scrolling
+  -webkit-overflow-scrolling: touch;
+
+  // scrolling shadows on left/right
+  background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background-size: 15px 100%, 15px 100%;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
+
+  tbody {
+    background: none;
+  }
 }

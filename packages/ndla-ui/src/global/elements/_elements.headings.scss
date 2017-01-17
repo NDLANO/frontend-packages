@@ -18,7 +18,9 @@ h1, h2, h3, h4, h5 {
   font-weight: 900;
   margin: $spacing 0 $spacing 0;
 }
-
+h2 {
+  line-height: 1.5;
+}
 h3, h4 {
   font-variant: small-caps;
   text-transform: lowercase;

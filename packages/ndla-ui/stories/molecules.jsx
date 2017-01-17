@@ -13,12 +13,6 @@ import LicenseExample from './article/LicenseExample';
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
 };
-const toggleAside = (event) => {
-  const button = event.target;
-  const aside = button.previousSibling.firstChild;
-  aside.classList.toggle('expanded');
-  button.textContent = aside.classList.contains('expanded') ? 'Lukk' : 'Åpne';
-};
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
@@ -121,7 +115,6 @@ storiesOf('Sammensatte moduler', module)
           <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>  
           <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
       </Aside>
-      <Button className="c-aside__button" onClick={toggleAside}>Åpne</Button>
     </Center>
   ))
   .add('Sidenavigasjon', () => (

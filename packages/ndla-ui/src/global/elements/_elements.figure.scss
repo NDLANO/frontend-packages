@@ -1,6 +1,12 @@
 figure {
-  margin: 0;
+  margin: 0 0 $spacing 0;
   @include max-width();
+}
+figcaption {
+  background: $brand-grey--lightest;
+  font-size: 80%;
+  padding: $spacing / 2 $spacing;
+  color: gray;
 }
 //
 // .article_figure {

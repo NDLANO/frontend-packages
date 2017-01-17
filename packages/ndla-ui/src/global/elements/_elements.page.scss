@@ -58,6 +58,9 @@ hr {
 li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
+.c-aside__button {
+  @include max-width();
+}
 aside, article aside {
   width: 100%;
   display: inline-block;

@@ -1,10 +1,20 @@
 .c-table {
-  @include max-width();
+  position: relative;
+  margin: 0 0 $spacing 0;
+/*
+  &:before {
+    content: "";
+    position: absolute;
+    background: black;
+    height: 100%;
+    width: 1em;
+    top: 0;
+    right: 0;
+  }*/
   padding: 0;
-  margin: 0;
 
-
-
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 
   // Styling
   td, th {
@@ -22,51 +32,16 @@
   }
 
 
-
-  // Responsive tables (mobile first)
-  border-collapse:separate;
-  border-spacing:5em;
-
   tr {
     background: white;
     border: 1px solid $brand-color--tertiary;
     padding: 8px;
     margin: 0 0 20px;
-    display: block;
-  }
-  tr:first-child {
-    display: none;
-  }
-  tbody {
-    display: block;
-  }
-  thead, th {
-    display: none;
-  }
-  tbody td {
-    display: block;
-  }
-  tbody td:before {
-    content: attr(data-th);
-    display: block;
-  }
-}
 
-@include mq(tablet) {
-  .c-table {
-    border-spacing:0;
+  }
 
-    table {
-      background: white;
-      // box-shadow: 1px 2px 25px rgba(black, 0.2);
-      border: 1px solid $brand-color--light;
-    }
-    thead, th {
-      display:table-cell;
-    }
-    tbody {
-      display: table;
-    }
+
+
     tr, tr:first-child {
       padding: 0;
       border: 0;
@@ -86,5 +61,5 @@
     tbody td:before {
       display: none;
     }
-  }
+
 }

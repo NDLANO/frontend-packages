@@ -26,7 +26,7 @@ h2, h3 {
   margin-bottom: $spacing / 2;
 }
 article {
-  h1, h2 {
+  h1 {
     border-bottom: $inuit-global-border-width solid $brand-color--tertiary;
     display: table; /* inline block, but with newline for non-blocking sibling element */
     position: relative;

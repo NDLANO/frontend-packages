@@ -151,6 +151,18 @@ storiesOf('Sidevisninger', module)
   ))
   ;
 
+storiesOf('Brukertest', module)
+  .add('Virkelighet eller speilbilde?', () => (
+    <PageContainer>
+      <MastheadExample />
+      <OneColumn>
+        <ArticleLoader articleId="4" />
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
+  ;
+  
 storiesOf('Sidevisninger alternativ', module)
     .add('ArticlePage', () => (
       <PageContainer>

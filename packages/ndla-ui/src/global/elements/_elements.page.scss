@@ -26,7 +26,6 @@ body {
   color: $primary-color;
   height: 100%;
 }
-
 a:not([class]) {
   color: $primary-color;
   box-shadow: inset 0 -1px 0 rgba($primary-color, 0.6);
@@ -147,7 +146,11 @@ aside, article aside {
 
     > div {
       max-height: none;
-
+      &:hover {
+        &:before{
+          background: none;
+        }
+      }
       &:before {
         background: none;
       }

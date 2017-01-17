@@ -36,6 +36,7 @@
     border-bottom: 3px solid $brand-color--light;
   }
   td {
+    vertical-align: top;
     border-top: 1px solid $brand-color--light;
     border-bottom: 1px solid $brand-color--light;
   }
@@ -104,6 +105,11 @@
       border-top: 1px solid $brand-color;
       border-bottom: 1px solid $brand-color;
     }
+  }
+
+  // Remove excess spacing on headings inside table
+  h1,h2,h3,h4,h5 {
+    margin-top: 0;
   }
 
 }

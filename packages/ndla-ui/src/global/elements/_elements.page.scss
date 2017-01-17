@@ -59,7 +59,12 @@ li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 .c-aside__button {
-  @include max-width();
+  width: 100%;
+  background: $brand-color--light;
+
+  @include mq(desktop) {
+    display: none;
+  }
 }
 aside, article aside {
   width: 100%;
@@ -90,14 +95,17 @@ aside, article aside {
     }
     &:hover {
       &:before{
-        transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
         background: linear-gradient(rgba($brand-color--light,0),rgba($brand-color--light, 0.4))
       }
     }
   }
   .expanded {
     max-height: 500vh;
-
+    &:hover {
+      &:before{
+        background: none;
+      }
+    }
     &:before {
       background: none;
     }

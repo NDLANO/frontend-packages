@@ -51,6 +51,7 @@ aside, article aside {
     font-size: 110%;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-top: $spacing/2;
     margin-bottom:10px;
     border-bottom: 1px solid $brand-color--light;
   }
@@ -59,6 +60,7 @@ aside, article aside {
   }
   img {
     margin-bottom: $spacing/2;
+    width: 100%; // Remove later?
   }
 
   // Remove later - only for user test

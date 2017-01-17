@@ -9,4 +9,7 @@
     color: $brand-color;
     font-size: 80%;
   }
+  * {
+    @include max-width();
+  }
 }

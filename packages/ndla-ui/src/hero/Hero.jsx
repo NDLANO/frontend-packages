@@ -9,7 +9,7 @@
 import React, { PropTypes } from 'react';
 
 const bgStyle = {
-  backgroundImage: 'url(https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=)',
+  backgroundImage: 'url(https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=)',
 };
 
 export const Hero = ({ children }) =>

@@ -1,65 +1,129 @@
-.c-table {
-  position: relative;
-  margin: 0 0 $spacing 0;
-/*
-  &:before {
-    content: "";
-    position: absolute;
-    background: black;
-    height: 100%;
-    width: 1em;
-    top: 0;
-    right: 0;
-  }*/
-  padding: 0;
+.c-table, .c-article table {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 85%;
 
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  thead {
+    overflow:hidden;
+  }
+  tbody {
+    display: inline-block;
+    overflow-x: auto;
+    // max-width: 100%;
 
-  // Styling
+    // optional - enable iOS momentum scrolling
+    -webkit-overflow-scrolling: touch;
+
+    // scrolling shadows on left/right
+    background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+    background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+    background-size: 15px 100%, 15px 100%;
+    background-attachment: scroll, scroll;
+    background-repeat: no-repeat;
+  }
   td, th {
     padding: $spacing/3;
   }
   th, tbody td:before {
     color: $brand-color;
-    border-bottom: 1px solid $brand-color--light;
     font-weight: bold;
     font-size: 90%;
+    text-transform: uppercase;
     padding: 4px 10px 4px 4px;
   }
-  tr:hover td, tr:active td, tr:focus td {
-    background-color: $brand-color--light;
+
+  th {
+    border-bottom: 3px solid $brand-color--light;
+  }
+  td {
+    border-top: 1px solid $brand-color--light;
+    border-bottom: 1px solid $brand-color--light;
+  }
+  td:first-child {
+    border-top: 1px solid $brand-color--light;
+    border-bottom: 1px solid $brand-color--light;
+  }
+  td:last-child {
+    border-top: 1px solid $brand-color--light;
+    border-bottom: 1px solid $brand-color--light;
+  }
+  td:first-child{
+    background-color: none;
+    background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
+    background-repeat: no-repeat;
+    background-size: 25px 100%;
+  }
+  td:last-child, th:last-child {
+    background-color: transparent;
+    background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    background-size: 25px 100%;
+ }
+  tr:nth-child(2n) {
+
+    td {
+      position:relative;
+    }
+    td:before {
+      content:"";
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $table-bg;
+    }
+    td:first-child{
+      background-color: none;
+      background-image: linear-gradient(to right, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
+      background-repeat: no-repeat;
+      background-size: 25px 100%;
+    }
+    td:last-child {
+      background-color: none;
+      background-image: linear-gradient(to left, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
+      background-repeat: no-repeat;
+      background-position: 100% 0;
+      background-size: 25px 100%;
+    }
   }
 
-
-  tr {
-    background: white;
-    border: 1px solid $brand-color--tertiary;
-    padding: 8px;
-    margin: 0 0 20px;
-
+  //Hover border
+  tr:hover, tr:active, tr:focus {
+    td {
+      border-top: 1px solid $brand-color;
+      border-bottom: 1px solid $brand-color;
+    }
+    td:first-child {
+      border-top: 1px solid $brand-color;
+      border-bottom: 1px solid $brand-color;
+    }
+    td:last-child {
+      border-top: 1px solid $brand-color;
+      border-bottom: 1px solid $brand-color;
+    }
   }
 
+}
+// If not proper markup
+.c-article table {
+  display: inline-block;
+  overflow-x: auto;
+  max-width: 100%;
 
+  // optional - enable iOS momentum scrolling
+  -webkit-overflow-scrolling: touch;
 
-    tr, tr:first-child {
-      padding: 0;
-      border: 0;
-      border-bottom: 1px solid $brand-color--light;
-      margin: 0;
-      display: table-row;
-    }
-    tr:nth-child(2n) {
-      background-color: rgba($brand-color--light, 0.3);
-    }
-    tr:last-child {
-      border: none;
-    }
-    tbody td {
-      display: table-cell;
-    }
-    tbody td:before {
-      display: none;
-    }
+  // scrolling shadows on left/right
+  background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background-size: 15px 100%, 15px 100%;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
 
+  tbody {
+    background: none;
+  }
 }

@@ -2,6 +2,6 @@
 $font: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 
 
-p, ul, table, figure, hr {
+p, ul, hr {
   @include max-width();
 }

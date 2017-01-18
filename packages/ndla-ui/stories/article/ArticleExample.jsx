@@ -18,14 +18,14 @@ const toggle = (el) => {
 
 const ArticleExample = ({ article, withLicenseExample }) => (
   <Article>
-    <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
     { withLicenseExample && <LicenseExample /> }
     <h1>{article.title}</h1>
-    <ArticleByline date article={article} />
+    <ArticleByline authors date article={article} />
     <Article.Introduction introduction={article.introduction} />
     <div dangerouslySetInnerHTML={{ __html: article.content }} />
     { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
     { withLicenseExample && <LicenseExample /> }
+    <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
   </Article>
 );
 

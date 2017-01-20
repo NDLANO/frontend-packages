@@ -4,7 +4,7 @@ import { storiesOf } from '@kadira/storybook';
 
 import Tabs from 'ndla-tabs';
 
-import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn } from '../src';
+import { Aside, SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -165,13 +165,13 @@ storiesOf('Brukertest', module)
           </section>{/* react-empty: 56 */}
           <div>
             <section>
-              <aside>
+              <Aside>
                 <div>
                   <div>
+                    <h2>Huskelappen</h2>
                     <figure className="article_figure"><img
                       className="article_image"
                       src="http://test.api.ndla.no/image-api/v1/images/full/v2_medieuttrykk.gif"/></figure>
-                    <h2>Huskelappen</h2>
                     <p>
                       Begrepet <em>representasjon</em> brukes om ulike måter å gjengi virkeligheten på.
                     </p>
@@ -180,7 +180,7 @@ storiesOf('Brukertest', module)
                     </p>
                   </div>
                 </div>
-              </aside>
+              </Aside>
               <figure className="article_figure"><img
                 className="article_image"
                 src="http://test.api.ndla.no/image-api/v1/images/full/sx6989ca_0.jpg"/>
@@ -189,7 +189,7 @@ storiesOf('Brukertest', module)
               <h2>Hva er bilde, og hva er virkelighet?</h2>
             </section>
             <section>
-              <aside>
+              <Aside>
                 <div>
                   <div>
                     <h2>Unge stemmer</h2>
@@ -206,7 +206,7 @@ storiesOf('Brukertest', module)
                     </p>
                   </div>
                 </div>
-              </aside>
+              </Aside>
               <p>Studer bildet ovenfor. Hva er virkelig, og hva er kun et bilde av
                 virkeligheten? Maleriet er selvfølgelig et bilde av et vinterlandskap. Men hva
                 med fuglen? Den er vel virkelig, eller hva ...?</p>
@@ -233,7 +233,7 @@ storiesOf('Brukertest', module)
                 samme i alle kulturer.</p>
             </section>
             <section>
-              <aside>
+              <Aside>
                 <div>
                   <div>
                     <h2>
@@ -256,18 +256,18 @@ storiesOf('Brukertest', module)
                       src="http://test.api.ndla.no/image-api/v1/images/full/Religious_Symbols-ani.gif"/></figure>
                   </div>
                 </div>
-              </aside>
+              </Aside>
               <p>Tegn kan deles inn i tre grupper:</p>
               <table>
                 <tbody>
                   <tr>
-                    <th valign="top">
+                    <td valign="top">
                       <figure className="article_figure"><img
                         className="article_image"
                         alt="Svensk handicapskilt. Bilde."
                         src="http://test.api.ndla.no/image-api/v1/images/full/handicapskilt.jpg"/></figure>
-                    </th>
-                    <th valign="top">Et <em>ikon</em> ligner på det tegnet representerer. Hva representerer ikonet til venstre?</th>
+                    </td>
+                    <td valign="top">Et <em>ikon</em> ligner på det tegnet representerer. Hva representerer ikonet til venstre?</td>
                   </tr>
                   <tr>
                     <td valign="top">
@@ -317,7 +317,6 @@ storiesOf('Brukertest', module)
               </table>
             </section>
           </div>
-          <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" data-target="aside">Toggle boxes</button>
         </article>
       </OneColumn>
       <FooterExample />

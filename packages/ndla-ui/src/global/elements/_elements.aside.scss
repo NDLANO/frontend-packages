@@ -1,9 +1,9 @@
 aside, article aside, .c-article aside {
   width: 100%;
   display: inline-block;
-  margin: $spacing 0 0 0;
-  border: 1px solid $brand-color--light;
-  background: $brand-color--light;
+  margin: $spacing 0 $spacing 0;
+  border: 2px solid $brand-color--light;
+  // background: $brand-color--light;
   opacity: 0.9;
   border-radius-top: $inuit-global-radius;
   @include max-width();
@@ -27,11 +27,11 @@ aside, article aside, .c-article aside {
       right: 0;
       width: 100%;
       transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
-      background: linear-gradient(rgba($brand-color--light,0),$brand-color--light)
+      background: linear-gradient(rgba($brand-color--light,0),$white)
     }
     &:hover {
       &:after{
-        background: linear-gradient(rgba($brand-color--light,0),rgba($brand-color--light, 0.4))
+        background: linear-gradient(rgba($white,0),rgba($white, 0.4))
       }
     }
   }

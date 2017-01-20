@@ -41,6 +41,11 @@ aside, article aside, .c-article aside {
     &:after {
       background: none;
     }
+    &:hover {
+      &:after{
+        background: none;
+      }
+    }
   }
 
   *:first-child {

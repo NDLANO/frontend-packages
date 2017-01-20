@@ -165,25 +165,12 @@ storiesOf('Brukertest', module)
           </section>{/* react-empty: 56 */}
           <div>
             <section>
-              <Aside>
-                <div>
-                  <div>
-                    <h2>Huskelappen</h2>
-                    <figure className="article_figure"><img
-                      className="article_image"
-                      src="http://test.api.ndla.no/image-api/v1/images/full/v2_medieuttrykk.gif"/></figure>
-                    <p>
-                      Begrepet <em>representasjon</em> brukes om ulike måter å gjengi virkeligheten på.
-                    </p>
-                    <p>
-                      Begrepet <em>tegn</em> brukes om meningsbærende enheter.
-                    </p>
-                  </div>
-                </div>
-              </Aside>
-              <figure className="article_figure"><img
-                className="article_image"
-                src="http://test.api.ndla.no/image-api/v1/images/full/sx6989ca_0.jpg"/>
+              <figure className="article_figure">
+                <img
+                  alt="test"
+                  className="article_image"
+                  src="http://test.api.ndla.no/image-api/v1/images/full/sx6989ca_0.jpg"
+                />
                 <figcaption className="article_caption">Representasjon /Knut Snare /Aftenposten /Scanpix</figcaption>
               </figure>
               <h2>Hva er bilde, og hva er virkelighet?</h2>
@@ -241,6 +228,7 @@ storiesOf('Brukertest', module)
                     </h2>
                     <figure className="article_figure">
                       <img
+                        alt="test"
                         className="article_image"
                         src="http://test.api.ndla.no/image-api/v1/images/full/Sykkelskiltet.jpg"
                       /></figure>
@@ -251,9 +239,13 @@ storiesOf('Brukertest', module)
                     </p>
                     <p>Symboler spiller en viktig rolle i de fleste religioner.</p>
                     <p>Klikk på bildet. Kjenner du igjen noen av disse symbolene?</p>
-                    <figure className="article_figure"><img
-                      className="article_image"
-                      src="http://test.api.ndla.no/image-api/v1/images/full/Religious_Symbols-ani.gif"/></figure>
+                    <figure className="article_figure">
+                      <img
+                        alt="test"
+                        className="article_image"
+                        src="http://test.api.ndla.no/image-api/v1/images/full/Religious_Symbols-ani.gif"
+                      />
+                    </figure>
                   </div>
                 </div>
               </Aside>
@@ -261,44 +253,54 @@ storiesOf('Brukertest', module)
               <table>
                 <tbody>
                   <tr>
-                    <td valign="top">
-                      <figure className="article_figure"><img
-                        className="article_image"
-                        alt="Svensk handicapskilt. Bilde."
-                        src="http://test.api.ndla.no/image-api/v1/images/full/handicapskilt.jpg"/></figure>
+                    <td>
+                      <figure className="article_figure">
+                        <img
+                          alt="test"
+                          className="article_image"
+                          alt="Svensk handicapskilt. Bilde."
+                          src="http://test.api.ndla.no/image-api/v1/images/full/handicapskilt.jpg"
+                        /></figure>
                     </td>
-                    <td valign="top">Et <em>ikon</em> ligner på det tegnet representerer. Hva representerer ikonet til venstre?</td>
+                    <td>Et <em>ikon</em> ligner på det tegnet representerer. Hva representerer ikonet til venstre?</td>
                   </tr>
                   <tr>
-                    <td valign="top">
-                      <figure className="article_figure"><img
-                        className="article_image"
-                        src="http://test.api.ndla.no/image-api/v1/images/full/fotavtrykk.jpg"/></figure>
-                    </td>
-                    <td valign="top"><em>Indekser</em> er tegn som indirekte representerer noe annet. Studer tegnet til venstre. Hva
+                    <td>
+                      <figure className="article_figure">
+                        <img
+                          alt="test"
+                          className="article_image"
+                          src="http://test.api.ndla.no/image-api/v1/images/full/fotavtrykk.jpg"
+                        /></figure>
+                      </td>
+                    <td><em>Indekser</em> er tegn som indirekte representerer noe annet. Studer tegnet til venstre. Hva
                       har skjedd før fotavtrykket oppsto? Hva representerer dette tegnet?</td>
                   </tr>
                   <tr>
                     <td>
-                      <figure className="article_figure"><img
-                        className="article_image"
-                        alt="Svensk severdighet-skilt. Bilde."
-                        src="http://test.api.ndla.no/image-api/v1/images/full/severdighetssymbol.jpg"/></figure>
+                      <figure className="article_figure">
+                        <img
+                          alt="test"
+                          className="article_image"
+                          alt="Svensk severdighet-skilt. Bilde."
+                          src="http://test.api.ndla.no/image-api/v1/images/full/severdighetssymbol.jpg"
+                        /></figure>
                     </td>
-                    <td valign="top">Et <em>symbol</em> trenger ikke å ha noen likhet med det tegnet representerer. Men det er et tegn
+                    <td>Et <em>symbol</em> trenger ikke å ha noen likhet med det tegnet representerer. Men det er et tegn
                       som alle i samme kultur har lært seg betydningen av. Hva betyr symbolet til
                       venstre? Vil det ha samme betydning overalt i verden?</td>
                   </tr>
                   <tr>
-                    <td valign="top">
+                    <td>
                       <figure className="article_figure">
                         <img
+                          alt="test"
                           className="article_image"
                           src="http://test.api.ndla.no/image-api/v1/images/full/haandtegn.jpg"
                         />
                       </figure>
                     </td>
-                    <td valign="top">
+                    <td>
                       <h3>
                         NB!
                       </h3>
@@ -315,6 +317,22 @@ storiesOf('Brukertest', module)
                   </tr>
                 </tbody>
               </table>
+              <Aside>
+                <div>
+                  <div>
+                    <h2>Huskelappen</h2>
+                    <figure className="article_figure"><img
+                      className="article_image"
+                      src="http://test.api.ndla.no/image-api/v1/images/full/v2_medieuttrykk.gif"/></figure>
+                    <p>
+                      Begrepet <em>representasjon</em> brukes om ulike måter å gjengi virkeligheten på.
+                    </p>
+                    <p>
+                      Begrepet <em>tegn</em> brukes om meningsbærende enheter.
+                    </p>
+                  </div>
+                </div>
+              </Aside>
             </section>
           </div>
         </article>

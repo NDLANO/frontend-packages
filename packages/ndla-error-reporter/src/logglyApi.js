@@ -8,9 +8,15 @@
 
 import fetch from 'isomorphic-fetch';
 
-const LOGGLY_URL = 'https://logs-01.loggly.com';
+const logglyUrl = (() => {
+  if (process.env.NODE_ENV === 'unittest') {
+    return 'http://loggly-mock-api';
+  }
 
-export default (logglyApiKey, data) => fetch(`${LOGGLY_URL}/inputs/${logglyApiKey}/`, {
+  return 'https://logs-01.loggly.com';
+})();
+
+export default (logglyApiKey, data) => fetch(`${logglyUrl}/inputs/${logglyApiKey}/`, {
   method: 'POST',
   body: JSON.stringify(data),
 }).catch((ex) => {

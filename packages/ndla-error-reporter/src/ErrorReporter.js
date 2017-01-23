@@ -33,12 +33,12 @@ const ErrorReporter = (function Singleton() {
   }
 
   function getLogData(stackInfo, store) {
+    const state = store ? store.getState() : undefined;
     return {
       level: 'error',
       text: `${stackInfo.name}: ${stackInfo.message}`,
-      userAgent: navigator.userAgent,
       stackInfo,
-      state: store.getState(),
+      state,
     };
   }
 

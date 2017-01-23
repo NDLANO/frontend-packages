@@ -25,6 +25,7 @@ $mq-breakpoints: (
 @import "../node_modules/inuitcss/generic/generic.shared";
 
 // ELEMENTS
+$inuit-wrapper-width: 1024px;
 @import "global/elements/elements.page";
 @import "../node_modules/inuitcss/elements/elements.headings";
 @import "global/elements/elements.headings";
@@ -35,10 +36,11 @@ $mq-breakpoints: (
 @import "global/elements/elements.tables";
 @import "global/elements/elements.lists";
 @import "global/elements/elements.details";
-@import "global/elements/elements.aside";
+// @import "global/elements/elements.aside";
+@import "global/elements/elements.footer";
+@import "global/elements/elements.iframe";
 
 // OBJECTS
-$inuit-wrapper-width: 1024px;
 @import "../node_modules/inuitcss/objects/objects.wrapper";
 @import "../node_modules/inuitcss/objects/objects.layout";
 @import "../node_modules/inuitcss/objects/objects.media";
@@ -51,6 +53,7 @@ $inuit-wrapper-width: 1024px;
 
 // COMPONENTS
 @import "global/components/component.article";
+@import "global/components/component.aside";
 @import "global/components/component.factbox";
 @import "global/components/component.bodybox";
 @import "global/components/component.breadcrumbs";

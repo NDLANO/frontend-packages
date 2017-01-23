@@ -26,6 +26,7 @@ body {
   color: $primary-color;
   height: 100%;
 }
+
 a:not([class]) {
   color: $primary-color;
   box-shadow: inset 0 -1px 0 rgba($primary-color, 0.6);
@@ -58,6 +59,7 @@ li {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 .c-aside__button {
+  @include max-width();
   width: 100%;
   background: $brand-color--light;
 
@@ -67,8 +69,8 @@ li {
 }
 
 section {
-  overflow: auto;
-  padding: 0 $spacing / 2;
+  // overflow: auto;
+  // padding: 0 $spacing / 2;
 
   @include mq(tablet) {
     padding: 0 $spacing * 1.5;

@@ -5,7 +5,7 @@ import '../src/main.scss';
 setOptions({
   name: 'NDLA Designmanual',
   url: 'https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-ui',
-  goFullScreen: false,
+  goFullScreen: true,
   showLeftPanel: true,
   showDownPanel: false,
   showSearchBox: false,

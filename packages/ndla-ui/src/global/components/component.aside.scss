@@ -9,6 +9,11 @@
   max-height: 150px;
   overflow:hidden;
 
+  // Needs better solution
+  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,iframe,table, table tbody {
+  max-width: 100%;
+  }
+
   @include mq(desktop) {
     border: 0;
     margin-top: 0;

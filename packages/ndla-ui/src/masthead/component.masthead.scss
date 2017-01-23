@@ -1,0 +1,18 @@
+.masthead {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $brand-grey;
+  box-shadow: 1px 1px 2px 0 $brand-grey-dark;
+  @include mq(desktop) {
+      justify-content: space-between;
+  }
+}
+.masthead__left {
+    text-align: center;
+}
+.masthead__right {
+    @include mq(desktop) {
+        padding: $spacing;
+    }
+}

@@ -19,7 +19,7 @@ const ErrorReporter = (function Singleton() {
   const sessionId = uuid();
 
   function sendToLoggly(data, config) {
-    // Don't send to loggly if environment is undefined
+    // Don't send to loggly if api key is undefined or no remaining messages
     if (!config.logglyApiKey || messagesRemaining < 1) {
       return;
     }

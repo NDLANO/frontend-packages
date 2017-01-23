@@ -2,7 +2,6 @@ aside, article aside, .c-article aside {
   width: 100%;
   display: inline-block;
   margin: $spacing 0 $spacing 0;
-  border: 2px solid $brand-color--light;
   // background: $brand-color--light;
   opacity: 0.9;
   border-radius-top: $inuit-global-radius;
@@ -92,7 +91,7 @@ aside, article aside, .c-article aside {
       &:after {
         display: none;
       }
-     
+
     }
   }
 }

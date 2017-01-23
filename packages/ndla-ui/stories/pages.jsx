@@ -158,6 +158,22 @@ storiesOf('Brukertest', module)
       <OneColumn>
         <article className="c-article">
           <h1>Virkelighet eller speilbilde?</h1>
+           <Aside>
+                <div>
+                  <div>
+                    <h2>Huskelappen</h2>
+                    <figure className="article_figure"><img
+                      className="article_image"
+                      src="http://test.api.ndla.no/image-api/v1/images/full/v2_medieuttrykk.gif"/></figure>
+                    <p>
+                      Begrepet <em>representasjon</em> brukes om ulike måter å gjengi virkeligheten på.
+                    </p>
+                    <p>
+                      Begrepet <em>tegn</em> brukes om meningsbærende enheter.
+                    </p>
+                  </div>
+                </div>
+              </Aside>
           <section className="c-article__byline">
             <span className="c-article__authors">Thomas Nupen, Ragna Marie Tørdal</span>
               –&nbsp;
@@ -317,22 +333,6 @@ storiesOf('Brukertest', module)
                   </tr>
                 </tbody>
               </table>
-              <Aside>
-                <div>
-                  <div>
-                    <h2>Huskelappen</h2>
-                    <figure className="article_figure"><img
-                      className="article_image"
-                      src="http://test.api.ndla.no/image-api/v1/images/full/v2_medieuttrykk.gif"/></figure>
-                    <p>
-                      Begrepet <em>representasjon</em> brukes om ulike måter å gjengi virkeligheten på.
-                    </p>
-                    <p>
-                      Begrepet <em>tegn</em> brukes om meningsbærende enheter.
-                    </p>
-                  </div>
-                </div>
-              </Aside>
             </section>
           </div>
         </article>

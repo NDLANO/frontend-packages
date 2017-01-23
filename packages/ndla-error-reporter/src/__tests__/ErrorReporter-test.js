@@ -40,7 +40,7 @@ test('ndla-error-reporter/ErrorReporter can captureMessage', () => {
   apiMock.done();
 });
 
-test('ndla-error-reporter/ErrorReporter captures onerror calls and ', () => {
+test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly', () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', {
       level: 'error',
@@ -59,6 +59,26 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and ', () => {
   try {
     someUndefinedFunction(); // eslint-disable-line no-undef
   } catch (e) {
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+  }
+
+  apiMock.done();
+});
+
+test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () => {
+  const apiMock = nock('http://loggly-mock-api')
+    .post('/inputs/1223/', {
+      text: 'TypeError: Cannot set property \'foo\' of null',
+    })
+    .reply(200);
+
+  // simmulate several duplicate on error calls
+  try {
+    const someVal = null;
+    someVal.foo = 1;
+  } catch (e) {
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
     window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 

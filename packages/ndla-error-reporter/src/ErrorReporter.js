@@ -13,6 +13,7 @@ import send from './logglyApi';
 
 const ErrorReporter = (function Singleton() {
   let instance;
+  let previousNotification;
 
   const sessionId = uuid();
 
@@ -46,6 +47,16 @@ const ErrorReporter = (function Singleton() {
     // Suscribes to window.onerror
     TraceKit.report.subscribe((stackInfo) => {
       const data = getLogData(stackInfo, config.store);
+
+      // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
+      const firstFrame = stackInfo.stack[0] ? stackInfo.stack[0] : {};
+      const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
+
+      if (deduplicate === previousNotification) {
+        return;
+      }
+      previousNotification = deduplicate;
+
       sendToLoggly(data, config);
     });
 

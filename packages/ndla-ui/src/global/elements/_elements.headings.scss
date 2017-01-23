@@ -23,7 +23,10 @@ h1 + .c-article__byline {
   margin-top: -$spacing / 2;
 }
 h2 {
-  line-height: 1.5;
+  line-height: 1;
+  @include mq(desktop) {
+    line-height: 1.5;
+  }
 }
 h2, h3 {
   font-variant: small-caps;

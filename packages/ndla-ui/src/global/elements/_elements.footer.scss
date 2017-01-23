@@ -1,0 +1,57 @@
+.footer_editor {
+  display: block;
+  margin-bottom: $spacing/2;
+  padding: 0;
+
+  @include mq(desktop) {
+    display: inline;
+  }
+}
+
+
+.footer {
+  color: $brand-grey-dark;
+  flex: none;
+  padding: 3.5em 10%;
+  margin-top: 3em;
+
+  @include mq(tablet) {
+    padding: 2em;
+  }
+
+  @include mq(desktop) {
+    padding: 3.5em 15%;
+  }
+}
+
+.footer--bold {
+  font-weight: 600;
+}
+
+
+.footer_form {
+  padding-left: 5%;
+  display: inline;
+
+  @include mq(desktop) {
+    display: block;
+  }
+}
+
+.footer_label {
+  padding-right: 1em;
+  display: inline-block;
+}
+
+.footer_ruler {
+  width: 100%;
+  border-top: 1px solid $brand-grey;
+  padding-bottom: 1em;
+  margin-top: 1em;
+}
+
+.footer_text {
+  padding-left: 5%;
+  margin-bottom: 0;
+  margin-top: 0.3em;
+}

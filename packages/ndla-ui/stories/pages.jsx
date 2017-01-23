@@ -35,18 +35,18 @@ const FooterExample = () => (
 const ResourcesTab1Content = () => (
   <div>
     <div className="c-article">
-      <h3><a href="#">Innføring i journalistikk</a></h3>
+      <h3><button>Innføring i journalistikk</button></h3>
       <p>5 mins om the basics</p>
     </div>
     <div className="c-article">
-      <h3><a href="#">Innføring i journalistikk</a></h3>
+      <h3><button>Innføring i journalistikk</button></h3>
       <p>5 mins om the basics</p>
     </div>
     <div className="c-article">
-      <h3><a href="#">Innføring i journalistikk</a></h3>
+      <h3><button>Innføring i journalistikk</button></h3>
       <p>5 mins om the basics</p>
     </div>
-    <p><a href="#">Se alle læringsstier</a></p>
+    <p><button>Se alle læringsstier</button></p>
   </div>
 );
 

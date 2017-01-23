@@ -7,7 +7,7 @@ import Tabs from 'ndla-tabs';
 import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
-import { Aside, Button, SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList, LicenseByline, ClickableLicenseByline } from '../src';
+import { Aside, SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList, LicenseByline, ClickableLicenseByline } from '../src';
 import LicenseExample from './article/LicenseExample';
 
 const toggle = () => {
@@ -96,7 +96,8 @@ storiesOf('Sammensatte moduler', module)
                 <details>
                   <ol>
                     <li>Beskriv hva internkontroll er.</li>
-                    <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får dekket sine behov for ernæring. Ta gjerne utgangspunkt i en arbeidsplass. Diskuter deretter i klassen.</li>
+                    <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får
+                    dekket sine behov for ernæring. Ta gjerne utgangspunkt i en arbeidsplass. Diskuter deretter i klassen.</li>
                   </ol>
                 </details></ol>
             </div>
@@ -109,10 +110,14 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Aside>
         <div>
-          <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>  
+          <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
           <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-          <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>  <div><figure class="article_audio"><audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3"></audio><figcaption>medieutdanning</figcaption></figure></div> <h2>Ressurser</h2> <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>  
-          <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>  
+          <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
+          <div><figure className="article_audio">
+            <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
+          <h2>Ressurser</h2>
+          <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
+          <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
           <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
       </Aside>
     </Center>

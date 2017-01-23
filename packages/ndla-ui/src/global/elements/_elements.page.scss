@@ -60,6 +60,12 @@ li {
 }
 .c-aside__button {
   @include max-width();
+  width: 100%;
+  background: $brand-color--light;
+
+  @include mq(desktop) {
+    display: none;
+  }
 }
 
 section {

@@ -3,7 +3,7 @@ ul, ol {
   padding: 0 1em;
 }
 
-aside ul, .o-list--arrows {
+aside ul, article ul, .o-list--arrows {
   list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='4' cy='4' r='4' fill='" + $brand-color + "'   /></svg>");
 
   &--invert {

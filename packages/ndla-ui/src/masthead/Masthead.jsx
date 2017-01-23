@@ -12,8 +12,8 @@ import classNames from 'classnames';
 export const MastheadItem = ({ children, className, left, right }) => {
   const classes = classNames(
     className,
-    { masthead_left: left },
-    { masthead_right: right },
+    { masthead__left: left },
+    { masthead__right: right },
   );
   return (
     <div className={classes}>

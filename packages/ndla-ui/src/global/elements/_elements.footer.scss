@@ -18,10 +18,10 @@
 .footer_editor {
   display: block;
   margin-bottom: $spacing/2;
-  padding: 0;
+  padding-right: $spacing/2;
 
   @include mq(desktop) {
-    display: inline;
+    display: inline-block;
   }
 }
 .footer--bold {

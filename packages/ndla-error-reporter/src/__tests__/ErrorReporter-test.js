@@ -84,3 +84,18 @@ test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () =
 
   apiMock.done();
 });
+
+test('ndla-error-reporter/ErrorReporter should not send more then 10 messages', () => {
+  errorReporter.refresh();
+
+  const apiMock = nock('http://loggly-mock-api')
+    .post('/inputs/1223/', { text: 'Log message' })
+    .times(10)
+    .reply(200);
+
+  for (let i = 0; i < 15; i += 1) {
+    errorReporter.captureMessage('Log message');
+  }
+
+  apiMock.done();
+});

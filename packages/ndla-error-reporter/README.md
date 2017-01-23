@@ -1,7 +1,9 @@
 # ndla-error-reporter
 
 Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.
-  
+
+N.B. Number of messages is limited to 10 per session (reset by browser refresh).
+
 ## Installation
 
 ```sh
@@ -33,4 +35,12 @@ Sends a text/message to Loggly with log level info
 
 ```js
 ErrorReporter.captureMessage('Testing');
+```
+
+### `ErrorReporter.refresh()`
+
+Reset remaining messages to 10.
+
+```js
+ErrorReporter.refresh();
 ```

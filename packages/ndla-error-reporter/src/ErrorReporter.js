@@ -14,14 +14,17 @@ import send from './logglyApi';
 const ErrorReporter = (function Singleton() {
   let instance;
   let previousNotification;
+  let messagesRemaining = 10;
 
   const sessionId = uuid();
 
   function sendToLoggly(data, config) {
     // Don't send to loggly if environment is undefined
-    if (!config.environment) {
+    if (!config.logglyApiKey || messagesRemaining < 1) {
       return;
     }
+
+    messagesRemaining -= 1;
 
     const extendedData = {
       ...data,
@@ -61,6 +64,9 @@ const ErrorReporter = (function Singleton() {
     });
 
     return {
+      refresh() {
+        messagesRemaining = 10;
+      },
       captureMessage(msg) {
         sendToLoggly({ text: msg, level: 'info' }, config);
       },

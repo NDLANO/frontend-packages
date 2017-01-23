@@ -6,8 +6,14 @@ $darken-factor: 10%;
 
 @mixin max-width() {
   max-width: 100%;
+  @include mq(desktop) {
+    max-width: 60%;
+  }
+}
+@mixin aside-max-width() {
+  max-width: 100%;
   @include mq(tablet) {
-    max-width: 610px;
+    max-width: 30%;
   }
 }
 @mixin full-width() {

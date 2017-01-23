@@ -1,0 +1,129 @@
+.c-aside, aside {
+  display: inline-block;
+  position: relative;
+  border: 2px solid $brand-color;
+  border-radius-top: $inuit-global-radius;
+  margin: $spacing 0 $spacing 0;
+  padding-bottom: $spacing;
+  transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
+  max-height: 150px;
+  overflow:hidden;
+
+  @include mq(desktop) {
+    border: 0;
+    margin-top: 0;
+    border-left: 1px solid $brand-color--light;
+    padding-left: $spacing*1.5;
+    padding-bottom: 0;
+    max-height: none;
+    width: 33%;
+  }
+
+  &:after {
+    content: "";
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
+    background: linear-gradient(rgba($brand-color--light,0),$white)
+  }
+  @include mq(desktop) {
+    &:after {
+      display: none;
+    }
+  }
+
+  &.expanded {
+    max-height: 500vh;
+
+    &:after {
+      background: none;
+    }
+  }
+  @include mq(desktop) {
+    @include font-size(16px);
+    float: right;
+    clear: both;
+    padding: 0 0 0 $spacing*1.5;
+    border: none;
+    border-left: 1px solid $brand-color--light;
+
+    > div {
+      max-height: none;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  // Overrides
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  img {
+    box-shadow: 0px 0px 9px -3px $brand-grey;
+  }
+  h2,h3,h4,h5 {
+    display: block;
+    font-size: 110%;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: $spacing/2;
+    margin-bottom: $spacing/2;
+    border-bottom: 1px solid $brand-color--light;
+  }
+  img {
+    margin-bottom: $spacing/2;
+    width: 100%; // Remove later?
+  }
+
+  // Remove later - only for user test
+  strong {
+    font-weight: normal;
+  }
+}
+.c-aside__content {
+  color: $brand-grey-dark;
+  padding: $spacing $spacing $spacing*2;
+
+  @include mq(desktop) {
+    padding: 0;
+  }
+  * {
+    max-width: 100% !important; // Dirty
+  }
+}
+.c-aside__button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  bottom: 20px;
+  box-shadow: 0 0px 29px grey;
+  margin: auto;
+  width: 120px;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $white;
+    margin-bottom: 2px;
+    margin-left: 5px;
+  }
+}
+.c-aside.expanded {
+  .c-aside__button:after {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid $white;
+  }
+}

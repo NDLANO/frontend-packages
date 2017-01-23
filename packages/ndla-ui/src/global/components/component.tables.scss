@@ -7,7 +7,6 @@
     overflow:hidden;
   }
   tbody {
-    display: inline-block;
     overflow-x: auto;
     // max-width: 100%;
 
@@ -117,7 +116,7 @@
 .c-article table {
   display: inline-block;
   overflow-x: auto;
-  max-width: 100%;
+  @include max-width();
 
   // optional - enable iOS momentum scrolling
   -webkit-overflow-scrolling: touch;
@@ -131,5 +130,6 @@
 
   tbody {
     background: none;
+    width: 100%;
   }
 }

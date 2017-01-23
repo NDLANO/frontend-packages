@@ -7,7 +7,7 @@ $darken-factor: 10%;
 @mixin max-width() {
   max-width: 100%;
   @include mq(tablet) {
-    max-width: 530px;
+    max-width: 610px;
   }
 }
 @mixin full-width() {

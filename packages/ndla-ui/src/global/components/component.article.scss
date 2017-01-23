@@ -9,8 +9,11 @@
     color: $brand-color;
     font-size: 80%;
   }
-  h1,h2,h3,h4,h5,a,p,ul,li,code,figure,video,iframe,table, table tbody {
-    @include max-width();  
+  em {
+    display:inline-block;
+  }
+  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,iframe,table, table tbody {
+    @include max-width();
   }
 
 }

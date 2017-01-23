@@ -11,7 +11,7 @@ const toggleAside = (event) => {
 const Aside = ({ ...rest }) => (
   <aside className="c-aside u-1/3@desktop">
     <div className="c-aside__content">{rest.children}</div>
-    <Button className="c-aside__button" onClick={toggleAside}>Åpne</Button>
+    <Button className="c-aside__button c-button--outline" onClick={toggleAside}>Åpne</Button>
   </aside>);
 
 export default Aside;

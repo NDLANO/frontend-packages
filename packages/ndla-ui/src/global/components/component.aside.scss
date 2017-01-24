@@ -123,6 +123,9 @@
       border-top: 5px solid $brand-color;
     }
   }
+  @include mq(desktop) {
+    display: none;
+  }
 }
 .c-aside.expanded {
   .c-aside__button:after {

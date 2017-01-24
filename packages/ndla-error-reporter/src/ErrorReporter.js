@@ -55,12 +55,10 @@ const ErrorReporter = (function Singleton() {
       const firstFrame = stackInfo.stack[0] ? stackInfo.stack[0] : {};
       const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
 
-      if (deduplicate === previousNotification) {
-        return;
+      if (deduplicate !== previousNotification) {
+        previousNotification = deduplicate;
+        sendToLoggly(data, config);
       }
-      previousNotification = deduplicate;
-
-      sendToLoggly(data, config);
     });
 
     return {

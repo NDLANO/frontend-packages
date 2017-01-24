@@ -17,7 +17,7 @@ import ErrorReporter from 'ndla-error-reporter');
 
 const reduxStore = configureStore();
 
-window.ErrorReporter = ErrorReporter.getInstance({ logglyApiKey: 'xxx', store: reduxStore, environment: 'test', componentName: 'ndla-frontend' });
+window.errorReporter = ErrorReporter.getInstance({ logglyApiKey: 'xxx', store: reduxStore, environment: 'test', componentName: 'ndla-frontend' });
 
 ReactDOM.render(
   <Provider store={store} locale={locale}>
@@ -27,20 +27,55 @@ ReactDOM.render(
 );
 ```
 
+**ErrorReporter is a singleton:**
+
+```js
+// After initial instantiation
+import ErrorReporter from 'ndla-error-reporter');
+
+ErrorReporter.getInstance().captureMessage('Testing');
+```
+
+
 ## API(functions)
 
-### `ErrorReporter.captureMessage()`
+### `ErrorReporter.captureError(error, [additionalInfo])`
+
+Processes error and sends error info to Loggly with optional additional info.
+
+```js
+try {
+  // some "dangerous" code
+} catch (e) {
+  errorReporter.captureError(e, {url: 'http://example.com'});
+}
+```
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `error` | `Object` | **Required.** [Error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) to process and send to Loggy. |
+| `additionalInfo` | `Object` | **Optional.** Additional information you want to send to Loggly. |
+
+### `ErrorReporter.captureMessage(msg)`
 
 Sends a text/message to Loggly with log level info
 
 ```js
-ErrorReporter.captureMessage('Testing');
+errorReporter.captureMessage('Testing');
 ```
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `msg` | `String` | **Required.** The message you want to send to Loggly. |
 
 ### `ErrorReporter.refresh()`
 
 Reset remaining messages to 10.
 
 ```js
-ErrorReporter.refresh();
+errorReporter.refresh();
 ```

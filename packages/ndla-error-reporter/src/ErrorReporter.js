@@ -6,7 +6,7 @@
  *
  */
 
-import TraceKit from 'tracekit';
+import TraceKit from 'raven-js/vendor/TraceKit/tracekit';
 import { uuid } from 'ndla-util';
 
 import send from './logglyApi';
@@ -48,14 +48,14 @@ const ErrorReporter = (function Singleton() {
   }
 
   function processStackInfo(stackInfo, config, additionalInfo) {
-    const data = getLogData(stackInfo, config.store, additionalInfo);
-
     // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
+    // console.log(stackInfo);
     const firstFrame = stackInfo.stack[0] ? stackInfo.stack[0] : {};
     const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
 
     if (deduplicate !== previousNotification) {
       previousNotification = deduplicate;
+      const data = getLogData(stackInfo, config.store, additionalInfo);
       sendToLoggly(data, config);
     }
   }

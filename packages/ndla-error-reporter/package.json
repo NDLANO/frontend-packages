@@ -36,6 +36,6 @@
     "nock": "^9.0.2"
   },
   "dependencies": {
-    "tracekit": "^0.4.4"
+    "raven-js": "^3.9.2"
   }
 }

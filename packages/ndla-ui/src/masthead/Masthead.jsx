@@ -36,7 +36,9 @@ MastheadItem.defaultProps = {
 
 export const Masthead = ({ children }) =>
   <div className="masthead">
-    {children}
+    <div className="o-wrapper u-1/1">
+      {children}
+    </div>
   </div>;
 
 Masthead.propTypes = {

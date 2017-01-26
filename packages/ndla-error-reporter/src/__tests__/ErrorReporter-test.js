@@ -25,7 +25,7 @@ test('ndla-error-reporter/ErrorReporter is singleton', () => {
   expect(errorReporter).toBe(ErrorReporter.getInstance());
 });
 
-test('ndla-error-reporter/ErrorReporter can captureMessage', () => {
+test('ndla-error-reporter/ErrorReporter can capture message', () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', {
       level: 'info',
@@ -36,6 +36,38 @@ test('ndla-error-reporter/ErrorReporter can captureMessage', () => {
     .reply(200);
 
   errorReporter.captureMessage('Log message');
+
+  apiMock.done();
+});
+
+test('ndla-error-reporter/ErrorReporter can capture error', () => {
+  const apiMock = nock('http://loggly-mock-api')
+    .post('/inputs/1223/', {
+      level: 'error',
+      text: 'Error: Some generic error',
+      stackInfo: {
+        name: 'Error',
+      },
+      appName: 'unittest/ndla-frontend',
+      userAgent: /Node\.js.+/,
+    })
+    .reply(200);
+
+  errorReporter.captureError(new Error('Some generic error'));
+
+  apiMock.done();
+});
+
+test('ndla-error-reporter/ErrorReporter can capture error with additional info', () => {
+  const apiMock = nock('http://loggly-mock-api')
+    .post('/inputs/1223/', {
+      level: 'error',
+      text: 'Error: Some other generic error',
+      from: 'unittest',
+    })
+    .reply(200);
+
+  errorReporter.captureError(new Error('Some other generic error'), { from: 'unittest' });
 
   apiMock.done();
 });

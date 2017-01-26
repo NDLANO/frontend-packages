@@ -6,7 +6,7 @@
  *
  */
 
-import TraceKit from 'tracekit';
+import TraceKit from 'raven-js/vendor/TraceKit/tracekit';
 import { uuid } from 'ndla-util';
 
 import send from './logglyApi';
@@ -36,31 +36,33 @@ const ErrorReporter = (function Singleton() {
     send(config.logglyApiKey, extendedData);
   }
 
-  function getLogData(stackInfo, store) {
+  function getLogData(stackInfo, store, additionalInfo = {}) {
     const state = store ? store.getState() : undefined;
     return {
       level: 'error',
       text: `${stackInfo.name}: ${stackInfo.message}`,
       stackInfo,
       state,
+      ...additionalInfo,
     };
+  }
+
+  function processStackInfo(stackInfo, config, additionalInfo) {
+    // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
+    const firstFrame = stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
+    const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
+
+    if (deduplicate !== previousNotification) {
+      previousNotification = deduplicate;
+      const data = getLogData(stackInfo, config.store, additionalInfo);
+      sendToLoggly(data, config);
+    }
   }
 
   function init(config) {
     // Suscribes to window.onerror
     TraceKit.report.subscribe((stackInfo) => {
-      const data = getLogData(stackInfo, config.store);
-
-      // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
-      const firstFrame = stackInfo.stack[0] ? stackInfo.stack[0] : {};
-      const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
-
-      if (deduplicate === previousNotification) {
-        return;
-      }
-      previousNotification = deduplicate;
-
-      sendToLoggly(data, config);
+      processStackInfo(stackInfo, config);
     });
 
     return {
@@ -69,6 +71,10 @@ const ErrorReporter = (function Singleton() {
       },
       captureMessage(msg) {
         sendToLoggly({ text: msg, level: 'info' }, config);
+      },
+      captureError(error, additionalInfo) {
+        const stackInfo = TraceKit.computeStackTrace(error);
+        processStackInfo(stackInfo, config, additionalInfo);
       },
     };
   }

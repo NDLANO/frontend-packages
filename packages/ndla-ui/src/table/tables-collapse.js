@@ -1,8 +1,17 @@
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
-/** Runs through tables, finds th-tags, copies them over to data-th-attributes, for usage in CSS responsive tables
-**/
-
-export function responsiveTables() {
+/**
+ * Call once to enable responsive tables for the current page/dom.
+ * Runs through tables, finds th-tags, copies them over to data-th-attributes,
+ * for usage in CSS responsive tables
+ */
+export function enableResponsiveTables() {
   const headertext = [];
   const headers = document.querySelectorAll('th');
   const tablebody = document.querySelectorAll('tbody');
@@ -27,4 +36,3 @@ export function responsiveTables() {
     }
   }
 }
-// ResponsiveTables();

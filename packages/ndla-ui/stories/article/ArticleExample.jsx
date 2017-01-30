@@ -34,7 +34,7 @@ class ArticleExample extends Component {
         { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
         { withLicenseExample && <LicenseExample /> }
         <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
-  </Article>
+      </Article>
     );
   }
 }

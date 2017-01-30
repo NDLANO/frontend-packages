@@ -34,7 +34,7 @@ const ArticleByline = ({ article, authors, date }) => {
 
   return (
     <section {...classes('byline')}>
-      {authors && <AuthorsList authors={article.copyright.authors} />} – 
+      {authors && <AuthorsList authors={article.copyright.authors} />} –
       {date && <LastUpdated date={article.updated} />}
     </section>
   );

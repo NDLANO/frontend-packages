@@ -148,57 +148,7 @@ storiesOf('Sidevisninger', module)
       </OneColumn>
       <FooterExample />
     </PageContainer>
-  ))
-  ;
-
-storiesOf('Brukertest', module)
-  .add('Virkelighet eller speilbilde?', () => (
-    <PageContainer>
-      <MastheadExample />
-      <OneColumn>
-        <ArticleLoader articleId="4" />
-      </OneColumn>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Journalistikk', () => (
-    <PageContainer>
-      <MastheadExample />
-      <OneColumn>
-        <ArticleLoader articleId="7" />
-      </OneColumn>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Nyhetskriterier?', () => (
-    <PageContainer>
-      <MastheadExample />
-      <OneColumn>
-        <ArticleLoader articleId="238" />
-      </OneColumn>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tegnlære', () => (
-    <PageContainer>
-      <MastheadExample />
-      <OneColumn>
-        <ArticleLoader articleId="5" />
-      </OneColumn>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Oversikt over journalistiske sjangre', () => (
-    <PageContainer>
-      <MastheadExample />
-      <OneColumn>
-        <ArticleLoader articleId="14" />
-      </OneColumn>
-      <FooterExample />
-    </PageContainer>
-  ))
-  ;
-
+  ));
 storiesOf('Sidevisninger alternativ', module)
     .add('ArticlePage', () => (
       <PageContainer>
@@ -212,5 +162,4 @@ storiesOf('Sidevisninger alternativ', module)
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
-    ))
-    ;
+    ));

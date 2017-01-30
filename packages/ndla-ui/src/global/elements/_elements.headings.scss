@@ -17,9 +17,16 @@
 h1, h2, h3, h4, h5 {
   font-weight: 900;
   margin: $spacing 0 $spacing 0;
+  line-height: 1.1;
+}
+h1 + .c-article__byline {
+  margin-top: -$spacing / 2;
 }
 h2 {
-  line-height: 1.5;
+  line-height: 1;
+  @include mq(desktop) {
+    line-height: 1.5;
+  }
 }
 h2, h3 {
   font-variant: small-caps;
@@ -29,7 +36,6 @@ h2, h3 {
 }
 article {
   h1 {
-    border-bottom: $inuit-global-border-width solid $brand-color--tertiary;
     display: table; /* inline block, but with newline for non-blocking sibling element */
     position: relative;
   }

@@ -1,5 +1,4 @@
-.c-article {
-  border-bottom: 1px solid $background-color--gray-dark;
+.c-article, article {
   margin-bottom: $spacing/2;
 
   h2,h3,h4 {
@@ -9,17 +8,18 @@
     color: $brand-color;
     font-size: 80%;
   }
-  h1,h2,h3,h4,h5,a,p,ul,li,code,figure,video,iframe,table, table tbody, em {
+  em {
+    display:inline-block;
+  }
+  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,table, table tbody {
     @include max-width();
+  }
+  table li, table ul {
+    max-width: 100%;
   }
 }
 .c-article__byline {
-  text-transform: uppercase;
+  margin-bottom: $spacing;
+  font-style: italic;
   font-size: 80%;
-  color: #8A8888;
-  margin: 26px 0px 18px;
-  letter-spacing: 0.1em;
-}
-.article_introduction {
-  margin-top: 0;
 }

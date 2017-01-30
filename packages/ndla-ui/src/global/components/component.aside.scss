@@ -1,0 +1,135 @@
+.c-aside, aside {
+  display: inline-block;
+  position: relative;
+  border: 1px solid $brand-grey--light;
+  margin: $spacing 0 $spacing 0;
+  transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
+  max-height: 150px;
+  overflow:hidden;
+
+  @include mq(desktop) {
+    border: 0;
+    margin-top: 0;
+    border-left: 1px solid $brand-color--light;
+    padding-left: $spacing*1.5;
+    max-height: none;
+    width: 33%;
+  }
+
+  &:after {
+    content: "";
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
+    background: linear-gradient(rgba($brand-color--light,0),$white)
+  }
+  @include mq(desktop) {
+    &:after {
+      display: none;
+    }
+  }
+
+  &.expanded {
+    max-height: 500vh;
+
+    &:after {
+      background: none;
+    }
+  }
+  @include mq(desktop) {
+    @include font-size(16px);
+    float: right;
+    clear: both;
+    padding: 0 0 0 $spacing*1.5;
+    border: none;
+    border-left: 1px solid $brand-color--light;
+
+    > div {
+      max-height: none;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  // Override
+  *:first-child {
+    margin-top: 0;
+  }
+
+  // Needs better solution
+  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,iframe,table, table tbody {
+  max-width: 100%;
+  }
+  // Remove later - only for user test
+  strong {
+    font-weight: normal;
+  }
+
+  img {
+    box-shadow: 0px 0px 9px -3px $brand-grey;
+    margin-bottom: $spacing/2;
+    width: 100%; // Remove later?
+  }
+  h2,h3,h4,h5 {
+    display: block;
+    font-size: 110%;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: $spacing/2;
+    margin-bottom: $spacing/2;
+    border-bottom: 1px solid $brand-color--light;
+  }
+}
+.c-aside__content {
+  color: $brand-grey-dark;
+  padding: $spacing $spacing $spacing*2;
+
+  @include mq(desktop) {
+    padding: 0;
+  }
+}
+
+.c-aside__button {
+  background: $white !important; // Dirty
+  border: 0 !important; // Dirty
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  z-index: 9;
+  box-shadow: 0 0px 29px rgba(gray, 0.5);
+  margin: auto;
+  width: 50px;
+  font-size: 14px;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $brand-color;
+    margin-bottom: 2px;
+  }
+  &:hover, &:active {
+    &:after {
+      border-top: 5px solid $brand-color;
+    }
+  }
+  @include mq(desktop) {
+    display: none;
+  }
+}
+.c-aside.expanded {
+  .c-aside__button:after {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid $brand-color;
+  }
+}

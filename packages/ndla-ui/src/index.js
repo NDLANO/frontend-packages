@@ -9,7 +9,7 @@
 import Button from './button/Button';
 import Logo from './logo/Logo';
 import Aside from './aside/Aside';
-import { Table } from './table/Table';
+import Table from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
@@ -24,11 +24,7 @@ import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 
-import { responsiveTables } from './table/tables-collapse';
-
-// Move to more suitable place?
-responsiveTables();
-
+import { enableResponsiveTables } from './table/tables-collapse';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -54,5 +50,6 @@ export {
   Pager,
   SiteNav,
   SiteNavItem,
+  enableResponsiveTables,
   Table,
 };

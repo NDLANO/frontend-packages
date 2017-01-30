@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Center, articleUrl } from './helpers';
 import article from '../dummydata/index';
-import { Table } from '../src/table/Table';
+import { Table } from '../src';
 
 /*
  * Example content

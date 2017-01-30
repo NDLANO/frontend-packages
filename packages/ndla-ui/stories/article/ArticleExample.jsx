@@ -6,9 +6,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 
-import { Article } from '../../src';
+import { Article, enableResponsiveTables } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
@@ -16,18 +16,28 @@ const toggle = (el) => {
   document.querySelectorAll(`${el.target.dataset.target} div`).forEach(target => target.classList.toggle('expanded'));
 };
 
-const ArticleExample = ({ article, withLicenseExample }) => (
-  <Article>
-    { withLicenseExample && <LicenseExample /> }
-    <h1>{article.title}</h1>
-    <ArticleByline authors date article={article} />
-    <Article.Introduction introduction={article.introduction} />
-    <div dangerouslySetInnerHTML={{ __html: article.content }} />
-    { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
-    { withLicenseExample && <LicenseExample /> }
-    <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
+class ArticleExample extends Component {
+
+  componentDidMount() {
+    enableResponsiveTables();
+  }
+
+  render() {
+    const { article, withLicenseExample } = this.props;
+    return (
+      <Article>
+        { withLicenseExample && <LicenseExample /> }
+        <h1>{article.title}</h1>
+        <ArticleByline authors date article={article} />
+        <Article.Introduction introduction={article.introduction} />
+        <div dangerouslySetInnerHTML={{ __html: article.content }} />
+        { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
+        { withLicenseExample && <LicenseExample /> }
+        <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
   </Article>
-);
+    );
+  }
+}
 
 ArticleExample.propTypes = {
   article: PropTypes.shape({

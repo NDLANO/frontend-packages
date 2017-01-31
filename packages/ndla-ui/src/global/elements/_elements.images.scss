@@ -15,6 +15,9 @@ img {
   font-style: italic; /* [2] */
   vertical-align: middle; /* [3] */
 }
+td img {
+  max-width: none;
+}
 
 
 /**

@@ -1,23 +1,26 @@
-aside ul, .o-list--arrows {
-  margin: 0;
+ul, ol {
+  margin: 0 0 2em;
   padding: 0 1em;
-  list-style: none;
-  li {
-    border-bottom: 1px solid rgb(238, 238, 238);
-    list-style:none;
+}
 
-    &:before {
-      content: "";
-      border-color: transparent $brand-color;
-      border-style: solid;
-      border-width: 0.30em 0 0.30em 0.40em;
-      display: block;
-      height: 0;
-      width: 0;
-      left: -1em;
-      top: 1.2em;
-      position: relative;
+aside ul, article ul, .o-list--arrows {
+  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='4' cy='4' r='4' fill='" + $brand-color + "'   /></svg>");
+
+  &--invert {
+    li {
+      border-bottom: none;
+
+      &:before {
+        border-color: transparent $background-color;
+      }
     }
   }
-
+}
+.o-list--clean {
+  margin: 0 0 2em;
+  padding: 0;
+  list-style: none;
+  li {
+    margin-left: 1em;
+  }
 }

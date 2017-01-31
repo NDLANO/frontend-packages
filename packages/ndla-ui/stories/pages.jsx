@@ -2,9 +2,17 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 
-import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, OneColumn } from '../src';
+import Tabs from 'ndla-tabs';
+
+import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
+
+// Using for example alternative article
+import article from '../dummydata/index';
+
+const articleHTML = document.createElement('div');
+articleHTML.innerHTML = article.article40.content[0].content;
 
 const FooterExample = () => (
   <Footer>
@@ -22,6 +30,55 @@ const FooterExample = () => (
     </Footer.Text>
     <Footer.Text>Nettstedet er utarbeidet av NDLA som åpen kildekode.</Footer.Text>
   </Footer>
+);
+
+const ResourcesTab1Content = () => (
+  <div>
+    <div className="c-article">
+      <h3><button>Innføring i journalistikk</button></h3>
+      <p>5 mins om the basics</p>
+    </div>
+    <div className="c-article">
+      <h3><button>Innføring i journalistikk</button></h3>
+      <p>5 mins om the basics</p>
+    </div>
+    <div className="c-article">
+      <h3><button>Innføring i journalistikk</button></h3>
+      <p>5 mins om the basics</p>
+    </div>
+    <p><button>Se alle læringsstier</button></p>
+  </div>
+);
+
+const ResourcesTab1 = () => (
+  <div className="c-resources_content u-margin-top-small u-margin-bottom">
+    <div className="c-breadcrumbs u-margin-bottom">
+      i <a to="#">Planteliv</a>{' > '}<a to="#">Cellebiologi</a>
+    </div>
+
+    <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
+    <Tabs
+      tabs={[
+          { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Content /></div> },
+          { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
+          { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
+          { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
+          { displayName: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
+      ]}
+    />
+  </div>
+);
+
+const ResourcesExample = () => (
+  <div className="u-1/1 c-resources u-margin-top-large">
+    <div className="o-wrapper">
+      <Tabs
+        tabs={[
+            { displayName: 'Læringsressurser', content: <ResourcesTab1 /> },
+        ]}
+      />
+    </div>
+  </div>
 );
 
 const MastheadExample = () => (
@@ -91,5 +148,18 @@ storiesOf('Sidevisninger', module)
       </OneColumn>
       <FooterExample />
     </PageContainer>
-  ))
-  ;
+  ));
+storiesOf('Sidevisninger alternativ', module)
+    .add('ArticlePage', () => (
+      <PageContainer>
+        <MastheadExample />
+        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <OneColumn>
+          <article>
+            <div dangerouslySetInnerHTML={{ __html: articleHTML.outerHTML }} />
+          </article>
+        </OneColumn>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
+    ));

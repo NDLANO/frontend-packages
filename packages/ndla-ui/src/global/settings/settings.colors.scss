@@ -3,27 +3,45 @@
    ========================================================================== */
 
 /**
- * Brand colors
+ * NDLA Brand colors
  */
 
 $brand-color: #20588F;
-$brand-color--light: #507AA4;
-$brand-color--lighter: lighten(#507AA4, $darken-factor * 2.5);
-$brand-color--lightest: #ceddea;
-$primary-color: #1c1717; 
+$brand-color--secondary: #507AA4;
+$brand-color--tertiary: #a5bcd3;
+$brand-color--light: #ceddea;
 
-/* $secondary-color: #e8e3e3; */
-$secondary-color: #8A8888;
+/**
+ * NDLA Grays
+ */
+
+$brand-grey: #8A8888;
+$brand-grey--light: #E8E3E3;
+$brand-grey--lighter: #EFF0F2;
+$brand-grey--lightest: #F8F8F8;
+$brand-grey-dark: #4d4d4d;
+
+/**
+ * Supplementary colors
+ */
+
+$primary-color: #1c1717;
+$white: #fff;
+$black: #000;
+$mark-color: #FE5F55;
+
+$table-bg: #F0F5F9;
+
+
+// Old stuff etc - remove?
+
 $grey-color: #8A8888;
 
- /**
-  * Supplementary colors
-  */
 
-$background-color: #EFF0F2;
+
+$background-color: #fff; /*old: EFF0F2 (gray)*/
 $background-color--dark: darken($background-color, $darken-factor);
 $background-color--darker: darken($background-color, $darken-factor * 2);
 $background-color--light: lighten($background-color, $darken-factor);
 $background-color--gray: #f8f8f8;
-$mark-color: #FE5F55;
-$white: #fff;
+$background-color--gray-dark: #e4e4e4;

@@ -51,8 +51,8 @@ class ArticleLoader extends Component {
     const { withLicenseExample } = this.props;
     return (
       <div>
-        { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
         { article ? <ArticleExample article={article} withLicenseExample={withLicenseExample} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+        { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
       </div>
     );
   }

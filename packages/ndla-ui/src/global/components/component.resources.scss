@@ -1,0 +1,9 @@
+.c-resources {
+  background-color: $background-color--gray;
+  border-top: 1px solid $background-color--gray-dark;
+}
+.c-resources {
+  .c-tabs:first-child {
+    margin-top: -$spacing*2.35;
+  }
+}

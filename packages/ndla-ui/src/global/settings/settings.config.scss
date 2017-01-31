@@ -1,11 +1,20 @@
 $inuit-global-font-size: 18px;
 $inuit-global-line-height: 26px;
-$inuit-global-radius: 6px;
-$inuit-global-border-width: 3px;
+$inuit-global-radius: 4px;
+$inuit-global-border-width: 2px;
 $darken-factor: 10%;
 
 @mixin max-width() {
-  max-width: 530px;
+  max-width: 100%;
+  @include mq(desktop) {
+    max-width: 60%;
+  }
+}
+@mixin aside-max-width() {
+  max-width: 100%;
+  @include mq(tablet) {
+    max-width: 30%;
+  }
 }
 @mixin full-width() {
   margin: 0 calc(-50vw / 2) $spacing;

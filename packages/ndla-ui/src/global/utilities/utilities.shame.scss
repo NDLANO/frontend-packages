@@ -218,7 +218,7 @@ $shame-spacing: 12px;
 
 .license__list-item > img, .license__list-item > div {
   margin: 0 $shame-spacing 0 0;
-  width: 45%;
+  max-width: 45%;
   float: left;
 }
 

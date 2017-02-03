@@ -2,7 +2,7 @@
   display: inline-block;
   position: relative;
   border: 1px solid $brand-grey--light;
-  margin: $spacing 0 $spacing 0;
+  margin: $spacing 0 $spacing $spacing;
   transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
   max-height: 150px;
   overflow:hidden;

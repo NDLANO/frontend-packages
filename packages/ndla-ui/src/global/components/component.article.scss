@@ -11,15 +11,36 @@
   em {
     display:inline-block;
   }
-  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,table, table tbody {
-    @include max-width();
+
+  // WIDTH FIXES
+  // :not(aside):not(div):not(section):not(.license) {
+  section {
+    >* {
+      @include max-width();
+    }
   }
-  table li, table ul {
-    max-width: 100%;
-  }
+  // h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,figcaption,video,table,img,table tbody {
+  //
+  // }
+  // figure img {
+  //   max-width: 100%;
+  // }
+  // table li, table ul, aside, .license {
+  //   max-width: 100%;
+    // h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,figcaption,video,table,figure img,table tbody {
+    //   max-width: 100%;
+    // }
+  // }
 }
 .c-article__byline {
   margin-bottom: $spacing;
   font-style: italic;
   font-size: 80%;
 }
+// .c-article {
+//   :not(aside){
+//     & h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,table, table tbody {
+//         @include max-width();
+//     }
+//   }
+// }

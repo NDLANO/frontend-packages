@@ -176,6 +176,7 @@ $shame-spacing: 12px;
   position: relative;
   display: flex;
 }
+
 .license-byline__body:not(.license-byline__body--black) {
   display: inline-block;
   margin-top: 4px;
@@ -183,6 +184,7 @@ $shame-spacing: 12px;
   font-size: 12px;
   letter-spacing: 0.05em;
 }
+
 .c-license-icons__list {
   display: inline-block;
   margin-right: $spacing/2;

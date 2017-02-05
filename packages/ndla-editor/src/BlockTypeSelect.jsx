@@ -10,6 +10,11 @@ import React, { PropTypes } from 'react';
 
 export default class BlockTypeSelect extends React.Component {
 
+  static onMouseDown(clickEvent) {
+    clickEvent.preventDefault();
+    clickEvent.stopPropagation();
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,9 +22,11 @@ export default class BlockTypeSelect extends React.Component {
         transform: 'translate(-50%) scale(0)',
       },
     };
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
-  onMouseEnter = () => {
+  onMouseEnter() {
     this.setState({
       style: {
         transform: 'translate(-50%) scale(1)',
@@ -28,7 +35,7 @@ export default class BlockTypeSelect extends React.Component {
     });
   }
 
-  onMouseLeave = () => {
+  onMouseLeave() {
     this.setState({
       style: {
         transform: 'translate(-50%) scale(0)',
@@ -36,10 +43,6 @@ export default class BlockTypeSelect extends React.Component {
     });
   }
 
-  onMouseDown = (clickEvent) => {
-    clickEvent.preventDefault();
-    clickEvent.stopPropagation();
-  }
 
   render() {
     const { theme, getEditorState, setEditorState } = this.props;

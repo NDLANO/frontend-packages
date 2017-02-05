@@ -9,10 +9,10 @@
 import React, { Component, PropTypes } from 'react';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
+import NDLAEditor from 'ndla-editor';
 import { fetchArticleFromApi } from '../article/articleApi';
 import SimpleSubmitForm from '../article/SimpleSubmitForm';
 import { Button } from '../../src/';
-import NDLAEditor from './NDLAEditor';
 
 function findEmbedDataInContentState(constentState) {
   return constentState.getBlocksAsArray().filter(block => block.getEntityAt(0)).map((block) => {

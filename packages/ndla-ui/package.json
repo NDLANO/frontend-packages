@@ -14,6 +14,7 @@
     "build:css": "webpack -p && cp ./dist/style.css ./es && cp ./dist/style.css ./lib",
     "clean": "$(cd ..; npm bin)/rimraf lib es dist",
     "prepublish": "npm run clean && npm run build",
+    "postinstall": "$(cd ..; npm bin)/rimraf node_modules/react node_modules/react-dom",
     "test": "$(cd ..; npm bin)/jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o ../../.out"
@@ -62,6 +63,7 @@
     "inuitcss": "^6.0.0-beta.4",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
+    "ndla-editor": "^0.0.0",
     "ndla-licenses": "^0.0.6",
     "ndla-tabs": "^0.0.1",
     "node-sass": "^4.3.0",

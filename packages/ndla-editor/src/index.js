@@ -6,5 +6,12 @@
  *
  */
 
+ import NDLAEditor from './NDLAEditor';
+ import ExampleEditor from './ExampleEditor';
+
  export {
+   NDLAEditor,
+   ExampleEditor,
  };
+
+ export default NDLAEditor;

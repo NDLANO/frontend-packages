@@ -9,11 +9,10 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
+import NDLAEditor, { ExampleEditor } from 'ndla-editor';
 
-import { Center } from './helpers';
-import NDLAEditor from './editor/NDLAEditor';
-import ExampleEditor from './editor/ExampleEditor';
 import ArticleEditor from './editor/ArticleEditor';
+import { Center } from './helpers';
 
 
 storiesOf('Lekegrind', module)

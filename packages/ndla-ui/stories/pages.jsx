@@ -113,7 +113,7 @@ const ExamplePage1 = () => (
     <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.</p>
     <figure><img src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="" /></figure>
     <figcaption className="c-figcaption">
-      <div className="c-figcaption__info">I værmeldingene til NRK på 1980-tallet var symbolet for strålende solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to med en hvit og en svart halvdel. Foto: Lars Knutsen Rønvig, NTB.</div>
+      <div className="c-figcaption__info">I værmeldingene til NRK på 1980-tallet var symbolet for strålende solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to med en hvit og en svart halvdel.</div>
       <div className="c-figcaption__licenses"><ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} /></div>
     </figcaption>
     <p>En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.</p>

@@ -19,36 +19,38 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
-      <section className="c-factbox">
+      <article>
+        <section className="c-factbox">
 
-        <h1 className="u-heading">Logo</h1>
-        <p>
-          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
-          for kommunikasjon. Den skal inspirere målgruppen elever og
-          lærere i videregående opplæring og gjøre dem nysgjerrige på
-          NDLA.
-        </p>
-        <p>
-          Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
-          Logo uten undertekst kan benyttes i tilfeller der det
-          kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
-        </p>
-        <p>
-          Logo uten undertekst kan kompletteres med en beskrivende tekst
-          til høyre. Logoen benyttes i svart eller hvitt avhengig av
-          bakgrunn. Den skal plasseres i det øverste eller nederste
-          hjørnet av en ytterkant. Logoen skal ikke sentreres.
-        </p>
-      </section>
-      <Logo name to="#" altText="Nasjonal digital læringsarena" />
+          <h1 className="u-heading">Logo</h1>
+          <p>
+            Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
+            for kommunikasjon. Den skal inspirere målgruppen elever og
+            lærere i videregående opplæring og gjøre dem nysgjerrige på
+            NDLA.
+          </p>
+          <p>
+            Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
+            Logo uten undertekst kan benyttes i tilfeller der det
+            kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
+          </p>
+          <p>
+            Logo uten undertekst kan kompletteres med en beskrivende tekst
+            til høyre. Logoen benyttes i svart eller hvitt avhengig av
+            bakgrunn. Den skal plasseres i det øverste eller nederste
+            hjørnet av en ytterkant. Logoen skal ikke sentreres.
+          </p>
+        </section>
+        <Logo name to="#" altText="Nasjonal digital læringsarena" />
+      </article>
     </Center>
   ))
   .add('Sammensatte noder', () => (
     <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">Sammensatte fagressurser</h1>
-      </section>
-      <section>
+      <article>
+        <section className="c-factbox">
+          <h1 className="u-heading">Sammensatte fagressurser</h1>
+        </section>
         <section>
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
@@ -61,8 +63,6 @@ storiesOf('Sammensatte moduler', module)
 
             Kilde: <em>Nasjonale faglige retningslinjer for forebygging og behandling av underernæring og internkontroll i helsetjenesten</em>. Helsedirektoratet
           </p>
-        </section>
-        <section>
           <div className="c-collate">
             <div className="c-collate__info">
               <svg onClick={toggle} width="25px" height="24px" viewBox="48 682 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -106,7 +106,7 @@ storiesOf('Sammensatte moduler', module)
             </div>
           </div>
         </section>
-      </section>
+      </article>
     </Center>
   ))
   .add('Sidespalte', () => (

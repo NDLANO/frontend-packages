@@ -7,7 +7,12 @@ import Tabs from 'ndla-tabs';
 import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
-import { Aside, SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, Pager, Footer, LicenseIconList, LicenseByline, ClickableLicenseByline } from '../src';
+import {
+  Aside, SiteNav, SiteNavItem, Masthead, MastheadItem,
+  Logo, Pager, Footer, LicenseIconList, LicenseByline,
+  ClickableLicenseByline, ClickToggle, TopicMenu,
+} from '../src';
+import { topics } from '../dummydata';
 import LicenseExample from './article/LicenseExample';
 
 const toggle = () => {
@@ -53,7 +58,7 @@ storiesOf('Sammensatte moduler', module)
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten
-            god omsorg».</p>
+          god omsorg».</p>
           <p>
             Ved internkontroll skal det sikres at tilbudet til pasientene er i samsvar
             med regelverket. Internkontroll skal bidra til faglig forsvarlige sosial- og helsetjenester,
@@ -78,16 +83,16 @@ storiesOf('Sammensatte moduler', module)
                   <LicenseIconList licenseRights={[BY, SA]} />
                   <h4>Oppgaver til &laquo;Ansvar og regelverk. Ernæring&raquo; (Oppgave)</h4>
                   <ul>Forfatter
-                      <li>Wenche Heir</li>
+                    <li>Wenche Heir</li>
                     <li>Marit Smith Sørhøy</li>
                   </ul>
                 </div>
                 <div className="o-layout__item u-1/2@desktop">
                   <Tabs
                     tabs={[
-                        { key: 'image', displayName: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
-                        { key: 'video', displayName: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
-                        { key: 'audio', displayName: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
+                      { key: 'image', displayName: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
+                      { key: 'video', displayName: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
+                      { key: 'audio', displayName: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
                     ]}
                   />
                 </div>
@@ -138,15 +143,15 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Hovedhode', () => (
-    <Center>
+    <div>
       <Masthead>
         <MastheadItem left>Left</MastheadItem>
         <MastheadItem right>Right</MastheadItem>
       </Masthead>
-    </Center>
+    </div>
   ))
   .add('Hovedhode med logo og Sidenavigasjon', () => (
-    <Center>
+    <div>
       <Masthead>
         <MastheadItem left>
           <Logo to="#" altText="Nasjonal digital læringsarena" />
@@ -160,7 +165,26 @@ storiesOf('Sammensatte moduler', module)
           </SiteNav>
         </MastheadItem>
       </Masthead>
-    </Center>
+    </div>
+  ))
+  .add('Hovedhode med emne meny', () => (
+    <div>
+      <Masthead>
+        <MastheadItem left>
+          <Logo to="#" altText="Nasjonal digital læringsarena" />
+          <ClickToggle title="Medieuttrykk og mediesamfunnet" className="l-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
+            <TopicMenu toTopic={() => '#'} topics={topics} />
+          </ClickToggle>
+        </MastheadItem>
+        <MastheadItem right>
+          <SiteNav>
+            <SiteNavItem to="#">Søk</SiteNavItem>
+            <SiteNavItem to="#">Kontakt</SiteNavItem>
+            <SiteNavItem to="#">Hjelp</SiteNavItem>
+          </SiteNav>
+        </MastheadItem>
+      </Masthead>
+    </div>
   ))
   .add('Paginering', () => (
     <Center>

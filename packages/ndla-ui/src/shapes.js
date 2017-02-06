@@ -22,3 +22,9 @@ export const LicenseShape = PropTypes.shape({
   description: PropTypes.string.isRequired,
   rights: PropTypes.arrayOf(PropTypes.string).isRequired,
 });
+
+export const TopicShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  subtopics: PropTypes.array,
+});

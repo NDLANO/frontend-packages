@@ -32,6 +32,9 @@
     "lib",
     "es"
   ],
+  "dependencies": {
+    "react-prop-types": "^0.4.0"
+  },
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.2",

@@ -8,7 +8,7 @@
 
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
-import SafeLink from '../SafeLink';
+import SafeLink from '../common/SafeLink';
 import Button from '../button/Button';
 
 const classes = new BEMHelper({

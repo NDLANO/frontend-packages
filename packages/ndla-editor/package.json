@@ -29,6 +29,7 @@
   ],
   "peerDependencies": {
     "react": "^15.0.0",
+    "react-bem-helper": "^1.2.0",
     "react-dom": "^15.0.0"
   },
   "dependencies": {

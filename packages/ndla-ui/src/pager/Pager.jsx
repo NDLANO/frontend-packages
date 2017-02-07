@@ -8,7 +8,7 @@
 
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
-import SafeLink from '../SafeLink';
+import SafeLink from '../common/SafeLink';
 import { stepNumbers } from './pagerHelpers';
 
 

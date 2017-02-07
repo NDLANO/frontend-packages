@@ -12,9 +12,9 @@ import Link from 'react-router/lib/Link';
 // Fallback to normal link if app is missing RouterContext
 const SafeLink = (props, context) => {
   if (!context.router) {
-    const { to, className } = props;
+    const { to, onClick, className } = props;
     const href = typeof to === 'string' ? to : '#';
-    return <a href={href} className={className}>{props.children}</a>;
+    return <a href={href} onClick={onClick} className={className}>{props.children}</a>;
   }
 
   return <Link {...props}>{props.children}</Link>;

@@ -4,7 +4,8 @@ import { storiesOf } from '@kadira/storybook';
 
 import Tabs from 'ndla-tabs';
 
-import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn } from '../src';
+import { PageContainer, Footer, Hero, OneColumn } from '../src';
+import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -59,11 +60,11 @@ const ResourcesTab1 = () => (
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-          { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Content /></div> },
-          { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
-          { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
-          { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
-          { displayName: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
+        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Content /></div> },
+        { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
+        { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
+        { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
+        { displayName: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
       ]}
     />
   </div>
@@ -74,33 +75,18 @@ const ResourcesExample = () => (
     <div className="o-wrapper">
       <Tabs
         tabs={[
-            { displayName: 'Læringsressurser', content: <ResourcesTab1 /> },
+          { displayName: 'Læringsressurser', content: <ResourcesTab1 /> },
         ]}
       />
     </div>
   </div>
 );
 
-const MastheadExample = () => (
-  <Masthead>
-    <MastheadItem left>
-      <Logo to="#" altText="Nasjonal digital læringsarena" />
-    </MastheadItem>
-    <MastheadItem right>
-      <SiteNav>
-        <SiteNavItem to="#">Velg fag</SiteNavItem>
-        <SiteNavItem to="#">Søk</SiteNavItem>
-        <SiteNavItem to="#">Kontakt</SiteNavItem>
-        <SiteNavItem to="#">Hjelp</SiteNavItem>
-      </SiteNav>
-    </MastheadItem>
-  </Masthead>
-);
 
 storiesOf('Sidevisninger', module)
   .add('Empty page', () => (
     <PageContainer>
-      <MastheadExample />
+      <Masthead />
       <OneColumn>
         Empty Page
       </OneColumn>
@@ -109,7 +95,7 @@ storiesOf('Sidevisninger', module)
   ))
   .add('ArticlePage', () => (
     <PageContainer>
-      <MastheadExample />
+      <Masthead />
       <OneColumn>
         <article>
           <ArticleLoader articleId="44" />
@@ -121,7 +107,7 @@ storiesOf('Sidevisninger', module)
   ))
   .add('ArticlePage with licensebox', () => (
     <PageContainer>
-      <MastheadExample />
+      <Masthead />
       <OneColumn>
         <article>
           <ArticleLoader articleId="44" withLicenseExample />
@@ -133,7 +119,7 @@ storiesOf('Sidevisninger', module)
   ))
   .add('ArticlePage loader', () => (
     <PageContainer>
-      <MastheadExample />
+      <Masthead />
       <OneColumn>
         <ArticleLoader />
       </OneColumn>
@@ -142,7 +128,7 @@ storiesOf('Sidevisninger', module)
   ))
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
-      <MastheadExample />
+      <Masthead />
       <OneColumn>
         <ArticleLoader articleId="34" />
       </OneColumn>
@@ -152,7 +138,7 @@ storiesOf('Sidevisninger', module)
 storiesOf('Sidevisninger alternativ', module)
     .add('ArticlePage', () => (
       <PageContainer>
-        <MastheadExample />
+        <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <OneColumn>
           <article>

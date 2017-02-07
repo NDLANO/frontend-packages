@@ -10,7 +10,7 @@
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
 
-import SafeLink from '../SafeLink';
+import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
   name: 'logo',

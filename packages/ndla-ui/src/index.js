@@ -23,6 +23,8 @@ import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
+import ClickToggle from './common/ClickToggle';
+import TopicMenu from './topicMenu/TopicMenu';
 
 import { enableResponsiveTables } from './table/tables-collapse';
 
@@ -37,6 +39,7 @@ export {
   Aside,
   Button,
   ClickableLicenseByline,
+  ClickToggle,
   Footer,
   Hero,
   Icon,
@@ -52,4 +55,5 @@ export {
   SiteNavItem,
   enableResponsiveTables,
   Table,
+  TopicMenu,
 };

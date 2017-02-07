@@ -1,12 +1,12 @@
 import React, { PropTypes, Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { enableResponsiveTables } from './tables-collapse';
+// import { enableResponsiveTables } from './tables-collapse';
 
 const classes = new BEMHelper('c-table');
 
 class Table extends Component {
   componentDidMount() {
-    enableResponsiveTables();
+    // enableResponsiveTables();
   }
 
   render() {

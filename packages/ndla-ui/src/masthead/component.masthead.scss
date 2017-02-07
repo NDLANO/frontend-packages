@@ -1,11 +1,9 @@
 .masthead {
-  
   border-bottom: 1px solid $brand-grey;
   box-shadow: 1px 1px 2px 0 $brand-grey-dark;
-  
 }
 .masthead > div {
-justify-content: center;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   @include mq(tablet) {
@@ -18,5 +16,7 @@ justify-content: center;
 .masthead__right {
     @include mq(tablet) {
         padding: $spacing;
+        flex-grow: 1;
+        text-align:right
     }
 }

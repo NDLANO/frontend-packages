@@ -7,7 +7,7 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
+import SafeLink from '../common/SafeLink';
 import BEMHelper from 'react-bem-helper';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
@@ -64,7 +64,7 @@ export default class TopicMenu extends Component {
         <ul {...classes('list', null, lclasses('left').className)}>
           { topics.map(topic =>
             (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onMouseOver={() => this.handleMouseOver(topic.id)} key={topic.id}>
-              <Link {...classes('link')} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name }</Link>
+              <SafeLink {...classes('link')} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
             </li>),
           ) }
         </ul>

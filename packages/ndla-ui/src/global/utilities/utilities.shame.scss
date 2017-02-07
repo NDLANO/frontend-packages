@@ -103,9 +103,8 @@ $shame-spacing: 12px;
     font-size: 18px;
     font-weight: 700;
     list-style: none;
-    margin-top:1em;
+    margin: $spacing 0 $spacing/2;
     padding: 0;
-    margin-left: 0;
     border-bottom: 1px $background-color--dark solid;
   }
 

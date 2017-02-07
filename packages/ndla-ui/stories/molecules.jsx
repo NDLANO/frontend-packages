@@ -8,11 +8,11 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import {
-  Aside, SiteNav, SiteNavItem, Masthead, MastheadItem,
+  Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  ClickableLicenseByline, ClickToggle, TopicMenu,
+  ClickableLicenseByline,
 } from '../src';
-import { topics } from '../dummydata';
+import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import LicenseExample from './article/LicenseExample';
 
 const toggle = () => {
@@ -144,46 +144,17 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Hovedhode', () => (
     <div>
-      <Masthead>
-        <MastheadItem left>Left</MastheadItem>
-        <MastheadItem right>Right</MastheadItem>
-      </Masthead>
+      <MastheadLeftRight />
     </div>
   ))
   .add('Hovedhode med logo og Sidenavigasjon', () => (
     <div>
-      <Masthead>
-        <MastheadItem left>
-          <Logo to="#" altText="Nasjonal digital læringsarena" />
-        </MastheadItem>
-        <MastheadItem right>
-          <SiteNav>
-            <SiteNavItem onClick={() => alert('clicked')}>Velg fag</SiteNavItem>
-            <SiteNavItem to="#">Søk</SiteNavItem>
-            <SiteNavItem to="#">Kontakt</SiteNavItem>
-            <SiteNavItem to="#">Hjelp</SiteNavItem>
-          </SiteNav>
-        </MastheadItem>
-      </Masthead>
+      <Masthead />
     </div>
   ))
   .add('Hovedhode med emne meny', () => (
     <div>
-      <Masthead>
-        <MastheadItem left>
-          <Logo to="#" altText="Nasjonal digital læringsarena" />
-          <ClickToggle title="Medieuttrykk og mediesamfunnet" className="l-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
-            <TopicMenu toTopic={() => '#'} topics={topics} />
-          </ClickToggle>
-        </MastheadItem>
-        <MastheadItem right>
-          <SiteNav>
-            <SiteNavItem to="#">Søk</SiteNavItem>
-            <SiteNavItem to="#">Kontakt</SiteNavItem>
-            <SiteNavItem to="#">Hjelp</SiteNavItem>
-          </SiteNav>
-        </MastheadItem>
-      </Masthead>
+      <MastheadWithTopicMenu />
     </div>
   ))
   .add('Paginering', () => (

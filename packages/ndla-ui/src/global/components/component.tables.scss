@@ -1,24 +1,23 @@
-.c-table, .c-article table {
+.c-table, .c-article table, article table {
   display: inline-block;
   vertical-align: top;
   font-size: 85%;
 
+  overflow-x: auto;
+  // max-width: 100%;
+
+  // optional - enable iOS momentum scrolling
+  -webkit-overflow-scrolling: touch;
+
+  // scrolling shadows on left/right
+  background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background-size: 15px 100%, 15px 100%;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
+
   thead {
     overflow:hidden;
-  }
-  tbody {
-    overflow-x: auto;
-    // max-width: 100%;
-
-    // optional - enable iOS momentum scrolling
-    -webkit-overflow-scrolling: touch;
-
-    // scrolling shadows on left/right
-    background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-    background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-    background-size: 15px 100%, 15px 100%;
-    background-attachment: scroll, scroll;
-    background-repeat: no-repeat;
   }
   td, th {
     padding: $spacing/3;
@@ -109,6 +108,9 @@
   // Remove excess spacing on headings inside table
   h1,h2,h3,h4,h5 {
     margin-top: 0;
+  }
+  ul {
+    margin: 0;
   }
 
 }

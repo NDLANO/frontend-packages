@@ -103,9 +103,8 @@ $shame-spacing: 12px;
     font-size: 18px;
     font-weight: 700;
     list-style: none;
-    margin-top:1em;
+    margin: $spacing/1.4 0 $spacing/2;
     padding: 0;
-    margin-left: 0;
     border-bottom: 1px $background-color--dark solid;
   }
 
@@ -172,21 +171,34 @@ $shame-spacing: 12px;
     height: $shame-spacing * 2;
   }
 }
-
 .license-byline {
-  display: table;
-  margin-bottom: $shame-spacing * 2;
+  position: relative;
+  display: flex;
 }
 
-.license-byline > * {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 0 0.5em 0 0;
+.license-byline__body:not(.license-byline__body--black) {
+  display: inline-block;
+  margin-top: 4px;
+  margin-right: $spacing/2;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.c-license-icons__list {
+  display: inline-block;
+  margin-right: $spacing/2;
 }
 
 .license-byline__body--black {
-  color: white;
-  background-color: black;
+  background-color: $brand-color;
+  color: $white;
+  padding: 3px 8px;
+  @include inuit-font-size(14px);
+  display: table-cell;
+  clear:right;
+  position: absolute;
+  top: 40px;
 }
 
 .license {
@@ -218,12 +230,11 @@ $shame-spacing: 12px;
 
 .license__list-item > img, .license__list-item > div {
   margin: 0 $shame-spacing 0 0;
-  width: 45%;
   float: left;
 }
 
 .license__list-item > .license-byline > * {
-  display: block;
+  display: inline-block;
 }
 
 .license__heading {
@@ -231,6 +242,7 @@ $shame-spacing: 12px;
 }
 
 .license h2 {
+  margin-top: $shame-spacing;
   margin-bottom: $shame-spacing;
 }
 

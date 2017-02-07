@@ -7,8 +7,8 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import SafeLink from '../common/SafeLink';
 import BEMHelper from 'react-bem-helper';
+import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 

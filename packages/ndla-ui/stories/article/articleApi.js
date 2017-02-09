@@ -19,3 +19,15 @@ export const fetchArticle = id => fetch(`https://staging.api.ndla.no/article-con
         .then(json => reject(json));
   })),
 );
+
+export const fetchArticleFromApi = id => fetch(`${window.location.protocol}//staging.api.ndla.no/article-api/v1/articles/${id}`).then(res => (
+  new Promise((resolve, reject) => {
+    if (res.ok) {
+      return res.json()
+        .then(article => ({ ...article, title: article.title[0].title, content: article.content[0].content }))
+        .then(article => resolve(article));
+    }
+    return res.json()
+        .then(json => reject(json));
+  })),
+);

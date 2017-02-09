@@ -1,0 +1,48 @@
+{
+  "name": "ndla-editor",
+  "version": "0.0.0",
+  "description": "Editor for NDLA",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "scripts": {
+    "build": "npm run build:commonjs && npm run build:es",
+    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --out-dir lib --ignore __tests__",
+    "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --out-dir es --ignore __tests__",
+    "clean": "$(cd ..; npm bin)/rimraf lib es",
+    "test": "$(cd ..; npm bin)/jest",
+    "postinstall": "$(cd ..; npm bin)/rimraf node_modules/react node_modules/react-dom",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-editor/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-bem-helper": "^1.2.0",
+    "react-dom": "^15.0.0"
+  },
+  "dependencies": {
+    "decorate-component-with-props": "^1.0.2",
+    "draft-js": "^0.9.1",
+    "draft-js-alignment-plugin": "^2.0.0-beta9",
+    "draft-js-buttons": "^2.0.0-beta9",
+    "draft-js-focus-plugin": "^2.0.0-beta9",
+    "draft-js-image-plugin": "^2.0.0-beta9",
+    "draft-js-inline-toolbar-plugin": "^2.0.0-beta9",
+    "draft-js-plugins-editor": "^2.0.0-beta9",
+    "draft-js-side-toolbar-plugin": "^2.0.0-beta9",
+    "draft-js-undo-plugin": "^2.0.0-beta9",
+    "draftjs-utils": "^0.4.0"
+  }
+}

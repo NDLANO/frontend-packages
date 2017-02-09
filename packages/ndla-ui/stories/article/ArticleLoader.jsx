@@ -9,8 +9,8 @@
 import React, { Component, PropTypes } from 'react';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import ArticleExample from './ArticleExample';
 import { Button } from '../../src/';
+import ArticleExample from './ArticleExample';
 
 class ArticleLoader extends Component {
   constructor(props) {

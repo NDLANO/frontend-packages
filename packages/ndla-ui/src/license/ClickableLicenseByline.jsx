@@ -41,7 +41,7 @@ class ClickableLicenseByline extends Component {
           : undefined
         }
         <div className="license-byline__body">
-          <span>{ license.short }</span>
+          <span>{ license.author }</span>
         </div>
         { children ?
           <div className="license-byline__body">

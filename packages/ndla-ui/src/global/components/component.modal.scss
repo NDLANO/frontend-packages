@@ -1,0 +1,15 @@
+.c-modal {
+  max-width: 800px;
+  margin: auto;
+  background: $brand-color;
+  color: $white;
+  box-shadow: 0 0 50px rgba($black, 0.9);
+  .c-figcaption__info {
+    @include max-width();
+  }
+}
+.c-modal__details {
+  background: $brand-color;
+  color: $white;
+  padding: 0 $spacing $spacing;
+}

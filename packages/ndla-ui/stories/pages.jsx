@@ -9,6 +9,8 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn, ClickableLicenseByline, ToggleImageLicense } from '../src';
 
+import LicenseExample from './article/LicenseExample';
+
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
@@ -197,15 +199,16 @@ const ExamplePage1 = () => (
            halvdel.
         </div>
         <div className="c-figcaption__licenses">
-          <ToggleImageLicense />
+          <ToggleImageLicense data-show-id="1" />
           <ClickableLicenseByline
             license={getLicenseByAbbreviation('by-nc-nd')}
           />
         </div>
       </figcaption>
-      <p data-basicLightbox data-id="1">En pitch er en kortvarig framføring av en idé for en potensiell
+      <div data-basicLightbox data-id="1">
+        <LicenseExample />En pitch er en kortvarig framføring av en idé for en potensiell
          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
+          få andre til å tenne på idéen din og se potensialet i den.</div>
       <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med

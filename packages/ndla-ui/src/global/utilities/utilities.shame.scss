@@ -213,6 +213,11 @@ $shame-spacing: 12px;
   font-size: var(--font-size--medium);
 }
 
+.c-modal__details .license {
+  background: $brand-color;
+  padding: $spacing*0.75;
+}
+
 .license-toggler {
   text-decoration: underline;
   text-align: right;

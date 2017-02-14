@@ -11,6 +11,8 @@ import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Foot
 
 import LicenseExampleImage from './article/LicenseExampleImage';
 
+import LicenseExampleVideo from './article/LicenseExampleVideo';
+
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
@@ -332,7 +334,7 @@ const ExamplePage2 = () => (
               </div>
             </figcaption>
             <div className="c-modal__details">
-              <LicenseExampleImage />
+              <LicenseExampleVideo />
             </div>
           </Modal>
           <ClickableLicenseByline

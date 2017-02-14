@@ -25,9 +25,9 @@ const LicenseExampleImage = () => (
           <span>Foto: Ola Nordmann, Rettighetshaver: NDLA.</span>
         </div>
       </div>
-      <button className="c-button c-button--outline u-margin-bottom-small" type="button">Kopier bilde</button>
+      <button className="c-button c-button--primary u-margin-bottom-small" type="button">Kopier bilde</button>
       <span className="u-padding u-mobilehide">eller</span>
-      <button className="c-button c-button--outline u-margin-bottom-small" type="button">Åpne i nytt vindu</button>
+      <button className="c-button c-button--primary u-margin-bottom-small" type="button">Åpne i nytt vindu</button>
     </div>
   </div>
 );

@@ -53,3 +53,6 @@
     margin-bottom:0;
   }
 }
+.ReactModal__Body--open {
+  position: fixed; // Disable scroll on background layer when open
+}

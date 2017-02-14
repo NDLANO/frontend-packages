@@ -1,0 +1,5 @@
+.u-mobilehide {
+  @include mq($until: tablet) {
+    display: none;
+  }
+}

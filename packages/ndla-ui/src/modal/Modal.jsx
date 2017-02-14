@@ -37,14 +37,13 @@ class Modal extends Component {
         <button onClick={this.handleOpenModal} data-show-id="1" className="u-float-right">Gjenbruk</button>
         <ReactModal
           isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example"
           closeTimeoutMS="300"
           onRequestClose={this.handleCloseModal}
-          data-basicLightbox
-          data-id="1"
         >
           <button onClick={this.handleCloseModal}>Lukk</button>
-          {this.props.children}
+          <div className="c-modal">
+            {this.props.children}
+          </div>
         </ReactModal>
       </div>
     );

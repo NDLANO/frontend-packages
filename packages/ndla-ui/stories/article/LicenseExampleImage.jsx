@@ -18,7 +18,13 @@ const LicenseExampleImage = () => (
       <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
     </LicenseByline>
 
-    <div className="u-padding-top u-text-center">
+    <div className=" u-text-center">
+      <div>
+        <p>For å bruke dette bildet må du legge ved denne kildehenvisningen:</p>
+        <div className="c-bodybox c-bodybox--attribute">
+          <span>Foto: Ola Nordmann, Rettighetshaver: NDLA.</span>
+        </div>
+      </div>
       <button className="c-button c-button--outline u-margin-bottom-small" type="button">Kopier bilde</button>
       <span className="u-padding u-mobilehide">eller</span>
       <button className="c-button c-button--outline u-margin-bottom-small" type="button">Åpne i nytt vindu</button>

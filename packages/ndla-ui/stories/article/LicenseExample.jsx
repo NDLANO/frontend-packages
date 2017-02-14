@@ -95,18 +95,19 @@ const ImageContent = () => (
     <ul className="license__list">
       <li className="license__list-item">
         <ul className="license__list">
-          <li className="license__list-item">
-            <img alt="alt" src="http://api.test.ndla.no/images/full/nokken_ny_1.jpg" />
+          <li className="license__list-item license_list--stacked">
+            <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
             <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
-              Fotograf: Ola Nordmann, Kari Nordmann
-              <div><a target="_blank" rel="noopener noreferrer" href="http://api.test.ndla.no/images/full/nokken_ny_1.jpg">Åpne bilde i stort format</a></div>
+              Fotograf: Ola Nordmann, Kari Nordmann<br />
+              Rettighetshaver: NDLA
+              <div><a target="_blank" rel="noopener noreferrer" href="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=">Åpne bilde i stort format</a></div>
             </LicenseByline>
           </li>
-          <li className="license__list-item">
-            <img alt="alt" src="http://api.test.ndla.no/images/full/sy020cc5.jpg" />
+          <li className="license__list-item license_list--stacked">
+            <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
             <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
               Fotograf: Ola Nordmann, Kari Nordmann
-              <div><a target="_blank" rel="noopener noreferrer" href="http://api.test.ndla.no/images/full/sy020cc5.jpg">Åpne bilde i stort format</a></div>
+              <div><a target="_blank" rel="noopener noreferrer" href="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=">Åpne bilde i stort format</a></div>
             </LicenseByline>
           </li>
         </ul>

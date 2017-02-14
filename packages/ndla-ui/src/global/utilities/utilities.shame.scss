@@ -182,7 +182,7 @@ $shame-spacing: 12px;
 }
 
 .license-byline__body:not(.license-byline__body--black) {
-  display: inline-block;
+  display: block;
   margin-top: 4px;
   margin-right: $spacing/2;
   text-transform: uppercase;
@@ -237,13 +237,17 @@ $shame-spacing: 12px;
   overflow: hidden;
 }
 
+.license_list--stacked > * {
+  display: block;
+}
+
 .license__list-item > img, .license__list-item > div {
   margin: 0 $shame-spacing 0 0;
   float: left;
 }
 
 .license__list-item > .license-byline > * {
-  display: inline-block;
+  display: block;
 }
 
 .license__heading {

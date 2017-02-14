@@ -38,11 +38,14 @@
   background: transparent !important;
   border: none !important;
   max-width: 800px;
+  height: 100%;
   margin: auto;
   background: $white;
   left: 0 !important;
   top: 0 !important;
   right: 0 !important;
+  bottom: auto !important;
+  overflow-y: auto;
   &--after-open {
     transform:scale(1);
   }

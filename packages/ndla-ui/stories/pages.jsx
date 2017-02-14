@@ -316,8 +316,29 @@ const ExamplePage2 = () => (
         />
       </figure>
       <figcaption className="c-figcaption">
-        <div className="c-figcaption__info">En video om nyheter, men ikke fake news.</div>
-        <div className="c-figcaption__licenses"><ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} /></div>
+        <div className="c-figcaption__info">Noe om videoen her.
+        </div>
+        <div className="c-figcaption__licenses">
+          <Modal>
+            <iframe
+              width="480"
+              height="270"
+              src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+              frameBorder="0"
+              allowFullScreen=""
+            />
+            <figcaption className="c-figcaption">
+              <div className="c-figcaption__info">Noe om videoen her.
+              </div>
+            </figcaption>
+            <div className="c-modal__details">
+              <LicenseExampleImage />
+            </div>
+          </Modal>
+          <ClickableLicenseByline
+            license={getLicenseByAbbreviation('by-nc-nd')}
+          />
+        </div>
       </figcaption>
       <p>En pitch er en kortvarig framføring av en idé for en potensiell
          samarbeidspartner eller kunde. I løpet av noen få minutter skal du

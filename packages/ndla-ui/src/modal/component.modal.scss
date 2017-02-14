@@ -1,0 +1,45 @@
+.c-modal {
+  max-width: 800px;
+  margin: auto;
+  background: $white;
+  // background: $brand-color;
+  // color: $white;
+  box-shadow: 0 0 50px rgba($black, 0.9);
+  .c-figcaption__info {
+    @include max-width();
+  }
+  figcaption {
+    background: $white;
+  }
+}
+.c-modal__details {
+  border-top: 1px solid $brand-grey--light;
+  background: $brand-grey--lightest;
+  // background: $brand-color;
+  // color: $white;
+  padding: 0 $spacing;
+}
+
+.ReactModalPortal > div {
+    opacity: 0;
+}
+.ReactModalPortal .ReactModal__Overlay {
+  transition:opacity .4s cubic-bezier(.51,.92,.24,1);
+  z-index: 1000;
+  will-change: opacity;
+  background: rgba(0, 0, 0, 0.7) !important;
+  &--after-open {
+    opacity: 1;
+  }
+  &--before-close {
+      opacity: 0;
+  }
+}
+.ReactModal__Content {
+  transform:scale(.9);transition:transform .4s cubic-bezier(.51,.92,.24,1);z-index:1;will-change:transform;
+  background: transparent !important;
+  border: none !important;
+  &--after-open {
+    transform:scale(1);
+  }
+}

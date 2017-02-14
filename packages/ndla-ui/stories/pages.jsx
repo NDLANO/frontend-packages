@@ -9,7 +9,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn, ClickableLicenseByline, Modal } from '../src';
 
-import LicenseExample from './article/LicenseExample';
+import LicenseExampleImage from './article/LicenseExampleImage';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -200,7 +200,7 @@ const ExamplePage1 = () => (
         </div>
         <div className="c-figcaption__licenses">
           <Modal>
-            <div className="c-modal">
+            <div className="c-modal" data-id="1">
               <img src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="" />
               <figcaption className="c-figcaption">
                 <div className="c-figcaption__info">I værmeldingene til NRK på
@@ -210,8 +210,7 @@ const ExamplePage1 = () => (
                 </div>
               </figcaption>
               <div className="c-modal__details">
-                <LicenseExample />
-                test
+                <LicenseExampleImage />
               </div>
             </div>
           </Modal>

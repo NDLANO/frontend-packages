@@ -57,8 +57,5 @@
     "sass-loader": "^4.0.2",
     "style-loader": "0.13.1",
     "webpack": "1.14.0"
-  },
-  "dependencies": {
-    "basiclightbox": "^3.0.2"
   }
 }

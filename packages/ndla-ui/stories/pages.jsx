@@ -7,7 +7,7 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 // import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn, ClickableLicenseByline, ToggleImageLicense } from '../src';
+import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn, ClickableLicenseByline, Modal } from '../src';
 
 import LicenseExample from './article/LicenseExample';
 
@@ -199,16 +199,27 @@ const ExamplePage1 = () => (
            halvdel.
         </div>
         <div className="c-figcaption__licenses">
-          <ToggleImageLicense data-show-id="1" />
+          <Modal>
+            <div className="c-modal">
+              <img src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="" />
+              <figcaption className="c-figcaption">
+                <div className="c-figcaption__info">I værmeldingene til NRK på
+                   1980-tallet var symbolet for strålende solskinn en hvit
+                    sirkel. Ved skiftende vær var sirkelen delt i to med en
+                     hvit og en svart halvdel.
+                </div>
+              </figcaption>
+              <div className="c-modal__details">
+                <LicenseExample />
+                test
+              </div>
+            </div>
+          </Modal>
           <ClickableLicenseByline
             license={getLicenseByAbbreviation('by-nc-nd')}
           />
         </div>
       </figcaption>
-      <div data-basicLightbox data-id="1">
-        <LicenseExample />En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</div>
       <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med

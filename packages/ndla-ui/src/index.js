@@ -23,7 +23,7 @@ import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
-import ToggleImageLicense from './license/LicensedImage';
+import Modal from './modal/Modal';
 
 import { enableResponsiveTables } from './table/tables-collapse';
 
@@ -53,5 +53,5 @@ export {
   SiteNavItem,
   enableResponsiveTables,
   Table,
-  ToggleImageLicense,
+  Modal,
 };

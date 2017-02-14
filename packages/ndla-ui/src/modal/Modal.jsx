@@ -12,9 +12,6 @@ import React, { Component, PropTypes } from 'react';
 
 import ReactModal from 'react-modal';
 
-ReactModal.setAppElement('#modal1');
-
-
 class Modal extends Component {
   constructor() {
     super();
@@ -42,6 +39,7 @@ class Modal extends Component {
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
           closeTimeoutMS="300"
+          onRequestClose={this.handleCloseModal}
           data-basicLightbox
           data-id="1"
         >

@@ -1,10 +1,8 @@
 .c-modal {
-  max-width: 800px;
-  margin: auto;
-  background: $white;
+
   // background: $brand-color;
   // color: $white;
-  box-shadow: 0 0 50px rgba($black, 0.9);
+  box-shadow: 0 0 40px rgba($black, 0.9);
   .c-figcaption__info {
     @include max-width();
   }
@@ -39,6 +37,12 @@
   transform:scale(.9);transition:transform .4s cubic-bezier(.51,.92,.24,1);z-index:1;will-change:transform;
   background: transparent !important;
   border: none !important;
+  max-width: 800px;
+  margin: auto;
+  background: $white;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
   &--after-open {
     transform:scale(1);
   }

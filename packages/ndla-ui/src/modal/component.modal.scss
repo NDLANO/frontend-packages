@@ -2,7 +2,7 @@
 
   // background: $brand-color;
   // color: $white;
-  box-shadow: 0 0 40px rgba($black, 0.9);
+  box-shadow: 0 0 30px rgba($black, 0.9);
   .c-figcaption__info {
     @include max-width();
   }
@@ -54,5 +54,5 @@
   }
 }
 .ReactModal__Body--open {
-  position: fixed; // Disable scroll on background layer when open
+  overflow-y: hidden;
 }

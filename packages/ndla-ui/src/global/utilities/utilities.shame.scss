@@ -178,21 +178,23 @@ $shame-spacing: 12px;
 }
 .license-byline {
   position: relative;
-  display: flex;
+  @include mq(tablet) {
+    display: flex;
+  }
 }
 
 .license-byline__body:not(.license-byline__body--black) {
   display: block;
-  margin-top: 4px;
   margin-right: $spacing/2;
   text-transform: uppercase;
-  font-size: 12px;
+  @include inuit-font-size(13px);
   letter-spacing: 0.05em;
 }
 
 .c-license-icons__list {
   display: inline-block;
   margin-right: $spacing/2;
+  margin-bottom: $spacing/2;
 }
 
 .license-byline__body--black {
@@ -225,7 +227,7 @@ $shame-spacing: 12px;
 
 .license__list {
   flex-basis: 100%;
-  margin: 0;
+  margin: $spacing/2 0 0 0;
   padding: 0;
 }
 
@@ -242,7 +244,7 @@ $shame-spacing: 12px;
 }
 
 .license__list-item > img, .license__list-item > div {
-  margin: 0 $shame-spacing 0 0;
+  margin: 0 $shame-spacing $shame-spacing 0;
   float: left;
 }
 
@@ -252,6 +254,7 @@ $shame-spacing: 12px;
 
 .license__heading {
   margin-bottom: $shame-spacing;
+  margin-top: $shame-spacing;
 }
 
 .license h2 {

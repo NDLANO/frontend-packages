@@ -41,22 +41,20 @@ const TextContent = () => (
 const ArticleContent = ({ license }) => (
   <div>
     <div>
-      <div>
-        <LicenseByline license={license} />
-        <h3 className="license__heading">{license.title}</h3>
-        <p>{license.description}</p>
-      </div>
-      <div className="license__publication-info c-bodybox">
-        <ul className="license__list">
-          <li className="license__list-item"><h4>Tittel:</h4> Fortelleteknikk i radio og podkast<br /></li>
-          <li className="license__list-item"><h4>Opprettet:</h4> 10.10.2010. (Sist oppdatert 10.11.2014)</li>
-        </ul>
-        <ul className="license__list">
-          <h4>Opphavspersoner</h4>
-          <li className="license__list-item">Ola Nordmann (Forfatter)</li>
-          <li className="license__list-item">Kari Nordmann (Forfatter)</li>
-        </ul>
-      </div>
+      <LicenseByline license={license} />
+      <h3 className="license__heading">{license.title}</h3>
+      <p>{license.description}</p>
+    </div>
+    <div className="license__publication-info c-bodybox">
+      <ul className="license__list">
+        <li className="license__list-item"><h4>Tittel:</h4> Fortelleteknikk i radio og podkast<br /></li>
+        <li className="license__list-item"><h4>Opprettet:</h4> 10.10.2010. (Sist oppdatert 10.11.2014)</li>
+      </ul>
+      <ul className="license__list">
+        <h4>Opphavspersoner</h4>
+        <li className="license__list-item">Ola Nordmann (Forfatter)</li>
+        <li className="license__list-item">Kari Nordmann (Forfatter)</li>
+      </ul>
     </div>
   </div>
 );
@@ -100,14 +98,21 @@ const ImageContent = () => (
             <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
               Fotograf: Ola Nordmann, Kari Nordmann<br />
               Rettighetshaver: NDLA
-              <div><a target="_blank" rel="noopener noreferrer" href="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=">Åpne bilde i stort format</a></div>
+              <div className="u-margin-top-small">
+                <button className="c-button c-button--outline u-margin-right-small" type="button">Kopier bilde</button>
+                <button className="c-button c-button--outline u-margin-bottom-small" type="button">Åpne i nytt vindu</button>
+              </div>
             </LicenseByline>
           </li>
           <li className="license__list-item license_list--stacked">
             <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
             <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
-              Fotograf: Ola Nordmann, Kari Nordmann
-              <div><a target="_blank" rel="noopener noreferrer" href="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=">Åpne bilde i stort format</a></div>
+                Fotograf: Ola Nordmann, Kari Nordmann<br />
+                Rettighetshaver: NDLA
+                <div className="u-margin-top-small">
+                  <button className="c-button c-button--outline u-margin-right-small" type="button">Kopier bilde</button>
+                  <button className="c-button c-button--outline u-margin-bottom-small" type="button">Åpne i nytt vindu</button>
+                </div>
             </LicenseByline>
           </li>
         </ul>

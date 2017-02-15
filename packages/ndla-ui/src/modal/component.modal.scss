@@ -1,7 +1,4 @@
 .c-modal {
-
-  // background: $brand-color;
-  // color: $white;
   box-shadow: 0 0 30px rgba($black, 0.9);
   .c-figcaption__info {
     @include max-width();
@@ -10,14 +7,36 @@
     background: $white;
   }
 }
+.c-modal__license {
+  background: $brand-grey--lighter;
+  border-bottom: 1px solid $brand-grey--light;
+  padding: $spacing/2 $spacing 0;
+}
 .c-modal__details {
   border-top: 1px solid $brand-grey--light;
   background: $brand-grey--lightest;
-  // background: $brand-color;
-  // color: $white;
-  padding: 0 $spacing;
+  padding: 0 $spacing 0;
+}
+.c-modal__ctablock {
+  border-top: 1px solid $brand-grey--light;
+  background: $brand-grey--lightest;
+}
+.c-modal__button {
+  @extend .c-button;
+  width: 96%;
+  @include mq(tablet) {
+    width: 46%;
+  }
+  margin:3% 2%;
+}
+.c-modal__button:hover {
+  margin:3% 2%;
+}
+.c-modal__button-icon {
+  margin-right: $spacing/4;
 }
 
+// React Modal overrides
 .ReactModalPortal > div {
     opacity: 0;
 }

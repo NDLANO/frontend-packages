@@ -203,16 +203,7 @@ const ExamplePage1 = () => (
         <div className="c-figcaption__licenses">
           <Modal>
             <img src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="" />
-            <figcaption className="c-figcaption">
-              <div className="c-figcaption__info">I værmeldingene til NRK på
-                 1980-tallet var symbolet for strålende solskinn en hvit
-                  sirkel. Ved skiftende vær var sirkelen delt i to med en
-                   hvit og en svart halvdel.
-              </div>
-            </figcaption>
-            <div className="c-modal__details">
-              <LicenseExampleImage />
-            </div>
+            <LicenseExampleImage />
           </Modal>
           <ClickableLicenseByline
             license={getLicenseByAbbreviation('by-nc-nd')}
@@ -329,11 +320,7 @@ const ExamplePage2 = () => (
               frameBorder="0"
               allowFullScreen=""
             />
-            <figcaption className="c-figcaption">
-              <div className="c-figcaption__info">Noe om videoen her.
-              </div>
-            </figcaption>
-            <div className="c-modal__details">
+            <div className="c-modal">
               <LicenseExampleVideo />
             </div>
           </Modal>

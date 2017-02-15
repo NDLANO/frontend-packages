@@ -12,6 +12,8 @@ import React, { Component, PropTypes } from 'react';
 
 import ReactModal from 'react-modal';
 
+import Icon from '../../src/icons/Icon';
+
 class Modal extends Component {
   constructor() {
     super();
@@ -34,13 +36,13 @@ class Modal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleOpenModal} data-show-id="1" className="u-float-right">Gjenbruk</button>
+        <button onClick={this.handleOpenModal} data-show-id="1" className="c-button--transparent u-float-right"><Icon.OpenWindow /> Gjenbruk</button>
         <ReactModal
           isOpen={this.state.showModal}
           closeTimeoutMS="300"
           onRequestClose={this.handleCloseModal}
         >
-          <button onClick={this.handleCloseModal}>Lukk</button>
+          <button className="c-button c-button--transparent" onClick={this.handleCloseModal}>Lukk</button>
           <div className="c-modal">
             {this.props.children}
           </div>

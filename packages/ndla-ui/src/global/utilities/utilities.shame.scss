@@ -215,8 +215,9 @@ $shame-spacing: 12px;
   font-size: var(--font-size--medium);
 }
 
-.c-modal__details .license {
-  padding: $spacing*0.75;
+.c-modal .license {
+  padding: 0;
+  margin:0;
 }
 
 .license-toggler {

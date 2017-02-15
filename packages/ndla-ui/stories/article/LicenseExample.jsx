@@ -99,8 +99,8 @@ const ImageContent = () => (
               Fotograf: Ola Nordmann, Kari Nordmann<br />
               Rettighetshaver: NDLA
               <div className="u-margin-top-small">
-                <button className="c-button c-button--outline u-margin-right-small" type="button">Kopier bilde</button>
-                <button className="c-button c-button--outline u-margin-bottom-small" type="button">Åpne i nytt vindu</button>
+                <button className="c-button c-button--transparent u-margin-right-small" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
+                <button className="c-button c-button--transparent u-margin-bottom-small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
               </div>
             </LicenseByline>
           </li>
@@ -110,8 +110,8 @@ const ImageContent = () => (
                 Fotograf: Ola Nordmann, Kari Nordmann<br />
                 Rettighetshaver: NDLA
                 <div className="u-margin-top-small">
-                  <button className="c-button c-button--outline u-margin-right-small" type="button">Kopier bilde</button>
-                  <button className="c-button c-button--outline u-margin-bottom-small" type="button">Åpne i nytt vindu</button>
+                  <button className="c-button c-button--transparent u-margin-right-small" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
+                  <button className="c-button c-button--transparent u-margin-bottom-small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
                 </div>
             </LicenseByline>
           </li>

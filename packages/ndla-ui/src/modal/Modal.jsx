@@ -41,6 +41,8 @@ class Modal extends Component {
           isOpen={this.state.showModal}
           closeTimeoutMS="300"
           onRequestClose={this.handleCloseModal}
+          className="c-modal__wrapper"
+          portalClassName="c-modal__overlay"
         >
           <button className="c-button c-button--transparent" onClick={this.handleCloseModal}>Lukk</button>
           <div className="c-modal">

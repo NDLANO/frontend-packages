@@ -17,6 +17,8 @@
   background: $brand-grey--lightest;
   padding: 0 $spacing 0;
 }
+
+
 .c-modal__ctablock {
   border-top: 1px solid $brand-grey--light;
   background: $brand-grey--lightest;
@@ -36,11 +38,13 @@
   margin-right: $spacing/4;
 }
 
+
 // React Modal overrides
-.ReactModalPortal > div {
-    opacity: 0;
+.c-modal__wrapper {
+  border: none;
+  outline: none;
 }
-.ReactModalPortal .ReactModal__Overlay {
+.c-modal__overlay {
   transition:opacity .4s cubic-bezier(.51,.92,.24,1);
   z-index: 1000;
   will-change: opacity;
@@ -53,12 +57,29 @@
       opacity: 0;
   }
 }
-.ReactModal__Content {
+.c-modal__overlay > div {
+    opacity: 0;
+}
+.c-modal__overlay .ReactModal__Overlay {
+  transition:opacity .4s cubic-bezier(.51,.92,.24,1);
+  z-index: 1000;
+  will-change: opacity;
+  background: rgba(0, 0, 0, 0.7) !important;
+  overflow-y: auto;height: 100%;
+  &--after-open {
+    opacity: 1;
+  }
+  &--before-close {
+      opacity: 0;
+  }
+}
+.c-modal__wrapper {
   transform:scale(.9);transition:transform .4s cubic-bezier(.51,.92,.24,1);z-index:1;will-change:transform;
   background: transparent !important;
   border: none !important;
   max-width: 800px;
   margin: auto;
+  padding: 0;
   background: $white;
   left: 0 !important;
   top: 0 !important;

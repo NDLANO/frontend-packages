@@ -57,10 +57,12 @@
     "inuitcss": "^6.0.0-beta.4",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
+    "ndla-article-scripts": "^0.0.0",
     "ndla-editor": "^0.0.1",
     "ndla-licenses": "^0.0.6",
     "ndla-tabs": "^0.0.1",
     "node-sass": "^4.3.0",
+    "react-helmet": "^4.0.0",
     "sass-loader": "^4.0.2",
     "style-loader": "0.13.1",
     "webpack": "1.14.0"

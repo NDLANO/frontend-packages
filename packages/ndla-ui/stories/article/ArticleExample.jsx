@@ -7,25 +7,43 @@
  */
 
 import React, { PropTypes, Component } from 'react';
+import Helmet from 'react-helmet';
+import {
+  addEventListenerForResize,
+  updateIFrameDimensions,
+  addAsideClickListener,
+  removeEventListenerForResize,
+  removeAsideClickListener,
+} from 'ndla-article-scripts';
 
 import { Article, enableResponsiveTables } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
-const toggle = (el) => {
-  document.querySelectorAll(`${el.target.dataset.target} div`).forEach(target => target.classList.toggle('expanded'));
-};
-
 class ArticleExample extends Component {
 
   componentDidMount() {
     enableResponsiveTables();
+    addEventListenerForResize();
+    updateIFrameDimensions();
+    addAsideClickListener();
+  }
+
+  componentWillUnmount() {
+    removeEventListenerForResize();
+    removeAsideClickListener();
   }
 
   render() {
     const { article, withLicenseExample } = this.props;
+
+    const scripts = article.requiredLibraries ? article.requiredLibraries.map(lib => ({ src: lib.url, type: lib.mediaType })) : [];
     return (
       <Article>
+        <Helmet
+          title={`NDLA | ${article.title}`}
+          script={scripts}
+        />
         { withLicenseExample && <LicenseExample /> }
         <h1>{article.title}</h1>
         <ArticleByline authors date article={article} />
@@ -33,7 +51,6 @@ class ArticleExample extends Component {
         <div dangerouslySetInnerHTML={{ __html: article.content }} />
         { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
         { withLicenseExample && <LicenseExample /> }
-        <button className="c-button c-button--small c-factbox-toggler u-margin-top-small" onClick={toggle} data-target="aside">Toggle boxes</button>
       </Article>
     );
   }

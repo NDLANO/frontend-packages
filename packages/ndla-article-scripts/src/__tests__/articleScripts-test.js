@@ -8,8 +8,7 @@ import {
 
 const byId = id => document.getElementById(id);
 
-test('articleScripts/addAsideClickListener toggle expanded className on click', () => {
-  document.body.innerHTML = `
+const asideHtml = `
     <section>
       <p>Lorem ipsum</p>
       <aside id="aside-1">
@@ -20,6 +19,9 @@ test('articleScripts/addAsideClickListener toggle expanded className on click', 
       </aside>
     </section>
   `;
+
+test('articleScripts/addAsideClickListener toggle expanded className on click', () => {
+  document.body.innerHTML = asideHtml;
 
   addAsideClickListener();
   byId('button-1').click();
@@ -40,17 +42,7 @@ test('articleScripts/addAsideClickListener toggle expanded className on click', 
 });
 
 test('articleScripts/removeAsideClickListener removes aside click listner', () => {
-  document.body.innerHTML = `
-    <section>
-      <p>Lorem ipsum</p>
-      <aside id="aside-1">
-        <button id="button-1" class="c-aside__button"></button>
-      </aside>
-      <aside id="aside-2">
-        <button id="button-2" class="c-aside__button"></button>
-      </aside>
-    </section>
-  `;
+  document.body.innerHTML = asideHtml;
 
   addAsideClickListener();
   removeAsideClickListener();

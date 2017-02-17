@@ -19,7 +19,7 @@ import {
   addAsideClickListener,
 } from 'ndla-article-scripts';
 
-window.onload = () => { // Invoke after content has loaded
+window.onload = () => { // Invoke after article content has loaded
   updateIFrameDimensions();
   addEventListenerForResize();
   addAsideClickListener();

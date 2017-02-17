@@ -77,7 +77,6 @@
 }
 
 
-
 /* Width utils */
 .u-full-width {
   width: 100vw;
@@ -244,9 +243,12 @@ $shame-spacing: 12px;
   display: block;
 }
 
-.license__list-item > img, .license__list-item > div {
+.license__list-item > img, .license__list-item > div, .license__list-item > embed, .license__list-item > iframe {
   margin: 0 $shame-spacing $shame-spacing 0;
   float: left;
+}
+.license__list-item > iframe {
+  max-width: 200px;
 }
 
 .license__list-item > .license-byline > * {

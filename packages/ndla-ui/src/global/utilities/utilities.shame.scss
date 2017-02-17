@@ -92,10 +92,12 @@
 .c-article__byline {
   color: $brand-grey;
 }
-.article_introduction {
-  font-size: 110%;
+p.article_introduction {
+  font-size: 125%;
 }
-
+.u-toggle {
+  display: none;
+}
 
 
 /* Tabs Styling */

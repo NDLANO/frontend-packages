@@ -1,0 +1,31 @@
+.c-figure {
+  max-width: 100%;
+  transition: all .5s ease-in-out;
+  figcaption, figure {
+    max-width: 100%;
+    display: inline-block;
+  }
+}
+
+.c-figure--active {
+  background: $brand-color--light;
+  max-width: 100% !important;
+  figure {
+    @include mq(tablet) {
+      width: 40%;
+      margin: $spacing;
+      float:left;
+    }
+  }
+  figcaption {
+    @include mq(tablet) {
+      width: 50%;
+    }
+    display: inline-block;
+    background: $brand-color--light;
+    color: $brand-color;
+  }
+  .c-figcaption__info {
+    display:none;
+  }
+}

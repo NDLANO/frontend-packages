@@ -7,6 +7,7 @@ figcaption {
   font-size: 80%;
   padding: $spacing / 2 $spacing;
   color: $brand-grey-dark;
+  @include max-width();
 }
 //
 // .article_figure {

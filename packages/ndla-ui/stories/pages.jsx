@@ -217,6 +217,58 @@ const ExamplePage1 = () => (
     </section>
   </article>
 );
+const IdealExamplePage1 = () => (
+  <article className="o-wrapper--narrow">
+    <section>
+      <h1>Tittel om pitching</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+       Byline
+      </div>
+      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+         din og bestemmer seg for å bruke ressurser på nettopp dette
+         prosjektet.</p>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <section id="figureExample" className="c-figure">
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
+            alt=""
+          />
+        </figure>
+        <figcaption className="c-figcaption">
+          <div className="c-figcaption__info">I værmeldingene til NRK på
+           1980-tallet var symbolet for strålende solskinn en hvit sirkel.
+            Ved skiftende vær var sirkelen delt i to med en hvit og en svart
+             halvdel.
+          </div>
+          <div className="c-figcaption__licenses">
+            <Modal>
+              <LicenseExampleImage />
+            </Modal>
+          </div>
+        </figcaption>
+      </section>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+        pitcher, blir idéen og historien i den filmen du planlegger å lage,
+         tydeligere for både deg selv og dem du eventuelt jobber sammen med
+          i klassen.</p>
+    </section>
+  </article>
+);
 const ExamplePage2 = () => (
   <article>
     <section>
@@ -632,6 +684,17 @@ storiesOf('Sidevisninger alternativ', module)
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <OneColumn>
           <ExamplePage3 />
+        </OneColumn>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('Artikkel nytt layout', () => (
+      <PageContainer>
+        <MastheadExample />
+        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <OneColumn>
+          <IdealExamplePage1 />
         </OneColumn>
         <ResourcesExample />
         <FooterExample />

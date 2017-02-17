@@ -15,7 +15,7 @@ import { LicenseByline } from '../../src';
 
 
 const LicenseExampleImage = () => (
-  <div className="license u-expanded">
+  <div className="u-expanded">
     <div className="c-modal__license">
       <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
         <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
@@ -31,7 +31,7 @@ const LicenseExampleImage = () => (
     </div>
     <div className="c-modal__ctablock u-text-center">
       <button className="c-modal__button c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
-      <button className="c-modal__button" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
+      <button className="c-modal__button" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
     </div>
   </div>
 );

@@ -19,12 +19,14 @@ import PageContainer from './layout/PageContainer';
 import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
+import ArticleFootNotes from './article/ArticleFootNotes';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
 import TopicMenu from './topicMenu/TopicMenu';
+import TopicArticle from './topic/TopicArticle';
 
 import { enableResponsiveTables } from './table/tables-collapse';
 
@@ -33,6 +35,7 @@ Footer.Text = FooterText;
 Footer.Ruler = FooterRuler;
 Footer.Editor = FooterEditor;
 Article.Introduction = ArticleIntroduction;
+Article.FootNotes = ArticleFootNotes;
 
 export {
   Article,
@@ -55,5 +58,6 @@ export {
   SiteNavItem,
   enableResponsiveTables,
   Table,
+  TopicArticle,
   TopicMenu,
 };

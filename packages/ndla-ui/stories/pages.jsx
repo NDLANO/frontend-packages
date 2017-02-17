@@ -568,7 +568,19 @@ storiesOf('Sidevisninger', module)
       </OneColumn>
       <FooterExample />
     </PageContainer>
-  ));
+  ))
+  .add('Emne artikkel', () => (
+    <PageContainer>
+      <Masthead />
+      <OneColumn>
+        <article>
+          <ArticleLoader isTopicArticle articleId="208" />
+        </article>
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
+  ;
 storiesOf('Sidevisninger alternativ', module)
     .add('Artikkel med bilde', () => (
       <PageContainer>

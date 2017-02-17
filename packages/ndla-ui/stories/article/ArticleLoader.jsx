@@ -9,7 +9,7 @@
 import React, { Component, PropTypes } from 'react';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import { Button } from '../../src/';
+import { Button, TopicArticle } from '../../src/';
 import ArticleExample from './ArticleExample';
 
 class ArticleLoader extends Component {
@@ -46,12 +46,20 @@ class ArticleLoader extends Component {
     ;
   }
 
+  renderArticle() {
+    const { article } = this.state;
+    const { isTopicArticle, withLicenseExample } = this.props;
+    if (isTopicArticle) {
+      return <TopicArticle article={article} openTitle="Se hele emnebeskrivelse" closeTitle={<span>Skjul emnebeskrivelse</span>} />;
+    }
+    return <ArticleExample article={article} withLicenseExample={withLicenseExample} />;
+  }
+
   render() {
     const { article, message } = this.state;
-    const { withLicenseExample } = this.props;
     return (
       <div>
-        { article ? <ArticleExample article={article} withLicenseExample={withLicenseExample} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+        { article ? this.renderArticle() : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
         { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
       </div>
     );
@@ -61,6 +69,7 @@ class ArticleLoader extends Component {
 ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   withLicenseExample: PropTypes.bool,
+  isTopicArticle: PropTypes.bool,
 };
 
 export default ArticleLoader;

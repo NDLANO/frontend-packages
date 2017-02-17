@@ -4,6 +4,7 @@ import article89 from './article89.json';
 import article93 from './article93.json';
 import article149 from './article149.json';
 import article167 from './article167.json';
+import topicArticle from './topicArticle';
 import topics from './topics';
 
 const article = {
@@ -13,6 +14,7 @@ const article = {
   article93,
   article149,
   article167,
+  topicArticle,
 };
 
 export { topics };

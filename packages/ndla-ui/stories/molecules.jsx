@@ -10,8 +10,10 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
+  TopicArticle,
   ClickableLicenseByline,
 } from '../src';
+import articles from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import LicenseExample from './article/LicenseExample';
 
@@ -224,6 +226,15 @@ storiesOf('Sammensatte moduler', module)
           { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },
           { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
         ]}
+      />
+    </Center>
+  ))
+  .add('Emne artikkel', () => (
+    <Center>
+      <TopicArticle
+        article={articles.topicArticle}
+        openTitle="Se hele emnebeskrivelse"
+        closeTitle={<span>Skjul emnebeskrivelse</span>}
       />
     </Center>
   ))

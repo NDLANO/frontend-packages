@@ -28,3 +28,21 @@ export const TopicShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
   subtopics: PropTypes.array,
 });
+
+export const FootNoteShape = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  authors: PropTypes.array.isRequired,
+  edition: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired,
+});
+
+export const ArticleShape = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  copyright: PropTypes.shape({
+    authors: PropTypes.array.isRequired,
+  }).isRequired,
+  created: PropTypes.string.isRequired,
+  updated: PropTypes.string.isRequired,
+});

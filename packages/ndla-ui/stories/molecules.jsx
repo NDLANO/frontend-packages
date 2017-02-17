@@ -10,10 +10,10 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle,
+  TopicArticle, TopicIntroductionList,
   ClickableLicenseByline,
 } from '../src';
-import articles from '../dummydata/index';
+import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import LicenseExample from './article/LicenseExample';
 
@@ -236,6 +236,13 @@ storiesOf('Sammensatte moduler', module)
         openTitle="Se hele emnebeskrivelse"
         closeTitle={<span>Skjul emnebeskrivelse</span>}
       />
+    </Center>
+  ))
+  .add('Emne introduksjons liste', () => (
+    <Center>
+      <div className="c-resources">
+        <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+      </div>
     </Center>
   ))
   ;

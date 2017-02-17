@@ -7,13 +7,13 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 // import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { PageContainer, Footer, Hero, OneColumn, ClickableLicenseByline } from '../src';
+import { PageContainer, Footer, Hero, OneColumn, ClickableLicenseByline, TopicIntroductionList } from '../src';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
-import article from '../dummydata/index';
+import article, { topicListWithIntro } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -568,7 +568,25 @@ storiesOf('Sidevisninger', module)
       </OneColumn>
       <FooterExample />
     </PageContainer>
-  ));
+  ))
+  .add('Emneside', () => (
+    <PageContainer>
+      <Masthead />
+      <OneColumn>
+        <ArticleLoader isTopicArticle articleId="208" />
+        <div className="c-resources u-margin-top-large">
+          <Tabs
+            tabs={[
+              { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+              { key: '2', displayName: 'Læringsressurser', content: <p>Læringsressurser-innhold</p> },
+            ]}
+          />
+        </div>
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>
+  ))
+  ;
 storiesOf('Sidevisninger alternativ', module)
     .add('Artikkel med bilde', () => (
       <PageContainer>

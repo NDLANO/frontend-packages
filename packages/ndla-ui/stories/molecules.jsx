@@ -10,8 +10,10 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
+  TopicArticle, TopicIntroductionList,
   ClickableLicenseByline,
 } from '../src';
+import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import LicenseExample from './article/LicenseExample';
 
@@ -225,6 +227,22 @@ storiesOf('Sammensatte moduler', module)
           { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
         ]}
       />
+    </Center>
+  ))
+  .add('Emne artikkel', () => (
+    <Center>
+      <TopicArticle
+        article={articles.topicArticle}
+        openTitle="Se hele emnebeskrivelse"
+        closeTitle={<span>Skjul emnebeskrivelse</span>}
+      />
+    </Center>
+  ))
+  .add('Emne introduksjons liste', () => (
+    <Center>
+      <div className="c-resources">
+        <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+      </div>
     </Center>
   ))
   ;

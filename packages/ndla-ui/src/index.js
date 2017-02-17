@@ -19,20 +19,22 @@ import PageContainer from './layout/PageContainer';
 import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
+import ArticleFootNotes from './article/ArticleFootNotes';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
 import TopicMenu from './topicMenu/TopicMenu';
-
-import { enableResponsiveTables } from './table/tables-collapse';
+import TopicArticle from './topic/TopicArticle';
+import TopicIntroductionList from './topic/TopicIntroductionList';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
 Footer.Ruler = FooterRuler;
 Footer.Editor = FooterEditor;
 Article.Introduction = ArticleIntroduction;
+Article.FootNotes = ArticleFootNotes;
 
 export {
   Article,
@@ -53,7 +55,8 @@ export {
   Pager,
   SiteNav,
   SiteNavItem,
-  enableResponsiveTables,
   Table,
+  TopicArticle,
+  TopicIntroductionList,
   TopicMenu,
 };

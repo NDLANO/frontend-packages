@@ -4,7 +4,9 @@ import article89 from './article89.json';
 import article93 from './article93.json';
 import article149 from './article149.json';
 import article167 from './article167.json';
+import topicArticle from './topicArticle';
 import topics from './topics';
+import topicListWithIntro from './topicListWithIntro';
 
 const article = {
   article4,
@@ -13,7 +15,8 @@ const article = {
   article93,
   article149,
   article167,
+  topicArticle,
 };
 
-export { topics };
+export { topics, topicListWithIntro };
 export default article;

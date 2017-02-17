@@ -336,3 +336,37 @@ $shame-spacing: 12px;
   opacity: 0;
   width: 100%;
 }
+
+.c-topic-article_toggle-button {
+  font-weight: 100;
+  font-size: 0.8em;
+  text-decoration: underline;
+}
+
+.c-topic-introduction {
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    padding-bottom: 1.5em;
+    border-bottom: 2px solid #DADADA;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__header {
+    font-size: 1.2em;
+    color: #045A91;
+  }
+  &__topic-link {
+    padding: 0.25em   1em;
+    border: 1px solid #045A91;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+  }
+}

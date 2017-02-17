@@ -1,19 +1,20 @@
-import React, { PropTypes, Component } from 'react';
+/*
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
-// import { enableResponsiveTables } from './tables-collapse';
 
 const classes = new BEMHelper('c-table');
 
-class Table extends Component {
-  componentDidMount() {
-    // enableResponsiveTables();
-  }
-
-  render() {
-    const { children, ...rest } = this.props;
-    return <table {...classes({ extra: ['o-table'] })} {...rest}>{children}</table>;
-  }
-}
+const Table = ({ children, ...rest }) =>
+  <table {...classes({ extra: ['o-table'] })} {...rest}>
+    {children}
+  </table>;
 
 Table.propTypes = {
   children: PropTypes.node,

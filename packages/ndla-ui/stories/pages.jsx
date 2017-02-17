@@ -7,9 +7,11 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 // import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn, ClickableLicenseByline, Modal } from '../src';
+import { SiteNav, PageContainer, SiteNavItem, Masthead, MastheadItem, Logo, Footer, Hero, OneColumn, ClickableLicenseByline, Modal, LicenseToggle } from '../src';
 
 import LicenseExampleImage from './article/LicenseExampleImage';
+
+import LicenseExampleImageAlt from './article/LicenseExampleImageAlt';
 
 import LicenseExampleVideo from './article/LicenseExampleVideo';
 
@@ -252,9 +254,9 @@ const IdealExamplePage1 = () => (
              halvdel.
           </div>
           <div className="c-figcaption__licenses">
-            <Modal>
-              <LicenseExampleImage />
-            </Modal>
+            <LicenseToggle>
+              <LicenseExampleImageAlt />
+            </LicenseToggle>
           </div>
         </figcaption>
       </section>

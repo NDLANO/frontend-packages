@@ -24,6 +24,7 @@ import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import Modal from './modal/Modal';
+import LicenseToggle from './modal/LicenseToggle';
 
 import { enableResponsiveTables } from './table/tables-collapse';
 
@@ -54,4 +55,5 @@ export {
   enableResponsiveTables,
   Table,
   Modal,
+  LicenseToggle,
 };

@@ -10,34 +10,45 @@ import React, { Component, PropTypes } from 'react';
 
 // import * as basicLightbox from 'basiclightbox';
 
-// import ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 
 import Icon from '../../src/icons/Icon';
 
-
 class Modal extends Component {
-
   constructor() {
     super();
     this.state = {
-      condition: false,
+      showModal: false,
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleClick() {
-    this.setState({ condition: !this.state.condition });
-    document.getElementById('figureExample').classList.toggle('c-figure--active');
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.handleClick} data-show-id="1" className="c-button--transparent u-float-right u-z-top"><Icon.OpenWindow /> Gjenbruk</button>
-        <div className={this.state.condition ? '' : 'u-toggle'} id="figmeta">
-          {this.props.children}
-        </div>
+        <button onClick={this.handleOpenModal} data-show-id="1" className="c-button--transparent u-float-right u-z-top"><Icon.OpenWindow /> Gjenbruk</button>
+        <ReactModal
+          isOpen={this.state.showModal}
+          closeTimeoutMS="300"
+          onRequestClose={this.handleCloseModal}
+          className="c-modal__wrapper"
+          portalClassName="c-modal__overlay"
+        >
+          <button className="c-button c-button--transparent" onClick={this.handleCloseModal}>Lukk</button>
+          <div className="c-modal">
+            {this.props.children}
+          </div>
+        </ReactModal>
       </div>
     );
   }

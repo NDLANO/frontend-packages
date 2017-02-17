@@ -1,0 +1,32 @@
+.c-licenseToggle {
+  box-shadow: 0 0 30px rgba($black, 0.9);
+  .c-figcaption__info {
+    @include max-width();
+  }
+  figcaption {
+    background: $white;
+  }
+}
+.c-licenseToggle__license {
+  background: $brand-color--light;
+  padding: $spacing/2 $spacing 0;
+}
+.c-licenseToggle__details {
+  border-top: 1px solid $brand-color;
+  background: $brand-color--light;
+  padding: 0 $spacing 0;
+}
+.c-licenseToggle__button {
+  @extend .c-button;
+  width: 96%;
+  @include mq(tablet) {
+    width: 46%;
+  }
+  margin:3% 2%;
+}
+.c-licenseToggle__button:hover {
+  margin:3% 2%;
+}
+.c-licenseToggle__button-icon {
+  margin-right: $spacing/4;
+}

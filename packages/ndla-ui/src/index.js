@@ -29,8 +29,6 @@ import TopicMenu from './topicMenu/TopicMenu';
 import TopicArticle from './topic/TopicArticle';
 import TopicIntroductionList from './topic/TopicIntroductionList';
 
-import { enableResponsiveTables } from './table/tables-collapse';
-
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
 Footer.Ruler = FooterRuler;
@@ -57,7 +55,6 @@ export {
   Pager,
   SiteNav,
   SiteNavItem,
-  enableResponsiveTables,
   Table,
   TopicArticle,
   TopicIntroductionList,

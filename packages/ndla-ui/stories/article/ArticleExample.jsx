@@ -16,14 +16,13 @@ import {
   removeAsideClickListener,
 } from 'ndla-article-scripts';
 
-import { Article, enableResponsiveTables } from '../../src';
+import { Article } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
 class ArticleExample extends Component {
 
   componentDidMount() {
-    enableResponsiveTables();
     addEventListenerForResize();
     updateIFrameDimensions();
     addAsideClickListener();

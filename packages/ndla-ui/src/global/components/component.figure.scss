@@ -1,31 +1,54 @@
 .c-figure {
-  max-width: 100%;
-  transition: all .5s ease-in-out;
+  max-width: 100% !important;
+  text-align: center;
+  transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
   figcaption, figure {
-    max-width: 100%;
+    @include max-width();
+    margin: auto;
     display: inline-block;
+    text-align: left;
   }
 }
-
+#figmeta {
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+}
 .c-figure--active {
   background: $brand-color--light;
-  max-width: 100% !important;
+  padding: $spacing;
+
+  position: relative;
+
+  #figmeta {
+    height: auto;
+  }
   figure {
-    @include mq(tablet) {
+    @include mq(desktop) {
       width: 40%;
-      margin: $spacing;
       float:left;
     }
   }
   figcaption {
-    @include mq(tablet) {
+    @include mq(desktop) {
       width: 50%;
     }
-    display: inline-block;
     background: $brand-color--light;
+    display: inline-block;
+    color: $brand-color;
+    padding-top: 0;
+  }
+  &:after {
+    content: 'X';
+    font-weight: 100;
+    font-size: 27px;
+    position: absolute;
+    top: $spacing;
+    right: $spacing;
     color: $brand-color;
   }
-  .c-figcaption__info {
-    display:none;
+  .license-byline {
+    display: block;
   }
 }

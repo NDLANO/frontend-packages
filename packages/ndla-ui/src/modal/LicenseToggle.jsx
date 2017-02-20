@@ -30,8 +30,8 @@ class LicenseToggle extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick} data-show-id="1" className="c-button--transparent u-float-right u-z-top"><Icon.OpenWindow /> Gjenbruk</button>
-        <div className={this.state.condition ? '' : 'u-toggle'} id="figmeta">
+        <button onClick={this.handleClick} className="c-button c-button--outline"><Icon.OpenWindow /> Gjenbruk</button>
+        <div className={this.state.condition ? '' : ' '} id="figmeta">
           {this.props.children}
         </div>
       </div>

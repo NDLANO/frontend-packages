@@ -38,6 +38,9 @@
     display: inline-block;
     color: $brand-color;
     padding-top: 0;
+    .c-figcaption__info {
+      display: none;
+    }
   }
   &:after {
     content: 'X';

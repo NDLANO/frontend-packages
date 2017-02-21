@@ -74,7 +74,7 @@
 
   img {
     box-shadow: 0px 0px 9px -3px $brand-grey;
-    margin-bottom: $spacing/2;
+    margin-bottom: $spacing--small;
     width: 100%; // Remove later?
   }
   h2,h3,h4,h5 {
@@ -82,8 +82,8 @@
     font-size: 110%;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-top: $spacing/2;
-    margin-bottom: $spacing/2;
+    margin-top: $spacing--small;
+    margin-bottom: $spacing--small;
     border-bottom: 1px solid $brand-color--light;
   }
 }

@@ -109,7 +109,7 @@ $shame-spacing: 12px;
     font-size: 18px;
     font-weight: 700;
     list-style: none;
-    margin: $spacing/1.4 0 $spacing/2;
+    margin: $spacing/1.4 0 $spacing--small;
     padding: 0;
     border-bottom: 1px $background-color--dark solid;
   }
@@ -186,7 +186,7 @@ $shame-spacing: 12px;
 
 .license-byline__body:not(.license-byline__body--black) {
   display: block;
-  margin-right: $spacing/2;
+  margin-right: $spacing--small;
   text-transform: uppercase;
   @include inuit-font-size(13px);
   letter-spacing: 0.05em;
@@ -194,8 +194,8 @@ $shame-spacing: 12px;
 
 .c-license-icons__list {
   display: inline-block;
-  margin-right: $spacing/2;
-  margin-bottom: $spacing/2;
+  margin-right: $spacing--small;
+  margin-bottom: $spacing--small;
 }
 
 .license-byline__body--black {
@@ -227,7 +227,7 @@ $shame-spacing: 12px;
 
 .license__list {
   flex-basis: 100%;
-  margin: $spacing/2 0 0 0;
+  margin: $spacing--small 0 0 0;
   padding: 0;
 }
 

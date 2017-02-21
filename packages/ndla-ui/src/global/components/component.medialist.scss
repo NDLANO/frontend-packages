@@ -3,7 +3,7 @@
 }
 .c-medialist__img {
   float:none;
-  margin: 0 0 $spacing/2;
+  margin: 0 0 $spacing--small;
   img {
     max-width: 100%;
     margin:0;
@@ -14,8 +14,8 @@
   }
 }
 .c-medialist__item {
-  margin-bottom: $spacing/2;
-  padding: $spacing/2 0;
+  margin-bottom: $spacing--small;
+  padding: $spacing--small 0;
   border-bottom: 1px solid $brand-color--tertiary;
   &:last-child {
     border-bottom: none;
@@ -27,16 +27,16 @@
 }
 .c-medialist__actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
-  margin-top: $spacing/2;
+  margin-top: $spacing--small;
   margin-bottom: $spacing;
   @include mq(tablet) {
     flex-direction: row;
   }
 
   button {
-    margin-bottom: $spacing/2;
+    margin-bottom: $spacing--small;
     text-align: left;
     @include mq(tablet) {
       margin-bottom: 0;
@@ -46,14 +46,14 @@
 
 }
 .c-medialist__meta {
-  margin-bottom: $spacing/2;
-  padding-bottom: $spacing/2;
+  margin-bottom: $spacing--small;
+  padding-bottom: $spacing--small;
 }
 .c-medialist__meta-item {
   width: 100%;
   padding-left: 0;
   margin-left: -1em;
-  padding-right: $spacing/2;
+  padding-right: $spacing--small;
 }
 .c-medialist__icon {
   color: $brand-color;

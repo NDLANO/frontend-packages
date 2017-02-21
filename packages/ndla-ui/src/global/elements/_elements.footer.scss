@@ -17,8 +17,8 @@
 }
 .footer_editor {
   display: block;
-  margin-bottom: $spacing/2;
-  padding-right: $spacing/2;
+  margin-bottom: $spacing--small;
+  padding-right: $spacing--small;
 
   @include mq(desktop) {
     display: inline-block;

@@ -55,15 +55,15 @@ aside, article aside, .c-article aside {
     font-size: 110%;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-top: $spacing/2;
-    margin-bottom: $spacing/2;
+    margin-top: $spacing--small;
+    margin-bottom: $spacing--small;
     border-bottom: 1px solid $brand-color--light;
   }
   p {
     margin-top: 0;
   }
   img {
-    margin-bottom: $spacing/2;
+    margin-bottom: $spacing--small;
     width: 100%; // Remove later?
   }
 

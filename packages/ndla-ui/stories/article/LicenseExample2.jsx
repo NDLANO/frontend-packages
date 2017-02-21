@@ -13,7 +13,6 @@ import { LicenseShape } from '../../src/shapes';
 
 import { Icon, Button, LicenseByline, ClickableLicenseByline } from '../../src';
 
-
 const VideoContent = () => (
   <div>
     <h2>Slik bruker du videoer fra artikkelen</h2>
@@ -153,40 +152,6 @@ const ImageContent = () => (
   </div>
 );
 
-
-const H5PContent = () => (
-  <div>
-    <h2>Slik bruker du H5P-innhold fra artikelen</h2>
-    <p>Klikk på lisensene for å se reglene.</p>
-    <ul className="license__list">
-      <li className="license__list-item license_list--stacked">
-        <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
-        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
-          Kopier denne teksten:<br />
-          Fotograf: Ola Nordmann, Kari Nordmann<br />
-          Rettighetshaver: NDLA
-          <div className="u-margin-top-small">
-            <button className="c-button c-button--transparent c-button--small u-margin-right" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
-            <button className="c-button c-button--transparent c-button--small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
-          </div>
-        </LicenseByline>
-      </li>
-      <li className="license__list-item license_list--stacked">
-        <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
-        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
-            Kopier denne teksten:<br />
-            Fotograf: Ola Nordmann, Kari Nordmann<br />
-            Rettighetshaver: NDLA
-            <div className="u-margin-top-small">
-              <button className="c-button c-button--transparent c-button--small u-margin-right" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
-              <button className="c-button c-button--transparent c-button--small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
-            </div>
-        </LicenseByline>
-      </li>
-    </ul>
-  </div>
-);
-
 const LicenseExample = () => (
   <div className="license u-expanded">
     <Button stripped className="license-toggler site-nav_link" onClick={() => {}} >
@@ -197,14 +162,14 @@ const LicenseExample = () => (
       <p className="license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
       <Tabs
         tabs={[
-            { key: 'image', displayName: 'Bilder', content: <ImageContent /> },
-            { key: 'text', displayName: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
-            { key: 'video', displayName: 'Video', content: <VideoContent /> },
-            { key: 'audio', displayName: 'Lyd', content: <AudioContent /> },
-            { key: 'eforelesning', displayName: 'E-forelesning', content: <ImageContent /> },
-            { key: 'recipe', displayName: 'Oppskrift', content: <ImageContent /> },
-            { key: 'trainingExercise', displayName: 'Treningsøvelse', content: <ImageContent /> },
-            { key: 'h5p', displayName: 'H5P', content: <H5PContent /> },
+            { key: 'flash', displayName: 'Flash', content: <ImageContent /> },
+            { key: 'learningPath', displayName: 'Læringsti', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
+            { key: 'definitions', displayName: 'Begrep', content: <defintionsContent /> },
+            { key: 'category', displayName: 'Emnea.', content: <AudioContent /> },
+            { key: 'fagstoff', displayName: 'Fagstoff', content: <ImageContent /> },
+            { key: 'attachment', displayName: 'Vedlegg', content: <ImageContent /> },
+            { key: 'exercise', displayName: 'Oppgave', content: <ImageContent /> },
+            { key: 'guide', displayName: 'Veiledning', content: <VideoContent /> },
         ]}
       />
     </div>

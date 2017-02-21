@@ -1,6 +1,9 @@
 .c-licensebox {
   background: $brand-color--lighter;
-  padding: $spacing*2 $spacing;;
+  padding: $spacing $spacing/2;
+  @include mq(tablet) {
+    padding: $spacing*2 $spacing;
+  }
   margin: 0 0 $spacing;
 
   .c-tabs__list {

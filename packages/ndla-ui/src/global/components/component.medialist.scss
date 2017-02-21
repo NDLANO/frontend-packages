@@ -3,17 +3,20 @@
 }
 .c-medialist__img {
   float:none;
+  margin: 0 0 $spacing/2;
+  img {
+    max-width: 100%;
+    margin:0;
+  }
   @include mq(tablet) {
     float:left;
+    margin-right: $spacing;
   }
 }
 .c-medialist__item {
   margin-bottom: $spacing/2;
-  // background: rgba($white, 0.5);
   padding: $spacing/2 0 $spacing;
-  // max-width: 670px;
   border-bottom: 1px solid $brand-color--tertiary;
-
   &:last-child {
     border-bottom: none;
   }
@@ -31,6 +34,16 @@
   @include mq(tablet) {
     flex-direction: row;
   }
+
+  button {
+    margin-bottom: $spacing/2;
+    text-align: left;
+    @include mq(tablet) {
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+
 }
 .c-medialist__meta {
   margin-bottom: $spacing/2;

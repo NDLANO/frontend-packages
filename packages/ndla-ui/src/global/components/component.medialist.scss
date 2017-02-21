@@ -4,6 +4,9 @@
 .c-medialist__img {
   float:none;
   margin: 0 0 $spacing--small;
+  a, a:hover {
+    box-shadow: none;
+  }
   img {
     max-width: 100%;
     margin:0;
@@ -23,25 +26,21 @@
 }
 .c-medialist__body {
   @include inuit-font-size(14px, 24px);
-  max-width: 350px;
+  // max-width: 350px;
 }
 .c-medialist__actions {
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
+  justify-content: flex-start;
   margin-top: $spacing--small;
-  margin-bottom: $spacing;
+  margin-bottom: $spacing--small;
   @include mq(tablet) {
     flex-direction: row;
+    flex-wrap: wrap;
   }
-
   button {
-    margin-bottom: $spacing--small;
     text-align: left;
-    @include mq(tablet) {
-      margin-bottom: 0;
-      text-align: center;
-    }
+    margin: 0 $spacing $spacing--small 0;
   }
 
 }
@@ -57,7 +56,7 @@
 }
 .c-medialist__icon {
   color: $brand-color;
-  width: 180px !important;
+  width: 150px !important;
   height: auto !important;
-  padding: 0 $spacing $spacing;
+  padding: 0 $spacing--small $spacing--small;
 }

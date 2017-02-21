@@ -13,6 +13,7 @@ import LicenseCc from './LicenseCc';
 import Download from './Download';
 import Copy from './Copy';
 import Audio from './Audio';
+import Document from './Document';
 import OpenWindow from './OpenWindow';
 import LicenseBy from './LicenseBy';
 import LicenseNc from './LicenseNc';
@@ -27,6 +28,7 @@ function Icon(props) {
 Icon.Download = props => (<Icon {...props} icon={Download} />);
 Icon.Copy = props => (<Icon {...props} icon={Copy} />);
 Icon.Audio = props => (<Icon {...props} icon={Audio} />);
+Icon.Document = props => (<Icon {...props} icon={Document} />);
 // Icon.Info = props => (<Icon {...props} icon={Info} />);
 Icon.OpenWindow = props => (<Icon {...props} icon={OpenWindow} />);
 Icon.LicenseCc = props => (<Icon {...props} icon={LicenseCc} />);

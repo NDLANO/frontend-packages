@@ -13,9 +13,6 @@ import { LicenseShape } from '../shapes';
 const LicenseByline = ({ children, license }) => (
   <div className="license-byline">
     <LicenseIconList licenseRights={license.rights} />
-    <div className="license-byline__body">
-      <span>{ license.short }</span>
-    </div>
     { children ?
       <div className="license-byline__body">
         { children }

@@ -11,6 +11,9 @@ import classNames from 'classnames';
 
 import LicenseCc from './LicenseCc';
 import Download from './Download';
+import Copy from './Copy';
+// import Info from './Info';
+import OpenWindow from './OpenWindow';
 import LicenseBy from './LicenseBy';
 import LicenseNc from './LicenseNc';
 import LicenseNd from './LicenseNd';
@@ -22,6 +25,9 @@ function Icon(props) {
 }
 
 Icon.Download = props => (<Icon {...props} icon={Download} />);
+Icon.Copy = props => (<Icon {...props} icon={Copy} />);
+// Icon.Info = props => (<Icon {...props} icon={Info} />);
+Icon.OpenWindow = props => (<Icon {...props} icon={OpenWindow} />);
 Icon.LicenseCc = props => (<Icon {...props} icon={LicenseCc} />);
 Icon.LicenseBy = props => (<Icon {...props} icon={LicenseBy} />);
 Icon.LicenseNc = props => (<Icon {...props} icon={LicenseNc} />);

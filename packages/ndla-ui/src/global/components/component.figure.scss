@@ -1,0 +1,57 @@
+.c-figure {
+  max-width: 100% !important;
+  text-align: center;
+  transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  figcaption, figure {
+    @include max-width();
+    margin: auto;
+    display: inline-block;
+    text-align: left;
+  }
+}
+#figmeta {
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+}
+.c-figure--active {
+  background: $brand-color--light;
+  padding: $spacing;
+
+  position: relative;
+
+  #figmeta {
+    height: auto;
+  }
+  figure {
+    @include mq(desktop) {
+      width: 40%;
+      float:left;
+    }
+  }
+  figcaption {
+    @include mq(desktop) {
+      width: 50%;
+    }
+    background: $brand-color--light;
+    display: inline-block;
+    color: $brand-color;
+    padding-top: 0;
+    .c-figcaption__info {
+      display: none;
+    }
+  }
+  &:after {
+    content: 'X';
+    font-weight: 100;
+    font-size: 27px;
+    position: absolute;
+    top: $spacing;
+    right: $spacing;
+    color: $brand-color;
+  }
+  .license-byline {
+    display: block;
+  }
+}

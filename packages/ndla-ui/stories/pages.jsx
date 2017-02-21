@@ -46,7 +46,7 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ResourcesTab1Content = () => (
+const ResourcesTab1Example = () => (
   <div>
     <div className="c-article">
       <h3><button>Innføring i journalistikk</button></h3>
@@ -74,7 +74,7 @@ const ResourcesTab1 = () => (
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Content /></div> },
+        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Example /></div> },
         { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
         { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
         { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },

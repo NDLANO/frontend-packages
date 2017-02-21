@@ -16,6 +16,7 @@ import {
 import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import LicenseExample from './article/LicenseExample';
+import LicenseExample2 from './article/LicenseExample2';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -215,6 +216,7 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Lisensboks</h2>
       <article className="article">
         <LicenseExample />
+        <LicenseExample2 />
       </article>
     </Center>
   ))

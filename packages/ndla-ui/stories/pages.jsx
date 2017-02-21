@@ -703,7 +703,7 @@ storiesOf('Sidevisninger alternativ', module)
     ))
     .add('Artikkel nytt layout', () => (
       <PageContainer>
-        <MastheadExample />
+        <Masthead />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <OneColumn>
           <IdealExamplePage1 />

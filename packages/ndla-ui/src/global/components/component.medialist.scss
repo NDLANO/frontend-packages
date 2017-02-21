@@ -2,24 +2,47 @@
   padding-left: 0;
 }
 .c-medialist__img {
-  margin-bottom: $spacing/2;
   float:none;
   @include mq(tablet) {
     float:left;
   }
 }
 .c-medialist__item {
-  margin-bottom: $spacing;
+  margin-bottom: $spacing/2;
+  // background: rgba($white, 0.5);
+  padding: $spacing/2 0 $spacing;
+  // max-width: 670px;
+  border-bottom: 1px solid $brand-color--tertiary;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 .c-medialist__body {
-  @include inuit-font-size(14px);
+  @include inuit-font-size(14px, 24px);
   max-width: 350px;
 }
 .c-medialist__actions {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin-top: $spacing/2;
+  margin-bottom: $spacing;
   @include mq(tablet) {
     flex-direction: row;
   }
+}
+.c-medialist__meta {
+  margin-bottom: $spacing/2;
+  padding-bottom: $spacing/2;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  list-style: none;
+}
+.c-medialist__meta-item {
+  width: 100%;
+  padding-left: 0;
+  margin-left: -1em;
+  padding-right: $spacing/2;
 }

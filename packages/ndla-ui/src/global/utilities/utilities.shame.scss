@@ -210,7 +210,6 @@ $shame-spacing: 12px;
 }
 
 .license {
-  padding: ($shame-spacing * 2) ($shame-spacing * 4);
   margin: 0 -1em;
   transition: all 200ms ease-in;
   font-size: var(--font-size--medium);
@@ -246,7 +245,7 @@ $shame-spacing: 12px;
 }
 
 .license__list-item > img, .license__list-item > div, .license__list-item > embed, .license__list-item > iframe {
-  margin: 0 $shame-spacing $shame-spacing 0;
+  margin: 0 $spacing $spacing 0;
   float: left;
 }
 .license__list-item > iframe {

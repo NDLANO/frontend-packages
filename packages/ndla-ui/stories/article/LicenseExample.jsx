@@ -156,7 +156,7 @@ const ImageContent = () => (
 
 const H5PContent = () => (
   <div>
-    <h2>Slik bruker du H5P-innhold fra artikelen</h2>
+    <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
     <p>Klikk på lisensene for å se reglene.</p>
     <ul className="license__list">
       <li className="license__list-item license_list--stacked">

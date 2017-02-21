@@ -3,7 +3,7 @@
   margin: 0 0 $spacing;
   padding: $spacing $spacing--small;
   @include mq(tablet) {
-    padding: $spacing*2 $spacing;
+    padding: $spacing--large $spacing;
   }
   .c-tabs__list {
     border-bottom: 1px solid $brand-color--tertiary;

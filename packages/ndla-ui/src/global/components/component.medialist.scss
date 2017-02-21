@@ -1,0 +1,22 @@
+.c-medialist__img {
+  margin-bottom: $spacing/2;
+  float:none;
+  @include mq(tablet) {
+    float:left;
+  }
+}
+.c-medialist__item {
+  margin-bottom: $spacing;
+}
+.c-medialist__body {
+  @include inuit-font-size(14px);
+  max-width: 350px;
+}
+.c-medialist__actions {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @include mq(tablet) {
+    flex-direction: row;
+  }
+}

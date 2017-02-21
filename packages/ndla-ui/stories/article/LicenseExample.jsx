@@ -124,30 +124,40 @@ const ImageContent = () => (
   <div>
     <h2>Slik bruker du bilder fra artikkelen</h2>
     <p>Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges ved bildet der du bruker det.</p>
-    <ul className="license__list">
-      <li className="license__list-item license_list--stacked">
-        <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
-        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
-          Kopier denne teksten:<br />
-          Fotograf: Ola Nordmann, Kari Nordmann<br />
-          Rettighetshaver: NDLA
-          <div className="u-margin-top-small">
-            <button className="c-button c-button--transparent c-button--small u-margin-right" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
-            <button className="c-button c-button--transparent c-button--small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
-          </div>
-        </LicenseByline>
-      </li>
-      <li className="license__list-item license_list--stacked">
-        <img width="200" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
-        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} >
+    <ul className="c-medialist">
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
             Kopier denne teksten:<br />
+          <div className="c-bodybox u-padding-small u-margin-bottom-small">
             Fotograf: Ola Nordmann, Kari Nordmann<br />
             Rettighetshaver: NDLA
-            <div className="u-margin-top-small">
-              <button className="c-button c-button--transparent c-button--small u-margin-right" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
-              <button className="c-button c-button--transparent c-button--small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
+          </div>
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
+            <button className="c-button c-button--outline" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
+          </div>
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img">
+          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+            Kopier denne teksten:<br />
+          <div className="c-bodybox u-padding-small u-margin-bottom-small">
+              Fotograf: Ola Nordmann, Kari Nordmann<br />
+              Rettighetshaver: NDLA
             </div>
-        </LicenseByline>
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
+            <button className="c-button c-button--outline" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -166,7 +176,7 @@ const H5PContent = () => (
           Fotograf: Ola Nordmann, Kari Nordmann<br />
           Rettighetshaver: NDLA
           <div className="u-margin-top-small">
-            <button className="c-button c-button--transparent c-button--small u-margin-right" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
+            <button className="c-button c-button--transparent c-button--small" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
             <button className="c-button c-button--transparent c-button--small" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Åpne i nytt vindu</button>
           </div>
         </LicenseByline>

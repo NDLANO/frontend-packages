@@ -113,7 +113,7 @@ const AudioContent = () => (
     <ul className="c-medialist">
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          IKON?
+          <Icon.Audio className="c-medialist__icon" />
         </div>
         <div className="o-media__body c-medialist__body">
           <LicenseByline license={getLicenseByAbbreviation('by-sa')} />

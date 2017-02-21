@@ -711,4 +711,15 @@ storiesOf('Sidevisninger alternativ', module)
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
+    ))
+    .add('Artikkel nytt layout uten hero', () => (
+      <PageContainer>
+        <Masthead />
+        <Hero />
+        <OneColumn>
+          <IdealExamplePage1 />
+        </OneColumn>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
     ));

@@ -26,15 +26,17 @@
   background-color: transparent;
   box-shadow: none;
   border: none;
-  &:hover, &:active, &:disabled  {
+  &:hover, &:active, &:disabled, &:focus  {
     box-shadow: none;
-    color: inherit;
+    color: $brand-color;
     background-color: transparent;
     transform: none;
     border: none;
   }
 }
-
+.u-hidden {
+  display: none !important;
+}
 
 .pager {
   display: flex;

@@ -190,14 +190,12 @@ const ExamplePage2 = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
       <LicenseToggle>
-        <embed
-          data-align=""
-          data-alt="Ingressbilde oppgave (film)"
-          data-caption=""
-          data-id="6"
-          data-resource="image"
-          data-url="http://api.staging.ndla.no/images/198"
-          width="100%"
+        <iframe
+          width="480"
+          height="270"
+          src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+          frameBorder="0"
+          allowFullScreen=""
         />
       </LicenseToggle>
       <p>En pitch er en kortvarig framføring av en idé for en potensiell

@@ -58,12 +58,12 @@ const TextContent = ({ license }) => (
     <div>
       <LicenseIconList stacked="true" licenseRights={license} />
     </div>
-
     <div>
       <h2>Slik siterer du fra teksten</h2>
       <p>
         Når du siterer tekster fra NDLA må du vise hvor du har funnet dem og hvem som har laget dem.
         Hvis du skriver en egen tekst plasserer du denne referansen på den siste siden: </p>
+      <button className="c-button c-button--small c-button--transparent u-margin-bottom-small" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
     </div>
     <div className="c-bodybox">
       <span>Ola Nordmann Kari Nordmann. &laquo;Fortelleteknikk i radio og podkast&raquo;. 11.03.2013.. Nasjonal Digital Læringsarena. Internett. &lt;http://ndla.no/article/124&gt; 24.12.2016.</span>
@@ -179,7 +179,31 @@ const ImageContent = () => (
             <li className="c-medialist__meta-item">12. desember 2014</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:: </li>
+          </ul>
+
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
             <li className="c-medialist__meta-item">Remikser:</li>
+            <li className="c-medialist__meta-item">Verket består av...</li>
           </ul>
 
         </div>
@@ -205,7 +229,7 @@ const H5PContent = () => (
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Bygg inn</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Se del-elementer</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
@@ -227,7 +251,7 @@ const H5PContent = () => (
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Bygg inn</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Se del-elementer</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
@@ -257,7 +281,7 @@ const LearningPath = () => (
         <div className="o-media__body c-medialist__body">
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Se del-elementer</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
@@ -274,7 +298,7 @@ const LearningPath = () => (
         <div className="o-media__body c-medialist__body">
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Se del-elementer</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
@@ -352,7 +376,7 @@ const LicenseExample = () => (
             { key: 'learningPath', displayName: 'Læringssti', content: <LearningPath /> },
             { key: 'otherTexts', displayName: 'Fagtekster', content: <ImageContent /> },
             { key: 'files', displayName: 'Filer', content: <Files /> },
-            { key: 'sources', displayName: 'Kilder', content: <ImageContent /> },
+            { key: 'sources', displayName: 'Kilder', content: <Files /> },
         ]}
       />
     </div>

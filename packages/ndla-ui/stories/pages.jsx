@@ -4,7 +4,7 @@ import { storiesOf } from '@kadira/storybook';
 
 import Tabs from 'ndla-tabs';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+// import { getLicenseByAbbreviation } from 'ndla-licenses';
 // import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 

@@ -30,6 +30,9 @@
     cursor: not-allowed;
     transform: translateY(0) translateX(0);
   }
+  &:focus {
+    box-shadow: 0 0 2px $brand-color;
+  }
 }
 
 .c-button--outline {

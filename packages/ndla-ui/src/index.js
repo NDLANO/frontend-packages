@@ -28,6 +28,8 @@ import ClickToggle from './common/ClickToggle';
 import TopicMenu from './topicMenu/TopicMenu';
 import TopicArticle from './topic/TopicArticle';
 import TopicIntroductionList from './topic/TopicIntroductionList';
+import Modal from './modal/Modal';
+import LicenseToggle from './modal/LicenseToggle';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -47,9 +49,11 @@ export {
   Icon,
   LicenseByline,
   LicenseIconList,
+  LicenseToggle,
   Logo,
   Masthead,
   MastheadItem,
+  Modal,
   OneColumn,
   PageContainer,
   Pager,

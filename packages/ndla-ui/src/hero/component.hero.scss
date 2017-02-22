@@ -2,4 +2,11 @@
   min-height: 500px;
   background-position: center;
   background-size: cover;
+  z-index: -1;
+}
+.c-hero--alt {
+  min-height: 250px;
+  background-repeat: repeat;
+  background-size: 20px;
+  background-color: $brand-color--light;
 }

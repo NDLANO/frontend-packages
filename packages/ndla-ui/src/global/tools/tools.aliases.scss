@@ -1,4 +1,6 @@
 $spacing: $inuit-global-spacing-unit;
+$spacing--small: $inuit-global-spacing-unit/2;
+$spacing--large: $inuit-global-spacing-unit*2;
 
 @mixin font-size($args...) {
   @include inuit-font-size($args...);

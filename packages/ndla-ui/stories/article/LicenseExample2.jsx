@@ -113,7 +113,7 @@ const AudioContent = () => (
     <ul className="c-medialist">
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          <Icon.Audio className="c-medialist__icon" />
+          IKON?
         </div>
         <div className="o-media__body c-medialist__body">
           <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
@@ -181,53 +181,6 @@ const ImageContent = () => (
 );
 
 
-const H5PContent = () => (
-  <div>
-    <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
-    <p>Klikk på lisensene for å se reglene.</p>
-    <ul className="c-medialist">
-      <li className="o-media c-medialist__item">
-        <div className="o-media__img c-medialist__img">
-          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
-        </div>
-        <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
-          <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
-          </div>
-          <ul className="c-medialist__meta">
-            <li className="c-medialist__meta-item">12. desember 2014</li>
-            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
-            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
-          </ul>
-
-        </div>
-      </li>
-      <li className="o-media c-medialist__item">
-        <div className="o-media__img c-medialist__img">
-          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
-        </div>
-        <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
-          <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
-          </div>
-          <ul className="c-medialist__meta">
-            <li className="c-medialist__meta-item">12. desember 2014</li>
-            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
-            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
-          </ul>
-
-        </div>
-      </li>
-    </ul>
-  </div>
-);
-
 const LicenseExample = () => (
   <div className="c-licensebox license u-expanded">
     <Button stripped className="license-toggler site-nav_link" onClick={() => {}} >
@@ -238,14 +191,14 @@ const LicenseExample = () => (
       <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
       <Tabs
         tabs={[
-            { key: 'image', displayName: 'Bilder', content: <ImageContent /> },
-            { key: 'text', displayName: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
-            { key: 'video', displayName: 'Video', content: <VideoContent /> },
-            { key: 'audio', displayName: 'Lyd', content: <AudioContent /> },
-            { key: 'eforelesning', displayName: 'E-forelesning', content: <ImageContent /> },
-            { key: 'recipe', displayName: 'Oppskrift', content: <ImageContent /> },
-            { key: 'trainingExercise', displayName: 'Treningsøvelse', content: <ImageContent /> },
-            { key: 'h5p', displayName: 'H5P', content: <H5PContent /> },
+          { key: 'flash', displayName: 'Flash', content: <ImageContent /> },
+          { key: 'learningPath', displayName: 'Læringsti', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
+          { key: 'definitions', displayName: 'Begrep', content: <defintionsContent /> },
+          { key: 'category', displayName: 'Emnea.', content: <AudioContent /> },
+          { key: 'fagstoff', displayName: 'Fagstoff', content: <ImageContent /> },
+          { key: 'attachment', displayName: 'Vedlegg', content: <ImageContent /> },
+          { key: 'exercise', displayName: 'Oppgave', content: <ImageContent /> },
+          { key: 'guide', displayName: 'Veiledning', content: <VideoContent /> },
         ]}
       />
     </div>

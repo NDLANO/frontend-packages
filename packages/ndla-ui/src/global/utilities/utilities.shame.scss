@@ -26,15 +26,17 @@
   background-color: transparent;
   box-shadow: none;
   border: none;
-  &:hover, &:focus, &:active, &:disabled  {
+  &:hover, &:active, &:disabled, &:focus  {
     box-shadow: none;
-    color: inherit;
+    color: $brand-color;
     background-color: transparent;
     transform: none;
     border: none;
   }
 }
-
+.u-hidden {
+  display: none !important;
+}
 
 .pager {
   display: flex;
@@ -72,6 +74,10 @@
 
 
 
+.u-float-right {
+  float:right;
+}
+
 
 /* Width utils */
 .u-full-width {
@@ -88,10 +94,12 @@
 .c-article__byline {
   color: $brand-grey;
 }
-.article_introduction {
-  font-size: 110%;
+p.article_introduction {
+  font-size: 125%;
 }
-
+.u-toggle {
+  display: none;
+}
 
 
 /* Tabs Styling */
@@ -103,7 +111,7 @@ $shame-spacing: 12px;
     font-size: 18px;
     font-weight: 700;
     list-style: none;
-    margin: $spacing/1.4 0 $spacing/2;
+    margin: $spacing/1.4 0 $spacing--small;
     padding: 0;
     border-bottom: 1px $background-color--dark solid;
   }
@@ -173,21 +181,23 @@ $shame-spacing: 12px;
 }
 .license-byline {
   position: relative;
-  display: flex;
+  @include mq(tablet) {
+    display: flex;
+  }
 }
 
 .license-byline__body:not(.license-byline__body--black) {
-  display: inline-block;
-  margin-top: 4px;
-  margin-right: $spacing/2;
+  display: block;
+  margin-right: $spacing--small;
   text-transform: uppercase;
-  font-size: 12px;
+  @include inuit-font-size(13px);
   letter-spacing: 0.05em;
 }
 
 .c-license-icons__list {
   display: inline-block;
-  margin-right: $spacing/2;
+  margin-right: $spacing--small;
+  margin-bottom: $spacing--small;
 }
 
 .license-byline__body--black {
@@ -202,10 +212,13 @@ $shame-spacing: 12px;
 }
 
 .license {
-  padding: ($shame-spacing * 2) ($shame-spacing * 4);
-  margin: 0 -1em;
   transition: all 200ms ease-in;
   font-size: var(--font-size--medium);
+}
+
+.c-modal .license {
+  padding: 0;
+  margin:0;
 }
 
 .license-toggler {
@@ -216,29 +229,37 @@ $shame-spacing: 12px;
 
 .license__list {
   flex-basis: 100%;
-  margin: 0;
+  margin: $spacing--small 0 0 0;
   padding: 0;
 }
 
 .license__list-item {
-  margin: 0 0 $shame-spacing 0;
+  margin: $spacing 0;
   padding: 0;
   list-style: none;
   display: block;
   overflow: hidden;
 }
 
-.license__list-item > img, .license__list-item > div {
-  margin: 0 $shame-spacing 0 0;
+.license_list--stacked > * {
+  display: block;
+}
+
+.license__list-item > img, .license__list-item > div, .license__list-item > embed, .license__list-item > iframe {
+  margin: 0 $spacing $spacing 0;
   float: left;
+}
+.license__list-item > iframe {
+  max-width: 200px;
 }
 
 .license__list-item > .license-byline > * {
-  display: inline-block;
+  display: block;
 }
 
 .license__heading {
   margin-bottom: $shame-spacing;
+  margin-top: $shame-spacing;
 }
 
 .license h2 {
@@ -247,7 +268,6 @@ $shame-spacing: 12px;
 }
 
 .u-expanded {
-  background: $background-color--gray;
   height: auto;
 }
 

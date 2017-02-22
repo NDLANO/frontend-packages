@@ -1,24 +1,9 @@
 figure {
   margin: 0;
-  @include max-width();
 }
 figcaption {
   background: $brand-grey--lightest;
   font-size: 80%;
-  margin-bottom: $spacing*1.5;
   padding: $spacing / 2 $spacing;
   color: $brand-grey-dark;
 }
-//
-// .article_figure {
-//
-//   img {
-//     width: 100%;
-//     height: auto;
-//     margin: 0  calc(-50vw / 2) $spacing;
-//     padding: $spacing calc(50vw/2);
-//   }
-// }
-// .article_caption {
-//   width: 100%;
-// }

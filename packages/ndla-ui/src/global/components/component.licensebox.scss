@@ -1,0 +1,14 @@
+.c-licensebox {
+  background: $brand-color--lighter;
+  margin: 0 0 $spacing;
+  padding: $spacing $spacing--small;
+  @include mq(tablet) {
+    padding: $spacing--large $spacing;
+  }
+  .c-tabs__list {
+    border-bottom: 1px solid $brand-color--tertiary;
+  }
+}
+.c-licensebox__introduction {
+  max-width: 500px;
+}

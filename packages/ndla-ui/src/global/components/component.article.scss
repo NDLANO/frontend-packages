@@ -1,5 +1,6 @@
 .c-article, article {
-  margin-bottom: $spacing/2;
+  margin-bottom: $spacing--small;
+  margin-top: $spacing--large;
 
   h2,h3,h4 {
     margin-bottom: 0;
@@ -13,34 +14,42 @@
   }
 
   // WIDTH FIXES
-  // :not(aside):not(div):not(section):not(.license) {
-  section {
-    >* {
-      @include max-width();
-    }
-  }
-  // h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,figcaption,video,table,img,table tbody {
-  //
+
+  // section {
+  //   >* {
+  //     @include max-width();
+  //   }
   // }
-  // figure img {
-  //   max-width: 100%;
-  // }
-  // table li, table ul, aside, .license {
-  //   max-width: 100%;
-    // h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,figcaption,video,table,figure img,table tbody {
-    //   max-width: 100%;
-    // }
-  // }
+
 }
 .c-article__byline {
   margin-bottom: $spacing;
   font-style: italic;
   font-size: 80%;
 }
-// .c-article {
-//   :not(aside){
-//     & h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,table, table tbody {
-//         @include max-width();
-//     }
-//   }
-// }
+
+.o-wrapper--narrow {
+
+  h1 {
+    display: block;
+  }
+
+  section:first-child {
+    @include mq(tablet) {
+      margin-top: -$spacing*8;
+      padding-top: $spacing--large;
+    }
+    background: $white;
+  }
+
+  section {
+    >* {
+      @include max-width();
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+.o-wrapper--wide {
+  max-width: 100% !important;
+}

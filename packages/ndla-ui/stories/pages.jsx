@@ -4,11 +4,13 @@ import { storiesOf } from '@kadira/storybook';
 
 import Tabs from 'ndla-tabs';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+// import { getLicenseByAbbreviation } from 'ndla-licenses';
 // import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { PageContainer, Footer, Hero, OneColumn, ClickableLicenseByline, TopicIntroductionList } from '../src';
+
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
+
+import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductionList } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -37,7 +39,7 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ResourcesTab1Content = () => (
+const ResourcesTab1Example = () => (
   <div>
     <div className="c-article">
       <h3><button>Innføring i journalistikk</button></h3>
@@ -65,7 +67,7 @@ const ResourcesTab1 = () => (
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Content /></div> },
+        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Example /></div> },
         { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
         { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
         { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
@@ -89,76 +91,15 @@ const ResourcesExample = () => (
 
 
 const ExamplePage1 = () => (
-  <article>
+  <article className="o-wrapper--narrow">
     <section>
-      <aside>
-        <p>
-          <embed
-            data-align=""
-            data-alt="TV-studio sidespalte"
-            data-caption=""
-            data-id="7"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/114"
-          />
-        </p>
-        <h2>Huskelappen</h2>
-        <p>
-          <strong>
-            En pitch er en kortvarig presentasjon av en idé eller et prosjekt.
-          </strong>
-        </p>
-        <p>
-          <strong>
-            Hensikten med en pitch er å skaffe seg samarbeidspartnere eller kunder, slik at man kan realisere idéen.
-          </strong>
-        </p>
-        <h2>Ressurser</h2>
-        <p>
-          <embed
-            data-align=""
-            data-alt="Ingressbilde oppgave (film)"
-            data-caption=""
-            data-id="6"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/198"
-          />
-        </p>
-        <p>
-          <a
-            href="http://www.nfi.no/bransje/kurs/videointervjuer/hva-er-en-god-pitch-katrine-adair-gir-r%C3%A5d"
-            title=""
-          >
-            Hva er en god pitch?
-          </a>
-        </p>
-        <p>Her får du konkrete råd av Katrine Adair (Norsk filminstitutt).</p>
-        <p>Syv intense minutter kan bestemme om idéen blir film – eller ikke. Det kalles
-          <a
-            href="http://www.nrk.no/video/pitching/D40D56E046FD0BBD/"
-            title=""
-          >
-            pitch.
-          </a>
-        </p>
-        <p>
-          <embed
-            data-align=""
-            data-alt="Filmproduksjon"
-            data-caption=""
-            data-id="3"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/197"
-          />
-        </p>
-        <p>Nå er det din tur!</p>
-        <p>Lykke til med din første pitch!
-        </p>
-      </aside>
-      <h1>Tittel</h1>
+      <h1>Tittel om pitching</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
+      </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
         din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -170,29 +111,12 @@ const ExamplePage1 = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
         tydeligere for både deg selv og dem du eventuelt jobber sammen med
       i klassen.</p>
-      <figure>
+      <LicenseToggle>
         <img
           src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
           alt=""
-        /></figure>
-      <figcaption className="c-figcaption" data-basicLightbox data-id="1">
-        <div className="c-figcaption__info">I værmeldingene til NRK på
-          1980-tallet var symbolet for strålende solskinn en hvit sirkel.
-          Ved skiftende vær var sirkelen delt i to med en hvit og en svart
-          halvdel.
-          <button
-            className="button"
-            data-show-id="1"
-          />
-        </div>
-        <div className="c-figcaption__licenses"><ClickableLicenseByline
-          license={getLicenseByAbbreviation('by-nc-nd')}
         />
-        </div>
-      </figcaption>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
+      </LicenseToggle>
       <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
@@ -200,77 +124,60 @@ const ExamplePage1 = () => (
     </section>
   </article>
 );
-const ExamplePage2 = () => (
-  <article>
+const IdealExamplePage1 = () => (
+  <article className="o-wrapper--narrow">
     <section>
-      <aside>
-        <p>
-          <embed
-            data-align=""
-            data-alt="TV-studio sidespalte"
-            data-caption=""
-            data-id="7"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/114"
-          />
-        </p>
-        <h2>Huskelappen</h2>
-        <p>
-          <strong>
-            En pitch er en kortvarig presentasjon av en idé eller et prosjekt.
-          </strong>
-        </p>
-        <p>
-          <strong>
-            Hensikten med en pitch er å skaffe seg samarbeidspartnere eller kunder, slik at man kan realisere idéen.
-          </strong>
-        </p>
-        <h2>Ressurser</h2>
-        <p>
-          <embed
-            data-align=""
-            data-alt="Ingressbilde oppgave (film)"
-            data-caption=""
-            data-id="6"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/198"
-          />
-        </p>
-        <p>
-          <a
-            href="http://www.nfi.no/bransje/kurs/videointervjuer/hva-er-en-god-pitch-katrine-adair-gir-r%C3%A5d"
-            title=""
-          >
-            Hva er en god pitch?
-          </a>
-        </p>
-        <p>Her får du konkrete råd av Katrine Adair (Norsk filminstitutt).</p>
-        <p>Syv intense minutter kan bestemme om idéen blir film – eller ikke. Det kalles
-          <a
-            href="http://www.nrk.no/video/pitching/D40D56E046FD0BBD/"
-            title=""
-          >
-            pitch.
-          </a>
-        </p>
-        <p>
-          <embed
-            data-align=""
-            data-alt="Filmproduksjon"
-            data-caption=""
-            data-id="3"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/197"
-          />
-        </p>
-        <p>Nå er det din tur!</p>
-        <p>Lykke til med din første pitch!
-        </p>
-      </aside>
-      <h1>Tittel</h1>
+      <h1>Tittel om pitching</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
+      </div>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
+      </div>
+      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+         din og bestemmer seg for å bruke ressurser på nettopp dette
+         prosjektet.</p>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <LicenseToggle>
+        <img
+          src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
+          alt=""
+        />
+      </LicenseToggle>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+        pitcher, blir idéen og historien i den filmen du planlegger å lage,
+         tydeligere for både deg selv og dem du eventuelt jobber sammen med
+          i klassen.</p>
+    </section>
+  </article>
+);
+const ExamplePage2 = () => (
+  <article className="o-wrapper--narrow">
+    <section>
+      <h1>Tittel om pitching</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
+      </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
         din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -282,7 +189,7 @@ const ExamplePage2 = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
-      <figure className="article__oembed">
+      <LicenseToggle>
         <iframe
           width="480"
           height="270"
@@ -290,11 +197,7 @@ const ExamplePage2 = () => (
           frameBorder="0"
           allowFullScreen=""
         />
-      </figure>
-      <figcaption className="c-figcaption">
-        <div className="c-figcaption__info">En video om nyheter, men ikke fake news.</div>
-        <div className="c-figcaption__licenses"><ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} /></div>
-      </figcaption>
+      </LicenseToggle>
       <p>En pitch er en kortvarig framføring av en idé for en potensiell
          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
           få andre til å tenne på idéen din og se potensialet i den.</p>
@@ -306,76 +209,15 @@ const ExamplePage2 = () => (
   </article>
 );
 const ExamplePage3 = () => (
-  <article>
+  <article className="o-wrapper--narrow">
     <section>
-      <aside>
-        <p>
-          <embed
-            data-align=""
-            data-alt="TV-studio sidespalte"
-            data-caption=""
-            data-id="7"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/114"
-          />
-        </p>
-        <h2>Huskelappen</h2>
-        <p>
-          <strong>
-            En pitch er en kortvarig presentasjon av en idé eller et prosjekt.
-          </strong>
-        </p>
-        <p>
-          <strong>
-            Hensikten med en pitch er å skaffe seg samarbeidspartnere eller kunder, slik at man kan realisere idéen.
-          </strong>
-        </p>
-        <h2>Ressurser</h2>
-        <p>
-          <embed
-            data-align=""
-            data-alt="Ingressbilde oppgave (film)"
-            data-caption=""
-            data-id="6"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/198"
-          />
-        </p>
-        <p>
-          <a
-            href="http://www.nfi.no/bransje/kurs/videointervjuer/hva-er-en-god-pitch-katrine-adair-gir-r%C3%A5d"
-            title=""
-          >
-            Hva er en god pitch?
-          </a>
-        </p>
-        <p>Her får du konkrete råd av Katrine Adair (Norsk filminstitutt).</p>
-        <p>Syv intense minutter kan bestemme om idéen blir film – eller ikke. Det kalles
-          <a
-            href="http://www.nrk.no/video/pitching/D40D56E046FD0BBD/"
-            title=""
-          >
-            pitch.
-          </a>
-        </p>
-        <p>
-          <embed
-            data-align=""
-            data-alt="Filmproduksjon"
-            data-caption=""
-            data-id="3"
-            data-resource="image"
-            data-size="hoyrespalte"
-            data-url="http://api.staging.ndla.no/images/197"
-          />
-        </p>
-        <p>Nå er det din tur!</p>
-        <p>Lykke til med din første pitch!
-        </p>
-      </aside>
-      <h1>Tittel</h1>
+      <h1>Tittel om pitching</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
+      </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
         din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -387,7 +229,7 @@ const ExamplePage3 = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
         tydeligere for både deg selv og dem du eventuelt jobber sammen med
       i klassen.</p>
-      <table>
+      <table className="c-table o-wrapper--wide">
         <tbody>
           <tr>
             <th>Hovedkategorier</th>
@@ -616,6 +458,17 @@ storiesOf('Sidevisninger alternativ', module)
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <OneColumn>
           <ExamplePage3 />
+        </OneColumn>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('Artikkel uten hero', () => (
+      <PageContainer>
+        <Masthead />
+        <Hero />
+        <OneColumn>
+          <IdealExamplePage1 />
         </OneColumn>
         <ResourcesExample />
         <FooterExample />

@@ -2,6 +2,7 @@
   display: inline-block;
   position: relative;
   border: 1px solid $brand-grey--light;
+  padding: $spacing;
   margin: $spacing 0 $spacing $spacing;
   transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
   max-height: 150px;
@@ -73,7 +74,7 @@
 
   img {
     box-shadow: 0px 0px 9px -3px $brand-grey;
-    margin-bottom: $spacing/2;
+    margin-bottom: $spacing--small;
     width: 100%; // Remove later?
   }
   h2,h3,h4,h5 {
@@ -81,14 +82,14 @@
     font-size: 110%;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-top: $spacing/2;
-    margin-bottom: $spacing/2;
+    margin-top: $spacing--small;
+    margin-bottom: $spacing--small;
     border-bottom: 1px solid $brand-color--light;
   }
 }
 .c-aside__content {
   color: $brand-grey-dark;
-  padding: $spacing $spacing $spacing*2;
+  padding: $spacing $spacing $spacing--large;
 
   @include mq(desktop) {
     padding: 0;

@@ -15,7 +15,7 @@ import {
 } from '../src';
 import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
-import LicenseExampleGroups from './article/LicenseExampleGroups';
+import LicenseExampleGroups from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');

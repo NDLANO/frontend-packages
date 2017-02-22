@@ -11,7 +11,7 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { LicenseShape } from '../../src/shapes';
 
-import { Icon, Button, LicenseByline, ClickableLicenseByline } from '../../src';
+import { Icon, Button, ClickableLicenseByline } from '../../src';
 
 
 const VideoContent = () => (
@@ -30,16 +30,17 @@ const VideoContent = () => (
           />
         </div>
         <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Bygg inn</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
           </ul>
 
         </div>
@@ -49,74 +50,22 @@ const VideoContent = () => (
 );
 
 
-const TextContent = ({ license }) => (
+const TextContent = () => (
   <div>
-    <div>
-      <h2>Slik bruker du denne teksten</h2>
-    </div>
-    <div>
-      <ClickableLicenseByline stacked="true" license={license}>
-        <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
-      </ClickableLicenseByline>
-    </div>
-
-    <div>
-      <h2>Slik siterer du fra teksten</h2>
-      <p>
-        Når du siterer tekster fra NDLA må du vise hvor du har funnet dem og hvem som har laget dem.
-        Hvis du skriver en egen tekst plasserer du denne referansen på den siste siden: </p>
-    </div>
-    <div className="c-bodybox">
-      <span>Ola Nordmann Kari Nordmann. &laquo;Fortelleteknikk i radio og podkast&raquo;. 11.03.2013.. Nasjonal Digital Læringsarena. Internett. &lt;http://ndla.no/article/124&gt; 24.12.2016.</span>
-    </div>
-
-    <ul className="o-list--clean">
-      <li className="o-list__item"><Icon.Download className="c-modal__button-icon u-margin-top" /> <a href={document.location.href}>Last ned artikkelen som word-dokument (.docx)</a></li>
-      <li className="o-list__item"><Icon.Download className="c-modal__button-icon u-margin-top" /> <a href={document.location.href}>Last ned artikkelen som rentekst (.txt)</a></li>
-      <li className="o-list__item"><Icon.Download className="c-modal__button-icon u-margin-top" /> <a href={document.location.href}>Last ned artikkelen som HTML</a></li>
-    </ul>
-  </div>
-);
-
-TextContent.propTypes = {
-  license: LicenseShape,
-};
-
-const ArticleContent = ({ license }) => (
-  <div>
-    <div>
-      <LicenseByline license={license} />
-      <h3 className="license__heading">{license.title}</h3>
-      <p>{license.description}</p>
-    </div>
-    <div className="license__publication-info c-bodybox">
-      <ul className="license__list">
-        <li className="license__list-item"><h4>Tittel:</h4> Fortelleteknikk i radio og podkast<br /></li>
-        <li className="license__list-item"><h4>Opprettet:</h4> 10.10.2010. (Sist oppdatert 10.11.2014)</li>
-      </ul>
-      <ul className="license__list">
-        <h4>Opphavspersoner</h4>
-        <li className="license__list-item">Ola Nordmann (Forfatter)</li>
-        <li className="license__list-item">Kari Nordmann (Forfatter)</li>
-      </ul>
-    </div>
-  </div>
-);
-
-ArticleContent.propTypes = {
-  license: LicenseShape,
-};
-
-const AudioContent = () => (
-  <div>
-    <h2>Slik bruker du lydfiler</h2>
+    <h2>Slik bruker du tekst fra artikkelen</h2>
+    <p>Artikkelen kan være satt sammen av flere ulike tekster, som listes opp her. Klikk på lisensene for å se reglene for hver enkelt del.</p>
     <ul className="c-medialist">
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          <Icon.Audio className="c-medialist__icon" />
+          <a href="">
+            <Icon.Document className="c-medialist__icon" />
+          </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <h3 className="c-medialist__title">
+            Tittel på tekst
+          </h3>
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
@@ -125,6 +74,86 @@ const AudioContent = () => (
             <li className="c-medialist__meta-item">12. desember 2014</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
+
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <Icon.Document className="c-medialist__icon" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <h3 className="c-medialist__title">
+            Tittel på tekst
+          </h3>
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+);
+
+TextContent.propTypes = {
+  license: LicenseShape,
+};
+
+
+const AudioContent = () => (
+  <div>
+    <h2>Slik bruker du lydfiler</h2>
+    <ul className="c-medialist">
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <Icon.Audio className="c-medialist__icon" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
+
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <Icon.Audio className="c-medialist__icon" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
           </ul>
 
         </div>
@@ -140,38 +169,68 @@ const ImageContent = () => (
     <ul className="c-medialist">
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          <a href="">
+            <img width="260" alt="alt" src="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=" />
+          </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:: </li>
           </ul>
 
         </div>
       </li>
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          <a href="">
+            <img width="260" alt="alt" src="https://images.unsplash.com/photo-1470138831303-3e77dd49163e?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=" />
+          </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:: </li>
+          </ul>
+
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <img width="260" alt="alt" src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+            <li className="c-medialist__meta-item">Verket består av...</li>
           </ul>
 
         </div>
@@ -188,40 +247,138 @@ const H5PContent = () => (
     <ul className="c-medialist">
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          <a href="">
+            <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" className="c-medialist__h5p" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+          </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
           <ul className="c-medialist__meta">
-            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
           </ul>
 
         </div>
       </li>
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
-          <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          <a href="">
+            <iframe src="http://ndla.no/nb/h5p/embed/146135?fag=127756" className="c-medialist__h5p" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+          </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
           <ul className="c-medialist__meta">
-            <li className="c-medialist__meta-item">12. desember 2014</li>
+            <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
             <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
             <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
           </ul>
 
+        </div>
+      </li>
+    </ul>
+  </div>
+);
+
+
+const LearningPath = () => (
+  <div>
+    <h2>Slik bruker du Læringssti-innhold fra artikkelen</h2>
+    <p>Klikk på lisensene for å se reglene.</p>
+    <ul className="c-medialist">
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+);
+
+
+const Files = () => (
+  <div>
+    <h2>Slik bruker du filer fra artikkelen</h2>
+    <p>Klikk på lisensene for å se reglene.</p>
+    <ul className="c-medialist">
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <Icon.Document className="c-medialist__icon" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
+        </div>
+      </li>
+      <li className="o-media c-medialist__item">
+        <div className="o-media__img c-medialist__img">
+          <a href="">
+            <Icon.Document className="c-medialist__icon" />
+          </a>
+        </div>
+        <div className="o-media__body c-medialist__body">
+          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <div className="c-medialist__actions">
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+          </div>
+          <ul className="c-medialist__meta">
+            <li className="c-medialist__meta-item">12. desember 2014 / Oppdatert...</li>
+            <li className="c-medialist__meta-item">Opphavsperson: Ola Nordmann</li>
+            <li className="c-medialist__meta-item">Rettighetshaver: Kari Nordmann</li>
+            <li className="c-medialist__meta-item">Remikser:</li>
+          </ul>
         </div>
       </li>
     </ul>
@@ -242,10 +399,9 @@ const LicenseExample = () => (
             { key: 'text', displayName: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
             { key: 'video', displayName: 'Video', content: <VideoContent /> },
             { key: 'audio', displayName: 'Lyd', content: <AudioContent /> },
-            { key: 'eforelesning', displayName: 'E-forelesning', content: <ImageContent /> },
-            { key: 'recipe', displayName: 'Oppskrift', content: <ImageContent /> },
-            { key: 'trainingExercise', displayName: 'Treningsøvelse', content: <ImageContent /> },
             { key: 'h5p', displayName: 'H5P', content: <H5PContent /> },
+            { key: 'learningPath', displayName: 'Læringssti', content: <LearningPath /> },
+            { key: 'files', displayName: 'Filer', content: <Files /> },
         ]}
       />
     </div>

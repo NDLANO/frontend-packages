@@ -200,6 +200,7 @@ const ExamplePage2 = () => (
     </section>
   </article>
 );
+
 const ExamplePage3 = () => (
   <article className="o-wrapper--narrow">
     <section>
@@ -350,6 +351,41 @@ const ExamplePage3 = () => (
   </article>
 );
 
+const ExamplePage4 = () => (
+  <article className="o-wrapper--narrow">
+    <section>
+      <h1>Tittel om pitching</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+      </div>
+      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+        din og bestemmer seg for å bruke ressurser på nettopp dette
+      prosjektet.</p>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+      få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+        pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <LicenseToggle>
+        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+      </LicenseToggle>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+    </section>
+  </article>
+);
+
 
 storiesOf('Sidevisninger', module)
   .add('Empty page', () => (
@@ -450,6 +486,17 @@ storiesOf('Sidevisninger alternativ', module)
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <OneColumn>
           <ExamplePage3 />
+        </OneColumn>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('Artikkel med h5p', () => (
+      <PageContainer>
+        <MastheadWithTopicMenu />
+        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <OneColumn>
+          <ExamplePage4 />
         </OneColumn>
         <ResourcesExample />
         <FooterExample />

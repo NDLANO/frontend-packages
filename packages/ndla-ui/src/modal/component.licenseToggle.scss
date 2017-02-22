@@ -1,14 +1,18 @@
-.c-licenseToggle__license {
-  padding: $spacing 0 0 0;
-}
 .c-licenseToggle__details {
-  border-top: 1px solid $brand-color;
+  border-bottom: 1px solid $brand-color;
+}
+.c-licenseToggle__ctablock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
+
+  @include mq(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
 }
 .c-licenseToggle__button {
-  @extend .c-button;
-  width: 96%;
-  @include mq(tablet) {
-    width: 46%;
-  }
-  margin:3% 2%;
+  margin: 3% 0;
 }

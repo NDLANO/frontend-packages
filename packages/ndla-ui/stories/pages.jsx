@@ -134,12 +134,6 @@ const IdealExamplePage1 = () => (
       <div className="c-article__byline">
         <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
       </div>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <p>Opphavsperson, leverandør. Publisert 3. desember 2016</p>
-      </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
          din og bestemmer seg for å bruke ressurser på nettopp dette

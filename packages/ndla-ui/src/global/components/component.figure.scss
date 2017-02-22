@@ -6,6 +6,9 @@
   height: 0;
   overflow: hidden;
 }
+.c-figure__img a {
+  box-shadow: none;
+}
 .c-figure--active {
   max-width: 100% !important;
   background: $brand-color--light;

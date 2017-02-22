@@ -402,7 +402,6 @@ const LicenseExample = () => (
             { key: 'h5p', displayName: 'H5P', content: <H5PContent /> },
             { key: 'learningPath', displayName: 'Læringssti', content: <LearningPath /> },
             { key: 'files', displayName: 'Filer', content: <Files /> },
-            { key: 'sources', displayName: 'Kilder', content: <Files /> },
         ]}
       />
     </div>

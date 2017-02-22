@@ -62,6 +62,9 @@ const TextContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
+          <h3 className="c-medialist__title">
+            Tittel på tekst
+          </h3>
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
@@ -83,6 +86,9 @@ const TextContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
+          <h3 className="c-medialist__title">
+            Tittel på tekst
+          </h3>
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
@@ -242,7 +248,7 @@ const H5PContent = () => (
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
           <a href="">
-            <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" className="c-medialist__h5p" width="618" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+            <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" className="c-medialist__h5p" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
@@ -264,7 +270,7 @@ const H5PContent = () => (
       <li className="o-media c-medialist__item">
         <div className="o-media__img c-medialist__img">
           <a href="">
-            <iframe src="http://ndla.no/nb/h5p/embed/146135?fag=127756" className="c-medialist__h5p" width="618" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+            <iframe src="http://ndla.no/nb/h5p/embed/146135?fag=127756" className="c-medialist__h5p" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
           </a>
         </div>
         <div className="o-media__body c-medialist__body">

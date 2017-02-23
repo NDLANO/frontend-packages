@@ -80,7 +80,7 @@ const ResourcesExample = () => (
     <div className="o-wrapper">
       <Tabs
         tabs={[
-          { displayName: 'Læringsressurser', content: <ResourcesTab1 /> },
+          { displayName: 'Fagstoff', content: <ResourcesTab1 /> },
         ]}
       />
     </div>
@@ -463,7 +463,7 @@ storiesOf('Sidevisninger', module)
           <Tabs
             tabs={[
               { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              { key: '2', displayName: 'Læringsressurser', content: <p>Læringsressurser-innhold</p> },
+              { key: '2', displayName: 'Fagstoff', content: <p>Fagstoff-innhold</p> },
             ]}
           />
         </div>

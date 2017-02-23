@@ -272,7 +272,7 @@ $shame-spacing: 12px;
   display: inline-block;
 }
 
-.l-topic-menu-container {
+.c-topic-menu-container {
   display: inline-block;
   margin-left: 15px;
 }
@@ -282,17 +282,20 @@ $shame-spacing: 12px;
 }
 
 
-.l-topic-menu {
+.c-topic-menu__dropdown {
   position: absolute;
   padding: 0;
   margin-top: 29px;
-  background: #22598D;
+  min-height: 250px;
+  background: $brand-color;
   text-align: left;
   left: 0;
   right: 0;
   z-index: 30;
   display: flex;
+}
 
+.c-topic-menu {
   &__left {
     flex: 1;
     max-width: 30%;
@@ -301,12 +304,8 @@ $shame-spacing: 12px;
   &__right {
     flex: 2;
     padding: 1em 2em;
-    background-color: #184673;
+    background-color: $brand-color--dark;
   }
-}
-
-
-.c-topic-menu {
   &__list {
     padding: 1em 0;
     list-style: none;
@@ -314,10 +313,11 @@ $shame-spacing: 12px;
   }
 
   &__topic-item {
-    padding: 0.2em 1em;
-    border-bottom: 1px solid #7698B8;
+    padding: $spacing--small/2 0 $spacing--small/2 $spacing--large;
+    border-bottom: 1px solid rgba($brand-color--light, .4);
+    transition: all .1s ease-in-out;
     &--active {
-      background-color: #184673;
+      background-color: $brand-color--dark;
     }
     &:last-child {
       border: none;
@@ -325,11 +325,11 @@ $shame-spacing: 12px;
   }
 
   &__subtopic-item {
-    padding: 0;
+    padding: $spacing--small/2 0;
   }
 
   &__link {
-    color: #FFFFFF;
+    color: $white;
     font-weight: 600;
     text-decoration: none;
     &--underline:hover {

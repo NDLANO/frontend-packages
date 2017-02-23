@@ -16,6 +16,7 @@ import {
 } from 'ndla-article-scripts';
 import { presets } from 'react-motion';
 import ReactCollapse from 'react-collapse';
+import Icon from '../icons/Icon';
 
 import Article from '../article/Article';
 import Button from '../button/Button';
@@ -58,7 +59,7 @@ class TopicArticle extends Component {
           <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
         </ReactCollapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
-        <Button className="c-topic-article_toggle-button" onClick={this.toggleOpen} stripped>{ isOpen ? closeTitle : openTitle }</Button>
+        <Button className="c-topic-article_toggle-button" onClick={this.toggleOpen} stripped>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown /></Button>
       </Article>
     );
   }

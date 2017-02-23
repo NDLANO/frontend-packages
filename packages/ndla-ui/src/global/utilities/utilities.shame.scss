@@ -368,7 +368,7 @@ $shame-spacing: 12px;
   &__item {
     padding-top: $spacing--small;
     padding-bottom: $spacing--large;
-    border-bottom: 2px solid #DADADA;
+    border-bottom: 2px solid $brand-grey--light;
     p {
       max-width: 550px;
     }
@@ -379,6 +379,12 @@ $shame-spacing: 12px;
 
   &__header {
     font-size: 1.2em;
-    color: #045A91;
+    color: $brand-color;
+    margin-bottom: $spacing--small;
+  }
+  &__resource {
+    float:right;
+    color: $primary-color;
+    margin-right: $spacing;
   }
 }

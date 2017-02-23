@@ -28,6 +28,7 @@ import ClickToggle from './common/ClickToggle';
 import TopicMenu from './topicMenu/TopicMenu';
 import TopicArticle from './topic/TopicArticle';
 import TopicIntroductionList from './topic/TopicIntroductionList';
+import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
 import Modal from './modal/Modal';
 import LicenseToggle from './modal/LicenseToggle';
 
@@ -62,5 +63,6 @@ export {
   Table,
   TopicArticle,
   TopicIntroductionList,
+  TopicIntroductionListFlag,
   TopicMenu,
 };

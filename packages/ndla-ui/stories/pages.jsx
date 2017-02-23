@@ -8,7 +8,7 @@ import Tabs from 'ndla-tabs';
 
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 
-import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductionList } from '../src';
+import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductionList, TopicIntroductionListFlag } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -463,7 +463,7 @@ storiesOf('Sidevisninger', module)
           <Tabs
             tabs={[
               { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              { key: '2', displayName: 'Fagstoff', content: <p>Fagstoff-innhold</p> },
+              { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
             ]}
           />
         </div>

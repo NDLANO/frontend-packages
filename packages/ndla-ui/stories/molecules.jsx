@@ -10,7 +10,7 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList,
+  TopicArticle, TopicIntroductionList, TopicIntroductionListFlag,
   ClickableLicenseByline,
 } from '../src';
 import articles, { topicListWithIntro } from '../dummydata/index';
@@ -242,6 +242,13 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <div className="c-resources">
         <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+      </div>
+    </Center>
+  ))
+  .add('Emne introduksjons liste (flag)', () => (
+    <Center>
+      <div className="c-resources">
+        <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
       </div>
     </Center>
   ))

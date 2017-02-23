@@ -11,17 +11,27 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-const classes = new BEMHelper({
+const oClasses = new BEMHelper({
+  name: 'flag',
+  prefix: 'o-',
+});
+
+const cClasses = new BEMHelper({
   name: 'topic-introduction',
   prefix: 'c-',
 });
 
 const TopicIntroduction = ({ toTopic, topic, subjectId }) => (
-  <li {...classes('item')}>
-    <h1 {...classes('header')}>{topic.name}</h1>
-    {topic.introduction ? <p>{topic.introduction}</p> : null}
-    <SafeLink {...classes('topic-link c-button c-button--outline ')} to={toTopic(subjectId, topic.id)}>Gå til emnet</SafeLink>
-    <SafeLink {...classes('resource')}>Se fagstoff</SafeLink>
+  <li {...cClasses('item')}>
+    <div {...oClasses('body')}>
+      <h1 {...cClasses('header')}>{topic.name}</h1>
+      {topic.introduction ? <p>{topic.introduction}</p> : null}
+      <SafeLink {...oClasses('topic-link c-button c-button--outline ')} to={toTopic(subjectId, topic.id)}>Gå til emnet</SafeLink>
+      <SafeLink {...cClasses('resource')}>Se fagstoff</SafeLink>
+    </div>
+    <div{...oClasses('img u-padding-left')}>
+      <img src="http://staging.api.ndla.no/image-api/v1/images/full/boker_om_skriveregler.jpg" width="300" role="presentation" />
+    </div>
   </li>
 );
 
@@ -32,7 +42,7 @@ TopicIntroduction.propTypes = {
 };
 
 const TopicIntroductionList = ({ topics, ...rest }) => (
-  <ul {...classes('list')} >
+  <ul {...oClasses(' o-list--clean')} >
     { topics.map(topic => <TopicIntroduction key={topic.id} {...rest} topic={topic} />)}
   </ul>
   );

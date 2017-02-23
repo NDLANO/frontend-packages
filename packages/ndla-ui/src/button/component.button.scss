@@ -37,7 +37,7 @@
 
 .c-button--outline {
   color: $brand-color;
-  background-color: $white;
+  background-color: transparent;
   border: 1px solid $brand-color;
   &:hover, &:focus {
     color: white;

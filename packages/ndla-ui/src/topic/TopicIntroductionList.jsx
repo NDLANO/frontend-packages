@@ -20,7 +20,7 @@ const TopicIntroduction = ({ toTopic, topic, subjectId }) => (
   <li {...classes('item')}>
     <h1 {...classes('header')}>{topic.name}</h1>
     {topic.introduction ? <p>{topic.introduction}</p> : null}
-    <SafeLink {...classes('topic-link')} to={toTopic(subjectId, topic.id)}>Gå til emnet</SafeLink>
+    <SafeLink {...classes('topic-link c-button c-button--outline ')} to={toTopic(subjectId, topic.id)}>Gå til emnet</SafeLink>
   </li>
 );
 

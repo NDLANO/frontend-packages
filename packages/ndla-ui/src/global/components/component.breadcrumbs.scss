@@ -1,8 +1,14 @@
 .c-breadcrumbs {
-  font-size: 70%;
+  font-size: 80%;
   border-bottom: 1px solid $background-color--gray-dark;
-  padding: $spacing--small 0;
+  padding: $spacing--small 0 $spacing--small 0;
   display:none;
+  color: $brand-grey;
+
+  a:hover {
+    color: $brand-color;
+  }
+
   @include mq(tablet) {
     display: block;
   }
@@ -11,6 +17,15 @@
   color: $brand-grey;
   padding-left: $spacing--small/2;
   padding-right: $spacing--small/2;
+  display: inline-block;
+  line-height: 2em;
+  // &:first-child {
+  //   // text-indent: -$spacing;
+  //   padding-left: 0;
+  // }
+  // &:last-child {
+  //   padding-left: $spacing;
+  // }
 }
 .c-breadcrumbs__active {
   font-weight: bold;

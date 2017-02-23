@@ -1,0 +1,43 @@
+.c-topic-article_toggle-button {
+  font-weight: 100;
+  font-size: 0.8em;
+  text-decoration: underline;
+}
+
+.c-topic-introduction {
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    padding-top: $spacing--small;
+    padding-bottom: $spacing--large;
+    border-bottom: 2px solid $brand-grey--light;
+    p {
+      max-width: $max-text-width;
+      padding-right: $spacing;
+    }
+    @include mq($until:tablet) {
+      img {
+        max-width: 100%;
+      }
+    }
+    >:first-child {
+      margin-bottom: $spacing;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__header {
+    font-size: 1.2em;
+    color: $brand-color;
+    margin-bottom: $spacing--small;
+  }
+  &__resource {
+    float:right;
+    color: $primary-color;
+    margin-right: $spacing;
+  }
+}

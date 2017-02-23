@@ -58,8 +58,8 @@ const ResourcesTab1Example = () => (
 
 const ResourcesTab1 = () => (
   <div className="c-resources_content u-margin-top-small u-margin-bottom">
-    <div className="c-breadcrumbs u-margin-bottom">
-      i <a to="#">Planteliv</a>{' > '}<a to="#">Cellebiologi</a>
+    <div id="breadcrumbs" className="c-breadcrumbs">
+      <a href="" className="c-breadcrumbs__item">Planteliv</a> &#x203A; <a href="" className="c-breadcrumbs__item">Cellebiologi</a>
     </div>
 
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />

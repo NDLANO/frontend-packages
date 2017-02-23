@@ -93,11 +93,17 @@
 /* Move this elsewhere later? */
 p.article_introduction {
   font-size: 125%;
+  max-width: $max-text-width;
 }
 .u-toggle {
   display: none;
 }
-
+.u-block-mobile {
+  @include mq($until:tablet) {
+    display: block;
+    width: 100%;
+  }
+}
 
 /* Tabs Styling */
 $shame-spacing: 12px;
@@ -352,39 +358,4 @@ $shame-spacing: 12px;
   right: 0;
   opacity: 0;
   width: 100%;
-}
-
-.c-topic-article_toggle-button {
-  font-weight: 100;
-  font-size: 0.8em;
-  text-decoration: underline;
-}
-
-.c-topic-introduction {
-  &__list {
-    list-style: none;
-  }
-
-  &__item {
-    padding-top: $spacing--small;
-    padding-bottom: $spacing--large;
-    border-bottom: 2px solid $brand-grey--light;
-    p {
-      max-width: 550px;
-    }
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  &__header {
-    font-size: 1.2em;
-    color: $brand-color;
-    margin-bottom: $spacing--small;
-  }
-  &__resource {
-    float:right;
-    color: $primary-color;
-    margin-right: $spacing;
-  }
 }

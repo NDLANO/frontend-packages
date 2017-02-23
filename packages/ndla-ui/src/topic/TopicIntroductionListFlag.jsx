@@ -23,13 +23,13 @@ const cClasses = new BEMHelper({
 
 const TopicIntroduction = ({ toTopic, topic, subjectId }) => (
   <li {...cClasses('item')}>
-    <div {...oClasses('body')}>
+    <div {...oClasses('body u-block-mobile')}>
       <h1 {...cClasses('header')}>{topic.name}</h1>
       {topic.introduction ? <p>{topic.introduction}</p> : null}
       <SafeLink {...oClasses('topic-link c-button c-button--outline ')} to={toTopic(subjectId, topic.id)}>Gå til emnet</SafeLink>
       <SafeLink {...cClasses('resource')}>Se fagstoff</SafeLink>
     </div>
-    <div{...oClasses('img u-padding-left')}>
+    <div{...oClasses('img u-block-mobile')}>
       <img src="http://staging.api.ndla.no/image-api/v1/images/full/boker_om_skriveregler.jpg" width="300" role="presentation" />
     </div>
   </li>
@@ -42,7 +42,7 @@ TopicIntroduction.propTypes = {
 };
 
 const TopicIntroductionList = ({ topics, ...rest }) => (
-  <ul {...oClasses(' o-list--clean')} >
+  <ul className="o-list--clean" >
     { topics.map(topic => <TopicIntroduction key={topic.id} {...rest} topic={topic} />)}
   </ul>
   );

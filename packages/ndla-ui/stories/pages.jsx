@@ -91,7 +91,10 @@ const ResourcesExample = () => (
 const ExamplePage1 = () => (
   <article className="o-wrapper--narrow">
     <section>
-      <h1>Tittel om pitching</h1>
+      <div id="breadcrumbs" className="c-breadcrumbs">
+        <a href="" className="c-breadcrumbs__item">Fag</a> &gt; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &gt; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+      </div>
+      <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>

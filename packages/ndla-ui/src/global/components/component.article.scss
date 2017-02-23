@@ -13,19 +13,13 @@
     display:inline-block;
   }
 
-  // WIDTH FIXES
-
-  // section {
-  //   >* {
-  //     @include max-width();
-  //   }
-  // }
 
 }
 .c-article__byline {
   margin-bottom: $spacing;
   font-style: italic;
   font-size: 80%;
+  color: $brand-grey;
 }
 
 .o-wrapper--narrow {

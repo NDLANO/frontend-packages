@@ -1,3 +1,17 @@
 .c-breadcrumbs {
-  font-size: 80%;
+  font-size: 70%;
+  border-bottom: 1px solid $background-color--gray-dark;
+  padding: $spacing--small 0;
+  display:none;
+  @include mq(tablet) {
+    display: block;
+  }
+}
+.c-breadcrumbs__item {
+  color: $brand-grey;
+  padding-left: $spacing--small/2;
+  padding-right: $spacing--small/2;
+}
+.c-breadcrumbs__active {
+  font-weight: bold;
 }

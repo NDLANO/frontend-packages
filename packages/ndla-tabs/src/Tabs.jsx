@@ -20,12 +20,20 @@ const classes = new BEMHelper({
 });
 
 class Tabs extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.handleSelect = this.handleSelect.bind(this);
     this.state = {
-      index: 0,
+      index: props.selectedIndex || 0,
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { index } = this.state;
+
+    if (nextProps.selectedIndex && nextProps.selectedIndex !== index) {
+      this.setState({ index: nextProps.selectedindex });
+    }
   }
 
   handleSelect(index) {
@@ -58,6 +66,7 @@ Tabs.propTypes = {
       PropTypes.node,
     ]).isRequired,
   })),
+  selectedIndex: PropTypes.number,
 };
 
 

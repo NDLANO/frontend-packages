@@ -9,6 +9,7 @@ $ npm install ndla-tabs --save
 ```
 
 ## Usage
+### Basic example
 ```js
 import Tabs from 'ndla-tabs';
 import BananaComponent from 'banana';
@@ -22,5 +23,31 @@ const Fruits = () => {
   return (
     <Tabs tabs={fruitTabs} />
   )
+}
+```
+
+### Example where selected tab is controlled via `selectedIndex` prop
+
+```js
+import Tabs from 'ndla-tabs';
+import fruitTabs from 'fruit-tabs';
+
+class FruitTabSelector extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0
+    }
+  }
+
+  render() {
+    const { index } = this.state;
+    return (
+      <div>
+        <button onClick={() => this.setState({index: 1})}>Show banana tab</button>
+        <Tabs selectedIndex={index} tabs={fruitTabs} />
+      </div>
+    );
+  }
 }
 ```

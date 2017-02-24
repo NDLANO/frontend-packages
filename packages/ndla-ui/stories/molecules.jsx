@@ -221,6 +221,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Fane', () => (
     <Center>
       <Tabs
+        selectedIndex={2}
         tabs={[
           { key: 'image', displayName: 'Bilde', content: <p>Bilde innhold</p> },
           { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },

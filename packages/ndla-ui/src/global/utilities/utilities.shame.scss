@@ -303,7 +303,7 @@ $shame-spacing: 12px;
 .c-topic-menu__dropdown {
   position: absolute;
   padding: 0;
-  margin-top: 29px;
+  margin-top: 31px;
   min-height: 250px;
   background: $brand-color;
   text-align: left;
@@ -311,6 +311,7 @@ $shame-spacing: 12px;
   right: 0;
   z-index: 30;
   display: flex;
+  box-shadow: 0 10px 20px rgba($black, 0.4);
 }
 
 .c-topic-menu {

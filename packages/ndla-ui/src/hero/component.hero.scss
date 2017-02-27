@@ -1,7 +1,6 @@
 .c-hero {
   background-position: center;
   background-size: cover;
-  z-index: -1;
   @include mq(tablet) {
     min-height: 500px;
   }

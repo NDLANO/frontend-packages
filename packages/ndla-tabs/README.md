@@ -51,3 +51,9 @@ class FruitTabSelector extends Component {
   }
 }
 ```
+## PropTypes
+| Props         | Type    | Required  | Description|
+| --------------|:-------:|:---------:|:-----------|
+| tabs          | array   | *         | An array of tabs represented as objects. An tab object requires the following keys: `key`, `displayName`, `content`|
+| onSelect      | func    |           | Is called when a tab is selected. Current index and last index will be passed as parameters. |
+| selectedIndex | object  |           | Is the tab to select when rendered. Used when you want to control which tab is rendered from the a parent component.|

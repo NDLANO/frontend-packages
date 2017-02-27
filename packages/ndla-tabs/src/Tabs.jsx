@@ -36,10 +36,14 @@ class Tabs extends Component {
     }
   }
 
-  handleSelect(index) {
+  handleSelect(index, last) {
     this.setState({
       index,
     });
+
+    if (typeof this.props.onSelect === 'function') {
+      this.props.onSelect(index, last);
+    }
   }
 
   render() {
@@ -66,6 +70,7 @@ Tabs.propTypes = {
       PropTypes.node,
     ]).isRequired,
   })),
+  onSelect: PropTypes.func,
   selectedIndex: PropTypes.number,
 };
 

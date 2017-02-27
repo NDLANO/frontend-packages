@@ -13,7 +13,7 @@ import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductio
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
-import article, { topicListWithIntro } from '../dummydata/index';
+import article, { topicListWithIntro, subtopicListWithIntro } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -402,6 +402,44 @@ const ExamplePage4 = () => (
   </article>
 );
 
+const EmneExample = () => (
+  <article className="o-wrapper--narrow">
+    <section className="c-article-content">
+      <div id="breadcrumbs" className="c-breadcrumbs">
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Nettsider </a>
+      </div>
+      <h1>Nettstruktur og brukeropplevelser</h1>
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+      </div>
+      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+        din og bestemmer seg for å bruke ressurser på nettopp dette
+      prosjektet.</p>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+      få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+        pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <LicenseToggle>
+        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+      </LicenseToggle>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+    </section>
+  </article>
+);
+
 const Fagside = () => (
   <div className="o-wrapper c-hero__content">
     <section>
@@ -593,13 +631,12 @@ storiesOf('Sidevisninger alternativ', module)
           <OneColumn>
             <Tabs
               tabs={[
-                { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
                 { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
               ]}
             />
           </OneColumn>
         </div>
-        <ResourcesExample />
         <FooterExample />
       </PageContainer>
     ))
@@ -608,7 +645,7 @@ storiesOf('Sidevisninger alternativ', module)
         <MastheadWithTopicMenu />
         <Hero />
         <OneColumn>
-          <IdealExamplePage1 />
+          <EmneExample />
         </OneColumn>
         <ResourcesExample />
         <FooterExample />

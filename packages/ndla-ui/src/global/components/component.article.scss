@@ -28,7 +28,7 @@
     display: block;
   }
 
-  section:first-child {
+  section.c-article-content:first-child {
     @include mq(tablet) {
       margin-top: -$spacing*8;
       padding-top: $spacing--large;

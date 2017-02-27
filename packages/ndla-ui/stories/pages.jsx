@@ -58,14 +58,14 @@ const ResourcesTab1Example = () => (
 
 const ResourcesTab1 = () => (
   <div className="c-resources_content u-margin-top-small u-margin-bottom">
-    <div id="breadcrumbs" className="c-breadcrumbs">
+    <div id="breadcrumbs" className="c-breadcrumbs u-margin-bottom">
       <a href="" className="c-breadcrumbs__item">Planteliv</a> &#x203A; <a href="" className="c-breadcrumbs__item">Cellebiologi</a>
     </div>
 
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Example /></div> },
+        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /><a href="">Se flere artikler</a></div> },
         { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
         { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
         { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
@@ -90,9 +90,10 @@ const ResourcesExample = () => (
 
 const ExamplePage1 = () => (
   <article className="o-wrapper--narrow">
-    <section>
+    <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+        <strong>Du er her:</strong>
+        <a href="" className="c-breadcrumbs__item">Alle fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a> &#x203A;
       </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -127,7 +128,7 @@ const ExamplePage1 = () => (
 );
 const IdealExamplePage1 = () => (
   <article className="o-wrapper--narrow">
-    <section>
+    <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
@@ -168,7 +169,7 @@ const IdealExamplePage1 = () => (
 );
 const ExamplePage2 = () => (
   <article className="o-wrapper--narrow">
-    <section>
+    <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>&#x203A; <a href="" className="c-breadcrumbs__item">Fjerde nivå med en veldig kjempelang tittel </a>
       </div>
@@ -212,7 +213,7 @@ const ExamplePage2 = () => (
 
 const ExamplePage3 = () => (
   <article className="o-wrapper--narrow">
-    <section>
+    <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
@@ -365,7 +366,7 @@ const ExamplePage3 = () => (
 
 const ExamplePage4 = () => (
   <article className="o-wrapper--narrow">
-    <section>
+    <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
@@ -401,6 +402,32 @@ const ExamplePage4 = () => (
   </article>
 );
 
+const Fagside = () => (
+  <div className="o-wrapper c-hero__content">
+    <section>
+      <div id="breadcrumbs" className="c-breadcrumbs">
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
+      </div>
+      <h1>Medieuttrykk og mediesamfunnet</h1>
+      <p className="article_introduction">Introduksjon til faget medieuttrykk og mediesamfunnet.
+      </p>
+    </section>
+  </div>
+);
+
+const Hovedemne = () => (
+  <div className="o-wrapper c-hero__content">
+    <section>
+      <div id="breadcrumbs" className="c-breadcrumbs">
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A;
+      </div>
+      <h1>Nettsider</h1>
+      <p className="article_introduction">Introduksjon til hovedemnet nettsider.
+      </p>
+    </section>
+  </div>
+);
+
 
 storiesOf('Sidevisninger', module)
   .add('Empty page', () => (
@@ -416,9 +443,7 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Masthead />
       <OneColumn>
-        <article>
-          <ArticleLoader articleId="44" />
-        </article>
+        <ArticleLoader articleId="44" />
       </OneColumn>
       <FooterExample />
 
@@ -527,4 +552,66 @@ storiesOf('Sidevisninger alternativ', module)
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
-    ));
+    ))
+    .add('0. Fagoversikt', () => (
+      <PageContainer>
+        <MastheadWithTopicMenu />
+        <div className="c-resources u-margin-top-large">
+          <OneColumn>
+            Liste over fag
+          </OneColumn>
+        </div>
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('1. Valgt fag', () => (
+      <PageContainer>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <Fagside />
+        </Hero>
+        <div className="c-resources u-margin-top-large">
+          <OneColumn>
+            <Tabs
+              tabs={[
+                { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+              ]}
+            />
+          </OneColumn>
+        </div>
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('2. Hovedemne', () => (
+      <PageContainer>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <Hovedemne />
+        </Hero>
+        <div className="c-resources u-margin-top-large">
+          <OneColumn>
+            <Tabs
+              tabs={[
+                { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+              ]}
+            />
+          </OneColumn>
+        </div>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('3. Underemne med fagstoff', () => (
+      <PageContainer>
+        <MastheadWithTopicMenu />
+        <Hero />
+        <OneColumn>
+          <IdealExamplePage1 />
+        </OneColumn>
+        <ResourcesExample />
+        <FooterExample />
+      </PageContainer>
+    ))
+    ;

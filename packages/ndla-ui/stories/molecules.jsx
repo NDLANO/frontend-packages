@@ -3,7 +3,6 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import Tabs from 'ndla-tabs';
 import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
@@ -15,6 +14,7 @@ import {
 } from '../src';
 import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
+import Tabs, { TabsControlled } from './molecules/tabs';
 import LicenseExampleGroups from './article/LicenseExampleGroups';
 
 const toggle = () => {
@@ -220,14 +220,10 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Fane', () => (
     <Center>
-      <Tabs
-        selectedIndex={2}
-        tabs={[
-          { key: 'image', displayName: 'Bilde', content: <p>Bilde innhold</p> },
-          { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },
-          { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
-        ]}
-      />
+      <h2 className="u-heading">Faner</h2>
+      <Tabs />
+      <h2 className="u-heading">Kontrollerte faner</h2>
+      <TabsControlled />
     </Center>
   ))
   .add('Emne artikkel', () => (

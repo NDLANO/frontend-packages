@@ -36,18 +36,27 @@ class Tabs extends Component {
     }
   }
 
-  handleSelect(index) {
+  handleSelect(index, last) {
     this.setState({
       index,
     });
+
+    if (typeof this.props.onSelect === 'function') {
+      this.props.onSelect(index, last);
+    }
   }
 
   render() {
-    const { tabs } = this.props;
+    const { tabs, forceRenderTabPanel } = this.props;
     const { index } = this.state;
 
     return (
-      <ReactTabs {...classes()} onSelect={this.handleSelect} selectedIndex={this.state.index} >
+      <ReactTabs
+        {...classes()}
+        onSelect={this.handleSelect}
+        selectedIndex={this.state.index}
+        forceRenderTabPanel={forceRenderTabPanel}
+      >
         <TabList {...classes('list')}>
           { tabs.map((tab, i) => <Tab {...classes('tab', (i === index ? 'selected' : ''))} key={tab.key}>{tab.displayName}</Tab>) }
         </TabList>
@@ -66,6 +75,8 @@ Tabs.propTypes = {
       PropTypes.node,
     ]).isRequired,
   })),
+  onSelect: PropTypes.func,
+  forceRenderTabPanel: PropTypes.bool,
   selectedIndex: PropTypes.number,
 };
 

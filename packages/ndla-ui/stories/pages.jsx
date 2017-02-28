@@ -70,7 +70,7 @@ const ResourcesExample = () => (
 
 
 const ExamplePage1 = () => (
-  <article className="o-wrapper--narrow-expandable">
+  <article className="o-wrapper--narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -108,7 +108,7 @@ const ExamplePage1 = () => (
   </article>
 );
 const IdealExamplePage1 = () => (
-  <article className="o-wrapper--narrow-expandable">
+  <article className="o-wrapper--narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -150,7 +150,7 @@ const IdealExamplePage1 = () => (
   </article>
 );
 const ExamplePage2 = () => (
-  <article className="o-wrapper--narrow-expandable">
+  <article className="o-wrapper--narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -195,7 +195,7 @@ const ExamplePage2 = () => (
 );
 
 const ExamplePage3 = () => (
-  <article className="o-wrapper--narrow-expandable">
+  <article className="o-wrapper--narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -349,7 +349,7 @@ const ExamplePage3 = () => (
 );
 
 const ExamplePage4 = () => (
-  <article className="o-wrapper--narrow-expandable">
+  <article className="o-wrapper--narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -499,6 +499,36 @@ const HovedemneExpanded = () => (
   </article>
 );
 
+const ResourcesTopics = () => (
+  <div className="c-resources u-margin-top-large">
+    <OneColumn cssModifier="narrow">
+      <section>
+        <Tabs
+          tabs={[
+            { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
+            { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+          ]}
+        />
+      </section>
+    </OneColumn>
+  </div>
+);
+
+const ResourcesSubTopics = () => (
+  <div className="c-resources u-margin-top-large">
+    <OneColumn cssModifier="narrow">
+      <section>
+        <Tabs
+          tabs={[
+            { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
+            { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+          ]}
+        />
+      </section>
+    </OneColumn>
+  </div>
+);
+
 
 storiesOf('Sidevisninger', module)
   .add('Empty page', () => (
@@ -555,15 +585,8 @@ storiesOf('Sidevisninger', module)
       <Masthead />
       <OneColumn>
         <ArticleLoader isTopicArticle articleId="208" />
-        <div className="c-resources u-margin-top-large">
-          <Tabs
-            tabs={[
-              { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-            ]}
-          />
-        </div>
       </OneColumn>
+      <ResourcesTopics />
       <FooterExample />
     </PageContainer>
   ))
@@ -626,11 +649,11 @@ storiesOf('Artikkelmaler', module)
     ));
 
 storiesOf('Emnesider', module)
-    .add('0. Fagoversikt', () => (
+    .add('1. Fagoversikt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <div className="c-resources u-padding-top-large">
-          <OneColumn cssModifier="narrow-expandable">
+          <OneColumn cssModifier="narrow">
             <article>
               <section>
                 <h1>Alle fag</h1>
@@ -646,67 +669,45 @@ storiesOf('Emnesider', module)
         <FooterExample />
       </PageContainer>
     ))
-    .add('1. Valgt fag', () => (
+    .add('2. Valgt fag', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow-expandable">
+          <OneColumn cssModifier="narrow">
             <Fagside />
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow-expandable">
+        <OneColumn cssModifier="narrow">
           <FagsideExpanded />
         </OneColumn>
-        <div className="c-resources u-margin-top-large">
-          <OneColumn cssModifier="narrow-expandable">
-            <section>
-              <Tabs
-                tabs={[
-                  { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
-                  { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-                ]}
-              />
-            </section>
-          </OneColumn>
-        </div>
+        <ResourcesTopics />
         <FooterExample />
       </PageContainer>
     ))
-    .add('2. Hovedemne', () => (
+    .add('3. Hovedemne', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow-expandable">
+          <OneColumn cssModifier="narrow">
             <Hovedemne />
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow-expandable">
+        <OneColumn cssModifier="narrow">
           <HovedemneExpanded />
         </OneColumn>
-        <div className="c-resources u-margin-top-large">
-          <OneColumn cssModifier="narrow-expandable">
-            <section>
-              <Tabs
-                tabs={[
-                  { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
-                  { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-                ]}
-              />
-            </section>
-          </OneColumn>
-        </div>
+        <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
     ))
-    .add('3. Underemne med fagstoff', () => (
+    .add('4. Underemne med fagstoff', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow-expandable">
+          <OneColumn cssModifier="narrow">
             <SubTopicHero />
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow-expandable">
+        <OneColumn cssModifier="narrow">
           <SubTopicExample />
         </OneColumn>
         <ResourcesExample />

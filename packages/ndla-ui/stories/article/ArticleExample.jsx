@@ -34,7 +34,7 @@ class ArticleExample extends Component {
   }
 
   render() {
-    const { article, withLicenseExample } = this.props;
+    const { article, withLicenseExample, notitle } = this.props;
 
     const scripts = article.requiredLibraries ? article.requiredLibraries.map(lib => ({ src: lib.url, type: lib.mediaType })) : [];
     return (
@@ -44,7 +44,7 @@ class ArticleExample extends Component {
           script={scripts}
         />
         { withLicenseExample && <LicenseExample /> }
-        <h1>{article.title}</h1>
+        { notitle ? <h1>{article.title}</h1> : null }
         <ArticleByline authors date article={article} />
         <Article.Introduction introduction={article.introduction} />
         <div dangerouslySetInnerHTML={{ __html: article.content }} />
@@ -61,6 +61,7 @@ ArticleExample.propTypes = {
     content: PropTypes.string.isRequired,
   }).isRequired,
   withLicenseExample: PropTypes.bool,
+  notitle: PropTypes.string,
 };
 
 

@@ -58,9 +58,9 @@ class Tabs extends Component {
         forceRenderTabPanel={forceRenderTabPanel}
       >
         <TabList {...classes('list', modifier)}>
-          { tabs.map((tab, i) => <Tab {...classes('tab', { selected: i === index, [modifier]: modifier })} key={tab.key}>{tab.displayName}</Tab>) }
+          { tabs.map((tab, i) => <Tab {...classes('tab', { selected: i === index, [modifier]: modifier })} key={tab.key ? tab.key : i}>{tab.displayName}</Tab>) }
         </TabList>
-        { tabs.map(tab => <TabPanel {...classes('panel', modifier)} key={tab.key}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
+        { tabs.map((tab, i) => <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
       </ReactTabs>
     );
   }
@@ -68,7 +68,7 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string.isRequired,
+    key: PropTypes.string,
     displayName: PropTypes.string.isRequired,
     content: PropTypes.oneOfType([
       PropTypes.func,

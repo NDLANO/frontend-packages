@@ -48,9 +48,9 @@ export const ResourceTabs = () => (
     <Tabs
       modifier="muted"
       tabs={[
-          { key: 'all', displayName: 'Alle', content: <ResourceSubsetList /> },
-          { key: 'learningPath', displayName: 'Læringsstier', content: <LearningPathResourceList /> },
-          { key: 'subjectMaterial', displayName: 'Fagstoff', content: <ArticleResourceList /> },
+          { displayName: 'Alle', content: <ResourceSubsetList /> },
+          { displayName: 'Læringsstier', content: <LearningPathResourceList /> },
+          { displayName: 'Fagstoff', content: <ArticleResourceList /> },
       ]}
     />
   </div>

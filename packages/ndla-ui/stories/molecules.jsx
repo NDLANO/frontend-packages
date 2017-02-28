@@ -92,9 +92,9 @@ storiesOf('Sammensatte moduler', module)
                 <div className="o-layout__item u-1/2@desktop">
                   <Tabs
                     tabs={[
-                      { key: 'image', displayName: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
-                      { key: 'video', displayName: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
-                      { key: 'audio', displayName: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
+                      { displayName: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
+                      { displayName: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
+                      { displayName: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
                     ]}
                   />
                 </div>

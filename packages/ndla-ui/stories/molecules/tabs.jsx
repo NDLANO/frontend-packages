@@ -25,9 +25,9 @@ export class TabsControlled extends Component {
         <Tabs
           selectedIndex={this.state.selectedIndex}
           tabs={[
-          { key: 'image', displayName: 'Bilde', content: <p>Bilde innhold</p> },
-          { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },
-          { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
+          { displayName: 'Bilde', content: <p>Bilde innhold</p> },
+          { displayName: 'Video', content: <p>Video innhold</p> },
+          { displayName: 'Lyd', content: <p>Lyd innhold</p> },
           ]}
         />
         <InlineContainer>
@@ -43,9 +43,9 @@ export class TabsControlled extends Component {
 export const TabsDefault = () => (
   <Tabs
     tabs={[
-          { key: 'image', displayName: 'Bilde', content: <p>Bilde innhold</p> },
-          { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },
-          { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
+          { displayName: 'Bilde', content: <p>Bilde innhold</p> },
+          { displayName: 'Video', content: <p>Video innhold</p> },
+          { displayName: 'Lyd', content: <p>Lyd innhold</p> },
     ]}
   />
 );

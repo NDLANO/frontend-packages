@@ -16,9 +16,9 @@ import BananaComponent from 'banana';
 
 const Fruits = () => {
   const fruitTabs = [
-    { key: 0, displayName: 'Apple', content: <p>An apple a day keeps the doctor away</p> },
-    { key: 1, displayName: 'Orange', content: () => <h1>Orange is the new black</h1> },
-    { key: 2, displayName: 'Banana', content: <BananaComponent/> },
+    { displayName: 'Apple', content: <p>An apple a day keeps the doctor away</p> },
+    { displayName: 'Orange', content: () => <h1>Orange is the new black</h1> },
+    { displayName: 'Banana', content: <BananaComponent/> },
   ]
   return (
     <Tabs tabs={fruitTabs} />

@@ -9,9 +9,11 @@
 import React, { PropTypes } from 'react';
 
 const ArrowDown = ({ className }) => (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className={className}>
-    <circle cx="24" cy="24" r="19" />
-    <polygon points="35.1,22.1 32,19 23.9,27 16,19 12.9,22.1 23.9,33.1 " />
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" className={className}>
+    <path
+      d="M13.8,14.6l8.8-8.6c0.4-0.4,1-0.4,1.4,0l1.5,1.5c0.4,0.4,0.4,1,0,1.4l-11,10.9c-0.2,0.2-0.5,0.3-0.7,0.3s-0.5-0.1-0.7-0.3
+      L2.1,9c-0.4-0.4-0.4-1,0-1.4l1.5-1.5c0.4-0.4,1-0.4,1.4,0L13.8,14.6z"
+    />
   </svg>
 );
 

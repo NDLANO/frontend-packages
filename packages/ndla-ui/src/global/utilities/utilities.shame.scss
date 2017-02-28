@@ -156,6 +156,9 @@ $shame-spacing: 12px;
   fill: currentColor;
   font-size: 1em;
   vertical-align: bottom;
+  &--rotate {
+    transform: rotate(180deg);
+  }
 }
 
 .c-license-icons {

@@ -58,7 +58,7 @@ class TopicArticle extends Component {
           <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
         </ReactCollapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
-        <div className="c-topic-article__btnwrapper"><Button className="c-topic-article_toggle-button u-margin-right-small" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown /></Button></div>
+        <div className="c-topic-article__btnwrapper"><Button className="c-topic-article_toggle-button u-margin-right-small" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown className={isOpen ? 'icon icon--rotate' : 'icon'} /></Button></div>
       </section>
     );
   }

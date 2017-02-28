@@ -233,7 +233,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <TopicArticle
         article={articles.topicArticle}
-        openTitle="Se hele emnebeskrivelse"
+        openTitle="Les mer om dette emnet"
         closeTitle={<span>Skjul emnebeskrivelse</span>}
       />
     </Center>

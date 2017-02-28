@@ -50,7 +50,7 @@ class ArticleLoader extends Component {
     const { article } = this.state;
     const { isTopicArticle, withLicenseExample } = this.props;
     if (isTopicArticle) {
-      return <TopicArticle article={article} openTitle="Se hele emnebeskrivelse" closeTitle={<span>Skjul emnebeskrivelse</span>} />;
+      return <TopicArticle article={article} openTitle="Les mer om dette emnet" closeTitle={<span>Skjul emnebeskrivelsen</span>} />;
     }
     return <ArticleExample article={article} withLicenseExample={withLicenseExample} />;
   }

@@ -389,7 +389,7 @@ const ExamplePage4 = () => (
 
 const SubTopicExample = () => (
   <article>
-    <section className="">
+    <section className="u-padding-top">
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>
@@ -447,25 +447,25 @@ const Fagside = () => (
 );
 
 const FagsideExpanded = () => (
-  <section>
-    <div className="o-layout__item c-topic-introduction__text u-1/2">
+  <article>
+    <section className="u-padding-top">
       <p>For å forstå verden rundt oss må vi vite hvordan mediene påvirker
          politiske prosesser og samspillet mellom individer, hvordan
           mediebransjen fungerer, og utfordringer den står overfor.
            Mediehistoria gir innsikt i hvordan tankemønstre og teknologi
             har lagt grunnlaget for det moderne samfunnet.
       </p>
-    </div>
-    <div className="o-layout__item u-1/2 u-margin-top-large">
-      <iframe
-        width="480"
-        height="270"
-        src="http://api.istribute.com/video/ndlaseria/RBBM2bMl8cKnwC8OQAlrTq2hz2QDVG5D"
-        frameBorder="0"
-        allowFullScreen=""
-      />
-    </div>
-  </section>
+      <LicenseToggle>
+        <iframe
+          width="480"
+          height="270"
+          src="http://api.istribute.com/video/ndlaseria/RBBM2bMl8cKnwC8OQAlrTq2hz2QDVG5D"
+          frameBorder="0"
+          allowFullScreen=""
+        />
+      </LicenseToggle>
+    </section>
+  </article>
 );
 
 
@@ -482,19 +482,21 @@ const Hovedemne = () => (
 );
 
 const HovedemneExpanded = () => (
-  <section className="c-topic-introduction__text">
-    <p>Mediebransjen består av mange ulike yrker. I alle yrker er det lover og
-       etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter
-        varierer fra yrke til yrke, men til syvende og sist handler det om å
-         kommunisere et budskap til en sluttbruker.</p>
-    <p>Mediebransjen er en bransje i endring. De som jobber i denne bransjen,
-       må derfor være villige til å forholde seg til ny teknologi, nye
-        publiseringsplattformer og nye forretningsmodeller. Og kanskje aller
-         viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
-    <p>Å lage et medieprodukt handler om grundig planlegging, utforming i tråd
-       med gjeldende krav, og å dokumentere produksjonsprosessen.
-    </p>
-  </section>
+  <article>
+    <section className="u-padding-top">
+      <p>Mediebransjen består av mange ulike yrker. I alle yrker er det lover og
+         etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter
+          varierer fra yrke til yrke, men til syvende og sist handler det om å
+           kommunisere et budskap til en sluttbruker.</p>
+      <p>Mediebransjen er en bransje i endring. De som jobber i denne bransjen,
+         må derfor være villige til å forholde seg til ny teknologi, nye
+          publiseringsplattformer og nye forretningsmodeller. Og kanskje aller
+           viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
+      <p>Å lage et medieprodukt handler om grundig planlegging, utforming i tråd
+         med gjeldende krav, og å dokumentere produksjonsprosessen.
+      </p>
+    </section>
+  </article>
 );
 
 
@@ -566,7 +568,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   ;
-storiesOf('Sidevisninger alternativ', module)
+storiesOf('Artikkelmaler', module)
     .add('Artikkel med bilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
@@ -621,18 +623,24 @@ storiesOf('Sidevisninger alternativ', module)
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
-    ))
+    ));
+
+storiesOf('Emnesider', module)
     .add('0. Fagoversikt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <div className="c-resources u-padding-top-large">
-          <OneColumn cssModifier="narrow">
-            <h1>Alle fag</h1>
-            <ul>
-              <li><a href="">Naturfag</a></li>
-              <li><a href="">Engelsk</a></li>
-              <li><a href="">Mediesamfunnet</a></li>
-            </ul>
+          <OneColumn cssModifier="narrow-expandable">
+            <article>
+              <section>
+                <h1>Alle fag</h1>
+                <ul>
+                  <li><a href="">Naturfag</a></li>
+                  <li><a href="">Engelsk</a></li>
+                  <li><a href="">Mediesamfunnet</a></li>
+                </ul>
+              </section>
+            </article>
           </OneColumn>
         </div>
         <FooterExample />
@@ -651,12 +659,14 @@ storiesOf('Sidevisninger alternativ', module)
         </OneColumn>
         <div className="c-resources u-margin-top-large">
           <OneColumn cssModifier="narrow-expandable">
-            <Tabs
-              tabs={[
-                { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#test'} topics={topicListWithIntro} subjectId="1" /> },
-                { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              ]}
-            />
+            <section>
+              <Tabs
+                tabs={[
+                  { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
+                  { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                ]}
+              />
+            </section>
           </OneColumn>
         </div>
         <FooterExample />
@@ -666,21 +676,23 @@ storiesOf('Sidevisninger alternativ', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow">
+          <OneColumn cssModifier="narrow-expandable">
             <Hovedemne />
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow">
+        <OneColumn cssModifier="narrow-expandable">
           <HovedemneExpanded />
         </OneColumn>
         <div className="c-resources u-margin-top-large">
-          <OneColumn cssModifier="narrow">
-            <Tabs
-              tabs={[
-                { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
-                { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              ]}
-            />
+          <OneColumn cssModifier="narrow-expandable">
+            <section>
+              <Tabs
+                tabs={[
+                  { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
+                  { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                ]}
+              />
+            </section>
           </OneColumn>
         </div>
         <FooterExample />

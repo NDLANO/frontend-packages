@@ -1,6 +1,5 @@
 .c-article, article {
   margin-bottom: $spacing--small;
-  margin-top: $spacing--large;
 
   h2,h3,h4 {
     margin-bottom: 0;
@@ -12,8 +11,9 @@
   em {
     display:inline-block;
   }
-
-
+}
+.c-article {
+  margin-top: $spacing--large;
 }
 .c-article__byline {
   margin-bottom: $spacing;
@@ -23,14 +23,19 @@
 }
 
 .o-wrapper--narrow {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.o-wrapper--narrow-expandable {
   h1 {
     display: block;
   }
 
   section.c-article-content:first-child {
     @include mq(tablet) {
-      margin-top: -$spacing*8;
+      margin-top: -$spacing*6;
       padding-top: $spacing--large;
     }
     background: $white;

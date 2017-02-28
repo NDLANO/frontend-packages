@@ -5,6 +5,10 @@
 }
 
 .c-topic-introduction {
+  &__text {
+    padding: $spacing 0;
+    // max-width: $max-text-width;
+  }
   &__list {
     list-style: none;
     margin: 0;
@@ -28,12 +32,6 @@
         max-width: 100%;
       }
     }
-    >:first-child {
-      margin-bottom: $spacing;
-    }
-    >:last-child {
-      padding-right: 0;
-    }
     &:last-child {
       border-bottom: none;
     }
@@ -45,8 +43,7 @@
     margin-bottom: $spacing--small;
   }
   &__resource {
-    float:right;
     color: $primary-color;
-    margin-right: $spacing;
+    margin-left: $spacing;
   }
 }

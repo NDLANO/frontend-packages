@@ -16,6 +16,7 @@ storiesOf('Organismer', module)
     <Center>
       <div className="c-resources u-margin-top-large">
         <Tabs
+          selectedIndex={1}
           tabs={[
                 { key: '0', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
                 { key: '1', displayName: 'Fagstoff', content: <ResourceTabs /> },

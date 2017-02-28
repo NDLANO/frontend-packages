@@ -126,6 +126,11 @@ $shame-spacing: 12px;
       border-bottom: 5px solid $brand-color;
     }
 
+    &--selected.c-tabs__tab--muted {
+      color: inherit;
+      border-bottom: 5px solid lighten($brand-color, 40%);
+    }
+
     &:hover {
       color: $brand-color;
       cursor: pointer;

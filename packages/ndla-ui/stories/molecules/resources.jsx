@@ -46,6 +46,7 @@ export const ResourceSubsetList = () => (
 export const ResourceTabs = () => (
   <div className="u-margin-top-large">
     <Tabs
+      modifier="muted"
       tabs={[
           { key: 'all', displayName: 'Alle', content: <ResourceSubsetList /> },
           { key: 'learningPath', displayName: 'Læringsstier', content: <LearningPathResourceList /> },

@@ -4,11 +4,8 @@ import { storiesOf } from '@kadira/storybook';
 
 import Tabs from 'ndla-tabs';
 
-// import { getLicenseByAbbreviation } from 'ndla-licenses';
-// import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
-
-
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
+import { ResourceTabs } from './molecules/resources';
 
 import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductionList } from '../src';
 
@@ -420,7 +417,7 @@ storiesOf('Sidevisninger', module)
           <Tabs
             tabs={[
               { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              { key: '2', displayName: 'Læringsressurser', content: <p>Læringsressurser-innhold</p> },
+              { key: '2', displayName: 'Fagstoff', content: <ResourceTabs /> },
             ]}
           />
         </div>

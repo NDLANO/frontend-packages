@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import Tabs from 'ndla-tabs';
 
 import { ResourceList, ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
 import { learningPathResources, articleResources } from '../../dummydata/index';
@@ -40,4 +41,16 @@ const resourceGroups = [
 
 export const ResourceSubsetList = () => (
   <ResourceSubsetListComponent resourceGroups={resourceGroups} resourceToLinkProps={toLink} toResourceTab={() => '#'} />
+);
+
+export const ResourceTabs = () => (
+  <div className="u-margin-top-large">
+    <Tabs
+      tabs={[
+          { key: 'all', displayName: 'Alle', content: <ResourceSubsetList /> },
+          { key: 'learningPath', displayName: 'Læringsstier', content: <LearningPathResourceList /> },
+          { key: 'subjectMaterial', displayName: 'Fagstoff', content: <ArticleResourceList /> },
+      ]}
+    />
+  </div>
 );

@@ -387,7 +387,7 @@ const ExamplePage4 = () => (
   </article>
 );
 
-const SubTopicExample = () => (
+const SubTopic = () => (
   <ArticleLoader articleId="5948" isTopicArticle notitle />
 );
 
@@ -404,7 +404,7 @@ const SubTopicHero = () => (
 );
 
 
-const Fagside = () => (
+const TopicHero = () => (
   <div className="c-hero__content">
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
@@ -417,7 +417,7 @@ const Fagside = () => (
 );
 
 
-const Hovedemne = () => (
+const MainTopicHero = () => (
   <div className="c-hero__content">
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
@@ -429,7 +429,7 @@ const Hovedemne = () => (
   </div>
 );
 
-const HovedemneExpanded = () => (
+const MainTopic = () => (
   <ArticleLoader articleId="1325" isTopicArticle notitle />
 );
 
@@ -625,7 +625,7 @@ storiesOf('Emnesider', module)
         <MastheadWithTopicMenu />
         <Hero>
           <OneColumn cssModifier="narrow">
-            <Fagside />
+            <TopicHero />
           </OneColumn>
         </Hero>
         <ResourcesTopics />
@@ -637,11 +637,11 @@ storiesOf('Emnesider', module)
         <MastheadWithTopicMenu />
         <Hero>
           <OneColumn cssModifier="narrow">
-            <Hovedemne />
+            <MainTopicHero />
           </OneColumn>
         </Hero>
         <OneColumn cssModifier="narrow">
-          <HovedemneExpanded />
+          <MainTopic />
         </OneColumn>
         <ResourcesSubTopics />
         <FooterExample />
@@ -656,7 +656,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </Hero>
         <OneColumn cssModifier="narrow">
-          <SubTopicExample />
+          <SubTopic />
         </OneColumn>
         <ResourcesExample />
         <FooterExample />

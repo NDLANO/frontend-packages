@@ -412,7 +412,7 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Masthead />
       <OneColumn>
-        <ArticleLoader isTopicArticle articleId="208" />
+        <ArticleLoader isTopicArticle articleId="176" />
         <div className="c-resources u-margin-top-large">
           <Tabs
             tabs={[

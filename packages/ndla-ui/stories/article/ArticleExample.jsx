@@ -36,13 +36,8 @@ class ArticleExample extends Component {
   render() {
     const { article, withLicenseExample } = this.props;
 
-    const scripts = article.requiredLibraries ? article.requiredLibraries.map(lib => ({ src: lib.url, type: lib.mediaType })) : [];
     return (
       <Article>
-        <Helmet
-          title={`NDLA | ${article.title}`}
-          script={scripts}
-        />
         { withLicenseExample && <LicenseExample /> }
         <h1>{article.title}</h1>
         <ArticleByline authors date article={article} />

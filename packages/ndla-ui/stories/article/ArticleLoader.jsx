@@ -7,6 +7,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { Button, TopicArticle } from '../../src/';
@@ -57,8 +58,12 @@ class ArticleLoader extends Component {
 
   render() {
     const { article, message } = this.state;
+    const scripts = article && article.requiredLibraries ? article.requiredLibraries.map(lib => ({ src: lib.url, type: lib.mediaType })) : [];
     return (
       <div>
+        <Helmet
+          script={scripts}
+        />
         { article ? this.renderArticle() : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
         { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
       </div>

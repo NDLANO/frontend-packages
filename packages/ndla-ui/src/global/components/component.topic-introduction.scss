@@ -2,8 +2,14 @@
   font-weight: $font-weight-normal;
   font-size: 0.8em;
   text-decoration: underline;
+  margin: auto;
 }
-
+.c-topic-article__btnwrapper {
+  text-align: center;
+  margin-top: -$spacing--small;
+  position: relative;
+  z-index:9;
+}
 .c-topic-introduction {
   &__text {
     padding: $spacing 0;

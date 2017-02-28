@@ -388,7 +388,7 @@ const ExamplePage4 = () => (
 );
 
 const SubTopicExample = () => (
-  <ArticleLoader articleId="5948" notitle />
+  <ArticleLoader articleId="5948" isTopicArticle notitle />
 );
 
 const SubTopicHero = () => (

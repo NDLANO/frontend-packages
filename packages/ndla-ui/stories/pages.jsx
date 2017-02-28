@@ -74,7 +74,7 @@ const ExamplePage1 = () => (
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Alle fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a> &#x203A;
+        <a href="" className="c-breadcrumbs__item">Alle fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a> &#x203A;
       </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -112,7 +112,7 @@ const IdealExamplePage1 = () => (
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -154,7 +154,7 @@ const ExamplePage2 = () => (
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>&#x203A; <a href="" className="c-breadcrumbs__item">Fjerde nivå med en veldig kjempelang tittel </a>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>&#x203A; <a href="" className="c-breadcrumbs__item">Fjerde nivå med en veldig kjempelang tittel </a>
       </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -199,7 +199,7 @@ const ExamplePage3 = () => (
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -353,7 +353,7 @@ const ExamplePage4 = () => (
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -426,7 +426,7 @@ const SubTopicHero = () => (
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medibransjen</a> &#x203A;
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medibransjen</a> &#x203A;
       </div>
       <h1 className="c-hero__title">Tittel</h1>
     </section>
@@ -441,7 +441,7 @@ const Fagside = () => (
         <strong>Du er her:</strong>
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
       </div>
-      <h1 className="c-hero__title">Mediesamfunnet</h1>
+      <h1 className="c-hero__title">Helsearbeiderfag</h1>
     </section>
   </div>
 );
@@ -451,18 +451,12 @@ const FagsideExpanded = () => (
     <section className="u-padding-top">
       <p>For å forstå verden rundt oss må vi vite hvordan mediene påvirker
          politiske prosesser og samspillet mellom individer, hvordan
-          mediebransjen fungerer, og utfordringer den står overfor.
-           Mediehistoria gir innsikt i hvordan tankemønstre og teknologi
-            har lagt grunnlaget for det moderne samfunnet.
+         Kommunikasjon fungerer, og utfordringer den står overfor.
+         Mediehistoria gir innsikt i hvordan tankemønstre og teknologi
+         har lagt grunnlaget for det moderne samfunnet.
       </p>
       <LicenseToggle>
-        <iframe
-          width="480"
-          height="270"
-          src="http://api.istribute.com/video/ndlaseria/RBBM2bMl8cKnwC8OQAlrTq2hz2QDVG5D"
-          frameBorder="0"
-          allowFullScreen=""
-        />
+        <img src="http://cdn-c.ndlap3.seria.net/sites/default/files/imagecache/Fullbredde/images/verbalkommunikasjonny1_9.jpg" alt="NDLA" />
       </LicenseToggle>
     </section>
   </article>
@@ -474,9 +468,9 @@ const Hovedemne = () => (
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediesamfunnet</a> &#x203A;
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A;
       </div>
-      <h1 className="c-hero__title">Mediebransjen</h1>
+      <h1 className="c-hero__title">Kommunikasjon</h1>
     </section>
   </div>
 );
@@ -484,11 +478,11 @@ const Hovedemne = () => (
 const HovedemneExpanded = () => (
   <article>
     <section className="u-padding-top">
-      <p>Mediebransjen består av mange ulike yrker. I alle yrker er det lover og
+      <p>Kommunikasjon består av mange ulike yrker. I alle yrker er det lover og
          etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter
           varierer fra yrke til yrke, men til syvende og sist handler det om å
            kommunisere et budskap til en sluttbruker.</p>
-      <p>Mediebransjen er en bransje i endring. De som jobber i denne bransjen,
+      <p>Kommunikasjon er en bransje i endring. De som jobber i denne bransjen,
          må derfor være villige til å forholde seg til ny teknologi, nye
           publiseringsplattformer og nye forretningsmodeller. Og kanskje aller
            viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
@@ -656,11 +650,28 @@ storiesOf('Emnesider', module)
           <OneColumn cssModifier="narrow">
             <article>
               <section>
-                <h1>Alle fag</h1>
+                <h1>Yrkesfag</h1>
                 <ul>
                   <li><a href="">Naturfag</a></li>
                   <li><a href="">Engelsk</a></li>
-                  <li><a href="">Mediesamfunnet</a></li>
+                  <li><a href="">Helsearbeiderfag vg2</a></li>
+                  <li><a href="">Barne- og ungdomsarbeiderfag Vg2</a></li>
+                  <li><a href="">Brønnteknikk Vg2BETA</a></li>
+                  <li><a href="">Bygg- og anleggsteknikk Vg1BETA</a></li>
+                  <li><a href="">Design og håndverk Vg1</a></li>
+                  <li><a href="">Elektrofag Vg1</a></li>
+                  <li><a href="">Helse- og oppvekstfag Vg1</a></li>
+                  <li><a href="">Helsearbeiderfag Vg2</a></li>
+                  <li><a href="">IKT-servicefag Vg2</a></li>
+                  <li><a href="">Kokk- og servitørfag Vg2</a></li>
+                  <li><a href="">Naturbruk Vg1</a></li>
+                  <li><a href="">Reiseliv Vg2</a></li>
+                  <li><a href="">Restaurant- og matfag Vg1</a></li>
+                  <li><a href="">Romteknologi Vg3</a></li>
+                  <li><a href="">Salg, service og sikkerhet Vg2</a></li>
+                  <li><a href="">Service og samferdsel Vg1</a></li>
+                  <li><a href="">Teknikk og industriell produksjon Vg1</a></li>
+                  <li><a href="">Transport og logistikk Vg2</a></li>
                 </ul>
               </section>
             </article>

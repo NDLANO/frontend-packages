@@ -52,15 +52,15 @@ class TopicArticle extends Component {
     const { isOpen } = this.state;
 
     return (
-      <Article>
+      <div>
         <h1>{article.title}</h1>
         <Article.Introduction introduction={article.introduction} />
         <ReactCollapse isOpened={isOpen} springConfig={presets.wobble} >
           <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
         </ReactCollapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
-        <Button className="c-topic-article_toggle-button u-margin-right-small" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown /></Button> eller <a href="">fordyp deg videre under</a>
-      </Article>
+        <Button className="c-topic-article_toggle-button u-margin-right-small" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown /></Button>
+      </div>
     );
   }
 }

@@ -388,31 +388,7 @@ const ExamplePage4 = () => (
 );
 
 const SubTopicExample = () => (
-  <article>
-    <section className="u-padding-top">
-      <p className="article_introduction">Å få til en god dialog er
-         betydningsfullt for å få til en god omsorg. Gode kommunikasjonsevner
-          er derfor en viktig del av helsefagarbeiderens profesjonelle
-           ferdigheter.
-      </p>
-      <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
-      </div>
-      <LicenseToggle>
-        <img src="http://staging.api.ndla.no/image-api/v1/images/full/syab94b0.jpg" alt="NDLA" />
-      </LicenseToggle>
-      <p>Verbalspråket er menneskets fremste kommunikasjonsmiddel, men
-         kommunikasjon foregår også på andre måter. Vi kan for eksempel
-          formidle både glede og skuffelse med ikke-språklige lyder, som
-           sukking og latter. Kroppsholdning og ansiktsuttrykk kan fortelle
-            om forventning, trygghet eller uro. Vi har altså et stort repertoar
-             av mer eller mindre tydelige tegn som en profesjonell
-              helsefagarbeider må være oppmerksom på.</p>
-      <p>Helsefagarbeideren må også være bevisst sitt eget språk, både
-         verbalspråket og kroppspråket, slik at kommunikasjonen med brukeren
-          blir god. Dette er en viktig del av det å yte profesjonell omsorg.</p>
-    </section>
-  </article>
+  <ArticleLoader articleId="5948" notitle />
 );
 
 const SubTopicHero = () => (
@@ -420,7 +396,7 @@ const SubTopicHero = () => (
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Kommunikasjon</a> &#x203A;
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Kommunikasjon for fagarbeideren</a> &#x203A;
       </div>
       <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
     </section>
@@ -440,22 +416,6 @@ const Fagside = () => (
   </div>
 );
 
-const FagsideExpanded = () => (
-  <article>
-    <section className="u-padding-top">
-      <p>For å forstå verden rundt oss må vi vite hvordan mediene påvirker
-         politiske prosesser og samspillet mellom individer, hvordan
-         Kommunikasjon fungerer, og utfordringer den står overfor.
-         Mediehistoria gir innsikt i hvordan tankemønstre og teknologi
-         har lagt grunnlaget for det moderne samfunnet.
-      </p>
-      <LicenseToggle>
-        <img src="http://cdn-c.ndlap3.seria.net/sites/default/files/imagecache/Fullbredde/images/verbalkommunikasjonny1_9.jpg" alt="NDLA" />
-      </LicenseToggle>
-    </section>
-  </article>
-);
-
 
 const Hovedemne = () => (
   <div className="c-hero__content">
@@ -464,27 +424,13 @@ const Hovedemne = () => (
         <strong>Du er her:</strong>
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A;
       </div>
-      <h1 className="c-hero__title">Kommunikasjon</h1>
+      <h1 className="c-hero__title">Kommunikasjon for fagarbeideren</h1>
     </section>
   </div>
 );
 
 const HovedemneExpanded = () => (
-  <article>
-    <section className="u-padding-top">
-      <p>Kommunikasjon består av mange ulike yrker. I alle yrker er det lover og
-         etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter
-          varierer fra yrke til yrke, men til syvende og sist handler det om å
-           kommunisere et budskap til en sluttbruker.</p>
-      <p>Kommunikasjon er en bransje i endring. De som jobber i denne bransjen,
-         må derfor være villige til å forholde seg til ny teknologi, nye
-          publiseringsplattformer og nye forretningsmodeller. Og kanskje aller
-           viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
-      <p>Å lage et medieprodukt handler om grundig planlegging, utforming i tråd
-         med gjeldende krav, og å dokumentere produksjonsprosessen.
-      </p>
-    </section>
-  </article>
+  <ArticleLoader articleId="1325" notitle />
 );
 
 const ResourcesTopics = () => (
@@ -682,9 +628,6 @@ storiesOf('Emnesider', module)
             <Fagside />
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow">
-          <FagsideExpanded />
-        </OneColumn>
         <ResourcesTopics />
         <FooterExample />
       </PageContainer>

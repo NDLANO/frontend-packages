@@ -16,6 +16,7 @@
   margin-top: $spacing--large;
 }
 .c-article__byline {
+  margin-top: $spacing;
   margin-bottom: $spacing;
   font-style: italic;
   font-size: 80%;
@@ -35,12 +36,13 @@
     background: $white;
   }
 
-  section {
-    >* {
-      @include max-width();
-      margin-left: auto;
-      margin-right: auto;
-    }
+  section:first-child>* {
+    @include max-width();
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section:first-child section>* { // Fix for when duplicate max-width is applied
+    max-width: 100%;
   }
 }
 .o-wrapper--wide {

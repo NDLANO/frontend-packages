@@ -2,7 +2,7 @@
 export default [
   {
     id: 'urn:topic:169379',
-    name: 'Kommunikasjon',
+    name: 'Kommunikasjon for fagarbeideren',
     introduction: 'Kommunikasjon er et stort fagfelt for helsefagarbeidere. En helsefagarbeider har opparbeidet seg tilfredstillende kommunikasjonsferdigheter for å bli godkjent yrkesutøver.',
     contentUri: null,
   },

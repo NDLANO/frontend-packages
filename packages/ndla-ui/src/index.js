@@ -28,7 +28,8 @@ import ClickToggle from './common/ClickToggle';
 import TopicMenu from './topicMenu/TopicMenu';
 import TopicArticle from './topic/TopicArticle';
 import TopicIntroductionList from './topic/TopicIntroductionList';
-import Modal from './modal/Modal';
+import ResourceList from './resources/ResourceList';
+import ResourceSubsetList from './resources/ResourceSubsetList';
 import LicenseToggle from './modal/LicenseToggle';
 
 // expose the children to top level exports for ease of use
@@ -53,10 +54,11 @@ export {
   Logo,
   Masthead,
   MastheadItem,
-  Modal,
   OneColumn,
   PageContainer,
   Pager,
+  ResourceList,
+  ResourceSubsetList,
   SiteNav,
   SiteNavItem,
   Table,

@@ -238,14 +238,14 @@ const LicenseExample = () => (
       <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
       <Tabs
         tabs={[
-            { key: 'image', displayName: 'Bilder', content: <ImageContent /> },
-            { key: 'text', displayName: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
-            { key: 'video', displayName: 'Video', content: <VideoContent /> },
-            { key: 'audio', displayName: 'Lyd', content: <AudioContent /> },
-            { key: 'eforelesning', displayName: 'E-forelesning', content: <ImageContent /> },
-            { key: 'recipe', displayName: 'Oppskrift', content: <ImageContent /> },
-            { key: 'trainingExercise', displayName: 'Treningsøvelse', content: <ImageContent /> },
-            { key: 'h5p', displayName: 'H5P', content: <H5PContent /> },
+            { title: 'Bilder', content: <ImageContent /> },
+            { title: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
+            { title: 'Video', content: <VideoContent /> },
+            { title: 'Lyd', content: <AudioContent /> },
+            { title: 'E-forelesning', content: <ImageContent /> },
+            { title: 'Oppskrift', content: <ImageContent /> },
+            { title: 'Treningsøvelse', content: <ImageContent /> },
+            { title: 'H5P', content: <H5PContent /> },
         ]}
       />
     </div>

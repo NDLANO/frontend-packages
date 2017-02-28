@@ -9,13 +9,13 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList,
-  ClickableLicenseByline,
+  TopicArticle, TopicIntroductionList, ClickableLicenseByline,
 } from '../src';
 import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import LicenseExampleGroups from './article/LicenseExampleGroups';
+import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -92,9 +92,9 @@ storiesOf('Sammensatte moduler', module)
                 <div className="o-layout__item u-1/2@desktop">
                   <Tabs
                     tabs={[
-                      { key: 'image', displayName: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
-                      { key: 'video', displayName: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
-                      { key: 'audio', displayName: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
+                      { title: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
+                      { title: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
+                      { title: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
                     ]}
                   />
                 </div>
@@ -239,6 +239,25 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <div className="c-resources">
         <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+      </div>
+    </Center>
+  ))
+  .add('Liste med en type læringsressurs', () => (
+    <Center>
+      <h2 className="u-heading">Læringsstier eksempel</h2>
+      <div className="c-resources">
+        <LearningPathResourceList />
+      </div>
+      <h2 className="u-heading">Fagstoff eksempel</h2>
+      <div className="c-resources">
+        <ArticleResourceList />
+      </div>
+    </Center>
+  ))
+  .add('Liste med ulike læringsressurs typer', () => (
+    <Center>
+      <div className="c-resources">
+        <ResourceSubsetList />
       </div>
     </Center>
   ))

@@ -16,9 +16,9 @@ import BananaComponent from 'banana';
 
 const Fruits = () => {
   const fruitTabs = [
-    { key: 0, displayName: 'Apple', content: <p>An apple a day keeps the doctor away</p> },
-    { key: 1, displayName: 'Orange', content: () => <h1>Orange is the new black</h1> },
-    { key: 2, displayName: 'Banana', content: <BananaComponent/> },
+    { title: 'Apple', content: <p>An apple a day keeps the doctor away</p> },
+    { title: 'Orange', content: () => <h1>Orange is the new black</h1> },
+    { title: 'Banana', content: <BananaComponent/> },
   ]
   return (
     <Tabs tabs={fruitTabs} />
@@ -54,7 +54,8 @@ class FruitTabSelector extends Component {
 ## PropTypes
 | Props               | Type    | Required  | Description|
 | --------------------|:-------:|:---------:|:-----------|
-| tabs                | array   | *         | An array of tabs represented as objects. An tab object requires the following keys: `key`, `displayName`, `content`|
+| tabs                | array   | *         | An array of tabs represented as objects. An tab object requires the following properties: `title`, `content`|
 | onSelect            | func    |           | Is called when a tab is selected. Current index and last index will be passed as parameters. |
 | selectedIndex       | object  |           | Is the tab to select when rendered. Used when you want to control which tab is rendered from the a parent component.|
 | forceRenderTabPanel | bool    |           | Is `false` by default. Set to `true` to render all tab's content instead of only selected tab content.|
+| modifier            | string  |           | An BEM modifier which is added to all html classes.|

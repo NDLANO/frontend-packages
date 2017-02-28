@@ -390,33 +390,27 @@ const ExamplePage4 = () => (
 const SubTopicExample = () => (
   <article>
     <section className="u-padding-top">
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
+      <p className="article_introduction">Å få til en god dialog er
+         betydningsfullt for å få til en god omsorg. Gode kommunikasjonsevner
+          er derfor en viktig del av helsefagarbeiderens profesjonelle
+           ferdigheter.
       </p>
       <div className="c-article__byline">
         <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
       </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
       <LicenseToggle>
-        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+        <img src="http://staging.api.ndla.no/image-api/v1/images/full/syab94b0.jpg" alt="NDLA" />
       </LicenseToggle>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
+      <p>Verbalspråket er menneskets fremste kommunikasjonsmiddel, men
+         kommunikasjon foregår også på andre måter. Vi kan for eksempel
+          formidle både glede og skuffelse med ikke-språklige lyder, som
+           sukking og latter. Kroppsholdning og ansiktsuttrykk kan fortelle
+            om forventning, trygghet eller uro. Vi har altså et stort repertoar
+             av mer eller mindre tydelige tegn som en profesjonell
+              helsefagarbeider må være oppmerksom på.</p>
+      <p>Helsefagarbeideren må også være bevisst sitt eget språk, både
+         verbalspråket og kroppspråket, slik at kommunikasjonen med brukeren
+          blir god. Dette er en viktig del av det å yte profesjonell omsorg.</p>
     </section>
   </article>
 );
@@ -426,9 +420,9 @@ const SubTopicHero = () => (
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medibransjen</a> &#x203A;
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Kommunikasjon</a> &#x203A;
       </div>
-      <h1 className="c-hero__title">Tittel</h1>
+      <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
     </section>
   </div>
 );
@@ -499,7 +493,7 @@ const ResourcesTopics = () => (
       <section>
         <Tabs
           tabs={[
-            { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
+            { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
             { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
           ]}
         />

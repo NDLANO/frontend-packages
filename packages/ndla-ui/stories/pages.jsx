@@ -37,25 +37,6 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ResourcesTab1Example = () => (
-  <div>
-    <div className="c-article">
-      <h3><button>Innføring i journalistikk</button></h3>
-      <p>5 mins om the basics</p>
-    </div>
-    <div className="c-article">
-      <h3><button>Innføring i journalistikk</button></h3>
-      <p>5 mins om the basics</p>
-    </div>
-    <div className="c-article">
-      <h3><button>Innføring i journalistikk</button></h3>
-      <p>5 mins om the basics</p>
-    </div>
-    <p><button>Se alle læringsstier</button></p>
-  </div>
-);
-
-
 const ResourcesTab1 = () => (
   <div className="c-resources_content u-margin-top-small u-margin-bottom">
     <div id="breadcrumbs" className="c-breadcrumbs u-margin-bottom">
@@ -406,46 +387,6 @@ const ExamplePage4 = () => (
   </article>
 );
 
-const TopicExample = () => (
-  <article className="o-wrapper--narrow">
-    <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Nettsider </a>
-      </div>
-      <h1>Nettstruktur og brukeropplevelser</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
-      </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <LicenseToggle>
-        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
-      </LicenseToggle>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-    </section>
-  </article>
-);
-
-
 const SubTopicExample = () => (
   <article>
     <section className="">
@@ -493,34 +434,6 @@ const SubTopicHero = () => (
 );
 
 
-const ExpandedTopic = () => (
-  <article>
-    <section className="c-article-content">
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <LicenseToggle>
-        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
-      </LicenseToggle>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-    </section>
-  </article>
-);
-
 const Fagside = () => (
   <div className="c-hero__content">
     <section>
@@ -536,7 +449,11 @@ const Fagside = () => (
 const FagsideExpanded = () => (
   <section>
     <div className="o-layout__item c-topic-introduction__text u-1/2">
-      <p>For å forstå verden rundt oss må vi vite hvordan mediene påvirker politiske prosesser og samspillet mellom individer, hvordan mediebransjen fungerer, og utfordringer den står overfor. Mediehistoria gir innsikt i hvordan tankemønstre og teknologi har lagt grunnlaget for det moderne samfunnet.
+      <p>For å forstå verden rundt oss må vi vite hvordan mediene påvirker
+         politiske prosesser og samspillet mellom individer, hvordan
+          mediebransjen fungerer, og utfordringer den står overfor.
+           Mediehistoria gir innsikt i hvordan tankemønstre og teknologi
+            har lagt grunnlaget for det moderne samfunnet.
       </p>
     </div>
     <div className="o-layout__item u-1/2 u-margin-top-large">
@@ -566,9 +483,16 @@ const Hovedemne = () => (
 
 const HovedemneExpanded = () => (
   <section className="c-topic-introduction__text">
-    <p>Mediebransjen består av mange ulike yrker. I alle yrker er det lover og etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter varierer fra yrke til yrke, men til syvende og sist handler det om å kommunisere et budskap til en sluttbruker.</p>
-    <p>Mediebransjen er en bransje i endring. De som jobber i denne bransjen, må derfor være villige til å forholde seg til ny teknologi, nye publiseringsplattformer og nye forretningsmodeller. Og kanskje aller viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
-    <p>Å lage et medieprodukt handler om grundig planlegging, utforming i tråd med gjeldende krav, og å dokumentere produksjonsprosessen.
+    <p>Mediebransjen består av mange ulike yrker. I alle yrker er det lover og
+       etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter
+        varierer fra yrke til yrke, men til syvende og sist handler det om å
+         kommunisere et budskap til en sluttbruker.</p>
+    <p>Mediebransjen er en bransje i endring. De som jobber i denne bransjen,
+       må derfor være villige til å forholde seg til ny teknologi, nye
+        publiseringsplattformer og nye forretningsmodeller. Og kanskje aller
+         viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
+    <p>Å lage et medieprodukt handler om grundig planlegging, utforming i tråd
+       med gjeldende krav, og å dokumentere produksjonsprosessen.
     </p>
   </section>
 );
@@ -718,15 +642,15 @@ storiesOf('Sidevisninger alternativ', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow">
+          <OneColumn cssModifier="narrow-expandable">
             <Fagside />
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow">
+        <OneColumn cssModifier="narrow-expandable">
           <FagsideExpanded />
         </OneColumn>
         <div className="c-resources u-margin-top-large">
-          <OneColumn cssModifier="narrow">
+          <OneColumn cssModifier="narrow-expandable">
             <Tabs
               tabs={[
                 { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#test'} topics={topicListWithIntro} subjectId="1" /> },

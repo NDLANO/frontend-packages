@@ -46,3 +46,12 @@ export const ArticleShape = PropTypes.shape({
   created: PropTypes.string.isRequired,
   updated: PropTypes.string.isRequired,
 });
+
+export const ResourceShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  introduction: PropTypes.string,
+  coverPhotoUrl: PropTypes.string,
+  contentUri: PropTypes.string.isRequired,
+});

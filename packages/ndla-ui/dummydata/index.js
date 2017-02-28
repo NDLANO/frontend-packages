@@ -6,6 +6,7 @@ import article149 from './article149.json';
 import article167 from './article167.json';
 import topicArticle from './topicArticle';
 import topics from './topics';
+import { learningPathResources, articleResources } from './resources';
 import topicListWithIntro from './topicListWithIntro';
 
 const article = {
@@ -18,5 +19,5 @@ const article = {
   topicArticle,
 };
 
-export { topics, topicListWithIntro };
+export { topics, topicListWithIntro, learningPathResources, articleResources };
 export default article;

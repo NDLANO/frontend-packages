@@ -63,15 +63,6 @@
     margin-top: 0;
   }
 
-  // Needs better solution
-  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,iframe,table, table tbody {
-  max-width: 100%;
-  }
-  // Remove later - only for user test
-  strong {
-    font-weight: normal;
-  }
-
   img {
     box-shadow: 0px 0px 9px -3px $brand-grey;
     margin-bottom: $spacing--small;

@@ -54,7 +54,7 @@ class TopicArticle extends Component {
       <section>
         { notitle ? null : <h1>{article.title}</h1> }
         <Article.Introduction introduction={article.introduction} />
-        <ReactCollapse className={isOpen ? 'u-collapsable u-collapsable--open' : 'u-collapsable'} isOpened={isOpen} springConfig={presets.wobble} keepCollapsedContent="true">
+        <ReactCollapse className={isOpen ? 'c-article-collapse c-article-collapse--open' : 'c-article-collapse'} isOpened={isOpen} springConfig={presets.wobble} keepCollapsedContent="true">
           <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
         </ReactCollapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }

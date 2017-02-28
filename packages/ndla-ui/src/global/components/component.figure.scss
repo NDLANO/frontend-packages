@@ -58,7 +58,7 @@
   border: none;
   color: $brand-color;
   @include font-size(28px);
-  font-weight: 100;
+  font-weight: $font-weight-normal;
   z-index: 9;
   cursor: pointer;
 }

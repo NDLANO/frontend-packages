@@ -1,5 +1,5 @@
 .c-breadcrumbs {
-  font-size: 80%;
+  @include inuit-font-size(16px);
   padding: $spacing--small 0 $spacing--small 0;
   display:none;
   color: $brand-grey;
@@ -20,5 +20,5 @@
   line-height: 2em;
 }
 .c-breadcrumbs__active {
-  font-weight: bold;
+  font-weight: $font-weight-bold;
 }

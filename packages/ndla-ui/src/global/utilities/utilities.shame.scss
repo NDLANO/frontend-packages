@@ -111,7 +111,7 @@ $shame-spacing: 12px;
   &__list {
     max-width: 100%;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     list-style: none;
     margin: $spacing/1.4 0 $spacing--small;
     padding: 0;
@@ -349,7 +349,7 @@ $shame-spacing: 12px;
 
   &__link {
     color: $white;
-    font-weight: 600;
+    font-weight: $font-weight-bold;
     text-decoration: none;
     &--underline:hover {
       text-decoration: underline;

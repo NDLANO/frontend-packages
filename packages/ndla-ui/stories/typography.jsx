@@ -33,27 +33,35 @@ storiesOf('Typografi', module)
         <section className="c-factbox">
           <h1 className="u-heading">Farger på NDLA</h1>
         </section>
-        <section>
-          <strong>Variasjoner av NDLA-fargen</strong>
-          <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted u-padding-tiny">NDLA primærfarge: #20588F</li>
-            <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted u-padding-tiny">NDLA sekundærfarge: #507AA4</li>
-            <li style={{ backgroundColor: '#A5BCD3' }} className="u-padding-tiny">NDLA tertiærfarge: #A5BCD3</li>
-            <li style={{ backgroundColor: '#CEDDEA' }} className="u-padding-tiny">NDLA lys farge: #CEDDEA</li>
-          </ul>
-          <strong>Gråtoner</strong>
-          <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">Grå 1: #8A8888</li>
-            <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">Grå 2: #E8E3E3</li>
-            <li style={{ backgroundColor: '#EFF0F2' }} className="u-padding-tiny">Grå 3: #EFF0F2</li>
-            <li style={{ backgroundColor: '#F8F8F8' }} className="u-padding-tiny">Grå 4: #F8F8F8</li>
-          </ul>
-          <strong>Tilleggsfarger</strong>
-          <ul className="o-list--clean">
-            <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">Mørk: #1C1717</li>
-            <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">Hvit: #FFFFFF</li>
-            <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Kontrast: #FE5F55</li>
-          </ul>
+        <section className="c-article-content">
+          <div>
+            <h4>Variasjoner av NDLA-fargen</h4>
+            <ul className="o-list--clean">
+              <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted u-padding-tiny">NDLA primærfarge: #20588F</li>
+              <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted u-padding-tiny">NDLA sekundærfarge: #507AA4</li>
+              <li style={{ backgroundColor: '#A5BCD3' }} className="u-padding-tiny">NDLA tertiærfarge: #A5BCD3</li>
+              <li style={{ backgroundColor: '#CEDDEA' }} className="u-padding-tiny">NDLA lys farge: #CEDDEA</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Gråtoner</h4>
+            <ul className="o-list--clean">
+              <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">Grå 1: #8A8888</li>
+              <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">Grå 2: #E8E3E3</li>
+              <li style={{ backgroundColor: '#EFF0F2' }} className="u-padding-tiny">Grå 3: #EFF0F2</li>
+              <li style={{ backgroundColor: '#F8F8F8' }} className="u-padding-tiny">Grå 4: #F8F8F8</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Tilleggsfarger</h4>
+            <ul className="o-list--clean">
+              <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">Mørk: #1C1717</li>
+              <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">Hvit: #FFFFFF</li>
+              <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Kontrast: #FE5F55</li>
+            </ul>
+          </div>
         </section>
       </article>
     </Center>
@@ -75,7 +83,7 @@ storiesOf('Typografi', module)
   ))
   .add('Overskrifter', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Overskrifter på NDLA</h1>
           <p>Overskrifter på NDLA skal markeres semantisk med riktige HTML-tagger
@@ -86,7 +94,7 @@ storiesOf('Typografi', module)
             Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Sans Pro, Bold (700)</a>
           </p>
         </section>
-        <section>
+        <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
           <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
@@ -129,7 +137,7 @@ storiesOf('Typografi', module)
   ))
   .add('Avsnitt', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Avsnitt på NDLA</h1>
           <p>
@@ -152,7 +160,7 @@ storiesOf('Typografi', module)
           </p>
 
         </section>
-        <section>
+        <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
           <p>{articleUrl(93)}</p>
           {
@@ -165,7 +173,7 @@ storiesOf('Typografi', module)
   ))
   .add('Lenker', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Lenker på NDLA</h1>
           <p><a>Lenker</a> på <a href="//ndla.no">ndla.no</a> bruker den vanlige
@@ -175,7 +183,7 @@ storiesOf('Typografi', module)
           </p>
           <p>Lenker kan enten være eksterne, interne eller vise til innhold på samme side ved hjelp av en <code>id</code>-attributt på for eksempel en overskrift.</p>
         </section>
-        <section>
+        <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
           <p>Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en <a href="/">intern lenke</a>, og dette er en <a href="#overskrift">lenke som viser til innhold på samme side</a></p>
           <h2 id="overskrift">Overskrift</h2>
@@ -185,12 +193,12 @@ storiesOf('Typografi', module)
   ))
   .add('Tabeller', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--wide">
         <section className="c-factbox">
           <h1 className="u-heading">Tabeller på NDLA</h1>
           <p>Tabeller skal brukes til tabulær data, ikke for tekstutforming</p>
         </section>
-        <section>
+        <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
           <Table>
             <tbody>
@@ -529,12 +537,12 @@ storiesOf('Typografi', module)
   ))
   .add('Sitater', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Sitater på NDLA</h1>
           <p>Sitater som strekker seg over tre linjer i vanlig linjelengde er best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere sitater, men &laquo;&raquo;</p>
         </section>
-        <section>
+        <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
           {articleUrl(89)}
           <div dangerouslySetInnerHTML={{ __html: articleHMTL(89).articleHTML.outerHTML }} />

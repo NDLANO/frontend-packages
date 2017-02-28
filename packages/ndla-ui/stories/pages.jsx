@@ -77,7 +77,7 @@ const ResourcesTab1 = () => (
 
 const ResourcesExample = () => (
   <div className="u-1/1 c-resources u-margin-top-large">
-    <div className="o-wrapper">
+    <div className="o-wrapper--narrow">
       <Tabs
         tabs={[
           { displayName: 'Fagstoff', content: <ResourcesTab1 /> },
@@ -89,7 +89,7 @@ const ResourcesExample = () => (
 
 
 const ExamplePage1 = () => (
-  <article className="o-wrapper--narrow">
+  <article className="o-wrapper--narrow-expandable">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -127,9 +127,10 @@ const ExamplePage1 = () => (
   </article>
 );
 const IdealExamplePage1 = () => (
-  <article className="o-wrapper--narrow">
+  <article className="o-wrapper--narrow-expandable">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
+        <strong>Du er her:</strong>
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
       <h1>Tittel om pitching</h1>
@@ -168,9 +169,10 @@ const IdealExamplePage1 = () => (
   </article>
 );
 const ExamplePage2 = () => (
-  <article className="o-wrapper--narrow">
+  <article className="o-wrapper--narrow-expandable">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
+        <strong>Du er her:</strong>
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>&#x203A; <a href="" className="c-breadcrumbs__item">Fjerde nivå med en veldig kjempelang tittel </a>
       </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
@@ -212,9 +214,10 @@ const ExamplePage2 = () => (
 );
 
 const ExamplePage3 = () => (
-  <article className="o-wrapper--narrow">
+  <article className="o-wrapper--narrow-expandable">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
+        <strong>Du er her:</strong>
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
       <h1>Tittel om pitching</h1>
@@ -365,9 +368,10 @@ const ExamplePage3 = () => (
 );
 
 const ExamplePage4 = () => (
-  <article className="o-wrapper--narrow">
+  <article className="o-wrapper--narrow-expandable">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
+        <strong>Du er her:</strong>
         <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
       </div>
       <h1>Tittel om pitching</h1>
@@ -402,11 +406,12 @@ const ExamplePage4 = () => (
   </article>
 );
 
-const EmneExample = () => (
+const TopicExample = () => (
   <article className="o-wrapper--narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Nettsider </a>
+        <strong>Du er her:</strong>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Nettsider </a>
       </div>
       <h1>Nettstruktur og brukeropplevelser</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -440,30 +445,132 @@ const EmneExample = () => (
   </article>
 );
 
-const Fagside = () => (
-  <div className="o-wrapper c-hero__content">
+
+const SubTopicExample = () => (
+  <article>
+    <section className="">
+      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+         å produsere filmen.
+      </p>
+      <div className="c-article__byline">
+        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+      </div>
+      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+        din og bestemmer seg for å bruke ressurser på nettopp dette
+      prosjektet.</p>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+      få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+        pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <LicenseToggle>
+        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+      </LicenseToggle>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+    </section>
+  </article>
+);
+
+const SubTopicHero = () => (
+  <div className="c-hero__content">
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
+        <strong>Du er her:</strong>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediesamfunnet</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medibransjen</a> &#x203A;
       </div>
-      <h1>Medieuttrykk og mediesamfunnet</h1>
-      <p className="article_introduction">Introduksjon til faget medieuttrykk og mediesamfunnet.
-      </p>
+      <h1 className="c-hero__title">Tittel</h1>
     </section>
   </div>
 );
 
-const Hovedemne = () => (
-  <div className="o-wrapper c-hero__content">
+
+const ExpandedTopic = () => (
+  <article>
+    <section className="c-article-content">
+      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+        din og bestemmer seg for å bruke ressurser på nettopp dette
+      prosjektet.</p>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+      få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+        pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+      <LicenseToggle>
+        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+      </LicenseToggle>
+      <p>En pitch er en kortvarig framføring av en idé for en potensiell
+         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med
+           i klassen.</p>
+    </section>
+  </article>
+);
+
+const Fagside = () => (
+  <div className="c-hero__content">
     <section>
       <div id="breadcrumbs" className="c-breadcrumbs">
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og mediesamfunnet</a> &#x203A;
+        <strong>Du er her:</strong>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
       </div>
-      <h1>Nettsider</h1>
-      <p className="article_introduction">Introduksjon til hovedemnet nettsider.
-      </p>
+      <h1 className="c-hero__title">Mediesamfunnet</h1>
     </section>
   </div>
+);
+
+const FagsideExpanded = () => (
+  <section>
+    <div className="o-layout__item c-topic-introduction__text u-1/2">
+      <p>For å forstå verden rundt oss må vi vite hvordan mediene påvirker politiske prosesser og samspillet mellom individer, hvordan mediebransjen fungerer, og utfordringer den står overfor. Mediehistoria gir innsikt i hvordan tankemønstre og teknologi har lagt grunnlaget for det moderne samfunnet.
+      </p>
+    </div>
+    <div className="o-layout__item u-1/2 u-margin-top-large">
+      <iframe
+        width="480"
+        height="270"
+        src="http://api.istribute.com/video/ndlaseria/RBBM2bMl8cKnwC8OQAlrTq2hz2QDVG5D"
+        frameBorder="0"
+        allowFullScreen=""
+      />
+    </div>
+  </section>
+);
+
+
+const Hovedemne = () => (
+  <div className="c-hero__content">
+    <section>
+      <div id="breadcrumbs" className="c-breadcrumbs">
+        <strong>Du er her:</strong>
+        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediesamfunnet</a> &#x203A;
+      </div>
+      <h1 className="c-hero__title">Mediebransjen</h1>
+    </section>
+  </div>
+);
+
+const HovedemneExpanded = () => (
+  <section className="c-topic-introduction__text">
+    <p>Mediebransjen består av mange ulike yrker. I alle yrker er det lover og etiske retningslinjer som må følges. Krav til kunnskaper og ferdigheter varierer fra yrke til yrke, men til syvende og sist handler det om å kommunisere et budskap til en sluttbruker.</p>
+    <p>Mediebransjen er en bransje i endring. De som jobber i denne bransjen, må derfor være villige til å forholde seg til ny teknologi, nye publiseringsplattformer og nye forretningsmodeller. Og kanskje aller viktigst: De må kunne jobbe sammen med andre fram mot en deadline.</p>
+    <p>Å lage et medieprodukt handler om grundig planlegging, utforming i tråd med gjeldende krav, og å dokumentere produksjonsprosessen.
+    </p>
+  </section>
 );
 
 
@@ -594,9 +701,14 @@ storiesOf('Sidevisninger alternativ', module)
     .add('0. Fagoversikt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <div className="c-resources u-margin-top-large">
-          <OneColumn>
-            Liste over fag
+        <div className="c-resources u-padding-top-large">
+          <OneColumn cssModifier="narrow">
+            <h1>Alle fag</h1>
+            <ul>
+              <li><a href="">Naturfag</a></li>
+              <li><a href="">Engelsk</a></li>
+              <li><a href="">Mediesamfunnet</a></li>
+            </ul>
           </OneColumn>
         </div>
         <FooterExample />
@@ -606,13 +718,18 @@ storiesOf('Sidevisninger alternativ', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <Fagside />
+          <OneColumn cssModifier="narrow">
+            <Fagside />
+          </OneColumn>
         </Hero>
+        <OneColumn cssModifier="narrow">
+          <FagsideExpanded />
+        </OneColumn>
         <div className="c-resources u-margin-top-large">
-          <OneColumn>
+          <OneColumn cssModifier="narrow">
             <Tabs
               tabs={[
-                { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#test'} topics={topicListWithIntro} subjectId="1" /> },
                 { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
               ]}
             />
@@ -625,10 +742,15 @@ storiesOf('Sidevisninger alternativ', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <Hovedemne />
+          <OneColumn cssModifier="narrow">
+            <Hovedemne />
+          </OneColumn>
         </Hero>
+        <OneColumn cssModifier="narrow">
+          <HovedemneExpanded />
+        </OneColumn>
         <div className="c-resources u-margin-top-large">
-          <OneColumn>
+          <OneColumn cssModifier="narrow">
             <Tabs
               tabs={[
                 { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
@@ -643,9 +765,13 @@ storiesOf('Sidevisninger alternativ', module)
     .add('3. Underemne med fagstoff', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
-        <OneColumn>
-          <EmneExample />
+        <Hero>
+          <OneColumn cssModifier="narrow-expandable">
+            <SubTopicHero />
+          </OneColumn>
+        </Hero>
+        <OneColumn cssModifier="narrow-expandable">
+          <SubTopicExample />
         </OneColumn>
         <ResourcesExample />
         <FooterExample />

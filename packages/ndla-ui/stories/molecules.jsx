@@ -54,11 +54,11 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Sammensatte noder', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Sammensatte fagressurser</h1>
         </section>
-        <section>
+        <section className="c-article-content">
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten

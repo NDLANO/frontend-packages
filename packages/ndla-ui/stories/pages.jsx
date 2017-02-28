@@ -58,7 +58,7 @@ const ResourcesTab1 = () => (
 
 const ResourcesExample = () => (
   <div className="u-1/1 c-resources u-margin-top-large">
-    <div className="o-wrapper--narrow">
+    <div className="o-wrapper">
       <Tabs
         tabs={[
           { displayName: 'Fagstoff', content: <ResourcesTab1 /> },

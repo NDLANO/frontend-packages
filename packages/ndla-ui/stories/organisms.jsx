@@ -18,8 +18,8 @@ storiesOf('Organismer', module)
         <Tabs
           selectedIndex={1}
           tabs={[
-                { displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-                { displayName: 'Fagstoff', content: <ResourceTabs /> },
+                { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+                { title: 'Fagstoff', content: <ResourceTabs /> },
           ]}
         />
       </div>

@@ -191,14 +191,14 @@ const LicenseExample = () => (
       <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
       <Tabs
         tabs={[
-          { key: 'flash', displayName: 'Flash', content: <ImageContent /> },
-          { key: 'learningPath', displayName: 'Læringsti', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
-          { key: 'definitions', displayName: 'Begrep', content: <defintionsContent /> },
-          { key: 'category', displayName: 'Emnea.', content: <AudioContent /> },
-          { key: 'fagstoff', displayName: 'Fagstoff', content: <ImageContent /> },
-          { key: 'attachment', displayName: 'Vedlegg', content: <ImageContent /> },
-          { key: 'exercise', displayName: 'Oppgave', content: <ImageContent /> },
-          { key: 'guide', displayName: 'Veiledning', content: <VideoContent /> },
+          { key: 'flash', title: 'Flash', content: <ImageContent /> },
+          { key: 'learningPath', title: 'Læringsti', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
+          { key: 'definitions', title: 'Begrep', content: <defintionsContent /> },
+          { key: 'category', title: 'Emnea.', content: <AudioContent /> },
+          { key: 'fagstoff', title: 'Fagstoff', content: <ImageContent /> },
+          { key: 'attachment', title: 'Vedlegg', content: <ImageContent /> },
+          { key: 'exercise', title: 'Oppgave', content: <ImageContent /> },
+          { key: 'guide', title: 'Veiledning', content: <VideoContent /> },
         ]}
       />
     </div>

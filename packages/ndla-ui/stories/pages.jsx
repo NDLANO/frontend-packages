@@ -64,11 +64,11 @@ const ResourcesTab1 = () => (
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Example /></div> },
-        { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
-        { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
-        { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
-        { displayName: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Alle', content: <div><h2>Læringsstier</h2><ResourcesTab1Example /></div> },
+        { title: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
       ]}
     />
   </div>
@@ -79,7 +79,7 @@ const ResourcesExample = () => (
     <div className="o-wrapper">
       <Tabs
         tabs={[
-          { displayName: 'Læringsressurser', content: <ResourcesTab1 /> },
+          { title: 'Læringsressurser', content: <ResourcesTab1 /> },
         ]}
       />
     </div>
@@ -416,8 +416,8 @@ storiesOf('Sidevisninger', module)
         <div className="c-resources u-margin-top-large">
           <Tabs
             tabs={[
-              { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              { key: '2', displayName: 'Fagstoff', content: <ResourceTabs /> },
+              { key: '1', title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
+              { key: '2', title: 'Fagstoff', content: <ResourceTabs /> },
             ]}
           />
         </div>

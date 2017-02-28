@@ -395,13 +395,13 @@ const LicenseExample = () => (
       <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
       <Tabs
         tabs={[
-            { key: 'image', displayName: 'Bilder', content: <ImageContent /> },
-            { key: 'text', displayName: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
-            { key: 'video', displayName: 'Video', content: <VideoContent /> },
-            { key: 'audio', displayName: 'Lyd', content: <AudioContent /> },
-            { key: 'h5p', displayName: 'H5P', content: <H5PContent /> },
-            { key: 'learningPath', displayName: 'Læringssti', content: <LearningPath /> },
-            { key: 'files', displayName: 'Filer', content: <Files /> },
+            { key: 'image', title: 'Bilder', content: <ImageContent /> },
+            { key: 'text', title: 'Tekst', content: <TextContent license={getLicenseByAbbreviation('by-nc-nd')} /> },
+            { key: 'video', title: 'Video', content: <VideoContent /> },
+            { key: 'audio', title: 'Lyd', content: <AudioContent /> },
+            { key: 'h5p', title: 'H5P', content: <H5PContent /> },
+            { key: 'learningPath', title: 'Læringssti', content: <LearningPath /> },
+            { key: 'files', title: 'Filer', content: <Files /> },
         ]}
       />
     </div>

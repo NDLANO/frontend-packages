@@ -44,7 +44,7 @@ class ArticleExample extends Component {
           script={scripts}
         />
         { withLicenseExample && <LicenseExample /> }
-        { notitle ? <h1>{article.title}</h1> : null }
+        { notitle ? null : <h1>{article.title}</h1> }
         <ArticleByline authors date article={article} />
         <Article.Introduction introduction={article.introduction} />
         <div dangerouslySetInnerHTML={{ __html: article.content }} />
@@ -61,7 +61,7 @@ ArticleExample.propTypes = {
     content: PropTypes.string.isRequired,
   }).isRequired,
   withLicenseExample: PropTypes.bool,
-  notitle: PropTypes.string,
+  notitle: PropTypes.bool,
 };
 
 

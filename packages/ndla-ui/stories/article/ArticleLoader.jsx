@@ -23,6 +23,7 @@ class ArticleLoader extends Component {
 
   componentDidMount() {
     const { articleId } = this.props;
+    // const { notitle } = this.props;
     if (articleId) {
       this.handleSubmit(articleId);
     }
@@ -48,11 +49,11 @@ class ArticleLoader extends Component {
 
   renderArticle() {
     const { article } = this.state;
-    const { isTopicArticle, withLicenseExample } = this.props;
+    const { isTopicArticle, withLicenseExample, notitle } = this.props;
     if (isTopicArticle) {
       return <TopicArticle article={article} openTitle="Les mer om dette emnet" closeTitle={<span>Skjul emnebeskrivelsen</span>} />;
     }
-    return <ArticleExample article={article} withLicenseExample={withLicenseExample} />;
+    return <ArticleExample article={article} withLicenseExample={withLicenseExample} notitle={notitle} />;
   }
 
   render() {
@@ -70,6 +71,7 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   withLicenseExample: PropTypes.bool,
   isTopicArticle: PropTypes.bool,
+  notitle: PropTypes.bool,
 };
 
 export default ArticleLoader;

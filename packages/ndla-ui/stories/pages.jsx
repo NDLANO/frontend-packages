@@ -430,7 +430,7 @@ const Hovedemne = () => (
 );
 
 const HovedemneExpanded = () => (
-  <ArticleLoader articleId="1325" notitle />
+  <ArticleLoader articleId="1325" isTopicArticle notitle />
 );
 
 const ResourcesTopics = () => (
@@ -477,7 +477,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn>
+      <OneColumn cssModifier="narrow">
         <ArticleLoader articleId="44" />
       </OneColumn>
       <FooterExample />
@@ -487,7 +487,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage with licensebox', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn>
+      <OneColumn cssModifier="narrow">
         <article>
           <ArticleLoader articleId="44" withLicenseExample />
         </article>
@@ -508,7 +508,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn>
+      <OneColumn cssModifier="narrow">
         <ArticleLoader articleId="34" />
       </OneColumn>
       <FooterExample />
@@ -517,7 +517,7 @@ storiesOf('Sidevisninger', module)
   .add('Emneside', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn>
+      <OneColumn cssModifier="narrow">
         <ArticleLoader isTopicArticle articleId="208" />
       </OneColumn>
       <ResourcesTopics />

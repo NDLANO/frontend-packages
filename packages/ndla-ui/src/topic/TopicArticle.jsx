@@ -48,19 +48,19 @@ class TopicArticle extends Component {
   }
 
   render() {
-    const { article, openTitle, closeTitle } = this.props;
+    const { article, openTitle, closeTitle, notitle } = this.props;
     const { isOpen } = this.state;
 
     return (
-      <div>
-        <h1>{article.title}</h1>
+      <section>
+        { notitle ? null : <h1>{article.title}</h1> }
         <Article.Introduction introduction={article.introduction} />
         <ReactCollapse isOpened={isOpen} springConfig={presets.wobble} >
           <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
         </ReactCollapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
         <Button className="c-topic-article_toggle-button u-margin-right-small" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown /></Button>
-      </div>
+      </section>
     );
   }
 }
@@ -70,6 +70,7 @@ TopicArticle.propTypes = {
   article: ArticleShape.isRequired,
   openTitle: PropTypes.node.isRequired,
   closeTitle: PropTypes.node.isRequired,
+  notitle: PropTypes.bool,
 };
 
 export default TopicArticle;

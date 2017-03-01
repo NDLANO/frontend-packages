@@ -60,8 +60,6 @@ li {
 }
 
 section {
-  // overflow: auto;
-  // padding: 0 $spacing / 2;
 
   @include mq(tablet) {
     padding: 0 $spacing * 1.5;

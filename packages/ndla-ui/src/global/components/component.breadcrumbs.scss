@@ -11,14 +11,15 @@
   @include mq(tablet) {
     display: block;
   }
-}
-.c-breadcrumbs__item {
-  color: $brand-grey;
-  padding-left: $spacing--small/2;
-  padding-right: $spacing--small/2;
-  display: inline-block;
-  line-height: 2em;
-}
-.c-breadcrumbs__active {
-  font-weight: $font-weight-bold;
+
+  &__item {
+    color: $brand-grey;
+    padding-left: $spacing--small/2;
+    padding-right: $spacing--small/2;
+    display: inline-block;
+    line-height: 2em;
+  }
+  &__active {
+    font-weight: $font-weight-bold;
+  }
 }

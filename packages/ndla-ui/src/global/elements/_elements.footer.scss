@@ -14,37 +14,37 @@
     padding: 0 $spacing;
   }
 
-}
-.footer_editor {
-  display: block;
-  margin-bottom: $spacing--small;
-  padding-right: $spacing--small;
+  &_editor {
+    display: block;
+    margin-bottom: $spacing--small;
+    padding-right: $spacing--small;
 
-  @include mq(desktop) {
+    @include mq(desktop) {
+      display: inline-block;
+    }
+  }
+  &--bold {
+    font-weight: $font-weight-bold;
+  }
+  &_form {
+    display: inline;
+
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+  &_label {
+    padding-right: 1em;
     display: inline-block;
   }
-}
-.footer--bold {
-  font-weight: $font-weight-bold;
-}
-.footer_form {
-  display: inline;
-
-  @include mq(desktop) {
-    display: block;
+  &_ruler {
+    width: 100%;
+    border-top: 1px solid $brand-grey;
+    padding-bottom: 1em;
+    margin-top: 1em;
   }
-}
-.footer_label {
-  padding-right: 1em;
-  display: inline-block;
-}
-.footer_ruler {
-  width: 100%;
-  border-top: 1px solid $brand-grey;
-  padding-bottom: 1em;
-  margin-top: 1em;
-}
-.footer_text {
-  margin-bottom: 0;
-  margin-top: 0.3em;
+  &_text {
+    margin-bottom: 0;
+    margin-top: 0.3em;
+  }
 }

@@ -17,7 +17,6 @@
 .c-topic-introduction {
   &__text {
     padding: $spacing 0;
-    // max-width: $max-text-width;
   }
   &__list {
     list-style: none;
@@ -31,11 +30,11 @@
     border-bottom: 2px solid $brand-grey--light;
     background-color: transparent;
     margin-left: 0;
+    @include inuit-font-size(16px);
 
     p {
       max-width: $max-text-width;
       padding-right: $spacing;
-      @include inuit-font-size(16px);
     }
     @include mq($until:tablet) {
       img {

@@ -7,12 +7,12 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceTabs } from './molecules/resources';
 
-import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductionList } from '../src';
+import { Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicBreadcrumb, TopicIntroductionList } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
-import article, { topicListWithIntro } from '../dummydata/index';
+import article, { topicList, subjectList } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -412,12 +412,15 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Masthead />
       <OneColumn>
+        <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(4)} toTopic={() => '#'}>
+          Du er her:
+        </TopicBreadcrumb>
         <ArticleLoader isTopicArticle articleId="176" />
         <div className="c-resources u-margin-top-large">
           <Tabs
             tabs={[
-              { key: '1', title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-              { key: '2', title: 'Fagstoff', content: <ResourceTabs /> },
+              { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+              { title: 'Fagstoff', content: <ResourceTabs /> },
             ]}
           />
         </div>

@@ -25,9 +25,10 @@ import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
-import TopicMenu from './topicMenu/TopicMenu';
 import TopicArticle from './topic/TopicArticle';
+import TopicBreadcrumb from './topic/TopicBreadcrumb';
 import TopicIntroductionList from './topic/TopicIntroductionList';
+import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceSubsetList from './resources/ResourceSubsetList';
 import LicenseToggle from './modal/LicenseToggle';
@@ -63,6 +64,7 @@ export {
   SiteNavItem,
   Table,
   TopicArticle,
+  TopicBreadcrumb,
   TopicIntroductionList,
   TopicMenu,
 };

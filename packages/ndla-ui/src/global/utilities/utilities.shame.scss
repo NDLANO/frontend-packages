@@ -463,3 +463,22 @@ $shame-spacing: 12px;
     }
   }
 }
+
+.c-breadcrumb {
+  font-size: 90%;
+  
+  &__list {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__item {
+    float: left;
+  }
+
+  &__item + &__item:before{
+    padding-right: .5em;
+    padding-left: .5em;
+    content: '>'
+  }
+}

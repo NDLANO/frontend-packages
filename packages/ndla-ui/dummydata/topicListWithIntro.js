@@ -7,22 +7,22 @@ export default [
   },
   {
     name: 'Menneskekroppen',
-    introduction: 'I dette emnet kan du lære mer om hvordan du kan unngå skader når du må jobbe lange økter foran datamaskinen, og når du er ute på oppdrag med ulikt medieutstyr. I tillegg kan du lære litt om programvare og hvordan du kan levere profesjonelle formater i mediebransjen.',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
   {
     name: 'Sykepleie',
-    introduction: 'I dette emnet kan du lære mer om hvordan du kan unngå skader når du må jobbe lange økter foran datamaskinen, og når du er ute på oppdrag med ulikt medieutstyr. I tillegg kan du lære litt om programvare og hvordan du kan levere profesjonelle formater i mediebransjen.',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
   {
     name: 'Prosedyrer',
-    introduction: 'I dette emnet kan du lære mer om hvordan du kan unngå skader når du må jobbe lange økter foran datamaskinen, og når du er ute på oppdrag med ulikt medieutstyr. I tillegg kan du lære litt om programvare og hvordan du kan levere profesjonelle formater i mediebransjen.',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
   {
     name: 'Hygiene',
-    introduction: 'I dette emnet kan du lære mer om hvordan du kan unngå skader når du må jobbe lange økter foran datamaskinen, og når du er ute på oppdrag med ulikt medieutstyr. I tillegg kan du lære litt om programvare og hvordan du kan levere profesjonelle formater i mediebransjen.',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
 ];

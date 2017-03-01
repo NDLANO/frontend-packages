@@ -6,9 +6,13 @@
 }
 .c-topic-article__btnwrapper {
   text-align: center;
-  margin-top: -$spacing--small;
+  margin-top: -$spacing--large*1.5;
+  margin-bottom: $spacing--large*1.5;
   position: relative;
   z-index:9;
+  &--open {
+    margin-top: $spacing--small;
+  }
 }
 .c-topic-introduction {
   &__text {

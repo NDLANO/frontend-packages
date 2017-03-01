@@ -57,13 +57,15 @@ const ResourcesTab1 = () => (
 );
 
 const ResourcesExample = () => (
-  <div className="u-1/1 c-resources u-margin-top-large">
-    <div className="o-wrapper">
-      <Tabs
-        tabs={[
-          { displayName: 'Fagstoff', content: <ResourcesTab1 /> },
-        ]}
-      />
+  <div className="c-resources u-margin-top-large">
+    <div className="o-wrapper o-wrapper--narrow">
+      <section>
+        <Tabs
+          tabs={[
+            { displayName: 'Fagstoff', content: <ResourcesTab1 /> },
+          ]}
+        />
+      </section>
     </div>
   </div>
 );
@@ -388,7 +390,7 @@ const ExamplePage4 = () => (
 );
 
 const SubTopic = () => (
-  <ArticleLoader articleId="5948" isTopicArticle notitle />
+  <ArticleLoader articleId="5948" notitle />
 );
 
 const SubTopicHero = () => (

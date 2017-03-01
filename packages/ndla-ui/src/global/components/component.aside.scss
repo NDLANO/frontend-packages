@@ -95,7 +95,7 @@
     @include inuit-font-size(16px);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-top: $spacing--large;
+    margin-top: $spacing;
     margin-bottom: $spacing--small;
     border-bottom: 1px solid $brand-color--light;
   }

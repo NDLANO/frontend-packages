@@ -72,7 +72,7 @@ const ResourcesExample = () => (
 
 
 const ExamplePage1 = () => (
-  <article className="o-wrapper--narrow">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -107,10 +107,10 @@ const ExamplePage1 = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
     </section>
-  </article>
+  </OneColumn>
 );
 const IdealExamplePage1 = () => (
-  <article className="o-wrapper--narrow">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -149,10 +149,10 @@ const IdealExamplePage1 = () => (
          tydeligere for både deg selv og dem du eventuelt jobber sammen med
           i klassen.</p>
     </section>
-  </article>
+  </OneColumn>
 );
 const ExamplePage2 = () => (
-  <article className="o-wrapper--narrow">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -193,11 +193,11 @@ const ExamplePage2 = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
     </section>
-  </article>
+  </OneColumn>
 );
 
 const ExamplePage3 = () => (
-  <article className="o-wrapper--narrow">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -347,11 +347,11 @@ const ExamplePage3 = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
     </section>
-  </article>
+  </OneColumn>
 );
 
 const ExamplePage4 = () => (
-  <article className="o-wrapper--narrow">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -386,11 +386,11 @@ const ExamplePage4 = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
     </section>
-  </article>
+  </OneColumn>
 );
 
 const ExampleWithSummary = () => (
-  <article className="o-wrapper--narrow">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <div id="breadcrumbs" className="c-breadcrumbs">
         <strong>Du er her:</strong>
@@ -469,53 +469,63 @@ const ExampleWithSummary = () => (
         </div>
       </Aside>
     </section>
-  </article>
+  </OneColumn>
 );
 
 const SubTopic = () => (
-  <ArticleLoader articleId="5948" notitle />
+  <OneColumn cssModifier="narrow">
+    <ArticleLoader articleId="5948" notitle />
+  </OneColumn>
 );
 
 const SubTopicHero = () => (
-  <div className="c-hero__content">
-    <section>
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Kommunikasjon for fagarbeideren</a> &#x203A;
-      </div>
-      <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
-    </section>
-  </div>
+  <OneColumn cssModifier="narrow">
+    <div className="c-hero__content">
+      <section>
+        <div id="breadcrumbs" className="c-breadcrumbs">
+          <strong>Du er her:</strong>
+          <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Kommunikasjon for fagarbeideren</a> &#x203A;
+        </div>
+        <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
+      </section>
+    </div>
+  </OneColumn>
 );
 
 
 const TopicHero = () => (
-  <div className="c-hero__content">
-    <section>
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
-      </div>
-      <h1 className="c-hero__title">Helsearbeiderfag</h1>
-    </section>
-  </div>
+  <OneColumn cssModifier="narrow">
+    <div className="c-hero__content">
+      <section>
+        <div id="breadcrumbs" className="c-breadcrumbs">
+          <strong>Du er her:</strong>
+          <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
+        </div>
+        <h1 className="c-hero__title">Helsearbeiderfag</h1>
+      </section>
+    </div>
+  </OneColumn>
 );
 
 
 const MainTopicHero = () => (
-  <div className="c-hero__content">
-    <section>
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A;
-      </div>
-      <h1 className="c-hero__title">Kommunikasjon for fagarbeideren</h1>
-    </section>
-  </div>
+  <OneColumn cssModifier="narrow">
+    <div className="c-hero__content">
+      <section>
+        <div id="breadcrumbs" className="c-breadcrumbs">
+          <strong>Du er her:</strong>
+          <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A;
+        </div>
+        <h1 className="c-hero__title">Kommunikasjon for fagarbeideren</h1>
+      </section>
+    </div>
+  </OneColumn>
 );
 
 const MainTopic = () => (
-  <ArticleLoader articleId="1325" isTopicArticle notitle />
+  <OneColumn cssModifier="narrow">
+    <ArticleLoader articleId="1325" isTopicArticle notitle />
+  </OneColumn>
 );
 
 const ResourcesTopics = () => (
@@ -615,9 +625,7 @@ storiesOf('Artikkelmaler', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
-        <OneColumn>
-          <ExamplePage1 />
-        </OneColumn>
+        <ExamplePage1 />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
@@ -626,9 +634,7 @@ storiesOf('Artikkelmaler', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
-        <OneColumn>
-          <ExamplePage2 />
-        </OneColumn>
+        <ExamplePage2 />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
@@ -637,9 +643,7 @@ storiesOf('Artikkelmaler', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
-        <OneColumn>
-          <ExamplePage3 />
-        </OneColumn>
+        <ExamplePage3 />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
@@ -648,9 +652,7 @@ storiesOf('Artikkelmaler', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
-        <OneColumn>
-          <ExamplePage4 />
-        </OneColumn>
+        <ExamplePage4 />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
@@ -659,9 +661,7 @@ storiesOf('Artikkelmaler', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero />
-        <OneColumn>
-          <IdealExamplePage1 />
-        </OneColumn>
+        <IdealExamplePage1 />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
@@ -670,9 +670,7 @@ storiesOf('Artikkelmaler', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero />
-        <OneColumn>
-          <ExampleWithSummary />
-        </OneColumn>
+        <ExampleWithSummary />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>
@@ -720,9 +718,7 @@ storiesOf('Emnesider', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow">
-            <TopicHero />
-          </OneColumn>
+          <TopicHero />
         </Hero>
         <ResourcesTopics />
         <FooterExample />
@@ -732,13 +728,9 @@ storiesOf('Emnesider', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow">
-            <MainTopicHero />
-          </OneColumn>
+          <MainTopicHero />
         </Hero>
-        <OneColumn cssModifier="narrow">
-          <MainTopic />
-        </OneColumn>
+        <MainTopic />
         <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
@@ -747,13 +739,9 @@ storiesOf('Emnesider', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <OneColumn cssModifier="narrow">
-            <SubTopicHero />
-          </OneColumn>
+          <SubTopicHero />
         </Hero>
-        <OneColumn cssModifier="narrow">
-          <SubTopic />
-        </OneColumn>
+        <SubTopic />
         <ResourcesExample />
         <FooterExample />
       </PageContainer>

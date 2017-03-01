@@ -120,6 +120,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Aside>
         <div>
+          <div className="c-aside__title">Oppsummering</div>
           <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
           <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
           <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>

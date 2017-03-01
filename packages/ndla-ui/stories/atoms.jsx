@@ -5,7 +5,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import Icon from '../src/icons/Icon';
-import { Button } from '../src';
+import { Aside, Button } from '../src';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
@@ -51,6 +51,19 @@ storiesOf('Enkle komponenter', module)
         <p>Faktabokser er for ekstra informasjon og veier videre.</p>
       </section>
       <h2 className="u-heading">Eksempel</h2>
+      <Aside>
+        <div>
+          <div className="c-aside__title">Oppsummering</div>
+          <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
+          <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
+          <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
+          <div><figure className="article_audio">
+            <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
+          <h2>Ressurser</h2>
+          <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
+          <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
+          <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
+      </Aside>
       <div dangerouslySetInnerHTML={{ __html: articleHTML.outerHTML }} />
     </Center>
   ))

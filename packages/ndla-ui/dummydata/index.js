@@ -5,9 +5,9 @@ import article93 from './article93.json';
 import article149 from './article149.json';
 import article167 from './article167.json';
 import topicArticle from './topicArticle';
-import topics from './topics';
+import { topicMenu, topicList } from './mockTopics';
 import { learningPathResources, articleResources } from './resources';
-import topicListWithIntro from './topicListWithIntro';
+import { subjectList } from './mockSubjects';
 
 const article = {
   article4,
@@ -19,5 +19,5 @@ const article = {
   topicArticle,
 };
 
-export { topics, topicListWithIntro, learningPathResources, articleResources };
+export { topicMenu, topicList, subjectList, learningPathResources, articleResources };
 export default article;

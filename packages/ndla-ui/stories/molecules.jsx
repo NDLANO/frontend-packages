@@ -9,9 +9,10 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList, ClickableLicenseByline,
+  TopicArticle, TopicIntroductionList, TopicBreadcrumb,
+  ClickableLicenseByline,
 } from '../src';
-import articles, { topicListWithIntro } from '../dummydata/index';
+import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import LicenseExampleGroups from './article/LicenseExampleGroups';
@@ -238,7 +239,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Emne introduksjons liste', () => (
     <Center>
       <div className="c-resources">
-        <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+        <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
       </div>
     </Center>
   ))
@@ -259,6 +260,13 @@ storiesOf('Sammensatte moduler', module)
       <div className="c-resources">
         <ResourceSubsetList />
       </div>
+    </Center>
+  ))
+  .add('Brødsmulesti', () => (
+    <Center>
+      <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(4)} toTopic={() => '#'}>
+        Du er her:
+      </TopicBreadcrumb>
     </Center>
   ))
   ;

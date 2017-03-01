@@ -9,7 +9,7 @@
 import React from 'react';
 
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../src';
-import { topics } from '../../dummydata';
+import { topicMenu } from '../../dummydata';
 
 export const MastheadLeftRight = () => (
   <Masthead>
@@ -38,7 +38,7 @@ export const MastheadWithTopicMenu = () => (
     <MastheadItem left>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
       <ClickToggle title="Medieuttrykk og mediesamfunnet" className="l-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
-        <TopicMenu toTopic={() => '#'} topics={topics} />
+        <TopicMenu toTopic={() => '#'} topics={topicMenu} />
       </ClickToggle>
     </MastheadItem>
     <MastheadItem right>

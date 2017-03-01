@@ -14,13 +14,14 @@
 }
 .c-article {
   margin-top: $spacing--large;
-}
-.c-article__byline {
-  margin-top: $spacing;
-  margin-bottom: $spacing;
-  font-style: italic;
-  font-size: 80%;
-  color: $brand-grey;
+
+  &__byline {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    font-style: italic;
+    @include inuit-font-size(16px);
+    color: $brand-grey;
+  }
 }
 
 .o-wrapper--narrow {

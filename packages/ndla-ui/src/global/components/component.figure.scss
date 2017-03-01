@@ -13,7 +13,7 @@
   max-width: 100% !important;
   background: $brand-color--light;
   padding: $spacing;
-  @include font-size(15px);
+  @include font-size(16px);
   position: relative;
   @include mq(desktop) {
     display: flex;

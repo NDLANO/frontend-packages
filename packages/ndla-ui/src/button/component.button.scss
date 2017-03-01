@@ -12,10 +12,11 @@
   background-color: $brand-color;
   border: 3px solid $brand-color;
   border-radius: $inuit-global-radius;
-  padding: $spacing--small $spacing/1.3;
+  padding: 8px $spacing/1.3;
   outline: none;
   cursor: pointer;
   text-decoration: none;
+  @include inuit-font-size(15px);
   &:hover, &:focus {
     color: white;
     background-color: rgba($brand-color, 0.8);
@@ -38,9 +39,10 @@
 }
 
 .c-button--outline {
-  color: $brand-color;
+  color: $black;
   background-color: transparent;
   border: 1px solid $brand-color;
+  font-weight: $font-weight-bold;
   &:hover, &:focus {
     color: white;
     background-color: $brand-color;

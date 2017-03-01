@@ -1,9 +1,11 @@
-
-.c-figcaption__info {
-  display: block;
-}
-.c-figcaption__licenses {
-  padding-top: $spacing/3;
-  margin-top: 5px;
-  display: block;
+.c-figcaption {
+  &__info {
+    display: block;
+    margin-bottom: $spacing--small;
+  }
+  &__licenses {
+    padding-top: $spacing/3;
+    margin-top: 5px;
+    display: block;
+  }
 }

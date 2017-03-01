@@ -10,12 +10,12 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList,
+  TopicArticle, TopicIntroductionList, TopicIntroductionListFlag,
   ClickableLicenseByline,
 } from '../src';
 import articles, { topicListWithIntro } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
-import LicenseExampleGroups from './article/LicenseExampleGroups';
+import LicenseExampleGroups from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -26,9 +26,8 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
-
           <h1 className="u-heading">Logo</h1>
           <p>
             Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
@@ -48,17 +47,19 @@ storiesOf('Sammensatte moduler', module)
             hjørnet av en ytterkant. Logoen skal ikke sentreres.
           </p>
         </section>
-        <Logo name to="#" altText="Nasjonal digital læringsarena" />
+        <section>
+          <Logo name to="#" altText="Nasjonal digital læringsarena" />
+        </section>
       </article>
     </Center>
   ))
   .add('Sammensatte noder', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Sammensatte fagressurser</h1>
         </section>
-        <section>
+        <section className="c-article-content">
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten
@@ -120,6 +121,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Aside>
         <div>
+          <div className="c-aside__title">Oppsummering</div>
           <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
           <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
           <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
@@ -231,18 +233,35 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Emne artikkel', () => (
     <Center>
-      <TopicArticle
-        article={articles.topicArticle}
-        openTitle="Se hele emnebeskrivelse"
-        closeTitle={<span>Skjul emnebeskrivelse</span>}
-      />
+      <article className="o-wrapper--narrow">
+        <TopicArticle
+          article={articles.topicArticle}
+          openTitle="Les mer om dette emnet"
+          closeTitle={<span>Skjul emnebeskrivelse</span>}
+        />
+      </article>
     </Center>
   ))
   .add('Emne introduksjons liste', () => (
     <Center>
-      <div className="c-resources">
-        <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
-      </div>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+          </section>
+        </div>
+      </article>
+    </Center>
+  ))
+  .add('Emne introduksjons liste (flag)', () => (
+    <Center>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+          </section>
+        </div>
+      </article>
     </Center>
   ))
   ;

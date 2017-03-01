@@ -8,7 +8,7 @@ const toggleAside = (event) => {
 };
 
 const Aside = ({ ...rest }) => (
-  <aside className="c-aside u-1/3@desktop">
+  <aside className="c-aside">
     <div className="c-aside__content">{rest.children}</div>
     <Button className="c-aside__button" onClick={toggleAside} />
   </aside>);

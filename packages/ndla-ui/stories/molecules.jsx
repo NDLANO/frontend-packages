@@ -26,9 +26,8 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Logo', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
-
           <h1 className="u-heading">Logo</h1>
           <p>
             Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
@@ -48,7 +47,9 @@ storiesOf('Sammensatte moduler', module)
             hjørnet av en ytterkant. Logoen skal ikke sentreres.
           </p>
         </section>
-        <Logo name to="#" altText="Nasjonal digital læringsarena" />
+        <section>
+          <Logo name to="#" altText="Nasjonal digital læringsarena" />
+        </section>
       </article>
     </Center>
   ))
@@ -232,25 +233,35 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Emne artikkel', () => (
     <Center>
-      <TopicArticle
-        article={articles.topicArticle}
-        openTitle="Les mer om dette emnet"
-        closeTitle={<span>Skjul emnebeskrivelse</span>}
-      />
+      <article className="o-wrapper--narrow">
+        <TopicArticle
+          article={articles.topicArticle}
+          openTitle="Les mer om dette emnet"
+          closeTitle={<span>Skjul emnebeskrivelse</span>}
+        />
+      </article>
     </Center>
   ))
   .add('Emne introduksjons liste', () => (
     <Center>
-      <div className="c-resources">
-        <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
-      </div>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+          </section>
+        </div>
+      </article>
     </Center>
   ))
   .add('Emne introduksjons liste (flag)', () => (
     <Center>
-      <div className="c-resources">
-        <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
-      </div>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+          </section>
+        </div>
+      </article>
     </Center>
   ))
   ;

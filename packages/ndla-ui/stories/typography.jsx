@@ -29,7 +29,7 @@ const heading = (articleHTML, level) => {
 storiesOf('Typografi', module)
   .add('Farger', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Farger på NDLA</h1>
         </section>
@@ -68,7 +68,7 @@ storiesOf('Typografi', module)
   ))
   .add('Fonter', () => (
     <Center>
-      <article>
+      <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Fonter</h1>
           <p>NDLA bruker Source Sans Pro fra <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Google Fonts</a>.</p>
@@ -508,31 +508,34 @@ storiesOf('Typografi', module)
   ))
   .add('Lister', () => (
     <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">Lister på NDLA</h1>
-      </section>
-
-      <strong>Ren liste</strong>
-      <ul className="o-list--clean">
-        <li>Listepunkt 1</li>
-        <li>Listepunkt 2</li>
-        <li>Listepunkt 3</li>
-        <li>Listepunkt 4</li>
-      </ul>
-      <strong>Lister med lenker</strong>
-      <ul className="o-list--arrows">
-        <li><a href="">Listepunkt 1</a></li>
-        <li><a href="">Listepunkt 2</a></li>
-        <li><a href="">Listepunkt 3</a></li>
-        <li><a href="">Listepunkt 4</a></li>
-      </ul>
-      <strong>Nummererte lister</strong>
-      <ol>
-        <li>Listepunkt 1</li>
-        <li>Listepunkt 2</li>
-        <li>Listepunkt 3</li>
-        <li>Listepunkt 4</li>
-      </ol>
+      <article className="o-wrapper--narrow">
+        <section className="c-factbox">
+          <h1 className="u-heading">Lister på NDLA</h1>
+        </section>
+        <section>
+          <h2>Ren liste</h2>
+          <ul className="o-list--clean">
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>Listepunkt 3</li>
+            <li>Listepunkt 4</li>
+          </ul>
+          <h2>Lister med lenker</h2>
+          <ul className="o-list--arrows">
+            <li><a href="">Listepunkt 1</a></li>
+            <li><a href="">Listepunkt 2</a></li>
+            <li><a href="">Listepunkt 3</a></li>
+            <li><a href="">Listepunkt 4</a></li>
+          </ul>
+          <h2>Nummererte lister</h2>
+          <ol>
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>Listepunkt 3</li>
+            <li>Listepunkt 4</li>
+          </ol>
+        </section>
+      </article>
     </Center>
   ))
   .add('Sitater', () => (
@@ -544,7 +547,7 @@ storiesOf('Typografi', module)
         </section>
         <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
-          {articleUrl(89)}
+          <div>{articleUrl(89)}</div>
           <div dangerouslySetInnerHTML={{ __html: articleHMTL(89).articleHTML.outerHTML }} />
         </section>
       </article>

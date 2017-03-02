@@ -4,10 +4,11 @@
   border-style: solid;
   border-color: $brand-color--tertiary;
   border-width: 1px;
-}
-.c-bodybox--attribute {
-  padding: $spacing--small $spacing;
-  display: inline-block;
-  clear:both;
-  font-style: italic;
+
+  &--attribute {
+    padding: $spacing--small $spacing;
+    display: inline-block;
+    clear:both;
+    font-style: italic;
+  }
 }

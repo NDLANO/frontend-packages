@@ -24,7 +24,7 @@
   }
   th, tbody td:before {
     color: $brand-color;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     font-size: 90%;
     text-transform: uppercase;
     padding: 4px 10px 4px 4px;

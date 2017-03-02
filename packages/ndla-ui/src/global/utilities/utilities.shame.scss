@@ -91,16 +91,18 @@
 
 
 /* Move this elsewhere later? */
-.c-article__byline {
-  color: $brand-grey;
-}
 p.article_introduction {
   font-size: 125%;
 }
 .u-toggle {
   display: none;
 }
-
+.u-block-mobile {
+  @include mq($until:tablet) {
+    display: block;
+    width: 100%;
+  }
+}
 
 /* Tabs Styling */
 $shame-spacing: 12px;
@@ -109,7 +111,7 @@ $shame-spacing: 12px;
   &__list {
     max-width: 100%;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     list-style: none;
     margin: $spacing/1.4 0 $spacing--small;
     padding: 0;
@@ -142,7 +144,7 @@ $shame-spacing: 12px;
   }
 
   &__panel {
-    padding: ($shame-spacing / 2) $shame-spacing;
+    // padding: ($shame-spacing / 2) $shame-spacing;
   }
 }
 // .c-tabs__list:before {
@@ -158,7 +160,10 @@ $shame-spacing: 12px;
   height: 1em;
   fill: currentColor;
   font-size: 1em;
-  vertical-align: bottom;
+  vertical-align: middle;
+  &--rotate {
+    transform: rotate(180deg);
+  }
 }
 
 .c-license-icons {
@@ -280,27 +285,44 @@ $shame-spacing: 12px;
   display: inline-block;
 }
 
-.l-topic-menu-container {
+.c-topic-menu-container {
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 25px;
 }
 
 .c-topic-menu-toggle-button {
   font-size: 0.75em;
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid $brand-color;
+    position: absolute;
+    bottom: 7px;
+    right: -24px;
+  }
 }
 
 
-.l-topic-menu {
+.c-topic-menu__dropdown {
   position: absolute;
   padding: 0;
-  margin-top: 29px;
-  background: #22598D;
+  margin-top: 31px;
+  min-height: 250px;
+  background: $brand-color;
   text-align: left;
   left: 0;
   right: 0;
   z-index: 30;
   display: flex;
+  box-shadow: 0 10px 20px rgba($black, 0.4);
+}
 
+.c-topic-menu {
   &__left {
     flex: 1;
     max-width: 30%;
@@ -309,12 +331,8 @@ $shame-spacing: 12px;
   &__right {
     flex: 2;
     padding: 1em 2em;
-    background-color: #184673;
+    background-color: $brand-color--dark;
   }
-}
-
-
-.c-topic-menu {
   &__list {
     padding: 1em 0;
     list-style: none;
@@ -322,10 +340,11 @@ $shame-spacing: 12px;
   }
 
   &__topic-item {
-    padding: 0.2em 1em;
-    border-bottom: 1px solid #7698B8;
+    padding: $spacing--small/2 0 $spacing--small/2 $spacing--large;
+    border-bottom: 1px solid rgba($brand-color--light, .4);
+    transition: all .1s ease-in-out;
     &--active {
-      background-color: #184673;
+      background-color: $brand-color--dark;
     }
     &:last-child {
       border: none;
@@ -333,12 +352,12 @@ $shame-spacing: 12px;
   }
 
   &__subtopic-item {
-    padding: 0;
+    padding: $spacing--small/2 0;
   }
 
   &__link {
-    color: #FFFFFF;
-    font-weight: 600;
+    color: $white;
+    font-weight: $font-weight-bold;
     text-decoration: none;
     &--underline:hover {
       text-decoration: underline;
@@ -360,40 +379,6 @@ $shame-spacing: 12px;
   right: 0;
   opacity: 0;
   width: 100%;
-}
-
-.c-topic-article_toggle-button {
-  font-weight: 100;
-  font-size: 0.8em;
-  text-decoration: underline;
-}
-
-.c-topic-introduction {
-  &__list {
-    list-style: none;
-  }
-
-  &__item {
-    padding-bottom: 1.5em;
-    border-bottom: 2px solid #DADADA;
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  &__header {
-    font-size: 1.2em;
-    color: #045A91;
-  }
-  &__topic-link {
-    padding: 0.25em   1em;
-    border: 1px solid #045A91;
-    border-radius: 3px;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: black;
-    text-decoration: none;
-  }
 }
 
 .c-topic-resource-subset {
@@ -466,7 +451,7 @@ $shame-spacing: 12px;
 
 .c-breadcrumb {
   font-size: 90%;
-  
+
   &__list {
     padding-left: 0;
     list-style: none;

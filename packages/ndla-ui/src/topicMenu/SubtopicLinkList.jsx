@@ -25,7 +25,7 @@ SubtopicLink.propTypes = {
 
 const SubtopicLinkList = ({ className, classes, closeMenu, topic, toTopic }) => (
   <div className={className}>
-    <SafeLink {...classes('link', ['underline', 'big'])} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name } {'>'}</SafeLink>
+    <SafeLink {...classes('link', ['underline', 'big'])} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name } {'›'}</SafeLink>
     <ul {...classes('list')}>
       { topic.subtopics.map(subtopic =>
         <SubtopicLink

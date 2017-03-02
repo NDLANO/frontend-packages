@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 export const OneColumn = ({ children, className, cssModifier }) => {
   const modifierClass = cssModifier ? `o-wrapper--${cssModifier}` : '';
-  const classes = classNames('o-wrapper', modifierClass, ['u-1/1', className]);
+  const classes = classNames('o-wrapper', modifierClass, ['', className]);
   return <div className={classes}>{children}</div>;
 };
 
@@ -20,3 +20,5 @@ OneColumn.propTypes = {
   cssModifier: PropTypes.string,
   className: PropTypes.string,
 };
+
+export default OneColumn;

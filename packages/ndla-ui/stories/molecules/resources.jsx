@@ -29,12 +29,12 @@ export const LearningPathResourceList = () => (
 const resourceGroups = [
   {
     title: 'Fagstoff',
-    viewAllLinkTitle: 'Se alt fagstoff',
+    viewAllLinkTitle: 'Se alt fagstoff \u2192',
     resources: articleResources.slice(0, 2),
   },
   {
     title: 'Læringsstier',
-    viewAllLinkTitle: 'Se alle læringsstier',
+    viewAllLinkTitle: 'Se alle læringsstier \u2192',
     resources: learningPathResources.slice(0, 2),
   },
 ];
@@ -44,7 +44,7 @@ export const ResourceSubsetList = () => (
 );
 
 export const ResourceTabs = () => (
-  <div className="u-margin-top-large">
+  <div className="u-margin-top-huge">
     <Tabs
       modifier="muted"
       tabs={[

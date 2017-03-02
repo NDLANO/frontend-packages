@@ -7,22 +7,32 @@ import { Center } from './helpers';
 
 import {
   TopicIntroductionList,
+  ResourceWrapper,
 } from '../src';
-import { topicListWithIntro } from '../dummydata/index';
+import { topicList } from '../dummydata/index';
 import { ResourceTabs } from './molecules/resources';
 
 storiesOf('Organismer', module)
   .add('Læringsressurspanel for emneside', () => (
     <Center>
-      <div className="c-resources u-margin-top-large">
+      <ResourceWrapper>
         <Tabs
           selectedIndex={1}
           tabs={[
-                { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-                { title: 'Fagstoff', content: <ResourceTabs /> },
+            { title: 'Emner',
+              content:
+                <TopicIntroductionList
+                  toTopic={() => '#'}
+                  goToTopicTitle="Gå til emnet"
+                  toTopicResources={() => '#'}
+                  goToTopicResourcesTitle="Se fagstoff"
+                  topics={topicList}
+                />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
           ]}
         />
-      </div>
+      </ResourceWrapper>
     </Center>
   ))
 ;

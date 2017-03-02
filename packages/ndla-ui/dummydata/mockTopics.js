@@ -1,38 +1,66 @@
 
 export const topicList = [
   {
-    id: 'urn:topic:169379',
-    name: 'Nettsider',
-    introduction: 'Et nettsted består som regel av flere nettsider, og hver nettside bygges opp med ulike innholdstyper som tekst, bilder og video. God navigasjon mellom nettsidene på et nettsted og innholdet på nettsidene gir god brukeropplevelse. Den er viktig for å komme gjennom med innholdet på nettstedet.',
+    id: '1',
+    name: 'Kommunikasjon for fagarbeideren',
+    introduction: 'Kommunikasjon er et stort fagfelt for helsefagarbeidere. En helsefagarbeider har opparbeidet seg tilfredstillende kommunikasjonsferdigheter for å bli godkjent yrkesutøver.',
     contentUri: null,
   },
   {
-    id: 'urn:topic:170356',
-    name: 'Produksjonsutstyr og HMS',
-    introduction: 'I dette emnet kan du lære mer om hvordan du kan unngå skader når du må jobbe lange økter foran datamaskinen, og når du er ute på oppdrag med ulikt medieutstyr. I tillegg kan du lære litt om programvare og hvordan du kan levere profesjonelle formater i mediebransjen.',
+    id: '2',
+    name: 'Menneskekroppen',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
   {
-    id: 'urn:topic:170364',
-    name: 'Lydarbeid',
-    introduction: 'I dette emnet får du en innføring i ulike lydtyper, lydopptak, lydredigering, fortelleteknikk og stemmebruk. Du får også trening i å gjennomføre en kort radiosending med alt det innebærer, fra god stemmebruk til intervjuteknikk og utarbeiding av kjøreplan.',
+    id: '3',
+    name: 'Sykepleie',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
   {
-    id: 'urn:topic:412bdb35-87f6-49e4-b59a-71f6652652ac',
-    name: 'Skriftlig tekstarbeid',
+    id: '4',
+    name: 'Prosedyrer',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     contentUri: null,
   },
   {
-    id: 'urn:topic:30a52046-451e-4302-b62f-21f1a1d0b81e',
-    name: 'Levende bilde',
-    introduction: 'Å jobbe med levende bilder er en sammensatt arbeidsprosess. Filmproduksjon handler om alt fra konkretisering av idéen, uttegning og filming, til redigering og klipping.',
+    id: '5',
+    name: 'Hygiene',
+    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+    contentUri: null,
+  },
+];
+
+export const subtopicList = [
+  {
+    id: '1',
+    name: 'Profesjonell kommunikasjon',
+    introduction: 'Å få til en god dialog er betydningsfullt for å få til en god omsorg. Gode kommunikasjonsevner er derfor en viktig del av helsefagarbeiderens profesjonelle ferdigheter.',
     contentUri: null,
   },
   {
-    id: 'urn:topic:170379',
-    name: 'Bilde',
-    introduction: 'I arbeidet med dette emnet lærer du om kamerainnstilling, bildekomposisjon og bilderedigering. Ved å øve på hvordan du stiller inn ISO, lukkertid og blenderåpning, blir du trygg på kameraets manuelle innstillinger. Ved å lære mer om grunnleggende komposisjonsprinsipper blir du en bedre fotograf.',
+    id: '2',
+    name: 'Å kommunisere med mennesker med ulike forutsetninger',
+    introduction: 'Kommunikasjon med mennesker med ulike forutsetninger krever gode kunnskaper og ferdigheter. Helsefagarbeidere lærer dette gjennom utdannelsen sin. ',
+    contentUri: null,
+  },
+  {
+    id: '3',
+    name: 'Kommunikasjon med alvorlig syke brukere ',
+    introduction: 'Som helsefagarbeider kan du komme tett på en brukers ønsker den siste fasen av livet og døden. En viktig del av kommunikasjonen er å gi alle mulighet til å snakke om dette når de selv ønsker det.',
+    contentUri: null,
+  },
+  {
+    id: '4',
+    name: 'Kommunikasjon med pårørende ',
+    introduction: 'God kommunikasjon er viktig når man møter pårørende. Man må være bevisst sitt eget kroppsspråk og legge til rette for at pårørende får god nok informasjon om alt de lurer på i enhver situasjon.',
+    contentUri: null,
+  },
+  {
+    id: '5',
+    name: 'Kommunikasjon med personer med demens',
+    introduction: 'Personer med demens kan ha vansker med å finne de riktige ordene samt oppfatte hva andre sier.  For å få til en god samtale er det viktig å være rolig og sette av tid til kommunikasjon.',
     contentUri: null,
   },
 ];

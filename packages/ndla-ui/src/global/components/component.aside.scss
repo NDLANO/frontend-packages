@@ -1,136 +1,102 @@
 .c-aside, aside {
-  display: inline-block;
   position: relative;
-  border: 1px solid $brand-grey--light;
-  padding: $spacing;
-  margin: $spacing 0 $spacing $spacing;
-  transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
-  max-height: 150px;
-  overflow:hidden;
+  margin: $spacing--large 0;
+  @include inuit-font-size(16px);
 
-  @include mq(desktop) {
-    border: 0;
-    margin-top: 0;
-    border-left: 1px solid $brand-color--light;
-    padding-left: $spacing*1.5;
-    max-height: none;
-    width: 33%;
-  }
 
-  &:after {
-    content: "";
-    text-align: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
-    background: linear-gradient(rgba($brand-color--light,0),$white)
+  &__title {
+    border-bottom: 2px solid $brand-color;
+    margin-bottom: $spacing;
+    @include inuit-font-size(22px);
+    font-weight: $font-weight-bold;
+    position: relative;
+    z-index: 2;
   }
-  @include mq(desktop) {
+  &__content {
+    color: $brand-grey-dark;
+    padding: $spacing $spacing $spacing--large;
+    border: 1px solid $brand-grey--light;
+    overflow:hidden;
+    max-height: 150px;
+    transition: max-height .6s ease-in-out;
+
     &:after {
-      display: none;
+      content: "";
+      text-align: center;
+      position: absolute;
+      top: 0;
+      bottom: 1px;
+      right: 0;
+      width: 99%;
+      margin: .5% .5% 0 .5%;
+      transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
+      background: linear-gradient(rgba($brand-color--light,0),$white);
     }
   }
 
   &.expanded {
     max-height: 500vh;
 
-    &:after {
-      background: none;
-    }
-  }
-  @include mq(desktop) {
-    @include font-size(16px);
-    float: right;
-    clear: both;
-    padding: 0 0 0 $spacing*1.5;
-    border: none;
-    border-left: 1px solid $brand-color--light;
-
-    > div {
-      max-height: none;
+    .c-aside__content {
+      max-height: 500vh;
 
       &:after {
-        display: none;
+        background: none;
       }
+    }
+
+    .c-aside__button:after {
+      transform: rotate(180deg);
+      top: 38%;
     }
   }
 
-  // Override
-  *:first-child {
-    margin-top: 0;
-  }
+  &__button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -16px;
+    z-index: 9;
+    box-shadow: 0 0px 15px rgba(gray, 0.3);
+    margin: auto;
+    padding: 5px 15px !important;
+    width: 0px;
+    height: 33px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 50% !important;
 
-  // Needs better solution
-  h1,h2,h3,h4,h5,em,i,a,p,ul,li,code,figure,video,iframe,table, table tbody {
-  max-width: 100%;
-  }
-  // Remove later - only for user test
-  strong {
-    font-weight: normal;
+    &:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 45%;
+      left: 32%;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $white;
+    }
+    &:hover, &:active {
+      background: $brand-color--dark !important;
+    }
+    @include mq(desktop) {
+      display: none;
+    }
   }
 
   img {
     box-shadow: 0px 0px 9px -3px $brand-grey;
     margin-bottom: $spacing--small;
-    width: 100%; // Remove later?
   }
   h2,h3,h4,h5 {
     display: block;
-    font-size: 110%;
+    @include inuit-font-size(16px);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-top: $spacing--small;
+    margin-top: $spacing;
     margin-bottom: $spacing--small;
     border-bottom: 1px solid $brand-color--light;
-  }
-}
-.c-aside__content {
-  color: $brand-grey-dark;
-  padding: $spacing $spacing $spacing--large;
-
-  @include mq(desktop) {
-    padding: 0;
-  }
-}
-
-.c-aside__button {
-  background: $white !important; // Dirty
-  border: 0 !important; // Dirty
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -5px;
-  z-index: 9;
-  box-shadow: 0 0px 29px rgba(gray, 0.5);
-  margin: auto;
-  width: 50px;
-  font-size: 14px;
-
-  &:after {
-    content: '';
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid $brand-color;
-    margin-bottom: 2px;
-  }
-  &:hover, &:active {
-    &:after {
-      border-top: 5px solid $brand-color;
-    }
-  }
-  @include mq(desktop) {
-    display: none;
-  }
-}
-.c-aside.expanded {
-  .c-aside__button:after {
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid $brand-color;
   }
 }

@@ -9,13 +9,13 @@
 import React, { Component, PropTypes } from 'react';
 import {
   addEventListenerForResize,
-  updateIFrameDimensions,
-  addAsideClickListener,
+  updateIFrameDimensions, addAsideClickListener,
   removeEventListenerForResize,
   removeAsideClickListener,
 } from 'ndla-article-scripts';
 import { presets } from 'react-motion';
 import ReactCollapse from 'react-collapse';
+import Icon from '../icons/Icon';
 
 import Article from '../article/Article';
 import Button from '../button/Button';
@@ -47,19 +47,18 @@ class TopicArticle extends Component {
   }
 
   render() {
-    const { article, openTitle, closeTitle } = this.props;
+    const { article, openTitle, closeTitle, notitle } = this.props;
     const { isOpen } = this.state;
-
     return (
-      <Article>
-        <h1>{article.title}</h1>
+      <section>
+        { notitle ? null : <h1>{article.title}</h1> }
         <Article.Introduction introduction={article.introduction} />
-        <ReactCollapse isOpened={isOpen} springConfig={presets.wobble} keepCollapsedContent>
+        <ReactCollapse className={isOpen ? 'c-article-collapse c-article-collapse--open' : 'c-article-collapse'} isOpened={isOpen} springConfig={presets.wobble} keepCollapsedContent>
           <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
         </ReactCollapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
-        <Button className="c-topic-article_toggle-button" onClick={this.toggleOpen} stripped>{ isOpen ? closeTitle : openTitle }</Button>
-      </Article>
+        <div className={isOpen ? 'c-topic-article__btnwrapper c-topic-article__btnwrapper--open' : 'c-topic-article__btnwrapper'}><Button className="c-topic-article_toggle-button" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown className={isOpen ? 'icon icon--rotate' : 'icon'} /></Button></div>
+      </section>
     );
   }
 }
@@ -69,6 +68,7 @@ TopicArticle.propTypes = {
   article: ArticleShape.isRequired,
   openTitle: PropTypes.node.isRequired,
   closeTitle: PropTypes.node.isRequired,
+  notitle: PropTypes.bool,
 };
 
 export default TopicArticle;

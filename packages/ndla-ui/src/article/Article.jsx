@@ -14,7 +14,7 @@
    prefix: 'c-',
  });
 
- export const Article = ({ children }) => <article {...classes()}> { children } </article>;
+ export const Article = ({ children }) => <article {...classes()}><section> { children } </section></article>;
 
  Article.propTypes = {
    children: PropTypes.node.isRequired,

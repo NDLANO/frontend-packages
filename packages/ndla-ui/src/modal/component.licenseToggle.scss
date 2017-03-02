@@ -1,18 +1,19 @@
-.c-licenseToggle__details {
-  border-bottom: 1px solid $brand-color;
-}
-.c-licenseToggle__ctablock {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-self: flex-end;
-
-  @include mq(tablet) {
-    flex-direction: row;
-    flex-wrap: wrap;
+.c-licenseToggle {
+  &__details {
+    border-bottom: 1px solid $brand-color;
   }
+  &__ctablock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
 
-}
-.c-licenseToggle__button {
-  margin: 3% 0;
+    @include mq(tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  &__button {
+    margin: 3% 0;
+  }
 }

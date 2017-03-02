@@ -3,6 +3,7 @@ $inuit-global-line-height: 26px;
 $inuit-global-radius: 4px;
 $inuit-global-border-width: 2px;
 $darken-factor: 10%;
+$max-text-width: 550px;
 
 @mixin max-width() {
   max-width: 100%;

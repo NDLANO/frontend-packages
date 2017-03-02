@@ -12,11 +12,6 @@ import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
-const lclasses = new BEMHelper({
-  name: 'topic-menu',
-  prefix: 'l-',
-});
-
 const classes = new BEMHelper({
   name: 'topic-menu',
   prefix: 'c-',
@@ -60,8 +55,8 @@ export default class TopicMenu extends Component {
     const { expandedTopicId } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
-      <div {...lclasses(null, null, 'o-wrapper u-1/1')} onMouseLeave={this.handleMouseLeave}>
-        <ul {...classes('list', null, lclasses('left').className)}>
+      <div {...classes('dropdown', null, 'o-wrapper u-1/1')} onMouseLeave={this.handleMouseLeave}>
+        <ul {...classes('list', null, classes('left').className)}>
           { topics.map(topic =>
             (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onMouseOver={() => this.handleMouseOver(topic.id)} key={topic.id}>
               <SafeLink {...classes('link')} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
@@ -71,7 +66,7 @@ export default class TopicMenu extends Component {
         { expandedTopic ?
           <SubtopicLinkList
             classes={classes}
-            className={lclasses('right').className}
+            className={classes('right').className}
             closeMenu={closeMenu}
             topic={expandedTopic}
             toTopic={toTopic}

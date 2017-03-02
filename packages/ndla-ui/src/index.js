@@ -31,6 +31,7 @@ import TopicIntroductionList from './topic/TopicIntroductionList';
 import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceSubsetList from './resources/ResourceSubsetList';
+import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
 import LicenseToggle from './modal/LicenseToggle';
 
 // expose the children to top level exports for ease of use
@@ -66,5 +67,6 @@ export {
   TopicArticle,
   TopicBreadcrumb,
   TopicIntroductionList,
+  TopicIntroductionListFlag,
   TopicMenu,
 };

@@ -1,12 +1,32 @@
 .c-hero {
-  min-height: 500px;
   background-position: center;
   background-size: cover;
-  z-index: -1;
-}
-.c-hero--alt {
-  min-height: 250px;
-  background-repeat: repeat;
-  background-size: 20px;
-  background-color: $brand-color--light;
+  @include mq(tablet) {
+    min-height: 500px;
+  }
+  &__title {
+    margin: 0;
+  }
+  &__content {
+    position: relative;
+    color: $white;
+    padding: 3% 0;
+    z-index: 9;
+
+    * {
+      color: $white;
+    }
+    a:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  &--alt {
+    background-repeat: repeat;
+    background-size: 20px;
+    background-color: $brand-color;
+    @include mq(tablet) {
+      min-height: 170px;
+    }
+  }
 }

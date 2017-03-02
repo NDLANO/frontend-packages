@@ -16,19 +16,21 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const TopicIntroduction = ({ toTopic, topic, subjectId }) => (
+const TopicIntroduction = ({ toTopic, goToTopicTitle, toTopicResources, goToTopicResourcesTitle, topic }) => (
   <li {...classes('item')}>
     <h1 {...classes('header')}>{topic.name}</h1>
     {topic.introduction ? <p>{topic.introduction}</p> : null}
-    <SafeLink {...classes('topic-link c-button c-button--outline ')} to={toTopic(subjectId, topic.id)}>Gå til emnet</SafeLink>
-    <SafeLink {...classes('resource')}>Se fagstoff</SafeLink>
+    <SafeLink {...classes('topic-link c-button c-button--outline ')} to={toTopic(topic.id)}>{ goToTopicTitle }</SafeLink>
+    <SafeLink {...classes('resource')} to={toTopicResources(topic.id)}>{ goToTopicResourcesTitle }</SafeLink>
   </li>
 );
 
 TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
-  subjectId: PropTypes.string.isRequired,
+  goToTopicTitle: PropTypes.string.isRequired,
+  toTopicResources: PropTypes.func.isRequired,
+  goToTopicResourcesTitle: PropTypes.string.isRequired,
 };
 
 const TopicIntroductionList = ({ topics, ...rest }) => (
@@ -38,8 +40,10 @@ const TopicIntroductionList = ({ topics, ...rest }) => (
   );
 
 TopicIntroductionList.propTypes = {
-  subjectId: PropTypes.string.isRequired,
   toTopic: PropTypes.func.isRequired,
+  goToTopicTitle: PropTypes.string.isRequired,
+  goToTopicResourcesTitle: PropTypes.string.isRequired,
+  toTopicResources: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(TopicShape).isRequired,
 };
 

@@ -527,7 +527,16 @@ const ResourcesTopics = () => (
   <ResourceWrapper>
     <Tabs
       tabs={[
-        { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        { title: 'Emner',
+          content:
+            <TopicIntroductionList
+              toTopic={() => '#'}
+              goToTopicTitle="Gå til emnet"
+              toTopicResources={() => '#'}
+              goToTopicResourcesTitle="Se fagstoff"
+              topics={topicList}
+            />,
+        },
         { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
       ]}
     />
@@ -538,8 +547,18 @@ const ResourcesSubTopics = () => (
   <ResourceWrapper>
     <Tabs
       tabs={[
-            { title: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicList} subjectId="1" /> },
-            { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        {
+          title: 'Underemner',
+          content:
+            <TopicIntroductionList
+              toTopic={() => '#'}
+              goToTopicTitle="Gå til emnet"
+              toTopicResources={() => '#'}
+              goToTopicResourcesTitle="Se fagstoff"
+              topics={subtopicList}
+            />,
+        },
+        { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
       ]}
     />
   </ResourceWrapper>
@@ -608,8 +627,18 @@ storiesOf('Sidevisninger', module)
       <ResourceWrapper>
         <Tabs
           tabs={[
-                { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
-                { title: 'Fagstoff', content: <ResourceTabs /> },
+            {
+              title: 'Emner',
+              content:
+                <TopicIntroductionList
+                  toTopic={() => '#'}
+                  goToTopicTitle="Gå til emnet"
+                  toTopicResources={() => '#'}
+                  goToTopicResourcesTitle="Se fagstoff"
+                  topics={topicList}
+                />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
           ]}
         />
       </ResourceWrapper>

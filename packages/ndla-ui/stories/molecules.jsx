@@ -243,7 +243,13 @@ storiesOf('Sammensatte moduler', module)
   .add('Emne introduksjons liste', () => (
     <Center>
       <div className="c-resources">
-        <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
+        <TopicIntroductionList
+          toTopic={() => '#'}
+          goToTopicTitle="Gå til emnet"
+          toTopicResources={() => '#'}
+          goToTopicResourcesTitle="Se fagstoff"
+          topics={topicList}
+        />
       </div>
     </Center>
   ))
@@ -267,7 +273,13 @@ storiesOf('Sammensatte moduler', module)
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
+            <TopicIntroductionList
+              toTopic={() => '#'}
+              goToTopicTitle="Gå til emnet"
+              toTopicResources={() => '#'}
+              goToTopicResourcesTitle="Se fagstoff"
+              topics={topicList}
+            />
           </section>
         </div>
       </article>

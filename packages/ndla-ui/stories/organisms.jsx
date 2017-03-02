@@ -19,8 +19,17 @@ storiesOf('Organismer', module)
         <Tabs
           selectedIndex={1}
           tabs={[
-                { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
-                { title: 'Fagstoff', content: <ResourceTabs /> },
+            { title: 'Emner',
+              content:
+                <TopicIntroductionList
+                  toTopic={() => '#'}
+                  goToTopicTitle="Gå til emnet"
+                  toTopicResources={() => '#'}
+                  goToTopicResourcesTitle="Se fagstoff"
+                  topics={topicList}
+                />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
           ]}
         />
       </ResourceWrapper>

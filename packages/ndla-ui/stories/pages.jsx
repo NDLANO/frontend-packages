@@ -7,7 +7,7 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceTabs } from './molecules/resources';
 
-import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicBreadcrumb, TopicIntroductionList, TopicIntroductionListFlag } from '../src';
+import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList, TopicIntroductionListFlag } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -56,17 +56,13 @@ const ResourcesTab1 = () => (
 );
 
 const ResourcesExample = () => (
-  <div className="c-resources u-margin-top-large">
-    <div className="o-wrapper o-wrapper--narrow">
-      <section>
-        <Tabs
-          tabs={[
-            { title: 'Fagstoff', content: <ResourcesTab1 /> },
-          ]}
-        />
-      </section>
-    </div>
-  </div>
+  <ResourceWrapper>
+    <Tabs
+      tabs={[
+        { title: 'Fagstoff', content: <ResourcesTab1 /> },
+      ]}
+    />
+  </ResourceWrapper>
 );
 
 
@@ -528,33 +524,25 @@ const MainTopic = () => (
 );
 
 const ResourcesTopics = () => (
-  <div className="c-resources u-margin-top-large">
-    <OneColumn cssModifier="narrow">
-      <section>
-        <Tabs
-          tabs={[
-            { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
-            { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
-          ]}
-        />
-      </section>
-    </OneColumn>
-  </div>
+  <ResourceWrapper>
+    <Tabs
+      tabs={[
+        { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+      ]}
+    />
+  </ResourceWrapper>
 );
 
 const ResourcesSubTopics = () => (
-  <div className="c-resources u-margin-top-large">
-    <OneColumn cssModifier="narrow">
-      <section>
-        <Tabs
-          tabs={[
+  <ResourceWrapper>
+    <Tabs
+      tabs={[
             { title: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicList} subjectId="1" /> },
             { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
-          ]}
-        />
-      </section>
-    </OneColumn>
-  </div>
+      ]}
+    />
+  </ResourceWrapper>
 );
 
 
@@ -617,18 +605,14 @@ storiesOf('Sidevisninger', module)
         </TopicBreadcrumb>
         <ArticleLoader isTopicArticle articleId="208" />
       </OneColumn>
-      <div className="c-resources u-margin-top-large">
-        <OneColumn cssModifier="narrow">
-          <section>
-            <Tabs
-              tabs={[
+      <ResourceWrapper>
+        <Tabs
+          tabs={[
                 { title: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" /> },
                 { title: 'Fagstoff', content: <ResourceTabs /> },
-              ]}
-            />
-          </section>
-        </OneColumn>
-      </div>
+          ]}
+        />
+      </ResourceWrapper>
       <FooterExample />
     </PageContainer>
   ))

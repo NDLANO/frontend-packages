@@ -14,7 +14,7 @@ import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 import Icon from './icons/Icon';
-import { OneColumn } from './layout/OneColumn';
+import OneColumn from './layout/OneColumn';
 import PageContainer from './layout/PageContainer';
 import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
@@ -30,6 +30,7 @@ import TopicBreadcrumb from './topic/TopicBreadcrumb';
 import TopicIntroductionList from './topic/TopicIntroductionList';
 import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
+import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
 import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
 import LicenseToggle from './modal/LicenseToggle';
@@ -59,6 +60,7 @@ export {
   OneColumn,
   PageContainer,
   Pager,
+  ResourceWrapper,
   ResourceList,
   ResourceSubsetList,
   SiteNav,

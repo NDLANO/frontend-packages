@@ -660,7 +660,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel uten hero', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero white />
         <IdealExamplePage1 />
         <ResourcesExample />
         <FooterExample />

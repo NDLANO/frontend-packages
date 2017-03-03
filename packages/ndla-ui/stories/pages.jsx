@@ -669,7 +669,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med oppsummeringsboks', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero white />
         <ExampleWithSummary />
         <ResourcesExample />
         <FooterExample />

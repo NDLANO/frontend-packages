@@ -46,7 +46,7 @@
   &:hover, &:focus {
     color: white;
     background-color: $brand-color;
-    border: 2px solid $white;
+    border: 2px solid transparent;
     transform: translateY(0) translateX(0);
   }
 }

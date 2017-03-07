@@ -12,7 +12,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import Icon from '../icons/Icon';
 
-import { ClickableLicenseByline } from '../../src';
+import { ClickableLicenseByline } from '../';
 
 
 class LicenseToggle extends Component {

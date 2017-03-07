@@ -20,30 +20,47 @@ const classes = new BEMHelper({
 });
 
 class Tabs extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.handleSelect = this.handleSelect.bind(this);
     this.state = {
-      index: 0,
+      index: props.selectedIndex || 0,
     };
   }
 
-  handleSelect(index) {
+  componentWillReceiveProps(nextProps) {
+    const { index } = this.state;
+
+    if (nextProps.selectedIndex !== undefined && nextProps.selectedIndex !== index) {
+      this.setState({ index: nextProps.selectedIndex });
+    }
+  }
+
+  handleSelect(index, last) {
     this.setState({
       index,
     });
+
+    if (typeof this.props.onSelect === 'function') {
+      this.props.onSelect(index, last);
+    }
   }
 
   render() {
-    const { tabs } = this.props;
+    const { tabs, forceRenderTabPanel, modifier } = this.props;
     const { index } = this.state;
 
     return (
-      <ReactTabs {...classes()} onSelect={this.handleSelect} selectedIndex={this.state.index} >
-        <TabList {...classes('list')}>
-          { tabs.map((tab, i) => <Tab {...classes('tab', (i === index ? 'selected' : ''))} key={tab.key}>{tab.displayName}</Tab>) }
+      <ReactTabs
+        {...classes({ modifier })}
+        onSelect={this.handleSelect}
+        selectedIndex={this.state.index}
+        forceRenderTabPanel={forceRenderTabPanel}
+      >
+        <TabList {...classes('list', modifier)}>
+          { tabs.map((tab, i) => <Tab {...classes('tab', { selected: i === index, [modifier]: modifier })} key={tab.key ? tab.key : i}>{tab.title}</Tab>) }
         </TabList>
-        { tabs.map(tab => <TabPanel {...classes('panel')} key={tab.key}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
+        { tabs.map((tab, i) => <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>{ isFunction(tab.content) ? tab.content() : tab.content }</TabPanel>) }
       </ReactTabs>
     );
   }
@@ -51,13 +68,17 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired,
+    key: PropTypes.string,
+    title: PropTypes.string.isRequired,
     content: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.node,
     ]).isRequired,
   })),
+  onSelect: PropTypes.func,
+  modifier: PropTypes.string,
+  forceRenderTabPanel: PropTypes.bool,
+  selectedIndex: PropTypes.number,
 };
 
 

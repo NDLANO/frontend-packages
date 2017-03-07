@@ -12,7 +12,7 @@ import React, { Component, PropTypes } from 'react';
 
 import ReactModal from 'react-modal';
 
-import Icon from '../../src/icons/Icon';
+import Icon from '../icons/Icon';
 
 class Modal extends Component {
   constructor() {

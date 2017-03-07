@@ -23,6 +23,11 @@ export const LicenseShape = PropTypes.shape({
   rights: PropTypes.arrayOf(PropTypes.string).isRequired,
 });
 
+export const SubjectShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+});
+
 export const TopicShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -45,4 +50,13 @@ export const ArticleShape = PropTypes.shape({
   }).isRequired,
   created: PropTypes.string.isRequired,
   updated: PropTypes.string.isRequired,
+});
+
+export const ResourceShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  introduction: PropTypes.string,
+  coverPhotoUrl: PropTypes.string,
+  contentUri: PropTypes.string.isRequired,
 });

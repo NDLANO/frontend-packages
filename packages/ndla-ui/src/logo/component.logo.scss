@@ -1,3 +1,6 @@
 .c-logo {
   width: 120px;
+  &__graphic {
+    fill: $brand-color;
+  }
 }

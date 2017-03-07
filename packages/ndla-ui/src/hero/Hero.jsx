@@ -24,7 +24,7 @@ export const Hero = ({ children, url, alt, small, white }) => {
   const classModifier2 = white ? 'white' : 'alt';
   const classResult = classModifier === 'small' ? classModifier : classModifier2;
   const imageUrl = url || fallbackUrl;
-  return (<div {...classes(!url || alt || small ? { modifiers: classResult } : null)} style={bgStyle(imageUrl)}>
+  return (<div {...classes(!url || alt || small || white ? { modifiers: classResult } : null)} style={bgStyle(imageUrl)}>
     { children }
   </div>);
 };

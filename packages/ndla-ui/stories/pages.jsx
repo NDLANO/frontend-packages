@@ -738,7 +738,7 @@ storiesOf('Emnesider', module)
     .add('4. Underemne med fagstoff', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero>
+        <Hero small url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">
           <SubTopicHero />
         </Hero>
         <SubTopic />

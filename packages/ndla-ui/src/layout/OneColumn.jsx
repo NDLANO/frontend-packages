@@ -20,3 +20,5 @@ OneColumn.propTypes = {
   cssModifier: PropTypes.string,
   className: PropTypes.string,
 };
+
+export default OneColumn;

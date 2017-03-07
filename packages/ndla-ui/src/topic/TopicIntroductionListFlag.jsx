@@ -30,7 +30,7 @@ const TopicIntroduction = ({ toTopic, topic, subjectId }) => (
       <SafeLink {...cClasses('resource')}>Se fagstoff</SafeLink>
     </div>
     <div{...oClasses('img u-1/3@tablet u-block-mobile')}>
-      <img src="http://staging.api.ndla.no/image-api/v1/images/full/boker_om_skriveregler.jpg" width="260" role="presentation" />
+      <img src="https://staging.api.ndla.no/image-api/v1/images/raw/boker_om_skriveregler.jpg" width="260" role="presentation" />
     </div>
   </li>
 );

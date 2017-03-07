@@ -3,18 +3,19 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import Tabs from 'ndla-tabs';
 import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList, TopicIntroductionListFlag,
+  TopicArticle, TopicIntroductionList, TopicBreadcrumb, TopicIntroductionListFlag,
   ClickableLicenseByline,
 } from '../src';
-import articles, { topicListWithIntro } from '../dummydata/index';
+import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
+import Tabs, { TabsControlled } from './molecules/tabs';
+import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
 import LicenseExampleGroups from './article/LicenseExample';
 
 const toggle = () => {
@@ -93,9 +94,9 @@ storiesOf('Sammensatte moduler', module)
                 <div className="o-layout__item u-1/2@desktop">
                   <Tabs
                     tabs={[
-                      { key: 'image', displayName: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
-                      { key: 'video', displayName: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
-                      { key: 'audio', displayName: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
+                      { title: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
+                      { title: 'Brukeroppgave 2', content: <p>Brukeroppgave-innhold</p> },
+                      { title: 'Brukeroppgave 3', content: <p>Brukeroppgave-innhold</p> },
                     ]}
                   />
                 </div>
@@ -222,13 +223,10 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Fane', () => (
     <Center>
-      <Tabs
-        tabs={[
-          { key: 'image', displayName: 'Bilde', content: <p>Bilde innhold</p> },
-          { key: 'video', displayName: 'Video', content: <p>Video innhold</p> },
-          { key: 'audio', displayName: 'Lyd', content: <p>Lyd innhold</p> },
-        ]}
-      />
+      <h2 className="u-heading">Faner</h2>
+      <Tabs />
+      <h2 className="u-heading">Kontrollerte faner</h2>
+      <TabsControlled />
     </Center>
   ))
   .add('Emne artikkel', () => (
@@ -244,10 +242,44 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Emne introduksjons liste', () => (
     <Center>
+      <div className="c-resources">
+        <TopicIntroductionList
+          toTopic={() => '#'}
+          goToTopicTitle="Gå til emnet"
+          toTopicResources={() => '#'}
+          goToTopicResourcesTitle="Se fagstoff"
+          topics={topicList}
+        />
+      </div>
+    </Center>
+  ))
+  .add('Liste med en type læringsressurs', () => (
+    <Center>
+      <h2 className="u-heading">Læringsstier eksempel</h2>
+      <div className="c-resources">
+        <LearningPathResourceList />
+      </div>
+      <h2 className="u-heading">Fagstoff eksempel</h2>
+      <div className="c-resources">
+        <ArticleResourceList />
+      </div>
+    </Center>
+  ))
+  .add('Liste med ulike læringsressurs typer', () => (
+    <Center>
+      <div className="c-resources">
+        <ResourceSubsetList />
+      </div>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+            <TopicIntroductionList
+              toTopic={() => '#'}
+              goToTopicTitle="Gå til emnet"
+              toTopicResources={() => '#'}
+              goToTopicResourcesTitle="Se fagstoff"
+              topics={topicList}
+            />
           </section>
         </div>
       </article>
@@ -258,10 +290,17 @@ storiesOf('Sammensatte moduler', module)
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" />
+            <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" />
           </section>
         </div>
       </article>
+    </Center>
+  ))
+  .add('Brødsmulesti', () => (
+    <Center>
+      <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(4)} toTopic={() => '#'}>
+        Du er her:
+      </TopicBreadcrumb>
     </Center>
   ))
   ;

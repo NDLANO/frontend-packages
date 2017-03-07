@@ -4,16 +4,15 @@ import { storiesOf } from '@kadira/storybook';
 
 import Tabs from 'ndla-tabs';
 
-// import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
-
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
+import { ResourceTabs } from './molecules/resources';
 
-import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, TopicIntroductionList, TopicIntroductionListFlag } from '../src';
+import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList, TopicIntroductionListFlag } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
-import article, { topicListWithIntro, subtopicListWithIntro } from '../dummydata/index';
+import article, { topicList, subtopicList, subjectList } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -46,28 +45,24 @@ const ResourcesTab1 = () => (
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-        { displayName: 'Alle', content: <div><h2>Læringsstier</h2><TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /><a href="">Se flere artikler</a></div> },
-        { displayName: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
-        { displayName: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
-        { displayName: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
-        { displayName: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Alle', content: <div><h2>Læringsstier</h2><TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /><a href="">Se flere artikler</a></div> },
+        { title: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
+        { title: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
       ]}
     />
   </div>
 );
 
 const ResourcesExample = () => (
-  <div className="c-resources u-margin-top-large">
-    <div className="o-wrapper o-wrapper--narrow">
-      <section>
-        <Tabs
-          tabs={[
-            { displayName: 'Fagstoff', content: <ResourcesTab1 /> },
-          ]}
-        />
-      </section>
-    </div>
-  </div>
+  <ResourceWrapper>
+    <Tabs
+      tabs={[
+        { title: 'Fagstoff', content: <ResourcesTab1 /> },
+      ]}
+    />
+  </ResourceWrapper>
 );
 
 
@@ -529,33 +524,44 @@ const MainTopic = () => (
 );
 
 const ResourcesTopics = () => (
-  <div className="c-resources u-margin-top-large">
-    <OneColumn cssModifier="narrow">
-      <section>
-        <Tabs
-          tabs={[
-            { key: '1', displayName: 'Emner', content: <TopicIntroductionList toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-            { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-          ]}
-        />
-      </section>
-    </OneColumn>
-  </div>
+  <ResourceWrapper>
+    <Tabs
+      tabs={[
+        { title: 'Emner',
+          content:
+            <TopicIntroductionList
+              toTopic={() => '#'}
+              goToTopicTitle="Gå til emnet"
+              toTopicResources={() => '#'}
+              goToTopicResourcesTitle="Se fagstoff"
+              topics={topicList}
+            />,
+        },
+        { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+      ]}
+    />
+  </ResourceWrapper>
 );
 
 const ResourcesSubTopics = () => (
-  <div className="c-resources u-margin-top-large">
-    <OneColumn cssModifier="narrow">
-      <section>
-        <Tabs
-          tabs={[
-            { key: '1', displayName: 'Underemner', content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicListWithIntro} subjectId="1" /> },
-            { key: '2', displayName: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicListWithIntro} subjectId="1" /> },
-          ]}
-        />
-      </section>
-    </OneColumn>
-  </div>
+  <ResourceWrapper>
+    <Tabs
+      tabs={[
+        {
+          title: 'Underemner',
+          content:
+            <TopicIntroductionList
+              toTopic={() => '#'}
+              goToTopicTitle="Gå til emnet"
+              toTopicResources={() => '#'}
+              goToTopicResourcesTitle="Se fagstoff"
+              topics={subtopicList}
+            />,
+        },
+        { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+      ]}
+    />
+  </ResourceWrapper>
 );
 
 
@@ -613,9 +619,29 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Masthead />
       <OneColumn cssModifier="narrow">
+        <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(4)} toTopic={() => '#'}>
+          Du er her:
+        </TopicBreadcrumb>
         <ArticleLoader isTopicArticle articleId="208" />
       </OneColumn>
-      <ResourcesTopics />
+      <ResourceWrapper>
+        <Tabs
+          tabs={[
+            {
+              title: 'Emner',
+              content:
+                <TopicIntroductionList
+                  toTopic={() => '#'}
+                  goToTopicTitle="Gå til emnet"
+                  toTopicResources={() => '#'}
+                  goToTopicResourcesTitle="Se fagstoff"
+                  topics={topicList}
+                />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
+          ]}
+        />
+      </ResourceWrapper>
       <FooterExample />
     </PageContainer>
   ))

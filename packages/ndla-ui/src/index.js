@@ -14,7 +14,7 @@ import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 import Icon from './icons/Icon';
-import { OneColumn } from './layout/OneColumn';
+import OneColumn from './layout/OneColumn';
 import PageContainer from './layout/PageContainer';
 import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
@@ -25,11 +25,14 @@ import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
-import TopicMenu from './topicMenu/TopicMenu';
 import TopicArticle from './topic/TopicArticle';
+import TopicBreadcrumb from './topic/TopicBreadcrumb';
 import TopicIntroductionList from './topic/TopicIntroductionList';
+import TopicMenu from './topicMenu/TopicMenu';
+import ResourceList from './resources/ResourceList';
+import ResourceWrapper from './resources/ResourceWrapper';
+import ResourceSubsetList from './resources/ResourceSubsetList';
 import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
-import Modal from './modal/Modal';
 import LicenseToggle from './modal/LicenseToggle';
 
 // expose the children to top level exports for ease of use
@@ -54,14 +57,17 @@ export {
   Logo,
   Masthead,
   MastheadItem,
-  Modal,
   OneColumn,
   PageContainer,
   Pager,
+  ResourceWrapper,
+  ResourceList,
+  ResourceSubsetList,
   SiteNav,
   SiteNavItem,
   Table,
   TopicArticle,
+  TopicBreadcrumb,
   TopicIntroductionList,
   TopicIntroductionListFlag,
   TopicMenu,

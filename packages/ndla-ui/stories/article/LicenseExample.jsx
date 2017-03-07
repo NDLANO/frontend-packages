@@ -177,7 +177,7 @@ const ImageContent = () => (
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</button>
+            <a className="c-button c-button--small c-button--transparent" href="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</a>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
           </div>
           <ul className="c-medialist__meta">
@@ -199,7 +199,7 @@ const ImageContent = () => (
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</button>
+            <a className="c-button c-button--small c-button--transparent" href="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</a>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
           </div>
           <ul className="c-medialist__meta">
@@ -221,7 +221,7 @@ const ImageContent = () => (
           <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</button>
+            <a className="c-button c-button--small c-button--transparent" href="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</a>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
@@ -386,7 +386,7 @@ const Files = () => (
 );
 
 const LicenseExample = () => (
-  <div className="c-licensebox license u-expanded">
+  <div className="license c-licensebox c-licensebox--expanded">
     <Button stripped className="license-toggler site-nav_link" onClick={() => {}} >
       Lukk boks
     </Button>

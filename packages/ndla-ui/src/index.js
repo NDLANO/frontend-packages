@@ -32,6 +32,7 @@ import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
+import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
 import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
 import LicenseToggle from './modal/LicenseToggle';
 
@@ -57,6 +58,7 @@ export {
   Logo,
   Masthead,
   MastheadItem,
+  MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
   OneColumn,
   PageContainer,
   Pager,

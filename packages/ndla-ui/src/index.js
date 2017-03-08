@@ -32,7 +32,7 @@ import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
-import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
+import TopicIntroductionListCategorized from './topic/TopicIntroductionListCategorized';
 import LicenseToggle from './modal/LicenseToggle';
 
 // expose the children to top level exports for ease of use
@@ -69,6 +69,6 @@ export {
   TopicArticle,
   TopicBreadcrumb,
   TopicIntroductionList,
-  TopicIntroductionListFlag,
+  TopicIntroductionListCategorized,
   TopicMenu,
 };

@@ -287,11 +287,10 @@ $shame-spacing: 12px;
 
 .c-topic-menu-container {
   display: inline-block;
-  margin-left: 25px;
+  margin-left: $spacing--large*1.45;
 }
 
 .c-topic-menu-toggle-button {
-  font-size: 0.75em;
   position: relative;
 
   &:after {

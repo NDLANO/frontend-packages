@@ -25,9 +25,10 @@
   }
 
   &__item {
-    padding-top: $spacing--small;
-    padding-bottom: $spacing--large;
-    border-bottom: 2px solid $brand-grey--light;
+    padding-top: $spacing;
+    padding-bottom: $spacing;
+    padding-right: $spacing;
+    border-bottom: 3px solid $brand-grey--light;
     background-color: transparent;
     margin-left: 0;
     @include inuit-font-size(16px);
@@ -36,10 +37,17 @@
       max-width: $max-text-width;
       padding-right: $spacing;
     }
+    a {
+      color: $brand-color;
+      box-shadow: none;
+    }
     @include mq($until:tablet) {
       img {
         max-width: 100%;
       }
+    }
+    &:first-child {
+      margin-top: $spacing;
     }
     &:last-child {
       border-bottom: none;
@@ -49,7 +57,8 @@
   &__header {
     @include inuit-font-size(18px);
     color: $brand-color;
-    margin-bottom: $spacing--small;
+    margin-bottom: $spacing;
+    margin-top: $spacing--small;
   }
   &__resource {
     color: $primary-color;

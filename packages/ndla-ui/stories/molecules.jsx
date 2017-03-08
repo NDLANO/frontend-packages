@@ -9,7 +9,7 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList, TopicBreadcrumb, TopicIntroductionListFlag,
+  TopicArticle, TopicIntroductionList, TopicBreadcrumb, TopicIntroductionListCategorized,
   ClickableLicenseByline,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
@@ -290,7 +290,7 @@ storiesOf('Sammensatte moduler', module)
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" />
+            <TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" />
           </section>
         </div>
       </article>

@@ -7,7 +7,7 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceTabs } from './molecules/resources';
 
-import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList, TopicIntroductionListFlag } from '../src';
+import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList, TopicIntroductionListCategorized } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -45,7 +45,7 @@ const ResourcesTab1 = () => (
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <Tabs
       tabs={[
-        { title: 'Alle', content: <div><h2>Læringsstier</h2><TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /><a href="">Se flere artikler</a></div> },
+        { title: 'Alle', content: <div><h2>Læringsstier</h2><TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" /><a href="">Se flere artikler</a></div> },
         { title: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
         { title: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
         { title: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
@@ -537,7 +537,7 @@ const ResourcesTopics = () => (
               topics={topicList}
             />,
         },
-        { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        { title: 'Fagstoff', content: <TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" /> },
       ]}
     />
   </ResourceWrapper>
@@ -558,7 +558,7 @@ const ResourcesSubTopics = () => (
               topics={subtopicList}
             />,
         },
-        { title: 'Fagstoff', content: <TopicIntroductionListFlag toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        { title: 'Fagstoff', content: <TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" /> },
       ]}
     />
   </ResourceWrapper>

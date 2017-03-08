@@ -267,20 +267,9 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Liste med ulike læringsressurs typer', () => (
     <Center>
-      <div className="c-resources">
-        <ResourceSubsetList />
-      </div>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <section>
-            <TopicIntroductionList
-              toTopic={() => '#'}
-              goToTopicTitle="Gå til emnet"
-              toTopicResources={() => '#'}
-              goToTopicResourcesTitle="Se fagstoff"
-              topics={topicList}
-            />
-          </section>
+          <ResourceSubsetList />
         </div>
       </article>
     </Center>

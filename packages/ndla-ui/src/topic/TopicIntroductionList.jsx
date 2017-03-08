@@ -19,10 +19,10 @@ const classes = new BEMHelper({
 
 const TopicIntroduction = ({ toTopic, topic }) => (
   <li {...classes('item o-flag o-flag--top')}>
-    <div className="o-flag__img c-resources__icon">
+    <div {...classes('icon o-flag__img')}>
       <Icon.Book />
     </div>
-    <div className="o-flag__body">
+    <div {...classes('body o-flag__body')}>
       <h1 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h1>
       {topic.introduction ? <p>{topic.introduction}</p> : null}
     </div>
@@ -35,6 +35,7 @@ TopicIntroduction.propTypes = {
   goToTopicTitle: PropTypes.string.isRequired,
   toTopicResources: PropTypes.func.isRequired,
   goToTopicResourcesTitle: PropTypes.string.isRequired,
+  // IconName: PropTypes.string.isRequired,
 };
 
 const TopicIntroductionList = ({ topics, ...rest }) => (

@@ -1,0 +1,48 @@
+.c-topic-resource-subset {
+  margin-top: $spacing--large;
+  &__heading {
+    display: inline-block;
+    @include inuit-font-size(32px);
+    text-transform: none;
+    font-variant: normal;
+    color: $brand-color;
+    margin-bottom: 0;
+  }
+  &__lead {
+    @include inuit-font-size(20px);
+    color: $brand-color;
+    font-weight: $font-weight-normal;
+    margin: 0;
+    border-bottom: 4px solid $brand-grey--light;
+    padding-bottom: $spacing--small;
+  }
+  &__readmore {
+    text-align: right;
+    display: block;
+    font-weight: $font-weight-bold;
+    margin: $spacing--small 0;
+    @include inuit-font-size(16px);
+    color: $brand-color;
+    text-decoration: none;
+  }
+}
+
+// Topic type color themes
+.c-topic-resource-subset--blue {
+    .c-topic-resource__icon {
+      background-color: $brand-color;
+      svg { fill: $white; }
+    }
+}
+.c-topic-resource-subset--red {
+    .c-topic-resource__icon {
+      background-color: $mark-color;
+      svg { fill: $white; }
+    }
+}
+.c-topic-resource-subset--green {
+    .c-topic-resource__icon {
+      background-color: $green;
+      svg { fill: $white; }
+    }
+}

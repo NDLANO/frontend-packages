@@ -9,7 +9,7 @@ import { Center, DottedContainer } from './helpers';
 import {
   Aside, SiteNav, SiteNavItem,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
-  TopicArticle, TopicIntroductionList, TopicBreadcrumb, TopicIntroductionListCategorized,
+  TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
@@ -241,56 +241,63 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Emne introduksjons liste', () => (
-    <Center>
-      <div className="c-resources">
-        <TopicIntroductionList
-          toTopic={() => '#'}
-          goToTopicTitle="Gå til emnet"
-          toTopicResources={() => '#'}
-          goToTopicResourcesTitle="Se fagstoff"
-          topics={topicList}
-        />
-      </div>
-    </Center>
+    <article className="o-wrapper--narrow">
+      <section>
+        <div className="c-resources">
+          <TopicIntroductionList
+            toTopic={() => '#'}
+            goToTopicTitle="Gå til emnet"
+            toTopicResources={() => '#'}
+            goToTopicResourcesTitle="Se fagstoff"
+            topics={topicList}
+          />
+        </div>
+      </section>
+    </article>
   ))
   .add('Liste med en type læringsressurs', () => (
-    <Center>
-      <h2 className="u-heading">Læringsstier eksempel</h2>
-      <div className="c-resources">
-        <LearningPathResourceList />
-      </div>
-      <h2 className="u-heading">Fagstoff eksempel</h2>
-      <div className="c-resources">
-        <ArticleResourceList />
-      </div>
-    </Center>
+    <article className="o-wrapper--narrow">
+      <section>
+        <h2 className="u-heading">Læringsstier eksempel</h2>
+        <div className="c-resources">
+          <LearningPathResourceList />
+        </div>
+        <h2 className="u-heading">Fagstoff eksempel</h2>
+        <div className="c-resources">
+          <ArticleResourceList />
+        </div>
+      </section>
+    </article>
   ))
   .add('Liste med ulike læringsressurs typer', () => (
-    <Center>
-      <div className="c-resources">
-        <ResourceSubsetList />
-      </div>
-      <article className="o-wrapper--narrow">
+    <article className="o-wrapper--narrow">
+      <section>
         <div className="c-resources">
-          <section>
-            <TopicIntroductionList
-              toTopic={() => '#'}
-              goToTopicTitle="Gå til emnet"
-              toTopicResources={() => '#'}
-              goToTopicResourcesTitle="Se fagstoff"
-              topics={topicList}
-            />
-          </section>
+          <ResourceSubsetList />
         </div>
-      </article>
-    </Center>
+        <article className="o-wrapper--narrow">
+          <div className="c-resources">
+            <section>
+              <h1>Emneliste</h1>
+              <TopicIntroductionList
+                toTopic={() => '#'}
+                goToTopicTitle="Gå til emnet"
+                toTopicResources={() => '#'}
+                goToTopicResourcesTitle="Se fagstoff"
+                topics={topicList}
+              />
+            </section>
+          </div>
+        </article>
+      </section>
+    </article>
   ))
-  .add('Emne introduksjons liste (flag)', () => (
+  .add('Emner liste', () => (
     <Center>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" />
+            <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
           </section>
         </div>
       </article>

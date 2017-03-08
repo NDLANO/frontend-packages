@@ -5,9 +5,9 @@ import { storiesOf } from '@kadira/storybook';
 import Tabs from 'ndla-tabs';
 
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
-import { ResourceTabs } from './molecules/resources';
+import { ResourceTabs, ResourceSubsetList } from './molecules/resources';
 
-import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList, TopicIntroductionListCategorized } from '../src';
+import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -43,15 +43,7 @@ const ResourcesTab1 = () => (
     </div>
 
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
-    <Tabs
-      tabs={[
-        { title: 'Alle', content: <div><h2>Læringsstier</h2><TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" /><a href="">Se flere artikler</a></div> },
-        { title: 'Læringsstier', content: <p>Brukeroppgave-innhold</p> },
-        { title: 'Fagstoff', content: <p>Brukeroppgave-innhold</p> },
-        { title: 'Aktiviteter', content: <p>Brukeroppgave-innhold</p> },
-        { title: 'Andre ressurser', content: <p>Brukeroppgave-innhold</p> },
-      ]}
-    />
+    <ResourceSubsetList />
   </div>
 );
 
@@ -59,7 +51,7 @@ const ResourcesExample = () => (
   <ResourceWrapper>
     <Tabs
       tabs={[
-        { title: 'Fagstoff', content: <ResourcesTab1 /> },
+        { title: 'Ressurser', content: <ResourcesTab1 /> },
       ]}
     />
   </ResourceWrapper>
@@ -468,9 +460,11 @@ const ExampleWithSummary = () => (
 );
 
 const SubTopic = () => (
-  <OneColumn cssModifier="narrow">
-    <ArticleLoader articleId="5948" notitle />
-  </OneColumn>
+  <div className="u-bg-lightblue">
+    <OneColumn cssModifier="narrow">
+      <ArticleLoader articleId="5948" notitle />
+    </OneColumn>
+  </div>
 );
 
 const SubTopicHero = () => (
@@ -518,9 +512,11 @@ const MainTopicHero = () => (
 );
 
 const MainTopic = () => (
-  <OneColumn cssModifier="narrow">
-    <ArticleLoader articleId="1325" isTopicArticle notitle />
-  </OneColumn>
+  <div className="u-bg-lightblue">
+    <OneColumn cssModifier="narrow">
+      <ArticleLoader articleId="1325" isTopicArticle notitle />
+    </OneColumn>
+  </div>
 );
 
 const ResourcesTopics = () => (
@@ -533,11 +529,11 @@ const ResourcesTopics = () => (
               toTopic={() => '#'}
               goToTopicTitle="Gå til emnet"
               toTopicResources={() => '#'}
-              goToTopicResourcesTitle="Se fagstoff"
+              goToTopicResourcesTitle="Se Ressurser"
               topics={topicList}
             />,
         },
-        { title: 'Fagstoff', content: <TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        { title: 'Ressurser', content: <ResourceSubsetList /> },
       ]}
     />
   </ResourceWrapper>
@@ -552,13 +548,11 @@ const ResourcesSubTopics = () => (
           content:
             <TopicIntroductionList
               toTopic={() => '#'}
-              goToTopicTitle="Gå til emnet"
-              toTopicResources={() => '#'}
-              goToTopicResourcesTitle="Se fagstoff"
+              goToTopicResourcesTitle="Se ressurser"
               topics={subtopicList}
             />,
         },
-        { title: 'Fagstoff', content: <TopicIntroductionListCategorized toTopic={() => '#'} topics={topicList} subjectId="1" /> },
+        { title: 'Ressurser', content: <ResourceSubsetList /> },
       ]}
     />
   </ResourceWrapper>
@@ -634,11 +628,11 @@ storiesOf('Sidevisninger', module)
                   toTopic={() => '#'}
                   goToTopicTitle="Gå til emnet"
                   toTopicResources={() => '#'}
-                  goToTopicResourcesTitle="Se fagstoff"
+                  goToTopicResourcesTitle="Se Ressurser"
                   topics={topicList}
                 />,
             },
-            { title: 'Fagstoff', content: <ResourceTabs /> },
+            { title: 'Ressurser', content: <ResourceTabs /> },
           ]}
         />
       </ResourceWrapper>
@@ -761,7 +755,7 @@ storiesOf('Emnesider', module)
         <FooterExample />
       </PageContainer>
     ))
-    .add('4. Underemne med fagstoff', () => (
+    .add('4. Underemne med Ressurser', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero small url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">

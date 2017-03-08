@@ -6,10 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Tabs from 'ndla-tabs';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { Icon, Button,
+import { Icon, ToggleLicenseBox, LicenseByline,
   MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
 } from '../../src';
 
@@ -284,16 +285,12 @@ const Files = () => (
   </div>
 );
 
-const LicenseExample = () => (
-  <div className="license c-licensebox c-licensebox--expanded">
-    <Button stripped className="license-toggler site-nav_link" onClick={() => {}} >
-      Lukk boks
-    </Button>
-    <div>
-      <h1 className="license__heading">Hvordan gjenbruke innhold fra NDLA</h1>
-      <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
-      <Tabs
-        tabs={[
+export const LicenseBox = () => (
+  <div>
+    <h1 className="license__heading">Hvordan gjenbruke innhold fra NDLA</h1>
+    <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
+    <Tabs
+      tabs={[
             { title: 'Bilder', content: <ImageContent /> },
             { title: 'Tekst', content: <TextContent /> },
             { title: 'Video', content: <VideoContent /> },
@@ -301,13 +298,30 @@ const LicenseExample = () => (
             { title: 'H5P', content: <H5PContent /> },
             { title: 'Læringssti', content: <LearningPath /> },
             { title: 'Filer', content: <Files /> },
-        ]}
-      />
-    </div>
+      ]}
+    />
   </div>
 );
 
-LicenseExample.propTypes = {};
+const LicenseExample = ({ showByline }) => (
+  <ToggleLicenseBox
+    openTitle="Gjenbruk fagstoff"
+    closeTitle="Lukk boks"
+    licenseBox={<LicenseBox />}
+  >
+    { showByline ?
+      <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
+        <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
+      </LicenseByline>
+    : null
+    }
+  </ToggleLicenseBox>
+
+);
+
+LicenseExample.propTypes = {
+  showByline: PropTypes.bool,
+};
 
 
 export default LicenseExample;

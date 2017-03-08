@@ -23,6 +23,7 @@ import ArticleFootNotes from './article/ArticleFootNotes';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
+import ToggleLicenseBox from './license/ToggleLicenseBox';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
 import TopicArticle from './topic/TopicArticle';
@@ -70,6 +71,7 @@ export {
   Table,
   TopicArticle,
   TopicBreadcrumb,
+  ToggleLicenseBox,
   TopicIntroductionList,
   TopicIntroductionListFlag,
   TopicMenu,

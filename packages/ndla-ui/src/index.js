@@ -23,6 +23,7 @@ import ArticleFootNotes from './article/ArticleFootNotes';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
+import ToggleLicenseBox from './license/ToggleLicenseBox';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
 import TopicArticle from './topic/TopicArticle';
@@ -32,6 +33,7 @@ import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
+import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
 import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
 import LicenseToggle from './modal/LicenseToggle';
 
@@ -57,6 +59,7 @@ export {
   Logo,
   Masthead,
   MastheadItem,
+  MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
   OneColumn,
   PageContainer,
   Pager,
@@ -68,6 +71,7 @@ export {
   Table,
   TopicArticle,
   TopicBreadcrumb,
+  ToggleLicenseBox,
   TopicIntroductionList,
   TopicIntroductionListFlag,
   TopicMenu,

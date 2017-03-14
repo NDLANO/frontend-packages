@@ -29,4 +29,26 @@
       min-height: 170px;
     }
   }
+  &--small {
+    position: relative;
+    @include mq(tablet) {
+      min-height: 170px;
+    }
+    >::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: rgba($brand-color, 0.6);
+    }
+  }
+  &--white {
+    background-image: none;
+    background-color: $white;
+    @include mq(tablet) {
+      min-height: 170px;
+    }
+  }
 }

@@ -10,18 +10,22 @@ import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
+import { Icon } from '../../src';
 
 const classes = new BEMHelper({
   name: 'topic-introduction',
   prefix: 'c-',
 });
 
-const TopicIntroduction = ({ toTopic, goToTopicTitle, toTopicResources, goToTopicResourcesTitle, topic }) => (
-  <li {...classes('item')}>
-    <h1 {...classes('header')}>{topic.name}</h1>
-    {topic.introduction ? <p>{topic.introduction}</p> : null}
-    <SafeLink {...classes('topic-link c-button c-button--outline ')} to={toTopic(topic.id)}>{ goToTopicTitle }</SafeLink>
-    <SafeLink {...classes('resource')} to={toTopicResources(topic.id)}>{ goToTopicResourcesTitle }</SafeLink>
+const TopicIntroduction = ({ toTopic, topic }) => (
+  <li {...classes('item o-flag o-flag--top')}>
+    <div {...classes('icon o-flag__img')}>
+      <Icon.Book />
+    </div>
+    <div {...classes('body o-flag__body')}>
+      <h1 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h1>
+      {topic.introduction ? <p>{topic.introduction}</p> : null}
+    </div>
   </li>
 );
 
@@ -31,6 +35,7 @@ TopicIntroduction.propTypes = {
   goToTopicTitle: PropTypes.string.isRequired,
   toTopicResources: PropTypes.func.isRequired,
   goToTopicResourcesTitle: PropTypes.string.isRequired,
+  // IconName: PropTypes.string.isRequired,
 };
 
 const TopicIntroductionList = ({ topics, ...rest }) => (

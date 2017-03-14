@@ -11,7 +11,7 @@ import OneColumn from '../layout/OneColumn';
 
 
 const ResourceContainer = ({ children }) => (
-  <div className="c-resources u-margin-top-large">
+  <div className="c-resources">
     <OneColumn cssModifier="narrow">
       <section>
         {children}

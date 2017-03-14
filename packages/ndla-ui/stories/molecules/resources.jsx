@@ -28,14 +28,29 @@ export const LearningPathResourceList = () => (
 
 const resourceGroups = [
   {
-    title: 'Fagstoff',
-    viewAllLinkTitle: 'Se alt fagstoff \u2192',
-    resources: articleResources.slice(0, 2),
-  },
-  {
     title: 'Læringsstier',
     viewAllLinkTitle: 'Se alle læringsstier \u2192',
+    description: 'Gå steg for steg gjennom emnet.',
     resources: learningPathResources.slice(0, 2),
+    color: 'blue',
+    icon: 'Path',
+  },
+  {
+    title: 'Fagstoff',
+    description: 'Foretrekker du å se en video, eller lese en tekst? Velg selv.',
+    viewAllLinkTitle: 'Se alt fagstoff \u2192',
+    resources: articleResources.slice(0, 2),
+    color: 'red',
+    icon: 'Document',
+    tags: ['film', 'forelesning', 'illustrasjoner', 'simulering'],
+  },
+  {
+    title: 'Oppgaver',
+    description: 'Lær bedre gjennom å løse konkrete oppgaver.',
+    viewAllLinkTitle: 'Se alle oppgaver \u2192',
+    resources: learningPathResources.slice(0, 2),
+    color: 'green',
+    icon: 'Pencil',
   },
 ];
 
@@ -51,6 +66,7 @@ export const ResourceTabs = () => (
           { title: 'Alle', content: <ResourceSubsetList /> },
           { title: 'Læringsstier', content: <LearningPathResourceList /> },
           { title: 'Fagstoff', content: <ArticleResourceList /> },
+          { title: 'Oppgaver', content: <ArticleResourceList /> },
       ]}
     />
   </div>

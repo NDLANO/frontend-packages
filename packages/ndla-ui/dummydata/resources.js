@@ -8,6 +8,7 @@ export const articleResources = [
     title: 'Hva er en idé?',
     author: 'NDLA',
     tag: 'Illustrasjoner',
+    icon: 'Document',
   },
   {
     topicId: 'urn:topic:170363',
@@ -19,6 +20,7 @@ export const articleResources = [
     title: 'Ideer og idéutvikling',
     author: 'Lorem ipsum',
     tag: 'Film',
+    icon: 'Document',
   },
   {
     topicId: 'urn:topic:170363',
@@ -29,6 +31,7 @@ export const articleResources = [
     introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Kreativ kommunikasjon',
     author: 'NDLA',
+    icon: 'Document',
   },
   {
     topicId: 'urn:topic:170363',
@@ -37,6 +40,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:340',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
+    icon: 'Document',
   },
   {
     topicId: 'urn:topic:170363',
@@ -45,6 +49,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
+    icon: 'Document',
   },
 ];
 
@@ -59,11 +64,13 @@ export const learningPathResources = [
     title: 'Teknikker for idéutvikling',
     introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     author: 'NDLA',
+    icon: 'Path',
   },
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
+    icon: 'Path',
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -79,6 +86,7 @@ export const learningPathResources = [
     topicId: 'urn:topic:170364',
     id: 'urn:resource:',
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
+    icon: 'Path',
     resourceTypes: [
       {
         id: 'urn:resource-type:3',

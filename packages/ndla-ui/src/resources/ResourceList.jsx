@@ -20,7 +20,7 @@ const classes = new BEMHelper({
 const Resource = ({ resource, resourceToLinkProps }) => (
   <li {...classes('item o-flag o-flag--top')}>
     <div {...classes('icon o-flag__img')}>
-      <Icon.Book />
+      <Icon.Document />
     </div>
     <div {...classes('body o-flag__body')}>
       {resource.author === 'NDLA' ? <span {...classes('author')}>{resource.author}</span> : null }

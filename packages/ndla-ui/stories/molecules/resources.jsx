@@ -33,6 +33,7 @@ const resourceGroups = [
     description: 'Gå steg for steg gjennom emnet.',
     resources: learningPathResources.slice(0, 2),
     color: 'blue',
+    icon: 'Path',
   },
   {
     title: 'Fagstoff',
@@ -40,6 +41,7 @@ const resourceGroups = [
     viewAllLinkTitle: 'Se alt fagstoff \u2192',
     resources: articleResources.slice(0, 2),
     color: 'red',
+    icon: 'Document',
   },
   {
     title: 'Oppgaver',
@@ -47,6 +49,7 @@ const resourceGroups = [
     viewAllLinkTitle: 'Se alle oppgaver \u2192',
     resources: learningPathResources.slice(0, 2),
     color: 'green',
+    icon: 'Pencil',
   },
 ];
 

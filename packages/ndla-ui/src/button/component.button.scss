@@ -41,12 +41,12 @@
 .c-button--outline {
   color: $black;
   background-color: transparent;
-  border: 1px solid $brand-color;
+  border: 2px solid $brand-color;
   font-weight: $font-weight-bold;
   &:hover, &:focus {
     color: white;
     background-color: $brand-color;
-    border: 1px solid $white;
+    border: 2px solid transparent;
     transform: translateY(0) translateX(0);
   }
 }

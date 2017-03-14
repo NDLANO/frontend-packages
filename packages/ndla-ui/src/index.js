@@ -33,9 +33,9 @@ import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
-import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
-import TopicIntroductionListFlag from './topic/TopicIntroductionListFlag';
 import LicenseToggle from './modal/LicenseToggle';
+import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
+
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -73,6 +73,5 @@ export {
   TopicBreadcrumb,
   ToggleLicenseBox,
   TopicIntroductionList,
-  TopicIntroductionListFlag,
   TopicMenu,
 };

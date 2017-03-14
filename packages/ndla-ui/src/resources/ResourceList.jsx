@@ -10,6 +10,7 @@ import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { ResourceShape } from '../shapes';
+import { Icon } from '../../src';
 
 const classes = new BEMHelper({
   name: 'topic-resource',
@@ -17,18 +18,15 @@ const classes = new BEMHelper({
 });
 
 const Resource = ({ resource, resourceToLinkProps }) => (
-  <li {...classes('item')}>
-    <div {...classes('text-container')}>
-      <SafeLink {...resourceToLinkProps(resource)}>
-        <h1 {...classes('header')}>{resource.name}</h1>
-      </SafeLink>
-      {resource.introduction ? <p>{resource.introduction}</p> : null}
+  <li {...classes('item o-flag o-flag--top')}>
+    <div {...classes('icon o-flag__img')}>
+      <Icon.Document />
     </div>
-    {resource.coverPhotoUrl ?
-      <div {...classes('img-container')}>
-        <img role="presentation" src={`${resource.coverPhotoUrl}?width=380`} />
-      </div> : null
-    }
+    <div {...classes('body o-flag__body')}>
+      {resource.author === 'NDLA' ? <span {...classes('author')}>{resource.author}</span> : null }
+      <h1 {...classes('title')}><SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink></h1>
+      {resource.tag ? <span {...classes('tag')}>{resource.tag}</span> : null }
+    </div>
   </li>
 );
 

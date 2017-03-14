@@ -20,10 +20,16 @@ const classes = new BEMHelper({
 const ResourceSubsetList = ({ resourceGroups, toResourceTab, resourceToLinkProps }) => (
   <div {...classes()} >
     {resourceGroups.map((group, i) => (
-      <div key={i}>
-        <h1 {...classes('header')}>{group.title} {'\u2192'}</h1>
+      <div key={i} {...classes('', group.color)}>
+        <h1 {...classes('heading')}>{group.title}</h1>
+        <p {...classes('lead')}>{group.description}</p>
+        { group.tags ?
+          group.tags.map((tags, o) => (
+            <span key={o} {...classes('tag')}>{tags}</span>
+          ))
+        : null }
         <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
-        <SafeLink {...classes('all-link')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
+        <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
       </div>
     ))}
   </div>
@@ -34,6 +40,7 @@ ResourceSubsetList.propTypes = {
   toResourceTab: PropTypes.func.isRequired,
   resourceGroups: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     viewAllLinkTitle: PropTypes.string.isRequired,
     resources: PropTypes.arrayOf(ResourceShape).isRequired,
   })),

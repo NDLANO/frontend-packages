@@ -533,7 +533,7 @@ const ResourcesTopics = () => (
               topics={topicList}
             />,
         },
-        { title: 'Ressurser', content: <ResourceSubsetList /> },
+        { title: 'Ressurser', content: <ResourceTabs /> },
       ]}
     />
   </ResourceWrapper>
@@ -552,7 +552,7 @@ const ResourcesSubTopics = () => (
               topics={subtopicList}
             />,
         },
-        { title: 'Ressurser', content: <ResourceSubsetList /> },
+        { title: 'Ressurser', content: <ResourceTabs /> },
       ]}
     />
   </ResourceWrapper>

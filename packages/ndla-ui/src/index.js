@@ -23,6 +23,7 @@ import ArticleFootNotes from './article/ArticleFootNotes';
 import Article from './article/Article';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
+import ToggleLicenseBox from './license/ToggleLicenseBox';
 import ClickableLicenseByline from './license/ClickableLicenseByline';
 import ClickToggle from './common/ClickToggle';
 import TopicArticle from './topic/TopicArticle';
@@ -33,6 +34,8 @@ import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
 import LicenseToggle from './modal/LicenseToggle';
+import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
+
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -56,6 +59,7 @@ export {
   Logo,
   Masthead,
   MastheadItem,
+  MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
   OneColumn,
   PageContainer,
   Pager,
@@ -67,6 +71,7 @@ export {
   Table,
   TopicArticle,
   TopicBreadcrumb,
+  ToggleLicenseBox,
   TopicIntroductionList,
   TopicMenu,
 };

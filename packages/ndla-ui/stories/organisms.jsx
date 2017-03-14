@@ -11,6 +11,7 @@ import {
 } from '../src';
 import { topicList } from '../dummydata/index';
 import { ResourceTabs } from './molecules/resources';
+import LicenseExample from './article/LicenseExample';
 
 storiesOf('Organismer', module)
   .add('Læringsressurspanel for emneside', () => (
@@ -33,6 +34,18 @@ storiesOf('Organismer', module)
           ]}
         />
       </ResourceWrapper>
+    </Center>
+  ))
+  .add('Ekspanderbar lisensboks', () => (
+    <Center>
+      <h2 className="u-heading">Ekspanderbar lisensboks</h2>
+      <article className="article">
+        <LicenseExample />
+      </article>
+      <h2 className="u-heading">Ekspanderbar lisensboks med byline</h2>
+      <article className="article">
+        <LicenseExample showByline />
+      </article>
     </Center>
   ))
 ;

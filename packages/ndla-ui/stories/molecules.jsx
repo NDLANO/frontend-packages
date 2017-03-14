@@ -7,7 +7,7 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import {
-  Aside, SiteNav, SiteNavItem,
+  Aside, SiteNav, SiteNavItem, Button,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
@@ -16,7 +16,7 @@ import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
-import LicenseExampleGroups from './article/LicenseExample';
+import { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -217,7 +217,12 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <h2 className="u-heading">Lisensboks</h2>
       <article className="article">
-        <LicenseExampleGroups />
+        <div className="license c-licensebox c-licensebox--expanded">
+          <Button stripped className="license-toggler" onClick={() => {}} >
+            Lukk boks
+          </Button>
+          <LicenseBox />
+        </div>
       </article>
     </Center>
   ))

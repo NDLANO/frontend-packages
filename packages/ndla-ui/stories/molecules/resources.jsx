@@ -9,13 +9,21 @@
 import React from 'react';
 import Tabs from 'ndla-tabs';
 
-import { ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
+import { Icon, ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
 import { learningPathResources, articleResources, exerciseResources } from '../../dummydata/index';
 
 
 const toLink = () => ({
   href: '#',
 });
+
+
+const Search = (
+  <div className="u-margin-top">
+    <input type="text" className="" placeholder="Søk" />
+    <button className="search c-button c-button--transparent"><Icon.Search /></button>
+  </div>
+);
 
 const resourceGroup1 = {
   title: 'Fagstoff',
@@ -82,7 +90,7 @@ export const ResourceTabs = () => (
     <Tabs
       modifier="muted"
       tabs={[
-          { title: 'Alle', content: <ResourceSubsetList /> },
+          { title: 'Alle', content: <div>{Search}<ResourceSubsetList /></div> },
           { title: 'Fagstoff', content: <ArticleResourceList /> },
           { title: 'Læringsstier', content: <LearningPathResourceList /> },
           { title: 'Oppgaver', content: <ExerciseResourceList /> },

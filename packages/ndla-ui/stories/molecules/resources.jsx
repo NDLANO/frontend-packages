@@ -10,7 +10,7 @@ import React from 'react';
 import Tabs from 'ndla-tabs';
 
 import { ResourceList, ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
-import { learningPathResources, articleResources } from '../../dummydata/index';
+import { learningPathResources, articleResources, exerciseResources } from '../../dummydata/index';
 
 
 const toLink = () => ({
@@ -24,6 +24,10 @@ export const ArticleResourceList = () => (
 
 export const LearningPathResourceList = () => (
   <ResourceList resources={learningPathResources} resourceToLinkProps={toLink} />
+);
+
+export const ExerciseResourceList = () => (
+  <ResourceList resources={exerciseResources} resourceToLinkProps={toLink} />
 );
 
 const resourceGroups = [
@@ -48,7 +52,7 @@ const resourceGroups = [
     title: 'Oppgaver',
     description: 'Lær bedre gjennom å løse konkrete oppgaver.',
     viewAllLinkTitle: 'Se alle oppgaver \u2192',
-    resources: learningPathResources.slice(0, 2),
+    resources: exerciseResources.slice(0, 2),
     color: 'green',
     icon: 'Pencil',
   },

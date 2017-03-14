@@ -42,6 +42,7 @@ const resourceGroups = [
     resources: articleResources.slice(0, 2),
     color: 'red',
     icon: 'Document',
+    tags: ['film', 'forelesning', 'illustrasjoner', 'simulering'],
   },
   {
     title: 'Oppgaver',

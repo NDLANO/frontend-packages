@@ -23,6 +23,11 @@ const ResourceSubsetList = ({ resourceGroups, toResourceTab, resourceToLinkProps
       <div key={i} {...classes('', group.color)}>
         <h1 {...classes('heading')}>{group.title}</h1>
         <p {...classes('lead')}>{group.description}</p>
+        { group.tags ?
+          group.tags.map((tags, o) => (
+            <span key={o} {...classes('tag')}>{tags}</span>
+          ))
+        : null }
         <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
         <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
       </div>

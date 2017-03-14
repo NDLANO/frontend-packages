@@ -25,6 +25,16 @@
     color: $brand-color;
     text-decoration: none;
   }
+  &__tag {
+    @include inuit-font-size(15px);
+    background-color: $brand-grey--light;
+    color: $brand-grey;
+    font-weight: $font-weight-bold;
+    display: inline-block;
+    padding: 0px 12px;
+    border-radius: 15px;
+    margin: $spacing--small $spacing--small/2 $spacing--small 0;
+  }
 }
 
 // Topic type color themes

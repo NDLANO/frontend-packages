@@ -83,8 +83,8 @@ export const ResourceTabs = () => (
       modifier="muted"
       tabs={[
           { title: 'Alle', content: <ResourceSubsetList /> },
-          { title: 'Læringsstier', content: <LearningPathResourceList /> },
           { title: 'Fagstoff', content: <ArticleResourceList /> },
+          { title: 'Læringsstier', content: <LearningPathResourceList /> },
           { title: 'Oppgaver', content: <ExerciseResourceList /> },
       ]}
     />

@@ -17,6 +17,7 @@
   cursor: pointer;
   text-decoration: none;
   @include inuit-font-size(15px);
+  transition: $transition;
   &:hover, &:focus {
     color: white;
     background-color: rgba($brand-color, 0.8);

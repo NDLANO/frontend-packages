@@ -6,6 +6,7 @@ $darken-factor: 10%;
 $max-text-width: 550px;
 $border-radius: $inuit-global-radius;
 $border-radius--large: 15px;
+$transition: all .2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
 
 @mixin max-width() {
   max-width: 100%;

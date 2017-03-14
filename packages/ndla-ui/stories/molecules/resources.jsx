@@ -32,14 +32,6 @@ export const ExerciseResourceList = () => (
 
 const resourceGroups = [
   {
-    title: 'Læringsstier',
-    viewAllLinkTitle: 'Se alle læringsstier \u2192',
-    description: 'Gå steg for steg gjennom emnet.',
-    resources: learningPathResources.slice(0, 2),
-    color: 'blue',
-    icon: 'Path',
-  },
-  {
     title: 'Fagstoff',
     description: 'Foretrekker du å se en video, eller lese en tekst? Velg selv.',
     viewAllLinkTitle: 'Se alt fagstoff \u2192',
@@ -47,6 +39,14 @@ const resourceGroups = [
     color: 'red',
     icon: 'Document',
     tags: ['film', 'forelesning', 'illustrasjoner', 'simulering'],
+  },
+  {
+    title: 'Læringsstier',
+    viewAllLinkTitle: 'Se alle læringsstier \u2192',
+    description: 'Gå steg for steg gjennom emnet.',
+    resources: learningPathResources.slice(0, 2),
+    color: 'blue',
+    icon: 'Path',
   },
   {
     title: 'Oppgaver',

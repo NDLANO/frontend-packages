@@ -26,7 +26,7 @@
     box-sizing: border-box;
     padding: 10px;
     background-color: $brand-color--light;
-    border-radius: 15px;
+    border-radius: $border-radius--large;
     margin-right: $spacing--small*1.5;
     svg {
       fill: $brand-color;

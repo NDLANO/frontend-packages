@@ -6,7 +6,6 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:339',
     title: 'Hva er en idé?',
-    author: 'NDLA',
     tag: 'Illustrasjoner',
     icon: 'Document',
   },
@@ -18,7 +17,6 @@ export const articleResources = [
     contentUri: 'urn:article:165',
     introduction: 'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. Derfor er det vanskelig å formidle en god idé til andre.',
     title: 'Ideer og idéutvikling',
-    author: 'Lorem ipsum',
     tag: 'Film',
     icon: 'Document',
   },
@@ -30,7 +28,6 @@ export const articleResources = [
     contentUri: 'urn:article:166',
     introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Kreativ kommunikasjon',
-    author: 'NDLA',
     icon: 'Document',
   },
   {
@@ -63,7 +60,6 @@ export const learningPathResources = [
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/v1/raw/tegner_ide.png',
     title: 'Teknikker for idéutvikling',
     introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
-    author: 'NDLA',
     icon: 'Path',
   },
   {
@@ -111,7 +107,6 @@ export const exerciseResources = [
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/v1/raw/tegner_ide.png',
     title: 'Teknikker for idéutvikling',
     introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
-    author: 'NDLA',
     icon: 'Pencil',
   },
   {

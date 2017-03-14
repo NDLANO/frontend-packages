@@ -25,7 +25,7 @@ const ResourceSubsetList = ({ resourceGroups, toResourceTab, resourceToLinkProps
         <p {...classes('lead')}>{group.description}</p>
         { group.tags ?
           group.tags.map((tags, o) => (
-            <span key={o} {...classes('tag')}>{tags}</span>
+            <SafeLink key={o} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
           ))
         : null }
         <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />

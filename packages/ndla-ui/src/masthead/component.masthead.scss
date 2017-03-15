@@ -12,11 +12,14 @@
 }
 .masthead__left {
     text-align: center;
+    @include mq(tablet) {
+      padding: $spacing;
+    }
 }
 .masthead__right {
     @include mq(tablet) {
-        padding: $spacing;
-        flex-grow: 1;
-        text-align:right
+      padding: $spacing;
+      flex-grow: 1;
+      text-align:right
     }
 }

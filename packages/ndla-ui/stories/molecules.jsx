@@ -118,7 +118,7 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Sidespalte', () => (
+  .add('Oppsummeringsboks', () => (
     <Center>
       <Aside>
         <div>

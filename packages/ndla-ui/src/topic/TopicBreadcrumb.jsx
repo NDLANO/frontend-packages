@@ -32,7 +32,7 @@ TopicBreadcrumbItem.propTypes = {
 const TopicBreadcrumb = ({ children, subject, topicPath, toTopic }) => {
   const topicIds = topicPath.map(topic => topic.id);
   return (
-    <div {...classes('', '', 'u-margin-top-small')}>
+    <div {...classes('', '')}>
       {children}
       <ol {...classes('list')}>
         <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>

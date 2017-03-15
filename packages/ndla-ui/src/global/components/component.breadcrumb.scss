@@ -1,0 +1,38 @@
+.c-breadcrumb {
+  @include inuit-font-size(16px);
+  display:none;
+  color: $brand-grey;
+  font-weight: $font-weight-bold;
+
+  a:hover {
+    color: $brand-color;
+  }
+
+  @include mq(tablet) {
+    display: flex;
+  }
+  &__list {
+    display: inline;
+    padding-left: $spacing--small/2;
+    margin-top: -3px;
+    margin-bottom: $spacing;
+  }
+  &__item {
+    color: $brand-grey;
+    font-weight: $font-weight-normal;
+    padding-left: $spacing--small/2;
+    display: inline-block;
+    line-height: 2em;
+
+    a {
+    box-shadow: inset 0 -1px 0 $white;
+    }
+  }
+  &__item + &__item:before{
+    padding-right: $spacing--small/2;
+    content: '›'
+  }
+  &__active {
+    font-weight: $font-weight-bold;
+  }
+}

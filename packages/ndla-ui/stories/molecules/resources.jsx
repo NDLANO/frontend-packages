@@ -7,8 +7,8 @@
  */
 
 import React from 'react';
-import Tabs from 'ndla-tabs';
-
+// import Tabs from 'ndla-tabs';
+import BEMHelper from 'react-bem-helper';
 import { Icon, ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
 import { learningPathResources, articleResources, exerciseResources } from '../../dummydata/index';
 
@@ -51,6 +51,11 @@ const resourceGroup3 = {
   icon: 'Pencil',
 };
 
+const mclasses = new BEMHelper({
+  name: 'resources-menu',
+  prefix: 'c-',
+});
+
 const resourceGroups = [
   resourceGroup1,
   resourceGroup2,
@@ -82,19 +87,59 @@ export const ExerciseResourceList = () => (
 
 
 export const ResourceSubsetList = () => (
-  <ResourceSubsetListComponent resourceGroups={resourceGroups} resourceToLinkProps={toLink} toResourceTab={() => '#'} />
+  <div>
+    <ul {...mclasses()}>
+      <li {...mclasses('item')}>
+        <a
+          href="#fagstoff"
+          onClick={() => {
+            // document.getElementsByClassName('c-resources-menu__item--active').classList.remove('c-resources-menu__item--active');
+            // this.classList.toggle('c-resources-menu__item--active');
+            document.getElementsByClassName('c-topic-resource-subset--focus')[0].classList.remove('c-topic-resource-subset--focus');
+            document.getElementById('fagstoff').classList.toggle('c-topic-resource-subset--focus');
+          }
+        }
+        >
+        Fagstoff
+        </a>
+      </li>
+      <li {...mclasses('item')}>
+        <a
+          href="#laringsstier"
+          onClick={() => {
+            // document.getElementsByClassName('c-resources-menu__item--active').classList.remove('c-resources-menu__item--active');
+            // this.classList.toggle('c-resources-menu__item--active');
+            document.getElementsByClassName('c-topic-resource-subset--focus')[0].classList.remove('c-topic-resource-subset--focus');
+            document.getElementById('laringsstier').classList.toggle('c-topic-resource-subset--focus');
+          }
+        }
+        >
+        Læringsstier
+        </a>
+      </li>
+      <li {...mclasses('item')}>
+        <a
+          href="#oppgaver"
+          onClick={() => {
+            // document.getElementsByClassName('c-resources-menu__item--active').classList.remove('c-resources-menu__item--active');
+            // this.classList.toggle('c-resources-menu__item--active');
+            document.getElementsByClassName('c-topic-resource-subset--focus')[0].classList.remove('c-topic-resource-subset--focus');
+            document.getElementById('oppgaver').classList.toggle('c-topic-resource-subset--focus');
+          }
+        }
+        >
+        Oppgaver
+        </a>
+      </li>
+    </ul>
+    <div id="fagstoff" className="c-topic-resource-subset--focus"><ArticleResourceList /></div>
+    <div id="laringsstier"><LearningPathResourceList /></div>
+    <div id="oppgaver"><ExerciseResourceList /></div>
+  </div>
 );
 
 export const ResourceTabs = () => (
   <div className="u-margin-top">
-    <Tabs
-      modifier="muted"
-      tabs={[
-          { title: 'Alle', content: <div>{Search}<ResourceSubsetList /></div> },
-          { title: 'Fagstoff', content: <ArticleResourceList /> },
-          { title: 'Læringsstier', content: <LearningPathResourceList /> },
-          { title: 'Oppgaver', content: <ExerciseResourceList /> },
-      ]}
-    />
+    <ResourceSubsetList />
   </div>
 );

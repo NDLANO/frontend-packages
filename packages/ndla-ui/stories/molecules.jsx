@@ -245,20 +245,16 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Emne introduksjons liste', () => (
-    <article className="o-wrapper--narrow">
-      <section>
+  .add('Emner liste', () => (
+    <Center>
+      <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <TopicIntroductionList
-            toTopic={() => '#'}
-            goToTopicTitle="Gå til emnet"
-            toTopicResources={() => '#'}
-            goToTopicResourcesTitle="Se fagstoff"
-            topics={topicList}
-          />
+          <section>
+            <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
+          </section>
         </div>
-      </section>
-    </article>
+      </article>
+    </Center>
   ))
   .add('Liste med en type læringsressurs', () => (
     <article className="o-wrapper--narrow">
@@ -280,37 +276,12 @@ storiesOf('Sammensatte moduler', module)
         <div className="c-resources">
           <ResourceSubsetList />
         </div>
-        <article className="o-wrapper--narrow">
-          <div className="c-resources">
-            <section>
-              <h1>Emneliste</h1>
-              <TopicIntroductionList
-                toTopic={() => '#'}
-                goToTopicTitle="Gå til emnet"
-                toTopicResources={() => '#'}
-                goToTopicResourcesTitle="Se fagstoff"
-                topics={topicList}
-              />
-            </section>
-          </div>
-        </article>
       </section>
     </article>
   ))
-  .add('Emner liste', () => (
-    <Center>
-      <article className="o-wrapper--narrow">
-        <div className="c-resources">
-          <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
-          </section>
-        </div>
-      </article>
-    </Center>
-  ))
   .add('Brødsmulesti', () => (
     <Center>
-      <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(4)} toTopic={() => '#'}>
+      <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} toTopic={() => '#'}>
         Du er her:
       </TopicBreadcrumb>
     </Center>

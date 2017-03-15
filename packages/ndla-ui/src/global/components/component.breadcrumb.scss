@@ -3,6 +3,7 @@
   display:none;
   color: $brand-grey;
   font-weight: $font-weight-bold;
+  margin-top: $spacing--small;
 
   a:hover {
     color: $brand-color;
@@ -15,7 +16,7 @@
     display: inline;
     padding-left: $spacing--small/2;
     margin-top: -3px;
-    margin-bottom: $spacing;
+    margin-bottom: $spacing--small;
   }
   &__item {
     color: $brand-grey;

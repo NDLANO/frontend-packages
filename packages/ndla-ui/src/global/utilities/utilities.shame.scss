@@ -47,16 +47,15 @@
 .pager_step {
   display: inline;
   border-top: 2px solid $background-color--dark;
-  background-color: rgba($background-color--gray-dark, 0.5);
   padding: 1em 1.45em;
   margin: 1em .3em 0;
   text-decoration: none;
-  color: #000;
+  color: $black;
 }
 
 .pager_step--active, .pager_step:hover {
   border-top: 2px solid $brand-color;
-  background-color: $background-color--dark;
+  background-color: $brand-color--lighter;
 }
 .logo {
   margin: 0;

@@ -9,7 +9,7 @@
 import React from 'react';
 // import Tabs from 'ndla-tabs';
 import BEMHelper from 'react-bem-helper';
-import { Icon, ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
+import { /* Icon,*/ ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
 import { learningPathResources, articleResources, exerciseResources } from '../../dummydata/index';
 
 
@@ -17,14 +17,14 @@ const toLink = () => ({
   href: '#',
 });
 
-
+/*
 const Search = (
   <div className="u-margin-top">
     <input type="text" className="" placeholder="Søk" />
     <button className="search c-button c-button--transparent"><Icon.Search /></button>
   </div>
 );
-
+*/
 const resourceGroup1 = {
   title: 'Fagstoff',
   description: 'Foretrekker du å se en video, eller lese en tekst? Velg selv.',
@@ -56,11 +56,13 @@ const mclasses = new BEMHelper({
   prefix: 'c-',
 });
 
+/*
 const resourceGroups = [
   resourceGroup1,
   resourceGroup2,
   resourceGroup3,
 ];
+*/
 const resourceGroups1 = [
   resourceGroup1,
 ];

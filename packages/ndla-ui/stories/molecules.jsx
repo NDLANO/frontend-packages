@@ -29,7 +29,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <article className="o-wrapper--narrow">
         <section className="c-factbox">
-          <h1 className="u-heading">Sammensatte fagressurser</h1>
+          <h1 className="u-heading">Sammensatte moduler</h1>
         </section>
         <section className="c-article-content">
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
@@ -180,7 +180,7 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Fane', () => (
+  .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
       <Tabs />

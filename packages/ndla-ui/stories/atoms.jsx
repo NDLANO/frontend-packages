@@ -5,12 +5,41 @@ import { storiesOf, action } from '@kadira/storybook';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import Icon from '../src/icons/Icon';
-import { Aside, Button } from '../src';
+import { Aside, Button, Logo } from '../src';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
 
 storiesOf('Enkle komponenter', module)
+  .add('Logo', () => (
+    <Center>
+      <article className="o-wrapper--narrow">
+        <section className="c-factbox">
+          <h1 className="u-heading">Logo</h1>
+          <p>
+            Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
+            for kommunikasjon. Den skal inspirere målgruppen elever og
+            lærere i videregående opplæring og gjøre dem nysgjerrige på
+            NDLA.
+          </p>
+          <p>
+            Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
+            Logo uten undertekst kan benyttes i tilfeller der det
+            kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
+          </p>
+          <p>
+            Logo uten undertekst kan kompletteres med en beskrivende tekst
+            til høyre. Logoen benyttes i svart eller hvitt avhengig av
+            bakgrunn. Den skal plasseres i det øverste eller nederste
+            hjørnet av en ytterkant. Logoen skal ikke sentreres.
+          </p>
+        </section>
+        <section>
+          <Logo cssModifier="large" name to="#" altText="Nasjonal digital læringsarena" />
+        </section>
+      </article>
+    </Center>
+  ))
   .add('Knapper', () => (
     <Center>
       <article className="o-wrapper--wide">

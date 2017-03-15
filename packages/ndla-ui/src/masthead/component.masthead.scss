@@ -12,6 +12,7 @@
 }
 .masthead__left {
     text-align: center;
+    padding: $spacing--small;
     @include mq(tablet) {
       padding: $spacing;
     }

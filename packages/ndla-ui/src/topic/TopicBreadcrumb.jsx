@@ -8,6 +8,7 @@
 
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
+import { uuid } from 'ndla-util';
 import SafeLink from '../common/SafeLink';
 import { SubjectShape, TopicShape } from '../shapes';
 
@@ -34,8 +35,8 @@ const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, su
   return (
     <div {...classes()}>
       <ol {...classes('list')}>
-        <li {...classes('listitem')}>{children}</li>
-        <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toSubjects()}>{subjectsTitle}</TopicBreadcrumbItem>
+        <li key={uuid()} {...classes('listitem')}>{children}</li>
+        <TopicBreadcrumbItem key={uuid()} topicIds={[]} to={toSubjects()}>{subjectsTitle}</TopicBreadcrumbItem>
         <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
         { topicPath.map((topic, i) =>
           <TopicBreadcrumbItem key={topic.id} topicIds={topicIds.slice(0, 1 + i)} to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}>

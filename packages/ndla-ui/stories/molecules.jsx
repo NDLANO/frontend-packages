@@ -7,7 +7,7 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import {
-  Aside, SiteNav, SiteNavItem, Button,
+  SiteNav, SiteNavItem, Button,
   Logo, Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
@@ -116,23 +116,6 @@ storiesOf('Sammensatte moduler', module)
           </div>
         </section>
       </article>
-    </Center>
-  ))
-  .add('Oppsummeringsboks', () => (
-    <Center>
-      <Aside>
-        <div>
-          <div className="c-aside__title">Oppsummering</div>
-          <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-          <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-          <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-          <div><figure className="article_audio">
-            <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-          <h2>Ressurser</h2>
-          <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-          <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-          <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
-      </Aside>
     </Center>
   ))
   .add('Sidenavigasjon', () => (
@@ -247,6 +230,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Emner liste', () => (
     <Center>
+      <h2 className="u-heading">Emneliste</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
@@ -257,27 +241,36 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Liste med en type læringsressurs', () => (
-    <article className="o-wrapper--narrow">
-      <section>
-        <h2 className="u-heading">Læringsstier eksempel</h2>
+    <Center>
+      <h2 className="u-heading">Læringsstier eksempel</h2>
+      <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <LearningPathResourceList />
+          <section>
+            <LearningPathResourceList />
+          </section>
         </div>
-        <h2 className="u-heading">Fagstoff eksempel</h2>
+      </article>
+      <h2 className="u-heading">Fagstoff eksempel</h2>
+      <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <ArticleResourceList />
+          <section>
+            <ArticleResourceList />
+          </section>
         </div>
-      </section>
-    </article>
+      </article>
+    </Center>
   ))
   .add('Liste med ulike læringsressurs typer', () => (
-    <article className="o-wrapper--narrow">
-      <section>
+    <Center>
+      <h2 className="u-heading">Ulike læringsressurser</h2>
+      <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <ResourceSubsetList />
+          <section>
+            <ResourceSubsetList />
+          </section>
         </div>
-      </section>
-    </article>
+      </article>
+    </Center>
   ))
   .add('Brødsmulesti', () => (
     <Center>

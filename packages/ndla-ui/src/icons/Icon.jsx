@@ -19,6 +19,9 @@ import Grid from './Grid';
 import Link from './Link';
 import Embed from './Embed';
 import Book from './Book';
+import Path from './Path';
+import Pencil from './Pencil';
+import Search from './Search';
 import OpenWindow from './OpenWindow';
 import LicenseBy from './LicenseBy';
 import LicenseNc from './LicenseNc';
@@ -30,6 +33,7 @@ function Icon(props) {
   return createElement(icon, { className: classNames('icon', rest.className) });
 }
 
+
 Icon.Download = props => (<Icon {...props} icon={Download} />);
 Icon.Copy = props => (<Icon {...props} icon={Copy} />);
 Icon.Audio = props => (<Icon {...props} icon={Audio} />);
@@ -39,6 +43,9 @@ Icon.Grid = props => (<Icon {...props} icon={Grid} />);
 Icon.Link = props => (<Icon {...props} icon={Link} />);
 Icon.Embed = props => (<Icon {...props} icon={Embed} />);
 Icon.Book = props => (<Icon {...props} icon={Book} />);
+Icon.Path = props => (<Icon {...props} icon={Path} />);
+Icon.Pencil = props => (<Icon {...props} icon={Pencil} />);
+Icon.Search = props => (<Icon {...props} icon={Search} />);
 // Icon.Info = props => (<Icon {...props} icon={Info} />);
 Icon.OpenWindow = props => (<Icon {...props} icon={OpenWindow} />);
 Icon.LicenseCc = props => (<Icon {...props} icon={LicenseCc} />);

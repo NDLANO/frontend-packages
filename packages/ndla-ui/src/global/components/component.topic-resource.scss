@@ -13,7 +13,7 @@
     padding-right: $spacing;
     border-bottom: 3px solid $brand-grey--lighter;
     @include inuit-font-size(16px);
-    a {
+    h1 a {
       color: $brand-color;
       box-shadow: none;
     }
@@ -26,7 +26,7 @@
     box-sizing: border-box;
     padding: 10px;
     background-color: $brand-color--light;
-    border-radius: 15px;
+    border-radius: $border-radius--large;
     margin-right: $spacing--small*1.5;
     svg {
       fill: $brand-color;
@@ -50,8 +50,14 @@
     background-color: $brand-grey--light;
     color: $brand-grey;
     font-weight: $font-weight-bold;
+    text-decoration: none;
     display: inline-block;
     padding: 0px 12px;
-    border-radius: 15px;
+    border-radius: $border-radius--large;
+    transition: $transition;
+    &:hover {
+      background-color: $brand-color;
+      color: $white;
+    }
   }
 }

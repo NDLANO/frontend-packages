@@ -20,12 +20,13 @@ const classes = new BEMHelper({
 const Resource = ({ resource, resourceToLinkProps }) => (
   <li {...classes('item o-flag o-flag--top')}>
     <div {...classes('icon o-flag__img')}>
-      <Icon.Document />
+      { resource.icon === 'Document' ? <Icon.Document /> : null }
+      { resource.icon === 'Path' ? <Icon.Path /> : null }
+      { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
     </div>
     <div {...classes('body o-flag__body')}>
-      {resource.author === 'NDLA' ? <span {...classes('author')}>{resource.author}</span> : null }
       <h1 {...classes('title')}><SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink></h1>
-      {resource.tag ? <span {...classes('tag')}>{resource.tag}</span> : null }
+      {resource.tag ? <SafeLink {...classes('tag')} {...resourceToLinkProps(resource)}>{resource.tag}</SafeLink> : null }
     </div>
   </li>
 );

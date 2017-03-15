@@ -677,9 +677,11 @@ storiesOf('Sidevisninger', module)
           </div>
         </OneColumn>
       </Hero>
-      <OneColumn cssModifier="narrow">
-        <ArticleLoader isTopicArticle articleId="208" />
-      </OneColumn>
+      <div className="u-bg-lightblue">
+        <OneColumn cssModifier="narrow">
+          <ArticleLoader isTopicArticle articleId="208" />
+        </OneColumn>
+      </div>
       <ResourceWrapper>
         <Tabs
           tabs={[

@@ -12,6 +12,16 @@
     display: block;
   }
 
+  &__list {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__listitem {
+    float: left;
+    line-height: 2em;
+  }
+
   &__item {
     color: $brand-grey;
     padding-left: $spacing--small/2;

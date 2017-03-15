@@ -12,15 +12,15 @@ import SafeLink from '../common/SafeLink';
 import { SubjectShape, TopicShape } from '../shapes';
 
 const classes = new BEMHelper({
-  name: 'breadcrumb',
+  name: 'breadcrumbs',
   prefix: 'c-',
 });
 
 const TopicBreadcrumbItem = ({ to, children }) => (
-  <li {...classes('item')}>
-    <SafeLink to={to}>
+  <li {...classes('listitem')}>
+    <SafeLink {...classes('item')} to={to}>
       {children}
-    </SafeLink>
+    </SafeLink> <span> &#x203A; </span>
   </li>
 );
 
@@ -29,12 +29,13 @@ TopicBreadcrumbItem.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const TopicBreadcrumb = ({ children, subject, topicPath, toTopic }) => {
+const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, subjectsTitle }) => {
   const topicIds = topicPath.map(topic => topic.id);
   return (
-    <div {...classes('', '', 'u-margin-top-small')}>
-      {children}
+    <div {...classes()}>
       <ol {...classes('list')}>
+        <li {...classes('listitem')}>{children}</li>
+        <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toSubjects()}>{subjectsTitle}</TopicBreadcrumbItem>
         <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
         { topicPath.map((topic, i) =>
           <TopicBreadcrumbItem key={topic.id} topicIds={topicIds.slice(0, 1 + i)} to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}>
@@ -51,6 +52,8 @@ TopicBreadcrumb.propTypes = {
   subject: SubjectShape.isRequired,
   topicPath: PropTypes.arrayOf(TopicShape),
   toTopic: PropTypes.func.isRequired,
+  toSubjects: PropTypes.func.isRequired,
+  subjectsTitle: PropTypes.string.isRequired,
 };
 
 export default TopicBreadcrumb;

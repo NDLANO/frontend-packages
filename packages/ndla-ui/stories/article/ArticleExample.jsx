@@ -37,7 +37,6 @@ class ArticleExample extends Component {
 
     return (
       <div>
-        { withLicenseExample && <LicenseExample /> }
         <section>
           { notitle ? null : <h1>{article.title}</h1> }
           <ArticleByline authors date article={article} />

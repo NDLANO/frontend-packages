@@ -245,8 +245,8 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Brødsmulesti', () => (
     <Center>
-      <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} toTopic={() => '#'}>
-        Du er her:
+      <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'}>
+        <strong>Du er her:</strong>
       </TopicBreadcrumb>
     </Center>
   ))

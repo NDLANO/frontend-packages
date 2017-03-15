@@ -1,0 +1,35 @@
+.c-breadcrumbs {
+  @include inuit-font-size(16px);
+  padding: $spacing--small 0 $spacing--small 0;
+  display:none;
+  color: $brand-grey;
+
+  a:hover {
+    color: $brand-color;
+  }
+
+  @include mq(tablet) {
+    display: block;
+  }
+
+  &__list {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__listitem {
+    float: left;
+    line-height: 2em;
+  }
+
+  &__item {
+    color: $brand-grey;
+    padding-left: $spacing--small/2;
+    padding-right: $spacing--small/2;
+    display: inline-block;
+    line-height: 2em;
+  }
+  &__active {
+    font-weight: $font-weight-bold;
+  }
+}

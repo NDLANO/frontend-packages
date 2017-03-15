@@ -8,11 +8,15 @@
 
 export const subjectList = [
   {
-    id: 'urn:subject:4160',
+    id: 'urn:subject:1',
     name: 'physics',
   },
   {
-    id: 'urn:subject:40964264',
+    id: 'urn:subject:2',
     name: 'Medieuttrykk og mediesamfunnet',
+  },
+  {
+    id: 'urn:subject:2',
+    name: ' Helsearbeiderfag',
   },
 ];

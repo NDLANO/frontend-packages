@@ -10,7 +10,7 @@ import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { ResourceShape } from '../shapes';
-import { Icon } from '../../src';
+import { Icon } from '../';
 
 const classes = new BEMHelper({
   name: 'topic-resource',

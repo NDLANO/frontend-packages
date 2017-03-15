@@ -157,7 +157,7 @@ storiesOf('Sammensatte moduler', module)
       <Masthead />
     </div>
   ))
-  .add('Hovedhode med emne meny', () => (
+  .add('Hovedhode med emnemeny', () => (
     <div>
       <MastheadWithTopicMenu />
     </div>

@@ -1,6 +1,10 @@
 .c-logo {
   width: 120px;
+  margin:0;
   &__graphic {
     fill: $brand-color;
+  }
+  &--large {
+    width: 300px;
   }
 }

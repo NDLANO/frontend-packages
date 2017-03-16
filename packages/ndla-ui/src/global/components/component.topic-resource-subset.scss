@@ -15,6 +15,7 @@
     margin: 0;
     border-bottom: 4px solid $brand-grey--light;
     padding-bottom: $spacing--small;
+    transition: $transition;
   }
   &__readmore {
     text-align: right;
@@ -35,10 +36,15 @@
     padding: 0px 12px;
     border-radius: $border-radius--large;
     margin: $spacing--small $spacing--small/2 0 0;
-    transition: all .2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+    transition: $transition;
     &:hover {
       background-color: $brand-color;
       color: $white;
+    }
+  }
+  &--focus {
+    .c-topic-resource-subset__lead {
+      border-color: $brand-color;
     }
   }
 }

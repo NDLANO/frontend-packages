@@ -7,8 +7,8 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import {
-  Aside, SiteNav, SiteNavItem, Button,
-  Logo, Pager, Footer, LicenseIconList, LicenseByline,
+  SiteNav, SiteNavItem, Button,
+  Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
 } from '../src';
@@ -25,40 +25,11 @@ const toggle = () => {
 // document.querySelectorAll('section > em').forEach(em => em.outerHTML = '<p>' + em.outerHTML + '</p>')
 
 storiesOf('Sammensatte moduler', module)
-  .add('Logo', () => (
-    <Center>
-      <article className="o-wrapper--narrow">
-        <section className="c-factbox">
-          <h1 className="u-heading">Logo</h1>
-          <p>
-            Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
-            for kommunikasjon. Den skal inspirere målgruppen elever og
-            lærere i videregående opplæring og gjøre dem nysgjerrige på
-            NDLA.
-          </p>
-          <p>
-            Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
-            Logo uten undertekst kan benyttes i tilfeller der det
-            kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
-          </p>
-          <p>
-            Logo uten undertekst kan kompletteres med en beskrivende tekst
-            til høyre. Logoen benyttes i svart eller hvitt avhengig av
-            bakgrunn. Den skal plasseres i det øverste eller nederste
-            hjørnet av en ytterkant. Logoen skal ikke sentreres.
-          </p>
-        </section>
-        <section>
-          <Logo name to="#" altText="Nasjonal digital læringsarena" />
-        </section>
-      </article>
-    </Center>
-  ))
   .add('Sammensatte noder', () => (
     <Center>
       <article className="o-wrapper--narrow">
         <section className="c-factbox">
-          <h1 className="u-heading">Sammensatte fagressurser</h1>
+          <h1 className="u-heading">Sammensatte moduler</h1>
         </section>
         <section className="c-article-content">
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
@@ -118,23 +89,6 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Sidespalte', () => (
-    <Center>
-      <Aside>
-        <div>
-          <div className="c-aside__title">Oppsummering</div>
-          <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-          <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-          <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-          <div><figure className="article_audio">
-            <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-          <h2>Ressurser</h2>
-          <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-          <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-          <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
-      </Aside>
-    </Center>
-  ))
   .add('Sidenavigasjon', () => (
     <Center>
       <DottedContainer>
@@ -157,7 +111,7 @@ storiesOf('Sammensatte moduler', module)
       <Masthead />
     </div>
   ))
-  .add('Hovedhode med emne meny', () => (
+  .add('Hovedhode med emnemeny', () => (
     <div>
       <MastheadWithTopicMenu />
     </div>
@@ -226,7 +180,7 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Fane', () => (
+  .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
       <Tabs />
@@ -245,64 +199,45 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Emne introduksjons liste', () => (
-    <article className="o-wrapper--narrow">
-      <section>
-        <div className="c-resources">
-          <TopicIntroductionList
-            toTopic={() => '#'}
-            goToTopicTitle="Gå til emnet"
-            toTopicResources={() => '#'}
-            goToTopicResourcesTitle="Se fagstoff"
-            topics={topicList}
-          />
-        </div>
-      </section>
-    </article>
-  ))
-  .add('Liste med en type læringsressurs', () => (
-    <article className="o-wrapper--narrow">
-      <section>
-        <h2 className="u-heading">Læringsstier eksempel</h2>
-        <div className="c-resources">
-          <LearningPathResourceList />
-        </div>
-        <h2 className="u-heading">Fagstoff eksempel</h2>
-        <div className="c-resources">
-          <ArticleResourceList />
-        </div>
-      </section>
-    </article>
-  ))
-  .add('Liste med ulike læringsressurs typer', () => (
-    <article className="o-wrapper--narrow">
-      <section>
-        <div className="c-resources">
-          <ResourceSubsetList />
-        </div>
-        <article className="o-wrapper--narrow">
-          <div className="c-resources">
-            <section>
-              <h1>Emneliste</h1>
-              <TopicIntroductionList
-                toTopic={() => '#'}
-                goToTopicTitle="Gå til emnet"
-                toTopicResources={() => '#'}
-                goToTopicResourcesTitle="Se fagstoff"
-                topics={topicList}
-              />
-            </section>
-          </div>
-        </article>
-      </section>
-    </article>
-  ))
   .add('Emner liste', () => (
     <Center>
+      <h2 className="u-heading">Emneliste</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
+            <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+          </section>
+        </div>
+      </article>
+    </Center>
+  ))
+  .add('Liste med en type læringsressurs', () => (
+    <Center>
+      <h2 className="u-heading">Læringsstier eksempel</h2>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <LearningPathResourceList />
+          </section>
+        </div>
+      </article>
+      <h2 className="u-heading">Fagstoff eksempel</h2>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <ArticleResourceList />
+          </section>
+        </div>
+      </article>
+    </Center>
+  ))
+  .add('Liste med ulike læringsressurs typer', () => (
+    <Center>
+      <h2 className="u-heading">Ulike læringsressurser</h2>
+      <article className="o-wrapper--narrow">
+        <div className="c-resources">
+          <section>
+            <ResourceSubsetList />
           </section>
         </div>
       </article>

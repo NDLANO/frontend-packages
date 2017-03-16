@@ -38,8 +38,8 @@ const FooterExample = () => (
 
 const ResourcesTab1 = () => (
   <div className="c-resources_content u-margin-top-small u-margin-bottom">
-    <div id="breadcrumbs" className="c-breadcrumbs u-margin-bottom">
-      <a href="" className="c-breadcrumbs__item">Planteliv</a> &#x203A; <a href="" className="c-breadcrumbs__item">Cellebiologi</a>
+    <div id="breadcrumbs" className="c-breadcrumb u-margin-bottom">
+      <a href="" className="c-breadcrumb__item">Planteliv</a> &#x203A; <a href="" className="c-breadcrumb__item">Cellebiologi</a>
     </div>
 
     <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
@@ -61,9 +61,15 @@ const ResourcesExample = () => (
 const ExamplePage1 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Alle fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a> &#x203A;
+      <div className="c-breadcrumb">Du er her:
+        <ol className="c-breadcrumb__list">
+          <li className="c-breadcrumb__item">
+            <a href="">Fag</a>
+          </li>
+          <li className="c-breadcrumb__item">
+            <a href="">Helsearbeiderfag</a>
+          </li>
+        </ol>
       </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -99,9 +105,15 @@ const ExamplePage1 = () => (
 const IdealExamplePage1 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+      <div className="c-breadcrumb">Du er her:
+        <ol className="c-breadcrumb__list">
+          <li className="c-breadcrumb__item">
+            <a href="">Fag</a>
+          </li>
+          <li className="c-breadcrumb__item">
+            <a href="">Helsearbeiderfag</a>
+          </li>
+        </ol>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -141,9 +153,15 @@ const IdealExamplePage1 = () => (
 const ExamplePage2 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>&#x203A; <a href="" className="c-breadcrumbs__item">Fjerde nivå med en veldig kjempelang tittel </a>
+      <div className="c-breadcrumb">Du er her:
+        <ol className="c-breadcrumb__list">
+          <li className="c-breadcrumb__item">
+            <a href="">Fag</a>
+          </li>
+          <li className="c-breadcrumb__item">
+            <a href="">Helsearbeiderfag</a>
+          </li>
+        </ol>
       </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -186,9 +204,15 @@ const ExamplePage2 = () => (
 const ExamplePage3 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+      <div className="c-breadcrumb">Du er her:
+        <ol className="c-breadcrumb__list">
+          <li className="c-breadcrumb__item">
+            <a href="">Fag</a>
+          </li>
+          <li className="c-breadcrumb__item">
+            <a href="">Helsearbeiderfag</a>
+          </li>
+        </ol>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -340,9 +364,15 @@ const ExamplePage3 = () => (
 const ExamplePage4 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+      <div className="c-breadcrumb">Du er her:
+        <ol className="c-breadcrumb__list">
+          <li className="c-breadcrumb__item">
+            <a href="">Fag</a>
+          </li>
+          <li className="c-breadcrumb__item">
+            <a href="">Helsearbeiderfag</a>
+          </li>
+        </ol>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -379,9 +409,15 @@ const ExamplePage4 = () => (
 const ExampleWithSummary = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div id="breadcrumbs" className="c-breadcrumbs">
-        <strong>Du er her:</strong>
-        <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Medieuttrykk og Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Mediekommunikasjon </a>
+      <div className="c-breadcrumb">Du er her:
+        <ol className="c-breadcrumb__list">
+          <li className="c-breadcrumb__item">
+            <a href="">Fag</a>
+          </li>
+          <li className="c-breadcrumb__item">
+            <a href="">Helsearbeiderfag</a>
+          </li>
+        </ol>
       </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -471,9 +507,18 @@ const SubTopicHero = () => (
   <OneColumn cssModifier="narrow">
     <div className="c-hero__content">
       <section>
-        <div id="breadcrumbs" className="c-breadcrumbs">
-          <strong>Du er her:</strong>
-          <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Kommunikasjon for fagarbeideren</a> &#x203A;
+        <div className="c-breadcrumb">Du er her:
+          <ol className="c-breadcrumb__list">
+            <li className="c-breadcrumb__item">
+              <a href="">Fag</a>
+            </li>
+            <li className="c-breadcrumb__item">
+              <a href="">Helsearbeiderfag</a>
+            </li>
+            <li className="c-breadcrumb__item">
+              <a href="">Kommunikasjon for fagarbeideren</a>
+            </li>
+          </ol>
         </div>
         <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
       </section>
@@ -486,9 +531,12 @@ const TopicHero = () => (
   <OneColumn cssModifier="narrow">
     <div className="c-hero__content">
       <section>
-        <div id="breadcrumbs" className="c-breadcrumbs">
-          <strong>Du er her:</strong>
-          <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A;
+        <div className="c-breadcrumb">Du er her:
+          <ol className="c-breadcrumb__list">
+            <li className="c-breadcrumb__item">
+              <a href="">Fag</a>
+            </li>
+          </ol>
         </div>
         <h1 className="c-hero__title">Helsearbeiderfag</h1>
       </section>
@@ -501,9 +549,15 @@ const MainTopicHero = () => (
   <OneColumn cssModifier="narrow">
     <div className="c-hero__content">
       <section>
-        <div id="breadcrumbs" className="c-breadcrumbs">
-          <strong>Du er her:</strong>
-          <a href="" className="c-breadcrumbs__item">Fag</a> &#x203A; <a href="" className="c-breadcrumbs__item">Helsearbeiderfag</a> &#x203A;
+        <div className="c-breadcrumb">Du er her:
+          <ol className="c-breadcrumb__list">
+            <li className="c-breadcrumb__item">
+              <a href="">Fag</a>
+            </li>
+            <li className="c-breadcrumb__item">
+              <a href="">Helsearbeiderfag</a>
+            </li>
+          </ol>
         </div>
         <h1 className="c-hero__title">Kommunikasjon for fagarbeideren</h1>
       </section>
@@ -527,9 +581,6 @@ const ResourcesTopics = () => (
           content:
             <TopicIntroductionList
               toTopic={() => '#'}
-              goToTopicTitle="Gå til emnet"
-              toTopicResources={() => '#'}
-              goToTopicResourcesTitle="Se Ressurser"
               topics={topicList}
             />,
         },
@@ -548,7 +599,6 @@ const ResourcesSubTopics = () => (
           content:
             <TopicIntroductionList
               toTopic={() => '#'}
-              goToTopicResourcesTitle="Se ressurser"
               topics={subtopicList}
             />,
         },
@@ -588,7 +638,6 @@ storiesOf('Sidevisninger', module)
         </article>
       </OneColumn>
       <FooterExample />
-
     </PageContainer>
   ))
   .add('ArticlePage loader', () => (
@@ -611,13 +660,24 @@ storiesOf('Sidevisninger', module)
   ))
   .add('Emneside', () => (
     <PageContainer>
-      <Masthead />
-      <OneColumn cssModifier="narrow">
-        <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(4)} toTopic={() => '#'}>
-          Du er her:
-        </TopicBreadcrumb>
-        <ArticleLoader isTopicArticle articleId="208" />
-      </OneColumn>
+      <MastheadWithTopicMenu />
+      <Hero>
+        <OneColumn cssModifier="narrow">
+          <div className="c-hero__content">
+            <section>
+              <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} subjectsTitle="Fag" toSubjects={() => '#'} toTopic={() => '#'}>
+                Du er her:
+              </TopicBreadcrumb>
+              <h1 className="c-hero__title">Idéskaping og mediedesign</h1>
+            </section>
+          </div>
+        </OneColumn>
+      </Hero>
+      <div className="u-bg-lightblue">
+        <OneColumn cssModifier="narrow">
+          <ArticleLoader notitle isTopicArticle articleId="208" />
+        </OneColumn>
+      </div>
       <ResourceWrapper>
         <Tabs
           tabs={[
@@ -626,9 +686,6 @@ storiesOf('Sidevisninger', module)
               content:
                 <TopicIntroductionList
                   toTopic={() => '#'}
-                  goToTopicTitle="Gå til emnet"
-                  toTopicResources={() => '#'}
-                  goToTopicResourcesTitle="Se Ressurser"
                   topics={topicList}
                 />,
             },

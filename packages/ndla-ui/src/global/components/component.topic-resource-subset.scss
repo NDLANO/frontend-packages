@@ -1,5 +1,7 @@
 .c-topic-resource-subset {
-  margin-top: $spacing--large;
+  @include mq($from: desktop) {
+    margin-top: $spacing--large;
+  }
   &__heading {
     display: inline-block;
     @include inuit-font-size(32px);

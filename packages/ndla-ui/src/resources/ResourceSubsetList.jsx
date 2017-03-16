@@ -31,13 +31,35 @@ class ResourceSubsetList extends Component {
     this.state = { focusTitle: '' };
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    const containerTop = document.getElementsByClassName('c-resources')[0].offsetTop;
+    const element = document.getElementsByClassName('c-resources-menu')[0];
+    const elemTop = element.offsetTop;
+    const scrollTop = this.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0; // Cover all browsers
+
+    if (elemTop < scrollTop && scrollTop > containerTop) {
+      element.classList.add('c-resources-menu--fixed');
+    } else {
+      element.classList.remove('c-resources-menu--fixed');
+    }
+  }
+
   render() {
     const { resourceGroups, toResourceTab, resourceToLinkProps } = this.props;
+
     return (
       <div>
         <ul {...mclasses()}>
           {resourceGroups.map(group => (
-            <li key={uuid()} {...mclasses('item')}>
+            <li key={uuid()} {...mclasses('item', [group.color])}>
               <a onClick={() => this.setState({ focusTitle: group.title })} href={`#${group.title}`}>{group.title}</a>
             </li>))}
         </ul>

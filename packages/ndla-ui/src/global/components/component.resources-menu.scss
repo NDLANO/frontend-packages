@@ -1,11 +1,22 @@
 .c-resources-menu {
   list-style: none;
+  margin-top: $spacing;
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: 0;
+  @include inuit-font-size(15px);
   @include mq($from: desktop) {
     position: absolute;
     margin-top: 1%;
     margin-left: -190px;
+    @include inuit-font-size(18px);
   }
   &__item {
+    display: inline-block;
+    margin-right: $spacing;
+    @include mq($from: desktop) {
+      display: block;
+    }
     a {
       display: inline-block;
       margin-bottom: $spacing;

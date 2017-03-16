@@ -581,9 +581,6 @@ const ResourcesTopics = () => (
           content:
             <TopicIntroductionList
               toTopic={() => '#'}
-              goToTopicTitle="Gå til emnet"
-              toTopicResources={() => '#'}
-              goToTopicResourcesTitle="Se Ressurser"
               topics={topicList}
             />,
         },
@@ -602,7 +599,6 @@ const ResourcesSubTopics = () => (
           content:
             <TopicIntroductionList
               toTopic={() => '#'}
-              goToTopicResourcesTitle="Se ressurser"
               topics={subtopicList}
             />,
         },
@@ -690,9 +686,6 @@ storiesOf('Sidevisninger', module)
               content:
                 <TopicIntroductionList
                   toTopic={() => '#'}
-                  goToTopicTitle="Gå til emnet"
-                  toTopicResources={() => '#'}
-                  goToTopicResourcesTitle="Se Ressurser"
                   topics={topicList}
                 />,
             },

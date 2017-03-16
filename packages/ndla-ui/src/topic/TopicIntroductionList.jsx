@@ -32,10 +32,6 @@ const TopicIntroduction = ({ toTopic, topic }) => (
 TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
-  goToTopicTitle: PropTypes.string.isRequired,
-  toTopicResources: PropTypes.func.isRequired,
-  goToTopicResourcesTitle: PropTypes.string.isRequired,
-  // IconName: PropTypes.string.isRequired,
 };
 
 const TopicIntroductionList = ({ topics, ...rest }) => (
@@ -46,9 +42,6 @@ const TopicIntroductionList = ({ topics, ...rest }) => (
 
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,
-  goToTopicTitle: PropTypes.string.isRequired,
-  goToTopicResourcesTitle: PropTypes.string.isRequired,
-  toTopicResources: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(TopicShape).isRequired,
 };
 

@@ -41,7 +41,7 @@
         background-color: $mark-color;
       }
     }
-    &:last-child {
+    &:nth-child(3) {
       a:after {
         background-color: $green;
       }

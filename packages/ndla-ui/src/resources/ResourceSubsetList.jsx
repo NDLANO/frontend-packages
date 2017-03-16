@@ -59,7 +59,7 @@ class ResourceSubsetList extends Component {
       <div>
         <ul {...mclasses()}>
           {resourceGroups.map(group => (
-            <li key={uuid()} {...mclasses('item')}>
+            <li key={uuid()} {...mclasses('item', [group.color])}>
               <a onClick={() => this.setState({ focusTitle: group.title })} href={`#${group.title}`}>{group.title}</a>
             </li>))}
         </ul>

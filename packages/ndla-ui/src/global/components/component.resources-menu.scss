@@ -36,12 +36,12 @@
         transition: $transition;
       }
     }
-    &:nth-child(1) {
+    &--red {
       a:after {
         background-color: $mark-color;
       }
     }
-    &:nth-child(3) {
+    &--green {
       a:after {
         background-color: $green;
       }

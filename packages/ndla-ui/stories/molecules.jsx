@@ -205,7 +205,7 @@ storiesOf('Sammensatte moduler', module)
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicList} subjectId="1" />
+            <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
           </section>
         </div>
       </article>

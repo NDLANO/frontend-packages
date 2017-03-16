@@ -6,10 +6,12 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import BEMHelper from 'react-bem-helper';
+import { uuid } from 'ndla-util';
 import ResourceList from './ResourceList';
 import SafeLink from '../common/SafeLink';
+
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
@@ -17,23 +19,47 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ResourceSubsetList = ({ resourceGroups, toResourceTab, resourceToLinkProps }) => (
-  <div {...classes()} >
-    {resourceGroups.map((group, i) => (
-      <div key={i} {...classes('', group.color)}>
-        <h1 {...classes('heading')}>{group.title}</h1>
-        <p {...classes('lead')}>{group.description}</p>
-        { group.tags ?
-          group.tags.map((tags, o) => (
-            <SafeLink key={o} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
-          ))
-        : null }
-        <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
-        <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
+const mclasses = new BEMHelper({
+  name: 'resources-menu',
+  prefix: 'c-',
+});
+
+
+class ResourceSubsetList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { focusTitle: '' };
+  }
+
+  render() {
+    const { resourceGroups, toResourceTab, resourceToLinkProps } = this.props;
+    return (
+      <div>
+        <ul {...mclasses()}>
+          {resourceGroups.map(group => (
+            <li key={uuid()} {...mclasses('item')}>
+              <a onClick={() => this.setState({ focusTitle: group.title })} href={`#${group.title}`}>{group.title}</a>
+            </li>))}
+        </ul>
+
+        <div {...classes('')} >
+          {resourceGroups.map((group, i) => (
+            <div id={group.title} key={uuid()} {...classes('', [group.color, this.state.focusTitle === group.title ? 'focus' : ''])}>
+              <h1 {...classes('heading')}>{group.title}</h1>
+              <p {...classes('lead')}>{group.description}</p>
+              { group.tags ? group.tags.map((tags, o) => (
+                <SafeLink key={o} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
+              )) : null }
+              <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
+              <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
+            </div>
+      ))}
+        </div>
       </div>
-    ))}
-  </div>
-);
+    );
+  }
+}
+
 
 ResourceSubsetList.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,

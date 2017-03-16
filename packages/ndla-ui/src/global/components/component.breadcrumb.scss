@@ -17,6 +17,7 @@
     padding-left: $spacing--small/2;
     margin-top: -3px;
     margin-bottom: $spacing--small;
+    list-style: none;
   }
   &__item {
     color: $brand-grey;
@@ -24,10 +25,6 @@
     padding-left: $spacing--small/2;
     display: inline-block;
     line-height: 2em;
-
-    a {
-    box-shadow: inset 0 -1px 0 $white;
-    }
   }
   &__item + &__item:before{
     padding-right: $spacing--small/2;

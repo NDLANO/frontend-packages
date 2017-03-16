@@ -13,15 +13,15 @@ import SafeLink from '../common/SafeLink';
 import { SubjectShape, TopicShape } from '../shapes';
 
 const classes = new BEMHelper({
-  name: 'breadcrumbs',
+  name: 'breadcrumb',
   prefix: 'c-',
 });
 
 const TopicBreadcrumbItem = ({ to, children }) => (
-  <li {...classes('listitem')}>
-    <SafeLink {...classes('item')} to={to}>
+  <li {...classes('item')}>
+    <SafeLink to={to}>
       {children}
-    </SafeLink> <span> &#x203A; </span>
+    </SafeLink>
   </li>
 );
 
@@ -36,7 +36,6 @@ const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, su
     <div {...classes('', '')}>
       {children}
       <ol {...classes('list')}>
-        <li key={uuid()} {...classes('listitem')}>{children}</li>
         <TopicBreadcrumbItem key={uuid()} topicIds={[]} to={toSubjects()}>{subjectsTitle}</TopicBreadcrumbItem>
         <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
         { topicPath.map((topic, i) =>

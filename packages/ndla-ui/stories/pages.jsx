@@ -669,17 +669,17 @@ storiesOf('Sidevisninger', module)
         <OneColumn cssModifier="narrow">
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} toTopic={() => '#'}>
+              <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} subjectsTitle="Fag" toSubjects={() => '#'} toTopic={() => '#'}>
                 Du er her:
               </TopicBreadcrumb>
-              <h1 className="c-hero__title">Test</h1>
+              <h1 className="c-hero__title">Idéskaping og mediedesign</h1>
             </section>
           </div>
         </OneColumn>
       </Hero>
       <div className="u-bg-lightblue">
         <OneColumn cssModifier="narrow">
-          <ArticleLoader isTopicArticle articleId="208" />
+          <ArticleLoader notitle isTopicArticle articleId="208" />
         </OneColumn>
       </div>
       <ResourceWrapper>

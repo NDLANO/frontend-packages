@@ -5,7 +5,7 @@ import { storiesOf } from '@kadira/storybook';
 import Tabs from 'ndla-tabs';
 
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
-import { ResourceTabs, ResourceSubsetList } from './molecules/resources';
+import { ResourceSubsetList } from './molecules/resources';
 
 import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
 
@@ -584,7 +584,7 @@ const ResourcesTopics = () => (
               topics={topicList}
             />,
         },
-        { title: 'Ressurser', content: <ResourceTabs /> },
+        { title: 'Ressurser', content: <ResourceSubsetList /> },
       ]}
     />
   </ResourceWrapper>
@@ -602,7 +602,7 @@ const ResourcesSubTopics = () => (
               topics={subtopicList}
             />,
         },
-        { title: 'Ressurser', content: <ResourceTabs /> },
+        { title: 'Ressurser', content: <ResourceSubsetList /> },
       ]}
     />
   </ResourceWrapper>
@@ -689,7 +689,7 @@ storiesOf('Sidevisninger', module)
                   topics={topicList}
                 />,
             },
-            { title: 'Ressurser', content: <ResourceTabs /> },
+            { title: 'Ressurser', content: <ResourceSubsetList /> },
           ]}
         />
       </ResourceWrapper>

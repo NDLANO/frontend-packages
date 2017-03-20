@@ -72,7 +72,7 @@ storiesOf('Typografi', module)
         <section className="c-factbox">
           <h1 className="u-heading">Fonter</h1>
           <p>NDLA bruker Source Sans Pro fra <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Google Fonts</a>.</p>
-          <ul className="o-list--arrows o-list--arrows--invert">
+          <ul className="o-list--bullets o-list--bullets--invert">
             <li>Brødtekst: Source Sans Pro, 400 inkludert <em>kursiv</em></li>
             <li style={{ fontWeight: 700 }}>Overskrifter: Source Sans Pro, 700 inkludert <em>kursiv</em></li>
           </ul>
@@ -196,7 +196,7 @@ storiesOf('Typografi', module)
       <article className="o-wrapper--wide">
         <section className="c-factbox">
           <h1 className="u-heading">Tabeller på NDLA</h1>
-          <p>Tabeller skal brukes til tabulær data, ikke for tekstutforming</p>
+          <p>Tabeller skal brukes til å presentere data (tabulær data), ikke til utforming.</p>
         </section>
         <section className="c-article-content">
           <h2 className="u-heading">Eksempel</h2>
@@ -514,14 +514,14 @@ storiesOf('Typografi', module)
         </section>
         <section>
           <h2>Ren liste</h2>
-          <ul className="o-list--clean">
+          <ul className="o-list--bullets">
             <li>Listepunkt 1</li>
             <li>Listepunkt 2</li>
             <li>Listepunkt 3</li>
             <li>Listepunkt 4</li>
           </ul>
           <h2>Lister med lenker</h2>
-          <ul className="o-list--arrows">
+          <ul className="o-list--bullets">
             <li><a href="">Listepunkt 1</a></li>
             <li><a href="">Listepunkt 2</a></li>
             <li><a href="">Listepunkt 3</a></li>
@@ -529,10 +529,10 @@ storiesOf('Typografi', module)
           </ul>
           <h2>Nummererte lister</h2>
           <ol>
-            <li>Listepunkt 1</li>
-            <li>Listepunkt 2</li>
-            <li>Listepunkt 3</li>
-            <li>Listepunkt 4</li>
+            <li>Listepunkt</li>
+            <li>Listepunkt</li>
+            <li>Listepunkt</li>
+            <li>Listepunkt</li>
           </ol>
         </section>
       </article>

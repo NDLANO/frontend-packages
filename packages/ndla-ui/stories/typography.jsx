@@ -40,7 +40,18 @@ storiesOf('Typografi', module)
               <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted u-padding-tiny">NDLA primærfarge: #20588F</li>
               <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted u-padding-tiny">NDLA sekundærfarge: #507AA4</li>
               <li style={{ backgroundColor: '#A5BCD3' }} className="u-padding-tiny">NDLA tertiærfarge: #A5BCD3</li>
-              <li style={{ backgroundColor: '#CEDDEA' }} className="u-padding-tiny">NDLA lys farge: #CEDDEA</li>
+              <li style={{ backgroundColor: '#CEDDEA' }} className="u-padding-tiny">NDLA lys: #CEDDEA</li>
+              <li style={{ backgroundColor: '#184673' }} className="u-text-inverted u-padding-tiny">NDLA mørk: #184673</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Tilleggsfarger</h4>
+            <ul className="o-list--clean">
+              <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Kontrast rød: #FE5F55</li>
+              <li style={{ backgroundColor: '#5cbc80' }} className="u-padding-tiny">Kontrast grønn: #5cbc80</li>
+              <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">Mørk: #1C1717</li>
+              <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">Hvit: #FFFFFF</li>
             </ul>
           </div>
 
@@ -54,14 +65,6 @@ storiesOf('Typografi', module)
             </ul>
           </div>
 
-          <div>
-            <h4>Tilleggsfarger</h4>
-            <ul className="o-list--clean">
-              <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">Mørk: #1C1717</li>
-              <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">Hvit: #FFFFFF</li>
-              <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Kontrast: #FE5F55</li>
-            </ul>
-          </div>
         </section>
       </article>
     </Center>

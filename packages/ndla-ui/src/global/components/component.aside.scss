@@ -7,7 +7,7 @@
   &__title {
     border-bottom: 2px solid $brand-color;
     margin-bottom: $spacing;
-    @include inuit-font-size(22px);
+    @include inuit-font-size(22px, 34px);
     font-weight: $font-weight-bold;
     position: relative;
     z-index: 2;

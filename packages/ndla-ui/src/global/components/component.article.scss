@@ -14,12 +14,17 @@
 }
 .c-article {
   margin-top: $spacing--large;
+  margin-bottom: $spacing--large;
+
+  &-content {
+    margin-bottom: $spacing--large;
+  }
 
   &__byline {
-    margin-top: $spacing*1.4;
-    margin-bottom: $spacing;
-    @include inuit-font-size(14px);
-    letter-spacing: 0.1em;
+    margin-top: $spacing;
+    margin-bottom: $spacing--large;
+    @include inuit-font-size(14px, 20px);
+    letter-spacing: 0.075em;
     color: $brand-grey;
     text-transform: uppercase;
 

@@ -14,10 +14,9 @@
 }
 .masthead__left {
     text-align: center;
-    padding: $spacing--small;
-    flex-grow: 1;
+    padding: $spacing--small $spacing--small $spacing--small 0;
     @include mq(desktop) {
-      padding: $spacing;
+      padding: $spacing $spacing $spacing 0;
     }
 }
 .masthead__right {
@@ -28,7 +27,7 @@
       padding: $spacing 0 0 0;
     }
     @include mq(desktop) {
-      padding: $spacing;
+      padding: $spacing 0 0 0;
       text-align:right;
       flex-grow: 1;
       display: inline-block;

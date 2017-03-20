@@ -270,7 +270,7 @@ $shame-spacing: 12px;
   margin-top: $spacing--small;
 
   @include mq(tablet) {
-    margin-left: $spacing--large * .85;
+    margin-left: $spacing--large * 1.45;
   }
   @include mq(desktop) {
     display: inline-block;

@@ -1,0 +1,40 @@
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  width: $spacing--small * 1.3;
+  height: $spacing--small * 1.3;
+  vertical-align: middle;
+  &--rotate {
+    transform: rotate(180deg);
+  }
+}
+
+.c-license-icons {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &--active {
+      circle {
+        fill: $brand-color;
+      }
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  &__item + &__item {
+    margin-left: 0.2em;
+  }
+
+  &__icon {
+    width: $spacing / 1.1;
+    height: $spacing / 1.1;
+  }
+}

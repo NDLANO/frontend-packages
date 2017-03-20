@@ -17,8 +17,10 @@ import { Icon, ToggleLicenseBox, LicenseByline,
 
 const VideoContent = () => (
   <div>
-    <h2>Slik bruker du videoer fra artikkelen</h2>
-    <p>Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges ved bildet der du bruker det.</p>
+    <div className="u-introduction">
+      <h2>Slik bruker du videoer fra artikkelen</h2>
+      <p>Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges ved bildet der du bruker det.</p>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
@@ -46,8 +48,10 @@ const VideoContent = () => (
 
 const TextContent = () => (
   <div>
-    <h2>Slik bruker du tekst fra artikkelen</h2>
-    <p>Artikkelen kan være satt sammen av flere ulike tekster, som listes opp her. Klikk på lisensene for å se reglene for hver enkelt del.</p>
+    <div className="u-introduction">
+      <h2>Slik bruker du tekst fra artikkelen</h2>
+      <p>Artikkelen kan være satt sammen av flere ulike tekster, som listes opp her. Klikk på lisensene for å se reglene for hver enkelt del.</p>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
@@ -84,7 +88,9 @@ const TextContent = () => (
 
 const AudioContent = () => (
   <div>
-    <h2>Slik bruker du lydfiler</h2>
+    <div className="u-introduction">
+      <h2>Slik bruker du lydfiler</h2>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
@@ -120,8 +126,10 @@ const AudioContent = () => (
 
 const ImageContent = () => (
   <div>
-    <h2>Slik bruker du bilder fra artikkelen</h2>
-    <p>Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges ved bildet der du bruker det.</p>
+    <div className="u-introduction">
+      <h2>Slik bruker du bilder fra artikkelen</h2>
+      <p className="article-introduction">Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges ved bildet der du bruker det.</p>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
@@ -176,8 +184,10 @@ const ImageContent = () => (
 
 const H5PContent = () => (
   <div>
-    <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
-    <p>Klikk på lisensene for å se reglene.</p>
+    <div className="u-introduction">
+      <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
+      <p>Klikk på lisensene for å se reglene.</p>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
@@ -216,8 +226,10 @@ const H5PContent = () => (
 
 const LearningPath = () => (
   <div>
-    <h2>Slik bruker du Læringssti-innhold fra artikkelen</h2>
-    <p>Klikk på lisensene for å se reglene.</p>
+    <div className="u-introduction">
+      <h2>Slik bruker du Læringssti-innhold fra artikkelen</h2>
+      <p>Klikk på lisensene for å se reglene.</p>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
@@ -252,8 +264,10 @@ const LearningPath = () => (
 
 const Files = () => (
   <div>
-    <h2>Slik bruker du filer fra artikkelen</h2>
-    <p>Klikk på lisensene for å se reglene.</p>
+    <div className="u-introduction">
+      <h2>Slik bruker du filer fra artikkelen</h2>
+      <p>Klikk på lisensene for å se reglene.</p>
+    </div>
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>

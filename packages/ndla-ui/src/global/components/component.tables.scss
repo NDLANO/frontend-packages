@@ -36,7 +36,6 @@
   }
   td {
     vertical-align: top;
-    border-top: 1px solid transparent;
 
     &:first-child {
       background-color: none;
@@ -86,20 +85,20 @@
 
   //Hover border
   tr:hover, tr:active, tr:focus {
-    td {
-      border-top: 1px solid $brand-color;
-      border-bottom: 1px solid $brand-color;
-
-      &:first-child {
-        border-top: 1px solid $brand-color;
-        border-bottom: 1px solid $brand-color;
-      }
-
-      &td:last-child {
-        border-top: 1px solid $brand-color;
-        border-bottom: 1px solid $brand-color;
-      }
-    }
+    // td {
+    //   border-top: 1px solid $brand-color;
+    //   border-bottom: 1px solid $brand-color;
+    //
+    //   &:first-child {
+    //     border-top: 1px solid $brand-color;
+    //     border-bottom: 1px solid $brand-color;
+    //   }
+    //
+    //   &td:last-child {
+    //     border-top: 1px solid $brand-color;
+    //     border-bottom: 1px solid $brand-color;
+    //   }
+    // }
   }
 
   // Remove excess spacing on headings inside table

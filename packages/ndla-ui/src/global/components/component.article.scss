@@ -35,8 +35,14 @@
 
   &__authors {
     padding-right: $spacing;
+    svg {
+      margin-top: -3px;
+    }
   }
   &__date {
+    svg {
+      margin-top: -3px;
+    }
   }
 
   &-collapse {

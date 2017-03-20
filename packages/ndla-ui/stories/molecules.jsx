@@ -201,8 +201,10 @@ storiesOf('Sammensatte moduler', module)
   .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
+      <p>Klikk på fane-tittel for å vise innhold.</p>
       <Tabs />
       <h2 className="u-heading">Kontrollerte faner</h2>
+      <p>Disse fanene kan også kontrolleres med frittstående knapper plassert innenfor fanene.</p>
       <TabsControlled />
     </Center>
   ))

@@ -70,7 +70,10 @@
     text-decoration: none;
   }
 }
-
+.u-introduction {
+  margin-top: $spacing--large;
+  max-width: $max-text-width;
+}
 
 
 /* Bg color */

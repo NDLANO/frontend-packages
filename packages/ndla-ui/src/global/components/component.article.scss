@@ -17,7 +17,7 @@
 
   &__byline {
     margin-top: $spacing;
-    margin-bottom: $spacing;
+    margin-bottom: 0;
     font-style: italic;
     @include inuit-font-size(16px);
     color: $brand-grey;

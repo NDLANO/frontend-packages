@@ -7,7 +7,7 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
-import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
+import { Icon, Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
@@ -17,6 +17,14 @@ import article, { topicList, subtopicList, subjectList } from '../dummydata/inde
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
 
+
+const translateIDtoURL = (id) => {
+  const URLsArray = [
+    '?selectedKind=Emnesider&selectedStory=3.%20Hovedemne&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
+    '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
+  ];
+  return URLsArray[id - 1];
+};
 
 const FooterExample = () => (
   <Footer>
@@ -38,11 +46,6 @@ const FooterExample = () => (
 
 const ResourcesTab1 = () => (
   <div className="c-resources_content u-margin-top-small u-margin-bottom">
-    <div id="breadcrumbs" className="c-breadcrumb u-margin-bottom">
-      <a href="" className="c-breadcrumb__item">Planteliv</a> &#x203A; <a href="" className="c-breadcrumb__item">Cellebiologi</a>
-    </div>
-
-    <input type="text" placeholder="Søk etter" name="filter-text" value="" className="u-margin-bottom-small" />
     <ResourceSubsetList />
   </div>
 );
@@ -76,7 +79,7 @@ const ExamplePage1 = () => (
          å produsere filmen.
       </p>
       <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+        <p><span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span></p>
       </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -120,7 +123,7 @@ const IdealExamplePage1 = () => (
          å produsere filmen.
       </p>
       <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+        <p><span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span></p>
       </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -168,7 +171,7 @@ const ExamplePage2 = () => (
          å produsere filmen.
       </p>
       <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+        <p><span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span></p>
       </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -219,7 +222,7 @@ const ExamplePage3 = () => (
          å produsere filmen.
       </p>
       <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+        <p><span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span></p>
       </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -379,7 +382,7 @@ const ExamplePage4 = () => (
          å produsere filmen.
       </p>
       <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+        <p><span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span></p>
       </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -424,7 +427,7 @@ const ExampleWithSummary = () => (
          å produsere filmen.
       </p>
       <div className="c-article__byline">
-        <p>Skrevet av [Opphavsperson]. Publisert [dato]</p>
+        <p><span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span></p>
       </div>
       <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -580,7 +583,7 @@ const ResourcesTopics = () => (
         { title: 'Emner',
           content:
             <TopicIntroductionList
-              toTopic={() => '#'}
+              toTopic={translateIDtoURL}
               topics={topicList}
             />,
         },
@@ -598,7 +601,7 @@ const ResourcesSubTopics = () => (
           title: 'Underemner',
           content:
             <TopicIntroductionList
-              toTopic={() => '#'}
+              toTopic={() => '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel'}
               topics={subtopicList}
             />,
         },
@@ -772,7 +775,7 @@ storiesOf('Emnesider', module)
                   <li><a href="">Design og håndverk Vg1</a></li>
                   <li><a href="">Elektrofag Vg1</a></li>
                   <li><a href="">Helse- og oppvekstfag Vg1</a></li>
-                  <li><a href="">Helsearbeiderfag Vg2</a></li>
+                  <li><a href="?selectedKind=Emnesider&selectedStory=2.%20Valgt%20fag&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel">Helsearbeiderfag Vg2</a></li>
                   <li><a href="">IKT-servicefag Vg2</a></li>
                   <li><a href="">Kokk- og servitørfag Vg2</a></li>
                   <li><a href="">Naturbruk Vg1</a></li>

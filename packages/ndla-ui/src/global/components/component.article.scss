@@ -22,7 +22,7 @@
 
   &__byline {
     margin-top: $spacing;
-    margin-bottom: $spacing--large;
+    margin-bottom: $spacing;
     @include inuit-font-size(14px, 20px);
     letter-spacing: 0.075em;
     color: $brand-grey;
@@ -33,11 +33,10 @@
     }
   }
 
-  &__author {
-
+  &__authors {
+    padding-right: $spacing;
   }
   &__date {
-    margin-left: $spacing;
   }
 
   &-collapse {

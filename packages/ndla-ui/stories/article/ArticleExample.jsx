@@ -39,8 +39,8 @@ class ArticleExample extends Component {
       <div>
         <section>
           { notitle ? null : <h1>{article.title}</h1> }
-          <ArticleByline authors date article={article} />
           <Article.Introduction introduction={article.introduction} />
+          <ArticleByline authors date article={article} />
         </section>
         <div dangerouslySetInnerHTML={{ __html: article.content }} />
         { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }

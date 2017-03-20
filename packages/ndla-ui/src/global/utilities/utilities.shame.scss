@@ -267,10 +267,13 @@ $shame-spacing: 12px;
 }
 
 .c-topic-menu-container {
-  display: inline-block;
   margin-top: $spacing--small;
+
   @include mq(tablet) {
-    margin-left: $spacing--large*1.45;
+    margin-left: $spacing--large * .85;
+  }
+  @include mq(desktop) {
+    display: inline-block;
   }
 }
 

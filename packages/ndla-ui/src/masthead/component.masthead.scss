@@ -4,23 +4,34 @@
 }
 .masthead > div {
   justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
+  text-align: center;
+
   @include mq(tablet) {
-      justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 .masthead__left {
     text-align: center;
     padding: $spacing--small;
-    @include mq(tablet) {
+    flex-grow: 1;
+    @include mq(desktop) {
       padding: $spacing;
     }
 }
 .masthead__right {
+  padding: 0;
+  display: block;
+  flex-grow: 1;
     @include mq(tablet) {
+      padding: $spacing 0 0 0;
+    }
+    @include mq(desktop) {
       padding: $spacing;
+      text-align:right;
       flex-grow: 1;
-      text-align:right
+      display: inline-block;
+
     }
 }

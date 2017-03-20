@@ -29,7 +29,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <p>
             Logo uten undertekst kan kompletteres med en beskrivende tekst
-            til høyre. Logoen benyttes i svart eller hvitt avhengig av
+            til høyre. Logoen kan benyttes i blått, eller i svart eller hvitt avhengig av
             bakgrunn. Den skal plasseres i det øverste eller nederste
             hjørnet av en ytterkant. Logoen skal ikke sentreres.
           </p>

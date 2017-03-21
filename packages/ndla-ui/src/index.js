@@ -21,6 +21,7 @@ import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import ArticleFootNotes from './article/ArticleFootNotes';
 import Article from './article/Article';
+import { Figure, FigureCaption, FigureDetails } from './article/Figure';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ToggleLicenseBox from './license/ToggleLicenseBox';
@@ -51,6 +52,7 @@ export {
   ClickableLicenseByline,
   ClickToggle,
   Footer,
+  Figure, FigureCaption, FigureDetails,
   Hero,
   Icon,
   LicenseByline,

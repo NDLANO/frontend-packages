@@ -34,17 +34,21 @@
     "es"
   ],
   "dependencies": {
+    "classnames": "^2.2.5",
+    "react-bem-helper": "^1.2.0",
     "react-prop-types": "^0.4.0"
   },
   "peerDependencies": {
-    "classnames": "^2.2.5",
-    "react": "^15.3.2",
-    "react-bem-helper": "^1.2.0",
+    "react": "^15.3.2"
+  },
+  "optionalDependencies": {
     "react-collapse": "^2.3.3",
-    "react-dom": "^15.3.2",
     "react-height": "^2.2.0",
     "react-motion": "^0.4.7",
-    "react-router": "^3.0.2"
+    "react-router": "^3.0.2",
+    "ndla-article-scripts": "^0.0.1",
+    "ndla-licenses": "^0.0.6",
+    "ndla-util": "^0.1.0"
   },
   "devDependencies": {
     "@kadira/storybook": "2.35.3",
@@ -60,12 +64,10 @@
     "inuitcss": "^6.0.0-beta.4",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
-    "ndla-article-scripts": "^0.0.1",
     "ndla-editor": "^0.0.1",
-    "ndla-licenses": "^0.0.6",
     "ndla-tabs": "^0.2.0",
-    "ndla-util": "^0.1.0",
     "node-sass": "^4.3.0",
+    "react-dom": "^15.3.2",
     "react-helmet": "^4.0.0",
     "react-modal": "^1.6.5",
     "sass-loader": "^4.0.2",

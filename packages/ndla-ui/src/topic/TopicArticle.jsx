@@ -8,8 +8,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import {
-  addEventListenerForResize,
-  updateIFrameDimensions, addAsideClickListener,
+  initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener,
 } from 'ndla-article-scripts';
@@ -32,9 +31,7 @@ class TopicArticle extends Component {
   }
 
   componentDidMount() {
-    addEventListenerForResize();
-    updateIFrameDimensions();
-    addAsideClickListener();
+    initArticleScripts();
   }
 
   componentWillUnmount() {

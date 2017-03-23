@@ -7,18 +7,16 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import {
+  addCloseFigureDetailsClickListners,
+  addShowFigureDetailsClickListners,
+  makeFigureLicenseIconsClickable,
+} from 'ndla-article-scripts';
 
 import Icon from '../icons/Icon';
 
 import { Figure, FigureCaption, FigureDetails } from '../';
 
-function findAncestorByClass(el, cls) {
-  let target = el;
-  while (!target.classList.contains(cls)) {
-    target = target.parentElement;
-  }
-  return target;
-}
 
 const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
             solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
@@ -29,38 +27,19 @@ const authors = [
   { type: 'Leverandør', name: 'NTB scanpix' },
 ];
 
-class LicenseToggle extends Component {
+class FigureLicense extends Component {
 
   componentDidMount() {
-    document.querySelectorAll('.c-figure__close')
-      .forEach((el) => {
-        const target = el;
-        target.onclick = () => {
-          target.parentNode.classList.remove('c-figure--active');
-          target.parentNode.querySelector('figcaption').classList.remove('u-hidden');
-        };
-      });
-
-    document.querySelectorAll('.c-figure__captionbtn')
-      .forEach((el) => {
-        const target = el;
-        target.onclick = () => {
-          const figure = findAncestorByClass(target, 'c-figure');
-          figure.classList.add('c-figure--active');
-
-          const figcaption = findAncestorByClass(target, 'c-figure__caption');
-          figcaption.classList.add('u-hidden');
-        };
-      });
+    addShowFigureDetailsClickListners();
+    addCloseFigureDetailsClickListners();
+    makeFigureLicenseIconsClickable();
   }
 
   render() {
     return (
       <Figure>
         <div className="c-figure__img">
-          <a onClick={this.handleClick} href="">
-            {this.props.children}
-          </a>
+          {this.props.children}
         </div>
         <FigureCaption caption={caption} reuseLabel="Gjenbruk" licenseAbbreviation="by-nc-nd" authors={authors} />
         <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
@@ -73,8 +52,8 @@ class LicenseToggle extends Component {
   }
 }
 
-LicenseToggle.propTypes = {
-  children: PropTypes.node,
+FigureLicense.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
-export default LicenseToggle;
+export default FigureLicense;

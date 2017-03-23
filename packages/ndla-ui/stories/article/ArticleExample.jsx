@@ -8,9 +8,7 @@
 
 import React, { PropTypes, Component } from 'react';
 import {
-  addEventListenerForResize,
-  updateIFrameDimensions,
-  addAsideClickListener,
+  initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener,
 } from 'ndla-article-scripts';
@@ -19,12 +17,11 @@ import { Article } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
+
 class ArticleExample extends Component {
 
   componentDidMount() {
-    addEventListenerForResize();
-    updateIFrameDimensions();
-    addAsideClickListener();
+    initArticleScripts();
   }
 
   componentWillUnmount() {

@@ -34,7 +34,6 @@ import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
-import LicenseToggle from './modal/LicenseToggle';
 import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
 
 
@@ -57,7 +56,6 @@ export {
   Icon,
   LicenseByline,
   LicenseIconList,
-  LicenseToggle,
   Logo,
   Masthead,
   MastheadItem,

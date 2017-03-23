@@ -13,9 +13,7 @@ import {
   makeFigureLicenseIconsClickable,
 } from 'ndla-article-scripts';
 
-import Icon from '../icons/Icon';
-
-import { Figure, FigureCaption, FigureDetails } from '../';
+import { Icon, Figure, FigureCaption, FigureDetails } from '../../src';
 
 
 const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
@@ -27,7 +25,7 @@ const authors = [
   { type: 'Leverandør', name: 'NTB scanpix' },
 ];
 
-class FigureLicense extends Component {
+class FigureWithLicense extends Component {
 
   componentDidMount() {
     addShowFigureDetailsClickListners();
@@ -52,8 +50,8 @@ class FigureLicense extends Component {
   }
 }
 
-FigureLicense.propTypes = {
+FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default FigureLicense;
+export default FigureWithLicense;

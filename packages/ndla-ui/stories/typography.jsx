@@ -36,6 +36,7 @@ storiesOf('Typografi', module)
         <section className="c-article-content">
           <div>
             <h4>Variasjoner av NDLA-fargen</h4>
+            <p>Primærfargen kan supplementeres med ulike graderinger.</p>
             <ul className="o-list--clean">
               <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted u-padding-tiny">NDLA primærfarge: #20588F</li>
               <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted u-padding-tiny">NDLA sekundærfarge: #507AA4</li>
@@ -47,6 +48,7 @@ storiesOf('Typografi', module)
 
           <div>
             <h4>Tilleggsfarger</h4>
+            <p>I tillegg til primærfargen og dens graderinger kan man benytte tilleggsfarger til å tematisere innhold og skape variasjon/kontrast til NDLA-fargen.</p>
             <ul className="o-list--clean">
               <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Kontrast rød: #FE5F55</li>
               <li style={{ backgroundColor: '#5cbc80' }} className="u-padding-tiny">Kontrast grønn: #5cbc80</li>
@@ -57,6 +59,7 @@ storiesOf('Typografi', module)
 
           <div>
             <h4>Gråtoner</h4>
+            <p>Ulike gråtoner kan brukes for å skape myke farger for navigasjonselementer, skjema-elementer etc.</p>
             <ul className="o-list--clean">
               <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">Grå 1: #8A8888</li>
               <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">Grå 2: #E8E3E3</li>

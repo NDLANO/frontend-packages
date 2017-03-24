@@ -17,7 +17,9 @@ export const NC = 'nc'; // Non-commercial
 export const ND = 'nd'; // No derivative work
 export const PD = 'pd'; // Public Domain
 export const CC0 = 'cc0'; // Public Domain Dedication
-export const CC = 'cc'; // Copyright
+export const CC = 'cc'; // Creative Commons
+export const COPY = 'copy';
+
 
 
 const by = {
@@ -105,8 +107,8 @@ const cc0 = {
   },
 };
 
-const cc = {
-  short: CC,
+const copy = {
+  short: COPY,
   nb: {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
@@ -116,6 +118,20 @@ const cc = {
     title: 'Copyright',
     userFriendlyTitle: 'Copyright',
     description: 'Only the creator can derive, publish, or license the work. It can not be shared without permission.',
+  },
+};
+
+const cc = {
+  short: CC,
+  nb: {
+    title: 'Creative Commons',
+    userFriendlyTitle: 'Opphavsrett',
+    description: 'Regler for gjenbruk og deling',
+  },
+  en: {
+    title: 'Creative Commons',
+    userFriendlyTitle: 'Copyright',
+    description: 'Rights for reuse and sharing of content.',
   },
 };
 
@@ -136,6 +152,7 @@ export function getLicenseRightByAbbreviation(abbreviation, locale) {
     case PD : return licenseRightByLocale(pd, locale);
     case CC : return licenseRightByLocale(cc, locale);
     case CC0 : return licenseRightByLocale(cc0, locale);
+    case COPY : return licenseRightByLocale(copy, locale);
     default : return {
       short: abbreviation,
       title: abbreviation,

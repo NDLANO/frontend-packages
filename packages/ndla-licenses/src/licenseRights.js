@@ -18,7 +18,7 @@ export const ND = 'nd'; // No derivative work
 export const PD = 'pd'; // Public Domain
 export const CC0 = 'cc0'; // Public Domain Dedication
 export const CC = 'cc'; // Creative Commons
-export const COPY = 'copy';
+export const COPY = 'copy'; // Copyright
 
 
 

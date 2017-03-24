@@ -499,7 +499,7 @@ const ExampleWithSummary = () => (
 );
 
 const SubTopic = () => (
-  <div className="u-bg-lightblue">
+  <div>
     <OneColumn cssModifier="narrow">
       <ArticleLoader articleId="5948" notitle />
     </OneColumn>
@@ -569,7 +569,7 @@ const MainTopicHero = () => (
 );
 
 const MainTopic = () => (
-  <div className="u-bg-lightblue">
+  <div>
     <OneColumn cssModifier="narrow">
       <ArticleLoader articleId="1325" isTopicArticle notitle />
     </OneColumn>
@@ -676,7 +676,7 @@ storiesOf('Sidevisninger', module)
           </div>
         </OneColumn>
       </Hero>
-      <div className="u-bg-lightblue">
+      <div>
         <OneColumn cssModifier="narrow">
           <ArticleLoader notitle isTopicArticle articleId="208" />
         </OneColumn>

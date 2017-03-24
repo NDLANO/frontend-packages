@@ -6,46 +6,36 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react';
-import {
-  initArticleScripts,
-  removeEventListenerForResize,
-  removeAsideClickListener,
-} from 'ndla-article-scripts';
+import React, { PropTypes } from 'react';
 
-import { Article } from '../../src';
+import { Article, OneColumn } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
+import TopicBreadcrumbDefault from '../molecules/breadcrumbs';
 
 
-class ArticleExample extends Component {
-
-  componentDidMount() {
-    initArticleScripts();
-  }
-
-  componentWillUnmount() {
-    removeEventListenerForResize();
-    removeAsideClickListener();
-  }
-
-  render() {
-    const { article, withLicenseExample, notitle } = this.props;
-
-    return (
-      <div>
-        <section>
-          { notitle ? null : <h1>{article.title}</h1> }
-          <ArticleByline article={article} />
-          <Article.Introduction introduction={article.introduction} />
-        </section>
-        <div dangerouslySetInnerHTML={{ __html: article.content }} />
+const ArticleExample = ({ article, withLicenseExample, notitle }) => (
+  <section className="c-article-content">
+    <OneColumn cssModifier="narrow">
+      <section>
+        <TopicBreadcrumbDefault />
+        { withLicenseExample && <LicenseExample /> }
+        { notitle ? null : <h1>{article.title}</h1> }
+        <ArticleByline article={article} />
+        <Article.Introduction introduction={article.introduction} />
+      </section>
+    </OneColumn>
+    <OneColumn cssModifier="narrow">
+      <Article.Content content={article.content} />
+    </OneColumn>
+    <OneColumn cssModifier="narrow">
+      <section>
         { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
         { withLicenseExample && <LicenseExample /> }
-      </div>
-    );
-  }
-}
+      </section>
+    </OneColumn>
+  </section>
+);
 
 ArticleExample.propTypes = {
   article: PropTypes.shape({

@@ -20,6 +20,7 @@ import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import ArticleFootNotes from './article/ArticleFootNotes';
+import ArticleContent from './article/ArticleContent';
 import Article from './article/Article';
 import { Figure, FigureCaption, FigureDetails } from './article/Figure';
 import LicenseIconList from './license/LicenseIconList';
@@ -43,6 +44,7 @@ Footer.Ruler = FooterRuler;
 Footer.Editor = FooterEditor;
 Article.Introduction = ArticleIntroduction;
 Article.FootNotes = ArticleFootNotes;
+Article.Content = ArticleContent;
 
 export {
   Article,

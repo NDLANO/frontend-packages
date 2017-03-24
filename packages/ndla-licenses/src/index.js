@@ -18,6 +18,7 @@ import {
   PD,
   CC0,
   CC,
+  COPY,
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
@@ -29,6 +30,7 @@ export {
   PD,
   CC0,
   CC,
+  COPY,
   getLicenseByAbbreviation,
   getLicenseRightByAbbreviation,
 };

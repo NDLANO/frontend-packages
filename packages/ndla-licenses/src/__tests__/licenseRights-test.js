@@ -8,7 +8,7 @@
 
  /* eslint-env jest */
 
-import { getLicenseRightByAbbreviation, BY, CC } from '../licenseRights';
+import { getLicenseRightByAbbreviation, BY, COPY } from '../licenseRights';
 
 test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   const licenseRight = getLicenseRightByAbbreviation('by', 'nb');
@@ -19,9 +19,9 @@ test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
 });
 
 test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {
-  const licenseRight = getLicenseRightByAbbreviation(CC, 'en');
+  const licenseRight = getLicenseRightByAbbreviation(COPY, 'en');
   expect(licenseRight.title).toBe('Copyright');
-  expect(licenseRight.short).toBe(CC);
+  expect(licenseRight.short).toBe(COPY);
   expect(licenseRight.userFriendlyTitle).toBe('Copyright');
   expect(licenseRight.description).toBe('Only the creator can derive, publish, or license the work. It can not be shared without permission.');
 });

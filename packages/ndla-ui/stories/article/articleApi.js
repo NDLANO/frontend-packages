@@ -8,26 +8,55 @@
 
 import fetch from 'isomorphic-fetch';
 
-export const fetchArticle = id => fetch(`https://staging.api.ndla.no/article-converter/raw/nb/${id}/`).then(res => (
-  new Promise((resolve, reject) => {
-    if (res.ok) {
-      return res.json()
-        .then(article => ({ ...article, title: article.title[0].title }))
-        .then(article => resolve(article));
-    }
-    return res.json()
-        .then(json => reject(json));
-  })),
+import btoa from 'btoa';
+
+const url = 'https://test.api.ndla.no/auth/tokens';
+
+const b64EncodeUnicode = str => btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode(`0x${p1}`)));
+
+export const getToken = () => fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+    Authorization: `Basic ${b64EncodeUnicode('swagger-client:swagger-public-client-secret')}`,
+  },
+  body: 'grant_type=client_credentials',
+}).then(res => res.json()).then(json => json.access_token);
+
+export function headerWithAccessToken(token) {
+  return { Authorization: `Bearer ${token}` };
+}
+
+export const fetchArticle = id => (
+   new Promise((resolve, reject) => {
+     getToken().then((token) => {
+       fetch(`https://test.api.ndla.no/article-converter/raw/nb/${id}/`, { headers: headerWithAccessToken(token) })
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
+              .then(article => ({ ...article, title: article.title[0].title }))
+              .then(article => resolve(article));
+          }
+          return res.json()
+              .then(json => reject(json));
+        });
+     });
+   })
 );
 
-export const fetchArticleFromApi = id => fetch(`${window.location.protocol}//staging.api.ndla.no/article-api/v1/articles/${id}`).then(res => (
+export const fetchArticleFromApi = id => (
   new Promise((resolve, reject) => {
-    if (res.ok) {
-      return res.json()
+    getToken().then((token) => {
+      fetch(`https://test.api.ndla.no/article-api/v1/articles/${id}/`, { method: 'GET', headers: headerWithAccessToken(token) })
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
         .then(article => ({ ...article, title: article.title[0].title, content: article.content[0].content }))
         .then(article => resolve(article));
-    }
-    return res.json()
+          }
+          return res.json()
         .then(json => reject(json));
-  })),
+        });
+    });
+  })
 );

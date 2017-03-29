@@ -18,12 +18,13 @@ const classes = new BEMHelper({
 });
 
 const LicenseIcon = ({ licenseRight, className }) => {
+  const licenseDescription = getLicenseRightByAbbreviation(licenseRight).description;
   switch (licenseRight) {
-    case CC: return <Icon.LicenseCc className={className} />;
-    case BY: return <Icon.LicenseBy className={className} />;
-    case NC: return <Icon.LicenseNc className={className} />;
-    case ND: return <Icon.LicenseNd className={className} />;
-    case SA: return <Icon.LicenseSa className={className} />;
+    case CC: return <Icon.LicenseCc className={className} aria-label={licenseDescription} />;
+    case BY: return <Icon.LicenseBy className={className} aria-label={licenseDescription} />;
+    case NC: return <Icon.LicenseNc className={className} aria-label={licenseDescription} />;
+    case ND: return <Icon.LicenseNd className={className} aria-label={licenseDescription} />;
+    case SA: return <Icon.LicenseSa className={className} aria-label={licenseDescription} />;
     default: return undefined;
   }
 };

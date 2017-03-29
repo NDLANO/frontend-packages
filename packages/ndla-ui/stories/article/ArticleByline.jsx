@@ -27,23 +27,21 @@ LastUpdated.propTypes = {
   date: PropTypes.string,
 };
 
-const ArticleByline = ({ article, authors, date }) => {
+const ArticleByline = ({ article }) => {
   if (!article) {
     return null;
   }
 
   return (
     <section {...classes('byline')}>
-      {authors && <AuthorsList authors={article.copyright.authors} />} –
-      {date && <LastUpdated date={article.updated} />}
+      {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />} –
+      <LastUpdated date={article.updated} />
     </section>
   );
 };
 
 ArticleByline.propTypes = {
   article: PropTypes.object,
-  date: PropTypes.string,
-  authors: PropTypes.array,
 };
 
 export default ArticleByline;

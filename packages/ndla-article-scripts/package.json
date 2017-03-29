@@ -1,6 +1,6 @@
 {
   "name": "ndla-article-scripts",
-  "version": "0.0.1",
+  "version": "0.0.2-beta",
   "description": "A collection of functions for making article content responsive (and interactive)",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -10,6 +10,7 @@
     "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --out-dir lib --ignore __tests__",
     "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --out-dir es --ignore __tests__",
+    "watch": "$(cd ..; npm bin)/cross-env $(cd ..; npm bin)/nodemon --exec npm run build --watch src",
     "clean": "$(cd ..; npm bin)/rimraf lib es",
     "test": "$(cd ..; npm bin)/jest",
     "prepublish": "npm run clean && npm run build"

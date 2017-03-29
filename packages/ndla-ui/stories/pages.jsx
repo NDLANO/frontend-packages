@@ -7,9 +7,10 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
-import { Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
+import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
+import FigureWithLicense from './article/FigureWithLicense';
 
 // Using for example alternative article
 import article, { topicList, subtopicList, subjectList } from '../dummydata/index';
@@ -89,12 +90,12 @@ const ExamplePage1 = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
         tydeligere for både deg selv og dem du eventuelt jobber sammen med
       i klassen.</p>
-      <LicenseToggle>
+      <FigureWithLicense>
         <img
           src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
           alt=""
         />
-      </LicenseToggle>
+      </FigureWithLicense>
       <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
@@ -133,12 +134,12 @@ const IdealExamplePage1 = () => (
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
-      <LicenseToggle>
+      <FigureWithLicense>
         <img
           src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
           alt=""
         />
-      </LicenseToggle>
+      </FigureWithLicense>
       <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
@@ -181,7 +182,7 @@ const ExamplePage2 = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
-      <LicenseToggle>
+      <FigureWithLicense>
         <iframe
           width="480"
           height="270"
@@ -189,7 +190,7 @@ const ExamplePage2 = () => (
           frameBorder="0"
           allowFullScreen=""
         />
-      </LicenseToggle>
+      </FigureWithLicense>
       <p>En pitch er en kortvarig framføring av en idé for en potensiell
          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
           få andre til å tenne på idéen din og se potensialet i den.</p>
@@ -392,9 +393,9 @@ const ExamplePage4 = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
-      <LicenseToggle>
+      <FigureWithLicense>
         <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
-      </LicenseToggle>
+      </FigureWithLicense>
       <p>En pitch er en kortvarig framføring av en idé for en potensiell
          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
           få andre til å tenne på idéen din og se potensialet i den.</p>
@@ -437,9 +438,9 @@ const ExampleWithSummary = () => (
         pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
-      <LicenseToggle>
+      <FigureWithLicense>
         <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
-      </LicenseToggle>
+      </FigureWithLicense>
       <p>En pitch er en kortvarig framføring av en idé for en potensiell
          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
           få andre til å tenne på idéen din og se potensialet i den.</p>
@@ -622,39 +623,32 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn cssModifier="narrow">
-        <ArticleLoader articleId="44" />
-      </OneColumn>
+      <Hero white />
+      <ArticleLoader articleId="44" />
       <FooterExample />
-
     </PageContainer>
   ))
   .add('ArticlePage with licensebox', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn cssModifier="narrow">
-        <article>
-          <ArticleLoader articleId="44" withLicenseExample />
-        </article>
-      </OneColumn>
+      <Hero white />
+      <ArticleLoader articleId="44" withLicenseExample />
       <FooterExample />
     </PageContainer>
   ))
   .add('ArticlePage loader', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn>
-        <ArticleLoader />
-      </OneColumn>
+      <Hero white />
+      <ArticleLoader />
       <FooterExample />
     </PageContainer>
   ))
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
       <Masthead />
-      <OneColumn cssModifier="narrow">
-        <ArticleLoader articleId="34" />
-      </OneColumn>
+      <Hero white />
+      <ArticleLoader articleId="34" />
       <FooterExample />
     </PageContainer>
   ))

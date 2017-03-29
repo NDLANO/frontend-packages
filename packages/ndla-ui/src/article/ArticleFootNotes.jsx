@@ -27,7 +27,7 @@ const ArticleFootNotes = ({ footNotes, ...rest }) => (
   <ol className="article_foot-notes">
     {
     Object.keys(footNotes).map(key => (
-      <FootNote key={key} refNr={key.replace('ref_', '')} {...rest} />
+      <FootNote key={key} refNr={key.replace('ref_', '')} footNote={footNotes[key]} {...rest} />
     ))
     }
   </ol>

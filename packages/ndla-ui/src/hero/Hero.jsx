@@ -25,12 +25,12 @@ export const Hero = ({ children, url, alt, small, white }) => {
   const classResult = classModifier === 'small' ? classModifier : classModifier2;
   const imageUrl = url || fallbackUrl;
   return (<div {...classes(!url || alt || small || white ? { modifiers: classResult } : null)} style={bgStyle(imageUrl)}>
-    { children }
+    { children || null }
   </div>);
 };
 
 Hero.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   url: PropTypes.string,
   alt: PropTypes.bool,
   small: PropTypes.bool,

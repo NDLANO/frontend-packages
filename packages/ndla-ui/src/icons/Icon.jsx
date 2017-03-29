@@ -29,8 +29,8 @@ import LicenseNd from './LicenseNd';
 import LicenseSa from './LicenseSa';
 
 function Icon(props) {
-  const { icon, ...rest } = props;
-  return createElement(icon, { className: classNames('icon', rest.className) });
+  const { icon, className, ...rest } = props;
+  return createElement(icon, { className: classNames('icon', className), ...rest });
 }
 
 

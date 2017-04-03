@@ -62,7 +62,7 @@ const ResourcesExample = () => (
 
 
 const ExamplePage1 = () => (
-  <OneColumn cssModifier="negative-margin">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -96,7 +96,7 @@ const ExamplePage1 = () => (
   </OneColumn>
 );
 const IdealExamplePage1 = () => (
-  <OneColumn cssModifier="negative-margin">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -134,7 +134,7 @@ const IdealExamplePage1 = () => (
   </OneColumn>
 );
 const ExamplePage2 = () => (
-  <OneColumn cssModifier="negative-margin">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -175,7 +175,7 @@ const ExamplePage2 = () => (
 );
 
 const ExamplePage3 = () => (
-  <OneColumn cssModifier="negative-margin">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -325,7 +325,7 @@ const ExamplePage3 = () => (
 );
 
 const ExamplePage4 = () => (
-  <OneColumn cssModifier="negative-margin">
+  <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -450,11 +450,7 @@ const SubTopic = () => (
 
 const SubTopicHero = () => (
   <OneColumn cssModifier="narrow">
-    <div className="c-hero__content">
-      <section>
-        <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
-      </section>
-    </div>
+    <div className="c-hero__content" />
   </OneColumn>
 );
 
@@ -468,39 +464,14 @@ const SubTopicHero = () => (
 
 const MainTopicHero = () => (
   <OneColumn cssModifier="narrow">
-    <div className="c-hero__content">
-      <section>
-        <h1 className="c-hero__title">Kommunikasjon for fagarbeideren</h1>
-      </section>
-    </div>
+    <div className="c-hero__content" />
   </OneColumn>
 );
 
 const MainTopic = () => (
-  <div>
-    <OneColumn cssModifier="narrow">
-      <section className="c-article-content">
-        <ArticleLoader articleId="1325" isTopicArticle notitle />
-      </section>
-    </OneColumn>
-  </div>
-);
-
-const ResourcesTopics = () => (
-  <ResourceWrapper>
-    <Tabs
-      tabs={[
-        { title: 'Emner',
-          content:
-            <TopicIntroductionList
-              toTopic={translateIDtoURL}
-              topics={topicList}
-            />,
-        },
-        { title: 'Ressurser', content: <ResourceSubsetList /> },
-      ]}
-    />
-  </ResourceWrapper>
+  <section className="c-article-content">
+    <ArticleLoader articleId="1325" isTopicArticle />
+  </section>
 );
 
 const ResourcesSubTopics = () => (
@@ -572,21 +543,10 @@ storiesOf('Sidevisninger', module)
   .add('Emneside', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
-        <OneColumn cssModifier="narrow">
-          <div className="c-hero__content">
-            <section>
-              <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} subjectsTitle="Fag" toSubjects={() => '#'} toTopic={() => '#'} />
-              <h1 className="c-hero__title">Idéskaping og mediedesign</h1>
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
-      <div>
-        <OneColumn cssModifier="narrow">
-          <ArticleLoader notitle isTopicArticle articleId="208" />
-        </OneColumn>
-      </div>
+      <Hero />
+      <OneColumn cssModifier="narrow">
+        <ArticleLoader notitle isTopicArticle articleId="208" />
+      </OneColumn>
       <ResourceWrapper>
         <Tabs
           tabs={[
@@ -717,7 +677,9 @@ storiesOf('Emnesider', module)
         <Hero>
           <MainTopicHero />
         </Hero>
-        <MainTopic />
+        <OneColumn cssModifier="narrow">
+          <MainTopic />
+        </OneColumn>
         <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>

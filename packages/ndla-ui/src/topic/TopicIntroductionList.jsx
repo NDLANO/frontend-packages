@@ -24,7 +24,6 @@ const TopicIntroduction = ({ toTopic, topic }) => (
     </div>
     <div {...classes('body o-flag__body')}>
       <h1 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h1>
-      {topic.introduction ? <p>{topic.introduction}</p> : null}
     </div>
   </li>
 );

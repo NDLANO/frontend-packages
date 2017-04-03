@@ -37,15 +37,12 @@ export const MastheadWithTopicMenu = () => (
   <Masthead>
     <MastheadItem left>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
-      <ClickToggle title="Medieuttrykk og mediesamfunnet" className="c-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
-        <TopicMenu toTopic={() => '#'} topics={topicMenu} />
-      </ClickToggle>
     </MastheadItem>
     <MastheadItem right>
       <SiteNav>
-        <SiteNavItem to="#">Søk</SiteNavItem>
-        <SiteNavItem to="#">Kontakt</SiteNavItem>
-        <SiteNavItem to="#">Hjelp</SiteNavItem>
+        <ClickToggle title="Fag" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+          <TopicMenu toTopic={() => '#'} topics={topicMenu} />
+        </ClickToggle>
       </SiteNav>
     </MastheadItem>
   </Masthead>

@@ -14,7 +14,6 @@
     "build:css": "webpack -p && cp ./dist/style.css ./es && cp ./dist/style.css ./lib",
     "clean": "$(cd ..; npm bin)/rimraf lib es dist",
     "prepublish": "npm run clean && npm run build",
-    "postinstall": "$(cd ..; npm bin)/rimraf node_modules/react node_modules/react-dom",
     "test": "$(cd ..; npm bin)/jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o ../../.out"

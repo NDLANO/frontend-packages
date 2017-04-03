@@ -16,18 +16,18 @@
     text-align: center;
     padding: $spacing--small $spacing--small $spacing--small 0;
     @include mq(desktop) {
-      padding: $spacing $spacing $spacing 0;
+      padding: $spacing--small $spacing $spacing--small*0.8 0;
     }
 }
 .masthead__right {
-  padding: 0;
+  padding: $spacing--small 0 $spacing--small 0;
   display: block;
   flex-grow: 1;
     @include mq(tablet) {
-      padding: $spacing 0 0 0;
+      text-align:right;
     }
     @include mq(desktop) {
-      padding: $spacing 0 0 0;
+      padding:0;
       text-align:right;
       flex-grow: 1;
       display: inline-block;

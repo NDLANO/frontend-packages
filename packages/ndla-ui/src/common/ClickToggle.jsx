@@ -37,8 +37,8 @@
      const children = React.cloneElement(this.props.children, { close: this.close });
      return (
        <Component {...rest}>
-         { isOpen ? <Button stripped className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
-         <Button stripped className={buttonClassName} onClick={this.handleClick} >
+         { isOpen ? <Button className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
+         <Button className={buttonClassName} onClick={this.handleClick} >
            { title }
          </Button>
          { isOpen ? children : null }

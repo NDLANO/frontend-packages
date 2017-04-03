@@ -279,6 +279,8 @@ $shame-spacing: 12px;
 
 .c-topic-menu-toggle-button {
   position: relative;
+  padding: $spacing--small;
+  padding-right: $spacing*1.5;
 
   &:after {
     content: '';
@@ -288,8 +290,13 @@ $shame-spacing: 12px;
     border-right: 7px solid transparent;
     border-top: 7px solid $brand-color;
     position: absolute;
-    bottom: 7px;
-    right: -24px;
+    top: $spacing--small*1.7;
+    right: $spacing--small;
+  }
+  &:hover {
+    &:after {
+      border-top: 7px solid $white;
+    }
   }
 }
 
@@ -297,7 +304,7 @@ $shame-spacing: 12px;
 .c-topic-menu__dropdown {
   position: absolute;
   padding: 0;
-  margin-top: 31px;
+  margin-top: -4px;
   min-height: 250px;
   background: $brand-color;
   text-align: left;

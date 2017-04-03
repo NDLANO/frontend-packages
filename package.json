@@ -8,6 +8,7 @@
     "postinstall": "lerna bootstrap",
     "deploy-storybook": "storybook-to-ghpages",
     "prebuild-storybook": "lerna bootstrap",
+    "watch": "node ./scripts/watch.js",
     "build-storybook": "packages/ndla-ui/node_modules/.bin/build-storybook -c packages/ndla-ui/.storybook -o .out"
   },
   "repository": {
@@ -28,6 +29,8 @@
     "babel-plugin-transform-object-rest-spread": "6.22.0",
     "babel-preset-es2015": "6.22.0",
     "babel-preset-react": "6.22.0",
+    "chalk": "^1.1.3",
+    "chokidar": "^1.6.1",
     "classnames": "2.2.5",
     "cross-env": "3.1.4",
     "eslint": "3.14.1",

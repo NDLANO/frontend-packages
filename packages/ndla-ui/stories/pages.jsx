@@ -62,18 +62,8 @@ const ResourcesExample = () => (
 
 
 const ExamplePage1 = () => (
-  <OneColumn cssModifier="narrow">
+  <OneColumn cssModifier="negative-margin">
     <section className="c-article-content">
-      <div className="c-breadcrumb">Du er her:
-        <ol className="c-breadcrumb__list">
-          <li className="c-breadcrumb__item">
-            <a href="">Fag</a>
-          </li>
-          <li className="c-breadcrumb__item">
-            <a href="">Helsearbeiderfag</a>
-          </li>
-        </ol>
-      </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
@@ -106,18 +96,8 @@ const ExamplePage1 = () => (
   </OneColumn>
 );
 const IdealExamplePage1 = () => (
-  <OneColumn cssModifier="narrow">
+  <OneColumn cssModifier="negative-margin">
     <section className="c-article-content">
-      <div className="c-breadcrumb">Du er her:
-        <ol className="c-breadcrumb__list">
-          <li className="c-breadcrumb__item">
-            <a href="">Fag</a>
-          </li>
-          <li className="c-breadcrumb__item">
-            <a href="">Helsearbeiderfag</a>
-          </li>
-        </ol>
-      </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
@@ -154,18 +134,8 @@ const IdealExamplePage1 = () => (
   </OneColumn>
 );
 const ExamplePage2 = () => (
-  <OneColumn cssModifier="narrow">
+  <OneColumn cssModifier="negative-margin">
     <section className="c-article-content">
-      <div className="c-breadcrumb">Du er her:
-        <ol className="c-breadcrumb__list">
-          <li className="c-breadcrumb__item">
-            <a href="">Fag</a>
-          </li>
-          <li className="c-breadcrumb__item">
-            <a href="">Helsearbeiderfag</a>
-          </li>
-        </ol>
-      </div>
       <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
@@ -205,18 +175,8 @@ const ExamplePage2 = () => (
 );
 
 const ExamplePage3 = () => (
-  <OneColumn cssModifier="narrow">
+  <OneColumn cssModifier="negative-margin">
     <section className="c-article-content">
-      <div className="c-breadcrumb">Du er her:
-        <ol className="c-breadcrumb__list">
-          <li className="c-breadcrumb__item">
-            <a href="">Fag</a>
-          </li>
-          <li className="c-breadcrumb__item">
-            <a href="">Helsearbeiderfag</a>
-          </li>
-        </ol>
-      </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
@@ -365,18 +325,8 @@ const ExamplePage3 = () => (
 );
 
 const ExamplePage4 = () => (
-  <OneColumn cssModifier="narrow">
+  <OneColumn cssModifier="negative-margin">
     <section className="c-article-content">
-      <div className="c-breadcrumb">Du er her:
-        <ol className="c-breadcrumb__list">
-          <li className="c-breadcrumb__item">
-            <a href="">Fag</a>
-          </li>
-          <li className="c-breadcrumb__item">
-            <a href="">Helsearbeiderfag</a>
-          </li>
-        </ol>
-      </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
@@ -412,16 +362,6 @@ const ExamplePage4 = () => (
 const ExampleWithSummary = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <div className="c-breadcrumb">Du er her:
-        <ol className="c-breadcrumb__list">
-          <li className="c-breadcrumb__item">
-            <a href="">Fag</a>
-          </li>
-          <li className="c-breadcrumb__item">
-            <a href="">Helsearbeiderfag</a>
-          </li>
-        </ol>
-      </div>
       <h1>Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
@@ -501,7 +441,9 @@ const ExampleWithSummary = () => (
 const SubTopic = () => (
   <div>
     <OneColumn cssModifier="narrow">
-      <ArticleLoader articleId="5948" notitle />
+      <section className="c-article-content">
+        <ArticleLoader articleId="5948" notitle />
+      </section>
     </OneColumn>
   </div>
 );
@@ -510,19 +452,6 @@ const SubTopicHero = () => (
   <OneColumn cssModifier="narrow">
     <div className="c-hero__content">
       <section>
-        <div className="c-breadcrumb">Du er her:
-          <ol className="c-breadcrumb__list">
-            <li className="c-breadcrumb__item">
-              <a href="">Fag</a>
-            </li>
-            <li className="c-breadcrumb__item">
-              <a href="">Helsearbeiderfag</a>
-            </li>
-            <li className="c-breadcrumb__item">
-              <a href="">Kommunikasjon for fagarbeideren</a>
-            </li>
-          </ol>
-        </div>
         <h1 className="c-hero__title">Profesjonell kommunikasjon</h1>
       </section>
     </div>
@@ -530,38 +459,17 @@ const SubTopicHero = () => (
 );
 
 
-const TopicHero = () => (
-  <OneColumn cssModifier="narrow">
-    <div className="c-hero__content">
-      <section>
-        <div className="c-breadcrumb">Du er her:
-          <ol className="c-breadcrumb__list">
-            <li className="c-breadcrumb__item">
-              <a href="">Fag</a>
-            </li>
-          </ol>
-        </div>
-        <h1 className="c-hero__title">Helsearbeiderfag</h1>
-      </section>
-    </div>
-  </OneColumn>
-);
+// const TopicHero = () => (
+//   <OneColumn cssModifier="narrow">
+//     <div className="c-hero__content"></div>
+//   </OneColumn>
+// );
 
 
 const MainTopicHero = () => (
   <OneColumn cssModifier="narrow">
     <div className="c-hero__content">
       <section>
-        <div className="c-breadcrumb">Du er her:
-          <ol className="c-breadcrumb__list">
-            <li className="c-breadcrumb__item">
-              <a href="">Fag</a>
-            </li>
-            <li className="c-breadcrumb__item">
-              <a href="">Helsearbeiderfag</a>
-            </li>
-          </ol>
-        </div>
         <h1 className="c-hero__title">Kommunikasjon for fagarbeideren</h1>
       </section>
     </div>
@@ -571,7 +479,9 @@ const MainTopicHero = () => (
 const MainTopic = () => (
   <div>
     <OneColumn cssModifier="narrow">
-      <ArticleLoader articleId="1325" isTopicArticle notitle />
+      <section className="c-article-content">
+        <ArticleLoader articleId="1325" isTopicArticle notitle />
+      </section>
     </OneColumn>
   </div>
 );
@@ -595,20 +505,18 @@ const ResourcesTopics = () => (
 
 const ResourcesSubTopics = () => (
   <ResourceWrapper>
-    <Tabs
-      tabs={[
-        {
-          title: 'Underemner',
-          content:
-            <TopicIntroductionList
-              toTopic={() => '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel'}
-              topics={subtopicList}
-            />,
-        },
-        { title: 'Ressurser', content: <ResourceSubsetList /> },
-      ]}
-    />
+    <ResourceSubsetList />
   </ResourceWrapper>
+);
+
+const Topics = () => (
+  <section className="c-article-content">
+    <h1>Helsefag</h1>
+    <TopicIntroductionList
+      toTopic={() => '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel'}
+      topics={subtopicList}
+    />
+  </section>
 );
 
 
@@ -668,9 +576,7 @@ storiesOf('Sidevisninger', module)
         <OneColumn cssModifier="narrow">
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} subjectsTitle="Fag" toSubjects={() => '#'} toTopic={() => '#'}>
-                Du er her:
-              </TopicBreadcrumb>
+              <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} subjectsTitle="Fag" toSubjects={() => '#'} toTopic={() => '#'} />
               <h1 className="c-hero__title">Idéskaping og mediedesign</h1>
             </section>
           </div>
@@ -704,7 +610,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med bilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero />
         <ExamplePage1 />
         <ResourcesExample />
         <FooterExample />
@@ -713,7 +619,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med video', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero />
         <ExamplePage2 />
         <ResourcesExample />
         <FooterExample />
@@ -722,7 +628,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med tabell', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero />
         <ExamplePage3 />
         <ResourcesExample />
         <FooterExample />
@@ -740,7 +646,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel uten hero', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero white />
+        <Hero />
         <IdealExamplePage1 />
         <ResourcesExample />
         <FooterExample />
@@ -749,7 +655,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med oppsummeringsboks', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero white />
+        <Hero />
         <ExampleWithSummary />
         <ResourcesExample />
         <FooterExample />
@@ -797,10 +703,11 @@ storiesOf('Emnesider', module)
     .add('2. Valgt fag', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero>
-          <TopicHero />
-        </Hero>
-        <ResourcesTopics />
+        <Hero />
+        <OneColumn cssModifier="narrow">
+          <Topics />
+          <ResourcesSubTopics />
+        </OneColumn>
         <FooterExample />
       </PageContainer>
     ))
@@ -815,7 +722,7 @@ storiesOf('Emnesider', module)
         <FooterExample />
       </PageContainer>
     ))
-    .add('4. Underemne med Ressurser', () => (
+    .add('4. Underemne', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero small url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">

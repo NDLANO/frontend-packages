@@ -10,3 +10,8 @@
 .u-text-center {
   text-align: center;
 }
+p.article_introduction {
+  @include inuit-font-size(26px, 36px);
+  font-weight: $font-weight-light;
+  margin-top: $spacing*1.5;
+}

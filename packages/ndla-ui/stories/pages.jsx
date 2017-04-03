@@ -7,24 +7,24 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
-import { Icon, Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicBreadcrumb, TopicIntroductionList } from '../src';
+import { Icon, Aside, Footer, Hero, LicenseToggle, OneColumn, PageContainer, ResourceWrapper, TopicIntroductionList } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 
 // Using for example alternative article
-import article, { topicList, subtopicList, subjectList } from '../dummydata/index';
+import article, { topicList, subtopicList } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
 
 
-const translateIDtoURL = (id) => {
-  const URLsArray = [
-    '?selectedKind=Emnesider&selectedStory=3.%20Hovedemne&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
-    '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
-  ];
-  return URLsArray[id - 1];
-};
+// const translateIDtoURL = (id) => {
+//   const URLsArray = [
+//     '?selectedKind=Emnesider&selectedStory=3.%20Hovedemne&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
+//     '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
+//   ];
+//   return URLsArray[id - 1];
+// };
 
 const FooterExample = () => (
   <Footer>

@@ -13,6 +13,7 @@
     "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --out-dir es --ignore __tests__",
     "build:css": "webpack -p && cp ./dist/style.css ./es && cp ./dist/style.css ./lib",
     "clean": "$(cd ..; npm bin)/rimraf lib es dist",
+    "postinstall": "$(cd ..; npm bin)/rimraf node_modules/react node_modules/react-dom",
     "prepublish": "npm run clean && npm run build",
     "test": "$(cd ..; npm bin)/jest",
     "storybook": "start-storybook -p 6006",

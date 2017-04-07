@@ -34,13 +34,14 @@
     background-color: $brand-grey--lighter;
     text-transform: uppercase;
     padding: $spacing--small/2 $spacing--small;
+    display: flex;
 
-    p {
-      margin: 0;
-    }
   }
 
   &__authors {
+    @include mq(tablet) {
+      max-width: 50%;
+    }
     padding-right: $spacing;
     svg {
       margin-top: -3px;

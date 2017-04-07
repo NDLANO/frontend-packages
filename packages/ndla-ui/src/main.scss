@@ -8,6 +8,7 @@
 @import "../node_modules/inuitcss/tools/tools.font-size";
 @import "../node_modules/inuitcss/tools/tools.clearfix";
 @import "../node_modules/inuitcss/tools/tools.rem";
+@import "global/utilities/mixin_icons";
 
 $mq-breakpoints: (
     mobile:  320px,

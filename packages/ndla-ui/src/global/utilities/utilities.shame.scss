@@ -275,6 +275,17 @@ $shame-spacing: 12px;
       @include svg_icon('menu', $white);
     }
   }
+  &--active {
+    &:before {
+      @include svg_icon('close', $brand-color);
+      width: 42px;
+      height: 42px;
+      left: $spacing--small*.6;
+      top: $spacing--small*.5;
+    }
+    background: $white;
+    border: none;
+  }
 }
 
 
@@ -304,17 +315,17 @@ $shame-spacing: 12px;
 
   &__right {
     flex: 2;
-    padding: $spacing;
+    padding: $spacing--large;
     background-color: $brand-color--tertiary;
   }
   &__list {
-    padding: 1em 0;
+    padding: $spacing 0;
     list-style: none;
     margin: 0;
   }
 
   &__topic-item {
-    padding: $spacing--small/2 0 $spacing--small/2 $spacing--large;
+    padding: $spacing--small 0 $spacing--small $spacing--large;
     border-bottom: 1px solid rgba($brand-color--light, .4);
     transition: all .1s ease-in-out;
     &--active {
@@ -326,18 +337,16 @@ $shame-spacing: 12px;
   }
 
   &__subtopic-item {
-    padding: $spacing--small/2 0;
+    padding: $spacing--small 0;
   }
 
   &__link {
     color: $brand-color;
-    text-decoration: none;
     &--underline:hover {
-      text-decoration: underline;
     }
     &--big {
       border-bottom: 1px solid rgba($brand-color--secondary, .5);
-      padding-bottom: $spacing--small;
+      padding-bottom: $spacing;
       display: block;
     }
   }

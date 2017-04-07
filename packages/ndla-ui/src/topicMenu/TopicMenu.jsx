@@ -26,8 +26,8 @@ export default class TopicMenu extends Component {
     };
 
     this.closeCallback = null;
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMouseClick = this.handleMouseClick.bind(this);
+    // this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   componentWillUnmount() {
@@ -36,7 +36,7 @@ export default class TopicMenu extends Component {
     }
   }
 
-  handleMouseOver(topicId) {
+  handleMouseClick(topicId) {
     if (this.closeCallback) {
       clearTimeout(this.closeCallback);
       this.closeCallback = null;
@@ -44,11 +44,11 @@ export default class TopicMenu extends Component {
     this.setState({ expandedTopicId: topicId });
   }
 
-  handleMouseLeave() {
-    this.closeCallback = setTimeout(() => {
-      this.setState({ expandedTopicId: undefined });
-    }, this.props.delay);
-  }
+  // handleMouseLeave() {
+  //   this.closeCallback = setTimeout(() => {
+  //     this.setState({ expandedTopicId: undefined });
+  //   }, this.props.delay);
+  // }
 
   render() {
     const { topics, toTopic, close: closeMenu } = this.props;
@@ -58,8 +58,8 @@ export default class TopicMenu extends Component {
       <div {...classes('dropdown', null, 'o-wrapper u-1/1')} onMouseLeave={this.handleMouseLeave}>
         <ul {...classes('list', null, classes('left').className)}>
           { topics.map(topic =>
-            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onMouseOver={() => this.handleMouseOver(topic.id)} key={topic.id}>
-              <SafeLink {...classes('link')} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
+            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
+              <SafeLink {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
             </li>),
           ) }
         </ul>

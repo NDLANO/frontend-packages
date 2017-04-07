@@ -38,7 +38,7 @@
      return (
        <Component {...rest}>
          { isOpen ? <Button className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
-         <Button className={buttonClassName} onClick={this.handleClick} >
+         <Button className={isOpen ? `${buttonClassName} c-topic-menu-toggle-button--active` : `${buttonClassName}`} onClick={this.handleClick} >
            { title }
          </Button>
          { isOpen ? children : null }

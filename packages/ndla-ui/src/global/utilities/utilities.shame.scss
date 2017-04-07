@@ -246,11 +246,7 @@ $shame-spacing: 12px;
 }
 
 .c-topic-menu-container {
-  margin-top: $spacing--small;
 
-  @include mq(tablet) {
-    margin-left: $spacing--large * 1.45;
-  }
   @include mq(desktop) {
     display: inline-block;
   }

@@ -1,33 +1,31 @@
 .masthead {
-  box-shadow: 1px 1px 15px 0 rgba($brand-grey-dark, .4);
+  border-bottom: 1px solid $brand-grey--lighter;
   z-index: 99;
 }
 .masthead > div {
   justify-content: center;
   text-align: center;
+  padding: $spacing--small $spacing;
+  flex-direction: column-reverse;
 
   @include mq(tablet) {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
   }
 }
 .masthead__left {
-    text-align: center;
-    padding: $spacing--small $spacing--small $spacing--small 0;
-    @include mq(desktop) {
-      padding: $spacing--small $spacing $spacing--small*0.8 0;
-    }
 }
 .masthead__right {
-  padding: $spacing--small 0 $spacing--small 0;
+  padding: $spacing--small 0;
   display: block;
   flex-grow: 1;
     @include mq(tablet) {
       text-align:right;
+      padding:0;
     }
     @include mq(desktop) {
-      padding:0;
       text-align:right;
       flex-grow: 1;
       display: inline-block;

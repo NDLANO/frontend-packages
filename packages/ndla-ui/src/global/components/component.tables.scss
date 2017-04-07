@@ -23,15 +23,13 @@
     padding: $spacing/3;
   }
   th, tbody td:before {
-    color: $brand-color;
     font-weight: $font-weight-bold;
-    font-size: 90%;
     text-transform: uppercase;
     padding: 4px 10px 4px 4px;
   }
   th {
     border-bottom: 3px solid $brand-color--lighter;
-    background-color: $brand-color--lighter;
+    background-color: $white;
     padding: $spacing--small;
   }
   td {

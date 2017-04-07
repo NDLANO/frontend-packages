@@ -1,0 +1,19 @@
+.pager {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.pager_step {
+  display: inline;
+  border-top: 3px solid $background-color--dark;
+  padding: 1em 1.45em;
+  margin: 1em .3em 0;
+  text-decoration: none;
+  color: $brand-color;
+}
+
+.pager_step--active, .pager_step:hover {
+  border-top: 3px solid $brand-color;
+  background-color: rgba($brand-color--lighter, .5);
+}

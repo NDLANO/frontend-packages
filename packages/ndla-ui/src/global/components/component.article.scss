@@ -30,7 +30,6 @@
     margin-bottom: $spacing*2;
     @include inuit-font-size(16px, 20px);
     font-family: $font;
-    font-weight: $font-weight-light;
     color: $brand-grey;
     background-color: $brand-grey--lighter;
     text-transform: uppercase;

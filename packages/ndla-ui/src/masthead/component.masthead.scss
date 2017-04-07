@@ -6,11 +6,9 @@
   justify-content: center;
   text-align: center;
   padding: $spacing--small $spacing;
-  flex-direction: column-reverse;
 
   @include mq(tablet) {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -19,7 +17,6 @@
 }
 .masthead__right {
   padding: $spacing--small 0;
-  display: block;
   flex-grow: 1;
     @include mq(tablet) {
       text-align:right;
@@ -28,7 +25,5 @@
     @include mq(desktop) {
       text-align:right;
       flex-grow: 1;
-      display: inline-block;
-
     }
 }

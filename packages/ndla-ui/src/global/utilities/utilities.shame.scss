@@ -279,17 +279,21 @@ $shame-spacing: 12px;
 
 
 .c-topic-menu__dropdown {
-  position: absolute;
+  position: fixed;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
   padding: 0;
-  margin-top: -4px;
+  margin-top: 15px;
   min-height: 250px;
-  background: $brand-color;
+  background: $brand-color--lighter;
   text-align: left;
   left: 0;
   right: 0;
   z-index: 30;
   display: flex;
   box-shadow: 0 10px 20px rgba($black, 0.4);
+  text-transform: none;
 }
 
 .c-topic-menu {
@@ -300,8 +304,8 @@ $shame-spacing: 12px;
 
   &__right {
     flex: 2;
-    padding: 1em 2em;
-    background-color: $brand-color--dark;
+    padding: $spacing;
+    background-color: $brand-color--tertiary;
   }
   &__list {
     padding: 1em 0;
@@ -314,7 +318,7 @@ $shame-spacing: 12px;
     border-bottom: 1px solid rgba($brand-color--light, .4);
     transition: all .1s ease-in-out;
     &--active {
-      background-color: $brand-color--dark;
+      background-color: $brand-color--tertiary;
     }
     &:last-child {
       border: none;
@@ -326,14 +330,15 @@ $shame-spacing: 12px;
   }
 
   &__link {
-    color: $white;
-    font-weight: $font-weight-bold;
+    color: $brand-color;
     text-decoration: none;
     &--underline:hover {
       text-decoration: underline;
     }
     &--big {
-      font-size: 1.4em;
+      border-bottom: 1px solid rgba($brand-color--secondary, .5);
+      padding-bottom: $spacing--small;
+      display: block;
     }
   }
 }

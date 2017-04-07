@@ -8,6 +8,10 @@
     transform: rotate(180deg);
   }
 }
+.c-icon--medium {
+  width: $spacing;
+  height: $spacing;
+}
 
 .c-license-icons {
   &__list {

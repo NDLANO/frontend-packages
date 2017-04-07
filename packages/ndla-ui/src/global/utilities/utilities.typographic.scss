@@ -13,5 +13,6 @@
 p.article_introduction {
   @include inuit-font-size(26px, 36px);
   font-weight: $font-weight-light;
+  font-family: $font;
   margin-top: $spacing*1.5;
 }

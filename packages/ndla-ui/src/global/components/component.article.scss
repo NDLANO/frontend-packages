@@ -17,16 +17,23 @@
   margin-bottom: $spacing--large;
 
   &-content {
+    border: 1px solid $brand-grey--lighter;
     margin-bottom: $spacing--large;
+    padding-bottom: $spacing--large;
+    font-family: $font-serif;
+    @include inuit-font-size(18px, 32px);
   }
 
   &__byline {
     margin-top: $spacing;
     margin-bottom: $spacing*2;
     @include inuit-font-size(16px, 20px);
+    font-family: $font;
     font-weight: $font-weight-light;
     color: $brand-grey;
+    background-color: $brand-grey--lighter;
     text-transform: uppercase;
+    padding: $spacing--small/2 $spacing--small;
 
     p {
       margin: 0;

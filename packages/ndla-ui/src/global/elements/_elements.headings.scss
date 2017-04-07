@@ -28,12 +28,7 @@ h2 {
     line-height: 1.5;
   }
 }
-h2, h3 {
-  font-variant: small-caps;
-  text-transform: lowercase;
-  margin-top: $spacing * 2;
-  margin-bottom: $spacing / 2;
-}
+
 article {
   h1 {
     display: table; /* inline block, but with newline for non-blocking sibling element */
@@ -41,10 +36,12 @@ article {
   }
 }
 
-// Font sizes
-
-
 h1 {
   font-weight: $font-weight-semibold;
-  @include inuit-font-size(36px, 45px);
+  @include inuit-font-size(38px, 45px);
+}
+h2, h3 {
+  @include inuit-font-size(22px, 30px);
+  margin-top: $spacing * 2;
+  margin-bottom: $spacing / 2;
 }

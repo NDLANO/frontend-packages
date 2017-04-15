@@ -1,0 +1,184 @@
+{
+  "level": "error",
+  "text": "TypeError: e is undefined",
+  "stackInfo": {
+    "name": "TypeError",
+    "message": "e is undefined",
+    "url": "http://localhost:3000/",
+    "stack": [
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "r",
+        "args": [],
+        "line": 25,
+        "column": 183317
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "r",
+        "args": [],
+        "line": 11,
+        "column": 118147
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "a",
+        "args": [],
+        "line": 11,
+        "column": 114266
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "u",
+        "args": [],
+        "line": 11,
+        "column": 114483
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "d",
+        "args": [],
+        "line": 11,
+        "column": 51291
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "v",
+        "args": [],
+        "line": 11,
+        "column": 51419
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "r",
+        "args": [],
+        "line": 25,
+        "column": 80655
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "m.processEventQueue",
+        "args": [],
+        "line": 11,
+        "column": 52477
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "r",
+        "args": [],
+        "line": 30,
+        "column": 169846
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "i.handleTopLevel",
+        "args": [],
+        "line": 30,
+        "column": 169919
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "i",
+        "args": [],
+        "line": 30,
+        "column": 170370
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "i.perform",
+        "args": [],
+        "line": 11,
+        "column": 70197
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "p.batchedUpdates",
+        "args": [],
+        "line": 30,
+        "column": 168644
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "i",
+        "args": [],
+        "line": 11,
+        "column": 5024
+      },
+      {
+        "url": "http://localhost:3000/assets/main.fa4ad8bb7fdf85c2f2a4.js",
+        "func": "v.dispatchEvent",
+        "args": [],
+        "line": 30,
+        "column": 171224
+      }
+    ]
+  },
+  "state": {
+    "articles": {},
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfbWV0YWRhdGEiOnsibmRsYV9pZCI6InRkaW1oQzRja0pEVXR4UWdFcU1EbWJ2Wi5uZGxhLmZyb250ZW5kIiwicm9sZXMiOltdfSwiaXNzIjoidGRpbWhDNGNrSkRVdHhRZ0VxTURtYnZaLm5kbGEuZnJvbnRlbmQiLCJpYXQiOjE0OTIxNzk2NzksImV4cCI6MTQ5MjE4MzI3OX0.3K66y1k-CbAK-aRQopMCYr7XaDaaRvLmlTltsFVBtMQ",
+    "locale": "nb",
+    "messages": [],
+    "resources": {
+      "all": {}
+    },
+    "search": {
+      "results": [],
+      "totalCount": 1,
+      "pageSize": 10,
+      "searching": false
+    },
+    "subjects": {
+      "hasFetched": true,
+      "fetching": true,
+      "all": [
+        {
+          "id": "urn:subject:631f3445-51e8-4b7c-b290-76b9b9f5c38c",
+          "contentUri": null,
+          "name": "Naturfag",
+          "path": "/subject:631f3445-51e8-4b7c-b290-76b9b9f5c38c"
+        },
+        {
+          "id": "urn:subject:76bad02a-0cde-419d-a193-a138e337745e",
+          "contentUri": null,
+          "name": "Engelsk",
+          "path": "/subject:76bad02a-0cde-419d-a193-a138e337745e"
+        },
+        {
+          "id": "urn:subject:1",
+          "contentUri": "urn:article:209",
+          "name": "Medieuttrykk og mediesamfunnet",
+          "path": "/subject:1"
+        },
+        {
+          "id": "urn:subject:3",
+          "contentUri": null,
+          "name": "Helsefag",
+          "path": "/subject:3"
+        },
+        {
+          "id": "urn:subject:99",
+          "contentUri": null,
+          "name": "Teoretisk matematikk",
+          "path": "/subject:99"
+        }
+      ]
+    },
+    "topics": {
+      "all": {},
+      "topicIntroductions": {}
+    },
+    "routing": {
+      "locationBeforeTransitions": {
+        "pathname": "/",
+        "search": "",
+        "hash": "",
+        "action": "POP",
+        "key": null,
+        "query": {}
+      }
+    }
+  },
+  "sessionId": "8390ee10-7bae-4388-bbf1-6f2ec80c2e15",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:49.0) Gecko/20100101 Firefox/49.0",
+  "appName": "local/ndla-frontend"
+}

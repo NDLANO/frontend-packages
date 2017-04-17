@@ -17,21 +17,27 @@ const stackTrace = require('./stacktrace.json');
 
 function loadSourceMap(mapFile) {
   const mapFilePath = path.resolve(__dirname, mapFile);
+  process.stdout.write(chalk.green(`Loading ${mapFile} \n`));
   const sourceMapData = fs.readFileSync(mapFilePath).toString();
   const mapConsumer = new sourceMap.SourceMapConsumer(sourceMapData);
+  process.stdout.write(chalk.green(`Finished consuming ${mapFile} \n\n`));
   return {
     mapConsumer,
   };
 }
 
 function printOriginalPosition(orgPos) {
-  // console.log(`at ${orgPos.name} (${orgPos.source}:${orgPos.line}:${orgPos.column}) `);
   process.stdout.write(
-    chalk.red(`at ${orgPos.name} (${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
+    chalk.bold.red(`  at ${orgPos.name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
   );
 }
 
 const { mapConsumer } = loadSourceMap('main.fa4ad8bb7fdf85c2f2a4.js.map');
 
-const { stackInfo: { stack } } = stackTrace;
+const { stackInfo } = stackTrace;
+const { stack } = stackInfo;
+
+process.stdout.write(
+  chalk.bold.red(`${stackInfo.name}: ${stackInfo.message} \n`)
+);
 stack.forEach(item => printOriginalPosition(mapConsumer.originalPositionFor(item)));

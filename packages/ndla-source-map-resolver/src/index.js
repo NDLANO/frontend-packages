@@ -26,10 +26,27 @@ function loadSourceMap(mapFile) {
   };
 }
 
-function printOriginalPosition(orgPos) {
+function printSourceLine(mapConsumer, orgPos) {
+  const src = mapConsumer.sourceContentFor(orgPos.source);
+  const lines = src.split('\n');
+  const line = lines[orgPos.line - 1];
+
   process.stdout.write(
-    chalk.bold.red(`  at ${orgPos.name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
+    chalk.bold.green(`${line} \n`)
   );
+}
+
+function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
+  const orgPos = mapConsumer.originalPositionFor({ line: frame.line, column: frame.column });
+  const name = orgPos.name;
+
+  process.stdout.write(
+    chalk.bold.red(`  at ${name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
+  );
+
+  if (printSourceLineFlag) {
+    printSourceLine(mapConsumer, orgPos);
+  }
 }
 
 const { mapConsumer } = loadSourceMap('main.fa4ad8bb7fdf85c2f2a4.js.map');
@@ -40,4 +57,4 @@ const { stack } = stackInfo;
 process.stdout.write(
   chalk.bold.red(`${stackInfo.name}: ${stackInfo.message} \n`)
 );
-stack.forEach(item => printOriginalPosition(mapConsumer.originalPositionFor(item)));
+stack.forEach(frame => printOriginalPosition(mapConsumer, frame));

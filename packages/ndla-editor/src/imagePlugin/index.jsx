@@ -6,7 +6,7 @@
  *
  */
 
-import { Entity, EditorState, Modifier, AtomicBlockUtils, SelectionState } from 'draft-js';
+import { EditorState, Modifier, AtomicBlockUtils, SelectionState } from 'draft-js';
 import ImageBlock from './ImageBlock';
 
 export default (config = {}) => {
@@ -14,8 +14,11 @@ export default (config = {}) => {
   return {
     blockRendererFn: (block, { getEditorState, setEditorState, setReadOnly }) => {
       if (block.getType() === 'atomic') {
-        const entity = Entity.get(block.getEntityAt(0));
+        const editorState = getEditorState();
+        const contentState = editorState.getCurrentContent();
+        const entity = contentState.getEntity(block.getEntityAt(0));
         const type = entity.getType();
+
         if (type === 'image') {
           return {
             component,
@@ -23,8 +26,6 @@ export default (config = {}) => {
             props: {
               setReadOnly,
               updateData: (data) => {
-                const editorState = getEditorState();
-                const content = editorState.getCurrentContent();
                 const selection = new SelectionState({
                   anchorKey: block.key,
                   anchorOffset: 0,
@@ -32,16 +33,16 @@ export default (config = {}) => {
                   focusOffset: block.getLength(),
                 });
                   // Merge caption changes in contentState until: https://github.com/facebook/draft-js/issues/839
-                const newContentState = Modifier.mergeBlockData(content, selection, data);
+                const newContentState = Modifier.mergeBlockData(contentState, selection, data);
 
                 const newEditorState = EditorState.push(editorState, newContentState);
                 setEditorState(newEditorState);
 
                   // Test storing and updating caption in Entity, when the entity module is moved to contentState: https://github.com/facebook/draft-js/issues/839
-                  // const key = block.getEntityAt(0);
-                  // Entity.mergeData(key, data);
-                  // const newEditorState = EditorState.forceSelection(editorState, getEditorState().getCurrentContent().getSelectionAfter());// getCurrentContent().getSelectionAfter());
-                  // setEditorState(newEditorState);
+                // const key = block.getEntityAt(0);
+                // Entity.mergeData(key, data);
+                // const newEditorState = EditorState.forceSelection(editorState, getEditorState().getCurrentContent().getSelectionAfter());// getCurrentContent().getSelectionAfter());
+                // setEditorState(newEditorState);
               },
             },
           };
@@ -51,7 +52,9 @@ export default (config = {}) => {
     },
 
     addImage: (editorState, url) => {
-      const entityKey = Entity.create('image', 'IMMUTABLE', { src: url });
+      const contentState = editorState.getCurrentContent();
+      const contentStateWithEntity = contentState.createEntity('image', 'IMMUTABLE', { src: url });
+      const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
       const newEditorState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
       return EditorState.forceSelection(newEditorState, editorState.getCurrentContent().getSelectionAfter());
     },

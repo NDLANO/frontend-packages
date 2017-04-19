@@ -1,18 +1,26 @@
 .c-topic-resource {
+
   &__list {
     list-style: none;
     margin: 0;
     padding: 0;
+    @include mq($from: tablet) {
+      flex-direction: row;
+    }
   }
   &__body {
-    width: 100%;
+    text-align: left;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      vertical-align: middle;
   }
   &__item {
+    max-width: 100%;
+    display: flex;
     padding-top: $spacing;
     padding-bottom: $spacing;
     padding-right: $spacing;
-    border-bottom: 3px solid $brand-grey--lighter;
-    @include inuit-font-size(16px);
     h1 a {
       color: $brand-color;
       box-shadow: none;
@@ -20,44 +28,28 @@
   }
   &__icon {
     display: inline-block;
-    width: 52px;
-    height: 52px;
+    width: 64px;
+    height: 64px;
     text-align: center;
     box-sizing: border-box;
-    padding: 10px;
+    padding: $spacing--small;
     background-color: $brand-color--light;
     border-radius: $border-radius--large;
     margin-right: $spacing--small*1.5;
     svg {
       fill: $brand-color;
-      width: 26px;
-      height: 26px;
+      width: 30px;
+      height: 30px;
     }
   }
   &__title {
-    @include inuit-font-size(18px);
-    margin-top: $spacing--small;
-    margin-bottom: $spacing--small/2;
+    @include inuit-font-size(22px);
+    margin:0;
   }
   &__author {
     display: inline-block;
     color: $brand-grey;
     float:right;
     margin-top: $spacing--small;
-  }
-  &__tag {
-    @include inuit-font-size(15px);
-    background-color: $brand-grey--light;
-    color: $brand-grey;
-    font-weight: $font-weight-bold;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 12px;
-    border-radius: $border-radius--large;
-    transition: $transition;
-    &:hover {
-      background-color: $brand-color;
-      color: $white;
-    }
   }
 }

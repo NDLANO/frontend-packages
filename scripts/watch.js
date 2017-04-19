@@ -44,4 +44,4 @@ watcher
   })
   .on('unlink', removeBuildFile);
 
-process.stdout.write(`${chalk.red('->') + chalk.cyan('Watching for changes...')}`);
+process.stdout.write(`${chalk.red('-> ') + chalk.cyan('Watching for changes...')}`);

@@ -51,13 +51,7 @@ const ResourcesTab1 = () => (
 );
 
 const ResourcesExample = () => (
-  <ResourceWrapper>
-    <Tabs
-      tabs={[
-        { title: 'Ressurser', content: <ResourcesTab1 /> },
-      ]}
-    />
-  </ResourceWrapper>
+  <ResourcesTab1 />
 );
 
 
@@ -92,47 +86,12 @@ const ExamplePage1 = () => (
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
+
+      <ResourcesExample />
     </section>
   </OneColumn>
 );
-const IdealExamplePage1 = () => (
-  <OneColumn cssModifier="narrow">
-    <section className="c-article-content">
-      <h1>Tittel om pitching</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
-      </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-         din og bestemmer seg for å bruke ressurser på nettopp dette
-         prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <LicenseToggle>
-        <img
-          src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
-          alt=""
-        />
-      </LicenseToggle>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-         tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.</p>
-    </section>
-  </OneColumn>
-);
+
 const ExamplePage2 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
@@ -170,6 +129,7 @@ const ExamplePage2 = () => (
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
+      <ResourcesExample />
     </section>
   </OneColumn>
 );
@@ -320,6 +280,8 @@ const ExamplePage3 = () => (
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
+
+      <ResourcesExample />
     </section>
   </OneColumn>
 );
@@ -355,6 +317,8 @@ const ExamplePage4 = () => (
          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
            i klassen.</p>
+
+      <ResourcesExample />
     </section>
   </OneColumn>
 );
@@ -570,9 +534,8 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med bilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <ExamplePage1 />
-        <ResourcesExample />
         <FooterExample />
       </PageContainer>
     ))
@@ -581,7 +544,6 @@ storiesOf('Artikkelmaler', module)
         <MastheadWithTopicMenu />
         <Hero />
         <ExamplePage2 />
-        <ResourcesExample />
         <FooterExample />
       </PageContainer>
     ))
@@ -590,25 +552,14 @@ storiesOf('Artikkelmaler', module)
         <MastheadWithTopicMenu />
         <Hero />
         <ExamplePage3 />
-        <ResourcesExample />
         <FooterExample />
       </PageContainer>
     ))
     .add('Artikkel med h5p', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
-        <ExamplePage4 />
-        <ResourcesExample />
-        <FooterExample />
-      </PageContainer>
-    ))
-    .add('Artikkel uten hero', () => (
-      <PageContainer>
-        <MastheadWithTopicMenu />
         <Hero />
-        <IdealExamplePage1 />
-        <ResourcesExample />
+        <ExamplePage4 />
         <FooterExample />
       </PageContainer>
     ))
@@ -617,7 +568,6 @@ storiesOf('Artikkelmaler', module)
         <MastheadWithTopicMenu />
         <Hero />
         <ExampleWithSummary />
-        <ResourcesExample />
         <FooterExample />
       </PageContainer>
     ));

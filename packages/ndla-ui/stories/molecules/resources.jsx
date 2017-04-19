@@ -24,26 +24,25 @@ const Search = (
 );
 */
 const resourceGroup1 = {
-  title: 'Fagstoff',
-  description: 'Foretrekker du å se en video, eller lese en tekst? Velg selv.',
-  viewAllLinkTitle: 'Se alt fagstoff \u2192',
+  title: 'Lærestoff',
+  description: 'Relaterte emneartikler',
+  viewAllLinkTitle: 'Mer lærestoff \u2192',
   resources: articleResources.slice(0, 2),
   color: 'red',
   icon: 'Document',
-  tags: ['film', 'forelesning', 'illustrasjoner', 'simulering'],
 };
 const resourceGroup2 = {
   title: 'Læringsstier',
-  viewAllLinkTitle: 'Se alle læringsstier \u2192',
-  description: 'Gå steg for steg gjennom emnet.',
+  viewAllLinkTitle: 'Flere læringsstier \u2192',
+  description: 'Tilknyttet dette emnet',
   resources: learningPathResources.slice(0, 2),
   color: 'yellow',
   icon: 'Path',
 };
 const resourceGroup3 = {
-  title: 'Oppgaver',
-  description: 'Lær bedre gjennom å løse konkrete oppgaver.',
-  viewAllLinkTitle: 'Se alle oppgaver \u2192',
+  title: 'Oppgaver og aktiviteter',
+  description: 'Relatert til emnet',
+  viewAllLinkTitle: 'Flere oppgaver og aktiviteter \u2192',
   resources: exerciseResources.slice(0, 2),
   color: 'green',
   icon: 'Pencil',

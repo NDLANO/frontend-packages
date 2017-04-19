@@ -52,9 +52,9 @@
 }
 
 // Topic type color themes
-.c-topic-resource-subset--blue {
+.c-topic-resource-subset--yellow {
     .c-topic-resource__icon {
-      background-color: $brand-color;
+      background-color: $yellow;
       svg { fill: $white; }
     }
 }

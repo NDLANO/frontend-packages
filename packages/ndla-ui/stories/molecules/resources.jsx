@@ -37,7 +37,7 @@ const resourceGroup2 = {
   viewAllLinkTitle: 'Se alle læringsstier \u2192',
   description: 'Gå steg for steg gjennom emnet.',
   resources: learningPathResources.slice(0, 2),
-  color: 'blue',
+  color: 'yellow',
   icon: 'Path',
 };
 const resourceGroup3 = {

@@ -32,17 +32,14 @@ export default (config = {}) => {
                   focusKey: block.key,
                   focusOffset: block.getLength(),
                 });
-                  // Merge caption changes in contentState until: https://github.com/facebook/draft-js/issues/839
-                const newContentState = Modifier.mergeBlockData(contentState, selection, data);
+
+                const key = block.getEntityAt(0);
+                const newContentState = Modifier
+                  .mergeBlockData(contentState, selection, data)
+                  .mergeEntityData(key, data);
 
                 const newEditorState = EditorState.push(editorState, newContentState);
                 setEditorState(newEditorState);
-
-                  // Test storing and updating caption in Entity, when the entity module is moved to contentState: https://github.com/facebook/draft-js/issues/839
-                // const key = block.getEntityAt(0);
-                // Entity.mergeData(key, data);
-                // const newEditorState = EditorState.forceSelection(editorState, getEditorState().getCurrentContent().getSelectionAfter());// getCurrentContent().getSelectionAfter());
-                // setEditorState(newEditorState);
               },
             },
           };

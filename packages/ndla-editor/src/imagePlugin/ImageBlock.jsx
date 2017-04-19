@@ -49,9 +49,7 @@ export default class ImageBlock extends Component {
   render() {
     const { className, contentState, block, onClick, direction } = this.props;
     const entity = contentState.getEntity(block.getEntityAt(0));
-    const { src, alignment } = entity.getData();
-    const caption = block.getData().get('caption', '');
-    const alt = block.getData().get('alt', '');
+    const { src, alignment, alt, caption } = entity.getData();
 
     return (
       <div {...classes('image', alignment)} onBlur={this.handleBlur} onFocus={this.handleFocus} >

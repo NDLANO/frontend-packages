@@ -17,7 +17,7 @@ import { Button } from '../../src/';
 function findEmbedDataInContentState(constentState) {
   return constentState.getBlocksAsArray().filter(block => block.getEntityAt(0)).map((block) => {
     const key = block.getEntityAt(0);
-    return Entity.get(key).getData();
+    return constentState.getEntity(key).getData();
   });
 }
 
@@ -25,20 +25,20 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
   const blockMap = constentState.getBlockMap().map((block) => {
     const key = block.getEntityAt(0);
     if (key) {
-      const id = Entity.get(key).getData().id;
+      const id = constentState.getEntity(key).getData().id;
       const embed = embedsWithResources.find(e => e.id === id);
 
       if (!embed || embed.resource !== 'image') {
         return block;
       }
 
-      Entity.mergeData(key, { src: embed.image.imageUrl });
+      constentState.mergeEntityData(key, { src: embed.image.imageUrl });
 
       const data = block.getData();
 
       const newData = data
-        .set('alt', Entity.get(key).getData().alt)
-        .set('caption', Entity.get(key).getData().caption); // Store alt in contentState until: https://github.com/facebook/draft-js/issues/839
+        .set('alt', constentState.getEntity(key).getData().alt)
+        .set('caption', constentState.getEntity(key).getData().caption); // Store alt in contentState until: https://github.com/facebook/draft-js/issues/839
 
       return block
         .set('data', newData)

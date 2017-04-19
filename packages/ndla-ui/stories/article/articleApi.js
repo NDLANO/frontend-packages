@@ -47,15 +47,28 @@ export const fetchArticle = id => (
 export const fetchArticleFromApi = id => (
   new Promise((resolve, reject) => {
     getToken().then((token) => {
-      fetch(`https://staging.api.ndla.no/article-api/v1/articles/${id}/`, { method: 'GET', headers: headerWithAccessToken(token) })
+      fetch(`https://staging.api.ndla.no/article-api/v1/articles/${id}`, { method: 'GET', headers: headerWithAccessToken(token) })
         .then((res) => {
           if (res.ok) {
             return res.json()
-        .then(article => ({ ...article, title: article.title[0].title, content: article.content[0].content }))
-        .then(article => resolve(article));
+              .then(article => ({ ...article, title: article.title[0].title, content: article.content[0].content }))
+              .then(article => resolve(article));
           }
-          return res.json()
-        .then(json => reject(json));
+          return res.json().then(json => reject(json));
+        });
+    });
+  })
+);
+
+export const fetchWithToken = apiUrl => (
+  new Promise((resolve, reject) => {
+    getToken().then((token) => {
+      fetch(apiUrl, { method: 'GET', headers: headerWithAccessToken(token) })
+        .then((res) => {
+          if (res.ok) {
+            return res.json().then(image => resolve(image));
+          }
+          return res.json().then(json => reject(json));
         });
     });
   })

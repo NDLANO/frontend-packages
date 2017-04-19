@@ -10,7 +10,7 @@ import React, { Component, PropTypes } from 'react';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import NDLAEditor from 'ndla-editor';
-import { fetchArticleFromApi } from '../article/articleApi';
+import { fetchArticleFromApi, fetchWithToken } from '../article/articleApi';
 import SimpleSubmitForm from '../article/SimpleSubmitForm';
 import { Button } from '../../src/';
 
@@ -56,9 +56,8 @@ function reduceAttributesArrayToObject(attributes) {
 
 function fetchEmbedData(embed) {
   if (embed.resource === 'image') {
-    return fetch(embed.url)
-          .then(res => res.json())
-          .then(image => ({ ...embed, image }));
+    return fetchWithToken(embed.url.replace('http', 'https'))
+      .then(image => ({ ...embed, image }));
   }
   return embed;
 }

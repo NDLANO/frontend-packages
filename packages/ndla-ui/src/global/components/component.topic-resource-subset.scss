@@ -7,20 +7,24 @@
   }
   &__heading {
     display: inline-block;
-    @include inuit-font-size(32px);
-    text-transform: none;
-    font-variant: normal;
-    color: $brand-color;
+    @include inuit-font-size(18px);
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.1em;
     margin-bottom: 0;
   }
   &__lead {
-    @include inuit-font-size(20px);
-    color: $brand-color;
-    font-weight: $font-weight-normal;
-    margin: 0;
-    border-bottom: 2px solid $brand-grey--light;
+    @include inuit-font-size(18px);
+    display: inline-block;
+    font-weight: $font-weight-light;
+    font-family: $font;
+    margin: 0 0 0 $spacing;
     padding-bottom: $spacing--small;
     transition: $transition;
+  }
+  &__underline {
+    display: block;
+    border-bottom: 2px solid $brand-grey--light;
   }
   &__readmore {
     @extend .c-button;

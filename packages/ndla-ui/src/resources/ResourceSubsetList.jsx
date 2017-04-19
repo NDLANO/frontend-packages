@@ -42,8 +42,10 @@ class ResourceSubsetList extends Component {
         <div {...classes('')} >
           {resourceGroups.map((group, i) => (
             <div id={group.title} key={uuid()} {...classes('', [group.color, this.state.focusTitle === group.title ? 'focus' : ''])}>
-              <h1 {...classes('heading')}>{group.title}</h1>
-              <p {...classes('lead')}>{group.description}</p>
+              <span {...classes('underline')}>
+                <h2 {...classes('heading')}>{group.title}</h2>
+                <span {...classes('lead')}>{group.description}</span>
+              </span>
               <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
               <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
             </div>

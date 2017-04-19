@@ -2,6 +2,9 @@
   @include mq($from: desktop) {
     margin-top: $spacing--large;
   }
+  &__list {
+    text-align: center;
+  }
   &__heading {
     display: inline-block;
     @include inuit-font-size(32px);
@@ -20,29 +23,12 @@
     transition: $transition;
   }
   &__readmore {
-    text-align: right;
-    display: block;
-    font-weight: $font-weight-bold;
-    margin: $spacing--small 0;
-    @include inuit-font-size(16px);
-    color: $brand-color;
-    text-decoration: none;
-  }
-  &__tag {
-    @include inuit-font-size(15px);
-    background-color: $brand-grey--light;
-    color: $brand-grey;
-    font-weight: $font-weight-bold;
-    text-decoration: none;
+    @extend .c-button;
+    @extend .c-button--outline;
     display: inline-block;
-    padding: 0px 12px;
-    border-radius: $border-radius--large;
-    margin: $spacing--small $spacing--small/2 0 0;
-    transition: $transition;
-    &:hover {
-      background-color: $brand-color;
-      color: $white;
-    }
+    margin: $spacing--small auto;
+    @include inuit-font-size(16px);
+    font-family: $font;
   }
   &--focus {
     .c-topic-resource-subset__lead {

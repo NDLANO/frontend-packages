@@ -26,14 +26,14 @@ const Search = (
 const resourceGroup1 = {
   title: 'Lærestoff',
   description: 'Relaterte emneartikler',
-  viewAllLinkTitle: 'Mer lærestoff \u2192',
+  viewAllLinkTitle: 'Mer lærestoff',
   resources: articleResources.slice(0, 2),
   color: 'red',
   icon: 'Document',
 };
 const resourceGroup2 = {
   title: 'Læringsstier',
-  viewAllLinkTitle: 'Flere læringsstier \u2192',
+  viewAllLinkTitle: 'Flere læringsstier',
   description: 'Tilknyttet dette emnet',
   resources: learningPathResources.slice(0, 2),
   color: 'yellow',
@@ -42,7 +42,7 @@ const resourceGroup2 = {
 const resourceGroup3 = {
   title: 'Oppgaver og aktiviteter',
   description: 'Relatert til emnet',
-  viewAllLinkTitle: 'Flere oppgaver og aktiviteter \u2192',
+  viewAllLinkTitle: 'Flere oppgaver og aktiviteter',
   resources: exerciseResources.slice(0, 2),
   color: 'green',
   icon: 'Pencil',

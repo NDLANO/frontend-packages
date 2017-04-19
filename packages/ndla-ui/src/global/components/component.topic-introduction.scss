@@ -12,13 +12,11 @@
     width: 100%;
   }
   &__item {
-    padding-top: $spacing;
-    padding-bottom: $spacing;
     padding-right: $spacing;
     border-bottom: 3px solid $brand-grey--lighter;
     background-color: transparent;
     margin-left: 0;
-    @include inuit-font-size(16px);
+    @include inuit-font-size(16px, 26px);
 
     p {
       max-width: $max-text-width;
@@ -28,35 +26,14 @@
       color: $brand-color;
       box-shadow: none;
     }
-    @include mq($until:tablet) {
-      img {
-        max-width: 100%;
-      }
-    }
     &:first-child {
       margin-top: $spacing--large;
     }
   }
-  &__icon {
-    display: inline-block;
-    width: 52px;
-    height: 52px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 10px;
-    background-color: $brand-color--light;
-    border-radius: 15px;
-    margin-right: $spacing--small*1.5;
-    svg {
-      fill: $brand-color;
-      width: 26px;
-      height: 26px;
-    }
-  }
   &__header {
-    @include inuit-font-size(18px);
+    @include inuit-font-size(22px);
     color: $brand-color;
-    margin-bottom: $spacing;
+    margin-bottom: $spacing--small;
     margin-top: $spacing--small;
   }
 }

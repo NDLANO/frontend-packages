@@ -278,13 +278,14 @@ $shame-spacing: 12px;
   &--active {
     &:before {
       @include svg_icon('close', $brand-color);
-      width: 42px;
-      height: 42px;
-      left: $spacing--small*.6;
-      top: $spacing--small*.5;
     }
     background: $white;
     border: none;
+  }
+  &:active, &:focus {
+    background-color: transparent;
+    color: $brand-color;
+    border: 3px solid $brand-color;
   }
 }
 

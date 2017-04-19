@@ -71,7 +71,6 @@ const sideToolbarPlugin = createSideToolbarPlugin({
 const { SideToolbar } = sideToolbarPlugin;
 
 const { InlineToolbar } = inlineToolbarPlugin;
-// const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [

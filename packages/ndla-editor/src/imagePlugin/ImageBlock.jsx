@@ -10,7 +10,6 @@
 
 import React, { PropTypes, Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Entity } from 'draft-js';
 
 const classes = new BEMHelper({
   name: 'block',
@@ -48,10 +47,9 @@ export default class ImageBlock extends Component {
   }
 
   render() {
-    const { className, block, onClick, direction } = this.props;
-    const { src, alignment } = Entity.get(block.getEntityAt(0)).getData();
-    const caption = block.getData().get('caption');
-    const alt = block.getData().get('alt');
+    const { className, contentState, block, onClick, direction } = this.props;
+    const entity = contentState.getEntity(block.getEntityAt(0));
+    const { src, alignment, alt, caption } = entity.getData();
 
     return (
       <div {...classes('image', alignment)} onBlur={this.handleBlur} onFocus={this.handleFocus} >
@@ -95,6 +93,9 @@ export default class ImageBlock extends Component {
 ImageBlock.propTypes = {
   className: PropTypes.string,
   block: PropTypes.shape({
+  }).isRequired,
+  contentState: PropTypes.shape({
+    getEntity: PropTypes.func.isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   direction: PropTypes.string.isRequired,

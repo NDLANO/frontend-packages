@@ -52,10 +52,6 @@ hr {
   }
 }
 
-li {
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-}
-
 section {
 
   @include mq(tablet) {

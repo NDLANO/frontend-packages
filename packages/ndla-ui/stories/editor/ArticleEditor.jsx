@@ -32,20 +32,13 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
         return block;
       }
 
-      const newContentState = constentState.mergeEntityData(key, {
+      constentState.mergeEntityData(key, {
         src: embed.image.imageUrl,
         alt: constentState.getEntity(key).getData().alt,
         caption: constentState.getEntity(key).getData().caption,
       });
 
-      const data = block.getData();
-
-      // const newData = data
-      //   .set('alt', constentState.getEntity(key).getData().alt)
-      //   .set('caption', constentState.getEntity(key).getData().caption); // Store alt in contentState until: https://github.com/facebook/draft-js/issues/839
-
       return block
-        // .set('data', newData)
         .set('text', ' '); // Fix 'a' hack (See https://github.com/HubSpot/draft-convert/blob/master/src/convertFromHTML.js#L381-L388)
     }
     return block;

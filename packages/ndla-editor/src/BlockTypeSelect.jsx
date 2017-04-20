@@ -7,6 +7,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import { uuid } from 'ndla-util';
 
 export default class BlockTypeSelect extends React.Component {
 
@@ -64,9 +65,9 @@ export default class BlockTypeSelect extends React.Component {
         */}
         <div className={theme.blockTypeSelectStyles.spacer} />
         <div className={theme.blockTypeSelectStyles.popup} style={this.state.style}>
-          {this.props.structure.map((Component, index) => (
+          {this.props.structure.map(Component => (
             <Component
-              key={index}
+              key={uuid()}
               getEditorState={getEditorState}
               setEditorState={setEditorState}
               theme={theme.buttonStyles}

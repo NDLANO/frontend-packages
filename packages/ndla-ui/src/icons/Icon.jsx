@@ -6,8 +6,9 @@
  *
  */
 
-import React, { createElement } from 'react';
+import React, { createElement, PropTypes } from 'react';
 import classNames from 'classnames';
+import elementType from 'react-prop-types/lib/elementType';
 
 import LicenseCc from './LicenseCc';
 import Download from './Download';
@@ -32,6 +33,11 @@ function Icon(props) {
   const { icon, className, ...rest } = props;
   return createElement(icon, { className: classNames('icon', className), ...rest });
 }
+
+Icon.propTypes = {
+  icon: elementType.isRequired,
+  className: PropTypes.string,
+};
 
 
 Icon.Download = props => (<Icon {...props} icon={Download} />);

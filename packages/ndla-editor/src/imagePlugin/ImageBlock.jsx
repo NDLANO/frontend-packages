@@ -65,7 +65,7 @@ export default class ImageBlock extends Component {
         </button> */}
         <img
           src={src}
-          role="presentation"
+          alt="presentation"
           direction={direction}
           onClick={onClick}
           className={`${className}`}

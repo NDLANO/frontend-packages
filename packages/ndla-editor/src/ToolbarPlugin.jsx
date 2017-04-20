@@ -8,6 +8,7 @@
 import React, { PropTypes } from 'react';
 import decorateComponentWithProps from 'decorate-component-with-props';
 import BEMHelper from 'react-bem-helper';
+import { uuid } from 'ndla-util';
 
 const classes = new BEMHelper({
   name: 'toolbar',
@@ -16,8 +17,8 @@ const classes = new BEMHelper({
 
 const Toolbar = ({ store, structure }) => (
   <ul {...classes()}>
-    {structure.map((Button, index) => (
-      <li key={index} {...classes('item')}>
+    {structure.map(Button => (
+      <li key={uuid()} {...classes('item')}>
         <Button
           theme={{ button: classes('button').className, active: classes('button', 'active').className }}
           getEditorState={store.getEditorState}

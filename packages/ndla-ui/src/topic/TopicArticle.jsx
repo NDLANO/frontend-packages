@@ -8,7 +8,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { presets } from 'react-motion';
-import ReactCollapse from 'react-collapse';
+import { Collapse } from 'react-collapse';
 import Icon from '../icons/Icon';
 
 import Article from '../article/Article';
@@ -37,11 +37,11 @@ class TopicArticle extends Component {
       <section>
         { notitle ? null : <h1>{article.title}</h1> }
         <Article.Introduction introduction={article.introduction} />
-        <ReactCollapse className={isOpen ? 'c-article-collapse c-article-collapse--open' : 'c-article-collapse'} isOpened={isOpen} springConfig={presets.wobble} keepCollapsedContent>
+        <Collapse className={isOpen ? 'c-article-collapse c-article-collapse--open' : 'c-article-collapse'} isOpened={isOpen} springConfig={presets.wobble} >
           {/* Since react-collapse remounts the component on hide and show article-scripts needs to be initialized
             on mounth in a sub component */}
-          <ArticleContent style={{ overflow: 'hidden' }}content={article.content} />
-        </ReactCollapse>
+          <ArticleContent style={{ overflow: 'hidden' }} content={article.content} />
+        </Collapse>
         { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
         <div className={isOpen ? 'c-topic-article__btnwrapper c-topic-article__btnwrapper--open' : 'c-topic-article__btnwrapper'} >
           <Button className="c-topic-article_toggle-button" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle }

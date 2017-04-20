@@ -6,7 +6,8 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { presets } from 'react-motion';
 import { Collapse } from 'react-collapse';
 import Icon from '../icons/Icon';

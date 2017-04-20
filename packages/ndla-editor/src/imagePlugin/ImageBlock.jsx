@@ -5,10 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({

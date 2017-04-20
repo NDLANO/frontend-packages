@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const ArticleIntroductionText = ({ text }) => (text ? <p className="article_introduction">{text}</p> : null);
 

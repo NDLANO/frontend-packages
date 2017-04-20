@@ -10,7 +10,8 @@
 // N.B These component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';

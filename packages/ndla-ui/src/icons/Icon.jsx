@@ -6,7 +6,8 @@
  *
  */
 
-import React, { createElement, PropTypes } from 'react';
+import React, { createElement } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 

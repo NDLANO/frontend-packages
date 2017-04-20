@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BY, NC, ND, SA, CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import Icon from '../icons/Icon';

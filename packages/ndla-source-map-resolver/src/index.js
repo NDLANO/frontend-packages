@@ -9,18 +9,26 @@
 
 const fs = require('fs');
 const path = require('path');
+const util = require('util');
 const sourceMap = require('source-map');
 const chalk = require('chalk');
 
-const stackTrace = require('./stacktrace.json');
+function loadFile(fileName) {
+  try {
+    const filePath = path.resolve(fileName);
+    const fileData = fs.readFileSync(filePath).toString();
+    process.stdout.write(chalk.green(`Loaded ${fileName} \n`));
+    return fileData;
+  } catch (e) {
+    process.stdout.write(chalk.bold.red(`Error loading ${fileName}\n`));
+    process.stdout.write(chalk.bold.red(util.format(e)));
+    process.on('exit', () => process.exit(1));
+  }
+  return undefined;
+}
 
-
-function loadSourceMap(mapFile) {
-  const mapFilePath = path.resolve(__dirname, mapFile);
-  process.stdout.write(chalk.green(`Loading ${mapFile} \n`));
-  const sourceMapData = fs.readFileSync(mapFilePath).toString();
+function consumeSourceMap(sourceMapData) {
   const mapConsumer = new sourceMap.SourceMapConsumer(sourceMapData);
-  process.stdout.write(chalk.green(`Finished consuming ${mapFile} \n\n`));
   return {
     mapConsumer,
   };
@@ -38,8 +46,6 @@ function printSourceLine(mapConsumer, orgPos) {
 
 function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
   const orgPos = mapConsumer.originalPositionFor({ line: frame.line, column: frame.column });
-  const name = orgPos.name;
-
   process.stdout.write(
     chalk.bold.red(`  at ${name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
   );
@@ -49,12 +55,18 @@ function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
   }
 }
 
-const { mapConsumer } = loadSourceMap('main.fa4ad8bb7fdf85c2f2a4.js.map');
+function runSourceMapResolver(argv) {
+  const mapFile = loadFile(argv.mapFile);
+  const { mapConsumer } = consumeSourceMap(mapFile);
 
-const { stackInfo } = stackTrace;
-const { stack } = stackInfo;
+  const errorEventFile = loadFile(argv.errorEventFile);
+  const { stackInfo } = JSON.parse(errorEventFile);
+  const { stack } = stackInfo;
 
-process.stdout.write(
-  chalk.bold.red(`${stackInfo.name}: ${stackInfo.message} \n`)
-);
-stack.forEach(frame => printOriginalPosition(mapConsumer, frame));
+  process.stdout.write(
+    chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`)
+  );
+  stack.forEach(frame => printOriginalPosition(mapConsumer, frame));
+}
+
+module.exports = runSourceMapResolver;

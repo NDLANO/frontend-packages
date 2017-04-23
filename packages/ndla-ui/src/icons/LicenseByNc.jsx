@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const LicenseByNc = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="120" height="42" className={className}>

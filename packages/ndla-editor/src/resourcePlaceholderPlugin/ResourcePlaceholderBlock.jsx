@@ -6,7 +6,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+import PropTypes from 'prop-types';
 
 const ResourcePlaceholderBlock = ({ blockProps: { data } }) => (
   <span className="c-block__resource-placeholder">

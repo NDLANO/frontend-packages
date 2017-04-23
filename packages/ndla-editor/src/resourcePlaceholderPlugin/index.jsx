@@ -6,13 +6,14 @@
  *
  */
 
-import { Entity } from 'draft-js';
 import ResourcePlaceholderBlock from './ResourcePlaceholderBlock';
 
 export default () => ({
-  blockRendererFn: (block) => {
+  blockRendererFn: (block, { getEditorState }) => {
     if (block.getType() === 'atomic') {
-      const entity = Entity.get(block.getEntityAt(0));
+      const editorState = getEditorState();
+      const contentState = editorState.getCurrentContent();
+      const entity = contentState.getEntity(block.getEntityAt(0));
       const type = entity.getType();
       if (type === 'resource-placeholder') {
         return {

@@ -6,19 +6,20 @@
  *
  */
 
- import React, { PropTypes } from 'react';
- import BEMHelper from 'react-bem-helper';
+import React from 'react';
+import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
 
- const classes = new BEMHelper({
-   name: 'article',
-   prefix: 'c-',
- });
+const classes = new BEMHelper({
+  name: 'article',
+  prefix: 'c-',
+});
 
- export const Article = ({ children }) => <article {...classes()}><section> { children } </section></article>;
+export const Article = ({ children }) => <article {...classes()}><section> { children } </section></article>;
 
- Article.propTypes = {
-   children: PropTypes.node.isRequired,
- };
+Article.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 
- export default Article;
+export default Article;

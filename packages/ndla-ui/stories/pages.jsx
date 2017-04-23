@@ -579,11 +579,7 @@ const ResourcesTopics = () => (
     <Tabs
       tabs={[
         { title: 'Emner',
-          content:
-            <TopicIntroductionList
-              toTopic={() => '#'}
-              topics={topicList}
-            />,
+          content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
         },
         { title: 'Ressurser', content: <ResourceSubsetList /> },
       ]}
@@ -597,11 +593,7 @@ const ResourcesSubTopics = () => (
       tabs={[
         {
           title: 'Underemner',
-          content:
-            <TopicIntroductionList
-              toTopic={() => '#'}
-              topics={subtopicList}
-            />,
+          content: <TopicIntroductionList toTopic={() => '#'} topics={subtopicList} />,
         },
         { title: 'Ressurser', content: <ResourceSubsetList /> },
       ]}
@@ -677,11 +669,7 @@ storiesOf('Sidevisninger', module)
           tabs={[
             {
               title: 'Emner',
-              content:
-                <TopicIntroductionList
-                  toTopic={() => '#'}
-                  topics={topicList}
-                />,
+              content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
             },
             { title: 'Ressurser', content: <ResourceSubsetList /> },
           ]}

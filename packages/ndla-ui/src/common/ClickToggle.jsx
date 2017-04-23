@@ -6,55 +6,56 @@
  *
  */
 
- import React, { PropTypes } from 'react';
- import elementType from 'react-prop-types/lib/elementType';
- import Button from '../button/Button';
+import React from 'react';
+import PropTypes from 'prop-types';
+import elementType from 'react-prop-types/lib/elementType';
+import Button from '../button/Button';
 
- export default class ClickToggle extends React.Component {
-   constructor(props) {
-     super(props);
+export default class ClickToggle extends React.Component {
+  constructor(props) {
+    super(props);
 
-     this.state = {
-       isOpen: false,
-     };
+    this.state = {
+      isOpen: false,
+    };
 
-     this.handleClick = this.handleClick.bind(this);
-     this.close = this.close.bind(this);
-   }
+    this.handleClick = this.handleClick.bind(this);
+    this.close = this.close.bind(this);
+  }
 
-   handleClick() {
-     this.setState({ isOpen: !this.state.isOpen });
-   }
+  handleClick() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
 
-   close() {
-     this.setState({ isOpen: false });
-   }
+  close() {
+    this.setState({ isOpen: false });
+  }
 
-   render() {
-     const { title, buttonClassName, containerClass: Component, ...rest } = this.props;
-     const { isOpen } = this.state;
+  render() {
+    const { title, buttonClassName, containerClass: Component, ...rest } = this.props;
+    const { isOpen } = this.state;
 
-     const children = React.cloneElement(this.props.children, { close: this.close });
-     return (
-       <Component {...rest}>
-         { isOpen ? <Button stripped className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
-         <Button stripped className={buttonClassName} onClick={this.handleClick} >
-           { title }
-         </Button>
-         { isOpen ? children : null }
-       </Component>
-     );
-   }
- }
+    const children = React.cloneElement(this.props.children, { close: this.close });
+    return (
+      <Component {...rest}>
+        { isOpen ? <Button stripped className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
+        <Button stripped className={buttonClassName} onClick={this.handleClick} >
+          { title }
+        </Button>
+        { isOpen ? children : null }
+      </Component>
+    );
+  }
+}
 
- ClickToggle.propTypes = {
-   containerClass: elementType,
-   title: PropTypes.node.isRequired,
-   buttonClassName: PropTypes.string,
-   className: PropTypes.string,
-   children: PropTypes.node,
- };
+ClickToggle.propTypes = {
+  containerClass: elementType,
+  title: PropTypes.node.isRequired,
+  buttonClassName: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
 
- ClickToggle.defaultProps = {
-   containerClass: 'div',
- };
+ClickToggle.defaultProps = {
+  containerClass: 'div',
+};

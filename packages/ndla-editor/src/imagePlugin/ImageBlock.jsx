@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Entity } from 'draft-js';
 
 const classes = new BEMHelper({
   name: 'block',
@@ -48,10 +48,9 @@ export default class ImageBlock extends Component {
   }
 
   render() {
-    const { className, block, onClick, direction } = this.props;
-    const { src, alignment } = Entity.get(block.getEntityAt(0)).getData();
-    const caption = block.getData().get('caption');
-    const alt = block.getData().get('alt');
+    const { className, contentState, block, onClick, direction } = this.props;
+    const entity = contentState.getEntity(block.getEntityAt(0));
+    const { src, alignment, alt, caption } = entity.getData();
 
     return (
       <div {...classes('image', alignment)} onBlur={this.handleBlur} onFocus={this.handleFocus} >
@@ -67,7 +66,7 @@ export default class ImageBlock extends Component {
         </button> */}
         <img
           src={src}
-          role="presentation"
+          alt="presentation"
           direction={direction}
           onClick={onClick}
           className={`${className}`}
@@ -95,6 +94,9 @@ export default class ImageBlock extends Component {
 ImageBlock.propTypes = {
   className: PropTypes.string,
   block: PropTypes.shape({
+  }).isRequired,
+  contentState: PropTypes.shape({
+    getEntity: PropTypes.func.isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   direction: PropTypes.string.isRequired,

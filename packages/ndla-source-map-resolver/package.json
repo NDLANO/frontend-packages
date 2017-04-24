@@ -4,8 +4,6 @@
   "description": "Source map resolver for errors logged via ndla-error-reporter.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "bin": {
     "source-map": "bin/source-map-resolver.js"
   },
@@ -26,7 +24,7 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "es"
+    "bin"
   ],
   "peerDependencies": {},
   "devDependencies": {},

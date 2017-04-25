@@ -43,12 +43,14 @@
   }
 
   &--active {
-    max-width: 100% !important;
+
     background: $brand-color--light;
     padding: $spacing;
     @include font-size(16px);
     position: relative;
     @include mq(desktop) {
+      margin: 37.14286px -38% 52px!important;
+      width: 176%!important;
       display: flex;
       justify-content: flex-start;
     }

@@ -26,8 +26,8 @@ const Resource = ({ resource, resourceToLinkProps }) => (
       { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
     </div>
     <div {...classes('body o-flag__body')}>
-      <h1 {...classes('title')}><SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink></h1>
-      {resource.tag ? <SafeLink {...classes('tag')} {...resourceToLinkProps(resource)}>{resource.tag}</SafeLink> : null }
+      <h1 {...classes('title')}><SafeLink to={resourceToLinkProps(resource)}>{resource.name}</SafeLink></h1>
+      {resource.tag ? <SafeLink {...classes('tag')} to={resourceToLinkProps(resource)}>{resource.tag}</SafeLink> : null }
     </div>
   </li>
 );

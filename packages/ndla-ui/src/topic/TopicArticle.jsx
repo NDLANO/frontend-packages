@@ -7,19 +7,19 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import {
-  addEventListenerForResize,
-  updateIFrameDimensions, addAsideClickListener,
-  removeEventListenerForResize,
-  removeAsideClickListener,
-} from 'ndla-article-scripts';
-import { presets } from 'react-motion';
-import ReactCollapse from 'react-collapse';
-import Icon from '../icons/Icon';
+// import {
+//   addEventListenerForResize,
+//   updateIFrameDimensions, addAsideClickListener,
+//   removeEventListenerForResize,
+//   removeAsideClickListener,
+// } from 'ndla-article-scripts';
+// import { presets } from 'react-motion';
+// import ReactCollapse from 'react-collapse';
+// import Icon from '../icons/Icon';
 
 import Article from '../article/Article';
-import Button from '../button/Button';
-import ArticleFootNotes from '../article/ArticleFootNotes';
+// import Button from '../button/Button';
+// import ArticleFootNotes from '../article/ArticleFootNotes';
 import { ArticleShape } from '../shapes';
 
 
@@ -28,36 +28,18 @@ class TopicArticle extends Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false };
-    this.toggleOpen = this.toggleOpen.bind(this);
-  }
-
-  componentDidMount() {
-    addEventListenerForResize();
-    updateIFrameDimensions();
-    addAsideClickListener();
-  }
-
-  componentWillUnmount() {
-    removeEventListenerForResize();
-    removeAsideClickListener();
-  }
-
-  toggleOpen() {
-    this.setState({ isOpen: !this.state.isOpen });
+    // this.toggleOpen = this.toggleOpen.bind(this);
   }
 
   render() {
-    const { article, openTitle, closeTitle, notitle } = this.props;
-    const { isOpen } = this.state;
+    const { article, notitle } = this.props;
+    // const { isOpen } = this.state;
     return (
       <section>
-        { notitle ? null : <h1>{article.title}</h1> }
+        { notitle ? null : <h1 className="c-article__title">{article.title}</h1> }
         <Article.Introduction introduction={article.introduction} />
-        <ReactCollapse className={isOpen ? 'c-article-collapse c-article-collapse--open' : 'c-article-collapse'} isOpened={isOpen} springConfig={presets.wobble} keepCollapsedContent>
-          <div style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: article.content }} />
-        </ReactCollapse>
-        { article.footNotes && isOpen ? <ArticleFootNotes footNotes={article.footNotes} /> : null }
-        <div className={isOpen ? 'c-topic-article__btnwrapper c-topic-article__btnwrapper--open' : 'c-topic-article__btnwrapper'}><Button className="c-topic-article_toggle-button" onClick={this.toggleOpen} outline>{ isOpen ? closeTitle : openTitle } <Icon.ArrowDown className={isOpen ? 'icon icon--rotate' : 'icon'} /></Button></div>
+        <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
+        { article.footNotes }
       </section>
     );
   }
@@ -67,7 +49,6 @@ class TopicArticle extends Component {
 TopicArticle.propTypes = {
   article: ArticleShape.isRequired,
   openTitle: PropTypes.node.isRequired,
-  closeTitle: PropTypes.node.isRequired,
   notitle: PropTypes.bool,
 };
 

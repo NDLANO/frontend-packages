@@ -1,4 +1,5 @@
 .c-topic-resource-subset {
+
   @include mq($from: desktop) {
     margin-top: $spacing--large;
   }

@@ -1,7 +1,4 @@
 .o-wrapper--narrow {
-  h1 {
-    display: block;
-  }
 
   section.c-article-content:first-child {
     @include mq(tablet) {
@@ -12,12 +9,12 @@
   }
 
   section>* {
-    @include max-width();
+    // @include max-width();
     margin-left: auto;
     margin-right: auto;
   }
   section section>* { // Fix for when duplicate max-width is applied
-    max-width: 100%;
+    // max-width: 100%;
   }
 }
 .o-wrapper--wide {

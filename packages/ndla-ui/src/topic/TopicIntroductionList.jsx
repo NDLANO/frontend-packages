@@ -19,7 +19,7 @@ const classes = new BEMHelper({
 const TopicIntroduction = ({ toTopic, topic }) => (
   <li {...classes('item')}>
     <div {...classes('body')}>
-      <h1 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h1>
+      <h3 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h3>
       <p>{topic.introduction}</p>
     </div>
   </li>

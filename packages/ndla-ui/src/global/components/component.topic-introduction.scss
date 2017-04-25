@@ -12,6 +12,8 @@
     width: 100%;
   }
   &__item {
+    padding-top: $spacing--small;
+    padding-bottom: $spacing;
     padding-right: $spacing;
     border-bottom: 3px solid $brand-grey--lighter;
     background-color: transparent;

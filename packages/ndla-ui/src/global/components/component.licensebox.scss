@@ -1,8 +1,8 @@
 .c-licensebox {
-  margin: 0 0 $spacing;
-  padding: $spacing $spacing--small;
-  @include mq(tablet) {
-    padding: $spacing--large $spacing;
+
+  >div { // Licensebox content
+    margin: 0 0 $spacing;
+    padding: $spacing $spacing--small;
   }
   .c-tabs__list {
     border-bottom: 1px solid $brand-color--tertiary;

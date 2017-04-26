@@ -18,6 +18,7 @@ import React, { PropTypes } from 'react';
 // import Icon from '../icons/Icon';
 
 import Article from '../article/Article';
+import ArticleContent from '../article/ArticleContent';
 // import Button from '../button/Button';
 // import ArticleFootNotes from '../article/ArticleFootNotes';
 import { ArticleShape } from '../shapes';
@@ -32,8 +33,8 @@ const TopicArticle = ({ article, notitle }) => (
   <section>
     { notitle ? null : <h1 className="c-article__title">{article.title}</h1> }
     <Article.Introduction introduction={article.introduction} />
-    <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
     { article.footNotes }
+    <ArticleContent className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
   </section>
     // );
 );

@@ -13,7 +13,7 @@
     padding-top: $spacing--small;
   }
   &__byline-licenselist {
-    margin: $spacing--small $spacing 0;
+    margin: $spacing--small/2 $spacing 0;
   }
   &__close {
     display: none;
@@ -42,6 +42,12 @@
     box-shadow: none;
   }
 
+  &__captionbtn {
+    min-width: 150px;
+    padding-top: $spacing--small;
+    padding-bottom: $spacing--small;
+  }
+
   &--active {
 
     background: $brand-color--light;
@@ -49,8 +55,8 @@
     @include font-size(16px);
     position: relative;
     @include mq(desktop) {
-      margin: 37.14286px -38% 52px!important;
-      width: 176%!important;
+      margin: 37.14286px -33.3333% 52px!important;
+      width: 166.6667%!important;
       display: flex;
       justify-content: flex-start;
     }

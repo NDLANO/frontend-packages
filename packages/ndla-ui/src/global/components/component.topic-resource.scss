@@ -18,9 +18,8 @@
   &__item {
     max-width: 100%;
     display: flex;
-    padding-top: $spacing;
-    padding-bottom: $spacing;
-    padding-right: $spacing;
+    padding: $spacing--small;
+    margin-bottom: $spacing--small/2;
     h1 a {
       color: $brand-color;
       box-shadow: none;
@@ -28,22 +27,17 @@
   }
   &__icon {
     display: inline-block;
-    width: 64px;
-    height: 64px;
+    width: 37px;
     text-align: center;
     box-sizing: border-box;
-    padding: $spacing--small;
-    background-color: $brand-color--light;
-    border-radius: $border-radius--large;
     margin-right: $spacing--small*1.5;
     svg {
-      fill: $brand-color;
-      width: 30px;
-      height: 30px;
+      width: 42px;
+      height: 42px;
     }
   }
   &__title {
-    @include inuit-font-size(22px);
+    @include inuit-font-size(20px);
     text-transform: none;
     letter-spacing: 0;
     margin:0;

@@ -70,7 +70,12 @@
 .u-float-right {
   float:right;
 }
-
+.article_figure--float-left {
+  margin-right: $spacing !important;
+}
+.article_figure--float-right {
+  margin-left: $spacing !important;
+}
 
 /* Width utils */
 .u-full-width {
@@ -138,21 +143,9 @@ $shame-spacing: 12px;
     // padding: ($shame-spacing / 2) $shame-spacing;
   }
 }
-// .c-tabs__list:before {
-//   content: '';
-//   display: inline-block;
-//   width: 100px;
-//   height: 30px;
-// }
 
 
 
-.license-byline {
-  position: relative;
-  @include mq(tablet) {
-    display: flex;
-  }
-}
 
 .license-byline__body:not(.license-byline__body--black) {
   display: block;
@@ -163,11 +156,6 @@ $shame-spacing: 12px;
   margin-top: 4px;
 }
 
-.c-license-icons__list {
-  display: inline-block;
-  margin-right: $spacing--small;
-  margin-bottom: $spacing--small;
-}
 
 .license-byline__body--black {
   background-color: $brand-color;
@@ -193,6 +181,7 @@ $shame-spacing: 12px;
 .license-toggler {
   text-decoration: underline;
   text-align: right;
+  padding-right: $spacing;
   float: right;
 }
 
@@ -220,10 +209,6 @@ $shame-spacing: 12px;
 }
 .license__list-item > iframe {
   max-width: 200px;
-}
-
-.license__list-item > .license-byline > * {
-  display: block;
 }
 
 .license__heading {
@@ -329,6 +314,10 @@ $shame-spacing: 12px;
     padding: $spacing--small 0 $spacing--small $spacing--large;
     border-bottom: 1px solid rgba($brand-color--light, .4);
     transition: all .1s ease-in-out;
+    &:hover {
+      background-color: $brand-color--tertiary;
+      padding-left: $spacing--large*1.15;
+    }
     &--active {
       background-color: $brand-color--tertiary;
     }
@@ -339,6 +328,11 @@ $shame-spacing: 12px;
 
   &__subtopic-item {
     padding: $spacing--small 0;
+    transition: all .1s ease-in-out;
+
+    a:hover {
+      text-decoration: none;
+    }
   }
 
   &__link {

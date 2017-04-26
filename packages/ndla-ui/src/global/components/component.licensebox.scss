@@ -1,16 +1,32 @@
 .c-licensebox {
+  position: relative;
 
-  >div { // Licensebox content
-    margin: 0 0 $spacing;
-    padding: $spacing $spacing--small;
+  .license-toggler {
+    @include mq(desktop) {
+      position: absolute;
+      top: 7px;
+      right: 19%;
+    }
   }
+  .license__heading {
+    margin-top: $spacing;
+    margin-left: $spacing;
+    margin-right: $spacing;
+  }
+
   .c-tabs__list {
     border-bottom: 1px solid $brand-color--tertiary;
   }
   &--expanded {
     background: $brand-color--lighter;
   }
-}
-.c-licensebox__introduction {
-  max-width: 500px;
+  &__introduction {
+    max-width: 500px;
+    margin-left: $spacing;
+    margin-right: $spacing;
+  }
+  .react-tabs {
+    margin-left: $spacing;
+    margin-right: $spacing;
+  }
 }

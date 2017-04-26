@@ -49,13 +49,31 @@ section.article_introduction {
     text-transform: uppercase;
     padding: $spacing--small/2 $spacing--small;
     display: flex;
-
   }
 
   &__title {
     @include max-width();
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &-meta {
+    display: inline-block;
+    background-color: $brand-grey--lighter;
+    padding: 7px;
+    width: 100%;
+    @include mq(desktop) {
+      max-width: 100%;
+      width: 63%;
+      margin-left: 18.5%;
+    }
+    @include inuit-font-size(14px);
+  }
+
+  &__metatext {
+    font-family: $font;
+    text-transform: uppercase;
+    color: gray;
   }
 
   &__authors {

@@ -4,19 +4,31 @@
     font-weight: $font-weight-bold;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     margin-top: $spacing--large;
-  }
-  &--Fagstoff {
-    .c-topic-resource__icon {
-      background-color: $mark-color;
-      svg { fill: $white; }
-    }
+    padding-bottom: 5px;
+    border-bottom: 2px solid $brand-grey--light;
   }
   &--Lringssti {
+    li {
+      padding: 5px;
+    }
     .c-topic-resource__icon {
-      background-color: $yellow;
-      svg { fill: $white; }
+      width:80px;
+      svg {
+        width: 80px;
+        height: 60px;
+      }
+    }
+  }
+  &--Oppgave {
+    li {
+      background-color: rgba($green, 0.1);
+    }
+  }
+  &--Fagstoff {
+    li {
+      background-color: rgba($mark-color, 0.1);
     }
   }
 }

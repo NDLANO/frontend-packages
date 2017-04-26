@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import SafeLink from '../common/SafeLink';
 import { stepNumbers } from './pagerHelpers';
 
+const createQueryString = obj => Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&');
 
 export const PageLink = ({ children, page, query: currentQuery, pathname, onClick, modifier }) => {
   const modifierClass = modifier ? `pager_step--${modifier}` : '';
@@ -20,7 +21,7 @@ export const PageLink = ({ children, page, query: currentQuery, pathname, onClic
   const query = { ...currentQuery, page };
   const linkToPage = {
     pathname,
-    query,
+    search: createQueryString(query),
   };
 
   const handleClick = () => onClick(query);

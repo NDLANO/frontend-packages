@@ -58,7 +58,7 @@ const ResourcesExample = () => (
 const ExamplePage1 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
+      <h1 className="c-article__title">Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>
@@ -95,7 +95,7 @@ const ExamplePage1 = () => (
 const ExamplePage2 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <h1>Mediekommunikasjon og kommunikasjonsmodeller</h1>
+      <h1 className="c-article__title">Mediekommunikasjon og kommunikasjonsmodeller</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>
@@ -137,7 +137,7 @@ const ExamplePage2 = () => (
 const ExamplePage3 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <h1>Tittel om pitching</h1>
+      <h1 className="c-article__title">Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>
@@ -289,7 +289,7 @@ const ExamplePage3 = () => (
 const ExamplePage4 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <h1>Tittel om pitching</h1>
+      <h1 className="c-article__title">Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>
@@ -326,7 +326,7 @@ const ExamplePage4 = () => (
 const ExampleWithSummary = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
-      <h1>Tittel om pitching</h1>
+      <h1 className="c-article__title">Tittel om pitching</h1>
       <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
          å produsere filmen.
       </p>

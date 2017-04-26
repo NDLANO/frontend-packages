@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 // import {
 //   addEventListenerForResize,
 //   updateIFrameDimensions, addAsideClickListener,
@@ -23,32 +23,24 @@ import Article from '../article/Article';
 import { ArticleShape } from '../shapes';
 
 
-class TopicArticle extends Component {
+// class TopicArticle extends Component {
+const TopicArticle = ({ article, notitle }) => (
 
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-    // this.toggleOpen = this.toggleOpen.bind(this);
-  }
-
-  render() {
-    const { article, notitle } = this.props;
+    // const { article, notitle } = this.props;
     // const { isOpen } = this.state;
-    return (
-      <section>
-        { notitle ? null : <h1 className="c-article__title">{article.title}</h1> }
-        <Article.Introduction introduction={article.introduction} />
-        <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
-        { article.footNotes }
-      </section>
-    );
-  }
-}
+    // return (
+  <section>
+    { notitle ? null : <h1 className="c-article__title">{article.title}</h1> }
+    <Article.Introduction introduction={article.introduction} />
+    <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
+    { article.footNotes }
+  </section>
+    // );
+);
 
 
 TopicArticle.propTypes = {
   article: ArticleShape.isRequired,
-  openTitle: PropTypes.node.isRequired,
   notitle: PropTypes.bool,
 };
 

@@ -44,6 +44,8 @@
   }
   &__title {
     @include inuit-font-size(22px);
+    text-transform: none;
+    letter-spacing: 0;
     margin:0;
   }
   &__author {

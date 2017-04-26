@@ -1,0 +1,22 @@
+.c-resource-group {
+  &__title {
+    @include inuit-font-size(18px);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+    margin-top: $spacing--large;
+  }
+  &--Fagstoff {
+    .c-topic-resource__icon {
+      background-color: $mark-color;
+      svg { fill: $white; }
+    }
+  }
+  &--Lringssti {
+    .c-topic-resource__icon {
+      background-color: $yellow;
+      svg { fill: $white; }
+    }
+  }
+}

@@ -13,7 +13,7 @@
   }
   &__item {
     padding-top: $spacing--small;
-    padding-bottom: $spacing;
+    padding-bottom: $spacing--small;
     padding-right: $spacing;
     border-bottom: 3px solid $brand-grey--lighter;
     background-color: transparent;
@@ -27,9 +27,6 @@
     a {
       color: $brand-color;
       box-shadow: none;
-    }
-    &:first-child {
-      margin-top: $spacing--large;
     }
   }
   &__header {

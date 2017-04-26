@@ -47,7 +47,7 @@ function printSourceLine(mapConsumer, orgPos) {
 function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
   const orgPos = mapConsumer.originalPositionFor({ line: frame.line, column: frame.column });
   process.stdout.write(
-    chalk.bold.red(`  at ${name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
+    chalk.bold.red(`  at ${orgPos.name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
   );
 
   if (printSourceLineFlag) {

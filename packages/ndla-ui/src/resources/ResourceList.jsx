@@ -18,19 +18,26 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Resource = ({ resource, resourceToLinkProps }) => (
-  <li {...classes('item o-flag o-flag--top')}>
-    <div {...classes('icon o-flag__img')}>
-      { resource.icon === 'Document' ? <Icon.Document /> : null }
-      { resource.icon === 'Path' ? <Icon.Path /> : null }
-      { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
-    </div>
-    <div {...classes('body o-flag__body')}>
-      <h1 {...classes('title')}><SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink></h1>
-      {resource.tag ? <SafeLink {...classes('tag')} {...resourceToLinkProps(resource)}>{resource.tag}</SafeLink> : null }
-    </div>
-  </li>
-);
+const Resource = ({ resource, resourceToLinkProps }) => {
+  const linkProps = resourceToLinkProps(resource);
+
+  return (
+    <li {...classes('item o-flag o-flag--top')}>
+      <div {...classes('icon o-flag__img')}>
+        { resource.icon === 'Document' ? <Icon.Document /> : null }
+        { resource.icon === 'Path' ? <Icon.Path /> : null }
+        { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
+      </div>
+      <div {...classes('body o-flag__body')}>
+        <h1 {...classes('title')}>
+          {linkProps.href ?
+            <a {...linkProps}>{resource.name}</a> :
+            <SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink> }
+        </h1>
+      </div>
+    </li>
+  );
+};
 
 Resource.propTypes = {
   resource: ResourceShape.isRequired,

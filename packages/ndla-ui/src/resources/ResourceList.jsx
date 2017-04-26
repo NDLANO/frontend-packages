@@ -20,9 +20,9 @@ const classes = new BEMHelper({
 const Resource = ({ resource, resourceToLinkProps }) => (
   <li {...classes('item o-flag o-flag--top')}>
     <div {...classes('icon o-flag__img')}>
-      { resource.icon === 'Document' ? <Icon.Document /> : null }
-      { resource.icon === 'Path' ? <Icon.Path /> : null }
-      { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
+      { resource.icon === 'Fagstoff' && <Icon.Document /> }
+      { resource.icon === 'Læringssti' && <Icon.Path /> }
+      { resource.icon === 'Oppgave' && <Icon.Pencil /> }
     </div>
     <div {...classes('body o-flag__body')}>
       <h1 {...classes('title')}><SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink></h1>

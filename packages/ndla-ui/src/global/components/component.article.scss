@@ -29,7 +29,9 @@ section.article_introduction {
   }
 
   &-content {
-    border: 1px solid $brand-grey--lighter;
+    @include mq(tablet) {
+      border: 1px solid $brand-grey--lighter;
+    }
     margin-bottom: $spacing--large;
     padding-bottom: $spacing--large;
     font-family: $font-serif;

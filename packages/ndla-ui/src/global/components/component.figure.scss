@@ -2,18 +2,21 @@
   transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
   margin: $spacing--large/1.4 0 $spacing--large;
 
-  &__byline {
+  &__caption {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     @include mq(tablet) {
-      flex-direction: row;
+      flex-direction: row-reverse;
       justify-content: flex-start;
     }
-    border-top: 1px solid $background-color--gray-dark;
     padding-top: $spacing--small;
   }
+  &__byline {
+    padding-right: $spacing;
+  }
   &__byline-licenselist {
-    margin: $spacing--small/2 $spacing 0;
+    margin: $spacing--small/2 auto 0;
+    text-align: center;
   }
   &__close {
     display: none;

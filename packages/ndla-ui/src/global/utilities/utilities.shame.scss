@@ -148,7 +148,7 @@ $shame-spacing: 12px;
 
 
 .license-byline__body:not(.license-byline__body--black) {
-  display: block;
+  display: none; // Fix better solution
   margin-right: $spacing--small;
   text-transform: uppercase;
   @include inuit-font-size(13px);

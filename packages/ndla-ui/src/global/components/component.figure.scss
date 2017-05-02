@@ -4,9 +4,7 @@
 
   &__caption {
     display: flex;
-    flex-direction: column-reverse;
     @include mq(tablet) {
-      flex-direction: row-reverse;
       justify-content: flex-start;
     }
     padding-top: $spacing--small;

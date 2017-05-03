@@ -31,7 +31,8 @@
     }
   }
   &__header {
-    @include inuit-font-size(20px);
+    @include inuit-font-size(25px);
+    font-weight: $font-weight-normal;
     color: $brand-color;
     margin-bottom: $spacing--small;
     margin-top: $spacing--small;

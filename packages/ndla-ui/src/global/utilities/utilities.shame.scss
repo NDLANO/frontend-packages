@@ -295,8 +295,10 @@ $shame-spacing: 12px;
 
 .c-topic-menu {
   &__left {
-    flex: 1;
-    max-width: 30%;
+    @include mq(tablet) {
+      flex: 1;
+      max-width: 30%;
+    }
   }
 
   &__right {

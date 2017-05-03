@@ -40,6 +40,10 @@
     .c-aside__content {
       max-height: 500vh;
 
+      * {
+        z-index: 999;
+      }
+
       &:after {
         background: none;
       }

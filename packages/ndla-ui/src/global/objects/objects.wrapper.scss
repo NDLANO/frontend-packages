@@ -1,4 +1,5 @@
 .o-wrapper--narrow {
+  width: 100%;
 
   section.c-article-content:first-child {
     @include mq(tablet) {

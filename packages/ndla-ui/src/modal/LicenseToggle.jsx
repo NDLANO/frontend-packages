@@ -55,7 +55,7 @@ class LicenseToggle extends Component {
             med en hvit og en svart halvdel.
           </div>
           <div className="c-figure__byline">
-            <button onClick={this.handleClick} className="c-button c-button--outline c-figure__captionbtn"><Icon.OpenWindow /> Gjenbruk</button>
+            <button onClick={this.handleClick} className="c-button c-button--outline c-figure__captionbtn"><Icon.OpenWindow /> Bruk bildet</button>
             <div className="c-figure__byline-licenselist">
               <ClickableLicenseByline
                 license={getLicenseByAbbreviation('by-nc-nd')}
@@ -80,8 +80,7 @@ class LicenseToggle extends Component {
             </div>
             <div className="c-licenseToggle__ctablock">
               <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Copy /> Kopier referanse</button>
-              <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Link /> Gå til kilde</button>
-              <button className="c-button c-licenseToggle__button" type="button"><Icon.OpenWindow /> Vis bilde</button>
+              <button className="c-button c-licenseToggle__button" type="button"><Icon.OpenWindow /> Last ned bilde</button>
             </div>
           </div>
         </div>

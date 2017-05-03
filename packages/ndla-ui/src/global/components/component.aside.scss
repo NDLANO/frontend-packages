@@ -85,9 +85,6 @@
     &:hover, &:active {
       background: $brand-color--dark !important;
     }
-    @include mq(desktop) {
-      display: none;
-    }
   }
 
   img {

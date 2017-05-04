@@ -12,7 +12,6 @@
   width: $spacing;
   height: $spacing;
 }
-
 .c-license-icons {
   &__list, &__list2 {
     list-style: none;
@@ -20,8 +19,17 @@
     margin: 0;
   }
 
+  &__licenselabel {
+    display:none;
+  }
+
   &__item {
     display: inline-block;
+    padding-bottom: 4px;
+
+    button {
+      vertical-align: top;
+    }
 
     &--active {
       circle {

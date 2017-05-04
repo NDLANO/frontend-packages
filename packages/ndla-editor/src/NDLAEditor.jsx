@@ -6,9 +6,10 @@
  *
  */
 
- /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Editor, { composeDecorators } from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
@@ -71,7 +72,6 @@ const sideToolbarPlugin = createSideToolbarPlugin({
 const { SideToolbar } = sideToolbarPlugin;
 
 const { InlineToolbar } = inlineToolbarPlugin;
-// const { Toolbar } = toolbarPlugin;
 
 /* Undo Redo */
 const plugins = [

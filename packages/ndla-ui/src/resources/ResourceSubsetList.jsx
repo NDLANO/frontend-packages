@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import ResourceList from './ResourceList';
@@ -42,10 +43,11 @@ class ResourceSubsetList extends Component {
         <div {...classes('')} >
           {resourceGroups.map((group, i) => (
             <div id={group.title} key={uuid()} {...classes('', [group.color, this.state.focusTitle === group.title ? 'focus' : ''])}>
-              <span {...classes('underline')}>
-                <h2 {...classes('heading')}>{group.title}</h2>
-                <span {...classes('lead')}>{group.description}</span>
-              </span>
+              <h1 {...classes('heading')}>{group.title}</h1>
+              <p {...classes('lead')}>{group.description}</p>
+              { group.tags ? group.tags.map(tags => (
+                <SafeLink key={uuid()} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
+              )) : null }
               <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
               <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
             </div>

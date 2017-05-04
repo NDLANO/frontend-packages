@@ -39,7 +39,6 @@ const TopicArticle = ({ article, notitle }) => (
     // );
 );
 
-
 TopicArticle.propTypes = {
   article: ArticleShape.isRequired,
   notitle: PropTypes.bool,

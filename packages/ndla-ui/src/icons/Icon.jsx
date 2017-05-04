@@ -7,7 +7,9 @@
  */
 
 import React, { createElement } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import elementType from 'react-prop-types/lib/elementType';
 
 import LicenseCc from './LicenseCc';
 import Download from './Download';
@@ -31,9 +33,14 @@ import LicenseNd from './LicenseNd';
 import LicenseSa from './LicenseSa';
 
 function Icon(props) {
-  const { icon, ...rest } = props;
-  return createElement(icon, { className: classNames('icon', rest.className) });
+  const { icon, className, ...rest } = props;
+  return createElement(icon, { className: classNames('icon', className), ...rest });
 }
+
+Icon.propTypes = {
+  icon: elementType.isRequired,
+  className: PropTypes.string,
+};
 
 
 Icon.Download = props => (<Icon {...props} icon={Download} />);

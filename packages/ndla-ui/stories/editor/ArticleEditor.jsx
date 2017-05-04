@@ -10,14 +10,14 @@ import React, { Component, PropTypes } from 'react';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import NDLAEditor from 'ndla-editor';
-import { fetchArticleFromApi } from '../article/articleApi';
+import { fetchArticleFromApi, fetchWithToken } from '../article/articleApi';
 import SimpleSubmitForm from '../article/SimpleSubmitForm';
 import { Button } from '../../src/';
 
 function findEmbedDataInContentState(constentState) {
   return constentState.getBlocksAsArray().filter(block => block.getEntityAt(0)).map((block) => {
     const key = block.getEntityAt(0);
-    return Entity.get(key).getData();
+    return constentState.getEntity(key).getData();
   });
 }
 
@@ -25,23 +25,20 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
   const blockMap = constentState.getBlockMap().map((block) => {
     const key = block.getEntityAt(0);
     if (key) {
-      const id = Entity.get(key).getData().id;
+      const id = constentState.getEntity(key).getData().id;
       const embed = embedsWithResources.find(e => e.id === id);
 
       if (!embed || embed.resource !== 'image') {
         return block;
       }
 
-      Entity.mergeData(key, { src: embed.image.imageUrl });
-
-      const data = block.getData();
-
-      const newData = data
-        .set('alt', Entity.get(key).getData().alt)
-        .set('caption', Entity.get(key).getData().caption); // Store alt in contentState until: https://github.com/facebook/draft-js/issues/839
+      constentState.mergeEntityData(key, {
+        src: embed.image.imageUrl,
+        alt: constentState.getEntity(key).getData().alt,
+        caption: constentState.getEntity(key).getData().caption,
+      });
 
       return block
-        .set('data', newData)
         .set('text', ' '); // Fix 'a' hack (See https://github.com/HubSpot/draft-convert/blob/master/src/convertFromHTML.js#L381-L388)
     }
     return block;
@@ -56,9 +53,8 @@ function reduceAttributesArrayToObject(attributes) {
 
 function fetchEmbedData(embed) {
   if (embed.resource === 'image') {
-    return fetch(embed.url)
-          .then(res => res.json())
-          .then(image => ({ ...embed, image }));
+    return fetchWithToken(embed.url.replace('http', 'https'))
+      .then(image => ({ ...embed, image }));
   }
   return embed;
 }

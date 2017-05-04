@@ -19,7 +19,7 @@ const initialState = {
       type: 'image',
       mutability: 'IMMUTABLE',
       data: {
-        src: 'http://staging.api.ndla.no/image-api/v1/images/full/20131111-212116-pi.jpg',
+        src: 'https://images.unsplash.com/photo-1489617482379-fc98cdb77efb?dpr=2&auto=format&fit=crop&w=767&h=431&q=80&cs=tinysrgb&crop=',
       },
     },
   },

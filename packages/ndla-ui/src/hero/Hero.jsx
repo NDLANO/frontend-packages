@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -25,12 +26,12 @@ export const Hero = ({ children, url, alt, small, white }) => {
   const classResult = classModifier === 'small' ? classModifier : classModifier2;
   const imageUrl = url || fallbackUrl;
   return (<div {...classes(!url || alt || small || white ? { modifiers: classResult } : null)} style={bgStyle(imageUrl)}>
-    { children }
+    { children || null }
   </div>);
 };
 
 Hero.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   url: PropTypes.string,
   alt: PropTypes.bool,
   small: PropTypes.bool,

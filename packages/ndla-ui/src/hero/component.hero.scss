@@ -3,7 +3,7 @@
   background-size: cover;
 
   @include mq(tablet) {
-    min-height: 350px;
+    min-height: 250px;
   }
   &__title {
     margin: 0;
@@ -13,7 +13,7 @@
   }
   &__content {
     color: $white;
-    padding: 7% 0;
+    padding: 5% 0;
     z-index: 9;
 
 

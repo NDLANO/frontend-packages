@@ -4,7 +4,7 @@
 import {
   addAsideClickListener,
   removeAsideClickListener,
-} from '../index';
+} from '../asideScripts';
 
 const byId = id => document.getElementById(id);
 

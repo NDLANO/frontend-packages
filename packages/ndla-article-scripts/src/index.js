@@ -6,47 +6,33 @@
  *
  */
 
-export const updateIFrameDimensions = () => {
-  document.querySelectorAll('.article__oembed iframe')
-    .forEach((el) => {
-      const iframe = el;
-      const parentWidth = iframe.parentNode.clientWidth;
-      const newHeight = (iframe.clientHeight * parentWidth) / iframe.clientWidth;
-      iframe.height = newHeight;
-      iframe.width = parentWidth;
-    });
-};
 
-export const addAsideClickListener = () => {
-  document.querySelectorAll('.c-aside__button')
-    .forEach((el) => {
-      const target = el;
-      target.onclick = () => target.parentNode.classList.toggle('expanded');
-    });
-};
+ import { updateIFrameDimensions, addEventListenerForResize, removeEventListenerForResize } from './iframeScripts';
 
-export const removeAsideClickListener = () => {
-  document.querySelectorAll('.c-aside__button')
-    .forEach((el) => {
-      const target = el;
-      target.onclick = undefined;
-    });
-};
+ import { addAsideClickListener, removeAsideClickListener } from './asideScripts';
 
-export const addEventListenerForResize = () => {
-  window.addEventListener('resize', updateIFrameDimensions);
-};
+ import { addShowFigureDetailsClickListners, addCloseFigureDetailsClickListners, makeFigureLicenseIconsClickable } from './figureScripts';
 
-export const removeEventListenerForResize = () => {
-  window.removeEventListener('resize', updateIFrameDimensions);
-};
 
-export default {
-  updateIFrameDimensions,
+ export const initArticleScripts = () => {
+   addEventListenerForResize();
+   updateIFrameDimensions();
+   addAsideClickListener();
+   addShowFigureDetailsClickListners();
+   addCloseFigureDetailsClickListners();
+   makeFigureLicenseIconsClickable();
+ };
 
-  addAsideClickListener,
-  removeAsideClickListener,
+ export {
+   updateIFrameDimensions,
 
-  addEventListenerForResize,
-  removeEventListenerForResize,
-};
+   addAsideClickListener,
+   removeAsideClickListener,
+
+   addEventListenerForResize,
+   removeEventListenerForResize,
+
+   addCloseFigureDetailsClickListners,
+   addShowFigureDetailsClickListners,
+   makeFigureLicenseIconsClickable,
+ };

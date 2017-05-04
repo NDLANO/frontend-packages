@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Pencil = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="80" height="76" viewBox="0 0 80 76" className={className}>

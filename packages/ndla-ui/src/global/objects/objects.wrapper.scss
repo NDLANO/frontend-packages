@@ -1,14 +1,6 @@
 .o-wrapper--narrow {
   width: 100%;
 
-  section.c-article-content:first-child {
-    @include mq(tablet) {
-      margin-top: -$spacing*9;
-      padding-top: $spacing--large;
-    }
-    background: $white;
-  }
-
   section>* {
     // @include max-width();
     margin-left: auto;
@@ -18,6 +10,15 @@
     // max-width: 100%;
   }
 }
+
+section.c-article-content:first-child {
+  @include mq(tablet) {
+    margin-top: -$spacing*6;
+    padding-top: $spacing--large;
+  }
+  background: $white;
+}
+
 .o-wrapper--wide {
   max-width: 100% !important;
 }

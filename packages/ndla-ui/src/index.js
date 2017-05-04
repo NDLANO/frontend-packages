@@ -20,7 +20,9 @@ import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
 import ArticleIntroduction from './article/ArticleIntroduction';
 import ArticleFootNotes from './article/ArticleFootNotes';
+import ArticleContent from './article/ArticleContent';
 import Article from './article/Article';
+import { Figure, FigureCaption, FigureDetails } from './article/Figure';
 import LicenseIconList from './license/LicenseIconList';
 import LicenseByline from './license/LicenseByline';
 import ToggleLicenseBox from './license/ToggleLicenseBox';
@@ -33,7 +35,6 @@ import TopicMenu from './topicMenu/TopicMenu';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
-import LicenseToggle from './modal/LicenseToggle';
 import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
 
 
@@ -43,6 +44,7 @@ Footer.Ruler = FooterRuler;
 Footer.Editor = FooterEditor;
 Article.Introduction = ArticleIntroduction;
 Article.FootNotes = ArticleFootNotes;
+Article.Content = ArticleContent;
 
 export {
   Article,
@@ -51,11 +53,11 @@ export {
   ClickableLicenseByline,
   ClickToggle,
   Footer,
+  Figure, FigureCaption, FigureDetails,
   Hero,
   Icon,
   LicenseByline,
   LicenseIconList,
-  LicenseToggle,
   Logo,
   Masthead,
   MastheadItem,

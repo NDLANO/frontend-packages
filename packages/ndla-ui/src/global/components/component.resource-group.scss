@@ -9,7 +9,7 @@
     padding-bottom: 5px;
     border-bottom: 2px solid $brand-grey--light;
   }
-  &--Lringssti {
+  &--Lringsstier {
     li {
       padding: 5px;
     }
@@ -21,12 +21,12 @@
       }
     }
   }
-  &--Oppgave {
+  &--Oppgaver, &--Interaktivitet {
     li {
       background-color: rgba($green, 0.1);
     }
   }
-  &--Fagstoff {
+  &--Lrestoff {
     li {
       background-color: rgba($mark-color, 0.1);
     }

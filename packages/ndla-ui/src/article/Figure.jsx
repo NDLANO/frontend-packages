@@ -51,12 +51,12 @@ export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviatio
   <figcaption {...classes('caption')}>
     {caption ? <div className="c-figcaption__info">${caption}</div> : null}
     <div {...classes('byline')}>
-      <button className="c-button c-button--outline c-figure__captionbtn"><Icon.OpenWindow /> {reuseLabel}</button>
       <div {...classes('byline-licenselist')}>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>
           <span className="article_meta">{ authors.map(author => author.name).join(', ') }</span>
         </LicenseByline>
       </div>
+      <button className="c-button c-button--outline c-figure__captionbtn"><Icon.OpenWindow /> {reuseLabel}</button>
     </div>
   </figcaption>
 );

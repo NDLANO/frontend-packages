@@ -28,7 +28,6 @@ export default class TopicMenu extends Component {
 
     this.closeCallback = null;
     this.handleMouseClick = this.handleMouseClick.bind(this);
-    // this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   componentWillUnmount() {
@@ -45,19 +44,16 @@ export default class TopicMenu extends Component {
     this.setState({ expandedTopicId: topicId });
   }
 
-  // handleMouseLeave() {
-  //   this.closeCallback = setTimeout(() => {
-  //     this.setState({ expandedTopicId: undefined });
-  //   }, this.props.delay);
-  // }
-
   render() {
-    const { topics, toTopic, close: closeMenu } = this.props;
+    const { topics, toTopic, subject, subjectId, toSubject, close: closeMenu } = this.props;
     const { expandedTopicId } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
-      <div {...classes('dropdown', null, 'o-wrapper u-1/1')} onMouseLeave={this.handleMouseLeave}>
+      <div {...classes('dropdown', null, 'o-wrapper u-1/1')}>
         <ul {...classes('list', null, classes('left').className)}>
+          <li {...classes('subject')} >
+            <SafeLink to={toSubject}>{ subject }</SafeLink>
+          </li>
           { topics.map(topic =>
             (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
               <SafeLink {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
@@ -80,8 +76,11 @@ export default class TopicMenu extends Component {
 TopicMenu.propTypes = {
   topics: PropTypes.arrayOf(TopicShape).isRequired,
   toTopic: PropTypes.func.isRequired,
+  toSubject: PropTypes.string,
   close: PropTypes.func,
   delay: PropTypes.number,
+  subject: PropTypes.string,
+  subjectId: PropTypes.string,
 };
 
 TopicMenu.defaultProps = {

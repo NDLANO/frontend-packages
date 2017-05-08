@@ -301,6 +301,16 @@ $shame-spacing: 12px;
     }
   }
 
+  &__subject {
+    margin-left: $spacing--large;
+    padding-bottom: $spacing;
+    margin-bottom: $spacing--small;
+    border-bottom: 1px solid rgba($brand-color, .5);
+    a {
+      text-decoration: none;
+    }
+  }
+
   &__right {
     flex: 2;
     padding: $spacing--large;
@@ -310,6 +320,8 @@ $shame-spacing: 12px;
     padding: $spacing 0;
     list-style: none;
     margin: 0;
+    overflow-y: auto;
+    max-height: 87%;
   }
 
   &__topic-item {
@@ -329,7 +341,7 @@ $shame-spacing: 12px;
   }
 
   &__subtopic-item {
-    padding: $spacing--small 0;
+    padding: $spacing--small 0 $spacing--small $spacing;
     transition: all .1s ease-in-out;
 
     a:hover {

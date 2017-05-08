@@ -55,7 +55,7 @@ class LicenseToggle extends Component {
             med en hvit og en svart halvdel.
           </div>
           <div className="c-figure__byline">
-            <button onClick={this.handleClick} className="c-button c-button--outline c-figure__captionbtn"><Icon.OpenWindow /> Bruk bildet</button>
+            <button onClick={this.handleClick} className="c-button c-button--outline c-figure__captionbtn">Bruk bildet</button>
             <div className="c-figure__byline-licenselist">
               <ClickableLicenseByline
                 license={getLicenseByAbbreviation('by-nc-nd')}

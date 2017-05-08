@@ -16,6 +16,7 @@
     padding-bottom: $spacing--small;
     padding-right: $spacing;
     border-bottom: 3px solid $brand-grey--lighter;
+    list-style: none;
     background-color: transparent;
     margin-left: 0;
     @include inuit-font-size(16px, 26px);

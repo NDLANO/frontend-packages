@@ -11,7 +11,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Editor from 'draft-js-plugins-editor';
-import { EditorState } from 'draft-js';
 import BEMHelper from 'react-bem-helper';
 import createBasicStylePlugin from './basicStylePlugin';
 import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
@@ -65,7 +64,9 @@ export default class BaseEditor extends Component {
 
 BaseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.instanceOf(EditorState).isRequired,
+  value: PropTypes.shape({
+    _immutable: PropTypes.object,
+  }).isRequired,
   plugins: PropTypes.arrayOf(PropTypes.object),
   className: PropTypes.string,
   children: PropTypes.node,

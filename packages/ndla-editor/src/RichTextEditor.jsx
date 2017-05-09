@@ -8,7 +8,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
@@ -44,7 +43,9 @@ const RichTextEditor = props => (
 );
 
 RichTextEditor.propTypes = {
-  value: PropTypes.instanceOf(EditorState).isRequired,
+  value: PropTypes.shape({
+    _immutable: PropTypes.object,
+  }).isRequired,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };

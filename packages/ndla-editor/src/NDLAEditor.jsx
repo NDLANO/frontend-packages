@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor, { composeDecorators } from 'draft-js-plugins-editor';
+import { composeDecorators } from 'draft-js-plugins-editor';
 import { EditorState, convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createAlignmentPlugin from 'draft-js-alignment-plugin';
@@ -21,16 +21,12 @@ import {
   HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
-import BEMHelper from 'react-bem-helper';
 import decorateComponentWithProps from 'decorate-component-with-props';
 
+import BaseEditor from './BaseEditor';
 import BlockTypeSelect from './BlockTypeSelect';
 import createToolbarPlugin from './ToolbarPlugin';
 import createImagePlugin from './imagePlugin';
-import createBasicStylePlugin from './basicStylePlugin';
-import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
-import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
-
 import ImageAdd from './imagePlugin/ImageAdd';
 
 
@@ -73,16 +69,9 @@ const { SideToolbar } = sideToolbarPlugin;
 
 const { InlineToolbar } = inlineToolbarPlugin;
 
-/* Undo Redo */
 const plugins = [
   focusPlugin, alignmentPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, sideToolbarPlugin,
-  createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
 ];
-
-const classes = new BEMHelper({
-  name: 'editor',
-  prefix: 'c-',
-});
 
 export default class NDLAEditor extends Component {
 
@@ -105,8 +94,6 @@ export default class NDLAEditor extends Component {
 
   onChange(editorState) {
     this.setState({ editorState });
-
-    // console.log(convertToRaw(editorState.getCurrentContent()));
   }
 
   toogleAltStyle() {
@@ -119,21 +106,10 @@ export default class NDLAEditor extends Component {
 
   render() {
     return (
-      <article>
-        {/* Wait for editor initialization before rendering toolbar */}
-        {/* {this.editor && <Toolbar />} */}
-        <div {...classes(undefined, (this.state.useAltStyle && 'alt'))} onClick={this.focus}>
-          <Editor
-            editorState={this.state.editorState}
-            onChange={this.onChange}
-            plugins={plugins}
-            handleKeyCommand={this.handleKeyCommand}
-            ref={(element) => { this.editor = element; }}
-          />
-          <AlignmentTool />
-          <InlineToolbar />
-          <SideToolbar />
-        </div>
+      <BaseEditor value={this.state.editorState} onChange={this.onChange} plugins={plugins} >
+        <AlignmentTool />
+        <InlineToolbar />
+        <SideToolbar />
         <div style={{ clear: 'both' }}>
           <ul style={{ listStyleType: 'none', padding: '10px 0 0 0', margin: 0 }}>
             <li style={{ marginTop: '10px' }}>
@@ -158,13 +134,14 @@ export default class NDLAEditor extends Component {
               />
             </li>
           </ul>
-
         </div>
-      </article>
+      </BaseEditor>
     );
   }
 }
 
 NDLAEditor.propTypes = {
-  editorState: PropTypes.object,
+  editorState: PropTypes.shape({
+    _immutable: PropTypes.object,
+  }).isRequired,
 };

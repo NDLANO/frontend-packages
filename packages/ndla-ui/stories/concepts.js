@@ -11,7 +11,7 @@ storiesOf('Konsepter', module)
         <section className="c-factbox">
           <h1 className="u-heading">Navngivning</h1>
           <p>
-          test
+
           </p>
         </section>
         <section>

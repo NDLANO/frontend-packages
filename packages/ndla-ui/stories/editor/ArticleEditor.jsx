@@ -9,10 +9,12 @@
 import React, { Component, PropTypes } from 'react';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
-import NDLAEditor from 'ndla-editor';
+import NDLAEditor, { withStateHandler } from 'ndla-editor';
 import { fetchArticleFromApi, fetchWithToken } from '../article/articleApi';
 import SimpleSubmitForm from '../article/SimpleSubmitForm';
 import { Button } from '../../src/';
+
+const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 
 function findEmbedDataInContentState(constentState) {
   return constentState.getBlocksAsArray().filter(block => block.getEntityAt(0)).map((block) => {
@@ -116,7 +118,7 @@ class ArticleEditor extends Component {
     return (
       <div>
         { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>Lukk</Button> : null}
-        { editorState ? <NDLAEditor editorState={editorState} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+        { editorState ? <StatefulNDLAEditor value={editorState} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
       </div>
     );
   }

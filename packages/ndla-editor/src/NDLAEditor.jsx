@@ -11,7 +11,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { composeDecorators } from 'draft-js-plugins-editor';
-import { EditorState, convertToRaw } from 'draft-js';
+import { convertToRaw } from 'draft-js';
 import createFocusPlugin from 'draft-js-focus-plugin';
 import createAlignmentPlugin from 'draft-js-alignment-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
@@ -75,47 +75,40 @@ const plugins = [
 
 export default class NDLAEditor extends Component {
 
+
   constructor(props) {
     super(props);
     this.state = {
-      editorState: props.editorState ? props.editorState : EditorState.createEmpty(),
-      useAltStyle: true,
+      className: 'alt',
     };
 
     this.logState = () => {
-      const content = this.state.editorState.getCurrentContent();
+      const content = this.props.value.getCurrentContent();
       console.info(convertToRaw(content)); //eslint-disable-line
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.focus = this.focus.bind(this);
     this.toogleAltStyle = this.toogleAltStyle.bind(this);
   }
 
-  onChange(editorState) {
-    this.setState({ editorState });
-  }
-
   toogleAltStyle() {
-    this.setState({ useAltStyle: !this.state.useAltStyle });
-  }
-
-  focus() {
-    this.editor.focus();
+    this.setState({ className: this.state.className !== 'alt' ? 'alt' : '' });
   }
 
   render() {
+    const { value, onChange } = this.props;
     return (
-      <BaseEditor value={this.state.editorState} onChange={this.onChange} plugins={plugins} >
-        <AlignmentTool />
-        <InlineToolbar />
-        <SideToolbar />
+      <div>
+        <BaseEditor {...this.props} className={this.state.className} plugins={plugins} >
+          <AlignmentTool />
+          <InlineToolbar />
+          <SideToolbar />
+        </BaseEditor>
         <div style={{ clear: 'both' }}>
           <ul style={{ listStyleType: 'none', padding: '10px 0 0 0', margin: 0 }}>
             <li style={{ marginTop: '10px' }}>
               <ImageAdd
-                editorState={this.state.editorState}
-                onChange={this.onChange}
+                editorState={value}
+                onChange={onChange}
                 modifier={imagePlugin.addImage}
               />
             </li>
@@ -135,13 +128,16 @@ export default class NDLAEditor extends Component {
             </li>
           </ul>
         </div>
-      </BaseEditor>
+      </div>
     );
   }
 }
 
 NDLAEditor.propTypes = {
-  editorState: PropTypes.shape({
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.shape({
     _immutable: PropTypes.object,
+    getCurrentContent: PropTypes.func.isRequired,
   }).isRequired,
+  className: PropTypes.string,
 };

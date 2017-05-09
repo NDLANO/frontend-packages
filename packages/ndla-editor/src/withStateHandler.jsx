@@ -30,7 +30,9 @@ const withStateHandler = (WrappedComponent) => {
   }
 
   EditorStateHandler.propTypes = {
-    value: PropTypes.instanceOf(EditorState).isRequired,
+    value: PropTypes.shape({
+      _immutable: PropTypes.object,
+    }),
   };
   EditorStateHandler.displayName = `EditorStateHandler(${getComponentName(WrappedComponent)})`;
   return hoistNonReactStatics(EditorStateHandler, WrappedComponent);

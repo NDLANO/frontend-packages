@@ -9,11 +9,14 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import NDLAEditor, { ExampleEditor, RichTextEditor, withStateHandler } from 'ndla-editor';
+import NDLAEditor, { RichTextEditor, withStateHandler } from 'ndla-editor';
+import { convertFromRaw, EditorState } from 'draft-js';
 import ArticleEditor from './editor/ArticleEditor';
 import { Center } from './helpers';
+import mockEditorState from '../dummydata/mockEditorState';
 
 const StatefulRichTextEditor = withStateHandler(RichTextEditor);
+const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 
 storiesOf('Lekegrind', module)
   .add('NDLA editor uten innhold', () => (
@@ -21,7 +24,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
-      <NDLAEditor />
+      <StatefulNDLAEditor />
     </Center>
   ))
   .add('NDLA editor med eksempel innhold', () => (
@@ -29,7 +32,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
-      <ExampleEditor />
+      <StatefulNDLAEditor value={EditorState.createWithContent(convertFromRaw(mockEditorState))} />
     </Center>
   ))
   .add('NDLA editor med innhold', () => (

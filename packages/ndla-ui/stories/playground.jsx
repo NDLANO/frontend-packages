@@ -9,8 +9,7 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import NDLAEditor, { ExampleEditor } from 'ndla-editor';
-
+import NDLAEditor, { ExampleEditor, RichTextEditor } from 'ndla-editor';
 import ArticleEditor from './editor/ArticleEditor';
 import { Center } from './helpers';
 
@@ -46,6 +45,14 @@ storiesOf('Lekegrind', module)
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
       <ArticleEditor />
+    </Center>
+  ))
+  .add('Enkel editor', () => (
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">Rik tekst Editor</h1>
+      </section>
+      <RichTextEditor />
     </Center>
   ))
 ;

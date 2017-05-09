@@ -8,10 +8,12 @@
 
  import NDLAEditor from './NDLAEditor';
  import ExampleEditor from './ExampleEditor';
+ import RichTextEditor from './RichTextEditor';
 
  export {
    NDLAEditor,
    ExampleEditor,
+   RichTextEditor,
  };
 
  export default NDLAEditor;

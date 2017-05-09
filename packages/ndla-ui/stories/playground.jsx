@@ -9,10 +9,11 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import NDLAEditor, { ExampleEditor, RichTextEditor } from 'ndla-editor';
+import NDLAEditor, { ExampleEditor, RichTextEditor, withStateHandler } from 'ndla-editor';
 import ArticleEditor from './editor/ArticleEditor';
 import { Center } from './helpers';
 
+const StatefulRichTextEditor = withStateHandler(RichTextEditor);
 
 storiesOf('Lekegrind', module)
   .add('NDLA editor uten innhold', () => (
@@ -52,7 +53,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">Rik tekst Editor</h1>
       </section>
-      <RichTextEditor />
+      <StatefulRichTextEditor className="alt" />
     </Center>
   ))
 ;

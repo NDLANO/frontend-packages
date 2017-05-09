@@ -32,13 +32,6 @@ export default class BaseEditor extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      editorState: props.editorState ? props.editorState : EditorState.createEmpty(),
-      useAltStyle: true,
-    };
-
-
-    this.onChange = this.onChange.bind(this);
     this.focus = this.focus.bind(this);
   }
 
@@ -51,14 +44,14 @@ export default class BaseEditor extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, className, value, onChange } = this.props;
     const plugins = [...basePlugins, ...this.props.plugins];
     return (
       <article>
-        <div {...classes(undefined, (this.state.useAltStyle && 'alt'))} onClick={this.focus}>
+        <div {...classes(undefined, className)} onClick={this.focus}>
           <Editor
-            editorState={this.state.editorState}
-            onChange={this.onChange}
+            editorState={value}
+            onChange={onChange}
             plugins={plugins}
             handleKeyCommand={this.handleKeyCommand}
             ref={(element) => { this.editor = element; }}
@@ -71,8 +64,10 @@ export default class BaseEditor extends Component {
 }
 
 BaseEditor.propTypes = {
-  editorState: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.instanceOf(EditorState).isRequired,
   plugins: PropTypes.arrayOf(PropTypes.object),
+  className: PropTypes.string,
   children: PropTypes.node,
 };
 

@@ -46,6 +46,7 @@
     "draft-js-plugins-editor": "2.0.0-beta11",
     "draft-js-side-toolbar-plugin": "2.0.0-beta11",
     "draft-js-undo-plugin": "2.0.0-beta11",
-    "draftjs-utils": "0.7.5"
+    "draftjs-utils": "0.7.5",
+    "hoist-non-react-statics": "^1.2.0"
   }
 }

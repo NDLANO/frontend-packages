@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EditorState } from 'draft-js';
@@ -38,15 +36,16 @@ const plugins = [inlineToolbarPlugin, sideToolbarPlugin];
 const { InlineToolbar } = inlineToolbarPlugin;
 const { SideToolbar } = sideToolbarPlugin;
 
-const RichTextEditor = ({ editorState, className }) => (
-  <BaseEditor editorState={editorState} className={className} plugins={plugins} >
+const RichTextEditor = props => (
+  <BaseEditor {...props} plugins={plugins} >
     <InlineToolbar />
     <SideToolbar />
   </BaseEditor>
 );
 
 RichTextEditor.propTypes = {
-  editorState: PropTypes.instanceOf(EditorState),
+  value: PropTypes.instanceOf(EditorState).isRequired,
+  onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
 

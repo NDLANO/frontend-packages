@@ -8,9 +8,8 @@
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-plugins-editor';
 import { EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
@@ -18,13 +17,10 @@ import {
   ItalicButton, BoldButton, UnderlineButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
-import BEMHelper from 'react-bem-helper';
 import decorateComponentWithProps from 'decorate-component-with-props';
 
 import BlockTypeSelect from './BlockTypeSelect';
-import createBasicStylePlugin from './basicStylePlugin';
-import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
-import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
+import BaseEditor from './BaseEditor';
 
 
 const inlineToolbarPlugin = createInlineToolbarPlugin({
@@ -37,68 +33,21 @@ const sideToolbarPlugin = createSideToolbarPlugin({
   ],
 });
 
-const plugins = [
-  inlineToolbarPlugin, sideToolbarPlugin,
-  createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
-];
+const plugins = [inlineToolbarPlugin, sideToolbarPlugin];
 
 const { InlineToolbar } = inlineToolbarPlugin;
 const { SideToolbar } = sideToolbarPlugin;
 
-const classes = new BEMHelper({
-  name: 'editor',
-  prefix: 'c-',
-});
-
-export default class RichTextEditor extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      editorState: props.editorState ? props.editorState : EditorState.createEmpty(),
-      useAltStyle: true,
-    };
-
-
-    this.onChange = this.onChange.bind(this);
-    this.focus = this.focus.bind(this);
-    this.toogleAltStyle = this.toogleAltStyle.bind(this);
-  }
-
-  onChange(editorState) {
-    this.setState({ editorState });
-  }
-
-  toogleAltStyle() {
-    this.setState({ useAltStyle: !this.state.useAltStyle });
-  }
-
-  focus() {
-    this.editor.focus();
-  }
-
-  render() {
-    return (
-      <article>
-        {/* Wait for editor initialization before rendering toolbar */}
-        {/* {this.editor && <Toolbar />} */}
-        <div {...classes(undefined, (this.state.useAltStyle && 'alt'))} onClick={this.focus}>
-          <Editor
-            editorState={this.state.editorState}
-            onChange={this.onChange}
-            plugins={plugins}
-            handleKeyCommand={this.handleKeyCommand}
-            ref={(element) => { this.editor = element; }}
-          />
-          <InlineToolbar />
-          <SideToolbar />
-        </div>
-      </article>
-    );
-  }
-}
+const RichTextEditor = ({ editorState, className }) => (
+  <BaseEditor editorState={editorState} className={className} plugins={plugins} >
+    <InlineToolbar />
+    <SideToolbar />
+  </BaseEditor>
+);
 
 RichTextEditor.propTypes = {
   editorState: PropTypes.instanceOf(EditorState),
+  className: PropTypes.string,
 };
 
+export default RichTextEditor;

@@ -38,14 +38,14 @@
   "dependencies": {
     "decorate-component-with-props": "^1.0.2",
     "draft-js": "0.10.0",
-    "draft-js-alignment-plugin": "2.0.0-beta10",
-    "draft-js-buttons": "2.0.0-beta10",
-    "draft-js-focus-plugin": "2.0.0-beta10",
-    "draft-js-image-plugin": "2.0.0-beta10",
-    "draft-js-inline-toolbar-plugin": "2.0.0-beta10",
-    "draft-js-plugins-editor": "2.0.0-beta10",
-    "draft-js-side-toolbar-plugin": "2.0.0-beta10",
-    "draft-js-undo-plugin": "2.0.0-beta10",
-    "draftjs-utils": "^0.4.0"
+    "draft-js-alignment-plugin": "2.0.0-beta11",
+    "draft-js-buttons": "2.0.0-beta11",
+    "draft-js-focus-plugin": "2.0.0-beta11",
+    "draft-js-image-plugin": "2.0.0-beta11",
+    "draft-js-inline-toolbar-plugin": "2.0.0-beta11",
+    "draft-js-plugins-editor": "2.0.0-beta11",
+    "draft-js-side-toolbar-plugin": "2.0.0-beta11",
+    "draft-js-undo-plugin": "2.0.0-beta11",
+    "draftjs-utils": "0.7.5"
   }
 }

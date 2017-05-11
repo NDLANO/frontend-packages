@@ -7,11 +7,13 @@
  */
 
  import NDLAEditor from './NDLAEditor';
- import ExampleEditor from './ExampleEditor';
+ import RichTextEditor from './RichTextEditor';
+ import withStateHandler from './withStateHandler';
 
  export {
    NDLAEditor,
-   ExampleEditor,
+   RichTextEditor,
+   withStateHandler,
  };
 
  export default NDLAEditor;

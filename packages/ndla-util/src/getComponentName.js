@@ -6,16 +6,8 @@
  *
  */
 
-import uuid from './uuid';
-import getComponentName from './getComponentName';
+const getComponentName = component => (
+  component.displayName || component.name || 'Component'
+);
 
-
-export {
-  uuid,
-  getComponentName,
-};
-
-export default {
-  uuid,
-  getComponentName,
-};
+export default getComponentName;

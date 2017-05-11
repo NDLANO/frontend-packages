@@ -43,3 +43,35 @@ $background-color--darker: darken($background-color, $darken-factor * 2);
 $background-color--light: lighten($background-color, $darken-factor);
 $background-color--gray: $brand-grey--lightest;
 $background-color--gray-dark: #e4e4e4;
+
+/**
+ * Expose sass variables as css variables
+ */
+
+:root {
+  --brand-color: $brand-color;
+  --brand-color--secondary: $brand-color--secondary;
+  --brand-color--tertiary: $brand-color--tertiary;
+  --brand-color--light: $brand-color--light;
+  --brand-color--lighter: $brand-color--lighter;
+
+  --brand-grey: $brand-grey;
+  --brand-grey--light: $brand-grey--light;
+  --brand-grey--lighter: $brand-grey--lighter;
+  --brand-grey--lightest: $brand-grey--lightest;
+  --brand-grey-dark: $brand-grey-dark;
+
+  --primary-color: $primary-color;
+  --white: $white;
+  --black: $black;
+  --mark-color: $mark-color;
+  --brand-color--dark: $brand-color--dark;
+  --green: $green;
+
+  --background-color: $background-color;
+  --background-color--dark: $background-color--dark;
+  --background-color--darker: $background-color--darker;
+  --background-color--light: $background-color--light ;
+  --background-color--gray: $background-color--gray;
+  --background-color--gray-dark: $background-color--gray-dark;
+}

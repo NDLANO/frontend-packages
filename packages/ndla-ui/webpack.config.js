@@ -2,12 +2,15 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/main.scss'),
+  entry: {
+    main: path.resolve(__dirname, 'src/main.scss'),
+    editor: path.resolve(__dirname, 'src/editor.scss'),
+  },
   target: 'web',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'aout.js',
+    filename: '[name]-aout.js',
   },
 
   module: {
@@ -20,5 +23,5 @@ module.exports = {
     ],
   },
 
-  plugins: [new ExtractTextPlugin('style.css')],
+  plugins: [new ExtractTextPlugin('[name].css')],
 };

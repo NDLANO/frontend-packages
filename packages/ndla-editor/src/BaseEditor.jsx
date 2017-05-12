@@ -43,7 +43,7 @@ export default class BaseEditor extends Component {
   }
 
   render() {
-    const { children, className, value, onChange } = this.props;
+    const { children, className, value, onChange, ...rest } = this.props;
     const plugins = [...basePlugins, ...this.props.plugins];
     return (
       <article>
@@ -54,6 +54,7 @@ export default class BaseEditor extends Component {
             plugins={plugins}
             handleKeyCommand={this.handleKeyCommand}
             ref={(element) => { this.editor = element; }}
+            {...rest}
           />
           {children}
         </div>

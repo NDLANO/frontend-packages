@@ -79,7 +79,7 @@ export default class NDLAEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      className: 'alt',
+      className: '',
     };
 
     this.logState = () => {

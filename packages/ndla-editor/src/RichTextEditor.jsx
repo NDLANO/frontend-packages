@@ -12,6 +12,7 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
   ItalicButton, BoldButton, UnderlineButton,
+  HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
 import decorateComponentWithProps from 'decorate-component-with-props';
@@ -21,12 +22,12 @@ import BaseEditor from './BaseEditor';
 
 
 const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [ItalicButton, BoldButton, UnderlineButton, UnorderedListButton, BlockquoteButton],
+  structure: [ItalicButton, BoldButton, UnderlineButton, HeadlineTwoButton, HeadlineThreeButton, UnorderedListButton, BlockquoteButton],
 });
 
 const sideToolbarPlugin = createSideToolbarPlugin({
   structure: [
-    decorateComponentWithProps(BlockTypeSelect, { structure: [UnorderedListButton, BlockquoteButton] }),
+    decorateComponentWithProps(BlockTypeSelect, { structure: [UnorderedListButton, HeadlineTwoButton, HeadlineThreeButton, BlockquoteButton] }),
   ],
 });
 

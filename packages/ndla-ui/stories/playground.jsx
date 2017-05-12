@@ -25,7 +25,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
-      <StatefulNDLAEditor />
+      <StatefulNDLAEditor placeholder="Fortell din historie..." />
     </Center>
   ))
   .add('NDLA editor med eksempel innhold', () => (
@@ -33,7 +33,10 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
-      <StatefulNDLAEditor value={EditorState.createWithContent(convertFromRaw(mockEditorState))} />
+      <StatefulNDLAEditor
+        value={EditorState.createWithContent(convertFromRaw(mockEditorState))}
+        placeholder="Fortell din historie..."
+      />
     </Center>
   ))
   .add('NDLA editor med innhold', () => (
@@ -57,7 +60,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">Rik tekst Editor</h1>
       </section>
-      <StatefulRichTextEditor className="alt" />
+      <StatefulRichTextEditor placeholder="Fortell din historie..." />
     </Center>
   ))
   .add('Enkel tekst editor', () => (
@@ -65,7 +68,7 @@ storiesOf('Lekegrind', module)
       <section className="c-factbox">
         <h1 className="u-heading">Enkel tekst Editor</h1>
       </section>
-      <StatefulPlainTextEditor className="alt" />
+      <StatefulPlainTextEditor placeholder="Fortell din historie..." />
     </Center>
   ))
 ;

@@ -9,13 +9,14 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import NDLAEditor, { RichTextEditor, withStateHandler } from 'ndla-editor';
+import NDLAEditor, { RichTextEditor, PlainTextEditor, withStateHandler } from 'ndla-editor';
 import { convertFromRaw, EditorState } from 'draft-js';
 import ArticleEditor from './editor/ArticleEditor';
 import { Center } from './helpers';
 import mockEditorState from '../dummydata/mockEditorState';
 
 const StatefulRichTextEditor = withStateHandler(RichTextEditor);
+const StatefulPlainTextEditor = withStateHandler(PlainTextEditor);
 const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 
 storiesOf('Lekegrind', module)
@@ -51,12 +52,20 @@ storiesOf('Lekegrind', module)
       <ArticleEditor />
     </Center>
   ))
-  .add('Enkel editor', () => (
+  .add('Rik tekst editor', () => (
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">Rik tekst Editor</h1>
       </section>
       <StatefulRichTextEditor className="alt" />
+    </Center>
+  ))
+  .add('Enkel tekst editor', () => (
+    <Center>
+      <section className="c-factbox">
+        <h1 className="u-heading">Enkel tekst Editor</h1>
+      </section>
+      <StatefulPlainTextEditor className="alt" />
     </Center>
   ))
 ;

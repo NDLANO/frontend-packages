@@ -25,7 +25,7 @@
 
   &__item {
     display: inline-block;
-    padding-bottom: 4px;
+    padding-bottom: 7px;
 
     button {
       vertical-align: top;
@@ -49,4 +49,13 @@
     width: $spacing / 1.1;
     height: $spacing / 1.1;
   }
+}
+
+.c-licenseToggle__details {
+
+  .c-license-icons__item div {
+    display: flex;
+    align-items: flex-start;
+  }
+
 }

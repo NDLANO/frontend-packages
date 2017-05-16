@@ -118,29 +118,11 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Paginering', () => (
     <Center>
-      <article className="o-wrapper--narrow">
-        <h2>Eksempler på bruk:</h2>
-        <section>
-          <h3>Side 3 valgt av 10 sider:</h3>
-          <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
-        </section>
-        <section>
-          <h3>Side 4 valgt av 4 sider:</h3>
-          <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
-        </section>
-        <section>
-          <h3>Side 1 valgt av 3 sider:</h3>
-          <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
-        </section>
-        <section>
-          <h3>Side 3 valgt av 3 sider:</h3>
-          <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
-        </section>
-        <section>
-          <h3>Side 1 valgt av 1 side:</h3>
-          <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
-        </section>
-      </article>
+      <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
+      <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
   ))
   .add('Sidefot', () => (

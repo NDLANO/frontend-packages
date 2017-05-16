@@ -40,7 +40,7 @@
     "eslint": "3.19.0",
     "eslint-config-ndla": "0.1.1",
     "jest": "19.0.2",
-    "lerna": "2.0.0-rc.3",
+    "lerna": "2.0.0-rc.4",
     "prop-types": "15.5.8",
     "react": "15.5.4",
     "react-bem-helper": "1.4.1",

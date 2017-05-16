@@ -39,6 +39,22 @@
 }
 
 
+.pager_step {
+  display: inline;
+  border: 0;
+  border-top: 2px solid $background-color--dark;
+  background-color: transparent;
+  padding: 1em 1.45em;
+  margin: 1em .3em 0;
+  text-decoration: none;
+  color: $black;
+}
+
+.pager_step--active, .pager_step:hover {
+  border-top: 2px solid $brand-color;
+  background-color: $brand-color--lighter;
+}
+
 .logo {
   margin: 0;
   height: 19px;

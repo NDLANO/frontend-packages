@@ -47,6 +47,7 @@ export default class TopicMenu extends Component {
   render() {
     const { topics, toTopic, subject, subjectId, toSubject, close: closeMenu } = this.props;
     const { expandedTopicId } = this.state;
+    console.warn(topic.id);
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
       <div {...classes('dropdown', null, 'o-wrapper u-1/1')}>

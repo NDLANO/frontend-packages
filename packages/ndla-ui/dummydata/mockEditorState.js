@@ -6,14 +6,22 @@
  *
  */
 
-import React from 'react';
-import {
-convertFromRaw,
-EditorState,
-} from 'draft-js';
-import NDLAEditor from './NDLAEditor';
+export const subjectList = [
+  {
+    id: 'urn:subject:1',
+    name: 'physics',
+  },
+  {
+    id: 'urn:subject:2',
+    name: 'Medieuttrykk og mediesamfunnet',
+  },
+  {
+    id: 'urn:subject:2',
+    name: ' Helsearbeiderfag',
+  },
+];
 
-const initialState = {
+export default {
   entityMap: {
     0: {
       type: 'image',
@@ -70,16 +78,3 @@ const initialState = {
       data: {},
     }],
 };
-
-const ExampleEditor = () => {
-  const editorState = EditorState.createWithContent(convertFromRaw(initialState));
-  return (
-    <NDLAEditor editorState={editorState} />
-  );
-};
-
-ExampleEditor.propTypes = {
-
-};
-
-export default ExampleEditor;

@@ -15,18 +15,14 @@
 @import "../node_modules/ndla-editor/node_modules/draft-js-focus-plugin/lib/plugin";
 
 
-$editor-width: 620px;
-
 .c-editor {
-  width: $editor-width;
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
-  padding: 16px;
-  border-radius: 2px;
   margin-bottom: 2em;
-  box-shadow: inset 0px 1px 8px -3px #ABABAB;
-  background: #fefefe;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 
   .public-DraftEditor-content figure {
     margin: 20px 0;
@@ -36,25 +32,24 @@ $editor-width: 620px;
     min-height: 140px;
   }
 
-  figure: {
-    max-width: $editor-width;
+  .c-block {
+    &__image {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+    }
+
+    &__input {
+      background-color: transparent;
+    }
   }
 
   &--alt {
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    .c-block {
-      &__image {
-        border: none;
-        background-color: transparent;
-        padding: 0;
-      }
-
-      &__input {
-        background-color: transparent;
-      }
-    }
+    background: #fefefe;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-shadow: inset 0px 1px 8px -3px #ABABAB;
   }
 }
 

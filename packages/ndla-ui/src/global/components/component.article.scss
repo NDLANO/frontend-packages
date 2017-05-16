@@ -21,6 +21,10 @@ section.article_introduction {
 .c-article {
   margin-top: $spacing--large;
   margin-bottom: $spacing--large;
+  @include mq($from: desktop) {
+    @include grids(4,6);
+    @include grids-push(1,6);
+  }
 
 
   &--narrow {

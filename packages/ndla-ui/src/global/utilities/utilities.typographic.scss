@@ -3,6 +3,10 @@
 }
 .u-heading {
   border-bottom: $brand-color--tertiary $inuit-global-border-width solid;
+  @include mq($from: desktop) {
+    @include grids(4,6);
+    @include grids-push(1,6);
+  }
 }
 .u-text-inverted {
   color: $white;

@@ -2,6 +2,13 @@
   // To be removed
 }
 
+.o-wrapper--inner {
+  @include mq($from: desktop) {
+    @include grids(4,6);
+    @include grids-push(1,6);
+  }
+}
+
 section.c-article-content:first-child {
   @include mq(tablet) {
     margin-top: -$spacing*6;

@@ -11,7 +11,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Pager, { PageLink } from '../Pager';
+import Pager, { PageItem } from '../Pager';
 
 
 function pagerTest({ setup, expected }) {
@@ -32,20 +32,20 @@ function pagerTest({ setup, expected }) {
         case 'current':
           expect(step.is('.pager_step--active')).toBeTruthy();
           expect(step.text()).toBe(setup.page.toString());
-          expect(step.is(PageLink)).not.toBe('Current page not linked');
+          expect(step.is(PageItem)).not.toBe('Current page not linked');
           break;
         case 'back':
-          expect(step.is(PageLink)).toBeTruthy();
+          expect(step.is(PageItem)).toBeTruthy();
           expect(step.props().modifier).toBe(value);
           expect(step.props().page).toBe(prev);
           break;
         case 'forward':
-          expect(step.is(PageLink)).toBeTruthy();
+          expect(step.is(PageItem)).toBeTruthy();
           expect(step.props().modifier).toBe(value);
           expect(step.props().page).toBe(next);
           break;
         default:
-          expect(step.is(PageLink)).toBeTruthy();
+          expect(step.is(PageItem)).toBeTruthy();
           expect(step.props().page).toBe(value);
           expect(step.props().children).toBe(value);
       }

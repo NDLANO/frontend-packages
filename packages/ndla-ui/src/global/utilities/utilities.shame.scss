@@ -46,7 +46,9 @@
 
 .pager_step {
   display: inline;
+  border: 0;
   border-top: 2px solid $background-color--dark;
+  background-color: transparent;
   padding: 1em 1.45em;
   margin: 1em .3em 0;
   text-decoration: none;

@@ -9,12 +9,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import elementType from 'react-prop-types/lib/elementType';
+import { Link } from 'react-router-dom';
+
 import SafeLink from '../common/SafeLink';
 import { stepNumbers } from './pagerHelpers';
 
 const createQueryString = obj => Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&');
 
-export const PageLink = ({ children, page, query: currentQuery, pathname, onClick, modifier }) => {
+export const PageItem = ({ children, page, query: currentQuery, pathname, onClick, modifier, pageItemComponentClass: Component }) => {
   const modifierClass = modifier ? `pager_step--${modifier}` : '';
   const classes = classNames('pager_step', modifierClass);
 
@@ -26,13 +29,17 @@ export const PageLink = ({ children, page, query: currentQuery, pathname, onClic
 
   const handleClick = () => onClick(query);
 
-  return <SafeLink className={classes} onClick={handleClick} to={linkToPage} >{children}</SafeLink>;
+  if (Component === SafeLink || Component === Link) {
+    return <SafeLink className={classes} onClick={handleClick} to={linkToPage} >{children}</SafeLink>;
+  }
+  return <Component className={classes} onClick={handleClick}>{children}</Component>;
 };
 
-PageLink.propTypes = {
+PageItem.propTypes = {
+  pageItemComponentClass: elementType.isRequired,
   children: PropTypes.node.isRequired,
   page: PropTypes.number.isRequired,
-  query: PropTypes.object.isRequired,
+  query: PropTypes.object.isRequired, // eslint-disable-line
   pathname: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   modifier: PropTypes.string,
@@ -43,33 +50,35 @@ export default function Pager(props) {
 
   const steps = stepNumbers(page, lastPage);
 
-  const pageLinks = steps.map((n) => {
+  const PageItems = steps.map((n) => {
     if (n === page) {
       return <span key={n} className="pager_step pager_step--active">{n}</span>;
     }
-    return <PageLink key={n} page={n} {...rest}>{n}</PageLink>;
+    return <PageItem key={n} page={n} {...rest}>{n}</PageItem>;
   });
 
-  const prevPageLink = steps[0] < page ? <PageLink modifier="back" page={page - 1} {...rest}> {'<'} </PageLink> : null;
-  const nextPageLink = page < lastPage ? <PageLink modifier="forward" page={page + 1} {...rest}> {'>'} </PageLink> : null;
+  const prevPageItem = steps[0] < page ? <PageItem modifier="back" page={page - 1} {...rest}> {'<'} </PageItem> : null;
+  const nextPageItem = page < lastPage ? <PageItem modifier="forward" page={page + 1} {...rest}> {'>'} </PageItem> : null;
 
   return (
     <div className="pager">
-      {prevPageLink}
-      {pageLinks}
-      {nextPageLink}
+      {prevPageItem}
+      {PageItems}
+      {nextPageItem}
     </div>
   );
 }
 
 Pager.propTypes = {
+  pageItemComponentClass: elementType,
   page: PropTypes.number.isRequired,
   pathname: PropTypes.string.isRequired,
   lastPage: PropTypes.number.isRequired,
-  query: PropTypes.object.isRequired,
+  query: PropTypes.object.isRequired, // eslint-disable-line
   onClick: PropTypes.func,
 };
 
 Pager.defaultProps = {
   onClick: () => {},
+  pageItemComponentClass: SafeLink,
 };

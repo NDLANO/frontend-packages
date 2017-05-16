@@ -3,6 +3,11 @@
 @import "../node_modules/inuitcss/settings/_settings.core";
 @import "global/settings/settings.global";
 @import "global/settings/settings.colors";
+@import "global/settings/settings.typography";
+
+// Grids
+@import "global/utilities/utilities.widths";
+@import "global/utilities/utilities.grids";
 
 // TOOLS
 @import "../node_modules/inuitcss/tools/tools.font-size";

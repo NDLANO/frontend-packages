@@ -1,14 +1,5 @@
 .o-wrapper--narrow {
-  width: 100%;
-
-  section>* {
-    // @include max-width();
-    margin-left: auto;
-    margin-right: auto;
-  }
-  section section>* { // Fix for when duplicate max-width is applied
-    // max-width: 100%;
-  }
+  // To be removed
 }
 
 section.c-article-content:first-child {

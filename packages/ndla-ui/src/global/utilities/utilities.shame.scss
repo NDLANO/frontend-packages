@@ -72,9 +72,13 @@
 }
 .article_figure--float-left {
   margin-right: $spacing !important;
+  left: auto !important;
+  right: auto !important;
 }
 .article_figure--float-right {
   margin-left: $spacing !important;
+  left: auto !important;
+  right: auto !important;
 }
 
 /* Width utils */

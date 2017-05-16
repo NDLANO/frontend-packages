@@ -91,6 +91,11 @@
     box-shadow: 0px 0px 9px -3px $brand-grey;
     margin-bottom: $spacing--small;
   }
+  figure {
+    // Overrule default images width
+    width: 100% !important;
+    left: 0 !important;
+  }
   h2,h3,h4,h5 {
     display: block;
     @include inuit-font-size(16px);

@@ -51,14 +51,3 @@ hr {
     top: -$spacing;
   }
 }
-
-section {
-
-  @include mq(tablet) {
-    padding: 0 $spacing * 1.5;
-  }
-
-  @include mq(desktop) {
-    padding: 0;
-  }
-}

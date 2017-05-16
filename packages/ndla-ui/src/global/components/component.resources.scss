@@ -1,13 +1,19 @@
 .c-resources {
-  @include mq(tablet) {
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+  // @extend .o-wrapper;
+  @include mq($from: desktop) {
+    @include grids(4,6);
+    @include grids-push(1,6);
   }
 
   background-color: $white;
   padding-bottom: $spacing--large;
   padding-top: $spacing;
+
+  >* {
+    @include mq($from: desktop) {
+      @include grids-expand(4,6,2);
+    }
+  }
 
   &--transparent {
     background: transparent;

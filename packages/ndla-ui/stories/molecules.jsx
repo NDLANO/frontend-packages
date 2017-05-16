@@ -27,11 +27,11 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Sammensatte noder', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Sammensatte moduler</h1>
         </section>
-        <section className="c-article-content">
+        <section className="o-wrapper--inner">
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten

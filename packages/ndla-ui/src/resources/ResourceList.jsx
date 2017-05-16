@@ -24,9 +24,9 @@ const Resource = ({ resource, resourceToLinkProps }) => {
   return (
     <li {...classes('item o-flag o-flag--top')}>
       <div {...classes('icon o-flag__img')}>
-        { resource.icon === 'Document' ? <Icon.Document /> : null }
-        { resource.icon === 'Path' ? <Icon.Path /> : null }
-        { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
+        { resource.icon === 'Lærestoff' ? <Icon.Document /> : null }
+        { resource.icon === 'Læringsstier' ? <Icon.Path /> : null }
+        { resource.icon === 'Oppgaver og aktiviteter' ? <Icon.Pencil /> : null }
       </div>
       <div {...classes('body o-flag__body')}>
         <h1 {...classes('title')}>

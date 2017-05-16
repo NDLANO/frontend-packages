@@ -1,6 +1,10 @@
 .c-collate {
   position: relative;
 
+  details {
+    border-top: 3px solid $brand-grey--lighter;
+    margin-top: 5px;
+  }
 }
 .c-collate__panel {
   position: relative;

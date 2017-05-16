@@ -50,10 +50,24 @@ storiesOf('Enkle komponenter', module)
         <section>
           <h2 className="u-heading">Eksempel</h2>
           <InlineContainer>
-            <Button onClick={action('clicked')}>Knapp</Button>
-            <Button outline onClick={action('clicked')}>Knapp outlined</Button>
-            <Button square onClick={action('clicked')}>Knapp squared</Button>
-            <Button submit onClick={action('clicked')}>Sendeknapp</Button>
+            <details open>
+              <summary><Button onClick={action('clicked')}>Knapp</Button></summary>
+              <code>
+                &lt;button class=&quot;c-button&quot; type=&quot;button&quot;&gt;Knapp&lt;/button&gt;
+              </code>
+            </details>
+            <details>
+              <summary><Button outline onClick={action('clicked')}>Knapp outlined</Button></summary>
+              <code>&lt;button class=&quot;c-button c-button--outline&quot; type=&quot;button&quot;&gt;Knapp outlined&lt;/button&gt;</code>
+            </details>
+            <details>
+              <summary><Button square onClick={action('clicked')}>Knapp squared</Button></summary>
+              <code>&lt;button class=&quot;c-button c-button--square&quot; type=&quot;button&quot;&gt;Knapp squared&lt;/button&gt;</code>
+            </details>
+            <details>
+              <summary><Button submit onClick={action('clicked')}>Sendeknapp</Button></summary>
+              <code>&lt;button class=&quot;c-button&quot; type=&quot;submit&quot;&gt;Sendeknapp&lt;/button&gt;</code>
+            </details>
           </InlineContainer>
           <InlineContainer>
             <Button submit disabled onClick={action('clicked')}>Sendeknapp deaktivert</Button>

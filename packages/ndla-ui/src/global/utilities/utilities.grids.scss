@@ -13,9 +13,6 @@ $denominator: auto;
   left: ($numerator / $denominator) * 100% !important;
 }
 
-// Pull item
-
-
 // Expand item
 @mixin grids-expand($numerator, $denominator, $expand) {
   $unit: $numerator / $denominator * 100%;

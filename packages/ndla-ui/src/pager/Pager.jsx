@@ -70,15 +70,17 @@ export default function Pager(props) {
 }
 
 Pager.propTypes = {
-  pageItemComponentClass: elementType,
   page: PropTypes.number.isRequired,
-  pathname: PropTypes.string.isRequired,
   lastPage: PropTypes.number.isRequired,
-  query: PropTypes.object.isRequired, // eslint-disable-line
+  pathname: PropTypes.string,
+  query: PropTypes.object, // eslint-disable-line
   onClick: PropTypes.func,
+  pageItemComponentClass: elementType,
 };
 
 Pager.defaultProps = {
   onClick: () => {},
   pageItemComponentClass: SafeLink,
+  query: {},
+  pathname: '',
 };

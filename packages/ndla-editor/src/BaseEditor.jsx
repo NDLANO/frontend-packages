@@ -16,7 +16,6 @@ import createBasicStylePlugin from './basicStylePlugin';
 import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
 import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
 
-
 const basePlugins = [
   createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
 ];
@@ -43,15 +42,15 @@ export default class BaseEditor extends Component {
   }
 
   render() {
-    const { children, className, value, onChange, ...rest } = this.props;
-    const plugins = [...basePlugins, ...this.props.plugins];
+    const { children, className, value, onChange, plugins, ...rest } = this.props;
+    const allPlugins = [...plugins, ...basePlugins];
     return (
       <article>
         <div {...classes(undefined, className)} onClick={this.focus}>
           <Editor
             editorState={value}
             onChange={onChange}
-            plugins={plugins}
+            plugins={allPlugins}
             handleKeyCommand={this.handleKeyCommand}
             ref={(element) => { this.editor = element; }}
             {...rest}

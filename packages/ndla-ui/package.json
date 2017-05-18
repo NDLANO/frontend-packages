@@ -1,6 +1,6 @@
 {
   "name": "ndla-ui",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Styleguide and ui component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -57,7 +57,7 @@
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
     "ndla-article-scripts": "^0.0.3",
-    "ndla-editor": "^0.1.1",
+    "ndla-editor": "^0.1.2",
     "ndla-licenses": "^0.0.7",
     "ndla-tabs": "^0.2.1",
     "ndla-util": "^0.1.1",

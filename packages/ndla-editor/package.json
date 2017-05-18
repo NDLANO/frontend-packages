@@ -1,6 +1,6 @@
 {
   "name": "ndla-editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Editor for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

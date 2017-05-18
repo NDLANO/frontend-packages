@@ -6,7 +6,8 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import NDLAEditor, { withStateHandler } from 'ndla-editor';

@@ -6,7 +6,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 
 const User = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24" className={className}>

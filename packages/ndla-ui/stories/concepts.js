@@ -7,12 +7,10 @@ import { Center } from './helpers';
 storiesOf('Konsepter', module)
   .add('Navngivning av innholdselementer', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Navngivning</h1>
-          <p>
-
-          </p>
+          <p />
         </section>
         <section>
           <ul>Hovedskiller for emner og lærestoff:
@@ -29,4 +27,4 @@ storiesOf('Konsepter', module)
         </section>
       </article>
     </Center>
-  ))
+  ));

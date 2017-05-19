@@ -148,24 +148,34 @@ storiesOf('Sammensatte moduler', module)
   .add('Lisens ikonstripe', () => (
     <Center>
       <h2 className="u-heading">Lisens ikon stripe</h2>
-      <LicenseIconList licenseRights={[BY, SA]} />
-      <LicenseIconList licenseRights={[BY, NC, SA]} />
-      <LicenseIconList licenseRights={[BY, NC, ND]} />
+      <div className="o-wrapper--inner">
+        <LicenseIconList licenseRights={[BY, SA]} />
+        <LicenseIconList licenseRights={[BY, NC, SA]} />
+        <LicenseIconList licenseRights={[BY, NC, ND]} />
+      </div>
       <h2 className="u-heading">Lisens ikon stripe med et fremhevet ikon</h2>
-      <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
-      <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
-      <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
+      <div className="o-wrapper--inner">
+        <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
+        <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
+        <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
+      </div>
       <h2 className="u-heading">Klikkbar lisens ikon stripe</h2>
-      <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
+      <div className="o-wrapper--inner">
+        <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
+      </div>
     </Center>
   ))
   .add('Lisens byline', () => (
     <Center>
       <h2 className="u-heading">Lisens byline</h2>
-      <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
-      <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      <div className="o-wrapper--inner">
+        <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
+        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      </div>
       <h2 className="u-heading">Klikkbar lisens byline</h2>
-      <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      <div className="o-wrapper--inner">
+        <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      </div>
     </Center>
   ))
   .add('Lisensboks', () => (
@@ -184,11 +194,15 @@ storiesOf('Sammensatte moduler', module)
   .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
-      <p>Klikk på fane-tittel for å vise innhold.</p>
-      <Tabs />
+      <div className="o-wrapper--inner">
+        <p>Klikk på fane-tittel for å vise innhold.</p>
+        <Tabs />
+      </div>
       <h2 className="u-heading">Kontrollerte faner</h2>
-      <p>Disse fanene kan også kontrolleres med frittstående knapper plassert innenfor fanene.</p>
-      <TabsControlled />
+      <div className="o-wrapper--inner">
+        <p>Disse fanene kan også kontrolleres med frittstående knapper plassert innenfor fanene.</p>
+        <TabsControlled />
+      </div>
     </Center>
   ))
   .add('Emne artikkel', () => (
@@ -205,26 +219,24 @@ storiesOf('Sammensatte moduler', module)
   .add('Emner liste', () => (
     <Center>
       <h2 className="u-heading">Emneliste</h2>
-      <article className="o-wrapper--narrow">
-        <div className="c-resources">
-          <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-          </section>
-        </div>
-      </article>
+      <div className="c-resources">
+        <section>
+          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+        </section>
+      </div>
     </Center>
   ))
   .add('Liste med en type læringsressurs', () => (
     <Center>
       <h2 className="u-heading">Læringsstier eksempel</h2>
-      <article className="o-wrapper--narrow">
+      <div className="o-wrapper--inner">
         <div className="c-resources">
           <section>
             <LearningPathResourceList />
           </section>
         </div>
-      </article>
-      <h2 className="u-heading">Fagstoff eksempel</h2>
+      </div>
+      <h2 className="u-heading">Lærestoff eksempel</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
           <section>

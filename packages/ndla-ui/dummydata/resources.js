@@ -7,7 +7,7 @@ export const articleResources = [
     contentUri: 'urn:article:339',
     title: 'Hva er en idé?',
     tag: 'Illustrasjoner',
-    icon: 'Document',
+    type: 'Lærestoff',
   },
   {
     topicId: 'urn:topic:170363',
@@ -18,7 +18,7 @@ export const articleResources = [
     introduction: 'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. Derfor er det vanskelig å formidle en god idé til andre.',
     title: 'Ideer og idéutvikling',
     tag: 'Film',
-    icon: 'Document',
+    type: 'Lærestoff',
   },
   {
     topicId: 'urn:topic:170363',
@@ -28,7 +28,7 @@ export const articleResources = [
     contentUri: 'urn:article:166',
     introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Kreativ kommunikasjon',
-    icon: 'Document',
+    type: 'Lærestoff',
   },
   {
     topicId: 'urn:topic:170363',
@@ -37,7 +37,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:340',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
-    icon: 'Document',
+    type: 'Lærestoff',
   },
   {
     topicId: 'urn:topic:170363',
@@ -46,7 +46,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
-    icon: 'Document',
+    type: 'Lærestoff',
   },
 ];
 
@@ -60,13 +60,13 @@ export const learningPathResources = [
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/v1/raw/tegner_ide.png',
     title: 'Teknikker for idéutvikling',
     introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
-    icon: 'Path',
+    type: 'Læringsstier',
   },
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
-    icon: 'Path',
+    type: 'Læringsstier',
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -82,11 +82,11 @@ export const learningPathResources = [
     topicId: 'urn:topic:170364',
     id: 'urn:resource:',
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
-    icon: 'Path',
+    type: 'Læringsstier',
     resourceTypes: [
       {
         id: 'urn:resource-type:3',
-        name: 'Læringssti',
+        name: 'Læringsstier',
       },
     ],
     contentUri: 'urn:learningpath:340',
@@ -107,13 +107,13 @@ export const exerciseResources = [
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/v1/raw/tegner_ide.png',
     title: 'Teknikker for idéutvikling',
     introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
-    icon: 'Pencil',
+    type: 'Oppgaver og aktiviteter',
   },
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
-    icon: 'Pencil',
+    type: 'Oppgaver og aktiviteter',
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -129,7 +129,7 @@ export const exerciseResources = [
     topicId: 'urn:topic:170364',
     id: 'urn:resource:',
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
-    icon: 'Pencil',
+    type: 'Oppgaver og aktiviteter',
     resourceTypes: [
       {
         id: 'urn:resource-type:3',

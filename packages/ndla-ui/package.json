@@ -36,7 +36,8 @@
   "dependencies": {
     "classnames": "2.2.5",
     "react-bem-helper": "1.4.1",
-    "react-prop-types": "0.4.0"
+    "react-prop-types": "0.4.0",
+    "shortid": "^2.2.8"
   },
   "peerDependencies": {
     "prop-types": "^15.5.8",

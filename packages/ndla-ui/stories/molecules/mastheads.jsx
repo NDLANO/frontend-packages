@@ -38,7 +38,7 @@ export const MastheadWithTopicMenu = () => (
     <MastheadItem left>
       <SiteNav>
         <ClickToggle title="Meny" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-          <TopicMenu toTopic={(id) => `#{id}`} topics={topicMenu} />
+          <TopicMenu toTopic={() => '#'} topics={topicMenu} />
         </ClickToggle>
       </SiteNav>
     </MastheadItem>

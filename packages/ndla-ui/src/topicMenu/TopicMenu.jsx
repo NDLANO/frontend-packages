@@ -45,7 +45,7 @@ export default class TopicMenu extends Component {
   }
 
   render() {
-    const { topics, toTopic, subject, subjectId, toSubject, close: closeMenu } = this.props;
+    const { topics, toTopic, subject, toSubject, close: closeMenu } = this.props;
     const { expandedTopicId } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (

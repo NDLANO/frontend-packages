@@ -14,7 +14,6 @@ import { LicenseShape } from '../shapes';
 const LicenseByline = ({ children, license }) => (
   <div className="license-byline">
     <LicenseIconList licenseRights={license.rights} />
-    test
     { children ?
       <div className="license-byline__body">
         { children }

@@ -7,34 +7,37 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import { Article, OneColumn } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
-import TopicBreadcrumbDefault from '../molecules/breadcrumbs';
+
 
 const ArticleExample = ({ article, withLicenseExample, notitle }) => (
-  <section className="c-article-content">
+  <article>
     <OneColumn cssModifier="narrow">
-      <section>
-        <TopicBreadcrumbDefault />
-        { withLicenseExample && <LicenseExample /> }
-        { notitle ? null : <h1>{article.title}</h1> }
-        <ArticleByline article={article} />
+      <section className="c-article-content">
+        <section className="c-article--narrow">
+          { withLicenseExample && <LicenseExample /> }
+          { notitle ? null : <h1>{article.title}</h1> }
+        </section>
         <Article.Introduction introduction={article.introduction} />
-      </section>
-    </OneColumn>
-    <OneColumn cssModifier="narrow">
-      <Article.Content content={article.content} />
-    </OneColumn>
-    <OneColumn cssModifier="narrow">
-      <section>
+        <section className="c-article--narrow">
+          <ArticleByline article={article} />
+        </section>
+        <OneColumn cssModifier="narrow">
+          <section className="c-article--narrow">
+            <section>
+              <Article.Content content={article.content} />
+            </section>
+          </section>
+        </OneColumn>
         { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
         { withLicenseExample && <LicenseExample /> }
       </section>
     </OneColumn>
-  </section>
+  </article>
 );
 
 ArticleExample.propTypes = {

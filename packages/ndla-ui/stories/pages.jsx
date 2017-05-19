@@ -18,15 +18,6 @@ import article, { topicList } from '../dummydata/index';
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
 
-
-// const translateIDtoURL = (id) => {
-//   const URLsArray = [
-//     '?selectedKind=Emnesider&selectedStory=3.%20Hovedemne&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
-//     '?selectedKind=Emnesider&selectedStory=4.%20Underemne%20med%20Ressurser&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel',
-//   ];
-//   return URLsArray[id - 1];
-// };
-
 const FooterExample = () => (
   <Footer>
     <div className="footer_form">
@@ -45,92 +36,50 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ResourcesTab1 = () => (
-  <div className="c-resources_content u-margin-top-small u-margin-bottom">
-    <ResourceSubsetList />
-  </div>
-);
-
 const ResourcesExample = () => (
-  <ResourcesTab1 />
-);
-
-
-const ExamplePage1 = () => (
-  <OneColumn cssModifier="narrow">
-    <section className="c-article-content">
-      <h1 className="c-article__title">Mediekommunikasjon og kommunikasjonsmodeller</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
-      </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-        tydeligere for både deg selv og dem du eventuelt jobber sammen med
-      i klassen.</p>
-      <FigureWithLicense>
-        <img
-          src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1124&amp;q=80&amp;cs=tinysrgb&amp;crop="
-          alt=""
-        />
-      </FigureWithLicense>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-
-      <ResourcesExample />
-    </section>
-  </OneColumn>
+  <ResourceSubsetList />
 );
 
 const ExamplePage2 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1 className="c-article__title">Mediekommunikasjon og kommunikasjonsmodeller</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+      <div className="o-wrapper--inner">
+        <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+           å produsere filmen.
+        </p>
+        <div className="c-article__byline">
+          <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+        </div>
+        <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+          din og bestemmer seg for å bruke ressurser på nettopp dette
+        prosjektet.</p>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+        få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <FigureWithLicense>
+          <iframe
+            width="480"
+            height="270"
+            src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+            frameBorder="0"
+            allowFullScreen=""
+          />
+        </FigureWithLicense>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+           samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+           pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <ResourcesExample />
       </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <FigureWithLicense>
-        <iframe
-          width="480"
-          height="270"
-          src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
-          frameBorder="0"
-          allowFullScreen=""
-        />
-      </FigureWithLicense>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <ResourcesExample />
     </section>
   </OneColumn>
 );
@@ -139,150 +88,152 @@ const ExamplePage3 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1 className="c-article__title">Tittel om pitching</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
-      </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-        tydeligere for både deg selv og dem du eventuelt jobber sammen med
-      i klassen.</p>
-      <table className="c-table o-wrapper--wide">
-        <tbody>
-          <tr>
-            <th>Hovedkategorier</th>
-            <th>Sjangre</th>
-            <th>Kjennetegn</th>
-          </tr>
-          <tr>
-            <td><strong>Subjektive sjangre</strong></td>
-            <td>Leder</td>
-            <td>
-              <ul>
-                <li>skrives ofte av en av redaktørene </li>
-                <li>er redaksjonens syn på en sak </li>
-                <li>står ofte på side 2 eller på egen meningsside</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Anmeldelse</td>
-            <td>
-              <ul>
-                <li>en av journalistenes mening om en ny film, bok, konsert e.l. </li>
-                <li>skal være en bruksanvisning slik at målgruppen vet om produktet er noe for dem</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Leserinnlegg og kommentarfelt</td>
-            <td>
-              <ul>
-                <li>lar den enkelte mottaker komme med sitt syn på en sak</li>
-                <li>leserinnlegg i avis, kommentarfelt på nett </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Kommentar og kronikk</td>
-            <td>
-              <ul>
-                <li>kan skrives av en i redaksjonen, men gjerne også av en
-                fagperson utenfor redaksjonen </li>
-                <li>skal gi dybdekunnskap om et tema </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Objektive sjangre</strong></td>
-            <td>Nyhetsartikkel</td>
-            <td>
-              <ul>
-                <li>kort, konsis, svarer på grunnleggende spørsmål</li>
-                <li>det viktigste først </li>
-                <li>lar kildene komme til orde</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Nyhetsreportasje</td>
-            <td>
-              <ul>
-                <li>går gjerne mer i dybden enn en nyhetsartikkel </li>
-                <li>bruker flere kilder </li>
-                <li>har fokus på bakgrunn og årsak</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Intervju</td>
-            <td>
-              <ul>
-                <li>enkelt oppsett med spørsmål og svar </li>
-                <li>brukes gjerne som en del av en nyhetsreportasje eller artikkel</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Notis</td>
-            <td>
-              <ul>
-                <li>kort nyhetsmelding som gir grunnleggende informasjon om en
-                aktuell hendelse</li>
-                <li>gjerne bare 10–15 setninger</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Hybridsjangre</strong></td>
-            <td>Feature</td>
-            <td>
-              <ul>
-                <li>hører til i objektiv-kategorien, men journalisten bruker
-                alle sanser og litterære virkemidler </li>
-                <li>går i dybden, gir leseren en større forståelse av et
-                tema</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td />
-            <td>Portrettintervju</td>
-            <td>
-              <ul>
-                <li>hører til i objektiv-kategorien, men journalisten bruker
-                   alle sanser og litterære virkemidler </li>
-                <li>gir leseren dybdekunnskap om en aktuell person i
-                    nyhetsbildet</li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
+      <div className="o-wrapper--inner">
+        <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+           å produsere filmen.
+        </p>
+        <div className="c-article__byline">
+          <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+        </div>
+        <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+          din og bestemmer seg for å bruke ressurser på nettopp dette
+        prosjektet.</p>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+        få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
+        i klassen.</p>
+        <table className="c-table o-wrapper--wide">
+          <tbody>
+            <tr>
+              <th>Hovedkategorier</th>
+              <th>Sjangre</th>
+              <th>Kjennetegn</th>
+            </tr>
+            <tr>
+              <td><strong>Subjektive sjangre</strong></td>
+              <td>Leder</td>
+              <td>
+                <ul>
+                  <li>skrives ofte av en av redaktørene </li>
+                  <li>er redaksjonens syn på en sak </li>
+                  <li>står ofte på side 2 eller på egen meningsside</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Anmeldelse</td>
+              <td>
+                <ul>
+                  <li>en av journalistenes mening om en ny film, bok, konsert e.l. </li>
+                  <li>skal være en bruksanvisning slik at målgruppen vet om produktet er noe for dem</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Leserinnlegg og kommentarfelt</td>
+              <td>
+                <ul>
+                  <li>lar den enkelte mottaker komme med sitt syn på en sak</li>
+                  <li>leserinnlegg i avis, kommentarfelt på nett </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Kommentar og kronikk</td>
+              <td>
+                <ul>
+                  <li>kan skrives av en i redaksjonen, men gjerne også av en
+                  fagperson utenfor redaksjonen </li>
+                  <li>skal gi dybdekunnskap om et tema </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Objektive sjangre</strong></td>
+              <td>Nyhetsartikkel</td>
+              <td>
+                <ul>
+                  <li>kort, konsis, svarer på grunnleggende spørsmål</li>
+                  <li>det viktigste først </li>
+                  <li>lar kildene komme til orde</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Nyhetsreportasje</td>
+              <td>
+                <ul>
+                  <li>går gjerne mer i dybden enn en nyhetsartikkel </li>
+                  <li>bruker flere kilder </li>
+                  <li>har fokus på bakgrunn og årsak</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Intervju</td>
+              <td>
+                <ul>
+                  <li>enkelt oppsett med spørsmål og svar </li>
+                  <li>brukes gjerne som en del av en nyhetsreportasje eller artikkel</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Notis</td>
+              <td>
+                <ul>
+                  <li>kort nyhetsmelding som gir grunnleggende informasjon om en
+                  aktuell hendelse</li>
+                  <li>gjerne bare 10–15 setninger</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Hybridsjangre</strong></td>
+              <td>Feature</td>
+              <td>
+                <ul>
+                  <li>hører til i objektiv-kategorien, men journalisten bruker
+                  alle sanser og litterære virkemidler </li>
+                  <li>går i dybden, gir leseren en større forståelse av et
+                  tema</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>Portrettintervju</td>
+              <td>
+                <ul>
+                  <li>hører til i objektiv-kategorien, men journalisten bruker
+                     alle sanser og litterære virkemidler </li>
+                  <li>gir leseren dybdekunnskap om en aktuell person i
+                      nyhetsbildet</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+           samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+           pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
 
-      <ResourcesExample />
+        <ResourcesExample />
+      </div>
     </section>
   </OneColumn>
 );
@@ -291,35 +242,36 @@ const ExamplePage4 = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1 className="c-article__title">Tittel om pitching</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+      <div className="o-wrapper--inner">
+        <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+           å produsere filmen.
+        </p>
+        <div className="c-article__byline">
+          <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+        </div>
+        <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+          din og bestemmer seg for å bruke ressurser på nettopp dette
+        prosjektet.</p>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+        få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <FigureWithLicense>
+          <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+        </FigureWithLicense>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+           samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+           pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <ResourcesExample />
       </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <FigureWithLicense>
-        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
-      </FigureWithLicense>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-
-      <ResourcesExample />
     </section>
   </OneColumn>
 );
@@ -328,89 +280,88 @@ const ExampleWithSummary = () => (
   <OneColumn cssModifier="narrow">
     <section className="c-article-content">
       <h1 className="c-article__title">Tittel om pitching</h1>
-      <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-         å produsere filmen.
-      </p>
-      <div className="c-article__byline">
-        <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
-      </div>
-      <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-        å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-        din og bestemmer seg for å bruke ressurser på nettopp dette
-      prosjektet.</p>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-        samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-      få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-        pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <FigureWithLicense>
-        <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
-      </FigureWithLicense>
-      <p>En pitch er en kortvarig framføring av en idé for en potensiell
-         samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
-      <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-         pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-           i klassen.</p>
-      <Aside>
-        <div className="c-aside__title">Oppsummering</div>
-        <div>
-          <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-          <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper
-             deg å velge!</p><h2>Siris tips</h2>
-          <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-          <div>
-            <figure className="article_audio">
-              <audio
-                type="audio/mpeg"
-                src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3"
-              />
-              <figcaption>medieutdanning</figcaption>
-            </figure>
-          </div>
-          <h2>Ressurser</h2>
-          <p>
-            <a
-              href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media"
-              title="Utdanning.no: Søk på yrke"
-            >
-              Utdanning.no: Søk på yrke
-            </a>
-          </p>
-          <p>
-            <a
-              href="http://www.vilbli.no"
-              title="Les mer på Vilbli.no"
-            >
-              Les mer på Vilbli.no
-            </a>
-          </p>
-          <p>Landslaget for medieundervisning har en god oversikt over</p>
-          <p>
-            <a
-              href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile"
-              title="medieutdanning i Norge"
-            >
-              medieutdanning i Norge
-            </a>
-          </p>
+      <div className="o-wrapper--inner">
+        <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+           å produsere filmen.
+        </p>
+        <div className="c-article__byline">
+          <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
         </div>
-      </Aside>
+        <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+          din og bestemmer seg for å bruke ressurser på nettopp dette
+        prosjektet.</p>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+        få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <FigureWithLicense>
+          <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
+        </FigureWithLicense>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+           samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+           pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <Aside>
+          <div className="c-aside__title">Oppsummering</div>
+          <div>
+            <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
+            <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper
+               deg å velge!</p><h2>Siris tips</h2>
+            <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
+            <div>
+              <figure className="article_audio">
+                <audio
+                  type="audio/mpeg"
+                  src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3"
+                />
+                <figcaption>medieutdanning</figcaption>
+              </figure>
+            </div>
+            <h2>Ressurser</h2>
+            <p>
+              <a
+                href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media"
+                title="Utdanning.no: Søk på yrke"
+              >
+                Utdanning.no: Søk på yrke
+              </a>
+            </p>
+            <p>
+              <a
+                href="http://www.vilbli.no"
+                title="Les mer på Vilbli.no"
+              >
+                Les mer på Vilbli.no
+              </a>
+            </p>
+            <p>Landslaget for medieundervisning har en god oversikt over</p>
+            <p>
+              <a
+                href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile"
+                title="medieutdanning i Norge"
+              >
+                medieutdanning i Norge
+              </a>
+            </p>
+          </div>
+        </Aside>
+      </div>
     </section>
   </OneColumn>
 );
 
 const SubTopic = () => (
-  <div>
-    <OneColumn cssModifier="narrow">
-      <section className="c-article-content">
-        <ArticleLoader articleId="5948" notitle />
-      </section>
-    </OneColumn>
-  </div>
+  <section className="c-article-content">
+    <ArticleLoader articleId="5948" notitle />
+    <ResourcesExample />
+  </section>
 );
 
 const SubTopicHero = () => (
@@ -419,18 +370,8 @@ const SubTopicHero = () => (
   </OneColumn>
 );
 
-
-// const TopicHero = () => (
-//   <OneColumn cssModifier="narrow">
-//     <div className="c-hero__content"></div>
-//   </OneColumn>
-// );
-
-
 const MainTopicHero = () => (
-  <OneColumn cssModifier="narrow">
-    <div className="c-hero__content" />
-  </OneColumn>
+  <OneColumn cssModifier="narrow" />
 );
 
 const MainTopic = () => (
@@ -464,15 +405,15 @@ storiesOf('Sidevisninger', module)
   ))
   .add('ArticlePage', () => (
     <PageContainer>
-      <Masthead />
-      <Hero white />
+      <MastheadWithTopicMenu />
+      <Hero />
       <ArticleLoader articleId="44" />
       <FooterExample />
     </PageContainer>
   ))
   .add('ArticlePage with licensebox', () => (
     <PageContainer>
-      <Masthead />
+      <MastheadWithTopicMenu />
       <Hero white />
       <ArticleLoader articleId="44" withLicenseExample />
       <FooterExample />
@@ -488,7 +429,7 @@ storiesOf('Sidevisninger', module)
   ))
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
-      <Masthead />
+      <MastheadWithTopicMenu />
       <Hero white />
       <ArticleLoader articleId="34" />
       <FooterExample />
@@ -498,30 +439,30 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero />
-      <OneColumn cssModifier="narrow">
-        <ArticleLoader notitle isTopicArticle articleId="208" />
+      <ArticleLoader isTopicArticle articleId="208" />
+      <OneColumn>
+        <ResourceWrapper>
+          <Tabs
+            tabs={[
+              {
+                title: 'Emner',
+                content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
+              },
+              { title: 'Ressurser', content: <ResourceSubsetList /> },
+            ]}
+          />
+        </ResourceWrapper>
       </OneColumn>
-      <ResourceWrapper>
-        <Tabs
-          tabs={[
-            {
-              title: 'Emner',
-              content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
-            },
-            { title: 'Ressurser', content: <ResourceSubsetList /> },
-          ]}
-        />
-      </ResourceWrapper>
       <FooterExample />
     </PageContainer>
   ))
   ;
 storiesOf('Artikkelmaler', module)
-    .add('Artikkel med bilde', () => (
+    .add('Artikkel med herobilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
-        <ExamplePage1 />
+        <ArticleLoader articleId="208" />
         <FooterExample />
       </PageContainer>
     ))
@@ -612,9 +553,7 @@ storiesOf('Emnesider', module)
         <Hero>
           <MainTopicHero />
         </Hero>
-        <OneColumn cssModifier="narrow">
-          <MainTopic />
-        </OneColumn>
+        <MainTopic />
         <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
@@ -622,11 +561,10 @@ storiesOf('Emnesider', module)
     .add('4. Underemne', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero small url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">
+        <Hero url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">
           <SubTopicHero />
         </Hero>
         <SubTopic />
-        <ResourcesExample />
         <FooterExample />
       </PageContainer>
     ))

@@ -19,6 +19,10 @@ const classes = new BEMHelper({
   name: 'topic-resource-subset',
   prefix: 'c-',
 });
+const resClasses = new BEMHelper({
+  name: 'resource-group',
+  prefix: 'c-',
+});
 
 class ResourceSubsetList extends Component {
   constructor(props) {
@@ -39,17 +43,14 @@ class ResourceSubsetList extends Component {
 
     return (
       <div>
-
         <div {...classes('')} >
           {resourceGroups.map((group, i) => (
-            <div id={group.title} key={uuid()} {...classes('', [group.color, this.state.focusTitle === group.title ? 'focus' : ''])}>
+            <div id={group.title} key={uuid()} {...resClasses('', [group.title.replace(/æ/g, '') : ''])}>
               <h1 {...classes('heading')}>{group.title}</h1>
-              <p {...classes('lead')}>{group.description}</p>
               { group.tags ? group.tags.map(tags => (
                 <SafeLink key={uuid()} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
               )) : null }
-              <ResourceList resourceToLinkProps={resourceToLinkProps} resources={group.resources} />
-              <SafeLink {...classes('readmore')} to={toResourceTab(i)}>{group.viewAllLinkTitle}</SafeLink>
+              <ResourceList resourceToLinkProps={resourceToLinkProps} type={group.title} resources={group.resources} />
             </div>
       ))}
         </div>

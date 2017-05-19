@@ -1,8 +1,7 @@
 require('./welcome');
 require('./concepts');
 require('./typography');
-require('./atoms');
-require('./molecules');
-require('./organisms');
+require('./simple-components');
+require('./collated-components');
 require('./pages');
 require('./playground');

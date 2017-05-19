@@ -16,7 +16,7 @@ export const subjectList = [
     name: 'Medieuttrykk og mediesamfunnet',
   },
   {
-    id: 'urn:subject:2',
+    id: 'urn:subject:3',
     name: ' Helsearbeiderfag',
   },
 ];

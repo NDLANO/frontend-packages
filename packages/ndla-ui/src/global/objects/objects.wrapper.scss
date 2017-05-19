@@ -1,16 +1,11 @@
 .o-wrapper--narrow {
-  h1 {
-    display: block;
-  }
+  // To be removed
+}
 
-
-  section>* {
-    @include max-width();
-    margin-left: auto;
-    margin-right: auto;
-  }
-  section section>* { // Fix for when duplicate max-width is applied
-    max-width: 100%;
+.o-wrapper--inner {
+  @include mq($from: desktop) {
+    @include grids(4,6);
+    @include grids-push(1,6);
   }
 }
 

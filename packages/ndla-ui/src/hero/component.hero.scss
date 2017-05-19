@@ -1,38 +1,39 @@
 .c-hero {
   background-position: center;
   background-size: cover;
+
   @include mq(tablet) {
-    min-height: 500px;
+    min-height: 250px;
   }
   &__title {
     margin: 0;
+    font-weight: $font-weight-normal;
+    display: flex;
+    vertical-align: middle;
   }
   &__content {
-    position: relative;
     color: $white;
-    padding: 3% 0;
+    padding: 5% 0;
     z-index: 9;
 
+
     *,a:not([class]) {
-      color: $white;
+      color: $brand-grey-dark;
     }
     a:hover {
-      color: $white;
+      color: $brand-grey-dark;
       text-decoration: none;
     }
   }
   &--alt {
     background-repeat: repeat;
     background-size: 20px;
-    background-color: $brand-color;
-    @include mq(tablet) {
-      min-height: 170px;
-    }
+    background-color: $brand-color--light;
   }
   &--small {
     position: relative;
     @include mq(tablet) {
-      min-height: 170px;
+      min-height: 370px;
     }
     >::before {
       content: '';
@@ -46,7 +47,7 @@
   }
   &--white {
     background-image: none;
-    background-color: $white;
+    background-color: $brand-grey-dark;
     @include mq(tablet) {
       min-height: 170px;
     }

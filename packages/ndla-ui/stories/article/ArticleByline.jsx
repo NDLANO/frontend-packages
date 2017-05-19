@@ -6,22 +6,24 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import BEMHelper from 'react-bem-helper';
 import moment from 'moment';
+import { Icon } from '../../src';
 
 const classes = new BEMHelper({
   name: 'article',
   prefix: 'c-',
 });
 
-const AuthorsList = ({ authors }) => <span {...classes('authors')}>{authors.map(author => author.name).join(', ')}</span>;
+const AuthorsList = ({ authors }) => <span {...classes('authors')}><Icon.User /> {authors.map(author => author.name).join(', ')}</span>;
 
 AuthorsList.propTypes = {
   authors: PropTypes.array,
 };
 
-const LastUpdated = ({ date }) => <span {...classes('date')}>Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
+const LastUpdated = ({ date }) => <span {...classes('date')}><Icon.Time /> Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
 
 LastUpdated.propTypes = {
   date: PropTypes.string,

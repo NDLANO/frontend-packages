@@ -7,12 +7,15 @@
  */
 
 import uuid from './uuid';
+import getComponentName from './getComponentName';
 
 
 export {
   uuid,
+  getComponentName,
 };
 
 export default {
   uuid,
+  getComponentName,
 };

@@ -6,13 +6,13 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 
 import { Article, OneColumn } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 import TopicBreadcrumbDefault from '../molecules/breadcrumbs';
-
 
 const ArticleExample = ({ article, withLicenseExample, notitle }) => (
   <section className="c-article-content">

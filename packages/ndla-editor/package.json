@@ -1,6 +1,6 @@
 {
   "name": "ndla-editor",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "Editor for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,25 +27,26 @@
     "es"
   ],
   "peerDependencies": {
-    "ndla-util": "^0.1.0",
+    "ndla-util": "^0.1.1",
     "react": "^15.0.0",
     "react-bem-helper": "^1.2.0",
     "react-dom": "^15.0.0"
   },
   "devDependencies": {
-    "ndla-util": "^0.1.0"
+    "ndla-util": "^0.1.1"
   },
   "dependencies": {
     "decorate-component-with-props": "^1.0.2",
     "draft-js": "0.10.0",
-    "draft-js-alignment-plugin": "2.0.0-beta10",
-    "draft-js-buttons": "2.0.0-beta10",
-    "draft-js-focus-plugin": "2.0.0-beta10",
-    "draft-js-image-plugin": "2.0.0-beta10",
-    "draft-js-inline-toolbar-plugin": "2.0.0-beta10",
-    "draft-js-plugins-editor": "2.0.0-beta10",
-    "draft-js-side-toolbar-plugin": "2.0.0-beta10",
-    "draft-js-undo-plugin": "2.0.0-beta10",
-    "draftjs-utils": "^0.4.0"
+    "draft-js-alignment-plugin": "2.0.0-beta11",
+    "draft-js-buttons": "2.0.0-beta11",
+    "draft-js-focus-plugin": "2.0.0-beta11",
+    "draft-js-image-plugin": "2.0.0-beta11",
+    "draft-js-inline-toolbar-plugin": "2.0.0-beta11",
+    "draft-js-plugins-editor": "2.0.0-beta11",
+    "draft-js-side-toolbar-plugin": "2.0.0-beta11",
+    "draft-js-undo-plugin": "2.0.0-beta11",
+    "draftjs-utils": "0.7.5",
+    "hoist-non-react-statics": "^1.2.0"
   }
 }

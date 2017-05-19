@@ -1,34 +1,43 @@
 .c-breadcrumb {
-  @include inuit-font-size(16px);
+  max-width: 100%;
+  @include inuit-font-size(18px);
   display:none;
-  color: $brand-grey;
+  color: $brand-color;
   font-weight: $font-weight-bold;
-  margin-top: $spacing--small;
 
   a:hover {
     color: $brand-color;
   }
 
   @include mq(tablet) {
-    display: flex;
+    display: block;
+  }
+  span {
+    display: block;
   }
   &__list {
-    display: inline;
-    padding-left: $spacing--small/2;
+    display: inline-block;
+    padding-left: 0;
     margin-top: -3px;
     margin-bottom: $spacing--small;
     list-style: none;
   }
   &__item {
-    color: $brand-grey;
     font-weight: $font-weight-normal;
-    padding-left: $spacing--small/2;
+    padding-right: $spacing--small/2;
     display: inline-block;
     line-height: 2em;
+    a {
+      color: $brand-color !important;
+      text-decoration: none;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $brand-color;
+    }
   }
   &__item + &__item:before{
     padding-right: $spacing--small/2;
-    content: '›'
+    content: '›';
+    @include inuit-font-size(22px);
   }
   &__active {
     font-weight: $font-weight-bold;

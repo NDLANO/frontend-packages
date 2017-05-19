@@ -1,18 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { storiesOf, linkTo } from '@kadira/storybook';
 import { Center } from './helpers';
-
-const styles = {
-  code: {
-    fontSize: 15,
-    fontWeight: 600,
-    padding: '2px 5px',
-    border: '1px solid #eae9e9',
-    borderRadius: 4,
-    backgroundColor: '#f3f2f2',
-    color: '#3a3a3a',
-  },
-};
+import { Logo } from '../src'
 
 class Welcome extends Component {
   constructor(props) {
@@ -27,28 +17,25 @@ class Welcome extends Component {
   render() {
     return (
       <Center>
-        <div style={styles.main}>
-          <h2>NDLA</h2>
-          <h1>Designmanual</h1>
-          <ul className="o-list--clean">Typografi
-            <li>Overskrifter</li>
-            <li>Brødtekst</li>
-            <li>Tabeller</li>
-            <li>Lister</li>
-          </ul>
-          <ul className="o-list--clean">Atomer
-            <li>Ikoner</li>
-            <li>Media</li>
-            <li>Flagg</li>
-          </ul>
-          <ul className="o-list--clean">Molekyler
-            <li>Logo</li>
-            <li>Lisensbyline</li>
-            <li>Fagressurs</li>
-            <li>Sidefot</li>
-            <li>Sidehode</li>
-          </ul>
-        </div>
+        <article className="o-wrapper--narrow">
+          <section className="c-factbox">
+            <Logo />
+            <h1>Designmanual</h1>
+            <p>Denne designmanualen definerer visuelt utrykk og interaksjonsdesign for NDLAs grensesnitt på skjermflater.</p>
+          </section>
+          <section>
+            <h2>Hvordan bruke denne designmanualen</h2>
+            <p>Denne designmanualen består av hovedsakelig to deler: Et CSS-bibliotek som styler de mest brukte HTML-elementene, og et
+              komponent-bibliotek for <a href="https://facebook.github.io/react/">React</a>.
+              Den er også publisert på <a href="https://www.npmjs.com/package/ndla-ui">npm</a>.
+            </p>
+            <h3>Hente inn prosjekt direkte via npm</h3>
+            <code>npm install ndla-ui --save</code><br />
+            <code>yarn add ndla-ui -S</code>
+            <h3>Hente inn stilark direkte via CDN</h3>
+            <code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;ndla-ui.css&quot;&gt;</code>
+          </section>
+        </article>
       </Center>
     );
   }

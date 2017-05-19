@@ -11,11 +11,12 @@ import {
   Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
+  ResourceWrapper,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
+import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
 import { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
@@ -27,11 +28,11 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Sammensatte noder', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Sammensatte moduler</h1>
         </section>
-        <section className="c-article-content">
+        <section className="o-wrapper--inner">
           <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten
@@ -120,7 +121,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
       <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
@@ -183,8 +184,10 @@ storiesOf('Sammensatte moduler', module)
   .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
+      <p>Klikk på fane-tittel for å vise innhold.</p>
       <Tabs />
       <h2 className="u-heading">Kontrollerte faner</h2>
+      <p>Disse fanene kan også kontrolleres med frittstående knapper plassert innenfor fanene.</p>
       <TabsControlled />
     </Center>
   ))
@@ -245,9 +248,34 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Brødsmulesti', () => (
     <Center>
-      <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'}>
-        <strong>Du er her:</strong>
-      </TopicBreadcrumb>
+      <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+    </Center>
+  ))
+  .add('Læringsressurspanel for emneside', () => (
+    <Center>
+      <ResourceWrapper>
+        <Tabs
+          selectedIndex={1}
+          tabs={[
+            { title: 'Emner',
+              content: <TopicIntroductionList toTopic={() => '#'} goToTopicTitle="Gå til emnet" toTopicResources={() => '#'} goToTopicResourcesTitle="Se fagstoff" topics={topicList} />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
+          ]}
+        />
+      </ResourceWrapper>
+    </Center>
+  ))
+  .add('Ekspanderbar lisensboks', () => (
+    <Center>
+      <h2 className="u-heading">Ekspanderbar lisensboks</h2>
+      <article className="article">
+        <LicenseExample />
+      </article>
+      <h2 className="u-heading">Ekspanderbar lisensboks med byline</h2>
+      <article className="article">
+        <LicenseExample showByline />
+      </article>
     </Center>
   ))
   ;

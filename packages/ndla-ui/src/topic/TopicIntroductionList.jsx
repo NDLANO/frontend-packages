@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
-import { Icon } from '../';
 
 const classes = new BEMHelper({
   name: 'topic-introduction',
@@ -19,13 +18,10 @@ const classes = new BEMHelper({
 });
 
 const TopicIntroduction = ({ toTopic, topic }) => (
-  <li {...classes('item o-flag o-flag--top')}>
-    <div {...classes('icon o-flag__img')}>
-      <Icon.Book />
-    </div>
-    <div {...classes('body o-flag__body')}>
-      <h1 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h1>
-      {topic.introduction ? <p>{topic.introduction}</p> : null}
+  <li {...classes('item')}>
+    <div {...classes('body')}>
+      <h3 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h3>
+      <p>{topic.introduction}</p>
     </div>
   </li>
 );

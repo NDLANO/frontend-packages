@@ -6,7 +6,8 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   addCloseFigureDetailsClickListners,
   addShowFigureDetailsClickListners,
@@ -39,12 +40,12 @@ class FigureWithLicense extends Component {
         <div className="c-figure__img">
           {this.props.children}
         </div>
-        <FigureCaption caption={caption} reuseLabel="Gjenbruk" licenseAbbreviation="by-nc-nd" authors={authors} />
         <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
           <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Copy /> Kopier referanse</button>
           <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Link /> Gå til kilde</button>
           <button className="c-button c-licenseToggle__button" type="button"><Icon.OpenWindow /> Vis bilde</button>
         </FigureDetails>
+        <FigureCaption caption={caption} reuseLabel="Gjenbruk" licenseAbbreviation="by-nc-nd" authors={authors} />
       </Figure>
     );
   }

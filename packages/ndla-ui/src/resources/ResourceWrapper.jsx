@@ -7,17 +7,13 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import OneColumn from '../layout/OneColumn';
-
+import PropTypes from 'prop-types'
 
 const ResourceContainer = ({ children }) => (
   <div className="c-resources">
-    <OneColumn cssModifier="narrow">
-      <section>
-        {children}
-      </section>
-    </OneColumn>
+    <section>
+      {children}
+    </section>
   </div>
 );
 

@@ -21,14 +21,14 @@ export const MastheadLeftRight = () => (
 export const MastheadDefault = () => (
   <Masthead>
     <MastheadItem left>
-      <Logo to="#" altText="Nasjonal digital læringsarena" />
-    </MastheadItem>
-    <MastheadItem right>
       <SiteNav>
         <SiteNavItem to="#">Søk</SiteNavItem>
         <SiteNavItem to="#">Kontakt</SiteNavItem>
         <SiteNavItem to="#">Hjelp</SiteNavItem>
       </SiteNav>
+    </MastheadItem>
+    <MastheadItem right>
+      <Logo to="#" altText="Nasjonal digital læringsarena" />
     </MastheadItem>
   </Masthead>
 );
@@ -36,17 +36,14 @@ export const MastheadDefault = () => (
 export const MastheadWithTopicMenu = () => (
   <Masthead>
     <MastheadItem left>
-      <Logo to="#" altText="Nasjonal digital læringsarena" />
-      <ClickToggle title="Medieuttrykk og mediesamfunnet" className="c-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
-        <TopicMenu toTopic={() => '#'} topics={topicMenu} />
-      </ClickToggle>
+      <SiteNav>
+        <ClickToggle title="Meny" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+          <TopicMenu toTopic={() => '#'} topics={topicMenu} />
+        </ClickToggle>
+      </SiteNav>
     </MastheadItem>
     <MastheadItem right>
-      <SiteNav>
-        <SiteNavItem to="#">Søk</SiteNavItem>
-        <SiteNavItem to="#">Kontakt</SiteNavItem>
-        <SiteNavItem to="#">Hjelp</SiteNavItem>
-      </SiteNav>
+      <Logo to="#" altText="Nasjonal digital læringsarena" />
     </MastheadItem>
   </Masthead>
 );

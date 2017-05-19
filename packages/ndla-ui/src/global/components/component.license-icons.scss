@@ -1,0 +1,64 @@
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  width: $spacing--small * 1.3;
+  height: $spacing--small * 1.3;
+  vertical-align: middle;
+  &--rotate {
+    transform: rotate(180deg);
+  }
+}
+.c-icon--medium {
+  width: $spacing;
+  height: $spacing;
+}
+.c-license-icons {
+  &__list, &__list2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__licenselabel {
+    display:none;
+  }
+
+  &__item {
+    display: inline-block;
+    padding-bottom: 7px;
+
+    button {
+      vertical-align: top;
+    }
+
+    &--active {
+      circle {
+        fill: $brand-color;
+      }
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  &__item + &__item {
+    margin-left: 0.2em;
+  }
+
+  &__icon {
+    width: $spacing / 1.1;
+    height: $spacing / 1.1;
+  }
+}
+
+.c-licenseToggle__details {
+
+  .c-license-icons__item {
+    display: block;
+  }
+  .c-license-icons__item div {
+    display: flex;
+    align-items: flex-start;
+  }
+
+}

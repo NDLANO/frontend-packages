@@ -11,11 +11,12 @@ import {
   Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
+  ResourceWrapper,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
+import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
 import { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
@@ -248,6 +249,33 @@ storiesOf('Sammensatte moduler', module)
   .add('Brødsmulesti', () => (
     <Center>
       <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+    </Center>
+  ))
+  .add('Læringsressurspanel for emneside', () => (
+    <Center>
+      <ResourceWrapper>
+        <Tabs
+          selectedIndex={1}
+          tabs={[
+            { title: 'Emner',
+              content: <TopicIntroductionList toTopic={() => '#'} goToTopicTitle="Gå til emnet" toTopicResources={() => '#'} goToTopicResourcesTitle="Se fagstoff" topics={topicList} />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
+          ]}
+        />
+      </ResourceWrapper>
+    </Center>
+  ))
+  .add('Ekspanderbar lisensboks', () => (
+    <Center>
+      <h2 className="u-heading">Ekspanderbar lisensboks</h2>
+      <article className="article">
+        <LicenseExample />
+      </article>
+      <h2 className="u-heading">Ekspanderbar lisensboks med byline</h2>
+      <article className="article">
+        <LicenseExample showByline />
+      </article>
     </Center>
   ))
   ;

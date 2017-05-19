@@ -18,15 +18,15 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Resource = ({ resource, type, resourceToLinkProps }) => {
+const Resource = ({ resource, resourceToLinkProps }) => {
   const linkProps = resourceToLinkProps(resource);
 
   return (
     <li {...classes('item o-flag o-flag--top ')}>
       <div {...classes('icon o-flag__img')}>
-        { type === 'Lærestoff' ? <Icon.Document /> : null }
-        { type === 'Læringsstier' ? <Icon.Path /> : null }
-        { type === 'Oppgaver og aktiviteter' ? <Icon.Pencil /> : null }
+        { resource.type === 'Lærestoff' ? <Icon.Document /> : null }
+        { resource.type === 'Læringsstier' ? <Icon.Path /> : null }
+        { resource.type === 'Oppgaver og aktiviteter' ? <Icon.Pencil /> : null }
       </div>
       <div {...classes('body o-flag__body')}>
         <h1 {...classes('title')}>

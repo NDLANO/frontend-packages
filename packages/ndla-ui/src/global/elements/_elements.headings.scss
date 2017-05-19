@@ -42,7 +42,12 @@ h1 {
   @include inuit-font-size(38px, 45px);
 }
 h2, h3 {
-  @include inuit-font-size(22px, 30px);
   margin-top: $spacing * 2;
   margin-bottom: $spacing / 2;
+}
+h2 {
+  @include inuit-font-size(22px, 30px);
+}
+h3 {
+  @include inuit-font-size(20px, 30px);
 }

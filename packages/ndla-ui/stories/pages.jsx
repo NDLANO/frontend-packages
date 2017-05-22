@@ -7,7 +7,7 @@ import Tabs from 'ndla-tabs';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
-import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, Icon, TopicIntroductionList } from '../src';
+import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, Icon, TopicIntroductionList, LayoutItem } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
@@ -36,21 +36,19 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ResourcesExample = () => (
-  <ResourceSubsetList />
-);
-
 const ExamplePage2 = () => (
   <OneColumn cssModifier="narrow">
-    <section className="c-article-content">
-      <h1 className="c-article__title">Mediekommunikasjon og kommunikasjonsmodeller</h1>
-      <div className="o-wrapper--inner">
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <h1 className="c-article__title">Mediekommunikasjon og kommunikasjonsmodeller</h1>
         <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
            å produsere filmen.
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
         </div>
+      </LayoutItem>
+      <LayoutItem layout="center">
         <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -78,23 +76,28 @@ const ExamplePage2 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <ResourcesExample />
-      </div>
-    </section>
+           test
+        <LayoutItem layout="extended">
+          <ResourceSubsetList />
+        </LayoutItem>
+      </LayoutItem>
+    </article>
   </OneColumn>
 );
 
 const ExamplePage3 = () => (
   <OneColumn cssModifier="narrow">
-    <section className="c-article-content">
-      <h1 className="c-article__title">Tittel om pitching</h1>
-      <div className="o-wrapper--inner">
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <h1 className="c-article__title">Tittel om pitching</h1>
         <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
            å produsere filmen.
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
         </div>
+      </LayoutItem>
+      <LayoutItem layout="center">
         <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -231,24 +234,25 @@ const ExamplePage3 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-
-        <ResourcesExample />
-      </div>
-    </section>
+        <ResourceSubsetList />
+      </LayoutItem>
+    </article>
   </OneColumn>
 );
 
 const ExamplePage4 = () => (
   <OneColumn cssModifier="narrow">
-    <section className="c-article-content">
-      <h1 className="c-article__title">Tittel om pitching</h1>
-      <div className="o-wrapper--inner">
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <h1 className="c-article__title">Tittel om pitching</h1>
         <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
            å produsere filmen.
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
         </div>
+      </LayoutItem>
+      <LayoutItem layout="center">
         <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -270,23 +274,25 @@ const ExamplePage4 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <ResourcesExample />
-      </div>
-    </section>
+        <ResourceSubsetList />
+      </LayoutItem>
+    </article>
   </OneColumn>
 );
 
 const ExampleWithSummary = () => (
   <OneColumn cssModifier="narrow">
-    <section className="c-article-content">
-      <h1 className="c-article__title">Tittel om pitching</h1>
-      <div className="o-wrapper--inner">
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <h1 className="c-article__title">Tittel om pitching</h1>
         <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
            å produsere filmen.
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
         </div>
+      </LayoutItem>
+      <LayoutItem layout="center">
         <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -352,16 +358,9 @@ const ExampleWithSummary = () => (
             </p>
           </div>
         </Aside>
-      </div>
-    </section>
+      </LayoutItem>
+    </article>
   </OneColumn>
-);
-
-const SubTopic = () => (
-  <section className="c-article-content">
-    <ArticleLoader articleId="5948" notitle />
-    <ResourcesExample />
-  </section>
 );
 
 const SubTopicHero = () => (
@@ -374,23 +373,24 @@ const MainTopicHero = () => (
   <OneColumn cssModifier="narrow" />
 );
 
-const MainTopic = () => (
-  <section className="c-article-content">
-    <ArticleLoader articleId="1325" isTopicArticle />
-  </section>
-);
 
 const ResourcesSubTopics = () => (
-  <ResourceWrapper>
-    <Tabs
-      tabs={[
-        { title: 'Emner',
-          content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
-        },
-        { title: 'Ressurser', content: <ResourceSubsetList /> },
-      ]}
-    />
-  </ResourceWrapper>
+  <OneColumn cssModifier="narrow">
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <ResourceWrapper>
+          <Tabs
+            tabs={[
+              { title: 'Emner',
+                content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
+              },
+              { title: 'Ressurser', content: <ResourceSubsetList /> },
+            ]}
+          />
+        </ResourceWrapper>
+      </LayoutItem>
+    </article>
+  </OneColumn>
 );
 
 storiesOf('Sidevisninger', module)
@@ -503,37 +503,35 @@ storiesOf('Emnesider', module)
     .add('1. Fagoversikt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <div className="c-resources u-padding-top-large">
-          <OneColumn cssModifier="narrow">
-            <article>
-              <section>
-                <h1>Yrkesfag</h1>
-                <ul>
-                  <li><a href="">Naturfag</a></li>
-                  <li><a href="">Engelsk</a></li>
-                  <li><a href="">Helsearbeiderfag vg2</a></li>
-                  <li><a href="">Barne- og ungdomsarbeiderfag Vg2</a></li>
-                  <li><a href="">Brønnteknikk Vg2BETA</a></li>
-                  <li><a href="">Bygg- og anleggsteknikk Vg1BETA</a></li>
-                  <li><a href="">Design og håndverk Vg1</a></li>
-                  <li><a href="">Elektrofag Vg1</a></li>
-                  <li><a href="">Helse- og oppvekstfag Vg1</a></li>
-                  <li><a href="?selectedKind=Emnesider&selectedStory=2.%20Valgt%20fag&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel">Helsearbeiderfag Vg2</a></li>
-                  <li><a href="">IKT-servicefag Vg2</a></li>
-                  <li><a href="">Kokk- og servitørfag Vg2</a></li>
-                  <li><a href="">Naturbruk Vg1</a></li>
-                  <li><a href="">Reiseliv Vg2</a></li>
-                  <li><a href="">Restaurant- og matfag Vg1</a></li>
-                  <li><a href="">Romteknologi Vg3</a></li>
-                  <li><a href="">Salg, service og sikkerhet Vg2</a></li>
-                  <li><a href="">Service og samferdsel Vg1</a></li>
-                  <li><a href="">Teknikk og industriell produksjon Vg1</a></li>
-                  <li><a href="">Transport og logistikk Vg2</a></li>
-                </ul>
-              </section>
-            </article>
-          </OneColumn>
-        </div>
+        <OneColumn cssModifier="narrow">
+          <article>
+            <LayoutItem layout="center">
+              <h1>Yrkesfag</h1>
+              <ul>
+                <li><a href="">Naturfag</a></li>
+                <li><a href="">Engelsk</a></li>
+                <li><a href="">Helsearbeiderfag vg2</a></li>
+                <li><a href="">Barne- og ungdomsarbeiderfag Vg2</a></li>
+                <li><a href="">Brønnteknikk Vg2BETA</a></li>
+                <li><a href="">Bygg- og anleggsteknikk Vg1BETA</a></li>
+                <li><a href="">Design og håndverk Vg1</a></li>
+                <li><a href="">Elektrofag Vg1</a></li>
+                <li><a href="">Helse- og oppvekstfag Vg1</a></li>
+                <li><a href="?selectedKind=Emnesider&selectedStory=2.%20Valgt%20fag&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel">Helsearbeiderfag Vg2</a></li>
+                <li><a href="">IKT-servicefag Vg2</a></li>
+                <li><a href="">Kokk- og servitørfag Vg2</a></li>
+                <li><a href="">Naturbruk Vg1</a></li>
+                <li><a href="">Reiseliv Vg2</a></li>
+                <li><a href="">Restaurant- og matfag Vg1</a></li>
+                <li><a href="">Romteknologi Vg3</a></li>
+                <li><a href="">Salg, service og sikkerhet Vg2</a></li>
+                <li><a href="">Service og samferdsel Vg1</a></li>
+                <li><a href="">Teknikk og industriell produksjon Vg1</a></li>
+                <li><a href="">Transport og logistikk Vg2</a></li>
+              </ul>
+            </LayoutItem>
+          </article>
+        </OneColumn>
         <FooterExample />
       </PageContainer>
     ))
@@ -541,9 +539,7 @@ storiesOf('Emnesider', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero />
-        <OneColumn cssModifier="narrow">
-          <ResourcesSubTopics />
-        </OneColumn>
+        <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
     ))
@@ -553,7 +549,7 @@ storiesOf('Emnesider', module)
         <Hero>
           <MainTopicHero />
         </Hero>
-        <MainTopic />
+        <ArticleLoader articleId="1325" isTopicArticle />
         <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
@@ -564,7 +560,8 @@ storiesOf('Emnesider', module)
         <Hero url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">
           <SubTopicHero />
         </Hero>
-        <SubTopic />
+        <ArticleLoader articleId="5948" notitle />
+        <ResourceSubsetList />
         <FooterExample />
       </PageContainer>
     ))

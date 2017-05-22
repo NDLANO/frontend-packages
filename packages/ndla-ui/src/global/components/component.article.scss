@@ -12,60 +12,39 @@
     display:inline-block;
   }
 }
-section.article_introduction {
-  @include mq($from: desktop) {
-    @include grids(4,6);
-    @include grids-push(1,6);
-  }
-}
 .c-article {
   margin-top: $spacing--large;
+  margin-left: auto;
+  margin-right: auto;
+  @include mq(tablet) {
+    border: 1px solid $brand-grey--lighter;
+    padding: 0 $spacing;
+  }
+  @include mq(desktop) {
+    padding: 0;
+  }
   margin-bottom: $spacing--large;
-  @include mq($from: desktop) {
-    @include grids(4,6);
-    @include grids-push(1,6);
-  }
+  padding-bottom: $spacing--large;
+  font-family: $font-serif;
+  color: $brand-grey-dark;
+  @include inuit-font-size(18px, 32px);
 
-
-  &--narrow {
-    @include mq($from: desktop) {
-      @include grids(4,6);
-      @include grids-push(1,6);
-    }
+  @include mq(tablet) {
+    margin-top: -$spacing*6;
+    padding-top: $spacing--large;
   }
-
-  &-content {
-    @include mq(tablet) {
-      border: 1px solid $brand-grey--lighter;
-      padding: 0 $spacing;
-    }
-    @include mq(desktop) {
-      padding: 0;
-    }
-    margin-bottom: $spacing--large;
-    padding-bottom: $spacing--large;
-    font-family: $font-serif;
-    @include inuit-font-size(18px, 32px);
-    color: $brand-grey-dark;
-  }
+  background: $white;
 
   &__byline {
     margin-top: $spacing;
-    margin-bottom: $spacing*2;
+    margin-bottom: $spacing;
+    padding: $spacing--small/2 $spacing--small;
+    background-color: $brand-grey--lighter;
     @include inuit-font-size(16px, 20px);
     font-family: $font;
     color: $brand-grey;
-    background-color: $brand-grey--lighter;
     text-transform: uppercase;
-    padding: $spacing--small/2 $spacing--small;
     display: flex;
-  }
-
-  &__title {
-    @include mq($from: desktop) {
-      @include grids(4,6);
-      @include grids-push(1,6);
-    }
   }
 
   &-meta {
@@ -73,11 +52,6 @@ section.article_introduction {
     background-color: $brand-grey--lighter;
     padding: 7px;
     width: 100%;
-    @include mq(desktop) {
-      max-width: 100%;
-      width: 63%;
-      margin-left: 18.5%;
-    }
     @include inuit-font-size(14px);
   }
 

@@ -1,6 +1,9 @@
 ul, ol {
   margin: 0 0 2em;
+  padding: 0 1em 0 2em;
+  @include mq(desktop) {
   padding: 0 1em 0 0;
+  }
 }
 
 aside ul, article ul, .c-article-content ul, .o-list--bullets {

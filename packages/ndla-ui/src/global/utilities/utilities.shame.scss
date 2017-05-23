@@ -407,22 +407,25 @@ $shame-spacing: 12px;
   left: 30%;
   height: 85px;
   width: 100%;
-  flex: 2;
   background: white;
   z-index: 99;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
 }
 .c-topic-menu__search {
+  width: 200px;
   text-align: center;
   color: $brand-color;
-  width: 200px;
+  padding: 0 $spacing--large;
   display: inline-block;
   text-transform: uppercase;
-  @include inuit-font-size(16px);
   padding-top: 2px;
   cursor: pointer;
+  flex-grow: 0;
+  @include inuit-font-size(16px);
 }
 .c-topic-menu__search-icon {
   width: 30px;
@@ -434,7 +437,10 @@ $shame-spacing: 12px;
   }
 }
 .c-topic-menu__right-filler {
-  width: 100px;
+  width: 200px;
+  height: 100px;
+  align-self: flex-end;
+  flex-grow: 2;
 }
 
 

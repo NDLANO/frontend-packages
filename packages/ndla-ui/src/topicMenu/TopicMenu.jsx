@@ -63,12 +63,12 @@ export default class TopicMenu extends Component {
             Søk
           </div>
           <ul {...filterClasses('list')}>
-            <li {...filterClasses('label')}>FILTER:</li>
-            <li {...filterClasses('item')}>1T</li>
-            <li {...filterClasses('item')}>R1</li>
-            <li {...filterClasses('item')}>R2</li>
-            <li {...filterClasses('item')}>S1</li>
-            <li {...filterClasses('item')}>S2</li>
+            <li {...filterClasses('label')}><span /> FILTER:</li>
+            <li {...filterClasses('item', 'active')}><span /> 1T</li>
+            <li {...filterClasses('item')}><span /> R1</li>
+            <li {...filterClasses('item')}><span /> R2</li>
+            <li {...filterClasses('item')}><span /> S1</li>
+            <li {...filterClasses('item')}><span /> S2</li>
           </ul>
           <div {...classes('right-filler')} />
         </div>

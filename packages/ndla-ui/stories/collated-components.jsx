@@ -194,12 +194,12 @@ storiesOf('Sammensatte moduler', module)
         <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
             <ul className="c-filter__list">
-              <li className="c-filter__label"><span /> FILTER:</li>
-              <li className="c-filter__item"><span /> 1T</li>
-              <li className="c-filter__item"><span /> R1</li>
-              <li className="c-filter__item"><span /> R2</li>
-              <li className="c-filter__item"><span /> S1</li>
-              <li className="c-filter__item"><span /> S2</li>
+              <li className="c-filter__label"><span className="c-filter__item-checkbox" /> FILTER:</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> 1T</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> R1</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> R2</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S1</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S2</li>
             </ul>
           </div>
         </LayoutItem>
@@ -208,11 +208,11 @@ storiesOf('Sammensatte moduler', module)
           <div className="c-filter u-margin-top">
             <ul className="c-filter__list">
               <li className="c-filter__label">FILTER:</li>
-              <li className="c-filter__item c-filter__item--active"><span /> 1T</li>
-              <li className="c-filter__item c-filter__item--active"><span /> R1</li>
-              <li className="c-filter__item"><span /> R2</li>
-              <li className="c-filter__item"><span /> S1</li>
-              <li className="c-filter__item"><span /> S2</li>
+              <li className="c-filter__item c-filter__item--active"><span className="c-filter__item-checkbox" /> 1T</li>
+              <li className="c-filter__item c-filter__item--active"><span className="c-filter__item-checkbox" /> R1</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> R2</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S1</li>
+              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S2</li>
             </ul>
           </div>
         </LayoutItem>

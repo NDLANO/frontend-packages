@@ -26,45 +26,7 @@
   cursor: pointer;
   @include inuit-font-size(16px);
 
-  span {
-    content:'';
-    display: inline-block;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    border: 2px solid $brand-grey--light;
-    margin: -4px 3px;
-    transition: border .2s, background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89);
 
-    &:before {
-      content: "";
-      width: 0px;
-      height: 2px;
-      border-radius: 2px;
-      background: $brand-color;
-      position: absolute;
-      transform: rotate(45deg);
-      top: 7px;
-      left: 5px;
-      transition: width 50ms ease 50ms;
-      transform-origin: 0% 0%;
-    }
-
-    &:after {
-      content: "";
-      width: 0;
-      height: 2px;
-      border-radius: 2px;
-      background: $brand-color;
-      position: absolute;
-      transform: rotate(305deg);
-      top: 10px;
-      left: 6px;
-      transition: width 50ms ease;
-      transform-origin: 0% 0%;
-    }
-  }
   &:hover {
     span {
       border: 2px solid $brand-color--light;
@@ -78,6 +40,45 @@
         transition: width 150ms ease 100ms;
       }
     }
+  }
+}
+.c-filter__item-checkbox {
+  content:'';
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 2px solid $brand-grey--light;
+  margin: -4px 3px;
+  transition: border .2s, background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89);
+
+  &:before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    border-radius: 2px;
+    background: $brand-color;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 7px;
+    left: 5px;
+    transition: width 50ms ease 50ms;
+    transform-origin: 0% 0%;
+  }
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: $brand-color;
+    position: absolute;
+    transform: rotate(305deg);
+    top: 10px;
+    left: 6px;
+    transition: width 50ms ease;
+    transform-origin: 0% 0%;
   }
 }
 .c-filter__item--active span {

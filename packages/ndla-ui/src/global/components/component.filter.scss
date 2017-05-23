@@ -30,11 +30,11 @@
     content:'';
     display: inline-block;
     position: relative;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     padding: 0;
     border: 2px solid $brand-grey--light;
-    margin: -2px 3px;
+    margin: -4px 3px;
     transition: border .2s, background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89);
 
     &:before {
@@ -45,8 +45,8 @@
       background: $brand-color;
       position: absolute;
       transform: rotate(45deg);
-      top: 4px;
-      left: 3px;
+      top: 7px;
+      left: 5px;
       transition: width 50ms ease 50ms;
       transform-origin: 0% 0%;
     }
@@ -59,8 +59,8 @@
       background: $brand-color;
       position: absolute;
       transform: rotate(305deg);
-      top: 7px;
-      left: 4px;
+      top: 10px;
+      left: 6px;
       transition: width 50ms ease;
       transform-origin: 0% 0%;
     }

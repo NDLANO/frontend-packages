@@ -14,7 +14,7 @@ import {
   makeFigureLicenseIconsClickable,
 } from 'ndla-article-scripts';
 
-import { Icon, Figure, FigureCaption, FigureDetails } from '../../src';
+import { Figure, FigureCaption, FigureDetails } from '../../src';
 
 
 const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
@@ -40,12 +40,11 @@ class FigureWithLicense extends Component {
         <div className="c-figure__img">
           {this.props.children}
         </div>
-        <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
-          <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Copy /> Kopier referanse</button>
-          <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Link /> Gå til kilde</button>
-          <button className="c-button c-licenseToggle__button" type="button"><Icon.OpenWindow /> Vis bilde</button>
-        </FigureDetails>
         <FigureCaption caption={caption} reuseLabel="Gjenbruk" licenseAbbreviation="by-nc-nd" authors={authors} />
+        <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
+          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+        </FigureDetails>
       </Figure>
     );
   }

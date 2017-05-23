@@ -39,15 +39,15 @@ const LicenseIconItem = ({ licenseRight, activeLicenseRight, onLicenseIconClick 
   <li {...classes('item', (activeLicenseRight === licenseRight && 'active'))}>
     { onLicenseIconClick ?
       <div>
-        { licenseRight.description }
         <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
           <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
         </Button>
+        { licenseRight.description }
       </div>
       :
       <div>
-        { licenseRight.description }
         <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+        { licenseRight.description }
       </div>
     }
   </li>

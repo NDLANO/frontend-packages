@@ -36,8 +36,8 @@
   &__close {
     display: none;
     position: absolute;
-    top: 10px; // Custom pos for now - change later
-    right: 50px;
+    top: $spacing;
+    right: $spacing;
     background: transparent;
     border: none;
     color: $brand-color;

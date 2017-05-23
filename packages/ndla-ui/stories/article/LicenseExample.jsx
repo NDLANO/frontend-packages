@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
@@ -141,8 +141,7 @@ const ImageContent = () => (
         <MediaListItemBody locale="nb" license="by-nc-nd" >
           <MediaListItemActions>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <a className="c-button c-button--small c-button--transparent" href="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</a>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
           </MediaListItemActions>
           <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
@@ -156,8 +155,7 @@ const ImageContent = () => (
         <MediaListItemBody locale="nb" license="by-nc-nd" >
           <MediaListItemActions>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <a className="c-button c-button--small c-button--transparent" href="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</a>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
           </MediaListItemActions>
           <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
@@ -171,8 +169,7 @@ const ImageContent = () => (
         <MediaListItemBody locale="nb" license="by-nc-nd" >
           <MediaListItemActions>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <a className="c-button c-button--small c-button--transparent" href="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe"><Icon.Link className="c-modal__button-icon" /> Gå til kilde</a>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </MediaListItemActions>
           <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:', 'Verket består av...']} />

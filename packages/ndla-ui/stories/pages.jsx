@@ -550,7 +550,9 @@ storiesOf('Emnesider', module)
           <MainTopicHero />
         </Hero>
         <ArticleLoader articleId="1325" isTopicArticle />
-        <ResourcesSubTopics />
+        <ResourceWrapper>
+          <ResourcesSubTopics />
+        </ResourceWrapper>
         <FooterExample />
       </PageContainer>
     ))
@@ -561,7 +563,9 @@ storiesOf('Emnesider', module)
           <SubTopicHero />
         </Hero>
         <ArticleLoader articleId="5948" notitle />
-        <ResourceSubsetList />
+        <OneColumn>
+          <ResourceSubsetList />
+        </OneColumn>
         <FooterExample />
       </PageContainer>
     ))

@@ -118,7 +118,7 @@ class ArticleEditor extends Component {
     const editorState = contentState ? EditorState.createWithContent(contentState) : undefined;
     return (
       <div>
-        { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>Lukk</Button> : null}
+        { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>X</Button> : null}
         { editorState ? <StatefulNDLAEditor value={editorState} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
       </div>
     );

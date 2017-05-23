@@ -12,9 +12,14 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
+import Icon from '../icons/Icon';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
+  prefix: 'c-',
+});
+const filterClasses = new BEMHelper({
+  name: 'filter',
   prefix: 'c-',
 });
 
@@ -50,6 +55,23 @@ export default class TopicMenu extends Component {
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
       <div {...classes('dropdown', null, 'o-wrapper u-1/1')}>
+        <div {...classes('masthead')}>
+          <div {...classes('search')}>
+            <div {...classes('search-icon')}>
+              <Icon.Search />
+            </div>
+            Søk
+          </div>
+          <ul {...filterClasses('list')}>
+            <li {...filterClasses('label')}>FILTER:</li>
+            <li {...filterClasses('item')}>1T</li>
+            <li {...filterClasses('item')}>R1</li>
+            <li {...filterClasses('item')}>R2</li>
+            <li {...filterClasses('item')}>S1</li>
+            <li {...filterClasses('item')}>S2</li>
+          </ul>
+          <div {...classes('right-filler')} />
+        </div>
         <ul {...classes('list', null, classes('left').className)}>
           <li {...classes('subject')} >
             <SafeLink to={toSubject}>{ subject }</SafeLink>

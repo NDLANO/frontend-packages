@@ -1,0 +1,38 @@
+.c-filter {
+  align-items: center;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    @include mq(desktop) {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    text-transform: uppercase;
+    @include inuit-font-size(16px);
+    margin: 0 $spacing--small;
+    display: inline-block;
+  }
+
+  &__item {
+    display: inline-block;
+    color: $brand-color;
+    border: 2px solid $brand-color;
+    margin: 0 2px;
+    padding: 3px $spacing*0.8;
+    border-radius: $border-radius;
+    @include inuit-font-size(16px);
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover, &--active {
+      background: $brand-color;
+      color: $white;
+    }
+  }
+
+}

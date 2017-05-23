@@ -1,6 +1,8 @@
 .masthead {
   border-bottom: 1px solid $brand-grey--lighter;
   z-index: 99;
+  position: relative;
+  background: white;
 }
 .masthead > div {
   justify-content: center;

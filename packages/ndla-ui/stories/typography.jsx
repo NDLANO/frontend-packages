@@ -33,7 +33,7 @@ storiesOf('Typografi', module)
         <section className="c-factbox">
           <h1 className="u-heading">Farger på NDLA</h1>
         </section>
-        <section className="c-article">
+        <section className="o-wrapper--inner c-article c-article--clean">
           <div>
             <h4>Variasjoner av NDLA-fargen</h4>
             <p>Primærfargen kan supplementeres med ulike graderinger.</p>
@@ -75,7 +75,7 @@ storiesOf('Typografi', module)
   ))
   .add('Fonter', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Fonter</h1>
         </section>
@@ -107,7 +107,7 @@ storiesOf('Typografi', module)
         </section>
         <h2 className="u-heading">Eksempel</h2>
         <section className="o-wrapper--inner">
-          <div className="c-article-content u-noborder">
+          <div className="c-article c-article--clean">
             <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
               ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad

@@ -264,6 +264,7 @@ $shame-spacing: 12px;
 
 .c-topic-menu-toggle-button {
   position: relative;
+  z-index: 100;
   padding: $spacing--small;
   padding-right: $spacing;
   padding-left: $spacing*2;
@@ -316,24 +317,36 @@ $shame-spacing: 12px;
   max-width: 100%;
   height: 100%;
   padding: 0;
-  margin-top: 15px;
-  min-height: 250px;
+  // margin-top: 14px;
   background: $brand-color--lighter;
+  min-height: 250px;
   text-align: left;
+  z-index: 40;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 30;
   display: flex;
   box-shadow: 0 10px 20px rgba($black, 0.4);
   text-transform: none;
 }
 
 .c-topic-menu {
+  &__list {
+    // padding: $spacing 0;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 87%;
+  }
+
   &__left {
     @include mq(tablet) {
       flex: 1;
       max-width: 30%;
+      padding-top: 130px;
     }
+    z-index: 30;
   }
 
   &__subject {
@@ -349,15 +362,10 @@ $shame-spacing: 12px;
 
   &__right {
     flex: 2;
+    z-index: 30;
     padding: $spacing--large;
+    padding-top: 130px;
     background-color: $brand-color--tertiary;
-  }
-  &__list {
-    padding: $spacing 0;
-    list-style: none;
-    margin: 0;
-    overflow-y: auto;
-    max-height: 87%;
   }
 
   &__topic-item {
@@ -388,6 +396,7 @@ $shame-spacing: 12px;
 
   &__link {
     color: $brand-color;
+    margin-bottom: $spacing--small;
     &--underline:hover {
     }
     &--big {
@@ -395,6 +404,40 @@ $shame-spacing: 12px;
       padding-bottom: $spacing;
       display: block;
     }
+  }
+  &__masthead {
+    position: absolute;
+    left: 30%;
+    height: 85px;
+    width: 100%;
+    flex: 2;
+    background: white;
+    z-index: 99;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &__search {
+    text-align: center;
+    color: $brand-color;
+    width: 200px;
+    display: inline-block;
+    text-transform: uppercase;
+    @include inuit-font-size(16px);
+    padding-top: 2px;
+    cursor: pointer;
+  }
+  &__search-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  &__right-filler {
+    width: 100px;
   }
 }
 

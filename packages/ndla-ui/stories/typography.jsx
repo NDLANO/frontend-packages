@@ -78,13 +78,15 @@ storiesOf('Typografi', module)
       <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Fonter</h1>
+        </section>
+        <section>
           <div className="o-wrapper--inner">
             <p>NDLA bruker fontene <a href="https://fonts.google.com/specimen/Source+Serif+Pro">Source Serif Pro</a> og <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a>.</p>
             <ul className="o-list--bullets o-list--bullets--invert">
               <li style={{ fontWeight: 600 }}>Overskrifter: Source Sans Pro, 600</li>
               <li style={{ fontWeight: 700 }}>Mellom-overskrifter: Source Sans Pro, 700</li>
               <li style={{ fontWeight: 300 }}>Ingress: Source Sans Pro, 300</li>
-              <li>Brødtekst: Source Serif Pro, 400 inkludert <em>kursiv</em></li>
+              <li className="u-serif"  >Brødtekst: Source Serif Pro, 400 inkludert <em>kursiv</em></li>
               <li>Hjelpetekster: Source Sans Pro, 400 inkludert <em>kursiv</em></li>
             </ul>
             <p>Tilbakefallsfonter er <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og <span style={{ fontFamily: 'Arial' }}>Arial</span></p>
@@ -99,9 +101,8 @@ storiesOf('Typografi', module)
         <section className="c-factbox">
           <h1 className="u-heading">Overskrifter på NDLA</h1>
           <div className="o-wrapper--inner">
-            <p>Overskrifter på NDLA skal markeres semantisk med riktige HTML-tagger
-              (for eksempel <code>{'<h1>Overskrift<h1>'}</code>).
-            </p>
+            <p>Overskrifter på NDLA skal markeres semantisk med riktige HTML-tagger. For eksempel:</p>
+            <code>{'<h1>Overskrift<h1>'}</code>
           </div>
         </section>
         <h2 className="u-heading">Eksempel</h2>

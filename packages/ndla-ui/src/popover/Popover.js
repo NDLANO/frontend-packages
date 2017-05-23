@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import PropTypes from 'prop-types'
 import SelectionPopover from 'react-selection-popover'
 
@@ -12,4 +12,4 @@ const Popover = () => (<SelectionPopover
             <button style={{padding: 3, lineHeight: 1}} className='o-button c-button'>Lagre utdrag</button>
           </SelectionPopover>)
 }
-
+*/

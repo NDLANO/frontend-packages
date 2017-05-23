@@ -29,7 +29,7 @@
     transition: $transition;
     cursor: pointer;
 
-    &:hover {
+    &:hover, &--active {
       background: $brand-color;
       color: $white;
     }

@@ -191,6 +191,39 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
+  .add('Filter', () => (
+    <Center>
+
+      <article className="article">
+        <h2 className="u-heading">Filter</h2>
+        <LayoutItem layout="center">
+          <div className="c-filter u-margin-top">
+            <ul className="c-filter__list">
+              <li className="c-filter__label">FILTER:</li>
+              <li className="c-filter__item">1T</li>
+              <li className="c-filter__item">R1</li>
+              <li className="c-filter__item">R2</li>
+              <li className="c-filter__item">S1</li>
+              <li className="c-filter__item">S2</li>
+            </ul>
+          </div>
+        </LayoutItem>
+        <h2 className="u-heading">Filter med valgte elementer</h2>
+        <LayoutItem layout="center">
+          <div className="c-filter u-margin-top">
+            <ul className="c-filter__list">
+              <li className="c-filter__label">FILTER:</li>
+              <li className="c-filter__item c-filter__item--active">1T</li>
+              <li className="c-filter__item c-filter__item--active">R1</li>
+              <li className="c-filter__item">R2</li>
+              <li className="c-filter__item">S1</li>
+              <li className="c-filter__item">S2</li>
+            </ul>
+          </div>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
   .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>

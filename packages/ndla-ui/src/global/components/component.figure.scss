@@ -14,17 +14,21 @@
 .c-figure__caption {
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
-  @include mq($from: tablet) {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-  }
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 .c-figure__byline {
   padding-right: $spacing;
   text-align: left;
   .c-button--outline svg {  //remove
     display:none;
+  }
+}
+.c-figure__info {
+  @include mq($from: tablet) {
+    max-width: 60%;
   }
 }
 

@@ -49,7 +49,7 @@ FigureDetails.propTypes = {
 
 export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviation }) => (
   <figcaption {...classes('caption')}>
-    {caption ? <div className="c-figcaption__info">${caption}</div> : null}
+    {caption ? <div className="c-figure__info">${caption}</div> : null}
     <div {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>

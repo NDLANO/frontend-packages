@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  addCloseFigureDetailsClickListners,
+  // addCloseFigureDetailsClickListners,
   addShowFigureDetailsClickListners,
   makeFigureLicenseIconsClickable,
 } from 'ndla-article-scripts';
@@ -29,6 +29,16 @@ const authors = [
 class FigureWithLicense extends Component {
 
   componentDidMount() {
+    const addCloseFigureDetailsClickListners = () => {
+      document.querySelectorAll('.c-figure .c-figure__close').forEach((el) => {
+        const target = el;
+        target.onclick = () => {
+          // removeElementById('c-license-icon-description');
+          target.parentNode.parentNode.classList.remove('c-figure--active');
+          target.parentNode.parentNode.querySelector('figcaption').classList.remove('u-hidden');
+        };
+      });
+    };
     addShowFigureDetailsClickListners();
     addCloseFigureDetailsClickListners();
     makeFigureLicenseIconsClickable();

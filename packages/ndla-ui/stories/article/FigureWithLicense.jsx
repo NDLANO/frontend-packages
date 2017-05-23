@@ -52,6 +52,7 @@ class FigureWithLicense extends Component {
 
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
+  offsetRight: PropTypes.boolean,
 };
 
 export default FigureWithLicense;

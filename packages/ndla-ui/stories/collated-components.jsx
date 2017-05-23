@@ -55,7 +55,7 @@ storiesOf('Sammensatte moduler', module)
               </svg></div>
             <div className="c-collate__panel">
               <div className="o-layout">
-                <div className="o-layout__item u-1/2@desktop">
+                <div className="u-1/2@desktop">
                   <LicenseIconList licenseRights={[BY, SA]} />
                   <h4>Oppgaver til &laquo;Ansvar og regelverk. Ernæring&raquo; (Oppgave)</h4>
                   <ul>Forfatter
@@ -63,7 +63,7 @@ storiesOf('Sammensatte moduler', module)
                     <li>Marit Smith Sørhøy</li>
                   </ul>
                 </div>
-                <div className="o-layout__item u-1/2@desktop">
+                <div className="u-1/2@desktop">
                   <Tabs
                     tabs={[
                       { title: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },

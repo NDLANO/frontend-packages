@@ -36,12 +36,12 @@
   &__close {
     display: none;
     position: absolute;
-    top: $spacing;
+    top: $spacing--large*.75;
     right: $spacing;
     background: transparent;
     border: none;
     color: $brand-color;
-    @include font-size(28px);
+    @include font-size(20px);
     font-weight: $font-weight-normal;
     z-index: 9;
     cursor: pointer;

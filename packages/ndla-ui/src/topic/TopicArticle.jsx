@@ -7,27 +7,14 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types'
-// import {
-//   addEventListenerForResize,
-//   updateIFrameDimensions, addAsideClickListener,
-//   removeEventListenerForResize,
-//   removeAsideClickListener,
-// } from 'ndla-article-scripts';
-// import { presets } from 'react-motion';
-// import ReactCollapse from 'react-collapse';
-// import Icon from '../icons/Icon';
-
+import PropTypes from 'prop-types';
 import Article from '../article/Article';
 import ArticleContent from '../article/ArticleContent';
-// import Button from '../button/Button';
-// import ArticleFootNotes from '../article/ArticleFootNotes';
 import { ArticleShape } from '../shapes';
 
 
 // class TopicArticle extends Component {
 const TopicArticle = ({ article, notitle }) => (
-
     // const { article, notitle } = this.props;
     // const { isOpen } = this.state;
     // return (

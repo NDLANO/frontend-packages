@@ -42,6 +42,7 @@ const LicenseIconItem = ({ licenseRight, activeLicenseRight, onLicenseIconClick 
         <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
           <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
         </Button>
+        console.warn(licenseRight);
         { licenseRight.description }
       </div>
       :

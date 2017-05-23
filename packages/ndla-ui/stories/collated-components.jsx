@@ -107,11 +107,6 @@ storiesOf('Sammensatte moduler', module)
       <MastheadLeftRight />
     </div>
   ))
-  .add('Hovedhode med logo og Sidenavigasjon', () => (
-    <div>
-      <Masthead />
-    </div>
-  ))
   .add('Hovedhode med emnemeny', () => (
     <div>
       <MastheadWithTopicMenu />

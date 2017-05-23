@@ -7,34 +7,31 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import { Article, OneColumn } from '../../src';
+import { Article, OneColumn, LayoutItem } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
-import TopicBreadcrumbDefault from '../molecules/breadcrumbs';
+
 
 const ArticleExample = ({ article, withLicenseExample, notitle }) => (
-  <section className="c-article-content">
-    <OneColumn cssModifier="narrow">
-      <section>
-        <TopicBreadcrumbDefault />
-        { withLicenseExample && <LicenseExample /> }
+  <OneColumn cssModifier="narrow">
+    <article className="c-article">
+      { withLicenseExample && <LicenseExample /> }
+      <LayoutItem layout="center">
         { notitle ? null : <h1>{article.title}</h1> }
-        <ArticleByline article={article} />
         <Article.Introduction introduction={article.introduction} />
-      </section>
-    </OneColumn>
-    <OneColumn cssModifier="narrow">
-      <Article.Content content={article.content} />
-    </OneColumn>
-    <OneColumn cssModifier="narrow">
-      <section>
+        <ArticleByline article={article} />
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <Article.Content content={article.content} />
+      </LayoutItem>
+      <LayoutItem layout="center">
         { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
         { withLicenseExample && <LicenseExample /> }
-      </section>
-    </OneColumn>
-  </section>
+      </LayoutItem>
+    </article>
+  </OneColumn>
 );
 
 ArticleExample.propTypes = {

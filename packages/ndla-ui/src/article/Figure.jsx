@@ -18,7 +18,6 @@ import BEMHelper from 'react-bem-helper';
 import LicenseByline from '../license/LicenseByline';
 import Icon from '../icons/Icon';
 
-
 const classes = new BEMHelper({
   name: 'figure',
   prefix: 'c-',
@@ -26,6 +25,7 @@ const classes = new BEMHelper({
 
 export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
   <div {...classes('license')} id="figmeta">
+    <button {...classes('close')}>Lukk</button>
     <div className="u-expanded">
       <div className="c-licenseToggle__details">
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)} />
@@ -72,7 +72,6 @@ FigureCaption.propTypes = {
 
 export const Figure = ({ children, ...rest }) => (
   <figure {...classes()} {...rest}>
-    <button {...classes('close')}>X</button>
     {children}
   </figure>
 );

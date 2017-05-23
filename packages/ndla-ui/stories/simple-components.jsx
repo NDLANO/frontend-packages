@@ -55,19 +55,15 @@ storiesOf('Enkle komponenter', module)
         <section className="o-wrapper--inner">
           <InlineContainer>
             <Button onClick={action('clicked')}>Knapp</Button>
-            <Button outline onClick={action('clicked')}>Knapp outlined</Button>
-            <Button square onClick={action('clicked')}>Knapp squared</Button>
-            <Button submit onClick={action('clicked')}>Sendeknapp</Button>
-          </InlineContainer>
-          <InlineContainer>
-            <Button submit disabled onClick={action('clicked')}>Sendeknapp deaktivert</Button>
-            <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
-            <Button onClick={action('clicked')}>Knapp</Button>
           </InlineContainer>
           <InlineContainer>
             <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
           </InlineContainer>
-          <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Knapp med ikon</button>
+          <InlineContainer>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Knapp med ikon</button>
+          </InlineContainer>
+
+          <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
         </section>
       </article>
     </Center>

@@ -1,4 +1,7 @@
 .c-topic-resource-subset {
+  @include mq($from: desktop) {
+    @include grids-expand(4,6,2);
+  }
 
   @include mq($from: desktop) {
     margin-top: $spacing--large;

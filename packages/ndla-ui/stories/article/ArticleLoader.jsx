@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import { Button, TopicArticle } from '../../src/';
+import { Button } from '../../src/';
 import ArticleExample from './ArticleExample';
 
 class ArticleLoader extends Component {
@@ -50,10 +50,7 @@ class ArticleLoader extends Component {
 
   renderArticle() {
     const { article } = this.state;
-    const { isTopicArticle, withLicenseExample } = this.props;
-    if (isTopicArticle) {
-      return <TopicArticle article={article} openTitle="Les mer om dette emnet" closeTitle={<span>Skjul emnebeskrivelsen</span>} />;
-    }
+    const { withLicenseExample } = this.props;
     return <ArticleExample article={article} withLicenseExample={withLicenseExample} />;
   }
 
@@ -66,7 +63,7 @@ class ArticleLoader extends Component {
           script={scripts}
         />
         { article ? this.renderArticle() : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
-        { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
+        { article ? <Button onClick={() => this.setState({ article: undefined })}>X</Button> : null}
       </div>
     );
   }
@@ -75,7 +72,6 @@ class ArticleLoader extends Component {
 ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   withLicenseExample: PropTypes.bool,
-  isTopicArticle: PropTypes.bool,
 };
 
 export default ArticleLoader;

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import moment from 'moment';
 import { Icon } from '../../src';
@@ -36,7 +36,7 @@ const ArticleByline = ({ article }) => {
 
   return (
     <section {...classes('byline')}>
-      {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />} –
+      {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
       <LastUpdated date={article.updated} />
     </section>
   );

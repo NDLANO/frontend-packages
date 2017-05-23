@@ -146,8 +146,7 @@ const ImageContent = () => (
           <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014</li>
@@ -165,8 +164,7 @@ const ImageContent = () => (
           <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Gå til kilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014</li>

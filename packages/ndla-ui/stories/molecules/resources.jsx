@@ -28,24 +28,24 @@ const resourceGroup1 = {
   description: 'Relaterte emneartikler',
   viewAllLinkTitle: 'Mer lærestoff',
   resources: articleResources.slice(0, 2),
-  color: 'red',
   icon: 'Document',
+  type: 'Lærestoff',
 };
 const resourceGroup2 = {
   title: 'Læringsstier',
   viewAllLinkTitle: 'Flere læringsstier',
   description: 'Tilknyttet dette emnet',
   resources: learningPathResources.slice(0, 2),
-  color: 'yellow',
   icon: 'Path',
+  type: 'Læringsstier',
 };
 const resourceGroup3 = {
   title: 'Oppgaver og aktiviteter',
   description: 'Relatert til emnet',
   viewAllLinkTitle: 'Flere oppgaver og aktiviteter',
   resources: exerciseResources.slice(0, 2),
-  color: 'green',
   icon: 'Pencil',
+  type: 'Oppgaver og aktiviteter',
 };
 
 

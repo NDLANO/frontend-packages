@@ -300,7 +300,7 @@ const Files = () => (
 export const LicenseBox = () => (
   <div>
     <h1 className="license__heading">Hvordan gjenbruke innhold fra NDLA</h1>
-    <p className="c-licensebox__introduction license__introduction">Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett, eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet i fagstoff.</p>
+
     <Tabs
       tabs={[
             { title: 'Bilder', content: <ImageContent /> },

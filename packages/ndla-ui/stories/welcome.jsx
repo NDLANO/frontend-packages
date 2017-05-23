@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { storiesOf, linkTo } from '@kadira/storybook';
 import { Center } from './helpers';
-import { Logo } from '../src'
+import { Logo } from '../src';
 
 class Welcome extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Welcome extends Component {
           </section>
           <section>
             <h2>Hvordan bruke denne designmanualen</h2>
-            <p>Denne designmanualen består av hovedsakelig to deler: Et CSS-bibliotek som styler de mest brukte HTML-elementene, og et
+            <p>Denne designmanualen består av hovedsakelig to deler: Et CSS-bibliotek som styler de mest brukte HTML-elementene, og et
               komponent-bibliotek for <a href="https://facebook.github.io/react/">React</a>.
               Den er også publisert på <a href="https://www.npmjs.com/package/ndla-ui">npm</a>.
             </p>

@@ -13,28 +13,30 @@ articleHTML.innerHTML = article.article4.content[0].content;
 storiesOf('Enkle komponenter', module)
   .add('Logo', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Logo</h1>
-          <p>
-            Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
-            for kommunikasjon. Den skal inspirere målgruppen elever og
-            lærere i videregående opplæring og gjøre dem nysgjerrige på
-            NDLA.
-          </p>
-          <p>
-            Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
-            Logo uten undertekst kan benyttes i tilfeller der det
-            kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
-          </p>
-          <p>
-            Logo uten undertekst kan kompletteres med en beskrivende tekst
-            til høyre. Logoen benyttes i svart eller hvitt avhengig av
-            bakgrunn. Den skal plasseres i det øverste eller nederste
-            hjørnet av en ytterkant. Logoen skal ikke sentreres.
-          </p>
+          <div className="o-wrapper--inner">
+            <p>
+              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
+              for kommunikasjon. Den skal inspirere målgruppen elever og
+              lærere i videregående opplæring og gjøre dem nysgjerrige på
+              NDLA.
+            </p>
+            <p>
+              Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
+              Logo uten undertekst kan benyttes i tilfeller der det
+              kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
+            </p>
+            <p>
+              Logo uten undertekst kan kompletteres med en beskrivende tekst
+              til høyre. Logoen kan benyttes i blått, eller i svart eller hvitt avhengig av
+              bakgrunn. Den skal plasseres i det øverste eller nederste
+              hjørnet av en ytterkant. Logoen skal ikke sentreres.
+            </p>
+          </div>
         </section>
-        <section>
+        <section className="o-wrapper--inner">
           <Logo cssModifier="large" name to="#" altText="Nasjonal digital læringsarena" />
         </section>
       </article>
@@ -45,36 +47,37 @@ storiesOf('Enkle komponenter', module)
       <article className="o-wrapper--wide">
         <section className="c-factbox">
           <h1 className="u-heading">Knapper</h1>
-          <p>Knapper er til å klikke på, ikke for å lenke til.</p>
+          <div className="o-wrapper--inner">
+            <p>Knapper er til å klikke på, ikke for å lenke til.</p>
+          </div>
         </section>
-        <section>
-          <h2 className="u-heading">Eksempel</h2>
+        <h2 className="u-heading">Eksempel</h2>
+        <section className="o-wrapper--inner">
           <InlineContainer>
             <Button onClick={action('clicked')}>Knapp</Button>
-            <Button outline onClick={action('clicked')}>Knapp outlined</Button>
-            <Button square onClick={action('clicked')}>Knapp squared</Button>
-            <Button submit onClick={action('clicked')}>Sendeknapp</Button>
           </InlineContainer>
           <InlineContainer>
-            <Button submit disabled onClick={action('clicked')}>Sendeknapp deaktivert</Button>
-            <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
+            <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
           </InlineContainer>
           <InlineContainer>
+            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Knapp med ikon</button>
+          </InlineContainer>
 
-            <p>Ser <Button stripped onClick={action('clicked')}>dette</Button> ut som en knapp?</p>
-          </InlineContainer>
+          <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
         </section>
       </article>
     </Center>
   ))
   .add('Boks i tekst', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Boks i tekst</h1>
-          <p>Boks i tekst</p>
+          <div className="o-wrapper--inner">
+            <p>Boks i tekst</p>
+          </div>
         </section>
-        <section>
+        <section className="o-wrapper--inner">
           <h2>Eksempel</h2>
           <div className="c-bodybox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, praesentium.</div>
         </section>
@@ -86,10 +89,12 @@ storiesOf('Enkle komponenter', module)
       <article className="o-wrapper--narrow">
         <section className="c-factbox">
           <h1 className="u-heading">Oppsummerings/faktaboks</h1>
-          <p>Boksen kan brukes for å oppsummere en tekst, eller som faktaboks.
-             Den vil alltid plasseres i slutten av en tekst.</p>
+          <div className="o-wrapper--inner">
+            <p>Boksen kan brukes for å oppsummere en tekst, eller som faktaboks.
+               Den vil alltid plasseres i slutten av en tekst.</p>
+          </div>
         </section>
-        <section>
+        <section className="o-wrapper--inner">
           <Aside>
             <div>
               <div className="c-aside__title">Oppsummering</div>
@@ -104,7 +109,7 @@ storiesOf('Enkle komponenter', module)
               <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
           </Aside>
         </section>
-        <section>
+        <section className="o-wrapper--inner">
           <Aside>
             <div>
               <div className="c-aside__title">Fakta</div>

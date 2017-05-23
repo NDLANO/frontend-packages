@@ -3,11 +3,17 @@
 @import "../node_modules/inuitcss/settings/_settings.core";
 @import "global/settings/settings.global";
 @import "global/settings/settings.colors";
+@import "global/settings/settings.typography";
+
+// Grids
+@import "global/utilities/utilities.widths";
+@import "global/utilities/utilities.grids";
 
 // TOOLS
 @import "../node_modules/inuitcss/tools/tools.font-size";
 @import "../node_modules/inuitcss/tools/tools.clearfix";
 @import "../node_modules/inuitcss/tools/tools.rem";
+@import "global/utilities/mixin_icons";
 
 $mq-breakpoints: (
     mobile:  320px,
@@ -15,6 +21,7 @@ $mq-breakpoints: (
     desktop: 980px,
     wide:    1300px
 );
+$inuit-fractions: 1 2 3 4 5 6;
 @import "../node_modules/sass-mq/mq";
 @import "global/tools/tools.aliases";
 
@@ -40,6 +47,7 @@ $inuit-wrapper-width: 1024px;
 @import "global/elements/elements.footer";
 @import "global/elements/elements.iframe";
 @import "global/elements/elements.input";
+@import "global/elements/elements.code";
 
 // OBJECTS
 @import "../node_modules/inuitcss/objects/objects.wrapper";
@@ -54,36 +62,41 @@ $inuit-wrapper-width: 1024px;
 
 
 // COMPONENTS
-@import "global/components/component.article";
-@import "global/components/component.aside";
-@import "global/components/component.factbox";
-@import "global/components/component.bodybox";
-@import "global/components/component.breadcrumb";
-@import "global/components/component.collate";
-@import "global/components/component.site-navigation";
-@import "global/components/component.tables";
-@import "global/components/component.resources";
-@import "global/components/component.figure";
-@import "global/components/component.figcaption";
-@import "global/components/component.medialist";
-@import "global/components/component.licensebox";
-@import "global/components/component.topic-introduction";
-@import "global/components/component.topic-resource";
-@import "global/components/component.topic-resource-subset";
-@import "global/components/component.resources-menu";
 @import "modal/component.modal";
 @import "modal/component.licenseToggle";
 @import "logo/component.logo";
 @import "button/component.button";
 @import "hero/component.hero";
 @import "masthead/component.masthead";
+@import "global/components/component.article";
+@import "global/components/component.aside";
+@import "global/components/component.bodybox";
+@import "global/components/component.breadcrumb";
+@import "global/components/component.collate";
+@import "global/components/component.factbox";
+@import "global/components/component.figcaption";
+@import "global/components/component.figure";
+@import "global/components/component.license-icons";
+@import "global/components/component.licensebox";
+@import "global/components/component.medialist";
+@import "global/components/component.pager";
+@import "global/components/component.resource-group";
+@import "global/components/component.resources-menu";
+@import "global/components/component.resources";
+@import "global/components/component.site-navigation";
+@import "global/components/component.tables";
+@import "global/components/component.topic-introduction";
+@import "global/components/component.topic-resource-subset";
+@import "global/components/component.topic-resource";
+@import "global/components/component.filter";
+
 /* @import "components/components.page-foot";
 @import "components/components.site-nav";
 @import "components/components.ads";
 @import "components/components.promo";
  */
 // UTILITIES
-$inuit-fractions: 1 2 3 4 12;
+
 
 @import "../node_modules/inuitcss/utilities/utilities.widths";
 @import "../node_modules/inuitcss/utilities/utilities.headings";
@@ -93,6 +106,7 @@ $inuit-fractions: 1 2 3 4 12;
 @import "global/utilities/utilities.typographic";
 @import "global/utilities/utilities.shame";
 @import "global/utilities/utilities.mobile";
+
 
 
 // @import "license/basicLightbox.min.css";

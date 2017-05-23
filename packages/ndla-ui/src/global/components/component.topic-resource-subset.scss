@@ -1,48 +1,42 @@
 .c-topic-resource-subset {
   @include mq($from: desktop) {
+    @include grids-expand(4,6,2);
+  }
+
+  @include mq($from: desktop) {
     margin-top: $spacing--large;
+  }
+  &__list {
+    text-align: center;
   }
   &__heading {
     display: inline-block;
-    @include inuit-font-size(32px);
-    text-transform: none;
-    font-variant: normal;
-    color: $brand-color;
+    @include inuit-font-size(18px);
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.1em;
     margin-bottom: 0;
   }
   &__lead {
-    @include inuit-font-size(20px);
-    color: $brand-color;
-    font-weight: $font-weight-normal;
-    margin: 0;
-    border-bottom: 4px solid $brand-grey--light;
+    @include inuit-font-size(18px);
+    display: inline-block;
+    font-weight: $font-weight-light;
+    font-family: $font;
+    margin: 0 0 0 $spacing;
     padding-bottom: $spacing--small;
     transition: $transition;
   }
-  &__readmore {
-    text-align: right;
+  &__underline {
     display: block;
-    font-weight: $font-weight-bold;
-    margin: $spacing--small 0;
-    @include inuit-font-size(16px);
-    color: $brand-color;
-    text-decoration: none;
+    border-bottom: 2px solid $brand-grey--light;
   }
-  &__tag {
-    @include inuit-font-size(15px);
-    background-color: $brand-grey--light;
-    color: $brand-grey;
-    font-weight: $font-weight-bold;
-    text-decoration: none;
+  &__readmore {
+    @extend .c-button;
+    @extend .c-button--outline;
     display: inline-block;
-    padding: 0px 12px;
-    border-radius: $border-radius--large;
-    margin: $spacing--small $spacing--small/2 0 0;
-    transition: $transition;
-    &:hover {
-      background-color: $brand-color;
-      color: $white;
-    }
+    margin: $spacing--small auto;
+    @include inuit-font-size(16px);
+    font-family: $font;
   }
   &--focus {
     .c-topic-resource-subset__lead {
@@ -52,9 +46,9 @@
 }
 
 // Topic type color themes
-.c-topic-resource-subset--blue {
+.c-topic-resource-subset--yellow {
     .c-topic-resource__icon {
-      background-color: $brand-color;
+      background-color: $yellow;
       svg { fill: $white; }
     }
 }

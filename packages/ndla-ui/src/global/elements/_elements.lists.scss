@@ -1,10 +1,17 @@
 ul, ol {
   margin: 0 0 2em;
-  padding: 0 1em;
+  padding: 0 1em 0 2em;
+  @include mq(desktop) {
+  padding: 0 1em 0 0;
+  }
 }
 
-aside ul, article ul, .o-list--arrows {
-  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='4' cy='4' r='4' fill='#{$brand-color} ' /></svg>");
+aside ul, article ul, .c-article-content ul, .o-list--bullets {
+  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='5' r='3' fill='#{$brand-color--tertiary} ' /></svg>");
+
+  li {
+    line-height: 1.5em;
+  }
 
   &--invert {
     li {

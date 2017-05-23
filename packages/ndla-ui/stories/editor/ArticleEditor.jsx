@@ -6,7 +6,8 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import NDLAEditor, { withStateHandler } from 'ndla-editor';
@@ -117,7 +118,7 @@ class ArticleEditor extends Component {
     const editorState = contentState ? EditorState.createWithContent(contentState) : undefined;
     return (
       <div>
-        { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>Lukk</Button> : null}
+        { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>X</Button> : null}
         { editorState ? <StatefulNDLAEditor value={editorState} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
       </div>
     );

@@ -1,8 +1,11 @@
 .c-licenseToggle {
   &__details {
-    border-bottom: 1px solid $brand-color;
+
   }
   &__ctablock {
+    background-color: $white;
+    padding: $spacing;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

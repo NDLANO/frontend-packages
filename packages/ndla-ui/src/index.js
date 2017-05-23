@@ -15,6 +15,7 @@ import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 import Icon from './icons/Icon';
 import OneColumn from './layout/OneColumn';
+import LayoutItem from './layout/LayoutItem';
 import PageContainer from './layout/PageContainer';
 import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
@@ -63,6 +64,7 @@ export {
   MastheadItem,
   MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
   OneColumn,
+  LayoutItem,
   PageContainer,
   Pager,
   ResourceWrapper,

@@ -33,6 +33,7 @@ import TopicArticle from './topic/TopicArticle';
 import TopicBreadcrumb from './topic/TopicBreadcrumb';
 import TopicIntroductionList from './topic/TopicIntroductionList';
 import TopicMenu from './topicMenu/TopicMenu';
+import Placeholder from './placeholders/Placeholder'
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
@@ -67,6 +68,7 @@ export {
   LayoutItem,
   PageContainer,
   Pager,
+  Placeholder,
   ResourceWrapper,
   ResourceList,
   ResourceSubsetList,

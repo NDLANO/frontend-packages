@@ -8,6 +8,9 @@
     @include grids-push(1,6);
   }
 }
+.u-serif {
+  font-family: $font-serif;
+}
 .u-text-inverted {
   color: $white;
 }

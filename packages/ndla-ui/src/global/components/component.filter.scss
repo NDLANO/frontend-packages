@@ -26,7 +26,6 @@
   cursor: pointer;
   @include inuit-font-size(16px);
 
-
   &:hover {
     span {
       border: 2px solid $brand-color--light;

@@ -31,7 +31,6 @@ class LicenseToggle extends Component {
   handleClick() {
     this.setState({ condition: !this.state.condition });
     document.getElementById('figureExample').classList.toggle('c-figure--active');
-    console.warn('test2');
 
     // Show/hide content
     if (this.state.condition === true) {

@@ -9,15 +9,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
   ItalicButton, BoldButton, UnderlineButton,
   HeadlineTwoButton, HeadlineThreeButton,
   UnorderedListButton, BlockquoteButton,
 } from 'draft-js-buttons';
-import decorateComponentWithProps from 'decorate-component-with-props';
 
-import BlockTypeSelect from './BlockTypeSelect';
 import BaseEditor from './BaseEditor';
 
 
@@ -25,21 +22,13 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [ItalicButton, BoldButton, UnderlineButton, HeadlineTwoButton, HeadlineThreeButton, UnorderedListButton, BlockquoteButton],
 });
 
-const sideToolbarPlugin = createSideToolbarPlugin({
-  structure: [
-    decorateComponentWithProps(BlockTypeSelect, { structure: [UnorderedListButton, HeadlineTwoButton, HeadlineThreeButton, BlockquoteButton] }),
-  ],
-});
-
-const plugins = [inlineToolbarPlugin, sideToolbarPlugin];
+const plugins = [inlineToolbarPlugin];
 
 const { InlineToolbar } = inlineToolbarPlugin;
-const { SideToolbar } = sideToolbarPlugin;
 
 const RichTextEditor = props => (
   <BaseEditor {...props} plugins={plugins} >
     <InlineToolbar />
-    <SideToolbar />
   </BaseEditor>
 );
 

@@ -10,10 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'draft-js';
 
-const PlainTextEditor = ({ value, onChange, ...rest }) => {
-  console.log(value);
-  return <Editor editorState={value} onChange={onChange} {...rest} />;
-};
+const PlainTextEditor = ({ value, onChange, ...rest }) => <Editor editorState={value} onChange={onChange} {...rest} />;
 
 PlainTextEditor.propTypes = {
   onChange: PropTypes.func.isRequired,

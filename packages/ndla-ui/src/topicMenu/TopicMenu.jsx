@@ -63,7 +63,7 @@ export default class TopicMenu extends Component {
             Søk
           </div>
           <ul {...filterClasses('list')}>
-            <li {...filterClasses('label')}><span {...filterClasses('item-checkbox')} /> FILTER:</li>
+            <li {...filterClasses('label')}>FILTER:</li>
             <li {...filterClasses('item', 'active')}><span {...filterClasses('item-checkbox')} /> 1T</li>
             <li {...filterClasses('item')}><span {...filterClasses('item-checkbox')} /> R1</li>
             <li {...filterClasses('item')}><span {...filterClasses('item-checkbox')} /> R2</li>

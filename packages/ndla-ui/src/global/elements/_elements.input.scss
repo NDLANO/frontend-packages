@@ -1,6 +1,6 @@
 input {
   padding: $spacing/3;
-  font-size: 18px;
+  @include font-size(18px);
   border-style: solid;
   border-color: $brand-grey--light;
 }

@@ -15,6 +15,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+
   @include mq(tablet) {
     flex-direction: row;
   }
@@ -27,6 +28,7 @@
   flex-basis: 33%;
   flex-grow: 1;
   flex-direction: column-reverse;
+
   .c-button--outline svg {  //remove
     display:none;
   }

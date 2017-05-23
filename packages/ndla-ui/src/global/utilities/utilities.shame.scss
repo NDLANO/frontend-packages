@@ -268,32 +268,3 @@ $shame-spacing: 12px;
   opacity: 0;
   width: 100%;
 }
-
-.c-topic-resource-subset__header {
-  margin: 1em 0 0.5em 0;
-  font-size: 1.4em;
-  border-bottom: 1px solid #045A91;
-  padding-bottom: 0.2em
-}
-
-.c-topic-resource-subset__all-link {
-  color: #045A91;
-  &:active, &:visited, &:hover, &:focus {
-    color: #045A91;
-  }
-}
-
-
-.c-topic-article_toggle-button {
-  margin: auto;
-}
-.c-topic-article__btnwrapper {
-  text-align: center;
-  margin-top: -$spacing--large*1.5;
-  margin-bottom: $spacing--large*1.5;
-  position: relative;
-  z-index:9;
-}
-.c-topic-article__btnwrapper--open {
-  margin-top: $spacing--small;
-}

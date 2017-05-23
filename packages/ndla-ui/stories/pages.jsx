@@ -420,14 +420,8 @@ const ResourcesSubTopics = () => (
     <article className="c-article">
       <LayoutItem layout="center">
         <ResourceWrapper>
-          <Tabs
-            tabs={[
-              { title: 'Emner',
-                content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
-              },
-              { title: 'Ressurser', content: <ResourceSubsetList /> },
-            ]}
-          />
+          <h1 className="c-resources__title">Emner</h1>
+          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
         </ResourceWrapper>
       </LayoutItem>
     </article>
@@ -483,15 +477,8 @@ storiesOf('Sidevisninger', module)
       <ArticleLoader isTopicArticle articleId="208" />
       <OneColumn>
         <ResourceWrapper>
-          <Tabs
-            tabs={[
-              {
-                title: 'Emner',
-                content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
-              },
-              { title: 'Ressurser', content: <ResourceSubsetList /> },
-            ]}
-          />
+          <h1 className="c-resources__title">Emner</h1>
+          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
         </ResourceWrapper>
       </OneColumn>
       <FooterExample />

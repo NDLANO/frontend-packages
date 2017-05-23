@@ -9,13 +9,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
-import Icon from '../icons/Icon';
-
-import { ClickableLicenseByline } from '../';
-
-
 class LicenseToggle extends Component {
 
   constructor() {
@@ -31,7 +24,6 @@ class LicenseToggle extends Component {
   handleClick() {
     this.setState({ condition: !this.state.condition });
     document.getElementById('figureExample').classList.toggle('c-figure--active');
-    console.warn('test2');
 
     // Show/hide content
     if (this.state.condition === true) {

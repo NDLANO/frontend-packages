@@ -77,8 +77,8 @@ export default class TopicMenu extends Component {
             <SafeLink to={toSubject}>{ subject }</SafeLink>
           </li>
           { topics.map(topic =>
-            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
-              <SafeLink {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
+            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} key={topic.id}>
+              <SafeLink onClick={() => this.handleMouseClick(topic.id)} {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
             </li>),
           ) }
         </ul>

@@ -17,7 +17,7 @@ import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
-import { LicenseBox } from './article/LicenseExample';
+import LicenseExample, { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -33,10 +33,10 @@ storiesOf('Sammensatte moduler', module)
           <h1 className="u-heading">Sammensatte moduler</h1>
         </section>
         <section className="o-wrapper--inner">
-          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
+          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at &laquo;helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten
-          god omsorg».</p>
+          god omsorg&raquo;.</p>
           <p>
             Ved internkontroll skal det sikres at tilbudet til pasientene er i samsvar
             med regelverket. Internkontroll skal bidra til faglig forsvarlige sosial- og helsetjenester,

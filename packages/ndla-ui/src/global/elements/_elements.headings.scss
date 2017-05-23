@@ -32,7 +32,6 @@ h2 {
 
 article {
   h1 {
-    display: table; /* inline block, but with newline for non-blocking sibling element */
     position: relative;
   }
 }

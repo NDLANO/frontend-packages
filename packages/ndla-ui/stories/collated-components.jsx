@@ -8,13 +8,13 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 import { Center, DottedContainer } from './helpers';
 import {
   SiteNav, SiteNavItem, Button,
-  Pager, Footer, LicenseIconList, LicenseByline,
+  Pager, Footer, LicenseIconList, LicenseByline, LicenseExample,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
   ResourceWrapper, OneColumn, LayoutItem,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
-import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
+import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
 import { LicenseBox } from './article/LicenseExample';

@@ -11,7 +11,7 @@ import {
   Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
-  ResourceWrapper,
+  ResourceWrapper, OneColumn, LayoutItem,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
 import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
@@ -207,22 +207,24 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Emne artikkel', () => (
     <Center>
-      <article className="o-wrapper--narrow">
-        <TopicArticle
-          article={articles.topicArticle}
-          openTitle="Les mer om dette emnet"
-          closeTitle={<span>Skjul emnebeskrivelse</span>}
-        />
-      </article>
+      <OneColumn cssModifier="narrow">
+        <article className="c-article c-article--clean">
+          <LayoutItem layout="center">
+            <TopicArticle
+              article={articles.topicArticle}
+            />
+          </LayoutItem>
+        </article>
+      </OneColumn>
     </Center>
   ))
   .add('Emner liste', () => (
     <Center>
       <h2 className="u-heading">Emneliste</h2>
       <div className="c-resources">
-        <section>
+        <LayoutItem layout="center">
           <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-        </section>
+        </LayoutItem>
       </div>
     </Center>
   ))
@@ -231,17 +233,15 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Læringsstier eksempel</h2>
       <div className="o-wrapper--inner">
         <div className="c-resources">
-          <section>
-            <LearningPathResourceList />
-          </section>
+          <LearningPathResourceList />
         </div>
       </div>
       <h2 className="u-heading">Lærestoff eksempel</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <section>
+          <LayoutItem layout="center">
             <ArticleResourceList />
-          </section>
+          </LayoutItem>
         </div>
       </article>
     </Center>
@@ -251,9 +251,9 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Ulike læringsressurser</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <section>
+          <LayoutItem layout="center">
             <ResourceSubsetList />
-          </section>
+          </LayoutItem>
         </div>
       </article>
     </Center>

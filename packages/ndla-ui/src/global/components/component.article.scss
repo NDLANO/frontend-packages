@@ -14,26 +14,25 @@
 }
 .c-article {
   margin-top: $spacing--large;
-  margin-left: auto;
   margin-right: auto;
+  margin-bottom: $spacing--large;
+  margin-left: auto;
+  font-family: $font-serif;
+  color: $brand-grey-dark;
+  background: $white;
+  @include inuit-font-size(18px, 32px);
   @include mq(tablet) {
     border: 1px solid $brand-grey--lighter;
     padding: 0 $spacing;
-  }
-  @include mq(desktop) {
-    padding: 0;
-  }
-  margin-bottom: $spacing--large;
-  padding-bottom: $spacing--large;
-  font-family: $font-serif;
-  color: $brand-grey-dark;
-  @include inuit-font-size(18px, 32px);
-
-  @include mq(tablet) {
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
   }
-  background: $white;
+  padding-bottom: $spacing--large;
+
+  &--clean {
+    margin-top: $spacing;
+    border: none;
+  }
 
   &__byline {
     margin-top: $spacing;

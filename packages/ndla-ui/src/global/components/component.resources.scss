@@ -2,13 +2,11 @@
   background-color: $white;
   padding-bottom: $spacing--large;
   padding-top: $spacing;
-
-  &--transparent {
-    background: transparent;
-  }
-
-  &__title {
-    display: block;
-    @extend .c-resource-group__title;
-  }
+}
+.c-resources--transparent {
+  background: transparent;
+}
+.c-resources__title {
+  display: block;
+  @extend .c-resource-group__title;
 }

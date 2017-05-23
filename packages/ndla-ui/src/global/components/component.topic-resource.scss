@@ -1,51 +1,50 @@
 .c-topic-resource {
-
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    @include mq($from: tablet) {
-      flex-direction: row;
-    }
+}
+.c-topic-resource__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include mq($from: tablet) {
+    flex-direction: row;
   }
-  &__body {
-    text-align: left;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      vertical-align: middle;
-  }
-  &__item {
-    max-width: 100%;
+}
+.c-topic-resource__body {
+  text-align: left;
     display: flex;
-    padding: $spacing--small;
-    margin-bottom: $spacing--small/2;
-    h1 a {
-      color: $brand-color;
-      box-shadow: none;
-    }
+    justify-content: center;
+    flex-direction: column;
+    vertical-align: middle;
+}
+.c-topic-resource__item {
+  max-width: 100%;
+  display: flex;
+  padding: $spacing--small;
+  margin-bottom: $spacing--small/2;
+  h1 a {
+    color: $brand-color;
+    box-shadow: none;
   }
-  &__icon {
-    display: inline-block;
-    width: 37px;
-    text-align: center;
-    box-sizing: border-box;
-    margin-right: $spacing--small*1.5;
-    svg {
-      width: 42px;
-      height: 42px;
-    }
+}
+.c-topic-resource__icon {
+  display: inline-block;
+  width: 37px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-right: $spacing--small*1.5;
+  svg {
+    width: 42px;
+    height: 42px;
   }
-  &__title {
-    @include inuit-font-size(20px);
-    text-transform: none;
-    letter-spacing: 0;
-    margin:0;
-  }
-  &__author {
-    display: inline-block;
-    color: $brand-grey;
-    float:right;
-    margin-top: $spacing--small;
-  }
+}
+.c-topic-resource__title {
+  @include inuit-font-size(20px);
+  text-transform: none;
+  letter-spacing: 0;
+  margin:0;
+}
+.c-topic-resource__author {
+  display: inline-block;
+  color: $brand-grey;
+  float:right;
+  margin-top: $spacing--small;
 }

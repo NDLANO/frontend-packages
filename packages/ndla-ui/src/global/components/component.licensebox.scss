@@ -1,32 +1,31 @@
 .c-licensebox {
   position: relative;
+}
 
-  .license-toggler {
-    @include mq(desktop) {
-      position: absolute;
-      top: 7px;
-      right: 19%;
-    }
+.license-toggler {
+  @include mq(desktop) {
+    position: absolute;
+    top: 7px;
+    right: 19%;
   }
-  .license__heading {
-    margin-top: $spacing;
-    margin-left: $spacing;
-    margin-right: $spacing;
-  }
-
-  .c-tabs__list {
-    border-bottom: 1px solid $brand-color--tertiary;
-  }
-  &--expanded {
-    background: $brand-color--lighter;
-  }
-  &__introduction {
-    max-width: 500px;
-    margin-left: $spacing;
-    margin-right: $spacing;
-  }
-  .react-tabs {
-    margin-left: $spacing;
-    margin-right: $spacing;
-  }
+}
+.license__heading {
+  margin-top: $spacing;
+  margin-left: $spacing;
+  margin-right: $spacing;
+}
+.c-tabs__list {
+  border-bottom: 1px solid $brand-color--tertiary;
+}
+.c-licensebox--expanded {
+  background: $brand-color--lighter;
+}
+.c-licensebox__introduction {
+  max-width: 500px;
+  margin-left: $spacing;
+  margin-right: $spacing;
+}
+.react-tabs {
+  margin-left: $spacing;
+  margin-right: $spacing;
 }

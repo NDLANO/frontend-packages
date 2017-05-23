@@ -4,51 +4,51 @@
   width: $spacing--small * 1.3;
   height: $spacing--small * 1.3;
   vertical-align: middle;
-  &--rotate {
-    transform: rotate(180deg);
-  }
+}
+.c-icon--rotate {
+  transform: rotate(180deg);
 }
 .c-icon--medium {
   width: $spacing;
   height: $spacing;
 }
 .c-license-icons {
-  &__list, &__list2 {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+}
+.c-license-icons__list, .c-license-icons__list2 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c-license-icons__licenselabel {
+  display:none;
+}
+
+.c-license-icons__item {
+  display: inline-block;
+  padding-bottom: 7px;
+
+  button {
+    vertical-align: top;
   }
 
-  &__licenselabel {
-    display:none;
-  }
-
-  &__item {
-    display: inline-block;
-    padding-bottom: 7px;
-
-    button {
-      vertical-align: top;
+  .c-license-icons--active {
+    circle {
+      fill: $brand-color;
     }
-
-    &--active {
-      circle {
-        fill: $brand-color;
-      }
-      path {
-        fill: $white;
-      }
+    path {
+      fill: $white;
     }
   }
+}
 
-  &__item + &__item {
-    margin-left: 0.2em;
-  }
+.c-license-icons__item + .c-license-icons__item {
+  margin-left: 0.2em;
+}
 
-  &__icon {
-    width: $spacing / 1.1;
-    height: $spacing / 1.1;
-  }
+.c-license-icons__icon {
+  width: $spacing / 1.1;
+  height: $spacing / 1.1;
 }
 
 .c-licenseToggle__details {

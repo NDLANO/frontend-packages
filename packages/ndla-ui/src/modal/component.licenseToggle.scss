@@ -1,22 +1,17 @@
-.c-licenseToggle {
-  &__details {
+.c-licenseToggle__ctablock {
+  background-color: $white;
+  padding: $spacing;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
 
+  @include mq(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  &__ctablock {
-    background-color: $white;
-    padding: $spacing;
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-self: flex-end;
-
-    @include mq(tablet) {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  }
-  &__button {
-    margin: 3% 0;
-  }
+}
+.c-licenseToggle__button {
+  margin: 3% 0;
 }

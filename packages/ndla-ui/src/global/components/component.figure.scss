@@ -12,21 +12,17 @@
 }
 
 .c-figure__caption {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  @include mq(tablet) {
-    flex-direction: row;
-  }
+  background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
+  @include mq($from: tablet) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
 }
-
 .c-figure__byline {
   padding-right: $spacing;
   text-align: left;
-  flex-basis: 33%;
-  flex-grow: 1;
-  flex-direction: column-reverse;
   .c-button--outline svg {  //remove
     display:none;
   }
@@ -94,7 +90,7 @@
   padding-bottom: $spacing--small/3;
 }
 
-.c-figure__captionbtn--active {
+.c-figure--active {
   margin-bottom: $spacing--large*2;
   @include font-size(16px);
   position: relative;
@@ -114,11 +110,6 @@
     }
   }
 
-  // @include mq(desktop) {
-    // margin: 37.14286px -33.3333% 52px!important;
-    // width: 166.6667%!important;
-    // justify-content: flex-start;
-  // }
   .c-figure__close {
     display: block;
     transform: translateY(-20px);
@@ -140,28 +131,26 @@
   .c-figure__byline-licenselist {
     max-width: 100%;
   }
-.c-license-icons__licenselabel {
-  padding-left: $spacing--small;
-  padding-right: $spacing;
-  display: inline-block;
-  max-width: 400px;
-}
-
-.c-licenseToggle__details {
-  &:before {
-    content: "Regler for bruk av bildet";
-    color: $brand-color;
-    font-weight: $font-weight-bold;
-    display: block;
+  .c-license-icons__licenselabel {
+    padding-left: $spacing--small;
+    padding-right: $spacing;
+    display: inline-block;
+    max-width: 400px;
   }
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 100%;
+
+  .c-licenseToggle__details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    &:before {
+      content: "Regler for bruk av bildet";
+      color: $brand-color;
+      font-weight: $font-weight-bold;
+      display: block;
+    }
   }
 }
-
-
 #figmeta {
 height: 0;
 overflow: hidden;

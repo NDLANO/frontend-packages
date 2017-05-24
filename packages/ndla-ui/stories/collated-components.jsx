@@ -8,6 +8,7 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 import { Center, DottedContainer } from './helpers';
 import {
   SiteNav, SiteNavItem, Button,
+  FilterList,
   Pager, Footer, LicenseIconList, LicenseByline, LicenseExample,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
@@ -188,32 +189,33 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Filter', () => (
     <Center>
-
       <article className="article">
         <h2 className="u-heading">Filter</h2>
         <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
-            <ul className="c-filter__list">
-              <li className="c-filter__label"><span className="c-filter__item-checkbox" /> FILTER:</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> 1T</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> R1</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> R2</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S1</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S2</li>
-            </ul>
+            <FilterList
+              filterContent={[
+              { title: '1T', activeClass: '' },
+              { title: 'R1', activeClass: '' },
+              { title: 'R2', activeClass: '' },
+              { title: 'S1', activeClass: '' },
+              { title: 'S1', activeClass: '' },
+              ]}
+            />
           </div>
         </LayoutItem>
         <h2 className="u-heading">Filter med valgte elementer</h2>
         <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
-            <ul className="c-filter__list">
-              <li className="c-filter__label">FILTER:</li>
-              <li className="c-filter__item c-filter__item--active"><span className="c-filter__item-checkbox" /> 1T</li>
-              <li className="c-filter__item c-filter__item--active"><span className="c-filter__item-checkbox" /> R1</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> R2</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S1</li>
-              <li className="c-filter__item"><span className="c-filter__item-checkbox" /> S2</li>
-            </ul>
+            <FilterList
+              filterContent={[
+              { title: '1T', activeClass: 'active' },
+              { title: 'R1', activeClass: 'active' },
+              { title: 'R2', activeClass: '' },
+              { title: 'S1', activeClass: '' },
+              { title: 'S1', activeClass: '' },
+              ]}
+            />
           </div>
         </LayoutItem>
       </article>

@@ -13,6 +13,7 @@ import Table from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
+import FilterList from './filter/FilterList';
 import Icon from './icons/Icon';
 import OneColumn from './layout/OneColumn';
 import LayoutItem from './layout/LayoutItem';
@@ -55,6 +56,7 @@ export {
   ClickToggle,
   Footer,
   Figure, FigureCaption, FigureDetails,
+  FilterList,
   Hero,
   Icon,
   LicenseByline,

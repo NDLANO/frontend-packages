@@ -71,6 +71,13 @@
   display: flex;
   box-shadow: 0 10px 20px rgba($black, 0.4);
   text-transform: none;
+
+  .c-filter__list {
+    display: none;
+    @include mq(desktop) {
+      display: inline-block;
+    }
+  }
 }
 
 .c-topic-menu__list {

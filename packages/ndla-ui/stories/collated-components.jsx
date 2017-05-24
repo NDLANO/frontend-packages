@@ -195,11 +195,11 @@ storiesOf('Sammensatte moduler', module)
           <div className="c-filter u-margin-top">
             <FilterList
               filterContent={[
-              { title: '1T', activeClass: '' },
-              { title: 'R1', activeClass: '' },
-              { title: 'R2', activeClass: '' },
-              { title: 'S1', activeClass: '' },
-              { title: 'S1', activeClass: '' },
+              { title: '1T', active: false },
+              { title: 'R1', active: false },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
               ]}
             />
           </div>
@@ -209,11 +209,11 @@ storiesOf('Sammensatte moduler', module)
           <div className="c-filter u-margin-top">
             <FilterList
               filterContent={[
-              { title: '1T', activeClass: 'active' },
-              { title: 'R1', activeClass: 'active' },
-              { title: 'R2', activeClass: '' },
-              { title: 'S1', activeClass: '' },
-              { title: 'S1', activeClass: '' },
+              { title: '1T', active: true },
+              { title: 'R1', active: true },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
               ]}
             />
           </div>

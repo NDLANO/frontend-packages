@@ -18,7 +18,7 @@ const filterClasses = new BEMHelper({
 const FilterList = ({ filterContent }) => (
   <ul {...filterClasses('list')}>
     <li {...filterClasses('label')}>FILTER:</li>
-    { filterContent ? filterContent.map(filterItem => <li {...filterClasses('item', filterItem.activeClass ? filterItem.activeClass : null)}><span {...filterClasses('item-checkbox')} /> { filterItem.title ? filterItem.title : null }</li>) : null}
+    { filterContent ? filterContent.map(filterItem => <li {...filterClasses('item', filterItem.active ? 'active' : null)}><span {...filterClasses('item-checkbox')} /> { filterItem.title ? filterItem.title : null }</li>) : null}
   </ul>
 );
 
@@ -26,7 +26,7 @@ FilterList.propTypes = {
   children: PropTypes.node,
   filterContent: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    activeClass: PropTypes.string.isRequired,
+    active: PropTypes.bool.isRequired,
   })),
 };
 

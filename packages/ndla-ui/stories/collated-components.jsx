@@ -8,13 +8,14 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 import { Center, DottedContainer } from './helpers';
 import {
   SiteNav, SiteNavItem, Button,
-  Pager, Footer, LicenseIconList, LicenseByline,
+  FilterList,
+  Pager, Footer, LicenseIconList, LicenseByline, LicenseExample,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
   ResourceWrapper, OneColumn, LayoutItem,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
-import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
+import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
 import { LicenseBox } from './article/LicenseExample';
@@ -55,7 +56,7 @@ storiesOf('Sammensatte moduler', module)
               </svg></div>
             <div className="c-collate__panel">
               <div className="o-layout">
-                <div className="o-layout__item u-1/2@desktop">
+                <div className="u-1/2@desktop">
                   <LicenseIconList licenseRights={[BY, SA]} />
                   <h4>Oppgaver til &laquo;Ansvar og regelverk. Ernæring&raquo; (Oppgave)</h4>
                   <ul>Forfatter
@@ -63,7 +64,7 @@ storiesOf('Sammensatte moduler', module)
                     <li>Marit Smith Sørhøy</li>
                   </ul>
                 </div>
-                <div className="o-layout__item u-1/2@desktop">
+                <div className="u-1/2@desktop">
                   <Tabs
                     tabs={[
                       { title: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
@@ -105,11 +106,6 @@ storiesOf('Sammensatte moduler', module)
   .add('Hovedhode', () => (
     <div>
       <MastheadLeftRight />
-    </div>
-  ))
-  .add('Hovedhode med logo og Sidenavigasjon', () => (
-    <div>
-      <Masthead />
     </div>
   ))
   .add('Hovedhode med emnemeny', () => (
@@ -193,32 +189,33 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Filter', () => (
     <Center>
-
       <article className="article">
         <h2 className="u-heading">Filter</h2>
         <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
-            <ul className="c-filter__list">
-              <li className="c-filter__label">FILTER:</li>
-              <li className="c-filter__item">1T</li>
-              <li className="c-filter__item">R1</li>
-              <li className="c-filter__item">R2</li>
-              <li className="c-filter__item">S1</li>
-              <li className="c-filter__item">S2</li>
-            </ul>
+            <FilterList
+              filterContent={[
+              { title: '1T', active: false },
+              { title: 'R1', active: false },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
+              ]}
+            />
           </div>
         </LayoutItem>
         <h2 className="u-heading">Filter med valgte elementer</h2>
         <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
-            <ul className="c-filter__list">
-              <li className="c-filter__label">FILTER:</li>
-              <li className="c-filter__item c-filter__item--active">1T</li>
-              <li className="c-filter__item c-filter__item--active">R1</li>
-              <li className="c-filter__item">R2</li>
-              <li className="c-filter__item">S1</li>
-              <li className="c-filter__item">S2</li>
-            </ul>
+            <FilterList
+              filterContent={[
+              { title: '1T', active: true },
+              { title: 'R1', active: true },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
+              ]}
+            />
           </div>
         </LayoutItem>
       </article>

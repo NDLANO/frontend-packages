@@ -12,16 +12,14 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
+import { FilterList } from '../';
 import Icon from '../icons/Icon';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
   prefix: 'c-',
 });
-const filterClasses = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
+
 
 export default class TopicMenu extends Component {
   constructor(props) {
@@ -62,14 +60,15 @@ export default class TopicMenu extends Component {
             </div>
             Søk
           </div>
-          <ul {...filterClasses('list')}>
-            <li {...filterClasses('label')}>FILTER:</li>
-            <li {...filterClasses('item')}>1T</li>
-            <li {...filterClasses('item')}>R1</li>
-            <li {...filterClasses('item')}>R2</li>
-            <li {...filterClasses('item')}>S1</li>
-            <li {...filterClasses('item')}>S2</li>
-          </ul>
+          <FilterList
+            filterContent={[
+            { title: '1T', active: true },
+            { title: 'R1', active: true },
+            { title: 'R2', active: false },
+            { title: 'S1', active: false },
+            { title: 'S1', active: false },
+            ]}
+          />
           <div {...classes('right-filler')} />
         </div>
         <ul {...classes('list', null, classes('left').className)}>

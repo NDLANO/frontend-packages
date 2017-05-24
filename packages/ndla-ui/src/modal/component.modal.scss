@@ -1,39 +1,39 @@
 .c-modal {
   box-shadow: 0 0 30px rgba($black, 0.9);
-  .c-figcaption__info {
-    @include max-width();
+}
+.c-figcaption__info {
+  @include max-width();
+}
+figcaption {
+  background: $white;
+}
+.c-modal__license {
+  background: $brand-grey--lighter;
+  border-bottom: 1px solid $brand-grey--light;
+  padding: $spacing--small $spacing 0;
+}
+.c-modal__details {
+  border-top: 1px solid $brand-grey--light;
+  background: $brand-grey--lightest;
+  padding: 0 $spacing 0;
+}
+.c-modal__ctablock {
+  border-top: 1px solid $brand-grey--light;
+  background: $brand-grey--lightest;
+}
+.c-modal__button {
+  @extend .c-button;
+  width: 96%;
+  @include mq(tablet) {
+    width: 46%;
   }
-  figcaption {
-    background: $white;
-  }
-  &__license {
-    background: $brand-grey--lighter;
-    border-bottom: 1px solid $brand-grey--light;
-    padding: $spacing--small $spacing 0;
-  }
-  &__details {
-    border-top: 1px solid $brand-grey--light;
-    background: $brand-grey--lightest;
-    padding: 0 $spacing 0;
-  }
-  &__ctablock {
-    border-top: 1px solid $brand-grey--light;
-    background: $brand-grey--lightest;
-  }
-  &__button {
-    @extend .c-button;
-    width: 96%;
-    @include mq(tablet) {
-      width: 46%;
-    }
+  margin:3% 2%;
+  &:hover {
     margin:3% 2%;
-    &:hover {
-      margin:3% 2%;
-    }
   }
-  &__button-icon {
-    margin-right: $spacing/4;
-  }
+}
+.c-modal__button-icon {
+  margin-right: $spacing/4;
 }
 
 
@@ -49,12 +49,12 @@
   will-change: opacity;
   background: rgba(0, 0, 0, 0.7) !important;
   overflow-y: auto;height: 100%;
-  &--after-open {
-    opacity: 1;
-  }
-  &--before-close {
-      opacity: 0;
-  }
+}
+.c-modal__overlay--after-open {
+  opacity: 1;
+}
+.c-modal__overlay--before-close {
+    opacity: 0;
 }
 .c-modal__overlay > div {
     opacity: 0;
@@ -65,12 +65,12 @@
   will-change: opacity;
   background: rgba(0, 0, 0, 0.7) !important;
   overflow-y: auto;height: 100%;
-  &--after-open {
-    opacity: 1;
-  }
-  &--before-close {
-      opacity: 0;
-  }
+}
+.c-modal__overlay .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+.c-modal__overlay .ReactModal__Overlay--before-close {
+    opacity: 0;
 }
 .c-modal__wrapper {
   transform:scale(.9);transition:transform .4s cubic-bezier(.51,.92,.24,1);z-index:1;will-change:transform;
@@ -84,13 +84,12 @@
   top: 0 !important;
   right: 0 !important;
   bottom: auto !important;
-
-  &--after-open {
-    transform:scale(1);
-  }
   figcaption {
     margin-bottom:0;
   }
+}
+.c-modal__wrapper--after-open {
+  transform:scale(1);
 }
 .ReactModal__Body--open {
   overflow-y: hidden;

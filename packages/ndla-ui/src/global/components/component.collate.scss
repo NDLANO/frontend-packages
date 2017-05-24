@@ -17,19 +17,19 @@
   padding: 0;
   background-color: $background-color--dark;
   height: 0;
-  &--expanded {
-    padding: $spacing / 2;
-    max-height: 100vh;
-    overflow: visible;
-    height: auto;
-    box-shadow: inset 1px 1px 5px $background-color--darker;
-
-    + .c-collate__article {
-      background: $background-color--darker;
-    }
-  }
-
 }
+.c-collate__panel--expanded {
+  padding: $spacing / 2;
+  max-height: 100vh;
+  overflow: visible;
+  height: auto;
+  box-shadow: inset 1px 1px 5px $background-color--darker;
+
+  + .c-collate__article {
+    background: $background-color--darker;
+  }
+}
+
 .c-collate__info {
   opacity: 0.5;
   position: absolute;

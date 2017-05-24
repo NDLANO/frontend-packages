@@ -20,34 +20,35 @@ h1, h2, h3, h4, h5 {
   margin: $spacing 0 $spacing 0;
   line-height: 1.3;
 }
-h1 + .c-article__byline {
-  margin-top: -$spacing / 2;
-}
-h2 {
-  line-height: 1;
-  @include mq(desktop) {
-    line-height: 1.5;
-  }
-}
-
-article {
-  h1 {
-    display: table; /* inline block, but with newline for non-blocking sibling element */
-    position: relative;
-  }
-}
 
 h1 {
   font-weight: $font-weight-semibold;
   @include inuit-font-size(38px, 45px);
 }
+
+h2 {
+  line-height: 1;
+  @include inuit-font-size(22px, 30px);
+  @include mq(desktop) {
+    line-height: 1.5;
+  }
+}
+
+h3 {
+  @include inuit-font-size(20px, 30px);
+}
+
 h2, h3 {
   margin-top: $spacing * 2;
   margin-bottom: $spacing / 2;
 }
-h2 {
-  @include inuit-font-size(22px, 30px);
+
+article {
+  h1 {
+    position: relative;
+  }
 }
-h3 {
-  @include inuit-font-size(20px, 30px);
-}
+h2 a, h3 a, h4 a {
+    color: $brand-color;
+    font-size: 80%;
+  }

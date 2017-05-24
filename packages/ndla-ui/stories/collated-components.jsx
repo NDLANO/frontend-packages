@@ -18,7 +18,7 @@ import articles, { topicList, subjectList } from '../dummydata/index';
 import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
-import LicenseExample, { LicenseBox } from './article/LicenseExample';
+import { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');

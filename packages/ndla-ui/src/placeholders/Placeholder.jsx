@@ -7,7 +7,7 @@ const Placeholder = ({ children, ...rest }) => (
   </div>
 );
 
-Placeholder.PropTypes = {
+Placeholder.propTypes = {
   children: PropTypes.node,
 };
 

@@ -76,7 +76,48 @@ const ExamplePage2 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-           test
+        <LayoutItem layout="extended">
+          <ResourceSubsetList />
+        </LayoutItem>
+      </LayoutItem>
+    </article>
+  </OneColumn>
+);
+
+const ExamplePageImages = () => (
+  <OneColumn cssModifier="narrow">
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <h1 className="c-article__title">Test av bildeflyt</h1>
+        <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+           å produsere filmen.
+        </p>
+        <div className="c-article__byline">
+          <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+        </div>
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+          din og bestemmer seg for å bruke ressurser på nettopp dette
+        prosjektet.</p>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+        få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
+        <FigureWithLicense>
+          <img alt="person med mange armer som gjør forskjellige ting samtidig. Foto." src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg" />
+        </FigureWithLicense>
+        <p>En pitch er en kortvarig framføring av en idé for en potensiell
+           samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å tenne på idéen din og se potensialet i den.</p>
+        <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+           pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med
+             i klassen.</p>
         <LayoutItem layout="extended">
           <ResourceSubsetList />
         </LayoutItem>
@@ -379,14 +420,8 @@ const ResourcesSubTopics = () => (
     <article className="c-article">
       <LayoutItem layout="center">
         <ResourceWrapper>
-          <Tabs
-            tabs={[
-              { title: 'Emner',
-                content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
-              },
-              { title: 'Ressurser', content: <ResourceSubsetList /> },
-            ]}
-          />
+          <h1 className="c-resources__title">Emner</h1>
+          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
         </ResourceWrapper>
       </LayoutItem>
     </article>
@@ -442,15 +477,8 @@ storiesOf('Sidevisninger', module)
       <ArticleLoader isTopicArticle articleId="208" />
       <OneColumn>
         <ResourceWrapper>
-          <Tabs
-            tabs={[
-              {
-                title: 'Emner',
-                content: <TopicIntroductionList toTopic={() => '#'} topics={topicList} />,
-              },
-              { title: 'Ressurser', content: <ResourceSubsetList /> },
-            ]}
-          />
+          <h1 className="c-resources__title">Emner</h1>
+          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
         </ResourceWrapper>
       </OneColumn>
       <FooterExample />
@@ -463,6 +491,14 @@ storiesOf('Artikkelmaler', module)
         <MastheadWithTopicMenu />
         <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
         <ArticleLoader articleId="208" />
+        <FooterExample />
+      </PageContainer>
+    ))
+    .add('Artikkel med bildeflyt', () => (
+      <PageContainer>
+        <MastheadWithTopicMenu />
+        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <ExamplePageImages />
         <FooterExample />
       </PageContainer>
     ))

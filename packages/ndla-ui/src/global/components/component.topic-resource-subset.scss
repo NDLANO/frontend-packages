@@ -1,47 +1,44 @@
 .c-topic-resource-subset {
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
-  }
-
-  @include mq($from: desktop) {
     margin-top: $spacing--large;
   }
-  &__list {
-    text-align: center;
-  }
-  &__heading {
-    display: inline-block;
-    @include inuit-font-size(18px);
-    text-transform: uppercase;
-    font-weight: $font-weight-bold;
-    letter-spacing: 0.1em;
-    margin-bottom: 0;
-  }
-  &__lead {
-    @include inuit-font-size(18px);
-    display: inline-block;
-    font-weight: $font-weight-light;
-    font-family: $font;
-    margin: 0 0 0 $spacing;
-    padding-bottom: $spacing--small;
-    transition: $transition;
-  }
-  &__underline {
-    display: block;
-    border-bottom: 2px solid $brand-grey--light;
-  }
-  &__readmore {
-    @extend .c-button;
-    @extend .c-button--outline;
-    display: inline-block;
-    margin: $spacing--small auto;
-    @include inuit-font-size(16px);
-    font-family: $font;
-  }
-  &--focus {
-    .c-topic-resource-subset__lead {
-      border-color: $brand-color;
-    }
+}
+.c-topic-resource-subset__list {
+  text-align: center;
+}
+.c-topic-resource-subset__heading {
+  display: inline-block;
+  @include inuit-font-size(18px);
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
+}
+.c-topic-resource-subset__lead {
+  @include inuit-font-size(18px);
+  display: inline-block;
+  font-weight: $font-weight-light;
+  font-family: $font;
+  margin: 0 0 0 $spacing;
+  padding-bottom: $spacing--small;
+  transition: $transition;
+}
+.c-topic-resource-subset__underline {
+  display: block;
+  border-bottom: 2px solid $brand-grey--light;
+}
+.c-topic-resource-subset__readmore {
+  @extend .c-button;
+  @extend .c-button--outline;
+  display: inline-block;
+  margin: $spacing--small auto;
+  @include inuit-font-size(16px);
+  font-family: $font;
+}
+.c-topic-resource-subset--focus {
+  .c-topic-resource-subset__lead {
+    border-color: $brand-color;
   }
 }
 
@@ -63,4 +60,19 @@
       background-color: $green;
       svg { fill: $white; }
     }
+}
+
+
+.c-topic-resource-subset__header {
+  margin: 1em 0 0.5em 0;
+  font-size: 1.4em;
+  border-bottom: 1px solid #045A91;
+  padding-bottom: 0.2em
+}
+
+.c-topic-resource-subset__all-link {
+  color: #045A91;
+  &:active, &:visited, &:hover, &:focus {
+    color: #045A91;
+  }
 }

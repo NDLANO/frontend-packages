@@ -28,12 +28,16 @@ export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
     <button {...classes('close')}>Lukk</button>
     <div className="u-expanded">
       <div className="c-licenseToggle__details">
+        <h3 className="c-licenseToggle__title">Regler for bruk av bildet</h3>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)} />
-        <ul {...classes('list')}>
-          { authors.map(author => <li key={uuid()} className="o-list__item">{ `${author.type}: ${author.name}`}</li>) }
-        </ul>
+        <div className="c-licenseToggle__ctaWrapper">
+          <h3 className="c-licenseToggle__title">Slik skal du referere til dette bildet</h3>
+          <ul {...classes('list')}>
+            { authors.map(author => <li key={uuid()} className="o-list__item">{ `${author.type}: ${author.name}`}</li>) }
+          </ul>
+          { children ? <div className="c-licenseToggle__ctablock"> {children} </div> : null }
+        </div>
       </div>
-      { children ? <div className="c-licenseToggle__ctablock"> {children} </div> : null }
     </div>
   </div>
 );
@@ -49,7 +53,7 @@ FigureDetails.propTypes = {
 
 export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviation }) => (
   <figcaption {...classes('caption')}>
-    {caption ? <div className="c-figcaption__info">${caption}</div> : null}
+    {caption ? <div className="c-figure__info">${caption}</div> : null}
     <div {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>

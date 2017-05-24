@@ -42,12 +42,11 @@ const LicenseIconItem = ({ licenseRight, activeLicenseRight, onLicenseIconClick 
         <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
           <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
         </Button>
-        { licenseRight.description }
       </div>
       :
       <div>
         <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-        { licenseRight.description }
+        <span className="c-license-icons__licenselabel">{ getLicenseRightByAbbreviation(licenseRight).description }</span>
       </div>
     }
   </li>

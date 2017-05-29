@@ -120,6 +120,8 @@
   padding: $spacing--large;
   padding-top: 130px;
   background-color: $brand-color--tertiary;
+  animation-name: fadeInTop;
+  animation-duration: .2s;
 }
 
 .c-topic-menu__topic-item {

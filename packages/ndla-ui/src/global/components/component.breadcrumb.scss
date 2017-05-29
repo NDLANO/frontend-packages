@@ -6,7 +6,7 @@
   font-weight: $font-weight-bold;
 
   a:hover {
-    color: $brand-color;
+    color: $brand-color--light;
   }
 
   @include mq(tablet) {

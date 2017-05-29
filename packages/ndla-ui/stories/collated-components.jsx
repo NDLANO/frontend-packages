@@ -178,12 +178,14 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <h2 className="u-heading">Lisensboks</h2>
       <article className="article">
-        <div className="license c-licensebox c-licensebox--expanded">
-          <Button stripped className="license-toggler" onClick={() => {}} >
-            Lukk boks
-          </Button>
-          <LicenseBox />
-        </div>
+        <LayoutItem layout="center">
+          <div className="license c-licensebox c-licensebox--expanded">
+            <Button stripped className="license-toggler" onClick={() => {}} >
+              Lukk boks
+            </Button>
+            <LicenseBox />
+          </div>
+        </LayoutItem>
       </article>
     </Center>
   ))

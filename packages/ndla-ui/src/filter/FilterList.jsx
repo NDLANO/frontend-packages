@@ -19,12 +19,13 @@ const FilterList = ({ filterContent }) => (
   <div {...filterClasses('list')}>
     <span {...filterClasses('label')}>FILTER:</span>
     { filterContent ? filterContent.map(filterItem =>
-      <div {...filterClasses('item', filterItem.active ? 'active' : null)}>
+      <div {...filterClasses('item')}>
         <input
           type="checkbox"
           name="gruppe"
           id={filterItem.title ? filterItem.title : null}
           value={filterItem.title ? filterItem.title : null}
+          defaultChecked={filterItem.active ? 'true' : null}
         />
         <label
           htmlFor={filterItem.title ? filterItem.title : null}

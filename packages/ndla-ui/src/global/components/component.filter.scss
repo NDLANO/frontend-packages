@@ -55,9 +55,9 @@
   width: 20px;
   height: 20px;
   padding: 0;
+  background: transparent;
   border: 2px solid $brand-grey--light;
   margin: -4px 3px;
-  transition: border .2s, background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89);
 
   &:before {
     content: "";

@@ -195,7 +195,7 @@ storiesOf('Sammensatte moduler', module)
           <div className="c-filter u-margin-top">
             <FilterList
               filterContent={[
-              { title: '1T', active: false },
+              { title: '1T', active: true },
               { title: 'R1', active: false },
               { title: 'R2', active: false },
               { title: 'S1', active: false },

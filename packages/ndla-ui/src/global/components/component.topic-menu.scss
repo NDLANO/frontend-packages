@@ -1,4 +1,3 @@
-
 .c-topic-menu-container {
   @include mq(desktop) {
     display: inline-block;
@@ -34,9 +33,11 @@
     }
   }
   &:active, &:focus {
-    border: 3px solid $brand-color;
-    &:before {
-      @include svg_icon('menu', $white);
+    border: 3px solid $brand-color--lighter;
+    background: $white;
+    color: $brand-color;
+    &:hover:before {
+      @include svg_icon('menu', $brand-color);
     }
   }
 }
@@ -49,6 +50,9 @@
   &:hover {
     color: $brand-color;
     text-decoration: underline;
+    &:before {
+      @include svg_icon('close', $brand-color);
+    }
   }
   &:before {
     @include svg_icon('close', $brand-color);
@@ -65,7 +69,6 @@
   max-width: 100%;
   height: 100%;
   padding: 0;
-  // margin-top: 14px;
   background: $brand-color--lighter;
   min-height: 250px;
   text-align: left;
@@ -88,52 +91,70 @@
 }
 
 .c-topic-menu__list {
-  // padding: $spacing 0;
   padding: 0;
   list-style: none;
   margin: 0;
   overflow-y: auto;
   max-height: 87%;
   @include fadeInLeftItems(li, 30);
-
 }
 
 .c-topic-menu__left {
+  flex: 1;
+  margin-top: 100px;
+  z-index: 30;
+  animation-name: fadeInLeft;
+  animation-duration: .2s;
   @include mq(tablet) {
+    margin-top: 0;
+    padding-top: 130px;
+  }
+  @include mq(desktop) {
     flex: 1;
     max-width: 30%;
     padding-top: 130px;
   }
+}
+.c-topic-menu__right {
   z-index: 30;
-  animation-name: fadeInLeft;
+  background-color: $brand-color--tertiary;
+  animation-name: fadeInTop;
   animation-duration: .2s;
-
+  padding: $spacing $spacing--small $spacing--small;
+  @include mq(tablet) {
+    padding-top: 130px;
+    padding-left: $spacing--large;
+    padding-right: $spacing--large;
+  }
+  @include mq(desktop) {
+    flex: 2;
+  }
 }
 
 .c-topic-menu__subject {
-  margin-left: $spacing--large;
-  padding-bottom: $spacing;
-  margin-bottom: $spacing--small;
+  @include inuit-font-size(20px);
+  font-weight: 600;
   border-bottom: 1px solid rgba($brand-color, .3);
-  @include inuit-font-size(26px);
+  margin-left: $spacing--small;
+  padding-bottom: $spacing--small;
+  @include mq(tablet) {
+    padding-bottom: $spacing;
+    margin-bottom: $spacing--small;
+    margin-left: $spacing--large;
+    @include inuit-font-size(26px);
+  }
   a {
     text-decoration: none;
   }
 }
 
-.c-topic-menu__right {
-  flex: 2;
-  z-index: 30;
-  padding: $spacing--large;
-  padding-top: 130px;
-  background-color: $brand-color--tertiary;
-  animation-name: fadeInTop;
-  animation-duration: .2s;
-}
 
 .c-topic-menu__topic-item {
-  margin-left: $spacing--large;
-  padding: $spacing--small 0;
+  padding: $spacing--small;
+  @include mq(tablet) {
+    margin-left: $spacing--large;
+    padding: $spacing--small 0;
+  }
   transition: all .1s ease-in-out;
   animation-name: fadeInLeft;
   animation-duration: .5s;
@@ -172,7 +193,6 @@
 
 .c-topic-menu__masthead {
   position: absolute;
-  left: 30%;
   height: 85px;
   width: 100%;
   background: white;
@@ -182,13 +202,19 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: space-between;
+  @include mq(tablet) {
+    left: 30%;
+  }
 }
 .c-topic-menu__search {
+  display:none;
+  @include mq(tablet) {
+    display: inline-block;
+  }
   width: 200px;
   text-align: center;
   color: $brand-color;
   padding: 0 $spacing--large;
-  display: inline-block;
   text-transform: uppercase;
   padding-top: 2px;
   cursor: pointer;

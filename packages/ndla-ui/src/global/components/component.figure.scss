@@ -15,10 +15,6 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-
-  @include mq(tablet) {
-    flex-direction: row;
-  }
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
   display: flex;
@@ -30,8 +26,7 @@
 .c-figure__byline {
   padding-right: $spacing;
   text-align: left;
-  flex-basis: 33%;
-  flex-grow: 1;
+  flex-basis: 22%;
   flex-direction: column-reverse;
 
   .c-button--outline svg {  //remove
@@ -43,10 +38,11 @@
   @include mq($from: tablet) {
     max-width: 60%;
   }
+  margin-bottom: $spacing--small;
 }
 
 .c-figure__byline-licenselist {
-  margin: -$spacing--small/2 0 $spacing--small/2;
+  margin: -$spacing--small/2 0 0 0;
   text-align: center;
   max-width: 130px;
 }

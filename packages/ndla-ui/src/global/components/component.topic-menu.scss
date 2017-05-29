@@ -141,13 +141,13 @@
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
   }
-  .c-topic-menu--active {
-    background-color: $brand-color--tertiary;
-    padding-left: $spacing--small;
-  }
   &:last-child {
     border: none;
   }
+}
+.c-topic-menu__topic-item--active {
+  background-color: $brand-color--tertiary;
+  padding-left: $spacing--small;
 }
 
 .c-topic-menu__subtopic-item {

@@ -141,7 +141,7 @@ storiesOf('Enkle komponenter', module)
             </thead>
             <tbody>
               {
-                Object.keys(Icon).map(key => (
+                Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
                   <tr key={key}>
                     <td>{createElement(Icon[key])}</td>
                     <td>{key}</td>

@@ -20,6 +20,7 @@ storiesOf('Konsepter', module)
         </section>
         <section>
           <ul>Innholdskategorier for lærestoff
+            <li>Emnebeskrivelse</li>
             <li>Fagstoff (Fagtekster, Bilder, Video, Historiske kilder, …)</li>
             <li>Læringsstier</li>
             <li>Oppgaver og aktiviteter</li>

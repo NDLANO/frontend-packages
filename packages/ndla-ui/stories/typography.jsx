@@ -86,7 +86,7 @@ storiesOf('Typografi', module)
               <li style={{ fontWeight: 600 }}>Overskrifter: Source Sans Pro, 600</li>
               <li style={{ fontWeight: 700 }}>Mellom-overskrifter: Source Sans Pro, 700</li>
               <li style={{ fontWeight: 300 }}>Ingress: Source Sans Pro, 300</li>
-              <li className="u-serif"  >Brødtekst: Source Serif Pro, 400 inkludert <em>kursiv</em></li>
+              <li className="u-serif" >Brødtekst: Source Serif Pro, 400 inkludert <em>kursiv</em></li>
               <li>Hjelpetekster: Source Sans Pro, 400 inkludert <em>kursiv</em></li>
             </ul>
             <p>Tilbakefallsfonter er <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og <span style={{ fontFamily: 'Arial' }}>Arial</span></p>

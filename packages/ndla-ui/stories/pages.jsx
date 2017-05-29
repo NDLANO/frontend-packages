@@ -2,8 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
 
-import Tabs from 'ndla-tabs';
-
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 

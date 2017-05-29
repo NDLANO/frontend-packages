@@ -449,7 +449,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage with licensebox', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero white />
+      <Hero />
       <ArticleLoader articleId="44" withLicenseExample />
       <FooterExample />
     </PageContainer>
@@ -457,7 +457,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage loader', () => (
     <PageContainer>
       <Masthead />
-      <Hero white />
+      <Hero />
       <ArticleLoader />
       <FooterExample />
     </PageContainer>
@@ -465,7 +465,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero white />
+      <Hero />
       <ArticleLoader articleId="34" />
       <FooterExample />
     </PageContainer>

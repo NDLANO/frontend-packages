@@ -3,19 +3,24 @@
 }
 
 .license-toggler {
-  @include mq(desktop) {
-    position: absolute;
-    top: 7px;
-    right: 19%;
-  }
+  display: block;
+  text-transform: uppercase;
+  @include inuit-font-size(14px);
+  margin: 0 0 0 auto;
 }
 .license__heading {
   margin-left: $spacing;
   margin-right: $spacing;
+  @include mq($from: desktop) {
+    margin-left: 0;
+  }
 }
 
 .c-licensebox--expanded {
   background: $brand-color--lighter;
+  @include mq($from: desktop) {
+    @include grids-expand(4,6,2);
+  }
 }
 
 .license__list-item {

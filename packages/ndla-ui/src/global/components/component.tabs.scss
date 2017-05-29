@@ -2,6 +2,9 @@ $tabs-spacing: 12px;
 .c-tabs {
   margin-left: $spacing;
   margin-right: $spacing;
+  @include mq($from: desktop) {
+    margin-left: 0;
+  }
 }
 .c-tabs__tab {
   display: inline-block;

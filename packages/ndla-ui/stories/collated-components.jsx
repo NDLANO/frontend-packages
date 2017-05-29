@@ -9,7 +9,7 @@ import { Center, DottedContainer } from './helpers';
 import {
   SiteNav, SiteNavItem, Button,
   FilterList,
-  Pager, Footer, LicenseIconList, LicenseByline, LicenseExample,
+  Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
   ResourceWrapper, OneColumn, LayoutItem,
@@ -18,7 +18,7 @@ import articles, { topicList, subjectList } from '../dummydata/index';
 import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
-import { LicenseBox } from './article/LicenseExample';
+import LicenseExample, { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');

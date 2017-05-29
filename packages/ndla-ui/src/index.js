@@ -13,8 +13,10 @@ import Table from './table/Table';
 import Pager from './pager/Pager';
 import { Masthead, MastheadItem } from './masthead/Masthead';
 import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
+import FilterList from './filter/FilterList';
 import Icon from './icons/Icon';
 import OneColumn from './layout/OneColumn';
+import LayoutItem from './layout/LayoutItem';
 import PageContainer from './layout/PageContainer';
 import { Hero } from './hero/Hero';
 import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
@@ -32,6 +34,7 @@ import TopicArticle from './topic/TopicArticle';
 import TopicBreadcrumb from './topic/TopicBreadcrumb';
 import TopicIntroductionList from './topic/TopicIntroductionList';
 import TopicMenu from './topicMenu/TopicMenu';
+import Placeholder from './placeholders/Placeholder';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
@@ -54,6 +57,7 @@ export {
   ClickToggle,
   Footer,
   Figure, FigureCaption, FigureDetails,
+  FilterList,
   Hero,
   Icon,
   LicenseByline,
@@ -63,8 +67,10 @@ export {
   MastheadItem,
   MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
   OneColumn,
+  LayoutItem,
   PageContainer,
   Pager,
+  Placeholder,
   ResourceWrapper,
   ResourceList,
   ResourceSubsetList,

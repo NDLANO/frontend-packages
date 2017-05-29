@@ -23,33 +23,25 @@
     padding: $spacing/3;
   }
   th, tbody td:before {
-    color: $brand-color;
     font-weight: $font-weight-bold;
-    font-size: 90%;
     text-transform: uppercase;
     padding: 4px 10px 4px 4px;
   }
   th {
     border-bottom: 3px solid $brand-color--lighter;
-    background-color: $brand-color--lighter;
+    background-color: $white;
     padding: $spacing--small;
   }
   td {
     vertical-align: top;
-    border-top: 1px solid $brand-color--lighter;
-    border-bottom: 1px solid $brand-color--lighter;
 
     &:first-child {
-      border-top: 1px solid $brand-color--lighter;
-      border-bottom: 1px solid $brand-color--lighter;
       background-color: none;
       background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
       background-repeat: no-repeat;
       background-size: 25px 100%;
     }
     &:last-child {
-      border-top: 1px solid $brand-color--lighter;
-      border-bottom: 1px solid $brand-color--lighter;
       background-color: transparent;
       background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
       background-repeat: no-repeat;
@@ -90,22 +82,6 @@
   }
 
   //Hover border
-  tr:hover, tr:active, tr:focus {
-    td {
-      border-top: 1px solid $brand-color;
-      border-bottom: 1px solid $brand-color;
-
-      &:first-child {
-        border-top: 1px solid $brand-color;
-        border-bottom: 1px solid $brand-color;
-      }
-
-      &td:last-child {
-        border-top: 1px solid $brand-color;
-        border-bottom: 1px solid $brand-color;
-      }
-    }
-  }
 
   // Remove excess spacing on headings inside table
   h1,h2,h3,h4,h5 {

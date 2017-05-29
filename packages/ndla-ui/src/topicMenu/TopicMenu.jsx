@@ -12,11 +12,14 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
+import { FilterList } from '../';
+import Icon from '../icons/Icon';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
   prefix: 'c-',
 });
+
 
 export default class TopicMenu extends Component {
   constructor(props) {
@@ -27,8 +30,7 @@ export default class TopicMenu extends Component {
     };
 
     this.closeCallback = null;
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMouseClick = this.handleMouseClick.bind(this);
   }
 
   componentWillUnmount() {
@@ -37,7 +39,7 @@ export default class TopicMenu extends Component {
     }
   }
 
-  handleMouseOver(topicId) {
+  handleMouseClick(topicId) {
     if (this.closeCallback) {
       clearTimeout(this.closeCallback);
       this.closeCallback = null;
@@ -45,22 +47,37 @@ export default class TopicMenu extends Component {
     this.setState({ expandedTopicId: topicId });
   }
 
-  handleMouseLeave() {
-    this.closeCallback = setTimeout(() => {
-      this.setState({ expandedTopicId: undefined });
-    }, this.props.delay);
-  }
-
   render() {
-    const { topics, toTopic, close: closeMenu } = this.props;
+    const { topics, toTopic, subject, toSubject, close: closeMenu } = this.props;
     const { expandedTopicId } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
-      <div {...classes('dropdown', null, 'o-wrapper u-1/1')} onMouseLeave={this.handleMouseLeave}>
+      <div {...classes('dropdown', null, 'o-wrapper u-1/1')}>
+        <div {...classes('masthead')}>
+          <div {...classes('search')}>
+            <div {...classes('search-icon')}>
+              <Icon.Search />
+            </div>
+            Søk
+          </div>
+          <FilterList
+            filterContent={[
+            { title: '1T', active: true },
+            { title: 'R1', active: true },
+            { title: 'R2', active: false },
+            { title: 'S1', active: false },
+            { title: 'S1', active: false },
+            ]}
+          />
+          <div {...classes('right-filler')} />
+        </div>
         <ul {...classes('list', null, classes('left').className)}>
+          <li {...classes('subject')} >
+            <SafeLink to={toSubject}>{ subject }</SafeLink>
+          </li>
           { topics.map(topic =>
-            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onMouseOver={() => this.handleMouseOver(topic.id)} key={topic.id}>
-              <SafeLink {...classes('link')} onClick={closeMenu} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
+            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} key={topic.id}>
+              <SafeLink onClick={() => this.handleMouseClick(topic.id)} {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
             </li>),
           ) }
         </ul>
@@ -80,8 +97,11 @@ export default class TopicMenu extends Component {
 TopicMenu.propTypes = {
   topics: PropTypes.arrayOf(TopicShape).isRequired,
   toTopic: PropTypes.func.isRequired,
+  toSubject: PropTypes.string,
   close: PropTypes.func,
   delay: PropTypes.number,
+  subject: PropTypes.string,
+  subjectId: PropTypes.string,
 };
 
 TopicMenu.defaultProps = {

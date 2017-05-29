@@ -8,15 +8,17 @@ import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 import { Center, DottedContainer } from './helpers';
 import {
   SiteNav, SiteNavItem, Button,
+  FilterList,
   Pager, Footer, LicenseIconList, LicenseByline,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   ClickableLicenseByline,
+  ResourceWrapper, OneColumn, LayoutItem,
 } from '../src';
 import articles, { topicList, subjectList } from '../dummydata/index';
-import Masthead, { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
+import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
-import { LicenseBox } from './article/LicenseExample';
+import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
+import LicenseExample, { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -27,15 +29,15 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Sammensatte noder', () => (
     <Center>
-      <article className="o-wrapper--narrow">
+      <article>
         <section className="c-factbox">
           <h1 className="u-heading">Sammensatte moduler</h1>
         </section>
-        <section className="c-article-content">
-          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at «helsepersonell
+        <section className="o-wrapper--inner">
+          <p>Plikten til forsvarlighet i helsepersonelloven innebærer at &laquo;helsepersonell
             eller virksomheter som yter helsehjelp har et helhetlig ansvar for pasienten.
             Dette inkluderer ansvar for å gi adekvate medisinske, behandlingsmessige og <strong>ernæringsmessige</strong> tiltak, samt ansvar for å gi pasienten
-          god omsorg».</p>
+          god omsorg&raquo;.</p>
           <p>
             Ved internkontroll skal det sikres at tilbudet til pasientene er i samsvar
             med regelverket. Internkontroll skal bidra til faglig forsvarlige sosial- og helsetjenester,
@@ -54,7 +56,7 @@ storiesOf('Sammensatte moduler', module)
               </svg></div>
             <div className="c-collate__panel">
               <div className="o-layout">
-                <div className="o-layout__item u-1/2@desktop">
+                <div className="u-1/2@desktop">
                   <LicenseIconList licenseRights={[BY, SA]} />
                   <h4>Oppgaver til &laquo;Ansvar og regelverk. Ernæring&raquo; (Oppgave)</h4>
                   <ul>Forfatter
@@ -62,7 +64,7 @@ storiesOf('Sammensatte moduler', module)
                     <li>Marit Smith Sørhøy</li>
                   </ul>
                 </div>
-                <div className="o-layout__item u-1/2@desktop">
+                <div className="u-1/2@desktop">
                   <Tabs
                     tabs={[
                       { title: 'Brukeroppgave 1', content: <p>Brukeroppgave-innhold</p> },
@@ -106,11 +108,6 @@ storiesOf('Sammensatte moduler', module)
       <MastheadLeftRight />
     </div>
   ))
-  .add('Hovedhode med logo og Sidenavigasjon', () => (
-    <div>
-      <Masthead />
-    </div>
-  ))
   .add('Hovedhode med emnemeny', () => (
     <div>
       <MastheadWithTopicMenu />
@@ -147,24 +144,34 @@ storiesOf('Sammensatte moduler', module)
   .add('Lisens ikonstripe', () => (
     <Center>
       <h2 className="u-heading">Lisens ikon stripe</h2>
-      <LicenseIconList licenseRights={[BY, SA]} />
-      <LicenseIconList licenseRights={[BY, NC, SA]} />
-      <LicenseIconList licenseRights={[BY, NC, ND]} />
+      <div className="o-wrapper--inner">
+        <LicenseIconList licenseRights={[BY, SA]} />
+        <LicenseIconList licenseRights={[BY, NC, SA]} />
+        <LicenseIconList licenseRights={[BY, NC, ND]} />
+      </div>
       <h2 className="u-heading">Lisens ikon stripe med et fremhevet ikon</h2>
-      <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
-      <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
-      <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
+      <div className="o-wrapper--inner">
+        <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
+        <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
+        <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
+      </div>
       <h2 className="u-heading">Klikkbar lisens ikon stripe</h2>
-      <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
+      <div className="o-wrapper--inner">
+        <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
+      </div>
     </Center>
   ))
   .add('Lisens byline', () => (
     <Center>
       <h2 className="u-heading">Lisens byline</h2>
-      <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
-      <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      <div className="o-wrapper--inner">
+        <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
+        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      </div>
       <h2 className="u-heading">Klikkbar lisens byline</h2>
-      <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      <div className="o-wrapper--inner">
+        <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+      </div>
     </Center>
   ))
   .add('Lisensboks', () => (
@@ -180,53 +187,91 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
+  .add('Filter', () => (
+    <Center>
+      <article className="article">
+        <h2 className="u-heading">Filter</h2>
+        <LayoutItem layout="center">
+          <div className="c-filter u-margin-top">
+            <FilterList
+              filterContent={[
+              { title: '1T', active: false },
+              { title: 'R1', active: false },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
+              ]}
+            />
+          </div>
+        </LayoutItem>
+        <h2 className="u-heading">Filter med valgte elementer</h2>
+        <LayoutItem layout="center">
+          <div className="c-filter u-margin-top">
+            <FilterList
+              filterContent={[
+              { title: '1T', active: true },
+              { title: 'R1', active: true },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
+              ]}
+            />
+          </div>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
   .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
-      <Tabs />
+      <div className="o-wrapper--inner">
+        <p>Klikk på fane-tittel for å vise innhold.</p>
+        <Tabs />
+      </div>
       <h2 className="u-heading">Kontrollerte faner</h2>
-      <TabsControlled />
+      <div className="o-wrapper--inner">
+        <p>Disse fanene kan også kontrolleres med frittstående knapper plassert innenfor fanene.</p>
+        <TabsControlled />
+      </div>
     </Center>
   ))
   .add('Emne artikkel', () => (
     <Center>
-      <article className="o-wrapper--narrow">
-        <TopicArticle
-          article={articles.topicArticle}
-          openTitle="Les mer om dette emnet"
-          closeTitle={<span>Skjul emnebeskrivelse</span>}
-        />
-      </article>
+      <OneColumn cssModifier="narrow">
+        <article className="c-article c-article--clean">
+          <LayoutItem layout="center">
+            <TopicArticle
+              article={articles.topicArticle}
+            />
+          </LayoutItem>
+        </article>
+      </OneColumn>
     </Center>
   ))
   .add('Emner liste', () => (
     <Center>
       <h2 className="u-heading">Emneliste</h2>
-      <article className="o-wrapper--narrow">
-        <div className="c-resources">
-          <section>
-            <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-          </section>
-        </div>
-      </article>
+      <div className="c-resources">
+        <LayoutItem layout="center">
+          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+        </LayoutItem>
+      </div>
     </Center>
   ))
   .add('Liste med en type læringsressurs', () => (
     <Center>
       <h2 className="u-heading">Læringsstier eksempel</h2>
-      <article className="o-wrapper--narrow">
+      <div className="o-wrapper--inner">
         <div className="c-resources">
-          <section>
-            <LearningPathResourceList />
-          </section>
+          <LearningPathResourceList />
         </div>
-      </article>
-      <h2 className="u-heading">Fagstoff eksempel</h2>
+      </div>
+      <h2 className="u-heading">Lærestoff eksempel</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <section>
+          <LayoutItem layout="center">
             <ArticleResourceList />
-          </section>
+          </LayoutItem>
         </div>
       </article>
     </Center>
@@ -236,18 +281,43 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Ulike læringsressurser</h2>
       <article className="o-wrapper--narrow">
         <div className="c-resources">
-          <section>
+          <LayoutItem layout="center">
             <ResourceSubsetList />
-          </section>
+          </LayoutItem>
         </div>
       </article>
     </Center>
   ))
   .add('Brødsmulesti', () => (
     <Center>
-      <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'}>
-        <strong>Du er her:</strong>
-      </TopicBreadcrumb>
+      <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+    </Center>
+  ))
+  .add('Læringsressurspanel for emneside', () => (
+    <Center>
+      <ResourceWrapper>
+        <Tabs
+          selectedIndex={1}
+          tabs={[
+            { title: 'Emner',
+              content: <TopicIntroductionList toTopic={() => '#'} goToTopicTitle="Gå til emnet" toTopicResources={() => '#'} goToTopicResourcesTitle="Se fagstoff" topics={topicList} />,
+            },
+            { title: 'Fagstoff', content: <ResourceTabs /> },
+          ]}
+        />
+      </ResourceWrapper>
+    </Center>
+  ))
+  .add('Ekspanderbar lisensboks', () => (
+    <Center>
+      <h2 className="u-heading">Ekspanderbar lisensboks</h2>
+      <article className="article">
+        <LicenseExample />
+      </article>
+      <h2 className="u-heading">Ekspanderbar lisensboks med byline</h2>
+      <article className="article">
+        <LicenseExample showByline />
+      </article>
     </Center>
   ))
   ;

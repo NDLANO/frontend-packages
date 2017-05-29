@@ -2,3 +2,16 @@ details {
   cursor: pointer;
   cursor: hand;
 }
+details[open] {
+  background: $brand-grey--lightest;
+  border: 1px solid $brand-grey;
+  padding: $spacing;
+}
+details + details {
+  margin-top: $spacing !important;
+}
+summary {
+  &:focus {
+    outline: none;
+  }
+}

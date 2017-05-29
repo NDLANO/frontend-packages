@@ -1,0 +1,26 @@
+$numerator: auto;
+$denominator: auto;
+
+// Calculate widths for grids mixin
+@mixin grids($numerator, $denominator) {
+    width: ($numerator / $denominator) * 100% !important;
+}
+
+// Push item
+@mixin grids-push($numerator, $denominator) {
+  position: relative !important;
+  right: auto !important;
+  left: ($numerator / $denominator) * 100% !important;
+}
+
+// Expand item
+@mixin grids-expand($numerator, $denominator, $expand) {
+  $unit: $numerator / $denominator * 100%;
+  $width: ($numerator / $denominator) * 100%;
+  position: relative !important;
+  right: auto !important;
+  left: -($denominator - $numerator - $expand/2 ) / $denominator * 100% !important;
+  width: $width + $unit !important;
+  padding-left: $spacing;
+  padding-right: $spacing;
+}

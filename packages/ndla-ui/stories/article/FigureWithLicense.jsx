@@ -6,14 +6,15 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
-  addCloseFigureDetailsClickListners,
+  // addCloseFigureDetailsClickListners,
   addShowFigureDetailsClickListners,
   makeFigureLicenseIconsClickable,
 } from 'ndla-article-scripts';
 
-import { Icon, Figure, FigureCaption, FigureDetails } from '../../src';
+import { Figure, FigureCaption, FigureDetails } from '../../src';
 
 
 const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
@@ -28,6 +29,16 @@ const authors = [
 class FigureWithLicense extends Component {
 
   componentDidMount() {
+    const addCloseFigureDetailsClickListners = () => {
+      document.querySelectorAll('.c-figure .c-figure__close').forEach((el) => {
+        const target = el;
+        target.onclick = () => {
+          // removeElementById('c-license-icon-description');
+          target.parentNode.parentNode.classList.remove('c-figure--active');
+          target.parentNode.parentNode.querySelector('figcaption').classList.remove('u-hidden');
+        };
+      });
+    };
     addShowFigureDetailsClickListners();
     addCloseFigureDetailsClickListners();
     makeFigureLicenseIconsClickable();
@@ -41,9 +52,8 @@ class FigureWithLicense extends Component {
         </div>
         <FigureCaption caption={caption} reuseLabel="Gjenbruk" licenseAbbreviation="by-nc-nd" authors={authors} />
         <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
-          <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Copy /> Kopier referanse</button>
-          <button className="c-button c-button--small c-button--transparent c-licenseToggle__button" type="button"><Icon.Link /> Gå til kilde</button>
-          <button className="c-button c-licenseToggle__button" type="button"><Icon.OpenWindow /> Vis bilde</button>
+          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
         </FigureDetails>
       </Figure>
     );

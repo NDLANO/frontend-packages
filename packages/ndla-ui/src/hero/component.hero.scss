@@ -1,54 +1,55 @@
 .c-hero {
   background-position: center;
   background-size: cover;
-  @include mq(tablet) {
-    min-height: 500px;
-  }
-  &__title {
-    margin: 0;
-  }
-  &__content {
-    position: relative;
-    color: $white;
-    padding: 3% 0;
-    z-index: 9;
 
-    *,a:not([class]) {
-      color: $white;
-    }
-    a:hover {
-      color: $white;
-      text-decoration: none;
-    }
+  @include mq(tablet) {
+    min-height: 250px;
   }
-  &--alt {
-    background-repeat: repeat;
-    background-size: 20px;
-    background-color: $brand-color;
-    @include mq(tablet) {
-      min-height: 170px;
-    }
+}
+.c-hero__title {
+  margin: 0;
+  font-weight: $font-weight-normal;
+  display: flex;
+  vertical-align: middle;
+}
+.c-hero__content {
+  color: $white;
+  padding: 5% 0;
+  z-index: 9;
+
+
+  *,a:not([class]) {
+    color: $brand-grey-dark;
   }
-  &--small {
-    position: relative;
-    @include mq(tablet) {
-      min-height: 170px;
-    }
-    >::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      background: rgba($brand-color, 0.6);
-    }
+  a:hover {
+    color: $brand-grey-dark;
+    text-decoration: none;
   }
-  &--white {
-    background-image: none;
-    background-color: $white;
-    @include mq(tablet) {
-      min-height: 170px;
-    }
+}
+.c-hero--alt {
+  background-repeat: repeat;
+  background-size: 20px;
+  background-color: $brand-color--light;
+}
+.c-hero--small {
+  position: relative;
+  @include mq(tablet) {
+    min-height: 370px;
+  }
+  >::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba($brand-color, 0.6);
+  }
+}
+.c-hero--white {
+  background-image: none;
+  background-color: $brand-grey-dark;
+  @include mq(tablet) {
+    min-height: 170px;
   }
 }

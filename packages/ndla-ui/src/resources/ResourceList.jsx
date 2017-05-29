@@ -22,17 +22,17 @@ const Resource = ({ resource, resourceToLinkProps }) => {
   const linkProps = resourceToLinkProps(resource);
 
   return (
-    <li {...classes('item o-flag o-flag--top')}>
+    <li {...classes('item o-flag o-flag--top ')}>
       <div {...classes('icon o-flag__img')}>
-        { resource.icon === 'Document' ? <Icon.Document /> : null }
-        { resource.icon === 'Path' ? <Icon.Path /> : null }
-        { resource.icon === 'Pencil' ? <Icon.Pencil /> : null }
+        { resource.type === 'Lærestoff' ? <Icon.Document /> : null }
+        { resource.type === 'Læringsstier' ? <Icon.Path /> : null }
+        { resource.type === 'Oppgaver og aktiviteter' ? <Icon.Pencil /> : null }
       </div>
       <div {...classes('body o-flag__body')}>
         <h1 {...classes('title')}>
           {linkProps.href ?
             <a {...linkProps}>{resource.name}</a> :
-            <SafeLink {...resourceToLinkProps(resource)}>{resource.name}</SafeLink> }
+            <SafeLink {...resourceToLinkProps(resource)}>{resource.icon} {resource.name}</SafeLink> }
         </h1>
       </div>
     </li>
@@ -41,17 +41,19 @@ const Resource = ({ resource, resourceToLinkProps }) => {
 
 Resource.propTypes = {
   resource: ResourceShape.isRequired,
+  type: PropTypes.string,
   resourceToLinkProps: PropTypes.func.isRequired,
 };
 
-const ResourceList = ({ resources, ...rest }) => (
+const ResourceList = ({ resources, type, ...rest }) => (
   <ul {...classes('list')} >
-    { resources.map(resource => <Resource key={resource.id} {...rest} resource={resource} />)}
+    { resources.map(resource => <Resource key={resource.id} type={type} {...rest} resource={resource} />)}
   </ul>
   );
 
 ResourceList.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
+  type: PropTypes.string,
   resourceToLinkProps: PropTypes.func.isRequired,
 };
 

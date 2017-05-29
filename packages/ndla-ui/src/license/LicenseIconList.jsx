@@ -38,11 +38,16 @@ LicenseIcon.propTypes = {
 const LicenseIconItem = ({ licenseRight, activeLicenseRight, onLicenseIconClick }) => (
   <li {...classes('item', (activeLicenseRight === licenseRight && 'active'))}>
     { onLicenseIconClick ?
-      <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
-        <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-      </Button>
+      <div>
+        <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
+          <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+        </Button>
+      </div>
       :
-      <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+      <div>
+        <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+        <span className="c-license-icons__licenselabel">{ getLicenseRightByAbbreviation(licenseRight).description }</span>
+      </div>
     }
   </li>
 );

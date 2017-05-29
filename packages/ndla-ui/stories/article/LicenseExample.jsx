@@ -33,13 +33,16 @@ const VideoContent = () => (
             allowFullScreen=""
           />
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av videoen:" >
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til videoen:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Bygg inn</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
@@ -60,12 +63,15 @@ const TextContent = () => (
             <Icon.Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-sa" title="Tittel på tekst">
+        <MediaListItemBody locale="nb" license="by-sa" title="Regler for bruk av teksten:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til teksten:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -74,12 +80,15 @@ const TextContent = () => (
             <Icon.Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-sa" title="Tittel på tekst">
+        <MediaListItemBody locale="nb" license="by-sa" title="Regler for bruk av teksten:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til teksten:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
@@ -99,12 +108,15 @@ const AudioContent = () => (
             <Icon.Audio className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-sa">
+        <MediaListItemBody locale="nb" license="by-sa" title="Regler for bruk av lydfilen:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til lydfilen:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -113,12 +125,15 @@ const AudioContent = () => (
             <Icon.Audio className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-sa">
+        <MediaListItemBody locale="nb" license="by-sa" title="Regler for bruk av lydfilen:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til lydfilen:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
@@ -138,12 +153,32 @@ const ImageContent = () => (
             <img width="260" alt="alt" src="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av bildet:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til bildet:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+        </MediaListItemBody>
+      </MediaListItem>
+      <MediaListItem>
+        <MediaListItemImage>
+          <a href="">
+            <img width="260" alt="alt" src="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=" />
+          </a>
+        </MediaListItemImage>
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av bildet:">
+          <MediaListItemActions>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til bildet:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+            </div>
+          </MediaListItemActions>
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -152,12 +187,15 @@ const ImageContent = () => (
             <img width="260" alt="alt" src="https://images.unsplash.com/photo-1470138831303-3e77dd49163e?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av bildet:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til bildet:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -166,13 +204,15 @@ const ImageContent = () => (
             <img width="260" alt="alt" src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av bildet:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til bildet:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:', 'Verket består av...']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
@@ -193,13 +233,16 @@ const H5PContent = () => (
             <iframe src="http://ndla.no/nb/h5p/embed/146132?fag=127756" className="c-medialist__h5p" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av H5P-innholdet:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til H5P-innholdet:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Se del-elementer</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -208,13 +251,16 @@ const H5PContent = () => (
             <iframe src="http://ndla.no/nb/h5p/embed/146135?fag=127756" className="c-medialist__h5p" width="260" height="373" frameBorder="0" allowFullScreen="allowfullscreen" /><script src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756" charSet="UTF-8" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av H5P-innholdet:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til H5P-innholdet:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Se del-elementer</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014 / Oppdatert...', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
@@ -235,11 +281,15 @@ const LearningPath = () => (
             <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av læringsstien:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til læringsstien:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Se del-elementer</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014 / Oppdatert...', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -248,11 +298,15 @@ const LearningPath = () => (
             <img width="260" alt="alt" src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av læringsstien:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til læringsstien:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Se del-elementer</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014 / Oppdatert...', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
@@ -273,11 +327,15 @@ const Files = () => (
             <Icon.Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av filen:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til filen:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014 / Oppdatert...', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
       <MediaListItem>
@@ -286,11 +344,15 @@ const Files = () => (
             <Icon.Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av filen:">
           <MediaListItemActions>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
+            <div className="c-medialist__ref">
+              <h3 className="c-medialist__title">Slik skal du referere til filen:</h3>
+              <MediaListItemMeta items={['12. desember 2014', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+              <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+            </div>
           </MediaListItemActions>
-          <MediaListItemMeta items={['12. desember 2014 / Oppdatert...', 'Opphavsperson: Ola Nordmann', 'Rettighetshaver: Kari Nordmann', 'Remikser:']} />
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>

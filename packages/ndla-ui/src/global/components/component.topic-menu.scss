@@ -40,15 +40,21 @@
   }
 }
 
-.c-topic-menu-toggle-button--active {
-  background: $white;
+.c-topic-menu-container .active {
+  background: transparent;
+  border: 3px solid transparent;
+  box-shadow: none;
+  &:hover {
+    color: $brand-color;
+    text-decoration: underline;
+    // transform: scale(1.2);
+  }
   &:before {
     @include svg_icon('close', $brand-color);
-  }
-  &:hover {
-    &:before {
-      @include svg_icon('menu', $white);
-    }
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    left: 15px;
   }
 }
 

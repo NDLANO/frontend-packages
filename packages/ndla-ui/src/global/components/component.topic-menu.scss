@@ -34,9 +34,10 @@
     }
   }
   &:active, &:focus {
-    color: $brand-color;
-    background-color: transparent;
     border: 3px solid $brand-color;
+    &:before {
+      @include svg_icon('menu', $white);
+    }
   }
 }
 
@@ -44,10 +45,10 @@
   background: transparent;
   border: 3px solid transparent;
   box-shadow: none;
+  color: $brand-color;
   &:hover {
     color: $brand-color;
     text-decoration: underline;
-    // transform: scale(1.2);
   }
   &:before {
     @include svg_icon('close', $brand-color);

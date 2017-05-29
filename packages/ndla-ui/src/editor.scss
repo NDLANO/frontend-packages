@@ -15,11 +15,14 @@
 @import "../node_modules/ndla-editor/node_modules/draft-js-focus-plugin/lib/plugin";
 
 
+.public-DraftEditorPlaceholder-root, .public-DraftEditorPlaceholder-hasFocus {
+  color: rgb(153, 153, 153);
+}
+
 .c-editor {
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
-  margin-bottom: 2em;
   border: none;
   box-shadow: none;
   background: transparent;

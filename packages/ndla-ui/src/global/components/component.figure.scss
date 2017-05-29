@@ -12,6 +12,13 @@
 }
 
 .c-figure__caption {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  @include mq(tablet) {
+    flex-direction: row;
+  }
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
   display: flex;
@@ -19,13 +26,19 @@
   justify-content: flex-end;
   flex-wrap: wrap;
 }
+
 .c-figure__byline {
   padding-right: $spacing;
   text-align: left;
+  flex-basis: 33%;
+  flex-grow: 1;
+  flex-direction: column-reverse;
+
   .c-button--outline svg {  //remove
     display:none;
   }
 }
+
 .c-figure__info {
   @include mq($from: tablet) {
     max-width: 60%;
@@ -149,4 +162,5 @@
 #figmeta {
 height: 0;
 overflow: hidden;
+
 }

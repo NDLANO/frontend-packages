@@ -52,8 +52,6 @@
   }
 }
 
-
-
 .c-topic-menu__dropdown {
   position: fixed;
   width: 100%;
@@ -65,12 +63,14 @@
   min-height: 250px;
   text-align: left;
   z-index: 40;
+  display: flex;
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
   box-shadow: 0 10px 20px rgba($black, 0.4);
   text-transform: none;
+  animation-name: fadeIn;
+  animation-duration: .4s;
 
   .c-filter__list {
     display: none;
@@ -87,6 +87,8 @@
   margin: 0;
   overflow-y: auto;
   max-height: 87%;
+  @include fadeInLeftItems(li, 6);
+
 }
 
 .c-topic-menu__left {
@@ -96,6 +98,9 @@
     padding-top: 130px;
   }
   z-index: 30;
+  animation-name: fadeInLeft;
+  animation-duration: .2s;
+
 }
 
 .c-topic-menu__subject {
@@ -121,6 +126,9 @@
   margin-left: $spacing--large;
   padding: $spacing--small 0;
   transition: all .1s ease-in-out;
+  animation-name: fadeInLeft;
+  animation-duration: .5s;
+
   &:hover {
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;

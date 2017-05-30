@@ -33,7 +33,7 @@ const VideoContent = () => (
             allowFullScreen=""
           />
         </MediaListItemImage>
-        <MediaListItemBody locale="nb" license="by-nc-nd" title="Regler for bruk av videoen:" >
+        <MediaListItemBody locale="nb" license="by-nc-nd" reuseLabel="Bruk bildet" title="Regler for bruk av videoen:" >
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <h3 className="c-medialist__title">Slik skal du referere til videoen:</h3>

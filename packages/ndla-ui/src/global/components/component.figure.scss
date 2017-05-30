@@ -29,8 +29,14 @@
   flex-basis: 22%;
   flex-direction: column-reverse;
 
-  .c-button--outline svg {  //remove
-    display:none;
+  .c-license-icons__list {
+    flex-direction: row;
+    text-align: center;
+    justify-content:center;
+  }
+
+  .c-license-icons__licenselabel { // remove license descriptions
+    display: none;
   }
 }
 
@@ -139,7 +145,6 @@
     max-width: 100%;
   }
   .c-license-icons__licenselabel {
-    padding-left: $spacing--small;
     padding-right: $spacing;
     display: inline-block;
     max-width: 400px;

@@ -38,7 +38,7 @@ class Modal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleOpenModal} data-show-id="1" className="c-button--transparent u-float-right u-z-top"><Icon.OpenWindow /> Gjenbruk</button>
+        <button onClick={this.handleOpenModal} data-show-id="1" className="c-button--transparent u-float-right u-z-top"><Icon.OpenWindow /> Bruk bilde</button>
         <ReactModal
           isOpen={this.state.showModal}
           closeTimeoutMS="300"

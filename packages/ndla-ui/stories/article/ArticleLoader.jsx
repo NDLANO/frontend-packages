@@ -63,7 +63,7 @@ class ArticleLoader extends Component {
           script={scripts}
         />
         { article ? this.renderArticle() : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
-        { article ? <Button onClick={() => this.setState({ article: undefined })}>X</Button> : null}
+        { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
       </div>
     );
   }

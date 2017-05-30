@@ -16,7 +16,6 @@ import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import LicenseByline from '../license/LicenseByline';
-import Icon from '../icons/Icon';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -60,7 +59,7 @@ export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviatio
           <span className="article_meta">{ authors.map(author => author.name).join(', ') }</span>
         </LicenseByline>
       </div>
-      <button className="c-button c-button--outline c-figure__captionbtn"><Icon.OpenWindow /> {reuseLabel}</button>
+      <button className="c-button c-button--outline c-figure__captionbtn">{reuseLabel}</button>
     </div>
   </figcaption>
 );

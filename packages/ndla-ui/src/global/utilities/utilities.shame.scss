@@ -93,14 +93,10 @@
   float:right;
 }
 .article_figure--float-left {
-  margin-right: $spacing !important;
-  left: auto !important;
-  right: auto !important;
+  @include float(3, 4, 'left');
 }
 .article_figure--float-right {
-  margin-left: $spacing !important;
-  left: auto !important;
-  right: auto !important;
+  @include float(3, 4, 'right');
 }
 
 /* Width utils */

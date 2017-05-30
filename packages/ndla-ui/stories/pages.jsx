@@ -106,7 +106,7 @@ const ExamplePageImages = () => (
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <FigureWithLicense>
+        <FigureWithLicense classes="article_figure--float-right">
           <img alt="person med mange armer som gjør forskjellige ting samtidig. Foto." src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg" />
         </FigureWithLicense>
         <p>En pitch er en kortvarig framføring av en idé for en potensiell

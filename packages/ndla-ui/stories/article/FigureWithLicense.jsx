@@ -29,7 +29,7 @@ const authors = [
 class FigureWithLicense extends Component {
 
   componentDidMount() {
-    // Overriding function to fix closing license popup
+    // Overriding function -> fix closing license popup
     const addCloseFigureDetailsClickListners = () => {
       document.querySelectorAll('.c-figure .c-figure__close').forEach((el) => {
         const target = el;
@@ -44,9 +44,10 @@ class FigureWithLicense extends Component {
     makeFigureLicenseIconsClickable();
   }
 
+
   render() {
     return (
-      <Figure>
+      <Figure className={this.props.classes}>
         <div className="c-figure__img">
           {this.props.children}
         </div>
@@ -62,6 +63,7 @@ class FigureWithLicense extends Component {
 
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
+  classes: PropTypes.string,
 };
 
 export default FigureWithLicense;

@@ -26,8 +26,6 @@
 .c-figure__byline {
   padding-right: $spacing;
   text-align: left;
-  flex-basis: 22%;
-  flex-direction: column-reverse;
 
   .c-license-icons__list {
     flex-direction: row;
@@ -41,10 +39,8 @@
 }
 
 .c-figure__info {
-  @include mq($from: tablet) {
-    max-width: 60%;
-  }
-  margin-bottom: $spacing--small;
+  max-width: 500px;
+  margin-bottom: $spacing;
 }
 
 .c-figure__byline-licenselist {

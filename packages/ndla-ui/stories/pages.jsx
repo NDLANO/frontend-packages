@@ -402,16 +402,6 @@ const ExampleWithSummary = () => (
   </OneColumn>
 );
 
-const SubTopicHero = () => (
-  <OneColumn cssModifier="narrow">
-    <div className="c-hero__content" />
-  </OneColumn>
-);
-
-const MainTopicHero = () => (
-  <OneColumn cssModifier="narrow" />
-);
-
 
 const ResourcesSubTopics = () => (
   <OneColumn cssModifier="narrow">
@@ -617,10 +607,18 @@ storiesOf('Emnesider', module)
         <FooterExample />
       </PageContainer>
     ))
-    .add('2. Valgt fag', () => (
+    .add('2. Fag', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
@@ -629,7 +627,13 @@ storiesOf('Emnesider', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <MainTopicHero />
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
         </Hero>
         <ArticleLoader articleId="1325" isTopicArticle />
         <ResourceWrapper>
@@ -641,12 +645,22 @@ storiesOf('Emnesider', module)
     .add('4. Underemne', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">
-          <SubTopicHero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
         </Hero>
         <ArticleLoader articleId="5948" notitle />
         <OneColumn>
-          <ResourceSubsetList />
+          <article className="c-article">
+            <LayoutItem layout="center">
+              <ResourceSubsetList />
+            </LayoutItem>
+          </article>
         </OneColumn>
         <FooterExample />
       </PageContainer>

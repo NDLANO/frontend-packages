@@ -5,13 +5,13 @@ import { storiesOf } from '@kadira/storybook';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
-import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, Icon, TopicIntroductionList, LayoutItem } from '../src';
+import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, Icon, TopicIntroductionList, LayoutItem, TopicBreadcrumb } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 
 // Using for example alternative article
-import article, { topicList } from '../dummydata/index';
+import article, { topicList, subjectList } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -487,7 +487,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med herobilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLoader articleId="208" />
         <FooterExample />
       </PageContainer>
@@ -495,7 +503,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med bildeflyt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePageImages />
         <FooterExample />
       </PageContainer>
@@ -503,7 +519,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med video', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePage2 />
         <FooterExample />
       </PageContainer>
@@ -511,7 +535,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med tabell', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePage3 />
         <FooterExample />
       </PageContainer>
@@ -519,7 +551,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med h5p', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePage4 />
         <FooterExample />
       </PageContainer>
@@ -527,7 +567,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med oppsummeringsboks', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExampleWithSummary />
         <FooterExample />
       </PageContainer>

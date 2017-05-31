@@ -51,7 +51,7 @@
 .c-figure__close {
   display: none;
   position: absolute;
-  top: $spacing--large*.75;
+  top: $spacing;
   right: $spacing;
   background: transparent;
   border: none;
@@ -71,23 +71,11 @@
 
 }
 
-.c-figure__license {
-  font-family: $font;
-  @include mq(desktop) {
-    width: 80%;
-    margin: 0 auto;
-    position: absolute;
-    bottom: -60px;
-    opacity:0;
-    transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
-  }
-}
-
 .c-figure__list {
   background: $white;
   list-style: none;
-  padding: $spacing--small;
-  margin-top: $spacing;
+  padding: 0 $spacing--small $spacing--small $spacing--small;
+  margin-top: 0;
   margin-bottom: 0;
   li {
     list-style: none;
@@ -111,7 +99,6 @@
 
   .c-figure__license {
     background-color: $brand-color--lighter;
-    // box-shadow: 0 3px 45px rgba(black, .2);
     padding: $spacing;
     @include mq(desktop) {
       width: 90%;
@@ -120,15 +107,14 @@
       bottom: -60px;
       left:0;
       right: 0;
-      transform: translateY(-20px);
       opacity: 1;
+      animation-name: fadeInBottom;
+      animation-duration: .5s;
     }
   }
 
   .c-figure__close {
     display: block;
-    transform: translateY(-20px);
-    opacity: 1;
   }
   #figmeta {
     height: auto;
@@ -141,7 +127,7 @@
   }
   .c-license-icons__licenselabel {
     padding-right: $spacing;
-    display: inline-block;
+    display: inline;
     max-width: 400px;
   }
 

@@ -1,12 +1,11 @@
+.c-figure__license {
+  position: relative;
+}
 .c-figure-license__cta-block {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-self: flex-end;
-
-  button {
-   margin-bottom: 0;
-  }
 
   @include mq(tablet) {
     flex-direction: row;
@@ -19,10 +18,10 @@
   margin-top: $spacing;
 }
 .c-figure-license__button {
-  margin: 3% 0;
+  margin: $spacing--small/3 0;
 }
 .c-figure-license__title {
-  margin:0;
+  margin:0 0 $spacing--small;
   @include inuit-font-size(18px);
   color: $brand-color;
 }

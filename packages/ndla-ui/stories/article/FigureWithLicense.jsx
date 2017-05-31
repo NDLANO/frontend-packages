@@ -53,8 +53,8 @@ class FigureWithLicense extends Component {
         </div>
         <FigureCaption caption={caption} reuseLabel="Bruk bildet" licenseAbbreviation="by-nc-nd" authors={authors} />
         <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
-          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
-          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+          <button className="c-button c-button--outline c-figure-license__button" type="button">Kopier referanse</button>
+          <button className="c-button c-button--outline c-figure-license__button" type="button">Last ned bilde</button>
         </FigureDetails>
       </Figure>
     );

@@ -490,21 +490,21 @@ storiesOf('Grunnstiler', module)
           <h1 className="u-heading">Lister</h1>
         </section>
         <section className="o-wrapper--inner">
-          <h2>Ren liste</h2>
+          <h2 className="u-heading">Ren liste</h2>
           <ul className="o-list--bullets">
             <li>Listepunkt 1</li>
             <li>Listepunkt 2</li>
             <li>Listepunkt 3</li>
             <li>Listepunkt 4</li>
           </ul>
-          <h2>Lister med lenker</h2>
+          <h2 className="u-heading">Lister med lenker</h2>
           <ul className="o-list--bullets">
             <li><a href="">Listepunkt 1</a></li>
             <li><a href="">Listepunkt 2</a></li>
             <li><a href="">Listepunkt 3</a></li>
             <li><a href="">Listepunkt 4</a></li>
           </ul>
-          <h2>Nummererte lister</h2>
+          <h2 className="u-heading">Nummererte lister</h2>
           <ol>
             <li>Listepunkt</li>
             <li>Listepunkt</li>

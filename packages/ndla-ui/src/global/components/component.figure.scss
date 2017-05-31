@@ -40,11 +40,10 @@
 
 .c-figure__info {
   max-width: 500px;
-  margin-bottom: $spacing;
 }
 
 .c-figure__byline-licenselist {
-  margin: -$spacing--small/2 0 0 0;
+  margin: $spacing--small/2 0 0 0;
   text-align: center;
   max-width: 130px;
 }

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import {
   // addCloseFigureDetailsClickListners,
   addShowFigureDetailsClickListners,
-  makeFigureLicenseIconsClickable,
+  // makeFigureLicenseIconsClickable,
 } from 'ndla-article-scripts';
 
 import { Figure, FigureCaption, FigureDetails } from '../../src';
@@ -41,13 +41,13 @@ class FigureWithLicense extends Component {
     };
     addShowFigureDetailsClickListners();
     addCloseFigureDetailsClickListners();
-    makeFigureLicenseIconsClickable();
+    // makeFigureLicenseIconsClickable();
   }
 
 
   render() {
     return (
-      <Figure className={this.props.classes}>
+      <Figure className={`c-figure ${this.props.classes}`}>
         <div className="c-figure__img">
           {this.props.children}
         </div>

@@ -5,7 +5,9 @@
 .license-toggler {
   display: block;
   text-transform: uppercase;
-  @include inuit-font-size(14px);
+  @include inuit-font-size(13px);
+  letter-spacing: .05em;
+
   margin: 0 0 0 auto;
 }
 .license__heading {

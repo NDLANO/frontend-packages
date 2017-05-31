@@ -13,13 +13,15 @@
 .u-text-center {
   text-align: center;
 }
-p.article_introduction {
-  font-weight: $font-weight-light;
-  font-family: $font;
-  margin-top: $spacing--small;
-  @include inuit-font-size(20px, 32px);
-  @include mq(tablet) {
-    margin-top: $spacing*1.5;
-    @include inuit-font-size(26px, 36px);
+.article_introduction {
+  &,p {
+    font-weight: $font-weight-light;
+    font-family: $font;
+    margin-top: $spacing--small;
+    @include inuit-font-size(20px, 32px);
+    @include mq(tablet) {
+      margin-top: $spacing*1.5;
+      @include inuit-font-size(26px, 36px);
+    }
   }
 }

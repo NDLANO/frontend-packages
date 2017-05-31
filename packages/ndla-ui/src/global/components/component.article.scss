@@ -33,6 +33,7 @@
   color: $brand-grey;
   text-transform: uppercase;
   display: flex;
+  justify-content: space-between;
 }
 
 .c-article-meta {
@@ -50,9 +51,6 @@
 }
 
 .c-article__authors {
-  @include mq(tablet) {
-    max-width: 50%;
-  }
   padding-right: $spacing;
   svg {
     margin-top: -3px;

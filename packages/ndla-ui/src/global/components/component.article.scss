@@ -1,4 +1,6 @@
 .c-article {
+  font-family: $font-serif;
+  @include inuit-font-size(18px, 32px);
   background: $white;
   margin-top: $spacing--large;
   margin-right: auto;

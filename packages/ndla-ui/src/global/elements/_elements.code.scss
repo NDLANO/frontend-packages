@@ -1,6 +1,7 @@
 code {
   display: block;
-  background: $brand-grey--light;
+  background: $brand-grey--lighter;
   padding: $spacing;
   margin: $spacing ;
+  white-space: pre-wrap;
 }

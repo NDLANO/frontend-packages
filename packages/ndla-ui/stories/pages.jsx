@@ -474,7 +474,7 @@ storiesOf('Sidevisninger', module)
   ))
   ;
 storiesOf('Artikkelmaler', module)
-    .add('Artikkel med herobilde', () => (
+    .add('Artikkel med bilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>

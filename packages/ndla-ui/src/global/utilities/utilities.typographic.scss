@@ -14,8 +14,12 @@
   text-align: center;
 }
 p.article_introduction {
-  @include inuit-font-size(26px, 36px);
   font-weight: $font-weight-light;
   font-family: $font;
-  margin-top: $spacing*1.5;
+  margin-top: $spacing--small;
+  @include inuit-font-size(20px, 32px);
+  @include mq(tablet) {
+    margin-top: $spacing*1.5;
+    @include inuit-font-size(26px, 36px);
+  }
 }

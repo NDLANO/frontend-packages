@@ -1,0 +1,28 @@
+.c-figure-license__cta-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
+
+  button {
+   margin-bottom: 0;
+  }
+
+  @include mq(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+.c-figure-license__cta-wrapper {
+  background-color: $white;
+  padding: $spacing;
+  margin-top: $spacing;
+}
+.c-figure-license__button {
+  margin: 3% 0;
+}
+.c-figure-license__title {
+  margin:0;
+  @include inuit-font-size(18px);
+  color: $brand-color;
+}

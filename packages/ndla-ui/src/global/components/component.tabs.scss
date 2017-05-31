@@ -10,6 +10,7 @@ $tabs-spacing: 12px;
   display: inline-block;
   padding: ($tabs-spacing / 2) $tabs-spacing;
   transform: translateY(3px);
+  font-family: $font;
 
   &:hover {
     color: $brand-color;

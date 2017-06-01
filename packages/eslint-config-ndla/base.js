@@ -1,7 +1,11 @@
 /* eslint-disable */
 module.exports = {
-  extends: 'airbnb',
   parser: 'babel-eslint',
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+  ],
   env: {
     browser: true
   },
@@ -11,12 +15,6 @@ module.exports = {
     }
   },
   rules: {
-    'max-len': [2, 200, 2, {
-      ignoreUrls: true,
-      ignoreComments: false,
-      ignoreStrings: true
-    }],
-
     'no-constant-condition': [2, { checkLoops: false }],
 
     'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],

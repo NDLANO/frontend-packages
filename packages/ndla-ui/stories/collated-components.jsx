@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';

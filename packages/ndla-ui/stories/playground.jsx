@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import NDLAEditor, { RichTextEditor, PlainTextEditor, withStateHandler } from 'ndla-editor';
 import { convertFromRaw, EditorState } from 'draft-js';
 import ArticleEditor from './editor/ArticleEditor';

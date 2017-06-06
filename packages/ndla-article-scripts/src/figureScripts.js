@@ -13,8 +13,8 @@
      const target = el;
      target.onclick = () => {
        removeElementById('c-license-icon-description');
-       target.parentNode.classList.remove('c-figure--active');
-       target.parentNode.querySelector('figcaption').classList.remove('u-hidden');
+       target.parentNode.parentNode.classList.remove('c-figure--active');
+       target.parentNode.parentNode.querySelector('figcaption').classList.remove('u-hidden');
      };
    });
  };

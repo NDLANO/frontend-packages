@@ -11,8 +11,8 @@
     "clean": "lerna clean",
     "watch": "node ./scripts/watch.js",
     "start": "concurrently --kill-others \"npm run watch\" \"npm run start-storybook\"",
-    "start-storybook": "packages/ndla-ui/node_modules/.bin/start-storybook -c packages/ndla-ui/.storybook -p 6006",
-    "build-storybook": "packages/ndla-ui/node_modules/.bin/build-storybook -c packages/ndla-ui/.storybook -o .out"
+    "start-storybook": "node ./scripts/startStorybook.js",
+    "build-storybook": "node ./scripts/buildStorybook.js"
   },
   "repository": {
     "type": "git",

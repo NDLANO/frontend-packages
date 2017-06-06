@@ -379,7 +379,7 @@ export const LicenseBox = () => (
 
 const LicenseExample = ({ showByline }) => (
   <ToggleLicenseBox
-    openTitle="Gjenbruk fagstoff"
+    openTitle="Bruk artikkel"
     closeTitle="Lukk boks"
     licenseBox={<LicenseBox />}
   >

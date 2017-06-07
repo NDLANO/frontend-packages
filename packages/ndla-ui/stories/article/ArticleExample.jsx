@@ -17,7 +17,6 @@ import LicenseExample from './LicenseExample';
 const ArticleExample = ({ article, withLicenseExample, notitle }) => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
-      { withLicenseExample && <LicenseExample /> }
       <LayoutItem layout="center">
         { notitle ? null : <h1>{article.title}</h1> }
         <Article.Introduction introduction={article.introduction} />

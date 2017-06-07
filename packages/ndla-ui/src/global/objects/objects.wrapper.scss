@@ -1,5 +1,8 @@
+.o-wrapper {
+  width: 100%;
+}
 .o-wrapper--inner {
   max-width: 585px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: $spacing;
+  padding-right: $spacing;
 }

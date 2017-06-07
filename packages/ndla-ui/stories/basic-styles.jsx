@@ -1,24 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Center, articleUrl } from './helpers';
+import { Center } from './helpers';
 import article from '../dummydata/index';
 import { Table } from '../src';
-
-/*
- * Example content
- */
-const articleHMTL = (id) => {
-  const articleHTML = document.createElement('div');
-  articleHTML.innerHTML = article[`article${id}`].content[0].content;
-  const paragraphs = articleHTML.getElementsByTagName('p');
-  const table = articleHTML.getElementsByTagName('table')[0];
-
-  return {
-    articleHTML,
-    paragraphs,
-    table,
-  };
-};
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -26,46 +10,79 @@ const heading = (articleHTML, level) => {
   return `<div>Overskrift ${level}:</div><h${level}>${articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML} <h${level}>`;
 };
 
-storiesOf('Typografi', module)
+storiesOf('Grunnstiler', module)
   .add('Farger', () => (
     <Center>
       <article>
         <section className="c-factbox">
           <h1 className="u-heading">Farger på NDLA</h1>
         </section>
-        <section className="o-wrapper--inner c-article c-article--clean">
+        <section className="o-wrapper o-wrapper--nopadding">
           <div>
-            <h4>Variasjoner av NDLA-fargen</h4>
+            <h2 className="u-heading">NDLA-fargen</h2>
             <p>Primærfargen kan supplementeres med ulike graderinger.</p>
-            <ul className="o-list--clean">
-              <li style={{ backgroundColor: '#20588F' }} className="u-text-inverted u-padding-tiny">NDLA primærfarge: #20588F</li>
-              <li style={{ backgroundColor: '#507AA4' }} className="u-text-inverted u-padding-tiny">NDLA sekundærfarge: #507AA4</li>
-              <li style={{ backgroundColor: '#A5BCD3' }} className="u-padding-tiny">NDLA tertiærfarge: #A5BCD3</li>
-              <li style={{ backgroundColor: '#CEDDEA' }} className="u-padding-tiny">NDLA lys: #CEDDEA</li>
-              <li style={{ backgroundColor: '#184673' }} className="u-text-inverted u-padding-tiny">NDLA mørk: #184673</li>
+            <ul className="o-list--colors">
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#20588F' }} />
+                <div className="o-list__label">NDLA primærfarge<br />#507AA4</div></li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#507AA4' }} />
+                <div className="o-list__label">NDLA sekundærfarge<br />#507AA4</div></li>
+              <li className="o-list__item o-list__item--colors o-list__item ">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#A5BCD3' }} />
+                <div className="o-list__label">NDLA tertiærfarge<br />#A5BCD3</div></li>
+              <li className="o-list__item o-list__item--colors o-list__item">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#CEDDEA' }} />
+                <div className="o-list__label">NDLA lys<br />#CEDDEA</div></li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#184673' }} />
+                <div className="o-list__label">NDLA mørk<br />#184673</div></li>
             </ul>
           </div>
 
           <div>
-            <h4>Tilleggsfarger</h4>
+            <h2 className="u-heading">Tilleggsfarger</h2>
             <p>I tillegg til primærfargen og dens graderinger kan man benytte tilleggsfarger til å tematisere innhold og skape variasjon/kontrast til NDLA-fargen.</p>
-            <ul className="o-list--clean">
-              <li style={{ backgroundColor: '#FE5F55' }} className="u-padding-tiny">Rød: #FE5F55</li>
-              <li style={{ backgroundColor: '#5CBC80' }} className="u-padding-tiny">Grønn: #5CBC80</li>
-              <li style={{ backgroundColor: '#EAD854' }} className="u-padding-tiny">Gult: #EAD854</li>
-              <li style={{ backgroundColor: '#1C1717' }} className="u-text-inverted u-padding-tiny">Mørk: #1C1717</li>
-              <li style={{ backgroundColor: '#FFFFFF' }} className="u-padding-tiny">Hvit: #FFFFFF</li>
+            <ul className="o-list--colors">
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#FE5F55' }} />
+                <div className="o-list__label">Rød<br />#FE5F55</div>
+              </li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#5CBC80' }} />
+                <div className="o-list__label">Grønn<br />#5CBC80</div>
+              </li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#EAD854' }} />
+                <div className="o-list__label">Gul<br />#EAD854</div>
+              </li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#444444' }} />
+                <div className="o-list__label">Mørk (tekst)<br />#444444</div>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4>Gråtoner</h4>
+            <h2 className="u-heading">Gråtoner</h2>
             <p>Ulike gråtoner kan brukes for å skape myke farger for navigasjonselementer, skjema-elementer etc.</p>
-            <ul className="o-list--clean">
-              <li style={{ backgroundColor: '#8A8888' }} className="u-text-inverted u-padding-tiny">Grå 1: #8A8888</li>
-              <li style={{ backgroundColor: '#E8E3E3' }} className="u-padding-tiny">Grå 2: #E8E3E3</li>
-              <li style={{ backgroundColor: '#EFF0F2' }} className="u-padding-tiny">Grå 3: #EFF0F2</li>
-              <li style={{ backgroundColor: '#F8F8F8' }} className="u-padding-tiny">Grå 4: #F8F8F8</li>
+            <ul className="o-list--colors">
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#8A8888' }} />
+                <div className="o-list__label">Grå 1<br />#8A8888</div>
+              </li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#E8E3E3' }} />
+                <div className="o-list__label">Grå 2<br />#E8E3E3</div>
+              </li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#EFF0F2' }} />
+                <div className="o-list__label">Grå 3<br />#EFF0F2</div>
+              </li>
+              <li className="o-list__item o-list__item--colors">
+                <div className="o-list__bgcolor" style={{ backgroundColor: '#F8F8F8' }} />
+                <div className="o-list__label">Grå 4<br />#F8F8F8</div>
+              </li>
             </ul>
           </div>
 
@@ -73,14 +90,16 @@ storiesOf('Typografi', module)
       </article>
     </Center>
   ))
-  .add('Fonter', () => (
+  .add('Typografi', () => (
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Fonter</h1>
+          <h1 className="u-heading">Typografi</h1>
+          <p><a href="#fonter">Fonter</a>, <a href="#overskrifter">overskrifter</a>, <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>, <a href="#lenker">lenker</a>.</p>
         </section>
         <section>
           <div className="o-wrapper--inner">
+            <h2 id="fonter" className="u-heading">Fonter</h2>
             <p>NDLA bruker fontene <a href="https://fonts.google.com/specimen/Source+Serif+Pro">Source Serif Pro</a> og <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a>.</p>
             <ul className="o-list--bullets o-list--bullets--invert">
               <li style={{ fontWeight: 600 }}>Overskrifter: Source Sans Pro, 600</li>
@@ -91,118 +110,56 @@ storiesOf('Typografi', module)
             </ul>
             <p>Tilbakefallsfonter er <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og <span style={{ fontFamily: 'Arial' }}>Arial</span></p>
           </div>
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Overskrifter', () => (
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <h1 className="u-heading">Overskrifter på NDLA</h1>
           <div className="o-wrapper--inner">
-            <p>Overskrifter på NDLA skal markeres semantisk med riktige HTML-tagger. For eksempel:</p>
+            <h2 id="overskrifter" className="u-heading">Overskrifter</h2>
+            <p>Overskrifter skal markeres semantisk med riktige HTML-tagger. For eksempel:</p>
             <code>{'<h1>Overskrift<h1>'}</code>
-          </div>
-        </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <section className="o-wrapper--inner">
-          <div className="c-article c-article--clean">
-            <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
-              ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad
-              consectetur. Nemo obcaecati assumenda explicabo blanditiis. Error quia, perferendis eaque.
-              Ipsum quae, pariatur unde, nihil harum molestiae, consequuntur ea corrupti quod et impedit
-              incidunt consectetur vero velit. Earum quibusdam vel dignissimos obcaecati rem, reiciendis
-              ipsam, fuga, aliquam aperiam consequatur doloribus. Similique aliquid ea sit aperiam,
-              laborum dolor itaque! Unde expedita itaque porro exercitationem natus accusantium
-              dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
-              corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
-            </p>
-            <hr />
-            <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
-              ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad
-              consectetur. Nemo obcaecati assumenda explicabo blanditiis. Error quia, perferendis eaque.
-              Ipsum quae, pariatur unde, nihil harum molestiae, consequuntur ea corrupti quod et impedit
-              incidunt consectetur vero velit. Earum quibusdam vel dignissimos obcaecati rem, reiciendis
-              ipsam, fuga, aliquam aperiam consequatur doloribus. Similique aliquid ea sit aperiam,
-              laborum dolor itaque! Unde expedita itaque porro exercitationem natus accusantium
-              dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
-              corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
-            </p>
-            <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
-              ea sunt similique incidunt doloremque dicta quidem architecto recusandae explicabo deleniti ad
-              consectetur. Nemo obcaecati assumenda explicabo blanditiis. Error quia, perferendis eaque.
-              Ipsum quae, pariatur unde, nihil harum molestiae, consequuntur ea corrupti quod et impedit
-              incidunt consectetur vero velit. Earum quibusdam vel dignissimos obcaecati rem, reiciendis
-              ipsam, fuga, aliquam aperiam consequatur doloribus. Similique aliquid ea sit aperiam,
-              laborum dolor itaque! Unde expedita itaque porro exercitationem natus accusantium
-              dignissimos modi nulla, qui dolores rem sunt, odio animi illo necessitatibus hic quibusdam
-              corporis in. Quaerat provident expedita veniam minus, eveniet, voluptas ipsa pariatur!
-            </p>
-            <div dangerouslySetInnerHTML={{ __html: heading('', 4) }} />
-          </div>
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Avsnitt', () => (
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <h1 className="u-heading">Avsnitt på NDLA</h1>
-          <div className="o-wrapper--inner">
-            <p>
-              Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å lese.
-              Dette betyr at linjelengden ikke skal være for lang, og at vi
-              bruker stor nok skriftsstørrelse. Mange tar utgangspunkt i
-              16 punkter som en standardstørrelse, men siden NDLA har mange
-              teksttunge sider bruker vi 18 punkter.
-            </p>
-            <p>
-              En tekstlinje i full bredde skal utgjøre omtrent 50 – 75 tegn, om <span className="u-mark">*</span>-tegnet i setningen under kommer på samme linje, er den for lang:
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">*</span>isicing
-              elit, sed do eiusmod <span className="u-mark">*</span>tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
-            <p>
-              Font: <a href="https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro:400,400i,900,900i&selection.subset=latin-ext">Source Serif Pro, Regular (400)</a>
-            </p>
-          </div>
-        </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <section className="o-wrapper--inner">
-          <p>{articleUrl(93)}</p>
-          {
-            Array.from(articleHMTL(93).paragraphs).slice(0, 4).map(paragraph => <div dangerouslySetInnerHTML={{ __html: paragraph.outerHTML }} />)
-          }
-        </section>
 
-      </article>
-    </Center>
-  ))
-  .add('Lenker', () => (
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <h1 className="u-heading">Lenker på NDLA</h1>
+            <p>Tre nivåer av overskrifter:</p>
+            <div className="c-bodybox">
+              <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
+              <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
+              <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
+            </div>
+
+          </div>
           <div className="o-wrapper--inner">
+            <h2 id="ingress" className="u-heading">Ingress</h2>
+            <p>Ingresser skal være 1-2 setninger, og gi en oppsummering </p>
+            <div className="c-bodybox">
+              <section className="article_introduction"><p className="article_introduction">Idéutvikling er en viktig del av alt profesjonelt arbeid med medieuttrykk. I vertøykassa si har medieprodusenten et knippe fortelleteknikker og virkemidler innen design, tekst, lyd og bilde.</p></section>
+            </div>
+          </div>
+          <div className="o-wrapper--inner">
+            <h2 id="avsnitt" className="u-heading">Avsnitt</h2>
+            <p>
+                Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å lese.
+                Dette betyr at linjelengden ikke skal være for lang, og at vi
+                bruker stor nok skriftsstørrelse. Mange tar utgangspunkt i
+                16 punkter som en standardstørrelse, men siden NDLA har mange
+                teksttunge sider bruker vi 18 punkter.
+              </p>
+            <p>
+                En tekstlinje i full bredde skal utgjøre omtrent 50 – 75 tegn, om <span className="u-mark">*</span>-tegnene i setningen under kommer på samme linje, er den for lang:
+              </p>
+            <div className="c-bodybox">
+              <p className="u-serif">Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">*</span>isicing
+              elit, sed do eiusmod <span className="u-mark">*</span>tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+            </div>
+          </div>
+          <div className="o-wrapper--inner">
+            <h2 id="lenker" className="u-heading">Lenker</h2>
             <p><a>Lenker</a> på <a href="//ndla.no">ndla.no</a> bruker den vanlige
               konvensjonen med underlinje. Ingen lenker skal åpne i et nytt vindu
               (det vil si, bruke <code>target=&quot;_blank&quot;</code>), med mindre den inngår i
               et skjema hvor det er nødvendig at brukeren beholder vinduet eller fanen med skjemaet.
             </p>
             <p>Lenker kan enten være eksterne, interne eller vise til innhold på samme side ved hjelp av en <code>id</code>-attributt på for eksempel en overskrift.</p>
+            <div className="c-bodybox">
+              <p>Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en <a href="/">intern lenke</a>, og dette er en <a href="#overskrift">lenke som viser til innhold på samme side</a></p>
+            </div>
           </div>
-        </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <section className="o-wrapper--inner">
-          <p>Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en <a href="/">intern lenke</a>, og dette er en <a href="#overskrift">lenke som viser til innhold på samme side</a></p>
-          <h2 id="overskrift">Overskrift</h2>
         </section>
       </article>
     </Center>
@@ -211,7 +168,7 @@ storiesOf('Typografi', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Tabeller på NDLA</h1>
+          <h1 className="u-heading">Tabeller</h1>
           <div className="o-wrapper--inner">
             <p>Tabeller skal brukes til å presentere data (tabulær data), ikke til utforming.</p>
           </div>
@@ -530,24 +487,24 @@ storiesOf('Typografi', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Lister på NDLA</h1>
+          <h1 className="u-heading">Lister</h1>
         </section>
         <section className="o-wrapper--inner">
-          <h2>Ren liste</h2>
+          <h2 className="u-heading">Ren liste</h2>
           <ul className="o-list--bullets">
             <li>Listepunkt 1</li>
             <li>Listepunkt 2</li>
             <li>Listepunkt 3</li>
             <li>Listepunkt 4</li>
           </ul>
-          <h2>Lister med lenker</h2>
+          <h2 className="u-heading">Lister med lenker</h2>
           <ul className="o-list--bullets">
             <li><a href="">Listepunkt 1</a></li>
             <li><a href="">Listepunkt 2</a></li>
             <li><a href="">Listepunkt 3</a></li>
             <li><a href="">Listepunkt 4</a></li>
           </ul>
-          <h2>Nummererte lister</h2>
+          <h2 className="u-heading">Nummererte lister</h2>
           <ol>
             <li>Listepunkt</li>
             <li>Listepunkt</li>
@@ -562,15 +519,39 @@ storiesOf('Typografi', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Sitater på NDLA</h1>
+          <h1 className="u-heading">Sitater</h1>
           <div className="o-wrapper--inner">
             <p>Sitater som strekker seg over tre linjer i vanlig linjelengde er best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere sitater, men &laquo;&raquo;</p>
           </div>
         </section>
         <h2 className="u-heading">Eksempel</h2>
         <section className="o-wrapper--inner c-article-content u-noborder">
-          <div>{articleUrl(89)}</div>
-          <div dangerouslySetInnerHTML={{ __html: articleHMTL(89).articleHTML.outerHTML }} />
+          <blockquote>
+            «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
+             og hun viser oss at det å tre ut av den typiske sildestimen alle
+             absolutt skal følge, er kult.» <br />(Jente 19 år, Si;D, Aftenposten 23. mai 2016)
+          </blockquote>
+        </section>
+      </article>
+    </Center>
+  ))
+  .add('Spacing', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <h1 className="u-heading">Spacing</h1>
+          <div className="o-wrapper--inner">
+            <p>Designsystemet vårt baserer seg hovedsaklig på tre spacing-nivåer:</p>
+            <code>{`--spacing
+--spacing--small
+--spacing--large`}</code>
+            <p>Hvor:</p>
+            <ul>
+              <li>Spacing: 26px</li>
+              <li>Spacing small: 13px</li>
+              <li>Spacing large: 52px</li>
+            </ul>
+          </div>
         </section>
       </article>
     </Center>

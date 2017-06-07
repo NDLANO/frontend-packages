@@ -11,7 +11,7 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { LicenseShape } from '../../src/shapes';
 
-import { Icon, Button, LicenseByline, ClickableLicenseByline } from '../../src';
+import { Icon, Button, LicenseByline } from '../../src';
 
 
 const VideoContent = () => (
@@ -32,9 +32,9 @@ const VideoContent = () => (
         <div className="o-media__body c-medialist__body">
           <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Bygg inn</button>
+            <button className="c-button c-button--small c-button--transparent" type="button">Kopier referanse</button>
+            <button className="c-button c-button--small c-button--transparent" type="button">Last ned</button>
+            <button className="c-button c-button--small c-button--transparent" type="button">Bygg inn</button>
           </div>
           <ul className="c-medialist__meta">
             <li className="c-medialist__meta-item">12. desember 2014</li>
@@ -55,9 +55,9 @@ const TextContent = ({ license }) => (
       <h2>Slik bruker du denne teksten</h2>
     </div>
     <div>
-      <ClickableLicenseByline stacked="true" license={license}>
+      <LicenseByline stacked="true" license={license}>
         <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
-      </ClickableLicenseByline>
+      </LicenseByline>
     </div>
 
     <div>

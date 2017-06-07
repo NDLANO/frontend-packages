@@ -4,6 +4,7 @@
 @import "global/settings/settings.global";
 @import "global/settings/settings.colors";
 @import "global/settings/settings.typography";
+@import "global/settings/settings.animations";
 
 // Grids
 @import "global/utilities/utilities.widths";
@@ -59,11 +60,11 @@ $inuit-wrapper-width: 1024px;
 @import "../node_modules/inuitcss/objects/objects.box";
 @import "../node_modules/inuitcss/objects/objects.block";
 @import "global/objects/objects.wrapper";
+@import "global/objects/objects.lists";
 
 
 // COMPONENTS
-@import "modal/component.modal";
-@import "modal/component.licenseToggle";
+// @import "modal/component.licenseToggle";
 @import "logo/component.logo";
 @import "button/component.button";
 @import "hero/component.hero";
@@ -75,6 +76,7 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.collate";
 @import "global/components/component.factbox";
 @import "global/components/component.figure";
+@import "global/components/component.figure-license";
 @import "global/components/component.license-icons";
 @import "global/components/component.licensebox";
 @import "global/components/component.medialist";
@@ -89,6 +91,7 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.topic-resource";
 @import "global/components/component.topic-menu";
 @import "global/components/component.filter";
+@import "global/components/component.tabs";
 
 
 

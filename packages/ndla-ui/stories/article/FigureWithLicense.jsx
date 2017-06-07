@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import {
   // addCloseFigureDetailsClickListners,
   addShowFigureDetailsClickListners,
-  makeFigureLicenseIconsClickable,
+  // makeFigureLicenseIconsClickable,
 } from 'ndla-article-scripts';
 
 import { Figure, FigureCaption, FigureDetails } from '../../src';
@@ -29,11 +29,11 @@ const authors = [
 class FigureWithLicense extends Component {
 
   componentDidMount() {
+    // Overriding function -> fix closing license popup
     const addCloseFigureDetailsClickListners = () => {
       document.querySelectorAll('.c-figure .c-figure__close').forEach((el) => {
         const target = el;
         target.onclick = () => {
-          // removeElementById('c-license-icon-description');
           target.parentNode.parentNode.classList.remove('c-figure--active');
           target.parentNode.parentNode.querySelector('figcaption').classList.remove('u-hidden');
         };
@@ -41,19 +41,20 @@ class FigureWithLicense extends Component {
     };
     addShowFigureDetailsClickListners();
     addCloseFigureDetailsClickListners();
-    makeFigureLicenseIconsClickable();
+    // makeFigureLicenseIconsClickable();
   }
+
 
   render() {
     return (
-      <Figure>
+      <Figure className={`c-figure ${this.props.classes}`}>
         <div className="c-figure__img">
           {this.props.children}
         </div>
-        <FigureCaption caption={caption} reuseLabel="Gjenbruk" licenseAbbreviation="by-nc-nd" authors={authors} />
+        <FigureCaption caption={caption} reuseLabel="Bruk bildet" licenseAbbreviation="by-nc-nd" authors={authors} />
         <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
-          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
-          <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned bilde</button>
+          <button className="c-button c-button--outline c-figure-license__button" type="button">Kopier referanse</button>
+          <button className="c-button c-button--outline c-figure-license__button" type="button">Last ned bilde</button>
         </FigureDetails>
       </Figure>
     );
@@ -62,6 +63,7 @@ class FigureWithLicense extends Component {
 
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
+  classes: PropTypes.string,
 };
 
 export default FigureWithLicense;

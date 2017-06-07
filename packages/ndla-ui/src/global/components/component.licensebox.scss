@@ -3,29 +3,44 @@
 }
 
 .license-toggler {
-  @include mq(desktop) {
-    position: absolute;
-    top: 7px;
-    right: 19%;
-  }
+  display: block;
+  text-transform: uppercase;
+  @include inuit-font-size(13px);
+  letter-spacing: .05em;
+
+  margin: 0 0 0 auto;
 }
 .license__heading {
-  margin-top: $spacing;
   margin-left: $spacing;
   margin-right: $spacing;
+  @include mq($from: desktop) {
+    margin-left: 0;
+  }
 }
-.c-tabs__list {
-  border-bottom: 1px solid $brand-color--tertiary;
-}
+
 .c-licensebox--expanded {
   background: $brand-color--lighter;
+  div {
+    animation-name: fadeInLeft;
+    animation-duration: .5s;
+  }
+  @include mq($from: desktop) {
+    @include grids-expand(4,6,2);
+  }
 }
-.c-licensebox__introduction {
-  max-width: 500px;
-  margin-left: $spacing;
-  margin-right: $spacing;
+
+.license__list-item {
+  margin: $spacing 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  overflow: hidden;
 }
-.react-tabs {
-  margin-left: $spacing;
-  margin-right: $spacing;
+
+.license__list-item > img, .license__list-item > div, .license__list-item > embed, .license__list-item > iframe {
+  margin: 0 $spacing $spacing 0;
+  float: left;
+}
+.license__list-item > iframe {
+  max-width: 200px;
 }

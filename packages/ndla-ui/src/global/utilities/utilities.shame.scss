@@ -93,14 +93,10 @@
   float:right;
 }
 .article_figure--float-left {
-  margin-right: $spacing !important;
-  left: auto !important;
-  right: auto !important;
+  @include float(3, 4, 'left');
 }
 .article_figure--float-right {
-  margin-left: $spacing !important;
-  left: auto !important;
-  right: auto !important;
+  @include float(3, 4, 'right');
 }
 
 /* Width utils */
@@ -126,50 +122,10 @@
   }
 }
 
-/* Tabs Styling */
-$shame-spacing: 12px;
 
-.c-tabs {
+.license-byline {
+  position: relative;
 }
-.c-tabs__list {
-  max-width: 100%;
-  font-size: 18px;
-  font-weight: $font-weight-bold;
-  list-style: none;
-  margin: $spacing/1.4 0 $spacing--small;
-  padding: 0;
-  border-bottom: 1px $background-color--dark solid;
-}
-
-.c-tabs__tab {
-  display: inline-block;
-  padding: ($shame-spacing / 2) $shame-spacing;
-  transform: translateY(3px);
-
-  .c-tabs--selected {
-    color: $brand-color;
-    border-bottom: 5px solid $brand-color;
-  }
-
-  .c-tabs--selected.c-tabs__tab--muted {
-    color: inherit;
-    border-bottom: 5px solid lighten($brand-color, 40%);
-  }
-
-  &:hover {
-    color: $brand-color;
-    cursor: pointer;
-  }
-}
-.c-tabs__tab + .c-tabs__tab {
-    margin-left: $shame-spacing;
-}
-
-.c-tabs__panel {
-  // padding: ($shame-spacing / 2) $shame-spacing;
-}
-
-
 
 .license-byline__body:not(.license-byline__body--black) {
   display: none; // Fix better solution
@@ -180,6 +136,10 @@ $shame-spacing: 12px;
   margin-top: 4px;
 }
 
+.license-toggler {
+  text-decoration: underline;
+  text-align: right;
+}
 
 .license-byline__body--black {
   background-color: $brand-color;
@@ -192,59 +152,6 @@ $shame-spacing: 12px;
   top: 40px;
 }
 
-.license {
-  transition: all 200ms ease-in;
-  font-size: var(--font-size--medium);
-}
-
-.c-modal .license {
-  padding: 0;
-  margin:0;
-}
-
-.license-toggler {
-  text-decoration: underline;
-  text-align: right;
-  padding-right: $spacing;
-  float: right;
-}
-
-.license__list {
-  flex-basis: 100%;
-  margin: $spacing--small 0 0 0;
-  padding: 0;
-}
-
-.license__list-item {
-  margin: $spacing 0;
-  padding: 0;
-  list-style: none;
-  display: block;
-  overflow: hidden;
-}
-
-.license_list--stacked > * {
-  display: block;
-}
-
-.license__list-item > img, .license__list-item > div, .license__list-item > embed, .license__list-item > iframe {
-  margin: 0 $spacing $spacing 0;
-  float: left;
-}
-.license__list-item > iframe {
-  max-width: 200px;
-}
-
-.license__heading {
-  margin-bottom: $shame-spacing;
-  margin-top: $shame-spacing;
-  display: inline-block;
-}
-
-.license h2 {
-  margin-top: $shame-spacing;
-  margin-bottom: $shame-spacing;
-}
 
 .u-expanded {
   height: auto;

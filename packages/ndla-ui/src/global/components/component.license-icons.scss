@@ -12,16 +12,18 @@
   width: $spacing;
   height: $spacing;
 }
-.c-license-icons {
-}
 .c-license-icons__list, .c-license-icons__list2 {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+.c-license-icons__list {
+  display: flex;
+  flex-direction: column;
+}
 .c-license-icons__licenselabel {
-  display:none;
+  margin-left: $spacing--small;
 }
 
 .c-license-icons__item {

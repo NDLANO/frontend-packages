@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint jsx-a11y/no-static-element-interactions: 1 */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
@@ -76,12 +78,20 @@ export default class TopicMenu extends Component {
             <SafeLink to={toSubject}>{ subject }</SafeLink>
           </li>
           { topics.map(topic =>
-            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} key={topic.id}>
+            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
               <SafeLink onClick={() => this.handleMouseClick(topic.id)} {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
+              { topic.id === expandedTopicId && window.innerWidth < 700 ?
+                <SubtopicLinkList
+                  classes={classes}
+                  className={classes('right').className}
+                  closeMenu={closeMenu}
+                  topic={expandedTopic}
+                  toTopic={toTopic}
+                /> : null}
             </li>),
           ) }
         </ul>
-        { expandedTopic ?
+        { expandedTopic && window.innerWidth > 700 ?
           <SubtopicLinkList
             classes={classes}
             className={classes('right').className}

@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import moment from 'moment';
 import { Icon } from '../../src';
+import LicenseExample from './LicenseExample';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -35,10 +36,13 @@ const ArticleByline = ({ article }) => {
   }
 
   return (
-    <section {...classes('byline')}>
-      {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
-      <LastUpdated date={article.updated} />
-    </section>
+    <div>
+      <section {...classes('byline')}>
+        {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
+        <LastUpdated date={article.updated} />
+      </section>
+      <LicenseExample />
+    </div>
   );
 };
 

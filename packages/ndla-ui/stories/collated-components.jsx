@@ -3,21 +3,21 @@
 import React from 'react';
 
 import { storiesOf } from '@kadira/storybook';
-import { CC, BY, NC, ND, SA, getLicenseByAbbreviation } from 'ndla-licenses';
+import { BY, NC, ND, SA } from 'ndla-licenses';
 
 import { Center, DottedContainer } from './helpers';
 import {
   SiteNav, SiteNavItem, Button,
   FilterList,
-  Pager, Footer, LicenseIconList, LicenseByline,
+  Pager, Footer, LicenseIconList,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
-  ClickableLicenseByline,
-  ResourceWrapper, OneColumn, LayoutItem,
+  OneColumn, LayoutItem,
 } from '../src';
+import FigureWithLicense from './article/FigureWithLicense';
 import articles, { topicList, subjectList } from '../dummydata/index';
 import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList, ResourceTabs } from './molecules/resources';
+import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
 
 const toggle = () => {
@@ -141,49 +141,39 @@ storiesOf('Sammensatte moduler', module)
       </Footer>
     </Center>
   ))
-  .add('Lisens ikonstripe', () => (
+  .add('Lisens-ikoner', () => (
     <Center>
-      <h2 className="u-heading">Lisens ikon stripe</h2>
+      <h2 className="u-heading">Lisens-ikoner med beskrivelse</h2>
       <div className="o-wrapper--inner">
-        <LicenseIconList licenseRights={[BY, SA]} />
-        <LicenseIconList licenseRights={[BY, NC, SA]} />
         <LicenseIconList licenseRights={[BY, NC, ND]} />
       </div>
-      <h2 className="u-heading">Lisens ikon stripe med et fremhevet ikon</h2>
-      <div className="o-wrapper--inner">
-        <LicenseIconList licenseRights={[BY, SA]} activeLicenseRight={CC} />
-        <LicenseIconList licenseRights={[BY, NC, SA]} activeLicenseRight={NC} />
-        <LicenseIconList licenseRights={[BY, NC, ND]} activeLicenseRight={ND} />
-      </div>
-      <h2 className="u-heading">Klikkbar lisens ikon stripe</h2>
-      <div className="o-wrapper--inner">
-        <LicenseIconList licenseRights={[BY, NC, ND]} onLicenseIconClick={licenseRight => alert(`Klikket på: ${licenseRight.title}`)} />
-      </div>
-    </Center>
-  ))
-  .add('Lisens byline', () => (
-    <Center>
-      <h2 className="u-heading">Lisens byline</h2>
-      <div className="o-wrapper--inner">
-        <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
-        <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
-      </div>
-      <h2 className="u-heading">Klikkbar lisens byline</h2>
-      <div className="o-wrapper--inner">
-        <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
-      </div>
+
+      <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
+      <LayoutItem layout="center">
+        <FigureWithLicense>
+          <iframe
+            width="480"
+            height="270"
+            src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+            frameBorder="0"
+            allowFullScreen=""
+          />
+        </FigureWithLicense>
+      </LayoutItem>
     </Center>
   ))
   .add('Lisensboks', () => (
     <Center>
       <h2 className="u-heading">Lisensboks</h2>
       <article className="article">
-        <div className="license c-licensebox c-licensebox--expanded">
-          <Button stripped className="license-toggler" onClick={() => {}} >
-            Lukk boks
-          </Button>
-          <LicenseBox />
-        </div>
+        <LayoutItem layout="center">
+          <div className="license c-licensebox c-licensebox--expanded">
+            <Button stripped className="license-toggler" onClick={() => {}} >
+              Lukk boks
+            </Button>
+            <LicenseBox />
+          </div>
+        </LayoutItem>
       </article>
     </Center>
   ))
@@ -195,7 +185,7 @@ storiesOf('Sammensatte moduler', module)
           <div className="c-filter u-margin-top">
             <FilterList
               filterContent={[
-              { title: '1T', active: false },
+              { title: '1T', active: true },
               { title: 'R1', active: false },
               { title: 'R2', active: false },
               { title: 'S1', active: false },
@@ -204,7 +194,7 @@ storiesOf('Sammensatte moduler', module)
             />
           </div>
         </LayoutItem>
-        <h2 className="u-heading">Filter med valgte elementer</h2>
+        <h2 className="u-heading">Filter med forhåndsvalgte elementer</h2>
         <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
             <FilterList
@@ -258,7 +248,7 @@ storiesOf('Sammensatte moduler', module)
       </div>
     </Center>
   ))
-  .add('Liste med en type læringsressurs', () => (
+  .add('Læringsressurser enkeltstående', () => (
     <Center>
       <h2 className="u-heading">Læringsstier eksempel</h2>
       <div className="o-wrapper--inner">
@@ -276,7 +266,7 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>
   ))
-  .add('Liste med ulike læringsressurs typer', () => (
+  .add('Læringsressurser samlet', () => (
     <Center>
       <h2 className="u-heading">Ulike læringsressurser</h2>
       <article className="o-wrapper--narrow">
@@ -293,30 +283,13 @@ storiesOf('Sammensatte moduler', module)
       <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
     </Center>
   ))
-  .add('Læringsressurspanel for emneside', () => (
-    <Center>
-      <ResourceWrapper>
-        <Tabs
-          selectedIndex={1}
-          tabs={[
-            { title: 'Emner',
-              content: <TopicIntroductionList toTopic={() => '#'} goToTopicTitle="Gå til emnet" toTopicResources={() => '#'} goToTopicResourcesTitle="Se fagstoff" topics={topicList} />,
-            },
-            { title: 'Fagstoff', content: <ResourceTabs /> },
-          ]}
-        />
-      </ResourceWrapper>
-    </Center>
-  ))
   .add('Ekspanderbar lisensboks', () => (
     <Center>
       <h2 className="u-heading">Ekspanderbar lisensboks</h2>
       <article className="article">
-        <LicenseExample />
-      </article>
-      <h2 className="u-heading">Ekspanderbar lisensboks med byline</h2>
-      <article className="article">
-        <LicenseExample showByline />
+        <LayoutItem layout="center">
+          <LicenseExample />
+        </LayoutItem>
       </article>
     </Center>
   ))

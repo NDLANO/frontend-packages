@@ -10,7 +10,7 @@ import fetch from 'isomorphic-fetch';
 
 import btoa from 'btoa';
 
-const url = 'https://test.api.ndla.no/auth/tokens';
+const url = 'https://staging.api.ndla.no/auth/tokens';
 
 const b64EncodeUnicode = str => btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode(`0x${p1}`)));
 
@@ -30,7 +30,7 @@ export function headerWithAccessToken(token) {
 export const fetchArticle = id => (
    new Promise((resolve, reject) => {
      getToken().then((token) => {
-       fetch(`https://staging.api.ndla.no/article-converter/raw/nb/${id}/`, { headers: headerWithAccessToken(token) })
+       fetch(`https://ndla-article-converter.herokuapp.com/article-converter/raw/nb/${id}/`, { headers: headerWithAccessToken(token) })
         .then((res) => {
           if (res.ok) {
             return res.json()
@@ -47,7 +47,7 @@ export const fetchArticle = id => (
 export const fetchArticleFromApi = id => (
   new Promise((resolve, reject) => {
     getToken().then((token) => {
-      fetch(`https://staging.api.ndla.no/article-api/v1/articles/${id}`, { method: 'GET', headers: headerWithAccessToken(token) })
+      fetch(`https://ndla-article-converter.herokuapp.com/article-api/articles/${id}`, { method: 'GET', headers: headerWithAccessToken(token) })
         .then((res) => {
           if (res.ok) {
             return res.json()

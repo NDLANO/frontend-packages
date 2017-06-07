@@ -11,7 +11,7 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { LicenseShape } from '../../src/shapes';
 
-import { Icon, Button, ClickableLicenseByline } from '../../src';
+import { Icon, Button, LicenseByline } from '../../src';
 
 
 const VideoContent = () => (
@@ -30,7 +30,7 @@ const VideoContent = () => (
           />
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
@@ -65,7 +65,7 @@ const TextContent = () => (
           <h3 className="c-medialist__title">
             Tittel på tekst
           </h3>
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
@@ -89,7 +89,7 @@ const TextContent = () => (
           <h3 className="c-medialist__title">
             Tittel på tekst
           </h3>
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
@@ -123,7 +123,7 @@ const AudioContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
@@ -144,7 +144,7 @@ const AudioContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-sa')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-sa')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
@@ -174,7 +174,7 @@ const ImageContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
@@ -195,7 +195,7 @@ const ImageContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
@@ -216,7 +216,7 @@ const ImageContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
@@ -249,7 +249,7 @@ const H5PContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
@@ -271,7 +271,7 @@ const H5PContent = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Embed className="c-modal__button-icon" /> Bygg inn</button>
@@ -303,7 +303,7 @@ const LearningPath = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
@@ -320,7 +320,7 @@ const LearningPath = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Grid className="c-modal__button-icon" /> Se del-elementer</button>
           </div>
@@ -347,7 +347,7 @@ const Files = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
           </div>
@@ -366,7 +366,7 @@ const Files = () => (
           </a>
         </div>
         <div className="o-media__body c-medialist__body">
-          <ClickableLicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
+          <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')} />
           <div className="c-medialist__actions">
             <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned</button>
           </div>

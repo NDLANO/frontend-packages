@@ -1,29 +1,27 @@
-.c-licenseToggle__ctablock {
+.c-figure__license {
+  position: relative;
+}
+.c-figure-license__cta-block {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-self: flex-end;
-
-  button {
-    margin-bottom: 0;
-  }
 
   @include mq(tablet) {
     flex-direction: row;
     flex-wrap: wrap;
   }
 }
-.c-licenseToggle__ctaWrapper {
+.c-figure-license__cta-wrapper {
   background-color: $white;
   padding: $spacing;
   margin-top: $spacing;
 }
-.c-licenseToggle__button {
-  margin: 3% 0;
+.c-figure-license__button {
+  margin: $spacing--small/3 0;
 }
-.c-licenseToggle__title {
-  margin:0;
-  padding-bottom: $spacing--small;
+.c-figure-license__title {
+  margin:0 0 $spacing--small;
   @include inuit-font-size(18px);
   color: $brand-color;
 }

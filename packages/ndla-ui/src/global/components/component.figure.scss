@@ -15,10 +15,6 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-
-  @include mq(tablet) {
-    flex-direction: row;
-  }
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
   display: flex;
@@ -30,23 +26,30 @@
 .c-figure__byline {
   padding-right: $spacing;
   text-align: left;
-  flex-basis: 33%;
-  flex-grow: 1;
-  flex-direction: column-reverse;
 
-  .c-button--outline svg {  //remove
-    display:none;
+  .c-license-icons__list {
+    flex-direction: row;
+    text-align: center;
+    justify-content:center;
+  }
+
+  .c-license-icons__licenselabel { // remove license descriptions
+    display: none;
   }
 }
 
 .c-figure__info {
+  max-width: 500px;
+  margin-bottom: $spacing--small;
+  @include inuit-font-size(14px, 22px);
   @include mq($from: tablet) {
-    max-width: 60%;
+    flex: 2;
+    margin-bottom: 0;
   }
 }
 
 .c-figure__byline-licenselist {
-  margin: -$spacing--small/2 0 $spacing--small/2;
+  margin: 0;
   text-align: center;
   max-width: 130px;
 }
@@ -54,7 +57,7 @@
 .c-figure__close {
   display: none;
   position: absolute;
-  top: $spacing--large*.75;
+  top: $spacing;
   right: $spacing;
   background: transparent;
   border: none;
@@ -74,23 +77,11 @@
 
 }
 
-.c-figure__license {
-  font-family: $font;
-  @include mq(desktop) {
-    width: 80%;
-    margin: 0 auto;
-    position: absolute;
-    bottom: -60px;
-    opacity:0;
-    transition: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
-  }
-}
-
 .c-figure__list {
   background: $white;
   list-style: none;
-  padding: $spacing--small;
-  margin-top: $spacing;
+  padding: 0 $spacing--small $spacing--small $spacing--small;
+  margin-top: 0;
   margin-bottom: 0;
   li {
     list-style: none;
@@ -114,7 +105,6 @@
 
   .c-figure__license {
     background-color: $brand-color--lighter;
-    // box-shadow: 0 3px 45px rgba(black, .2);
     padding: $spacing;
     @include mq(desktop) {
       width: 90%;
@@ -123,15 +113,14 @@
       bottom: -60px;
       left:0;
       right: 0;
-      transform: translateY(-20px);
       opacity: 1;
+      animation-name: fadeInBottom;
+      animation-duration: .5s;
     }
   }
 
   .c-figure__close {
     display: block;
-    transform: translateY(-20px);
-    opacity: 1;
   }
   #figmeta {
     height: auto;
@@ -143,9 +132,8 @@
     max-width: 100%;
   }
   .c-license-icons__licenselabel {
-    padding-left: $spacing--small;
     padding-right: $spacing;
-    display: inline-block;
+    display: inline;
     max-width: 400px;
   }
 

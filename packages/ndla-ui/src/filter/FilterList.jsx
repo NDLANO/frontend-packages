@@ -16,10 +16,25 @@ const filterClasses = new BEMHelper({
 });
 
 const FilterList = ({ filterContent }) => (
-  <ul {...filterClasses('list')}>
-    <li {...filterClasses('label')}>FILTER:</li>
-    { filterContent ? filterContent.map(filterItem => <li {...filterClasses('item', filterItem.active ? 'active' : null)}><span {...filterClasses('item-checkbox')} /> { filterItem.title ? filterItem.title : null }</li>) : null}
-  </ul>
+  <div {...filterClasses('list')}>
+    <span {...filterClasses('label')}>FILTER:</span>
+    { filterContent ? filterContent.map(filterItem =>
+      <div {...filterClasses('item')}>
+        <input
+          type="checkbox"
+          name="gruppe"
+          id={filterItem.title ? filterItem.title : null}
+          value={filterItem.title ? filterItem.title : null}
+          defaultChecked={filterItem.active ? 'true' : null}
+        />
+        <label
+          htmlFor={filterItem.title ? filterItem.title : null}
+        >
+          <span {...filterClasses('item-checkbox')} />
+          { filterItem.title ? filterItem.title : null }
+        </label>
+      </div>) : null}
+  </div>
 );
 
 FilterList.propTypes = {

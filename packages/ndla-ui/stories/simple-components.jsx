@@ -49,20 +49,17 @@ storiesOf('Enkle komponenter', module)
           <h1 className="u-heading">Knapper</h1>
           <div className="o-wrapper--inner">
             <p>Knapper er til å klikke på, ikke for å lenke til.</p>
+            <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
           </div>
         </section>
         <h2 className="u-heading">Eksempel</h2>
         <section className="o-wrapper--inner">
           <InlineContainer>
-            <Button onClick={action('clicked')}>Knapp</Button>
-          </InlineContainer>
-          <InlineContainer>
             <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
           </InlineContainer>
           <InlineContainer>
-            <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Knapp med ikon</button>
+            <Button onClick={action('clicked')}>Fylt knapp</Button>
           </InlineContainer>
-
           <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
         </section>
       </article>

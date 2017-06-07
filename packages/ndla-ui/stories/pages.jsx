@@ -500,7 +500,7 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med bildeflyt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero>
+        <Hero red>
           <OneColumn>
             <div className="c-hero__content">
               <section>

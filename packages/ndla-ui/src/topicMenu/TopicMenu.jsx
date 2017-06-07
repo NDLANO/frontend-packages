@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint jsx-a11y/no-static-element-interactions: 1 */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';

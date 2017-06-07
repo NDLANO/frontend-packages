@@ -74,9 +74,9 @@ const ExamplePage2 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <LayoutItem layout="extended">
-          <ResourceSubsetList />
-        </LayoutItem>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <ResourceSubsetList />
       </LayoutItem>
     </article>
   </OneColumn>
@@ -95,6 +95,9 @@ const ExamplePageImages = () => (
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
+        <FigureWithLicense classes="article_figure--float-left">
+          <img alt="person med mange armer som gjør forskjellige ting samtidig. Foto." src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg" />
+        </FigureWithLicense>
         <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -116,9 +119,9 @@ const ExamplePageImages = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <LayoutItem layout="extended">
-          <ResourceSubsetList />
-        </LayoutItem>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <ResourceSubsetList />
       </LayoutItem>
     </article>
   </OneColumn>
@@ -273,6 +276,8 @@ const ExamplePage3 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
         <ResourceSubsetList />
       </LayoutItem>
     </article>
@@ -313,6 +318,8 @@ const ExamplePage4 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
         <ResourceSubsetList />
       </LayoutItem>
     </article>

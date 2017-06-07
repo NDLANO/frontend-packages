@@ -2,12 +2,7 @@
   max-width: 100%;
   @include inuit-font-size(18px);
   display:none;
-  color: $brand-color;
   font-weight: $font-weight-bold;
-
-  a:hover {
-    color: $brand-color--light;
-  }
 
   @include mq(tablet) {
     display: block;
@@ -29,7 +24,6 @@
   display: inline-block;
   line-height: 2em;
   a {
-    color: $brand-color !important;
     text-decoration: none;
     padding-bottom: 5px;
     border-bottom: 1px solid $brand-color;

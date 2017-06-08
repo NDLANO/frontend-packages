@@ -73,7 +73,6 @@
   min-height: 250px;
   text-align: left;
   z-index: 40;
-  display: flex;
   top: 0;
   left: 0;
   right: 0;
@@ -81,12 +80,8 @@
   text-transform: none;
   animation-name: fadeIn;
   animation-duration: .4s;
-
-  .c-filter__list {
-    display: none;
-    @include mq(desktop) {
-      display: inline-block;
-    }
+  @include mq(tablet) {
+    display: flex;
   }
 }
 
@@ -101,10 +96,10 @@
 
 .c-topic-menu__left {
   flex: 1;
-  margin-top: 100px;
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: .2s;
+  margin-top: $spacing;
   @include mq(tablet) {
     margin-top: 0;
     padding-top: 130px;
@@ -210,8 +205,6 @@
 }
 
 .c-topic-menu__masthead {
-  position: absolute;
-  height: 85px;
   width: 100%;
   background: white;
   z-index: 99;
@@ -220,8 +213,14 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: space-between;
+  flex-direction: column;
+  padding: 80px $spacing--small $spacing--small $spacing--small;
   @include mq(tablet) {
+    flex-direction: row;
+    position: absolute;
     left: 30%;
+    height: 85px;
+    padding: 0;
   }
 }
 .c-topic-menu__search {
@@ -249,8 +248,10 @@
   }
 }
 .c-topic-menu__right-filler {
-  width: 200px;
-  height: 100px;
-  align-self: flex-end;
-  flex-grow: 2;
+  @include mq(tablet) {
+    width: 200px;
+    height: 100px;
+    align-self: flex-end;
+    flex-grow: 2;
+  }
 }

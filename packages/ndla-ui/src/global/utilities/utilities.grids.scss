@@ -19,12 +19,13 @@ $denominator: auto;
     @include mq(tablet) {
       float:left;
       width: ($cols/$maxcols)*100% !important;
-      left: auto !important;
+      right: auto !important;
       padding: 0;
-      margin: 0 0 $spacing $spacing;
+      margin: $spacing $spacing 0 0;
+      position: static !important;
     }
     @include mq(desktop) {
-      margin: 0 (-$colDifference/$maxcols*100%) $spacing $spacing;
+      margin: 0 $spacing $spacing (-$colDifference/$maxcols*100%);
     }
   }
   @if $direction == right {

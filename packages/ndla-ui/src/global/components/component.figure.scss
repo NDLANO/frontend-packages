@@ -33,6 +33,12 @@
     justify-content:center;
   }
 
+  .c-figure__captionbtn {
+    svg {
+      display:none;
+    }
+  }
+
   .c-license-icons__licenselabel { // remove license descriptions
     display: none;
   }

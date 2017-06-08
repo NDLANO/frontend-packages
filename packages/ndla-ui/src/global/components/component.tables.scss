@@ -20,7 +20,7 @@
     overflow:hidden;
   }
   td, th {
-    padding: $spacing/3;
+    padding: $spacing/3 $spacing $spacing/3 $spacing/3;
   }
   th, tbody td:before {
     font-weight: $font-weight-bold;

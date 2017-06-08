@@ -5,13 +5,13 @@ import { storiesOf } from '@storybook/react';
 import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
-import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, Icon, TopicIntroductionList, LayoutItem } from '../src';
+import { Aside, Footer, Hero, OneColumn, PageContainer, ResourceWrapper, Icon, TopicIntroductionList, LayoutItem, TopicBreadcrumb } from '../src';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 
 // Using for example alternative article
-import article, { topicList } from '../dummydata/index';
+import article, { topicList, subjectList } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -74,9 +74,9 @@ const ExamplePage2 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <LayoutItem layout="extended">
-          <ResourceSubsetList />
-        </LayoutItem>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <ResourceSubsetList />
       </LayoutItem>
     </article>
   </OneColumn>
@@ -95,6 +95,9 @@ const ExamplePageImages = () => (
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
+        <FigureWithLicense classes="article_figure--float-left">
+          <img alt="person med mange armer som gjør forskjellige ting samtidig. Foto." src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg" />
+        </FigureWithLicense>
         <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -106,7 +109,7 @@ const ExamplePageImages = () => (
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <FigureWithLicense>
+        <FigureWithLicense classes="article_figure--float-right">
           <img alt="person med mange armer som gjør forskjellige ting samtidig. Foto." src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg" />
         </FigureWithLicense>
         <p>En pitch er en kortvarig framføring av en idé for en potensiell
@@ -116,9 +119,9 @@ const ExamplePageImages = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
-        <LayoutItem layout="extended">
-          <ResourceSubsetList />
-        </LayoutItem>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <ResourceSubsetList />
       </LayoutItem>
     </article>
   </OneColumn>
@@ -273,6 +276,8 @@ const ExamplePage3 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
         <ResourceSubsetList />
       </LayoutItem>
     </article>
@@ -313,6 +318,8 @@ const ExamplePage4 = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
         <ResourceSubsetList />
       </LayoutItem>
     </article>
@@ -402,16 +409,6 @@ const ExampleWithSummary = () => (
   </OneColumn>
 );
 
-const SubTopicHero = () => (
-  <OneColumn cssModifier="narrow">
-    <div className="c-hero__content" />
-  </OneColumn>
-);
-
-const MainTopicHero = () => (
-  <OneColumn cssModifier="narrow" />
-);
-
 
 const ResourcesSubTopics = () => (
   <OneColumn cssModifier="narrow">
@@ -447,7 +444,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage with licensebox', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero white />
+      <Hero />
       <ArticleLoader articleId="44" withLicenseExample />
       <FooterExample />
     </PageContainer>
@@ -455,7 +452,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage loader', () => (
     <PageContainer>
       <Masthead />
-      <Hero white />
+      <Hero />
       <ArticleLoader />
       <FooterExample />
     </PageContainer>
@@ -463,7 +460,7 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero white />
+      <Hero />
       <ArticleLoader articleId="34" />
       <FooterExample />
     </PageContainer>
@@ -484,10 +481,18 @@ storiesOf('Sidevisninger', module)
   ))
   ;
 storiesOf('Artikkelmaler', module)
-    .add('Artikkel med herobilde', () => (
+    .add('Artikkel med bilde', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLoader articleId="208" />
         <FooterExample />
       </PageContainer>
@@ -495,7 +500,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med bildeflyt', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="https://images.unsplash.com/photo-1469082993720-0b12bbd9e68b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" />
+        <Hero red>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePageImages />
         <FooterExample />
       </PageContainer>
@@ -503,7 +516,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med video', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePage2 />
         <FooterExample />
       </PageContainer>
@@ -511,7 +532,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med tabell', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePage3 />
         <FooterExample />
       </PageContainer>
@@ -519,7 +548,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med h5p', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExamplePage4 />
         <FooterExample />
       </PageContainer>
@@ -527,7 +564,15 @@ storiesOf('Artikkelmaler', module)
     .add('Artikkel med oppsummeringsboks', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ExampleWithSummary />
         <FooterExample />
       </PageContainer>
@@ -569,10 +614,18 @@ storiesOf('Emnesider', module)
         <FooterExample />
       </PageContainer>
     ))
-    .add('2. Valgt fag', () => (
+    .add('2. Fag', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ResourcesSubTopics />
         <FooterExample />
       </PageContainer>
@@ -581,7 +634,13 @@ storiesOf('Emnesider', module)
       <PageContainer>
         <MastheadWithTopicMenu />
         <Hero>
-          <MainTopicHero />
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
         </Hero>
         <ArticleLoader articleId="1325" isTopicArticle />
         <ResourceWrapper>
@@ -593,12 +652,22 @@ storiesOf('Emnesider', module)
     .add('4. Underemne', () => (
       <PageContainer>
         <MastheadWithTopicMenu />
-        <Hero url="http://staging.api.ndla.no/image-api/v1/raw/syab94b0.jpg">
-          <SubTopicHero />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+              </section>
+            </div>
+          </OneColumn>
         </Hero>
         <ArticleLoader articleId="5948" notitle />
         <OneColumn>
-          <ResourceSubsetList />
+          <article className="c-article">
+            <LayoutItem layout="center">
+              <ResourceSubsetList />
+            </LayoutItem>
+          </article>
         </OneColumn>
         <FooterExample />
       </PageContainer>

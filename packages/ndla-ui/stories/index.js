@@ -1,6 +1,6 @@
 require('./welcome');
 require('./concepts');
-require('./typography');
+require('./basic-styles');
 require('./simple-components');
 require('./collated-components');
 require('./pages');

@@ -7,14 +7,15 @@
 .masthead > div {
   justify-content: center;
   text-align: center;
-  padding: $spacing--small $spacing;
   text-transform: uppercase;
+  padding: $spacing--small $spacing $spacing--small;
   font-weight: $font-weight-normal;
+  display: flex;
 
   @include mq(tablet) {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: $spacing--small $spacing;
   }
   @include mq(desktop) {
     padding: $spacing--small $spacing--large;
@@ -23,10 +24,10 @@
 .masthead__left {
 }
 .masthead__right {
-  padding: $spacing--small 0;
   flex-grow: 1;
+  text-align:right;
     @include mq(tablet) {
-      text-align:right;
+      padding: $spacing--small 0;
       padding:0;
     }
     @include mq(desktop) {

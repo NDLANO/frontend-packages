@@ -1,11 +1,30 @@
 .c-medialist {
   padding-left: 0;
 }
+
+.c-medialist__item {
+  margin-bottom: $spacing--small;
+  padding: $spacing--small 0;
+  border-bottom: 1px solid $brand-color--tertiary;
+  @include mq(tablet) {
+    display: flex;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.c-medialist__body {
+  @include inuit-font-size(14px, 24px);
+  min-width: 50%;
+}
+
 .c-medialist__img {
   float:none;
   margin: 0 0 $spacing--small;
   @include mq(tablet) {
-    float:left;
+    max-width: 50%;
     margin-right: $spacing;
   }
 
@@ -14,31 +33,18 @@
   }
   img {
     max-width: 100%;
+    width: 100%;
     margin:0;
   }
 }
 
-.c-medialist__body {
-  @include inuit-font-size(14px, 24px);
-}
-.c-medialist__item {
-  margin-bottom: $spacing--small;
-  padding: $spacing--small 0;
-  border-bottom: 1px solid $brand-color--tertiary;
-  &:last-child {
-    border-bottom: none;
-  }
-}
 .c-medialist__actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   margin-top: $spacing--small;
   margin-bottom: $spacing--small;
-  @include mq(tablet) {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+  width: 100%;
   button, a {
     text-align: left;
     margin: 0 $spacing $spacing--small 0;
@@ -50,9 +56,13 @@
 }
 .c-medialist__meta-item {
   width: 100%;
-  padding-left: 0;
-  margin-left: -1em;
   padding-right: $spacing--small;
+  margin-left: 0;
+}
+.c-medialist__ref {
+  margin-top: $spacing--small;
+  margin-right: $spacing;
+  width: 100%;
 }
 .c-medialist__icon {
   color: $brand-color;
@@ -65,5 +75,7 @@
 }
 .c-medialist__title {
   margin-top: 0;
-  margin-bottom: $spacing--small;
+  margin-bottom: $spacing--small/2;
+  @include inuit-font-size(16px);
+  color: $brand-color;
 }

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 export const LayoutItem = ({ children, layout }) => {
   switch (layout) {
     case 'extend' : {
-      return <section className="u-5/6@desktop u-pull-half">{children}</section>;
+      return <section className="u-10/12@desktop u-push-1/12@desktop">{children}</section>;
     }
     case 'center' : {
       return <section className="u-4/6@desktop u-push-1/6@desktop">{children}</section>;

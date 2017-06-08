@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { BY, NC, ND, SA, CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import Icon from '../icons/Icon';
-import Button from '../button/Button';
+// import Button from '../button/Button';
 
 const classes = new BEMHelper({
   name: 'license-icons',
@@ -35,27 +35,16 @@ LicenseIcon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-const LicenseIconItem = ({ licenseRight, activeLicenseRight, onLicenseIconClick }) => (
+const LicenseIconItem = ({ licenseRight, activeLicenseRight }) => (
   <li {...classes('item', (activeLicenseRight === licenseRight && 'active'))}>
-    { onLicenseIconClick ?
-      <div>
-        <Button stripped onClick={() => onLicenseIconClick(getLicenseRightByAbbreviation(licenseRight))} >
-          <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-        </Button>
-      </div>
-      :
-      <div>
-        <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-        <span className="c-license-icons__licenselabel">{ getLicenseRightByAbbreviation(licenseRight).description }</span>
-      </div>
-    }
+    <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+    <span className="c-license-icons__licenselabel">{ getLicenseRightByAbbreviation(licenseRight).description }</span>
   </li>
 );
 
 LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
   activeLicenseRight: PropTypes.string,
-  onLicenseIconClick: PropTypes.func,
 };
 
 const LicenseIconList = ({ licenseRights, ...rest }) => {
@@ -72,7 +61,6 @@ const LicenseIconList = ({ licenseRights, ...rest }) => {
 LicenseIconList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeLicenseRight: PropTypes.string,
-  onLicenseIconClick: PropTypes.func,
 };
 
 export default LicenseIconList;

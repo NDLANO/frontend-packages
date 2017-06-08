@@ -1,4 +1,6 @@
 .c-article {
+  font-family: $font-serif;
+  @include inuit-font-size(18px, 32px);
   background: $white;
   margin-top: $spacing--large;
   margin-right: auto;
@@ -12,25 +14,44 @@
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
   }
+
+  section p:first-child {
+    @include mq(tablet) {
+      margin-top: $spacing--large;
+    }
+  }
 }
 .c-article--clean {
   margin-top: $spacing;
   border: none;
 }
 
+.c-article__title--icon {
+  margin-left: -6px;
+  svg {
+    width: 50px;
+    height: 50px;
+    margin-left: -60px;
+    margin-right: 10px;
+    margin-top: -3px;
+  }
+}
+
 .c-article__byline {
   margin-top: $spacing;
-  margin-bottom: $spacing;
+  margin-bottom: $spacing--small;
   padding-top: $spacing--small/2;
   padding-bottom: $spacing--small/2;
   padding-left: $spacing--small;
   padding-right: $spacing--small;
   background-color: $brand-grey--lighter;
-  @include inuit-font-size(16px, 20px);
+  @include inuit-font-size(14px, 20px);
+  letter-spacing: .05em;
   font-family: $font;
   color: $brand-grey;
   text-transform: uppercase;
   display: flex;
+  justify-content: space-between;
 }
 
 .c-article-meta {
@@ -48,9 +69,6 @@
 }
 
 .c-article__authors {
-  @include mq(tablet) {
-    max-width: 50%;
-  }
   padding-right: $spacing;
   svg {
     margin-top: -3px;

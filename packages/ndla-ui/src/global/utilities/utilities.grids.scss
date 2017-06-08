@@ -1,18 +1,6 @@
 $numerator: auto;
 $denominator: auto;
 
-// Calculate widths for grids mixin
-@mixin grids($numerator, $denominator) {
-    width: ($numerator / $denominator) * 100% !important;
-}
-
-// Push item
-@mixin grids-push($numerator, $denominator) {
-  position: relative !important;
-  right: auto !important;
-  left: ($numerator / $denominator) * 100% !important;
-}
-
 // Expand item
 @mixin grids-expand($numerator, $denominator, $expand) {
   $unit: $numerator / $denominator * 100%;
@@ -23,4 +11,34 @@ $denominator: auto;
   width: $width + $unit !important;
   padding-left: $spacing;
   padding-right: $spacing;
+}
+
+@mixin float($cols, $maxcols, $direction) {
+  $colDifference: $maxcols - $cols;
+  @if $direction == left {
+    @include mq(tablet) {
+      float:left;
+      width: ($cols/$maxcols)*100% !important;
+      right: auto !important;
+      padding: 0;
+      margin: $spacing $spacing 0 0;
+      position: static !important;
+    }
+    @include mq(desktop) {
+      margin: 0 $spacing $spacing (-$colDifference/$maxcols*100%);
+    }
+  }
+  @if $direction == right {
+    @include mq(tablet) {
+      float:right;
+      width: ($cols/$maxcols)*100% !important;
+      left: auto !important;
+      padding: 0;
+      margin: 0 0 $spacing $spacing;
+    }
+    @include mq(desktop) {
+      margin: 0 (-$colDifference/$maxcols*100%) $spacing $spacing;
+    }
+  }
+
 }

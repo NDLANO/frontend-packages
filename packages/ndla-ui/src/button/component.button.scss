@@ -28,7 +28,7 @@
     transform: translateY(2px) translateX(2px);
   }
   &:disabled {
-    color: $background-color--light;
+    color: $brand-grey;
     background-color: $background-color--dark;
     border: 0;
     cursor: not-allowed;

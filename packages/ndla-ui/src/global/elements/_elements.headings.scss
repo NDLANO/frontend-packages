@@ -23,7 +23,12 @@ h1, h2, h3, h4, h5 {
 
 h1 {
   font-weight: $font-weight-semibold;
-  @include inuit-font-size(38px, 45px);
+  @include inuit-font-size(30px, 40px);
+  margin-bottom: $spacing--small;
+  @include mq(tablet) {
+    @include inuit-font-size(38px, 45px);
+    margin-bottom: $spacing;
+  }
 }
 
 h2 {

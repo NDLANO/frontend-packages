@@ -1,4 +1,8 @@
 .c-topic-resource {
+  @include mq($from: desktop) {
+    @include grids-expand(4,6,2);
+    margin-top: $spacing--large;
+  }
 }
 .c-topic-resource__list {
   list-style: none;

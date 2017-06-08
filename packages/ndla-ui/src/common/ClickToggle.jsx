@@ -33,16 +33,17 @@ export default class ClickToggle extends React.Component {
   }
 
   render() {
-    const { title, buttonClassName, containerClass: Component, ...rest } = this.props;
+    const { title, openTitle, buttonClassName, containerClass: Component, ...rest } = this.props;
     const { isOpen } = this.state;
 
     const children = React.cloneElement(this.props.children, { close: this.close });
     return (
       <Component {...rest}>
         { isOpen ? <Button className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
-        <Button className={buttonClassName} onClick={this.handleClick} >
-          { title }
-        </Button>
+        { isOpen ?
+          <Button className={`active ${buttonClassName}`} onClick={this.handleClick} >{ openTitle || title }</Button> :
+          <Button className={buttonClassName} onClick={this.handleClick} >{ title }</Button>
+        }
         { isOpen ? children : null }
       </Component>
     );
@@ -52,6 +53,7 @@ export default class ClickToggle extends React.Component {
 ClickToggle.propTypes = {
   containerClass: elementType,
   title: PropTypes.node.isRequired,
+  openTitle: PropTypes.node.isRequired,
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,

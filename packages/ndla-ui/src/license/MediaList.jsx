@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import getLicenseByAbbreviation from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
-import ClickableLicenseByline from './ClickableLicenseByline';
+import LicenseByline from './LicenseByline';
 
 const oClasses = new BEMHelper({
   name: 'media',
@@ -51,11 +51,11 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListItemBody = ({ children, license, title, locale }) =>
+export const MediaListItemBody = ({ children, license, title }) =>
   <div {...oClasses('body', null, cClasses('body').className)}>
     { title ? <h3 className="c-medialist__title">{title} </h3> : null}
-    <ClickableLicenseByline
-      license={getLicenseByAbbreviation(license, locale)}
+    <LicenseByline
+      license={getLicenseByAbbreviation(license)}
     />
     {children}
   </div>;

@@ -1,0 +1,39 @@
+$tabs-spacing: 12px;
+.c-tabs {
+  margin-left: $spacing;
+  margin-right: $spacing;
+  @include mq($from: desktop) {
+    margin-left: 0;
+  }
+}
+.c-tabs__tab {
+  display: inline-block;
+  padding: ($tabs-spacing / 2) $tabs-spacing;
+  transform: translateY(3px);
+  font-family: $font;
+
+  &:hover {
+    color: $brand-color;
+    cursor: pointer;
+  }
+}
+.c-tabs__tab--selected {
+  color: $brand-color;
+  border-bottom: 5px solid $brand-color;
+}
+.c-tabs--selected.c-tabs__tab--muted {
+  color: inherit;
+  border-bottom: 5px solid lighten($brand-color, 40%);
+}
+.c-tabs__tab + .c-tabs__tab {
+    margin-left: $tabs-spacing;
+}
+.c-tabs__list {
+  max-width: 100%;
+  font-size: 18px;
+  font-weight: $font-weight-bold;
+  list-style: none;
+  margin: $spacing/1.4 0 $spacing--small;
+  border-bottom: 1px solid $brand-color--tertiary;
+  padding: 0;
+}

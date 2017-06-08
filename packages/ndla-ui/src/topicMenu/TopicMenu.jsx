@@ -1,3 +1,5 @@
+/* eslint-disable  */
+/* @todo: fix onClick handling on <li> */
 /**
  * Copyright (c) 2016-present, NDLA.
  *
@@ -85,7 +87,7 @@ export default class TopicMenu extends Component {
                   closeMenu={closeMenu}
                   topic={expandedTopic}
                   toTopic={toTopic}
-                /> : null}
+                /> : null }
             </li>),
           ) }
         </ul>

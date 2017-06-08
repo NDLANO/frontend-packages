@@ -6,12 +6,26 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  top: 80px;
+  width: 100%;
+  border-top: 1px solid $brand-color--light;
+  padding-top: $spacing--small;
+  @include mq(tablet) {
+    width: auto;
+    position: relative;
+    top: 0;
+    border: none;
+    padding-top: 0;
+  }
 }
 .c-filter__label {
   text-transform: uppercase;
-  margin: 0 $spacing--small;
-  display: inline-block;
   @include inuit-font-size(16px);
+  display:block;
+  @include mq(tablet) {
+    margin: 0 $spacing--small;
+    display: inline-block;
+  }
 }
 .c-filter__item {
   display: inline-block;

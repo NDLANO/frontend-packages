@@ -16,40 +16,20 @@
   color: $white;
   padding: 5% 0;
   z-index: 9;
-
-
-  *,a:not([class]) {
-    color: $brand-grey-dark;
-  }
-  a:hover {
-    color: $brand-grey-dark;
-    text-decoration: none;
-  }
 }
 .c-hero--alt {
   background-repeat: repeat;
   background-size: 20px;
   background-color: $brand-color--light;
 }
-.c-hero--small {
-  position: relative;
-  @include mq(tablet) {
-    min-height: 370px;
+.c-hero--red {
+  background-color: $mark-color;
+  a {
+    color: $black;
+    border-bottom: 1px solid $brand-grey !important;
   }
-  >::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: rgba($brand-color, 0.6);
-  }
-}
-.c-hero--white {
-  background-image: none;
-  background-color: $brand-grey-dark;
-  @include mq(tablet) {
-    min-height: 170px;
+  a:hover {
+    color: $black;
+    border: none !important;
   }
 }

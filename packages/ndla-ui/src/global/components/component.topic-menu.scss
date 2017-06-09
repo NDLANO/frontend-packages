@@ -91,7 +91,6 @@
   list-style: none;
   margin: 0;
   overflow-y: auto;
-  max-height: 87%;
   @include fadeInLeftItems(li, 30);
 }
 
@@ -118,6 +117,7 @@
   animation-duration: .2s;
   padding: $spacing $spacing--small $spacing--small;
   @include mq(tablet) {
+    overflow-y: auto;
     padding-top: 130px;
     padding-left: $spacing--large;
     padding-right: $spacing--large;

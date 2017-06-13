@@ -16,6 +16,7 @@ import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 // import './fitvids';
+//
 import LicenseByline from '../license/LicenseByline';
 
 const classes = new BEMHelper({

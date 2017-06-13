@@ -26,7 +26,7 @@ const by = {
   nb: {
     title: 'Navngivelse',
     userFriendlyTitle: 'Navngivelse',
-    description: 'Opphavspersonen til verket må navngis.',
+    description: 'Du må alltid oppgi hvem som har laget bildet, videoen, teksten osv.',
   },
   en: {
     title: 'Attribution',
@@ -40,7 +40,7 @@ const sa = {
   nb: {
     title: 'Share Alike',
     userFriendlyTitle: 'Del på samme vilkår',
-    description: 'Bearbeidinger av verket kan bare spres på samme vilkår som det opprinnelige verket.',
+    description: 'Du kan bare dele bildet, videoen, teksten osv. med samme lisens som det opprinnelige bildet, videoen, teksten osv.',
   },
   en: {
     short: 'SA',
@@ -55,7 +55,7 @@ const nc = {
   nb: {
     title: 'Ikke-kommersiell',
     userFriendlyTitle: 'Ikke-kommersiell',
-    description: 'Verket kan ikke brukes kommersielt.',
+    description: 'Du kan ikke endre bildet, videoen, teksten osv.',
   },
   en: {
     title: 'Non Commercial',
@@ -69,7 +69,7 @@ const nd = {
   nb: {
     title: 'Ingen bearbeiding',
     userFriendlyTitle: 'Ingen bearbeiding',
-    description: 'Verket kan bare brukes i uendret tilstand.',
+    description: 'Bildet, videoen teksten osv. er så gammelt at du kan bruke det som du vil.',
   },
   en: {
     title: 'NO DERIVES',
@@ -83,7 +83,7 @@ const pd = {
   nb: {
     title: 'Offentlig eiendom',
     userFriendlyTitle: 'Offentlig eiendom',
-    description: 'Verket er identifisert som fritt for kjente opphavsrettsbegrensninger.',
+    description: 'Bildet, videoen teksten osv. er så gammelt at du kan bruke det som du vil.',
   },
   en: {
     title: 'Public Domain',
@@ -111,7 +111,7 @@ const copy = {
   nb: {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
-    description: 'Bare opphavspersonen kan bearbeide, publisere og gi bruksrett. Verket kan ikke deles.',
+    description: 'Det er bare den som har laget bildet, videoen, teksten osv. som kan endre, publisere og gi andre rett til å bruke bildet, videoen, teksten etc. Bildet, videoen, teksten osv. kan ikke deles.',
   },
   en: {
     title: 'Copyright',
@@ -125,7 +125,7 @@ const cc = {
   nb: {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',
-    description: 'Regler for gjenbruk og deling',
+    description: 'Denne lisensen gir deg rett til å dele og bruke dette bildet, videoen, teksten osv.',
   },
   en: {
     title: 'Creative Commons',

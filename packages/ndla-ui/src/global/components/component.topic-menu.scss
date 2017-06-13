@@ -148,6 +148,7 @@
 
 .c-topic-menu__topic-item {
   padding: $spacing--small;
+  margin-bottom: 0;
   @include mq(tablet) {
     margin-left: $spacing--large;
     padding: $spacing--small 0;

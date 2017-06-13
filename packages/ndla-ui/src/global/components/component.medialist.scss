@@ -1,6 +1,7 @@
 .c-medialist {
   padding-left: 0;
   display: flex;
+  flex-direction: column;
 }
 
 .c-medialist__item {
@@ -9,6 +10,7 @@
   border-bottom: 1px solid $brand-color--tertiary;
   @include mq(tablet) {
     display: flex;
+    flex-direction: row;
   }
 
   &:last-child {

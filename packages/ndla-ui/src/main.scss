@@ -51,16 +51,16 @@ $inuit-wrapper-width: 1024px;
 @import "global/elements/elements.code";
 
 // OBJECTS
-@import "../node_modules/inuitcss/objects/objects.wrapper";
-@import "../node_modules/inuitcss/objects/objects.layout";
-@import "../node_modules/inuitcss/objects/objects.media";
+@import "../node_modules/inuitcss/objects/objects.block";
+@import "../node_modules/inuitcss/objects/objects.box";
 @import "../node_modules/inuitcss/objects/objects.flag";
+@import "../node_modules/inuitcss/objects/objects.layout";
 @import "../node_modules/inuitcss/objects/objects.list-bare";
 @import "../node_modules/inuitcss/objects/objects.list-inline";
-@import "../node_modules/inuitcss/objects/objects.box";
-@import "../node_modules/inuitcss/objects/objects.block";
-@import "global/objects/objects.wrapper";
+@import "../node_modules/inuitcss/objects/objects.media";
+@import "../node_modules/inuitcss/objects/objects.wrapper";
 @import "global/objects/objects.lists";
+@import "global/objects/objects.wrapper";
 
 
 // COMPONENTS

@@ -39,7 +39,7 @@ const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, cu
     <div {...classes('', '')}>
       {children}
       <ol {...classes('list')}>
-        <TopicBreadcrumbItem key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Icon.Home className="icon--20" /></TopicBreadcrumbItem>
+        <TopicBreadcrumbItem key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Icon.Home className="c-icon--20" /></TopicBreadcrumbItem>
         <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
         { topicPath.map((topic, i) =>
           <TopicBreadcrumbItem

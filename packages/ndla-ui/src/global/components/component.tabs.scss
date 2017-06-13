@@ -9,6 +9,7 @@ $tabs-spacing: 12px;
 .c-tabs__tab {
   display: inline-block;
   padding: ($tabs-spacing / 2) $tabs-spacing;
+  margin-bottom: 0;
   transform: translateY(3px);
   font-family: $font;
 

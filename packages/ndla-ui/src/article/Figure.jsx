@@ -37,7 +37,7 @@ export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
         <div {...classLicenses('cta-wrapper')}>
           <h3 {...classLicenses('title')}>Slik skal du referere til dette bildet</h3>
           <ul {...classes('list')}>
-            { authors.map(author => <li key={uuid()} className="o-list__item">{ `${author.type}: ${author.name}`}</li>) }
+            { authors.map(author => <li key={uuid()} className="c-figure-list__item">{ `${author.type}: ${author.name}`}</li>) }
           </ul>
           { children ? <div {...classLicenses('cta-block')}> {children} </div> : null }
         </div>

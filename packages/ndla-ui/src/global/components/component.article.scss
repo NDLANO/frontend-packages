@@ -6,11 +6,10 @@
   margin-right: auto;
   margin-bottom: $spacing--large;
   margin-left: auto;
-  padding-bottom: $spacing--large;
 
   @include mq(tablet) {
     border: 1px solid $brand-grey--lighter;
-    padding: 0 $spacing;
+    padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
   }

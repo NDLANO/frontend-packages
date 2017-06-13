@@ -1,0 +1,8 @@
+.c-footnotes {
+  display: block;
+  margin-top: $spacing--large;
+  padding-top: $spacing;
+  border-top: 2px solid $brand-grey--lighter;
+  color: gray;
+  @include inuit-font-size(15px);
+}

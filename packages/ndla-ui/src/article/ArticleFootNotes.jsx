@@ -12,8 +12,8 @@ import { FootNoteShape } from '../shapes';
 
 
 const FootNote = ({ footNote, editionTitle, publisherTitle }) =>
-  <li className="article_foot-note">
-    <cite>{`${footNote.title} (${footNote.year}), ${footNote.authors.join(' ')} ${editionTitle}: ${footNote.edition}, ${publisherTitle}: ${footNote.publisher}`}</cite>
+  <li className="c-footnote__item">
+    <cite className="c-footnote__cite">{`${footNote.title} (${footNote.year}), ${footNote.authors.join(' ')} ${editionTitle}: ${footNote.edition}, ${publisherTitle}: ${footNote.publisher}`}</cite>
   </li>;
 
 FootNote.propTypes = {
@@ -25,7 +25,7 @@ FootNote.propTypes = {
 
 
 const ArticleFootNotes = ({ footNotes, ...rest }) => (
-  <ol className="article_foot-notes">
+  <ol className="c-footnotes">
     {
     Object.keys(footNotes).map(key => (
       <FootNote key={key} refNr={key.replace('ref_', '')} footNote={footNotes[key]} {...rest} />

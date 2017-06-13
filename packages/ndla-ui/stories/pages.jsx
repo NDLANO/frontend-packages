@@ -119,6 +119,11 @@ const ExamplePageImages = () => (
            pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med
              i klassen.</p>
+        <ol className="c-footnotes">
+          <li className="c-footnotes__item">
+            <cite className="c-footnotes__cite">Likestilling kommer ikke av seg selv (2013), regjeringen.no Edition: , Publisher: Barne-, likestillings- og inkluderingsdepartmentet</cite>
+          </li>
+        </ol>
       </LayoutItem>
       <LayoutItem layout="extend">
         <ResourceSubsetList />

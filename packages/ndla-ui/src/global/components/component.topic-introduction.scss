@@ -14,7 +14,7 @@
 }
 .c-topic-introduction__item {
   padding-top: $spacing--small;
-  padding-bottom: $spacing--small;
+  padding-bottom: $spacing;
   padding-right: $spacing;
   border-bottom: 2px solid $brand-grey--lighter;
   list-style: none;
@@ -24,12 +24,17 @@
 
   p {
     max-width: $max-text-width;
+    margin: 0;
     padding-right: $spacing;
     font-family: $font;
   }
   a {
     color: $brand-color;
     box-shadow: none;
+  }
+
+  &:last-child {
+    border: none;
   }
 }
 .c-topic-introduction__header {

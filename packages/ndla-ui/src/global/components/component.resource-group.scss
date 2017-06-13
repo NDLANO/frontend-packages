@@ -1,4 +1,7 @@
 .c-resource-group {
+  li {
+    background-color: rgba($brand-grey--light, 0.4);
+  }
 }
 .c-resource-group__title {
   @include inuit-font-size(18px);
@@ -12,17 +15,17 @@
 }
 .c-resource-group--Lringsstier {
   li {
+    background-color: transparent;
     padding: 5px;
   }
   .c-topic-resource__icon {
     width:80px;
     svg {
       width: 80px;
-      height: 60px;
     }
   }
 }
-.c-resource-group--Oppgaver, .c-resource-group--Interaktivitet {
+.c-resource-group--Oppgaver {
   li {
     background-color: rgba($green, 0.1);
   }

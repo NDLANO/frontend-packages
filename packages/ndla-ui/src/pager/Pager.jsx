@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 
 import SafeLink from '../common/SafeLink';
 import { stepNumbers } from './pagerHelpers';

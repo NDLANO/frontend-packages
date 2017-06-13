@@ -12,3 +12,7 @@ li {
   line-height: 1.5em;
   margin-bottom: $spacing--small;
 }
+li ul, li ol {
+  margin-top: $spacing;
+  margin-left: $spacing;
+}

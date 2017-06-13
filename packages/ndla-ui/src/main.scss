@@ -77,6 +77,7 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.factbox";
 @import "global/components/component.figure";
 @import "global/components/component.figure-license";
+@import "global/components/component.icon";
 @import "global/components/component.license-icons";
 @import "global/components/component.licensebox";
 @import "global/components/component.medialist";
@@ -98,13 +99,10 @@ $inuit-wrapper-width: 1024px;
 // UTILITIES
 @import "../node_modules/inuitcss/utilities/utilities.widths";
 @import "../node_modules/inuitcss/utilities/utilities.headings";
-
-
 @import "../node_modules/inuitcss/utilities/utilities.spacing";
 @import "global/utilities/utilities.typographic";
 @import "global/utilities/utilities.shame";
 @import "global/utilities/utilities.mobile";
-@import "global/utilities/utilities.icons";
 
 
 

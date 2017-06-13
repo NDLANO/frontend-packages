@@ -35,7 +35,7 @@ import LicenseSa from './LicenseSa';
 
 function Icon(props) {
   const { icon, className, ...rest } = props;
-  return createElement(icon, { className: classNames('icon', className), ...rest });
+  return createElement(icon, { className: classNames('c-icon', className), ...rest });
 }
 
 Icon.propTypes = {

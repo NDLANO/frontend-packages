@@ -7,9 +7,6 @@
   @include mq(tablet) {
     display: block;
   }
-  span {
-    display: block;
-  }
 }
 .c-breadcrumb__list {
   display: inline-block;
@@ -40,6 +37,14 @@
   color: $brand-color;
   opacity: .4;
 }
-.c-breadcrumb__active {
-  font-weight: $font-weight-bold;
+.c-breadcrumb__item--current {
+  a, a:focus {
+    border: none;
+    color: rgba($brand-color--secondary, .7);
+  }
+}
+.c-breadcrumb__item--home {
+  a {
+    border: none;
+  }
 }

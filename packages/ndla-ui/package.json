@@ -44,12 +44,8 @@
     "react": "^15.5.4"
   },
   "devDependencies": {
-    "@kadira/storybook": "2.35.3",
-    "@kadira/storybook-addon-actions": "1.1.3",
-    "@kadira/storybook-addon-links": "1.0.1",
-    "@kadira/storybook-addon-options": "1.0.2",
     "btoa": "^1.1.2",
-    "css-loader": "0.28.0",
+    "css-loader": "0.28.4",
     "decorate-component-with-props": "^1.0.2",
     "draft-convert": "1.4.3",
     "draft-js": "0.10.0",
@@ -64,10 +60,14 @@
     "ndla-tabs": "^0.2.1",
     "ndla-util": "^0.1.1",
     "node-sass": "^4.3.0",
-    "react-helmet": "5.0.3",
+    "react-helmet": "5.1.3",
     "react-modal": "^1.6.5",
-    "sass-loader": "6.0.3",
-    "style-loader": "0.16.1",
-    "webpack": "2.4.1"
+    "sass-loader": "6.0.5",
+    "style-loader": "0.18.1",
+    "webpack": "2.6.1",
+    "@storybook/addon-options": "3.0.0",
+    "@storybook/react": "3.0.0",
+    "@storybook/addon-links": "3.0.0",
+    "@storybook/addon-actions": "3.0.0"
   }
 }

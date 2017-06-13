@@ -1,7 +1,7 @@
-// import React from 'react';
 import React, { createElement } from 'react';
 
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import Icon from '../src/icons/Icon';

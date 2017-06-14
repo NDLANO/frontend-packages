@@ -1,8 +1,11 @@
 details {
   margin: $spacing 0;
   border: 1px solid $brand-grey--light;
-  p {
+  >* {
     padding: 0 $spacing $spacing;
+  }
+  ul,ol {
+    margin-left: $spacing--large;
   }
 }
 details[open] {

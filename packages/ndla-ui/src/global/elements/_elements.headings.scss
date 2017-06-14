@@ -39,6 +39,10 @@ h2 {
   }
 }
 
+h2 + h2 {
+  margin-top: 0;
+}
+
 h3 {
   @include inuit-font-size(20px, 30px);
 }

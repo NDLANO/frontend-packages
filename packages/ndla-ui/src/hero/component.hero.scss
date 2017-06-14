@@ -14,7 +14,13 @@
 }
 .c-hero__content {
   color: $white;
-  padding: 13.5% 0 0;
+  padding: 27% 0 0;
+  @include mq(tablet) {
+    padding: 100px 0 0;
+  }
+  @include mq(desktop) {
+    padding: 13.5% 0 0;
+  }
   z-index: 9;
 }
 .c-hero--alt {

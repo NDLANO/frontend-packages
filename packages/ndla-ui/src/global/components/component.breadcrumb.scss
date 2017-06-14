@@ -1,12 +1,8 @@
 .c-breadcrumb {
   max-width: 100%;
   @include inuit-font-size(18px);
-  display:none;
+  display: block;
   font-weight: $font-weight-bold;
-
-  @include mq(tablet) {
-    display: block;
-  }
 }
 .c-breadcrumb__list {
   display: inline-block;
@@ -18,6 +14,7 @@
 .c-breadcrumb__item {
   font-weight: $font-weight-normal;
   padding-right: $spacing--small/2;
+  margin-bottom: 0;
   display: inline-block;
   line-height: 2em;
   a {

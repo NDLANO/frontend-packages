@@ -31,7 +31,7 @@
     "react": "^15.0.0",
     "react-bem-helper": "^1.2.0",
     "react-dom": "^15.0.0",
-    "react-tabs": "^0.8.0"
+    "react-tabs": "^1.1.0"
   },
   "dependencies": {
     "lodash": "^4.17.2"

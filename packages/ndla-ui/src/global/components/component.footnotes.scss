@@ -6,3 +6,9 @@
   color: gray;
   @include inuit-font-size(15px);
 }
+.c-footnotes__item {
+  margin-bottom: $spacing--small;
+  &:before {
+    display: none;
+  }
+}

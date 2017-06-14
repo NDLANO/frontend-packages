@@ -31,14 +31,17 @@
   &:before {
     display: none;
   }
-}
-.c-breadcrumb__item + .c-breadcrumb__item:before{
-  padding-right: $spacing--small;
-  padding-left: $spacing--small/2;
-  content: '|';
-  @include inuit-font-size(14px);
-  color: $brand-color;
-  opacity: .4;
+  &:after{
+    padding-right: $spacing--small/2;
+    padding-left: $spacing--small;
+    content: '|';
+    @include inuit-font-size(14px);
+    color: $brand-color;
+    opacity: .4;
+  }
+  &:last-child:after {
+    display: none;
+  }
 }
 .c-breadcrumb__item--current {
   a, a:focus {

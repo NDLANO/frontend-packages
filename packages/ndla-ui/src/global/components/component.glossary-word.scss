@@ -28,8 +28,9 @@
     border-top: 5px solid $brand-color;
     transition: border .2s ease-out;
   }
-  &:hover {
+  &:hover, &:focus {
     border-bottom: 1px solid $brand-color;
+    outline: none;
     &:after {
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;

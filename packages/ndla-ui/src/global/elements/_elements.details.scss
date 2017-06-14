@@ -1,12 +1,13 @@
 details {
   cursor: pointer;
   cursor: hand;
-  padding: $spacing--small;
+  padding: $spacing;
+  margin: $spacing 0;
   background: $brand-grey--lightest;
+  border: 1px solid $brand-grey--light;
 }
 details[open] {
   background: $brand-grey--lightest;
-  padding: $spacing;
 }
 details + details {
   margin-top: $spacing !important;

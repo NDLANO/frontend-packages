@@ -188,6 +188,7 @@
 
 .c-topic-menu__subtopic-item {
   padding: $spacing--small 0 $spacing--small $spacing;
+  margin-bottom: 0;
   transition: all .1s ease-in-out;
 
   a:hover {

@@ -1,6 +1,4 @@
 details {
-  cursor: pointer;
-  cursor: hand;
   margin: $spacing 0;
   border: 1px solid $brand-grey--light;
   p {
@@ -19,4 +17,6 @@ summary {
   text-decoration: underline;
   padding: $spacing;
   color: $brand-color;
+  cursor: pointer;
+  cursor: hand;
 }

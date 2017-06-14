@@ -1,13 +1,13 @@
 details {
   cursor: pointer;
   cursor: hand;
-  padding: $spacing;
   margin: $spacing 0;
-  background: $brand-grey--lightest;
   border: 1px solid $brand-grey--light;
+  p {
+    padding: 0 $spacing $spacing;
+  }
 }
 details[open] {
-  background: $brand-grey--lightest;
 }
 details + details {
   margin-top: $spacing !important;
@@ -16,4 +16,7 @@ summary {
   &:focus {
     outline: none;
   }
+  text-decoration: underline;
+  padding: $spacing;
+  color: $brand-color;
 }

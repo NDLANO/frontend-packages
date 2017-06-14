@@ -3,7 +3,7 @@
   background-size: cover;
 
   @include mq(tablet) {
-    min-height: 250px;
+    min-height: 330px;
   }
 }
 .c-hero__title {
@@ -14,7 +14,7 @@
 }
 .c-hero__content {
   color: $white;
-  padding: 5% 0;
+  padding: 13.5% 0 0;
   z-index: 9;
 }
 .c-hero--alt {

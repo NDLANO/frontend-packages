@@ -46,7 +46,7 @@ class Glossary extends Component {
         {
           isOpen ?
             <div {...classes('popup')}>
-              <button {...classes('close')} onClick={this.handleClick}>Lukk</button>
+              <button {...classes('close', '', 'u-close')} onClick={this.handleClick}>Lukk</button>
               <h3 {...classes('title')}>Ord</h3>
               <p {...classes('description')}>Forklaring</p>
               <div {...classes('footer')}>

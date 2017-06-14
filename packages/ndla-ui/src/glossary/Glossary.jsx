@@ -40,9 +40,9 @@ class Glossary extends Component {
 
     return (
       <div {...classes('item')}>
-        <a href="#test" {...classes('link')} onClick={this.handleClick}>
+        <button aria-haspopup href="#test" {...classes('link')} onClick={this.handleClick}>
           {children}
-        </a>
+        </button>
         {
           isOpen ?
             <div {...classes('popup')}>

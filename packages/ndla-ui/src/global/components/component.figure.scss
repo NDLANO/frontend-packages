@@ -22,6 +22,15 @@
   justify-content: flex-end;
   flex-wrap: wrap;
 }
+.article_figure--float-right {
+  .c-figure__caption {
+    flex-direction: row;
+  }
+  .c-figure__byline {
+    padding-right: 0;
+    padding-left: $spacing;
+  }
+}
 
 .c-figure__byline {
   padding-right: $spacing;

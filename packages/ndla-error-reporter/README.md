@@ -10,6 +10,9 @@ N.B. Number of messages is limited to 10 per session (reset by browser refresh).
 $ npm install ndla-error-reporter
 ```
 
+A polyfill for [fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) is needed for cross-browser support.
+
+
 ## Usage
 
 ```js

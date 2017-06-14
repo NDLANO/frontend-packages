@@ -27,7 +27,6 @@
     "es"
   ],
   "peerDependencies": {
-    "isomorphic-fetch": "^2.2.1",
     "ndla-util": "^0.1.1"
   },
   "devDependencies": {

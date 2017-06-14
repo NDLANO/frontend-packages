@@ -1,6 +1,6 @@
 {
   "name": "ndla-tabs",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -29,9 +29,9 @@
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^15.0.0",
-    "react-tabs": "^0.8.0",
     "react-bem-helper": "^1.2.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "react-tabs": "^0.8.0"
   },
   "dependencies": {
     "lodash": "^4.17.2"

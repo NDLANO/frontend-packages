@@ -28,6 +28,9 @@
   a:hover {
     border: none;
   }
+  &:before {
+    display: none;
+  }
 }
 .c-breadcrumb__item + .c-breadcrumb__item:before{
   padding-right: $spacing--small;

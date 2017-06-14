@@ -15,14 +15,6 @@ const toLink = () => ({
   href: '#',
 });
 
-/*
-const Search = (
-  <div className="u-margin-top">
-    <input type="text" className="" placeholder="Søk" />
-    <button className="search c-button c-button--transparent"><Icon.Search /></button>
-  </div>
-);
-*/
 const resourceGroup1 = {
   title: 'Lærestoff',
   description: 'Relaterte emneartikler',

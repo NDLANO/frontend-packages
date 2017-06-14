@@ -12,9 +12,6 @@ import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
 import isFunction from 'lodash/isFunction';
 import BEMHelper from 'react-bem-helper';
 
-/* Disable default styles for tabs */
-ReactTabs.setUseDefaultStyles(false);
-
 const classes = new BEMHelper({
   name: 'tabs',
   prefix: 'c-',

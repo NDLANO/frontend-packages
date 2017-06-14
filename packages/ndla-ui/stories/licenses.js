@@ -1,7 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
 import { getLicenseRightByAbbreviation } from 'ndla-licenses';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 import { Center } from './helpers';
 

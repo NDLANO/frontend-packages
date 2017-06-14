@@ -6,8 +6,6 @@
  *
  */
 
-import fetch from 'isomorphic-fetch';
-
 const logglyUrl = (() => {
   if (process.env.NODE_ENV === 'unittest') {
     return 'http://loggly-mock-api';

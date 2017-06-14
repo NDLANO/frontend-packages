@@ -22,7 +22,7 @@ function resize(video, newWidth) {
   const newHeight = (ASPECT_RATIO * newWidth);
   // video.setAttribute('width', newWidth.toString());
   video.setAttribute('height', newHeight.toString());
-  console.warn(video);
+  console.log(video);
 }
 
 const iframes = document.getElementsByTagName('iframe');

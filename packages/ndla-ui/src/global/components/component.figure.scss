@@ -124,7 +124,8 @@
   .c-figure__license {
     background-color: $brand-color--lighter;
     padding: $spacing;
-    @include mq(desktop) {
+    z-index: 10;
+    @include mq(tablet) {
       width: 90%;
       margin: 0 auto;
       position: absolute;

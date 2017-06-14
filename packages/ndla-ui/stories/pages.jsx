@@ -12,6 +12,7 @@ import FigureWithLicense from './article/FigureWithLicense';
 
 // Using for example alternative article
 import article, { topicList, subjectList } from '../dummydata/index';
+import Glossary from './../src/glossary/Glossary';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -98,13 +99,13 @@ const ExamplePageImages = () => (
         <FigureWithLicense classes="article_figure--float-left">
           <img alt="person med mange armer som gjør forskjellige ting samtidig. Foto." src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg" />
         </FigureWithLicense>
-        <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+        <p>Du har en kjempegod idé til en <Glossary>kortfilm</Glossary>. Men det koster mange penger
+          å produsere <Glossary>filmen</Glossary>. Derfor er du avhengig av at noen tenner på idéen
           din og bestemmer seg for å bruke ressurser på nettopp dette
         prosjektet.</p>
         <p>En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-        få andre til å tenne på idéen din og se potensialet i den.</p>
+           <Glossary> samarbeidspartner</Glossary> eller kunde. I løpet av noen få minutter skal du
+        få andre til å <a href="#test">tenne på idéen din og se potensialet</a> i den.</p>
         <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med

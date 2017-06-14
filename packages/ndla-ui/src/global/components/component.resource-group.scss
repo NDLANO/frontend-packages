@@ -13,7 +13,8 @@
   padding-bottom: 5px;
   border-bottom: 2px solid $brand-grey--light;
 }
-.c-resource-group--Lringsstier {
+// Læringsstier ID
+.c-resource-group--urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511 {
   li {
     background-color: transparent;
     padding: 5px;
@@ -25,12 +26,14 @@
     }
   }
 }
-.c-resource-group--Oppgaver {
+// Oppgaver og aktiviteter ID
+.c-resource-group--urn-resource-type-f5148c29-d056-4d94-a799-be35229d8d2b {
   li {
     background-color: rgba($green, 0.1);
   }
 }
-.c-resource-group--Lrestoff {
+// Lærestoff ID
+.c-resource-group--urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73 {
   li {
     background-color: rgba($mark-color, 0.1);
   }

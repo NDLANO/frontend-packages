@@ -506,7 +506,7 @@ storiesOf('Grunnstiler', module)
                     <li>Under-underlistepunkt 1</li>
                   </ul>
                 </li>
-            </ul>
+              </ul>
             </li>
 
           </ul>

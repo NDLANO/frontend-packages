@@ -53,8 +53,5 @@
     "react-tabs": "1.1.0",
     "react-test-renderer": "15.5.4",
     "rimraf": "2.6.1"
-  },
-  "dependencies": {
-    "react-sticky-header": "^0.1.6"
   }
 }

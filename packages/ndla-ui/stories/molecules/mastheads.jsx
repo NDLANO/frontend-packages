@@ -7,8 +7,6 @@
  */
 
 import React from 'react';
-// import 'react-sticky-header/styles.css';
-import ReactStickyHeader from 'react-sticky-header';
 
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../src';
 import { topicMenu } from '../../dummydata';
@@ -53,24 +51,18 @@ export class MastheadWithTopicMenu extends React.Component {
 
   render() {
     return (
-      <ReactStickyHeader
-        header={
-          <div style={{ backgroundColor: 'rgba(255,255,255,0.8)' }} className={('Header_root')}>
-            <Masthead>
-              <MastheadItem left>
-                <SiteNav>
-                  <ClickToggle title="Meny" openTitle="Lukk" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-                    <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
-                  </ClickToggle>
-                </SiteNav>
-              </MastheadItem>
-              <MastheadItem right>
-                <Logo to="#" altText="Nasjonal digital læringsarena" />
-              </MastheadItem>
-            </Masthead>
-          </div>
-      }
-      />
+      <Masthead>
+        <MastheadItem left>
+          <SiteNav>
+            <ClickToggle title="Meny" openTitle="Lukk" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+              <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
+            </ClickToggle>
+          </SiteNav>
+        </MastheadItem>
+        <MastheadItem right>
+          <Logo to="#" altText="Nasjonal digital læringsarena" />
+        </MastheadItem>
+      </Masthead>
     );
   }
 }

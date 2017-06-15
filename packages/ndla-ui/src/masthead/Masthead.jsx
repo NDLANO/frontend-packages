@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import ReactStickyHeader from 'react-sticky-header';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -36,11 +37,15 @@ MastheadItem.defaultProps = {
 };
 
 export const Masthead = ({ children }) =>
-  <div className="masthead">
-    <div className="u-1/1">
-      {children}
-    </div>
-  </div>;
+  <ReactStickyHeader
+    header={
+      <div className="masthead">
+        <div className="u-1/1">
+          {children}
+        </div>
+      </div>
+    }
+  />;
 
 Masthead.propTypes = {
   children: PropTypes.node,

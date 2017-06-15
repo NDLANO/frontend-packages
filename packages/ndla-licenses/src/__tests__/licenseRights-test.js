@@ -15,7 +15,7 @@ test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   expect(licenseRight.title).toBe('Navngivelse');
   expect(licenseRight.short).toBe(BY);
   expect(licenseRight.userFriendlyTitle).toBe('Navngivelse');
-  expect(licenseRight.description).toBe('Opphavspersonen til verket må navngis.');
+  expect(licenseRight.description).toBe('Du må alltid oppgi hvem som har laget bildet, videoen, teksten osv.');
 });
 
 test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {

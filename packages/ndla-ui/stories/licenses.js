@@ -1,12 +1,11 @@
 import React from 'react';
-import shortid from 'shortid';
+import { uuid } from 'ndla-util';
 import { getLicenseRightByAbbreviation } from 'ndla-licenses';
 import { storiesOf } from '@storybook/react';
 
 import { Center } from './helpers';
 
 const licenses = ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license => getLicenseRightByAbbreviation(license));
-const uniqueId = () => shortid.generate();
 
 storiesOf('Lisensgivning', module)
   .add('Lisenstekster', () => (
@@ -17,7 +16,7 @@ storiesOf('Lisensgivning', module)
         </section>
         <section>
           {licenses.map(license => (
-            <article key={uniqueId()}>
+            <article key={uuid()}>
               <h2>{license.title}</h2>
               <p>{license.description}</p>
             </article>

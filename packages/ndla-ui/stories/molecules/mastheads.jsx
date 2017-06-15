@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-// import 'react-sticky-header/styles.css';
 import ReactStickyHeader from 'react-sticky-header';
 
 import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../src';

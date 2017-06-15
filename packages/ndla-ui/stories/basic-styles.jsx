@@ -496,6 +496,19 @@ storiesOf('Grunnstiler', module)
             <li>Listepunkt 2</li>
             <li>Listepunkt 3</li>
             <li>Listepunkt 4</li>
+            <li>
+              <ul>
+                <li>Underlistepunkt 1</li>
+                <li>Underlistepunkt 2</li>
+                <li>Underlistepunkt 3</li>
+                <li>
+                  <ul>
+                    <li>Under-underlistepunkt 1</li>
+                  </ul>
+                </li>
+            </ul>
+            </li>
+
           </ul>
           <h2 className="u-heading">Lister med lenker</h2>
           <ul className="o-list--bullets">

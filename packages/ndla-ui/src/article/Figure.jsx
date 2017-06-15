@@ -30,7 +30,7 @@ const classLicenses = new BEMHelper({
 
 export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
   <div {...classes('license')} id="figmeta">
-    <button {...classes('close', '', 'u-close')}>Lukk</button>
+    <button {...classes('close')}>Lukk</button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
         <h3 {...classLicenses('title')}>Regler for bruk av bildet</h3>

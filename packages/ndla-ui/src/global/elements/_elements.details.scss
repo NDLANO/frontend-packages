@@ -1,12 +1,14 @@
 details {
-  cursor: pointer;
-  cursor: hand;
-  padding: $spacing--small;
-  background: $brand-grey--lightest;
+  margin: $spacing 0;
+  border: 1px solid $brand-grey--light;
+  >* {
+    padding: 0 $spacing $spacing;
+  }
+  ul,ol {
+    margin-left: $spacing--large;
+  }
 }
 details[open] {
-  background: $brand-grey--lightest;
-  padding: $spacing;
 }
 details + details {
   margin-top: $spacing !important;
@@ -15,4 +17,9 @@ summary {
   &:focus {
     outline: none;
   }
+  text-decoration: underline;
+  padding: $spacing;
+  color: $brand-color;
+  cursor: pointer;
+  cursor: hand;
 }

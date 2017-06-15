@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ndla",
-  "version": "0.2.0",
+  "version": "0.2.1-beta.1",
   "description": "An eslint config for NDLA. Extends Airbnb's.",
   "main": "index.js",
   "license": "GPL-3.0",

@@ -1,0 +1,39 @@
+.ReactStickyHeader_root {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.ReactStickyHeader_fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+}
+
+.ReactStickyHeader_background,
+.ReactStickyHeader_foreground,
+.ReactStickyHeader_midground,
+.ReactStickyHeader_background-bg {
+  background-position: center top;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 30;
+}
+
+.ReactStickyHeader_midground {
+  position: fixed;
+  z-index: 20;
+  transform: translateY(-100%);
+}
+
+.ReactStickyHeader_background-bg {
+  z-index: 10;
+}

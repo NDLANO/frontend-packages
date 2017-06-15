@@ -77,14 +77,14 @@ storiesOf('Sammensatte moduler', module)
             </div>
             <div className="c-collate__article">
               <h3>Utfordringer til deg:</h3>
-              <ol>
-                <details>
-                  <ol>
-                    <li>Beskriv hva internkontroll er.</li>
-                    <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får
+              <details>
+                <summary>Utfordringer</summary>
+                <ol>
+                  <li>Beskriv hva internkontroll er.</li>
+                  <li>Skriv ned noen forslag  på hvordan man kan sikre at pasienter får
                     dekket sine behov for ernæring. Ta gjerne utgangspunkt i en arbeidsplass. Diskuter deretter i klassen.</li>
-                  </ol>
-                </details></ol>
+                </ol>
+              </details>
             </div>
           </div>
         </section>

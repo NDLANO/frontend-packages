@@ -33,19 +33,38 @@ export const MastheadDefault = () => (
   </Masthead>
 );
 
-export const MastheadWithTopicMenu = () => (
-  <Masthead>
-    <MastheadItem left>
-      <SiteNav>
-        <ClickToggle title="Meny" openTitle="Lukk" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-          <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
-        </ClickToggle>
-      </SiteNav>
-    </MastheadItem>
-    <MastheadItem right>
-      <Logo to="#" altText="Nasjonal digital læringsarena" />
-    </MastheadItem>
-  </Masthead>
-);
+// export const MastheadWithTopicMenu = () => (
+//
+// );
+
+export class MastheadWithTopicMenu extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { sticky: true };
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    this.state = { sticky: true };
+  }
+
+  render() {
+    return (
+      <Masthead>
+        <MastheadItem left>
+          <SiteNav>
+            <ClickToggle title="Meny" openTitle="Lukk" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+              <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
+            </ClickToggle>
+          </SiteNav>
+        </MastheadItem>
+        <MastheadItem right>
+          <Logo to="#" altText="Nasjonal digital læringsarena" />
+        </MastheadItem>
+      </Masthead>
+    );
+  }
+}
 
 export default MastheadDefault;

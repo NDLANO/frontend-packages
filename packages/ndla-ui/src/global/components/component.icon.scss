@@ -1,0 +1,18 @@
+.c-icon {
+  display: inline-block;
+  fill: currentColor;
+  width: $spacing--small * 1.3;
+  height: $spacing--small * 1.3;
+  vertical-align: middle;
+}
+.c-icon--rotate {
+  transform: rotate(180deg);
+}
+.c-icon--medium {
+  width: $spacing;
+  height: $spacing;
+}
+.c-icon--20 {
+  width: 20px;
+  height: 20px;
+}

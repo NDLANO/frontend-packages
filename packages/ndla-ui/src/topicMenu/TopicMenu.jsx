@@ -66,11 +66,8 @@ export default class TopicMenu extends Component {
           </div>
           <FilterList
             filterContent={[
-            { title: '1T', active: true },
-            { title: 'R1', active: true },
-            { title: 'R2', active: false },
-            { title: 'S1', active: false },
-            { title: 'S1', active: false },
+            { title: 'VG1', active: true },
+            { title: 'VG2', active: true },
             ]}
           />
           <div {...classes('right-filler')} />

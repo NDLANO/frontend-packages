@@ -1,15 +1,8 @@
 .c-breadcrumb {
   max-width: 100%;
   @include inuit-font-size(18px);
-  display:none;
+  display: block;
   font-weight: $font-weight-bold;
-
-  @include mq(tablet) {
-    display: block;
-  }
-  span {
-    display: block;
-  }
 }
 .c-breadcrumb__list {
   display: inline-block;
@@ -21,6 +14,7 @@
 .c-breadcrumb__item {
   font-weight: $font-weight-normal;
   padding-right: $spacing--small/2;
+  margin-bottom: 0;
   display: inline-block;
   line-height: 2em;
   a {
@@ -31,15 +25,29 @@
   a:hover {
     border: none;
   }
+  &:before {
+    display: none;
+  }
+  &:after{
+    padding-right: $spacing--small/2;
+    padding-left: $spacing--small;
+    content: '|';
+    @include inuit-font-size(14px);
+    color: $brand-color;
+    opacity: .4;
+  }
+  &:last-child:after {
+    display: none;
+  }
 }
-.c-breadcrumb__item + .c-breadcrumb__item:before{
-  padding-right: $spacing--small;
-  padding-left: $spacing--small/2;
-  content: '|';
-  @include inuit-font-size(14px);
-  color: $brand-color;
-  opacity: .4;
+.c-breadcrumb__item--current {
+  a, a:focus {
+    border: none;
+    color: rgba($brand-color--secondary, .7);
+  }
 }
-.c-breadcrumb__active {
-  font-weight: $font-weight-bold;
+.c-breadcrumb__item--home {
+  a {
+    border: none;
+  }
 }

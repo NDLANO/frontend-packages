@@ -1,0 +1,67 @@
+.c-glossary-word__item {
+  display: inline;
+}
+.c-glossary-word__link {
+  background: none;
+  border: none;
+  font-family: $font-serif;
+  line-height: 1.3em;
+  padding: 0;
+  text-decoration: none;
+  color: $black;
+  border-bottom: 1px solid $brand-color;
+  transition: border .2s ease-out;
+  position: relative;
+  cursor: pointer;
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    margin-top: 24px;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $brand-color;
+    transition: border .2s ease-out;
+  }
+  &:hover, &:focus {
+    border-bottom: 1px solid $brand-color;
+    outline: none;
+    &:after {
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid $brand-color;
+    }
+  }
+}
+.c-glossary-word__popup {
+  position: absolute;
+  width: 87%;
+  @include mq(desktop) {
+    width: 100%;
+  }
+  box-shadow: 0 0 30px rgba($black, .2);
+  box-sizing: border-box;
+  z-index: 1;
+  background: $brand-color--lighter;
+  padding: $spacing;
+  animation-name: fadeInTop;
+  animation-duration: .4s;
+}
+.c-glossary-word__title {
+  margin-top: 0;
+  border-bottom: 2px solid $brand-color;
+}
+.c-glossary-word__footer {
+  padding-top: $spacing--small;
+  @include inuit-font-size(15px);
+  color: $brand-grey;
+}
+.c-glossary-word__close {
+  @extend .c-figure__close;
+  display: inline-block;
+}

@@ -1,17 +1,3 @@
-.icon {
-  display: inline-block;
-  fill: currentColor;
-  width: $spacing--small * 1.3;
-  height: $spacing--small * 1.3;
-  vertical-align: middle;
-}
-.c-icon--rotate {
-  transform: rotate(180deg);
-}
-.c-icon--medium {
-  width: $spacing;
-  height: $spacing;
-}
 .c-license-icons__list, .c-license-icons__list2 {
   list-style: none;
   padding: 0;
@@ -21,14 +7,16 @@
 .c-license-icons__list {
   display: flex;
   flex-direction: column;
+  margin-bottom: -7px;
 }
 .c-license-icons__licenselabel {
-  margin-left: $spacing--small;
+  margin-left: $spacing--small/2;
 }
 
 .c-license-icons__item {
   display: inline-block;
   padding-bottom: 7px;
+  margin-bottom: 0;
 
   button {
     vertical-align: top;

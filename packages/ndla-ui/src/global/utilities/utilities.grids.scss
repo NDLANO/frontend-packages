@@ -19,10 +19,9 @@ $denominator: auto;
     @include mq(tablet) {
       float:left;
       width: ($cols/$maxcols)*100% !important;
-      right: auto !important;
+      left: auto !important;
       padding: 0;
       margin: $spacing $spacing 0 0;
-      position: static !important;
     }
     @include mq(desktop) {
       margin: 0 $spacing $spacing (-$colDifference/$maxcols*100%);

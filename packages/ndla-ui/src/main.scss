@@ -51,16 +51,16 @@ $inuit-wrapper-width: 1024px;
 @import "global/elements/elements.code";
 
 // OBJECTS
-@import "../node_modules/inuitcss/objects/objects.wrapper";
-@import "../node_modules/inuitcss/objects/objects.layout";
-@import "../node_modules/inuitcss/objects/objects.media";
+@import "../node_modules/inuitcss/objects/objects.block";
+@import "../node_modules/inuitcss/objects/objects.box";
 @import "../node_modules/inuitcss/objects/objects.flag";
+@import "../node_modules/inuitcss/objects/objects.layout";
 @import "../node_modules/inuitcss/objects/objects.list-bare";
 @import "../node_modules/inuitcss/objects/objects.list-inline";
-@import "../node_modules/inuitcss/objects/objects.box";
-@import "../node_modules/inuitcss/objects/objects.block";
-@import "global/objects/objects.wrapper";
+@import "../node_modules/inuitcss/objects/objects.media";
+@import "../node_modules/inuitcss/objects/objects.wrapper";
 @import "global/objects/objects.lists";
+@import "global/objects/objects.wrapper";
 
 
 // COMPONENTS
@@ -77,6 +77,9 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.factbox";
 @import "global/components/component.figure";
 @import "global/components/component.figure-license";
+@import "global/components/component.footnotes";
+@import "global/components/component.glossary-word";
+@import "global/components/component.icon";
 @import "global/components/component.license-icons";
 @import "global/components/component.licensebox";
 @import "global/components/component.medialist";
@@ -98,12 +101,12 @@ $inuit-wrapper-width: 1024px;
 // UTILITIES
 @import "../node_modules/inuitcss/utilities/utilities.widths";
 @import "../node_modules/inuitcss/utilities/utilities.headings";
-
-
 @import "../node_modules/inuitcss/utilities/utilities.spacing";
 @import "global/utilities/utilities.typographic";
 @import "global/utilities/utilities.shame";
 @import "global/utilities/utilities.mobile";
+@import "global/utilities/utilities.helpers";
+@import "global/utilities/utilities.sticky-header";
 
 
 

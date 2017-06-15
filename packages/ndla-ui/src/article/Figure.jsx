@@ -15,7 +15,8 @@ import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-// import './fitvids';
+import './fitvids';
+//
 import LicenseByline from '../license/LicenseByline';
 
 const classes = new BEMHelper({
@@ -29,7 +30,7 @@ const classLicenses = new BEMHelper({
 
 export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
   <div {...classes('license')} id="figmeta">
-    <button {...classes('close')}>Lukk</button>
+    <button {...classes('close', '', 'u-close')}>Lukk</button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
         <h3 {...classLicenses('title')}>Regler for bruk av bildet</h3>
@@ -37,7 +38,7 @@ export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
         <div {...classLicenses('cta-wrapper')}>
           <h3 {...classLicenses('title')}>Slik skal du referere til dette bildet</h3>
           <ul {...classes('list')}>
-            { authors.map(author => <li key={uuid()} className="o-list__item">{ `${author.type}: ${author.name}`}</li>) }
+            { authors.map(author => <li key={uuid()} className="c-figure-list__item">{ `${author.type}: ${author.name}`}</li>) }
           </ul>
           { children ? <div {...classLicenses('cta-block')}> {children} </div> : null }
         </div>

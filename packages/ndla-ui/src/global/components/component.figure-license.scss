@@ -15,6 +15,18 @@
 .c-figure-license__button {
   margin-bottom: $spacing--small;
 }
+.c-figure-license__close {
+  position: absolute;
+  top: $spacing;
+  right: $spacing;
+  background: transparent;
+  border: none;
+  color: $brand-color;
+  @include font-size(20px);
+  font-weight: $font-weight-normal;
+  z-index: 9;
+  cursor: pointer;
+}
 .c-figure-license__cta-wrapper {
   background-color: $white;
   padding: $spacing;

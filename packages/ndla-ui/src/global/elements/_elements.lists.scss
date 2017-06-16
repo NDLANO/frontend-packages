@@ -19,12 +19,12 @@ li ul, li ol {
 ol {
   counter-reset: item;
 }
-ol li {
+ol >li {
   display: block;
   position: relative;
   margin-bottom: $spacing;
   &:before {
-    content: counters(item, ".") " ";
+    content: counter(item);
     counter-increment: item;
     color: $brand-color--secondary;
     display: inline-block;

@@ -34,6 +34,10 @@
   }
   td {
     vertical-align: top;
+    @include inuit-font-size(14px,22px);
+    @include mq(tablet) {
+      @include inuit-font-size(15px,30px);
+    }
 
     &:first-child {
       background-color: none;
@@ -52,8 +56,10 @@
   tr:nth-child(2n) {
 
     td {
-      background-color: $table-bg;
       position:relative;
+      @include mq(tablet) {
+        background-color: $table-bg;
+      }
 
       &:before {
         content:"";

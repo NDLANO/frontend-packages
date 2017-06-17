@@ -4,6 +4,12 @@
   @include inuit-font-size(16px);
   width: 100%;
 }
+.c-aside--float {
+  @include mq(tablet) {
+    @include float(3, 4, 'right');
+    max-width: 350px;
+  }
+}
 .c-aside__title {
   border-bottom: 2px solid $brand-color;
   margin-bottom: $spacing;
@@ -89,12 +95,12 @@
 
 .c-aside img {
     box-shadow: 0px 0px 9px -3px $brand-grey;
-    margin-bottom: $spacing--small;
   }
 .c-aside figure {
   // Overrule default images width
   width: 100% !important;
   left: 0 !important;
+  padding: 0;
 }
 .c-aside h2,.c-aside h3,.c-aside h4,.c-aside h5 {
   display: block;

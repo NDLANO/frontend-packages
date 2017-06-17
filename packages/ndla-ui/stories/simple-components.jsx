@@ -124,6 +124,44 @@ storiesOf('Enkle komponenter', module)
       </article>
     </Center>
   ))
+  .add('Sidespalte', () => (
+    <Center>
+      <article className="o-wrapper--narrow">
+        <section className="c-factbox">
+          <h1 className="u-heading">Sidespalte</h1>
+          <div className="o-wrapper--inner">
+            <p>I artikler fra gamle ndla.no som bruker sidespalte, vil denne flyte på høyre side av artikkel-innholdet.</p>
+          </div>
+        </section>
+        <section className="o-wrapper--inner">
+          <Aside float>
+            <div className="c-aside__title">Oppsummering</div>
+            <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
+            <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
+            <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
+            <div><figure className="article_audio">
+              <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
+            <h2>Ressurser</h2>
+            <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
+            <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
+            <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p>
+          </Aside>
+          <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.</p>
+          <p>En pitch er en kortvarig framføring av en idé for en potensiell
+            samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+          få andre til å tenne på idéen din og se potensialet i den.</p>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med
+               i klassen.</p>
+
+        </section>
+      </article>
+    </Center>
+  ))
   .add('Ikoner', () => (
     <Center>
       <article className="o-wrapper--narrow">

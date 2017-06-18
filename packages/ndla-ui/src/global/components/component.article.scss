@@ -50,8 +50,10 @@
   font-family: $font;
   color: $brand-grey;
   text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
+  @include mq(tablet) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .c-article-meta {
@@ -70,11 +72,13 @@
 
 .c-article__authors {
   padding-right: $spacing;
+  display: inline-block;
   svg {
     margin-top: -3px;
   }
 }
 .c-article__date {
+  display: inline-block;
   svg {
     margin-top: -3px;
   }

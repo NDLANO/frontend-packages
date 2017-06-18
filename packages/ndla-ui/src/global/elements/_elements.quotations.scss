@@ -1,5 +1,5 @@
 blockquote {
-  @include max-width();
+  // @include max-width();
   margin: 0;
   padding-left: $spacing;
   border-left: $inuit-global-border-width * 2 solid $background-color--dark;

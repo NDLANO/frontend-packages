@@ -8,14 +8,11 @@
 
 import uuid from './uuid';
 import getComponentName from './getComponentName';
+import copyTextToClipboard from './copyTextToClipboard';
 
 
 export {
   uuid,
   getComponentName,
-};
-
-export default {
-  uuid,
-  getComponentName,
+  copyTextToClipboard,
 };

@@ -12,29 +12,26 @@
 }
 
 .c-figure__caption {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  flex-direction: column-reverse;
 }
-.article_figure--float-right {
-  .c-figure__caption {
-    flex-direction: row;
-  }
-  .c-figure__byline {
-    padding-right: 0;
-    padding-left: $spacing;
-  }
+.c-figure__captionbtn {
+  padding-left: $spacing--small;
+  margin-top: -4px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $brand-color;
 }
 
 .c-figure__byline {
   padding-right: $spacing;
+  margin-bottom: $spacing--small/2;
   text-align: left;
+  display: flex;
 
   .c-license-icons__list {
     flex-direction: row;
@@ -54,7 +51,7 @@
 }
 
 .c-figure__info {
-  max-width: 500px;
+  max-width: 650px;
   margin-bottom: $spacing--small;
   @include inuit-font-size(14px, 22px);
   @include mq($from: tablet) {
@@ -94,12 +91,6 @@
 
 .c-figure__img a {
   box-shadow: none;
-}
-
-.c-figure__captionbtn {
-  min-width: 130px;
-  padding-top: $spacing--small/3;
-  padding-bottom: $spacing--small/3;
 }
 
 .c-figure--active {

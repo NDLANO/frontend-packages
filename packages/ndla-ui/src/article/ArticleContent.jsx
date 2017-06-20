@@ -8,14 +8,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Parser from 'html-react-parser';
+// import Parser from 'html-react-parser';
 import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener,
 } from 'ndla-article-scripts';
 
-const Li = (props) => <li><strong>{props.children}</strong></li>
 
 export default class TopicArticleContent extends Component {
   componentDidMount() {
@@ -29,24 +28,10 @@ export default class TopicArticleContent extends Component {
 
   render() {
     const { content, ...rest } = this.props;
-
-    return (
-      <div>
-        {Parser(content, {
-        replace: (node) => {
-            if (node.name === 'p') {
-              console.log(node.children[0].data)
-              return <Li>{node.children[0].data}</Li>;
-            }
-        }
-    })}
-      </div>
-    )
+    return <div dangerouslySetInnerHTML={{ __html: content }} {...rest} />;
   }
 }
 
 TopicArticleContent.propTypes = {
   content: PropTypes.string.isRequired,
 };
-
-/*<div dangerouslySetInnerHTML={{ __html: content }} {...rest} />; */

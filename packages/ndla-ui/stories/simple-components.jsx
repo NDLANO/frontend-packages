@@ -152,33 +152,33 @@ storiesOf('Enkle komponenter', module)
   ))
   .add('Ikoner', () => (
     <Center>
-      <article className="o-wrapper--narrow">
-        <section className="c-factbox">
+      <section className="c-factbox">
+        <LayoutItem layout="center">
           <h1 className="u-heading">Ikoner</h1>
-        </section>
-        <section>
-          <table>
-            <thead>
-              <tr>
-                <td>Icon</td>
-                <td>Name</td>
-                <td>JSX</td>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
-                  <tr key={key}>
-                    <td>{createElement(Icon[key])}</td>
-                    <td>{key}</td>
-                    <td><code>&lt;Icon.{key} /&gt;</code></td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </section>
-      </article>
+        </LayoutItem>
+      </section>
+      <LayoutItem layout="center">
+        <table className="c-table">
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>JSX</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
+                <tr key={key}>
+                  <td>{createElement(Icon[key])}</td>
+                  <td>{key}</td>
+                  <td><code>&lt;Icon.{key} /&gt;</code></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </LayoutItem>
     </Center>
   ))
   ;

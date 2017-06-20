@@ -24,8 +24,6 @@ const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
 };
 
-// document.querySelectorAll('section > em').forEach(em => em.outerHTML = '<p>' + em.outerHTML + '</p>')
-
 storiesOf('Sammensatte moduler', module)
   .add('Brødsmulesti', () => (
     <Center>

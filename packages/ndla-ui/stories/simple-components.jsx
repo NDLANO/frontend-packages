@@ -88,11 +88,8 @@ storiesOf('Enkle komponenter', module)
           <h1 className="u-heading">Faktaboks og høyrespalte</h1>
           <p>For fremtidig innhold på ndla.no skal ikke høyrespalte benyttes,
              i stedet benytter man faktabokser innenfor innholdsspalten.
+              Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
           </p>
-          <p>Høyrespalten kan benyttes på artikler som overføres fra gamle
-           ndla.no, men innholdet skal redaksjonelt flyttes til hovedspalten.
-           Fakta kan legges i en faktaboks, annet innhold kan bakes inn i
-           artikkelteksten, eller slettes.</p>
           <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
         </LayoutItem>
       </section>
@@ -110,12 +107,11 @@ storiesOf('Enkle komponenter', module)
           <Aside float>
             <div>
               <div className="c-aside__title">Høyrespalte</div>
-              <p>En faktaboks kan inneholde punktlister eller korte fakta som
-               er relevant til artikkelens innhold.</p>
-              <p>Det anbefales å ikke ha for mye innhold i en faktaboks, for
-              å i størst mulig grad beholde lese-konteksten.</p>
-              <p>Faktaboksen kan også brukes til å oppsummere innhold i slutten
-                av en artikkel.</p>
+              <p>Høyrespalten skal fases ut.</p>
+              <p>I en midlertidig fase under flytting av innhold fra gammelt til
+               nytt nettsted, kan den likevel brukes. Innholdet skal etter hvert
+              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+               innhold kan bakes inn i artikkelteksten, eller slettes.</p>
             </div>
           </Aside>
           <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger

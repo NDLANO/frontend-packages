@@ -11,9 +11,9 @@ $ npm install ndla-util
 ## Usage
 
 ```js
-import util from 'ndla-util');
+import uuid from 'ndla-util/uuid');
 
-const unique = util.uuid();
+const unique = uuid();
 console.log(unique); // > 'b56f476a-bc77-49cd-8be1-9d9aa93117ca'
 ```
 
@@ -35,4 +35,35 @@ Get an unique identifier.
 ```js
 const unique = util.uuid();
 console.log(unique); // > '95821b33-694c-40e8-824c-d115a046d009'
+```
+
+### `getComponentName()`
+
+Get component name of a React component. Useful in HOCs.
+
+```js
+import { getComponentName } from 'ndla-util';
+
+const withHOC = (WrappedComponent) => {
+  class NameOfHoc extends React.Component {
+    ....
+    render() {
+      return React.createElement(WrappedComponent, nextProps);
+    }
+  }
+
+  NameOfHoc.displayName = `NameOfHoc(${getComponentName(WrappedComponent)})`;
+  return hoistNonReactStatics(NameOfHoc, WrappedComponent);
+};
+
+export default withStateHandler;
+```
+
+### `copyTextToClipboard(text)`
+
+Copies text to clipboard by (1) creating a hidden textarea with the provided text, (2) selects the text, (3) runs `document.execCommand('copy')`.
+
+```js
+import { copyTextToClipboard } from 'ndla-util';
+copyTextToClipboard('Hello world!');
 ```

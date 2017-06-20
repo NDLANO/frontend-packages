@@ -95,7 +95,7 @@ storiesOf('Enkle komponenter', module)
       </section>
       <article className="c-article c-article--clean">
         <LayoutItem layout="center">
-          <h1 className="c-article__title">Tittel på artikkel</h1>
+          <h1 className="c-article__title">Eksempelartikkel</h1>
           <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
              å produsere filmen.
           </p>

@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import Icon from '../src/icons/Icon';
-import { Aside, Button, Logo } from '../src';
+import { Aside, Button, Logo, LayoutItem } from '../src';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
@@ -15,8 +15,8 @@ storiesOf('Enkle komponenter', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Logo</h1>
-          <div className="o-wrapper--inner">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Logo</h1>
             <p>
               Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
               for kommunikasjon. Den skal inspirere målgruppen elever og
@@ -34,26 +34,26 @@ storiesOf('Enkle komponenter', module)
               bakgrunn. Den skal plasseres i det øverste eller nederste
               hjørnet av en ytterkant. Logoen skal ikke sentreres.
             </p>
-          </div>
+          </LayoutItem>
         </section>
-        <section className="o-wrapper--inner">
+        <LayoutItem layout="center">
           <Logo cssModifier="large" name to="#" altText="Nasjonal digital læringsarena" />
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
   .add('Knapper', () => (
     <Center>
-      <article className="o-wrapper--wide">
+      <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Knapper</h1>
-          <div className="o-wrapper--inner">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Knapper</h1>
             <p>Knapper er til å klikke på, ikke for å lenke til.</p>
             <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
-          </div>
+          </LayoutItem>
         </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <section className="o-wrapper--inner">
+        <LayoutItem layout="center">
+          <h2 className="u-heading">Eksempel</h2>
           <InlineContainer>
             <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
           </InlineContainer>
@@ -61,7 +61,7 @@ storiesOf('Enkle komponenter', module)
             <Button onClick={action('clicked')}>Fylt knapp</Button>
           </InlineContainer>
           <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
@@ -69,96 +69,84 @@ storiesOf('Enkle komponenter', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Boks i tekst</h1>
-          <div className="o-wrapper--inner">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Boks i tekst</h1>
             <p>Boks i tekst</p>
-          </div>
+          </LayoutItem>
         </section>
-        <section className="o-wrapper--inner">
+        <LayoutItem layout="center">
           <h2>Eksempel</h2>
           <div className="c-bodybox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, praesentium.</div>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
-  .add('Oppsummerings/faktaboks', () => (
+  .add('Faktaboks og høyrespalte', () => (
     <Center>
-      <article className="o-wrapper--narrow">
-        <section className="c-factbox">
-          <h1 className="u-heading">Oppsummerings/faktaboks</h1>
-          <div className="o-wrapper--inner">
-            <p>Boksen kan brukes for å oppsummere en tekst, eller som faktaboks.
-               Den vil alltid plasseres i slutten av en tekst.</p>
+      <section className="c-factbox">
+        <LayoutItem layout="center">
+          <h1 className="u-heading">Faktaboks og høyrespalte</h1>
+          <p>For fremtidig innhold på ndla.no skal ikke høyrespalte benyttes,
+             i stedet benytter man faktabokser innenfor innholdsspalten.
+          </p>
+          <p>Høyrespalten kan benyttes på artikler som overføres fra gamle
+           ndla.no, men innholdet skal redaksjonelt flyttes til hovedspalten.
+           Fakta kan legges i en faktaboks, annet innhold kan bakes inn i
+           artikkelteksten, eller slettes.</p>
+          <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
+        </LayoutItem>
+      </section>
+      <article className="c-article c-article--clean">
+        <LayoutItem layout="center">
+          <h1 className="c-article__title">Tittel på artikkel</h1>
+          <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+             å produsere filmen.
+          </p>
+          <div className="c-article__byline">
+            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
           </div>
-        </section>
-        <section className="o-wrapper--inner">
-          <Aside>
-            <div>
-              <div className="c-aside__title">Oppsummering</div>
-              <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-              <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-              <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-              <div><figure className="article_audio">
-                <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-              <h2>Ressurser</h2>
-              <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-              <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-              <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
-          </Aside>
-        </section>
-        <section className="o-wrapper--inner">
-          <Aside>
-            <div>
-              <div className="c-aside__title">Fakta</div>
-              <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-              <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-              <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-              <div><figure className="article_audio">
-                <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-              <h2>Ressurser</h2>
-              <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-              <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-              <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
-          </Aside>
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Sidespalte', () => (
-    <Center>
-      <article className="o-wrapper--narrow">
-        <section className="c-factbox">
-          <h1 className="u-heading">Sidespalte</h1>
-          <div className="o-wrapper--inner">
-            <p>I artikler fra gamle ndla.no som bruker sidespalte, vil denne flyte på høyre side av artikkel-innholdet.</p>
-          </div>
-        </section>
-        <section className="o-wrapper--inner">
+        </LayoutItem>
+        <LayoutItem layout="center">
           <Aside float>
-            <div className="c-aside__title">Oppsummering</div>
-            <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-            <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-            <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-            <div><figure className="article_audio">
-              <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-            <h2>Ressurser</h2>
-            <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-            <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-            <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p>
+            <div>
+              <div className="c-aside__title">Høyrespalte</div>
+              <p>En faktaboks kan inneholde punktlister eller korte fakta som
+               er relevant til artikkelens innhold.</p>
+              <p>Det anbefales å ikke ha for mye innhold i en faktaboks, for
+              å i størst mulig grad beholde lese-konteksten.</p>
+              <p>Faktaboksen kan også brukes til å oppsummere innhold i slutten
+                av en artikkel.</p>
+            </div>
           </Aside>
           <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
             din og bestemmer seg for å bruke ressurser på nettopp dette
           prosjektet.</p>
-          <p>En pitch er en kortvarig framføring av en idé for en potensiell
-            samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.</p>
+          <ul>
+            <li>Test</li>
+            <li>Test</li>
+          </ul>
           <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             pitcher, blir idéen og historien i den filmen du planlegger å lage,
               tydeligere for både deg selv og dem du eventuelt jobber sammen med
                i klassen.</p>
+          <Aside>
+            <div>
+              <div className="c-aside__title">Faktaboks</div>
+              <p>En faktaboks kan inneholde punktlister eller korte fakta som
+              er relevant til artikkelens innhold.</p>
+              <p>Det anbefales å ikke ha for mye innhold i en faktaboks, for
+              å i størst mulig grad beholde lese-konteksten.</p>
+              <p>Faktaboksen kan også brukes til å oppsummere innhold i slutten
+               av en artikkel.</p>
+            </div>
+          </Aside>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
 
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))

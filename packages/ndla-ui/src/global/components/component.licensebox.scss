@@ -1,14 +1,18 @@
 .c-licensebox {
   position: relative;
+  padding-left: $spacing;
 }
 
 .license-toggler {
-  display: block;
-  text-transform: uppercase;
-  @include inuit-font-size(13px);
-  letter-spacing: .05em;
-
-  margin: 0 0 0 auto;
+  @include inuit-font-size(14px);
+  color: $brand-color;
+  min-width: 120px;
+  margin-top: -2px;
+  padding: 0;
+  text-decoration: underline;
+  float:right;
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
 }
 .license__heading {
   margin-left: $spacing;
@@ -20,12 +24,16 @@
 
 .c-licensebox--expanded {
   background: $brand-color--lighter;
+  padding-top: $spacing;
   div {
     animation-name: fadeInLeft;
     animation-duration: .5s;
   }
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
+    position: absolute !important;
+    z-index: 9;
+    color: $black;
   }
 }
 

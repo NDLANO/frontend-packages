@@ -26,7 +26,6 @@
    addCopyToClipboardListeners();
    addShowFigureDetailsClickListeners();
    addCloseFigureDetailsClickListeners();
-   makeFigureLicenseIconsClickable();
  };
 
  export {

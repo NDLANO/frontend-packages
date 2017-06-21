@@ -3,15 +3,13 @@
 }
 
 .license-toggler {
-  @include inuit-font-size(14px);
+  @include inuit-font-size(14px, 20px);
+  font-family: $font;
   color: $brand-color;
   min-width: 120px;
-  margin-top: -2px;
   padding: 0;
   text-decoration: underline;
   float:right;
-  // text-transform: uppercase;
-  // letter-spacing: 0.05em;
 }
 .license__heading {
   margin-left: $spacing;

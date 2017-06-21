@@ -62,12 +62,28 @@ const ExamplePage2 = () => (
           å produsere filmen.
         </p>
         <div className="c-article__byline">
-          <span className="c-article__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+          <span className="c-article__byline-flex">
+            <span className="c-article__byline-icon">
+              <Icon.User />
+            </span>
+            <span className="c-article__authors">
+            Skrevet av Ola Nordmann, Kari Nordmann, Jon Nordgubbe,
+               Trine Tralletryll. Oppdatert av Ola Nordkvinne.
+            </span>
           </span>
           {' '}
-          <span className="c-article__date">
-            <Icon.Time /> Publisert [dato]
+          <span className="c-article__byline-flex">
+            <span className="c-article__byline-icon">
+              <Icon.Time />
+            </span>
+            <span className="c-article__date">
+              Publisert 12/10/2016
+            </span>
+            <div className="license c-licensebox">
+              <button className="c-button c-button--stripped license-toggler" type="button">
+                Bruk artikkel
+              </button>
+            </div>
           </span>
         </div>
       </LayoutItem>
@@ -484,11 +500,11 @@ const ExampleWithGlossary = () => (
             <p>
               Barn møtes med forventninger til hvordan de skal oppføre seg. Disse forventningene gjentar seg, og slik lærer barnet hvilke regler eller normer som gjelder. Hovedmålet med sosialiseringen er at de enkelte menneskene skal kunne skille mellom godt og ondt, og rett og galt.
             </p>
-             <FigureWithLicense classes="article_figure--float-right">
-                <img
-                  alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-                  src="https://staging.api.ndla.no/image-api/v1/raw/jente mellom foreldre_0.jpg"
-                />
+            <FigureWithLicense classes="article_figure--float-right">
+              <img
+                alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+                src="https://staging.api.ndla.no/image-api/v1/raw/jente mellom foreldre_0.jpg"
+              />
             </FigureWithLicense>
             <h2>Normer og normsendere</h2>
             <p>

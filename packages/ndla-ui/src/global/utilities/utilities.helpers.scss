@@ -1,3 +1,4 @@
+/* Close button */
 .u-close {
   position: absolute;
   top: $spacing;
@@ -9,4 +10,12 @@
   font-weight: $font-weight-normal;
   z-index: 9;
   cursor: pointer;
+}
+
+/* Float article objects */
+.u-float-left {
+  @include float(3, 4, 'left');
+}
+.u-float-right {
+  @include float(3, 4, 'right');
 }

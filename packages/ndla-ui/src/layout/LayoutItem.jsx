@@ -17,16 +17,16 @@ export const LayoutItem = ({ children, layout }) => {
     case 'center' : {
       return <section className="u-4/6@desktop u-push-1/6@desktop">{children}</section>;
     }
+    case 'left' : {
+      return <section className="u-float-left">{children}</section>;
+    }
+    case 'right' : {
+      return <section className="u-float-right">{children}</section>;
+    }
     default : {
       return <section className="o-layout__item">{children}</section>;
     }
   }
-  // const mobileMod = mobile ? `u-${mobile}@mobile` : null;
-  // const tabletMod = tablet ? `u-${tablet}@tablet` : null;
-  // const desktopMod = desktop ? `u-${desktop}@desktop` : null;
-  // const pushDesktopMod = pushDesktop ? `u-push-${pushDesktop}@desktop` : null;
-  // const pullDesktopMod = pullDesktop ? `u-pull-${pullDesktop}@desktop` : null;
-  // const classes = classNames('o-layout__item', mobileMod, tabletMod, desktopMod, pushDesktopMod, pullDesktopMod, ['', className]);
 };
 
 LayoutItem.propTypes = {

@@ -44,16 +44,49 @@ storiesOf('Enkle komponenter', module)
   ))
   .add('Boks i tekst', () => (
     <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Boks i tekst</h1>
-            <p>Boks i tekst</p>
-          </LayoutItem>
-        </section>
+      <section className="c-factbox">
         <LayoutItem layout="center">
-          <h2>Eksempel</h2>
-          <div className="c-bodybox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, praesentium.</div>
+          <h1 className="u-heading">Boks i tekst</h1>
+          <p>En boks i teksten kan brukes for å fremheve noe av særlig interesse,
+           annet enn sitat (som det allerede fins sitatstil til).</p>
+        </LayoutItem>
+      </section>
+      <article className="c-article c-article--clean">
+        <LayoutItem layout="center">
+          <h1 className="c-article__title">Eksempelartikkel</h1>
+          <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+             å produsere filmen.
+          </p>
+          <div className="c-article__byline">
+            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+          </div>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.</p>
+          <LayoutItem layout="center">
+            <div className="c-bodybox">En tekstboks i midten av teksten.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+             pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med
+               i klassen.</p>
+          <LayoutItem layout="left">
+            <div className="c-bodybox">En tekstboks som flyter til venstre.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+             pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med
+               i klassen.</p>
+          <LayoutItem layout="right">
+            <div className="c-bodybox">En tekstboks som flyter til høyre.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
         </LayoutItem>
       </article>
     </Center>

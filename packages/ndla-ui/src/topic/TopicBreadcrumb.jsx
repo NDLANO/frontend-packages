@@ -14,39 +14,59 @@ import SafeLink from '../common/SafeLink';
 import { SubjectShape, TopicShape } from '../shapes';
 import Icon from '../icons/Icon';
 
-const classes = new BEMHelper({
-  name: 'breadcrumb',
-  prefix: 'c-',
-});
+const TopicBreadcrumbItem = ({ to, children, extraClass, inMasthead }) => {
+  let classBase = 'breadcrumb';
+  if (inMasthead) {
+    classBase = 'breadcrumb-masthead';
+  }
+  const classesMH = BEMHelper({
+    name: classBase,
+    prefix: 'c-',
+  });
+  return (
+    <li {...classesMH('item', extraClass)}>
+      <SafeLink to={to}>
+        {children}
+      </SafeLink>
+    </li>
+  );
+};
 
-const TopicBreadcrumbItem = ({ to, children, extraClass }) => (
-  <li {...classes('item', extraClass)}>
-    <SafeLink to={to}>
-      {children}
-    </SafeLink>
-  </li>
-);
+TopicBreadcrumbItem.defaultProps = {
+  inMasthead: false,
+};
 
 TopicBreadcrumbItem.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
   extraClass: PropTypes.string,
+  inMasthead: PropTypes.bool,
 };
 
-const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, currentTopic }) => {
+const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, currentTopic, inMasthead }) => {
+  let classBase = 'breadcrumb';
+  if (inMasthead) {
+    classBase = 'breadcrumb-masthead';
+  }
+  const classesMH = BEMHelper({
+    name: classBase,
+    prefix: 'c-',
+  });
+
   const topicIds = topicPath.map(topic => topic.id);
   return (
-    <div {...classes('', '')}>
+    <div {...classesMH('')}>
       {children}
-      <ol {...classes('list')}>
-        <TopicBreadcrumbItem key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Icon.Home className="c-icon--20" /></TopicBreadcrumbItem>
-        <TopicBreadcrumbItem key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
+      <ol {...classesMH('list')}>
+        <TopicBreadcrumbItem inMasthead={inMasthead} key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Icon.Home className="c-icon--20" /></TopicBreadcrumbItem>
+        <TopicBreadcrumbItem inMasthead={inMasthead} key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
         { topicPath.map((topic, i) =>
           <TopicBreadcrumbItem
             key={topic.id}
             topicIds={topicIds.slice(0, 1 + i)}
             to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}
             extraClass={currentTopic && currentTopic.name === topic.name ? 'current' : null}
+            inMasthead={inMasthead}
           >
             { topic.name }
           </TopicBreadcrumbItem>)
@@ -54,6 +74,10 @@ const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, cu
       </ol>
     </div>
   );
+};
+
+TopicBreadcrumb.defaultProps = {
+  inMasthead: false,
 };
 
 TopicBreadcrumb.propTypes = {
@@ -64,6 +88,7 @@ TopicBreadcrumb.propTypes = {
   toSubjects: PropTypes.func.isRequired,
   subjectsTitle: PropTypes.string.isRequired,
   currentTopic: PropTypes.arrayOf(TopicShape),
+  inMasthead: PropTypes.bool,
 };
 
 export default TopicBreadcrumb;

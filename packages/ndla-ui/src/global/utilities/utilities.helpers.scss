@@ -19,3 +19,9 @@
 .u-float-right {
   @include float(3, 4, 'right');
 }
+
+.u-fade-in {
+  animation-name: fadeIn;
+  animation-duration: .3s;
+  opacity: 1;
+}

@@ -13,12 +13,6 @@
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
   }
-
-  section p:first-child {
-    @include mq(tablet) {
-      margin-top: $spacing--large;
-    }
-  }
 }
 .c-article--clean {
   margin-top: $spacing;
@@ -39,7 +33,7 @@
 
 .c-article__byline {
   margin-top: $spacing;
-  margin-bottom: $spacing--small;
+  margin-bottom: $spacing--large;
   padding-top: $spacing--small/2;
   padding-bottom: $spacing--small/2;
   border-top: 2px solid $brand-grey--lighter;

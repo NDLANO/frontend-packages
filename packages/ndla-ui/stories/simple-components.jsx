@@ -89,6 +89,8 @@ storiesOf('Enkle komponenter', module)
                nytt nettsted, kan den likevel brukes. Innholdet skal etter hvert
               flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
                innhold kan bakes inn i artikkelteksten, eller slettes.</p>
+              <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres
+             under denne.</p>
             </div>
           </Aside>
           <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger

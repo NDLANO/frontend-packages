@@ -195,7 +195,9 @@ storiesOf('Enkle komponenter', module)
         <section className="c-factbox">
           <LayoutItem layout="center">
             <h1 className="u-heading">Knapper</h1>
-            <p>Knapper er til å klikke på, ikke for å lenke til.</p>
+            <p>Knapper er til å klikke på, ikke for å lenke til, og skal brukes
+            til interaktivitet på samme side, ikke for å sende brukeren til en
+            ny side (da brukes vanlig lenke).</p>
             <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
           </LayoutItem>
         </section>

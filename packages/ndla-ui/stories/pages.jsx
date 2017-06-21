@@ -68,7 +68,7 @@ const ExamplePage2 = () => (
             </span>
             <span className="c-article__authors">
             Skrevet av Ola Nordmann, Kari Nordmann, Jon Nordgubbe,
-               Trine Tralletryll. Oppdatert av Ola Nordkvinne.
+               Trine Tralletryll. Oppdatert av <a href="#test">Ola Nordkvinne</a>.
             </span>
           </span>
           {' '}

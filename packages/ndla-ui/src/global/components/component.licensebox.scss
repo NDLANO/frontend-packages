@@ -24,6 +24,8 @@
 .c-licensebox--expanded {
   background: $brand-color--lighter;
   padding-top: $spacing;
+  z-index: 9;
+  color: $black;
   div {
     animation-name: fadeInLeft;
     animation-duration: .5s;
@@ -31,8 +33,6 @@
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
     position: absolute !important;
-    z-index: 9;
-    color: $black;
   }
 }
 

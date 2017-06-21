@@ -73,6 +73,9 @@ export default class TopicMenu extends Component {
           <div {...classes('right-filler')} />
         </div>
         <ul {...classes('list', null, classes('left').className)}>
+          <li {...classes('back')}>
+            <SafeLink {...classes('back-link')} to="/"><Icon.Home {...classes('home-icon', '', 'c-icon--20')} />Fagoversikt</SafeLink>
+          </li>
           <li {...classes('subject')} >
             <SafeLink to={toSubject}>{ subject }</SafeLink>
           </li>

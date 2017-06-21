@@ -11,15 +11,21 @@
 
  import { addAsideClickListener, removeAsideClickListener } from './asideScripts';
 
- import { addShowFigureDetailsClickListners, addCloseFigureDetailsClickListners, makeFigureLicenseIconsClickable } from './figureScripts';
+ import {
+   addShowFigureDetailsClickListeners,
+   addCloseFigureDetailsClickListeners,
+   makeFigureLicenseIconsClickable,
+   addCopyToClipboardListeners,
+ } from './figureScripts';
 
 
  export const initArticleScripts = () => {
    addEventListenerForResize();
    updateIFrameDimensions();
    addAsideClickListener();
-   addShowFigureDetailsClickListners();
-   addCloseFigureDetailsClickListners();
+   addCopyToClipboardListeners();
+   addShowFigureDetailsClickListeners();
+   addCloseFigureDetailsClickListeners();
    makeFigureLicenseIconsClickable();
  };
 
@@ -32,7 +38,8 @@
    addEventListenerForResize,
    removeEventListenerForResize,
 
-   addCloseFigureDetailsClickListners,
-   addShowFigureDetailsClickListners,
+   addCloseFigureDetailsClickListeners,
+   addCopyToClipboardListeners,
+   addShowFigureDetailsClickListeners,
    makeFigureLicenseIconsClickable,
  };

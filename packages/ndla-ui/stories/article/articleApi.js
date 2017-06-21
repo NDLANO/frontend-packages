@@ -30,7 +30,7 @@ export function headerWithAccessToken(token) {
 export const fetchArticle = id => (
    new Promise((resolve, reject) => {
      getToken().then((token) => {
-       fetch(`https://ndla-article-converter.herokuapp.com/article-converter/raw/nb/${id}/`, { headers: headerWithAccessToken(token) })
+       fetch(`http://localhost:3100/article-converter/raw/nb/${id}/`, { headers: headerWithAccessToken(token) })
         .then((res) => {
           if (res.ok) {
             return res.json()

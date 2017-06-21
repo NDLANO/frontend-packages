@@ -6,9 +6,10 @@
  *
  */
 
+ import { copyTextToClipboard } from 'ndla-util';
  import { createElement, findAncestorByClass, removeModifiers, removeElementById, wrapElement } from './domHelpers';
 
- export const addCloseFigureDetailsClickListners = () => {
+ export const addCloseFigureDetailsClickListeners = () => {
    document.querySelectorAll('.c-figure .c-figure__close').forEach((el) => {
      const target = el;
      target.onclick = () => {
@@ -19,7 +20,30 @@
    });
  };
 
- export const addShowFigureDetailsClickListners = () => {
+ export const addCopyToClipboardListeners = () => {
+   document.querySelectorAll('button[data-copy-string]').forEach((el) => {
+     const target = el;
+     target.onclick = () => {
+       const text = target.getAttribute('data-copy-string');
+       const copiedTitle = target.getAttribute('data-copied-title');
+
+       const success = copyTextToClipboard(text);
+
+       if (success) {
+         const previouesTitle = target.innerHTML;
+         target.innerHTML = copiedTitle;
+         target.disabled = true;
+
+         setTimeout(() => {
+           target.innerHTML = previouesTitle;
+           target.disabled = false;
+         }, 10000);
+       }
+     };
+   });
+ };
+
+ export const addShowFigureDetailsClickListeners = () => {
    document.querySelectorAll('.c-figure .c-figure__captionbtn').forEach((el) => {
      const target = el;
      target.onclick = () => {

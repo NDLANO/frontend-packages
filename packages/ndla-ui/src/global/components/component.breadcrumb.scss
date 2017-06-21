@@ -63,6 +63,10 @@
 /* 2 */
 .c-breadcrumb-masthead {
   opacity: 0;
+  display: none;
+  @include mq(tablet) {
+    display: block;
+  }
 }
 .c-breadcrumb-masthead__list {
   padding-top: 1px;
@@ -70,6 +74,7 @@
   margin-bottom: 0;
   display: inline-block;
   list-style: none;
+  text-align: left;
 }
 .c-breadcrumb-masthead__item {
   display: inline-block;

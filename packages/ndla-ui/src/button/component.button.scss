@@ -6,6 +6,7 @@
  *
  */
 
+
 .c-button {
   display: inline-block;
   color: $background-color--light;
@@ -75,4 +76,8 @@
 }
 .c-button--small {
   padding: 0;
+}
+
+.hoverAnimation {
+	transition: all 1.5s;
 }

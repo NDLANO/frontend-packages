@@ -55,7 +55,7 @@ storiesOf('Enkle komponenter', module)
         <h2 className="u-heading">Eksempel</h2>
         <section className="o-wrapper--inner">
           <InlineContainer>
-            <Button outline onClick={action('clicked')}>Knapp med ramme</Button> {' '}
+            <Button outline className="hoverAnimation" onClick={action('clicked')}>Knapp med ramme</Button> {' '}
             <Button outline disabled onClick={action('clicked')}>Deaktivert knapp med ramme</Button>
           </InlineContainer>
           <InlineContainer>

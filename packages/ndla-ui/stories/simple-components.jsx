@@ -6,61 +6,38 @@ import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import Icon from '../src/icons/Icon';
 import { Aside, Button, Logo, LayoutItem } from '../src';
+import FigureWithLicense from './article/FigureWithLicense';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
 
 storiesOf('Enkle komponenter', module)
-  .add('Logo', () => (
+  .add('Bilde under ingress', () => (
     <Center>
       <article>
         <section className="c-factbox">
           <LayoutItem layout="center">
-            <h1 className="u-heading">Logo</h1>
+            <h1 className="u-heading">Bilde under ingress</h1>
             <p>
-              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
-              for kommunikasjon. Den skal inspirere målgruppen elever og
-              lærere i videregående opplæring og gjøre dem nysgjerrige på
-              NDLA.
+              Under ingressen bruker vi et bilde for å illustrere tematikken.
+              Dette bildet må være i landskapsformat, slik at det ikke blir så
+              høyt at det skyver brødteksten for langt ned på siden.
             </p>
             <p>
-              Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
-              Logo uten undertekst kan benyttes i tilfeller der det
-              kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
+              Anbefalt bildestørrelse: 1000px (bredde) x 500px (høyde), eller
+              tilsvarende proporsjonal størrelse, f. eks det dobbelte av disse
+               tallene.
             </p>
-            <p>
-              Logo uten undertekst kan kompletteres med en beskrivende tekst
-              til høyre. Logoen kan benyttes i blått, eller i svart eller hvitt avhengig av
-              bakgrunn. Den skal plasseres i det øverste eller nederste
-              hjørnet av en ytterkant. Logoen skal ikke sentreres.
-            </p>
+
           </LayoutItem>
         </section>
         <LayoutItem layout="center">
-          <Logo cssModifier="large" name to="#" altText="Nasjonal digital læringsarena" />
-        </LayoutItem>
-      </article>
-    </Center>
-  ))
-  .add('Knapper', () => (
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Knapper</h1>
-            <p>Knapper er til å klikke på, ikke for å lenke til.</p>
-            <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
-          </LayoutItem>
-        </section>
-        <LayoutItem layout="center">
-          <h2 className="u-heading">Eksempel</h2>
-          <InlineContainer>
-            <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
-          </InlineContainer>
-          <InlineContainer>
-            <Button onClick={action('clicked')}>Fylt knapp</Button>
-          </InlineContainer>
-          <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
+          <FigureWithLicense>
+            <img
+              alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+              src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            />
+          </FigureWithLicense>
         </LayoutItem>
       </article>
     </Center>
@@ -175,6 +152,60 @@ storiesOf('Enkle komponenter', module)
           </tbody>
         </table>
       </LayoutItem>
+    </Center>
+  ))
+  .add('Knapper', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Knapper</h1>
+            <p>Knapper er til å klikke på, ikke for å lenke til.</p>
+            <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="center">
+          <h2 className="u-heading">Eksempel</h2>
+          <InlineContainer>
+            <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
+          </InlineContainer>
+          <InlineContainer>
+            <Button onClick={action('clicked')}>Fylt knapp</Button>
+          </InlineContainer>
+          <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
+  .add('Logo', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Logo</h1>
+            <p>
+              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
+              for kommunikasjon. Den skal inspirere målgruppen elever og
+              lærere i videregående opplæring og gjøre dem nysgjerrige på
+              NDLA.
+            </p>
+            <p>
+              Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
+              Logo uten undertekst kan benyttes i tilfeller der det
+              kommer godt fram andre steder hvem NDLA er, eksempelvis på ndla.no.
+            </p>
+            <p>
+              Logo uten undertekst kan kompletteres med en beskrivende tekst
+              til høyre. Logoen kan benyttes i blått, eller i svart eller hvitt avhengig av
+              bakgrunn. Den skal plasseres i det øverste eller nederste
+              hjørnet av en ytterkant. Logoen skal ikke sentreres.
+            </p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="center">
+          <Logo cssModifier="large" name to="#" altText="Nasjonal digital læringsarena" />
+        </LayoutItem>
+      </article>
     </Center>
   ))
   ;

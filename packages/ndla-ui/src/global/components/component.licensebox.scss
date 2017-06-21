@@ -9,7 +9,9 @@
   min-width: 120px;
   padding: 0;
   text-decoration: underline;
-  float:right;
+  @include mq(tablet) {
+    float:right;
+  }
 }
 .license__heading {
   margin-left: $spacing;

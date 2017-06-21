@@ -44,14 +44,10 @@
   padding-bottom: $spacing--small/2;
   border-top: 2px solid $brand-grey--lighter;
   @include inuit-font-size(14px, 20px);
-  // background-color: $brand-grey--lighter;
-  // letter-spacing: .05em;
-  // text-transform: uppercase;
   font-family: $font;
   color: $brand-grey;
   @include mq(tablet) {
     display: flex;
-    // justify-content: space-between;
   }
 }
 .c-article__byline-icon {
@@ -78,6 +74,10 @@
 
 .c-article__authors {
   padding-right: $spacing;
+  margin-bottom: $spacing--small;
+  @include mq(tablet) {
+    margin-bottom: 0;
+  }
   svg {
     margin-top: -3px;
   }

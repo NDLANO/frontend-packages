@@ -50,6 +50,13 @@
     border: 2px solid transparent;
     transform: translateY(0) translateX(0);
   }
+  &:disabled {
+    color: $brand-grey;
+    background-color: $background-color--dark;
+    border: 2px solid transparent;
+    cursor: not-allowed;
+    transform: translateY(0) translateX(0);
+  }
 }
 
 .c-button--transparent {

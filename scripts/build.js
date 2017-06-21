@@ -20,7 +20,7 @@ babelOptions.babelrc = false;
 function resolveDestPath(file) {
   const packageName = path.relative(PACKAGES_DIR, file).split(path.sep)[0];
   const packageSrcPath = path.resolve(PACKAGES_DIR, packageName, 'src');
-  const packageBuildPath = path.resolve(PACKAGES_DIR, packageName, 'lib');
+  const packageBuildPath = path.resolve(PACKAGES_DIR, packageName, 'es');
   const relativeToSrcPath = path.relative(packageSrcPath, file);
   const destPath = path.resolve(packageBuildPath, relativeToSrcPath);
 

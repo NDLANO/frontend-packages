@@ -26,6 +26,12 @@
     "lib",
     "es"
   ],
-  "devDependencies": {},
-  "dependencies": {}
+  "peerDependencies": {
+    "ndla-util": "^0.1.2"
+  },
+  "devDependencies": {
+    "ndla-util": "^0.1.2"
+  },
+  "dependencies": {
+  }
 }

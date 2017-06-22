@@ -8,6 +8,11 @@ A collection of functions for making article content responsive (and interactive
 $ npm install ndla-article-scripts
 ```
 
+or
+
+```sh
+$ yarn add ndla-article-scripts
+```
 ## Usage
 
 ### Plain javascript (embed scripts)
@@ -67,6 +72,10 @@ export default Article;
 
 ## API(functions)
 
+### `articleScripts.initArticleScripts()`
+
+Initialize all default article scripts.
+
 ### `articleScripts.updateIFrameDimensions()`
 
 Update iframe height and width to fit screen/window size.
@@ -86,3 +95,19 @@ Adds an click listener on aside buttons for expanding the content on small scree
 ### `articleScripts.removeAsideClickListener()`
 
 Removes click listeners added by `removeAsideClickListener`.
+
+### `articleScripts.addShowFigureDetailsClickListeners()`
+
+Adds click listeners for displaying license info popup.
+
+### `articleScripts.addCloseFigureDetailsClickListeners()`
+
+Adds click listeners for closing license info popups.
+
+### `articleScripts.addCopyToClipboardListeners()`
+
+Add a click listener to buttons with a `data-copy-string`. The value of the attribute will be copied to the clipboard on click.
+
+### `articleScripts.makeFigureLicenseIconsClickable()`
+
+Adds click listeneres for displaying license text popup on license icon click

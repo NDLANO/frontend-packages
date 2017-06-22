@@ -9,9 +9,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  // addCloseFigureDetailsClickListners,
-  addShowFigureDetailsClickListners,
-  // makeFigureLicenseIconsClickable,
+  addCloseFigureDetailsClickListeners,
+  addShowFigureDetailsClickListeners,
 } from 'ndla-article-scripts';
 
 import { Figure, FigureCaption, FigureDetails } from '../../src';
@@ -29,19 +28,8 @@ const authors = [
 class FigureWithLicense extends Component {
 
   componentDidMount() {
-    // Overriding function -> fix closing license popup
-    const addCloseFigureDetailsClickListners = () => {
-      document.querySelectorAll('.c-figure .c-figure__close').forEach((el) => {
-        const target = el;
-        target.onclick = () => {
-          target.parentNode.parentNode.classList.remove('c-figure--active');
-          target.parentNode.parentNode.querySelector('figcaption').classList.remove('u-hidden');
-        };
-      });
-    };
-    addShowFigureDetailsClickListners();
-    addCloseFigureDetailsClickListners();
-    // makeFigureLicenseIconsClickable();
+    addShowFigureDetailsClickListeners();
+    addCloseFigureDetailsClickListeners();
   }
 
 

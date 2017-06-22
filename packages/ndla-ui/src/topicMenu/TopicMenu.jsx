@@ -73,12 +73,15 @@ export default class TopicMenu extends Component {
           <div {...classes('right-filler')} />
         </div>
         <ul {...classes('list', null, classes('left').className)}>
+          <li {...classes('back')}>
+            <SafeLink {...classes('back-link')} to="/"><Icon.Home {...classes('home-icon', '', 'c-icon--20')} />Fagoversikt</SafeLink>
+          </li>
           <li {...classes('subject')} >
             <SafeLink to={toSubject}>{ subject }</SafeLink>
           </li>
           { topics.map(topic =>
             (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
-              <SafeLink onClick={() => this.handleMouseClick(topic.id)} {...classes('link')} to={toTopic(topic.id)}>{ topic.name }</SafeLink>
+              <SafeLink onClick={() => this.handleMouseClick(topic.id)} {...classes('link')} to={() => null}>{ topic.name }</SafeLink>
               { topic.id === expandedTopicId && window.innerWidth < 700 ?
                 <SubtopicLinkList
                   classes={classes}

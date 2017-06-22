@@ -1,25 +1,33 @@
-
 export const topicList = [
   {
-    id: '1',
-    name: 'Kommunikasjon for fagarbeideren',
-    introduction: 'Kommunikasjon er et stort fagfelt for helsefagarbeidere. En helsefagarbeider har opparbeidet seg tilfredstillende kommunikasjonsferdigheter for å bli godkjent yrkesutøver.',
-    contentUri: null,
-    author: 'NDLA',
+    id: 'urn:topic:1:179373',
+    name: 'Utforskeren',
+    contentUri: 'urn:article:6104',
+    introduction: 'Hovudområdet grip over i og inn i dei andre hovudområda i faget, og difor skal ein arbeide med kompetansemåla i utforskaren samtidig med at ein arbeider med mål frå andre hovudområde. Hovudområdet handlar om korleis ein byggjer opp samfunnsfagleg forståing gjennom nysgjerrigheit, undring og skapande aktivitetar.',
+    parent: 'urn:subject:100',
+    author: 'Inga Berntsen Rudi',
+    path: '/subject:100/topic:1:179373',
+    connectionId: 'urn:subject-topic:9f04fc8c-7b4b-4742-b0d0-21a9c227192b',
   },
   {
-    id: '2',
-    name: 'Menneskekroppen',
-    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    contentUri: null,
-    author: 'Lorem ipsum',
+    id: 'urn:topic:1:55163',
+    name: 'Individ, samfunn og kultur',
+    contentUri: 'urn:article:6074',
+    author: 'Inga Berntsen Rudi',
+    introduction: 'Spørsmålet «Hvem er jeg?» står sentralt når du skal arbeide med hovedområdet «Individ, samfunn og kultur». Spørsmålet kan være både lett og vanskelig å svare på. Oppfølgingsspørsmålene kan være: Hvordan er jeg blitt til den jeg er i dag? Hva gjør meg unik? Hva gjør meg lik andre?',
+    parent: 'urn:subject:100',
+    path: '/subject:100/topic:1:55163',
+    connectionId: 'urn:subject-topic:3e9772e9-14f6-4439-a8d2-5d75b3e5d772',
   },
   {
-    id: '3',
-    name: 'Sykepleie',
-    introduction: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    contentUri: null,
-    author: 'NDLA',
+    id: 'urn:topic:1:55212',
+    name: 'Arbeids- og næringsliv',
+    contentUri: 'urn:article:2513',
+    parent: 'urn:subject:100',
+    author: 'Inga Berntsen Rudi',
+    introduction: 'Hva skal du bli når du blir stor? Dette er et spørsmål de aller fleste av oss har fått en eller annen gang. Svarene vi ga, kunne være politi, brannmann, flyvertinne eller … indianer. Mange oppfyller drømmen sin. For noen endrer drømmen seg mange ganger i løpet av barne- og ungdomstiden. På veien er det mange valg vi må ta.',
+    path: '/subject:100/topic:1:55212',
+    connectionId: 'urn:subject-topic:a3c98195-098a-48e2-b612-6b2e0e83ec64',
   },
 ];
 
@@ -62,7 +70,8 @@ export const topicMenu = [
     name: 'Idéutvikling og mediedesign',
     subtopics: [
       { id: 'urn:topic:170363', name: 'Idéutvikling', contentUri: null },
-      { id: 'urn:topic:169397', name: 'Mediedesign', contentUri: null }],
+      { id: 'urn:topic:169397', name: 'Mediedesign', contentUri: null },
+    ],
     contentUri: null,
   },
   {
@@ -70,19 +79,37 @@ export const topicMenu = [
     name: 'Medieproduksjon',
     subtopics: [
       { id: 'urn:topic:169379', name: 'Nettsider', contentUri: null },
-      { id: 'urn:topic:170356', name: 'Produksjonsutstyr og HMS', contentUri: null },
+      {
+        id: 'urn:topic:170356',
+        name: 'Produksjonsutstyr og HMS',
+        contentUri: null,
+      },
       { id: 'urn:topic:170364', name: 'Lydarbeid', contentUri: null },
-      { id: 'urn:topic:30a52046-451e-4302-b62f-21f1a1d0b81e', name: 'Levende bilde', contentUri: null },
+      {
+        id: 'urn:topic:30a52046-451e-4302-b62f-21f1a1d0b81e',
+        name: 'Levende bilde',
+        contentUri: null,
+      },
       { id: 'urn:topic:170379', name: 'Bilde', contentUri: null },
-      { id: 'urn:topic:412bdb35-87f6-49e4-b59a-71f6652652ac', name: 'Skriftlig tekstarbeid', contentUri: null },
+      {
+        id: 'urn:topic:412bdb35-87f6-49e4-b59a-71f6652652ac',
+        name: 'Skriftlig tekstarbeid',
+        contentUri: null,
+      },
     ],
-    contentUri: null },
+    contentUri: null,
+  },
   {
     id: 'urn:topic:172532',
     name: 'Mediekommunikasjon',
     subtopics: [
-        { id: 'urn:topic:63b785ca-9bda-4769-a95e-51d621cace34', name: 'Fortelleteknikker og virkemidler', contentUri: null },
-        { id: 'urn:topic:169412', name: 'Mediekommunikasjon', contentUri: null }],
+      {
+        id: 'urn:topic:63b785ca-9bda-4769-a95e-51d621cace34',
+        name: 'Fortelleteknikker og virkemidler',
+        contentUri: null,
+      },
+      { id: 'urn:topic:169412', name: 'Mediekommunikasjon', contentUri: null },
+    ],
     contentUri: null,
   },
 ];

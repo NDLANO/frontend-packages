@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../src';
-import { topicMenu } from '../../dummydata';
+import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, ClickToggle, TopicMenu, TopicBreadcrumb } from '../../src';
+import { topicMenu, subjectList, topicList } from '../../dummydata';
 
 export const MastheadLeftRight = () => (
   <Masthead>
@@ -47,6 +47,13 @@ export class MastheadWithTopicMenu extends React.Component {
 
   handleScroll() {
     this.state = { sticky: true };
+
+    // Should probably be solved better?
+    if (window.pageYOffset > 150) {
+      document.getElementsByClassName('c-breadcrumb-masthead')[0].classList.add('u-fade-in');
+    } else {
+      document.getElementsByClassName('c-breadcrumb-masthead')[0].classList.remove('u-fade-in');
+    }
   }
 
   render() {
@@ -58,6 +65,7 @@ export class MastheadWithTopicMenu extends React.Component {
               <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
             </ClickToggle>
           </SiteNav>
+          <TopicBreadcrumb inMasthead toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
         </MastheadItem>
         <MastheadItem right>
           <Logo to="#" altText="Nasjonal digital læringsarena" />

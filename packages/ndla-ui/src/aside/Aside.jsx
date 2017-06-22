@@ -8,9 +8,9 @@ const toggleAside = (event) => {
 };
 
 const Aside = ({ ...rest }) => (
-  <aside className="c-aside">
+  <aside className={rest.float ? 'c-aside c-aside--float expanded' : 'c-aside'}>
     <div className="c-aside__content">{rest.children}</div>
-    <Button className="c-aside__button" onClick={toggleAside} />
+    {!rest.float ? <Button className="c-aside__button" onClick={toggleAside} /> : null }
   </aside>);
 
 export default Aside;

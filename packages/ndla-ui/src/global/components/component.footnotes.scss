@@ -6,7 +6,7 @@
   color: gray;
   @include inuit-font-size(15px);
 }
-.c-footnotes__item {
+.c-footnotes__item, .c-footnote__item { // Please fix bad markup - use "footnotes" in plural!
   margin-bottom: $spacing--small;
   &:before {
     display: none;

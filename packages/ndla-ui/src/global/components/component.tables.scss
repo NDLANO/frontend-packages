@@ -86,9 +86,6 @@
       }
     }
   }
-
-  //Hover border
-
   // Remove excess spacing on headings inside table
   h1,h2,h3,h4,h5 {
     margin-top: 0;
@@ -97,24 +94,4 @@
     margin: 0;
   }
 
-}
-// If not proper markup
-.c-article table:not(.c-table) {
-  display: inline-block;
-  overflow-x: auto;
-
-  // optional - enable iOS momentum scrolling
-  -webkit-overflow-scrolling: touch;
-
-  // scrolling shadows on left/right
-  background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-  background-size: 15px 100%, 15px 100%;
-  background-attachment: scroll, scroll;
-  background-repeat: no-repeat;
-
-  tbody {
-    background: none;
-    width: 100%;
-  }
 }

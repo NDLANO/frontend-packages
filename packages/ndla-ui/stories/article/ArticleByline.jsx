@@ -40,8 +40,8 @@ const ArticleByline = ({ article }) => {
       <section {...classes('byline')}>
         {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
         <LastUpdated date={article.updated} />
+        <LicenseExample />
       </section>
-      <LicenseExample />
     </div>
   );
 };

@@ -63,7 +63,7 @@ export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviatio
           <span className="article_meta">{ authors.map(author => author.name).join(', ') }</span>
         </LicenseByline>
       </div>
-      <button className="c-button c-button--outline c-figure__captionbtn">{reuseLabel}</button>
+      <button className="c-figure__captionbtn">{reuseLabel}</button>
     </div>
   </figcaption>
 );

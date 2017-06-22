@@ -5,18 +5,222 @@ import { action } from '@storybook/addon-actions';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import Icon from '../src/icons/Icon';
-import { Aside, Button, Logo } from '../src';
+import { Aside, Button, Logo, LayoutItem } from '../src';
+import FigureWithLicense from './article/FigureWithLicense';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
 
 storiesOf('Enkle komponenter', module)
+  .add('Bilde under ingress', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Bilde under ingress</h1>
+            <p>
+              Under ingressen bruker vi et bilde for å illustrere tematikken.
+              Dette bildet må være i landskapsformat, slik at det ikke blir så
+              høyt at det skyver brødteksten for langt ned på siden.
+            </p>
+            <p>
+              Anbefalt bildestørrelse: 1000px (bredde) x 500px (høyde), eller
+              tilsvarende proporsjonal størrelse, f. eks det dobbelte av disse
+               tallene.
+            </p>
+
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="center">
+          <FigureWithLicense>
+            <img
+              alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+              src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            />
+          </FigureWithLicense>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
+  .add('Boks i tekst', () => (
+    <Center>
+      <section className="c-factbox">
+        <LayoutItem layout="center">
+          <h1 className="u-heading">Boks i tekst</h1>
+          <p>En boks i teksten kan brukes for å fremheve noe av særlig interesse,
+           annet enn sitat (som det allerede fins sitatstil til).</p>
+        </LayoutItem>
+      </section>
+      <article className="c-article c-article--clean">
+        <LayoutItem layout="center">
+          <h1 className="c-article__title">Eksempelartikkel</h1>
+          <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+             å produsere filmen.
+          </p>
+          <div className="c-article__byline">
+            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+          </div>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.</p>
+          <LayoutItem layout="center">
+            <div className="c-bodybox">En tekstboks i midten av teksten.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+             pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med
+               i klassen.</p>
+          <LayoutItem layout="left">
+            <div className="c-bodybox">En tekstboks som flyter til venstre.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+             pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med
+               i klassen.</p>
+          <LayoutItem layout="right">
+            <div className="c-bodybox">En tekstboks som flyter til høyre.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
+  .add('Faktaboks og høyrespalte', () => (
+    <Center>
+      <section className="c-factbox">
+        <LayoutItem layout="center">
+          <h1 className="u-heading">Faktaboks og høyrespalte</h1>
+          <p>For fremtidig innhold på ndla.no skal ikke høyrespalte benyttes,
+             i stedet benytter man faktabokser innenfor innholdsspalten.
+              Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
+          </p>
+          <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
+        </LayoutItem>
+      </section>
+      <article className="c-article c-article--clean">
+        <LayoutItem layout="center">
+          <h1 className="c-article__title">Eksempelartikkel</h1>
+          <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+             å produsere filmen.
+          </p>
+          <div className="c-article__byline">
+            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+          </div>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          <Aside float>
+            <div>
+              <div className="c-aside__title">Høyrespalte</div>
+              <p>Høyrespalten skal fases ut.</p>
+              <p>I en midlertidig fase under flytting av innhold fra gammelt til
+               nytt nettsted, kan den likevel brukes. Innholdet skal etter hvert
+              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+               innhold kan bakes inn i artikkelteksten, eller slettes.</p>
+              <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres
+             under denne.</p>
+            </div>
+          </Aside>
+          <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.</p>
+          <ul>
+            <li>Test</li>
+            <li>Test</li>
+          </ul>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+             pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med
+               i klassen.</p>
+          <Aside>
+            <div>
+              <div className="c-aside__title">Faktaboks</div>
+              <p>En faktaboks kan inneholde punktlister eller korte fakta som
+              er relevant til artikkelens innhold.</p>
+              <p>Det anbefales å ikke ha for mye innhold i en faktaboks, for
+              å i størst mulig grad beholde lese-konteksten.</p>
+              <p>Faktaboksen kan også brukes til å oppsummere innhold i slutten
+               av en artikkel.</p>
+            </div>
+          </Aside>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
+  .add('Ikoner', () => (
+    <Center>
+      <section className="c-factbox">
+        <LayoutItem layout="center">
+          <h1 className="u-heading">Ikoner</h1>
+        </LayoutItem>
+      </section>
+      <LayoutItem layout="center">
+        <table className="c-table">
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>JSX</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
+                <tr key={key}>
+                  <td>{createElement(Icon[key])}</td>
+                  <td>{key}</td>
+                  <td><code>&lt;Icon.{key} /&gt;</code></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </LayoutItem>
+    </Center>
+  ))
+  .add('Knapper', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Knapper</h1>
+            <p>Knapper er til å klikke på, ikke for å lenke til, og skal brukes
+            til interaktivitet på samme side, ikke for å sende brukeren til en
+            ny side (da brukes vanlig lenke).</p>
+            <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="center">
+          <h2 className="u-heading">Eksempel</h2>
+          <InlineContainer>
+            <Button outline onClick={action('clicked')}>Knapp med ramme</Button>{' '}
+            <Button outline disabled onClick={action('clicked')}>Deaktivert knapp med ramme</Button>
+          </InlineContainer>
+          <InlineContainer>
+            <Button onClick={action('clicked')}>Fylt knapp</Button>
+          </InlineContainer>
+          <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
   .add('Logo', () => (
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Logo</h1>
-          <div className="o-wrapper--inner">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Logo</h1>
             <p>
               Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
               for kommunikasjon. Den skal inspirere målgruppen elever og
@@ -34,125 +238,11 @@ storiesOf('Enkle komponenter', module)
               bakgrunn. Den skal plasseres i det øverste eller nederste
               hjørnet av en ytterkant. Logoen skal ikke sentreres.
             </p>
-          </div>
+          </LayoutItem>
         </section>
-        <section className="o-wrapper--inner">
+        <LayoutItem layout="center">
           <Logo cssModifier="large" name to="#" altText="Nasjonal digital læringsarena" />
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Knapper', () => (
-    <Center>
-      <article className="o-wrapper--wide">
-        <section className="c-factbox">
-          <h1 className="u-heading">Knapper</h1>
-          <div className="o-wrapper--inner">
-            <p>Knapper er til å klikke på, ikke for å lenke til.</p>
-            <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
-          </div>
-        </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <section className="o-wrapper--inner">
-          <InlineContainer>
-            <Button outline className="hoverAnimation" onClick={action('clicked')}>Knapp med ramme</Button> {' '}
-            <Button outline disabled onClick={action('clicked')}>Deaktivert knapp med ramme</Button>
-          </InlineContainer>
-          <InlineContainer>
-            <Button onClick={action('clicked')}>Fylt knapp</Button>
-          </InlineContainer>
-          <Button disabled onClick={action('clicked')}>Knapp deaktivert</Button>
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Boks i tekst', () => (
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <h1 className="u-heading">Boks i tekst</h1>
-          <div className="o-wrapper--inner">
-            <p>Boks i tekst</p>
-          </div>
-        </section>
-        <section className="o-wrapper--inner">
-          <h2>Eksempel</h2>
-          <div className="c-bodybox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, praesentium.</div>
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Oppsummerings/faktaboks', () => (
-    <Center>
-      <article className="o-wrapper--narrow">
-        <section className="c-factbox">
-          <h1 className="u-heading">Oppsummerings/faktaboks</h1>
-          <div className="o-wrapper--inner">
-            <p>Boksen kan brukes for å oppsummere en tekst, eller som faktaboks.
-               Den vil alltid plasseres i slutten av en tekst.</p>
-          </div>
-        </section>
-        <section className="o-wrapper--inner">
-          <Aside>
-            <div>
-              <div className="c-aside__title">Oppsummering</div>
-              <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-              <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-              <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-              <div><figure className="article_audio">
-                <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-              <h2>Ressurser</h2>
-              <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-              <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-              <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
-          </Aside>
-        </section>
-        <section className="o-wrapper--inner">
-          <Aside>
-            <div>
-              <div className="c-aside__title">Fakta</div>
-              <h2>Hva vil du bli?</h2> <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-              <p>Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper deg å velge!</p>
-              <h2>Siris tips</h2> <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-              <div><figure className="article_audio">
-                <audio controls="" type="audio/mpeg" src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3" /><figcaption>medieutdanning</figcaption></figure></div>
-              <h2>Ressurser</h2>
-              <p><a href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media" title="Utdanning.no: Søk på yrke">Utdanning.no: Søk på yrke</a></p>
-              <p><a href="http://www.vilbli.no" title="Les mer på Vilbli.no">Les mer på Vilbli.no</a></p>
-              <p>Landslaget for medieundervisning har en god oversikt over</p> <p><a href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile" title="medieutdanning i Norge">medieutdanning i Norge</a>.</p></div>
-          </Aside>
-        </section>
-      </article>
-    </Center>
-  ))
-  .add('Ikoner', () => (
-    <Center>
-      <article className="o-wrapper--narrow">
-        <section className="c-factbox">
-          <h1 className="u-heading">Ikoner</h1>
-        </section>
-        <section>
-          <table>
-            <thead>
-              <tr>
-                <td>Icon</td>
-                <td>Name</td>
-                <td>JSX</td>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
-                  <tr key={key}>
-                    <td>{createElement(Icon[key])}</td>
-                    <td>{key}</td>
-                    <td><code>&lt;Icon.{key} /&gt;</code></td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))

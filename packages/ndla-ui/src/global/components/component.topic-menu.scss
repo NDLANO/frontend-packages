@@ -99,15 +99,15 @@
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: .2s;
-  margin-top: $spacing;
+  margin-top: $spacing--small;
   @include mq(tablet) {
     margin-top: 0;
-    padding-top: 130px;
+    padding-top: 105px;
   }
   @include mq(desktop) {
     flex: 1;
     max-width: 30%;
-    padding-top: 130px;
+    padding-top: 105px;
   }
 }
 .c-topic-menu__right {
@@ -118,7 +118,7 @@
   padding: $spacing $spacing--small $spacing--small;
   @include mq(tablet) {
     overflow-y: auto;
-    padding-top: 130px;
+    padding-top: 120px;
     padding-left: $spacing--large;
     padding-right: $spacing--large;
   }
@@ -133,6 +133,8 @@
   border-bottom: 1px solid rgba($brand-color, .3);
   margin-left: $spacing--small;
   padding-bottom: $spacing--small;
+  display: flex;
+  justify-content: flex-start;
   @include mq(tablet) {
     padding-bottom: $spacing;
     margin-bottom: $spacing--small;
@@ -142,6 +144,57 @@
   }
   a {
     text-decoration: none;
+  }
+}
+
+.c-topic-menu__home {
+  border-right: 1px solid rgba($brand-color, .3);
+  padding-right: $spacing--small/1.5;
+  margin-right: $spacing--small/1.5;
+  width: 30px;
+  height: 30px;
+  color: $brand-color;
+  transition: width .2s ease-out;
+  &:after {
+    display: inline-block;
+    transition: width .2s ease-out;
+  }
+
+  &:hover {
+    width: auto;
+    &:after {
+      transition: all .1s ease-in-out;
+      animation-name: fadeInLeft;
+      animation-duration: .5s;
+      content: 'Hjem';
+      display: inline-block;
+      color: $brand-color;
+      @include inuit-font-size(15px, 15px);
+      padding-left: $spacing--small/2;
+      padding-right: $spacing--small/2;
+    }
+  }
+}
+.c-topic-menu__home-icon {
+  margin-top: -5px;
+  margin-right: $spacing--small/2;
+}
+
+.c-topic-menu__back {
+  @include mq(tablet) {
+    margin-left: $spacing--large;
+    padding: $spacing--small 0;
+  }
+  @include inuit-font-size(15px);
+  display: block;
+  color: $brand-color;
+  margin-bottom: $spacing;
+}
+.c-topic-menu__back-link {
+  text-decoration: none;
+  color: $brand-color;
+  &:hover {
+    text-decoration: underline;
   }
 }
 

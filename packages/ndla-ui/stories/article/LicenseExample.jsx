@@ -361,7 +361,7 @@ const Files = () => (
 
 export const LicenseBox = () => (
   <div>
-    <h1 className="license__heading">Hvordan gjenbruke innhold fra NDLA</h1>
+    <h1 className="license__heading">Slik gjenbruker du innhold</h1>
 
     <Tabs
       tabs={[

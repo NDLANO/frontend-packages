@@ -47,10 +47,10 @@ class Glossary extends Component {
           isOpen ?
             <div {...classes('popup')}>
               <button {...classes('close', '', 'u-close')} onClick={this.handleClick}>Lukk</button>
-              <h3 {...classes('title')}>Ord</h3>
-              <p {...classes('description')}>Forklaring</p>
+              <h3 {...classes('title')}>{children}</h3>
+              <p {...classes('description')}>{this.props.definition}</p>
               <div {...classes('footer')}>
-                Kilde
+                {this.props.source}
               </div>
             </div>
           : null
@@ -62,6 +62,8 @@ class Glossary extends Component {
 
 Glossary.propTypes = {
   children: PropTypes.string,
+  definition: PropTypes.string,
+  source: PropTypes.string,
 };
 
 export default Glossary;

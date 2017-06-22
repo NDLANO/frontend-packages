@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Center } from './helpers';
 import article from '../dummydata/index';
-import { Table } from '../src';
+import { Table, LayoutItem } from '../src';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -94,10 +94,12 @@ storiesOf('Grunnstiler', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Typografi</h1>
-          <p><a href="#fonter">Fonter</a>, <a href="#overskrifter">overskrifter</a>, <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>, <a href="#lenker">lenker</a>.</p>
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Typografi</h1>
+            <p><a href="#fonter">Fonter</a>, <a href="#overskrifter">overskrifter</a>, <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>, <a href="#lenker">lenker</a>.</p>
+          </LayoutItem>
         </section>
-        <section>
+        <LayoutItem layout="center">
           <div className="o-wrapper--inner">
             <h2 id="fonter" className="u-heading">Fonter</h2>
             <p>NDLA bruker fontene <a href="https://fonts.google.com/specimen/Source+Serif+Pro">Source Serif Pro</a> og <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a>.</p>
@@ -160,7 +162,7 @@ storiesOf('Grunnstiler', module)
               <p>Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en <a href="/">intern lenke</a>, og dette er en <a href="#overskrift">lenke som viser til innhold på samme side</a></p>
             </div>
           </div>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
@@ -168,12 +170,12 @@ storiesOf('Grunnstiler', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Tabeller</h1>
-          <div className="o-wrapper--inner">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Tabeller</h1>
             <p>Tabeller skal brukes til å presentere data (tabulær data), ikke til utforming.</p>
-          </div>
+          </LayoutItem>
         </section>
-        <section>
+        <LayoutItem layout="center">
           <h2 className="u-heading">Eksempel</h2>
           <div className="o-wrapper--inner">
             <Table>
@@ -385,101 +387,8 @@ storiesOf('Grunnstiler', module)
               </tbody>
             </Table>
             <br />
-            <Table>
-              <tr>
-                <th>10<sup>n</sup></th>
-                <th>Prefiks</th>
-                <th>Symbol</th>
-                <th>Namn</th>
-                <th>Eksempel</th>
-              </tr>
-              <tr>
-                <td>10<sup>15</sup></td>
-                <td>peta</td>
-                <td>P</td>
-                <td>billiard</td>
-                <td>1000000000000000</td>
-              </tr>
-              <tr>
-                <td>10<sup>12</sup></td>
-                <td>tera</td>
-                <td>T</td>
-                <td>billion</td>
-                <td>1000000000000</td>
-              </tr>
-              <tr>
-                <td>10<sup>9</sup></td>
-                <td>giga</td>
-                <td>G</td>
-                <td>milliard</td>
-                <td>1000000000</td>
-              </tr>
-              <tr>
-                <td>10<sup>6</sup></td>
-                <td>mega</td>
-                <td>M</td>
-                <td>million</td>
-                <td>1000000</td>
-              </tr>
-              <tr>
-                <td>10<sup>3</sup></td>
-                <td>kilo</td>
-                <td>k</td>
-                <td>tusen</td>
-                <td>1000</td>
-              </tr>
-              <tr>
-                <td>10<sup>2</sup></td>
-                <td>hekto</td>
-                <td>h</td>
-                <td>hundre</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>10<sup>1</sup></td>
-                <td>deka</td>
-                <td>da</td>
-                <td>ti</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>10<sup>-1</sup></td>
-                <td>desi</td>
-                <td>d</td>
-                <td>tidel</td>
-                <td>0,1</td>
-              </tr>
-              <tr>
-                <td>10<sup>-2</sup></td>
-                <td>centi</td>
-                <td>c</td>
-                <td>hundredel</td>
-                <td>0,01</td>
-              </tr>
-              <tr>
-                <td><p>10<sup>-3</sup></p></td>
-                <td>milli</td>
-                <td>m</td>
-                <td>tusendel</td>
-                <td>0,001</td>
-              </tr>
-              <tr>
-                <td>10<sup>-6</sup></td>
-                <td>mikro</td>
-                <td>{/* <span className="Wirisformula rs_preserve"><span className="MathJax_Preview" style="color: inherit; display: none;" /><span className="MathJax" id="MathJax-Element-1-Frame" tabIndex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>&amp;#x3BC;</mi></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span className="math" id="MathJax-Span-1" style="width:0.658em; display: inline-block;"><span style="display: inline-block; position: relative; width:0.539em; height:0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.967em 1000.48em 2.92em -999.997em); top: -2.557em; left:0em;"><span className="mrow" id="MathJax-Span-2"><span className="mi" id="MathJax-Span-3" style="font-family: STIXGeneral-Italic;">μ</span></span><span style="display: inline-block; width:0px; height: 2.562em;" /></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left:0px solid; width:0px; height:0.932em;" /></span></nobr><span className="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>μ</mi></math></span></span><script type="math/mml" id="MathJax-Element-1"><math><mi>μ</mi></math></script></span>*/}</td>
-                <td>milliondel</td>
-                <td>0,000001</td>
-              </tr>
-              <tr>
-                <td>10<sup>-9</sup></td>
-                <td>nano</td>
-                <td>n</td>
-                <td>milliarddel</td>
-                <td><p>0,000000001</p></td>
-              </tr>
-            </Table>
           </div>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
@@ -487,21 +396,24 @@ storiesOf('Grunnstiler', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Lister</h1>
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Lister</h1>
+            <p>Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer,
+             bør du vurdere å organisere innholdet annerledes.</p>
+          </LayoutItem>
         </section>
-        <section className="o-wrapper--inner">
+        <LayoutItem layout="center">
           <h2 className="u-heading">Ren liste</h2>
           <ul className="o-list--bullets">
             <li>Listepunkt 1</li>
             <li>Listepunkt 2</li>
             <li>Listepunkt 3</li>
-            <li>Listepunkt 4</li>
-            <li>
+            <li>Underliste:
               <ul>
                 <li>Underlistepunkt 1</li>
                 <li>Underlistepunkt 2</li>
                 <li>Underlistepunkt 3</li>
-                <li>
+                <li> Under-underliste:
                   <ul>
                     <li>Under-underlistepunkt 1</li>
                   </ul>
@@ -515,16 +427,19 @@ storiesOf('Grunnstiler', module)
             <li><a href="">Listepunkt 1</a></li>
             <li><a href="">Listepunkt 2</a></li>
             <li><a href="">Listepunkt 3</a></li>
-            <li><a href="">Listepunkt 4</a></li>
           </ul>
           <h2 className="u-heading">Nummererte lister</h2>
           <ol>
             <li>Listepunkt</li>
             <li>Listepunkt</li>
-            <li>Listepunkt</li>
-            <li>Listepunkt</li>
+            <li>Underliste:
+            <ol>
+              <li>Underlistepunkt</li>
+              <li>Underlistepunkt</li>
+              <li>Underlistepunkt</li>
+            </ol></li>
           </ol>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
@@ -532,19 +447,19 @@ storiesOf('Grunnstiler', module)
     <Center>
       <article>
         <section className="c-factbox">
-          <h1 className="u-heading">Sitater</h1>
-          <div className="o-wrapper--inner">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Sitater</h1>
             <p>Sitater som strekker seg over tre linjer i vanlig linjelengde er best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere sitater, men &laquo;&raquo;</p>
-          </div>
+          </LayoutItem>
         </section>
-        <h2 className="u-heading">Eksempel</h2>
-        <section className="o-wrapper--inner c-article-content u-noborder">
+        <LayoutItem layout="center">
+          <h2 className="u-heading">Eksempel</h2>
           <blockquote>
             «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
              og hun viser oss at det å tre ut av den typiske sildestimen alle
              absolutt skal følge, er kult.» <br />(Jente 19 år, Si;D, Aftenposten 23. mai 2016)
           </blockquote>
-        </section>
+        </LayoutItem>
       </article>
     </Center>
   ))
@@ -554,16 +469,27 @@ storiesOf('Grunnstiler', module)
         <section className="c-factbox">
           <h1 className="u-heading">Spacing</h1>
           <div className="o-wrapper--inner">
-            <p>Designsystemet vårt baserer seg hovedsaklig på tre spacing-nivåer:</p>
+            <p>«Spacing» er vårt designsystem for bruk av luft.</p>
+            <p>Vi baserer oss hovedsaklig på tre spacing-nivåer:</p>
             <code>{`--spacing
 --spacing--small
 --spacing--large`}</code>
             <p>Hvor:</p>
-            <ul>
-              <li>Spacing: 26px</li>
-              <li>Spacing small: 13px</li>
-              <li>Spacing large: 52px</li>
-            </ul>
+            <div style={{ padding: '52px', background: '#eee' }}>
+              <span style={{ position: 'absolute', marginTop: '-38px', fontSize: '13px' }}>Spacing large (Store avstander): 52px</span>
+              <div style={{ padding: '26px', background: '#ddd' }}>
+                <span style={{ position: 'absolute', marginTop: '-22px', fontSize: '13px' }}>Spacing (vanlig luft): 26px</span>
+                <div style={{ padding: '13px', background: '#ccc', fontSize: '13px' }}>
+                  <span>Spacing small (Små avstander): 13px</span>
+                </div>
+              </div>
+            </div>
+            <p>Luft brukes for å visuelt gruppere elementer på en flate, og rette
+             fokus på de riktige elementene. Har et element mye luft rundt seg,
+            kan det lettere få fokus. Har to elementer lite luft mellom seg,
+           oppfattes de gjerne som beslektet.</p>
+            <p>Når nye NDLA skal tas ut på nye flater, anbefales det å forholde seg
+          til dette spacing-systemet, slik at det blir konsistent.</p>
           </div>
         </section>
       </article>

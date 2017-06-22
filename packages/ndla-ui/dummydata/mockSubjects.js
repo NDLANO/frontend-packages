@@ -8,8 +8,8 @@
 
 export const subjectList = [
   {
-    id: 'urn:subject:1',
-    name: 'physics',
+    id: 'urn:subject:100',
+    name: 'Samfunnsfag',
   },
   {
     id: 'urn:subject:2',

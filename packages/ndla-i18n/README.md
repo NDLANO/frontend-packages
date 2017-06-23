@@ -5,12 +5,16 @@ NDLA's own i18n package based on react-intl
 ## Installation
 
 ```sh
+# Using npm:
+$ npm install ndla-i18n --save
+
+# Using yarn:
 $ yarn add ndla-i18n
 ```
 
 ## Usage
 
-```js
+```jsx
 // In app/server entry index file:
 import IntlProvider from 'ndla-i18n';
 ...
@@ -18,14 +22,14 @@ ReactDOM.render(
   ...
     <IntlProvider locale="NB" messages={messages}>
       ...
-    </IntlProvider>
+      </IntlProvider>
   ...
   document.getElementById('root'),
 );
 ```
 
-```js
-// After initial instantiation
+```jsx
+// After initial instantiation, using it with a React component
 ...
 import { injectT } from 'ndla-i18n';
 
@@ -33,9 +37,7 @@ class i18nReactComponent extends Component {
   ...
   render() {
     const { t } = this.props;
-    return (
-      <button>{t('translationItem.buttonText')}</button>
-    );
+    return <button>{t('translationItem.buttonText')}</button>;
   }
 }
 ...

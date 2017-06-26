@@ -1,9 +1,16 @@
-.c-topic-menu-container {
-  @include mq(desktop) {
-    display: inline-block;
-  }
-}
+/**
+** TOPIC MENU (MAIN MENU)
+** 1. Main menu button
+** 2. Container div (w/active toggle class)
+** 3. Active menu layout
+** 4. Active menu content
+** 5. Masthead when menu is active
+**/
 
+
+
+
+/* 1. */
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -43,6 +50,13 @@
   }
 }
 
+
+/* 2. */
+.c-topic-menu-container {
+  @include mq(desktop) {
+    display: inline-block;
+  }
+}
 .c-topic-menu-container .active {
   background: transparent;
   border: 3px solid transparent;
@@ -64,6 +78,8 @@
   }
 }
 
+
+/* 3. */
 .c-topic-menu__dropdown {
   position: fixed;
   width: 100%;
@@ -85,7 +101,6 @@
     display: flex;
   }
 }
-
 .c-topic-menu__list {
   padding: 0;
   list-style: none;
@@ -93,7 +108,6 @@
   overflow-y: auto;
   @include fadeInLeftItems(li, 30);
 }
-
 .c-topic-menu__left {
   flex: 1;
   z-index: 30;
@@ -127,6 +141,8 @@
   }
 }
 
+
+/* 4. */
 .c-topic-menu__subject {
   @include inuit-font-size(20px);
   font-weight: 600;
@@ -260,6 +276,10 @@
   text-decoration: none;
 }
 
+
+
+
+/* 5. */
 .c-topic-menu__masthead {
   width: 100%;
   background: white;

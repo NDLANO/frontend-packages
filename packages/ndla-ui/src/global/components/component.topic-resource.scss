@@ -1,3 +1,10 @@
+/**
+** TOPIC RESOURCE LIST
+** List items inside a resource group
+**/
+
+
+
 .c-topic-resource {
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);

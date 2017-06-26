@@ -3,7 +3,6 @@
 @import "../node_modules/inuitcss/settings/_settings.core";
 @import "global/settings/settings.global";
 @import "global/settings/settings.colors";
-@import "global/settings/settings.typography";
 @import "global/settings/settings.animations";
 
 // Grids
@@ -90,7 +89,6 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.site-navigation";
 @import "global/components/component.tables";
 @import "global/components/component.topic-introduction";
-@import "global/components/component.topic-resource-subset";
 @import "global/components/component.topic-resource";
 @import "global/components/component.topic-menu";
 @import "global/components/component.filter";

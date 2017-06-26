@@ -6,14 +6,15 @@
 
 .c-article {
   font-family: $font-serif;
-  @include inuit-font-size(18px, 32px);
   background: $white;
   margin-top: $spacing--large;
   margin-right: auto;
   margin-bottom: $spacing--large;
   margin-left: auto;
+  @include inuit-font-size(16px, 28px);
 
   @include mq(tablet) {
+    @include inuit-font-size(18px, 32px);
     border: 1px solid $brand-grey--lighter;
     padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;

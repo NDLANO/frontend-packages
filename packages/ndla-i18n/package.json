@@ -1,6 +1,6 @@
 {
   "name": "ndla-i18n",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "NDLA's own i18n package based on react-intl",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,7 +30,6 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1"
   },
-  "devDependencies": {},
   "dependencies": {
     "intl-format-cache": "^2.0.5",
     "intl-messageformat": "^1.3.0",

@@ -2,7 +2,7 @@
 ** BODYBOX
 ** Used on any div.
 **
-** EXAMPLE: 
+** EXAMPLE:
 ** <LayoutItem layout="left">
 **  <div className="c-bodybox">En tekstboks som flyter til venstre.</div>
 ** </LayoutItem>
@@ -24,6 +24,13 @@
   clear:both;
   font-style: italic;
 }
-.c-bodybox ul, .c-bodybox ol {
-  margin-left: $spacing;
+
+/* Hacks for complex content fetched inside bodybox */
+.c-bodybox ul:not([class]), .c-bodybox ol:not([class]) {
+  margin-left: $spacing--large;
+}
+.c-bodybox .c-figure {
+  width: 100% !important;
+  left: auto !important;
+  padding: 0;
 }

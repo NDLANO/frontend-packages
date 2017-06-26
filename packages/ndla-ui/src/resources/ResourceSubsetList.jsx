@@ -12,6 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import ResourceList from './ResourceList';
 import SafeLink from '../common/SafeLink';
+import { FilterList } from '../';
 // import LayoutItem from './../../src';
 
 import { ResourceShape } from '../shapes';
@@ -46,6 +47,13 @@ class ResourceSubsetList extends Component {
       <div {...classes('')} >
         {resourceGroups.map((group, i) => (
           <div id={group.title} key={uuid()} {...classesG('', [group.title.replace(/:/g, '-') : ''])}>
+            <FilterList
+              modifiers="float-right"
+              label=""
+              filterContent={[
+              { title: 'Fordypningsstoff', active: false },
+              ]}
+            />
             <h1 {...classes('title')}>{group.title}</h1>
             { group.tags ? group.tags.map(tags => (
               <SafeLink key={uuid()} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>

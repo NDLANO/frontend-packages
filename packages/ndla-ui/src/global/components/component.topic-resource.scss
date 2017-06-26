@@ -29,6 +29,8 @@
 .c-topic-resource__item {
   max-width: 100%;
   display: flex;
+  animation-name: fadeInTop;
+  animation-duration: .4s;
   padding: $spacing--small;
   margin-bottom: $spacing--small/2;
   h1 a {
@@ -54,9 +56,9 @@
   letter-spacing: 0;
   margin:0;
 }
-.c-topic-resource__author {
-  display: inline-block;
-  color: $brand-grey;
-  float:right;
-  margin-top: $spacing--small;
+.c-topic-resource__button-wrapper {
+  text-align: center;
+}
+.c-topic-resource__button {
+  margin: $spacing--small auto;
 }

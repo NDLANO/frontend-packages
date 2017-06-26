@@ -6,11 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { ResourceShape } from '../shapes';
+import Button from '../button/Button';
 import { Icon } from '../';
 
 const classes = new BEMHelper({
@@ -20,9 +21,11 @@ const classes = new BEMHelper({
 
 const Resource = ({ resource, resourceToLinkProps }) => {
   const linkProps = resourceToLinkProps(resource);
+  // Set secondary modifier for tilvalgsstoff (not primary)
+  const secondary = !resource.primary ? 'secondary' : null;
 
   return (
-    <li {...classes('item o-flag o-flag--top ')}>
+    <li {...classes('item', { secondary }, 'o-flag o-flag--top')}>
       <div {...classes('icon o-flag__img')}>
         { resource.type === 'Lærestoff' ? <Icon.Document /> : null }
         { resource.type === 'Læringsstier' ? <Icon.Path /> : null }
@@ -42,14 +45,62 @@ const Resource = ({ resource, resourceToLinkProps }) => {
 Resource.propTypes = {
   resource: ResourceShape.isRequired,
   type: PropTypes.string,
+  primary: PropTypes.bool,
   resourceToLinkProps: PropTypes.func.isRequired,
 };
 
-const ResourceList = ({ resources, type, ...rest }) => (
-  <ul {...classes('list')} >
-    { resources.map(resource => <Resource key={resource.id} type={type} {...rest} resource={resource} />)}
-  </ul>
-  );
+
+class ResourceList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showAll: false };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({ showAll: !this.state.showAll });
+  }
+  render() {
+    const { resources, type, ...rest } = this.props;
+    const limit = 8;
+    const { showAll } = this.state;
+
+    return (
+      <div>
+        <ul {...classes('list')} >
+          { showAll ?
+            resources.map(resource =>
+              <Resource
+                key={resource.id}
+                type={type} {...rest}
+                resource={resource}
+              />)
+            :
+            resources
+              .filter((resource, index) => (index < limit))
+              .map(resource =>
+                <Resource
+                  key={resource.id}
+                  type={type} {...rest}
+                  resource={resource}
+                />)
+          }
+        </ul>
+        { resources.length >= limit ?
+          <div {...classes('button-wrapper')}>
+            <Button
+              {...classes('button', '', 'c-btn c-button--outline')}
+              onClick={this.handleClick}
+            >
+              { showAll ? 'Vis mindre' : 'Vis mer' }
+            </Button>
+          </div>
+          :
+          null
+        }
+      </div>
+    );
+  }
+}
 
 ResourceList.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape).isRequired,

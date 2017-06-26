@@ -972,6 +972,13 @@ storiesOf('Emnesider', module)
       <ResourceWrapper>
         <ResourcesSubTopics />
       </ResourceWrapper>
+      <OneColumn>
+        <article className="c-article">
+          <LayoutItem layout="extend">
+            <ResourceSubsetList />
+          </LayoutItem>
+        </article>
+      </OneColumn>
       <FooterExample />
     </PageContainer>
   ))
@@ -996,7 +1003,7 @@ storiesOf('Emnesider', module)
       <ArticleLoader articleId="5948" notitle />
       <OneColumn>
         <article className="c-article">
-          <LayoutItem layout="center">
+          <LayoutItem layout="extend">
             <ResourceSubsetList />
           </LayoutItem>
         </article>

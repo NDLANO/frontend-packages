@@ -15,8 +15,8 @@ const filterClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-const FilterList = ({ filterContent, label }) => (
-  <div {...filterClasses('list')}>
+const FilterList = ({ filterContent, label, modifiers }) => (
+  <div {...filterClasses('list', modifiers)}>
     <span {...filterClasses('label')}>{ label }</span>
     { filterContent ? filterContent.map(filterItem =>
       <div {...filterClasses('item')}>
@@ -40,6 +40,7 @@ const FilterList = ({ filterContent, label }) => (
 FilterList.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
+  modifiers: PropTypes.string,
   filterContent: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
@@ -48,6 +49,7 @@ FilterList.propTypes = {
 
 FilterList.defaultProps = {
   label: 'FILTER:',
+  modifiers: '',
 };
 
 export default FilterList;

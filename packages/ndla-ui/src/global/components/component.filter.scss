@@ -2,7 +2,7 @@
 ** FILTER
 ** Component for filtering content
 **
-** EXAMPLE: 
+** EXAMPLE:
 ** <div class="c-filter__list">
 **   <span class="c-filter__label">FILTER:</span>
 **   <div class="c-filter__item">
@@ -29,6 +29,7 @@
   width: 100%;
   border-top: 1px solid $brand-color--light;
   padding-top: $spacing--small;
+  font-family: $font;
   @include mq(tablet) {
     width: auto;
     position: relative;
@@ -133,4 +134,14 @@
       width: 10px;
     }
   }
+}
+
+.c-filter__list--float-right {
+  float: right;
+  top: 0;
+  width: auto;
+  padding: 0;
+  border: none;
+  margin-right: -$spacing--small;
+  margin-top: -4px;
 }

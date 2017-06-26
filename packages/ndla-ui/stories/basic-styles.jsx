@@ -96,7 +96,7 @@ storiesOf('Grunnstiler', module)
         <section className="c-factbox">
           <LayoutItem layout="center">
             <h1 className="u-heading">Typografi</h1>
-            <p><a href="#fonter">Fonter</a>, <a href="#overskrifter">overskrifter</a>, <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>, <a href="#lenker">lenker</a>.</p>
+            <p><a href="#fonter">Fonter</a>, <a href="#storrelser">skriftstørrelser</a>, <a href="#overskrifter">overskrifter</a>, <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>, <a href="#lenker">lenker</a>.</p>
           </LayoutItem>
         </section>
         <LayoutItem layout="center">
@@ -123,6 +123,41 @@ storiesOf('Grunnstiler', module)
               <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
               <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
             </div>
+
+          </div>
+          <div className="o-wrapper--inner">
+            <h2 id="storrelser" className="u-heading">Skriftstørrelser</h2>
+            <table className="c-table">
+              <thead>
+                <tr>
+                  <th>Type tekst</th>
+                  <th>Størrelse på stor skjerm</th>
+                  <th>Størrelse på liten skjerm</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>Overskrifter</td>
+                <td>38 px <span style={{ color: 'rgb(144, 144, 144)' }}>(2.1rem)</span></td>
+                <td>30 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1.67rem)</span></td>
+              </tr>
+              <tr>
+                <td>Mellomoverskrifter</td>
+                <td>22 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span></td>
+                <td>22 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span></td>
+              </tr>
+              <tr>
+                <td>Ingress</td>
+                <td>26 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1.44rem)</span></td>
+                <td>20 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span></td>
+              </tr>
+              <tr>
+                <td>Brødtekst</td>
+                <td>18 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span></td>
+                <td>16 px <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span></td>
+              </tr>
+            </table>
+
+            <p>Grunnlaget for REM-kalkulerte størrelser er 18px skriftstørrelse på html-elementet.</p>
 
           </div>
           <div className="o-wrapper--inner">

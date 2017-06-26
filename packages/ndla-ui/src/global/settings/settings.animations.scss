@@ -33,7 +33,7 @@
         #{$item}:nth-of-type(#{$i}) {
           // @include transition($a-delay linear ($a-duration + ($i - 1) * 0.1));
           animation-name: fadeInLeft;
-          animation-duration: (.1s+$i/10);
+          animation-duration: (.05s+$i/10);
         }
         // @debug $i;
     }

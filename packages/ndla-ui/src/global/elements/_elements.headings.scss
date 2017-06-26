@@ -31,8 +31,10 @@ h1 {
   }
 }
 
-h2 {
+h2, h3 {
   line-height: 1;
+  margin-top: $spacing * 2;
+  margin-bottom: $spacing / 2;
   @include inuit-font-size(22px, 30px);
   @include mq(desktop) {
     line-height: 1.5;
@@ -41,15 +43,6 @@ h2 {
 
 h2 + h2 {
   margin-top: 0;
-}
-
-h3 {
-  @include inuit-font-size(20px, 30px);
-}
-
-h2, h3 {
-  margin-top: $spacing * 2;
-  margin-bottom: $spacing / 2;
 }
 
 article {

@@ -103,27 +103,43 @@ storiesOf('Grunnstiler', module)
           <div className="o-wrapper--inner">
             <h2 id="fonter" className="u-heading">Fonter</h2>
             <p>NDLA bruker fontene <a href="https://fonts.google.com/specimen/Source+Serif+Pro">Source Serif Pro</a> og <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a>.</p>
-            <ul className="o-list--bullets o-list--bullets--invert">
-              <li style={{ fontWeight: 600 }}>Overskrifter: Source Sans Pro, 600</li>
-              <li style={{ fontWeight: 700 }}>Mellom-overskrifter: Source Sans Pro, 700</li>
-              <li style={{ fontWeight: 300 }}>Ingress: Source Sans Pro, 300</li>
-              <li className="u-serif" >Brødtekst: Source Serif Pro, 400 inkludert <em>kursiv</em></li>
-              <li>Hjelpetekster: Source Sans Pro, 400 inkludert <em>kursiv</em></li>
-            </ul>
+            <table className="c-table">
+              <thead>
+                <tr>
+                  <th>Type tekst</th>
+                  <th>Font</th>
+                  <th>Snitt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Overskrifter</td>
+                  <td>Source Sans Pro</td>
+                  <td>600</td>
+                </tr>
+                <tr>
+                  <td>Mellomoverskrifter</td>
+                  <td>Source Sans Pro</td>
+                  <td>700</td>
+                </tr>
+                <tr>
+                  <td>Ingress</td>
+                  <td>Source Sans Pro</td>
+                  <td>300</td>
+                </tr>
+                <tr>
+                  <td>Brødtekst</td>
+                  <td>Source Serif Pro</td>
+                  <td>400, inkl. kursiv</td>
+                </tr>
+                <tr>
+                  <td>Hjelpetekster</td>
+                  <td>Source Sans Pro</td>
+                  <td>400, inkl. kursiv</td>
+                </tr>
+              </tbody>
+            </table>
             <p>Tilbakefallsfonter er <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og <span style={{ fontFamily: 'Arial' }}>Arial</span></p>
-          </div>
-          <div className="o-wrapper--inner">
-            <h2 id="overskrifter" className="u-heading">Overskrifter</h2>
-            <p>Overskrifter skal markeres semantisk med riktige HTML-tagger. For eksempel:</p>
-            <code>{'<h1>Overskrift<h1>'}</code>
-
-            <p>Tre nivåer av overskrifter:</p>
-            <div className="c-bodybox">
-              <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
-              <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
-              <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
-            </div>
-
           </div>
           <div className="o-wrapper--inner">
             <h2 id="storrelser" className="u-heading">Skriftstørrelser</h2>
@@ -158,6 +174,19 @@ storiesOf('Grunnstiler', module)
             </table>
 
             <p>Grunnlaget for REM-kalkulerte størrelser er 18px skriftstørrelse på html-elementet.</p>
+
+          </div>
+          <div className="o-wrapper--inner">
+            <h2 id="overskrifter" className="u-heading">Overskrifter</h2>
+            <p>Overskrifter skal markeres semantisk med riktige HTML-tagger. For eksempel:</p>
+            <code>{'<h1>Overskrift<h1>'}</code>
+
+            <p>Tre nivåer av overskrifter:</p>
+            <div className="c-bodybox">
+              <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
+              <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
+              <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
+            </div>
 
           </div>
           <div className="o-wrapper--inner">

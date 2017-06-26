@@ -204,7 +204,8 @@ storiesOf('Enkle komponenter', module)
         <LayoutItem layout="center">
           <h2 className="u-heading">Eksempel</h2>
           <InlineContainer>
-            <Button outline onClick={action('clicked')}>Knapp med ramme</Button>
+            <Button outline onClick={action('clicked')}>Knapp med ramme</Button>{' '}
+            <Button outline disabled onClick={action('clicked')}>Deaktivert knapp med ramme</Button>
           </InlineContainer>
           <InlineContainer>
             <Button onClick={action('clicked')}>Fylt knapp</Button>

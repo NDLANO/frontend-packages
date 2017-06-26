@@ -63,6 +63,7 @@ class Glossary extends Component {
 Glossary.propTypes = {
   children: PropTypes.string,
   definition: PropTypes.string,
+  source: PropTypes.string,
 };
 
 export default Glossary;

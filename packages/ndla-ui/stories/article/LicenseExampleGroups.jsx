@@ -384,7 +384,7 @@ const Files = () => (
 
 const LicenseExample = () => (
   <div className="c-licensebox license u-expanded">
-    <Button stripped className="license-toggler site-nav_link" onClick={() => {}} >
+    <Button stripped className="c-article__license-toggler site-nav_link" onClick={() => {}} >
       Lukk boks
     </Button>
     <div>

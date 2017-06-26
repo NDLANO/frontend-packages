@@ -61,26 +61,25 @@ const ExamplePage2 = () => (
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
-        <div className="c-article__byline">
-          <span className="c-article__byline-flex">
-            <span className="c-article__byline-icon">
+        <div className="c-article-byline">
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
               <Icon.User />
             </span>
-            <span className="c-article__authors">
+            <span className="c-article-byline__authors">
             Skrevet av Ola Nordmann, Kari Nordmann, Jon Nordgubbe,
                Trine Tralletryll. Oppdatert av <a href="#test">Ola Nordkvinne</a>.
             </span>
           </span>
-          {' '}
-          <span className="c-article__byline-flex">
-            <span className="c-article__byline-icon">
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
               <Icon.Time />
             </span>
-            <span className="c-article__date">
+            <span className="c-article-byline__date">
               Publisert 12/10/2016
             </span>
             <div className="license c-licensebox">
-              <button className="c-button c-button--stripped license-toggler" type="button">
+              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
                 Bruk artikkel
               </button>
             </div>
@@ -142,12 +141,12 @@ const ExamplePageImages = () => (
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
-        <div className="c-article__byline">
-          <span className="c-article__authors">
+        <div className="c-article-byline">
+          <span className="c-article-byline__authors">
             <Icon.User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
-          <span className="c-article__date">
+          <span className="c-article-byline__date">
             <Icon.Time /> Publisert [dato]
           </span>
         </div>
@@ -156,7 +155,7 @@ const ExamplePageImages = () => (
         <FigureWithLicense classes="article_figure--float-left">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            src="https://staging.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -183,7 +182,7 @@ const ExamplePageImages = () => (
         <FigureWithLicense classes="article_figure--float-right">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            src="https://staging.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -221,12 +220,12 @@ const ExamplePage3 = () => (
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
-        <div className="c-article__byline">
-          <span className="c-article__authors">
+        <div className="c-article-byline">
+          <span className="c-article-byline__authors">
             <Icon.User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
-          <span className="c-article__date">
+          <span className="c-article-byline__date">
             <Icon.Time /> Publisert [dato]
           </span>
         </div>
@@ -414,12 +413,12 @@ const ExamplePage4 = () => (
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
-        <div className="c-article__byline">
-          <span className="c-article__authors">
+        <div className="c-article-byline">
+          <span className="c-article-byline__authors">
             <Icon.User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
-          <span className="c-article__date">
+          <span className="c-article-byline__date">
             <Icon.Time /> Publisert [dato]
           </span>
         </div>
@@ -481,12 +480,12 @@ const ExampleWithGlossary = () => (
         <p className="article_introduction">
           Vi blir født inn i et samfunn. På den ene siden kommer vi til en familie bestående av nære relasjoner. På den andre siden blir de fleste av oss født på en institusjon, et sykehus. Vi kommer inn i offentlige registre og arkiver, og etter dette blir vi fulgt tett opp av offentlige institusjoner. Denne sammenhengen gir rammene rundt den innlæringsprosessen som vi må gjennomgå for å bli et sosialt vesen og samfunnsmedlem.
         </p>
-        <div className="c-article__byline">
-          <span className="c-article__authors">
+        <div className="c-article-byline">
+          <span className="c-article-byline__authors">
             <Icon.User /> Skrevet av GRO-ANITA MORTENSE.
           </span>
           {' '}
-          <span className="c-article__date">
+          <span className="c-article-byline__date">
             <Icon.Time /> Sist oppdatert 03.03.2017
           </span>
         </div>
@@ -552,12 +551,12 @@ const ExampleWithSummary = () => (
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
-        <div className="c-article__byline">
-          <span className="c-article__authors">
+        <div className="c-article-byline">
+          <span className="c-article-byline__authors">
             <Icon.User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
-          <span className="c-article__date">
+          <span className="c-article-byline__date">
             <Icon.Time /> Publisert [dato]
           </span>
         </div>

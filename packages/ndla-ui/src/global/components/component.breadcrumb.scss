@@ -1,7 +1,19 @@
 /**
-*** BREADCRUMBS
-*** 1. In Hero (primary)
-*** 2. In Masthead (secondary)
+** BREADCRUMBS
+** 1. In Hero (primary)
+** 2. In Masthead (secondary)
+**
+** EXAMPLE:
+** <div class="c-breadcrumb">
+**  <ol class="c-breadcrumb__list">
+**    <li class="c-breadcrumb__item c-breadcrumb__item--home">
+**      <a href="#"><svg home /></a>
+**    </li>
+**    <li class="c-breadcrumb__item">
+**      <a href="#">Medieuttrykk og mediesamfunnet</a>
+**    </li>
+**  </ol>
+** </div>
 **/
 
 

@@ -1,3 +1,9 @@
+/**
+** ARTICLE
+** Clean-modifier is used to avoid negative margin (when used in design manual)
+** Title has icon when article is a resource type
+**/
+
 .c-article {
   font-family: $font-serif;
   @include inuit-font-size(18px, 32px);
@@ -29,58 +35,4 @@
       margin-left: -70px;
     }
   }
-}
-
-.c-article__byline {
-  margin-top: $spacing;
-  margin-bottom: $spacing--large;
-  padding-top: $spacing--small/2;
-  padding-bottom: $spacing--small/2;
-  border-top: 2px solid $brand-grey--lighter;
-  @include inuit-font-size(14px, 20px);
-  font-family: $font;
-  color: $brand-grey;
-  @include mq(tablet) {
-    display: flex;
-  }
-}
-.c-article__byline-icon {
-  display: inline-block;
-  padding-right: $spacing--small/2;
-}
-.c-article__byline-flex {
-  display: flex;
-}
-
-.c-article-meta {
-  display: inline-block;
-  background-color: $brand-grey--lighter;
-  padding: 7px;
-  width: 100%;
-  @include inuit-font-size(14px);
-}
-
-.c-article__metatext {
-  font-family: $font;
-  text-transform: uppercase;
-  color: gray;
-}
-
-.c-article__authors {
-  padding-right: $spacing;
-  margin-bottom: $spacing--small;
-  @include mq(tablet) {
-    margin-bottom: 0;
-  }
-  svg {
-    margin-top: -3px;
-  }
-}
-.c-article__date {
-  svg {
-    margin-top: -3px;
-  }
-}
-h1 + .c-article__byline {
-  margin-top: -$spacing / 2;
 }

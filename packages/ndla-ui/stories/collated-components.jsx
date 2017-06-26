@@ -140,7 +140,7 @@ storiesOf('Sammensatte moduler', module)
       <article className="article">
         <LayoutItem layout="center">
           <div className="license c-licensebox c-licensebox--expanded">
-            <Button stripped className="license-toggler" onClick={() => {}} >
+            <Button stripped className="c-article__license-toggler" onClick={() => {}} >
               Lukk boks
             </Button>
             <LicenseBox />

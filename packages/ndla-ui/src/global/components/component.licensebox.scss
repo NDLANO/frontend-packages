@@ -1,8 +1,15 @@
+/**
+** LICENSE BOX
+** Box listing all licensed items in article
+**/
+
+
+
 .c-licensebox {
   position: relative;
 }
 
-.license-toggler {
+.c-article__license-toggler {
   @include inuit-font-size(14px, 20px);
   font-family: $font;
   color: $brand-color;

@@ -1,11 +1,9 @@
-.c-factbox-toggler {
-  position: fixed;
-  right: 0;
-  top: 0;
-  @include mq(desktop) {
-    display: none;
-  };
-}
+/**
+** FACTBOX
+** Introduction/facts text box for design manual pages
+**/
+
+
 .c-factbox {
   background: $brand-color--light;
   padding: $spacing--small;

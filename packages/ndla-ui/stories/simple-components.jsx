@@ -57,8 +57,8 @@ storiesOf('Enkle komponenter', module)
           <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
              å produsere filmen.
           </p>
-          <div className="c-article__byline">
-            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+          <div className="c-article-byline">
+            <span className="c-article-byline__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article-byline__date"><Icon.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
         <LayoutItem layout="center">
@@ -109,8 +109,8 @@ storiesOf('Enkle komponenter', module)
           <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
              å produsere filmen.
           </p>
-          <div className="c-article__byline">
-            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+          <div className="c-article-byline">
+            <span className="c-article-byline__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article-byline__date"><Icon.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
         <LayoutItem layout="center">

@@ -1,16 +1,26 @@
+/**
+** FIGURE
+** Figure element, displaying images, embeds, videos etc.
+** 1. Figure itself
+** 2. Figcaption element w/content
+** 3. Figure with license-popup activated
+**/
+
+
+/* 1. */
 .c-figure {
   img {
     width: 100%;
   }
 }
-.c-figure, figure {
+.c-figure {
   margin: $spacing--large/1.4 0 $spacing--large;
-
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
   }
 }
 
+/* 2. */
 .c-figure__caption {
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
@@ -26,7 +36,6 @@
   cursor: pointer;
   color: $brand-color;
 }
-
 .c-figure__byline {
   padding-right: $spacing;
   margin-bottom: $spacing--small/2;
@@ -49,7 +58,6 @@
     display: none;
   }
 }
-
 .c-figure__info {
   max-width: 650px;
   margin-bottom: $spacing--small;
@@ -59,22 +67,11 @@
     margin-bottom: 0;
   }
 }
-
 .c-figure__byline-licenselist {
   margin: 0;
   text-align: center;
   max-width: 130px;
 }
-
-.c-figure__thumb {
-  position: relative;
-  img {
-    position: absolute;
-    width: 100%;
-  }
-
-}
-
 .c-figure__list {
   background: $white;
   list-style: none;
@@ -89,10 +86,8 @@
   margin-bottom: 0;
 }
 
-.c-figure__img a {
-  box-shadow: none;
-}
 
+/* 3. */
 .c-figure--active {
   margin-bottom: $spacing--large*2;
   @include font-size(16px);
@@ -151,11 +146,7 @@
     max-width: 100%;
   }
 }
-.c-figure__list {
-  margin: 0;
-}
 #figmeta {
-height: 0;
-overflow: hidden;
-
+  height: 0;
+  overflow: hidden;
 }

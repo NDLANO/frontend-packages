@@ -12,14 +12,15 @@ import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import ResourceList from './ResourceList';
 import SafeLink from '../common/SafeLink';
+// import LayoutItem from './../../src';
 
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
-  name: 'topic-resource-subset',
+  name: 'resources',
   prefix: 'c-',
 });
-const resClasses = new BEMHelper({
+const classesG = new BEMHelper({
   name: 'resource-group',
   prefix: 'c-',
 });
@@ -42,18 +43,16 @@ class ResourceSubsetList extends Component {
     const { resourceGroups, toResourceTab, resourceToLinkProps } = this.props;
 
     return (
-      <div>
-        <div {...classes('')} >
-          {resourceGroups.map((group, i) => (
-            <div id={group.title} key={uuid()} {...resClasses('', [group.title.replace(/:/g, '-') : ''])}>
-              <h1 {...classes('heading')}>{group.title}</h1>
-              { group.tags ? group.tags.map(tags => (
-                <SafeLink key={uuid()} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
-              )) : null }
-              <ResourceList resourceToLinkProps={resourceToLinkProps} type={group.title} resources={group.resources} />
-            </div>
-      ))}
-        </div>
+      <div {...classes('')} >
+        {resourceGroups.map((group, i) => (
+          <div id={group.title} key={uuid()} {...classesG('', [group.title.replace(/:/g, '-') : ''])}>
+            <h1 {...classes('title')}>{group.title}</h1>
+            { group.tags ? group.tags.map(tags => (
+              <SafeLink key={uuid()} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
+            )) : null }
+            <ResourceList resourceToLinkProps={resourceToLinkProps} type={group.title} resources={group.resources} />
+          </div>
+    ))}
       </div>
     );
   }

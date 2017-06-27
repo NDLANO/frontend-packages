@@ -48,5 +48,8 @@
   text-decoration: none;
   color: $brand-color;
   margin-bottom: $spacing--small;
+  margin-top: 0;
+}
+.c-topic-introduction__item:first-child .c-topic-introduction__header{
   margin-top: $spacing--small;
 }

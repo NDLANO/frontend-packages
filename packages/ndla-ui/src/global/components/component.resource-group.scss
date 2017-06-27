@@ -18,6 +18,48 @@
   padding-bottom: 5px;
   border-bottom: 2px solid $brand-grey--light;
 }
+// Lærestoff ID
+.c-resource-group--urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73 {
+  li {
+    background-color: rgba($mark-color, 0.1);
+  }
+  .c-topic-resource__item--secondary {
+    background-color: desaturate(rgba($mark-color, 0.1), 40%);
+
+    .c-topic-resource__title:after {
+      content: 'T';
+      background-color: $brand-color--tertiary;
+      color: $brand-color;
+      border-radius: 50%;
+      @include inuit-font-size(14px);
+      width: 25px;
+      display: inline-block;
+      text-align: center;
+      margin-left: $spacing--small;
+    }
+  }
+}
+// Oppgaver og aktiviteter ID
+.c-resource-group--urn-resource-type-622364e0-8cea-4083-9ce1-74e33e14e0b4, .c-resource-group--urn-resource-type-f5148c29-d056-4d94-a799-be35229d8d2b {
+  li {
+    background-color: rgba($green, 0.1);
+  }
+  .c-topic-resource__item--secondary {
+    background-color: desaturate(rgba($green, 0.1), 40%);
+
+    .c-topic-resource__title:after {
+      content: 'T';
+      background-color: $brand-color--tertiary;
+      color: $brand-color;
+      border-radius: 50%;
+      @include inuit-font-size(14px);
+      width: 25px;
+      display: inline-block;
+      text-align: center;
+      margin-left: $spacing--small;
+    }
+  }
+}
 // Læringsstier ID
 .c-resource-group--urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511, .c-resource-group--urn-resource-type-8ef5bdb9-9a01-4d49-8a8b-e36f5b19a414 {
   li {
@@ -29,17 +71,5 @@
     svg {
       width: 80px;
     }
-  }
-}
-// Oppgaver og aktiviteter ID
-.c-resource-group--urn-resource-type-622364e0-8cea-4083-9ce1-74e33e14e0b4, .c-resource-group--urn-resource-type-f5148c29-d056-4d94-a799-be35229d8d2b {
-  li {
-    background-color: rgba($green, 0.1);
-  }
-}
-// Lærestoff ID
-.c-resource-group--urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73 {
-  li {
-    background-color: rgba($mark-color, 0.1);
   }
 }

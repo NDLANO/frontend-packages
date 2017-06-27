@@ -53,22 +53,28 @@ Resource.propTypes = {
 class ResourceList extends Component {
   constructor(props) {
     super(props);
-    this.state = { showAll: false };
+    this.state = { showAll: false, secondary: false };
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
     this.setState({ showAll: !this.state.showAll });
   }
+
   render() {
     const { resources, type, ...rest } = this.props;
     const limit = 8;
     const { showAll } = this.state;
+    const secondaryFilter = this.props.secondary;
 
+    // Works in general, but should be separating resource groups (by index) so
+    // toggle functionality is also separated
     return (
       <div>
         <ul {...classes('list')} >
           { showAll ?
-            resources.map(resource =>
+            resources
+            .filter(resource => (secondaryFilter ? resource : resource.primary))
+            .map(resource =>
               <Resource
                 key={resource.id}
                 type={type} {...rest}
@@ -76,6 +82,7 @@ class ResourceList extends Component {
               />)
             :
             resources
+              .filter(resource => (secondaryFilter ? resource : resource.primary))
               .filter((resource, index) => (index < limit))
               .map(resource =>
                 <Resource
@@ -105,6 +112,8 @@ class ResourceList extends Component {
 ResourceList.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   type: PropTypes.string,
+  secondary: PropTypes.bool,
+  onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
 };
 

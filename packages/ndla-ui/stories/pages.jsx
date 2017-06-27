@@ -51,7 +51,7 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ExamplePage2 = () => (
+const ArticleWithVideo = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -133,7 +133,7 @@ const ExamplePage2 = () => (
   </OneColumn>
 );
 
-const ExamplePageImages = () => (
+const ArticleWithFloatingImages = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -212,7 +212,7 @@ const ExamplePageImages = () => (
   </OneColumn>
 );
 
-const ExamplePage3 = () => (
+const ArticleWithTable = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -405,7 +405,7 @@ const ExamplePage3 = () => (
   </OneColumn>
 );
 
-const ExamplePage4 = () => (
+const ArticleWithH5P = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -473,7 +473,7 @@ const ExamplePage4 = () => (
     </article>
   </OneColumn>
 );
-const ExampleWithGlossary = () => (
+const ArticleWithGlossary = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -543,7 +543,7 @@ const ExampleWithGlossary = () => (
     </article>
   </OneColumn>
 );
-const ExampleWithSummary = () => (
+const ArticleWithAside = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -773,7 +773,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ExamplePageImages />
+      <ArticleWithFloatingImages />
       <FooterExample />
     </PageContainer>
   ))
@@ -795,7 +795,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ExamplePage2 />
+      <ArticleWithVideo />
       <FooterExample />
     </PageContainer>
   ))
@@ -817,7 +817,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ExamplePage3 />
+      <ArticleWithTable />
       <FooterExample />
     </PageContainer>
   ))
@@ -839,7 +839,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ExamplePage4 />
+      <ArticleWithH5P />
       <FooterExample />
     </PageContainer>
   ))
@@ -861,7 +861,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ExampleWithSummary />
+      <ArticleWithAside />
       <FooterExample />
     </PageContainer>
   ))
@@ -883,7 +883,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ExampleWithGlossary />
+      <ArticleWithGlossary />
       <FooterExample />
     </PageContainer>
   ));

@@ -6,6 +6,16 @@
     margin-left: 1em;
   }
 }
+.ol-list--roman {
+  counter-reset: item;
+}
+.ol-list--roman >li {
+  &:before {
+    content: counter(item, upper-latin);
+    counter-increment: item;
+  }
+}
+
 .o-list--colors {
   margin: 0;
   padding: 0;

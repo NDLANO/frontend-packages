@@ -503,6 +503,12 @@ storiesOf('Grunnstiler', module)
               <li>Underlistepunkt</li>
             </ol></li>
           </ol>
+          <h2 className="u-heading">Alfabetiserte lister</h2>
+          <ol className="ol-list--roman">
+            <li>Listepunkt</li>
+            <li>Listepunkt</li>
+            <li>Listepunkt</li>
+          </ol>
         </LayoutItem>
       </article>
     </Center>

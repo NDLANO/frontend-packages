@@ -46,7 +46,7 @@ class ResourceSubsetList extends Component {
     return (
       <div {...classes('')} >
         {resourceGroups.map((group, i) => (
-          <div id={group.title} key={uuid()} {...classesG('', [group.title.replace(/:/g, '-') : ''])}>
+          <div id={group.title} key={uuid()} {...classesG('', [group.id.replace(/:/g, '-') : ''])}>
             <FilterList
               modifiers="float-right"
               label=""

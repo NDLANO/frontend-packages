@@ -85,7 +85,7 @@ class ResourceList extends Component {
                 />)
           }
         </ul>
-        { resources.length > (limit + 1) ?
+        { resources.length > (limit) ?
           <div {...classes('button-wrapper')}>
             <Button
               {...classes('button', '', 'c-btn c-button--outline')}

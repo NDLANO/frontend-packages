@@ -7,7 +7,6 @@ import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
 import {
-  Aside,
   Footer,
   Hero,
   OneColumn,
@@ -49,96 +48,11 @@ const FooterExample = () => (
   </Footer>
 );
 
-const ArticleWithVideo = () => (
+const ArticleLearningmaterial = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title">
-          Mediekommunikasjon og kommunikasjonsmodeller
-        </h1>
-        <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Icon.User />
-            </span>
-            <span className="c-article-byline__authors">
-            Skrevet av Ola Nordmann, Kari Nordmann, Jon Nordgubbe,
-               Trine Tralletryll. Oppdatert av <a href="#test">Ola Nordkvinne</a>.
-            </span>
-          </span>
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Icon.Time />
-            </span>
-            <span className="c-article-byline__date">
-              Publisert 12/10/2016
-            </span>
-            <div className="c-article-byline__additional">
-              <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
-            </div>
-            <div className="license c-licensebox">
-              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
-                Bruk artikkel
-              </button>
-            </div>
-          </span>
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-          din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
-        </p>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
-        </p>
-        <FigureWithLicense>
-          <iframe
-            width="480"
-            height="270"
-            src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
-            frameBorder="0"
-            allowFullScreen=""
-          />
-        </FigureWithLicense>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
-        </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <ResourceSubsetList />
-      </LayoutItem>
-    </article>
-  </OneColumn>
-);
-
-const ArticleWithFloatingImages = () => (
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <h1 className="c-article__title">Test av bildeflyt</h1>
+        <h1 className="c-article__title--icon"><Icon.Document />Test av bildeflyt</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
@@ -159,9 +73,6 @@ const ArticleWithFloatingImages = () => (
             <span className="c-article-byline__date">
               Publisert 12/10/2016
             </span>
-            <div className="c-article-byline__additional">
-              <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
-            </div>
             <div className="license c-licensebox">
               <button className="c-button c-button--stripped c-article__license-toggler" type="button">
                 Bruk artikkel
@@ -241,22 +152,39 @@ const ArticleWithFloatingImages = () => (
   </OneColumn>
 );
 
-const ArticleWithTable = () => (
+const ArticleAdditional = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title">Tittel om pitching</h1>
+        <h1 className="c-article__title--icon"><Icon.Document />Tittel om pitching</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
         <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
+              <Icon.User />
+            </span>
+            <span className="c-article-byline__authors">
+            Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+            </span>
           </span>
-          {' '}
-          <span className="c-article-byline__date">
-            <Icon.Time /> Publisert [dato]
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
+              <Icon.Time />
+            </span>
+            <span className="c-article-byline__date">
+              Publisert 12/10/2016
+            </span>
+            <div className="c-article-byline__additional">
+              <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
+            </div>
+            <div className="license c-licensebox">
+              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
+                Bruk artikkel
+              </button>
+            </div>
           </span>
         </div>
       </LayoutItem>
@@ -434,22 +362,36 @@ const ArticleWithTable = () => (
   </OneColumn>
 );
 
-const ArticleWithH5P = () => (
+const ArticleExercise = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title">Tittel om pitching</h1>
+        <h1 className="c-article__title--icon"><Icon.Pencil />Tittel om pitching</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
         </p>
         <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
+              <Icon.User />
+            </span>
+            <span className="c-article-byline__authors">
+            Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+            </span>
           </span>
-          {' '}
-          <span className="c-article-byline__date">
-            <Icon.Time /> Publisert [dato]
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
+              <Icon.Time />
+            </span>
+            <span className="c-article-byline__date">
+              Publisert 12/10/2016
+            </span>
+            <div className="license c-licensebox">
+              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
+                Bruk artikkel
+              </button>
+            </div>
           </span>
         </div>
       </LayoutItem>
@@ -502,137 +444,14 @@ const ArticleWithH5P = () => (
     </article>
   </OneColumn>
 );
-const ArticleWithAside = () => (
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <h1 className="c-article__title">Tittel om pitching</h1>
-        <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
-          </span>
-          {' '}
-          <span className="c-article-byline__date">
-            <Icon.Time /> Publisert [dato]
-          </span>
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <Aside float>
-          <div className="c-aside__title">Oppsummering</div>
-          <div>
-            <p>Søknadsfristen til høgskoler og universiteter er 15.april.</p>
-            <p>
-              Er du en av dem som akkurat nå gjør et viktig valg? Vi hjelper
-              deg å velge!
-            </p><h2>Siris tips</h2>
-            <div>Siri Knudsen i NRK P3 gir deg noen gode råd med på veien.</div>
-            <div>
-              <figure className="article_audio">
-                <audio
-                  type="audio/mpeg"
-                  src="http://test.api.ndla.no/audio/files/Siri_knudsen_mars2012.mp3"
-                />
-                <figcaption>medieutdanning</figcaption>
-              </figure>
-            </div>
-            <h2>Ressurser</h2>
-            <p>
-              <a
-                href="http://utdanning.no/tema/yrke_og_karriere/finn?s=media"
-                title="Utdanning.no: Søk på yrke"
-              >
-                Utdanning.no: Søk på yrke
-              </a>
-            </p>
-            <p>
-              <a href="http://www.vilbli.no" title="Les mer på Vilbli.no">
-                Les mer på Vilbli.no
-              </a>
-            </p>
-            <p>Landslaget for medieundervisning har en god oversikt over</p>
-            <p>
-              <a
-                href="http://www.mediepedagogene.no/undervisning-og-utdanning/medieutdanning?wpmp_switcher=mobile"
-                title="medieutdanning i Norge"
-              >
-                medieutdanning i Norge
-              </a>
-            </p>
-          </div>
-        </Aside>
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-          din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
-        </p>
-        <ul>
-          <li>Test</li>
-          <li>
-            Test
-            <ol>
-              <li>Test2</li>
-              <li>Test 2</li>
-            </ol>
-          </li>
-        </ul>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
-        </p>
-        <FigureWithLicense>
-          <iframe
-            src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-            width="260"
-            height="373"
-            frameBorder="0"
-            allowFullScreen="allowfullscreen"
-          />
-          <script
-            src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
-            charSet="UTF-8"
-          />
-        </FigureWithLicense>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
-        </p>
-
-      </LayoutItem>
-    </article>
-  </OneColumn>
-);
 
 const ResourcesSubTopics = () => (
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <ResourceWrapper>
-          <h1 className="c-resources__title">Emner</h1>
-          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-        </ResourceWrapper>
-      </LayoutItem>
-    </article>
-  </OneColumn>
+  <LayoutItem layout="extend">
+    <ResourceWrapper>
+      <h1 className="c-resources__title">Emner</h1>
+      <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+    </ResourceWrapper>
+  </LayoutItem>
 );
 
 storiesOf('Sidevisninger', module)
@@ -692,7 +511,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ));
 storiesOf('Artikkelmaler', module)
-  .add('Artikkel med bilde', () => (
+  .add('Lærestoff', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -710,14 +529,14 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ArticleLoader articleId="208" />
+      <ArticleLearningmaterial />
       <FooterExample />
     </PageContainer>
   ))
-  .add('Artikkel med bildeflyt', () => (
+  .add('Oppgaver og aktiviteter', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero red>
+      <Hero green>
         <OneColumn>
           <div className="c-hero__content">
             <section>
@@ -732,11 +551,11 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ArticleWithFloatingImages />
+      <ArticleExercise />
       <FooterExample />
     </PageContainer>
   ))
-  .add('Artikkel med video', () => (
+  .add('Tilleggsstoff', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -754,73 +573,7 @@ storiesOf('Artikkelmaler', module)
           </div>
         </OneColumn>
       </Hero>
-      <ArticleWithVideo />
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Artikkel med tabell', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <TopicBreadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
-      <ArticleWithTable />
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Artikkel med h5p', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <TopicBreadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
-      <ArticleWithH5P />
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Artikkel med sidespalte', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <TopicBreadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
-      <ArticleWithAside />
+      <ArticleAdditional />
       <FooterExample />
     </PageContainer>
   ));
@@ -883,7 +636,14 @@ storiesOf('Emnesider', module)
           </div>
         </OneColumn>
       </Hero>
-      <ResourcesSubTopics />
+      <OneColumn>
+        <article className="c-article">
+          <LayoutItem layout="extend">
+            <h1>Fagside</h1>
+          </LayoutItem>
+          <ResourcesSubTopics />
+        </article>
+      </OneColumn>
       <FooterExample />
     </PageContainer>
   ))
@@ -906,11 +666,9 @@ storiesOf('Emnesider', module)
         </OneColumn>
       </Hero>
       <ArticleLoader articleId="1325" isTopicArticle />
-      <ResourceWrapper>
-        <ResourcesSubTopics />
-      </ResourceWrapper>
       <OneColumn>
         <article className="c-article">
+          <ResourcesSubTopics />
           <LayoutItem layout="extend">
             <ResourceSubsetList />
           </LayoutItem>

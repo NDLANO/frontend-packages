@@ -17,6 +17,17 @@
     border: none !important;
   }
 }
+.c-hero--green {
+  background-color: rgba($green, 1);
+  a {
+    color: $black;
+    border-bottom: 1px solid $brand-grey !important;
+  }
+  a:hover {
+    color: $black;
+    border: none !important;
+  }
+}
 
 .c-hero__content {
   padding: 29% 0 0;

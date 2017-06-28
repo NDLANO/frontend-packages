@@ -21,7 +21,8 @@ const classes = new BEMHelper({
 
 const Resource = ({ resource, resourceToLinkProps }) => {
   const linkProps = resourceToLinkProps(resource);
-  // Set secondary modifier for tilvalgsstoff (not primary)
+  // const secondary = resource.primary ? 'secondary' : null;
+  // Uncomment when PRIMARY (kjernestoff) prop is available
   const secondary = !resource.primary ? 'secondary' : null;
 
   return (
@@ -64,6 +65,7 @@ class ResourceList extends Component {
     const { resources, type, ...rest } = this.props;
     const limit = 8;
     const { showAll } = this.state;
+    // Uncomment when PRIMARY (kjernestoff) prop is available
     const secondaryFilter = this.props.secondary;
 
     // Works in general, but should be separating resource groups (by index) so
@@ -73,6 +75,7 @@ class ResourceList extends Component {
         <ul {...classes('list')} >
           { showAll ?
             resources
+            // Uncomment when PRIMARY (kjernestoff) prop is available
             .filter(resource => (secondaryFilter ? resource : resource.primary))
             .map(resource =>
               <Resource
@@ -82,6 +85,7 @@ class ResourceList extends Component {
               />)
             :
             resources
+              // Uncomment when PRIMARY (kjernestoff) prop is available
               .filter(resource => (secondaryFilter ? resource : resource.primary))
               .filter((resource, index) => (index < limit))
               .map(resource =>

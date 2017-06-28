@@ -171,6 +171,11 @@ storiesOf('Grunnstiler', module)
                 <td>18 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span></td>
                 <td>16 px <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span></td>
               </tr>
+              <tr>
+                <td>Metatekst</td>
+                <td>16 px <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span></td>
+                <td>16 px <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span></td>
+              </tr>
             </table>
 
             <p>Grunnlaget for REM-kalkulerte størrelser er 18px skriftstørrelse på html-elementet.</p>

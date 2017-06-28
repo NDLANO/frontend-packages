@@ -45,6 +45,7 @@
     @include grids-expand(4,6,2);
     position: absolute !important;
   }
+  position: absolute;
 }
 .c-licensebox--clear {
   position: relative !important;

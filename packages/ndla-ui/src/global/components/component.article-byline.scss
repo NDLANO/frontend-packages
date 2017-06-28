@@ -27,12 +27,21 @@
   padding-right: $spacing--small/2;
 }
 .c-article-byline__flex {
-  display: flex;
-  flex-grow: 1;
+  margin-bottom: $spacing--small;
+  display: block;
+  @include mq(tablet) {
+    margin-bottom: 0;
+    display: flex;
+    flex-grow: 1;
+  }
 }
 .c-article-byline__additional {
-  display: flex;
-  padding-left: $spacing;
+  margin-bottom: $spacing--small;
+  @include mq(tablet) {
+    display: flex;
+    padding-left: $spacing;
+    margin-bottom: 0;
+  }
 }
 
 .c-article-byline__authors {

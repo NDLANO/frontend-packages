@@ -170,6 +170,8 @@ const ArticleAdditional = () => (
             <span className="c-article-byline__date">
               Publisert 12/10/2016
             </span>
+          </span>
+          <span className="c-article-byline__flex">
             <div className="c-article-byline__additional">
               <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
             </div>

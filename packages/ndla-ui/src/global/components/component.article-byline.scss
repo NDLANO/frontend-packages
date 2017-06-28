@@ -20,7 +20,6 @@
   color: $brand-grey;
   @include mq(tablet) {
     display: flex;
-    // flex-wrap: wrap;
   }
 }
 .c-article-byline__icon {

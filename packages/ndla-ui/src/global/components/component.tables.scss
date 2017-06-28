@@ -29,6 +29,7 @@
   }
   td, th {
     padding: $spacing/3 $spacing $spacing/3 $spacing/3;
+    height: 45px;
   }
   th, tbody td:before {
     font-weight: $font-weight-bold;
@@ -59,6 +60,9 @@
       background-repeat: no-repeat;
       background-position: 100% 0;
       background-size: 25px 100%;
+    }
+    p {
+      margin:0;
     }
   }
   tr:nth-child(2n) {

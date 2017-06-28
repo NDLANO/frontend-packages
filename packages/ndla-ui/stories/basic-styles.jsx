@@ -261,13 +261,6 @@ storiesOf('Grunnstiler', module)
               </thead>
               <tbody>
                 <tr>
-                  <td>10<sup>15</sup></td>
-                  <td>peta</td>
-                  <td>P</td>
-                  <td>billiard</td>
-                  <td>1000000000000000</td>
-                </tr>
-                <tr>
                   <td>10<sup>12</sup></td>
                   <td>tera</td>
                   <td>T</td>
@@ -280,6 +273,13 @@ storiesOf('Grunnstiler', module)
                   <td>G</td>
                   <td>milliard</td>
                   <td>1000000000</td>
+                </tr>
+                <tr>
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                  <td />
                 </tr>
                 <tr>
                   <td>10<sup>6</sup></td>

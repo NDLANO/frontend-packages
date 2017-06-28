@@ -40,6 +40,7 @@ class ArticleLoader extends Component {
           message: '',
         });
       }).catch((error) => {
+        console.error(error);
         this.setState({
           message: error.message,
           fetching: false,

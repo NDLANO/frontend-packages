@@ -13,11 +13,14 @@ import {
   OneColumn,
   PageContainer,
   ResourceWrapper,
-  Icon,
   TopicIntroductionList,
   LayoutItem,
   TopicBreadcrumb,
 } from '../src';
+import {
+  Time,
+  User,
+} from '../src/icons';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
@@ -65,7 +68,7 @@ const ExamplePage2 = () => (
         <div className="c-article__byline">
           <span className="c-article__byline-flex">
             <span className="c-article__byline-icon">
-              <Icon.User />
+              <User />
             </span>
             <span className="c-article__authors">
             Skrevet av Ola Nordmann, Kari Nordmann, Jon Nordgubbe,
@@ -75,7 +78,7 @@ const ExamplePage2 = () => (
           {' '}
           <span className="c-article__byline-flex">
             <span className="c-article__byline-icon">
-              <Icon.Time />
+              <Time />
             </span>
             <span className="c-article__date">
               Publisert 12/10/2016
@@ -145,11 +148,11 @@ const ExamplePageImages = () => (
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+            <User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
           <span className="c-article__date">
-            <Icon.Time /> Publisert [dato]
+            <Time /> Publisert [dato]
           </span>
         </div>
       </LayoutItem>
@@ -157,7 +160,7 @@ const ExamplePageImages = () => (
         <FigureWithLicense classes="article_figure--float-left">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -184,7 +187,7 @@ const ExamplePageImages = () => (
         <FigureWithLicense classes="article_figure--float-right">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -224,11 +227,11 @@ const ExamplePage3 = () => (
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+            <User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
           <span className="c-article__date">
-            <Icon.Time /> Publisert [dato]
+            <Time /> Publisert [dato]
           </span>
         </div>
       </LayoutItem>
@@ -417,11 +420,11 @@ const ExamplePage4 = () => (
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+            <User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
           <span className="c-article__date">
-            <Icon.Time /> Publisert [dato]
+            <Time /> Publisert [dato]
           </span>
         </div>
       </LayoutItem>
@@ -484,11 +487,11 @@ const ExampleWithGlossary = () => (
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors">
-            <Icon.User /> Skrevet av GRO-ANITA MORTENSE.
+            <User /> Skrevet av GRO-ANITA MORTENSE.
           </span>
           {' '}
           <span className="c-article__date">
-            <Icon.Time /> Sist oppdatert 03.03.2017
+            <Time /> Sist oppdatert 03.03.2017
           </span>
         </div>
       </LayoutItem>
@@ -504,7 +507,7 @@ const ExampleWithGlossary = () => (
             <FigureWithLicense classes="article_figure--float-right">
               <img
                 alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-                src="https://staging.api.ndla.no/image-api/v1/raw/jente mellom foreldre_0.jpg"
+                src="https://test.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
               />
             </FigureWithLicense>
             <h2>Normer og normsendere</h2>
@@ -555,11 +558,11 @@ const ExampleWithSummary = () => (
         </p>
         <div className="c-article__byline">
           <span className="c-article__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+            <User /> Skrevet av [Opphavsperson].
           </span>
           {' '}
           <span className="c-article__date">
-            <Icon.Time /> Publisert [dato]
+            <Time /> Publisert [dato]
           </span>
         </div>
       </LayoutItem>

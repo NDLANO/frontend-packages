@@ -8,16 +8,6 @@
     background-color: rgba($brand-grey--light, 0.4);
   }
 }
-.c-resource-group__title {
-  @include inuit-font-size(18px);
-  font-weight: $font-weight-bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 5px;
-  margin-top: $spacing--large;
-  padding-bottom: 5px;
-  border-bottom: 2px solid $brand-grey--light;
-}
 // Lærestoff ID
 .c-resource-group--urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73 {
   li {

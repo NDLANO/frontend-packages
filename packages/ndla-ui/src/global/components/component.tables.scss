@@ -38,7 +38,7 @@
   th {
     border-bottom: 3px solid $brand-color--lighter;
     background-color: $white;
-    padding: $spacing--small;
+    padding: $spacing--small $spacing--small $spacing--small/2;
   }
   td {
     vertical-align: top;

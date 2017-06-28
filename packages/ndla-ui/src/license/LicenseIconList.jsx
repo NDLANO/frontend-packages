@@ -10,8 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BY, NC, ND, SA, CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-import Icon from '../icons/Icon';
-// import Button from '../button/Button';
+import { LicenseBy, LicenseCc, LicenseNc, LicenseNd, LicenseSa } from '../icons';
 
 const classes = new BEMHelper({
   name: 'license-icons',
@@ -21,11 +20,11 @@ const classes = new BEMHelper({
 const LicenseIcon = ({ licenseRight, className }) => {
   const licenseDescription = getLicenseRightByAbbreviation(licenseRight).description;
   switch (licenseRight) {
-    case CC: return <Icon.LicenseCc className={className} aria-label={licenseDescription} />;
-    case BY: return <Icon.LicenseBy className={className} aria-label={licenseDescription} />;
-    case NC: return <Icon.LicenseNc className={className} aria-label={licenseDescription} />;
-    case ND: return <Icon.LicenseNd className={className} aria-label={licenseDescription} />;
-    case SA: return <Icon.LicenseSa className={className} aria-label={licenseDescription} />;
+    case CC: return <LicenseCc className={className} aria-label={licenseDescription} />;
+    case BY: return <LicenseBy className={className} aria-label={licenseDescription} />;
+    case NC: return <LicenseNc className={className} aria-label={licenseDescription} />;
+    case ND: return <LicenseNd className={className} aria-label={licenseDescription} />;
+    case SA: return <LicenseSa className={className} aria-label={licenseDescription} />;
     default: return undefined;
   }
 };

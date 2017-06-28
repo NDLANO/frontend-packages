@@ -12,7 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import SafeLink from '../common/SafeLink';
 import { SubjectShape, TopicShape } from '../shapes';
-import Icon from '../icons/Icon';
+import { Home } from '../icons';
 
 const TopicBreadcrumbItem = ({ to, children, extraClass, inMasthead }) => {
   let classBase = 'breadcrumb';
@@ -58,7 +58,7 @@ const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, cu
     <div {...classesMH('')}>
       {children}
       <ol {...classesMH('list')}>
-        <TopicBreadcrumbItem inMasthead={inMasthead} key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Icon.Home className="c-icon--20" /></TopicBreadcrumbItem>
+        <TopicBreadcrumbItem inMasthead={inMasthead} key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Home className="c-icon--20" /></TopicBreadcrumbItem>
         <TopicBreadcrumbItem inMasthead={inMasthead} key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
         { topicPath.map((topic, i) =>
           <TopicBreadcrumbItem

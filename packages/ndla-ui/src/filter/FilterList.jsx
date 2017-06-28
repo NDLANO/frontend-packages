@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component } from 'react';
+import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Icon } from '../';
@@ -55,7 +55,7 @@ class FilterList extends Component {
             >
               <span {...filterClasses('item-checkbox')} />
               { filterItem.title ? filterItem.title : null }
-              { filterItem.icon ? <Icon.Additional className="c-icon--20 u-margin-left-tiny" /> : null }
+              { filterItem.icon ? createElement(Icon[filterItem.icon], { className: 'c-icon--20 u-margin-left-tiny' }) : null }
             </label>
           </div>) : null}
       </div>

@@ -19,13 +19,14 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="center">
             <h1 className="u-heading">Bilde under ingress</h1>
             <p>
-              Under ingressen bruker vi et bilde for å illustrere tematikken.
-              Dette bildet må være i landskapsformat, slik at det ikke blir så
+              Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk
+               helst bilder av mennesker, relevante og naturlige bilder.
+              Bildet må være i landskapsformat, slik at det ikke blir så
               høyt at det skyver brødteksten for langt ned på siden.
             </p>
             <p>
-              Anbefalt bildestørrelse: 1000px (bredde) x 500px (høyde), eller
-              tilsvarende 1:2 proporsjonal størrelse.
+              Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
+               bildestørrelse: 1000px (bredde) x 500px (høyde).
             </p>
 
           </LayoutItem>
@@ -224,7 +225,7 @@ storiesOf('Enkle komponenter', module)
             {
               Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
                 <tr key={key}>
-                  <td>{createElement(Icon[key])}</td>
+                  <td>{createElement(Icon[key], { className: 'c-icon--medium' })}</td>
                   <td>{key}</td>
                   <td><code>&lt;Icon.{key} /&gt;</code></td>
                 </tr>

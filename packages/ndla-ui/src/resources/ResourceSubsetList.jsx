@@ -50,7 +50,7 @@ class ResourceSubsetList extends Component {
               label=""
               onClick={() => { this.setState({ secondary: !this.state.secondary }); }}
               filterContent={[
-              { title: 'Tilleggstoff', icon: true, active: false },
+              { title: 'Tilleggstoff', icon: 'Additional', active: false },
               ]}
             />
             <h1 {...classes('title')}>{group.title}</h1>

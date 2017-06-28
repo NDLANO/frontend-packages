@@ -23,6 +23,10 @@
 }
 .c-article--clean {
   margin-top: $spacing;
+  padding: $spacing--small;
+  @include mq(tablet) {
+    padding: none;
+  }
   border: none;
 }
 

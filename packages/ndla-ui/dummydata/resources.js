@@ -6,7 +6,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:339',
     title: 'Hva er en idé?',
-    introduction: 'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. Derfor er det vanskelig å formidle en god idé til andre.',
+    introduction: 'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
     type: 'Lærestoff',
   },

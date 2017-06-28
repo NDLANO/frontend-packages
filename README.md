@@ -8,15 +8,21 @@
 npm install [package-name]
 ```
 
+or
+
+```js
+yarn add [package-name]
+```
+
 To view all of the available packages, see the [`packages/` directory](packages).
 
 ## Development
 
 ### Setup
-Install root dependencies and [bootstrap](https://github.com/lerna/lerna#bootstrap) packages.  
+Install root dependencies and [bootstrap](https://github.com/lerna/lerna#bootstrap) packages.
 
 ```js
-npm install
+yarn
 ```
 
 Se package README for package specific details.
@@ -25,7 +31,7 @@ Se package README for package specific details.
 Run linting for all packages:
 
 ```js
-npm run lint
+yarn lint
 ```
 
 ### Test
@@ -33,7 +39,7 @@ npm run lint
 Run tests for all packages:
 
 ```js
-npm test
+yarn test
 ```
 
 
@@ -43,7 +49,7 @@ npm test
 [Lerna](https://github.com/lerna/lerna) is needed for easy publishing. Install latest 2.x version of lerna
 
 ```js
-npm install --global lerna@prerelease
+npm install --global lerna
 ```
 
 Publish with lerna:

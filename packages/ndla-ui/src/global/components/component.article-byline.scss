@@ -20,6 +20,7 @@
   color: $brand-grey;
   @include mq(tablet) {
     display: flex;
+    // flex-wrap: wrap;
   }
 }
 .c-article-byline__icon {
@@ -28,6 +29,11 @@
 }
 .c-article-byline__flex {
   display: flex;
+  flex-grow: 1;
+}
+.c-article-byline__additional {
+  display: flex;
+  padding-left: $spacing;
 }
 
 .c-article-byline__authors {
@@ -41,6 +47,7 @@
   }
 }
 .c-article-byline__date {
+  flex-grow: 1;
   svg {
     margin-top: -3px;
   }

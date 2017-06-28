@@ -77,6 +77,9 @@ const ArticleWithVideo = () => (
             <span className="c-article-byline__date">
               Publisert 12/10/2016
             </span>
+            <div className="c-article-byline__additional">
+              <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
+            </div>
             <div className="license c-licensebox">
               <button className="c-button c-button--stripped c-article__license-toggler" type="button">
                 Bruk artikkel
@@ -141,15 +144,30 @@ const ArticleWithFloatingImages = () => (
           å produsere filmen.
         </p>
         <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <Icon.User /> Skrevet av [Opphavsperson].
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
+              <Icon.User />
+            </span>
+            <span className="c-article-byline__authors">
+            Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+            </span>
           </span>
-          <span className="c-article-byline__date">
-            <Icon.Time /> Publisert [dato]
+          <span className="c-article-byline__flex">
+            <span className="c-article-byline__icon">
+              <Icon.Time />
+            </span>
+            <span className="c-article-byline__date">
+              Publisert 12/10/2016
+            </span>
+            <div className="c-article-byline__additional">
+              <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
+            </div>
+            <div className="license c-licensebox">
+              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
+                Bruk artikkel
+              </button>
+            </div>
           </span>
-          <div className="c-article-byline__type">
-            Tilleggsstoff <Icon.Additional />
-          </div>
         </div>
       </LayoutItem>
       <LayoutItem layout="center">

@@ -25,8 +25,7 @@ storiesOf('Enkle komponenter', module)
             </p>
             <p>
               Anbefalt bildestørrelse: 1000px (bredde) x 500px (høyde), eller
-              tilsvarende proporsjonal størrelse, f. eks det dobbelte av disse
-               tallene.
+              tilsvarende 1:2 proporsjonal størrelse.
             </p>
 
           </LayoutItem>

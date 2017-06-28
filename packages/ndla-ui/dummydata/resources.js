@@ -28,7 +28,9 @@ export const articleResources = [
     contentUri: 'urn:article:166',
     introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Kreativ kommunikasjon',
+    tag: 'Film',
     type: 'Lærestoff',
+    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -38,6 +40,7 @@ export const articleResources = [
     contentUri: 'urn:article:340',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
     type: 'Lærestoff',
+    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -47,6 +50,67 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
     type: 'Lærestoff',
+    primary: true,
+  },
+  {
+    topicId: 'urn:topic:170363',
+    id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b51',
+    name: 'Hvordan oppstår ideer 2',
+    resourceTypes: [],
+    contentUri: 'urn:article:341',
+    title: 'Hvordan oppstår ideer 2',
+    type: 'Lærestoff',
+    primary: true,
+  },
+  {
+    topicId: 'urn:topic:170363',
+    id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b52',
+    name: 'Hvordan oppstår ideer 3',
+    resourceTypes: [],
+    contentUri: 'urn:article:341',
+    title: 'Hvordan oppstår ideer 3',
+    type: 'Lærestoff',
+    primary: true,
+  },
+  {
+    topicId: 'urn:topic:170363',
+    id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b53',
+    name: 'Hvordan oppstår ideer 4',
+    resourceTypes: [],
+    contentUri: 'urn:article:341',
+    title: 'Hvordan oppstår ideer 4',
+    type: 'Lærestoff',
+    primary: true,
+  },
+  {
+    topicId: 'urn:topic:170363',
+    id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b54',
+    name: 'Hvordan oppstår ideer 5',
+    resourceTypes: [],
+    contentUri: 'urn:article:341',
+    title: 'Hvordan oppstår ideer?',
+    type: 'Lærestoff',
+    primary: true,
+  },
+  {
+    topicId: 'urn:topic:170364',
+    id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b55',
+    name: 'Hvordan oppstår ideer 6',
+    resourceTypes: [],
+    contentUri: 'urn:article:341',
+    title: 'Hvordan oppstår ideer?',
+    type: 'Lærestoff',
+    primary: true,
+  },
+  {
+    topicId: 'urn:topic:170365',
+    id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b56',
+    name: 'Hvordan oppstår ideer 7',
+    resourceTypes: [],
+    contentUri: 'urn:article:341',
+    title: 'Hvordan oppstår ideer?',
+    type: 'Lærestoff',
+    primary: true,
   },
 ];
 
@@ -61,12 +125,14 @@ export const learningPathResources = [
     title: 'Teknikker for idéutvikling',
     introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Læringsstier',
+    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
     type: 'Læringsstier',
+    primary: true,
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -83,6 +149,7 @@ export const learningPathResources = [
     id: 'urn:resource:',
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
     type: 'Læringsstier',
+    primary: true,
     resourceTypes: [
       {
         id: 'urn:resource-type:3',
@@ -114,6 +181,7 @@ export const exerciseResources = [
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
     type: 'Oppgaver og aktiviteter',
+    primary: true,
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -140,5 +208,6 @@ export const exerciseResources = [
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/v1/raw/Ide.jpg',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
+    primary: true,
   },
 ];

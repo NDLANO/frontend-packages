@@ -19,11 +19,16 @@
 .u-float-right {
   @include float(3, 4, 'right');
 }
+.article_figure--float-left {
+  @include float(3, 4, 'left');
+}
+.article_figure--float-right {
+  @include float(3, 4, 'right');
+}
 
-.u-fade-in {
-  animation-name: fadeIn;
-  animation-duration: .3s;
-  opacity: 1;
+/* Float tools */
+.u-float-right {
+  float:right;
 }
 
 /* MISC */
@@ -48,15 +53,8 @@
   opacity: 0;
   width: 100%;
 }
-
-
-/* Float tools */
-.u-float-right {
-  float:right;
-}
-.article_figure--float-left {
-  @include float(3, 4, 'left');
-}
-.article_figure--float-right {
-  @include float(3, 4, 'right');
+.u-fade-in {
+  animation-name: fadeIn;
+  animation-duration: .3s;
+  opacity: 1;
 }

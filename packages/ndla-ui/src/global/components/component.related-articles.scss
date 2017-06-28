@@ -1,0 +1,34 @@
+.c-related-articles {
+  display: flex;
+  margin: 0 0 $spacing--large 0;
+}
+.c-related-articles__item {
+  border-left: 6px solid rgba($mark-color, .1);
+  padding-left: $spacing;
+  padding-right: $spacing;
+  flex-basis: 50%;
+  flex-grow:1;
+  max-width: 600px;
+}
+.c-related-articles__component-title {
+  margin: $spacing--large 0 $spacing;
+  @include inuit-font-size(18px);
+  padding-bottom: 5px;
+  // border-bottom: 2px solid $brand-grey--light;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.c-related-articles__title {
+  @include inuit-font-size(20px);
+  margin: 0 0 $spacing--small 0;
+  font-weight: $font-weight-normal;
+}
+.c-related-articles__description {
+  @include inuit-font-size(16px);
+  margin: 0;
+  font-family: $font;
+}
+.c-related-articles__link {
+  color: $brand-color;
+  margin-left: $spacing--small;
+}

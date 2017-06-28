@@ -14,6 +14,7 @@ import {
   ResourceWrapper,
   Icon,
   TopicIntroductionList,
+  RelatedArticles,
   LayoutItem,
   TopicBreadcrumb,
 } from '../src';
@@ -21,7 +22,7 @@ import {
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 
-import article, { topicList, subjectList } from '../dummydata/index';
+import article, { topicList, subjectList, articleResources } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -137,13 +138,9 @@ const ArticleLearningmaterial = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
           i klassen.
         </p>
-        <ol className="c-footnotes">
-          <li className="c-footnotes__item">
-            <cite className="c-footnotes__cite">
-              Likestilling kommer ikke av seg selv (2013), regjeringen.no Edition: , Publisher: Barne-, likestillings- og inkluderingsdepartmentet
-            </cite>
-          </li>
-        </ol>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <RelatedArticles resources={articleResources} />
       </LayoutItem>
       <LayoutItem layout="extend">
         <ResourceSubsetList />

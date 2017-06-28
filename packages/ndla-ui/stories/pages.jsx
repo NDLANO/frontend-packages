@@ -747,7 +747,7 @@ storiesOf('Artikkelmaler', module)
   .add('Artikkel med bilde', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
+      <Hero red>
         <OneColumn>
           <div className="c-hero__content">
             <section>
@@ -791,7 +791,7 @@ storiesOf('Artikkelmaler', module)
   .add('Artikkel med video', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
+      <Hero red>
         <OneColumn>
           <div className="c-hero__content">
             <section>
@@ -813,7 +813,7 @@ storiesOf('Artikkelmaler', module)
   .add('Artikkel med tabell', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
+      <Hero red>
         <OneColumn>
           <div className="c-hero__content">
             <section>
@@ -835,7 +835,7 @@ storiesOf('Artikkelmaler', module)
   .add('Artikkel med h5p', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
+      <Hero red>
         <OneColumn>
           <div className="c-hero__content">
             <section>
@@ -857,7 +857,7 @@ storiesOf('Artikkelmaler', module)
   .add('Artikkel med sidespalte', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
+      <Hero red>
         <OneColumn>
           <div className="c-hero__content">
             <section>
@@ -879,7 +879,7 @@ storiesOf('Artikkelmaler', module)
   .add('Artikkel med begrepsforklaring', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero>
+      <Hero red>
         <OneColumn>
           <div className="c-hero__content">
             <section>

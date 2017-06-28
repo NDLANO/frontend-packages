@@ -41,6 +41,53 @@ storiesOf('Enkle komponenter', module)
       </article>
     </Center>
   ))
+  .add('Medieobjekter', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Medieobjekter</h1>
+            <p>
+              Bilde, video, H5P, lyd etc.
+            </p>
+            <p>Medieobjekter bør i hovedsak ikke bygges inn i faktabokser eller
+             andre plassbegrensede elementer. De kan plasseres fritt i en artikkel,
+            og vil automatisk få tilhørende lisensinformasjon og evt. bildetekst.</p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="center">
+          <FigureWithLicense>
+            <img
+              alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+              src="https://staging.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            />
+          </FigureWithLicense>
+          <FigureWithLicense>
+            <iframe
+              width="480"
+              height="270"
+              src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+              frameBorder="0"
+              allowFullScreen=""
+            />
+          </FigureWithLicense>
+          <FigureWithLicense>
+            <iframe
+              src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
+              width="260"
+              height="373"
+              frameBorder="0"
+              allowFullScreen="allowfullscreen"
+            />
+            <script
+              src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
+              charSet="UTF-8"
+            />
+          </FigureWithLicense>
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
   .add('Boks i tekst', () => (
     <Center>
       <section className="c-factbox">

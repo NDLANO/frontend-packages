@@ -21,7 +21,7 @@ import {
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
-
+import LicenseExample from './article/LicenseExample';
 import article, { topicList, subjectList, articleResources } from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
@@ -53,7 +53,7 @@ const ArticleLearningmaterial = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon"><Icon.Document />Test av bildeflyt</h1>
+        <h1 className="c-article__title--icon"><Icon.Document />Artikkel lærestoff</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
@@ -74,11 +74,7 @@ const ArticleLearningmaterial = () => (
             <span className="c-article-byline__date">
               Publisert 12/10/2016
             </span>
-            <div className="license c-licensebox">
-              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
-                Bruk artikkel
-              </button>
-            </div>
+            <LicenseExample />
           </span>
         </div>
       </LayoutItem>
@@ -153,7 +149,7 @@ const ArticleAdditional = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon"><Icon.Document />Tittel om pitching</h1>
+        <h1 className="c-article__title--icon"><Icon.Document />Artikkel Tilleggsstoff</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
@@ -177,11 +173,7 @@ const ArticleAdditional = () => (
             <div className="c-article-byline__additional">
               <Icon.Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
             </div>
-            <div className="license c-licensebox">
-              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
-                Bruk artikkel
-              </button>
-            </div>
+            <LicenseExample />
           </span>
         </div>
       </LayoutItem>
@@ -363,7 +355,7 @@ const ArticleExercise = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon"><Icon.Pencil />Tittel om pitching</h1>
+        <h1 className="c-article__title--icon"><Icon.Pencil />Oppgave eller aktivitet</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger
           å produsere filmen.
@@ -384,11 +376,7 @@ const ArticleExercise = () => (
             <span className="c-article-byline__date">
               Publisert 12/10/2016
             </span>
-            <div className="license c-licensebox">
-              <button className="c-button c-button--stripped c-article__license-toggler" type="button">
-                Bruk artikkel
-              </button>
-            </div>
+            <LicenseExample />
           </span>
         </div>
       </LayoutItem>

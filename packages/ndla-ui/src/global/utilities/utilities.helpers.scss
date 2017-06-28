@@ -25,3 +25,38 @@
   animation-duration: .3s;
   opacity: 1;
 }
+
+/* MISC */
+.u-hidden {
+  display: none !important;
+}
+.u-toggle {
+  display: none;
+}
+.u-expanded {
+  height: auto;
+}
+.u-overlay {
+  cursor: default;
+  position: fixed;
+  display: block;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  width: 100%;
+}
+
+
+/* Float tools */
+.u-float-right {
+  float:right;
+}
+.article_figure--float-left {
+  @include float(3, 4, 'left');
+}
+.article_figure--float-right {
+  @include float(3, 4, 'right');
+}

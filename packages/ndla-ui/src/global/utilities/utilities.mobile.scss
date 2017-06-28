@@ -3,3 +3,9 @@
     display: none;
   }
 }
+.u-block-mobile {
+  @include mq($until:tablet) {
+    display: block;
+    width: 100%;
+  }
+}

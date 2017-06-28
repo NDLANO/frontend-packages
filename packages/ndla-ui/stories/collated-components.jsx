@@ -12,11 +12,11 @@ import {
   Pager, Footer, LicenseIconList,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   OneColumn, LayoutItem,
-  Icon,
+  Icon, RelatedArticles,
 } from '../src';
 import Glossary from './../src/glossary/Glossary';
 import FigureWithLicense from './article/FigureWithLicense';
-import articles, { topicList, subjectList } from '../dummydata/index';
+import articles, { topicList, subjectList, articleResources } from '../dummydata/index';
 import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
@@ -238,6 +238,18 @@ storiesOf('Sammensatte moduler', module)
       <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
       <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
+    </Center>
+  ))
+  .add('Relaterte artikler', () => (
+    <Center>
+      <LayoutItem layout="center">
+        <h2 className="u-heading">Relaterte artikler</h2>
+        <p>Kan brukes i slutten av artikler, eller midt i.</p>
+        <p>1 eller 2 artikler vises.</p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <RelatedArticles resources={articleResources} />
+      </LayoutItem>
     </Center>
   ))
   .add('Sammensatte noder', () => (

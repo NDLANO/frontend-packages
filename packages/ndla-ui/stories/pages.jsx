@@ -716,6 +716,7 @@ storiesOf('Emnesider', module)
       <OneColumn>
         <article className="c-article">
           <LayoutItem layout="extend">
+            <RelatedArticles resources={articleResources} />
             <ResourceSubsetList />
           </LayoutItem>
         </article>

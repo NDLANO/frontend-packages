@@ -3,7 +3,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import Masthead, { MastheadWithTopicMenu } from './molecules/mastheads';
+import { MastheadWithTopicMenu } from './molecules/mastheads';
 import { ResourceSubsetList } from './molecules/resources';
 
 import {
@@ -457,7 +457,7 @@ const ResourcesSubTopics = () => (
 storiesOf('Sidevisninger', module)
   .add('Empty page', () => (
     <PageContainer>
-      <Masthead />
+      <MastheadWithTopicMenu />
       <OneColumn>
         Empty Page
       </OneColumn>
@@ -467,23 +467,43 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero />
+      <Hero red>
+        <OneColumn>
+          <div className="c-hero__content">
+            <section>
+              <TopicBreadcrumb
+                toSubjects={() => '#'}
+                subjectsTitle="Fag"
+                subject={subjectList[1]}
+                topicPath={topicList.slice(0, -1)}
+                toTopic={() => '#'}
+              />
+            </section>
+          </div>
+        </OneColumn>
+      </Hero>
       <ArticleLoader articleId="44" />
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('ArticlePage with licensebox', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero />
-      <ArticleLoader articleId="44" withLicenseExample />
       <FooterExample />
     </PageContainer>
   ))
   .add('ArticlePage loader', () => (
     <PageContainer>
-      <Masthead />
-      <Hero />
+      <MastheadWithTopicMenu />
+      <Hero red>
+        <OneColumn>
+          <div className="c-hero__content">
+            <section>
+              <TopicBreadcrumb
+                toSubjects={() => '#'}
+                subjectsTitle="Fag"
+                subject={subjectList[1]}
+                topicPath={topicList.slice(0, -1)}
+                toTopic={() => '#'}
+              />
+            </section>
+          </div>
+        </OneColumn>
+      </Hero>
       <ArticleLoader />
       <FooterExample />
     </PageContainer>
@@ -491,22 +511,22 @@ storiesOf('Sidevisninger', module)
   .add('ArticlePage Preloaded', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
-      <Hero />
+      <Hero red>
+        <OneColumn>
+          <div className="c-hero__content">
+            <section>
+              <TopicBreadcrumb
+                toSubjects={() => '#'}
+                subjectsTitle="Fag"
+                subject={subjectList[1]}
+                topicPath={topicList.slice(0, -1)}
+                toTopic={() => '#'}
+              />
+            </section>
+          </div>
+        </OneColumn>
+      </Hero>
       <ArticleLoader articleId="34" />
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Emneside', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero />
-      <ArticleLoader isTopicArticle articleId="208" />
-      <OneColumn>
-        <ResourceWrapper>
-          <h1 className="c-resources__title">Emner</h1>
-          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-        </ResourceWrapper>
-      </OneColumn>
       <FooterExample />
     </PageContainer>
   ));

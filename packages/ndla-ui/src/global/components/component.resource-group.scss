@@ -25,18 +25,6 @@
   }
   .c-topic-resource__item--secondary {
     background-color: desaturate(rgba($mark-color, 0.1), 40%);
-
-    .c-topic-resource__title:after {
-      content: 'T';
-      background-color: $brand-color--tertiary;
-      color: $brand-color;
-      border-radius: 50%;
-      @include inuit-font-size(14px);
-      width: 25px;
-      display: inline-block;
-      text-align: center;
-      margin-left: $spacing--small;
-    }
   }
 }
 // Oppgaver og aktiviteter ID
@@ -46,18 +34,6 @@
   }
   .c-topic-resource__item--secondary {
     background-color: desaturate(rgba($green, 0.1), 40%);
-
-    .c-topic-resource__title:after {
-      content: 'T';
-      background-color: $brand-color--tertiary;
-      color: $brand-color;
-      border-radius: 50%;
-      @include inuit-font-size(14px);
-      width: 25px;
-      display: inline-block;
-      text-align: center;
-      margin-left: $spacing--small;
-    }
   }
 }
 // Læringsstier ID

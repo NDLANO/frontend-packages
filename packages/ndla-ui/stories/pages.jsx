@@ -22,9 +22,7 @@ import {
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 
-// Using for example alternative article
 import article, { topicList, subjectList } from '../dummydata/index';
-import Glossary from './../src/glossary/Glossary';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
@@ -146,10 +144,12 @@ const ArticleWithFloatingImages = () => (
           <span className="c-article-byline__authors">
             <Icon.User /> Skrevet av [Opphavsperson].
           </span>
-          {' '}
           <span className="c-article-byline__date">
             <Icon.Time /> Publisert [dato]
           </span>
+          <div className="c-article-byline__type">
+            Tilleggsstoff <Icon.Additional />
+          </div>
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -484,76 +484,6 @@ const ArticleWithH5P = () => (
     </article>
   </OneColumn>
 );
-const ArticleWithGlossary = () => (
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <h1 className="c-article__title">Sosialisering</h1>
-        <p className="article_introduction">
-          Vi blir født inn i et samfunn. På den ene siden kommer vi til en familie bestående av nære relasjoner. På den andre siden blir de fleste av oss født på en institusjon, et sykehus. Vi kommer inn i offentlige registre og arkiver, og etter dette blir vi fulgt tett opp av offentlige institusjoner. Denne sammenhengen gir rammene rundt den innlæringsprosessen som vi må gjennomgå for å bli et sosialt vesen og samfunnsmedlem.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <Icon.User /> Skrevet av GRO-ANITA MORTENSE.
-          </span>
-          {' '}
-          <span className="c-article-byline__date">
-            <Icon.Time /> Sist oppdatert 03.03.2017
-          </span>
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <section>
-          <div>
-            <p>
-              Gjennom <Glossary definition="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre Med andre ord at de blir som de andre i samfunnet." source="snl.no">sosialisering</Glossary> lærer menneskene å fungere i et samfunn og får kjennskap til de regler og verdier som det forventes at man skal følge. Sosialisering er dermed den prosessen som gjør at vi tar til oss dette, fra vi blir født til vi dør.
-            </p>
-            <p>
-              Barn møtes med forventninger til hvordan de skal oppføre seg. Disse forventningene gjentar seg, og slik lærer barnet hvilke regler eller normer som gjelder. Hovedmålet med sosialiseringen er at de enkelte menneskene skal kunne skille mellom godt og ondt, og rett og galt.
-            </p>
-            <FigureWithLicense classes="article_figure--float-right">
-              <img
-                alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-                src="https://staging.api.ndla.no/image-api/v1/raw/jente mellom foreldre_0.jpg"
-              />
-            </FigureWithLicense>
-            <h2>Normer og normsendere</h2>
-            <p>
-              Normer er regler som forteller hvordan man skal oppføre seg og handle i en gitt situasjon. Normer kan være formelle eller uformelle. Lover er formaliserte eller formelle normer. De uformelle normene er uskrevne regler for skikk og bruk, som hvordan man skal oppføre seg i ulike situasjoner. Det kan være forventninger om at du skal håndhilse når du kommer inn til et jobbintervju, eller at det er uhøflig å svare på telefonsamtaler mens intervjuet pågår.
-            </p>
-            <p>
-              For å forsterke innlæringen av normer følges de opp av reaksjoner eller sanksjoner. <Glossary definition="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)." source="snl.no">Sanksjonene</Glossary> kan både være positive og negative. Ønsket adferd belønnes, men uønsket adferd straffes. Når en person har gjort normene til sine egne og følger dem, sier man at normene er internalisert.
-            </p>
-            <p>
-              Alle man møter, er normsendere. I første omgang er det foreldre, søsken og nær familie. Også venner og lekekamerater er normsendere. Dette kalles primærsosialisering. Barn har også normsendere utenfor de nære relasjonene. I barnehagen møter de voksne som er tydelige rollemodeller, og som har en klar oppgave i forhold til mer formell sosialisering. Det kalles sekundærsosialisering og blir fulgt opp av andre formelle utdanningsinstitusjoner, som skolen. Barn møter uformell sosialisering når de ser på TV eller spiller dataspill.
-            </p>
-            <h2>Normforvirring</h2>
-            <p>
-              De signalene andre mennesker sender ut, kan for et individ oppleves som forvirrende og i mange tilfeller også motstridende. Det kalles normforvirring. Denne normforvirringen er en naturlig del av sosialiseringsprosessen, og noe vi må lære oss å forholde oss til. En vanlig konflikt er at venner ønsker at du skal spille internettspill eller bli med på kino, mens foreldrene ber deg skru av PC-en for å gjøre husarbeid og lekser.
-            </p>
-            <p>
-              Selv om informasjonen om narkotika er entydig, fordi det er forbudt gjennom norsk lov, kan enkeltpersoner bli utfordret også på disse normene. I noen miljøer er det akseptert å bruke narkotika, og de skadelige sidene av bruken bagatelliseres. I slike situasjoner kan internaliserte normer hjelpe oss til å føle oss trygge fordi vi har tatt stilling til spørsmålet på forhånd. Det bidrar til at mange føler at de vet hva som er riktige valg, og de føler seg trygge når de blir utfordret.
-            </p>
-            <p>
-              Motstridende signaler fra normsendere, som følges opp av sanksjoner som enten er vilkårlige, eller som føles urettferdige, skaper utrygghet. I verste fall kan utydelige normer og uregelmessig belønning medføre psykiske lidelser fordi de gjør personen utrygg og usikker.
-            </p>
-            <h2>Sosialt avvik – kulturell endring og lovbrudd</h2>
-            <p>
-              Noen velger også å bryte med samfunnets normer ved enten å ta avstand fra dem og gjøre opprør eller å bryte fullstendig. Slik oppførsel blir ofte betegnet som sosialt avvik. På den ene siden kan denne typen adferd bidra til viktige samfunnsmessige nyvinninger. Sosiale avvik kan blant annet legge grunnlag for nye politiske bevegelser eller bidra til aksept av <Glossary definition="Subkultur, (av sub og kultur), delkultur, kulturform som er en avart av en annen og videre utbredt kultur." source="snl.no">subkulturer</Glossary>. Det er positivt for samfunnet. På den andre siden kan sosiale avvik være negativt fordi personer velger å begå regelbrudd og i verste fall alvorlig kriminalitet og lovbrudd. De tydeligste normene i samfunnet er fastsatt i lovverket, og de forsvares formelt av domstolssystemet.
-            </p>
-            <h2>Når er man ferdig sosialisert?</h2>
-            <p>
-              Sosialisering foregår gjennom hele livet. Man sosialiseres, og man sosialiserer andre. Den foregår formelt i samfunnet gjennom at rettsvesenet opprettholder lover og regler. Den foregår gjennom at institusjoner som skole, barnehager og universiteter har en formell rolle i opplæringen. Og sosialisering foregår inne i oss ved at samfunnets normer og regler enten internaliseres, eller ved at vi bryter med dem. Målet er å skape mennesker som både kan tilpasse seg samfunnets krav og behov, og samtidig være selvstendige. Normer og verdier og lover bidrar til sosial kontroll med samfunnets medlemmer, samtidig med at grunnleggende verdier føres videre.
-            </p>
-          </div>
-        </section>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <ResourceSubsetList />
-      </LayoutItem>
-    </article>
-  </OneColumn>
-);
 const ArticleWithAside = () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
@@ -873,28 +803,6 @@ storiesOf('Artikkelmaler', module)
         </OneColumn>
       </Hero>
       <ArticleWithAside />
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Artikkel med begrepsforklaring', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <TopicBreadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
-      <ArticleWithGlossary />
       <FooterExample />
     </PageContainer>
   ));

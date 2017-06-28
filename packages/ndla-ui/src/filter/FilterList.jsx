@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { Icon } from '../';
 
 const filterClasses = new BEMHelper({
   name: 'filter',
@@ -38,7 +39,7 @@ class FilterList extends Component {
     return (
       <div {...filterClasses('list', modifiers)}>
         <span {...filterClasses('label')}>{ label }</span>
-        { filterContent ? filterContent.map((filterItem, index) =>
+        { filterContent ? filterContent.map(filterItem =>
           <div {...filterClasses('item')}>
             <input
               type="checkbox"
@@ -47,7 +48,6 @@ class FilterList extends Component {
               value={filterItem.title ? filterItem.title : null}
               defaultChecked={filterItem.active ? 'true' : null}
               key={filterItem.title}
-              checked={this.state.checked === index}
               onChange={this.props.onClick}
             />
             <label
@@ -55,6 +55,7 @@ class FilterList extends Component {
             >
               <span {...filterClasses('item-checkbox')} />
               { filterItem.title ? filterItem.title : null }
+              { filterItem.icon ? <Icon.Additional className="c-icon--20 u-margin-left-tiny" /> : null }
             </label>
           </div>) : null}
       </div>
@@ -74,6 +75,7 @@ FilterList.propTypes = {
   onClick: PropTypes.func,
   filterContent: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
+    icon: PropTypes.bool.isRequired,
     active: PropTypes.bool.isRequired,
   })),
 };

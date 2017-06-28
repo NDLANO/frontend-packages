@@ -22,7 +22,7 @@ const classes = new BEMHelper({
 const Resource = ({ resource, resourceToLinkProps }) => {
   const linkProps = resourceToLinkProps(resource);
   // const secondary = resource.primary ? 'secondary' : null;
-  // Uncomment when PRIMARY (kjernestoff) prop is available
+  // Comment out when PRIMARY (kjernestoff) prop is not available
   const secondary = !resource.primary ? 'secondary' : null;
 
   return (
@@ -35,8 +35,8 @@ const Resource = ({ resource, resourceToLinkProps }) => {
       <div {...classes('body o-flag__body')}>
         <h1 {...classes('title')}>
           {linkProps.href ?
-            <a {...linkProps}>{resource.name}</a> :
-            <SafeLink {...resourceToLinkProps(resource)}>{resource.icon} {resource.name}</SafeLink> }
+            <a {...linkProps}>{resource.name}{ secondary ? <Icon.Additional className="c-icon--20 u-margin-left-tiny" /> : null }</a> :
+            <SafeLink {...resourceToLinkProps(resource)}>{resource.icon} {resource.name}{ secondary ? <Icon.Additional /> : null }</SafeLink> }
         </h1>
       </div>
     </li>
@@ -65,7 +65,7 @@ class ResourceList extends Component {
     const { resources, type, ...rest } = this.props;
     const limit = 8;
     const { showAll } = this.state;
-    // Uncomment when PRIMARY (kjernestoff) prop is available
+    // Comment out when PRIMARY (kjernestoff) prop is not available
     const secondaryFilter = this.props.secondary;
 
     // Works in general, but should be separating resource groups (by index) so
@@ -75,7 +75,7 @@ class ResourceList extends Component {
         <ul {...classes('list')} >
           { showAll ?
             resources
-            // Uncomment when PRIMARY (kjernestoff) prop is available
+            // Comment out when PRIMARY (kjernestoff) prop is not available
             .filter(resource => (secondaryFilter ? resource : resource.primary))
             .map(resource =>
               <Resource
@@ -85,7 +85,7 @@ class ResourceList extends Component {
               />)
             :
             resources
-              // Uncomment when PRIMARY (kjernestoff) prop is available
+              // Comment out when PRIMARY (kjernestoff) prop is not available
               .filter(resource => (secondaryFilter ? resource : resource.primary))
               .filter((resource, index) => (index < limit))
               .map(resource =>

@@ -65,7 +65,7 @@ export class MastheadWithTopicMenu extends React.Component {
               <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
             </ClickToggle>
           </SiteNav>
-          <TopicBreadcrumb inMasthead toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+          <TopicBreadcrumb inMasthead toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, 2)} toTopic={() => '#'} />
         </MastheadItem>
         <MastheadItem right>
           <Logo to="#" altText="Nasjonal digital læringsarena" />

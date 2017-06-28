@@ -79,7 +79,7 @@ const ArticleLearningmaterial = () => (
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense classes="article_figure--float-left">
+        <FigureWithLicense classes="u-float-left">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
             src="https://staging.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
@@ -117,7 +117,7 @@ const ArticleLearningmaterial = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med
           i klassen.
         </p>
-        <FigureWithLicense classes="article_figure--float-right">
+        <FigureWithLicense classes="u-float-right">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
             src="https://staging.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"

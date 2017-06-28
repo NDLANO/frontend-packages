@@ -196,6 +196,7 @@
 }
 
 .c-topic-menu__back {
+  margin-left: $spacing--small;
   @include mq(tablet) {
     margin-left: $spacing--large;
     padding: $spacing--small 0;

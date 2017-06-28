@@ -9,7 +9,7 @@
 import React from 'react';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import Icon from '../../src/icons/Icon';
+import { Copy, Download } from '../../src/icons';
 
 import { LicenseByline } from '../../src';
 
@@ -36,8 +36,8 @@ const LicenseExampleImageAlt = () => (
       </div>
     </div>
     <div className="c-licenseToggle__ctablock u-text-center">
-      <button className="c-licenseToggle__button c-button--transparent" type="button"><Icon.Copy className="c-licenseToggle__button-icon" /> Kopier bilde</button>
-      <button className="c-licenseToggle__button" type="button"><Icon.Download className="c-licenseToggle__button-icon" /> Last ned bilde</button>
+      <button className="c-licenseToggle__button c-button--transparent" type="button"><Copy className="c-licenseToggle__button-icon" /> Kopier bilde</button>
+      <button className="c-licenseToggle__button" type="button"><Download className="c-licenseToggle__button-icon" /> Last ned bilde</button>
     </div>
   </div>
 );

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { ResourceShape } from '../shapes';
-import { Icon } from '../';
+import { Path, Document, Pencil } from '../icons';
 
 const classes = new BEMHelper({
   name: 'topic-resource',
@@ -24,9 +24,9 @@ const Resource = ({ resource, resourceToLinkProps }) => {
   return (
     <li {...classes('item o-flag o-flag--top ')}>
       <div {...classes('icon o-flag__img')}>
-        { resource.type === 'Lærestoff' ? <Icon.Document /> : null }
-        { resource.type === 'Læringsstier' ? <Icon.Path /> : null }
-        { resource.type === 'Oppgaver og aktiviteter' ? <Icon.Pencil /> : null }
+        { resource.type === 'Lærestoff' ? <Document /> : null }
+        { resource.type === 'Læringsstier' ? <Path /> : null }
+        { resource.type === 'Oppgaver og aktiviteter' ? <Pencil /> : null }
       </div>
       <div {...classes('body o-flag__body')}>
         <h1 {...classes('title')}>

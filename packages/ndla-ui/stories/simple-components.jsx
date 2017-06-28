@@ -4,12 +4,13 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
-import Icon from '../src/icons/Icon';
+import * as Icons from '../src/icons';
 import { Aside, Button, Logo, LayoutItem } from '../src';
 import FigureWithLicense from './article/FigureWithLicense';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
+
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde under ingress', () => (
@@ -35,7 +36,7 @@ storiesOf('Enkle komponenter', module)
           <FigureWithLicense>
             <img
               alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-              src="https://test.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+              src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
             />
           </FigureWithLicense>
         </LayoutItem>
@@ -58,7 +59,7 @@ storiesOf('Enkle komponenter', module)
              å produsere filmen.
           </p>
           <div className="c-article__byline">
-            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+            <span className="c-article__authors"><Icons.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icons.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
         <LayoutItem layout="center">
@@ -110,7 +111,7 @@ storiesOf('Enkle komponenter', module)
              å produsere filmen.
           </p>
           <div className="c-article__byline">
-            <span className="c-article__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icon.Time /> Publisert [dato]</span>
+            <span className="c-article__authors"><Icons.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icons.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
         <LayoutItem layout="center">
@@ -176,11 +177,16 @@ storiesOf('Enkle komponenter', module)
           </thead>
           <tbody>
             {
-              Object.keys(Icon).filter(key => key !== 'propTypes').map(key => (
+              [
+                'Download', 'Copy', 'Audio', 'Document', 'Home', 'ArrowDown',
+                'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search',
+                'User', 'OpenWindow', 'LicenseCc', 'LicenseBy', 'LicenseNc', 'LicenseNd',
+                'LicenseSa',
+              ].map(key => (
                 <tr key={key}>
-                  <td>{createElement(Icon[key])}</td>
+                  <td>{createElement(Icons[key])}</td>
                   <td>{key}</td>
-                  <td><code>&lt;Icon.{key} /&gt;</code></td>
+                  <td><code>&lt;Icons.{key} /&gt;</code></td>
                 </tr>
               ))
             }
@@ -196,7 +202,7 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="center">
             <h1 className="u-heading">Knapper</h1>
             <p>Knapper er til å klikke på, ikke for å lenke til, og skal brukes
-            til interaktivitet på samme side, ikke for å sende brukeren til en
+           til interaktivitet på samme side, ikke for å sende brukeren til en
             ny side (da brukes vanlig lenke).</p>
             <p>Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet kan fylt knapp benyttes.</p>
           </LayoutItem>

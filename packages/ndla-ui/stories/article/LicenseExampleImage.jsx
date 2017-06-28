@@ -9,7 +9,7 @@
 import React from 'react';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import Icon from '../../src/icons/Icon';
+import { Copy, Download } from '../../src/icons';
 
 import { LicenseByline } from '../../src';
 
@@ -30,8 +30,8 @@ const LicenseExampleImage = () => (
       </div>
     </div>
     <div className="c-modal__ctablock u-text-center">
-      <button className="c-modal__button c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier bilde</button>
-      <button className="c-modal__button" type="button"><Icon.Download className="c-modal__button-icon" /> Last ned bilde</button>
+      <button className="c-modal__button c-button--transparent" type="button"><Copy className="c-modal__button-icon" /> Kopier bilde</button>
+      <button className="c-modal__button" type="button"><Download className="c-modal__button-icon" /> Last ned bilde</button>
     </div>
   </div>
 );

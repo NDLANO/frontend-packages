@@ -17,7 +17,7 @@ import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 import { FilterList } from '../';
-import Icon from '../icons/Icon';
+import { Search, Home } from '../icons';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -60,7 +60,7 @@ export default class TopicMenu extends Component {
         <div {...classes('masthead')}>
           <div {...classes('search')}>
             <div {...classes('search-icon')}>
-              <Icon.Search />
+              <Search />
             </div>
             Søk
           </div>
@@ -74,7 +74,7 @@ export default class TopicMenu extends Component {
         </div>
         <ul {...classes('list', null, classes('left').className)}>
           <li {...classes('back')}>
-            <SafeLink {...classes('back-link')} to="/"><Icon.Home {...classes('home-icon', '', 'c-icon--20')} />Fagoversikt</SafeLink>
+            <SafeLink {...classes('back-link')} to="/"><Home {...classes('home-icon', '', 'c-icon--20')} />Fagoversikt</SafeLink>
           </li>
           <li {...classes('subject')} >
             <SafeLink to={toSubject}>{ subject }</SafeLink>

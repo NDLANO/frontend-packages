@@ -254,4 +254,25 @@ storiesOf('Sammensatte moduler', module)
       </Footer>
     </Center>
   ))
+  .add('Tilleggsstoff', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Tilleggsstoff</h1>
+            <p>Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
+               tilleggsstoff-filteret aktiveres, vil ressursopplistingen populeres
+               med tilleggsstoff i tilegg. Tilleggsstoff markeres med T-ikon, og
+               desaturert bakgrunnsfarge. </p>
+            <p>Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet,
+             f. eks om du aktiverer tilleggsstoff for Lærestoff, vil kun denne listen
+             oppdateres med tilleggsstoff-artikler.</p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="extend">
+          <ResourceSubsetList />
+        </LayoutItem>
+      </article>
+    </Center>
+  ))
   ;

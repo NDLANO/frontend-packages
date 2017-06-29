@@ -178,7 +178,7 @@ storiesOf('Enkle komponenter', module)
           <tbody>
             {
               [
-                'Download', 'Copy', 'Audio', 'Document', 'Home', 'ArrowDown',
+                'Download', 'Copy', 'Audio', 'Document', 'Home',
                 'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search',
                 'User', 'OpenWindow', 'LicenseCc', 'LicenseBy', 'LicenseNc', 'LicenseNd',
                 'LicenseSa',
@@ -187,6 +187,17 @@ storiesOf('Enkle komponenter', module)
                   <td>{createElement(Icons[key])}</td>
                   <td>{key}</td>
                   <td><code>&lt;Icons.{key} /&gt;</code></td>
+                </tr>
+              ))
+            }
+            {
+              [
+                'up', 'down', 'left', 'right',
+              ].map(key => (
+                <tr key={key}>
+                  <td><Icons.Arrow rotation={key} /></td>
+                  <td>Arrow {key}</td>
+                  <td><code>&lt;Icons.Arrow rotation=&#123;{key}&#125; /&gt;</code></td>
                 </tr>
               ))
             }

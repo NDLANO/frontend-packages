@@ -6,11 +6,11 @@
 ** <div class="c-filter__list">
 **   <span class="c-filter__label">FILTER:</span>
 **   <div class="c-filter__item">
-**     <input type="checkbox" name="gruppe" id="1T" value="1T">
+**     <input type="checkbox" class="c-filter__input" name="gruppe" id="1T" value="1T">
 **     <label for="1T"><span class="c-filter__item-checkbox"></span></label>
 **   </div>
 **   <div class="c-filter__item">
-**    <input type="checkbox" name="gruppe" id="R1" value="R1">
+**    <input type="checkbox" class="c-filter__input" name="gruppe" id="R1" value="R1">
 **    <label for="R1"><span class="c-filter__item-checkbox"></span></label>
 **   </div>
 ** </div>
@@ -56,17 +56,6 @@
   cursor: pointer;
   @include inuit-font-size(16px);
 
-  input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity:0;
-    z-index: 99;
-    cursor: pointer;
-  }
-
   &:hover {
     .c-filter__item-checkbox {
       border: 2px solid $brand-color--light;
@@ -80,6 +69,16 @@
       }
     }
   }
+}
+.c-filter__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity:0;
+  z-index: 99;
+  cursor: pointer;
 }
 .c-filter__item-checkbox {
   content:'';

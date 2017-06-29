@@ -42,6 +42,7 @@ class FilterList extends Component {
         { filterContent ? filterContent.map(filterItem =>
           <div {...filterClasses('item')}>
             <input
+              {...filterClasses('input')}
               type="checkbox"
               name="gruppe"
               id={filterItem.title ? filterItem.title : null}

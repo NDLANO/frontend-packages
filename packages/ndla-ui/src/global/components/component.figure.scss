@@ -4,6 +4,21 @@
 ** 1. Figure itself
 ** 2. Figcaption element w/content
 ** 3. Figure with license-popup activated
+**
+** PRINCIPLE:
+** <figure class="c-figure">
+**   <div class="c-figure__img">
+**      <img>
+**   </div>
+**   <figcaption class="c-figure__caption">
+**       <div class="c-figure__info">Caption</div>
+**       <div class="c-figure__byline">License, CTA</div>
+**   </figcaption>
+**   <div class="c-figure__license">
+**       <button class="c-figure__close">Lukk</button>
+**       Licensebox content here (see component.figure-license scss)
+**   </div>
+** </figure>
 **/
 
 

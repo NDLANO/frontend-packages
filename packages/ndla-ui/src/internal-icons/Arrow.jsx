@@ -16,8 +16,8 @@ const arrowRotations = {
   right: 270,
 };
 
-const Arrow = ({ className, rotation }) => {
-  const degrees = arrowRotations[rotation] ? arrowRotations[rotation] : 180;
+const Arrow = ({ className, direction }) => {
+  const degrees = arrowRotations[direction] ? arrowRotations[direction] : 180;
   return (
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" className={className}>
       <path
@@ -30,7 +30,7 @@ const Arrow = ({ className, rotation }) => {
 
 Arrow.propTypes = {
   className: PropTypes.string.isRequired,
-  rotation: PropTypes.string,
+  direction: PropTypes.string,
 };
 
 export default Arrow;

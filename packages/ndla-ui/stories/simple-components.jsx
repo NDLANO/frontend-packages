@@ -195,9 +195,9 @@ storiesOf('Enkle komponenter', module)
                 'up', 'down', 'left', 'right',
               ].map(key => (
                 <tr key={key}>
-                  <td><Icons.Arrow rotation={key} /></td>
+                  <td><Icons.Arrow direction={key} /></td>
                   <td>Arrow {key}</td>
-                  <td><code>&lt;Icons.Arrow rotation=&quot;{key}&quot; /&gt;</code></td>
+                  <td><code>&lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;</code></td>
                 </tr>
               ))
             }

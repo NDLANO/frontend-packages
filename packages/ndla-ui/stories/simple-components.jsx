@@ -197,7 +197,7 @@ storiesOf('Enkle komponenter', module)
                 <tr key={key}>
                   <td><Icons.Arrow rotation={key} /></td>
                   <td>Arrow {key}</td>
-                  <td><code>&lt;Icons.Arrow rotation=&#123;{key}&#125; /&gt;</code></td>
+                  <td><code>&lt;Icons.Arrow rotation=&quot;{key}&quot; /&gt;</code></td>
                 </tr>
               ))
             }

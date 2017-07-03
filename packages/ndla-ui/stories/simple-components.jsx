@@ -108,7 +108,7 @@ storiesOf('Enkle komponenter', module)
             <span className="c-article-byline__authors"><Icon.User /> Skrevet av [Opphavsperson].</span> <span className="c-article-byline__date"><Icon.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
-        <LayoutItem layout="center">
+        <LayoutItem layout="extend">
           <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
             din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -120,16 +120,6 @@ storiesOf('Enkle komponenter', module)
              pitcher, blir idéen og historien i den filmen du planlegger å lage,
               tydeligere for både deg selv og dem du eventuelt jobber sammen med
                i klassen.</p>
-          <LayoutItem layout="left">
-            <div className="c-bodybox">En tekstboks som flyter til venstre.</div>
-          </LayoutItem>
-          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-             pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med
-               i klassen.</p>
-          <LayoutItem layout="right">
-            <div className="c-bodybox">En tekstboks som flyter til høyre.</div>
-          </LayoutItem>
           <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
             pitcher, blir idéen og historien i den filmen du planlegger å lage,
              tydeligere for både deg selv og dem du eventuelt jobber sammen med

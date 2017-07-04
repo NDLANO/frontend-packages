@@ -17,6 +17,9 @@ export const LayoutItem = ({ children, layout }) => {
     case 'center' : {
       return <section className="u-4/6@desktop u-push-1/6@desktop">{children}</section>;
     }
+    case 'full' : {
+      return <section className="u-1/1@desktop">{children}</section>;
+    }
     default : {
       return <section className="o-layout__item">{children}</section>;
     }

@@ -199,6 +199,8 @@ const LicenseExample = () => (
           { key: 'guide', title: 'Veiledning', content: <VideoContent /> },
         ]}
       />
+      <p>Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du
+      skal gjenbruke noe av dette innholdet utenfor ndla.no.</p>
     </div>
   </div>
 );

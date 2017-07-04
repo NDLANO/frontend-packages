@@ -222,11 +222,13 @@ storiesOf('Grunnstiler', module)
           <div className="o-wrapper--inner">
             <h2 id="lenker" className="u-heading">Lenker</h2>
             <p><a>Lenker</a> på <a href="//ndla.no">ndla.no</a> bruker den vanlige
-              konvensjonen med underlinje. Ingen lenker skal åpne i et nytt vindu
+              konvensjonen med underlinje. Lenker skal i hovedsak åpne i samme vindu,
               (det vil si, bruke <code>target=&quot;_blank&quot;</code>), med mindre den inngår i
-              et skjema hvor det er nødvendig at brukeren beholder vinduet eller fanen med skjemaet.
+              et skjema, eller i en læringssammenhengen hvor det er nødvendig at brukeren beholder
+              vinduet eller fanen man står i.
             </p>
             <p>Lenker kan enten være eksterne, interne eller vise til innhold på samme side ved hjelp av en <code>id</code>-attributt på for eksempel en overskrift.</p>
+            <p>Det skal vuderes i fremtiden om det er behov for markering av eksterne lenker.</p>
             <div className="c-bodybox">
               <p>Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en <a href="/">intern lenke</a>, og dette er en <a href="#overskrift">lenke som viser til innhold på samme side</a></p>
             </div>

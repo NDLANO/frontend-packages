@@ -96,6 +96,7 @@ storiesOf('Enkle komponenter', module)
           <h1 className="u-heading">Boks i tekst</h1>
           <p>En boks i teksten kan brukes for å fremheve noe av særlig interesse,
            annet enn sitat (som det allerede fins sitatstil til).</p>
+           <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
         </LayoutItem>
       </section>
       <article className="c-article c-article--clean">
@@ -120,6 +121,50 @@ storiesOf('Enkle komponenter', module)
              pitcher, blir idéen og historien i den filmen du planlegger å lage,
               tydeligere for både deg selv og dem du eventuelt jobber sammen med
                i klassen.</p>
+          <LayoutItem layout="full">
+            <div className="c-bodybox c-bodybox--extended">En tekstboks som fyller spaltebredden.</div>
+          </LayoutItem>
+          <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+          <LayoutItem layout="center">
+            <div className="c-bodybox">
+              <h3>En boks i tekst fungerer <em>dårlig</em> med mye tekst.</h3>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+            </div>
+          </LayoutItem>
           <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
             pitcher, blir idéen og historien i den filmen du planlegger å lage,
              tydeligere for både deg selv og dem du eventuelt jobber sammen med
@@ -133,7 +178,7 @@ storiesOf('Enkle komponenter', module)
       <section className="c-factbox">
         <LayoutItem layout="center">
           <h1 className="u-heading">Faktaboks og høyrespalte</h1>
-          <p>For fremtidig innhold på ndla.no skal ikke høyrespalte benyttes,
+          <p>For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes,
              i stedet benytter man faktabokser innenfor innholdsspalten.
               Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
           </p>

@@ -1,3 +1,3 @@
-import ImageSelector from './ImageSelector';
+import ImageSearch from './ImageSearch';
 
-export default ImageSelector;
+export default ImageSearch;

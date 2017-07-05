@@ -1,0 +1,261 @@
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+.image-search_border {
+  margin: 1em -2em;
+  height: 1px;
+  border-bottom: 1px solid $brand-color--lighter;
+}
+
+.image-search_form {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.image-search-form_btn {
+  width: 12%;
+  height: 3rem;
+  display: inline-block;
+  margin-left: -2px;
+  border-radius: 0 5px 5px 0;
+  padding: 0.4em;
+
+  & :hover {
+    transform: none;
+  }
+}
+
+input[type=text].image-search_form-query {
+  width: 88%;
+  height: 3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  display: inline-block;
+  border-width: 2px;
+  float: left;
+  border-radius: 5px 0 0 5px;
+}
+
+.image-search_text {
+  text-align: center;
+}
+
+.image-search_form .search-form_btn--gray .icon {
+  font-size: 1.5em;
+}
+
+.image-search_list-item {
+  max-width: 25%;
+  position: relative;
+  float: left;
+  height: 200px;
+  width: 25%;
+}
+
+.image-search_list-item.image-search_list-item--active {
+  height: inherit;
+}
+
+.image-search_list {
+  display: flex;
+  align-items: stretch;
+  flex-flow: row wrap;
+  position: relative;
+}
+
+.image-search_list-item-inner {
+  padding: 0.5em;
+  text-align: center;
+  height: 210px;
+}
+
+.image-search_list-item-inner img {
+  max-height: 190px;
+  max-width: 100%;
+  border: 2px solid white;
+}
+
+.image-search_list-item-inner img:hover,
+.image-search_list-item--active > .image-search_list-item-inner img {
+  border: 2px solid var(--brand-color);
+}
+
+.image-search_list-item--active > .image-search_list-item-inner::after {
+  top: 196px;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: $brand-color--lighter;
+  border-width: 0.5em;
+  margin-left: -40px;
+}
+
+.image-preview {
+  position: relative;
+  width: 400%;
+  background-color: $brand-color--lighter;
+}
+
+.image-preview_image {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  padding: 1em;
+}
+
+.image-preview .button {
+  padding: 0.7em 1em;
+}
+
+.image-preview_image img {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.image-preview_information {
+  width: 50%;
+  display: inline-block;
+  padding: 1em;
+  word-break: initial;
+}
+
+.image-preview_information > * {
+  margin-top: 1em;
+}
+
+.image-preview_title {
+  padding-top: 0;
+  margin: 0;
+}
+
+.image-preview_text--left {
+  width: 20%;
+  display: inline-block;
+  float: left;
+}
+
+.image-preview_text--right {
+  width: 80%;
+  display: inline-block;
+}
+
+.image-preview_tags > b {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.image-preview_tags > .tag_item {
+  color: black;
+  font-weight: 600;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  display: inline-block;
+}
+
+.image-preview_tags > .tag_item:hover {
+  text-decoration: none;
+}
+
+.clear {
+  clear: both;
+}
+
+@media #{$large-viewport} {
+  .image-search_list-item:nth-of-type(4n+2) .image-preview {
+    margin-left: -100%;
+  }
+
+  .image-search_list-item:nth-of-type(4n+3) .image-preview {
+    margin-left: -200%;
+  }
+
+  .image-search_list-item:nth-of-type(4n+4) .image-preview {
+    margin-left: -300%;
+  }
+}
+
+@media #{$medium-viewport} {
+  .image-preview {
+    width: 200%;
+  }
+
+  .image-preview_image,
+  .image-preview_information {
+    width: 100%;
+  }
+
+  .image-search_list-item {
+    width: 50%;
+    max-width: 50%;
+  }
+
+  .image-search_list-item:nth-of-type(4n+2) .image-preview {
+    margin-left: -100%;
+  }
+
+  .image-search_list-item:nth-of-type(4n+4) .image-preview {
+    margin-left: -100%;
+  }
+
+  .image-search_form-button {
+    width: 10%;
+  }
+
+  input[type=text].image-search_form-query {
+    width: 90%;
+  }
+}
+
+@media #{$small-viewport} {
+  .image-search_form-button {
+    width: 20%;
+  }
+
+  input[type=text].image-search_form-button {
+    width: 80%;
+  }
+}
+
+@media #{$xsmall-viewport}{
+  .image-preview {
+    width: 100%;
+  }
+
+  .image-preview_image,
+  .image-preview_information {
+    width: 100%;
+  }
+
+  .image-search_list-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-search_list-item:nth-of-type(4n+2) .image-preview {
+    margin-left: 0;
+  }
+
+  .image-search_list-item:nth-of-type(4n+4) .image-preview {
+    margin-left: 0;
+  }
+
+  .image-preview_text--left,
+  .image-preview_text--right {
+    width: 100%;
+  }
+}

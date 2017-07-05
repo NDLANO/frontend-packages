@@ -31,8 +31,16 @@
     "react": "^15.0.0",
     "react-bem-helper": "^1.2.0",
     "react-dom": "^15.0.0",
+    "ndla-ui": "^0.4.3",
+    "ndla-util": "^0.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.2"
+    "defined": "1.0.0",
+    "query-string": "^4.3.4",
+    "lodash": "^4.17.2",
+    "ndla-ui": "^0.4.3",
+    "ndla-util": "^0.1.1",
+    "ndla-licenses": "^0.0.7",
+    "ndla-article-scripts": "^0.0.3"
   }
 }

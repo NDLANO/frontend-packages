@@ -19,6 +19,7 @@ import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads'
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
+import ImageSearcher from './molecules/imageSearch';
 
 const toggle = () => {
   document.querySelector('.c-collate__panel').classList.toggle('c-collate__panel--expanded');
@@ -65,6 +66,15 @@ storiesOf('Sammensatte moduler', module)
       <div className="o-wrapper--inner">
         <p>Disse fanene kan også kontrolleres med frittstående knapper plassert innenfor fanene.</p>
         <TabsControlled />
+      </div>
+    </Center>
+  ))
+  .add('Bildesøk', () => (
+    <Center>
+      <h2 className="u-heading">Bildesøk</h2>
+      <div className="o-wrapper--inner">
+        <p>Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne modulen krever at det både finnes en token og api url.</p>
+        <ImageSearcher />
       </div>
     </Center>
   ))

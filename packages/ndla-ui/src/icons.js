@@ -18,7 +18,7 @@ import CopyIcon from './internal-icons/Copy';
 import AudioIcon from './internal-icons/Audio';
 import DocumentIcon from './internal-icons/Document';
 import HomeIcon from './internal-icons/Home';
-import ArrowDownIcon from './internal-icons/ArrowDown';
+import ArrowIcon from './internal-icons/Arrow';
 import GridIcon from './internal-icons/Grid';
 import LinkIcon from './internal-icons/Link';
 import EmbedIcon from './internal-icons/Embed';
@@ -50,7 +50,7 @@ export const Copy = props => (<Icon {...props} icon={CopyIcon} />);
 export const Audio = props => (<Icon {...props} icon={AudioIcon} />);
 export const Document = props => (<Icon {...props} icon={DocumentIcon} />);
 export const Home = props => (<Icon {...props} icon={HomeIcon} />);
-export const ArrowDown = props => (<Icon {...props} icon={ArrowDownIcon} />);
+export const Arrow = props => (<Icon {...props} icon={ArrowIcon} />);
 export const Grid = props => (<Icon {...props} icon={GridIcon} />);
 export const Link = props => (<Icon {...props} icon={LinkIcon} />);
 export const Embed = props => (<Icon {...props} icon={EmbedIcon} />);
@@ -68,4 +68,3 @@ export const LicenseNd = props => (<Icon {...props} icon={LicenseNdIcon} />);
 export const LicenseSa = props => (<Icon {...props} icon={LicenseSaIcon} />);
 
 export default Icon;
-

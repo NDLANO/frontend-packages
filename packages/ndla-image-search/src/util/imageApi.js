@@ -22,11 +22,11 @@ export function resolveJsonOrRejectWithError(res) {
     return res
       .json()
       .then(json =>
-        createErrorPayload(
+        reject(createErrorPayload(
           res.status,
           defined(json.message, res.statusText),
           json,
-        ),
+        )),
       )
       .catch(reject);
   });

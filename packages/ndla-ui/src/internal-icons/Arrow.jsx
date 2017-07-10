@@ -15,7 +15,6 @@ const arrowRotations = {
   left: 90,
   right: 270,
 };
-
 const Arrow = ({ className, direction }) => {
   const degrees = arrowRotations[direction] ? arrowRotations[direction] : 180;
   return (

@@ -10,10 +10,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const arrowRotations = {
-  up: 180,
-  down: 0,
-  left: 90,
-  right: 270,
+  up: '180',
+  down: '0',
+  left: '90',
+  right: '270',
 };
 const Arrow = ({ className, direction }) => {
   const degrees = arrowRotations[direction] ? arrowRotations[direction] : 180;

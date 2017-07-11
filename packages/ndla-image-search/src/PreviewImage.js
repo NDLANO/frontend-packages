@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
 import { uuid } from 'ndla-util';
-import { scaleImage } from './util/imageScaler';
+import { getSrcSets } from './util/imageUtil';
 import { tagsI18N } from './util/i18nFieldFinder';
 
 
@@ -28,7 +28,7 @@ export default function PreviewImage({ image, onSelectImage, locale }) {
         <img
           alt="presentation"
           role="presentation"
-          src={scaleImage(image.imageUrl)}
+          srcSet={getSrcSets(image.imageUrl)}
         />
       </div>
       <div {...classes('information')}>

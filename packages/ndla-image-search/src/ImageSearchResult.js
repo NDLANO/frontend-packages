@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 import PreviewImage from './PreviewImage';
-import { scaleImage } from './util/imageScaler';
+import { getSrcSets } from './util/imageUtil';
 
 const classes = new BEMHelper({
   name: 'image-search',
@@ -34,7 +34,7 @@ export default function ImageSearchResult({
           <img
             role="presentation"
             alt="presentation"
-            src={scaleImage(image.previewUrl)}
+            srcSet={getSrcSets(image.previewUrl)}
           />
         </Button>
       </div>

@@ -8,12 +8,6 @@ $border-radius: $inuit-global-radius;
 $border-radius--large: 50%;
 $transition: all .2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
 $transition--long: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
-$xxlarge-viewport-max: "max-width: 1400px)";
-$xlarge-viewport: "(min-width: 1200px)";
-$large-viewport: "(min-width: 800px)";
-$medium-viewport: "(max-width: 800px)";
-$small-viewport: "(max-width: 600px)";
-$xsmall-viewport: "(max-width: 400px)";
 
 @mixin max-width() {
   max-width: 100%;
@@ -47,10 +41,4 @@ $xsmall-viewport: "(max-width: 400px)";
 --border-radius--large: 50%;
 --transition: all .2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
 --transition--long: all .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
---xxlarge-viewport-max: $xxlarge-viewport-max;
---xlarge-viewport: $xlarge-viewport;
---large-viewport: $large-viewport;
---medium-viewport: $medium-viewport;
---small-viewport: $small-viewport;
---xsmall-viewport: $xsmall-viewport;
 }

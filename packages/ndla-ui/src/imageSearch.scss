@@ -7,7 +7,12 @@
  */
  @import "global/settings/settings.config";
  @import "global/settings/settings.colors";
-
+ $xxlarge-viewport-max: "max-width: 1400px)";
+ $xlarge-viewport: "(min-width: 1200px)";
+ $large-viewport: "(min-width: 800px)";
+ $medium-viewport: "(max-width: 800px)";
+ $small-viewport: "(max-width: 600px)";
+ $xsmall-viewport: "(max-width: 400px)";
 
 .c-image-search {
 

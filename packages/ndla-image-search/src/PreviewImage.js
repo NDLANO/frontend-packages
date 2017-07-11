@@ -10,9 +10,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
-import { uuid } from 'ndla-util';
+import { uuid, tagsI18N } from 'ndla-util';
 import { getSrcSets } from './util/imageUtil';
-import { tagsI18N } from './util/i18nFieldFinder';
 
 
 const classes = new BEMHelper({
@@ -20,8 +19,10 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const preferdLocales = ['nb', 'nn', 'en'];
+
 export default function PreviewImage({ image, onSelectImage, locale }) {
-  const tags = tagsI18N(image, locale);
+  const tags = tagsI18N(image, locale, false, preferdLocales);
   return (
     <div {...classes()}>
       <div {...classes('image')}>

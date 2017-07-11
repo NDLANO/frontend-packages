@@ -13,7 +13,6 @@ import ImageSearch from 'ndla-image-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const fetchImages = (query, page, locale) => {
-  console.log(query);
   const queryString = query ? `query=${query}&page=${page}&page-size=16&language=${locale}` : `page=${page}&page-size=16&language=${locale}`;
   return new Promise((resolve, reject) => {
     getToken().then((token) => {

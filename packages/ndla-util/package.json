@@ -27,5 +27,7 @@
     "es"
   ],
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "defined": "1.0.0"
+  }
 }

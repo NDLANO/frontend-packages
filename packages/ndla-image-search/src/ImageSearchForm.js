@@ -9,6 +9,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'ndla-ui';
+import BEMHelper from 'react-bem-helper';
+
+const classes = new BEMHelper({
+  name: 'image-search',
+  prefix: 'c-',
+});
 
 class SearchForm extends Component {
   constructor(props) {
@@ -39,17 +45,17 @@ class SearchForm extends Component {
   render() {
     const { searching, searchPlaceholder, searchButtonTitle } = this.props;
     return (
-      <div className="image-search_form">
+      <div {...classes('form')}>
         <input
+          {...classes('form-query')}
           type="text"
-          className="image-search_form-query"
           onChange={this.handleQueryChange}
           onKeyPress={this.onKeyPress}
           value={this.state.query}
           placeholder={searchPlaceholder}
         />
         <Button
-          className="image-search-form_btn"
+          {...classes('form-button')}
           onClick={this.handleSubmit}
           loading={searching}
         >

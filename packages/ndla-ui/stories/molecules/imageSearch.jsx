@@ -10,19 +10,57 @@
 import React from 'react';
 
 import ImageSearch from 'ndla-image-search';
+import { headerWithAccessToken, getToken } from '../apiFunctions';
+
+const fetchImages = (query, page, locale) => {
+  console.log(query);
+  const queryString = query ? `query=${query}&page=${page}&page-size=16&language=${locale}` : `page=${page}&page-size=16&language=${locale}`;
+  return new Promise((resolve, reject) => {
+    getToken().then((token) => {
+      fetch(`https://staging.api.ndla.no/image-api/v1/images/?${queryString}`, { method: 'GET', headers: headerWithAccessToken(token) })
+        .then((res) => {
+          if (res.ok) {
+            return resolve(res.json());
+          }
+          return res.json().then(json => reject(json));
+        });
+    });
+  });
+};
+
+const fetchImage = id => (
+  new Promise((resolve, reject) => {
+    getToken().then((token) => {
+      fetch(`https://staging.api.ndla.no/image-api/v1/images/${id}`, { method: 'GET', headers: headerWithAccessToken(token) })
+        .then((res) => {
+          if (res.ok) {
+            return resolve(res.json());
+          }
+          return res.json().then(json => reject(json));
+        });
+    });
+  })
+);
 
 export const ImageSearcher = () => {
   const imageSelect = (image) => {
     console.log(image);
   };
 
-  const ndlaClient = {
-    apiUrl: 'https://test.api.ndla.no',
-    token: 'ndla-token',
+  const onError = (err) => {
+    console.error(err);
   };
 
   return (
-    <ImageSearch searchPlaceholder="Søk i bilder" searchButtonTitle="Søk" ndlaClient={ndlaClient} locale="nb" onImageSelect={imageSelect} />
+    <ImageSearch
+      searchPlaceholder="Søk i bilder"
+      searchButtonTitle="Søk"
+      fetchImage={fetchImage}
+      fetchImages={fetchImages}
+      locale="nb"
+      onImageSelect={imageSelect}
+      onError={onError}
+    />
   );
 };
 

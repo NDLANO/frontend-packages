@@ -9,9 +9,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'ndla-ui';
-import classNames from 'classnames';
+import BEMHelper from 'react-bem-helper';
 import PreviewImage from './PreviewImage';
 import { scaleImage } from './util/imageScaler';
+
+const classes = new BEMHelper({
+  name: 'image-search',
+  prefix: 'c-',
+});
 
 export default function ImageSearchResult({
   image,
@@ -20,16 +25,11 @@ export default function ImageSearchResult({
   onSelectImage,
   locale,
 }) {
-  const activeClassName = () =>
-    classNames({
-      'image-search_list-item': true,
-      'image-search_list-item--active':
-        selectedImage && selectedImage.id === image.id,
-    });
+  const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
   return (
-    <div key={image.id} className={activeClassName()}>
-      <div className="image-search_list-item-inner">
+    <div key={image.id} {...classes('list-item', active)}>
+      <div {...classes('list-item-inner')}>
         <Button stripped onClick={() => onImageClick(image)}>
           <img
             role="presentation"

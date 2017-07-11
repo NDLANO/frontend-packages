@@ -9,10 +9,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Pager } from 'ndla-ui';
+import BEMHelper from 'react-bem-helper';
 
 import ImageSearchForm from './ImageSearchForm';
 import ImageSearchResult from './ImageSearchResult';
-import * as api from './util/imageApi';
+
+const classes = new BEMHelper({
+  name: 'image-search',
+  prefix: 'c-',
+});
 
 class ImageSearch extends React.Component {
   constructor() {
@@ -38,13 +43,15 @@ class ImageSearch extends React.Component {
   }
 
   componentDidMount() {
-    this.submitImageSearchQuery(this.state.queryObject);
+    this.searchImages(this.state.queryObject);
   }
 
   onImageClick(image) {
     if (!this.state.selectedImage || image.id !== this.state.selectedImage.id) {
-      api.fetchImage(image.id, this.props.ndlaClient).then((result) => {
+      this.props.fetchImage(image.id).then((result) => {
         this.setState({ selectedImage: result });
+      }).catch((err) => {
+        this.props.onError(err);
       });
     }
   }
@@ -53,8 +60,8 @@ class ImageSearch extends React.Component {
     this.setState({ selectedImage: undefined });
     this.props.onImageSelect(image);
   }
-  submitImageSearchQuery(queryObject) {
-    this.searchImages({ ...queryObject, page: 1 });
+  submitImageSearchQuery(query) {
+    this.searchImages({ query, page: 1 });
   }
 
   changeQueryPage(queryObject) {
@@ -63,7 +70,7 @@ class ImageSearch extends React.Component {
 
   searchImages(queryObject) {
     this.setState({ searching: true });
-    api.search(queryObject.query, queryObject.page, this.props.locale, this.props.ndlaClient).then((result) => {
+    this.props.fetchImages(queryObject.query, queryObject.page, this.props.locale).then((result) => {
       this.setState({
         queryObject: {
           query: queryObject.query,
@@ -72,10 +79,11 @@ class ImageSearch extends React.Component {
         },
         images: result.results,
         totalCount: result.totalCount,
-        lastPage: result.totalCount / result.pageSize,
+        lastPage: Math.ceil(result.totalCount / result.pageSize),
         searching: false,
       });
-    }).catch(() => {
+    }).catch((err) => {
+      this.props.onError(err);
       this.setState({ searching: false });
     });
   }
@@ -99,7 +107,7 @@ class ImageSearch extends React.Component {
     const { query, page } = queryObject;
 
     return (
-      <div>
+      <div {...classes()}>
         <ImageSearchForm
           onSearchQuerySubmit={this.submitImageSearchQuery}
           query={query}
@@ -108,7 +116,7 @@ class ImageSearch extends React.Component {
           searchPlaceholder={searchPlaceholder}
           searchButtonTitle={searchButtonTitle}
         />
-        <div className="image-search_list">
+        <div {...classes('list')}>
           {images.map(image =>
             <ImageSearchResult
               key={image.id}
@@ -135,10 +143,9 @@ class ImageSearch extends React.Component {
 
 ImageSearch.propTypes = {
   onImageSelect: PropTypes.func.isRequired,
-  ndlaClient: PropTypes.shape({
-    token: PropTypes.string.isRequired,
-    apiUrl: PropTypes.string.isRequired,
-  }),
+  fetchImages: PropTypes.func.isRequired,
+  fetchImage: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
   searchButtonTitle: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,

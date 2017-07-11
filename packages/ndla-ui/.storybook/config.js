@@ -2,6 +2,7 @@ import { configure } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import '../src/main.scss';
 import '../src/editor.scss';
+import '../src/imageSearch.scss';
 
 setOptions({
   name: 'NDLA Designmanual',

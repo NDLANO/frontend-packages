@@ -8,41 +8,48 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
 import { uuid } from 'ndla-util';
 import { scaleImage } from './util/imageScaler';
 import { tagsI18N } from './util/i18nFieldFinder';
 
+
+const classes = new BEMHelper({
+  name: 'image-preview',
+  prefix: 'c-',
+});
+
 export default function PreviewImage({ image, onSelectImage, locale }) {
   const tags = tagsI18N(image, locale);
   return (
-    <div className="image-preview">
-      <div className="image-preview_image">
+    <div {...classes()}>
+      <div {...classes('image')}>
         <img
           alt="presentation"
           role="presentation"
           src={scaleImage(image.imageUrl)}
         />
       </div>
-      <div className="image-preview_information">
-        <h2 className="image-preview_title">{image.titles[0].title}</h2>
-        <div className="image-prieview_copyright-author">
-          <b className="image-preview_text--left">
+      <div {...classes('information')}>
+        <h2 {...classes('title')}>{image.titles[0].title}</h2>
+        <div {...classes('copyright-author')}>
+          <b {...classes('text', 'left')}>
             {/* {polyglot.t('learningPath.image.authors')}*/}
           </b>
-          <span className="image-preview_text--right">
+          <span {...classes('text', 'right')}>
             {image.copyright.authors.map(author => author.name).join(', ')}
           </span>
         </div>
-        <div className="image-prieview_license">
-          <b className="image-preview_text--left">
+        <div {...classes('license')}>
+          <b {...classes('text', 'left')}>
             {/* {polyglot.t('learningPath.image.copyright')}*/}
           </b>
-          <span className="image-preview_text--right">
+          <span {...classes('text', 'right')}>
             {image.copyright.license.description}
           </span>
         </div>
-        <div className="image-preview_tags">
+        <div {...classes('tags')}>
           {/* <b>{polyglot.t('learningPath.image.tags')}</b>*/}
           {tags.map(tag =>
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>,

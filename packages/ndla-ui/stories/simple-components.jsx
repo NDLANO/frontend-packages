@@ -179,7 +179,7 @@ storiesOf('Enkle komponenter', module)
             {
               [
                 'Download', 'Copy', 'Audio', 'Document', 'Home', 'ArrowDown',
-                'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search',
+                'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search', 'Camera',
                 'User', 'OpenWindow', 'LicenseCc', 'LicenseBy', 'LicenseNc', 'LicenseNd',
                 'LicenseSa',
               ].map(key => (

@@ -54,7 +54,7 @@ export const ImageSearcher = () => {
     <ImageSearch
       searchPlaceholder="Søk i bilder"
       searchButtonTitle="Søk"
-      handleFetchImage={fetchImage}
+      fetchImage={fetchImage}
       searchImages={fetchImages}
       locale="nb"
       onImageSelect={imageSelect}

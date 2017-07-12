@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import ResourceList from './ResourceList';
+import { Additional } from '../icons';
 import { FilterList } from '../';
 
 import { ResourceShape } from '../shapes';
@@ -50,7 +51,7 @@ class ResourceSubsetList extends Component {
               label=""
               onClick={() => { this.setState({ secondary: !this.state.secondary }); }}
               filterContent={[
-              { title: 'Tilleggstoff', icon: 'Additional', active: false },
+              { title: 'Tilleggstoff', icon: Additional, active: false },
               ]}
             />
             <h1 {...classes('title')}>{group.title}</h1>

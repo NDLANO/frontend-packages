@@ -88,7 +88,7 @@ const ArticleLearningmaterial = () => (
         <FigureWithLicense classes="u-float-left">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://staging.api.ndla.no/image-api/v1/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            src="https://staging.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
           />
         </FigureWithLicense>
         <p>

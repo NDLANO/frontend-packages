@@ -12,8 +12,9 @@ import {
   Pager, Footer, LicenseIconList,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   OneColumn, LayoutItem,
-  Icon, RelatedArticles,
+  RelatedArticles,
 } from '../src';
+import { Time, User } from '../src/icons';
 import Glossary from './../src/glossary/Glossary';
 import FigureWithLicense from './article/FigureWithLicense';
 import articles, { topicList, subjectList, articleResources } from '../dummydata/index';
@@ -44,11 +45,11 @@ storiesOf('Sammensatte moduler', module)
             </p>
             <div className="c-article-byline">
               <span className="c-article-byline__authors">
-                <Icon.User /> Skrevet av GRO-ANITA MORTENSE.
+                <User /> Skrevet av GRO-ANITA MORTENSE.
               </span>
               {' '}
               <span className="c-article-byline__date">
-                <Icon.Time /> Sist oppdatert 03.03.2017
+                <Time /> Sist oppdatert 03.03.2017
               </span>
             </div>
           </LayoutItem>
@@ -68,12 +69,14 @@ storiesOf('Sammensatte moduler', module)
                 <FigureWithLicense classes="article_figure--float-right">
                   <img
                     alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-                    src="https://staging.api.ndla.no/image-api/v1/raw/jente mellom foreldre_0.jpg"
+                    src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
                   />
                 </FigureWithLicense>
                 <h2>Normer og normsendere</h2>
                 <p>
-                  Normer er regler som forteller hvordan man skal oppføre seg og handle i en gitt situasjon. Normer kan være formelle eller uformelle. Lover er formaliserte eller formelle normer. De uformelle normene er uskrevne regler for skikk og bruk, som hvordan man skal oppføre seg i ulike situasjoner. Det kan være forventninger om at du skal håndhilse når du kommer inn til et jobbintervju, eller at det er uhøflig å svare på telefonsamtaler mens intervjuet pågår.
+                  Normer er regler som forteller hvordan man skal oppføre seg og handle i en gitt situasjon. Normer kan være formelle eller uformelle.
+                  Lover er formaliserte eller formelle normer. De uformelle normene er uskrevne regler for skikk og bruk, som hvordan man skal oppføre seg i ulike situasjoner.
+                  Det kan være forventninger om at du skal håndhilse når du kommer inn til et jobbintervju, eller at det er uhøflig å svare på telefonsamtaler mens intervjuet pågår.
                 </p>
                 <p>
                   For å forsterke innlæringen av normer følges de opp av reaksjoner eller sanksjoner. <Glossary definition="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)." source="snl.no">Sanksjonene</Glossary> kan både være positive og negative. Ønsket adferd belønnes, men uønsket adferd straffes. Når en person har gjort normene til sine egne og følger dem, sier man at normene er internalisert.

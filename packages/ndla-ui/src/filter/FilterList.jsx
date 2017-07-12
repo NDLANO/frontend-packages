@@ -9,7 +9,6 @@
 import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Icon } from '../';
 
 const filterClasses = new BEMHelper({
   name: 'filter',
@@ -56,7 +55,10 @@ class FilterList extends Component {
             >
               <span {...filterClasses('item-checkbox')} />
               { filterItem.title ? filterItem.title : null }
-              { filterItem.icon ? createElement(Icon[filterItem.icon], { className: 'c-icon--20 u-margin-left-tiny' }) : null }
+              {/* ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' }) */}
+              { filterItem.icon
+                ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' })
+                : null}
             </label>
           </div>) : null}
       </div>

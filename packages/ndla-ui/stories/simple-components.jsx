@@ -181,21 +181,12 @@ storiesOf('Enkle komponenter', module)
                 'Download', 'Copy', 'Audio', 'Document', 'Home', 'Camera',
                 'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search',
                 'User', 'OpenWindow', 'LicenseCc', 'LicenseBy', 'LicenseNc', 'LicenseNd',
-                'LicenseSa',
+                'LicenseSa', 'Cross', 'Plus',
               ].map(key => (
                 <tr key={key}>
                   <td>{createElement(Icons[key])}</td>
                   <td>{key}</td>
                   <td><code>&lt;Icons.{key} /&gt;</code></td>
-                </tr>
-              ))
-            }
-            {
-              [0, 45].map(key => (
-                <tr key={key}>
-                  <td><Icons.Cross degrees={key} /></td>
-                  <td>Cross with rotation {key}</td>
-                  <td><code>&lt;Icons.Cross degrees=&quot;{key}&quot; /&gt;</code></td>
                 </tr>
               ))
             }

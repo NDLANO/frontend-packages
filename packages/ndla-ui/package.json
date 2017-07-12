@@ -59,7 +59,7 @@
     "inuitcss": "^6.0.0-beta.4",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
-    "ndla-article-scripts": "^0.0.4",
+    "ndla-article-scripts": "^0.0.5",
     "ndla-editor": "^0.1.5-0",
     "ndla-licenses": "^0.0.9-0",
     "ndla-tabs": "^0.3.3-0",

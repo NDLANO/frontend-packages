@@ -34,13 +34,18 @@ class FigureWithLicense extends Component {
 
 
   render() {
+    const messages = {
+      close: 'Lukk',
+      rulesForUse: 'Regler for bruk av bildet',
+      howToReference: 'Slik skal du referere til dette bildet',
+    };
     return (
       <Figure className={`c-figure ${this.props.classes}`}>
         <div className="c-figure__img">
           {this.props.children}
         </div>
         <FigureCaption caption={caption} reuseLabel="Bruk bildet" licenseAbbreviation="by-nc-nd" authors={authors} />
-        <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors}>
+        <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors} messages={messages}>
           <button className="c-button c-button--outline c-figure-license__button" type="button">Kopier referanse</button>
           <button className="c-button c-button--outline c-figure-license__button" type="button">Last ned bilde</button>
         </FigureDetails>

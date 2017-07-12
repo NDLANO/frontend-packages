@@ -12,9 +12,11 @@ import {
   Pager, Footer, LicenseIconList,
   TopicArticle, TopicIntroductionList, TopicBreadcrumb,
   OneColumn, LayoutItem,
+  Icon, RelatedArticles,
 } from '../src';
+import Glossary from './../src/glossary/Glossary';
 import FigureWithLicense from './article/FigureWithLicense';
-import articles, { topicList, subjectList } from '../dummydata/index';
+import articles, { topicList, subjectList, articleResources } from '../dummydata/index';
 import { MastheadLeftRight, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ArticleResourceList, LearningPathResourceList, ResourceSubsetList } from './molecules/resources';
@@ -29,6 +31,58 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
       <TopicBreadcrumb toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+    </Center>
+  ))
+  .add('Begrepsforklaring', () => (
+    <Center>
+      <OneColumn cssModifier="narrow">
+        <article className="c-article c-article--clean">
+          <LayoutItem layout="center">
+            <h1 className="c-article__title">Sosialisering</h1>
+            <p className="article_introduction">
+              Vi blir født inn i et samfunn. På den ene siden kommer vi til en familie bestående av nære relasjoner. På den andre siden blir de fleste av oss født på en institusjon, et sykehus.
+            </p>
+            <div className="c-article-byline">
+              <span className="c-article-byline__authors">
+                <Icon.User /> Skrevet av GRO-ANITA MORTENSE.
+              </span>
+              {' '}
+              <span className="c-article-byline__date">
+                <Icon.Time /> Sist oppdatert 03.03.2017
+              </span>
+            </div>
+          </LayoutItem>
+          <LayoutItem layout="center">
+            <section>
+              <div>
+                <p>
+                  Gjennom <Glossary definition="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre Med andre ord at de blir som de andre i samfunnet." source="snl.no">sosialisering</Glossary> lærer menneskene å fungere i et samfunn og får kjennskap til de regler og verdier som det forventes at man skal følge. Sosialisering er dermed den prosessen som gjør at vi tar til oss dette, fra vi blir født til vi dør.
+                </p>
+                <p>
+                  Barn møtes med forventninger til hvordan de skal oppføre seg.
+                   Disse forventningene gjentar seg, og slik lærer barnet hvilke
+                   regler eller normer som gjelder. Hovedmålet med
+                    sosialiseringen er at de enkelte menneskene skal kunne skille
+                     mellom godt og ondt, og rett og galt.
+                </p>
+                <FigureWithLicense classes="article_figure--float-right">
+                  <img
+                    alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+                    src="https://staging.api.ndla.no/image-api/v1/raw/jente mellom foreldre_0.jpg"
+                  />
+                </FigureWithLicense>
+                <h2>Normer og normsendere</h2>
+                <p>
+                  Normer er regler som forteller hvordan man skal oppføre seg og handle i en gitt situasjon. Normer kan være formelle eller uformelle. Lover er formaliserte eller formelle normer. De uformelle normene er uskrevne regler for skikk og bruk, som hvordan man skal oppføre seg i ulike situasjoner. Det kan være forventninger om at du skal håndhilse når du kommer inn til et jobbintervju, eller at det er uhøflig å svare på telefonsamtaler mens intervjuet pågår.
+                </p>
+                <p>
+                  For å forsterke innlæringen av normer følges de opp av reaksjoner eller sanksjoner. <Glossary definition="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)." source="snl.no">Sanksjonene</Glossary> kan både være positive og negative. Ønsket adferd belønnes, men uønsket adferd straffes. Når en person har gjort normene til sine egne og følger dem, sier man at normene er internalisert.
+                </p>
+              </div>
+            </section>
+          </LayoutItem>
+        </article>
+      </OneColumn>
     </Center>
   ))
   .add('Emne artikkel', () => (
@@ -140,7 +194,7 @@ storiesOf('Sammensatte moduler', module)
       <article className="article">
         <LayoutItem layout="center">
           <div className="license c-licensebox c-licensebox--expanded">
-            <Button stripped className="license-toggler" onClick={() => {}} >
+            <Button stripped className="c-article__license-toggler" onClick={() => {}} >
               Lukk boks
             </Button>
             <LicenseBox />
@@ -184,6 +238,18 @@ storiesOf('Sammensatte moduler', module)
       <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
       <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
+    </Center>
+  ))
+  .add('Relaterte artikler', () => (
+    <Center>
+      <LayoutItem layout="center">
+        <h2 className="u-heading">Relaterte artikler</h2>
+        <p>Kan brukes i slutten av artikler, eller midt i.</p>
+        <p>1 eller 2 artikler vises.</p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <RelatedArticles resources={articleResources} />
+      </LayoutItem>
     </Center>
   ))
   .add('Sammensatte noder', () => (
@@ -252,6 +318,27 @@ storiesOf('Sammensatte moduler', module)
         </Footer.Text>
         <Footer.Text>Nettstedet er utarbeidet av NDLA som åpen kildekode.</Footer.Text>
       </Footer>
+    </Center>
+  ))
+  .add('Tilleggsstoff', () => (
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Tilleggsstoff</h1>
+            <p>Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
+               tilleggsstoff-filteret aktiveres, vil ressursopplistingen populeres
+               med tilleggsstoff i tilegg. Tilleggsstoff markeres med T-ikon, og
+               desaturert bakgrunnsfarge. </p>
+            <p>Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet,
+             f. eks om du aktiverer tilleggsstoff for Lærestoff, vil kun denne listen
+             oppdateres med tilleggsstoff-artikler.</p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="extend">
+          <ResourceSubsetList />
+        </LayoutItem>
+      </article>
     </Center>
   ))
   ;

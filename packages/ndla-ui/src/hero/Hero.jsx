@@ -15,19 +15,18 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Hero = ({ children, url, alt, small, red }) => {
-  // const classModifier = small ? 'small' : 'alt';
-  const classModifier = red ? 'red' : 'alt';
-  // const classResult = classModifier === 'small' ? classModifier : classModifier2;
-  return (<div {...classes(!url || alt || small || red ? { modifiers: classModifier } : null)}>
+export const Hero = ({ children, red, green }) => {
+  let modifiers = red ? 'red' : null;
+  modifiers = green ? 'green' : modifiers;
+  // { red ? modifiers = 'red' : null; }
+
+  return (<div {...classes('', modifiers)}>
     { children || null }
   </div>);
 };
 
 Hero.propTypes = {
   children: PropTypes.node,
-  url: PropTypes.string,
-  alt: PropTypes.bool,
-  small: PropTypes.bool,
   red: PropTypes.bool,
+  green: PropTypes.bool,
 };

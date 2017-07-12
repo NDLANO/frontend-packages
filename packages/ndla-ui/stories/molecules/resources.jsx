@@ -16,26 +16,29 @@ const toLink = () => ({
 });
 
 const resourceGroup1 = {
+  id: 'urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73',
   title: 'Lærestoff',
   description: 'Relaterte emneartikler',
   viewAllLinkTitle: 'Mer lærestoff',
-  resources: articleResources.slice(0, 2),
+  resources: articleResources,
   icon: 'Document',
   type: 'Lærestoff',
 };
 const resourceGroup2 = {
+  id: 'urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511',
   title: 'Læringsstier',
   viewAllLinkTitle: 'Flere læringsstier',
   description: 'Tilknyttet dette emnet',
-  resources: learningPathResources.slice(0, 2),
+  resources: learningPathResources,
   icon: 'Path',
   type: 'Læringsstier',
 };
 const resourceGroup3 = {
+  id: 'urn-resource-type-622364e0-8cea-4083-9ce1-74e33e14e0b4',
   title: 'Oppgaver og aktiviteter',
   description: 'Relatert til emnet',
   viewAllLinkTitle: 'Flere oppgaver og aktiviteter',
-  resources: exerciseResources.slice(0, 2),
+  resources: exerciseResources,
   icon: 'Pencil',
   type: 'Oppgaver og aktiviteter',
 };

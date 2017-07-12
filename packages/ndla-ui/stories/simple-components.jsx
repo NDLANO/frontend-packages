@@ -20,14 +20,14 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="center">
             <h1 className="u-heading">Bilde under ingress</h1>
             <p>
-              Under ingressen bruker vi et bilde for å illustrere tematikken.
-              Dette bildet må være i landskapsformat, slik at det ikke blir så
+              Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk
+               helst bilder av mennesker, relevante og naturlige bilder.
+              Bildet må være i landskapsformat, slik at det ikke blir så
               høyt at det skyver brødteksten for langt ned på siden.
             </p>
             <p>
-              Anbefalt bildestørrelse: 1000px (bredde) x 500px (høyde), eller
-              tilsvarende proporsjonal størrelse, f. eks det dobbelte av disse
-               tallene.
+              Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
+               bildestørrelse: 1000px (bredde) x 500px (høyde).
             </p>
 
           </LayoutItem>
@@ -50,6 +50,7 @@ storiesOf('Enkle komponenter', module)
           <h1 className="u-heading">Boks i tekst</h1>
           <p>En boks i teksten kan brukes for å fremheve noe av særlig interesse,
            annet enn sitat (som det allerede fins sitatstil til).</p>
+          <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
         </LayoutItem>
       </section>
       <article className="c-article c-article--clean">
@@ -58,11 +59,11 @@ storiesOf('Enkle komponenter', module)
           <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
              å produsere filmen.
           </p>
-          <div className="c-article__byline">
-            <span className="c-article__authors"><Icons.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icons.Time /> Publisert [dato]</span>
+          <div className="c-article-byline">
+            <span className="c-article-byline__authors"><Icons.User /> Skrevet av [Opphavsperson].</span> <span className="c-article-byline__date"><Icons.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
-        <LayoutItem layout="center">
+        <LayoutItem layout="extend">
           <p>Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
             din og bestemmer seg for å bruke ressurser på nettopp dette
@@ -74,15 +75,49 @@ storiesOf('Enkle komponenter', module)
              pitcher, blir idéen og historien i den filmen du planlegger å lage,
               tydeligere for både deg selv og dem du eventuelt jobber sammen med
                i klassen.</p>
-          <LayoutItem layout="left">
-            <div className="c-bodybox">En tekstboks som flyter til venstre.</div>
+          <LayoutItem layout="full">
+            <div className="c-bodybox c-bodybox--extended">En tekstboks som fyller spaltebredden.</div>
           </LayoutItem>
           <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-             pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med
-               i klassen.</p>
-          <LayoutItem layout="right">
-            <div className="c-bodybox">En tekstboks som flyter til høyre.</div>
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+          <LayoutItem layout="center">
+            <div className="c-bodybox">
+              <h3>En boks i tekst fungerer <em>dårlig</em> med mye tekst.</h3>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+              <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+             tydeligere for både deg selv og dem du eventuelt jobber sammen med
+              i klassen.</p>
+            </div>
           </LayoutItem>
           <p>Pitching er også en god måte å bevisstgjøre seg selv på. Når du
             pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -97,7 +132,7 @@ storiesOf('Enkle komponenter', module)
       <section className="c-factbox">
         <LayoutItem layout="center">
           <h1 className="u-heading">Faktaboks og høyrespalte</h1>
-          <p>For fremtidig innhold på ndla.no skal ikke høyrespalte benyttes,
+          <p>For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes,
              i stedet benytter man faktabokser innenfor innholdsspalten.
               Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
           </p>
@@ -110,8 +145,8 @@ storiesOf('Enkle komponenter', module)
           <p className="article_introduction">Du har en kjempegod idé til en kortfilm. Men det koster mange penger
              å produsere filmen.
           </p>
-          <div className="c-article__byline">
-            <span className="c-article__authors"><Icons.User /> Skrevet av [Opphavsperson].</span> <span className="c-article__date"><Icons.Time /> Publisert [dato]</span>
+          <div className="c-article-byline">
+            <span className="c-article-byline__authors"><Icons.User /> Skrevet av [Opphavsperson].</span> <span className="c-article-byline__date"><Icons.Time /> Publisert [dato]</span>
           </div>
         </LayoutItem>
         <LayoutItem layout="center">
@@ -184,7 +219,7 @@ storiesOf('Enkle komponenter', module)
                 'LicenseSa',
               ].map(key => (
                 <tr key={key}>
-                  <td>{createElement(Icons[key])}</td>
+                  <td>{createElement(Icons[key], { className: 'c-icon--medium' })}</td>
                   <td>{key}</td>
                   <td><code>&lt;Icons.{key} /&gt;</code></td>
                 </tr>

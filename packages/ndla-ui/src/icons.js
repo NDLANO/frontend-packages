@@ -33,6 +33,7 @@ import LicenseByIcon from './internal-icons/LicenseBy';
 import LicenseNcIcon from './internal-icons/LicenseNc';
 import LicenseNdIcon from './internal-icons/LicenseNd';
 import LicenseSaIcon from './internal-icons/LicenseSa';
+import AdditionalIcon from './internal-icons/Additional';
 
 function Icon(props) {
   const { icon, className, ...rest } = props;
@@ -66,5 +67,6 @@ export const LicenseBy = props => (<Icon {...props} icon={LicenseByIcon} />);
 export const LicenseNc = props => (<Icon {...props} icon={LicenseNcIcon} />);
 export const LicenseNd = props => (<Icon {...props} icon={LicenseNdIcon} />);
 export const LicenseSa = props => (<Icon {...props} icon={LicenseSaIcon} />);
+export const Additional = props => (<Icon {...props} icon={AdditionalIcon} />);
 
 export default Icon;

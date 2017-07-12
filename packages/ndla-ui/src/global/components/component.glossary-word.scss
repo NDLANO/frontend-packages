@@ -1,3 +1,8 @@
+/**
+** GLOSSARY
+** A custom glossary links, show popup with explanation on click
+**/
+
 .c-glossary-word__item {
   display: inline;
 }
@@ -62,6 +67,15 @@
   color: $brand-grey;
 }
 .c-glossary-word__close {
-  @extend .c-figure__close;
   display: inline-block;
+  position: absolute;
+  top: $spacing;
+  right: $spacing;
+  background: transparent;
+  border: none;
+  color: $brand-color;
+  @include font-size(20px);
+  font-weight: $font-weight-normal;
+  z-index: 9;
+  cursor: pointer;
 }

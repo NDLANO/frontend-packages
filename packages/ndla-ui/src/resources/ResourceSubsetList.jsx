@@ -11,15 +11,15 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import ResourceList from './ResourceList';
-import SafeLink from '../common/SafeLink';
+import { FilterList } from '../';
 
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
-  name: 'topic-resource-subset',
+  name: 'resources',
   prefix: 'c-',
 });
-const resClasses = new BEMHelper({
+const classesG = new BEMHelper({
   name: 'resource-group',
   prefix: 'c-',
 });
@@ -27,7 +27,7 @@ const resClasses = new BEMHelper({
 class ResourceSubsetList extends Component {
   constructor(props) {
     super(props);
-    this.state = { focusTitle: '' };
+    this.state = { secondary: false };
   }
 
   componentDidMount() {
@@ -39,21 +39,24 @@ class ResourceSubsetList extends Component {
   }
 
   render() {
-    const { resourceGroups, toResourceTab, resourceToLinkProps } = this.props;
+    const { resourceGroups, resourceToLinkProps } = this.props;
 
     return (
-      <div>
-        <div {...classes('')} >
-          {resourceGroups.map((group, i) => (
-            <div id={group.title} key={uuid()} {...resClasses('', [group.title.replace(/:/g, '-') : ''])}>
-              <h1 {...classes('heading')}>{group.title}</h1>
-              { group.tags ? group.tags.map(tags => (
-                <SafeLink key={uuid()} {...classes('tag')} to={toResourceTab(i)}>{tags}</SafeLink>
-              )) : null }
-              <ResourceList resourceToLinkProps={resourceToLinkProps} type={group.title} resources={group.resources} />
-            </div>
-      ))}
-        </div>
+      <div {...classes('')} >
+        {resourceGroups.map(group => (
+          <div key={uuid()} {...classesG('', [group.id.replace(/:/g, '-') : ''])}>
+            <FilterList
+              modifiers="float-right"
+              label=""
+              onClick={() => { this.setState({ secondary: !this.state.secondary }); }}
+              filterContent={[
+              { title: 'Tilleggstoff', icon: 'Additional', active: false },
+              ]}
+            />
+            <h1 {...classes('title')}>{group.title}</h1>
+            <ResourceList secondary={this.state.secondary} resourceToLinkProps={resourceToLinkProps} type={group.title} resources={group.resources} />
+          </div>
+    ))}
       </div>
     );
   }

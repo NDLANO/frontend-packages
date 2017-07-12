@@ -191,6 +191,15 @@ storiesOf('Enkle komponenter', module)
               ))
             }
             {
+              [0, 45].map(key => (
+                <tr key={key}>
+                  <td><Icons.Cross degrees={key} /></td>
+                  <td>Cross with rotation {key}</td>
+                  <td><code>&lt;Icons.Cross degrees=&quot;{key}&quot; /&gt;</code></td>
+                </tr>
+              ))
+            }
+            {
               [
                 'up', 'down', 'left', 'right',
               ].map(key => (

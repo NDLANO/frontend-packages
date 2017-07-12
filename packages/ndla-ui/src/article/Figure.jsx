@@ -26,15 +26,15 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({ children, authors, licenseAbbreviation }) => (
+export const FigureDetails = ({ children, authors, licenseAbbreviation, messages }) => (
   <div {...classes('license')} id="figmeta">
-    <button {...classes('close')}>Lukk</button>
+    <button {...classes('close')}>{messages.close}</button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
-        <h3 {...classLicenses('title')}>Regler for bruk av bildet</h3>
+        <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)} />
         <div {...classLicenses('cta-wrapper')}>
-          <h3 {...classLicenses('title')}>Slik skal du referere til dette bildet</h3>
+          <h3 {...classLicenses('title')}>{messages.howToReference}</h3>
           <ul {...classes('list')}>
             { authors.map(author => <li key={uuid()} className="c-figure-list__item">{ `${author.type}: ${author.name}`}</li>) }
           </ul>
@@ -52,6 +52,11 @@ FigureDetails.propTypes = {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })),
+  messages: PropTypes.shape({
+    close: PropTypes.string.isRequired,
+    rulesForUse: PropTypes.string.isRequired,
+    howToReference: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviation }) => (

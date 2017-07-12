@@ -67,3 +67,11 @@ Copies text to clipboard by (1) creating a hidden textarea with the provided tex
 import { copyTextToClipboard } from 'ndla-util';
 copyTextToClipboard('Hello world!');
 ```
+
+### `tagsI18N(object, locale, withFallback, preferdLocales)`
+Finds translation for a specific language in an array named tags from an object. Prefered locales is a fallback option if the given locale translation does not exist.
+If no preferdLocales is defined, it is default sat to `['nb', 'nn', 'en']`.
+```js
+import { tagsI18N } from 'ndla-util';
+tagsI18N(object, 'nb', false, ['nb', 'nn', 'en']);
+```

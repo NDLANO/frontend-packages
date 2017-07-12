@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, 'src/main.scss'),
     editor: path.resolve(__dirname, 'src/editor.scss'),
+    imageSearch: path.resolve(__dirname, 'src/imageSearch.scss'),
   },
   target: 'web',
 

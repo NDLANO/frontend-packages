@@ -9,10 +9,11 @@
 import uuid from './uuid';
 import getComponentName from './getComponentName';
 import copyTextToClipboard from './copyTextToClipboard';
-
+import { tagsI18N } from './i18nFieldFinder';
 
 export {
   uuid,
   getComponentName,
   copyTextToClipboard,
+  tagsI18N,
 };

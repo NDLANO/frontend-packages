@@ -181,7 +181,7 @@ storiesOf('Enkle komponenter', module)
                 'Download', 'Copy', 'Audio', 'Document', 'Home', 'Camera',
                 'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search',
                 'User', 'OpenWindow', 'LicenseCc', 'LicenseBy', 'LicenseNc', 'LicenseNd',
-                'LicenseSa', 'CrossCircle', 'PlusCircle',
+                'LicenseSa', 'Cross', 'Plus',
               ].map(key => (
                 <tr key={key}>
                   <td>{createElement(Icons[key])}</td>

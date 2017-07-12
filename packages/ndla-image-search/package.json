@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "defined": "1.0.0",
-    "react-bem-helper": "^1.2.0",
-    "query-string": "^4.3.4"
+    "react-bem-helper": "^1.2.0"
   }
 }

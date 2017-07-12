@@ -9,34 +9,16 @@
 
  import defined from 'defined';
 
- const NB = {
-   name: 'Bokmål',
-   abbreviation: 'nb',
- };
- const NN = {
-   name: 'Nynorsk',
-   abbreviation: 'nn',
- };
- const EN = {
-   name: 'English',
-   abbreviation: 'en',
- };
 
- const locales = {
-   nb: NB,
-   nn: NN,
-   en: EN,
- };
-
- const findFallbackTranslation = (translations, preferdLocaleObjects) => {
-   const locale = preferdLocaleObjects.find(l =>
-     translations.find(t => t.language === l.abbreviation),
+ const findFallbackTranslation = (translations, preferdLocales) => {
+   const locale = preferdLocales.find(l =>
+     translations.find(t => t.language === l),
    );
    if (!locale && translations.length > 0) {
      return translations[0];
    }
 
-   return translations.find(t => t.language === locale.abbreviation);
+   return translations.find(t => t.language === locale);
  };
 
  const createFieldByLanguageFinder = (fieldName, propName) => (
@@ -45,11 +27,10 @@
    withFallback = false,
    preferdLocales = ['nb', 'nn', 'en'],
  ) => {
-   const preferdLocaleObjects = preferdLocales.map(locale => locales[locale] || NB);
    const translations = defined(defined(obj, {})[fieldName], []);
    const translation = defined(
      translations.find(d => d.language === lang),
-     withFallback ? findFallbackTranslation(translations, preferdLocaleObjects) : {},
+     withFallback ? findFallbackTranslation(translations, preferdLocales) : {},
      {},
    );
    return translation[defined(propName, fieldName)];

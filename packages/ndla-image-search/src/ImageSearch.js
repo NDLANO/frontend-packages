@@ -70,7 +70,7 @@ class ImageSearch extends React.Component {
 
   searchImages(queryObject) {
     this.setState({ searching: true });
-    this.props.fetchImages(queryObject.query, queryObject.page, this.props.locale).then((result) => {
+    this.props.searchImages(queryObject.query, queryObject.page, this.props.locale).then((result) => {
       this.setState({
         queryObject: {
           query: queryObject.query,
@@ -143,7 +143,7 @@ class ImageSearch extends React.Component {
 
 ImageSearch.propTypes = {
   onImageSelect: PropTypes.func.isRequired,
-  fetchImages: PropTypes.func.isRequired,
+  searchImages: PropTypes.func.isRequired,
   fetchImage: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,

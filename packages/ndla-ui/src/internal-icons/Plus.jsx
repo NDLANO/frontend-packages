@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Plus = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" className={className}>
     <path stroke="#000" strokeWidth="1.4" d="M8 1v14m7-7h-14" fill="none" />
   </svg>
 

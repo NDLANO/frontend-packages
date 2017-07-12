@@ -213,10 +213,10 @@ storiesOf('Enkle komponenter', module)
           <tbody>
             {
               [
-                'Download', 'Copy', 'Audio', 'Document', 'Home',
+                'Download', 'Copy', 'Audio', 'Document', 'Home', 'Camera',
                 'Grid', 'Link', 'Embed', 'Book', 'Path', 'Pencil', 'Search',
                 'User', 'OpenWindow', 'LicenseCc', 'LicenseBy', 'LicenseNc', 'LicenseNd',
-                'LicenseSa',
+                'LicenseSa', 'Cross', 'Plus',
               ].map(key => (
                 <tr key={key}>
                   <td>{createElement(Icons[key], { className: 'c-icon--medium' })}</td>

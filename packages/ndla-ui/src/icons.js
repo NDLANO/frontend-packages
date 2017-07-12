@@ -34,6 +34,9 @@ import LicenseNcIcon from './internal-icons/LicenseNc';
 import LicenseNdIcon from './internal-icons/LicenseNd';
 import LicenseSaIcon from './internal-icons/LicenseSa';
 import AdditionalIcon from './internal-icons/Additional';
+import CameraIcon from './internal-icons/Camera';
+import CrossIcon from './internal-icons/Cross';
+import PlusIcon from './internal-icons/Plus';
 
 function Icon(props) {
   const { icon, className, ...rest } = props;
@@ -68,5 +71,8 @@ export const LicenseNc = props => (<Icon {...props} icon={LicenseNcIcon} />);
 export const LicenseNd = props => (<Icon {...props} icon={LicenseNdIcon} />);
 export const LicenseSa = props => (<Icon {...props} icon={LicenseSaIcon} />);
 export const Additional = props => (<Icon {...props} icon={AdditionalIcon} />);
+export const Camera = props => (<Icon {...props} icon={CameraIcon} />);
+export const Cross = props => (<Icon {...props} icon={CrossIcon} />);
+export const Plus = props => (<Icon {...props} icon={PlusIcon} />);
 
 export default Icon;

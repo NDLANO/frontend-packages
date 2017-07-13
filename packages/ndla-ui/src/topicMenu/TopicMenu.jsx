@@ -1,5 +1,3 @@
-/* eslint-disable  */
-/* @todo: fix onClick handling on <li> */
 /**
  * Copyright (c) 2016-present, NDLA.
  *
@@ -16,7 +14,7 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
-import { FilterList } from '../';
+import FilterList from '../filter/FilterList';
 import { Search, Home } from '../icons';
 
 const classes = new BEMHelper({
@@ -24,6 +22,29 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const SearchAndFilter = ({ messages }) => (
+  <div {...classes('masthead')}>
+    <div {...classes('search')}>
+      <div {...classes('search-icon')}>
+        <Search />
+      </div>
+      { messages.search }
+    </div>
+    <FilterList
+      filterContent={[
+            { title: 'VG1', active: true },
+            { title: 'VG2', active: true },
+      ]}
+    />
+    <div {...classes('right-filler')} />
+  </div>
+);
+
+SearchAndFilter.propTypes = {
+  messages: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default class TopicMenu extends Component {
   constructor(props) {
@@ -33,51 +54,31 @@ export default class TopicMenu extends Component {
       expandedTopicId: undefined,
     };
 
-    this.closeCallback = null;
     this.handleMouseClick = this.handleMouseClick.bind(this);
   }
 
-  componentWillUnmount() {
-    if (this.closeCallback) {
-      clearTimeout(this.closeCallback);
-    }
-  }
-
   handleMouseClick(topicId) {
-    if (this.closeCallback) {
-      clearTimeout(this.closeCallback);
-      this.closeCallback = null;
-    }
     this.setState({ expandedTopicId: topicId });
   }
 
   render() {
-    const { topics, toTopic, subject, toSubject, close: closeMenu } = this.props;
+    const { topics, toTopic, subjectTitle, toSubject, close: closeMenu, messages, withSearchAndFilter } = this.props;
     const { expandedTopicId } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
       <div {...classes('dropdown', null, 'o-wrapper u-1/1')}>
-        <div {...classes('masthead')}>
-          <div {...classes('search')}>
-            <div {...classes('search-icon')}>
-              <Search />
-            </div>
-            Søk
-          </div>
-          <FilterList
-            filterContent={[
-            { title: 'VG1', active: true },
-            { title: 'VG2', active: true },
-            ]}
-          />
-          <div {...classes('right-filler')} />
-        </div>
+        {withSearchAndFilter
+          ? <SearchAndFilter messages={messages} />
+          : <div {...classes('masthead')} />
+        }
         <ul {...classes('list', null, classes('left').className)}>
           <li {...classes('back')}>
-            <SafeLink {...classes('back-link')} to="/"><Home {...classes('home-icon', '', 'c-icon--20')} />Fagoversikt</SafeLink>
+            <SafeLink {...classes('back-link')} to="/"><Home {...classes('home-icon', '', 'c-icon--20')} />
+              {messages.subjectOverview}
+            </SafeLink>
           </li>
           <li {...classes('subject')} >
-            <SafeLink to={toSubject}>{ subject }</SafeLink>
+            <SafeLink to={toSubject}>{ subjectTitle }</SafeLink>
           </li>
           { topics.map(topic =>
             (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
@@ -88,6 +89,7 @@ export default class TopicMenu extends Component {
                   className={classes('right').className}
                   closeMenu={closeMenu}
                   topic={expandedTopic}
+                  goToTitle={messages.goTo}
                   toTopic={toTopic}
                 /> : null }
             </li>),
@@ -99,6 +101,7 @@ export default class TopicMenu extends Component {
             className={classes('right').className}
             closeMenu={closeMenu}
             topic={expandedTopic}
+            goToTitle={messages.goTo}
             toTopic={toTopic}
           /> : null}
       </div>
@@ -109,13 +112,13 @@ export default class TopicMenu extends Component {
 TopicMenu.propTypes = {
   topics: PropTypes.arrayOf(TopicShape).isRequired,
   toTopic: PropTypes.func.isRequired,
-  toSubject: PropTypes.string,
-  close: PropTypes.func,
-  delay: PropTypes.number,
-  subject: PropTypes.string,
-  subjectId: PropTypes.string,
-};
-
-TopicMenu.defaultProps = {
-  delay: 500,
+  toSubject: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  withSearchAndFilter: PropTypes.bool,
+  messages: PropTypes.shape({
+    goTo: PropTypes.string.isRequired,
+    subjectOverview: PropTypes.string.isRequired,
+    search: PropTypes.string.isRequired,
+  }).isRequired,
+  subjectTitle: PropTypes.string.isRequired,
 };

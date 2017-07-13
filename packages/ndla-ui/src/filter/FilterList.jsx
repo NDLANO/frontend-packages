@@ -8,6 +8,7 @@
 
 import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
+import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
 const filterClasses = new BEMHelper({
@@ -39,7 +40,7 @@ class FilterList extends Component {
       <div {...filterClasses('list', modifiers)}>
         <span {...filterClasses('label')}>{ label }</span>
         { filterContent ? filterContent.map(filterItem =>
-          <div {...filterClasses('item')}>
+          <div {...filterClasses('item')} key={uuid()}>
             <input
               {...filterClasses('input')}
               type="checkbox"
@@ -78,7 +79,6 @@ FilterList.propTypes = {
   onClick: PropTypes.func,
   filterContent: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    icon: PropTypes.bool.isRequired,
     active: PropTypes.bool.isRequired,
   })),
 };

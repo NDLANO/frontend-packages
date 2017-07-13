@@ -24,9 +24,16 @@ SubtopicLink.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const SubtopicLinkList = ({ className, classes, closeMenu, topic, toTopic }) => (
+const SubtopicLinkList = ({ goToTitle, className, classes, closeMenu, topic, toTopic }) => (
   <div className={className}>
-    <SafeLink {...classes('link', ['underline', 'big'])} onClick={closeMenu} to={toTopic(topic.id)}><span {...classes('link-label')}>Gå til: </span><span {...classes('link-target')}>{ topic.name } {'›'}</span></SafeLink>
+    <SafeLink
+      {...classes('link', ['underline', 'big'])}
+      onClick={closeMenu}
+      to={toTopic(topic.id)}
+    >
+      <span {...classes('link-label')}>{goToTitle}: </span>
+      <span {...classes('link-target')}>{ topic.name } {'›'}</span>
+    </SafeLink>
     <ul {...classes('list')}>
       { topic.subtopics.map(subtopic =>
         <SubtopicLink
@@ -42,6 +49,7 @@ const SubtopicLinkList = ({ className, classes, closeMenu, topic, toTopic }) => 
 );
 
 SubtopicLinkList.propTypes = {
+  goToTitle: PropTypes.string.isRequired,
   classes: PropTypes.func.isRequired,
   className: PropTypes.string,
   closeMenu: PropTypes.func.isRequired,

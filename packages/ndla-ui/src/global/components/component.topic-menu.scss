@@ -1,9 +1,16 @@
-.c-topic-menu-container {
-  @include mq(desktop) {
-    display: inline-block;
-  }
-}
+/**
+** TOPIC MENU (MAIN MENU)
+** 1. Main menu button
+** 2. Container div (w/active toggle class)
+** 3. Active menu layout
+** 4. Active menu content
+** 5. Masthead when menu is active
+**/
 
+
+
+
+/* 1. */
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -11,7 +18,6 @@
   padding: $spacing--small;
   padding-right: $spacing;
   padding-left: $spacing*2;
-  text-transform: uppercase;
   font-weight: $font-weight-normal;
   color: $brand-color;
   border: 3px solid $brand-color;
@@ -43,6 +49,13 @@
   }
 }
 
+
+/* 2. */
+.c-topic-menu-container {
+  @include mq(desktop) {
+    display: inline-block;
+  }
+}
 .c-topic-menu-container .active {
   background: transparent;
   border: 3px solid transparent;
@@ -64,6 +77,8 @@
   }
 }
 
+
+/* 3. */
 .c-topic-menu__dropdown {
   position: fixed;
   width: 100%;
@@ -85,7 +100,6 @@
     display: flex;
   }
 }
-
 .c-topic-menu__list {
   padding: 0;
   list-style: none;
@@ -93,7 +107,6 @@
   overflow-y: auto;
   @include fadeInLeftItems(li, 30);
 }
-
 .c-topic-menu__left {
   flex: 1;
   z-index: 30;
@@ -127,6 +140,8 @@
   }
 }
 
+
+/* 4. */
 .c-topic-menu__subject {
   @include inuit-font-size(20px);
   font-weight: 600;
@@ -181,6 +196,7 @@
 }
 
 .c-topic-menu__back {
+  margin-left: $spacing--small;
   @include mq(tablet) {
     margin-left: $spacing--large;
     padding: $spacing--small 0;
@@ -200,6 +216,7 @@
 
 
 .c-topic-menu__topic-item {
+  cursor: pointer;
   padding: $spacing--small;
   margin-bottom: 0;
   @include mq(tablet) {
@@ -210,11 +227,13 @@
   animation-name: fadeInLeft;
   animation-duration: .5s;
 
-  &:hover {
+  &:hover, &:focus {
+    outline: none;
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
     text-decoration: underline;
   }
+
   &:last-child {
     border: none;
   }
@@ -251,15 +270,26 @@
 
 .c-topic-menu__link {
   color: $brand-color;
-  margin-bottom: $spacing--small;
+  &:hover {
+    text-decoration: underline;
+  }
 }
+
 .c-topic-menu__link--big {
   border-bottom: 1px solid rgba($brand-color--secondary, .5);
   padding-bottom: $spacing;
   display: block;
   text-decoration: none;
+  margin-bottom: $spacing--small;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
+
+
+
+/* 5. */
 .c-topic-menu__masthead {
   width: 100%;
   background: white;
@@ -288,7 +318,6 @@
   text-align: center;
   color: $brand-color;
   padding: 0 $spacing--large;
-  text-transform: uppercase;
   padding-top: 2px;
   cursor: pointer;
   flex-grow: 0;

@@ -1,0 +1,65 @@
+/**
+** ARTICLE BYLINE
+**
+** EXAMPLE:
+** <div class="c-article-byline">
+**  <span class="c-article-byline__authors"><svg /> Skrevet av [Opphavsperson].</span>
+**  <span class="c-article-byline__date"><svg /> Publisert [dato]</span>
+** </div>
+**/
+
+
+.c-article-byline {
+  margin-top: $spacing;
+  margin-bottom: $spacing--large;
+  padding-top: $spacing--small/2;
+  padding-bottom: $spacing--small/2;
+  border-top: 2px solid $brand-grey--lighter;
+  @include inuit-font-size(14px, 20px);
+  font-family: $font;
+  color: $brand-grey;
+  @include mq(tablet) {
+    display: flex;
+  }
+}
+.c-article-byline__icon {
+  display: inline-block;
+  padding-right: $spacing--small/2;
+}
+.c-article-byline__flex {
+  margin-bottom: $spacing--small;
+  display: block;
+  @include mq(tablet) {
+    margin-bottom: 0;
+    display: flex;
+    flex-grow: 1;
+  }
+}
+.c-article-byline__additional {
+  margin-bottom: $spacing--small;
+  @include mq(tablet) {
+    display: flex;
+    padding-left: $spacing;
+    margin-bottom: 0;
+  }
+}
+
+.c-article-byline__authors {
+  padding-right: $spacing;
+  margin-bottom: $spacing--small;
+  @include mq(tablet) {
+    margin-bottom: 0;
+  }
+  svg {
+    margin-top: -3px;
+  }
+}
+.c-article-byline__date {
+  flex-grow: 1;
+  svg {
+    margin-top: -3px;
+  }
+}
+h1 + .c-article__byline {
+  margin-top: -$spacing / 2;
+}

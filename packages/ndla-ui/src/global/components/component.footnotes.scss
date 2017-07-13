@@ -1,3 +1,14 @@
+/**
+** FOOTNOTES
+**
+** EXAMPLE:
+** <ol class="c-footnotes">
+**  <li class="c-footnotes__item">
+**    <cite class="c-footnotes__cite">Tekst her</cite>
+**  </li>
+** </ol>
+**/
+
 .c-footnotes {
   display: block;
   margin-top: $spacing--large;
@@ -6,7 +17,7 @@
   color: gray;
   @include inuit-font-size(15px);
 }
-.c-footnotes__item, .c-footnote__item { // Please fix bad markup - use "footnotes" in plural!
+.c-footnotes__item, .c-footnote__item {
   margin-bottom: $spacing--small;
   &:before {
     display: none;

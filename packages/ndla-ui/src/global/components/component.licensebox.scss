@@ -1,8 +1,15 @@
+/**
+** LICENSE BOX
+** Box listing all licensed items in article
+**/
+
+
+
 .c-licensebox {
   position: relative;
 }
 
-.license-toggler {
+.c-article__license-toggler {
   @include inuit-font-size(14px, 20px);
   font-family: $font;
   color: $brand-color;
@@ -20,6 +27,10 @@
     margin-left: 0;
   }
 }
+.c-licensebox__introduction {
+  @include inuit-font-size(20px, 32px);
+  max-width: 650px;
+}
 
 .c-licensebox--expanded {
   background: $brand-color--lighter;
@@ -34,6 +45,10 @@
     @include grids-expand(4,6,2);
     position: absolute !important;
   }
+  position: absolute;
+}
+.c-licensebox--clear {
+  position: relative !important;
 }
 
 .license__list-item {

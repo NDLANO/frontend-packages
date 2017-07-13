@@ -14,17 +14,17 @@ import { User, Time } from '../../src/icons';
 import LicenseExample from './LicenseExample';
 
 const classes = new BEMHelper({
-  name: 'article',
+  name: 'article-byline',
   prefix: 'c-',
 });
 
-const AuthorsList = ({ authors }) => <span {...classes('authors')}><User /> {authors.map(author => author.name).join(', ')}</span>;
+const AuthorsList = ({ authors }) => <span {...classes('authors')}><span {...classes('icon')}><User /></span> {authors.map(author => author.name).join(', ')}</span>;
 
 AuthorsList.propTypes = {
   authors: PropTypes.array,
 };
 
-const LastUpdated = ({ date }) => <span {...classes('date')}><Time /> Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
+const LastUpdated = ({ date }) => <span {...classes('date')}><span {...classes('icon')}><Time /></span> Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
 
 LastUpdated.propTypes = {
   date: PropTypes.string,
@@ -37,10 +37,12 @@ const ArticleByline = ({ article }) => {
 
   return (
     <div>
-      <section {...classes('byline')}>
-        {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
-        <LastUpdated date={article.updated} />
-        <LicenseExample />
+      <section {...classes()}>
+        <span {...classes('flex')}>
+          {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
+          <LastUpdated date={article.updated} />
+          <LicenseExample />
+        </span>
       </section>
     </div>
   );

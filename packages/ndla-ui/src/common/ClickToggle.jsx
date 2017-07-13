@@ -39,7 +39,7 @@ export default class ClickToggle extends React.Component {
     const children = React.cloneElement(this.props.children, { close: this.close });
     return (
       <Component {...rest}>
-        { isOpen ? <Button className="o-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
+        { isOpen ? <Button className="u-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
         { isOpen ?
           <Button className={`active ${buttonClassName}`} onClick={this.handleClick} >{ openTitle || title }</Button> :
           <Button className={buttonClassName} onClick={this.handleClick} >{ title }</Button>

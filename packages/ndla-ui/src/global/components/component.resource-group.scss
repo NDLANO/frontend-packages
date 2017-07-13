@@ -1,17 +1,30 @@
+/**
+** RESOURCE GROUPS
+** List resource groups with different colors (and icons)
+**/
+
 .c-resource-group {
   li {
     background-color: rgba($brand-grey--light, 0.4);
   }
 }
-.c-resource-group__title {
-  @include inuit-font-size(18px);
-  font-weight: $font-weight-bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 5px;
-  margin-top: $spacing--large;
-  padding-bottom: 5px;
-  border-bottom: 2px solid $brand-grey--light;
+// Lærestoff ID
+.c-resource-group--urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73 {
+  li {
+    background-color: rgba($mark-color, 0.1);
+  }
+  .c-topic-resource__item--secondary {
+    background-color: desaturate(rgba($mark-color, 0.1), 40%);
+  }
+}
+// Oppgaver og aktiviteter ID
+.c-resource-group--urn-resource-type-622364e0-8cea-4083-9ce1-74e33e14e0b4, .c-resource-group--urn-resource-type-f5148c29-d056-4d94-a799-be35229d8d2b {
+  li {
+    background-color: rgba($green, 0.1);
+  }
+  .c-topic-resource__item--secondary {
+    background-color: desaturate(rgba($green, 0.1), 40%);
+  }
 }
 // Læringsstier ID
 .c-resource-group--urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511, .c-resource-group--urn-resource-type-8ef5bdb9-9a01-4d49-8a8b-e36f5b19a414 {
@@ -24,17 +37,5 @@
     svg {
       width: 80px;
     }
-  }
-}
-// Oppgaver og aktiviteter ID
-.c-resource-group--urn-resource-type-622364e0-8cea-4083-9ce1-74e33e14e0b4, .c-resource-group--urn-resource-type-f5148c29-d056-4d94-a799-be35229d8d2b {
-  li {
-    background-color: rgba($green, 0.1);
-  }
-}
-// Lærestoff ID
-.c-resource-group--urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73 {
-  li {
-    background-color: rgba($mark-color, 0.1);
   }
 }

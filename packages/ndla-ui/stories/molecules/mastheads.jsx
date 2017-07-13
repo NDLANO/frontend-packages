@@ -57,15 +57,28 @@ export class MastheadWithTopicMenu extends React.Component {
   }
 
   render() {
+    const messages = {
+      goTo: 'Gå til',
+      subjectOverview: 'Fagoversikt',
+      search: 'Søk',
+    };
+
     return (
       <Masthead>
         <MastheadItem left>
           <SiteNav>
             <ClickToggle title="Meny" openTitle="Lukk" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-              <TopicMenu subject="Mediefag" toTopic={() => '#'} topics={topicMenu} />
+              <TopicMenu
+                subjectTitle="Mediefag"
+                toSubject={() => '#'}
+                toTopic={() => '#'}
+                withSearchAndFilter
+                topics={topicMenu}
+                messages={messages}
+              />
             </ClickToggle>
           </SiteNav>
-          <TopicBreadcrumb inMasthead toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, -1)} toTopic={() => '#'} />
+          <TopicBreadcrumb inMasthead toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, 2)} toTopic={() => '#'} />
         </MastheadItem>
         <MastheadItem right>
           <Logo to="#" altText="Nasjonal digital læringsarena" />

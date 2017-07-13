@@ -1,3 +1,10 @@
+/**
+** Aside
+** Used to display "facts box" or secondary column for older articles (using --float modifier).
+**/
+
+
+
 .c-aside, aside {
   position: relative;
   margin: $spacing--large 0;
@@ -105,7 +112,6 @@
 .c-aside h2,.c-aside h3,.c-aside h4,.c-aside h5 {
   display: block;
   @include inuit-font-size(16px);
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: $spacing;
   margin-bottom: $spacing--small;

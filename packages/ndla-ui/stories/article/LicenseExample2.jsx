@@ -181,7 +181,7 @@ const ImageContent = () => (
 
 const LicenseExample = () => (
   <div className="c-licensebox license u-expanded">
-    <Button stripped className="license-toggler site-nav_link" onClick={() => {}} >
+    <Button stripped className="c-article__license-toggler site-nav_link" onClick={() => {}} >
       Lukk boks
     </Button>
     <div>
@@ -199,6 +199,8 @@ const LicenseExample = () => (
           { key: 'guide', title: 'Veiledning', content: <VideoContent /> },
         ]}
       />
+      <p>Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du
+      skal gjenbruke noe av dette innholdet utenfor ndla.no.</p>
     </div>
   </div>
 );

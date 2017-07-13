@@ -216,6 +216,7 @@
 
 
 .c-topic-menu__topic-item {
+  cursor: pointer;
   padding: $spacing--small;
   margin-bottom: 0;
   @include mq(tablet) {
@@ -226,11 +227,13 @@
   animation-name: fadeInLeft;
   animation-duration: .5s;
 
-  &:hover {
+  &:hover, &:focus {
+    outline: none;
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
     text-decoration: underline;
   }
+
   &:last-child {
     border: none;
   }
@@ -267,13 +270,20 @@
 
 .c-topic-menu__link {
   color: $brand-color;
-  margin-bottom: $spacing--small;
+  &:hover {
+    text-decoration: underline;
+  }
 }
+
 .c-topic-menu__link--big {
   border-bottom: 1px solid rgba($brand-color--secondary, .5);
   padding-bottom: $spacing;
   display: block;
   text-decoration: none;
+  margin-bottom: $spacing--small;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 

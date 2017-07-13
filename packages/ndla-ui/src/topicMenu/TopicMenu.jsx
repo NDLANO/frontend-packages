@@ -6,6 +6,7 @@
  *
  */
 
+ // Can be removed when updating to jsx-a11y 5.x
 /* eslint jsx-a11y/no-static-element-interactions: 1 */
 
 import React, { Component } from 'react';
@@ -46,7 +47,16 @@ SearchAndFilter.propTypes = {
   }).isRequired,
 };
 
+const handleBlur = (target) => {
+  if (target.nodeName === 'SPAN') {
+    target.parentNode.blur();
+  } else {
+    target.blur();
+  }
+};
+
 export default class TopicMenu extends Component {
+
   constructor(props) {
     super(props);
 
@@ -54,11 +64,21 @@ export default class TopicMenu extends Component {
       expandedTopicId: undefined,
     };
 
-    this.handleMouseClick = this.handleMouseClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleBtnKeyPress = this.handleBtnKeyPress.bind(this);
   }
 
-  handleMouseClick(topicId) {
+  handleClick(event, topicId) {
     this.setState({ expandedTopicId: topicId });
+    handleBlur(event.target);
+  }
+
+  handleBtnKeyPress(event, topicId) {
+    if (event.charCode === 32 || event.charCode === 13) { // space or enter
+      event.preventDefault();
+      this.setState({ expandedTopicId: topicId });
+      handleBlur(event.target);
+    }
   }
 
   render() {
@@ -78,11 +98,18 @@ export default class TopicMenu extends Component {
             </SafeLink>
           </li>
           <li {...classes('subject')} >
-            <SafeLink to={toSubject}>{ subjectTitle }</SafeLink>
+            <SafeLink to={toSubject()}>{ subjectTitle }</SafeLink>
           </li>
-          { topics.map(topic =>
-            (<li {...classes('topic-item', topic.id === expandedTopicId && 'active')} onClick={() => this.handleMouseClick(topic.id)} key={topic.id}>
-              <SafeLink onClick={() => this.handleMouseClick(topic.id)} {...classes('link')} to={() => null}>{ topic.name }</SafeLink>
+          { topics.map(topic => (
+            <li
+              {...classes('topic-item', topic.id === expandedTopicId && 'active')}
+              onClick={event => this.handleClick(event, topic.id)}
+              role="button"
+              tabIndex="0"
+              onKeyPress={event => this.handleBtnKeyPress(event, topic.id)}
+              key={topic.id}
+            >
+              <span {...classes('link')} > { topic.name } </span>
               { topic.id === expandedTopicId && window.innerWidth < 700 ?
                 <SubtopicLinkList
                   classes={classes}
@@ -113,7 +140,7 @@ TopicMenu.propTypes = {
   topics: PropTypes.arrayOf(TopicShape).isRequired,
   toTopic: PropTypes.func.isRequired,
   toSubject: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
+  close: PropTypes.func,
   withSearchAndFilter: PropTypes.bool,
   messages: PropTypes.shape({
     goTo: PropTypes.string.isRequired,

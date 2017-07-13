@@ -30,7 +30,7 @@ function pagerTest({ setup, expected }) {
 
       switch (value) {
         case 'current':
-          expect(step.is('.pager_step--active')).toBeTruthy();
+          expect(step.is('.c-pager__step--active')).toBeTruthy();
           expect(step.text()).toBe(setup.page.toString());
           expect(step.is(PageItem)).not.toBe('Current page not linked');
           break;

@@ -1,6 +1,11 @@
+/**
+** TOPIC INTRODUCTION
+** Topic list with introductions
+**/
+
+
 .c-topic-introduction {
 }
-
 .c-topic-introduction.c-topic-introduction__text {
   padding: $spacing 0;
 }
@@ -38,10 +43,13 @@
   }
 }
 .c-topic-introduction__header {
-  @include inuit-font-size(25px);
+  @include inuit-font-size(20px);
   font-weight: $font-weight-normal;
   text-decoration: none;
   color: $brand-color;
   margin-bottom: $spacing--small;
+  margin-top: 0;
+}
+.c-topic-introduction__item:first-child .c-topic-introduction__header{
   margin-top: $spacing--small;
 }

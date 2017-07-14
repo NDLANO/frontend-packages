@@ -1,10 +1,12 @@
-.c-license-icons__list, .c-license-icons__list2 {
+/**
+** LICENSE ICONS
+** List for license icons with descriptions
+**/
+
+.c-license-icons__list {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.c-license-icons__list {
   display: flex;
   flex-direction: column;
 }
@@ -16,10 +18,7 @@
   display: inline-block;
   padding-bottom: 7px;
   margin-bottom: 0;
-
-  button {
-    vertical-align: top;
-  }
+  margin-right: 0.2em;
 
   .c-license-icons--active {
     circle {
@@ -31,23 +30,7 @@
   }
 }
 
-.c-license-icons__item {
-  margin-right: 0.2em;
-}
-
 .c-license-icons__icon {
   width: $spacing / 1.1;
   height: $spacing / 1.1;
-}
-
-.c-licenseToggle__details {
-
-  .c-license-icons__item {
-    display: block;
-  }
-  .c-license-icons__item div {
-    display: flex;
-    align-items: flex-start;
-  }
-
 }

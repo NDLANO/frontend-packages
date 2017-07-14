@@ -18,154 +18,16 @@
   flex: 1;
 }
 
-.c-button--stripped {
-  transition: background-color none;
-  padding: 0;
-  border-radius: 0;
-  color: inherit;
-  background-color: transparent;
-  box-shadow: none;
-  border: none;
-  &:hover, &:active, &:disabled, &:focus  {
-    box-shadow: none;
-    color: $brand-color;
-    background-color: transparent;
-    transform: none;
-    border: none;
-  }
-}
-.u-hidden {
-  display: none !important;
-}
 
-
-.pager_step {
-  display: inline;
-  border: 0;
-  border-top: 2px solid $background-color--dark;
-  background-color: transparent;
-  padding: 1em 1.45em;
-  margin: 1em .3em 0;
-  text-decoration: none;
-  color: $black;
-}
-
-.pager_step--active, .pager_step:hover {
-  border-top: 2px solid $brand-color;
-  background-color: $brand-color--lighter;
-}
-
-.logo {
-  margin: 0;
-  height: 19px;
-  width: 58px;
-}
-
-.logo_link {
-  width: 100%;
-
-  &:any-link {
-    text-decoration: none;
-  }
-}
-.u-introduction {
-  margin-top: $spacing--large;
-  max-width: $max-text-width;
-}
-
-
-/* Bg color */
-.u-bg-lightblue {
-  background-color: $brand-color--light;
-  // color: $brand-color;
-}
-
-
-/* Remove border */
-.u-noborder {
-  border: none;
-}
-
-
-
-/* Float tools */
-.u-float-right {
-  float:right;
-}
-.article_figure--float-left {
-  @include float(3, 4, 'left');
-}
-.article_figure--float-right {
-  @include float(3, 4, 'right');
-}
-
-/* Width utils */
-.u-full-width {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-
-/* Move this elsewhere later? */
-
-.u-toggle {
-  display: none;
-}
-.u-block-mobile {
-  @include mq($until:tablet) {
-    display: block;
-    width: 100%;
-  }
-}
 
 .license-byline {
   position: relative;
 }
 
-.license-byline__body:not(.license-byline__body--black) {
+.license-byline__body {
   display: none; // Fix better solution
   margin-right: $spacing--small;
-  text-transform: uppercase;
   @include inuit-font-size(13px);
   letter-spacing: 0.05em;
   margin-top: 4px;
-}
-
-.license-byline__body--black {
-  background-color: $brand-color;
-  color: $white;
-  padding: 3px 8px;
-  @include inuit-font-size(14px);
-  display: table-cell;
-  clear:right;
-  position: absolute;
-  top: 40px;
-}
-
-
-.u-expanded {
-  height: auto;
-}
-
-.c-logo {
-  display: inline-block;
-}
-
-
-
-.o-overlay {
-  cursor: default;
-  position: fixed;
-  display: block;
-  z-index: 20;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  width: 100%;
 }

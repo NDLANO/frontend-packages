@@ -18,8 +18,8 @@ import { stepNumbers } from './pagerHelpers';
 const createQueryString = obj => Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&');
 
 export const PageItem = ({ children, page, query: currentQuery, pathname, onClick, modifier, pageItemComponentClass: Component }) => {
-  const modifierClass = modifier ? `pager_step--${modifier}` : '';
-  const classes = classNames('pager_step', modifierClass);
+  const modifierClass = modifier ? `c-pager__step--${modifier}` : '';
+  const classes = classNames('c-pager__step', modifierClass);
 
   const query = { ...currentQuery, page };
   const linkToPage = {
@@ -52,7 +52,7 @@ export default function Pager(props) {
 
   const PageItems = steps.map((n) => {
     if (n === page) {
-      return <span key={n} className="pager_step pager_step--active">{n}</span>;
+      return <span key={n} className="c-pager__step c-pager__step--active">{n}</span>;
     }
     return <PageItem key={n} page={n} {...rest}>{n}</PageItem>;
   });
@@ -61,7 +61,7 @@ export default function Pager(props) {
   const nextPageItem = page < lastPage ? <PageItem modifier="forward" page={page + 1} {...rest}> {'>'} </PageItem> : null;
 
   return (
-    <div className="pager">
+    <div className="c-pager">
       {prevPageItem}
       {PageItems}
       {nextPageItem}

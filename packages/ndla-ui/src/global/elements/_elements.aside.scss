@@ -2,7 +2,6 @@ aside, article aside, .c-article aside {
   width: 100%;
   display: inline-block;
   margin: $spacing 0 $spacing 0;
-  // background: $brand-color--light;
   opacity: 0.9;
   border-radius-top: $inuit-global-radius;
   @include max-width();
@@ -52,12 +51,9 @@ aside, article aside, .c-article aside {
   }
   h2,h3,h4,h5 {
     display: block;
-    font-size: 110%;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     margin-top: $spacing--small;
     margin-bottom: $spacing--small;
-    border-bottom: 1px solid $brand-color--light;
+    border-bottom: 2px solid $brand-color--light;
   }
   p {
     margin-top: 0;

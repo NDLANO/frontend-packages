@@ -51,4 +51,5 @@ export const ResourceShape = PropTypes.shape({
   introduction: PropTypes.string,
   coverPhotoUrl: PropTypes.string,
   contentUri: PropTypes.string.isRequired,
+  primary: PropTypes.bool,
 });

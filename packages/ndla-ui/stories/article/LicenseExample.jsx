@@ -374,6 +374,8 @@ export const LicenseBox = () => (
             { title: 'Filer', content: <Files /> },
       ]}
     />
+    <p>Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til dersom du
+      skal gjenbruke noe av dette innholdet utenfor ndla.no.</p>
   </div>
 );
 

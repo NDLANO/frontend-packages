@@ -1,7 +1,19 @@
 /**
-*** BREADCRUMBS
-*** 1. In Hero (primary)
-*** 2. In Masthead (secondary)
+** BREADCRUMBS
+** 1. In Hero (primary)
+** 2. In Masthead (secondary)
+**
+** EXAMPLE:
+** <div class="c-breadcrumb">
+**  <ol class="c-breadcrumb__list">
+**    <li class="c-breadcrumb__item c-breadcrumb__item--home">
+**      <a href="#"><svg home /></a>
+**    </li>
+**    <li class="c-breadcrumb__item">
+**      <a href="#">Medieuttrykk og mediesamfunnet</a>
+**    </li>
+**  </ol>
+** </div>
 **/
 
 
@@ -22,7 +34,10 @@
   font-weight: $font-weight-normal;
   padding-right: $spacing--small/2;
   margin-bottom: 0;
-  display: inline-block;
+  display: block;
+  @include mq(tablet) {
+    display: inline-block;
+  }
   line-height: 2em;
   a {
     text-decoration: none;
@@ -35,13 +50,15 @@
   &:before {
     display: none;
   }
-  &:after{
-    padding-right: $spacing--small/2;
-    padding-left: $spacing--small;
-    content: '|';
-    @include inuit-font-size(14px);
-    color: $brand-color;
-    opacity: .4;
+  @include mq(tablet) {
+    &:after{
+      padding-right: $spacing--small/2;
+      padding-left: $spacing--small;
+      content: '|';
+      @include inuit-font-size(14px);
+      color: $brand-color;
+      opacity: .4;
+    }
   }
   &:last-child:after {
     display: none;
@@ -64,7 +81,7 @@
 .c-breadcrumb-masthead {
   opacity: 0;
   display: none;
-  @include mq(tablet) {
+  @include mq(desktop) {
     display: block;
   }
 }

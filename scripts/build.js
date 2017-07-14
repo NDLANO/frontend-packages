@@ -13,9 +13,10 @@ const path = require('path');
 
 const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
 
-const babelOptions = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', '.babelrc'), 'utf8'));
+const babelOptions = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '..', '.babelrc'), 'utf8'),
+);
 babelOptions.babelrc = false;
-
 
 function resolveDestPath(file) {
   const packageName = path.relative(PACKAGES_DIR, file).split(path.sep)[0];
@@ -24,7 +25,8 @@ function resolveDestPath(file) {
   const relativeToSrcPath = path.relative(packageSrcPath, file);
   const destPath = path.resolve(packageBuildPath, relativeToSrcPath);
 
-  if (destPath.indexOf('.jsx') > -1) { // JSX file should be transformed to js files
+  if (destPath.indexOf('.jsx') > -1) {
+    // JSX file should be transformed to js files
     return destPath.substring(0, destPath.length - 1);
   }
   return destPath;
@@ -33,7 +35,11 @@ function resolveDestPath(file) {
 function removeBuildFile(file) {
   const destPath = resolveDestPath(file);
   fs.unlinkSync(destPath);
-  process.stdout.write(`${chalk.red('\u2022 ') + chalk.red('Deleted \u21D2  ') + path.relative(PACKAGES_DIR, destPath)}\n`);
+  process.stdout.write(
+    `${chalk.red('\u2022 ') +
+      chalk.red('Deleted \u21D2  ') +
+      path.relative(PACKAGES_DIR, destPath)}\n`,
+  );
 }
 
 function buildFile(file) {
@@ -41,7 +47,12 @@ function buildFile(file) {
   try {
     const transformed = babel.transformFileSync(file, babelOptions).code;
     fs.writeFileSync(destPath, transformed);
-    process.stdout.write(`${chalk.green('\u2022 ') + path.relative(PACKAGES_DIR, file) + chalk.green(' \u21D2  ') + path.relative(PACKAGES_DIR, destPath)}\n`);
+    process.stdout.write(
+      `${chalk.green('\u2022 ') +
+        path.relative(PACKAGES_DIR, file) +
+        chalk.green(' \u21D2  ') +
+        path.relative(PACKAGES_DIR, destPath)}\n`,
+    );
   } catch (e) {
     process.stdout.write(`${chalk.red('\u2022 ') + chalk.red(e)}\n`);
   }

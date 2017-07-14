@@ -9,13 +9,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ResourceContainer = ({ children }) => (
+const ResourceContainer = ({ children }) =>
   <div className="c-resources">
     <section>
       {children}
     </section>
-  </div>
-);
+  </div>;
 
 ResourceContainer.propTypes = {
   children: PropTypes.node,

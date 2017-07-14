@@ -16,19 +16,21 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Toolbar = ({ store, structure }) => (
+const Toolbar = ({ store, structure }) =>
   <ul {...classes()}>
-    {structure.map(Button => (
+    {structure.map(Button =>
       <li key={uuid()} {...classes('item')}>
         <Button
-          theme={{ button: classes('button').className, active: classes('button', 'active').className }}
+          theme={{
+            button: classes('button').className,
+            active: classes('button', 'active').className,
+          }}
           getEditorState={store.getEditorState}
           setEditorState={store.setEditorState}
         />
-      </li>
-    ))}
-  </ul>
-);
+      </li>,
+    )}
+  </ul>;
 
 Toolbar.propTypes = {
   store: PropTypes.shape({
@@ -39,7 +41,7 @@ Toolbar.propTypes = {
 };
 
 export default (config = {}) => {
-  const store = { };
+  const store = {};
 
   const { structure = [] } = config;
 

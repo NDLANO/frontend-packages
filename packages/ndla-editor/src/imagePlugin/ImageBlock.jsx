@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
+/* eslint jsx-a11y/no-static-element-interactions: 1*/
+/* eslint jsx-a11y/no-noninteractive-element-interactions: 1 */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -53,7 +53,10 @@ export default class ImageBlock extends Component {
     const { src, alignment, alt, caption } = entity.getData();
 
     return (
-      <div {...classes('image', alignment)} onBlur={this.handleBlur} onFocus={this.handleFocus} >
+      <div
+        {...classes('image', alignment)}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}>
         {/* <button
           direction={direction}
           onClick={onClick}
@@ -71,7 +74,7 @@ export default class ImageBlock extends Component {
           onClick={onClick}
           className={`${className}`}
         />
-        <div {...classes('metadata')} >
+        <div {...classes('metadata')}>
           <input
             {...classes('input')}
             type="text"
@@ -93,8 +96,7 @@ export default class ImageBlock extends Component {
 }
 ImageBlock.propTypes = {
   className: PropTypes.string,
-  block: PropTypes.shape({
-  }).isRequired,
+  block: PropTypes.shape({}).isRequired,
   contentState: PropTypes.shape({
     getEntity: PropTypes.func.isRequired,
   }).isRequired,

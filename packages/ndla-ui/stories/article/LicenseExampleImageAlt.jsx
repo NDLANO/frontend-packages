@@ -13,8 +13,7 @@ import { Copy, Download } from '../../src/icons';
 
 import { LicenseByline } from '../../src';
 
-
-const LicenseExampleImageAlt = () => (
+const LicenseExampleImageAlt = () =>
   <div className="u-expanded">
     <div className="c-figure__img">
       <img
@@ -24,7 +23,9 @@ const LicenseExampleImageAlt = () => (
     </div>
     <div className="c-licenseToggle__license">
       <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
-        <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
+        <span className="article_meta">
+          Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.
+        </span>
       </LicenseByline>
     </div>
     <div className="c-licenseToggle__details">
@@ -36,13 +37,17 @@ const LicenseExampleImageAlt = () => (
       </div>
     </div>
     <div className="c-licenseToggle__ctablock u-text-center">
-      <button className="c-licenseToggle__button c-button--transparent" type="button"><Copy className="c-licenseToggle__button-icon" /> Kopier bilde</button>
-      <button className="c-licenseToggle__button" type="button"><Download className="c-licenseToggle__button-icon" /> Last ned bilde</button>
+      <button
+        className="c-licenseToggle__button c-button--transparent"
+        type="button">
+        <Copy className="c-licenseToggle__button-icon" /> Kopier bilde
+      </button>
+      <button className="c-licenseToggle__button" type="button">
+        <Download className="c-licenseToggle__button-icon" /> Last ned bilde
+      </button>
     </div>
-  </div>
-);
+  </div>;
 
 LicenseExampleImageAlt.propTypes = {};
-
 
 export default LicenseExampleImageAlt;

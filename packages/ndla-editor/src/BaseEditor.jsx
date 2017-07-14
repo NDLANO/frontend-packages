@@ -17,9 +17,10 @@ import createHandleKeyEventsPlugin from './handleKeyEventsPlugin';
 import createResourcePlaceholderPlugin from './resourcePlaceholderPlugin';
 
 const basePlugins = [
-  createHandleKeyEventsPlugin(), createBasicStylePlugin(), createResourcePlaceholderPlugin(),
+  createHandleKeyEventsPlugin(),
+  createBasicStylePlugin(),
+  createResourcePlaceholderPlugin(),
 ];
-
 
 const classes = new BEMHelper({
   name: 'editor',
@@ -27,7 +28,6 @@ const classes = new BEMHelper({
 });
 
 export default class BaseEditor extends Component {
-
   constructor(props) {
     super(props);
     this.focus = this.focus.bind(this);
@@ -42,7 +42,14 @@ export default class BaseEditor extends Component {
   }
 
   render() {
-    const { children, className, value, onChange, plugins, ...rest } = this.props;
+    const {
+      children,
+      className,
+      value,
+      onChange,
+      plugins,
+      ...rest
+    } = this.props;
     const allPlugins = [...plugins, ...basePlugins];
     return (
       <article>
@@ -52,7 +59,9 @@ export default class BaseEditor extends Component {
             onChange={onChange}
             plugins={allPlugins}
             handleKeyCommand={this.handleKeyCommand}
-            ref={(element) => { this.editor = element; }}
+            ref={element => {
+              this.editor = element;
+            }}
             {...rest}
           />
           {children}
@@ -71,4 +80,3 @@ BaseEditor.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
 };
-

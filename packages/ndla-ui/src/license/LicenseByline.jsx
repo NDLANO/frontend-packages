@@ -11,16 +11,15 @@ import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
 import { LicenseShape } from '../shapes';
 
-const LicenseByline = ({ children, license }) => (
+const LicenseByline = ({ children, license }) =>
   <div className="license-byline">
     <LicenseIconList licenseRights={license.rights} />
-    { children ?
-      <div className="license-byline__body">
-        { children }
-      </div>
-    : null}
-  </div>
-);
+    {children
+      ? <div className="license-byline__body">
+          {children}
+        </div>
+      : null}
+  </div>;
 
 LicenseByline.propTypes = {
   license: LicenseShape.isRequired,

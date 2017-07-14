@@ -39,7 +39,11 @@ export default function ImageSearchResult({
         </Button>
       </div>
       {selectedImage && selectedImage.id === image.id
-        ? <PreviewImage image={selectedImage} onSelectImage={onSelectImage} locale={locale} />
+        ? <PreviewImage
+            image={selectedImage}
+            onSelectImage={onSelectImage}
+            locale={locale}
+          />
         : ''}
     </div>
   );

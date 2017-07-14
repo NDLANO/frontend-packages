@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2016-present, NDLA.
  *
@@ -26,32 +25,54 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({ children, authors, licenseAbbreviation, messages }) => (
+export const FigureDetails = ({
+  children,
+  authors,
+  licenseAbbreviation,
+  messages,
+}) =>
   <div {...classes('license')} id="figmeta">
-    <button {...classes('close')}>{messages.close}</button>
+    <button {...classes('close')}>
+      {messages.close}
+    </button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
-        <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
-        <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)} />
+        <h3 {...classLicenses('title')}>
+          {messages.rulesForUse}
+        </h3>
+        <LicenseByline
+          license={getLicenseByAbbreviation(licenseAbbreviation)}
+        />
         <div {...classLicenses('cta-wrapper')}>
-          <h3 {...classLicenses('title')}>{messages.howToReference}</h3>
+          <h3 {...classLicenses('title')}>
+            {messages.howToReference}
+          </h3>
           <ul {...classes('list')}>
-            { authors.map(author => <li key={uuid()} className="c-figure-list__item">{ `${author.type}: ${author.name}`}</li>) }
+            {authors.map(author =>
+              <li
+                key={uuid()}
+                className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
+            )}
           </ul>
-          { children ? <div {...classLicenses('cta-block')}> {children} </div> : null }
+          {children
+            ? <div {...classLicenses('cta-block')}>
+                {' '}{children}{' '}
+              </div>
+            : null}
         </div>
       </div>
     </div>
-  </div>
-);
+  </div>;
 
 FigureDetails.propTypes = {
   children: PropTypes.node,
   licenseAbbreviation: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  })),
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
@@ -59,34 +80,47 @@ FigureDetails.propTypes = {
   }).isRequired,
 };
 
-export const FigureCaption = ({ caption, authors, reuseLabel, licenseAbbreviation }) => (
+export const FigureCaption = ({
+  caption,
+  authors,
+  reuseLabel,
+  licenseAbbreviation,
+}) =>
   <figcaption {...classes('caption')}>
-    {caption ? <div className="c-figure__info">{caption}</div> : null}
+    {caption
+      ? <div className="c-figure__info">
+          {caption}
+        </div>
+      : null}
     <div {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>
-          <span className="article_meta">{ authors.map(author => author.name).join(', ') }</span>
+          <span className="article_meta">
+            {authors.map(author => author.name).join(', ')}
+          </span>
         </LicenseByline>
       </div>
-      <button className="c-figure__captionbtn">{reuseLabel}</button>
+      <button className="c-figure__captionbtn">
+        {reuseLabel}
+      </button>
     </div>
-  </figcaption>
-);
+  </figcaption>;
 
 FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
   licenseAbbreviation: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  })),
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
-export const Figure = ({ children, ...rest }) => (
+export const Figure = ({ children, ...rest }) =>
   <figure {...classes()} {...rest}>
     {children}
-  </figure>
-);
+  </figure>;
 
 Figure.propTypes = {
   children: PropTypes.node.isRequired,

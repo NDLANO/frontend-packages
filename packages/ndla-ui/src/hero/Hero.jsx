@@ -20,9 +20,11 @@ export const Hero = ({ children, red, green }) => {
   modifiers = green ? 'green' : modifiers;
   // { red ? modifiers = 'red' : null; }
 
-  return (<div {...classes('', modifiers)}>
-    { children || null }
-  </div>);
+  return (
+    <div {...classes('', modifiers)}>
+      {children || null}
+    </div>
+  );
 };
 
 Hero.propTypes = {

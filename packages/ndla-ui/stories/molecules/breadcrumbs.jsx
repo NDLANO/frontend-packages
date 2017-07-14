@@ -11,12 +11,14 @@ import React from 'react';
 import { TopicBreadcrumb } from '../../src';
 import { topicList, subjectList } from '../../dummydata/index';
 
-
-export const TopicBreadcrumbDefault = () => (
-  <TopicBreadcrumb subject={subjectList[1]} topicPath={topicList.slice(2)} subjectsTitle="Fag" toSubjects={() => '#'} toTopic={() => '#'}>
+export const TopicBreadcrumbDefault = () =>
+  <TopicBreadcrumb
+    subject={subjectList[1]}
+    topicPath={topicList.slice(2)}
+    subjectsTitle="Fag"
+    toSubjects={() => '#'}
+    toTopic={() => '#'}>
     Du er her:
-  </TopicBreadcrumb>
-);
-
+  </TopicBreadcrumb>;
 
 export default TopicBreadcrumbDefault;

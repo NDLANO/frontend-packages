@@ -10,11 +10,10 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-const ResourcePlaceholderBlock = ({ blockProps: { data } }) => (
+const ResourcePlaceholderBlock = ({ blockProps: { data } }) =>
   <span className="c-block__resource-placeholder">
-    Uhåndtert embed av følgende type: <b>{ data.resource }</b>
-  </span>
-  );
+    Uhåndtert embed av følgende type: <b>{data.resource}</b>
+  </span>;
 
 ResourcePlaceholderBlock.propTypes = {
   blockProps: PropTypes.shape({

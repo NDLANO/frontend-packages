@@ -33,38 +33,57 @@ class ArticleLoader extends Component {
   handleSubmit(articleId) {
     this.setState({ fetching: true });
     fetchArticle(articleId)
-      .then((article) => {
+      .then(article => {
         this.setState({
           article,
           fetching: false,
           message: '',
         });
-      }).catch((error) => {
+      })
+      .catch(error => {
         console.error(error);
         this.setState({
           message: error.message,
           fetching: false,
         });
-      })
-    ;
+      });
   }
 
   renderArticle() {
     const { article } = this.state;
     const { withLicenseExample } = this.props;
-    return <ArticleExample article={article} withLicenseExample={withLicenseExample} />;
+    return (
+      <ArticleExample
+        article={article}
+        withLicenseExample={withLicenseExample}
+      />
+    );
   }
 
   render() {
     const { article, message } = this.state;
-    const scripts = article && article.requiredLibraries ? article.requiredLibraries.map(lib => ({ src: lib.url, type: lib.mediaType })) : [];
+    const scripts =
+      article && article.requiredLibraries
+        ? article.requiredLibraries.map(lib => ({
+            src: lib.url,
+            type: lib.mediaType,
+          }))
+        : [];
     return (
       <div>
-        <Helmet
-          script={scripts}
-        />
-        { article ? this.renderArticle() : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
-        { article ? <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button> : null}
+        <Helmet script={scripts} />
+        {article
+          ? this.renderArticle()
+          : <SimpleSubmitForm
+              onSubmit={this.handleSubmit}
+              errorMessage={message}
+              labelText="Artikkel ID:"
+            />}
+        {article
+          ? <Button onClick={() => this.setState({ article: undefined })}>
+              Lukk
+            </Button>
+          : null}
       </div>
     );
   }

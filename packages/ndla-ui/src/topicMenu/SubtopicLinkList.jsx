@@ -11,11 +11,12 @@ import PropTypes from 'prop-types';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-const SubtopicLink = ({ classes, closeMenu, to, subtopic }) => (
+const SubtopicLink = ({ classes, closeMenu, to, subtopic }) =>
   <li {...classes('subtopic-item')} key={subtopic.id}>
-    <SafeLink {...classes('link', 'underline')} onClick={closeMenu} to={to}>{ subtopic.name }</SafeLink>
-  </li>
-);
+    <SafeLink {...classes('link', 'underline')} onClick={closeMenu} to={to}>
+      {subtopic.name}
+    </SafeLink>
+  </li>;
 
 SubtopicLink.propTypes = {
   classes: PropTypes.func.isRequired,
@@ -24,18 +25,28 @@ SubtopicLink.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const SubtopicLinkList = ({ goToTitle, className, classes, closeMenu, topic, toTopic }) => (
+const SubtopicLinkList = ({
+  goToTitle,
+  className,
+  classes,
+  closeMenu,
+  topic,
+  toTopic,
+}) =>
   <div className={className}>
     <SafeLink
       {...classes('link', ['underline', 'big'])}
       onClick={closeMenu}
-      to={toTopic(topic.id)}
-    >
-      <span {...classes('link-label')}>{goToTitle}: </span>
-      <span {...classes('link-target')}>{ topic.name } {'›'}</span>
+      to={toTopic(topic.id)}>
+      <span {...classes('link-label')}>
+        {goToTitle}:{' '}
+      </span>
+      <span {...classes('link-target')}>
+        {topic.name} {'›'}
+      </span>
     </SafeLink>
     <ul {...classes('list')}>
-      { topic.subtopics.map(subtopic =>
+      {topic.subtopics.map(subtopic =>
         <SubtopicLink
           classes={classes}
           closeMenu={closeMenu}
@@ -45,8 +56,7 @@ const SubtopicLinkList = ({ goToTitle, className, classes, closeMenu, topic, toT
         />,
       )}
     </ul>
-  </div>
-);
+  </div>;
 
 SubtopicLinkList.propTypes = {
   goToTitle: PropTypes.string.isRequired,

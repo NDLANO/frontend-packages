@@ -4,7 +4,7 @@ import { EditorState } from 'draft-js';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { getComponentName } from 'ndla-util';
 
-const withStateHandler = (WrappedComponent) => {
+const withStateHandler = WrappedComponent => {
   class EditorStateHandler extends React.Component {
     constructor(props) {
       super(props);
@@ -20,7 +20,8 @@ const withStateHandler = (WrappedComponent) => {
     }
 
     render() {
-      const nextProps = { ...this.props,
+      const nextProps = {
+        ...this.props,
         value: this.state.value,
         onChange: this.onChange,
       };
@@ -34,7 +35,9 @@ const withStateHandler = (WrappedComponent) => {
       _immutable: PropTypes.object,
     }),
   };
-  EditorStateHandler.displayName = `EditorStateHandler(${getComponentName(WrappedComponent)})`;
+  EditorStateHandler.displayName = `EditorStateHandler(${getComponentName(
+    WrappedComponent,
+  )})`;
   return hoistNonReactStatics(EditorStateHandler, WrappedComponent);
 };
 

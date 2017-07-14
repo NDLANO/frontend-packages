@@ -6,7 +6,7 @@
  *
  */
 
- /* eslint-env jest */
+/* eslint-env jest */
 
 import 'isomorphic-fetch';
 import nock from 'nock';
@@ -68,7 +68,9 @@ test('ndla-error-reporter/ErrorReporter can capture error with additional info',
     })
     .reply(200);
 
-  errorReporter.captureError(new Error('Some other generic error'), { from: 'unittest' });
+  errorReporter.captureError(new Error('Some other generic error'), {
+    from: 'unittest',
+  });
 
   apiMock.done();
 });
@@ -92,7 +94,14 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
   try {
     someUndefinedFunction(); // eslint-disable-line no-undef
   } catch (e) {
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(
+      window,
+      e.toString(),
+      document.location.toString(),
+      58,
+      4,
+      e,
+    );
   }
 
   apiMock.done();
@@ -101,7 +110,7 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
 test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', {
-      text: 'TypeError: Cannot set property \'foo\' of null',
+      text: "TypeError: Cannot set property 'foo' of null",
     })
     .reply(200);
 
@@ -110,9 +119,30 @@ test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () =
     const someVal = null;
     someVal.foo = 1;
   } catch (e) {
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
-    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(
+      window,
+      e.toString(),
+      document.location.toString(),
+      58,
+      4,
+      e,
+    );
+    window.onerror.call(
+      window,
+      e.toString(),
+      document.location.toString(),
+      58,
+      4,
+      e,
+    );
+    window.onerror.call(
+      window,
+      e.toString(),
+      document.location.toString(),
+      58,
+      4,
+      e,
+    );
   }
 
   apiMock.done();

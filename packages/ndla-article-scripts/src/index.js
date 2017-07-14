@@ -6,39 +6,41 @@
  *
  */
 
+import {
+  updateIFrameDimensions,
+  addEventListenerForResize,
+  removeEventListenerForResize,
+} from './iframeScripts';
 
- import { updateIFrameDimensions, addEventListenerForResize, removeEventListenerForResize } from './iframeScripts';
+import {
+  addAsideClickListener,
+  removeAsideClickListener,
+} from './asideScripts';
 
- import { addAsideClickListener, removeAsideClickListener } from './asideScripts';
+import {
+  addShowFigureDetailsClickListeners,
+  addCloseFigureDetailsClickListeners,
+  makeFigureLicenseIconsClickable,
+  addCopyToClipboardListeners,
+} from './figureScripts';
 
- import {
-   addShowFigureDetailsClickListeners,
-   addCloseFigureDetailsClickListeners,
-   makeFigureLicenseIconsClickable,
-   addCopyToClipboardListeners,
- } from './figureScripts';
+export const initArticleScripts = () => {
+  addEventListenerForResize();
+  updateIFrameDimensions();
+  addAsideClickListener();
+  addCopyToClipboardListeners();
+  addShowFigureDetailsClickListeners();
+  addCloseFigureDetailsClickListeners();
+};
 
-
- export const initArticleScripts = () => {
-   addEventListenerForResize();
-   updateIFrameDimensions();
-   addAsideClickListener();
-   addCopyToClipboardListeners();
-   addShowFigureDetailsClickListeners();
-   addCloseFigureDetailsClickListeners();
- };
-
- export {
-   updateIFrameDimensions,
-
-   addAsideClickListener,
-   removeAsideClickListener,
-
-   addEventListenerForResize,
-   removeEventListenerForResize,
-
-   addCloseFigureDetailsClickListeners,
-   addCopyToClipboardListeners,
-   addShowFigureDetailsClickListeners,
-   makeFigureLicenseIconsClickable,
- };
+export {
+  updateIFrameDimensions,
+  addAsideClickListener,
+  removeAsideClickListener,
+  addEventListenerForResize,
+  removeEventListenerForResize,
+  addCloseFigureDetailsClickListeners,
+  addCopyToClipboardListeners,
+  addShowFigureDetailsClickListeners,
+  makeFigureLicenseIconsClickable,
+};

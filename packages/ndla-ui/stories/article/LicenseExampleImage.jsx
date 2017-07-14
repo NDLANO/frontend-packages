@@ -13,12 +13,13 @@ import { Copy, Download } from '../../src/icons';
 
 import { LicenseByline } from '../../src';
 
-
-const LicenseExampleImage = () => (
+const LicenseExampleImage = () =>
   <div className="u-expanded">
     <div className="c-modal__license">
       <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
-        <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
+        <span className="article_meta">
+          Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.
+        </span>
       </LicenseByline>
     </div>
     <div className="c-modal__details">
@@ -30,13 +31,15 @@ const LicenseExampleImage = () => (
       </div>
     </div>
     <div className="c-modal__ctablock u-text-center">
-      <button className="c-modal__button c-button--transparent" type="button"><Copy className="c-modal__button-icon" /> Kopier bilde</button>
-      <button className="c-modal__button" type="button"><Download className="c-modal__button-icon" /> Last ned bilde</button>
+      <button className="c-modal__button c-button--transparent" type="button">
+        <Copy className="c-modal__button-icon" /> Kopier bilde
+      </button>
+      <button className="c-modal__button" type="button">
+        <Download className="c-modal__button-icon" /> Last ned bilde
+      </button>
     </div>
-  </div>
-);
+  </div>;
 
 LicenseExampleImage.propTypes = {};
-
 
 export default LicenseExampleImage;

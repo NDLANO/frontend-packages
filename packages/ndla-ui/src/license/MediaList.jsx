@@ -23,7 +23,6 @@ const cClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-
 export const MediaList = ({ children }) =>
   <ul {...cClasses()}>
     {children}
@@ -53,10 +52,12 @@ MediaListItemImage.propTypes = {
 
 export const MediaListItemBody = ({ children, license, title }) =>
   <div {...oClasses('body', null, cClasses('body').className)}>
-    { title ? <h3 className="c-medialist__title">{title} </h3> : null}
-    <LicenseByline
-      license={getLicenseByAbbreviation(license)}
-    />
+    {title
+      ? <h3 className="c-medialist__title">
+          {title}{' '}
+        </h3>
+      : null}
+    <LicenseByline license={getLicenseByAbbreviation(license)} />
     {children}
   </div>;
 
@@ -78,7 +79,11 @@ MediaListItemActions.propTypes = {
 
 export const MediaListItemMeta = ({ items }) =>
   <ul {...cClasses('actions')}>
-    { items.map(item => <li key={uuid()} className="c-medialist__meta-item">{item}</li>)}
+    {items.map(item =>
+      <li key={uuid()} className="c-medialist__meta-item">
+        {item}
+      </li>,
+    )}
   </ul>;
 
 MediaListItemMeta.propTypes = {

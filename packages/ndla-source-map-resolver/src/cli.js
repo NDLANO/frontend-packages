@@ -14,8 +14,10 @@ const args = {
       type: 'string',
     },
   },
-  usage: 'Usage: $0 --mapFile <pathToMapFile> --errorEventFile <pathToErrorEventFile>',
-  docs: 'Documentation:\nhttps://github.com/NDLANO/frontend-packages/tree/ndla-source-map-resolver/packages/ndla-source-map-resolver',
+  usage:
+    'Usage: $0 --mapFile <pathToMapFile> --errorEventFile <pathToErrorEventFile>',
+  docs:
+    'Documentation:\nhttps://github.com/NDLANO/frontend-packages/tree/ndla-source-map-resolver/packages/ndla-source-map-resolver',
 };
 
 function run(programArgs) {

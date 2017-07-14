@@ -62,6 +62,7 @@
     "ndla-article-scripts": "^0.0.6",
     "ndla-editor": "^0.1.5",
     "ndla-image-search": "^0.1.0",
+    "ndla-video-search": "^0.1.0",
     "ndla-licenses": "^0.0.9-0",
     "ndla-tabs": "^0.3.3-0",
     "ndla-util": "^0.1.3",

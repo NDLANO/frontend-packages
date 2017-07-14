@@ -17,9 +17,13 @@ import createAlignmentPlugin from 'draft-js-alignment-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
-  ItalicButton, BoldButton, UnderlineButton,
-  HeadlineTwoButton, HeadlineThreeButton,
-  UnorderedListButton, BlockquoteButton,
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  BlockquoteButton,
 } from 'draft-js-buttons';
 import decorateComponentWithProps from 'decorate-component-with-props';
 
@@ -28,7 +32,6 @@ import BlockTypeSelect from './BlockTypeSelect';
 import createToolbarPlugin from './ToolbarPlugin';
 import createImagePlugin from './imagePlugin';
 import ImageAdd from './imagePlugin/ImageAdd';
-
 
 const focusPlugin = createFocusPlugin();
 const alignmentPlugin = createAlignmentPlugin();
@@ -39,29 +42,43 @@ const decorator = composeDecorators(
   alignmentPlugin.decorator,
 );
 
-
 const imagePlugin = createImagePlugin({ decorator });
 
 /* inline toolbar */
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
-    ItalicButton, BoldButton, UnderlineButton,
-    HeadlineTwoButton, HeadlineThreeButton,
-    UnorderedListButton, BlockquoteButton,
+    ItalicButton,
+    BoldButton,
+    UnderlineButton,
+    HeadlineTwoButton,
+    HeadlineThreeButton,
+    UnorderedListButton,
+    BlockquoteButton,
   ],
 });
 
 const toolbarPlugin = createToolbarPlugin({
   structure: [
-    ItalicButton, BoldButton, UnderlineButton,
-    HeadlineTwoButton, HeadlineThreeButton,
-    UnorderedListButton, BlockquoteButton,
+    ItalicButton,
+    BoldButton,
+    UnderlineButton,
+    HeadlineTwoButton,
+    HeadlineThreeButton,
+    UnorderedListButton,
+    BlockquoteButton,
   ],
 });
 
 const sideToolbarPlugin = createSideToolbarPlugin({
   structure: [
-    decorateComponentWithProps(BlockTypeSelect, { structure: [HeadlineTwoButton, HeadlineThreeButton, UnorderedListButton, BlockquoteButton] }),
+    decorateComponentWithProps(BlockTypeSelect, {
+      structure: [
+        HeadlineTwoButton,
+        HeadlineThreeButton,
+        UnorderedListButton,
+        BlockquoteButton,
+      ],
+    }),
   ],
 });
 
@@ -70,12 +87,15 @@ const { SideToolbar } = sideToolbarPlugin;
 const { InlineToolbar } = inlineToolbarPlugin;
 
 const plugins = [
-  focusPlugin, alignmentPlugin, inlineToolbarPlugin, toolbarPlugin, imagePlugin, sideToolbarPlugin,
+  focusPlugin,
+  alignmentPlugin,
+  inlineToolbarPlugin,
+  toolbarPlugin,
+  imagePlugin,
+  sideToolbarPlugin,
 ];
 
 export default class NDLAEditor extends Component {
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -98,13 +118,17 @@ export default class NDLAEditor extends Component {
     const { value, onChange } = this.props;
     return (
       <div>
-        <BaseEditor {...this.props} className={this.state.className} plugins={plugins} >
+        <BaseEditor
+          {...this.props}
+          className={this.state.className}
+          plugins={plugins}>
           <AlignmentTool />
           <InlineToolbar />
           <SideToolbar />
         </BaseEditor>
         <div style={{ clear: 'both' }}>
-          <ul style={{ listStyleType: 'none', padding: '10px 0 0 0', margin: 0 }}>
+          <ul
+            style={{ listStyleType: 'none', padding: '10px 0 0 0', margin: 0 }}>
             <li style={{ marginTop: '10px' }}>
               <ImageAdd
                 editorState={value}
@@ -113,11 +137,7 @@ export default class NDLAEditor extends Component {
               />
             </li>
             <li style={{ marginTop: '10px' }}>
-              <input
-                onClick={this.logState}
-                type="button"
-                value="Log State"
-              />
+              <input onClick={this.logState} type="button" value="Log State" />
             </li>
             <li style={{ marginTop: '10px' }}>
               <input

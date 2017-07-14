@@ -31,7 +31,7 @@ export const createElement = (type, id, className, innerHTML) => {
   return el;
 };
 
-export const removeElementById = (id) => {
+export const removeElementById = id => {
   const el = document.getElementById(id);
   if (el) {
     el.parentNode.removeChild(el);
@@ -39,7 +39,7 @@ export const removeElementById = (id) => {
 };
 
 export const removeModifiers = (className, modifier, rootSelector = '') => {
-  document.querySelectorAll(`${rootSelector} .${className}`).forEach((el) => {
+  document.querySelectorAll(`${rootSelector} .${className}`).forEach(el => {
     el.classList.remove(`${className}--${modifier}`);
   });
 };

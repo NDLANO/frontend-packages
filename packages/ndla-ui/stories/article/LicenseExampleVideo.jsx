@@ -11,26 +11,27 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { LicenseByline } from '../../src';
 
-
-const LicenseExampleImage = () => (
+const LicenseExampleImage = () =>
   <div className="license u-expanded">
     <div className="c-modal__license">
       <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
-        <span className="article_meta">Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.</span>
+        <span className="article_meta">
+          Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.
+        </span>
       </LicenseByline>
     </div>
     <div className="c-modal__details">
       <div>
-        <p>For å bruke denne videoen må du legge ved denne kildehenvisningen:</p>
+        <p>
+          For å bruke denne videoen må du legge ved denne kildehenvisningen:
+        </p>
         <div className="c-bodybox c-bodybox--attribute">
           <span>Video av: NDLA. Lisensinfo.</span>
         </div>
       </div>
     </div>
-  </div>
-);
+  </div>;
 
 LicenseExampleImage.propTypes = {};
-
 
 export default LicenseExampleImage;

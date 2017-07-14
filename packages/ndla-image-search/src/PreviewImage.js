@@ -13,7 +13,6 @@ import { Button } from 'ndla-ui';
 import { uuid, tagsI18N } from 'ndla-util';
 import { getSrcSets } from './util/imageUtil';
 
-
 const classes = new BEMHelper({
   name: 'image-preview',
   prefix: 'c-',
@@ -33,7 +32,9 @@ export default function PreviewImage({ image, onSelectImage, locale }) {
         />
       </div>
       <div {...classes('information')}>
-        <h2 {...classes('title')}>{image.titles[0].title}</h2>
+        <h2 {...classes('title')}>
+          {image.titles[0].title}
+        </h2>
         <div {...classes('copyright-author')}>
           <b {...classes('text', 'left')}>
             {/* {polyglot.t('learningPath.image.authors')}*/}
@@ -58,8 +59,7 @@ export default function PreviewImage({ image, onSelectImage, locale }) {
         </div>
         <Button
           className="button button--primary button--block"
-          onClick={() => onSelectImage(image)}
-        >
+          onClick={() => onSelectImage(image)}>
           Bruk bildet
         </Button>
       </div>

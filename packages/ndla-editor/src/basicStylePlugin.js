@@ -7,7 +7,7 @@
  */
 
 export default () => ({
-  blockStyleFn: (contentBlock) => {
+  blockStyleFn: contentBlock => {
     if (contentBlock.getType() === 'unstyled') {
       return 'c-block__paragraph';
     }

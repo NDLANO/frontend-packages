@@ -17,23 +17,21 @@ import {
   LayoutItem,
   TopicBreadcrumb,
 } from '../src';
-import {
-  Additional,
-  Pencil,
-  Time,
-  Document,
-  User,
-} from '../src/icons';
+import { Additional, Pencil, Time, Document, User } from '../src/icons';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 import LicenseExample from './article/LicenseExample';
-import article, { topicList, subjectList, articleResources } from '../dummydata/index';
+import article, {
+  topicList,
+  subjectList,
+  articleResources,
+} from '../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
 
-const FooterExample = () => (
+const FooterExample = () =>
   <Footer>
     <div className="footer_form">
       <label htmlFor="language-select" className="footer_label footer--bold">
@@ -52,17 +50,18 @@ const FooterExample = () => (
     <Footer.Text>
       Nettstedet er utarbeidet av NDLA som åpen kildekode.
     </Footer.Text>
-  </Footer>
-);
+  </Footer>;
 
-const ArticleLearningmaterial = () => (
+const ArticleLearningmaterial = () =>
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon"><Document />Artikkel lærestoff</h1>
+        <h1 className="c-article__title--icon">
+          <Document />Artikkel lærestoff
+        </h1>
         <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen.
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__flex">
@@ -70,16 +69,14 @@ const ArticleLearningmaterial = () => (
               <User />
             </span>
             <span className="c-article-byline__authors">
-            Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
             </span>
           </span>
           <span className="c-article-byline__flex">
             <span className="c-article-byline__icon">
               <Time />
             </span>
-            <span className="c-article-byline__date">
-              Publisert 12/10/2016
-            </span>
+            <span className="c-article-byline__date">Publisert 12/10/2016</span>
             <LicenseExample />
           </span>
         </div>
@@ -92,36 +89,32 @@ const ArticleLearningmaterial = () => (
           />
         </FigureWithLicense>
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-          din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
+          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å
-          {' '}
-          <a href="#test">tenne på idéen din og se potensialet</a>
-          {' '}
-          i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å <a href="#test">tenne på idéen din og se potensialet</a> i
+          den.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
         <FigureWithLicense classes="u-float-right">
           <img
@@ -131,14 +124,14 @@ const ArticleLearningmaterial = () => (
         </FigureWithLicense>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
@@ -148,17 +141,18 @@ const ArticleLearningmaterial = () => (
         <ResourceSubsetList />
       </LayoutItem>
     </article>
-  </OneColumn>
-);
+  </OneColumn>;
 
-const ArticleAdditional = () => (
+const ArticleAdditional = () =>
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon"><Document />Artikkel Tilleggsstoff</h1>
+        <h1 className="c-article__title--icon">
+          <Document />Artikkel Tilleggsstoff
+        </h1>
         <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen.
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__flex">
@@ -166,20 +160,19 @@ const ArticleAdditional = () => (
               <User />
             </span>
             <span className="c-article-byline__authors">
-            Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
             </span>
           </span>
           <span className="c-article-byline__flex">
             <span className="c-article-byline__icon">
               <Time />
             </span>
-            <span className="c-article-byline__date">
-              Publisert 12/10/2016
-            </span>
+            <span className="c-article-byline__date">Publisert 12/10/2016</span>
           </span>
           <span className="c-article-byline__flex">
             <div className="c-article-byline__additional">
-              <Additional className="c-icon--20 u-margin-right-tiny" /> Tilleggsstoff
+              <Additional className="c-icon--20 u-margin-right-tiny" />{' '}
+              Tilleggsstoff
             </div>
             <LicenseExample />
           </span>
@@ -187,21 +180,20 @@ const ArticleAdditional = () => (
       </LayoutItem>
       <LayoutItem layout="center">
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-          din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
+          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
         <table className="c-table o-wrapper--wide">
           <tbody>
@@ -211,7 +203,9 @@ const ArticleAdditional = () => (
               <th>Kjennetegn</th>
             </tr>
             <tr>
-              <td><strong>Subjektive sjangre</strong></td>
+              <td>
+                <strong>Subjektive sjangre</strong>
+              </td>
               <td>Leder</td>
               <td>
                 <ul>
@@ -227,11 +221,11 @@ const ArticleAdditional = () => (
               <td>
                 <ul>
                   <li>
-                    en av journalistenes mening om en ny film, bok, konsert e.l.
-                    {' '}
+                    en av journalistenes mening om en ny film, bok, konsert e.l.{' '}
                   </li>
                   <li>
-                    skal være en bruksanvisning slik at målgruppen vet om produktet er noe for dem
+                    skal være en bruksanvisning slik at målgruppen vet om
+                    produktet er noe for dem
                   </li>
                 </ul>
               </td>
@@ -260,7 +254,9 @@ const ArticleAdditional = () => (
               </td>
             </tr>
             <tr>
-              <td><strong>Objektive sjangre</strong></td>
+              <td>
+                <strong>Objektive sjangre</strong>
+              </td>
               <td>Nyhetsartikkel</td>
               <td>
                 <ul>
@@ -288,7 +284,8 @@ const ArticleAdditional = () => (
                 <ul>
                   <li>enkelt oppsett med spørsmål og svar </li>
                   <li>
-                    brukes gjerne som en del av en nyhetsreportasje eller artikkel
+                    brukes gjerne som en del av en nyhetsreportasje eller
+                    artikkel
                   </li>
                 </ul>
               </td>
@@ -307,7 +304,9 @@ const ArticleAdditional = () => (
               </td>
             </tr>
             <tr>
-              <td><strong>Hybridsjangre</strong></td>
+              <td>
+                <strong>Hybridsjangre</strong>
+              </td>
               <td>Feature</td>
               <td>
                 <ul>
@@ -316,8 +315,7 @@ const ArticleAdditional = () => (
                     alle sanser og litterære virkemidler{' '}
                   </li>
                   <li>
-                    går i dybden, gir leseren en større forståelse av et
-                    tema
+                    går i dybden, gir leseren en større forståelse av et tema
                   </li>
                 </ul>
               </td>
@@ -342,31 +340,32 @@ const ArticleAdditional = () => (
         </table>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
         <ResourceSubsetList />
       </LayoutItem>
     </article>
-  </OneColumn>
-);
+  </OneColumn>;
 
-const ArticleExercise = () => (
+const ArticleExercise = () =>
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon"><Pencil />Oppgave eller aktivitet</h1>
+        <h1 className="c-article__title--icon">
+          <Pencil />Oppgave eller aktivitet
+        </h1>
         <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen.
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__flex">
@@ -374,40 +373,38 @@ const ArticleExercise = () => (
               <User />
             </span>
             <span className="c-article-byline__authors">
-            Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
             </span>
           </span>
           <span className="c-article-byline__flex">
             <span className="c-article-byline__icon">
               <Time />
             </span>
-            <span className="c-article-byline__date">
-              Publisert 12/10/2016
-            </span>
+            <span className="c-article-byline__date">Publisert 12/10/2016</span>
             <LicenseExample />
           </span>
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-          å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
-          din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
+          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
         <FigureWithLicense>
           <iframe
+            title="H5P"
             src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
             width="260"
             height="373"
@@ -421,43 +418,39 @@ const ArticleExercise = () => (
         </FigureWithLicense>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-          få andre til å tenne på idéen din og se potensialet i den.
+          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
+          andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med
-          i klassen.
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
         <ResourceSubsetList />
       </LayoutItem>
     </article>
-  </OneColumn>
-);
+  </OneColumn>;
 
-const ResourcesSubTopics = () => (
+const ResourcesSubTopics = () =>
   <LayoutItem layout="extend">
     <ResourceWrapper>
       <h1 className="c-resources__title">Emner</h1>
       <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
     </ResourceWrapper>
-  </LayoutItem>
-);
+  </LayoutItem>;
 
 storiesOf('Sidevisninger', module)
-  .add('Empty page', () => (
+  .add('Empty page', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
-      <OneColumn>
-        Empty Page
-      </OneColumn>
+      <OneColumn>Empty Page</OneColumn>
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('ArticlePage', () => (
+    </PageContainer>,
+  )
+  .add('ArticlePage', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -477,9 +470,9 @@ storiesOf('Sidevisninger', module)
       </Hero>
       <ArticleLoader articleId="44" />
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('ArticlePage loader', () => (
+    </PageContainer>,
+  )
+  .add('ArticlePage loader', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -499,9 +492,9 @@ storiesOf('Sidevisninger', module)
       </Hero>
       <ArticleLoader />
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('ArticlePage Preloaded', () => (
+    </PageContainer>,
+  )
+  .add('ArticlePage Preloaded', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -521,10 +514,10 @@ storiesOf('Sidevisninger', module)
       </Hero>
       <ArticleLoader articleId="34" />
       <FooterExample />
-    </PageContainer>
-  ));
+    </PageContainer>,
+  );
 storiesOf('Artikkelmaler', module)
-  .add('Lærestoff', () => (
+  .add('Lærestoff', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -544,9 +537,9 @@ storiesOf('Artikkelmaler', module)
       </Hero>
       <ArticleLearningmaterial />
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('Oppgaver og aktiviteter', () => (
+    </PageContainer>,
+  )
+  .add('Oppgaver og aktiviteter', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero green>
@@ -566,9 +559,9 @@ storiesOf('Artikkelmaler', module)
       </Hero>
       <ArticleExercise />
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tilleggsstoff', () => (
+    </PageContainer>,
+  )
+  .add('Tilleggsstoff', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -588,11 +581,11 @@ storiesOf('Artikkelmaler', module)
       </Hero>
       <ArticleAdditional />
       <FooterExample />
-    </PageContainer>
-  ));
+    </PageContainer>,
+  );
 
 storiesOf('Emnesider', module)
-  .add('1. Fagoversikt', () => (
+  .add('1. Fagoversikt', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <OneColumn cssModifier="narrow">
@@ -600,38 +593,76 @@ storiesOf('Emnesider', module)
           <LayoutItem layout="center">
             <h1>Yrkesfag</h1>
             <ul>
-              <li><a href="">Naturfag</a></li>
-              <li><a href="">Engelsk</a></li>
-              <li><a href="">Helsearbeiderfag vg2</a></li>
-              <li><a href="">Barne- og ungdomsarbeiderfag Vg2</a></li>
-              <li><a href="">Brønnteknikk Vg2BETA</a></li>
-              <li><a href="">Bygg- og anleggsteknikk Vg1BETA</a></li>
-              <li><a href="">Design og håndverk Vg1</a></li>
-              <li><a href="">Elektrofag Vg1</a></li>
-              <li><a href="">Helse- og oppvekstfag Vg1</a></li>
+              <li>
+                <a href="">Naturfag</a>
+              </li>
+              <li>
+                <a href="">Engelsk</a>
+              </li>
+              <li>
+                <a href="">Helsearbeiderfag vg2</a>
+              </li>
+              <li>
+                <a href="">Barne- og ungdomsarbeiderfag Vg2</a>
+              </li>
+              <li>
+                <a href="">Brønnteknikk Vg2BETA</a>
+              </li>
+              <li>
+                <a href="">Bygg- og anleggsteknikk Vg1BETA</a>
+              </li>
+              <li>
+                <a href="">Design og håndverk Vg1</a>
+              </li>
+              <li>
+                <a href="">Elektrofag Vg1</a>
+              </li>
+              <li>
+                <a href="">Helse- og oppvekstfag Vg1</a>
+              </li>
               <li>
                 <a href="?selectedKind=Emnesider&selectedStory=2.%20Valgt%20fag&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel">
                   Helsearbeiderfag Vg2
                 </a>
               </li>
-              <li><a href="">IKT-servicefag Vg2</a></li>
-              <li><a href="">Kokk- og servitørfag Vg2</a></li>
-              <li><a href="">Naturbruk Vg1</a></li>
-              <li><a href="">Reiseliv Vg2</a></li>
-              <li><a href="">Restaurant- og matfag Vg1</a></li>
-              <li><a href="">Romteknologi Vg3</a></li>
-              <li><a href="">Salg, service og sikkerhet Vg2</a></li>
-              <li><a href="">Service og samferdsel Vg1</a></li>
-              <li><a href="">Teknikk og industriell produksjon Vg1</a></li>
-              <li><a href="">Transport og logistikk Vg2</a></li>
+              <li>
+                <a href="">IKT-servicefag Vg2</a>
+              </li>
+              <li>
+                <a href="">Kokk- og servitørfag Vg2</a>
+              </li>
+              <li>
+                <a href="">Naturbruk Vg1</a>
+              </li>
+              <li>
+                <a href="">Reiseliv Vg2</a>
+              </li>
+              <li>
+                <a href="">Restaurant- og matfag Vg1</a>
+              </li>
+              <li>
+                <a href="">Romteknologi Vg3</a>
+              </li>
+              <li>
+                <a href="">Salg, service og sikkerhet Vg2</a>
+              </li>
+              <li>
+                <a href="">Service og samferdsel Vg1</a>
+              </li>
+              <li>
+                <a href="">Teknikk og industriell produksjon Vg1</a>
+              </li>
+              <li>
+                <a href="">Transport og logistikk Vg2</a>
+              </li>
             </ul>
           </LayoutItem>
         </article>
       </OneColumn>
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('2. Fag', () => (
+    </PageContainer>,
+  )
+  .add('2. Fag', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -658,9 +689,9 @@ storiesOf('Emnesider', module)
         </article>
       </OneColumn>
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('3. Hovedemne', () => (
+    </PageContainer>,
+  )
+  .add('3. Hovedemne', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -688,9 +719,9 @@ storiesOf('Emnesider', module)
         </article>
       </OneColumn>
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('4. Underemne', () => (
+    </PageContainer>,
+  )
+  .add('4. Underemne', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -718,5 +749,5 @@ storiesOf('Emnesider', module)
         </article>
       </OneColumn>
       <FooterExample />
-    </PageContainer>
-  ));
+    </PageContainer>,
+  );

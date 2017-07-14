@@ -43,36 +43,48 @@ class ResourceSubsetList extends Component {
     const { resourceGroups, resourceToLinkProps } = this.props;
 
     return (
-      <div {...classes('')} >
-        {resourceGroups.map(group => (
-          <div key={uuid()} {...classesG('', [group.id.replace(/:/g, '-') : ''])}>
+      <div {...classes('')}>
+        {resourceGroups.map(group =>
+          <div
+            key={uuid()}
+            {...classesG('', [(group.id.replace(/:/g, '-'): '')])}>
             <FilterList
               modifiers="float-right"
               label=""
-              onClick={() => { this.setState({ secondary: !this.state.secondary }); }}
+              onClick={() => {
+                this.setState({ secondary: !this.state.secondary });
+              }}
               filterContent={[
-              { title: 'Tilleggstoff', icon: Additional, active: false },
+                { title: 'Tilleggstoff', icon: Additional, active: false },
               ]}
             />
-            <h1 {...classes('title')}>{group.title}</h1>
-            <ResourceList secondary={this.state.secondary} resourceToLinkProps={resourceToLinkProps} type={group.title} resources={group.resources} />
-          </div>
-    ))}
+            <h1 {...classes('title')}>
+              {group.title}
+            </h1>
+            <ResourceList
+              secondary={this.state.secondary}
+              resourceToLinkProps={resourceToLinkProps}
+              type={group.title}
+              resources={group.resources}
+            />
+          </div>,
+        )}
       </div>
     );
   }
 }
 
-
 ResourceSubsetList.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   toResourceTab: PropTypes.func.isRequired,
-  resourceGroups: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    viewAllLinkTitle: PropTypes.string.isRequired,
-    resources: PropTypes.arrayOf(ResourceShape).isRequired,
-  })),
+  resourceGroups: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      viewAllLinkTitle: PropTypes.string.isRequired,
+      resources: PropTypes.arrayOf(ResourceShape).isRequired,
+    }),
+  ),
 };
 
 export default ResourceSubsetList;

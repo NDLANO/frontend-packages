@@ -6,7 +6,7 @@
  *
  */
 
- /* eslint-env jest */
+/* eslint-env jest */
 
 import { getRange, stepNumbers } from '../pagerHelpers';
 

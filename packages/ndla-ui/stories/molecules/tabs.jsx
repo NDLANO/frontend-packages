@@ -25,29 +25,34 @@ export class TabsControlled extends Component {
         <Tabs
           selectedIndex={this.state.selectedIndex}
           tabs={[
-          { title: 'Bilde', content: <p>Bilde innhold</p> },
-          { title: 'Video', content: <p>Video innhold</p> },
-          { title: 'Lyd', content: <p>Lyd innhold</p> },
+            { title: 'Bilde', content: <p>Bilde innhold</p> },
+            { title: 'Video', content: <p>Video innhold</p> },
+            { title: 'Lyd', content: <p>Lyd innhold</p> },
           ]}
         />
         <InlineContainer>
-          <Button onClick={() => this.setState({ selectedIndex: 0 })}>Vis bilde fane</Button>
-          <Button onClick={() => this.setState({ selectedIndex: 1 })}>Vis video fane</Button>
-          <Button onClick={() => this.setState({ selectedIndex: 2 })}>Vis lyd fane</Button>
+          <Button onClick={() => this.setState({ selectedIndex: 0 })}>
+            Vis bilde fane
+          </Button>
+          <Button onClick={() => this.setState({ selectedIndex: 1 })}>
+            Vis video fane
+          </Button>
+          <Button onClick={() => this.setState({ selectedIndex: 2 })}>
+            Vis lyd fane
+          </Button>
         </InlineContainer>
       </div>
     );
   }
 }
 
-export const TabsDefault = () => (
+export const TabsDefault = () =>
   <Tabs
     tabs={[
-          { title: 'Bilde', content: <p>Bilde innhold</p> },
-          { title: 'Video', content: <p>Video innhold</p> },
-          { title: 'Lyd', content: <p>Lyd innhold</p> },
+      { title: 'Bilde', content: <p>Bilde innhold</p> },
+      { title: 'Video', content: <p>Video innhold</p> },
+      { title: 'Lyd', content: <p>Lyd innhold</p> },
     ]}
-  />
-);
+  />;
 
 export default TabsDefault;

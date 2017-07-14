@@ -6,18 +6,16 @@
  *
  */
 
- export const addAsideClickListener = () => {
-   document.querySelectorAll('.c-aside__button')
-    .forEach((el) => {
-      const target = el;
-      target.onclick = () => target.parentNode.classList.toggle('expanded');
-    });
- };
+export const addAsideClickListener = () => {
+  document.querySelectorAll('.c-aside__button').forEach(el => {
+    const target = el;
+    target.onclick = () => target.parentNode.classList.toggle('expanded');
+  });
+};
 
- export const removeAsideClickListener = () => {
-   document.querySelectorAll('.c-aside__button')
-    .forEach((el) => {
-      const target = el;
-      target.onclick = undefined;
-    });
- };
+export const removeAsideClickListener = () => {
+  document.querySelectorAll('.c-aside__button').forEach(el => {
+    const target = el;
+    target.onclick = undefined;
+  });
+};

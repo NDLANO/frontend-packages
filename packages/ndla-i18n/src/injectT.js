@@ -10,7 +10,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const injectT = (WrappedComponent, prefix = '') => {
-  const getDisplayName = component => component.displayName || component.name || 'Component';
+  const getDisplayName = component =>
+    component.displayName || component.name || 'Component';
 
   const InjectT = (props, context) =>
     <WrappedComponent

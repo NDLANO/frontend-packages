@@ -19,7 +19,7 @@ export const MastheadItem = ({ children, className, left, right }) => {
   );
   return (
     <div className={classes}>
-      { children }
+      {children}
     </div>
   );
 };

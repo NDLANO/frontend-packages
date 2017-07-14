@@ -18,13 +18,25 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const AuthorsList = ({ authors }) => <span {...classes('authors')}><span {...classes('icon')}><User /></span> {authors.map(author => author.name).join(', ')}</span>;
+const AuthorsList = ({ authors }) =>
+  <span {...classes('authors')}>
+    <span {...classes('icon')}>
+      <User />
+    </span>{' '}
+    {authors.map(author => author.name).join(', ')}
+  </span>;
 
 AuthorsList.propTypes = {
   authors: PropTypes.array,
 };
 
-const LastUpdated = ({ date }) => <span {...classes('date')}><span {...classes('icon')}><Time /></span> Sist oppdatert: {moment(date).format('DD/MM/YYYY')}</span>;
+const LastUpdated = ({ date }) =>
+  <span {...classes('date')}>
+    <span {...classes('icon')}>
+      <Time />
+    </span>{' '}
+    Sist oppdatert: {moment(date).format('DD/MM/YYYY')}
+  </span>;
 
 LastUpdated.propTypes = {
   date: PropTypes.string,
@@ -39,7 +51,8 @@ const ArticleByline = ({ article }) => {
     <div>
       <section {...classes()}>
         <span {...classes('flex')}>
-          {article.copyright.authors && <AuthorsList authors={article.copyright.authors} />}
+          {article.copyright.authors &&
+            <AuthorsList authors={article.copyright.authors} />}
           <LastUpdated date={article.updated} />
           <LicenseExample />
         </span>

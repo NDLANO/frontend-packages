@@ -11,9 +11,4 @@ import getComponentName from './getComponentName';
 import copyTextToClipboard from './copyTextToClipboard';
 import { tagsI18N } from './i18nFieldFinder';
 
-export {
-  uuid,
-  getComponentName,
-  copyTextToClipboard,
-  tagsI18N,
-};
+export { uuid, getComponentName, copyTextToClipboard, tagsI18N };

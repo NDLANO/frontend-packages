@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2016-present, NDLA.
  *
@@ -40,7 +39,10 @@ import PlusIcon from './internal-icons/Plus';
 
 function Icon(props) {
   const { icon, className, ...rest } = props;
-  return createElement(icon, { className: classNames('c-icon', className), ...rest });
+  return createElement(icon, {
+    className: classNames('c-icon', className),
+    ...rest,
+  });
 }
 
 Icon.propTypes = {
@@ -48,31 +50,30 @@ Icon.propTypes = {
   className: PropTypes.string,
 };
 
-
-export const Download = props => (<Icon {...props} icon={DownloadIcon} />);
-export const Copy = props => (<Icon {...props} icon={CopyIcon} />);
-export const Audio = props => (<Icon {...props} icon={AudioIcon} />);
-export const Document = props => (<Icon {...props} icon={DocumentIcon} />);
-export const Home = props => (<Icon {...props} icon={HomeIcon} />);
-export const Arrow = props => (<Icon {...props} icon={ArrowIcon} />);
-export const Grid = props => (<Icon {...props} icon={GridIcon} />);
-export const Link = props => (<Icon {...props} icon={LinkIcon} />);
-export const Embed = props => (<Icon {...props} icon={EmbedIcon} />);
-export const Book = props => (<Icon {...props} icon={BookIcon} />);
-export const Path = props => (<Icon {...props} icon={PathIcon} />);
-export const Pencil = props => (<Icon {...props} icon={PencilIcon} />);
-export const Search = props => (<Icon {...props} icon={SearchIcon} />);
-export const Time = props => (<Icon {...props} icon={TimeIcon} />);
-export const User = props => (<Icon {...props} icon={UserIcon} />);
-export const OpenWindow = props => (<Icon {...props} icon={OpenWindowIcon} />);
-export const LicenseCc = props => (<Icon {...props} icon={LicenseCcIcon} />);
-export const LicenseBy = props => (<Icon {...props} icon={LicenseByIcon} />);
-export const LicenseNc = props => (<Icon {...props} icon={LicenseNcIcon} />);
-export const LicenseNd = props => (<Icon {...props} icon={LicenseNdIcon} />);
-export const LicenseSa = props => (<Icon {...props} icon={LicenseSaIcon} />);
-export const Additional = props => (<Icon {...props} icon={AdditionalIcon} />);
-export const Camera = props => (<Icon {...props} icon={CameraIcon} />);
-export const Cross = props => (<Icon {...props} icon={CrossIcon} />);
-export const Plus = props => (<Icon {...props} icon={PlusIcon} />);
+export const Download = props => <Icon {...props} icon={DownloadIcon} />;
+export const Copy = props => <Icon {...props} icon={CopyIcon} />;
+export const Audio = props => <Icon {...props} icon={AudioIcon} />;
+export const Document = props => <Icon {...props} icon={DocumentIcon} />;
+export const Home = props => <Icon {...props} icon={HomeIcon} />;
+export const Arrow = props => <Icon {...props} icon={ArrowIcon} />;
+export const Grid = props => <Icon {...props} icon={GridIcon} />;
+export const Link = props => <Icon {...props} icon={LinkIcon} />;
+export const Embed = props => <Icon {...props} icon={EmbedIcon} />;
+export const Book = props => <Icon {...props} icon={BookIcon} />;
+export const Path = props => <Icon {...props} icon={PathIcon} />;
+export const Pencil = props => <Icon {...props} icon={PencilIcon} />;
+export const Search = props => <Icon {...props} icon={SearchIcon} />;
+export const Time = props => <Icon {...props} icon={TimeIcon} />;
+export const User = props => <Icon {...props} icon={UserIcon} />;
+export const OpenWindow = props => <Icon {...props} icon={OpenWindowIcon} />;
+export const LicenseCc = props => <Icon {...props} icon={LicenseCcIcon} />;
+export const LicenseBy = props => <Icon {...props} icon={LicenseByIcon} />;
+export const LicenseNc = props => <Icon {...props} icon={LicenseNcIcon} />;
+export const LicenseNd = props => <Icon {...props} icon={LicenseNdIcon} />;
+export const LicenseSa = props => <Icon {...props} icon={LicenseSaIcon} />;
+export const Additional = props => <Icon {...props} icon={AdditionalIcon} />;
+export const Camera = props => <Icon {...props} icon={CameraIcon} />;
+export const Cross = props => <Icon {...props} icon={CrossIcon} />;
+export const Plus = props => <Icon {...props} icon={PlusIcon} />;
 
 export default Icon;

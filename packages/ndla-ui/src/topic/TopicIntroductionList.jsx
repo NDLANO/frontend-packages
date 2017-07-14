@@ -17,25 +17,31 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const TopicIntroduction = ({ toTopic, topic }) => (
+const TopicIntroduction = ({ toTopic, topic }) =>
   <li {...classes('item')}>
     <div {...classes('body')}>
-      <h3 {...classes('header')}><SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink></h3>
-      <p>{topic.introduction}</p>
+      <h3 {...classes('header')}>
+        <SafeLink to={toTopic(topic.id)}>
+          {topic.name}
+        </SafeLink>
+      </h3>
+      <p>
+        {topic.introduction}
+      </p>
     </div>
-  </li>
-);
+  </li>;
 
 TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
 };
 
-const TopicIntroductionList = ({ topics, ...rest }) => (
-  <ul {...classes('list')} >
-    { topics.map(topic => <TopicIntroduction key={topic.id} {...rest} topic={topic} />)}
-  </ul>
-  );
+const TopicIntroductionList = ({ topics, ...rest }) =>
+  <ul {...classes('list')}>
+    {topics.map(topic =>
+      <TopicIntroduction key={topic.id} {...rest} topic={topic} />,
+    )}
+  </ul>;
 
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,

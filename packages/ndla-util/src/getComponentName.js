@@ -6,8 +6,7 @@
  *
  */
 
-const getComponentName = component => (
-  component.displayName || component.name || 'Component'
-);
+const getComponentName = component =>
+  component.displayName || component.name || 'Component';
 
 export default getComponentName;

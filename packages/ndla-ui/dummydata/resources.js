@@ -6,7 +6,8 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:339',
     title: 'Hva er en idé?',
-    introduction: 'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
+    introduction:
+      'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
     type: 'Lærestoff',
   },
@@ -16,7 +17,8 @@ export const articleResources = [
     name: 'Ideer og idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:article:165',
-    introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
+    introduction:
+      'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Ideer og idéutvikling',
     tag: 'Film',
     type: 'Lærestoff',
@@ -27,7 +29,8 @@ export const articleResources = [
     name: 'Kreativ kommunikasjon',
     resourceTypes: [],
     contentUri: 'urn:article:166',
-    introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
+    introduction:
+      'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Kreativ kommunikasjon',
     tag: 'Film',
     type: 'Lærestoff',
@@ -124,7 +127,8 @@ export const learningPathResources = [
     contentUri: 'urn:learningpath:30',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/tegner_ide.png',
     title: 'Teknikker for idéutvikling',
-    introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
+    introduction:
+      'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Læringsstier',
     primary: true,
   },
@@ -164,7 +168,6 @@ export const learningPathResources = [
   },
 ];
 
-
 export const exerciseResources = [
   {
     topicId: 'urn:topic:170363',
@@ -174,7 +177,8 @@ export const exerciseResources = [
     contentUri: 'urn:exercises:30',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/tegner_ide.png',
     title: 'Teknikker for idéutvikling',
-    introduction: 'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
+    introduction:
+      'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Oppgaver og aktiviteter',
   },
   {

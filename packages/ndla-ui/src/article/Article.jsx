@@ -15,11 +15,15 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Article = ({ children }) => <article {...classes()}><section> { children } </section></article>;
+export const Article = ({ children }) =>
+  <article {...classes()}>
+    <section>
+      {' '}{children}{' '}
+    </section>
+  </article>;
 
 Article.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
 
 export default Article;

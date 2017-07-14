@@ -43,7 +43,15 @@ TopicBreadcrumbItem.propTypes = {
   inMasthead: PropTypes.bool,
 };
 
-const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, currentTopic, inMasthead }) => {
+const TopicBreadcrumb = ({
+  children,
+  subject,
+  topicPath,
+  toTopic,
+  toSubjects,
+  currentTopic,
+  inMasthead,
+}) => {
   let classBase = 'breadcrumb';
   if (inMasthead) {
     classBase = 'breadcrumb-masthead';
@@ -58,19 +66,35 @@ const TopicBreadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, cu
     <div {...classesMH('')}>
       {children}
       <ol {...classesMH('list')}>
-        <TopicBreadcrumbItem inMasthead={inMasthead} key={uuid()} topicIds={[]} to={toSubjects()} extraClass="home"><Home className="c-icon--20" /></TopicBreadcrumbItem>
-        <TopicBreadcrumbItem inMasthead={inMasthead} key={subject.id} topicIds={[]} to={toTopic(subject.id)}>{subject.name}</TopicBreadcrumbItem>
-        { topicPath.map((topic, i) =>
+        <TopicBreadcrumbItem
+          inMasthead={inMasthead}
+          key={uuid()}
+          topicIds={[]}
+          to={toSubjects()}
+          extraClass="home">
+          <Home className="c-icon--20" />
+        </TopicBreadcrumbItem>
+        <TopicBreadcrumbItem
+          inMasthead={inMasthead}
+          key={subject.id}
+          topicIds={[]}
+          to={toTopic(subject.id)}>
+          {subject.name}
+        </TopicBreadcrumbItem>
+        {topicPath.map((topic, i) =>
           <TopicBreadcrumbItem
             key={topic.id}
             topicIds={topicIds.slice(0, 1 + i)}
             to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}
-            extraClass={currentTopic && currentTopic.name === topic.name ? 'current' : null}
-            inMasthead={inMasthead}
-          >
-            { topic.name }
-          </TopicBreadcrumbItem>)
-        }
+            extraClass={
+              currentTopic && currentTopic.name === topic.name
+                ? 'current'
+                : null
+            }
+            inMasthead={inMasthead}>
+            {topic.name}
+          </TopicBreadcrumbItem>,
+        )}
       </ol>
     </div>
   );

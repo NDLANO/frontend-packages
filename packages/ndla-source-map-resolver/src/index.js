@@ -6,7 +6,6 @@
  *
  */
 
-
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -39,15 +38,17 @@ function printSourceLine(mapConsumer, orgPos) {
   const lines = src.split('\n');
   const line = lines[orgPos.line - 1];
 
-  process.stdout.write(
-    chalk.bold.green(`${line} \n`)
-  );
+  process.stdout.write(chalk.bold.green(`${line} \n`));
 }
 
 function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
-  const orgPos = mapConsumer.originalPositionFor({ line: frame.line, column: frame.column });
+  const orgPos = mapConsumer.originalPositionFor({
+    line: frame.line,
+    column: frame.column,
+  });
   process.stdout.write(
-    chalk.bold.red(`  at ${orgPos.name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`)
+    chalk.bold.red(`  at ${orgPos.name} `) +
+      chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
   );
 
   if (printSourceLineFlag) {
@@ -64,7 +65,7 @@ function runSourceMapResolver(argv) {
   const { stack } = stackInfo;
 
   process.stdout.write(
-    chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`)
+    chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`),
   );
   stack.forEach(frame => printOriginalPosition(mapConsumer, frame));
 }

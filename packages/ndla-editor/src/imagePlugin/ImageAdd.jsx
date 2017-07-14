@@ -11,7 +11,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class ImageAdd extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -40,12 +39,13 @@ export default class ImageAdd extends Component {
           onChange={this.changeUrl}
           value={this.state.url}
         />
-        <button type="button" onClick={this.addImage} > Add </button>
+        <button type="button" onClick={this.addImage}>
+          {' '}Add{' '}
+        </button>
       </div>
     );
   }
 }
-
 
 ImageAdd.propTypes = {
   onChange: PropTypes.func.isRequired,

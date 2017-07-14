@@ -18,14 +18,17 @@ import { Button } from '../../src/';
 const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 
 function findEmbedDataInContentState(constentState) {
-  return constentState.getBlocksAsArray().filter(block => block.getEntityAt(0)).map((block) => {
-    const key = block.getEntityAt(0);
-    return constentState.getEntity(key).getData();
-  });
+  return constentState
+    .getBlocksAsArray()
+    .filter(block => block.getEntityAt(0))
+    .map(block => {
+      const key = block.getEntityAt(0);
+      return constentState.getEntity(key).getData();
+    });
 }
 
 function updateEnitiesInContentState(constentState, embedsWithResources) {
-  const blockMap = constentState.getBlockMap().map((block) => {
+  const blockMap = constentState.getBlockMap().map(block => {
     const key = block.getEntityAt(0);
     if (key) {
       const id = constentState.getEntity(key).getData().id;
@@ -41,8 +44,7 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
         caption: constentState.getEntity(key).getData().caption,
       });
 
-      return block
-        .set('text', ' '); // Fix 'a' hack (See https://github.com/HubSpot/draft-convert/blob/master/src/convertFromHTML.js#L381-L388)
+      return block.set('text', ' '); // Fix 'a' hack (See https://github.com/HubSpot/draft-convert/blob/master/src/convertFromHTML.js#L381-L388)
     }
     return block;
   });
@@ -51,27 +53,38 @@ function updateEnitiesInContentState(constentState, embedsWithResources) {
 
 function reduceAttributesArrayToObject(attributes) {
   // Reduce attributes array to object with attribute name (striped of data-) as keys.
-  return attributes.reduce((all, attr) => Object.assign({}, all, { [attr.nodeName.replace('data-', '')]: attr.nodeValue }), {});
+  return attributes.reduce(
+    (all, attr) =>
+      Object.assign({}, all, {
+        [attr.nodeName.replace('data-', '')]: attr.nodeValue,
+      }),
+    {},
+  );
 }
 
 function fetchEmbedData(embed) {
   if (embed.resource === 'image') {
-    return fetchWithToken(embed.url.replace('http', 'https'))
-      .then(image => ({ ...embed, image }));
+    return fetchWithToken(embed.url.replace('http', 'https')).then(image => ({
+      ...embed,
+      image,
+    }));
   }
   return embed;
 }
 
 function convertContentToContentState(content) {
   return convertFromHTML({
-    htmlToBlock: (nodeName) => {
+    htmlToBlock: nodeName => {
       if (nodeName === 'embed') {
         return 'atomic';
       }
       return undefined;
     },
     htmlToEntity: (nodeName, node) => {
-      if (nodeName === 'embed' && node.attributes['data-resource'].nodeValue === 'image') {
+      if (
+        nodeName === 'embed' &&
+        node.attributes['data-resource'].nodeValue === 'image'
+      ) {
         const data = reduceAttributesArrayToObject(Array.from(node.attributes));
         return Entity.create('image', 'IMMUTABLE', data);
       } else if (nodeName === 'embed') {
@@ -86,7 +99,7 @@ function convertContentToContentState(content) {
 class ArticleEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -98,28 +111,44 @@ class ArticleEditor extends Component {
   }
 
   handleSubmit(articleId) {
-    fetchArticleFromApi(articleId)
-      .then((article) => {
-        const contentState = convertContentToContentState(article.content);
+    fetchArticleFromApi(articleId).then(article => {
+      const contentState = convertContentToContentState(article.content);
 
-        const embeds = findEmbedDataInContentState(contentState);
+      const embeds = findEmbedDataInContentState(contentState);
 
-        Promise.all(embeds.map(fetchEmbedData)).then((embedsWithResources) => {
-          const updatedContentState = updateEnitiesInContentState(contentState, embedsWithResources);
-          this.setState({
-            contentState: updatedContentState,
-          });
+      Promise.all(embeds.map(fetchEmbedData)).then(embedsWithResources => {
+        const updatedContentState = updateEnitiesInContentState(
+          contentState,
+          embedsWithResources,
+        );
+        this.setState({
+          contentState: updatedContentState,
         });
       });
+    });
   }
 
   render() {
     const { contentState, message } = this.state;
-    const editorState = contentState ? EditorState.createWithContent(contentState) : undefined;
+    const editorState = contentState
+      ? EditorState.createWithContent(contentState)
+      : undefined;
     return (
       <div>
-        { editorState ? <Button style={{ float: 'right' }} onClick={() => this.setState({ contentState: undefined })}>X</Button> : null}
-        { editorState ? <StatefulNDLAEditor value={editorState} /> : <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />}
+        {editorState
+          ? <Button
+              style={{ float: 'right' }}
+              onClick={() => this.setState({ contentState: undefined })}>
+              X
+            </Button>
+          : null}
+        {editorState
+          ? <StatefulNDLAEditor value={editorState} />
+          : <SimpleSubmitForm
+              onSubmit={this.handleSubmit}
+              errorMessage={message}
+              labelText="Artikkel ID:"
+            />}
       </div>
     );
   }

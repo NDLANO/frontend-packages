@@ -6,18 +6,18 @@
  *
  */
 
- /* eslint-env jest */
+/* eslint-env jest */
 
 import React from 'react';
 import { shallow } from 'enzyme';
 
 import Pager, { PageItem } from '../Pager';
 
-
 function pagerTest({ setup, expected }) {
   test(`component/LinkPager page ${setup.page}/${setup.lastPage}`, () => {
-    const steps = shallow(<Pager pathname="somepath" query={{}} {...setup} />)
-      .children();
+    const steps = shallow(
+      <Pager pathname="somepath" query={{}} {...setup} />,
+    ).children();
 
     const prev = setup.page - 1;
     const next = setup.page + 1;

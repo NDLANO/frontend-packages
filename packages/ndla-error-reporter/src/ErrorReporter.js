@@ -49,8 +49,15 @@ const ErrorReporter = (function Singleton() {
 
   function processStackInfo(stackInfo, config, additionalInfo) {
     // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
-    const firstFrame = stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
-    const deduplicate = [stackInfo.name, stackInfo.message, firstFrame.url, firstFrame.line, firstFrame.func].join('|');
+    const firstFrame =
+      stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
+    const deduplicate = [
+      stackInfo.name,
+      stackInfo.message,
+      firstFrame.url,
+      firstFrame.line,
+      firstFrame.func,
+    ].join('|');
 
     if (deduplicate !== previousNotification) {
       previousNotification = deduplicate;
@@ -61,7 +68,7 @@ const ErrorReporter = (function Singleton() {
 
   function init(config) {
     // Suscribes to window.onerror
-    TraceKit.report.subscribe((stackInfo) => {
+    TraceKit.report.subscribe(stackInfo => {
       processStackInfo(stackInfo, config);
     });
 
@@ -88,6 +95,6 @@ const ErrorReporter = (function Singleton() {
       return instance;
     },
   };
-}());
+})();
 
 export default ErrorReporter;

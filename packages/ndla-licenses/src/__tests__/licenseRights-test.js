@@ -6,7 +6,7 @@
  *
  */
 
- /* eslint-env jest */
+/* eslint-env jest */
 
 import { getLicenseRightByAbbreviation, BY, COPY } from '../licenseRights';
 
@@ -15,7 +15,9 @@ test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   expect(licenseRight.title).toBe('Navngivelse');
   expect(licenseRight.short).toBe(BY);
   expect(licenseRight.userFriendlyTitle).toBe('Navngivelse');
-  expect(licenseRight.description).toBe('Du må alltid oppgi hvem som har laget bildet, videoen, teksten osv.');
+  expect(licenseRight.description).toBe(
+    'Du må alltid oppgi hvem som har laget bildet, videoen, teksten osv.',
+  );
 });
 
 test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {
@@ -23,5 +25,7 @@ test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {
   expect(licenseRight.title).toBe('Copyright');
   expect(licenseRight.short).toBe(COPY);
   expect(licenseRight.userFriendlyTitle).toBe('Copyright');
-  expect(licenseRight.description).toBe('Only the creator can derive, publish, or license the work. It can not be shared without permission.');
+  expect(licenseRight.description).toBe(
+    'Only the creator can derive, publish, or license the work. It can not be shared without permission.',
+  );
 });

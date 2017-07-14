@@ -18,8 +18,8 @@ const classes = new BEMHelper({
 });
 
 export const SiteNavItem = ({ to, cssModifier, ...rest }) => {
-  const link = to ?
-    <SafeLink to={to} {...classes('link')} {...rest} />
+  const link = to
+    ? <SafeLink to={to} {...classes('link')} {...rest} />
     : <Button {...classes('link')} stripped {...rest} />;
 
   return (
@@ -36,13 +36,12 @@ SiteNavItem.propTypes = {
   onClick: PropTypes.func,
 };
 
-export const SiteNav = ({ children, cssModifier }) => (
+export const SiteNav = ({ children, cssModifier }) =>
   <div {...classes('container', cssModifier)}>
     <ul {...classes('list')}>
       {children}
     </ul>
-  </div>
-);
+  </div>;
 
 SiteNav.propTypes = {
   children: PropTypes.node,

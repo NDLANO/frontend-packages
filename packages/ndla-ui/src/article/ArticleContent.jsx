@@ -15,7 +15,6 @@ import {
   removeAsideClickListener,
 } from 'ndla-article-scripts';
 
-
 export default class TopicArticleContent extends Component {
   componentDidMount() {
     initArticleScripts();

@@ -144,3 +144,24 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       description: abbreviation };
   }
 }
+
+export function getLicenseByNBTitle(title, locale) {
+  switch (title.replace(/\s/g, '').toLowerCase()) {
+    case 'navngivelse-ikkekommersiell-ingenbearbeidelser':
+      return getLicenseByAbbreviation('by-nc-nd', locale);
+    case 'navngivelse-ikkekommersiell-ingenbearbeidelse':
+      return getLicenseByAbbreviation('by-nc-nd', locale);
+    case 'navngivelse-ikkekommersiell-delpåsammevilkår':
+      return getLicenseByAbbreviation('by-nc-sa', locale);
+    case 'navngivelse-ikkekommersiell':
+      return getLicenseByAbbreviation('by-nc', locale);
+    case 'navngivelse-ingenbearbeidelse':
+      return getLicenseByAbbreviation('by-nd', locale);
+    case 'navngivelse-delpåsammevilkår':
+      return getLicenseByAbbreviation('by-sa', locale);
+    case 'navngivelse':
+      return getLicenseByAbbreviation('by', locale);
+    default:
+      return title;
+  }
+}

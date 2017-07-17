@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'ndla-ui';
+import { Button, LicenseIconList } from 'ndla-ui';
+import { getLicenseByNBTitle } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 
@@ -19,26 +20,42 @@ const classes = new BEMHelper({
 
 export default function VideoSearchResult({
   video,
-  onVideoClick,
+  onVideoPreview,
   selectedVideo,
   onSelectVideo,
   locale,
+  translations,
 }) {
   const active = selectedVideo && selectedVideo.id === video.id ? 'active' : '';
+  const license = getLicenseByNBTitle(video.custom_fields.license, locale);
 
   return (
     <div key={video.id} {...classes('list-item', active)}>
       <div {...classes('list-item-inner')}>
-        <Button stripped onClick={() => onVideoClick(video)}>
-          <img
-            role="presentation"
-            alt="presentation"
-            src={video.images.thumbnail.src}
-          />
-        </Button>
+        <img
+          role="presentation"
+          alt="presentation"
+          src={video.images.thumbnail.src}
+        />
+        <div {...classes('information')}>
+          <h2>{video.name}</h2>
+          <div {...classes('copyright-author')}>
+            {video.custom_fields.licenseinfo}
+          </div>
+          <div {...classes('license')}>
+            {license.rights ? <LicenseIconList licenseRights={license.rights} noText /> : license}
+          </div>
+          <Button {...classes('button')} outline onClick={() => onVideoPreview(video)}>
+            {translations.previewVideo}
+          </Button>
+          <Button {...classes('button')} onClick={() => onSelectVideo(video)}>
+            {translations.addVideo}
+          </Button>
+        </div>
       </div>
+
       {selectedVideo && selectedVideo.id === video.id
-        ? <PreviewVideo image={selectedVideo} onSelectImage={onSelectVideo} locale={locale} />
+        ? <PreviewVideo video={selectedVideo} onVideoPreview={onVideoPreview} />
         : ''}
     </div>
   );
@@ -47,12 +64,25 @@ export default function VideoSearchResult({
 VideoSearchResult.propTypes = {
   video: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    previewUrl: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    custom_fields: PropTypes.shape({
+      licenseinfo: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+    }),
+    images: PropTypes.shape({
+      thumbnail: PropTypes.shape({
+        src: PropTypes.string.isRequired,
+      }),
+    }),
   }),
-  onVideoClick: PropTypes.func.isRequired,
+  onVideoPreview: PropTypes.func.isRequired,
   selectedVideo: PropTypes.shape({
     id: PropTypes.string.isRequired,
   }),
   onSelectVideo: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
+  translations: PropTypes.shape({
+    addVideo: PropTypes.string.isRequired,
+    PreviewVideo: PropTypes.string.isRequired,
+  }),
 };

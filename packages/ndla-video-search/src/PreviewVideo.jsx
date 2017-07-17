@@ -10,26 +10,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
-import { uuid, tagsI18N } from 'ndla-util';
-
+import { Cross } from 'ndla-ui/icons';
 
 const classes = new BEMHelper({
   name: 'video-preview',
   prefix: 'c-',
 });
 
-const preferdLocales = ['nb', 'nn', 'en'];
-
-export default function PreviewVideo({ video, onSelectVideo, locale }) {
+export default function PreviewVideo({ video, onVideoPreview }) {
   return (
     <div {...classes()}>
-      <p>{video.name}</p>
+      <Button {...classes('close')} stripped onClick={() => onVideoPreview(undefined)}>
+        <Cross />
+      </Button>
+      <iframe
+        {...classes('video')}
+        src={`//players.brightcove.net/${video.account_id}/_default/index.html?videoId=${video.id}`}
+        allowFullScreen
+        webkitallowfullscreen
+        mozallowfullscreen
+      />
     </div>
   );
 }
 
 PreviewVideo.propTypes = {
-  video: PropTypes.object.isRequired,
-  onSelectVideo: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
+  video: PropTypes.shape({
+    id: PropTypes.id.isRequired,
+  }),
+  onVideoPreview: PropTypes.func.isRequired,
 };

@@ -8,6 +8,7 @@
 
 import {
   getLicenseByAbbreviation,
+  getLicenseByNBTitle,
 } from './licenses';
 
 import {
@@ -33,6 +34,7 @@ export {
   COPY,
   getLicenseByAbbreviation,
   getLicenseRightByAbbreviation,
+  getLicenseByNBTitle,
 };
 
 export default getLicenseByAbbreviation;

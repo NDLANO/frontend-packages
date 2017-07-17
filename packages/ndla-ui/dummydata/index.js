@@ -8,7 +8,7 @@ import topicArticle from './topicArticle';
 import { topicMenu, subtopicList, topicList } from './mockTopics';
 import { learningPathResources, articleResources, exerciseResources } from './resources';
 import { subjectList } from './mockSubjects';
-import { brightCoveMock } from './mockBrightcove';
+import { firstBrightCoveList, secondBrightCoveList, brightCoveMockVideo } from './mockBrightcove';
 
 const article = {
   article4,
@@ -20,6 +20,6 @@ const article = {
   topicArticle,
 };
 
-export { topicMenu, topicList, subjectList, learningPathResources, articleResources, exerciseResources, subtopicList, brightCoveMock };
+export { topicMenu, topicList, subjectList, learningPathResources, articleResources, exerciseResources, subtopicList, firstBrightCoveList, secondBrightCoveList, brightCoveMockVideo };
 
 export default article;

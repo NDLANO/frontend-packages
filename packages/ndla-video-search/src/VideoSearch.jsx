@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pager } from 'ndla-ui';
+import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 
 import VideoSearchForm from './VideoSearchForm';
@@ -25,8 +25,8 @@ class ImageSearch extends React.Component {
     this.state = {
       queryObject: {
         query: undefined,
-        page: 1,
-        pageSize: 16,
+        offset: 0,
+        limit: 10,
       },
       videos: [],
       selectedVideo: undefined,
@@ -38,28 +38,41 @@ class ImageSearch extends React.Component {
     this.submitVideoSearchQuery = this.submitVideoSearchQuery.bind(this);
     this.changeQueryPage = this.changeQueryPage.bind(this);
     this.searchVideos = this.searchVideos.bind(this);
-    this.onVideoClick = this.onVideoClick.bind(this);
+    this.onVideoPreview = this.onVideoPreview.bind(this);
     this.onSelectVideo = this.onSelectVideo.bind(this);
+    this.loadMoreVideos = this.loadMoreVideos.bind(this);
   }
 
   componentDidMount() {
     this.searchVideos(this.state.queryObject);
   }
 
-  onVideoClick(image) {
-    if (!this.state.selectedImage || image.id !== this.state.selectedImage.id) {
-      this.props.fetchVideo(image.id).then((result) => {
-        this.setState({ selectedImage: result });
-      }).catch((err) => {
-        this.props.onError(err);
-      });
-    }
+
+  onVideoPreview(video) {
+    this.setState({ selectedVideo: video });
   }
 
   onSelectVideo(image) {
     this.setState({ selectedImage: undefined });
     this.props.onVideoSelect(image);
   }
+
+  loadMoreVideos() {
+    this.setState({ searching: true });
+    this.props.searchVideos(this.state.queryObject.query, this.state.queryObject.offset + 10, this.state.queryObject.limit).then((result) => {
+      this.setState(prevState => ({
+        queryObject: {
+          offset: prevState.queryObject.offset + 10,
+        },
+        videos: this.state.videos.concat(result),
+        searching: false,
+      }));
+    }).catch((err) => {
+      this.props.onError(err);
+      this.setState({ searching: false });
+    });
+  }
+
   submitVideoSearchQuery(query) {
     this.searchVideos({ query, page: 1 });
   }
@@ -70,15 +83,13 @@ class ImageSearch extends React.Component {
 
   searchVideos(queryObject) {
     this.setState({ searching: true });
-    this.props.searchVideos(queryObject.query, queryObject.page, this.props.locale).then((result) => {
-      console.log(result);
+    this.props.searchVideos(queryObject.query, 0, queryObject.limit).then((result) => {
       this.setState({
         queryObject: {
           query: queryObject.query,
+          offset: 0,
         },
         videos: result,
-        totalCount: result.totalCount,
-        lastPage: Math.ceil(result.totalCount / result.pageSize),
         searching: false,
       });
     }).catch((err) => {
@@ -89,8 +100,7 @@ class ImageSearch extends React.Component {
 
   render() {
     const {
-      searchPlaceholder,
-      searchButtonTitle,
+      translations,
       locale,
     } = this.props;
 
@@ -102,28 +112,32 @@ class ImageSearch extends React.Component {
     } = this.state;
 
     const { query } = queryObject;
-    console.log(videos);
+
     return (
       <div {...classes()}>
         <VideoSearchForm
           onSearchQuerySubmit={this.submitVideoSearchQuery}
           query={query}
           searching={searching}
-          searchPlaceholder={searchPlaceholder}
-          searchButtonTitle={searchButtonTitle}
+          translations={translations}
         />
         <div {...classes('list')}>
-          {videos.map(video =>
+          {videos && videos.length > 0 ? videos.map(video =>
             <VideoSearchResult
               key={video.id}
               video={video}
-              onImageClick={this.onVideoClick}
-              selectedImage={selectedVideo}
-              onSelectImage={this.onSelectVideo}
+              onVideoPreview={this.onVideoPreview}
+              selectedVideo={selectedVideo}
+              onSelectVideo={this.onSelectVideo}
               locale={locale}
             />,
-        )}
+        ) : <p>translations.noResults</p>}
         </div>
+        {videos.length % 10 === 0 ? <div {...classes('load-videos')}>
+          <Button disabled={this.state.searching} onClick={this.loadMoreVideos}>
+            {this.state.searching ? <div {...classes('spinner')} /> : translations.loadMoreVideos}
+          </Button>
+        </div> : ''}
       </div>
     );
   }
@@ -134,8 +148,11 @@ ImageSearch.propTypes = {
   searchVideos: PropTypes.func.isRequired,
   fetchVideo: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
-  searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired,
+  translations: PropTypes.shape({
+    searchPlaceholder: PropTypes.string.isRequired,
+    searchButtonTitle: PropTypes.string.isRequired,
+    loadMoreVideos: PropTypes.string.isRequired,
+  }),
   locale: PropTypes.string.isRequired,
 };
 

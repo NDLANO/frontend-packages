@@ -10,14 +10,19 @@
 import React from 'react';
 
 import VideoSearch from 'ndla-video-search';
-import { brightCoveMock } from '../../dummydata';
+import { firstBrightCoveList, secondBrightCoveList, brightCoveMockVideo } from '../../dummydata';
 
-const fetchVideos = () => new Promise((resolve) => {
-  resolve(brightCoveMock);
+const fetchVideos = (query, offset) => new Promise((resolve) => {
+  if (offset > 0) {
+    return setTimeout(() => resolve(secondBrightCoveList), 1000);
+  }
+  return resolve(firstBrightCoveList);
 });
 
-const fetchVideo = () => new Promise((resolve) => {
-  resolve(brightCoveMock);
+const fetchVideo = id => new Promise((resolve) => {
+  const modifiedVideo = brightCoveMockVideo;
+  modifiedVideo.id = id;
+  resolve(modifiedVideo);
 });
 
 export const ImageSearcher = () => {
@@ -28,12 +33,18 @@ export const ImageSearcher = () => {
   const onError = (err) => {
     console.error(err);
   };
-
+  const translations = {
+    searchPlaceholder: 'Søk i videoer',
+    searchButtonTitle: 'Søk',
+    loadMoreVideos: 'Last flere videor',
+    noResults: 'Ingen videor funnet.',
+    addVideo: 'Bruk video',
+    previewVideo: 'Forhåndsvis',
+  };
   return (
     <VideoSearch
-      searchPlaceholder="Søk i videoer"
-      searchButtonTitle="Søk"
-      fetchImage={fetchVideo}
+      translations={translations}
+      fetchVideo={fetchVideo}
       searchVideos={fetchVideos}
       locale="nb"
       onVideoSelect={videoSelect}

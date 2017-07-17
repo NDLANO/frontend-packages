@@ -43,7 +43,7 @@ class SearchForm extends Component {
   }
 
   render() {
-    const { searching, searchPlaceholder, searchButtonTitle } = this.props;
+    const { searching, translations } = this.props;
     return (
       <div {...classes('form')}>
         <input
@@ -52,14 +52,14 @@ class SearchForm extends Component {
           onChange={this.handleQueryChange}
           onKeyPress={this.onKeyPress}
           value={this.state.query}
-          placeholder={searchPlaceholder}
+          placeholder={translations.searchPlaceholder}
         />
         <Button
           {...classes('form-button')}
           onClick={this.handleSubmit}
           loading={searching}
         >
-          {searchButtonTitle}
+          {translations.searchButtonTitle}
         </Button>
       </div>
     );
@@ -70,8 +70,10 @@ SearchForm.propTypes = {
   query: PropTypes.string,
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
-  searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired,
+  translations: PropTypes.shape({
+    searchPlaceholder: PropTypes.string.isRequired,
+    searchButtonTitle: PropTypes.string.isRequired,
+  }),
 };
 
 SearchForm.defaultProps = {

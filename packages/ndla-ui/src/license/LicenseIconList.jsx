@@ -64,20 +64,23 @@ LicenseIcon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-const LicenseIconItem = ({ licenseRight, activeLicenseRight }) =>
+const LicenseIconItem = ({ licenseRight, activeLicenseRight, noText }) =>
   <li {...classes('item', activeLicenseRight === licenseRight && 'active')}>
     <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-    <span className="c-license-icons__licenselabel">
-      {getLicenseRightByAbbreviation(licenseRight).description}
-    </span>
+    {!noText
+      ? <span className="c-license-icons__licenselabel">
+          {getLicenseRightByAbbreviation(licenseRight).description}
+        </span>
+      : ''}
   </li>;
 
 LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
   activeLicenseRight: PropTypes.string,
+  noText: PropTypes.bool,
 };
 
-const LicenseIconList = ({ licenseRights, ...rest }) => {
+const LicenseIconList = ({ licenseRights, noText, ...rest }) => {
   const licenseRightsWithCC = [CC, ...licenseRights];
   return (
     <ul {...classes('list')}>
@@ -85,6 +88,7 @@ const LicenseIconList = ({ licenseRights, ...rest }) => {
         <LicenseIconItem
           key={licenseRight}
           licenseRight={licenseRight}
+          noText={noText}
           {...rest}
         />,
       )}
@@ -95,6 +99,11 @@ const LicenseIconList = ({ licenseRights, ...rest }) => {
 LicenseIconList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeLicenseRight: PropTypes.string,
+  noText: PropTypes.bool,
+};
+
+LicenseIconList.defaultProps = {
+  noText: false,
 };
 
 export default LicenseIconList;

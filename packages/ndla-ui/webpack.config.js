@@ -6,6 +6,7 @@ module.exports = {
     main: path.resolve(__dirname, 'src/main.scss'),
     editor: path.resolve(__dirname, 'src/editor.scss'),
     imageSearch: path.resolve(__dirname, 'src/imageSearch.scss'),
+    videoSearch: path.resolve(__dirname, 'src/videoSearch.scss'),
   },
   target: 'web',
 

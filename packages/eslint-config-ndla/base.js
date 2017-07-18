@@ -1,18 +1,14 @@
 /* eslint-disable */
 module.exports = {
   parser: 'babel-eslint',
-  extends: [
-    'airbnb',
-    'prettier',
-    'prettier/react',
-  ],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
   env: {
-    browser: true
+    browser: true,
   },
   parserOptions: {
     ecmaFeatures: {
-      experimentalObjectRestSpread: true
-    }
+      experimentalObjectRestSpread: true,
+    },
   },
   rules: {
     'no-constant-condition': [2, { checkLoops: false }],
@@ -26,6 +22,6 @@ module.exports = {
     'import/no-named-as-default': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-  }
+  },
 };
 /* eslint-enable */

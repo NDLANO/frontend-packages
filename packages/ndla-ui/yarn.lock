@@ -1778,7 +1778,7 @@ define-properties@^1.1.2:
     foreach "^2.0.5"
     object-keys "^1.0.8"
 
-defined@^1.0.0:
+defined@1.0.0, defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
@@ -3174,9 +3174,12 @@ nan@^2.3.0, nan@^2.3.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
 
-ndla-article-scripts@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/ndla-article-scripts/-/ndla-article-scripts-0.0.4.tgz#c9d5ae5b1cc85ec1eaa58fb08fa8145d817e97dd"
+ndla-image-search@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ndla-image-search/-/ndla-image-search-0.1.0.tgz#bc451b1fd4a57e576d8593a3e1de767c264be2ca"
+  dependencies:
+    defined "1.0.0"
+    react-bem-helper "^1.2.0"
 
 negotiator@0.6.1:
   version "0.6.1"
@@ -3956,7 +3959,7 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-bem-helper@1.4.1:
+react-bem-helper@1.4.1, react-bem-helper@^1.2.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/react-bem-helper/-/react-bem-helper-1.4.1.tgz#cb27aeadda020e9fe9d169bfaae1095c559f4cf5"
   dependencies:

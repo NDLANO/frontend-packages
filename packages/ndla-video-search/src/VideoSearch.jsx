@@ -130,10 +130,11 @@ class ImageSearch extends React.Component {
               selectedVideo={selectedVideo}
               onSelectVideo={this.onSelectVideo}
               locale={locale}
+              translations={translations}
             />,
-        ) : <p>translations.noResults</p>}
+        ) : <p>{translations.noResults}</p>}
         </div>
-        {videos.length % 10 === 0 ? <div {...classes('load-videos')}>
+        {videos && videos.length > 0 && videos.length % 10 === 0 ? <div {...classes('load-videos')}>
           <Button disabled={this.state.searching} onClick={this.loadMoreVideos}>
             {this.state.searching ? <div {...classes('spinner')} /> : translations.loadMoreVideos}
           </Button>

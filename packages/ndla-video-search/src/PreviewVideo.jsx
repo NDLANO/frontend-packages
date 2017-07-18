@@ -25,10 +25,8 @@ export default function PreviewVideo({ video, onVideoPreview }) {
       </Button>
       <iframe
         {...classes('video')}
-        src={`//players.brightcove.net/${video.account_id}/_default/index.html?videoId=${video.id}`}
+        src={`//players.brightcove.net/${video.account_id}/BkLm8fT_default/index.html?videoId=${video.id}`}
         allowFullScreen
-        webkitallowfullscreen
-        mozallowfullscreen
       />
     </div>
   );
@@ -36,7 +34,8 @@ export default function PreviewVideo({ video, onVideoPreview }) {
 
 PreviewVideo.propTypes = {
   video: PropTypes.shape({
-    id: PropTypes.id.isRequired,
+    id: PropTypes.string.isRequired,
+    account_id: PropTypes.string.isRequired,
   }),
   onVideoPreview: PropTypes.func.isRequired,
 };

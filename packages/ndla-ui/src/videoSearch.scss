@@ -7,12 +7,8 @@
  */
  @import "global/settings/settings.config";
  @import "global/settings/settings.colors";
- $xxlarge-viewport-max: "max-width: 1400px)";
- $xlarge-viewport: "(min-width: 1200px)";
- $large-viewport: "(min-width: 800px)";
  $medium-viewport: "(max-width: 800px)";
  $small-viewport: "(max-width: 600px)";
- $xsmall-viewport: "(max-width: 400px)";
 
 .c-video-search {
   padding: 1rem;
@@ -172,6 +168,47 @@
     width: 15px;
     margin-right: 7px;
     color: $brand-grey;
+  }
+}
+
+@media #{$medium-viewport} {
+  .c-video-search {
+    &__list-item-inner img {
+      width: 100%;
+    }
+
+    &__information {
+      width: 100%;
+      display: block;
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+    &__list-item-inner {
+      flex-direction: column;
+    }
+    &__form-button {
+      width: 20%;
+    }
+    &__form-query {
+      width: 80%;
+    }
+  }
+}
+
+@media #{$small-viewport} {
+  .c-video-search {
+    &__button {
+      display: block;
+    }
+    &__button + &__button {
+      margin-left: 0;
+    }
+    &__form-button {
+      width: 30%;
+    }
+    &__form-query {
+      width: 70%;
+    }
   }
 }
 

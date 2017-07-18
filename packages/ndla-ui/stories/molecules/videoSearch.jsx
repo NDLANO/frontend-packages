@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2016-present, NDLA.
  *
@@ -10,27 +9,33 @@
 import React from 'react';
 
 import VideoSearch from 'ndla-video-search';
-import { firstBrightCoveList, secondBrightCoveList, brightCoveMockVideo } from '../../dummydata';
+import {
+  firstBrightCoveList,
+  secondBrightCoveList,
+  brightCoveMockVideo,
+} from '../../dummydata';
 
-const fetchVideos = (query, offset) => new Promise((resolve) => {
-  if (offset > 0) {
-    return setTimeout(() => resolve(secondBrightCoveList), 1000);
-  }
-  return resolve(firstBrightCoveList);
-});
+const fetchVideos = (query, offset) =>
+  new Promise(resolve => {
+    if (offset > 0) {
+      return setTimeout(() => resolve(secondBrightCoveList), 1000);
+    }
+    return resolve(firstBrightCoveList);
+  });
 
-const fetchVideo = id => new Promise((resolve) => {
-  const modifiedVideo = brightCoveMockVideo;
-  modifiedVideo.id = id;
-  resolve(modifiedVideo);
-});
+const fetchVideo = id =>
+  new Promise(resolve => {
+    const modifiedVideo = brightCoveMockVideo;
+    modifiedVideo.id = id;
+    resolve(modifiedVideo);
+  });
 
 export const VideoSearcher = () => {
-  const videoSelect = (video) => {
+  const videoSelect = video => {
     console.log(video);
   };
 
-  const onError = (err) => {
+  const onError = err => {
     console.error(err);
   };
   const translations = {

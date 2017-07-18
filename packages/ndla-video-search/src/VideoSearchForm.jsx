@@ -57,8 +57,7 @@ class SearchForm extends Component {
         <Button
           {...classes('form-button')}
           onClick={this.handleSubmit}
-          loading={searching}
-        >
+          loading={searching}>
           {translations.searchButtonTitle}
         </Button>
       </div>

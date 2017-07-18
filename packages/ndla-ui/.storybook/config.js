@@ -7,7 +7,8 @@ import '../src/videoSearch.scss';
 
 setOptions({
   name: 'NDLA Designmanual',
-  url: 'https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-ui',
+  url:
+    'https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-ui',
   goFullScreen: false,
   showLeftPanel: true,
   showDownPanel: false,

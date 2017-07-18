@@ -67,9 +67,11 @@ LicenseIcon.propTypes = {
 const LicenseIconItem = ({ licenseRight, activeLicenseRight, noText }) =>
   <li {...classes('item', activeLicenseRight === licenseRight && 'active')}>
     <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-    {!noText ? <span className="c-license-icons__licenselabel">
-      {getLicenseRightByAbbreviation(licenseRight).description}
-    </span> : ''}
+    {!noText
+      ? <span className="c-license-icons__licenselabel">
+          {getLicenseRightByAbbreviation(licenseRight).description}
+        </span>
+      : ''}
   </li>;
 
 LicenseIconItem.propTypes = {

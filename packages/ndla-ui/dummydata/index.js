@@ -12,7 +12,11 @@ import {
   exerciseResources,
 } from './resources';
 import { subjectList } from './mockSubjects';
-import { firstBrightCoveList, secondBrightCoveList, brightCoveMockVideo } from './mockBrightcove';
+import {
+  firstBrightCoveList,
+  secondBrightCoveList,
+  brightCoveMockVideo,
+} from './mockBrightcove';
 
 const article = {
   article4,

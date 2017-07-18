@@ -47,7 +47,6 @@ class VideoSearch extends React.Component {
     this.searchVideos(this.state.queryObject);
   }
 
-
   onVideoPreview(video) {
     this.setState({ selectedVideo: video });
   }
@@ -59,18 +58,25 @@ class VideoSearch extends React.Component {
 
   loadMoreVideos() {
     this.setState({ searching: true });
-    this.props.searchVideos(this.state.queryObject.query, this.state.queryObject.offset + 10, this.state.queryObject.limit).then((result) => {
-      this.setState(prevState => ({
-        queryObject: {
-          offset: prevState.queryObject.offset + 10,
-        },
-        videos: this.state.videos.concat(result),
-        searching: false,
-      }));
-    }).catch((err) => {
-      this.props.onError(err);
-      this.setState({ searching: false });
-    });
+    this.props
+      .searchVideos(
+        this.state.queryObject.query,
+        this.state.queryObject.offset + 10,
+        this.state.queryObject.limit,
+      )
+      .then(result => {
+        this.setState(prevState => ({
+          queryObject: {
+            offset: prevState.queryObject.offset + 10,
+          },
+          videos: this.state.videos.concat(result),
+          searching: false,
+        }));
+      })
+      .catch(err => {
+        this.props.onError(err);
+        this.setState({ searching: false });
+      });
   }
 
   submitVideoSearchQuery(query) {
@@ -83,33 +89,28 @@ class VideoSearch extends React.Component {
 
   searchVideos(queryObject) {
     this.setState({ searching: true });
-    this.props.searchVideos(queryObject.query, 0, queryObject.limit).then((result) => {
-      this.setState({
-        queryObject: {
-          query: queryObject.query,
-          offset: 0,
-        },
-        videos: result,
-        searching: false,
+    this.props
+      .searchVideos(queryObject.query, 0, queryObject.limit)
+      .then(result => {
+        this.setState({
+          queryObject: {
+            query: queryObject.query,
+            offset: 0,
+          },
+          videos: result,
+          searching: false,
+        });
+      })
+      .catch(err => {
+        this.props.onError(err);
+        this.setState({ searching: false });
       });
-    }).catch((err) => {
-      this.props.onError(err);
-      this.setState({ searching: false });
-    });
   }
 
   render() {
-    const {
-      translations,
-      locale,
-    } = this.props;
+    const { translations, locale } = this.props;
 
-    const {
-      queryObject,
-      videos,
-      selectedVideo,
-      searching,
-    } = this.state;
+    const { queryObject, videos, selectedVideo, searching } = this.state;
 
     const { query } = queryObject;
 
@@ -122,23 +123,35 @@ class VideoSearch extends React.Component {
           translations={translations}
         />
         <div {...classes('list')}>
-          {videos && videos.length > 0 ? videos.map(video =>
-            <VideoSearchResult
-              key={video.id}
-              video={video}
-              onVideoPreview={this.onVideoPreview}
-              selectedVideo={selectedVideo}
-              onSelectVideo={this.onSelectVideo}
-              locale={locale}
-              translations={translations}
-            />,
-        ) : <p>{translations.noResults}</p>}
+          {videos && videos.length > 0
+            ? videos.map(video =>
+                <VideoSearchResult
+                  key={video.id}
+                  video={video}
+                  onVideoPreview={this.onVideoPreview}
+                  selectedVideo={selectedVideo}
+                  onSelectVideo={this.onSelectVideo}
+                  locale={locale}
+                  translations={translations}
+                />,
+              )
+            : <p>
+                {translations.noResults}
+              </p>}
         </div>
-        {videos && videos.length > 0 && videos.length % this.state.queryObject.limit === 0 ? <div {...classes('load-videos')}>
-          <Button disabled={this.state.searching} onClick={this.loadMoreVideos}>
-            {this.state.searching ? <div {...classes('spinner')} /> : translations.loadMoreVideos}
-          </Button>
-        </div> : ''}
+        {videos &&
+        videos.length > 0 &&
+        videos.length % this.state.queryObject.limit === 0
+          ? <div {...classes('load-videos')}>
+              <Button
+                disabled={this.state.searching}
+                onClick={this.loadMoreVideos}>
+                {this.state.searching
+                  ? <div {...classes('spinner')} />
+                  : translations.loadMoreVideos}
+              </Button>
+            </div>
+          : ''}
       </div>
     );
   }

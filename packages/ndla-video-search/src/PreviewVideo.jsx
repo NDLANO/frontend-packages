@@ -20,11 +20,15 @@ const classes = new BEMHelper({
 export default function PreviewVideo({ video, onVideoPreview }) {
   return (
     <div {...classes()}>
-      <Button {...classes('close')} stripped onClick={() => onVideoPreview(undefined)}>
+      <Button
+        {...classes('close')}
+        stripped
+        onClick={() => onVideoPreview(undefined)}>
         <Cross />
       </Button>
       <iframe
         {...classes('video')}
+        title={video.name}
         src={`//players.brightcove.net/${video.account_id}/BkLm8fT_default/index.html?videoId=${video.id}`}
         allowFullScreen
       />
@@ -35,6 +39,7 @@ export default function PreviewVideo({ video, onVideoPreview }) {
 PreviewVideo.propTypes = {
   video: PropTypes.shape({
     id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     account_id: PropTypes.string.isRequired,
   }),
   onVideoPreview: PropTypes.func.isRequired,

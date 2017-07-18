@@ -457,12 +457,16 @@ storiesOf('Sammensatte moduler', module)
       </article>
     </Center>,
   )
-  .add('Videosøk', () => (
+  .add('Videosøk', () =>
     <Center>
       <h2 className="u-heading">Videosøk</h2>
       <div className="o-wrapper--inner">
-        <p>Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove. Denne modulen krever at det både finnes en token og api url (fra brightcove).</p>
+        <p>
+          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
+          Denne modulen krever at det både finnes en token og api url (fra
+          brightcove).
+        </p>
         <VideoSearcher />
       </div>
-    </Center>
-  ));
+    </Center>,
+  );

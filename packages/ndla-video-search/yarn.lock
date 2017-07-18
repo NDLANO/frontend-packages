@@ -81,6 +81,12 @@ ndla-article-scripts@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/ndla-article-scripts/-/ndla-article-scripts-0.0.3.tgz#e12827f66a0af970215f373736cf351ff312d0a2"
 
+ndla-licenses@^0.0.9-1:
+  version "0.0.9-beta.3"
+  resolved "https://registry.yarnpkg.com/ndla-licenses/-/ndla-licenses-0.0.9-beta.3.tgz#a36b8e713e4ba2699b9dd3b099623da115767c5b"
+  dependencies:
+    defined "1.0.0"
+
 ndla-ui@^0.6.3:
   version "0.6.13"
   resolved "https://registry.yarnpkg.com/ndla-ui/-/ndla-ui-0.6.13.tgz#bbf969bf3f40d33527e477b63e8d559512d80c91"
@@ -89,6 +95,12 @@ ndla-ui@^0.6.3:
     react-bem-helper "1.4.1"
     react-prop-types "0.4.0"
     react-sticky-header "^0.1.6"
+
+ndla-util@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/ndla-util/-/ndla-util-0.1.3.tgz#41a9d65e76c9360bdc69c5cc1956bb77bc8cd042"
+  dependencies:
+    defined "1.0.0"
 
 node-fetch@^1.0.1:
   version "1.7.1"

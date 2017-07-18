@@ -38,14 +38,21 @@ export default function VideoSearchResult({
           src={video.images.thumbnail.src}
         />
         <div {...classes('information')}>
-          <h2>{video.name}</h2>
+          <h2>
+            {video.name}
+          </h2>
           <div {...classes('copyright-author')}>
             {video.custom_fields.licenseinfo}
           </div>
           <div {...classes('license')}>
-            {license.rights ? <LicenseIconList licenseRights={license.rights} noText /> : license}
+            {license.rights
+              ? <LicenseIconList licenseRights={license.rights} noText />
+              : license}
           </div>
-          <Button {...classes('button')} outline onClick={() => onVideoPreview(video)}>
+          <Button
+            {...classes('button')}
+            outline
+            onClick={() => onVideoPreview(video)}>
             {translations.previewVideo}
           </Button>
           <Button {...classes('button')} onClick={() => onSelectVideo(video)}>

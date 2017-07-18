@@ -40,6 +40,7 @@ import {
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
 import ImageSearcher from './molecules/imageSearch';
 import AudioSearcher from './molecules/audioSearch';
+import VideoSearcher from './molecules/videoSearch';
 
 const toggle = () => {
   document
@@ -467,5 +468,18 @@ storiesOf('Sammensatte moduler', module)
           <ResourceSubsetList />
         </LayoutItem>
       </article>
+    </Center>,
+  )
+  .add('Videosøk', () =>
+    <Center>
+      <h2 className="u-heading">Videosøk</h2>
+      <div className="o-wrapper--inner">
+        <p>
+          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
+          Denne modulen krever at det både finnes en token og api url (fra
+          brightcove).
+        </p>
+        <VideoSearcher />
+      </div>
     </Center>,
   );

@@ -12,7 +12,8 @@
     "watch": "node ./scripts/watch.js",
     "start": "concurrently --kill-others \"npm run watch\" \"npm run start-storybook\"",
     "start-storybook": "node ./scripts/startStorybook.js",
-    "build-storybook": "node ./scripts/buildStorybook.js"
+    "build-storybook": "node ./scripts/buildStorybook.js",
+    "prettier": "node prettier.js write"
   },
   "repository": {
     "type": "git",

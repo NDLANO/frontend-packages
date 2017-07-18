@@ -12,6 +12,11 @@ import {
   exerciseResources,
 } from './resources';
 import { subjectList } from './mockSubjects';
+import {
+  firstBrightCoveList,
+  secondBrightCoveList,
+  brightCoveMockVideo,
+} from './mockBrightcove';
 
 const article = {
   article4,
@@ -31,6 +36,9 @@ export {
   articleResources,
   exerciseResources,
   subtopicList,
+  firstBrightCoveList,
+  secondBrightCoveList,
+  brightCoveMockVideo,
 };
 
 export default article;

@@ -67,6 +67,7 @@ class VideoSearch extends React.Component {
       .then(result => {
         this.setState(prevState => ({
           queryObject: {
+            ...prevState.queryObject,
             offset: prevState.queryObject.offset + 10,
           },
           videos: this.state.videos.concat(result),
@@ -94,6 +95,7 @@ class VideoSearch extends React.Component {
       .then(result => {
         this.setState({
           queryObject: {
+            ...queryObject,
             query: queryObject.query,
             offset: 0,
           },

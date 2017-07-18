@@ -25,7 +25,7 @@ const fetchVideo = id => new Promise((resolve) => {
   resolve(modifiedVideo);
 });
 
-export const ImageSearcher = () => {
+export const VideoSearcher = () => {
   const videoSelect = (video) => {
     console.log(video);
   };
@@ -53,4 +53,4 @@ export const ImageSearcher = () => {
   );
 };
 
-export default ImageSearcher;
+export default VideoSearcher;

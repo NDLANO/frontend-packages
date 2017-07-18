@@ -19,7 +19,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class ImageSearch extends React.Component {
+class VideoSearch extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -134,7 +134,7 @@ class ImageSearch extends React.Component {
             />,
         ) : <p>{translations.noResults}</p>}
         </div>
-        {videos && videos.length > 0 && videos.length % 10 === 0 ? <div {...classes('load-videos')}>
+        {videos && videos.length > 0 && videos.length % this.state.queryObject.limit === 0 ? <div {...classes('load-videos')}>
           <Button disabled={this.state.searching} onClick={this.loadMoreVideos}>
             {this.state.searching ? <div {...classes('spinner')} /> : translations.loadMoreVideos}
           </Button>
@@ -144,7 +144,7 @@ class ImageSearch extends React.Component {
   }
 }
 
-ImageSearch.propTypes = {
+VideoSearch.propTypes = {
   onVideoSelect: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired,
   fetchVideo: PropTypes.func.isRequired,
@@ -157,4 +157,4 @@ ImageSearch.propTypes = {
   locale: PropTypes.string.isRequired,
 };
 
-export default ImageSearch;
+export default VideoSearch;

@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
+import PreviewAudio from './PreviewAudio';
 
 const classes = new BEMHelper({
   name: 'audio-search',
@@ -26,24 +27,19 @@ export default function AudioSearchResult({
   const active = selectedAudio && selectedAudio.id === audio.id ? 'active' : '';
 
   return (
-    <div key={ audio.id } {...classes('list-item', active) }>
-      <div { ...classes('list-item-inner') }>
-        <Button stripped onClick={ () => onAudioClick(audio) }>
-          Hola
-        </Button>
-      </div>
-      {
-        selectedAudio && selectedAudio.id === audio.id
-        ? <p>PREVIEW</p>
-        : ''
-      }
+    <div key={ audio.id } { ...classes('list-item', active) }>
+      <PreviewAudio
+        audio={ audio }
+        onSelectAudio={ onSelectAudio }
+        locale={ locale }
+      />
     </div>
   );
 }
 
 AudioSearchResult.propTypes = {
   audio: PropTypes.shape({
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
   }),
   onAudioClick: PropTypes.func.isRequired,
   selectedAudio: PropTypes.shape({

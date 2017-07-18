@@ -293,6 +293,7 @@ storiesOf('Enkle komponenter', module)
               'LicenseSa',
               'Cross',
               'Plus',
+              'Video',
             ].map(key =>
               <tr key={key}>
                 <td>

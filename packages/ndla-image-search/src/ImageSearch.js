@@ -48,11 +48,14 @@ class ImageSearch extends React.Component {
 
   onImageClick(image) {
     if (!this.state.selectedImage || image.id !== this.state.selectedImage.id) {
-      this.props.fetchImage(image.id).then((result) => {
-        this.setState({ selectedImage: result });
-      }).catch((err) => {
-        this.props.onError(err);
-      });
+      this.props
+        .fetchImage(image.id)
+        .then(result => {
+          this.setState({ selectedImage: result });
+        })
+        .catch(err => {
+          this.props.onError(err);
+        });
     }
   }
 
@@ -70,30 +73,29 @@ class ImageSearch extends React.Component {
 
   searchImages(queryObject) {
     this.setState({ searching: true });
-    this.props.searchImages(queryObject.query, queryObject.page, this.props.locale).then((result) => {
-      this.setState({
-        queryObject: {
-          query: queryObject.query,
-          pageSize: result.pageSize,
-          page: queryObject.page,
-        },
-        images: result.results,
-        totalCount: result.totalCount,
-        lastPage: Math.ceil(result.totalCount / result.pageSize),
-        searching: false,
+    this.props
+      .searchImages(queryObject.query, queryObject.page, this.props.locale)
+      .then(result => {
+        this.setState({
+          queryObject: {
+            query: queryObject.query,
+            pageSize: result.pageSize,
+            page: queryObject.page,
+          },
+          images: result.results,
+          totalCount: result.totalCount,
+          lastPage: Math.ceil(result.totalCount / result.pageSize),
+          searching: false,
+        });
+      })
+      .catch(err => {
+        this.props.onError(err);
+        this.setState({ searching: false });
       });
-    }).catch((err) => {
-      this.props.onError(err);
-      this.setState({ searching: false });
-    });
   }
 
   render() {
-    const {
-      searchPlaceholder,
-      searchButtonTitle,
-      locale,
-    } = this.props;
+    const { searchPlaceholder, searchButtonTitle, locale } = this.props;
 
     const {
       queryObject,
@@ -126,7 +128,7 @@ class ImageSearch extends React.Component {
               onSelectImage={this.onSelectImage}
               locale={locale}
             />,
-        )}
+          )}
         </div>
         <Pager
           page={page ? parseInt(page, 10) : 1}

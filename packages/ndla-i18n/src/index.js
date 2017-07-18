@@ -10,10 +10,6 @@ import IntlProvider from './IntlProvider';
 import injectT from './injectT';
 import formatMessage from './formatMessage';
 
-export {
-  IntlProvider,
-  injectT,
-  formatMessage,
-};
+export { IntlProvider, injectT, formatMessage };
 
 export default IntlProvider;

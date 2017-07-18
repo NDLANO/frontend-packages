@@ -15,9 +15,18 @@ import Link from 'react-router-dom/Link';
 import SafeLink from '../common/SafeLink';
 import { stepNumbers } from './pagerHelpers';
 
-const createQueryString = obj => Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&');
+const createQueryString = obj =>
+  Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&');
 
-export const PageItem = ({ children, page, query: currentQuery, pathname, onClick, modifier, pageItemComponentClass: Component }) => {
+export const PageItem = ({
+  children,
+  page,
+  query: currentQuery,
+  pathname,
+  onClick,
+  modifier,
+  pageItemComponentClass: Component,
+}) => {
   const modifierClass = modifier ? `c-pager__step--${modifier}` : '';
   const classes = classNames('c-pager__step', modifierClass);
 
@@ -30,9 +39,17 @@ export const PageItem = ({ children, page, query: currentQuery, pathname, onClic
   const handleClick = () => onClick(query);
 
   if (Component === SafeLink || Component === Link) {
-    return <SafeLink className={classes} onClick={handleClick} to={linkToPage} >{children}</SafeLink>;
+    return (
+      <SafeLink className={classes} onClick={handleClick} to={linkToPage}>
+        {children}
+      </SafeLink>
+    );
   }
-  return <Component className={classes} onClick={handleClick}>{children}</Component>;
+  return (
+    <Component className={classes} onClick={handleClick}>
+      {children}
+    </Component>
+  );
 };
 
 PageItem.propTypes = {
@@ -50,15 +67,33 @@ export default function Pager(props) {
 
   const steps = stepNumbers(page, lastPage);
 
-  const PageItems = steps.map((n) => {
+  const PageItems = steps.map(n => {
     if (n === page) {
-      return <span key={n} className="c-pager__step c-pager__step--active">{n}</span>;
+      return (
+        <span key={n} className="c-pager__step c-pager__step--active">
+          {n}
+        </span>
+      );
     }
-    return <PageItem key={n} page={n} {...rest}>{n}</PageItem>;
+    return (
+      <PageItem key={n} page={n} {...rest}>
+        {n}
+      </PageItem>
+    );
   });
 
-  const prevPageItem = steps[0] < page ? <PageItem modifier="back" page={page - 1} {...rest}> {'<'} </PageItem> : null;
-  const nextPageItem = page < lastPage ? <PageItem modifier="forward" page={page + 1} {...rest}> {'>'} </PageItem> : null;
+  const prevPageItem =
+    steps[0] < page
+      ? <PageItem modifier="back" page={page - 1} {...rest}>
+          {' '}{'<'}{' '}
+        </PageItem>
+      : null;
+  const nextPageItem =
+    page < lastPage
+      ? <PageItem modifier="forward" page={page + 1} {...rest}>
+          {' '}{'>'}{' '}
+        </PageItem>
+      : null;
 
   return (
     <div className="c-pager">

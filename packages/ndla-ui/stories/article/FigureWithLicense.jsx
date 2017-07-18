@@ -15,7 +15,6 @@ import {
 
 import { Figure, FigureCaption, FigureDetails } from '../../src';
 
-
 const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
             solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
             med en hvit og en svart halvdel.`;
@@ -26,12 +25,10 @@ const authors = [
 ];
 
 class FigureWithLicense extends Component {
-
   componentDidMount() {
     addShowFigureDetailsClickListeners();
     addCloseFigureDetailsClickListeners();
   }
-
 
   render() {
     const messages = {
@@ -44,10 +41,26 @@ class FigureWithLicense extends Component {
         <div className="c-figure__img">
           {this.props.children}
         </div>
-        <FigureCaption caption={caption} reuseLabel="Bruk bildet" licenseAbbreviation="by-nc-nd" authors={authors} />
-        <FigureDetails licenseAbbreviation="by-nc-nd" authors={authors} messages={messages}>
-          <button className="c-button c-button--outline c-figure-license__button" type="button">Kopier referanse</button>
-          <button className="c-button c-button--outline c-figure-license__button" type="button">Last ned bilde</button>
+        <FigureCaption
+          caption={caption}
+          reuseLabel="Bruk bildet"
+          licenseAbbreviation="by-nc-nd"
+          authors={authors}
+        />
+        <FigureDetails
+          licenseAbbreviation="by-nc-nd"
+          authors={authors}
+          messages={messages}>
+          <button
+            className="c-button c-button--outline c-figure-license__button"
+            type="button">
+            Kopier referanse
+          </button>
+          <button
+            className="c-button c-button--outline c-figure-license__button"
+            type="button">
+            Last ned bilde
+          </button>
         </FigureDetails>
       </Figure>
     );

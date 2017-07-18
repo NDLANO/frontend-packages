@@ -20,7 +20,6 @@ class SimpleSubmitForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   handleChange(evt) {
     this.setState({ query: evt.target.value });
   }
@@ -34,15 +33,23 @@ class SimpleSubmitForm extends Component {
     const { errorMessage, labelText, submitText } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="query">{ labelText }</label>
+        <label htmlFor="query">
+          {labelText}
+        </label>
         <input
           id="query"
           type="text"
           onChange={this.handleChange}
           value={this.state.articleId}
         />
-        <Button submit> { submitText }</Button>
-        { errorMessage ? <p>{ errorMessage }</p> : null }
+        <Button submit>
+          {' '}{submitText}
+        </Button>
+        {errorMessage
+          ? <p>
+              {errorMessage}
+            </p>
+          : null}
       </form>
     );
   }

@@ -6,13 +6,23 @@
  *
  */
 
-import { EditorState, Modifier, AtomicBlockUtils, SelectionState } from 'draft-js';
+import {
+  EditorState,
+  Modifier,
+  AtomicBlockUtils,
+  SelectionState,
+} from 'draft-js';
 import ImageBlock from './ImageBlock';
 
 export default (config = {}) => {
-  const component = config.decorator ? config.decorator(ImageBlock) : ImageBlock;
+  const component = config.decorator
+    ? config.decorator(ImageBlock)
+    : ImageBlock;
   return {
-    blockRendererFn: (block, { getEditorState, setEditorState, setReadOnly }) => {
+    blockRendererFn: (
+      block,
+      { getEditorState, setEditorState, setReadOnly },
+    ) => {
       if (block.getType() === 'atomic') {
         const editorState = getEditorState();
         const contentState = editorState.getCurrentContent();
@@ -25,7 +35,7 @@ export default (config = {}) => {
             editable: false,
             props: {
               setReadOnly,
-              updateData: (data) => {
+              updateData: data => {
                 const selection = new SelectionState({
                   anchorKey: block.key,
                   anchorOffset: 0,
@@ -34,11 +44,16 @@ export default (config = {}) => {
                 });
 
                 const key = block.getEntityAt(0);
-                const newContentState = Modifier
-                  .mergeBlockData(contentState, selection, data)
-                  .mergeEntityData(key, data);
+                const newContentState = Modifier.mergeBlockData(
+                  contentState,
+                  selection,
+                  data,
+                ).mergeEntityData(key, data);
 
-                const newEditorState = EditorState.push(editorState, newContentState);
+                const newEditorState = EditorState.push(
+                  editorState,
+                  newContentState,
+                );
                 setEditorState(newEditorState);
               },
             },
@@ -50,11 +65,21 @@ export default (config = {}) => {
 
     addImage: (editorState, url) => {
       const contentState = editorState.getCurrentContent();
-      const contentStateWithEntity = contentState.createEntity('image', 'IMMUTABLE', { src: url });
+      const contentStateWithEntity = contentState.createEntity(
+        'image',
+        'IMMUTABLE',
+        { src: url },
+      );
       const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-      const newEditorState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
-      return EditorState.forceSelection(newEditorState, editorState.getCurrentContent().getSelectionAfter());
+      const newEditorState = AtomicBlockUtils.insertAtomicBlock(
+        editorState,
+        entityKey,
+        ' ',
+      );
+      return EditorState.forceSelection(
+        newEditorState,
+        editorState.getCurrentContent().getSelectionAfter(),
+      );
     },
-
   };
 };

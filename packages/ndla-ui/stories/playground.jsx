@@ -9,7 +9,11 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import NDLAEditor, { RichTextEditor, PlainTextEditor, withStateHandler } from 'ndla-editor';
+import NDLAEditor, {
+  RichTextEditor,
+  PlainTextEditor,
+  withStateHandler,
+} from 'ndla-editor';
 import { convertFromRaw, EditorState } from 'draft-js';
 import ArticleEditor from './editor/ArticleEditor';
 import { Center } from './helpers';
@@ -20,15 +24,15 @@ const StatefulPlainTextEditor = withStateHandler(PlainTextEditor);
 const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 
 storiesOf('Lekegrind', module)
-  .add('NDLA editor uten innhold', () => (
+  .add('NDLA editor uten innhold', () =>
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
       <StatefulNDLAEditor placeholder="Fortell din historie..." />
-    </Center>
-  ))
-  .add('NDLA editor med eksempel innhold', () => (
+    </Center>,
+  )
+  .add('NDLA editor med eksempel innhold', () =>
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
@@ -37,38 +41,37 @@ storiesOf('Lekegrind', module)
         value={EditorState.createWithContent(convertFromRaw(mockEditorState))}
         placeholder="Fortell din historie..."
       />
-    </Center>
-  ))
-  .add('NDLA editor med innhold', () => (
+    </Center>,
+  )
+  .add('NDLA editor med innhold', () =>
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
       <ArticleEditor articleId="86" />
-    </Center>
-  ))
-  .add('Last artikkel i NDLAEditor', () => (
+    </Center>,
+  )
+  .add('Last artikkel i NDLAEditor', () =>
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">NDLA Editor</h1>
       </section>
       <ArticleEditor />
-    </Center>
-  ))
-  .add('Rik tekst editor', () => (
+    </Center>,
+  )
+  .add('Rik tekst editor', () =>
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">Rik tekst Editor</h1>
       </section>
       <StatefulRichTextEditor placeholder="Fortell din historie..." />
-    </Center>
-  ))
-  .add('Enkel tekst editor', () => (
+    </Center>,
+  )
+  .add('Enkel tekst editor', () =>
     <Center>
       <section className="c-factbox">
         <h1 className="u-heading">Enkel tekst Editor</h1>
       </section>
       <StatefulPlainTextEditor placeholder="Fortell din historie..." />
-    </Center>
-  ))
-;
+    </Center>,
+  );

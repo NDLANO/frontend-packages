@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+/* eslint jsx-a11y/no-static-element-interactions: 1 */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 
 export default class BlockTypeSelect extends React.Component {
-
   static onMouseDown(clickEvent) {
     clickEvent.preventDefault();
     clickEvent.stopPropagation();
@@ -45,17 +45,19 @@ export default class BlockTypeSelect extends React.Component {
     });
   }
 
-
   render() {
     const { theme, getEditorState, setEditorState } = this.props;
     return (
       <div
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        onMouseDown={this.onClick}
-      >
+        onMouseDown={this.onClick}>
         <div className={theme.blockTypeSelectStyles.blockType}>
-          <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0h24v24H0z" fill="none" />
             <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
           </svg>
@@ -65,15 +67,17 @@ export default class BlockTypeSelect extends React.Component {
           blockType div to the popup.
         */}
         <div className={theme.blockTypeSelectStyles.spacer} />
-        <div className={theme.blockTypeSelectStyles.popup} style={this.state.style}>
-          {this.props.structure.map(Component => (
+        <div
+          className={theme.blockTypeSelectStyles.popup}
+          style={this.state.style}>
+          {this.props.structure.map(Component =>
             <Component
               key={uuid()}
               getEditorState={getEditorState}
               setEditorState={setEditorState}
               theme={theme.buttonStyles}
-            />
-          ))}
+            />,
+          )}
         </div>
       </div>
     );

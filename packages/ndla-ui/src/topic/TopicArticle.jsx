@@ -12,20 +12,25 @@ import Article from '../article/Article';
 import ArticleContent from '../article/ArticleContent';
 import { ArticleShape } from '../shapes';
 
-
 // class TopicArticle extends Component {
-const TopicArticle = ({ article, notitle }) => (
-    // const { article, notitle } = this.props;
-    // const { isOpen } = this.state;
-    // return (
+const TopicArticle = ({ article, notitle }) =>
+  // const { article, notitle } = this.props;
+  // const { isOpen } = this.state;
+  // return (
   <section>
-    { notitle ? null : <h1 className="c-article__title">{article.title}</h1> }
+    {notitle
+      ? null
+      : <h1 className="c-article__title">
+          {article.title}
+        </h1>}
     <Article.Introduction introduction={article.introduction} />
-    { article.footNotes }
-    <ArticleContent className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
-  </section>
-    // );
-);
+    {article.footNotes}
+    <ArticleContent
+      className="c-article--narrow"
+      dangerouslySetInnerHTML={{ __html: article.content }}
+    />
+  </section>;
+// );
 
 TopicArticle.propTypes = {
   article: ArticleShape.isRequired,

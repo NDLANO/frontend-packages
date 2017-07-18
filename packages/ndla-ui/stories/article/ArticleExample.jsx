@@ -13,12 +13,15 @@ import { Article, OneColumn, LayoutItem } from '../../src';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
-
-const ArticleExample = ({ article, withLicenseExample, notitle }) => (
+const ArticleExample = ({ article, withLicenseExample, notitle }) =>
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
-        { notitle ? null : <h1>{article.title}</h1> }
+        {notitle
+          ? null
+          : <h1>
+              {article.title}
+            </h1>}
         <Article.Introduction introduction={article.introduction} />
         <ArticleByline article={article} />
       </LayoutItem>
@@ -26,12 +29,13 @@ const ArticleExample = ({ article, withLicenseExample, notitle }) => (
         <Article.Content content={article.content} />
       </LayoutItem>
       <LayoutItem layout="center">
-        { article.footNotes ? <Article.FootNotes footNotes={article.footNotes} /> : null }
-        { withLicenseExample && <LicenseExample /> }
+        {article.footNotes
+          ? <Article.FootNotes footNotes={article.footNotes} />
+          : null}
+        {withLicenseExample && <LicenseExample />}
       </LayoutItem>
     </article>
-  </OneColumn>
-);
+  </OneColumn>;
 
 ArticleExample.propTypes = {
   article: PropTypes.shape({
@@ -41,6 +45,5 @@ ArticleExample.propTypes = {
   withLicenseExample: PropTypes.bool,
   notitle: PropTypes.bool,
 };
-
 
 export default ArticleExample;

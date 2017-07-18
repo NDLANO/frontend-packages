@@ -6,34 +6,32 @@
  *
  */
 
+import defined from 'defined';
 
- import defined from 'defined';
+const findFallbackTranslation = (translations, preferdLocales) => {
+  const locale = preferdLocales.find(l =>
+    translations.find(t => t.language === l),
+  );
+  if (!locale && translations.length > 0) {
+    return translations[0];
+  }
 
+  return translations.find(t => t.language === locale);
+};
 
- const findFallbackTranslation = (translations, preferdLocales) => {
-   const locale = preferdLocales.find(l =>
-     translations.find(t => t.language === l),
-   );
-   if (!locale && translations.length > 0) {
-     return translations[0];
-   }
+const createFieldByLanguageFinder = (fieldName, propName) => (
+  obj,
+  lang,
+  withFallback = false,
+  preferdLocales = ['nb', 'nn', 'en'],
+) => {
+  const translations = defined(defined(obj, {})[fieldName], []);
+  const translation = defined(
+    translations.find(d => d.language === lang),
+    withFallback ? findFallbackTranslation(translations, preferdLocales) : {},
+    {},
+  );
+  return translation[defined(propName, fieldName)];
+};
 
-   return translations.find(t => t.language === locale);
- };
-
- const createFieldByLanguageFinder = (fieldName, propName) => (
-   obj,
-   lang,
-   withFallback = false,
-   preferdLocales = ['nb', 'nn', 'en'],
- ) => {
-   const translations = defined(defined(obj, {})[fieldName], []);
-   const translation = defined(
-     translations.find(d => d.language === lang),
-     withFallback ? findFallbackTranslation(translations, preferdLocales) : {},
-     {},
-   );
-   return translation[defined(propName, fieldName)];
- };
-
- export const tagsI18N = createFieldByLanguageFinder('tags');
+export const tagsI18N = createFieldByLanguageFinder('tags');

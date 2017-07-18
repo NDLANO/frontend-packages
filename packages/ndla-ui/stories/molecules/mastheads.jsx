@@ -8,17 +8,25 @@
 
 import React from 'react';
 
-import { SiteNav, SiteNavItem, Masthead, MastheadItem, Logo, ClickToggle, TopicMenu, TopicBreadcrumb } from '../../src';
+import {
+  SiteNav,
+  SiteNavItem,
+  Masthead,
+  MastheadItem,
+  Logo,
+  ClickToggle,
+  TopicMenu,
+  TopicBreadcrumb,
+} from '../../src';
 import { topicMenu, subjectList, topicList } from '../../dummydata';
 
-export const MastheadLeftRight = () => (
+export const MastheadLeftRight = () =>
   <Masthead>
     <MastheadItem left>Left</MastheadItem>
     <MastheadItem right>Right</MastheadItem>
-  </Masthead>
-);
+  </Masthead>;
 
-export const MastheadDefault = () => (
+export const MastheadDefault = () =>
   <Masthead>
     <MastheadItem left>
       <SiteNav>
@@ -30,15 +38,13 @@ export const MastheadDefault = () => (
     <MastheadItem right>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
     </MastheadItem>
-  </Masthead>
-);
+  </Masthead>;
 
 // export const MastheadWithTopicMenu = () => (
 //
 // );
 
 export class MastheadWithTopicMenu extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { sticky: true };
@@ -50,9 +56,13 @@ export class MastheadWithTopicMenu extends React.Component {
 
     // Should probably be solved better?
     if (window.pageYOffset > 150) {
-      document.getElementsByClassName('c-breadcrumb-masthead')[0].classList.add('u-fade-in');
+      document
+        .getElementsByClassName('c-breadcrumb-masthead')[0]
+        .classList.add('u-fade-in');
     } else {
-      document.getElementsByClassName('c-breadcrumb-masthead')[0].classList.remove('u-fade-in');
+      document
+        .getElementsByClassName('c-breadcrumb-masthead')[0]
+        .classList.remove('u-fade-in');
     }
   }
 
@@ -67,7 +77,11 @@ export class MastheadWithTopicMenu extends React.Component {
       <Masthead>
         <MastheadItem left>
           <SiteNav>
-            <ClickToggle title="Meny" openTitle="Lukk" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+            <ClickToggle
+              title="Meny"
+              openTitle="Lukk"
+              className="c-topic-menu-container"
+              buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
               <TopicMenu
                 subjectTitle="Mediefag"
                 toSubject={() => '#'}
@@ -78,7 +92,14 @@ export class MastheadWithTopicMenu extends React.Component {
               />
             </ClickToggle>
           </SiteNav>
-          <TopicBreadcrumb inMasthead toSubjects={() => '#'} subjectsTitle="Fag" subject={subjectList[1]} topicPath={topicList.slice(0, 2)} toTopic={() => '#'} />
+          <TopicBreadcrumb
+            inMasthead
+            toSubjects={() => '#'}
+            subjectsTitle="Fag"
+            subject={subjectList[1]}
+            topicPath={topicList.slice(0, 2)}
+            toTopic={() => '#'}
+          />
         </MastheadItem>
         <MastheadItem right>
           <Logo to="#" altText="Nasjonal digital læringsarena" />

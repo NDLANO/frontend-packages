@@ -21,7 +21,6 @@ export default () => ({
     return 'not-handled';
   },
 
-
   handleReturn(e, { getEditorState, setEditorState }) {
     const editorState = getEditorState();
     const newEditorState = handleNewLine(editorState, e);

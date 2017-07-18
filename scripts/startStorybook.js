@@ -4,6 +4,13 @@ const runCommand = require('./runCommand');
 
 const isWindows = process.platform === 'win32';
 const storybook = isWindows ? 'start-storybook.cmd' : 'start-storybook';
-const storybookCmd = path.resolve(__dirname, `../packages/ndla-ui/node_modules/.bin/${storybook}`);
+const storybookCmd = path.resolve(
+  __dirname,
+  `../packages/ndla-ui/node_modules/.bin/${storybook}`,
+);
 
-runCommand(storybookCmd, ['-p', 6006], path.resolve(__dirname, '../packages/ndla-ui/'));
+runCommand(
+  storybookCmd,
+  ['-p', 6006],
+  path.resolve(__dirname, '../packages/ndla-ui/'),
+);

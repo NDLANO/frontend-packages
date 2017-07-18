@@ -38,8 +38,14 @@ import RelatedArticles from './RelatedArticles/RelatedArticles';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
-import { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './license/MediaList';
-
+import {
+  MediaList,
+  MediaListItem,
+  MediaListItemBody,
+  MediaListItemActions,
+  MediaListItemImage,
+  MediaListItemMeta,
+} from './license/MediaList';
 
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
@@ -56,7 +62,9 @@ export {
   ClickableLicenseByline,
   ClickToggle,
   Footer,
-  Figure, FigureCaption, FigureDetails,
+  Figure,
+  FigureCaption,
+  FigureDetails,
   FilterList,
   Hero,
   LicenseByline,
@@ -64,7 +72,12 @@ export {
   Logo,
   Masthead,
   MastheadItem,
-  MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta,
+  MediaList,
+  MediaListItem,
+  MediaListItemBody,
+  MediaListItemActions,
+  MediaListItemImage,
+  MediaListItemMeta,
   OneColumn,
   LayoutItem,
   PageContainer,

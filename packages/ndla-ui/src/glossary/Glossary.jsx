@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-
 const classes = new BEMHelper({
   name: 'glossary-word',
   prefix: 'c-',
@@ -24,8 +23,7 @@ class Glossary extends Component {
     this.close = this.close.bind(this);
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   handleClick() {
     this.setState({ isOpen: !this.state.isOpen });
@@ -41,21 +39,31 @@ class Glossary extends Component {
 
     return (
       <div {...classes('item')}>
-        <button aria-haspopup href="#test" {...classes('link')} onClick={this.handleClick}>
+        <button
+          aria-haspopup
+          href="#test"
+          {...classes('link')}
+          onClick={this.handleClick}>
           {children}
         </button>
-        {
-          isOpen ?
-            <div {...classes('popup')}>
-              <button {...classes('close', '', 'u-close')} onClick={this.handleClick}>Lukk</button>
-              <h3 {...classes('title')}>{children}</h3>
-              <p {...classes('description')}>{this.props.definition}</p>
+        {isOpen
+          ? <div {...classes('popup')}>
+              <button
+                {...classes('close', '', 'u-close')}
+                onClick={this.handleClick}>
+                Lukk
+              </button>
+              <h3 {...classes('title')}>
+                {children}
+              </h3>
+              <p {...classes('description')}>
+                {this.props.definition}
+              </p>
               <div {...classes('footer')}>
                 {this.props.source}
               </div>
             </div>
-          : null
-        }
+          : null}
       </div>
     );
   }

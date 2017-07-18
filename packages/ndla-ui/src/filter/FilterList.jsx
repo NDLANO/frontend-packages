@@ -17,7 +17,6 @@ const filterClasses = new BEMHelper({
 });
 
 class FilterList extends Component {
-
   constructor(props) {
     super(props);
     this.state = { checked: '' };
@@ -38,30 +37,35 @@ class FilterList extends Component {
 
     return (
       <div {...filterClasses('list', modifiers)}>
-        <span {...filterClasses('label')}>{ label }</span>
-        { filterContent ? filterContent.map(filterItem =>
-          <div {...filterClasses('item')} key={uuid()}>
-            <input
-              {...filterClasses('input')}
-              type="checkbox"
-              name="gruppe"
-              id={filterItem.title ? filterItem.title : null}
-              value={filterItem.title ? filterItem.title : null}
-              defaultChecked={filterItem.active ? 'true' : null}
-              key={filterItem.title}
-              onChange={this.props.onClick}
-            />
-            <label
-              htmlFor={filterItem.title ? filterItem.title : null}
-            >
-              <span {...filterClasses('item-checkbox')} />
-              { filterItem.title ? filterItem.title : null }
-              {/* ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' }) */}
-              { filterItem.icon
-                ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' })
-                : null}
-            </label>
-          </div>) : null}
+        <span {...filterClasses('label')}>
+          {label}
+        </span>
+        {filterContent
+          ? filterContent.map(filterItem =>
+              <div {...filterClasses('item')} key={uuid()}>
+                <input
+                  {...filterClasses('input')}
+                  type="checkbox"
+                  name="gruppe"
+                  id={filterItem.title ? filterItem.title : null}
+                  value={filterItem.title ? filterItem.title : null}
+                  defaultChecked={filterItem.active ? 'true' : null}
+                  key={filterItem.title}
+                  onChange={this.props.onClick}
+                />
+                <label htmlFor={filterItem.title ? filterItem.title : null}>
+                  <span {...filterClasses('item-checkbox')} />
+                  {filterItem.title ? filterItem.title : null}
+                  {/* ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' }) */}
+                  {filterItem.icon
+                    ? createElement(filterItem.icon, {
+                        className: 'c-icon--20 u-margin-left-tiny',
+                      })
+                    : null}
+                </label>
+              </div>,
+            )
+          : null}
       </div>
     );
   }
@@ -77,10 +81,12 @@ FilterList.propTypes = {
   modifiers: PropTypes.string,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  filterContent: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    active: PropTypes.bool.isRequired,
-  })),
+  filterContent: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      active: PropTypes.bool.isRequired,
+    }),
+  ),
 };
 
 FilterList.defaultProps = {

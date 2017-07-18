@@ -6,10 +6,7 @@
  *
  */
 
-import {
-  getLicenseByAbbreviation,
-  getLicenseByNBTitle,
-} from './licenses';
+import { getLicenseByAbbreviation, getLicenseByNBTitle } from './licenses';
 
 import {
   BY,

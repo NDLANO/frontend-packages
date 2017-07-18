@@ -6,21 +6,20 @@
  *
  */
 
- export const updateIFrameDimensions = () => {
-   document.querySelectorAll('.article__oembed iframe')
-    .forEach((el) => {
-      const iframe = el;
-      const parentWidth = iframe.parentNode.clientWidth;
-      const newHeight = (iframe.clientHeight * parentWidth) / iframe.clientWidth;
-      iframe.height = newHeight;
-      iframe.width = parentWidth;
-    });
- };
+export const updateIFrameDimensions = () => {
+  document.querySelectorAll('.article__oembed iframe').forEach(el => {
+    const iframe = el;
+    const parentWidth = iframe.parentNode.clientWidth;
+    const newHeight = iframe.clientHeight * parentWidth / iframe.clientWidth;
+    iframe.height = newHeight;
+    iframe.width = parentWidth;
+  });
+};
 
- export const addEventListenerForResize = () => {
-   window.addEventListener('resize', updateIFrameDimensions);
- };
+export const addEventListenerForResize = () => {
+  window.addEventListener('resize', updateIFrameDimensions);
+};
 
- export const removeEventListenerForResize = () => {
-   window.removeEventListener('resize', updateIFrameDimensions);
- };
+export const removeEventListenerForResize = () => {
+  window.removeEventListener('resize', updateIFrameDimensions);
+};

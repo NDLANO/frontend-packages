@@ -6,7 +6,6 @@
  *
  */
 
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import elementType from 'react-prop-types/lib/elementType';
@@ -33,18 +32,36 @@ export default class ClickToggle extends React.Component {
   }
 
   render() {
-    const { title, openTitle, buttonClassName, containerClass: Component, ...rest } = this.props;
+    const {
+      title,
+      openTitle,
+      buttonClassName,
+      containerClass: Component,
+      ...rest
+    } = this.props;
     const { isOpen } = this.state;
 
-    const children = React.cloneElement(this.props.children, { close: this.close });
+    const children = React.cloneElement(this.props.children, {
+      close: this.close,
+    });
     return (
       <Component {...rest}>
-        { isOpen ? <Button className="u-overlay" onClick={() => this.setState({ isOpen: false })} /> : null }
-        { isOpen ?
-          <Button className={`active ${buttonClassName}`} onClick={this.handleClick} >{ openTitle || title }</Button> :
-          <Button className={buttonClassName} onClick={this.handleClick} >{ title }</Button>
-        }
-        { isOpen ? children : null }
+        {isOpen
+          ? <Button
+              className="u-overlay"
+              onClick={() => this.setState({ isOpen: false })}
+            />
+          : null}
+        {isOpen
+          ? <Button
+              className={`active ${buttonClassName}`}
+              onClick={this.handleClick}>
+              {openTitle || title}
+            </Button>
+          : <Button className={buttonClassName} onClick={this.handleClick}>
+              {title}
+            </Button>}
+        {isOpen ? children : null}
       </Component>
     );
   }

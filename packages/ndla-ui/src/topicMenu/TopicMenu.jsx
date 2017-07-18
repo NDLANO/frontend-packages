@@ -6,8 +6,8 @@
  *
  */
 
- // Can be removed when updating to jsx-a11y 5.x
-/* eslint jsx-a11y/no-static-element-interactions: 1 */
+// Can be removed when updating to jsx-a11y 5.x
+/* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 1 */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -23,23 +23,22 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const SearchAndFilter = ({ messages }) => (
+const SearchAndFilter = ({ messages }) =>
   <div {...classes('masthead')}>
     <div {...classes('search')}>
       <div {...classes('search-icon')}>
         <Search />
       </div>
-      { messages.search }
+      {messages.search}
     </div>
     <FilterList
       filterContent={[
-            { title: 'VG1', active: true },
-            { title: 'VG2', active: true },
+        { title: 'VG1', active: true },
+        { title: 'VG2', active: true },
       ]}
     />
     <div {...classes('right-filler')} />
-  </div>
-);
+  </div>;
 
 SearchAndFilter.propTypes = {
   messages: PropTypes.shape({
@@ -47,7 +46,7 @@ SearchAndFilter.propTypes = {
   }).isRequired,
 };
 
-const handleBlur = (target) => {
+const handleBlur = target => {
   if (target.nodeName === 'SPAN') {
     target.parentNode.blur();
   } else {
@@ -56,7 +55,6 @@ const handleBlur = (target) => {
 };
 
 export default class TopicMenu extends Component {
-
   constructor(props) {
     super(props);
 
@@ -74,7 +72,8 @@ export default class TopicMenu extends Component {
   }
 
   handleBtnKeyPress(event, topicId) {
-    if (event.charCode === 32 || event.charCode === 13) { // space or enter
+    if (event.charCode === 32 || event.charCode === 13) {
+      // space or enter
       event.preventDefault();
       this.setState({ expandedTopicId: topicId });
       handleBlur(event.target);
@@ -82,55 +81,71 @@ export default class TopicMenu extends Component {
   }
 
   render() {
-    const { topics, toTopic, subjectTitle, toSubject, close: closeMenu, messages, withSearchAndFilter } = this.props;
+    const {
+      topics,
+      toTopic,
+      subjectTitle,
+      toSubject,
+      close: closeMenu,
+      messages,
+      withSearchAndFilter,
+    } = this.props;
     const { expandedTopicId } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     return (
       <div {...classes('dropdown', null, 'o-wrapper u-1/1')}>
         {withSearchAndFilter
           ? <SearchAndFilter messages={messages} />
-          : <div {...classes('masthead')} />
-        }
+          : <div {...classes('masthead')} />}
         <ul {...classes('list', null, classes('left').className)}>
           <li {...classes('back')}>
-            <SafeLink {...classes('back-link')} to="/"><Home {...classes('home-icon', '', 'c-icon--20')} />
+            <SafeLink {...classes('back-link')} to="/">
+              <Home {...classes('home-icon', '', 'c-icon--20')} />
               {messages.subjectOverview}
             </SafeLink>
           </li>
-          <li {...classes('subject')} >
-            <SafeLink to={toSubject()}>{ subjectTitle }</SafeLink>
+          <li {...classes('subject')}>
+            <SafeLink to={toSubject()}>
+              {subjectTitle}
+            </SafeLink>
           </li>
-          { topics.map(topic => (
+          {topics.map(topic =>
             <li
-              {...classes('topic-item', topic.id === expandedTopicId && 'active')}
+              {...classes(
+                'topic-item',
+                topic.id === expandedTopicId && 'active',
+              )}
               onClick={event => this.handleClick(event, topic.id)}
               role="button"
               tabIndex="0"
               onKeyPress={event => this.handleBtnKeyPress(event, topic.id)}
-              key={topic.id}
-            >
-              <span {...classes('link')} > { topic.name } </span>
-              { topic.id === expandedTopicId && window.innerWidth < 700 ?
-                <SubtopicLinkList
-                  classes={classes}
-                  className={classes('right').className}
-                  closeMenu={closeMenu}
-                  topic={expandedTopic}
-                  goToTitle={messages.goTo}
-                  toTopic={toTopic}
-                /> : null }
-            </li>),
-          ) }
+              key={topic.id}>
+              <span {...classes('link')}>
+                {' '}{topic.name}{' '}
+              </span>
+              {topic.id === expandedTopicId && window.innerWidth < 700
+                ? <SubtopicLinkList
+                    classes={classes}
+                    className={classes('right').className}
+                    closeMenu={closeMenu}
+                    topic={expandedTopic}
+                    goToTitle={messages.goTo}
+                    toTopic={toTopic}
+                  />
+                : null}
+            </li>,
+          )}
         </ul>
-        { expandedTopic && window.innerWidth > 700 ?
-          <SubtopicLinkList
-            classes={classes}
-            className={classes('right').className}
-            closeMenu={closeMenu}
-            topic={expandedTopic}
-            goToTitle={messages.goTo}
-            toTopic={toTopic}
-          /> : null}
+        {expandedTopic && window.innerWidth > 700
+          ? <SubtopicLinkList
+              classes={classes}
+              className={classes('right').className}
+              closeMenu={closeMenu}
+              topic={expandedTopic}
+              goToTitle={messages.goTo}
+              toTopic={toTopic}
+            />
+          : null}
       </div>
     );
   }

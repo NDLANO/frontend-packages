@@ -15,12 +15,19 @@ const SafeLink = (props, context) => {
   if (!context.router) {
     const { to, onClick, className } = props;
     const href = typeof to === 'string' ? to : '#';
-    return <a href={href} onClick={onClick} className={className}>{props.children}</a>;
+    return (
+      <a href={href} onClick={onClick} className={className}>
+        {props.children}
+      </a>
+    );
   }
 
-  return <Link {...props}>{props.children}</Link>;
+  return (
+    <Link {...props}>
+      {props.children}
+    </Link>
+  );
 };
-
 
 SafeLink.propTypes = Link.propTypes;
 

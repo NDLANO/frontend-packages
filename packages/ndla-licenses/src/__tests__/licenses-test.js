@@ -6,11 +6,9 @@
  *
  */
 
- /* eslint-env jest */
+/* eslint-env jest */
 
-import {
-  getLicenseByAbbreviation,
-} from '../licenses';
+import { getLicenseByAbbreviation } from '../licenses';
 
 import { BY, SA, NC } from '../licenseRights';
 

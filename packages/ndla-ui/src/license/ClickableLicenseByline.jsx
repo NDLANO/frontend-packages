@@ -20,7 +20,10 @@ class ClickableLicenseByline extends Component {
 
   handleLicenseRightChange(licenseRight) {
     const { selectedLicenseRight } = this.state;
-    if (!selectedLicenseRight || selectedLicenseRight.short !== licenseRight.short) {
+    if (
+      !selectedLicenseRight ||
+      selectedLicenseRight.short !== licenseRight.short
+    ) {
       this.setState({ selectedLicenseRight: licenseRight });
     } else {
       this.setState({ selectedLicenseRight: undefined });
@@ -30,27 +33,38 @@ class ClickableLicenseByline extends Component {
   render() {
     const { children, license, stacked } = this.props;
     const { selectedLicenseRight } = this.state;
-    const activeLicenseRight = selectedLicenseRight ? selectedLicenseRight.short : undefined;
+    const activeLicenseRight = selectedLicenseRight
+      ? selectedLicenseRight.short
+      : undefined;
     const classList = ['license-byline'];
-    if (stacked) { classList.push('license-byline--stacked'); }
+    if (stacked) {
+      classList.push('license-byline--stacked');
+    }
 
     return (
       <div className={classList.join(' ')}>
-        <LicenseIconList licenseRights={license.rights} onLicenseIconClick={this.handleLicenseRightChange} activeLicenseRight={activeLicenseRight} />
-        { selectedLicenseRight ?
-          <div className="license-byline__body license-byline__body--black">
-            <span>{ selectedLicenseRight.description }</span>
-          </div>
-          : undefined
-        }
+        <LicenseIconList
+          licenseRights={license.rights}
+          onLicenseIconClick={this.handleLicenseRightChange}
+          activeLicenseRight={activeLicenseRight}
+        />
+        {selectedLicenseRight
+          ? <div className="license-byline__body license-byline__body--black">
+              <span>
+                {selectedLicenseRight.description}
+              </span>
+            </div>
+          : undefined}
         <div className="license-byline__body">
-          <span>{ license.author }</span>
+          <span>
+            {license.author}
+          </span>
         </div>
-        { children ?
-          <div className="license-byline__body">
-            { children }
-          </div>
-        : null}
+        {children
+          ? <div className="license-byline__body">
+              {children}
+            </div>
+          : null}
       </div>
     );
   }
@@ -61,6 +75,5 @@ ClickableLicenseByline.propTypes = {
   children: PropTypes.node,
   stacked: PropTypes.string,
 };
-
 
 export default ClickableLicenseByline;

@@ -10,27 +10,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import {
-  ItalicButton, BoldButton, UnderlineButton,
-  HeadlineTwoButton, HeadlineThreeButton,
-  UnorderedListButton, BlockquoteButton,
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  BlockquoteButton,
 } from 'draft-js-buttons';
 
 import BaseEditor from './BaseEditor';
 
-
 const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [ItalicButton, BoldButton, UnderlineButton, HeadlineTwoButton, HeadlineThreeButton, UnorderedListButton, BlockquoteButton],
+  structure: [
+    ItalicButton,
+    BoldButton,
+    UnderlineButton,
+    HeadlineTwoButton,
+    HeadlineThreeButton,
+    UnorderedListButton,
+    BlockquoteButton,
+  ],
 });
 
 const plugins = [inlineToolbarPlugin];
 
 const { InlineToolbar } = inlineToolbarPlugin;
 
-const RichTextEditor = props => (
-  <BaseEditor {...props} plugins={plugins} >
+const RichTextEditor = props =>
+  <BaseEditor {...props} plugins={plugins}>
     <InlineToolbar />
-  </BaseEditor>
-);
+  </BaseEditor>;
 
 RichTextEditor.propTypes = {
   value: PropTypes.shape({

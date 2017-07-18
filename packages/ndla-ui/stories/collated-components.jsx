@@ -39,6 +39,7 @@ import {
 } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
 import ImageSearcher from './molecules/imageSearch';
+import AudioSearcher from './molecules/audioSearch';
 
 const toggle = () => {
   document
@@ -138,6 +139,18 @@ storiesOf('Sammensatte moduler', module)
       </OneColumn>
     </Center>,
   )
+  .add('Bildesøk', () =>
+    <Center>
+      <h2 className="u-heading">Bildesøk</h2>
+      <div className="o-wrapper--inner">
+        <p>
+          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne
+          modulen krever at det både finnes en token og api url.
+        </p>
+        <ImageSearcher />
+      </div>
+    </Center>,
+  )
   .add('Emne artikkel', () =>
     <Center>
       <OneColumn cssModifier="narrow">
@@ -173,18 +186,6 @@ storiesOf('Sammensatte moduler', module)
           innenfor fanene.
         </p>
         <TabsControlled />
-      </div>
-    </Center>,
-  )
-  .add('Bildesøk', () =>
-    <Center>
-      <h2 className="u-heading">Bildesøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne
-          modulen krever at det både finnes en token og api url.
-        </p>
-        <ImageSearcher />
       </div>
     </Center>,
   )
@@ -281,6 +282,18 @@ storiesOf('Sammensatte moduler', module)
           <LicenseExample />
         </LayoutItem>
       </article>
+    </Center>,
+  )
+  .add('Lydsøk', () =>
+    <Center>
+      <h2 className="u-heading">Lydsøk</h2>
+      <div className="o-wrapper--inner">
+        <p>
+          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd api.
+          Denne modulen krever at det både finnes en token og api url.
+        </p>
+        <AudioSearcher />
+      </div>
     </Center>,
   )
   .add('Læringsressurser enkeltstående', () =>

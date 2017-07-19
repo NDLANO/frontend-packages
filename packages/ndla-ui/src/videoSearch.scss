@@ -132,14 +132,26 @@
     width: 100%;
     text-align: center;
   }
+
+  &__result-spinner,
   &__spinner {
-    border: 0.4em solid $brand-grey;
-    border-bottom-color: $brand-color--lighter;
+    border: 0.4em solid $brand-grey--light;
+    border-bottom-color: $brand-color;
     border-radius: 50%;
     margin: 0 auto;
-    width: 1em;
-    height: 1em;
     animation: loadVideoSpinner 0.7s linear infinite;
+  }
+
+  &__result-spinner {
+    height: 3em;
+    width: 3em;
+  }
+
+  &__spinner {
+    border-color: $brand-grey;
+    border-bottom-color: $brand-color;
+    width: 2em;
+    height: 2em;
   }
 }
 

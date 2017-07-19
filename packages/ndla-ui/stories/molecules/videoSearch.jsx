@@ -20,7 +20,7 @@ const fetchVideos = (query, offset) =>
     if (offset > 0) {
       return setTimeout(() => resolve(secondBrightCoveList), 1000);
     }
-    return resolve(firstBrightCoveList);
+    return setTimeout(() => resolve(firstBrightCoveList), 1000);
   });
 
 const fetchVideo = id =>

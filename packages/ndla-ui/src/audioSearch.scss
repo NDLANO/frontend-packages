@@ -22,8 +22,9 @@ $xsmall-viewport: "(max-width: 400px)";
     &__list {
       display: flex;
       flex-flow: row wrap;
-      align-content: center;
-      margin-bottom: 20px;
+      align-content: flex-start;
+      min-height: 24px;
+      margin-bottom: 25px;
     }
 
     &__item {
@@ -34,6 +35,10 @@ $xsmall-viewport: "(max-width: 400px)";
 
   & .c-audio-component {
     margin-bottom: 15px;
+  }
+
+  h2 {
+    margin-top: 30px;
   }
 
 }

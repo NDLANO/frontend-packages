@@ -10,42 +10,46 @@ import React from 'react';
 import AudioSearch from 'ndla-audio-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
-const fetchAudios = (query, page, locale) => {
-  const queryString = query
-    ? `query=${ query }&page=${ page }&page-size=16&language=${ locale }`
-    : `page=${ page }&page-size=16&language=${ locale }`;
+const fetchAudios = (query, page=1, pageSize=10, locale='nb') => {
+  const queryString = `${ query ? `query=${ query }&` : ''}page=${ page }&page-size=${ pageSize }&language=${ locale }`;
   return new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/audio-api/v1/audio/?${ queryString }`, {
-        method: 'GET',
-        headers: headerWithAccessToken(token)
-      }).then(res => {
-        if (res.ok) {
+    getToken()
+      .then(token => {
+        fetch(
+          `https://test.api.ndla.no/audio-api/v1/audio/?${ queryString }`,
+          {
+            method: 'GET',
+            headers: headerWithAccessToken(token)
+          }
+        )
+      .then(res => {
+        if (res.ok)
           return resolve(res.json());
-        }
-        else {
-          return res.json().then(json => reject(json));
-        }
-      });
-    });
+        else
+          return res.json().then(json => reject.json());
+      })
+    })
   });
 };
 
 const fetchAudio = id => {
   return new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/audio-api/v1/audio/${ id }`, {
-        method: 'GET',
-        headers: headerWithAccessToken(token),
-      }).then(res => {
-        if (res.ok) {
-          return resolve(res.json());
-        }
-        else {
-          return res.json().then(json => reject(json));
-        }
-      });
-    });
+    getToken()
+      .then(token =>{
+        fetch(
+          `https://test.api.ndla.no/audio-api/v1/audio/${ id }`,
+          {
+            method: 'GET',
+            headers: headerWithAccessToken(token)
+          }
+        )
+        .then(res => {
+          if (res.ok)
+            return resolve(res.json());
+          else
+            return res.json().then(json => reject(json));
+        })
+      })
   });
 };
 

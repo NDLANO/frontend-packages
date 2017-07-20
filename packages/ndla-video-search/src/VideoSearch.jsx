@@ -24,7 +24,7 @@ class VideoSearch extends React.Component {
     super();
     this.state = {
       queryObject: {
-        query: undefined,
+        query: '',
         offset: 0,
         limit: 10,
       },
@@ -67,6 +67,7 @@ class VideoSearch extends React.Component {
       .then(result => {
         this.setState(prevState => ({
           queryObject: {
+            ...prevState.queryObject,
             offset: prevState.queryObject.offset + 10,
           },
           videos: this.state.videos.concat(result),
@@ -92,14 +93,15 @@ class VideoSearch extends React.Component {
     this.props
       .searchVideos(queryObject.query, 0, queryObject.limit)
       .then(result => {
-        this.setState({
+        this.setState(prevState => ({
           queryObject: {
+            ...prevState.queryObject,
             query: queryObject.query,
             offset: 0,
           },
           videos: result,
           searching: false,
-        });
+        }));
       })
       .catch(err => {
         this.props.onError(err);

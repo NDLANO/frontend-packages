@@ -90,6 +90,6 @@ VideoSearchResult.propTypes = {
   locale: PropTypes.string.isRequired,
   translations: PropTypes.shape({
     addVideo: PropTypes.string.isRequired,
-    PreviewVideo: PropTypes.string.isRequired,
+    previewVideo: PropTypes.string.isRequired,
   }),
 };

@@ -33,7 +33,6 @@ class AudioSearchResult extends Component {
     } = this.props;
 
     const license = getLicenseByAbbreviation(audio.license, locale);
-    console.log(license);
 
     return (
       <div key={ audio.id } { ...classes('list-item', 'search-result') }>

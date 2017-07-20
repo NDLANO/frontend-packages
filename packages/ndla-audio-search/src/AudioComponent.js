@@ -38,7 +38,6 @@ class AudioComponent extends Component {
         });
       })
       .catch(err => {
-        console.log(this.props.audio);
         this.props.onError(err);
       });
 	}

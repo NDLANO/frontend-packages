@@ -1,0 +1,40 @@
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+@import "global/settings/settings.config";
+@import "global/settings/settings.colors";
+$xxlarge-viewport-max: "max-width: 1400px)";
+$xlarge-viewport: "(min-width: 1200px)";
+$large-viewport: "(min-width: 800px)";
+$medium-viewport: "(max-width: 800px)";
+$small-viewport: "(max-width: 600px)";
+$xsmall-viewport: "(max-width: 400px)";
+
+.c-audio-search__list-item-inner {
+
+  & .c-license-icons {
+
+    &__list {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: center;
+      margin-bottom: 20px;
+    }
+
+    &__item {
+      max-height: 0;
+    }
+
+  }
+
+  & .c-audio-component {
+    margin-bottom: 15px;
+  }
+
+}
+

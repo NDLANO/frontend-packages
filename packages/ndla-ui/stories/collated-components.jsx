@@ -290,7 +290,7 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Lydsøk</h2>
       <div className="o-wrapper--inner">
         <p>
-          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd api.
+          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api.
           Denne modulen krever at det både finnes en token og api url.
         </p>
         <AudioSearcher />

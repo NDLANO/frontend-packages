@@ -6,45 +6,64 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
-import PreviewAudio from './PreviewAudio';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { LicenseIconList } from 'ndla-ui';
+
+import AudioComponent from './AudioComponent';
 
 const classes = new BEMHelper({
   name: 'audio-search',
   prefix: 'c-'
 });
 
-export default function AudioSearchResult({
-  audio,
-  onAudioClick,
-  selectedAudio,
-  onSelectAudio,
-  locale
-                                          }) {
-  const active = selectedAudio && selectedAudio.id === audio.id ? 'active' : '';
+class AudioSearchResult extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div key={ audio.id } { ...classes('list-item', active) }>
-      <PreviewAudio
-        audio={ audio }
-        onSelectAudio={ onSelectAudio }
-        locale={ locale }
-      />
-    </div>
-  );
+  render() {
+    const {
+      audio,
+      fetchAudio,
+      onError,
+      locale
+    } = this.props;
+
+    const license = getLicenseByAbbreviation(audio.license, locale);
+    console.log(license);
+
+    return (
+      <div key={ audio.id } { ...classes('list-item', 'search-result') }>
+        <div { ...classes('list-item-inner') }>
+          <h2>{ audio.titles[0].title }</h2>
+          <AudioComponent
+            audio={ audio }
+            fetchAudio={ fetchAudio }
+            onError={ onError }
+          />
+          <div {...classes('license')}>
+            {
+              license.rights
+              ? <LicenseIconList licenseRights={license.rights} noText />
+              : license
+            }
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 AudioSearchResult.propTypes = {
   audio: PropTypes.shape({
     id: PropTypes.number.isRequired
   }),
-  onAudioClick: PropTypes.func.isRequired,
-  selectedAudio: PropTypes.shape({
-    id: PropTypes.string.isRequired
-  }),
-  onSelectAudio: PropTypes.func.isRequired,
+  fetchAudio: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired
 };
+
+export default AudioSearchResult;

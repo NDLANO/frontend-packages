@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { LicenseIconList } from 'ndla-ui';
+import { Button, LicenseIconList } from 'ndla-ui';
 
 import AudioComponent from './AudioComponent';
 
@@ -49,6 +49,9 @@ class AudioSearchResult extends Component {
               ? <LicenseIconList licenseRights={license.rights} noText />
               : license
             }
+            <Button { ...classes() } >
+              Bruk lyden
+            </Button>
           </div>
         </div>
       </div>

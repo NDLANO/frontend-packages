@@ -15,30 +15,38 @@ $medium-viewport: "(max-width: 800px)";
 $small-viewport: "(max-width: 600px)";
 $xsmall-viewport: "(max-width: 400px)";
 
-.c-audio-search__list-item-inner {
+.c-audio-search {
 
-  & .c-license-icons {
-
-    &__list {
-      display: flex;
-      flex-flow: row wrap;
-      align-content: flex-start;
-      min-height: 24px;
-      margin-bottom: 25px;
-    }
-
-    &__item {
-      max-height: 0;
-    }
-
+  &__license {
+    margin-bottom: 25px;
   }
 
-  & .c-audio-component {
-    margin-bottom: 15px;
-  }
+  &__list-item-inner {
 
-  h2 {
-    margin-top: 30px;
+    & .c-license-icons {
+
+      &__list {
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+        min-height: 24px;
+        margin-bottom: 5px;
+      }
+
+      &__item {
+        max-height: 0;
+      }
+
+    }
+
+    & .c-audio-component {
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
   }
 
 }

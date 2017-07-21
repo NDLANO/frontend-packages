@@ -37,7 +37,7 @@ class AudioSearchResult extends Component {
     return (
       <div key={ audio.id } { ...classes('list-item', 'search-result') }>
         <div { ...classes('list-item-inner') }>
-          <h2>{ audio.titles[0].title }</h2>
+          <h2>{ audio.title }</h2>
           <AudioComponent
             audio={ audio }
             fetchAudio={ fetchAudio }

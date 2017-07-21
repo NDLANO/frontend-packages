@@ -32,8 +32,8 @@ class AudioComponent extends Component {
         this.setState({
           audioSource:
             <source
-              src={ result.audioFiles[0].url }
-              type={ result.audioFiles[0].mimeType }
+              src={ result.audioFile.url }
+              type={ result.audioFile.mimeType }
             />
         });
       })
@@ -50,7 +50,7 @@ class AudioComponent extends Component {
         <audio
           autoPlay
           controls
-          onPlay={ this.loadAudio }
+          onPlay={ !audioSource && this.loadAudio }
         > { audioSource }
         </audio>
 			</div>

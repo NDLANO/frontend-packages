@@ -20,14 +20,10 @@ const classes = new BEMHelper({
 });
 
 class AudioSearch extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      queryObject: {
-        query: undefined,
-        page: 1,
-        pageSize: 16
-      },
+      queryObject: this.props.queryObject,
       audios: [],
       lastPage: 0,
       totalCount: 0,
@@ -42,20 +38,26 @@ class AudioSearch extends Component {
     this.searchAudios(this.state.queryObject);
   }
 
-  submitAudioSearchQuery(query) {
-    this.searchAudios({ query, page: 1 })
+  submitAudioSearchQuery(queryObject) {
+    this.searchAudios({
+      query: queryObject.query,
+      page: 1,
+      pageSize: queryObject.pageSize,
+      locale: queryObject.locale
+    })
   }
 
   searchAudios(queryObject) {
     this.setState({ searching: true });
     this.props
-      .searchAudios(queryObject.query, queryObject.page, this.props.locale)
+      .searchAudios(queryObject)
       .then(result => {
         this.setState({
           queryObject: {
             query: queryObject.query,
             page: queryObject.page,
-            pageSize: result.pageSize
+            pageSize: result.pageSize,
+            locale: queryObject.locale
           },
           audios: result.results,
           totalCount: result.totalCount,
@@ -64,7 +66,6 @@ class AudioSearch extends Component {
         });
       })
       .catch(err => {
-        console.log("am I here?");
         this.props.onError(err);
         this.setState({ searching: false });
       });
@@ -73,10 +74,10 @@ class AudioSearch extends Component {
   render() {
     const {
       searchPlaceholder,
+      searchLanguagePlaceholder,
       searchButtonTitle,
       fetchAudio,
-      onError,
-      locale
+      onError
     } = this.props;
 
     const {
@@ -87,17 +88,18 @@ class AudioSearch extends Component {
     } = this.state;
 
     const {
-      query,
-      page
+      page,
+      locale
     } = queryObject;
 
     return (
       <div { ...classes() }>
         <AudioSearchForm
           onSearchQuerySubmit={ this.submitAudioSearchQuery }
-          query={ query }
+          queryObject={ queryObject }
           searching={ searching }
           searchPlaceholder={ searchPlaceholder }
+          searchLanguagePlaceholder={ searchLanguagePlaceholder }
           searchButtonTitle={ searchButtonTitle }
         />
         <div { ...classes('list') }>
@@ -125,12 +127,18 @@ class AudioSearch extends Component {
 }
 
 AudioSearch.proptypes = {
+  queryObject: PropTypes.shape({
+    query: PropTypes.string,
+    page: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+    locale: PropTypes.string.isRequired
+  }),
   fetchAudio: PropTypes.func.isRequired,
   searchAudios: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired
+  searchLanguagePlaceholder: PropTypes.string.isRequired,
+  searchButtonTitle: PropTypes.string.isRequired
 };
 
 export default AudioSearch;

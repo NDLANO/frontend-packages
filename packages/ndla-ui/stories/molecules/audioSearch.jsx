@@ -10,7 +10,8 @@ import React from 'react';
 import AudioSearch from 'ndla-audio-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
-const fetchAudios = (query, page=1, pageSize=10, locale='nb') => {
+const fetchAudios = (queryObject) => {
+  const { query, page, pageSize, locale } = queryObject;
   const queryString = `${ query ? `query=${ query }&` : ''}page=${ page }&page-size=${ pageSize }&language=${ locale }`;
   return new Promise((resolve, reject) => {
     getToken()
@@ -62,15 +63,23 @@ export const AudioSearcher = () => {
     console.error(err);
   };
 
+  const defaultQueryObject = {
+    query: "",
+    page: 1,
+    pageSize: 16,
+    locale: "nb"
+  };
+
   return (
     <AudioSearch
+      searchLanguagePlaceholder="Søkespråk"
       searchPlaceholder="Søk i lydfiler"
       searchButtonTitle="Søk"
       fetchAudio={ fetchAudio }
       searchAudios={ fetchAudios }
-      locale="nb"
       onAudioSelect={ audioSelect }
       onError={ onError }
+      queryObject={ defaultQueryObject }
     />
   );
 };

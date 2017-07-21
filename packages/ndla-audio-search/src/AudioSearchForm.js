@@ -20,7 +20,7 @@ class AudioSearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: props.query
+      queryObject: props.queryObject
     };
     this.onKeyPress = this.onKeyPress.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
@@ -33,30 +33,46 @@ class AudioSearchForm extends Component {
     }
   }
 
-  handleQueryChange(evt) {
-    this.setState({ query: evt.target.value });
+  handleQueryChange(evt, locale=false) {
+    this.setState({
+      queryObject: {
+        query: locale ? this.state.queryObject.query : evt.target.value,
+        page: this.state.queryObject.page,
+        pageSize: this.state.queryObject.pageSize,
+        locale: locale ? evt.target.value : this.state.queryObject.locale
+      }
+    });
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.onSearchQuerySubmit(this.state.query);
+    this.props.onSearchQuerySubmit(this.state.queryObject);
   }
 
   render() {
     const {
       searching,
       searchPlaceholder,
+      searchLanguagePlaceholder,
       searchButtonTitle
     } = this.props;
 
     return (
       <div { ...classes('form') }>
         <input
-          {...classes('form-query')}
+          { ...classes('form-query-locale') }
+          type="text"
+          onChange={ evt => this.handleQueryChange(evt, true) }
+          onKeyPress={ this.onKeyPress }
+          value={ this.state.queryObject.locale }
+          placeholder={ searchLanguagePlaceholder }
+        />
+        <input
+          { ...classes('form-query') }
           type="text"
           onChange={ this.handleQueryChange }
           onKeyPress={ this.onKeyPress }
-          value={ this.state.query }
+          value={ this.state.queryObject.query }
           placeholder={ searchPlaceholder }
         />
         <Button
@@ -72,10 +88,11 @@ class AudioSearchForm extends Component {
 }
 
 AudioSearchForm.propTypes = {
-  query: PropTypes.string,
+  queryObject: PropTypes.string,
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
+  searchLanguagePlaceholder: PropTypes.string.isRequired,
   searchButtonTitle: PropTypes.string.isRequired
 };
 

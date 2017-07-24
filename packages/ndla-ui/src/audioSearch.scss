@@ -24,7 +24,6 @@ $xsmall-viewport: "(max-width: 400px)";
     select {
       max-width: 180px;
     }
-
   }
 
   &__license {
@@ -32,9 +31,7 @@ $xsmall-viewport: "(max-width: 400px)";
   }
 
   &__list-item-inner {
-
-    & .c-license-icons {
-
+    .c-license-icons {
       &__list {
         display: flex;
         flex-flow: row wrap;
@@ -46,18 +43,25 @@ $xsmall-viewport: "(max-width: 400px)";
       &__item {
         max-height: 0;
       }
-
     }
 
-    & .c-audio-component {
+    .c-audio-component {
       margin-bottom: 10px;
+
+      // The 'audio' tag is implemented with a download button in Chrome > 58.
+      // Make it so that this button doesn't show.
+      audio::-webkit-media-controls {
+        overflow: hidden !important
+      }
+      audio::-webkit-media-controls-enclosure {
+        width: calc(100% + 32px);
+        margin-left: auto;
+      }
     }
 
     h2 {
       margin-top: 30px;
     }
-
   }
-
 }
 

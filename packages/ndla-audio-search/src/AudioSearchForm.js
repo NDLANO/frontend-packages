@@ -102,7 +102,7 @@ class AudioSearchForm extends Component {
 }
 
 AudioSearchForm.propTypes = {
-  queryObject: PropTypes.string,
+  queryObject: PropTypes.object,
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,

@@ -35,17 +35,15 @@ class AudioSearchForm extends Component {
   }
 
   handleLanguageChange(evt) {
-    this.setState(
-      {
-        queryObject: {
-          query: this.state.queryObject.query,
-          page: this.state.queryObject.page,
-          pageSize: this.state.queryObject.pageSize,
-          locale: evt.target.value
-        }
-      },
-      () => { this.props.onSearchQuerySubmit(this.state.queryObject) }
-    );
+    let newQueryObject = {
+      query: this.state.queryObject.query,
+      page: this.state.queryObject.page,
+      pageSize: this.state.queryObject.pageSize,
+      locale: evt.target.value
+    };
+
+    this.props.onSearchQuerySubmit(newQueryObject);
+    this.setState({ queryObject: newQueryObject });
   }
 
   handleQueryChange(evt) {
@@ -57,9 +55,6 @@ class AudioSearchForm extends Component {
         locale: this.state.queryObject.locale
       }
     });
-
-
-    console.log(this.state.queryObject);
   }
 
   handleSubmit(evt) {

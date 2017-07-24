@@ -72,7 +72,6 @@ export const AudioSearcher = () => {
 
   return (
     <AudioSearch
-      searchLanguagePlaceholder="Søkespråk"
       searchPlaceholder="Søk i lydfiler"
       searchButtonTitle="Søk"
       fetchAudio={ fetchAudio }

@@ -25,6 +25,7 @@ class AudioSearchForm extends Component {
     this.onKeyPress = this.onKeyPress.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLanguageChange = this.handleLanguageChange.bind(this);
   }
 
   onKeyPress(evt) {
@@ -33,15 +34,32 @@ class AudioSearchForm extends Component {
     }
   }
 
-  handleQueryChange(evt, locale=false) {
+  handleLanguageChange(evt) {
+    this.setState(
+      {
+        queryObject: {
+          query: this.state.queryObject.query,
+          page: this.state.queryObject.page,
+          pageSize: this.state.queryObject.pageSize,
+          locale: evt.target.value
+        }
+      },
+      () => { this.props.onSearchQuerySubmit(this.state.queryObject) }
+    );
+  }
+
+  handleQueryChange(evt) {
     this.setState({
       queryObject: {
-        query: locale ? this.state.queryObject.query : evt.target.value,
+        query: evt.target.value,
         page: this.state.queryObject.page,
         pageSize: this.state.queryObject.pageSize,
-        locale: locale ? evt.target.value : this.state.queryObject.locale
+        locale: this.state.queryObject.locale
       }
     });
+
+
+    console.log(this.state.queryObject);
   }
 
   handleSubmit(evt) {
@@ -53,35 +71,36 @@ class AudioSearchForm extends Component {
     const {
       searching,
       searchPlaceholder,
-      searchLanguagePlaceholder,
       searchButtonTitle
     } = this.props;
 
     return (
       <div { ...classes('form') }>
-        <input
-          { ...classes('form-query-locale') }
-          type="text"
-          onChange={ evt => this.handleQueryChange(evt, true) }
-          onKeyPress={ this.onKeyPress }
-          value={ this.state.queryObject.locale }
-          placeholder={ searchLanguagePlaceholder }
-        />
-        <input
-          { ...classes('form-query') }
-          type="text"
-          onChange={ this.handleQueryChange }
-          onKeyPress={ this.onKeyPress }
-          value={ this.state.queryObject.query }
-          placeholder={ searchPlaceholder }
-        />
-        <Button
-          { ...classes('form-button') }
-          onClick={ this.handleSubmit }
-          loading={ searching }
+        <select
+          onChange={ this.handleLanguageChange }
         >
-          { searchButtonTitle }
-        </Button>
+          <option value="nb"> Norsk - Bokmål </option>
+          <option value="nn"> Norsk - Nynorsk </option>
+          <option value="en"> Engelsk </option>
+          <option value="unknown"> *Ukjent* </option>
+        </select>
+        <div>
+          <input
+            { ...classes('form-query') }
+            type="text"
+            onChange={ this.handleQueryChange }
+            onKeyPress={ this.onKeyPress }
+            value={ this.state.queryObject.query }
+            placeholder={ searchPlaceholder }
+          />
+          <Button
+            { ...classes('form-button') }
+            onClick={ this.handleSubmit }
+            loading={ searching }
+          >
+            { searchButtonTitle }
+          </Button>
+        </div>
       </div>
     );
   }
@@ -92,7 +111,6 @@ AudioSearchForm.propTypes = {
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
-  searchLanguagePlaceholder: PropTypes.string.isRequired,
   searchButtonTitle: PropTypes.string.isRequired
 };
 

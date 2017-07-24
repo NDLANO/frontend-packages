@@ -74,7 +74,6 @@ class AudioSearch extends Component {
   render() {
     const {
       searchPlaceholder,
-      searchLanguagePlaceholder,
       searchButtonTitle,
       fetchAudio,
       onError
@@ -99,7 +98,6 @@ class AudioSearch extends Component {
           queryObject={ queryObject }
           searching={ searching }
           searchPlaceholder={ searchPlaceholder }
-          searchLanguagePlaceholder={ searchLanguagePlaceholder }
           searchButtonTitle={ searchButtonTitle }
         />
         <div { ...classes('list') }>
@@ -137,7 +135,6 @@ AudioSearch.proptypes = {
   searchAudios: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
-  searchLanguagePlaceholder: PropTypes.string.isRequired,
   searchButtonTitle: PropTypes.string.isRequired
 };
 

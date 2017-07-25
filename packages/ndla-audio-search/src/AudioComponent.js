@@ -23,7 +23,6 @@ class AudioComponent extends Component {
     this.state = {
       audioSource: undefined,
       audioType: undefined,
-      loaded: false,
     };
 
     this.loadAudio = this.loadAudio.bind(this);
@@ -36,7 +35,6 @@ class AudioComponent extends Component {
         this.setState({
           audioSource: result.audioFile.url,
           audioType: result.audioFile.mimeType,
-          loaded: true,
         });
       })
       .catch(err => {
@@ -45,11 +43,13 @@ class AudioComponent extends Component {
   }
 
   render() {
-    const { audioSource, audioType, loaded } = this.state;
+    const { audioSource, audioType } = this.state;
     return (
       <div {...classes()}>
-        <audio controls autoPlay onPlay={!loaded && this.loadAudio}>
-          {loaded ? <source src={audioSource} type={audioType} /> : undefined}
+        <audio controls autoPlay onPlay={!audioSource && this.loadAudio}>
+          {audioSource
+            ? <source src={audioSource} type={audioType} />
+            : undefined}
         </audio>
       </div>
     );

@@ -6,17 +6,17 @@
  *
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Pager } from "ndla-ui";
-import BEMHelper from "react-bem-helper";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Pager } from 'ndla-ui';
+import BEMHelper from 'react-bem-helper';
 
-import AudioSearchForm from "./AudioSearchForm";
-import AudioSearchResult from "./AudioSearchResult";
+import AudioSearchForm from './AudioSearchForm';
+import AudioSearchResult from './AudioSearchResult';
 
 const classes = new BEMHelper({
-  name: "audio-search",
-  prefix: "c-"
+  name: 'audio-search',
+  prefix: 'c-',
 });
 
 class AudioSearch extends Component {
@@ -27,7 +27,7 @@ class AudioSearch extends Component {
       audios: [],
       lastPage: 0,
       totalCount: 0,
-      searching: false
+      searching: false,
     };
 
     this.submitAudioSearchQuery = this.submitAudioSearchQuery.bind(this);
@@ -43,7 +43,7 @@ class AudioSearch extends Component {
       query: queryObject.query,
       page: 1,
       pageSize: queryObject.pageSize,
-      locale: queryObject.locale
+      locale: queryObject.locale,
     });
   }
 
@@ -57,12 +57,12 @@ class AudioSearch extends Component {
             query: queryObject.query,
             page: queryObject.page,
             pageSize: result.pageSize,
-            locale: queryObject.locale
+            locale: queryObject.locale,
           },
           audios: result.results,
           totalCount: result.totalCount,
           lastPage: Math.ceil(result.totalCount / result.pageSize),
-          searching: false
+          searching: false,
         });
       })
       .catch(err => {
@@ -76,7 +76,7 @@ class AudioSearch extends Component {
       searchPlaceholder,
       searchButtonTitle,
       fetchAudio,
-      onError
+      onError,
     } = this.props;
 
     const { queryObject, audios, lastPage, searching } = this.state;
@@ -92,7 +92,7 @@ class AudioSearch extends Component {
           searchPlaceholder={searchPlaceholder}
           searchButtonTitle={searchButtonTitle}
         />
-        <div {...classes("list")}>
+        <div {...classes('list')}>
           {audios.map(audio =>
             <AudioSearchResult
               key={audio.id}
@@ -100,7 +100,7 @@ class AudioSearch extends Component {
               fetchAudio={fetchAudio}
               onError={onError}
               locale={locale}
-            />
+            />,
           )}
         </div>
         <Pager
@@ -121,13 +121,13 @@ AudioSearch.proptypes = {
     query: PropTypes.string,
     page: PropTypes.number.isRequired,
     pageSize: PropTypes.number.isRequired,
-    locale: PropTypes.string.isRequired
+    locale: PropTypes.string.isRequired,
   }),
   fetchAudio: PropTypes.func.isRequired,
   searchAudios: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired
+  searchButtonTitle: PropTypes.string.isRequired,
 };
 
 export default AudioSearch;

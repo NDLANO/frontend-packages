@@ -6,17 +6,17 @@
  *
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import BEMHelper from "react-bem-helper";
-import { getLicenseByAbbreviation } from "ndla-licenses";
-import { Button, LicenseIconList } from "ndla-ui";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { Button, LicenseIconList } from 'ndla-ui';
 
-import AudioComponent from "./AudioComponent";
+import AudioComponent from './AudioComponent';
 
 const classes = new BEMHelper({
-  name: "audio-search",
-  prefix: "c-"
+  name: 'audio-search',
+  prefix: 'c-',
 });
 
 class AudioSearchResult extends Component {
@@ -30,8 +30,8 @@ class AudioSearchResult extends Component {
     const license = getLicenseByAbbreviation(audio.license, locale);
 
     return (
-      <div key={audio.id} {...classes("list-item", "search-result")}>
-        <div {...classes("list-item-inner")}>
+      <div key={audio.id} {...classes('list-item', 'search-result')}>
+        <div {...classes('list-item-inner')}>
           <h2>
             {audio.title}
           </h2>
@@ -40,7 +40,7 @@ class AudioSearchResult extends Component {
             fetchAudio={fetchAudio}
             onError={onError}
           />
-          <div {...classes("license")}>
+          <div {...classes('license')}>
             {license.rights
               ? <LicenseIconList licenseRights={license.rights} noText />
               : license}
@@ -54,11 +54,11 @@ class AudioSearchResult extends Component {
 
 AudioSearchResult.propTypes = {
   audio: PropTypes.shape({
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
   }),
   fetchAudio: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
 };
 
 export default AudioSearchResult;

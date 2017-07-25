@@ -6,21 +6,21 @@
  *
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button } from "ndla-ui";
-import BEMHelper from "react-bem-helper";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Button } from 'ndla-ui';
+import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
-  name: "audio-search",
-  prefix: "c-"
+  name: 'audio-search',
+  prefix: 'c-',
 });
 
 class AudioSearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      queryObject: props.queryObject
+      queryObject: props.queryObject,
     };
     this.onKeyPress = this.onKeyPress.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
@@ -29,7 +29,7 @@ class AudioSearchForm extends Component {
   }
 
   onKeyPress(evt) {
-    if (evt.key === "Enter") {
+    if (evt.key === 'Enter') {
       this.handleSubmit(evt);
     }
   }
@@ -39,7 +39,7 @@ class AudioSearchForm extends Component {
       query: this.state.queryObject.query,
       page: this.state.queryObject.page,
       pageSize: this.state.queryObject.pageSize,
-      locale: evt.target.value
+      locale: evt.target.value,
     };
 
     this.props.onSearchQuerySubmit(newQueryObject);
@@ -52,8 +52,8 @@ class AudioSearchForm extends Component {
         query: evt.target.value,
         page: this.state.queryObject.page,
         pageSize: this.state.queryObject.pageSize,
-        locale: this.state.queryObject.locale
-      }
+        locale: this.state.queryObject.locale,
+      },
     });
   }
 
@@ -66,7 +66,7 @@ class AudioSearchForm extends Component {
     const { searching, searchPlaceholder, searchButtonTitle } = this.props;
 
     return (
-      <div {...classes("form")}>
+      <div {...classes('form')}>
         <select onChange={this.handleLanguageChange}>
           <option value="nb"> Norsk - Bokmål </option>
           <option value="nn"> Norsk - Nynorsk </option>
@@ -75,7 +75,7 @@ class AudioSearchForm extends Component {
         </select>
         <div>
           <input
-            {...classes("form-query")}
+            {...classes('form-query')}
             type="text"
             onChange={this.handleQueryChange}
             onKeyPress={this.onKeyPress}
@@ -83,10 +83,9 @@ class AudioSearchForm extends Component {
             placeholder={searchPlaceholder}
           />
           <Button
-            {...classes("form-button")}
+            {...classes('form-button')}
             onClick={this.handleSubmit}
-            loading={searching}
-          >
+            loading={searching}>
             {searchButtonTitle}
           </Button>
         </div>
@@ -100,11 +99,11 @@ AudioSearchForm.propTypes = {
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired
+  searchButtonTitle: PropTypes.string.isRequired,
 };
 
 AudioSearchForm.defaultProps = {
-  query: ""
+  query: '',
 };
 
 export default AudioSearchForm;

@@ -6,21 +6,21 @@
  *
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import BEMHelper from "react-bem-helper";
-import { Button } from "ndla-ui";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
+import { Button } from 'ndla-ui';
 
 const classes = new BEMHelper({
-  name: "audio-component",
-  prefix: "c-"
+  name: 'audio-component',
+  prefix: 'c-',
 });
 
 class AudioComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      audioSource: undefined
+      audioSource: undefined,
     };
 
     this.loadAudio = this.loadAudio.bind(this);
@@ -36,7 +36,7 @@ class AudioComponent extends Component {
               src={result.audioFile.url}
               type={result.audioFile.mimeType}
             />
-          )
+          ),
         });
       })
       .catch(err => {
@@ -50,7 +50,7 @@ class AudioComponent extends Component {
     return (
       <div {...classes()}>
         <audio autoPlay controls onPlay={!audioSource && this.loadAudio}>
-          {" "}{audioSource}
+          {' '}{audioSource}
         </audio>
       </div>
     );
@@ -60,7 +60,7 @@ class AudioComponent extends Component {
 AudioComponent.propTypes = {
   audio: PropTypes.object.isRequired,
   fetchAudio: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired
+  onError: PropTypes.func.isRequired,
 };
 
 export default AudioComponent;

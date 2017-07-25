@@ -20,7 +20,6 @@ const VideoLoadMoreButton = props => {
   const { videos, searching, limit, translations, loadMoreVideos } = props;
 
   if (!videos || videos.length === 0 || videos.length % limit !== 0) {
-    console.log(videos.length);
     return null;
   }
   return (

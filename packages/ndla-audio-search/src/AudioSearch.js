@@ -6,17 +6,17 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Pager } from 'ndla-ui';
-import BEMHelper from 'react-bem-helper';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Pager } from "ndla-ui";
+import BEMHelper from "react-bem-helper";
 
-import AudioSearchForm from './AudioSearchForm';
-import AudioSearchResult from './AudioSearchResult';
+import AudioSearchForm from "./AudioSearchForm";
+import AudioSearchResult from "./AudioSearchResult";
 
 const classes = new BEMHelper({
-  name: 'audio-search',
-  prefix: 'c-'
+  name: "audio-search",
+  prefix: "c-"
 });
 
 class AudioSearch extends Component {
@@ -44,7 +44,7 @@ class AudioSearch extends Component {
       page: 1,
       pageSize: queryObject.pageSize,
       locale: queryObject.locale
-    })
+    });
   }
 
   searchAudios(queryObject) {
@@ -79,44 +79,36 @@ class AudioSearch extends Component {
       onError
     } = this.props;
 
-    const {
-      queryObject,
-      audios,
-      lastPage,
-      searching
-    } = this.state;
+    const { queryObject, audios, lastPage, searching } = this.state;
 
-    const {
-      page,
-      locale
-    } = queryObject;
+    const { page, locale } = queryObject;
 
     return (
-      <div { ...classes() }>
+      <div {...classes()}>
         <AudioSearchForm
-          onSearchQuerySubmit={ this.submitAudioSearchQuery }
-          queryObject={ queryObject }
-          searching={ searching }
-          searchPlaceholder={ searchPlaceholder }
-          searchButtonTitle={ searchButtonTitle }
+          onSearchQuerySubmit={this.submitAudioSearchQuery}
+          queryObject={queryObject}
+          searching={searching}
+          searchPlaceholder={searchPlaceholder}
+          searchButtonTitle={searchButtonTitle}
         />
-        <div { ...classes('list') }>
-          { audios.map(audio =>
+        <div {...classes("list")}>
+          {audios.map(audio =>
             <AudioSearchResult
-              key={ audio.id }
-              audio={ audio }
-              fetchAudio={ fetchAudio }
-              onError={ onError }
-              locale={ locale }
+              key={audio.id}
+              audio={audio}
+              fetchAudio={fetchAudio}
+              onError={onError}
+              locale={locale}
             />
-          ) }
+          )}
         </div>
         <Pager
-          page={ page ? parseInt(page, 10) : 1 }
+          page={page ? parseInt(page, 10) : 1}
           pathname=""
-          lastPage={ lastPage }
-          query={ queryObject }
-          onClick={ this.searchAudios }
+          lastPage={lastPage}
+          query={queryObject}
+          onClick={this.searchAudios}
           pageItemComponentClass="button"
         />
       </div>

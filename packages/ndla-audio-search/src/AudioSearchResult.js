@@ -6,17 +6,17 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { Button, LicenseIconList } from 'ndla-ui';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import BEMHelper from "react-bem-helper";
+import { getLicenseByAbbreviation } from "ndla-licenses";
+import { Button, LicenseIconList } from "ndla-ui";
 
-import AudioComponent from './AudioComponent';
+import AudioComponent from "./AudioComponent";
 
 const classes = new BEMHelper({
-  name: 'audio-search',
-  prefix: 'c-'
+  name: "audio-search",
+  prefix: "c-"
 });
 
 class AudioSearchResult extends Component {
@@ -25,33 +25,26 @@ class AudioSearchResult extends Component {
   }
 
   render() {
-    const {
-      audio,
-      fetchAudio,
-      onError,
-      locale
-    } = this.props;
+    const { audio, fetchAudio, onError, locale } = this.props;
 
     const license = getLicenseByAbbreviation(audio.license, locale);
 
     return (
-      <div key={ audio.id } { ...classes('list-item', 'search-result') }>
-        <div { ...classes('list-item-inner') }>
-          <h2>{ audio.title }</h2>
+      <div key={audio.id} {...classes("list-item", "search-result")}>
+        <div {...classes("list-item-inner")}>
+          <h2>
+            {audio.title}
+          </h2>
           <AudioComponent
-            audio={ audio }
-            fetchAudio={ fetchAudio }
-            onError={ onError }
+            audio={audio}
+            fetchAudio={fetchAudio}
+            onError={onError}
           />
-          <div {...classes('license')}>
-            {
-              license.rights
+          <div {...classes("license")}>
+            {license.rights
               ? <LicenseIconList licenseRights={license.rights} noText />
-              : license
-            }
-            <Button { ...classes() } >
-              Bruk lyden
-            </Button>
+              : license}
+            <Button {...classes()}>Bruk lyden</Button>
           </div>
         </div>
       </div>

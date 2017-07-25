@@ -39,7 +39,7 @@ const VideoSearchList = props => {
     return <div {...classes('result-spinner')} />;
   }
   return (
-    <div>
+    <div {...classes('list-inner')}>
       {videos.map(video =>
         <VideoSearchResult
           key={video.id}

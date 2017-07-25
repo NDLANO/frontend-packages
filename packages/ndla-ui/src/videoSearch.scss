@@ -76,6 +76,10 @@
     position: relative;
   }
 
+  &__list-inner {
+    width: 100%;
+  }
+
   &__list-item-inner {
     display: flex;
     align-items: flex-start;

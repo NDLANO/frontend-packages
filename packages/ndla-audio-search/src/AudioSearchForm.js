@@ -25,25 +25,12 @@ class AudioSearchForm extends Component {
     this.onKeyPress = this.onKeyPress.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleLanguageChange = this.handleLanguageChange.bind(this);
   }
 
   onKeyPress(evt) {
     if (evt.key === 'Enter') {
       this.handleSubmit(evt);
     }
-  }
-
-  handleLanguageChange(evt) {
-    const newQueryObject = {
-      query: this.state.queryObject.query,
-      page: this.state.queryObject.page,
-      pageSize: this.state.queryObject.pageSize,
-      locale: evt.target.value,
-    };
-
-    this.props.onSearchQuerySubmit(newQueryObject);
-    this.setState({ queryObject: newQueryObject });
   }
 
   handleQueryChange(evt) {
@@ -67,28 +54,20 @@ class AudioSearchForm extends Component {
 
     return (
       <div {...classes('form')}>
-        <select onChange={this.handleLanguageChange}>
-          <option value="nb"> Norsk - Bokmål </option>
-          <option value="nn"> Norsk - Nynorsk </option>
-          <option value="en"> Engelsk </option>
-          <option value="unknown"> *Ukjent* </option>
-        </select>
-        <div>
-          <input
-            {...classes('form-query')}
-            type="text"
-            onChange={this.handleQueryChange}
-            onKeyPress={this.onKeyPress}
-            value={this.state.queryObject.query}
-            placeholder={searchPlaceholder}
-          />
-          <Button
-            {...classes('form-button')}
-            onClick={this.handleSubmit}
-            loading={searching}>
-            {searchButtonTitle}
-          </Button>
-        </div>
+        <input
+          {...classes('form-query')}
+          type="text"
+          onChange={this.handleQueryChange}
+          onKeyPress={this.onKeyPress}
+          value={this.state.queryObject.query}
+          placeholder={searchPlaceholder}
+        />
+        <Button
+          {...classes('form-button')}
+          onClick={this.handleSubmit}
+          loading={searching}>
+          {searchButtonTitle}
+        </Button>
       </div>
     );
   }

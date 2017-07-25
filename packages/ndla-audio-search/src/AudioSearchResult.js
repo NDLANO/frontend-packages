@@ -24,7 +24,6 @@ export default function AudioSearchResult({
   onError,
   locale,
 }) {
-  // const { audio, fetchAudio, onError, locale } = this.props;
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <div key={audio.id} {...classes('list-item', 'search-result')}>

@@ -11,15 +11,6 @@
 
 .c-audio-search {
 
-  &__form {
-    display: flex;
-    flex-flow: column wrap;
-
-    select {
-      max-width: 180px;
-    }
-  }
-
   &__license {
     margin-bottom: 25px;
   }

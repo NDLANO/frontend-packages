@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint jsx-a11y/media-has-caption: 0 */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
@@ -45,11 +47,10 @@ class AudioComponent extends Component {
 
   render() {
     const { audioSource } = this.state;
-
     return (
       <div {...classes()}>
         <audio autoPlay controls onPlay={!audioSource && this.loadAudio}>
-          {' '}{audioSource}
+          {audioSource}
           <track kind="captions" src="" />
         </audio>
       </div>

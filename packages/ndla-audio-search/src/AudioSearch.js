@@ -23,7 +23,7 @@ class AudioSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      queryObject: this.props.queryObject,
+      queryObject: props.queryObject,
       audios: [],
       lastPage: 0,
       totalCount: 0,

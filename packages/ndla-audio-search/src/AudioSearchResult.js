@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { Button, LicenseIconList } from 'ndla-ui';
-
 import AudioComponent from './AudioComponent';
 
 const classes = new BEMHelper({

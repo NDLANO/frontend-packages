@@ -107,8 +107,4 @@ AudioSearchForm.propTypes = {
   searchButtonTitle: PropTypes.string.isRequired,
 };
 
-AudioSearchForm.defaultProps = {
-  query: '',
-};
-
 export default AudioSearchForm;

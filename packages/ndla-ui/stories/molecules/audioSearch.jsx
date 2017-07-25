@@ -61,6 +61,7 @@ export const AudioSearcher = () => {
     searchPlaceholder: 'Søk i lydfiler',
     searchButtonTitle: 'Søk',
     useAudio: 'Velg lyd',
+    noResults: 'Ingen resultater funnet',
   };
 
   return (

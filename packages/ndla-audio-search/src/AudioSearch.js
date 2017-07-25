@@ -12,7 +12,7 @@ import { Pager } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 
 import AudioSearchForm from './AudioSearchForm';
-import AudioSearchResult from './AudioSearchResult';
+import AudioSearchList from './AudioSearchList';
 
 const classes = new BEMHelper({
   name: 'audio-search',
@@ -73,9 +73,7 @@ class AudioSearch extends Component {
 
   render() {
     const { fetchAudio, onError, translations } = this.props;
-
     const { queryObject, audios, lastPage, searching } = this.state;
-
     const { page, locale } = queryObject;
 
     return (
@@ -86,18 +84,14 @@ class AudioSearch extends Component {
           searching={searching}
           translations={translations}
         />
-        <div {...classes('list')}>
-          {audios.map(audio =>
-            <AudioSearchResult
-              key={audio.id}
-              audio={audio}
-              fetchAudio={fetchAudio}
-              onError={onError}
-              locale={locale}
-              translations={translations}
-            />,
-          )}
-        </div>
+        <AudioSearchList
+          audios={audios}
+          searching={searching}
+          locale={locale}
+          translations={translations}
+          onError={onError}
+          fetchAudio={fetchAudio}
+        />
         <Pager
           page={page ? parseInt(page, 10) : 1}
           pathname=""
@@ -125,6 +119,7 @@ AudioSearch.propTypes = {
     searchPlaceholder: PropTypes.string.isRequired,
     searchButtonTitle: PropTypes.string.isRequired,
     useAudio: PropTypes.string.isRequired,
+    noResults: PropTypes.string.isRequired,
   }),
 };
 

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
@@ -19,37 +19,34 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class AudioSearchResult extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { audio, fetchAudio, onError, locale } = this.props;
-
-    const license = getLicenseByAbbreviation(audio.license, locale);
-
-    return (
-      <div key={audio.id} {...classes('list-item', 'search-result')}>
-        <div {...classes('list-item-inner')}>
-          <h2>
-            {audio.title}
-          </h2>
-          <AudioComponent
-            audio={audio}
-            fetchAudio={fetchAudio}
-            onError={onError}
-          />
-          <div {...classes('license')}>
-            {license.rights
-              ? <LicenseIconList licenseRights={license.rights} noText />
-              : license}
-            <Button {...classes()}>Bruk lyden</Button>
-          </div>
+export default function AudioSearchResult({
+  audio,
+  fetchAudio,
+  onError,
+  locale,
+}) {
+  // const { audio, fetchAudio, onError, locale } = this.props;
+  const license = getLicenseByAbbreviation(audio.license, locale);
+  return (
+    <div key={audio.id} {...classes('list-item', 'search-result')}>
+      <div {...classes('list-item-inner')}>
+        <h2>
+          {audio.title}
+        </h2>
+        <AudioComponent
+          audio={audio}
+          fetchAudio={fetchAudio}
+          onError={onError}
+        />
+        <div {...classes('license')}>
+          {license.rights
+            ? <LicenseIconList licenseRights={license.rights} noText />
+            : license}
+          <Button {...classes()}>Bruk lyden</Button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 AudioSearchResult.propTypes = {
@@ -60,5 +57,3 @@ AudioSearchResult.propTypes = {
   onError: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
 };
-
-export default AudioSearchResult;

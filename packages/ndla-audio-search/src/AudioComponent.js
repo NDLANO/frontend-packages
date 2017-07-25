@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Button } from 'ndla-ui';
 
 const classes = new BEMHelper({
   name: 'audio-component',
@@ -51,6 +50,7 @@ class AudioComponent extends Component {
       <div {...classes()}>
         <audio autoPlay controls onPlay={!audioSource && this.loadAudio}>
           {' '}{audioSource}
+          <track kind="captions" src="" />
         </audio>
       </div>
     );
@@ -58,7 +58,9 @@ class AudioComponent extends Component {
 }
 
 AudioComponent.propTypes = {
-  audio: PropTypes.object.isRequired,
+  audio: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }),
   fetchAudio: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
 };

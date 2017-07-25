@@ -35,7 +35,7 @@ class AudioSearchForm extends Component {
   }
 
   handleLanguageChange(evt) {
-    let newQueryObject = {
+    const newQueryObject = {
       query: this.state.queryObject.query,
       page: this.state.queryObject.page,
       pageSize: this.state.queryObject.pageSize,
@@ -95,7 +95,12 @@ class AudioSearchForm extends Component {
 }
 
 AudioSearchForm.propTypes = {
-  queryObject: PropTypes.object,
+  queryObject: PropTypes.shape({
+    query: PropTypes.string,
+    page: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+    locale: PropTypes.string.isRequired,
+  }),
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,

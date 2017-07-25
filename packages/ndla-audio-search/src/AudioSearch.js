@@ -116,7 +116,7 @@ class AudioSearch extends Component {
   }
 }
 
-AudioSearch.proptypes = {
+AudioSearch.propTypes = {
   queryObject: PropTypes.shape({
     query: PropTypes.string,
     page: PropTypes.number.isRequired,

@@ -22,25 +22,24 @@ const fetchAudios = queryObject => {
         headers: headerWithAccessToken(token),
       }).then(res => {
         if (res.ok) return resolve(res.json());
-        else return res.json().then(json => reject.json());
+        return res.json().then(json => reject(json));
       });
     });
   });
 };
 
-const fetchAudio = id => {
-  return new Promise((resolve, reject) => {
+const fetchAudio = id =>
+  new Promise((resolve, reject) => {
     getToken().then(token => {
       fetch(`https://test.api.ndla.no/audio-api/v1/audio/${id}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
       }).then(res => {
         if (res.ok) return resolve(res.json());
-        else return res.json().then(json => reject(json));
+        return res.json().then(json => reject(json));
       });
     });
   });
-};
 
 export const AudioSearcher = () => {
   const audioSelect = audio => {

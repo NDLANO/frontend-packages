@@ -57,10 +57,15 @@ export const AudioSearcher = () => {
     locale: 'nb',
   };
 
+  const translations = {
+    searchPlaceholder: 'Søk i lydfiler',
+    searchButtonTitle: 'Søk',
+    useAudio: 'Velg lyd',
+  };
+
   return (
     <AudioSearch
-      searchPlaceholder="Søk i lydfiler"
-      searchButtonTitle="Søk"
+      translations={translations}
       fetchAudio={fetchAudio}
       searchAudios={fetchAudios}
       onAudioSelect={audioSelect}

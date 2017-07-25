@@ -72,12 +72,7 @@ class AudioSearch extends Component {
   }
 
   render() {
-    const {
-      searchPlaceholder,
-      searchButtonTitle,
-      fetchAudio,
-      onError,
-    } = this.props;
+    const { fetchAudio, onError, translations } = this.props;
 
     const { queryObject, audios, lastPage, searching } = this.state;
 
@@ -89,8 +84,7 @@ class AudioSearch extends Component {
           onSearchQuerySubmit={this.submitAudioSearchQuery}
           queryObject={queryObject}
           searching={searching}
-          searchPlaceholder={searchPlaceholder}
-          searchButtonTitle={searchButtonTitle}
+          translations={translations}
         />
         <div {...classes('list')}>
           {audios.map(audio =>
@@ -100,6 +94,7 @@ class AudioSearch extends Component {
               fetchAudio={fetchAudio}
               onError={onError}
               locale={locale}
+              translations={translations}
             />,
           )}
         </div>
@@ -126,8 +121,11 @@ AudioSearch.propTypes = {
   fetchAudio: PropTypes.func.isRequired,
   searchAudios: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
-  searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired,
+  translations: PropTypes.shape({
+    searchPlaceholder: PropTypes.string.isRequired,
+    searchButtonTitle: PropTypes.string.isRequired,
+    useAudio: PropTypes.string.isRequired,
+  }),
 };
 
 export default AudioSearch;

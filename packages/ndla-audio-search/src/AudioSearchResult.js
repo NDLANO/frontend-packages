@@ -23,26 +23,29 @@ export default function AudioSearchResult({
   fetchAudio,
   onError,
   locale,
+  translations,
 }) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
-    <div key={audio.id} {...classes('list-item', 'search-result')}>
+    <div key={audio.id} {...classes('list-item')}>
       <div {...classes('list-item-inner')}>
         <h2>
           {audio.title}
         </h2>
+        <div {...classes('license')}>
+          {license.rights
+            ? <LicenseIconList licenseRights={license.rights} noText />
+            : license}
+        </div>
         <AudioComponent
           audio={audio}
           fetchAudio={fetchAudio}
           onError={onError}
         />
-        <div {...classes('license')}>
-          {license.rights
-            ? <LicenseIconList licenseRights={license.rights} noText />
-            : license}
-          <Button {...classes()}>Bruk lyden</Button>
-        </div>
       </div>
+      <Button outline>
+        {translations.useAudio}
+      </Button>
     </div>
   );
 }
@@ -50,6 +53,10 @@ export default function AudioSearchResult({
 AudioSearchResult.propTypes = {
   audio: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
+  translations: PropTypes.shape({
+    useAudio: PropTypes.string.isRequired,
   }),
   fetchAudio: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,

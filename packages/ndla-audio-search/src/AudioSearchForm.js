@@ -50,7 +50,7 @@ class AudioSearchForm extends Component {
   }
 
   render() {
-    const { searching, searchPlaceholder, searchButtonTitle } = this.props;
+    const { searching, translations } = this.props;
 
     return (
       <div {...classes('form')}>
@@ -60,13 +60,13 @@ class AudioSearchForm extends Component {
           onChange={this.handleQueryChange}
           onKeyPress={this.onKeyPress}
           value={this.state.queryObject.query}
-          placeholder={searchPlaceholder}
+          placeholder={translations.searchPlaceholder}
         />
         <Button
           {...classes('form-button')}
           onClick={this.handleSubmit}
           loading={searching}>
-          {searchButtonTitle}
+          {translations.searchButtonTitle}
         </Button>
       </div>
     );
@@ -80,10 +80,12 @@ AudioSearchForm.propTypes = {
     pageSize: PropTypes.number.isRequired,
     locale: PropTypes.string.isRequired,
   }),
+  translations: PropTypes.shape({
+    searchPlaceholder: PropTypes.string.isRequired,
+    searchButtonTitle: PropTypes.string.isRequired,
+  }),
   searching: PropTypes.bool.isRequired,
   onSearchQuerySubmit: PropTypes.func.isRequired,
-  searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired,
 };
 
 export default AudioSearchForm;

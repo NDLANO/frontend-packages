@@ -13,55 +13,54 @@ import { Button } from 'ndla-ui';
 
 const classes = new BEMHelper({
   name: 'audio-component',
-  prefix: 'c-'
+  prefix: 'c-',
 });
 
 class AudioComponent extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-      audioSource: undefined
-		};
+  constructor(props) {
+    super(props);
+    this.state = {
+      audioSource: undefined,
+    };
 
     this.loadAudio = this.loadAudio.bind(this);
-	}
+  }
 
-	loadAudio() {
-		this.props.fetchAudio(this.props.audio.id)
+  loadAudio() {
+    this.props
+      .fetchAudio(this.props.audio.id)
       .then(result => {
         this.setState({
-          audioSource:
+          audioSource: (
             <source
-              src={ result.audioFile.url }
-              type={ result.audioFile.mimeType }
+              src={result.audioFile.url}
+              type={result.audioFile.mimeType}
             />
+          ),
         });
       })
       .catch(err => {
         this.props.onError(err);
       });
-	}
+  }
 
-	render() {
-		const { audioSource } = this.state;
+  render() {
+    const { audioSource } = this.state;
 
-		return (
-			<div { ...classes() }>
-        <audio
-          autoPlay
-          controls
-          onPlay={ !audioSource && this.loadAudio }
-        > { audioSource }
+    return (
+      <div {...classes()}>
+        <audio autoPlay controls onPlay={!audioSource && this.loadAudio}>
+          {' '}{audioSource}
         </audio>
-			</div>
-		);
-	}
+      </div>
+    );
+  }
 }
 
 AudioComponent.propTypes = {
-	audio: PropTypes.object.isRequired,
-	fetchAudio: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired
+  audio: PropTypes.object.isRequired,
+  fetchAudio: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired,
 };
 
 export default AudioComponent;

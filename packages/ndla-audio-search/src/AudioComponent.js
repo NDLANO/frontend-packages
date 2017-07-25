@@ -22,6 +22,8 @@ class AudioComponent extends Component {
     super(props);
     this.state = {
       audioSource: undefined,
+      audioType: undefined,
+      loaded: false,
     };
 
     this.loadAudio = this.loadAudio.bind(this);
@@ -32,12 +34,9 @@ class AudioComponent extends Component {
       .fetchAudio(this.props.audio.id)
       .then(result => {
         this.setState({
-          audioSource: (
-            <source
-              src={result.audioFile.url}
-              type={result.audioFile.mimeType}
-            />
-          ),
+          audioSource: result.audioFile.url,
+          audioType: result.audioFile.mimeType,
+          loaded: true,
         });
       })
       .catch(err => {
@@ -46,12 +45,11 @@ class AudioComponent extends Component {
   }
 
   render() {
-    const { audioSource } = this.state;
+    const { audioSource, audioType, loaded } = this.state;
     return (
       <div {...classes()}>
-        <audio autoPlay controls onPlay={!audioSource && this.loadAudio}>
-          {audioSource}
-          <track kind="captions" src="" />
+        <audio controls autoPlay onPlay={!loaded && this.loadAudio}>
+          {loaded ? <source src={audioSource} type={audioType} /> : undefined}
         </audio>
       </div>
     );

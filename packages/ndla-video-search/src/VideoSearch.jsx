@@ -8,11 +8,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
-
 import VideoSearchForm from './VideoSearchForm';
-import VideoSearchResult from './VideoSearchResult';
+import VideoSearchList from './VideoSearchList';
+import VideoLoadMoreButton from './VideoLoadMoreButton';
 
 const classes = new BEMHelper({
   name: 'video-search',
@@ -51,9 +50,9 @@ class VideoSearch extends React.Component {
     this.setState({ selectedVideo: video });
   }
 
-  onSelectVideo(image) {
-    this.setState({ selectedImage: undefined });
-    this.props.onVideoSelect(image);
+  onSelectVideo(video) {
+    this.setState({ selectedVideo: undefined });
+    this.props.onVideoSelect(video);
   }
 
   loadMoreVideos() {
@@ -89,7 +88,7 @@ class VideoSearch extends React.Component {
   }
 
   searchVideos(queryObject) {
-    this.setState({ searching: true });
+    this.setState({ searching: true, videos: [] });
     this.props
       .searchVideos(queryObject.query, 0, queryObject.limit)
       .then(result => {
@@ -125,35 +124,23 @@ class VideoSearch extends React.Component {
           translations={translations}
         />
         <div {...classes('list')}>
-          {videos && videos.length > 0
-            ? videos.map(video =>
-                <VideoSearchResult
-                  key={video.id}
-                  video={video}
-                  onVideoPreview={this.onVideoPreview}
-                  selectedVideo={selectedVideo}
-                  onSelectVideo={this.onSelectVideo}
-                  locale={locale}
-                  translations={translations}
-                />,
-              )
-            : <p>
-                {translations.noResults}
-              </p>}
+          <VideoSearchList
+            translations={translations}
+            selectedVideo={selectedVideo}
+            videos={videos}
+            locale={locale}
+            onVideoPreview={this.onVideoPreview}
+            searching={searching}
+            onSelectVideo={this.onSelectVideo}
+          />
         </div>
-        {videos &&
-        videos.length > 0 &&
-        videos.length % this.state.queryObject.limit === 0
-          ? <div {...classes('load-videos')}>
-              <Button
-                disabled={this.state.searching}
-                onClick={this.loadMoreVideos}>
-                {this.state.searching
-                  ? <div {...classes('spinner')} />
-                  : translations.loadMoreVideos}
-              </Button>
-            </div>
-          : ''}
+        <VideoLoadMoreButton
+          searching={searching}
+          videos={videos}
+          loadMoreVideos={this.loadMoreVideos}
+          limit={queryObject.limit}
+          translations={translations}
+        />
       </div>
     );
   }

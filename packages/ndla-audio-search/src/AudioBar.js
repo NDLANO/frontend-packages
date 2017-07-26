@@ -13,11 +13,11 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
-  name: 'audio-component',
+  name: 'audio-bar',
   prefix: 'c-',
 });
 
-class AudioComponent extends Component {
+class AudioBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ class AudioComponent extends Component {
   }
 }
 
-AudioComponent.propTypes = {
+AudioBar.propTypes = {
   audio: PropTypes.shape({
     id: PropTypes.number.isRequired,
   }),
@@ -64,4 +64,4 @@ AudioComponent.propTypes = {
   onError: PropTypes.func.isRequired,
 };
 
-export default AudioComponent;
+export default AudioBar;

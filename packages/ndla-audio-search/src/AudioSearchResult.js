@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { Button, LicenseIconList } from 'ndla-ui';
-import AudioComponent from './AudioComponent';
+import AudioBar from './AudioBar';
 
 const classes = new BEMHelper({
   name: 'audio-search',
@@ -37,11 +37,7 @@ export default function AudioSearchResult({
             ? <LicenseIconList licenseRights={license.rights} noText />
             : license}
         </div>
-        <AudioComponent
-          audio={audio}
-          fetchAudio={fetchAudio}
-          onError={onError}
-        />
+        <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>
       <Button outline>
         {translations.useAudio}

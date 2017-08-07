@@ -1,10 +1,10 @@
 import { configure } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
-import '../src/main.scss';
-import '../src/editor.scss';
-import '../src/audioSearch.scss';
-import '../src/imageSearch.scss';
-import '../src/videoSearch.scss';
+import '../../ndla-ui/src/main.scss';
+import '../../ndla-ui/src/editor.scss';
+import '../../ndla-ui/src/audioSearch.scss';
+import '../../ndla-ui/src/imageSearch.scss';
+import '../../ndla-ui/src/videoSearch.scss';
 
 setOptions({
   name: 'NDLA Designmanual',

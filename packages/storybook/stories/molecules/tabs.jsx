@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 
 import Tabs from 'ndla-tabs';
-import { Button } from '../../src';
+import { Button } from 'ndla-ui';
 import { InlineContainer } from '../helpers';
 
 export class TabsControlled extends Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { LayoutItem } from '../src';
+import { LayoutItem } from 'ndla-ui';
 import { Center } from './helpers';
 
 storiesOf('Konsepter', module).add('Navngivning av innholdselementer', () =>

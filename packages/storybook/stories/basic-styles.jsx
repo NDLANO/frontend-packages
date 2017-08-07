@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { Table, LayoutItem } from 'ndla-ui';
 import { Center } from './helpers';
 import article from '../dummydata/index';
-import { Table, LayoutItem } from '../src';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;

@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { TopicBreadcrumb } from '../../src';
+import { TopicBreadcrumb } from 'ndla-ui';
 import { topicList, subjectList } from '../../dummydata/index';
 
 export const TopicBreadcrumbDefault = () =>

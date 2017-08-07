@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import moment from 'moment';
-import { User, Time } from '../../src/icons';
+import { User, Time } from 'ndla-ui/icons';
 import LicenseExample from './LicenseExample';
 
 const classes = new BEMHelper({

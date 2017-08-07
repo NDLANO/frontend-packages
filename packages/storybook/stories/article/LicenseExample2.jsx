@@ -9,9 +9,9 @@
 import React from 'react';
 import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { LicenseShape } from '../../src/shapes';
+import { LicenseShape } from 'ndla-ui/shapes';
 
-import { Icon, Button, LicenseByline } from '../../src';
+import { Icon, Button, LicenseByline } from 'ndla-ui';
 
 const VideoContent = () =>
   <div>

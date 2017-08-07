@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
-import * as Icons from '../src/icons';
-import { Aside, Button, Logo, LayoutItem } from '../src';
+import * as Icons from 'ndla-ui/icons';
+import { Aside, Button, Logo, LayoutItem } from 'ndla-ui';
 import FigureWithLicense from './article/FigureWithLicense';
 
 const articleHTML = document.createElement('div');

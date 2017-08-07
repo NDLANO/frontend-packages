@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { ResourceSubsetList as ResourceSubsetListComponent } from '../../src';
+import { ResourceSubsetList as ResourceSubsetListComponent } from 'ndla-ui';
 import {
   learningPathResources,
   articleResources,

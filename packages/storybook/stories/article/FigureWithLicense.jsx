@@ -13,7 +13,7 @@ import {
   addShowFigureDetailsClickListeners,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureDetails } from '../../src';
+import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
 const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
             solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to

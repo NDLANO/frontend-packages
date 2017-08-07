@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Article, OneColumn, LayoutItem } from '../../src';
+import { Article, OneColumn, LayoutItem } from 'ndla-ui';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 

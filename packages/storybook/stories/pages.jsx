@@ -16,8 +16,8 @@ import {
   RelatedArticles,
   LayoutItem,
   TopicBreadcrumb,
-} from '../src';
-import { Additional, Pencil, Time, Document, User } from '../src/icons';
+} from 'ndla-ui';
+import { Additional, Pencil, Time, Document, User } from 'ndla-ui/icons';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';

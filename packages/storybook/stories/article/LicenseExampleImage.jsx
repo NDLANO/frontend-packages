@@ -9,9 +9,9 @@
 import React from 'react';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { Copy, Download } from '../../src/icons';
+import { Copy, Download } from 'ndla-ui/icons';
 
-import { LicenseByline } from '../../src';
+import { LicenseByline } from 'ndla-ui';
 
 const LicenseExampleImage = () =>
   <div className="u-expanded">

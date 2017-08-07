@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../../src';
+import { Button } from 'ndla-ui';
 
 class SimpleSubmitForm extends Component {
   constructor(props) {

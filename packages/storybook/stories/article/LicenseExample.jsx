@@ -21,7 +21,7 @@ import {
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
-} from '../../src';
+} from 'ndla-ui';
 
 const VideoContent = () =>
   <div>

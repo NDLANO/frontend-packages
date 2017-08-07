@@ -17,7 +17,7 @@ import {
   ClickToggle,
   TopicMenu,
   TopicBreadcrumb,
-} from '../../src';
+} from 'ndla-ui';
 import { topicMenu, subjectList, topicList } from '../../dummydata';
 
 export const MastheadLeftRight = () =>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { Center } from './helpers';
-import { Logo } from '../src';
+import { Logo } from 'ndla-ui';
 
 const Welcome = () =>
   <Center>

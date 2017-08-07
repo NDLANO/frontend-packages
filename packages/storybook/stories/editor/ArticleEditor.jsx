@@ -13,7 +13,7 @@ import { Entity, EditorState } from 'draft-js';
 import NDLAEditor, { withStateHandler } from 'ndla-editor';
 import { fetchArticleFromApi, fetchWithToken } from '../article/articleApi';
 import SimpleSubmitForm from '../article/SimpleSubmitForm';
-import { Button } from '../../src/';
+import { Button } from 'ndla-ui/';
 
 const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 

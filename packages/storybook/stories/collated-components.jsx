@@ -4,9 +4,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { BY, NC, ND } from 'ndla-licenses';
-
-import { Center } from './helpers';
 import {
+  Glossary,
   Button,
   FilterList,
   Pager,
@@ -18,9 +17,10 @@ import {
   OneColumn,
   LayoutItem,
   RelatedArticles,
-} from '../src';
-import { Time, User } from '../src/icons';
-import Glossary from './../src/glossary/Glossary';
+} from 'ndla-ui';
+import { Time, User } from 'ndla-ui/icons';
+
+import { Center } from './helpers';
 import FigureWithLicense from './article/FigureWithLicense';
 import articles, {
   topicList,

@@ -60,6 +60,7 @@
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.17.1",
     "ndla-article-scripts": "^0.0.7",
+    "ndla-audio-search": "^0.1.1-0",
     "ndla-editor": "^0.1.6",
     "ndla-image-search": "^0.1.6",
     "ndla-licenses": "^0.0.9",

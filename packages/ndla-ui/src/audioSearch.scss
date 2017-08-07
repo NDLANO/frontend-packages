@@ -1,0 +1,123 @@
+/**
+ * Copyright (c) 2017-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+@import "global/settings/settings.config";
+@import "global/settings/settings.colors";
+
+.c-audio-search {
+  padding: 1rem;
+  border: 1px solid $brand-color--lighter;
+  border-radius: 0.2rem;
+
+  &__form-query {
+    width: 88%;
+    height: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    display: inline-block;
+    border-width: 2px;
+    float: left;
+    border-radius: 5px 0 0 5px;
+  }
+
+  &__border {
+    margin: 1em -2em;
+    height: 1px;
+    border-bottom: 1px solid $brand-color--lighter;
+  }
+
+  &__form {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  &__license {
+    margin-bottom: 25px;
+  }
+  &__form-button {
+    width: 12%;
+    height: 3rem;
+    display: inline-block;
+    margin-left: -2px;
+    border-radius: 0 5px 5px 0;
+    padding: 0.4em;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &__list {
+    &-item {
+      &:not(:last-child) {
+        padding-bottom: 1em;
+        border-bottom: 1px solid $brand-color--lighter;
+      }
+
+      &-inner {
+        .c-license-icons {
+          &__list {
+            display: flex;
+            flex-flow: row wrap;
+            align-content: flex-start;
+            min-height: 24px;
+            margin-bottom: 5px;
+          }
+
+          &__item {
+            max-height: 0;
+          }
+        }
+
+        .c-audio-bar {
+          margin-bottom: 10px;
+
+          // The 'audio' tag is implemented with a download button in Chrome > 58.
+          // Make it so that this button doesn't show.
+          audio::-webkit-media-controls {
+            overflow: hidden !important
+          }
+          audio::-webkit-media-controls-enclosure {
+            width: calc(100% + 32px);
+            margin-left: auto;
+          }
+        }
+
+        h2 {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+
+  &-list {
+    &__result-spinner {
+      border: 0.4em solid $brand-grey--light;
+      border-bottom-color: $brand-color;
+      border-radius: 50%;
+      margin: 0 auto;
+      animation: loadVideoSpinner 0.7s linear infinite;
+      height: 3em;
+      width: 3em;
+    }
+  }
+}
+
+@keyframes loadVideoSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

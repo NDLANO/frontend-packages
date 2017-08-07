@@ -2,10 +2,6 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-
-import { MastheadWithTopicMenu } from './molecules/mastheads';
-import { ResourceSubsetList } from './molecules/resources';
-
 import {
   Footer,
   Hero,
@@ -18,6 +14,9 @@ import {
   TopicBreadcrumb,
 } from 'ndla-ui';
 import { Additional, Pencil, Time, Document, User } from 'ndla-ui/icons';
+
+import { MastheadWithTopicMenu } from './molecules/mastheads';
+import { ResourceSubsetList } from './molecules/resources';
 
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';

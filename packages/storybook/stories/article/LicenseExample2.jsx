@@ -7,11 +7,19 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { LicenseShape } from 'ndla-ui/shapes';
 
 import { Icon, Button, LicenseByline } from 'ndla-ui';
+
+const LicenseShape = PropTypes.shape({
+  short: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  userFriendlyTitle: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  rights: PropTypes.arrayOf(PropTypes.string).isRequired,
+});
 
 const VideoContent = () =>
   <div>

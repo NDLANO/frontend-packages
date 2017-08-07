@@ -9,9 +9,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Button } from 'ndla-ui';
 import { fetchArticle } from './articleApi';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import { Button } from 'ndla-ui/';
 import ArticleExample from './ArticleExample';
 
 class ArticleLoader extends Component {

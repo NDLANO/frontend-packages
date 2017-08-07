@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 import { convertFromHTML } from 'draft-convert';
 import { Entity, EditorState } from 'draft-js';
 import NDLAEditor, { withStateHandler } from 'ndla-editor';
+import { Button } from 'ndla-ui';
 import { fetchArticleFromApi, fetchWithToken } from '../article/articleApi';
 import SimpleSubmitForm from '../article/SimpleSubmitForm';
-import { Button } from 'ndla-ui/';
 
 const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 

@@ -7,17 +7,14 @@
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
-    "start": "npm run storybook",
     "build": "npm run build:commonjs && npm run build:es && npm run build:css",
     "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --out-dir lib --ignore __tests__",
     "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --out-dir es --ignore __tests__",
     "build:frontend": "npm run build:css && cp ./lib/style.css ~/Dropbox/Sites/ndla-frontend/style",
-    "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:css": "$(cd ..; npm bin)/webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "clean": "$(cd ..; npm bin)/rimraf lib es dist",
     "prepublish": "npm run clean && npm run build",
-    "test": "$(cd ..; npm bin)/jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -c .storybook -o ../../.out"
+    "test": "$(cd ..; npm bin)/jest"
   },
   "repository": {
     "type": "git",
@@ -45,19 +42,12 @@
     "react": "^15.5.4"
   },
   "devDependencies": {
-    "css-loader": "0.28.4",
-    "decorate-component-with-props": "^1.0.2",
     "enzyme": "2.8.2",
     "extract-text-webpack-plugin": "2.1.0",
     "inuitcss": "^6.0.0-beta.4",
-    "isomorphic-fetch": "^2.2.1",
     "ndla-article-scripts": "^0.0.7",
     "ndla-licenses": "^0.0.9",
     "ndla-tabs": "^0.3.3",
-    "ndla-util": "^0.1.4",
-    "node-sass": "^4.3.0",
-    "sass-loader": "6.0.5",
-    "style-loader": "0.18.1",
-    "webpack": "2.6.1"
+    "ndla-util": "^0.1.4"
   }
 }

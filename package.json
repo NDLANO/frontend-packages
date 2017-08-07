@@ -39,11 +39,13 @@
     "classnames": "2.2.5",
     "concurrently": "3.4.0",
     "cross-env": "5.0.0",
+    "css-loader": "0.28.4",
     "eslint": "3.19.0",
     "eslint-config-ndla": "^0.2.1",
     "eslint-plugin-prettier": "^2.1.2",
     "jest": "20.0.4",
     "lerna": "2.0.0-rc.5",
+    "node-sass": "^4.3.0",
     "prettier": "^1.5.2",
     "prop-types": "15.5.10",
     "react": "15.5.4",
@@ -55,9 +57,9 @@
     "react-router-dom": "^4.1.1",
     "react-tabs": "1.1.0",
     "react-test-renderer": "15.5.4",
-    "rimraf": "2.6.1"
-  },
-  "dependencies": {
-    "html-react-parser": "^0.3.4"
+    "rimraf": "2.6.1",
+    "sass-loader": "6.0.5",
+    "style-loader": "0.18.1",
+    "webpack": "2.6.1"
   }
 }

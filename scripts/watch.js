@@ -27,8 +27,9 @@ function getPackages() {
 
 const packagePatterns = getPackages()
   .filter(
-    f => f.indexOf('ndla-ui') === -1 && f.indexOf('eslint-config-ndla') === -1,
-  ) // skip ndla-ui and eslint-config-ndla
+    f =>
+      f.indexOf('storybook') === -1 && f.indexOf('eslint-config-ndla') === -1,
+  ) // skip storybook and eslint-config-ndla
   .map(p => path.resolve(p, SRC_DIR, JS_FILES_PATTERN));
 
 // Initialize watcher

@@ -48,6 +48,7 @@
     "ndla-article-scripts": "^0.0.7",
     "ndla-licenses": "^0.0.9",
     "ndla-tabs": "^0.3.3",
+    "ndla-editor": "^0.1.6",
     "ndla-util": "^0.1.4"
   }
 }

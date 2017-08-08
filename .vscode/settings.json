@@ -4,7 +4,7 @@
     "prettier.trailingComma": "all",
     "prettier.semi": true,
     "prettier.jsxBracketSameLine": true,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "files.exclude": {
         "**/.git": true,
         "**/dist": true,

@@ -4,7 +4,7 @@
   "description": "NDLA Frontend Packages",
   "scripts": {
     "lint": "yarn run lint-prettier --silent && eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
-    "lint-prettier": "node prettier.js lint",
+    "lint-prettier": "node scripts/prettier.js lint",
     "test": "cross-env NODE_ENV=unittest jest",
     "postinstall": "lerna bootstrap",
     "deploy-storybook": "storybook-to-ghpages",
@@ -14,7 +14,7 @@
     "start": "concurrently --kill-others \"npm run watch\" \"npm run start-storybook\"",
     "start-storybook": "node ./scripts/startStorybook.js",
     "build-storybook": "node ./scripts/buildStorybook.js",
-    "prettier": "node prettier.js write"
+    "prettier": "node ./scripts/prettier.js write"
   },
   "repository": {
     "type": "git",

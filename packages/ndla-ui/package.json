@@ -44,7 +44,7 @@
   "devDependencies": {
     "enzyme": "2.8.2",
     "extract-text-webpack-plugin": "2.1.0",
-    "inuitcss": "^6.0.0-beta.4",
+    "inuitcss": "6.0.0-beta.4",
     "ndla-article-scripts": "^0.0.7",
     "ndla-licenses": "^0.0.9",
     "ndla-tabs": "^0.3.3",

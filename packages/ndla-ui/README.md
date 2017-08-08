@@ -1,6 +1,6 @@
 # ndla-ui
 
-Styleguide and ui component library for NDLA.
+UI component library for NDLA.
 
 ## Installation
 
@@ -23,6 +23,7 @@ react-motion
 react-router
 ndla-article-scripts
 ndla-licenses
+ndla-tabs
 ndla-util
 ```
 

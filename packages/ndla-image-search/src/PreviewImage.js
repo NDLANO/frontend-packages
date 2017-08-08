@@ -37,7 +37,7 @@ export default function PreviewImage({ image, onSelectImage, locale }) {
         </h2>
         <div {...classes('copyright-author')}>
           <b {...classes('text', 'left')}>
-            {/* {polyglot.t('learningPath.image.authors')}*/}
+            {/* {polyglot.t('learningPath.image.authors')} */}
           </b>
           <span {...classes('text', 'right')}>
             {image.copyright.authors.map(author => author.name).join(', ')}
@@ -45,14 +45,14 @@ export default function PreviewImage({ image, onSelectImage, locale }) {
         </div>
         <div {...classes('license')}>
           <b {...classes('text', 'left')}>
-            {/* {polyglot.t('learningPath.image.copyright')}*/}
+            {/* {polyglot.t('learningPath.image.copyright')} */}
           </b>
           <span {...classes('text', 'right')}>
             {image.copyright.license.description}
           </span>
         </div>
         <div {...classes('tags')}>
-          {/* <b>{polyglot.t('learningPath.image.tags')}</b>*/}
+          {/* <b>{polyglot.t('learningPath.image.tags')}</b> */}
           {tags.map(tag =>
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>,
           )}

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-/* eslint jsx-a11y/no-static-element-interactions: 1*/
+/* eslint jsx-a11y/no-static-element-interactions: 1 */
 /* eslint jsx-a11y/no-noninteractive-element-interactions: 1 */
 
 import React, { Component } from 'react';

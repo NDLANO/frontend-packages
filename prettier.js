@@ -35,7 +35,11 @@ const args = Object.keys(options)
   .map(key => `--${key}=${options[key]}`)
   .concat(
     `--${shouldWrite ? 'write' : 'l'}`,
-    '"{packages}/**/*(*.js|*.jsx)"'
+    '"scripts/*.js"',
+    // '"packages/*/{*,!lib,!es}/**/*(*.js|*.jsx)"',
+    '"packages/*/!(lib|es|dist)/**/*(*.js|*.jsx)"',
+    '"packages/*/*(*.js|*.jsx)"',
+    // '"!packages/**/lib/**/*(*.js|*.jsx)"'
   );
 
 try {

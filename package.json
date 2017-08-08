@@ -3,7 +3,8 @@
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
   "scripts": {
-    "lint": "eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
+    "lint": "yarn run lint-prettier --silent && eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
+    "lint-prettier": "node prettier.js lint",
     "test": "cross-env NODE_ENV=unittest jest",
     "postinstall": "lerna bootstrap",
     "deploy-storybook": "storybook-to-ghpages",
@@ -42,7 +43,6 @@
     "css-loader": "0.28.4",
     "eslint": "3.19.0",
     "eslint-config-ndla": "^0.2.1",
-    "eslint-plugin-prettier": "^2.1.2",
     "jest": "20.0.4",
     "lerna": "^2.0.0",
     "node-sass": "^4.3.0",

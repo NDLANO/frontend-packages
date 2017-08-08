@@ -22,10 +22,10 @@
     "react": "^15.5.4"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "3.0.0",
-    "@storybook/addon-links": "3.0.0",
-    "@storybook/addon-options": "3.0.0",
-    "@storybook/react": "3.0.0",
+    "@storybook/addon-actions": "^3.2.0",
+    "@storybook/addon-links": "^3.2.0",
+    "@storybook/addon-options": "^3.2.3",
+    "@storybook/react": "^3.2.3",
     "btoa": "^1.1.2",
     "classnames": "2.2.5",
     "decorate-component-with-props": "^1.0.2",

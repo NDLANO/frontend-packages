@@ -24,9 +24,10 @@ export default (logglyApiKey, data) =>
       window.console &&
       typeof window.console.error === 'function'
     ) {
+      // eslint-disable-next-line no-console
       console.error(
         `Failed to log to loggly because of this exception:\n${ex}`,
-      ); // eslint-disable-line no-console
+      );
       console.error('Failed log data:', data); // eslint-disable-line no-console
     }
   });

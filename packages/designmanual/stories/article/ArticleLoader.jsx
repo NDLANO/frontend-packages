@@ -41,7 +41,7 @@ class ArticleLoader extends Component {
         });
       })
       .catch(error => {
-        console.error(error);
+        console.error(error); // eslint-disable-line no-console
         this.setState({
           message: error.message,
           fetching: false,

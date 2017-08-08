@@ -43,11 +43,11 @@ const fetchAudio = id =>
 
 export const AudioSearcher = () => {
   const audioSelect = audio => {
-    console.log(audio);
+    console.log(audio); // eslint-disable-line no-console
   };
 
   const onError = err => {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
   };
 
   const defaultQueryObject = {

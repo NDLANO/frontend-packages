@@ -6,7 +6,7 @@
  *
  */
 
-// Can be removed when updating to jsx-a11y 5.x
+// Can be removed when updating to jsx-a11y 6.x
 /* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 1 */
 
 import React, { Component } from 'react';

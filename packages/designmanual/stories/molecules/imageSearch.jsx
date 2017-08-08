@@ -47,11 +47,11 @@ const fetchImage = id =>
 
 export const ImageSearcher = () => {
   const imageSelect = image => {
-    console.log(image);
+    console.log(image); // eslint-disable-line no-console
   };
 
   const onError = err => {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
   };
 
   return (

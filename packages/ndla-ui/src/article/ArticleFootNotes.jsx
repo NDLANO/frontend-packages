@@ -37,7 +37,7 @@ const ArticleFootNotes = ({ footNotes, ...rest }) =>
   </ol>;
 
 ArticleFootNotes.propTypes = {
-  footNotes: PropTypes.object,
+  footNotes: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   editionTitle: PropTypes.string.isRequired,
   publisherTitle: PropTypes.string.isRequired,
 };

@@ -8,7 +8,7 @@ export const Center = ({ children, style }) =>
 
 Center.propTypes = {
   children: PropTypes.node.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 export const InlineContainer = ({ children }) =>

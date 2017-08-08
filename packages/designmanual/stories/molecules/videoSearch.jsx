@@ -32,11 +32,11 @@ const fetchVideo = id =>
 
 export const VideoSearcher = () => {
   const videoSelect = video => {
-    console.log(video);
+    console.log(video); // eslint-disable-line no-console
   };
 
   const onError = err => {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
   };
   const translations = {
     searchPlaceholder: 'Søk i videoer',

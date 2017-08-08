@@ -27,7 +27,9 @@ const AuthorsList = ({ authors }) =>
   </span>;
 
 AuthorsList.propTypes = {
-  authors: PropTypes.array,
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({ name: PropTypes.string.isRequired }),
+  ),
 };
 
 const LastUpdated = ({ date }) =>
@@ -62,7 +64,13 @@ const ArticleByline = ({ article }) => {
 };
 
 ArticleByline.propTypes = {
-  article: PropTypes.object,
+  article: PropTypes.shape({
+    copyright: PropTypes.shape({
+      authors: PropTypes.arrayOf(
+        PropTypes.shape({ name: PropTypes.string.isRequired }),
+      ),
+    }),
+  }),
 };
 
 export default ArticleByline;

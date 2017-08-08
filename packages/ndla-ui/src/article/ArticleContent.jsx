@@ -8,7 +8,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Parser from 'html-react-parser';
 import {
   initArticleScripts,
   removeEventListenerForResize,

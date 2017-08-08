@@ -38,6 +38,8 @@ import RelatedArticles from './RelatedArticles/RelatedArticles';
 import ResourceList from './resources/ResourceList';
 import ResourceWrapper from './resources/ResourceWrapper';
 import ResourceSubsetList from './resources/ResourceSubsetList';
+import Glossary from './glossary/Glossary';
+
 import {
   MediaList,
   MediaListItem,
@@ -66,6 +68,7 @@ export {
   FigureCaption,
   FigureDetails,
   FilterList,
+  Glossary,
   Hero,
   LicenseByline,
   LicenseIconList,

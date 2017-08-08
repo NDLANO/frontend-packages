@@ -14,8 +14,8 @@
 @import "../node_modules/ndla-editor/node_modules/draft-js-alignment-plugin/lib/plugin";
 @import "../node_modules/ndla-editor/node_modules/draft-js-focus-plugin/lib/plugin";
 
-
-.public-DraftEditorPlaceholder-root, .public-DraftEditorPlaceholder-hasFocus {
+.public-DraftEditorPlaceholder-root,
+.public-DraftEditorPlaceholder-hasFocus {
   color: rgb(153, 153, 153);
 }
 
@@ -52,7 +52,7 @@
     padding: 0 10px;
     border: 1px solid #ddd;
     border-radius: 2px;
-    box-shadow: inset 0px 1px 8px -3px #ABABAB;
+    box-shadow: inset 0px 1px 8px -3px #ababab;
   }
 }
 

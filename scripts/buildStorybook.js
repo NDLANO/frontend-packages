@@ -6,7 +6,7 @@ const isWindows = process.platform === 'win32';
 const storybook = isWindows ? 'build-storybook.cmd' : 'build-storybook';
 const storybookCmd = path.resolve(
   __dirname,
-  `../packages/ndla-ui/node_modules/.bin/${storybook}`,
+  `../packages/designmanual/node_modules/.bin/${storybook}`,
 );
 let args = process.argv.slice(-2);
 
@@ -14,8 +14,12 @@ if (args[0] === '-o') {
   // hack to accommodate storybook-to-ghpages script
   args = [
     args[0],
-    path.resolve(__dirname, '../packages/ndla-ui/', `../../${args[1]}`),
+    path.resolve(__dirname, '../packages/designmanual/', `../../${args[1]}`),
   ];
 }
 
-runCommand(storybookCmd, args, path.resolve(__dirname, '../packages/ndla-ui/'));
+runCommand(
+  storybookCmd,
+  args,
+  path.resolve(__dirname, '../packages/designmanual/'),
+);

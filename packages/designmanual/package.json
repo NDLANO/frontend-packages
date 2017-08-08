@@ -1,0 +1,52 @@
+{
+  "private": true,
+  "name": "designmanual",
+  "version": "1.0.0",
+  "description": "Styleguide and ui component library for NDLA.",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "scripts": {
+    "start": "npm run storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -c .storybook -o ../../.out"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+  },
+  "author": "ndla@knowit.no",
+  "peerDependencies": {
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "3.0.0",
+    "@storybook/addon-links": "3.0.0",
+    "@storybook/addon-options": "3.0.0",
+    "@storybook/react": "3.0.0",
+    "classnames": "2.2.5",
+    "react-bem-helper": "1.4.1",
+    "react-prop-types": "0.4.0",
+    "react-sticky-header": "^0.1.6",
+    "btoa": "^1.1.2",
+    "decorate-component-with-props": "^1.0.2",
+    "draft-convert": "1.4.3",
+    "draft-js": "0.10.0",
+    "extract-text-webpack-plugin": "2.1.0",
+    "inuitcss": "^6.0.0-beta.4",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.17.1",
+    "ndla-article-scripts": "^0.0.7",
+    "ndla-audio-search": "^0.1.1-0",
+    "ndla-editor": "^0.1.6",
+    "ndla-image-search": "^0.1.6",
+    "ndla-licenses": "^0.0.9",
+    "ndla-tabs": "^0.3.3",
+    "ndla-util": "^0.1.4",
+    "ndla-ui": "^0.7.6",
+    "ndla-video-search": "^0.1.6",
+    "react-helmet": "5.1.3"
+  }
+}

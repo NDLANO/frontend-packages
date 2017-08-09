@@ -15,17 +15,17 @@ import {
 } from 'ndla-ui';
 import { Additional, Pencil, Time, Document, User } from 'ndla-ui/icons';
 
-import { MastheadWithTopicMenu } from './molecules/mastheads';
-import { ResourceSubsetList } from './molecules/resources';
+import { MastheadWithTopicMenu } from '../molecules/mastheads';
+import { ResourceSubsetList } from '../molecules/resources';
 
-import ArticleLoader from './article/ArticleLoader';
-import FigureWithLicense from './article/FigureWithLicense';
-import LicenseExample from './article/LicenseExample';
+import ArticleLoader from '../article/ArticleLoader';
+import FigureWithLicense from '../article/FigureWithLicense';
+import LicenseExample from '../article/LicenseExample';
 import article, {
   topicList,
   subjectList,
   articleResources,
-} from '../dummydata/index';
+} from '../../dummydata/index';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;

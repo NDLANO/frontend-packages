@@ -27,7 +27,7 @@
   "author": "ndla@knowit.no",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@kadira/storybook-deployer": "1.2.0",
+    "@storybook/storybook-deployer": "^2.0.0",
     "babel-cli": "6.24.1",
     "babel-core": "^6.25.0",
     "babel-jest": "20.0.3",

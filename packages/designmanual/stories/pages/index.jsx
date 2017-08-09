@@ -1,9 +1,16 @@
+/**
+ * Copyright (c) 2017-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 /* eslint max-len: 0 */
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
-  Footer,
   Hero,
   OneColumn,
   PageContainer,
@@ -13,14 +20,15 @@ import {
   LayoutItem,
   TopicBreadcrumb,
 } from 'ndla-ui';
-import { Additional, Pencil, Time, Document, User } from 'ndla-ui/icons';
 
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
+import FooterExample from '../molecules/footers';
 import { ResourceSubsetList } from '../molecules/resources';
 
 import ArticleLoader from '../article/ArticleLoader';
-import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
+import ArticleLearningmaterial from './ArticleLearningmaterial';
+import ArticleAdditional from './ArticleAdditional';
+import ArticleExercise from './ArticleExercise';
 import article, {
   topicList,
   subjectList,
@@ -29,409 +37,6 @@ import article, {
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article40.content[0].content;
-
-const FooterExample = () =>
-  <Footer>
-    <div className="footer_form">
-      <label htmlFor="language-select" className="footer_label footer--bold">
-        Velg språk
-      </label>
-      <select id="language-select" className="footer_language-select">
-        <option value="Norsk">Norsk</option>
-        <option value="English">English</option>
-      </select>
-    </div>
-    <Footer.Ruler />
-    <Footer.Text>
-      <Footer.Editor title="Ansvarlig redaktør:" name="Øivind Høines" />
-      <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
-    </Footer.Text>
-    <Footer.Text>
-      Nettstedet er utarbeidet av NDLA som åpen kildekode.
-    </Footer.Text>
-  </Footer>;
-
-const ArticleLearningmaterial = () =>
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <h1 className="c-article__title--icon">
-          <Document />Artikkel lærestoff
-        </h1>
-        <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <User />
-            </span>
-            <span className="c-article-byline__authors">
-              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
-            </span>
-          </span>
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Time />
-            </span>
-            <span className="c-article-byline__date">Publisert 12/10/2016</span>
-            <LicenseExample />
-          </span>
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <FigureWithLicense classes="u-float-left">
-          <img
-            alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://staging.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
-          />
-        </FigureWithLicense>
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å <a href="#test">tenne på idéen din og se potensialet</a> i
-          den.
-        </p>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-        <FigureWithLicense classes="u-float-right">
-          <img
-            alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
-          />
-        </FigureWithLicense>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <RelatedArticles resources={articleResources} />
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <ResourceSubsetList />
-      </LayoutItem>
-    </article>
-  </OneColumn>;
-
-const ArticleAdditional = () =>
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <h1 className="c-article__title--icon">
-          <Document />Artikkel Tilleggsstoff
-        </h1>
-        <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <User />
-            </span>
-            <span className="c-article-byline__authors">
-              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
-            </span>
-          </span>
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Time />
-            </span>
-            <span className="c-article-byline__date">Publisert 12/10/2016</span>
-          </span>
-          <span className="c-article-byline__flex">
-            <div className="c-article-byline__additional">
-              <Additional className="c-icon--20 u-margin-right-tiny" />{' '}
-              Tilleggsstoff
-            </div>
-            <LicenseExample />
-          </span>
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-        <table className="c-table o-wrapper--wide">
-          <tbody>
-            <tr>
-              <th>Hovedkategorier</th>
-              <th>Sjangre</th>
-              <th>Kjennetegn</th>
-            </tr>
-            <tr>
-              <td>
-                <strong>Subjektive sjangre</strong>
-              </td>
-              <td>Leder</td>
-              <td>
-                <ul>
-                  <li>skrives ofte av en av redaktørene </li>
-                  <li>er redaksjonens syn på en sak </li>
-                  <li>står ofte på side 2 eller på egen meningsside</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Anmeldelse</td>
-              <td>
-                <ul>
-                  <li>
-                    en av journalistenes mening om en ny film, bok, konsert e.l.{' '}
-                  </li>
-                  <li>
-                    skal være en bruksanvisning slik at målgruppen vet om
-                    produktet er noe for dem
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Leserinnlegg og kommentarfelt</td>
-              <td>
-                <ul>
-                  <li>lar den enkelte mottaker komme med sitt syn på en sak</li>
-                  <li>leserinnlegg i avis, kommentarfelt på nett </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Kommentar og kronikk</td>
-              <td>
-                <ul>
-                  <li>
-                    kan skrives av en i redaksjonen, men gjerne også av en
-                    fagperson utenfor redaksjonen{' '}
-                  </li>
-                  <li>skal gi dybdekunnskap om et tema </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Objektive sjangre</strong>
-              </td>
-              <td>Nyhetsartikkel</td>
-              <td>
-                <ul>
-                  <li>kort, konsis, svarer på grunnleggende spørsmål</li>
-                  <li>det viktigste først </li>
-                  <li>lar kildene komme til orde</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Nyhetsreportasje</td>
-              <td>
-                <ul>
-                  <li>går gjerne mer i dybden enn en nyhetsartikkel </li>
-                  <li>bruker flere kilder </li>
-                  <li>har fokus på bakgrunn og årsak</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Intervju</td>
-              <td>
-                <ul>
-                  <li>enkelt oppsett med spørsmål og svar </li>
-                  <li>
-                    brukes gjerne som en del av en nyhetsreportasje eller
-                    artikkel
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Notis</td>
-              <td>
-                <ul>
-                  <li>
-                    kort nyhetsmelding som gir grunnleggende informasjon om en
-                    aktuell hendelse
-                  </li>
-                  <li>gjerne bare 10–15 setninger</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Hybridsjangre</strong>
-              </td>
-              <td>Feature</td>
-              <td>
-                <ul>
-                  <li>
-                    hører til i objektiv-kategorien, men journalisten bruker
-                    alle sanser og litterære virkemidler{' '}
-                  </li>
-                  <li>
-                    går i dybden, gir leseren en større forståelse av et tema
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>Portrettintervju</td>
-              <td>
-                <ul>
-                  <li>
-                    hører til i objektiv-kategorien, men journalisten bruker
-                    alle sanser og litterære virkemidler{' '}
-                  </li>
-                  <li>
-                    gir leseren dybdekunnskap om en aktuell person i
-                    nyhetsbildet
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <ResourceSubsetList />
-      </LayoutItem>
-    </article>
-  </OneColumn>;
-
-const ArticleExercise = () =>
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
-      <LayoutItem layout="center">
-        <h1 className="c-article__title--icon">
-          <Pencil />Oppgave eller aktivitet
-        </h1>
-        <p className="article_introduction">
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <User />
-            </span>
-            <span className="c-article-byline__authors">
-              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
-            </span>
-          </span>
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Time />
-            </span>
-            <span className="c-article-byline__date">Publisert 12/10/2016</span>
-            <LicenseExample />
-          </span>
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-        <FigureWithLicense>
-          <iframe
-            title="H5P"
-            src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-            width="260"
-            height="373"
-            frameBorder="0"
-            allowFullScreen="allowfullscreen"
-          />
-          <script
-            src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
-            charSet="UTF-8"
-          />
-        </FigureWithLicense>
-        <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <ResourceSubsetList />
-      </LayoutItem>
-    </article>
-  </OneColumn>;
 
 const ResourcesSubTopics = () =>
   <LayoutItem layout="extend">
@@ -592,68 +197,34 @@ storiesOf('Emnesider', module)
           <LayoutItem layout="center">
             <h1>Yrkesfag</h1>
             <ul>
-              <li>
-                <a href="">Naturfag</a>
-              </li>
-              <li>
-                <a href="">Engelsk</a>
-              </li>
-              <li>
-                <a href="">Helsearbeiderfag vg2</a>
-              </li>
-              <li>
-                <a href="">Barne- og ungdomsarbeiderfag Vg2</a>
-              </li>
-              <li>
-                <a href="">Brønnteknikk Vg2BETA</a>
-              </li>
-              <li>
-                <a href="">Bygg- og anleggsteknikk Vg1BETA</a>
-              </li>
-              <li>
-                <a href="">Design og håndverk Vg1</a>
-              </li>
-              <li>
-                <a href="">Elektrofag Vg1</a>
-              </li>
-              <li>
-                <a href="">Helse- og oppvekstfag Vg1</a>
-              </li>
-              <li>
-                <a href="?selectedKind=Emnesider&selectedStory=2.%20Valgt%20fag&full=0&down=0&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel">
-                  Helsearbeiderfag Vg2
-                </a>
-              </li>
-              <li>
-                <a href="">IKT-servicefag Vg2</a>
-              </li>
-              <li>
-                <a href="">Kokk- og servitørfag Vg2</a>
-              </li>
-              <li>
-                <a href="">Naturbruk Vg1</a>
-              </li>
-              <li>
-                <a href="">Reiseliv Vg2</a>
-              </li>
-              <li>
-                <a href="">Restaurant- og matfag Vg1</a>
-              </li>
-              <li>
-                <a href="">Romteknologi Vg3</a>
-              </li>
-              <li>
-                <a href="">Salg, service og sikkerhet Vg2</a>
-              </li>
-              <li>
-                <a href="">Service og samferdsel Vg1</a>
-              </li>
-              <li>
-                <a href="">Teknikk og industriell produksjon Vg1</a>
-              </li>
-              <li>
-                <a href="">Transport og logistikk Vg2</a>
-              </li>
+              {[
+                'Naturfag',
+                'Engelsk',
+                'Helsearbeiderfag vg2',
+                'Barne- og ungdomsarbeiderfag Vg2',
+                'Brønnteknikk Vg2BETA',
+                'Bygg- og anleggsteknikk Vg1BETA',
+                'Design og håndverk Vg1',
+                'Elektrofag Vg1',
+                'Helse- og oppvekstfag Vg1',
+                'Helsearbeiderfag Vg2 ',
+                'IKT-servicefag Vg2',
+                'Kokk- og servitørfag Vg2',
+                'Naturbruk Vg1',
+                'Reiseliv Vg2',
+                'Restaurant- og matfag Vg1',
+                'Romteknologi Vg3',
+                'Salg, service og sikkerhet Vg2',
+                'Service og samferdsel Vg1',
+                'Teknikk og industriell produksjon Vg1',
+                'Transport og logistikk Vg2',
+              ].map(subject =>
+                <li key={subject}>
+                  <a href="">
+                    {subject}
+                  </a>
+                </li>,
+              )}
             </ul>
           </LayoutItem>
         </article>

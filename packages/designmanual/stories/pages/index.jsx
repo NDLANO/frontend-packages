@@ -35,9 +35,6 @@ import article, {
   articleResources,
 } from '../../dummydata/index';
 
-const articleHTML = document.createElement('div');
-articleHTML.innerHTML = article.article40.content[0].content;
-
 const ResourcesSubTopics = () =>
   <LayoutItem layout="extend">
     <ResourceWrapper>
@@ -47,14 +44,16 @@ const ResourcesSubTopics = () =>
   </LayoutItem>;
 
 storiesOf('Sidevisninger', module)
-  .add('Empty page', () =>
+  .add('En side uten innhold', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
-      <OneColumn>Empty Page</OneColumn>
+      <OneColumn cssModifier="clear">
+        <div>En side uten innhold</div>
+      </OneColumn>
       <FooterExample />
     </PageContainer>,
   )
-  .add('ArticlePage', () =>
+  .add('En side med innhold', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -76,7 +75,16 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>,
   )
-  .add('ArticlePage loader', () =>
+  .add('404 Side', () =>
+    <PageContainer>
+      <MastheadWithTopicMenu />
+      <OneColumn cssModifier="clear">
+        <div className="c-article c-article--clean">En side uten innhold</div>
+      </OneColumn>
+      <FooterExample />
+    </PageContainer>,
+  )
+  .add('Hent artikkel med id', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -95,28 +103,6 @@ storiesOf('Sidevisninger', module)
         </OneColumn>
       </Hero>
       <ArticleLoader />
-      <FooterExample />
-    </PageContainer>,
-  )
-  .add('ArticlePage Preloaded', () =>
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <TopicBreadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
-      <ArticleLoader articleId="34" />
       <FooterExample />
     </PageContainer>,
   );

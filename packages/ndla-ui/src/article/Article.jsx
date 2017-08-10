@@ -9,6 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import ArticleIntroduction from './ArticleIntroduction';
+import ArticleFootNotes from './ArticleFootNotes';
+import ArticleContent from './ArticleContent';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -25,5 +28,9 @@ export const Article = ({ children }) =>
 Article.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+Article.Introduction = ArticleIntroduction;
+Article.FootNotes = ArticleFootNotes;
+Article.Content = ArticleContent;
 
 export default Article;

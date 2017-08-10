@@ -33,7 +33,7 @@ FooterEditor.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export const Footer = ({ children }) =>
+const Footer = ({ children }) =>
   <footer className="footer">
     {children}
   </footer>;
@@ -41,3 +41,10 @@ export const Footer = ({ children }) =>
 Footer.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+// expose the children to top level exports for ease of use
+Footer.Text = FooterText;
+Footer.Ruler = FooterRuler;
+Footer.Editor = FooterEditor;
+
+export default Footer;

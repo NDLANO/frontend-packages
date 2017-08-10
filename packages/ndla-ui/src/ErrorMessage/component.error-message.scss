@@ -1,0 +1,29 @@
+/**
+ * Copyright (c) 2016-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+.c-error-message {
+  margin-top: $spacing--large;
+  text-align: center;
+
+  &__icon {
+    color: $brand-grey-dark;
+    width: 128px;
+    height: 128px;
+  }
+
+  a {
+    display: block;
+    margin-top: $spacing / 2;
+    color: $brand-color;
+  }
+
+  &__back-link {
+    @include inuit-font-size(22px);
+    margin-bottom: $spacing;
+  }
+}

@@ -7,6 +7,7 @@ import { BY, NC, ND } from 'ndla-licenses';
 import {
   Glossary,
   Button,
+  ErrorMessage,
   FilterList,
   Pager,
   Footer,
@@ -481,5 +482,31 @@ storiesOf('Sammensatte moduler', module)
         </p>
         <VideoSearcher />
       </div>
+    </Center>,
+  )
+  .add('Feilmelding', () =>
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Feilmelding</h1>
+            <p>
+              Feilmelding kompnent med link tilbake til forrige side eller
+              forsiden. Brukes når det har oppstått en feil i systemet. F.eks.
+              ved 404 eller 503 feil.
+            </p>
+          </LayoutItem>
+        </section>
+
+        <ErrorMessage
+          toBack={() => '#'}
+          messages={{
+            title: 'Oops, noe gikk galt',
+            description: 'En kort beskrivelse av fei.',
+            back: 'Tilbake',
+            goToFrontPage: 'Gå til forsiden',
+          }}
+        />
+      </article>
     </Center>,
   );

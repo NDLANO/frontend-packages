@@ -49,6 +49,8 @@ import {
   MediaListItemMeta,
 } from './license/MediaList';
 
+export { default as ErrorMessage } from './ErrorMessage';
+
 // expose the children to top level exports for ease of use
 Footer.Text = FooterText;
 Footer.Ruler = FooterRuler;

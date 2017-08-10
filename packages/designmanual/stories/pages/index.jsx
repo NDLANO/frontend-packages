@@ -12,6 +12,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
   Hero,
+  ErrorMessage,
   OneColumn,
   PageContainer,
   ResourceWrapper,
@@ -75,11 +76,20 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>,
   )
-  .add('404 Side', () =>
+  .add('En side med feilmelding', () =>
     <PageContainer>
       <MastheadWithTopicMenu />
       <OneColumn cssModifier="clear">
-        <div className="c-article c-article--clean">En side uten innhold</div>
+        <ErrorMessage
+          toBack={() => '#'}
+          messages={{
+            title: 'Oops, noe gikk galt',
+            description:
+              'Vi beklager, men vi fant ikke den siden du prøvde å komme til.',
+            back: 'Tilbake',
+            goToFrontPage: 'Gå til forsiden',
+          }}
+        />
       </OneColumn>
       <FooterExample />
     </PageContainer>,

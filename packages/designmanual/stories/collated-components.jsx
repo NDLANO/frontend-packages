@@ -502,7 +502,7 @@ storiesOf('Sammensatte moduler', module)
           toBack={() => '#'}
           messages={{
             title: 'Oops, noe gikk galt',
-            description: 'En kort beskrivelse av fei.',
+            description: 'En kort beskrivelse av feilen som oppsto.',
             back: 'Tilbake',
             goToFrontPage: 'Gå til forsiden',
           }}

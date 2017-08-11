@@ -37,6 +37,7 @@ import CameraIcon from './internal-icons/Camera';
 import CrossIcon from './internal-icons/Cross';
 import PlusIcon from './internal-icons/Plus';
 import VideoIcon from './internal-icons/Video';
+import SadIcon from './internal-icons/Sad';
 
 function Icon(props) {
   const { icon, className, ...rest } = props;
@@ -77,5 +78,6 @@ export const Camera = props => <Icon {...props} icon={CameraIcon} />;
 export const Cross = props => <Icon {...props} icon={CrossIcon} />;
 export const Plus = props => <Icon {...props} icon={PlusIcon} />;
 export const Video = props => <Icon {...props} icon={VideoIcon} />;
+export const Sad = props => <Icon {...props} icon={SadIcon} />;
 
 export default Icon;

@@ -1,4 +1,3 @@
-
 @import "global/settings/settings.config";
 @import "../node_modules/inuitcss/settings/_settings.core";
 @import "global/settings/settings.global";
@@ -15,16 +14,10 @@
 @import "../node_modules/inuitcss/tools/tools.rem";
 @import "global/utilities/mixin_icons";
 
-$mq-breakpoints: (
-    mobile:  320px,
-    tablet:  600px,
-    desktop: 980px,
-    wide:    1300px
-);
+$mq-breakpoints: (mobile: 320px, tablet: 600px, desktop: 980px, wide: 1300px);
 $inuit-fractions: 1 2 3 4 5 6 10 12;
 @import "../node_modules/sass-mq/mq";
 @import "global/tools/tools.aliases";
-
 
 // GENERIC
 @import "../node_modules/inuitcss/generic/generic.box-sizing";
@@ -61,7 +54,6 @@ $inuit-wrapper-width: 1024px;
 @import "global/objects/objects.lists";
 @import "global/objects/objects.wrapper";
 
-
 // COMPONENTS
 // @import "modal/component.licenseToggle";
 @import "logo/component.logo";
@@ -95,8 +87,7 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.topic-menu";
 @import "global/components/component.filter";
 @import "global/components/component.tabs";
-
-
+@import "ErrorMessage/component.error-message";
 
 // UTILITIES
 @import "../node_modules/inuitcss/utilities/utilities.widths";
@@ -107,7 +98,5 @@ $inuit-wrapper-width: 1024px;
 @import "global/utilities/utilities.mobile";
 @import "global/utilities/utilities.helpers";
 @import "global/utilities/utilities.sticky-header";
-
-
 
 // @import "license/basicLightbox.min.css";

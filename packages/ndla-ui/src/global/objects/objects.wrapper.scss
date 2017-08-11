@@ -6,3 +6,8 @@
   padding-left: $spacing;
   padding-right: $spacing;
 }
+
+/* Add to clear masthead */
+.o-wrapper--clear {
+  margin-top: $spacing--large * 2;
+}

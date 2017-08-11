@@ -6,41 +6,44 @@
  *
  */
 
-import Button from './button/Button';
-import Logo from './logo/Logo';
-import Aside from './aside/Aside';
-import Table from './table/Table';
-import Pager from './pager/Pager';
-import { Masthead, MastheadItem } from './masthead/Masthead';
-import { SiteNav, SiteNavItem } from './siteNav/SiteNav';
-import FilterList from './filter/FilterList';
-import OneColumn from './layout/OneColumn';
-import LayoutItem from './layout/LayoutItem';
-import PageContainer from './layout/PageContainer';
-import { Hero } from './hero/Hero';
-import { Footer, FooterText, FooterRuler, FooterEditor } from './footer/Footer';
-import ArticleIntroduction from './article/ArticleIntroduction';
-import ArticleFootNotes from './article/ArticleFootNotes';
-import ArticleContent from './article/ArticleContent';
-import Article from './article/Article';
-import { Figure, FigureCaption, FigureDetails } from './article/Figure';
-import LicenseIconList from './license/LicenseIconList';
-import LicenseByline from './license/LicenseByline';
-import ToggleLicenseBox from './license/ToggleLicenseBox';
-import ClickableLicenseByline from './license/ClickableLicenseByline';
-import ClickToggle from './common/ClickToggle';
-import TopicArticle from './topic/TopicArticle';
-import TopicBreadcrumb from './topic/TopicBreadcrumb';
-import TopicIntroductionList from './topic/TopicIntroductionList';
-import TopicMenu from './topicMenu/TopicMenu';
-import Placeholder from './placeholders/Placeholder';
-import RelatedArticles from './RelatedArticles/RelatedArticles';
-import ResourceList from './resources/ResourceList';
-import ResourceWrapper from './resources/ResourceWrapper';
-import ResourceSubsetList from './resources/ResourceSubsetList';
-import Glossary from './glossary/Glossary';
+import * as all from '.';
 
-import {
+export { default as Footer } from './footer/Footer';
+
+export { default as Article } from './article/Article';
+export { default as Button } from './button/Button';
+export { default as Logo } from './logo/Logo';
+export { default as Aside } from './aside/Aside';
+export { default as Table } from './table/Table';
+export { default as Pager } from './pager/Pager';
+export { default as FilterList } from './filter/FilterList';
+export { default as OneColumn } from './layout/OneColumn';
+export { default as LayoutItem } from './layout/LayoutItem';
+export { default as PageContainer } from './layout/PageContainer';
+export { default as LicenseIconList } from './license/LicenseIconList';
+export { default as LicenseByline } from './license/LicenseByline';
+export { default as ToggleLicenseBox } from './license/ToggleLicenseBox';
+export {
+  default as ClickableLicenseByline,
+} from './license/ClickableLicenseByline';
+export { default as ClickToggle } from './common/ClickToggle';
+export { default as TopicArticle } from './topic/TopicArticle';
+export { default as TopicBreadcrumb } from './topic/TopicBreadcrumb';
+export {
+  default as TopicIntroductionList,
+} from './topic/TopicIntroductionList';
+export { default as TopicMenu } from './topicMenu/TopicMenu';
+export { default as Placeholder } from './placeholders/Placeholder';
+export { default as RelatedArticles } from './RelatedArticles/RelatedArticles';
+export { default as ResourceList } from './resources/ResourceList';
+export { default as ResourceWrapper } from './resources/ResourceWrapper';
+export { default as ResourceSubsetList } from './resources/ResourceSubsetList';
+export { default as Glossary } from './glossary/Glossary';
+export { Hero } from './hero/Hero';
+export { Masthead, MastheadItem } from './masthead/Masthead';
+export { Figure, FigureCaption, FigureDetails } from './article/Figure';
+export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
+export {
   MediaList,
   MediaListItem,
   MediaListItemBody,
@@ -49,53 +52,6 @@ import {
   MediaListItemMeta,
 } from './license/MediaList';
 
-// expose the children to top level exports for ease of use
-Footer.Text = FooterText;
-Footer.Ruler = FooterRuler;
-Footer.Editor = FooterEditor;
-Article.Introduction = ArticleIntroduction;
-Article.FootNotes = ArticleFootNotes;
-Article.Content = ArticleContent;
+export { default as ErrorMessage } from './ErrorMessage';
 
-export {
-  Article,
-  Aside,
-  Button,
-  ClickableLicenseByline,
-  ClickToggle,
-  Footer,
-  Figure,
-  FigureCaption,
-  FigureDetails,
-  FilterList,
-  Glossary,
-  Hero,
-  LicenseByline,
-  LicenseIconList,
-  Logo,
-  Masthead,
-  MastheadItem,
-  MediaList,
-  MediaListItem,
-  MediaListItemBody,
-  MediaListItemActions,
-  MediaListItemImage,
-  MediaListItemMeta,
-  OneColumn,
-  LayoutItem,
-  PageContainer,
-  Pager,
-  Placeholder,
-  RelatedArticles,
-  ResourceWrapper,
-  ResourceList,
-  ResourceSubsetList,
-  SiteNav,
-  SiteNavItem,
-  Table,
-  TopicArticle,
-  TopicBreadcrumb,
-  ToggleLicenseBox,
-  TopicIntroductionList,
-  TopicMenu,
-};
+export default all;

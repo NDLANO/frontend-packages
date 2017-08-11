@@ -16,9 +16,10 @@ const classes = new BEMHelper({
 });
 
 export const Hero = ({ children, red, green }) => {
-  let modifiers = red ? 'red' : null;
-  modifiers = green ? 'green' : modifiers;
-  // { red ? modifiers = 'red' : null; }
+  const modifiers = {
+    red,
+    green,
+  };
 
   return (
     <div {...classes('', modifiers)}>
@@ -31,4 +32,9 @@ Hero.propTypes = {
   children: PropTypes.node,
   red: PropTypes.bool,
   green: PropTypes.bool,
+};
+
+Hero.defaultProps = {
+  red: false,
+  grenn: false,
 };

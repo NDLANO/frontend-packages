@@ -17,7 +17,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ErrorMessage = ({ children, messages, toBack }) =>
+export const ErrorMessage = ({ children, messages }) =>
   <div {...classes()}>
     <div>
       <Sad {...classes('icon')} />
@@ -27,12 +27,17 @@ export const ErrorMessage = ({ children, messages, toBack }) =>
       <p {...classes('description')}>
         {messages.description}
       </p>
-      <SafeLink to={toBack()} {...classes('back-link')}>
-        {messages.back}
-      </SafeLink>
-      <SafeLink to="/" {...classes('front-link')}>
-        {messages.goToFrontPage}
-      </SafeLink>
+      {messages.back &&
+        <SafeLink
+          to={`/#${encodeURI(messages.back)}`}
+          onClick={() => window.history.back()}
+          {...classes('back-link')}>
+          {messages.back}
+        </SafeLink>}
+      {messages.goToFrontPage &&
+        <SafeLink to="/" {...classes('front-link')}>
+          {messages.goToFrontPage}
+        </SafeLink>}
       {children}
     </div>
   </div>;
@@ -43,8 +48,8 @@ ErrorMessage.propTypes = {
   messages: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    goToFrontPage: PropTypes.string.isRequired,
-    back: PropTypes.string.isRequired,
+    goToFrontPage: PropTypes.string,
+    back: PropTypes.string,
   }),
 };
 

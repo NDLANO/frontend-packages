@@ -81,11 +81,10 @@ storiesOf('Sidevisninger', module)
       <MastheadWithTopicMenu />
       <OneColumn cssModifier="clear">
         <ErrorMessage
-          toBack={() => '#'}
           messages={{
             title: 'Oops, noe gikk galt',
             description:
-              'Vi beklager, men vi fant ikke den siden du prøvde å komme til.',
+              'Vi beklager, men vi fant ikke siden du prøvde å komme til.',
             back: 'Tilbake',
             goToFrontPage: 'Gå til forsiden',
           }}

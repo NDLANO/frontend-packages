@@ -499,7 +499,6 @@ storiesOf('Sammensatte moduler', module)
         </section>
 
         <ErrorMessage
-          toBack={() => '#'}
           messages={{
             title: 'Oops, noe gikk galt',
             description: 'En kort beskrivelse av feilen som oppsto.',

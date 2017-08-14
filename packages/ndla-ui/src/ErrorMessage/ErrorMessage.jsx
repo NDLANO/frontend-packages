@@ -28,6 +28,7 @@ export const ErrorMessage = ({ children, messages }) =>
         {messages.description}
       </p>
       {messages.back &&
+        window.history.length > 1 &&
         <SafeLink
           to={`/#${encodeURI(messages.back)}`}
           onClick={() => window.history.back()}

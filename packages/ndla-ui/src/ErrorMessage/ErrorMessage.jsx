@@ -44,7 +44,6 @@ export const ErrorMessage = ({ children, messages }) =>
 
 ErrorMessage.propTypes = {
   children: PropTypes.node,
-  toBack: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

@@ -1,6 +1,6 @@
 {
   "name": "ndla-editor",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Editor for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,13 +27,13 @@
     "es"
   ],
   "peerDependencies": {
-    "ndla-util": "^0.1.4",
+    "ndla-util": "^0.1.5",
     "react": "^15.0.0",
     "react-bem-helper": "^1.2.0",
     "react-dom": "^15.0.0"
   },
   "devDependencies": {
-    "ndla-util": "^0.1.4"
+    "ndla-util": "^0.1.5"
   },
   "dependencies": {
     "decorate-component-with-props": "^1.0.2",

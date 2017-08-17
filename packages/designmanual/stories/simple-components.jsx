@@ -304,6 +304,7 @@ storiesOf('Enkle komponenter', module)
               'Pencil',
               'Pilcrow',
               'Plus',
+              'Quote',
               'Sad',
               'Search',
               'Section',

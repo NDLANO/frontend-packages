@@ -3187,19 +3187,19 @@ nan@^2.3.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
 
-ndla-article-scripts@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/ndla-article-scripts/-/ndla-article-scripts-0.0.7.tgz#c12e487b647195bbf5d7a3694273030304f2227e"
+ndla-article-scripts@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/ndla-article-scripts/-/ndla-article-scripts-0.0.9.tgz#798fcfa04a8515d19222b1a6a23fc36d4cc55d70"
 
-ndla-audio-search@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ndla-audio-search/-/ndla-audio-search-0.1.1.tgz#2da5d0fd5693975e580323d1c498a59e7e395bc0"
+ndla-audio-search@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ndla-audio-search/-/ndla-audio-search-0.1.6.tgz#6689c99bafd5e86c139288e2373108744a46f257"
   dependencies:
     defined "1.0.0"
 
-ndla-editor@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/ndla-editor/-/ndla-editor-0.1.7.tgz#83f86f3c8045d046563cc3d6a90d998aa9fd4974"
+ndla-editor@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/ndla-editor/-/ndla-editor-0.1.10.tgz#e4e73f1045ce7a7b19bdee4728c81ee296eca471"
   dependencies:
     decorate-component-with-props "^1.0.2"
     draft-js "0.10.0"
@@ -3214,43 +3214,43 @@ ndla-editor@^0.1.7:
     draftjs-utils "0.7.5"
     hoist-non-react-statics "^1.2.0"
 
-ndla-image-search@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/ndla-image-search/-/ndla-image-search-0.1.7.tgz#5d2515e063bd9797eb5794b6fea1b86f810c8bc7"
+ndla-image-search@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/ndla-image-search/-/ndla-image-search-0.1.12.tgz#784690a5d9d9b9c944274af6a5cf21c026fd3caf"
   dependencies:
     defined "1.0.0"
     react-bem-helper "^1.2.0"
 
-ndla-licenses@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/ndla-licenses/-/ndla-licenses-0.0.9.tgz#5ba25c076403e5d7cffc251f37feb2ff4e9bdf69"
+ndla-licenses@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/ndla-licenses/-/ndla-licenses-0.0.11.tgz#02058c4264a257ce1b3b172c88ebcd352b788989"
   dependencies:
     defined "1.0.0"
 
-ndla-tabs@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/ndla-tabs/-/ndla-tabs-0.3.3.tgz#9fb4397058820f10818dd93d84c8a1126cfa22d0"
+ndla-tabs@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/ndla-tabs/-/ndla-tabs-0.3.5.tgz#6c881e5fc2300324604c074f5e829ad91fc95797"
   dependencies:
     lodash "^4.17.2"
 
-ndla-ui@^0.7.7:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/ndla-ui/-/ndla-ui-0.7.7.tgz#5221586fb0fca9c89d9d6efbf8dbc7329fb43cda"
+ndla-ui@^0.7.12:
+  version "0.7.12"
+  resolved "https://registry.yarnpkg.com/ndla-ui/-/ndla-ui-0.7.12.tgz#867dd0d3bcc5f2f9d92247cbc674e35c398ade20"
   dependencies:
     classnames "2.2.5"
     react-bem-helper "1.4.1"
     react-prop-types "0.4.0"
     react-sticky-header "^0.1.6"
 
-ndla-util@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/ndla-util/-/ndla-util-0.1.4.tgz#1ade34998a9a1c93cba4f4da64abd931f33d1a8a"
+ndla-util@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ndla-util/-/ndla-util-0.1.6.tgz#657457e993ad17755d6fb0b27cabc36b9d9d2c89"
   dependencies:
     defined "1.0.0"
 
-ndla-video-search@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/ndla-video-search/-/ndla-video-search-0.1.7.tgz#c22ec452f0054077bd7b12c8773c9ccfb44a8831"
+ndla-video-search@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/ndla-video-search/-/ndla-video-search-0.1.12.tgz#bcf3b0c20fad7c292163b93eafb326b1ffc53265"
   dependencies:
     defined "1.0.0"
     react-bem-helper "^1.2.0"

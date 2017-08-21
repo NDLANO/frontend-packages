@@ -9,19 +9,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ParagraphJustify = ({ className }) =>
+const TextInBox = ({ className }) =>
   <svg
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    width="32"
+    width="29"
     height="32"
-    viewBox="0 0 32 32"
+    viewBox="0 0 29 32"
     className={className}>
-    <path d="M0 2h32v4h-32zM0 8h32v4h-32zM0 14h32v4h-32zM0 20h32v4h-32zM0 26h32v4h-32z" />
+    <path
+      fill="none"
+      stroke="#444"
+      d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
+    />
   </svg>;
 
-ParagraphJustify.propTypes = {
+TextInBox.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default ParagraphJustify;
+export default TextInBox;

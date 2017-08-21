@@ -9,22 +9,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Plus = ({ className }) =>
+const Heading1 = ({ className }) =>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="33"
-    height="33"
-    viewBox="0 0 33 33"
+    width="21"
+    height="15"
+    viewBox="0 0 21 15"
     className={className}>
     <path
-      fill="none"
-      stroke="#444"
-      d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z"
+      fillRule="evenodd"
+      d="M.2 15h.704V7.564h8.14V15h.704V.48h-.704v6.468H.904V.48H.2V15zm13.64 0h7.128v-.616h-3.124V.92h-.572c-.616.352-1.496.66-2.596.836v.484h2.508v12.144H13.84V15z"
     />
   </svg>;
 
-Plus.propTypes = {
+Heading1.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default Plus;
+export default Heading1;

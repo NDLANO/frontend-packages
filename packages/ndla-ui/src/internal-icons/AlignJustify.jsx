@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ParagraphCenter = ({ className }) =>
+const AlignJustify = ({ className }) =>
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -17,11 +17,11 @@ const ParagraphCenter = ({ className }) =>
     height="32"
     viewBox="0 0 32 32"
     className={className}>
-    <path d="M0 2h32v4h-32zM6 8h20v4h-20zM6 20h20v4h-20zM0 14h32v4h-32zM0 26h32v4h-32z" />
+    <path d="M0 2h32v4h-32zM0 8h32v4h-32zM0 14h32v4h-32zM0 20h32v4h-32zM0 26h32v4h-32z" />
   </svg>;
 
-ParagraphCenter.propTypes = {
+AlignJustify.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default ParagraphCenter;
+export default AlignJustify;

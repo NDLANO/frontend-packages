@@ -17,7 +17,7 @@ const Heading1 = ({ className }) =>
     viewBox="0 0 21 15"
     className={className}>
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M.2 15h.704V7.564h8.14V15h.704V.48h-.704v6.468H.904V.48H.2V15zm13.64 0h7.128v-.616h-3.124V.92h-.572c-.616.352-1.496.66-2.596.836v.484h2.508v12.144H13.84V15z"
     />
   </svg>;

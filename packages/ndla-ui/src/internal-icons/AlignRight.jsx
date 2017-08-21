@@ -9,22 +9,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Plus = ({ className }) =>
+const AlignRight = ({ className }) =>
   <svg
+    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    width="33"
-    height="33"
-    viewBox="0 0 33 33"
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
     className={className}>
-    <path
-      fill="none"
-      stroke="#444"
-      d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z"
-    />
+    <path d="M0 2h32v4h-32zM12 8h20v4h-20zM12 20h20v4h-20zM0 14h32v4h-32zM0 26h32v4h-32z" />
   </svg>;
 
-Plus.propTypes = {
+AlignRight.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default Plus;
+export default AlignRight;

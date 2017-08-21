@@ -12,6 +12,10 @@ import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 
 import AdditionalIcon from './internal-icons/Additional';
+import AlignCenterIcon from './internal-icons/AlignCenter';
+import AlignJustifyIcon from './internal-icons/AlignJustify';
+import AlignLeftIcon from './internal-icons/AlignLeft';
+import AlignRightIcon from './internal-icons/AlignRight';
 import ArrowIcon from './internal-icons/Arrow';
 import AudioIcon from './internal-icons/Audio';
 import BoldIcon from './internal-icons/Bold';
@@ -23,8 +27,14 @@ import CrossIcon from './internal-icons/Cross';
 import DocumentIcon from './internal-icons/Document';
 import DownloadIcon from './internal-icons/Download';
 import EmbedIcon from './internal-icons/Embed';
+import FactBoxIcon from './internal-icons/FactBox';
 import GridIcon from './internal-icons/Grid';
+import Heading1Icon from './internal-icons/Heading1';
+import Heading2Icon from './internal-icons/Heading2';
+import Heading3Icon from './internal-icons/Heading3';
 import HomeIcon from './internal-icons/Home';
+import H5PIcon from './internal-icons/H5P';
+import IngressIcon from './internal-icons/Ingress';
 import InsertTemplateIcon from './internal-icons/InsertTemplate';
 import ItalicIcon from './internal-icons/Italic';
 import LicenseByIcon from './internal-icons/LicenseBy';
@@ -37,10 +47,7 @@ import ListCircleIcon from './internal-icons/ListCircle';
 import ListNumberedIcon from './internal-icons/ListNumbered';
 import ListSquareIcon from './internal-icons/ListSquare';
 import OpenWindowIcon from './internal-icons/OpenWindow';
-import ParagraphCenterIcon from './internal-icons/ParagraphCenter';
-import ParagraphJustifyIcon from './internal-icons/ParagraphJustify';
-import ParagraphLeftIcon from './internal-icons/ParagraphLeft';
-import ParagraphRightIcon from './internal-icons/ParagraphRight';
+import ParagraphIcon from './internal-icons/Paragraph';
 import PathIcon from './internal-icons/Path';
 import PencilIcon from './internal-icons/Pencil';
 import PilcrowIcon from './internal-icons/Pilcrow';
@@ -51,6 +58,7 @@ import SearchIcon from './internal-icons/Search';
 import SectionIcon from './internal-icons/Section';
 import StrikethroughIcon from './internal-icons/Strikethrough';
 import TableIcon from './internal-icons/Table';
+import TextInBoxIcon from './internal-icons/TextInBox';
 import TimeIcon from './internal-icons/Time';
 import UnderlineIcon from './internal-icons/Underline';
 import UserIcon from './internal-icons/User';
@@ -70,6 +78,11 @@ Icon.propTypes = {
 };
 
 export const Additional = props => <Icon {...props} icon={AdditionalIcon} />;
+export const AlignCenter = props => <Icon {...props} icon={AlignCenterIcon} />;
+export const AlignJustify = props =>
+  <Icon {...props} icon={AlignJustifyIcon} />;
+export const AlignLeft = props => <Icon {...props} icon={AlignLeftIcon} />;
+export const AlignRight = props => <Icon {...props} icon={AlignRightIcon} />;
 export const Arrow = props => <Icon {...props} icon={ArrowIcon} />;
 export const Audio = props => <Icon {...props} icon={AudioIcon} />;
 export const Bold = props => <Icon {...props} icon={BoldIcon} />;
@@ -81,8 +94,14 @@ export const Cross = props => <Icon {...props} icon={CrossIcon} />;
 export const Document = props => <Icon {...props} icon={DocumentIcon} />;
 export const Download = props => <Icon {...props} icon={DownloadIcon} />;
 export const Embed = props => <Icon {...props} icon={EmbedIcon} />;
+export const FactBox = props => <Icon {...props} icon={FactBoxIcon} />;
 export const Grid = props => <Icon {...props} icon={GridIcon} />;
+export const Heading1 = props => <Icon {...props} icon={Heading1Icon} />;
+export const Heading2 = props => <Icon {...props} icon={Heading2Icon} />;
+export const Heading3 = props => <Icon {...props} icon={Heading3Icon} />;
 export const Home = props => <Icon {...props} icon={HomeIcon} />;
+export const H5P = props => <Icon {...props} icon={H5PIcon} />;
+export const Ingress = props => <Icon {...props} icon={IngressIcon} />;
 export const InsertTemplate = props =>
   <Icon {...props} icon={InsertTemplateIcon} />;
 export const Italic = props => <Icon {...props} icon={ItalicIcon} />;
@@ -97,14 +116,7 @@ export const ListNumbered = props =>
   <Icon {...props} icon={ListNumberedIcon} />;
 export const ListSquare = props => <Icon {...props} icon={ListSquareIcon} />;
 export const OpenWindow = props => <Icon {...props} icon={OpenWindowIcon} />;
-export const ParagraphCenter = props =>
-  <Icon {...props} icon={ParagraphCenterIcon} />;
-export const ParagraphJustify = props =>
-  <Icon {...props} icon={ParagraphJustifyIcon} />;
-export const ParagraphLeft = props =>
-  <Icon {...props} icon={ParagraphLeftIcon} />;
-export const ParagraphRight = props =>
-  <Icon {...props} icon={ParagraphRightIcon} />;
+export const Paragraph = props => <Icon {...props} icon={ParagraphIcon} />;
 export const Path = props => <Icon {...props} icon={PathIcon} />;
 export const Pencil = props => <Icon {...props} icon={PencilIcon} />;
 export const Pilcrow = props => <Icon {...props} icon={PilcrowIcon} />;
@@ -116,6 +128,7 @@ export const Section = props => <Icon {...props} icon={SectionIcon} />;
 export const Strikethrough = props =>
   <Icon {...props} icon={StrikethroughIcon} />;
 export const Table = props => <Icon {...props} icon={TableIcon} />;
+export const TextInBox = props => <Icon {...props} icon={TextInBoxIcon} />;
 export const Time = props => <Icon {...props} icon={TimeIcon} />;
 export const Underline = props => <Icon {...props} icon={UnderlineIcon} />;
 export const User = props => <Icon {...props} icon={UserIcon} />;

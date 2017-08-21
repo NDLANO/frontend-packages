@@ -9,19 +9,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ParagraphRight = ({ className }) =>
+const Heading1 = ({ className }) =>
   <svg
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 32 32"
+    width="21"
+    height="15"
+    viewBox="0 0 21 15"
     className={className}>
-    <path d="M0 2h32v4h-32zM12 8h20v4h-20zM12 20h20v4h-20zM0 14h32v4h-32zM0 26h32v4h-32z" />
+    <path
+      fill-rule="evenodd"
+      d="M.2 15h.704V7.564h8.14V15h.704V.48h-.704v6.468H.904V.48H.2V15zm13.64 0h7.128v-.616h-3.124V.92h-.572c-.616.352-1.496.66-2.596.836v.484h2.508v12.144H13.84V15z"
+    />
   </svg>;
 
-ParagraphRight.propTypes = {
+Heading1.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default ParagraphRight;
+export default Heading1;

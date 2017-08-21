@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ParagraphJustify = ({ className }) =>
+const AlignJustify = ({ className }) =>
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -20,8 +20,8 @@ const ParagraphJustify = ({ className }) =>
     <path d="M0 2h32v4h-32zM0 8h32v4h-32zM0 14h32v4h-32zM0 20h32v4h-32zM0 26h32v4h-32z" />
   </svg>;
 
-ParagraphJustify.propTypes = {
+AlignJustify.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default ParagraphJustify;
+export default AlignJustify;

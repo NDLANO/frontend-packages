@@ -9,19 +9,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ParagraphCenter = ({ className }) =>
+const FactBox = ({ className }) =>
   <svg
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 32 32"
+    width="30"
+    height="23"
+    viewBox="0 0 30 23"
     className={className}>
-    <path d="M0 2h32v4h-32zM6 8h20v4h-20zM6 20h20v4h-20zM0 14h32v4h-32zM0 26h32v4h-32z" />
+    <path
+      fill="#444"
+      fill-rule="evenodd"
+      stroke="#444"
+      stroke-linecap="square"
+      d="M7 7.84h16.552M15 20l-3-6h6l-3 6zM.5.5v16-16zm0 16h10M.5.5h29m0 0v16m0 0h-10M15 22a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"
+    />
   </svg>;
 
-ParagraphCenter.propTypes = {
+FactBox.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default ParagraphCenter;
+export default FactBox;

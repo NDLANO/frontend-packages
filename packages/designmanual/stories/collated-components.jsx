@@ -14,7 +14,8 @@ import {
   LicenseIconList,
   TopicArticle,
   TopicIntroductionList,
-  TopicBreadcrumb,
+  Breadcrumb,
+  BreadcrumbBlock,
   OneColumn,
   LayoutItem,
   RelatedArticles,
@@ -53,9 +54,16 @@ storiesOf('Sammensatte moduler', module)
   .add('Brødsmulesti', () =>
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
-      <TopicBreadcrumb
+      <Breadcrumb
         toSubjects={() => '#'}
         subjectsTitle="Fag"
+        subject={subjectList[1]}
+        topicPath={topicList.slice(0, -1)}
+        toTopic={() => '#'}
+      />
+      <h2 className="u-heading">Brødsmulesti blokk eksempel</h2>
+      <BreadcrumbBlock
+        fadeIn
         subject={subjectList[1]}
         topicPath={topicList.slice(0, -1)}
         toTopic={() => '#'}

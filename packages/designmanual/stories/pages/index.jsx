@@ -19,7 +19,7 @@ import {
   TopicIntroductionList,
   RelatedArticles,
   LayoutItem,
-  TopicBreadcrumb,
+  Breadcrumb,
 } from 'ndla-ui';
 
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
@@ -61,7 +61,7 @@ storiesOf('Sidevisninger', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -100,7 +100,7 @@ storiesOf('Sidevisninger', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -123,7 +123,7 @@ storiesOf('Artikkelmaler', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -145,7 +145,7 @@ storiesOf('Artikkelmaler', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -167,7 +167,7 @@ storiesOf('Artikkelmaler', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -234,7 +234,7 @@ storiesOf('Emnesider', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -263,7 +263,7 @@ storiesOf('Emnesider', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}
@@ -293,7 +293,7 @@ storiesOf('Emnesider', module)
         <OneColumn>
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb
+              <Breadcrumb
                 toSubjects={() => '#'}
                 subjectsTitle="Fag"
                 subject={subjectList[1]}

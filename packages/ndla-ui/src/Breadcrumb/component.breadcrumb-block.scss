@@ -1,0 +1,65 @@
+/**
+** BREADCRUMB BLOCK
+**
+** EXAMPLE:
+** <div class="c-breadcrumb-block">
+**  <ol class="c-breadcrumb-block__list">
+**    <li class="c-breadcrumb-block__item">
+**      <a href="#">Medieuttrykk og mediesamfunnet</a>
+**    </li>
+**    <li class="c-breadcrumb-block__item>
+**      <a href="#">Idéutvikling</a>
+**    </li>
+**  </ol>
+** </div>
+**/
+
+.c-breadcrumb-block {
+  opacity: 0;
+  display: none;
+  @include mq(desktop) {
+    display: block;
+  }
+}
+.c-breadcrumb-block__list {
+  padding-top: 1px;
+  margin-left: $spacing;
+  margin-bottom: 0;
+  display: inline-block;
+  list-style: none;
+  text-align: left;
+}
+.c-breadcrumb-block__item {
+  display: inline-block;
+  margin-right: $spacing--small;
+  margin-bottom: 0;
+  text-transform: none;
+  &:before {
+    display: none;
+  }
+  &:after {
+    padding-right: $spacing--small/2;
+    padding-left: $spacing--small;
+    content: '|';
+    @include inuit-font-size(14px);
+    color: $brand-color;
+    opacity: .4;
+  }
+}
+.c-breadcrumb-block__item:last-child {
+  &:after {
+    display: none;
+  }
+}
+.c-breadcrumb-block__item:nth-child(1) {
+  display: block;
+  text-align: left;
+  @include inuit-font-size(14px);
+  font-weight: $font-weight-bold;
+  &:after {
+    display: none;
+  }
+}
+.c-breadcrumb-block__item--home {
+  display: none;
+}

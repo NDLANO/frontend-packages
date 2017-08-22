@@ -34,8 +34,15 @@ export default class DisplayOnPageYOffset extends Component {
       if (!this.state.display) {
         this.setState({ display: true, fadeIn: true, fadeOut: false });
       }
-    } else if (this.state.display) {
+    } else if (
+      this.state.display &&
+      window.pageYOffset < this.props.yOffset &&
+      window.pageYOffset > 0
+    ) {
       this.setState({ display: false, fadeOut: true, fadeIn: false });
+    } else if (window.pageYOffset === 0) {
+      // Don't fade out on route changes (typically when pageYOffset === 0)
+      this.setState({ display: false, fadeOut: false, fadeIn: false });
     }
   }
 

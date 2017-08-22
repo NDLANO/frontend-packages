@@ -10,17 +10,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SafeLink from '../common/SafeLink';
 
-const TopicBreadcrumbItem = ({ to, children, classes }) =>
-  <li {...classes('item')}>
+const BreadcrumbItem = ({ to, children, classes, extraClass }) =>
+  <li {...classes('item', extraClass)}>
     <SafeLink to={to}>
       {children}
     </SafeLink>
   </li>;
 
-TopicBreadcrumbItem.propTypes = {
+BreadcrumbItem.propTypes = {
   classes: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
+  extraClass: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
-export default TopicBreadcrumbItem;
+export default BreadcrumbItem;

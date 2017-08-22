@@ -8,17 +8,17 @@
 
 import React from 'react';
 
-import { TopicBreadcrumb } from 'ndla-ui';
+import { Breadcrumb } from 'ndla-ui';
 import { topicList, subjectList } from '../../dummydata/index';
 
-export const TopicBreadcrumbDefault = () =>
-  <TopicBreadcrumb
+export const BreadcrumbDefault = () =>
+  <Breadcrumb
     subject={subjectList[1]}
     topicPath={topicList.slice(2)}
     subjectsTitle="Fag"
     toSubjects={() => '#'}
     toTopic={() => '#'}>
     Du er her:
-  </TopicBreadcrumb>;
+  </Breadcrumb>;
 
-export default TopicBreadcrumbDefault;
+export default BreadcrumbDefault;

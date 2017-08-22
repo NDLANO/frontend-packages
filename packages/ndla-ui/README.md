@@ -36,7 +36,7 @@ See: [package.json](package.json) for version requirements
 
 ### Simplified example
 ```jsx
-import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from 'ndla-ui';
+import { Hero, OneColumn, TopicArticle, Breadcrumb } from 'ndla-ui';
 
 const MyPage = ({topicPath, topic, article}) => {
   return (
@@ -45,7 +45,7 @@ const MyPage = ({topicPath, topic, article}) => {
         <OneColumn cssModifier="narrow">
           <div className="c-hero__content">
             <section>
-              <TopicBreadcrumb topicPath={topicPath} />
+              <Breadcrumb topicPath={topicPath} />
               <h1 className="c-hero__title">{topic.name}</h1>
             </section>
           </div>

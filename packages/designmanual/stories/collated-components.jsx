@@ -14,7 +14,7 @@ import {
   LicenseIconList,
   TopicArticle,
   TopicIntroductionList,
-  TopicBreadcrumb,
+  Breadcrumb,
   OneColumn,
   LayoutItem,
   RelatedArticles,
@@ -53,7 +53,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Brødsmulesti', () =>
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
-      <TopicBreadcrumb
+      <Breadcrumb
         toSubjects={() => '#'}
         subjectsTitle="Fag"
         subject={subjectList[1]}

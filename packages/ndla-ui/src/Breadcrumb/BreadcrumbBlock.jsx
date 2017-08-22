@@ -13,7 +13,7 @@ import { SubjectShape, TopicShape } from '../shapes';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const classes = BEMHelper({
-  name: 'breadcrumb-masthead',
+  name: 'breadcrumb-block',
   prefix: 'c-',
 });
 

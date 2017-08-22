@@ -16,7 +16,8 @@ import {
   Logo,
   ClickToggle,
   TopicMenu,
-  TopicBreadcrumb,
+  DisplayOnPageYOffset,
+  BreadcrumbBlock,
 } from 'ndla-ui';
 import { topicMenu, subjectList, topicList } from '../../dummydata';
 
@@ -40,30 +41,10 @@ export const MastheadDefault = () =>
     </MastheadItem>
   </Masthead>;
 
-// export const MastheadWithTopicMenu = () => (
-//
-// );
-
 export class MastheadWithTopicMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sticky: true };
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll() {
-    this.state = { sticky: true };
-
-    // Should probably be solved better?
-    if (window.pageYOffset > 150) {
-      document
-        .getElementsByClassName('c-breadcrumb-masthead')[0]
-        .classList.add('u-fade-in');
-    } else {
-      document
-        .getElementsByClassName('c-breadcrumb-masthead')[0]
-        .classList.remove('u-fade-in');
-    }
+    this.state = { showBreadcrumb: false };
   }
 
   render() {
@@ -92,14 +73,14 @@ export class MastheadWithTopicMenu extends React.Component {
               />
             </ClickToggle>
           </SiteNav>
-          <TopicBreadcrumb
-            inMasthead
-            toSubjects={() => '#'}
-            subjectsTitle="Fag"
-            subject={subjectList[1]}
-            topicPath={topicList.slice(0, 2)}
-            toTopic={() => '#'}
-          />
+
+          <DisplayOnPageYOffset yOffset={150}>
+            <BreadcrumbBlock
+              subject={subjectList[1]}
+              topicPath={topicList.slice(0, 2)}
+              toTopic={() => '#'}
+            />
+          </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
           <Logo to="#" altText="Nasjonal digital læringsarena" />

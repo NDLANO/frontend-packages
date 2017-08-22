@@ -39,6 +39,7 @@ export { default as ResourceList } from './resources/ResourceList';
 export { default as ResourceWrapper } from './resources/ResourceWrapper';
 export { default as ResourceSubsetList } from './resources/ResourceSubsetList';
 export { default as Glossary } from './glossary/Glossary';
+export { BreadcrumbBlock, DisplayOnPageYOffset } from './Breadcrumb';
 export { Hero } from './hero/Hero';
 export { Masthead, MastheadItem } from './masthead/Masthead';
 export { Figure, FigureCaption, FigureDetails } from './article/Figure';

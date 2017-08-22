@@ -41,53 +41,46 @@ export const MastheadDefault = () =>
     </MastheadItem>
   </Masthead>;
 
-export class MastheadWithTopicMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { showBreadcrumb: false };
-  }
+export const MastheadWithTopicMenu = () => {
+  const messages = {
+    goTo: 'Gå til',
+    subjectOverview: 'Fagoversikt',
+    search: 'Søk',
+  };
 
-  render() {
-    const messages = {
-      goTo: 'Gå til',
-      subjectOverview: 'Fagoversikt',
-      search: 'Søk',
-    };
-
-    return (
-      <Masthead>
-        <MastheadItem left>
-          <SiteNav>
-            <ClickToggle
-              title="Meny"
-              openTitle="Lukk"
-              className="c-topic-menu-container"
-              buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-              <TopicMenu
-                subjectTitle="Mediefag"
-                toSubject={() => '#'}
-                toTopic={() => '#'}
-                withSearchAndFilter
-                topics={topicMenu}
-                messages={messages}
-              />
-            </ClickToggle>
-          </SiteNav>
-
-          <DisplayOnPageYOffset yOffset={150}>
-            <BreadcrumbBlock
-              subject={subjectList[1]}
-              topicPath={topicList.slice(0, 2)}
+  return (
+    <Masthead>
+      <MastheadItem left>
+        <SiteNav>
+          <ClickToggle
+            title="Meny"
+            openTitle="Lukk"
+            className="c-topic-menu-container"
+            buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+            <TopicMenu
+              subjectTitle="Mediefag"
+              toSubject={() => '#'}
               toTopic={() => '#'}
+              withSearchAndFilter
+              topics={topicMenu}
+              messages={messages}
             />
-          </DisplayOnPageYOffset>
-        </MastheadItem>
-        <MastheadItem right>
-          <Logo to="#" altText="Nasjonal digital læringsarena" />
-        </MastheadItem>
-      </Masthead>
-    );
-  }
-}
+          </ClickToggle>
+        </SiteNav>
+
+        <DisplayOnPageYOffset yOffset={150}>
+          <BreadcrumbBlock
+            subject={subjectList[1]}
+            topicPath={topicList.slice(0, 2)}
+            toTopic={() => '#'}
+          />
+        </DisplayOnPageYOffset>
+      </MastheadItem>
+      <MastheadItem right>
+        <Logo to="#" altText="Nasjonal digital læringsarena" />
+      </MastheadItem>
+    </Masthead>
+  );
+};
 
 export default MastheadDefault;

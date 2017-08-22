@@ -15,6 +15,7 @@ import {
   TopicArticle,
   TopicIntroductionList,
   Breadcrumb,
+  BreadcrumbBlock,
   OneColumn,
   LayoutItem,
   RelatedArticles,
@@ -56,6 +57,13 @@ storiesOf('Sammensatte moduler', module)
       <Breadcrumb
         toSubjects={() => '#'}
         subjectsTitle="Fag"
+        subject={subjectList[1]}
+        topicPath={topicList.slice(0, -1)}
+        toTopic={() => '#'}
+      />
+      <h2 className="u-heading">Brødsmulesti blokk eksempel</h2>
+      <BreadcrumbBlock
+        fadeIn
         subject={subjectList[1]}
         topicPath={topicList.slice(0, -1)}
         toTopic={() => '#'}

@@ -8,17 +8,17 @@
 #root {
   overflow-x: hidden;
 }
-#root, #root [data-reactroot] {
+#root,
+#root [data-reactroot] {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-#root [data-reactroot] > .o-wrapper {
+
+#root [data-reactroot] > .o-content {
   flex: 1;
 }
-
-
 
 .license-byline {
   position: relative;

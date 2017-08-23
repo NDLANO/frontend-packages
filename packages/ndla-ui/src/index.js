@@ -17,9 +17,12 @@ export { default as Aside } from './aside/Aside';
 export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';
 export { default as FilterList } from './filter/FilterList';
-export { default as OneColumn } from './layout/OneColumn';
-export { default as LayoutItem } from './layout/LayoutItem';
-export { default as PageContainer } from './layout/PageContainer';
+export {
+  default as LayoutItem,
+  OneColumn,
+  PageContainer,
+  Content,
+} from './Layout';
 export { default as LicenseIconList } from './license/LicenseIconList';
 export { default as LicenseByline } from './license/LicenseByline';
 export { default as ToggleLicenseBox } from './license/ToggleLicenseBox';

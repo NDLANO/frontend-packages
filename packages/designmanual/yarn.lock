@@ -3191,9 +3191,9 @@ ndla-article-scripts@^0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/ndla-article-scripts/-/ndla-article-scripts-0.0.9.tgz#798fcfa04a8515d19222b1a6a23fc36d4cc55d70"
 
-ndla-audio-search@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/ndla-audio-search/-/ndla-audio-search-0.1.6.tgz#6689c99bafd5e86c139288e2373108744a46f257"
+ndla-audio-search@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/ndla-audio-search/-/ndla-audio-search-0.1.10.tgz#7707255ffd4847e3f66fe79a37bdaf785bb47a42"
   dependencies:
     defined "1.0.0"
 
@@ -3214,9 +3214,9 @@ ndla-editor@^0.1.10:
     draftjs-utils "0.7.5"
     hoist-non-react-statics "^1.2.0"
 
-ndla-image-search@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/ndla-image-search/-/ndla-image-search-0.1.12.tgz#784690a5d9d9b9c944274af6a5cf21c026fd3caf"
+ndla-image-search@^0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/ndla-image-search/-/ndla-image-search-0.1.16.tgz#5a07d1ac3a5d175a94d70c5e6d94c953d77c15ac"
   dependencies:
     defined "1.0.0"
     react-bem-helper "^1.2.0"
@@ -3233,9 +3233,9 @@ ndla-tabs@^0.3.5:
   dependencies:
     lodash "^4.17.2"
 
-ndla-ui@^0.7.12:
-  version "0.7.12"
-  resolved "https://registry.yarnpkg.com/ndla-ui/-/ndla-ui-0.7.12.tgz#867dd0d3bcc5f2f9d92247cbc674e35c398ade20"
+ndla-ui@^0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/ndla-ui/-/ndla-ui-0.7.16.tgz#63493e5ca6e48087f0dfa9f02423aa45ba49bbb8"
   dependencies:
     classnames "2.2.5"
     react-bem-helper "1.4.1"
@@ -3248,9 +3248,9 @@ ndla-util@^0.1.6:
   dependencies:
     defined "1.0.0"
 
-ndla-video-search@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/ndla-video-search/-/ndla-video-search-0.1.12.tgz#bcf3b0c20fad7c292163b93eafb326b1ffc53265"
+ndla-video-search@^0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/ndla-video-search/-/ndla-video-search-0.1.16.tgz#0f7684bdabef6404188ddbf668c5372601a8cbba"
   dependencies:
     defined "1.0.0"
     react-bem-helper "^1.2.0"

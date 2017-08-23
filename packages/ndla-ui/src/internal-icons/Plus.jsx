@@ -16,11 +16,7 @@ const Plus = ({ className }) =>
     height="33"
     viewBox="0 0 33 33"
     className={className}>
-    <path
-      fill="none"
-      stroke="#444"
-      d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z"
-    />
+    <path d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z" />
   </svg>;
 
 Plus.propTypes = {

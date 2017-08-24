@@ -22,7 +22,10 @@
     "ndla"
   ],
   "author": "ndla@knowit.no",
-  "files": [],
+  "files": [
+    "lib",
+    "es"
+  ],
   "devDependencies": {
     "ndla-article-scripts": "^0.0.3",
     "ndla-licenses": "^0.0.7",

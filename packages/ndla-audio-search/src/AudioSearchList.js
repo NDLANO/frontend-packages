@@ -23,6 +23,7 @@ export default function AudioSearchList({
   translations,
   onError,
   fetchAudio,
+  onAudioSelect,
 }) {
   if ((!audios || audios.length === 0) && !searching) {
     return (
@@ -44,6 +45,7 @@ export default function AudioSearchList({
           onError={onError}
           locale={locale}
           translations={translations}
+          onAudioSelect={onAudioSelect}
         />,
       )}
     </div>
@@ -60,4 +62,5 @@ AudioSearchList.propTypes = {
   }),
   onError: PropTypes.func.isRequired,
   fetchAudio: PropTypes.func.isRequired,
+  onAudioSelect: PropTypes.func.isRequired,
 };

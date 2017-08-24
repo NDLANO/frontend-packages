@@ -72,7 +72,7 @@ class AudioSearch extends Component {
   }
 
   render() {
-    const { fetchAudio, onError, translations } = this.props;
+    const { fetchAudio, onError, translations, onAudioSelect } = this.props;
     const { queryObject, audios, lastPage, searching } = this.state;
     const { page, locale } = queryObject;
 
@@ -91,6 +91,7 @@ class AudioSearch extends Component {
           translations={translations}
           onError={onError}
           fetchAudio={fetchAudio}
+          onAudioSelect={onAudioSelect}
         />
         <Pager
           page={page ? parseInt(page, 10) : 1}
@@ -121,6 +122,7 @@ AudioSearch.propTypes = {
     useAudio: PropTypes.string.isRequired,
     noResults: PropTypes.string.isRequired,
   }),
+  onAudioSelect: PropTypes.func.isRequired,
 };
 
 export default AudioSearch;

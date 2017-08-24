@@ -24,13 +24,14 @@ export default function AudioSearchResult({
   onError,
   locale,
   translations,
+  onAudioSelect,
 }) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <div key={audio.id} {...classes('list-item')}>
       <div {...classes('list-item-inner')}>
         <h2>
-          {audio.title}
+          {audio.title.title}
         </h2>
         <div {...classes('license')}>
           {license.rights
@@ -39,7 +40,7 @@ export default function AudioSearchResult({
         </div>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>
-      <Button outline>
+      <Button outline onClick={() => onAudioSelect(audio)}>
         {translations.useAudio}
       </Button>
     </div>
@@ -49,7 +50,10 @@ export default function AudioSearchResult({
 AudioSearchResult.propTypes = {
   audio: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      language: PropTypes.string.isRequired,
+    })
   }),
   translations: PropTypes.shape({
     useAudio: PropTypes.string.isRequired,
@@ -57,4 +61,5 @@ AudioSearchResult.propTypes = {
   fetchAudio: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
+  onAudioSelect: PropTypes.func.isRequired,
 };

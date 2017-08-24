@@ -53,7 +53,7 @@ AudioSearchResult.propTypes = {
     title: PropTypes.shape({
       title: PropTypes.string.isRequired,
       language: PropTypes.string.isRequired,
-    })
+    }),
   }),
   translations: PropTypes.shape({
     useAudio: PropTypes.string.isRequired,

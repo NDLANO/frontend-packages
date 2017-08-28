@@ -62,18 +62,12 @@ export default () =>
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense>
-          <iframe
-            title="H5P"
-            src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-            width="260"
-            height="373"
-            frameBorder="0"
-            allowFullScreen="allowfullscreen"
-          />
-          <script
-            src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
-            charSet="UTF-8"
+        <FigureWithLicense
+          caption="Person med mange armer som gjør forskjellige ting samtidig. "
+        >
+          <img
+            alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+            src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
           />
         </FigureWithLicense>
         <p>

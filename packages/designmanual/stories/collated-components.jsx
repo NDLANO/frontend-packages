@@ -98,6 +98,7 @@ storiesOf('Sammensatte moduler', module)
                   Gjennom{' '}
                   <Glossary
                     definition="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre Med andre ord at de blir som de andre i samfunnet."
+                    author="Gary Waters"
                     source="snl.no">
                     sosialisering
                   </Glossary>{' '}

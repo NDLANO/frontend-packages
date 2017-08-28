@@ -9,6 +9,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { BY, NC, ND } from 'ndla-licenses';
+import { LicenseIconList } from '../index';
 
 const classes = new BEMHelper({
   name: 'glossary-word',
@@ -60,7 +62,9 @@ class Glossary extends Component {
                 {this.props.definition}
               </p>
               <div {...classes('footer')}>
-                {this.props.source}
+                <LicenseIconList noText licenseRights={[BY, NC, ND]} />
+                <span {...classes('author')}>{this.props.author}</span>
+                <span {...classes('source')}>{this.props.source}</span>
               </div>
             </div>
           : null}
@@ -73,6 +77,7 @@ Glossary.propTypes = {
   children: PropTypes.string,
   definition: PropTypes.string,
   source: PropTypes.string,
+  author: PropTypes.string,
 };
 
 export default Glossary;

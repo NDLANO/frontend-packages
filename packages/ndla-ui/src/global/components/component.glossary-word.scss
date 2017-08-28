@@ -60,11 +60,18 @@
 .c-glossary-word__title {
   margin-top: 0;
   border-bottom: 2px solid $brand-color;
+  text-transform: capitalize;
 }
 .c-glossary-word__footer {
   padding-top: $spacing--small;
   @include inuit-font-size(15px);
   color: $brand-grey;
+  .c-license-icons__list {
+    flex-direction: row;
+  }
+}
+.c-glossary-word__author {
+  margin-right: $spacing;
 }
 .c-glossary-word__close {
   display: inline-block;

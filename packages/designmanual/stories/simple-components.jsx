@@ -72,6 +72,7 @@ storiesOf('Enkle komponenter', module)
             <span className="c-article-byline__date">
               <Icons.Time /> Publisert [dato]
             </span>
+            <LicenseExample />
           </div>
         </LayoutItem>
         <LayoutItem layout="extend">

@@ -46,7 +46,7 @@ export default () =>
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense classes="u-float-left">
+        <FigureWithLicense caption="Person med mange armer som gjør forskjellige ting samtidig." classes="u-float-left">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
             src="https://staging.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
@@ -80,7 +80,7 @@ export default () =>
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense classes="u-float-right">
+        <FigureWithLicense caption="Person med mange armer som gjør forskjellige ting samtidig." classes="u-float-right">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
             src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"

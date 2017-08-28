@@ -112,7 +112,10 @@ storiesOf('Sammensatte moduler', module)
                   sosialiseringen er at de enkelte menneskene skal kunne skille
                   mellom godt og ondt, og rett og galt.
                 </p>
-                <FigureWithLicense classes="article_figure--float-right">
+                <FigureWithLicense
+                  caption="Liten jente holder sine foreldres hender. Foto."
+                  classes="article_figure--float-right"
+                  >
                   <img
                     alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
@@ -253,7 +256,7 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
-        <FigureWithLicense>
+        <FigureWithLicense caption="Mediedokumentar om nyheter og nyhetskriterier.">
           <iframe
             title="Youtube"
             width="480"

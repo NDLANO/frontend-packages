@@ -43,10 +43,8 @@ export const FigureDetails = ({
         <LicenseByline
           license={getLicenseByAbbreviation(licenseAbbreviation)}
         />
+        <a className="c-figure-license__link" href="https://creativecommons.org/licenses/by-nc/4.0/no/legalcode">Lær mer om åpne lisenser</a>
         <div {...classLicenses('cta-wrapper')}>
-          <h3 {...classLicenses('title')}>
-            {messages.howToReference}
-          </h3>
           <ul {...classes('list')}>
             {authors.map(author =>
               <li
@@ -89,6 +87,7 @@ export const FigureCaption = ({
   <figcaption {...classes('caption')}>
     {caption
       ? <div className="c-figure__info">
+          {authors.map(author => author.name).join(', ')}
           {caption}
         </div>
       : null}

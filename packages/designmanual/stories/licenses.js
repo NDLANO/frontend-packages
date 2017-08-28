@@ -37,3 +37,15 @@ storiesOf('Lisensgivning', module).add('Lisenstekster', () =>
     </article>
   </Center>,
 );
+storiesOf('Lisensgivning', module).add('Modellklarering', () =>
+  <Center>
+    <article className="o-wrapper--narrow">
+      <section className="c-factbox">
+        <h1 className="u-heading">Modellklarering på personbilder</h1>
+      </section>
+      <section>
+        <p>Modellklarering er noe som kommer ved en senere anledning.</p>
+      </section>
+    </article>
+  </Center>,
+);

@@ -19,7 +19,6 @@ import {
   OneColumn,
   LayoutItem,
   RelatedArticles,
-  PageContainer,
 } from 'ndla-ui';
 import { Time, User } from 'ndla-ui/icons';
 
@@ -167,9 +166,9 @@ storiesOf('Sammensatte moduler', module)
     </Center>,
   )
   .add('Emne artikkel', () =>
-    <PageContainer>
+    <Center>
       <ArticleLoader articleId="149" reset />
-    </PageContainer>
+    </Center>
   )
   .add('Emner liste', () =>
     <Center>

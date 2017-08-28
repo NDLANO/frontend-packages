@@ -15,9 +15,6 @@ import {
 
 import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
-const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
-            solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
-            med en hvit og en svart halvdel.`;
 const authors = [
   { type: 'Opphavsmann', name: 'Gary Waters' },
   { type: 'Leverandør', name: 'Corbis' },
@@ -36,6 +33,9 @@ class FigureWithLicense extends Component {
       rulesForUse: 'Regler for bruk av bildet',
       howToReference: 'Slik skal du referere til dette bildet',
     };
+    const caption = this.props.caption ? this.props.caption : `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
+                solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
+                med en hvit og en svart halvdel.`;
     return (
       <Figure className={`c-figure ${this.props.classes}`}>
         <div className="c-figure__img">
@@ -70,6 +70,7 @@ class FigureWithLicense extends Component {
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.string,
+  caption: PropTypes.string
 };
 
 export default FigureWithLicense;

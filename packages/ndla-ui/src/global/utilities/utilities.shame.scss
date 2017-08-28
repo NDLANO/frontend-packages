@@ -25,7 +25,6 @@
 }
 
 .license-byline__body {
-  display: none; // Fix better solution
   margin-right: $spacing--small;
   @include inuit-font-size(13px);
   letter-spacing: 0.05em;

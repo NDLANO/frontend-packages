@@ -87,13 +87,12 @@ export const FigureCaption = ({
   <figcaption {...classes('caption')}>
     {caption
       ? <div className="c-figure__info">
-          {authors.map(author => author.name).join(', ')}
           {caption}
         </div>
       : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>
+        <LicenseByline noText license={getLicenseByAbbreviation(licenseAbbreviation)}>
           <span className="article_meta">
             {authors.map(author => author.name).join(', ')}
           </span>

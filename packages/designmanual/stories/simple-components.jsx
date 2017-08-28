@@ -66,7 +66,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-article-byline">
             <span className="c-article-byline__authors">
-              <Icons.User /> Skrevet av [Opphavsperson].
+              <Icons.User /> [Opphavsperson].
             </span>{' '}
             <span className="c-article-byline__date">
               <Icons.Time /> Publisert [dato]
@@ -188,7 +188,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-article-byline">
             <span className="c-article-byline__authors">
-              <Icons.User /> Skrevet av [Opphavsperson].
+              <Icons.User /> [Opphavsperson].
             </span>{' '}
             <span className="c-article-byline__date">
               <Icons.Time /> Publisert [dato]

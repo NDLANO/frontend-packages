@@ -84,7 +84,7 @@ storiesOf('Sammensatte moduler', module)
             </p>
             <div className="c-article-byline">
               <span className="c-article-byline__authors">
-                <User /> Skrevet av Gro-Anita Mortensen.
+                <User /> Gro-Anita Mortensen.
               </span>{' '}
               <span className="c-article-byline__date">
                 <Time /> Sist oppdatert 03.03.2017

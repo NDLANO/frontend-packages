@@ -26,7 +26,7 @@ const by = {
     title: 'Navngivelse',
     userFriendlyTitle: 'Navngivelse',
     description:
-      'Du må alltid oppgi hvem som har laget bildet, videoen, teksten osv.',
+      'Du må alltid oppgi hvem som har laget innholdet.',
   },
   en: {
     title: 'Attribution',
@@ -41,7 +41,7 @@ const sa = {
     title: 'Share Alike',
     userFriendlyTitle: 'Del på samme vilkår',
     description:
-      'Du kan bare dele bildet, videoen, teksten osv. med samme lisens som det opprinnelige bildet, videoen, teksten osv.',
+      'Du kan bare dele innholdet med samme lisens som det opprinnelige innholdet.',
   },
   en: {
     short: 'SA',
@@ -57,7 +57,7 @@ const nc = {
   nb: {
     title: 'Ikke-kommersiell',
     userFriendlyTitle: 'Ikke-kommersiell',
-    description: 'Du kan ikke endre bildet, videoen, teksten osv.',
+    description: 'Du kan ikke tjene penger på bruk av dette innholdet.',
   },
   en: {
     title: 'Non Commercial',
@@ -72,7 +72,7 @@ const nd = {
     title: 'Ingen bearbeiding',
     userFriendlyTitle: 'Ingen bearbeiding',
     description:
-      'Bildet, videoen teksten osv. er så gammelt at du kan bruke det som du vil.',
+      'Du kan ikke endre innholdet.',
   },
   en: {
     title: 'NO DERIVES',
@@ -87,7 +87,7 @@ const pd = {
     title: 'Offentlig eiendom',
     userFriendlyTitle: 'Offentlig eiendom',
     description:
-      'Bildet, videoen teksten osv. er så gammelt at du kan bruke det som du vil.',
+      'Innholdet er så gammelt at du kan bruke det som du vil.',
   },
   en: {
     title: 'Public Domain',
@@ -118,7 +118,7 @@ const copy = {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
     description:
-      'Det er bare den som har laget bildet, videoen, teksten osv. som kan endre, publisere og gi andre rett til å bruke bildet, videoen, teksten etc. Bildet, videoen, teksten osv. kan ikke deles.',
+      'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet. Innholdet kan ikke deles.',
   },
   en: {
     title: 'Copyright',
@@ -134,7 +134,7 @@ const cc = {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',
     description:
-      'Denne lisensen gir deg rett til å dele og bruke dette bildet, videoen, teksten osv.',
+      'Denne lisensen gir deg rett til å dele og bruke dette innholdet på disse vilkår:',
   },
   en: {
     title: 'Creative Commons',

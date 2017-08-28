@@ -53,10 +53,8 @@ const VideoContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -105,10 +103,8 @@ const TextContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -139,10 +135,8 @@ const TextContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -182,10 +176,8 @@ const AudioContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -216,10 +208,8 @@ const AudioContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -267,10 +257,8 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -305,10 +293,8 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -343,10 +329,8 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -381,10 +365,8 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -437,10 +419,8 @@ const H5PContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -488,10 +468,8 @@ const H5PContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -537,10 +515,8 @@ const Files = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -571,10 +547,8 @@ const Files = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Ola Nordmann',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -622,7 +596,7 @@ const LicenseExample = ({ showByline }) =>
     {showByline
       ? <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
           <span className="article_meta">
-            Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.
+            Ola Nordmann, Leverandør NTB scanpix. Publisert: 10.10.2010.
           </span>
         </LicenseByline>
       : null}

@@ -16,9 +16,8 @@ import {
 import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
 const authors = [
-  { type: 'Opphavsmann', name: 'Gary Waters' },
-  { type: 'Leverandør', name: 'Corbis' },
-  { type: 'Leverandør', name: 'NTB scanpix' },
+  { type: 'Opphavsmann', name: 'Fotograf Gary Waters' },
+  { type: 'Rettighetshaver', name: 'Leverandør NTB scanpix' },
 ];
 
 class FigureWithLicense extends Component {

@@ -12,19 +12,21 @@ import {
   Pager,
   Footer,
   LicenseIconList,
-  TopicArticle,
+  // TopicArticle,
   TopicIntroductionList,
   Breadcrumb,
   BreadcrumbBlock,
   OneColumn,
   LayoutItem,
   RelatedArticles,
+  PageContainer,
 } from 'ndla-ui';
 import { Time, User } from 'ndla-ui/icons';
 
 import { Center } from './helpers';
+import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
-import articles, {
+import {
   topicList,
   subjectList,
   articleResources,
@@ -165,15 +167,9 @@ storiesOf('Sammensatte moduler', module)
     </Center>,
   )
   .add('Emne artikkel', () =>
-    <Center>
-      <OneColumn cssModifier="narrow">
-        <article className="c-article c-article--clean">
-          <LayoutItem layout="center">
-            <TopicArticle article={articles.topicArticle} />
-          </LayoutItem>
-        </article>
-      </OneColumn>
-    </Center>,
+    <PageContainer>
+      <ArticleLoader articleId="149" reset />
+    </PageContainer>
   )
   .add('Emner liste', () =>
     <Center>

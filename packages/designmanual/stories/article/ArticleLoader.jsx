@@ -51,9 +51,10 @@ class ArticleLoader extends Component {
 
   renderArticle() {
     const { article } = this.state;
-    const { withLicenseExample } = this.props;
+    const { withLicenseExample, reset } = this.props;
     return (
       <ArticleExample
+        reset={reset}
         article={article}
         withLicenseExample={withLicenseExample}
       />
@@ -93,6 +94,7 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   withLicenseExample: PropTypes.bool,
   closeButton: PropTypes.bool,
+  reset: PropTypes.bool,
 };
 
 export default ArticleLoader;

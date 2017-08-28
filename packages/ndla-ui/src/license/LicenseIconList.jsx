@@ -9,11 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  BY,
-  NC,
-  ND,
-  SA,
-  CC,
+  BY, SA, NC, ND, PD, CC0, CC, COPY,
   getLicenseRightByAbbreviation,
 } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
@@ -23,6 +19,9 @@ import {
   LicenseNc,
   LicenseNd,
   LicenseSa,
+  LicenseCc0,
+  LicensePd,
+  LicenseCopy,
 } from '../icons';
 
 const classes = new BEMHelper({
@@ -53,6 +52,18 @@ const LicenseIcon = ({ licenseRight, className }) => {
     case SA:
       return (
         <LicenseSa className={className} aria-label={licenseDescription} />
+      );
+    case CC0:
+      return (
+        <LicenseCc0 className={className} aria-label={licenseDescription} />
+      );
+    case PD:
+      return (
+        <LicensePd className={className} aria-label={licenseDescription} />
+      );
+    case COPY:
+      return (
+        <LicenseCopy className={className} aria-label={licenseDescription} />
       );
     default:
       return undefined;

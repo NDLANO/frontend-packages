@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, NC, ND } from 'ndla-licenses';
+import { BY, SA, NC, ND, PD, CC0, CC, COPY } from 'ndla-licenses';
 import {
   Glossary,
   Button,
@@ -248,7 +248,7 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseIconList licenseRights={[BY, NC, ND]} />
+          <LicenseIconList licenseRights={[BY, SA, NC, ND, PD, CC0, CC, COPY]} />
         </div>
       </LayoutItem>
       <LayoutItem layout="center">

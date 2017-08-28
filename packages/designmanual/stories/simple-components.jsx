@@ -405,12 +405,12 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="center">
             <h1 className="u-heading">Logo</h1>
             <p>
-              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
-              for kommunikasjon. Den skal inspirere målgruppen elever og lærere
-              i videregående opplæring og gjøre dem nysgjerrige på NDLA.
+              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
+              for kommunikasjon. Den skal inspirere målgruppen elever og lærere
+              i videregående opplæring og gjøre dem nysgjerrige på NDLA.
             </p>
             <p>
-              Logoen består av navnet NDLA i en spesiell typografi og bør
+              Logoen består av navnet NDLA i en spesiell typografi og bør
               hovedsakelig benyttes sammen med underteksten. Logo uten
               undertekst kan benyttes i tilfeller der det kommer godt fram andre
               steder hvem NDLA er, eksempelvis på ndla.no.

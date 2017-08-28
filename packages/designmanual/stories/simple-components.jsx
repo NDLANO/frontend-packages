@@ -6,6 +6,7 @@ import * as Icons from 'ndla-ui/icons';
 import { Aside, Button, Logo, LayoutItem } from 'ndla-ui';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
+import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 
 const articleHTML = document.createElement('div');
@@ -193,6 +194,7 @@ storiesOf('Enkle komponenter', module)
             <span className="c-article-byline__date">
               <Icons.Time /> Publisert [dato]
             </span>
+            <LicenseExample />
           </div>
         </LayoutItem>
         <LayoutItem layout="center">

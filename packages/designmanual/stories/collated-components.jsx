@@ -89,6 +89,7 @@ storiesOf('Sammensatte moduler', module)
               <span className="c-article-byline__date">
                 <Time /> Sist oppdatert 03.03.2017
               </span>
+              <LicenseExample />
             </div>
           </LayoutItem>
           <LayoutItem layout="center">

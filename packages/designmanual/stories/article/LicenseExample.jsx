@@ -51,9 +51,6 @@ const VideoContent = () =>
           title="Regler for bruk av videoen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til videoen:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -106,9 +103,6 @@ const TextContent = () =>
           title="Regler for bruk av teksten:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til teksten:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -143,9 +137,6 @@ const TextContent = () =>
           title="Regler for bruk av teksten:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til teksten:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -189,9 +180,6 @@ const AudioContent = () =>
           title="Regler for bruk av lydfilen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til lydfilen:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -226,9 +214,6 @@ const AudioContent = () =>
           title="Regler for bruk av lydfilen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til lydfilen:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -280,9 +265,6 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -321,9 +303,6 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -362,9 +341,6 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -403,9 +379,6 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -462,9 +435,6 @@ const H5PContent = () =>
           title="Regler for bruk av H5P-innholdet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til H5P-innholdet:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -516,9 +486,6 @@ const H5PContent = () =>
           title="Regler for bruk av H5P-innholdet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til H5P-innholdet:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -536,98 +503,6 @@ const H5PContent = () =>
                 className="c-button c-button--outline c-licenseToggle__button"
                 type="button">
                 Last ned bilde
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Se del-elementer
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-    </MediaList>
-  </div>;
-
-const LearningPath = () =>
-  <div>
-    <div className="u-introduction">
-      <h2>Slik bruker du Læringssti-innhold fra artikkelen</h2>
-      <p>Klikk på lisensene for å se reglene.</p>
-    </div>
-    <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av læringsstien:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til læringsstien:
-              </h3>
-              <MediaListItemMeta
-                items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Se del-elementer
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av læringsstien:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til læringsstien:
-              </h3>
-              <MediaListItemMeta
-                items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
               </button>
               <button
                 className="c-button c-button--outline c-licenseToggle__button"
@@ -660,9 +535,6 @@ const Files = () =>
           title="Regler for bruk av filen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til filen:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -697,9 +569,6 @@ const Files = () =>
           title="Regler for bruk av filen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til filen:
-              </h3>
               <MediaListItemMeta
                 items={[
                   '12. desember 2014',
@@ -736,7 +605,6 @@ export const LicenseBox = () =>
         { title: 'Video', content: <VideoContent /> },
         { title: 'Lyd', content: <AudioContent /> },
         { title: 'H5P', content: <H5PContent /> },
-        { title: 'Læringssti', content: <LearningPath /> },
         { title: 'Filer', content: <Files /> },
       ]}
     />

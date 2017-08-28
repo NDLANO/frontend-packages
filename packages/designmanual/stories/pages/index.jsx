@@ -119,7 +119,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader />
+        <ArticleLoader closeButton />
       </Content>
       <FooterExample />
     </PageContainer>,

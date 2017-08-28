@@ -91,18 +91,19 @@ export const FigureCaption = ({
           {caption}
         </div>
       : null}
-    <div {...classes('byline')}>
+    <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>
           <span className="article_meta">
             {authors.map(author => author.name).join(', ')}
           </span>
         </LicenseByline>
+        <small className="c-figure__licensetag">{licenseAbbreviation} - {authors.map(author => author.name).join(', ')}</small>
       </div>
       <button className="c-figure__captionbtn">
         {reuseLabel}
       </button>
-    </div>
+    </footer>
   </figcaption>;
 
 FigureCaption.propTypes = {

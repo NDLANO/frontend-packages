@@ -166,7 +166,7 @@ storiesOf('Sammensatte moduler', module)
       </div>
     </Center>,
   )
-  .add('Emne artikkel', () =>
+  .add('Emnebeskrivelse', () =>
     <Center>
       <ArticleLoader articleId="149" reset />
     </Center>

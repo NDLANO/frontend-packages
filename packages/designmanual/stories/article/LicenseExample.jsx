@@ -12,7 +12,6 @@ import Tabs from 'ndla-tabs';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import {
-  Icon,
   ToggleLicenseBox,
   LicenseByline,
   MediaList,
@@ -22,6 +21,7 @@ import {
   MediaListItemImage,
   MediaListItemMeta,
 } from 'ndla-ui';
+import { Document, Audio } from 'ndla-ui/icons';
 
 const VideoContent = () =>
   <div>
@@ -97,7 +97,7 @@ const TextContent = () =>
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
-            <Icon.Document className="c-medialist__icon" />
+            <Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
         <MediaListItemBody
@@ -134,7 +134,7 @@ const TextContent = () =>
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
-            <Icon.Document className="c-medialist__icon" />
+            <Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
         <MediaListItemBody
@@ -180,7 +180,7 @@ const AudioContent = () =>
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
-            <Icon.Audio className="c-medialist__icon" />
+            <Audio className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
         <MediaListItemBody
@@ -217,7 +217,7 @@ const AudioContent = () =>
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
-            <Icon.Audio className="c-medialist__icon" />
+            <Audio className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
         <MediaListItemBody
@@ -651,7 +651,7 @@ const Files = () =>
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
-            <Icon.Document className="c-medialist__icon" />
+            <Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
         <MediaListItemBody
@@ -688,7 +688,7 @@ const Files = () =>
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
-            <Icon.Document className="c-medialist__icon" />
+            <Document className="c-medialist__icon" />
           </a>
         </MediaListItemImage>
         <MediaListItemBody

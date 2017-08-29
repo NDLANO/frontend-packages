@@ -41,6 +41,7 @@
   padding-top: $spacing--small;
   display: flex;
   flex-direction: column-reverse;
+  position: relative;
 }
 .c-figure__captionbtn {
   padding-left: $spacing--small;

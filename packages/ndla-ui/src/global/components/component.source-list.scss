@@ -3,6 +3,8 @@
   border-top: 1px solid $brand-color--tertiary;
   padding-top: $spacing--small;
   margin-top: $spacing--small;
+  vertical-align: middle;
+  align-items: center;
 }
 .c-source-list__item {
   display: flex;

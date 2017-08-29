@@ -12,9 +12,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { BY, NC, ND } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-import LicenseByline from '../license/LicenseByline';
+import ClickableLicenseByline from '../license/ClickableLicenseByline';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -28,7 +28,6 @@ const classLicenses = new BEMHelper({
 export const FigureDetails = ({
   children,
   authors,
-  licenseAbbreviation,
   messages,
 }) =>
   <div {...classes('license')} id="figmeta">
@@ -40,8 +39,8 @@ export const FigureDetails = ({
         <h3 {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <LicenseByline
-          license={getLicenseByAbbreviation(licenseAbbreviation)}
+        <ClickableLicenseByline
+          license={[BY, NC, ND]}
         />
         <a className="c-figure-license__link" href="https://creativecommons.org/licenses/by-nc/4.0/no/legalcode">Lær mer om åpne lisenser</a>
         <div {...classLicenses('cta-wrapper')}>
@@ -92,11 +91,11 @@ export const FigureCaption = ({
       : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline noText license={getLicenseByAbbreviation(licenseAbbreviation)}>
+        <ClickableLicenseByline noText license={[BY, NC, ND]}>
           <span className="article_meta">
             {authors.map(author => author.name).join(', ')}
           </span>
-        </LicenseByline>
+        </ClickableLicenseByline>
         <small className="c-figure__licensetag">{licenseAbbreviation} - {authors.map(author => author.name).join(', ')}</small>
       </div>
       <button className="c-figure__captionbtn">

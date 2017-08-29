@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { BY, NC, ND } from 'ndla-licenses';
-import { LicenseIconList } from '../index';
+import { ClickableLicenseByline } from '../index';
 
 const classes = new BEMHelper({
   name: 'glossary-word',
@@ -66,7 +66,7 @@ class Glossary extends Component {
                 {this.props.definition}
               </p>
               <div {...sourceClasses()}>
-                <LicenseIconList className="c-source-list__item" noText licenseRights={[BY, NC, ND]} />
+                <ClickableLicenseByline className="c-source-list__item" noText license={[BY, NC, ND]} />
                 <span {...sourceClasses('item')}>{this.props.author}</span>
                 <span {...sourceClasses('item')}>{this.props.source}</span>
               </div>

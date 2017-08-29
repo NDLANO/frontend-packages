@@ -92,6 +92,9 @@ export const FigureCaption = ({
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <ClickableLicenseByline noText license={[BY, NC, ND]}>
+          <button className="c-figure__captionbtn">
+            {reuseLabel}
+          </button>
           <span className="article_meta">
             {authors.map(author => author.name).join(', ')}
           </span>
@@ -107,9 +110,6 @@ export const FigureCaption = ({
             Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
           </div>`}} />
       </div>
-      <button className="c-figure__captionbtn">
-        {reuseLabel}
-      </button>
     </footer>
   </figcaption>;
 

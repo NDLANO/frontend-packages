@@ -21,12 +21,22 @@
 }
 
 .license-byline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-
+.article_meta {
+  margin-left: $spacing--small;
+  @include inuit-font-size(14px);
+  border-left: 1px solid $brand-grey--light;
+  padding-left: $spacing--small;
+}
 .license-byline__body {
-  display: none; // Fix better solution
+  display: none;
   margin-right: $spacing--small;
   @include inuit-font-size(13px);
   letter-spacing: 0.05em;
   margin-top: 4px;
+  margin-left: $spacing--small;
+
 }

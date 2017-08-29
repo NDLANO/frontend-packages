@@ -7,6 +7,7 @@
 
 .c-licensebox {
   position: relative;
+  @include inuit-font-size(20px, 32px);
 }
 
 .c-article__license-toggler {

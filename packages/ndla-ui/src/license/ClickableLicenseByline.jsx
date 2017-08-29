@@ -28,7 +28,6 @@ class ClickableLicenseByline extends Component {
     } else {
       this.setState({ selectedLicenseRight: undefined });
     }
-    console.log(licenseRight.description);
   }
 
   render() {
@@ -63,11 +62,7 @@ class ClickableLicenseByline extends Component {
             {license.author}
           </span>
         </div>
-        {children
-          ? <div className="license-byline__body">
-              {children}
-            </div>
-          : null}
+        {children}
       </div>
     );
   }

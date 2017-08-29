@@ -34,10 +34,11 @@ storiesOf('Enkle komponenter', module)
         </section>
         <LayoutItem layout="center">
           <FigureWithLicense
-            caption="Person med mange armer som gjør forskjellige ting samtidig. Foto."
+            authors="Tom Knudsen"
+            caption="Person med mange armer som gjør forskjellige ting samtidig."
             >
             <img
-              alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+              alt="person med mange armer som gjør forskjellige ting samtidig."
               src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
             />
           </FigureWithLicense>

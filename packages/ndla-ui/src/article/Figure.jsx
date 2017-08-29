@@ -97,15 +97,15 @@ export const FigureCaption = ({
           </span>
         </ClickableLicenseByline>
         <div dangerouslySetInnerHTML={{__html:`
-        <div class="c-figure__licensetag" xmlnsCc="http://creativecommons.org/ns" xmlnsDc="http://purl.org/dc/elements/1.1/">
-          <a href="http://ndla.no/nb/node/115785" rel="dc:source">
-            Produksjonsplanlegging
-          </a> av
-          <a href="http://ndla.no/nb/node/12390" rel="dc:creator">
-            ${authors.map(author => author.name).join(', ')}
-          </a>.
-          Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
-        </div>`}} />
+          <div class="c-figure__licensetag" xmlnsCc="http://creativecommons.org/ns" xmlnsDc="http://purl.org/dc/elements/1.1/">
+            <a href="http://ndla.no/nb/node/115785" rel="dc:source">
+              Tittel
+            </a> av
+            <a href="http://ndla.no/nb/node/12390" rel="dc:creator">
+              ${authors.map(author => author.name).join(', ')}
+            </a>.
+            Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
+          </div>`}} />
       </div>
       <button className="c-figure__captionbtn">
         {reuseLabel}

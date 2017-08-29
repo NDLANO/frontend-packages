@@ -35,6 +35,12 @@
     flex-grow: 1;
   }
 }
+.c-article-byline__licenses {
+  margin-right: $spacing--small;
+  flex-wrap: wrap;
+  width: 110px;
+  flex-direction: row !important;
+}
 .c-article-byline__additional {
   margin-bottom: $spacing--small;
   @include mq(tablet) {

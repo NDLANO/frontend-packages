@@ -29,11 +29,12 @@ export default () =>
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__flex">
+
             <span className="c-article-byline__icon">
               <User />
             </span>
             <span className="c-article-byline__authors">
-              Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Ola Nordnes, Kari Nordnes, Jon Nordgubbe. <br />(BY-NC-ND)
             </span>
           </span>
           <span className="c-article-byline__flex">

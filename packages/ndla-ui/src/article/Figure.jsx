@@ -50,6 +50,7 @@ export const FigureDetails = ({
                 key={uuid()}
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
             )}
+            <li>Kilde: <a href="http://www.wikimedia.org">Wikimedia</a></li>
           </ul>
           {children
             ? <div {...classLicenses('cta-block')}>

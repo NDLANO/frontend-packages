@@ -38,6 +38,7 @@
   padding-top: $spacing;
   z-index: 10;
   color: $black;
+  box-shadow: 0 0 30px rgba($black, .2);
   div {
     animation-name: fadeInLeft;
     animation-duration: .5s;

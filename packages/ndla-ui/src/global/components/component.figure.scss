@@ -33,6 +33,7 @@
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
   }
+  transition: transform .2s, width .2s, height .2s;
 }
 
 /* 2. */

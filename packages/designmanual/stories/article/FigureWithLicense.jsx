@@ -13,7 +13,7 @@ import {
   addShowFigureDetailsClickListeners,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import { Button, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
 const authors = [
   { type: 'Opphavsmann', name: 'Fotograf Gary Waters' },
@@ -21,9 +21,22 @@ const authors = [
 ];
 
 class FigureWithLicense extends Component {
+  constructor(props) {
+    super(props);
+    this.update= this.update.bind(this);
+    this.state = {
+        active: false,
+    };
+  }
+
   componentDidMount() {
     addShowFigureDetailsClickListeners();
     addCloseFigureDetailsClickListeners();
+  }
+
+  update() {
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
   }
 
   render() {
@@ -36,9 +49,11 @@ class FigureWithLicense extends Component {
                 solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
                 med en hvit og en svart halvdel.`;
     return (
-      <Figure className={`c-figure ${this.props.classes}`}>
+      <Figure className={this.state.active ? `c-figure` : `c-figure ${this.props.classes}`}>
         <div className="c-figure__img">
-          {this.props.children}
+          <Button stripped className="u-fullw" onClick={() => this.update()}>
+            {this.props.children}
+          </Button>
         </div>
         <FigureCaption
           caption={caption}

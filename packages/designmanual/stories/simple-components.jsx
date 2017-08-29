@@ -3,7 +3,8 @@ import React, { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
-import { Aside, Button, Logo, LayoutItem } from 'ndla-ui';
+import { BY, NC, ND } from 'ndla-licenses';
+import { Aside, Button, Logo, LayoutItem, LicenseIconList } from 'ndla-ui';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
@@ -93,7 +94,13 @@ storiesOf('Enkle komponenter', module)
           </p>
           <LayoutItem layout="full">
             <div className="c-bodybox c-bodybox--extended">
-              En tekstboks som fyller spaltebredden.
+              <p>En tekstboks som fyller spaltebredden.</p>
+              <p>En tekstboks med eksternt innhold kan også ha lisensiering av innholdet.</p>
+              <div className="c-source-list">
+                <LicenseIconList className="c-source-list__item" noText licenseRights={[BY, NC, ND]} />
+                <span className="c-source-list__item">Gary Waters</span>
+                <span className="c-source-list__item">Kilde: SNL.no</span>
+              </div>
             </div>
           </LayoutItem>
           <p>

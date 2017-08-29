@@ -16,6 +16,10 @@ const classes = new BEMHelper({
   name: 'glossary-word',
   prefix: 'c-',
 });
+const sourceClasses = new BEMHelper({
+  name: 'source-list',
+  prefix: 'c-',
+});
 
 class Glossary extends Component {
   constructor(props) {
@@ -61,10 +65,10 @@ class Glossary extends Component {
               <p {...classes('description')}>
                 {this.props.definition}
               </p>
-              <div {...classes('footer')}>
-                <LicenseIconList noText licenseRights={[BY, NC, ND]} />
-                <span {...classes('author')}>{this.props.author}</span>
-                <span {...classes('source')}>{this.props.source}</span>
+              <div {...sourceClasses()}>
+                <LicenseIconList className="c-source-list__item" noText licenseRights={[BY, NC, ND]} />
+                <span {...sourceClasses('item')}>{this.props.author}</span>
+                <span {...sourceClasses('item')}>{this.props.source}</span>
               </div>
             </div>
           : null}

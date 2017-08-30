@@ -99,10 +99,10 @@ const pd = {
 const cc0 = {
   short: CC0,
   nb: {
-    title: 'Gitt det offentlige',
-    userFriendlyTitle: 'Gitt det offentlige',
+    title: 'Gitt til fellesskapet',
+    userFriendlyTitle: 'Gitt til fellesskapet',
     description:
-      'Verket er gitt til fellesskapet og Opphavspersonen frasier seg alle rettigheter, også navngivelse.',
+      'Du kan bruke innholdet fritt, den som har laget det har sagt fra seg sine rettigheter.',
   },
   en: {
     title: 'Public Domain Dedication',

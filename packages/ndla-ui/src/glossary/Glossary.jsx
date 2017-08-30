@@ -66,9 +66,17 @@ class Glossary extends Component {
                 {this.props.definition}
               </p>
               <div {...sourceClasses()}>
-                <ClickableLicenseByline className="c-source-list__item" noText license={[BY, NC, ND]} />
-                <span {...sourceClasses('item')}>{this.props.author}</span>
-                <span {...sourceClasses('item')}>{this.props.source}</span>
+                <ClickableLicenseByline
+                  className="c-source-list__item"
+                  noText
+                  license={[BY, NC, ND]}
+                />
+                <span {...sourceClasses('item')}>
+                  {this.props.author}
+                </span>
+                <span {...sourceClasses('item')}>
+                  {this.props.source}
+                </span>
               </div>
             </div>
           : null}

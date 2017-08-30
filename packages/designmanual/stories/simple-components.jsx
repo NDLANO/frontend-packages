@@ -4,7 +4,13 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
 import { BY, NC, ND } from 'ndla-licenses';
-import { Aside, Button, Logo, LayoutItem, ClickableLicenseByline } from 'ndla-ui';
+import {
+  Aside,
+  Button,
+  Logo,
+  LayoutItem,
+  ClickableLicenseByline,
+} from 'ndla-ui';
 import article from '../dummydata/index';
 import { Center, InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
@@ -35,8 +41,7 @@ storiesOf('Enkle komponenter', module)
         <LayoutItem layout="center">
           <FigureWithLicense
             authors="Tom Knudsen"
-            caption="Person med mange armer som gjør forskjellige ting samtidig."
-            >
+            caption="Person med mange armer som gjør forskjellige ting samtidig.">
             <img
               alt="person med mange armer som gjør forskjellige ting samtidig."
               src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
@@ -96,9 +101,16 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="full">
             <div className="c-bodybox c-bodybox--extended">
               <p>En tekstboks som fyller spaltebredden.</p>
-              <p>En tekstboks med eksternt innhold kan også ha lisensiering av innholdet.</p>
+              <p>
+                En tekstboks med eksternt innhold kan også ha lisensiering av
+                innholdet.
+              </p>
               <div className="c-source-list">
-                <ClickableLicenseByline className="c-source-list__item" noText license={[BY, NC, ND]} />
+                <ClickableLicenseByline
+                  className="c-source-list__item"
+                  noText
+                  license={[BY, NC, ND]}
+                />
                 <span className="c-source-list__item">Gary Waters</span>
                 <span className="c-source-list__item">Kilde: SNL.no</span>
               </div>
@@ -256,7 +268,11 @@ storiesOf('Enkle komponenter', module)
                 innhold er brukt.
               </p>
               <div className="c-source-list">
-                <ClickableLicenseByline className="c-source-list__item" noText license={[BY, NC, ND]} />
+                <ClickableLicenseByline
+                  className="c-source-list__item"
+                  noText
+                  license={[BY, NC, ND]}
+                />
                 <span className="c-source-list__item">Gary Waters</span>
                 <span className="c-source-list__item">Kilde: SNL.no</span>
               </div>
@@ -423,9 +439,9 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="center">
             <h1 className="u-heading">Logo</h1>
             <p>
-              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy
-              for kommunikasjon. Den skal inspirere målgruppen elever og lærere
-              i videregående opplæring og gjøre dem nysgjerrige på NDLA.
+              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for
+              kommunikasjon. Den skal inspirere målgruppen elever og lærere i
+              videregående opplæring og gjøre dem nysgjerrige på NDLA.
             </p>
             <p>
               Logoen består av navnet NDLA i en spesiell typografi og bør

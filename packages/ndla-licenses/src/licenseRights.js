@@ -25,8 +25,7 @@ const by = {
   nb: {
     title: 'Navngivelse',
     userFriendlyTitle: 'Navngivelse',
-    description:
-      'Du må alltid oppgi hvem som har laget innholdet.',
+    description: 'Du må alltid oppgi hvem som har laget innholdet.',
   },
   en: {
     title: 'Attribution',
@@ -71,8 +70,7 @@ const nd = {
   nb: {
     title: 'Ingen bearbeiding',
     userFriendlyTitle: 'Ingen bearbeiding',
-    description:
-      'Du kan ikke endre innholdet.',
+    description: 'Du kan ikke endre innholdet.',
   },
   en: {
     title: 'NO DERIVES',
@@ -86,8 +84,7 @@ const pd = {
   nb: {
     title: 'Offentlig eiendom',
     userFriendlyTitle: 'Offentlig eiendom',
-    description:
-      'Innholdet er så gammelt at du kan bruke det som du vil.',
+    description: 'Innholdet er så gammelt at du kan bruke det som du vil.',
   },
   en: {
     title: 'Public Domain',

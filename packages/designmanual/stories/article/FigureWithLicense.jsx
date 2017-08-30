@@ -23,9 +23,9 @@ const authors = [
 class FigureWithLicense extends Component {
   constructor(props) {
     super(props);
-    this.update= this.update.bind(this);
+    this.update = this.update.bind(this);
     this.state = {
-        active: false,
+      active: false,
     };
   }
 
@@ -45,11 +45,16 @@ class FigureWithLicense extends Component {
       rulesForUse: 'Regler for bruk av bildet',
       howToReference: 'Slik skal du referere til dette bildet',
     };
-    const caption = this.props.caption ? this.props.caption : `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
+    const caption = this.props.caption
+      ? this.props.caption
+      : `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
                 solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
                 med en hvit og en svart halvdel.`;
     return (
-      <Figure className={this.state.active ? `c-figure` : `c-figure ${this.props.classes}`}>
+      <Figure
+        className={
+          this.state.active ? `c-figure` : `c-figure ${this.props.classes}`
+        }>
         <div className="c-figure__img">
           <Button stripped className="u-fullw" onClick={() => this.update()}>
             {this.props.children}
@@ -84,7 +89,7 @@ class FigureWithLicense extends Component {
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.string,
-  caption: PropTypes.string
+  caption: PropTypes.string,
 };
 
 export default FigureWithLicense;

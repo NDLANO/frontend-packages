@@ -25,11 +25,7 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({
-  children,
-  authors,
-  messages,
-}) =>
+export const FigureDetails = ({ children, authors, messages }) =>
   <div {...classes('license')} id="figmeta">
     <button {...classes('close')}>
       {messages.close}
@@ -39,10 +35,12 @@ export const FigureDetails = ({
         <h3 {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <ClickableLicenseByline
-          license={[BY, NC, ND]}
-        />
-        <a className="c-figure-license__link" href="https://creativecommons.org/licenses/by-nc/4.0/no/legalcode">Lær mer om åpne lisenser</a>
+        <ClickableLicenseByline license={[BY, NC, ND]} />
+        <a
+          className="c-figure-license__link"
+          href="https://creativecommons.org/licenses/by-nc/4.0/no/legalcode">
+          Lær mer om åpne lisenser
+        </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
             {authors.map(author =>
@@ -50,7 +48,9 @@ export const FigureDetails = ({
                 key={uuid()}
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
             )}
-            <li>Kilde: <a href="http://www.wikimedia.org">Wikimedia</a></li>
+            <li>
+              Kilde: <a href="http://www.wikimedia.org">Wikimedia</a>
+            </li>
           </ul>
           {children
             ? <div {...classLicenses('cta-block')}>
@@ -100,7 +100,9 @@ export const FigureCaption = ({
             {authors.map(author => author.name).join(', ')}
           </span>
         </ClickableLicenseByline>
-        <div dangerouslySetInnerHTML={{__html:`
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
           <div class="c-figure__licensetag" xmlnsCc="http://creativecommons.org/ns" xmlnsDc="http://purl.org/dc/elements/1.1/">
             <a href="http://ndla.no/nb/node/115785" rel="dc:source">
               Tittel
@@ -109,7 +111,9 @@ export const FigureCaption = ({
               ${authors.map(author => author.name).join(', ')}
             </a>.
             Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
-          </div>`}} />
+          </div>`,
+          }}
+        />
       </div>
     </footer>
   </figcaption>;

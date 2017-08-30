@@ -29,7 +29,6 @@ export default () =>
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__flex">
-
             <span className="c-article-byline__icon">
               <User />
             </span>
@@ -63,9 +62,7 @@ export default () =>
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense
-          caption="Person med mange armer som gjør forskjellige ting samtidig. "
-        >
+        <FigureWithLicense caption="Person med mange armer som gjør forskjellige ting samtidig. ">
           <img
             alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
             src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"

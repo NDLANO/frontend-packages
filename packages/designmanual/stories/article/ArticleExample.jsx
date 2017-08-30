@@ -15,7 +15,7 @@ import LicenseExample from './LicenseExample';
 
 const ArticleExample = ({ article, withLicenseExample, notitle, reset }) =>
   <OneColumn cssModifier="narrow">
-    <article className={reset ? "c-article c-article--clean" : "c-article"}>
+    <article className={reset ? 'c-article c-article--clean' : 'c-article'}>
       <LayoutItem layout="center">
         {notitle
           ? null

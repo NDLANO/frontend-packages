@@ -25,11 +25,7 @@ import { Time, User } from 'ndla-ui/icons';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
-import {
-  topicList,
-  subjectList,
-  articleResources,
-} from '../dummydata/index';
+import { topicList, subjectList, articleResources } from '../dummydata/index';
 import {
   MastheadLeftRight,
   MastheadWithTopicMenu,
@@ -117,8 +113,7 @@ storiesOf('Sammensatte moduler', module)
                 </p>
                 <FigureWithLicense
                   caption="Liten jente holder sine foreldres hender. Foto."
-                  classes="article_figure--float-right"
-                  >
+                  classes="article_figure--float-right">
                   <img
                     alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
@@ -170,7 +165,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Emnebeskrivelse', () =>
     <Center>
       <ArticleLoader articleId="149" reset />
-    </Center>
+    </Center>,
   )
   .add('Emner liste', () =>
     <Center>
@@ -248,7 +243,9 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseIconList licenseRights={[BY, SA, NC, ND, PD, CC0, CC, COPY]} />
+          <LicenseIconList
+            licenseRights={[BY, SA, NC, ND, PD, CC0, CC, COPY]}
+          />
         </div>
       </LayoutItem>
       <LayoutItem layout="center">

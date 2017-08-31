@@ -12,8 +12,6 @@ RUN yarn
 COPY packages $APP_PATH/packages
 COPY scripts $APP_PATH/scripts
 
-RUN yarn postinstall
-
 WORKDIR $APP_PATH
 RUN yarn run build-storybook
 EXPOSE 5000

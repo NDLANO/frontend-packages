@@ -97,7 +97,7 @@ export const FigureCaption = ({
             {reuseLabel}
           </button>
           <span className="article_meta">
-            {authors.map(author => author.name).join(', ')}
+            Gary Waters
           </span>
         </ClickableLicenseByline>
         <div

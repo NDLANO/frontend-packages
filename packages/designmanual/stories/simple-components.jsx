@@ -211,7 +211,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-article-byline">
             <span className="c-article-byline__authors">
-              <Icons.User /> [Opphavsperson].
+              <Icons.User /> [Opphavsperson]. [lisens]
             </span>{' '}
             <span className="c-article-byline__date">
               <Icons.Time /> Publisert [dato]

@@ -40,11 +40,12 @@ storiesOf('Enkle komponenter', module)
         </section>
         <LayoutItem layout="center">
           <FigureWithLicense
-            authors="Tom Knudsen"
-            caption="Person med mange armer som gjør forskjellige ting samtidig.">
+            authors=""
+            caption=""
+            >
             <img
-              alt="person med mange armer som gjør forskjellige ting samtidig."
-              src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
             />
           </FigureWithLicense>
         </LayoutItem>
@@ -74,7 +75,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-article-byline">
             <span className="c-article-byline__authors">
-              <Icons.User /> [Opphavsperson].
+              <Icons.User /> [Opphavsperson]. [lisens]
             </span>{' '}
             <span className="c-article-byline__date">
               <Icons.Time /> Publisert [dato]

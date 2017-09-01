@@ -99,7 +99,7 @@ const cc0 = {
     title: 'Gitt til fellesskapet',
     userFriendlyTitle: 'Gitt til fellesskapet',
     description:
-      'Du kan bruke innholdet fritt, den som har laget det har sagt fra seg sine rettigheter.',
+      'Du kan bruke innholdet fritt.',
   },
   en: {
     title: 'Public Domain Dedication',
@@ -115,7 +115,7 @@ const copy = {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
     description:
-      'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet. Innholdet kan ikke deles.',
+      'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.',
   },
   en: {
     title: 'Copyright',

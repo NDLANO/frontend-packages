@@ -21,6 +21,7 @@ storiesOf('Lisensgivning', module).add('Lisenstekster', () =>
     <article className="o-wrapper--narrow">
       <section className="c-factbox">
         <h1 className="u-heading">Lisenstekster</h1>
+        <p>Lisenstekster og merking</p>
       </section>
       <section>
         {licenses.map(license =>

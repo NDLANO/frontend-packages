@@ -112,10 +112,11 @@ storiesOf('Sammensatte moduler', module)
                   mellom godt og ondt, og rett og galt.
                 </p>
                 <FigureWithLicense
-                  caption="Liten jente holder sine foreldres hender. Foto."
-                  classes="article_figure--float-right">
+                  caption=""
+                  classes="article_figure--float-right"
+                  >
                   <img
-                    alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
+                    alt="Liten jente holder sine foreldres hender. Foto."
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
                   />
                 </FigureWithLicense>
@@ -241,7 +242,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Lisens-ikoner', () =>
     <Center>
       <LayoutItem layout="center">
-        <h2 className="u-heading">Lisens-ikoner med beskrivelse</h2>
+        <h2 className="u-heading">Lisens-ikoner og merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
           <LicenseIconList
             licenseRights={[BY, SA, NC, ND, PD, CC0, CC, COPY]}
@@ -250,7 +251,7 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
-        <FigureWithLicense caption="Mediedokumentar om nyheter og nyhetskriterier.">
+        <FigureWithLicense caption="Mediedokumentar om nyheter og nyhetskriterier." reuseLabel="videoen" typeLabel="video">
           <iframe
             title="Youtube"
             width="480"

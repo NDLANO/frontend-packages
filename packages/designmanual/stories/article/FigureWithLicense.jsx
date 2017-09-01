@@ -45,11 +45,9 @@ class FigureWithLicense extends Component {
       rulesForUse: 'Regler for bruk av bildet',
       howToReference: 'Slik skal du referere til dette bildet',
     };
-    const caption = this.props.caption
-      ? this.props.caption
-      : `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
-                solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
-                med en hvit og en svart halvdel.`;
+    const caption = this.props.caption ? this.props.caption : ``;
+    const reuseLabel = this.props.reuseLabel ? `Bruk ${this.props.reuseLabel}` : 'Bruk bildet';
+    const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
     return (
       <Figure
         className={
@@ -62,7 +60,7 @@ class FigureWithLicense extends Component {
         </div>
         <FigureCaption
           caption={caption}
-          reuseLabel="Bruk bildet"
+          reuseLabel={reuseLabel}
           licenseAbbreviation="by-nc-nd"
           authors={authors}
         />
@@ -78,7 +76,7 @@ class FigureWithLicense extends Component {
           <button
             className="c-button c-button--outline c-figure-license__button"
             type="button">
-            Last ned bilde
+            Last ned {typeLabel}
           </button>
         </FigureDetails>
       </Figure>
@@ -90,6 +88,8 @@ FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.string,
   caption: PropTypes.string,
+  reuseLabel: PropTypes.string,
+  typeLabel: PropTypes.string,
 };
 
 export default FigureWithLicense;

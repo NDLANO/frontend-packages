@@ -37,7 +37,7 @@ const by = {
 const sa = {
   short: SA,
   nb: {
-    title: 'Share Alike',
+    title: 'Del på samme vilkår',
     userFriendlyTitle: 'Del på samme vilkår',
     description:
       'Du kan bare dele innholdet med samme lisens som det opprinnelige innholdet.',
@@ -131,7 +131,7 @@ const cc = {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',
     description:
-      'Denne lisensen gir deg rett til å dele og bruke dette innholdet på disse vilkår:',
+      'Denne lisensen gir deg rett til å dele og bruke dette innholdet på visse vilkår.',
   },
   en: {
     title: 'Creative Commons',

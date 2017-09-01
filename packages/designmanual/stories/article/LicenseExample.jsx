@@ -28,8 +28,7 @@ const VideoContent = () =>
     <div className="u-introduction">
       <h2>Slik bruker du videoer fra artikkelen</h2>
       <p>
-        Husk å kopier teksten som skal
-        legges ved videoen der du bruker den.
+        Husk å kopier teksten som skal legges ved videoen der du bruker den.
       </p>
     </div>
     <MediaList>
@@ -162,9 +161,9 @@ const AudioContent = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du lydfiler</h2>
-        <p>
-          Husk å kopier teksten som skal legges ved lydfilen der du bruker den.
-        </p>
+      <p>
+        Husk å kopier teksten som skal legges ved lydfilen der du bruker den.
+      </p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -239,8 +238,7 @@ const ImageContent = () =>
     <div className="u-introduction">
       <h2>Slik bruker du bilder fra artikkelen</h2>
       <p className="article-introduction">
-        Husk å kopier teksten som skal
-        legges ved bildet der du bruker det.
+        Husk å kopier teksten som skal legges ved bildet der du bruker det.
       </p>
     </div>
     <MediaList>
@@ -400,7 +398,9 @@ const H5PContent = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
-      <p>Klikk på «Se del-elementer» for å se lisens for hvert enkelt element.</p>
+      <p>
+        Klikk på «Se del-elementer» for å se lisens for hvert enkelt element.
+      </p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -518,7 +518,9 @@ const Files = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du filer fra artikkelen</h2>
-      <p>Husk å kopier teksten som skal legges ved lydfilen der du bruker den.</p>
+      <p>
+        Husk å kopier teksten som skal legges ved lydfilen der du bruker den.
+      </p>
     </div>
     <MediaList>
       <MediaListItem>

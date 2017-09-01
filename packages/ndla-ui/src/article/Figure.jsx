@@ -35,10 +35,12 @@ export const FigureDetails = ({ children, authors, messages }) =>
         <h3 {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <ClickableLicenseByline
-          license={[BY, NC, ND]}
-        />
-      <a className="c-figure-license__link" href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">Lær mer om åpne lisenser</a>
+        <ClickableLicenseByline license={[BY, NC, ND]} />
+        <a
+          className="c-figure-license__link"
+          href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
+          Lær mer om åpne lisenser
+        </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
             {authors.map(author =>
@@ -94,9 +96,7 @@ export const FigureCaption = ({
           <button className="c-figure__captionbtn">
             {reuseLabel}
           </button>
-          <span className="article_meta">
-            Gary Waters
-          </span>
+          <span className="article_meta">Gary Waters</span>
         </ClickableLicenseByline>
         <div
           dangerouslySetInnerHTML={{

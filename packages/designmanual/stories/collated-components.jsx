@@ -113,8 +113,7 @@ storiesOf('Sammensatte moduler', module)
                 </p>
                 <FigureWithLicense
                   caption=""
-                  classes="article_figure--float-right"
-                  >
+                  classes="article_figure--float-right">
                   <img
                     alt="Liten jente holder sine foreldres hender. Foto."
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
@@ -251,7 +250,10 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
-        <FigureWithLicense caption="Mediedokumentar om nyheter og nyhetskriterier." reuseLabel="videoen" typeLabel="video">
+        <FigureWithLicense
+          caption="Mediedokumentar om nyheter og nyhetskriterier."
+          reuseLabel="videoen"
+          typeLabel="video">
           <iframe
             title="Youtube"
             width="480"

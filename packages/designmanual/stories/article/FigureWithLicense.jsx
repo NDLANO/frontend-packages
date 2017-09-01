@@ -46,7 +46,9 @@ class FigureWithLicense extends Component {
       howToReference: 'Slik skal du referere til dette bildet',
     };
     const caption = this.props.caption ? this.props.caption : ``;
-    const reuseLabel = this.props.reuseLabel ? `Bruk ${this.props.reuseLabel}` : 'Bruk bildet';
+    const reuseLabel = this.props.reuseLabel
+      ? `Bruk ${this.props.reuseLabel}`
+      : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
     return (
       <Figure

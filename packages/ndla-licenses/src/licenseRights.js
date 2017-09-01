@@ -98,8 +98,7 @@ const cc0 = {
   nb: {
     title: 'Gitt til fellesskapet',
     userFriendlyTitle: 'Gitt til fellesskapet',
-    description:
-      'Du kan bruke innholdet fritt.',
+    description: 'Du kan bruke innholdet fritt.',
   },
   en: {
     title: 'Public Domain Dedication',

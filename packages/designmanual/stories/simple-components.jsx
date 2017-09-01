@@ -287,6 +287,7 @@ storiesOf('Enkle komponenter', module)
               'Download',
               'Embed',
               'FactBox',
+              'FocalPoint',
               'Grid',
               'Heading1',
               'Heading2',

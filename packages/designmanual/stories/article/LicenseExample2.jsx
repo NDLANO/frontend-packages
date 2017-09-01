@@ -25,7 +25,7 @@ const VideoContent = () =>
   <div>
     <h2>Slik bruker du videoer fra artikkelen</h2>
     <p>
-      Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges
+      Husk å kopier teksten som skal legges
       ved bildet der du bruker det.
     </p>
     <ul className="c-medialist">
@@ -196,7 +196,7 @@ const ImageContent = () =>
   <div>
     <h2>Slik bruker du bilder fra artikkelen</h2>
     <p>
-      Klikk på lisensene for å se reglene. Husk å kopier teksten som skal legges
+      Husk å kopier teksten som skal legges
       ved bildet der du bruker det.
     </p>
     <ul className="c-medialist">

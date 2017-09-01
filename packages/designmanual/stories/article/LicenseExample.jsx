@@ -28,8 +28,8 @@ const VideoContent = () =>
     <div className="u-introduction">
       <h2>Slik bruker du videoer fra artikkelen</h2>
       <p>
-        Klikk på lisensene for å se reglene. Husk å kopier teksten som skal
-        legges ved bildet der du bruker det.
+        Husk å kopier teksten som skal
+        legges ved videoen der du bruker den.
       </p>
     </div>
     <MediaList>
@@ -85,7 +85,7 @@ const TextContent = () =>
       <h2>Slik bruker du tekst fra artikkelen</h2>
       <p>
         Artikkelen kan være satt sammen av flere ulike tekster, som listes opp
-        her. Klikk på lisensene for å se reglene for hver enkelt del.
+        her.
       </p>
     </div>
     <MediaList>
@@ -105,6 +105,7 @@ const TextContent = () =>
                 items={[
                   'Opphavsmann: Ola Nordmann',
                   'Rettighetshaver: Leverandør NTB scanpix',
+                  'Publiseringsdato: 12.05.13',
                 ]}
               />
               <button
@@ -137,6 +138,7 @@ const TextContent = () =>
                 items={[
                   'Opphavsmann: Ola Nordmann',
                   'Rettighetshaver: Leverandør NTB scanpix',
+                  'Publiseringsdato: 12.05.13',
                 ]}
               />
               <button
@@ -160,6 +162,9 @@ const AudioContent = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du lydfiler</h2>
+        <p>
+          Husk å kopier teksten som skal legges ved lydfilen der du bruker den.
+        </p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -234,7 +239,7 @@ const ImageContent = () =>
     <div className="u-introduction">
       <h2>Slik bruker du bilder fra artikkelen</h2>
       <p className="article-introduction">
-        Klikk på lisensene for å se reglene. Husk å kopier teksten som skal
+        Husk å kopier teksten som skal
         legges ved bildet der du bruker det.
       </p>
     </div>
@@ -379,6 +384,11 @@ const ImageContent = () =>
                 type="button">
                 Last ned bilde
               </button>
+              <button
+                className="c-button c-button--outline c-licenseToggle__button"
+                type="button">
+                Se del-elementer
+              </button>
             </div>
           </MediaListItemActions>
         </MediaListItemBody>
@@ -390,7 +400,7 @@ const H5PContent = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
-      <p>Klikk på lisensene for å se reglene.</p>
+      <p>Klikk på «Se del-elementer» for å se lisens for hvert enkelt element.</p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -432,6 +442,11 @@ const H5PContent = () =>
                 className="c-button c-button--outline c-licenseToggle__button"
                 type="button">
                 Last ned bilde
+              </button>
+              <button
+                className="c-button c-button--outline c-licenseToggle__button"
+                type="button">
+                Bygg inn
               </button>
               <button
                 className="c-button c-button--outline c-licenseToggle__button"
@@ -485,6 +500,11 @@ const H5PContent = () =>
               <button
                 className="c-button c-button--outline c-licenseToggle__button"
                 type="button">
+                Bygg inn
+              </button>
+              <button
+                className="c-button c-button--outline c-licenseToggle__button"
+                type="button">
                 Se del-elementer
               </button>
             </div>
@@ -498,7 +518,7 @@ const Files = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du filer fra artikkelen</h2>
-      <p>Klikk på lisensene for å se reglene.</p>
+      <p>Husk å kopier teksten som skal legges ved lydfilen der du bruker den.</p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -582,10 +602,6 @@ export const LicenseBox = () =>
         { title: 'Filer', content: <Files /> },
       ]}
     />
-    <p>
-      Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til
-      dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no.
-    </p>
   </div>;
 
 const LicenseExample = ({ showByline }) =>

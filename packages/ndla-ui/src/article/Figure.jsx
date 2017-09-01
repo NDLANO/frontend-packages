@@ -93,10 +93,10 @@ export const FigureCaption = ({
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <ClickableLicenseByline noText license={[BY, NC, ND]}>
+          <span className="article_meta">Gary Waters</span>
           <button className="c-figure__captionbtn">
             {reuseLabel}
           </button>
-          <span className="article_meta">Gary Waters</span>
         </ClickableLicenseByline>
         <div
           dangerouslySetInnerHTML={{

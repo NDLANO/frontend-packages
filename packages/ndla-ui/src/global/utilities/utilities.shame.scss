@@ -28,8 +28,8 @@
 .article_meta {
   margin-left: $spacing--small;
   @include inuit-font-size(14px);
-  border-left: 1px solid $brand-grey--light;
-  padding-left: $spacing--small;
+  border-right: 1px solid $brand-grey--light;
+  padding-right: $spacing--small;
 }
 .license-byline__body {
   display: none;

@@ -338,4 +338,39 @@ storiesOf('Emnesider', module)
       </Content>
       <FooterExample />
     </PageContainer>,
+  )
+  .add('Last inn emne', () =>
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
+        <LayoutItem layout="extend">
+          <ArticleLoader articleId="" closeButton />
+          <div className="u-padding-bottom-huge" />
+        </LayoutItem>
+        <OneColumn>
+          <article className="c-article">
+            <LayoutItem layout="extend">
+              <RelatedArticles resources={articleResources} />
+              <ResourceSubsetList />
+            </LayoutItem>
+          </article>
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>,
   );

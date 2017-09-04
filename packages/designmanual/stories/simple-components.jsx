@@ -287,6 +287,38 @@ storiesOf('Enkle komponenter', module)
       </article>
     </Center>,
   )
+  .add('Kildehenvisninger', () =>
+    <Center>
+      <article>
+        <section className="c-factbox">
+          <LayoutItem layout="center">
+            <h1 className="u-heading">Kildehenvisninger</h1>
+            <p>
+              Kildehenvisninger benytter <a href="http://sokogskriv.no/kildebruk-og-referanser/referansestiler/chicago-fotnoter/">Chicago 16-stilen</a>.
+            </p>
+            <p>I teksten brukes en enkel nummerering for å henvise til referanse, og tallet lenkes til den aktuelle referansen.</p>
+            <p>I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten.</p>
+          </LayoutItem>
+        </section>
+        <LayoutItem layout="center">
+          <p>Målgruppen for Hansaspillet er både fastboende og turister.<sup id="ref1">[<a href="#1">1</a>]</sup></p>
+          <p>Forfatteren, komponisten og musikeren foreslo flere samarbeidsprosjekter for å løfte frem Munchs ukjente tekstarv.<sup id="ref2">[<a href="#2">2</a>]</sup></p>
+          <ol className="c-footnotes">
+            <li className="c-footnotes__item">
+              <cite className="c-footnotes__cite" id="1"><sup><a href="#ref1">1</a></sup> Røyrane, «Hanseatene kommer tilbake».
+              Røyrane, Eva. «Hanseatene kommer tilbake.» Bergens Tidende. 11.05.2003. <a href="http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html">http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html</a>.
+              </cite>
+            </li>
+            <li className="c-footnotes__item">
+              <cite className="c-footnotes__cite" id="2"><sup><a href="#ref2">2</a></sup> Nærø, «Ketil Bjørnstad.»
+Nærø, Sturle Scholz. «Ingen tok Ketil Bjørnstad på alvor.» Aftenposten. 25.01.2013.
+              </cite>
+            </li>
+         </ol>
+        </LayoutItem>
+      </article>
+    </Center>,
+  )
   .add('Ikoner', () =>
     <Center>
       <section className="c-factbox">

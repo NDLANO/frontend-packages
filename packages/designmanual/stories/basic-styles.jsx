@@ -383,9 +383,10 @@ storiesOf('Grunnstiler', module)
               <a>Lenker</a> på <a href="//ndla.no">ndla.no</a> bruker den
               vanlige konvensjonen med underlinje. Lenker skal i hovedsak åpne i
               samme vindu, (det vil si, bruke{' '}
-              <code>target=&quot;_self&quot;</code>) eller ingen target-attributt, med mindre den inngår i
-              et skjema, eller i en læringssammenhengen hvor det er nødvendig at
-              brukeren beholder vinduet eller fanen man står i.
+              <code>target=&quot;_self&quot;</code>) eller ingen
+              target-attributt, med mindre den inngår i et skjema, eller i en
+              læringssammenhengen hvor det er nødvendig at brukeren beholder
+              vinduet eller fanen man står i.
             </p>
             <p>
               Lenker kan enten være eksterne, interne eller vise til innhold på

@@ -7,20 +7,19 @@
   position: relative;
 
   details {
-    border-top: 3px solid $brand-grey--lighter;
+    border-top: 2px solid $brand-color--light;
     margin-top: 5px;
   }
 }
 .c-collate__panel {
   position: relative;
   transition: all 200ms ease-in;
-  background-color: $background-color--dark;
   max-height: 0;
   overflow: hidden;
   transition: max-height .4s cubic-bezier(1, 1.05, 0, 1);
   transition: padding .1s;
   padding: 0;
-  background-color: $background-color--dark;
+  background-color: $brand-color--lighter;
   height: 0;
 }
 .c-collate__panel--expanded {
@@ -28,7 +27,6 @@
   max-height: 100vh;
   overflow: visible;
   height: auto;
-  box-shadow: inset 1px 1px 5px $background-color--darker;
 
   + .c-collate__article {
     background: $background-color--darker;
@@ -41,6 +39,8 @@
   top: 0;
   left: 0;
   transform: translateX(-$spacing * 1.5) translateY($spacing);
+  cursor: pointer;
+  
 
   &:hover,
   &:focus {

@@ -408,9 +408,7 @@ storiesOf('Sammensatte moduler', module)
               </svg>
             </div>
             <div className="c-collate__panel">
-              <LayoutItem layout="center">
                 <p>Innhold her</p>
-              </LayoutItem>
               <h3>Utfordringer til deg:</h3>
               <details>
                 <summary>Utfordringer</summary>

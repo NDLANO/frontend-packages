@@ -18,7 +18,7 @@ const toLink = () => ({
   href: '#',
 });
 
-const resourceGroup1 = {
+const resourceGroup2 = {
   id: 'urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73',
   title: 'Lærestoff',
   description: 'Relaterte emneartikler',
@@ -27,7 +27,7 @@ const resourceGroup1 = {
   icon: 'Document',
   type: 'Lærestoff',
 };
-const resourceGroup2 = {
+const resourceGroup1 = {
   id: 'urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511',
   title: 'Læringsstier',
   viewAllLinkTitle: 'Flere læringsstier',

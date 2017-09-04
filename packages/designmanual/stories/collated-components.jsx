@@ -310,9 +310,9 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <LayoutItem layout="center">
         <h2 className="u-heading">Læringsstier eksempel</h2>
-        <LearningPathResourceList />
-        <h2 className="u-heading">Lærestoff eksempel</h2>
         <ArticleResourceList />
+        <h2 className="u-heading">Lærestoff eksempel</h2>
+        <LearningPathResourceList />
       </LayoutItem>
     </Center>,
   )

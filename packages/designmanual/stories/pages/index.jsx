@@ -76,7 +76,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader notitle="false" articleId="49" />
+        <ArticleLoader articleId="49" />
       </Content>
       <FooterExample />
     </PageContainer>,

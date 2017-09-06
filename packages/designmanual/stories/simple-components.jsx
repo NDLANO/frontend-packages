@@ -9,6 +9,7 @@ import {
   Button,
   Logo,
   LayoutItem,
+  OneColumn,
   ClickableLicenseByline,
 } from 'ndla-ui';
 import article from '../dummydata/index';
@@ -20,6 +21,78 @@ const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
 
 storiesOf('Enkle komponenter', module)
+  .add('Bilde', () =>
+    <OneColumn cssModifier="narrow">
+      <section className="c-factbox">
+        <LayoutItem layout="center">
+          <h1 className="u-heading">Bilde</h1>
+          <p>
+          Bilder vises i tre formater: Fullbredde midtstilt, venstrestilt, og høyrestilt. Bilder som ikke er fullbredde kan ekspanderes på klikk.
+          </p>
+          <p>Under bildet vises lisensikoner, forfatter, og handlingsknapp «Bruk bildet» for å se lisensboksen for bildet.</p>
+          <p>Ved klikk på «Last ned bilde» i lisensboksen, laster man ned fullversjonen av bildet.</p>
+        </LayoutItem>
+      </section>
+      <article className="c-article c-article--clean">
+        <LayoutItem layout="center">
+          <p>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+            prosjektet.
+          </p>
+          <FigureWithLicense classes="u-float-left">
+            <img
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            />
+          </FigureWithLicense>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <FigureWithLicense>
+            <img
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+              />
+          </FigureWithLicense>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <FigureWithLicense classes="u-float-right">
+            <img
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            />
+          </FigureWithLicense>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+        </LayoutItem>
+      </article>
+    </OneColumn>,
+  )
   .add('Bilde under ingress', () =>
     <Center>
       <article>

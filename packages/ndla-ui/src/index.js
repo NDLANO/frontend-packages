@@ -13,6 +13,8 @@ export { default as Footer } from './footer/Footer';
 export { default as Article } from './article/Article';
 export { default as Button } from './button/Button';
 export { default as Logo } from './logo/Logo';
+export { default as Factbox } from './StoryWrappers/Factbox';
+export { default as StoryBody } from './StoryWrappers/StoryBody';
 export { default as Aside } from './aside/Aside';
 export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';

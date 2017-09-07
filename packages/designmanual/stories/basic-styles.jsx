@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, LayoutItem } from 'ndla-ui';
+import { Table, LayoutItem, OneColumn, Factbox, StoryBody } from 'ndla-ui';
 import { Center } from './helpers';
 import article from '../dummydata/index';
 
@@ -16,177 +16,168 @@ const heading = (articleHTML, level) => {
 
 storiesOf('Grunnstiler', module)
   .add('Farger', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <h1 className="u-heading">Farger på NDLA</h1>
-        </section>
-        <section className="o-wrapper o-wrapper--nopadding">
+    <div>
+      <Factbox title="Farger på NDLA" />
+      <StoryBody>
           <div>
-            <h2 className="u-heading">NDLA-fargen</h2>
-            <p>Primærfargen kan supplementeres med ulike graderinger.</p>
-            <ul className="o-list--colors">
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#20588F' }}
-                />
-                <div className="o-list__label">
-                  NDLA primærfarge<br />#507AA4
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#507AA4' }}
-                />
-                <div className="o-list__label">
-                  NDLA sekundærfarge<br />#507AA4
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors o-list__item ">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#A5BCD3' }}
-                />
-                <div className="o-list__label">
-                  NDLA tertiærfarge<br />#A5BCD3
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors o-list__item">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#CEDDEA' }}
-                />
-                <div className="o-list__label">
-                  NDLA lys<br />#CEDDEA
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#184673' }}
-                />
-                <div className="o-list__label">
-                  NDLA mørk<br />#184673
-                </div>
-              </li>
-            </ul>
-          </div>
+              <h2 className="u-heading">NDLA-fargen</h2>
+              <p>Primærfargen kan supplementeres med ulike graderinger.</p>
+              <ul className="o-list--colors">
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#20588F' }}
+                  />
+                  <div className="o-list__label">
+                    NDLA primærfarge<br />#507AA4
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#507AA4' }}
+                  />
+                  <div className="o-list__label">
+                    NDLA sekundærfarge<br />#507AA4
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors o-list__item ">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#A5BCD3' }}
+                  />
+                  <div className="o-list__label">
+                    NDLA tertiærfarge<br />#A5BCD3
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors o-list__item">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#CEDDEA' }}
+                  />
+                  <div className="o-list__label">
+                    NDLA lys<br />#CEDDEA
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#184673' }}
+                  />
+                  <div className="o-list__label">
+                    NDLA mørk<br />#184673
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <h2 className="u-heading">Tilleggsfarger</h2>
-            <p>
-              I tillegg til primærfargen og dens graderinger kan man benytte
-              tilleggsfarger til å tematisere innhold og skape
-              variasjon/kontrast til NDLA-fargen.
-            </p>
-            <ul className="o-list--colors">
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#FE5F55' }}
-                />
-                <div className="o-list__label">
-                  Rød<br />#FE5F55
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#5CBC80' }}
-                />
-                <div className="o-list__label">
-                  Grønn<br />#5CBC80
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#EAD854' }}
-                />
-                <div className="o-list__label">
-                  Gul<br />#EAD854
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#444444' }}
-                />
-                <div className="o-list__label">
-                  Mørk (tekst)<br />#444444
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div>
+              <h2 className="u-heading">Tilleggsfarger</h2>
+              <p>
+                I tillegg til primærfargen og dens graderinger kan man benytte
+                tilleggsfarger til å tematisere innhold og skape
+                variasjon/kontrast til NDLA-fargen.
+              </p>
+              <ul className="o-list--colors">
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#FE5F55' }}
+                  />
+                  <div className="o-list__label">
+                    Rød<br />#FE5F55
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#5CBC80' }}
+                  />
+                  <div className="o-list__label">
+                    Grønn<br />#5CBC80
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#EAD854' }}
+                  />
+                  <div className="o-list__label">
+                    Gul<br />#EAD854
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#444444' }}
+                  />
+                  <div className="o-list__label">
+                    Mørk (tekst)<br />#444444
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <h2 className="u-heading">Gråtoner</h2>
-            <p>
-              Ulike gråtoner kan brukes for å skape myke farger for
-              navigasjonselementer, skjema-elementer etc.
-            </p>
-            <ul className="o-list--colors">
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#8A8888' }}
-                />
-                <div className="o-list__label">
-                  Grå 1<br />#8A8888
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#E8E3E3' }}
-                />
-                <div className="o-list__label">
-                  Grå 2<br />#E8E3E3
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#EFF0F2' }}
-                />
-                <div className="o-list__label">
-                  Grå 3<br />#EFF0F2
-                </div>
-              </li>
-              <li className="o-list__item o-list__item--colors">
-                <div
-                  className="o-list__bgcolor"
-                  style={{ backgroundColor: '#F8F8F8' }}
-                />
-                <div className="o-list__label">
-                  Grå 4<br />#F8F8F8
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
-      </article>
-    </Center>,
+            <div>
+              <h2 className="u-heading">Gråtoner</h2>
+              <p>
+                Ulike gråtoner kan brukes for å skape myke farger for
+                navigasjonselementer, skjema-elementer etc.
+              </p>
+              <ul className="o-list--colors">
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#8A8888' }}
+                  />
+                  <div className="o-list__label">
+                    Grå 1<br />#8A8888
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#E8E3E3' }}
+                  />
+                  <div className="o-list__label">
+                    Grå 2<br />#E8E3E3
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#EFF0F2' }}
+                  />
+                  <div className="o-list__label">
+                    Grå 3<br />#EFF0F2
+                  </div>
+                </li>
+                <li className="o-list__item o-list__item--colors">
+                  <div
+                    className="o-list__bgcolor"
+                    style={{ backgroundColor: '#F8F8F8' }}
+                  />
+                  <div className="o-list__label">
+                    Grå 4<br />#F8F8F8
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </StoryBody>
+    </div>,
   )
   .add('Typografi', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Typografi</h1>
-            <p>
-              <a href="#fonter">Fonter</a>,{' '}
-              <a href="#storrelser">skriftstørrelser</a>,{' '}
-              <a href="#overskrifter">overskrifter</a>,{' '}
-              <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>,{' '}
-              <a href="#lenker">lenker</a>.
-            </p>
-          </LayoutItem>
-        </section>
-        <LayoutItem layout="center">
-          <div className="o-wrapper--inner">
+    <div>
+      <Factbox title="Typografi">
+        <p>
+          <a href="#fonter">Fonter</a>,{' '}
+          <a href="#storrelser">skriftstørrelser</a>,{' '}
+          <a href="#overskrifter">overskrifter</a>,{' '}
+          <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>,{' '}
+          <a href="#lenker">lenker</a>.
+        </p>
+      </Factbox>
+      <StoryBody>
             <h2 id="fonter" className="u-heading">
               Fonter
             </h2>
@@ -241,8 +232,6 @@ storiesOf('Grunnstiler', module)
               <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og{' '}
               <span style={{ fontFamily: 'Arial' }}>Arial</span>
             </p>
-          </div>
-          <div className="o-wrapper--inner">
             <h2 id="storrelser" className="u-heading">
               Skriftstørrelser
             </h2>
@@ -315,8 +304,6 @@ storiesOf('Grunnstiler', module)
               Grunnlaget for REM-kalkulerte størrelser er 18px skriftstørrelse
               på html-elementet.
             </p>
-          </div>
-          <div className="o-wrapper--inner">
             <h2 id="overskrifter" className="u-heading">
               Overskrifter
             </h2>
@@ -328,14 +315,12 @@ storiesOf('Grunnstiler', module)
               {'<h1>Overskrift<h1>'}
             </code>
 
-            <p>Tre nivåer av overskrifter:</p>
+            <p>Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag
+              for nivå 3, 4 osv. - vil disse få samme stil som nivå 2 nedenfor:</p>
             <div className="c-bodybox">
               <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
               <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
-              <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
             </div>
-          </div>
-          <div className="o-wrapper--inner">
             <h2 id="ingress" className="u-heading">
               Ingress
             </h2>
@@ -350,8 +335,6 @@ storiesOf('Grunnstiler', module)
                 </p>
               </section>
             </div>
-          </div>
-          <div className="o-wrapper--inner">
             <h2 id="avsnitt" className="u-heading">
               Avsnitt
             </h2>
@@ -374,8 +357,6 @@ storiesOf('Grunnstiler', module)
                 incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
-          </div>
-          <div className="o-wrapper--inner">
             <h2 id="lenker" className="u-heading">
               Lenker
             </h2>
@@ -405,29 +386,22 @@ storiesOf('Grunnstiler', module)
                 </a>
               </p>
             </div>
-          </div>
-        </LayoutItem>
-      </article>
-    </Center>,
+      </StoryBody>
+    </div>,
   )
   .add('Tabeller', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Tabeller</h1>
-            <p>
-              Tabeller skal brukes til å presentere data (tabulær data), ikke
-              til utforming.
-            </p>
-            <p>
-              Tekstformatering, høyrestilling av tekst etc. angis ikke i
-              tabellens stilsett, men gjøres i redaktørgrensesnittet.
-            </p>
-          </LayoutItem>
-        </section>
-        <LayoutItem layout="center">
-          <div className="o-wrapper--inner">
+    <div>
+      <Factbox title="Tabeller">
+        <p>
+          Tabeller skal brukes til å presentere data (tabulær data), ikke
+          til utforming.
+        </p>
+        <p>
+          Tekstformatering, høyrestilling av tekst etc. angis ikke i
+          tabellens stilsett, men gjøres i redaktørgrensesnittet.
+        </p>
+      </Factbox>
+      <StoryBody>
             <h2 className="u-heading">Eksempel</h2>
             <Table>
               <thead>
@@ -552,8 +526,6 @@ storiesOf('Grunnstiler', module)
                 </tr>
               </tbody>
             </Table>
-          </div>
-          <div className="o-wrapper--inner">
             <h2 className="u-heading">Eksempel med formatering</h2>
             <Table>
               <thead>
@@ -690,24 +662,18 @@ storiesOf('Grunnstiler', module)
                 </tr>
               </tbody>
             </Table>
-          </div>
-        </LayoutItem>
-      </article>
-    </Center>,
+        </StoryBody>
+    </div>,
   )
   .add('Lister', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Lister</h1>
-            <p>
-              Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer,
-              bør du vurdere å organisere innholdet annerledes.
-            </p>
-          </LayoutItem>
-        </section>
-        <LayoutItem layout="center">
+    <div>
+      <Factbox title="Lister">
+        <p>
+          Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer,
+          bør du vurdere å organisere innholdet annerledes.
+        </p>
+      </Factbox>
+      <StoryBody>
           <h2 className="u-heading">Ren liste</h2>
           <ul className="o-list--bullets">
             <li>Listepunkt 1</li>
@@ -759,9 +725,8 @@ storiesOf('Grunnstiler', module)
             <li>Listepunkt</li>
             <li>Listepunkt</li>
           </ol>
-        </LayoutItem>
-      </article>
-    </Center>,
+      </StoryBody>
+    </div>,
   )
   .add('Sitater', () =>
     <Center>

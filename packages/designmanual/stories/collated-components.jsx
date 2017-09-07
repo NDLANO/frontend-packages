@@ -167,7 +167,7 @@ storiesOf('Sammensatte moduler', module)
       <ArticleLoader articleId="149" reset />
     </Center>,
   )
-  .add('Emner liste', () =>
+  .add('Emneliste', () =>
     <Center>
       <h2 className="u-heading">Emneliste</h2>
       <div className="c-resources">
@@ -286,7 +286,7 @@ storiesOf('Sammensatte moduler', module)
   )
   .add('Lisensboks ekspanderbar', () =>
     <Center>
-      <h2 className="u-heading">Ekspanderbar lisensboks</h2>
+      <h2 className="u-heading">Lisensboks ekspanderbar</h2>
       <article className="article">
         <LayoutItem layout="center">
           <LicenseExample />
@@ -497,7 +497,7 @@ storiesOf('Sammensatte moduler', module)
           <LayoutItem layout="center">
             <h1 className="u-heading">Feilmelding</h1>
             <p>
-              Feilmelding kompnent med link tilbake til forrige side eller
+              Feilmelding komponent med link tilbake til forrige side eller
               forsiden. Brukes når det har oppstått en feil i systemet. F.eks.
               ved 404 eller 503 feil.
             </p>

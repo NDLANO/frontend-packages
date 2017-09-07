@@ -9,14 +9,6 @@
   padding: $spacing--small;
   margin-bottom: $spacing;
 
-  @include mq(tablet) {
-    padding: $spacing * 1.5;
-  }
-
-  @include mq(desktop) {
-     margin: 0  calc(-50vw / 2) $spacing;
-     padding: $spacing calc(50vw/2);
-  }
   a:not([class]) {
     color: $brand-color;
 

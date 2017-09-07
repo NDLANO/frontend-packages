@@ -1041,8 +1041,10 @@ storiesOf('Grunnstiler', module)
           oppfattes de gjerne som beslektet.
         </p>
         <p>
-          Luft må også brukes med tanke på ulike enheter,
-          f. eks vil man gjerne ønske å redusere avstandene på mindre enheter.
+          Luft må også brukes med tanke på ulike enheter, vi ønsker å redusere
+          avstandene på mindre enheter, så innholdet tar mindre plass.
+          Bruker man stor avstand et sted på store skjermer, kan man dermed
+          redusere til liten avstand på små skjermer.
         </p>
         <p>
           Når nye NDLA skal tas ut på nye flater, anbefales det å forholde

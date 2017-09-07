@@ -37,9 +37,7 @@ import {
   ResourceSubsetList,
 } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
-import ImageSearcher from './molecules/imageSearch';
-import AudioSearcher from './molecules/audioSearch';
-import VideoSearcher from './molecules/videoSearch';
+
 
 const toggle = () => {
   document
@@ -153,32 +151,24 @@ storiesOf('Sammensatte moduler', module)
       </OneColumn>
     </Center>,
   )
-  .add('Bildesøk', () =>
-    <Center>
-      <h2 className="u-heading">Bildesøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne
-          modulen krever at det både finnes en token og api url.
-        </p>
-        <ImageSearcher />
-      </div>
-    </Center>,
-  )
   .add('Emnebeskrivelse', () =>
     <Center>
       <ArticleLoader articleId="149" reset />
     </Center>,
   )
   .add('Emneliste', () =>
-    <Center>
-      <h2 className="u-heading">Emneliste</h2>
-      <div className="c-resources">
-        <LayoutItem layout="center">
-          <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-        </LayoutItem>
-      </div>
-    </Center>,
+    <div>
+      <StoryIntro title="Emneliste">
+        <p>Emnelister brukes typisk innen et fag/emne for å vise underliggende
+          emner.</p>
+        <p>Ved klikk på emnetittel kommer man til emneartikkelen for emnet du
+        klikker på. Se også siden for Emnebeskrivelse</p>
+
+      </StoryIntro>
+      <StoryBody>
+        <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+      </StoryBody>
+    </div>,
   )
   .add('Faner', () =>
     <Center>
@@ -190,18 +180,24 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Kontrollerte faner</h2>
       <div className="o-wrapper--inner">
         <p>
-          Disse fanene kan også kontrolleres med frittstående knapper plassert
-          innenfor fanene.
+          Knapper kan også brukes til å kontrollere fanene. En mulighet her er
+          f. eks å ha en knapp nederst inni en fane, for å la brukeren gå til
+          neste fane uten å først scrolle opp til fane-toppen. Dette benyttes
+          ikke foreløpig, men kan brukes ved behov i senere utvikling.
         </p>
         <TabsControlled />
       </div>
     </Center>,
   )
   .add('Filter', () =>
-    <Center>
-      <article className="article">
-        <h2 className="u-heading">Filter</h2>
-        <LayoutItem layout="center">
+    <div>
+      <StoryIntro title="Filter">
+        <p>Alle elementer vises både når ingen eller alle filtervalg er valgt.
+        Når bruker klikker på et filter, skal dette umiddelbart reflekteres
+        i innholdet som filtreres, uten å laste siden på nytt.</p>
+      </StoryIntro>
+      <StoryBody>
+        <h2 className="u-heading">Filter (ufiltrert)</h2>
           <div className="c-filter u-margin-top">
             <FilterList
               filterContent={[
@@ -213,9 +209,7 @@ storiesOf('Sammensatte moduler', module)
               ]}
             />
           </div>
-        </LayoutItem>
         <h2 className="u-heading">Filter med forhåndsvalgte elementer</h2>
-        <LayoutItem layout="center">
           <div className="c-filter u-margin-top">
             <FilterList
               filterContent={[
@@ -227,9 +221,8 @@ storiesOf('Sammensatte moduler', module)
               ]}
             />
           </div>
-        </LayoutItem>
-      </article>
-    </Center>,
+      </StoryBody>
+    </div>,
   )
   .add('Hovedhode', () =>
     <div>
@@ -295,18 +288,6 @@ storiesOf('Sammensatte moduler', module)
           <LicenseExample />
         </LayoutItem>
       </article>
-    </Center>,
-  )
-  .add('Lydsøk', () =>
-    <Center>
-      <h2 className="u-heading">Lydsøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api. Denne modulen
-          krever at det både finnes en token og api url.
-        </p>
-        <AudioSearcher />
-      </div>
     </Center>,
   )
   .add('Læringsressurser', () =>
@@ -473,19 +454,6 @@ storiesOf('Sammensatte moduler', module)
         <ResourceSubsetList />
       </StoryBody>
     </div>,
-  )
-  .add('Videosøk', () =>
-    <Center>
-      <h2 className="u-heading">Videosøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
-          Denne modulen krever at det både finnes en token og api url (fra
-          brightcove).
-        </p>
-        <VideoSearcher />
-      </div>
-    </Center>,
   )
   .add('Feilmelding', () =>
     <div>

@@ -58,6 +58,11 @@ export const MediaListItemBody = ({ children, license, title }) =>
         </h3>
       : null}
     <LicenseByline license={getLicenseByAbbreviation(license)} />
+    <a
+      className="c-figure-license__link"
+      href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
+      Lær mer om åpne lisenser
+    </a>
     {children}
   </div>;
 

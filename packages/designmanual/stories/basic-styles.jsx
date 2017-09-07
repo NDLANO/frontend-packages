@@ -998,11 +998,10 @@ storiesOf('Grunnstiler', module)
         </StoryBody>
     </div>,
   )
-  .add('Spacing', () =>
+  .add('Luft og avstand', () =>
     <div>
-      <StoryIntro title="Spacing">
-        <p>«Spacing» er vårt designsystem for bruk av luft.</p>
-        <p>Vi baserer oss hovedsaklig på tre spacing-nivåer:</p>
+      <StoryIntro title="Luft og avstand">
+        <p>Vi baserer oss hovedsaklig på tre nivåer av luft/avstand:</p>
         <code>{`--spacing
 --spacing--small
 --spacing--large`}</code>
@@ -1023,7 +1022,7 @@ storiesOf('Grunnstiler', module)
                 marginTop: '-22px',
                 fontSize: '13px',
               }}>
-              Spacing (vanlig luft): 26px
+              Spacing (vanlig avstand): 26px
             </span>
             <div
               style={{
@@ -1042,8 +1041,12 @@ storiesOf('Grunnstiler', module)
           oppfattes de gjerne som beslektet.
         </p>
         <p>
+          Luft må også brukes med tanke på ulike enheter,
+          f. eks vil man gjerne ønske å redusere avstandene på mindre enheter.
+        </p>
+        <p>
           Når nye NDLA skal tas ut på nye flater, anbefales det å forholde
-          seg til dette spacing-systemet, slik at det blir konsistent.
+          seg til dette systemet, slik at det blir konsistent.
         </p>
       </StoryIntro>
     </div>,

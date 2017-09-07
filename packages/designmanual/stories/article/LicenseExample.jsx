@@ -52,7 +52,7 @@ const VideoContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -102,7 +102,7 @@ const TextContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                   'Publiseringsdato: 12.05.13',
                 ]}
@@ -135,7 +135,7 @@ const TextContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                   'Publiseringsdato: 12.05.13',
                 ]}
@@ -180,7 +180,7 @@ const AudioContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -212,7 +212,7 @@ const AudioContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -260,7 +260,7 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -296,7 +296,7 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -332,7 +332,7 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -368,7 +368,7 @@ const ImageContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -429,7 +429,7 @@ const H5PContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -483,7 +483,7 @@ const H5PContent = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -537,7 +537,7 @@ const Files = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -569,7 +569,7 @@ const Files = () =>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Ola Nordmann',
+                  'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
@@ -614,7 +614,7 @@ const LicenseExample = ({ showByline }) =>
     {showByline
       ? <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
           <span className="article_meta">
-            Ola Nordmann, Leverandør NTB scanpix. Publisert: 10.10.2010.
+            Fotograf Ola N, Leverandør NTB scanpix. Publisert: 10.10.2010.
           </span>
         </LicenseByline>
       : null}

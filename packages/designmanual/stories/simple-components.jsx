@@ -100,7 +100,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <p>
           Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
-          bildestørrelse: 1000px (bredde) x 500px (høyde).
+          bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
         </p>
       </StoryIntro>
       <StoryBody>

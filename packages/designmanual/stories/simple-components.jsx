@@ -368,9 +368,11 @@ storiesOf('Enkle komponenter', module)
     </div>,
   )
   .add('Ikoner', () =>
-    <div>
-      <StoryIntro title="Ikoner" />
-      <StoryBody>
+  <div>
+    <StoryIntro title="Ikoner" />
+    <StoryBody>
+
+
         <table className="c-table">
           <thead>
             <tr>
@@ -382,7 +384,7 @@ storiesOf('Enkle komponenter', module)
           <tbody>
             {[
               'Additional',
-              'Aligndiv',
+              'AlignCenter',
               'AlignJustify',
               'AlignLeft',
               'AlignRight',
@@ -412,9 +414,6 @@ storiesOf('Enkle komponenter', module)
               'LicenseNc',
               'LicenseNd',
               'LicenseSa',
-              'LicenseCc0',
-              'LicensePd',
-              'LicenseCopy',
               'Link',
               'ListCircle',
               'ListNumbered',

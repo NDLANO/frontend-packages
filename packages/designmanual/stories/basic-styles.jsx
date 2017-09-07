@@ -393,16 +393,29 @@ storiesOf('Grunnstiler', module)
       <StoryIntro title="Tabeller">
         <p>
           Tabeller skal brukes til å presentere data (tabulær data), ikke
-          til utforming.
+          til utforming. Det anbefales å holde tabellene så enkle som mulig, ved
+          mer kompleksitet kan data heller deles opp i flere tabeller.
         </p>
         <p>
           Tekstformatering, høyrestilling av tekst etc. angis ikke i
           tabellens stilsett, men gjøres i redaktørgrensesnittet.
         </p>
+        <p>
+          Titler markeres med: <code>&lt;hr&gt;</code>
+        </p>
+        <p>Titlene kan kuttes ut, plasseres som en topprad (thead), eller som
+        første rad i en tabell (innenfor tbody). De vil bli stilert etter plassering.</p>
+        <p>Dersom du bruker titler både på rader og kolonner må du definere i koden
+          hvilken vei tittelen peker:
+        </p>
+        <code>&lt;th scope=&quot;row&quot;&gt;</code>
+        <p>Tabeller kan ha en tilknyttet tittel ved bruk av elementet:
+        <code>&lt;caption&gt;</code></p>
       </StoryIntro>
       <StoryBody>
             <h2 className="u-heading">Eksempel</h2>
             <Table>
+              <caption>Tabelltittel</caption>
               <thead>
                 <tr>
                   <th>
@@ -432,13 +445,6 @@ storiesOf('Grunnstiler', module)
                   <td>G</td>
                   <td>milliard</td>
                   <td>1000000000</td>
-                </tr>
-                <tr>
-                  <td />
-                  <td />
-                  <td />
-                  <td />
-                  <td />
                 </tr>
                 <tr>
                   <td>
@@ -525,6 +531,8 @@ storiesOf('Grunnstiler', module)
                 </tr>
               </tbody>
             </Table>
+
+
             <h2 className="u-heading">Eksempel med formatering</h2>
             <Table>
               <thead>
@@ -658,6 +666,249 @@ storiesOf('Grunnstiler', module)
                   <td style={{ textAlign: 'right' }}>
                     <p>0,000000001</p>
                   </td>
+                </tr>
+              </tbody>
+            </Table>
+
+
+            <h2 className="u-heading">Eksempel uten titler</h2>
+            <Table>
+              <tbody>
+                <tr>
+                  <td>
+                    10<sup>15</sup>
+                  </td>
+                  <td>peta</td>
+                  <td>P</td>
+                  <td>billiard</td>
+                  <td>1000000000000000</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>12</sup>
+                  </td>
+                  <td>tera</td>
+                  <td>T</td>
+                  <td>billion</td>
+                  <td>1000000000000</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>9</sup>
+                  </td>
+                  <td>giga</td>
+                  <td>G</td>
+                  <td>milliard</td>
+                  <td>1000000000</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>6</sup>
+                  </td>
+                  <td>mega</td>
+                  <td>M</td>
+                  <td>million</td>
+                  <td>1000000</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>3</sup>
+                  </td>
+                  <td>kilo</td>
+                  <td>k</td>
+                  <td>tusen</td>
+                  <td>1000</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>2</sup>
+                  </td>
+                  <td>hekto</td>
+                  <td>h</td>
+                  <td>hundre</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>1</sup>
+                  </td>
+                  <td>deka</td>
+                  <td>da</td>
+                  <td>ti</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>-1</sup>
+                  </td>
+                  <td>desi</td>
+                  <td>d</td>
+                  <td>tidel</td>
+                  <td>0,1</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>
+                      10<sup>-2</sup>
+                    </strong>
+                  </td>
+                  <td>
+                    <strong>centi</strong>
+                  </td>
+                  <td>
+                    <strong>c</strong>
+                  </td>
+                  <td>
+                    <strong>hundredel</strong>
+                  </td>
+                  <td>
+                    <strong>0,01</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>-3</sup>
+                  </td>
+                  <td>milli</td>
+                  <td>m</td>
+                  <td>tusendel</td>
+                  <td>0,001</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>-6</sup>
+                  </td>
+                  <td>mikro</td>
+                  <td />
+                  <td>milliondel</td>
+                  <td>0,000001</td>
+                </tr>
+                <tr>
+                  <td>
+                    10<sup>-9</sup>
+                  </td>
+                  <td>nano</td>
+                  <td>n</td>
+                  <td>milliarddel</td>
+                  <td>
+                    <p>0,000000001</p>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+
+
+            <h2 className="u-heading">Eksempel med tittel på første kolonne </h2>
+            <Table>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>peta</td>
+                  <td>P</td>
+                  <td>billiard</td>
+                  <td>1000000000000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>tera</td>
+                  <td>T</td>
+                  <td>billion</td>
+                  <td>1000000000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>giga</td>
+                  <td>G</td>
+                  <td>milliard</td>
+                  <td>1000000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>mega</td>
+                  <td>M</td>
+                  <td>million</td>
+                  <td>1000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>kilo</td>
+                  <td>k</td>
+                  <td>tusen</td>
+                  <td>1000</td>
+                </tr>
+              </tbody>
+            </Table>
+
+
+            <h2 className="u-heading">Eksempel med tittel på første kolonne og
+              øverste rad </h2>
+            <Table>
+              <thead>
+                <tr>
+                  <th scope="col">
+                  Hva?
+                  </th>
+                  <th scope="col">Prefiks</th>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">Namn</th>
+                  <th scope="col">Eksempel</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>peta</td>
+                  <td>P</td>
+                  <td>billiard</td>
+                  <td>1000000000000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>tera</td>
+                  <td>T</td>
+                  <td>billion</td>
+                  <td>1000000000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>giga</td>
+                  <td>G</td>
+                  <td>milliard</td>
+                  <td>1000000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>mega</td>
+                  <td>M</td>
+                  <td>million</td>
+                  <td>1000000</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Tittel
+                  </th>
+                  <td>kilo</td>
+                  <td>k</td>
+                  <td>tusen</td>
+                  <td>1000</td>
                 </tr>
               </tbody>
             </Table>

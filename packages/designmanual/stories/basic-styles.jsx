@@ -1,8 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, LayoutItem, OneColumn, Factbox, StoryBody } from 'ndla-ui';
-import { Center } from './helpers';
-import article from '../dummydata/index';
+import { Table, Factbox, StoryBody } from 'ndla-ui';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -729,82 +727,72 @@ storiesOf('Grunnstiler', module)
     </div>,
   )
   .add('Sitater', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Sitater</h1>
-            <p>
-              Sitater som strekker seg over tre linjer i vanlig linjelengde er
-              best å ta ut som et blokksitat. Vi bruker ikke kursiv for å
-              markere sitater, men &laquo;&raquo;
-            </p>
-          </LayoutItem>
-        </section>
-        <LayoutItem layout="center">
-          <h2 className="u-heading">Eksempel</h2>
+    <div>
+      <Factbox title="Sitater">
+        <p>
+          Sitater som strekker seg over tre linjer i vanlig linjelengde er
+          best å ta ut som et blokksitat. Vi bruker ikke kursiv for å
+          markere sitater, men &laquo;&raquo;
+        </p>
+      </Factbox>
+      <StoryBody>
+        <h2 className="u-heading">Eksempel</h2>
           <blockquote>
             «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være
             henne, og hun viser oss at det å tre ut av den typiske sildestimen
             alle absolutt skal følge, er kult.» <br />(Jente 19 år, Si;D,
             Aftenposten 23. mai 2016)
           </blockquote>
-        </LayoutItem>
-      </article>
-    </Center>,
+        </StoryBody>
+    </div>,
   )
   .add('Spacing', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <h1 className="u-heading">Spacing</h1>
-          <div className="o-wrapper--inner">
-            <p>«Spacing» er vårt designsystem for bruk av luft.</p>
-            <p>Vi baserer oss hovedsaklig på tre spacing-nivåer:</p>
-            <code>{`--spacing
+    <div>
+      <Factbox title="Spacing">
+        <p>«Spacing» er vårt designsystem for bruk av luft.</p>
+        <p>Vi baserer oss hovedsaklig på tre spacing-nivåer:</p>
+        <code>{`--spacing
 --spacing--small
 --spacing--large`}</code>
-            <p>Hvor:</p>
-            <div style={{ padding: '52px', background: '#eee' }}>
-              <span
-                style={{
-                  position: 'absolute',
-                  marginTop: '-38px',
-                  fontSize: '13px',
-                }}>
-                Spacing large (Store avstander): 52px
-              </span>
-              <div style={{ padding: '26px', background: '#ddd' }}>
-                <span
-                  style={{
-                    position: 'absolute',
-                    marginTop: '-22px',
-                    fontSize: '13px',
-                  }}>
-                  Spacing (vanlig luft): 26px
-                </span>
-                <div
-                  style={{
-                    padding: '13px',
-                    background: '#ccc',
-                    fontSize: '13px',
-                  }}>
-                  <span>Spacing small (Små avstander): 13px</span>
-                </div>
-              </div>
+        <p>Hvor:</p>
+        <div style={{ padding: '52px', background: '#eee' }}>
+          <span
+            style={{
+              position: 'absolute',
+              marginTop: '-38px',
+              fontSize: '13px',
+            }}>
+            Spacing large (Store avstander): 52px
+          </span>
+          <div style={{ padding: '26px', background: '#ddd' }}>
+            <span
+              style={{
+                position: 'absolute',
+                marginTop: '-22px',
+                fontSize: '13px',
+              }}>
+              Spacing (vanlig luft): 26px
+            </span>
+            <div
+              style={{
+                padding: '13px',
+                background: '#ccc',
+                fontSize: '13px',
+              }}>
+              <span>Spacing small (Små avstander): 13px</span>
             </div>
-            <p>
-              Luft brukes for å visuelt gruppere elementer på en flate, og rette
-              fokus på de riktige elementene. Har et element mye luft rundt seg,
-              kan det lettere få fokus. Har to elementer lite luft mellom seg,
-              oppfattes de gjerne som beslektet.
-            </p>
-            <p>
-              Når nye NDLA skal tas ut på nye flater, anbefales det å forholde
-              seg til dette spacing-systemet, slik at det blir konsistent.
-            </p>
           </div>
-        </section>
-      </article>
-    </Center>,
+        </div>
+        <p>
+          Luft brukes for å visuelt gruppere elementer på en flate, og rette
+          fokus på de riktige elementene. Har et element mye luft rundt seg,
+          kan det lettere få fokus. Har to elementer lite luft mellom seg,
+          oppfattes de gjerne som beslektet.
+        </p>
+        <p>
+          Når nye NDLA skal tas ut på nye flater, anbefales det å forholde
+          seg til dette spacing-systemet, slik at det blir konsistent.
+        </p>
+      </Factbox>
+    </div>,
   );

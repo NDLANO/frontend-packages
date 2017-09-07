@@ -12,6 +12,7 @@ import {
   LayoutItem,
   OneColumn,
   ClickableLicenseByline,
+  StoryBody,
 } from 'ndla-ui';
 import article from '../dummydata/index';
 import { InlineContainer } from './helpers';
@@ -31,9 +32,7 @@ storiesOf('Enkle komponenter', module)
       <p>Ved klikk på «Last ned bilde» i lisensboksen, laster man ned fullversjonen av bildet.</p>
     </Factbox>
 
-    <OneColumn cssModifier="narrow">
-      <article className="c-article c-article--clean">
-        <LayoutItem layout="center">
+    <StoryBody>
           <p>
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -88,9 +87,7 @@ storiesOf('Enkle komponenter', module)
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
-        </LayoutItem>
-      </article>
-    </OneColumn>
+      </StoryBody>
   </div>,
   )
   .add('Bilde under ingress', () =>
@@ -107,16 +104,14 @@ storiesOf('Enkle komponenter', module)
           bildestørrelse: 1000px (bredde) x 500px (høyde).
         </p>
       </Factbox>
-        <article className="c-article c-article--clean">
-          <LayoutItem layout="center">
-            <FigureWithLicense authors="" caption="">
-              <img
-                alt=""
-                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
-              />
-            </FigureWithLicense>
-          </LayoutItem>
-      </article>
+      <StoryBody>
+          <FigureWithLicense authors="" caption="">
+            <img
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            />
+          </FigureWithLicense>
+      </StoryBody>
     </div>,
   )
   .add('Boks i tekst', () =>
@@ -130,10 +125,7 @@ storiesOf('Enkle komponenter', module)
           Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.
         </p>
       </Factbox>
-      <OneColumn>
-        <article className="c-article c-article--clean">
-          <section>
-          <LayoutItem layout="center">
+      <StoryBody>
             <h1 className="c-article__title">Eksempelartikkel</h1>
             <p className="article_introduction">
               Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -148,8 +140,6 @@ storiesOf('Enkle komponenter', module)
               </span>
               <LicenseExample />
             </div>
-          </LayoutItem>
-          <LayoutItem layout="center">
             <p>
               Du har en kjempegod idé til en kortfilm. Men det koster mange penger
               å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
@@ -182,7 +172,6 @@ storiesOf('Enkle komponenter', module)
                   <span className="c-source-list__item">Kilde: SNL.no</span>
                 </div>
               </div>
-            </LayoutItem>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
               pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -251,9 +240,7 @@ storiesOf('Enkle komponenter', module)
               klassen.
             </p>
           </LayoutItem>
-          </section>
-        </article>
-      </OneColumn>
+      </StoryBody>
     </div>,
   )
   .add('Faktaboks og høyrespalte', () =>
@@ -267,9 +254,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
       </Factbox>
-    <OneColumn>
-      <article className="c-article c-article--clean">
-        <LayoutItem layout="center">
+    <StoryBody>
           <h1 className="c-article__title">Eksempelartikkel</h1>
           <p className="article_introduction">
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -284,8 +269,6 @@ storiesOf('Enkle komponenter', module)
             </span>
             <LicenseExample />
           </div>
-        </LayoutItem>
-        <LayoutItem layout="center">
           <Aside float>
             <div>
               <div className="c-aside__title">Høyrespalte</div>
@@ -352,9 +335,7 @@ storiesOf('Enkle komponenter', module)
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
-        </LayoutItem>
-      </article>
-    </OneColumn>
+      </StoryBody>
     </div>,
   )
   .add('Kildehenvisninger', () =>
@@ -366,9 +347,7 @@ storiesOf('Enkle komponenter', module)
         <p>I teksten brukes en enkel nummerering for å henvise til referanse, og tallet lenkes til den aktuelle referansen.</p>
         <p>I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten.</p>
       </Factbox>
-      <OneColumn>
-        <LayoutItem layout="center">
-          <article className="c-article c-article--clean">
+      <StoryBody>
             <p>Målgruppen for Hansaspillet er både fastboende og turister.<sup id="ref1">[<a href="#1">1</a>]</sup></p>
             <p>Forfatteren, komponisten og musikeren foreslo flere samarbeidsprosjekter for å løfte frem Munchs ukjente tekstarv.<sup id="ref2">[<a href="#2">2</a>]</sup></p>
             <ol className="c-footnotes">
@@ -383,187 +362,173 @@ storiesOf('Enkle komponenter', module)
                 </cite>
               </li>
             </ol>
-          </article>
-        </LayoutItem>
-      </OneColumn>
+      </StoryBody>
     </div>,
   )
   .add('Ikoner', () =>
     <div>
       <Factbox title="Ikoner" />
-      <OneColumn>
-        <LayoutItem layout="center">
-          <table className="c-table">
-            <thead>
-              <tr>
-                <th>Icon</th>
-                <th>Name</th>
-                <th>JSX</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                'Additional',
-                'Aligndiv',
-                'AlignJustify',
-                'AlignLeft',
-                'AlignRight',
-                'Audio',
-                'Bold',
-                'Book',
-                'Camera',
-                'Copy',
-                'Crop',
-                'Cross',
-                'Document',
-                'Download',
-                'Embed',
-                'FactBox',
-                'FocalPoint',
-                'Grid',
-                'Heading1',
-                'Heading2',
-                'Heading3',
-                'Home',
-                'H5P',
-                'Ingress',
-                'InsertTemplate',
-                'Italic',
-                'LicenseBy',
-                'LicenseCc',
-                'LicenseNc',
-                'LicenseNd',
-                'LicenseSa',
-                'LicenseCc0',
-                'LicensePd',
-                'LicenseCopy',
-                'Link',
-                'ListCircle',
-                'ListNumbered',
-                'ListSquare',
-                'OpenWindow',
-                'Paragraph',
-                'Path',
-                'Pencil',
-                'Pilcrow',
-                'Plus',
-                'Quote',
-                'Sad',
-                'Search',
-                'Section',
-                'Strikethrough',
-                'Table',
-                'TextInBox',
-                'Time',
-                'Underline',
-                'User',
-                'Video',
-              ].map(key =>
-                <tr key={key}>
-                  <td>
-                    {createElement(Icons[key], { className: 'c-icon--medium' })}
-                  </td>
-                  <td>
-                    {key}
-                  </td>
-                  <td>
-                    <code>
-                      &lt;Icons.{key} /&gt;
-                    </code>
-                  </td>
-                </tr>,
-              )}
-              {['up', 'down', 'left', 'right'].map(key =>
-                <tr key={key}>
-                  <td>
-                    <Icons.Arrow direction={key} />
-                  </td>
-                  <td>
-                    Arrow {key}
-                  </td>
-                  <td>
-                    <code>
-                      &lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;
-                    </code>
-                  </td>
-                </tr>,
-              )}
-            </tbody>
-          </table>
-        </LayoutItem>
-      </OneColumn>
+      <StoryBody>
+        <table className="c-table">
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>JSX</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              'Additional',
+              'Aligndiv',
+              'AlignJustify',
+              'AlignLeft',
+              'AlignRight',
+              'Audio',
+              'Bold',
+              'Book',
+              'Camera',
+              'Copy',
+              'Crop',
+              'Cross',
+              'Document',
+              'Download',
+              'Embed',
+              'FactBox',
+              'FocalPoint',
+              'Grid',
+              'Heading1',
+              'Heading2',
+              'Heading3',
+              'Home',
+              'H5P',
+              'Ingress',
+              'InsertTemplate',
+              'Italic',
+              'LicenseBy',
+              'LicenseCc',
+              'LicenseNc',
+              'LicenseNd',
+              'LicenseSa',
+              'LicenseCc0',
+              'LicensePd',
+              'LicenseCopy',
+              'Link',
+              'ListCircle',
+              'ListNumbered',
+              'ListSquare',
+              'OpenWindow',
+              'Paragraph',
+              'Path',
+              'Pencil',
+              'Pilcrow',
+              'Plus',
+              'Quote',
+              'Sad',
+              'Search',
+              'Section',
+              'Strikethrough',
+              'Table',
+              'TextInBox',
+              'Time',
+              'Underline',
+              'User',
+              'Video',
+            ].map(key =>
+              <tr key={key}>
+                <td>
+                  {createElement(Icons[key], { className: 'c-icon--medium' })}
+                </td>
+                <td>
+                  {key}
+                </td>
+                <td>
+                  <code>
+                    &lt;Icons.{key} /&gt;
+                  </code>
+                </td>
+              </tr>,
+            )}
+            {['up', 'down', 'left', 'right'].map(key =>
+              <tr key={key}>
+                <td>
+                  <Icons.Arrow direction={key} />
+                </td>
+                <td>
+                  Arrow {key}
+                </td>
+                <td>
+                  <code>
+                    &lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;
+                  </code>
+                </td>
+              </tr>,
+            )}
+          </tbody>
+        </table>
+      </StoryBody>
     </div>,
   )
   .add('Knapper', () =>
     <div>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Knapper</h1>
-            <p>
-              Knapper er til å klikke på, ikke for å lenke til, og skal brukes
-              til interaktivitet på samme side, ikke for å sende brukeren til en
-              ny side (da brukes vanlig lenke).
-            </p>
-            <p>
-              Knapp med ramme brukes for de fleste knapper, men er det behov for
-              ekstra oppmerksomhet kan fylt knapp benyttes.
-            </p>
-          </LayoutItem>
-        </section>
-        <article className="c-article c-article--clean">
-          <LayoutItem layout="center">
-            <h2 className="u-heading">Eksempel</h2>
-            <InlineContainer>
-              <Button outline onClick={action('clicked')}>
-                Knapp med ramme
-              </Button>{' '}
-              <Button outline disabled onClick={action('clicked')}>
-                Deaktivert knapp med ramme
-              </Button>
-            </InlineContainer>
-            <InlineContainer>
-              <Button onClick={action('clicked')}>Fylt knapp</Button>
-            </InlineContainer>
-            <Button disabled onClick={action('clicked')}>
-              Knapp deaktivert
-            </Button>
-          </LayoutItem>
-        </article>
+      <Factbox title="Knapper">
+        <p>
+          Knapper er til å klikke på, ikke for å lenke til, og skal brukes
+          til interaktivitet på samme side, ikke for å sende brukeren til en
+          ny side (da brukes vanlig lenke).
+        </p>
+        <p>
+          Knapp med ramme brukes for de fleste knapper, men er det behov for
+          ekstra oppmerksomhet kan fylt knapp benyttes.
+        </p>
+      </Factbox>
+      <StoryBody>
+        <h2 className="u-heading">Eksempel</h2>
+        <InlineContainer>
+          <Button outline onClick={action('clicked')}>
+            Knapp med ramme
+          </Button>{' '}
+          <Button outline disabled onClick={action('clicked')}>
+            Deaktivert knapp med ramme
+          </Button>
+        </InlineContainer>
+        <InlineContainer>
+          <Button onClick={action('clicked')}>Fylt knapp</Button>
+        </InlineContainer>
+        <Button disabled onClick={action('clicked')}>
+          Knapp deaktivert
+        </Button>
+      </StoryBody>
     </div>,
   )
   .add('Logo', () =>
     <div>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Logo</h1>
-            <p>
-              Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for
-              kommunikasjon. Den skal inspirere målgruppen elever og lærere i
-              videregående opplæring og gjøre dem nysgjerrige på NDLA.
-            </p>
-            <p>
-              Logoen består av navnet NDLA i en spesiell typografi og bør
-              hovedsakelig benyttes sammen med underteksten. Logo uten
-              undertekst kan benyttes i tilfeller der det kommer godt fram andre
-              steder hvem NDLA er, eksempelvis på ndla.no.
-            </p>
-            <p>
-              Logo uten undertekst kan kompletteres med en beskrivende tekst til
-              høyre. Logoen kan benyttes i blått, eller i svart eller hvitt
-              avhengig av bakgrunn. Den skal plasseres i det øverste eller
-              nederste hjørnet av en ytterkant. Logoen skal ikke sentreres.
-            </p>
-          </LayoutItem>
-        </section>
-        <article className="c-article c-article--clean">
-          <LayoutItem layout="center">
-            <Logo
-              cssModifier="large"
-              name
-              to="#"
-              altText="Nasjonal digital læringsarena"
-            />
-          </LayoutItem>
-        </article>
+      <Factbox title="Logo">
+        <p>
+          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for
+          kommunikasjon. Den skal inspirere målgruppen elever og lærere i
+          videregående opplæring og gjøre dem nysgjerrige på NDLA.
+        </p>
+        <p>
+          Logoen består av navnet NDLA i en spesiell typografi og bør
+          hovedsakelig benyttes sammen med underteksten. Logo uten
+          undertekst kan benyttes i tilfeller der det kommer godt fram andre
+          steder hvem NDLA er, eksempelvis på ndla.no.
+        </p>
+        <p>
+          Logo uten undertekst kan kompletteres med en beskrivende tekst til
+          høyre. Logoen kan benyttes i blått, eller i svart eller hvitt
+          avhengig av bakgrunn. Den skal plasseres i det øverste eller
+          nederste hjørnet av en ytterkant. Logoen skal ikke sentreres.
+        </p>
+      </Factbox>
+      <StoryBody>
+        <Logo
+          cssModifier="large"
+          name
+          to="#"
+          altText="Nasjonal digital læringsarena"
+        />
+      </StoryBody>
     </div>,
   );

@@ -21,6 +21,7 @@ import {
   LayoutItem,
   Breadcrumb,
   Content,
+  StoryBody,
 } from 'ndla-ui';
 
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
@@ -59,7 +60,6 @@ storiesOf('Sidevisninger', module)
   )
   .add('En side med innhold', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero red>
           <OneColumn>
@@ -76,6 +76,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleLoader articleId="49" />
       </Content>
       <FooterExample />
@@ -102,7 +103,6 @@ storiesOf('Sidevisninger', module)
   )
   .add('Hent artikkel med id', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero red>
           <OneColumn>
@@ -119,6 +119,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleLoader closeButton />
       </Content>
       <FooterExample />
@@ -127,7 +128,6 @@ storiesOf('Sidevisninger', module)
 storiesOf('Artikkelmaler', module)
   .add('Lærestoff', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero red>
           <OneColumn>
@@ -144,6 +144,7 @@ storiesOf('Artikkelmaler', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
@@ -151,7 +152,6 @@ storiesOf('Artikkelmaler', module)
   )
   .add('Oppgaver og aktiviteter', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero green>
           <OneColumn>
@@ -168,6 +168,7 @@ storiesOf('Artikkelmaler', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleExercise />
       </Content>
       <FooterExample />
@@ -175,7 +176,6 @@ storiesOf('Artikkelmaler', module)
   )
   .add('Tilleggsstoff', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero red>
           <OneColumn>
@@ -192,6 +192,7 @@ storiesOf('Artikkelmaler', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleAdditional />
       </Content>
       <FooterExample />
@@ -246,7 +247,6 @@ storiesOf('Emnesider', module)
   )
   .add('2. Fag', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero>
           <OneColumn>
@@ -263,21 +263,15 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <OneColumn>
-          <article className="c-article">
-            <LayoutItem layout="extend">
-              <h1>Fagside</h1>
-            </LayoutItem>
-            <ResourcesSubTopics />
-          </article>
-        </OneColumn>
-      </Content>
+      <StoryBody>
+        <h1>Fagside</h1>
+        <ResourcesSubTopics />
+      </StoryBody>
       <FooterExample />
     </PageContainer>,
   )
   .add('3. Hovedemne', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero>
           <OneColumn>
@@ -294,6 +288,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleLoader articleId="1325" isTopicArticle />
         <OneColumn>
           <article className="c-article">

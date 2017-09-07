@@ -8,6 +8,7 @@ import {
   Glossary,
   Button,
   ErrorMessage,
+  Factbox,
   FilterList,
   Pager,
   Footer,
@@ -18,6 +19,7 @@ import {
   BreadcrumbBlock,
   OneColumn,
   LayoutItem,
+  StoryBody,
   RelatedArticles,
 } from 'ndla-ui';
 import { Time, User } from 'ndla-ui/icons';
@@ -453,29 +455,24 @@ storiesOf('Sammensatte moduler', module)
     </Center>,
   )
   .add('Tilleggsstoff', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Tilleggsstoff</h1>
-            <p>
-              Når ressurser listes opp, vises i utgangspunktet kun kjernestoff.
-              Om tilleggsstoff-filteret aktiveres, vil ressursopplistingen
-              populeres med tilleggsstoff i tilegg. Tilleggsstoff markeres med
-              T-ikon, og desaturert bakgrunnsfarge.{' '}
-            </p>
-            <p>
-              Tilleggsstoff-filteret skal kun påvirke ressurstypen den er
-              tilknyttet, f. eks om du aktiverer tilleggsstoff for Lærestoff,
-              vil kun denne listen oppdateres med tilleggsstoff-artikler.
-            </p>
-          </LayoutItem>
-        </section>
-        <LayoutItem layout="extend">
-          <ResourceSubsetList />
-        </LayoutItem>
-      </article>
-    </Center>,
+    <div>
+      <Factbox title="Tilleggsstoff">
+        <p>
+          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff.
+          Om tilleggsstoff-filteret aktiveres, vil ressursopplistingen
+          populeres med tilleggsstoff i tilegg. Tilleggsstoff markeres med
+          T-ikon, og desaturert bakgrunnsfarge.{' '}
+        </p>
+        <p>
+          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er
+          tilknyttet, f. eks om du aktiverer tilleggsstoff for Lærestoff,
+          vil kun denne listen oppdateres med tilleggsstoff-artikler.
+        </p>
+      </Factbox>
+      <StoryBody>
+        <ResourceSubsetList />
+      </StoryBody>
+    </div>,
   )
   .add('Videosøk', () =>
     <Center>
@@ -491,19 +488,15 @@ storiesOf('Sammensatte moduler', module)
     </Center>,
   )
   .add('Feilmelding', () =>
-    <Center>
-      <article>
-        <section className="c-factbox">
-          <LayoutItem layout="center">
-            <h1 className="u-heading">Feilmelding</h1>
-            <p>
-              Feilmelding komponent med link tilbake til forrige side eller
-              forsiden. Brukes når det har oppstått en feil i systemet. F.eks.
-              ved 404 eller 503 feil.
-            </p>
-          </LayoutItem>
-        </section>
-
+    <div>
+      <Factbox title="Feilmelding">
+        <p>
+          Feilmelding komponent med link tilbake til forrige side eller
+          forsiden. Brukes når det har oppstått en feil i systemet. F.eks.
+          ved 404 eller 503 feil.
+        </p>
+      </Factbox>
+      <StoryBody>
         <ErrorMessage
           messages={{
             title: 'Oops, noe gikk galt',
@@ -512,6 +505,6 @@ storiesOf('Sammensatte moduler', module)
             goToFrontPage: 'Gå til forsiden',
           }}
         />
-      </article>
-    </Center>,
+      </StoryBody>
+    </div>,
   );

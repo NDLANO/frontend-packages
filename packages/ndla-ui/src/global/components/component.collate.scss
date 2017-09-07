@@ -35,12 +35,14 @@
 
 .c-collate__info {
   opacity: 0.5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-$spacing * 1.5) translateY($spacing);
+  @include mq(desktop) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-$spacing * 1.5) translateY($spacing);
+  }
   cursor: pointer;
-  
+
 
   &:hover,
   &:focus {

@@ -19,6 +19,7 @@
 }
 .c-footnotes__item, .c-footnote__item {
   margin-bottom: $spacing--small;
+  margin-left: 0;
   &:before {
     display: none;
   }

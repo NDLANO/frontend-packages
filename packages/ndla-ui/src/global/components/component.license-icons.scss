@@ -20,6 +20,15 @@
   margin-bottom: 0;
   margin-right: 0.2em;
 
+  &:first-child {
+    span {
+      margin-left: 0px;
+    }
+    svg {
+      display: none;
+    }
+  }
+
   .c-license-icons--active {
     circle {
       fill: $brand-color;

@@ -262,6 +262,7 @@ const ImageContent = () =>
                 items={[
                   'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -298,6 +299,7 @@ const ImageContent = () =>
                 items={[
                   'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -334,6 +336,7 @@ const ImageContent = () =>
                 items={[
                   'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -370,6 +373,7 @@ const ImageContent = () =>
                 items={[
                   'Opphavsmann: Fotograf Ola N',
                   'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button

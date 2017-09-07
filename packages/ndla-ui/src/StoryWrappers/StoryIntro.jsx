@@ -17,7 +17,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Factbox = ({ title, children }) => (
+const StoryIntro = ({ title, children }) => (
     <section {...classes()}>
       <OneColumn>
         <LayoutItem layout="center">
@@ -28,9 +28,9 @@ const Factbox = ({ title, children }) => (
   </section>
   )
 
-Factbox.propTypes = {
+StoryIntro.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
 };
 
-export default Factbox;
+export default StoryIntro;

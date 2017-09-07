@@ -7,7 +7,7 @@ import { BY, NC, ND } from 'ndla-licenses';
 import {
   Aside,
   Button,
-  Factbox,
+  StoryIntro,
   Logo,
   LayoutItem,
   ClickableLicenseByline,
@@ -24,12 +24,12 @@ articleHTML.innerHTML = article.article4.content[0].content;
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () =>
   <div>
-    <Factbox title="Bilde">
+    <StoryIntro title="Bilde">
       <p>Bilder vises i tre formater: Fullbredde midtstilt, venstrestilt, og høyrestilt. Bilder som ikke er fullbredde kan ekspanderes på klikk.
       </p>
       <p>Under bildet vises lisensikoner, forfatter, og handlingsknapp «Bruk bildet» for å se lisensboksen for bildet.</p>
       <p>Ved klikk på «Last ned bilde» i lisensboksen, laster man ned fullversjonen av bildet.</p>
-    </Factbox>
+    </StoryIntro>
 
     <StoryBody>
           <p>
@@ -91,7 +91,7 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Bilde under ingress', () =>
     <div>
-      <Factbox title="Bilde under ingress">
+      <StoryIntro title="Bilde under ingress">
         <p>
           Under ingressen bruker vi et bilde for å illustrere tematikken.
           Bruk helst bilder av mennesker, relevante og naturlige bilder.
@@ -102,7 +102,7 @@ storiesOf('Enkle komponenter', module)
           Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
           bildestørrelse: 1000px (bredde) x 500px (høyde).
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
           <FigureWithLicense authors="" caption="">
             <img
@@ -115,7 +115,7 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Boks i tekst', () =>
     <div>
-      <Factbox title="Boks i tekst">
+      <StoryIntro title="Boks i tekst">
         <p>
           En boks i teksten kan brukes for å fremheve noe av særlig interesse,
           annet enn sitat (som det allerede fins sitatstil til).
@@ -123,7 +123,7 @@ storiesOf('Enkle komponenter', module)
         <p>
           Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
             <h1 className="c-article__title">Eksempelartikkel</h1>
             <p className="article_introduction">
@@ -244,7 +244,7 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Faktaboks og høyrespalte', () =>
     <div>
-      <Factbox title="Faktaboks og høyrespalte">
+      <StoryIntro title="Faktaboks og høyrespalte">
         <p>
           For alt nytt innhold på ndla.no skal ikke flytende høyrespalte
           benyttes, i stedet benytter man faktabokser innenfor
@@ -252,7 +252,7 @@ storiesOf('Enkle komponenter', module)
           på gamle artikler.
         </p>
         <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
-      </Factbox>
+      </StoryIntro>
     <StoryBody>
           <h1 className="c-article__title">Eksempelartikkel</h1>
           <p className="article_introduction">
@@ -342,13 +342,13 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Kildehenvisninger', () =>
     <div>
-      <Factbox title="Kildehenvisninger">
+      <StoryIntro title="Kildehenvisninger">
         <p>
           Kildehenvisninger benytter <a href="http://sokogskriv.no/kildebruk-og-referanser/referansestiler/chicago-fotnoter/">Chicago 16-stilen</a>.
         </p>
         <p>I teksten brukes en enkel nummerering for å henvise til referanse, og tallet lenkes til den aktuelle referansen.</p>
         <p>I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten.</p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
             <p>Målgruppen for Hansaspillet er både fastboende og turister.<sup id="ref1">[<a href="#1">1</a>]</sup></p>
             <p>Forfatteren, komponisten og musikeren foreslo flere samarbeidsprosjekter for å løfte frem Munchs ukjente tekstarv.<sup id="ref2">[<a href="#2">2</a>]</sup></p>
@@ -369,7 +369,7 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Ikoner', () =>
     <div>
-      <Factbox title="Ikoner" />
+      <StoryIntro title="Ikoner" />
       <StoryBody>
         <table className="c-table">
           <thead>
@@ -473,7 +473,7 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Knapper', () =>
     <div>
-      <Factbox title="Knapper">
+      <StoryIntro title="Knapper">
         <p>
           Knapper er til å klikke på, ikke for å lenke til, og skal brukes
           til interaktivitet på samme side, ikke for å sende brukeren til en
@@ -483,7 +483,7 @@ storiesOf('Enkle komponenter', module)
           Knapp med ramme brukes for de fleste knapper, men er det behov for
           ekstra oppmerksomhet kan fylt knapp benyttes.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
         <InlineContainer>
@@ -505,7 +505,7 @@ storiesOf('Enkle komponenter', module)
   )
   .add('Logo', () =>
     <div>
-      <Factbox title="Logo">
+      <StoryIntro title="Logo">
         <p>
           Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for
           kommunikasjon. Den skal inspirere målgruppen elever og lærere i
@@ -523,7 +523,7 @@ storiesOf('Enkle komponenter', module)
           avhengig av bakgrunn. Den skal plasseres i det øverste eller
           nederste hjørnet av en ytterkant. Logoen skal ikke sentreres.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
         <Logo
           cssModifier="large"

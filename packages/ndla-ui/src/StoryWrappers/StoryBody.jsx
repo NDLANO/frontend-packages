@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { OneColumn } from '../Layout/OneColumn';
 import { LayoutItem } from '../Layout/LayoutItem';
 
-const Factbox = ({ children }) => (
+const StoryIntro = ({ children }) => (
   <OneColumn>
     <LayoutItem layout="center">
       <article className="c-article c-article--clean">
@@ -21,8 +21,8 @@ const Factbox = ({ children }) => (
   </OneColumn>
 )
 
-Factbox.propTypes = {
+StoryIntro.propTypes = {
   children: PropTypes.node,
 };
 
-export default Factbox;
+export default StoryIntro;

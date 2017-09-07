@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, Factbox, StoryBody } from 'ndla-ui';
+import { Table, StoryIntro, StoryBody } from 'ndla-ui';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -15,7 +15,7 @@ const heading = (articleHTML, level) => {
 storiesOf('Grunnstiler', module)
   .add('Farger', () =>
     <div>
-      <Factbox title="Farger på NDLA" />
+      <StoryIntro title="Farger på NDLA" />
       <StoryBody>
           <div>
               <h2 className="u-heading">NDLA-fargen</h2>
@@ -166,7 +166,7 @@ storiesOf('Grunnstiler', module)
   )
   .add('Typografi', () =>
     <div>
-      <Factbox title="Typografi">
+      <StoryIntro title="Typografi">
         <p>
           <a href="#fonter">Fonter</a>,{' '}
           <a href="#storrelser">skriftstørrelser</a>,{' '}
@@ -174,7 +174,7 @@ storiesOf('Grunnstiler', module)
           <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>,{' '}
           <a href="#lenker">lenker</a>.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
             <h2 id="fonter" className="u-heading">
               Fonter
@@ -390,7 +390,7 @@ storiesOf('Grunnstiler', module)
   )
   .add('Tabeller', () =>
     <div>
-      <Factbox title="Tabeller">
+      <StoryIntro title="Tabeller">
         <p>
           Tabeller skal brukes til å presentere data (tabulær data), ikke
           til utforming.
@@ -399,7 +399,7 @@ storiesOf('Grunnstiler', module)
           Tekstformatering, høyrestilling av tekst etc. angis ikke i
           tabellens stilsett, men gjøres i redaktørgrensesnittet.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
             <h2 className="u-heading">Eksempel</h2>
             <Table>
@@ -666,12 +666,12 @@ storiesOf('Grunnstiler', module)
   )
   .add('Lister', () =>
     <div>
-      <Factbox title="Lister">
+      <StoryIntro title="Lister">
         <p>
           Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer,
           bør du vurdere å organisere innholdet annerledes.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
           <h2 className="u-heading">Ren liste</h2>
           <ul className="o-list--bullets">
@@ -729,13 +729,13 @@ storiesOf('Grunnstiler', module)
   )
   .add('Sitater', () =>
     <div>
-      <Factbox title="Sitater">
+      <StoryIntro title="Sitater">
         <p>
           Sitater som strekker seg over tre linjer i vanlig linjelengde er
           best å ta ut som et blokksitat. Vi bruker ikke kursiv for å
           markere sitater, men &laquo;&raquo;
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
           <blockquote>
@@ -749,7 +749,7 @@ storiesOf('Grunnstiler', module)
   )
   .add('Spacing', () =>
     <div>
-      <Factbox title="Spacing">
+      <StoryIntro title="Spacing">
         <p>«Spacing» er vårt designsystem for bruk av luft.</p>
         <p>Vi baserer oss hovedsaklig på tre spacing-nivåer:</p>
         <code>{`--spacing
@@ -794,6 +794,6 @@ storiesOf('Grunnstiler', module)
           Når nye NDLA skal tas ut på nye flater, anbefales det å forholde
           seg til dette spacing-systemet, slik at det blir konsistent.
         </p>
-      </Factbox>
+      </StoryIntro>
     </div>,
   );

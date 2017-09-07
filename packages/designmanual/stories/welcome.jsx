@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { Logo } from 'ndla-ui';
+import { Logo, StoryIntro, StoryBody } from 'ndla-ui';
 import { Center } from './helpers';
 
 const Welcome = () =>
-  <Center>
-    <article className="o-wrapper--narrow">
-      <section className="c-factbox">
-        <Logo altText="Nasjonal digital læringsarena" />
-        <h1>Designmanual</h1>
-        <p>
-          Denne designmanualen definerer visuelt utrykk og interaksjonsdesign
-          for NDLAs grensesnitt på skjermflater.
-        </p>
-      </section>
+  <div>
+  <StoryIntro title="Designmanual">
+    <Logo altText="Nasjonal digital læringsarena" />
+      <p>
+        Denne designmanualen definerer visuelt utrykk og interaksjonsdesign
+        for NDLAs grensesnitt på skjermflater.
+      </p>
+  </StoryIntro>
       <section>
         <h2>Hvordan bruke denne designmanualen</h2>
         <p>
@@ -33,8 +31,7 @@ const Welcome = () =>
           href=&quot;ndla-ui.css&quot;&gt;
         </code>
       </section>
-    </article>
-  </Center>;
+  </div>;
 
 Welcome.propTypes = {
   showApp: PropTypes.func,

@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { Factbox, StoryBody } from 'ndla-ui';
+import { StoryIntro, StoryBody } from 'ndla-ui';
 
 storiesOf('Konsepter', module).add('Navngivning av innholdstyper', () =>
   <div>
-    <Factbox title="Navngivning av innholdstyper" />
+    <StoryIntro title="Navngivning av innholdstyper" />
     <StoryBody>
         <h2 className="u-heading">Hovedskiller for emner og lærestoff:</h2>
         <ul>

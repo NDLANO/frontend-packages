@@ -8,7 +8,7 @@ import {
   Glossary,
   Button,
   ErrorMessage,
-  Factbox,
+  StoryIntro,
   FilterList,
   Pager,
   Footer,
@@ -456,7 +456,7 @@ storiesOf('Sammensatte moduler', module)
   )
   .add('Tilleggsstoff', () =>
     <div>
-      <Factbox title="Tilleggsstoff">
+      <StoryIntro title="Tilleggsstoff">
         <p>
           Når ressurser listes opp, vises i utgangspunktet kun kjernestoff.
           Om tilleggsstoff-filteret aktiveres, vil ressursopplistingen
@@ -468,7 +468,7 @@ storiesOf('Sammensatte moduler', module)
           tilknyttet, f. eks om du aktiverer tilleggsstoff for Lærestoff,
           vil kun denne listen oppdateres med tilleggsstoff-artikler.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
         <ResourceSubsetList />
       </StoryBody>
@@ -489,13 +489,13 @@ storiesOf('Sammensatte moduler', module)
   )
   .add('Feilmelding', () =>
     <div>
-      <Factbox title="Feilmelding">
+      <StoryIntro title="Feilmelding">
         <p>
           Feilmelding komponent med link tilbake til forrige side eller
           forsiden. Brukes når det har oppstått en feil i systemet. F.eks.
           ved 404 eller 503 feil.
         </p>
-      </Factbox>
+      </StoryIntro>
       <StoryBody>
         <ErrorMessage
           messages={{

@@ -59,6 +59,9 @@ storiesOf('Sammensatte moduler', module)
         toTopic={() => '#'}
       />
       <h2 className="u-heading">Brødsmulesti blokk eksempel</h2>
+      <p>Blokkvarianten følger brukeren nedover siden, og ligger i header.</p>
+      <p>På små enheter vil blokkvarianten gjemmes. Brødsmulestien er fortsatt
+      tilgjengelig øverst på siden.</p>
       <BreadcrumbBlock
         fadeIn
         subject={subjectList[1]}

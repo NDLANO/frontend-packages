@@ -14,9 +14,9 @@ import NDLAEditor, {
   PlainTextEditor,
   withStateHandler,
 } from 'ndla-editor';
+import { StoryIntro, StoryBody } from 'ndla-ui';
 import { convertFromRaw, EditorState } from 'draft-js';
 import ArticleEditor from './editor/ArticleEditor';
-import { Center } from './helpers';
 import mockEditorState from '../dummydata/mockEditorState';
 
 const StatefulRichTextEditor = withStateHandler(RichTextEditor);
@@ -25,53 +25,45 @@ const StatefulNDLAEditor = withStateHandler(NDLAEditor);
 
 storiesOf('Lekegrind', module)
   .add('NDLA editor uten innhold', () =>
-    <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">NDLA Editor</h1>
-      </section>
-      <StatefulNDLAEditor placeholder="Fortell din historie..." />
-    </Center>,
-  )
-  .add('NDLA editor med eksempel innhold', () =>
-    <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">NDLA Editor</h1>
-      </section>
-      <StatefulNDLAEditor
-        value={EditorState.createWithContent(convertFromRaw(mockEditorState))}
-        placeholder="Fortell din historie..."
-      />
-    </Center>,
+    <div>
+      <StoryIntro title="NDLA editor uten innhold" />
+      <StoryBody>
+        <StatefulNDLAEditor placeholder="Fortell din historie..." />
+      </StoryBody>
+    </div>,
   )
   .add('NDLA editor med innhold', () =>
-    <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">NDLA Editor</h1>
-      </section>
-      <ArticleEditor articleId="86" />
-    </Center>,
+    <div>
+      <StoryIntro title="NDLA editor med innhold" />
+      <StoryBody>
+        <StatefulNDLAEditor
+          value={EditorState.createWithContent(convertFromRaw(mockEditorState))}
+          placeholder="Fortell din historie..."
+          />
+      </StoryBody>
+  </div>,
   )
-  .add('Last artikkel i NDLAEditor', () =>
-    <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">NDLA Editor</h1>
-      </section>
-      <ArticleEditor />
-    </Center>,
+  .add('Last artikkel i NDLA editor', () =>
+    <div>
+      <StoryIntro title="Last artikkel i NDLA editor" />
+        <StoryBody>
+          <ArticleEditor />
+        </StoryBody>
+    </div>,
   )
-  .add('Rik tekst editor', () =>
-    <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">Rik tekst Editor</h1>
-      </section>
-      <StatefulRichTextEditor placeholder="Fortell din historie..." />
-    </Center>,
+  .add('Rik teksteditor', () =>
+    <div>
+      <StoryIntro title="Rik teksteditor" />
+      <StoryBody>
+        <StatefulRichTextEditor placeholder="Fortell din historie..." />
+      </StoryBody>
+    </div>,
   )
-  .add('Enkel tekst editor', () =>
-    <Center>
-      <section className="c-factbox">
-        <h1 className="u-heading">Enkel tekst Editor</h1>
-      </section>
-      <StatefulPlainTextEditor placeholder="Fortell din historie..." />
-    </Center>,
+  .add('Enkel teksteditor', () =>
+    <div>
+      <StoryIntro title="Enkel teksteditor" />
+      <StoryBody>
+        <StatefulPlainTextEditor placeholder="Fortell din historie..." />
+      </StoryBody>
+    </div>,
   );

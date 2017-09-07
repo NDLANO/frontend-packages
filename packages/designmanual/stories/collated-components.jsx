@@ -34,8 +34,6 @@ import {
 } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import {
-  ArticleResourceList,
-  LearningPathResourceList,
   ResourceSubsetList,
 } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
@@ -308,23 +306,22 @@ storiesOf('Sammensatte moduler', module)
       </div>
     </Center>,
   )
-  .add('Læringsressurser enkeltstående', () =>
-    <Center>
+  .add('Læringsressurser', () =>
+    <div>
+      <StoryIntro title="Læringsressurser">
+        <p>Læringsressurser deles opp i læringsstier, lærestoff og oppgaver og
+          aktiviteter. Hver del inneholder opp til åtte innholdselementer, før
+          listen brytes opp med en «Vis mer»-knapp.</p>
+        <p>Ved å klikke på «Tilleggstoff» vil man vise også innhold som er
+          tilleggstoff, som ellers er skjult. Disse er merket med T-ikonet,
+          samt med en noe dusere farge. Sjekkboksen skal være markert når tilleggstoff
+          er aktivt.</p>
+        <p>Knappen «Vis mer» lar brukeren populere listen med flere elementer.</p>
+      </StoryIntro>
       <LayoutItem layout="center">
-        <h2 className="u-heading">Læringsstier eksempel</h2>
-        <ArticleResourceList />
-        <h2 className="u-heading">Lærestoff eksempel</h2>
-        <LearningPathResourceList />
-      </LayoutItem>
-    </Center>,
-  )
-  .add('Læringsressurser samlet', () =>
-    <Center>
-      <LayoutItem layout="center">
-        <h2 className="u-heading">Læringsressurser samlet</h2>
         <ResourceSubsetList />
       </LayoutItem>
-    </Center>,
+    </div>,
   )
   .add('Paginering', () =>
     <Center>

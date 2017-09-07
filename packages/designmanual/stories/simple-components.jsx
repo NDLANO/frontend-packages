@@ -10,7 +10,6 @@ import {
   Factbox,
   Logo,
   LayoutItem,
-  OneColumn,
   ClickableLicenseByline,
   StoryBody,
 } from 'ndla-ui';
@@ -283,7 +282,10 @@ storiesOf('Enkle komponenter', module)
                 Om artikkelen har et bilde under ingressen, må høyrespalten
                 plasseres under denne.
               </p>
-              <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
+              <p>
+                På mobil skal høyrespalten alltid havne på slutten av
+                artikkelen.
+              </p>
             </div>
           </Aside>
           <p>

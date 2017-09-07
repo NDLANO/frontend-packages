@@ -410,7 +410,7 @@ storiesOf('Sammensatte moduler', module)
               </svg>
             </div>
             <div className="c-collate__panel">
-                <p>Innhold her</p>
+              <p>Innhold her</p>
               <h3>Utfordringer til deg:</h3>
               <details>
                 <summary>Utfordringer</summary>

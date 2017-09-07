@@ -16,10 +16,7 @@ export const fetchArticle = id =>
         headers: headerWithAccessToken(token),
       }).then(res => {
         if (res.ok) {
-          return res
-            .json()
-            .then(article => ({ ...article, title: article.title[0].title }))
-            .then(article => resolve(article));
+          return res.json().then(article => resolve(article));
         }
         return res.json().then(json => reject(json));
       });
@@ -38,8 +35,8 @@ export const fetchArticleFromApi = id =>
             .json()
             .then(article => ({
               ...article,
-              title: article.title[0].title,
-              content: article.content[0].content,
+              title: article.title.title,
+              content: article.content.content,
             }))
             .then(article => resolve(article));
         }

@@ -304,7 +304,6 @@ storiesOf('Emnesider', module)
   )
   .add('4. Underemne', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero>
           <OneColumn>
@@ -321,6 +320,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <ArticleLoader articleId="5948" notitle />
         <OneColumn>
           <article className="c-article">
@@ -336,7 +336,6 @@ storiesOf('Emnesider', module)
   )
   .add('Last inn emne', () =>
     <PageContainer>
-      <Content>
         <MastheadWithTopicMenu />
         <Hero>
           <OneColumn>
@@ -353,6 +352,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
+      <Content>
         <LayoutItem layout="extend">
           <ArticleLoader articleId="" closeButton />
           <div className="u-padding-bottom-huge" />

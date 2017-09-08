@@ -242,6 +242,21 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>,
   )
+  .add('Bruk av lenker', () =>
+    <div>
+      <StoryIntro title="Bruk av lenker">
+        <p>
+          Lenker på <a href="//ndla.no">ndla.no</a> bruker den
+          vanlige konvensjonen med underlinje. Lenker skal i hovedsak åpne i
+          samme vindu, (det vil si, bruke{' '}
+          <code>target=&quot;_self&quot;</code>) eller ingen
+          target-attributt, med mindre den inngår i et skjema, eller i en
+          læringssammenhengen hvor det er nødvendig at brukeren beholder
+          vinduet eller fanen man står i.
+        </p>
+      </StoryIntro>
+    </div>,
+  )
   .add('Faktaboks og høyrespalte', () =>
     <div>
       <StoryIntro title="Faktaboks og høyrespalte">

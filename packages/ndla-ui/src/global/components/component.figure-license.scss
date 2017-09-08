@@ -53,7 +53,3 @@
   @include inuit-font-size(18px);
   color: $brand-color;
 }
-
-
-/* Hack to remove CC-icon because it's not a license. Fix in code instead? */
-.c-figure-license__details .c-license-icons__item:first-child svg { display:none; }

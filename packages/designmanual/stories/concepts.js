@@ -14,10 +14,12 @@ storiesOf('Konsepter', module).add('Navngivning av innholdstyper', () =>
         </ul>
         <h2 className="u-heading">Innholdskategorier for lærestoff:</h2>
         <ul>
-          <li>Emnebeskrivelse</li>
-          <li>Lærestoff (Fagtekster, Bilder, Video, Historiske kilder, …)</li>
-          <li>Læringsstier</li>
+          <li>Læringssti</li>
+          <li>Fagstoff (Fagtekster, Bilder, Video, Historiske kilder, …)</li>
           <li>Oppgaver og aktiviteter</li>
+          <li>Vurderingsressurs</li>
+          <li>Ekstern læringsressurs</li>
+          <li>Kildemateriale</li>
         </ul>
     </StoryBody>
   </div>,

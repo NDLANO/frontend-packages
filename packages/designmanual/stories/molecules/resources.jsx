@@ -20,12 +20,12 @@ const toLink = () => ({
 
 const resourceGroup2 = {
   id: 'urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73',
-  title: 'Lærestoff',
+  title: 'Fagstoff',
   description: 'Relaterte emneartikler',
-  viewAllLinkTitle: 'Mer lærestoff',
+  viewAllLinkTitle: 'Mer fagstoff',
   resources: articleResources,
   icon: 'Document',
-  type: 'Lærestoff',
+  type: 'Fagstoff',
 };
 const resourceGroup1 = {
   id: 'urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511',

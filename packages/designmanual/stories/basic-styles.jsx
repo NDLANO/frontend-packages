@@ -358,15 +358,9 @@ storiesOf('Grunnstiler', module)
             <h2 id="lenker" className="u-heading">
               Lenker
             </h2>
-            <p>
-              <a>Lenker</a> på <a href="//ndla.no">ndla.no</a> bruker den
-              vanlige konvensjonen med underlinje. Lenker skal i hovedsak åpne i
-              samme vindu, (det vil si, bruke{' '}
-              <code>target=&quot;_self&quot;</code>) eller ingen
-              target-attributt, med mindre den inngår i et skjema, eller i en
-              læringssammenhengen hvor det er nødvendig at brukeren beholder
-              vinduet eller fanen man står i.
-            </p>
+            <p>Lenker på <a href="http://www.ndla.no">ndla.no</a> bruker den vanlige konvensjonen med med linje
+            under teksten, og ndla-blå farge. Dette er et lett gjenkjennelig
+            mønster for brukerne.</p>
             <p>
               Lenker kan enten være eksterne, interne eller vise til innhold på
               samme side ved hjelp av en <code>id</code>-attributt på for
@@ -385,6 +379,8 @@ storiesOf('Grunnstiler', module)
                 </a>
               </p>
             </div>
+
+          <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
       </StoryBody>
     </div>,
   )

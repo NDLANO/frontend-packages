@@ -78,6 +78,14 @@ storiesOf('Sidevisninger', module)
         </Hero>
       <Content>
         <ArticleLoader articleId="49" />
+      <OneColumn>
+        <article className="c-article">
+          <LayoutItem layout="extend">
+            <RelatedArticles resources={articleResources} />
+              <ResourceSubsetList />
+          </LayoutItem>
+        </article>
+      </OneColumn>
       </Content>
       <FooterExample />
     </PageContainer>,
@@ -126,7 +134,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>,
   );
 storiesOf('Artikkelmaler', module)
-  .add('Lærestoff', () =>
+  .add('Fagstoff', () =>
     <PageContainer>
         <MastheadWithTopicMenu />
         <Hero red>

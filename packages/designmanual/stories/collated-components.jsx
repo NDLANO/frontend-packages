@@ -246,19 +246,12 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
-        <FigureWithLicense
-          caption="Mediedokumentar om nyheter og nyhetskriterier."
-          reuseLabel="videoen"
-          typeLabel="video">
-          <iframe
-            title="Youtube"
-            width="480"
-            height="270"
-            src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
-            frameBorder="0"
-            allowFullScreen=""
-          />
-        </FigureWithLicense>
+          <FigureWithLicense>
+            <img
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            />
+          </FigureWithLicense>
       </LayoutItem>
     </Center>,
   )
@@ -293,7 +286,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Læringsressurser', () =>
     <div>
       <StoryIntro title="Læringsressurser">
-        <p>Læringsressurser deles opp i læringsstier, lærestoff og oppgaver og
+        <p>Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
           aktiviteter. Hver del inneholder opp til åtte innholdselementer, før
           listen brytes opp med en «Vis mer»-knapp.</p>
         <p>Ved å klikke på «Tilleggstoff» vil man vise også innhold som er
@@ -439,7 +432,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
         <p>
           Tilleggsstoff-filteret skal kun påvirke ressurstypen den er
-          tilknyttet, f. eks om du aktiverer tilleggsstoff for Lærestoff,
+          tilknyttet, f. eks om du aktiverer tilleggsstoff for Fagstoff,
           vil kun denne listen oppdateres med tilleggsstoff-artikler.
         </p>
       </StoryIntro>

@@ -21,7 +21,7 @@ export default () =>
     <article className="c-article">
       <LayoutItem layout="center">
         <h1 className="c-article__title--icon">
-          <Document />Artikkel lærestoff
+          <Document />Artikkel fagstoff
         </h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å

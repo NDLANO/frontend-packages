@@ -40,3 +40,13 @@
   margin-top: 4px;
   margin-left: $spacing--small;
 }
+
+/* Hack to differentiate CC-icon because it's not a license. Perhaps give it a class? */
+.c-figure-license__details .c-license-icons__item:first-child, .c-medialist__body .c-license-icons__item:first-child {
+  margin-bottom: $spacing--small;
+  border-bottom: 1px solid $brand-color--tertiary;
+
+  svg {
+    fill: $brand-color;
+  }
+}

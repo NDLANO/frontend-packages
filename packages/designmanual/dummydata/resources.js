@@ -9,7 +9,7 @@ export const articleResources = [
     introduction:
       'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
   },
   {
     topicId: 'urn:topic:170363',
@@ -21,7 +21,7 @@ export const articleResources = [
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Ideer og idéutvikling',
     tag: 'Film',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
   },
   {
     topicId: 'urn:topic:170363',
@@ -33,7 +33,7 @@ export const articleResources = [
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     title: 'Kreativ kommunikasjon',
     tag: 'Film',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -43,7 +43,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:340',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -53,7 +53,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -63,7 +63,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer 2',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -73,7 +73,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer 3',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -83,7 +83,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer 4',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -93,7 +93,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -103,7 +103,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
   {
@@ -113,7 +113,7 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
-    type: 'Lærestoff',
+    type: 'Fagstoff',
     primary: true,
   },
 ];

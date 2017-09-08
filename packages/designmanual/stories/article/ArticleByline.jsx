@@ -23,7 +23,7 @@ const AuthorsList = ({ authors }) =>
     <span {...classes('icon')}>
       <User />
     </span>{' '}
-    {authors.map(author => author.name).join(', ')} (BY-NC-ND)
+    {authors.map(author => author.name).join(', ')} (CC-BY-NC-ND)
   </span>;
 
 AuthorsList.propTypes = {

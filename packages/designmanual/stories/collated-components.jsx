@@ -40,9 +40,6 @@ import {
   ResourceSubsetList,
 } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
-import ImageSearcher from './molecules/imageSearch';
-import AudioSearcher from './molecules/audioSearch';
-import VideoSearcher from './molecules/videoSearch';
 
 const toggle = () => {
   document
@@ -147,18 +144,6 @@ storiesOf('Sammensatte moduler', module)
           </LayoutItem>
         </article>
       </OneColumn>
-    </Center>,
-  )
-  .add('Bildesøk', () =>
-    <Center>
-      <h2 className="u-heading">Bildesøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne
-          modulen krever at det både finnes en token og api url.
-        </p>
-        <ImageSearcher />
-      </div>
     </Center>,
   )
   .add('Emne artikkel', () =>
@@ -292,18 +277,6 @@ storiesOf('Sammensatte moduler', module)
           <LicenseExample />
         </LayoutItem>
       </article>
-    </Center>,
-  )
-  .add('Lydsøk', () =>
-    <Center>
-      <h2 className="u-heading">Lydsøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api. Denne modulen
-          krever at det både finnes en token og api url.
-        </p>
-        <AudioSearcher />
-      </div>
     </Center>,
   )
   .add('Læringsressurser enkeltstående', () =>
@@ -477,19 +450,6 @@ storiesOf('Sammensatte moduler', module)
           <ResourceSubsetList />
         </LayoutItem>
       </article>
-    </Center>,
-  )
-  .add('Videosøk', () =>
-    <Center>
-      <h2 className="u-heading">Videosøk</h2>
-      <div className="o-wrapper--inner">
-        <p>
-          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
-          Denne modulen krever at det både finnes en token og api url (fra
-          brightcove).
-        </p>
-        <VideoSearcher />
-      </div>
     </Center>,
   )
   .add('Feilmelding', () =>

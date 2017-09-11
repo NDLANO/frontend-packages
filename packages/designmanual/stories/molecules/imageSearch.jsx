@@ -11,13 +11,13 @@ import React from 'react';
 import ImageSearch from 'ndla-image-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
-const fetchImages = (query, page, locale) => {
+const fetchImages = (query, page) => {
   const queryString = query
-    ? `query=${query}&page=${page}&page-size=16&language=${locale}`
-    : `page=${page}&page-size=16&language=${locale}`;
+    ? `query=${query}&page=${page}&page-size=16`
+    : `page=${page}&page-size=16`;
   return new Promise((resolve, reject) => {
     getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/image-api/v1/images/?${queryString}`, {
+      fetch(`https://staging.api.ndla.no/image-api/v2/images/?${queryString}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
       }).then(res => {

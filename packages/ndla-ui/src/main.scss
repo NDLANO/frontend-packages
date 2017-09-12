@@ -1,5 +1,5 @@
 @import "global/settings/settings.config";
-@import "../node_modules/inuitcss/settings/_settings.core";
+@import "../../../node_modules/inuitcss/settings/_settings.core";
 @import "global/settings/settings.global";
 @import "global/settings/settings.colors";
 @import "global/settings/settings.animations";
@@ -9,25 +9,25 @@
 @import "global/utilities/utilities.grids";
 
 // TOOLS
-@import "../node_modules/inuitcss/tools/tools.font-size";
-@import "../node_modules/inuitcss/tools/tools.clearfix";
-@import "../node_modules/inuitcss/tools/tools.rem";
+@import "../../../node_modules/inuitcss/tools/tools.font-size";
+@import "../../../node_modules/inuitcss/tools/tools.clearfix";
+@import "../../../node_modules/inuitcss/tools/tools.rem";
 @import "global/utilities/mixin_icons";
 
 $mq-breakpoints: (mobile: 320px, tablet: 600px, desktop: 980px, wide: 1300px);
 $inuit-fractions: 1 2 3 4 5 6 10 12;
-@import "../node_modules/sass-mq/mq";
+@import "../../../node_modules/sass-mq/mq";
 @import "global/tools/tools.aliases";
 
 // GENERIC
-@import "../node_modules/inuitcss/generic/generic.box-sizing";
-@import "../node_modules/inuitcss/generic/generic.normalize";
-@import "../node_modules/inuitcss/generic/generic.shared";
+@import "../../../node_modules/inuitcss/generic/generic.box-sizing";
+@import "../../../node_modules/inuitcss/generic/generic.normalize";
+@import "../../../node_modules/inuitcss/generic/generic.shared";
 
 // ELEMENTS
 $inuit-wrapper-width: 1024px;
 @import "global/elements/elements.page";
-@import "../node_modules/inuitcss/elements/elements.headings";
+@import "../../../node_modules/inuitcss/elements/elements.headings";
 @import "global/elements/elements.headings";
 @import "global/elements/elements.figure";
 @import "global/elements/elements.quotations";
@@ -43,14 +43,14 @@ $inuit-wrapper-width: 1024px;
 @import "global/elements/elements.code";
 
 // OBJECTS
-@import "../node_modules/inuitcss/objects/objects.block";
-@import "../node_modules/inuitcss/objects/objects.box";
-@import "../node_modules/inuitcss/objects/objects.flag";
-@import "../node_modules/inuitcss/objects/objects.layout";
-@import "../node_modules/inuitcss/objects/objects.list-bare";
-@import "../node_modules/inuitcss/objects/objects.list-inline";
-@import "../node_modules/inuitcss/objects/objects.media";
-@import "../node_modules/inuitcss/objects/objects.wrapper";
+@import "../../../node_modules/inuitcss/objects/objects.block";
+@import "../../../node_modules/inuitcss/objects/objects.box";
+@import "../../../node_modules/inuitcss/objects/objects.flag";
+@import "../../../node_modules/inuitcss/objects/objects.layout";
+@import "../../../node_modules/inuitcss/objects/objects.list-bare";
+@import "../../../node_modules/inuitcss/objects/objects.list-inline";
+@import "../../../node_modules/inuitcss/objects/objects.media";
+@import "../../../node_modules/inuitcss/objects/objects.wrapper";
 @import "global/objects/objects.lists";
 @import "global/objects/objects.wrapper";
 
@@ -91,9 +91,9 @@ $inuit-wrapper-width: 1024px;
 @import "ErrorMessage/component.error-message";
 
 // UTILITIES
-@import "../node_modules/inuitcss/utilities/utilities.widths";
-@import "../node_modules/inuitcss/utilities/utilities.headings";
-@import "../node_modules/inuitcss/utilities/utilities.spacing";
+@import "../../../node_modules/inuitcss/utilities/utilities.widths";
+@import "../../../node_modules/inuitcss/utilities/utilities.headings";
+@import "../../../node_modules/inuitcss/utilities/utilities.spacing";
 @import "global/utilities/utilities.typographic";
 @import "global/utilities/utilities.shame";
 @import "global/utilities/utilities.mobile";

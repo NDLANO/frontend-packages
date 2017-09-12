@@ -6,7 +6,7 @@ const isWindows = process.platform === 'win32';
 const storybook = isWindows ? 'start-storybook.cmd' : 'start-storybook';
 const storybookCmd = path.resolve(
   __dirname,
-  `../packages/designmanual/node_modules/.bin/${storybook}`,
+  `../node_modules/.bin/${storybook}`,
 );
 
 runCommand(

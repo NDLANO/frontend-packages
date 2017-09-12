@@ -8,8 +8,8 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es && npm run build:css",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --out-dir lib --ignore __tests__",
-    "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --out-dir es --ignore __tests__",
+    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --quiet --out-dir es --ignore __tests__",
     "build:frontend": "npm run build:css && cp ./lib/style.css ~/Dropbox/Sites/ndla-frontend/style",
     "build:css": "$(cd ..; npm bin)/webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "clean": "$(cd ..; npm bin)/rimraf lib es dist",

@@ -23,7 +23,7 @@ export default function ImageSearchResult({
   onImageClick,
   selectedImage,
   onSelectImage,
-  useImageTitle
+  useImageTitle,
 }) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 

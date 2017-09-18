@@ -18,7 +18,6 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-
 export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
   const tags = convertFieldWithFallback(image, 'tags', []);
   return (

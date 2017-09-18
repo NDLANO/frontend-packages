@@ -12,4 +12,10 @@ import copyTextToClipboard from './copyTextToClipboard';
 import convertFieldWithFallback from './convertFieldWithFallback';
 import { tagsI18N } from './i18nFieldFinder';
 
-export { uuid, getComponentName, copyTextToClipboard, tagsI18N, convertFieldWithFallback };
+export {
+  uuid,
+  getComponentName,
+  copyTextToClipboard,
+  tagsI18N,
+  convertFieldWithFallback,
+};

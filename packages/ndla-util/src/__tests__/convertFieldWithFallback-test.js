@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- /* eslint-env jest */
+/* eslint-env jest */
 
 import convertFieldWithFallback from '../convertFieldWithFallback';
 

@@ -37,7 +37,7 @@
     "ndla-article-scripts": "^0.0.3",
     "ndla-licenses": "^0.0.11",
     "ndla-ui": "^0.7.18",
-    "ndla-util": "^0.1.6",
+    "ndla-util": "^0.1.7",
     "react": "^15.0.0",
     "react-bem-helper": "^1.2.0",
     "react-dom": "^15.0.0"

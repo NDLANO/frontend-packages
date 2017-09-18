@@ -23,7 +23,7 @@ export default function ImageSearchResult({
   onImageClick,
   selectedImage,
   onSelectImage,
-  locale,
+  useImageTitle
 }) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
@@ -34,7 +34,7 @@ export default function ImageSearchResult({
           <img
             role="presentation"
             alt="presentation"
-            srcSet={getSrcSets(image.previewUrl)}
+            srcSet={getSrcSets(encodeURI(image.previewUrl))}
           />
         </Button>
       </div>
@@ -42,7 +42,7 @@ export default function ImageSearchResult({
         ? <PreviewImage
             image={selectedImage}
             onSelectImage={onSelectImage}
-            locale={locale}
+            useImageTitle={useImageTitle}
           />
         : ''}
     </div>
@@ -59,5 +59,5 @@ ImageSearchResult.propTypes = {
     id: PropTypes.string.isRequired,
   }),
   onSelectImage: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
+  useImageTitle: PropTypes.string.isRequired,
 };

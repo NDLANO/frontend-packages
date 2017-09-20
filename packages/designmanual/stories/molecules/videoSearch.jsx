@@ -10,17 +10,29 @@ import React from 'react';
 
 import VideoSearch from 'ndla-video-search';
 import {
-  firstBrightCoveList,
-  secondBrightCoveList,
+  firstBrightcoveList,
+  firstYouTubeList,
+  secondBrightcoveList,
+  secondYouTubeList,
   brightCoveMockVideo,
 } from '../../dummydata';
 
-const fetchVideos = (query, offset) =>
+const firstDummyData = {
+  brightcove: firstBrightcoveList,
+  youtube: firstYouTubeList.items,
+};
+
+const secondDummyData = {
+  brightcove: secondBrightcoveList,
+  youtube: secondYouTubeList.items,
+};
+
+const fetchVideos = (query, offset, limit, type) =>
   new Promise(resolve => {
     if (offset > 0) {
-      return setTimeout(() => resolve(secondBrightCoveList), 1000);
+      return setTimeout(() => resolve(secondDummyData[type]), 1000);
     }
-    return setTimeout(() => resolve(firstBrightCoveList), 1000);
+    return setTimeout(() => resolve(firstDummyData[type]), 1000);
   });
 
 const fetchVideo = id =>
@@ -31,8 +43,8 @@ const fetchVideo = id =>
   });
 
 export const VideoSearcher = () => {
-  const videoSelect = video => {
-    console.log(video); // eslint-disable-line no-console
+  const videoSelect = (video, type = 'brightcove') => {
+    console.log(video, type); // eslint-disable-line no-console
   };
 
   const onError = err => {
@@ -45,6 +57,8 @@ export const VideoSearcher = () => {
     noResults: 'Ingen videor funnet.',
     addVideo: 'Bruk video',
     previewVideo: 'Forhåndsvis',
+    publishedDate: 'Publisert dato',
+    hits: 'Treff',
   };
   return (
     <VideoSearch

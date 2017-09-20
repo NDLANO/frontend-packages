@@ -8,46 +8,53 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, LicenseIconList } from 'ndla-ui';
-import { getLicenseByNBTitle } from 'ndla-licenses';
+import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
+import { YouTubeShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'video-search',
   prefix: 'c-',
 });
 
-export default function VideoSearchResult({
+export default function VideoSearchResultYouTube({
   video,
   onVideoPreview,
   selectedVideo,
   onSelectVideo,
-  locale,
   translations,
+  locale,
 }) {
-  const active = selectedVideo && selectedVideo.id === video.id ? 'active' : '';
-  const license = getLicenseByNBTitle(video.custom_fields.license, locale);
+  const videoData = video.pagemap.videoobject[0];
+  const active =
+    selectedVideo &&
+    selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid
+      ? 'active'
+      : '';
 
   return (
-    <div key={video.id} {...classes('list-item', active)}>
+    <div key={videoData.videoid} {...classes('list-item', active)}>
       <div {...classes('list-item-inner')}>
         <img
           role="presentation"
           alt="presentation"
-          src={video.images.thumbnail.src}
+          src={videoData.thumbnailurl}
         />
         <div {...classes('information')}>
           <h2>
-            {video.name}
+            {videoData.name}
           </h2>
-          <div {...classes('copyright-author')}>
-            {video.custom_fields.licenseinfo}
+          <div>
+            {`${translations.publishedDate}: ${new Date(
+              Date.parse(videoData.datepublished),
+            ).toLocaleDateString(locale)}`}
           </div>
-          <div {...classes('license')}>
-            {license.rights
-              ? <LicenseIconList licenseRights={license.rights} noText />
-              : license}
+          <div>
+            {`${translations.hits}: ${videoData.interactioncount}`}
+          </div>
+          <div>
+            {videoData.description}
           </div>
           <Button
             {...classes('button')}
@@ -61,35 +68,27 @@ export default function VideoSearchResult({
         </div>
       </div>
 
-      {selectedVideo && selectedVideo.id === video.id
-        ? <PreviewVideo video={selectedVideo} onVideoPreview={onVideoPreview} />
+      {selectedVideo &&
+      selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid
+        ? <PreviewVideo
+            video={selectedVideo}
+            onVideoPreview={onVideoPreview}
+            selectedType="youtube"
+          />
         : ''}
     </div>
   );
 }
 
-VideoSearchResult.propTypes = {
-  video: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    custom_fields: PropTypes.shape({
-      licenseinfo: PropTypes.string.isRequired,
-      license: PropTypes.string.isRequired,
-    }),
-    images: PropTypes.shape({
-      thumbnail: PropTypes.shape({
-        src: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
+VideoSearchResultYouTube.propTypes = {
+  video: YouTubeShape.isRequired,
   onVideoPreview: PropTypes.func.isRequired,
-  selectedVideo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }),
+  selectedVideo: YouTubeShape,
   onSelectVideo: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
   translations: PropTypes.shape({
     addVideo: PropTypes.string.isRequired,
     previewVideo: PropTypes.string.isRequired,
+    publishedDate: PropTypes.string.isRequired,
   }),
 };

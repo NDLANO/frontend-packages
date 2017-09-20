@@ -9,9 +9,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+// import { Pager } from 'ndla-ui';
 import VideoSearchForm from './VideoSearchForm';
 import VideoSearchList from './VideoSearchList';
 import VideoLoadMoreButton from './VideoLoadMoreButton';
+import VideoTabs from './VideoTabs';
 
 const classes = new BEMHelper({
   name: 'video-search',
@@ -28,14 +30,17 @@ class VideoSearch extends React.Component {
         limit: 10,
       },
       videos: [],
+      selectedType: 'brightcove', // Default
       selectedVideo: undefined,
-      lastPage: 0,
+      page: 1,
+      lastPage: 1,
       totalCount: 0,
       searching: false,
     };
 
     this.submitVideoSearchQuery = this.submitVideoSearchQuery.bind(this);
     this.changeQueryPage = this.changeQueryPage.bind(this);
+    this.onSearchTypeChange = this.onSearchTypeChange.bind(this);
     this.searchVideos = this.searchVideos.bind(this);
     this.onVideoPreview = this.onVideoPreview.bind(this);
     this.onSelectVideo = this.onSelectVideo.bind(this);
@@ -51,30 +56,36 @@ class VideoSearch extends React.Component {
   }
 
   onSelectVideo(video) {
+    const { selectedType } = this.state;
+    const { onVideoSelect } = this.props;
     this.setState({ selectedVideo: undefined });
-    this.props.onVideoSelect(video);
+    onVideoSelect(video, selectedType);
+  }
+
+  onSearchTypeChange(type) {
+    this.setState(
+      { selectedType: type, selectedVideo: undefined, page: 1 },
+      this.searchVideos(this.state.queryObject, type),
+    );
   }
 
   loadMoreVideos() {
+    const { queryObject, videos } = this.state;
+    const { searchVideos, onError } = this.props;
     this.setState({ searching: true });
-    this.props
-      .searchVideos(
-        this.state.queryObject.query,
-        this.state.queryObject.offset + 10,
-        this.state.queryObject.limit,
-      )
+    searchVideos(queryObject.query, queryObject.offset + 10, queryObject.limit)
       .then(result => {
         this.setState(prevState => ({
           queryObject: {
             ...prevState.queryObject,
             offset: prevState.queryObject.offset + 10,
           },
-          videos: this.state.videos.concat(result),
+          videos: videos.concat(result),
           searching: false,
         }));
       })
       .catch(err => {
-        this.props.onError(err);
+        onError(err);
         this.setState({ searching: false });
       });
   }
@@ -87,10 +98,10 @@ class VideoSearch extends React.Component {
     this.searchVideos(queryObject);
   }
 
-  searchVideos(queryObject) {
+  searchVideos(queryObject, selectedType = this.state.selectedType) {
+    const { searchVideos, onError } = this.props;
     this.setState({ searching: true, videos: [] });
-    this.props
-      .searchVideos(queryObject.query, 0, queryObject.limit)
+    searchVideos(queryObject.query, 0, queryObject.limit, selectedType)
       .then(result => {
         this.setState(prevState => ({
           queryObject: {
@@ -103,7 +114,7 @@ class VideoSearch extends React.Component {
         }));
       })
       .catch(err => {
-        this.props.onError(err);
+        onError(err);
         this.setState({ searching: false });
       });
   }
@@ -111,9 +122,47 @@ class VideoSearch extends React.Component {
   render() {
     const { translations, locale } = this.props;
 
-    const { queryObject, videos, selectedVideo, searching } = this.state;
+    const {
+      queryObject,
+      // page,
+      // lastPage,
+      videos,
+      selectedVideo,
+      selectedType,
+      searching,
+    } = this.state;
 
     const { query } = queryObject;
+
+    // const paginationItem = () => {
+    //   if (selectedType === 'brightcove') {
+    //     return (
+    //       <VideoLoadMoreButton
+    //         searching={searching}
+    //         videos={videos}
+    //         loadMoreVideos={this.loadMoreVideos}
+    //         limit={queryObject.limit}
+    //         translations={translations}
+    //       />
+    //     );
+    //   }
+    //   return <Pager page={page ? parseInt(page, 10) : 1} lastPage={lastPage} />;
+    // };
+
+    const searchList = (
+      <div {...classes('list')}>
+        <VideoSearchList
+          translations={translations}
+          selectedType={selectedType}
+          selectedVideo={selectedVideo}
+          videos={videos}
+          locale={locale}
+          onVideoPreview={this.onVideoPreview}
+          searching={searching}
+          onSelectVideo={this.onSelectVideo}
+        />
+      </div>
+    );
 
     return (
       <div {...classes()}>
@@ -123,17 +172,11 @@ class VideoSearch extends React.Component {
           searching={searching}
           translations={translations}
         />
-        <div {...classes('list')}>
-          <VideoSearchList
-            translations={translations}
-            selectedVideo={selectedVideo}
-            videos={videos}
-            locale={locale}
-            onVideoPreview={this.onVideoPreview}
-            searching={searching}
-            onSelectVideo={this.onSelectVideo}
-          />
-        </div>
+        <VideoTabs
+          searchTypes={selectedType}
+          tabContent={searchList}
+          onSearchTypeChange={this.onSearchTypeChange}
+        />
         <VideoLoadMoreButton
           searching={searching}
           videos={videos}

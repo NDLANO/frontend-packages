@@ -13,10 +13,15 @@ import {
 } from './resources';
 import { subjectList } from './mockSubjects';
 import {
-  firstBrightCoveList,
-  secondBrightCoveList,
+  firstBrightcoveList,
+  secondBrightcoveList,
   brightCoveMockVideo,
 } from './mockBrightcove';
+import {
+  firstYouTubeList,
+  secondYouTubeList,
+  youTubeMockVideo,
+} from './mockYouTube';
 
 const article = {
   article4,
@@ -36,9 +41,12 @@ export {
   articleResources,
   exerciseResources,
   subtopicList,
-  firstBrightCoveList,
-  secondBrightCoveList,
+  firstBrightcoveList,
+  secondBrightcoveList,
   brightCoveMockVideo,
+  firstYouTubeList,
+  secondYouTubeList,
+  youTubeMockVideo,
 };
 
 export default article;

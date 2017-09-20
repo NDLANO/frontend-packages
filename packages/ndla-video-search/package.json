@@ -18,17 +18,13 @@
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-video-search/"
   },
-  "keywords": [
-    "ndla"
-  ],
+  "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "es"
-  ],
+  "files": ["lib", "es"],
   "devDependencies": {
     "ndla-article-scripts": "^0.0.3",
     "ndla-licenses": "^0.0.11",
+    "ndla-tabs": "^0.3.5",
     "ndla-ui": "^0.7.18",
     "ndla-util": "^0.1.6",
     "react-helmet": "^5.1.3"

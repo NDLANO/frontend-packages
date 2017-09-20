@@ -9,8 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { BrightcoveShape, YouTubeShape } from './shapes';
 
-import VideoSearchResult from './VideoSearchResult';
+import VideoSearchResultBrightcove from './VideoSearchResultBrightcove';
+import VideoSearchResultYouTube from './VideoSearchResultYouTube';
 
 const classes = new BEMHelper({
   name: 'video-search',
@@ -22,6 +24,7 @@ const VideoSearchList = props => {
     videos,
     locale,
     translations,
+    selectedType,
     selectedVideo,
     onSelectVideo,
     onVideoPreview,
@@ -38,19 +41,38 @@ const VideoSearchList = props => {
   if (searching && !(videos.length > 0)) {
     return <div {...classes('result-spinner')} />;
   }
-  return (
-    <div {...classes('list-inner')}>
-      {videos.map(video =>
-        <VideoSearchResult
-          key={video.id}
+
+  const videoresults = () => {
+    if (selectedType === 'youtube') {
+      return videos.map(video =>
+        <VideoSearchResultYouTube
+          key={video.pagemap.videoobject[0].videoid}
           video={video}
           onVideoPreview={onVideoPreview}
           selectedVideo={selectedVideo}
           onSelectVideo={onSelectVideo}
-          locale={locale}
           translations={translations}
+          locale={locale}
         />,
-      )}
+      );
+    }
+
+    return videos.map(video =>
+      <VideoSearchResultBrightcove
+        key={video.id}
+        video={video}
+        onVideoPreview={onVideoPreview}
+        selectedVideo={selectedVideo}
+        onSelectVideo={onSelectVideo}
+        locale={locale}
+        translations={translations}
+      />,
+    );
+  };
+
+  return (
+    <div {...classes('list-inner')}>
+      {videoresults()}
     </div>
   );
 };
@@ -59,24 +81,12 @@ VideoSearchList.propTypes = {
   onSelectVideo: PropTypes.func.isRequired,
   onVideoPreview: PropTypes.func.isRequired,
   searching: PropTypes.bool.isRequired,
-  selectedVideo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }),
-  videos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      custom_fields: PropTypes.shape({
-        licenseinfo: PropTypes.string.isRequired,
-        license: PropTypes.string.isRequired,
-      }),
-      images: PropTypes.shape({
-        thumbnail: PropTypes.shape({
-          src: PropTypes.string.isRequired,
-        }),
-      }),
-    }),
-  ),
+  selectedType: PropTypes.string.isRequired,
+  selectedVideo: PropTypes.oneOfType([BrightcoveShape, YouTubeShape]),
+  videos: PropTypes.oneOfType([
+    PropTypes.arrayOf(BrightcoveShape),
+    PropTypes.arrayOf(YouTubeShape),
+  ]),
   translations: PropTypes.shape({
     searchPlaceholder: PropTypes.string.isRequired,
     searchButtonTitle: PropTypes.string.isRequired,

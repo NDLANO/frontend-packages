@@ -1,4 +1,12 @@
-export const firstBrightCoveList = [
+/**
+ * Copyright (c) 2017-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+export const firstBrightcoveList = [
   {
     id: '5388423620001',
     account_id: '4806596774001',
@@ -759,7 +767,7 @@ export const firstBrightCoveList = [
     updated_at: '2017-04-07T12:38:55.637Z',
   },
 ];
-export const secondBrightCoveList = [
+export const secondBrightcoveList = [
   {
     id: '5388679539001',
     account_id: '4806596774001',

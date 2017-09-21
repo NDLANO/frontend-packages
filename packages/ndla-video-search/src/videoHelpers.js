@@ -8,7 +8,7 @@
 
 export const getLastPage = (search, type) => {
   if (type === 'youtube') {
-    if (search.queries) {
+    if (search.queries && search.queries.request.length > 0) {
       return Math.ceil(
         search.queries.request[0].totalResults /
           search.queries.request[0].count,

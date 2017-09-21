@@ -559,9 +559,9 @@ export const firstYouTubeList = {
       link: 'https://www.youtube.com/watch?v=PFsTyRcMItE',
       displayLink: 'www.youtube.com',
       snippet:
-        'May 16, 2012 ... Radioaktivitet er partikler eller elektromagnetisk str￥ling som blir sendt ut fra \nustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meﾠ...',
+        'May 16, 2012 ... Radioaktivitet er partikler eller elektromagnetisk stråling som blir sendt ut fra \nustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meﾠ...',
       htmlSnippet:
-        'May 16, 2012 \u003cb\u003e...\u003c/b\u003e Radioaktivitet er partikler eller elektromagnetisk str￥ling som blir sendt ut fra \u003cbr\u003e\nustabile atomkjerner. BM: http://\u003cb\u003endla\u003c/b\u003e.no/nb/node/44767?fag=7&amp;me&nbsp;...',
+        'May 16, 2012 \u003cb\u003e...\u003c/b\u003e Radioaktivitet er partikler eller elektromagnetisk stråling som blir sendt ut fra \u003cbr\u003e\nustabile atomkjerner. BM: http://\u003cb\u003endla\u003c/b\u003e.no/nb/node/44767?fag=7&amp;me&nbsp;...',
       cacheId: 'Tl2mzxH4uhMJ',
       formattedUrl: 'https://www.youtube.com/watch?v=PFsTyRcMItE',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=PFsTyRcMItE',
@@ -598,7 +598,7 @@ export const firstYouTubeList = {
             'og:title': 'Radioaktivitet',
             'og:image': 'https://i.ytimg.com/vi/PFsTyRcMItE/hqdefault.jpg',
             'og:description':
-              'Radioaktivitet er partikler eller elektromagnetisk str￥ling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
+              'Radioaktivitet er partikler eller elektromagnetisk stråling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -615,14 +615,14 @@ export const firstYouTubeList = {
             'og:video:type': 'text/html',
             'og:video:width': '480',
             'og:video:height': '360',
-            'og:video:tag': 'alfastr￥ling',
+            'og:video:tag': 'alfastråling',
             'fb:app_id': '87741124305',
             'twitter:card': 'player',
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=PFsTyRcMItE',
             'twitter:title': 'Radioaktivitet',
             'twitter:description':
-              'Radioaktivitet er partikler eller elektromagnetisk str￥ling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
+              'Radioaktivitet er partikler eller elektromagnetisk stråling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
             'twitter:image': 'https://i.ytimg.com/vi/PFsTyRcMItE/hqdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
@@ -644,7 +644,7 @@ export const firstYouTubeList = {
             url: 'https://www.youtube.com/watch?v=PFsTyRcMItE',
             name: 'Radioaktivitet',
             description:
-              'Radioaktivitet er partikler eller elektromagnetisk str￥ling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
+              'Radioaktivitet er partikler eller elektromagnetisk stråling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
             paid: 'False',
             channelid: 'UCBlt6T8B0mmvDh3k5q7EhsA',
             videoid: 'PFsTyRcMItE',
@@ -1207,9 +1207,9 @@ export const firstYouTubeList = {
       link: 'https://www.youtube.com/watch?v=I-xSqPqqRZU',
       displayLink: 'www.youtube.com',
       snippet:
-        '2. mai 2012 ... Nasjonal digital l￦ringsarena (NDLA) er et fylkeskommunalt prosjekt som har \nsom m￥l ￥ tilby kvalitetssikrede, fritt tilgjengelige, nettbaserteﾠ...',
+        '2. mai 2012 ... Nasjonal digital læringsarena (NDLA) er et fylkeskommunalt prosjekt som har \nsom mål å tilby kvalitetssikrede, fritt tilgjengelige, nettbaserteﾠ...',
       htmlSnippet:
-        '2. mai 2012 \u003cb\u003e...\u003c/b\u003e Nasjonal digital l￦ringsarena (\u003cb\u003eNDLA\u003c/b\u003e) er et fylkeskommunalt prosjekt som har \u003cbr\u003e\nsom m￥l ￥ tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte&nbsp;...',
+        '2. mai 2012 \u003cb\u003e...\u003c/b\u003e Nasjonal digital læringsarena (\u003cb\u003eNDLA\u003c/b\u003e) er et fylkeskommunalt prosjekt som har \u003cbr\u003e\nsom mål å tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte&nbsp;...',
       cacheId: 'T-M1gP-pjx4J',
       formattedUrl: 'https://www.youtube.com/watch?v=I-xSqPqqRZU',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=I-xSqPqqRZU',
@@ -1246,7 +1246,7 @@ export const firstYouTubeList = {
             'og:title': 'NDLA.NO',
             'og:image': 'https://i.ytimg.com/vi/I-xSqPqqRZU/hqdefault.jpg',
             'og:description':
-              'Nasjonal digital l￦ringsarena (NDLA) er et fylkeskommunalt prosjekt som har som m￥l ￥ tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte l￦remidler i a...',
+              'Nasjonal digital læringsarena (NDLA) er et fylkeskommunalt prosjekt som har som mål å tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte læremidler i a...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -1270,7 +1270,7 @@ export const firstYouTubeList = {
             'twitter:url': 'https://www.youtube.com/watch?v=I-xSqPqqRZU',
             'twitter:title': 'NDLA.NO',
             'twitter:description':
-              'Nasjonal digital l￦ringsarena (NDLA) er et fylkeskommunalt prosjekt som har som m￥l ￥ tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte l￦remidler i a...',
+              'Nasjonal digital læringsarena (NDLA) er et fylkeskommunalt prosjekt som har som mål å tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte læremidler i a...',
             'twitter:image': 'https://i.ytimg.com/vi/I-xSqPqqRZU/hqdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
@@ -1294,7 +1294,7 @@ export const firstYouTubeList = {
             url: 'https://www.youtube.com/watch?v=I-xSqPqqRZU',
             name: 'NDLA.NO',
             description:
-              'Nasjonal digital l￦ringsarena (NDLA) er et fylkeskommunalt prosjekt som har som m￥l ￥ tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte l￦remidler i a...',
+              'Nasjonal digital læringsarena (NDLA) er et fylkeskommunalt prosjekt som har som mål å tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte læremidler i a...',
             paid: 'False',
             channelid: 'UCBlt6T8B0mmvDh3k5q7EhsA',
             videoid: 'I-xSqPqqRZU',
@@ -1645,9 +1645,9 @@ export const secondYouTubeList = {
       link: 'https://www.youtube.com/watch?v=uEwGgwtx_aA',
       displayLink: 'www.youtube.com',
       snippet:
-        'Aug 27, 2012 ... ... hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det \nperifere nervesystemet og refleks. Bokm￥l: http://ndla.no/nb/no...',
+        'Aug 27, 2012 ... ... hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det \nperifere nervesystemet og refleks. Bokmål: http://ndla.no/nb/no...',
       htmlSnippet:
-        'Aug 27, 2012 \u003cb\u003e...\u003c/b\u003e ... hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det \u003cbr\u003e\nperifere nervesystemet og refleks. Bokm￥l: http://\u003cb\u003endla\u003c/b\u003e.no/nb/no...',
+        'Aug 27, 2012 \u003cb\u003e...\u003c/b\u003e ... hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det \u003cbr\u003e\nperifere nervesystemet og refleks. Bokmål: http://\u003cb\u003endla\u003c/b\u003e.no/nb/no...',
       cacheId: 'Hm8kSRSpgR4J',
       formattedUrl: 'https://www.youtube.com/watch?v=uEwGgwtx_aA',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=uEwGgwtx_aA',
@@ -1684,7 +1684,7 @@ export const secondYouTubeList = {
             'og:title': 'Nervesystemet',
             'og:image': 'https://i.ytimg.com/vi/uEwGgwtx_aA/maxresdefault.jpg',
             'og:description':
-              'L￦r om nervesystemet hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det perifere nervesystemet og refleks. Bokm￥l: http://ndla.no/nb/no...',
+              'Lær om nervesystemet hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det perifere nervesystemet og refleks. Bokmål: http://ndla.no/nb/no...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -1713,7 +1713,7 @@ export const secondYouTubeList = {
             url: 'https://www.youtube.com/watch?v=uEwGgwtx_aA',
             name: 'Nervesystemet',
             description:
-              'L￦r om nervesystemet hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det perifere nervesystemet og refleks. Bokm￥l: http://ndla.no/nb/no...',
+              'Lær om nervesystemet hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det perifere nervesystemet og refleks. Bokmål: http://ndla.no/nb/no...',
             paid: 'False',
             channelid: 'UCBlt6T8B0mmvDh3k5q7EhsA',
             videoid: 'uEwGgwtx_aA',
@@ -1754,15 +1754,15 @@ export const secondYouTubeList = {
     },
     {
       kind: 'customsearch#result',
-      title: 'Regnearkmodellene for l￥n fra NDLA - YouTube',
+      title: 'Regnearkmodellene for lån fra NDLA - YouTube',
       htmlTitle:
-        'Regnearkmodellene for l￥n fra \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
+        'Regnearkmodellene for lån fra \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
       link: 'https://www.youtube.com/watch?v=nq9FlhZXheA',
       displayLink: 'www.youtube.com',
       snippet:
-        'May 3, 2013 ... Annuitetsl￥n: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Seriel￥n: http:\n//ndla.no/nb/contentbrowser/node/26630?fag=55.',
+        'May 3, 2013 ... Annuitetslån: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Serielån: http:\n//ndla.no/nb/contentbrowser/node/26630?fag=55.',
       htmlSnippet:
-        'May 3, 2013 \u003cb\u003e...\u003c/b\u003e Annuitetsl￥n: http://\u003cb\u003endla\u003c/b\u003e.no/nb/contentbrowser/node/26628?fag=55 Seriel￥n: http:\u003cbr\u003e\n//\u003cb\u003endla\u003c/b\u003e.no/nb/contentbrowser/node/26630?fag=55.',
+        'May 3, 2013 \u003cb\u003e...\u003c/b\u003e Annuitetslån: http://\u003cb\u003endla\u003c/b\u003e.no/nb/contentbrowser/node/26628?fag=55 Serielån: http:\u003cbr\u003e\n//\u003cb\u003endla\u003c/b\u003e.no/nb/contentbrowser/node/26630?fag=55.',
       cacheId: 'thOgxjredMcJ',
       formattedUrl: 'https://www.youtube.com/watch?v=nq9FlhZXheA',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=nq9FlhZXheA',
@@ -1792,9 +1792,9 @@ export const secondYouTubeList = {
           {
             'og:site_name': 'YouTube',
             'og:url': 'https://www.youtube.com/watch?v=nq9FlhZXheA',
-            'og:title': 'Regnearkmodellene for l￥n fra NDLA - YouTube',
+            'og:title': 'Regnearkmodellene for lån fra NDLA - YouTube',
             'og:description':
-              'Annuitetsl￥n: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Seriel￥n: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
+              'Annuitetslån: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Serielån: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
             'og:image': 'https://i.ytimg.com/vi/nq9FlhZXheA/maxresdefault.jpg',
             'apple-itunes-app': 'app-id=544007664',
             'al:ios:app_store_id': '544007664',
@@ -1814,14 +1814,14 @@ export const secondYouTubeList = {
             'og:video:type': 'text/html',
             'og:video:width': '1280',
             'og:video:height': '720',
-            'og:video:tag': 'l￥n',
+            'og:video:tag': 'lån',
             'fb:app_id': '87741124305',
             'twitter:card': 'player',
             'twitter:site': '@YouTube',
             'twitter:url': 'https://www.youtube.com/watch?v=nq9FlhZXheA',
-            'twitter:title': 'Regnearkmodellene for l￥n fra NDLA - YouTube',
+            'twitter:title': 'Regnearkmodellene for lån fra NDLA - YouTube',
             'twitter:description':
-              'Annuitetsl￥n: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Seriel￥n: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
+              'Annuitetslån: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Serielån: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
             'twitter:image':
               'https://i.ytimg.com/vi/nq9FlhZXheA/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
@@ -1837,9 +1837,9 @@ export const secondYouTubeList = {
         videoobject: [
           {
             url: 'https://www.youtube.com/watch?v=nq9FlhZXheA',
-            name: 'Regnearkmodellene for l￥n fra NDLA - YouTube',
+            name: 'Regnearkmodellene for lån fra NDLA - YouTube',
             description:
-              'Annuitetsl￥n: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Seriel￥n: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
+              'Annuitetslån: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Serielån: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
             paid: 'False',
             interactioncount: '111',
             datepublished: '2013-05-03',
@@ -2135,14 +2135,14 @@ export const secondYouTubeList = {
     },
     {
       kind: 'customsearch#result',
-      title: 'Historiefaget p￥ NDLA - YouTube',
-      htmlTitle: 'Historiefaget p￥ \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
+      title: 'Historiefaget på NDLA - YouTube',
+      htmlTitle: 'Historiefaget på \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
       link: 'https://www.youtube.com/watch?v=cfV78Gil-gc',
       displayLink: 'www.youtube.com',
       snippet:
-        '15. aug 2016 ... Historiefaget er klart til bruk p￥ NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle \nom fagressursene. Her finner du faget:ﾠ...',
+        '15. aug 2016 ... Historiefaget er klart til bruk på NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle \nom fagressursene. Her finner du faget:ﾠ...',
       htmlSnippet:
-        '15. aug 2016 \u003cb\u003e...\u003c/b\u003e Historiefaget er klart til bruk p￥ \u003cb\u003eNDLA\u003c/b\u003e. H￸r fagredakt￸r Inga Berntsen Rudi fortelle \u003cbr\u003e\nom fagressursene. Her finner du faget:&nbsp;...',
+        '15. aug 2016 \u003cb\u003e...\u003c/b\u003e Historiefaget er klart til bruk på \u003cb\u003eNDLA\u003c/b\u003e. H￸r fagredakt￸r Inga Berntsen Rudi fortelle \u003cbr\u003e\nom fagressursene. Her finner du faget:&nbsp;...',
       cacheId: 'xn99HjgthssJ',
       formattedUrl: 'https://www.youtube.com/watch?v=cfV78Gil-gc',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=cfV78Gil-gc',
@@ -2172,14 +2172,14 @@ export const secondYouTubeList = {
         ],
         metatags: [
           {
-            title: 'Historiefaget p￥ NDLA',
+            title: 'Historiefaget på NDLA',
             'theme-color': '#e62117',
             'og:site_name': 'YouTube',
             'og:url': 'https://www.youtube.com/watch?v=cfV78Gil-gc',
-            'og:title': 'Historiefaget p￥ NDLA',
+            'og:title': 'Historiefaget på NDLA',
             'og:image': 'https://i.ytimg.com/vi/cfV78Gil-gc/hqdefault.jpg',
             'og:description':
-              'Historiefaget er klart til bruk p￥ NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
+              'Historiefaget er klart til bruk på NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -2201,9 +2201,9 @@ export const secondYouTubeList = {
             'twitter:card': 'player',
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=cfV78Gil-gc',
-            'twitter:title': 'Historiefaget p￥ NDLA',
+            'twitter:title': 'Historiefaget på NDLA',
             'twitter:description':
-              'Historiefaget er klart til bruk p￥ NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
+              'Historiefaget er klart til bruk på NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
             'twitter:image': 'https://i.ytimg.com/vi/cfV78Gil-gc/hqdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
@@ -2225,9 +2225,9 @@ export const secondYouTubeList = {
         videoobject: [
           {
             url: 'https://www.youtube.com/watch?v=cfV78Gil-gc',
-            name: 'Historiefaget p￥ NDLA',
+            name: 'Historiefaget på NDLA',
             description:
-              'Historiefaget er klart til bruk p￥ NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
+              'Historiefaget er klart til bruk på NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
             paid: 'False',
             channelid: 'UCBlt6T8B0mmvDh3k5q7EhsA',
             videoid: 'cfV78Gil-gc',
@@ -2267,15 +2267,15 @@ export const secondYouTubeList = {
     },
     {
       kind: 'customsearch#result',
-      title: 'NDLA: Papiravisene p￥ vei ut - YouTube',
+      title: 'NDLA: Papiravisene på vei ut - YouTube',
       htmlTitle:
-        '\u003cb\u003eNDLA\u003c/b\u003e: Papiravisene p￥ vei ut - YouTube',
+        '\u003cb\u003eNDLA\u003c/b\u003e: Papiravisene på vei ut - YouTube',
       link: 'https://www.youtube.com/watch?v=McMUx-FinQc',
       displayLink: 'www.youtube.com',
       snippet:
-        'Aug 25, 2013 ... Grethe Melby, lektor i mediefag ved Laksev￥g videreg￥ende skole i Bergen, g￥r \ngjennom artikkelen om papiravisene som er p￥ vei ut p￥ NDLA.',
+        'Aug 25, 2013 ... Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går \ngjennom artikkelen om papiravisene som er på vei ut på NDLA.',
       htmlSnippet:
-        'Aug 25, 2013 \u003cb\u003e...\u003c/b\u003e Grethe Melby, lektor i mediefag ved Laksev￥g videreg￥ende skole i Bergen, g￥r \u003cbr\u003e\ngjennom artikkelen om papiravisene som er p￥ vei ut p￥ \u003cb\u003eNDLA\u003c/b\u003e.',
+        'Aug 25, 2013 \u003cb\u003e...\u003c/b\u003e Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går \u003cbr\u003e\ngjennom artikkelen om papiravisene som er på vei ut på \u003cb\u003eNDLA\u003c/b\u003e.',
       cacheId: '_GTBVAXi3zAJ',
       formattedUrl: 'https://www.youtube.com/watch?v=McMUx-FinQc',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=McMUx-FinQc',
@@ -2305,14 +2305,14 @@ export const secondYouTubeList = {
         ],
         metatags: [
           {
-            title: 'NDLA: Papiravisene p￥ vei ut',
+            title: 'NDLA: Papiravisene på vei ut',
             'theme-color': '#ff0000',
             'og:site_name': 'YouTube',
             'og:url': 'https://www.youtube.com/watch?v=McMUx-FinQc',
-            'og:title': 'NDLA: Papiravisene p￥ vei ut',
+            'og:title': 'NDLA: Papiravisene på vei ut',
             'og:image': 'https://i.ytimg.com/vi/McMUx-FinQc/maxresdefault.jpg',
             'og:description':
-              'Grethe Melby, lektor i mediefag ved Laksev￥g videreg￥ende skole i Bergen, g￥r gjennom artikkelen om papiravisene som er p￥ vei ut p￥ NDLA',
+              'Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går gjennom artikkelen om papiravisene som er på vei ut på NDLA',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -2334,9 +2334,9 @@ export const secondYouTubeList = {
             'twitter:card': 'player',
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=McMUx-FinQc',
-            'twitter:title': 'NDLA: Papiravisene p￥ vei ut',
+            'twitter:title': 'NDLA: Papiravisene på vei ut',
             'twitter:description':
-              'Grethe Melby, lektor i mediefag ved Laksev￥g videreg￥ende skole i Bergen, g￥r gjennom artikkelen om papiravisene som er p￥ vei ut p￥ NDLA',
+              'Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går gjennom artikkelen om papiravisene som er på vei ut på NDLA',
             'twitter:image':
               'https://i.ytimg.com/vi/McMUx-FinQc/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
@@ -2359,9 +2359,9 @@ export const secondYouTubeList = {
         videoobject: [
           {
             url: 'https://www.youtube.com/watch?v=McMUx-FinQc',
-            name: 'NDLA: Papiravisene p￥ vei ut',
+            name: 'NDLA: Papiravisene på vei ut',
             description:
-              'Grethe Melby, lektor i mediefag ved Laksev￥g videreg￥ende skole i Bergen, g￥r gjennom artikkelen om papiravisene som er p￥ vei ut p￥ NDLA',
+              'Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går gjennom artikkelen om papiravisene som er på vei ut på NDLA',
             paid: 'False',
             channelid: 'UCZASNEqHGCDtx-XM4DrP1ZA',
             videoid: 'McMUx-FinQc',
@@ -2407,9 +2407,9 @@ export const secondYouTubeList = {
       link: 'https://www.youtube.com/watch?v=KA2Ej5epxjk',
       displayLink: 'www.youtube.com',
       snippet:
-        'Feb 4, 2014 ... En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: \nBokm￥l: http://ndla.no/nb/node/110002?fag=52291 Nynorsk:ﾠ...',
+        'Feb 4, 2014 ... En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: \nBokmål: http://ndla.no/nb/node/110002?fag=52291 Nynorsk:ﾠ...',
       htmlSnippet:
-        'Feb 4, 2014 \u003cb\u003e...\u003c/b\u003e En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos \u003cb\u003eNDLA\u003c/b\u003e: \u003cbr\u003e\nBokm￥l: http://\u003cb\u003endla\u003c/b\u003e.no/nb/node/110002?fag=52291 Nynorsk:&nbsp;...',
+        'Feb 4, 2014 \u003cb\u003e...\u003c/b\u003e En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos \u003cb\u003eNDLA\u003c/b\u003e: \u003cbr\u003e\nBokmål: http://\u003cb\u003endla\u003c/b\u003e.no/nb/node/110002?fag=52291 Nynorsk:&nbsp;...',
       cacheId: 'VEFHTNBGZN8J',
       formattedUrl: 'https://www.youtube.com/watch?v=KA2Ej5epxjk',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=KA2Ej5epxjk',
@@ -2446,7 +2446,7 @@ export const secondYouTubeList = {
             'og:title': 'Behov og motiv - videoforedrag',
             'og:image': 'https://i.ytimg.com/vi/KA2Ej5epxjk/maxresdefault.jpg',
             'og:description':
-              'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokm￥l: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
+              'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokmål: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -2470,7 +2470,7 @@ export const secondYouTubeList = {
             'twitter:url': 'https://www.youtube.com/watch?v=KA2Ej5epxjk',
             'twitter:title': 'Behov og motiv - videoforedrag',
             'twitter:description':
-              'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokm￥l: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
+              'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokmål: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
             'twitter:image':
               'https://i.ytimg.com/vi/KA2Ej5epxjk/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
@@ -2495,7 +2495,7 @@ export const secondYouTubeList = {
             url: 'https://www.youtube.com/watch?v=KA2Ej5epxjk',
             name: 'Behov og motiv - videoforedrag',
             description:
-              'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokm￥l: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
+              'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokmål: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
             paid: 'False',
             channelid: 'UCBlt6T8B0mmvDh3k5q7EhsA',
             videoid: 'KA2Ej5epxjk',
@@ -2541,9 +2541,9 @@ export const secondYouTubeList = {
       link: 'https://www.youtube.com/watch?v=293NnCsv870',
       displayLink: 'www.youtube.com',
       snippet:
-        'May 26, 2016 ... L￦r mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt p￥ \nNDLA Historie: http://ndla.no/nb/node/158921?fag=52253ﾠ...',
+        'May 26, 2016 ... Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på \nNDLA Historie: http://ndla.no/nb/node/158921?fag=52253ﾠ...',
       htmlSnippet:
-        'May 26, 2016 \u003cb\u003e...\u003c/b\u003e L￦r mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt p￥ \u003cbr\u003e\n\u003cb\u003eNDLA\u003c/b\u003e Historie: http://\u003cb\u003endla\u003c/b\u003e.no/nb/node/158921?fag=52253&nbsp;...',
+        'May 26, 2016 \u003cb\u003e...\u003c/b\u003e Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på \u003cbr\u003e\n\u003cb\u003eNDLA\u003c/b\u003e Historie: http://\u003cb\u003endla\u003c/b\u003e.no/nb/node/158921?fag=52253&nbsp;...',
       cacheId: 'SJrZSb31YdwJ',
       formattedUrl: 'https://www.youtube.com/watch?v=293NnCsv870',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=293NnCsv870',
@@ -2580,7 +2580,7 @@ export const secondYouTubeList = {
             'og:title': 'Animasjon: Elverikene',
             'og:image': 'https://i.ytimg.com/vi/293NnCsv870/maxresdefault.jpg',
             'og:description':
-              'L￦r mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt p￥ NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokm￥l). Nynorsk: http:/...',
+              'Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokmål). Nynorsk: http:/...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
             'al:ios:url':
@@ -2604,7 +2604,7 @@ export const secondYouTubeList = {
             'twitter:url': 'https://www.youtube.com/watch?v=293NnCsv870',
             'twitter:title': 'Animasjon: Elverikene',
             'twitter:description':
-              'L￦r mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt p￥ NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokm￥l). Nynorsk: http:/...',
+              'Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokmål). Nynorsk: http:/...',
             'twitter:image':
               'https://i.ytimg.com/vi/293NnCsv870/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
@@ -2629,7 +2629,7 @@ export const secondYouTubeList = {
             url: 'https://www.youtube.com/watch?v=293NnCsv870',
             name: 'Animasjon: Elverikene',
             description:
-              'L￦r mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt p￥ NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokm￥l). Nynorsk: http:/...',
+              'Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokmål). Nynorsk: http:/...',
             paid: 'False',
             channelid: 'UCBlt6T8B0mmvDh3k5q7EhsA',
             videoid: '293NnCsv870',

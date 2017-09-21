@@ -17,16 +17,17 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const StoryIntro = ({ title, children }) => (
-    <section {...classes()}>
-      <OneColumn>
-        <LayoutItem layout="center">
-          <h1 className="u-heading">{ title }</h1>
-          { children }
-        </LayoutItem>
-      </OneColumn>
-  </section>
-  )
+const StoryIntro = ({ title, children }) =>
+  <section {...classes()}>
+    <OneColumn>
+      <LayoutItem layout="center">
+        <h1 className="u-heading">
+          {title}
+        </h1>
+        {children}
+      </LayoutItem>
+    </OneColumn>
+  </section>;
 
 StoryIntro.propTypes = {
   title: PropTypes.string,

@@ -11,15 +11,14 @@ import PropTypes from 'prop-types';
 import { OneColumn } from '../Layout/OneColumn';
 import { LayoutItem } from '../Layout/LayoutItem';
 
-const StoryIntro = ({ children }) => (
+const StoryIntro = ({ children }) =>
   <OneColumn>
     <LayoutItem layout="center">
       <article className="c-article c-article--clean">
-        { children }
+        {children}
       </article>
     </LayoutItem>
-  </OneColumn>
-)
+  </OneColumn>;
 
 StoryIntro.propTypes = {
   children: PropTypes.node,

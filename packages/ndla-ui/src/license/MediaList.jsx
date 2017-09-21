@@ -85,7 +85,11 @@ MediaListItemActions.propTypes = {
 export const MediaListItemMeta = ({ items }) =>
   <ul {...cClasses('actions')}>
     {items.map(item =>
-      <li key={uuid()} className="c-medialist__meta-item" dangerouslySetInnerHTML={{__html: item}} />,
+      <li
+        key={uuid()}
+        className="c-medialist__meta-item"
+        dangerouslySetInnerHTML={{ __html: item }}
+      />,
     )}
   </ul>;
 

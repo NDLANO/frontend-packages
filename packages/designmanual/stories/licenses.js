@@ -32,7 +32,6 @@ storiesOf('Lisensgivning', module).add('Lisenstekster', () =>
         </article>,
       )}
     </StoryBody>
-
   </div>,
 );
 storiesOf('Lisensgivning', module).add('Modellklarering', () =>

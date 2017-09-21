@@ -3,7 +3,7 @@
 ** Popup displaying license info
 **
 **  PRINCIPLE:
-**  
+**
 **/
 
 .c-figure__license {
@@ -22,6 +22,11 @@
 }
 .c-figure-license__button {
   margin-bottom: $spacing--small;
+}
+.c-figure-license__link {
+  display: block;
+  width: 100%;
+  color: $brand-color;
 }
 .c-figure-license__close {
   position: absolute;

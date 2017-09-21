@@ -10,15 +10,16 @@
 **/
 
 .c-footnotes {
+  margin: $spacing--large 0 0 0;
+  padding: $spacing--large 0 0 0;
   display: block;
-  margin-top: $spacing--large;
-  padding-top: $spacing;
   border-top: 2px solid $brand-grey--lighter;
   color: gray;
   @include inuit-font-size(15px);
 }
 .c-footnotes__item, .c-footnote__item {
   margin-bottom: $spacing--small;
+  margin-left: 0;
   &:before {
     display: none;
   }

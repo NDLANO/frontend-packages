@@ -1,11 +1,12 @@
 .footer {
   color: $brand-grey-dark;
-  padding: $spacing--large $spacing;
+  padding: $spacing--large $spacing--small;
   margin-top: $spacing--large;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: $spacing;
-  width: $inuit-wrapper-width;
+  width: 100%;
+  max-width: $inuit-wrapper-width;
 
   @include mq(tablet) {
     padding: 0 $spacing * 2.5;

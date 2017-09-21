@@ -2,8 +2,7 @@ import React from 'react';
 import { uuid } from 'ndla-util';
 import { getLicenseRightByAbbreviation } from 'ndla-licenses';
 import { storiesOf } from '@storybook/react';
-
-import { Center } from './helpers';
+import { StoryIntro, StoryBody } from 'ndla-ui';
 
 const licenses = [
   'by',
@@ -17,23 +16,29 @@ const licenses = [
 ].map(license => getLicenseRightByAbbreviation(license));
 
 storiesOf('Lisensgivning', module).add('Lisenstekster', () =>
-  <Center>
-    <article className="o-wrapper--narrow">
-      <section className="c-factbox">
-        <h1 className="u-heading">Lisenstekster</h1>
-      </section>
-      <section>
-        {licenses.map(license =>
-          <article key={uuid()}>
-            <h2>
-              {license.title}
-            </h2>
-            <p>
-              {license.description}
-            </p>
-          </article>,
-        )}
-      </section>
-    </article>
-  </Center>,
+  <div>
+    <StoryIntro title="Lisenstekster">
+      <p>Lisenstekster og merking</p>
+    </StoryIntro>
+    <StoryBody>
+      {licenses.map(license =>
+        <article key={uuid()}>
+          <h2>
+            {license.title}
+          </h2>
+          <p>
+            {license.description}
+          </p>
+        </article>,
+      )}
+    </StoryBody>
+  </div>,
+);
+storiesOf('Lisensgivning', module).add('Modellklarering', () =>
+  <div>
+    <StoryIntro title="Modellklarering på personbilder" />
+    <StoryBody>
+      <p>Modellklarering er noe som kommer ved en senere anledning.</p>
+    </StoryBody>
+  </div>,
 );

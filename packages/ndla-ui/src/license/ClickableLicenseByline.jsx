@@ -31,7 +31,7 @@ class ClickableLicenseByline extends Component {
   }
 
   render() {
-    const { children, license, stacked } = this.props;
+    const { children, license, stacked, noText, className } = this.props;
     const { selectedLicenseRight } = this.state;
     const activeLicenseRight = selectedLicenseRight
       ? selectedLicenseRight.short
@@ -44,9 +44,11 @@ class ClickableLicenseByline extends Component {
     return (
       <div className={classList.join(' ')}>
         <LicenseIconList
-          licenseRights={license.rights}
+          licenseRights={license}
           onLicenseIconClick={this.handleLicenseRightChange}
           activeLicenseRight={activeLicenseRight}
+          noText={noText}
+          className={className}
         />
         {selectedLicenseRight
           ? <div className="license-byline__body license-byline__body--black">
@@ -60,11 +62,7 @@ class ClickableLicenseByline extends Component {
             {license.author}
           </span>
         </div>
-        {children
-          ? <div className="license-byline__body">
-              {children}
-            </div>
-          : null}
+        {children}
       </div>
     );
   }
@@ -74,6 +72,8 @@ ClickableLicenseByline.propTypes = {
   license: LicenseShape.isRequired,
   children: PropTypes.node,
   stacked: PropTypes.string,
+  noText: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default ClickableLicenseByline;

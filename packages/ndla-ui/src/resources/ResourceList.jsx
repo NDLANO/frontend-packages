@@ -28,7 +28,7 @@ const Resource = ({ resource, resourceToLinkProps }) => {
   return (
     <li {...classes('item', { secondary }, 'o-flag o-flag--top')}>
       <div {...classes('icon o-flag__img')}>
-        {resource.type === 'Lærestoff' ? <Document /> : null}
+        {resource.type === 'Fagstoff' ? <Document /> : null}
         {resource.type === 'Læringsstier' ? <Path /> : null}
         {resource.type === 'Oppgaver og aktiviteter' ? <Pencil /> : null}
       </div>

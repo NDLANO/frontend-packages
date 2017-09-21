@@ -31,13 +31,19 @@ export class TabsControlled extends Component {
           ]}
         />
         <InlineContainer>
-          <Button onClick={() => this.setState({ selectedIndex: 0 })}>
+          <Button
+            style={{ marginRight: '5px' }}
+            onClick={() => this.setState({ selectedIndex: 0 })}>
             Vis bilde fane
           </Button>
-          <Button onClick={() => this.setState({ selectedIndex: 1 })}>
+          <Button
+            style={{ marginRight: '5px' }}
+            onClick={() => this.setState({ selectedIndex: 1 })}>
             Vis video fane
           </Button>
-          <Button onClick={() => this.setState({ selectedIndex: 2 })}>
+          <Button
+            style={{ marginRight: '5px' }}
+            onClick={() => this.setState({ selectedIndex: 2 })}>
             Vis lyd fane
           </Button>
         </InlineContainer>

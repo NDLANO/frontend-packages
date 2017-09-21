@@ -10,46 +10,50 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { Center } from '../helpers';
+import { StoryIntro, StoryBody } from 'ndla-ui';
+
 import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 
 storiesOf('Produksjonssystem', module)
   .add('Bildesøk', () =>
-    <Center>
-      <h2 className="u-heading">Bildesøk</h2>
-      <div className="o-wrapper--inner">
+    <div>
+      <StoryIntro title="Bildesøk">
         <p>
           Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne
           modulen krever at det både finnes en token og api url.
         </p>
+      </StoryIntro>
+      <StoryBody>
         <ImageSearcher />
-      </div>
-    </Center>,
+      </StoryBody>
+    </div>,
   )
   .add('Lydsøk', () =>
-    <Center>
-      <h2 className="u-heading">Lydsøk</h2>
-      <div className="o-wrapper--inner">
+    <div>
+      <StoryIntro title="Lydsøk">
         <p>
           Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api. Denne modulen
           krever at det både finnes en token og api url.
         </p>
+      </StoryIntro>
+      <StoryBody>
         <AudioSearcher />
-      </div>
-    </Center>,
+      </StoryBody>
+    </div>,
   )
   .add('Videosøk', () =>
-    <Center>
-      <h2 className="u-heading">Videosøk</h2>
-      <div className="o-wrapper--inner">
+    <div>
+      <StoryIntro title="Videosøk">
         <p>
           Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
           Denne modulen krever at det både finnes en token og api url (fra
           brightcove).
         </p>
+      </StoryIntro>
+      <StoryBody>
         <VideoSearcher />
-      </div>
-    </Center>,
+      </StoryBody>
+    </div>,
   );

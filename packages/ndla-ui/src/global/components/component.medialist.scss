@@ -49,7 +49,7 @@
   list-style: none;
   width: 100%;
   button, a {
-    margin: 0 $spacing $spacing--small 0;
+    margin: 0 $spacing--small $spacing--small 0;
   }
 }
 .c-medialist__meta {
@@ -63,6 +63,8 @@
   margin-bottom: 0;
 }
 .c-medialist__ref {
+  background: $white;
+  padding: $spacing--small/4 $spacing--small;
   margin-top: $spacing--small;
   margin-right: $spacing;
   width: 100%;

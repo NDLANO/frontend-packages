@@ -32,7 +32,7 @@ export default () =>
               <User />
             </span>
             <span className="c-article-byline__authors">
-              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Ola Nordnes, Kari Nordnes, Jon Nordgubbe. (BY-NC-ND)
             </span>
           </span>
           <span className="c-article-byline__flex">

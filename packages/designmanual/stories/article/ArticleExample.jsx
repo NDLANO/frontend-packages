@@ -13,9 +13,9 @@ import { Article, OneColumn, LayoutItem } from 'ndla-ui';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
-const ArticleExample = ({ article, withLicenseExample, notitle }) =>
+const ArticleExample = ({ article, withLicenseExample, notitle, reset }) =>
   <OneColumn cssModifier="narrow">
-    <article className="c-article">
+    <article className={reset ? 'c-article c-article--clean' : 'c-article'}>
       <LayoutItem layout="center">
         {notitle
           ? null
@@ -44,6 +44,7 @@ ArticleExample.propTypes = {
   }).isRequired,
   withLicenseExample: PropTypes.bool,
   notitle: PropTypes.bool,
+  reset: PropTypes.bool,
 };
 
 export default ArticleExample;

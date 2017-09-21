@@ -53,6 +53,7 @@ $inuit-wrapper-width: 1024px;
 @import "../../../node_modules/inuitcss/objects/objects.wrapper";
 @import "global/objects/objects.lists";
 @import "global/objects/objects.wrapper";
+@import "global/objects/objects.content";
 
 // COMPONENTS
 // @import "modal/component.licenseToggle";
@@ -82,6 +83,7 @@ $inuit-wrapper-width: 1024px;
 @import "global/components/component.resource-group";
 @import "global/components/component.resources";
 @import "global/components/component.site-navigation";
+@import "global/components/component.source-list";
 @import "global/components/component.tables";
 @import "global/components/component.topic-introduction";
 @import "global/components/component.topic-resource";

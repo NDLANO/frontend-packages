@@ -41,6 +41,11 @@
     background-color: $white;
     padding: $spacing--small $spacing--small $spacing--small/2;
   }
+  tbody th {
+    border-bottom: 0;
+    border-right: 3px solid $brand-color--lighter;
+    padding: $spacing--small/1.5;
+  }
   td {
     vertical-align: top;
     @include inuit-font-size(14px,22px);

@@ -13,21 +13,30 @@ import {
   addShowFigureDetailsClickListeners,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import { Button, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
-const caption = `I værmeldingene til NRK på 1980-tallet var symbolet for strålende
-            solskinn en hvit sirkel. Ved skiftende vær var sirkelen delt i to
-            med en hvit og en svart halvdel.`;
 const authors = [
-  { type: 'Opphavsmann', name: 'Gary Waters' },
-  { type: 'Leverandør', name: 'Corbis' },
-  { type: 'Leverandør', name: 'NTB scanpix' },
+  { type: 'Opphavsmann', name: 'Fotograf Gary Waters' },
+  { type: 'Rettighetshaver', name: 'Leverandør NTB scanpix' },
 ];
 
 class FigureWithLicense extends Component {
+  constructor(props) {
+    super(props);
+    this.update = this.update.bind(this);
+    this.state = {
+      active: false,
+    };
+  }
+
   componentDidMount() {
     addShowFigureDetailsClickListeners();
     addCloseFigureDetailsClickListeners();
+  }
+
+  update() {
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
   }
 
   render() {
@@ -36,14 +45,24 @@ class FigureWithLicense extends Component {
       rulesForUse: 'Regler for bruk av bildet',
       howToReference: 'Slik skal du referere til dette bildet',
     };
+    const caption = this.props.caption ? this.props.caption : ``;
+    const reuseLabel = this.props.reuseLabel
+      ? `Bruk ${this.props.reuseLabel}`
+      : 'Bruk bildet';
+    const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
     return (
-      <Figure className={`c-figure ${this.props.classes}`}>
+      <Figure
+        className={
+          this.state.active ? `c-figure` : `c-figure ${this.props.classes}`
+        }>
         <div className="c-figure__img">
-          {this.props.children}
+          <Button stripped className="u-fullw" onClick={() => this.update()}>
+            {this.props.children}
+          </Button>
         </div>
         <FigureCaption
           caption={caption}
-          reuseLabel="Bruk bildet"
+          reuseLabel={reuseLabel}
           licenseAbbreviation="by-nc-nd"
           authors={authors}
         />
@@ -59,7 +78,7 @@ class FigureWithLicense extends Component {
           <button
             className="c-button c-button--outline c-figure-license__button"
             type="button">
-            Last ned bilde
+            Last ned {typeLabel}
           </button>
         </FigureDetails>
       </Figure>
@@ -70,6 +89,9 @@ class FigureWithLicense extends Component {
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.string,
+  caption: PropTypes.string,
+  reuseLabel: PropTypes.string,
+  typeLabel: PropTypes.string,
 };
 
 export default FigureWithLicense;

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-// import { Pager } from 'ndla-ui';
+import { Pager } from 'ndla-ui';
 import VideoSearchForm from './VideoSearchForm';
 import VideoSearchList from './VideoSearchList';
 import VideoLoadMoreButton from './VideoLoadMoreButton';
@@ -26,14 +26,14 @@ class VideoSearch extends React.Component {
     this.state = {
       queryObject: {
         query: '',
+        page: 1,
         offset: 0,
         limit: 10,
       },
       videos: [],
       selectedType: 'brightcove', // Default
       selectedVideo: undefined,
-      page: 1,
-      lastPage: 1,
+      lastPage: 0,
       totalCount: 0,
       searching: false,
     };
@@ -64,7 +64,7 @@ class VideoSearch extends React.Component {
 
   onSearchTypeChange(type) {
     this.setState(
-      { selectedType: type, selectedVideo: undefined, page: 1 },
+      { selectedType: type, selectedVideo: undefined, offset: 0, page: 1 },
       this.searchVideos(this.state.queryObject, type),
     );
   }
@@ -112,6 +112,7 @@ class VideoSearch extends React.Component {
           queryObject: {
             ...prevState.queryObject,
             query: queryObject.query,
+            page: queryObject.page,
             offset: 0,
           },
           videos: result,
@@ -132,8 +133,8 @@ class VideoSearch extends React.Component {
 
     const {
       queryObject,
-      // page,
-      // lastPage,
+      page,
+      lastPage,
       videos,
       selectedVideo,
       selectedType,
@@ -142,20 +143,22 @@ class VideoSearch extends React.Component {
 
     const { query } = queryObject;
 
-    // const paginationItem = () => {
-    //   if (selectedType === 'brightcove') {
-    //     return (
-    //       <VideoLoadMoreButton
-    //         searching={searching}
-    //         videos={videos}
-    //         loadMoreVideos={this.loadMoreVideos}
-    //         limit={queryObject.limit}
-    //         translations={translations}
-    //       />
-    //     );
-    //   }
-    //   return <Pager page={page ? parseInt(page, 10) : 1} lastPage={lastPage} />;
-    // };
+    const paginationItem = () => {
+      if (selectedType === 'brightcove') {
+        return (
+          <VideoLoadMoreButton
+            searching={searching}
+            videos={videos}
+            loadMoreVideos={this.loadMoreVideos}
+            limit={queryObject.limit}
+            translations={translations}
+          />
+        );
+      }
+      if (lastPage) {
+        return <Pager page={page} lastPage={lastPage} />;
+      }
+    };
 
     const searchList = (
       <div {...classes('list')}>
@@ -186,13 +189,7 @@ class VideoSearch extends React.Component {
           onSearchTypeChange={this.onSearchTypeChange}
           enableYouTube={enableYouTube}
         />
-        <VideoLoadMoreButton
-          searching={searching}
-          videos={videos}
-          loadMoreVideos={this.loadMoreVideos}
-          limit={queryObject.limit}
-          translations={translations}
-        />
+        {paginationItem()}
       </div>
     );
   }

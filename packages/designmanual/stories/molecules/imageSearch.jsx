@@ -33,7 +33,7 @@ const fetchImages = (query, page) => {
 const fetchImage = id =>
   new Promise((resolve, reject) => {
     getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/image-api/v1/images/${id}`, {
+      fetch(`https://staging.api.ndla.no/image-api/v2/images/${id}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
       }).then(res => {
@@ -58,6 +58,7 @@ export const ImageSearcher = () => {
     <ImageSearch
       searchPlaceholder="Søk i bilder"
       searchButtonTitle="Søk"
+      useImageTitle="Bruk bildet"
       fetchImage={fetchImage}
       searchImages={fetchImages}
       locale="nb"

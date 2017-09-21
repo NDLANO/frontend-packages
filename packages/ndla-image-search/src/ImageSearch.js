@@ -95,7 +95,7 @@ class ImageSearch extends React.Component {
   }
 
   render() {
-    const { searchPlaceholder, searchButtonTitle, locale } = this.props;
+    const { searchPlaceholder, searchButtonTitle, useImageTitle } = this.props;
 
     const {
       queryObject,
@@ -126,7 +126,7 @@ class ImageSearch extends React.Component {
               onImageClick={this.onImageClick}
               selectedImage={selectedImage}
               onSelectImage={this.onSelectImage}
-              locale={locale}
+              useImageTitle={useImageTitle}
             />,
           )}
         </div>
@@ -151,6 +151,7 @@ ImageSearch.propTypes = {
   searchPlaceholder: PropTypes.string.isRequired,
   searchButtonTitle: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
+  useImageTitle: PropTypes.string.isRequired,
 };
 
 export default ImageSearch;

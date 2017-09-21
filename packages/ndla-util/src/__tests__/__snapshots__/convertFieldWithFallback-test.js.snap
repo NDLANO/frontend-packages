@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertFieldWithFallback convert field title to string 1`] = `"Tester"`;
+
+exports[`convertFieldWithFallback convert field visual element 1`] = `"<embed />"`;
+
+exports[`convertFieldWithFallback convert field with fallback 1`] = `Array []`;

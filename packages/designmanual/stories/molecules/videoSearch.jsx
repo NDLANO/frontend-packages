@@ -58,7 +58,7 @@ export const VideoSearcher = () => {
     addVideo: 'Bruk video',
     previewVideo: 'Forhåndsvis',
     publishedDate: 'Publisert dato',
-    hits: 'Treff',
+    hits: 'Visninger',
   };
   return (
     <VideoSearch
@@ -68,6 +68,7 @@ export const VideoSearcher = () => {
       locale="nb"
       onVideoSelect={videoSelect}
       onError={onError}
+      enableYouTube
     />
   );
 };

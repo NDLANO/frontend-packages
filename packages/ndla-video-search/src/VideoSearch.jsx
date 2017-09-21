@@ -70,10 +70,15 @@ class VideoSearch extends React.Component {
   }
 
   loadMoreVideos() {
-    const { queryObject, videos } = this.state;
+    const { queryObject, videos, selectedType } = this.state;
     const { searchVideos, onError } = this.props;
     this.setState({ searching: true });
-    searchVideos(queryObject.query, queryObject.offset + 10, queryObject.limit)
+    searchVideos(
+      queryObject.query,
+      queryObject.offset + 10,
+      queryObject.limit,
+      selectedType,
+    )
       .then(result => {
         this.setState(prevState => ({
           queryObject: {
@@ -111,6 +116,9 @@ class VideoSearch extends React.Component {
           },
           videos: result,
           searching: false,
+          totalCount: result.searchInformation
+            ? result.searchInformation.totalResults
+            : 0,
         }));
       })
       .catch(err => {
@@ -120,7 +128,7 @@ class VideoSearch extends React.Component {
   }
 
   render() {
-    const { translations, locale } = this.props;
+    const { translations, locale, enableYouTube } = this.props;
 
     const {
       queryObject,
@@ -174,8 +182,9 @@ class VideoSearch extends React.Component {
         />
         <VideoTabs
           searchTypes={selectedType}
-          tabContent={searchList}
+          content={searchList}
           onSearchTypeChange={this.onSearchTypeChange}
+          enableYouTube={enableYouTube}
         />
         <VideoLoadMoreButton
           searching={searching}
@@ -200,6 +209,7 @@ VideoSearch.propTypes = {
     loadMoreVideos: PropTypes.string.isRequired,
   }),
   locale: PropTypes.string.isRequired,
+  enableYouTube: PropTypes.bool,
 };
 
 export default VideoSearch;

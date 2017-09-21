@@ -68,31 +68,32 @@ class VideoTabs extends Component {
 
   render() {
     const { index } = this.state;
-    const { tabContent } = this.props;
+    const { content, enableYouTube } = this.props;
+
+    const tabs = [
+      {
+        title: 'Brightcove',
+        content,
+      },
+      enableYouTube
+        ? {
+            title: 'YouTube',
+            content,
+          }
+        : '',
+    ];
 
     return (
-      <Tabs
-        selectedIndex={index}
-        onSelect={this.handleOnSelect}
-        tabs={[
-          {
-            title: 'Brightcove',
-            content: tabContent,
-          },
-          {
-            title: 'YouTube',
-            content: tabContent,
-          },
-        ]}
-      />
+      <Tabs selectedIndex={index} onSelect={this.handleOnSelect} tabs={tabs} />
     );
   }
 }
 
 VideoTabs.propTypes = {
   searchTypes: PropTypes.string,
+  enableYouTube: PropTypes.bool,
   onSearchTypeChange: PropTypes.func.isRequired,
-  tabContent: PropTypes.node.isRequired,
+  content: PropTypes.node.isRequired,
 };
 
 export default VideoTabs;

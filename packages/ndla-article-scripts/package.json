@@ -1,6 +1,6 @@
 {
   "name": "ndla-article-scripts",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A collection of functions for making article content responsive (and interactive)",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,9 +27,9 @@
     "es"
   ],
   "peerDependencies": {
-    "ndla-util": "^0.1.6"
+    "ndla-util": "^0.1.7"
   },
   "devDependencies": {
-    "ndla-util": "^0.1.6"
+    "ndla-util": "^0.1.7"
   }
 }

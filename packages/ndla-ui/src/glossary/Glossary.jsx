@@ -9,9 +9,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { BY, NC, ND } from 'ndla-licenses';
+import { ClickableLicenseByline } from '../index';
 
 const classes = new BEMHelper({
   name: 'glossary-word',
+  prefix: 'c-',
+});
+const sourceClasses = new BEMHelper({
+  name: 'source-list',
   prefix: 'c-',
 });
 
@@ -59,8 +65,18 @@ class Glossary extends Component {
               <p {...classes('description')}>
                 {this.props.definition}
               </p>
-              <div {...classes('footer')}>
-                {this.props.source}
+              <div {...sourceClasses()}>
+                <ClickableLicenseByline
+                  className="c-source-list__item"
+                  noText
+                  license={[BY, NC, ND]}
+                />
+                <span {...sourceClasses('item')}>
+                  {this.props.author}
+                </span>
+                <span {...sourceClasses('item')}>
+                  {this.props.source}
+                </span>
               </div>
             </div>
           : null}
@@ -73,6 +89,7 @@ Glossary.propTypes = {
   children: PropTypes.string,
   definition: PropTypes.string,
   source: PropTypes.string,
+  author: PropTypes.string,
 };
 
 export default Glossary;

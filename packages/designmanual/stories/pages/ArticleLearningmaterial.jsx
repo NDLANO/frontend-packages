@@ -21,7 +21,7 @@ export default () =>
     <article className="c-article">
       <LayoutItem layout="center">
         <h1 className="c-article__title--icon">
-          <Document />Artikkel lærestoff
+          <Document />Artikkel fagstoff
         </h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
@@ -33,7 +33,7 @@ export default () =>
               <User />
             </span>
             <span className="c-article-byline__authors">
-              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Ola Nordnes, Kari Nordnes, Jon Nordgubbe. <br />(BY-NC-ND)
             </span>
           </span>
           <span className="c-article-byline__flex">
@@ -46,10 +46,10 @@ export default () =>
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense classes="u-float-left">
+        <FigureWithLicense caption="" expandable classes="u-float-left">
           <img
-            alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://staging.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            alt=""
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
           />
         </FigureWithLicense>
         <p>
@@ -80,10 +80,10 @@ export default () =>
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense classes="u-float-right">
+        <FigureWithLicense caption="" classes="u-float-right">
           <img
-            alt="person med mange armer som gjør forskjellige ting samtidig. Foto."
-            src="https://test.api.ndla.no/image-api/raw/2016_tk_prod-planlegger_utsnitt3.jpg"
+            alt=""
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
           />
         </FigureWithLicense>
         <p>

@@ -12,9 +12,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { BY, NC, ND } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-import LicenseByline from '../license/LicenseByline';
+import ClickableLicenseByline from '../license/ClickableLicenseByline';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -25,12 +25,7 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({
-  children,
-  authors,
-  licenseAbbreviation,
-  messages,
-}) =>
+export const FigureDetails = ({ children, authors, messages }) =>
   <div {...classes('license')} id="figmeta">
     <button {...classes('close')}>
       {messages.close}
@@ -40,19 +35,22 @@ export const FigureDetails = ({
         <h3 {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <LicenseByline
-          license={getLicenseByAbbreviation(licenseAbbreviation)}
-        />
+        <ClickableLicenseByline license={[BY, NC, ND]} />
+        <a
+          className="c-figure-license__link"
+          href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
+          Lær mer om åpne lisenser
+        </a>
         <div {...classLicenses('cta-wrapper')}>
-          <h3 {...classLicenses('title')}>
-            {messages.howToReference}
-          </h3>
           <ul {...classes('list')}>
             {authors.map(author =>
               <li
                 key={uuid()}
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
             )}
+            <li>
+              Kilde: <a href="http://www.wikimedia.org">Wikimedia</a>
+            </li>
           </ul>
           {children
             ? <div {...classLicenses('cta-block')}>
@@ -92,18 +90,30 @@ export const FigureCaption = ({
           {caption}
         </div>
       : null}
-    <div {...classes('byline')}>
+    <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline license={getLicenseByAbbreviation(licenseAbbreviation)}>
-          <span className="article_meta">
-            {authors.map(author => author.name).join(', ')}
-          </span>
-        </LicenseByline>
+        <ClickableLicenseByline noText license={[BY, NC, ND]}>
+          <span className="article_meta">Gary Waters</span>
+          <button className="c-figure__captionbtn">
+            {reuseLabel}
+          </button>
+        </ClickableLicenseByline>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+          <div class="c-figure__licensetag" xmlnsCc="http://creativecommons.org/ns" xmlnsDc="http://purl.org/dc/elements/1.1/">
+            <a href="http://ndla.no/nb/node/115785" rel="dc:source">
+              Tittel
+            </a> av
+            <a href="http://ndla.no/nb/node/12390" rel="dc:creator">
+              ${authors.map(author => author.name).join(', ')}
+            </a>.
+            Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
+          </div>`,
+          }}
+        />
       </div>
-      <button className="c-figure__captionbtn">
-        {reuseLabel}
-      </button>
-    </div>
+    </footer>
   </figcaption>;
 
 FigureCaption.propTypes = {

@@ -28,8 +28,7 @@ const VideoContent = () =>
     <div className="u-introduction">
       <h2>Slik bruker du videoer fra artikkelen</h2>
       <p>
-        Klikk på lisensene for å se reglene. Husk å kopier teksten som skal
-        legges ved bildet der du bruker det.
+        Husk å kopier teksten som skal legges ved videoen der du bruker den.
       </p>
     </div>
     <MediaList>
@@ -51,15 +50,10 @@ const VideoContent = () =>
           title="Regler for bruk av videoen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til videoen:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -90,7 +84,7 @@ const TextContent = () =>
       <h2>Slik bruker du tekst fra artikkelen</h2>
       <p>
         Artikkelen kan være satt sammen av flere ulike tekster, som listes opp
-        her. Klikk på lisensene for å se reglene for hver enkelt del.
+        her.
       </p>
     </div>
     <MediaList>
@@ -106,15 +100,11 @@ const TextContent = () =>
           title="Regler for bruk av teksten:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til teksten:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
+                  'Publiseringsdato: 12.05.13',
                 ]}
               />
               <button
@@ -143,15 +133,11 @@ const TextContent = () =>
           title="Regler for bruk av teksten:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til teksten:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
+                  'Publiseringsdato: 12.05.13',
                 ]}
               />
               <button
@@ -175,6 +161,9 @@ const AudioContent = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du lydfiler</h2>
+      <p>
+        Husk å kopier teksten som skal legges ved lydfilen der du bruker den.
+      </p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -189,15 +178,10 @@ const AudioContent = () =>
           title="Regler for bruk av lydfilen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til lydfilen:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -226,15 +210,10 @@ const AudioContent = () =>
           title="Regler for bruk av lydfilen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til lydfilen:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -259,8 +238,7 @@ const ImageContent = () =>
     <div className="u-introduction">
       <h2>Slik bruker du bilder fra artikkelen</h2>
       <p className="article-introduction">
-        Klikk på lisensene for å se reglene. Husk å kopier teksten som skal
-        legges ved bildet der du bruker det.
+        Husk å kopier teksten som skal legges ved bildet der du bruker det.
       </p>
     </div>
     <MediaList>
@@ -280,15 +258,11 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -321,15 +295,11 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -362,15 +332,11 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -403,15 +369,11 @@ const ImageContent = () =>
           title="Regler for bruk av bildet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til bildet:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
+                  'Kilde: <a href="#">Wikimedia</a>',
                 ]}
               />
               <button
@@ -424,6 +386,11 @@ const ImageContent = () =>
                 type="button">
                 Last ned bilde
               </button>
+              <button
+                className="c-button c-button--outline c-licenseToggle__button"
+                type="button">
+                Se del-elementer
+              </button>
             </div>
           </MediaListItemActions>
         </MediaListItemBody>
@@ -435,7 +402,9 @@ const H5PContent = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
-      <p>Klikk på lisensene for å se reglene.</p>
+      <p>
+        Klikk på «Se del-elementer» for å se lisens for hvert enkelt element.
+      </p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -462,15 +431,10 @@ const H5PContent = () =>
           title="Regler for bruk av H5P-innholdet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til H5P-innholdet:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -482,6 +446,11 @@ const H5PContent = () =>
                 className="c-button c-button--outline c-licenseToggle__button"
                 type="button">
                 Last ned bilde
+              </button>
+              <button
+                className="c-button c-button--outline c-licenseToggle__button"
+                type="button">
+                Bygg inn
               </button>
               <button
                 className="c-button c-button--outline c-licenseToggle__button"
@@ -516,15 +485,10 @@ const H5PContent = () =>
           title="Regler for bruk av H5P-innholdet:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til H5P-innholdet:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -540,94 +504,7 @@ const H5PContent = () =>
               <button
                 className="c-button c-button--outline c-licenseToggle__button"
                 type="button">
-                Se del-elementer
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-    </MediaList>
-  </div>;
-
-const LearningPath = () =>
-  <div>
-    <div className="u-introduction">
-      <h2>Slik bruker du Læringssti-innhold fra artikkelen</h2>
-      <p>Klikk på lisensene for å se reglene.</p>
-    </div>
-    <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av læringsstien:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til læringsstien:
-              </h3>
-              <MediaListItemMeta
-                items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Se del-elementer
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1476903930099-d0ddfec9a475?dpr=1&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av læringsstien:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til læringsstien:
-              </h3>
-              <MediaListItemMeta
-                items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
+                Bygg inn
               </button>
               <button
                 className="c-button c-button--outline c-licenseToggle__button"
@@ -645,7 +522,9 @@ const Files = () =>
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du filer fra artikkelen</h2>
-      <p>Klikk på lisensene for å se reglene.</p>
+      <p>
+        Husk å kopier teksten som skal legges ved lydfilen der du bruker den.
+      </p>
     </div>
     <MediaList>
       <MediaListItem>
@@ -660,15 +539,10 @@ const Files = () =>
           title="Regler for bruk av filen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til filen:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -697,15 +571,10 @@ const Files = () =>
           title="Regler for bruk av filen:">
           <MediaListItemActions>
             <div className="c-medialist__ref">
-              <h3 className="c-medialist__title">
-                Slik skal du referere til filen:
-              </h3>
               <MediaListItemMeta
                 items={[
-                  '12. desember 2014',
-                  'Opphavsperson: Ola Nordmann',
-                  'Rettighetshaver: Kari Nordmann',
-                  'Remikser:',
+                  'Opphavsmann: Fotograf Ola N',
+                  'Rettighetshaver: Leverandør NTB scanpix',
                 ]}
               />
               <button
@@ -736,14 +605,9 @@ export const LicenseBox = () =>
         { title: 'Video', content: <VideoContent /> },
         { title: 'Lyd', content: <AudioContent /> },
         { title: 'H5P', content: <H5PContent /> },
-        { title: 'Læringssti', content: <LearningPath /> },
         { title: 'Filer', content: <Files /> },
       ]}
     />
-    <p>
-      Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn til
-      dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no.
-    </p>
   </div>;
 
 const LicenseExample = ({ showByline }) =>
@@ -754,7 +618,7 @@ const LicenseExample = ({ showByline }) =>
     {showByline
       ? <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
           <span className="article_meta">
-            Ola Nordmann, Kari Nordmann. Publisert: 10.10.2010.
+            Fotograf Ola N, Leverandør NTB scanpix. Publisert: 10.10.2010.
           </span>
         </LicenseByline>
       : null}

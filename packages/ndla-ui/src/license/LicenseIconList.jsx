@@ -10,10 +10,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   BY,
+  SA,
   NC,
   ND,
-  SA,
+  PD,
+  CC0,
   CC,
+  COPY,
   getLicenseRightByAbbreviation,
 } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
@@ -23,7 +26,11 @@ import {
   LicenseNc,
   LicenseNd,
   LicenseSa,
+  LicenseCc0,
+  LicensePd,
+  LicenseCopy,
 } from '../icons';
+import { Button } from '../index';
 
 const classes = new BEMHelper({
   name: 'license-icons',
@@ -54,6 +61,18 @@ const LicenseIcon = ({ licenseRight, className }) => {
       return (
         <LicenseSa className={className} aria-label={licenseDescription} />
       );
+    case CC0:
+      return (
+        <LicenseCc0 className={className} aria-label={licenseDescription} />
+      );
+    case PD:
+      return (
+        <LicensePd className={className} aria-label={licenseDescription} />
+      );
+    case COPY:
+      return (
+        <LicenseCopy className={className} aria-label={licenseDescription} />
+      );
     default:
       return undefined;
   }
@@ -64,12 +83,37 @@ LicenseIcon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-const LicenseIconItem = ({ licenseRight, activeLicenseRight, noText }) =>
+const LicenseIconItem = ({
+  licenseRight,
+  activeLicenseRight,
+  noText,
+  clicked,
+}) =>
   <li {...classes('item', activeLicenseRight === licenseRight && 'active')}>
-    <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
     {!noText
-      ? <span className="c-license-icons__licenselabel">
-          {getLicenseRightByAbbreviation(licenseRight).description}
+      ? <span>
+          <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+          <span className="c-license-icons__licenselabel">
+            {getLicenseRightByAbbreviation(licenseRight).description}
+          </span>
+        </span>
+      : ''}
+    {noText && clicked
+      ? <span>
+          <Button
+            stripped
+            onMouseEnter={() =>
+              clicked(getLicenseRightByAbbreviation(licenseRight))}
+            onMouseLeave={() => clicked(getLicenseRightByAbbreviation())}
+            onClick={() =>
+              clicked(getLicenseRightByAbbreviation(licenseRight))}>
+            <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+          </Button>
+          {activeLicenseRight === licenseRight
+            ? <span className="c-license-icons__hover">
+                {getLicenseRightByAbbreviation(licenseRight).description}
+              </span>
+            : ''}
         </span>
       : ''}
   </li>;
@@ -78,17 +122,25 @@ LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
   activeLicenseRight: PropTypes.string,
   noText: PropTypes.bool,
+  clicked: PropTypes.func,
 };
 
-const LicenseIconList = ({ licenseRights, noText, ...rest }) => {
+const LicenseIconList = ({
+  licenseRights,
+  noText,
+  className,
+  onLicenseIconClick,
+  ...rest
+}) => {
   const licenseRightsWithCC = [CC, ...licenseRights];
   return (
-    <ul {...classes('list')}>
+    <ul {...classes('list', '', `${className}`)}>
       {licenseRightsWithCC.map(licenseRight =>
         <LicenseIconItem
           key={licenseRight}
           licenseRight={licenseRight}
           noText={noText}
+          clicked={onLicenseIconClick}
           {...rest}
         />,
       )}
@@ -100,6 +152,8 @@ LicenseIconList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeLicenseRight: PropTypes.string,
   noText: PropTypes.bool,
+  className: PropTypes.string,
+  onLicenseIconClick: PropTypes.func,
 };
 
 LicenseIconList.defaultProps = {

@@ -23,6 +23,10 @@ ol >li {
   display: block;
   position: relative;
   margin-bottom: $spacing;
+  margin-left: $spacing;
+  @include mq(desktop) {
+    margin-left: 0;
+  }
   &:before {
     content: counter(item);
     counter-increment: item;

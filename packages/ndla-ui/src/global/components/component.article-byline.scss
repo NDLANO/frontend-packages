@@ -3,7 +3,7 @@
 **
 ** EXAMPLE:
 ** <div class="c-article-byline">
-**  <span class="c-article-byline__authors"><svg /> Skrevet av [Opphavsperson].</span>
+**  <span class="c-article-byline__authors"><svg /> [Opphavsperson].</span>
 **  <span class="c-article-byline__date"><svg /> Publisert [dato]</span>
 ** </div>
 **/
@@ -34,6 +34,12 @@
     display: flex;
     flex-grow: 1;
   }
+}
+.c-article-byline__licenses {
+  margin-right: $spacing--small;
+  flex-wrap: wrap;
+  width: 110px;
+  flex-direction: row !important;
 }
 .c-article-byline__additional {
   margin-bottom: $spacing--small;

@@ -29,7 +29,20 @@
     }
   }
 }
-
+.c-license-icons__hover {
+  max-width: 300px;
+  position: absolute;
+  background: $brand-color;
+  color: $white;
+  text-align: left;
+  padding: $spacing--small/2;
+  @include inuit-font-size(13px);
+}
+.c-license-icons__item:hover {
+  .c-license-icons__hover {
+    display: block;
+  }
+}
 .c-license-icons__icon {
   width: $spacing / 1.1;
   height: $spacing / 1.1;

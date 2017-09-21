@@ -51,9 +51,10 @@ class ArticleLoader extends Component {
 
   renderArticle() {
     const { article } = this.state;
-    const { withLicenseExample } = this.props;
+    const { withLicenseExample, reset } = this.props;
     return (
       <ArticleExample
+        reset={reset}
         article={article}
         withLicenseExample={withLicenseExample}
       />
@@ -79,7 +80,7 @@ class ArticleLoader extends Component {
               errorMessage={message}
               labelText="Artikkel ID:"
             />}
-        {article
+        {article && this.props.closeButton
           ? <Button onClick={() => this.setState({ article: undefined })}>
               Lukk
             </Button>
@@ -92,6 +93,8 @@ class ArticleLoader extends Component {
 ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   withLicenseExample: PropTypes.bool,
+  closeButton: PropTypes.bool,
+  reset: PropTypes.bool,
 };
 
 export default ArticleLoader;

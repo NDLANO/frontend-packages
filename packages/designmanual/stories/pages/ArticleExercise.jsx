@@ -33,7 +33,7 @@ export default () =>
               <User />
             </span>
             <span className="c-article-byline__authors">
-              Skrevet av Ola Nordnes, Kari Nordnes, Jon Nordgubbe.
+              Ola Nordnes, Kari Nordnes, Jon Nordgubbe. <br />(BY-NC-ND)
             </span>
           </span>
           <span className="c-article-byline__flex">
@@ -62,18 +62,10 @@ export default () =>
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense>
-          <iframe
-            title="H5P"
-            src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-            width="260"
-            height="373"
-            frameBorder="0"
-            allowFullScreen="allowfullscreen"
-          />
-          <script
-            src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
-            charSet="UTF-8"
+        <FigureWithLicense caption="">
+          <img
+            alt=""
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
           />
         </FigureWithLicense>
         <p>

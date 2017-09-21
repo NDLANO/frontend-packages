@@ -1340,7 +1340,7 @@ export const secondYouTubeList = {
     request: [
       {
         title: 'Google Custom Search - ndla more:youtube',
-        totalResults: '5170',
+        totalResults: '20',
         searchTerms: 'ndla more:youtube',
         count: 10,
         startIndex: 11,
@@ -1353,7 +1353,7 @@ export const secondYouTubeList = {
     previousPage: [
       {
         title: 'Google Custom Search - ndla more:youtube',
-        totalResults: '5170',
+        totalResults: '20',
         searchTerms: 'ndla more:youtube',
         count: 10,
         startIndex: 1,
@@ -1366,7 +1366,7 @@ export const secondYouTubeList = {
     nextPage: [
       {
         title: 'Google Custom Search - ndla more:youtube',
-        totalResults: '5170',
+        totalResults: '20',
         searchTerms: 'ndla more:youtube',
         count: 10,
         startIndex: 21,

@@ -68,20 +68,12 @@ class VideoTabs extends Component {
 
   render() {
     const { index } = this.state;
-    const { content, enableYouTube } = this.props;
+    const { content, enabledSources } = this.props;
 
-    const tabs = [
-      {
-        title: 'Brightcove',
-        content,
-      },
-      enableYouTube
-        ? {
-            title: 'YouTube',
-            content,
-          }
-        : '',
-    ];
+    const tabs = enabledSources.map(source => ({
+      title: [source][0].charAt(0).toUpperCase() + [source][0].slice(1),
+      content,
+    }));
 
     return (
       <Tabs selectedIndex={index} onSelect={this.handleOnSelect} tabs={tabs} />
@@ -91,7 +83,7 @@ class VideoTabs extends Component {
 
 VideoTabs.propTypes = {
   searchTypes: PropTypes.string,
-  enableYouTube: PropTypes.bool,
+  enabledSources: PropTypes.array,
   onSearchTypeChange: PropTypes.func.isRequired,
   content: PropTypes.node.isRequired,
 };

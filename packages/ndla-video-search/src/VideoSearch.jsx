@@ -27,7 +27,6 @@ class VideoSearch extends React.Component {
     this.state = {
       queryObject: {
         query: '',
-        page: 1,
         offset: 0,
         limit: 10,
       },
@@ -63,9 +62,14 @@ class VideoSearch extends React.Component {
   }
 
   onSearchTypeChange(type) {
+    const queryObject = { offset: 0, limit: 10, page: 1 };
     this.setState(
-      { selectedType: type, selectedVideo: undefined, offset: 0, page: 1 },
-      this.searchVideos(this.state.queryObject, type),
+      {
+        queryObject,
+        selectedType: type,
+        selectedVideo: undefined,
+      },
+      this.searchVideos(queryObject, type),
     );
   }
 
@@ -74,9 +78,10 @@ class VideoSearch extends React.Component {
     const { searchVideos, onError } = this.props;
     this.setState({ searching: true });
     searchVideos(
-      queryObject.query,
-      queryObject.offset + 10,
-      queryObject.limit,
+      {
+        ...queryObject,
+        offset: queryObject.offset + 10,
+      },
       selectedType,
     )
       .then(result => {
@@ -95,18 +100,22 @@ class VideoSearch extends React.Component {
       });
   }
 
-  submitVideoSearchQuery(query) {
-    this.searchVideos({ query, page: 1 });
+  changeQueryPage(page) {
+    this.setState({ lastPage: 0 });
+    const { queryObject } = this.state;
+    const newQueryObject = { ...queryObject, ...page };
+    this.searchVideos(newQueryObject);
   }
 
-  changeQueryPage(queryObject) {
+  submitVideoSearchQuery(query) {
+    const queryObject = { query };
     this.searchVideos(queryObject);
   }
 
   searchVideos(queryObject, selectedType = this.state.selectedType) {
     const { searchVideos, onError } = this.props;
     this.setState({ searching: true, videos: [] });
-    searchVideos(queryObject.query, 0, queryObject.limit, selectedType)
+    searchVideos(queryObject, selectedType)
       .then(result => {
         this.setState(prevState => ({
           queryObject: {
@@ -127,11 +136,10 @@ class VideoSearch extends React.Component {
   }
 
   render() {
-    const { translations, locale, enableYouTube } = this.props;
+    const { translations, locale, enabledSources } = this.props;
 
     const {
       queryObject,
-      page,
       lastPage,
       videos,
       selectedVideo,
@@ -139,7 +147,7 @@ class VideoSearch extends React.Component {
       searching,
     } = this.state;
 
-    const { query } = queryObject;
+    const { query, page } = queryObject;
 
     const paginationItem = () => {
       let item;
@@ -154,7 +162,13 @@ class VideoSearch extends React.Component {
           />
         );
       } else if (lastPage) {
-        item = <Pager page={page} lastPage={lastPage} />;
+        item = (
+          <Pager
+            page={page || 1}
+            lastPage={lastPage}
+            onClick={this.changeQueryPage}
+          />
+        );
       }
       return item;
     };
@@ -186,7 +200,7 @@ class VideoSearch extends React.Component {
           searchTypes={selectedType}
           content={searchList}
           onSearchTypeChange={this.onSearchTypeChange}
-          enableYouTube={enableYouTube}
+          enabledSources={enabledSources || ['brightcove']}
         />
         {paginationItem()}
       </div>
@@ -197,7 +211,6 @@ class VideoSearch extends React.Component {
 VideoSearch.propTypes = {
   onVideoSelect: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired,
-  fetchVideo: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired,
   translations: PropTypes.shape({
     searchPlaceholder: PropTypes.string.isRequired,
@@ -205,7 +218,11 @@ VideoSearch.propTypes = {
     loadMoreVideos: PropTypes.string.isRequired,
   }),
   locale: PropTypes.string.isRequired,
-  enableYouTube: PropTypes.bool,
+  enabledSources: PropTypes.array,
+};
+
+VideoSearch.defaultProps = {
+  enabledSources: ['brightcove'],
 };
 
 export default VideoSearch;

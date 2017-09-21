@@ -14,7 +14,6 @@ import {
   firstYouTubeList,
   secondBrightcoveList,
   secondYouTubeList,
-  brightCoveMockVideo,
 } from '../../dummydata';
 
 const firstDummyData = {
@@ -27,19 +26,12 @@ const secondDummyData = {
   youtube: secondYouTubeList,
 };
 
-const fetchVideos = (query, offset, limit, type) =>
+const fetchVideos = (query, type) =>
   new Promise(resolve => {
-    if (offset > 0) {
+    if (query.offset > 0 || query.page > 1) {
       return setTimeout(() => resolve(secondDummyData[type]), 1000);
     }
     return setTimeout(() => resolve(firstDummyData[type]), 1000);
-  });
-
-const fetchVideo = id =>
-  new Promise(resolve => {
-    const modifiedVideo = brightCoveMockVideo;
-    modifiedVideo.id = id;
-    resolve(modifiedVideo);
   });
 
 export const VideoSearcher = () => {
@@ -63,12 +55,11 @@ export const VideoSearcher = () => {
   return (
     <VideoSearch
       translations={translations}
-      fetchVideo={fetchVideo}
       searchVideos={fetchVideos}
       locale="nb"
       onVideoSelect={videoSelect}
       onError={onError}
-      enableYouTube
+      enabledSources={['brightcove', 'youtube']}
     />
   );
 };

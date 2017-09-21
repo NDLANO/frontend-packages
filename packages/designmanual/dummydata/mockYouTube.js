@@ -8,11 +8,33 @@
 
 // Google Custom Search Engine results, sliced for searchInformation and items. Total modified.
 export const firstYouTubeList = {
-  searchInformation: {
-    searchTime: 0.596639,
-    formattedSearchTime: '0.60',
-    totalResults: '4040',
-    formattedTotalResults: '4,040',
+  queries: {
+    request: [
+      {
+        title: 'Google Custom Search - ndla more:youtube',
+        totalResults: '20',
+        searchTerms: 'ndla more:youtube',
+        count: 10,
+        startIndex: 1,
+        inputEncoding: 'utf8',
+        outputEncoding: 'utf8',
+        safe: 'off',
+        cx: '013854806862222881746:dktnri-znam',
+      },
+    ],
+    nextPage: [
+      {
+        title: 'Google Custom Search - ndla more:youtube',
+        totalResults: '20',
+        searchTerms: 'ndla more:youtube',
+        count: 10,
+        startIndex: 11,
+        inputEncoding: 'utf8',
+        outputEncoding: 'utf8',
+        safe: 'off',
+        cx: '013854806862222881746:dktnri-znam',
+      },
+    ],
   },
   items: [
     {
@@ -1314,11 +1336,46 @@ export const firstYouTubeList = {
 };
 
 export const secondYouTubeList = {
-  searchInformation: {
-    searchTime: 0.816644,
-    formattedSearchTime: '0.82',
-    totalResults: '4050',
-    formattedTotalResults: '4,050',
+  queries: {
+    request: [
+      {
+        title: 'Google Custom Search - ndla more:youtube',
+        totalResults: '5170',
+        searchTerms: 'ndla more:youtube',
+        count: 10,
+        startIndex: 11,
+        inputEncoding: 'utf8',
+        outputEncoding: 'utf8',
+        safe: 'off',
+        cx: '013854806862222881746:dktnri-znam',
+      },
+    ],
+    previousPage: [
+      {
+        title: 'Google Custom Search - ndla more:youtube',
+        totalResults: '5170',
+        searchTerms: 'ndla more:youtube',
+        count: 10,
+        startIndex: 1,
+        inputEncoding: 'utf8',
+        outputEncoding: 'utf8',
+        safe: 'off',
+        cx: '013854806862222881746:dktnri-znam',
+      },
+    ],
+    nextPage: [
+      {
+        title: 'Google Custom Search - ndla more:youtube',
+        totalResults: '5170',
+        searchTerms: 'ndla more:youtube',
+        count: 10,
+        startIndex: 21,
+        inputEncoding: 'utf8',
+        outputEncoding: 'utf8',
+        safe: 'off',
+        cx: '013854806862222881746:dktnri-znam',
+      },
+    ],
   },
   items: [
     {

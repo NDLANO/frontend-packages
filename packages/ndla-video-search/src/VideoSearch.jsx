@@ -14,6 +14,7 @@ import VideoSearchForm from './VideoSearchForm';
 import VideoSearchList from './VideoSearchList';
 import VideoLoadMoreButton from './VideoLoadMoreButton';
 import VideoTabs from './VideoTabs';
+import { getLastPage } from './videoHelpers';
 
 const classes = new BEMHelper({
   name: 'video-search',
@@ -34,7 +35,6 @@ class VideoSearch extends React.Component {
       selectedType: 'brightcove', // Default
       selectedVideo: undefined,
       lastPage: 0,
-      totalCount: 0,
       searching: false,
     };
 
@@ -115,11 +115,9 @@ class VideoSearch extends React.Component {
             page: queryObject.page,
             offset: 0,
           },
-          videos: result,
+          videos: selectedType === 'youtube' ? result.items : result,
           searching: false,
-          totalCount: result.searchInformation
-            ? result.searchInformation.totalResults
-            : 0,
+          lastPage: getLastPage(result, selectedType),
         }));
       })
       .catch(err => {
@@ -144,8 +142,9 @@ class VideoSearch extends React.Component {
     const { query } = queryObject;
 
     const paginationItem = () => {
+      let item;
       if (selectedType === 'brightcove') {
-        return (
+        item = (
           <VideoLoadMoreButton
             searching={searching}
             videos={videos}
@@ -154,10 +153,10 @@ class VideoSearch extends React.Component {
             translations={translations}
           />
         );
+      } else if (lastPage) {
+        item = <Pager page={page} lastPage={lastPage} />;
       }
-      if (lastPage) {
-        return <Pager page={page} lastPage={lastPage} />;
-      }
+      return item;
     };
 
     const searchList = (

@@ -19,12 +19,12 @@ import {
 
 const firstDummyData = {
   brightcove: firstBrightcoveList,
-  youtube: firstYouTubeList.items,
+  youtube: firstYouTubeList,
 };
 
 const secondDummyData = {
   brightcove: secondBrightcoveList,
-  youtube: secondYouTubeList.items,
+  youtube: secondYouTubeList,
 };
 
 const fetchVideos = (query, offset, limit, type) =>

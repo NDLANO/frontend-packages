@@ -33,11 +33,8 @@ import {
   MastheadWithTopicMenu,
 } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import {
-  ResourceSubsetList,
-} from './molecules/resources';
+import { ResourceSubsetList } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
-
 
 const toggle = () => {
   document
@@ -57,9 +54,11 @@ storiesOf('Sammensatte moduler', module)
         toTopic={() => '#'}
       />
       <h2 className="u-heading">Brødsmulesti blokk eksempel</h2>
-      <p>Blokkvarianten følger brukeren nedover siden, og ligger i header.
-        På små enheter vil blokkvarianten gjemmes. Brødsmulestien er fortsatt
-      tilgjengelig øverst på siden.</p>
+      <p>
+        Blokkvarianten følger brukeren nedover siden, og ligger i header. På små
+        enheter vil blokkvarianten gjemmes. Brødsmulestien er fortsatt
+        tilgjengelig øverst på siden.
+      </p>
       <BreadcrumbBlock
         fadeIn
         subject={subjectList[1]}
@@ -159,11 +158,14 @@ storiesOf('Sammensatte moduler', module)
   .add('Emneliste', () =>
     <div>
       <StoryIntro title="Emneliste">
-        <p>Emnelister brukes typisk innen et fag/emne for å vise underliggende
-          emner.</p>
-        <p>Ved klikk på emnetittel kommer man til emneartikkelen for emnet du
-        klikker på. Se også siden for Emnebeskrivelse</p>
-
+        <p>
+          Emnelister brukes typisk innen et fag/emne for å vise underliggende
+          emner.
+        </p>
+        <p>
+          Ved klikk på emnetittel kommer man til emneartikkelen for emnet du
+          klikker på. Se også siden for Emnebeskrivelse
+        </p>
       </StoryIntro>
       <StoryBody>
         <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
@@ -192,35 +194,37 @@ storiesOf('Sammensatte moduler', module)
   .add('Filter', () =>
     <div>
       <StoryIntro title="Filter">
-        <p>Alle elementer vises både når ingen eller alle filtervalg er valgt.
-        Når bruker klikker på et filter, skal dette umiddelbart reflekteres
-        i innholdet som filtreres, uten å laste siden på nytt.</p>
+        <p>
+          Alle elementer vises både når ingen eller alle filtervalg er valgt.
+          Når bruker klikker på et filter, skal dette umiddelbart reflekteres i
+          innholdet som filtreres, uten å laste siden på nytt.
+        </p>
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Filter (ufiltrert)</h2>
-          <div className="c-filter u-margin-top">
-            <FilterList
-              filterContent={[
-                { title: '1T', active: false },
-                { title: 'R1', active: false },
-                { title: 'R2', active: false },
-                { title: 'S1', active: false },
-                { title: 'S1', active: false },
-              ]}
-            />
-          </div>
+        <div className="c-filter u-margin-top">
+          <FilterList
+            filterContent={[
+              { title: '1T', active: false },
+              { title: 'R1', active: false },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
+            ]}
+          />
+        </div>
         <h2 className="u-heading">Filter med forhåndsvalgte elementer</h2>
-          <div className="c-filter u-margin-top">
-            <FilterList
-              filterContent={[
-                { title: '1T', active: true },
-                { title: 'R1', active: true },
-                { title: 'R2', active: false },
-                { title: 'S1', active: false },
-                { title: 'S1', active: false },
-              ]}
-            />
-          </div>
+        <div className="c-filter u-margin-top">
+          <FilterList
+            filterContent={[
+              { title: '1T', active: true },
+              { title: 'R1', active: true },
+              { title: 'R2', active: false },
+              { title: 'S1', active: false },
+              { title: 'S1', active: false },
+            ]}
+          />
+        </div>
       </StoryBody>
     </div>,
   )
@@ -246,12 +250,12 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
-          <FigureWithLicense>
-            <img
-              alt=""
-              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
-            />
-          </FigureWithLicense>
+        <FigureWithLicense>
+          <img
+            alt=""
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+          />
+        </FigureWithLicense>
       </LayoutItem>
     </Center>,
   )
@@ -286,14 +290,20 @@ storiesOf('Sammensatte moduler', module)
   .add('Læringsressurser', () =>
     <div>
       <StoryIntro title="Læringsressurser">
-        <p>Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
+        <p>
+          Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
           aktiviteter. Hver del inneholder opp til åtte innholdselementer, før
-          listen brytes opp med en «Vis mer»-knapp.</p>
-        <p>Ved å klikke på «Tilleggstoff» vil man vise også innhold som er
-          tilleggstoff, som ellers er skjult. Disse er merket med T-ikonet,
-          samt med en noe dusere farge. Sjekkboksen skal være markert når tilleggstoff
-          er aktivt.</p>
-        <p>Knappen «Vis mer» lar brukeren populere listen med flere elementer.</p>
+          listen brytes opp med en «Vis mer»-knapp.
+        </p>
+        <p>
+          Ved å klikke på «Tilleggstoff» vil man vise også innhold som er
+          tilleggstoff, som ellers er skjult. Disse er merket med T-ikonet, samt
+          med en noe dusere farge. Sjekkboksen skal være markert når
+          tilleggstoff er aktivt.
+        </p>
+        <p>
+          Knappen «Vis mer» lar brukeren populere listen med flere elementer.
+        </p>
       </StoryIntro>
       <LayoutItem layout="center">
         <ResourceSubsetList />
@@ -342,10 +352,10 @@ storiesOf('Sammensatte moduler', module)
         <p>
           Ved internkontroll skal det sikres at tilbudet til pasientene er i
           samsvar med regelverket. Internkontroll skal bidra til faglig
-          forsvarlige sosial- og helsetjenester, og er et verktøy som skal
-          sikre at daglige arbeidsoppgaver blir utført, styrt og forbedret i
-          henhold til lovens krav. Dette er særlig viktig på områder der svikt
-          kan få alvorlige følger. Kilde:{' '}
+          forsvarlige sosial- og helsetjenester, og er et verktøy som skal sikre
+          at daglige arbeidsoppgaver blir utført, styrt og forbedret i henhold
+          til lovens krav. Dette er særlig viktig på områder der svikt kan få
+          alvorlige følger. Kilde:{' '}
           <em>
             Nasjonale faglige retningslinjer for forebygging og behandling av
             underernæring og internkontroll i helsetjenesten
@@ -425,15 +435,15 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Tilleggsstoff">
         <p>
-          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff.
-          Om tilleggsstoff-filteret aktiveres, vil ressursopplistingen
-          populeres med tilleggsstoff i tilegg. Tilleggsstoff markeres med
-          T-ikon, og desaturert bakgrunnsfarge.{' '}
+          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
+          tilleggsstoff-filteret aktiveres, vil ressursopplistingen populeres
+          med tilleggsstoff i tilegg. Tilleggsstoff markeres med T-ikon, og
+          desaturert bakgrunnsfarge.{' '}
         </p>
         <p>
           Tilleggsstoff-filteret skal kun påvirke ressurstypen den er
-          tilknyttet, f. eks om du aktiverer tilleggsstoff for Fagstoff,
-          vil kun denne listen oppdateres med tilleggsstoff-artikler.
+          tilknyttet, f. eks om du aktiverer tilleggsstoff for Fagstoff, vil kun
+          denne listen oppdateres med tilleggsstoff-artikler.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -446,8 +456,8 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Feilmelding">
         <p>
           Feilmelding komponent med link tilbake til forrige side eller
-          forsiden. Brukes når det har oppstått en feil i systemet. F.eks.
-          ved 404 eller 503 feil.
+          forsiden. Brukes når det har oppstått en feil i systemet. F.eks. ved
+          404 eller 503 feil.
         </p>
       </StoryIntro>
       <StoryBody>

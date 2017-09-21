@@ -4,5 +4,5 @@ require('./basic-styles');
 require('./simple-components');
 require('./collated-components');
 require('./pages');
-require('./productionsystem');
 require('./licenses');
+require('./produksjonssystem');

@@ -29,8 +29,9 @@ export const youTubeDurationToSeconds = duration => {
 };
 
 export const setLocaleDate = (date, locale) => {
+  const newDate = new Date(Date.parse(date));
   const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-  return new Date(Date.parse(date)).toLocaleDateString(locale, options);
+  return newDate.toLocaleDateString(locale, options);
 };
 
 export const setYouTubeDuration = duration => {

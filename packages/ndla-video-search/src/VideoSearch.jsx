@@ -66,7 +66,7 @@ class VideoSearch extends React.Component {
     if (type === 'youtube') {
       queryObject = { offset: undefined, limit: undefined, page: 1 };
     } else {
-      queryObject = { offset: 0, limit: 10, page: 1 };
+      queryObject = { offset: 0, limit: 10, page: undefined };
     }
 
     this.setState(
@@ -179,20 +179,23 @@ class VideoSearch extends React.Component {
       return item;
     };
 
-    const searchList = (
-      <div {...classes('list')}>
-        <VideoSearchList
-          translations={translations}
-          selectedType={selectedType}
-          selectedVideo={selectedVideo}
-          videos={videos}
-          locale={locale}
-          onVideoPreview={this.onVideoPreview}
-          searching={searching}
-          onSelectVideo={this.onSelectVideo}
-        />
-      </div>
-    );
+    const searchListTabs = enabledSources.map(source => ({
+      title: source,
+      content: (
+        <div {...classes('list')}>
+          <VideoSearchList
+            translations={translations}
+            selectedType={source.toLowerCase()}
+            selectedVideo={selectedVideo}
+            videos={videos}
+            locale={locale}
+            onVideoPreview={this.onVideoPreview}
+            searching={searching}
+            onSelectVideo={this.onSelectVideo}
+          />
+        </div>
+      ),
+    }));
 
     return (
       <div {...classes()}>
@@ -204,9 +207,8 @@ class VideoSearch extends React.Component {
         />
         <VideoTabs
           searchTypes={selectedType}
-          content={searchList}
+          tabs={searchListTabs}
           onSearchTypeChange={this.onSearchTypeChange}
-          enabledSources={enabledSources || ['brightcove']}
         />
         {paginationItem()}
       </div>
@@ -228,7 +230,7 @@ VideoSearch.propTypes = {
 };
 
 VideoSearch.defaultProps = {
-  enabledSources: ['brightcove'],
+  enabledSources: ['Brightcove'],
 };
 
 export default VideoSearch;

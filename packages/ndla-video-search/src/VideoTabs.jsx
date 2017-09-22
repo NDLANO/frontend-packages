@@ -17,63 +17,19 @@ class VideoTabs extends Component {
       index: 0,
     };
     this.handleOnSelect = this.handleOnSelect.bind(this);
-    this.setIndexTab = this.setIndexTab.bind(this);
-  }
-
-  componentWillMount() {
-    const { searchTypes } = this.props;
-    this.setIndexTab(searchTypes);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { searchTypes } = nextProps;
-    if (
-      this.state.index !== 0 &&
-      searchTypes === undefined &&
-      this.props.searchTypes !== undefined
-    ) {
-      this.setIndexTab(searchTypes);
-    }
-  }
-
-  setIndexTab(searchTypes) {
-    switch (searchTypes) {
-      case 'brightcove':
-        this.setState({ index: 0 });
-        break;
-      case 'youtube':
-        this.setState({ index: 1 });
-        break;
-      default:
-        break;
-    }
   }
 
   handleOnSelect(index, last) {
-    const { onSearchTypeChange } = this.props;
+    const { onSearchTypeChange, tabs } = this.props;
     if (index !== last) {
       this.setState({ index });
-      switch (index) {
-        case 0:
-          onSearchTypeChange('brightcove');
-          break;
-        case 1:
-          onSearchTypeChange('youtube');
-          break;
-        default:
-          break;
-      }
+      onSearchTypeChange(tabs[index].title.toLowerCase());
     }
   }
 
   render() {
     const { index } = this.state;
-    const { content, enabledSources } = this.props;
-
-    const tabs = enabledSources.map(source => ({
-      title: [source][0].charAt(0).toUpperCase() + [source][0].slice(1),
-      content,
-    }));
+    const { tabs } = this.props;
 
     return (
       <Tabs selectedIndex={index} onSelect={this.handleOnSelect} tabs={tabs} />
@@ -83,9 +39,13 @@ class VideoTabs extends Component {
 
 VideoTabs.propTypes = {
   searchTypes: PropTypes.string,
-  enabledSources: PropTypes.array,
   onSearchTypeChange: PropTypes.func.isRequired,
-  content: PropTypes.node.isRequired,
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string,
+      content: PropTypes.node,
+    }),
+  ).isRequired,
 };
 
 export default VideoTabs;

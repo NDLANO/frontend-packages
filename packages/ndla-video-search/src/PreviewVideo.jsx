@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
 import { Cross } from 'ndla-ui/icons';
-import { BrightcoveShape, YouTubeShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'video-preview',

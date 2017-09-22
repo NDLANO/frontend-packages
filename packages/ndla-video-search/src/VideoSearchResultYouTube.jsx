@@ -12,6 +12,7 @@ import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 import { YouTubeShape } from './shapes';
+import { setLocaleDate, setYouTubeDuration } from './videoHelpers';
 
 const classes = new BEMHelper({
   name: 'video-search',
@@ -46,12 +47,18 @@ export default function VideoSearchResultYouTube({
             {videoData.name}
           </h2>
           <div>
-            {`${translations.publishedDate}: ${new Date(
-              Date.parse(videoData.datepublished),
-            ).toLocaleDateString(locale)}`}
+            {`${translations.publishedDate}: ${setLocaleDate(
+              videoData.datepublished,
+              locale,
+            )}`}
           </div>
           <div>
-            {`${translations.hits}: ${videoData.interactioncount}`}
+            {`${translations.duration}: ${setYouTubeDuration(
+              videoData.duration,
+            )}`}
+          </div>
+          <div>
+            {`${translations.interactioncount}: ${videoData.interactioncount}`}
           </div>
           <div>
             {videoData.description}

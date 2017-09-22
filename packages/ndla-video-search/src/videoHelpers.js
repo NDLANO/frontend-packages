@@ -17,3 +17,24 @@ export const getLastPage = (search, type) => {
   }
   return 0;
 };
+
+export const youTubeDurationToSeconds = duration => {
+  const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+
+  const hours = parseInt(match[1], 10) || 0;
+  const minutes = parseInt(match[2], 10) || 0;
+  const seconds = parseInt(match[3], 10) || 0;
+
+  return hours * 3600 + minutes * 60 + seconds;
+};
+
+export const setLocaleDate = (date, locale) =>
+  new Date(Date.parse(date)).toLocaleDateString(locale);
+
+export const setYouTubeDuration = duration => {
+  const seconds = youTubeDurationToSeconds(duration);
+  if (seconds > 86400) {
+    return `24h+ ${new Date(seconds * 1000).toISOString().substr(11, 8)}`;
+  }
+  return new Date(seconds * 1000).toISOString().substr(11, 8);
+};

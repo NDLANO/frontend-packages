@@ -50,7 +50,8 @@ export const VideoSearcher = () => {
     addVideo: 'Bruk video',
     previewVideo: 'Forhåndsvis',
     publishedDate: 'Publisert dato',
-    hits: 'Visninger',
+    duration: 'Varighet',
+    interactioncount: 'Visninger',
   };
   return (
     <VideoSearch

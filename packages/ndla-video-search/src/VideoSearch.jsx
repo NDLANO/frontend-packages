@@ -44,6 +44,7 @@ class VideoSearch extends React.Component {
     this.onVideoPreview = this.onVideoPreview.bind(this);
     this.onSelectVideo = this.onSelectVideo.bind(this);
     this.loadMoreVideos = this.loadMoreVideos.bind(this);
+    this.setVideoResults = this.setVideoResults.bind(this);
   }
 
   componentDidMount() {
@@ -72,6 +73,15 @@ class VideoSearch extends React.Component {
       this.searchVideos(queryObject, type),
     );
   }
+
+  setVideoResults = (result, selectedType) => {
+    switch (selectedType) {
+      case 'youtube':
+        return result.items;
+      default:
+        return result;
+    }
+  };
 
   loadMoreVideos() {
     const { queryObject, videos, selectedType } = this.state;
@@ -102,8 +112,7 @@ class VideoSearch extends React.Component {
 
   changeQueryPage(page) {
     this.setState({ lastPage: 0 });
-    const { queryObject } = this.state;
-    const newQueryObject = { ...queryObject, ...page };
+    const newQueryObject = { ...this.state.queryObject, ...page };
     this.searchVideos(newQueryObject);
   }
 
@@ -124,7 +133,7 @@ class VideoSearch extends React.Component {
             page: queryObject.page,
             offset: 0,
           },
-          videos: selectedType === 'youtube' ? result.items : result,
+          videos: this.setVideoResults(result, selectedType),
           searching: false,
           lastPage: getLastPage(result, selectedType),
         }));

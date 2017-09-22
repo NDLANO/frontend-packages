@@ -62,7 +62,13 @@ class VideoSearch extends React.Component {
   }
 
   onSearchTypeChange(type) {
-    const queryObject = { offset: 0, limit: 10, page: 1 };
+    let queryObject;
+    if (type === 'youtube') {
+      queryObject = { offset: undefined, limit: undefined, page: 1 };
+    } else {
+      queryObject = { offset: 0, limit: 10, page: 1 };
+    }
+
     this.setState(
       {
         queryObject,

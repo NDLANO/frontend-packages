@@ -45,8 +45,8 @@ test('videoHelpers youTubeDurationToSeconds', () => {
 
 test('videoHelpers setLocaleDate', () => {
   expect(setLocaleDate('2015-11-13', 'nb')).toBe('13.11.2015');
-  expect(setLocaleDate('2017-03-28', 'nb')).toBe('28.3.2017');
-  expect(setLocaleDate('2012-05-02', 'nb')).toBe('2.5.2012');
+  expect(setLocaleDate('2017-03-28', 'nb')).toBe('28.03.2017');
+  expect(setLocaleDate('2012-05-02', 'nb')).toBe('02.05.2012');
 });
 
 test('videoHelpers setYouTubeDuration', () => {

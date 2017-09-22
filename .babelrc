@@ -1,16 +1,24 @@
 {
-  "presets": ["react", ["es2015", { "modules": false }]],
+  "presets": ["react", ["env", { "modules": false }]],
   "plugins": ["transform-object-rest-spread"],
   "env": {
-    "commonjs": {
-      "plugins": [
-        ["transform-es2015-modules-commonjs"]
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
       ]
     },
+    "commonjs": {
+      "plugins": [["transform-es2015-modules-commonjs"]]
+    },
     "unittest": {
-      "plugins": [
-        ["transform-es2015-modules-commonjs"]
-      ]
+      "plugins": [["transform-es2015-modules-commonjs"]]
     }
   }
 }

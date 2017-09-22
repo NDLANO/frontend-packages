@@ -18,28 +18,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export default function PreviewVideo({ video, onVideoPreview, selectedType }) {
-  const iframe = () => {
-    if (selectedType === 'youtube') {
-      return (
-        <iframe
-          {...classes('video')}
-          title={video.title}
-          src={video.pagemap.videoobject[0].embedurl}
-          allowFullScreen
-        />
-      );
-    }
-    return (
-      <iframe
-        {...classes('video')}
-        title={video.name}
-        src={`//players.brightcove.net/${video.account_id}/BkLm8fT_default/index.html?videoId=${video.id}`}
-        allowFullScreen
-      />
-    );
-  };
-
+export default function PreviewVideo({ iframe, onVideoPreview }) {
   return (
     <div {...classes()}>
       <Button
@@ -48,13 +27,12 @@ export default function PreviewVideo({ video, onVideoPreview, selectedType }) {
         onClick={() => onVideoPreview(undefined)}>
         <Cross />
       </Button>
-      {iframe()}
+      {iframe}
     </div>
   );
 }
 
 PreviewVideo.propTypes = {
-  video: PropTypes.oneOfType([BrightcoveShape, YouTubeShape]),
-  selectedType: PropTypes.oneOf(['brightcove', 'youtube']),
+  iframe: PropTypes.node,
   onVideoPreview: PropTypes.func.isRequired,
 };

@@ -78,7 +78,14 @@ export default function VideoSearchResultYouTube({
       {selectedVideo &&
       selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid
         ? <PreviewVideo
-            video={selectedVideo}
+            iframe={
+              <iframe
+                className="c-video-preview__video"
+                title={selectedVideo.title}
+                src={selectedVideo.pagemap.videoobject[0].embedurl}
+                allowFullScreen
+              />
+            }
             onVideoPreview={onVideoPreview}
             selectedType="youtube"
           />

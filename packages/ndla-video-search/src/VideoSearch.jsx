@@ -64,9 +64,21 @@ class VideoSearch extends React.Component {
   onSearchTypeChange(type) {
     let queryObject;
     if (type === 'youtube') {
-      queryObject = { offset: undefined, limit: undefined, page: 1 };
+      queryObject = {
+        query: '',
+        offset: undefined,
+        limit: undefined,
+        page: 1,
+        start: 1,
+      };
     } else {
-      queryObject = { offset: 0, limit: 10, page: undefined };
+      queryObject = {
+        query: '',
+        offset: 0,
+        limit: 10,
+        page: undefined,
+        start: undefined,
+      };
     }
 
     this.setState(
@@ -109,12 +121,13 @@ class VideoSearch extends React.Component {
   changeQueryPage(page) {
     this.setState({ lastPage: 0 });
     const { queryObject } = this.state;
-    const newQueryObject = { ...queryObject, ...page };
+    const nextIndex = queryObject.start + (page.page - queryObject.page) * 10;
+    const newQueryObject = { ...queryObject, ...page, start: nextIndex };
     this.searchVideos(newQueryObject);
   }
 
   submitVideoSearchQuery(query) {
-    const queryObject = { query };
+    const queryObject = { ...this.state.queryObject, query };
     this.searchVideos(queryObject);
   }
 
@@ -128,6 +141,7 @@ class VideoSearch extends React.Component {
             ...prevState.queryObject,
             query: queryObject.query,
             page: queryObject.page,
+            start: queryObject.start,
             offset: 0,
           },
           videos: selectedType === 'youtube' ? result.items : result,

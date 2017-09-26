@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- @import "global/settings/settings.config";
- @import "global/settings/settings.colors";
- $medium-viewport: "(max-width: 800px)";
- $small-viewport: "(max-width: 600px)";
+@import "global/settings/settings.config";
+@import "global/settings/settings.colors";
+$medium-viewport: "(max-width: 800px)";
+$small-viewport: "(max-width: 600px)";
 
 .c-video-search {
   padding: 1rem;
@@ -63,6 +63,10 @@
     margin-bottom: 3rem;
   }
 
+  &__list-item:first-child {
+    margin-top: 1rem;
+  }
+
   &__list-item {
     &--active {
       height: inherit;
@@ -94,10 +98,10 @@
     display: inline-block;
     padding-left: 2rem;
   }
-  &__information > *{
+  &__information > * {
     margin-top: 0.5rem;
   }
-  &__information h2{
+  &__information h2 {
     margin-top: 0;
     line-height: 1;
   }
@@ -105,10 +109,10 @@
     padding-top: 0;
     margin: 0;
   }
-  &__license ul{
+  &__license ul {
     flex-direction: row;
   }
-  &__license ul li{
+  &__license ul li {
     display: inline-block;
   }
   &__tags > b {
@@ -164,7 +168,7 @@
   background-color: $brand-color--lighter;
   padding: 1rem;
 
-  &__video{
+  &__video {
     border: none;
     min-height: 300px;
   }

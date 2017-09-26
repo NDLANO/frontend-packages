@@ -10,29 +10,33 @@ import React from 'react';
 
 import VideoSearch from 'ndla-video-search';
 import {
-  firstBrightCoveList,
-  secondBrightCoveList,
-  brightCoveMockVideo,
+  firstBrightcoveList,
+  firstYouTubeList,
+  secondBrightcoveList,
+  secondYouTubeList,
 } from '../../dummydata';
 
-const fetchVideos = (query, offset) =>
-  new Promise(resolve => {
-    if (offset > 0) {
-      return setTimeout(() => resolve(secondBrightCoveList), 1000);
-    }
-    return setTimeout(() => resolve(firstBrightCoveList), 1000);
-  });
+const firstDummyData = {
+  brightcove: firstBrightcoveList,
+  youtube: firstYouTubeList,
+};
 
-const fetchVideo = id =>
+const secondDummyData = {
+  brightcove: secondBrightcoveList,
+  youtube: secondYouTubeList,
+};
+
+const fetchVideos = (query, type) =>
   new Promise(resolve => {
-    const modifiedVideo = brightCoveMockVideo;
-    modifiedVideo.id = id;
-    resolve(modifiedVideo);
+    if (query.offset > 0 || query.page > 1) {
+      return setTimeout(() => resolve(secondDummyData[type]), 1000);
+    }
+    return setTimeout(() => resolve(firstDummyData[type]), 1000);
   });
 
 export const VideoSearcher = () => {
-  const videoSelect = video => {
-    console.log(video); // eslint-disable-line no-console
+  const videoSelect = (video, type = 'brightcove') => {
+    console.log(video, type); // eslint-disable-line no-console
   };
 
   const onError = err => {
@@ -45,15 +49,18 @@ export const VideoSearcher = () => {
     noResults: 'Ingen videor funnet.',
     addVideo: 'Bruk video',
     previewVideo: 'Forhåndsvis',
+    publishedDate: 'Publisert dato',
+    duration: 'Varighet',
+    interactioncount: 'Visninger',
   };
   return (
     <VideoSearch
       translations={translations}
-      fetchVideo={fetchVideo}
       searchVideos={fetchVideos}
       locale="nb"
       onVideoSelect={videoSelect}
       onError={onError}
+      enabledSources={['Brightcove', 'YouTube']}
     />
   );
 };

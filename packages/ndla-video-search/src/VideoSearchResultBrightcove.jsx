@@ -12,13 +12,14 @@ import { Button, LicenseIconList } from 'ndla-ui';
 import { getLicenseByNBTitle } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
+import { LicenseShape, BrightcoveShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'video-search',
   prefix: 'c-',
 });
 
-export default function VideoSearchResult({
+export default function VideoSearchResultBrightcove({
   video,
   onVideoPreview,
   selectedVideo,
@@ -62,30 +63,26 @@ export default function VideoSearchResult({
       </div>
 
       {selectedVideo && selectedVideo.id === video.id
-        ? <PreviewVideo video={selectedVideo} onVideoPreview={onVideoPreview} />
+        ? <PreviewVideo
+            onVideoPreview={onVideoPreview}
+            selectedType="brightcove">
+            <iframe
+              className="c-video-preview__video"
+              title={selectedVideo.name}
+              src={`//players.brightcove.net/${selectedVideo.account_id}/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
+              allowFullScreen
+            />
+          </PreviewVideo>
         : ''}
     </div>
   );
 }
 
-VideoSearchResult.propTypes = {
-  video: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    custom_fields: PropTypes.shape({
-      licenseinfo: PropTypes.string.isRequired,
-      license: PropTypes.string.isRequired,
-    }),
-    images: PropTypes.shape({
-      thumbnail: PropTypes.shape({
-        src: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
+VideoSearchResultBrightcove.propTypes = {
+  license: LicenseShape,
+  video: BrightcoveShape.isRequired,
   onVideoPreview: PropTypes.func.isRequired,
-  selectedVideo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }),
+  selectedVideo: BrightcoveShape,
   onSelectVideo: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
   translations: PropTypes.shape({

@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
+import { BrightcoveShape, YouTubeShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'video-search',
@@ -35,21 +36,10 @@ const VideoLoadMoreButton = props => {
 
 VideoLoadMoreButton.propTypes = {
   searching: PropTypes.bool.isRequired,
-  videos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      custom_fields: PropTypes.shape({
-        licenseinfo: PropTypes.string.isRequired,
-        license: PropTypes.string.isRequired,
-      }),
-      images: PropTypes.shape({
-        thumbnail: PropTypes.shape({
-          src: PropTypes.string.isRequired,
-        }),
-      }),
-    }),
-  ),
+  videos: PropTypes.oneOfType([
+    PropTypes.arrayOf(BrightcoveShape),
+    PropTypes.arrayOf(YouTubeShape),
+  ]),
   translations: PropTypes.shape({
     searchPlaceholder: PropTypes.string.isRequired,
     searchButtonTitle: PropTypes.string.isRequired,

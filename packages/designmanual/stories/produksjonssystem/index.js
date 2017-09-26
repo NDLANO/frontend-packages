@@ -47,9 +47,9 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Videosøk">
         <p>
-          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
-          Denne modulen krever at det både finnes en token og api url (fra
-          brightcove).
+          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove,
+          samt YouTube via Google Custom Search. Denne modulen krever at det
+          både finnes en token og api url (for brightcove).
         </p>
       </StoryIntro>
       <StoryBody>

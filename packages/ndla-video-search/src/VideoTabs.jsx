@@ -13,9 +13,6 @@ import Tabs from 'ndla-tabs';
 class VideoTabs extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      index: 0,
-    };
     this.handleOnSelect = this.handleOnSelect.bind(this);
   }
 
@@ -28,12 +25,9 @@ class VideoTabs extends Component {
   }
 
   render() {
-    const { index } = this.state;
     const { tabs } = this.props;
 
-    return (
-      <Tabs selectedIndex={index} onSelect={this.handleOnSelect} tabs={tabs} />
-    );
+    return <Tabs onSelect={this.handleOnSelect} tabs={tabs} />;
   }
 }
 

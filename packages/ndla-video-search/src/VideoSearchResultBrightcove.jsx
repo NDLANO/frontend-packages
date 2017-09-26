@@ -64,17 +64,15 @@ export default function VideoSearchResultBrightcove({
 
       {selectedVideo && selectedVideo.id === video.id
         ? <PreviewVideo
-            iframe={
-              <iframe
-                className="c-video-preview__video"
-                title={selectedVideo.name}
-                src={`//players.brightcove.net/${selectedVideo.account_id}/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
-                allowFullScreen
-              />
-            }
             onVideoPreview={onVideoPreview}
-            selectedType="brightcove"
-          />
+            selectedType="brightcove">
+            <iframe
+              className="c-video-preview__video"
+              title={selectedVideo.name}
+              src={`//players.brightcove.net/${selectedVideo.account_id}/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
+              allowFullScreen
+            />
+          </PreviewVideo>
         : ''}
     </div>
   );

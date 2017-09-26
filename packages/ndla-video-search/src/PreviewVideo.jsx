@@ -17,7 +17,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export default function PreviewVideo({ iframe, onVideoPreview }) {
+export default function PreviewVideo({ onVideoPreview, children }) {
   return (
     <div {...classes()}>
       <Button
@@ -26,12 +26,12 @@ export default function PreviewVideo({ iframe, onVideoPreview }) {
         onClick={() => onVideoPreview(undefined)}>
         <Cross />
       </Button>
-      {iframe}
+      {children}
     </div>
   );
 }
 
 PreviewVideo.propTypes = {
-  iframe: PropTypes.node,
+  children: PropTypes.node,
   onVideoPreview: PropTypes.func.isRequired,
 };

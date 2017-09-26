@@ -170,9 +170,8 @@ class VideoSearch extends React.Component {
     const { query, page } = queryObject;
 
     const paginationItem = () => {
-      let item;
       if (selectedType === 'brightcove') {
-        item = (
+        return (
           <VideoLoadMoreButton
             searching={searching}
             videos={videos}
@@ -181,16 +180,14 @@ class VideoSearch extends React.Component {
             translations={translations}
           />
         );
-      } else if (lastPage) {
-        item = (
-          <Pager
-            page={page || 1}
-            lastPage={lastPage}
-            onClick={this.changeQueryPage}
-          />
-        );
       }
-      return item;
+      return (
+        <Pager
+          page={page || 1}
+          lastPage={lastPage}
+          onClick={this.changeQueryPage}
+        />
+      );
     };
 
     const searchListTabs = enabledSources.map(source => ({

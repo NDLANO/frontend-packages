@@ -12,10 +12,16 @@ export const addShowGlossaryDefinitionClickListeners = () => {
     const openBtn = item.querySelector('.c-glossary-word__link');
     const closeBtn = item.querySelector('.c-glossary-word__close');
 
-    openBtn.onclick = () =>
-      popup.classList.toggle('c-glossary-word__popup--visible');
+    openBtn.onclick = () => {
+      const isHidden = !popup.classList.toggle(
+        'c-glossary-word__popup--visible',
+      );
+      popup.setAttribute('aria-hidden', isHidden);
+    };
 
-    closeBtn.onclick = () =>
+    closeBtn.onclick = () => {
       popup.classList.remove('c-glossary-word__popup--visible');
+      popup.setAttribute('aria-hidden', true);
+    };
   });
 };

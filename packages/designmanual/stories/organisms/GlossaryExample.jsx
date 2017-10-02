@@ -24,7 +24,7 @@ class GlossaryExample extends Component {
       <OneColumn cssModifier="narrow">
         <article className="c-article c-article--clean">
           <LayoutItem layout="center">
-            <h1 className="c-article__title">sosialisering</h1>
+            <h1 className="c-article__title">Sosialisering</h1>
             <p className="article_introduction">
               Vi blir født inn i et samfunn. På den ene siden kommer vi til en
               familie bestående av nære relasjoner. På den andre siden blir de
@@ -48,18 +48,22 @@ class GlossaryExample extends Component {
                   <Glossary
                     content="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre med andre ord at de blir som de andre i samfunnet."
                     authors={['Gary Waters']}
-                    title="Sosialisering">
+                    source="snl.no"
+                    title="Sosialisering"
+                    ariaLabel="Vis begrep beskrivelse"
+                    license="by-nc"
+                    id={1}>
                     sosialisering
                   </Glossary>{' '}
                   lærer menneskene å fungere i et samfunn og får kjennskap til
                   de regler og verdier som det forventes at man skal følge.
-                  sosialisering er dermed den prosessen som gjør at vi tar til
+                  Sosialisering er dermed den prosessen som gjør at vi tar til
                   oss dette, fra vi blir født til vi dør.
                 </p>
                 <p>
-                  barn møtes med forventninger til hvordan de skal oppføre seg.
-                  disse forventningene gjentar seg, og slik lærer barnet hvilke
-                  regler eller normer som gjelder. hovedmålet med
+                  Barn møtes med forventninger til hvordan de skal oppføre seg.
+                  Disse forventningene gjentar seg, og slik lærer barnet hvilke
+                  regler eller normer som gjelder. Hovedmålet med
                   sosialiseringen er at de enkelte menneskene skal kunne skille
                   mellom godt og ondt, og rett og galt.
                 </p>
@@ -71,11 +75,11 @@ class GlossaryExample extends Component {
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
                   />
                 </FigureWithLicense>
-                <h2>normer og normsendere</h2>
+                <h2>Normer og normsendere</h2>
                 <p>
-                  normer er regler som forteller hvordan man skal oppføre seg og
+                  Normer er regler som forteller hvordan man skal oppføre seg og
                   handle i en gitt situasjon. normer kan være formelle eller
-                  uformelle. lover er formaliserte eller formelle normer. de
+                  uformelle. Lover er formaliserte eller formelle normer. de
                   uformelle normene er uskrevne regler for skikk og bruk, som
                   hvordan man skal oppføre seg i ulike situasjoner. det kan være
                   forventninger om at du skal håndhilse når du kommer inn til et
@@ -83,16 +87,19 @@ class GlossaryExample extends Component {
                   telefonsamtaler mens intervjuet pågår.
                 </p>
                 <p>
-                  for å forsterke innlæringen av normer følges de opp av
+                  For å forsterke innlæringen av normer følges de opp av
                   reaksjoner eller sanksjoner.{' '}
                   <Glossary
                     content="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
                     authors={[]}
-                    title={'sanksjon'}>
+                    title={'sanksjon'}
+                    ariaLabel="Vis begrep beskrivelse"
+                    license="by-nc"
+                    id={2}>
                     Sanksjonene
                   </Glossary>{' '}
-                  kan både være positive og negative. ønsket adferd belønnes,
-                  men uønsket adferd straffes. når en person har gjort normene
+                  kan både være positive og negative. Ønsket adferd belønnes,
+                  men uønsket adferd straffes. Når en person har gjort normene
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
                 </p>

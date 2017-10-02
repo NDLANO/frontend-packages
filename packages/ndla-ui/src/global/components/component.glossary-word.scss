@@ -58,11 +58,11 @@
   z-index: 1;
   background: $brand-color--lighter;
   padding: $spacing;
-  animation-name: fadeInTop;
-  animation-duration: .4s;
   opacity: 0;
 }
 .c-glossary-word__popup--visible {
+  animation-name: fadeInTop;
+  animation-duration: .4s;
   opacity: 1;
 }
 .c-glossary-word__title {
@@ -70,13 +70,10 @@
   border-bottom: 2px solid $brand-color;
   text-transform: capitalize;
   display: block;
-  font-weight: bold;
-  font-size: x-large;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 .c-glossary-word__content {
   display: block;
-  padding-top: 1em;
+  padding-top: $spacing--small/2;
 }
 .c-glossary-word__footer {
   padding-top: $spacing--small;

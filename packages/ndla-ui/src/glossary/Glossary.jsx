@@ -6,11 +6,9 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { BY, NC, ND } from 'ndla-licenses';
-import { ClickableLicenseByline } from '../index';
 
 const classes = new BEMHelper({
   name: 'glossary-word',
@@ -21,75 +19,34 @@ const sourceClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-class Glossary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-    this.handleClick = this.handleClick.bind(this);
-    this.close = this.close.bind(this);
-  }
-
-  componentDidMount() {}
-
-  handleClick() {
-    this.setState({ isOpen: !this.state.isOpen });
-  }
-
-  close() {
-    this.setState({ isOpen: false });
-  }
-
-  render() {
-    const { children } = this.props;
-    const { isOpen } = this.state;
-
-    return (
-      <div {...classes('item')}>
-        <button
-          aria-haspopup
-          href="#test"
-          {...classes('link')}
-          onClick={this.handleClick}>
-          {children}
-        </button>
-        {isOpen
-          ? <div {...classes('popup')}>
-              <button
-                {...classes('close', '', 'u-close')}
-                onClick={this.handleClick}>
-                Lukk
-              </button>
-              <h3 {...classes('title')}>
-                {children}
-              </h3>
-              <p {...classes('description')}>
-                {this.props.definition}
-              </p>
-              <div {...sourceClasses()}>
-                <ClickableLicenseByline
-                  className="c-source-list__item"
-                  noText
-                  license={[BY, NC, ND]}
-                />
-                <span {...sourceClasses('item')}>
-                  {this.props.author}
-                </span>
-                <span {...sourceClasses('item')}>
-                  {this.props.source}
-                </span>
-              </div>
-            </div>
-          : null}
-      </div>
-    );
-  }
-}
+const Glossary = ({ title, authors, content, children }) =>
+  <span {...classes('item')}>
+    <button aria-haspopup {...classes('link')}>
+      {children}
+    </button>
+    <span {...classes('popup')}>
+      <button {...classes('close', 'u-close')}>Lukk</button>
+      <span {...classes('title')}>
+        {title}
+      </span>
+      <span {...classes('content')}>
+        {content}
+      </span>
+      <span {...sourceClasses()}>
+        {authors.map(author =>
+          <span {...sourceClasses('item')} key={author}>
+            {author}
+          </span>,
+        )}
+      </span>
+    </span>
+  </span>;
 
 Glossary.propTypes = {
+  title: PropTypes.string,
+  authors: PropTypes.arrayOf(PropTypes.string),
+  content: PropTypes.string,
   children: PropTypes.string,
-  definition: PropTypes.string,
-  source: PropTypes.string,
-  author: PropTypes.string,
 };
 
 export default Glossary;

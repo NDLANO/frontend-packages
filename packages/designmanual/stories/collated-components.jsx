@@ -5,7 +5,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, CC, COPY } from 'ndla-licenses';
 import {
-  Glossary,
   Button,
   ErrorMessage,
   StoryIntro,
@@ -17,12 +16,10 @@ import {
   TopicIntroductionList,
   Breadcrumb,
   BreadcrumbBlock,
-  OneColumn,
   LayoutItem,
   StoryBody,
   RelatedArticles,
 } from 'ndla-ui';
-import { Time, User } from 'ndla-ui/icons';
 
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
@@ -35,6 +32,7 @@ import {
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { ResourceSubsetList } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
+import GlossaryExample from './organisms/GlossaryExample';
 
 const toggle = () => {
   document
@@ -69,85 +67,7 @@ storiesOf('Sammensatte moduler', module)
   )
   .add('Begrepsforklaring', () =>
     <Center>
-      <OneColumn cssModifier="narrow">
-        <article className="c-article c-article--clean">
-          <LayoutItem layout="center">
-            <h1 className="c-article__title">Sosialisering</h1>
-            <p className="article_introduction">
-              Vi blir født inn i et samfunn. På den ene siden kommer vi til en
-              familie bestående av nære relasjoner. På den andre siden blir de
-              fleste av oss født på en institusjon, et sykehus.
-            </p>
-            <div className="c-article-byline">
-              <span className="c-article-byline__authors">
-                <User /> Gro-Anita Mortensen.
-              </span>{' '}
-              <span className="c-article-byline__date">
-                <Time /> Sist oppdatert 03.03.2017
-              </span>
-              <LicenseExample />
-            </div>
-          </LayoutItem>
-          <LayoutItem layout="center">
-            <section>
-              <div>
-                <p>
-                  Gjennom{' '}
-                  <Glossary
-                    definition="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre Med andre ord at de blir som de andre i samfunnet."
-                    author="Gary Waters"
-                    source="snl.no">
-                    sosialisering
-                  </Glossary>{' '}
-                  lærer menneskene å fungere i et samfunn og får kjennskap til
-                  de regler og verdier som det forventes at man skal følge.
-                  Sosialisering er dermed den prosessen som gjør at vi tar til
-                  oss dette, fra vi blir født til vi dør.
-                </p>
-                <p>
-                  Barn møtes med forventninger til hvordan de skal oppføre seg.
-                  Disse forventningene gjentar seg, og slik lærer barnet hvilke
-                  regler eller normer som gjelder. Hovedmålet med
-                  sosialiseringen er at de enkelte menneskene skal kunne skille
-                  mellom godt og ondt, og rett og galt.
-                </p>
-                <FigureWithLicense
-                  caption=""
-                  classes="article_figure--float-right">
-                  <img
-                    alt="Liten jente holder sine foreldres hender. Foto."
-                    src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
-                  />
-                </FigureWithLicense>
-                <h2>Normer og normsendere</h2>
-                <p>
-                  Normer er regler som forteller hvordan man skal oppføre seg og
-                  handle i en gitt situasjon. Normer kan være formelle eller
-                  uformelle. Lover er formaliserte eller formelle normer. De
-                  uformelle normene er uskrevne regler for skikk og bruk, som
-                  hvordan man skal oppføre seg i ulike situasjoner. Det kan være
-                  forventninger om at du skal håndhilse når du kommer inn til et
-                  jobbintervju, eller at det er uhøflig å svare på
-                  telefonsamtaler mens intervjuet pågår.
-                </p>
-                <p>
-                  For å forsterke innlæringen av normer følges de opp av
-                  reaksjoner eller sanksjoner.{' '}
-                  <Glossary
-                    definition="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
-                    source="snl.no">
-                    Sanksjonene
-                  </Glossary>{' '}
-                  kan både være positive og negative. Ønsket adferd belønnes,
-                  men uønsket adferd straffes. Når en person har gjort normene
-                  til sine egne og følger dem, sier man at normene er
-                  internalisert.
-                </p>
-              </div>
-            </section>
-          </LayoutItem>
-        </article>
-      </OneColumn>
+      <GlossaryExample />
     </Center>,
   )
   .add('Emnebeskrivelse', () =>

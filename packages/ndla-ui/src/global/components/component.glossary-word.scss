@@ -47,6 +47,7 @@
   }
 }
 .c-glossary-word__popup {
+  display: block;
   position: absolute;
   width: 87%;
   @include mq(desktop) {
@@ -59,11 +60,23 @@
   padding: $spacing;
   animation-name: fadeInTop;
   animation-duration: .4s;
+  opacity: 0;
+}
+.c-glossary-word__popup--visible {
+  opacity: 1;
 }
 .c-glossary-word__title {
   margin-top: 0;
   border-bottom: 2px solid $brand-color;
   text-transform: capitalize;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+.c-glossary-word__content {
+  display: block;
+  padding-top: 1em;
 }
 .c-glossary-word__footer {
   padding-top: $spacing--small;

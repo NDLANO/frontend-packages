@@ -14,7 +14,7 @@
 // `font-size` with a pixel fallback, as well as generating a `line-height` that
 // will sit on our baseline grid.
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, .u-heading3 {
   font-weight: $font-weight-bold;
   font-family: $font;
   margin: $spacing 0 $spacing 0;
@@ -31,7 +31,7 @@ h1 {
   }
 }
 
-h2, h3 {
+h2, h3, .u-heading3 {
   line-height: 1;
   margin-top: $spacing * 2;
   margin-bottom: $spacing / 2;
@@ -49,10 +49,4 @@ article {
   h1 {
     position: relative;
   }
-}
-
-.u-heading3 {
-  font-weight: bold;
-  font-size: x-large;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }

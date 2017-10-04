@@ -58,7 +58,7 @@ export {
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
-} from './license/MediaList';
+} from './MediaList';
 
 export { default as ErrorMessage } from './ErrorMessage';
 

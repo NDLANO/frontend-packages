@@ -10,7 +10,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { StoryIntro, StoryBody } from 'ndla-ui';
+import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';

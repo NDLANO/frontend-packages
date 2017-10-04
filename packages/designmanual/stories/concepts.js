@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { StoryIntro, StoryBody } from 'ndla-ui';
+import { StoryIntro, StoryBody } from './wrappers';
 
 storiesOf('Konsepter', module).add('Navngivning av innholdstyper', () =>
   <div>

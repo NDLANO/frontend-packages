@@ -7,7 +7,6 @@ import { BY, SA, NC, ND, PD, CC0, CC, COPY } from 'ndla-licenses';
 import {
   Button,
   ErrorMessage,
-  StoryIntro,
   FilterList,
   Pager,
   Footer,
@@ -17,10 +16,10 @@ import {
   Breadcrumb,
   BreadcrumbBlock,
   LayoutItem,
-  StoryBody,
   RelatedArticles,
 } from 'ndla-ui';
 
+import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';

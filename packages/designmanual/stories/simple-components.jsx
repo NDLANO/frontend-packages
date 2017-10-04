@@ -7,12 +7,11 @@ import { BY, NC, ND } from 'ndla-licenses';
 import {
   Aside,
   Button,
-  StoryIntro,
   Logo,
   LayoutItem,
   ClickableLicenseByline,
-  StoryBody,
 } from 'ndla-ui';
+import { StoryIntro, StoryBody } from './wrappers';
 import article from '../dummydata/index';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';

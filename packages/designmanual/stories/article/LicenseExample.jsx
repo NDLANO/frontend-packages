@@ -9,6 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
+import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import {
@@ -17,6 +18,7 @@ import {
   MediaList,
   MediaListItem,
   MediaListItemBody,
+  MediaListCCLink,
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
@@ -44,10 +46,9 @@ const VideoContent = () =>
           />
         </MediaListItemImage>
         <MediaListItemBody
-          locale="nb"
           license="by-nc-nd"
-          reuseLabel="Bruk bildet"
           title="Regler for bruk av videoen:">
+          <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
@@ -88,72 +89,41 @@ const TextContent = () =>
       </p>
     </div>
     <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <Document className="c-medialist__icon" />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-sa"
-          title="Regler for bruk av teksten:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                  'Publiseringsdato: 12.05.13',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <Document className="c-medialist__icon" />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-sa"
-          title="Regler for bruk av teksten:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                  'Publiseringsdato: 12.05.13',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
+      {['1', '2'].map(key =>
+        <MediaListItem key={key}>
+          <MediaListItemImage>
+            <a href="">
+              <Document className="c-medialist__icon" />
+            </a>
+          </MediaListItemImage>
+          <MediaListItemBody
+            license="by-sa"
+            title="Regler for bruk av teksten:">
+            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            <MediaListItemActions>
+              <div className="c-medialist__ref">
+                <MediaListItemMeta
+                  items={[
+                    'Opphavsmann: Fotograf Ola N',
+                    'Rettighetshaver: Leverandør NTB scanpix',
+                    'Publiseringsdato: 12.05.13',
+                  ]}
+                />
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Kopier referanse
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Last ned
+                </button>
+              </div>
+            </MediaListItemActions>
+          </MediaListItemBody>
+        </MediaListItem>,
+      )}
     </MediaList>
   </div>;
 
@@ -166,70 +136,40 @@ const AudioContent = () =>
       </p>
     </div>
     <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <Audio className="c-medialist__icon" />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-sa"
-          title="Regler for bruk av lydfilen:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <Audio className="c-medialist__icon" />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-sa"
-          title="Regler for bruk av lydfilen:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
+      {['1', '2'].map(key =>
+        <MediaListItem key={key}>
+          <MediaListItemImage>
+            <a href="">
+              <Audio className="c-medialist__icon" />
+            </a>
+          </MediaListItemImage>
+          <MediaListItemBody
+            license="by-sa"
+            title="Regler for bruk av lydfilen:">
+            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            <MediaListItemActions>
+              <div className="c-medialist__ref">
+                <MediaListItemMeta
+                  items={[
+                    'Opphavsmann: Fotograf Ola N',
+                    'Rettighetshaver: Leverandør NTB scanpix',
+                  ]}
+                />
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Kopier referanse
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Last ned
+                </button>
+              </div>
+            </MediaListItemActions>
+          </MediaListItemBody>
+        </MediaListItem>,
+      )}
     </MediaList>
   </div>;
 
@@ -242,117 +182,45 @@ const ImageContent = () =>
       </p>
     </div>
     <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av bildet:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                  'Kilde: <a href="#">Wikimedia</a>',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned bilde
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av bildet:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                  'Kilde: <a href="#">Wikimedia</a>',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned bilde
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <img
-              width="260"
-              alt="alt"
-              src="https://images.unsplash.com/photo-1470138831303-3e77dd49163e?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop="
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av bildet:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                  'Kilde: <a href="#">Wikimedia</a>',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned bilde
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
+      {[
+        'https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
+        'https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
+        'https://images.unsplash.com/photo-1470138831303-3e77dd49163e?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
+      ].map(src =>
+        <MediaListItem key={uuid()}>
+          <MediaListItemImage>
+            <a href="">
+              <img width="260" alt="alt" src={src} />
+            </a>
+          </MediaListItemImage>
+          <MediaListItemBody
+            license="by-nc-nd"
+            title="Regler for bruk av bildet:">
+            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            <MediaListItemActions>
+              <div className="c-medialist__ref">
+                <MediaListItemMeta
+                  items={[
+                    'Opphavsmann: Fotograf Ola N',
+                    'Rettighetshaver: Leverandør NTB scanpix',
+                    'Kilde: <a href="#">Wikimedia</a>',
+                  ]}
+                />
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Kopier referanse
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Last ned bilde
+                </button>
+              </div>
+            </MediaListItemActions>
+          </MediaListItemBody>
+        </MediaListItem>,
+      )}
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
@@ -364,9 +232,9 @@ const ImageContent = () =>
           </a>
         </MediaListItemImage>
         <MediaListItemBody
-          locale="nb"
           license="by-nc-nd"
           title="Regler for bruk av bildet:">
+          <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
@@ -407,114 +275,62 @@ const H5PContent = () =>
       </p>
     </div>
     <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <iframe
-              title="H5P"
-              src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-              className="c-medialist__h5p"
-              width="260"
-              height="373"
-              frameBorder="0"
-              allowFullScreen="allowfullscreen"
-            />
-            <script
-              src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
-              charSet="UTF-8"
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av H5P-innholdet:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                ]}
+      {['1', '2'].map(key =>
+        <MediaListItem key={key}>
+          <MediaListItemImage>
+            <a href="">
+              <iframe
+                title="H5P"
+                src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
+                className="c-medialist__h5p"
+                width="260"
+                height="373"
+                frameBorder="0"
+                allowFullScreen="allowfullscreen"
               />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned bilde
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Bygg inn
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Se del-elementer
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <iframe
-              title="H5P"
-              src="http://ndla.no/nb/h5p/embed/146135?fag=127756"
-              className="c-medialist__h5p"
-              width="260"
-              height="373"
-              frameBorder="0"
-              allowFullScreen="allowfullscreen"
-            />
-            <script
-              src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
-              charSet="UTF-8"
-            />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av H5P-innholdet:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                ]}
+              <script
+                src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
+                charSet="UTF-8"
               />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned bilde
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Bygg inn
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Se del-elementer
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
+            </a>
+          </MediaListItemImage>
+          <MediaListItemBody
+            license="by-nc-nd"
+            title="Regler for bruk av H5P-innholdet:">
+            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            <MediaListItemActions>
+              <div className="c-medialist__ref">
+                <MediaListItemMeta
+                  items={[
+                    'Opphavsmann: Fotograf Ola N',
+                    'Rettighetshaver: Leverandør NTB scanpix',
+                  ]}
+                />
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Kopier referanse
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Last ned bilde
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Bygg inn
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Se del-elementer
+                </button>
+              </div>
+            </MediaListItemActions>
+          </MediaListItemBody>
+        </MediaListItem>,
+      )}
     </MediaList>
   </div>;
 
@@ -527,70 +343,40 @@ const Files = () =>
       </p>
     </div>
     <MediaList>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <Document className="c-medialist__icon" />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av filen:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
-      <MediaListItem>
-        <MediaListItemImage>
-          <a href="">
-            <Document className="c-medialist__icon" />
-          </a>
-        </MediaListItemImage>
-        <MediaListItemBody
-          locale="nb"
-          license="by-nc-nd"
-          title="Regler for bruk av filen:">
-          <MediaListItemActions>
-            <div className="c-medialist__ref">
-              <MediaListItemMeta
-                items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                ]}
-              />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Kopier referanse
-              </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
-                Last ned
-              </button>
-            </div>
-          </MediaListItemActions>
-        </MediaListItemBody>
-      </MediaListItem>
+      {['1', '2'].map(key =>
+        <MediaListItem key={key}>
+          <MediaListItemImage>
+            <a href="">
+              <Document className="c-medialist__icon" />
+            </a>
+          </MediaListItemImage>
+          <MediaListItemBody
+            license="by-nc-nd"
+            title="Regler for bruk av filen:">
+            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            <MediaListItemActions>
+              <div className="c-medialist__ref">
+                <MediaListItemMeta
+                  items={[
+                    'Opphavsmann: Fotograf Ola N',
+                    'Rettighetshaver: Leverandør NTB scanpix',
+                  ]}
+                />
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Kopier referanse
+                </button>
+                <button
+                  className="c-button c-button--outline c-licenseToggle__button"
+                  type="button">
+                  Last ned
+                </button>
+              </div>
+            </MediaListItemActions>
+          </MediaListItemBody>
+        </MediaListItem>,
+      )}
     </MediaList>
   </div>;
 

@@ -50,6 +50,22 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const MediaListCCLink = ({ children, language }) =>
+  <a
+    className="c-figure-license__link"
+    href={`https://creativecommons.org/licenses/by-nc-nd/3.0/deed.${language}`}>
+    {children}
+  </a>;
+
+MediaListCCLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  language: PropTypes.string,
+};
+
+MediaListCCLink.defaultProps = {
+  language: 'no',
+};
+
 export const MediaListItemBody = ({ children, license, title }) =>
   <div {...oClasses('body', null, cClasses('body').className)}>
     {title
@@ -58,18 +74,12 @@ export const MediaListItemBody = ({ children, license, title }) =>
         </h3>
       : null}
     <LicenseByline license={getLicenseByAbbreviation(license)} />
-    <a
-      className="c-figure-license__link"
-      href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
-      Lær mer om åpne lisenser
-    </a>
     {children}
   </div>;
 
 MediaListItemBody.propTypes = {
   children: PropTypes.node.isRequired,
   license: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
   title: PropTypes.string,
 };
 

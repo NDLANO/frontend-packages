@@ -24,6 +24,8 @@ import {
   addCopyToClipboardListeners,
 } from './figureScripts';
 
+import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
+
 export const initArticleScripts = () => {
   addEventListenerForResize();
   updateIFrameDimensions();
@@ -31,6 +33,7 @@ export const initArticleScripts = () => {
   addCopyToClipboardListeners();
   addShowFigureDetailsClickListeners();
   addCloseFigureDetailsClickListeners();
+  addShowGlossaryDefinitionClickListeners();
 };
 
 export {
@@ -43,4 +46,5 @@ export {
   addCopyToClipboardListeners,
   addShowFigureDetailsClickListeners,
   makeFigureLicenseIconsClickable,
+  addShowGlossaryDefinitionClickListeners,
 };

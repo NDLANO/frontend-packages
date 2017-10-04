@@ -47,6 +47,7 @@
   }
 }
 .c-glossary-word__popup {
+  display: block;
   position: absolute;
   width: 87%;
   @include mq(desktop) {
@@ -57,13 +58,22 @@
   z-index: 1;
   background: $brand-color--lighter;
   padding: $spacing;
+  opacity: 0;
+}
+.c-glossary-word__popup--visible {
   animation-name: fadeInTop;
   animation-duration: .4s;
+  opacity: 1;
 }
 .c-glossary-word__title {
   margin-top: 0;
   border-bottom: 2px solid $brand-color;
   text-transform: capitalize;
+  display: block;
+}
+.c-glossary-word__content {
+  display: block;
+  padding-top: $spacing--small/2;
 }
 .c-glossary-word__footer {
   padding-top: $spacing--small;

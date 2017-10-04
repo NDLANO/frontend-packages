@@ -8,6 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
 export const injectT = (WrappedComponent, prefix = '') => {
   const getDisplayName = component =>
@@ -25,7 +26,7 @@ export const injectT = (WrappedComponent, prefix = '') => {
 
   InjectT.displayName = `InjectT(${getDisplayName(WrappedComponent)})`;
 
-  return InjectT;
+  return hoistNonReactStatics(InjectT, WrappedComponent);
 };
 
 export default injectT;

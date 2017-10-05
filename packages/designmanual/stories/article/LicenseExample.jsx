@@ -7,14 +7,11 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
 import { uuid } from 'ndla-util';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import {
   ToggleLicenseBox,
-  LicenseByline,
   MediaList,
   MediaListItem,
   MediaListItemBody,
@@ -396,22 +393,11 @@ export const LicenseBox = () =>
     />
   </div>;
 
-const LicenseExample = ({ showByline }) =>
+const LicenseExample = () =>
   <ToggleLicenseBox
     openTitle="Bruk artikkel"
     closeTitle="Lukk boks"
-    licenseBox={<LicenseBox />}>
-    {showByline
-      ? <LicenseByline license={getLicenseByAbbreviation('by-nc-nd')}>
-          <span className="article_meta">
-            Fotograf Ola N, Leverandør NTB scanpix. Publisert: 10.10.2010.
-          </span>
-        </LicenseByline>
-      : null}
-  </ToggleLicenseBox>;
-
-LicenseExample.propTypes = {
-  showByline: PropTypes.bool,
-};
+    licenseBox={<LicenseBox />}
+  />;
 
 export default LicenseExample;

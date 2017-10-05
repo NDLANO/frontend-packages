@@ -20,7 +20,6 @@ import {
 import {
   addShowFigureDetailsClickListeners,
   addCloseFigureDetailsClickListeners,
-  makeFigureLicenseIconsClickable,
   addCopyToClipboardListeners,
 } from './figureScripts';
 
@@ -45,6 +44,5 @@ export {
   addCloseFigureDetailsClickListeners,
   addCopyToClipboardListeners,
   addShowFigureDetailsClickListeners,
-  makeFigureLicenseIconsClickable,
   addShowGlossaryDefinitionClickListeners,
 };

@@ -6,67 +6,39 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
 import { LicenseShape } from '../shapes';
 
-class ClickableLicenseByline extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedLicenseRight: undefined };
-    this.handleLicenseRightChange = this.handleLicenseRightChange.bind(this);
+const ClickableLicenseByline = ({
+  children,
+  license,
+  stacked,
+  noText,
+  className,
+}) => {
+  const classList = ['license-byline'];
+  if (stacked) {
+    classList.push('license-byline--stacked');
   }
 
-  handleLicenseRightChange(licenseRight) {
-    const { selectedLicenseRight } = this.state;
-    if (
-      !selectedLicenseRight ||
-      selectedLicenseRight.short !== licenseRight.short
-    ) {
-      this.setState({ selectedLicenseRight: licenseRight });
-    } else {
-      this.setState({ selectedLicenseRight: undefined });
-    }
-  }
-
-  render() {
-    const { children, license, stacked, noText, className } = this.props;
-    const { selectedLicenseRight } = this.state;
-    const activeLicenseRight = selectedLicenseRight
-      ? selectedLicenseRight.short
-      : undefined;
-    const classList = ['license-byline'];
-    if (stacked) {
-      classList.push('license-byline--stacked');
-    }
-
-    return (
-      <div className={classList.join(' ')}>
-        <LicenseIconList
-          licenseRights={license}
-          onLicenseIconClick={this.handleLicenseRightChange}
-          activeLicenseRight={activeLicenseRight}
-          noText={noText}
-          className={className}
-        />
-        {selectedLicenseRight
-          ? <div className="license-byline__body license-byline__body--black">
-              <span>
-                {selectedLicenseRight.description}
-              </span>
-            </div>
-          : undefined}
-        <div className="license-byline__body">
-          <span>
-            {license.author}
-          </span>
-        </div>
-        {children}
+  return (
+    <div className={classList.join(' ')}>
+      <LicenseIconList
+        licenseRights={license}
+        noText={noText}
+        className={className}
+      />
+      <div className="license-byline__body">
+        <span>
+          {license.author}
+        </span>
       </div>
-    );
-  }
-}
+      {children}
+    </div>
+  );
+};
 
 ClickableLicenseByline.propTypes = {
   license: LicenseShape.isRequired,

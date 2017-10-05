@@ -19,17 +19,11 @@
   padding-bottom: 7px;
   margin-bottom: 0;
   margin-right: 0.2em;
-
-  .c-license-icons--active {
-    circle {
-      fill: $brand-color;
-    }
-    path {
-      fill: $white;
-    }
-  }
 }
+
 .c-license-icons__hover {
+  opacity: 0;
+  display: none;
   max-width: 300px;
   position: absolute;
   background: $brand-color;
@@ -39,10 +33,15 @@
   @include inuit-font-size(13px);
 }
 .c-license-icons__item:hover {
+  .c-license-icons__icon {
+    color: $brand-color;
+  }
   .c-license-icons__hover {
     display: block;
+    opacity: 1;
   }
 }
+
 .c-license-icons__icon {
   width: $spacing / 1.1;
   height: $spacing / 1.1;

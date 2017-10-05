@@ -30,7 +30,6 @@ import {
   LicensePd,
   LicenseCopy,
 } from '../icons';
-import { Button } from '../index';
 
 const classes = new BEMHelper({
   name: 'license-icons',
@@ -83,13 +82,8 @@ LicenseIcon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-const LicenseIconItem = ({
-  licenseRight,
-  activeLicenseRight,
-  noText,
-  clicked,
-}) =>
-  <li {...classes('item', activeLicenseRight === licenseRight && 'active')}>
+const LicenseIconItem = ({ licenseRight, noText }) =>
+  <li {...classes('item')}>
     {!noText
       ? <span>
           <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
@@ -98,40 +92,22 @@ const LicenseIconItem = ({
           </span>
         </span>
       : ''}
-    {noText && clicked
+    {noText
       ? <span>
-          <Button
-            stripped
-            onMouseEnter={() =>
-              clicked(getLicenseRightByAbbreviation(licenseRight))}
-            onMouseLeave={() => clicked(getLicenseRightByAbbreviation())}
-            onClick={() =>
-              clicked(getLicenseRightByAbbreviation(licenseRight))}>
-            <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
-          </Button>
-          {activeLicenseRight === licenseRight
-            ? <span className="c-license-icons__hover">
-                {getLicenseRightByAbbreviation(licenseRight).description}
-              </span>
-            : ''}
+          <LicenseIcon licenseRight={licenseRight} {...classes('icon')} />
+          <span className="c-license-icons__hover">
+            {getLicenseRightByAbbreviation(licenseRight).description}
+          </span>
         </span>
       : ''}
   </li>;
 
 LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
-  activeLicenseRight: PropTypes.string,
   noText: PropTypes.bool,
-  clicked: PropTypes.func,
 };
 
-const LicenseIconList = ({
-  licenseRights,
-  noText,
-  className,
-  onLicenseIconClick,
-  ...rest
-}) => {
+const LicenseIconList = ({ licenseRights, noText, className, ...rest }) => {
   const licenseRightsWithCC = [CC, ...licenseRights];
   return (
     <ul {...classes('list', '', `${className}`)}>
@@ -140,7 +116,6 @@ const LicenseIconList = ({
           key={licenseRight}
           licenseRight={licenseRight}
           noText={noText}
-          clicked={onLicenseIconClick}
           {...rest}
         />,
       )}
@@ -150,10 +125,8 @@ const LicenseIconList = ({
 
 LicenseIconList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeLicenseRight: PropTypes.string,
   noText: PropTypes.bool,
   className: PropTypes.string,
-  onLicenseIconClick: PropTypes.func,
 };
 
 LicenseIconList.defaultProps = {

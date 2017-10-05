@@ -7,13 +7,7 @@
  */
 
 import { copyTextToClipboard } from 'ndla-util';
-import {
-  createElement,
-  findAncestorByClass,
-  removeModifiers,
-  removeElementById,
-  wrapElement,
-} from './domHelpers';
+import { findAncestorByClass, removeElementById } from './domHelpers';
 
 export const addCloseFigureDetailsClickListeners = () => {
   document.querySelectorAll('.c-figure .c-figure__close').forEach(el => {
@@ -62,41 +56,5 @@ export const addShowFigureDetailsClickListeners = () => {
       const figcaption = findAncestorByClass(target, 'c-figure__caption');
       figcaption.classList.add('u-hidden');
     };
-  });
-};
-
-export const makeFigureLicenseIconsClickable = () => {
-  document.querySelectorAll('.c-figure .c-license-icons__item').forEach(el => {
-    const iconEl = el.querySelector('.c-license-icons__icon');
-
-    const button = document.createElement('button');
-    button.className = 'c-button c-button--stripped';
-
-    button.onclick = () => {
-      const isActive = el.classList.contains('c-license-icons__item--active');
-
-      // cleanup
-      removeElementById('c-license-icon-description');
-      removeModifiers('c-license-icons__item', 'active', '.c-figure'); // remove existing modifier classes
-
-      if (isActive) {
-        // Only do cleanup if already active
-        button.blur();
-        return;
-      }
-
-      // Add active modifier and append description element
-      el.classList.add('c-license-icons__item--active');
-      const description = iconEl.getAttribute('aria-label');
-      const byline = findAncestorByClass(el, 'license-byline');
-      const descriptionEl = createElement(
-        'div',
-        'c-license-icon-description',
-        'license-byline__body license-byline__body--black',
-        `<span>${description}</span>`,
-      );
-      byline.appendChild(descriptionEl);
-    };
-    wrapElement(iconEl, button);
   });
 };

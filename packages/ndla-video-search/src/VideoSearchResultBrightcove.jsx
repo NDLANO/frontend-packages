@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, LicenseIconList } from 'ndla-ui';
+import { Button, LicenseByline } from 'ndla-ui';
 import { getLicenseByNBTitle } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
@@ -47,7 +47,7 @@ export default function VideoSearchResultBrightcove({
           </div>
           <div {...classes('license')}>
             {license.rights
-              ? <LicenseIconList licenseRights={license.rights} noText />
+              ? <LicenseByline licenseRights={license.rights} />
               : license}
           </div>
           <Button

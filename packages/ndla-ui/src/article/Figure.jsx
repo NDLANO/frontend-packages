@@ -25,7 +25,7 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({ children, authors, messages }) =>
+export const FigureDetails = ({ children, authors, origin, messages }) =>
   <div {...classes('license')} id="figmeta">
     <button {...classes('close')}>
       {messages.close}
@@ -39,7 +39,7 @@ export const FigureDetails = ({ children, authors, messages }) =>
         <a
           className="c-figure-license__link"
           href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
-          Lær mer om åpne lisenser
+          {messages.learnAboutOpenLicenses}
         </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
@@ -49,14 +49,17 @@ export const FigureDetails = ({ children, authors, messages }) =>
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
             )}
             <li>
-              Kilde: <a href="http://www.wikimedia.org">Wikimedia</a>
+              {messages.source}:{' '}
+              {origin.startsWith('http')
+                ? <a href={origin}>
+                    {origin}
+                  </a>
+                : origin}
             </li>
           </ul>
-          {children
-            ? <div {...classLicenses('cta-block')}>
-                {' '}{children}{' '}
-              </div>
-            : null}
+          <div {...classLicenses('cta-block')}>
+            {children}
+          </div>
         </div>
       </div>
     </div>
@@ -65,6 +68,7 @@ export const FigureDetails = ({ children, authors, messages }) =>
 FigureDetails.propTypes = {
   children: PropTypes.node,
   licenseAbbreviation: PropTypes.string.isRequired,
+  origin: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.string.isRequired,
@@ -74,7 +78,8 @@ FigureDetails.propTypes = {
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
-    howToReference: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
+    learnAboutOpenLicenses: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -86,7 +91,7 @@ export const FigureCaption = ({
 }) =>
   <figcaption {...classes('caption')}>
     {caption
-      ? <div className="c-figure__info">
+      ? <div {...classes('info')}>
           {caption}
         </div>
       : null}
@@ -96,7 +101,7 @@ export const FigureCaption = ({
           <span className="article_meta">
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button className="c-figure__captionbtn">
+          <button {...classes('captionbtn')}>
             {reuseLabel}
           </button>
         </LicenseByline>

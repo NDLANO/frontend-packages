@@ -39,7 +39,7 @@ LicenseIconItem.propTypes = {
 };
 
 const LicenseIconDescriptionList = ({ licenseRights, className }) =>
-  <ul {...classes('list', '', `${className}`)}>
+  <ul {...classes('list', '', className)}>
     <LicenseIconItem key={CC} licenseRight={CC} />
     {licenseRights.map(licenseRight =>
       <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />,

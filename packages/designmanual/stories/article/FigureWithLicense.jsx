@@ -41,7 +41,8 @@ class FigureWithLicense extends Component {
     const messages = {
       close: 'Lukk',
       rulesForUse: 'Regler for bruk av bildet',
-      howToReference: 'Slik skal du referere til dette bildet',
+      learnAboutOpenLicenses: 'Lær mer om åpne lisenser',
+      source: 'Kilde',
     };
     const caption = this.props.caption ? this.props.caption : ``;
     const reuseLabel = this.props.reuseLabel
@@ -67,6 +68,7 @@ class FigureWithLicense extends Component {
         <FigureDetails
           licenseAbbreviation="by-nc-nd"
           authors={authors}
+          origin="https://www.wikimedia.com"
           messages={messages}>
           <button
             className="c-button c-button--outline c-figure-license__button"

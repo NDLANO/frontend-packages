@@ -50,16 +50,15 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListCCLink = ({ children, language }) =>
+export const MediaListCCLink = ({ children }) =>
   <a
     className="c-figure-license__link"
-    href={`https://creativecommons.org/licenses/by-nc-nd/3.0/deed.${language}`}>
+    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.no">
     {children}
   </a>;
 
 MediaListCCLink.propTypes = {
   children: PropTypes.node.isRequired,
-  language: PropTypes.string,
 };
 
 MediaListCCLink.defaultProps = {

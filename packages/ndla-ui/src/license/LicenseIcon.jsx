@@ -20,40 +20,24 @@ import {
   LicenseCopy,
 } from '../icons';
 
-const LicenseIcon = ({ licenseRight, licenseDescription, className }) => {
+const LicenseIcon = ({ licenseRight, description, className }) => {
   switch (licenseRight) {
     case CC:
-      return (
-        <LicenseCc className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseCc className={className} aria-label={description} />;
     case BY:
-      return (
-        <LicenseBy className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseBy className={className} aria-label={description} />;
     case NC:
-      return (
-        <LicenseNc className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseNc className={className} aria-label={description} />;
     case ND:
-      return (
-        <LicenseNd className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseNd className={className} aria-label={description} />;
     case SA:
-      return (
-        <LicenseSa className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseSa className={className} aria-label={description} />;
     case CC0:
-      return (
-        <LicenseCc0 className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseCc0 className={className} aria-label={description} />;
     case PD:
-      return (
-        <LicensePd className={className} aria-label={licenseDescription} />
-      );
+      return <LicensePd className={className} aria-label={description} />;
     case COPY:
-      return (
-        <LicenseCopy className={className} aria-label={licenseDescription} />
-      );
+      return <LicenseCopy className={className} aria-label={description} />;
     default:
       return undefined;
   }
@@ -61,7 +45,7 @@ const LicenseIcon = ({ licenseRight, licenseDescription, className }) => {
 
 LicenseIcon.propTypes = {
   licenseRight: PropTypes.string.isRequired,
-  licenseDescription: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 };
 

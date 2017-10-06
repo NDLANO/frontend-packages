@@ -48,7 +48,7 @@ export {
 } from './Breadcrumb';
 export { Hero } from './hero/Hero';
 export { Masthead, MastheadItem } from './masthead/Masthead';
-export { Figure, FigureCaption, FigureDetails } from './article/Figure';
+export { Figure, FigureCaption, FigureDetails } from './Figure';
 export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 export {
   MediaList,

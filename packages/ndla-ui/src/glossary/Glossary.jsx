@@ -30,48 +30,53 @@ const Glossary = ({
   ariaLabel,
   license,
   children,
-}) =>
-  <span {...classes('item')}>
-    <button aria-label={ariaLabel} {...classes('link')}>
-      {children}
-    </button>
-    <span
-      aria-hidden="true"
-      role="dialog"
-      aria-labelledby={id}
-      aria-describedby={id}
-      {...classes('popup')}>
-      <button {...classes('close', 'u-close')}>Lukk</button>
-      <span {...classes('title', undefined, 'u-heading3')}>
-        {title}
-      </span>
-      <span {...classes('content')}>
-        {content}
-      </span>
-      <span {...sourceClasses()}>
-        <LicenseByline
-          className="c-source-list__item"
-          licenseRights={getLicenseByAbbreviation(license).rights}
-        />
-        {authors.map(author =>
-          <span {...sourceClasses('item')} key={author}>
-            {author}
-          </span>,
-        )}
-        <span {...sourceClasses('item')} key={source}>
-          {source}
+}) => {
+  const licenseRights = getLicenseByAbbreviation(license).rights;
+  return (
+    <span {...classes('item')}>
+      <button aria-label={ariaLabel} {...classes('link')}>
+        {children}
+      </button>
+      <span
+        aria-hidden="true"
+        role="dialog"
+        aria-labelledby={id}
+        aria-describedby={id}
+        {...classes('popup')}>
+        <button {...classes('close', 'u-close')}>Lukk</button>
+        <span {...classes('title', undefined, 'u-heading3')}>
+          {title}
+        </span>
+        <span {...classes('content')}>
+          {content}
+        </span>
+        <span {...sourceClasses()}>
+          {licenseRights.length > 0 &&
+            <LicenseByline
+              className="c-source-list__item"
+              licenseRights={licenseRights}
+            />}
+          {authors.map(author =>
+            <span {...sourceClasses('item')} key={author}>
+              {author}
+            </span>,
+          )}
+          <span {...sourceClasses('item')} key={source}>
+            {source}
+          </span>
         </span>
       </span>
     </span>
-  </span>;
+  );
+};
 
 Glossary.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.string),
   source: PropTypes.string,
-  content: PropTypes.string,
-  ariaLabel: PropTypes.string,
+  content: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string.isRequired,
   license: PropTypes.string,
   children: PropTypes.string,
 };

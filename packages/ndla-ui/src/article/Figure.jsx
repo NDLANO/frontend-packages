@@ -82,7 +82,7 @@ export const FigureCaption = ({
   caption,
   authors,
   reuseLabel,
-  licenseAbbreviation,
+  licenseRights,
 }) =>
   <figcaption {...classes('caption')}>
     {caption
@@ -92,26 +92,14 @@ export const FigureCaption = ({
       : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={[BY, NC, ND]}>
-          <span className="article_meta">Gary Waters</span>
+        <LicenseByline licenseRights={licenseRights}>
+          <span className="article_meta">
+            {authors.map(author => author.name).join(', ')}
+          </span>
           <button className="c-figure__captionbtn">
             {reuseLabel}
           </button>
         </LicenseByline>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `
-          <div class="c-figure__licensetag" xmlnsCc="http://creativecommons.org/ns" xmlnsDc="http://purl.org/dc/elements/1.1/">
-            <a href="http://ndla.no/nb/node/115785" rel="dc:source">
-              Tittel
-            </a> av
-            <a href="http://ndla.no/nb/node/12390" rel="dc:creator">
-              ${authors.map(author => author.name).join(', ')}
-            </a>.
-            Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
-          </div>`,
-          }}
-        />
       </div>
     </footer>
   </figcaption>;
@@ -119,7 +107,7 @@ export const FigureCaption = ({
 FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
-  licenseAbbreviation: PropTypes.string.isRequired,
+  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

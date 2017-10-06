@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { BY, NC, ND } from 'ndla-licenses';
 import {
   addCloseFigureDetailsClickListeners,
   addShowFigureDetailsClickListeners,
@@ -15,10 +16,7 @@ import {
 
 import { Button, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
-const authors = [
-  { type: 'Opphavsmann', name: 'Fotograf Gary Waters' },
-  { type: 'Rettighetshaver', name: 'Leverandør NTB scanpix' },
-];
+const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
 class FigureWithLicense extends Component {
   constructor(props) {
@@ -63,7 +61,7 @@ class FigureWithLicense extends Component {
         <FigureCaption
           caption={caption}
           reuseLabel={reuseLabel}
-          licenseAbbreviation="by-nc-nd"
+          licenseRights={[BY, NC, ND]}
           authors={authors}
         />
         <FigureDetails

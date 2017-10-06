@@ -4,13 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
 import { BY, NC, ND } from 'ndla-licenses';
-import {
-  Aside,
-  Button,
-  Logo,
-  LayoutItem,
-  ClickableLicenseByline,
-} from 'ndla-ui';
+import { Aside, Button, Logo, LayoutItem, LicenseByline } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import article from '../dummydata/index';
 import { InlineContainer } from './helpers';
@@ -165,10 +159,9 @@ storiesOf('Enkle komponenter', module)
               innholdet.
             </p>
             <div className="c-source-list">
-              <ClickableLicenseByline
+              <LicenseByline
                 className="c-source-list__item"
-                noText
-                license={[BY, NC, ND]}
+                licenseRights={[BY, NC, ND]}
               />
               <span className="c-source-list__item">Gary Waters</span>
               <span className="c-source-list__item">Kilde: SNL.no</span>
@@ -335,10 +328,9 @@ storiesOf('Enkle komponenter', module)
               er brukt.
             </p>
             <div className="c-source-list">
-              <ClickableLicenseByline
+              <LicenseByline
                 className="c-source-list__item"
-                noText
-                license={[BY, NC, ND]}
+                licenseRights={[BY, NC, ND]}
               />
               <span className="c-source-list__item">Gary Waters</span>
               <span className="c-source-list__item">Kilde: SNL.no</span>

@@ -25,9 +25,9 @@ const LicenseIconItem = ({ licenseRight }) => {
       <LicenseIcon
         licenseRight={licenseRight}
         description={description}
-        {...classes('icon', 'hover')}
+        {...classes('icon')}
       />
-      <span className="c-license-icons__hover">
+      <span className="c-license-icons__licenselabel">
         {getLicenseRightByAbbreviation(licenseRight).description}
       </span>
     </li>
@@ -38,20 +38,17 @@ LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
 };
 
-const LicenseIconList = ({ licenseRights, className }) => {
-  const licenseRightsWithCC = [CC, ...licenseRights];
-  return (
-    <ul {...classes('list', '', `${className}`)}>
-      {licenseRightsWithCC.map(licenseRight =>
-        <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />,
-      )}
-    </ul>
-  );
-};
+const LicenseIconDescriptionList = ({ licenseRights, className }) =>
+  <ul {...classes('list', '', `${className}`)}>
+    <LicenseIconItem key={CC} licenseRight={CC} />
+    {licenseRights.map(licenseRight =>
+      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />,
+    )}
+  </ul>;
 
-LicenseIconList.propTypes = {
+LicenseIconDescriptionList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   className: PropTypes.string,
 };
 
-export default LicenseIconList;
+export default LicenseIconDescriptionList;

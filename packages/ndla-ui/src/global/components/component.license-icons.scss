@@ -33,7 +33,7 @@
   @include inuit-font-size(13px);
 }
 .c-license-icons__item:hover {
-  .c-license-icons__icon {
+  .c-license-icons__icon--hover {
     color: $brand-color;
   }
   .c-license-icons__hover {

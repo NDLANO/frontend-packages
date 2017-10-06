@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { ClickableLicenseByline } from '../index';
+import LicenseByline from '../license/LicenseByline';
 
 const classes = new BEMHelper({
   name: 'glossary-word',
@@ -49,10 +49,9 @@ const Glossary = ({
         {content}
       </span>
       <span {...sourceClasses()}>
-        <ClickableLicenseByline
+        <LicenseByline
           className="c-source-list__item"
-          noText
-          license={getLicenseByAbbreviation(license).rights}
+          licenseRights={getLicenseByAbbreviation(license).rights}
         />
         {authors.map(author =>
           <span {...sourceClasses('item')} key={author}>

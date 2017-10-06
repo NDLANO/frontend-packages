@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import { BY, NC, ND } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-import ClickableLicenseByline from '../license/ClickableLicenseByline';
+import LicenseByline from '../license/LicenseByline';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -35,7 +35,7 @@ export const FigureDetails = ({ children, authors, messages }) =>
         <h3 {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <ClickableLicenseByline license={[BY, NC, ND]} />
+        <LicenseByline withDescription licenseRights={[BY, NC, ND]} />
         <a
           className="c-figure-license__link"
           href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
@@ -92,12 +92,12 @@ export const FigureCaption = ({
       : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <ClickableLicenseByline noText license={[BY, NC, ND]}>
+        <LicenseByline licenseRights={[BY, NC, ND]}>
           <span className="article_meta">Gary Waters</span>
           <button className="c-figure__captionbtn">
             {reuseLabel}
           </button>
-        </ClickableLicenseByline>
+        </LicenseByline>
         <div
           dangerouslySetInnerHTML={{
             __html: `

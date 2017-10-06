@@ -9,22 +9,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
-import { LicenseShape } from '../shapes';
+import LicenseIconDescriptionList from './LicenseIconDescriptionList';
 
-const LicenseByline = ({ children, license, noText }) =>
+const LicenseByline = ({
+  children,
+  withDescription,
+  licenseRights,
+  className,
+}) =>
   <div className="license-byline">
-    <LicenseIconList noText={noText} licenseRights={license.rights} />
-    {children
-      ? <div className="license-byline__body">
-          {children}
-        </div>
-      : null}
+    {!withDescription
+      ? <LicenseIconList className={className} licenseRights={licenseRights} />
+      : <LicenseIconDescriptionList
+          className={className}
+          licenseRights={licenseRights}
+        />}
+    {children}
   </div>;
 
 LicenseByline.propTypes = {
-  license: LicenseShape.isRequired,
   children: PropTypes.node,
-  noText: PropTypes.bool,
+  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  withDescription: PropTypes.bool,
+  className: PropTypes.string,
+};
+
+LicenseByline.defaultProps = {
+  withDescription: false,
 };
 
 export default LicenseByline;

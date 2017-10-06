@@ -73,7 +73,10 @@ export const MediaListItemBody = ({ children, license, title }) =>
           {title}{' '}
         </h3>
       : null}
-    <LicenseByline license={getLicenseByAbbreviation(license)} />
+    <LicenseByline
+      withDescription
+      licenseRights={getLicenseByAbbreviation(license).rights}
+    />
     {children}
   </div>;
 

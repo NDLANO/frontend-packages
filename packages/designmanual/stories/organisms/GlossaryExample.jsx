@@ -51,7 +51,7 @@ class GlossaryExample extends Component {
                     source="snl.no"
                     title="Sosialisering"
                     ariaLabel="Vis begrep beskrivelse"
-                    license="by-nc"
+                    license="by-nc-nd"
                     id={1}>
                     sosialisering
                   </Glossary>{' '}
@@ -94,7 +94,7 @@ class GlossaryExample extends Component {
                     authors={[]}
                     title={'sanksjon'}
                     ariaLabel="Vis begrep beskrivelse"
-                    license="by-nc"
+                    license="by-nc-nd"
                     id={2}>
                     Sanksjonene
                   </Glossary>{' '}

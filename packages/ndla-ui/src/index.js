@@ -24,11 +24,11 @@ export {
   Content,
 } from './Layout';
 export { default as LicenseIconList } from './license/LicenseIconList';
+export {
+  default as LicenseIconDescriptionList,
+} from './license/LicenseIconDescriptionList';
 export { default as LicenseByline } from './license/LicenseByline';
 export { default as ToggleLicenseBox } from './license/ToggleLicenseBox';
-export {
-  default as ClickableLicenseByline,
-} from './license/ClickableLicenseByline';
 export { default as ClickToggle } from './common/ClickToggle';
 export { default as TopicArticle } from './topic/TopicArticle';
 export {

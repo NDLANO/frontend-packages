@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import getLicenseByAbbreviation from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
-import LicenseByline from '../license/LicenseByline';
+import LicenseByline from '../LicenseByline';
 
 const oClasses = new BEMHelper({
   name: 'media',

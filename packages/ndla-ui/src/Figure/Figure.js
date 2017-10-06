@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import { BY, NC, ND } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-import LicenseByline from '../license/LicenseByline';
+import LicenseByline from '../LicenseByline';
 
 const classes = new BEMHelper({
   name: 'figure',

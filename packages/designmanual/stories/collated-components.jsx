@@ -10,7 +10,7 @@ import {
   FilterList,
   Pager,
   Footer,
-  LicenseIconDescriptionList,
+  LicenseByline,
   TopicIntroductionList,
   Breadcrumb,
   BreadcrumbBlock,
@@ -161,7 +161,8 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner og merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseIconDescriptionList
+          <LicenseByline
+            withDescription
             licenseRights={[BY, SA, NC, ND, PD, CC0, COPY]}
           />
         </div>

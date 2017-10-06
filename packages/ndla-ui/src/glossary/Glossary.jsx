@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import LicenseByline from '../license/LicenseByline';
+import LicenseByline from '../LicenseByline';
 
 const classes = new BEMHelper({
   name: 'glossary-word',

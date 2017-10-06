@@ -50,7 +50,10 @@ class GlossaryExample extends Component {
                     authors={['Gary Waters']}
                     source="snl.no"
                     title="Sosialisering"
-                    ariaLabel="Vis begrep beskrivelse"
+                    messages={{
+                      ariaLabel: 'Vis begrep beskrivelse',
+                      close: 'Lukk',
+                    }}
                     license="by-nc-nd"
                     id={1}>
                     sosialisering
@@ -93,7 +96,10 @@ class GlossaryExample extends Component {
                     content="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
                     authors={[]}
                     title={'sanksjon'}
-                    ariaLabel="Vis begrep beskrivelse"
+                    messages={{
+                      ariaLabel: 'Vis begrep beskrivelse',
+                      close: 'Lukk',
+                    }}
                     license="by-nc-nd"
                     id={2}>
                     Sanksjonene

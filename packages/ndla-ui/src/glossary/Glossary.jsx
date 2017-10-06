@@ -27,14 +27,14 @@ const Glossary = ({
   source,
   content,
   id,
-  ariaLabel,
+  messages,
   license,
   children,
 }) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
   return (
     <span {...classes('item')}>
-      <button aria-label={ariaLabel} {...classes('link')}>
+      <button aria-label={messages.ariaLabel} {...classes('link')}>
         {children}
       </button>
       <span
@@ -43,7 +43,9 @@ const Glossary = ({
         aria-labelledby={id}
         aria-describedby={id}
         {...classes('popup')}>
-        <button {...classes('close', 'u-close')}>Lukk</button>
+        <button {...classes('close', 'u-close')}>
+          {messages.close}
+        </button>
         <span {...classes('title', undefined, 'u-heading3')}>
           {title}
         </span>
@@ -76,7 +78,10 @@ Glossary.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.string),
   source: PropTypes.string,
   content: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
+  messages: PropTypes.shape({
+    ariaLabel: PropTypes.string.isRequired,
+    close: PropTypes.string.isRequired,
+  }),
   license: PropTypes.string,
   children: PropTypes.string,
 };

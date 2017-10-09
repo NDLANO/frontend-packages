@@ -11,12 +11,13 @@ import PropTypes from 'prop-types';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-const SubtopicLink = ({ classes, closeMenu, to, subtopic }) =>
+const SubtopicLink = ({ classes, closeMenu, to, subtopic }) => (
   <li {...classes('subtopic-item')} key={subtopic.id}>
     <SafeLink {...classes('link', 'underline')} onClick={closeMenu} to={to}>
       {subtopic.name}
     </SafeLink>
-  </li>;
+  </li>
+);
 
 SubtopicLink.propTypes = {
   classes: PropTypes.func.isRequired,
@@ -32,31 +33,30 @@ const SubtopicLinkList = ({
   closeMenu,
   topic,
   toTopic,
-}) =>
+}) => (
   <div className={className}>
     <SafeLink
       {...classes('link', ['underline', 'big'])}
       onClick={closeMenu}
       to={toTopic(topic.id)}>
-      <span {...classes('link-label')}>
-        {goToTitle}:{' '}
-      </span>
+      <span {...classes('link-label')}>{goToTitle}: </span>
       <span {...classes('link-target')}>
         {topic.name} {'›'}
       </span>
     </SafeLink>
     <ul {...classes('list')}>
-      {topic.subtopics.map(subtopic =>
+      {topic.subtopics.map(subtopic => (
         <SubtopicLink
           classes={classes}
           closeMenu={closeMenu}
           key={subtopic.id}
           to={toTopic(topic.id, subtopic.id)}
           subtopic={subtopic}
-        />,
-      )}
+        />
+      ))}
     </ul>
-  </div>;
+  </div>
+);
 
 SubtopicLinkList.propTypes = {
   goToTitle: PropTypes.string.isRequired,

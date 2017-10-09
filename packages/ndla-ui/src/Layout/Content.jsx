@@ -9,10 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Content = ({ children }) =>
-  <div className="o-content">
-    {children}
-  </div>;
+export const Content = ({ children }) => (
+  <div className="o-content">{children}</div>
+);
 
 Content.propTypes = {
   children: PropTypes.node.isRequired,

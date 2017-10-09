@@ -26,18 +26,14 @@ export default function AudioSearchList({
   onAudioSelect,
 }) {
   if ((!audios || audios.length === 0) && !searching) {
-    return (
-      <p>
-        {translations.noResults}
-      </p>
-    );
+    return <p>{translations.noResults}</p>;
   }
   if (searching && !(audios.length > 0)) {
     return <div {...classes('result-spinner')} />;
   }
   return (
     <div {...classes('list')}>
-      {audios.map(audio =>
+      {audios.map(audio => (
         <AudioSearchResult
           key={audio.id}
           audio={audio}
@@ -46,8 +42,8 @@ export default function AudioSearchList({
           locale={locale}
           translations={translations}
           onAudioSelect={onAudioSelect}
-        />,
-      )}
+        />
+      ))}
     </div>
   );
 }

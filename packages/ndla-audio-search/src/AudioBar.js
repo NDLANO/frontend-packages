@@ -47,9 +47,11 @@ class AudioBar extends Component {
     return (
       <div {...classes()}>
         <audio controls autoPlay onPlay={!audioSource && this.loadAudio}>
-          {audioSource
-            ? <source src={audioSource} type={audioType} />
-            : undefined}
+          {audioSource ? (
+            <source src={audioSource} type={audioType} />
+          ) : (
+            undefined
+          )}
         </audio>
       </div>
     );

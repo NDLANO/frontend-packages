@@ -32,11 +32,7 @@ const VideoSearchList = props => {
   } = props;
 
   if ((!videos || videos.length === 0) && !searching) {
-    return (
-      <p>
-        {translations.noResults}
-      </p>
-    );
+    return <p>{translations.noResults}</p>;
   }
   if (searching && !(videos.length > 0)) {
     return <div {...classes('result-spinner')} />;
@@ -44,7 +40,7 @@ const VideoSearchList = props => {
 
   const videoresults = () => {
     if (selectedType === 'youtube') {
-      return videos.map(video =>
+      return videos.map(video => (
         <VideoSearchResultYouTube
           key={video.pagemap.videoobject[0].videoid}
           video={video}
@@ -53,11 +49,11 @@ const VideoSearchList = props => {
           onSelectVideo={onSelectVideo}
           translations={translations}
           locale={locale}
-        />,
-      );
+        />
+      ));
     }
 
-    return videos.map(video =>
+    return videos.map(video => (
       <VideoSearchResultBrightcove
         key={video.id}
         video={video}
@@ -66,15 +62,11 @@ const VideoSearchList = props => {
         onSelectVideo={onSelectVideo}
         locale={locale}
         translations={translations}
-      />,
-    );
+      />
+    ));
   };
 
-  return (
-    <div {...classes('list-inner')}>
-      {videoresults()}
-    </div>
-  );
+  return <div {...classes('list-inner')}>{videoresults()}</div>;
 };
 
 VideoSearchList.propTypes = {

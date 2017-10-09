@@ -17,7 +17,7 @@ import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 
 storiesOf('Produksjonssystem', module)
-  .add('Bildesøk', () =>
+  .add('Bildesøk', () => (
     <div>
       <StoryIntro title="Bildesøk">
         <p>
@@ -28,9 +28,9 @@ storiesOf('Produksjonssystem', module)
       <StoryBody>
         <ImageSearcher />
       </StoryBody>
-    </div>,
-  )
-  .add('Lydsøk', () =>
+    </div>
+  ))
+  .add('Lydsøk', () => (
     <div>
       <StoryIntro title="Lydsøk">
         <p>
@@ -41,9 +41,9 @@ storiesOf('Produksjonssystem', module)
       <StoryBody>
         <AudioSearcher />
       </StoryBody>
-    </div>,
-  )
-  .add('Videosøk', () =>
+    </div>
+  ))
+  .add('Videosøk', () => (
     <div>
       <StoryIntro title="Videosøk">
         <p>
@@ -55,5 +55,5 @@ storiesOf('Produksjonssystem', module)
       <StoryBody>
         <VideoSearcher />
       </StoryBody>
-    </div>,
-  );
+    </div>
+  ));

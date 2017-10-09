@@ -6,11 +6,4 @@
  *
  */
 
-import NDLAEditor from './NDLAEditor';
-import RichTextEditor from './RichTextEditor';
-import PlainTextEditor from './PlainTextEditor';
-import withStateHandler from './withStateHandler';
-
-export { NDLAEditor, RichTextEditor, PlainTextEditor, withStateHandler };
-
-export default NDLAEditor;
+export default () => {};

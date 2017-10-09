@@ -10,11 +10,11 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const RelatedArticles = ({ resources }) =>
+const RelatedArticles = ({ resources }) => (
   <div>
     <h2 {...classes('component-title')}>Relaterte artikler</h2>
     <div {...classes('')}>
-      {resources.filter((item, index) => index < 2).map(item =>
+      {resources.filter((item, index) => index < 2).map(item => (
         <div {...classes('item')}>
           <h3 {...classes('title')}>
             <Document className="c-icon--medium" />
@@ -22,13 +22,12 @@ const RelatedArticles = ({ resources }) =>
               {item.title}
             </SafeLink>
           </h3>
-          <p {...classes('description')}>
-            {item.introduction}
-          </p>
-        </div>,
-      )}
+          <p {...classes('description')}>{item.introduction}</p>
+        </div>
+      ))}
     </div>
-  </div>;
+  </div>
+);
 
 RelatedArticles.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape),

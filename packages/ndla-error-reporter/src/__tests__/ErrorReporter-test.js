@@ -31,6 +31,7 @@ test('ndla-error-reporter/ErrorReporter can capture message', () => {
     .post('/inputs/1223/', {
       level: 'info',
       text: 'Log message',
+      sessionId: /.*/,
       appName: 'unittest/ndla-frontend',
       userAgent: /Node\.js.+/,
     })
@@ -43,14 +44,16 @@ test('ndla-error-reporter/ErrorReporter can capture message', () => {
 
 test('ndla-error-reporter/ErrorReporter can capture error', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', {
-      level: 'error',
-      text: 'Error: Some generic error',
-      stackInfo: {
-        name: 'Error',
-      },
-      appName: 'unittest/ndla-frontend',
-      userAgent: /Node\.js.+/,
+    .post('/inputs/1223/', body => {
+      expect(body).toMatchObject({
+        level: 'error',
+        text: 'Error: Some generic error',
+        stackInfo: {
+          name: 'Error',
+        },
+        appName: 'unittest/ndla-frontend',
+      });
+      return true;
     })
     .reply(200);
 
@@ -61,10 +64,13 @@ test('ndla-error-reporter/ErrorReporter can capture error', () => {
 
 test('ndla-error-reporter/ErrorReporter can capture error with additional info', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', {
-      level: 'error',
-      text: 'Error: Some other generic error',
-      from: 'unittest',
+    .post('/inputs/1223/', body => {
+      expect(body).toMatchObject({
+        level: 'error',
+        text: 'Error: Some other generic error',
+        from: 'unittest',
+      });
+      return true;
     })
     .reply(200);
 
@@ -77,16 +83,18 @@ test('ndla-error-reporter/ErrorReporter can capture error with additional info',
 
 test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', {
-      level: 'error',
-      text: 'ReferenceError: someUndefinedFunction is not defined',
-      stackInfo: {
-        name: 'ReferenceError',
-        message: 'someUndefinedFunction is not defined',
-      },
-      appName: 'unittest/ndla-frontend',
-      userAgent: /Node\.js.+/,
-      state: { data: 'test state' },
+    .post('/inputs/1223/', body => {
+      expect(body).toMatchObject({
+        level: 'error',
+        text: 'ReferenceError: someUndefinedFunction is not defined',
+        stackInfo: {
+          name: 'ReferenceError',
+          message: 'someUndefinedFunction is not defined',
+        },
+        appName: 'unittest/ndla-frontend',
+        state: { data: 'test state' },
+      });
+      return true;
     })
     .reply(200);
 
@@ -109,8 +117,11 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
 
 test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', {
-      text: "TypeError: Cannot set property 'foo' of null",
+    .post('/inputs/1223/', body => {
+      expect(body).toMatchObject({
+        text: "TypeError: Cannot set property 'foo' of null",
+      });
+      return true;
     })
     .reply(200);
 
@@ -152,7 +163,12 @@ test('ndla-error-reporter/ErrorReporter should not send more then 10 messages', 
   errorReporter.refresh();
 
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', { text: 'Log message' })
+    .post('/inputs/1223/', body => {
+      expect(body).toMatchObject({
+        text: 'Log message',
+      });
+      return true;
+    })
     .times(10)
     .reply(200);
 

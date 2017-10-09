@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Footer } from 'ndla-ui';
 
-const FooterExample = () =>
+const FooterExample = () => (
   <Footer>
     <div className="footer_form">
       <label htmlFor="language-select" className="footer_label footer--bold">
@@ -21,6 +21,7 @@ const FooterExample = () =>
     <Footer.Text>
       Nettstedet er utarbeidet av NDLA som åpen kildekode.
     </Footer.Text>
-  </Footer>;
+  </Footer>
+);
 
 export default FooterExample;

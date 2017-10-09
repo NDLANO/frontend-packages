@@ -21,11 +21,7 @@ export const Hero = ({ children, red, green }) => {
     green,
   };
 
-  return (
-    <div {...classes('', modifiers)}>
-      {children || null}
-    </div>
-  );
+  return <div {...classes('', modifiers)}>{children || null}</div>;
 };
 
 Hero.propTypes = {

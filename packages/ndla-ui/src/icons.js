@@ -83,8 +83,9 @@ Icon.propTypes = {
 
 export const Additional = props => <Icon {...props} icon={AdditionalIcon} />;
 export const AlignCenter = props => <Icon {...props} icon={AlignCenterIcon} />;
-export const AlignJustify = props =>
-  <Icon {...props} icon={AlignJustifyIcon} />;
+export const AlignJustify = props => (
+  <Icon {...props} icon={AlignJustifyIcon} />
+);
 export const AlignLeft = props => <Icon {...props} icon={AlignLeftIcon} />;
 export const AlignRight = props => <Icon {...props} icon={AlignRightIcon} />;
 export const Arrow = props => <Icon {...props} icon={ArrowIcon} />;
@@ -107,8 +108,9 @@ export const Heading3 = props => <Icon {...props} icon={Heading3Icon} />;
 export const Home = props => <Icon {...props} icon={HomeIcon} />;
 export const H5P = props => <Icon {...props} icon={H5PIcon} />;
 export const Ingress = props => <Icon {...props} icon={IngressIcon} />;
-export const InsertTemplate = props =>
-  <Icon {...props} icon={InsertTemplateIcon} />;
+export const InsertTemplate = props => (
+  <Icon {...props} icon={InsertTemplateIcon} />
+);
 export const Italic = props => <Icon {...props} icon={ItalicIcon} />;
 export const LicenseBy = props => <Icon {...props} icon={LicenseByIcon} />;
 export const LicenseCc = props => <Icon {...props} icon={LicenseCcIcon} />;
@@ -120,8 +122,9 @@ export const LicensePd = props => <Icon {...props} icon={LicensePdIcon} />;
 export const LicenseCopy = props => <Icon {...props} icon={LicenseCopyIcon} />;
 export const Link = props => <Icon {...props} icon={LinkIcon} />;
 export const ListCircle = props => <Icon {...props} icon={ListCircleIcon} />;
-export const ListNumbered = props =>
-  <Icon {...props} icon={ListNumberedIcon} />;
+export const ListNumbered = props => (
+  <Icon {...props} icon={ListNumberedIcon} />
+);
 export const ListSquare = props => <Icon {...props} icon={ListSquareIcon} />;
 export const OpenWindow = props => <Icon {...props} icon={OpenWindowIcon} />;
 export const Paragraph = props => <Icon {...props} icon={ParagraphIcon} />;
@@ -133,8 +136,9 @@ export const Quote = props => <Icon {...props} icon={QuoteIcon} />;
 export const Sad = props => <Icon {...props} icon={SadIcon} />;
 export const Search = props => <Icon {...props} icon={SearchIcon} />;
 export const Section = props => <Icon {...props} icon={SectionIcon} />;
-export const Strikethrough = props =>
-  <Icon {...props} icon={StrikethroughIcon} />;
+export const Strikethrough = props => (
+  <Icon {...props} icon={StrikethroughIcon} />
+);
 export const Table = props => <Icon {...props} icon={TableIcon} />;
 export const TextInBox = props => <Icon {...props} icon={TextInBoxIcon} />;
 export const Time = props => <Icon {...props} icon={TimeIcon} />;

@@ -14,7 +14,7 @@ const heading = (articleHTML, level) => {
 };
 
 storiesOf('Grunnstiler', module)
-  .add('Farger', () =>
+  .add('Farger', () => (
     <div>
       <StoryIntro title="Farger på NDLA" />
       <StoryBody>
@@ -163,9 +163,9 @@ storiesOf('Grunnstiler', module)
           </ul>
         </div>
       </StoryBody>
-    </div>,
-  )
-  .add('Typografi', () =>
+    </div>
+  ))
+  .add('Typografi', () => (
     <div>
       <StoryIntro title="Typografi">
         <p>
@@ -309,9 +309,7 @@ storiesOf('Grunnstiler', module)
           Overskrifter skal markeres semantisk med riktige HTML-tagger. For
           eksempel:
         </p>
-        <code>
-          {'<h1>Overskrift<h1>'}
-        </code>
+        <code>{'<h1>Overskrift<h1>'}</code>
 
         <p>
           Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag
@@ -384,9 +382,9 @@ storiesOf('Grunnstiler', module)
 
         <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
       </StoryBody>
-    </div>,
-  )
-  .add('Tabeller', () =>
+    </div>
+  ))
+  .add('Tabeller', () => (
     <div>
       <StoryIntro title="Tabeller">
         <p>
@@ -892,9 +890,9 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
       </StoryBody>
-    </div>,
-  )
-  .add('Lister', () =>
+    </div>
+  ))
+  .add('Lister', () => (
     <div>
       <StoryIntro title="Lister">
         <p>
@@ -915,7 +913,8 @@ storiesOf('Grunnstiler', module)
               <li>Underlistepunkt 2</li>
               <li>Underlistepunkt 3</li>
               <li>
-                {' '}Under-underliste:
+                {' '}
+                Under-underliste:
                 <ul>
                   <li>Under-underlistepunkt 1</li>
                 </ul>
@@ -955,9 +954,9 @@ storiesOf('Grunnstiler', module)
           <li>Listepunkt</li>
         </ol>
       </StoryBody>
-    </div>,
-  )
-  .add('Sitater', () =>
+    </div>
+  ))
+  .add('Sitater', () => (
     <div>
       <StoryIntro title="Sitater">
         <p>
@@ -975,9 +974,9 @@ storiesOf('Grunnstiler', module)
           23. mai 2016)
         </blockquote>
       </StoryBody>
-    </div>,
-  )
-  .add('Luft og avstand', () =>
+    </div>
+  ))
+  .add('Luft og avstand', () => (
     <div>
       <StoryIntro title="Luft og avstand">
         <p>Vi baserer oss hovedsaklig på tre nivåer av luft/avstand:</p>
@@ -1030,5 +1029,5 @@ storiesOf('Grunnstiler', module)
           til dette systemet, slik at det blir konsistent.
         </p>
       </StoryIntro>
-    </div>,
-  );
+    </div>
+  ));

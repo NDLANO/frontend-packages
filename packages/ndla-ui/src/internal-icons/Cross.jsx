@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Cross = ({ className }) =>
+const Cross = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -17,7 +17,8 @@ const Cross = ({ className }) =>
     viewBox="0 0 24 24"
     className={className}>
     <path d="M.708 22.449l.664.665L12 12.486l10.628 10.628.664-.665-10.628-10.628L23.292 1.193l-.664-.664L12 11.157 1.372.529l-.664.664 10.628 10.628z" />
-  </svg>;
+  </svg>
+);
 
 Cross.propTypes = {
   className: PropTypes.string.isRequired,

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Document = ({ className }) =>
+const Document = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={className}
@@ -52,7 +52,8 @@ const Document = ({ className }) =>
       />
       <polygon fill="#FFF" points="44.342 48.896 35.73 53.178 35.73 44.614" />
     </g>
-  </svg>;
+  </svg>
+);
 
 Document.propTypes = {
   className: PropTypes.string.isRequired,

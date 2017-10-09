@@ -10,12 +10,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FootNoteShape } from '../shapes';
 
-const FootNote = ({ footNote, editionTitle, publisherTitle }) =>
+const FootNote = ({ footNote, editionTitle, publisherTitle }) => (
   <li className="c-footnotes__item">
     <cite className="c-footnotes__cite">{`${footNote.title} (${footNote.year}), ${footNote.authors.join(
       ' ',
     )} ${editionTitle}: ${footNote.edition}, ${publisherTitle}: ${footNote.publisher}`}</cite>
-  </li>;
+  </li>
+);
 
 FootNote.propTypes = {
   refNr: PropTypes.string.isRequired,
@@ -24,17 +25,18 @@ FootNote.propTypes = {
   publisherTitle: PropTypes.string.isRequired,
 };
 
-const ArticleFootNotes = ({ footNotes, ...rest }) =>
+const ArticleFootNotes = ({ footNotes, ...rest }) => (
   <ol className="c-footnotes">
-    {Object.keys(footNotes).map(key =>
+    {Object.keys(footNotes).map(key => (
       <FootNote
         key={key}
         refNr={key.replace('ref_', '')}
         footNote={footNotes[key]}
         {...rest}
-      />,
-    )}
-  </ol>;
+      />
+    ))}
+  </ol>
+);
 
 ArticleFootNotes.propTypes = {
   footNotes: PropTypes.object, // eslint-disable-line react/forbid-prop-types

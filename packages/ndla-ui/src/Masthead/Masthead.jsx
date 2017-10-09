@@ -17,11 +17,7 @@ export const MastheadItem = ({ children, className, left, right }) => {
     { masthead__left: left },
     { masthead__right: right },
   );
-  return (
-    <div className={classes}>
-      {children}
-    </div>
-  );
+  return <div className={classes}>{children}</div>;
 };
 
 MastheadItem.propTypes = {
@@ -36,17 +32,18 @@ MastheadItem.defaultProps = {
   left: false,
 };
 
-export const Masthead = ({ children }) =>
+export const Masthead = ({ children }) => (
   <ReactStickyHeader
     header={
       <div className="masthead">
-        <div className="u-1/1">
-          {children}
-        </div>
+        <div className="u-1/1">{children}</div>
       </div>
     }
-  />;
+  />
+);
 
 Masthead.propTypes = {
   children: PropTypes.node,
 };
+
+export default Masthead;

@@ -40,14 +40,14 @@ const Breadcrumb = ({ children, subject, topicPath, toTopic, toSubjects }) => {
           to={toTopic(subject.id)}>
           {subject.name}
         </BreadcrumbItem>
-        {topicPath.map((topic, i) =>
+        {topicPath.map((topic, i) => (
           <BreadcrumbItem
             classes={classes}
             key={topic.id}
             to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}>
             {topic.name}
-          </BreadcrumbItem>,
-        )}
+          </BreadcrumbItem>
+        ))}
       </ol>
     </div>
   );

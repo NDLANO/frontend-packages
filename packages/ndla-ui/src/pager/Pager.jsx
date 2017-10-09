@@ -16,7 +16,9 @@ import SafeLink from '../common/SafeLink';
 import { stepNumbers } from './pagerHelpers';
 
 const createQueryString = obj =>
-  Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&');
+  Object.keys(obj)
+    .map(key => `${key}=${obj[key]}`)
+    .join('&');
 
 export const PageItem = ({
   children,
@@ -83,17 +85,19 @@ export default function Pager(props) {
   });
 
   const prevPageItem =
-    steps[0] < page
-      ? <PageItem modifier="back" page={page - 1} {...rest}>
-          {' '}{'<'}{' '}
-        </PageItem>
-      : null;
+    steps[0] < page ? (
+      <PageItem modifier="back" page={page - 1} {...rest}>
+        {' '}
+        {'<'}{' '}
+      </PageItem>
+    ) : null;
   const nextPageItem =
-    page < lastPage
-      ? <PageItem modifier="forward" page={page + 1} {...rest}>
-          {' '}{'>'}{' '}
-        </PageItem>
-      : null;
+    page < lastPage ? (
+      <PageItem modifier="forward" page={page + 1} {...rest}>
+        {' '}
+        {'>'}{' '}
+      </PageItem>
+    ) : null;
 
   return (
     <div className="c-pager">

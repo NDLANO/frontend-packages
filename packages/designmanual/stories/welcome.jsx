@@ -5,7 +5,7 @@ import { Logo } from 'ndla-ui';
 import { StoryBody } from './wrappers';
 import { Center } from './helpers';
 
-const Welcome = () =>
+const Welcome = () => (
   <div style={{ marginTop: '30px' }}>
     <Center>
       <center>
@@ -46,7 +46,8 @@ const Welcome = () =>
         href=&quot;ndla-ui.css&quot;&gt;
       </code>
     </StoryBody>
-  </div>;
+  </div>
+);
 
 Welcome.propTypes = {
   showApp: PropTypes.func,

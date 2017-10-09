@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Path = ({ className }) =>
+const Path = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={className}
@@ -215,7 +215,8 @@ const Path = ({ className }) =>
         mask="url(#læringssti-b)"
       />
     </g>
-  </svg>;
+  </svg>
+);
 
 Path.propTypes = {
   className: PropTypes.string.isRequired,

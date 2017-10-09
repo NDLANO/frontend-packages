@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Italic = ({ className }) =>
+const Italic = ({ className }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,8 @@ const Italic = ({ className }) =>
     viewBox="0 0 32 32"
     className={className}>
     <path d="M28 2v2h-4l-10 24h4v2h-14v-2h4l10-24h-4v-2z" />
-  </svg>;
+  </svg>
+);
 
 Italic.propTypes = {
   className: PropTypes.string.isRequired,

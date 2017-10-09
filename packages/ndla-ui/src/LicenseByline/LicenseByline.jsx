@@ -16,16 +16,19 @@ const LicenseByline = ({
   withDescription,
   licenseRights,
   className,
-}) =>
+}) => (
   <div className="license-byline">
-    {!withDescription
-      ? <LicenseIconList className={className} licenseRights={licenseRights} />
-      : <LicenseIconDescriptionList
-          className={className}
-          licenseRights={licenseRights}
-        />}
+    {!withDescription ? (
+      <LicenseIconList className={className} licenseRights={licenseRights} />
+    ) : (
+      <LicenseIconDescriptionList
+        className={className}
+        licenseRights={licenseRights}
+      />
+    )}
     {children}
-  </div>;
+  </div>
+);
 
 LicenseByline.propTypes = {
   children: PropTypes.node,

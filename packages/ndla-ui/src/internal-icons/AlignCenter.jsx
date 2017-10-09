@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AlignCenter = ({ className }) =>
+const AlignCenter = ({ className }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,8 @@ const AlignCenter = ({ className }) =>
     viewBox="0 0 32 32"
     className={className}>
     <path d="M0 2h32v4h-32zM6 8h20v4h-20zM6 20h20v4h-20zM0 14h32v4h-32zM0 26h32v4h-32z" />
-  </svg>;
+  </svg>
+);
 
 AlignCenter.propTypes = {
   className: PropTypes.string.isRequired,

@@ -13,15 +13,11 @@ import { Article, OneColumn, LayoutItem } from 'ndla-ui';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
-const ArticleExample = ({ article, withLicenseExample, notitle, reset }) =>
+const ArticleExample = ({ article, withLicenseExample, notitle, reset }) => (
   <OneColumn cssModifier="narrow">
     <article className={reset ? 'c-article c-article--clean' : 'c-article'}>
       <LayoutItem layout="center">
-        {notitle
-          ? null
-          : <h1>
-              {article.title}
-            </h1>}
+        {notitle ? null : <h1>{article.title}</h1>}
         <Article.Introduction introduction={article.introduction} />
         <ArticleByline article={article} />
       </LayoutItem>
@@ -29,13 +25,14 @@ const ArticleExample = ({ article, withLicenseExample, notitle, reset }) =>
         <Article.Content content={article.content} />
       </LayoutItem>
       <LayoutItem layout="center">
-        {article.footNotes
-          ? <Article.FootNotes footNotes={article.footNotes} />
-          : null}
+        {article.footNotes ? (
+          <Article.FootNotes footNotes={article.footNotes} />
+        ) : null}
         {withLicenseExample && <LicenseExample />}
       </LayoutItem>
     </article>
-  </OneColumn>;
+  </OneColumn>
+);
 
 ArticleExample.propTypes = {
   article: PropTypes.shape({

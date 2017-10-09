@@ -11,7 +11,7 @@ import React from 'react';
 import { Breadcrumb } from 'ndla-ui';
 import { topicList, subjectList } from '../../dummydata/index';
 
-export const BreadcrumbDefault = () =>
+export const BreadcrumbDefault = () => (
   <Breadcrumb
     subject={subjectList[1]}
     topicPath={topicList.slice(2)}
@@ -19,6 +19,7 @@ export const BreadcrumbDefault = () =>
     toSubjects={() => '#'}
     toTopic={() => '#'}>
     Du er her:
-  </Breadcrumb>;
+  </Breadcrumb>
+);
 
 export default BreadcrumbDefault;

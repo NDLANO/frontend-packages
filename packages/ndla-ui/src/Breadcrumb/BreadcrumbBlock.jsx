@@ -41,14 +41,14 @@ const BreadcrumbBlock = ({
           classes={classes}>
           {subject.name}
         </BreadcrumbItem>
-        {topicPath.map((topic, i) =>
+        {topicPath.map((topic, i) => (
           <BreadcrumbItem
             key={topic.id}
             classes={classes}
             to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}>
             {topic.name}
-          </BreadcrumbItem>,
-        )}
+          </BreadcrumbItem>
+        ))}
       </ol>
     </div>
   );

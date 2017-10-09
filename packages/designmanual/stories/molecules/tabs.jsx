@@ -52,13 +52,14 @@ export class TabsControlled extends Component {
   }
 }
 
-export const TabsDefault = () =>
+export const TabsDefault = () => (
   <Tabs
     tabs={[
       { title: 'Bilde', content: <p>Bilde innhold</p> },
       { title: 'Video', content: <p>Video innhold</p> },
       { title: 'Lyd', content: <p>Lyd innhold</p> },
     ]}
-  />;
+  />
+);
 
 export default TabsDefault;

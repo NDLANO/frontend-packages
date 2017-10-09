@@ -46,21 +46,23 @@ export default class ClickToggle extends React.Component {
     });
     return (
       <Component {...rest}>
-        {isOpen
-          ? <Button
-              className="u-overlay"
-              onClick={() => this.setState({ isOpen: false })}
-            />
-          : null}
-        {isOpen
-          ? <Button
-              className={`active ${buttonClassName}`}
-              onClick={this.handleClick}>
-              {openTitle || title}
-            </Button>
-          : <Button className={buttonClassName} onClick={this.handleClick}>
-              {title}
-            </Button>}
+        {isOpen ? (
+          <Button
+            className="u-overlay"
+            onClick={() => this.setState({ isOpen: false })}
+          />
+        ) : null}
+        {isOpen ? (
+          <Button
+            className={`active ${buttonClassName}`}
+            onClick={this.handleClick}>
+            {openTitle || title}
+          </Button>
+        ) : (
+          <Button className={buttonClassName} onClick={this.handleClick}>
+            {title}
+          </Button>
+        )}
         {isOpen ? children : null}
       </Component>
     );

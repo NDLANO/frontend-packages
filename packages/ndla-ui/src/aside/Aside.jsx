@@ -7,14 +7,13 @@ const toggleAside = event => {
   aside.classList.toggle('expanded');
 };
 
-const Aside = ({ ...rest }) =>
+const Aside = ({ ...rest }) => (
   <aside className={rest.float ? 'c-aside c-aside--float expanded' : 'c-aside'}>
-    <div className="c-aside__content">
-      {rest.children}
-    </div>
-    {!rest.float
-      ? <Button className="c-aside__button" onClick={toggleAside} />
-      : null}
-  </aside>;
+    <div className="c-aside__content">{rest.children}</div>
+    {!rest.float ? (
+      <Button className="c-aside__button" onClick={toggleAside} />
+    ) : null}
+  </aside>
+);
 
 export default Aside;

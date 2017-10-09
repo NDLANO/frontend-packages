@@ -16,7 +16,7 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
 import article from '../../dummydata/index';
 
-export default () =>
+export default () => (
   <OneColumn cssModifier="narrow">
     <article className="c-article">
       <LayoutItem layout="center">
@@ -84,4 +84,5 @@ export default () =>
         <ResourceSubsetList />
       </LayoutItem>
     </article>
-  </OneColumn>;
+  </OneColumn>
+);

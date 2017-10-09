@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Video = ({ className }) =>
+const Video = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="32"
@@ -17,7 +17,8 @@ const Video = ({ className }) =>
     viewBox="0 0 32 32"
     className={className}>
     <path fill="none" stroke="#444" d="M31.06 16L.942 31.06V.94z" />
-  </svg>;
+  </svg>
+);
 
 Video.propTypes = {
   className: PropTypes.string.isRequired,

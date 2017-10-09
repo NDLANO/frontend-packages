@@ -38,13 +38,15 @@ export default function ImageSearchResult({
           />
         </Button>
       </div>
-      {selectedImage && selectedImage.id === image.id
-        ? <PreviewImage
-            image={selectedImage}
-            onSelectImage={onSelectImage}
-            useImageTitle={useImageTitle}
-          />
-        : ''}
+      {selectedImage && selectedImage.id === image.id ? (
+        <PreviewImage
+          image={selectedImage}
+          onSelectImage={onSelectImage}
+          useImageTitle={useImageTitle}
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 }

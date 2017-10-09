@@ -25,16 +25,12 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({ children, authors, origin, messages }) =>
+export const FigureDetails = ({ children, authors, origin, messages }) => (
   <div {...classes('license')} id="figmeta">
-    <button {...classes('close')}>
-      {messages.close}
-    </button>
+    <button {...classes('close')}>{messages.close}</button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
-        <h3 {...classLicenses('title')}>
-          {messages.rulesForUse}
-        </h3>
+        <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
         <LicenseByline withDescription licenseRights={[BY, NC, ND]} />
         <a
           className="c-figure-license__link"
@@ -43,27 +39,26 @@ export const FigureDetails = ({ children, authors, origin, messages }) =>
         </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
-            {authors.map(author =>
+            {authors.map(author => (
               <li
                 key={uuid()}
-                className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
-            )}
+                className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
+            ))}
             <li>
               {messages.source}:{' '}
-              {origin.startsWith('http')
-                ? <a href={origin}>
-                    {origin}
-                  </a>
-                : origin}
+              {origin.startsWith('http') ? (
+                <a href={origin}>{origin}</a>
+              ) : (
+                origin
+              )}
             </li>
           </ul>
-          <div {...classLicenses('cta-block')}>
-            {children}
-          </div>
+          <div {...classLicenses('cta-block')}>{children}</div>
         </div>
       </div>
     </div>
-  </div>;
+  </div>
+);
 
 FigureDetails.propTypes = {
   children: PropTypes.node,
@@ -88,26 +83,21 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
-}) =>
+}) => (
   <figcaption {...classes('caption')}>
-    {caption
-      ? <div {...classes('info')}>
-          {caption}
-        </div>
-      : null}
+    {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline licenseRights={licenseRights}>
           <span className="article_meta">
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button {...classes('captionbtn')}>
-            {reuseLabel}
-          </button>
+          <button {...classes('captionbtn')}>{reuseLabel}</button>
         </LicenseByline>
       </div>
     </footer>
-  </figcaption>;
+  </figcaption>
+);
 
 FigureCaption.propTypes = {
   caption: PropTypes.string,
@@ -120,10 +110,11 @@ FigureCaption.propTypes = {
   ),
 };
 
-export const Figure = ({ children, ...rest }) =>
+export const Figure = ({ children, ...rest }) => (
   <figure {...classes()} {...rest}>
     {children}
-  </figure>;
+  </figure>
+);
 
 Figure.propTypes = {
   children: PropTypes.node.isRequired,

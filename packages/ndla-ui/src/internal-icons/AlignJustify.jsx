@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AlignJustify = ({ className }) =>
+const AlignJustify = ({ className }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,8 @@ const AlignJustify = ({ className }) =>
     viewBox="0 0 32 32"
     className={className}>
     <path d="M0 2h32v4h-32zM0 8h32v4h-32zM0 14h32v4h-32zM0 20h32v4h-32zM0 26h32v4h-32z" />
-  </svg>;
+  </svg>
+);
 
 AlignJustify.propTypes = {
   className: PropTypes.string.isRequired,

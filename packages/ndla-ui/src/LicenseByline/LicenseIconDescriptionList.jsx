@@ -38,13 +38,14 @@ LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
 };
 
-const LicenseIconDescriptionList = ({ licenseRights, className }) =>
+const LicenseIconDescriptionList = ({ licenseRights, className }) => (
   <ul {...classes('list', '', className)}>
     <LicenseIconItem key={CC} licenseRight={CC} />
-    {licenseRights.map(licenseRight =>
-      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />,
-    )}
-  </ul>;
+    {licenseRights.map(licenseRight => (
+      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />
+    ))}
+  </ul>
+);
 
 LicenseIconDescriptionList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,

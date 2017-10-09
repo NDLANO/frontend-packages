@@ -20,7 +20,7 @@ const Fruits = () => {
     { title: 'Apple', content: <p>An apple a day keeps the doctor away</p> },
     { title: 'Orange', content: () => <h1>Orange is the new black</h1> },
     { title: 'Banana', content: <BananaComponent/> },
-    { title: 'Pickle', content: <PickleComponent/> disabled: true }, // No vegetables allowed!
+    { title: 'Pickle', content: <PickleComponent/>, disabled: true }, // No vegetables allowed!
   ]
   return (
     <Tabs tabs={fruitTabs} />

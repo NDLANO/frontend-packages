@@ -8,16 +8,11 @@
 #root {
   overflow-x: hidden;
 }
-#root,
-#root [data-reactroot] {
+#root > div {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-#root [data-reactroot] > .o-content {
-  flex: 1;
 }
 
 .license-byline {
@@ -42,7 +37,8 @@
 }
 
 /* Hack to differentiate CC-icon because it's not a license. Perhaps give it a class? */
-.c-figure-license__details .c-license-icons__item:first-child, .c-medialist__body .c-license-icons__item:first-child {
+.c-figure-license__details .c-license-icons__item:first-child,
+.c-medialist__body .c-license-icons__item:first-child {
   margin-bottom: $spacing--small;
   border-bottom: 1px solid $brand-color--tertiary;
 

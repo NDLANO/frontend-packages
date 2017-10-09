@@ -50,3 +50,5 @@ export const Masthead = ({ children }) =>
 Masthead.propTypes = {
   children: PropTypes.node,
 };
+
+export default Masthead;

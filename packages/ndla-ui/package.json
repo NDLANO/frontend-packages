@@ -42,7 +42,8 @@
     "react": "^15.6.0 || ^16.0.0"
   },
   "devDependencies": {
-    "enzyme": "3.1.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "extract-text-webpack-plugin": "3.0.1",
     "inuitcss": "6.0.0-beta.4"
   }

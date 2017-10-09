@@ -44,9 +44,9 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
           </span>
         </div>
         <div {...classes('tags')}>
-          {tags.map(tag =>
-            <span key={uuid()} className="tag_item">{`#${tag}`}</span>,
-          )}
+          {tags.map(tag => (
+            <span key={uuid()} className="tag_item">{`#${tag}`}</span>
+          ))}
         </div>
         <Button
           className="button button--primary button--block"

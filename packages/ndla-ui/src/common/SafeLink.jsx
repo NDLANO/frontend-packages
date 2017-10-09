@@ -22,11 +22,7 @@ const SafeLink = (props, context) => {
     );
   }
 
-  return (
-    <Link {...props}>
-      {props.children}
-    </Link>
-  );
+  return <Link {...props}>{props.children}</Link>;
 };
 
 SafeLink.propTypes = Link.propTypes;

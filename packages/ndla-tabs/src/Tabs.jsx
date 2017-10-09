@@ -58,7 +58,7 @@ class Tabs extends Component {
         selectedIndex={this.state.index}
         forceRenderTabPanel={forceRenderTabPanel}>
         <TabList {...classes('list', modifier)}>
-          {tabs.map((tab, i) =>
+          {tabs.map((tab, i) => (
             <Tab
               {...classes('tab', {
                 selected: i === index,
@@ -66,14 +66,14 @@ class Tabs extends Component {
               })}
               key={tab.key ? tab.key : i}>
               {tab.title}
-            </Tab>,
-          )}
+            </Tab>
+          ))}
         </TabList>
-        {tabs.map((tab, i) =>
+        {tabs.map((tab, i) => (
           <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
             {isFunction(tab.content) ? tab.content() : tab.content}
-          </TabPanel>,
-        )}
+          </TabPanel>
+        ))}
       </ReactTabs>
     );
   }

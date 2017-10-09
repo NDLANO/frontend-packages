@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LicensePd = ({ className, ...rest }) =>
+const LicensePd = ({ className, ...rest }) => (
   <svg
     version="1"
     xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,8 @@ const LicensePd = ({ className, ...rest }) =>
     	c-20.998-18.054-44.871-21.28-60.484-21.28c-36.688,0-62.649,15.86-77.952,39.944L61.564,106.58
     	C89.478,64.114,137.51,36.007,192,36.007c86.022,0,156.01,69.976,156.01,156.01c0,13.925-1.865,27.403-5.303,40.261
     	C342.566,232.137,342.473,232.019,342.332,231.878z" />
-  </svg>;
+  </svg>
+);
 
 LicensePd.propTypes = {
   className: PropTypes.string.isRequired,

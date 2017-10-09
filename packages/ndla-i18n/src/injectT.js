@@ -14,11 +14,12 @@ export const injectT = (WrappedComponent, prefix = '') => {
   const getDisplayName = component =>
     component.displayName || component.name || 'Component';
 
-  const InjectT = (props, context) =>
+  const InjectT = (props, context) => (
     <WrappedComponent
       {...props}
       t={(id, value = {}) => context.formatMessage(prefix + id, value)}
-    />;
+    />
+  );
 
   InjectT.contextTypes = {
     formatMessage: PropTypes.func.isRequired,

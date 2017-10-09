@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LicenseByNc = ({ className }) =>
+const LicenseByNc = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="120"
@@ -46,7 +46,8 @@ const LicenseByNc = ({ className }) =>
         fillRule="evenodd"
       />
     </g>
-  </svg>;
+  </svg>
+);
 
 LicenseByNc.propTypes = {
   className: PropTypes.string.isRequired,

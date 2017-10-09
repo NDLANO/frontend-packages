@@ -9,10 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const FooterText = ({ children }) =>
-  <p className="footer_text">
-    {children}
-  </p>;
+export const FooterText = ({ children }) => (
+  <p className="footer_text">{children}</p>
+);
 
 FooterText.propTypes = {
   children: PropTypes.node.isRequired,
@@ -20,23 +19,19 @@ FooterText.propTypes = {
 
 export const FooterRuler = () => <div className="footer_ruler" />;
 
-export const FooterEditor = ({ title, name }) =>
+export const FooterEditor = ({ title, name }) => (
   <span className="footer_editor">
     {title}
-    <strong>
-      {name}
-    </strong>
-  </span>;
+    <strong>{name}</strong>
+  </span>
+);
 
 FooterEditor.propTypes = {
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
 
-const Footer = ({ children }) =>
-  <footer className="footer">
-    {children}
-  </footer>;
+const Footer = ({ children }) => <footer className="footer">{children}</footer>;
 
 Footer.propTypes = {
   children: PropTypes.node.isRequired,

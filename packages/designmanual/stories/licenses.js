@@ -15,30 +15,26 @@ const licenses = [
   'copy',
 ].map(license => getLicenseRightByAbbreviation(license));
 
-storiesOf('Lisensgivning', module).add('Lisenstekster', () =>
+storiesOf('Lisensgivning', module).add('Lisenstekster', () => (
   <div>
     <StoryIntro title="Lisenstekster">
       <p>Lisenstekster og merking</p>
     </StoryIntro>
     <StoryBody>
-      {licenses.map(license =>
+      {licenses.map(license => (
         <article key={uuid()}>
-          <h2>
-            {license.title}
-          </h2>
-          <p>
-            {license.description}
-          </p>
-        </article>,
-      )}
+          <h2>{license.title}</h2>
+          <p>{license.description}</p>
+        </article>
+      ))}
     </StoryBody>
-  </div>,
-);
-storiesOf('Lisensgivning', module).add('Modellklarering', () =>
+  </div>
+));
+storiesOf('Lisensgivning', module).add('Modellklarering', () => (
   <div>
     <StoryIntro title="Modellklarering på personbilder" />
     <StoryBody>
       <p>Modellklarering er noe som kommer ved en senere anledning.</p>
     </StoryBody>
-  </div>,
-);
+  </div>
+));

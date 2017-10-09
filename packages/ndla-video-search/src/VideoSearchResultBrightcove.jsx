@@ -39,16 +39,16 @@ export default function VideoSearchResultBrightcove({
           src={video.images.thumbnail.src}
         />
         <div {...classes('information')}>
-          <h2>
-            {video.name}
-          </h2>
+          <h2>{video.name}</h2>
           <div {...classes('copyright-author')}>
             {video.custom_fields.licenseinfo}
           </div>
           <div {...classes('license')}>
-            {license.rights
-              ? <LicenseByline licenseRights={license.rights} />
-              : license}
+            {license.rights ? (
+              <LicenseByline licenseRights={license.rights} />
+            ) : (
+              license
+            )}
           </div>
           <Button
             {...classes('button')}
@@ -62,18 +62,18 @@ export default function VideoSearchResultBrightcove({
         </div>
       </div>
 
-      {selectedVideo && selectedVideo.id === video.id
-        ? <PreviewVideo
-            onVideoPreview={onVideoPreview}
-            selectedType="brightcove">
-            <iframe
-              className="c-video-preview__video"
-              title={selectedVideo.name}
-              src={`//players.brightcove.net/${selectedVideo.account_id}/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
-              allowFullScreen
-            />
-          </PreviewVideo>
-        : ''}
+      {selectedVideo && selectedVideo.id === video.id ? (
+        <PreviewVideo onVideoPreview={onVideoPreview} selectedType="brightcove">
+          <iframe
+            className="c-video-preview__video"
+            title={selectedVideo.name}
+            src={`//players.brightcove.net/${selectedVideo.account_id}/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
+            allowFullScreen
+          />
+        </PreviewVideo>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

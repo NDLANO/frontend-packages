@@ -119,7 +119,7 @@ class ImageSearch extends React.Component {
           searchButtonTitle={searchButtonTitle}
         />
         <div {...classes('list')}>
-          {images.map(image =>
+          {images.map(image => (
             <ImageSearchResult
               key={image.id}
               image={image}
@@ -127,8 +127,8 @@ class ImageSearch extends React.Component {
               selectedImage={selectedImage}
               onSelectImage={this.onSelectImage}
               useImageTitle={useImageTitle}
-            />,
-          )}
+            />
+          ))}
         </div>
         <Pager
           page={page ? parseInt(page, 10) : 1}

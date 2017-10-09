@@ -23,39 +23,35 @@ const cClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const MediaList = ({ children }) =>
-  <ul {...cClasses()}>
-    {children}
-  </ul>;
+export const MediaList = ({ children }) => <ul {...cClasses()}>{children}</ul>;
 
 MediaList.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListItem = ({ children }) =>
-  <li {...oClasses(null, null, cClasses('item').className)}>
-    {children}
-  </li>;
+export const MediaListItem = ({ children }) => (
+  <li {...oClasses(null, null, cClasses('item').className)}>{children}</li>
+);
 
 MediaListItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListItemImage = ({ children }) =>
-  <div {...oClasses('img', null, cClasses('img').className)}>
-    {children}
-  </div>;
+export const MediaListItemImage = ({ children }) => (
+  <div {...oClasses('img', null, cClasses('img').className)}>{children}</div>
+);
 
 MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListCCLink = ({ children }) =>
+export const MediaListCCLink = ({ children }) => (
   <a
     className="c-figure-license__link"
     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.no">
     {children}
-  </a>;
+  </a>
+);
 
 MediaListCCLink.propTypes = {
   children: PropTypes.node.isRequired,
@@ -65,19 +61,16 @@ MediaListCCLink.defaultProps = {
   language: 'no',
 };
 
-export const MediaListItemBody = ({ children, license, title }) =>
+export const MediaListItemBody = ({ children, license, title }) => (
   <div {...oClasses('body', null, cClasses('body').className)}>
-    {title
-      ? <h3 className="c-medialist__title">
-          {title}{' '}
-        </h3>
-      : null}
+    {title ? <h3 className="c-medialist__title">{title} </h3> : null}
     <LicenseByline
       withDescription
       licenseRights={getLicenseByAbbreviation(license).rights}
     />
     {children}
-  </div>;
+  </div>
+);
 
 MediaListItemBody.propTypes = {
   children: PropTypes.node.isRequired,
@@ -85,25 +78,25 @@ MediaListItemBody.propTypes = {
   title: PropTypes.string,
 };
 
-export const MediaListItemActions = ({ children }) =>
-  <div {...cClasses('actions')}>
-    {children}
-  </div>;
+export const MediaListItemActions = ({ children }) => (
+  <div {...cClasses('actions')}>{children}</div>
+);
 
 MediaListItemActions.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListItemMeta = ({ items }) =>
+export const MediaListItemMeta = ({ items }) => (
   <ul {...cClasses('actions')}>
-    {items.map(item =>
+    {items.map(item => (
       <li
         key={uuid()}
         className="c-medialist__meta-item"
         dangerouslySetInnerHTML={{ __html: item }}
-      />,
-    )}
-  </ul>;
+      />
+    ))}
+  </ul>
+);
 
 MediaListItemMeta.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string.isRequired),

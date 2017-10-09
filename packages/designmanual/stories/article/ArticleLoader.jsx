@@ -73,18 +73,20 @@ class ArticleLoader extends Component {
     return (
       <div>
         <Helmet script={scripts} />
-        {article
-          ? this.renderArticle()
-          : <SimpleSubmitForm
-              onSubmit={this.handleSubmit}
-              errorMessage={message}
-              labelText="Artikkel ID:"
-            />}
-        {article && this.props.closeButton
-          ? <Button onClick={() => this.setState({ article: undefined })}>
-              Lukk
-            </Button>
-          : null}
+        {article ? (
+          this.renderArticle()
+        ) : (
+          <SimpleSubmitForm
+            onSubmit={this.handleSubmit}
+            errorMessage={message}
+            labelText="Artikkel ID:"
+          />
+        )}
+        {article && this.props.closeButton ? (
+          <Button onClick={() => this.setState({ article: undefined })}>
+            Lukk
+          </Button>
+        ) : null}
       </div>
     );
   }

@@ -44,7 +44,7 @@ class ResourceSubsetList extends Component {
 
     return (
       <div {...classes('')}>
-        {resourceGroups.map(group =>
+        {resourceGroups.map(group => (
           <div
             key={uuid()}
             {...classesG('', [(group.id.replace(/:/g, '-'): '')])}>
@@ -58,17 +58,15 @@ class ResourceSubsetList extends Component {
                 { title: 'Tilleggstoff', icon: Additional, active: false },
               ]}
             />
-            <h1 {...classes('title')}>
-              {group.title}
-            </h1>
+            <h1 {...classes('title')}>{group.title}</h1>
             <ResourceList
               secondary={this.state.secondary}
               resourceToLinkProps={resourceToLinkProps}
               type={group.title}
               resources={group.resources}
             />
-          </div>,
-        )}
+          </div>
+        ))}
       </div>
     );
   }

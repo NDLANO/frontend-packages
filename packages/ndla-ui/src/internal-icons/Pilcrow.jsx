@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Pilcrow = ({ className }) =>
+const Pilcrow = ({ className }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,8 @@ const Pilcrow = ({ className }) =>
     viewBox="0 0 32 32"
     className={className}>
     <path d="M12 0h16v4h-4v28h-4v-28h-4v28h-4v-16c-4.418 0-8-3.582-8-8s3.582-8 8-8z" />
-  </svg>;
+  </svg>
+);
 
 Pilcrow.propTypes = {
   className: PropTypes.string.isRequired,

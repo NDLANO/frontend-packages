@@ -43,9 +43,7 @@ export default function VideoSearchResultYouTube({
           src={videoData.thumbnailurl}
         />
         <div {...classes('information')}>
-          <h2>
-            {videoData.name}
-          </h2>
+          <h2>{videoData.name}</h2>
           <div>
             {`${translations.publishedDate}: ${setLocaleDate(
               videoData.datepublished,
@@ -60,9 +58,7 @@ export default function VideoSearchResultYouTube({
           <div>
             {`${translations.interactioncount}: ${videoData.interactioncount}`}
           </div>
-          <div>
-            {videoData.description}
-          </div>
+          <div>{videoData.description}</div>
           <Button
             {...classes('button')}
             outline
@@ -76,16 +72,18 @@ export default function VideoSearchResultYouTube({
       </div>
 
       {selectedVideo &&
-      selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid
-        ? <PreviewVideo onVideoPreview={onVideoPreview} selectedType="youtube">
-            <iframe
-              className="c-video-preview__video"
-              title={selectedVideo.title}
-              src={selectedVideo.pagemap.videoobject[0].embedurl}
-              allowFullScreen
-            />
-          </PreviewVideo>
-        : ''}
+      selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid ? (
+        <PreviewVideo onVideoPreview={onVideoPreview} selectedType="youtube">
+          <iframe
+            className="c-video-preview__video"
+            title={selectedVideo.title}
+            src={selectedVideo.pagemap.videoobject[0].embedurl}
+            allowFullScreen
+          />
+        </PreviewVideo>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

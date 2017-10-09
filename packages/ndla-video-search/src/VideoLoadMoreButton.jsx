@@ -26,9 +26,11 @@ const VideoLoadMoreButton = props => {
   return (
     <div {...classes('load-videos')}>
       <Button disabled={searching} onClick={loadMoreVideos}>
-        {searching
-          ? <div {...classes('spinner')} />
-          : translations.loadMoreVideos}
+        {searching ? (
+          <div {...classes('spinner')} />
+        ) : (
+          translations.loadMoreVideos
+        )}
       </Button>
     </div>
   );

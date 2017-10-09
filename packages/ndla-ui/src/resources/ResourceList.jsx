@@ -34,17 +34,19 @@ const Resource = ({ resource, resourceToLinkProps }) => {
       </div>
       <div {...classes('body o-flag__body')}>
         <h1 {...classes('title')}>
-          {linkProps.href
-            ? <a {...linkProps}>
-                {resource.name}
-                {secondary
-                  ? <Additional className="c-icon--20 u-margin-left-tiny" />
-                  : null}
-              </a>
-            : <SafeLink {...resourceToLinkProps(resource)}>
-                {resource.icon} {resource.name}
-                {secondary ? <Additional /> : null}
-              </SafeLink>}
+          {linkProps.href ? (
+            <a {...linkProps}>
+              {resource.name}
+              {secondary ? (
+                <Additional className="c-icon--20 u-margin-left-tiny" />
+              ) : null}
+            </a>
+          ) : (
+            <SafeLink {...resourceToLinkProps(resource)}>
+              {resource.icon} {resource.name}
+              {secondary ? <Additional /> : null}
+            </SafeLink>
+          )}
         </h1>
       </div>
     </li>
@@ -86,38 +88,38 @@ class ResourceList extends Component {
                 .filter(
                   resource => (secondaryFilter ? resource : resource.primary),
                 )
-                .map(resource =>
+                .map(resource => (
                   <Resource
                     key={resource.id}
                     type={type}
                     {...rest}
                     resource={resource}
-                  />,
-                )
+                  />
+                ))
             : resources
                 // Comment out when PRIMARY (kjernestoff) prop is not available
                 .filter(
                   resource => (secondaryFilter ? resource : resource.primary),
                 )
                 .filter((resource, index) => index < limit)
-                .map(resource =>
+                .map(resource => (
                   <Resource
                     key={resource.id}
                     type={type}
                     {...rest}
                     resource={resource}
-                  />,
-                )}
+                  />
+                ))}
         </ul>
-        {resources.length > limit
-          ? <div {...classes('button-wrapper')}>
-              <Button
-                {...classes('button', '', 'c-btn c-button--outline')}
-                onClick={this.handleClick}>
-                {showAll ? 'Vis mindre' : 'Vis mer'}
-              </Button>
-            </div>
-          : null}
+        {resources.length > limit ? (
+          <div {...classes('button-wrapper')}>
+            <Button
+              {...classes('button', '', 'c-btn c-button--outline')}
+              onClick={this.handleClick}>
+              {showAll ? 'Vis mindre' : 'Vis mer'}
+            </Button>
+          </div>
+        ) : null}
       </div>
     );
   }

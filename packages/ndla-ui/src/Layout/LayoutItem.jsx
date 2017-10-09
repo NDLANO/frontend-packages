@@ -26,18 +26,10 @@ export const LayoutItem = ({ children, layout }) => {
       );
     }
     case 'full': {
-      return (
-        <section className="u-1/1@desktop">
-          {children}
-        </section>
-      );
+      return <section className="u-1/1@desktop">{children}</section>;
     }
     default: {
-      return (
-        <section className="o-layout__item">
-          {children}
-        </section>
-      );
+      return <section className="o-layout__item">{children}</section>;
     }
   }
 };

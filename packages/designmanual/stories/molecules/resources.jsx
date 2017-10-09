@@ -52,30 +52,34 @@ const resourceGroups1 = [resourceGroup1];
 const resourceGroups2 = [resourceGroup2];
 const resourceGroups3 = [resourceGroup3];
 
-export const ArticleResourceList = () =>
+export const ArticleResourceList = () => (
   <ResourceSubsetListComponent
     resourceGroups={resourceGroups1}
     resourceToLinkProps={toLink}
     toResourceTab={() => '#'}
-  />;
+  />
+);
 
-export const LearningPathResourceList = () =>
+export const LearningPathResourceList = () => (
   <ResourceSubsetListComponent
     resourceGroups={resourceGroups2}
     resourceToLinkProps={toLink}
     toResourceTab={() => '#'}
-  />;
+  />
+);
 
-export const ExerciseResourceList = () =>
+export const ExerciseResourceList = () => (
   <ResourceSubsetListComponent
     resourceGroups={resourceGroups3}
     resourceToLinkProps={toLink}
     toResourceTab={() => '#'}
-  />;
+  />
+);
 
-export const ResourceSubsetList = () =>
+export const ResourceSubsetList = () => (
   <ResourceSubsetListComponent
     resourceGroups={resourceGroups}
     resourceToLinkProps={toLink}
     toResourceTab={() => '#'}
-  />;
+  />
+);

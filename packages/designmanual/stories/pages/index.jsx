@@ -38,16 +38,17 @@ import article, {
   articleResources,
 } from '../../dummydata/index';
 
-const ResourcesSubTopics = () =>
+const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
     <ResourceWrapper>
       <h1 className="c-resources__title">Emner</h1>
       <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
     </ResourceWrapper>
-  </LayoutItem>;
+  </LayoutItem>
+);
 
 storiesOf('Sidevisninger', module)
-  .add('En side uten innhold', () =>
+  .add('En side uten innhold', () => (
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
@@ -56,9 +57,9 @@ storiesOf('Sidevisninger', module)
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('En side med innhold', () =>
+    </PageContainer>
+  ))
+  .add('En side med innhold', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -88,9 +89,9 @@ storiesOf('Sidevisninger', module)
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('En side med feilmelding', () =>
+    </PageContainer>
+  ))
+  .add('En side med feilmelding', () => (
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
@@ -107,9 +108,9 @@ storiesOf('Sidevisninger', module)
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('Hent artikkel med id', () =>
+    </PageContainer>
+  ))
+  .add('Hent artikkel med id', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -131,10 +132,10 @@ storiesOf('Sidevisninger', module)
         <ArticleLoader closeButton />
       </Content>
       <FooterExample />
-    </PageContainer>,
-  );
+    </PageContainer>
+  ));
 storiesOf('Artikkelmaler', module)
-  .add('Fagstoff', () =>
+  .add('Fagstoff', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -156,9 +157,9 @@ storiesOf('Artikkelmaler', module)
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('Oppgaver og aktiviteter', () =>
+    </PageContainer>
+  ))
+  .add('Oppgaver og aktiviteter', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero green>
@@ -180,9 +181,9 @@ storiesOf('Artikkelmaler', module)
         <ArticleExercise />
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('Tilleggsstoff', () =>
+    </PageContainer>
+  ))
+  .add('Tilleggsstoff', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero red>
@@ -204,11 +205,11 @@ storiesOf('Artikkelmaler', module)
         <ArticleAdditional />
       </Content>
       <FooterExample />
-    </PageContainer>,
-  );
+    </PageContainer>
+  ));
 
 storiesOf('Emnesider', module)
-  .add('1. Fagoversikt', () =>
+  .add('1. Fagoversikt', () => (
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
@@ -238,22 +239,20 @@ storiesOf('Emnesider', module)
                   'Service og samferdsel Vg1',
                   'Teknikk og industriell produksjon Vg1',
                   'Transport og logistikk Vg2',
-                ].map(subject =>
+                ].map(subject => (
                   <li key={subject}>
-                    <a href="">
-                      {subject}
-                    </a>
-                  </li>,
-                )}
+                    <a href="">{subject}</a>
+                  </li>
+                ))}
               </ul>
             </LayoutItem>
           </article>
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('2. Fag', () =>
+    </PageContainer>
+  ))
+  .add('2. Fag', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -276,9 +275,9 @@ storiesOf('Emnesider', module)
         <ResourcesSubTopics />
       </StoryBody>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('3. Hovedemne', () =>
+    </PageContainer>
+  ))
+  .add('3. Hovedemne', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -308,9 +307,9 @@ storiesOf('Emnesider', module)
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('4. Underemne', () =>
+    </PageContainer>
+  ))
+  .add('4. Underemne', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -340,9 +339,9 @@ storiesOf('Emnesider', module)
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  )
-  .add('Last inn emne', () =>
+    </PageContainer>
+  ))
+  .add('Last inn emne', () => (
     <PageContainer>
       <MastheadWithTopicMenu />
       <Hero>
@@ -375,5 +374,5 @@ storiesOf('Emnesider', module)
         </OneColumn>
       </Content>
       <FooterExample />
-    </PageContainer>,
-  );
+    </PageContainer>
+  ));

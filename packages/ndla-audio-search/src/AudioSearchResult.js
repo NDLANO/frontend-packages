@@ -30,13 +30,13 @@ export default function AudioSearchResult({
   return (
     <div key={audio.id} {...classes('list-item')}>
       <div {...classes('list-item-inner')}>
-        <h2>
-          {audio.title.title}
-        </h2>
+        <h2>{audio.title.title}</h2>
         <div {...classes('license')}>
-          {license.rights
-            ? <LicenseByline licenseRights={license.rights} />
-            : license}
+          {license.rights ? (
+            <LicenseByline licenseRights={license.rights} />
+          ) : (
+            license
+          )}
         </div>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>

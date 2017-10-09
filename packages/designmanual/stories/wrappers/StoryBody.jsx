@@ -10,14 +10,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { OneColumn, LayoutItem } from 'ndla-ui';
 
-const StoryIntro = ({ children }) =>
+const StoryIntro = ({ children }) => (
   <OneColumn>
     <LayoutItem layout="center">
-      <article className="c-article c-article--clean">
-        {children}
-      </article>
+      <article className="c-article c-article--clean">{children}</article>
     </LayoutItem>
-  </OneColumn>;
+  </OneColumn>
+);
 
 StoryIntro.propTypes = {
   children: PropTypes.node,

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Pencil = ({ className }) =>
+const Pencil = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="80"
@@ -42,7 +42,8 @@ const Pencil = ({ className }) =>
         d="M23.0048,49.5278429 L20.7955009,56.3651286 L27.8825436,55.4259857 C27.3828855,54.2371286 26.7238769,53.1242714 25.8812103,52.1091286 C25.0439453,51.0939857 24.0716376,50.2389857 23.0048,49.5278429"
       />
     </g>
-  </svg>;
+  </svg>
+);
 
 Pencil.propTypes = {
   className: PropTypes.string.isRequired,

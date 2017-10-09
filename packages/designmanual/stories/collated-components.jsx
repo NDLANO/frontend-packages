@@ -39,7 +39,7 @@ const toggle = () => {
 };
 
 storiesOf('Sammensatte moduler', module)
-  .add('Brødsmulesti', () =>
+  .add('Brødsmulesti', () => (
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
       <Breadcrumb
@@ -61,19 +61,19 @@ storiesOf('Sammensatte moduler', module)
         topicPath={topicList.slice(0, -1)}
         toTopic={() => '#'}
       />
-    </Center>,
-  )
-  .add('Begrepsforklaring', () =>
+    </Center>
+  ))
+  .add('Begrepsforklaring', () => (
     <Center>
       <GlossaryExample />
-    </Center>,
-  )
-  .add('Emnebeskrivelse', () =>
+    </Center>
+  ))
+  .add('Emnebeskrivelse', () => (
     <Center>
       <ArticleLoader articleId="149" reset />
-    </Center>,
-  )
-  .add('Emneliste', () =>
+    </Center>
+  ))
+  .add('Emneliste', () => (
     <div>
       <StoryIntro title="Emneliste">
         <p>
@@ -88,9 +88,9 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
       </StoryBody>
-    </div>,
-  )
-  .add('Faner', () =>
+    </div>
+  ))
+  .add('Faner', () => (
     <Center>
       <h2 className="u-heading">Faner</h2>
       <div className="o-wrapper--inner">
@@ -107,9 +107,9 @@ storiesOf('Sammensatte moduler', module)
         </p>
         <TabsControlled />
       </div>
-    </Center>,
-  )
-  .add('Filter', () =>
+    </Center>
+  ))
+  .add('Filter', () => (
     <div>
       <StoryIntro title="Filter">
         <p>
@@ -144,19 +144,19 @@ storiesOf('Sammensatte moduler', module)
           />
         </div>
       </StoryBody>
-    </div>,
-  )
-  .add('Hovedhode', () =>
+    </div>
+  ))
+  .add('Hovedhode', () => (
     <div>
       <MastheadLeftRight />
-    </div>,
-  )
-  .add('Hovedhode med innhold', () =>
+    </div>
+  ))
+  .add('Hovedhode med innhold', () => (
     <div>
       <MastheadWithTopicMenu />
-    </div>,
-  )
-  .add('Lisens-ikoner', () =>
+    </div>
+  ))
+  .add('Lisens-ikoner', () => (
     <Center>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner og merking med beskrivelse</h2>
@@ -176,9 +176,9 @@ storiesOf('Sammensatte moduler', module)
           />
         </FigureWithLicense>
       </LayoutItem>
-    </Center>,
-  )
-  .add('Lisensboks', () =>
+    </Center>
+  ))
+  .add('Lisensboks', () => (
     <Center>
       <h2 className="u-heading">Lisensboks</h2>
       <article className="article">
@@ -194,9 +194,9 @@ storiesOf('Sammensatte moduler', module)
           </div>
         </LayoutItem>
       </article>
-    </Center>,
-  )
-  .add('Lisensboks ekspanderbar', () =>
+    </Center>
+  ))
+  .add('Lisensboks ekspanderbar', () => (
     <Center>
       <h2 className="u-heading">Lisensboks ekspanderbar</h2>
       <article className="article">
@@ -204,9 +204,9 @@ storiesOf('Sammensatte moduler', module)
           <LicenseExample />
         </LayoutItem>
       </article>
-    </Center>,
-  )
-  .add('Læringsressurser', () =>
+    </Center>
+  ))
+  .add('Læringsressurser', () => (
     <div>
       <StoryIntro title="Læringsressurser">
         <p>
@@ -227,9 +227,9 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <ResourceSubsetList />
       </LayoutItem>
-    </div>,
-  )
-  .add('Paginering', () =>
+    </div>
+  ))
+  .add('Paginering', () => (
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
@@ -242,9 +242,9 @@ storiesOf('Sammensatte moduler', module)
       />
       <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
-    </Center>,
-  )
-  .add('Relaterte artikler', () =>
+    </Center>
+  ))
+  .add('Relaterte artikler', () => (
     <div>
       <StoryIntro title="Relaterte artikler">
         <p>Kan brukes i slutten av artikler, eller midt i.</p>
@@ -253,9 +253,9 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <RelatedArticles resources={articleResources} />
       </StoryBody>
-    </div>,
-  )
-  .add('Sammensatte noder', () =>
+    </div>
+  ))
+  .add('Sammensatte noder', () => (
     <div>
       <StoryIntro title="Sammensatte moduler" />
       <StoryBody>
@@ -323,9 +323,9 @@ storiesOf('Sammensatte moduler', module)
           </div>
         </div>
       </StoryBody>
-    </div>,
-  )
-  .add('Sidefot', () =>
+    </div>
+  ))
+  .add('Sidefot', () => (
     <Center>
       <Footer>
         <div className="footer_form">
@@ -348,9 +348,9 @@ storiesOf('Sammensatte moduler', module)
           Nettstedet er utarbeidet av NDLA som åpen kildekode.
         </Footer.Text>
       </Footer>
-    </Center>,
-  )
-  .add('Tilleggsstoff', () =>
+    </Center>
+  ))
+  .add('Tilleggsstoff', () => (
     <div>
       <StoryIntro title="Tilleggsstoff">
         <p>
@@ -368,9 +368,9 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <ResourceSubsetList />
       </StoryBody>
-    </div>,
-  )
-  .add('Feilmelding', () =>
+    </div>
+  ))
+  .add('Feilmelding', () => (
     <div>
       <StoryIntro title="Feilmelding">
         <p>
@@ -389,5 +389,5 @@ storiesOf('Sammensatte moduler', module)
           }}
         />
       </StoryBody>
-    </div>,
-  );
+    </div>
+  ));

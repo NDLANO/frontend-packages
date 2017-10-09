@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Camera = ({ className }) =>
+const Camera = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="32"
@@ -21,7 +21,8 @@ const Camera = ({ className }) =>
       stroke="#444"
       d="M9.389 1v3.056H2a1.5 1.5 0 0 0-1.5 1.5v17.333a1.5 1.5 0 0 0 1.5 1.5h28a1.5 1.5 0 0 0 1.5-1.5V5.556a1.5 1.5 0 0 0-1.5-1.5h-7.389V1a.5.5 0 0 0-.5-.5H9.89a.5.5 0 0 0-.5.5zM16 21.333a7.111 7.111 0 1 1 0-14.222 7.111 7.111 0 0 1 0 14.222zm9.389-13.722h2.555v1H25.39v-1z"
     />
-  </svg>;
+  </svg>
+);
 
 Camera.propTypes = {
   className: PropTypes.string.isRequired,

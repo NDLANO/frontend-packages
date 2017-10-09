@@ -37,11 +37,9 @@ class FilterList extends Component {
 
     return (
       <div {...filterClasses('list', modifiers)}>
-        <span {...filterClasses('label')}>
-          {label}
-        </span>
+        <span {...filterClasses('label')}>{label}</span>
         {filterContent
-          ? filterContent.map(filterItem =>
+          ? filterContent.map(filterItem => (
               <div {...filterClasses('item')} key={uuid()}>
                 <input
                   {...filterClasses('input')}
@@ -63,8 +61,8 @@ class FilterList extends Component {
                       })
                     : null}
                 </label>
-              </div>,
-            )
+              </div>
+            ))
           : null}
       </div>
     );

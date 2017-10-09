@@ -22,7 +22,7 @@ import {
 } from 'ndla-ui';
 import { Document, Audio } from 'ndla-ui/icons';
 
-const VideoContent = () =>
+const VideoContent = () => (
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du videoer fra artikkelen</h2>
@@ -74,9 +74,10 @@ const VideoContent = () =>
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
-  </div>;
+  </div>
+);
 
-const TextContent = () =>
+const TextContent = () => (
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du tekst fra artikkelen</h2>
@@ -86,7 +87,7 @@ const TextContent = () =>
       </p>
     </div>
     <MediaList>
-      {['1', '2'].map(key =>
+      {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a href="">
@@ -119,12 +120,13 @@ const TextContent = () =>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
-        </MediaListItem>,
-      )}
+        </MediaListItem>
+      ))}
     </MediaList>
-  </div>;
+  </div>
+);
 
-const AudioContent = () =>
+const AudioContent = () => (
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du lydfiler</h2>
@@ -133,7 +135,7 @@ const AudioContent = () =>
       </p>
     </div>
     <MediaList>
-      {['1', '2'].map(key =>
+      {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a href="">
@@ -165,12 +167,13 @@ const AudioContent = () =>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
-        </MediaListItem>,
-      )}
+        </MediaListItem>
+      ))}
     </MediaList>
-  </div>;
+  </div>
+);
 
-const ImageContent = () =>
+const ImageContent = () => (
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du bilder fra artikkelen</h2>
@@ -183,7 +186,7 @@ const ImageContent = () =>
         'https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
         'https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
         'https://images.unsplash.com/photo-1470138831303-3e77dd49163e?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
-      ].map(src =>
+      ].map(src => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <a href="">
@@ -216,8 +219,8 @@ const ImageContent = () =>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
-        </MediaListItem>,
-      )}
+        </MediaListItem>
+      ))}
       <MediaListItem>
         <MediaListItemImage>
           <a href="">
@@ -261,9 +264,10 @@ const ImageContent = () =>
         </MediaListItemBody>
       </MediaListItem>
     </MediaList>
-  </div>;
+  </div>
+);
 
-const H5PContent = () =>
+const H5PContent = () => (
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du H5P-innhold fra artikkelen</h2>
@@ -272,7 +276,7 @@ const H5PContent = () =>
       </p>
     </div>
     <MediaList>
-      {['1', '2'].map(key =>
+      {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a href="">
@@ -326,12 +330,13 @@ const H5PContent = () =>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
-        </MediaListItem>,
-      )}
+        </MediaListItem>
+      ))}
     </MediaList>
-  </div>;
+  </div>
+);
 
-const Files = () =>
+const Files = () => (
   <div>
     <div className="u-introduction">
       <h2>Slik bruker du filer fra artikkelen</h2>
@@ -340,7 +345,7 @@ const Files = () =>
       </p>
     </div>
     <MediaList>
-      {['1', '2'].map(key =>
+      {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a href="">
@@ -372,12 +377,13 @@ const Files = () =>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
-        </MediaListItem>,
-      )}
+        </MediaListItem>
+      ))}
     </MediaList>
-  </div>;
+  </div>
+);
 
-export const LicenseBox = () =>
+export const LicenseBox = () => (
   <div>
     <h1 className="license__heading">Slik gjenbruker du innhold</h1>
 
@@ -391,13 +397,15 @@ export const LicenseBox = () =>
         { title: 'Filer', content: <Files /> },
       ]}
     />
-  </div>;
+  </div>
+);
 
-const LicenseExample = () =>
+const LicenseExample = () => (
   <ToggleLicenseBox
     openTitle="Bruk artikkel"
     closeTitle="Lukk boks"
     licenseBox={<LicenseBox />}
-  />;
+  />
+);
 
 export default LicenseExample;

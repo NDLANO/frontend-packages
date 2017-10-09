@@ -12,10 +12,11 @@ import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper('c-table');
 
-const Table = ({ children, ...rest }) =>
+const Table = ({ children, ...rest }) => (
   <table {...classes({ extra: ['o-table'] })} {...rest}>
     {children}
-  </table>;
+  </table>
+);
 
 Table.propTypes = {
   children: PropTypes.node,

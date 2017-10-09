@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextInBox = ({ className }) =>
+const TextInBox = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="29"
@@ -21,7 +21,8 @@ const TextInBox = ({ className }) =>
       stroke="#444"
       d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
     />
-  </svg>;
+  </svg>
+);
 
 TextInBox.propTypes = {
   className: PropTypes.string.isRequired,

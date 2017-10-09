@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Crop = ({ className }) =>
+const Crop = ({ className }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,8 @@ const Crop = ({ className }) =>
     viewBox="0 0 32 32"
     className={className}>
     <path d="M26 8l6-6-2-2-6 6h-14v-6h-4v6h-6v4h6v16h16v6h4v-6h6v-4h-6v-14zM10 10h10l-10 10v-10zM12 22l10-10v10h-10z" />
-  </svg>;
+  </svg>
+);
 
 Crop.propTypes = {
   className: PropTypes.string.isRequired,

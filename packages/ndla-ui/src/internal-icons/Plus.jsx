@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Plus = ({ className }) =>
+const Plus = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="33"
@@ -17,7 +17,8 @@ const Plus = ({ className }) =>
     viewBox="0 0 33 33"
     className={className}>
     <path d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z" />
-  </svg>;
+  </svg>
+);
 
 Plus.propTypes = {
   className: PropTypes.string.isRequired,

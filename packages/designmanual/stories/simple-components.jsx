@@ -15,7 +15,7 @@ const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
 
 storiesOf('Enkle komponenter', module)
-  .add('Bilde', () =>
+  .add('Bilde', () => (
     <div>
       <StoryIntro title="Bilde">
         <p>
@@ -87,9 +87,9 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
       </StoryBody>
-    </div>,
-  )
-  .add('Bilde under ingress', () =>
+    </div>
+  ))
+  .add('Bilde under ingress', () => (
     <div>
       <StoryIntro title="Bilde under ingress">
         <p>
@@ -111,9 +111,9 @@ storiesOf('Enkle komponenter', module)
           />
         </FigureWithLicense>
       </StoryBody>
-    </div>,
-  )
-  .add('Boks i tekst', () =>
+    </div>
+  ))
+  .add('Boks i tekst', () => (
     <div>
       <StoryIntro title="Boks i tekst">
         <p>
@@ -236,9 +236,9 @@ storiesOf('Enkle komponenter', module)
           </p>
         </LayoutItem>
       </StoryBody>
-    </div>,
-  )
-  .add('Bruk av lenker', () =>
+    </div>
+  ))
+  .add('Bruk av lenker', () => (
     <div>
       <StoryIntro title="Bruk av lenker">
         <p>
@@ -250,9 +250,9 @@ storiesOf('Enkle komponenter', module)
           eller fanen man står i.
         </p>
       </StoryIntro>
-    </div>,
-  )
-  .add('Faktaboks og høyrespalte', () =>
+    </div>
+  ))
+  .add('Faktaboks og høyrespalte', () => (
     <div>
       <StoryIntro title="Faktaboks og høyrespalte">
         <p>
@@ -344,9 +344,9 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
       </StoryBody>
-    </div>,
-  )
-  .add('Kildehenvisninger', () =>
+    </div>
+  ))
+  .add('Kildehenvisninger', () => (
     <div>
       <StoryIntro title="Kildehenvisninger">
         <p>
@@ -400,9 +400,9 @@ storiesOf('Enkle komponenter', module)
           </li>
         </ol>
       </StoryBody>
-    </div>,
-  )
-  .add('Ikoner', () =>
+    </div>
+  ))
+  .add('Ikoner', () => (
     <div>
       <StoryIntro title="Ikoner" />
       <StoryBody>
@@ -468,42 +468,34 @@ storiesOf('Enkle komponenter', module)
               'Underline',
               'User',
               'Video',
-            ].map(key =>
+            ].map(key => (
               <tr key={key}>
                 <td>
                   {createElement(Icons[key], { className: 'c-icon--medium' })}
                 </td>
+                <td>{key}</td>
                 <td>
-                  {key}
+                  <code>&lt;Icons.{key} /&gt;</code>
                 </td>
-                <td>
-                  <code>
-                    &lt;Icons.{key} /&gt;
-                  </code>
-                </td>
-              </tr>,
-            )}
-            {['up', 'down', 'left', 'right'].map(key =>
+              </tr>
+            ))}
+            {['up', 'down', 'left', 'right'].map(key => (
               <tr key={key}>
                 <td>
                   <Icons.Arrow direction={key} />
                 </td>
+                <td>Arrow {key}</td>
                 <td>
-                  Arrow {key}
+                  <code>&lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;</code>
                 </td>
-                <td>
-                  <code>
-                    &lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;
-                  </code>
-                </td>
-              </tr>,
-            )}
+              </tr>
+            ))}
           </tbody>
         </table>
       </StoryBody>
-    </div>,
-  )
-  .add('Knapper', () =>
+    </div>
+  ))
+  .add('Knapper', () => (
     <div>
       <StoryIntro title="Knapper">
         <p>
@@ -533,9 +525,9 @@ storiesOf('Enkle komponenter', module)
           Knapp deaktivert
         </Button>
       </StoryBody>
-    </div>,
-  )
-  .add('Logo', () =>
+    </div>
+  ))
+  .add('Logo', () => (
     <div>
       <StoryIntro title="Logo">
         <p>
@@ -564,5 +556,5 @@ storiesOf('Enkle komponenter', module)
           altText="Nasjonal digital læringsarena"
         />
       </StoryBody>
-    </div>,
-  );
+    </div>
+  ));

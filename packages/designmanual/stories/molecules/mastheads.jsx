@@ -21,13 +21,14 @@ import {
 } from 'ndla-ui';
 import { topicMenu, subjectList, topicList } from '../../dummydata';
 
-export const MastheadLeftRight = () =>
+export const MastheadLeftRight = () => (
   <Masthead>
     <MastheadItem left>Left</MastheadItem>
     <MastheadItem right>Right</MastheadItem>
-  </Masthead>;
+  </Masthead>
+);
 
-export const MastheadDefault = () =>
+export const MastheadDefault = () => (
   <Masthead>
     <MastheadItem left>
       <SiteNav>
@@ -39,7 +40,8 @@ export const MastheadDefault = () =>
     <MastheadItem right>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
     </MastheadItem>
-  </Masthead>;
+  </Masthead>
+);
 
 export const MastheadWithTopicMenu = () => {
   const messages = {

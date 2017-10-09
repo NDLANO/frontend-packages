@@ -9,12 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ArticleIntroductionText = ({ text }) =>
-  text
-    ? <p>
-        {text}
-      </p>
-    : null;
+const ArticleIntroductionText = ({ text }) => (text ? <p>{text}</p> : null);
 
 ArticleIntroductionText.propTypes = {
   text: PropTypes.string,

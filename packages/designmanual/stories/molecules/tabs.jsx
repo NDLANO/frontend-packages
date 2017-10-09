@@ -58,6 +58,7 @@ export const TabsDefault = () => (
       { title: 'Bilde', content: <p>Bilde innhold</p> },
       { title: 'Video', content: <p>Video innhold</p> },
       { title: 'Lyd', content: <p>Lyd innhold</p> },
+      { title: 'Inaktiv', content: <p>Inaktivt innhold</p>, disabled: true },
     ]}
   />
 );

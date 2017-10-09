@@ -3,7 +3,6 @@
 ** Tabs Component
 **/
 
-
 $tabs-spacing: 12px;
 .c-tabs {
   margin-left: $spacing;
@@ -32,7 +31,7 @@ $tabs-spacing: 12px;
   border-bottom: 5px solid lighten($brand-color, 40%);
 }
 .c-tabs__tab + .c-tabs__tab {
-    margin-left: $tabs-spacing;
+  margin-left: $tabs-spacing;
 }
 .c-tabs__list {
   max-width: 100%;
@@ -42,4 +41,12 @@ $tabs-spacing: 12px;
   margin: $spacing/1.4 0 $spacing--small;
   border-bottom: 1px solid $brand-color--tertiary;
   padding: 0;
+}
+
+.react-tabs__tab--disabled {
+  color: $brand-grey;
+  &:hover {
+    color: $brand-grey--light;
+    cursor: not-allowed;
+  }
 }

@@ -36,7 +36,7 @@ export { default as RelatedArticles } from './RelatedArticles/RelatedArticles';
 export { default as ResourceList } from './resources/ResourceList';
 export { default as ResourceWrapper } from './resources/ResourceWrapper';
 export { default as ResourceSubsetList } from './resources/ResourceSubsetList';
-export { default as Glossary } from './glossary/Glossary';
+export { default as Glossary } from './Glossary';
 export {
   default as Breadcrumb,
   BreadcrumbBlock,

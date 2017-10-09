@@ -3,24 +3,22 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, CC, COPY } from 'ndla-licenses';
+import { BY, SA, NC, ND, PD, CC0, COPY } from 'ndla-licenses';
 import {
   Button,
   ErrorMessage,
-  StoryIntro,
   FilterList,
   Pager,
   Footer,
-  LicenseIconList,
-  // TopicArticle,
+  LicenseByline,
   TopicIntroductionList,
   Breadcrumb,
   BreadcrumbBlock,
   LayoutItem,
-  StoryBody,
   RelatedArticles,
 } from 'ndla-ui';
 
+import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
@@ -163,8 +161,9 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner og merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseIconList
-            licenseRights={[BY, SA, NC, ND, PD, CC0, CC, COPY]}
+          <LicenseByline
+            withDescription
+            licenseRights={[BY, SA, NC, ND, PD, CC0, COPY]}
           />
         </div>
       </LayoutItem>

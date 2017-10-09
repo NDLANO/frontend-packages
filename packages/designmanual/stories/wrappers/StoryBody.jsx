@@ -8,8 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { OneColumn } from '../Layout/OneColumn';
-import { LayoutItem } from '../Layout/LayoutItem';
+import { OneColumn, LayoutItem } from 'ndla-ui';
 
 const StoryIntro = ({ children }) =>
   <OneColumn>

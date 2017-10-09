@@ -7,7 +7,9 @@
  */
 
 @import "global/settings/settings.config";
+@import "../../../node_modules/inuitcss/settings/_settings.core";
 @import "global/settings/settings.colors";
+@import "global/tools/tools.aliases";
 
 .c-audio-search {
   padding: 1rem;
@@ -20,7 +22,6 @@
     margin-top: 0;
     margin-bottom: 0;
     box-shadow: none;
-    display: inline-block;
     border-width: 2px;
     float: left;
     border-radius: 5px 0 0 5px;
@@ -42,7 +43,7 @@
   }
 
   &__license {
-    margin-bottom: 25px;
+    margin-bottom: $spacing--small;
   }
   &__form-button {
     width: 12%;
@@ -67,15 +68,9 @@
       &-inner {
         .c-license-icons {
           &__list {
-            display: flex;
-            flex-flow: row wrap;
-            align-content: flex-start;
-            min-height: 24px;
-            margin-bottom: 5px;
-          }
-
-          &__item {
-            max-height: 0;
+            flex-direction: row;
+            text-align: center;
+            justify-content: center;
           }
         }
 
@@ -85,7 +80,7 @@
           // The 'audio' tag is implemented with a download button in Chrome > 58.
           // Make it so that this button doesn't show.
           audio::-webkit-media-controls {
-            overflow: hidden !important
+            overflow: hidden !important;
           }
           audio::-webkit-media-controls-enclosure {
             width: calc(100% + 32px);

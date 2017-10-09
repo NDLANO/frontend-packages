@@ -9,8 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { OneColumn } from '../Layout/OneColumn';
-import { LayoutItem } from '../Layout/LayoutItem';
+import { OneColumn, LayoutItem } from 'ndla-ui';
 
 const classes = new BEMHelper({
   name: 'factbox',

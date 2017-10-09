@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { Button, LicenseIconList } from 'ndla-ui';
+import { Button, LicenseByline } from 'ndla-ui';
 import AudioBar from './AudioBar';
 
 const classes = new BEMHelper({
@@ -35,7 +35,7 @@ export default function AudioSearchResult({
         </h2>
         <div {...classes('license')}>
           {license.rights
-            ? <LicenseIconList licenseRights={license.rights} noText />
+            ? <LicenseByline licenseRights={license.rights} />
             : license}
         </div>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />

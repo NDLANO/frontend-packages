@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import { BY, NC, ND } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
-import ClickableLicenseByline from '../license/ClickableLicenseByline';
+import LicenseByline from '../LicenseByline';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -25,7 +25,7 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureDetails = ({ children, authors, messages }) =>
+export const FigureDetails = ({ children, authors, origin, messages }) =>
   <div {...classes('license')} id="figmeta">
     <button {...classes('close')}>
       {messages.close}
@@ -35,11 +35,11 @@ export const FigureDetails = ({ children, authors, messages }) =>
         <h3 {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <ClickableLicenseByline license={[BY, NC, ND]} />
+        <LicenseByline withDescription licenseRights={[BY, NC, ND]} />
         <a
           className="c-figure-license__link"
           href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
-          Lær mer om åpne lisenser
+          {messages.learnAboutOpenLicenses}
         </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
@@ -49,14 +49,17 @@ export const FigureDetails = ({ children, authors, messages }) =>
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>,
             )}
             <li>
-              Kilde: <a href="http://www.wikimedia.org">Wikimedia</a>
+              {messages.source}:{' '}
+              {origin.startsWith('http')
+                ? <a href={origin}>
+                    {origin}
+                  </a>
+                : origin}
             </li>
           </ul>
-          {children
-            ? <div {...classLicenses('cta-block')}>
-                {' '}{children}{' '}
-              </div>
-            : null}
+          <div {...classLicenses('cta-block')}>
+            {children}
+          </div>
         </div>
       </div>
     </div>
@@ -65,6 +68,7 @@ export const FigureDetails = ({ children, authors, messages }) =>
 FigureDetails.propTypes = {
   children: PropTypes.node,
   licenseAbbreviation: PropTypes.string.isRequired,
+  origin: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.string.isRequired,
@@ -74,7 +78,8 @@ FigureDetails.propTypes = {
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
-    howToReference: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
+    learnAboutOpenLicenses: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -82,36 +87,24 @@ export const FigureCaption = ({
   caption,
   authors,
   reuseLabel,
-  licenseAbbreviation,
+  licenseRights,
 }) =>
   <figcaption {...classes('caption')}>
     {caption
-      ? <div className="c-figure__info">
+      ? <div {...classes('info')}>
           {caption}
         </div>
       : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <ClickableLicenseByline noText license={[BY, NC, ND]}>
-          <span className="article_meta">Gary Waters</span>
-          <button className="c-figure__captionbtn">
+        <LicenseByline licenseRights={licenseRights}>
+          <span className="article_meta">
+            {authors.map(author => author.name).join(', ')}
+          </span>
+          <button {...classes('captionbtn')}>
             {reuseLabel}
           </button>
-        </ClickableLicenseByline>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `
-          <div class="c-figure__licensetag" xmlnsCc="http://creativecommons.org/ns" xmlnsDc="http://purl.org/dc/elements/1.1/">
-            <a href="http://ndla.no/nb/node/115785" rel="dc:source">
-              Tittel
-            </a> av
-            <a href="http://ndla.no/nb/node/12390" rel="dc:creator">
-              ${authors.map(author => author.name).join(', ')}
-            </a>.
-            Tilgjengelig under <a rel="license" href="https://creativecommons.org/licenses/by-sa/2.0/deed.no">${licenseAbbreviation} 2.0 Lisens</a>.
-          </div>`,
-          }}
-        />
+        </LicenseByline>
       </div>
     </footer>
   </figcaption>;
@@ -119,7 +112,7 @@ export const FigureCaption = ({
 FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
-  licenseAbbreviation: PropTypes.string.isRequired,
+  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

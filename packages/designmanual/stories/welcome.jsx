@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { Logo, StoryBody } from 'ndla-ui';
+import { Logo } from 'ndla-ui';
+import { StoryBody } from './wrappers';
 import { Center } from './helpers';
 
 const Welcome = () =>

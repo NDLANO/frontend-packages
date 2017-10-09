@@ -21,11 +21,11 @@ import {
   LayoutItem,
   Breadcrumb,
   Content,
-  StoryBody,
 } from 'ndla-ui';
 
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
+import { StoryBody } from '../wrappers';
 import { ResourceSubsetList } from '../molecules/resources';
 
 import ArticleLoader from '../article/ArticleLoader';

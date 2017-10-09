@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, StoryIntro, StoryBody } from 'ndla-ui';
+import { Table } from 'ndla-ui';
+import { StoryIntro, StoryBody } from './wrappers';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;

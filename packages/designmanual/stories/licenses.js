@@ -2,7 +2,7 @@ import React from 'react';
 import { uuid } from 'ndla-util';
 import { getLicenseRightByAbbreviation } from 'ndla-licenses';
 import { storiesOf } from '@storybook/react';
-import { StoryIntro, StoryBody } from 'ndla-ui';
+import { StoryIntro, StoryBody } from './wrappers';
 
 const licenses = [
   'by',

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import getLicenseByAbbreviation from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
-import LicenseByline from './LicenseByline';
+import LicenseByline from '../LicenseByline';
 
 const oClasses = new BEMHelper({
   name: 'media',
@@ -50,6 +50,21 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const MediaListCCLink = ({ children }) =>
+  <a
+    className="c-figure-license__link"
+    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.no">
+    {children}
+  </a>;
+
+MediaListCCLink.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+MediaListCCLink.defaultProps = {
+  language: 'no',
+};
+
 export const MediaListItemBody = ({ children, license, title }) =>
   <div {...oClasses('body', null, cClasses('body').className)}>
     {title
@@ -57,19 +72,16 @@ export const MediaListItemBody = ({ children, license, title }) =>
           {title}{' '}
         </h3>
       : null}
-    <LicenseByline license={getLicenseByAbbreviation(license)} />
-    <a
-      className="c-figure-license__link"
-      href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
-      Lær mer om åpne lisenser
-    </a>
+    <LicenseByline
+      withDescription
+      licenseRights={getLicenseByAbbreviation(license).rights}
+    />
     {children}
   </div>;
 
 MediaListItemBody.propTypes = {
   children: PropTypes.node.isRequired,
   license: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
   title: PropTypes.string,
 };
 

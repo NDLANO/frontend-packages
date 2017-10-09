@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "ndla-util": "^0.1.7",
     "nock": "^9.0.2"
   },
   "dependencies": {

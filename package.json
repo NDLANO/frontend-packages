@@ -10,7 +10,6 @@
     "clean": "lerna clean && lerna run clean",
     "bootstrap": "lerna bootstrap && lerna run build",
     "watch": "node ./scripts/watch.js",
-    "prestart": "yarn bootstrap --silent",
     "start": "concurrently -r --kill-others \"npm run watch\" \"npm run start-storybook\"",
     "start-storybook": "node ./scripts/startStorybook.js",
     "prebuild-storybook": "yarn bootstrap --silent",

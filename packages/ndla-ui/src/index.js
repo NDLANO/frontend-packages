@@ -12,7 +12,7 @@ export { default as Footer } from './footer/Footer';
 
 export { default as Article } from './article/Article';
 export { default as Button } from './button/Button';
-export { default as Logo } from './logo/Logo';
+export { default as Logo } from './Logo';
 export { default as Aside } from './aside/Aside';
 export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';
@@ -43,7 +43,7 @@ export {
   DisplayOnPageYOffset,
 } from './Breadcrumb';
 export { Hero } from './hero/Hero';
-export { Masthead, MastheadItem } from './masthead/Masthead';
+export { default as Masthead, MastheadItem } from './Masthead';
 export { Figure, FigureCaption, FigureDetails } from './Figure';
 export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 export {

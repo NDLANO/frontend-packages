@@ -39,6 +39,8 @@ export const FigureDetails = ({
         <LicenseByline withDescription licenseRights={licenseRights} />
         <a
           className="c-figure-license__link"
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
           {messages.learnAboutOpenLicenses}
         </a>
@@ -49,14 +51,18 @@ export const FigureDetails = ({
                 key={uuid()}
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
             ))}
-            <li>
-              {messages.source}:{' '}
-              {origin.startsWith('http') ? (
-                <a href={origin}>{origin}</a>
-              ) : (
-                origin
-              )}
-            </li>
+            {origin && (
+              <li>
+                {messages.source}:{' '}
+                {origin.startsWith('http') ? (
+                  <a href={origin} target="_blank" rel="noopener noreferrer">
+                    {origin}
+                  </a>
+                ) : (
+                  origin
+                )}
+              </li>
+            )}
           </ul>
           <div {...classLicenses('cta-block')}>{children}</div>
         </div>
@@ -68,7 +74,7 @@ export const FigureDetails = ({
 FigureDetails.propTypes = {
   children: PropTypes.node,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  origin: PropTypes.string.isRequired,
+  origin: PropTypes.string,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.string.isRequired,

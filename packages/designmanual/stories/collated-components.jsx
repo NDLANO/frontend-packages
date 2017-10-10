@@ -14,6 +14,8 @@ import {
   TopicIntroductionList,
   Breadcrumb,
   BreadcrumbBlock,
+  PageContainer,
+  Content,
   LayoutItem,
   RelatedArticles,
 } from 'ndla-ui';
@@ -179,32 +181,40 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Lisensboks', () => (
-    <Center>
-      <h2 className="u-heading">Lisensboks</h2>
-      <article className="article">
-        <LayoutItem layout="center">
-          <div className="license c-licensebox c-licensebox--expanded">
-            <Button
-              stripped
-              className="c-article__license-toggler"
-              onClick={() => {}}>
-              Lukk boks
-            </Button>
-            <LicenseBox />
-          </div>
-        </LayoutItem>
-      </article>
-    </Center>
+    <PageContainer>
+      <Content>
+        <Center>
+          <h2 className="u-heading">Lisensboks</h2>
+          <article className="article">
+            <LayoutItem layout="center">
+              <div className="license c-licensebox c-licensebox--expanded">
+                <Button
+                  stripped
+                  className="c-article__license-toggler"
+                  onClick={() => {}}>
+                  Lukk boks
+                </Button>
+                <LicenseBox />
+              </div>
+            </LayoutItem>
+          </article>
+        </Center>
+      </Content>
+    </PageContainer>
   ))
   .add('Lisensboks ekspanderbar', () => (
-    <Center>
-      <h2 className="u-heading">Lisensboks ekspanderbar</h2>
-      <article className="article">
-        <LayoutItem layout="center">
-          <LicenseExample />
-        </LayoutItem>
-      </article>
-    </Center>
+    <PageContainer>
+      <Content>
+        <Center>
+          <h2 className="u-heading">Lisensboks ekspanderbar</h2>
+          <article className="article">
+            <LayoutItem layout="center">
+              <LicenseExample />
+            </LayoutItem>
+          </article>
+        </Center>
+      </Content>
+    </PageContainer>
   ))
   .add('Læringsressurser', () => (
     <div>

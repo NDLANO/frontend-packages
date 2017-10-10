@@ -96,7 +96,7 @@ export const HandleLink = ({ text }) => {
       </a>
     );
   }
-  return text;
+  return <span>{text}</span>;
 };
 
 HandleLink.propTypes = {

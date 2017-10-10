@@ -1,5 +1,9 @@
+.o-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .o-content {
   flex: 1;
-  padding-left: $spacing--small;
-  padding-right: $spacing--small;
 }

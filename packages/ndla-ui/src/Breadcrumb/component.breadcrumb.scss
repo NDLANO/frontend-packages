@@ -30,6 +30,7 @@
   font-weight: $font-weight-normal;
   padding-right: $spacing--small/2;
   margin-bottom: 0;
+  margin-left: 0;
   display: block;
   @include mq(tablet) {
     display: inline-block;
@@ -53,7 +54,7 @@
       content: '|';
       @include inuit-font-size(14px);
       color: $brand-color;
-      opacity: .4;
+      opacity: 0.4;
     }
   }
   &:last-child:after {

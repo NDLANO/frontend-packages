@@ -48,6 +48,8 @@ MediaListItemImage.propTypes = {
 export const MediaListCCLink = ({ children }) => (
   <a
     className="c-figure-license__link"
+    target="_blank"
+    rel="noopener noreferrer"
     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.no">
     {children}
   </a>
@@ -86,18 +88,36 @@ MediaListItemActions.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export const HandleLink = ({ text }) => {
+  if (text.startsWith('http')) {
+    return (
+      <a href={text} target="_blank" rel="noopener noreferrer">
+        {text}
+      </a>
+    );
+  }
+  return <span>{text}</span>;
+};
+
+HandleLink.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
 export const MediaListItemMeta = ({ items }) => (
   <ul {...cClasses('actions')}>
     {items.map(item => (
-      <li
-        key={uuid()}
-        className="c-medialist__meta-item"
-        dangerouslySetInnerHTML={{ __html: item }}
-      />
+      <li key={uuid()} className="c-medialist__meta-item">
+        {item.label}: <HandleLink text={item.description} />
+      </li>
     ))}
   </ul>
 );
 
 MediaListItemMeta.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string.isRequired),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }),
+  ),
 };

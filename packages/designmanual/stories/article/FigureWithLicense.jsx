@@ -66,7 +66,7 @@ class FigureWithLicense extends Component {
           authors={authors}
         />
         <FigureDetails
-          licenseAbbreviation="by-nc-nd"
+          licenseRights={[BY, NC, ND]}
           authors={authors}
           origin="https://www.wikimedia.com"
           messages={messages}>

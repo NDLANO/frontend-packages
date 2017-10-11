@@ -61,23 +61,23 @@ storiesOf('Sidevisninger', module)
   ))
   .add('En side med innhold', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero red>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLoader articleId="49" />
         <OneColumn>
           <article className="c-article">
@@ -112,23 +112,23 @@ storiesOf('Sidevisninger', module)
   ))
   .add('Hent artikkel med id', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero red>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLoader closeButton />
       </Content>
       <FooterExample />
@@ -137,23 +137,23 @@ storiesOf('Sidevisninger', module)
 storiesOf('Artikkelmaler', module)
   .add('Fagstoff', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero red>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
@@ -161,23 +161,23 @@ storiesOf('Artikkelmaler', module)
   ))
   .add('Oppgaver og aktiviteter', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero green>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero green>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleExercise />
       </Content>
       <FooterExample />
@@ -185,23 +185,23 @@ storiesOf('Artikkelmaler', module)
   ))
   .add('Tilleggsstoff', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero red>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero red>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleAdditional />
       </Content>
       <FooterExample />
@@ -213,7 +213,7 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <OneColumn cssModifier="narrow">
+        <OneColumn cssModifier="clear">
           <article>
             <LayoutItem layout="center">
               <h1>Yrkesfag</h1>
@@ -279,23 +279,23 @@ storiesOf('Emnesider', module)
   ))
   .add('3. Hovedemne', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLoader articleId="1325" isTopicArticle />
         <OneColumn>
           <article className="c-article">
@@ -311,23 +311,23 @@ storiesOf('Emnesider', module)
   ))
   .add('4. Underemne', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <ArticleLoader articleId="5948" notitle />
         <OneColumn>
           <article className="c-article">
@@ -343,23 +343,23 @@ storiesOf('Emnesider', module)
   ))
   .add('Last inn emne', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero>
-        <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
-          </div>
-        </OneColumn>
-      </Hero>
       <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <LayoutItem layout="extend">
           <ArticleLoader articleId="" closeButton />
           <div className="u-padding-bottom-huge" />

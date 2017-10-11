@@ -1,7 +1,8 @@
 .o-wrapper {
   width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: $spacing--small;
+  padding-right: $spacing--small;
+
   @include mq(tablet) {
     padding-left: $spacing;
     padding-right: $spacing;

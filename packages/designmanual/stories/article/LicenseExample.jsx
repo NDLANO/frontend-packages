@@ -50,8 +50,11 @@ const VideoContent = () => (
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
+                  { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  {
+                    label: 'Rettighetshaver',
+                    description: 'Leverandør NTB scanpix',
+                  },
                 ]}
               />
               <button
@@ -102,9 +105,12 @@ const TextContent = () => (
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    'Opphavsmann: Fotograf Ola N',
-                    'Rettighetshaver: Leverandør NTB scanpix',
-                    'Publiseringsdato: 12.05.13',
+                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Rettighetshaver',
+                      description: 'Leverandør NTB scanpix',
+                    },
+                    { label: 'Publiseringsdato', description: '12.05.13' },
                   ]}
                 />
                 <button
@@ -150,8 +156,11 @@ const AudioContent = () => (
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    'Opphavsmann: Fotograf Ola N',
-                    'Rettighetshaver: Leverandør NTB scanpix',
+                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Rettighetshaver',
+                      description: 'Leverandør NTB scanpix',
+                    },
                   ]}
                 />
                 <button
@@ -201,9 +210,15 @@ const ImageContent = () => (
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    'Opphavsmann: Fotograf Ola N',
-                    'Rettighetshaver: Leverandør NTB scanpix',
-                    'Kilde: <a href="#">Wikimedia</a>',
+                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Rettighetshaver',
+                      description: 'Leverandør NTB scanpix',
+                    },
+                    {
+                      label: 'Kilde',
+                      description: 'https://www.wikimedia.org/',
+                    },
                   ]}
                 />
                 <button
@@ -239,9 +254,15 @@ const ImageContent = () => (
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  'Opphavsmann: Fotograf Ola N',
-                  'Rettighetshaver: Leverandør NTB scanpix',
-                  'Kilde: <a href="#">Wikimedia</a>',
+                  { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  {
+                    label: 'Rettighetshaver',
+                    description: 'Leverandør NTB scanpix',
+                  },
+                  {
+                    label: 'Kilde',
+                    description: 'https://www.wikimedia.org/',
+                  },
                 ]}
               />
               <button
@@ -303,8 +324,11 @@ const H5PContent = () => (
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    'Opphavsmann: Fotograf Ola N',
-                    'Rettighetshaver: Leverandør NTB scanpix',
+                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Rettighetshaver',
+                      description: 'Leverandør NTB scanpix',
+                    },
                   ]}
                 />
                 <button
@@ -360,8 +384,11 @@ const Files = () => (
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    'Opphavsmann: Fotograf Ola N',
-                    'Rettighetshaver: Leverandør NTB scanpix',
+                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Rettighetshaver',
+                      description: 'Leverandør NTB scanpix',
+                    },
                   ]}
                 />
                 <button

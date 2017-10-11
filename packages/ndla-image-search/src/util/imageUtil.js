@@ -6,6 +6,9 @@
  *
  */
 
+/* - Source sets for gallery search is retina-display optimized
+   - Based on: https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/ */
+
 export const getSrcSets = imageUrl =>
   [
     `${imageUrl}?width=1440 1440w`,
@@ -16,5 +19,11 @@ export const getSrcSets = imageUrl =>
     `${imageUrl}?width=640 640w`,
     `${imageUrl}?width=480 480w`,
     `${imageUrl}?width=320 320w`,
-    `${imageUrl}?width=320 320w`,
+  ].join(', ');
+
+export const getPreviewSrcSets = imageUrl =>
+  [
+    `${imageUrl}?width=480 3x`,
+    `${imageUrl}?width=320 2x`,
+    `${imageUrl}?width=160 1x`,
   ].join(', ');

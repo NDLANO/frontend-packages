@@ -26,6 +26,13 @@ $tabs-spacing: 12px;
   color: $brand-color;
   border-bottom: 5px solid $brand-color;
 }
+.c-tabs__tab--disabled {
+  color: $brand-grey;
+  &:hover {
+    color: $brand-grey--light;
+    cursor: default;
+  }
+}
 .c-tabs--selected.c-tabs__tab--muted {
   color: inherit;
   border-bottom: 5px solid lighten($brand-color, 40%);
@@ -41,12 +48,4 @@ $tabs-spacing: 12px;
   margin: $spacing/1.4 0 $spacing--small;
   border-bottom: 1px solid $brand-color--tertiary;
   padding: 0;
-}
-
-.react-tabs__tab--disabled {
-  color: $brand-grey;
-  &:hover {
-    color: $brand-grey--light;
-    cursor: not-allowed;
-  }
 }

@@ -62,6 +62,7 @@ class Tabs extends Component {
             <Tab
               {...classes('tab', {
                 selected: i === index,
+                disabled: tab.disabled,
                 [modifier]: modifier,
               })}
               key={tab.key ? tab.key : i}

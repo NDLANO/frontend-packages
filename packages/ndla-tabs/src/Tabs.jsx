@@ -62,9 +62,11 @@ class Tabs extends Component {
             <Tab
               {...classes('tab', {
                 selected: i === index,
+                disabled: tab.disabled,
                 [modifier]: modifier,
               })}
-              key={tab.key ? tab.key : i}>
+              key={tab.key ? tab.key : i}
+              disabled={tab.disabled}>
               {tab.title}
             </Tab>
           ))}
@@ -85,6 +87,7 @@ Tabs.propTypes = {
       key: PropTypes.string,
       title: PropTypes.string.isRequired,
       content: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
+      disabled: PropTypes.string.bool,
     }),
   ),
   onSelect: PropTypes.func,

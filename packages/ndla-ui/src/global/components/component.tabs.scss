@@ -3,7 +3,6 @@
 ** Tabs Component
 **/
 
-
 $tabs-spacing: 12px;
 .c-tabs {
   margin-left: $spacing;
@@ -27,12 +26,19 @@ $tabs-spacing: 12px;
   color: $brand-color;
   border-bottom: 5px solid $brand-color;
 }
+.c-tabs__tab--disabled {
+  color: $brand-grey;
+  &:hover {
+    color: $brand-grey--light;
+    cursor: default;
+  }
+}
 .c-tabs--selected.c-tabs__tab--muted {
   color: inherit;
   border-bottom: 5px solid lighten($brand-color, 40%);
 }
 .c-tabs__tab + .c-tabs__tab {
-    margin-left: $tabs-spacing;
+  margin-left: $tabs-spacing;
 }
 .c-tabs__list {
   max-width: 100%;

@@ -22,7 +22,7 @@ To view all of the available packages, see the [`packages/` directory](packages)
 Install root dependencies and [bootstrap](https://github.com/lerna/lerna#bootstrap) packages.
 
 ```js
-yarn
+yarn && yarn bootstrap
 ```
 
 Se package README for package specific details.
@@ -42,6 +42,11 @@ Run tests for all packages:
 yarn test
 ```
 
+### Develop
+
+```js
+yarn start
+```
 
 ## Publishing
 

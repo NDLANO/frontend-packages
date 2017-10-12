@@ -23,10 +23,13 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
   return (
     <div {...classes()}>
       <div {...classes('image')}>
-        <picture>
-          <source srcSet={getSrcSets(encodeURI(image.imageUrl))} sizes="15vw" />
-          <img role="presentation" alt="presentation" src={image.previewUrl} />
-        </picture>
+        <img
+          role="presentation"
+          alt="presentation"
+          srcSet={getSrcSets(encodeURI(image.imageUrl))}
+          sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
+          src={image.imageUrl}
+        />
       </div>
       <div {...classes('information')}>
         <h2 {...classes('title')}>

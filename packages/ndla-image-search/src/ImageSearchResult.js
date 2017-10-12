@@ -31,14 +31,12 @@ export default function ImageSearchResult({
     <div key={image.id} {...classes('list-item', active)}>
       <div {...classes('list-item-inner')}>
         <Button stripped onClick={() => onImageClick(image)}>
-          <picture>
-            <source srcSet={getPreviewSrcSets(encodeURI(image.previewUrl))} />
-            <img
-              role="presentation"
-              alt="presentation"
-              src={image.previewUrl}
-            />
-          </picture>
+          <img
+            role="presentation"
+            alt="presentation"
+            srcSet={getPreviewSrcSets(encodeURI(image.previewUrl))}
+            src={image.previewUrl}
+          />
         </Button>
       </div>
       {selectedImage && selectedImage.id === image.id ? (

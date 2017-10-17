@@ -180,7 +180,8 @@ async function deploy(sha) {
 const {
   TRAVIS_EVENT_TYPE,
   TRAVIS_PULL_REQUEST_SHA,
-  // TRAVIS_COMMIT,
+  TRAVIS_PULL_REQUEST,
+  TRAVIS_COMMIT,
 } = process.env;
 
 switch (TRAVIS_EVENT_TYPE) {
@@ -188,10 +189,14 @@ switch (TRAVIS_EVENT_TYPE) {
     deploy(TRAVIS_PULL_REQUEST_SHA);
     break;
   }
-  // case 'push': {
-  //   deploy(TRAVIS_COMMIT);
-  //   break;
-  // }
+  case 'push': {
+    if (TRAVIS_PULL_REQUEST !== 'false') {
+      deploy(TRAVIS_COMMIT);
+    } else {
+      console.log(`Skip deploy of commits not updating a PR`);
+    }
+    break;
+  }
   default: {
     console.log(`${TRAVIS_EVENT_TYPE} is not supported by now-travis`);
   }

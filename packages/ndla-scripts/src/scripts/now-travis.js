@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable no-console */
 
 /**
  * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis

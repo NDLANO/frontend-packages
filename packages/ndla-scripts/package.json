@@ -3,16 +3,12 @@
   "version": "0.0.1-0",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "bin": {
-    "ndla-scripts": "lib/index.js"
+    "ndla-scripts": "src/index.js"
   },
   "scripts": {
-    "build": "npm run build:commonjs",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
-    "clean": "$(cd ..; npm bin)/rimraf lib",
-    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest",
-    "prepublish": "npm run clean && npm run build"
+    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest"
   },
   "repository": {
     "type": "git",
@@ -23,7 +19,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "lib"
+    "src"
   ],
   "dependencies": {
     "await-url": "^0.3.0",

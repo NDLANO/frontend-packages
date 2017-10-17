@@ -1,4 +1,4 @@
-FROM node:8.1.4-alpine
+FROM node:8.6-alpine
 LABEL name "designmanual"
 
 ENV HOME=/home/app

@@ -138,7 +138,14 @@ async function deploy(sha) {
     description: `▲ Now deployment pending`,
   });
 
-  const cliArgs = ['--token', nowToken, '--no-clipboard', '--npm', '--public'];
+  const providedArgs = process.argv.slice(2);
+  const cliArgs = [
+    '--token',
+    nowToken,
+    '--no-clipboard',
+    '--npm',
+    ...providedArgs,
+  ];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
   const result = await spawnPromise('now', cliArgs);
 

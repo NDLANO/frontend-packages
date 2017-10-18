@@ -1,0 +1,32 @@
+{
+  "name": "ndla-scripts",
+  "version": "0.0.1-1",
+  "description": "Scripts for ndla.",
+  "license": "GPL-3.0",
+  "main": "src/index.js",
+  "bin": {
+    "ndla-scripts": "src/index.js"
+  },
+  "scripts": {
+    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "await-url": "^0.3.0",
+    "cross-spawn": "^5.1.0",
+    "normalize-url": "^1.9.1",
+    "now": "^8.3.10",
+    "octonode": "^0.8.0",
+    "url-regex": "^4.1.1"
+  }
+}

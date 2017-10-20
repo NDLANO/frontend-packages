@@ -31,6 +31,7 @@ class ResourceGroup extends Component {
       title,
       icon,
       resources,
+      messages,
       className,
       resourceToLinkProps,
     } = this.props;
@@ -39,7 +40,7 @@ class ResourceGroup extends Component {
       <div {...classes('', '', className)}>
         <ResourceToggleFilter
           checked={showAdditionalResources}
-          label="Tilleggstoff"
+          label={messages.toggleFilterLabel}
           onClick={() =>
             this.setState({
               showAdditionalResources: !showAdditionalResources,
@@ -49,6 +50,7 @@ class ResourceGroup extends Component {
         <ResourceList
           showAdditionalResources={showAdditionalResources}
           icon={icon}
+          messages={messages}
           resourceToLinkProps={resourceToLinkProps}
           resources={resources}
         />
@@ -63,6 +65,11 @@ ResourceGroup.propTypes = {
   className: PropTypes.string.isRequired,
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
+  messages: PropTypes.shape({
+    toggleFilterLabel: PropTypes.string.isRequired,
+    showMore: PropTypes.string.isRequired,
+    showLess: PropTypes.string.isRequired,
+  }),
 };
 
 export default ResourceGroup;

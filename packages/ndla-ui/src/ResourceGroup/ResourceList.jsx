@@ -74,7 +74,7 @@ class ResourceList extends Component {
 
   render() {
     // NB! Always have hidden resources in the DOM so that they can be indexed by search enignes.
-    const { resources, type, ...rest } = this.props;
+    const { resources, messages, type, ...rest } = this.props;
     const limit = 8;
     const { showAll } = this.state;
     return (
@@ -95,7 +95,7 @@ class ResourceList extends Component {
             <Button
               {...classes('button', '', 'c-btn c-button--outline')}
               onClick={this.handleClick}>
-              {showAll ? 'Vis mindre' : 'Vis mer'}
+              {showAll ? messages.showLess : messages.showMore}
             </Button>
           </div>
         ) : null}
@@ -110,6 +110,10 @@ ResourceList.propTypes = {
   showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
+  messages: PropTypes.shape({
+    showMore: PropTypes.string.isRequired,
+    showLess: PropTypes.string.isRequired,
+  }),
 };
 
 export default ResourceList;

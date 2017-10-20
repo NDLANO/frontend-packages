@@ -66,6 +66,11 @@ export const Resources = () => (
         resources={group.resources}
         className={group.className}
         icon={group.iconEl}
+        messages={{
+          toggleFilterLabel: 'Tilleggstoff',
+          showLess: 'Vis mindre',
+          showMore: 'Vis mer',
+        }}
         resourceToLinkProps={toLink}
       />
     ))}

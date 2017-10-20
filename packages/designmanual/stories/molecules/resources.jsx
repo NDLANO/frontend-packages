@@ -19,7 +19,7 @@ const toLink = () => ({
 });
 
 const resourceGroup2 = {
-  id: 'urn-resource-type-6c0bd4b9-23cb-43bf-affa-557e673d2c73',
+  id: 'subject-material',
   title: 'Fagstoff',
   description: 'Relaterte emneartikler',
   viewAllLinkTitle: 'Mer fagstoff',
@@ -28,7 +28,7 @@ const resourceGroup2 = {
   type: 'Fagstoff',
 };
 const resourceGroup1 = {
-  id: 'urn-resource-type-0368610f-19bf-4a6f-86fa-9e6ea8876511',
+  id: 'type-learning-path',
   title: 'Læringsstier',
   viewAllLinkTitle: 'Flere læringsstier',
   description: 'Tilknyttet dette emnet',
@@ -37,7 +37,7 @@ const resourceGroup1 = {
   type: 'Læringsstier',
 };
 const resourceGroup3 = {
-  id: 'urn-resource-type-622364e0-8cea-4083-9ce1-74e33e14e0b4',
+  id: 'tasks-and-activities',
   title: 'Oppgaver og aktiviteter',
   description: 'Relatert til emnet',
   viewAllLinkTitle: 'Flere oppgaver og aktiviteter',

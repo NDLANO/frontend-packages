@@ -9,14 +9,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ResourceContainer = ({ children }) => (
+const ResourceWrapper = ({ children }) => (
   <div className="c-resources">
     <section>{children}</section>
   </div>
 );
 
-ResourceContainer.propTypes = {
+ResourceWrapper.propTypes = {
   children: PropTypes.node,
 };
 
-export default ResourceContainer;
+export default ResourceWrapper;

@@ -30,7 +30,7 @@ const licenseUrls = {
   'BY-NC': 'https://creativecommons.org/licenses/by-nc/3.0/no/',
   'BY-NC-ND': 'https://creativecommons.org/licenses/by-nc-nd/3.0/no/',
   'BY-NC-SA': 'https://creativecommons.org/licenses/by-nc-sa/3.0/no/',
-  'BY': 'https://creativecommons.org/licenses/by/3.0/no/',
+  BY: 'https://creativecommons.org/licenses/by/3.0/no/',
 };
 
 export const FigureDetails = ({
@@ -89,7 +89,6 @@ export const FigureDetails = ({
       </div>
     </div>
   );
-
 };
 
 FigureDetails.propTypes = {

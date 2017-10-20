@@ -64,8 +64,7 @@ export default () => (
         </p>
         <FigureWithLicense
           caption=""
-          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
-        >
+          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"

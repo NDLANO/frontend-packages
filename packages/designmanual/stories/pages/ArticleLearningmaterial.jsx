@@ -48,9 +48,9 @@ export default () => (
       <LayoutItem layout="center">
         <FigureWithLicense
           caption=""
-          expandable classes="u-float-left"
-          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
-        >
+          expandable
+          classes="u-float-left"
+          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
@@ -87,8 +87,7 @@ export default () => (
         <FigureWithLicense
           caption=""
           classes="u-float-right"
-          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
-        >
+          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"

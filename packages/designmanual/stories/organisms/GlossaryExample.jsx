@@ -71,6 +71,7 @@ class GlossaryExample extends Component {
                   mellom godt og ondt, og rett og galt.
                 </p>
                 <FigureWithLicense
+                  resourceUrl="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
                   caption=""
                   classes="article_figure--float-right">
                   <img

@@ -30,6 +30,7 @@ export const FigureDetails = ({
   origin,
   messages,
   licenseRights,
+  resourceUrl,
 }) => (
   <div {...classes('license')} id="figmeta">
     <button {...classes('close')}>{messages.close}</button>
@@ -40,7 +41,8 @@ export const FigureDetails = ({
         <a
           className="c-figure-license__link"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer license"
+          about={resourceUrl}
           href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
           {messages.learnAboutOpenLicenses}
         </a>
@@ -87,6 +89,7 @@ FigureDetails.propTypes = {
     source: PropTypes.string.isRequired,
     learnAboutOpenLicenses: PropTypes.string.isRequired,
   }).isRequired,
+  resourceUrl: PropTypes.string.isRequired,
 };
 
 export const FigureCaption = ({

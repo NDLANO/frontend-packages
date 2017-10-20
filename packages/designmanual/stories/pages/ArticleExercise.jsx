@@ -11,7 +11,7 @@ import React from 'react';
 import { OneColumn, LayoutItem } from 'ndla-ui';
 import { Time, Pencil, User } from 'ndla-ui/icons';
 
-import { ResourceSubsetList } from '../molecules/resources';
+import { Resources } from '../molecules/resources';
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
 import article from '../../dummydata/index';
@@ -81,7 +81,7 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
-        <ResourceSubsetList />
+        <Resources />
       </LayoutItem>
     </article>
   </OneColumn>

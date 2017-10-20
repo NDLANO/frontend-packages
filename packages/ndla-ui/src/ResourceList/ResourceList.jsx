@@ -12,20 +12,29 @@ import BEMHelper from 'react-bem-helper';
 import Link from 'react-router-dom/Link';
 import { Button } from 'ndla-ui';
 import { ResourceShape } from '../shapes';
+import { Additional } from '../icons';
 
 const classes = new BEMHelper({
   name: 'topic-resource',
   prefix: 'c-',
 });
 
-const Resource = ({ resource, icon, resourceToLinkProps, isHidden }) => {
+const Resource = ({
+  resource,
+  icon,
+  resourceToLinkProps,
+  isHidden,
+  showAdditionalResources,
+}) => {
   const linkProps = resourceToLinkProps(resource);
+  const hidden = resource.additional ? !showAdditionalResources : isHidden;
 
   return (
     <li
       {...classes('item', {
         'o-flag  o-flag--top': true,
-        hidden: isHidden,
+        hidden,
+        secondary: resource.additional,
       })}>
       <div {...classes('icon o-flag__img')}>{icon}</div>
       <div {...classes('body o-flag__body')}>
@@ -35,6 +44,9 @@ const Resource = ({ resource, icon, resourceToLinkProps, isHidden }) => {
           ) : (
             <Link {...resourceToLinkProps(resource)}>{resource.name}</Link>
           )}
+          {resource.additional ? (
+            <Additional className="c-icon--20 u-margin-left-tiny" />
+          ) : null}
         </h1>
       </div>
     </li>
@@ -42,7 +54,9 @@ const Resource = ({ resource, icon, resourceToLinkProps, isHidden }) => {
 };
 
 Resource.propTypes = {
+  showAdditionalResources: PropTypes.bool,
   isHidden: PropTypes.bool.isRequired,
+  icon: PropTypes.node.isRequired,
   resource: ResourceShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
 };
@@ -93,7 +107,7 @@ class ResourceList extends Component {
 ResourceList.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   type: PropTypes.string,
-  secondary: PropTypes.bool,
+  showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
 };

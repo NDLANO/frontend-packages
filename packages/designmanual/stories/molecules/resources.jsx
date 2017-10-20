@@ -7,10 +7,7 @@
  */
 
 import React from 'react';
-import {
-  ResourceSubsetList as ResourceSubsetListComponent,
-  ResourceGroup,
-} from 'ndla-ui';
+import { ResourceWrapper, ResourceGroup } from 'ndla-ui';
 import { Document, Path, Pencil } from 'ndla-ui/icons';
 import {
   learningPathResources,
@@ -60,22 +57,17 @@ const resourceGroup3 = {
 
 const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3];
 
-export const ResourceSubsetList = () => (
-  <ResourceSubsetListComponent
-    resourceGroups={resourceGroups}
-    resourceToLinkProps={toLink}
-    toResourceTab={() => '#'}
-  />
+export const Resources = () => (
+  <ResourceWrapper>
+    {resourceGroups.map(group => (
+      <ResourceGroup
+        key={group.id}
+        title={group.title}
+        resources={group.resources}
+        className={group.className}
+        icon={group.iconEl}
+        resourceToLinkProps={toLink}
+      />
+    ))}
+  </ResourceWrapper>
 );
-
-export const ResourceGroups = () =>
-  resourceGroups.map(group => (
-    <ResourceGroup
-      key={group.id}
-      title={group.title}
-      resources={group.resources}
-      className={group.className}
-      icon={group.iconEl}
-      resourceToLinkProps={toLink}
-    />
-  ));

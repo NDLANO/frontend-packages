@@ -35,7 +35,6 @@ export { default as Placeholder } from './placeholders/Placeholder';
 export { default as RelatedArticles } from './RelatedArticles/RelatedArticles';
 export { default as ResourceList } from './resources/ResourceList';
 export { default as ResourceWrapper } from './resources/ResourceWrapper';
-export { default as ResourceSubsetList } from './resources/ResourceSubsetList';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Glossary } from './Glossary';
 export {

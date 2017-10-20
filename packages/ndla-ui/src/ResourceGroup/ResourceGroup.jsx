@@ -6,37 +6,56 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ResourceShape } from '../shapes';
 import ResourceList from '../ResourceList';
+import ResourceToggleFilter from './ResourceToggleFilter';
 
 const classes = new BEMHelper({
   name: 'resource-group',
   prefix: 'c-',
 });
 
-const ResourceGroup = ({
-  title,
-  icon,
-  resources,
-  className,
-  resourceToLinkProps,
-}) => {
-  // const metaData = getResourceTypeMetaData([type]);
-  console.log(icon);
-  return (
-    <div {...classes('', '', className)}>
-      <h1 className="c-resources__title">{title}</h1>
-      <ResourceList
-        icon={icon}
-        resourceToLinkProps={resourceToLinkProps}
-        resources={resources}
-      />
-    </div>
-  );
-};
+class ResourceGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAdditionalResources: false,
+    };
+  }
+
+  render() {
+    const {
+      title,
+      icon,
+      resources,
+      className,
+      resourceToLinkProps,
+    } = this.props;
+    const { showAdditionalResources } = this.state;
+    return (
+      <div {...classes('', '', className)}>
+        <ResourceToggleFilter
+          checked={showAdditionalResources}
+          label="Tilleggstoff"
+          onClick={() =>
+            this.setState({
+              showAdditionalResources: !showAdditionalResources,
+            })}
+        />
+        <h1 className="c-resources__title">{title}</h1>
+        <ResourceList
+          showAdditionalResources={showAdditionalResources}
+          icon={icon}
+          resourceToLinkProps={resourceToLinkProps}
+          resources={resources}
+        />
+      </div>
+    );
+  }
+}
 
 ResourceGroup.propTypes = {
   title: PropTypes.string.isRequired,

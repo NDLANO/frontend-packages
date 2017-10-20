@@ -10,9 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ResourceWrapper = ({ children }) => (
-  <div className="c-resources">
-    <section>{children}</section>
-  </div>
+  <div className="c-resources">{children}</div>
 );
 
 ResourceWrapper.propTypes = {

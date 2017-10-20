@@ -26,7 +26,7 @@ import {
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
 import { StoryBody } from '../wrappers';
-import { ResourceSubsetList } from '../molecules/resources';
+import { Resources } from '../molecules/resources';
 
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
@@ -83,7 +83,7 @@ storiesOf('Sidevisninger', module)
           <article className="c-article">
             <LayoutItem layout="extend">
               <RelatedArticles resources={articleResources} />
-              <ResourceSubsetList />
+              <Resources />
             </LayoutItem>
           </article>
         </OneColumn>
@@ -301,7 +301,7 @@ storiesOf('Emnesider', module)
           <article className="c-article">
             <ResourcesSubTopics />
             <LayoutItem layout="extend">
-              <ResourceSubsetList />
+              <Resources />
             </LayoutItem>
           </article>
         </OneColumn>
@@ -333,7 +333,7 @@ storiesOf('Emnesider', module)
           <article className="c-article">
             <LayoutItem layout="extend">
               <RelatedArticles resources={articleResources} />
-              <ResourceSubsetList />
+              <Resources />
             </LayoutItem>
           </article>
         </OneColumn>
@@ -368,7 +368,7 @@ storiesOf('Emnesider', module)
           <article className="c-article">
             <LayoutItem layout="extend">
               <RelatedArticles resources={articleResources} />
-              <ResourceSubsetList />
+              <Resources />
             </LayoutItem>
           </article>
         </OneColumn>

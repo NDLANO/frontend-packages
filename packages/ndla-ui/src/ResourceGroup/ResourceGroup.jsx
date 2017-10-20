@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ResourceShape } from '../shapes';
-import ResourceList from '../ResourceList';
+import ResourceList from './ResourceList';
 import ResourceToggleFilter from './ResourceToggleFilter';
 
 const classes = new BEMHelper({

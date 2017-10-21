@@ -46,7 +46,11 @@ export default () => (
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense caption="" expandable classes="u-float-left">
+        <FigureWithLicense
+          caption=""
+          expandable
+          classes="u-float-left"
+          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
@@ -80,7 +84,10 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="" classes="u-float-right">
+        <FigureWithLicense
+          caption=""
+          classes="u-float-right"
+          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"

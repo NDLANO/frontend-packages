@@ -62,7 +62,9 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="">
+        <FigureWithLicense
+          caption=""
+          resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"

@@ -8,7 +8,13 @@
 
 /* eslint-env jest */
 
-import { getLicenseRightByAbbreviation, BY, COPY } from '../licenseRights';
+import {
+  getLicenseRightByAbbreviation,
+  getLicenseUrlByLicenses,
+  BY,
+  NC,
+  COPY,
+} from '../licenseRights';
 
 test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   const licenseRight = getLicenseRightByAbbreviation('by', 'nb');
@@ -28,4 +34,24 @@ test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {
   expect(licenseRight.description).toBe(
     'Only the creator can derive, publish, or license the work. It can not be shared without permission.',
   );
+});
+
+test('license/getLicenseUrlByLicenses when no license should return null', () => {
+  const licenses = [];
+  const url = getLicenseUrlByLicenses(licenses);
+  expect(url).toBe(null);
+});
+
+test('license/getLicenseUrlByLicenses when unknown license should throw error', () => {
+  const licenses = ['NOTVALID'];
+
+  expect(() => {
+    getLicenseUrlByLicenses(licenses);
+  }).toThrow();
+});
+
+test('license/getLicenseUrlByLicenses when BY and NC should return url', () => {
+  const licenses = [BY, NC];
+  const url = getLicenseUrlByLicenses(licenses);
+  expect(url).not.toBe(null);
 });

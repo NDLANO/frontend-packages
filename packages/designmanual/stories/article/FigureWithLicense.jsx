@@ -68,6 +68,7 @@ class FigureWithLicense extends Component {
         <FigureDetails
           licenseRights={[BY, NC, ND]}
           authors={authors}
+          resourceUrl={this.props.resourceUrl}
           origin="https://www.wikimedia.com"
           messages={messages}>
           <button
@@ -88,6 +89,7 @@ class FigureWithLicense extends Component {
 
 FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
+  resourceUrl: PropTypes.string.isRequired,
   classes: PropTypes.string,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,

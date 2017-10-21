@@ -171,7 +171,7 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
-        <FigureWithLicense>
+        <FigureWithLicense resourceUrl="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000">
           <img
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"

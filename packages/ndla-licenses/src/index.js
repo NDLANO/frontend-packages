@@ -18,6 +18,7 @@ import {
   CC,
   COPY,
   getLicenseRightByAbbreviation,
+  getLicenseUrlByLicenses,
 } from './licenseRights';
 
 export {
@@ -31,6 +32,7 @@ export {
   COPY,
   getLicenseByAbbreviation,
   getLicenseRightByAbbreviation,
+  getLicenseUrlByLicenses,
   getLicenseByNBTitle,
 };
 

@@ -12,7 +12,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
+import { getLicenseUrlByLicenses } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
+
 import LicenseByline from '../LicenseByline';
 
 const classes = new BEMHelper({
@@ -24,15 +26,6 @@ const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-const licenseUrls = {
-  'BY-SA': 'https://creativecommons.org/licenses/by-sa/3.0/no/',
-  'BY-ND': 'https://creativecommons.org/licenses/by-nd/3.0/no/',
-  'BY-NC': 'https://creativecommons.org/licenses/by-nc/3.0/no/',
-  'BY-NC-ND': 'https://creativecommons.org/licenses/by-nc-nd/3.0/no/',
-  'BY-NC-SA': 'https://creativecommons.org/licenses/by-nc-sa/3.0/no/',
-  BY: 'https://creativecommons.org/licenses/by/3.0/no/',
-};
-
 export const FigureDetails = ({
   children,
   authors,
@@ -41,12 +34,7 @@ export const FigureDetails = ({
   licenseRights,
   resourceUrl,
 }) => {
-  const licenseKey = licenseRights.sort((a, b) => a > b).join('-');
-  let licenseUrl = licenseUrls[licenseKey];
-
-  if (!licenseUrl) {
-    licenseUrl = licenseUrls['BY-NC-ND'];
-  }
+  const licenseUrl = getLicenseUrlByLicenses(licenseRights);
 
   return (
     <div {...classes('license')} id="figmeta">

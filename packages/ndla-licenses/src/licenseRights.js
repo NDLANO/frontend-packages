@@ -20,6 +20,7 @@ export const CC0 = 'cc0'; // Public Domain Dedication
 export const CC = 'cc'; // Creative Commons
 export const COPY = 'copy'; // Copyright
 
+
 const by = {
   short: BY,
   nb: {
@@ -138,6 +139,33 @@ const cc = {
     description: 'Rights for reuse and sharing of content.',
   },
 };
+
+const licenseUrls = {
+  [`${BY}-${SA}`]: 'https://creativecommons.org/licenses/by-sa/3.0/no/',
+  [`${BY}-${ND}`]: 'https://creativecommons.org/licenses/by-nd/3.0/no/',
+  [`${BY}-${NC}`]: 'https://creativecommons.org/licenses/by-nc/3.0/no/',
+  [`${BY}-${NC}-${ND}`]: 'https://creativecommons.org/licenses/by-nc-nd/3.0/no/',
+  [`${BY}-${NC}-${SA}`]: 'https://creativecommons.org/licenses/by-nc-sa/3.0/no/',
+  [`${BY}`]: 'https://creativecommons.org/licenses/by/3.0/no/',
+  [`${PD}`]: 'https://creativecommons.org/publicdomain/mark/1.0/',
+  [`${CC0}`]: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  [`${COPY}`]: 'http://www.delrett.no/nb/artikler/om-opphavsrett',
+};
+
+export function getLicenseUrlByLicenses(licenses) {
+  if (!licenses || licenses.length === 0) {
+    return null;
+  }
+
+  const urlKey = licenses.sort((a, b) => a > b).join('-');
+  const licenseUrl = licenseUrls[urlKey];
+
+  if (!licenseUrl) {
+    throw new Error('Licenses not valid or url for license not defined');
+  }
+
+  return licenseUrl;
+}
 
 function licenseRightByLocale(license, locale) {
   const texts = defined(license[locale], license.nb);

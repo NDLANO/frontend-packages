@@ -8,7 +8,13 @@
 
 /* eslint-env jest */
 
-import { getLicenseRightByAbbreviation, getLicenseUrlByLicenses, BY, NC, COPY } from '../licenseRights';
+import {
+  getLicenseRightByAbbreviation,
+  getLicenseUrlByLicenses,
+  BY,
+  NC,
+  COPY,
+} from '../licenseRights';
 
 test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   const licenseRight = getLicenseRightByAbbreviation('by', 'nb');
@@ -45,10 +51,7 @@ test('license/getLicenseUrlByLicenses when unknown license should throw error', 
 });
 
 test('license/getLicenseUrlByLicenses when BY and NC should return url', () => {
-  const licenses = [
-    BY,
-    NC,
-  ];
+  const licenses = [BY, NC];
   const url = getLicenseUrlByLicenses(licenses);
   expect(url).not.toBe(null);
-})
+});

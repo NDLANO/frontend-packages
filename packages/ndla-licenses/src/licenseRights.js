@@ -20,7 +20,6 @@ export const CC0 = 'cc0'; // Public Domain Dedication
 export const CC = 'cc'; // Creative Commons
 export const COPY = 'copy'; // Copyright
 
-
 const by = {
   short: BY,
   nb: {

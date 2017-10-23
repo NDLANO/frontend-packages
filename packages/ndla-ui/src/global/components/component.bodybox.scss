@@ -27,7 +27,7 @@
 }
 
 /* Hacks for complex content fetched inside bodybox */
-.c-bodybox ul:not([class]), .c-bodybox ol:not([class]) {
+.c-bodybox ul:not([class]), .c-bodybox ol:not([class]), .c-bodybox .ol-list--roman {
   margin-left: $spacing--large;
 }
 .c-bodybox .c-figure {

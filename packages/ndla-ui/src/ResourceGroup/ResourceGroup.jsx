@@ -45,9 +45,9 @@ class ResourceGroup extends Component {
             checked={showAdditionalResources}
             label={messages.toggleFilterLabel}
             onClick={() =>
-              this.setState({
-                showAdditionalResources: !showAdditionalResources,
-              })}
+              this.setState(prevState => ({
+                showAdditionalResources: !prevState.showAdditionalResources,
+              }))}
           />
         )}
         <ResourcesTitle>{title}</ResourcesTitle>

@@ -30,7 +30,7 @@ import {
   MastheadWithTopicMenu,
 } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import { ResourceSubsetList } from './molecules/resources';
+import { Resources } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
 import GlossaryExample from './organisms/GlossaryExample';
 
@@ -235,7 +235,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <LayoutItem layout="center">
-        <ResourceSubsetList />
+        <Resources />
       </LayoutItem>
     </div>
   ))
@@ -376,7 +376,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <ResourceSubsetList />
+        <Resources />
       </StoryBody>
     </div>
   ))

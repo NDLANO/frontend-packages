@@ -3,13 +3,9 @@
 ** Wrapper for resources, titles for resource types
 **/
 
-
 .c-resources {
   padding-bottom: $spacing--large;
   padding-top: $spacing;
-}
-.c-resources--transparent {
-  background: transparent;
 }
 
 // (Same as .c-resource-group__title)

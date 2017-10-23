@@ -10,6 +10,7 @@ export const articleResources = [
       'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
     type: 'Fagstoff',
+    additional: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -22,6 +23,7 @@ export const articleResources = [
     title: 'Ideer og idéutvikling',
     tag: 'Film',
     type: 'Fagstoff',
+    additional: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -34,7 +36,6 @@ export const articleResources = [
     title: 'Kreativ kommunikasjon',
     tag: 'Film',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -44,7 +45,6 @@ export const articleResources = [
     contentUri: 'urn:article:340',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -54,7 +54,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -64,7 +63,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer 2',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -74,7 +72,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer 3',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -84,7 +81,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer 4',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -94,7 +90,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170364',
@@ -104,7 +99,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170365',
@@ -114,7 +108,6 @@ export const articleResources = [
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
-    primary: true,
   },
 ];
 
@@ -130,14 +123,12 @@ export const learningPathResources = [
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Læringsstier',
-    primary: true,
   },
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
     type: 'Læringsstier',
-    primary: true,
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -154,7 +145,6 @@ export const learningPathResources = [
     id: 'urn:resource:',
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
     type: 'Læringsstier',
-    primary: true,
     resourceTypes: [
       {
         id: 'urn:resource-type:3',
@@ -180,13 +170,13 @@ export const exerciseResources = [
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Oppgaver og aktiviteter',
+    additional: true,
   },
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-11641bfc9b2b',
     name: 'Klar, ferdig, kreativ!',
     type: 'Oppgaver og aktiviteter',
-    primary: true,
     resourceTypes: [
       {
         id: 'urn:resource-type:2',
@@ -213,6 +203,5 @@ export const exerciseResources = [
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
-    primary: true,
   },
 ];

@@ -3,14 +3,13 @@
 ** List items inside a resource group
 **/
 
-
-
 .c-topic-resource {
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
     margin-top: $spacing--large;
   }
 }
+
 .c-topic-resource__list {
   list-style: none;
   margin: 0;
@@ -22,10 +21,10 @@
 }
 .c-topic-resource__body {
   text-align: left;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: middle;
 }
 .c-topic-resource__item {
   max-width: 100%;
@@ -39,6 +38,12 @@
     box-shadow: none;
   }
 }
+
+.c-topic-resource__item--hidden {
+  opacity: 0;
+  display: none;
+}
+
 .c-topic-resource__icon {
   display: inline-block;
   width: 37px;
@@ -55,7 +60,7 @@
   @include inuit-font-size(20px);
   text-transform: none;
   letter-spacing: 0;
-  margin:0;
+  margin: 0;
 }
 .c-topic-resource__button-wrapper {
   text-align: center;

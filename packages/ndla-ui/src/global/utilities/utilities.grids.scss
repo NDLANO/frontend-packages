@@ -18,6 +18,7 @@ $denominator: auto;
   @if $direction == left {
     @include mq(tablet) {
       float:left;
+      clear: left;
       width: ($cols/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
@@ -30,6 +31,7 @@ $denominator: auto;
   @if $direction == right {
     @include mq(tablet) {
       float:right;
+      clear: right;
       width: ($cols/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;

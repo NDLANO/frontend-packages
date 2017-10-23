@@ -33,7 +33,10 @@ export {
 export { default as TopicMenu } from './topicMenu/TopicMenu';
 export { default as Placeholder } from './placeholders/Placeholder';
 export { default as RelatedArticles } from './RelatedArticles/RelatedArticles';
-export { default as ResourceWrapper } from './resources/ResourceWrapper';
+export {
+  default as ResourcesWrapper,
+  ResourcesTitle,
+} from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Glossary } from './Glossary';
 export {

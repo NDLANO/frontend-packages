@@ -12,6 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { ResourceShape } from '../shapes';
 import ResourceList from './ResourceList';
 import ResourceToggleFilter from './ResourceToggleFilter';
+import ResourcesTitle from '../ResourcesWrapper/ResourcesTitle';
 
 const classes = new BEMHelper({
   name: 'resource-group',
@@ -46,7 +47,7 @@ class ResourceGroup extends Component {
               showAdditionalResources: !showAdditionalResources,
             })}
         />
-        <h1 {...classes('title')}>{title}</h1>
+        <ResourcesTitle>{title}</ResourcesTitle>
         <ResourceList
           showAdditionalResources={showAdditionalResources}
           icon={icon}

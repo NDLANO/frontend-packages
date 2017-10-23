@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { ResourceWrapper, ResourceGroup } from 'ndla-ui';
+import { ResourcesWrapper, ResourceGroup } from 'ndla-ui';
 import { Document, Path, Pencil } from 'ndla-ui/icons';
 import {
   learningPathResources,
@@ -58,7 +58,7 @@ const resourceGroup3 = {
 const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3];
 
 export const Resources = () => (
-  <ResourceWrapper>
+  <ResourcesWrapper>
     {resourceGroups.map(group => (
       <ResourceGroup
         key={group.id}
@@ -74,5 +74,5 @@ export const Resources = () => (
         resourceToLinkProps={toLink}
       />
     ))}
-  </ResourceWrapper>
+  </ResourcesWrapper>
 );

@@ -9,8 +9,7 @@
 }
 
 // (Same as .c-resource-group__title)
-.c-resources__title,
-.c-resource-group__title {
+.c-resources__title {
   display: block;
   @include inuit-font-size(18px);
   font-weight: $font-weight-bold;

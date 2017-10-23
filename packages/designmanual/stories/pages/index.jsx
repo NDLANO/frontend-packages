@@ -15,7 +15,8 @@ import {
   ErrorMessage,
   OneColumn,
   PageContainer,
-  ResourceWrapper,
+  ResourcesWrapper,
+  ResourcesTitle,
   TopicIntroductionList,
   RelatedArticles,
   LayoutItem,
@@ -40,10 +41,10 @@ import article, {
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
-    <ResourceWrapper>
-      <h1 className="c-resources__title">Emner</h1>
+    <ResourcesWrapper>
+      <ResourcesTitle>Emner</ResourcesTitle>
       <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-    </ResourceWrapper>
+    </ResourcesWrapper>
   </LayoutItem>
 );
 

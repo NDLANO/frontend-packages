@@ -15,16 +15,19 @@ $denominator: auto;
 
 @mixin float($cols, $maxcols, $direction) {
   $colDifference: $maxcols - $cols;
+  $cols-tablet: $cols - 1;
+
   @if $direction == left {
     @include mq(tablet) {
       float:left;
       clear: left;
-      width: ($cols/$maxcols)*100% !important;
+      width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
       margin: $spacing $spacing 0 0;
     }
     @include mq(desktop) {
+      width: ($cols/$maxcols)*100% !important;
       margin: 0 $spacing $spacing (-$colDifference/$maxcols*100%);
     }
   }
@@ -32,12 +35,13 @@ $denominator: auto;
     @include mq(tablet) {
       float:right;
       clear: right;
-      width: ($cols/$maxcols)*100% !important;
+      width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
       margin: 0 0 $spacing $spacing;
     }
     @include mq(desktop) {
+      width: ($cols/$maxcols)*100% !important;
       margin: 0 (-$colDifference/$maxcols*100%) $spacing $spacing;
     }
   }

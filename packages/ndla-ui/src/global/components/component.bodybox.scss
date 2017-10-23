@@ -17,7 +17,7 @@
   border-style: solid;
   border-color: $brand-color--tertiary;
   border-width: 1px;
-  clear:both;
+  overflow: hidden;
 }
 .c-bodybox--attribute {
   padding: $spacing--small $spacing;
@@ -44,4 +44,12 @@
 .c-bodybox .article_figure--float-left {
   width: 50% !important;
   margin-left: 0;
+}
+
+.c-bodybox > *:first-child {
+  margin-top: 0;
+}
+
+.c-bodybox > *:last-child {
+  margin-bottom: 0;
 }

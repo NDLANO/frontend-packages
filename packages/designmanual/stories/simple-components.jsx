@@ -121,6 +121,10 @@ storiesOf('Enkle komponenter', module)
           annet enn sitat (som det allerede fins sitatstil til).
         </p>
         <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
+        <p>
+          Boks i tekst kan ikke kombineres med med flytende elementer som
+          bilder. Da hopper boksen ned.
+        </p>
       </StoryIntro>
       <StoryBody>
         <h1 className="c-article__title">Eksempelartikkel</h1>
@@ -234,6 +238,24 @@ storiesOf('Enkle komponenter', module)
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
+          <FigureWithLicense classes="u-float-left">
+            <img
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            />
+          </FigureWithLicense>
+
+          <div className="c-bodybox">
+            <h3>
+              En boks i tekst hopper ned om den kombineres med flytelementer.
+            </h3>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+          </div>
         </LayoutItem>
       </StoryBody>
     </div>

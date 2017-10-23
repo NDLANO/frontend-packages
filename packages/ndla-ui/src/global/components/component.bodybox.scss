@@ -17,7 +17,7 @@
   border-style: solid;
   border-color: $brand-color--tertiary;
   border-width: 1px;
-  overflow: hidden;
+  clear:both;
 }
 .c-bodybox--attribute {
   padding: $spacing--small $spacing;

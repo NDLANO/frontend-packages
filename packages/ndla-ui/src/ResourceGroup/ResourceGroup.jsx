@@ -46,7 +46,7 @@ class ResourceGroup extends Component {
               showAdditionalResources: !showAdditionalResources,
             })}
         />
-        <h1 className="c-resources__title">{title}</h1>
+        <h1 {...classes('title')}>{title}</h1>
         <ResourceList
           showAdditionalResources={showAdditionalResources}
           icon={icon}

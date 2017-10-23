@@ -13,7 +13,7 @@
   li {
     background-color: rgba($mark-color, 0.1);
   }
-  .c-topic-resource__item--secondary {
+  .c-topic-resource__item--additional {
     background-color: desaturate(rgba($mark-color, 0.1), 40%);
   }
 }
@@ -22,7 +22,7 @@
   li {
     background-color: rgba($green, 0.1);
   }
-  .c-topic-resource__item--secondary {
+  .c-topic-resource__item--additional {
     background-color: desaturate(rgba($green, 0.1), 40%);
   }
 }

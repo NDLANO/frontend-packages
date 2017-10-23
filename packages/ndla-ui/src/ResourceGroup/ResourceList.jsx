@@ -34,7 +34,7 @@ const Resource = ({
       {...classes('item', {
         'o-flag  o-flag--top': true,
         hidden,
-        secondary: resource.additional,
+        additional: resource.additional,
       })}>
       <div {...classes('icon o-flag__img')}>{icon}</div>
       <div {...classes('body o-flag__body')}>

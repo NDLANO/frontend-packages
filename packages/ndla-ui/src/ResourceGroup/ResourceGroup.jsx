@@ -34,19 +34,22 @@ class ResourceGroup extends Component {
       resources,
       messages,
       className,
+      hideResourceToggleFilter,
       resourceToLinkProps,
     } = this.props;
     const { showAdditionalResources } = this.state;
     return (
       <div {...classes('', '', className)}>
-        <ResourceToggleFilter
-          checked={showAdditionalResources}
-          label={messages.toggleFilterLabel}
-          onClick={() =>
-            this.setState({
-              showAdditionalResources: !showAdditionalResources,
-            })}
-        />
+        {!hideResourceToggleFilter && (
+          <ResourceToggleFilter
+            checked={showAdditionalResources}
+            label={messages.toggleFilterLabel}
+            onClick={() =>
+              this.setState({
+                showAdditionalResources: !showAdditionalResources,
+              })}
+          />
+        )}
         <ResourcesTitle>{title}</ResourcesTitle>
         <ResourceList
           showAdditionalResources={showAdditionalResources}
@@ -66,11 +69,16 @@ ResourceGroup.propTypes = {
   className: PropTypes.string.isRequired,
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
+  hideResourceToggleFilter: PropTypes.bool,
   messages: PropTypes.shape({
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,
   }),
+};
+
+ResourceGroup.defaultProps = {
+  hideResourceToggleFilter: false,
 };
 
 export default ResourceGroup;

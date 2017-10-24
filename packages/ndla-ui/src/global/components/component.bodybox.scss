@@ -17,6 +17,7 @@
   border-style: solid;
   border-color: $brand-color--tertiary;
   border-width: 1px;
+  overflow: hidden;
 }
 .c-bodybox--attribute {
   padding: $spacing--small $spacing;
@@ -26,11 +27,29 @@
 }
 
 /* Hacks for complex content fetched inside bodybox */
-.c-bodybox ul:not([class]), .c-bodybox ol:not([class]) {
+.c-bodybox ul:not([class]), .c-bodybox ol:not([class]), .c-bodybox .ol-list--roman {
   margin-left: $spacing--large;
 }
 .c-bodybox .c-figure {
   width: 100% !important;
   left: auto !important;
   padding: 0;
+}
+
+.c-bodybox .article_figure--float-right {
+  width: 50% !important;
+  margin-right: 0;
+}
+
+.c-bodybox .article_figure--float-left {
+  width: 50% !important;
+  margin-left: 0;
+}
+
+.c-bodybox > *:first-child {
+  margin-top: 0;
+}
+
+.c-bodybox > *:last-child {
+  margin-bottom: 0;
 }

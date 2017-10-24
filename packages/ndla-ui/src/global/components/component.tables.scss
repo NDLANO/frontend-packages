@@ -107,8 +107,15 @@
   h1,h2,h3,h4,h5 {
     margin-top: 0;
   }
+
   ul {
-    margin: 0;
+    margin: 0 0 0 $spacing;
   }
 
+  .c-figure {
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    left: 0 !important;
+  }
 }

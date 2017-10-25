@@ -8,27 +8,22 @@
 
 import fetch from 'isomorphic-fetch';
 
-import btoa from 'btoa';
-
-const url = 'https://staging.api.ndla.no/auth/tokens';
-
-const b64EncodeUnicode = str =>
-  btoa(
-    encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) =>
-      String.fromCharCode(`0x${p1}`),
-    ),
-  );
+const url = 'https://ndla.eu.auth0.com/oauth/token';
 
 export const getToken = () =>
   fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: `Basic ${b64EncodeUnicode(
-        'swagger-client:swagger-public-client-secret',
-      )}`,
+      'Content-Type': 'application/json',
     },
-    body: 'grant_type=client_credentials',
+    body: JSON.stringify({
+      grant_type: 'client_credentials',
+      client_id: 'IxLzDBlvwmHBUMfLaGfJshD6Kahb362L',
+      client_secret:
+        'w9P-niyBUZK9fadBt5yNkG-7KMBULm59HB8GnJJPgwvT_gwlG98nfvdik2sVW9d_',
+      audience: 'ndla_system',
+    }),
+    json: true,
   })
     .then(res => res.json())
     .then(json => json.access_token);

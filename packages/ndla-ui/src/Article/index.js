@@ -6,19 +6,15 @@
  *
  */
 
-import BEMHelper from 'react-bem-helper';
-import Article from './Article';
-
-export const classes = new BEMHelper({
-  name: 'article',
-  prefix: 'c-',
-});
+import Article, {
+  ArticleTitle,
+  ArticleIntroduction,
+  ArticleWrapper,
+} from './Article';
 
 export { default as ArticleByline } from './ArticleByline';
 export { default as ArticleContent } from './ArticleContent';
 export { default as ArticleFootNotes } from './ArticleFootNotes';
-export { default as ArticleIntroduction } from './ArticleIntroduction';
-export { default as ArticleTitle } from './ArticleTitle';
-export { default as ArticleWrapper } from './ArticleWrapper';
+export { ArticleTitle, ArticleIntroduction, ArticleWrapper };
 
 export default Article;

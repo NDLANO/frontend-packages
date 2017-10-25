@@ -19,6 +19,8 @@
 .u-float-right {
   @include float(3, 4, 'right');
 }
+
+// DEPRECATED TODO: remove when not in use
 .article_figure--float-left {
   @include float(3, 4, 'left');
 }

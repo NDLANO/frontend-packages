@@ -36,12 +36,13 @@
   padding: 0;
 }
 
-.c-bodybox .article_figure--float-right {
+// DEPRECATED TODO: remove article-float classes when not in use anymore. .u-float-[dir] should be used
+.c-bodybox .article_figure--float-right, .c-bodybox .c-figure.u-float-right {
   width: 50% !important;
   margin-right: 0;
 }
 
-.c-bodybox .article_figure--float-left {
+.c-bodybox .article_figure--float-left, .c-bodybox .c-figure.u-float-left {
   width: 50% !important;
   margin-left: 0;
 }

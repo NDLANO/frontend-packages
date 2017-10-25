@@ -173,6 +173,28 @@ storiesOf('Enkle komponenter', module)
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
+          <div className="c-bodybox c-bodybox--extended">
+            <p>En boks med flytelementer</p>
+            <FigureWithLicense authors="" caption="" classes="u-float-right">
+              <img
+                alt=""
+                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+              />
+            </FigureWithLicense>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+              klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å lage,
+              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+              klassen.
+            </p>
+
+          </div>
           <LayoutItem layout="center">
             <div className="c-bodybox">
               <h3>

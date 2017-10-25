@@ -72,7 +72,7 @@ class GlossaryExample extends Component {
                 </p>
                 <FigureWithLicense
                   caption=""
-                  classes="article_figure--float-right">
+                  classes="u-float-right">
                   <img
                     alt="liten jente holder sine foreldres hender. foto."
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"

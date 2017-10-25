@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { uuid } from 'ndla-util';
 import SafeLink from '../common/SafeLink';
 import { Document } from '../icons';
 import { ResourceShape } from '../shapes';
@@ -15,10 +16,10 @@ const RelatedArticles = ({ resources }) => (
     <h2 {...classes('component-title')}>Relaterte artikler</h2>
     <div {...classes('')}>
       {resources.filter((item, index) => index < 2).map(item => (
-        <div {...classes('item')}>
+        <div key={uuid()} {...classes('item')}>
           <h3 {...classes('title')}>
             <Document className="c-icon--medium" />
-            <SafeLink to={() => {}} {...classes('link')}>
+            <SafeLink to="#" {...classes('link')}>
               {item.title}
             </SafeLink>
           </h3>

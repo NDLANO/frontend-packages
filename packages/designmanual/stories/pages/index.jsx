@@ -329,14 +329,12 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="5948" notitle />
+        <ArticleLoader articleId="5948" />
         <OneColumn>
-          <article className="c-article">
-            <LayoutItem layout="extend">
-              <RelatedArticles resources={articleResources} />
-              <Resources />
-            </LayoutItem>
-          </article>
+          <LayoutItem layout="extend">
+            <RelatedArticles resources={articleResources} />
+            <Resources />
+          </LayoutItem>
         </OneColumn>
       </Content>
       <FooterExample />
@@ -366,12 +364,10 @@ storiesOf('Emnesider', module)
           <div className="u-padding-bottom-huge" />
         </LayoutItem>
         <OneColumn>
-          <article className="c-article">
-            <LayoutItem layout="extend">
-              <RelatedArticles resources={articleResources} />
-              <Resources />
-            </LayoutItem>
-          </article>
+          <LayoutItem layout="extend">
+            <RelatedArticles resources={articleResources} />
+            <Resources />
+          </LayoutItem>
         </OneColumn>
       </Content>
       <FooterExample />

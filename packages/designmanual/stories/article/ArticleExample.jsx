@@ -19,11 +19,11 @@ import {
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
-const ArticleExample = ({ article, withLicenseExample, notitle, reset }) => (
+const ArticleExample = ({ article, withLicenseExample, reset }) => (
   <OneColumn cssModifier="narrow">
     <article className={reset ? 'c-article c-article--clean' : 'c-article'}>
       <LayoutItem layout="center">
-        {notitle ? null : <h1>{article.title}</h1>}
+        <h1>{article.title}</h1>
         <ArticleIntroduction introduction={article.introduction} />
         <ArticleByline article={article} />
       </LayoutItem>

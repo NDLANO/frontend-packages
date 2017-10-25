@@ -34,7 +34,6 @@ export {
 export { default as LicenseByline } from './LicenseByline';
 export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
-export { default as TopicArticle } from './topic/TopicArticle';
 export {
   default as TopicIntroductionList,
 } from './topic/TopicIntroductionList';

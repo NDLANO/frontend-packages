@@ -16,7 +16,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ArticleByline = ({ authors, messages, updated, children }) => (
+const ArticleByline = ({ authors, license, messages, updated, children }) => (
   <div>
     <section {...classes()}>
       <span {...classes('flex')}>
@@ -25,7 +25,7 @@ const ArticleByline = ({ authors, messages, updated, children }) => (
         </span>
         <span {...classes('authors')}>
           {messages.writtenBy}{' '}
-          {authors && authors.map(author => author.name).join(', ')}
+          {authors && authors.map(author => author.name).join(', ')} ({license.toUpperCase()})
         </span>
       </span>
       <span {...classes('flex')}>
@@ -48,6 +48,7 @@ ArticleByline.propTypes = {
     }),
   ).isRequired,
   updated: PropTypes.string.isRequired,
+  license: PropTypes.string.isRequired,
   messages: PropTypes.shape({
     writtenBy: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,

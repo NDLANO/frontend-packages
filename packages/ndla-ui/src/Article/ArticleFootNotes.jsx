@@ -10,11 +10,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FootNoteShape } from '../shapes';
 
-const FootNote = ({ footNote, editionTitle, publisherTitle, refNr }) => (
+const FootNote = ({ footNote, messages, refNr }) => (
   <li className="c-footnote__item">
     <cite className="c-footnote__cite">{`${footNote.title} (${footNote.year}), ${footNote.authors.join(
       ' ',
-    )} ${editionTitle}: ${footNote.edition}, ${publisherTitle}: ${footNote.publisher}`}</cite>
+    )} ${messages.edition}: ${footNote.edition}, ${messages.publisher}: ${footNote.publisher}`}</cite>
     &nbsp;<a href={`#ref_${refNr}_sup`} name={`ref_${refNr}_cite`}>
       &#8617;
     </a>
@@ -24,8 +24,10 @@ const FootNote = ({ footNote, editionTitle, publisherTitle, refNr }) => (
 FootNote.propTypes = {
   refNr: PropTypes.string.isRequired,
   footNote: FootNoteShape.isRequired,
-  editionTitle: PropTypes.string.isRequired,
-  publisherTitle: PropTypes.string.isRequired,
+  messages: PropTypes.shape({
+    edition: PropTypes.string.isRequired,
+    publisher: PropTypes.string.isRequired,
+  }),
 };
 
 const ArticleFootNotes = ({ footNotes, ...rest }) => (
@@ -43,8 +45,10 @@ const ArticleFootNotes = ({ footNotes, ...rest }) => (
 
 ArticleFootNotes.propTypes = {
   footNotes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  editionTitle: PropTypes.string.isRequired,
-  publisherTitle: PropTypes.string.isRequired,
+  messages: PropTypes.shape({
+    edition: PropTypes.string.isRequired,
+    publisher: PropTypes.string.isRequired,
+  }),
 };
 
 export default ArticleFootNotes;

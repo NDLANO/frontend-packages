@@ -297,7 +297,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="1325" isTopicArticle />
+        <ArticleLoader articleId="6104" />
         <OneColumn>
           <article className="c-article">
             <ResourcesSubTopics />

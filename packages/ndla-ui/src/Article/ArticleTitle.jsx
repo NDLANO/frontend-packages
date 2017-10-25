@@ -30,7 +30,7 @@ const ArticleTitle = ({ title, icon }) => {
 
 ArticleTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.node,
 };
 
 export default ArticleTitle;

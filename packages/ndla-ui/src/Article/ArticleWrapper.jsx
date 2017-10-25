@@ -15,12 +15,13 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ArticleWrapper = ({ children }) => (
-  <article {...classes()}>{children}</article>
+export const ArticleWrapper = ({ children, modifier }) => (
+  <article {...classes(undefined, modifier)}>{children}</article>
 );
 
 ArticleWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  modifier: PropTypes.string,
 };
 
 export default ArticleWrapper;

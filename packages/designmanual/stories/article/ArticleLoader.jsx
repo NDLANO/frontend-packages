@@ -9,10 +9,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Button } from 'ndla-ui';
+import { OneColumn, Article, Button } from 'ndla-ui';
+import moment from 'moment';
 import { fetchArticle } from './articleApi';
+import LicenseExample from './LicenseExample';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import ArticleExample from './ArticleExample';
 
 class ArticleLoader extends Component {
   constructor(props) {
@@ -33,7 +34,11 @@ class ArticleLoader extends Component {
   handleSubmit(articleId) {
     this.setState({ fetching: true });
     fetchArticle(articleId)
-      .then(article => {
+      .then(data => {
+        const article = data;
+        article.copyright.license.license = `cc-${article.copyright.license
+          .license}`; // tmp fix until apis are updated
+        article.updated = moment(article.updated).format('DD/MM/YYYY');
         this.setState({
           article,
           fetching: false,
@@ -49,20 +54,9 @@ class ArticleLoader extends Component {
       });
   }
 
-  renderArticle() {
-    const { article } = this.state;
-    const { withLicenseExample, reset } = this.props;
-    return (
-      <ArticleExample
-        reset={reset}
-        article={article}
-        withLicenseExample={withLicenseExample}
-      />
-    );
-  }
-
   render() {
     const { article, message } = this.state;
+    const { reset, closeButton } = this.props;
     const scripts =
       article && article.requiredLibraries
         ? article.requiredLibraries.map(lib => ({
@@ -74,7 +68,19 @@ class ArticleLoader extends Component {
       <div>
         <Helmet script={scripts} />
         {article ? (
-          this.renderArticle()
+          <OneColumn>
+            <Article
+              article={article}
+              modifier={reset ? 'clean' : ''}
+              messages={{
+                writtenBy: 'Skrevet av',
+                lastUpdated: 'Sist oppdatert',
+                edition: 'Utgave',
+                publisher: 'Utgiver',
+              }}
+              licenseBox={<LicenseExample />}
+            />
+          </OneColumn>
         ) : (
           <SimpleSubmitForm
             onSubmit={this.handleSubmit}
@@ -82,7 +88,7 @@ class ArticleLoader extends Component {
             labelText="Artikkel ID:"
           />
         )}
-        {article && this.props.closeButton ? (
+        {article && closeButton ? (
           <Button onClick={() => this.setState({ article: undefined })}>
             Lukk
           </Button>
@@ -94,7 +100,6 @@ class ArticleLoader extends Component {
 
 ArticleLoader.propTypes = {
   articleId: PropTypes.string,
-  withLicenseExample: PropTypes.bool,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
 };

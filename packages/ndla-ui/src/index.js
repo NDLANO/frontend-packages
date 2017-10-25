@@ -10,7 +10,15 @@ import * as all from '.';
 
 export { default as Footer } from './footer/Footer';
 
-export { default as Article } from './Article';
+export {
+  ArticleByline,
+  ArticleContent,
+  ArticleFootNotes,
+  ArticleIntroduction,
+  ArticleTitle,
+  ArticleWrapper,
+  default as Article,
+} from './Article';
 export { default as Button } from './button/Button';
 export { default as Logo } from './Logo';
 export { default as Aside } from './aside/Aside';

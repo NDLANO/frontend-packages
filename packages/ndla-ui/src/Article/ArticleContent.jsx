@@ -14,7 +14,7 @@ import {
   removeAsideClickListener,
 } from 'ndla-article-scripts';
 
-export default class TopicArticleContent extends Component {
+export default class ArticleContent extends Component {
   componentDidMount() {
     initArticleScripts();
   }
@@ -30,6 +30,6 @@ export default class TopicArticleContent extends Component {
   }
 }
 
-TopicArticleContent.propTypes = {
+ArticleContent.propTypes = {
   content: PropTypes.string.isRequired,
 };

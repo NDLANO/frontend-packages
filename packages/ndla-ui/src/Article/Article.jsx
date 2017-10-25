@@ -8,28 +8,43 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import ArticleIntroduction from './ArticleIntroduction';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
+import ArticleWrapper from './ArticleWrapper';
+import ArticleTitle from './ArticleTitle';
+import ArticleByline from './ArticleByline';
+import LayoutItem from '../Layout';
+import { ArticleShape } from '../shapes';
 
-const classes = new BEMHelper({
-  name: 'article',
-  prefix: 'c-',
-});
-
-export const Article = ({ children }) => (
-  <article {...classes()}>
-    <section> {children} </section>
-  </article>
+export const Article = ({ article, icon, licenseBox, children }) => (
+  <ArticleWrapper>
+    <LayoutItem layout="center">
+      <ArticleTitle title={article.title} icon={icon} />
+      <ArticleIntroduction introduction={article.introduction} />
+      <ArticleByline
+        authors={article.copyright.authors}
+        updated={article.updated}>
+        {licenseBox}
+      </ArticleByline>
+    </LayoutItem>
+    <LayoutItem layout="center">
+      <ArticleContent content={article.content} />
+    </LayoutItem>
+    <LayoutItem layout="center">
+      {Object.keys(article.footNotes).length > 0 && (
+        <ArticleFootNotes footNotes={article.footNotes} />
+      )}
+      {children}
+    </LayoutItem>
+  </ArticleWrapper>
 );
 
 Article.propTypes = {
-  children: PropTypes.node.isRequired,
+  article: ArticleShape.isRequired,
+  icon: PropTypes.node,
+  licenseBox: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
-
-Article.Introduction = ArticleIntroduction;
-Article.FootNotes = ArticleFootNotes;
-Article.Content = ArticleContent;
 
 export default Article;

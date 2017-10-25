@@ -8,8 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Article from '../article/Article';
-import ArticleContent from '../article/ArticleContent';
+import ArticleContent from '../Article/ArticleContent';
+import ArticleIntroduction from '../Article/ArticleIntroduction';
 import { ArticleShape } from '../shapes';
 
 // class TopicArticle extends Component {
@@ -19,7 +19,7 @@ const TopicArticle = ({ article, notitle }) => (
   // return (
   <section>
     {notitle ? null : <h1 className="c-article__title">{article.title}</h1>}
-    <Article.Introduction introduction={article.introduction} />
+    <ArticleIntroduction introduction={article.introduction} />
     {article.footNotes}
     <ArticleContent
       className="c-article--narrow"

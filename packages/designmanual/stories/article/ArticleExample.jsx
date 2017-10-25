@@ -9,7 +9,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Article, OneColumn, LayoutItem } from 'ndla-ui';
+import {
+  ArticleIntroduction,
+  ArticleContent,
+  ArticleFootNotes,
+  OneColumn,
+  LayoutItem,
+} from 'ndla-ui';
 import ArticleByline from './ArticleByline';
 import LicenseExample from './LicenseExample';
 
@@ -18,15 +24,15 @@ const ArticleExample = ({ article, withLicenseExample, notitle, reset }) => (
     <article className={reset ? 'c-article c-article--clean' : 'c-article'}>
       <LayoutItem layout="center">
         {notitle ? null : <h1>{article.title}</h1>}
-        <Article.Introduction introduction={article.introduction} />
+        <ArticleIntroduction introduction={article.introduction} />
         <ArticleByline article={article} />
       </LayoutItem>
       <LayoutItem layout="center">
-        <Article.Content content={article.content} />
+        <ArticleContent content={article.content} />
       </LayoutItem>
       <LayoutItem layout="center">
         {article.footNotes ? (
-          <Article.FootNotes footNotes={article.footNotes} />
+          <ArticleFootNotes footNotes={article.footNotes} />
         ) : null}
         {withLicenseExample && <LicenseExample />}
       </LayoutItem>

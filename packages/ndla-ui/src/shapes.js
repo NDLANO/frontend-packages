@@ -29,7 +29,7 @@ export const TopicShape = PropTypes.shape({
 export const FootNoteShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  authors: PropTypes.array.isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
   edition: PropTypes.string.isRequired,
   publisher: PropTypes.string.isRequired,
 });
@@ -40,7 +40,6 @@ export const ArticleShape = PropTypes.shape({
   copyright: PropTypes.shape({
     authors: PropTypes.array.isRequired,
   }).isRequired,
-  created: PropTypes.string.isRequired,
   updated: PropTypes.string.isRequired,
 });
 

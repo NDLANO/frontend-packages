@@ -33,7 +33,6 @@ import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
 import GlossaryExample from './organisms/GlossaryExample';
-import { OneColumn } from '../es/layout/OneColumn';
 
 const toggle = () => {
   document

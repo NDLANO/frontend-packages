@@ -29,44 +29,29 @@ ArticleWrapper.propTypes = {
   modifier: PropTypes.string,
 };
 
-export const ArticleTitle = ({ title, icon }) => {
+export const ArticleTitle = ({ children, icon }) => {
   if (icon) {
     return (
       <h1 {...classes('title', 'icon')}>
         {icon}
-        {title}
+        {children}
       </h1>
     );
   }
 
-  return <h1 {...classes('title')}>{title}</h1>;
+  return <h1 {...classes('title')}>{children}</h1>;
 };
 
 ArticleTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   icon: PropTypes.node,
 };
 
-const ArticleIntroductionText = ({ text }) => (text ? <p>{text}</p> : null);
-
-ArticleIntroductionText.propTypes = {
-  text: PropTypes.string,
-};
-
-export const ArticleIntroduction = ({ introduction }) => {
-  if (!introduction) {
-    return null;
-  }
-
-  return (
-    <section className="article_introduction">
-      <ArticleIntroductionText text={introduction} />
-    </section>
-  );
-};
+export const ArticleIntroduction = ({ children }) =>
+  children ? <p className="article_introduction">{children}</p> : null;
 
 ArticleIntroduction.propTypes = {
-  introduction: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export const Article = ({
@@ -79,8 +64,8 @@ export const Article = ({
 }) => (
   <ArticleWrapper modifier={modifier}>
     <LayoutItem layout="center">
-      <ArticleTitle title={article.title} icon={icon} />
-      <ArticleIntroduction introduction={article.introduction} />
+      <ArticleTitle icon={icon}>{article.title}</ArticleTitle>
+      <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
       <ArticleByline
         messages={messages}
         authors={article.copyright.authors}

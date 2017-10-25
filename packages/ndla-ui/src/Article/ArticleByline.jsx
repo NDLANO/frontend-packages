@@ -17,27 +17,25 @@ const classes = new BEMHelper({
 });
 
 const ArticleByline = ({ authors, license, messages, updated, children }) => (
-  <div>
-    <section {...classes()}>
-      <span {...classes('flex')}>
-        <span {...classes('icon')}>
-          <User />
-        </span>
-        <span {...classes('authors')}>
-          {messages.writtenBy}{' '}
-          {authors && authors.map(author => author.name).join(', ')} ({license.toUpperCase()})
-        </span>
+  <div {...classes()}>
+    <span {...classes('flex')}>
+      <span {...classes('icon')}>
+        <User />
       </span>
-      <span {...classes('flex')}>
-        <span {...classes('icon')}>
-          <Time />
-        </span>
-        <span {...classes('date')}>
-          {messages.lastUpdated} {updated}
-        </span>
-        {children}
+      <span {...classes('authors')}>
+        {messages.writtenBy}{' '}
+        {authors && authors.map(author => author.name).join(', ')}. <br /> ({license.toUpperCase()})
       </span>
-    </section>
+    </span>
+    <span {...classes('flex')}>
+      <span {...classes('icon')}>
+        <Time />
+      </span>
+      <span {...classes('date')}>
+        {messages.lastUpdated} {updated}
+      </span>
+      {children}
+    </span>
   </div>
 );
 

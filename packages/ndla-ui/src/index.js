@@ -10,7 +10,15 @@ import * as all from '.';
 
 export { default as Footer } from './footer/Footer';
 
-export { default as Article } from './article/Article';
+export {
+  ArticleByline,
+  ArticleContent,
+  ArticleFootNotes,
+  ArticleIntroduction,
+  ArticleTitle,
+  ArticleWrapper,
+  default as Article,
+} from './Article';
 export { default as Button } from './button/Button';
 export { default as Logo } from './Logo';
 export { default as Aside } from './aside/Aside';
@@ -26,7 +34,6 @@ export {
 export { default as LicenseByline } from './LicenseByline';
 export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
-export { default as TopicArticle } from './topic/TopicArticle';
 export {
   default as TopicIntroductionList,
 } from './topic/TopicIntroductionList';

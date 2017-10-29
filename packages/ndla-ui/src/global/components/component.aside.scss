@@ -117,3 +117,15 @@
   margin-bottom: $spacing--small;
   border-bottom: 1px solid $brand-color--light;
 }
+
+.c-aside__content>ul:not([class]) {
+  @include mq(desktop) {
+    margin-left: $spacing;
+  }
+}
+
+.c-aside__content>ol:not([class]), .c-aside__content>.ol-list--roman {
+  @include mq(desktop) {
+    margin-left: $spacing--large;
+  }
+}

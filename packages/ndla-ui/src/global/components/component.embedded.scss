@@ -1,0 +1,9 @@
+.c-embedded {
+  overflow: hidden;
+
+
+  > * {
+    max-width: 100%;
+    border: 0;
+  }
+}

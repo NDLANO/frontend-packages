@@ -70,9 +70,7 @@ class GlossaryExample extends Component {
                   sosialiseringen er at de enkelte menneskene skal kunne skille
                   mellom godt og ondt, og rett og galt.
                 </p>
-                <FigureWithLicense
-                  caption=""
-                  classes="u-float-right">
+                <FigureWithLicense caption="" classes="u-float-right">
                   <img
                     alt="liten jente holder sine foreldres hender. foto."
                     src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"

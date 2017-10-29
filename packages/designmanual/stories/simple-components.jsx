@@ -10,6 +10,7 @@ import article from '../dummydata/index';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
+import Embedded from './article/Embedded';
 
 const articleHTML = document.createElement('div');
 articleHTML.innerHTML = article.article4.content[0].content;
@@ -183,17 +184,16 @@ storiesOf('Enkle komponenter', module)
             </FigureWithLicense>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
-
           </div>
           <LayoutItem layout="center">
             <div className="c-bodybox">
@@ -257,6 +257,54 @@ storiesOf('Enkle komponenter', module)
             klassen.
           </p>
         </LayoutItem>
+      </StoryBody>
+    </div>
+  ))
+  .add('Embedded', () => (
+    <div>
+      <StoryIntro title="Embedded (Youtube, HP5 osv.)">
+        <p>
+          Embedded innhold uten lisensinformasjon skal ha følgende markup (må
+          ikke være iframe):
+          <code>
+            {`<figure class="c-embedded">\n  <iframe ... />\n</figure>`}
+          </code>
+        </p>
+        <p>
+          Om det er en iframe der resize script skal kjøres må det være følgende
+          markup
+          <code>
+            {`<figure class="c-embedded c-embedded--resize">\n  <iframe ... />\n</figure>`}
+          </code>
+        </p>
+        <p>
+          Om det er satt høyde og bredde på iframen (som vist under) vil den
+          beholde forholdet mellom høyde og bredde (så lenge resize scriptet er
+          kjørt).
+          <code>{`<iframe width="400" height="300" ... />`}</code>
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <Embedded resize runScripts>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Title"
+            width="600"
+            height="338"
+          />
+        </Embedded>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
       </StoryBody>
     </div>
   ))

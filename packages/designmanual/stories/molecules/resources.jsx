@@ -67,7 +67,7 @@ export const Resources = () => (
         className={group.className}
         icon={group.iconEl}
         messages={{
-          toggleFilterLabel: 'Tilleggstoff',
+          toggleFilterLabel: 'Tilleggsstoff',
           showLess: 'Vis mindre',
           showMore: 'Vis mer',
         }}

@@ -6,20 +6,42 @@
  *
  */
 
-export const updateIFrameDimensions = () => {
-  document.querySelectorAll('.article__oembed iframe').forEach(el => {
-    const iframe = el;
-    const parentWidth = iframe.parentNode.clientWidth;
-    const newHeight = iframe.clientHeight * parentWidth / iframe.clientWidth;
-    iframe.height = newHeight;
-    iframe.width = parentWidth;
-  });
+export const updateIFrameDimensions = (init = true) => {
+  document
+    .querySelectorAll('.article__oembed iframe, .c-embedded--resize iframe')
+    .forEach(el => {
+      const iframe = el;
+      let ratio = null;
+
+      const parentWidth = iframe.parentNode.clientWidth;
+
+      if (init && iframe.width && iframe.height) {
+        ratio = iframe.height / iframe.width;
+        el.setAttribute('data-ratio', ratio);
+      } else {
+        const ratioAttr = el.getAttribute('data-ratio');
+        if (ratioAttr) {
+          ratio = parseFloat(ratioAttr);
+        }
+      }
+
+      let newHeight = 0;
+
+      if (ratio) {
+        newHeight = parentWidth * ratio;
+      } else {
+        newHeight = iframe.clientHeight * parentWidth / iframe.clientWidth;
+      }
+
+      iframe.height = newHeight;
+      iframe.width = parentWidth;
+    });
 };
 
 export const addEventListenerForResize = () => {
-  window.addEventListener('resize', updateIFrameDimensions);
+  window.addEventListener('resize', () => updateIFrameDimensions(false));
 };
 
 export const removeEventListenerForResize = () => {
-  window.removeEventListener('resize', updateIFrameDimensions);
+  window.removeEventListener('resize', () => updateIFrameDimensions(false));
 };

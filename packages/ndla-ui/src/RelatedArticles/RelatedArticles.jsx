@@ -19,7 +19,7 @@ const RelatedArticles = ({ resources }) => (
         <div key={uuid()} {...classes('item')}>
           <h3 {...classes('title')}>
             <Document className="c-icon--medium" />
-            <SafeLink to="#" {...classes('link')}>
+            <SafeLink to={item.path} {...classes('link')}>
               {item.title}
             </SafeLink>
           </h3>

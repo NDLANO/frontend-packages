@@ -2,6 +2,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:345297a3-4134-4622-b325-c8245edb11dd',
+    path: '#',
     name: 'Hva er en idé?',
     resourceTypes: [],
     contentUri: 'urn:article:339',
@@ -15,6 +16,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:6fd9f440-d91d-4bb0-89d4-757e564f77b9',
+    path: '#',
     name: 'Ideer og idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:article:165',
@@ -28,6 +30,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:0079aa08-8ed9-484a-bbd6-71d9297d8cab',
+    path: '#',
     name: 'Kreativ kommunikasjon',
     resourceTypes: [],
     contentUri: 'urn:article:166',
@@ -40,6 +43,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:a7a49c0a-32ea-4343-8b11-bd6d65c24f87',
+    path: '#',
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:article:340',
@@ -49,6 +53,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b50',
+    path: '#',
     name: 'Hvordan oppstår ideer?',
     resourceTypes: [],
     contentUri: 'urn:article:341',
@@ -58,6 +63,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b51',
+    path: '#',
     name: 'Hvordan oppstår ideer 2',
     resourceTypes: [],
     contentUri: 'urn:article:341',
@@ -67,6 +73,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b52',
+    path: '#',
     name: 'Hvordan oppstår ideer 3',
     resourceTypes: [],
     contentUri: 'urn:article:341',
@@ -76,6 +83,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b53',
+    path: '#',
     name: 'Hvordan oppstår ideer 4',
     resourceTypes: [],
     contentUri: 'urn:article:341',
@@ -85,6 +93,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170363',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b54',
+    path: '#',
     name: 'Hvordan oppstår ideer 5',
     resourceTypes: [],
     contentUri: 'urn:article:341',
@@ -94,6 +103,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170364',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b55',
+    path: '#',
     name: 'Hvordan oppstår ideer 6',
     resourceTypes: [],
     contentUri: 'urn:article:341',
@@ -103,6 +113,7 @@ export const articleResources = [
   {
     topicId: 'urn:topic:170365',
     id: 'urn:resource:38f1980f-8944-4c1c-b40f-531ae04e5b56',
+    path: '#',
     name: 'Hvordan oppstår ideer 7',
     resourceTypes: [],
     contentUri: 'urn:article:341',

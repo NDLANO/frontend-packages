@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Table } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
+import { AnchorNavigation } from './helpers';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -168,13 +169,28 @@ storiesOf('Grunnstiler', module)
   .add('Typografi', () => (
     <div>
       <StoryIntro title="Typografi">
-        <p>
-          <a href="#fonter">Fonter</a>,{' '}
-          <a href="#storrelser">skriftstørrelser</a>,{' '}
-          <a href="#overskrifter">overskrifter</a>,{' '}
-          <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>,{' '}
-          <a href="#lenker">lenker</a>.
-        </p>
+        <AnchorNavigation
+          links={[
+            <a href="#fonter" target="_self">
+              Fonter
+            </a>,
+            <a href="#storrelser" target="_self">
+              Skriftstørrelser
+            </a>,
+            <a href="#overskrifter" target="_self">
+              Overskrifter
+            </a>,
+            <a href="#ingress" target="_self">
+              Ingress
+            </a>,
+            <a href="#avsnitt" target="_self">
+              Avsnitt
+            </a>,
+            <a href="#lenker" target="_self">
+              Lenker
+            </a>,
+          ]}
+        />
       </StoryIntro>
       <StoryBody>
         <h2 id="fonter" className="u-heading">

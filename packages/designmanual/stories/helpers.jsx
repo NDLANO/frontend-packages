@@ -41,3 +41,21 @@ export const articleUrl = id => (
       href={`http://api.test.ndla.no:8082/article/${id}`}>{`http://api.test.ndla.no:8082/article/${id}`}</a>
   </span>
 );
+
+export const AnchorNavigation = ({ links }) => (
+  <ul
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      listStyle: 'none',
+      margin: 0,
+      padding: 0,
+    }}>
+    {links.map(link => <li>{link}</li>)}
+  </ul>
+);
+
+AnchorNavigation.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.node),
+};

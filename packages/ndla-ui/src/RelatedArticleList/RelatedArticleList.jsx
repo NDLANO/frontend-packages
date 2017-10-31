@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
-import { Document } from '../icons';
 
 const classes = new BEMHelper({
   name: 'related-articles',
   prefix: 'c-',
 });
 
-export const RelatedArticle = ({ title, introduction, to }) => (
-  <div {...classes('item')}>
-    <h3 {...classes('title')}>
-      <Document className="c-icon--medium" />
-      <SafeLink to={to} {...classes('link')}>
-        {title}
-      </SafeLink>
-    </h3>
-    <p {...classes('description')}>{introduction}</p>
-  </div>
-);
+export const RelatedArticle = ({ title, introduction, icon, modifier, to }) => {
+  const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
+  return (
+    <div {...classes('item', modifier)}>
+      <h3 {...classes('title')}>
+        {iconWithClass}
+        <SafeLink to={to} {...classes('link')}>
+          {title}
+        </SafeLink>
+      </h3>
+      <p {...classes('description')}>{introduction}</p>
+    </div>
+  );
+};
 
 RelatedArticle.propTypes = {
+  icon: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
+  modifier: PropTypes.oneOf(['subject-material', 'tasks-and-activities']),
   introduction: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };

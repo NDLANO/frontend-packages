@@ -2,17 +2,25 @@
   @include mq(tablet) {
     display: flex;
   }
-
 }
 .c-related-articles__item {
-  border-left: 6px solid rgba($mark-color, .1);
+  border-left: 6px solid rgba($brand-grey--light, 0.4);
   padding-left: $spacing;
   padding-right: $spacing;
   margin: 0 0 $spacing--large 0;
   flex-basis: 50%;
-  flex-grow:1;
+  flex-grow: 1;
   max-width: 600px;
+
+  &--subject-material {
+    border-left: 6px solid rgba($mark-color, 0.1);
+  }
+
+  &--tasks-and-activities {
+    border-left: 6px solid rgba($green, 0.1);
+  }
 }
+
 .c-related-articles__component-title {
   margin: $spacing--large 0 $spacing;
   @include inuit-font-size(18px);

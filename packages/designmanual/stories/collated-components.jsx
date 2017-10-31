@@ -51,11 +51,11 @@ storiesOf('Sammensatte moduler', module)
         topicPath={topicList.slice(0, -1)}
         toTopic={() => '#'}
       />
-      <h2 className="u-heading">Brødsmulesti blokk eksempel</h2>
+      <h2 className="u-heading">Brødsmulesti-blokkeksempel</h2>
       <p>
-        Blokkvarianten følger brukeren nedover siden, og ligger i header. På små
-        enheter vil blokkvarianten gjemmes. Brødsmulestien er fortsatt
-        tilgjengelig øverst på siden.
+        Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den
+        ligger i header. På små enheter vil blokkvarianten gjemmes.
+        Brødsmulestien er fortsatt tilgjengelig øverst på siden.
       </p>
       <BreadcrumbBlock
         fadeIn
@@ -79,12 +79,12 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Emneliste">
         <p>
-          Emnelister brukes typisk innen et fag/emne for å vise underliggende
-          emner.
+          Emnelister brukes typisk innen et fag eller emne for å vise
+          underliggende emner.
         </p>
         <p>
-          Ved klikk på emnetittel kommer man til emneartikkelen for emnet du
-          klikker på. Se også siden for Emnebeskrivelse
+          Ved klikk på emnetittel kommer brukerne til emneartikkelen for emnet
+          de klikker på. Se også siden for Emnebeskrivelse.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -103,9 +103,9 @@ storiesOf('Sammensatte moduler', module)
       <div className="o-wrapper--inner">
         <p>
           Knapper kan også brukes til å kontrollere fanene. En mulighet her er
-          f. eks å ha en knapp nederst inni en fane, for å la brukeren gå til
-          neste fane uten å først scrolle opp til fane-toppen. Dette benyttes
-          ikke foreløpig, men kan brukes ved behov i senere utvikling.
+          f.eks. å ha en knapp nederst inni en fane for å la brukeren gå til
+          neste fane uten å først måtte scrolle opp til fanetoppen. Dette
+          benyttes ikke foreløpig, men kan brukes ved behov i senere utvikling.
         </p>
         <TabsControlled />
       </div>
@@ -115,9 +115,9 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Filter">
         <p>
-          Alle elementer vises både når ingen eller alle filtervalg er valgt.
-          Når bruker klikker på et filter, skal dette umiddelbart reflekteres i
-          innholdet som filtreres, uten å laste siden på nytt.
+          Alle elementer vises enten ingen eller alle filtervalg er valgt. Når
+          brukeren klikker på et filter, skal dette umiddelbart reflekteres i
+          innholdet som filtreres, uten at siden lastes på nytt.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -158,10 +158,10 @@ storiesOf('Sammensatte moduler', module)
       <MastheadWithTopicMenu />
     </div>
   ))
-  .add('Lisens-ikoner', () => (
+  .add('Lisensikoner', () => (
     <Center>
       <LayoutItem layout="center">
-        <h2 className="u-heading">Lisens-ikoner og merking med beskrivelse</h2>
+        <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
           <LicenseByline
             withDescription
@@ -170,7 +170,7 @@ storiesOf('Sammensatte moduler', module)
         </div>
       </LayoutItem>
       <LayoutItem layout="center">
-        <h2 className="u-heading">Lisens-ikoner på enkelt-element</h2>
+        <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
         <FigureWithLicense>
           <img
             alt=""
@@ -225,14 +225,12 @@ storiesOf('Sammensatte moduler', module)
           listen brytes opp med en «Vis mer»-knapp.
         </p>
         <p>
-          Ved å klikke på «Tilleggstoff» vil man vise også innhold som er
-          tilleggstoff, som ellers er skjult. Disse er merket med T-ikonet, samt
-          med en noe dusere farge. Sjekkboksen skal være markert når
-          tilleggstoff er aktivt.
+          Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som
+          er tilleggsstoff. Det er ellers skjult. Tilleggsstoffet er merket med
+          T-ikonet, samt med en noe dusere farge. Sjekkboksen skal være markert
+          når tilleggsstoff er aktivt.
         </p>
-        <p>
-          Knappen «Vis mer» lar brukeren populere listen med flere elementer.
-        </p>
+        <p>Knappen «Vis mer» lar brukeren utvide listen med flere elementer.</p>
       </StoryIntro>
       <LayoutItem layout="center">
         <Resources />
@@ -351,11 +349,11 @@ storiesOf('Sammensatte moduler', module)
         </div>
         <Footer.Ruler />
         <Footer.Text>
-          <Footer.Editor title="Ansvarlig redaktør:" name=" Øivind Høines" />
+          <Footer.Editor title="Ansvarlig redaktør:" name="Øivind Høines" />
           <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
         </Footer.Text>
         <Footer.Text>
-          Nettstedet er utarbeidet av NDLA som åpen kildekode.
+          Nettstedet er utarbeidet av NDLA med åpen kildekode.
         </Footer.Text>
       </Footer>
     </Center>
@@ -365,14 +363,14 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Tilleggsstoff">
         <p>
           Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
-          tilleggsstoff-filteret aktiveres, vil ressursopplistingen populeres
-          med tilleggsstoff i tilegg. Tilleggsstoff markeres med T-ikon, og
-          desaturert bakgrunnsfarge.{' '}
+          tilleggsstoff-filteret aktiveres, vil ressursopplistingen utvides med
+          tilleggsstoff. Tilleggsstoff markeres med T-ikon, og mindre mettet
+          bakgrunnsfarge.{' '}
         </p>
         <p>
           Tilleggsstoff-filteret skal kun påvirke ressurstypen den er
-          tilknyttet, f. eks om du aktiverer tilleggsstoff for Fagstoff, vil kun
-          denne listen oppdateres med tilleggsstoff-artikler.
+          tilknyttet. Så hvis brukeren aktiverer tilleggsstoff for Fagstoff, vil
+          bare Fagstoff-listen oppdateres med tilleggsstoff-elementer.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -384,9 +382,9 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Feilmelding">
         <p>
-          Feilmelding komponent med link tilbake til forrige side eller
-          forsiden. Brukes når det har oppstått en feil i systemet. F.eks. ved
-          404 eller 503 feil.
+          Feilmeldingskomponenten lenker tilbake til forrige side eller til
+          forsiden. Den brukes når det har oppstått en feil i systemet, f.eks.
+          ved 404- eller 503-feil.
         </p>
       </StoryIntro>
       <StoryBody>

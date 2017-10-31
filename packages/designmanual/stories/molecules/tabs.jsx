@@ -34,17 +34,17 @@ export class TabsControlled extends Component {
           <Button
             style={{ marginRight: '5px' }}
             onClick={() => this.setState({ selectedIndex: 0 })}>
-            Vis bilde fane
+            Vis bildefane
           </Button>
           <Button
             style={{ marginRight: '5px' }}
             onClick={() => this.setState({ selectedIndex: 1 })}>
-            Vis video fane
+            Vis videofane
           </Button>
           <Button
             style={{ marginRight: '5px' }}
             onClick={() => this.setState({ selectedIndex: 2 })}>
-            Vis lyd fane
+            Vis lydfane
           </Button>
         </InlineContainer>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Table } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
+import { AnchorNavigation } from './helpers';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -168,13 +169,28 @@ storiesOf('Grunnstiler', module)
   .add('Typografi', () => (
     <div>
       <StoryIntro title="Typografi">
-        <p>
-          <a href="#fonter">Fonter</a>,{' '}
-          <a href="#storrelser">skriftstørrelser</a>,{' '}
-          <a href="#overskrifter">overskrifter</a>,{' '}
-          <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>,{' '}
-          <a href="#lenker">lenker</a>.
-        </p>
+        <AnchorNavigation
+          links={[
+            <a href="#fonter" target="_self">
+              Fonter
+            </a>,
+            <a href="#storrelser" target="_self">
+              Skriftstørrelser
+            </a>,
+            <a href="#overskrifter" target="_self">
+              Overskrifter
+            </a>,
+            <a href="#ingress" target="_self">
+              Ingress
+            </a>,
+            <a href="#avsnitt" target="_self">
+              Avsnitt
+            </a>,
+            <a href="#lenker" target="_self">
+              Lenker
+            </a>,
+          ]}
+        />
       </StoryIntro>
       <StoryBody>
         <h2 id="fonter" className="u-heading">
@@ -313,7 +329,7 @@ storiesOf('Grunnstiler', module)
 
         <p>
           Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag
-          for nivå 3, 4 osv. - vil disse få samme stil som nivå 2 nedenfor:
+          for nivå 3, 4 osv, vil de få samme stil som nivå 2 nedenfor:
         </p>
         <div className="c-bodybox">
           <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
@@ -322,12 +338,12 @@ storiesOf('Grunnstiler', module)
         <h2 id="ingress" className="u-heading">
           Ingress
         </h2>
-        <p>Ingresser skal være 1-2 setninger, og gi en oppsummering </p>
+        <p>Ingresser skal være 1-3 setninger, og gi en oppsummering.</p>
         <div className="c-bodybox">
           <section className="article_introduction">
             <p className="article_introduction">
               Idéutvikling er en viktig del av alt profesjonelt arbeid med
-              medieuttrykk. I vertøykassa si har medieprodusenten et knippe
+              medieuttrykk. I verktøykassa si har medieprodusenten et knippe
               fortelleteknikker og virkemidler innen design, tekst, lyd og
               bilde.
             </p>
@@ -338,13 +354,13 @@ storiesOf('Grunnstiler', module)
         </h2>
         <p>
           Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å
-          lese. Dette betyr at linjelengden ikke skal være for lang, og at vi
-          bruker stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter
-          som en standardstørrelse, men siden NDLA har mange teksttunge sider
-          bruker vi 18 punkter.
+          lese. Dette betyr at linjene ikke skal være for lange, og at vi bruker
+          stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter som en
+          standardstørrelse, men siden NDLA har mange teksttunge sider, bruker
+          vi 18 punkter.
         </p>
         <p>
-          En tekstlinje i full bredde skal utgjøre omtrent 50 – 75 tegn, om{' '}
+          En tekstlinje i full bredde skal utgjøre omtrent 50–75 tegn. Om{' '}
           <span className="u-mark">*</span>-tegnene i setningen under kommer på
           samme linje, er den for lang:
         </p>
@@ -369,14 +385,14 @@ storiesOf('Grunnstiler', module)
           en overskrift.
         </p>
         <p>
-          Det skal vuderes i fremtiden om det er behov for markering av eksterne
-          lenker.
+          Det skal vurderes i framtiden om det er behov for markering av
+          eksterne lenker.
         </p>
         <div className="c-bodybox">
           <p>
             Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en{' '}
             <a href="/">intern lenke</a>, og dette er en{' '}
-            <a href="#overskrift">lenke som viser til innhold på samme side</a>
+            <a href="#overskrift">lenke som viser til innhold på samme side</a>.
           </p>
         </div>
 
@@ -388,12 +404,12 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Tabeller">
         <p>
-          Tabeller skal brukes til å presentere data (tabulær data), ikke til
-          utforming. Det anbefales å holde tabellene så enkle som mulig, ved mer
+          Tabeller skal brukes til å presentere data (tabulære data), ikke til
+          utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer
           kompleksitet kan data heller deles opp i flere tabeller.
         </p>
         <p>
-          Tekstformatering, høyrestilling av tekst etc. angis ikke i tabellens
+          Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens
           stilsett, men gjøres i redaktørgrensesnittet.
         </p>
         <p>
@@ -401,7 +417,7 @@ storiesOf('Grunnstiler', module)
         </p>
         <p>
           Titlene kan kuttes ut, plasseres som en topprad (thead), eller som
-          første rad i en tabell (innenfor tbody). De vil bli stilert etter
+          første rad i en tabell (innenfor tbody). De vil bli stilet etter
           plassering.
         </p>
         <p>
@@ -410,7 +426,7 @@ storiesOf('Grunnstiler', module)
         </p>
         <code>&lt;th scope=&quot;row&quot;&gt;</code>
         <p>
-          Tabeller kan ha en tilknyttet tittel ved bruk av elementet:
+          Tabeller kan ha en tilknyttet tittel ved bruk av elementet:{' '}
           <code>&lt;caption&gt;</code>
         </p>
       </StoryIntro>
@@ -960,8 +976,8 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Sitater">
         <p>
-          Sitater som strekker seg over tre linjer i vanlig linjelengde er best
-          å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere
+          Sitater som strekker seg over tre linjer i vanlig linjelengde, er det
+          best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere
           sitater, men &laquo;&raquo;
         </p>
       </StoryIntro>
@@ -1013,16 +1029,16 @@ storiesOf('Grunnstiler', module)
           </div>
         </div>
         <p>
-          Luft brukes for å visuelt gruppere elementer på en flate, og rette
-          fokus på de riktige elementene. Har et element mye luft rundt seg, kan
-          det lettere få fokus. Har to elementer lite luft mellom seg, oppfattes
-          de gjerne som beslektet.
+          Luft brukes for visuelt å gruppere elementer på en flate og føre
+          oppmerksomheten mot de riktige elementene. Har et element mye luft
+          rundt seg, får det lettere oppmerksomhet. Har to elementer lite luft
+          mellom seg, oppfattes de gjerne som beslektet.
         </p>
         <p>
-          Luft må også brukes med tanke på ulike enheter, vi ønsker å redusere
-          avstandene på mindre enheter, så innholdet tar mindre plass. Bruker
-          man stor avstand et sted på store skjermer, kan man dermed redusere
-          til liten avstand på små skjermer.
+          Luft må også brukes for tilpassing til visning på ulike enheter. Vi
+          ønsker å redusere avstandene på mindre enheter slik at innholdet der
+          tar mindre plass. Er det brukt stor avstand et sted på store skjermer,
+          blir det dermed reduseret til liten avstand på små skjermer.
         </p>
         <p>
           Når nye NDLA skal tas ut på nye flater, anbefales det å forholde seg

@@ -20,15 +20,15 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Bilde">
         <p>
-          Bilder vises i tre formater: Fullbredde midtstilt, venstrestilt, og
-          høyrestilt. Bilder som ikke er fullbredde kan ekspanderes på klikk.
+          Bilder vises i tre formater: fullbredde midtstilt, venstrestilt og
+          høyrestilt. Bilder som ikke er fullbredde, kan ekspanderes på klikk.
         </p>
         <p>
-          Under bildet vises lisensikoner, forfatter, og handlingsknapp «Bruk
-          bildet» for å se lisensboksen for bildet.
+          Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
+          bildet» som gjør at brukeren får opp lisensboksen for bildet.
         </p>
         <p>
-          Ved klikk på «Last ned bilde» i lisensboksen, laster man ned
+          Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
           fullversjonen av bildet.
         </p>
       </StoryIntro>
@@ -95,9 +95,9 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Bilde under ingress">
         <p>
           Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk
-          helst bilder av mennesker, relevante og naturlige bilder. Bildet må
-          være i landskapsformat, slik at det ikke blir så høyt at det skyver
-          brødteksten for langt ned på siden.
+          helst bilder av mennesker og bilder som er relevante og naturlige.
+          Bildet må være i landskapsformat, slik at det ikke blir så høyt at det
+          skyver brødteksten for langt ned på siden.
         </p>
         <p>
           Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
@@ -118,8 +118,8 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Boks i tekst">
         <p>
-          En boks i teksten kan brukes for å fremheve noe av særlig interesse,
-          annet enn sitat (som det allerede fins sitatstil til).
+          En boks i teksten kan brukes for å framheve noe av særlig interesse,
+          annet enn sitat (som det fins egen sitatstil til).
         </p>
         <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
       </StoryIntro>
@@ -313,11 +313,11 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Bruk av lenker">
         <p>
           Lenker på <a href="//ndla.no">ndla.no</a> bruker den vanlige
-          konvensjonen med underlinje. Lenker skal i hovedsak åpne i samme
-          vindu, (det vil si, bruke <code>target=&quot;_self&quot;</code>) eller
-          ingen target-attributt, med mindre den inngår i et skjema, eller i en
-          læringssammenhengen hvor det er nødvendig at brukeren beholder vinduet
-          eller fanen man står i.
+          konvensjonen med underlinje. Lenker skal i hovedsak åpne seg i samme
+          vindu (det vil si at vi bruker <code>target=&quot;_self&quot;</code>{' '}
+          eller ingen target-attributt). Unntaket er hvis lenken inngår i et
+          skjema eller læringssammenhengen gjør det er nødvendig at brukerne
+          beholder vinduet eller fanen de står i.
         </p>
       </StoryIntro>
     </div>
@@ -327,7 +327,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Faktaboks og høyrespalte">
         <p>
           For alt nytt innhold på ndla.no skal ikke flytende høyrespalte
-          benyttes, i stedet benytter man faktabokser innenfor innholdsspalten.
+          benyttes. I stedet benytter vi faktabokser innenfor innholdsspalten.
           Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
         </p>
         <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
@@ -353,9 +353,10 @@ storiesOf('Enkle komponenter', module)
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
-              nytt nettsted, kan den likevel brukes. Innholdet skal etter hvert
-              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
-              innhold kan bakes inn i artikkelteksten, eller slettes.
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
             </p>
             <p>
               Om artikkelen har et bilde under ingressen, må høyrespalten
@@ -386,15 +387,15 @@ storiesOf('Enkle komponenter', module)
             <div className="c-aside__title">Faktaboks</div>
             <p>
               En faktaboks kan inneholde punktlister eller korte fakta som er
-              relevant til artikkelens innhold.
+              relevant for artikkelens innhold.
             </p>
             <p>
-              Det anbefales å ikke ha for mye innhold i en faktaboks, for å i
-              størst mulig grad beholde lese-konteksten.
+              Det anbefales å ikke ha for mye innhold i faktaboks, slik at
+              lese-konteksten i størst mulig grad beholdes.
             </p>
             <p>
               Faktaboksen kan også brukes til å oppsummere innhold i slutten av
-              en artikkel. Og den kan inneholde lisensiering om eksternt innhold
+              en artikkel, og den kan inneholde lisensiering om eksternt innhold
               er brukt.
             </p>
             <div className="c-source-list">
@@ -426,8 +427,8 @@ storiesOf('Enkle komponenter', module)
           </a>.
         </p>
         <p>
-          I teksten brukes en enkel nummerering for å henvise til referanse, og
-          tallet lenkes til den aktuelle referansen.
+          I teksten brukes en enkel nummerering for å henvise til referanse.
+          Tallet lenkes til den aktuelle referansen.
         </p>
         <p>
           I referanselisten nederst lenkes hver referanse igjen til hvor de
@@ -569,13 +570,13 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Knapper">
         <p>
-          Knapper er til å klikke på, ikke for å lenke til, og skal brukes til
-          interaktivitet på samme side, ikke for å sende brukeren til en ny side
-          (da brukes vanlig lenke).
+          Knapper er til å klikke på for å navigere på samme side, ikke for å
+          lenke til en annen. De skal altså brukes til interaktivitet på samme
+          side. For å sende brukeren til en annen side brukes vanlig lenke.
         </p>
         <p>
           Knapp med ramme brukes for de fleste knapper, men er det behov for
-          ekstra oppmerksomhet kan fylt knapp benyttes.
+          ekstra oppmerksomhet, kan fylt knapp benyttes.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -608,7 +609,7 @@ storiesOf('Enkle komponenter', module)
         <p>
           Logoen består av navnet NDLA i en spesiell typografi og bør
           hovedsakelig benyttes sammen med underteksten. Logo uten undertekst
-          kan benyttes i tilfeller der det kommer godt fram andre steder hvem
+          kan benyttes i tilfeller der det kommer godt fram andre steder hva
           NDLA er, eksempelvis på ndla.no.
         </p>
         <p>

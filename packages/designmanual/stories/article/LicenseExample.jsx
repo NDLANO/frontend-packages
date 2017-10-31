@@ -187,7 +187,7 @@ const ImageContent = () => (
     <div className="u-introduction">
       <h2>Slik bruker du bilder fra artikkelen</h2>
       <p className="article-introduction">
-        Husk å kopier teksten som skal legges ved bildet der du bruker det.
+        Husk å kopiere teksten som skal vises med bildet der du bruker det.
       </p>
     </div>
     <MediaList>

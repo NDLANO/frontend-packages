@@ -18,7 +18,6 @@ import {
   ResourcesWrapper,
   ResourcesTitle,
   TopicIntroductionList,
-  RelatedArticles,
   LayoutItem,
   Breadcrumb,
   Content,
@@ -33,11 +32,8 @@ import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
-import article, {
-  topicList,
-  subjectList,
-  articleResources,
-} from '../../dummydata/index';
+import article, { topicList, subjectList } from '../../dummydata/index';
+import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
@@ -83,7 +79,7 @@ storiesOf('Sidevisninger', module)
         <OneColumn>
           <article className="c-article">
             <LayoutItem layout="extend">
-              <RelatedArticles resources={articleResources} />
+              <RelatedArticleListExample />
               <Resources />
             </LayoutItem>
           </article>
@@ -332,7 +328,7 @@ storiesOf('Emnesider', module)
         <ArticleLoader articleId="5948" />
         <OneColumn>
           <LayoutItem layout="extend">
-            <RelatedArticles resources={articleResources} />
+            <RelatedArticleListExample />
             <Resources />
           </LayoutItem>
         </OneColumn>
@@ -365,7 +361,7 @@ storiesOf('Emnesider', module)
         </LayoutItem>
         <OneColumn>
           <LayoutItem layout="extend">
-            <RelatedArticles resources={articleResources} />
+            <RelatedArticleListExample />
             <Resources />
           </LayoutItem>
         </OneColumn>

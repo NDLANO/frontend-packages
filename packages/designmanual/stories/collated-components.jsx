@@ -17,14 +17,13 @@ import {
   PageContainer,
   Content,
   LayoutItem,
-  RelatedArticles,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
-import { topicList, subjectList, articleResources } from '../dummydata/index';
+import { topicList, subjectList } from '../dummydata/index';
 import {
   MastheadLeftRight,
   MastheadWithTopicMenu,
@@ -33,6 +32,7 @@ import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample, { LicenseBox } from './article/LicenseExample';
 import GlossaryExample from './organisms/GlossaryExample';
+import RelatedArticleListExample from './article/RelatedArticleListExample';
 
 const toggle = () => {
   document
@@ -261,7 +261,7 @@ storiesOf('Sammensatte moduler', module)
         <p>1 eller 2 artikler vises.</p>
       </StoryIntro>
       <StoryBody>
-        <RelatedArticles resources={articleResources} />
+        <RelatedArticleListExample />
       </StoryBody>
     </div>
   ))

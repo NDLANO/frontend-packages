@@ -44,7 +44,8 @@ export const ArticleShape = PropTypes.shape({
 });
 
 export const ResourceShape = PropTypes.shape({
-  path: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  introduction: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  contentUri: PropTypes.string,
+  primary: PropTypes.bool,
 });

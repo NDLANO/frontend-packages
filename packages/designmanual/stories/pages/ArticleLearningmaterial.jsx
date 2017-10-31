@@ -15,14 +15,13 @@ import {
   ArticleWrapper,
   ArticleIntroduction,
   ArticleByline,
-  RelatedArticles,
 } from 'ndla-ui';
 import { Document } from 'ndla-ui/icons';
 
 import { Resources } from '../molecules/resources';
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
-import { articleResources } from '../../dummydata/index';
+import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 export default () => (
   <OneColumn>
@@ -102,7 +101,7 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
-        <RelatedArticles resources={articleResources} />
+        <RelatedArticleListExample />
       </LayoutItem>
       <LayoutItem layout="extend">
         <Resources />

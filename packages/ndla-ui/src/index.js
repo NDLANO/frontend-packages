@@ -39,7 +39,10 @@ export {
 } from './topic/TopicIntroductionList';
 export { default as TopicMenu } from './topicMenu/TopicMenu';
 export { default as Placeholder } from './placeholders/Placeholder';
-export { default as RelatedArticles } from './RelatedArticles/RelatedArticles';
+export {
+  default as RelatedArticleList,
+  RelatedArticle,
+} from './RelatedArticleList';
 export {
   default as ResourcesWrapper,
   ResourcesTitle,

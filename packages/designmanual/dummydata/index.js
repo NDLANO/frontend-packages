@@ -10,7 +10,7 @@ import {
   learningPathResources,
   articleResources,
   exerciseResources,
-} from './resources';
+} from './mockResources';
 import { subjectList } from './mockSubjects';
 import {
   firstBrightcoveList,

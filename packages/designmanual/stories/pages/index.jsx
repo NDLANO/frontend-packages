@@ -15,9 +15,9 @@ import {
   ErrorMessage,
   OneColumn,
   PageContainer,
-  ResourceWrapper,
+  ResourcesWrapper,
+  ResourcesTitle,
   TopicIntroductionList,
-  RelatedArticles,
   LayoutItem,
   Breadcrumb,
   Content,
@@ -26,24 +26,21 @@ import {
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
 import { StoryBody } from '../wrappers';
-import { ResourceSubsetList } from '../molecules/resources';
+import { Resources } from '../molecules/resources';
 
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
-import article, {
-  topicList,
-  subjectList,
-  articleResources,
-} from '../../dummydata/index';
+import article, { topicList, subjectList } from '../../dummydata/index';
+import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
-    <ResourceWrapper>
-      <h1 className="c-resources__title">Emner</h1>
+    <ResourcesWrapper>
+      <ResourcesTitle>Emner</ResourcesTitle>
       <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-    </ResourceWrapper>
+    </ResourcesWrapper>
   </LayoutItem>
 );
 
@@ -82,8 +79,8 @@ storiesOf('Sidevisninger', module)
         <OneColumn>
           <article className="c-article">
             <LayoutItem layout="extend">
-              <RelatedArticles resources={articleResources} />
-              <ResourceSubsetList />
+              <RelatedArticleListExample />
+              <Resources />
             </LayoutItem>
           </article>
         </OneColumn>
@@ -296,12 +293,12 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="1325" isTopicArticle />
+        <ArticleLoader articleId="6104" />
         <OneColumn>
           <article className="c-article">
             <ResourcesSubTopics />
             <LayoutItem layout="extend">
-              <ResourceSubsetList />
+              <Resources />
             </LayoutItem>
           </article>
         </OneColumn>
@@ -328,14 +325,12 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="5948" notitle />
+        <ArticleLoader articleId="5948" />
         <OneColumn>
-          <article className="c-article">
-            <LayoutItem layout="extend">
-              <RelatedArticles resources={articleResources} />
-              <ResourceSubsetList />
-            </LayoutItem>
-          </article>
+          <LayoutItem layout="extend">
+            <RelatedArticleListExample />
+            <Resources />
+          </LayoutItem>
         </OneColumn>
       </Content>
       <FooterExample />
@@ -365,12 +360,10 @@ storiesOf('Emnesider', module)
           <div className="u-padding-bottom-huge" />
         </LayoutItem>
         <OneColumn>
-          <article className="c-article">
-            <LayoutItem layout="extend">
-              <RelatedArticles resources={articleResources} />
-              <ResourceSubsetList />
-            </LayoutItem>
-          </article>
+          <LayoutItem layout="extend">
+            <RelatedArticleListExample />
+            <Resources />
+          </LayoutItem>
         </OneColumn>
       </Content>
       <FooterExample />

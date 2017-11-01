@@ -8,42 +8,43 @@
 
 import React from 'react';
 
-import { OneColumn, LayoutItem } from 'ndla-ui';
-import { Time, Pencil, User } from 'ndla-ui/icons';
+import {
+  OneColumn,
+  LayoutItem,
+  ArticleTitle,
+  ArticleWrapper,
+  ArticleByline,
+  ArticleIntroduction,
+} from 'ndla-ui';
+import { Pencil } from 'ndla-ui/icons';
 
-import { ResourceSubsetList } from '../molecules/resources';
+import { Resources } from '../molecules/resources';
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
-import article from '../../dummydata/index';
 
 export default () => (
   <OneColumn cssModifier="narrow">
-    <article className="c-article">
+    <ArticleWrapper>
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon">
-          <Pencil />Oppgave eller aktivitet
-        </h1>
-        <p className="article_introduction">
+        <ArticleTitle icon={<Pencil />}>Oppgave eller aktivitet</ArticleTitle>
+        <ArticleIntroduction>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <User />
-            </span>
-            <span className="c-article-byline__authors">
-              Ola Nordnes, Kari Nordnes, Jon Nordgubbe. <br />(BY-NC-ND)
-            </span>
-          </span>
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Time />
-            </span>
-            <span className="c-article-byline__date">Publisert 12/10/2016</span>
-            <LicenseExample />
-          </span>
-        </div>
+        </ArticleIntroduction>
+        <ArticleByline
+          authors={[
+            { name: 'Ola Nordnes' },
+            { name: 'Kari Nordnes' },
+            { name: 'Jon Nordgubbe' },
+          ]}
+          updated="12/10/2016"
+          license="BY-NC-ND"
+          messages={{
+            writtenBy: '',
+            lastUpdated: 'Publisert',
+          }}>
+          <LicenseExample />
+        </ArticleByline>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>
@@ -83,8 +84,8 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
-        <ResourceSubsetList />
+        <Resources />
       </LayoutItem>
-    </article>
+    </ArticleWrapper>
   </OneColumn>
 );

@@ -161,7 +161,7 @@ async function deploy(sha) {
   );
 
   // check on the site for ten minutes every 10 seconds
-  await awaitUrl(targetUrl, { interval: 10000, tries: 120 }).catch(err => {
+  await awaitUrl(targetUrl, { interval: 10000, tries: 60 }).catch(err => {
     console.error('Error waiting for the deployment to be ready.');
     onError(sha, err);
     throw err;

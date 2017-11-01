@@ -21,8 +21,7 @@ export const FooterRuler = () => <div className="footer_ruler" />;
 
 export const FooterEditor = ({ title, name }) => (
   <span className="footer_editor">
-    {title}
-    <strong>{name}</strong>
+    {title} <strong>{name}</strong>
   </span>
 );
 

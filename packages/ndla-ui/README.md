@@ -36,7 +36,7 @@ See: [package.json](package.json) for version requirements
 
 ### Simplified example
 ```jsx
-import { Hero, OneColumn, TopicArticle, Breadcrumb } from 'ndla-ui';
+import { Hero, OneColumn, Article, Breadcrumb } from 'ndla-ui';
 
 const MyPage = ({topicPath, topic, article}) => {
   return (
@@ -53,7 +53,7 @@ const MyPage = ({topicPath, topic, article}) => {
       </Hero>
       <div className="u-bg-lightblue">
         <OneColumn cssModifier="narrow">
-          <TopicArticle article={article} />
+          <Article article={article} />
         </OneColumn>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { uuid } from 'ndla-util';
-import { getLicenseRightByAbbreviation } from 'ndla-licenses';
+import { getLicenseRightByAbbreviation, getLicenseByAbbreviation } from 'ndla-licenses';
 import { storiesOf } from '@storybook/react';
 import { StoryIntro, StoryBody } from './wrappers';
 
-const licenses = [
+const licensesRights = [
   'by',
   'sa',
   'nc',
@@ -15,13 +15,72 @@ const licenses = [
   'copy',
 ].map(license => getLicenseRightByAbbreviation(license));
 
-storiesOf('Lisensgivning', module).add('Lisenstekster', () => (
+const licenses = [
+  'by-nc-nd',
+  'by-nc-sa',
+  'by-nc',
+  'by-nd',
+  'by-sa',
+  'by',
+  'pd',
+  'cc0',
+  'copy',
+].map(license => ({
+  code: license,
+  data: getLicenseByAbbreviation(license, 'nb'),
+}));
+
+storiesOf('Lisensgivning', module)
+.add('Sammensatte lisenser', () => (
+  <div>
+    <StoryIntro title="Sammensatte lisenser">
+      <p>Liste over lisenser som brukes på ndla</p>
+    </StoryIntro>
+    <StoryBody>
+      {licenses.map(license => (
+        <article key={uuid()}>
+          <h2>{license.data.title}</h2>
+          <table>
+            <thead>
+              <tr>
+                <th colSpan="2">Felter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kode</td>
+                <td>{license.code.toUpperCase()}</td>
+              </tr>
+              <tr>
+                <td>Kort tittel</td>
+                <td>{license.data.short}</td>
+              </tr>
+              <tr>
+                <td>Url</td>
+                <td>{license.data.url}</td>
+              </tr>
+              <tr>
+                <td>Linktekst</td>
+                <td>{license.data.linkText}</td>
+              </tr>
+              <tr>
+                <td>Beskrivelse</td>
+                <td>{license.data.description}</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      ))}
+    </StoryBody>
+  </div>
+))
+.add('Lisenstekster', () => (
   <div>
     <StoryIntro title="Lisenstekster">
       <p>Lisenstekster og merking</p>
     </StoryIntro>
     <StoryBody>
-      {licenses.map(license => (
+      {licensesRights.map(license => (
         <article key={uuid()}>
           <h2>{license.title}</h2>
           <p>{license.description}</p>
@@ -29,8 +88,7 @@ storiesOf('Lisensgivning', module).add('Lisenstekster', () => (
       ))}
     </StoryBody>
   </div>
-));
-storiesOf('Lisensgivning', module).add('Modellklarering', () => (
+)).add('Modellklarering', () => (
   <div>
     <StoryIntro title="Modellklarering på personbilder" />
     <StoryBody>

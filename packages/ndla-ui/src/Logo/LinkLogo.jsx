@@ -11,40 +11,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SvgLogo from './SvgLogo';
-import LinkLogo from './LinkLogo';
 
 export const logoClasses = new BEMHelper({
   name: 'logo',
   prefix: 'c-',
 });
 
-export const Logo = ({ name, cssModifier, to }) => {
-  if (to) {
-    return <LinkLogo name={name} to={to} cssModifier={cssModifier} />;
+const getUrl = (to) => {
+  const isObject = typeof to === 'object';
+  if (isObject) {
+    const search = to.search ? to.search : '';
+    const hash = to.hash ? to.hash : '';
+    return `${to.pathname}${hash}${search}`;
   }
-  return (
+  return to;
+}
+
+export const LinkLogo = ({ name, to, cssModifier }) => (
+  <a href={getUrl(to)}>
     <h1 {...logoClasses('', cssModifier)}>
       <SvgLogo name={name} />
     </h1>
-  );
-};
+  </a>
+);
 
-Logo.propTypes = {
-  to: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      search: PropTypes.string,
-      hash: PropTypes.string,
-    }),
-  ]),
-  altText: PropTypes.string.isRequired,
+
+LinkLogo.propTypes = {
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    search: PropTypes.string,
+    hash: PropTypes.string,
+  })]).isRequired,
   cssModifier: PropTypes.string,
   name: PropTypes.bool,
 };
 
-Logo.defaultProps = {
+LinkLogo.defaultProps = {
   name: true,
 };
 
-export default Logo;
+export default LinkLogo;

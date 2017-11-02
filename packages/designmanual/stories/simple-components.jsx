@@ -620,12 +620,31 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
+        <h3>Logo uten url</h3>
         <Logo
           cssModifier="large"
           name
-          to="#"
           altText="Nasjonal digital læringsarena"
         />
+        <code style={{marginLeft: 0}}>&lt;Logo name cssModifier=&quot;{'large'}&quot; /&gt;</code>
+
+        <h3>Logo med url som streng</h3>
+        <Logo
+          cssModifier="large"
+          name
+          to="/"
+          altText="Nasjonal digital læringsarena"
+        />
+      <code style={{marginLeft: 0}}>&lt;Logo name to=&quot;{'/'}&quot; cssModifier=&quot;{'large'}&quot; /&gt;</code>
+
+        <h3>Logo med url som objekt</h3>
+          <Logo
+            cssModifier="large"
+            name
+            to={{pathname: "/", search: "?query=true", hash: "#design"}}
+            altText="Nasjonal digital læringsarena"
+          />
+        <code style={{marginLeft: 0}}>&lt;Logo name to={'{pathname: "/", search: "?query=true", hash: "#design"}'} cssModifier=&quot;{'large'}&quot; /&gt;</code>
       </StoryBody>
     </div>
   ));

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
+import { getLicenseRightByAbbreviation } from 'ndla-licenses';
 import LicenseIcon from './LicenseIcon';
 
 const classes = new BEMHelper({
@@ -38,16 +38,13 @@ LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
 };
 
-const LicenseIconList = ({ licenseRights, className }) => {
-  const licenseRightsWithCC = [CC, ...licenseRights];
-  return (
-    <ul {...classes('list', '', className)}>
-      {licenseRightsWithCC.map(licenseRight => (
-        <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />
-      ))}
-    </ul>
-  );
-};
+const LicenseIconList = ({ licenseRights, className }) => (
+  <ul {...classes('list', '', className)}>
+    {licenseRights.map(licenseRight => (
+      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />
+    ))}
+  </ul>
+);
 
 LicenseIconList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,

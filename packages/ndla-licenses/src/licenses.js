@@ -9,7 +9,7 @@
 /* eslint max-len: 0 */
 
 import defined from 'defined';
-import { BY, SA, NC, ND, PD, CC0, COPY } from './licenseRights';
+import { BY, SA, NC, ND, PD, CC0, COPY, CC } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseEN = 'Free reuse';
@@ -39,7 +39,7 @@ const byncnd = {
     description:
       'This license is the most restrictive of our six main licenses, only allowing others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.',
   },
-  rights: [BY, NC, ND],
+  rights: [CC, BY, NC, ND],
 };
 
 const byncsa = {
@@ -62,7 +62,7 @@ const byncsa = {
     description:
       'This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.',
   },
-  rights: [BY, NC, SA],
+  rights: [CC, BY, NC, SA],
 };
 
 const bync = {
@@ -85,7 +85,7 @@ const bync = {
     description:
       'This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.',
   },
-  rights: [BY, NC],
+  rights: [CC, BY, NC],
 };
 
 const bynd = {
@@ -108,7 +108,7 @@ const bynd = {
     description:
       'This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.',
   },
-  rights: [BY, ND],
+  rights: [CC, BY, ND],
 };
 
 const bysa = {
@@ -131,7 +131,7 @@ const bysa = {
     description:
       'This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.',
   },
-  rights: [BY, SA],
+  rights: [CC, BY, SA],
 };
 
 const by = {
@@ -154,7 +154,7 @@ const by = {
     description:
       'This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.',
   },
-  rights: [BY],
+  rights: [CC, BY],
 };
 
 

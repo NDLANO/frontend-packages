@@ -12,7 +12,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
-import { getLicenseUrlByLicenses } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 
 import LicenseByline from '../LicenseByline';
@@ -32,52 +31,49 @@ export const FigureDetails = ({
   origin,
   messages,
   licenseRights,
+  licenseUrl,
   resourceUrl,
-}) => {
-  const licenseUrl = getLicenseUrlByLicenses(licenseRights);
-
-  return (
-    <div {...classes('license')} id="figmeta">
-      <button {...classes('close')}>{messages.close}</button>
-      <div className="u-expanded">
-        <div {...classLicenses('details')}>
-          <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
-          <LicenseByline withDescription licenseRights={licenseRights} />
-          <a
-            className="c-figure-license__link"
-            target="_blank"
-            rel="noopener noreferrer license"
-            about={resourceUrl}
-            href={licenseUrl}>
-            {messages.learnAboutOpenLicenses}
-          </a>
-          <div {...classLicenses('cta-wrapper')}>
-            <ul {...classes('list')}>
-              {authors.map(author => (
-                <li
-                  key={uuid()}
-                  className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
-              ))}
-              {origin && (
-                <li>
-                  {messages.source}:{' '}
-                  {origin.startsWith('http') ? (
-                    <a href={origin} target="_blank" rel="noopener noreferrer">
-                      {origin}
-                    </a>
-                  ) : (
-                    origin
-                  )}
-                </li>
-              )}
-            </ul>
-            <div {...classLicenses('cta-block')}>{children}</div>
-          </div>
+}) => (
+  <div {...classes('license')} id="figmeta">
+    <button {...classes('close')}>{messages.close}</button>
+    <div className="u-expanded">
+      <div {...classLicenses('details')}>
+        <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
+        <LicenseByline withDescription licenseRights={licenseRights} />
+        <a
+          className="c-figure-license__link"
+          target="_blank"
+          rel="noopener noreferrer license"
+          about={resourceUrl}
+          href={licenseUrl}>
+          {messages.learnAboutLicenses}
+        </a>
+        <div {...classLicenses('cta-wrapper')}>
+          <ul {...classes('list')}>
+            {authors.map(author => (
+              <li
+                key={uuid()}
+                className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
+            ))}
+            {origin && (
+              <li>
+                {messages.source}:{' '}
+                {origin.startsWith('http') ? (
+                  <a href={origin} target="_blank" rel="noopener noreferrer">
+                    {origin}
+                  </a>
+                ) : (
+                  origin
+                )}
+              </li>
+            )}
+          </ul>
+          <div {...classLicenses('cta-block')}>{children}</div>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 FigureDetails.propTypes = {
   children: PropTypes.node,
@@ -93,8 +89,9 @@ FigureDetails.propTypes = {
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
-    learnAboutOpenLicenses: PropTypes.string.isRequired,
+    learnAboutLicenses: PropTypes.string.isRequired,
   }).isRequired,
+  licenseUrl: PropTypes.string.isRequired,
   resourceUrl: PropTypes.string.isRequired,
 };
 

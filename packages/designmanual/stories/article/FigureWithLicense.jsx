@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BY, NC, ND } from 'ndla-licenses';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
 import {
   addCloseFigureDetailsClickListeners,
   addShowFigureDetailsClickListeners,
@@ -38,10 +38,12 @@ class FigureWithLicense extends Component {
   }
 
   render() {
+    const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
+
     const messages = {
       close: 'Lukk',
       rulesForUse: 'Regler for bruk av bildet',
-      learnAboutOpenLicenses: 'Lær mer om åpne lisenser',
+      learnAboutLicenses: license.linkText,
       source: 'Kilde',
     };
     const caption = this.props.caption ? this.props.caption : ``;
@@ -62,13 +64,14 @@ class FigureWithLicense extends Component {
         <FigureCaption
           caption={caption}
           reuseLabel={reuseLabel}
-          licenseRights={[BY, NC, ND]}
+          licenseRights={license.rights}
           authors={authors}
         />
         <FigureDetails
-          licenseRights={[BY, NC, ND]}
+          licenseRights={license.rights}
           authors={authors}
           resourceUrl={this.props.resourceUrl}
+          licenseUrl={license.url}
           origin="https://www.wikimedia.com"
           messages={messages}>
           <button

@@ -45,18 +45,21 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListCCLink = ({ children }) => (
+export const MediaListCCLink = ({ children, resourceUrl, url }) => (
   <a
     className="c-figure-license__link"
     target="_blank"
-    rel="noopener noreferrer"
-    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.no">
+    rel="noopener noreferrer license"
+    about={resourceUrl}
+    href={url}>
     {children}
   </a>
 );
 
 MediaListCCLink.propTypes = {
   children: PropTypes.node.isRequired,
+  url: PropTypes.string.isRequired,
+  resourceUrl: PropTypes.string.isRequired,
 };
 
 MediaListCCLink.defaultProps = {

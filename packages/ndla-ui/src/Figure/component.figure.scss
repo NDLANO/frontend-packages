@@ -21,11 +21,13 @@
 ** </figure>
 **/
 
-
 /* 1. */
 .c-figure {
   img {
     width: 100%;
+  }
+  iframe {
+    display: block;
   }
 }
 .c-figure {
@@ -33,7 +35,7 @@
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
   }
-  transition: transform .2s, width .2s, height .2s;
+  transition: transform 0.2s, width 0.2s, height 0.2s;
 }
 
 /* 2. */
@@ -66,16 +68,17 @@
   .c-license-icons__list {
     flex-direction: row;
     text-align: center;
-    justify-content:center;
+    justify-content: center;
   }
 
   .c-figure__captionbtn {
     svg {
-      display:none;
+      display: none;
     }
   }
 
-  .c-license-icons__licenselabel { // remove license descriptions
+  .c-license-icons__licenselabel {
+    // remove license descriptions
     display: none;
   }
 }
@@ -102,7 +105,6 @@
   margin-bottom: 0;
 }
 
-
 /* 3. */
 .c-figure--active {
   margin-bottom: $spacing--large*2;
@@ -111,7 +113,7 @@
 
   .c-figure__license {
     background-color: $brand-color--lighter;
-    box-shadow: 0 0 30px rgba($black, .2);
+    box-shadow: 0 0 30px rgba($black, 0.2);
     padding: $spacing;
     z-index: 10;
     @include mq(tablet) {
@@ -119,18 +121,18 @@
       margin: 0 auto;
       position: absolute;
       bottom: -60px;
-      left:0;
+      left: 0;
       right: 0;
       opacity: 1;
       animation-name: fadeInBottom;
-      animation-duration: .5s;
+      animation-duration: 0.5s;
     }
   }
 
   .c-figure__close {
     display: block;
     position: absolute;
-    top: $spacing*.9;
+    top: $spacing*0.9;
     right: $spacing;
     background: transparent;
     border: none;

@@ -11,7 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SvgLogo from './SvgLogo';
-import LinkLogo from './LinkLogo';
+import SafeLink from '../common/SafeLink';
 
 export const logoClasses = new BEMHelper({
   name: 'logo',
@@ -19,14 +19,14 @@ export const logoClasses = new BEMHelper({
 });
 
 export const Logo = ({ name, cssModifier, to }) => {
-  if (to) {
-    return <LinkLogo name={name} to={to} cssModifier={cssModifier} />;
-  }
-  return (
-    <h1 {...logoClasses('', cssModifier)}>
+  const logo = to ? (
+    <SafeLink to={to}>
       <SvgLogo name={name} />
-    </h1>
+    </SafeLink>
+  ) : (
+    <SvgLogo name={name} />
   );
+  return <h1 {...logoClasses('', cssModifier)}>{logo}</h1>;
 };
 
 Logo.propTypes = {

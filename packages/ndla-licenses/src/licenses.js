@@ -213,7 +213,7 @@ const copy = {
     url: 'http://www.delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær mer om opphavsrett',
     description:
-      'TODO: write description',
+      'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.',
   },
 
   en: {
@@ -223,7 +223,7 @@ const copy = {
     url: 'http://www.delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Learn more about copyright',
     description:
-      'TODO: write description',
+      'Only those who have created the content can modify, publish, and give others permission to use the content.',
   },
   rights: [COPY],
 };

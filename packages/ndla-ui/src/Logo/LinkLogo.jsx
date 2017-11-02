@@ -17,7 +17,7 @@ export const logoClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-const getUrl = (to) => {
+const getUrl = to => {
   const isObject = typeof to === 'object';
   if (isObject) {
     const search = to.search ? to.search : '';
@@ -25,7 +25,7 @@ const getUrl = (to) => {
     return `${to.pathname}${hash}${search}`;
   }
   return to;
-}
+};
 
 export const LinkLogo = ({ name, to, cssModifier }) => (
   <a href={getUrl(to)}>
@@ -35,13 +35,15 @@ export const LinkLogo = ({ name, to, cssModifier }) => (
   </a>
 );
 
-
 LinkLogo.propTypes = {
-  to: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    search: PropTypes.string,
-    hash: PropTypes.string,
-  })]).isRequired,
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string,
+      hash: PropTypes.string,
+    }),
+  ]).isRequired,
   cssModifier: PropTypes.string,
   name: PropTypes.bool,
 };

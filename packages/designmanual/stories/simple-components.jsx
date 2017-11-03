@@ -620,10 +620,18 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
+        <h3>Logo uten url</h3>
         <Logo
           cssModifier="large"
           name
-          to="#"
+          altText="Nasjonal digital læringsarena"
+        />
+
+        <h3>Logo med url</h3>
+        <Logo
+          cssModifier="large"
+          name
+          to="/"
           altText="Nasjonal digital læringsarena"
         />
       </StoryBody>

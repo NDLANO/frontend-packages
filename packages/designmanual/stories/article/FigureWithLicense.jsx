@@ -72,6 +72,7 @@ class FigureWithLicense extends Component {
           authors={authors}
           resourceUrl={this.props.resourceUrl}
           licenseUrl={license.url}
+          resourceType="image"
           origin="https://www.wikimedia.com"
           messages={messages}>
           <button

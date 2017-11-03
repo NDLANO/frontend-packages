@@ -30,7 +30,9 @@ MediaList.propTypes = {
 };
 
 export const MediaListItem = ({ children }) => (
-  <li {...oClasses(null, null, cClasses('item').className)}>{children}</li>
+  <li {...oClasses(null, null, cClasses('item').className)} itemScope itemType="http://schema.org/CreativeWork">
+    {children}
+  </li>
 );
 
 MediaListItem.propTypes = {
@@ -38,7 +40,14 @@ MediaListItem.propTypes = {
 };
 
 export const MediaListItemImage = ({ children }) => (
-  <div {...oClasses('img', null, cClasses('img').className)}>{children}</div>
+  <div
+    {...oClasses('img', null, cClasses('img').className)}
+    itemProp="about"
+    itemType="http://schema.org/Thing"
+    itemScope
+  >
+    {children}
+  </div>
 );
 
 MediaListItemImage.propTypes = {
@@ -50,6 +59,8 @@ export const MediaListCCLink = ({ children, url }) => (
     className="c-figure-license__link"
     target="_blank"
     rel="noopener noreferrer license"
+    itemProp="license"
+    itemType="http://schema.org/URL"
     href={url}>
     {children}
   </a>

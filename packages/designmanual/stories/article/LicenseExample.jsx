@@ -49,6 +49,8 @@ const VideoContent = () => (
             src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
             frameBorder="0"
             allowFullScreen=""
+            itemProp="url"
+            itemType="http://schema.org/URL"
           />
         </MediaListItemImage>
         <MediaListItemBody
@@ -107,7 +109,10 @@ const TextContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a href=""
+              itemProp="url"
+              itemType="http://schema.org/URL"
+            >
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -161,7 +166,11 @@ const AudioContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a
+              href=""
+              itemProp="url"
+              itemType="http://schema.org/URL"
+            >
               <Audio className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -219,7 +228,7 @@ const ImageContent = () => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <a href="">
-              <img width="260" alt="alt" src={src} />
+              <img width="260" alt="alt" src={src} itemProp="url" itemType="http://schema.org/URL" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
@@ -266,6 +275,8 @@ const ImageContent = () => (
               width="260"
               alt="alt"
               src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg"
+              itemProp="url"
+              itemType="http://schema.org/URL"
             />
           </a>
         </MediaListItemImage>
@@ -337,6 +348,8 @@ const H5PContent = () => (
                 height="373"
                 frameBorder="0"
                 allowFullScreen="allowfullscreen"
+                itemProp="url"
+                itemType="http://schema.org/URL"
               />
               <script
                 src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
@@ -407,7 +420,11 @@ const Files = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a
+              href=""
+              itemProp="url"
+              itemType="http://schema.org/URL"
+            >
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>

@@ -22,13 +22,14 @@ import {
 } from 'ndla-ui';
 import { Document, Audio } from 'ndla-ui/icons';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { getLicenseByAbbreviation, COPY } from 'ndla-licenses';
 
 const byncndLicenseAbbreviation = 'by-nc-nd';
 const bysaLicenseAbbreviation = 'by-sa';
 
 const byncndLicense = getLicenseByAbbreviation(byncndLicenseAbbreviation, 'nb');
 const bysaLicense = getLicenseByAbbreviation(bysaLicenseAbbreviation, 'nb');
+const copyLicense = getLicenseByAbbreviation(COPY, 'nb');
 
 const VideoContent = () => (
   <div>
@@ -52,8 +53,11 @@ const VideoContent = () => (
         </MediaListItemImage>
         <MediaListItemBody
           license={byncndLicenseAbbreviation}
-          title="Regler for bruk av videoen:">
-          <MediaListCCLink url={byncndLicense.url} resourceUrl="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed">
+          title="Regler for bruk av videoen:"
+          resourceUrl="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+          resourceType="video"
+        >
+          <MediaListCCLink url={byncndLicense.url}>
             {byncndLicense.linkText}
           </MediaListCCLink>
           <MediaListItemActions>
@@ -109,8 +113,11 @@ const TextContent = () => (
           </MediaListItemImage>
           <MediaListItemBody
             license={bysaLicenseAbbreviation}
-            title="Regler for bruk av teksten:">
-            <MediaListCCLink resourceUrl="" url={bysaLicense.url}>{bysaLicense.linkText}</MediaListCCLink>
+            title="Regler for bruk av teksten:"
+            resourceUrl=""
+            resourceType="text"
+          >
+            <MediaListCCLink url={bysaLicense.url}>{bysaLicense.linkText}</MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -160,8 +167,11 @@ const AudioContent = () => (
           </MediaListItemImage>
           <MediaListItemBody
             license={bysaLicenseAbbreviation}
-            title="Regler for bruk av lydfilen:">
-            <MediaListCCLink resourceUrl="" url={bysaLicense.url}>{bysaLicense.linkText}</MediaListCCLink>
+            title="Regler for bruk av lydfilen:"
+            resourceUrl=""
+            resourceType="audio"
+          >
+            <MediaListCCLink url={bysaLicense.url}>{bysaLicense.linkText}</MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -214,8 +224,11 @@ const ImageContent = () => (
           </MediaListItemImage>
           <MediaListItemBody
             license={byncndLicenseAbbreviation}
-            title="Regler for bruk av bildet:">
-            <MediaListCCLink resourceUrl={src} url={byncndLicense.url}>{byncndLicense.linkText}</MediaListCCLink>
+            title="Regler for bruk av bildet:"
+            resourceUrl={src}
+            resourceType="image"
+          >
+            <MediaListCCLink url={byncndLicense.url}>{byncndLicense.linkText}</MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -333,9 +346,11 @@ const H5PContent = () => (
           </MediaListItemImage>
           <MediaListItemBody
             license={byncndLicenseAbbreviation}
-            title="Regler for bruk av H5P-innholdet:">
+            title="Regler for bruk av H5P-innholdet:"
+            resourceUrl="http://ndla.no/nb/h5p/embed/146132?fag=127756"
+            resourceType="h5p"
+            >
             <MediaListCCLink
-              resourceUrl="http://ndla.no/nb/h5p/embed/146132?fag=127756"
               url={byncndLicense.url}
             >
               {byncndLicense.linkText}
@@ -397,9 +412,11 @@ const Files = () => (
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license={byncndLicenseAbbreviation}
-            title="Regler for bruk av filen:">
-            <MediaListCCLink resourceUrl="" url={byncndLicense.url}>{byncndLicense.linkText}</MediaListCCLink>
+            license={COPY}
+            title="Regler for bruk av filen:"
+            resourceUrl=""
+          >
+            <MediaListCCLink url={copyLicense.url}>{copyLicense.linkText}</MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta

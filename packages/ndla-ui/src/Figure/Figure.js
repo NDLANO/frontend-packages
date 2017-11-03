@@ -13,7 +13,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
-import { COPY } from 'ndla-licenses';
 
 import LicenseByline from '../LicenseByline';
 
@@ -33,74 +32,46 @@ export const FigureDetails = ({
   messages,
   licenseRights,
   licenseUrl,
-  resourceUrl,
-  resourceType,
-}) => {
-  const metaResourceType = resourceType === 'video' ? 'http://purl.org/dc/dcmitype/MovingImage' : 'http://purl.org/dc/dcmitype/Image';
-  const attributionMeta = authors.map(author => `${author.type}: ${author.name}`).join(',');
-
-  const isCreativeCommons = licenseRights.every((license => license !== COPY));
-
-  const expandedProps = isCreativeCommons ? {
-    className: 'u-expanded',
-    'xmlns:cc': 'https://creativecommons.org/ns#',
-    'xmlns:dct': 'http://purl.org/dc/terms/',
-    about: resourceUrl,
-  } : {
-    className: 'u-expanded',
-  };
-
-  const origionRel = isCreativeCommons ? 'noopener noreferrer cc:attributionURL' : 'noopener noreferrer';
-
-  return (
-    <div {...classes('license')} id="figmeta">
-      <button {...classes('close')}>{messages.close}</button>
-      {React.createElement('div', expandedProps, (
-        <div {...classLicenses('details')}>
-          {isCreativeCommons && (
-            <div style={{display: 'none'}}>
-              <span rel="dct:type" href={metaResourceType} />
-              <span property="cc:attributionName" content={attributionMeta} />
-            </div>
-          )}
-
-          <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
-          <LicenseByline withDescription licenseRights={licenseRights} />
-          <a
-            className="c-figure-license__link"
-            target="_blank"
-            rel="noopener noreferrer license"
-            href={licenseUrl}>
-            {messages.learnAboutLicenses}
-          </a>
-          <div {...classLicenses('cta-wrapper')}>
-            <ul {...classes('list')} >
-              {authors.map(author => (
-                <li
-                  key={uuid()}
-                  className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
-              ))}
-              {origin && (
-                <li>
-                  {messages.source}:{' '}
-                  {origin.startsWith('http') ? (
-                    <a href={origin} target="_blank" rel={origionRel}>
-                      {origin}
-                    </a>
-                  ) : (
-                    origin
-                  )}
-                </li>
-              )}
-            </ul>
-            <div {...classLicenses('cta-block')}>{children}</div>
-          </div>
+}) => (
+  <div {...classes('license')} id="figmeta">
+    <button {...classes('close')}>{messages.close}</button>
+    <div className="u-expanded">
+      <div {...classLicenses('details')}>
+        <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
+        <LicenseByline withDescription licenseRights={licenseRights} />
+        <a
+          className="c-figure-license__link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={licenseUrl}>
+          {messages.learnAboutLicenses}
+        </a>
+        <div {...classLicenses('cta-wrapper')}>
+          <ul {...classes('list')} >
+            {authors.map(author => (
+              <li
+                key={uuid()}
+                className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
+            ))}
+            {origin && (
+              <li>
+                {messages.source}:{' '}
+                {origin.startsWith('http') ? (
+                  <a href={origin} target="_blank">
+                    {origin}
+                  </a>
+                ) : (
+                  origin
+                )}
+              </li>
+            )}
+          </ul>
+          <div {...classLicenses('cta-block')}>{children}</div>
         </div>
-      )
-      )}
+      </div>
     </div>
-  )
-};
+  </div>
+);
 
 FigureDetails.propTypes = {
   children: PropTypes.node,
@@ -119,8 +90,6 @@ FigureDetails.propTypes = {
     learnAboutLicenses: PropTypes.string.isRequired,
   }).isRequired,
   licenseUrl: PropTypes.string.isRequired,
-  resourceUrl: PropTypes.string.isRequired,
-  resourceType: PropTypes.oneOf(['video', 'image']).isRequired,
 };
 
 export const FigureCaption = ({

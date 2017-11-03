@@ -8,12 +8,16 @@
 
 export const updateIFrameDimensions = (init = true) => {
   document
-    .querySelectorAll('.article__oembed iframe, .c-embedded--resize iframe')
+    .querySelectorAll('.c-figure iframe, .c-embedded--resize iframe')
     .forEach(el => {
       const iframe = el;
+      const parent = iframe.parentNode;
       let ratio = null;
 
-      const parentWidth = iframe.parentNode.clientWidth;
+      const computedStyle = window.getComputedStyle(parent);
+      const paddingLeft = parseFloat(computedStyle.paddingLeft);
+      const paddingRight = parseFloat(computedStyle.paddingRight);
+      const parentWidth = parent.clientWidth - paddingLeft - paddingRight;
 
       if (init && iframe.width && iframe.height) {
         ratio = iframe.height / iframe.width;

@@ -23,28 +23,6 @@ export const fetchArticle = id =>
     });
   });
 
-export const fetchArticleFromApi = id =>
-  new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(
-        `https://ndla-article-converter.herokuapp.com/article-api/articles/${id}`,
-        { method: 'GET', headers: headerWithAccessToken(token) },
-      ).then(res => {
-        if (res.ok) {
-          return res
-            .json()
-            .then(article => ({
-              ...article,
-              title: article.title.title,
-              content: article.content.content,
-            }))
-            .then(article => resolve(article));
-        }
-        return res.json().then(json => reject(json));
-      });
-    });
-  });
-
 export const fetchWithToken = apiUrl =>
   new Promise((resolve, reject) => {
     getToken().then(token => {

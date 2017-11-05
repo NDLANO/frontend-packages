@@ -905,6 +905,61 @@ storiesOf('Grunnstiler', module)
             </tr>
           </tbody>
         </Table>
+        <h2 className="u-heading">
+          Eksempel med kolonnetittel som går over flere kolonner (colspan)
+        </h2>
+
+        <Table>
+          <thead>
+            <tr>
+              <th colSpan="2">Tittel over flere kolonner</th>
+              <th>Tittel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+          </tbody>
+        </Table>
+        <h2 className="u-heading">
+          Eksempel med celle som går over flere rader (rowspan)
+        </h2>
+        <Table>
+          <tbody>
+            <tr>
+              <th rowSpan="2" scope="row">Tittel 1</th>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+            <tr>
+              <th scope="row">Tittel 2</th>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+          </tbody>
+        </Table>
       </StoryBody>
     </div>
   ))

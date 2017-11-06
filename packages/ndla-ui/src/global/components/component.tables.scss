@@ -24,9 +24,14 @@
   background-attachment: scroll, scroll;
   background-repeat: no-repeat;
 
+  caption {
+    background-color: $white;
+  }
+
   thead {
     overflow:hidden;
   }
+
   td, th {
     padding: $spacing/3 $spacing $spacing/3 $spacing/3;
     height: 45px;
@@ -38,7 +43,6 @@
   }
   th {
     border-bottom: 3px solid $brand-color--lighter;
-    background-color: $white;
     padding: $spacing--small $spacing--small $spacing--small/2;
   }
   tbody th {
@@ -48,13 +52,7 @@
     vertical-align: top;
   }
 
-  td {
-    vertical-align: top;
-    @include inuit-font-size(14px,22px);
-    @include mq(tablet) {
-      @include inuit-font-size(15px,30px);
-    }
-
+  th, td {
     &:first-child {
       background-color: none;
       background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
@@ -68,10 +66,19 @@
       background-position: 100% 0;
       background-size: 25px 100%;
     }
+  }
+
+  td {
+    vertical-align: top;
+    @include inuit-font-size(14px,22px);
+    @include mq(tablet) {
+      @include inuit-font-size(15px,30px);
+    }
     p {
       margin:0;
     }
   }
+
   tr:nth-child(2n) {
 
     td {
@@ -94,14 +101,14 @@
         background-color: none;
         background-image: linear-gradient(to right, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
         background-repeat: no-repeat;
-        background-size: 25px 100%;
+        background-size: 30px 100%;
       }
       &:last-child {
         background-color: none;
         background-image: linear-gradient(to left, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
         background-repeat: no-repeat;
         background-position: 100% 0;
-        background-size: 25px 100%;
+        background-size: 30px 100%;
       }
     }
   }

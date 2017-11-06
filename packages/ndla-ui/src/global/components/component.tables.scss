@@ -24,6 +24,18 @@
   background-attachment: scroll, scroll;
   background-repeat: no-repeat;
 
+  display: inline-block;
+
+  &:after, &:before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @include mq(tablet) {
+    display: table;
+  }
+
   caption {
     background-color: $white;
   }

@@ -945,7 +945,9 @@ storiesOf('Grunnstiler', module)
         <Table>
           <tbody>
             <tr>
-              <th rowSpan="2" scope="row">Tittel 1</th>
+              <th rowSpan="2" scope="row">
+                Tittel 1
+              </th>
               <td>Data 1</td>
               <td>Data 2</td>
             </tr>

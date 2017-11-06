@@ -77,10 +77,22 @@ class ResourceList extends Component {
     const { resources, messages, type, ...rest } = this.props;
     const limit = 8;
     const { showAll } = this.state;
+
+    const additionalResources = resources.filter(res => res.additional)
+    const normalResources = resources.filter(res => !res.additional)
+
     return (
       <div>
         <ul {...classes('list')}>
-          {resources.map((resource, index) => (
+          {additionalResources.map((resource) => (
+            <Resource
+              key={resource.id}
+              type={type}
+              {...rest}
+              resource={resource}
+            />
+          ))}
+          {normalResources.map((resource, index) => (
             <Resource
               key={resource.id}
               type={type}

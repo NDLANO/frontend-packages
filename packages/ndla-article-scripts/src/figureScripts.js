@@ -7,10 +7,14 @@
  */
 
 import { copyTextToClipboard } from 'ndla-util';
-import { findAncestorByClass, removeElementById } from './domHelpers';
+import {
+  findAncestorByClass,
+  removeElementById,
+  forEachElement,
+} from './domHelpers';
 
 export const addCloseFigureDetailsClickListeners = () => {
-  document.querySelectorAll('.c-figure .c-figure__close').forEach(el => {
+  forEachElement('.c-figure .c-figure__close', el => {
     const target = el;
     target.onclick = () => {
       removeElementById('c-license-icon-description');
@@ -23,7 +27,7 @@ export const addCloseFigureDetailsClickListeners = () => {
 };
 
 export const addCopyToClipboardListeners = () => {
-  document.querySelectorAll('button[data-copy-string]').forEach(el => {
+  forEachElement('button[data-copy-string]', el => {
     const target = el;
     target.onclick = () => {
       const text = target.getAttribute('data-copy-string');
@@ -46,7 +50,7 @@ export const addCopyToClipboardListeners = () => {
 };
 
 export const addShowFigureDetailsClickListeners = () => {
-  document.querySelectorAll('.c-figure .c-figure__captionbtn').forEach(el => {
+  forEachElement('.c-figure .c-figure__captionbtn', el => {
     const target = el;
     target.onclick = () => {
       removeElementById('c-license-icon-description');

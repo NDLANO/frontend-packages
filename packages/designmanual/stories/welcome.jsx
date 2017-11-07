@@ -40,6 +40,12 @@ const Welcome = () => (
         <code>npm install ndla-ui --save</code>
         <br />
         <code>yarn add ndla-ui -S</code>
+        <h3>Fonter må hentes inn direkte i prosjektet</h3>
+        <code>
+          {
+            '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700|Source+Serif+Pro:400,700" />'
+          }
+        </code>
 
         <h3>Hente inn stilark direkte via CDN</h3>
         <code>

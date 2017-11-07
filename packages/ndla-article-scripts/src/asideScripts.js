@@ -6,15 +6,17 @@
  *
  */
 
+import { forEachElement } from './domHelpers';
+
 export const addAsideClickListener = () => {
-  document.querySelectorAll('.c-aside__button').forEach(el => {
+  forEachElement('.c-aside__button', el => {
     const target = el;
     target.onclick = () => target.parentNode.classList.toggle('expanded');
   });
 };
 
 export const removeAsideClickListener = () => {
-  document.querySelectorAll('.c-aside__button').forEach(el => {
+  forEachElement('.c-aside__button', el => {
     const target = el;
     target.onclick = undefined;
   });

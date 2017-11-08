@@ -65,12 +65,21 @@ const VideoContent = () => (
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
-                items={[
+                authors={[
                   { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                ]}
+                copyrightHolders={[
                   {
                     label: 'Rettighetshaver',
                     description: 'Leverandør NTB scanpix',
                   },
+                ]}
+
+                processers={[
+                  {
+                    label: 'Korrektur',
+                    description: 'Kari N',
+                  }
                 ]}
               />
               <button
@@ -126,12 +135,16 @@ const TextContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  items={[
+                  authors={[
                     { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  ]}
+                  copyrightHolders={[
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
                     },
+                  ]}
+                  items={[
                     { label: 'Publiseringsdato', description: '12.05.13' },
                   ]}
                 />
@@ -184,8 +197,10 @@ const AudioContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  items={[
+                  authors={[
                     { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  ]}
+                  copyrightHolders={[
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
@@ -241,12 +256,16 @@ const ImageContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  items={[
+                  authors={[
                     { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  ]}
+                  copyrightHolders={[
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
                     },
+                  ]}
+                  items={[
                     {
                       label: 'Kilde',
                       description: 'https://www.wikimedia.org/',
@@ -292,12 +311,16 @@ const ImageContent = () => (
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
-                items={[
+                authors={[
                   { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                ]}
+                copyrightHolders={[
                   {
                     label: 'Rettighetshaver',
                     description: 'Leverandør NTB scanpix',
                   },
+                ]}
+                items={[
                   {
                     label: 'Kilde',
                     description: 'https://www.wikimedia.org/',
@@ -371,8 +394,10 @@ const H5PContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  items={[
+                  authors={[
                     { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  ]}
+                  copyrightHolders={[
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',

@@ -153,23 +153,65 @@ const isLink = text => text.startsWith('http') || text.startsWith('https');
 export const HandleLink = ({ text }) => {
   if (isLink(text)) {
     return (
-      <a href={text} target="_blank" rel="noopener noreferrer">
+      <a href={text} target="_blank" rel="noopener noreferrer" itemProp="name">
         {text}
       </a>
     );
   }
-  return <span>{text}</span>;
+  return <span itemProp="name">{text}</span>;
 };
 
 HandleLink.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export const MediaListItemMeta = ({ items }) => {
-  const attributionMeta = items.map(item => `${item.label}: ${item.description}`).join(', ');
+const microDataTypes = {
+  person: 'person',
+  organisation: 'organisation',
+};
+
+const getMicroDataNamespaceByType = (type) => {
+  if (type === microDataTypes.organisation) {
+    return 'http://schema.org/Organization';
+  }
+
+  return 'http://schema.org/Person';
+};
+
+export const MediaListItemMeta = ({ authors, copyrightHolders, processers, items }) => {
+  const attributionMeta = [
+    ...authors,
+    ...copyrightHolders,
+    ...processers,
+  ].map(item => `${item.label}: ${item.description}`).join(', ');
 
   return (
     <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta} >
+      {authors.map(item => {
+        const type = item.type ? getMicroDataNamespaceByType(item.type) : getMicroDataNamespaceByType(microDataTypes.person);
+        return (
+          <li key={uuid()} className="c-medialist__meta-item" itemProp="author" itemScope itemType={type}>
+            {item.label}: <HandleLink text={item.description} />
+          </li>
+        )
+      })}
+      {copyrightHolders.map(item => {
+        const type = item.type ? getMicroDataNamespaceByType(item.type) : getMicroDataNamespaceByType(microDataTypes.organisation);
+
+        return (
+          <li key={uuid()} className="c-medialist__meta-item" itemProp="copyrightHolder" itemScope itemType={type}>
+            {item.label}: <HandleLink text={item.description} />
+          </li>
+        );
+      })}
+      {processers.map(item => {
+        const type = item.type ? getMicroDataNamespaceByType(item.type) : getMicroDataNamespaceByType(microDataTypes.person);
+        return (
+          <li key={uuid()} className="c-medialist__meta-item" itemProp="contributor" itemScope itemType={type}>
+            {item.label}: <HandleLink text={item.description} />
+          </li>
+        );
+      })}
       {items.map(item => (
         <li key={uuid()} className="c-medialist__meta-item">
           {item.label}: <HandleLink text={item.description} />
@@ -179,11 +221,30 @@ export const MediaListItemMeta = ({ items }) => {
   );
 };
 
+const mediaListItemShape = PropTypes.arrayOf(
+  PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([microDataTypes.person, microDataTypes.organisation]),
+  }),
+);
+
+
 MediaListItemMeta.propTypes = {
+  authors: mediaListItemShape,
+  copyrightHolders: mediaListItemShape,
+  processers: mediaListItemShape,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     }),
   ),
+};
+
+MediaListItemMeta.defaultProps = {
+  authors: [],
+  copyrightHolders: [],
+  processers: [],
+  items: [],
 };

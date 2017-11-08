@@ -6,8 +6,10 @@
  *
  */
 
+import { forEachElement } from './domHelpers';
+
 export const addShowGlossaryDefinitionClickListeners = () => {
-  document.querySelectorAll('.c-glossary-word__item').forEach(item => {
+  forEachElement('.c-glossary-word__item', item => {
     const popup = item.querySelector('.c-glossary-word__popup');
     const openBtn = item.querySelector('.c-glossary-word__link');
     const closeBtn = item.querySelector('.c-glossary-word__close');

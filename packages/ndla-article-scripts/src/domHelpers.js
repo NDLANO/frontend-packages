@@ -6,6 +6,13 @@
  *
  */
 
+export const forEachElement = (selector, callback) => {
+  const nodeList = document.querySelectorAll(selector);
+  for (let i = 0; i < nodeList.length; i += 1) {
+    callback(nodeList[i], i);
+  }
+};
+
 export const findAncestorByClass = (el, className) => {
   let target = el;
   while (!target.classList.contains(className)) {
@@ -39,7 +46,7 @@ export const removeElementById = id => {
 };
 
 export const removeModifiers = (className, modifier, rootSelector = '') => {
-  document.querySelectorAll(`${rootSelector} .${className}`).forEach(el => {
+  forEachElement(`${rootSelector} .${className}`, el => {
     el.classList.remove(`${className}--${modifier}`);
   });
 };

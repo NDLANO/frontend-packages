@@ -74,12 +74,15 @@ class ResourceList extends Component {
 
   render() {
     // NB! Always have hidden resources in the DOM so that they can be indexed by search enignes.
-    const { resources, messages, type, ...rest } = this.props;
+    const {
+      additionalResources,
+      normalResources,
+      messages,
+      type,
+      ...rest
+    } = this.props;
     const limit = 8;
     const { showAll } = this.state;
-
-    const additionalResources = resources.filter(res => res.additional);
-    const normalResources = resources.filter(res => !res.additional);
 
     return (
       <div>
@@ -90,6 +93,7 @@ class ResourceList extends Component {
               type={type}
               {...rest}
               resource={resource}
+              isHidden={false}
             />
           ))}
           {normalResources.map((resource, index) => (
@@ -102,7 +106,7 @@ class ResourceList extends Component {
             />
           ))}
         </ul>
-        {resources.length > limit ? (
+        {normalResources.length > limit ? (
           <div {...classes('button-wrapper')}>
             <Button
               {...classes('button', '', 'c-btn c-button--outline')}
@@ -117,7 +121,8 @@ class ResourceList extends Component {
 }
 
 ResourceList.propTypes = {
-  resources: PropTypes.arrayOf(ResourceShape).isRequired,
+  additionalResources: PropTypes.arrayOf(ResourceShape).isRequired,
+  normalResources: PropTypes.arrayOf(ResourceShape).isRequired,
   type: PropTypes.string,
   showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,

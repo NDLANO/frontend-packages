@@ -30,8 +30,9 @@ export const FigureDetails = ({
   origin,
   messages,
   licenseRights,
-}) => (
-  <div {...classes('license')} id="figmeta">
+}) => ([
+  <div key="backdrop" {...classes('backdrop')} />,
+  <div key="license" {...classes('license')} id="figmeta">
     <button {...classes('close')}>{messages.close}</button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
@@ -69,7 +70,7 @@ export const FigureDetails = ({
       </div>
     </div>
   </div>
-);
+]);
 
 FigureDetails.propTypes = {
   children: PropTypes.node,

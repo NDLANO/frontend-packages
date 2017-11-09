@@ -37,6 +37,11 @@
 .u-hidden {
   display: none !important;
 }
+
+.u-disable-scroll {
+  overflow: hidden;
+}
+
 .u-toggle {
   display: none;
 }

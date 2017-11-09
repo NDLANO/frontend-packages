@@ -22,6 +22,8 @@ export const addCloseFigureDetailsClickListeners = () => {
       target.parentNode.parentNode
         .querySelector('figcaption')
         .classList.remove('u-hidden');
+
+      document.querySelector('html').classList.remove('u-disable-scroll');
     };
   });
 };
@@ -59,6 +61,8 @@ export const addShowFigureDetailsClickListeners = () => {
 
       const figcaption = findAncestorByClass(target, 'c-figure__caption');
       figcaption.classList.add('u-hidden');
+
+      document.querySelector('html').classList.add('u-disable-scroll');
     };
   });
 };

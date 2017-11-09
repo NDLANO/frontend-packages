@@ -95,11 +95,11 @@
   1% {
     opacity: 0;
     display: flex;
-    transform: translateY(20px);
+    transform: translateY(100%);
   }
   100% {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(-50%);
   }
 }
 @mixin fadeInLeftItems($item, $count) {

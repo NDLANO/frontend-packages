@@ -104,7 +104,19 @@ class GlossaryExample extends Component {
                     Sanksjonene
                   </Glossary>{' '}
                   kan både være positive og negative. Ønsket adferd belønnes,
-                  men uønsket adferd straffes. Når en person har gjort normene
+                  men uønsket adferd straffes. Når en person har gjort{' '}
+                  <Glossary
+                    content="Norm, særskilt sosiale normer, er en sosiologisk betegnelse for intersubjektive, allment delte og ofte underforståtte regler og forventninger på oppførsel som gjelder for et mindre sosialt fellesskap og for samfunnet i sin helhet."
+                    authors={[]}
+                    title={'Norm'}
+                    messages={{
+                      ariaLabel: 'Vis begrep beskrivelse',
+                      close: 'Lukk',
+                    }}
+                    license="by-nc-nd"
+                    id={3}>
+                    normene
+                  </Glossary>{' '}
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
                 </p>

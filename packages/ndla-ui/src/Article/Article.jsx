@@ -17,7 +17,6 @@ import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import { ArticleShape } from '../shapes';
 
-
 const classes = new BEMHelper({
   name: 'article',
   prefix: 'c-',

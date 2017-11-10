@@ -22,7 +22,7 @@ import {
 } from 'ndla-ui';
 import { Document, Audio } from 'ndla-ui/icons';
 
-import { getLicenseByAbbreviation, COPY } from 'ndla-licenses';
+import { getLicenseByAbbreviation, COPY, getMicroDataNamespaceByType, microDataTypes, metaTypes } from 'ndla-licenses';
 
 const byncndLicenseAbbreviation = 'by-nc-nd';
 const bysaLicenseAbbreviation = 'by-sa';
@@ -50,7 +50,7 @@ const VideoContent = () => (
             frameBorder="0"
             allowFullScreen=""
             itemProp="url"
-            itemType="http://schema.org/URL"
+            itemType={getMicroDataNamespaceByType(microDataTypes.url)}
           />
         </MediaListItemImage>
         <MediaListItemBody
@@ -65,21 +65,22 @@ const VideoContent = () => (
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
-                authors={[
-                  { label: 'Opphavsmann', description: 'Fotograf Ola N' },
-                ]}
-                copyrightHolders={[
+                items={[
+                  {
+                    label: 'Opphavsmann',
+                    description: 'Fotograf Ola N',
+                    metaType: metaTypes.author,
+                  },
                   {
                     label: 'Rettighetshaver',
                     description: 'Leverandør NTB scanpix',
+                    metaType: metaTypes.copyrightHolder,
                   },
-                ]}
-
-                processers={[
                   {
                     label: 'Korrektur',
                     description: 'Kari N',
-                  }
+                    metaType: metaTypes.contributor,
+                  },
                 ]}
               />
               <button
@@ -120,7 +121,7 @@ const TextContent = () => (
           <MediaListItemImage>
             <a href=""
               itemProp="url"
-              itemType="http://schema.org/URL"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
             >
               <Document className="c-medialist__icon" />
             </a>
@@ -135,17 +136,22 @@ const TextContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  authors={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
-                  ]}
-                  copyrightHolders={[
+                  items={[
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
-                  ]}
-                  items={[
-                    { label: 'Publiseringsdato', description: '12.05.13' },
+                    {
+                      label: 'Publiseringsdato',
+                      description: '12.05.13',
+                      metaType: metaTypes.other,
+                    },
                   ]}
                 />
                 <button
@@ -182,7 +188,7 @@ const AudioContent = () => (
             <a
               href=""
               itemProp="url"
-              itemType="http://schema.org/URL"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
             >
               <Audio className="c-medialist__icon" />
             </a>
@@ -197,13 +203,16 @@ const AudioContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  authors={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
-                  ]}
-                  copyrightHolders={[
+                  items={[
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                   ]}
                 />
@@ -243,7 +252,7 @@ const ImageContent = () => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <a href="">
-              <img width="260" alt="alt" src={src} itemProp="url" itemType="http://schema.org/URL" />
+              <img width="260" alt="alt" src={src} itemProp="url" itemType={getMicroDataNamespaceByType(microDataTypes.url)} />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
@@ -256,19 +265,26 @@ const ImageContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  authors={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
-                  ]}
-                  copyrightHolders={[
+                  items={[
+                    {
+                      label: 'Tittel',
+                      description: 'Snølagt fjell',
+                      metaType: metaTypes.title,
+                    },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
-                  ]}
-                  items={[
                     {
                       label: 'Kilde',
                       description: 'https://www.wikimedia.org/',
+                      metaType: metaTypes.other,
                     },
                   ]}
                 />
@@ -295,7 +311,7 @@ const ImageContent = () => (
               alt="alt"
               src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg"
               itemProp="url"
-              itemType="http://schema.org/URL"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
             />
           </a>
         </MediaListItemImage>
@@ -311,19 +327,21 @@ const ImageContent = () => (
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
-                authors={[
-                  { label: 'Opphavsmann', description: 'Fotograf Ola N' },
-                ]}
-                copyrightHolders={[
+                items={[
+                  {
+                    label: 'Opphavsmann',
+                    description: 'Fotograf Ola N',
+                    metaType: metaTypes.author,
+                  },
                   {
                     label: 'Rettighetshaver',
                     description: 'Leverandør NTB scanpix',
+                    metaType: metaTypes.copyrightHolder,
                   },
-                ]}
-                items={[
                   {
                     label: 'Kilde',
                     description: 'https://www.wikimedia.org/',
+                    metaType: metaTypes.other,
                   },
                 ]}
               />
@@ -372,7 +390,7 @@ const H5PContent = () => (
                 frameBorder="0"
                 allowFullScreen="allowfullscreen"
                 itemProp="url"
-                itemType="http://schema.org/URL"
+                itemType={getMicroDataNamespaceByType(microDataTypes.url)}
               />
               <script
                 src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
@@ -394,13 +412,16 @@ const H5PContent = () => (
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
-                  authors={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
-                  ]}
-                  copyrightHolders={[
+                  items={[
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                   ]}
                 />
@@ -448,7 +469,7 @@ const Files = () => (
             <a
               href=""
               itemProp="url"
-              itemType="http://schema.org/URL"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
             >
               <Document className="c-medialist__icon" />
             </a>
@@ -463,10 +484,15 @@ const Files = () => (
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                   ]}
                 />

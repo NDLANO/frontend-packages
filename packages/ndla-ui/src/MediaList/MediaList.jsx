@@ -8,7 +8,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import getLicenseByAbbreviation, { COPY } from 'ndla-licenses';
+import getLicenseByAbbreviation,
+  { resourceTypes,
+    getResourceTypeNamespace,
+    isCreativeCommonsLicense,
+    microDataTypes,
+    getMicroDataNamespaceByMicroDataTypeWithFallback,
+    getMicroDataNamespaceByType,
+    metaTypes,
+  } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import LicenseByline from '../LicenseByline';
@@ -30,7 +38,7 @@ MediaList.propTypes = {
 };
 
 export const MediaListItem = ({ children }) => (
-  <li {...oClasses(null, null, cClasses('item').className)} itemScope itemType="http://schema.org/CreativeWork">
+  <li {...oClasses(null, null, cClasses('item').className)} itemScope itemType={getMicroDataNamespaceByType(microDataTypes.creativeWork)}>
     {children}
   </li>
 );
@@ -42,9 +50,6 @@ MediaListItem.propTypes = {
 export const MediaListItemImage = ({ children }) => (
   <div
     {...oClasses('img', null, cClasses('img').className)}
-    itemProp="about"
-    itemType="http://schema.org/Thing"
-    itemScope
   >
     {children}
   </div>
@@ -60,7 +65,7 @@ export const MediaListCCLink = ({ children, url }) => (
     target="_blank"
     rel="noopener noreferrer license"
     itemProp="license"
-    itemType="http://schema.org/URL"
+    itemType={getMicroDataNamespaceByType(microDataTypes.url)}
     href={url}>
     {children}
   </a>
@@ -75,34 +80,11 @@ MediaListCCLink.defaultProps = {
   language: 'no',
 };
 
-const resourceTypes = {
-  video: 'video',
-  audio: 'audio',
-  text: 'text',
-  h5p: 'h5p',
-};
-
-const getTypeUrl = (type) => {
-  switch (type) {
-    case resourceTypes.video:
-      return 'http://purl.org/dc/dcmitype/MovingImage';
-    case resourceTypes.audio:
-      return 'http://purl.org/dc/dcmitype/Sound';
-    case resourceTypes.text:
-      return 'http://purl.org/dc/dcmitype/Text';
-    case resourceTypes.h5p:
-      return 'http://purl.org/dc/dcmitype/InteractiveResource';
-    default:
-      return null;
-  }
-};
-
 export const MediaListItemBody = ({ children, license, title, resourceUrl, resourceType }) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
 
-  const isCreativeCommons = licenseRights.every((r => r !== COPY));
 
-  const containerProps = isCreativeCommons ? {
+  const containerProps = isCreativeCommonsLicense(licenseRights) ? {
     ...oClasses('body', null, cClasses('body').className),
     'xmlns:cc': 'https://creativecommons.org/ns#',
     'xmlns:dct': 'http://purl.org/dc/terms/',
@@ -111,7 +93,7 @@ export const MediaListItemBody = ({ children, license, title, resourceUrl, resou
     ...oClasses('body', null, cClasses('body').className),
   };
 
-  const metaResourceType = getTypeUrl(resourceType);
+  const metaResourceType = getResourceTypeNamespace(resourceType);
 
   return (
     <div {...containerProps}>
@@ -165,58 +147,42 @@ HandleLink.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-const microDataTypes = {
-  person: 'person',
-  organisation: 'organisation',
-};
+const attributionTypes = [
+  metaTypes.author,
+  metaTypes.copyrightHolder,
+  metaTypes.contributor,
+];
 
-const getMicroDataNamespaceByType = (type) => {
-  if (type === microDataTypes.organisation) {
-    return 'http://schema.org/Organization';
-  }
-
-  return 'http://schema.org/Person';
-};
-
-export const MediaListItemMeta = ({ authors, copyrightHolders, processers, items }) => {
-  const attributionMeta = [
-    ...authors,
-    ...copyrightHolders,
-    ...processers,
-  ].map(item => `${item.label}: ${item.description}`).join(', ');
+export const MediaListItemMeta = ({items }) => {
+  const attributionItems = items.filter(item => attributionTypes.some(type => type === item.metaType));
+  const attributionMeta = attributionItems.map(item => `${item.label}: ${item.description}`).join(', ');
 
   return (
     <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta} >
-      {authors.map(item => {
-        const type = item.type ? getMicroDataNamespaceByType(item.type) : getMicroDataNamespaceByType(microDataTypes.person);
-        return (
-          <li key={uuid()} className="c-medialist__meta-item" itemProp="author" itemScope itemType={type}>
-            {item.label}: <HandleLink text={item.description} />
-          </li>
-        )
-      })}
-      {copyrightHolders.map(item => {
-        const type = item.type ? getMicroDataNamespaceByType(item.type) : getMicroDataNamespaceByType(microDataTypes.organisation);
+      {items.map(item => {
+        if (attributionTypes.some(type => type === item.metaType)) {
+          const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(item.metaType, item.microDataType);
+
+          return (
+            <li key={uuid()} className="c-medialist__meta-item" itemProp={item.metaType} itemScope itemType={namespace}>
+              {item.label}: <HandleLink text={item.description} />
+            </li>
+          );
+        } else if (item.metaType === metaTypes.title) {
+          return (
+            <li key={uuid()} className="c-medialist__meta-item" itemProp="about" itemScope itemType={getMicroDataNamespaceByType(microDataTypes.thing)}>
+              {item.label}: <HandleLink text={item.description} />
+            </li>
+          )
+        }
 
         return (
-          <li key={uuid()} className="c-medialist__meta-item" itemProp="copyrightHolder" itemScope itemType={type}>
+          <li key={uuid()} className="c-medialist__meta-item">
             {item.label}: <HandleLink text={item.description} />
           </li>
         );
+
       })}
-      {processers.map(item => {
-        const type = item.type ? getMicroDataNamespaceByType(item.type) : getMicroDataNamespaceByType(microDataTypes.person);
-        return (
-          <li key={uuid()} className="c-medialist__meta-item" itemProp="contributor" itemScope itemType={type}>
-            {item.label}: <HandleLink text={item.description} />
-          </li>
-        );
-      })}
-      {items.map(item => (
-        <li key={uuid()} className="c-medialist__meta-item">
-          {item.label}: <HandleLink text={item.description} />
-        </li>
-      ))}
     </ul>
   );
 };
@@ -225,26 +191,16 @@ const mediaListItemShape = PropTypes.arrayOf(
   PropTypes.shape({
     label: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    type: PropTypes.oneOf([microDataTypes.person, microDataTypes.organisation]),
+    metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key])).isRequired,
+    microDataType: PropTypes.oneOf([microDataTypes.organization, microDataTypes.person]),
   }),
 );
 
 
 MediaListItemMeta.propTypes = {
-  authors: mediaListItemShape,
-  copyrightHolders: mediaListItemShape,
-  processers: mediaListItemShape,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ),
+  items: mediaListItemShape,
 };
 
 MediaListItemMeta.defaultProps = {
-  authors: [],
-  copyrightHolders: [],
-  processers: [],
   items: [],
 };

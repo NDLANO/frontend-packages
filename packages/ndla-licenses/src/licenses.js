@@ -289,3 +289,5 @@ export function getLicenseByNBTitle(title, locale) {
       return title;
   }
 }
+
+export const isCreativeCommonsLicense = licenseRights => licenseRights.every(r => r !== COPY);

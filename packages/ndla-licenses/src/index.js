@@ -6,7 +6,7 @@
  *
  */
 
-import { getLicenseByAbbreviation, getLicenseByNBTitle } from './licenses';
+import { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense } from './licenses';
 
 import {
   BY,
@@ -20,6 +20,15 @@ import {
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
+import {
+  resourceTypes,
+  getResourceTypeNamespace,
+  microDataTypes,
+  getMicroDataNamespaceByType,
+  metaTypes,
+  getMicroDataNamespaceByMicroDataTypeWithFallback,
+} from './microData';
+
 export {
   BY,
   SA,
@@ -32,6 +41,13 @@ export {
   getLicenseByAbbreviation,
   getLicenseRightByAbbreviation,
   getLicenseByNBTitle,
+  resourceTypes,
+  getResourceTypeNamespace,
+  isCreativeCommonsLicense,
+  microDataTypes,
+  getMicroDataNamespaceByType,
+  metaTypes,
+  getMicroDataNamespaceByMicroDataTypeWithFallback,
 };
 
 export default getLicenseByAbbreviation;

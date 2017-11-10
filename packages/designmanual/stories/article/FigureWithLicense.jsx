@@ -45,7 +45,9 @@ class FigureWithLicense extends Component {
       rulesForUse: 'Regler for bruk av bildet',
       learnAboutLicenses: license.linkText,
       source: 'Kilde',
+      title: 'Tittel',
     };
+
     const caption = this.props.caption ? this.props.caption : ``;
     const reuseLabel = this.props.reuseLabel
       ? `Bruk ${this.props.reuseLabel}`
@@ -72,6 +74,7 @@ class FigureWithLicense extends Component {
           authors={authors}
           licenseUrl={license.url}
           origin="https://www.wikimedia.com"
+          title="Liten mann og lupe"
           messages={messages}>
           <button
             className="c-button c-button--outline c-figure-license__button"

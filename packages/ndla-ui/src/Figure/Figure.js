@@ -29,6 +29,7 @@ export const FigureDetails = ({
   children,
   authors,
   origin,
+  title,
   messages,
   licenseRights,
   licenseUrl,
@@ -47,14 +48,19 @@ export const FigureDetails = ({
           {messages.learnAboutLicenses}
         </a>
         <div {...classLicenses('cta-wrapper')}>
-          <ul {...classes('list')} >
+          <ul {...classes('list')}>
+            {title && (
+              <li className="c-figure-list__item" key={uuid()}>
+                {`${messages.title}: ${title}`}
+              </li>
+            )}
             {authors.map(author => (
               <li
                 key={uuid()}
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
             ))}
             {origin && (
-              <li>
+              <li className="c-figure-list__item" key={uuid()}>
                 {messages.source}:{' '}
                 {origin.startsWith('http') ? (
                   <a href={origin} target="_blank">
@@ -65,6 +71,7 @@ export const FigureDetails = ({
                 )}
               </li>
             )}
+
           </ul>
           <div {...classLicenses('cta-block')}>{children}</div>
         </div>
@@ -88,7 +95,9 @@ FigureDetails.propTypes = {
     rulesForUse: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
     learnAboutLicenses: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   }).isRequired,
+  title: PropTypes.string,
   licenseUrl: PropTypes.string.isRequired,
 };
 

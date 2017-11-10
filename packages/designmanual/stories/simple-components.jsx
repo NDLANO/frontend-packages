@@ -74,6 +74,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <FigureWithLicense classes="u-float-right">
           <Image
+            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />

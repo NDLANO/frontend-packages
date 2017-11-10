@@ -30,6 +30,7 @@
     "btoa": "^1.1.2",
     "classnames": "2.2.5",
     "isomorphic-fetch": "^2.2.1",
+    "lazysizes": "^4.0.1",
     "moment": "^2.18.1",
     "react-bem-helper": "1.4.1",
     "react-helmet": "5.1.3",

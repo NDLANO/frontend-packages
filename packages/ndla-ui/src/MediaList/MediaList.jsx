@@ -132,19 +132,20 @@ MediaListItemActions.propTypes = {
 
 const isLink = text => text.startsWith('http') || text.startsWith('https');
 
-export const HandleLink = ({ text }) => {
+export const HandleLink = ({ text, children }) => {
   if (isLink(text)) {
     return (
-      <a href={text} target="_blank" rel="noopener noreferrer" itemProp="name">
-        {text}
+      <a href={text} target="_blank" rel="noopener noreferrer">
+        {children}
       </a>
     );
   }
-  return <span itemProp="name">{text}</span>;
+  return <span>{children}</span>;
 };
 
 HandleLink.propTypes = {
   text: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const attributionTypes = [
@@ -165,20 +166,26 @@ export const MediaListItemMeta = ({items }) => {
 
           return (
             <li key={uuid()} className="c-medialist__meta-item" itemProp={item.metaType} itemScope itemType={namespace}>
-              {item.label}: <HandleLink text={item.description} />
+              {item.label}:{' '}
+              <HandleLink text={item.description}>
+                <span itemProp="name">{item.description}</span>
+              </HandleLink>
             </li>
           );
         } else if (item.metaType === metaTypes.title) {
           return (
             <li key={uuid()} className="c-medialist__meta-item" itemProp="about" itemScope itemType={getMicroDataNamespaceByType(microDataTypes.thing)}>
-              {item.label}: <HandleLink text={item.description} />
+              {item.label}: <span property="dct:title">{item.description}</span>
             </li>
           )
         }
 
         return (
           <li key={uuid()} className="c-medialist__meta-item">
-            {item.label}: <HandleLink text={item.description} />
+            {item.label}:{' '}
+            <HandleLink text={item.description}>
+              {item.description}
+            </HandleLink>
           </li>
         );
 

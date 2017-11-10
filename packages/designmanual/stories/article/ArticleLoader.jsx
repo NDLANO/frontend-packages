@@ -36,8 +36,6 @@ class ArticleLoader extends Component {
     fetchArticle(articleId)
       .then(data => {
         const article = data;
-        article.copyright.license.license = `cc-${article.copyright.license
-          .license}`; // tmp fix until apis are updated
         article.updated = moment(article.updated).format('DD/MM/YYYY');
         this.setState({
           article,

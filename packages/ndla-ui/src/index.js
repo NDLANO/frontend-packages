@@ -67,6 +67,7 @@ export {
   MediaListItemImage,
   MediaListItemMeta,
 } from './MediaList';
+export { default as Image } from './Image';
 
 export { default as ErrorMessage } from './ErrorMessage';
 

@@ -9,13 +9,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import getLicenseByAbbreviation from 'ndla-licenses';
+
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import { ArticleShape } from '../shapes';
 
-import getLicenseByAbbreviation from 'ndla-licenses';
 
 const classes = new BEMHelper({
   name: 'article',

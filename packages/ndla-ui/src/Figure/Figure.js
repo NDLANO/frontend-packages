@@ -63,7 +63,7 @@ export const FigureDetails = ({
               <li className="c-figure-list__item" key={uuid()}>
                 {messages.source}:{' '}
                 {origin.startsWith('http') ? (
-                  <a href={origin} target="_blank">
+                  <a href={origin} target="_blank" rel="noopener noreferrer">
                     {origin}
                   </a>
                 ) : (
@@ -71,7 +71,6 @@ export const FigureDetails = ({
                 )}
               </li>
             )}
-
           </ul>
           <div {...classLicenses('cta-block')}>{children}</div>
         </div>

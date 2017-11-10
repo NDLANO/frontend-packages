@@ -8,15 +8,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import getLicenseByAbbreviation,
-  { resourceTypes,
-    getResourceTypeNamespace,
-    isCreativeCommonsLicense,
-    microDataTypes,
-    getMicroDataNamespaceByMicroDataTypeWithFallback,
-    getMicroDataNamespaceByType,
-    metaTypes,
-  } from 'ndla-licenses';
+import getLicenseByAbbreviation, {
+  resourceTypes,
+  getResourceTypeNamespace,
+  isCreativeCommonsLicense,
+  microDataTypes,
+  getMicroDataNamespaceByMicroDataTypeWithFallback,
+  getMicroDataNamespaceByType,
+  metaTypes,
+} from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import LicenseByline from '../LicenseByline';
@@ -38,7 +38,10 @@ MediaList.propTypes = {
 };
 
 export const MediaListItem = ({ children }) => (
-  <li {...oClasses(null, null, cClasses('item').className)} itemScope itemType={getMicroDataNamespaceByType(microDataTypes.creativeWork)}>
+  <li
+    {...oClasses(null, null, cClasses('item').className)}
+    itemScope
+    itemType={getMicroDataNamespaceByType(microDataTypes.creativeWork)}>
     {children}
   </li>
 );
@@ -48,11 +51,7 @@ MediaListItem.propTypes = {
 };
 
 export const MediaListItemImage = ({ children }) => (
-  <div
-    {...oClasses('img', null, cClasses('img').className)}
-  >
-    {children}
-  </div>
+  <div {...oClasses('img', null, cClasses('img').className)}>{children}</div>
 );
 
 MediaListItemImage.propTypes = {
@@ -80,31 +79,39 @@ MediaListCCLink.defaultProps = {
   language: 'no',
 };
 
-export const MediaListItemBody = ({ children, license, title, resourceUrl, resourceType }) => {
+export const MediaListItemBody = ({
+  children,
+  license,
+  title,
+  resourceUrl,
+  resourceType,
+}) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
 
-
-  const containerProps = isCreativeCommonsLicense(licenseRights) ? {
-    ...oClasses('body', null, cClasses('body').className),
-    'xmlns:cc': 'https://creativecommons.org/ns#',
-    'xmlns:dct': 'http://purl.org/dc/terms/',
-    about: resourceUrl,
-  } : {
-    ...oClasses('body', null, cClasses('body').className),
-  };
+  const containerProps = isCreativeCommonsLicense(licenseRights)
+    ? {
+        ...oClasses('body', null, cClasses('body').className),
+        'xmlns:cc': 'https://creativecommons.org/ns#',
+        'xmlns:dct': 'http://purl.org/dc/terms/',
+        about: resourceUrl,
+      }
+    : {
+        ...oClasses('body', null, cClasses('body').className),
+      };
 
   const metaResourceType = getResourceTypeNamespace(resourceType);
 
   return (
     <div {...containerProps}>
       {metaResourceType && (
-        <span rel="dct:type" href={metaResourceType} style={{ display: 'none' }} />
+        <span
+          rel="dct:type"
+          href={metaResourceType}
+          style={{ display: 'none' }}
+        />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-      <LicenseByline
-        withDescription
-        licenseRights={licenseRights}
-      />
+      <LicenseByline withDescription licenseRights={licenseRights} />
       {children}
     </div>
   );
@@ -114,7 +121,9 @@ MediaListItemBody.propTypes = {
   children: PropTypes.node.isRequired,
   license: PropTypes.string.isRequired,
   resourceUrl: PropTypes.string,
-  resourceType: PropTypes.oneOf(Object.keys(resourceTypes).map(key => resourceTypes[key])),
+  resourceType: PropTypes.oneOf(
+    Object.keys(resourceTypes).map(key => resourceTypes[key]),
+  ),
   title: PropTypes.string,
 };
 
@@ -154,18 +163,33 @@ const attributionTypes = [
   metaTypes.contributor,
 ];
 
-export const MediaListItemMeta = ({items }) => {
-  const attributionItems = items.filter(item => attributionTypes.some(type => type === item.metaType));
-  const attributionMeta = attributionItems.map(item => `${item.label}: ${item.description}`).join(', ');
+export const MediaListItemMeta = ({ items }) => {
+  const attributionItems = items.filter(item =>
+    attributionTypes.some(type => type === item.metaType),
+  );
+  const attributionMeta = attributionItems
+    .map(item => `${item.label}: ${item.description}`)
+    .join(', ');
 
   return (
-    <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta} >
+    <ul
+      {...cClasses('actions')}
+      property="cc:attributionName"
+      content={attributionMeta}>
       {items.map(item => {
         if (attributionTypes.some(type => type === item.metaType)) {
-          const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(item.metaType, item.microDataType);
+          const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(
+            item.metaType,
+            item.microDataType,
+          );
 
           return (
-            <li key={uuid()} className="c-medialist__meta-item" itemProp={item.metaType} itemScope itemType={namespace}>
+            <li
+              key={uuid()}
+              className="c-medialist__meta-item"
+              itemProp={item.metaType}
+              itemScope
+              itemType={namespace}>
               {item.label}:{' '}
               <HandleLink text={item.description}>
                 <span itemProp="name">{item.description}</span>
@@ -174,21 +198,23 @@ export const MediaListItemMeta = ({items }) => {
           );
         } else if (item.metaType === metaTypes.title) {
           return (
-            <li key={uuid()} className="c-medialist__meta-item" itemProp="about" itemScope itemType={getMicroDataNamespaceByType(microDataTypes.thing)}>
+            <li
+              key={uuid()}
+              className="c-medialist__meta-item"
+              itemProp="about"
+              itemScope
+              itemType={getMicroDataNamespaceByType(microDataTypes.thing)}>
               {item.label}: <span property="dct:title">{item.description}</span>
             </li>
-          )
+          );
         }
 
         return (
           <li key={uuid()} className="c-medialist__meta-item">
             {item.label}:{' '}
-            <HandleLink text={item.description}>
-              {item.description}
-            </HandleLink>
+            <HandleLink text={item.description}>{item.description}</HandleLink>
           </li>
         );
-
       })}
     </ul>
   );
@@ -198,11 +224,14 @@ const mediaListItemShape = PropTypes.arrayOf(
   PropTypes.shape({
     label: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key])).isRequired,
-    microDataType: PropTypes.oneOf([microDataTypes.organization, microDataTypes.person]),
+    metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key]))
+      .isRequired,
+    microDataType: PropTypes.oneOf([
+      microDataTypes.organization,
+      microDataTypes.person,
+    ]),
   }),
 );
-
 
 MediaListItemMeta.propTypes = {
   items: mediaListItemShape,

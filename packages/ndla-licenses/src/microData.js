@@ -5,7 +5,7 @@ export const resourceTypes = {
   h5p: 'h5p',
 };
 
-export const getResourceTypeNamespace = (type) => {
+export const getResourceTypeNamespace = type => {
   switch (type) {
     case resourceTypes.video:
       return 'http://purl.org/dc/dcmitype/MovingImage';
@@ -28,11 +28,11 @@ export const microDataTypes = {
   creativeWork: 'creativeWork',
 };
 
-export const getMicroDataNamespaceByType = (type) => {
+export const getMicroDataNamespaceByType = type => {
   if (!type) throw new Error('type is not defined');
   const capitalized = type.charAt(0).toUpperCase() + type.slice(1);
   return `http://schema.org/${capitalized}`;
-}
+};
 
 export const metaTypes = {
   author: 'author',
@@ -42,7 +42,10 @@ export const metaTypes = {
   other: 'other',
 };
 
-export const getMicroDataNamespaceByMicroDataTypeWithFallback = (metaType, microDataType = null) => {
+export const getMicroDataNamespaceByMicroDataTypeWithFallback = (
+  metaType,
+  microDataType = null,
+) => {
   if (microDataType) {
     return getMicroDataNamespaceByType(microDataType);
   }

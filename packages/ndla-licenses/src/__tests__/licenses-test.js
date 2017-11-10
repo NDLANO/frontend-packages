@@ -8,7 +8,10 @@
 
 /* eslint-env jest */
 
-import { getLicenseByAbbreviation, isCreativeCommonsLicense } from '../licenses';
+import {
+  getLicenseByAbbreviation,
+  isCreativeCommonsLicense,
+} from '../licenses';
 
 import { BY, SA, NC, CC, COPY } from '../licenseRights';
 
@@ -34,7 +37,6 @@ test('licenses/getLicenseByAbbreviation unknown license', () => {
   expect(license.description).toBe('unknown-license');
   expect(license.rights).toEqual([]);
 });
-
 
 test('licenses/isCreativeCommonsLicense when creative commons license should return true', () => {
   const result = isCreativeCommonsLicense([CC, BY]);

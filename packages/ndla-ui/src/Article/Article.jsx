@@ -85,13 +85,15 @@ export const Article = ({
       <LayoutItem layout="center">
         {article.footNotes &&
           Object.keys(article.footNotes).length > 0 && (
-            <ArticleFootNotes footNotes={article.footNotes} messages={messages} />
+            <ArticleFootNotes
+              footNotes={article.footNotes}
+              messages={messages}
+            />
           )}
         {children}
       </LayoutItem>
     </ArticleWrapper>
-);
-
+  );
 };
 
 Article.propTypes = {

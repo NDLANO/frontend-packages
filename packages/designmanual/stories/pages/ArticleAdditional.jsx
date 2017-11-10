@@ -18,9 +18,7 @@ import {
 } from 'ndla-ui';
 import { Document, Additional } from 'ndla-ui/icons';
 
-import {
-  getLicenseByAbbreviation
-} from 'ndla-licenses';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Resources } from '../molecules/resources';
 import LicenseExample from '../article/LicenseExample';

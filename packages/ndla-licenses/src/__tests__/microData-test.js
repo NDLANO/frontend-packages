@@ -39,11 +39,16 @@ test('microData/getMicroDataNamespaceByType when type not defined, should throw 
 });
 
 test('microData/getMicroDataNamespaceByMicroDataTypeWithFallback when person micro data type should return person namespace', () => {
-  const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(metaTypes.author, microDataTypes.person);
+  const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(
+    metaTypes.author,
+    microDataTypes.person,
+  );
   expect(namespace).toBe('http://schema.org/Person');
 });
 
 test('microData/getMicroDataNamespaceByMicroDataTypeWithFallback when only metaType provided should return fallback namespace', () => {
-  const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(metaTypes.copyrightHolder);
+  const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(
+    metaTypes.copyrightHolder,
+  );
   expect(namespace).toBe('http://schema.org/Organization');
 });

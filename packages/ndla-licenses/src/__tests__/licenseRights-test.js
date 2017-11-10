@@ -8,11 +8,7 @@
 
 /* eslint-env jest */
 
-import {
-  getLicenseRightByAbbreviation,
-  BY,
-  COPY,
-} from '../licenseRights';
+import { getLicenseRightByAbbreviation, BY, COPY } from '../licenseRights';
 
 test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   const licenseRight = getLicenseRightByAbbreviation('by', 'nb');

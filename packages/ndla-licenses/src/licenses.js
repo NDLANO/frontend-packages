@@ -157,7 +157,6 @@ const by = {
   rights: [CC, BY],
 };
 
-
 const pd = {
   nb: {
     short: freeUseNB,
@@ -290,4 +289,5 @@ export function getLicenseByNBTitle(title, locale) {
   }
 }
 
-export const isCreativeCommonsLicense = licenseRights => licenseRights.every(r => r !== COPY);
+export const isCreativeCommonsLicense = licenseRights =>
+  licenseRights.every(r => r !== COPY);

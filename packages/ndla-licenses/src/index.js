@@ -6,7 +6,11 @@
  *
  */
 
-import { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense } from './licenses';
+import {
+  getLicenseByAbbreviation,
+  getLicenseByNBTitle,
+  isCreativeCommonsLicense,
+} from './licenses';
 
 import {
   BY,

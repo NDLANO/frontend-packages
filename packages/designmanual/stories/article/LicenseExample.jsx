@@ -22,7 +22,13 @@ import {
 } from 'ndla-ui';
 import { Document, Audio } from 'ndla-ui/icons';
 
-import { getLicenseByAbbreviation, COPY, getMicroDataNamespaceByType, microDataTypes, metaTypes } from 'ndla-licenses';
+import {
+  getLicenseByAbbreviation,
+  COPY,
+  getMicroDataNamespaceByType,
+  microDataTypes,
+  metaTypes,
+} from 'ndla-licenses';
 
 const byncndLicenseAbbreviation = 'by-nc-nd';
 const bysaLicenseAbbreviation = 'by-sa';
@@ -57,8 +63,7 @@ const VideoContent = () => (
           license={byncndLicenseAbbreviation}
           title="Regler for bruk av videoen:"
           resourceUrl="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
-          resourceType="video"
-        >
+          resourceType="video">
           <MediaListCCLink url={byncndLicense.url}>
             {byncndLicense.linkText}
           </MediaListCCLink>
@@ -119,10 +124,10 @@ const TextContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href=""
+            <a
+              href=""
               itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
-            >
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -130,9 +135,10 @@ const TextContent = () => (
             license={bysaLicenseAbbreviation}
             title="Regler for bruk av teksten:"
             resourceUrl=""
-            resourceType="text"
-          >
-            <MediaListCCLink url={bysaLicense.url}>{bysaLicense.linkText}</MediaListCCLink>
+            resourceType="text">
+            <MediaListCCLink url={bysaLicense.url}>
+              {bysaLicense.linkText}
+            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -188,8 +194,7 @@ const AudioContent = () => (
             <a
               href=""
               itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
-            >
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Audio className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -197,9 +202,10 @@ const AudioContent = () => (
             license={bysaLicenseAbbreviation}
             title="Regler for bruk av lydfilen:"
             resourceUrl=""
-            resourceType="audio"
-          >
-            <MediaListCCLink url={bysaLicense.url}>{bysaLicense.linkText}</MediaListCCLink>
+            resourceType="audio">
+            <MediaListCCLink url={bysaLicense.url}>
+              {bysaLicense.linkText}
+            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -252,16 +258,23 @@ const ImageContent = () => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <a href="">
-              <img width="260" alt="alt" src={src} itemProp="url" itemType={getMicroDataNamespaceByType(microDataTypes.url)} />
+              <img
+                width="260"
+                alt="alt"
+                src={src}
+                itemProp="url"
+                itemType={getMicroDataNamespaceByType(microDataTypes.url)}
+              />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
             license={byncndLicenseAbbreviation}
             title="Regler for bruk av bildet:"
             resourceUrl={src}
-            resourceType="image"
-          >
-            <MediaListCCLink url={byncndLicense.url}>{byncndLicense.linkText}</MediaListCCLink>
+            resourceType="image">
+            <MediaListCCLink url={byncndLicense.url}>
+              {byncndLicense.linkText}
+            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -320,8 +333,7 @@ const ImageContent = () => (
           title="Regler for bruk av bildet:">
           <MediaListCCLink
             resourceUrl="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg"
-            url={byncndLicense.url}
-          >
+            url={byncndLicense.url}>
             {byncndLicense.linkText}
           </MediaListCCLink>
           <MediaListItemActions>
@@ -402,11 +414,8 @@ const H5PContent = () => (
             license={byncndLicenseAbbreviation}
             title="Regler for bruk av H5P-innholdet:"
             resourceUrl="http://ndla.no/nb/h5p/embed/146132?fag=127756"
-            resourceType="h5p"
-            >
-            <MediaListCCLink
-              url={byncndLicense.url}
-            >
+            resourceType="h5p">
+            <MediaListCCLink url={byncndLicense.url}>
               {byncndLicense.linkText}
             </MediaListCCLink>
             <MediaListItemActions>
@@ -469,17 +478,17 @@ const Files = () => (
             <a
               href=""
               itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
-            >
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
             license={COPY}
             title="Regler for bruk av filen:"
-            resourceUrl=""
-          >
-            <MediaListCCLink url={copyLicense.url}>{copyLicense.linkText}</MediaListCCLink>
+            resourceUrl="">
+            <MediaListCCLink url={copyLicense.url}>
+              {copyLicense.linkText}
+            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta

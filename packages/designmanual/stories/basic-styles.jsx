@@ -325,7 +325,7 @@ storiesOf('Grunnstiler', module)
           Overskrifter skal markeres semantisk med riktige HTML-tagger. For
           eksempel:
         </p>
-        <code>{'<h1>Overskrift<h1>'}</code>
+        <code>{'<h1>Overskrift</h1>'}</code>
 
         <p>
           Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag

@@ -10,30 +10,49 @@ import React from 'react';
 import defined from 'defined';
 import PropTypes from 'prop-types';
 
-const getSrcSet = src =>
-  [
-    `${src}?width=2720 2720w`,
-    `${src}?width=2080 2080w`,
-    `${src}?width=1760 1760w`,
-    `${src}?width=1440 1440w`,
-    `${src}?width=1120 1120w`,
-    `${src}?width=1000 1000w`,
-    `${src}?width=960 960w`,
-    `${src}?width=800 800w`,
-    `${src}?width=640 640w`,
-    `${src}?width=480 480w`,
-    `${src}?width=320 320w`,
-    `${src}?width=240 240w`,
-    `${src}?width=180 180w`,
-  ].join(', ');
+const makeSrcQueryString = (width, crop, focalPoint) => {
+  const cropParams = crop
+    ? `&cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`
+    : '';
+  const focalPointParams = focalPoint
+    ? `&focalX=${focalPoint.x}&focalY=${focalPoint.y}`
+    : '';
+
+  return `width=${width}${cropParams}${focalPointParams}`;
+};
+
+const getSrcSet = (src, crop, focalPoint) => {
+  const widths = [
+    2720,
+    2080,
+    1760,
+    1440,
+    1120,
+    1000,
+    960,
+    800,
+    640,
+    480,
+    320,
+    240,
+    180,
+  ];
+  return widths
+    .map(
+      width =>
+        `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`,
+    )
+    .join(', ');
+};
 
 // lazyload images via lasysizes
 const LazyLoadImage = ({ src, srcSet, lazyLoadSrc, sizes, ...rest }) => {
   return [
-    <noscript>
+    <noscript key="noscript">
       <img src={`${src}`} srcSet={srcSet} sizes={sizes} {...rest} />
     </noscript>,
     <img
+      key="img"
       style={{ width: '100%' }}
       className="lazyload"
       src={lazyLoadSrc}
@@ -54,10 +73,20 @@ LazyLoadImage.propTypes = {
   lazyLoadSrc: PropTypes.string.isRequired,
 };
 
-const Image = ({ alt, src, lazyLoad, lazyLoadSrc, contentType, ...rest }) => {
-  const srcSet = defined(rest.srcSet, getSrcSet(src));
+const Image = ({
+  alt,
+  src,
+  lazyLoad,
+  lazyLoadSrc,
+  crop,
+  focalPoint,
+  contentType,
+  ...rest
+}) => {
+  const srcSet = defined(rest.srcSet, getSrcSet(src, crop, focalPoint));
   const sizes = defined(rest.sizes, '(min-width: 1024px) 1024px, 100vw'); // min-width === inuit-wrapper-width
   const fallbackWidth = defined(rest.fallbackWidth, 1024);
+  const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
 
   if (contentType && contentType === 'image/gif') {
     return <img alt={alt} src={`${src}`} {...rest} />;
@@ -66,7 +95,8 @@ const Image = ({ alt, src, lazyLoad, lazyLoadSrc, contentType, ...rest }) => {
   if (lazyLoad) {
     return (
       <LazyLoadImage
-        src={`${src}?width=${fallbackWidth}`}
+        alt={alt}
+        src={`${src}?${queryString}`}
         srcSet={srcSet}
         sizes={sizes}
         lazyLoadSrc={lazyLoadSrc}
@@ -79,7 +109,7 @@ const Image = ({ alt, src, lazyLoad, lazyLoadSrc, contentType, ...rest }) => {
       alt={alt}
       srcSet={srcSet}
       sizes={sizes}
-      src={`${src}?width=${fallbackWidth}`}
+      src={`${src}?${queryString}`}
       {...rest}
     />
   );
@@ -94,6 +124,16 @@ Image.propTypes = {
   srcSet: PropTypes.string,
   lazyLoad: PropTypes.bool,
   lazyLoadSrc: PropTypes.string,
+  crop: PropTypes.shape({
+    startX: PropTypes.number.isRequired,
+    startY: PropTypes.number.isRequired,
+    endX: PropTypes.number.isRequired,
+    endY: PropTypes.number.isRequired,
+  }),
+  focalPoint: PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  }),
 };
 
 export default Image;

@@ -6,7 +6,6 @@ import * as Icons from 'ndla-ui/icons';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
-import article from '../dummydata/index';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';

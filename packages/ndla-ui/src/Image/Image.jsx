@@ -46,23 +46,22 @@ const getSrcSet = (src, crop, focalPoint) => {
 };
 
 // lazyload images via lasysizes
-const LazyLoadImage = ({ src, srcSet, lazyLoadSrc, sizes, ...rest }) => {
-  return [
-    <noscript key="noscript">
-      <img src={`${src}`} srcSet={srcSet} sizes={sizes} {...rest} />
-    </noscript>,
-    <img
-      key="img"
-      style={{ width: '100%' }}
-      className="lazyload"
-      src={lazyLoadSrc}
-      data-src={src}
-      data-src-set={srcSet}
-      data-sizes={sizes}
-      {...rest}
-    />,
-  ];
-};
+const LazyLoadImage = ({ alt, src, srcSet, lazyLoadSrc, sizes, ...rest }) => [
+  <noscript key="noscript">
+    <img alt={alt} src={`${src}`} srcSet={srcSet} sizes={sizes} {...rest} />
+  </noscript>,
+  <img
+    alt={alt}
+    key="img"
+    style={{ width: '100%' }}
+    className="lazyload"
+    src={lazyLoadSrc}
+    data-src={src}
+    data-src-set={srcSet}
+    data-sizes={sizes}
+    {...rest}
+  />,
+];
 
 LazyLoadImage.propTypes = {
   alt: PropTypes.string.isRequired,

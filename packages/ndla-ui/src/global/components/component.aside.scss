@@ -4,12 +4,13 @@
 **/
 
 
-
+$padding-bottom: 17px;
 .c-aside, aside {
   position: relative;
-  margin: $spacing--large 0;
+  margin: $spacing--large 0 ($spacing--large - $padding-bottom) 0;
   @include inuit-font-size(16px);
-  width: 100%;
+  overflow:hidden;
+  padding-bottom: $padding-bottom;
 }
 .c-aside--float {
   @include mq(tablet) {
@@ -29,16 +30,16 @@
   color: $brand-grey-dark;
   padding: $spacing $spacing $spacing--large;
   border: 1px solid $brand-grey--light;
-  overflow:hidden;
-  max-height: 150px;
+  max-height: 190px;
   transition: max-height .6s ease-in-out;
+  overflow: hidden;
 
   &:after {
     content: "";
     text-align: center;
     position: absolute;
     top: 0;
-    bottom: 1px;
+    bottom: 20px;
     right: 0;
     width: 99%;
     margin: .5% .5% 0 .5%;
@@ -72,7 +73,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -16px;
+  bottom: 2px;
   z-index: 9;
   box-shadow: 0 0px 15px rgba(gray, 0.3);
   margin: auto;

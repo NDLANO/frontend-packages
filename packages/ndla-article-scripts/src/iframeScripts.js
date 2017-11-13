@@ -8,7 +8,7 @@
 
 import { forEachElement } from './domHelpers';
 
-export const updateIFrameDimensions = (init = true) => {
+export const updateIFrameDimensions = (init = true, topNode = null) => {
   forEachElement('.c-figure iframe, .c-embedded--resize iframe', el => {
     const iframe = el;
     const parent = iframe.parentNode;
@@ -39,6 +39,7 @@ export const updateIFrameDimensions = (init = true) => {
     if (parentWidth > 0) {
       iframe.width = parentWidth;
     }
+  }, topNode);
 };
 
 const handler = () => updateIFrameDimensions(false);

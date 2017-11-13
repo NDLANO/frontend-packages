@@ -17,8 +17,6 @@ const iframe1Html = `
     <figure>
   `;
 
-
-
 test('iframeScripts/updateIFrameDimensions updates iframe height and width according to ratio 1', () => {
   document.body.innerHTML = iframe1Html;
   window.getComputedStyle = () => ({ paddingLeft: 0, paddingRight: 0 });
@@ -69,12 +67,15 @@ const iframeHtmlWithNoDimensions = `
 
 test('iframeScripts/when no dimensions should default to default ratio', () => {
   document.body.innerHTML = iframeHtmlWithNoDimensions;
-  Object.defineProperty(byId('figureNoDimensions'), 'clientWidth', { value: 800 });
+  Object.defineProperty(byId('figureNoDimensions'), 'clientWidth', {
+    value: 800,
+  });
 
   updateIFrameDimensions();
 
   const ratio =
-    parseFloat(byId('iframeNodimensions').getAttribute('height')) / parseFloat(byId('iframeNodimensions').getAttribute('width'));
+    parseFloat(byId('iframeNodimensions').getAttribute('height')) /
+    parseFloat(byId('iframeNodimensions').getAttribute('width'));
 
   expect(ratio).toBe(0.5625);
-})
+});

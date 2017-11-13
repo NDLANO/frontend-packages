@@ -430,9 +430,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Ekspanderbar boks" />
       <StoryBody>
         <details>
-          <summary>
-            Oppsummering av innhold
-          </summary>
+          <summary>Oppsummering av innhold</summary>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du
             pitcher, blir idéen og historien i den filmen du planlegger å lage,

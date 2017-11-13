@@ -19,6 +19,9 @@ li ul, li ol {
 ol {
   counter-reset: item;
 }
+
+$diameter: 30px;
+
 ol >li {
   display: block;
   position: relative;
@@ -35,14 +38,13 @@ ol >li {
     position: absolute;
     top: -3px;
     left: -55px;
-    line-height: 16px;
-    height: 16px;
-    width: 16px;
-    padding: 7px;
+    line-height: $diameter - 4px;
+    height: $diameter;
+    width: $diameter;
     text-align: center;
     border: 2px solid $brand-color--secondary;
     border-radius: 50%;
-    box-sizing: content-box;
     font-family: $font;
+    text-align: center;
   }
 }

@@ -5,6 +5,7 @@
 
 
 $padding-bottom: 17px;
+
 .c-aside, aside {
   position: relative;
   margin: $spacing--large 0 ($spacing--large - $padding-bottom) 0;
@@ -12,12 +13,14 @@ $padding-bottom: 17px;
   overflow:hidden;
   padding-bottom: $padding-bottom;
 }
+
 .c-aside--float {
   @include mq(tablet) {
     @include float(3, 4, 'right');
     max-width: 350px;
   }
 }
+
 .c-aside__title {
   border-bottom: 2px solid $brand-color;
   margin-bottom: $spacing;
@@ -26,6 +29,7 @@ $padding-bottom: 17px;
   position: relative;
   z-index: 2;
 }
+
 .c-aside__content {
   color: $brand-grey-dark;
   padding: $spacing $spacing $spacing--large;
@@ -43,10 +47,13 @@ $padding-bottom: 17px;
     right: 0;
     width: 99%;
     margin: .5% .5% 0 .5%;
-    transition: background .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
-    background: linear-gradient(rgba($brand-color--light,0),$white);
+    transition: opacity .5s cubic-bezier(0.74, -0.04, 0.96, 0.97);
+    background: linear-gradient(rgba($brand-color--light,0), $white);
+    opacity: 1;
+    z-index: 0;
   }
 }
+
 .c-aside.expanded {
   max-height: 500vh;
 
@@ -59,7 +66,8 @@ $padding-bottom: 17px;
     }
 
     &:after {
-      background: none;
+      opacity: 0;
+      z-index: -1;
     }
   }
 

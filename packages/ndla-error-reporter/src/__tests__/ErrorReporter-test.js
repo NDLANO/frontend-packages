@@ -42,6 +42,26 @@ test('ndla-error-reporter/ErrorReporter can capture message', () => {
   apiMock.done();
 });
 
+test('ndla-error-reporter/ErrorReporter can capture warning', () => {
+  const apiMock = nock('http://loggly-mock-api')
+    .post('/inputs/1223/', body => {
+      expect(body).toMatchObject({
+        level: 'warning',
+        text: 'Error: Some generic warning',
+        stackInfo: {
+          name: 'Error',
+        },
+        appName: 'unittest/ndla-frontend',
+      });
+      return true;
+    })
+    .reply(200);
+
+  errorReporter.captureWarning(new Error('Some generic warning'));
+
+  apiMock.done();
+});
+
 test('ndla-error-reporter/ErrorReporter can capture error', () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', body => {

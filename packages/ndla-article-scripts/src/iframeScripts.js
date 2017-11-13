@@ -12,7 +12,7 @@ export const updateIFrameDimensions = (init = true) => {
   forEachElement('.c-figure iframe, .c-embedded--resize iframe', el => {
     const iframe = el;
     const parent = iframe.parentNode;
-    let ratio = null;
+    let ratio = 0.5625;
 
     const computedStyle = window.getComputedStyle(parent);
     const paddingLeft = parseFloat(computedStyle.paddingLeft);
@@ -29,23 +29,24 @@ export const updateIFrameDimensions = (init = true) => {
       }
     }
 
-    let newHeight = 0;
+    const newHeight = parentWidth * ratio;
 
-    if (ratio) {
-      newHeight = parentWidth * ratio;
-    } else {
-      newHeight = iframe.clientHeight * parentWidth / iframe.clientWidth;
+    // fix for elements not visible
+    if (newHeight > 0) {
+      iframe.height = newHeight;
     }
 
-    iframe.height = newHeight;
-    iframe.width = parentWidth;
-  });
+    if (parentWidth > 0) {
+      iframe.width = parentWidth;
+    }
 };
 
+const handler = () => updateIFrameDimensions(false);
+
 export const addEventListenerForResize = () => {
-  window.addEventListener('resize', () => updateIFrameDimensions(false));
+  window.addEventListener('resize', handler);
 };
 
 export const removeEventListenerForResize = () => {
-  window.removeEventListener('resize', () => updateIFrameDimensions(false));
+  window.removeEventListener('resize', handler);
 };

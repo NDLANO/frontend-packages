@@ -9,6 +9,7 @@
 import React from 'react';
 import defined from 'defined';
 import PropTypes from 'prop-types';
+import LazyLoadImage from './LazyLoadImage';
 
 const makeSrcQueryString = (width, crop, focalPoint) => {
   const cropParams = crop
@@ -43,33 +44,6 @@ const getSrcSet = (src, crop, focalPoint) => {
         `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`,
     )
     .join(', ');
-};
-
-// lazyload images via lasysizes
-const LazyLoadImage = ({ alt, src, srcSet, lazyLoadSrc, sizes, ...rest }) => [
-  <noscript key="noscript">
-    <img alt={alt} src={`${src}`} srcSet={srcSet} sizes={sizes} {...rest} />
-  </noscript>,
-  <img
-    alt={alt}
-    key="img"
-    style={{ width: '100%' }}
-    className="lazyload"
-    src={lazyLoadSrc}
-    data-src={src}
-    data-src-set={srcSet}
-    data-sizes={sizes}
-    {...rest}
-  />,
-];
-
-LazyLoadImage.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  sizes: PropTypes.string,
-  contentType: PropTypes.string,
-  srcSet: PropTypes.string,
-  lazyLoadSrc: PropTypes.string.isRequired,
 };
 
 const Image = ({

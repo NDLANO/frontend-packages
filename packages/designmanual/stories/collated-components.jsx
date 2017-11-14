@@ -17,6 +17,7 @@ import {
   PageContainer,
   Content,
   LayoutItem,
+  Image,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -175,9 +176,9 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
         <FigureWithLicense>
-          <img
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
       </LayoutItem>

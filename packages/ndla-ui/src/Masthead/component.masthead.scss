@@ -1,10 +1,18 @@
-.masthead {
+.c-masthead {
   border-bottom: 1px solid $brand-grey--lighter;
   z-index: 99;
   position: relative;
   background: white;
 }
-.masthead > div {
+
+.c-masthead--fixed {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+}
+
+.c-masthead > div {
   justify-content: center;
   text-align: center;
   padding: $spacing--small $spacing $spacing--small;
@@ -20,18 +28,18 @@
     padding: $spacing--small $spacing--large;
   }
 }
-.masthead__left {
+.c-masthead__left {
   display: flex;
 }
-.masthead__right {
+.c-masthead__right {
   flex-grow: 1;
-  text-align:right;
-    @include mq(tablet) {
-      padding: $spacing--small 0;
-      padding:0;
-    }
-    @include mq(desktop) {
-      text-align:right;
-      flex-grow: 1;
-    }
+  text-align: right;
+  @include mq(tablet) {
+    padding: $spacing--small 0;
+    padding: 0;
+  }
+  @include mq(desktop) {
+    text-align: right;
+    flex-grow: 1;
+  }
 }

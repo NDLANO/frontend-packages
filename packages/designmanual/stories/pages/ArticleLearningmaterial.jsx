@@ -15,6 +15,7 @@ import {
   ArticleWrapper,
   ArticleIntroduction,
   ArticleByline,
+  Image,
 } from 'ndla-ui';
 import { Document } from 'ndla-ui/icons';
 
@@ -49,9 +50,9 @@ export default () => (
       </LayoutItem>
       <LayoutItem layout="center">
         <FigureWithLicense caption="" expandable classes="u-float-left">
-          <img
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -83,9 +84,9 @@ export default () => (
           klassen.
         </p>
         <FigureWithLicense caption="" classes="u-float-right">
-          <img
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>

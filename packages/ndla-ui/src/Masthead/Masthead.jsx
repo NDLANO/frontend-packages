@@ -7,22 +7,27 @@
  */
 
 import React from 'react';
-import ReactStickyHeader from 'react-sticky-header';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import BEMHelper from 'react-bem-helper';
+
+const classes = new BEMHelper({
+  name: 'masthead',
+  prefix: 'c-',
+});
 
 export const MastheadItem = ({ children, className, left, right }) => {
-  const classes = classNames(
+  const itemClassNames = classNames(
+    { [classes('left').className]: left },
+    { [classes('right').className]: right },
     className,
-    { masthead__left: left },
-    { masthead__right: right },
   );
-  return <div className={classes}>{children}</div>;
+  return <div className={itemClassNames}>{children}</div>;
 };
 
 MastheadItem.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.bool,
+  className: PropTypes.string,
   right: PropTypes.bool,
   left: PropTypes.bool,
 };
@@ -32,18 +37,15 @@ MastheadItem.defaultProps = {
   left: false,
 };
 
-export const Masthead = ({ children }) => (
-  <ReactStickyHeader
-    header={
-      <div className="masthead">
-        <div className="u-1/1">{children}</div>
-      </div>
-    }
-  />
+export const Masthead = ({ children, fixed }) => (
+  <div {...classes(null, { fixed })}>
+    <div className="u-1/1">{children}</div>
+  </div>
 );
 
 Masthead.propTypes = {
   children: PropTypes.node,
+  fixed: PropTypes.bool,
 };
 
 export default Masthead;

@@ -291,6 +291,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <h2>Iframe med satt høyde og bredde</h2>
         <Embedded resize runScripts>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
@@ -305,6 +306,13 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <h2>Iframe uten satt høyde og bredde</h2>
+        <Embedded resize>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </Embedded>
       </StoryBody>
     </div>
   ))
@@ -414,6 +422,28 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+      </StoryBody>
+    </div>
+  ))
+  .add('Ekspanderbar boks', () => (
+    <div>
+      <StoryIntro title="Ekspanderbar boks" />
+      <StoryBody>
+        <details>
+          <summary>Oppsummering av innhold</summary>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+        </details>
       </StoryBody>
     </div>
   ))

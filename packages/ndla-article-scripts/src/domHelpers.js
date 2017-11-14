@@ -6,8 +6,9 @@
  *
  */
 
-export const forEachElement = (selector, callback) => {
-  const nodeList = document.querySelectorAll(selector);
+export const forEachElement = (selector, callback, parent = null) => {
+  const topNode = parent || document;
+  const nodeList = topNode.querySelectorAll(selector);
   for (let i = 0; i < nodeList.length; i += 1) {
     callback(nodeList[i], i);
   }

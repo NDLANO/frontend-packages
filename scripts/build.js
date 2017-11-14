@@ -64,13 +64,13 @@ function removeBuildFile(file) {
   );
 }
 
-function buildFile(file, verbose = true) {
+function buildFile(file, silent) {
   const destPath = resolveDestPath(file);
   mkdirp.sync(path.dirname(destPath));
   try {
     const transformed = babel.transformFileSync(file, babelOptions).code;
     fs.writeFileSync(destPath, transformed);
-    if (verbose) {
+    if (!silent) {
       process.stdout.write(
         `${chalk.green('\u2022 ') +
           path.relative(PACKAGES_DIR, file) +
@@ -93,7 +93,7 @@ function buildNodePackage(p) {
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
-  files.forEach(file => buildFile(file, false));
+  files.forEach(file => buildFile(file, true));
   process.stdout.write(`${OK}\n`);
 }
 

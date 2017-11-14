@@ -21,15 +21,6 @@ $padding-bottom: 17px;
   }
 }
 
-.c-aside__title {
-  border-bottom: 2px solid $brand-color;
-  margin-bottom: $spacing;
-  @include inuit-font-size(22px, 34px);
-  font-weight: $font-weight-bold;
-  position: relative;
-  z-index: 2;
-}
-
 .c-aside__content {
   color: $brand-grey-dark;
   padding: $spacing $spacing $spacing--large;
@@ -110,14 +101,26 @@ $padding-bottom: 17px;
 }
 
 .c-aside img {
-    box-shadow: 0px 0px 9px -3px $brand-grey;
-  }
+  box-shadow: 0px 0px 9px -3px $brand-grey;
+}
+
 .c-aside figure {
   // Overrule default images width
   width: 100% !important;
   left: 0 !important;
   padding: 0;
 }
+
+.c-aside h2:first-child {
+  border-bottom: 2px solid $brand-color;
+  margin-top: 0;
+  margin-bottom: $spacing;
+  @include inuit-font-size(22px, 34px);
+  font-weight: $font-weight-bold;
+  position: relative;
+  z-index: 2;
+}
+
 .c-aside h2,.c-aside h3,.c-aside h4,.c-aside h5 {
   display: block;
   @include inuit-font-size(16px);

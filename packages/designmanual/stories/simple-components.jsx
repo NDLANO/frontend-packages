@@ -357,7 +357,7 @@ storiesOf('Enkle komponenter', module)
         </div>
         <Aside float>
           <div>
-            <div className="c-aside__title">Høyrespalte</div>
+            <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
@@ -392,7 +392,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <Aside>
           <div>
-            <div className="c-aside__title">Faktaboks</div>
+            <h2>Faktaboks</h2>
             <p>
               En faktaboks kan inneholde punktlister eller korte fakta som er
               relevant for artikkelens innhold.
@@ -401,6 +401,7 @@ storiesOf('Enkle komponenter', module)
               Det anbefales å ikke ha for mye innhold i faktaboks, slik at
               lese-konteksten i størst mulig grad beholdes.
             </p>
+            <h2>Enkel tittel</h2>
             <p>
               Faktaboksen kan også brukes til å oppsummere innhold i slutten av
               en artikkel, og den kan inneholde lisensiering om eksternt innhold

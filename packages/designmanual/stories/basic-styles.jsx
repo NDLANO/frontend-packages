@@ -189,6 +189,9 @@ storiesOf('Grunnstiler', module)
             <a href="#lenker" target="_self">
               Lenker
             </a>,
+            <a href="#midtstilttekst" target="_self">
+              Midtstilt tekst
+            </a>,
           ]}
         />
       </StoryIntro>
@@ -397,6 +400,12 @@ storiesOf('Grunnstiler', module)
         </div>
 
         <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
+
+        <h2 id="midtstilttekst" className="u-heading">Midtstilt tekst</h2>
+        <p>Noen informasjonstyper kan stå for seg selv og være midtstilt. Matematiske formler er ett eksempel på midtstilt tekst (har ikke støtte for å vise mattematiske formler i designmanualen, så derfor er det ingen eksempel).</p>
+        <p className="u-text-center">
+          Dette er en midtstilt tekst. Lorum ipsum.
+        </p>
       </StoryBody>
     </div>
   ))

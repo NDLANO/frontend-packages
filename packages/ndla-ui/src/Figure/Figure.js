@@ -100,7 +100,7 @@ export const FigureCaption = ({
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline licenseRights={licenseRights}>
-          <span className="article_meta">
+          <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
           <button {...classes('captionbtn')}>{reuseLabel}</button>

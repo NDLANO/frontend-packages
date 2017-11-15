@@ -35,7 +35,9 @@ storiesOf('Enkle komponenter', module)
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FigureWithLicense classes="u-float-left">
+        <FigureWithLicense
+          classes="u-float-left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -59,7 +61,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense>
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -71,7 +73,9 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense classes="u-float-right">
+        <FigureWithLicense
+          classes="u-float-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
             alt="Forstørrelsesglass"
@@ -102,7 +106,7 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense authors="" caption="">
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

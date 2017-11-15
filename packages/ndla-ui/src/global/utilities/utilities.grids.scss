@@ -28,7 +28,7 @@ $denominator: auto;
     }
     @include mq(desktop) {
       width: ($cols/$maxcols)*100% !important;
-      margin: 0 $spacing $spacing (-$colDifference/$maxcols*100%);
+      margin: 0 $spacing $spacing -25%;
     }
   }
   @if $direction == right {
@@ -42,7 +42,7 @@ $denominator: auto;
     }
     @include mq(desktop) {
       width: ($cols/$maxcols)*100% !important;
-      margin: 0 (-$colDifference/$maxcols*100%) $spacing $spacing;
+      margin: 0 -25% $spacing $spacing;
     }
   }
 

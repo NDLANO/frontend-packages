@@ -94,4 +94,8 @@ FigureWithLicense.propTypes = {
   typeLabel: PropTypes.string,
 };
 
+FigureWithLicense.defaultProps = {
+  classes: '',
+};
+
 export default FigureWithLicense;

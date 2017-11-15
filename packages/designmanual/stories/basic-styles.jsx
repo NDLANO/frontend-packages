@@ -421,12 +421,12 @@ storiesOf('Grunnstiler', module)
         </h2>
         <p>
           Noen informasjonstyper kan stå for seg selv og være midtstilt.
-          Matematiske formler er ett eksempel på midtstilt tekst (har ikke
-          støtte for å vise mattematiske formler i designmanualen, så derfor er
-          det ingen eksempel).
+          Matematiske formler er ett eksempel på midtstilt tekst.
         </p>
-        <p className="u-text-center">
-          Dette er en midtstilt tekst. Lorum ipsum.
+        <p
+          className="u-text-center"
+        >
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>4</mn><mo>=</mo><mfrac><mrow><mo>-</mo><mn>12</mn></mrow><mrow><mo>-</mo><mn>3</mn></mrow></mfrac></math>
         </p>
       </StoryBody>
     </div>

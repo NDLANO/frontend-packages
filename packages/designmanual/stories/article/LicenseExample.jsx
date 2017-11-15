@@ -33,14 +33,13 @@ const VideoContent = () => (
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
-          <iframe
-            title="Youtube video"
-            width="200"
-            height="113"
-            src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
-            frameBorder="0"
-            allowFullScreen=""
-          />
+          <a href="">
+            <img
+              src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?auto=format&fit=crop&w=500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+              width="260"
+              alt="alt"
+            />
+          </a>
         </MediaListItemImage>
         <MediaListItemBody
           license="by-nc-nd"

@@ -41,7 +41,7 @@ h2, h3, .u-heading3, h4, h5 {
 }
 
 h3, h4, h5 {
-  @include inuit-font-size(18px, 24px);
+  @include inuit-font-size(18px, 26px);
 }
 
 h2 + h2 {

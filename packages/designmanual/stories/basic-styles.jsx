@@ -229,6 +229,11 @@ storiesOf('Grunnstiler', module)
               <td>700</td>
             </tr>
             <tr>
+              <td>Små overskrifter</td>
+              <td>Source Sans Pro</td>
+              <td>700</td>
+            </tr>
+            <tr>
               <td>Ingress</td>
               <td>Source Sans Pro</td>
               <td>300</td>
@@ -284,6 +289,15 @@ storiesOf('Grunnstiler', module)
             </td>
           </tr>
           <tr>
+            <td>Små overskrifter</td>
+            <td>
+              18 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+            </td>
+            <td>
+              18 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+            </td>
+          </tr>
+          <tr>
             <td>Ingress</td>
             <td>
               26 px{' '}
@@ -331,12 +345,13 @@ storiesOf('Grunnstiler', module)
         <code>{'<h1>Overskrift</h1>'}</code>
 
         <p>
-          Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag
-          for nivå 3, 4 osv, vil de få samme stil som nivå 2 nedenfor:
+          Det er tre nivåer av overskrifter. Bruker man likevel overskrifts-tag
+          for nivå 4, 5 osv, vil de få samme stil som nivå 3 nedenfor:
         </p>
         <div className="c-bodybox">
           <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
           <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
+          <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
         </div>
         <h2 id="ingress" className="u-heading">
           Ingress
@@ -401,8 +416,15 @@ storiesOf('Grunnstiler', module)
 
         <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
 
-        <h2 id="midtstilttekst" className="u-heading">Midtstilt tekst</h2>
-        <p>Noen informasjonstyper kan stå for seg selv og være midtstilt. Matematiske formler er ett eksempel på midtstilt tekst (har ikke støtte for å vise mattematiske formler i designmanualen, så derfor er det ingen eksempel).</p>
+        <h2 id="midtstilttekst" className="u-heading">
+          Midtstilt tekst
+        </h2>
+        <p>
+          Noen informasjonstyper kan stå for seg selv og være midtstilt.
+          Matematiske formler er ett eksempel på midtstilt tekst (har ikke
+          støtte for å vise mattematiske formler i designmanualen, så derfor er
+          det ingen eksempel).
+        </p>
         <p className="u-text-center">
           Dette er en midtstilt tekst. Lorum ipsum.
         </p>

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { CC, getLicenseRightByAbbreviation } from 'ndla-licenses';
+import { getLicenseRightByAbbreviation } from 'ndla-licenses';
 import LicenseIcon from './LicenseIcon';
 
 const classes = new BEMHelper({
@@ -40,7 +40,6 @@ LicenseIconItem.propTypes = {
 
 const LicenseIconDescriptionList = ({ licenseRights, className }) => (
   <ul {...classes('list', '', className)}>
-    <LicenseIconItem key={CC} licenseRight={CC} />
     {licenseRights.map(licenseRight => (
       <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />
     ))}

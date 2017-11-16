@@ -24,7 +24,7 @@ const ArticleByline = ({ authors, license, messages, updated, children }) => (
       </span>
       <span {...classes('authors')}>
         {messages.writtenBy}{' '}
-        {authors && authors.map(author => author.name).join(', ')}. <br /> ({license.toUpperCase()})
+        {authors && authors.map(author => author.name).join(', ')}. <br /> ({license.rights.map(right => right.toUpperCase()).join('-')})
       </span>
     </span>
     <span {...classes('flex')}>
@@ -46,7 +46,9 @@ ArticleByline.propTypes = {
     }),
   ).isRequired,
   updated: PropTypes.string.isRequired,
-  license: PropTypes.string.isRequired,
+  license: PropTypes.shape({
+    rights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
   messages: PropTypes.shape({
     writtenBy: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,

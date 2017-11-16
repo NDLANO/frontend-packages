@@ -9,6 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import getLicenseByAbbreviation from 'ndla-licenses';
+
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
@@ -61,31 +63,38 @@ export const Article = ({
   modifier,
   messages,
   children,
-}) => (
-  <ArticleWrapper modifier={modifier}>
-    <LayoutItem layout="center">
-      <ArticleTitle icon={icon}>{article.title}</ArticleTitle>
-      <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
-      <ArticleByline
-        messages={messages}
-        authors={article.copyright.authors}
-        license={article.copyright.license.license}
-        updated={article.updated}>
-        {licenseBox}
-      </ArticleByline>
-    </LayoutItem>
-    <LayoutItem layout="center">
-      <ArticleContent content={article.content} />
-    </LayoutItem>
-    <LayoutItem layout="center">
-      {article.footNotes &&
-        Object.keys(article.footNotes).length > 0 && (
-          <ArticleFootNotes footNotes={article.footNotes} messages={messages} />
-        )}
-      {children}
-    </LayoutItem>
-  </ArticleWrapper>
-);
+}) => {
+  const license = getLicenseByAbbreviation(article.copyright.license.license);
+
+  return (
+    <ArticleWrapper modifier={modifier}>
+      <LayoutItem layout="center">
+        <ArticleTitle icon={icon}>{article.title}</ArticleTitle>
+        <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
+        <ArticleByline
+          messages={messages}
+          authors={article.copyright.authors}
+          license={license}
+          updated={article.updated}>
+          {licenseBox}
+        </ArticleByline>
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <ArticleContent content={article.content} />
+      </LayoutItem>
+      <LayoutItem layout="center">
+        {article.footNotes &&
+          Object.keys(article.footNotes).length > 0 && (
+            <ArticleFootNotes
+              footNotes={article.footNotes}
+              messages={messages}
+            />
+          )}
+        {children}
+      </LayoutItem>
+    </ArticleWrapper>
+  );
+};
 
 Article.propTypes = {
   article: ArticleShape.isRequired,

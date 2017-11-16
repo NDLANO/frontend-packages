@@ -3,22 +3,18 @@
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
   "scripts": {
-    "lint":
-      "yarn run lint-prettier --silent && eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
+    "lint": "yarn run lint-prettier --silent && eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
     "lint-prettier": "node scripts/prettier.js lint",
     "test": "cross-env NODE_ENV=unittest jest",
     "deploy-storybook": "storybook-to-ghpages",
     "clean": "lerna clean && lerna run clean",
     "bootstrap": "lerna bootstrap && lerna run prepublish",
     "watch": "node ./scripts/watch.js",
-    "start":
-      "concurrently -r --kill-others \"npm run watch\" \"npm run start-storybook\"",
+    "start": "node ./scripts/build.js packages && concurrently -r --kill-others \"npm run watch\" \"npm run start-storybook\"",
     "start-storybook": "node ./scripts/startStorybook.js",
     "prebuild-storybook": "yarn bootstrap --silent",
-    "build-storybook":
-      "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
-    "serve-storybook":
-      "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static",
+    "build-storybook": "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
+    "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static",
     "prettier": "node ./scripts/prettier.js write"
   },
   "repository": {
@@ -31,7 +27,9 @@
   "homepage": "https://github.com/NDLANO/frontend-packages",
   "author": "ndla@knowit.no",
   "license": "GPL-3.0",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@storybook/storybook-deployer": "^2.0.0",
     "babel-cli": "^6.26.0",
@@ -51,6 +49,7 @@
     "eslint": "^4.8.0",
     "jest": "21.2.1",
     "lerna": "^2.4.0",
+    "mkdirp": "^0.5.1",
     "node-sass": "^4.3.0",
     "prettier": "^1.7.4",
     "prop-types": "15.6.0",
@@ -66,6 +65,7 @@
     "rimraf": "2.6.2",
     "sass-loader": "^6.0.6",
     "serve": "^6.2.0",
+    "string-length": "^2.0.0",
     "style-loader": "^0.19.0",
     "webpack": "^3.6.0"
   }

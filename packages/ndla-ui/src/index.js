@@ -62,7 +62,6 @@ export {
   MediaList,
   MediaListItem,
   MediaListItemBody,
-  MediaListCCLink,
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,

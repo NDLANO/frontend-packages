@@ -58,7 +58,7 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MediaListCCLink = ({ children, url }) => (
+const MediaListCCLink = ({ children, url }) => (
   <a
     className="c-figure-license__link"
     target="_blank"
@@ -81,14 +81,14 @@ MediaListCCLink.defaultProps = {
 
 export const MediaListItemBody = ({
   children,
-  license,
+  license: licenseAbbreviation,
   title,
   resourceUrl,
   resourceType,
 }) => {
-  const licenseRights = getLicenseByAbbreviation(license).rights;
+  const license = getLicenseByAbbreviation(licenseAbbreviation);
 
-  const containerProps = isCreativeCommonsLicense(licenseRights)
+  const containerProps = isCreativeCommonsLicense(license.rights)
     ? {
         ...oClasses('body', null, cClasses('body').className),
         'xmlns:cc': 'https://creativecommons.org/ns#',
@@ -111,7 +111,8 @@ export const MediaListItemBody = ({
         />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-      <LicenseByline withDescription licenseRights={licenseRights} />
+      <LicenseByline withDescription licenseRights={license.rights} />
+      <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}
     </div>
   );

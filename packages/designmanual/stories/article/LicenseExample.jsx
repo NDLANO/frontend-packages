@@ -15,7 +15,6 @@ import {
   MediaList,
   MediaListItem,
   MediaListItemBody,
-  MediaListCCLink,
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
@@ -23,7 +22,6 @@ import {
 import { Document, Audio } from 'ndla-ui/icons';
 
 import {
-  getLicenseByAbbreviation,
   COPY,
   getMicroDataNamespaceByType,
   microDataTypes,
@@ -32,10 +30,6 @@ import {
 
 const byncndLicenseAbbreviation = 'by-nc-nd';
 const bysaLicenseAbbreviation = 'by-sa';
-
-const byncndLicense = getLicenseByAbbreviation(byncndLicenseAbbreviation, 'nb');
-const bysaLicense = getLicenseByAbbreviation(bysaLicenseAbbreviation, 'nb');
-const copyLicense = getLicenseByAbbreviation(COPY, 'nb');
 
 const VideoContent = () => (
   <div>
@@ -64,9 +58,6 @@ const VideoContent = () => (
           title="Regler for bruk av videoen:"
           resourceUrl="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
           resourceType="video">
-          <MediaListCCLink url={byncndLicense.url}>
-            {byncndLicense.linkText}
-          </MediaListCCLink>
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
@@ -136,9 +127,6 @@ const TextContent = () => (
             title="Regler for bruk av teksten:"
             resourceUrl=""
             resourceType="text">
-            <MediaListCCLink url={bysaLicense.url}>
-              {bysaLicense.linkText}
-            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -203,9 +191,6 @@ const AudioContent = () => (
             title="Regler for bruk av lydfilen:"
             resourceUrl=""
             resourceType="audio">
-            <MediaListCCLink url={bysaLicense.url}>
-              {bysaLicense.linkText}
-            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -272,9 +257,6 @@ const ImageContent = () => (
             title="Regler for bruk av bildet:"
             resourceUrl={src}
             resourceType="image">
-            <MediaListCCLink url={byncndLicense.url}>
-              {byncndLicense.linkText}
-            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -331,11 +313,6 @@ const ImageContent = () => (
         <MediaListItemBody
           license={byncndLicenseAbbreviation}
           title="Regler for bruk av bildet:">
-          <MediaListCCLink
-            resourceUrl="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg"
-            url={byncndLicense.url}>
-            {byncndLicense.linkText}
-          </MediaListCCLink>
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
@@ -415,9 +392,6 @@ const H5PContent = () => (
             title="Regler for bruk av H5P-innholdet:"
             resourceUrl="http://ndla.no/nb/h5p/embed/146132?fag=127756"
             resourceType="h5p">
-            <MediaListCCLink url={byncndLicense.url}>
-              {byncndLicense.linkText}
-            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
@@ -486,9 +460,6 @@ const Files = () => (
             license={COPY}
             title="Regler for bruk av filen:"
             resourceUrl="">
-            <MediaListCCLink url={copyLicense.url}>
-              {copyLicense.linkText}
-            </MediaListCCLink>
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta

@@ -30,12 +30,34 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
 
       <StoryBody>
+        <h2>Fullbredde</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til venstre</h2>
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FigureWithLicense classes="u-float-left">
+        <FigureWithLicense
+          classes="u-float-left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -59,25 +81,116 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense>
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+
+        <h2>Flyt til høyre</h2>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense classes="u-float-right">
+
+        <FigureWithLicense
+          classes="u-float-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til høyre, liten versjon</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          classes="u-float-small-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til venstre, liten versjon</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          classes="u-float-small-left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -102,7 +215,7 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense authors="" caption="">
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

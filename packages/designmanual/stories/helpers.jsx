@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uuid } from 'ndla-util';
 
 export const Center = ({ children, style }) => (
   <div
@@ -52,7 +53,7 @@ export const AnchorNavigation = ({ links }) => (
       margin: 0,
       padding: 0,
     }}>
-    {links.map(link => <li>{link}</li>)}
+    {links.map(link => <li key={uuid()}>{link}</li>)}
   </ul>
 );
 

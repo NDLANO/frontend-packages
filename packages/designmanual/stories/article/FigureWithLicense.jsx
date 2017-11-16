@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BY, NC, ND } from 'ndla-licenses';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
 import {
   addCloseFigureDetailsClickListeners,
   addShowFigureDetailsClickListeners,
@@ -38,12 +38,16 @@ class FigureWithLicense extends Component {
   }
 
   render() {
+    const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
+
     const messages = {
       close: 'Lukk',
       rulesForUse: 'Regler for bruk av bildet',
-      learnAboutOpenLicenses: 'Lær mer om åpne lisenser',
+      learnAboutLicenses: license.linkText,
       source: 'Kilde',
+      title: 'Tittel',
     };
+
     const caption = this.props.caption ? this.props.caption : ``;
     const reuseLabel = this.props.reuseLabel
       ? `Bruk ${this.props.reuseLabel}`
@@ -62,13 +66,15 @@ class FigureWithLicense extends Component {
         <FigureCaption
           caption={caption}
           reuseLabel={reuseLabel}
-          licenseRights={[BY, NC, ND]}
+          licenseRights={license.rights}
           authors={authors}
         />
         <FigureDetails
-          licenseRights={[BY, NC, ND]}
+          licenseRights={license.rights}
           authors={authors}
+          licenseUrl={license.url}
           origin="https://www.wikimedia.com"
+          title="Liten mann og lupe"
           messages={messages}>
           <button
             className="c-button c-button--outline c-figure-license__button"

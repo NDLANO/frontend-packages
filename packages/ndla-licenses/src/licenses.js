@@ -9,18 +9,23 @@
 /* eslint max-len: 0 */
 
 import defined from 'defined';
-import { BY, SA, NC, ND } from './licenseRights';
+import { BY, SA, NC, ND, PD, CC0, COPY, CC } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseEN = 'Free reuse';
 const restrictedUseNB = 'Begrenset bruk';
 const restrictedUseEN = 'Restricted use';
 
+const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
+const openLicenseLinkTextEN = 'Learn more about open licenses';
+
 const byncnd = {
   nb: {
     short: restrictedUseNB,
     title: 'Navngivelse-IkkeKommersiell-IngenBearbeidelser',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nc-nd/3.0/no/',
+    linkText: openLicenseLinkTextNB,
     description:
       'Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele dem med andre så lenge du er navngitt som opphavspersonen, men de kan ikke endre dem på noen måte, eller bruke dem kommersielt.',
   },
@@ -29,10 +34,12 @@ const byncnd = {
     short: restrictedUseEN,
     title: 'Attribution-NonCommercial-NoDerivs',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nc-nd/3.0/',
+    linkText: openLicenseLinkTextEN,
     description:
       'This license is the most restrictive of our six main licenses, only allowing others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.',
   },
-  rights: [BY, NC, ND],
+  rights: [CC, BY, NC, ND],
 };
 
 const byncsa = {
@@ -40,6 +47,8 @@ const byncsa = {
     short: restrictedUseNB,
     title: 'Navngivelse-IkkeKommersiell-DelPåSammeVilkår',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nc-sa/3.0/no/',
+    linkText: openLicenseLinkTextNB,
     description:
       'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphavspersonen og avledete verk må bære en tilsvarende lisens.',
   },
@@ -48,10 +57,12 @@ const byncsa = {
     short: restrictedUseEN,
     title: 'Attribution-NonCommercial-ShareAlike',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nc-sa/3.0/',
+    linkText: openLicenseLinkTextEN,
     description:
       'This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.',
   },
-  rights: [BY, NC, SA],
+  rights: [CC, BY, NC, SA],
 };
 
 const bync = {
@@ -59,6 +70,8 @@ const bync = {
     short: freeUseNB,
     title: 'Navngivelse-IkkeKommersiell',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nc/3.0/no/',
+    linkText: openLicenseLinkTextNB,
     description:
       'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphavsperson og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.',
   },
@@ -67,10 +80,12 @@ const bync = {
     short: freeUseEN,
     title: 'Attribution-NonCommercial',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nc/3.0/',
+    linkText: openLicenseLinkTextEN,
     description:
       'This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.',
   },
-  rights: [BY, NC],
+  rights: [CC, BY, NC],
 };
 
 const bynd = {
@@ -78,6 +93,8 @@ const bynd = {
     short: freeUseNB,
     title: 'Navngivelse-IngenBearbeidelse',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nd/3.0/no/',
+    linkText: openLicenseLinkTextNB,
     description:
       'Denne lisensen gir mulighet for å videredistribuere verket, både for kommersielle og for ikke-kommersielle formål, så lenge det gis videre uendret og sin helhet, og at du navngis som den som har skapt verket.',
   },
@@ -86,10 +103,12 @@ const bynd = {
     short: freeUseEN,
     title: 'Attribution-NoDerivs',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-nd/3.0/',
+    linkText: openLicenseLinkTextEN,
     description:
       'This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.',
   },
-  rights: [BY, ND],
+  rights: [CC, BY, ND],
 };
 
 const bysa = {
@@ -97,6 +116,8 @@ const bysa = {
     short: freeUseNB,
     title: 'Navngivelse-DelPåSammeVilkår',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-sa/3.0/no/',
+    linkText: openLicenseLinkTextNB,
     description:
       'Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphavspersonen(e). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.',
   },
@@ -105,10 +126,12 @@ const bysa = {
     short: freeUseEN,
     title: 'Attribution ShareAlike',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by-sa/3.0/',
+    linkText: openLicenseLinkTextEN,
     description:
       'This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.',
   },
-  rights: [BY, SA],
+  rights: [CC, BY, SA],
 };
 
 const by = {
@@ -116,6 +139,8 @@ const by = {
     short: freeUseNB,
     title: 'Navngivelse',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by/3.0/no/',
+    linkText: openLicenseLinkTextNB,
     description:
       'Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphavspersonen. Dette er den mest fleksible og åpne av de lisendene vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC lisens.',
   },
@@ -124,10 +149,82 @@ const by = {
     short: freeUseEN,
     title: 'Attribution',
     userFriendlyTitle: '',
+    url: 'https://creativecommons.org/licenses/by/3.0/',
+    linkText: openLicenseLinkTextEN,
     description:
       'This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.',
   },
-  rights: [BY],
+  rights: [CC, BY],
+};
+
+const pd = {
+  nb: {
+    short: freeUseNB,
+    title: 'Offentlig domene',
+    userFriendlyTitle: '',
+    url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
+    linkText: 'Lær mer om public domain-merker',
+    description:
+      'Denne lisensen lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
+  },
+
+  en: {
+    short: freeUseEN,
+    title: 'Public Domain Mark',
+    userFriendlyTitle: '',
+    url: 'https://creativecommons.org/publicdomain/mark/1.0/',
+    linkText: 'Learn more about public domain marks',
+
+    description:
+      'This license lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
+  },
+  rights: [PD],
+};
+
+const cc0 = {
+  nb: {
+    short: freeUseNB,
+    title: 'Fristatus-erklæring',
+    userFriendlyTitle: '',
+    url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
+    linkText: 'Lær mer om public domain-merker',
+    description:
+      'Denne lisensen lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.',
+  },
+
+  en: {
+    short: freeUseEN,
+    title: 'Public Domain Dedication',
+    userFriendlyTitle: '',
+    url: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    linkText: 'Learn more about public domain marks',
+    description:
+      'This license lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
+  },
+  rights: [CC0],
+};
+
+const copy = {
+  nb: {
+    short: restrictedUseNB,
+    title: 'Opphavsrett',
+    userFriendlyTitle: '',
+    url: 'http://www.delrett.no/nb/artikler/om-opphavsrett',
+    linkText: 'Lær mer om opphavsrett',
+    description:
+      'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.',
+  },
+
+  en: {
+    short: restrictedUseEN,
+    title: 'Copyright',
+    userFriendlyTitle: '',
+    url: 'http://www.delrett.no/nb/artikler/om-opphavsrett',
+    linkText: 'Learn more about copyright',
+    description:
+      'Only those who have created the content can modify, publish, and give others permission to use the content.',
+  },
+  rights: [COPY],
 };
 
 function licenseByLocale(license, locale) {
@@ -152,6 +249,12 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       return licenseByLocale(bysa, locale);
     case 'by':
       return licenseByLocale(by, locale);
+    case 'pd':
+      return licenseByLocale(pd, locale);
+    case 'cc0':
+      return licenseByLocale(cc0, locale);
+    case 'copy':
+      return licenseByLocale(copy, locale);
     default:
       return {
         short: abbreviation,
@@ -159,6 +262,8 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
         userFriendlyTitle: abbreviation,
         rights: [],
         description: abbreviation,
+        linkText: abbreviation,
+        url: '',
       };
   }
 }
@@ -183,3 +288,6 @@ export function getLicenseByNBTitle(title, locale) {
       return title;
   }
 }
+
+export const isCreativeCommonsLicense = licenseRights =>
+  licenseRights.every(r => r !== COPY);

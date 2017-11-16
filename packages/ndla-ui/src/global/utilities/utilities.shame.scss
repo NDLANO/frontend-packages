@@ -9,27 +9,6 @@
   overflow-x: hidden;
 }
 
-.license-byline {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.article_meta {
-  margin-left: $spacing--small;
-  @include inuit-font-size(14px);
-  border-right: 1px solid $brand-grey--light;
-  padding-right: $spacing--small;
-}
-.license-byline__body {
-  display: none;
-  margin-right: $spacing--small;
-  @include inuit-font-size(13px);
-  letter-spacing: 0.05em;
-  margin-top: 4px;
-  margin-left: $spacing--small;
-}
-
 /* Hack to differentiate CC-icon because it's not a license. Perhaps give it a class? */
 .c-figure-license__details .c-license-icons__item:first-child,
 .c-medialist__body .c-license-icons__item:first-child {

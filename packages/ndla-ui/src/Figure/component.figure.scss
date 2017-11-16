@@ -36,6 +36,10 @@
     @include grids-expand(4,6,2);
   }
   transition: transform 0.2s, width 0.2s, height 0.2s;
+
+  .c-license-icons__list {
+    margin-right: $spacing--small;
+  }
 }
 
 /* 2. */
@@ -43,24 +47,21 @@
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   position: relative;
 }
 .c-figure__captionbtn {
-  padding-left: $spacing--small;
   text-decoration: underline;
   background: none;
   border: none;
   cursor: pointer;
   color: $brand-color;
-  min-width: 90px;
+  padding: $spacing--small/2 0;
 }
 .c-figure__licensetag {
   display: none;
 }
 .c-figure__byline {
-  padding-right: $spacing;
-  margin-bottom: $spacing--small/2;
   text-align: left;
   display: flex;
   align-items: center;
@@ -82,15 +83,27 @@
     display: none;
   }
 }
+
+.c-figure__byline-authors {
+  @include inuit-font-size(14px);
+  border-right: 1px solid $brand-grey--light;
+  padding-right: $spacing--small;
+  margin-right: $spacing--small;
+}
+
+
+
 .c-figure__info {
   max-width: 650px;
   margin-bottom: $spacing--small;
   @include inuit-font-size(14px, 22px);
   @include mq($from: tablet) {
     flex: 2;
-    margin-bottom: 0;
+    margin-bottom: $spacing--small;
   }
 }
+
+
 .c-figure__list {
   background: $white;
   list-style: none;

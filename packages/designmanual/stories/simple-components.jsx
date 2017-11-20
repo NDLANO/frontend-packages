@@ -4,16 +4,12 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
 import { BY, NC, ND } from 'ndla-licenses';
-import { Aside, Button, Logo, LayoutItem, LicenseByline } from 'ndla-ui';
+import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
-import article from '../dummydata/index';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import Embedded from './article/Embedded';
-
-const articleHTML = document.createElement('div');
-articleHTML.innerHTML = article.article4.content[0].content;
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -34,15 +30,37 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
 
       <StoryBody>
+        <h2>Fullbredde</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til venstre</h2>
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FigureWithLicense classes="u-float-left">
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+        <FigureWithLicense
+          classes="u-float-left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -63,10 +81,22 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense>
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+
+        <h2>Flyt til høyre</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+
+        <FigureWithLicense
+          classes="u-float-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -75,12 +105,92 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense classes="u-float-right">
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til høyre, liten versjon</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          classes="u-float-small-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til venstre, liten versjon</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          classes="u-float-small-left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -105,10 +215,10 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense authors="" caption="">
-          <img
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
       </StoryBody>
@@ -177,9 +287,9 @@ storiesOf('Enkle komponenter', module)
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
             <FigureWithLicense authors="" caption="" classes="u-float-right">
-              <img
+              <Image
                 alt=""
-                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
               />
             </FigureWithLicense>
             <p>
@@ -291,6 +401,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <h2>Iframe med satt høyde og bredde</h2>
         <Embedded resize runScripts>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
@@ -305,6 +416,13 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <h2>Iframe uten satt høyde og bredde</h2>
+        <Embedded resize>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </Embedded>
       </StoryBody>
     </div>
   ))
@@ -349,7 +467,7 @@ storiesOf('Enkle komponenter', module)
         </div>
         <Aside float>
           <div>
-            <div className="c-aside__title">Høyrespalte</div>
+            <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
@@ -384,7 +502,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <Aside>
           <div>
-            <div className="c-aside__title">Faktaboks</div>
+            <h2>Faktaboks</h2>
             <p>
               En faktaboks kan inneholde punktlister eller korte fakta som er
               relevant for artikkelens innhold.
@@ -393,6 +511,7 @@ storiesOf('Enkle komponenter', module)
               Det anbefales å ikke ha for mye innhold i faktaboks, slik at
               lese-konteksten i størst mulig grad beholdes.
             </p>
+            <h2>Enkel tittel</h2>
             <p>
               Faktaboksen kan også brukes til å oppsummere innhold i slutten av
               en artikkel, og den kan inneholde lisensiering om eksternt innhold
@@ -414,6 +533,28 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+      </StoryBody>
+    </div>
+  ))
+  .add('Ekspanderbar boks', () => (
+    <div>
+      <StoryIntro title="Ekspanderbar boks" />
+      <StoryBody>
+        <details>
+          <summary>Oppsummering av innhold</summary>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+        </details>
       </StoryBody>
     </div>
   ))

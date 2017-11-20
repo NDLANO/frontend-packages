@@ -21,6 +21,12 @@
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
   }
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 .c-article--clean {
   margin-top: $spacing;

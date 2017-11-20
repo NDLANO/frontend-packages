@@ -19,18 +19,11 @@
 .u-float-right {
   @include float(3, 4, 'right');
 }
-
-// DEPRECATED TODO: remove when not in use
-.article_figure--float-left {
-  @include float(3, 4, 'left');
+.u-float-small-left {
+  @include float(2, 4, 'left');
 }
-.article_figure--float-right {
-  @include float(3, 4, 'right');
-}
-
-/* Float tools */
-.u-float-right {
-  float: right;
+.u-float-small-right {
+  @include float(2, 4, 'right');
 }
 
 /* MISC */

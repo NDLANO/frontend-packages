@@ -23,6 +23,11 @@ import {
   addCopyToClipboardListeners,
 } from './figureScripts';
 
+import {
+  addDetailsEventListeners,
+  removeDetailsEventListeners,
+} from './detailsScript';
+
 import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
 
 export const initArticleScripts = () => {
@@ -33,6 +38,7 @@ export const initArticleScripts = () => {
   addShowFigureDetailsClickListeners();
   addCloseFigureDetailsClickListeners();
   addShowGlossaryDefinitionClickListeners();
+  addDetailsEventListeners();
 };
 
 export {
@@ -45,4 +51,6 @@ export {
   addCopyToClipboardListeners,
   addShowFigureDetailsClickListeners,
   addShowGlossaryDefinitionClickListeners,
+  addDetailsEventListeners,
+  removeDetailsEventListeners,
 };

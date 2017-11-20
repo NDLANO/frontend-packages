@@ -1,6 +1,6 @@
 {
   "name": "ndla-ui",
-  "version": "0.8.18",
+  "version": "0.8.21",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -34,8 +34,7 @@
   "dependencies": {
     "classnames": "2.2.5",
     "react-bem-helper": "1.4.1",
-    "react-prop-types": "0.4.0",
-    "react-sticky-header": "^0.1.6"
+    "react-prop-types": "0.4.0"
   },
   "peerDependencies": {
     "prop-types": "^15.6.0",

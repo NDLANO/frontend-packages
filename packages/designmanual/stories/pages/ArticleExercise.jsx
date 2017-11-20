@@ -15,8 +15,11 @@ import {
   ArticleWrapper,
   ArticleByline,
   ArticleIntroduction,
+  Image,
 } from 'ndla-ui';
 import { Pencil } from 'ndla-ui/icons';
+
+import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import { Resources } from '../molecules/resources';
 import FigureWithLicense from '../article/FigureWithLicense';
@@ -38,7 +41,7 @@ export default () => (
             { name: 'Jon Nordgubbe' },
           ]}
           updated="12/10/2016"
-          license="BY-NC-ND"
+          license={getLicenseByAbbreviation('by-nc-nd')}
           messages={{
             writtenBy: '',
             lastUpdated: 'Publisert',
@@ -64,9 +67,9 @@ export default () => (
           klassen.
         </p>
         <FigureWithLicense caption="">
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+          <Image
+            alt="alt"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>

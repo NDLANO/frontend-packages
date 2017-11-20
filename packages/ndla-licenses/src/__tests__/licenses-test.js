@@ -8,22 +8,25 @@
 
 /* eslint-env jest */
 
-import { getLicenseByAbbreviation } from '../licenses';
+import {
+  getLicenseByAbbreviation,
+  isCreativeCommonsLicense,
+} from '../licenses';
 
-import { BY, SA, NC } from '../licenseRights';
+import { BY, SA, NC, CC, COPY } from '../licenseRights';
 
 test('licenses/getLicenseByAbbreviation get license for by-sa in english', () => {
   const license = getLicenseByAbbreviation('by-sa', 'en');
 
   expect(license.title).toBe('Attribution ShareAlike');
-  expect(license.rights).toEqual([BY, SA]);
+  expect(license.rights).toEqual([CC, BY, SA]);
 });
 
 test('licenses/getLicenseByAbbreviation get license without locale defaults to nb', () => {
   const license = getLicenseByAbbreviation('by-nc-sa');
 
   expect(license.title).toBe('Navngivelse-IkkeKommersiell-DelPåSammeVilkår');
-  expect(license.rights).toEqual([BY, NC, SA]);
+  expect(license.rights).toEqual([CC, BY, NC, SA]);
 });
 
 test('licenses/getLicenseByAbbreviation unknown license', () => {
@@ -33,4 +36,14 @@ test('licenses/getLicenseByAbbreviation unknown license', () => {
   expect(license.short).toBe('unknown-license');
   expect(license.description).toBe('unknown-license');
   expect(license.rights).toEqual([]);
+});
+
+test('licenses/isCreativeCommonsLicense when creative commons license should return true', () => {
+  const result = isCreativeCommonsLicense([CC, BY]);
+  expect(result).toBe(true);
+});
+
+test('licenses/isCreativeCommonsLicense when copy licebse should return false', () => {
+  const result = isCreativeCommonsLicense([COPY]);
+  expect(result).toBe(false);
 });

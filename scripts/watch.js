@@ -8,29 +8,17 @@
 
 const chokidar = require('chokidar');
 const chalk = require('chalk');
-const fs = require('fs');
 const path = require('path');
 const { buildFile, removeBuildFile } = require('./build');
+const getPackages = require('./_getPackages');
 
 const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*.js*';
 const IGNORE_PATTERN = '**/__tests__/**';
-const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
 
-// Get absolute paths of all directories under packages/*
-function getPackages() {
-  return fs
-    .readdirSync(PACKAGES_DIR)
-    .map(file => path.resolve(PACKAGES_DIR, file))
-    .filter(f => fs.lstatSync(path.resolve(f)).isDirectory());
-}
-
-const packagePatterns = getPackages()
-  .filter(
-    f =>
-      f.indexOf('storybook') === -1 && f.indexOf('eslint-config-ndla') === -1,
-  ) // skip storybook and eslint-config-ndla
-  .map(p => path.resolve(p, SRC_DIR, JS_FILES_PATTERN));
+const packagePatterns = getPackages().map(p =>
+  path.resolve(p, SRC_DIR, JS_FILES_PATTERN),
+);
 
 // Initialize watcher
 const watcher = chokidar.watch(packagePatterns, {
@@ -46,5 +34,5 @@ watcher
   .on('unlink', removeBuildFile);
 
 process.stdout.write(
-  `${chalk.red('-> ') + chalk.cyan('Watching for changes...')}`,
+  `${chalk.red('-> ') + chalk.cyan('Watching for changes...')}\n`,
 );

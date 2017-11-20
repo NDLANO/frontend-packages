@@ -1,5 +1,6 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
+import { withKnobs } from '@storybook/addon-knobs';
 import '../../ndla-ui/src/main.scss';
 import '../../ndla-ui/src/editor.scss';
 import '../../ndla-ui/src/audioSearch.scss';
@@ -16,5 +17,7 @@ setOptions({
   showSearchBox: false,
   downPanelInRight: false,
 });
+
+addDecorator(withKnobs);
 
 configure(() => require('../stories'), module);

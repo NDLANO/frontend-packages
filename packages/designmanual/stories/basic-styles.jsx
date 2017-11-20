@@ -189,6 +189,9 @@ storiesOf('Grunnstiler', module)
             <a href="#lenker" target="_self">
               Lenker
             </a>,
+            <a href="#midtstilttekst" target="_self">
+              Midtstilt tekst
+            </a>,
           ]}
         />
       </StoryIntro>
@@ -226,6 +229,11 @@ storiesOf('Grunnstiler', module)
               <td>700</td>
             </tr>
             <tr>
+              <td>Små overskrifter</td>
+              <td>Source Sans Pro</td>
+              <td>700</td>
+            </tr>
+            <tr>
               <td>Ingress</td>
               <td>Source Sans Pro</td>
               <td>300</td>
@@ -258,60 +266,74 @@ storiesOf('Grunnstiler', module)
               <th>Størrelse på liten skjerm</th>
             </tr>
           </thead>
-          <tr>
-            <td>Overskrifter</td>
-            <td>
-              38 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(2.1rem)</span>
-            </td>
-            <td>
-              30 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.67rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Mellomoverskrifter</td>
-            <td>
-              22 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
-            </td>
-            <td>
-              22 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Ingress</td>
-            <td>
-              26 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.44rem)</span>
-            </td>
-            <td>
-              20 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Brødtekst</td>
-            <td>
-              18 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
-            </td>
-            <td>
-              16 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Metatekst</td>
-            <td>
-              16 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
-            </td>
-            <td>
-              16 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Overskrifter</td>
+              <td>
+                38 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(2.1rem)</span>
+              </td>
+              <td>
+                30 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.67rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Mellomoverskrifter</td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Små overskrifter</td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Ingress</td>
+              <td>
+                26 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.44rem)</span>
+              </td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Brødtekst</td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+              <td>
+                16 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Metatekst</td>
+              <td>
+                16 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
+              </td>
+              <td>
+                16 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <p>
@@ -325,15 +347,16 @@ storiesOf('Grunnstiler', module)
           Overskrifter skal markeres semantisk med riktige HTML-tagger. For
           eksempel:
         </p>
-        <code>{'<h1>Overskrift<h1>'}</code>
+        <code>{'<h1>Overskrift</h1>'}</code>
 
         <p>
-          Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag
-          for nivå 3, 4 osv, vil de få samme stil som nivå 2 nedenfor:
+          Det er tre nivåer av overskrifter. Bruker man likevel overskrifts-tag
+          for nivå 4, 5 osv, vil de få samme stil som nivå 3 nedenfor:
         </p>
         <div className="c-bodybox">
           <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
           <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
+          <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
         </div>
         <h2 id="ingress" className="u-heading">
           Ingress
@@ -397,6 +420,30 @@ storiesOf('Grunnstiler', module)
         </div>
 
         <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
+
+        <h2 id="midtstilttekst" className="u-heading">
+          Midtstilt tekst
+        </h2>
+        <p>
+          Noen informasjonstyper kan stå for seg selv og være midtstilt.
+          Matematiske formler er ett eksempel på midtstilt tekst.
+        </p>
+        <p className="u-text-center">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mn>4</mn>
+            <mo>=</mo>
+            <mfrac>
+              <mrow>
+                <mo>-</mo>
+                <mn>12</mn>
+              </mrow>
+              <mrow>
+                <mo>-</mo>
+                <mn>3</mn>
+              </mrow>
+            </mfrac>
+          </math>
+        </p>
       </StoryBody>
     </div>
   ))

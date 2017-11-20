@@ -31,14 +31,17 @@ h1 {
   }
 }
 
-h2, h3, .u-heading3 {
-  line-height: 1;
+h2, h3, .u-heading3, h4, h5 {
   margin-top: $spacing * 2;
   margin-bottom: $spacing / 2;
   @include inuit-font-size(22px, 30px);
   @include mq(desktop) {
     line-height: 1.5;
   }
+}
+
+h3, h4, h5 {
+  @include inuit-font-size(18px, 26px);
 }
 
 h2 + h2 {

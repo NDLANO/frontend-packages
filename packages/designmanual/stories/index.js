@@ -6,3 +6,4 @@ require('./collated-components');
 require('./pages');
 require('./licenses');
 require('./produksjonssystem');
+require('./experimental');

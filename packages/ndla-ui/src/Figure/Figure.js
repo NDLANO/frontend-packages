@@ -13,6 +13,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
+
 import LicenseByline from '../LicenseByline';
 
 const classes = new BEMHelper({
@@ -28,8 +29,10 @@ export const FigureDetails = ({
   children,
   authors,
   origin,
+  title,
   messages,
   licenseRights,
+  licenseUrl,
 }) => ([
   <div key="backdrop" {...classes('backdrop')} />,
   <div key="license" {...classes('license')} id="figmeta">
@@ -42,18 +45,23 @@ export const FigureDetails = ({
           className="c-figure-license__link"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
-          {messages.learnAboutOpenLicenses}
+          href={licenseUrl}>
+          {messages.learnAboutLicenses}
         </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
+            {title && (
+              <li className="c-figure-list__item" key={uuid()}>
+                {`${messages.title}: ${title}`}
+              </li>
+            )}
             {authors.map(author => (
               <li
                 key={uuid()}
                 className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
             ))}
             {origin && (
-              <li>
+              <li className="c-figure-list__item" key={uuid()}>
                 {messages.source}:{' '}
                 {origin.startsWith('http') ? (
                   <a href={origin} target="_blank" rel="noopener noreferrer">
@@ -86,8 +94,11 @@ FigureDetails.propTypes = {
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
-    learnAboutOpenLicenses: PropTypes.string.isRequired,
+    learnAboutLicenses: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   }).isRequired,
+  title: PropTypes.string,
+  licenseUrl: PropTypes.string.isRequired,
 };
 
 export const FigureCaption = ({
@@ -101,7 +112,7 @@ export const FigureCaption = ({
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline licenseRights={licenseRights}>
-          <span className="article_meta">
+          <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
           <button {...classes('captionbtn')}>{reuseLabel}</button>

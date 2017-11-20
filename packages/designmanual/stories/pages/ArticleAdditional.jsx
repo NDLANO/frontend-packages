@@ -18,6 +18,8 @@ import {
 } from 'ndla-ui';
 import { Document, Additional } from 'ndla-ui/icons';
 
+import { getLicenseByAbbreviation } from 'ndla-licenses';
+
 import { Resources } from '../molecules/resources';
 import LicenseExample from '../article/LicenseExample';
 
@@ -37,7 +39,7 @@ export default () => (
             { name: 'Jon Nordgubbe' },
           ]}
           updated="12/10/2016"
-          license="BY-NC-ND"
+          license={getLicenseByAbbreviation('by-nc-nd')}
           messages={{
             writtenBy: '',
             lastUpdated: 'Publisert',

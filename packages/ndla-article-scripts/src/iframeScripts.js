@@ -8,44 +8,50 @@
 
 import { forEachElement } from './domHelpers';
 
-export const updateIFrameDimensions = (init = true) => {
-  forEachElement('.c-figure iframe, .c-embedded--resize iframe', el => {
-    const iframe = el;
-    const parent = iframe.parentNode;
-    let ratio = null;
+export const updateIFrameDimensions = (init = true, topNode = null) => {
+  forEachElement(
+    '.c-figure iframe, .c-embedded--resize iframe',
+    el => {
+      const iframe = el;
+      const parent = iframe.parentNode;
+      let ratio = 0.5625;
 
-    const computedStyle = window.getComputedStyle(parent);
-    const paddingLeft = parseFloat(computedStyle.paddingLeft);
-    const paddingRight = parseFloat(computedStyle.paddingRight);
-    const parentWidth = parent.clientWidth - paddingLeft - paddingRight;
+      const computedStyle = window.getComputedStyle(parent);
+      const paddingLeft = parseFloat(computedStyle.paddingLeft);
+      const paddingRight = parseFloat(computedStyle.paddingRight);
+      const parentWidth = parent.clientWidth - paddingLeft - paddingRight;
 
-    if (init && iframe.width && iframe.height) {
-      ratio = iframe.height / iframe.width;
-      el.setAttribute('data-ratio', ratio);
-    } else {
-      const ratioAttr = el.getAttribute('data-ratio');
-      if (ratioAttr) {
-        ratio = parseFloat(ratioAttr);
+      if (init && iframe.width && iframe.height) {
+        ratio = iframe.height / iframe.width;
+        el.setAttribute('data-ratio', ratio);
+      } else {
+        const ratioAttr = el.getAttribute('data-ratio');
+        if (ratioAttr) {
+          ratio = parseFloat(ratioAttr);
+        }
       }
-    }
 
-    let newHeight = 0;
+      const newHeight = parentWidth * ratio;
 
-    if (ratio) {
-      newHeight = parentWidth * ratio;
-    } else {
-      newHeight = iframe.clientHeight * parentWidth / iframe.clientWidth;
-    }
+      // fix for elements not visible
+      if (newHeight > 0) {
+        iframe.height = newHeight;
+      }
 
-    iframe.height = newHeight;
-    iframe.width = parentWidth;
-  });
+      if (parentWidth > 0) {
+        iframe.width = parentWidth;
+      }
+    },
+    topNode,
+  );
 };
 
+const handler = () => updateIFrameDimensions(false);
+
 export const addEventListenerForResize = () => {
-  window.addEventListener('resize', () => updateIFrameDimensions(false));
+  window.addEventListener('resize', handler);
 };
 
 export const removeEventListenerForResize = () => {
-  window.removeEventListener('resize', () => updateIFrameDimensions(false));
+  window.removeEventListener('resize', handler);
 };

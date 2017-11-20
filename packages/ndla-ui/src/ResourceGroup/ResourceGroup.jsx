@@ -34,13 +34,14 @@ class ResourceGroup extends Component {
       resources,
       messages,
       className,
-      hideResourceToggleFilter,
       resourceToLinkProps,
     } = this.props;
     const { showAdditionalResources } = this.state;
+    const additionalResources = resources.filter(res => res.additional);
+    const normalResources = resources.filter(res => !res.additional);
     return (
       <div {...classes('', '', className)}>
-        {!hideResourceToggleFilter && (
+        {additionalResources.length > 0 && (
           <ResourceToggleFilter
             checked={showAdditionalResources}
             label={messages.toggleFilterLabel}
@@ -56,7 +57,8 @@ class ResourceGroup extends Component {
           icon={icon}
           messages={messages}
           resourceToLinkProps={resourceToLinkProps}
-          resources={resources}
+          additionalResources={additionalResources}
+          normalResources={normalResources}
         />
       </div>
     );

@@ -49,7 +49,6 @@ ArticleByline.propTypes = {
     rights: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   messages: PropTypes.shape({
-    writtenBy: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
   }).isRequired,
   children: PropTypes.node,

@@ -6,6 +6,8 @@
  *
  */
 
+import smoothscrollPolyfill from 'smoothscroll-polyfill';
+
 import {
   updateIFrameDimensions,
   addEventListenerForResize,
@@ -30,7 +32,12 @@ import {
 
 import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
 
+export const initPolyfills = () => {
+  smoothscrollPolyfill.polyfill();
+}
+
 export const initArticleScripts = () => {
+  initPolyfills();
   addEventListenerForResize();
   updateIFrameDimensions();
   addAsideClickListener();

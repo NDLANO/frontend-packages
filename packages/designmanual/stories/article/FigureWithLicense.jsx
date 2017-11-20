@@ -12,6 +12,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 import {
   addCloseFigureDetailsClickListeners,
   addShowFigureDetailsClickListeners,
+  initPolyfills,
 } from 'ndla-article-scripts';
 
 import { Button, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
@@ -28,8 +29,11 @@ class FigureWithLicense extends Component {
   }
 
   componentDidMount() {
-    addShowFigureDetailsClickListeners();
-    addCloseFigureDetailsClickListeners();
+    if (this.props.runScripts) {
+      initPolyfills();
+      addShowFigureDetailsClickListeners();
+      addCloseFigureDetailsClickListeners();
+    }
   }
 
   update() {
@@ -98,10 +102,12 @@ FigureWithLicense.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
   typeLabel: PropTypes.string,
+  runScripts: PropTypes.bool,
 };
 
 FigureWithLicense.defaultProps = {
   classes: '',
+  runScripts: false,
 };
 
 export default FigureWithLicense;

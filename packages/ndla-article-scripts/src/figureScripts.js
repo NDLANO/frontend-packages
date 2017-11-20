@@ -79,16 +79,27 @@ export const addShowFigureDetailsClickListeners = () => {
     });
 
     target.onclick = () => {
-      removeElementById('c-license-icon-description');
-      figure.classList.add('c-figure--active');
-
-      details.setAttribute('aria-hidden',  'false');
-      const instance = trapInstances[id];
-      if (instance) {
-        instance.activate();
-      }
+      figure.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
 
       document.querySelector('html').classList.add('u-disable-scroll');
+
+      // fake callback scrollIntoView
+      setTimeout(() => {
+        details.setAttribute('aria-hidden',  'false');
+        removeElementById('c-license-icon-description');
+        figure.classList.add('c-figure--active');
+
+        setTimeout(() => {
+          const instance = trapInstances[id];
+
+          if (instance) {
+            instance.activate();
+          }
+        }, 200);
+      }, 200);
     };
   });
 };

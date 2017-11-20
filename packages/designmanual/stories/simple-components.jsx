@@ -37,7 +37,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen." runScripts>
           <Image
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

@@ -124,11 +124,13 @@
 
   background: rgba(1, 1, 1, 0.3);
   display: none;
+  z-index: 1;
 }
 
 .c-figure__license {
   overflow: hidden;
   height: 0;
+  visibility: hidden;
 }
 
 /* 3. */
@@ -162,6 +164,7 @@
       animation-duration: 0.5s;
     }
     height: auto;
+    visibility: visible;
   }
 
   .c-figure__close {

@@ -71,9 +71,12 @@ export const addShowFigureDetailsClickListeners = () => {
     figure.id = id;
 
     const details = figure.querySelector('.c-figure__license');
-    trapInstances[id] = createFocusTrap(details, { onDeactivate: () => {
-      closeDialog(figure);
-    } });
+    trapInstances[id] = createFocusTrap(details, {
+      onDeactivate: () => {
+        closeDialog(figure);
+      },
+      clickOutsideDeactivates: true,
+    });
 
     target.onclick = () => {
       removeElementById('c-license-icon-description');

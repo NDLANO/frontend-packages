@@ -91,8 +91,6 @@
   margin-right: $spacing--small;
 }
 
-
-
 .c-figure__info {
   max-width: 650px;
   margin-bottom: $spacing--small;
@@ -102,7 +100,6 @@
     margin-bottom: $spacing--small;
   }
 }
-
 
 .c-figure__list {
   background: $white;
@@ -127,6 +124,11 @@
 
   background: rgba(1, 1, 1, 0.3);
   display: none;
+}
+
+.c-figure__license {
+  overflow: hidden;
+  height: 0;
 }
 
 /* 3. */
@@ -159,6 +161,7 @@
       animation-name: fadeInBottom;
       animation-duration: 0.5s;
     }
+    height: auto;
   }
 
   .c-figure__close {
@@ -175,9 +178,8 @@
     z-index: 9;
     cursor: pointer;
   }
-  #figmeta {
-    height: auto;
-  }
+
+
   .c-figure__img {
     margin: 0;
   }
@@ -196,8 +198,4 @@
     margin: 0;
     max-width: 100%;
   }
-}
-#figmeta {
-  height: 0;
-  overflow: hidden;
 }

@@ -19,9 +19,6 @@ export const addCloseFigureDetailsClickListeners = () => {
     target.onclick = () => {
       removeElementById('c-license-icon-description');
       target.parentNode.parentNode.classList.remove('c-figure--active');
-      target.parentNode.parentNode
-        .querySelector('figcaption')
-        .classList.remove('u-hidden');
 
       document.querySelector('html').classList.remove('u-disable-scroll');
     };
@@ -58,9 +55,6 @@ export const addShowFigureDetailsClickListeners = () => {
       removeElementById('c-license-icon-description');
       const figure = findAncestorByClass(target, 'c-figure');
       figure.classList.add('c-figure--active');
-
-      const figcaption = findAncestorByClass(target, 'c-figure__caption');
-      figcaption.classList.add('u-hidden');
 
       document.querySelector('html').classList.add('u-disable-scroll');
     };

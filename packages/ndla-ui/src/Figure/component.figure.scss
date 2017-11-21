@@ -40,6 +40,11 @@
   .c-license-icons__list {
     margin-right: $spacing--small;
   }
+
+  .o-backdrop {
+    display: none;
+    z-index: 1;
+  }
 }
 
 /* 2. */
@@ -115,18 +120,6 @@
   margin-bottom: 0;
 }
 
-.c-figure__backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background: rgba(1, 1, 1, 0.3);
-  display: none;
-  z-index: 1;
-}
-
 .c-figure__license {
   overflow: hidden;
   height: 0;
@@ -138,7 +131,7 @@
   @include font-size(16px);
   position: relative;
 
-  .c-figure__backdrop {
+  .o-backdrop {
     display: block;
     animation-name: fadeIn;
     animation-duration: 0.8s;

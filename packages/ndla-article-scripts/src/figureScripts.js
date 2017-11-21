@@ -6,7 +6,7 @@
  *
  */
 
-import { copyTextToClipboard, uuid } from 'ndla-util';
+import { copyTextToClipboard, uuid, noScroll } from 'ndla-util';
 import createFocusTrap from 'focus-trap';
 import jump from 'jump.js';
 
@@ -14,7 +14,6 @@ import {
   findAncestorByClass,
   removeElementById,
   forEachElement,
-  toggleNoScroll
 } from './domHelpers';
 
 const trapInstances = [];
@@ -23,7 +22,7 @@ const closeDialog = (figure) => {
   figure.classList.remove('c-figure--active');
   const details = figure.querySelector('.c-figure__license');
   details.setAttribute('aria-hidden', 'true');
-  toggleNoScroll(false);
+  noScroll(false);
 };
 
 export const addCloseFigureDetailsClickListeners = () => {
@@ -81,7 +80,7 @@ export const addShowFigureDetailsClickListeners = () => {
     });
 
     target.onclick = () => {
-      toggleNoScroll(true);
+      noScroll(true);
       const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
       const figureHeight = figure.offsetHeight;
 

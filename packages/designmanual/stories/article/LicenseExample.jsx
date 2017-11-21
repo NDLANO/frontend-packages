@@ -513,8 +513,9 @@ const LicenseExample = () => (
   <ToggleLicenseBox
     openTitle="Bruk artikkel"
     closeTitle="Lukk boks"
-    licenseBox={<LicenseBox />}
-  />
+  >
+    <LicenseBox />
+  </ToggleLicenseBox>
 );
 
 export default LicenseExample;

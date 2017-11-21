@@ -9,6 +9,19 @@
   position: relative;
   @include inuit-font-size(20px, 32px);
   display: none;
+
+  @include mq($until: desktop) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+  }
+
+  @include mq($from: desktop) {
+    margin-bottom: $spacing--large;
+  }
 }
 
 .c-article__license-toggler {
@@ -41,15 +54,18 @@
   z-index: 10;
   color: $black;
   box-shadow: 0 0 30px rgba($black, .2);
+
+
+  a,
   div {
     animation-name: fadeInLeft;
     animation-duration: .5s;
   }
+
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
     position: absolute !important;
   }
-  position: absolute;
 }
 .c-licensebox--clear {
   position: relative !important;

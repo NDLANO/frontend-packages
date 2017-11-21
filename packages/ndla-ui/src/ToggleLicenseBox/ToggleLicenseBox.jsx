@@ -10,6 +10,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import createFocusTrap from 'focus-trap';
+import { noScroll } from 'ndla-util';
+import jump from 'jump.js';
 
 import Button from '../button/Button';
 
@@ -33,9 +35,16 @@ class ToggleLicenseBox extends Component {
             expanded: false,
           });
         }
+
+        if (this.isNarrowScreen) {
+          noScroll(false);
+        }
       },
       clickOutsideDeactivates: true,
     });
+
+    const computedStyles = window.getComputedStyle(this.dialog);
+    this.isNarrowScreen = computedStyles.getPropertyValue('position') === 'fixed';
   }
 
   toogleLicenseBox() {
@@ -43,7 +52,19 @@ class ToggleLicenseBox extends Component {
       expanded: !this.state.expanded,
     }, () => {
       if (this.state.expanded) {
-        this.focusTrapInstance.activate();
+        if (!this.isNarrowScreen) {
+          jump(this.dialog, {
+            duration: 100,
+            offset: -100,
+            callback: () => {
+              this.focusTrapInstance.activate();
+            }
+          });
+        } else {
+          this.focusTrapInstance.activate();
+          noScroll(true);
+        }
+
       } else {
         this.focusTrapInstance.deactivate();
       }
@@ -51,7 +72,7 @@ class ToggleLicenseBox extends Component {
   }
 
   render() {
-    const { openTitle, closeTitle, children, licenseBox } = this.props;
+    const { openTitle, closeTitle, children } = this.props;
     const { expanded } = this.state;
 
     return [
@@ -78,18 +99,16 @@ class ToggleLicenseBox extends Component {
           onClick={this.toogleLicenseBox}>
           {expanded ? closeTitle : openTitle}
         </Button>
-        {children}
-        {expanded ? licenseBox : null}
+        {expanded ? children : null}
       </div>
-    ]
+    ];
   }
 }
 
 ToggleLicenseBox.propTypes = {
   openTitle: PropTypes.string.isRequired,
   closeTitle: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  licenseBox: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ToggleLicenseBox;

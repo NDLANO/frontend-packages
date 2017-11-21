@@ -36,7 +36,7 @@ export const FigureDetails = ({
 }) => {
   const headingLabelId = uuid();
   return [
-    <div key="backdrop" {...classes('backdrop')} />,
+    <div key="backdrop" className="o-backdrop" />,
     <div key="license" {...classes('license')} role="dialog" aria-hidden="true" aria-labelledby={headingLabelId}>
       <button {...classes('close')}>{messages.close}</button>
       <div className="u-expanded">

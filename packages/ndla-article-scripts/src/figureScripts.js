@@ -16,7 +16,7 @@ import {
   forEachElement,
 } from './domHelpers';
 
-const trapInstances = [];
+const trapInstances = {};
 
 const closeDialog = (figure) => {
   figure.classList.remove('c-figure--active');

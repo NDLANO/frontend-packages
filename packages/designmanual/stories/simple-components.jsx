@@ -215,7 +215,7 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen." runScripts>
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -286,7 +286,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureWithLicense authors="" caption="" classes="u-float-right">
+            <FigureWithLicense authors="" caption="" classes="u-float-right" runScripts>
               <Image
                 alt=""
                 src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

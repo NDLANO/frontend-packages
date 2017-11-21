@@ -12,7 +12,6 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 import {
   addCloseFigureDetailsClickListeners,
   addShowFigureDetailsClickListeners,
-  initPolyfills,
 } from 'ndla-article-scripts';
 
 import { Button, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
@@ -30,7 +29,6 @@ class FigureWithLicense extends Component {
 
   componentDidMount() {
     if (this.props.runScripts) {
-      initPolyfills();
       addShowFigureDetailsClickListeners();
       addCloseFigureDetailsClickListeners();
     }

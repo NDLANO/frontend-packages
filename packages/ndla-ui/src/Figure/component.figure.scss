@@ -135,7 +135,6 @@
 
 /* 3. */
 .c-figure--active {
-  margin-bottom: $spacing--large*2;
   @include font-size(16px);
   position: relative;
 
@@ -151,6 +150,14 @@
     box-shadow: 0 0 30px rgba($black, 0.2);
     padding: $spacing;
     z-index: 10;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    animation-name: zoomIn;
+    animation-duration: 0.5s;
+    overflow: auto;
+
     @include mq(tablet) {
       width: 90%;
       margin: 0 auto;
@@ -159,9 +166,9 @@
       max-width: 500px;
       left: 0;
       right: 0;
+      bottom: auto;
       opacity: 1;
       animation-name: fadeInBottom;
-      animation-duration: 0.5s;
     }
     height: auto;
     visibility: visible;

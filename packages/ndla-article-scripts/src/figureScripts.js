@@ -8,11 +8,13 @@
 
 import { copyTextToClipboard, uuid } from 'ndla-util';
 import createFocusTrap from 'focus-trap';
+import jump from 'jump.js';
 
 import {
   findAncestorByClass,
   removeElementById,
   forEachElement,
+  toggleNoScroll
 } from './domHelpers';
 
 const trapInstances = [];
@@ -21,7 +23,7 @@ const closeDialog = (figure) => {
   figure.classList.remove('c-figure--active');
   const details = figure.querySelector('.c-figure__license');
   details.setAttribute('aria-hidden', 'true');
-  document.querySelector('html').classList.remove('u-disable-scroll');
+  toggleNoScroll(false);
 };
 
 export const addCloseFigureDetailsClickListeners = () => {
@@ -79,27 +81,27 @@ export const addShowFigureDetailsClickListeners = () => {
     });
 
     target.onclick = () => {
-      figure.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
+      toggleNoScroll(true);
+      const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      const figureHeight = figure.offsetHeight;
 
-      document.querySelector('html').classList.add('u-disable-scroll');
-
-      // fake callback scrollIntoView
-      setTimeout(() => {
-        details.setAttribute('aria-hidden',  'false');
-        removeElementById('c-license-icon-description');
-        figure.classList.add('c-figure--active');
-
-        setTimeout(() => {
+      jump(figure, {
+        offset: -((viewportHeight - figureHeight) / 2),
+        duration: 300,
+        callback: () => {
           const instance = trapInstances[id];
 
           if (instance) {
             instance.activate();
           }
-        }, 200);
-      }, 200);
+        }
+      });
+
+      setTimeout(() => {
+        details.setAttribute('aria-hidden',  'false');
+        removeElementById('c-license-icon-description');
+        figure.classList.add('c-figure--active');
+      }, 150);
     };
   });
 };

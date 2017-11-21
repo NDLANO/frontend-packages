@@ -494,7 +494,9 @@ const Files = () => (
 
 export const LicenseBox = () => (
   <div>
-    <h1 className="license__heading" id="license-heading">Slik gjenbruker du innhold</h1>
+    <h1 className="license__heading" id="license-heading">
+      Slik gjenbruker du innhold
+    </h1>
 
     <Tabs
       tabs={[
@@ -510,10 +512,7 @@ export const LicenseBox = () => (
 );
 
 const LicenseExample = () => (
-  <ToggleLicenseBox
-    openTitle="Bruk artikkel"
-    closeTitle="Lukk boks"
-  >
+  <ToggleLicenseBox openTitle="Bruk artikkel" closeTitle="Lukk boks">
     <LicenseBox />
   </ToggleLicenseBox>
 );

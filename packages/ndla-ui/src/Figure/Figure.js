@@ -37,11 +37,18 @@ export const FigureDetails = ({
   const headingLabelId = uuid();
   return [
     <div key="backdrop" className="o-backdrop" />,
-    <div key="license" {...classes('license')} role="dialog" aria-hidden="true" aria-labelledby={headingLabelId}>
+    <div
+      key="license"
+      {...classes('license')}
+      role="dialog"
+      aria-hidden="true"
+      aria-labelledby={headingLabelId}>
       <button {...classes('close')}>{messages.close}</button>
       <div className="u-expanded">
         <div {...classLicenses('details')}>
-          <h3 id={headingLabelId} {...classLicenses('title')}>{messages.rulesForUse}</h3>
+          <h3 id={headingLabelId} {...classLicenses('title')}>
+            {messages.rulesForUse}
+          </h3>
           <LicenseByline withDescription licenseRights={licenseRights} />
           <a
             className="c-figure-license__link"
@@ -79,7 +86,7 @@ export const FigureDetails = ({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
   ];
 };
 

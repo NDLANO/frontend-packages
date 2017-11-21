@@ -51,7 +51,11 @@ export default () => (
         </ArticleByline>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense caption="" expandable classes="u-float-left" runScripts>
+        <FigureWithLicense
+          caption=""
+          expandable
+          classes="u-float-left"
+          runScripts>
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

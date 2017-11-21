@@ -18,7 +18,7 @@ import {
 
 const trapInstances = {};
 
-const closeDialog = (figure) => {
+const closeDialog = figure => {
   figure.classList.remove('c-figure--active');
   const details = figure.querySelector('.c-figure__license');
   details.setAttribute('aria-hidden', 'true');
@@ -81,7 +81,10 @@ export const addShowFigureDetailsClickListeners = () => {
 
     target.onclick = () => {
       noScroll(true);
-      const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      const viewportHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0,
+      );
       const figureHeight = figure.offsetHeight;
 
       jump(figure, {
@@ -93,11 +96,11 @@ export const addShowFigureDetailsClickListeners = () => {
           if (instance) {
             instance.activate();
           }
-        }
+        },
       });
 
       setTimeout(() => {
-        details.setAttribute('aria-hidden',  'false');
+        details.setAttribute('aria-hidden', 'false');
         removeElementById('c-license-icon-description');
         figure.classList.add('c-figure--active');
       }, 150);

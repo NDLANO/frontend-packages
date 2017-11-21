@@ -44,31 +44,34 @@ class ToggleLicenseBox extends Component {
     });
 
     const computedStyles = window.getComputedStyle(this.dialog);
-    this.isNarrowScreen = computedStyles.getPropertyValue('position') === 'fixed';
+    this.isNarrowScreen =
+      computedStyles.getPropertyValue('position') === 'fixed';
   }
 
   toogleLicenseBox() {
-    this.setState({
-      expanded: !this.state.expanded,
-    }, () => {
-      if (this.state.expanded) {
-        if (!this.isNarrowScreen) {
-          jump(this.dialog, {
-            duration: 100,
-            offset: -100,
-            callback: () => {
-              this.focusTrapInstance.activate();
-            }
-          });
+    this.setState(
+      {
+        expanded: !this.state.expanded,
+      },
+      () => {
+        if (this.state.expanded) {
+          if (!this.isNarrowScreen) {
+            jump(this.dialog, {
+              duration: 100,
+              offset: -100,
+              callback: () => {
+                this.focusTrapInstance.activate();
+              },
+            });
+          } else {
+            this.focusTrapInstance.activate();
+            noScroll(true);
+          }
         } else {
-          this.focusTrapInstance.activate();
-          noScroll(true);
+          this.focusTrapInstance.deactivate();
         }
-
-      } else {
-        this.focusTrapInstance.deactivate();
-      }
-    });
+      },
+    );
   }
 
   render() {
@@ -85,7 +88,9 @@ class ToggleLicenseBox extends Component {
       </Button>,
       <div
         key="dialog"
-        ref={(r) => { this.dialog = r; }}
+        ref={r => {
+          this.dialog = r;
+        }}
         role="dialog"
         aria-hidden={!expanded}
         aria-labelledby="license-heading"
@@ -100,7 +105,7 @@ class ToggleLicenseBox extends Component {
           {expanded ? closeTitle : openTitle}
         </Button>
         {expanded ? children : null}
-      </div>
+      </div>,
     ];
   }
 }

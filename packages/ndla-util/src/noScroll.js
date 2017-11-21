@@ -19,7 +19,7 @@ const getScrollbarWidth = () => {
   return scrollbarWidth;
 };
 
-const noScroll = (enable) => {
+const noScroll = enable => {
   const htmlElement = document.querySelector('html');
   if (enable) {
     const scrollWidth = getScrollbarWidth();

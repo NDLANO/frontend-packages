@@ -1,5 +1,6 @@
 export const resourceTypes = {
   video: 'video',
+  image: 'image',
   audio: 'audio',
   text: 'text',
   h5p: 'h5p',
@@ -9,6 +10,8 @@ export const getResourceTypeNamespace = type => {
   switch (type) {
     case resourceTypes.video:
       return 'http://purl.org/dc/dcmitype/MovingImage';
+    case resourceTypes.image:
+      return 'http://purl.org/dc/dcmitype/Image';
     case resourceTypes.audio:
       return 'http://purl.org/dc/dcmitype/Sound';
     case resourceTypes.text:

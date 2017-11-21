@@ -8,6 +8,7 @@
 .c-licensebox {
   position: relative;
   @include inuit-font-size(20px, 32px);
+  display: none;
 }
 
 .c-article__license-toggler {
@@ -34,6 +35,7 @@
 }
 
 .c-licensebox--expanded {
+  display: block;
   background: $brand-color--lighter;
   padding-top: $spacing;
   z-index: 10;

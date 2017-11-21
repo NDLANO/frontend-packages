@@ -494,7 +494,7 @@ const Files = () => (
 
 export const LicenseBox = () => (
   <div>
-    <h1 className="license__heading">Slik gjenbruker du innhold</h1>
+    <h1 className="license__heading" id="license-heading">Slik gjenbruker du innhold</h1>
 
     <Tabs
       tabs={[

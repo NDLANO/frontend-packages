@@ -9,6 +9,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import createFocusTrap from 'focus-trap';
+
 import Button from '../button/Button';
 
 class ToggleLicenseBox extends Component {
@@ -18,11 +20,33 @@ class ToggleLicenseBox extends Component {
     this.state = {
       expanded: false,
     };
+
+    this.dialog = null;
+    this.focusTrapInstance = null;
+  }
+
+  componentDidMount() {
+    this.focusTrapInstance = createFocusTrap(this.dialog, {
+      onDeactivate: () => {
+        if (this.state.expanded) {
+          this.setState({
+            expanded: false,
+          });
+        }
+      },
+      clickOutsideDeactivates: true,
+    });
   }
 
   toogleLicenseBox() {
     this.setState({
       expanded: !this.state.expanded,
+    }, () => {
+      if (this.state.expanded) {
+        this.focusTrapInstance.activate();
+      } else {
+        this.focusTrapInstance.deactivate();
+      }
     });
   }
 
@@ -30,12 +54,25 @@ class ToggleLicenseBox extends Component {
     const { openTitle, closeTitle, children, licenseBox } = this.props;
     const { expanded } = this.state;
 
-    return (
+    return [
+      <Button
+        key="open"
+        stripped
+        className="c-article__license-toggler"
+        onClick={this.toogleLicenseBox}>
+        {expanded ? closeTitle : openTitle}
+      </Button>,
       <div
+        key="dialog"
+        ref={(r) => { this.dialog = r; }}
+        role="dialog"
+        aria-hidden={!expanded}
+        aria-labelledby="license-heading"
         className={classnames('c-licensebox', {
           'c-licensebox--expanded': expanded,
         })}>
         <Button
+          key="closeButton"
           stripped
           className="c-article__license-toggler"
           onClick={this.toogleLicenseBox}>
@@ -44,7 +81,7 @@ class ToggleLicenseBox extends Component {
         {children}
         {expanded ? licenseBox : null}
       </div>
-    );
+    ]
   }
 }
 

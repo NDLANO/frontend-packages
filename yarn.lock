@@ -1891,6 +1891,10 @@ caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000758:
   version "1.0.30000760"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000760.tgz#ec720395742f1c7ec8947fd6dd2604e77a8f98ff"
 
+capitalize@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/capitalize/-/capitalize-1.0.0.tgz#dc802c580aee101929020d2ca14b4ca8a0ae44be"
+
 capture-stack-trace@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
@@ -6695,6 +6699,10 @@ react-html-attributes@^1.3.0:
 react-icon-base@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.0.tgz#a196e33fdf1e7aaa1fda3aefbb68bdad9e82a79d"
+
+react-icon-base@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.1.tgz#ec5cd5f5797f29102581693d0ae9a739e3e586c2"
 
 react-icons@^2.2.7:
   version "2.2.7"

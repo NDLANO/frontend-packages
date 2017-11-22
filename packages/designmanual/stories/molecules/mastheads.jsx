@@ -28,12 +28,12 @@ export const MastheadLeftRight = () => (
 );
 
 export const MastheadWithLogo = () => (
-    <Masthead fixed>
-      <MastheadItem right>
-        <Logo to="#" altText="Nasjonal digital læringsarena" />
-      </MastheadItem>
-    </Masthead>
-  );
+  <Masthead fixed>
+    <MastheadItem right>
+      <Logo to="#" altText="Nasjonal digital læringsarena" />
+    </MastheadItem>
+  </Masthead>
+);
 
 export const MastheadWithTopicMenu = () => {
   const messages = {

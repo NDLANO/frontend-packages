@@ -24,6 +24,7 @@ class ToggleLicenseBox extends Component {
     };
 
     this.dialog = null;
+    this.buttonWrapper = null;
     this.focusTrapInstance = null;
   }
 
@@ -36,9 +37,7 @@ class ToggleLicenseBox extends Component {
           });
         }
 
-        if (this.isNarrowScreen) {
-          noScroll(false);
-        }
+        noScroll(false);
       },
       clickOutsideDeactivates: true,
     });
@@ -56,11 +55,12 @@ class ToggleLicenseBox extends Component {
       () => {
         if (this.state.expanded) {
           if (!this.isNarrowScreen) {
-            jump(this.dialog, {
+            jump(this.buttonWrapper, {
               duration: 100,
-              offset: -100,
+              offset: -60,
               callback: () => {
                 this.focusTrapInstance.activate();
+                noScroll(true);
               },
             });
           } else {
@@ -78,33 +78,47 @@ class ToggleLicenseBox extends Component {
     const { openTitle, closeTitle, children } = this.props;
     const { expanded } = this.state;
 
+    const backdropClasses = classnames({
+      'o-backdrop': true,
+      'c-licensebox__backdrop': true,
+      'c-licensebox__backdrop--expanded': expanded,
+    });
+
     return [
-      <Button
-        key="open"
-        stripped
-        className="c-article__license-toggler"
-        onClick={this.toogleLicenseBox}>
-        {expanded ? closeTitle : openTitle}
-      </Button>,
-      <div
-        key="dialog"
+      <span
         ref={r => {
-          this.dialog = r;
-        }}
-        role="dialog"
-        aria-hidden={!expanded}
-        aria-labelledby="license-heading"
-        className={classnames('c-licensebox', {
-          'c-licensebox--expanded': expanded,
-        })}>
+          this.buttonWrapper = r;
+        }}>
         <Button
-          key="closeButton"
+          key="openButton"
           stripped
           className="c-article__license-toggler"
           onClick={this.toogleLicenseBox}>
           {expanded ? closeTitle : openTitle}
         </Button>
-        {expanded ? children : null}
+      </span>,
+      <div className={backdropClasses} key="backdrop" />,
+      <div
+        key="dialog"
+        className={classnames('c-licensebox', {
+          'c-licensebox--expanded': expanded,
+        })}>
+        <div
+          ref={r => {
+            this.dialog = r;
+          }}
+          role="dialog"
+          aria-hidden={!expanded}
+          className="c-licensebox__content"
+          aria-labelledby="license-heading">
+          <Button
+            stripped
+            className="c-article__license-toggler"
+            onClick={this.toogleLicenseBox}>
+            {expanded ? closeTitle : openTitle}
+          </Button>
+          {expanded ? children : null}
+        </div>
       </div>,
     ];
   }

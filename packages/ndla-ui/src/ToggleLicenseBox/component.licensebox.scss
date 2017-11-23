@@ -10,17 +10,46 @@
   @include inuit-font-size(20px, 32px);
   display: none;
 
-  @include mq($until: desktop) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+
+  &__content {
+    background: $brand-color--lighter;
+    padding-top: $spacing;
+    z-index: 10;
+    color: $black;
+    box-shadow: 0 0 30px rgba($black, .2);
+
+    @include mq($until: desktop) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      overflow: auto;
+    }
+
+    @include mq($from: desktop) {
+      max-width: 820px;
+      margin: $spacing--large auto;
+      padding-left: 26px;
+      padding-right: 26px;
+    }
   }
 
-  @include mq($from: desktop) {
-    margin-bottom: $spacing--large;
+  &__backdrop {
+    overflow: auto;
+    display: none;
+
+    &--expanded {
+      display: block;
+      animation-name: fadeIn;
+      animation-duration: 0.8s;
+    }
   }
 }
 
@@ -49,22 +78,13 @@
 
 .c-licensebox--expanded {
   display: block;
-  background: $brand-color--lighter;
-  padding-top: $spacing;
-  z-index: 10;
-  color: $black;
-  box-shadow: 0 0 30px rgba($black, .2);
 
-
-  a,
-  div {
-    animation-name: fadeInLeft;
-    animation-duration: .5s;
-  }
-
-  @include mq($from: desktop) {
-    @include grids-expand(4,6,2);
-    position: absolute !important;
+  .c-licensebox__content {
+    a,
+    div {
+      animation-name: fadeInLeft;
+      animation-duration: .5s;
+    }
   }
 }
 .c-licensebox--clear {

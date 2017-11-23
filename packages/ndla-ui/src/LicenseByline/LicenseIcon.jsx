@@ -18,7 +18,7 @@ import {
   Zero,
   Publicdomain,
   Copy,
-} from 'ndla-icons/es/license';
+} from 'ndla-icons/license';
 
 const LicenseIcon = ({ licenseRight, description, className }) => {
   switch (licenseRight) {

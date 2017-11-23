@@ -1,31 +1,31 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-    "prettier.singleQuote": true,
-    "prettier.trailingComma": "all",
-    "prettier.semi": true,
-    "prettier.jsxBracketSameLine": true,
-    "editor.formatOnSave": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/dist": true,
-        "**/es": true,
-        "**/lib": true
-    },
-    "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/node_modules/**": true,
-        "**/.test": true,
-        "**/.out": true,
-        "**/es": true,
-        "**/dist": true,
-        "**/lib": true
-    },
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/.test": true,
-        "**/.out": true,
-        "**/es": true,
-        "**/dist": true,
-        "**/lib": true
-    }
+  // Place your settings in this file to overwrite default and user settings.
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.semi": true,
+  "prettier.jsxBracketSameLine": true,
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/dist": true,
+    "**/es": true,
+    "**/lib": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/node_modules/**": true,
+    "**/.test": true,
+    "**/.out": true,
+    "**/es": true,
+    "**/dist": true,
+    "**/lib": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.test": true,
+    "**/.out": true,
+    "**/es": true,
+    "**/dist": true,
+    "**/lib": true
+  }
 }

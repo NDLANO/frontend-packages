@@ -92,6 +92,30 @@ ${exportsString}\n`;
   });
 }
 
+function writePackageFiles(types) {
+  Object.keys(types).forEach(folder => {
+    const iconsModule = `
+{
+  "name": "ndla-icons${folder}",
+  "private": true,
+  "main": "../lib${folder}/index.js",
+  "module": "../es${folder}/index.js",
+  "jsnext:main": "../es${folder}/index.js"
+}
+    `;
+
+    const fileName = path.join(rootDir, folder, 'package.json');
+    ensureDirectoryExistence(fileName);
+    fs.writeFileSync(fileName, iconsModule, 'utf-8');
+
+    console.log(
+      `${chalk.green(`CREATED`)} ${chalk.dim(path.join(rootDir))}${chalk.bold(
+        `${folder}/package.json`,
+      )}`,
+    );
+  });
+}
+
 glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
   const types = {};
   icons.forEach(iconPath => {
@@ -119,4 +143,5 @@ glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
     );
   });
   writeIndexFiles(types);
+  writePackageFiles(types);
 });

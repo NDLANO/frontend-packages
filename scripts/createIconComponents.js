@@ -8,7 +8,7 @@ const chalk = require('chalk');
 const prettier = require('prettier');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
-const attrs = ['xlink:href', 'clip-path', 'fill-opacity', 'fill'];
+const attrs = ['xlink:href'];
 
 const copyright = fs.readFileSync(
   path.join(__dirname, '..', 'COPYRIGHT'),
@@ -50,16 +50,16 @@ function createComponent(name, svg) {
   return prettier.format(
     `${copyright}
 ${autoNotice}
-import React from 'react'
-import Icon from 'react-icon-base'
+import React from 'react';
+import Icon from '../Icon';
 
 const ${name} = props => (
   <Icon viewBox="${viewBox}" {...props}>
     <g>${iconSvg}</g>
   </Icon>
-)
+);
 
-export default ${name}
+export default ${name};
 `,
     {
       jsxBracketSameLine: true,

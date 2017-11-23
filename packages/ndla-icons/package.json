@@ -29,7 +29,5 @@
   "peerDependencies": {
     "react": "^15.6.0 || ^16.0.0"
   },
-  "dependencies": {
-    "react-icon-base": "^2.1.1"
-  }
+  "dependencies": {}
 }

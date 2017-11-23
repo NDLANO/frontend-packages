@@ -11,7 +11,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Textibox = props => (
-  <Icon viewBox="0 0 21 18" {...props}>
+  <Icon viewBox="0 0 21 18" data-license="CC-BY 4.0" {...props}>
     <g>
       <g fill="#444" transform="translate(0 .5)">
         <polygon points="0 7.112 20.419 7.112 20.419 5.172 0 5.172" />

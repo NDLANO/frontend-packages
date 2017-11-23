@@ -6,6 +6,7 @@ const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
 const prettier = require('prettier');
+const defined = require('defined');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
 const attrs = ['xlink:href'];
@@ -45,7 +46,13 @@ function createComponent(name, svg) {
   });
   const $svg = $('svg');
   const viewBox = $svg.attr('viewBox');
+  const license = $svg.attr('data-license');
+  if (!license) {
+    return undefined;
+  }
+
   cleanAtrributes($svg, $);
+
   const iconSvg = $svg.html();
   return prettier.format(
     `${copyright}
@@ -54,7 +61,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const ${name} = props => (
-  <Icon viewBox="${viewBox}" {...props}>
+  <Icon viewBox="${viewBox}" data-license="${license}" {...props}>
     <g>${iconSvg}</g>
   </Icon>
 );
@@ -133,14 +140,23 @@ glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
     types[folder].push(name);
 
     const component = createComponent(name, svg);
-    const dest = path.join(rootDir, 'src', componentPath);
-    ensureDirectoryExistence(dest);
-    fs.writeFileSync(dest, component, 'utf-8');
-    console.log(
-      `${chalk.green(`CREATED`)} ${chalk.dim(
-        path.join(rootDir, 'src'),
-      )}${chalk.bold(componentPath)}`,
-    );
+    if (component) {
+      const dest = path.join(rootDir, 'src', componentPath);
+      ensureDirectoryExistence(dest);
+      fs.writeFileSync(dest, component, 'utf-8');
+      console.log(
+        `${chalk.green(`CREATED`)} ${chalk.dim(
+          path.join(rootDir, 'src'),
+        )}${chalk.bold(componentPath)}`,
+      );
+    } else {
+      console.log(
+        `${chalk.red(`Failed`)} ${chalk.dim(
+          path.join(rootDir, 'src'),
+        )}${chalk.bold(componentPath)}`,
+      );
+      console.log('No data-license attribute on <svg>');
+    }
   });
   writeIndexFiles(types);
   writePackageFiles(types);

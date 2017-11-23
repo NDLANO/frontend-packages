@@ -11,7 +11,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Avsnitt = props => (
-  <Icon viewBox="0 0 33 30" {...props}>
+  <Icon viewBox="0 0 33 30" data-license="CC-BY 4.0" {...props}>
     <g>
       <rect width="33" height="30" fill="none" />
     </g>

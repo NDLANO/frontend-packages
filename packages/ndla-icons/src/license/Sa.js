@@ -11,7 +11,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Sa = props => (
-  <Icon viewBox="5.5 -3.5 64 64" {...props}>
+  <Icon viewBox="5.5 -3.5 64 64" data-license="CC-BY 4.0" {...props}>
     <g>
       <g>
         <circle fill="none" cx="36.944" cy="28.631" r="29.105" />

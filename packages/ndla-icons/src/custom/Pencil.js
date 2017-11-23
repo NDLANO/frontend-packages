@@ -11,7 +11,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Pencil = props => (
-  <Icon viewBox="0 0 80 76" {...props}>
+  <Icon viewBox="0 0 80 76" data-license="CC-BY 4.0" {...props}>
     <g>
       <g fill="none">
         <path

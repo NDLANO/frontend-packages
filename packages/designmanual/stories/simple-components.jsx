@@ -3,9 +3,10 @@ import React, { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
+import * as licenseIcons from 'ndla-icons/license';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
-import { StoryIntro, StoryBody } from './wrappers';
+import { StoryIntro, IconTable, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
@@ -617,6 +618,11 @@ storiesOf('Enkle komponenter', module)
   .add('Ikoner', () => (
     <div>
       <StoryIntro title="Ikoner" />
+      <StoryBody>
+        <h2>Lisensikoner</h2>
+        <code>{`import {IconName} from 'ndla-icons/license'`} </code>
+        <IconTable icons={licenseIcons} />
+      </StoryBody>
       <StoryBody>
         <table className="c-table">
           <thead>

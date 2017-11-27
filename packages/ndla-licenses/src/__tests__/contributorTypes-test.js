@@ -8,7 +8,11 @@
 
 /* eslint-env jest */
 
-import { contributorTypes, contributorGroups } from '../contributorTypes';
+import {
+  contributorTypes,
+  contributorGroups,
+  mkContributorString,
+} from '../contributorTypes';
 
 test('ContributorTypes keys is the same for each supported language', () => {
   const enLength = Object.keys(contributorTypes.en);
@@ -31,4 +35,39 @@ test('Each contributor type in a contributor group has a valid translation', () 
     expect(contributorTypes.en[rightsholder]).toBeDefined();
     expect(contributorTypes.nb[rightsholder]).toBeDefined();
   });
+});
+
+const contributorList = [
+  {
+    type: 'Director',
+    name: 'Francis Ford Coppola',
+  },
+  {
+    type: 'Linguistic',
+    name: 'Mario Puzo',
+  },
+  {
+    type: 'Rightsholder',
+    name: 'Paramount Pictures',
+  },
+  {
+    type: 'Distributor',
+    name: 'Alfran Productions',
+  },
+];
+
+test('Makes a translated comma seperated contributor string', () => {
+  const contributorStringNb = mkContributorString(contributorList, 'nb');
+  expect(contributorStringNb).toMatchSnapshot();
+  const contributorStringEn = mkContributorString(contributorList, 'en');
+  expect(contributorStringEn).toMatchSnapshot();
+});
+
+test('Makes a translated comma separated contributor string (ignores rightsholder prefix)', () => {
+  const contributorString = mkContributorString(
+    contributorList,
+    'nb',
+    'rightsholder',
+  );
+  expect(contributorString).toMatchSnapshot();
 });

@@ -83,3 +83,16 @@ export const contributorTypes = {
     supplier: 'Leverandør',
   },
 };
+
+export function mkContributorString(contributors, lang, ignoreType) {
+  return contributors
+    .map(contributor => {
+      const type = contributor.type.toLowerCase();
+      if (type === ignoreType) {
+        return contributor.name;
+      }
+      const translatedType = contributorTypes[lang][type];
+      return `${translatedType} ${contributor.name}`;
+    })
+    .join(', ');
+}

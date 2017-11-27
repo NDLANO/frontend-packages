@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Makes a translated comma separated contributor string (ignores rightsholder prefix) 1`] = `"Regissør Francis Ford Coppola, Språklig Mario Puzo, Paramount Pictures, Distributør Alfran Productions"`;
+
+exports[`Makes a translated comma seperated contributor string 1`] = `"Regissør Francis Ford Coppola, Språklig Mario Puzo, Rettighetshaver Paramount Pictures, Distributør Alfran Productions"`;
+
+exports[`Makes a translated comma seperated contributor string 2`] = `"Director Francis Ford Coppola, Linguistic Mario Puzo, Rightsholder Paramount Pictures, Distributor Alfran Productions"`;

@@ -6,6 +6,11 @@
 .c-resources {
   padding-bottom: $spacing--large;
   padding-top: $spacing;
+
+  @include mq(tablet) {
+    padding-left: $spacing;
+    padding-right: $spacing;
+  }
 }
 
 // (Same as .c-resource-group__title)

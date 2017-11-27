@@ -27,6 +27,14 @@ export const MastheadLeftRight = () => (
   </Masthead>
 );
 
+export const MastheadWithLogo = () => (
+  <Masthead fixed>
+    <MastheadItem right>
+      <Logo to="#" altText="Nasjonal digital læringsarena" />
+    </MastheadItem>
+  </Masthead>
+);
+
 export const MastheadWithTopicMenu = () => {
   const messages = {
     goTo: 'Gå til',

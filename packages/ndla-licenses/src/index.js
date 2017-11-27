@@ -33,4 +33,4 @@ export {
   getMicroDataNamespaceByMicroDataTypeWithFallback,
 } from './microData';
 
-export { contributorTypes, contributoGroups } from './contributorTypes';
+export { contributorTypes, contributorGroups } from './contributorTypes';

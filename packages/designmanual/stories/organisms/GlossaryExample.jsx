@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Time, User } from 'ndla-ui/icons';
+import { Time, User } from 'ndla-icons/common';
 import { Glossary, OneColumn, LayoutItem, Image } from 'ndla-ui';
 import { addShowGlossaryDefinitionClickListeners } from 'ndla-article-scripts';
 

@@ -17,7 +17,7 @@ import {
   ArticleIntroduction,
   Image,
 } from 'ndla-ui';
-import { Pencil } from 'ndla-ui/icons';
+import { Pencil } from 'ndla-icons/common';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 

@@ -245,10 +245,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -462,10 +462,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -640,7 +640,6 @@ storiesOf('Enkle komponenter', module)
           </thead>
           <tbody>
             {[
-              'Additional',
               'AlignCenter',
               'AlignJustify',
               'AlignLeft',
@@ -652,7 +651,6 @@ storiesOf('Enkle komponenter', module)
               'Copy',
               'Crop',
               'Cross',
-              'Document',
               'Download',
               'Embed',
               'FactBox',
@@ -666,19 +664,12 @@ storiesOf('Enkle komponenter', module)
               'Ingress',
               'InsertTemplate',
               'Italic',
-              'LicenseBy',
-              'LicenseCc',
-              'LicenseNc',
-              'LicenseNd',
-              'LicenseSa',
               'Link',
               'ListCircle',
               'ListNumbered',
               'ListSquare',
               'OpenWindow',
               'Paragraph',
-              'Path',
-              'Pencil',
               'Pilcrow',
               'Plus',
               'Quote',
@@ -688,9 +679,7 @@ storiesOf('Enkle komponenter', module)
               'Strikethrough',
               'Table',
               'TextInBox',
-              'Time',
               'Underline',
-              'User',
               'Video',
             ].map(key => (
               <tr key={key}>

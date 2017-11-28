@@ -8,11 +8,12 @@ import * as commonIcons from 'ndla-icons/common';
 import * as editorIcons from 'ndla-icons/editor';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
-import { StoryIntro, IconTable, StoryBody } from './wrappers';
+import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import Embedded from './article/Embedded';
+import { OneColumn } from '../../ndla-ui/lib/Layout/index';
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -620,17 +621,14 @@ storiesOf('Enkle komponenter', module)
   .add('Ikoner', () => (
     <div>
       <StoryIntro title="Ikoner" />
-      <StoryBody>
+      <OneColumn>
         <h2>Fellesikoner</h2>
-        <code>{`import {IconName} from 'ndla-icons/common`} </code>
-        <IconTable icons={commonIcons} />
+        <IconList icons={commonIcons} folder="common" />
         <h2>Lisensikoner</h2>
-        <code>{`import {IconName} from 'ndla-icons/license'`} </code>
-        <IconTable icons={licenseIcons} />
+        <IconList icons={licenseIcons} folder="license" />
         <h2>Editorikoner</h2>
-        <code>{`import {IconName} from 'ndla-icons/editor'`} </code>
-        <IconTable icons={editorIcons} />
-      </StoryBody>
+        <IconList icons={editorIcons} folder="editor" />
+      </OneColumn>
       <StoryBody>
         <table className="c-table">
           <thead>

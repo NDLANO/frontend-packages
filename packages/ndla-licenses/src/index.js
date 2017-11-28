@@ -37,4 +37,5 @@ export {
   contributorTypes,
   contributorGroups,
   mkContributorString,
+  getGroupedContributorDescriptionList,
 } from './contributorTypes';

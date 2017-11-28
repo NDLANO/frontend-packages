@@ -6,6 +6,8 @@
  *
  */
 
+import { metaTypes } from './microData';
+
 export const contributorGroups = {
   creators: [
     'originator',
@@ -95,4 +97,25 @@ export function mkContributorString(contributors, lang, ignoreType) {
       return `${translatedType} ${contributor.name}`;
     })
     .join(', ');
+}
+
+export function getGroupedContributorDescriptionList(copyright, lang) {
+  const { creators, rightsholders, processors } = copyright;
+  return [
+    {
+      label: contributorTypes[lang].originator,
+      description: mkContributorString(creators, lang, 'originator'),
+      metaType: metaTypes.author,
+    },
+    {
+      label: contributorTypes[lang].rightsholder,
+      description: mkContributorString(rightsholders, lang, 'rightsholder'),
+      metaType: metaTypes.copyrightHolder,
+    },
+    {
+      label: contributorTypes[lang].processor,
+      description: mkContributorString(processors, lang, 'processor'),
+      metaType: metaTypes.contributor,
+    },
+  ].filter(item => item.description !== '');
 }

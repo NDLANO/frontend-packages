@@ -1,5 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Get a grouped contributor description list for each supported language 1`] = `
+Array [
+  Object {
+    "description": "Regissør Francis Ford Coppola",
+    "label": "Opphavsmann",
+    "metaType": "author",
+  },
+  Object {
+    "description": "Paramount Pictures, Distributør Alfran Productions",
+    "label": "Rettighetshaver",
+    "metaType": "copyrightHolder",
+  },
+  Object {
+    "description": "Francis Ford Coppola, Språklig Mario Puzo",
+    "label": "Bearbeider",
+    "metaType": "contributor",
+  },
+]
+`;
+
+exports[`Get a grouped contributor description list for each supported language 2`] = `
+Array [
+  Object {
+    "description": "Director Francis Ford Coppola",
+    "label": "Originator",
+    "metaType": "author",
+  },
+  Object {
+    "description": "Paramount Pictures, Distributor Alfran Productions",
+    "label": "Rightsholder",
+    "metaType": "copyrightHolder",
+  },
+  Object {
+    "description": "Francis Ford Coppola, Linguistic Mario Puzo",
+    "label": "Processor",
+    "metaType": "contributor",
+  },
+]
+`;
+
 exports[`Makes a translated comma separated contributor string (ignores rightsholder prefix) 1`] = `"Regissør Francis Ford Coppola, Språklig Mario Puzo, Paramount Pictures, Distributør Alfran Productions"`;
 
 exports[`Makes a translated comma seperated contributor string 1`] = `"Regissør Francis Ford Coppola, Språklig Mario Puzo, Rettighetshaver Paramount Pictures, Distributør Alfran Productions"`;

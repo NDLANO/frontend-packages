@@ -6,7 +6,6 @@ const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
 const prettier = require('prettier');
-const defined = require('defined');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
 const attrs = ['xlink:href'];

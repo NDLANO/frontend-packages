@@ -1,9 +1,0 @@
-
-{
-  "name": "ndla-icons/custom",
-  "private": true,
-  "main": "../lib/custom/index.js",
-  "module": "../es/custom/index.js",
-  "jsnext:main": "../es/custom/index.js"
-}
-    

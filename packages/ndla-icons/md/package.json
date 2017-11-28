@@ -1,9 +1,0 @@
-
-{
-  "name": "ndla-icons/md",
-  "private": true,
-  "main": "../lib/md/index.js",
-  "module": "../es/md/index.js",
-  "jsnext:main": "../es/md/index.js"
-}
-    

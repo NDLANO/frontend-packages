@@ -4,6 +4,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
 import * as licenseIcons from 'ndla-icons/license';
+import * as commonIcons from 'ndla-icons/common';
+import * as editorIcons from 'ndla-icons/editor';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
 import { StoryIntro, IconTable, StoryBody } from './wrappers';
@@ -619,9 +621,15 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Ikoner" />
       <StoryBody>
+        <h2>Fellesikoner</h2>
+        <code>{`import {IconName} from 'ndla-icons/common`} </code>
+        <IconTable icons={commonIcons} />
         <h2>Lisensikoner</h2>
         <code>{`import {IconName} from 'ndla-icons/license'`} </code>
         <IconTable icons={licenseIcons} />
+        <h2>Editorikoner</h2>
+        <code>{`import {IconName} from 'ndla-icons/editor'`} </code>
+        <IconTable icons={editorIcons} />
       </StoryBody>
       <StoryBody>
         <table className="c-table">

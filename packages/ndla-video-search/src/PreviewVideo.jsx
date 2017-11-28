@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Button } from 'ndla-ui';
-import { Cross } from 'ndla-ui/icons';
+import { Cross } from 'ndla-icons/common';
 
 const classes = new BEMHelper({
   name: 'video-preview',

@@ -10,12 +10,12 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const AlignCenter = props => (
+const Cross = props => (
   <Icon viewBox="0 0 24 24" data-license="CC-BY 4.0" {...props}>
     <g>
-      <path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z" />
+      <path d="M.708 22.449l.664.665L12 12.486l10.628 10.628.664-.665-10.628-10.628L23.292 1.193l-.664-.664L12 11.157 1.372.529l-.664.664 10.628 10.628z" />
     </g>
   </Icon>
 );
 
-export default AlignCenter;
+export default Cross;

@@ -10,12 +10,12 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const AlignCenter = props => (
+const Underline = props => (
   <Icon viewBox="0 0 24 24" data-license="CC-BY 4.0" {...props}>
     <g>
-      <path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z" />
+      <path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z" />
     </g>
   </Icon>
 );
 
-export default AlignCenter;
+export default Underline;

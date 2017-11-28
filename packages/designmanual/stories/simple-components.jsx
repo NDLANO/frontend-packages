@@ -630,6 +630,7 @@ storiesOf('Enkle komponenter', module)
         <IconList icons={editorIcons} folder="editor" />
       </OneColumn>
       <StoryBody>
+        <h2>Gamle ikoner</h2>
         <table className="c-table">
           <thead>
             <tr>
@@ -640,47 +641,16 @@ storiesOf('Enkle komponenter', module)
           </thead>
           <tbody>
             {[
-              'AlignCenter',
-              'AlignJustify',
-              'AlignLeft',
-              'AlignRight',
-              'Audio',
-              'Bold',
               'Book',
-              'Camera',
-              'Copy',
-              'Crop',
-              'Cross',
               'Download',
               'Embed',
-              'FactBox',
-              'FocalPoint',
               'Grid',
               'Heading1',
-              'Heading2',
               'Heading3',
-              'Home',
-              'H5P',
-              'Ingress',
               'InsertTemplate',
-              'Italic',
-              'Link',
-              'ListCircle',
-              'ListNumbered',
-              'ListSquare',
               'OpenWindow',
-              'Paragraph',
               'Pilcrow',
-              'Plus',
-              'Quote',
-              'Sad',
-              'Search',
-              'Section',
               'Strikethrough',
-              'Table',
-              'TextInBox',
-              'Underline',
-              'Video',
             ].map(key => (
               <tr key={key}>
                 <td>
@@ -689,17 +659,6 @@ storiesOf('Enkle komponenter', module)
                 <td>{key}</td>
                 <td>
                   <code>&lt;Icons.{key} /&gt;</code>
-                </td>
-              </tr>
-            ))}
-            {['up', 'down', 'left', 'right'].map(key => (
-              <tr key={key}>
-                <td>
-                  <Icons.Arrow direction={key} />
-                </td>
-                <td>Arrow {key}</td>
-                <td>
-                  <code>&lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;</code>
                 </td>
               </tr>
             ))}

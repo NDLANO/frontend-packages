@@ -13,7 +13,7 @@ cache:
   directories:
   - node_modules
 after_script:
-- node scripts/run-ndla-script.js now-travis --docker
+- travis_wait node scripts/run-ndla-script.js now-travis --docker
 notifications:
   slack:
     on_success: change

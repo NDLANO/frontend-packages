@@ -28,3 +28,4 @@ export { default as Section } from './Section';
 export { default as Table } from './Table';
 export { default as TextInBox } from './TextInBox';
 export { default as Underline } from './Underline';
+export { default as Video } from './Video';

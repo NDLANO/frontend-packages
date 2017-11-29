@@ -22,7 +22,7 @@
   },
   "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": ["lib", "es", "editor", "common", "license"],
+  "files": ["lib", "es", "editor", "common", "license", "action"],
   "peerDependencies": {
     "react": "^15.6.0 || ^16.0.0"
   },

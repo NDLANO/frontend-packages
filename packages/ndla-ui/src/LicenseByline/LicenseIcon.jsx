@@ -8,17 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BY, SA, NC, ND, PD, CC0, CC, COPY } from 'ndla-licenses';
-import {
-  By,
-  Cc,
-  Nc,
-  Nd,
-  Sa,
-  Zero,
-  Publicdomain,
-  Copy,
-} from 'ndla-icons/license';
+import { BY, SA, NC, ND, PD, CC0, CC } from 'ndla-licenses';
+import { By, Cc, Nc, Nd, Sa, Zero, Publicdomain } from 'ndla-icons/license';
 
 const LicenseIcon = ({ licenseRight, description, className }) => {
   switch (licenseRight) {
@@ -36,8 +27,6 @@ const LicenseIcon = ({ licenseRight, description, className }) => {
       return <Zero className={className} aria-label={description} />;
     case PD:
       return <Publicdomain className={className} aria-label={description} />;
-    case COPY:
-      return <Copy className={className} aria-label={description} />;
     default:
       return undefined;
   }

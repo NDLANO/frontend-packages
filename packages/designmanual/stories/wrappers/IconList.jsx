@@ -9,7 +9,7 @@
 import React, { createElement, Component } from 'react';
 import PropTypes from 'prop-types';
 import { copyTextToClipboard } from 'ndla-util';
-import { Copy } from 'ndla-icons/common';
+import { Copy } from 'ndla-icons/action';
 import { Button } from 'ndla-ui';
 import elementType from 'react-prop-types/lib/elementType';
 

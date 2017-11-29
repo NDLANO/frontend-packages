@@ -6,6 +6,7 @@ import * as Icons from 'ndla-ui/icons';
 import * as licenseIcons from 'ndla-icons/license';
 import * as commonIcons from 'ndla-icons/common';
 import * as editorIcons from 'ndla-icons/editor';
+import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
@@ -622,15 +623,17 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Ikoner" />
       <OneColumn>
-        <h2>Fellesikoner</h2>
+        <h2>Felles</h2>
         <IconList icons={commonIcons} folder="common" />
-        <h2>Lisensikoner</h2>
+        <h2>Lisens</h2>
         <IconList icons={licenseIcons} folder="license" />
-        <h2>Editorikoner</h2>
+        <h2>Handling</h2>
+        <IconList icons={actionIcons} folder="editor" />
+        <h2>Editor</h2>
         <IconList icons={editorIcons} folder="editor" />
       </OneColumn>
       <StoryBody>
-        <h2>Gamle ikoner</h2>
+        <h2>Ikoner som ikke er i bruk (fjernes etterhvert)</h2>
         <table className="c-table">
           <thead>
             <tr>

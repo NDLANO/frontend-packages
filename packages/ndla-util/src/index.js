@@ -11,6 +11,7 @@ import getComponentName from './getComponentName';
 import copyTextToClipboard from './copyTextToClipboard';
 import convertFieldWithFallback from './convertFieldWithFallback';
 import { tagsI18N } from './i18nFieldFinder';
+import noScroll from './noScroll';
 
 export {
   uuid,
@@ -18,4 +19,5 @@ export {
   copyTextToClipboard,
   tagsI18N,
   convertFieldWithFallback,
+  noScroll,
 };

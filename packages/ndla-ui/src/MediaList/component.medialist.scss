@@ -32,7 +32,7 @@
   float:none;
   margin: 0 0 $spacing--small;
   @include mq(tablet) {
-    max-width: 50%;
+    width: 30%;
     margin-right: $spacing;
   }
   img {

@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
 import { uuid } from 'ndla-util';
 
@@ -511,10 +512,21 @@ export const LicenseBox = () => (
   </div>
 );
 
-const LicenseExample = () => (
-  <ToggleLicenseBox openTitle="Bruk artikkel" closeTitle="Lukk boks" expanded>
+const LicenseExample = ({ expanded }) => (
+  <ToggleLicenseBox
+    openTitle="Bruk artikkel"
+    closeTitle="Lukk boks"
+    expanded={expanded}>
     <LicenseBox />
   </ToggleLicenseBox>
 );
+
+LicenseExample.propTypes = {
+  expanded: PropTypes.bool,
+};
+
+LicenseExample.defaultProps = {
+  expanded: false,
+};
 
 export default LicenseExample;

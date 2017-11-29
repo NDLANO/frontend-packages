@@ -112,6 +112,6 @@ ToggleLicenseBox.propTypes = {
 
 ToggleLicenseBox.defaultProps = {
   expanded: false,
-}
+};
 
 export default ToggleLicenseBox;

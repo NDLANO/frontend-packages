@@ -191,7 +191,7 @@ storiesOf('Sammensatte moduler', module)
           <h2 className="u-heading">Lisensboks</h2>
           <article className="article">
             <LayoutItem layout="center">
-              <LicenseExample />
+              <LicenseExample expanded />
             </LayoutItem>
           </article>
         </Center>

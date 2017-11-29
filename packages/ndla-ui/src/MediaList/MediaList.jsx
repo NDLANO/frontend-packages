@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import getLicenseByAbbreviation, {
+import {
+  getLicenseByAbbreviation,
   resourceTypes,
   getResourceTypeNamespace,
   isCreativeCommonsLicense,

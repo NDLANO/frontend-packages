@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint max-len: 0 */
-
 import defined from 'defined';
 
 // License rights

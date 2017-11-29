@@ -191,28 +191,6 @@ storiesOf('Sammensatte moduler', module)
           <h2 className="u-heading">Lisensboks</h2>
           <article className="article">
             <LayoutItem layout="center">
-              <div className="license c-licensebox c-licensebox--expanded">
-                <Button
-                  stripped
-                  className="c-article__license-toggler"
-                  onClick={() => {}}>
-                  Lukk boks
-                </Button>
-                <LicenseBox />
-              </div>
-            </LayoutItem>
-          </article>
-        </Center>
-      </Content>
-    </PageContainer>
-  ))
-  .add('Lisensboks ekspanderbar', () => (
-    <PageContainer>
-      <Content>
-        <Center>
-          <h2 className="u-heading">Lisensboks ekspanderbar</h2>
-          <article className="article">
-            <LayoutItem layout="center">
               <LicenseExample />
             </LayoutItem>
           </article>

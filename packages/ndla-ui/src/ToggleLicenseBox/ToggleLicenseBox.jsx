@@ -15,11 +15,11 @@ import { noScroll } from 'ndla-util';
 import Button from '../button/Button';
 
 class ToggleLicenseBox extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.toogleLicenseBox = this.toogleLicenseBox.bind(this);
     this.state = {
-      expanded: false,
+      expanded: props.expanded,
     };
 
     this.dialog = null;
@@ -106,6 +106,12 @@ ToggleLicenseBox.propTypes = {
   openTitle: PropTypes.string.isRequired,
   closeTitle: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  // only used in design manual for preview
+  expanded: PropTypes.bool,
 };
+
+ToggleLicenseBox.defaultProps = {
+  expanded: false,
+}
 
 export default ToggleLicenseBox;

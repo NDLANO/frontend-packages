@@ -860,7 +860,7 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
 
-        <h2 className="u-heading">Eksempel med tittel på første kolonne </h2>
+        <h2 className="u-heading">Eksempel med tittel på første kolonne</h2>
         <Table>
           <tbody>
             <tr>
@@ -953,7 +953,7 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
         <h2 className="u-heading">
-          Eksempel med kolonnetittel som går over flere kolonner (colspan)
+          Eksempel med titler som går over flere kolonner (colspan)
         </h2>
 
         <Table>
@@ -1007,6 +1007,36 @@ storiesOf('Grunnstiler', module)
               <td>Data 1</td>
               <td>Data 2</td>
             </tr>
+          </tbody>
+        </Table>
+        <h2 className="u-heading">Eksempel med flere tittelrader</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Tittel 1</th>
+              <th colSpan="3" style={{ textAlign: 'center' }}>
+                Tittel 2
+              </th>
+              <th>Tittel 3</th>
+            </tr>
+            <tr>
+              <th />
+              <th>Tittel 1</th>
+              <th>Tittel 2</th>
+              <th>Tittel 3</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4].map(index => (
+              <tr key={index}>
+                <td>Data</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 4</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </StoryBody>

@@ -53,7 +53,7 @@
   }
   th {
     border-bottom: 3px solid $brand-color--tertiary;
-    padding: $spacing--small $spacing $spacing--small $spacing/3;
+    padding: $spacing--small $spacing $spacing/3 $spacing/3;
     font-family: $font;
 
     @include inuit-font-size(16px,22px);
@@ -74,7 +74,7 @@
     text-transform: none;
     @include inuit-font-size(14px,18px);
     @include mq(tablet) {
-      @include inuit-font-size(14px, 26px);
+      @include inuit-font-size(15px, 26px);
     }
     font-weight: $font-weight-semibold;
     height: 40px;
@@ -124,10 +124,10 @@
   td {
     vertical-align: top;
     border-bottom: 1px solid $brand-grey--lighter;
-    
+
     @include inuit-font-size(14px,22px);
     @include mq(tablet) {
-      @include inuit-font-size(14px,30px);
+      @include inuit-font-size(15px,30px);
     }
     p {
       margin:0;

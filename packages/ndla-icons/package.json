@@ -1,7 +1,7 @@
 {
   "name": "ndla-icons",
   "version": "0.0.0",
-  "description": "Icons for NDLA",
+  "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -22,7 +22,7 @@
   },
   "keywords": ["ndla"],
   "author": "ndla@knowit.no",
-  "files": ["lib", "es", "md", "custom", "license"],
+  "files": ["lib", "es", "editor", "common", "license"],
   "peerDependencies": {
     "react": "^15.6.0 || ^16.0.0"
   },

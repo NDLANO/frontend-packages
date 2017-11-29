@@ -41,7 +41,9 @@ class IconItem extends Component {
           })}
           <strong style={{ marginLeft: '13px' }}>{name}</strong>
         </div>
-        <div style={{ marginTop: '6.5px' }}>
+        <div
+          style={{ marginTop: '6.5px' }}
+          title={`Kilde: ${icon().props['data-source']}`}>
           {icon().props['data-license']}
           {hover && (
             <Button

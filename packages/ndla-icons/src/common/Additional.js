@@ -11,7 +11,11 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Additional = props => (
-  <Icon viewBox="0 0 50 50" data-license="CC-BY 4.0" {...props}>
+  <Icon
+    viewBox="0 0 50 50"
+    data-license="CC-BY 4.0"
+    data-source="Netlife"
+    {...props}>
     <g>
       <circle fill="#CEDDE9" cx="25" cy="25" r="24.7" />
       <g>

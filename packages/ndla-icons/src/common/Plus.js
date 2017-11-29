@@ -11,7 +11,11 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Plus = props => (
-  <Icon viewBox="0 0 33 33" data-license="CC-BY 4.0" {...props}>
+  <Icon
+    viewBox="0 0 33 33"
+    data-license="CC-BY 4.0"
+    data-source="Knowit"
+    {...props}>
     <g>
       <path d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z" />
     </g>

@@ -11,7 +11,11 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Paragraph = props => (
-  <Icon viewBox="0 0 27 4" data-license="CC-BY 4.0" {...props}>
+  <Icon
+    viewBox="0 0 27 4"
+    data-license="CC-BY 4.0"
+    data-source="Knowit"
+    {...props}>
     <g>
       <path
         fillRule="evenodd"

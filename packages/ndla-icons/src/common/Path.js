@@ -11,7 +11,11 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Path = props => (
-  <Icon viewBox="0 0 122 29" data-license="CC-BY 4.0" {...props}>
+  <Icon
+    viewBox="0 0 122 29"
+    data-license="CC-BY 4.0"
+    data-source="Netlife"
+    {...props}>
     <g>
       <defs>
         <polygon

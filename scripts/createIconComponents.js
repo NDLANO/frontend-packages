@@ -46,7 +46,8 @@ function createComponent(name, svg) {
   const $svg = $('svg');
   const viewBox = $svg.attr('viewBox');
   const license = $svg.attr('data-license');
-  if (!license) {
+  const source = $svg.attr('data-source');
+  if (!license || !source) {
     return undefined;
   }
 
@@ -60,7 +61,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const ${name} = props => (
-  <Icon viewBox="${viewBox}" data-license="${license}" {...props}>
+  <Icon viewBox="${viewBox}" data-license="${license}" data-source="${source}" {...props}>
     <g>${iconSvg}</g>
   </Icon>
 );
@@ -154,7 +155,7 @@ glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
           path.join(rootDir, 'src'),
         )}${chalk.bold(componentPath)}`,
       );
-      console.log('No data-license attribute on <svg>');
+      console.log('No data-license or data-source attribute on <svg>');
     }
   });
   writeIndexFiles(types);

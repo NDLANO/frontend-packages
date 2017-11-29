@@ -11,7 +11,11 @@ import React from 'react';
 import Icon from '../Icon';
 
 const Document = props => (
-  <Icon viewBox="0 0 78 77" data-license="CC-BY 4.0" {...props}>
+  <Icon
+    viewBox="0 0 78 77"
+    data-license="CC-BY 4.0"
+    data-source="Netlife"
+    {...props}>
     <g>
       <circle fill="#FFF" cx="38.5" cy="38.9" r="38.3" />
       <g fill="none">

@@ -11,7 +11,11 @@ import React from 'react';
 import Icon from '../Icon';
 
 const TextInBox = props => (
-  <Icon viewBox="0 0 29 32" data-license="CC-BY 4.0" {...props}>
+  <Icon
+    viewBox="0 0 29 32"
+    data-license="CC-BY 4.0"
+    data-source="Knowit"
+    {...props}>
     <g>
       <path
         fill="none"

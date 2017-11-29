@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import createFocusTrap from 'focus-trap';
 import { noScroll } from 'ndla-util';
-import jump from 'jump.js';
 
 import Button from '../button/Button';
 
@@ -24,7 +23,6 @@ class ToggleLicenseBox extends Component {
     };
 
     this.dialog = null;
-    this.buttonWrapper = null;
     this.focusTrapInstance = null;
   }
 
@@ -41,10 +39,6 @@ class ToggleLicenseBox extends Component {
       },
       clickOutsideDeactivates: true,
     });
-
-    const computedStyles = window.getComputedStyle(this.dialog);
-    this.isNarrowScreen =
-      computedStyles.getPropertyValue('position') === 'fixed';
   }
 
   toogleLicenseBox() {
@@ -54,19 +48,8 @@ class ToggleLicenseBox extends Component {
       },
       () => {
         if (this.state.expanded) {
-          if (!this.isNarrowScreen) {
-            jump(this.buttonWrapper, {
-              duration: 100,
-              offset: -60,
-              callback: () => {
-                this.focusTrapInstance.activate();
-                noScroll(true);
-              },
-            });
-          } else {
-            this.focusTrapInstance.activate();
-            noScroll(true);
-          }
+          this.focusTrapInstance.activate();
+          noScroll(true);
         } else {
           this.focusTrapInstance.deactivate();
         }
@@ -85,18 +68,13 @@ class ToggleLicenseBox extends Component {
     });
 
     return [
-      <span
-        ref={r => {
-          this.buttonWrapper = r;
-        }}>
-        <Button
-          key="openButton"
-          stripped
-          className="c-article__license-toggler"
-          onClick={this.toogleLicenseBox}>
-          {expanded ? closeTitle : openTitle}
-        </Button>
-      </span>,
+      <Button
+        key="openButton"
+        stripped
+        className="c-article__license-toggler"
+        onClick={this.toogleLicenseBox}>
+        {expanded ? closeTitle : openTitle}
+      </Button>,
       <div className={backdropClasses} key="backdrop" />,
       <div
         key="dialog"

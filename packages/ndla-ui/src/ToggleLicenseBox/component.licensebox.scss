@@ -16,13 +16,14 @@
   bottom: 0;
   right: 0;
   overflow: auto;
+  z-index: 1000;
 
   &__content {
     background: $brand-color--lighter;
     padding-top: $spacing;
-    z-index: 10;
     color: $black;
     box-shadow: 0 0 30px rgba($black, .2);
+
 
     @include mq($until: desktop) {
       position: fixed;
@@ -44,6 +45,8 @@
   &__backdrop {
     overflow: auto;
     display: none;
+    z-index: 999;
+
 
     &--expanded {
       display: block;

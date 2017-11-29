@@ -14,7 +14,6 @@ import elementType from 'react-prop-types/lib/elementType';
 import BookIcon from './internal-icons/Book';
 import DownloadIcon from './internal-icons/Download';
 import EmbedIcon from './internal-icons/Embed';
-import GridIcon from './internal-icons/Grid';
 import Heading1Icon from './internal-icons/Heading1';
 import Heading3Icon from './internal-icons/Heading3';
 import IngressIcon from './internal-icons/Ingress';
@@ -39,7 +38,6 @@ Icon.propTypes = {
 export const Book = props => <Icon {...props} icon={BookIcon} />;
 export const Download = props => <Icon {...props} icon={DownloadIcon} />;
 export const Embed = props => <Icon {...props} icon={EmbedIcon} />;
-export const Grid = props => <Icon {...props} icon={GridIcon} />;
 export const Heading1 = props => <Icon {...props} icon={Heading1Icon} />;
 export const Heading3 = props => <Icon {...props} icon={Heading3Icon} />;
 export const Ingress = props => <Icon {...props} icon={IngressIcon} />;

@@ -10,6 +10,7 @@
 export { default as Additional } from './Additional';
 export { default as Audio } from './Audio';
 export { default as Document } from './Document';
+export { default as Grid } from './Grid';
 export { default as Home } from './Home';
 export { default as Path } from './Path';
 export { default as Pencil } from './Pencil';

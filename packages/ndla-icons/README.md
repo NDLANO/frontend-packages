@@ -63,4 +63,4 @@ _TLDR:_ Change/Add/Remove svg file(s). Run `node scripts/createIconComponents.js
 ### Rename or adding new folders
 1. Do changes.
 2. Run `node scripts/createIconComponents.js` from root folder.
-3. Update files array in [packages.json](packages/ndla-icons/package.json).
+3. Update files array in [packages.json](/packages/ndla-icons/package.json).

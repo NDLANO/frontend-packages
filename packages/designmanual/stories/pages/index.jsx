@@ -23,9 +23,11 @@ import {
   Content,
 } from 'ndla-ui';
 
-import { MastheadWithTopicMenu } from '../molecules/mastheads';
+import {
+  MastheadWithTopicMenu,
+  MastheadWithLogo,
+} from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
-import { StoryBody } from '../wrappers';
 import { Resources } from '../molecules/resources';
 
 import ArticleLoader from '../article/ArticleLoader';
@@ -209,40 +211,38 @@ storiesOf('Emnesider', module)
   .add('1. Fagoversikt', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithLogo />
         <OneColumn cssModifier="clear">
           <article>
-            <LayoutItem layout="center">
-              <h1>Yrkesfag</h1>
-              <ul>
-                {[
-                  'Naturfag',
-                  'Engelsk',
-                  'Helsearbeiderfag vg2',
-                  'Barne- og ungdomsarbeiderfag Vg2',
-                  'Brønnteknikk Vg2BETA',
-                  'Bygg- og anleggsteknikk Vg1BETA',
-                  'Design og håndverk Vg1',
-                  'Elektrofag Vg1',
-                  'Helse- og oppvekstfag Vg1',
-                  'Helsearbeiderfag Vg2 ',
-                  'IKT-servicefag Vg2',
-                  'Kokk- og servitørfag Vg2',
-                  'Naturbruk Vg1',
-                  'Reiseliv Vg2',
-                  'Restaurant- og matfag Vg1',
-                  'Romteknologi Vg3',
-                  'Salg, service og sikkerhet Vg2',
-                  'Service og samferdsel Vg1',
-                  'Teknikk og industriell produksjon Vg1',
-                  'Transport og logistikk Vg2',
-                ].map(subject => (
-                  <li key={subject}>
-                    <a href="">{subject}</a>
-                  </li>
-                ))}
-              </ul>
-            </LayoutItem>
+            <h1>Yrkesfag</h1>
+            <ul>
+              {[
+                'Naturfag',
+                'Engelsk',
+                'Helsearbeiderfag vg2',
+                'Barne- og ungdomsarbeiderfag Vg2',
+                'Brønnteknikk Vg2BETA',
+                'Bygg- og anleggsteknikk Vg1BETA',
+                'Design og håndverk Vg1',
+                'Elektrofag Vg1',
+                'Helse- og oppvekstfag Vg1',
+                'Helsearbeiderfag Vg2 ',
+                'IKT-servicefag Vg2',
+                'Kokk- og servitørfag Vg2',
+                'Naturbruk Vg1',
+                'Reiseliv Vg2',
+                'Restaurant- og matfag Vg1',
+                'Romteknologi Vg3',
+                'Salg, service og sikkerhet Vg2',
+                'Service og samferdsel Vg1',
+                'Teknikk og industriell produksjon Vg1',
+                'Transport og logistikk Vg2',
+              ].map(subject => (
+                <li key={subject}>
+                  <a href="">{subject}</a>
+                </li>
+              ))}
+            </ul>
           </article>
         </OneColumn>
       </Content>
@@ -251,26 +251,29 @@ storiesOf('Emnesider', module)
   ))
   .add('2. Fag', () => (
     <PageContainer>
-      <MastheadWithTopicMenu />
-      <Hero>
+      <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
         <OneColumn>
-          <div className="c-hero__content">
-            <section>
-              <Breadcrumb
-                toSubjects={() => '#'}
-                subjectsTitle="Fag"
-                subject={subjectList[1]}
-                topicPath={topicList.slice(0, -1)}
-                toTopic={() => '#'}
-              />
-            </section>
+          <div className="c-article">
+            <ResourcesSubTopics />
           </div>
         </OneColumn>
-      </Hero>
-      <StoryBody>
-        <h1>Fagside</h1>
-        <ResourcesSubTopics />
-      </StoryBody>
+      </Content>
       <FooterExample />
     </PageContainer>
   ))
@@ -295,12 +298,10 @@ storiesOf('Emnesider', module)
         </Hero>
         <ArticleLoader articleId="6104" />
         <OneColumn>
-          <article className="c-article">
-            <ResourcesSubTopics />
-            <LayoutItem layout="extend">
-              <Resources />
-            </LayoutItem>
-          </article>
+          <ResourcesSubTopics />
+          <LayoutItem layout="extend">
+            <Resources />
+          </LayoutItem>
         </OneColumn>
       </Content>
       <FooterExample />
@@ -328,7 +329,6 @@ storiesOf('Emnesider', module)
         <ArticleLoader articleId="5948" />
         <OneColumn>
           <LayoutItem layout="extend">
-            <RelatedArticleListExample />
             <Resources />
           </LayoutItem>
         </OneColumn>

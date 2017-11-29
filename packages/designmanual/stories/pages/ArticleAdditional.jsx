@@ -20,7 +20,6 @@ import { Document, Additional } from 'ndla-ui/icons';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { Resources } from '../molecules/resources';
 import LicenseExample from '../article/LicenseExample';
 
 export default () => (
@@ -222,9 +221,6 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

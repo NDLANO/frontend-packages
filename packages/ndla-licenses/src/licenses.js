@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint max-len: 0 */
-
 import defined from 'defined';
 import { BY, SA, NC, ND, PD, CC0, COPY, CC } from './licenseRights';
 

@@ -5,6 +5,7 @@ const capitalize = require('capitalize');
 const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
+const rimraf = require('rimraf');
 const prettier = require('prettier');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
@@ -123,41 +124,72 @@ function writePackageFiles(types) {
   });
 }
 
-glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
-  const types = {};
-  icons.forEach(iconPath => {
-    const id = path.basename(iconPath, '.svg');
-    const svg = fs.readFileSync(iconPath, 'utf-8');
-    const folder = iconPath
-      .replace(path.join(`${rootDir}/`, 'svg'), '')
-      .replace(`/${path.basename(iconPath)}`, '');
-    const name = capitalize(camelcase(id));
-    const componentPath = path.join(folder, `${name}.js`);
+function deleteComponents() {
+  console.log(`${chalk.yellow.bold(`Deleting generted icon components...`)}`);
+  const isDirectory = source => fs.lstatSync(source).isDirectory();
+  const getDirectories = source =>
+    fs
+      .readdirSync(source)
+      .map(name => path.join(source, name))
+      .filter(isDirectory);
+  getDirectories(path.join(rootDir, 'src')).forEach(directory => {
+    console.log(`${chalk.yellow(`Deleted`)} ${chalk.dim(`${directory}/*`)}`);
+    rimraf.sync(`${directory}/*`);
+  });
+}
 
-    if (!types[folder]) {
-      types[folder] = [];
-    }
-    types[folder].push(name);
+function createComponents() {
+  console.log(`${chalk.green.bold(`Generted icon components...`)}`);
+  const failed = [];
+  glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
+    const types = {};
+    icons.forEach(iconPath => {
+      const id = path.basename(iconPath, '.svg');
+      const svg = fs.readFileSync(iconPath, 'utf-8');
+      const folder = iconPath
+        .replace(path.join(`${rootDir}/`, 'svg'), '')
+        .replace(`/${path.basename(iconPath)}`, '');
+      const name = capitalize(camelcase(id));
+      const componentPath = path.join(folder, `${name}.js`);
 
-    const component = createComponent(name, svg);
-    if (component) {
-      const dest = path.join(rootDir, 'src', componentPath);
-      ensureDirectoryExistence(dest);
-      fs.writeFileSync(dest, component, 'utf-8');
+      if (!types[folder]) {
+        types[folder] = [];
+      }
+      types[folder].push(name);
+
+      const component = createComponent(name, svg);
+      if (component) {
+        const dest = path.join(rootDir, 'src', componentPath);
+        ensureDirectoryExistence(dest);
+        fs.writeFileSync(dest, component, 'utf-8');
+        console.log(
+          `${chalk.green(`CREATED`)} ${chalk.dim(
+            path.join(rootDir, 'src'),
+          )}${chalk.bold(componentPath)}`,
+        );
+      } else {
+        failed.push(path.join(rootDir, 'src', componentPath));
+        console.log(
+          `${chalk.red(`Failed`)} ${chalk.dim(
+            path.join(rootDir, 'src'),
+          )}${chalk.bold(componentPath)}`,
+        );
+        console.log('No data-license or data-source attribute on <svg>');
+      }
+    });
+    writeIndexFiles(types);
+    writePackageFiles(types);
+
+    if (failed.length > 0) {
       console.log(
-        `${chalk.green(`CREATED`)} ${chalk.dim(
-          path.join(rootDir, 'src'),
-        )}${chalk.bold(componentPath)}`,
+        `${chalk.red.bold(`N.B. Failed to generate ${failed.length} icons.`)} `,
       );
+      console.log(chalk.dim(`See output for details.`));
     } else {
-      console.log(
-        `${chalk.red(`Failed`)} ${chalk.dim(
-          path.join(rootDir, 'src'),
-        )}${chalk.bold(componentPath)}`,
-      );
-      console.log('No data-license or data-source attribute on <svg>');
+      console.log(`${chalk.green.bold(`🏁  Finished without errors.`)}`);
     }
   });
-  writeIndexFiles(types);
-  writePackageFiles(types);
-});
+}
+
+deleteComponents();
+createComponents();

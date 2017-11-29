@@ -5,7 +5,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, COPY } from 'ndla-licenses';
 import {
-  Button,
   ErrorMessage,
   FilterList,
   Pager,
@@ -31,7 +30,7 @@ import {
 } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
-import LicenseExample, { LicenseBox } from './article/LicenseExample';
+import LicenseExample from './article/LicenseExample';
 import GlossaryExample from './organisms/GlossaryExample';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,

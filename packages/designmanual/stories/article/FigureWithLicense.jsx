@@ -16,7 +16,7 @@ import {
   updateIFrameDimensions,
 } from 'ndla-article-scripts';
 
-import { Button, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -37,7 +37,6 @@ class FigureWithLicense extends Component {
       addEventListenerForResize();
     }
   }
-
 
   update() {
     const currentState = this.state.active;
@@ -61,42 +60,42 @@ class FigureWithLicense extends Component {
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
 
-
-    const captionAndDetails = !this.props.noCaption ? [
-      <FigureCaption
-        key={caption}
-        caption={caption}
-        reuseLabel={reuseLabel}
-        licenseRights={license.rights}
-        authors={authors}
-      />,
-      <FigureDetails
-        key="details"
-        licenseRights={license.rights}
-        authors={authors}
-        licenseUrl={license.url}
-        origin="https://www.wikimedia.com"
-        title="Liten mann og lupe"
-        messages={messages}>
-        <button
-          className="c-button c-button--outline c-figure-license__button"
-          type="button">
-          Kopier referanse
-        </button>
-        <button
-          className="c-button c-button--outline c-figure-license__button"
-          type="button">
-          Last ned {typeLabel}
-        </button>
-      </FigureDetails>
-    ] : null;
+    const captionAndDetails = !this.props.noCaption
+      ? [
+          <FigureCaption
+            key={caption}
+            caption={caption}
+            reuseLabel={reuseLabel}
+            licenseRights={license.rights}
+            authors={authors}
+          />,
+          <FigureDetails
+            key="details"
+            licenseRights={license.rights}
+            authors={authors}
+            licenseUrl={license.url}
+            origin="https://www.wikimedia.com"
+            title="Liten mann og lupe"
+            messages={messages}>
+            <button
+              className="c-button c-button--outline c-figure-license__button"
+              type="button">
+              Kopier referanse
+            </button>
+            <button
+              className="c-button c-button--outline c-figure-license__button"
+              type="button">
+              Last ned {typeLabel}
+            </button>
+          </FigureDetails>,
+        ]
+      : null;
 
     return (
       <Figure
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
-        captionView={captionAndDetails}
-      >
+        captionView={captionAndDetails}>
         {this.props.children}
       </Figure>
     );

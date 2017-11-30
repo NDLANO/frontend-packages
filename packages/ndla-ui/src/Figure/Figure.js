@@ -144,7 +144,13 @@ FigureCaption.propTypes = {
   ),
 };
 
-export const Figure = ({ children, captionView, type, resizeIframe, ...rest }) => {
+export const Figure = ({
+  children,
+  captionView,
+  type,
+  resizeIframe,
+  ...rest
+}) => {
   let typeClass = null;
   let content = null;
 
@@ -166,7 +172,10 @@ export const Figure = ({ children, captionView, type, resizeIframe, ...rest }) =
   }
 
   return (
-    <figure {...classes('', modifiers, typeClass)} data-toggleclass={typeClass} {...rest}>
+    <figure
+      {...classes('', modifiers, typeClass)}
+      data-toggleclass={typeClass}
+      {...rest}>
       {content}
       {captionView}
     </figure>
@@ -185,6 +194,5 @@ Figure.defaultProps = {
   resizeIframe: false,
   captionView: null,
 };
-
 
 export default Figure;

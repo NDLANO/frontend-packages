@@ -289,11 +289,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureWithLicense
-              type="right"
-              authors=""
-              caption=""
-              runScripts>
+            <FigureWithLicense type="right" authors="" caption="" runScripts>
               <Image
                 alt=""
                 src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -381,17 +377,13 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Embedded (Youtube, HP5 osv.)">
         <p>
-          Embedded innhold skal bruke Figure komponenten (må
-          ikke være iframe):
-          <code>
-            {`<Figure>\n  <iframe ... />\n</Figure>`}
-          </code>
+          Embedded innhold skal bruke Figure komponenten (må ikke være iframe):
+          <code>{`<Figure>\n  <iframe ... />\n</Figure>`}</code>
         </p>
         <p>
-          Om det er en iframe der resize script skal kjøres må resizeIframe settes til true
-          <code>
-            {`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}
-          </code>
+          Om det er en iframe der resize script skal kjøres må resizeIframe
+          settes til true
+          <code>{`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}</code>
         </p>
         <p>
           Om det er satt høyde og bredde på iframen (som vist under) vil den

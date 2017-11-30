@@ -50,10 +50,7 @@ export default () => (
         </ArticleByline>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense
-          type="left"
-          caption=""
-          runScripts>
+        <FigureWithLicense type="left" caption="" runScripts>
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

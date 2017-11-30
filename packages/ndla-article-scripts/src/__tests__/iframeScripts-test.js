@@ -12,7 +12,7 @@ import { updateIFrameDimensions } from '../iframeScripts';
 const byId = id => document.getElementById(id);
 
 const iframe1Html = `
-    <figure id="figure1" class="c-embedded--resize">
+    <figure id="figure1" class="c-figure--resize">
       <iframe id="iframe1" width="600" height="300"></iframe>
     <figure>
   `;
@@ -39,7 +39,7 @@ test('iframeScripts/updateIFrameDimensions updates iframe height and width accor
 });
 
 const iframe2Html = `
-    <figure id="figure2" class="c-figure">
+    <figure id="figure2" class="c-figure--resize">
       <iframe id="iframe2" width="1024" height="768"></iframe>
     <figure>
   `;
@@ -60,7 +60,7 @@ test('iframeScripts/updateIFrameDimensions updates iframe height and width accor
 });
 
 const iframeHtmlWithNoDimensions = `
-    <figure id="figureNoDimensions" class="c-embedded--resize">
+    <figure id="figureNoDimensions" class="c-figure--resize">
       <iframe id="iframeNodimensions"></iframe>
     <figure>
   `;

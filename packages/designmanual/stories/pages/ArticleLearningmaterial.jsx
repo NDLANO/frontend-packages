@@ -51,9 +51,8 @@ export default () => (
       </LayoutItem>
       <LayoutItem layout="center">
         <FigureWithLicense
+          type="left"
           caption=""
-          expandable
-          classes="u-float-left"
           runScripts>
           <Image
             alt=""

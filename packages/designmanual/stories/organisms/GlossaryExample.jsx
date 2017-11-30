@@ -71,8 +71,8 @@ class GlossaryExample extends Component {
                   mellom godt og ondt, og rett og galt.
                 </p>
                 <FigureWithLicense
+                  type="right"
                   caption=""
-                  classes="u-float-right"
                   runScripts>
                   <Image
                     alt="liten jente holder sine foreldres hender. foto."

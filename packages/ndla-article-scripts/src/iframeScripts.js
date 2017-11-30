@@ -10,7 +10,7 @@ import { forEachElement } from './domHelpers';
 
 export const updateIFrameDimensions = (init = true, topNode = null) => {
   forEachElement(
-    '.c-figure iframe, .c-embedded--resize iframe',
+    '.c-figure--resize iframe',
     el => {
       const iframe = el;
       const parent = iframe.parentNode;

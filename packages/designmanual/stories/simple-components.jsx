@@ -9,7 +9,6 @@ import { StoryIntro, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
-import Embedded from './article/Embedded';
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -58,7 +57,7 @@ storiesOf('Enkle komponenter', module)
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <FigureWithLicense
-          classes="u-float-left"
+          type="left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt="Forstørrelsesglass"
@@ -93,7 +92,7 @@ storiesOf('Enkle komponenter', module)
         </p>
 
         <FigureWithLicense
-          classes="u-float-right"
+          type="right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
@@ -127,7 +126,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
-          classes="u-float-small-right"
+          type="small-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
@@ -167,7 +166,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
-          classes="u-float-small-left"
+          type="small-left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
@@ -291,9 +290,9 @@ storiesOf('Enkle komponenter', module)
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
             <FigureWithLicense
+              type="right"
               authors=""
               caption=""
-              classes="u-float-right"
               runScripts>
               <Image
                 alt=""
@@ -382,17 +381,16 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Embedded (Youtube, HP5 osv.)">
         <p>
-          Embedded innhold uten lisensinformasjon skal ha følgende markup (må
+          Embedded innhold skal bruke Figure komponenten (må
           ikke være iframe):
           <code>
-            {`<figure class="c-embedded">\n  <iframe ... />\n</figure>`}
+            {`<Figure>\n  <iframe ... />\n</Figure>`}
           </code>
         </p>
         <p>
-          Om det er en iframe der resize script skal kjøres må det være følgende
-          markup
+          Om det er en iframe der resize script skal kjøres må resizeIframe settes til true
           <code>
-            {`<figure class="c-embedded c-embedded--resize">\n  <iframe ... />\n</figure>`}
+            {`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}
           </code>
         </p>
         <p>
@@ -409,28 +407,36 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <h2>Iframe med satt høyde og bredde</h2>
-        <Embedded resize runScripts>
+        <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
+        <FigureWithLicense resizeIframe runScripts noCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Title"
             width="600"
             height="338"
           />
-        </Embedded>
+        </FigureWithLicense>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <h2>Iframe uten satt høyde og bredde</h2>
-        <Embedded resize>
+        <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
+        <FigureWithLicense resizeIframe noCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
           />
-        </Embedded>
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Embedded med lisens og caption</h2>
+        <FigureWithLicense resizeIframe caption="The History of Typography">
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </FigureWithLicense>
       </StoryBody>
     </div>
   ))

@@ -16,14 +16,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ArticleByline = ({
-  authors,
-  creators,
-  license,
-  messages,
-  updated,
-  children,
-}) => (
+const ArticleByline = ({ authors, license, messages, updated, children }) => (
   <div {...classes()}>
     <span {...classes('flex')}>
       <span {...classes('icon')}>
@@ -31,8 +24,6 @@ const ArticleByline = ({
       </span>
       <span {...classes('authors')}>
         {authors && `${authors.map(author => author.name).join(', ')}.`} <br />
-        {creators && `${creators.map(author => author.name).join(', ')}.`}{' '}
-        <br />
         ({license.abbreviation})
       </span>
     </span>
@@ -53,12 +44,7 @@ ArticleByline.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }),
-  ),
-  creators: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
-  ),
+  ).isRequired,
   updated: PropTypes.string.isRequired,
   license: PropTypes.shape({
     rights: PropTypes.arrayOf(PropTypes.string).isRequired,

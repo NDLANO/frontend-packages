@@ -38,7 +38,13 @@ export const ArticleShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   copyright: PropTypes.shape({
-    authors: PropTypes.array.isRequired,
+    authors: PropTypes.array,
+    creators: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
   }).isRequired,
   updated: PropTypes.string.isRequired,
 });

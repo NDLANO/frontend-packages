@@ -73,7 +73,11 @@ export const Article = ({
         <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
         <ArticleByline
           messages={messages}
-          authors={article.copyright.authors}
+          authors={
+            article.copyright.authors
+              ? article.copyright.authors
+              : article.copyright.creators
+          }
           license={license}
           updated={article.updated}>
           {licenseBox}

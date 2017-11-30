@@ -26,7 +26,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
-          bildet» som gjør at brukeren får opp lisensboksen for bildet.
+          bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
         </p>
         <p>
           Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
@@ -641,7 +641,7 @@ storiesOf('Enkle komponenter', module)
         <IconList icons={editorIcons} folder="editor" />
       </OneColumn>
       <StoryBody>
-        <h2>Ikoner som ikke er i bruk (fjernes etterhvert)</h2>
+        <h2>Ikoner som ikke er i bruk</h2>
         <table className="c-table">
           <thead>
             <tr>
@@ -655,13 +655,8 @@ storiesOf('Enkle komponenter', module)
               'Book',
               'Download',
               'Embed',
-              'Grid',
-              'Heading1',
-              'Heading3',
               'InsertTemplate',
               'OpenWindow',
-              'Pilcrow',
-              'Strikethrough',
             ].map(key => (
               <tr key={key}>
                 <td>

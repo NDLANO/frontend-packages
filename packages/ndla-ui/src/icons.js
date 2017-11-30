@@ -14,13 +14,8 @@ import elementType from 'react-prop-types/lib/elementType';
 import BookIcon from './internal-icons/Book';
 import DownloadIcon from './internal-icons/Download';
 import EmbedIcon from './internal-icons/Embed';
-import Heading1Icon from './internal-icons/Heading1';
-import Heading3Icon from './internal-icons/Heading3';
-import IngressIcon from './internal-icons/Ingress';
 import InsertTemplateIcon from './internal-icons/InsertTemplate';
 import OpenWindowIcon from './internal-icons/OpenWindow';
-import PilcrowIcon from './internal-icons/Pilcrow';
-import StrikethroughIcon from './internal-icons/Strikethrough';
 
 function Icon(props) {
   const { icon, className, ...rest } = props;
@@ -38,16 +33,9 @@ Icon.propTypes = {
 export const Book = props => <Icon {...props} icon={BookIcon} />;
 export const Download = props => <Icon {...props} icon={DownloadIcon} />;
 export const Embed = props => <Icon {...props} icon={EmbedIcon} />;
-export const Heading1 = props => <Icon {...props} icon={Heading1Icon} />;
-export const Heading3 = props => <Icon {...props} icon={Heading3Icon} />;
-export const Ingress = props => <Icon {...props} icon={IngressIcon} />;
 export const InsertTemplate = props => (
   <Icon {...props} icon={InsertTemplateIcon} />
 );
 export const OpenWindow = props => <Icon {...props} icon={OpenWindowIcon} />;
-export const Pilcrow = props => <Icon {...props} icon={PilcrowIcon} />;
-export const Strikethrough = props => (
-  <Icon {...props} icon={StrikethroughIcon} />
-);
 
 export default Icon;

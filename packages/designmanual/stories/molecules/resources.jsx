@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { ResourcesWrapper, ResourceGroup } from 'ndla-ui';
-import { Document, Path, Pencil } from 'ndla-ui/icons';
+import { Document, Path, Pencil } from 'ndla-icons/common';
 import {
   learningPathResources,
   articleResources,

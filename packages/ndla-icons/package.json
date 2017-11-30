@@ -1,0 +1,30 @@
+{
+  "name": "ndla-icons",
+  "version": "0.0.0",
+  "description": "A package containing icons used in NDLA frontends",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "scripts": {
+    "build": "npm run build:commonjs && npm run build:es",
+    "build:commonjs":
+      "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es":
+      "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --quiet --out-dir es --ignore __tests__",
+    "clean": "$(cd ..; npm bin)/rimraf lib es",
+    "test": "$(cd ..; npm bin)/jest",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+  },
+  "keywords": ["ndla"],
+  "author": "ndla@knowit.no",
+  "files": ["lib", "es", "editor", "common", "license", "action"],
+  "peerDependencies": {
+    "react": "^15.6.0 || ^16.0.0"
+  },
+  "dependencies": {}
+}

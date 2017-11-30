@@ -3,13 +3,18 @@ import React, { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
+import * as licenseIcons from 'ndla-icons/license';
+import * as commonIcons from 'ndla-icons/common';
+import * as editorIcons from 'ndla-icons/editor';
+import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
-import { StoryIntro, StoryBody } from './wrappers';
+import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import Embedded from './article/Embedded';
+import { OneColumn } from '../../ndla-ui/lib/Layout/index';
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -21,7 +26,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
-          bildet» som gjør at brukeren får opp lisensboksen for bildet.
+          bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
         </p>
         <p>
           Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
@@ -245,10 +250,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -466,10 +471,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -625,7 +630,18 @@ storiesOf('Enkle komponenter', module)
   .add('Ikoner', () => (
     <div>
       <StoryIntro title="Ikoner" />
+      <OneColumn>
+        <h2>Felles</h2>
+        <IconList icons={commonIcons} folder="common" />
+        <h2>Lisens</h2>
+        <IconList icons={licenseIcons} folder="license" />
+        <h2>Handling</h2>
+        <IconList icons={actionIcons} folder="editor" />
+        <h2>Editor</h2>
+        <IconList icons={editorIcons} folder="editor" />
+      </OneColumn>
       <StoryBody>
+        <h2>Ikoner som ikke er i bruk</h2>
         <table className="c-table">
           <thead>
             <tr>
@@ -636,58 +652,11 @@ storiesOf('Enkle komponenter', module)
           </thead>
           <tbody>
             {[
-              'Additional',
-              'AlignCenter',
-              'AlignJustify',
-              'AlignLeft',
-              'AlignRight',
-              'Audio',
-              'Bold',
               'Book',
-              'Camera',
-              'Copy',
-              'Crop',
-              'Cross',
-              'Document',
               'Download',
               'Embed',
-              'FactBox',
-              'FocalPoint',
-              'Grid',
-              'Heading1',
-              'Heading2',
-              'Heading3',
-              'Home',
-              'H5P',
-              'Ingress',
               'InsertTemplate',
-              'Italic',
-              'LicenseBy',
-              'LicenseCc',
-              'LicenseNc',
-              'LicenseNd',
-              'LicenseSa',
-              'Link',
-              'ListCircle',
-              'ListNumbered',
-              'ListSquare',
               'OpenWindow',
-              'Paragraph',
-              'Path',
-              'Pencil',
-              'Pilcrow',
-              'Plus',
-              'Quote',
-              'Sad',
-              'Search',
-              'Section',
-              'Strikethrough',
-              'Table',
-              'TextInBox',
-              'Time',
-              'Underline',
-              'User',
-              'Video',
             ].map(key => (
               <tr key={key}>
                 <td>
@@ -696,17 +665,6 @@ storiesOf('Enkle komponenter', module)
                 <td>{key}</td>
                 <td>
                   <code>&lt;Icons.{key} /&gt;</code>
-                </td>
-              </tr>
-            ))}
-            {['up', 'down', 'left', 'right'].map(key => (
-              <tr key={key}>
-                <td>
-                  <Icons.Arrow direction={key} />
-                </td>
-                <td>Arrow {key}</td>
-                <td>
-                  <code>&lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;</code>
                 </td>
               </tr>
             ))}

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Time, User } from '../icons';
+import { Time, User } from 'ndla-icons/common';
 
 const classes = new BEMHelper({
   name: 'article-byline',

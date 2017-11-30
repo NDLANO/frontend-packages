@@ -17,7 +17,7 @@ import {
   ArticleByline,
   Image,
 } from 'ndla-ui';
-import { Document } from 'ndla-ui/icons';
+import { Document } from 'ndla-icons/common';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 

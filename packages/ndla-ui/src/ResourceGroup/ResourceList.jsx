@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Link from 'react-router-dom/Link';
 import { Button } from 'ndla-ui';
+import { Additional } from 'ndla-icons/common';
 import { ResourceShape } from '../shapes';
-import { Additional } from '../icons';
 
 const classes = new BEMHelper({
   name: 'topic-resource',

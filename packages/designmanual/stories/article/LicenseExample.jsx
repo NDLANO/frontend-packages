@@ -20,7 +20,7 @@ import {
   MediaListItemImage,
   MediaListItemMeta,
 } from 'ndla-ui';
-import { Document, Audio } from 'ndla-ui/icons';
+import { Document, Audio } from 'ndla-icons/common';
 
 import {
   COPY,

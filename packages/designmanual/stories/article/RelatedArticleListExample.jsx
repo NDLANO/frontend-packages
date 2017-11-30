@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { RelatedArticleList, RelatedArticle } from 'ndla-ui';
-import { Document, Pencil } from 'ndla-ui/icons';
+import { Document, Pencil } from 'ndla-icons/common';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
 export const RelatedArticleExerciseList = () => (

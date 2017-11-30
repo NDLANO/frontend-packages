@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Additional } from '../icons';
+import { Additional } from 'ndla-icons/common';
 
 const classes = new BEMHelper({
   name: 'filter',

@@ -109,7 +109,6 @@ Article.propTypes = {
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
-    writtenBy: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
   }).isRequired,
 };

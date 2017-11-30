@@ -423,7 +423,40 @@ storiesOf('Enkle komponenter', module)
         </FigureWithLicense>
 
         <h2 className="u-heading">Embedded med lisens og caption</h2>
-        <FigureWithLicense resizeIframe caption="The History of Typography">
+        <FigureWithLicense resizeIframe caption="The History of Typography" reuseLabel="videoen">
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Embedded med høyrekolonne</h2>
+
+        <Aside float>
+          <div>
+            <h2>Høyrespalte</h2>
+            <p>Høyrespalten skal fases ut.</p>
+            <p>
+              I en midlertidig fase under flytting av innhold fra gammelt til
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
+            </p>
+            <p>
+              Om artikkelen har et bilde under ingressen, må høyrespalten
+              plasseres under denne.
+            </p>
+            <p>
+              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+            </p>
+          </div>
+        </Aside>
+        <p>
+          Dette er måte å vise embedded sidestilt med høyrekolonne. Denne varianten skal kun brukes om det er nødvendig.
+          Visningen fases bort når høyrespalte fases bort.
+        </p>
+        <FigureWithLicense resizeIframe caption="The History of Typography" reuseLabel="videoen" supportFloating>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

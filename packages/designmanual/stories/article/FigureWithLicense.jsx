@@ -75,7 +75,7 @@ class FigureWithLicense extends Component {
             authors={authors}
             licenseUrl={license.url}
             origin="https://www.wikimedia.com"
-            title="Liten mann og lupe"
+            title="Mann med lupe"
             messages={messages}>
             <button
               className="c-button c-button--outline c-figure-license__button"
@@ -94,6 +94,7 @@ class FigureWithLicense extends Component {
     return (
       <Figure
         resizeIframe={this.props.resizeIframe}
+        supportFloating={this.props.supportFloating}
         type={this.props.type}
         captionView={captionAndDetails}>
         {this.props.children}
@@ -111,6 +112,7 @@ FigureWithLicense.propTypes = {
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
   type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
+  supportFloating: PropTypes.bool,
 };
 
 FigureWithLicense.defaultProps = {

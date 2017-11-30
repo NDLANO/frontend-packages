@@ -111,3 +111,11 @@ Add a click listener to buttons with a `data-copy-string`. The value of the attr
 ### `articleScripts.makeFigureLicenseIconsClickable()`
 
 Adds click listeneres for displaying license text popup on license icon click
+
+### `articleScripts.addEventListenersForZoom()`
+
+Adds click listners for zooming image/figure
+
+### 'articleScripts.removeEventListenersForZoom()'
+
+Removes click listeners added by `addEventListenersForZoom`.

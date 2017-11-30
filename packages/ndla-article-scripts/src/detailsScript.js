@@ -1,4 +1,4 @@
-import { updateIFrameDimensions } from './iframeScripts';
+import { updateIFrameDimensions } from './figureScripts';
 import { forEachElement } from './domHelpers';
 
 const eventListener = event => {

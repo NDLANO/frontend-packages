@@ -423,7 +423,10 @@ storiesOf('Enkle komponenter', module)
         </FigureWithLicense>
 
         <h2 className="u-heading">Embedded med lisens og caption</h2>
-        <FigureWithLicense resizeIframe caption="The History of Typography" reuseLabel="videoen">
+        <FigureWithLicense
+          resizeIframe
+          caption="The History of Typography"
+          reuseLabel="videoen">
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
@@ -453,10 +456,15 @@ storiesOf('Enkle komponenter', module)
           </div>
         </Aside>
         <p>
-          Dette er måte å vise embedded sidestilt med høyrekolonne. Denne varianten skal kun brukes om det er nødvendig.
-          Visningen fases bort når høyrespalte fases bort.
+          Dette er måte å vise embedded sidestilt med høyrekolonne. Denne
+          varianten skal kun brukes om det er nødvendig. Visningen fases bort
+          når høyrespalte fases bort.
         </p>
-        <FigureWithLicense resizeIframe caption="The History of Typography" reuseLabel="videoen" supportFloating>
+        <FigureWithLicense
+          resizeIframe
+          caption="The History of Typography"
+          reuseLabel="videoen"
+          supportFloating>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

@@ -200,7 +200,6 @@ Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
   captionView: null,
-  detailsView: null,
   supportFloating: false,
 };
 

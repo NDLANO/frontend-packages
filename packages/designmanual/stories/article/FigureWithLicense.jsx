@@ -14,6 +14,7 @@ import {
   addShowFigureDetailsClickListeners,
   addEventListenerForResize,
   updateIFrameDimensions,
+  addEventListenersForZoom,
 } from 'ndla-article-scripts';
 
 import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
@@ -35,6 +36,7 @@ class FigureWithLicense extends Component {
       addCloseFigureDetailsClickListeners();
       updateIFrameDimensions();
       addEventListenerForResize();
+      addEventListenersForZoom();
     }
   }
 

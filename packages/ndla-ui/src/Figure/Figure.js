@@ -150,7 +150,6 @@ export const Figure = ({
   type,
   resizeIframe,
   supportFloating,
-  detailsView,
   ...rest
 }) => {
   let typeClass = null;
@@ -177,23 +176,15 @@ export const Figure = ({
     modifiers.push('support-floating');
   }
 
-  const details = detailsView ? (
-    <div key="details">
-      {detailsView}
-    </div>
-  ) : null;
-
-  return [
+  return (
     <figure
-      key="figure"
       {...classes('', modifiers, typeClass)}
       data-toggleclass={typeClass}
       {...rest}>
       {content}
       {captionView}
-    </figure>,
-    details,
-  ];
+    </figure>
+  );
 };
 
 Figure.propTypes = {
@@ -201,7 +192,6 @@ Figure.propTypes = {
   type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
-  detailsView: PropTypes.node,
   // only to support aside (temp).
   supportFloating: PropTypes.bool,
 };

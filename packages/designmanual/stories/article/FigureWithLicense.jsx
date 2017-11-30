@@ -28,8 +28,10 @@ class FigureWithLicense extends Component {
   }
 
   componentDidMount() {
-    addShowFigureDetailsClickListeners();
-    addCloseFigureDetailsClickListeners();
+    if (this.props.runScripts) {
+      addShowFigureDetailsClickListeners();
+      addCloseFigureDetailsClickListeners();
+    }
   }
 
   update() {
@@ -98,10 +100,12 @@ FigureWithLicense.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
   typeLabel: PropTypes.string,
+  runScripts: PropTypes.bool,
 };
 
 FigureWithLicense.defaultProps = {
   classes: '',
+  runScripts: false,
 };
 
 export default FigureWithLicense;

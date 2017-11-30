@@ -12,6 +12,7 @@ $padding-bottom: 17px;
   @include inuit-font-size(16px);
   overflow:hidden;
   padding-bottom: $padding-bottom;
+  z-index: 1;
 }
 
 .c-aside--float {

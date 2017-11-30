@@ -5,7 +5,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, COPY } from 'ndla-licenses';
 import {
-  Button,
   ErrorMessage,
   FilterList,
   Pager,
@@ -31,7 +30,7 @@ import {
 } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
-import LicenseExample, { LicenseBox } from './article/LicenseExample';
+import LicenseExample from './article/LicenseExample';
 import GlossaryExample from './organisms/GlossaryExample';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
@@ -175,7 +174,7 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureWithLicense>
+        <FigureWithLicense runScripts>
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -191,29 +190,7 @@ storiesOf('Sammensatte moduler', module)
           <h2 className="u-heading">Lisensboks</h2>
           <article className="article">
             <LayoutItem layout="center">
-              <div className="license c-licensebox c-licensebox--expanded">
-                <Button
-                  stripped
-                  className="c-article__license-toggler"
-                  onClick={() => {}}>
-                  Lukk boks
-                </Button>
-                <LicenseBox />
-              </div>
-            </LayoutItem>
-          </article>
-        </Center>
-      </Content>
-    </PageContainer>
-  ))
-  .add('Lisensboks ekspanderbar', () => (
-    <PageContainer>
-      <Content>
-        <Center>
-          <h2 className="u-heading">Lisensboks ekspanderbar</h2>
-          <article className="article">
-            <LayoutItem layout="center">
-              <LicenseExample />
+              <LicenseExample expanded />
             </LayoutItem>
           </article>
         </Center>

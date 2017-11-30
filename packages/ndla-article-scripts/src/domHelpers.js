@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 export const forEachElement = (selector, callback, parent = null) => {
   const topNode = parent || document;
   const nodeList = topNode.querySelectorAll(selector);
@@ -50,4 +49,12 @@ export const removeModifiers = (className, modifier, rootSelector = '') => {
   forEachElement(`${rootSelector} .${className}`, el => {
     el.classList.remove(`${className}--${modifier}`);
   });
+};
+
+export const getElementOffset = element => {
+  const rect = element.getBoundingClientRect();
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
 };

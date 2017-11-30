@@ -23,7 +23,8 @@ const ArticleByline = ({ authors, license, messages, updated, children }) => (
         <User />
       </span>
       <span {...classes('authors')}>
-        {authors && authors.map(author => author.name).join(', ')}. <br /> ({license.rights.map(right => right.toUpperCase()).join('-')})
+        {authors && authors.map(author => author.name).join(', ')}. <br />
+        ({license.abbreviation})
       </span>
     </span>
     <span {...classes('flex')}>

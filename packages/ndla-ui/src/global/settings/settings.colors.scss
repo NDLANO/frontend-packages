@@ -37,13 +37,16 @@ $yellow: #EAD854;
 
 $table-bg: #f9fafb;
 
+
 /** Link colors **/
 
-$link: inset 0 -2px $brand-color,
-       inset 0 -2px $brand-color;
-$link--hover: inset 0 -3px $brand-color--tertiary,
-              inset 0 -1px $brand-color--tertiary;
+$link: inset 0 -1px $brand-color,
+       inset 0 -1px $brand-color;
+$link--hover: inset 0 -3px rgba($brand-color, .2),
+              inset 0 -1px rgba($brand-color, .2);
 
+
+/** Background colors **/
 
 $background-color: #fff; /*old: EFF0F2 (gray)*/
 $background-color--dark: darken($background-color, $darken-factor);

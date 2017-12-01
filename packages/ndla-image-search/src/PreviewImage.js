@@ -37,7 +37,7 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
         </h2>
         <div {...classes('copyright-author')}>
           <span {...classes('text', 'right')}>
-            {image.copyright.creators.map(author => author.name).join(', ')}
+            {image.copyright.creators.map(creator => creator.name).join(', ')}
           </span>
         </div>
         <div {...classes('license')}>

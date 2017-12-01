@@ -48,7 +48,7 @@ export const addCopyToClipboardListeners = () => {
       const text = target.getAttribute('data-copy-string');
       const copiedTitle = target.getAttribute('data-copied-title');
 
-      const success = copyTextToClipboard(text);
+      const success = copyTextToClipboard(text, el.parentNode);
 
       if (success) {
         const previouesTitle = target.innerHTML;

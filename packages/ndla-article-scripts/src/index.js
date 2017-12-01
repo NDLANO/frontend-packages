@@ -7,12 +7,6 @@
  */
 
 import {
-  updateIFrameDimensions,
-  addEventListenerForResize,
-  removeEventListenerForResize,
-} from './iframeScripts';
-
-import {
   addAsideClickListener,
   removeAsideClickListener,
 } from './asideScripts';
@@ -21,6 +15,11 @@ import {
   addShowFigureDetailsClickListeners,
   addCloseFigureDetailsClickListeners,
   addCopyToClipboardListeners,
+  updateIFrameDimensions,
+  addEventListenerForResize,
+  removeEventListenerForResize,
+  addEventListenersForZoom,
+  removeEventListenersForZoom,
 } from './figureScripts';
 
 import {
@@ -39,6 +38,7 @@ export const initArticleScripts = () => {
   addCloseFigureDetailsClickListeners();
   addShowGlossaryDefinitionClickListeners();
   addDetailsEventListeners();
+  addEventListenersForZoom();
 };
 
 export {
@@ -53,4 +53,6 @@ export {
   addShowGlossaryDefinitionClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,
+  addEventListenersForZoom,
+  removeEventListenersForZoom,
 };

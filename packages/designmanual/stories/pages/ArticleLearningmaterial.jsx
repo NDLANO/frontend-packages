@@ -17,7 +17,7 @@ import {
   ArticleByline,
   Image,
 } from 'ndla-ui';
-import { Document } from 'ndla-ui/icons';
+import { Document } from 'ndla-icons/common';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
@@ -50,7 +50,7 @@ export default () => (
         </ArticleByline>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense caption="" expandable classes="u-float-left">
+        <FigureWithLicense type="left" caption="" runScripts>
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"

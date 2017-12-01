@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import getLicenseByAbbreviation from 'ndla-licenses';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -73,7 +73,11 @@ export const Article = ({
         <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
         <ArticleByline
           messages={messages}
-          authors={article.copyright.authors}
+          authors={
+            article.copyright.authors
+              ? article.copyright.authors
+              : article.copyright.creators
+          }
           license={license}
           updated={article.updated}>
           {licenseBox}
@@ -105,7 +109,6 @@ Article.propTypes = {
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
-    writtenBy: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
   }).isRequired,
 };

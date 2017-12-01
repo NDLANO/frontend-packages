@@ -29,6 +29,11 @@
   iframe {
     display: block;
   }
+
+  > * {
+    max-width: 100%;
+    border: 0;
+  }
 }
 .c-figure {
   margin: $spacing--large/1.4 0 $spacing--large;
@@ -39,6 +44,20 @@
 
   .c-license-icons__list {
     margin-right: $spacing--small;
+  }
+
+  .o-backdrop {
+    display: none;
+    z-index: 999;
+  }
+
+  &--support-floating {
+    left: auto!important;
+    right: auto!important;
+    width: auto!important;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -91,8 +110,6 @@
   margin-right: $spacing--small;
 }
 
-
-
 .c-figure__info {
   max-width: 650px;
   margin-bottom: $spacing--small;
@@ -102,7 +119,6 @@
     margin-bottom: $spacing--small;
   }
 }
-
 
 .c-figure__list {
   background: $white;
@@ -118,28 +134,51 @@
   margin-bottom: 0;
 }
 
+.c-figure__license {
+  overflow: hidden;
+  height: 0;
+  visibility: hidden;
+}
+
 /* 3. */
 .c-figure--active {
-  margin-bottom: $spacing--large*2;
   @include font-size(16px);
   position: relative;
 
+  .o-backdrop {
+    display: block;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
+  }
+
   .c-figure__license {
+    position: fixed;
     background-color: $brand-color--lighter;
     box-shadow: 0 0 30px rgba($black, 0.2);
     padding: $spacing;
-    z-index: 10;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    animation-name: zoomIn;
+    animation-duration: 0.3s;
+    overflow: auto;
+
     @include mq(tablet) {
       width: 90%;
       margin: 0 auto;
-      position: absolute;
-      bottom: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 500px;
       left: 0;
       right: 0;
+      bottom: auto;
       opacity: 1;
       animation-name: fadeInBottom;
-      animation-duration: 0.5s;
     }
+    height: auto;
+    visibility: visible;
   }
 
   .c-figure__close {
@@ -156,9 +195,8 @@
     z-index: 9;
     cursor: pointer;
   }
-  #figmeta {
-    height: auto;
-  }
+
+
   .c-figure__img {
     margin: 0;
   }
@@ -177,8 +215,4 @@
     margin: 0;
     max-width: 100%;
   }
-}
-#figmeta {
-  height: 0;
-  overflow: hidden;
 }

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Sad } from '../icons';
+import { Sad } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({

@@ -734,133 +734,7 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
 
-        <h2 className="u-heading">Eksempel uten titler</h2>
-        <Table>
-          <tbody>
-            <tr>
-              <td>
-                10<sup>15</sup>
-              </td>
-              <td>peta</td>
-              <td>P</td>
-              <td>billiard</td>
-              <td>1000000000000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>12</sup>
-              </td>
-              <td>tera</td>
-              <td>T</td>
-              <td>billion</td>
-              <td>1000000000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>9</sup>
-              </td>
-              <td>giga</td>
-              <td>G</td>
-              <td>milliard</td>
-              <td>1000000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>6</sup>
-              </td>
-              <td>mega</td>
-              <td>M</td>
-              <td>million</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>3</sup>
-              </td>
-              <td>kilo</td>
-              <td>k</td>
-              <td>tusen</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>2</sup>
-              </td>
-              <td>hekto</td>
-              <td>h</td>
-              <td>hundre</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>1</sup>
-              </td>
-              <td>deka</td>
-              <td>da</td>
-              <td>ti</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-1</sup>
-              </td>
-              <td>desi</td>
-              <td>d</td>
-              <td>tidel</td>
-              <td>0,1</td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  10<sup>-2</sup>
-                </strong>
-              </td>
-              <td>
-                <strong>centi</strong>
-              </td>
-              <td>
-                <strong>c</strong>
-              </td>
-              <td>
-                <strong>hundredel</strong>
-              </td>
-              <td>
-                <strong>0,01</strong>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-3</sup>
-              </td>
-              <td>milli</td>
-              <td>m</td>
-              <td>tusendel</td>
-              <td>0,001</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-6</sup>
-              </td>
-              <td>mikro</td>
-              <td />
-              <td>milliondel</td>
-              <td>0,000001</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-9</sup>
-              </td>
-              <td>nano</td>
-              <td>n</td>
-              <td>milliarddel</td>
-              <td>
-                <p>0,000000001</p>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-
-        <h2 className="u-heading">Eksempel med tittel på første kolonne </h2>
+        <h2 className="u-heading">Eksempel med tittel på første kolonne</h2>
         <Table>
           <tbody>
             <tr>
@@ -953,7 +827,7 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
         <h2 className="u-heading">
-          Eksempel med kolonnetittel som går over flere kolonner (colspan)
+          Eksempel med titler som går over flere kolonner (colspan)
         </h2>
 
         <Table>
@@ -1007,6 +881,36 @@ storiesOf('Grunnstiler', module)
               <td>Data 1</td>
               <td>Data 2</td>
             </tr>
+          </tbody>
+        </Table>
+        <h2 className="u-heading">Eksempel med flere tittelrader</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Tittel 1</th>
+              <th colSpan="3" style={{ textAlign: 'center' }}>
+                Tittel 2
+              </th>
+              <th>Tittel 3</th>
+            </tr>
+            <tr>
+              <th />
+              <th>Tittel 1</th>
+              <th>Tittel 2</th>
+              <th>Tittel 3</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4].map(index => (
+              <tr key={index}>
+                <td>Data</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 4</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </StoryBody>

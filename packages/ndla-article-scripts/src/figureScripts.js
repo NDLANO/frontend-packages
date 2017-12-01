@@ -6,22 +6,37 @@
  *
  */
 
-import { copyTextToClipboard } from 'ndla-util';
+import { copyTextToClipboard, uuid, noScroll } from 'ndla-util';
+import createFocusTrap from 'focus-trap';
+import jump from 'jump.js';
+
 import {
   findAncestorByClass,
   removeElementById,
   forEachElement,
 } from './domHelpers';
 
+const trapInstances = {};
+
+const closeDialog = figure => {
+  figure.classList.remove('c-figure--active');
+  const details = figure.querySelector('.c-figure__license');
+  details.setAttribute('aria-hidden', 'true');
+  noScroll(false);
+};
+
 export const addCloseFigureDetailsClickListeners = () => {
   forEachElement('.c-figure .c-figure__close', el => {
     const target = el;
+
     target.onclick = () => {
       removeElementById('c-license-icon-description');
-      target.parentNode.parentNode.classList.remove('c-figure--active');
-      target.parentNode.parentNode
-        .querySelector('figcaption')
-        .classList.remove('u-hidden');
+      const figure = findAncestorByClass(target, 'c-figure');
+
+      const instance = trapInstances[figure.id];
+      if (instance) {
+        instance.deactivate();
+      }
     };
   });
 };
@@ -33,7 +48,7 @@ export const addCopyToClipboardListeners = () => {
       const text = target.getAttribute('data-copy-string');
       const copiedTitle = target.getAttribute('data-copied-title');
 
-      const success = copyTextToClipboard(text);
+      const success = copyTextToClipboard(text, el.parentNode);
 
       if (success) {
         const previouesTitle = target.innerHTML;
@@ -52,13 +67,110 @@ export const addCopyToClipboardListeners = () => {
 export const addShowFigureDetailsClickListeners = () => {
   forEachElement('.c-figure .c-figure__captionbtn', el => {
     const target = el;
-    target.onclick = () => {
-      removeElementById('c-license-icon-description');
-      const figure = findAncestorByClass(target, 'c-figure');
-      figure.classList.add('c-figure--active');
+    const id = uuid();
+    const figure = findAncestorByClass(target, 'c-figure');
+    figure.id = id;
 
-      const figcaption = findAncestorByClass(target, 'c-figure__caption');
-      figcaption.classList.add('u-hidden');
+    const details = figure.querySelector('.c-figure__license');
+    trapInstances[id] = createFocusTrap(details, {
+      onDeactivate: () => {
+        closeDialog(figure);
+      },
+      clickOutsideDeactivates: true,
+    });
+
+    target.onclick = () => {
+      noScroll(true);
+      const viewportHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0,
+      );
+      const figureHeight = figure.offsetHeight;
+
+      jump(figure, {
+        offset: -((viewportHeight - figureHeight) / 2),
+        duration: 300,
+        callback: () => {
+          const instance = trapInstances[id];
+
+          if (instance) {
+            instance.activate();
+          }
+        },
+      });
+
+      setTimeout(() => {
+        details.setAttribute('aria-hidden', 'false');
+        removeElementById('c-license-icon-description');
+        figure.classList.add('c-figure--active');
+      }, 150);
     };
+  });
+};
+
+export const updateIFrameDimensions = (init = true, topNode = null) => {
+  forEachElement(
+    '.c-figure--resize iframe',
+    el => {
+      const iframe = el;
+      const parent = iframe.parentNode;
+      let ratio = 0.5625;
+
+      const computedStyle = window.getComputedStyle(parent);
+      const paddingLeft = parseFloat(computedStyle.paddingLeft);
+      const paddingRight = parseFloat(computedStyle.paddingRight);
+      const parentWidth = parent.clientWidth - paddingLeft - paddingRight;
+
+      if (init && iframe.width && iframe.height) {
+        ratio = iframe.height / iframe.width;
+        el.setAttribute('data-ratio', ratio);
+      } else {
+        const ratioAttr = el.getAttribute('data-ratio');
+        if (ratioAttr) {
+          ratio = parseFloat(ratioAttr);
+        }
+      }
+
+      const newHeight = parentWidth * ratio;
+
+      // fix for elements not visible
+      if (newHeight > 0) {
+        iframe.height = newHeight;
+      }
+
+      if (parentWidth > 0) {
+        iframe.width = parentWidth;
+      }
+    },
+    topNode,
+  );
+};
+
+const handler = () => updateIFrameDimensions(false);
+
+export const addEventListenerForResize = () => {
+  window.addEventListener('resize', handler);
+};
+
+export const removeEventListenerForResize = () => {
+  window.removeEventListener('resize', handler);
+};
+
+export const addEventListenersForZoom = () => {
+  forEachElement('.c-figure > .c-button', el => {
+    const parentNode = el.parentNode;
+    const target = el;
+
+    target.onclick = () => {
+      const toggleClass = parentNode.getAttribute('data-toggleclass');
+      parentNode.classList.toggle(toggleClass);
+    };
+  });
+};
+
+export const removeEventListenersForZoom = () => {
+  forEachElement('.c-figure > .c-button', el => {
+    const target = el;
+    target.onclick = undefined;
   });
 };

@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint max-len: 0 */
-
 import defined from 'defined';
 import { BY, SA, NC, ND, PD, CC0, COPY, CC } from './licenseRights';
 
@@ -40,6 +38,7 @@ const byncnd = {
       'This license is the most restrictive of our six main licenses, only allowing others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.',
   },
   rights: [CC, BY, NC, ND],
+  abbreviation: `${CC} ${BY}-${NC}-${ND}`.toUpperCase(),
 };
 
 const byncsa = {
@@ -63,6 +62,7 @@ const byncsa = {
       'This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.',
   },
   rights: [CC, BY, NC, SA],
+  abbreviation: `${CC} ${BY}-${NC}-${SA}`.toUpperCase(),
 };
 
 const bync = {
@@ -86,6 +86,7 @@ const bync = {
       'This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.',
   },
   rights: [CC, BY, NC],
+  abbreviation: `${CC} ${BY}-${NC}`.toUpperCase(),
 };
 
 const bynd = {
@@ -109,6 +110,7 @@ const bynd = {
       'This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.',
   },
   rights: [CC, BY, ND],
+  abbreviation: `${CC} ${BY}-${ND}`.toUpperCase(),
 };
 
 const bysa = {
@@ -132,6 +134,7 @@ const bysa = {
       'This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.',
   },
   rights: [CC, BY, SA],
+  abbreviation: `${CC} ${BY}-${SA}`.toUpperCase(),
 };
 
 const by = {
@@ -155,6 +158,7 @@ const by = {
       'This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.',
   },
   rights: [CC, BY],
+  abbreviation: `${CC} ${BY}`.toUpperCase(),
 };
 
 const pd = {
@@ -179,6 +183,7 @@ const pd = {
       'This license lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
   },
   rights: [PD],
+  abbreviation: PD.toUpperCase(),
 };
 
 const cc0 = {
@@ -202,6 +207,7 @@ const cc0 = {
       'This license lets others copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.',
   },
   rights: [CC0],
+  abbreviation: CC0.toUpperCase(),
 };
 
 const copy = {
@@ -225,6 +231,7 @@ const copy = {
       'Only those who have created the content can modify, publish, and give others permission to use the content.',
   },
   rights: [COPY],
+  abbreviation: COPY.toUpperCase(),
 };
 
 function licenseByLocale(license, locale) {
@@ -232,6 +239,7 @@ function licenseByLocale(license, locale) {
   return {
     ...texts,
     rights: license.rights,
+    abbreviation: license.abbreviation,
   };
 }
 
@@ -264,6 +272,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
         description: abbreviation,
         linkText: abbreviation,
         url: '',
+        abbreviation,
       };
   }
 }

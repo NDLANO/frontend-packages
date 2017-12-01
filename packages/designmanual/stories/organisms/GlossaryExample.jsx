@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Time, User } from 'ndla-ui/icons';
+import { Time, User } from 'ndla-icons/common';
 import { Glossary, OneColumn, LayoutItem, Image } from 'ndla-ui';
 import { addShowGlossaryDefinitionClickListeners } from 'ndla-article-scripts';
 
@@ -70,10 +70,10 @@ class GlossaryExample extends Component {
                   sosialiseringen er at de enkelte menneskene skal kunne skille
                   mellom godt og ondt, og rett og galt.
                 </p>
-                <FigureWithLicense caption="" classes="u-float-right">
+                <FigureWithLicense type="right" caption="" runScripts>
                   <Image
                     alt="liten jente holder sine foreldres hender. foto."
-                    src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
+                    src="https://staging.api.ndla.no/image-api/raw/jente%2520mellom%2520foreldre_0.jpg"
                   />
                 </FigureWithLicense>
                 <h2>Normer og normsendere</h2>

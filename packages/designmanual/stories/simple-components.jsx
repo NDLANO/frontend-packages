@@ -3,13 +3,17 @@ import React, { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
+import * as licenseIcons from 'ndla-icons/license';
+import * as commonIcons from 'ndla-icons/common';
+import * as editorIcons from 'ndla-icons/editor';
+import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
 import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
-import { StoryIntro, StoryBody } from './wrappers';
+import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
-import Embedded from './article/Embedded';
+import { OneColumn } from '../../ndla-ui/lib/Layout/index';
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -21,7 +25,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
-          bildet» som gjør at brukeren får opp lisensboksen for bildet.
+          bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
         </p>
         <p>
           Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
@@ -37,7 +41,9 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+        <FigureWithLicense
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          runScripts>
           <Image
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -56,7 +62,7 @@ storiesOf('Enkle komponenter', module)
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <FigureWithLicense
-          classes="u-float-left"
+          type="left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt="Forstørrelsesglass"
@@ -91,7 +97,7 @@ storiesOf('Enkle komponenter', module)
         </p>
 
         <FigureWithLicense
-          classes="u-float-right"
+          type="right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
@@ -125,7 +131,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
-          classes="u-float-small-right"
+          type="small-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
@@ -165,7 +171,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
-          classes="u-float-small-left"
+          type="small-left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad
@@ -215,7 +221,9 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+        <FigureWithLicense
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          runScripts>
           <Image
             alt=""
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -241,10 +249,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -286,7 +294,7 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureWithLicense authors="" caption="" classes="u-float-right">
+            <FigureWithLicense type="right" authors="" caption="" runScripts>
               <Image
                 alt=""
                 src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -372,20 +380,15 @@ storiesOf('Enkle komponenter', module)
   ))
   .add('Embedded', () => (
     <div>
-      <StoryIntro title="Embedded (Youtube, HP5 osv.)">
+      <StoryIntro title="Embedded (Youtube, brightcove, HP5 osv.)">
         <p>
-          Embedded innhold uten lisensinformasjon skal ha følgende markup (må
-          ikke være iframe):
-          <code>
-            {`<figure class="c-embedded">\n  <iframe ... />\n</figure>`}
-          </code>
+          Embedded innhold skal bruke Figure komponenten (må ikke være iframe):
+          <code>{`<Figure>\n  <iframe ... />\n</Figure>`}</code>
         </p>
         <p>
-          Om det er en iframe der resize script skal kjøres må det være følgende
-          markup
-          <code>
-            {`<figure class="c-embedded c-embedded--resize">\n  <iframe ... />\n</figure>`}
-          </code>
+          Om det er en iframe der resize script skal kjøres må resizeIframe
+          settes til true
+          <code>{`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}</code>
         </p>
         <p>
           Om det er satt høyde og bredde på iframen (som vist under) vil den
@@ -401,28 +404,92 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <h2>Iframe med satt høyde og bredde</h2>
-        <Embedded resize runScripts>
+        <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
+        <FigureWithLicense resizeIframe runScripts noCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Title"
             width="600"
             height="338"
           />
-        </Embedded>
+        </FigureWithLicense>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <h2>Iframe uten satt høyde og bredde</h2>
-        <Embedded resize>
+        <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
+        <FigureWithLicense resizeIframe noCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
           />
-        </Embedded>
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Embedded med lisens og caption</h2>
+        <FigureWithLicense
+          resizeIframe
+          caption="The History of Typography"
+          reuseLabel="videoen">
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Brightcove video</h2>
+        <FigureWithLicense
+          resizeIframe
+          caption="Utholdenhet - animasjon av oksygentransporten"
+          reuseLabel="videoen">
+          <iframe
+            title="Video: Utholdenhet - animasjon av oksygentransporten"
+            height="270"
+            width="480"
+            frameBorder="0"
+            src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+            allowFullScreen
+          />
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Embedded med høyrekolonne</h2>
+
+        <Aside float>
+          <div>
+            <h2>Høyrespalte</h2>
+            <p>Høyrespalten skal fases ut.</p>
+            <p>
+              I en midlertidig fase under flytting av innhold fra gammelt til
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
+            </p>
+            <p>
+              Om artikkelen har et bilde under ingressen, må høyrespalten
+              plasseres under denne.
+            </p>
+            <p>
+              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+            </p>
+          </div>
+        </Aside>
+        <p>
+          Dette er måte å vise embedded sidestilt med høyrekolonne. Denne
+          varianten skal kun brukes om det er nødvendig. Visningen fases bort
+          når høyrespalte fases bort.
+        </p>
+        <FigureWithLicense
+          resizeIframe
+          caption="The History of Typography"
+          reuseLabel="videoen"
+          supportFloating>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </FigureWithLicense>
       </StoryBody>
     </div>
   ))
@@ -458,10 +525,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -617,7 +684,18 @@ storiesOf('Enkle komponenter', module)
   .add('Ikoner', () => (
     <div>
       <StoryIntro title="Ikoner" />
+      <OneColumn>
+        <h2>Felles</h2>
+        <IconList icons={commonIcons} folder="common" />
+        <h2>Lisens</h2>
+        <IconList icons={licenseIcons} folder="license" />
+        <h2>Handling</h2>
+        <IconList icons={actionIcons} folder="editor" />
+        <h2>Editor</h2>
+        <IconList icons={editorIcons} folder="editor" />
+      </OneColumn>
       <StoryBody>
+        <h2>Ikoner som ikke er i bruk</h2>
         <table className="c-table">
           <thead>
             <tr>
@@ -628,58 +706,11 @@ storiesOf('Enkle komponenter', module)
           </thead>
           <tbody>
             {[
-              'Additional',
-              'AlignCenter',
-              'AlignJustify',
-              'AlignLeft',
-              'AlignRight',
-              'Audio',
-              'Bold',
               'Book',
-              'Camera',
-              'Copy',
-              'Crop',
-              'Cross',
-              'Document',
               'Download',
               'Embed',
-              'FactBox',
-              'FocalPoint',
-              'Grid',
-              'Heading1',
-              'Heading2',
-              'Heading3',
-              'Home',
-              'H5P',
-              'Ingress',
               'InsertTemplate',
-              'Italic',
-              'LicenseBy',
-              'LicenseCc',
-              'LicenseNc',
-              'LicenseNd',
-              'LicenseSa',
-              'Link',
-              'ListCircle',
-              'ListNumbered',
-              'ListSquare',
               'OpenWindow',
-              'Paragraph',
-              'Path',
-              'Pencil',
-              'Pilcrow',
-              'Plus',
-              'Quote',
-              'Sad',
-              'Search',
-              'Section',
-              'Strikethrough',
-              'Table',
-              'TextInBox',
-              'Time',
-              'Underline',
-              'User',
-              'Video',
             ].map(key => (
               <tr key={key}>
                 <td>
@@ -688,17 +719,6 @@ storiesOf('Enkle komponenter', module)
                 <td>{key}</td>
                 <td>
                   <code>&lt;Icons.{key} /&gt;</code>
-                </td>
-              </tr>
-            ))}
-            {['up', 'down', 'left', 'right'].map(key => (
-              <tr key={key}>
-                <td>
-                  <Icons.Arrow direction={key} />
-                </td>
-                <td>Arrow {key}</td>
-                <td>
-                  <code>&lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;</code>
                 </td>
               </tr>
             ))}

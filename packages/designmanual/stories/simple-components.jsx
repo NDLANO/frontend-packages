@@ -380,7 +380,7 @@ storiesOf('Enkle komponenter', module)
   ))
   .add('Embedded', () => (
     <div>
-      <StoryIntro title="Embedded (Youtube, HP5 osv.)">
+      <StoryIntro title="Embedded (Youtube, brightcove, HP5 osv.)">
         <p>
           Embedded innhold skal bruke Figure komponenten (må ikke være iframe):
           <code>{`<Figure>\n  <iframe ... />\n</Figure>`}</code>
@@ -435,6 +435,21 @@ storiesOf('Enkle komponenter', module)
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
+          />
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Brightcove video</h2>
+        <FigureWithLicense
+          resizeIframe
+          caption="Utholdenhet - animasjon av oksygentransporten"
+          reuseLabel="videoen">
+          <iframe
+            title="Video: Utholdenhet - animasjon av oksygentransporten"
+            height="270"
+            width="480"
+            frameBorder="0"
+            src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+            allowFullScreen
           />
         </FigureWithLicense>
 

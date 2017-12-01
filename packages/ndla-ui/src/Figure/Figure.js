@@ -15,6 +15,7 @@ import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
 import LicenseByline from '../LicenseByline';
+import Button from '../button/Button';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -143,14 +144,63 @@ FigureCaption.propTypes = {
   ),
 };
 
-export const Figure = ({ children, ...rest }) => (
-  <figure {...classes()} {...rest}>
-    {children}
-  </figure>
-);
+export const Figure = ({
+  children,
+  captionView,
+  type,
+  resizeIframe,
+  supportFloating,
+  ...rest
+}) => {
+  let typeClass = null;
+  let content = null;
+
+  if (type !== 'full') {
+    typeClass = `u-float-${type}`;
+    content = (
+      <Button stripped className="u-fullw">
+        {children}
+      </Button>
+    );
+  } else {
+    content = children;
+  }
+
+  const modifiers = [];
+
+  if (resizeIframe) {
+    modifiers.push('resize');
+  }
+
+  if (supportFloating) {
+    modifiers.push('support-floating');
+  }
+
+  return (
+    <figure
+      {...classes('', modifiers, typeClass)}
+      data-toggleclass={typeClass}
+      {...rest}>
+      {content}
+      {captionView}
+    </figure>
+  );
+};
 
 Figure.propTypes = {
   children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
+  resizeIframe: PropTypes.bool,
+  captionView: PropTypes.node,
+  // only to support aside (temp).
+  supportFloating: PropTypes.bool,
+};
+
+Figure.defaultProps = {
+  type: 'full',
+  resizeIframe: false,
+  captionView: null,
+  supportFloating: false,
 };
 
 export default Figure;

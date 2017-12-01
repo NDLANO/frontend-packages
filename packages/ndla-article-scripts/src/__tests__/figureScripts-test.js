@@ -7,17 +7,21 @@
  */
 /* eslint-env jest */
 
-import { updateIFrameDimensions } from '../iframeScripts';
+import {
+  updateIFrameDimensions,
+  addEventListenersForZoom,
+  removeEventListenersForZoom,
+} from '../figureScripts';
 
 const byId = id => document.getElementById(id);
 
 const iframe1Html = `
-    <figure id="figure1" class="c-embedded--resize">
+    <figure id="figure1" class="c-figure--resize">
       <iframe id="iframe1" width="600" height="300"></iframe>
     <figure>
   `;
 
-test('iframeScripts/updateIFrameDimensions updates iframe height and width according to ratio 1', () => {
+test('figureScripts/updateIFrameDimensions updates iframe height and width according to ratio 1', () => {
   document.body.innerHTML = iframe1Html;
   window.getComputedStyle = () => ({ paddingLeft: 0, paddingRight: 0 });
   Object.defineProperty(byId('figure1'), 'clientWidth', {
@@ -39,12 +43,12 @@ test('iframeScripts/updateIFrameDimensions updates iframe height and width accor
 });
 
 const iframe2Html = `
-    <figure id="figure2" class="c-figure">
+    <figure id="figure2" class="c-figure--resize">
       <iframe id="iframe2" width="1024" height="768"></iframe>
     <figure>
   `;
 
-test('iframeScripts/updateIFrameDimensions updates iframe height and width according to ratio 2', () => {
+test('figureScripts/updateIFrameDimensions updates iframe height and width according to ratio 2', () => {
   document.body.innerHTML = iframe2Html;
   window.getComputedStyle = () => ({
     paddingLeft: '25px',
@@ -60,12 +64,12 @@ test('iframeScripts/updateIFrameDimensions updates iframe height and width accor
 });
 
 const iframeHtmlWithNoDimensions = `
-    <figure id="figureNoDimensions" class="c-embedded--resize">
+    <figure id="figureNoDimensions" class="c-figure--resize">
       <iframe id="iframeNodimensions"></iframe>
     <figure>
   `;
 
-test('iframeScripts/when no dimensions should default to default ratio', () => {
+test('figureScripts/updateIFrameDimensions when no dimensions should default to default ratio', () => {
   document.body.innerHTML = iframeHtmlWithNoDimensions;
   Object.defineProperty(byId('figureNoDimensions'), 'clientWidth', {
     value: 800,
@@ -78,4 +82,33 @@ test('iframeScripts/when no dimensions should default to default ratio', () => {
     parseFloat(byId('iframeNodimensions').getAttribute('width'));
 
   expect(ratio).toBe(0.5625);
+});
+
+const toggleClass = 'u-float-right';
+
+const zoomMarkup = `
+    <figure id="zoomFigure" class="c-figure ${toggleClass}" data-toggleclass="${toggleClass}">
+      <button class="c-button" id="zoomButton">Test</button>
+    <figure>
+  `;
+
+test('figureScripts/addEventListnerForZoom on click should trigger toggle class', () => {
+  document.body.innerHTML = zoomMarkup;
+
+  addEventListenersForZoom();
+
+  byId('zoomButton').click();
+
+  expect(byId('zoomFigure').className).toBe('c-figure');
+});
+
+test('figureScripts/removeEventListnerForZoom on click should not trigger toggle class', () => {
+  document.body.innerHTML = zoomMarkup;
+
+  addEventListenersForZoom();
+  removeEventListenersForZoom();
+
+  byId('zoomButton').click();
+
+  expect(byId('zoomFigure').className).toBe(`c-figure ${toggleClass}`);
 });

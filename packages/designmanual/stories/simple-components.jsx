@@ -378,9 +378,9 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Embedded', () => (
+  .add('Embedded innhold', () => (
     <div>
-      <StoryIntro title="Embedded (Youtube, brightcove, HP5 osv.)">
+      <StoryIntro title="Embedded innhold (Youtube, brightcove, HP5 osv.)">
         <p>
           Embedded innhold skal bruke Figure komponenten (må ikke være iframe):
           <code>{`<Figure>\n  <iframe ... />\n</Figure>`}</code>
@@ -427,18 +427,9 @@ storiesOf('Enkle komponenter', module)
           />
         </FigureWithLicense>
 
-        <h2 className="u-heading">Embedded med lisens og caption</h2>
-        <FigureWithLicense
-          resizeIframe
-          caption="The History of Typography"
-          reuseLabel="videoen">
-          <iframe
-            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
-            title="Video without dimensions"
-          />
-        </FigureWithLicense>
-
-        <h2 className="u-heading">Brightcove video</h2>
+        <h2 className="u-heading">
+          Embedded innhold (brightcove) med lisens og caption
+        </h2>
         <FigureWithLicense
           resizeIframe
           caption="Utholdenhet - animasjon av oksygentransporten"
@@ -453,8 +444,7 @@ storiesOf('Enkle komponenter', module)
           />
         </FigureWithLicense>
 
-        <h2 className="u-heading">Embedded med høyrekolonne</h2>
-
+        <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
         <Aside float>
           <div>
             <h2>Høyrespalte</h2>
@@ -476,15 +466,11 @@ storiesOf('Enkle komponenter', module)
           </div>
         </Aside>
         <p>
-          Dette er måte å vise embedded sidestilt med høyrekolonne. Denne
-          varianten skal kun brukes om det er nødvendig. Visningen fases bort
-          når høyrespalte fases bort.
+          Dette er måte å vise embedded innhold sidestilt med høyrekolonne.
+          Denne varianten skal kun brukes om det er nødvendig. Visningen fases
+          bort når høyrespalte fases bort.
         </p>
-        <FigureWithLicense
-          resizeIframe
-          caption="The History of Typography"
-          reuseLabel="videoen"
-          supportFloating>
+        <FigureWithLicense resizeIframe noCaption supportFloating>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

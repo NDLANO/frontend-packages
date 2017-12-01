@@ -78,14 +78,6 @@ storiesOf('Sidevisninger', module)
           </OneColumn>
         </Hero>
         <ArticleLoader articleId="49" />
-        <OneColumn>
-          <article className="c-article">
-            <LayoutItem layout="extend">
-              <RelatedArticleListExample />
-              <Resources />
-            </LayoutItem>
-          </article>
-        </OneColumn>
       </Content>
       <FooterExample />
     </PageContainer>

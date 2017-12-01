@@ -73,7 +73,7 @@ class GlossaryExample extends Component {
                 <FigureWithLicense type="right" caption="" runScripts>
                   <Image
                     alt="liten jente holder sine foreldres hender. foto."
-                    src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
+                    src="https://staging.api.ndla.no/image-api/raw/jente%2520mellom%2520foreldre_0.jpg"
                   />
                 </FigureWithLicense>
                 <h2>Normer og normsendere</h2>

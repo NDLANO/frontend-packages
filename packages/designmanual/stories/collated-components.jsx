@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPY } from 'ndla-licenses';
+import { BY, SA, NC, ND, PD, CC0 } from 'ndla-licenses';
 import {
   ErrorMessage,
   FilterList,
@@ -168,7 +168,7 @@ storiesOf('Sammensatte moduler', module)
         <div className="o-wrapper--inner">
           <LicenseByline
             withDescription
-            licenseRights={[BY, SA, NC, ND, PD, CC0, COPY]}
+            licenseRights={[BY, SA, NC, ND, PD, CC0]}
           />
         </div>
       </LayoutItem>

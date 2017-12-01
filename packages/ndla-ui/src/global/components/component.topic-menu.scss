@@ -208,10 +208,10 @@
   margin-bottom: $spacing;
 }
 .c-topic-menu__back-link {
-  text-decoration: none;
+  box-shadow: none;
   color: $brand-color;
   &:hover {
-    text-decoration: underline;
+    box-shadow: $link;
   }
 }
 
@@ -232,7 +232,6 @@
     outline: none;
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
-    text-decoration: underline;
   }
 
   &:last-child {

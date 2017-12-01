@@ -29,6 +29,11 @@
   iframe {
     display: block;
   }
+
+  > * {
+    max-width: 100%;
+    border: 0;
+  }
 }
 .c-figure {
   margin: $spacing--large/1.4 0 $spacing--large;
@@ -44,6 +49,15 @@
   .o-backdrop {
     display: none;
     z-index: 999;
+  }
+
+  &--support-floating {
+    left: auto!important;
+    right: auto!important;
+    width: auto!important;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

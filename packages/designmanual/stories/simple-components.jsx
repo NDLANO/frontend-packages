@@ -470,11 +470,7 @@ storiesOf('Enkle komponenter', module)
           Denne varianten skal kun brukes om det er nødvendig. Visningen fases
           bort når høyrespalte fases bort.
         </p>
-        <FigureWithLicense
-          resizeIframe
-          caption="The History of Typography"
-          reuseLabel="videoen"
-          supportFloating>
+        <FigureWithLicense resizeIframe noCaption supportFloating>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { uuid } from 'ndla-util';
 import {
   addCloseFigureDetailsClickListeners,
   addShowFigureDetailsClickListeners,
@@ -72,6 +73,7 @@ class FigureWithLicense extends Component {
             authors={authors}
           />,
           <FigureDetails
+            id={uuid()}
             key="details"
             licenseRights={license.rights}
             authors={authors}

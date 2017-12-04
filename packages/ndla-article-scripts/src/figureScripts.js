@@ -158,7 +158,7 @@ export const removeEventListenerForResize = () => {
 
 export const addEventListenersForZoom = () => {
   forEachElement('.c-figure > .c-button', el => {
-    const parentNode = el.parentNode;
+    const { parentNode } = el;
     const target = el;
 
     target.onclick = () => {

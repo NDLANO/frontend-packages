@@ -64,7 +64,7 @@ Resource.propTypes = {
 class ResourceList extends Component {
   constructor(props) {
     super(props);
-    this.state = { showAll: false, secondary: false };
+    this.state = { showAll: false };
     this.handleClick = this.handleClick.bind(this);
   }
 

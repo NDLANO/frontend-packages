@@ -62,7 +62,23 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
 }
 
 PreviewImage.propTypes = {
-  image: PropTypes.object.isRequired,
+  image: PropTypes.shape({
+    imageUrl: PropTypes.string.isRequired,
+    title: PropTypes.shape({
+      title: PropTypes.string,
+    }),
+    copyright: PropTypes.shape({
+      license: PropTypes.shape({
+        description: PropTypes.string.isRequired,
+      }),
+      creators: PropTypes.arrayOf(
+        PropTypes.shape({
+          type: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+        }),
+      ),
+    }).isRequired,
+  }).isRequired,
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
 };

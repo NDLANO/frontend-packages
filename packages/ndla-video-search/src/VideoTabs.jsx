@@ -19,7 +19,6 @@ class VideoTabs extends Component {
   handleOnSelect(index, last) {
     const { onSearchTypeChange, tabs } = this.props;
     if (index !== last) {
-      this.setState({ index });
       onSearchTypeChange(tabs[index].title.toLowerCase());
     }
   }

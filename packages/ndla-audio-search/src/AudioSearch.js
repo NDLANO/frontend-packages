@@ -26,7 +26,6 @@ class AudioSearch extends Component {
       queryObject: props.queryObject,
       audios: [],
       lastPage: 0,
-      totalCount: 0,
       searching: false,
     };
 
@@ -60,7 +59,6 @@ class AudioSearch extends Component {
             locale: queryObject.locale,
           },
           audios: result.results,
-          totalCount: result.totalCount,
           lastPage: Math.ceil(result.totalCount / result.pageSize),
           searching: false,
         });

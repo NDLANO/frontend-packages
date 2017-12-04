@@ -953,13 +953,13 @@ storiesOf('Grunnstiler', module)
         <h2 className="u-heading">Lister med lenker</h2>
         <ul className="o-list--bullets">
           <li>
-            <a href="">Listepunkt 1</a>
+            <a href="https://example.com">Listepunkt 1</a>
           </li>
           <li>
-            <a href="">Listepunkt 2</a>
+            <a href="https://example.com">Listepunkt 2</a>
           </li>
           <li>
-            <a href="">Listepunkt 3</a>
+            <a href="https://example.com">Listepunkt 3</a>
           </li>
         </ul>
         <h2 className="u-heading">Liste over to kolonner</h2>
@@ -1038,9 +1038,7 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Luft og avstand">
         <p>Vi baserer oss hovedsaklig på tre nivåer av luft/avstand:</p>
-        <code>{`--spacing
---spacing--small
---spacing--large`}</code>
+        <code>--spacing --spacing--small --spacing--large</code>
         <p>Hvor:</p>
         <div style={{ padding: '52px', background: '#eee' }}>
           <span

@@ -21,14 +21,14 @@ const args = {
 };
 
 function run(programArgs) {
-  const argv = yargs(programArgs || process.argv.slice(2))
+  const { argv } = yargs(programArgs || process.argv.slice(2))
     .usage(args.usage)
     .help('h')
     .alias('help', 'h')
     .options(args.options)
     .demandOption(['mapFile', 'errorEventFile'])
     .epilogue(args.docs)
-    .wrap(Math.min(100, process.stdout.columns)).argv;
+    .wrap(Math.min(100, process.stdout.columns));
 
   if (argv.help) {
     yargs.showHelp();

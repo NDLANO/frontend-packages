@@ -30,7 +30,7 @@ export const addShowGlossaryDefinitionClickListeners = () => {
         const popupTop = getElementOffset(popup).top;
         let offset = 0;
 
-        const body = document.body;
+        const { body } = document;
         const html = document.documentElement;
         const documentHeight = Math.max(
           body.scrollHeight,

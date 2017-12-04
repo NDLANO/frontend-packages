@@ -7,11 +7,13 @@ import { AnchorNavigation } from './helpers';
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
   if (!articleHTML.getElementsByTagName(`h${level}`)[0]) {
-    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${level}>`;
+    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${
+      level
+    }>`;
   }
-  return `<div>Overskrift ${level}:</div><h${level}>${articleHTML.getElementsByTagName(
-    `h${level}`,
-  )[0].innerHTML} <h${level}>`;
+  return `<div>Overskrift ${level}:</div><h${level}>${
+    articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML
+  } <h${level}>`;
 };
 
 storiesOf('Grunnstiler', module)
@@ -389,9 +391,11 @@ storiesOf('Grunnstiler', module)
         </p>
         <div className="c-bodybox">
           <p className="u-serif">
-            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">*</span>isicing
-            elit, sed do eiusmod <span className="u-mark">*</span>tempor
-            incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">
+              *
+            </span>isicing elit, sed do eiusmod{' '}
+            <span className="u-mark">*</span>tempor incididunt ut labore et
+            dolore magna aliqua.
           </p>
         </div>
         <h2 id="lenker" className="u-heading">
@@ -949,13 +953,13 @@ storiesOf('Grunnstiler', module)
         <h2 className="u-heading">Lister med lenker</h2>
         <ul className="o-list--bullets">
           <li>
-            <a href="">Listepunkt 1</a>
+            <a href="https://example.com">Listepunkt 1</a>
           </li>
           <li>
-            <a href="">Listepunkt 2</a>
+            <a href="https://example.com">Listepunkt 2</a>
           </li>
           <li>
-            <a href="">Listepunkt 3</a>
+            <a href="https://example.com">Listepunkt 3</a>
           </li>
         </ul>
         <h2 className="u-heading">Liste over to kolonner</h2>
@@ -1034,9 +1038,7 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Luft og avstand">
         <p>Vi baserer oss hovedsaklig på tre nivåer av luft/avstand:</p>
-        <code>{`--spacing
---spacing--small
---spacing--large`}</code>
+        <code>--spacing --spacing--small --spacing--large</code>
         <p>Hvor:</p>
         <div style={{ padding: '52px', background: '#eee' }}>
           <span

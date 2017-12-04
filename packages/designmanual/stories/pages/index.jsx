@@ -231,7 +231,7 @@ storiesOf('Emnesider', module)
                 'Transport og logistikk Vg2',
               ].map(subject => (
                 <li key={subject}>
-                  <a href="">{subject}</a>
+                  <a href="https://example.com">{subject}</a>
                 </li>
               ))}
             </ul>

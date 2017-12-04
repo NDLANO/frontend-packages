@@ -18,14 +18,18 @@ const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
 const ghRepo = client.repo(process.env.TRAVIS_REPO_SLUG);
 
-function isFork() {
+function isFork(allowedForks = []) {
   const { TRAVIS_PULL_REQUEST_SLUG, TRAVIS_REPO_SLUG } = process.env;
   if (!TRAVIS_PULL_REQUEST_SLUG) {
     return false;
   }
   const [prOwner] = TRAVIS_PULL_REQUEST_SLUG.split('/');
   const [owner] = TRAVIS_REPO_SLUG.split('/');
-  return owner !== prOwner;
+
+  return (
+    owner !== prOwner &&
+    allowedForks.find(forkOwner => prOwner === forkOwner) === undefined
+  );
 }
 
 function getUrl(content) {
@@ -116,7 +120,7 @@ async function deploy(sha) {
     });
   }
 
-  if (isFork()) {
+  if (isFork(['netliferesearch', 'Keyteq'])) {
     console.log(`▲ Now deployment is skipped for forks...`);
     return;
   }
@@ -129,7 +133,9 @@ async function deploy(sha) {
     throw new Error('Missing required environment variable NOW_TOKEN');
   }
   const { TRAVIS_REPO_SLUG, TRAVIS_BUILD_ID } = process.env;
-  let targetUrl = `https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}`;
+  let targetUrl = `https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${
+    TRAVIS_BUILD_ID
+  }`;
 
   updateStatus(sha, {
     target_url: targetUrl,
@@ -157,7 +163,9 @@ async function deploy(sha) {
   });
 
   console.log(
-    `🤠 Alrighty, deploy started. Now we're going to ping ${targetUrl} until it's ready!`,
+    `🤠 Alrighty, deploy started. Now we're going to ping ${
+      targetUrl
+    } until it's ready!`,
   );
 
   // check on the site for ~20 minutes every 10 seconds

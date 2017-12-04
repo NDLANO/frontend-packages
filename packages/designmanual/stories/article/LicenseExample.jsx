@@ -43,7 +43,7 @@ const VideoContent = () => (
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
-          <a href="">
+          <a href="https://example.com">
             <img
               src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?auto=format&fit=crop&w=500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
               width="260"
@@ -114,7 +114,7 @@ const TextContent = () => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a
-              href=""
+              href="https://example.com"
               itemProp="url"
               itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
@@ -178,7 +178,7 @@ const AudioContent = () => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a
-              href=""
+              href="https://example.com"
               itemProp="url"
               itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Audio className="c-medialist__icon" />
@@ -240,7 +240,7 @@ const ImageContent = () => (
       ].map(src => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
-            <a href="">
+            <a href="https://example.com">
               <img
                 width="260"
                 alt="alt"
@@ -298,7 +298,7 @@ const ImageContent = () => (
       ))}
       <MediaListItem>
         <MediaListItemImage>
-          <a href="">
+          <a href="https://example.com">
             <img
               width="260"
               alt="alt"
@@ -367,7 +367,7 @@ const H5PContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a href="https://example.com">
               <iframe
                 title="H5P"
                 src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
@@ -448,7 +448,7 @@ const Files = () => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a
-              href=""
+              href="https://example.com"
               itemProp="url"
               itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />

@@ -691,23 +691,19 @@ storiesOf('Enkle komponenter', module)
             </tr>
           </thead>
           <tbody>
-            {[
-              'Book',
-              'Download',
-              'Embed',
-              'InsertTemplate',
-              'OpenWindow',
-            ].map(key => (
-              <tr key={key}>
-                <td>
-                  {createElement(Icons[key], { className: 'c-icon--medium' })}
-                </td>
-                <td>{key}</td>
-                <td>
-                  <code>&lt;Icons.{key} /&gt;</code>
-                </td>
-              </tr>
-            ))}
+            {['Book', 'Download', 'Embed', 'InsertTemplate', 'OpenWindow'].map(
+              key => (
+                <tr key={key}>
+                  <td>
+                    {createElement(Icons[key], { className: 'c-icon--medium' })}
+                  </td>
+                  <td>{key}</td>
+                  <td>
+                    <code>&lt;Icons.{key} /&gt;</code>
+                  </td>
+                </tr>
+              ),
+            )}
           </tbody>
         </table>
       </StoryBody>

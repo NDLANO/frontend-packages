@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "nock": "^9.0.22"
+    "nock": "^9.1.4"
   },
   "dependencies": {
-    "raven-js": "^3.9.2"
+    "raven-js": "^3.20.1"
   }
 }

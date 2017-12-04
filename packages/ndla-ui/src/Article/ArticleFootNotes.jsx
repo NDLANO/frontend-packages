@@ -12,9 +12,11 @@ import { FootNoteShape } from '../shapes';
 
 const FootNote = ({ footNote, messages, refNr }) => (
   <li className="c-footnote__item">
-    <cite className="c-footnote__cite">{`${footNote.title} (${footNote.year}), ${footNote.authors.join(
-      ' ',
-    )} ${messages.edition}: ${footNote.edition}, ${messages.publisher}: ${footNote.publisher}`}</cite>
+    <cite className="c-footnote__cite">{`${footNote.title} (${
+      footNote.year
+    }), ${footNote.authors.join(' ')} ${messages.edition}: ${
+      footNote.edition
+    }, ${messages.publisher}: ${footNote.publisher}`}</cite>
     &nbsp;<a href={`#ref_${refNr}_sup`} name={`ref_${refNr}_cite`}>
       &#8617;
     </a>

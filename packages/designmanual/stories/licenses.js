@@ -7,16 +7,9 @@ import {
 import { storiesOf } from '@storybook/react';
 import { StoryIntro, StoryBody } from './wrappers';
 
-const licensesRights = [
-  'by',
-  'sa',
-  'nc',
-  'nd',
-  'pd',
-  'cc0',
-  'cc',
-  'copy',
-].map(license => getLicenseRightByAbbreviation(license));
+const licensesRights = ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(
+  license => getLicenseRightByAbbreviation(license),
+);
 
 const licenses = [
   'by-nc-nd',

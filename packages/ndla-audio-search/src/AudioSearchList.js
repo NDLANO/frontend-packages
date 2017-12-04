@@ -49,7 +49,15 @@ export default function AudioSearchList({
 }
 
 AudioSearchList.propTypes = {
-  audios: PropTypes.array.isRequired,
+  audios: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        language: PropTypes.string.isRequired,
+      }),
+    }),
+  ),
   searching: PropTypes.bool.isRequired,
   locale: PropTypes.string.isRequired,
   translations: PropTypes.shape({

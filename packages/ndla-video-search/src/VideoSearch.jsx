@@ -237,7 +237,7 @@ VideoSearch.propTypes = {
     loadMoreVideos: PropTypes.string.isRequired,
   }),
   locale: PropTypes.string.isRequired,
-  enabledSources: PropTypes.array,
+  enabledSources: PropTypes.arrayOf(PropTypes.string),
 };
 
 VideoSearch.defaultProps = {

@@ -120,7 +120,6 @@ FigureWithLicense.propTypes = {
 };
 
 FigureWithLicense.defaultProps = {
-  classes: '',
   runScripts: false,
   noCaption: false,
 };

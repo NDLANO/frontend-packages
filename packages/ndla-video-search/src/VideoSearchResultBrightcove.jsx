@@ -67,7 +67,9 @@ export default function VideoSearchResultBrightcove({
           <iframe
             className="c-video-preview__video"
             title={selectedVideo.name}
-            src={`//players.brightcove.net/${selectedVideo.account_id}/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
+            src={`//players.brightcove.net/${
+              selectedVideo.account_id
+            }/BkLm8fT_default/index.html?videoId=${selectedVideo.id}`}
             allowFullScreen
           />
         </PreviewVideo>

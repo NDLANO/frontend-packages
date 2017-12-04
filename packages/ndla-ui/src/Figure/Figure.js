@@ -66,9 +66,9 @@ export const FigureDetails = ({
                 </li>
               )}
               {authors.map(author => (
-                <li
-                  key={uuid()}
-                  className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
+                <li key={uuid()} className="c-figure-list__item">{`${
+                  author.type
+                }: ${author.name}`}</li>
               ))}
               {origin && (
                 <li className="c-figure-list__item" key={uuid()}>

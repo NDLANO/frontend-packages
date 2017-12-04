@@ -51,7 +51,8 @@ class IconItem extends Component {
               onClick={() =>
                 copyTextToClipboard(
                   `import { ${name} } from 'ndla-icons/${folder}';`,
-                )}
+                )
+              }
               style={{ float: 'right' }}
               title="Kopier import kode">
               <Copy />

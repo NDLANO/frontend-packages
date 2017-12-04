@@ -7,11 +7,13 @@ import { AnchorNavigation } from './helpers';
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
   if (!articleHTML.getElementsByTagName(`h${level}`)[0]) {
-    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${level}>`;
+    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${
+      level
+    }>`;
   }
-  return `<div>Overskrift ${level}:</div><h${level}>${articleHTML.getElementsByTagName(
-    `h${level}`,
-  )[0].innerHTML} <h${level}>`;
+  return `<div>Overskrift ${level}:</div><h${level}>${
+    articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML
+  } <h${level}>`;
 };
 
 storiesOf('Grunnstiler', module)
@@ -389,9 +391,11 @@ storiesOf('Grunnstiler', module)
         </p>
         <div className="c-bodybox">
           <p className="u-serif">
-            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">*</span>isicing
-            elit, sed do eiusmod <span className="u-mark">*</span>tempor
-            incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">
+              *
+            </span>isicing elit, sed do eiusmod{' '}
+            <span className="u-mark">*</span>tempor incididunt ut labore et
+            dolore magna aliqua.
           </p>
         </div>
         <h2 id="lenker" className="u-heading">

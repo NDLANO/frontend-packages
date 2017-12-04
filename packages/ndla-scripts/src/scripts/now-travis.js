@@ -18,7 +18,7 @@ const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
 const ghRepo = client.repo(process.env.TRAVIS_REPO_SLUG);
 
-export function isFork(allowedForks = []) {
+function isFork(allowedForks = []) {
   const { TRAVIS_PULL_REQUEST_SLUG, TRAVIS_REPO_SLUG } = process.env;
   if (!TRAVIS_PULL_REQUEST_SLUG) {
     return false;

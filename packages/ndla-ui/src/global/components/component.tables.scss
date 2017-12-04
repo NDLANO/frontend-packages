@@ -8,6 +8,8 @@
 
 .c-table, .c-article table, article table {
   vertical-align: top;
+  font-size: 85%;
+  table-layout: fixed;
 
   overflow-x: auto;
   max-width: 100%;
@@ -44,8 +46,10 @@
   }
 
   td, th {
-    padding: $spacing/3 $spacing $spacing/3 $spacing/3;
+    display: table-cell;
     height: 45px;
+    width: 2%;
+    padding: $spacing/3 $spacing $spacing/3 $spacing/3;
   }
   th, tbody td:before {
     font-weight: $font-weight-bold;
@@ -131,6 +135,7 @@
     }
     p {
       margin:0;
+      line-height: 1.6em;
     }
   }
 
@@ -140,7 +145,7 @@
   }
 
   ul {
-    margin: 0 0 0 $spacing;
+    margin: 0 0 0 $spacing--small*1.4;
   }
 
   .c-figure {

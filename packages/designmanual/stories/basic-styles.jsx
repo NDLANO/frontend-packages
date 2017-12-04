@@ -958,6 +958,36 @@ storiesOf('Grunnstiler', module)
             <a href="">Listepunkt 3</a>
           </li>
         </ul>
+        <h2 className="u-heading">Liste over to kolonner</h2>
+        <ul className="o-list--two-columns">
+          <li>Listepunkt 1</li>
+          <li>Listepunkt 2</li>
+          <li>Listepunkt 3</li>
+          <li>Listepunkt 4</li>
+          <li>Listepunkt 5</li>
+          <li>Listepunkt 6</li>
+          <li>Listepunkt 7</li>
+          <li>Listepunkt 8</li>
+          <li>Listepunkt 9</li>
+          <li>Listepunkt 10</li>
+          <li>Listepunkt 11</li>
+          <li>Listepunkt 12</li>
+        </ul>
+        <h2 className="u-heading">Liste over tre kolonner</h2>
+        <ul className="o-list--three-columns">
+          <li>Listepunkt 1</li>
+          <li>Listepunkt 2</li>
+          <li>Listepunkt 3</li>
+          <li>Listepunkt 4</li>
+          <li>Listepunkt 5</li>
+          <li>Listepunkt 6</li>
+          <li>Listepunkt 7</li>
+          <li>Listepunkt 8</li>
+          <li>Listepunkt 9</li>
+          <li>Listepunkt 10</li>
+          <li>Listepunkt 11</li>
+          <li>Listepunkt 12</li>
+        </ul>
         <h2 className="u-heading">Nummererte lister</h2>
         <ol>
           <li>Listepunkt</li>

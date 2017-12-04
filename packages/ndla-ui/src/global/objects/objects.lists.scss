@@ -15,7 +15,6 @@
     counter-increment: item;
   }
 }
-
 .o-list--colors {
   margin: 0;
   padding: 0;
@@ -28,6 +27,38 @@
   margin: 0 $spacing--small/2 $spacing--small/2 0;
   width: 180px;
   min-height: 140px;
+}
+.o-list--two-columns {
+  list-style-position: inside;
+  margin-left: -$spacing--small;
+  padding: $spacing;  
+  @include mq(tablet) {
+    -moz-column-count: 2;
+    -moz-column-gap: $spacing;
+    -webkit-column-count: 2;
+    -webkit-column-gap: $spacing;
+    column-count: 2;
+    column-gap: $spacing;
+  }
+  @include mq(desktop) {
+    padding-left: 0;
+  }
+}
+.o-list--three-columns {
+  list-style-position: inside;
+  margin-left: -$spacing--small;
+  padding: $spacing;  
+  @include mq(tablet) {
+    -moz-column-count: 3;
+    -moz-column-gap: $spacing;
+    -webkit-column-count: 3;
+    -webkit-column-gap: $spacing;
+    column-count: 3;
+    column-gap: $spacing;
+  }
+  @include mq(desktop) {
+    padding-left: 0;
+  }
 }
 .o-list__bgcolor {
   width: 100%;

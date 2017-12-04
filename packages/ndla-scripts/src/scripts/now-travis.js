@@ -18,14 +18,18 @@ const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
 const ghRepo = client.repo(process.env.TRAVIS_REPO_SLUG);
 
-function isFork() {
+export function isFork(allowedForks = []) {
   const { TRAVIS_PULL_REQUEST_SLUG, TRAVIS_REPO_SLUG } = process.env;
   if (!TRAVIS_PULL_REQUEST_SLUG) {
     return false;
   }
   const [prOwner] = TRAVIS_PULL_REQUEST_SLUG.split('/');
   const [owner] = TRAVIS_REPO_SLUG.split('/');
-  return owner !== prOwner;
+
+  return (
+    owner !== prOwner &&
+    allowedForks.find(forkOwner => prOwner === forkOwner) === undefined
+  );
 }
 
 function getUrl(content) {
@@ -116,7 +120,7 @@ async function deploy(sha) {
     });
   }
 
-  if (isFork()) {
+  if (isFork(['netliferesearch', 'Keyteq'])) {
     console.log(`▲ Now deployment is skipped for forks...`);
     return;
   }

@@ -96,6 +96,7 @@
   text-transform: none;
   animation-name: fadeIn;
   animation-duration: .4s;
+  overflow-y: auto;
   @include mq(tablet) {
     display: flex;
   }

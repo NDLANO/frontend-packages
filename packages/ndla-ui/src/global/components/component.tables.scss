@@ -11,7 +11,7 @@
 
   overflow-x: auto;
   max-width: 100%;
-  margin: $spacing--large 0;
+  margin: $spacing--large 0 $spacing--large 0;
 
   // optional - enable iOS momentum scrolling
   -webkit-overflow-scrolling: touch;

@@ -40,7 +40,7 @@ class ResourceGroup extends Component {
     const additionalResources = resources.filter(res => res.additional);
     const normalResources = resources.filter(res => !res.additional);
     return (
-      <div {...classes('', '', className)}>
+      <section {...classes('', '', className)}>
         {additionalResources.length > 0 && (
           <ResourceToggleFilter
             checked={showAdditionalResources}
@@ -60,7 +60,7 @@ class ResourceGroup extends Component {
           additionalResources={additionalResources}
           normalResources={normalResources}
         />
-      </div>
+      </section>
     );
   }
 }

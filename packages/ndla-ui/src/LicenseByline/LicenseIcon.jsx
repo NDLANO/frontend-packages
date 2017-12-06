@@ -17,7 +17,7 @@ import {
   Sa,
   Zero,
   Publicdomain,
-  Copy,
+  Copyright,
 } from 'ndla-icons/license';
 
 const LicenseIcon = ({ licenseRight, description, className }) => {
@@ -37,7 +37,7 @@ const LicenseIcon = ({ licenseRight, description, className }) => {
     case PD:
       return <Publicdomain className={className} aria-label={description} />;
     case COPYRIGHTED:
-      return <Copy className={className} aria-label={description} />;
+      return <Copyright className={className} aria-label={description} />;
     default:
       return undefined;
   }

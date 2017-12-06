@@ -10,7 +10,7 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const Copy = props => (
+const Copyright = props => (
   <Icon
     viewBox="0 0 64 64"
     data-license="CC-BY 4.0"
@@ -29,4 +29,4 @@ const Copy = props => (
   </Icon>
 );
 
-export default Copy;
+export default Copyright;

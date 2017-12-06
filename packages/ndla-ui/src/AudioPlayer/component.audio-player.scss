@@ -4,11 +4,36 @@
     align-items: center;
     background: $brand-grey--lightest;
     margin-bottom: $spacing--small;
-    padding: 0 16px;
+    padding: 8px 16px;
+  }
+
+  &__play {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: $spacing--small;
+  }
+
+  &__play-icon {
+    display: inline-flex;
+    align-items: center;
   }
 
   &__pause-icon {
     display: none;
+    align-items: center;
+  }
+
+  &__info {
+    margin-bottom: $spacing--small;
+    @include inuit-font-size(14px, 22px);
+  }
+
+  &__time {
+    margin-right: $spacing--small;
+    @include inuit-font-size(14px, 22px);
   }
 
   &--playing {
@@ -18,7 +43,7 @@
       }
 
       &__pause-icon {
-        display: inline;
+        display: inline-flex;
       }
     }
   }
@@ -26,7 +51,7 @@
   &__progress[value] {
     appearance: none;
     border: none;
-    height: 7px;
+    height: 10px;
     color: $brand-color--secondary;
     border: 0;
     background-color: $brand-color--tertiary;
@@ -44,5 +69,18 @@
     }
 
     flex: 1 1 auto;
+  }
+
+  .c-license-icons {
+    &__list {
+      flex-direction: row;
+      text-align: center;
+      justify-content: center;
+      margin-right: $spacing--small;
+    }
+
+    &__item {
+      padding-bottom: 0;
+    }
   }
 }

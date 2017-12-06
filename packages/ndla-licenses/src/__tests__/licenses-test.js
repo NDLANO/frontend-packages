@@ -13,7 +13,7 @@ import {
   isCreativeCommonsLicense,
 } from '../licenses';
 
-import { BY, SA, NC, CC, COPY } from '../licenseRights';
+import { BY, SA, NC, CC, COPYRIGHTED } from '../licenseRights';
 
 test('licenses/getLicenseByAbbreviation get license for by-sa in english', () => {
   const license = getLicenseByAbbreviation('by-sa', 'en');
@@ -44,6 +44,6 @@ test('licenses/isCreativeCommonsLicense when creative commons license should ret
 });
 
 test('licenses/isCreativeCommonsLicense when copy licebse should return false', () => {
-  const result = isCreativeCommonsLicense([COPY]);
+  const result = isCreativeCommonsLicense([COPYRIGHTED]);
   expect(result).toBe(false);
 });

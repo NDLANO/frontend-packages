@@ -20,7 +20,7 @@ const licenses = [
   'by',
   'pd',
   'cc0',
-  'copy',
+  'copyrighted',
 ].map(license => ({
   code: license,
   data: getLicenseByAbbreviation(license, 'nb'),

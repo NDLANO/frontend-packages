@@ -23,7 +23,7 @@ import {
 import { Document, Audio } from 'ndla-icons/common';
 
 import {
-  COPY,
+  COPYRIGHTED,
   getMicroDataNamespaceByType,
   microDataTypes,
   metaTypes,
@@ -455,7 +455,7 @@ const Files = () => (
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license={COPY}
+            license={COPYRIGHTED}
             title="Regler for bruk av filen:"
             resourceUrl="">
             <MediaListItemActions>

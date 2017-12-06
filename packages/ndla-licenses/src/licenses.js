@@ -7,7 +7,7 @@
  */
 
 import defined from 'defined';
-import { BY, SA, NC, ND, PD, CC0, COPY, CC } from './licenseRights';
+import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseEN = 'Free reuse';
@@ -230,8 +230,8 @@ const copy = {
     description:
       'Only those who have created the content can modify, publish, and give others permission to use the content.',
   },
-  rights: [COPY],
-  abbreviation: COPY.toUpperCase(),
+  rights: [COPYRIGHTED],
+  abbreviation: COPYRIGHTED.toUpperCase(),
 };
 
 function licenseByLocale(license, locale) {
@@ -261,7 +261,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       return licenseByLocale(pd, locale);
     case 'cc0':
       return licenseByLocale(cc0, locale);
-    case 'copy':
+    case 'copyrighted':
       return licenseByLocale(copy, locale);
     default:
       return {
@@ -299,4 +299,4 @@ export function getLicenseByNBTitle(title, locale) {
 }
 
 export const isCreativeCommonsLicense = licenseRights =>
-  licenseRights.every(r => r !== COPY);
+  licenseRights.every(r => r !== COPYRIGHTED);

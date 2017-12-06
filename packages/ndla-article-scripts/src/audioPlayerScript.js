@@ -39,6 +39,16 @@ export const initAudioPlayers = () => {
       }
     };
 
+    const togglePlay = () => {
+      if (audioElement.paused) {
+        audioElement.play();
+        toggleStateClasses(true);
+      } else {
+        audioElement.pause();
+        toggleStateClasses(false);
+      }
+    };
+
     audioElement.addEventListener('timeupdate', () => {
       onTimeUpdate(audioElement, progressBar, timeDisplay);
     });
@@ -53,15 +63,16 @@ export const initAudioPlayers = () => {
     });
 
     progressBar.addEventListener('keydown', (event) => {
+      const step = event.shiftKey ? 0.05 : 0.01;
       if(event.key === 'ArrowLeft' || event.key === 'Left') {
-        let newValue = parseFloat(progressBar.value) - 0.1;
+        let newValue = parseFloat(progressBar.value) - step;
         if (newValue < 0) {
           newValue = 0;
         }
 
         onSeek(newValue, audioElement, progressBar, timeDisplay);
       } else if (event.key === 'ArrowRight' || event.key === 'Right') {
-        let newValue = parseFloat(progressBar.value) + 0.1;
+        let newValue = parseFloat(progressBar.value) + step;
         if (newValue > 1) {
           newValue = 1;
         }
@@ -69,14 +80,6 @@ export const initAudioPlayers = () => {
       }
     });
 
-    playButton.onclick = () => {
-      if (audioElement.paused) {
-        audioElement.play();
-        toggleStateClasses(true);
-      } else {
-        audioElement.pause();
-        toggleStateClasses(false);
-      }
-    };
+    playButton.onclick = togglePlay;
   });
 };

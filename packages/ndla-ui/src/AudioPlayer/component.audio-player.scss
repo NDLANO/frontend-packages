@@ -1,0 +1,48 @@
+.c-audio-player {
+  &__controls {
+    display: flex;
+    align-items: center;
+    background: $brand-grey--lightest;
+    margin-bottom: $spacing--small;
+    padding: 0 16px;
+  }
+
+  &__pause {
+    display: none;
+  }
+
+  &--playing {
+    .c-audio-player {
+      &__play {
+        display: none;
+      }
+
+      &__pause {
+        display: block;
+      }
+    }
+  }
+
+  &__progress[value] {
+    appearance: none;
+    border: none;
+    height: 7px;
+    color: $brand-color--secondary;
+    border: 0;
+    background-color: $brand-color--tertiary;
+
+    &::-webkit-progress-bar {
+      background: $brand-color--tertiary;
+    }
+
+    &::-webkit-progress-value {
+      background: $brand-color--secondary;
+    }
+
+    &::-moz-progress-bar {
+      background: $brand-color--secondary;
+    }
+
+    flex: 1 1 auto;
+  }
+}

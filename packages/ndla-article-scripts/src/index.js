@@ -27,6 +27,10 @@ import {
   removeDetailsEventListeners,
 } from './detailsScript';
 
+import {
+  initAudioPlayers,
+} from './audioPlayerScript';
+
 import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
 
 export const initArticleScripts = () => {
@@ -39,6 +43,7 @@ export const initArticleScripts = () => {
   addShowGlossaryDefinitionClickListeners();
   addDetailsEventListeners();
   addEventListenersForZoom();
+  initAudioPlayers();
 };
 
 export {
@@ -55,4 +60,5 @@ export {
   removeDetailsEventListeners,
   addEventListenersForZoom,
   removeEventListenersForZoom,
+  initAudioPlayers,
 };

@@ -13,7 +13,9 @@ import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
+import AudioExample from './article/AudioExample';
 import { OneColumn } from '../../ndla-ui/lib/Layout/index';
+
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -229,6 +231,14 @@ storiesOf('Enkle komponenter', module)
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
+      </StoryBody>
+    </div>
+  ))
+  .add('Lydklipp', () => (
+    <div>
+      <StoryIntro title="Lydklipp" />
+      <StoryBody>
+        <AudioExample />
       </StoryBody>
     </div>
   ))

@@ -14,10 +14,12 @@ const AudioPlayer = ({ type, src, title, description }) => (
   <figure {...classes()}>
     <audio type={type} src={src} title={title} />
     <div {...classes('controls')}>
-      <button {...classes('play')}>Play</button>
-      <button {...classes('pause')}>Pause</button>
+      <button {...classes('play')}>
+        <span {...classes('play-icon')}>Play</span>
+        <span {...classes('pause-icon')}>Pause</span>
+      </button>
       <div {...classes('time')}>0</div>
-      <progress {...classes('progress')} value="0" max="1" />
+      <progress {...classes('progress')} tabIndex="0" value="0" max="1" />
     </div>
     <figcaption>
       {description}

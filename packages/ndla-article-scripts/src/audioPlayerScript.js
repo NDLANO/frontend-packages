@@ -15,12 +15,11 @@ const onTimeUpdate = (audioElement, progressBar, timeDisplay) => {
   progressBar.value = (currentTime / duration);
 };
 
-const onSeek = (event, audioElement, progressBar, timeDisplay) => {
-  const percent = event.offsetX / progressBar.offsetWidth;
+const onSeek = (percent, audioElement, progressBar, timeDisplay) => {
   const currentTime = percent * audioElement.duration;
 
   audioElement.currentTime = currentTime;
-  progressBar.value = percent / 100;
+  progressBar.value = percent;
   timeDisplay.innerHTML = formatTime(currentTime);
 };
 
@@ -29,12 +28,15 @@ export const initAudioPlayers = () => {
     const wrapper = el;
     const audioElement = wrapper.querySelector('audio');
     const playButton = wrapper.querySelector('.c-audio-player__play');
-    const pauseButton = wrapper.querySelector('.c-audio-player__pause');
     const progressBar = wrapper.querySelector('.c-audio-player__progress');
     const timeDisplay = wrapper.querySelector('.c-audio-player__time');
 
-    const toggleStateClasses = () => {
-      wrapper.classList.toggle('c-audio-player--playing');
+    const toggleStateClasses = (playing) => {
+      if (playing) {
+        wrapper.classList.add('c-audio-player--playing');
+      } else {
+        wrapper.classList.remove('c-audio-player--playing');
+      }
     };
 
     audioElement.addEventListener('timeupdate', () => {
@@ -42,22 +44,39 @@ export const initAudioPlayers = () => {
     });
 
     audioElement.addEventListener('ended', () => {
-      toggleStateClasses();
+      toggleStateClasses(false);
     })
 
     progressBar.addEventListener('click', (event) => {
-      onSeek(event, audioElement, progressBar, timeDisplay);
+      const percent = event.offsetX / progressBar.offsetWidth;
+      onSeek(percent, audioElement, progressBar, timeDisplay);
     });
 
+    progressBar.addEventListener('keydown', (event) => {
+      if(event.key === 'ArrowLeft' || event.key === 'Left') {
+        let newValue = parseFloat(progressBar.value) - 0.1;
+        if (newValue < 0) {
+          newValue = 0;
+        }
+
+        onSeek(newValue, audioElement, progressBar, timeDisplay);
+      } else if (event.key === 'ArrowRight' || event.key === 'Right') {
+        let newValue = parseFloat(progressBar.value) + 0.1;
+        if (newValue > 1) {
+          newValue = 1;
+        }
+        onSeek(newValue, audioElement, progressBar, timeDisplay);
+      }
+    });
 
     playButton.onclick = () => {
-      toggleStateClasses();
-      audioElement.play();
+      if (audioElement.paused) {
+        audioElement.play();
+        toggleStateClasses(true);
+      } else {
+        audioElement.pause();
+        toggleStateClasses(false);
+      }
     };
-
-    pauseButton.onclick = () => {
-      toggleStateClasses();
-      audioElement.pause();
-    }
   });
 };

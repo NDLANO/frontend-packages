@@ -7,18 +7,18 @@
     padding: 0 16px;
   }
 
-  &__pause {
+  &__pause-icon {
     display: none;
   }
 
   &--playing {
     .c-audio-player {
-      &__play {
+      &__play-icon {
         display: none;
       }
 
-      &__pause {
-        display: block;
+      &__pause-icon {
+        display: inline;
       }
     }
   }

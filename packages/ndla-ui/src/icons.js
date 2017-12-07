@@ -14,7 +14,6 @@ import elementType from 'react-prop-types/lib/elementType';
 import BookIcon from './internal-icons/Book';
 import DownloadIcon from './internal-icons/Download';
 import EmbedIcon from './internal-icons/Embed';
-import InsertTemplateIcon from './internal-icons/InsertTemplate';
 import OpenWindowIcon from './internal-icons/OpenWindow';
 
 function Icon(props) {
@@ -33,9 +32,6 @@ Icon.propTypes = {
 export const Book = props => <Icon {...props} icon={BookIcon} />;
 export const Download = props => <Icon {...props} icon={DownloadIcon} />;
 export const Embed = props => <Icon {...props} icon={EmbedIcon} />;
-export const InsertTemplate = props => (
-  <Icon {...props} icon={InsertTemplateIcon} />
-);
 export const OpenWindow = props => <Icon {...props} icon={OpenWindowIcon} />;
 
 export default Icon;

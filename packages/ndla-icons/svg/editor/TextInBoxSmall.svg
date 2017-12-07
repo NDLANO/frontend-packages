@@ -1,0 +1,17 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="22"
+  height="20"
+  viewBox="0 0 22 20"
+  data-license="CC-BY 4.0"
+  data-source="Knowit">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="20.5" height="18.5" x=".75" y=".75" stroke="#343434" stroke-width="1.5"/>
+    <g fill="#343434" fill-rule="nonzero" transform="translate(4 3.7)">
+      <polygon points="0 5.167 14 5.167 14 3.667 0 3.667"/>
+      <polygon points="0 1.5 14 1.5 14 0 0 0"/>
+      <polygon points="0 8.833 14 8.833 14 7.333 0 7.333"/>
+      <polygon points="0 12.5 14 12.5 14 11 0 11"/>
+    </g>
+  </g>
+</svg>

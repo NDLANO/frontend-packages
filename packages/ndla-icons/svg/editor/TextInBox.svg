@@ -1,13 +1,17 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  data-license="CC-BY 4.0"
-  data-source="Knowit"
-  width="29"
+  width="33"
   height="32"
-  viewBox="0 0 29 32">
-  <path
-    fill="none"
-    stroke="#444"
-    d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
-  />
-</svg>;
+  viewBox="0 0 33 32"
+  data-license="CC-BY 4.0"
+  data-source="Knowit">
+  <g fill="none" fill-rule="evenodd" transform="translate(.889)">
+    <rect width="30.5" height="30.5" x=".75" y=".75" stroke="#343434" stroke-width="1.5"/>
+    <g fill="#343434" fill-rule="nonzero" transform="translate(6 8)">
+      <polygon points="0 6.206 20 6.206 20 4.706 0 4.706"/>
+      <polygon points="0 1.5 20 1.5 20 0 0 0"/>
+      <polygon points="0 10.912 20 10.912 20 9.412 0 9.412"/>
+      <polygon points="0 15.618 20 15.618 20 14.118 0 14.118"/>
+    </g>
+  </g>
+</svg>

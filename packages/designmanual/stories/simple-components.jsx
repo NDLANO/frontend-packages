@@ -691,7 +691,7 @@ storiesOf('Enkle komponenter', module)
             </tr>
           </thead>
           <tbody>
-            {['Book', 'Download', 'Embed', 'InsertTemplate', 'OpenWindow'].map(
+            {['Book', 'Download', 'Embed', 'OpenWindow'].map(
               key => (
                 <tr key={key}>
                   <td>

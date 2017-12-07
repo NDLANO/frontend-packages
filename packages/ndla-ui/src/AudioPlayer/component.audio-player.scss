@@ -2,9 +2,8 @@
   &__controls {
     display: flex;
     align-items: center;
-    background: $brand-grey--lightest;
-    margin-bottom: $spacing--small;
-    padding: 8px 16px;
+    background: $brand-grey--lighter;
+    padding: $spacing--small/2 $spacing;
   }
 
   &__play {
@@ -58,18 +57,18 @@
 
   &__progress-background, &__progress-played {
     position: absolute;
-    top: 10px;
+    top: 13px;
     left: 0;
-    height: 10px;
+    height: 4px;
   }
 
   &__progress-background {
-    background: $brand-color--tertiary;
+    background: $white;
     width: 100%;
   }
 
   &__progress-played {
-   background: $brand-color--secondary;
+   background: $primary-color;
   }
 
   .c-license-icons {

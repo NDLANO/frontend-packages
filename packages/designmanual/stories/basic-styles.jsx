@@ -940,13 +940,6 @@ storiesOf('Grunnstiler', module)
               <li>Underlistepunkt 1</li>
               <li>Underlistepunkt 2</li>
               <li>Underlistepunkt 3</li>
-              <li>
-                {' '}
-                Under-underliste:
-                <ul>
-                  <li>Under-underlistepunkt 1</li>
-                </ul>
-              </li>
             </ul>
           </li>
         </ul>

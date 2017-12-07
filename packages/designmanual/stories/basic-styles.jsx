@@ -940,13 +940,6 @@ storiesOf('Grunnstiler', module)
               <li>Underlistepunkt 1</li>
               <li>Underlistepunkt 2</li>
               <li>Underlistepunkt 3</li>
-              <li>
-                {' '}
-                Under-underliste:
-                <ul>
-                  <li>Under-underlistepunkt 1</li>
-                </ul>
-              </li>
             </ul>
           </li>
         </ul>
@@ -963,22 +956,8 @@ storiesOf('Grunnstiler', module)
           </li>
         </ul>
         <h2 className="u-heading">Liste over to kolonner</h2>
+        <p>Skal brukes til korte ord og utrykk.</p>
         <ul className="o-list--two-columns">
-          <li>Listepunkt 1</li>
-          <li>Listepunkt 2</li>
-          <li>Listepunkt 3</li>
-          <li>Listepunkt 4</li>
-          <li>Listepunkt 5</li>
-          <li>Listepunkt 6</li>
-          <li>Listepunkt 7</li>
-          <li>Listepunkt 8</li>
-          <li>Listepunkt 9</li>
-          <li>Listepunkt 10</li>
-          <li>Listepunkt 11</li>
-          <li>Listepunkt 12</li>
-        </ul>
-        <h2 className="u-heading">Liste over tre kolonner</h2>
-        <ul className="o-list--three-columns">
           <li>Listepunkt 1</li>
           <li>Listepunkt 2</li>
           <li>Listepunkt 3</li>
@@ -998,7 +977,7 @@ storiesOf('Grunnstiler', module)
           <li>Listepunkt</li>
           <li>
             Underliste:
-            <ol>
+            <ol className="ol-list--roman">
               <li>Underlistepunkt</li>
               <li>Underlistepunkt</li>
               <li>Underlistepunkt</li>

@@ -5,7 +5,19 @@ module.exports = {
     rules: [
       {
         test: /.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        loaders: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './.storybook/postcss.config.js',
+              },
+            },
+          },
+          'sass-loader',
+        ],
         include: path.resolve(__dirname, '../../ndla-ui/src/'),
       },
     ],

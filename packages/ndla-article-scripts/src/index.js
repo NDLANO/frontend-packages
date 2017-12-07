@@ -7,12 +7,6 @@
  */
 
 import {
-  updateIFrameDimensions,
-  addEventListenerForResize,
-  removeEventListenerForResize,
-} from './iframeScripts';
-
-import {
   addAsideClickListener,
   removeAsideClickListener,
 } from './asideScripts';
@@ -21,7 +15,17 @@ import {
   addShowFigureDetailsClickListeners,
   addCloseFigureDetailsClickListeners,
   addCopyToClipboardListeners,
+  updateIFrameDimensions,
+  addEventListenerForResize,
+  removeEventListenerForResize,
+  addEventListenersForZoom,
+  removeEventListenersForZoom,
 } from './figureScripts';
+
+import {
+  addDetailsEventListeners,
+  removeDetailsEventListeners,
+} from './detailsScript';
 
 import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
 
@@ -33,6 +37,8 @@ export const initArticleScripts = () => {
   addShowFigureDetailsClickListeners();
   addCloseFigureDetailsClickListeners();
   addShowGlossaryDefinitionClickListeners();
+  addDetailsEventListeners();
+  addEventListenersForZoom();
 };
 
 export {
@@ -45,4 +51,8 @@ export {
   addCopyToClipboardListeners,
   addShowFigureDetailsClickListeners,
   addShowGlossaryDefinitionClickListeners,
+  addDetailsEventListeners,
+  removeDetailsEventListeners,
+  addEventListenersForZoom,
+  removeEventListenersForZoom,
 };

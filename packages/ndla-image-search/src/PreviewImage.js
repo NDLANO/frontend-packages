@@ -37,7 +37,7 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
         </h2>
         <div {...classes('copyright-author')}>
           <span {...classes('text', 'right')}>
-            {image.copyright.authors.map(author => author.name).join(', ')}
+            {image.copyright.creators.map(creator => creator.name).join(', ')}
           </span>
         </div>
         <div {...classes('license')}>
@@ -62,7 +62,23 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
 }
 
 PreviewImage.propTypes = {
-  image: PropTypes.object.isRequired,
+  image: PropTypes.shape({
+    imageUrl: PropTypes.string.isRequired,
+    title: PropTypes.shape({
+      title: PropTypes.string,
+    }),
+    copyright: PropTypes.shape({
+      license: PropTypes.shape({
+        description: PropTypes.string.isRequired,
+      }),
+      creators: PropTypes.arrayOf(
+        PropTypes.shape({
+          type: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+        }),
+      ),
+    }).isRequired,
+  }).isRequired,
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
 };

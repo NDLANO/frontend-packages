@@ -5,6 +5,7 @@ node_modules
 es/
 lib/
 dist/
+storybook-static/
 .DS_Store
 *.iml
 /.idea

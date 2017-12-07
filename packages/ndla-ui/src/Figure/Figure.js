@@ -13,7 +13,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
+
 import LicenseByline from '../LicenseByline';
+import Button from '../button/Button';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -28,31 +30,47 @@ export const FigureDetails = ({
   children,
   authors,
   origin,
+  title,
   messages,
   licenseRights,
-}) => (
-  <div {...classes('license')} id="figmeta">
+  id: headingLabelId,
+  licenseUrl,
+}) => [
+  <div key="backdrop" className="o-backdrop" />,
+  <div
+    key="license"
+    {...classes('license')}
+    role="dialog"
+    aria-hidden="true"
+    aria-labelledby={headingLabelId}>
     <button {...classes('close')}>{messages.close}</button>
     <div className="u-expanded">
       <div {...classLicenses('details')}>
-        <h3 {...classLicenses('title')}>{messages.rulesForUse}</h3>
+        <h3 id={headingLabelId} {...classLicenses('title')}>
+          {messages.rulesForUse}
+        </h3>
         <LicenseByline withDescription licenseRights={licenseRights} />
         <a
           className="c-figure-license__link"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://creativecommons.org/licenses/by-nc-nd/3.0/no/">
-          {messages.learnAboutOpenLicenses}
+          href={licenseUrl}>
+          {messages.learnAboutLicenses}
         </a>
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classes('list')}>
+            {title && (
+              <li className="c-figure-list__item" key={uuid()}>
+                {`${messages.title}: ${title}`}
+              </li>
+            )}
             {authors.map(author => (
-              <li
-                key={uuid()}
-                className="c-figure-list__item">{`${author.type}: ${author.name}`}</li>
+              <li key={uuid()} className="c-figure-list__item">{`${
+                author.type
+              }: ${author.name}`}</li>
             ))}
             {origin && (
-              <li>
+              <li className="c-figure-list__item" key={uuid()}>
                 {messages.source}:{' '}
                 {origin.startsWith('http') ? (
                   <a href={origin} target="_blank" rel="noopener noreferrer">
@@ -68,10 +86,11 @@ export const FigureDetails = ({
         </div>
       </div>
     </div>
-  </div>
-);
+  </div>,
+];
 
 FigureDetails.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   origin: PropTypes.string,
@@ -85,8 +104,11 @@ FigureDetails.propTypes = {
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
-    learnAboutOpenLicenses: PropTypes.string.isRequired,
+    learnAboutLicenses: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   }).isRequired,
+  title: PropTypes.string,
+  licenseUrl: PropTypes.string.isRequired,
 };
 
 export const FigureCaption = ({
@@ -100,7 +122,7 @@ export const FigureCaption = ({
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
         <LicenseByline licenseRights={licenseRights}>
-          <span className="article_meta">
+          <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
           <button {...classes('captionbtn')}>{reuseLabel}</button>
@@ -121,14 +143,63 @@ FigureCaption.propTypes = {
   ),
 };
 
-export const Figure = ({ children, ...rest }) => (
-  <figure {...classes()} {...rest}>
-    {children}
-  </figure>
-);
+export const Figure = ({
+  children,
+  captionView,
+  type,
+  resizeIframe,
+  supportFloating,
+  ...rest
+}) => {
+  let typeClass = null;
+  let content = null;
+
+  if (type !== 'full') {
+    typeClass = `u-float-${type}`;
+    content = (
+      <Button stripped className="u-fullw">
+        {children}
+      </Button>
+    );
+  } else {
+    content = children;
+  }
+
+  const modifiers = [];
+
+  if (resizeIframe) {
+    modifiers.push('resize');
+  }
+
+  if (supportFloating) {
+    modifiers.push('support-floating');
+  }
+
+  return (
+    <figure
+      {...classes('', modifiers, typeClass)}
+      data-toggleclass={typeClass}
+      {...rest}>
+      {content}
+      {captionView}
+    </figure>
+  );
+};
 
 Figure.propTypes = {
   children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
+  resizeIframe: PropTypes.bool,
+  captionView: PropTypes.node,
+  // only to support aside (temp).
+  supportFloating: PropTypes.bool,
+};
+
+Figure.defaultProps = {
+  type: 'full',
+  resizeIframe: false,
+  captionView: null,
+  supportFloating: false,
 };
 
 export default Figure;

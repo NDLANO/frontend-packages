@@ -32,5 +32,5 @@ Hero.propTypes = {
 
 Hero.defaultProps = {
   red: false,
-  grenn: false,
+  green: false,
 };

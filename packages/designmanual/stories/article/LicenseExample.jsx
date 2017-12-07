@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
 import { uuid } from 'ndla-util';
 
@@ -15,12 +16,21 @@ import {
   MediaList,
   MediaListItem,
   MediaListItemBody,
-  MediaListCCLink,
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
 } from 'ndla-ui';
-import { Document, Audio } from 'ndla-ui/icons';
+import { Document, Audio } from 'ndla-icons/common';
+
+import {
+  COPYRIGHTED,
+  getMicroDataNamespaceByType,
+  microDataTypes,
+  metaTypes,
+} from 'ndla-licenses';
+
+const byncndLicenseAbbreviation = 'by-nc-nd';
+const bysaLicenseAbbreviation = 'by-sa';
 
 const VideoContent = () => (
   <div>
@@ -33,27 +43,37 @@ const VideoContent = () => (
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
-          <iframe
-            title="Youtube video"
-            width="200"
-            height="113"
-            src="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
-            frameBorder="0"
-            allowFullScreen=""
-          />
+          <a href="https://example.com">
+            <img
+              src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?auto=format&fit=crop&w=500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+              width="260"
+              alt="alt"
+            />
+          </a>
         </MediaListItemImage>
         <MediaListItemBody
-          license="by-nc-nd"
-          title="Regler for bruk av videoen:">
-          <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+          license={byncndLicenseAbbreviation}
+          title="Regler for bruk av videoen:"
+          resourceUrl="https://www.youtube.com/embed/f9VriNNRn0U?feature=oembed"
+          resourceType="video">
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  {
+                    label: 'Opphavsmann',
+                    description: 'Fotograf Ola N',
+                    metaType: metaTypes.author,
+                  },
                   {
                     label: 'Rettighetshaver',
                     description: 'Leverandør NTB scanpix',
+                    metaType: metaTypes.copyrightHolder,
+                  },
+                  {
+                    label: 'Korrektur',
+                    description: 'Kari N',
+                    metaType: metaTypes.contributor,
                   },
                 ]}
               />
@@ -93,24 +113,37 @@ const TextContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a
+              href="https://example.com"
+              itemProp="url"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license="by-sa"
-            title="Regler for bruk av teksten:">
-            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            license={bysaLicenseAbbreviation}
+            title="Regler for bruk av teksten:"
+            resourceUrl=""
+            resourceType="text">
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
-                    { label: 'Publiseringsdato', description: '12.05.13' },
+                    {
+                      label: 'Publiseringsdato',
+                      description: '12.05.13',
+                      metaType: metaTypes.other,
+                    },
                   ]}
                 />
                 <button
@@ -144,22 +177,31 @@ const AudioContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a
+              href="https://example.com"
+              itemProp="url"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Audio className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license="by-sa"
-            title="Regler for bruk av lydfilen:">
-            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            license={bysaLicenseAbbreviation}
+            title="Regler for bruk av lydfilen:"
+            resourceUrl=""
+            resourceType="audio">
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                   ]}
                 />
@@ -187,7 +229,7 @@ const ImageContent = () => (
     <div className="u-introduction">
       <h2>Slik bruker du bilder fra artikkelen</h2>
       <p className="article-introduction">
-        Husk å kopier teksten som skal legges ved bildet der du bruker det.
+        Husk å kopiere teksten som skal vises med bildet der du bruker det.
       </p>
     </div>
     <MediaList>
@@ -198,26 +240,44 @@ const ImageContent = () => (
       ].map(src => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
-            <a href="">
-              <img width="260" alt="alt" src={src} />
+            <a href="https://example.com">
+              <img
+                width="260"
+                alt="alt"
+                src={src}
+                itemProp="url"
+                itemType={getMicroDataNamespaceByType(microDataTypes.url)}
+              />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license="by-nc-nd"
-            title="Regler for bruk av bildet:">
-            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            license={byncndLicenseAbbreviation}
+            title="Regler for bruk av bildet:"
+            resourceUrl={src}
+            resourceType="image">
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Tittel',
+                      description: 'Snølagt fjell',
+                      metaType: metaTypes.title,
+                    },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                     {
                       label: 'Kilde',
                       description: 'https://www.wikimedia.org/',
+                      metaType: metaTypes.other,
                     },
                   ]}
                 />
@@ -238,30 +298,37 @@ const ImageContent = () => (
       ))}
       <MediaListItem>
         <MediaListItemImage>
-          <a href="">
+          <a href="https://example.com">
             <img
               width="260"
               alt="alt"
               src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg"
+              itemProp="url"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
             />
           </a>
         </MediaListItemImage>
         <MediaListItemBody
-          license="by-nc-nd"
+          license={byncndLicenseAbbreviation}
           title="Regler for bruk av bildet:">
-          <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
           <MediaListItemActions>
             <div className="c-medialist__ref">
               <MediaListItemMeta
                 items={[
-                  { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                  {
+                    label: 'Opphavsmann',
+                    description: 'Fotograf Ola N',
+                    metaType: metaTypes.author,
+                  },
                   {
                     label: 'Rettighetshaver',
                     description: 'Leverandør NTB scanpix',
+                    metaType: metaTypes.copyrightHolder,
                   },
                   {
                     label: 'Kilde',
                     description: 'https://www.wikimedia.org/',
+                    metaType: metaTypes.other,
                   },
                 ]}
               />
@@ -300,7 +367,7 @@ const H5PContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a href="https://example.com">
               <iframe
                 title="H5P"
                 src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
@@ -309,6 +376,8 @@ const H5PContent = () => (
                 height="373"
                 frameBorder="0"
                 allowFullScreen="allowfullscreen"
+                itemProp="url"
+                itemType={getMicroDataNamespaceByType(microDataTypes.url)}
               />
               <script
                 src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
@@ -317,17 +386,23 @@ const H5PContent = () => (
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license="by-nc-nd"
-            title="Regler for bruk av H5P-innholdet:">
-            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            license={byncndLicenseAbbreviation}
+            title="Regler for bruk av H5P-innholdet:"
+            resourceUrl="http://ndla.no/nb/h5p/embed/146132?fag=127756"
+            resourceType="h5p">
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                   ]}
                 />
@@ -372,22 +447,30 @@ const Files = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a
+              href="https://example.com"
+              itemProp="url"
+              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license="by-nc-nd"
-            title="Regler for bruk av filen:">
-            <MediaListCCLink>Lær mer om åpne lisenser</MediaListCCLink>
+            license={COPYRIGHTED}
+            title="Regler for bruk av filen:"
+            resourceUrl="">
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta
                   items={[
-                    { label: 'Opphavsmann', description: 'Fotograf Ola N' },
+                    {
+                      label: 'Opphavsmann',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
                     {
                       label: 'Rettighetshaver',
                       description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
                     },
                   ]}
                 />
@@ -412,7 +495,9 @@ const Files = () => (
 
 export const LicenseBox = () => (
   <div>
-    <h1 className="license__heading">Slik gjenbruker du innhold</h1>
+    <h1 className="license__heading" id="license-heading">
+      Slik gjenbruker du innhold
+    </h1>
 
     <Tabs
       tabs={[
@@ -427,12 +512,21 @@ export const LicenseBox = () => (
   </div>
 );
 
-const LicenseExample = () => (
+const LicenseExample = ({ expanded }) => (
   <ToggleLicenseBox
     openTitle="Bruk artikkel"
     closeTitle="Lukk boks"
-    licenseBox={<LicenseBox />}
-  />
+    expanded={expanded}>
+    <LicenseBox />
+  </ToggleLicenseBox>
 );
+
+LicenseExample.propTypes = {
+  expanded: PropTypes.bool,
+};
+
+LicenseExample.defaultProps = {
+  expanded: false,
+};
 
 export default LicenseExample;

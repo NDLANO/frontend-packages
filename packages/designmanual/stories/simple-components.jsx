@@ -3,45 +3,70 @@ import React, { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
+import * as licenseIcons from 'ndla-icons/license';
+import * as commonIcons from 'ndla-icons/common';
+import * as editorIcons from 'ndla-icons/editor';
+import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
-import { Aside, Button, Logo, LayoutItem, LicenseByline } from 'ndla-ui';
-import { StoryIntro, StoryBody } from './wrappers';
-import article from '../dummydata/index';
+import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
+import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
-
-const articleHTML = document.createElement('div');
-articleHTML.innerHTML = article.article4.content[0].content;
+import { OneColumn } from '../../ndla-ui/lib/Layout/index';
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
     <div>
       <StoryIntro title="Bilde">
         <p>
-          Bilder vises i tre formater: Fullbredde midtstilt, venstrestilt, og
-          høyrestilt. Bilder som ikke er fullbredde kan ekspanderes på klikk.
+          Bilder vises i tre formater: fullbredde midtstilt, venstrestilt og
+          høyrestilt. Bilder som ikke er fullbredde, kan ekspanderes på klikk.
         </p>
         <p>
-          Under bildet vises lisensikoner, forfatter, og handlingsknapp «Bruk
-          bildet» for å se lisensboksen for bildet.
+          Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
+          bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
         </p>
         <p>
-          Ved klikk på «Last ned bilde» i lisensboksen, laster man ned
+          Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
           fullversjonen av bildet.
         </p>
       </StoryIntro>
 
       <StoryBody>
+        <h2>Fullbredde</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          runScripts>
+          <Image
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til venstre</h2>
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FigureWithLicense classes="u-float-left">
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+        <FigureWithLicense
+          type="left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -62,10 +87,22 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense>
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+
+        <h2>Flyt til høyre</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+
+        <FigureWithLicense
+          type="right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -74,12 +111,92 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense classes="u-float-right">
-          <img
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til høyre, liten versjon</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          type="small-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2>Flyt til venstre, liten versjon</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FigureWithLicense
+          type="small-left"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -94,9 +211,9 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Bilde under ingress">
         <p>
           Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk
-          helst bilder av mennesker, relevante og naturlige bilder. Bildet må
-          være i landskapsformat, slik at det ikke blir så høyt at det skyver
-          brødteksten for langt ned på siden.
+          helst bilder av mennesker og bilder som er relevante og naturlige.
+          Bildet må være i landskapsformat, slik at det ikke blir så høyt at det
+          skyver brødteksten for langt ned på siden.
         </p>
         <p>
           Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
@@ -104,10 +221,12 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense authors="" caption="">
-          <img
+        <FigureWithLicense
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          runScripts>
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
       </StoryBody>
@@ -117,8 +236,8 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Boks i tekst">
         <p>
-          En boks i teksten kan brukes for å fremheve noe av særlig interesse,
-          annet enn sitat (som det allerede fins sitatstil til).
+          En boks i teksten kan brukes for å framheve noe av særlig interesse,
+          annet enn sitat (som det fins egen sitatstil til).
         </p>
         <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
       </StoryIntro>
@@ -130,10 +249,10 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
@@ -173,6 +292,27 @@ storiesOf('Enkle komponenter', module)
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
+          <div className="c-bodybox c-bodybox--extended">
+            <p>En boks med flytelementer</p>
+            <FigureWithLicense type="right" authors="" caption="" runScripts>
+              <Image
+                alt=""
+                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+              />
+            </FigureWithLicense>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+          </div>
           <LayoutItem layout="center">
             <div className="c-bodybox">
               <h3>
@@ -238,16 +378,117 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
+  .add('Embedded innhold', () => (
+    <div>
+      <StoryIntro title="Embedded innhold (Youtube, brightcove, HP5 osv.)">
+        <p>
+          Embedded innhold skal bruke Figure komponenten (må ikke være iframe):
+          <code>{`<Figure>\n  <iframe ... />\n</Figure>`}</code>
+        </p>
+        <p>
+          Om det er en iframe der resize script skal kjøres må resizeIframe
+          settes til true
+          <code>{`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}</code>
+        </p>
+        <p>
+          Om det er satt høyde og bredde på iframen (som vist under) vil den
+          beholde forholdet mellom høyde og bredde (så lenge resize scriptet er
+          kjørt).
+          <code>{`<iframe width="400" height="300" ... />`}</code>
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
+        <FigureWithLicense resizeIframe runScripts noCaption>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Title"
+            width="600"
+            height="338"
+          />
+        </FigureWithLicense>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
+        <FigureWithLicense resizeIframe noCaption>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </FigureWithLicense>
+
+        <h2 className="u-heading">
+          Embedded innhold (brightcove) med lisens og caption
+        </h2>
+        <FigureWithLicense
+          resizeIframe
+          caption="Utholdenhet - animasjon av oksygentransporten"
+          reuseLabel="videoen">
+          <iframe
+            title="Video: Utholdenhet - animasjon av oksygentransporten"
+            height="270"
+            width="480"
+            frameBorder="0"
+            src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+            allowFullScreen
+          />
+        </FigureWithLicense>
+
+        <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
+        <Aside float>
+          <div>
+            <h2>Høyrespalte</h2>
+            <p>Høyrespalten skal fases ut.</p>
+            <p>
+              I en midlertidig fase under flytting av innhold fra gammelt til
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
+            </p>
+            <p>
+              Om artikkelen har et bilde under ingressen, må høyrespalten
+              plasseres under denne.
+            </p>
+            <p>
+              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+            </p>
+          </div>
+        </Aside>
+        <p>
+          Dette er måte å vise embedded innhold sidestilt med høyrekolonne.
+          Denne varianten skal kun brukes om det er nødvendig. Visningen fases
+          bort når høyrespalte fases bort.
+        </p>
+        <FigureWithLicense resizeIframe noCaption supportFloating>
+          <iframe
+            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
+            title="Video without dimensions"
+          />
+        </FigureWithLicense>
+      </StoryBody>
+    </div>
+  ))
   .add('Bruk av lenker', () => (
     <div>
       <StoryIntro title="Bruk av lenker">
         <p>
           Lenker på <a href="//ndla.no">ndla.no</a> bruker den vanlige
-          konvensjonen med underlinje. Lenker skal i hovedsak åpne i samme
-          vindu, (det vil si, bruke <code>target=&quot;_self&quot;</code>) eller
-          ingen target-attributt, med mindre den inngår i et skjema, eller i en
-          læringssammenhengen hvor det er nødvendig at brukeren beholder vinduet
-          eller fanen man står i.
+          konvensjonen med underlinje. Lenker skal i hovedsak åpne seg i samme
+          vindu (det vil si at vi bruker <code>target=&quot;_self&quot;</code>{' '}
+          eller ingen target-attributt). Unntaket er hvis lenken inngår i et
+          skjema eller læringssammenhengen gjør det er nødvendig at brukerne
+          beholder vinduet eller fanen de står i.
         </p>
       </StoryIntro>
     </div>
@@ -257,7 +498,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Faktaboks og høyrespalte">
         <p>
           For alt nytt innhold på ndla.no skal ikke flytende høyrespalte
-          benyttes, i stedet benytter man faktabokser innenfor innholdsspalten.
+          benyttes. I stedet benytter vi faktabokser innenfor innholdsspalten.
           Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
         </p>
         <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
@@ -270,22 +511,23 @@ storiesOf('Enkle komponenter', module)
         </p>
         <div className="c-article-byline">
           <span className="c-article-byline__authors">
-            <Icons.User /> [Opphavsperson]. [lisens]
+            <commonIcons.User /> [Opphavsperson]. [lisens]
           </span>{' '}
           <span className="c-article-byline__date">
-            <Icons.Time /> Publisert [dato]
+            <commonIcons.Time /> Publisert [dato]
           </span>
           <LicenseExample />
         </div>
         <Aside float>
           <div>
-            <div className="c-aside__title">Høyrespalte</div>
+            <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
-              nytt nettsted, kan den likevel brukes. Innholdet skal etter hvert
-              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
-              innhold kan bakes inn i artikkelteksten, eller slettes.
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
             </p>
             <p>
               Om artikkelen har et bilde under ingressen, må høyrespalten
@@ -313,18 +555,19 @@ storiesOf('Enkle komponenter', module)
         </p>
         <Aside>
           <div>
-            <div className="c-aside__title">Faktaboks</div>
+            <h2>Faktaboks</h2>
             <p>
               En faktaboks kan inneholde punktlister eller korte fakta som er
-              relevant til artikkelens innhold.
+              relevant for artikkelens innhold.
             </p>
             <p>
-              Det anbefales å ikke ha for mye innhold i en faktaboks, for å i
-              størst mulig grad beholde lese-konteksten.
+              Det anbefales å ikke ha for mye innhold i faktaboks, slik at
+              lese-konteksten i størst mulig grad beholdes.
             </p>
+            <h2>Enkel tittel</h2>
             <p>
               Faktaboksen kan også brukes til å oppsummere innhold i slutten av
-              en artikkel. Og den kan inneholde lisensiering om eksternt innhold
+              en artikkel, og den kan inneholde lisensiering om eksternt innhold
               er brukt.
             </p>
             <div className="c-source-list">
@@ -346,6 +589,28 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
+  .add('Ekspanderbar boks', () => (
+    <div>
+      <StoryIntro title="Ekspanderbar boks" />
+      <StoryBody>
+        <details>
+          <summary>Oppsummering av innhold</summary>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+        </details>
+      </StoryBody>
+    </div>
+  ))
   .add('Kildehenvisninger', () => (
     <div>
       <StoryIntro title="Kildehenvisninger">
@@ -356,8 +621,8 @@ storiesOf('Enkle komponenter', module)
           </a>.
         </p>
         <p>
-          I teksten brukes en enkel nummerering for å henvise til referanse, og
-          tallet lenkes til den aktuelle referansen.
+          I teksten brukes en enkel nummerering for å henvise til referanse.
+          Tallet lenkes til den aktuelle referansen.
         </p>
         <p>
           I referanselisten nederst lenkes hver referanse igjen til hvor de
@@ -405,7 +670,18 @@ storiesOf('Enkle komponenter', module)
   .add('Ikoner', () => (
     <div>
       <StoryIntro title="Ikoner" />
+      <OneColumn>
+        <h2>Felles</h2>
+        <IconList icons={commonIcons} folder="common" />
+        <h2>Lisens</h2>
+        <IconList icons={licenseIcons} folder="license" />
+        <h2>Handling</h2>
+        <IconList icons={actionIcons} folder="editor" />
+        <h2>Editor</h2>
+        <IconList icons={editorIcons} folder="editor" />
+      </OneColumn>
       <StoryBody>
+        <h2>Ikoner som ikke er i bruk</h2>
         <table className="c-table">
           <thead>
             <tr>
@@ -415,81 +691,19 @@ storiesOf('Enkle komponenter', module)
             </tr>
           </thead>
           <tbody>
-            {[
-              'Additional',
-              'AlignCenter',
-              'AlignJustify',
-              'AlignLeft',
-              'AlignRight',
-              'Audio',
-              'Bold',
-              'Book',
-              'Camera',
-              'Copy',
-              'Crop',
-              'Cross',
-              'Document',
-              'Download',
-              'Embed',
-              'FactBox',
-              'FocalPoint',
-              'Grid',
-              'Heading1',
-              'Heading2',
-              'Heading3',
-              'Home',
-              'H5P',
-              'Ingress',
-              'InsertTemplate',
-              'Italic',
-              'LicenseBy',
-              'LicenseCc',
-              'LicenseNc',
-              'LicenseNd',
-              'LicenseSa',
-              'Link',
-              'ListCircle',
-              'ListNumbered',
-              'ListSquare',
-              'OpenWindow',
-              'Paragraph',
-              'Path',
-              'Pencil',
-              'Pilcrow',
-              'Plus',
-              'Quote',
-              'Sad',
-              'Search',
-              'Section',
-              'Strikethrough',
-              'Table',
-              'TextInBox',
-              'Time',
-              'Underline',
-              'User',
-              'Video',
-            ].map(key => (
-              <tr key={key}>
-                <td>
-                  {createElement(Icons[key], { className: 'c-icon--medium' })}
-                </td>
-                <td>{key}</td>
-                <td>
-                  <code>&lt;Icons.{key} /&gt;</code>
-                </td>
-              </tr>
-            ))}
-            {['up', 'down', 'left', 'right'].map(key => (
-              <tr key={key}>
-                <td>
-                  <Icons.Arrow direction={key} />
-                </td>
-                <td>Arrow {key}</td>
-                <td>
-                  <code>&lt;Icons.Arrow direction=&quot;{key}&quot; /&gt;</code>
-                </td>
-              </tr>
-            ))}
+            {['Book', 'Download', 'Embed', 'InsertTemplate', 'OpenWindow'].map(
+              key => (
+                <tr key={key}>
+                  <td>
+                    {createElement(Icons[key], { className: 'c-icon--medium' })}
+                  </td>
+                  <td>{key}</td>
+                  <td>
+                    <code>&lt;Icons.{key} /&gt;</code>
+                  </td>
+                </tr>
+              ),
+            )}
           </tbody>
         </table>
       </StoryBody>
@@ -499,13 +713,13 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Knapper">
         <p>
-          Knapper er til å klikke på, ikke for å lenke til, og skal brukes til
-          interaktivitet på samme side, ikke for å sende brukeren til en ny side
-          (da brukes vanlig lenke).
+          Knapper er til å klikke på for å navigere på samme side, ikke for å
+          lenke til en annen. De skal altså brukes til interaktivitet på samme
+          side. For å sende brukeren til en annen side brukes vanlig lenke.
         </p>
         <p>
           Knapp med ramme brukes for de fleste knapper, men er det behov for
-          ekstra oppmerksomhet kan fylt knapp benyttes.
+          ekstra oppmerksomhet, kan fylt knapp benyttes.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -538,7 +752,7 @@ storiesOf('Enkle komponenter', module)
         <p>
           Logoen består av navnet NDLA i en spesiell typografi og bør
           hovedsakelig benyttes sammen med underteksten. Logo uten undertekst
-          kan benyttes i tilfeller der det kommer godt fram andre steder hvem
+          kan benyttes i tilfeller der det kommer godt fram andre steder hva
           NDLA er, eksempelvis på ndla.no.
         </p>
         <p>
@@ -549,10 +763,18 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
+        <h3>Logo uten url</h3>
         <Logo
           cssModifier="large"
           name
-          to="#"
+          altText="Nasjonal digital læringsarena"
+        />
+
+        <h3>Logo med url</h3>
+        <Logo
+          cssModifier="large"
+          name
+          to="/"
           altText="Nasjonal digital læringsarena"
         />
       </StoryBody>

@@ -10,7 +10,6 @@ import React from 'react';
 
 import {
   SiteNav,
-  SiteNavItem,
   Masthead,
   MastheadItem,
   Logo,
@@ -28,15 +27,8 @@ export const MastheadLeftRight = () => (
   </Masthead>
 );
 
-export const MastheadDefault = () => (
-  <Masthead>
-    <MastheadItem left>
-      <SiteNav>
-        <SiteNavItem to="#">Søk</SiteNavItem>
-        <SiteNavItem to="#">Kontakt</SiteNavItem>
-        <SiteNavItem to="#">Hjelp</SiteNavItem>
-      </SiteNav>
-    </MastheadItem>
+export const MastheadWithLogo = () => (
+  <Masthead fixed>
     <MastheadItem right>
       <Logo to="#" altText="Nasjonal digital læringsarena" />
     </MastheadItem>
@@ -51,7 +43,7 @@ export const MastheadWithTopicMenu = () => {
   };
 
   return (
-    <Masthead>
+    <Masthead fixed>
       <MastheadItem left>
         <SiteNav>
           <ClickToggle
@@ -85,4 +77,4 @@ export const MastheadWithTopicMenu = () => {
   );
 };
 
-export default MastheadDefault;
+export default MastheadWithTopicMenu;

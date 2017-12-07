@@ -6,19 +6,11 @@
  *
  */
 
-import { getLicenseByAbbreviation, getLicenseByNBTitle } from './licenses';
-
-import {
-  BY,
-  SA,
-  NC,
-  ND,
-  PD,
-  CC0,
-  CC,
-  COPY,
-  getLicenseRightByAbbreviation,
-} from './licenseRights';
+export {
+  getLicenseByAbbreviation,
+  getLicenseByNBTitle,
+  isCreativeCommonsLicense,
+} from './licenses';
 
 export {
   BY,
@@ -28,10 +20,22 @@ export {
   PD,
   CC0,
   CC,
-  COPY,
-  getLicenseByAbbreviation,
+  COPYRIGHTED,
   getLicenseRightByAbbreviation,
-  getLicenseByNBTitle,
-};
+} from './licenseRights';
 
-export default getLicenseByAbbreviation;
+export {
+  resourceTypes,
+  getResourceTypeNamespace,
+  microDataTypes,
+  getMicroDataNamespaceByType,
+  metaTypes,
+  getMicroDataNamespaceByMicroDataTypeWithFallback,
+} from './microData';
+
+export {
+  contributorTypes,
+  contributorGroups,
+  mkContributorString,
+  getGroupedContributorDescriptionList,
+} from './contributorTypes';

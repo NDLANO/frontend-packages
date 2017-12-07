@@ -8,8 +8,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
+
 import LicenseIconList from './LicenseIconList';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
+
+const classes = new BEMHelper({
+  name: 'license-byline',
+  prefix: 'c-',
+});
 
 const LicenseByline = ({
   children,
@@ -17,7 +24,7 @@ const LicenseByline = ({
   licenseRights,
   className,
 }) => (
-  <div className="license-byline">
+  <div {...classes()}>
     {!withDescription ? (
       <LicenseIconList className={className} licenseRights={licenseRights} />
     ) : (

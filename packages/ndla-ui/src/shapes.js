@@ -29,7 +29,7 @@ export const TopicShape = PropTypes.shape({
 export const FootNoteShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  authors: PropTypes.array.isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
   edition: PropTypes.string.isRequired,
   publisher: PropTypes.string.isRequired,
 });
@@ -38,18 +38,20 @@ export const ArticleShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   copyright: PropTypes.shape({
-    authors: PropTypes.array.isRequired,
+    authors: PropTypes.array,
+    creators: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
   }).isRequired,
-  created: PropTypes.string.isRequired,
   updated: PropTypes.string.isRequired,
 });
 
 export const ResourceShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  introduction: PropTypes.string,
-  coverPhotoUrl: PropTypes.string,
-  contentUri: PropTypes.string.isRequired,
+  contentUri: PropTypes.string,
   primary: PropTypes.bool,
 });

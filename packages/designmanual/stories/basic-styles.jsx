@@ -2,15 +2,18 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Table } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
+import { AnchorNavigation } from './helpers';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
   if (!articleHTML.getElementsByTagName(`h${level}`)[0]) {
-    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${level}>`;
+    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${
+      level
+    }>`;
   }
-  return `<div>Overskrift ${level}:</div><h${level}>${articleHTML.getElementsByTagName(
-    `h${level}`,
-  )[0].innerHTML} <h${level}>`;
+  return `<div>Overskrift ${level}:</div><h${level}>${
+    articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML
+  } <h${level}>`;
 };
 
 storiesOf('Grunnstiler', module)
@@ -168,13 +171,31 @@ storiesOf('Grunnstiler', module)
   .add('Typografi', () => (
     <div>
       <StoryIntro title="Typografi">
-        <p>
-          <a href="#fonter">Fonter</a>,{' '}
-          <a href="#storrelser">skriftstørrelser</a>,{' '}
-          <a href="#overskrifter">overskrifter</a>,{' '}
-          <a href="#ingress">ingress</a>, <a href="#avsnitt">avsnitt</a>,{' '}
-          <a href="#lenker">lenker</a>.
-        </p>
+        <AnchorNavigation
+          links={[
+            <a href="#fonter" target="_self">
+              Fonter
+            </a>,
+            <a href="#storrelser" target="_self">
+              Skriftstørrelser
+            </a>,
+            <a href="#overskrifter" target="_self">
+              Overskrifter
+            </a>,
+            <a href="#ingress" target="_self">
+              Ingress
+            </a>,
+            <a href="#avsnitt" target="_self">
+              Avsnitt
+            </a>,
+            <a href="#lenker" target="_self">
+              Lenker
+            </a>,
+            <a href="#midtstilttekst" target="_self">
+              Midtstilt tekst
+            </a>,
+          ]}
+        />
       </StoryIntro>
       <StoryBody>
         <h2 id="fonter" className="u-heading">
@@ -206,6 +227,11 @@ storiesOf('Grunnstiler', module)
             </tr>
             <tr>
               <td>Mellomoverskrifter</td>
+              <td>Source Sans Pro</td>
+              <td>700</td>
+            </tr>
+            <tr>
+              <td>Små overskrifter</td>
               <td>Source Sans Pro</td>
               <td>700</td>
             </tr>
@@ -242,60 +268,74 @@ storiesOf('Grunnstiler', module)
               <th>Størrelse på liten skjerm</th>
             </tr>
           </thead>
-          <tr>
-            <td>Overskrifter</td>
-            <td>
-              38 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(2.1rem)</span>
-            </td>
-            <td>
-              30 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.67rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Mellomoverskrifter</td>
-            <td>
-              22 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
-            </td>
-            <td>
-              22 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Ingress</td>
-            <td>
-              26 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.44rem)</span>
-            </td>
-            <td>
-              20 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Brødtekst</td>
-            <td>
-              18 px <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
-            </td>
-            <td>
-              16 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Metatekst</td>
-            <td>
-              16 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
-            </td>
-            <td>
-              16 px{' '}
-              <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Overskrifter</td>
+              <td>
+                38 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(2.1rem)</span>
+              </td>
+              <td>
+                30 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.67rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Mellomoverskrifter</td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Små overskrifter</td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Ingress</td>
+              <td>
+                26 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.44rem)</span>
+              </td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Brødtekst</td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+              <td>
+                16 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Metatekst</td>
+              <td>
+                16 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
+              </td>
+              <td>
+                16 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(0.88rem)</span>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <p>
@@ -309,25 +349,26 @@ storiesOf('Grunnstiler', module)
           Overskrifter skal markeres semantisk med riktige HTML-tagger. For
           eksempel:
         </p>
-        <code>{'<h1>Overskrift<h1>'}</code>
+        <code>{'<h1>Overskrift</h1>'}</code>
 
         <p>
-          Det er to nivåer av overskrifter. Bruker man likevel overskrifts-tag
-          for nivå 3, 4 osv. - vil disse få samme stil som nivå 2 nedenfor:
+          Det er tre nivåer av overskrifter. Bruker man likevel overskrifts-tag
+          for nivå 4, 5 osv, vil de få samme stil som nivå 3 nedenfor:
         </p>
         <div className="c-bodybox">
           <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
           <div dangerouslySetInnerHTML={{ __html: heading('', 2) }} />
+          <div dangerouslySetInnerHTML={{ __html: heading('', 3) }} />
         </div>
         <h2 id="ingress" className="u-heading">
           Ingress
         </h2>
-        <p>Ingresser skal være 1-2 setninger, og gi en oppsummering </p>
+        <p>Ingresser skal være 1-3 setninger, og gi en oppsummering.</p>
         <div className="c-bodybox">
           <section className="article_introduction">
             <p className="article_introduction">
               Idéutvikling er en viktig del av alt profesjonelt arbeid med
-              medieuttrykk. I vertøykassa si har medieprodusenten et knippe
+              medieuttrykk. I verktøykassa si har medieprodusenten et knippe
               fortelleteknikker og virkemidler innen design, tekst, lyd og
               bilde.
             </p>
@@ -338,21 +379,23 @@ storiesOf('Grunnstiler', module)
         </h2>
         <p>
           Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å
-          lese. Dette betyr at linjelengden ikke skal være for lang, og at vi
-          bruker stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter
-          som en standardstørrelse, men siden NDLA har mange teksttunge sider
-          bruker vi 18 punkter.
+          lese. Dette betyr at linjene ikke skal være for lange, og at vi bruker
+          stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter som en
+          standardstørrelse, men siden NDLA har mange teksttunge sider, bruker
+          vi 18 punkter.
         </p>
         <p>
-          En tekstlinje i full bredde skal utgjøre omtrent 50 – 75 tegn, om{' '}
+          En tekstlinje i full bredde skal utgjøre omtrent 50–75 tegn. Om{' '}
           <span className="u-mark">*</span>-tegnene i setningen under kommer på
           samme linje, er den for lang:
         </p>
         <div className="c-bodybox">
           <p className="u-serif">
-            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">*</span>isicing
-            elit, sed do eiusmod <span className="u-mark">*</span>tempor
-            incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">
+              *
+            </span>isicing elit, sed do eiusmod{' '}
+            <span className="u-mark">*</span>tempor incididunt ut labore et
+            dolore magna aliqua.
           </p>
         </div>
         <h2 id="lenker" className="u-heading">
@@ -369,18 +412,42 @@ storiesOf('Grunnstiler', module)
           en overskrift.
         </p>
         <p>
-          Det skal vuderes i fremtiden om det er behov for markering av eksterne
-          lenker.
+          Det skal vurderes i framtiden om det er behov for markering av
+          eksterne lenker.
         </p>
         <div className="c-bodybox">
           <p>
             Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en{' '}
             <a href="/">intern lenke</a>, og dette er en{' '}
-            <a href="#overskrift">lenke som viser til innhold på samme side</a>
+            <a href="#overskrift">lenke som viser til innhold på samme side</a>.
           </p>
         </div>
 
         <p>Se også «Bruk av lenker» under «Enkle komponenter».</p>
+
+        <h2 id="midtstilttekst" className="u-heading">
+          Midtstilt tekst
+        </h2>
+        <p>
+          Noen informasjonstyper kan stå for seg selv og være midtstilt.
+          Matematiske formler er ett eksempel på midtstilt tekst.
+        </p>
+        <p className="u-text-center">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mn>4</mn>
+            <mo>=</mo>
+            <mfrac>
+              <mrow>
+                <mo>-</mo>
+                <mn>12</mn>
+              </mrow>
+              <mrow>
+                <mo>-</mo>
+                <mn>3</mn>
+              </mrow>
+            </mfrac>
+          </math>
+        </p>
       </StoryBody>
     </div>
   ))
@@ -388,12 +455,12 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Tabeller">
         <p>
-          Tabeller skal brukes til å presentere data (tabulær data), ikke til
-          utforming. Det anbefales å holde tabellene så enkle som mulig, ved mer
+          Tabeller skal brukes til å presentere data (tabulære data), ikke til
+          utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer
           kompleksitet kan data heller deles opp i flere tabeller.
         </p>
         <p>
-          Tekstformatering, høyrestilling av tekst etc. angis ikke i tabellens
+          Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens
           stilsett, men gjøres i redaktørgrensesnittet.
         </p>
         <p>
@@ -401,7 +468,7 @@ storiesOf('Grunnstiler', module)
         </p>
         <p>
           Titlene kan kuttes ut, plasseres som en topprad (thead), eller som
-          første rad i en tabell (innenfor tbody). De vil bli stilert etter
+          første rad i en tabell (innenfor tbody). De vil bli stilet etter
           plassering.
         </p>
         <p>
@@ -410,7 +477,7 @@ storiesOf('Grunnstiler', module)
         </p>
         <code>&lt;th scope=&quot;row&quot;&gt;</code>
         <p>
-          Tabeller kan ha en tilknyttet tittel ved bruk av elementet:
+          Tabeller kan ha en tilknyttet tittel ved bruk av elementet:{' '}
           <code>&lt;caption&gt;</code>
         </p>
       </StoryIntro>
@@ -671,133 +738,7 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
 
-        <h2 className="u-heading">Eksempel uten titler</h2>
-        <Table>
-          <tbody>
-            <tr>
-              <td>
-                10<sup>15</sup>
-              </td>
-              <td>peta</td>
-              <td>P</td>
-              <td>billiard</td>
-              <td>1000000000000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>12</sup>
-              </td>
-              <td>tera</td>
-              <td>T</td>
-              <td>billion</td>
-              <td>1000000000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>9</sup>
-              </td>
-              <td>giga</td>
-              <td>G</td>
-              <td>milliard</td>
-              <td>1000000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>6</sup>
-              </td>
-              <td>mega</td>
-              <td>M</td>
-              <td>million</td>
-              <td>1000000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>3</sup>
-              </td>
-              <td>kilo</td>
-              <td>k</td>
-              <td>tusen</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>2</sup>
-              </td>
-              <td>hekto</td>
-              <td>h</td>
-              <td>hundre</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>1</sup>
-              </td>
-              <td>deka</td>
-              <td>da</td>
-              <td>ti</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-1</sup>
-              </td>
-              <td>desi</td>
-              <td>d</td>
-              <td>tidel</td>
-              <td>0,1</td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  10<sup>-2</sup>
-                </strong>
-              </td>
-              <td>
-                <strong>centi</strong>
-              </td>
-              <td>
-                <strong>c</strong>
-              </td>
-              <td>
-                <strong>hundredel</strong>
-              </td>
-              <td>
-                <strong>0,01</strong>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-3</sup>
-              </td>
-              <td>milli</td>
-              <td>m</td>
-              <td>tusendel</td>
-              <td>0,001</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-6</sup>
-              </td>
-              <td>mikro</td>
-              <td />
-              <td>milliondel</td>
-              <td>0,000001</td>
-            </tr>
-            <tr>
-              <td>
-                10<sup>-9</sup>
-              </td>
-              <td>nano</td>
-              <td>n</td>
-              <td>milliarddel</td>
-              <td>
-                <p>0,000000001</p>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-
-        <h2 className="u-heading">Eksempel med tittel på første kolonne </h2>
+        <h2 className="u-heading">Eksempel med tittel på første kolonne</h2>
         <Table>
           <tbody>
             <tr>
@@ -889,6 +830,93 @@ storiesOf('Grunnstiler', module)
             </tr>
           </tbody>
         </Table>
+        <h2 className="u-heading">
+          Eksempel med titler som går over flere kolonner (colspan)
+        </h2>
+
+        <Table>
+          <thead>
+            <tr>
+              <th colSpan="2">Tittel over flere kolonner</th>
+              <th>Tittel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+          </tbody>
+        </Table>
+        <h2 className="u-heading">
+          Eksempel med celle som går over flere rader (rowspan)
+        </h2>
+        <Table>
+          <tbody>
+            <tr>
+              <th rowSpan="2" scope="row">
+                Tittel 1
+              </th>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+            <tr>
+              <th scope="row">Tittel 2</th>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+          </tbody>
+        </Table>
+        <h2 className="u-heading">Eksempel med flere tittelrader</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Tittel 1</th>
+              <th colSpan="3" style={{ textAlign: 'center' }}>
+                Tittel 2
+              </th>
+              <th>Tittel 3</th>
+            </tr>
+            <tr>
+              <th />
+              <th>Tittel 1</th>
+              <th>Tittel 2</th>
+              <th>Tittel 3</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4].map(index => (
+              <tr key={index}>
+                <td>Data</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 4</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </StoryBody>
     </div>
   ))
@@ -925,14 +953,44 @@ storiesOf('Grunnstiler', module)
         <h2 className="u-heading">Lister med lenker</h2>
         <ul className="o-list--bullets">
           <li>
-            <a href="">Listepunkt 1</a>
+            <a href="https://example.com">Listepunkt 1</a>
           </li>
           <li>
-            <a href="">Listepunkt 2</a>
+            <a href="https://example.com">Listepunkt 2</a>
           </li>
           <li>
-            <a href="">Listepunkt 3</a>
+            <a href="https://example.com">Listepunkt 3</a>
           </li>
+        </ul>
+        <h2 className="u-heading">Liste over to kolonner</h2>
+        <ul className="o-list--two-columns">
+          <li>Listepunkt 1</li>
+          <li>Listepunkt 2</li>
+          <li>Listepunkt 3</li>
+          <li>Listepunkt 4</li>
+          <li>Listepunkt 5</li>
+          <li>Listepunkt 6</li>
+          <li>Listepunkt 7</li>
+          <li>Listepunkt 8</li>
+          <li>Listepunkt 9</li>
+          <li>Listepunkt 10</li>
+          <li>Listepunkt 11</li>
+          <li>Listepunkt 12</li>
+        </ul>
+        <h2 className="u-heading">Liste over tre kolonner</h2>
+        <ul className="o-list--three-columns">
+          <li>Listepunkt 1</li>
+          <li>Listepunkt 2</li>
+          <li>Listepunkt 3</li>
+          <li>Listepunkt 4</li>
+          <li>Listepunkt 5</li>
+          <li>Listepunkt 6</li>
+          <li>Listepunkt 7</li>
+          <li>Listepunkt 8</li>
+          <li>Listepunkt 9</li>
+          <li>Listepunkt 10</li>
+          <li>Listepunkt 11</li>
+          <li>Listepunkt 12</li>
         </ul>
         <h2 className="u-heading">Nummererte lister</h2>
         <ol>
@@ -960,8 +1018,8 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Sitater">
         <p>
-          Sitater som strekker seg over tre linjer i vanlig linjelengde er best
-          å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere
+          Sitater som strekker seg over tre linjer i vanlig linjelengde, er det
+          best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere
           sitater, men &laquo;&raquo;
         </p>
       </StoryIntro>
@@ -980,9 +1038,7 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Luft og avstand">
         <p>Vi baserer oss hovedsaklig på tre nivåer av luft/avstand:</p>
-        <code>{`--spacing
---spacing--small
---spacing--large`}</code>
+        <code>--spacing --spacing--small --spacing--large</code>
         <p>Hvor:</p>
         <div style={{ padding: '52px', background: '#eee' }}>
           <span
@@ -1013,16 +1069,16 @@ storiesOf('Grunnstiler', module)
           </div>
         </div>
         <p>
-          Luft brukes for å visuelt gruppere elementer på en flate, og rette
-          fokus på de riktige elementene. Har et element mye luft rundt seg, kan
-          det lettere få fokus. Har to elementer lite luft mellom seg, oppfattes
-          de gjerne som beslektet.
+          Luft brukes for visuelt å gruppere elementer på en flate og føre
+          oppmerksomheten mot de riktige elementene. Har et element mye luft
+          rundt seg, får det lettere oppmerksomhet. Har to elementer lite luft
+          mellom seg, oppfattes de gjerne som beslektet.
         </p>
         <p>
-          Luft må også brukes med tanke på ulike enheter, vi ønsker å redusere
-          avstandene på mindre enheter, så innholdet tar mindre plass. Bruker
-          man stor avstand et sted på store skjermer, kan man dermed redusere
-          til liten avstand på små skjermer.
+          Luft må også brukes for tilpassing til visning på ulike enheter. Vi
+          ønsker å redusere avstandene på mindre enheter slik at innholdet der
+          tar mindre plass. Er det brukt stor avstand et sted på store skjermer,
+          blir det dermed reduseret til liten avstand på små skjermer.
         </p>
         <p>
           Når nye NDLA skal tas ut på nye flater, anbefales det å forholde seg

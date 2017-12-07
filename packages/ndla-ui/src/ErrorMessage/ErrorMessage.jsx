@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Sad } from '../icons';
+import { Sad } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
@@ -24,7 +24,7 @@ export const ErrorMessage = ({ children, messages }) => (
       <h1>{messages.title}</h1>
       <p {...classes('description')}>{messages.description}</p>
       {messages.back &&
-        window &&
+        typeof window !== 'undefined' &&
         window.history.length > 1 && (
           <SafeLink
             to={`/#${encodeURI(messages.back)}`}

@@ -8,48 +8,52 @@
 
 import React from 'react';
 
-import { OneColumn, RelatedArticles, LayoutItem } from 'ndla-ui';
-import { Time, Document, User } from 'ndla-ui/icons';
+import {
+  OneColumn,
+  LayoutItem,
+  ArticleTitle,
+  ArticleWrapper,
+  ArticleIntroduction,
+  ArticleByline,
+  Image,
+} from 'ndla-ui';
+import { Document } from 'ndla-icons/common';
 
-import { ResourceSubsetList } from '../molecules/resources';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
+
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
-import article, { articleResources } from '../../dummydata/index';
+import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 export default () => (
-  <OneColumn cssModifier="narrow">
-    <article className="c-article">
+  <OneColumn>
+    <ArticleWrapper>
       <LayoutItem layout="center">
-        <h1 className="c-article__title--icon">
-          <Document />Artikkel fagstoff
-        </h1>
-        <p className="article_introduction">
+        <ArticleTitle icon={<Document />}>Artikkel fagstoff</ArticleTitle>
+        <ArticleIntroduction>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen.
-        </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <User />
-            </span>
-            <span className="c-article-byline__authors">
-              Ola Nordnes, Kari Nordnes, Jon Nordgubbe. <br />(BY-NC-ND)
-            </span>
-          </span>
-          <span className="c-article-byline__flex">
-            <span className="c-article-byline__icon">
-              <Time />
-            </span>
-            <span className="c-article-byline__date">Publisert 12/10/2016</span>
-            <LicenseExample />
-          </span>
-        </div>
+        </ArticleIntroduction>
+        <ArticleByline
+          authors={[
+            { name: 'Ola Nordnes' },
+            { name: 'Kari Nordnes' },
+            { name: 'Jon Nordgubbe' },
+          ]}
+          updated="12/10/2016"
+          license={getLicenseByAbbreviation('by-nc-nd')}
+          messages={{
+            writtenBy: '',
+            lastUpdated: 'Publisert',
+          }}>
+          <LicenseExample />
+        </ArticleByline>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense caption="" expandable classes="u-float-left">
-          <img
+        <FigureWithLicense type="left" caption="" runScripts>
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -81,9 +85,9 @@ export default () => (
           klassen.
         </p>
         <FigureWithLicense caption="" classes="u-float-right">
-          <img
+          <Image
             alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1000"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
         </FigureWithLicense>
         <p>
@@ -97,13 +101,8 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <RelatedArticleListExample />
       </LayoutItem>
-      <LayoutItem layout="extend">
-        <RelatedArticles resources={articleResources} />
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <ResourceSubsetList />
-      </LayoutItem>
-    </article>
+    </ArticleWrapper>
   </OneColumn>
 );

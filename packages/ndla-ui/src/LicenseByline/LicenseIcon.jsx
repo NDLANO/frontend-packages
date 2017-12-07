@@ -8,36 +8,36 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BY, SA, NC, ND, PD, CC0, CC, COPY } from 'ndla-licenses';
+import { COPYRIGHTED, BY, SA, NC, ND, PD, CC0, CC } from 'ndla-licenses';
 import {
-  LicenseBy,
-  LicenseCc,
-  LicenseNc,
-  LicenseNd,
-  LicenseSa,
-  LicenseCc0,
-  LicensePd,
-  LicenseCopy,
-} from '../icons';
+  By,
+  Cc,
+  Nc,
+  Nd,
+  Sa,
+  Zero,
+  Publicdomain,
+  Copyright,
+} from 'ndla-icons/license';
 
 const LicenseIcon = ({ licenseRight, description, className }) => {
   switch (licenseRight) {
     case CC:
-      return <LicenseCc className={className} aria-label={description} />;
+      return <Cc className={className} aria-label={description} />;
     case BY:
-      return <LicenseBy className={className} aria-label={description} />;
+      return <By className={className} aria-label={description} />;
     case NC:
-      return <LicenseNc className={className} aria-label={description} />;
+      return <Nc className={className} aria-label={description} />;
     case ND:
-      return <LicenseNd className={className} aria-label={description} />;
+      return <Nd className={className} aria-label={description} />;
     case SA:
-      return <LicenseSa className={className} aria-label={description} />;
+      return <Sa className={className} aria-label={description} />;
     case CC0:
-      return <LicenseCc0 className={className} aria-label={description} />;
+      return <Zero className={className} aria-label={description} />;
     case PD:
-      return <LicensePd className={className} aria-label={description} />;
-    case COPY:
-      return <LicenseCopy className={className} aria-label={description} />;
+      return <Publicdomain className={className} aria-label={description} />;
+    case COPYRIGHTED:
+      return <Copyright className={className} aria-label={description} />;
     default:
       return undefined;
   }

@@ -6,8 +6,6 @@
  *
  */
 
-/* eslint max-len: 0 */
-
 import defined from 'defined';
 
 // License rights
@@ -18,7 +16,7 @@ export const ND = 'nd'; // No derivative work
 export const PD = 'pd'; // Public Domain
 export const CC0 = 'cc0'; // Public Domain Dedication
 export const CC = 'cc'; // Creative Commons
-export const COPY = 'copy'; // Copyright
+export const COPYRIGHTED = 'copyrighted'; // Copyrighted
 
 const by = {
   short: BY,
@@ -108,8 +106,8 @@ const cc0 = {
   },
 };
 
-const copy = {
-  short: COPY,
+const copyrighted = {
+  short: COPYRIGHTED,
   nb: {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
@@ -163,8 +161,8 @@ export function getLicenseRightByAbbreviation(abbreviation, locale) {
       return licenseRightByLocale(cc, locale);
     case CC0:
       return licenseRightByLocale(cc0, locale);
-    case COPY:
-      return licenseRightByLocale(copy, locale);
+    case COPYRIGHTED:
+      return licenseRightByLocale(copyrighted, locale);
     default:
       return {
         short: abbreviation,

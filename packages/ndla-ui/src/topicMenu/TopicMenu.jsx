@@ -12,11 +12,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { Search, Home } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 import FilterList from '../filter/FilterList';
-import { Search, Home } from '../icons';
 
 const classes = new BEMHelper({
   name: 'topic-menu',

@@ -12,31 +12,39 @@ $denominator: auto;
   padding-left: $spacing;
   padding-right: $spacing;
 }
+// compensate for line-height
+$extra-margin: 10px;
 
 @mixin float($cols, $maxcols, $direction) {
   $colDifference: $maxcols - $cols;
+  $cols-tablet: $cols - 1;
+
   @if $direction == left {
     @include mq(tablet) {
       float:left;
-      width: ($cols/$maxcols)*100% !important;
+      clear: left;
+      width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
-      margin: $spacing $spacing 0 0;
+      margin: $spacing ($spacing + $extra-margin) 0 0;
     }
     @include mq(desktop) {
-      margin: 0 $spacing $spacing (-$colDifference/$maxcols*100%);
+      width: ($cols/$maxcols)*100% !important;
+      margin: 0 ($spacing + $extra-margin) $spacing -25%;
     }
   }
   @if $direction == right {
     @include mq(tablet) {
       float:right;
-      width: ($cols/$maxcols)*100% !important;
+      clear: right;
+      width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
-      margin: 0 0 $spacing $spacing;
+      margin: 0 0 $spacing ($spacing + $extra-margin);
     }
     @include mq(desktop) {
-      margin: 0 (-$colDifference/$maxcols*100%) $spacing $spacing;
+      width: ($cols/$maxcols)*100% !important;
+      margin: 0 -25% $spacing ($spacing + $extra-margin);
     }
   }
 

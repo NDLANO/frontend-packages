@@ -1,0 +1,70 @@
+/**
+** TOPIC RESOURCE LIST
+** List items inside a resource group
+**/
+
+.c-topic-resource {
+  @include mq($from: desktop) {
+    @include grids-expand(4,6,2);
+    margin-top: $spacing--large;
+  }
+}
+
+.c-topic-resource__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
+  @include fadeInLeftItems(li, 40);
+}
+.c-topic-resource__body {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: middle;
+}
+.c-topic-resource__item {
+  max-width: 100%;
+  display: flex;
+  // animation-name: fadeInTop;
+  // animation-duration: .4s;
+  padding: $spacing--small;
+  margin-bottom: $spacing--small/2;
+  h1 a {
+    color: $brand-color;
+    box-shadow: none;
+  }
+}
+
+.c-topic-resource__item--hidden {
+  opacity: 0;
+  display: none;
+}
+
+.c-topic-resource__icon {
+  display: inline-block;
+  width: 37px;
+  height: 43px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-right: $spacing--small*1.5;
+  svg {
+    width: 42px;
+    height: 42px;
+  }
+}
+.c-topic-resource__title {
+  @include inuit-font-size(20px);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+}
+.c-topic-resource__button-wrapper {
+  text-align: center;
+}
+.c-topic-resource__button {
+  margin: $spacing--small auto;
+}

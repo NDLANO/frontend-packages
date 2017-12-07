@@ -11,6 +11,7 @@
   margin-right: auto;
   margin-bottom: $spacing--large;
   margin-left: auto;
+  overflow-wrap: break-word;
   @include inuit-font-size(16px, 28px);
 
   @include mq(tablet) {
@@ -19,6 +20,16 @@
     padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
+  }
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  p {
+    margin-top: 0;
   }
 }
 .c-article--clean {

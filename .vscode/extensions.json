@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "sysoev.vscode-open-in-github",
-    "dzannotti.vscode-babel-coloring",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "Orta.vscode-jest",

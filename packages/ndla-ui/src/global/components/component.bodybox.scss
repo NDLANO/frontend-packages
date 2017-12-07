@@ -13,10 +13,12 @@
 
 .c-bodybox {
   padding: $spacing * 1.5;
-  margin-bottom: $spacing;
+  margin-top: $spacing--large;
+  margin-bottom: $spacing--large;
   border-style: solid;
   border-color: $brand-color--tertiary;
   border-width: 1px;
+  overflow: hidden;
 }
 .c-bodybox--attribute {
   padding: $spacing--small $spacing;
@@ -26,11 +28,42 @@
 }
 
 /* Hacks for complex content fetched inside bodybox */
-.c-bodybox ul:not([class]), .c-bodybox ol:not([class]) {
-  margin-left: $spacing--large;
+.c-bodybox>ul:not([class]),
+.c-bodybox :not(li)>ul:not([class]) {
+  @include mq(desktop) {
+    margin-left: $spacing;
+  }
 }
+
+.c-bodybox>ol:not([class]),
+.c-bodybox :not(li)>ol:not([class]),
+.c-bodybox .ol-list--roman {
+  @include mq(desktop) {
+    margin-left: $spacing--large;
+  }
+}
+
 .c-bodybox .c-figure {
   width: 100% !important;
   left: auto !important;
   padding: 0;
+}
+
+// DEPRECATED TODO: remove article-float classes when not in use anymore. .u-float-[dir] should be used
+.c-bodybox .article_figure--float-right, .c-bodybox .c-figure.u-float-right {
+  width: 50% !important;
+  margin-right: 0;
+}
+
+.c-bodybox .article_figure--float-left, .c-bodybox .c-figure.u-float-left {
+  width: 50% !important;
+  margin-left: 0;
+}
+
+.c-bodybox > *:first-child {
+  margin-top: 0;
+}
+
+.c-bodybox > *:last-child {
+  margin-bottom: 0;
 }

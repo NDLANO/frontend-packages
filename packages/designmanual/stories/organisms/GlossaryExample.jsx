@@ -7,8 +7,8 @@
  */
 
 import React, { Component } from 'react';
-import { Time, User } from 'ndla-ui/icons';
-import { Glossary, OneColumn, LayoutItem } from 'ndla-ui';
+import { Time, User } from 'ndla-icons/common';
+import { Glossary, OneColumn, LayoutItem, Image } from 'ndla-ui';
 import { addShowGlossaryDefinitionClickListeners } from 'ndla-article-scripts';
 
 import LicenseExample from '../article/LicenseExample';
@@ -70,12 +70,10 @@ class GlossaryExample extends Component {
                   sosialiseringen er at de enkelte menneskene skal kunne skille
                   mellom godt og ondt, og rett og galt.
                 </p>
-                <FigureWithLicense
-                  caption=""
-                  classes="article_figure--float-right">
-                  <img
+                <FigureWithLicense type="right" caption="" runScripts>
+                  <Image
                     alt="liten jente holder sine foreldres hender. foto."
-                    src="https://staging.api.ndla.no/image-api/raw/jente mellom foreldre_0.jpg"
+                    src="https://staging.api.ndla.no/image-api/raw/jente%2520mellom%2520foreldre_0.jpg"
                   />
                 </FigureWithLicense>
                 <h2>Normer og normsendere</h2>
@@ -95,7 +93,7 @@ class GlossaryExample extends Component {
                   <Glossary
                     content="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
                     authors={[]}
-                    title={'sanksjon'}
+                    title="sanksjon"
                     messages={{
                       ariaLabel: 'Vis begrep beskrivelse',
                       close: 'Lukk',
@@ -105,7 +103,19 @@ class GlossaryExample extends Component {
                     Sanksjonene
                   </Glossary>{' '}
                   kan både være positive og negative. Ønsket adferd belønnes,
-                  men uønsket adferd straffes. Når en person har gjort normene
+                  men uønsket adferd straffes. Når en person har gjort{' '}
+                  <Glossary
+                    content="Norm, særskilt sosiale normer, er en sosiologisk betegnelse for intersubjektive, allment delte og ofte underforståtte regler og forventninger på oppførsel som gjelder for et mindre sosialt fellesskap og for samfunnet i sin helhet."
+                    authors={[]}
+                    title="Norm"
+                    messages={{
+                      ariaLabel: 'Vis begrep beskrivelse',
+                      close: 'Lukk',
+                    }}
+                    license="by-nc-nd"
+                    id={3}>
+                    normene
+                  </Glossary>{' '}
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
                 </p>

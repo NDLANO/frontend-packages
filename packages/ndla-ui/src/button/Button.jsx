@@ -59,15 +59,15 @@ Button.propTypes = {
   onClick: PropTypes.func,
 
   /**
-  * Applies the submit attribute to the button for use in forms. This overrides the type
-  */
+   * Applies the submit attribute to the button for use in forms. This overrides the type
+   */
   submit: PropTypes.bool,
 
   /**
-  * Defines HTML button type Attribute
-  * @type {("button"|"reset"|"submit")}
-  * @defaultValue 'button'
-  */
+   * Defines HTML button type Attribute
+   * @type {("button"|"reset"|"submit")}
+   * @defaultValue 'button'
+   */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };
 

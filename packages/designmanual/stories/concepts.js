@@ -10,12 +10,12 @@ storiesOf('Konsepter', module).add('Navngivning av innholdstyper', () => (
       <h2 className="u-heading">Hovedskiller for emner og lærestoff:</h2>
       <ul>
         <li>Kjernestoff</li>
-        <li>Tilleggstoff (Fordypningsstoff, tilvalgsstoff, annet)</li>
+        <li>Tilleggsstoff (fordypningsstoff, tilvalgsstoff, annet)</li>
       </ul>
       <h2 className="u-heading">Innholdskategorier for lærestoff:</h2>
       <ul>
         <li>Læringssti</li>
-        <li>Fagstoff (Fagtekster, Bilder, Video, Historiske kilder, …)</li>
+        <li>Fagstoff (fagtekster, bilder, video, historiske kilder, …)</li>
         <li>Oppgaver og aktiviteter</li>
         <li>Vurderingsressurs</li>
         <li>Ekstern læringsressurs</li>

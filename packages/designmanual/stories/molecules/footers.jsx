@@ -19,7 +19,7 @@ const FooterExample = () => (
       <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
     </Footer.Text>
     <Footer.Text>
-      Nettstedet er utarbeidet av NDLA som åpen kildekode.
+      Nettstedet er utarbeidet av NDLA med åpen kildekode.
     </Footer.Text>
   </Footer>
 );

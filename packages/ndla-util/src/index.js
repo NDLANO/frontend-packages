@@ -6,16 +6,11 @@
  *
  */
 
-import uuid from './uuid';
-import getComponentName from './getComponentName';
-import copyTextToClipboard from './copyTextToClipboard';
-import convertFieldWithFallback from './convertFieldWithFallback';
-import { tagsI18N } from './i18nFieldFinder';
-
+export { default as uuid } from './uuid';
+export { default as getComponentName } from './getComponentName';
+export { copyTextToClipboard } from './copyTextToClipboard';
 export {
-  uuid,
-  getComponentName,
-  copyTextToClipboard,
-  tagsI18N,
-  convertFieldWithFallback,
-};
+  default as convertFieldWithFallback,
+} from './convertFieldWithFallback';
+export { tagsI18N } from './i18nFieldFinder';
+export { default as noScroll } from './noScroll';

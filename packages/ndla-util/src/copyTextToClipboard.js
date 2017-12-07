@@ -6,7 +6,7 @@
  *
  */
 
-export default function copyTextToClipboard(text) {
+export function copyTextToClipboard(text, el = document.body) {
   if (!window || !document) {
     return false;
   }
@@ -26,16 +26,16 @@ export default function copyTextToClipboard(text) {
 
   textArea.value = text;
 
-  document.body.appendChild(textArea);
+  el.appendChild(textArea);
 
   textArea.select();
 
   try {
     const successful = document.execCommand('copy');
-    document.body.removeChild(textArea);
+    el.removeChild(textArea);
     return successful;
   } catch (err) {
-    document.body.removeChild(textArea);
+    el.removeChild(textArea);
     return false;
   }
 }

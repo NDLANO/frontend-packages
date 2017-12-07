@@ -36,10 +36,10 @@ const ErrorReporter = (function Singleton() {
     send(config.logglyApiKey, extendedData);
   }
 
-  function getLogData(stackInfo, store, additionalInfo = {}) {
+  function getLogData(stackInfo, level = 'error', store, additionalInfo = {}) {
     const state = store ? store.getState() : undefined;
     return {
-      level: 'error',
+      level,
       text: `${stackInfo.name}: ${stackInfo.message}`,
       stackInfo,
       state,
@@ -47,7 +47,7 @@ const ErrorReporter = (function Singleton() {
     };
   }
 
-  function processStackInfo(stackInfo, config, additionalInfo) {
+  function processStackInfo(stackInfo, level, config, additionalInfo) {
     // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
     const firstFrame =
       stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
@@ -61,7 +61,7 @@ const ErrorReporter = (function Singleton() {
 
     if (deduplicate !== previousNotification) {
       previousNotification = deduplicate;
-      const data = getLogData(stackInfo, config.store, additionalInfo);
+      const data = getLogData(stackInfo, level, config.store, additionalInfo);
       sendToLoggly(data, config);
     }
   }
@@ -69,7 +69,7 @@ const ErrorReporter = (function Singleton() {
   function init(config) {
     // Suscribes to window.onerror
     TraceKit.report.subscribe(stackInfo => {
-      processStackInfo(stackInfo, config);
+      processStackInfo(stackInfo, 'error', config);
     });
 
     return {
@@ -81,7 +81,11 @@ const ErrorReporter = (function Singleton() {
       },
       captureError(error, additionalInfo) {
         const stackInfo = TraceKit.computeStackTrace(error);
-        processStackInfo(stackInfo, config, additionalInfo);
+        processStackInfo(stackInfo, 'error', config, additionalInfo);
+      },
+      captureWarning(error, additionalInfo) {
+        const stackInfo = TraceKit.computeStackTrace(error);
+        processStackInfo(stackInfo, 'warning', config, additionalInfo);
       },
     };
   }

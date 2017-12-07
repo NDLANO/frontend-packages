@@ -5,6 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+export const forEachElement = (selector, callback, parent = null) => {
+  const topNode = parent || document;
+  const nodeList = topNode.querySelectorAll(selector);
+  for (let i = 0; i < nodeList.length; i += 1) {
+    callback(nodeList[i], i);
+  }
+};
 
 export const findAncestorByClass = (el, className) => {
   let target = el;
@@ -39,7 +46,15 @@ export const removeElementById = id => {
 };
 
 export const removeModifiers = (className, modifier, rootSelector = '') => {
-  document.querySelectorAll(`${rootSelector} .${className}`).forEach(el => {
+  forEachElement(`${rootSelector} .${className}`, el => {
     el.classList.remove(`${className}--${modifier}`);
   });
+};
+
+export const getElementOffset = element => {
+  const rect = element.getBoundingClientRect();
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
 };

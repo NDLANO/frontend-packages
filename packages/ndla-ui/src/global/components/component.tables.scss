@@ -9,10 +9,11 @@
 .c-table, .c-article table, article table {
   vertical-align: top;
   font-size: 85%;
+  table-layout: fixed;
 
   overflow-x: auto;
   max-width: 100%;
-  margin: $spacing--large 0;
+  margin: $spacing--large 0 $spacing--large 0;
 
   // optional - enable iOS momentum scrolling
   -webkit-overflow-scrolling: touch;
@@ -24,37 +25,93 @@
   background-attachment: scroll, scroll;
   background-repeat: no-repeat;
 
+  display: inline-block;
+
+  &:after, &:before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @include mq(tablet) {
+    display: table;
+  }
+
+  caption {
+    background-color: $white;
+  }
+
   thead {
     overflow:hidden;
   }
+
   td, th {
-    padding: $spacing/3 $spacing $spacing/3 $spacing/3;
+    display: table-cell;
     height: 45px;
+    width: 2%;
+    padding: $spacing/3 $spacing $spacing/3 $spacing/3;
   }
   th, tbody td:before {
     font-weight: $font-weight-bold;
-    text-transform: uppercase;
     padding: 4px 10px 4px 4px;
   }
   th {
-    border-bottom: 3px solid $brand-color--lighter;
-    background-color: $white;
-    padding: $spacing--small $spacing--small $spacing--small/2;
+    border-bottom: 3px solid $brand-color--tertiary;
+    padding: $spacing--small $spacing $spacing/3 $spacing/3;
+    font-family: $font;
+
+    @include inuit-font-size(16px,22px);
+    @include mq(tablet) {
+      @include inuit-font-size(16px,30px);
+    }
   }
+
   tbody th {
     border-bottom: 0;
-    border-right: 3px solid $brand-color--lighter;
+    border-right: 3px solid $brand-color--tertiary;
     padding: $spacing--small/1.5;
-  }
-  td {
     vertical-align: top;
-    @include inuit-font-size(14px,22px);
+  }
+
+  thead tr:nth-child(2) th {
+    border-bottom: 0;
+    text-transform: none;
+    @include inuit-font-size(14px,18px);
     @include mq(tablet) {
-      @include inuit-font-size(15px,30px);
+      @include inuit-font-size(15px, 26px);
+    }
+    font-weight: $font-weight-semibold;
+    height: 40px;
+    background-color: $brand-color--lighter;
+    padding: $spacing/6 $spacing $spacing/6 $spacing/3;
+
+    &:first-child, &:last-child {
+      background-color: none;
     }
 
+    &:empty {
+      background-color: transparent;
+
+      &:first-child {
+        background-color: transparent;
+        background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
+        background-repeat: no-repeat;
+        background-size: 25px 100%;
+      }
+
+      &:last-child {
+        background-color: transparent;
+        background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
+        background-repeat: no-repeat;
+        background-position: 100% 0;
+        background-size: 25px 100%;
+      }
+    }
+  }
+
+  th, td {
     &:first-child {
-      background-color: none;
+      background-color: transparent;
       background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
       background-repeat: no-repeat;
       background-size: 25px 100%;
@@ -66,49 +123,35 @@
       background-position: 100% 0;
       background-size: 25px 100%;
     }
+  }
+
+  td {
+    vertical-align: top;
+    border-bottom: 1px solid $brand-grey--lighter;
+
+    @include inuit-font-size(14px,22px);
+    @include mq(tablet) {
+      @include inuit-font-size(15px,30px);
+    }
     p {
       margin:0;
+      line-height: 1.6em;
     }
   }
-  tr:nth-child(2n) {
 
-    td {
-      position:relative;
-      @include mq(tablet) {
-        background-color: $table-bg;
-      }
-
-      &:before {
-        content:"";
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $table-bg;
-      }
-      &:first-child{
-        background-color: none;
-        background-image: linear-gradient(to right, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
-        background-repeat: no-repeat;
-        background-size: 25px 100%;
-      }
-      &:last-child {
-        background-color: none;
-        background-image: linear-gradient(to left, rgba($table-bg, 1) 50%, rgba($table-bg, 0) 100%);
-        background-repeat: no-repeat;
-        background-position: 100% 0;
-        background-size: 25px 100%;
-      }
-    }
-  }
   // Remove excess spacing on headings inside table
   h1,h2,h3,h4,h5 {
     margin-top: 0;
   }
+
   ul {
-    margin: 0;
+    margin: 0 0 0 $spacing--small*1.4;
   }
 
+  .c-figure {
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    left: 0 !important;
+  }
 }

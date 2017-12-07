@@ -12,11 +12,11 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: './.storybook/postcss.config.js'
-              }
-            }
+                path: './.storybook/postcss.config.js',
+              },
+            },
           },
-          'sass-loader'
+          'sass-loader',
         ],
         include: path.resolve(__dirname, '../../ndla-ui/src/'),
       },

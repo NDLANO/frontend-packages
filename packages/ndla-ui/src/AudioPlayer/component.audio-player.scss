@@ -14,6 +14,7 @@
     align-items: center;
     padding: 0;
     margin-right: $spacing--small;
+    cursor: pointer;
   }
 
   &__play-icon {
@@ -48,13 +49,14 @@
     }
   }
 
-  &__progress[value] {
+  &__progress {
     appearance: none;
     border: none;
     height: 10px;
     color: $brand-color--secondary;
     border: 0;
     background-color: $brand-color--tertiary;
+    cursor: pointer;
 
     &::-webkit-progress-bar {
       background: $brand-color--tertiary;

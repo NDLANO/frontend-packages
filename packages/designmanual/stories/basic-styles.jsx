@@ -977,7 +977,7 @@ storiesOf('Grunnstiler', module)
           <li>Listepunkt</li>
           <li>
             Underliste:
-            <ol>
+            <ol className="ol-list--roman">
               <li>Underlistepunkt</li>
               <li>Underlistepunkt</li>
               <li>Underlistepunkt</li>

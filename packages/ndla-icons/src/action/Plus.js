@@ -12,12 +12,13 @@ import Icon from '../Icon';
 
 const Plus = props => (
   <Icon
-    viewBox="0 0 33 33"
+    viewBox="0 0 24 24"
     data-license="CC-BY 4.0"
-    data-source="Knowit"
+    data-source="Material Design"
     {...props}>
     <g>
-      <path d="M16.97 1h-.94v15.03H1v.94h15.03V32h.94V16.97H32v-.94H16.97z" />
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+      <path d="M0 0h24v24H0z" fill="none" />
     </g>
   </Icon>
 );

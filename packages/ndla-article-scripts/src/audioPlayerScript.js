@@ -6,21 +6,27 @@ const formatTime = (currentTime) => {
     const currentMinute = parseInt(currentTime / 60, 10);
     const currentSeconds = (currentTime % 60).toFixed();
 
-    return `${currentMinute < 10 ? `0${currentMinute}` : currentMinute}:${currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}`;
+    return `${currentMinute}:${currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}`;
 };
 
-const onTimeUpdate = (audioElement, progressBar, timeDisplay) => {
+
+const setPlayed = (progressPlayed, timeDisplay, currentTime, duration) => {
+  const percent = currentTime / duration;
+
+  timeDisplay.innerHTML = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+  progressPlayed.style.width = `${percent * 100}%`;
+  progressPlayed.setAttribute('data-value', percent);
+}
+
+const onTimeUpdate = (audioElement, progressPlayed, timeDisplay) => {
   const { currentTime, duration } = audioElement;
-  timeDisplay.innerHTML = formatTime(currentTime);
-  progressBar.value = (currentTime / duration);
+  setPlayed(progressPlayed, timeDisplay, currentTime, duration);
 };
 
-const onSeek = (percent, audioElement, progressBar, timeDisplay) => {
+const onSeek = (percent, audioElement, progressPlayed, timeDisplay) => {
   const currentTime = percent * audioElement.duration;
-
   audioElement.currentTime = currentTime;
-  progressBar.value = percent;
-  timeDisplay.innerHTML = formatTime(currentTime);
+  setPlayed(progressPlayed, timeDisplay, currentTime, audioElement.duration);
 };
 
 export const initAudioPlayers = () => {
@@ -29,6 +35,7 @@ export const initAudioPlayers = () => {
     const audioElement = wrapper.querySelector('audio');
     const playButton = wrapper.querySelector('.c-audio-player__play');
     const progressBar = wrapper.querySelector('.c-audio-player__progress');
+    const progressPlayed = progressBar.querySelector('.c-audio-player__progress-played');
     const timeDisplay = wrapper.querySelector('.c-audio-player__time');
 
     const toggleStateClasses = (playing) => {
@@ -50,7 +57,7 @@ export const initAudioPlayers = () => {
     };
 
     audioElement.addEventListener('timeupdate', () => {
-      onTimeUpdate(audioElement, progressBar, timeDisplay);
+      onTimeUpdate(audioElement, progressPlayed, timeDisplay);
     });
 
     audioElement.addEventListener('ended', () => {
@@ -59,27 +66,32 @@ export const initAudioPlayers = () => {
 
     progressBar.addEventListener('click', (event) => {
       const percent = event.offsetX / progressBar.offsetWidth;
-      onSeek(percent, audioElement, progressBar, timeDisplay);
+      onSeek(percent, audioElement, progressPlayed, timeDisplay);
     });
 
     progressBar.addEventListener('keydown', (event) => {
       const step = event.shiftKey ? 0.05 : 0.01;
       if(event.key === 'ArrowLeft' || event.key === 'Left') {
-        let newValue = parseFloat(progressBar.value) - step;
+        let newValue = parseFloat(progressPlayed.getAttribute('data-value')) - step;
         if (newValue < 0) {
           newValue = 0;
         }
 
-        onSeek(newValue, audioElement, progressBar, timeDisplay);
+        onSeek(newValue, audioElement, progressPlayed, timeDisplay);
       } else if (event.key === 'ArrowRight' || event.key === 'Right') {
-        let newValue = parseFloat(progressBar.value) + step;
+        let newValue = parseFloat(progressPlayed.getAttribute('data-value')) + step;
         if (newValue > 1) {
           newValue = 1;
         }
-        onSeek(newValue, audioElement, progressBar, timeDisplay);
+        onSeek(newValue, audioElement, progressPlayed, timeDisplay);
       }
     });
 
     playButton.onclick = togglePlay;
+
+    audioElement.addEventListener('loadedmetadata', () => {
+      setPlayed(progressPlayed, timeDisplay, audioElement.currentTime, audioElement.duration);
+    });
+
   });
 };

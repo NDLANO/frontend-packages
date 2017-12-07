@@ -22,14 +22,17 @@ const AudioPlayer = ({
   author
 }) => (
   <figure {...classes()}>
-    <audio type={type} src={src} title={title} />
+    <audio type={type} src={src} title={title} preload="metadata" />
     <div {...classes('controls')}>
       <button {...classes('play')}>
         <span {...classes('play-icon')}><Video /></span>
         <span {...classes('pause-icon')}><Video /></span>
       </button>
-      <div {...classes('time')}>00:00</div>
-      <progress {...classes('progress')} tabIndex="0" value="0" max="1" />
+      <div {...classes('time')}>0:00</div>
+      <div {...classes('progress')} tabIndex="0">
+        <div {...classes('progress-background')} />
+        <div {...classes('progress-played')} data-value="0" />
+      </div>
     </div>
     <figcaption {...classes('caption')}>
       <div {...classes('info')}>

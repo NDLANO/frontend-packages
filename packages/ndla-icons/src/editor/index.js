@@ -13,6 +13,7 @@ export { default as AlignRight } from './AlignRight';
 export { default as Bold } from './Bold';
 export { default as Camera } from './Camera';
 export { default as Crop } from './Crop';
+export { default as ExpandableBox } from './ExpandableBox';
 export { default as FactBox } from './FactBox';
 export { default as FocalPoint } from './FocalPoint';
 export { default as H5P } from './H5P';

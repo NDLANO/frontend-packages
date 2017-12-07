@@ -238,7 +238,7 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Lydklipp" />
       <StoryBody>
-        <AudioExample />
+        <AudioExample runScripts />
       </StoryBody>
     </div>
   ))
@@ -480,7 +480,7 @@ storiesOf('Enkle komponenter', module)
           Denne varianten skal kun brukes om det er nødvendig. Visningen fases
           bort når høyrespalte fases bort.
         </p>
-        <FigureWithLicense resizeIframe noCaption supportFloating>
+        <FigureWithLicense resizeIframe noCaption type="full-column">
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

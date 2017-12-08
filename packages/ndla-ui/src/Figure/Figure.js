@@ -33,61 +33,65 @@ export const FigureDetails = ({
   title,
   messages,
   licenseRights,
-  id: headingLabelId,
+  id,
   licenseUrl,
-}) => [
-  <div key="backdrop" className="o-backdrop" />,
-  <div
-    key="license"
-    {...classes('license')}
-    role="dialog"
-    aria-hidden="true"
-    aria-labelledby={headingLabelId}>
-    <button {...classes('close')}>{messages.close}</button>
-    <div className="u-expanded">
-      <div {...classLicenses('details')}>
-        <h3 id={headingLabelId} {...classLicenses('title')}>
-          {messages.rulesForUse}
-        </h3>
-        <LicenseByline withDescription licenseRights={licenseRights} />
-        <a
-          className="c-figure-license__link"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={licenseUrl}>
-          {messages.learnAboutLicenses}
-        </a>
-        <div {...classLicenses('cta-wrapper')}>
-          <ul {...classes('list')}>
-            {title && (
-              <li className="c-figure-list__item" key={uuid()}>
-                {`${messages.title}: ${title}`}
-              </li>
-            )}
-            {authors.map(author => (
-              <li key={uuid()} className="c-figure-list__item">{`${
-                author.type
-              }: ${author.name}`}</li>
-            ))}
-            {origin && (
-              <li className="c-figure-list__item" key={uuid()}>
-                {messages.source}:{' '}
-                {origin.startsWith('http') ? (
-                  <a href={origin} target="_blank" rel="noopener noreferrer">
-                    {origin}
-                  </a>
-                ) : (
-                  origin
-                )}
-              </li>
-            )}
-          </ul>
-          <div {...classLicenses('cta-block')}>{children}</div>
+}) => {
+  const headingLabelId = `heading-${id}`;
+  return [
+    <div key="backdrop" className="o-backdrop" />,
+    <div
+      id={`figure-details-${id}`}
+      key="license"
+      {...classes('license')}
+      role="dialog"
+      aria-hidden="true"
+      aria-labelledby={headingLabelId}>
+      <button {...classes('close')}>{messages.close}</button>
+      <div className="u-expanded">
+        <div {...classLicenses('details')}>
+          <h3 id={headingLabelId} {...classLicenses('title')}>
+            {messages.rulesForUse}
+          </h3>
+          <LicenseByline withDescription licenseRights={licenseRights} />
+          <a
+            className="c-figure-license__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={licenseUrl}>
+            {messages.learnAboutLicenses}
+          </a>
+          <div {...classLicenses('cta-wrapper')}>
+            <ul {...classes('list')}>
+              {title && (
+                <li className="c-figure-list__item" key={uuid()}>
+                  {`${messages.title}: ${title}`}
+                </li>
+              )}
+              {authors.map(author => (
+                <li key={uuid()} className="c-figure-list__item">{`${
+                  author.type
+                }: ${author.name}`}</li>
+              ))}
+              {origin && (
+                <li className="c-figure-list__item" key={uuid()}>
+                  {messages.source}:{' '}
+                  {origin.startsWith('http') ? (
+                    <a href={origin} target="_blank" rel="noopener noreferrer">
+                      {origin}
+                    </a>
+                  ) : (
+                    origin
+                  )}
+                </li>
+              )}
+            </ul>
+            <div {...classLicenses('cta-block')}>{children}</div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>,
-];
+    </div>,
+  ];
+};
 
 FigureDetails.propTypes = {
   id: PropTypes.string.isRequired,
@@ -144,6 +148,7 @@ FigureCaption.propTypes = {
 };
 
 export const Figure = ({
+  id,
   children,
   captionView,
   type,
@@ -177,6 +182,7 @@ export const Figure = ({
 
   return (
     <figure
+      id={id}
       {...classes('', modifiers, typeClass)}
       data-toggleclass={typeClass}
       {...rest}>
@@ -187,6 +193,7 @@ export const Figure = ({
 };
 
 Figure.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
   resizeIframe: PropTypes.bool,

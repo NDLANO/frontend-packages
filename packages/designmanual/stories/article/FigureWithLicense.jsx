@@ -26,6 +26,7 @@ class FigureWithLicense extends Component {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
+    this.id = uuid();
     this.state = {
       active: false,
     };
@@ -73,7 +74,7 @@ class FigureWithLicense extends Component {
             authors={authors}
           />,
           <FigureDetails
-            id={uuid()}
+            id={this.id}
             key="details"
             licenseRights={license.rights}
             authors={authors}
@@ -97,6 +98,7 @@ class FigureWithLicense extends Component {
 
     return (
       <Figure
+        id={this.id}
         resizeIframe={this.props.resizeIframe}
         supportFloating={this.props.supportFloating}
         type={this.props.type}

@@ -6,7 +6,7 @@
  *
  */
 
-import { copyTextToClipboard, uuid, noScroll } from 'ndla-util';
+import { copyTextToClipboard, noScroll } from 'ndla-util';
 import createFocusTrap from 'focus-trap';
 import jump from 'jump.js';
 
@@ -67,11 +67,10 @@ export const addCopyToClipboardListeners = () => {
 export const addShowFigureDetailsClickListeners = () => {
   forEachElement('.c-figure .c-figure__captionbtn', el => {
     const target = el;
-    const id = uuid();
     const figure = findAncestorByClass(target, 'c-figure');
-    figure.id = id;
+    const id = figure.getAttribute('id');
 
-    const details = figure.querySelector('.c-figure__license');
+    const details = document.getElementById(`figure-details-${id}`);
     trapInstances[id] = createFocusTrap(details, {
       onDeactivate: () => {
         closeDialog(figure);

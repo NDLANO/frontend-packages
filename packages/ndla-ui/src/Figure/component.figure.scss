@@ -36,7 +36,8 @@
   }
 }
 .c-figure {
-  margin: $spacing--large/1.4 0 $spacing--large;
+  margin: $spacing--large 0 $spacing--large;
+
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
   }
@@ -58,6 +59,8 @@
     overflow: hidden;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: $spacing--large;
+    margin-bottom: 0;
   }
 }
 

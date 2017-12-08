@@ -1,3 +1,5 @@
+/* eslint no-param-reassign: 0 */
+
 import {
   forEachElement,
 } from './domHelpers';
@@ -92,6 +94,5 @@ export const initAudioPlayers = () => {
     audioElement.addEventListener('loadedmetadata', () => {
       setPlayed(progressPlayed, timeDisplay, audioElement.currentTime, audioElement.duration);
     });
-
   });
 };

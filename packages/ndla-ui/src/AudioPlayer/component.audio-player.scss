@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     background: $brand-grey--lighter;
-    padding: $spacing--small/2 $spacing;
+    padding: $spacing--small/2 $spacing - 6px;
   }
 
   &__play {
@@ -14,6 +14,11 @@
     padding: 0;
     margin-right: $spacing--small;
     cursor: pointer;
+
+    .c-icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__play-icon {

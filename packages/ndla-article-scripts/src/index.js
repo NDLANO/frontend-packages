@@ -12,8 +12,8 @@ import {
 } from './asideScripts';
 
 import {
-  addShowFigureDetailsClickListeners,
-  addCloseFigureDetailsClickListeners,
+  addShowDialogClickListeners,
+  addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   updateIFrameDimensions,
   addEventListenerForResize,
@@ -34,8 +34,8 @@ export const initArticleScripts = () => {
   updateIFrameDimensions();
   addAsideClickListener();
   addCopyToClipboardListeners();
-  addShowFigureDetailsClickListeners();
-  addCloseFigureDetailsClickListeners();
+  addShowDialogClickListeners();
+  addCloseDialogClickListeners();
   addShowGlossaryDefinitionClickListeners();
   addDetailsEventListeners();
   addEventListenersForZoom();
@@ -47,9 +47,9 @@ export {
   removeAsideClickListener,
   addEventListenerForResize,
   removeEventListenerForResize,
-  addCloseFigureDetailsClickListeners,
+  addCloseDialogClickListeners,
   addCopyToClipboardListeners,
-  addShowFigureDetailsClickListeners,
+  addShowDialogClickListeners,
   addShowGlossaryDefinitionClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,

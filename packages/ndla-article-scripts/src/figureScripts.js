@@ -20,7 +20,7 @@ const closeDialog = dialog => {
   noScroll(false);
 };
 
-export const addCloseFigureDetailsClickListeners = () => {
+export const addCloseDialogClickListeners = () => {
   forEachElement('.c-dialog', el => {
     const target = el;
     const closeButton = target.querySelector('.c-dialog__close');
@@ -35,30 +35,7 @@ export const addCloseFigureDetailsClickListeners = () => {
   });
 };
 
-export const addCopyToClipboardListeners = () => {
-  forEachElement('button[data-copy-string]', el => {
-    const target = el;
-    target.onclick = () => {
-      const text = target.getAttribute('data-copy-string');
-      const copiedTitle = target.getAttribute('data-copied-title');
-
-      const success = copyTextToClipboard(text, el.parentNode);
-
-      if (success) {
-        const previouesTitle = target.innerHTML;
-        target.innerHTML = copiedTitle;
-        target.disabled = true;
-
-        setTimeout(() => {
-          target.innerHTML = previouesTitle;
-          target.disabled = false;
-        }, 10000);
-      }
-    };
-  });
-};
-
-export const addShowFigureDetailsClickListeners = () => {
+export const addShowDialogClickListeners = () => {
   forEachElement('.c-figure .c-figure__captionbtn', el => {
     const target = el;
     const figure = findAncestorByClass(target, 'c-figure');
@@ -98,6 +75,29 @@ export const addShowFigureDetailsClickListeners = () => {
         dialog.setAttribute('aria-hidden', 'false');
         dialog.classList.add('c-dialog--active');
       }, 150);
+    };
+  });
+};
+
+export const addCopyToClipboardListeners = () => {
+  forEachElement('button[data-copy-string]', el => {
+    const target = el;
+    target.onclick = () => {
+      const text = target.getAttribute('data-copy-string');
+      const copiedTitle = target.getAttribute('data-copied-title');
+
+      const success = copyTextToClipboard(text, el.parentNode);
+
+      if (success) {
+        const previouesTitle = target.innerHTML;
+        target.innerHTML = copiedTitle;
+        target.disabled = true;
+
+        setTimeout(() => {
+          target.innerHTML = previouesTitle;
+          target.disabled = false;
+        }, 10000);
+      }
     };
   });
 };

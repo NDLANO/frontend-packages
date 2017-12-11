@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { uuid } from 'ndla-util';
 import {
-  addCloseFigureDetailsClickListeners,
-  addShowFigureDetailsClickListeners,
+  addCloseDialogClickListeners,
+  addShowDialogClickListeners,
   addEventListenerForResize,
   updateIFrameDimensions,
   addEventListenersForZoom,
@@ -34,8 +34,8 @@ class FigureWithLicense extends Component {
 
   componentDidMount() {
     if (this.props.runScripts) {
-      addShowFigureDetailsClickListeners();
-      addCloseFigureDetailsClickListeners();
+      addShowDialogClickListeners();
+      addCloseDialogClickListeners();
       updateIFrameDimensions();
       addEventListenerForResize();
       addEventListenersForZoom();

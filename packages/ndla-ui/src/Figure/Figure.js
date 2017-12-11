@@ -22,6 +22,7 @@ const classes = new BEMHelper({
   name: 'figure',
   prefix: 'c-',
 });
+
 const classLicenses = new BEMHelper({
   name: 'figure-license',
   prefix: 'c-',
@@ -40,41 +41,39 @@ export const FigureDetails = ({
   const headingLabelId = `heading-${id}`;
   return createUniversalPortal(
     <div
-      className="c-modal"
+      className="c-dialog"
       data-modal-id={id}
       role="dialog"
       aria-hidden="true"
       aria-labelledby={headingLabelId}>
-      <div key="backdrop" className="o-backdrop" />
-      <div key="license" {...classes('license')}>
+      <div {...classes('license')}>
         <button {...classes('close')}>{messages.close}</button>
-        <div className="u-expanded">
-          <div {...classLicenses('details')}>
+          <div {...classLicenses()}>
             <h3 id={headingLabelId} {...classLicenses('title')}>
               {messages.rulesForUse}
             </h3>
             <LicenseByline withDescription licenseRights={licenseRights} />
             <a
-              className="c-figure-license__link"
+              {...classLicenses('link')}
               target="_blank"
               rel="noopener noreferrer"
               href={licenseUrl}>
               {messages.learnAboutLicenses}
             </a>
             <div {...classLicenses('cta-wrapper')}>
-              <ul {...classes('list')}>
+              <ul {...classLicenses('list')}>
                 {title && (
-                  <li className="c-figure-list__item" key={uuid()}>
+                  <li {...classLicenses('item')} key={uuid()}>
                     {`${messages.title}: ${title}`}
                   </li>
                 )}
                 {authors.map(author => (
-                  <li key={uuid()} className="c-figure-list__item">{`${
+                  <li key={uuid()} {...classLicenses('item')}>{`${
                     author.type
                   }: ${author.name}`}</li>
                 ))}
                 {origin && (
-                  <li className="c-figure-list__item" key={uuid()}>
+                  <li {...classLicenses('item')} key={uuid()}>
                     {messages.source}:{' '}
                     {origin.startsWith('http') ? (
                       <a
@@ -92,8 +91,8 @@ export const FigureDetails = ({
               <div {...classLicenses('cta-block')}>{children}</div>
             </div>
           </div>
-        </div>
       </div>
+      <div key="backdrop" className="o-backdrop" />
     </div>,
     'body',
   );

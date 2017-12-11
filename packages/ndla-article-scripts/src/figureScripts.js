@@ -15,13 +15,13 @@ import { findAncestorByClass, forEachElement } from './domHelpers';
 const trapInstances = {};
 
 const closeDialog = details => {
-  details.classList.remove('c-modal--active');
+  details.classList.remove('c-dialog--active');
   details.setAttribute('aria-hidden', 'true');
   noScroll(false);
 };
 
 export const addCloseFigureDetailsClickListeners = () => {
-  forEachElement('.c-modal', el => {
+  forEachElement('.c-dialog', el => {
     const target = el;
     const closeButton = target.querySelector('.c-figure__close');
 
@@ -65,7 +65,6 @@ export const addShowFigureDetailsClickListeners = () => {
     const id = figure.getAttribute('id');
 
     const details = document.querySelector(`[data-modal-id='${id}']`);
-    console.log(details);
     trapInstances[id] = createFocusTrap(details, {
       onDeactivate: () => {
         closeDialog(details);
@@ -95,8 +94,7 @@ export const addShowFigureDetailsClickListeners = () => {
 
       setTimeout(() => {
         details.setAttribute('aria-hidden', 'false');
-        // details.classList.add('c-figure__license--active');
-        details.classList.add('c-modal--active');
+        details.classList.add('c-dialog--active');
       }, 150);
     };
   });

@@ -10,10 +10,10 @@
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
+import { createUniversalPortal } from './createUniversalPortal';
 
 import LicenseByline from '../LicenseByline';
 import Button from '../button/Button';
@@ -38,7 +38,7 @@ export const FigureDetails = ({
   licenseUrl,
 }) => {
   const headingLabelId = `heading-${id}`;
-  return ReactDOM.createPortal(
+  return createUniversalPortal(
     <div
       className="c-modal"
       data-modal-id={id}
@@ -95,7 +95,7 @@ export const FigureDetails = ({
         </div>
       </div>
     </div>,
-    document.body,
+    'body',
   );
 };
 

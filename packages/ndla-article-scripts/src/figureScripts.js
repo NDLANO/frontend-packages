@@ -10,30 +10,24 @@ import { copyTextToClipboard, noScroll } from 'ndla-util';
 import createFocusTrap from 'focus-trap';
 import jump from 'jump.js';
 
-import {
-  findAncestorByClass,
-  removeElementById,
-  forEachElement,
-} from './domHelpers';
+import { findAncestorByClass, forEachElement } from './domHelpers';
 
 const trapInstances = {};
 
-const closeDialog = figure => {
-  figure.classList.remove('c-figure--active');
-  const details = figure.querySelector('.c-figure__license');
+const closeDialog = details => {
+  details.classList.remove('c-modal--active');
   details.setAttribute('aria-hidden', 'true');
   noScroll(false);
 };
 
 export const addCloseFigureDetailsClickListeners = () => {
-  forEachElement('.c-figure .c-figure__close', el => {
+  forEachElement('.c-modal', el => {
     const target = el;
+    const closeButton = target.querySelector('.c-figure__close');
 
-    target.onclick = () => {
-      removeElementById('c-license-icon-description');
-      const figure = findAncestorByClass(target, 'c-figure');
-
-      const instance = trapInstances[figure.id];
+    closeButton.onclick = () => {
+      const id = target.getAttribute('data-modal-id');
+      const instance = trapInstances[id];
       if (instance) {
         instance.deactivate();
       }
@@ -70,10 +64,11 @@ export const addShowFigureDetailsClickListeners = () => {
     const figure = findAncestorByClass(target, 'c-figure');
     const id = figure.getAttribute('id');
 
-    const details = document.getElementById(`figure-details-${id}`);
+    const details = document.querySelector(`[data-modal-id='${id}']`);
+    console.log(details);
     trapInstances[id] = createFocusTrap(details, {
       onDeactivate: () => {
-        closeDialog(figure);
+        closeDialog(details);
       },
       clickOutsideDeactivates: true,
     });
@@ -100,8 +95,8 @@ export const addShowFigureDetailsClickListeners = () => {
 
       setTimeout(() => {
         details.setAttribute('aria-hidden', 'false');
-        removeElementById('c-license-icon-description');
-        figure.classList.add('c-figure--active');
+        // details.classList.add('c-figure__license--active');
+        details.classList.add('c-modal--active');
       }, 150);
     };
   });

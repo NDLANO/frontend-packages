@@ -46,15 +46,10 @@
     margin-right: $spacing--small;
   }
 
-  .o-backdrop {
-    display: none;
-    z-index: 999;
-  }
-
   &--support-floating {
-    left: auto!important;
-    right: auto!important;
-    width: auto!important;
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
     overflow: hidden;
     padding-left: 0;
     padding-right: 0;
@@ -140,17 +135,14 @@
   visibility: hidden;
 }
 
-/* 3. */
-.c-figure--active {
-  @include font-size(16px);
-  position: relative;
-
+.c-modal {
   .o-backdrop {
-    display: block;
-    animation-name: fadeIn;
-    animation-duration: 0.8s;
+    display: none;
+    z-index: 999;
   }
+}
 
+.c-modal--active {
   .c-figure__license {
     position: fixed;
     background-color: $brand-color--lighter;
@@ -196,7 +188,15 @@
     cursor: pointer;
   }
 
+  .o-backdrop {
+    display: block;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
+  }
+}
 
+/* 3. */
+.c-figure--active {
   .c-figure__img {
     margin: 0;
   }

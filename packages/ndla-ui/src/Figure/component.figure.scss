@@ -3,7 +3,6 @@
 ** Figure element, displaying images, embeds, videos etc.
 ** 1. Figure itself
 ** 2. Figcaption element w/content
-** 3. Figure with license-popup activated
 **
 ** PRINCIPLE:
 ** <figure class="c-figure">
@@ -14,10 +13,6 @@
 **       <div class="c-figure__info">Caption</div>
 **       <div class="c-figure__byline">License, CTA</div>
 **   </figcaption>
-**   <div class="c-figure__license">
-**       <button class="c-figure__close">Lukk</button>
-**       Licensebox content here (see component.figure-license scss)
-**   </div>
 ** </figure>
 **/
 
@@ -114,72 +109,3 @@
     margin-bottom: $spacing--small;
   }
 }
-
-.c-figure__license {
-  overflow: hidden;
-  height: 0;
-  visibility: hidden;
-}
-
-.c-dialog {
-  .o-backdrop {
-    display: none;
-    z-index: 999;
-  }
-}
-
-.c-dialog--active {
-  .o-backdrop {
-    display: block;
-    animation-name: fadeIn;
-    animation-duration: 0.8s;
-  }
-}
-
-.c-dialog--active {
-  .c-figure__license {
-    position: fixed;
-    background-color: $brand-color--lighter;
-    box-shadow: 0 0 30px rgba($black, 0.2);
-    padding: $spacing;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    animation-name: zoomIn;
-    animation-duration: 0.3s;
-    overflow: auto;
-
-    @include mq(tablet) {
-      width: 90%;
-      margin: 0 auto;
-      top: 50%;
-      transform: translateY(-50%);
-      max-width: 500px;
-      left: 0;
-      right: 0;
-      bottom: auto;
-      opacity: 1;
-      animation-name: fadeInBottom;
-    }
-    height: auto;
-    visibility: visible;
-  }
-
-  .c-figure__close {
-    display: block;
-    position: absolute;
-    top: $spacing*0.9;
-    right: $spacing;
-    background: transparent;
-    border: none;
-    color: $brand-color;
-    @include font-size(20px);
-    font-weight: $font-weight-normal;
-    text-decoration: underline;
-    z-index: 9;
-    cursor: pointer;
-  }
-}
-

@@ -14,19 +14,19 @@ import { findAncestorByClass, forEachElement } from './domHelpers';
 
 const trapInstances = {};
 
-const closeDialog = details => {
-  details.classList.remove('c-dialog--active');
-  details.setAttribute('aria-hidden', 'true');
+const closeDialog = dialog => {
+  dialog.classList.remove('c-dialog--active');
+  dialog.setAttribute('aria-hidden', 'true');
   noScroll(false);
 };
 
 export const addCloseFigureDetailsClickListeners = () => {
   forEachElement('.c-dialog', el => {
     const target = el;
-    const closeButton = target.querySelector('.c-figure__close');
+    const closeButton = target.querySelector('.c-dialog__close');
 
     closeButton.onclick = () => {
-      const id = target.getAttribute('data-modal-id');
+      const id = target.getAttribute('data-dialog-id');
       const instance = trapInstances[id];
       if (instance) {
         instance.deactivate();
@@ -64,10 +64,12 @@ export const addShowFigureDetailsClickListeners = () => {
     const figure = findAncestorByClass(target, 'c-figure');
     const id = figure.getAttribute('id');
 
-    const details = document.querySelector(`[data-modal-id='${id}']`);
-    trapInstances[id] = createFocusTrap(details, {
+    const dialog = document.querySelector(`[data-dialog-id='${id}']`);
+    const dialogContent = dialog.querySelector(`.c-dialog__content`);
+
+    trapInstances[id] = createFocusTrap(dialogContent, {
       onDeactivate: () => {
-        closeDialog(details);
+        closeDialog(dialog);
       },
       clickOutsideDeactivates: true,
     });
@@ -93,8 +95,8 @@ export const addShowFigureDetailsClickListeners = () => {
       });
 
       setTimeout(() => {
-        details.setAttribute('aria-hidden', 'false');
-        details.classList.add('c-dialog--active');
+        dialog.setAttribute('aria-hidden', 'false');
+        dialog.classList.add('c-dialog--active');
       }, 150);
     };
   });

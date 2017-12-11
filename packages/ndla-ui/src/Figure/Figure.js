@@ -13,8 +13,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
-import { createUniversalPortal } from './createUniversalPortal';
 
+import Dialog from '../Dialog';
 import LicenseByline from '../LicenseByline';
 import Button from '../button/Button';
 
@@ -39,62 +39,49 @@ export const FigureDetails = ({
   licenseUrl,
 }) => {
   const headingLabelId = `heading-${id}`;
-  return createUniversalPortal(
-    <div
-      className="c-dialog"
-      data-modal-id={id}
-      role="dialog"
-      aria-hidden="true"
-      aria-labelledby={headingLabelId}>
-      <div {...classes('license')}>
-        <button {...classes('close')}>{messages.close}</button>
-          <div {...classLicenses()}>
-            <h3 id={headingLabelId} {...classLicenses('title')}>
-              {messages.rulesForUse}
-            </h3>
-            <LicenseByline withDescription licenseRights={licenseRights} />
-            <a
-              {...classLicenses('link')}
-              target="_blank"
-              rel="noopener noreferrer"
-              href={licenseUrl}>
-              {messages.learnAboutLicenses}
-            </a>
-            <div {...classLicenses('cta-wrapper')}>
-              <ul {...classLicenses('list')}>
-                {title && (
-                  <li {...classLicenses('item')} key={uuid()}>
-                    {`${messages.title}: ${title}`}
-                  </li>
+  return (
+    <Dialog id={id} labelledby={headingLabelId} messages={messages}>
+      <div {...classLicenses()}>
+        <h3 id={headingLabelId} {...classLicenses('title')}>
+          {messages.rulesForUse}
+        </h3>
+        <LicenseByline withDescription licenseRights={licenseRights} />
+        <a
+          {...classLicenses('link')}
+          target="_blank"
+          rel="noopener noreferrer"
+          href={licenseUrl}>
+          {messages.learnAboutLicenses}
+        </a>
+        <div {...classLicenses('cta-wrapper')}>
+          <ul {...classLicenses('list')}>
+            {title && (
+              <li {...classLicenses('item')} key={uuid()}>
+                {`${messages.title}: ${title}`}
+              </li>
+            )}
+            {authors.map(author => (
+              <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${
+                author.name
+              }`}</li>
+            ))}
+            {origin && (
+              <li {...classLicenses('item')} key={uuid()}>
+                {messages.source}:{' '}
+                {origin.startsWith('http') ? (
+                  <a href={origin} target="_blank" rel="noopener noreferrer">
+                    {origin}
+                  </a>
+                ) : (
+                  origin
                 )}
-                {authors.map(author => (
-                  <li key={uuid()} {...classLicenses('item')}>{`${
-                    author.type
-                  }: ${author.name}`}</li>
-                ))}
-                {origin && (
-                  <li {...classLicenses('item')} key={uuid()}>
-                    {messages.source}:{' '}
-                    {origin.startsWith('http') ? (
-                      <a
-                        href={origin}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        {origin}
-                      </a>
-                    ) : (
-                      origin
-                    )}
-                  </li>
-                )}
-              </ul>
-              <div {...classLicenses('cta-block')}>{children}</div>
-            </div>
-          </div>
+              </li>
+            )}
+          </ul>
+          <div {...classLicenses('cta-block')}>{children}</div>
+        </div>
       </div>
-      <div key="backdrop" className="o-backdrop" />
-    </div>,
-    'body',
+    </Dialog>
   );
 };
 

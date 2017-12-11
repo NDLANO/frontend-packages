@@ -16,8 +16,8 @@ function canUseDOM() {
     typeof window !== 'undefined' &&
     window.document &&
     window.document.createElement &&
-    !window.document.hidden // jsdom check
-  );
+    !window.document.hidden
+  ); // window.document.hidden === jsdom check
 }
 
 export function createUniversalPortal(children, selector) {

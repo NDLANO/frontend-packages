@@ -32,7 +32,7 @@ const AudioPlayer = ({ type, src, title, typeLabel, speach }) => {
 
   return (
     <section {...classes()}>
-      <p {...classes('type')}>{typeLabel}</p>
+      {typeLabel && <p {...classes('type')}>{typeLabel}</p>}
       <h1 {...classes('title')}>{title}</h1>
       <audio type={type} src={src} title={title} preload="metadata" />
       <div {...classes('controls')}>
@@ -56,7 +56,7 @@ const AudioPlayer = ({ type, src, title, typeLabel, speach }) => {
 
 AudioPlayer.propTypes = {
   type: PropTypes.string.isRequired,
-  typeLabel: PropTypes.string.isRequired,
+  typeLabel: PropTypes.string,
   src: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   speach: PropTypes.bool,

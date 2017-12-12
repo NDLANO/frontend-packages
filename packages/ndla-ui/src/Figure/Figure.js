@@ -187,7 +187,14 @@ export const Figure = ({
 
 Figure.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['full', 'full-column', 'left', 'small-left', 'right', 'small-right']),
+  type: PropTypes.oneOf([
+    'full',
+    'full-column',
+    'left',
+    'small-left',
+    'right',
+    'small-right',
+  ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
 };

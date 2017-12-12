@@ -27,9 +27,7 @@ import {
   removeDetailsEventListeners,
 } from './detailsScript';
 
-import {
-  initAudioPlayers,
-} from './audioPlayerScript';
+import { initAudioPlayers } from './audioPlayerScript';
 
 import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
 

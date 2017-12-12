@@ -18,13 +18,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const AudioPlayer = ({
-  type,
-  src,
-  title,
-  typeLabel,
-  speach,
-}) => {
+const AudioPlayer = ({ type, src, title, typeLabel, speach }) => {
   if (speach) {
     return (
       <section {...classes('', 'speach')}>
@@ -43,8 +37,12 @@ const AudioPlayer = ({
       <audio type={type} src={src} title={title} preload="metadata" />
       <div {...classes('controls')}>
         <button {...classes('play')}>
-          <span {...classes('play-icon')}><Play /></span>
-          <span {...classes('pause-icon')}><Pause /></span>
+          <span {...classes('play-icon')}>
+            <Play />
+          </span>
+          <span {...classes('pause-icon')}>
+            <Pause />
+          </span>
         </button>
         <div {...classes('time')}>0:00</div>
         <div {...classes('progress')} tabIndex="0">
@@ -66,6 +64,6 @@ AudioPlayer.propTypes = {
 
 AudioPlayer.defaultProps = {
   speach: false,
-}
+};
 
 export default AudioPlayer;

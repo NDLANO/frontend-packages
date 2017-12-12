@@ -101,7 +101,14 @@ FigureWithLicense.propTypes = {
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
-  type: PropTypes.oneOf(['full', 'full-column', 'left', 'small-left', 'right', 'small-right',]),
+  type: PropTypes.oneOf([
+    'full',
+    'full-column',
+    'left',
+    'small-left',
+    'right',
+    'small-right',
+  ]),
 };
 
 FigureWithLicense.defaultProps = {

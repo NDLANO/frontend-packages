@@ -8,14 +8,21 @@ import * as commonIcons from 'ndla-icons/common';
 import * as editorIcons from 'ndla-icons/editor';
 import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
-import { Aside, Button, Logo, LayoutItem, LicenseByline, Image, AudioPlayer } from 'ndla-ui';
+import {
+  Aside,
+  Button,
+  Logo,
+  LayoutItem,
+  LicenseByline,
+  Image,
+  AudioPlayer,
+} from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import { OneColumn } from '../../ndla-ui/lib/Layout/index';
-
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (

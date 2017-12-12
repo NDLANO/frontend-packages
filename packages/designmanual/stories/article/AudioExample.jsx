@@ -64,9 +64,7 @@ class AudioExample extends Component {
     ];
 
     return (
-      <Figure
-        type="full-column"
-        captionView={captionView}>
+      <Figure type="full-column" captionView={captionView}>
         <AudioPlayer
           src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
           type="audio/mpeg"

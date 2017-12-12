@@ -10,17 +10,17 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const Plus = props => (
+const VolumeUp = props => (
   <Icon
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
     <g>
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      <path d="M0 0h24v24H0z" fill="none" />
+      <title>volume_up</title>
+      <path d="M14.016 3.234c4.031 0.891 6.984 4.5 6.984 8.766s-2.953 7.875-6.984 8.766v-2.063c2.906-0.844 4.969-3.516 4.969-6.703s-2.063-5.859-4.969-6.703v-2.063zM16.5 12c0 1.781-0.984 3.281-2.484 4.031v-8.063c1.5 0.75 2.484 2.25 2.484 4.031zM3 9h3.984l5.016-5.016v16.031l-5.016-5.016h-3.984v-6z" />
     </g>
   </Icon>
 );
 
-export default Plus;
+export default VolumeUp;

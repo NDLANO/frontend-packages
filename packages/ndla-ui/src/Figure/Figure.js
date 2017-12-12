@@ -59,13 +59,12 @@ export const Figure = ({
   captionView,
   type,
   resizeIframe,
-  supportFloating,
   ...rest
 }) => {
   let typeClass = null;
   let content = null;
 
-  if (type !== 'full') {
+  if (type !== 'full' && type !== 'full-column') {
     typeClass = `u-float-${type}`;
     content = (
       <Button stripped className="u-fullw">
@@ -82,8 +81,8 @@ export const Figure = ({
     modifiers.push('resize');
   }
 
-  if (supportFloating) {
-    modifiers.push('support-floating');
+  if (type === 'full-column') {
+    modifiers.push('full-column');
   }
 
   return (
@@ -101,18 +100,22 @@ export const Figure = ({
 Figure.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
+  type: PropTypes.oneOf([
+    'full',
+    'full-column',
+    'left',
+    'small-left',
+    'right',
+    'small-right',
+  ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
-  // only to support aside (temp).
-  supportFloating: PropTypes.bool,
 };
 
 Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
   captionView: null,
-  supportFloating: false,
 };
 
 export default Figure;

@@ -25,6 +25,7 @@ export { default as Aside } from './aside/Aside';
 export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';
 export { default as FilterList } from './filter/FilterList';
+export { default as AudioPlayer } from './AudioPlayer';
 export {
   default as LayoutItem,
   OneColumn,

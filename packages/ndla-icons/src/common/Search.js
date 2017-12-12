@@ -13,7 +13,7 @@ import Icon from '../Icon';
 const Search = props => (
   <Icon
     viewBox="0 0 48 48"
-    data-license="CC-BY 4.0"
+    data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
     <g>

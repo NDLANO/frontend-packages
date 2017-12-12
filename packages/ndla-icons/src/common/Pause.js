@@ -10,17 +10,17 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const Plus = props => (
+const Pause = props => (
   <Icon
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
     <g>
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      <path d="M0 0h24v24H0z" fill="none" />
+      <title>pause</title>
+      <path d="M14.016 5.016h3.984v13.969h-3.984v-13.969zM6 18.984v-13.969h3.984v13.969h-3.984z" />
     </g>
   </Icon>
 );
 
-export default Plus;
+export default Pause;

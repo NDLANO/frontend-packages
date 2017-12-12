@@ -11,10 +11,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
-import Dialog from '../Dialog';
 import LicenseByline from '../LicenseByline';
 import Button from '../button/Button';
 
@@ -22,90 +20,6 @@ const classes = new BEMHelper({
   name: 'figure',
   prefix: 'c-',
 });
-
-const classLicenses = new BEMHelper({
-  name: 'figure-license',
-  prefix: 'c-',
-});
-
-export const FigureDetails = ({
-  children,
-  authors,
-  origin,
-  title,
-  messages,
-  licenseRights,
-  id,
-  licenseUrl,
-}) => {
-  const headingLabelId = `heading-${id}`;
-  return (
-    <Dialog id={id} labelledby={headingLabelId} messages={messages}>
-      <div {...classLicenses()}>
-        <h3 id={headingLabelId} {...classLicenses('title')}>
-          {messages.rulesForUse}
-        </h3>
-        <LicenseByline withDescription licenseRights={licenseRights} />
-        <a
-          {...classLicenses('link')}
-          target="_blank"
-          rel="noopener noreferrer"
-          href={licenseUrl}>
-          {messages.learnAboutLicenses}
-        </a>
-        <div {...classLicenses('cta-wrapper')}>
-          <ul {...classLicenses('list')}>
-            {title && (
-              <li {...classLicenses('item')} key={uuid()}>
-                {`${messages.title}: ${title}`}
-              </li>
-            )}
-            {authors.map(author => (
-              <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${
-                author.name
-              }`}</li>
-            ))}
-            {origin && (
-              <li {...classLicenses('item')} key={uuid()}>
-                {messages.source}:{' '}
-                {origin.startsWith('http') ? (
-                  <a href={origin} target="_blank" rel="noopener noreferrer">
-                    {origin}
-                  </a>
-                ) : (
-                  origin
-                )}
-              </li>
-            )}
-          </ul>
-          <div {...classLicenses('cta-block')}>{children}</div>
-        </div>
-      </div>
-    </Dialog>
-  );
-};
-
-FigureDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  origin: PropTypes.string,
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
-  messages: PropTypes.shape({
-    close: PropTypes.string.isRequired,
-    rulesForUse: PropTypes.string.isRequired,
-    source: PropTypes.string.isRequired,
-    learnAboutLicenses: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  title: PropTypes.string,
-  licenseUrl: PropTypes.string.isRequired,
-};
 
 export const FigureCaption = ({
   caption,

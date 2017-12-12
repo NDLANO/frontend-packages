@@ -18,7 +18,7 @@ import {
   addEventListenersForZoom,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import { Figure, FigureCaption, FigureLicenseDialog } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -73,7 +73,7 @@ class FigureWithLicense extends Component {
             licenseRights={license.rights}
             authors={authors}
           />,
-          <FigureDetails
+          <FigureLicenseDialog
             id={this.id}
             key="details"
             licenseRights={license.rights}
@@ -92,7 +92,7 @@ class FigureWithLicense extends Component {
               type="button">
               Last ned {typeLabel}
             </button>
-          </FigureDetails>,
+          </FigureLicenseDialog>,
         ]
       : null;
 

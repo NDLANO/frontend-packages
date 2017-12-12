@@ -20,3 +20,4 @@ export { default as Sad } from './Sad';
 export { default as Search } from './Search';
 export { default as Time } from './Time';
 export { default as User } from './User';
+export { default as VolumeUp } from './VolumeUp';

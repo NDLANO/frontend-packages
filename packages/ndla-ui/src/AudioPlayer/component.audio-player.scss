@@ -29,6 +29,19 @@
     }
   }
 
+  &--speach {
+    .c-audio-player {
+      &__play {
+        color: $brand-color;
+        margin-right: 0;
+
+        &:hover, &:active, &:focus {
+          color: $brand-color--secondary;
+        }
+      }
+    }
+  }
+
   &__play-icon {
     display: inline-flex;
     align-items: center;

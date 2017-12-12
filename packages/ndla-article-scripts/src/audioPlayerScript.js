@@ -45,8 +45,6 @@ export const initAudioPlayers = () => {
     const audioElement = wrapper.querySelector('audio');
     const playButton = wrapper.querySelector('.c-audio-player__play');
     const progressBar = wrapper.querySelector('.c-audio-player__progress');
-    const progressPlayed = progressBar.querySelector('.c-audio-player__progress-played');
-    const timeDisplay = wrapper.querySelector('.c-audio-player__time');
 
     const toggleStateClasses = (playing) => {
       if (playing) {
@@ -66,41 +64,47 @@ export const initAudioPlayers = () => {
       }
     };
 
-    audioElement.addEventListener('timeupdate', () => {
-      onTimeUpdate(audioElement, progressPlayed, timeDisplay);
-    });
-
-    audioElement.addEventListener('ended', () => {
-      toggleStateClasses(false);
-    })
-
-    progressBar.addEventListener('click', (event) => {
-      const percent = event.offsetX / progressBar.offsetWidth;
-      onSeek(percent, audioElement, progressPlayed, timeDisplay);
-    });
-
-    progressBar.addEventListener('keydown', (event) => {
-      const step = event.shiftKey ? 0.05 : 0.01;
-      if(event.key === 'ArrowLeft' || event.key === 'Left') {
-        let newValue = parseFloat(progressPlayed.getAttribute('data-value')) - step;
-        if (newValue < 0) {
-          newValue = 0;
-        }
-
-        onSeek(newValue, audioElement, progressPlayed, timeDisplay);
-      } else if (event.key === 'ArrowRight' || event.key === 'Right') {
-        let newValue = parseFloat(progressPlayed.getAttribute('data-value')) + step;
-        if (newValue > 1) {
-          newValue = 1;
-        }
-        onSeek(newValue, audioElement, progressPlayed, timeDisplay);
-      }
-    });
-
     playButton.onclick = togglePlay;
 
-    audioElement.addEventListener('loadedmetadata', () => {
-      setPlayed(progressPlayed, timeDisplay, audioElement.currentTime, audioElement.duration);
-    });
+    if (progressBar) { // if complete version
+      const progressPlayed = progressBar.querySelector('.c-audio-player__progress-played');
+      const timeDisplay = wrapper.querySelector('.c-audio-player__time');
+
+
+      audioElement.addEventListener('timeupdate', () => {
+        onTimeUpdate(audioElement, progressPlayed, timeDisplay);
+      });
+
+      audioElement.addEventListener('ended', () => {
+        toggleStateClasses(false);
+      })
+
+      progressBar.addEventListener('click', (event) => {
+        const percent = event.offsetX / progressBar.offsetWidth;
+        onSeek(percent, audioElement, progressPlayed, timeDisplay);
+      });
+
+      progressBar.addEventListener('keydown', (event) => {
+        const step = event.shiftKey ? 0.05 : 0.01;
+        if(event.key === 'ArrowLeft' || event.key === 'Left') {
+          let newValue = parseFloat(progressPlayed.getAttribute('data-value')) - step;
+          if (newValue < 0) {
+            newValue = 0;
+          }
+
+          onSeek(newValue, audioElement, progressPlayed, timeDisplay);
+        } else if (event.key === 'ArrowRight' || event.key === 'Right') {
+          let newValue = parseFloat(progressPlayed.getAttribute('data-value')) + step;
+          if (newValue > 1) {
+            newValue = 1;
+          }
+          onSeek(newValue, audioElement, progressPlayed, timeDisplay);
+        }
+      });
+
+      audioElement.addEventListener('loadedmetadata', () => {
+        setPlayed(progressPlayed, timeDisplay, audioElement.currentTime, audioElement.duration);
+      });
+    }
   });
 };

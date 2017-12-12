@@ -18,7 +18,7 @@ import {
   addEventListenersForZoom,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureLicenseDialog } from 'ndla-ui';
+import { Figure, FigureCaption, FigureLicenseDialog, Button } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -82,16 +82,8 @@ class FigureWithLicense extends Component {
             origin="https://www.wikimedia.com"
             title="Mann med lupe"
             messages={messages}>
-            <button
-              className="c-button c-button--outline c-figure-license__button"
-              type="button">
-              Kopier referanse
-            </button>
-            <button
-              className="c-button c-button--outline c-figure-license__button"
-              type="button">
-              Last ned {typeLabel}
-            </button>
+            <Button outline>Kopier referanse</Button>
+            <Button outline>Last ned {typeLabel}</Button>
           </FigureLicenseDialog>,
         ]
       : null;

@@ -51,7 +51,7 @@ export const FigureLicenseDialog = ({
         <div {...classLicenses('cta-wrapper')}>
           <ul {...classLicenses('list')}>
             {title && (
-              <li {...classLicenses('item')} key={uuid()}>
+              <li {...classLicenses('item')}>
                 {`${messages.title}: ${title}`}
               </li>
             )}
@@ -61,7 +61,7 @@ export const FigureLicenseDialog = ({
               }`}</li>
             ))}
             {origin && (
-              <li {...classLicenses('item')} key={uuid()}>
+              <li {...classLicenses('item')}>
                 {messages.source}:{' '}
                 {origin.startsWith('http') ? (
                   <a href={origin} target="_blank" rel="noopener noreferrer">

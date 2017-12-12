@@ -32,7 +32,7 @@ export const Dialog = ({ children, messages, id, labelledby, ...rest }) =>
         <button {...classes('close')}>{messages.close}</button>
         {children}
       </div>
-      <div key="backdrop" className="o-backdrop" />
+      <div className="o-backdrop" />
     </div>,
     'body',
   );

@@ -48,7 +48,7 @@ class AudioExample extends Component {
         authors={authors}
         licenseUrl={license.url}
         origin="https://www.wikimedia.com"
-        title="Mann med lupe"
+        title={caption}
         messages={messages}>
         <button
           className="c-button c-button--outline c-figure-license__button"

@@ -8,7 +8,7 @@ import * as commonIcons from 'ndla-icons/common';
 import * as editorIcons from 'ndla-icons/editor';
 import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
-import { Aside, Button, Logo, LayoutItem, LicenseByline, Image } from 'ndla-ui';
+import { Aside, Button, Logo, LayoutItem, LicenseByline, Image, AudioPlayer } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import LicenseExample from './article/LicenseExample';
@@ -234,11 +234,42 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Lydklipp', () => (
+  .add('Lydavspiller', () => (
     <div>
-      <StoryIntro title="Lydklipp" />
+      <StoryIntro title="Lydavspiller" />
       <StoryBody>
+        <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
         <AudioExample runScripts />
+        <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Forenklet</th>
+              <th>Trad.</th>
+              <th>Pinyin</th>
+              <th>Ordkl.</th>
+              <th>Oversettelse</th>
+              <th>Uttale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>旅游</td>
+              <td>旅遊</td>
+              <td>lǚyóu</td>
+              <td>v/n</td>
+              <td>å reise (rundt); å dra på tur; reise(liv)</td>
+              <td>
+                <AudioPlayer
+                  src="https://staging.api.ndla.no/audio/files/shu3jia4.mp3"
+                  type="audio/mpeg"
+                  speach
+                  title="Oversettelse"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </StoryBody>
     </div>
   ))

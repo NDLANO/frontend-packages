@@ -11,7 +11,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
 import LicenseByline from '../LicenseByline';
@@ -21,95 +20,6 @@ const classes = new BEMHelper({
   name: 'figure',
   prefix: 'c-',
 });
-const classLicenses = new BEMHelper({
-  name: 'figure-license',
-  prefix: 'c-',
-});
-
-export const FigureDetails = ({
-  children,
-  authors,
-  origin,
-  title,
-  messages,
-  licenseRights,
-  id: headingLabelId,
-  licenseUrl,
-}) => [
-  <div key="backdrop" className="o-backdrop" />,
-  <div
-    key="license"
-    {...classes('license')}
-    role="dialog"
-    aria-hidden="true"
-    aria-labelledby={headingLabelId}>
-    <button {...classes('close')}>{messages.close}</button>
-    <div className="u-expanded">
-      <div {...classLicenses('details')}>
-        <h3 id={headingLabelId} {...classLicenses('title')}>
-          {messages.rulesForUse}
-        </h3>
-        <LicenseByline withDescription licenseRights={licenseRights} />
-        <a
-          className="c-figure-license__link"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={licenseUrl}>
-          {messages.learnAboutLicenses}
-        </a>
-        <div {...classLicenses('cta-wrapper')}>
-          <ul {...classes('list')}>
-            {title && (
-              <li className="c-figure-list__item" key={uuid()}>
-                {`${messages.title}: ${title}`}
-              </li>
-            )}
-            {authors.map(author => (
-              <li key={uuid()} className="c-figure-list__item">{`${
-                author.type
-              }: ${author.name}`}</li>
-            ))}
-            {origin && (
-              <li className="c-figure-list__item" key={uuid()}>
-                {messages.source}:{' '}
-                {origin.startsWith('http') ? (
-                  <a href={origin} target="_blank" rel="noopener noreferrer">
-                    {origin}
-                  </a>
-                ) : (
-                  origin
-                )}
-              </li>
-            )}
-          </ul>
-          <div {...classLicenses('cta-block')}>{children}</div>
-        </div>
-      </div>
-    </div>
-  </div>,
-];
-
-FigureDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  origin: PropTypes.string,
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
-  messages: PropTypes.shape({
-    close: PropTypes.string.isRequired,
-    rulesForUse: PropTypes.string.isRequired,
-    source: PropTypes.string.isRequired,
-    learnAboutLicenses: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  title: PropTypes.string,
-  licenseUrl: PropTypes.string.isRequired,
-};
 
 export const FigureCaption = ({
   caption,
@@ -144,6 +54,7 @@ FigureCaption.propTypes = {
 };
 
 export const Figure = ({
+  id,
   children,
   captionView,
   type,
@@ -176,6 +87,7 @@ export const Figure = ({
 
   return (
     <figure
+      id={id}
       {...classes('', modifiers, typeClass)}
       data-toggleclass={typeClass}
       {...rest}>
@@ -186,6 +98,7 @@ export const Figure = ({
 };
 
 Figure.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf([
     'full',

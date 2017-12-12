@@ -11,22 +11,27 @@ import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { uuid } from 'ndla-util';
 import {
-  addCloseFigureDetailsClickListeners,
-  addShowFigureDetailsClickListeners,
+  addCloseDialogClickListeners,
+  addShowDialogClickListeners,
   addEventListenerForResize,
   updateIFrameDimensions,
   addEventListenersForZoom,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import { Figure, FigureCaption, FigureLicenseDialog, Button } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
 class FigureWithLicense extends Component {
+  constructor(props) {
+    super(props);
+    this.id = uuid();
+  }
+
   componentDidMount() {
     if (this.props.runScripts) {
-      addShowFigureDetailsClickListeners();
-      addCloseFigureDetailsClickListeners();
+      addShowDialogClickListeners();
+      addCloseDialogClickListeners();
       updateIFrameDimensions();
       addEventListenerForResize();
       addEventListenersForZoom();
@@ -59,8 +64,8 @@ class FigureWithLicense extends Component {
             licenseRights={license.rights}
             authors={authors}
           />,
-          <FigureDetails
-            id={uuid()}
+          <FigureLicenseDialog
+            id={this.id}
             key="details"
             licenseRights={license.rights}
             authors={authors}
@@ -68,22 +73,15 @@ class FigureWithLicense extends Component {
             origin="https://www.wikimedia.com"
             title="Mann med lupe"
             messages={messages}>
-            <button
-              className="c-button c-button--outline c-figure-license__button"
-              type="button">
-              Kopier referanse
-            </button>
-            <button
-              className="c-button c-button--outline c-figure-license__button"
-              type="button">
-              Last ned {typeLabel}
-            </button>
-          </FigureDetails>,
+            <Button outline>Kopier referanse</Button>
+            <Button outline>Last ned {typeLabel}</Button>
+          </FigureLicenseDialog>,
         ]
       : null;
 
     return (
       <Figure
+        id={this.id}
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
         captionView={captionAndDetails}>

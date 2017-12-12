@@ -13,6 +13,7 @@ or
 ```sh
 $ yarn add ndla-article-scripts
 ```
+
 ## Usage
 
 ### Plain javascript (embed scripts)
@@ -24,12 +25,12 @@ import {
   addAsideClickListener,
 } from 'ndla-article-scripts';
 
-window.onload = () => { // Invoke after article content has loaded
+window.onload = () => {
+  // Invoke after article content has loaded
   updateIFrameDimensions();
   addEventListenerForResize();
   addAsideClickListener();
 };
-
 ```
 
 ### React
@@ -44,7 +45,6 @@ import {
 } from 'ndla-article-scripts';
 
 class Article extends Component {
-
   componentDidMount() {
     addEventListenerForResize();
     updateIFrameDimensions();
@@ -68,7 +68,6 @@ class Article extends Component {
 }
 export default Article;
 ```
-
 
 ## API(functions)
 
@@ -96,11 +95,11 @@ Adds an click listener on aside buttons for expanding the content on small scree
 
 Removes click listeners added by `removeAsideClickListener`.
 
-### `articleScripts.addShowFigureDetailsClickListeners()`
+### `articleScripts.addShowDialogClickListeners()`
 
 Adds click listeners for displaying license info popup.
 
-### `articleScripts.addCloseFigureDetailsClickListeners()`
+### `articleScripts.addCloseDialogClickListeners()`
 
 Adds click listeners for closing license info popups.
 

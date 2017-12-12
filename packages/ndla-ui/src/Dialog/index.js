@@ -6,9 +6,8 @@
  *
  */
 
-import Figure from './Figure';
+import { Dialog } from './Dialog';
 
-export { Figure, FigureCaption } from './Figure';
-export { FigureLicenseDialog } from './FigureLicenseDialog';
+export { Dialog };
 
-export default Figure;
+export default Dialog;

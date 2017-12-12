@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { AudioPlayer, Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import {
+  Button,
+  AudioPlayer,
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+} from 'ndla-ui';
 import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import {
-  addCloseFigureDetailsClickListeners,
-  addShowFigureDetailsClickListeners,
+  addCloseDialogClickListeners,
+  addShowDialogClickListeners,
   initAudioPlayers,
 } from 'ndla-article-scripts';
 
 class AudioExample extends Component {
+  constructor(props) {
+    super(props);
+    this.id = uuid();
+  }
+
   componentDidMount() {
     if (this.props.runScripts) {
-      addShowFigureDetailsClickListeners();
-      addCloseFigureDetailsClickListeners();
+      addShowDialogClickListeners();
+      addCloseDialogClickListeners();
       initAudioPlayers();
     }
   }
@@ -41,8 +52,8 @@ class AudioExample extends Component {
         licenseRights={license.rights}
         authors={authors}
       />,
-      <FigureDetails
-        id={uuid()}
+      <FigureLicenseDialog
+        id={this.id}
         key="details"
         licenseRights={license.rights}
         authors={authors}
@@ -50,21 +61,13 @@ class AudioExample extends Component {
         origin="https://www.wikimedia.com"
         title={caption}
         messages={messages}>
-        <button
-          className="c-button c-button--outline c-figure-license__button"
-          type="button">
-          Kopier referanse
-        </button>
-        <button
-          className="c-button c-button--outline c-figure-license__button"
-          type="button">
-          Last ned lydklipp
-        </button>
-      </FigureDetails>,
+        <Button outline>Kopier referanse</Button>
+        <Button outline>Last ned lydklipp</Button>
+      </FigureLicenseDialog>,
     ];
 
     return (
-      <Figure type="full-column" captionView={captionView}>
+      <Figure id={this.id} type="full-column" captionView={captionView}>
         <AudioPlayer
           src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
           type="audio/mpeg"

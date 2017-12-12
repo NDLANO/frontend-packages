@@ -58,7 +58,6 @@ $inuit-wrapper-width: 1024px;
 @import 'global/objects/objects.backdrop';
 
 // COMPONENTS
-// @import "modal/component.licenseToggle";
 @import 'Logo/component.logo';
 @import 'button/component.button';
 @import 'hero/component.hero';
@@ -73,6 +72,7 @@ $inuit-wrapper-width: 1024px;
 @import 'global/components/component.factbox';
 @import 'Figure/component.figure';
 @import 'Figure/component.figure-license';
+@import 'Dialog/component.dialog';
 @import 'global/components/component.footnotes';
 @import 'global/components/component.glossary-word';
 @import 'global/components/component.icon';

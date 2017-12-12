@@ -148,6 +148,30 @@ storiesOf('Sammensatte moduler', module)
             ]}
           />
         </div>
+        <h2 className="u-heading">Eksempler fra fagene</h2>
+        <div className="c-filter u-margin-top">
+          <h3>Norsk</h3>
+          <FilterList
+            filterContent={[
+              { title: 'SF VG1', active: true },
+              { title: 'SF VG2', active: true },
+              { title: 'SF VG3', active: false },
+              { title: 'YF VG1', active: false },
+              { title: 'YF VG2', active: false },
+              { title: 'PB VG3', active: false },
+            ]}
+          />
+        </div>
+        <div className="c-filter u-margin-top">
+          <h3>Medieuttrykk og mediesamfunnet</h3>
+          <FilterList
+            filterContent={[
+              { title: 'VG1', active: true },
+              { title: 'VG2', active: false },
+              { title: 'VG3', active: false },
+            ]}
+          />
+        </div>
       </StoryBody>
     </div>
   ))

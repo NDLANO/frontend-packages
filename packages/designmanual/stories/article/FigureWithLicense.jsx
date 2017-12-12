@@ -23,14 +23,6 @@ import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
 class FigureWithLicense extends Component {
-  constructor(props) {
-    super(props);
-    this.update = this.update.bind(this);
-    this.state = {
-      active: false,
-    };
-  }
-
   componentDidMount() {
     if (this.props.runScripts) {
       addShowFigureDetailsClickListeners();
@@ -39,11 +31,6 @@ class FigureWithLicense extends Component {
       addEventListenerForResize();
       addEventListenersForZoom();
     }
-  }
-
-  update() {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
   }
 
   render() {
@@ -98,7 +85,6 @@ class FigureWithLicense extends Component {
     return (
       <Figure
         resizeIframe={this.props.resizeIframe}
-        supportFloating={this.props.supportFloating}
         type={this.props.type}
         captionView={captionAndDetails}>
         {this.props.children}
@@ -115,8 +101,14 @@ FigureWithLicense.propTypes = {
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
-  type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
-  supportFloating: PropTypes.bool,
+  type: PropTypes.oneOf([
+    'full',
+    'full-column',
+    'left',
+    'small-left',
+    'right',
+    'small-right',
+  ]),
 };
 
 FigureWithLicense.defaultProps = {

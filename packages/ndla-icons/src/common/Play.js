@@ -10,16 +10,17 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const ExpandMore = props => (
+const Play = props => (
   <Icon
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
     <g>
-      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+      <title>Play</title>
+      <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z" />
     </g>
   </Icon>
 );
 
-export default ExpandMore;
+export default Play;

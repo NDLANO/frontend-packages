@@ -10,16 +10,17 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const ExpandMore = props => (
+const Pause = props => (
   <Icon
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
     <g>
-      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+      <title>pause</title>
+      <path d="M14.016 5.016h3.984v13.969h-3.984v-13.969zM6 18.984v-13.969h3.984v13.969h-3.984z" />
     </g>
   </Icon>
 );
 
-export default ExpandMore;
+export default Pause;

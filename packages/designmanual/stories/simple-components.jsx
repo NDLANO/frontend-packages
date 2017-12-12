@@ -145,6 +145,7 @@ storiesOf('Enkle komponenter', module)
         </p>
         <FigureWithLicense
           type="small-right"
+          hideFigcaption
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             lazyLoad

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table } from 'ndla-ui';
+import { Table, Translation, TranslationBody } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 
@@ -990,6 +990,35 @@ storiesOf('Grunnstiler', module)
           <li>Listepunkt</li>
           <li>Listepunkt</li>
         </ol>
+      </StoryBody>
+    </div>
+  ))
+  .add('Oversettelser', () => (
+    <div>
+      <StoryIntro title="Oversettelser">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor
+          kan man i disse tilfellene bruke en liste for oversettelser.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <Translation>
+          <TranslationBody>
+            你叫什么名字？你叫什麼名字？
+            Nǐ jiào shénme míngzi?
+            Hva heter du?
+          </TranslationBody>
+          <TranslationBody>
+            你是学生。你是學生。
+            Nǐ shì xuésheng.
+            Du er student.
+          </TranslationBody>
+          <TranslationBody>
+            你好吗？你好嗎？
+            Nǐ hǎo ma?
+            Har du det bra?
+          </TranslationBody>
+        </Translation>
       </StoryBody>
     </div>
   ))

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, Translation, TranslationBody } from 'ndla-ui';
+import { Table, Translation, TranslationLine } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 
@@ -1002,22 +1002,27 @@ storiesOf('Grunnstiler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <Translation>
-          <TranslationBody>
+        <Translation index="1">
+          <TranslationLine lang="Kinesisk">
             你叫什么名字？你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="Pinyin">
             Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="Norsk">
             Hva heter du?
-          </TranslationBody>
-          <TranslationBody>
-            你是学生。你是學生。
-            Nǐ shì xuésheng.
-            Du er student.
-          </TranslationBody>
-          <TranslationBody>
-            你好吗？你好嗎？
-            Nǐ hǎo ma?
-            Har du det bra?
-          </TranslationBody>
+          </TranslationLine>
+        </Translation>
+        <Translation index="2">
+          <TranslationLine lang="Kinesisk">
+            你叫什么名字？你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="Pinyin">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="Norsk">
+            Hva heter du?
+          </TranslationLine>
         </Translation>
       </StoryBody>
     </div>

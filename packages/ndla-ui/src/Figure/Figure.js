@@ -27,26 +27,27 @@ export const FigureCaption = ({
   reuseLabel,
   licenseRights,
   noFigcaption,
-}) => (
-  noFigcaption ? null :
-  <figcaption {...classes('caption')}>
-    {caption ? <div {...classes('info')}>{caption}</div> : null}
-    <footer {...classes('byline')}>
-      <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={licenseRights}>
-          <span {...classes('byline-authors')}>
-            {authors.map(author => author.name).join(', ')}
-          </span>
-          <button {...classes('captionbtn')}>{reuseLabel}</button>
-        </LicenseByline>
-      </div>
-    </footer>
-  </figcaption>
-);
+}) =>
+  noFigcaption ? null : (
+    <figcaption {...classes('caption')}>
+      {caption ? <div {...classes('info')}>{caption}</div> : null}
+      <footer {...classes('byline')}>
+        <div {...classes('byline-licenselist')}>
+          <LicenseByline licenseRights={licenseRights}>
+            <span {...classes('byline-authors')}>
+              {authors.map(author => author.name).join(', ')}
+            </span>
+            <button {...classes('captionbtn')}>{reuseLabel}</button>
+          </LicenseByline>
+        </div>
+      </footer>
+    </figcaption>
+  );
 
 FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
+  noFigcaption: PropTypes.bool,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({

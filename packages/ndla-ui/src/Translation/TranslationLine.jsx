@@ -17,14 +17,8 @@ const classes = new BEMHelper({
 
 const TranslationLine = ({ children, lang }) => (
   <div {...classes('line')}>
-    {
-      children &&
-      <div {...classes('line-body')}>{children}</div>
-    }
-    {
-      lang &&
-      <div {...classes('line-lang')}>{lang}</div>
-    }
+    {children && <div {...classes('line-body')}>{children}</div>}
+    {lang && <div {...classes('line-lang')}>{lang}</div>}
   </div>
 );
 

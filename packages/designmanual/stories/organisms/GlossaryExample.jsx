@@ -93,7 +93,7 @@ class GlossaryExample extends Component {
                   <Glossary
                     content="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
                     authors={[]}
-                    title={'sanksjon'}
+                    title="sanksjon"
                     messages={{
                       ariaLabel: 'Vis begrep beskrivelse',
                       close: 'Lukk',
@@ -107,7 +107,7 @@ class GlossaryExample extends Component {
                   <Glossary
                     content="Norm, særskilt sosiale normer, er en sosiologisk betegnelse for intersubjektive, allment delte og ofte underforståtte regler og forventninger på oppførsel som gjelder for et mindre sosialt fellesskap og for samfunnet i sin helhet."
                     authors={[]}
-                    title={'Norm'}
+                    title="Norm"
                     messages={{
                       ariaLabel: 'Vis begrep beskrivelse',
                       close: 'Lukk',

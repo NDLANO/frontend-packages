@@ -19,21 +19,15 @@ const filterClasses = new BEMHelper({
 class FilterList extends Component {
   constructor(props) {
     super(props);
-    this.state = { checked: '' };
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(index) {
-    this.setState({
-      checked: index,
-    });
+  onChange() {
     return this.props.onClick;
   }
 
   render() {
-    const modifiers = this.props.modifiers;
-    const label = this.props.label;
-    const filterContent = this.props.filterContent;
+    const { modifiers, label, filterContent } = this.props;
 
     return (
       <div {...filterClasses('list', modifiers)}>

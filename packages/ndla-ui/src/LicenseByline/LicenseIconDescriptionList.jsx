@@ -18,7 +18,7 @@ const classes = new BEMHelper({
 });
 
 const LicenseIconItem = ({ licenseRight }) => {
-  const description = getLicenseRightByAbbreviation(licenseRight).description;
+  const { description } = getLicenseRightByAbbreviation(licenseRight);
 
   return (
     <li {...classes('item')}>

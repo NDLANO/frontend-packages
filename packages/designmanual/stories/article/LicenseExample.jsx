@@ -23,7 +23,7 @@ import {
 import { Document, Audio } from 'ndla-icons/common';
 
 import {
-  COPY,
+  COPYRIGHTED,
   getMicroDataNamespaceByType,
   microDataTypes,
   metaTypes,
@@ -43,7 +43,7 @@ const VideoContent = () => (
     <MediaList>
       <MediaListItem>
         <MediaListItemImage>
-          <a href="">
+          <a href="https://example.com">
             <img
               src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?auto=format&fit=crop&w=500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
               width="260"
@@ -77,19 +77,13 @@ const VideoContent = () => (
                   },
                 ]}
               />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Kopier referanse
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Last ned
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Bygg inn
               </button>
             </div>
@@ -114,7 +108,7 @@ const TextContent = () => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a
-              href=""
+              href="https://example.com"
               itemProp="url"
               itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
@@ -146,14 +140,10 @@ const TextContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned
                 </button>
               </div>
@@ -178,7 +168,7 @@ const AudioContent = () => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a
-              href=""
+              href="https://example.com"
               itemProp="url"
               itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Audio className="c-medialist__icon" />
@@ -205,14 +195,10 @@ const AudioContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned
                 </button>
               </div>
@@ -240,7 +226,7 @@ const ImageContent = () => (
       ].map(src => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
-            <a href="">
+            <a href="https://example.com">
               <img
                 width="260"
                 alt="alt"
@@ -281,14 +267,10 @@ const ImageContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned bilde
                 </button>
               </div>
@@ -298,7 +280,7 @@ const ImageContent = () => (
       ))}
       <MediaListItem>
         <MediaListItemImage>
-          <a href="">
+          <a href="https://example.com">
             <img
               width="260"
               alt="alt"
@@ -332,19 +314,13 @@ const ImageContent = () => (
                   },
                 ]}
               />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Kopier referanse
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Last ned bilde
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Se del-elementer
               </button>
             </div>
@@ -367,7 +343,7 @@ const H5PContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a href="">
+            <a href="https://example.com">
               <iframe
                 title="H5P"
                 src="http://ndla.no/nb/h5p/embed/146132?fag=127756"
@@ -406,24 +382,16 @@ const H5PContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned bilde
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Bygg inn
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Se del-elementer
                 </button>
               </div>
@@ -448,14 +416,14 @@ const Files = () => (
         <MediaListItem key={key}>
           <MediaListItemImage>
             <a
-              href=""
+              href="https://example.com"
               itemProp="url"
               itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
-            license={COPY}
+            license={COPYRIGHTED}
             title="Regler for bruk av filen:"
             resourceUrl="">
             <MediaListItemActions>
@@ -474,14 +442,10 @@ const Files = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned
                 </button>
               </div>

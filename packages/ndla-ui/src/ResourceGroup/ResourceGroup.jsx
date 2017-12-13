@@ -48,7 +48,8 @@ class ResourceGroup extends Component {
             onClick={() =>
               this.setState(prevState => ({
                 showAdditionalResources: !prevState.showAdditionalResources,
-              }))}
+              }))
+            }
           />
         )}
         <ResourcesTitle>{title}</ResourcesTitle>

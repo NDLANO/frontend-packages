@@ -18,10 +18,10 @@ import SimpleSubmitForm from './SimpleSubmitForm';
 class ArticleLoader extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      fetching: false,
-    };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      article: undefined,
+    };
   }
 
   componentDidMount() {
@@ -32,14 +32,12 @@ class ArticleLoader extends Component {
   }
 
   handleSubmit(articleId) {
-    this.setState({ fetching: true });
     fetchArticle(articleId)
       .then(data => {
         const article = data;
         article.updated = moment(article.updated).format('DD/MM/YYYY');
         this.setState({
           article,
-          fetching: false,
           message: '',
         });
       })
@@ -47,7 +45,6 @@ class ArticleLoader extends Component {
         console.error(error); // eslint-disable-line no-console
         this.setState({
           message: error.message,
-          fetching: false,
         });
       });
   }

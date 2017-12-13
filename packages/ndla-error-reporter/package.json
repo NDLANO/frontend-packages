@@ -1,6 +1,6 @@
 {
   "name": "ndla-error-reporter",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "nock": "^9.0.22"
+    "nock": "^9.1.4"
   },
   "dependencies": {
-    "raven-js": "^3.9.2"
+    "raven-js": "^3.20.1"
   }
 }

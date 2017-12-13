@@ -20,7 +20,7 @@ export {
   PD,
   CC0,
   CC,
-  COPY,
+  COPYRIGHTED,
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 

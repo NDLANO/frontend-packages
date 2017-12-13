@@ -25,6 +25,7 @@ export { default as Aside } from './aside/Aside';
 export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';
 export { default as FilterList } from './filter/FilterList';
+export { default as AudioPlayer } from './AudioPlayer';
 export {
   default as LayoutItem,
   OneColumn,
@@ -56,7 +57,7 @@ export {
 } from './Breadcrumb';
 export { Hero } from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export { Figure, FigureCaption, FigureDetails } from './Figure';
+export { Figure, FigureCaption, FigureLicenseDialog } from './Figure';
 export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 export {
   MediaList,

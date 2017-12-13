@@ -8,6 +8,7 @@
 
 import Figure from './Figure';
 
-export { Figure, FigureCaption, FigureDetails } from './Figure';
+export { Figure, FigureCaption } from './Figure';
+export { FigureLicenseDialog } from './FigureLicenseDialog';
 
 export default Figure;

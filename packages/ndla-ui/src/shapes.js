@@ -34,17 +34,17 @@ export const FootNoteShape = PropTypes.shape({
   publisher: PropTypes.string.isRequired,
 });
 
+export const ContributorShape = PropTypes.shape({
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+});
+
 export const ArticleShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   copyright: PropTypes.shape({
     authors: PropTypes.array,
-    creators: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-      }),
-    ),
+    creators: PropTypes.arrayOf(ContributorShape),
   }).isRequired,
   updated: PropTypes.string.isRequired,
 });

@@ -9,40 +9,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { uuid } from 'ndla-util';
 import {
-  addCloseFigureDetailsClickListeners,
-  addShowFigureDetailsClickListeners,
+  addCloseDialogClickListeners,
+  addShowDialogClickListeners,
   addEventListenerForResize,
   updateIFrameDimensions,
   addEventListenersForZoom,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureDetails } from 'ndla-ui';
+import { Figure, FigureCaption, FigureLicenseDialog, Button } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
 class FigureWithLicense extends Component {
   constructor(props) {
     super(props);
-    this.update = this.update.bind(this);
-    this.state = {
-      active: false,
-    };
+    this.id = uuid();
   }
 
   componentDidMount() {
     if (this.props.runScripts) {
-      addShowFigureDetailsClickListeners();
-      addCloseFigureDetailsClickListeners();
+      addShowDialogClickListeners();
+      addCloseDialogClickListeners();
       updateIFrameDimensions();
       addEventListenerForResize();
       addEventListenersForZoom();
     }
-  }
-
-  update() {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
   }
 
   render() {
@@ -71,7 +64,8 @@ class FigureWithLicense extends Component {
             licenseRights={license.rights}
             authors={authors}
           />,
-          <FigureDetails
+          <FigureLicenseDialog
+            id={this.id}
             key="details"
             licenseRights={license.rights}
             authors={authors}
@@ -79,24 +73,16 @@ class FigureWithLicense extends Component {
             origin="https://www.wikimedia.com"
             title="Mann med lupe"
             messages={messages}>
-            <button
-              className="c-button c-button--outline c-figure-license__button"
-              type="button">
-              Kopier referanse
-            </button>
-            <button
-              className="c-button c-button--outline c-figure-license__button"
-              type="button">
-              Last ned {typeLabel}
-            </button>
-          </FigureDetails>,
+            <Button outline>Kopier referanse</Button>
+            <Button outline>Last ned {typeLabel}</Button>
+          </FigureLicenseDialog>,
         ]
       : null;
 
     return (
       <Figure
+        id={this.id}
         resizeIframe={this.props.resizeIframe}
-        supportFloating={this.props.supportFloating}
         type={this.props.type}
         captionView={captionAndDetails}>
         {this.props.children}
@@ -113,12 +99,17 @@ FigureWithLicense.propTypes = {
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
-  type: PropTypes.oneOf(['full', 'left', 'small-left', 'right', 'small-right']),
-  supportFloating: PropTypes.bool,
+  type: PropTypes.oneOf([
+    'full',
+    'full-column',
+    'left',
+    'small-left',
+    'right',
+    'small-right',
+  ]),
 };
 
 FigureWithLicense.defaultProps = {
-  classes: '',
   runScripts: false,
   noCaption: false,
 };

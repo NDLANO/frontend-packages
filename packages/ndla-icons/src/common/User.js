@@ -12,12 +12,12 @@ import Icon from '../Icon';
 
 const User = props => (
   <Icon
-    viewBox="0 0 24 24"
-    data-license="CC-BY 4.0"
-    data-source="Netlife"
+    viewBox="0 0 48 48"
+    data-license="Apache License 2.0"
+    data-source="Material Design"
     {...props}>
     <g>
-      <path d="M 12 4 C 9.790861 4 8 5.790861 8 8 C 8 10.209139 9.790861 12 12 12 C 14.209139 12 16 10.209139 16 8 C 16 5.790861 14.209139 4 12 4 z M 12 14 C 5.9 14 4 18 4 18 L 4 20 L 20 20 L 20 18 C 20 18 18.1 14 12 14 z" />
+      <path d="M24 24c4.42 0 8-3.59 8-8 0-4.42-3.58-8-8-8s-8 3.58-8 8c0 4.41 3.58 8 8 8zm0 4c-5.33 0-16 2.67-16 8v4h32v-4c0-5.33-10.67-8-16-8z" />
     </g>
   </Icon>
 );

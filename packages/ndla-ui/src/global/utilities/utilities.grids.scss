@@ -12,6 +12,8 @@ $denominator: auto;
   padding-left: $spacing;
   padding-right: $spacing;
 }
+// compensate for line-height
+$extra-margin: 10px;
 
 @mixin float($cols, $maxcols, $direction) {
   $colDifference: $maxcols - $cols;
@@ -24,11 +26,11 @@ $denominator: auto;
       width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
-      margin: $spacing $spacing 0 0;
+      margin: $spacing ($spacing + $extra-margin) 0 0;
     }
     @include mq(desktop) {
       width: ($cols/$maxcols)*100% !important;
-      margin: 0 $spacing $spacing -25%;
+      margin: 0 ($spacing + $extra-margin) $spacing -25%;
     }
   }
   @if $direction == right {
@@ -38,11 +40,11 @@ $denominator: auto;
       width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
-      margin: 0 0 $spacing $spacing;
+      margin: 0 0 $spacing ($spacing + $extra-margin);
     }
     @include mq(desktop) {
       width: ($cols/$maxcols)*100% !important;
-      margin: 0 -25% $spacing $spacing;
+      margin: 0 -25% $spacing ($spacing + $extra-margin);
     }
   }
 

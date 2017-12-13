@@ -12,16 +12,14 @@ import Icon from '../Icon';
 
 const Camera = props => (
   <Icon
-    viewBox="0 0 32 25"
-    data-license="CC-BY 4.0"
-    data-source="Knowit"
+    viewBox="0 0 24 24"
+    data-license="Apache License 2.0"
+    data-source="Material Design"
     {...props}>
     <g>
-      <path
-        fill="none"
-        stroke="#444"
-        d="M9.389 1v3.056H2a1.5 1.5 0 0 0-1.5 1.5v17.333a1.5 1.5 0 0 0 1.5 1.5h28a1.5 1.5 0 0 0 1.5-1.5V5.556a1.5 1.5 0 0 0-1.5-1.5h-7.389V1a.5.5 0 0 0-.5-.5H9.89a.5.5 0 0 0-.5.5zM16 21.333a7.111 7.111 0 1 1 0-14.222 7.111 7.111 0 0 1 0 14.222zm9.389-13.722h2.555v1H25.39v-1z"
-      />
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+      <path d="M0 0h24v24H0z" fill="none" />
     </g>
   </Icon>
 );

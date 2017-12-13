@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ndla",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "An eslint config for NDLA. Extends Airbnb's.",
   "main": "index.js",
   "license": "GPL-3.0",
@@ -17,19 +17,13 @@
     "config"
   ],
   "author": "ndla@knowit.no",
-  "peerDependencies": {
-    "eslint": "^4.4.1"
-  },
-  "devDependencies": {
-    "eslint": "^4.4.1"
-  },
   "dependencies": {
-    "babel-eslint": "7.2.3",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-config-prettier": "^2.3.0",
+    "babel-eslint": "8.0.3",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.35.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1"
   }
 }

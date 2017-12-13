@@ -77,7 +77,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="49" />
+        <ArticleLoader articleId="236" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -231,7 +231,7 @@ storiesOf('Emnesider', module)
                 'Transport og logistikk Vg2',
               ].map(subject => (
                 <li key={subject}>
-                  <a href="">{subject}</a>
+                  <a href="https://example.com">{subject}</a>
                 </li>
               ))}
             </ul>

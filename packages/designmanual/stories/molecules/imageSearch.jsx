@@ -17,7 +17,7 @@ const fetchImages = (query, page) => {
     : `page=${page}&page-size=16`;
   return new Promise((resolve, reject) => {
     getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/image-api/v2/images/?${queryString}`, {
+      fetch(`https://test.api.ndla.no/image-api/v2/images/?${queryString}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
       }).then(res => {
@@ -33,7 +33,7 @@ const fetchImages = (query, page) => {
 const fetchImage = id =>
   new Promise((resolve, reject) => {
     getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/image-api/v2/images/${id}`, {
+      fetch(`https://test.api.ndla.no/image-api/v2/images/${id}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
       }).then(res => {

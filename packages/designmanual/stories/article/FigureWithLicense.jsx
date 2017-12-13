@@ -88,7 +88,8 @@ class FigureWithLicense extends Component {
         id={this.id}
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
-        captionView={captionAndDetails}>
+        captionView={captionAndDetails}
+        noFigcaption={noFigcaption}>
         {this.props.children}
       </Figure>
     );

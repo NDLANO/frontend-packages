@@ -54,6 +54,7 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
+    const noFigcaption = this.props.noFigcaption ? this.props.noFigcaption : false;
 
     const captionAndDetails = !this.props.noCaption
       ? [
@@ -63,6 +64,7 @@ class FigureWithLicense extends Component {
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
             authors={authors}
+            noFigcaption={noFigcaption}
           />,
           <FigureLicenseDialog
             id={this.id}

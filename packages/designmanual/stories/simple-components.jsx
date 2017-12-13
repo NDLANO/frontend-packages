@@ -29,12 +29,14 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Bilde">
         <p>
-          Bilder vises i tre formater: fullbredde midtstilt, venstrestilt og
-          høyrestilt. Bilder som ikke er fullbredde, kan ekspanderes på klikk.
+          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og
+          høyrestilt. Bilder kan være i størrelsene liten, medium og stor (fullbredde).  
+          Bilder som ikke er fullbredde, kan ekspanderes på klikk.
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
           bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
+          Små bilder kan være uten metainfo og lisensinfo.
         </p>
         <p>
           Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
@@ -180,6 +182,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
+          noFigcaption
           type="small-left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image

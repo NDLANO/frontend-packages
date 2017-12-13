@@ -26,7 +26,9 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
+  noFigcaption,
 }) => (
+  noFigcaption ? null :
   <figcaption {...classes('caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>

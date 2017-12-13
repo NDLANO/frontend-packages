@@ -16,6 +16,8 @@ import {
   LicenseByline,
   Image,
   AudioPlayer,
+  Translation,
+  TranslationLine,
 } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
@@ -828,6 +830,39 @@ storiesOf('Enkle komponenter', module)
           to="/"
           altText="Nasjonal digital læringsarena"
         />
+      </StoryBody>
+    </div>
+  )).add('Oversettelse', () => (
+    <div>
+      <StoryIntro title="Oversettelse">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor
+          kan man i disse tilfellene heller bruke en oversettelse-liste.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <Translation index={1}>
+          <TranslationLine lang="Kinesisk">
+            你叫什么名字？//你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="Pingyu">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine lang="Kinesisk">
+            你是学生。//你是學生。
+          </TranslationLine>
+          <TranslationLine lang="Pingyu">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="Norsk">
+            Du er student.
+          </TranslationLine>
+        </Translation>
       </StoryBody>
     </div>
   ));

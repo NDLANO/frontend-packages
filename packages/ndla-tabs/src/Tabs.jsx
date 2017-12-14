@@ -78,8 +78,7 @@ class Tabs extends Component {
               disabled: tab.disabled,
               [modifier]: modifier,
             })}
-            key={tab.key ? tab.key : i}
-          >
+            key={tab.key ? tab.key : i}>
             {isFunction(tab.content) ? tab.content() : tab.content}
           </TabPanel>
         ))}

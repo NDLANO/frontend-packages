@@ -242,6 +242,20 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
     </div>
   ))
+  .add('Læringsressurser tom', () => (
+    <div>
+      <StoryIntro title="Læringsressurser - tom liste">
+        <p>
+          Når en ressursgruppe er tom for innhold, vises en tekst som forklarer
+          dette for brukeren og tilbyr en handlingsdriver som lar deg utforske 
+          tilleggsstoff om det er tilgjengelig.
+        </p>
+      </StoryIntro>
+      <LayoutItem layout="center">
+        <Resources empty />
+      </LayoutItem>
+    </div>
+  ))
   .add('Paginering', () => (
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />

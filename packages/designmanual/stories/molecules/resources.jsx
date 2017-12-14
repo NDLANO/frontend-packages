@@ -57,13 +57,14 @@ const resourceGroup3 = {
 
 const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3];
 
-export const Resources = () => (
+export const Resources = ({empty = false}) => (
   <ResourcesWrapper>
     {resourceGroups.map(group => (
       <ResourceGroup
         key={group.id}
         title={group.title}
         resources={group.resources}
+        empty={empty}
         className={group.className}
         icon={group.iconEl}
         messages={{

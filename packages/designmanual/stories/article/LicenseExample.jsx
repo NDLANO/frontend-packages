@@ -77,19 +77,13 @@ const VideoContent = () => (
                   },
                 ]}
               />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Kopier referanse
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Last ned
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Bygg inn
               </button>
             </div>
@@ -146,14 +140,10 @@ const TextContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned
                 </button>
               </div>
@@ -205,14 +195,10 @@ const AudioContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned
                 </button>
               </div>
@@ -281,14 +267,10 @@ const ImageContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned bilde
                 </button>
               </div>
@@ -332,19 +314,13 @@ const ImageContent = () => (
                   },
                 ]}
               />
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Kopier referanse
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Last ned bilde
               </button>
-              <button
-                className="c-button c-button--outline c-licenseToggle__button"
-                type="button">
+              <button className="c-button c-button--outline" type="button">
                 Se del-elementer
               </button>
             </div>
@@ -406,24 +382,16 @@ const H5PContent = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned bilde
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Bygg inn
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Se del-elementer
                 </button>
               </div>
@@ -474,14 +442,10 @@ const Files = () => (
                     },
                   ]}
                 />
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Kopier referanse
                 </button>
-                <button
-                  className="c-button c-button--outline c-licenseToggle__button"
-                  type="button">
+                <button className="c-button c-button--outline" type="button">
                   Last ned
                 </button>
               </div>

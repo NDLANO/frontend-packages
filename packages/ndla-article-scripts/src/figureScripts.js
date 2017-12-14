@@ -6,34 +6,28 @@
  *
  */
 
-import { copyTextToClipboard, uuid, noScroll } from 'ndla-util';
+import { copyTextToClipboard, noScroll } from 'ndla-util';
 import createFocusTrap from 'focus-trap';
 import jump from 'jump.js';
 
-import {
-  findAncestorByClass,
-  removeElementById,
-  forEachElement,
-} from './domHelpers';
+import { findAncestorByClass, forEachElement } from './domHelpers';
 
 const trapInstances = {};
 
-const closeDialog = figure => {
-  figure.classList.remove('c-figure--active');
-  const details = figure.querySelector('.c-figure__license');
-  details.setAttribute('aria-hidden', 'true');
+const closeDialog = dialog => {
+  dialog.classList.remove('c-dialog--active');
+  dialog.setAttribute('aria-hidden', 'true');
   noScroll(false);
 };
 
-export const addCloseFigureDetailsClickListeners = () => {
-  forEachElement('.c-figure .c-figure__close', el => {
+export const addCloseDialogClickListeners = () => {
+  forEachElement('.c-dialog', el => {
     const target = el;
+    const closeButton = target.querySelector('.c-dialog__close');
 
-    target.onclick = () => {
-      removeElementById('c-license-icon-description');
-      const figure = findAncestorByClass(target, 'c-figure');
-
-      const instance = trapInstances[figure.id];
+    closeButton.onclick = () => {
+      const id = target.getAttribute('data-dialog-id');
+      const instance = trapInstances[id];
       if (instance) {
         instance.deactivate();
       }
@@ -41,40 +35,18 @@ export const addCloseFigureDetailsClickListeners = () => {
   });
 };
 
-export const addCopyToClipboardListeners = () => {
-  forEachElement('button[data-copy-string]', el => {
-    const target = el;
-    target.onclick = () => {
-      const text = target.getAttribute('data-copy-string');
-      const copiedTitle = target.getAttribute('data-copied-title');
-
-      const success = copyTextToClipboard(text, el.parentNode);
-
-      if (success) {
-        const previouesTitle = target.innerHTML;
-        target.innerHTML = copiedTitle;
-        target.disabled = true;
-
-        setTimeout(() => {
-          target.innerHTML = previouesTitle;
-          target.disabled = false;
-        }, 10000);
-      }
-    };
-  });
-};
-
-export const addShowFigureDetailsClickListeners = () => {
+export const addShowDialogClickListeners = () => {
   forEachElement('.c-figure .c-figure__captionbtn', el => {
     const target = el;
-    const id = uuid();
     const figure = findAncestorByClass(target, 'c-figure');
-    figure.id = id;
+    const id = figure.getAttribute('id');
 
-    const details = figure.querySelector('.c-figure__license');
-    trapInstances[id] = createFocusTrap(details, {
+    const dialog = document.querySelector(`[data-dialog-id='${id}']`);
+    const dialogContent = dialog.querySelector(`.c-dialog__content`);
+
+    trapInstances[id] = createFocusTrap(dialogContent, {
       onDeactivate: () => {
-        closeDialog(figure);
+        closeDialog(dialog);
       },
       clickOutsideDeactivates: true,
     });
@@ -100,10 +72,32 @@ export const addShowFigureDetailsClickListeners = () => {
       });
 
       setTimeout(() => {
-        details.setAttribute('aria-hidden', 'false');
-        removeElementById('c-license-icon-description');
-        figure.classList.add('c-figure--active');
+        dialog.setAttribute('aria-hidden', 'false');
+        dialog.classList.add('c-dialog--active');
       }, 150);
+    };
+  });
+};
+
+export const addCopyToClipboardListeners = () => {
+  forEachElement('button[data-copy-string]', el => {
+    const target = el;
+    target.onclick = () => {
+      const text = target.getAttribute('data-copy-string');
+      const copiedTitle = target.getAttribute('data-copied-title');
+
+      const success = copyTextToClipboard(text, el.parentNode);
+
+      if (success) {
+        const previouesTitle = target.innerHTML;
+        target.innerHTML = copiedTitle;
+        target.disabled = true;
+
+        setTimeout(() => {
+          target.innerHTML = previouesTitle;
+          target.disabled = false;
+        }, 10000);
+      }
     };
   });
 };

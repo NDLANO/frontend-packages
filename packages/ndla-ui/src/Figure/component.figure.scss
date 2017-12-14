@@ -3,7 +3,6 @@
 ** Figure element, displaying images, embeds, videos etc.
 ** 1. Figure itself
 ** 2. Figcaption element w/content
-** 3. Figure with license-popup activated
 **
 ** PRINCIPLE:
 ** <figure class="c-figure">
@@ -14,10 +13,6 @@
 **       <div class="c-figure__info">Caption</div>
 **       <div class="c-figure__byline">License, CTA</div>
 **   </figcaption>
-**   <div class="c-figure__license">
-**       <button class="c-figure__close">Lukk</button>
-**       Licensebox content here (see component.figure-license scss)
-**   </div>
 ** </figure>
 **/
 
@@ -36,7 +31,8 @@
   }
 }
 .c-figure {
-  margin: $spacing--large/1.4 0 $spacing--large;
+  margin: $spacing--large 0 $spacing--large;
+
   @include mq($from: desktop) {
     @include grids-expand(4,6,2);
   }
@@ -46,18 +42,15 @@
     margin-right: $spacing--small;
   }
 
-  .o-backdrop {
-    display: none;
-    z-index: 999;
-  }
-
-  &--support-floating {
-    left: auto!important;
-    right: auto!important;
-    width: auto!important;
+  &--full-column {
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
     overflow: hidden;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: $spacing--large;
+    margin-bottom: 0;
   }
 }
 
@@ -117,102 +110,5 @@
   @include mq($from: tablet) {
     flex: 2;
     margin-bottom: $spacing--small;
-  }
-}
-
-.c-figure__list {
-  background: $white;
-  list-style: none;
-  padding: 0 $spacing--small $spacing--small $spacing--small;
-  margin-top: 0;
-  margin-bottom: 0;
-  li {
-    list-style: none;
-  }
-}
-.c-figure-list__item {
-  margin-bottom: 0;
-}
-
-.c-figure__license {
-  overflow: hidden;
-  height: 0;
-  visibility: hidden;
-}
-
-/* 3. */
-.c-figure--active {
-  @include font-size(16px);
-  position: relative;
-
-  .o-backdrop {
-    display: block;
-    animation-name: fadeIn;
-    animation-duration: 0.8s;
-  }
-
-  .c-figure__license {
-    position: fixed;
-    background-color: $brand-color--lighter;
-    box-shadow: 0 0 30px rgba($black, 0.2);
-    padding: $spacing;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    animation-name: zoomIn;
-    animation-duration: 0.3s;
-    overflow: auto;
-
-    @include mq(tablet) {
-      width: 90%;
-      margin: 0 auto;
-      top: 50%;
-      transform: translateY(-50%);
-      max-width: 500px;
-      left: 0;
-      right: 0;
-      bottom: auto;
-      opacity: 1;
-      animation-name: fadeInBottom;
-    }
-    height: auto;
-    visibility: visible;
-  }
-
-  .c-figure__close {
-    display: block;
-    position: absolute;
-    top: $spacing*0.9;
-    right: $spacing;
-    background: transparent;
-    border: none;
-    color: $brand-color;
-    @include font-size(20px);
-    font-weight: $font-weight-normal;
-    text-decoration: underline;
-    z-index: 9;
-    cursor: pointer;
-  }
-
-
-  .c-figure__img {
-    margin: 0;
-  }
-  .c-figure__byline-licenselist {
-    max-width: 100%;
-  }
-  .c-license-icons__licenselabel {
-    padding-right: $spacing;
-    display: inline;
-    max-width: 400px;
-  }
-
-  .c-licenseToggle__details {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
   }
 }

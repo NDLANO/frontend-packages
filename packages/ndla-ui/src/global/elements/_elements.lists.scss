@@ -38,7 +38,7 @@ ol >li {
   &:before {
     content: counter(item);
     counter-increment: item;
-    color: $brand-color--secondary;
+    color: $brand-grey;
     display: inline-block;
     position: absolute;
     top: -3px;
@@ -47,7 +47,7 @@ ol >li {
     height: $diameter;
     width: $diameter;
     text-align: center;
-    border: 2px solid $brand-color--secondary;
+    border: 2px solid $brand-grey;
     border-radius: 50%;
     font-family: $font;
     text-align: center;

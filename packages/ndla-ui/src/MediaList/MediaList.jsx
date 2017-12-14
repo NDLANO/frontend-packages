@@ -13,9 +13,6 @@ import {
   resourceTypes,
   getResourceTypeNamespace,
   isCreativeCommonsLicense,
-  microDataTypes,
-  getMicroDataNamespaceByMicroDataTypeWithFallback,
-  getMicroDataNamespaceByType,
   metaTypes,
 } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
@@ -40,9 +37,7 @@ MediaList.propTypes = {
 
 export const MediaListItem = ({ children }) => (
   <li
-    {...oClasses(null, null, cClasses('item').className)}
-    itemScope
-    itemType={getMicroDataNamespaceByType(microDataTypes.creativeWork)}>
+    {...oClasses(null, null, cClasses('item').className)}>
     {children}
   </li>
 );
@@ -64,8 +59,6 @@ const MediaListCCLink = ({ children, url }) => (
     className="c-figure-license__link"
     target="_blank"
     rel="noopener noreferrer license"
-    itemProp="license"
-    itemType={getMicroDataNamespaceByType(microDataTypes.url)}
     href={url}>
     {children}
   </a>
@@ -178,46 +171,12 @@ export const MediaListItemMeta = ({ items }) => {
       {...cClasses('actions')}
       property="cc:attributionName"
       content={attributionMeta}>
-      {items.map(item => {
-        if (attributionTypes.some(type => type === item.metaType)) {
-          const namespace = getMicroDataNamespaceByMicroDataTypeWithFallback(
-            item.metaType,
-            item.microDataType,
-          );
-
-          return (
-            <li
-              key={uuid()}
-              className="c-medialist__meta-item"
-              itemProp={item.metaType}
-              itemScope
-              itemType={namespace}>
-              {item.label}:{' '}
-              <HandleLink text={item.description}>
-                <span itemProp="name">{item.description}</span>
-              </HandleLink>
-            </li>
-          );
-        } else if (item.metaType === metaTypes.title) {
-          return (
-            <li
-              key={uuid()}
-              className="c-medialist__meta-item"
-              itemProp="about"
-              itemScope
-              itemType={getMicroDataNamespaceByType(microDataTypes.thing)}>
-              {item.label}: <span property="dct:title">{item.description}</span>
-            </li>
-          );
-        }
-
-        return (
-          <li key={uuid()} className="c-medialist__meta-item">
-            {item.label}:{' '}
-            <HandleLink text={item.description}>{item.description}</HandleLink>
-          </li>
-        );
-      })}
+      {items.map(item => (
+        <li key={uuid()} className="c-medialist__meta-item">
+          {item.label}:{' '}
+          <HandleLink text={item.description}>{item.description}</HandleLink>
+        </li>
+      ))}
     </ul>
   );
 };
@@ -228,10 +187,6 @@ const mediaListItemShape = PropTypes.arrayOf(
     description: PropTypes.string.isRequired,
     metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key]))
       .isRequired,
-    microDataType: PropTypes.oneOf([
-      microDataTypes.organization,
-      microDataTypes.person,
-    ]),
   }),
 );
 

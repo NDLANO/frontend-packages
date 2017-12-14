@@ -29,15 +29,12 @@ export default function VideoSearchResultBrightcove({
 }) {
   const active = selectedVideo && selectedVideo.id === video.id ? 'active' : '';
   const license = getLicenseByNBTitle(video.custom_fields.license, locale);
-
+  const thumbnailSource =
+    video.images && video.images.thumbnail ? video.images.thumbnail.src : '';
   return (
     <div key={video.id} {...classes('list-item', active)}>
       <div {...classes('list-item-inner')}>
-        <img
-          role="presentation"
-          alt="presentation"
-          src={video.images.thumbnail.src}
-        />
+        <img role="presentation" alt="presentation" src={thumbnailSource} />
         <div {...classes('information')}>
           <h2>{video.name}</h2>
           <div {...classes('copyright-author')}>

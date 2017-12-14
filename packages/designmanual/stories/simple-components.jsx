@@ -31,14 +31,14 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Bilde">
         <p>
-          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt
-          og høyrestilt. Bilder kan være i størrelsene liten, medium og stor
-          (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk.
+          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og
+          høyrestilt. Bilder kan være i størrelsene liten, medium og stor (fullbredde).  
+          Bilder som ikke er fullbredde, kan ekspanderes på klikk.
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
-          bildet» som gjør at brukeren får opp lisensboksen for bildet. Små
-          bilder kan være uten metainfo og lisensinfo.
+          bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
+          Små bilder kan være uten metainfo og lisensinfo.
         </p>
         <p>
           Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
@@ -205,6 +205,16 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <FigureWithLicense
+          noFigcaption
+          type="xsmall-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            lazyLoad
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -832,13 +842,12 @@ storiesOf('Enkle komponenter', module)
         />
       </StoryBody>
     </div>
-  ))
-  .add('Oversettelse', () => (
+  )).add('Oversettelse', () => (
     <div>
       <StoryIntro title="Oversettelse">
         <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
-          derfor kan man i disse tilfellene heller bruke en oversettelse-liste.
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor
+          kan man i disse tilfellene heller bruke en oversettelse-liste. 
         </p>
       </StoryIntro>
       <StoryBody>
@@ -849,14 +858,20 @@ storiesOf('Enkle komponenter', module)
           <TranslationLine lang="Pingyu">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="Norsk">
+            Hva heter du?
+          </TranslationLine>
         </Translation>
         <Translation index={2}>
           <TranslationLine lang="Kinesisk">
             你是学生。//你是學生。
           </TranslationLine>
-          <TranslationLine lang="Pingyu">Nǐ shì xuésheng.</TranslationLine>
-          <TranslationLine lang="Norsk">Du er student.</TranslationLine>
+          <TranslationLine lang="Pingyu">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="Norsk">
+            Du er student.
+          </TranslationLine>
         </Translation>
       </StoryBody>
     </div>

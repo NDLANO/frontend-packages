@@ -113,6 +113,8 @@ Figure.propTypes = {
     'small-left',
     'right',
     'small-right',
+    'xsmall-right',
+    'xsmall-left',
   ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,

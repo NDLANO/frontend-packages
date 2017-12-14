@@ -72,7 +72,14 @@ class Tabs extends Component {
           ))}
         </TabList>
         {tabs.map((tab, i) => (
-          <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
+          <TabPanel
+            {...classes('panel', {
+              selected: i === index,
+              disabled: tab.disabled,
+              [modifier]: modifier,
+            })}
+            key={tab.key ? tab.key : i}
+          >
             {isFunction(tab.content) ? tab.content() : tab.content}
           </TabPanel>
         ))}

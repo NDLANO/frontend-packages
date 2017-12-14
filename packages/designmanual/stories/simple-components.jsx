@@ -205,6 +205,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <h2>Flyt til høyre, ekstra liten versjon</h2>
         <FigureWithLicense
           noFigcaption
           type="xsmall-right"

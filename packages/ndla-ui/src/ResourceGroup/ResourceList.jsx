@@ -98,16 +98,16 @@ class ResourceList extends Component {
             />
           ))}
           {empty ?
-            <div>
-              Det er ikke noe kjernestoff tilgjengelig.&nbsp; 
+            <div {...classes('additional-resources-trigger')}>
+              Det er ikke noe kjernestoff tilgjengelig.<br />
               { additionalResources.length ? 
-                <span>Kanskje du vil 
+                <span>
                   <button 
-                    className="c-button c-button--stripped"
+                    className="c-button c-topic-resource__button c-btn c-button--outline"
                     onClick={this.props.onClick}
                   >
-                      &nbsp;<a>aktivere tilleggsstoff</a>
-                  </button>?
+                    Aktiver tilleggsstoff
+                  </button>
                 </span>
               : null }
             </div>

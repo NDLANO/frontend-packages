@@ -12,9 +12,9 @@ import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const fetchAudios = queryObject => {
   const { query, page, pageSize, locale } = queryObject;
-  const queryString = `${query ? `query=${query}&` : ''}page=${
-    page
-  }&page-size=${pageSize}&language=${locale}`;
+  const queryString = `${
+    query ? `query=${query}&` : ''
+  }page=${page}&page-size=${pageSize}&language=${locale}`;
   return new Promise((resolve, reject) => {
     getToken().then(token => {
       fetch(`https://test.api.ndla.no/audio-api/v1/audio/?${queryString}`, {

@@ -12,27 +12,12 @@ import Icon from '../Icon';
 
 const Fullscreen = props => (
   <Icon
-    viewBox="0 0 16 16"
+    viewBox="0 0 48 48"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
-    <g fill="#FFF" fill-rule="evenodd" transform="rotate(135 10.621 8.879)">
-      <g transform="translate(8)">
-        <rect width="3" height="5" x="2" y="3"/>
-        <polygon points="3.5 .5 7 4 0 4"/>
-      </g>
-      <g transform="rotate(90 7.536 15.5)">
-        <rect width="3" height="5" x="2" y="3"/>
-        <polygon points="3.5 .5 7 4 0 4"/>
-      </g>
-      <g transform="rotate(-90 7.5 7)">
-        <rect width="3" height="5" x="2" y="3"/>
-        <polygon points="3.5 .5 7 4 0 4"/>
-      </g>
-      <g transform="rotate(-180 7.75 11.25)">
-        <rect width="3" height="5" x="2" y="3"/>
-        <polygon points="3.5 .5 7 4 0 4"/>
-      </g>
+    <g>
+      <path d="M14 28h-4v10h10v-4h-6v-6zm-4-8h4v-6h6v-4H10v10zm24 14h-6v4h10V28h-4v6zm-6-24v4h6v6h4V10H28z" />
     </g>
   </Icon>
 );

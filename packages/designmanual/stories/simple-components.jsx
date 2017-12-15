@@ -32,7 +32,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Bilde">
         <p>
           Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og
-          høyrestilt. Bilder kan være i størrelsene liten, medium og stor (fullbredde).  
+          høyrestilt. Bilder kan være i størrelsene liten, medium og stor (fullbredde).
           Bilder som ikke er fullbredde, kan ekspanderes på klikk.
         </p>
         <p>
@@ -113,7 +113,6 @@ storiesOf('Enkle komponenter', module)
           type="right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -147,7 +146,6 @@ storiesOf('Enkle komponenter', module)
           type="small-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -188,7 +186,6 @@ storiesOf('Enkle komponenter', module)
           type="small-left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -211,7 +208,6 @@ storiesOf('Enkle komponenter', module)
           type="xsmall-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -848,7 +844,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Oversettelse">
         <p>
           Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor
-          kan man i disse tilfellene heller bruke en oversettelse-liste. 
+          kan man i disse tilfellene heller bruke en oversettelse-liste.
         </p>
       </StoryIntro>
       <StoryBody>

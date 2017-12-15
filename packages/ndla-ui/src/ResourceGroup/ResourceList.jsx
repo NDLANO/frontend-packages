@@ -97,21 +97,20 @@ class ResourceList extends Component {
               isHidden={false}
             />
           ))}
-          {empty ?
+          {empty ? (
             <div {...classes('additional-resources-trigger')}>
               Det er ikke noe kjernestoff tilgjengelig.<br />
-              { additionalResources.length ? 
+              {additionalResources.length ? (
                 <span>
-                  <button 
+                  <button
                     className="c-button c-topic-resource__button c-btn c-button--outline"
-                    onClick={this.props.onClick}
-                  >
+                    onClick={this.props.onClick}>
                     Aktiver tilleggsstoff
                   </button>
                 </span>
-              : null }
+              ) : null}
             </div>
-          : 
+          ) : (
             normalResources.map((resource, index) => (
               <Resource
                 key={resource.id}
@@ -121,9 +120,9 @@ class ResourceList extends Component {
                 isHidden={!(showAll || index < limit)}
               />
             ))
-          }
+          )}
         </ul>
-        {(normalResources.length > limit && !empty) ? (
+        {normalResources.length > limit && !empty ? (
           <div {...classes('button-wrapper')}>
             <Button
               {...classes('button', '', 'c-btn c-button--outline')}

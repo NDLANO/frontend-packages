@@ -247,7 +247,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser - tom liste">
         <p>
           Når en ressursgruppe er tom for innhold, vises en tekst som forklarer
-          dette for brukeren og tilbyr en handlingsdriver som lar deg utforske 
+          dette for brukeren og tilbyr en handlingsdriver som lar deg utforske
           tilleggsstoff om det er tilgjengelig.
         </p>
       </StoryIntro>

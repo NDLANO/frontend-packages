@@ -12,7 +12,7 @@ import BEMHelper from 'react-bem-helper';
 
 import LicenseIconList from './LicenseIconList';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
-import {Info} from 'ndla-icons/license';
+import { Info } from 'ndla-icons/license';
 
 const classes = new BEMHelper({
   name: 'license-byline',

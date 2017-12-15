@@ -239,6 +239,7 @@ const ImageContent = () => (
           <MediaListItemBody
             license={byncndLicenseAbbreviation}
             title="Regler for bruk av bildet:"
+            messages={{modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.'}}
             resourceUrl={src}
             resourceType="image">
             <MediaListItemActions>

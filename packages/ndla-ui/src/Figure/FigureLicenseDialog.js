@@ -40,7 +40,7 @@ export const FigureLicenseDialog = ({
         <h3 id={headingLabelId} {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <LicenseByline withDescription licenseRights={licenseRights} />
+        <LicenseByline withDescription messages={messages} licenseRights={licenseRights} />
         <a
           {...classLicenses('link')}
           target="_blank"
@@ -87,6 +87,7 @@ FigureLicenseDialog.propTypes = {
   origin: PropTypes.string,
   authors: PropTypes.arrayOf(ContributorShape),
   messages: PropTypes.shape({
+    modelPremission: PropTypes.string,
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,

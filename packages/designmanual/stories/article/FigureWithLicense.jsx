@@ -45,6 +45,7 @@ class FigureWithLicense extends Component {
       close: 'Lukk',
       rulesForUse: 'Regler for bruk av bildet',
       learnAboutLicenses: license.linkText,
+      modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
       source: 'Kilde',
       title: 'Tittel',
     };

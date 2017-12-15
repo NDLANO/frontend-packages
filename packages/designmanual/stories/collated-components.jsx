@@ -191,6 +191,7 @@ storiesOf('Sammensatte moduler', module)
         <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
           <LicenseByline
+            messages={{modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.'}}
             withDescription
             licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
           />
@@ -247,7 +248,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser - tom liste">
         <p>
           Når en ressursgruppe er tom for innhold, vises en tekst som forklarer
-          dette for brukeren og tilbyr en handlingsdriver som lar deg utforske 
+          dette for brukeren og tilbyr en handlingsdriver som lar deg utforske
           tilleggsstoff om det er tilgjengelig.
         </p>
       </StoryIntro>

@@ -54,6 +54,9 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
+    const noFigcaption = this.props.noFigcaption
+      ? this.props.noFigcaption
+      : false;
 
     const captionAndDetails = !this.props.noCaption
       ? [
@@ -63,6 +66,7 @@ class FigureWithLicense extends Component {
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
             authors={authors}
+            noFigcaption={noFigcaption}
           />,
           <FigureLicenseDialog
             id={this.id}
@@ -84,7 +88,8 @@ class FigureWithLicense extends Component {
         id={this.id}
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
-        captionView={captionAndDetails}>
+        captionView={captionAndDetails}
+        noFigcaption={noFigcaption}>
         {this.props.children}
       </Figure>
     );
@@ -99,6 +104,7 @@ FigureWithLicense.propTypes = {
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
+  noFigcaption: PropTypes.bool,
   type: PropTypes.oneOf([
     'full',
     'full-column',
@@ -112,6 +118,7 @@ FigureWithLicense.propTypes = {
 FigureWithLicense.defaultProps = {
   runScripts: false,
   noCaption: false,
+  noFigcaption: false,
 };
 
 export default FigureWithLicense;

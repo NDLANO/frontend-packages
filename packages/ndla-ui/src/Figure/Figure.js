@@ -12,6 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import {Fullscreen} from 'ndla-icons/common';
 
 import LicenseByline from '../LicenseByline';
 import Button from '../button/Button';
@@ -26,25 +27,28 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
-}) => (
-  <figcaption {...classes('caption')}>
-    {caption ? <div {...classes('info')}>{caption}</div> : null}
-    <footer {...classes('byline')}>
-      <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={licenseRights}>
-          <span {...classes('byline-authors')}>
-            {authors.map(author => author.name).join(', ')}
-          </span>
-          <button {...classes('captionbtn')}>{reuseLabel}</button>
-        </LicenseByline>
-      </div>
-    </footer>
-  </figcaption>
-);
+  noFigcaption,
+}) =>
+  noFigcaption ? null : (
+    <figcaption {...classes('caption')}>
+      {caption ? <div {...classes('info')}>{caption}</div> : null}
+      <footer {...classes('byline')}>
+        <div {...classes('byline-licenselist')}>
+          <LicenseByline licenseRights={licenseRights}>
+            <span {...classes('byline-authors')}>
+              {authors.map(author => author.name).join(', ')}
+            </span>
+            <button {...classes('captionbtn')}>{reuseLabel}</button>
+          </LicenseByline>
+        </div>
+      </footer>
+    </figcaption>
+  );
 
 FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
+  noFigcaption: PropTypes.bool,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
@@ -59,6 +63,7 @@ export const Figure = ({
   captionView,
   type,
   resizeIframe,
+  noFigcaption,
   ...rest
 }) => {
   let typeClass = null;
@@ -91,6 +96,7 @@ export const Figure = ({
       {...classes('', modifiers, typeClass)}
       data-toggleclass={typeClass}
       {...rest}>
+      {noFigcaption ? <div {...classes('fullscreen-btn')}><Fullscreen /></div> : null }
       {content}
       {captionView}
     </figure>
@@ -107,6 +113,8 @@ Figure.propTypes = {
     'small-left',
     'right',
     'small-right',
+    'xsmall-right',
+    'xsmall-left',
   ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,

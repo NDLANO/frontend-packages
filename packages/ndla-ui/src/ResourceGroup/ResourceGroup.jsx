@@ -25,6 +25,13 @@ class ResourceGroup extends Component {
     this.state = {
       showAdditionalResources: false,
     };
+    this.showAdditionalResourcesFromLink = this.showAdditionalResourcesFromLink.bind(this);
+  }
+  
+  showAdditionalResourcesFromLink() {
+    this.setState(prevState => ({
+      showAdditionalResources: !prevState.showAdditionalResources,
+    }))
   }
 
   render() {
@@ -35,32 +42,37 @@ class ResourceGroup extends Component {
       messages,
       className,
       resourceToLinkProps,
+      empty,
     } = this.props;
     const { showAdditionalResources } = this.state;
-    const additionalResources = resources.filter(res => res.additional);
-    const normalResources = resources.filter(res => !res.additional);
+    const additionalResources = resources ? resources.filter(res => res.additional) : null;
+    const normalResources = resources ? resources.filter(res => !res.additional) : null;
     return (
       <section {...classes('', '', className)}>
-        {additionalResources.length > 0 && (
-          <ResourceToggleFilter
-            checked={showAdditionalResources}
-            label={messages.toggleFilterLabel}
-            onClick={() =>
-              this.setState(prevState => ({
-                showAdditionalResources: !prevState.showAdditionalResources,
-              }))
-            }
+          {additionalResources && (
+            <ResourceToggleFilter
+              checked={showAdditionalResources}
+              label={messages.toggleFilterLabel}
+              onClick={() =>
+                this.setState(prevState => ({
+                  showAdditionalResources: !prevState.showAdditionalResources,
+                }))
+              }
+            />
+          )}
+          {title &&
+            <ResourcesTitle>{title}</ResourcesTitle>
+          }
+          <ResourceList
+            onClick={this.showAdditionalResourcesFromLink}
+            showAdditionalResources={showAdditionalResources}
+            icon={icon}
+            messages={messages}
+            resourceToLinkProps={resourceToLinkProps}
+            additionalResources={additionalResources}
+            normalResources={normalResources}
+            empty={empty}
           />
-        )}
-        <ResourcesTitle>{title}</ResourcesTitle>
-        <ResourceList
-          showAdditionalResources={showAdditionalResources}
-          icon={icon}
-          messages={messages}
-          resourceToLinkProps={resourceToLinkProps}
-          additionalResources={additionalResources}
-          normalResources={normalResources}
-        />
       </section>
     );
   }
@@ -73,6 +85,7 @@ ResourceGroup.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
+  empty: PropTypes.bool,
   messages: PropTypes.shape({
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,

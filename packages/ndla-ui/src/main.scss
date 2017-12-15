@@ -37,6 +37,7 @@ $inuit-wrapper-width: 1024px;
 @import 'global/elements/elements.tables';
 @import 'global/elements/elements.lists';
 @import 'global/elements/elements.details';
+@import 'global/elements/elements.links';
 // @import "global/elements/elements.aside";
 @import 'global/elements/elements.footer';
 @import 'global/elements/elements.iframe';
@@ -96,6 +97,7 @@ $inuit-wrapper-width: 1024px;
 @import 'global/components/component.tabs';
 @import 'ErrorMessage/component.error-message';
 @import 'AudioPlayer/component.audio-player';
+@import 'Translation/component.translation';
 
 // UTILITIES
 @import '../../../node_modules/inuitcss/utilities/utilities.widths';

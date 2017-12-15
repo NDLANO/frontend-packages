@@ -79,6 +79,7 @@ class ResourceList extends Component {
       normalResources,
       messages,
       type,
+      empty,
       ...rest
     } = this.props;
     const limit = 8;
@@ -96,17 +97,33 @@ class ResourceList extends Component {
               isHidden={false}
             />
           ))}
-          {normalResources.map((resource, index) => (
-            <Resource
-              key={resource.id}
-              type={type}
-              {...rest}
-              resource={resource}
-              isHidden={!(showAll || index < limit)}
-            />
-          ))}
+          {empty ?
+            <div>
+              Det er ikke noe kjernestoff tilgjengelig.&nbsp; 
+              { additionalResources.length ? 
+                <span>Kanskje du vil 
+                  <button 
+                    className="c-button c-button--stripped"
+                    onClick={this.props.onClick}
+                  >
+                      &nbsp;<a>aktivere tilleggsstoff</a>
+                  </button>?
+                </span>
+              : null }
+            </div>
+          : 
+            normalResources.map((resource, index) => (
+              <Resource
+                key={resource.id}
+                type={type}
+                {...rest}
+                resource={resource}
+                isHidden={!(showAll || index < limit)}
+              />
+            ))
+          }
         </ul>
-        {normalResources.length > limit ? (
+        {(normalResources.length > limit && !empty) ? (
           <div {...classes('button-wrapper')}>
             <Button
               {...classes('button', '', 'c-btn c-button--outline')}
@@ -127,6 +144,7 @@ ResourceList.propTypes = {
   showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
+  empty: PropTypes.bool,
   messages: PropTypes.shape({
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,

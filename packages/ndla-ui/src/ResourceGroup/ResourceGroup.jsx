@@ -44,18 +44,13 @@ class ResourceGroup extends Component {
       messages,
       className,
       resourceToLinkProps,
-      empty,
     } = this.props;
     const { showAdditionalResources } = this.state;
-    const additionalResources = resources
-      ? resources.filter(res => res.additional)
-      : null;
-    const normalResources = resources
-      ? resources.filter(res => !res.additional)
-      : null;
+    const additionalResources = resources.filter(res => res.additional);
+    const normalResources = resources.filter(res => !res.additional);
     return (
       <section {...classes('', '', className)}>
-        {additionalResources && (
+        {additionalResources.length > 0 && (
           <ResourceToggleFilter
             checked={showAdditionalResources}
             label={messages.toggleFilterLabel}
@@ -66,7 +61,7 @@ class ResourceGroup extends Component {
             }
           />
         )}
-        {title && <ResourcesTitle>{title}</ResourcesTitle>}
+        <ResourcesTitle>{title}</ResourcesTitle>
         <ResourceList
           onClick={this.showAdditionalResourcesFromLink}
           showAdditionalResources={showAdditionalResources}
@@ -75,7 +70,6 @@ class ResourceGroup extends Component {
           resourceToLinkProps={resourceToLinkProps}
           additionalResources={additionalResources}
           normalResources={normalResources}
-          empty={empty}
         />
       </section>
     );
@@ -91,6 +85,9 @@ ResourceGroup.propTypes = {
   hideResourceToggleFilter: PropTypes.bool,
   empty: PropTypes.bool,
   messages: PropTypes.shape({
+    noCoreResources: PropTypes.string.isRequired,
+    triggerAdditionalResourcesQuestion: PropTypes.string.isRequired,
+    activate: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,

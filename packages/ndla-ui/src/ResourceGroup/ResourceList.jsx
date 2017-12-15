@@ -77,6 +77,7 @@ class ResourceList extends Component {
     const {
       additionalResources,
       normalResources,
+      onClick,
       messages,
       type,
       empty,
@@ -97,17 +98,16 @@ class ResourceList extends Component {
               isHidden={false}
             />
           ))}
-          {empty ? (
+          {normalResources.length === 0 ? (
             <div>
-              Det er ikke noe kjernestoff tilgjengelig.&nbsp;
+              {messages.noCoreResources}{' '}
               {additionalResources.length ? (
                 <span>
-                  Kanskje du vil
-                  <button
-                    className="c-button c-button--stripped"
-                    onClick={this.props.onClick}>
-                    &nbsp;<a>aktivere tilleggsstoff</a>
-                  </button>?
+                  {messages.question}{' '}
+                  <Button link onClick={onClick}>
+                    {messages.activateAdditionalResources}
+                  </Button>
+                  ?
                 </span>
               ) : null}
             </div>
@@ -144,8 +144,13 @@ ResourceList.propTypes = {
   showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   empty: PropTypes.bool,
   messages: PropTypes.shape({
+    noCoreResources: PropTypes.string.isRequired,
+    triggerAdditionalResourcesQuestion: PropTypes.string.isRequired,
+    activateAdditionalResources: PropTypes.string.isRequired,
+    toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,
   }),

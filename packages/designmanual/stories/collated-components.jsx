@@ -256,7 +256,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <LayoutItem layout="center">
-        <Resources empty />
+        <Resources onlyAdditional />
       </LayoutItem>
     </div>
   ))

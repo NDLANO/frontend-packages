@@ -49,11 +49,3 @@ $tabs-spacing: 12px;
   border-bottom: 1px solid $brand-color--tertiary;
   padding: 0;
 }
-
-.c-tabs__panel {
-  display: none;
-
-  &--selected {
-    display: block;
-  }
-}

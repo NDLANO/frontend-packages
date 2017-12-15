@@ -116,13 +116,25 @@
 .c-figure__fullscreen-btn {
   cursor: pointer;
   position: absolute;
-  background: $brand-color;
   bottom: 0;
   right: 0;
   padding: 5px $spacing--small 8px;
+  transition: all .3s ease-out;
+  border: 1px solid rgba($white, .5);
   
   svg {
-    width: 20px;
-    height: 20px;
+    transition: transform .4s ease-out;
+    width: 26px;
+    height: 26px;
+    fill: $white;
+  }
+}
+
+.c-figure:hover {
+  .c-figure__fullscreen-btn {
+    background: $white;
+    svg {
+      transform: scale(1.2);
+    }
   }
 }

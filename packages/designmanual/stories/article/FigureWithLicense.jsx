@@ -45,7 +45,8 @@ class FigureWithLicense extends Component {
       close: 'Lukk',
       rulesForUse: 'Regler for bruk av bildet',
       learnAboutLicenses: license.linkText,
-      modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
+      modelPremission:
+        'Personen(e) på bildet har godkjent at det kan brukes videre.',
       source: 'Kilde',
       title: 'Tittel',
     };
@@ -58,13 +59,15 @@ class FigureWithLicense extends Component {
 
     const captionAndDetails = !this.props.noCaption
       ? [
-          !this.props.noFigcaption ? <FigureCaption
-            key={caption}
-            caption={caption}
-            reuseLabel={reuseLabel}
-            licenseRights={license.rights}
-            authors={authors}
-          /> : null, // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
+          !this.props.noFigcaption ? (
+            <FigureCaption
+              key={caption}
+              caption={caption}
+              reuseLabel={reuseLabel}
+              licenseRights={license.rights}
+              authors={authors}
+            />
+          ) : null, // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
           <FigureLicenseDialog
             id={this.id}
             key="details"
@@ -85,8 +88,7 @@ class FigureWithLicense extends Component {
         id={this.id}
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
-        captionView={captionAndDetails}
-        >
+        captionView={captionAndDetails}>
         {this.props.children}
       </Figure>
     );

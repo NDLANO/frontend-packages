@@ -25,13 +25,15 @@ class ResourceGroup extends Component {
     this.state = {
       showAdditionalResources: false,
     };
-    this.showAdditionalResourcesFromLink = this.showAdditionalResourcesFromLink.bind(this);
+    this.showAdditionalResourcesFromLink = this.showAdditionalResourcesFromLink.bind(
+      this,
+    );
   }
-  
+
   showAdditionalResourcesFromLink() {
     this.setState(prevState => ({
       showAdditionalResources: !prevState.showAdditionalResources,
-    }))
+    }));
   }
 
   render() {
@@ -45,34 +47,36 @@ class ResourceGroup extends Component {
       empty,
     } = this.props;
     const { showAdditionalResources } = this.state;
-    const additionalResources = resources ? resources.filter(res => res.additional) : null;
-    const normalResources = resources ? resources.filter(res => !res.additional) : null;
+    const additionalResources = resources
+      ? resources.filter(res => res.additional)
+      : null;
+    const normalResources = resources
+      ? resources.filter(res => !res.additional)
+      : null;
     return (
       <section {...classes('', '', className)}>
-          {additionalResources && (
-            <ResourceToggleFilter
-              checked={showAdditionalResources}
-              label={messages.toggleFilterLabel}
-              onClick={() =>
-                this.setState(prevState => ({
-                  showAdditionalResources: !prevState.showAdditionalResources,
-                }))
-              }
-            />
-          )}
-          {title &&
-            <ResourcesTitle>{title}</ResourcesTitle>
-          }
-          <ResourceList
-            onClick={this.showAdditionalResourcesFromLink}
-            showAdditionalResources={showAdditionalResources}
-            icon={icon}
-            messages={messages}
-            resourceToLinkProps={resourceToLinkProps}
-            additionalResources={additionalResources}
-            normalResources={normalResources}
-            empty={empty}
+        {additionalResources && (
+          <ResourceToggleFilter
+            checked={showAdditionalResources}
+            label={messages.toggleFilterLabel}
+            onClick={() =>
+              this.setState(prevState => ({
+                showAdditionalResources: !prevState.showAdditionalResources,
+              }))
+            }
           />
+        )}
+        {title && <ResourcesTitle>{title}</ResourcesTitle>}
+        <ResourceList
+          onClick={this.showAdditionalResourcesFromLink}
+          showAdditionalResources={showAdditionalResources}
+          icon={icon}
+          messages={messages}
+          resourceToLinkProps={resourceToLinkProps}
+          additionalResources={additionalResources}
+          normalResources={normalResources}
+          empty={empty}
+        />
       </section>
     );
   }

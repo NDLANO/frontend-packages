@@ -40,7 +40,11 @@ export const FigureLicenseDialog = ({
         <h3 id={headingLabelId} {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <LicenseByline withDescription messages={messages} licenseRights={licenseRights} />
+        <LicenseByline
+          withDescription
+          messages={messages}
+          licenseRights={licenseRights}
+        />
         <a
           {...classLicenses('link')}
           target="_blank"

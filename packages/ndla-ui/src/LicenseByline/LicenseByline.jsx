@@ -34,9 +34,12 @@ const LicenseByline = ({
           className={className}
           licenseRights={licenseRights}
         />
-        {messages && messages.modelPremission && <div className="c-license-icons__modelpermission">
-          {messages.modelPremission}
-        </div>}
+        {messages &&
+          messages.modelPremission && (
+            <div className="c-license-icons__modelpermission">
+              {messages.modelPremission}
+            </div>
+          )}
       </div>
     )}
     {children}

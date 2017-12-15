@@ -26,22 +26,21 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
-}) =>
-   (
-    <figcaption {...classes('caption')}>
-      {caption ? <div {...classes('info')}>{caption}</div> : null}
-      <footer {...classes('byline')}>
-        <div {...classes('byline-licenselist')}>
-          <LicenseByline licenseRights={licenseRights}>
-            <span {...classes('byline-authors')}>
-              {authors.map(author => author.name).join(', ')}
-            </span>
-            <button {...classes('captionbtn')}>{reuseLabel}</button>
-          </LicenseByline>
-        </div>
-      </footer>
-    </figcaption>
-  );
+}) => (
+  <figcaption {...classes('caption')}>
+    {caption ? <div {...classes('info')}>{caption}</div> : null}
+    <footer {...classes('byline')}>
+      <div {...classes('byline-licenselist')}>
+        <LicenseByline licenseRights={licenseRights}>
+          <span {...classes('byline-authors')}>
+            {authors.map(author => author.name).join(', ')}
+          </span>
+          <button {...classes('captionbtn')}>{reuseLabel}</button>
+        </LicenseByline>
+      </div>
+    </footer>
+  </figcaption>
+);
 
 FigureCaption.propTypes = {
   caption: PropTypes.string,

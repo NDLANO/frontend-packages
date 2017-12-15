@@ -113,7 +113,11 @@ export const MediaListItemBody = ({
         />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-      <LicenseByline withDescription messages={messages} licenseRights={license.rights} />
+      <LicenseByline
+        withDescription
+        messages={messages}
+        licenseRights={license.rights}
+      />
       <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}
     </div>

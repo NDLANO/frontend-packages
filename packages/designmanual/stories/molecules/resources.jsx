@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ResourcesWrapper, ResourceGroup } from 'ndla-ui';
 import { Document, Path, Pencil } from 'ndla-icons/common';
 import {
@@ -84,3 +85,7 @@ export const Resources = ({ onlyAdditional }) => (
     ))}
   </ResourcesWrapper>
 );
+
+Resources.propTypes = {
+  onlyAdditional: PropTypes.bool,
+};

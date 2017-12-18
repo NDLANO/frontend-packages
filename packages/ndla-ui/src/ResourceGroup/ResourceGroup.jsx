@@ -86,7 +86,6 @@ ResourceGroup.propTypes = {
   empty: PropTypes.bool,
   messages: PropTypes.shape({
     noCoreResources: PropTypes.string.isRequired,
-    triggerAdditionalResourcesQuestion: PropTypes.string.isRequired,
     activate: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,

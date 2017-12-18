@@ -152,12 +152,44 @@ export const removeEventListenerForResize = () => {
 
 export const addEventListenersForZoom = () => {
   forEachElement('.c-figure > .c-button', el => {
-    const { parentNode } = el;
     const target = el;
+    const figure = findAncestorByClass(target, 'c-figure');
+    const id = figure.getAttribute('id');
+
+    const dialog = document.querySelector(`[data-dialog-id='${id}']`);
+    const dialogContent = dialog.querySelector(`.c-dialog__content`);
+
+    trapInstances[id] = createFocusTrap(dialogContent, {
+      onDeactivate: () => {
+        closeDialog(dialog);
+      },
+      clickOutsideDeactivates: true,
+    });
 
     target.onclick = () => {
-      const toggleClass = parentNode.getAttribute('data-toggleclass');
-      parentNode.classList.toggle(toggleClass);
+      noScroll(true);
+      const viewportHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0,
+      );
+      const figureHeight = figure.offsetHeight;
+
+      jump(figure, {
+        offset: -((viewportHeight - figureHeight) / 2),
+        duration: 300,
+        callback: () => {
+          const instance = trapInstances[id];
+
+          if (instance) {
+            instance.activate();
+          }
+        },
+      });
+
+      setTimeout(() => {
+        dialog.setAttribute('aria-hidden', 'false');
+        dialog.classList.add('c-dialog--active');
+      }, 150);
     };
   });
 };

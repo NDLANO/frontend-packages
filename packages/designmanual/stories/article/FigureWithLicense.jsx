@@ -73,7 +73,9 @@ class FigureWithLicense extends Component {
           <FigureFullscreenDialog
             id={this.id}
             messages={messages}
+            title="Mann med lupe"
             image={this.props.children}
+            caption={this.props.caption}
           />
           
           , 

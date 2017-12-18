@@ -27,6 +27,7 @@ export const FigureFullscreenDialog = ({
   messages,
   id,
   image,
+  caption,
 }) => {
   const headingLabelId = `heading-${id}`;
   return (
@@ -36,6 +37,9 @@ export const FigureFullscreenDialog = ({
         <h3 id={headingLabelId} {...classLicenses('title')}>
           test
         </h3>
+        <p>
+          {caption}
+        </p>
       </div>
     </Dialog>
   );

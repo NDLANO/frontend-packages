@@ -120,6 +120,7 @@
   right: 0;
   padding: 5px $spacing--small 8px;
   transition: all .3s ease-out;
+  background: rgba($white, .2);
   
   svg {
     transition: transform .4s ease-out;

@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ResourcesWrapper, ResourceGroup } from 'ndla-ui';
 import { Document, Path, Pencil } from 'ndla-icons/common';
 import {
@@ -57,17 +58,24 @@ const resourceGroup3 = {
 
 const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3];
 
-export const Resources = ({ empty = false }) => (
+export const Resources = ({ onlyAdditional }) => (
   <ResourcesWrapper>
     {resourceGroups.map(group => (
       <ResourceGroup
         key={group.id}
         title={group.title}
-        resources={group.resources}
-        empty={empty}
+        resources={group.resources.filter(resource => {
+          if (onlyAdditional) {
+            return resource.additional;
+          }
+          return true;
+        })}
         className={group.className}
         icon={group.iconEl}
         messages={{
+          noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
+          activateSuggestion: '',
+          activateAdditionalResources: 'Aktiver tilleggsstoff',
           toggleFilterLabel: 'Tilleggsstoff',
           showLess: 'Vis mindre',
           showMore: 'Vis mer',
@@ -77,3 +85,7 @@ export const Resources = ({ empty = false }) => (
     ))}
   </ResourcesWrapper>
 );
+
+Resources.propTypes = {
+  onlyAdditional: PropTypes.bool,
+};

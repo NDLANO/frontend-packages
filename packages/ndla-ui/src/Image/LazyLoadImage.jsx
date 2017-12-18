@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Lazyload image with lacysizes (https://github.com/aFarkas/lazysizes)
+// Lazyload image with lazysizes (https://github.com/aFarkas/lazysizes)
 const LazyLoadImage = ({ alt, src, srcSet, lazyLoadSrc, sizes, ...rest }) => [
   <noscript key="noscript">
     <img alt={alt} src={`${src}`} srcSet={srcSet} sizes={sizes} {...rest} />

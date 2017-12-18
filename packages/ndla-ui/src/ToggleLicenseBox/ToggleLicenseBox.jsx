@@ -95,7 +95,7 @@ class ToggleLicenseBox extends Component {
             onClick={this.toogleLicenseBox}>
             {expanded ? closeTitle : openTitle}
           </Button>
-          {expanded ? children : null}
+          {children}
         </div>
       </div>,
     ];

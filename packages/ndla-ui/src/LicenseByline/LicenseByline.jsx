@@ -12,7 +12,6 @@ import BEMHelper from 'react-bem-helper';
 
 import LicenseIconList from './LicenseIconList';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
-import { Info } from 'ndla-icons/license';
 
 const classes = new BEMHelper({
   name: 'license-byline',
@@ -24,6 +23,7 @@ const LicenseByline = ({
   withDescription,
   licenseRights,
   className,
+  messages,
 }) => (
   <div {...classes()}>
     {!withDescription ? (
@@ -34,9 +34,12 @@ const LicenseByline = ({
           className={className}
           licenseRights={licenseRights}
         />
-        <div className="c-license-icons__modelpermission">
-          Personen(e) på bildet har godkjent at det kan brukes videre.
-        </div>
+        {messages &&
+          messages.modelPremission && (
+            <div className="c-license-icons__modelpermission">
+              {messages.modelPremission}
+            </div>
+          )}
       </div>
     )}
     {children}
@@ -47,6 +50,9 @@ LicenseByline.propTypes = {
   children: PropTypes.node,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   withDescription: PropTypes.bool,
+  messages: PropTypes.shape({
+    modelPremission: PropTypes.string,
+  }),
   className: PropTypes.string,
 };
 

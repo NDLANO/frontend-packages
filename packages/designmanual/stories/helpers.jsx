@@ -39,9 +39,7 @@ export const articleUrl = id => (
   <span>
     Hentet fra{' '}
     <a
-      href={`http://api.test.ndla.no:8082/article/${
-        id
-      }`}>{`http://api.test.ndla.no:8082/article/${id}`}</a>
+      href={`http://api.test.ndla.no:8082/article/${id}`}>{`http://api.test.ndla.no:8082/article/${id}`}</a>
   </span>
 );
 

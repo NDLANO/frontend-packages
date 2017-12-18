@@ -8,4 +8,6 @@
 
 import Tabs from './Tabs';
 
+export { resetIdCounter } from 'react-tabs';
+
 export default Tabs;

@@ -793,11 +793,26 @@ storiesOf('Enkle komponenter', module)
           </Button>
         </InlineContainer>
         <InlineContainer>
-          <Button onClick={action('clicked')}>Fylt knapp</Button>
+          <Button onClick={action('clicked')}>Fylt knapp</Button>{' '}
+          <Button disabled onClick={action('clicked')}>
+            Knapp deaktivert
+          </Button>
         </InlineContainer>
-        <Button disabled onClick={action('clicked')}>
-          Knapp deaktivert
-        </Button>
+        {process.env.NODE_ENV === 'development' && [
+          <h2 className="u-heading">Alternativer når UU krever en knapp</h2>,
+          <InlineContainer>
+            <Button link onClick={action('clicked')}>
+              Knapp stylet som link
+            </Button>{' '}
+            <p>
+              Ser{' '}
+              <Button stripped onClick={action('clicked')}>
+                dette
+              </Button>{' '}
+              ut som en knapp
+            </p>
+          </InlineContainer>,
+        ]}
       </StoryBody>
     </div>
   ))

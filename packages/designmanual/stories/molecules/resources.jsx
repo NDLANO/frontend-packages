@@ -73,8 +73,8 @@ export const Resources = ({ onlyAdditional }) => (
         className={group.className}
         icon={group.iconEl}
         messages={{
-          noCoreResources: 'Det er ikke noe kjernestoff tilgjengelig.',
-          question: 'Kanskje du vil',
+          noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
+          activateSuggestion: 'Kanskje du vil',
           activateAdditionalResources: 'aktivere tilleggsstoff',
           toggleFilterLabel: 'Tilleggsstoff',
           showLess: 'Vis mindre',

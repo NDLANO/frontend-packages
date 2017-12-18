@@ -85,8 +85,9 @@ ResourceGroup.propTypes = {
   hideResourceToggleFilter: PropTypes.bool,
   empty: PropTypes.bool,
   messages: PropTypes.shape({
-    noCoreResources: PropTypes.string.isRequired,
-    activate: PropTypes.string.isRequired,
+    activateAdditionalResources: PropTypes.string.isRequired,
+    noCoreResourcesAvailable: PropTypes.string.isRequired,
+    activateSuggestion: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,

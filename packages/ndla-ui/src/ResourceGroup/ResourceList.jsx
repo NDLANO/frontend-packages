@@ -100,10 +100,10 @@ class ResourceList extends Component {
           ))}
           {normalResources.length === 0 ? (
             <div>
-              {messages.noCoreResources}{' '}
+              {messages.noCoreResourcesAvailable}{' '}
               {additionalResources.length ? (
                 <span>
-                  {messages.question}{' '}
+                  {messages.activateSuggestion}{' '}
                   <Button link onClick={onClick}>
                     {messages.activateAdditionalResources}
                   </Button>
@@ -147,7 +147,8 @@ ResourceList.propTypes = {
   onClick: PropTypes.func.isRequired,
   empty: PropTypes.bool,
   messages: PropTypes.shape({
-    noCoreResources: PropTypes.string.isRequired,
+    noCoreResourcesAvailable: PropTypes.string.isRequired,
+    activateSuggestion: PropTypes.string.isRequired,
     activateAdditionalResources: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,

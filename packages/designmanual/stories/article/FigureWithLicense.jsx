@@ -18,7 +18,7 @@ import {
   addEventListenersForZoom,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureLicenseDialog, Button } from 'ndla-ui';
+import { Figure, FigureCaption, FigureLicenseDialog, FigureFullscreenDialog, Button } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -56,9 +56,6 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
-    const noFigcaption = this.props.noFigcaption
-      ? this.props.noFigcaption
-      : false;
 
     const captionAndDetails = !this.props.noCaption
       ? [
@@ -70,7 +67,16 @@ class FigureWithLicense extends Component {
               licenseRights={license.rights}
               authors={authors}
             />
-          ) : null, // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
+          ) : 
+          
+          // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
+          <FigureFullscreenDialog
+            id={this.id}
+            messages={messages}
+            image={this.props.children}
+          />
+          
+          , 
           <FigureLicenseDialog
             id={this.id}
             key="details"
@@ -92,7 +98,7 @@ class FigureWithLicense extends Component {
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
         captionView={captionAndDetails}
-        noFigcaption={noFigcaption}>
+        noFigcaption={this.props.noFigcaption}>
         {this.props.children}
       </Figure>
     );

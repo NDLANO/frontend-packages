@@ -19,7 +19,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Dialog = ({ children, messages, id, labelledby, ...rest }) =>
+export const Dialog = ({ children, messages, id, labelledby, modifier, ...rest }) =>
   createUniversalPortal(
     <div
       className="c-dialog"
@@ -28,7 +28,7 @@ export const Dialog = ({ children, messages, id, labelledby, ...rest }) =>
       aria-hidden="true"
       aria-labelledby={labelledby}
       {...rest}>
-      <div {...classes('content')}>
+      <div {...classes('content', modifier)}>
         <button {...classes('close')}>{messages.close}</button>
         {children}
       </div>
@@ -44,4 +44,5 @@ Dialog.propTypes = {
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
+  modifier: PropTypes.string,
 };

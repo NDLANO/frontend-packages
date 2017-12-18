@@ -57,7 +57,7 @@ export {
 } from './Breadcrumb';
 export { Hero } from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export { Figure, FigureCaption, FigureLicenseDialog } from './Figure';
+export { Figure, FigureCaption, FigureLicenseDialog, FigureFullscreenDialog } from './Figure';
 export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 export {
   MediaList,

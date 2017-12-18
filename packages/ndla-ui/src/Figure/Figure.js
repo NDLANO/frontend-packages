@@ -94,9 +94,11 @@ export const Figure = ({
       data-toggleclass={typeClass}
       {...rest}>
       {noFigcaption ? (
-        <div {...classes('fullscreen-btn')}>
+        <button 
+        onClick={console.log("Test")}
+        {...classes('fullscreen-btn')}>
           <Fullscreen />
-        </div>
+        </button>
       ) : null}
       {content}
       {captionView}

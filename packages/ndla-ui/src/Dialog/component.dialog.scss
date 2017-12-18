@@ -50,6 +50,12 @@
     height: auto;
     visibility: visible;
   }
+  
+  .c-dialog__content--fullscreen {
+    @include mq(tablet) {
+      max-width: 100%;
+    }
+  }
 
   .c-dialog__close {
     display: block;

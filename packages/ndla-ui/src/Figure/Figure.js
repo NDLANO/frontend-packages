@@ -12,6 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { Fullscreen } from 'ndla-icons/common';
 
 import LicenseByline from '../LicenseByline';
 import Button from '../button/Button';
@@ -59,6 +60,7 @@ export const Figure = ({
   captionView,
   type,
   resizeIframe,
+  noFigcaption,
   ...rest
 }) => {
   let typeClass = null;
@@ -91,6 +93,11 @@ export const Figure = ({
       {...classes('', modifiers, typeClass)}
       data-toggleclass={typeClass}
       {...rest}>
+      {noFigcaption ? (
+        <div {...classes('fullscreen-btn')}>
+          <Fullscreen />
+        </div>
+      ) : null}
       {content}
       {captionView}
     </figure>

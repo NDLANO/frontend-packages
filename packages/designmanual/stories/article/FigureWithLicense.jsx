@@ -56,6 +56,9 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
+    const noFigcaption = this.props.noFigcaption
+      ? this.props.noFigcaption
+      : false;
 
     const captionAndDetails = !this.props.noCaption
       ? [
@@ -88,7 +91,8 @@ class FigureWithLicense extends Component {
         id={this.id}
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
-        captionView={captionAndDetails}>
+        captionView={captionAndDetails}
+        noFigcaption={noFigcaption}>
         {this.props.children}
       </Figure>
     );

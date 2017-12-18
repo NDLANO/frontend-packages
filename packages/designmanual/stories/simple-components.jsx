@@ -16,6 +16,8 @@ import {
   LicenseByline,
   Image,
   AudioPlayer,
+  Translation,
+  TranslationLine,
 } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
@@ -29,12 +31,14 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Bilde">
         <p>
-          Bilder vises i tre formater: fullbredde midtstilt, venstrestilt og
-          høyrestilt. Bilder som ikke er fullbredde, kan ekspanderes på klikk.
+          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt
+          og høyrestilt. Bilder kan være i størrelsene liten, medium og stor
+          (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk.
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
-          bildet» som gjør at brukeren får opp lisensboksen for bildet.{' '}
+          bildet» som gjør at brukeren får opp lisensboksen for bildet. Små
+          bilder kan være uten metainfo og lisensinfo.
         </p>
         <p>
           Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned
@@ -109,7 +113,6 @@ storiesOf('Enkle komponenter', module)
           type="right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -143,7 +146,6 @@ storiesOf('Enkle komponenter', module)
           type="small-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -180,10 +182,10 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
+          noFigcaption
           type="small-left"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -200,6 +202,16 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <h2>Flyt til høyre, ekstra liten versjon</h2>
+        <FigureWithLicense
+          noFigcaption
+          type="xsmall-right"
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
+          <Image
+            alt="Forstørrelsesglass"
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -781,11 +793,26 @@ storiesOf('Enkle komponenter', module)
           </Button>
         </InlineContainer>
         <InlineContainer>
-          <Button onClick={action('clicked')}>Fylt knapp</Button>
+          <Button onClick={action('clicked')}>Fylt knapp</Button>{' '}
+          <Button disabled onClick={action('clicked')}>
+            Knapp deaktivert
+          </Button>
         </InlineContainer>
-        <Button disabled onClick={action('clicked')}>
-          Knapp deaktivert
-        </Button>
+        {process.env.NODE_ENV === 'development' && [
+          <h2 className="u-heading">Alternativer når UU krever en knapp</h2>,
+          <InlineContainer>
+            <Button link onClick={action('clicked')}>
+              Knapp stylet som link
+            </Button>{' '}
+            <p>
+              Ser{' '}
+              <Button stripped onClick={action('clicked')}>
+                dette
+              </Button>{' '}
+              ut som en knapp
+            </p>
+          </InlineContainer>,
+        ]}
       </StoryBody>
     </div>
   ))
@@ -825,6 +852,40 @@ storiesOf('Enkle komponenter', module)
           to="/"
           altText="Nasjonal digital læringsarena"
         />
+      </StoryBody>
+    </div>
+  ))
+  .add('Oversettelse', () => (
+    <div>
+      <StoryIntro title="Oversettelse">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
+          derfor kan man i disse tilfellene heller bruke en oversettelse-liste.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <Translation index={1}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你叫什么名字？//你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pingyu">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你是学生。//你是學生。
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pingyu">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Du er student.
+          </TranslationLine>
+        </Translation>
       </StoryBody>
     </div>
   ));

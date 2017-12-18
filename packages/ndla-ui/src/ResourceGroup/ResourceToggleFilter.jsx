@@ -27,7 +27,7 @@ const ResourceToggleFilter = props => {
           type="checkbox"
           name="resource-filter"
           id="resource-filter"
-          value={checked}
+          checked={checked}
           onChange={onClick}
         />
         <label htmlFor="resource-filter">

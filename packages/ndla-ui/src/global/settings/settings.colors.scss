@@ -38,6 +38,16 @@ $yellow: #EAD854;
 $table-bg: #f9fafb;
 
 
+/** Link colors **/
+
+$link: inset 0 -1px $brand-color,
+       inset 0 -1px $brand-color;
+$link--hover: inset 0 -3px rgba($brand-color, .2),
+              inset 0 -1px rgba($brand-color, .2);
+
+
+/** Background colors **/
+
 $background-color: #fff; /*old: EFF0F2 (gray)*/
 $background-color--dark: darken($background-color, $darken-factor);
 $background-color--darker: darken($background-color, $darken-factor * 2);

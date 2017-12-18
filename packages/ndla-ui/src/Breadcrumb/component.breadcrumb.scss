@@ -35,11 +35,8 @@
   @include mq(tablet) {
     display: inline-block;
   }
-  line-height: 2em;
   a {
     text-decoration: none;
-    padding-bottom: 5px;
-    border-bottom: 1px solid $brand-color;
   }
   a:hover {
     border: none;
@@ -55,6 +52,11 @@
       @include inuit-font-size(14px);
       color: $brand-color;
       opacity: 0.4;
+    }
+  }
+  &:first-child {
+    a {
+      box-shadow: none;
     }
   }
   &:last-child:after {

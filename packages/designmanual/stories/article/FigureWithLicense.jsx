@@ -45,6 +45,8 @@ class FigureWithLicense extends Component {
       close: 'Lukk',
       rulesForUse: 'Regler for bruk av bildet',
       learnAboutLicenses: license.linkText,
+      modelPremission:
+        'Personen(e) på bildet har godkjent at det kan brukes videre.',
       source: 'Kilde',
       title: 'Tittel',
     };
@@ -57,13 +59,15 @@ class FigureWithLicense extends Component {
 
     const captionAndDetails = !this.props.noCaption
       ? [
-          <FigureCaption
-            key={caption}
-            caption={caption}
-            reuseLabel={reuseLabel}
-            licenseRights={license.rights}
-            authors={authors}
-          />,
+          !this.props.noFigcaption ? (
+            <FigureCaption
+              key={caption}
+              caption={caption}
+              reuseLabel={reuseLabel}
+              licenseRights={license.rights}
+              authors={authors}
+            />
+          ) : null, // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
           <FigureLicenseDialog
             id={this.id}
             key="details"
@@ -99,6 +103,7 @@ FigureWithLicense.propTypes = {
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
+  noFigcaption: PropTypes.bool,
   type: PropTypes.oneOf([
     'full',
     'full-column',
@@ -106,12 +111,15 @@ FigureWithLicense.propTypes = {
     'small-left',
     'right',
     'small-right',
+    'xsmall-right',
+    'xsmall-left',
   ]),
 };
 
 FigureWithLicense.defaultProps = {
   runScripts: false,
   noCaption: false,
+  noFigcaption: false,
 };
 
 export default FigureWithLicense;

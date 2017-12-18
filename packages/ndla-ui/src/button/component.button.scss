@@ -6,7 +6,6 @@
  *
  */
 
-
 .c-button {
   display: inline-block;
   color: $background-color--light;
@@ -20,7 +19,8 @@
   @include inuit-font-size(16px);
   font-family: $font;
   transition: $transition;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: white;
     background-color: rgba($brand-color, 0.8);
     border: 2px solid rgba($brand-color, 0);
@@ -46,7 +46,8 @@
   background-color: transparent;
   border: 2px solid $brand-color;
   font-weight: $font-weight-bold;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: white;
     background-color: $brand-color;
     border: 2px solid transparent;
@@ -65,7 +66,8 @@
   color: $brand-color;
   background-color: transparent;
   border: none;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
     border: none;
     color: $brand-color;
@@ -77,20 +79,39 @@
   padding: 0;
   border-radius: 0;
   color: inherit;
+  font-size: inherit;
+  font-family: inherit;
   background-color: transparent;
   box-shadow: none;
   border: none;
-  &:hover, &:active, &:disabled, &:focus  {
+  &:hover,
+  &:active,
+  &:disabled,
+  &:focus {
     box-shadow: none;
     color: $brand-color;
     background-color: transparent;
     transform: none;
     border: none;
-
   }
 
   &:focus {
     outline-width: medium;
+  }
+}
+
+.c-button--link {
+  @extend .c-button--stripped;
+  @include inuit-font-size(18px, 20px);
+  color: $brand-color;
+  box-shadow: $link;
+
+  &:hover {
+    box-shadow: $link--hover;
+  }
+
+  &:focus {
+    box-shadow: $link--hover;
   }
 }
 

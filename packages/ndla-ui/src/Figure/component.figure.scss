@@ -112,3 +112,17 @@
     margin-bottom: $spacing--small;
   }
 }
+
+.c-figure__fullscreen-btn {
+  cursor: pointer;
+  position: absolute;
+  background: $brand-color;
+  bottom: 0;
+  right: 0;
+  padding: 5px $spacing--small 8px;
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

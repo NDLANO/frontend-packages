@@ -850,20 +850,26 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
       <StoryBody>
         <Translation index={1}>
-          <TranslationLine lang="Kinesisk">
+          <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？//你叫什麼名字？
           </TranslationLine>
-          <TranslationLine lang="Pingyu">
+          <TranslationLine lang="pn" langName="Pingyu">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
         </Translation>
         <Translation index={2}>
-          <TranslationLine lang="Kinesisk">
+          <TranslationLine lang="cn" langName="Kinesisk">
             你是学生。//你是學生。
           </TranslationLine>
-          <TranslationLine lang="Pingyu">Nǐ shì xuésheng.</TranslationLine>
-          <TranslationLine lang="Norsk">Du er student.</TranslationLine>
+          <TranslationLine lang="pn" langName="Pingyu">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Du er student.
+          </TranslationLine>
         </Translation>
       </StoryBody>
     </div>

@@ -32,14 +32,14 @@ export const FigureFullscreenDialog = ({
   const headingLabelId = `heading-${id}`;
   return (
     <Dialog id={id} labelledby={headingLabelId} messages={messages} modifier="fullscreen">
-      <div {...classLicenses()}>
-      <img {...classLicenses('img')} src={image.props.src} alt={image.props.alt} />
-        <h3 id={headingLabelId} {...classLicenses('title')}>
-          test
-        </h3>
-        <p>
-          {caption}
-        </p>
+      <div {...classLicenses('', 'fullscreen')}>
+        <div {...classLicenses('content')}>
+          <img {...classLicenses('img')} src={image.props.src} alt={image.props.alt} />
+            <h3 id={headingLabelId} {...classLicenses('image-title')}>
+              test
+            </h3>
+            {caption}
+        </div>
       </div>
     </Dialog>
   );

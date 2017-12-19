@@ -16,6 +16,7 @@ import {
   addEventListenerForResize,
   updateIFrameDimensions,
   addEventListenersForZoom,
+  toggleLicenseInfoBox,
 } from 'ndla-article-scripts';
 
 import { Figure, FigureCaption, FigureLicenseDialog, FigureFullscreenDialog, Button } from 'ndla-ui';
@@ -35,6 +36,7 @@ class FigureWithLicense extends Component {
       updateIFrameDimensions();
       addEventListenerForResize();
       addEventListenersForZoom();
+      toggleLicenseInfoBox();
     }
   }
 
@@ -64,7 +66,13 @@ class FigureWithLicense extends Component {
             title="Mann med lupe"
             image={this.props.children}
             caption={this.props.caption}
-          />;
+            reuseLabel={reuseLabel}
+            licenseRights={license.rights}
+            authors={authors}
+          >
+          <Button outline>Kopier referanse</Button>
+          <Button outline>Last ned {typeLabel}</Button>
+          </FigureFullscreenDialog>;
           
 
     const captionAndDetails = !this.props.noCaption

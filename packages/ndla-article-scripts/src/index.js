@@ -20,6 +20,7 @@ import {
   removeEventListenerForResize,
   addEventListenersForZoom,
   removeEventListenersForZoom,
+  toggleLicenseInfoBox,
 } from './figureScripts';
 
 import {
@@ -59,4 +60,5 @@ export {
   addEventListenersForZoom,
   removeEventListenersForZoom,
   initAudioPlayers,
+  toggleLicenseInfoBox,
 };

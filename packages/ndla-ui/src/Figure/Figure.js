@@ -67,16 +67,12 @@ export const Figure = ({
   let typeClass = null;
   let content = null;
 
-  if (type !== 'full' && type !== 'full-column') {
-    typeClass = `u-float-${type}`;
-    content = (
-      <Button stripped className="u-fullw">
-        {children}
-      </Button>
-    );
-  } else {
-    content = children;
-  }
+  typeClass = `u-float-${type}`;
+  content = (
+    <Button stripped className="u-fullw">
+      {children}
+    </Button>
+  );
 
   const modifiers = [];
 

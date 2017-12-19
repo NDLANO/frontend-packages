@@ -80,13 +80,7 @@ class FigureWithLicense extends Component {
           ) : 
           
           // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
-          // <FigureFullscreenDialog
-          //   id={this.id}
-          //   messages={messages}
-          //   title="Mann med lupe"
-          //   image={this.props.children}
-          //   caption={this.props.caption}
-          // />
+          // Comment: added as separate constant
           null
           
           , 
@@ -102,21 +96,6 @@ class FigureWithLicense extends Component {
             <Button outline>Kopier referanse</Button>
             <Button outline>Last ned {typeLabel}</Button>
           </FigureLicenseDialog>,
-          // <FigureFullscreenDialog
-          //   id={this.id}
-          //   key="details"
-          //   licenseRights={license.rights}
-          //   authors={authors}
-          //   origin="https://www.wikimedia.com"
-          //   licenseUrl={license.url}
-          //   messages={messages}
-          //   title="Mann med lupe"
-          //   image={this.props.children}
-          //   caption={this.props.caption}
-          // >
-          // <Button outline>Kopier referanse</Button>
-          // <Button outline>Last ned {typeLabel}</Button>
-          // </FigureFullscreenDialog>  ,
         ]
       : null;
 

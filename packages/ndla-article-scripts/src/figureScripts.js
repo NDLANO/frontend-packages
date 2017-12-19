@@ -43,6 +43,7 @@ export const addShowDialogClickListeners = () => {
 
     const dialog = document.querySelector(`[data-dialog-id='${id}']`);
     const dialogContent = dialog.querySelector(`.c-dialog__content`);
+    
 
     trapInstances[id] = createFocusTrap(dialogContent, {
       onDeactivate: () => {
@@ -151,10 +152,10 @@ export const removeEventListenerForResize = () => {
 };
 
 export const addEventListenersForZoom = () => {
-  forEachElement('.c-figure > .c-button', el => {
+  forEachElement('.c-figure--fs > .c-button', el => {
     const target = el;
     const figure = findAncestorByClass(target, 'c-figure');
-    const id = figure.getAttribute('id');
+    const id = `${figure.getAttribute('id')}-fs`;
 
     const dialog = document.querySelector(`[data-dialog-id='${id}']`);
     const dialogContent = dialog.querySelector(`.c-dialog__content`);

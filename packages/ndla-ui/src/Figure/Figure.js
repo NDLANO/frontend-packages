@@ -58,6 +58,7 @@ export const Figure = ({
   id,
   children,
   captionView,
+  fullscreenView,
   type,
   resizeIframe,
   noFigcaption,
@@ -90,16 +91,15 @@ export const Figure = ({
   return (
     <figure
       id={id}
-      {...classes('', modifiers, typeClass)}
-      data-toggleclass={typeClass}
+      {...classes('', fullscreenView ? 'fs' : modifiers, typeClass)}
       {...rest}>
       {noFigcaption ? (
-        <button 
-        onClick={console.log("Test")}
+        <div 
         {...classes('fullscreen-btn')}>
           <Fullscreen />
-        </button>
+        </div>
       ) : null}
+      {fullscreenView}
       {content}
       {captionView}
     </figure>
@@ -121,12 +121,14 @@ Figure.propTypes = {
   ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
+  fullscreenView: PropTypes.node,
 };
 
 Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
   captionView: null,
+  fullscreenView: null,
 };
 
 export default Figure;

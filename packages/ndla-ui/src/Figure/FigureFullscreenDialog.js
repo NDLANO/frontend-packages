@@ -24,14 +24,20 @@ const classLicenses = new BEMHelper({
 });
 
 export const FigureFullscreenDialog = ({
+  children,
   messages,
   id,
-  image,
+  authors,
+  origin,
+  title,
+  licenseUrl,
+  licenseRights,
+  image, 
   caption,
 }) => {
   const headingLabelId = `heading-${id}`;
   return (
-    <Dialog id={id} labelledby={headingLabelId} messages={messages} modifier="fullscreen">
+    <Dialog id={`${id}-fs`} labelledby={headingLabelId} messages={messages} modifier="fullscreen">
       <div {...classLicenses('', 'fullscreen')}>
         <div {...classLicenses('content')}>
           <img {...classLicenses('img')} src={image.props.src} alt={image.props.alt} />

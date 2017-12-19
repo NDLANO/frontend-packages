@@ -57,6 +57,16 @@ class FigureWithLicense extends Component {
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
 
+    const fullscreenView =
+          <FigureFullscreenDialog
+            id={this.id}
+            messages={messages}
+            title="Mann med lupe"
+            image={this.props.children}
+            caption={this.props.caption}
+          />;
+          
+
     const captionAndDetails = !this.props.noCaption
       ? [
           !this.props.noFigcaption ? (
@@ -70,13 +80,14 @@ class FigureWithLicense extends Component {
           ) : 
           
           // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
-          <FigureFullscreenDialog
-            id={this.id}
-            messages={messages}
-            title="Mann med lupe"
-            image={this.props.children}
-            caption={this.props.caption}
-          />
+          // <FigureFullscreenDialog
+          //   id={this.id}
+          //   messages={messages}
+          //   title="Mann med lupe"
+          //   image={this.props.children}
+          //   caption={this.props.caption}
+          // />
+          null
           
           , 
           <FigureLicenseDialog
@@ -91,6 +102,21 @@ class FigureWithLicense extends Component {
             <Button outline>Kopier referanse</Button>
             <Button outline>Last ned {typeLabel}</Button>
           </FigureLicenseDialog>,
+          // <FigureFullscreenDialog
+          //   id={this.id}
+          //   key="details"
+          //   licenseRights={license.rights}
+          //   authors={authors}
+          //   origin="https://www.wikimedia.com"
+          //   licenseUrl={license.url}
+          //   messages={messages}
+          //   title="Mann med lupe"
+          //   image={this.props.children}
+          //   caption={this.props.caption}
+          // >
+          // <Button outline>Kopier referanse</Button>
+          // <Button outline>Last ned {typeLabel}</Button>
+          // </FigureFullscreenDialog>  ,
         ]
       : null;
 
@@ -100,6 +126,7 @@ class FigureWithLicense extends Component {
         resizeIframe={this.props.resizeIframe}
         type={this.props.type}
         captionView={captionAndDetails}
+        fullscreenView={fullscreenView}
         noFigcaption={this.props.noFigcaption}>
         {this.props.children}
       </Figure>

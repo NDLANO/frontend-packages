@@ -75,7 +75,7 @@ export const Resources = ({ onlyAdditional }) => (
         messages={{
           noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
           activateSuggestion: '',
-          activateAdditionalResources: 'Aktiver tilleggsstoff',
+          activateAdditionalResources: 'Vis tilleggsstoff',
           toggleFilterLabel: 'Tilleggsstoff',
           showLess: 'Vis mindre',
           showMore: 'Vis mer',

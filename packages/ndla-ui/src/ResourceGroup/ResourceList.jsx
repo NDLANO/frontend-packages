@@ -81,6 +81,7 @@ class ResourceList extends Component {
       messages,
       type,
       empty,
+      showAdditionalResources,
       ...rest
     } = this.props;
     const limit = 8;
@@ -93,6 +94,7 @@ class ResourceList extends Component {
             <Resource
               key={resource.id}
               type={type}
+              showAdditionalResources={showAdditionalResources}
               {...rest}
               resource={resource}
               isHidden={false}
@@ -100,17 +102,22 @@ class ResourceList extends Component {
           ))}
           {normalResources.length === 0 ? (
             <div {...classes('additional-resources-trigger')}>
-              {messages.noCoreResourcesAvailable}{' '}
               {additionalResources.length ? (
                 <span>
-                  <p>
-                    {messages.activateSuggestion}{' '}
-                  </p>
-                  <div>
-                    <Button outline onClick={onClick}>
-                      {messages.activateAdditionalResources}
-                    </Button>
-                  </div>
+                  {
+                    showAdditionalResources ?
+                      null
+                      :
+                      <div>
+                        <p>
+                          {messages.noCoreResourcesAvailable}{' '}
+                          {messages.activateSuggestion}{' '}
+                        </p>
+                        <Button outline onClick={onClick}>
+                          {messages.activateAdditionalResources}
+                        </Button>
+                      </div>
+                  }
                 </span>
               ) : null}
             </div>
@@ -119,6 +126,7 @@ class ResourceList extends Component {
               <Resource
                 key={resource.id}
                 type={type}
+                showAdditionalResources={showAdditionalResources}
                 {...rest}
                 resource={resource}
                 isHidden={!(showAll || index < limit)}

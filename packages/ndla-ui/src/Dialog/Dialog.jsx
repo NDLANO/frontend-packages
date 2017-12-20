@@ -12,7 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { createUniversalPortal } from './createUniversalPortal';
+import { createUniversalPortal } from '../utils/createUniversalPortal';
 
 const classes = new BEMHelper({
   name: 'dialog',

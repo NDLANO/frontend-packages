@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import LicenseByline from '../LicenseByline';
+import { createUniversalPortal } from '../utils/createUniversalPortal';
 
 const classes = new BEMHelper({
   name: 'concept',
@@ -33,36 +34,40 @@ const Concept = ({
 }) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
   return (
-    <span {...classes('item')}>
+    <span {...classes('item')} id={id}>
       <button aria-label={messages.ariaLabel} {...classes('link')}>
         {children}
       </button>
-      <div
-        aria-hidden="true"
-        role="dialog"
-        aria-labelledby={id}
-        aria-describedby={id}
-        {...classes('popup')}>
-        <button {...classes('close', 'u-close')}>{messages.close}</button>
-        <h3 {...classes('title')}>{title}</h3>
-        <p {...classes('content')}>{content}</p>
-        <div {...sourceClasses()}>
-          {licenseRights.length > 0 && (
-            <LicenseByline
-              className="c-source-list__item"
-              licenseRights={licenseRights}
-            />
-          )}
-          {authors.map(author => (
-            <span {...sourceClasses('item')} key={author}>
-              {author}
+      {createUniversalPortal(
+        <div
+          aria-hidden="true"
+          role="dialog"
+          data-concept-id={id}
+          aria-labelledby={id}
+          aria-describedby={id}
+          {...classes('popup')}>
+          <button {...classes('close', 'u-close')}>{messages.close}</button>
+          <h3 {...classes('title')}>{title}</h3>
+          <p {...classes('content')}>{content}</p>
+          <div {...sourceClasses()}>
+            {licenseRights.length > 0 && (
+              <LicenseByline
+                className="c-source-list__item"
+                licenseRights={licenseRights}
+              />
+            )}
+            {authors.map(author => (
+              <span {...sourceClasses('item')} key={author}>
+                {author}
+              </span>
+            ))}
+            <span {...sourceClasses('item')} key={source}>
+              {source}
             </span>
-          ))}
-          <span {...sourceClasses('item')} key={source}>
-            {source}
-          </span>
-        </div>
-      </div>
+          </div>
+        </div>,
+        'body',
+      )}
     </span>
   );
 };

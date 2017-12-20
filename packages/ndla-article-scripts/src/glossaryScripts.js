@@ -12,14 +12,17 @@ import { forEachElement, getElementOffset } from './domHelpers';
 
 export const addShowConceptDefinitionClickListeners = () => {
   forEachElement('.c-concept__item', item => {
-    const popup = item.querySelector('.c-concept__popup');
+    const id = item.getAttribute('id');
+    const popup = document.querySelector(`[data-concept-id='${id}']`);
     const openBtn = item.querySelector('.c-concept__link');
-    const closeBtn = item.querySelector('.c-concept__close');
+    const closeBtn = popup.querySelector('.c-concept__close');
 
     openBtn.onclick = () => {
       const isHidden = !popup.classList.toggle('c-concept__popup--visible');
 
       if (!isHidden) {
+        const openBtnBottom = openBtn.getBoundingClientRect().bottom;
+        popup.style.top = `${openBtnBottom + 5}px`;
         const viewportHeight = Math.max(
           document.documentElement.clientHeight,
           window.innerHeight || 0,

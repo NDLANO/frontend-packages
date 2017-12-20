@@ -27,28 +27,25 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
-  noFigcaption,
-}) =>
-  noFigcaption ? null : (
-    <figcaption {...classes('caption')}>
-      {caption ? <div {...classes('info')}>{caption}</div> : null}
-      <footer {...classes('byline')}>
-        <div {...classes('byline-licenselist')}>
-          <LicenseByline licenseRights={licenseRights}>
-            <span {...classes('byline-authors')}>
-              {authors.map(author => author.name).join(', ')}
-            </span>
-            <button {...classes('captionbtn')}>{reuseLabel}</button>
-          </LicenseByline>
-        </div>
-      </footer>
-    </figcaption>
-  );
+}) => (
+  <figcaption {...classes('caption')}>
+    {caption ? <div {...classes('info')}>{caption}</div> : null}
+    <footer {...classes('byline')}>
+      <div {...classes('byline-licenselist')}>
+        <LicenseByline licenseRights={licenseRights}>
+          <span {...classes('byline-authors')}>
+            {authors.map(author => author.name).join(', ')}
+          </span>
+          <button {...classes('captionbtn')}>{reuseLabel}</button>
+        </LicenseByline>
+      </div>
+    </footer>
+  </figcaption>
+);
 
 FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
-  noFigcaption: PropTypes.bool,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
@@ -61,6 +58,7 @@ export const Figure = ({
   id,
   children,
   captionView,
+  fullscreenView,
   type,
   resizeIframe,
   noFigcaption,
@@ -69,16 +67,12 @@ export const Figure = ({
   let typeClass = null;
   let content = null;
 
-  if (type !== 'full' && type !== 'full-column') {
-    typeClass = `u-float-${type}`;
-    content = (
-      <Button stripped className="u-fullw">
-        {children}
-      </Button>
-    );
-  } else {
-    content = children;
-  }
+  typeClass = `u-float-${type}`;
+  content = (
+    <Button stripped className="u-fullw">
+      {children}
+    </Button>
+  );
 
   const modifiers = [];
 
@@ -93,14 +87,15 @@ export const Figure = ({
   return (
     <figure
       id={id}
-      {...classes('', modifiers, typeClass)}
-      data-toggleclass={typeClass}
+      {...classes('', fullscreenView ? 'fs' : modifiers, typeClass)}
       {...rest}>
       {noFigcaption ? (
-        <div {...classes('fullscreen-btn')}>
+        <div 
+        {...classes('fullscreen-btn')}>
           <Fullscreen />
         </div>
       ) : null}
+      {fullscreenView}
       {content}
       {captionView}
     </figure>
@@ -122,12 +117,14 @@ Figure.propTypes = {
   ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
+  fullscreenView: PropTypes.node,
 };
 
 Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
   captionView: null,
+  fullscreenView: null,
 };
 
 export default Figure;

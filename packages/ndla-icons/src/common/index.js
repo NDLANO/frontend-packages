@@ -10,6 +10,7 @@
 export { default as Additional } from './Additional';
 export { default as Audio } from './Audio';
 export { default as Document } from './Document';
+export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';
 export { default as Home } from './Home';
 export { default as Path } from './Path';
@@ -21,4 +22,3 @@ export { default as Search } from './Search';
 export { default as Time } from './Time';
 export { default as User } from './User';
 export { default as VolumeUp } from './VolumeUp';
-export { default as Fullscreen } from './Fullscreen';

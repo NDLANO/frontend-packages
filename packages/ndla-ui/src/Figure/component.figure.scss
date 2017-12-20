@@ -120,13 +120,13 @@
   right: 0;
   padding: 5px $spacing--small 8px;
   transition: all .3s ease-out;
-  border: 1px solid rgba($white, .5);
+  background: rgba($white, .2);
   
   svg {
     transition: transform .4s ease-out;
     width: 26px;
     height: 26px;
-    fill: $white;
+    fill: $brand-color;
   }
 }
 

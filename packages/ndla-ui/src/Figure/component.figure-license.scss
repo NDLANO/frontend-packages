@@ -71,3 +71,33 @@
   @include inuit-font-size(18px);
   color: $brand-color;
 }
+.c-figure-license--fullscreen {
+  text-align: center;
+}
+.c-figure-license__content {
+  margin: auto;
+  display: inline-block;
+  text-align: left;
+}
+.c-figure-license__img {
+  width: 100%;
+  height: auto;
+  margin-bottom: $spacing;
+}
+.c-figure-license__image-title {
+  @include inuit-font-size(28px);
+  margin: $spacing 0 0;
+  text-align: left;
+}
+
+.c-figure-license__hidden-content {
+  display: none;
+  flex-wrap: wrap;
+  >div {
+    width: 48%;
+    margin: 1%;
+  }
+}
+.c-figure-license__hidden-content--active {
+  display: flex;
+}

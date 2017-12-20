@@ -61,3 +61,14 @@ class FruitTabSelector extends Component {
 | selectedIndex       | object |          | Is the tab to select when rendered. Used when you want to control which tab is rendered from the a parent component.                           |
 | forceRenderTabPanel | bool   |          | Is `false` by default. Set to `true` to render all tab's content instead of only selected tab content.                                         |
 | modifier            | string |          | An BEM modifier which is added to all html classes.                                                                                            |
+
+
+### Server side rendering
+
+resetIdCounter should be called on server before render to prevent server and client markup diff. Example:
+
+```js
+  import { resetIdCounter } from 'ndla-tabs';
+  resetIdCounter();
+  ReactDOMServer.renderToString(...);
+```

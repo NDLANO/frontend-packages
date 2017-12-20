@@ -113,7 +113,6 @@ storiesOf('Enkle komponenter', module)
           type="right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -147,7 +146,6 @@ storiesOf('Enkle komponenter', module)
           type="small-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -189,7 +187,6 @@ storiesOf('Enkle komponenter', module)
           hideFigcaption
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -212,7 +209,6 @@ storiesOf('Enkle komponenter', module)
           type="xsmall-right"
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
-            lazyLoad
             alt="Forstørrelsesglass"
             src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           />
@@ -798,11 +794,26 @@ storiesOf('Enkle komponenter', module)
           </Button>
         </InlineContainer>
         <InlineContainer>
-          <Button onClick={action('clicked')}>Fylt knapp</Button>
+          <Button onClick={action('clicked')}>Fylt knapp</Button>{' '}
+          <Button disabled onClick={action('clicked')}>
+            Knapp deaktivert
+          </Button>
         </InlineContainer>
-        <Button disabled onClick={action('clicked')}>
-          Knapp deaktivert
-        </Button>
+        {process.env.NODE_ENV === 'development' && [
+          <h2 className="u-heading">Alternativer når UU krever en knapp</h2>,
+          <InlineContainer>
+            <Button link onClick={action('clicked')}>
+              Knapp stylet som link
+            </Button>{' '}
+            <p>
+              Ser{' '}
+              <Button stripped onClick={action('clicked')}>
+                dette
+              </Button>{' '}
+              ut som en knapp
+            </p>
+          </InlineContainer>,
+        ]}
       </StoryBody>
     </div>
   ))
@@ -855,20 +866,26 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
       <StoryBody>
         <Translation index={1}>
-          <TranslationLine lang="Kinesisk">
+          <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？//你叫什麼名字？
           </TranslationLine>
-          <TranslationLine lang="Pingyu">
+          <TranslationLine lang="pn" langName="Pingyu">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
         </Translation>
         <Translation index={2}>
-          <TranslationLine lang="Kinesisk">
+          <TranslationLine lang="cn" langName="Kinesisk">
             你是学生。//你是學生。
           </TranslationLine>
-          <TranslationLine lang="Pingyu">Nǐ shì xuésheng.</TranslationLine>
-          <TranslationLine lang="Norsk">Du er student.</TranslationLine>
+          <TranslationLine lang="pn" langName="Pingyu">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Du er student.
+          </TranslationLine>
         </Translation>
       </StoryBody>
     </div>

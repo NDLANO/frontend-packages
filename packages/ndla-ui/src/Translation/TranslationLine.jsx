@@ -15,16 +15,19 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const TranslationLine = ({ children, lang }) => (
+const TranslationLine = ({ children, lang, langName }) => (
   <div {...classes('line')}>
-    {children && <div {...classes('line-body')}>{children}</div>}
-    {lang && <div {...classes('line-lang')}>{lang}</div>}
+    <div {...classes('line-body')}>{children}</div>
+    <div {...classes('line-lang')} lang={lang}>
+      {langName}
+    </div>
   </div>
 );
 
 TranslationLine.propTypes = {
-  children: PropTypes.node,
-  lang: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  lang: PropTypes.string.isRequired,
+  langName: PropTypes.string.isRequired,
 };
 
 export default TranslationLine;

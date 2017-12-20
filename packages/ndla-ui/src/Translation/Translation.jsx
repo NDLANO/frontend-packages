@@ -17,14 +17,14 @@ const classes = new BEMHelper({
 
 const Translation = ({ children, index }) => (
   <div {...classes('')}>
-    {index && <div {...classes('index')}>{index}</div>}
-    {children && <div {...classes('wrapper')}>{children}</div>}
+    <div {...classes('index')}>{index}</div>
+    <div {...classes('wrapper')}>{children}</div>
   </div>
 );
 
 Translation.propTypes = {
-  index: PropTypes.string,
-  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Translation;

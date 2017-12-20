@@ -29,7 +29,7 @@ import {
 
 import { initAudioPlayers } from './audioPlayerScript';
 
-import { addShowConceptDefinitionClickListeners } from './glossaryScripts';
+import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 
 export const initArticleScripts = () => {
   addEventListenerForResize();

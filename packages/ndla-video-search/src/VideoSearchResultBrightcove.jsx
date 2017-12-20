@@ -28,7 +28,7 @@ export default function VideoSearchResultBrightcove({
   translations,
 }) {
   const active = selectedVideo && selectedVideo.id === video.id ? 'active' : '';
-  const license = getLicenseByNBTitle(video.custom_fields.license, locale);
+  const license = video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : '';
   const thumbnailSource =
     video.images && video.images.thumbnail ? video.images.thumbnail.src : '';
   return (
@@ -38,7 +38,7 @@ export default function VideoSearchResultBrightcove({
         <div {...classes('information')}>
           <h2>{video.name}</h2>
           <div {...classes('copyright-author')}>
-            {video.custom_fields.licenseinfo}
+            {video.custom_fields && video.custom_fields.licenseinfo ? video.custom_fields.licenseinfo : ''}
           </div>
           <div {...classes('license')}>
             {license.rights ? (

@@ -22,7 +22,7 @@ const classes = new BEMHelper({
 export const Dialog = ({ children, messages, id, labelledby, modifier, ...rest }) =>
   createUniversalPortal(
     <div
-      className={...classes('', modifier)}
+      className={`c-dialog c-dialog--${modifier}`}
       data-dialog-id={id}
       role="dialog"
       aria-hidden="true"

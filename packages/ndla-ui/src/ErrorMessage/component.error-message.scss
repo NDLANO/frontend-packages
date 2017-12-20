@@ -17,13 +17,11 @@
   }
 
   a {
-    display: block;
-    margin-top: $spacing / 2;
+    margin-top: $spacing / 2 auto;
     color: $brand-color;
   }
 
   &__back-link {
-    @include inuit-font-size(22px);
     margin-bottom: $spacing;
   }
 }

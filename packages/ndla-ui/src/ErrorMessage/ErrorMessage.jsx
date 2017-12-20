@@ -34,9 +34,11 @@ export const ErrorMessage = ({ children, messages }) => (
           </SafeLink>
         )}
       {messages.goToFrontPage && (
-        <SafeLink to="/" {...classes('front-link')}>
-          {messages.goToFrontPage}
-        </SafeLink>
+        <div>
+          <SafeLink to="/" {...classes('front-link')}>
+            {messages.goToFrontPage}
+          </SafeLink>
+        </div>
       )}
       {children}
     </div>

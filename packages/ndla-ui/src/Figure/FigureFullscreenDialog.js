@@ -50,7 +50,9 @@ export const FigureFullscreenDialog = ({
             <p>
               <button 
               className="c-figure__captionbtn">
-                {reuseLabel}
+                <span>
+                  {reuseLabel}
+                </span>
               </button>
             </p>
             <div {...classLicenses('hidden-content')}>

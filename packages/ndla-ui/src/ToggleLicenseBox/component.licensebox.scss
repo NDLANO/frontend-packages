@@ -60,9 +60,15 @@
   @include inuit-font-size(14px, 20px);
   font-family: $font;
   color: $brand-color;
-  min-width: 120px;
+  min-width: 80px;
+  display: inline-block;
+  height: 20px;
   padding: 0;
-  text-decoration: underline;
+  margin: 0 0 0 $spacing;
+  box-shadow: $link;
+  &:hover {
+    box-shadow: $link--hover;
+  }
   @include mq(tablet) {
     float:right;
   }

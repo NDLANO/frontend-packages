@@ -11,6 +11,7 @@ export { default as AlignCenter } from './AlignCenter';
 export { default as AlignLeft } from './AlignLeft';
 export { default as AlignRight } from './AlignRight';
 export { default as Bold } from './Bold';
+export { default as Calendar } from './Calendar';
 export { default as Camera } from './Camera';
 export { default as Crop } from './Crop';
 export { default as ExpandableBox } from './ExpandableBox';

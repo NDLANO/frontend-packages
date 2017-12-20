@@ -37,16 +37,16 @@ const Concept = ({
       <button aria-label={messages.ariaLabel} {...classes('link')}>
         {children}
       </button>
-      <span
+      <div
         aria-hidden="true"
         role="dialog"
         aria-labelledby={id}
         aria-describedby={id}
         {...classes('popup')}>
         <button {...classes('close', 'u-close')}>{messages.close}</button>
-        <span {...classes('title', undefined, 'u-heading3')}>{title}</span>
-        <span {...classes('content')}>{content}</span>
-        <span {...sourceClasses()}>
+        <h3 {...classes('title')}>{title}</h3>
+        <p {...classes('content')}>{content}</p>
+        <div {...sourceClasses()}>
           {licenseRights.length > 0 && (
             <LicenseByline
               className="c-source-list__item"
@@ -61,8 +61,8 @@ const Concept = ({
           <span {...sourceClasses('item')} key={source}>
             {source}
           </span>
-        </span>
-      </span>
+        </div>
+      </div>
     </span>
   );
 };

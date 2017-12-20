@@ -29,7 +29,7 @@ import {
 
 import { initAudioPlayers } from './audioPlayerScript';
 
-import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
+import { addShowConceptDefinitionClickListeners } from './glossaryScripts';
 
 export const initArticleScripts = () => {
   addEventListenerForResize();
@@ -38,7 +38,7 @@ export const initArticleScripts = () => {
   addCopyToClipboardListeners();
   addShowDialogClickListeners();
   addCloseDialogClickListeners();
-  addShowGlossaryDefinitionClickListeners();
+  addShowConceptDefinitionClickListeners();
   addDetailsEventListeners();
   addEventListenersForZoom();
   initAudioPlayers();
@@ -53,7 +53,7 @@ export {
   addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   addShowDialogClickListeners,
-  addShowGlossaryDefinitionClickListeners,
+  addShowConceptDefinitionClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,
   addEventListenersForZoom,

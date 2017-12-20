@@ -10,16 +10,14 @@ import jump from 'jump.js';
 
 import { forEachElement, getElementOffset } from './domHelpers';
 
-export const addShowGlossaryDefinitionClickListeners = () => {
-  forEachElement('.c-glossary-word__item', item => {
-    const popup = item.querySelector('.c-glossary-word__popup');
-    const openBtn = item.querySelector('.c-glossary-word__link');
-    const closeBtn = item.querySelector('.c-glossary-word__close');
+export const addShowConceptDefinitionClickListeners = () => {
+  forEachElement('.c-concept__item', item => {
+    const popup = item.querySelector('.c-concept__popup');
+    const openBtn = item.querySelector('.c-concept__link');
+    const closeBtn = item.querySelector('.c-concept__close');
 
     openBtn.onclick = () => {
-      const isHidden = !popup.classList.toggle(
-        'c-glossary-word__popup--visible',
-      );
+      const isHidden = !popup.classList.toggle('c-concept__popup--visible');
 
       if (!isHidden) {
         const viewportHeight = Math.max(
@@ -55,7 +53,7 @@ export const addShowGlossaryDefinitionClickListeners = () => {
     };
 
     closeBtn.onclick = () => {
-      popup.classList.remove('c-glossary-word__popup--visible');
+      popup.classList.remove('c-concept__popup--visible');
       popup.setAttribute('aria-hidden', true);
     };
   });

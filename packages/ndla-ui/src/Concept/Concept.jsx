@@ -13,7 +13,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 import LicenseByline from '../LicenseByline';
 
 const classes = new BEMHelper({
-  name: 'glossary-word',
+  name: 'concept',
   prefix: 'c-',
 });
 const sourceClasses = new BEMHelper({
@@ -21,7 +21,7 @@ const sourceClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-const Glossary = ({
+const Concept = ({
   title,
   authors,
   source,
@@ -67,7 +67,7 @@ const Glossary = ({
   );
 };
 
-Glossary.propTypes = {
+Concept.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.string),
@@ -81,4 +81,4 @@ Glossary.propTypes = {
   children: PropTypes.string,
 };
 
-export default Glossary;
+export default Concept;

@@ -77,7 +77,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="236" />
+        <ArticleLoader articleId="17477" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -288,7 +288,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="6104" />
+        <ArticleLoader articleId="17507" />
         <OneColumn>
           <ResourcesSubTopics />
           <LayoutItem layout="extend">

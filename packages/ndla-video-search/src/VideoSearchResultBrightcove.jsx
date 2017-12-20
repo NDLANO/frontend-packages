@@ -36,7 +36,7 @@ export default function VideoSearchResultBrightcove({
       <div {...classes('list-item-inner')}>
         <img role="presentation" alt="presentation" src={thumbnailSource} />
         <div {...classes('information')}>
-          <h2>{video.name}</h2>
+          <h2>{video.name || ''}</h2>
           <div {...classes('copyright-author')}>
             {video.custom_fields && video.custom_fields.licenseinfo ? video.custom_fields.licenseinfo : ''}
           </div>

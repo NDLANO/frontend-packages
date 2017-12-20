@@ -995,8 +995,8 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Oversettelser">
         <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor
-          kan man i disse tilfellene bruke en liste for oversettelser.
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
+          derfor kan man i disse tilfellene bruke en liste for oversettelser.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -1007,9 +1007,7 @@ storiesOf('Grunnstiler', module)
           <TranslationLine lang="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">
-            Hva heter du?
-          </TranslationLine>
+          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
         </Translation>
         <Translation index="2">
           <TranslationLine lang="Kinesisk">
@@ -1018,9 +1016,7 @@ storiesOf('Grunnstiler', module)
           <TranslationLine lang="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">
-            Hva heter du?
-          </TranslationLine>
+          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
         </Translation>
       </StoryBody>
     </div>

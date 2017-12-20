@@ -19,7 +19,13 @@ import {
   toggleLicenseInfoBox,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureLicenseDialog, FigureFullscreenDialog, Button } from 'ndla-ui';
+import {
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+  FigureFullscreenDialog,
+  Button,
+} from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -59,21 +65,20 @@ class FigureWithLicense extends Component {
       : 'Bruk bildet';
     const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
 
-    const fullscreenView =
-          <FigureFullscreenDialog
-            id={this.id}
-            messages={messages}
-            title="Mann med lupe"
-            image={this.props.children}
-            caption={this.props.caption}
-            reuseLabel={reuseLabel}
-            licenseRights={license.rights}
-            authors={authors}
-          >
-          <Button outline>Kopier referanse</Button>
-          <Button outline>Last ned {typeLabel}</Button>
-          </FigureFullscreenDialog>;
-          
+    const fullscreenView = (
+      <FigureFullscreenDialog
+        id={this.id}
+        messages={messages}
+        title="Mann med lupe"
+        image={this.props.children}
+        caption={this.props.caption}
+        reuseLabel={reuseLabel}
+        licenseRights={license.rights}
+        authors={authors}>
+        <Button outline>Kopier referanse</Button>
+        <Button outline>Last ned {typeLabel}</Button>
+      </FigureFullscreenDialog>
+    );
 
     const captionAndDetails = !this.props.noCaption
       ? [
@@ -85,13 +90,10 @@ class FigureWithLicense extends Component {
               licenseRights={license.rights}
               authors={authors}
             />
-          ) : 
-          
-          // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
+          ) : // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
           // Comment: added as separate constant
-          null
-          
-          , 
+          null,
+
           <FigureLicenseDialog
             id={this.id}
             key="details"

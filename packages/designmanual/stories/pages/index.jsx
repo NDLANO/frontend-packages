@@ -269,7 +269,7 @@ storiesOf('Emnesider', module)
                 filterContent={[
                   { title: 'VG1', active: true },
                   { title: 'VG2', active: true },
-                ]}   
+                ]}
               />
             </LayoutItem>
             <ResourcesSubTopics />

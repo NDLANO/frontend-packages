@@ -19,7 +19,14 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Dialog = ({ children, messages, id, labelledby, modifier, ...rest }) =>
+export const Dialog = ({
+  children,
+  messages,
+  id,
+  labelledby,
+  modifier,
+  ...rest
+}) =>
   createUniversalPortal(
     <div
       className={`c-dialog c-dialog--${modifier}`}

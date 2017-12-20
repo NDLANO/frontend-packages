@@ -15,7 +15,6 @@ import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
 import Dialog from '../Dialog';
-import Button from '../button/Button';
 import { ContributorShape } from '../shapes';
 import LicenseByline from '../LicenseByline';
 
@@ -111,4 +110,25 @@ export const FigureFullscreenDialog = ({
       </div>
     </Dialog>
   );
+};
+
+FigureFullscreenDialog.propTypes = {
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  origin: PropTypes.string,
+  authors: PropTypes.arrayOf(ContributorShape),
+  messages: PropTypes.shape({
+    modelPremission: PropTypes.string,
+    close: PropTypes.string.isRequired,
+    rulesForUse: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
+    learnAboutLicenses: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  title: PropTypes.string,
+  licenseUrl: PropTypes.string.isRequired,
+  image: PropTypes.node,
+  caption: PropTypes.string,
+  reuseLabel: PropTypes.string,
 };

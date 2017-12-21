@@ -9,8 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Sad } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
+import Search from '../Search';
 
 const classes = new BEMHelper({
   name: 'error-message',
@@ -20,9 +20,15 @@ const classes = new BEMHelper({
 export const ErrorMessage = ({ children, messages }) => (
   <div {...classes()}>
     <div>
-      <Sad {...classes('icon')} />
+      <p>[illustrasjon]</p>
       <h1>{messages.title}</h1>
       <p {...classes('description')}>{messages.description}</p>
+      <h3>
+      {messages.linksTitle &&
+        messages.linksTitle
+      }
+      </h3>
+      <Search />
       {messages.back &&
         typeof window !== 'undefined' &&
         window.history.length > 1 && (

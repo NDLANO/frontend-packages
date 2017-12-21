@@ -9,19 +9,19 @@
 .c-error-message {
   padding-top: $spacing--large;
   text-align: center;
-
-  &__icon {
-    color: $brand-grey-dark;
-    width: 128px;
-    height: 128px;
-  }
-
+  
   a {
     margin-top: $spacing / 2 auto;
     color: $brand-color;
   }
+}
 
-  &__back-link {
-    margin-bottom: $spacing;
-  }
+.c-error-message__icon {
+  color: $brand-grey-dark;
+  width: 128px;
+  height: 128px;
+}
+
+.c-error-message__description {
+  margin-bottom: $spacing--large;
 }

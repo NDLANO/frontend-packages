@@ -27,11 +27,8 @@ export {
 export {
   resourceTypes,
   getResourceTypeNamespace,
-  microDataTypes,
-  getMicroDataNamespaceByType,
   metaTypes,
-  getMicroDataNamespaceByMicroDataTypeWithFallback,
-} from './microData';
+} from './CCRel';
 
 export {
   contributorTypes,

@@ -6,7 +6,7 @@
  *
  */
 
-import { metaTypes } from './microData';
+import { metaTypes } from './CCRel';
 
 export const contributorGroups = {
   creators: [

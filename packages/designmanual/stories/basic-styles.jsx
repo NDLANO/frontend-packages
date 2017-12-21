@@ -1001,22 +1001,22 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <Translation index="1">
-          <TranslationLine lang="Kinesisk">
+          <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
-          <TranslationLine lang="Pinyin">
+          <TranslationLine lang="pn" langName="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">Hva heter du?</TranslationLine>
         </Translation>
         <Translation index="2">
-          <TranslationLine lang="Kinesisk">
+          <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
-          <TranslationLine lang="Pinyin">
+          <TranslationLine lang="pn" langName="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">Hva heter du?</TranslationLine>
         </Translation>
       </StoryBody>
     </div>

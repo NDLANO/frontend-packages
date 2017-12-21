@@ -8,10 +8,7 @@
 
 /* eslint-env jest */
 
-import {
-  resourceTypes,
-  getResourceTypeNamespace,
-} from '../CCRel';
+import { resourceTypes, getResourceTypeNamespace } from '../CCRel';
 
 test('microData/getResourceTypeNamespace when type video should return video namespace', () => {
   const namespace = getResourceTypeNamespace(resourceTypes.video);

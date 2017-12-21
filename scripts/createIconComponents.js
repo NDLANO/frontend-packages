@@ -62,9 +62,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 const ${name} = props => (
-  <Icon viewBox="${viewBox}" data-license="${license}" data-source="${
-      source
-    }" {...props}>
+  <Icon viewBox="${viewBox}" data-license="${license}" data-source="${source}" {...props}>
     <g>${iconSvg}</g>
   </Icon>
 );

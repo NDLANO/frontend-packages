@@ -87,9 +87,7 @@ test('figureScripts/updateIFrameDimensions when no dimensions should default to 
 const toggleClass = 'u-float-right';
 
 const zoomMarkup = `
-    <figure id="zoomFigure" class="c-figure ${toggleClass}" data-toggleclass="${
-  toggleClass
-}">
+    <figure id="zoomFigure" class="c-figure ${toggleClass}" data-toggleclass="${toggleClass}">
       <button class="c-button" id="zoomButton">Test</button>
     <figure>
   `;

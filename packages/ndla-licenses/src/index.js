@@ -24,11 +24,7 @@ export {
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
-export {
-  resourceTypes,
-  getResourceTypeNamespace,
-  metaTypes,
-} from './CCRel';
+export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
 
 export {
   contributorTypes,

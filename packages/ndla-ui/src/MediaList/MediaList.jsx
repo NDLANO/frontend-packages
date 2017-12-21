@@ -36,10 +36,7 @@ MediaList.propTypes = {
 };
 
 export const MediaListItem = ({ children }) => (
-  <li
-    {...oClasses(null, null, cClasses('item').className)}>
-    {children}
-  </li>
+  <li {...oClasses(null, null, cClasses('item').className)}>{children}</li>
 );
 
 MediaListItem.propTypes = {

@@ -22,10 +22,7 @@ import {
 } from 'ndla-ui';
 import { Document, Audio } from 'ndla-icons/common';
 
-import {
-  COPYRIGHTED,
-  metaTypes,
-} from 'ndla-licenses';
+import { COPYRIGHTED, metaTypes } from 'ndla-licenses';
 
 const byncndLicenseAbbreviation = 'by-nc-nd';
 const bysaLicenseAbbreviation = 'by-sa';
@@ -105,8 +102,7 @@ const TextContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a
-              href="https://example.com">
+            <a href="https://example.com">
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -220,11 +216,7 @@ const ImageContent = () => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <a href="https://example.com">
-              <img
-                width="260"
-                alt="alt"
-                src={src}
-              />
+              <img width="260" alt="alt" src={src} />
             </a>
           </MediaListItemImage>
           <MediaListItemBody

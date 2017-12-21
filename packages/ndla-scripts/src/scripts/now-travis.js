@@ -133,7 +133,9 @@ async function deploy(sha) {
     throw new Error('Missing required environment variable NOW_TOKEN');
   }
   const { TRAVIS_REPO_SLUG, TRAVIS_BUILD_ID } = process.env;
-  let targetUrl = `https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}`;
+  let targetUrl = `https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${
+    TRAVIS_BUILD_ID
+  }`;
 
   updateStatus(sha, {
     target_url: targetUrl,
@@ -161,7 +163,9 @@ async function deploy(sha) {
   });
 
   console.log(
-    `🤠 Alrighty, deploy started. Now we're going to ping ${targetUrl} until it's ready!`,
+    `🤠 Alrighty, deploy started. Now we're going to ping ${
+      targetUrl
+    } until it's ready!`,
   );
 
   // check on the site for ~20 minutes every 10 seconds

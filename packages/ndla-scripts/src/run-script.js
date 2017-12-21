@@ -15,7 +15,9 @@ function attemptResolve(...resolveArgs) {
 function handleSignal(result) {
   if (result.signal === 'SIGKILL' || result.signal === 'SIGTERM') {
     console.log(
-      `The script "${script}" failed because the process exited too early with signal ${
+      `The script "${
+        script
+      }" failed because the process exited too early with signal ${
         result.signal
       }.`,
     );

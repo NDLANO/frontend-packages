@@ -7,7 +7,9 @@ import { AnchorNavigation } from './helpers';
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
   if (!articleHTML.getElementsByTagName(`h${level}`)[0]) {
-    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${level}>`;
+    return `<div>Overskrift ${level}:</div><h${level}>Overskrift ${level}</h${
+      level
+    }>`;
   }
   return `<div>Overskrift ${level}:</div><h${level}>${
     articleHTML.getElementsByTagName(`h${level}`)[0].innerHTML

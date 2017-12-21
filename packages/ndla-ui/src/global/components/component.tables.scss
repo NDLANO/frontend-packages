@@ -73,6 +73,29 @@
     vertical-align: top;
   }
 
+  @mixin hide-gradient-first-child() {
+    background-color: transparent;
+    background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
+    background-repeat: no-repeat;
+    background-size: 25px 100%;
+  }
+
+  @mixin hide-gradient-last-child() {
+    background-color: transparent;
+    background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    background-size: 25px 100%;
+  }
+
+  @mixin hide-gradient-only-child() {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, rgba($white, 1) 0, rgba($white, 0) 25px, rgba($white, 0) calc(100% - 25px), rgba($white, 1) 100%);
+    background-position: center;
+    background-size: cover;
+  }
+
   thead tr:nth-child(2) th {
     border-bottom: 0;
     text-transform: none;
@@ -93,35 +116,30 @@
       background-color: transparent;
 
       &:first-child {
-        background-color: transparent;
-        background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
-        background-repeat: no-repeat;
-        background-size: 25px 100%;
+        @include hide-gradient-first-child();
       }
 
       &:last-child {
-        background-color: transparent;
-        background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
-        background-repeat: no-repeat;
-        background-position: 100% 0;
-        background-size: 25px 100%;
+        @include hide-gradient-last-child();
+      }
+
+      &:only-child {
+        @include hide-gradient-only-child();
       }
     }
   }
 
   th, td {
     &:first-child {
-      background-color: transparent;
-      background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
-      background-repeat: no-repeat;
-      background-size: 25px 100%;
+      @include hide-gradient-first-child();
+
     }
     &:last-child {
-      background-color: transparent;
-      background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
-      background-repeat: no-repeat;
-      background-position: 100% 0;
-      background-size: 25px 100%;
+      @include hide-gradient-last-child();
+    }
+
+    &:only-child {
+      @include hide-gradient-only-child();
     }
   }
 

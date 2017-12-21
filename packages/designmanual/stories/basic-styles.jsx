@@ -890,7 +890,7 @@ storiesOf('Grunnstiler', module)
           <thead>
             <tr>
               <th>Tittel 1</th>
-              <th colSpan="3" style={{ textAlign: 'center' }}>
+              <th colSpan="3" align="center">
                 Tittel 2
               </th>
               <th>Tittel 3</th>
@@ -911,6 +911,25 @@ storiesOf('Grunnstiler', module)
                 <td>Data 2</td>
                 <td>Data 3</td>
                 <td>Data 4</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        <h2 className="u-heading">Eksempel med en headerkolonne</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th colSpan="3" align="center">
+                Tittel
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4].map(index => (
+              <tr key={index}>
+                <td>Data</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
               </tr>
             ))}
           </tbody>

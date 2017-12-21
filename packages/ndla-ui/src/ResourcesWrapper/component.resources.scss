@@ -8,8 +8,8 @@
   padding-top: $spacing;
 
   @include mq(tablet) {
-    padding-left: $spacing;
-    padding-right: $spacing;
+    // padding-left: $spacing;
+    // padding-right: $spacing;
   }
 }
 

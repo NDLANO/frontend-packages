@@ -11,8 +11,9 @@ ul, ol {
 }
 
 ul {
-  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='5' r='3' fill='#{$brand-color--tertiary} ' /></svg>");
+  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='5' r='3' fill='#{urlEncodeColor($brand-color--tertiary)} ' /></svg>");
 }
+
 li {
   line-height: 1.7rem;
   margin-bottom: $spacing--small;

@@ -18,6 +18,9 @@ $extra-margin: 10px;
 @mixin float($cols, $maxcols, $direction) {
   $colDifference: $maxcols - $cols;
   $cols-tablet: $cols - 1;
+  @if ($cols == 1) {
+    $cols-tablet: 1;
+  }
 
   @if $direction == left {
     @include mq(tablet) {

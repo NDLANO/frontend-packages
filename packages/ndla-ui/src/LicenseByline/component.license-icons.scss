@@ -11,12 +11,12 @@
   flex-direction: column;
 }
 .c-license-icons__licenselabel {
-  margin-left: $spacing--small/2;
+  margin-left: $spacing--small;
 }
 
 .c-license-icons__item {
   display: inline-block;
-  padding-bottom: 7px;
+  padding-bottom: 5px;
   margin-bottom: 0;
   margin-right: 0.2em;
 }
@@ -46,4 +46,15 @@
 .c-license-icons__icon {
   width: $spacing / 1.1;
   height: $spacing / 1.1;
+}
+
+.c-license-icons__modelpermission {
+  svg {
+    width: $spacing / 1.1;
+    height: $spacing / 1.1;
+    margin-right: $spacing--small;
+  }
+  margin-top: $spacing--small/2;
+  padding-top: $spacing--small/1.5;
+  border-top: 2px solid $brand-color--light;
 }

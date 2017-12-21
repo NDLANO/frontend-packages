@@ -25,6 +25,15 @@ class ResourceGroup extends Component {
     this.state = {
       showAdditionalResources: false,
     };
+    this.showAdditionalResourcesFromLink = this.showAdditionalResourcesFromLink.bind(
+      this,
+    );
+  }
+
+  showAdditionalResourcesFromLink() {
+    this.setState(prevState => ({
+      showAdditionalResources: !prevState.showAdditionalResources,
+    }));
   }
 
   render() {
@@ -54,6 +63,7 @@ class ResourceGroup extends Component {
         )}
         <ResourcesTitle>{title}</ResourcesTitle>
         <ResourceList
+          onClick={this.showAdditionalResourcesFromLink}
           showAdditionalResources={showAdditionalResources}
           icon={icon}
           messages={messages}
@@ -73,7 +83,11 @@ ResourceGroup.propTypes = {
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
+  empty: PropTypes.bool,
   messages: PropTypes.shape({
+    activateAdditionalResources: PropTypes.string.isRequired,
+    noCoreResourcesAvailable: PropTypes.string.isRequired,
+    activateSuggestion: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,

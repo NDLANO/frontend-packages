@@ -77,8 +77,10 @@ class ResourceList extends Component {
     const {
       additionalResources,
       normalResources,
+      onClick,
       messages,
       type,
+      empty,
       ...rest
     } = this.props;
     const limit = 8;
@@ -96,17 +98,32 @@ class ResourceList extends Component {
               isHidden={false}
             />
           ))}
-          {normalResources.map((resource, index) => (
-            <Resource
-              key={resource.id}
-              type={type}
-              {...rest}
-              resource={resource}
-              isHidden={!(showAll || index < limit)}
-            />
-          ))}
+          {normalResources.length === 0 ? (
+            <div>
+              {messages.noCoreResourcesAvailable}{' '}
+              {additionalResources.length ? (
+                <span>
+                  {messages.activateSuggestion}{' '}
+                  <Button link onClick={onClick}>
+                    {messages.activateAdditionalResources}
+                  </Button>
+                  ?
+                </span>
+              ) : null}
+            </div>
+          ) : (
+            normalResources.map((resource, index) => (
+              <Resource
+                key={resource.id}
+                type={type}
+                {...rest}
+                resource={resource}
+                isHidden={!(showAll || index < limit)}
+              />
+            ))
+          )}
         </ul>
-        {normalResources.length > limit ? (
+        {normalResources.length > limit && !empty ? (
           <div {...classes('button-wrapper')}>
             <Button
               {...classes('button', '', 'c-btn c-button--outline')}
@@ -127,7 +144,13 @@ ResourceList.propTypes = {
   showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  empty: PropTypes.bool,
   messages: PropTypes.shape({
+    noCoreResourcesAvailable: PropTypes.string.isRequired,
+    activateSuggestion: PropTypes.string.isRequired,
+    activateAdditionalResources: PropTypes.string.isRequired,
+    toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,
   }),

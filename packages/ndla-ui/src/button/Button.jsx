@@ -19,12 +19,14 @@ const Button = ({
   outline,
   square,
   stripped,
+  link,
   submit,
   loading,
   className,
   ...rest
 }) => {
   const modifiers = {
+    link,
     outline,
     square,
     stripped,
@@ -53,6 +55,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
 
   outline: PropTypes.bool,
+  link: PropTypes.bool,
   square: PropTypes.bool,
   stripped: PropTypes.bool,
   loading: PropTypes.bool,

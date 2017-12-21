@@ -1,0 +1,7 @@
+a {
+  text-decoration: none;
+  box-shadow: $link;
+}
+a:hover {
+  box-shadow: $link--hover;
+}

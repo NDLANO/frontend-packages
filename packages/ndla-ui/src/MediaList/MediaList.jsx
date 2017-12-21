@@ -76,6 +76,7 @@ MediaListCCLink.defaultProps = {
 export const MediaListItemBody = ({
   children,
   license: licenseAbbreviation,
+  messages,
   title,
   resourceUrl,
   resourceType,
@@ -105,7 +106,11 @@ export const MediaListItemBody = ({
         />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-      <LicenseByline withDescription licenseRights={license.rights} />
+      <LicenseByline
+        withDescription
+        messages={messages}
+        licenseRights={license.rights}
+      />
       <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}
     </div>
@@ -119,6 +124,9 @@ MediaListItemBody.propTypes = {
   resourceType: PropTypes.oneOf(
     Object.keys(resourceTypes).map(key => resourceTypes[key]),
   ),
+  messages: PropTypes.shape({
+    modelPremission: PropTypes.string,
+  }),
   title: PropTypes.string,
 };
 

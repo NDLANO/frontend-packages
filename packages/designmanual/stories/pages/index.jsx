@@ -288,13 +288,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="6104" />
-        <OneColumn>
-          <ResourcesSubTopics />
-          <LayoutItem layout="extend">
-            <Resources />
-          </LayoutItem>
-        </OneColumn>
+        <ArticleLoader articleId="17507" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -319,11 +313,6 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </Hero>
         <ArticleLoader articleId="5948" />
-        <OneColumn>
-          <LayoutItem layout="extend">
-            <Resources />
-          </LayoutItem>
-        </OneColumn>
       </Content>
       <FooterExample />
     </PageContainer>
@@ -347,16 +336,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <LayoutItem layout="extend">
-          <ArticleLoader articleId="" closeButton />
-          <div className="u-padding-bottom-huge" />
-        </LayoutItem>
-        <OneColumn>
-          <LayoutItem layout="extend">
-            <RelatedArticleListExample />
-            <Resources />
-          </LayoutItem>
-        </OneColumn>
+        <ArticleLoader articleId="" closeButton />
       </Content>
       <FooterExample />
     </PageContainer>

@@ -94,6 +94,8 @@ export const Article = ({
               messages={messages}
             />
           )}
+      </LayoutItem>
+      <LayoutItem layout="extend">
         {children}
       </LayoutItem>
     </ArticleWrapper>

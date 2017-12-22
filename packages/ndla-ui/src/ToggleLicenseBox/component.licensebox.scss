@@ -61,6 +61,7 @@
   font-family: $font;
   color: $brand-color;
   min-width: 120px;
+  height: 20px;
   padding: 0;
   text-decoration: underline;
   @include mq(tablet) {

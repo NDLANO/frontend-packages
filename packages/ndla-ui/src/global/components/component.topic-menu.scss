@@ -158,9 +158,6 @@
     margin-left: $spacing--large;
     @include inuit-font-size(26px);
   }
-  a {
-    text-decoration: none;
-  }
 }
 
 .c-topic-menu__home {
@@ -251,13 +248,6 @@
   padding-right: $spacing--small;
   display: inline;
 }
-.c-topic-menu__link-target {
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 .c-topic-menu__subtopic-item {
   padding: $spacing--small 0 $spacing--small $spacing;
   margin-bottom: 0;

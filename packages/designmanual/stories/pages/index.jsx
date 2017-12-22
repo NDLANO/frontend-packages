@@ -13,6 +13,7 @@ import { storiesOf } from '@storybook/react';
 import {
   Hero,
   ErrorMessage,
+  FilterList,
   OneColumn,
   PageContainer,
   ResourcesWrapper,
@@ -77,7 +78,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="236" />
+        <ArticleLoader articleId="17477" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -262,6 +263,15 @@ storiesOf('Emnesider', module)
         </Hero>
         <OneColumn>
           <div className="c-article">
+            <LayoutItem layout="center">
+              <h1 className="c-article__title">Mediefag</h1>
+              <FilterList
+                filterContent={[
+                  { title: 'VG1', active: true },
+                  { title: 'VG2', active: true },
+                ]}
+              />
+            </LayoutItem>
             <ResourcesSubTopics />
           </div>
         </OneColumn>

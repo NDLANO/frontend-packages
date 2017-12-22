@@ -104,20 +104,17 @@ class ResourceList extends Component {
             <div {...classes('additional-resources-trigger')}>
               {additionalResources.length ? (
                 <span>
-                  {
-                    showAdditionalResources ?
-                      null
-                      :
-                      <div>
-                        <p>
-                          {messages.noCoreResourcesAvailable}{' '}
-                          {messages.activateSuggestion}{' '}
-                        </p>
-                        <Button outline onClick={onClick}>
-                          {messages.activateAdditionalResources}
-                        </Button>
-                      </div>
-                  }
+                  {showAdditionalResources ? null : (
+                    <div>
+                      <p>
+                        {messages.noCoreResourcesAvailable}{' '}
+                        {messages.activateSuggestion}{' '}
+                      </p>
+                      <Button outline onClick={onClick}>
+                        {messages.activateAdditionalResources}
+                      </Button>
+                    </div>
+                  )}
                 </span>
               ) : null}
             </div>

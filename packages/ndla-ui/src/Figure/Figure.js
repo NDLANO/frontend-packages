@@ -36,7 +36,9 @@ export const FigureCaption = ({
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button {...classes('captionbtn')}>{reuseLabel}</button>
+          <button {...classes('captionbtn')}>
+            <span>{reuseLabel}</span>
+          </button>
         </LicenseByline>
       </div>
     </footer>
@@ -90,8 +92,7 @@ export const Figure = ({
       {...classes('', fullscreenView ? 'fs' : modifiers, typeClass)}
       {...rest}>
       {noFigcaption ? (
-        <div 
-        {...classes('fullscreen-btn')}>
+        <div {...classes('fullscreen-btn')}>
           <Fullscreen />
         </div>
       ) : null}
@@ -117,6 +118,7 @@ Figure.propTypes = {
   ]),
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
+  noFigcaption: PropTypes.bool,
   fullscreenView: PropTypes.node,
 };
 
@@ -125,6 +127,7 @@ Figure.defaultProps = {
   resizeIframe: false,
   captionView: null,
   fullscreenView: null,
+  noFigcaption: false,
 };
 
 export default Figure;

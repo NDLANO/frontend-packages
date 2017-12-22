@@ -26,12 +26,14 @@ export const toggleLicenseInfoBox = () => {
     const toggleButton = target.querySelector('.c-figure__captionbtn');
     if (toggleButton) {
       toggleButton.onclick = () => {
-        target.querySelector('.c-figure-license__hidden-content').classList.add('c-figure-license__hidden-content--active');
-        target.querySelector('.c-dialog__content--fullscreen').scrollTop = 350
+        target
+          .querySelector('.c-figure-license__hidden-content')
+          .classList.add('c-figure-license__hidden-content--active');
+        target.querySelector('.c-dialog__content--fullscreen').scrollTop = 350;
       };
     }
   });
-}
+};
 
 export const addCloseDialogClickListeners = () => {
   forEachElement('.c-dialog', el => {
@@ -56,7 +58,6 @@ export const addShowDialogClickListeners = () => {
 
     const dialog = document.querySelector(`[data-dialog-id='${id}']`);
     const dialogContent = dialog.querySelector(`.c-dialog__content`);
-    
 
     trapInstances[id] = createFocusTrap(dialogContent, {
       onDeactivate: () => {

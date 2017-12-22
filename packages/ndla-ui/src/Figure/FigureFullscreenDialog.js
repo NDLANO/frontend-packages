@@ -15,7 +15,6 @@ import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
 import Dialog from '../Dialog';
-import Button from '../button/Button';
 import { ContributorShape } from '../shapes';
 import LicenseByline from '../LicenseByline';
 
@@ -33,42 +32,49 @@ export const FigureFullscreenDialog = ({
   title,
   licenseUrl,
   licenseRights,
-  image, 
+  image,
   caption,
-  reuseLabel
+  reuseLabel,
 }) => {
   const headingLabelId = `heading-${id}`;
   return (
-    <Dialog id={`${id}-fs`} labelledby={headingLabelId} messages={messages} modifier="fullscreen">
+    <Dialog
+      id={`${id}-fs`}
+      labelledby={headingLabelId}
+      messages={messages}
+      modifier="fullscreen">
       <div {...classLicenses('', 'fullscreen')}>
         <div {...classLicenses('content')}>
-          <img {...classLicenses('img')} src={image.props.src} alt={image.props.alt} />
-            <h3 id={headingLabelId} {...classLicenses('image-title')}>
-              {title}
-            </h3>
-            {caption}
-            <p>
-              <button 
-              className="c-figure__captionbtn">
-                {reuseLabel}
-              </button>
-            </p>
-            <div {...classLicenses('hidden-content')}>
-                <div>
-                  <LicenseByline
-                    withDescription
-                    messages={messages}
-                    licenseRights={licenseRights}
-                  />
-                <a
-                  {...classLicenses('link')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={licenseUrl}>
-                  {messages.learnAboutLicenses}
-                </a>
-              </div>
-            
+          <img
+            {...classLicenses('img')}
+            src={image.props.src}
+            alt={image.props.alt}
+          />
+          <h3 id={headingLabelId} {...classLicenses('image-title')}>
+            {title}
+          </h3>
+          {caption}
+          <p>
+            <button className="c-figure__captionbtn">
+              <span>{reuseLabel}</span>
+            </button>
+          </p>
+          <div {...classLicenses('hidden-content')}>
+            <div>
+              <LicenseByline
+                withDescription
+                messages={messages}
+                licenseRights={licenseRights}
+              />
+              <a
+                {...classLicenses('link')}
+                target="_blank"
+                rel="noopener noreferrer"
+                href={licenseUrl}>
+                {messages.learnAboutLicenses}
+              </a>
+            </div>
+
             <div {...classLicenses('cta-wrapper')}>
               <ul {...classLicenses('list')}>
                 {title && (
@@ -77,15 +83,18 @@ export const FigureFullscreenDialog = ({
                   </li>
                 )}
                 {authors.map(author => (
-                  <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${
-                    author.name
-                  }`}</li>
+                  <li key={uuid()} {...classLicenses('item')}>{`${
+                    author.type
+                  }: ${author.name}`}</li>
                 ))}
                 {origin && (
                   <li {...classLicenses('item')}>
                     {messages.source}:{' '}
                     {origin.startsWith('http') ? (
-                      <a href={origin} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={origin}
+                        target="_blank"
+                        rel="noopener noreferrer">
                         {origin}
                       </a>
                     ) : (
@@ -96,11 +105,30 @@ export const FigureFullscreenDialog = ({
               </ul>
               <div {...classLicenses('cta-block')}>{children}</div>
             </div>
-            
-            </div>
+          </div>
         </div>
       </div>
     </Dialog>
   );
 };
 
+FigureFullscreenDialog.propTypes = {
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  origin: PropTypes.string,
+  authors: PropTypes.arrayOf(ContributorShape),
+  messages: PropTypes.shape({
+    modelPremission: PropTypes.string,
+    close: PropTypes.string.isRequired,
+    rulesForUse: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
+    learnAboutLicenses: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  title: PropTypes.string,
+  licenseUrl: PropTypes.string.isRequired,
+  image: PropTypes.node,
+  caption: PropTypes.string,
+  reuseLabel: PropTypes.string,
+};

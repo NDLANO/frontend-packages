@@ -63,12 +63,16 @@
   position: relative;
 }
 .c-figure__captionbtn {
-  text-decoration: underline;
   background: none;
   border: none;
   cursor: pointer;
   color: $brand-color;
-  padding: $spacing--small/2 0;
+  height: 25px;
+  padding: $spacing--small/3 0 $spacing--small/2 0;
+  box-shadow: $link;
+  &:hover {
+    box-shadow: $link--hover;
+  }
 }
 .c-figure__licensetag {
   display: none;

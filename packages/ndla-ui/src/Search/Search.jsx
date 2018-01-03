@@ -17,18 +17,16 @@ const Search = ({ placeholder = 'Søk etter innhold', value = '' }) => (
   <div {...classes()}>
     <input
       type="search"
-      autofocus=""
       {...classes('input')}
-      role="combobox"
       aria-autocomplete="list"
-      aria-expanded="false"
-      autocomplete="on"
+      autoComplete="on"
       id="search"
-      tabindex="0"
+      tabIndex="0"
       name="search"
       placeholder={placeholder}
+      value={value}
     />
-    <button tabindex="1" {...classes('button')} type="submit" value="Search">
+    <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
       <SearchIcon />
     </button>
   </div>

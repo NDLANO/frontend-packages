@@ -7,11 +7,7 @@
  */
 /* eslint-env jest */
 
-import {
-  updateIFrameDimensions,
-  addEventListenersForZoom,
-  removeEventListenersForZoom,
-} from '../figureScripts';
+import { updateIFrameDimensions } from '../figureScripts';
 
 const byId = id => document.getElementById(id);
 

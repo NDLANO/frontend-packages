@@ -13,12 +13,17 @@
     @include float(3, 4, 'right');
     max-width: 350px;
   }
+
+  border-left: 4px solid $background-color--dark;
 }
 
 .c-aside__content {
   color: $brand-grey-dark;
-  padding: $spacing $spacing $spacing--large;
-  border: 1px solid $brand-grey--light;
+  padding: $spacing;
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .c-aside img {
@@ -50,7 +55,6 @@
   letter-spacing: 0.1em;
   margin-top: $spacing;
   margin-bottom: $spacing--small;
-  border-bottom: 1px solid $brand-color--light;
 }
 
 .c-aside__content > ul:not([class]),

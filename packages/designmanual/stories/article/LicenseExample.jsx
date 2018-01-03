@@ -22,12 +22,7 @@ import {
 } from 'ndla-ui';
 import { Document, Audio } from 'ndla-icons/common';
 
-import {
-  COPYRIGHTED,
-  getMicroDataNamespaceByType,
-  microDataTypes,
-  metaTypes,
-} from 'ndla-licenses';
+import { COPYRIGHTED, metaTypes } from 'ndla-licenses';
 
 const byncndLicenseAbbreviation = 'by-nc-nd';
 const bysaLicenseAbbreviation = 'by-sa';
@@ -107,10 +102,7 @@ const TextContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a
-              href="https://example.com"
-              itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
+            <a href="https://example.com">
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -167,10 +159,7 @@ const AudioContent = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a
-              href="https://example.com"
-              itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
+            <a href="https://example.com">
               <Audio className="c-medialist__icon" />
             </a>
           </MediaListItemImage>
@@ -227,13 +216,7 @@ const ImageContent = () => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <a href="https://example.com">
-              <img
-                width="260"
-                alt="alt"
-                src={src}
-                itemProp="url"
-                itemType={getMicroDataNamespaceByType(microDataTypes.url)}
-              />
+              <img width="260" alt="alt" src={src} />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
@@ -289,8 +272,6 @@ const ImageContent = () => (
               width="260"
               alt="alt"
               src="https://cdntest-c.ndla.no/sites/default/files/images/ku-collage_v2_3.fullbredde.jpg"
-              itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}
             />
           </a>
         </MediaListItemImage>
@@ -356,8 +337,6 @@ const H5PContent = () => (
                 height="373"
                 frameBorder="0"
                 allowFullScreen="allowfullscreen"
-                itemProp="url"
-                itemType={getMicroDataNamespaceByType(microDataTypes.url)}
               />
               <script
                 src="http://ndla.no/sites/all/modules/h5p/library/js/h5p-resizer.js?fag=127756"
@@ -419,10 +398,7 @@ const Files = () => (
       {['1', '2'].map(key => (
         <MediaListItem key={key}>
           <MediaListItemImage>
-            <a
-              href="https://example.com"
-              itemProp="url"
-              itemType={getMicroDataNamespaceByType(microDataTypes.url)}>
+            <a href="https://example.com">
               <Document className="c-medialist__icon" />
             </a>
           </MediaListItemImage>

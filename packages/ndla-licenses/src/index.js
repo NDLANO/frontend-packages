@@ -24,14 +24,7 @@ export {
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
-export {
-  resourceTypes,
-  getResourceTypeNamespace,
-  microDataTypes,
-  getMicroDataNamespaceByType,
-  metaTypes,
-  getMicroDataNamespaceByMicroDataTypeWithFallback,
-} from './microData';
+export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
 
 export {
   contributorTypes,

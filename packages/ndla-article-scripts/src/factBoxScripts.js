@@ -8,15 +8,15 @@
 
 import { forEachElement } from './domHelpers';
 
-export const addAsideClickListener = () => {
-  forEachElement('.c-aside__button', el => {
+export const addFactBoxClickListener = () => {
+  forEachElement('.c-factbox__button', el => {
     const target = el;
     target.onclick = () => target.parentNode.classList.toggle('expanded');
   });
 };
 
-export const removeAsideClickListener = () => {
-  forEachElement('.c-aside__button', el => {
+export const removeFactBoxClickListener = () => {
+  forEachElement('.c-factbox__button', el => {
     const target = el;
     target.onclick = undefined;
   });

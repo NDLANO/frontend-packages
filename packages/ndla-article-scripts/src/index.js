@@ -7,9 +7,9 @@
  */
 
 import {
-  addAsideClickListener,
-  removeAsideClickListener,
-} from './asideScripts';
+  addFactBoxClickListener,
+  removeFactBoxClickListener,
+} from './factBoxScripts';
 
 import {
   addShowDialogClickListeners,
@@ -34,7 +34,7 @@ import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
 export const initArticleScripts = () => {
   addEventListenerForResize();
   updateIFrameDimensions();
-  addAsideClickListener();
+  addFactBoxClickListener();
   addCopyToClipboardListeners();
   addShowDialogClickListeners();
   addCloseDialogClickListeners();
@@ -46,8 +46,8 @@ export const initArticleScripts = () => {
 
 export {
   updateIFrameDimensions,
-  addAsideClickListener,
-  removeAsideClickListener,
+  addFactBoxClickListener,
+  removeFactBoxClickListener,
   addEventListenerForResize,
   removeEventListenerForResize,
   addCloseDialogClickListeners,

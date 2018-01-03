@@ -19,17 +19,13 @@ $ yarn add ndla-article-scripts
 ### Plain javascript (embed scripts)
 
 ```javascript
-import {
-  addEventListenerForResize,
-  updateIFrameDimensions,
-  addAsideClickListener,
-} from 'ndla-article-scripts';
+import { addEventListenerForResize, updateIFrameDimensions, addFactBoxClickListener } from 'ndla-article-scripts';
 
 window.onload = () => {
   // Invoke after article content has loaded
   updateIFrameDimensions();
   addEventListenerForResize();
-  addAsideClickListener();
+  addFactBoxClickListener();
 };
 ```
 
@@ -39,21 +35,21 @@ window.onload = () => {
 import {
   addEventListenerForResize,
   updateIFrameDimensions,
-  addAsideClickListener,
+  addFactBoxClickListener,
   removeEventListenerForResize,
-  removeAsideClickListener,
+  removeFactBoxClickListener,
 } from 'ndla-article-scripts';
 
 class Article extends Component {
   componentDidMount() {
     addEventListenerForResize();
     updateIFrameDimensions();
-    addAsideClickListener();
+    addFactBoxClickListener();
   }
 
   componentWillUnmount() {
     removeEventListenerForResize();
-    removeAsideClickListener();
+    removeFactBoxClickListener();
   }
 
   render() {
@@ -87,13 +83,13 @@ Adds an resize event listener on window. The listener calls `updateIFrameDimensi
 
 Removes the event listener added by `addEventListenerForResize`.
 
-### `articleScripts.addAsideClickListener()`
+### `articleScripts.addFactBoxClickListener()`
 
-Adds an click listener on aside buttons for expanding the content on small screens.
+Adds an click listener on fact box buttons for expanding the content on small screens.
 
-### `articleScripts.removeAsideClickListener()`
+### `articleScripts.removeFactBoxClickListener()`
 
-Removes click listeners added by `removeAsideClickListener`.
+Removes click listeners added by `addFactBoxClickListener`.
 
 ### `articleScripts.addShowDialogClickListeners()`
 

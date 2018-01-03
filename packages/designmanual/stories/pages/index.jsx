@@ -29,14 +29,11 @@ import {
   MastheadWithLogo,
 } from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
-import { Resources } from '../molecules/resources';
-
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
 import article, { topicList, subjectList } from '../../dummydata/index';
-import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">

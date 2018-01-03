@@ -39,7 +39,7 @@
     text-decoration: none;
   }
   a:hover {
-    border: none;
+    box-shadow: none;
   }
   &:before {
     display: none;
@@ -57,6 +57,7 @@
   &:first-child {
     a {
       box-shadow: none;
+      border-bottom: none;
     }
   }
   &:last-child:after {
@@ -65,6 +66,6 @@
 }
 .c-breadcrumb__item--home {
   a {
-    border: none;
+    border-bottom: none;
   }
 }

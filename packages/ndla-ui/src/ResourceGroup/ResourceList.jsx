@@ -81,6 +81,7 @@ class ResourceList extends Component {
       messages,
       type,
       empty,
+      showAdditionalResources,
       ...rest
     } = this.props;
     const limit = 8;
@@ -93,21 +94,27 @@ class ResourceList extends Component {
             <Resource
               key={resource.id}
               type={type}
+              showAdditionalResources={showAdditionalResources}
               {...rest}
               resource={resource}
               isHidden={false}
             />
           ))}
           {normalResources.length === 0 ? (
-            <div>
-              {messages.noCoreResourcesAvailable}{' '}
+            <div {...classes('additional-resources-trigger')}>
               {additionalResources.length ? (
                 <span>
-                  {messages.activateSuggestion}{' '}
-                  <Button link onClick={onClick}>
-                    {messages.activateAdditionalResources}
-                  </Button>
-                  ?
+                  {showAdditionalResources ? null : (
+                    <div>
+                      <p>
+                        {messages.noCoreResourcesAvailable}{' '}
+                        {messages.activateSuggestion}{' '}
+                      </p>
+                      <Button outline onClick={onClick}>
+                        {messages.activateAdditionalResources}
+                      </Button>
+                    </div>
+                  )}
                 </span>
               ) : null}
             </div>
@@ -116,6 +123,7 @@ class ResourceList extends Component {
               <Resource
                 key={resource.id}
                 type={type}
+                showAdditionalResources={showAdditionalResources}
                 {...rest}
                 resource={resource}
                 isHidden={!(showAll || index < limit)}

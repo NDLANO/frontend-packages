@@ -50,6 +50,22 @@
     height: auto;
     visibility: visible;
   }
+  
+  .c-dialog--fullscreen {
+  }
+  
+  .c-dialog__content--fullscreen {
+    @include mq(tablet) {
+      max-height: 100vh;  
+      max-width: 100%;
+      
+      .c-figure-license__img {
+        max-height: 85vh;
+        width: auto;
+        margin: auto;
+      }
+    }
+  }
 
   .c-dialog__close {
     display: block;
@@ -61,8 +77,13 @@
     color: $brand-color;
     @include font-size(20px);
     font-weight: $font-weight-normal;
-    text-decoration: underline;
+    padding: 0;
+    box-shadow: $link;
+    height: 25px;
     z-index: 9;
     cursor: pointer;
+    &:hover {
+      box-shadow: $link--hover;
+    }
   }
 }

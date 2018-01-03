@@ -63,7 +63,7 @@
   color: $brand-color;
   &:hover {
     color: $brand-color;
-    text-decoration: underline;
+    box-shadow: $link--hover;
     &:before {
       @include svg_icon('close', $brand-color);
     }
@@ -159,7 +159,7 @@
     @include inuit-font-size(26px);
   }
   a {
-    text-decoration: none;
+    padding-bottom: 2px;
   }
 }
 
@@ -227,11 +227,17 @@
   transition: all .1s ease-in-out;
   animation-name: fadeInLeft;
   animation-duration: .5s;
-
+  span {
+    box-shadow: $link;
+  }
+  
   &:hover, &:focus {
     outline: none;
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
+    span {
+      box-shadow: $link--hover;
+    }
   }
 
   &:last-child {
@@ -252,7 +258,6 @@
   display: inline;
 }
 .c-topic-menu__link-target {
-  text-decoration: underline;
   &:hover {
     text-decoration: none;
   }
@@ -271,7 +276,6 @@
 .c-topic-menu__link {
   color: $brand-color;
   &:hover {
-    text-decoration: underline;
   }
 }
 

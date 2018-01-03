@@ -9,30 +9,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Search as SearchIcon} from 'ndla-icons/common';
+import { Search as SearchIcon } from 'ndla-icons/common';
 
 const classes = new BEMHelper('c-search');
 
-const Search = ({ placeholder="Søk etter innhold", value="" }) => (
+const Search = ({ placeholder = 'Søk etter innhold', value = '' }) => (
   <div {...classes()}>
-    <input 
-      type="search" 
-      autofocus="" {...classes('input')} 
-      role="combobox" 
-      aria-autocomplete="list" 
-      aria-expanded="false" 
-      autocomplete="on" 
-      id="search" 
-      tabindex="0" 
-      name="search" 
+    <input
+      type="search"
+      autofocus=""
+      {...classes('input')}
+      role="combobox"
+      aria-autocomplete="list"
+      aria-expanded="false"
+      autocomplete="on"
+      id="search"
+      tabindex="0"
+      name="search"
       placeholder={placeholder}
     />
-    <button 
-      tabindex="1" 
-      {...classes('button')}
-      type="submit"
-      value="Search" 
-    >
+    <button tabindex="1" {...classes('button')} type="submit" value="Search">
       <SearchIcon />
     </button>
   </div>

@@ -45,23 +45,20 @@ const Glossary = ({
         {...classes('popup')}>
         <button {...classes('close', 'u-close')}>{messages.close}</button>
         <span {...classes('title', undefined, 'u-heading3')}>{title}</span>
-        <span {...classes('content')}>
-          {content}
-        </span>
+        <span {...classes('content')}>{content}</span>
         <span {...sourceClasses()}>
           {licenseRights.length > 0 && (
             <LicenseByline
               className="c-source-list__item"
               licenseRights={licenseRights}
             />
-            
           )}
           {authors.map(author => (
             <span {...sourceClasses('item')} key={author}>
               {author}
             </span>
           ))}
-          
+
           <span {...sourceClasses('item')} key={source}>
             {source}
           </span>

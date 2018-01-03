@@ -83,4 +83,3 @@ test('figureScripts/updateIFrameDimensions when no dimensions should default to 
 
   expect(ratio).toBe(0.5625);
 });
-

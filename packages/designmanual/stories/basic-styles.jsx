@@ -1007,7 +1007,9 @@ storiesOf('Grunnstiler', module)
           <TranslationLine lang="pn" langName="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
         </Translation>
         <Translation index="2">
           <TranslationLine lang="cn" langName="Kinesisk">
@@ -1016,7 +1018,9 @@ storiesOf('Grunnstiler', module)
           <TranslationLine lang="pn" langName="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">Hva heter du?</TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
         </Translation>
       </StoryBody>
     </div>

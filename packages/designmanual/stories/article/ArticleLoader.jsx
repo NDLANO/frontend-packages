@@ -74,8 +74,7 @@ class ArticleLoader extends Component {
                 edition: 'Utgave',
                 publisher: 'Utgiver',
               }}
-              licenseBox={<LicenseExample />}
-            >
+              licenseBox={<LicenseExample />}>
               <Resources />
             </Article>
           </OneColumn>

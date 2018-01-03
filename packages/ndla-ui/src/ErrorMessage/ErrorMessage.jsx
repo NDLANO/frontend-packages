@@ -23,11 +23,7 @@ export const ErrorMessage = ({ children, messages }) => (
       <p>[illustrasjon]</p>
       <h1>{messages.title}</h1>
       <p {...classes('description')}>{messages.description}</p>
-      <h3>
-      {messages.linksTitle &&
-        messages.linksTitle
-      }
-      </h3>
+      <h3>{messages.linksTitle && messages.linksTitle}</h3>
       <Search />
       {messages.back &&
         typeof window !== 'undefined' &&

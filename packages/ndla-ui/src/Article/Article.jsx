@@ -95,9 +95,7 @@ export const Article = ({
             />
           )}
       </LayoutItem>
-      <LayoutItem layout="extend">
-        {children}
-      </LayoutItem>
+      <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>
   );
 };

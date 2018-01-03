@@ -84,31 +84,3 @@ test('figureScripts/updateIFrameDimensions when no dimensions should default to 
   expect(ratio).toBe(0.5625);
 });
 
-const toggleClass = 'u-float-right';
-
-const zoomMarkup = `
-    <figure id="zoomFigure" class="c-figure ${toggleClass}" data-toggleclass="${toggleClass}">
-      <button class="c-button" id="zoomButton">Test</button>
-    <figure>
-  `;
-
-test('figureScripts/addEventListnerForZoom on click should trigger toggle class', () => {
-  document.body.innerHTML = zoomMarkup;
-
-  addEventListenersForZoom();
-
-  byId('zoomButton').click();
-
-  expect(byId('zoomFigure').className).toBe('c-figure');
-});
-
-test('figureScripts/removeEventListnerForZoom on click should not trigger toggle class', () => {
-  document.body.innerHTML = zoomMarkup;
-
-  addEventListenersForZoom();
-  removeEventListenersForZoom();
-
-  byId('zoomButton').click();
-
-  expect(byId('zoomFigure').className).toBe(`c-figure ${toggleClass}`);
-});

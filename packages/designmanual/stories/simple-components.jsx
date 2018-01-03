@@ -10,6 +10,7 @@ import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
 import {
   Aside,
+  FactBox,
   Button,
   Logo,
   LayoutItem,
@@ -505,7 +506,7 @@ storiesOf('Enkle komponenter', module)
         </FigureWithLicense>
 
         <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
-        <Aside float>
+        <Aside>
           <div>
             <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
@@ -578,7 +579,7 @@ storiesOf('Enkle komponenter', module)
           </span>
           <LicenseExample />
         </div>
-        <Aside float>
+        <Aside>
           <div>
             <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
@@ -613,7 +614,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <Aside>
+        <FactBox>
           <div>
             <h2>Faktaboks</h2>
             <p>
@@ -639,7 +640,7 @@ storiesOf('Enkle komponenter', module)
               <span className="c-source-list__item">Kilde: SNL.no</span>
             </div>
           </div>
-        </Aside>
+        </FactBox>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,

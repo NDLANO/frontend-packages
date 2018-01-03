@@ -14,7 +14,12 @@
 @import '../../../node_modules/inuitcss/tools/tools.rem';
 @import 'global/utilities/mixin_icons';
 
-$mq-breakpoints: (mobile: 320px, tablet: 600px, desktop: 980px, wide: 1300px);
+$mq-breakpoints: (
+  mobile: 320px,
+  tablet: 600px,
+  desktop: 980px,
+  wide: 1300px
+);
 $inuit-fractions: 1 2 3 4 5 6 10 12;
 @import '../../../node_modules/sass-mq/mq';
 @import 'global/tools/tools.aliases';
@@ -66,15 +71,17 @@ $inuit-wrapper-width: 1024px;
 @import 'Masthead/component.masthead';
 @import 'global/components/component.article';
 @import 'global/components/component.article-byline';
-@import 'global/components/component.aside';
+
 @import 'global/components/component.bodybox';
 @import 'Breadcrumb/component.breadcrumb';
 @import 'Breadcrumb/component.breadcrumb-block';
 @import 'global/components/component.collate';
-@import 'global/components/component.factbox';
+@import 'global/components/component.story-intro';
 @import 'Figure/component.figure';
 @import 'Figure/component.figure-license';
 @import 'Dialog/component.dialog';
+@import 'FactBox/component.factbox';
+@import 'Aside/component.aside';
 @import 'global/components/component.footnotes';
 @import 'global/components/component.glossary-word';
 @import 'global/components/component.icon';

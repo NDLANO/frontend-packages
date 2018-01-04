@@ -58,7 +58,8 @@
   border: 3px solid transparent;
   box-shadow: none;
   color: $brand-color;
-  &:hover {
+  &:hover,
+  &:focus {
     color: $brand-color;
     box-shadow: $link--hover;
     &:before {
@@ -224,7 +225,7 @@
   span {
     box-shadow: $link;
   }
-  
+
   &:hover,
   &:focus {
     outline: none;

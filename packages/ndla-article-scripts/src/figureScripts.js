@@ -166,10 +166,10 @@ export const removeEventListenerForResize = () => {
 };
 
 export const addEventListenersForZoom = () => {
-  forEachElement('.c-figure--fs > .c-button', el => {
+  forEachElement('.c-figure > [data-dialog-trigger-id]', el => {
     const target = el;
     const figure = findAncestorByClass(target, 'c-figure');
-    const id = `${figure.getAttribute('id')}-fs`;
+    const id = target.getAttribute('data-dialog-trigger-id');
 
     const dialog = document.querySelector(`[data-dialog-id='${id}']`);
     const dialogContent = dialog.querySelector(`.c-dialog__content`);
@@ -210,7 +210,7 @@ export const addEventListenersForZoom = () => {
 };
 
 export const removeEventListenersForZoom = () => {
-  forEachElement('.c-figure > .c-button', el => {
+  forEachElement('.c-figure > [data-dialog-trigger-id]', el => {
     const target = el;
     target.onclick = undefined;
   });

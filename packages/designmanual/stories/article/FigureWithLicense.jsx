@@ -1,9 +1,8 @@
 /*
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2018-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
- * FRI OG BEGRENSET
  */
 
 import React, { Component } from 'react';
@@ -48,6 +47,7 @@ class FigureWithLicense extends Component {
 
   render() {
     const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
+    const { resizeIframe, type } = this.props;
 
     const messages = {
       close: 'Lukk',
@@ -63,22 +63,6 @@ class FigureWithLicense extends Component {
     const reuseLabel = this.props.reuseLabel
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
-    const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
-
-    const fullscreenView = (
-      <FigureFullscreenDialog
-        id={this.id}
-        messages={messages}
-        title="Mann med lupe"
-        image={this.props.children}
-        caption={this.props.caption}
-        reuseLabel={reuseLabel}
-        licenseRights={license.rights}
-        authors={authors}>
-        <Button outline>Kopier referanse</Button>
-        <Button outline>Last ned {typeLabel}</Button>
-      </FigureFullscreenDialog>
-    );
 
     const captionAndDetails = !this.props.noCaption
       ? [
@@ -90,9 +74,7 @@ class FigureWithLicense extends Component {
               licenseRights={license.rights}
               authors={authors}
             />
-          ) : // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
-          // Comment: added as separate constant
-          null,
+          ) : null,
 
           <FigureLicenseDialog
             id={this.id}
@@ -104,7 +86,7 @@ class FigureWithLicense extends Component {
             title="Mann med lupe"
             messages={messages}>
             <Button outline>Kopier referanse</Button>
-            <Button outline>Last ned {typeLabel}</Button>
+            <Button outline>Last ned bilde</Button>
           </FigureLicenseDialog>,
         ]
       : null;
@@ -112,12 +94,45 @@ class FigureWithLicense extends Component {
     return (
       <Figure
         id={this.id}
-        resizeIframe={this.props.resizeIframe}
-        type={this.props.type}
+        resizeIframe={resizeIframe}
+        type={type}
         captionView={captionAndDetails}
-        fullscreenView={fullscreenView}
         noFigcaption={this.props.noFigcaption}>
-        {this.props.children}
+        {!resizeIframe // Probably image
+          ? [
+              <Button
+                key="button"
+                data-dialog-trigger-id={`fs-${this.id}`}
+                stripped
+                className="u-fullw">
+                {this.props.children}
+              </Button>,
+              <FigureFullscreenDialog
+                key="dialog"
+                id={`fs-${this.id}`}
+                messages={messages}
+                title="Mann med lupe"
+                caption={caption}
+                reuseLabel={reuseLabel}
+                licenseRights={license.rights}
+                licenseUrl={license.url}
+                actionButtons={[
+                  <Button key="copy" outline>
+                    Kopier referanse
+                  </Button>,
+                  <Button key="download" outline>
+                    Last ned bilde
+                  </Button>,
+                ]}
+                authors={authors}>
+                <img
+                  className="c-figure-license__img"
+                  src={this.props.children.props.src}
+                  alt={this.props.children.props.alt}
+                />
+              </FigureFullscreenDialog>,
+            ]
+          : this.props.children}
       </Figure>
     );
   }
@@ -127,7 +142,6 @@ FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
-  typeLabel: PropTypes.string,
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,

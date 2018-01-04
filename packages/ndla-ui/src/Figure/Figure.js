@@ -13,9 +13,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Fullscreen } from 'ndla-icons/common';
-
 import LicenseByline from '../LicenseByline';
-import Button from '../button/Button';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -60,21 +58,12 @@ export const Figure = ({
   id,
   children,
   captionView,
-  fullscreenView,
   type,
   resizeIframe,
   noFigcaption,
   ...rest
 }) => {
-  let typeClass = null;
-  let content = null;
-
-  typeClass = `u-float-${type}`;
-  content = (
-    <Button stripped className="u-fullw">
-      {children}
-    </Button>
-  );
+  const typeClass = `u-float-${type}`;
 
   const modifiers = [];
 
@@ -87,17 +76,13 @@ export const Figure = ({
   }
 
   return (
-    <figure
-      id={id}
-      {...classes('', fullscreenView ? 'fs' : modifiers, typeClass)}
-      {...rest}>
+    <figure id={id} {...classes('', modifiers, typeClass)} {...rest}>
       {noFigcaption ? (
         <div {...classes('fullscreen-btn')}>
           <Fullscreen />
         </div>
       ) : null}
-      {fullscreenView}
-      {content}
+      {children}
       {captionView}
     </figure>
   );
@@ -119,14 +104,12 @@ Figure.propTypes = {
   resizeIframe: PropTypes.bool,
   captionView: PropTypes.node,
   noFigcaption: PropTypes.bool,
-  fullscreenView: PropTypes.node,
 };
 
 Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
   captionView: null,
-  fullscreenView: null,
   noFigcaption: false,
 };
 

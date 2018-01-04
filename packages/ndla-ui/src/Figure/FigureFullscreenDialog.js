@@ -30,26 +30,22 @@ export const FigureFullscreenDialog = ({
   authors,
   origin,
   title,
+  actionButtons,
   licenseUrl,
   licenseRights,
-  image,
   caption,
   reuseLabel,
 }) => {
   const headingLabelId = `heading-${id}`;
   return (
     <Dialog
-      id={`${id}-fs`}
+      id={id}
       labelledby={headingLabelId}
       messages={messages}
       modifier="fullscreen">
       <div {...classLicenses('', 'fullscreen')}>
         <div {...classLicenses('content')}>
-          <img
-            {...classLicenses('img')}
-            src={image.props.src}
-            alt={image.props.alt}
-          />
+          {children}
           <h3 id={headingLabelId} {...classLicenses('image-title')}>
             {title}
           </h3>
@@ -103,7 +99,7 @@ export const FigureFullscreenDialog = ({
                   </li>
                 )}
               </ul>
-              <div {...classLicenses('cta-block')}>{children}</div>
+              <div {...classLicenses('cta-block')}>{actionButtons}</div>
             </div>
           </div>
         </div>
@@ -115,6 +111,7 @@ export const FigureFullscreenDialog = ({
 FigureFullscreenDialog.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node,
+  actionButtons: PropTypes.node.isRequired,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   origin: PropTypes.string,
   authors: PropTypes.arrayOf(ContributorShape),
@@ -126,9 +123,8 @@ FigureFullscreenDialog.propTypes = {
     learnAboutLicenses: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   licenseUrl: PropTypes.string.isRequired,
-  image: PropTypes.node,
-  caption: PropTypes.string,
+  caption: PropTypes.string.isRequired,
   reuseLabel: PropTypes.string,
 };

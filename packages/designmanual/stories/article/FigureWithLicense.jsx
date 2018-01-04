@@ -14,7 +14,6 @@ import {
   addShowDialogClickListeners,
   addEventListenerForResize,
   updateIFrameDimensions,
-  addEventListenersForZoom,
   toggleLicenseInfoBox,
 } from 'ndla-article-scripts';
 
@@ -40,7 +39,6 @@ class FigureWithLicense extends Component {
       addCloseDialogClickListeners();
       updateIFrameDimensions();
       addEventListenerForResize();
-      addEventListenersForZoom();
       toggleLicenseInfoBox();
     }
   }
@@ -64,39 +62,11 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
 
-    const captionAndDetails = !this.props.noCaption
-      ? [
-          !this.props.noFigcaption ? (
-            <FigureCaption
-              id={this.id}
-              key="caption"
-              caption={caption}
-              reuseLabel={reuseLabel}
-              licenseRights={license.rights}
-              authors={authors}
-            />
-          ) : null,
-
-          <FigureLicenseDialog
-            id={this.id}
-            key="details"
-            licenseRights={license.rights}
-            authors={authors}
-            licenseUrl={license.url}
-            origin="https://www.wikimedia.com"
-            title="Mann med lupe"
-            messages={messages}>
-            <Button outline>Kopier referanse</Button>
-            <Button outline>Last ned bilde</Button>
-          </FigureLicenseDialog>,
-        ]
-      : null;
 
     return (
       <Figure
         resizeIframe={resizeIframe}
         type={type}
-        captionView={captionAndDetails}
         noFigcaption={this.props.noFigcaption}>
         {!resizeIframe // Probably image
           ? [
@@ -133,6 +103,29 @@ class FigureWithLicense extends Component {
               </FigureFullscreenDialog>,
             ]
           : this.props.children}
+
+        {!this.props.noFigcaption ? (
+          <FigureCaption
+            id={this.id}
+            key="caption"
+            caption={caption}
+            reuseLabel={reuseLabel}
+            licenseRights={license.rights}
+            authors={authors}>
+            <FigureLicenseDialog
+              id={this.id}
+              key="details"
+              licenseRights={license.rights}
+              authors={authors}
+              licenseUrl={license.url}
+              origin="https://www.wikimedia.com"
+              title="Mann med lupe"
+              messages={messages}>
+              <Button outline>Kopier referanse</Button>
+              <Button outline>Last ned bilde</Button>
+            </FigureLicenseDialog>
+          </FigureCaption>
+        ) : null}
       </Figure>
     );
   }

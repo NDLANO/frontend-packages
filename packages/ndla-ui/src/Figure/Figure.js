@@ -22,6 +22,7 @@ const classes = new BEMHelper({
 
 export const FigureCaption = ({
   id,
+  children,
   caption,
   authors,
   reuseLabel,
@@ -38,6 +39,7 @@ export const FigureCaption = ({
           <button data-dialog-trigger-id={id} {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
+          {children}
         </LicenseByline>
       </div>
     </footer>
@@ -49,6 +51,7 @@ FigureCaption.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  children: PropTypes.node,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -58,7 +61,6 @@ FigureCaption.propTypes = {
 
 export const Figure = ({
   children,
-  captionView,
   type,
   resizeIframe,
   noFigcaption,
@@ -84,13 +86,11 @@ export const Figure = ({
         </div>
       ) : null}
       {children}
-      {captionView}
     </figure>
   );
 };
 
 Figure.propTypes = {
-  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf([
     'full',
@@ -103,14 +103,12 @@ Figure.propTypes = {
     'xsmall-left',
   ]),
   resizeIframe: PropTypes.bool,
-  captionView: PropTypes.node,
   noFigcaption: PropTypes.bool,
 };
 
 Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
-  captionView: null,
   noFigcaption: false,
 };
 

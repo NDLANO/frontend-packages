@@ -27,6 +27,8 @@ import {
   removeDetailsEventListeners,
 } from './detailsScript';
 
+import { addFootnoteClickListeners } from './footnoteScripts';
+
 import { initAudioPlayers } from './audioPlayerScript';
 
 import { addShowConceptDefinitionClickListeners } from './conceptScripts';
@@ -41,6 +43,7 @@ export const initArticleScripts = () => {
   addShowConceptDefinitionClickListeners();
   addDetailsEventListeners();
   initAudioPlayers();
+  addFootnoteClickListeners();
 };
 
 export {
@@ -57,5 +60,6 @@ export {
   addDetailsEventListeners,
   removeDetailsEventListeners,
   initAudioPlayers,
+  addFootnoteClickListeners,
   toggleLicenseInfoBox,
 };

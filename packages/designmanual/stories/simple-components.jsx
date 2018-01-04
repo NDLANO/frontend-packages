@@ -25,6 +25,7 @@ import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import { OneColumn } from '../../ndla-ui/lib/Layout/index';
+import FootnotesExample from './article/FootnotesExample';
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -691,40 +692,7 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <p>
-          Målgruppen for Hansaspillet er både fastboende og turister.<sup id="ref1">
-            [<a href="#1">1</a>]
-          </sup>
-        </p>
-        <p>
-          Forfatteren, komponisten og musikeren foreslo flere
-          samarbeidsprosjekter for å løfte frem Munchs ukjente tekstarv.<sup id="ref2">
-            [<a href="#2">2</a>]
-          </sup>
-        </p>
-        <ol className="c-footnotes">
-          <li className="c-footnotes__item">
-            <cite className="c-footnotes__cite" id="1">
-              <sup>
-                <a href="#ref1">1</a>
-              </sup>{' '}
-              Røyrane, «Hanseatene kommer tilbake». Røyrane, Eva. «Hanseatene
-              kommer tilbake.» Bergens Tidende. 11.05.2003.{' '}
-              <a href="http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html">
-                http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html
-              </a>.
-            </cite>
-          </li>
-          <li className="c-footnotes__item">
-            <cite className="c-footnotes__cite" id="2">
-              <sup>
-                <a href="#ref2">2</a>
-              </sup>{' '}
-              Nærø, «Ketil Bjørnstad.» Nærø, Sturle Scholz. «Ingen tok Ketil
-              Bjørnstad på alvor.» Aftenposten. 25.01.2013.
-            </cite>
-          </li>
-        </ol>
+        <FootnotesExample />
       </StoryBody>
     </div>
   ))

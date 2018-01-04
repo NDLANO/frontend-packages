@@ -63,12 +63,16 @@
   position: relative;
 }
 .c-figure__captionbtn {
-  text-decoration: underline;
   background: none;
   border: none;
   cursor: pointer;
   color: $brand-color;
-  padding: $spacing--small/2 0;
+  height: 25px;
+  padding: $spacing--small/3 0 $spacing--small/2 0;
+  box-shadow: $link;
+  &:hover {
+    box-shadow: $link--hover;
+  }
 }
 .c-figure__licensetag {
   display: none;
@@ -116,13 +120,25 @@
 .c-figure__fullscreen-btn {
   cursor: pointer;
   position: absolute;
-  background: $brand-color;
   bottom: 0;
   right: 0;
   padding: 5px $spacing--small 8px;
+  transition: all .3s ease-out;
+  background: rgba($white, .2);
   
   svg {
-    width: 20px;
-    height: 20px;
+    transition: transform .4s ease-out;
+    width: 26px;
+    height: 26px;
+    fill: $brand-color;
+  }
+}
+
+.c-figure:hover {
+  .c-figure__fullscreen-btn {
+    background: $white;
+    svg {
+      transform: scale(1.2);
+    }
   }
 }

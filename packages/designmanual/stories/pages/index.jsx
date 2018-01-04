@@ -13,6 +13,7 @@ import { storiesOf } from '@storybook/react';
 import {
   Hero,
   ErrorMessage,
+  FilterList,
   OneColumn,
   PageContainer,
   ResourcesWrapper,
@@ -28,14 +29,11 @@ import {
   MastheadWithLogo,
 } from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
-import { Resources } from '../molecules/resources';
-
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
 import article, { topicList, subjectList } from '../../dummydata/index';
-import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
@@ -262,6 +260,15 @@ storiesOf('Emnesider', module)
         </Hero>
         <OneColumn>
           <div className="c-article">
+            <LayoutItem layout="center">
+              <h1 className="c-article__title">Mediefag</h1>
+              <FilterList
+                filterContent={[
+                  { title: 'VG1', active: true },
+                  { title: 'VG2', active: true },
+                ]}
+              />
+            </LayoutItem>
             <ResourcesSubTopics />
           </div>
         </OneColumn>
@@ -289,12 +296,6 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </Hero>
         <ArticleLoader articleId="17507" />
-        <OneColumn>
-          <ResourcesSubTopics />
-          <LayoutItem layout="extend">
-            <Resources />
-          </LayoutItem>
-        </OneColumn>
       </Content>
       <FooterExample />
     </PageContainer>
@@ -319,11 +320,6 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </Hero>
         <ArticleLoader articleId="5948" />
-        <OneColumn>
-          <LayoutItem layout="extend">
-            <Resources />
-          </LayoutItem>
-        </OneColumn>
       </Content>
       <FooterExample />
     </PageContainer>
@@ -347,16 +343,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <LayoutItem layout="extend">
-          <ArticleLoader articleId="" closeButton />
-          <div className="u-padding-bottom-huge" />
-        </LayoutItem>
-        <OneColumn>
-          <LayoutItem layout="extend">
-            <RelatedArticleListExample />
-            <Resources />
-          </LayoutItem>
-        </OneColumn>
+        <ArticleLoader articleId="" closeButton />
       </Content>
       <FooterExample />
     </PageContainer>

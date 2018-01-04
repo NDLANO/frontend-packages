@@ -13,13 +13,13 @@ import {
 
 import {
   addShowDialogClickListeners,
+  removeShowDialogClickListeners,
   addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   updateIFrameDimensions,
   addEventListenerForResize,
   removeEventListenerForResize,
-  addEventListenersForZoom,
-  removeEventListenersForZoom,
+  toggleLicenseInfoBox,
 } from './figureScripts';
 
 import {
@@ -40,7 +40,6 @@ export const initArticleScripts = () => {
   addCloseDialogClickListeners();
   addShowConceptDefinitionClickListeners();
   addDetailsEventListeners();
-  addEventListenersForZoom();
   initAudioPlayers();
 };
 
@@ -52,11 +51,11 @@ export {
   removeEventListenerForResize,
   addCloseDialogClickListeners,
   addCopyToClipboardListeners,
-  addShowDialogClickListeners,
   addShowConceptDefinitionClickListeners,
+  addShowDialogClickListeners,
+  removeShowDialogClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,
-  addEventListenersForZoom,
-  removeEventListenersForZoom,
   initAudioPlayers,
+  toggleLicenseInfoBox,
 };

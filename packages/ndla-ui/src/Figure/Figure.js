@@ -12,9 +12,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-
+import { Fullscreen } from 'ndla-icons/common';
 import LicenseByline from '../LicenseByline';
-import Button from '../button/Button';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -22,6 +21,8 @@ const classes = new BEMHelper({
 });
 
 export const FigureCaption = ({
+  id,
+  children,
   caption,
   authors,
   reuseLabel,
@@ -35,7 +36,10 @@ export const FigureCaption = ({
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button {...classes('captionbtn')}>{reuseLabel}</button>
+          <button data-dialog-trigger-id={id} {...classes('captionbtn')}>
+            <span>{reuseLabel}</span>
+          </button>
+          {children}
         </LicenseByline>
       </div>
     </footer>
@@ -43,9 +47,11 @@ export const FigureCaption = ({
 );
 
 FigureCaption.propTypes = {
+  id: PropTypes.string.isRequired,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  children: PropTypes.node,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -54,26 +60,13 @@ FigureCaption.propTypes = {
 };
 
 export const Figure = ({
-  id,
   children,
-  captionView,
   type,
   resizeIframe,
+  noFigcaption,
   ...rest
 }) => {
-  let typeClass = null;
-  let content = null;
-
-  if (type !== 'full' && type !== 'full-column') {
-    typeClass = `u-float-${type}`;
-    content = (
-      <Button stripped className="u-fullw">
-        {children}
-      </Button>
-    );
-  } else {
-    content = children;
-  }
+  const typeClass = `u-float-${type}`;
 
   const modifiers = [];
 
@@ -86,19 +79,18 @@ export const Figure = ({
   }
 
   return (
-    <figure
-      id={id}
-      {...classes('', modifiers, typeClass)}
-      data-toggleclass={typeClass}
-      {...rest}>
-      {content}
-      {captionView}
+    <figure {...classes('', modifiers, typeClass)} {...rest}>
+      {noFigcaption ? (
+        <div {...classes('fullscreen-btn')}>
+          <Fullscreen />
+        </div>
+      ) : null}
+      {children}
     </figure>
   );
 };
 
 Figure.propTypes = {
-  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf([
     'full',
@@ -111,13 +103,13 @@ Figure.propTypes = {
     'xsmall-left',
   ]),
   resizeIframe: PropTypes.bool,
-  captionView: PropTypes.node,
+  noFigcaption: PropTypes.bool,
 };
 
 Figure.defaultProps = {
   type: 'full',
   resizeIframe: false,
-  captionView: null,
+  noFigcaption: false,
 };
 
 export default Figure;

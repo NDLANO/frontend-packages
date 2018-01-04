@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "description": "Styleguide and ui component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",

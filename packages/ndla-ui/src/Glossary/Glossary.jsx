@@ -58,6 +58,7 @@ const Glossary = ({
               {author}
             </span>
           ))}
+
           <span {...sourceClasses('item')} key={source}>
             {source}
           </span>

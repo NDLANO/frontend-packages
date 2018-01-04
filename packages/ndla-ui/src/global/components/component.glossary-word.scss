@@ -93,7 +93,7 @@
 .c-glossary-word__close {
   display: inline-block;
   position: absolute;
-  top: $spacing;
+  top: $spacing*1.1;
   right: $spacing;
   background: transparent;
   border: none;

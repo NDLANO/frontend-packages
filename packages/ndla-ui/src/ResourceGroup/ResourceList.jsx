@@ -81,6 +81,7 @@ class ResourceList extends Component {
       messages,
       type,
       empty,
+      showAdditionalResources,
       ...rest
     } = this.props;
     const limit = 8;
@@ -93,29 +94,29 @@ class ResourceList extends Component {
             <Resource
               key={resource.id}
               type={type}
+              showAdditionalResources={showAdditionalResources}
               {...rest}
               resource={resource}
               isHidden={false}
             />
           ))}
-          {normalResources.length === 0 ? (
-            <div>
-              {messages.noCoreResourcesAvailable}{' '}
-              {additionalResources.length ? (
-                <span>
-                  {messages.activateSuggestion}{' '}
-                  <Button link onClick={onClick}>
+          {normalResources.length === 0 && !showAdditionalResources ? (
+            <div {...classes('additional-resources-trigger')}>
+              <span>
+                <div>
+                  <p>{messages.noCoreResourcesAvailable}</p>
+                  <Button outline onClick={onClick}>
                     {messages.activateAdditionalResources}
                   </Button>
-                  ?
-                </span>
-              ) : null}
+                </div>
+              </span>
             </div>
           ) : (
             normalResources.map((resource, index) => (
               <Resource
                 key={resource.id}
                 type={type}
+                showAdditionalResources={showAdditionalResources}
                 {...rest}
                 resource={resource}
                 isHidden={!(showAll || index < limit)}
@@ -148,7 +149,6 @@ ResourceList.propTypes = {
   empty: PropTypes.bool,
   messages: PropTypes.shape({
     noCoreResourcesAvailable: PropTypes.string.isRequired,
-    activateSuggestion: PropTypes.string.isRequired,
     activateAdditionalResources: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,

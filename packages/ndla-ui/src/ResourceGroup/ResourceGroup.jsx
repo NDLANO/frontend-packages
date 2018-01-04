@@ -48,7 +48,7 @@ class ResourceGroup extends Component {
     const { showAdditionalResources } = this.state;
     const additionalResources = resources.filter(res => res.additional);
     const normalResources = resources.filter(res => !res.additional);
-    return (
+    return resources.length > 0 ? (
       <section {...classes('', '', className)}>
         {additionalResources.length > 0 && (
           <ResourceToggleFilter
@@ -72,7 +72,7 @@ class ResourceGroup extends Component {
           normalResources={normalResources}
         />
       </section>
-    );
+    ) : null;
   }
 }
 
@@ -87,7 +87,6 @@ ResourceGroup.propTypes = {
   messages: PropTypes.shape({
     activateAdditionalResources: PropTypes.string.isRequired,
     noCoreResourcesAvailable: PropTypes.string.isRequired,
-    activateSuggestion: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,

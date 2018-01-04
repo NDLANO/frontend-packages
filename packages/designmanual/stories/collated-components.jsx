@@ -418,9 +418,10 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <ErrorMessage
           messages={{
-            title: 'Oops, noe gikk galt',
+            title: 'Oisann, her gikk noe galt',
             description: 'En kort beskrivelse av feilen som oppsto.',
-            back: 'Tilbake',
+            linksTitle: 'Kom igang:',
+            back: 'Gå tilbake',
             goToFrontPage: 'Gå til forsiden',
           }}
         />

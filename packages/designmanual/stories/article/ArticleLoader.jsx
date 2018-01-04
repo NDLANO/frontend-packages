@@ -9,8 +9,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { OneColumn, Article, Button } from 'ndla-ui';
 import moment from 'moment';
+import { OneColumn, Article, Button } from 'ndla-ui';
+import { Resources } from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseExample from './LicenseExample';
 import SimpleSubmitForm from './SimpleSubmitForm';
@@ -73,8 +74,9 @@ class ArticleLoader extends Component {
                 edition: 'Utgave',
                 publisher: 'Utgiver',
               }}
-              licenseBox={<LicenseExample />}
-            />
+              licenseBox={<LicenseExample />}>
+              <Resources />
+            </Article>
           </OneColumn>
         ) : (
           <SimpleSubmitForm

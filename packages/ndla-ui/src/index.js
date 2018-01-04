@@ -49,7 +49,7 @@ export {
   ResourcesTitle,
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
-export { default as Glossary } from './Glossary';
+export { default as Concept } from './Concept';
 export {
   default as Breadcrumb,
   BreadcrumbBlock,

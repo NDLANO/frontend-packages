@@ -8,13 +8,16 @@
  * http://csswizardry.com/2016/02/managing-typography-on-large-apps/).
  */
 
-
 // We have all of our heading font sizes defined here. Passing these pixel
 // values into our `inuit-font-size()` mixin will generate a rem-based
 // `font-size` with a pixel fallback, as well as generating a `line-height` that
 // will sit on our baseline grid.
 
-h1, h2, h3, h4, h5, .u-heading3 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: $font-weight-bold;
   font-family: $font;
   margin: $spacing 0 $spacing 0;
@@ -31,7 +34,10 @@ h1 {
   }
 }
 
-h2, h3, .u-heading3, h4, h5 {
+h2,
+h3,
+h4,
+h5 {
   margin-top: $spacing--large;
   margin-bottom: $spacing--small;
   @include inuit-font-size(22px, 30px);
@@ -40,7 +46,9 @@ h2, h3, .u-heading3, h4, h5 {
   }
 }
 
-h3, h4, h5 {
+h3,
+h4,
+h5 {
   @include inuit-font-size(18px, 26px);
   margin-top: $spacing--medium;
   margin-bottom: $spacing--small / 2;

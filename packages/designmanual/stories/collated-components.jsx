@@ -31,7 +31,7 @@ import {
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample from './article/LicenseExample';
-import GlossaryExample from './organisms/GlossaryExample';
+import ConceptExample from './organisms/ConceptExample';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -70,7 +70,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Begrepsforklaring', () => (
     <Center>
-      <GlossaryExample />
+      <ConceptExample />
     </Center>
   ))
   .add('Emnebeskrivelse', () => (

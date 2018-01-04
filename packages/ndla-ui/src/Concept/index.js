@@ -6,6 +6,6 @@
  *
  */
 
-import Glossary from './Glossary';
+import Concept from './Concept';
 
-export default Glossary;
+export default Concept;

@@ -62,7 +62,6 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
 
-
     return (
       <Figure
         resizeIframe={resizeIframe}

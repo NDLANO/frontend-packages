@@ -11,17 +11,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'ndla-util';
-import BEMHelper from 'react-bem-helper';
 
 import Dialog from '../Dialog';
 import { ContributorShape } from '../shapes';
-import LicenseByline from '../LicenseByline';
-
-const classLicenses = new BEMHelper({
-  name: 'figure-license',
-  prefix: 'c-',
-});
+import {
+  classLicenses,
+  FigureLicenseByline,
+  FigureLicenseCta,
+} from './FigureLicense';
 
 export const FigureFullscreenDialog = ({
   children,
@@ -57,50 +54,19 @@ export const FigureFullscreenDialog = ({
           </p>
           <div {...classLicenses('hidden-content')}>
             <div>
-              <LicenseByline
-                withDescription
-                messages={messages}
+              <FigureLicenseByline
+                licenseUrl={licenseUrl}
                 licenseRights={licenseRights}
+                messages={messages}
               />
-              <a
-                {...classLicenses('link')}
-                target="_blank"
-                rel="noopener noreferrer"
-                href={licenseUrl}>
-                {messages.learnAboutLicenses}
-              </a>
             </div>
-
-            <div {...classLicenses('cta-wrapper')}>
-              <ul {...classLicenses('list')}>
-                {title && (
-                  <li {...classLicenses('item')}>
-                    {`${messages.title}: ${title}`}
-                  </li>
-                )}
-                {authors.map(author => (
-                  <li key={uuid()} {...classLicenses('item')}>{`${
-                    author.type
-                  }: ${author.name}`}</li>
-                ))}
-                {origin && (
-                  <li {...classLicenses('item')}>
-                    {messages.source}:{' '}
-                    {origin.startsWith('http') ? (
-                      <a
-                        href={origin}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        {origin}
-                      </a>
-                    ) : (
-                      origin
-                    )}
-                  </li>
-                )}
-              </ul>
-              <div {...classLicenses('cta-block')}>{actionButtons}</div>
-            </div>
+            <FigureLicenseCta
+              authors={authors}
+              title={title}
+              origin={origin}
+              messages={messages}>
+              {actionButtons}
+            </FigureLicenseCta>
           </div>
         </div>
       </div>

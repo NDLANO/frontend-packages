@@ -35,6 +35,9 @@
   margin-right: $spacing--small;
   margin-bottom: 0;
   text-transform: none;
+  a:hover {
+    box-shadow: none;
+  }
   &:before {
     display: none;
   }

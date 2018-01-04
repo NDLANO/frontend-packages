@@ -1,12 +1,12 @@
 /**
-** GLOSSARY
-** A custom glossary links, show popup with explanation on click
+** CONCEPT
+** A custom concept links, show popup with explanation on click
 **/
 
-.c-glossary-word__item {
+.c-concept__item {
   display: inline;
 }
-.c-glossary-word__link {
+.c-concept__link {
   background: none;
   border: none;
   font-family: $font-serif;
@@ -47,12 +47,16 @@
     }
   }
 }
-.c-glossary-word__popup {
+.c-concept__popup {
   display: none;
   position: absolute;
-  width: 87%;
-  @include mq(desktop) {
-    width: 100%;
+  width: 90%;
+  left: 5%;
+
+  @include mq($from: tablet) {
+    max-width: 500px;
+    left: 50%;
+    margin-left: -250px;
   }
   box-shadow: 0 0 30px rgba($black, 0.2);
   box-sizing: border-box;
@@ -62,24 +66,24 @@
   opacity: 0;
 }
 
-.c-glossary-word__popup--visible {
+.c-concept__popup--visible {
   animation-name: fadeInTop;
   animation-duration: 0.4s;
   opacity: 1;
   display: block;
 }
 
-.c-glossary-word__title {
+.c-concept__title {
   margin-top: 0;
   border-bottom: 2px solid $brand-color;
   text-transform: capitalize;
   display: block;
 }
-.c-glossary-word__content {
+.c-concept__content {
   display: block;
   padding-top: $spacing--small/2;
 }
-.c-glossary-word__footer {
+.c-concept__footer {
   padding-top: $spacing--small;
   @include inuit-font-size(15px);
   color: $brand-grey;
@@ -87,13 +91,13 @@
     flex-direction: row;
   }
 }
-.c-glossary-word__author {
+.c-concept__author {
   margin-right: $spacing;
 }
-.c-glossary-word__close {
+.c-concept__close {
   display: inline-block;
   position: absolute;
-  top: $spacing;
+  top: $spacing*1.1;
   right: $spacing;
   background: transparent;
   border: none;

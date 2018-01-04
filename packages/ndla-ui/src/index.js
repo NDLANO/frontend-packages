@@ -49,7 +49,7 @@ export {
   ResourcesTitle,
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
-export { default as Glossary } from './Glossary';
+export { default as Concept } from './Concept';
 export {
   default as Breadcrumb,
   BreadcrumbBlock,
@@ -57,7 +57,12 @@ export {
 } from './Breadcrumb';
 export { Hero } from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export { Figure, FigureCaption, FigureLicenseDialog } from './Figure';
+export {
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+  FigureFullscreenDialog,
+} from './Figure';
 export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 export {
   MediaList,

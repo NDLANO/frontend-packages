@@ -12,23 +12,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { createUniversalPortal } from './createUniversalPortal';
+import { createUniversalPortal } from '../utils/createUniversalPortal';
 
 const classes = new BEMHelper({
   name: 'dialog',
   prefix: 'c-',
 });
 
-export const Dialog = ({ children, messages, id, labelledby, ...rest }) =>
+export const Dialog = ({
+  children,
+  messages,
+  id,
+  labelledby,
+  modifier,
+  ...rest
+}) =>
   createUniversalPortal(
     <div
-      className="c-dialog"
+      className={`c-dialog c-dialog--${modifier}`}
       data-dialog-id={id}
       role="dialog"
       aria-hidden="true"
       aria-labelledby={labelledby}
       {...rest}>
-      <div {...classes('content')}>
+      <div {...classes('content', modifier)}>
         <button {...classes('close')}>{messages.close}</button>
         {children}
       </div>
@@ -44,4 +51,5 @@ Dialog.propTypes = {
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
+  modifier: PropTypes.string,
 };

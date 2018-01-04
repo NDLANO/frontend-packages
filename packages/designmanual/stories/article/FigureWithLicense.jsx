@@ -1,9 +1,8 @@
 /*
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2018-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
- * FRI OG BEGRENSET
  */
 
 import React, { Component } from 'react';
@@ -15,10 +14,16 @@ import {
   addShowDialogClickListeners,
   addEventListenerForResize,
   updateIFrameDimensions,
-  addEventListenersForZoom,
+  toggleLicenseInfoBox,
 } from 'ndla-article-scripts';
 
-import { Figure, FigureCaption, FigureLicenseDialog, Button } from 'ndla-ui';
+import {
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+  FigureFullscreenDialog,
+  Button,
+} from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -34,12 +39,13 @@ class FigureWithLicense extends Component {
       addCloseDialogClickListeners();
       updateIFrameDimensions();
       addEventListenerForResize();
-      addEventListenersForZoom();
+      toggleLicenseInfoBox();
     }
   }
 
   render() {
     const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
+    const { resizeIframe, type } = this.props;
 
     const messages = {
       close: 'Lukk',
@@ -55,41 +61,70 @@ class FigureWithLicense extends Component {
     const reuseLabel = this.props.reuseLabel
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
-    const typeLabel = this.props.typeLabel ? this.props.typeLabel : 'bilde';
-
-    const captionAndDetails = !this.props.noCaption
-      ? [
-          !this.props.noFigcaption ? (
-            <FigureCaption
-              key={caption}
-              caption={caption}
-              reuseLabel={reuseLabel}
-              licenseRights={license.rights}
-              authors={authors}
-            />
-          ) : null, // TODO: Add HiddenFigureCaption component with Fullscreen icon which expands caption on click
-          <FigureLicenseDialog
-            id={this.id}
-            key="details"
-            licenseRights={license.rights}
-            authors={authors}
-            licenseUrl={license.url}
-            origin="https://www.wikimedia.com"
-            title="Mann med lupe"
-            messages={messages}>
-            <Button outline>Kopier referanse</Button>
-            <Button outline>Last ned {typeLabel}</Button>
-          </FigureLicenseDialog>,
-        ]
-      : null;
 
     return (
       <Figure
-        id={this.id}
-        resizeIframe={this.props.resizeIframe}
-        type={this.props.type}
-        captionView={captionAndDetails}>
-        {this.props.children}
+        resizeIframe={resizeIframe}
+        type={type}
+        noFigcaption={this.props.noFigcaption}>
+        {!resizeIframe // Probably image
+          ? [
+              <Button
+                key="button"
+                data-dialog-trigger-id={`fs-${this.id}`}
+                stripped
+                className="u-fullw">
+                {this.props.children}
+              </Button>,
+              <FigureFullscreenDialog
+                key="dialog"
+                id={`fs-${this.id}`}
+                messages={messages}
+                title="Mann med lupe"
+                caption={caption}
+                reuseLabel={reuseLabel}
+                licenseRights={license.rights}
+                licenseUrl={license.url}
+                actionButtons={[
+                  <Button key="copy" outline>
+                    Kopier referanse
+                  </Button>,
+                  <Button key="download" outline>
+                    Last ned bilde
+                  </Button>,
+                ]}
+                authors={authors}>
+                <img
+                  className="c-figure-license__img"
+                  src={this.props.children.props.src}
+                  alt={this.props.children.props.alt}
+                />
+              </FigureFullscreenDialog>,
+            ]
+          : this.props.children}
+
+        {!this.props.noFigcaption ? (
+          <FigureCaption
+            id={this.id}
+            key="caption"
+            caption={caption}
+            reuseLabel={reuseLabel}
+            licenseRights={license.rights}
+            authors={authors}>
+            <FigureLicenseDialog
+              id={this.id}
+              key="details"
+              licenseRights={license.rights}
+              authors={authors}
+              licenseUrl={license.url}
+              origin="https://www.wikimedia.com"
+              title="Mann med lupe"
+              messages={messages}>
+              <Button outline>Kopier referanse</Button>
+              <Button outline>Last ned bilde</Button>
+            </FigureLicenseDialog>
+          </FigureCaption>
+        ) : null}
       </Figure>
     );
   }
@@ -99,7 +134,6 @@ FigureWithLicense.propTypes = {
   children: PropTypes.node.isRequired,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
-  typeLabel: PropTypes.string,
   runScripts: PropTypes.bool,
   noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,

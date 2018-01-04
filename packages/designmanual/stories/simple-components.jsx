@@ -185,6 +185,7 @@ storiesOf('Enkle komponenter', module)
         <FigureWithLicense
           noFigcaption
           type="small-left"
+          hideFigcaption
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
           <Image
             alt="Forstørrelsesglass"
@@ -836,7 +837,7 @@ storiesOf('Enkle komponenter', module)
           <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？//你叫什麼名字？
           </TranslationLine>
-          <TranslationLine lang="pn" langName="Pingyu">
+          <TranslationLine lang="pn" langName="Pinyin">
             Nǐ jiào shénme míngzi?
           </TranslationLine>
           <TranslationLine lang="nb" langName="Norsk">
@@ -847,7 +848,7 @@ storiesOf('Enkle komponenter', module)
           <TranslationLine lang="cn" langName="Kinesisk">
             你是学生。//你是學生。
           </TranslationLine>
-          <TranslationLine lang="pn" langName="Pingyu">
+          <TranslationLine lang="pn" langName="Pinyin">
             Nǐ shì xuésheng.
           </TranslationLine>
           <TranslationLine lang="nb" langName="Norsk">

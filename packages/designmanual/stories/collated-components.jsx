@@ -31,7 +31,7 @@ import {
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample from './article/LicenseExample';
-import GlossaryExample from './organisms/GlossaryExample';
+import ConceptExample from './organisms/ConceptExample';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -70,7 +70,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Begrepsforklaring', () => (
     <Center>
-      <GlossaryExample />
+      <ConceptExample />
     </Center>
   ))
   .add('Emnebeskrivelse', () => (
@@ -418,9 +418,10 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <ErrorMessage
           messages={{
-            title: 'Oops, noe gikk galt',
+            title: 'Oisann, her gikk noe galt',
             description: 'En kort beskrivelse av feilen som oppsto.',
-            back: 'Tilbake',
+            linksTitle: 'Kom igang:',
+            back: 'Gå tilbake',
             goToFrontPage: 'Gå til forsiden',
           }}
         />

@@ -20,6 +20,21 @@ const closeDialog = dialog => {
   noScroll(false);
 };
 
+export const toggleLicenseInfoBox = () => {
+  forEachElement('.c-dialog', el => {
+    const target = el;
+    const toggleButton = target.querySelector('.c-figure__captionbtn');
+    if (toggleButton) {
+      toggleButton.onclick = () => {
+        target
+          .querySelector('.c-figure-license__hidden-content')
+          .classList.add('c-figure-license__hidden-content--active');
+        target.querySelector('.c-dialog__content--fullscreen').scrollTop = 350;
+      };
+    }
+  });
+};
+
 export const addCloseDialogClickListeners = () => {
   forEachElement('.c-dialog', el => {
     const target = el;
@@ -36,10 +51,10 @@ export const addCloseDialogClickListeners = () => {
 };
 
 export const addShowDialogClickListeners = () => {
-  forEachElement('.c-figure .c-figure__captionbtn', el => {
+  forEachElement('.c-figure [data-dialog-trigger-id]', el => {
     const target = el;
     const figure = findAncestorByClass(target, 'c-figure');
-    const id = figure.getAttribute('id');
+    const id = target.getAttribute('data-dialog-trigger-id');
 
     const dialog = document.querySelector(`[data-dialog-id='${id}']`);
     const dialogContent = dialog.querySelector(`.c-dialog__content`);
@@ -76,6 +91,13 @@ export const addShowDialogClickListeners = () => {
         dialog.classList.add('c-dialog--active');
       }, 150);
     };
+  });
+};
+
+export const removeShowDialogClickListeners = () => {
+  forEachElement('.c-figure [data-dialog-trigger-id]', el => {
+    const target = el;
+    target.onclick = undefined;
   });
 };
 
@@ -148,23 +170,4 @@ export const addEventListenerForResize = () => {
 
 export const removeEventListenerForResize = () => {
   window.removeEventListener('resize', handler);
-};
-
-export const addEventListenersForZoom = () => {
-  forEachElement('.c-figure > .c-button', el => {
-    const { parentNode } = el;
-    const target = el;
-
-    target.onclick = () => {
-      const toggleClass = parentNode.getAttribute('data-toggleclass');
-      parentNode.classList.toggle(toggleClass);
-    };
-  });
-};
-
-export const removeEventListenersForZoom = () => {
-  forEachElement('.c-figure > .c-button', el => {
-    const target = el;
-    target.onclick = undefined;
-  });
 };

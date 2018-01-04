@@ -13,13 +13,13 @@ import {
 
 import {
   addShowDialogClickListeners,
+  removeShowDialogClickListeners,
   addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   updateIFrameDimensions,
   addEventListenerForResize,
   removeEventListenerForResize,
-  addEventListenersForZoom,
-  removeEventListenersForZoom,
+  toggleLicenseInfoBox,
 } from './figureScripts';
 
 import {
@@ -31,7 +31,7 @@ import { addFootnoteClickListeners } from './footnoteScripts';
 
 import { initAudioPlayers } from './audioPlayerScript';
 
-import { addShowGlossaryDefinitionClickListeners } from './glossaryScripts';
+import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 
 export const initArticleScripts = () => {
   addEventListenerForResize();
@@ -40,9 +40,8 @@ export const initArticleScripts = () => {
   addCopyToClipboardListeners();
   addShowDialogClickListeners();
   addCloseDialogClickListeners();
-  addShowGlossaryDefinitionClickListeners();
+  addShowConceptDefinitionClickListeners();
   addDetailsEventListeners();
-  addEventListenersForZoom();
   initAudioPlayers();
   addFootnoteClickListeners();
 };
@@ -55,12 +54,12 @@ export {
   removeEventListenerForResize,
   addCloseDialogClickListeners,
   addCopyToClipboardListeners,
+  addShowConceptDefinitionClickListeners,
   addShowDialogClickListeners,
-  addShowGlossaryDefinitionClickListeners,
+  removeShowDialogClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,
-  addEventListenersForZoom,
-  removeEventListenersForZoom,
   initAudioPlayers,
   addFootnoteClickListeners,
+  toggleLicenseInfoBox,
 };

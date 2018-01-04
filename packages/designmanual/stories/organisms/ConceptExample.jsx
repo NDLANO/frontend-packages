@@ -8,15 +8,15 @@
 
 import React, { Component } from 'react';
 import { Time, User } from 'ndla-icons/common';
-import { Glossary, OneColumn, LayoutItem, Image } from 'ndla-ui';
-import { addShowGlossaryDefinitionClickListeners } from 'ndla-article-scripts';
+import { Concept, OneColumn, LayoutItem, Image } from 'ndla-ui';
+import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
 
 import LicenseExample from '../article/LicenseExample';
 import FigureWithLicense from '../article/FigureWithLicense';
 
-class GlossaryExample extends Component {
+class ConceptExample extends Component {
   componentDidMount() {
-    addShowGlossaryDefinitionClickListeners();
+    addShowConceptDefinitionClickListeners();
   }
 
   render() {
@@ -45,7 +45,7 @@ class GlossaryExample extends Component {
               <div>
                 <p>
                   Gjennom{' '}
-                  <Glossary
+                  <Concept
                     content="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre med andre ord at de blir som de andre i samfunnet."
                     authors={['Gary Waters']}
                     source="snl.no"
@@ -57,7 +57,7 @@ class GlossaryExample extends Component {
                     license="by-nc-nd"
                     id={1}>
                     sosialisering
-                  </Glossary>{' '}
+                  </Concept>{' '}
                   lærer menneskene å fungere i et samfunn og får kjennskap til
                   de regler og verdier som det forventes at man skal følge.
                   Sosialisering er dermed den prosessen som gjør at vi tar til
@@ -90,7 +90,7 @@ class GlossaryExample extends Component {
                 <p>
                   For å forsterke innlæringen av normer følges de opp av
                   reaksjoner eller sanksjoner.{' '}
-                  <Glossary
+                  <Concept
                     content="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
                     authors={[]}
                     title="sanksjon"
@@ -101,10 +101,10 @@ class GlossaryExample extends Component {
                     license="by-nc-nd"
                     id={2}>
                     Sanksjonene
-                  </Glossary>{' '}
+                  </Concept>{' '}
                   kan både være positive og negative. Ønsket adferd belønnes,
                   men uønsket adferd straffes. Når en person har gjort{' '}
-                  <Glossary
+                  <Concept
                     content="Norm, særskilt sosiale normer, er en sosiologisk betegnelse for intersubjektive, allment delte og ofte underforståtte regler og forventninger på oppførsel som gjelder for et mindre sosialt fellesskap og for samfunnet i sin helhet."
                     authors={[]}
                     title="Norm"
@@ -115,7 +115,7 @@ class GlossaryExample extends Component {
                     license="by-nc-nd"
                     id={3}>
                     normene
-                  </Glossary>{' '}
+                  </Concept>{' '}
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
                 </p>
@@ -128,4 +128,4 @@ class GlossaryExample extends Component {
   }
 }
 
-export default GlossaryExample;
+export default ConceptExample;

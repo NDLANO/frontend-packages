@@ -35,7 +35,6 @@
   margin-bottom: $spacing--small/2;
   h1 a {
     color: $brand-color;
-    box-shadow: none;
   }
 }
 
@@ -67,4 +66,8 @@
 }
 .c-topic-resource__button {
   margin: $spacing--small auto;
+}
+.c-topic-resource__additional-resources-trigger {
+  text-align: center;
+  padding: $spacing 0;
 }

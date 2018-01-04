@@ -6,6 +6,6 @@
  *
  */
 
-import Glossary from './Glossary';
+import Search from './Search';
 
-export default Glossary;
+export default Search;

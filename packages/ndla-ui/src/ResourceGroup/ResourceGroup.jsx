@@ -87,7 +87,6 @@ ResourceGroup.propTypes = {
   messages: PropTypes.shape({
     activateAdditionalResources: PropTypes.string.isRequired,
     noCoreResourcesAvailable: PropTypes.string.isRequired,
-    activateSuggestion: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,
     showLess: PropTypes.string.isRequired,

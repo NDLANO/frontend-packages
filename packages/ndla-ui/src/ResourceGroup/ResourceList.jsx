@@ -100,23 +100,16 @@ class ResourceList extends Component {
               isHidden={false}
             />
           ))}
-          {normalResources.length === 0 ? (
+          {normalResources.length === 0 && !showAdditionalResources ? (
             <div {...classes('additional-resources-trigger')}>
-              {additionalResources.length ? (
-                <span>
-                  {showAdditionalResources ? null : (
-                    <div>
-                      <p>
-                        {messages.noCoreResourcesAvailable}{' '}
-                        {messages.activateSuggestion}{' '}
-                      </p>
-                      <Button outline onClick={onClick}>
-                        {messages.activateAdditionalResources}
-                      </Button>
-                    </div>
-                  )}
-                </span>
-              ) : null}
+              <span>
+                <div>
+                  <p>{messages.noCoreResourcesAvailable}</p>
+                  <Button outline onClick={onClick}>
+                    {messages.activateAdditionalResources}
+                  </Button>
+                </div>
+              </span>
             </div>
           ) : (
             normalResources.map((resource, index) => (
@@ -156,7 +149,6 @@ ResourceList.propTypes = {
   empty: PropTypes.bool,
   messages: PropTypes.shape({
     noCoreResourcesAvailable: PropTypes.string.isRequired,
-    activateSuggestion: PropTypes.string.isRequired,
     activateAdditionalResources: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
     showMore: PropTypes.string.isRequired,

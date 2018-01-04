@@ -74,7 +74,6 @@ export const Resources = ({ onlyAdditional }) => (
         icon={group.iconEl}
         messages={{
           noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
-          activateSuggestion: '',
           activateAdditionalResources: 'Vis tilleggsstoff',
           toggleFilterLabel: 'Tilleggsstoff',
           showLess: 'Vis mindre',

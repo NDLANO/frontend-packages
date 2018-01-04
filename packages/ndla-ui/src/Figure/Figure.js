@@ -21,6 +21,7 @@ const classes = new BEMHelper({
 });
 
 export const FigureCaption = ({
+  id,
   caption,
   authors,
   reuseLabel,
@@ -34,7 +35,7 @@ export const FigureCaption = ({
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button {...classes('captionbtn')}>
+          <button data-dialog-trigger-id={id} {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
         </LicenseByline>
@@ -44,6 +45,7 @@ export const FigureCaption = ({
 );
 
 FigureCaption.propTypes = {
+  id: PropTypes.string.isRequired,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -55,7 +57,6 @@ FigureCaption.propTypes = {
 };
 
 export const Figure = ({
-  id,
   children,
   captionView,
   type,
@@ -76,7 +77,7 @@ export const Figure = ({
   }
 
   return (
-    <figure id={id} {...classes('', modifiers, typeClass)} {...rest}>
+    <figure {...classes('', modifiers, typeClass)} {...rest}>
       {noFigcaption ? (
         <div {...classes('fullscreen-btn')}>
           <Fullscreen />

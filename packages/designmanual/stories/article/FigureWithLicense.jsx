@@ -68,7 +68,8 @@ class FigureWithLicense extends Component {
       ? [
           !this.props.noFigcaption ? (
             <FigureCaption
-              key={caption}
+              id={this.id}
+              key="caption"
               caption={caption}
               reuseLabel={reuseLabel}
               licenseRights={license.rights}
@@ -93,7 +94,6 @@ class FigureWithLicense extends Component {
 
     return (
       <Figure
-        id={this.id}
         resizeIframe={resizeIframe}
         type={type}
         captionView={captionAndDetails}

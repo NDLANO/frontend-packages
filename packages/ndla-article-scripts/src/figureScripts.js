@@ -51,10 +51,10 @@ export const addCloseDialogClickListeners = () => {
 };
 
 export const addShowDialogClickListeners = () => {
-  forEachElement('.c-figure .c-figure__captionbtn', el => {
+  forEachElement('.c-figure [data-dialog-trigger-id]', el => {
     const target = el;
     const figure = findAncestorByClass(target, 'c-figure');
-    const id = figure.getAttribute('id');
+    const id = target.getAttribute('data-dialog-trigger-id');
 
     const dialog = document.querySelector(`[data-dialog-id='${id}']`);
     const dialogContent = dialog.querySelector(`.c-dialog__content`);
@@ -91,6 +91,13 @@ export const addShowDialogClickListeners = () => {
         dialog.classList.add('c-dialog--active');
       }, 150);
     };
+  });
+};
+
+export const removeShowDialogClickListeners = () => {
+  forEachElement('.c-figure [data-dialog-trigger-id]', el => {
+    const target = el;
+    target.onclick = undefined;
   });
 };
 
@@ -163,55 +170,4 @@ export const addEventListenerForResize = () => {
 
 export const removeEventListenerForResize = () => {
   window.removeEventListener('resize', handler);
-};
-
-export const addEventListenersForZoom = () => {
-  forEachElement('.c-figure > [data-dialog-trigger-id]', el => {
-    const target = el;
-    const figure = findAncestorByClass(target, 'c-figure');
-    const id = target.getAttribute('data-dialog-trigger-id');
-
-    const dialog = document.querySelector(`[data-dialog-id='${id}']`);
-    const dialogContent = dialog.querySelector(`.c-dialog__content`);
-
-    trapInstances[id] = createFocusTrap(dialogContent, {
-      onDeactivate: () => {
-        closeDialog(dialog);
-      },
-      clickOutsideDeactivates: true,
-    });
-
-    target.onclick = () => {
-      noScroll(true);
-      const viewportHeight = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0,
-      );
-      const figureHeight = figure.offsetHeight;
-
-      jump(figure, {
-        offset: -((viewportHeight - figureHeight) / 2),
-        duration: 300,
-        callback: () => {
-          const instance = trapInstances[id];
-
-          if (instance) {
-            instance.activate();
-          }
-        },
-      });
-
-      setTimeout(() => {
-        dialog.setAttribute('aria-hidden', 'false');
-        dialog.classList.add('c-dialog--active');
-      }, 150);
-    };
-  });
-};
-
-export const removeEventListenersForZoom = () => {
-  forEachElement('.c-figure > [data-dialog-trigger-id]', el => {
-    const target = el;
-    target.onclick = undefined;
-  });
 };

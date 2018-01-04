@@ -10,22 +10,22 @@
   background-color: $mark-color;
   a {
     color: $black;
-    border-bottom: 1px solid $brand-grey !important;
+    border-bottom: 1px solid $brand-grey;
   }
   a:hover {
     color: $black;
-    border: none !important;
+    border: none;
   }
 }
 .c-hero--green {
   background-color: rgba($green, 1);
   a {
     color: $black;
-    border-bottom: 1px solid $brand-grey !important;
+    border-bottom: 1px solid $brand-grey;
   }
   a:hover {
     color: $black;
-    border: none !important;
+    border: none;
   }
 }
 

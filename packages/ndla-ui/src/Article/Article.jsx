@@ -94,8 +94,8 @@ export const Article = ({
               messages={messages}
             />
           )}
-        {children}
       </LayoutItem>
+      <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>
   );
 };

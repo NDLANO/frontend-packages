@@ -4,27 +4,6 @@
   padding: 0 0 $spacing 0;
   border-bottom: 2px solid $brand-color--lighter;
 }
-.c-translation__index {
-  width: 7%;
-  color: gray;
-}
-.c-translation__wrapper {
-  width: 93%;
-}
-.c-translation__line {
-  padding: 2px 4px;
-  
-  @include mq(tablet) {
-    display: flex;
-    vertical-align: middle;
-    &:hover, &:focus {
-      background: $brand-color--lighter;
-      .c-translation__line-lang {
-        display: inline-block;
-      }
-    }
-  }
-}
 .c-translation__line-lang {
   display: inline-block;
   margin-bottom: $spacing--small;
@@ -37,4 +16,41 @@
   background: $brand-color--tertiary;
   color: $brand-color;
   @include inuit-font-size(12px, 16px);
+  padding: $spacing--small;
+  margin-bottom: $spacing--small;
+  border-bottom: 2px solid $brand-color--lighter;
+  display: flex;
+  flex-wrap: wrap;
+}
+.c-translation__index {
+  width: 7%;
+  height: 100%;
+  padding-right: $spacing--small;
+  color: $brand-color--secondary;
+}
+.c-translation__wrapper {
+  width: 90%;
+  display: block;
+}
+.c-translation__line {
+  padding: 2px 4px;
+  vertical-align: middle;
+  display: flex;
+}
+.c-translation__line-lang {
+  display: none;
+  background: $brand-color--tertiary;
+  color: $brand-color;
+  padding: 3px 6px;
+  height: 18px;
+  margin: auto 0 auto $spacing--small;
+  border-radius: 3px;
+  @include inuit-font-size(12px, 12px);
+}
+
+.c-translation__line:hover {
+  background: $brand-color--lighter;
+  .c-translation__line-lang {
+    display: inline-block;
+  }
 }

@@ -20,44 +20,64 @@ import {
   FigureLicenseCta,
 } from './FigureLicense';
 
-export const FigureLicenseDialog = ({
+export const FigureFullscreenDialog = ({
   children,
   messages,
   id,
   authors,
   origin,
   title,
+  actionButtons,
   licenseUrl,
   licenseRights,
+  caption,
+  reuseLabel,
 }) => {
   const headingLabelId = `heading-${id}`;
   return (
-    <Dialog id={id} labelledby={headingLabelId} messages={messages}>
-      <div {...classLicenses()}>
-        <h3 id={headingLabelId} {...classLicenses('title')}>
-          {messages.rulesForUse}
-        </h3>
-
-        <FigureLicenseByline
-          licenseUrl={licenseUrl}
-          licenseRights={licenseRights}
-          messages={messages}
-        />
-        <FigureLicenseCta
-          authors={authors}
-          title={title}
-          origin={origin}
-          messages={messages}>
+    <Dialog
+      id={id}
+      labelledby={headingLabelId}
+      messages={messages}
+      modifier="fullscreen">
+      <div {...classLicenses('', 'fullscreen')}>
+        <div {...classLicenses('content')}>
           {children}
-        </FigureLicenseCta>
+          <h3 id={headingLabelId} {...classLicenses('image-title')}>
+            {title}
+          </h3>
+          {caption}
+          <p>
+            <button className="c-figure__captionbtn">
+              <span>{reuseLabel}</span>
+            </button>
+          </p>
+          <div {...classLicenses('hidden-content')}>
+            <div>
+              <FigureLicenseByline
+                licenseUrl={licenseUrl}
+                licenseRights={licenseRights}
+                messages={messages}
+              />
+            </div>
+            <FigureLicenseCta
+              authors={authors}
+              title={title}
+              origin={origin}
+              messages={messages}>
+              {actionButtons}
+            </FigureLicenseCta>
+          </div>
+        </div>
       </div>
     </Dialog>
   );
 };
 
-FigureLicenseDialog.propTypes = {
+FigureFullscreenDialog.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node,
+  actionButtons: PropTypes.node.isRequired,
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   origin: PropTypes.string,
   authors: PropTypes.arrayOf(ContributorShape),
@@ -69,6 +89,8 @@ FigureLicenseDialog.propTypes = {
     learnAboutLicenses: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   licenseUrl: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
+  reuseLabel: PropTypes.string,
 };

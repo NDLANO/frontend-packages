@@ -66,7 +66,7 @@ const Concept = ({
             </span>
           </div>
         </div>,
-        '.c-article',
+        'body',
       )}
     </span>
   );

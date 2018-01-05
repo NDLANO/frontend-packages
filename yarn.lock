@@ -63,10 +63,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@hypnosphi/fuse.js@^3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@hypnosphi/fuse.js/-/fuse.js-3.0.9.tgz#ea99f6121b4a8f065b4c71f85595db2714498807"
-
 "@storybook/addon-actions@3.3.2":
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.3.2.tgz#9e5e2b64ebdaab4bc439f679751854cc552a3438"
@@ -76,17 +72,6 @@
     make-error "^1.3.2"
     prop-types "^15.6.0"
     react-inspector "^2.2.2"
-    uuid "^3.1.0"
-
-"@storybook/addon-actions@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.2.17.tgz#e85d38f743125157fdaf6669708e089bc2008e50"
-  dependencies:
-    "@storybook/addons" "^3.2.17"
-    deep-equal "^1.0.1"
-    json-stringify-safe "^5.0.1"
-    prop-types "^15.6.0"
-    react-inspector "^2.2.1"
     uuid "^3.1.0"
 
 "@storybook/addon-actions@^3.3.2":
@@ -116,23 +101,6 @@
     react-textarea-autosize "^5.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-knobs@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-3.2.17.tgz#337320c704f9bf53217278aa7a7d442c3428fcf3"
-  dependencies:
-    "@storybook/addons" "^3.2.17"
-    babel-runtime "^6.26.0"
-    deep-equal "^1.0.1"
-    global "^4.3.2"
-    insert-css "^2.0.0"
-    lodash.debounce "^4.0.8"
-    moment "^2.19.2"
-    prop-types "^15.6.0"
-    react-color "^2.11.4"
-    react-datetime "^2.11.0"
-    react-textarea-autosize "^5.2.1"
-    util-deprecate "^1.0.2"
-
 "@storybook/addon-links@3.3.2":
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.3.2.tgz#8b3bbc9c70ab34e348b5b61ad80ae20de92bb95a"
@@ -140,12 +108,6 @@
     "@storybook/components" "^3.3.2"
     global "^4.3.2"
     prop-types "^15.5.10"
-
-"@storybook/addon-links@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.2.17.tgz#fb1d5f5f16575e56d560955d70c2a756c9f5b612"
-  dependencies:
-    "@storybook/addons" "^3.2.17"
 
 "@storybook/addon-links@^3.3.2":
   version "3.3.3"
@@ -159,27 +121,9 @@
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-3.3.2.tgz#1bc671d5cd2df9dd19783b1e3c83b24be2505cbc"
 
-"@storybook/addon-options@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-3.2.17.tgz#1ca1de1f3cf8ac7ec99bcdd534d6e034f9ee4f20"
-  dependencies:
-    "@storybook/addons" "^3.2.17"
-
-"@storybook/addons@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.2.17.tgz#5c2ece24c5f7fbf7cedf4cfe503c5e356543e62d"
-
 "@storybook/addons@^3.3.2":
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.3.3.tgz#968d98a61957bc30db642b43924c3332dbaec40e"
-
-"@storybook/channel-postmessage@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-3.2.17.tgz#530c1d6852b2c77df08490988fa943ba1373b1ec"
-  dependencies:
-    "@storybook/channels" "^3.2.17"
-    global "^4.3.2"
-    json-stringify-safe "^5.0.1"
 
 "@storybook/channel-postmessage@^3.3.2":
   version "3.3.3"
@@ -189,10 +133,6 @@
     global "^4.3.2"
     json-stringify-safe "^5.0.1"
 
-"@storybook/channels@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-3.2.17.tgz#09219a512564d1aa2292419d8d6064dbf7f5a5b3"
-
 "@storybook/channels@^3.3.3":
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-3.3.3.tgz#ee9a496f984a41c0b12b523a1375d21e1f05eb7d"
@@ -200,14 +140,6 @@
 "@storybook/client-logger@^3.3.2":
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-3.3.3.tgz#3fd2a8dc243d9d3d2f171f7a02f58c805c409385"
-
-"@storybook/components@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-3.2.17.tgz#318c6e6a1d3ffb469523b5dcfee775639ccc500b"
-  dependencies:
-    glamor "^2.20.40"
-    glamorous "^4.11.0"
-    prop-types "^15.6.0"
 
 "@storybook/components@^3.3.2", "@storybook/components@^3.3.3":
   version "3.3.3"
@@ -217,7 +149,7 @@
     glamorous "^4.11.2"
     prop-types "^15.6.0"
 
-"@storybook/mantra-core@^1.7.0", "@storybook/mantra-core@^1.7.2":
+"@storybook/mantra-core@^1.7.2":
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@storybook/mantra-core/-/mantra-core-1.7.2.tgz#e10c7faca29769e97131e0e0308ef7cfb655b70c"
   dependencies:
@@ -232,16 +164,7 @@
     chalk "^2.3.0"
     npmlog "^4.1.2"
 
-"@storybook/react-fuzzy@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@storybook/react-fuzzy/-/react-fuzzy-0.4.3.tgz#36f7536ba97bf08b03cb57f47c58ae2cca330aec"
-  dependencies:
-    babel-runtime "^6.23.0"
-    classnames "^2.2.5"
-    fuse.js "^3.0.1"
-    prop-types "^15.5.9"
-
-"@storybook/react-komposer@^2.0.0", "@storybook/react-komposer@^2.0.1", "@storybook/react-komposer@^2.0.3":
+"@storybook/react-komposer@^2.0.1", "@storybook/react-komposer@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@storybook/react-komposer/-/react-komposer-2.0.3.tgz#f9e12a9586b2ce95c24c137eabb8b71527ddb369"
   dependencies:
@@ -326,63 +249,6 @@
     webpack-dev-middleware "^1.12.2"
     webpack-hot-middleware "^2.21.0"
 
-"@storybook/react@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.2.17.tgz#c7b0595efef049d4dae89202994c17f332ee4662"
-  dependencies:
-    "@storybook/addon-actions" "^3.2.17"
-    "@storybook/addon-links" "^3.2.17"
-    "@storybook/addons" "^3.2.17"
-    "@storybook/channel-postmessage" "^3.2.17"
-    "@storybook/ui" "^3.2.17"
-    airbnb-js-shims "^1.3.0"
-    autoprefixer "^7.1.6"
-    babel-core "^6.26.0"
-    babel-loader "^7.1.2"
-    babel-plugin-react-docgen "^1.8.0"
-    babel-plugin-transform-regenerator "^6.26.0"
-    babel-plugin-transform-runtime "^6.23.0"
-    babel-preset-env "^1.6.1"
-    babel-preset-minify "^0.2.0"
-    babel-preset-react "^6.24.1"
-    babel-preset-react-app "^3.1.0"
-    babel-preset-stage-0 "^6.24.1"
-    babel-runtime "^6.26.0"
-    case-sensitive-paths-webpack-plugin "^2.1.1"
-    chalk "^2.3.0"
-    commander "^2.12.1"
-    common-tags "^1.5.1"
-    configstore "^3.1.1"
-    core-js "^2.5.1"
-    css-loader "^0.28.7"
-    dotenv-webpack "^1.5.4"
-    express "^4.16.2"
-    file-loader "^1.1.5"
-    find-cache-dir "^1.0.0"
-    glamor "^2.20.40"
-    glamorous "^4.11.0"
-    global "^4.3.2"
-    json-loader "^0.5.7"
-    json-stringify-safe "^5.0.1"
-    json5 "^0.5.1"
-    lodash.flattendeep "^4.4.0"
-    lodash.pick "^4.4.0"
-    postcss-flexbugs-fixes "^3.2.0"
-    postcss-loader "^2.0.9"
-    prop-types "^15.6.0"
-    qs "^6.5.1"
-    redux "^3.7.2"
-    request "^2.83.0"
-    serve-favicon "^2.4.5"
-    shelljs "^0.7.8"
-    style-loader "^0.18.2"
-    url-loader "^0.6.2"
-    util-deprecate "^1.0.2"
-    uuid "^3.1.0"
-    webpack "^3.8.1"
-    webpack-dev-middleware "^1.12.2"
-    webpack-hot-middleware "^2.21.0"
-
 "@storybook/storybook-deployer@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.0.0.tgz#49e3bfc13ff5c7082e4044149c9d2032f0d63e9f"
@@ -390,34 +256,6 @@
     git-url-parse "^6.0.2"
     shelljs "^0.7.0"
     yargs "^8.0.1"
-
-"@storybook/ui@^3.2.17":
-  version "3.2.17"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.2.17.tgz#8838fc5bbe21cedfafc65ee90fe525499370118a"
-  dependencies:
-    "@hypnosphi/fuse.js" "^3.0.9"
-    "@storybook/components" "^3.2.17"
-    "@storybook/mantra-core" "^1.7.0"
-    "@storybook/react-fuzzy" "^0.4.3"
-    "@storybook/react-komposer" "^2.0.0"
-    babel-runtime "^6.26.0"
-    deep-equal "^1.0.1"
-    events "^1.1.1"
-    global "^4.3.2"
-    json-stringify-safe "^5.0.1"
-    keycode "^2.1.8"
-    lodash.debounce "^4.0.8"
-    lodash.pick "^4.4.0"
-    lodash.sortby "^4.7.0"
-    podda "^1.2.2"
-    prop-types "^15.6.0"
-    qs "^6.5.1"
-    react-icons "^2.2.7"
-    react-inspector "^2.2.1"
-    react-modal "^3.1.4"
-    react-split-pane "^0.1.71"
-    react-treebeard "^2.0.3"
-    redux "^3.7.2"
 
 "@storybook/ui@^3.3.2":
   version "3.3.3"
@@ -530,21 +368,6 @@ add-stream@^1.0.0:
 address@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/address/-/address-1.0.3.tgz#b5f50631f8d6cec8bd20c963963afb55e06cbce9"
-
-airbnb-js-shims@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/airbnb-js-shims/-/airbnb-js-shims-1.3.0.tgz#aac46d80057fb0b414f70e06d07e362fd99ee2fa"
-  dependencies:
-    array-includes "^3.0.3"
-    es5-shim "^4.5.9"
-    es6-shim "^0.35.3"
-    function.prototype.name "^1.0.3"
-    object.entries "^1.0.4"
-    object.getownpropertydescriptors "^2.0.3"
-    object.values "^1.0.4"
-    promise.prototype.finally "^3.0.0"
-    string.prototype.padend "^3.0.0"
-    string.prototype.padstart "^3.0.0"
 
 airbnb-js-shims@^1.4.0:
   version "1.4.0"
@@ -896,17 +719,6 @@ autoprefixer@^6.3.1:
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^5.2.16"
-    postcss-value-parser "^3.2.3"
-
-autoprefixer@^7.1.6:
-  version "7.1.6"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-7.1.6.tgz#fb933039f74af74a83e71225ce78d9fd58ba84d7"
-  dependencies:
-    browserslist "^2.5.1"
-    caniuse-lite "^1.0.30000748"
-    normalize-range "^0.1.2"
-    num2fraction "^1.2.2"
-    postcss "^6.0.13"
     postcss-value-parser "^3.2.3"
 
 autoprefixer@^7.2.3, autoprefixer@^7.2.4:
@@ -2184,13 +1996,6 @@ browserslist@^2.10.2:
     caniuse-lite "^1.0.30000784"
     electron-to-chromium "^1.3.30"
 
-browserslist@^2.5.1:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.8.0.tgz#27d64028130a2e8585ca96f7c3b7730eff4de493"
-  dependencies:
-    caniuse-lite "^1.0.30000758"
-    electron-to-chromium "^1.3.27"
-
 bser@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"
@@ -2318,11 +2123,7 @@ caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000745"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000745.tgz#b259a61737a3e48c4fb4b6b1bc44edeb264cd422"
 
-caniuse-lite@^1.0.30000748:
-  version "1.0.30000760"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000760.tgz#ec720395742f1c7ec8947fd6dd2604e77a8f98ff"
-
-caniuse-lite@^1.0.30000758, caniuse-lite@^1.0.30000770:
+caniuse-lite@^1.0.30000770:
   version "1.0.30000778"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000778.tgz#f1e7cb8b13b1f6744402291d75f0bcd4c3160369"
 
@@ -2634,7 +2435,7 @@ command-join@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/command-join/-/command-join-2.0.0.tgz#52e8b984f4872d952ff1bdc8b98397d27c7144cf"
 
-commander@2.12.x, commander@^2.12.1, commander@^2.12.2, commander@~2.12.1:
+commander@2.12.x, commander@^2.12.2, commander@~2.12.1:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
@@ -2645,12 +2446,6 @@ commander@2.6.0:
 commander@^2.11.0, commander@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
-
-common-tags@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.5.1.tgz#e2e39931a013cd02253defeed89a1ad615a27f07"
-  dependencies:
-    babel-runtime "^6.26.0"
 
 common-tags@^1.6.0:
   version "1.6.0"
@@ -2933,7 +2728,7 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0, core-js@^2.5.1:
+core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
@@ -4176,13 +3971,6 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.5.tgz#91c25b6b6fbe56dae99f10a425fd64933b5c9daa"
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.3.0"
-
 file-loader@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.6.tgz#7b9a8f2c58f00a77fddf49e940f7ac978a3ea0e8"
@@ -4546,18 +4334,6 @@ glamor@^2.20.40:
     object-assign "^4.1.1"
     prop-types "^15.5.10"
     through "^2.3.8"
-
-glamorous@^4.11.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/glamorous/-/glamorous-4.11.0.tgz#cb846dda1450c895c59a34060fb19e3251ed619f"
-  dependencies:
-    brcast "^3.0.0"
-    fast-memoize "^2.2.7"
-    html-tag-names "^1.1.1"
-    is-function "^1.0.1"
-    is-plain-object "^2.0.4"
-    react-html-attributes "^1.3.0"
-    svg-tag-names "^1.1.0"
 
 glamorous@^4.11.2:
   version "4.11.2"
@@ -6016,7 +5792,7 @@ jump.js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/jump.js/-/jump.js-1.0.2.tgz#e0641b47f40a38f2139c25fda0500bf28e43015a"
 
-keycode@^2.1.8, keycode@^2.1.9:
+keycode@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
 
@@ -6595,10 +6371,6 @@ mixin-object@^2.0.1:
 modify-values@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.0.tgz#e2b6cdeb9ce19f99317a53722f3dbf5df5eaaab2"
-
-moment@^2.19.2:
-  version "2.19.3"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.3.tgz#bdb99d270d6d7fda78cc0fbace855e27fe7da69f"
 
 moment@^2.20.1:
   version "2.20.1"
@@ -7637,7 +7409,7 @@ postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.13:
+postcss@^6.0.0, postcss@^6.0.1:
   version "6.0.14"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.14.tgz#5534c72114739e75d0afcf017db853099f562885"
   dependencies:
@@ -7715,7 +7487,7 @@ promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
 
-promise.prototype.finally@^3.0.0, promise.prototype.finally@^3.1.0:
+promise.prototype.finally@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/promise.prototype.finally/-/promise.prototype.finally-3.1.0.tgz#66f161b1643636e50e7cf201dc1b84a857f3864e"
   dependencies:
@@ -7939,7 +7711,7 @@ react-color@^2.11.4:
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
 
-react-datetime@^2.11.0, react-datetime@^2.11.1:
+react-datetime@^2.11.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/react-datetime/-/react-datetime-2.11.1.tgz#11d15081dd7d6729284e21c1b8ea7b975e3bdc7e"
   dependencies:
@@ -8009,13 +7781,6 @@ react-icons@^2.2.7:
   dependencies:
     react-icon-base "2.1.0"
 
-react-inspector@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-2.2.1.tgz#c24f9a0131960b8e63c8392254d34df0717aabdf"
-  dependencies:
-    babel-runtime "^6.26.0"
-    is-dom "^1.0.9"
-
 react-inspector@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-2.2.2.tgz#c04f5248fa92ab6c23e37960e725fb7f48c34d05"
@@ -8026,14 +7791,6 @@ react-inspector@^2.2.2:
 react-modal@^3.1.10:
   version "3.1.10"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.1.10.tgz#8898b5cc4ebba78adbb8dea4c55a69818aa682cc"
-  dependencies:
-    exenv "^1.2.0"
-    prop-types "^15.5.10"
-    warning "^3.0.0"
-
-react-modal@^3.1.4:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.1.6.tgz#82e63f1ec86b80e242518250d066ee37fa035f8a"
   dependencies:
     exenv "^1.2.0"
     prop-types "^15.5.10"
@@ -8096,16 +7853,6 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-split-pane@^0.1.71:
-  version "0.1.71"
-  resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.71.tgz#19b1b30638655e655f9f5fe57b1ae7cc6c151829"
-  dependencies:
-    "@types/inline-style-prefixer" "^3.0.0"
-    "@types/react" "^16.0.18"
-    inline-style-prefixer "^3.0.6"
-    prop-types "^15.5.10"
-    react-style-proptype "^3.0.0"
-
 react-split-pane@^0.1.74:
   version "0.1.74"
   resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.74.tgz#cf79fc98b51ab0763fdc778749b810a102b036ca"
@@ -8153,7 +7900,7 @@ react-transition-group@^1.1.2:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-treebeard@^2.0.3, react-treebeard@^2.1.0:
+react-treebeard@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-treebeard/-/react-treebeard-2.1.0.tgz#fbd5cf51089b6f09a9b18350ab3bddf736e57800"
   dependencies:
@@ -9190,13 +8937,6 @@ strong-log-transformer@^1.0.6:
     moment "^2.6.0"
     through "^2.3.4"
 
-style-loader@^0.18.2:
-  version "0.18.2"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.18.2.tgz#cc31459afbcd6d80b7220ee54b291a9fd66ff5eb"
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.3.0"
-
 style-loader@^0.19.1:
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.19.1.tgz#591ffc80bcefe268b77c5d9ebc0505d772619f85"
@@ -9866,33 +9606,6 @@ webpack-sources@^1.1.0:
 webpack@^3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.10.0.tgz#5291b875078cf2abf42bdd23afe3f8f96c17d725"
-  dependencies:
-    acorn "^5.0.0"
-    acorn-dynamic-import "^2.0.0"
-    ajv "^5.1.5"
-    ajv-keywords "^2.0.0"
-    async "^2.1.2"
-    enhanced-resolve "^3.4.0"
-    escope "^3.6.0"
-    interpret "^1.0.0"
-    json-loader "^0.5.4"
-    json5 "^0.5.1"
-    loader-runner "^2.3.0"
-    loader-utils "^1.1.0"
-    memory-fs "~0.4.1"
-    mkdirp "~0.5.0"
-    node-libs-browser "^2.0.0"
-    source-map "^0.5.3"
-    supports-color "^4.2.1"
-    tapable "^0.2.7"
-    uglifyjs-webpack-plugin "^0.4.6"
-    watchpack "^1.4.0"
-    webpack-sources "^1.0.1"
-    yargs "^8.0.2"
-
-webpack@^3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.8.1.tgz#b16968a81100abe61608b0153c9159ef8bb2bd83"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"

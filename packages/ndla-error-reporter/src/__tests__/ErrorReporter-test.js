@@ -33,7 +33,7 @@ test('ndla-error-reporter/ErrorReporter can capture message', () => {
       text: 'Log message',
       sessionId: /.*/,
       appName: 'unittest/ndla-frontend',
-      userAgent: /Node\.js.+/,
+      userAgent: /Mozilla.+/,
     })
     .reply(200);
 

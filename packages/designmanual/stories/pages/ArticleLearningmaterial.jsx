@@ -24,6 +24,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
+import { Resources } from '../molecules/resources';
 
 export default () => (
   <OneColumn>
@@ -102,6 +103,9 @@ export default () => (
           klassen.
         </p>
         <RelatedArticleListExample />
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <Resources />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

@@ -30,7 +30,7 @@
     "ndla-util": "^0.1.7"
   },
   "dependencies": {
-    "focus-trap": "^2.3.1",
+    "focus-trap": "^2.4.2",
     "jump.js": "^1.0.2"
   }
 }

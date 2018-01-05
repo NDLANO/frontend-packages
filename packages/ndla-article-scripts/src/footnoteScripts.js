@@ -13,7 +13,6 @@ import { forEachElement } from './domHelpers';
 export const addFootnoteClickListeners = () => {
   forEachElement('.c-footnotes__ref sup a, .c-footnotes__cite sup a', el => {
     const target = el;
-    console.log(target.href, 'href');
 
     const hash = target.href.slice(target.href.indexOf('#'));
     target.onclick = () => {

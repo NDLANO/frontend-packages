@@ -1,8 +1,7 @@
-import React, { createElement } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import * as Icons from 'ndla-ui/icons';
 import * as licenseIcons from 'ndla-icons/license';
 import * as commonIcons from 'ndla-icons/common';
 import * as editorIcons from 'ndla-icons/editor';
@@ -714,33 +713,6 @@ storiesOf('Enkle komponenter', module)
         <h2>Editor</h2>
         <IconList icons={editorIcons} folder="editor" />
       </OneColumn>
-      <StoryBody>
-        <h2>Ikoner som ikke er i bruk</h2>
-        <table className="c-table">
-          <thead>
-            <tr>
-              <th>Icon</th>
-              <th>Name</th>
-              <th>JSX</th>
-            </tr>
-          </thead>
-          <tbody>
-            {['Book', 'Download', 'Embed', 'InsertTemplate', 'OpenWindow'].map(
-              key => (
-                <tr key={key}>
-                  <td>
-                    {createElement(Icons[key], { className: 'c-icon--medium' })}
-                  </td>
-                  <td>{key}</td>
-                  <td>
-                    <code>&lt;Icons.{key} /&gt;</code>
-                  </td>
-                </tr>
-              ),
-            )}
-          </tbody>
-        </table>
-      </StoryBody>
     </div>
   ))
   .add('Knapper', () => (
@@ -773,8 +745,10 @@ storiesOf('Enkle komponenter', module)
           </Button>
         </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
-          <h2 className="u-heading">Alternativer når UU krever en knapp</h2>,
-          <InlineContainer>
+          <h2 key="heading" className="u-heading">
+            Alternativer når UU krever en knapp
+          </h2>,
+          <InlineContainer key="buttons">
             <Button link onClick={action('clicked')}>
               Knapp stylet som link
             </Button>{' '}

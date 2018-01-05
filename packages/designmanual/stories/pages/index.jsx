@@ -295,7 +295,7 @@ storiesOf('Emnesider', module)
             </div>
           </OneColumn>
         </Hero>
-        <ArticleLoader articleId="17507" />
+        <ArticleLoader articleId="17507" hideResources showSubTopics />
       </Content>
       <FooterExample />
     </PageContainer>

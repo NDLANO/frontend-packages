@@ -458,7 +458,7 @@ export const LicenseBox = () => (
 
 const LicenseExample = ({ expanded }) => (
   <ToggleLicenseBox
-    openTitle="Bruk artikkel"
+    openTitle="Bruk innhold"
     closeTitle="Lukk boks"
     expanded={expanded}>
     <LicenseBox />

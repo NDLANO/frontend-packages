@@ -34,8 +34,9 @@ class IconItem extends Component {
           width: '210px',
           padding: '13px',
           margin: '13px',
+          wordBreak: 'break-all',
         }}>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center', lineHeight: 1.5 }}>
           {createElement(icon, {
             className: 'c-icon--large',
           })}

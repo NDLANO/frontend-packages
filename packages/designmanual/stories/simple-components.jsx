@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as Icons from 'ndla-ui/icons';
 import * as licenseIcons from 'ndla-icons/license';
+import * as contentTypeIcons from 'ndla-icons/contentType';
 import * as commonIcons from 'ndla-icons/common';
 import * as editorIcons from 'ndla-icons/editor';
 import * as actionIcons from 'ndla-icons/action';
@@ -702,6 +703,8 @@ storiesOf('Enkle komponenter', module)
       <OneColumn>
         <h2>Felles</h2>
         <IconList icons={commonIcons} folder="common" />
+        <h2>Innholdstyper</h2>
+        <IconList icons={contentTypeIcons} folder="contentType" />
         <h2>Lisens</h2>
         <IconList icons={licenseIcons} folder="license" />
         <h2>Handling</h2>

@@ -16,8 +16,8 @@ import {
   ArticleIntroduction,
   ArticleByline,
   Image,
+  SubjectMaterialBadge,
 } from 'ndla-ui';
-import { Document } from 'ndla-icons/common';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
@@ -29,7 +29,9 @@ export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle icon={<Document />}>Artikkel fagstoff</ArticleTitle>
+        <ArticleTitle icon={<SubjectMaterialBadge background size="large" />}>
+          Artikkel fagstoff
+        </ArticleTitle>
         <ArticleIntroduction>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen.

@@ -16,7 +16,12 @@ import {
   TasksAndActivitiesBadge,
   AssessmentResourcesBadge,
 } from 'ndla-ui';
-import { learningPathResources, articleResources, exerciseResources, assessmentResources } from '../../dummydata/index';
+import {
+  learningPathResources,
+  articleResources,
+  exerciseResources,
+  assessmentResources,
+} from '../../dummydata/index';
 
 const toLink = () => ({
   href: '#',
@@ -54,7 +59,12 @@ const resourceGroup4 = {
   iconEl: <AssessmentResourcesBadge />,
 };
 
-const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4];
+const resourceGroups = [
+  resourceGroup1,
+  resourceGroup2,
+  resourceGroup3,
+  resourceGroup4,
+];
 
 export const Resources = ({ onlyAdditional }) => (
   <ResourcesWrapper>

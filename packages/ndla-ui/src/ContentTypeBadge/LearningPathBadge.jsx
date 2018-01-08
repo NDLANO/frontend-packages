@@ -1,5 +1,9 @@
 import React from 'react';
-import { SubjectMaterialBadge, TasksAndActivitiesBadge, AssessmentResourcesBadge } from './ContentTypeBadge';
+import {
+  SubjectMaterialBadge,
+  TasksAndActivitiesBadge,
+  AssessmentResourcesBadge,
+} from './ContentTypeBadge';
 
 const LearningPathBadge = () => (
   <div className="c-learning-path-badge">

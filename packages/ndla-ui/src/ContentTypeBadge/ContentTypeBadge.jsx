@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { SubjectMaterial, TasksAndActivities, AssessmentResource } from 'ndla-icons/contentType';
+import {
+  SubjectMaterial,
+  TasksAndActivities,
+  AssessmentResource,
+  Subject,
+} from 'ndla-icons/contentType';
+
+import * as contentTypes from '../model/ContentType';
 
 const classes = new BEMHelper({
   name: 'content-type-badge',
   prefix: 'c-',
 });
 
-const subjectMaterial = 'subject-material';
-const tasksAndActivities = 'tasks-and-activities';
-const assessmentResources = 'assessment-resources';
-
-const ContentTypeBadge = ({ type, background }) => {
-  const modifiers = [type];
+const ContentTypeBadge = ({ type, background, size }) => {
+  const modifiers = [type, size];
 
   if (background) {
     modifiers.push('background');
@@ -22,14 +25,17 @@ const ContentTypeBadge = ({ type, background }) => {
 
   let icon = null;
   switch (type) {
-    case subjectMaterial:
+    case contentTypes.SUBJECT_MATERIAL:
       icon = <SubjectMaterial />;
       break;
-    case tasksAndActivities:
+    case contentTypes.TASKS_AND_ACTIVITIES:
       icon = <TasksAndActivities />;
       break;
-    case assessmentResources:
+    case contentTypes.ASSESSMENT_RESOURCES:
       icon = <AssessmentResource />;
+      break;
+    case contentTypes.SUBJECT:
+      icon = <Subject />;
       break;
     default:
       break;
@@ -38,10 +44,28 @@ const ContentTypeBadge = ({ type, background }) => {
 };
 
 ContentTypeBadge.propTypes = {
-  type: PropTypes.oneOf([subjectMaterial, tasksAndActivities, assessmentResources]),
+  size: PropTypes.oneOf(['small', 'large']),
+  type: PropTypes.oneOf([
+    contentTypes.SUBJECT_MATERIAL,
+    contentTypes.TASKS_AND_ACTIVITIES,
+    contentTypes.ASSESSMENT_RESOURCES,
+  ]),
   background: PropTypes.bool,
 };
 
-export const SubjectMaterialBadge = props => <ContentTypeBadge {...props} type={subjectMaterial} />;
-export const TasksAndActivitiesBadge = props => <ContentTypeBadge {...props} type={tasksAndActivities} />;
-export const AssessmentResourcesBadge = props => <ContentTypeBadge {...props} type={assessmentResources} />;
+ContentTypeBadge.defaultProps = {
+  size: 'small',
+};
+
+export const SubjectMaterialBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
+);
+export const TasksAndActivitiesBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
+);
+export const AssessmentResourcesBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
+);
+export const SubjectBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />
+);

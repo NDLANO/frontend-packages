@@ -3,18 +3,30 @@
   border: 2px solid $black;
   width: 34px;
   height: 34px;
-  text-align: center;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  &--subject-material {
-    border-color: $external-learning-resource-dark;
+  &--large {
+    width: 50px;
+    height: 50px;
 
     svg {
-      color: $external-learning-resource-dark;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &--subject-material {
+    border-color: $subject-material-dark;
+
+    svg {
+      color: $subject-material-dark;
+      margin-top: 4px;
     }
 
     &.c-content-type-badge--background {
-      background: $external-learning-resource-light;
+      background: $subject-material-light;
     }
   }
 
@@ -22,7 +34,6 @@
     border-color: $tasks-and-activities-dark;
 
     svg {
-      margin-top: -4px;
       color: $tasks-and-activities-dark;
     }
 
@@ -35,11 +46,25 @@
     border-color: $assessment-resource-dark;
 
     svg {
+      margin-top: 4px;
       color: $assessment-resource-dark;
     }
 
     &.c-content-type-badge--background {
       background: $assessment-resource-light;
+    }
+  }
+
+  &--subject {
+    border-color: $subject-dark;
+
+    svg {
+      margin-top: 2px;
+      color: $subject-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $subject-light;
     }
   }
 }

@@ -11,7 +11,11 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
-  Hero,
+  SubjectMaterialHero,
+  TasksAndActivitiesHero,
+  SubjectHero,
+  AssessmentResourcesHero,
+  SubjectBadge,
   ErrorMessage,
   FilterList,
   OneColumn,
@@ -33,6 +37,7 @@ import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
+import ArticleAssessmentResource from './ArticleAssessmentResource';
 import article, { topicList, subjectList } from '../../dummydata/index';
 
 const ResourcesSubTopics = () => (
@@ -60,7 +65,7 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -74,7 +79,7 @@ storiesOf('Sidevisninger', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleLoader articleId="17477" />
       </Content>
       <FooterExample />
@@ -103,7 +108,7 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -117,7 +122,7 @@ storiesOf('Sidevisninger', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleLoader closeButton />
       </Content>
       <FooterExample />
@@ -128,7 +133,7 @@ storiesOf('Artikkelmaler', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -142,7 +147,7 @@ storiesOf('Artikkelmaler', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
@@ -152,7 +157,7 @@ storiesOf('Artikkelmaler', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero green>
+        <TasksAndActivitiesHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -166,8 +171,32 @@ storiesOf('Artikkelmaler', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </TasksAndActivitiesHero>
         <ArticleExercise />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Vurderingsressurs', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <AssessmentResourcesHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </AssessmentResourcesHero>
+        <ArticleAssessmentResource />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -176,7 +205,7 @@ storiesOf('Artikkelmaler', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -190,7 +219,7 @@ storiesOf('Artikkelmaler', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleAdditional />
       </Content>
       <FooterExample />
@@ -243,7 +272,7 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -257,7 +286,7 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectHero>
         <OneColumn>
           <div className="c-article">
             <LayoutItem layout="center">
@@ -280,7 +309,7 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -294,8 +323,11 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
-        <ArticleLoader articleId="17507" />
+        </SubjectHero>
+        <ArticleLoader
+          articleId="17507"
+          icon={<SubjectBadge size="large" background />}
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -304,7 +336,7 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -318,8 +350,11 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
-        <ArticleLoader articleId="5948" />
+        </SubjectHero>
+        <ArticleLoader
+          articleId="5948"
+          icon={<SubjectBadge size="large" background />}
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -328,7 +363,7 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -342,8 +377,12 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
-        <ArticleLoader articleId="" closeButton />
+        </SubjectHero>
+        <ArticleLoader
+          articleId=""
+          closeButton
+          icon={<SubjectBadge size="large" background />}
+        />
       </Content>
       <FooterExample />
     </PageContainer>

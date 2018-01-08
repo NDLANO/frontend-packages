@@ -7,7 +7,12 @@
  */
 
 import React from 'react';
-import { RelatedArticleList, RelatedArticle, TasksAndActivitiesBadge, SubjectMaterialBadge } from 'ndla-ui';
+import {
+  RelatedArticleList,
+  RelatedArticle,
+  TasksAndActivitiesBadge,
+  SubjectMaterialBadge,
+} from 'ndla-ui';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
 export const RelatedArticleExerciseList = () => (

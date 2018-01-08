@@ -10,27 +10,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
+import * as contentTypes from '../model/ContentType';
+
 const classes = new BEMHelper({
   name: 'hero',
   prefix: 'c-',
 });
 
-export const Hero = ({ children, red, green }) => {
-  const modifiers = {
-    red,
-    green,
-  };
-
-  return <div {...classes('', modifiers)}>{children || null}</div>;
-};
+export const Hero = ({ children, contentType }) => (
+  <div {...classes('', contentType)}>{children || null}</div>
+);
 
 Hero.propTypes = {
+  contentType: PropTypes.oneOf([
+    contentTypes.SUBJECT_MATERIAL,
+    contentTypes.TASKS_AND_ACTIVITIES,
+    contentTypes.ASSESSMENT_RESOURCES,
+    contentTypes.SUBJECT,
+  ]),
   children: PropTypes.node,
-  red: PropTypes.bool,
-  green: PropTypes.bool,
 };
 
-Hero.defaultProps = {
-  red: false,
-  green: false,
-};
+export const SubjectMaterialHero = props => (
+  <Hero contentType={contentTypes.SUBJECT_MATERIAL} {...props} />
+);
+export const TasksAndActivitiesHero = props => (
+  <Hero contentType={contentTypes.TASKS_AND_ACTIVITIES} {...props} />
+);
+export const AssessmentResourcesHero = props => (
+  <Hero contentType={contentTypes.ASSESSMENT_RESOURCES} {...props} />
+);
+export const SubjectHero = props => (
+  <Hero contentType={contentTypes.SUBJECT} {...props} />
+);

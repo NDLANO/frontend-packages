@@ -14,14 +14,32 @@ const heading = (articleHTML, level) => {
   } <h${level}>`;
 };
 
+const swatchBorder = '1px solid #979797';
+
 storiesOf('Grunnstiler', module)
   .add('Farger', () => (
     <div>
-      <StoryIntro title="Farger på NDLA" />
+      <StoryIntro title="Farger på NDLA">
+        <p>
+          Fargene til NDLA er laget på grunnlag av å skape god lesbarhet og flyt
+          for brukerne. Fargene skal alltid brukes på meningsfulle måter for å
+          gruppere innhold, skape hierarki og tilhørighet, fange oppmerksomheten
+          til viktige elementer og gi støtte i de oppgavene brukeren utfører.
+          Det skal alltid være nok kontrast mellom elementer som f.eks bakgrunn
+          og tekst. Systemet oppfyller alle standarder for WCAG (Web Content
+          Accessibility Guidelines).
+        </p>
+      </StoryIntro>
       <StoryBody>
         <div>
           <h2 className="u-heading">NDLA-fargen</h2>
-          <p>Primærfargen kan supplementeres med ulike graderinger.</p>
+          <p>
+            NDLA fargen er en blå farge i forskjellige nyanser. Disse fargene er
+            det mest av i systemet. De brukes på klikkbare UI elementer,
+            navigasjon, bakgrunner og gruppering av innhold. I tillegg brukes de
+            på fagsider, hoved- og underemne sidene. Dette for å skape identitet
+            og tydelig tilhørighet til NDLA universet.{' '}
+          </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div
@@ -70,86 +88,62 @@ storiesOf('Grunnstiler', module)
             </li>
           </ul>
         </div>
-
         <div>
-          <h2 className="u-heading">Tilleggsfarger</h2>
+          <h2 className="u-heading">Tekst og systemikoner</h2>
           <p>
-            I tillegg til primærfargen og dens graderinger kan man benytte
-            tilleggsfarger til å tematisere innhold og skape variasjon/kontrast
-            til NDLA-fargen.
+            For å skape hierarki i innholdet finnes det to farger for tekst og
+            systemikoner. Vektleggingen skjer i samhandling med stilingen av
+            typografien. Når teksten eller ikonet er klikkbare linker skal man
+            bruke NDLA primærfarge.{' '}
           </p>
           <ul className="o-list--colors">
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#FE5F55' }}
-              />
-              <div className="o-list__label">
-                Rød<br />#FE5F55
-              </div>
-            </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#5CBC80' }}
-              />
-              <div className="o-list__label">
-                Grønn<br />#5CBC80
-              </div>
-            </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#EAD854' }}
-              />
-              <div className="o-list__label">
-                Gul<br />#EAD854
-              </div>
-            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
                 style={{ backgroundColor: '#444444' }}
               />
               <div className="o-list__label">
-                Mørk (tekst)<br />#444444
+                Tekst Mørk<br />#444444
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#757575' }}
+              />
+              <div className="o-list__label">
+                Tekst Lys<br />#757575
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#FFFFFF', border: swatchBorder }}
+              />
+              <div className="o-list__label">
+                Tekst Hvit<br />#FFFFFF
               </div>
             </li>
           </ul>
         </div>
 
         <div>
-          <h2 className="u-heading">Gråtoner</h2>
+          <h2 className="u-heading">Nøytrale farger</h2>
           <p>
-            Ulike gråtoner kan brukes for å skape myke farger for
-            navigasjonselementer, skjema-elementer etc.
+            Den nøytrale paletten består av toner og nyanser som er nyttige for
+            gruppering av innhold i NDLA systemet. Bruken av disse fargene
+            varierer og er avhengig av berøringspunkt og omliggende innhold.
+            Brukes mest til bakgrunner og rammer for å gruppere og skille
+            innhold.
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
-                style={{ backgroundColor: '#8A8888' }}
+                style={{ backgroundColor: '#FFFFFF', border: swatchBorder }}
               />
               <div className="o-list__label">
-                Grå 1<br />#8A8888
-              </div>
-            </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#E8E3E3' }}
-              />
-              <div className="o-list__label">
-                Grå 2<br />#E8E3E3
-              </div>
-            </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#EFF0F2' }}
-              />
-              <div className="o-list__label">
-                Grå 3<br />#EFF0F2
+                Nøytral Hvit<br />#FFFFFF
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -158,7 +152,322 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#F8F8F8' }}
               />
               <div className="o-list__label">
-                Grå 4<br />#F8F8F8
+                Nøytral 1<br />#F8F8F8
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#EFF0F2' }}
+              />
+              <div className="o-list__label">
+                Nøytral 2<br />#EFF0F2
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#E8E3E3' }}
+              />
+              <div className="o-list__label">
+                Nøytral 3<br />#E8E3E3
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#8A8888' }}
+              />
+              <div className="o-list__label">
+                Nøytral 4<br />#8A8888
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="u-heading">Innholdstypefarger</h2>
+          <p>
+            Innholdstypene sine farger er inspirert av idéen om at
+            elevene/brukerne er i to moduser når de er inne på NDLA sine sider;
+            «Lesemodus» og «Aktiv modus».
+          </p>
+          <p>
+            “Lesemodus” fordrer et åpent, lett og dust uttrykk som gir fokus til
+            innholdet og bidrar til god lesbarhet og flyt. Innholdstypene som
+            kan kategoriseres i «lesemodus» er Emner, Fagstoff, Ekstern
+            læringsressurs og Kildemateriale. For disse innholdstypene er det
+            valgt å bruke NDLA blå på Emner. På de øvrige er det brukt
+            grønntoner som en forlengelse…av NDLA blå og fordi det hører til
+            egenskaper som vekst og produktivitet fra naturen sin side.
+          </p>
+          <p>
+            I “aktiv modus” er eleven i modus for å utføre og delta mer hands
+            on. Innholdstyper her er Oppgaver og Aktiviteter og
+            Vurderingsressurs. Fargene som er valgt er komplementære til
+            lesemodus. Rosa og orange er komplementær fargene til blå og grønn.
+          </p>
+          <p>
+            Innholdstyper har to farger, en mørk og en lys, knyttet til seg. Den
+            lyse fargen er brukt på bakgrunner og den mørke er brukt på ikonet
+            tilknyttet innholdstypen. Noen av innholdstypene har en tredje tone.
+            Dette da det er behov for en egen bakgrunnsfarge på ikonet og en
+            annen på bakgrunnen i artikkelmalen.
+          </p>
+          <p>
+            Fargene er lette og duse i uttrykket for å la selve innholdet få
+            fokus og poppe. I tillegg skaper fargene tilhørighet og
+            gjenkjennbarhet til innholdstypen.
+          </p>
+          <h3>Emner</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#CEDDEA' }}
+              />
+              <div className="o-list__label">
+                Emner Lys<br />#CEDDEA
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#184673' }}
+              />
+              <div className="o-list__label">
+                Emner Mørk<br />#184673
+              </div>
+            </li>
+          </ul>
+          <h3>Fagstoff</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#DDE9D0' }}
+              />
+              <div className="o-list__label">
+                Fagstoff Lys<br />#DDE9D0
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#5C6A4F' }}
+              />
+              <div className="o-list__label">
+                Fagstoff Mørk<br />#5C6A4F
+              </div>
+            </li>
+          </ul>
+          <h3>Ekstern læringressurs</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#D0E8DE' }}
+              />
+              <div className="o-list__label">
+                Ekstern læringressurs Bakgrunn<br />#D0E8DE
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#E6F3ED' }}
+              />
+              <div className="o-list__label">
+                Ekstern læringressurs Lys<br />#E6F3ED
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#4F7D76' }}
+              />
+              <div className="o-list__label">
+                Ekstern læringressurs Mørk<br />#4F7D76
+              </div>
+            </li>
+          </ul>
+          <h3>Kildemateriale</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#DCE5E0' }}
+              />
+              <div className="o-list__label">
+                Kildemateriale Lys<br />#DCE5E0
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#636E68' }}
+              />
+              <div className="o-list__label">
+                Kildemateriale Mørk<br />#636E68
+              </div>
+            </li>
+          </ul>
+          <h3>Oppgaver og Aktiviteter</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#F8E0C4' }}
+              />
+              <div className="o-list__label">
+                Oppgaver og Aktiviteter Bakgrunn<br />#F8E0C4
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#FBEDDC' }}
+              />
+              <div className="o-list__label">
+                Oppgaver og Aktiviteter Lys<br />#FBEDDC
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#D98229' }}
+              />
+              <div className="o-list__label">
+                Oppgaver og Aktiviteter Mørk<br />#D98229
+              </div>
+            </li>
+          </ul>
+          <h3>Vurderingsressurs</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#EFD5D5' }}
+              />
+              <div className="o-list__label">
+                Vurderingsressurs Bakgrunn<br />#EFD5D5
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#F5E7E5' }}
+              />
+              <div className="o-list__label">
+                Vurderingsressurs Lys<br />#F5E7E5
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#C0676F' }}
+              />
+              <div className="o-list__label">
+                Vurderingsressurs Mørk<br />#C0676F
+              </div>
+            </li>
+          </ul>
+          <h3>Læringsti</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#F2EFEF' }}
+              />
+              <div className="o-list__label">
+                Læringssti bakgrunn<br />#F2EFEF
+              </div>
+            </li>
+          </ul>
+          <h3>Tilleggstoff</h3>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: 'rgba(221, 233, 208, 0.4)' }}
+              />
+              <div className="o-list__label">
+                Tilleggstoff Fagstoff<br />#DDE9D0: 40% opacity
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: 'rgba(208, 232, 222, 0.4)' }}
+              />
+              <div className="o-list__label">
+                Tilleggstoff ekstern Læringsressurs<br />#D0E8DE: 40% opacity
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: 'rgba(220, 229, 224, 0.4)' }}
+              />
+              <div className="o-list__label">
+                Tilleggstoff Kildemateriale<br />#DCE5E0: 40% opacity
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: 'rgba(251, 237, 220, 0.4)' }}
+              />
+              <div className="o-list__label">
+                Tilleggstoff Oppgaver og Aktiviteter<br />#FBEDDC: 40% opacity
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: 'rgba(245, 231, 229, 0.4)' }}
+              />
+              <div className="o-list__label">
+                Tilleggstoff Vurderingsressurs<br />#F5E7E5: 40% opacity
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="u-heading">Support</h2>
+          <p>
+            Supportfargene er valgt fordi de er konvensjonelle i sin kontekst.
+            Selv om vi anerkjenner at det er kulturelle forskjeller har enkelte
+            farger iboende betydning for et stort flertall brukere. For eksempel
+            bruker vi rødt til å kommunisere en feil og grønt for sukksess.
+            Brukes med opacity 30 % på hvit bakgrunn.
+          </p>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#d1372e' }}
+              />
+              <div className="o-list__label">
+                Support Rød<br />#D1372E
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#5CBC80' }}
+              />
+              <div className="o-list__label">
+                Support Grønn<br />#5CBC80
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#EAD854' }}
+              />
+              <div className="o-list__label">
+                Support Gul<br />#EAD854
               </div>
             </li>
           </ul>

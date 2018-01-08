@@ -26,56 +26,24 @@ export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';
 export { default as FilterList } from './filter/FilterList';
 export { default as AudioPlayer } from './AudioPlayer';
-export {
-  default as ContentTypeBadge,
-  LearningPathBadge,
-} from './ContentTypeBadge';
-export {
-  default as LayoutItem,
-  OneColumn,
-  PageContainer,
-  Content,
-} from './Layout';
+export { SubjectMaterialBadge, TasksAndActivitiesBadge, AssessmentResourcesBadge, LearningPathBadge } from './ContentTypeBadge';
+export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
 export { default as LicenseByline } from './LicenseByline';
 export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
-export {
-  default as TopicIntroductionList,
-} from './topic/TopicIntroductionList';
+export { default as TopicIntroductionList } from './topic/TopicIntroductionList';
 export { default as TopicMenu } from './topicMenu/TopicMenu';
 export { default as Placeholder } from './placeholders/Placeholder';
-export {
-  default as RelatedArticleList,
-  RelatedArticle,
-} from './RelatedArticleList';
-export {
-  default as ResourcesWrapper,
-  ResourcesTitle,
-} from './ResourcesWrapper';
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
+export { default as ResourcesWrapper, ResourcesTitle } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Concept } from './Concept';
-export {
-  default as Breadcrumb,
-  BreadcrumbBlock,
-  DisplayOnPageYOffset,
-} from './Breadcrumb';
+export { default as Breadcrumb, BreadcrumbBlock, DisplayOnPageYOffset } from './Breadcrumb';
 export { Hero } from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  FigureFullscreenDialog,
-} from './Figure';
+export { Figure, FigureCaption, FigureLicenseDialog, FigureFullscreenDialog } from './Figure';
 export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
-export {
-  MediaList,
-  MediaListItem,
-  MediaListItemBody,
-  MediaListItemActions,
-  MediaListItemImage,
-  MediaListItemMeta,
-} from './MediaList';
+export { MediaList, MediaListItem, MediaListItemBody, MediaListItemActions, MediaListItemImage, MediaListItemMeta } from './MediaList';
 export { default as Image } from './Image';
 export { default as Translation } from './Translation/Translation';
 export { default as TranslationLine } from './Translation/TranslationLine';

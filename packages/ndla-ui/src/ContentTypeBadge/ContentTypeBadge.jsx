@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import {
-  SubjectMaterial,
-  TasksAndActivities,
-  AssessmentResource,
-} from 'ndla-icons/contentType';
+import { SubjectMaterial, TasksAndActivities, AssessmentResource } from 'ndla-icons/contentType';
 
 const classes = new BEMHelper({
   name: 'content-type-badge',
@@ -42,12 +38,10 @@ const ContentTypeBadge = ({ type, background }) => {
 };
 
 ContentTypeBadge.propTypes = {
-  type: PropTypes.oneOf([
-    subjectMaterial,
-    tasksAndActivities,
-    assessmentResources,
-  ]),
+  type: PropTypes.oneOf([subjectMaterial, tasksAndActivities, assessmentResources]),
   background: PropTypes.bool,
 };
 
-export default ContentTypeBadge;
+export const SubjectMaterialBadge = props => <ContentTypeBadge {...props} type={subjectMaterial} />;
+export const TasksAndActivitiesBadge = props => <ContentTypeBadge {...props} type={tasksAndActivities} />;
+export const AssessmentResourcesBadge = props => <ContentTypeBadge {...props} type={assessmentResources} />;

@@ -11,15 +11,12 @@ import PropTypes from 'prop-types';
 import {
   ResourcesWrapper,
   ResourceGroup,
-  ContentTypeBadge,
+  SubjectMaterialBadge,
   LearningPathBadge,
+  TasksAndActivitiesBadge,
+  AssessmentResourcesBadge,
 } from 'ndla-ui';
-import {
-  learningPathResources,
-  articleResources,
-  exerciseResources,
-  assessmentResources,
-} from '../../dummydata/index';
+import { learningPathResources, articleResources, exerciseResources, assessmentResources } from '../../dummydata/index';
 
 const toLink = () => ({
   href: '#',
@@ -30,7 +27,7 @@ const resourceGroup2 = {
   title: 'Fagstoff',
   className: 'c-resource-group--subject-material',
   resources: articleResources,
-  iconEl: <ContentTypeBadge type="subject-material" />,
+  iconEl: <SubjectMaterialBadge />,
 };
 
 const resourceGroup1 = {
@@ -46,7 +43,7 @@ const resourceGroup3 = {
   title: 'Oppgaver og aktiviteter',
   className: 'c-resource-group--tasks-and-activities',
   resources: exerciseResources,
-  iconEl: <ContentTypeBadge type="tasks-and-activities" />,
+  iconEl: <TasksAndActivitiesBadge />,
 };
 
 const resourceGroup4 = {
@@ -54,15 +51,10 @@ const resourceGroup4 = {
   title: 'Vurderingsressurser',
   className: 'c-resource-group--assessment-resources',
   resources: assessmentResources,
-  iconEl: <ContentTypeBadge type="assessment-resources" />,
+  iconEl: <AssessmentResourcesBadge />,
 };
 
-const resourceGroups = [
-  resourceGroup1,
-  resourceGroup2,
-  resourceGroup3,
-  resourceGroup4,
-];
+const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4];
 
 export const Resources = ({ onlyAdditional }) => (
   <ResourcesWrapper>

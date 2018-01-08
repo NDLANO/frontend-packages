@@ -3,6 +3,8 @@
   border: 2px solid $black;
   width: 34px;
   height: 34px;
+  text-align: center;
+  display: inline-block;
 
   &--subject-material {
     border-color: $external-learning-resource-dark;

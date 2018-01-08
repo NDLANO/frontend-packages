@@ -29,26 +29,39 @@ const Resource = ({
   const linkProps = resourceToLinkProps(resource);
   const hidden = resource.additional ? !showAdditionalResources : isHidden;
 
+  const linkContent = [
+    <div key="img" {...classes('icon o-flag__img')}>
+      {icon}
+    </div>,
+    <div key="body" {...classes('body o-flag__body')}>
+      <h1 {...classes('title')}>
+        {resource.name}
+        {resource.additional ? (
+          <Additional className="c-icon--20 u-margin-left-tiny" />
+        ) : null}
+      </h1>
+    </div>,
+  ];
+
+  const link = linkProps.href ? (
+    <a {...linkProps} {...classes('link o-flag o-flag--top')}>
+      {linkContent}
+    </a>
+  ) : (
+    <Link
+      {...resourceToLinkProps(resource)}
+      {...classes('link o-flag o-flag--top')}>
+      {linkContent}
+    </Link>
+  );
+
   return (
     <li
       {...classes('item', {
-        'o-flag  o-flag--top': true,
         hidden,
         additional: resource.additional,
       })}>
-      <div {...classes('icon o-flag__img')}>{icon}</div>
-      <div {...classes('body o-flag__body')}>
-        <h1 {...classes('title')}>
-          {linkProps.href ? (
-            <a {...linkProps}>{resource.name}</a>
-          ) : (
-            <Link {...resourceToLinkProps(resource)}>{resource.name}</Link>
-          )}
-          {resource.additional ? (
-            <Additional className="c-icon--20 u-margin-left-tiny" />
-          ) : null}
-        </h1>
-      </div>
+      {link}
     </li>
   );
 };

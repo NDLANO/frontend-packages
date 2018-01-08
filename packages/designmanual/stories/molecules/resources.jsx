@@ -8,12 +8,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ResourcesWrapper, ResourceGroup } from 'ndla-ui';
-import { Document, Path, Pencil } from 'ndla-icons/common';
+import {
+  ResourcesWrapper,
+  ResourceGroup,
+  ContentTypeBadge,
+  LearningPathBadge,
+} from 'ndla-ui';
 import {
   learningPathResources,
   articleResources,
   exerciseResources,
+  assessmentResources,
 } from '../../dummydata/index';
 
 const toLink = () => ({
@@ -24,39 +29,40 @@ const resourceGroup2 = {
   id: 'subject-material',
   title: 'Fagstoff',
   className: 'c-resource-group--subject-material',
-  description: 'Relaterte emneartikler',
-  viewAllLinkTitle: 'Mer fagstoff',
   resources: articleResources,
-  icon: 'Document',
-  iconEl: <Document />,
-  type: 'Fagstoff',
+  iconEl: <ContentTypeBadge type="subject-material" />,
 };
 
 const resourceGroup1 = {
   id: 'type-learning-path',
   title: 'Læringsstier',
-  className: 'c-resource-group--learingpath',
-  viewAllLinkTitle: 'Flere læringsstier',
-  description: 'Tilknyttet dette emnet',
+  className: 'c-resource-group--learningpath',
   resources: learningPathResources,
-  icon: 'Path',
-  iconEl: <Path />,
-  type: 'Læringsstier',
+  iconEl: <LearningPathBadge />,
 };
 
 const resourceGroup3 = {
   id: 'tasks-and-activities',
   title: 'Oppgaver og aktiviteter',
   className: 'c-resource-group--tasks-and-activities',
-  description: 'Relatert til emnet',
-  viewAllLinkTitle: 'Flere oppgaver og aktiviteter',
   resources: exerciseResources,
-  icon: 'Pencil',
-  iconEl: <Pencil />,
-  type: 'Oppgaver og aktiviteter',
+  iconEl: <ContentTypeBadge type="tasks-and-activities" />,
 };
 
-const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3];
+const resourceGroup4 = {
+  id: 'assessment-resources',
+  title: 'Vurderingsressurser',
+  className: 'c-resource-group--assessment-resources',
+  resources: assessmentResources,
+  iconEl: <ContentTypeBadge type="assessment-resources" />,
+};
+
+const resourceGroups = [
+  resourceGroup1,
+  resourceGroup2,
+  resourceGroup3,
+  resourceGroup4,
+];
 
 export const Resources = ({ onlyAdditional }) => (
   <ResourcesWrapper>

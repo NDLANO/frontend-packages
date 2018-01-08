@@ -27,6 +27,10 @@ export { default as Pager } from './pager/Pager';
 export { default as FilterList } from './filter/FilterList';
 export { default as AudioPlayer } from './AudioPlayer';
 export {
+  default as ContentTypeBadge,
+  LearningPathBadge,
+} from './ContentTypeBadge';
+export {
   default as LayoutItem,
   OneColumn,
   PageContainer,

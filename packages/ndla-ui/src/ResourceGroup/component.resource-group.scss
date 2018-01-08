@@ -11,31 +11,33 @@
 
 .c-resource-group--subject-material {
   li {
-    background-color: rgba($mark-color, 0.1);
+    background-color: $subject-material-light;
   }
   .c-topic-resource__item--additional {
-    background-color: desaturate(rgba($mark-color, 0.1), 40%);
+    background-color: $subject-material-additional;
   }
 }
 
 .c-resource-group--tasks-and-activities {
   li {
-    background-color: rgba($green, 0.1);
+    background-color: $tasks-and-activities-light;
   }
   .c-topic-resource__item--additional {
-    background-color: desaturate(rgba($green, 0.1), 40%);
+    background-color: $tasks-and-activities-additional;
   }
 }
 
-.c-resource-group--learingpath {
+.c-resource-group--assessment-resources {
   li {
-    padding: 5px;
+    background-color: $assessment-resource-light;
   }
+  .c-topic-resource__item--additional {
+    background-color: $assessment-resource-additional;
+  }
+}
 
-  .c-topic-resource__icon {
-    width: 80px;
-    svg {
-      width: 80px;
-    }
+.c-resource-group--learningpath {
+  li {
+    background-color: $learning-path-background;
   }
 }

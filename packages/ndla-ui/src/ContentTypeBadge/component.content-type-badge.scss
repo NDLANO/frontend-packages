@@ -1,0 +1,55 @@
+.c-content-type-badge {
+  border-radius: 100%;
+  border: 2px solid $black;
+  width: 34px;
+  height: 34px;
+
+  &--subject-material {
+    border-color: $external-learning-resource-dark;
+
+    svg {
+      color: $external-learning-resource-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $external-learning-resource-light;
+    }
+  }
+
+  &--tasks-and-activities {
+    border-color: $tasks-and-activities-dark;
+
+    svg {
+      margin-top: -4px;
+      color: $tasks-and-activities-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $tasks-and-activities-light;
+    }
+  }
+
+  &--assessment-resources {
+    border-color: $assessment-resource-dark;
+
+    svg {
+      color: $assessment-resource-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $assessment-resource-light;
+    }
+  }
+}
+
+.c-learning-path-badge {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    flex-shrink: 0;
+  }
+  &__plus {
+    margin: 0 $spacing--small/4;
+  }
+}

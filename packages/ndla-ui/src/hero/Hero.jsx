@@ -27,6 +27,8 @@ Hero.propTypes = {
     contentTypes.TASKS_AND_ACTIVITIES,
     contentTypes.ASSESSMENT_RESOURCES,
     contentTypes.SUBJECT,
+    contentTypes.EXTERNAL_LEARNING_RESOURCES,
+    contentTypes.SOURCE_MATERIAL,
   ]),
   children: PropTypes.node,
 };
@@ -42,4 +44,10 @@ export const AssessmentResourcesHero = props => (
 );
 export const SubjectHero = props => (
   <Hero contentType={contentTypes.SUBJECT} {...props} />
+);
+export const ExternalLearningResourcesHero = props => (
+  <Hero contentType={contentTypes.EXTERNAL_LEARNING_RESOURCES} {...props} />
+);
+export const SourceMaterialHero = props => (
+  <Hero contentType={contentTypes.SOURCE_MATERIAL} {...props} />
 );

@@ -67,6 +67,36 @@
       background: $subject-light;
     }
   }
+
+  &--external-learning-resources {
+    border-color: $external-learning-resource-dark;
+
+    svg {
+      margin-top: 1px;
+      color: $external-learning-resource-dark;
+      width: 32px;
+      height: 32px;
+    }
+
+    &.c-content-type-badge--background {
+      background: $external-learning-resource-light;
+    }
+  }
+
+  &--source-material {
+    border-color: $source-material-dark;
+
+    svg {
+      margin-top: 1px;
+      color: $source-material-dark;
+      width: 32px;
+      height: 32px;
+    }
+
+    &.c-content-type-badge--background {
+      background: $source-material-light;
+    }
+  }
 }
 
 .c-learning-path-badge {

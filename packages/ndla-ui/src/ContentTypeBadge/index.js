@@ -3,6 +3,8 @@ import {
   TasksAndActivitiesBadge,
   AssessmentResourcesBadge,
   SubjectBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
 } from './ContentTypeBadge';
 
 import LearningPathBadge from './LearningPathBadge';
@@ -13,4 +15,6 @@ export {
   TasksAndActivitiesBadge,
   AssessmentResourcesBadge,
   SubjectBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
 };

@@ -15,6 +15,8 @@ import {
   TasksAndActivitiesHero,
   SubjectHero,
   AssessmentResourcesHero,
+  ExternalLearningResourcesHero,
+  SourceMaterialHero,
   SubjectBadge,
   ErrorMessage,
   FilterList,
@@ -37,6 +39,8 @@ import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
+import ArticleExternalLearningResource from './ArticleExternalLearningResource';
+import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import article, { topicList, subjectList } from '../../dummydata/index';
 
@@ -128,7 +132,7 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ));
-storiesOf('Artikkelmaler', module)
+storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
     <PageContainer>
       <Content>
@@ -197,6 +201,54 @@ storiesOf('Artikkelmaler', module)
           </OneColumn>
         </AssessmentResourcesHero>
         <ArticleAssessmentResource />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Ekstern læringsressurs', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <ExternalLearningResourcesHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </ExternalLearningResourcesHero>
+        <ArticleExternalLearningResource />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Kildemateriale', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SourceMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </SourceMaterialHero>
+        <ArticleSourceMaterial />
       </Content>
       <FooterExample />
     </PageContainer>

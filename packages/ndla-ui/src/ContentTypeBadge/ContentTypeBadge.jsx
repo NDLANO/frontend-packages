@@ -7,6 +7,8 @@ import {
   TasksAndActivities,
   AssessmentResource,
   Subject,
+  ExternalLearningResource,
+  SharedResource,
 } from 'ndla-icons/contentType';
 
 import * as contentTypes from '../model/ContentType';
@@ -37,6 +39,12 @@ const ContentTypeBadge = ({ type, background, size }) => {
     case contentTypes.SUBJECT:
       icon = <Subject />;
       break;
+    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
+      icon = <ExternalLearningResource />;
+      break;
+    case contentTypes.SOURCE_MATERIAL:
+      icon = <SharedResource />;
+      break;
     default:
       break;
   }
@@ -49,6 +57,9 @@ ContentTypeBadge.propTypes = {
     contentTypes.SUBJECT_MATERIAL,
     contentTypes.TASKS_AND_ACTIVITIES,
     contentTypes.ASSESSMENT_RESOURCES,
+    contentTypes.SUBJECT,
+    contentTypes.EXTERNAL_LEARNING_RESOURCES,
+    contentTypes.SOURCE_MATERIAL,
   ]),
   background: PropTypes.bool,
 };
@@ -68,4 +79,13 @@ export const AssessmentResourcesBadge = props => (
 );
 export const SubjectBadge = props => (
   <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />
+);
+export const ExternalLearningResourcesBadge = props => (
+  <ContentTypeBadge
+    {...props}
+    type={contentTypes.EXTERNAL_LEARNING_RESOURCES}
+  />
+);
+export const SourceMaterialBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
 );

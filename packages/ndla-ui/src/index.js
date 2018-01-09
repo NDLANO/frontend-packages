@@ -32,6 +32,8 @@ export {
   AssessmentResourcesBadge,
   LearningPathBadge,
   SubjectBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
 } from './ContentTypeBadge';
 export {
   default as LayoutItem,
@@ -67,6 +69,8 @@ export {
   TasksAndActivitiesHero,
   AssessmentResourcesHero,
   SubjectHero,
+  ExternalLearningResourcesHero,
+  SourceMaterialHero,
 } from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {

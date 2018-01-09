@@ -21,6 +21,14 @@
   &--assessment-resources {
     background-color: $assessment-resource-background;
   }
+
+  &--external-learning-resources {
+    background-color: $external-learning-resource-background;
+  }
+
+  &--source-material {
+    background-color: $source-material-light;
+  }
 }
 .c-hero__content {
   padding: 90px 0 $spacing--small;

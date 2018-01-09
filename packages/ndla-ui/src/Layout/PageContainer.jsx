@@ -8,13 +8,24 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
 
-export const PageContainer = ({ children }) => (
-  <div className="o-container">{children}</div>
+const classes = new BEMHelper({
+  name: 'container',
+  prefix: 'o-',
+});
+
+export const PageContainer = ({ children, background }) => (
+  <div {...classes('', { background })}>{children}</div>
 );
 
 PageContainer.propTypes = {
   children: PropTypes.node,
+  background: PropTypes.bool,
+};
+
+PageContainer.defaultProps = {
+  background: false,
 };
 
 export default PageContainer;

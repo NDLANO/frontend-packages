@@ -2,6 +2,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  &--background {
+    background-color: $brand-grey--lightest;
+  }
 }
 
 .o-content {

@@ -66,7 +66,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('En side med innhold', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -109,7 +109,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('Hent artikkel med id', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -134,7 +134,7 @@ storiesOf('Sidevisninger', module)
   ));
 storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -158,7 +158,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Oppgaver og aktiviteter', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <TasksAndActivitiesHero>
@@ -182,7 +182,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Vurderingsressurs', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <AssessmentResourcesHero>
@@ -206,7 +206,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Ekstern læringsressurs', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <ExternalLearningResourcesHero>
@@ -230,7 +230,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Kildemateriale', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SourceMaterialHero>
@@ -254,7 +254,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Tilleggsstoff', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -321,7 +321,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('2. Fag', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -358,7 +358,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('3. Hovedemne', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -385,7 +385,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('4. Underemne', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>

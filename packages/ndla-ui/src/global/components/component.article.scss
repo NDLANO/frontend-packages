@@ -16,7 +16,6 @@
 
   @include mq(tablet) {
     @include inuit-font-size(18px, 32px);
-    border: 1px solid $brand-grey--lighter;
     padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;
     padding-top: $spacing--large;

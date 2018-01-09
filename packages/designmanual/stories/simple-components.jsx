@@ -577,50 +577,70 @@ storiesOf('Enkle komponenter', module)
           </span>
           <LicenseExample />
         </div>
-        <Aside>
-          <h2>Høyrespalte</h2>
-          <p>Høyrespalten skal fases ut.</p>
+        <section>
+          <Aside wideScreen>
+            <h2>Høyrespalte</h2>
+            <p>Høyrespalten skal fases ut.</p>
+            <p>
+              I en midlertidig fase under flytting av innhold fra gammelt til nytt
+              nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
+              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+              innhold kan bakes inn i artikkelteksten, eller slettes.
+            </p>
+            <p>
+              Om artikkelen har et bilde under ingressen, må høyrespalten
+              plasseres under denne.
+            </p>
+            <p>
+              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+            </p>
+          </Aside>
           <p>
-            I en midlertidig fase under flytting av innhold fra gammelt til nytt
-            nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
-            flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
-            innhold kan bakes inn i artikkelteksten, eller slettes.
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+            produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
+            og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+          </p>
+          <ul>
+            <li>Test</li>
+            <li>Test</li>
+          </ul>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
           </p>
           <p>
-            Om artikkelen har et bilde under ingressen, må høyrespalten
-            plasseres under denne.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
           </p>
           <p>
-            På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
           </p>
-        </Aside>
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
-        <ul>
-          <li>Test</li>
-          <li>Test</li>
-        </ul>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
-        </p>
+          <Aside narrowScreen>
+            <h2>Høyrespalte</h2>
+            <p>Høyrespalten skal fases ut.</p>
+            <p>
+              I en midlertidig fase under flytting av innhold fra gammelt til nytt
+              nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
+              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+              innhold kan bakes inn i artikkelteksten, eller slettes.
+            </p>
+            <p>
+              Om artikkelen har et bilde under ingressen, må høyrespalten
+              plasseres under denne.
+            </p>
+            <p>
+              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+            </p>
+          </Aside>
+        </section>
+
         <FactBox>
           <h2>Faktaboks</h2>
           <p>

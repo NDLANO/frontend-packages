@@ -67,7 +67,14 @@ class ArticleLoader extends Component {
 
   render() {
     const { article, message } = this.state;
-    const { reset, closeButton, icon, label, hideResources, showSubTopics } = this.props;
+    const {
+      reset,
+      closeButton,
+      icon,
+      label,
+      hideResources,
+      showSubTopics,
+    } = this.props;
     const scripts =
       article && article.requiredLibraries
         ? article.requiredLibraries.map(lib => ({

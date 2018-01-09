@@ -34,12 +34,10 @@ const Resource = ({
       {icon}
     </div>,
     <div key="body" {...classes('body o-flag__body')}>
-      <h1 {...classes('title')}>
-        {resource.name}
-        {resource.additional ? (
-          <Additional className="c-icon--20 u-margin-left-tiny" />
-        ) : null}
-      </h1>
+      <h1 {...classes('title')}>{resource.name}</h1>
+      {resource.additional ? (
+        <Additional className="c-icon--20 u-margin-left-tiny" />
+      ) : null}
     </div>,
   ];
 

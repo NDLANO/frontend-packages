@@ -20,11 +20,11 @@
   @include fadeInLeftItems(li, 40);
 }
 .c-topic-resource__body {
+  flex: 1 0 auto;
   text-align: left;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  vertical-align: middle;
+  justify-content: space-between;
+  align-items: center;
 }
 .c-topic-resource__item {
   max-width: 100%;

@@ -41,6 +41,7 @@ export const initArticleScripts = () => {
   addShowDialogClickListeners();
   addCloseDialogClickListeners();
   addShowConceptDefinitionClickListeners();
+  toggleLicenseInfoBox();
   addDetailsEventListeners();
   initAudioPlayers();
   addFootnoteClickListeners();

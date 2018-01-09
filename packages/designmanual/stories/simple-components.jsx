@@ -582,10 +582,11 @@ storiesOf('Enkle komponenter', module)
             <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
             <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til nytt
-              nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
-              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
-              innhold kan bakes inn i artikkelteksten, eller slettes.
+              I en midlertidig fase under flytting av innhold fra gammelt til
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
             </p>
             <p>
               Om artikkelen har et bilde under ingressen, må høyrespalten
@@ -596,9 +597,10 @@ storiesOf('Enkle komponenter', module)
             </p>
           </Aside>
           <p>
-            Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-            produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-            og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+            prosjektet.
           </p>
           <ul>
             <li>Test</li>
@@ -626,10 +628,11 @@ storiesOf('Enkle komponenter', module)
             <h2>Høyrespalte</h2>
             <p>Høyrespalten skal fases ut.</p>
             <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til nytt
-              nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
-              flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
-              innhold kan bakes inn i artikkelteksten, eller slettes.
+              I en midlertidig fase under flytting av innhold fra gammelt til
+              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
+              etter hvert flyttes til hovedspalten. Fakta kan legges i en
+              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
+              slettes.
             </p>
             <p>
               Om artikkelen har et bilde under ingressen, må høyrespalten

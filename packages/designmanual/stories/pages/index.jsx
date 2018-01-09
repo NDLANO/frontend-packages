@@ -380,6 +380,8 @@ storiesOf('Emnesider', module)
           articleId="17507"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
+          hideResources
+          showSubTopics
         />
       </Content>
       <FooterExample />

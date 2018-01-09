@@ -1,8 +1,7 @@
-import React, { createElement } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import * as Icons from 'ndla-ui/icons';
 import * as licenseIcons from 'ndla-icons/license';
 import * as contentTypeIcons from 'ndla-icons/contentType';
 import * as commonIcons from 'ndla-icons/common';
@@ -11,6 +10,7 @@ import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
 import {
   Aside,
+  FactBox,
   Button,
   Logo,
   LayoutItem,
@@ -508,25 +508,22 @@ storiesOf('Enkle komponenter', module)
         </FigureWithLicense>
 
         <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
-        <Aside float>
-          <div>
-            <h2>Høyrespalte</h2>
-            <p>Høyrespalten skal fases ut.</p>
-            <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til
-              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
-              etter hvert flyttes til hovedspalten. Fakta kan legges i en
-              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
-              slettes.
-            </p>
-            <p>
-              Om artikkelen har et bilde under ingressen, må høyrespalten
-              plasseres under denne.
-            </p>
-            <p>
-              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
-            </p>
-          </div>
+        <Aside>
+          <h2>Høyrespalte</h2>
+          <p>Høyrespalten skal fases ut.</p>
+          <p>
+            I en midlertidig fase under flytting av innhold fra gammelt til nytt
+            nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
+            flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+            innhold kan bakes inn i artikkelteksten, eller slettes.
+          </p>
+          <p>
+            Om artikkelen har et bilde under ingressen, må høyrespalten
+            plasseres under denne.
+          </p>
+          <p>
+            På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+          </p>
         </Aside>
         <p>
           Dette er måte å vise embedded innhold sidestilt med høyrekolonne.
@@ -581,25 +578,22 @@ storiesOf('Enkle komponenter', module)
           </span>
           <LicenseExample />
         </div>
-        <Aside float>
-          <div>
-            <h2>Høyrespalte</h2>
-            <p>Høyrespalten skal fases ut.</p>
-            <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til
-              nytt nettsted kan høyrespalten likevel brukes. Innholdet skal
-              etter hvert flyttes til hovedspalten. Fakta kan legges i en
-              faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
-              slettes.
-            </p>
-            <p>
-              Om artikkelen har et bilde under ingressen, må høyrespalten
-              plasseres under denne.
-            </p>
-            <p>
-              På mobil skal høyrespalten alltid havne på slutten av artikkelen.
-            </p>
-          </div>
+        <Aside>
+          <h2>Høyrespalte</h2>
+          <p>Høyrespalten skal fases ut.</p>
+          <p>
+            I en midlertidig fase under flytting av innhold fra gammelt til nytt
+            nettsted kan høyrespalten likevel brukes. Innholdet skal etter hvert
+            flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+            innhold kan bakes inn i artikkelteksten, eller slettes.
+          </p>
+          <p>
+            Om artikkelen har et bilde under ingressen, må høyrespalten
+            plasseres under denne.
+          </p>
+          <p>
+            På mobil skal høyrespalten alltid havne på slutten av artikkelen.
+          </p>
         </Aside>
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
@@ -616,33 +610,43 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <Aside>
-          <div>
-            <h2>Faktaboks</h2>
-            <p>
-              En faktaboks kan inneholde punktlister eller korte fakta som er
-              relevant for artikkelens innhold.
-            </p>
-            <p>
-              Det anbefales å ikke ha for mye innhold i faktaboks, slik at
-              lese-konteksten i størst mulig grad beholdes.
-            </p>
-            <h2>Enkel tittel</h2>
-            <p>
-              Faktaboksen kan også brukes til å oppsummere innhold i slutten av
-              en artikkel, og den kan inneholde lisensiering om eksternt innhold
-              er brukt.
-            </p>
-            <div className="c-source-list">
-              <LicenseByline
-                className="c-source-list__item"
-                licenseRights={[BY, NC, ND]}
-              />
-              <span className="c-source-list__item">Gary Waters</span>
-              <span className="c-source-list__item">Kilde: SNL.no</span>
-            </div>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FactBox>
+          <h2>Faktaboks</h2>
+          <p>
+            En faktaboks kan inneholde punktlister eller korte fakta som er
+            relevant for artikkelens innhold.
+          </p>
+          <p>
+            Det anbefales å ikke ha for mye innhold i faktaboks, slik at
+            lese-konteksten i størst mulig grad beholdes.
+          </p>
+          <h2>Enkel tittel</h2>
+          <p>
+            Faktaboksen kan også brukes til å oppsummere innhold i slutten av en
+            artikkel, og den kan inneholde lisensiering om eksternt innhold er
+            brukt.
+          </p>
+          <div className="c-source-list">
+            <LicenseByline
+              className="c-source-list__item"
+              licenseRights={[BY, NC, ND]}
+            />
+            <span className="c-source-list__item">Gary Waters</span>
+            <span className="c-source-list__item">Kilde: SNL.no</span>
           </div>
-        </Aside>
+        </FactBox>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -712,33 +716,6 @@ storiesOf('Enkle komponenter', module)
         <h2>Editor</h2>
         <IconList icons={editorIcons} folder="editor" />
       </OneColumn>
-      <StoryBody>
-        <h2>Ikoner som ikke er i bruk</h2>
-        <table className="c-table">
-          <thead>
-            <tr>
-              <th>Icon</th>
-              <th>Name</th>
-              <th>JSX</th>
-            </tr>
-          </thead>
-          <tbody>
-            {['Book', 'Download', 'Embed', 'InsertTemplate', 'OpenWindow'].map(
-              key => (
-                <tr key={key}>
-                  <td>
-                    {createElement(Icons[key], { className: 'c-icon--medium' })}
-                  </td>
-                  <td>{key}</td>
-                  <td>
-                    <code>&lt;Icons.{key} /&gt;</code>
-                  </td>
-                </tr>
-              ),
-            )}
-          </tbody>
-        </table>
-      </StoryBody>
     </div>
   ))
   .add('Knapper', () => (
@@ -771,8 +748,10 @@ storiesOf('Enkle komponenter', module)
           </Button>
         </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
-          <h2 className="u-heading">Alternativer når UU krever en knapp</h2>,
-          <InlineContainer>
+          <h2 key="heading" className="u-heading">
+            Alternativer når UU krever en knapp
+          </h2>,
+          <InlineContainer key="buttons">
             <Button link onClick={action('clicked')}>
               Knapp stylet som link
             </Button>{' '}

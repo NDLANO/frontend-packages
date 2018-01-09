@@ -1,7 +1,0 @@
-{
-  "name": "ndla-ui/icons",
-  "private": true,
-  "main": "../lib/icons.js",
-  "module": "../es/icons.js",
-  "jsnext:main": "../es/icons.js"
-}

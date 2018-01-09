@@ -12,7 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { OneColumn, LayoutItem } from 'ndla-ui';
 
 const classes = new BEMHelper({
-  name: 'factbox',
+  name: 'story-intro',
   prefix: 'c-',
 });
 

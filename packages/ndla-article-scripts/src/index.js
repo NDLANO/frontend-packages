@@ -7,9 +7,9 @@
  */
 
 import {
-  addAsideClickListener,
-  removeAsideClickListener,
-} from './asideScripts';
+  addFactBoxClickListener,
+  removeFactBoxClickListener,
+} from './factBoxScripts';
 
 import {
   addShowDialogClickListeners,
@@ -36,11 +36,12 @@ import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 export const initArticleScripts = () => {
   addEventListenerForResize();
   updateIFrameDimensions();
-  addAsideClickListener();
+  addFactBoxClickListener();
   addCopyToClipboardListeners();
   addShowDialogClickListeners();
   addCloseDialogClickListeners();
   addShowConceptDefinitionClickListeners();
+  toggleLicenseInfoBox();
   addDetailsEventListeners();
   initAudioPlayers();
   addFootnoteClickListeners();
@@ -48,8 +49,8 @@ export const initArticleScripts = () => {
 
 export {
   updateIFrameDimensions,
-  addAsideClickListener,
-  removeAsideClickListener,
+  addFactBoxClickListener,
+  removeFactBoxClickListener,
   addEventListenerForResize,
   removeEventListenerForResize,
   addCloseDialogClickListeners,

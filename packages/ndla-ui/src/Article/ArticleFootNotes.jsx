@@ -10,47 +10,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FootNoteShape } from '../shapes';
 
-const FootNote = ({ footNote, messages, refNr }) => (
-  <li className="c-footnote__item">
-    <cite className="c-footnote__cite">{`${footNote.title} (${
-      footNote.year
-    }), ${footNote.authors.join(' ')} ${messages.edition}: ${
-      footNote.edition
-    }, ${messages.publisher}: ${footNote.publisher}`}</cite>
-    &nbsp;<a href={`#ref_${refNr}_sup`} name={`ref_${refNr}_cite`}>
-      &#8617;
-    </a>
+const citeDetailString = description => (description ? `${description}. ` : '');
+
+const FootNote = ({ footNote }) => (
+  <li className="c-footnotes__item">
+    <cite className="c-footnotes__cite" id={`note${footNote.ref}`}>
+      <sup>
+        <a href={`#ref${footNote.ref}`} target="_self">
+          {footNote.ref}
+        </a>
+      </sup>
+      {`«${footNote.title}». ${footNote.authors.join(' ')}. ${citeDetailString(
+        footNote.edition,
+      )}${citeDetailString(footNote.publisher)}${footNote.year}. `}
+      {footNote.url ? (
+        <a href={footNote.url}>
+          {footNote.url}
+          {'.'}
+        </a>
+      ) : null}
+    </cite>
   </li>
 );
 
 FootNote.propTypes = {
-  refNr: PropTypes.string.isRequired,
   footNote: FootNoteShape.isRequired,
-  messages: PropTypes.shape({
-    edition: PropTypes.string.isRequired,
-    publisher: PropTypes.string.isRequired,
-  }),
 };
 
 const ArticleFootNotes = ({ footNotes, ...rest }) => (
   <ol className="c-footnotes">
-    {Object.keys(footNotes).map(key => (
-      <FootNote
-        key={key}
-        refNr={key.replace('ref_', '')}
-        footNote={footNotes[key]}
-        {...rest}
-      />
+    {footNotes.map(footNote => (
+      <FootNote key={footNote.ref} footNote={footNote} {...rest} />
     ))}
   </ol>
 );
 
 ArticleFootNotes.propTypes = {
-  footNotes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  messages: PropTypes.shape({
-    edition: PropTypes.string.isRequired,
-    publisher: PropTypes.string.isRequired,
-  }),
+  footNotes: PropTypes.arrayOf(FootNoteShape).isRequired,
 };
 
 export default ArticleFootNotes;

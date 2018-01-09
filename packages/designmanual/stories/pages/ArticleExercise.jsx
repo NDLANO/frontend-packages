@@ -23,6 +23,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
+import { Resources } from '../molecules/resources';
 
 export default () => (
   <OneColumn cssModifier="narrow">
@@ -86,6 +87,9 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <Resources />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

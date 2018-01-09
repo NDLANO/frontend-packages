@@ -27,11 +27,13 @@ export const TopicShape = PropTypes.shape({
 });
 
 export const FootNoteShape = PropTypes.shape({
+  ref: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  edition: PropTypes.string.isRequired,
-  publisher: PropTypes.string.isRequired,
+  edition: PropTypes.string,
+  publisher: PropTypes.string,
+  url: PropTypes.string,
 });
 
 export const ContributorShape = PropTypes.shape({

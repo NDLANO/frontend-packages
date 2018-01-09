@@ -10,11 +10,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import moment from 'moment';
-import { OneColumn, Article, Button } from 'ndla-ui';
+import {
+  OneColumn,
+  Article,
+  Button,
+  ResourcesWrapper,
+  ResourcesTitle,
+  TopicIntroductionList,
+} from 'ndla-ui';
 import { Resources } from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseExample from './LicenseExample';
 import SimpleSubmitForm from './SimpleSubmitForm';
+import { topicList } from '../../dummydata/index';
+
+const ResourcesSubTopics = () => (
+  <ResourcesWrapper>
+    <ResourcesTitle>Emner</ResourcesTitle>
+    <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+  </ResourcesWrapper>
+);
 
 class ArticleLoader extends Component {
   constructor(props) {
@@ -52,7 +67,7 @@ class ArticleLoader extends Component {
 
   render() {
     const { article, message } = this.state;
-    const { reset, closeButton, icon, label } = this.props;
+    const { reset, closeButton, icon, label, hideResources, showSubTopics } = this.props;
     const scripts =
       article && article.requiredLibraries
         ? article.requiredLibraries.map(lib => ({
@@ -60,6 +75,17 @@ class ArticleLoader extends Component {
             type: lib.mediaType,
           }))
         : [];
+
+    const articleChildren = [];
+
+    if (showSubTopics) {
+      articleChildren.push(<ResourcesSubTopics key="subTopic" />);
+    }
+
+    if (!hideResources) {
+      articleChildren.push(<Resources key="resources" />);
+    }
+
     return (
       <div>
         <Helmet script={scripts} />
@@ -77,7 +103,7 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseExample />}>
-              <Resources />
+              {articleChildren}
             </Article>
           </OneColumn>
         ) : (
@@ -100,6 +126,8 @@ class ArticleLoader extends Component {
 ArticleLoader.propTypes = {
   icon: PropTypes.node,
   label: PropTypes.string,
+  hideResources: PropTypes.bool,
+  showSubTopics: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,

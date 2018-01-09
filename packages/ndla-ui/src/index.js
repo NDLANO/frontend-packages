@@ -21,11 +21,12 @@ export {
 } from './Article';
 export { default as Button } from './button/Button';
 export { default as Logo } from './Logo';
-export { default as Aside } from './aside/Aside';
 export { default as Table } from './table/Table';
 export { default as Pager } from './pager/Pager';
 export { default as FilterList } from './filter/FilterList';
 export { default as AudioPlayer } from './AudioPlayer';
+export { default as Aside } from './Aside';
+export { default as FactBox } from './FactBox';
 export {
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,

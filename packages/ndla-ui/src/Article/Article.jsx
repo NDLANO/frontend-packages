@@ -104,11 +104,8 @@ export const Article = ({
       </LayoutItem>
       <LayoutItem layout="center">
         {article.footNotes &&
-          Object.keys(article.footNotes).length > 0 && (
-            <ArticleFootNotes
-              footNotes={article.footNotes}
-              messages={messages}
-            />
+          article.footNotes.length > 0 && (
+            <ArticleFootNotes footNotes={article.footNotes} />
           )}
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>

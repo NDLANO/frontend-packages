@@ -26,7 +26,7 @@ function ensureDirectoryExistence(filePath) {
   fs.mkdirSync(dirname);
 }
 
-function cleanAtrributes($el, $) {
+function cleanAttributes($el, $) {
   attrs.forEach(attr => {
     $el.removeAttr(attr);
   });
@@ -35,7 +35,35 @@ function cleanAtrributes($el, $) {
   }
 
   $el.children().each((index, el) => {
-    cleanAtrributes($(el), $);
+    cleanAttributes($(el), $);
+  });
+  return true;
+}
+
+function camelCaseAttributes($el, $) {
+  Object.keys($el[0].attribs).forEach(attr => {
+    if (
+      $el[0].name !== 'svg' &&
+      attr.indexOf('-') > 0 &&
+      !attr.startsWith('data-')
+    ) {
+      console.log(attr);
+      const value = $el[0].attribs[attr];
+      $el.removeAttr(attr);
+      const camelCaseAttr = attr
+        .split('-')
+        .map((token, i) => (i === 0 ? token : capitalize(token)))
+        .join('');
+      $el.attr(camelCaseAttr, value);
+    }
+  });
+
+  if ($el.children().length === 0) {
+    return false;
+  }
+
+  $el.children().each((index, el) => {
+    camelCaseAttributes($(el), $);
   });
   return true;
 }
@@ -52,7 +80,8 @@ function createComponent(name, svg) {
     return undefined;
   }
 
-  cleanAtrributes($svg, $);
+  cleanAttributes($svg, $);
+  camelCaseAttributes($svg, $);
 
   const iconSvg = $svg.html();
   return prettier.format(

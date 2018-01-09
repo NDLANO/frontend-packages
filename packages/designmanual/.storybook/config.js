@@ -12,10 +12,10 @@ setOptions({
   url:
     'https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-ui',
   goFullScreen: false,
-  showLeftPanel: true,
-  showDownPanel: false,
+  showStoriesPanel: true,
+  showAddonPanel: false,
   showSearchBox: false,
-  downPanelInRight: false,
+  addonPanelInRight: false,
 });
 
 addDecorator(withKnobs);

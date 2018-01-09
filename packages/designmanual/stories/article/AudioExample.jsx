@@ -44,35 +44,33 @@ class AudioExample extends Component {
     const reuseLabel = 'Bruk lydklipp';
     const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
-    const captionView = [
-      <FigureCaption
-        key="caption"
-        caption={caption}
-        reuseLabel={reuseLabel}
-        licenseRights={license.rights}
-        authors={authors}
-      />,
-      <FigureLicenseDialog
-        id={this.id}
-        key="details"
-        licenseRights={license.rights}
-        authors={authors}
-        licenseUrl={license.url}
-        origin="https://www.wikimedia.com"
-        title={caption}
-        messages={messages}>
-        <Button outline>Kopier referanse</Button>
-        <Button outline>Last ned lydklipp</Button>
-      </FigureLicenseDialog>,
-    ];
-
     return (
-      <Figure id={this.id} type="full-column" captionView={captionView}>
+      <Figure type="full-column">
         <AudioPlayer
           src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
           type="audio/mpeg"
           title={caption}
           typeLabel="Hørespill"
+        />
+        <FigureLicenseDialog
+          id={this.id}
+          key="details"
+          licenseRights={license.rights}
+          authors={authors}
+          licenseUrl={license.url}
+          origin="https://www.wikimedia.com"
+          title={caption}
+          messages={messages}>
+          <Button outline>Kopier referanse</Button>
+          <Button outline>Last ned lydklipp</Button>
+        </FigureLicenseDialog>
+        <FigureCaption
+          id={this.id}
+          key="caption"
+          caption={caption}
+          reuseLabel={reuseLabel}
+          licenseRights={license.rights}
+          authors={authors}
         />
       </Figure>
     );

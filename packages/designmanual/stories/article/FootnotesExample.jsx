@@ -106,6 +106,27 @@ class FootnotesExample extends Component {
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        {/*  ArticleFootNotes does not follow chicago style yet (because of missing metadata), but changes here should be reflected there.  */}
+        {/* <ArticleFootNotes
+          footNotes={[
+            {
+              ref: 1,
+              title: 'Hanseatene kommer tilbake',
+              publisher: 'Bergens Tidende',
+              year: '11.05.2003',
+              authors: ['Røyrane, Eva'],
+              url:
+                'http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html',
+            },
+            {
+              ref: 2,
+              title: 'Ingen tok Ketil Bjørnstad på alvor.',
+              publisher: 'Aftenposten',
+              year: '25.01.2013',
+              authors: ['Nærø, Sturle Scholz'],
+            },
+          ]}
+        /> */}
         <ol className="c-footnotes">
           <li className="c-footnotes__item">
             <cite className="c-footnotes__cite" id="note1">

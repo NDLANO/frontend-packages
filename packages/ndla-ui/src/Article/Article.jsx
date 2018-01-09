@@ -31,22 +31,36 @@ ArticleWrapper.propTypes = {
   modifier: PropTypes.string,
 };
 
-export const ArticleTitle = ({ children, icon }) => {
+export const ArticleTitle = ({ children, icon, label }) => {
+  const modifiers = [];
   if (icon) {
-    return (
-      <h1 {...classes('title', 'icon')}>
-        {icon}
-        {children}
-      </h1>
-    );
+    modifiers.push('icon');
   }
 
-  return <h1 {...classes('title')}>{children}</h1>;
+  let labelView = null;
+
+  if (label) {
+    labelView = <p>{label}</p>;
+  }
+
+  return (
+    <div {...classes('title', modifiers)}>
+      {icon}
+      {labelView}
+      <h1>{children}</h1>
+    </div>
+  );
 };
 
 ArticleTitle.propTypes = {
   children: PropTypes.node.isRequired,
+  label: PropTypes.string,
   icon: PropTypes.node,
+};
+
+ArticleTitle.defaultProps = {
+  icon: null,
+  label: null,
 };
 
 export const ArticleIntroduction = ({ children }) =>
@@ -69,7 +83,9 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
-        <ArticleTitle icon={icon}>{article.title}</ArticleTitle>
+        <ArticleTitle icon={icon} label={messages.label}>
+          {article.title}
+        </ArticleTitle>
         <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
         <ArticleByline
           messages={messages}
@@ -110,6 +126,7 @@ Article.propTypes = {
     edition: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
+    label: PropTypes.string,
   }).isRequired,
 };
 

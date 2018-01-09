@@ -40,13 +40,42 @@
   border: none;
 }
 
+.c-article__title {
+  position: relative;
+
+  h1 {
+    margin: 0;
+  }
+
+  padding: 0 0 $spacing--small 0;
+
+  @include mq(tablet) {
+    padding: $spacing 0;
+  }
+
+  p {
+    @include inuit-font-size(16px, 20px);
+
+    color: $text-light-color;
+    text-transform: uppercase;
+    margin-bottom: $spacing--small/4;
+    font-family: $font;
+  }
+}
+
 .c-article__title--icon {
+  padding-left: 70px;
+
+  @include mq(desktop) {
+    padding-left: 0;
+  }
+
   .c-content-type-badge {
-    margin-right: 20px;
-    margin-top: -3px;
+    position: absolute;
+    left: 0;
 
     @include mq(desktop) {
-      margin-left: -70px;
+      left: -70px;
     }
   }
 }

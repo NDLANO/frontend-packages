@@ -29,7 +29,9 @@ export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle icon={<SubjectMaterialBadge background size="large" />}>
+        <ArticleTitle
+          icon={<SubjectMaterialBadge background size="large" />}
+          label="Fagstoff">
           Artikkel fagstoff
         </ArticleTitle>
         <ArticleIntroduction>

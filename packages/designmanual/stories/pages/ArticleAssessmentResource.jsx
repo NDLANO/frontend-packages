@@ -29,12 +29,14 @@ export default () => (
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleTitle
-          icon={<AssessmentResourcesBadge background size="large" />}>
-          Vurderingsressurs
+          icon={<AssessmentResourcesBadge background size="large" />}
+          label="Vurderingsressurs">
+          Portal for vurdering, engelsk fellesfag
         </ArticleTitle>
         <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
+          På disse sidene har vi samlet ressurser som kan støtte elever og
+          lærere i arbeidet med vurdering. Ressursene her kan brukes til
+          egenevaluering av elevene og i dialog mellom elev og lærer.
         </ArticleIntroduction>
         <ArticleByline
           authors={[

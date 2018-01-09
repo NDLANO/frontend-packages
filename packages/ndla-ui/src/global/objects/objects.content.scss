@@ -4,7 +4,9 @@
   flex-direction: column;
 
   &--background {
-    background-color: $brand-grey--lightest;
+    @include mq(tablet) {
+      background-color: $brand-grey--lightest;
+    }
   }
 }
 

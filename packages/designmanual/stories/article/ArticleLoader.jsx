@@ -52,7 +52,7 @@ class ArticleLoader extends Component {
 
   render() {
     const { article, message } = this.state;
-    const { reset, closeButton, icon } = this.props;
+    const { reset, closeButton, icon, label } = this.props;
     const scripts =
       article && article.requiredLibraries
         ? article.requiredLibraries.map(lib => ({
@@ -74,6 +74,7 @@ class ArticleLoader extends Component {
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
+                label,
               }}
               licenseBox={<LicenseExample />}>
               <Resources />
@@ -98,6 +99,7 @@ class ArticleLoader extends Component {
 
 ArticleLoader.propTypes = {
   icon: PropTypes.node,
+  label: PropTypes.string,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
@@ -105,6 +107,7 @@ ArticleLoader.propTypes = {
 
 ArticleLoader.defaultProps = {
   icon: null,
+  label: null,
 };
 
 export default ArticleLoader;

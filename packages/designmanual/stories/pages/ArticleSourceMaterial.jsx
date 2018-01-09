@@ -29,7 +29,9 @@ export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle icon={<SourceMaterialBadge background size="large" />}>
+        <ArticleTitle
+          icon={<SourceMaterialBadge background size="large" />}
+          label="Kildemateriale">
           Artikkel kildemateriale
         </ArticleTitle>
         <ArticleIntroduction>

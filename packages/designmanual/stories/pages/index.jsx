@@ -379,6 +379,7 @@ storiesOf('Emnesider', module)
         <ArticleLoader
           articleId="17507"
           icon={<SubjectBadge size="large" background />}
+          label="Emne"
         />
       </Content>
       <FooterExample />
@@ -406,6 +407,7 @@ storiesOf('Emnesider', module)
         <ArticleLoader
           articleId="5948"
           icon={<SubjectBadge size="large" background />}
+          label="Emne"
         />
       </Content>
       <FooterExample />
@@ -434,6 +436,7 @@ storiesOf('Emnesider', module)
           articleId=""
           closeButton
           icon={<SubjectBadge size="large" background />}
+          label="Emne"
         />
       </Content>
       <FooterExample />

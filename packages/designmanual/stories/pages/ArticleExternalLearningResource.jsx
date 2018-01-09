@@ -30,8 +30,9 @@ export default () => (
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleTitle
-          icon={<ExternalLearningResourcesBadge background size="large" />}>
-          Ekstern læringsressurs
+          icon={<ExternalLearningResourcesBadge background size="large" />}
+          label="Ekstern læringsressurs">
+          Artikkel delte læringsressurser
         </ArticleTitle>
         <ArticleIntroduction>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å

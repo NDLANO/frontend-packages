@@ -11,10 +11,8 @@ import PropTypes from 'prop-types';
 import {
   ResourcesWrapper,
   ResourceGroup,
-  SubjectMaterialBadge,
-  LearningPathBadge,
-  TasksAndActivitiesBadge,
-  AssessmentResourcesBadge,
+  ContentTypeBadge,
+  constants,
 } from 'ndla-ui';
 import {
   learningPathResources,
@@ -23,40 +21,38 @@ import {
   assessmentResources,
 } from '../../dummydata/index';
 
+const { contentTypes } = constants;
+
 const toLink = () => ({
   href: '#',
 });
 
-const resourceGroup2 = {
-  id: 'subject-material',
-  title: 'Fagstoff',
-  className: 'c-resource-group--subject-material',
-  resources: articleResources,
-  iconEl: <SubjectMaterialBadge />,
-};
-
 const resourceGroup1 = {
   id: 'type-learning-path',
   title: 'Læringsstier',
-  className: 'c-resource-group--learningpath',
+  contentType: contentTypes.LEARNING_PATH,
   resources: learningPathResources,
-  iconEl: <LearningPathBadge />,
+};
+
+const resourceGroup2 = {
+  id: 'subject-material',
+  title: 'Fagstoff',
+  contentType: contentTypes.SUBJECT_MATERIAL,
+  resources: articleResources,
 };
 
 const resourceGroup3 = {
   id: 'tasks-and-activities',
   title: 'Oppgaver og aktiviteter',
-  className: 'c-resource-group--tasks-and-activities',
+  contentType: contentTypes.TASKS_AND_ACTIVITIES,
   resources: exerciseResources,
-  iconEl: <TasksAndActivitiesBadge />,
 };
 
 const resourceGroup4 = {
   id: 'assessment-resources',
   title: 'Vurderingsressurser',
-  className: 'c-resource-group--assessment-resources',
+  contentType: contentTypes.ASSESSMENT_RESOURCES,
   resources: assessmentResources,
-  iconEl: <AssessmentResourcesBadge />,
 };
 
 const resourceGroups = [
@@ -78,8 +74,8 @@ export const Resources = ({ onlyAdditional }) => (
           }
           return true;
         })}
-        className={group.className}
-        icon={group.iconEl}
+        contentType={group.contentType}
+        icon={<ContentTypeBadge type={group.contentType} />}
         messages={{
           noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
           activateAdditionalResources: 'Vis tilleggsstoff',

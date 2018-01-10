@@ -9,6 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { ContentTypeShape } from '../shapes';
 
 import * as contentTypes from '../model/ContentType';
 
@@ -22,14 +23,7 @@ export const Hero = ({ children, contentType }) => (
 );
 
 Hero.propTypes = {
-  contentType: PropTypes.oneOf([
-    contentTypes.SUBJECT_MATERIAL,
-    contentTypes.TASKS_AND_ACTIVITIES,
-    contentTypes.ASSESSMENT_RESOURCES,
-    contentTypes.SUBJECT,
-    contentTypes.EXTERNAL_LEARNING_RESOURCES,
-    contentTypes.SOURCE_MATERIAL,
-  ]).isRequired,
+  contentType: ContentTypeShape.isRequired,
   children: PropTypes.node,
 };
 

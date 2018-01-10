@@ -12,6 +12,7 @@ import {
 } from 'ndla-icons/contentType';
 
 import * as contentTypes from '../model/ContentType';
+import { ContentTypeShape } from '../shapes';
 
 import { LearningPathBadge } from './LearningPathBadge';
 
@@ -57,15 +58,7 @@ export const ContentTypeBadge = ({ type, background, size }) => {
 
 ContentTypeBadge.propTypes = {
   size: PropTypes.oneOf(['small', 'large']),
-  type: PropTypes.oneOf([
-    contentTypes.SUBJECT_MATERIAL,
-    contentTypes.LEARNING_PATH,
-    contentTypes.TASKS_AND_ACTIVITIES,
-    contentTypes.ASSESSMENT_RESOURCES,
-    contentTypes.SUBJECT,
-    contentTypes.EXTERNAL_LEARNING_RESOURCES,
-    contentTypes.SOURCE_MATERIAL,
-  ]),
+  type: ContentTypeShape,
   background: PropTypes.bool,
 };
 

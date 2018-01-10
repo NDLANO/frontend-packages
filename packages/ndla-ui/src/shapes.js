@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import * as contentTypes from './model/ContentType';
 
 export const LicenseRightShape = PropTypes.shape({
   short: PropTypes.string.isRequired,
@@ -57,3 +58,13 @@ export const ResourceShape = PropTypes.shape({
   contentUri: PropTypes.string,
   primary: PropTypes.bool,
 });
+
+export const ContentTypeShape = PropTypes.oneOf([
+  contentTypes.SUBJECT_MATERIAL,
+  contentTypes.TASKS_AND_ACTIVITIES,
+  contentTypes.ASSESSMENT_RESOURCES,
+  contentTypes.SUBJECT,
+  contentTypes.EXTERNAL_LEARNING_RESOURCES,
+  contentTypes.SOURCE_MATERIAL,
+  contentTypes.LEARNING_PATH,
+]);

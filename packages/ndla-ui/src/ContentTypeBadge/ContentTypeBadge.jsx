@@ -13,12 +13,14 @@ import {
 
 import * as contentTypes from '../model/ContentType';
 
+import { LearningPathBadge } from './LearningPathBadge';
+
 const classes = new BEMHelper({
   name: 'content-type-badge',
   prefix: 'c-',
 });
 
-const ContentTypeBadge = ({ type, background, size }) => {
+export const ContentTypeBadge = ({ type, background, size }) => {
   const modifiers = [type, size];
 
   if (background) {
@@ -45,6 +47,8 @@ const ContentTypeBadge = ({ type, background, size }) => {
     case contentTypes.SOURCE_MATERIAL:
       icon = <SharedResource />;
       break;
+    case contentTypes.LEARNING_PATH:
+      return <LearningPathBadge />;
     default:
       break;
   }
@@ -55,6 +59,7 @@ ContentTypeBadge.propTypes = {
   size: PropTypes.oneOf(['small', 'large']),
   type: PropTypes.oneOf([
     contentTypes.SUBJECT_MATERIAL,
+    contentTypes.LEARNING_PATH,
     contentTypes.TASKS_AND_ACTIVITIES,
     contentTypes.ASSESSMENT_RESOURCES,
     contentTypes.SUBJECT,

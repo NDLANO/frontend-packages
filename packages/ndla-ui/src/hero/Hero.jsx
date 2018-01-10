@@ -29,7 +29,7 @@ Hero.propTypes = {
     contentTypes.SUBJECT,
     contentTypes.EXTERNAL_LEARNING_RESOURCES,
     contentTypes.SOURCE_MATERIAL,
-  ]),
+  ]).isRequired,
   children: PropTypes.node,
 };
 

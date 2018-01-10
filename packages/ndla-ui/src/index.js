@@ -6,8 +6,6 @@
  *
  */
 
-import * as all from '.';
-
 export { default as Footer } from './footer/Footer';
 
 export {
@@ -28,6 +26,7 @@ export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
 export {
+  default as ContentTypeBadge,
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,
   AssessmentResourcesBadge,
@@ -72,6 +71,7 @@ export {
   SubjectHero,
   ExternalLearningResourcesHero,
   SourceMaterialHero,
+  Hero,
 } from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
@@ -94,5 +94,3 @@ export { default as Translation } from './Translation/Translation';
 export { default as TranslationLine } from './Translation/TranslationLine';
 
 export { default as ErrorMessage } from './ErrorMessage';
-
-export default all;

@@ -21,8 +21,8 @@ const TasksAndActivities = props => (
       <g
         id="Page-1"
         stroke="none"
-        strokeWidth="1"
         fill="none"
+        strokeWidth="1"
         fillRule="evenodd">
         <g id="oppgaver-og-aktiviteter">
           <g id="Shape">
@@ -33,10 +33,10 @@ const TasksAndActivities = props => (
               fillRule="nonzero"
             />
             <polygon
-              fillOpacity="0.36"
               fill="currentColor"
-              fillRule="nonzero"
               points="0 22 24 22 24 24 0 24"
+              fillOpacity="0.36"
+              fillRule="nonzero"
             />
           </g>
         </g>

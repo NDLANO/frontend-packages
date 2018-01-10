@@ -21,8 +21,8 @@ const SharedResource = props => (
       <g
         id="Page-1"
         stroke="none"
-        strokeWidth="1"
         fill="none"
+        strokeWidth="1"
         fillRule="evenodd">
         <g id="eksterne-ressurser">
           <g id="Shape">

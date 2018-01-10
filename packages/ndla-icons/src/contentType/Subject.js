@@ -22,8 +22,8 @@ const Subject = props => (
       <g
         id="Page-1"
         stroke="none"
-        strokeWidth="1"
         fill="none"
+        strokeWidth="1"
         fillRule="evenodd">
         <g id="emne" fill="currentColor">
           <path

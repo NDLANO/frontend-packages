@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ResourceShape } from '../shapes';
+import { ResourceShape, ContentTypeShape } from '../shapes';
 import ResourceList from './ResourceList';
 import ResourceToggleFilter from './ResourceToggleFilter';
 import ResourcesTitle from '../ResourcesWrapper/ResourcesTitle';
@@ -43,13 +43,14 @@ class ResourceGroup extends Component {
       resources,
       messages,
       className,
+      contentType,
       resourceToLinkProps,
     } = this.props;
     const { showAdditionalResources } = this.state;
     const additionalResources = resources.filter(res => res.additional);
     const normalResources = resources.filter(res => !res.additional);
     return resources.length > 0 ? (
-      <section {...classes('', '', className)}>
+      <section {...classes('', contentType, className)}>
         {additionalResources.length > 0 && (
           <ResourceToggleFilter
             checked={showAdditionalResources}
@@ -79,7 +80,8 @@ class ResourceGroup extends Component {
 ResourceGroup.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  contentType: ContentTypeShape.isRequired,
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,

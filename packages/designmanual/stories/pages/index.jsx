@@ -11,7 +11,13 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
-  Hero,
+  SubjectMaterialHero,
+  TasksAndActivitiesHero,
+  SubjectHero,
+  AssessmentResourcesHero,
+  ExternalLearningResourcesHero,
+  SourceMaterialHero,
+  SubjectBadge,
   ErrorMessage,
   FilterList,
   OneColumn,
@@ -33,6 +39,9 @@ import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
+import ArticleExternalLearningResource from './ArticleExternalLearningResource';
+import ArticleSourceMaterial from './ArticleSourceMaterial';
+import ArticleAssessmentResource from './ArticleAssessmentResource';
 import article, { topicList, subjectList } from '../../dummydata/index';
 
 const ResourcesSubTopics = () => (
@@ -57,10 +66,10 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('En side med innhold', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -74,7 +83,7 @@ storiesOf('Sidevisninger', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleLoader articleId="17477" />
       </Content>
       <FooterExample />
@@ -100,10 +109,10 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('Hent artikkel med id', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -117,18 +126,18 @@ storiesOf('Sidevisninger', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleLoader closeButton />
       </Content>
       <FooterExample />
     </PageContainer>
   ));
-storiesOf('Artikkelmaler', module)
+storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -142,17 +151,17 @@ storiesOf('Artikkelmaler', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectMaterialHero>
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
   .add('Oppgaver og aktiviteter', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero green>
+        <TasksAndActivitiesHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -166,17 +175,17 @@ storiesOf('Artikkelmaler', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </TasksAndActivitiesHero>
         <ArticleExercise />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('Tilleggsstoff', () => (
-    <PageContainer>
+  .add('Vurderingsressurs', () => (
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero red>
+        <AssessmentResourcesHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -190,7 +199,79 @@ storiesOf('Artikkelmaler', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </AssessmentResourcesHero>
+        <ArticleAssessmentResource />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Ekstern læringsressurs', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu />
+        <ExternalLearningResourcesHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </ExternalLearningResourcesHero>
+        <ArticleExternalLearningResource />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Kildemateriale', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SourceMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </SourceMaterialHero>
+        <ArticleSourceMaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tilleggsstoff', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
         <ArticleAdditional />
       </Content>
       <FooterExample />
@@ -240,10 +321,10 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('2. Fag', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -257,7 +338,7 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
+        </SubjectHero>
         <OneColumn>
           <div className="c-article">
             <LayoutItem layout="center">
@@ -277,10 +358,10 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('3. Hovedemne', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -294,17 +375,23 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
-        <ArticleLoader articleId="17507" hideResources showSubTopics />
+        </SubjectHero>
+        <ArticleLoader
+          articleId="17507"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+        />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
   .add('4. Underemne', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -318,8 +405,12 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
-        <ArticleLoader articleId="5948" />
+        </SubjectHero>
+        <ArticleLoader
+          articleId="5948"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -328,7 +419,7 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <Hero>
+        <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
               <section>
@@ -342,8 +433,13 @@ storiesOf('Emnesider', module)
               </section>
             </div>
           </OneColumn>
-        </Hero>
-        <ArticleLoader articleId="" closeButton />
+        </SubjectHero>
+        <ArticleLoader
+          articleId=""
+          closeButton
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+        />
       </Content>
       <FooterExample />
     </PageContainer>

@@ -67,7 +67,14 @@ class ArticleLoader extends Component {
 
   render() {
     const { article, message } = this.state;
-    const { reset, closeButton, hideResources, showSubTopics } = this.props;
+    const {
+      reset,
+      closeButton,
+      icon,
+      label,
+      hideResources,
+      showSubTopics,
+    } = this.props;
     const scripts =
       article && article.requiredLibraries
         ? article.requiredLibraries.map(lib => ({
@@ -92,6 +99,7 @@ class ArticleLoader extends Component {
         {article ? (
           <OneColumn>
             <Article
+              icon={icon}
               article={article}
               modifier={reset ? 'clean' : ''}
               messages={{
@@ -99,6 +107,7 @@ class ArticleLoader extends Component {
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
+                label,
               }}
               licenseBox={<LicenseExample />}>
               {articleChildren}
@@ -122,11 +131,18 @@ class ArticleLoader extends Component {
 }
 
 ArticleLoader.propTypes = {
+  icon: PropTypes.node,
+  label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
+};
+
+ArticleLoader.defaultProps = {
+  icon: null,
+  label: null,
 };
 
 export default ArticleLoader;

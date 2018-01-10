@@ -205,3 +205,16 @@ export const exerciseResources = [
     introduction: 'Om ulike faser i idéskapningsprosessen.',
   },
 ];
+
+export const assessmentResources = [
+  {
+    id: 'urn:resource:883281e0-c5ec-42d8-8365-abc',
+    name: 'Vurderingsressurs 1',
+    title: 'Vurderingsressurs 1',
+  },
+  {
+    id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dce',
+    name: 'Vurderingsressurs 2',
+    title: 'Vurderingsressurs 2',
+  },
+];

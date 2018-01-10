@@ -8,55 +8,59 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ResourcesWrapper, ResourceGroup } from 'ndla-ui';
-import { Document, Path, Pencil } from 'ndla-icons/common';
+import {
+  ResourcesWrapper,
+  ResourceGroup,
+  ContentTypeBadge,
+  constants,
+} from 'ndla-ui';
 import {
   learningPathResources,
   articleResources,
   exerciseResources,
+  assessmentResources,
 } from '../../dummydata/index';
+
+const { contentTypes } = constants;
 
 const toLink = () => ({
   href: '#',
 });
 
-const resourceGroup2 = {
-  id: 'subject-material',
-  title: 'Fagstoff',
-  className: 'c-resource-group--subject-material',
-  description: 'Relaterte emneartikler',
-  viewAllLinkTitle: 'Mer fagstoff',
-  resources: articleResources,
-  icon: 'Document',
-  iconEl: <Document />,
-  type: 'Fagstoff',
-};
-
 const resourceGroup1 = {
   id: 'type-learning-path',
   title: 'Læringsstier',
-  className: 'c-resource-group--learingpath',
-  viewAllLinkTitle: 'Flere læringsstier',
-  description: 'Tilknyttet dette emnet',
+  contentType: contentTypes.LEARNING_PATH,
   resources: learningPathResources,
-  icon: 'Path',
-  iconEl: <Path />,
-  type: 'Læringsstier',
+};
+
+const resourceGroup2 = {
+  id: 'subject-material',
+  title: 'Fagstoff',
+  contentType: contentTypes.SUBJECT_MATERIAL,
+  resources: articleResources,
 };
 
 const resourceGroup3 = {
   id: 'tasks-and-activities',
   title: 'Oppgaver og aktiviteter',
-  className: 'c-resource-group--tasks-and-activities',
-  description: 'Relatert til emnet',
-  viewAllLinkTitle: 'Flere oppgaver og aktiviteter',
+  contentType: contentTypes.TASKS_AND_ACTIVITIES,
   resources: exerciseResources,
-  icon: 'Pencil',
-  iconEl: <Pencil />,
-  type: 'Oppgaver og aktiviteter',
 };
 
-const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3];
+const resourceGroup4 = {
+  id: 'assessment-resources',
+  title: 'Vurderingsressurser',
+  contentType: contentTypes.ASSESSMENT_RESOURCES,
+  resources: assessmentResources,
+};
+
+const resourceGroups = [
+  resourceGroup1,
+  resourceGroup2,
+  resourceGroup3,
+  resourceGroup4,
+];
 
 export const Resources = ({ onlyAdditional }) => (
   <ResourcesWrapper>
@@ -70,8 +74,8 @@ export const Resources = ({ onlyAdditional }) => (
           }
           return true;
         })}
-        className={group.className}
-        icon={group.iconEl}
+        contentType={group.contentType}
+        icon={<ContentTypeBadge type={group.contentType} />}
         messages={{
           noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
           activateAdditionalResources: 'Vis tilleggsstoff',

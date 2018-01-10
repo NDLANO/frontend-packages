@@ -3,6 +3,7 @@ import {
   learningPathResources,
   articleResources,
   exerciseResources,
+  assessmentResources,
 } from './mockResources';
 import { subjectList } from './mockSubjects';
 import {
@@ -30,4 +31,5 @@ export {
   firstYouTubeList,
   secondYouTubeList,
   youTubeMockVideo,
+  assessmentResources,
 };

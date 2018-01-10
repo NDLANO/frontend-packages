@@ -6,45 +6,74 @@
  * NDLA Brand colors
  */
 
-$brand-color: #20588F;
-$brand-color--secondary: #507AA4;
-$brand-color--tertiary: #B7CDE2;
+$brand-color: #20588f;
+$brand-color--secondary: #507aa4;
+$brand-color--tertiary: #b7cde2;
 $brand-color--light: #ceddea;
 $brand-color--lighter: #deebf6;
-
+$brand-color--dark: #184673;
 
 /**
  * NDLA Grays
  */
 
 $brand-grey: #777777;
-$brand-grey--light: #E8E3E3;
-$brand-grey--lighter: #EFF0F2;
-$brand-grey--lightest: #F8F8F8;
+$brand-grey--light: #e8e3e3;
+$brand-grey--lighter: #eff0f2;
+$brand-grey--lightest: #f8f8f8;
 $brand-grey-dark: #4d4d4d;
+
+/**
+ * Content type colors
+ */
+
+$subject-light: $brand-color--light;
+$subject-dark: $brand-color--dark;
+
+$subject-material-light: #dde9d0;
+$subject-material-dark: #5c6a4f;
+$subject-material-additional: rgba($subject-material-light, 0.4);
+
+$external-learning-resource-background: #d0e8de;
+$external-learning-resource-light: #e6f3ed;
+$external-learning-resource-dark: #4f7d76;
+$external-learning-resource-additional: rgba($external-learning-resource-background, 0.4);
+
+$source-material-light: #dce5e0;
+$source-material-dark: #636e68;
+$source-material-additional: rgba($source-material-light, 0.4);
+
+$tasks-and-activities-background: #f8e0c4;
+$tasks-and-activities-light: #fbeddc;
+$tasks-and-activities-dark: #d98229;
+$tasks-and-activities-additional: rgba($tasks-and-activities-light, 0.4);
+
+$assessment-resource-background: #efd5d5;
+$assessment-resource-light: #f5e7e5;
+$assessment-resource-dark: #c0676f;
+$assessment-resource-additional: rgba($assessment-resource-light, 0.4);
+
+$learning-path-background: #f2efef;
 
 /**
  * Supplementary colors,
  */
 
 $primary-color: #444;
+$text-light-color: #757575;
 $white: #fff;
 $black: #272728;
-$mark-color: #DA788D;
-$brand-color--dark: #184673;
-$green: #5CBC80;
-$yellow: #EAD854;
+$mark-color: #da788d;
+$red: #d1372e;
+$green: #5cbc80;
+$yellow: #ead854;
 
 $table-bg: #f9fafb;
 
-
 /** Link colors **/
 
-$link: inset 0 -1px $brand-color,
-       inset 0 -1px $brand-color;
-$link--hover: inset 0 -3px rgba($brand-color, .2),
-              inset 0 -1px rgba($brand-color, .2);
-
+$link: inset 0 -1px $brand-color, inset 0 -1px $brand-color;
+$link--hover: inset 0 -3px rgba($brand-color, 0.2), inset 0 -1px rgba($brand-color, 0.2);
 
 /** Background colors **/
 
@@ -73,16 +102,18 @@ $background-color--gray-dark: #e4e4e4;
   --brand-grey-dark: $brand-grey-dark;
 
   --primary-color: $primary-color;
+  --text-light-color: $text-light-color;
   --white: $white;
   --black: $black;
   --mark-color: $mark-color;
   --brand-color--dark: $brand-color--dark;
   --green: $green;
+  --red: $red;
 
   --background-color: $background-color;
   --background-color--dark: $background-color--dark;
   --background-color--darker: $background-color--darker;
-  --background-color--light: $background-color--light ;
+  --background-color--light: $background-color--light;
   --background-color--gray: $background-color--gray;
   --background-color--gray-dark: $background-color--gray-dark;
 }

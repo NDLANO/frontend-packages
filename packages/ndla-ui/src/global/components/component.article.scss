@@ -16,14 +16,13 @@
 
   @include mq(tablet) {
     @include inuit-font-size(18px, 32px);
-    border: 1px solid $brand-grey--lighter;
     padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;
     padding-top: $spacing--large;
   }
 
   &:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -41,14 +40,42 @@
   border: none;
 }
 
+.c-article__title {
+  position: relative;
+
+  h1 {
+    margin: 0;
+  }
+
+  padding: 0 0 $spacing--small 0;
+
+  @include mq(tablet) {
+    padding: $spacing 0;
+  }
+
+  p {
+    @include inuit-font-size(16px, 20px);
+
+    color: $text-light-color;
+    text-transform: uppercase;
+    margin-bottom: $spacing--small/4;
+    font-family: $font;
+  }
+}
+
 .c-article__title--icon {
-  svg {
-    width: 50px;
-    height: 50px;
-    margin-right: 20px;
-    margin-top: -3px;
+  padding-left: 70px;
+
+  @include mq(desktop) {
+    padding-left: 0;
+  }
+
+  .c-content-type-badge {
+    position: absolute;
+    left: 0;
+
     @include mq(desktop) {
-      margin-left: -70px;
+      left: -70px;
     }
   }
 }

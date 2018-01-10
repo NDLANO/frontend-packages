@@ -47,7 +47,6 @@ function camelCaseAttributes($el, $) {
       attr.indexOf('-') > 0 &&
       !attr.startsWith('data-')
     ) {
-      console.log(attr);
       const value = $el[0].attribs[attr];
       $el.removeAttr(attr);
       const camelCaseAttr = attr

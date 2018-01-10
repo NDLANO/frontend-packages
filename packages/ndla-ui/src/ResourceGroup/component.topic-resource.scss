@@ -20,21 +20,36 @@
   @include fadeInLeftItems(li, 40);
 }
 .c-topic-resource__body {
+  flex: 1 0 auto;
   text-align: left;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  vertical-align: middle;
+  justify-content: space-between;
+  align-items: center;
 }
 .c-topic-resource__item {
   max-width: 100%;
-  display: flex;
   // animation-name: fadeInTop;
   // animation-duration: .4s;
+}
+
+.c-topic-resource__link {
+  display: flex;
+  color: $brand-color;
+
+  h1 {
+    box-shadow: $link;
+  }
+
   padding: $spacing--small;
   margin-bottom: $spacing--small/2;
-  h1 a {
-    color: $brand-color;
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: none;
+
+    h1 {
+      box-shadow: $link--hover;
+    }
   }
 }
 
@@ -45,15 +60,8 @@
 
 .c-topic-resource__icon {
   display: inline-block;
-  width: 37px;
-  height: 43px;
   text-align: center;
-  box-sizing: border-box;
-  margin-right: $spacing--small*1.5;
-  svg {
-    width: 42px;
-    height: 42px;
-  }
+  width: auto;
 }
 .c-topic-resource__title {
   @include inuit-font-size(20px);

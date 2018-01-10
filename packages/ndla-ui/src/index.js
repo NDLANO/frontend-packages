@@ -6,8 +6,6 @@
  *
  */
 
-import * as all from '.';
-
 export { default as Footer } from './footer/Footer';
 
 export {
@@ -27,6 +25,16 @@ export { default as FilterList } from './filter/FilterList';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
+export {
+  default as ContentTypeBadge,
+  SubjectMaterialBadge,
+  TasksAndActivitiesBadge,
+  AssessmentResourcesBadge,
+  LearningPathBadge,
+  SubjectBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
+} from './ContentTypeBadge';
 export {
   default as LayoutItem,
   OneColumn,
@@ -56,7 +64,15 @@ export {
   BreadcrumbBlock,
   DisplayOnPageYOffset,
 } from './Breadcrumb';
-export { Hero } from './hero/Hero';
+export {
+  SubjectMaterialHero,
+  TasksAndActivitiesHero,
+  AssessmentResourcesHero,
+  SubjectHero,
+  ExternalLearningResourcesHero,
+  SourceMaterialHero,
+  Hero,
+} from './hero/Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
   Figure,
@@ -79,4 +95,4 @@ export { default as TranslationLine } from './Translation/TranslationLine';
 
 export { default as ErrorMessage } from './ErrorMessage';
 
-export default all;
+export { default as constants } from './model';

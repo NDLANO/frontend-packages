@@ -1,0 +1,112 @@
+.c-content-type-badge {
+  border-radius: 100%;
+  border: 2px solid $black;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &--large {
+    width: 50px;
+    height: 50px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &--subject-material {
+    border-color: $subject-material-dark;
+
+    svg {
+      color: $subject-material-dark;
+      margin-top: 4px;
+    }
+
+    &.c-content-type-badge--background {
+      background: $subject-material-light;
+    }
+  }
+
+  &--tasks-and-activities {
+    border-color: $tasks-and-activities-dark;
+
+    svg {
+      color: $tasks-and-activities-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $tasks-and-activities-light;
+    }
+  }
+
+  &--assessment-resources {
+    border-color: $assessment-resource-dark;
+
+    svg {
+      margin-top: 4px;
+      color: $assessment-resource-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $assessment-resource-light;
+    }
+  }
+
+  &--subject {
+    border-color: $subject-dark;
+
+    svg {
+      margin-top: 2px;
+      color: $subject-dark;
+    }
+
+    &.c-content-type-badge--background {
+      background: $subject-light;
+    }
+  }
+
+  &--external-learning-resources {
+    border-color: $external-learning-resource-dark;
+
+    svg {
+      margin-top: 1px;
+      color: $external-learning-resource-dark;
+      width: 32px;
+      height: 32px;
+    }
+
+    &.c-content-type-badge--background {
+      background: $external-learning-resource-light;
+    }
+  }
+
+  &--source-material {
+    border-color: $source-material-dark;
+
+    svg {
+      margin-top: 1px;
+      color: $source-material-dark;
+      width: 32px;
+      height: 32px;
+    }
+
+    &.c-content-type-badge--background {
+      background: $source-material-light;
+    }
+  }
+}
+
+.c-learning-path-badge {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    flex-shrink: 0;
+  }
+  &__plus {
+    margin: 0 $spacing--small/4;
+  }
+}

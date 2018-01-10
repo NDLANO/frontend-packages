@@ -5,30 +5,31 @@
   @include mq(tablet) {
     min-height: 330px;
   }
-}
-.c-hero--red {
-  background-color: $mark-color;
-  a {
-    color: $black;
-    border-bottom: 1px solid $brand-grey;
-  }
-  a:hover {
-    color: $black;
-    border: none;
-  }
-}
-.c-hero--green {
-  background-color: rgba($green, 1);
-  a {
-    color: $black;
-    border-bottom: 1px solid $brand-grey;
-  }
-  a:hover {
-    color: $black;
-    border: none;
-  }
-}
 
+  &--subject-material {
+    background-color: $subject-material-light;
+  }
+
+  &--tasks-and-activities {
+    background-color: $tasks-and-activities-background;
+  }
+
+  &--subject {
+    background-color: $subject-light;
+  }
+
+  &--assessment-resources {
+    background-color: $assessment-resource-background;
+  }
+
+  &--external-learning-resources {
+    background-color: $external-learning-resource-background;
+  }
+
+  &--source-material {
+    background-color: $source-material-light;
+  }
+}
 .c-hero__content {
   padding: 90px 0 $spacing--small;
   z-index: 9;

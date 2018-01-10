@@ -16,27 +16,27 @@ import {
   ArticleByline,
   ArticleIntroduction,
   Image,
-  TasksAndActivitiesBadge,
+  AssessmentResourcesBadge,
 } from 'ndla-ui';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
-import { Resources } from '../molecules/resources';
 
 export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleTitle
-          icon={<TasksAndActivitiesBadge background size="large" />}
-          label="Oppgaver og aktiviteter">
-          Lag en brukersti
+          icon={<AssessmentResourcesBadge background size="large" />}
+          label="Vurderingsressurs">
+          Portal for vurdering, engelsk fellesfag
         </ArticleTitle>
         <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
+          På disse sidene har vi samlet ressurser som kan støtte elever og
+          lærere i arbeidet med vurdering. Ressursene her kan brukes til
+          egenevaluering av elevene og i dialog mellom elev og lærer.
         </ArticleIntroduction>
         <ArticleByline
           authors={[
@@ -87,9 +87,6 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

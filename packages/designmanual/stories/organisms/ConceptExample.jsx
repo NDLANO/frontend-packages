@@ -119,6 +119,60 @@ class ConceptExample extends Component {
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
                 </p>
+                <p>
+                  Alle man møter, er normsendere. I første omgang er det
+                  foreldre, søsken og nær familie. Også venner og lekekamerater
+                  er normsendere. Dette kalles primærsosialisering. Barn har
+                  også normsendere utenfor de nære relasjonene. I barnehagen
+                  møter de voksne som er tydelige rollemodeller, og som har en
+                  klar oppgave i forhold til mer formell sosialisering. Det
+                  kalles sekundærsosialisering og blir fulgt opp av andre
+                  formelle utdanningsinstitusjoner, som skolen. Barn møter
+                  uformell sosialisering når de ser på TV eller spiller
+                  dataspill.
+                </p>
+                <h2>Normforvirring</h2>
+                <p>
+                  De signalene andre mennesker sender ut, kan for et individ
+                  oppleves som forvirrende og i mange tilfeller også
+                  motstridende. Det kalles normforvirring. Denne
+                  normforvirringen er en naturlig del av
+                  sosialiseringsprosessen, og noe vi må lære oss å forholde oss
+                  til. En vanlig konflikt er at venner ønsker at du skal spille
+                  internettspill eller bli med på kino, mens foreldrene ber deg
+                  skru av PC-en for å gjøre husarbeid og lekser.
+                </p>
+
+                <p>
+                  Selv om informasjonen om narkotika er entydig, fordi det er
+                  forbudt gjennom norsk lov, kan enkeltpersoner bli utfordret
+                  også på disse normene. I noen miljøer er det akseptert å bruke
+                  narkotika, og de skadelige sidene av bruken bagatelliseres. I
+                  slike situasjoner kan internaliserte normer hjelpe oss til å
+                  føle oss trygge fordi vi har tatt stilling til spørsmålet på
+                  forhånd. Det bidrar til at mange føler at de vet hva som er
+                  riktige valg, og de føler seg trygge når de blir utfordret.
+                </p>
+
+                <p>
+                  Motstridende signaler fra normsendere, som følges opp av
+                  sanksjoner som enten er vilkårlige, eller som føles
+                  urettferdige, skaper utrygghet. I verste fall kan utydelige
+                  normer og uregelmessig belønning medføre psykiske lidelser
+                  fordi de gjør personen utrygg og{' '}
+                  <Concept
+                    content="De signalene andre mennesker sender ut, kan for et individ oppleves som forvirrende og i mange tilfeller også motstridende. Det kalles normforvirring. Denne normforvirringen er en naturlig del av sosialiseringsprosessen, og noe vi må lære oss å forholde oss til. En vanlig konflikt er at venner ønsker at du skal spille internettspill eller bli med på kino, mens foreldrene ber deg skru av PC-en for å gjøre husarbeid og lekser."
+                    authors={[]}
+                    title="usikker"
+                    messages={{
+                      ariaLabel: 'Vis begrep beskrivelse',
+                      close: 'Lukk',
+                    }}
+                    license="by-nc-nd"
+                    id={4}>
+                    usikker
+                  </Concept>.
+                </p>
               </div>
             </section>
           </LayoutItem>

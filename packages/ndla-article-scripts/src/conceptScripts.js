@@ -21,7 +21,8 @@ export const addShowConceptDefinitionClickListeners = () => {
       const isHidden = !popup.classList.toggle('c-concept__popup--visible');
 
       if (!isHidden) {
-        const openBtnBottom = openBtn.getBoundingClientRect().bottom;
+        const openBtnBottom =
+          openBtn.getBoundingClientRect().bottom + window.pageYOffset;
         popup.style.top = `${openBtnBottom + 5}px`;
         const viewportHeight = Math.max(
           document.documentElement.clientHeight,

@@ -17,8 +17,9 @@ if (!process.env.CI || !process.env.TRAVIS) {
 const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
 const ghRepo = client.repo(process.env.TRAVIS_REPO_SLUG);
+const providedArgs = process.argv.slice(2);
 
-function isFork(allowedForks = []) {
+function isFork() {
   const { TRAVIS_PULL_REQUEST_SLUG, TRAVIS_REPO_SLUG } = process.env;
   if (!TRAVIS_PULL_REQUEST_SLUG) {
     return false;
@@ -26,10 +27,7 @@ function isFork(allowedForks = []) {
   const [prOwner] = TRAVIS_PULL_REQUEST_SLUG.split('/');
   const [owner] = TRAVIS_REPO_SLUG.split('/');
 
-  return (
-    owner !== prOwner &&
-    allowedForks.find(forkOwner => prOwner === forkOwner) === undefined
-  );
+  return owner !== prOwner;
 }
 
 function getUrl(content) {
@@ -90,37 +88,58 @@ function onError(sha, err) {
   });
 }
 
-async function deploy(sha) {
-  function spawnPromise(...args) {
-    return new Promise((resolve, reject) => {
-      const child = spawn(...args);
-      let stdout = '';
-      let stderr = '';
-      child.stdout.on('data', data => {
-        stdout += data;
-        safeLog(String(data));
-      });
-      child.stderr.on('data', data => {
-        safeError(String(data));
-        stderr += String(safeify(data));
-      });
-
-      child.on('error', error => {
-        onError(sha, error);
-        reject(safeify(error));
-      });
-
-      child.on('close', () => {
-        if (stderr) {
-          reject(stderr);
-        } else {
-          resolve(stdout);
-        }
-      });
+function spawnPromise(sha, command, ...args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, ...args);
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', data => {
+      stdout += data;
+      safeLog(String(data));
     });
-  }
+    child.stderr.on('data', data => {
+      safeError(String(data));
+      stderr += String(safeify(data));
+    });
 
-  if (isFork(['netliferesearch', 'Keyteq'])) {
+    child.on('error', error => {
+      onError(sha, error);
+      reject(safeify(error));
+    });
+
+    child.on('close', () => {
+      if (stderr) {
+        reject(stderr);
+      } else {
+        resolve(stdout);
+      }
+    });
+  });
+}
+
+async function spawnAlias(sha, deployUrl) {
+  const newUrl = deployUrl.replace('now.sh', 'ndla.sh');
+  const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
+  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
+  await spawnPromise(sha, 'now', cliArgs);
+  return newUrl;
+}
+
+async function spawnDeploy(sha) {
+  const cliArgs = [
+    '--token',
+    nowToken,
+    '--no-clipboard',
+    '--npm',
+    ...providedArgs,
+  ];
+  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
+  const result = await spawnPromise(sha, 'now', cliArgs);
+  return getUrl(result);
+}
+
+async function deploy(sha) {
+  if (isFork()) {
     console.log(`▲ Now deployment is skipped for forks...`);
     return;
   }
@@ -141,17 +160,7 @@ async function deploy(sha) {
     description: `▲ Now deployment pending`,
   });
 
-  const providedArgs = process.argv.slice(2);
-  const cliArgs = [
-    '--token',
-    nowToken,
-    '--no-clipboard',
-    '--npm',
-    ...providedArgs,
-  ];
-  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
-  const result = await spawnPromise('now', cliArgs);
-
+  const result = await spawnDeploy(sha);
   targetUrl = getUrl(result);
 
   updateStatus(sha, {
@@ -171,14 +180,19 @@ async function deploy(sha) {
     throw err;
   });
 
-  console.log(`💪 it's up and ready!`);
+  console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
 
-  console.log('🏁 all done!');
+  targetUrl = await spawnAlias(sha, targetUrl);
+
+  console.log(`🔗 It's linked and ready for use!`);
+
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'success',
     description: `▲ Now deployment complete`,
   });
+
+  console.log('🏁 All done!');
 }
 
 const {

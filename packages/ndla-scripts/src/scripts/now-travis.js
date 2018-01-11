@@ -200,6 +200,7 @@ const {
   TRAVIS_PULL_REQUEST_SHA,
   TRAVIS_PULL_REQUEST,
   TRAVIS_COMMIT,
+  TRAVIS_BRANCH,
 } = process.env;
 
 switch (TRAVIS_EVENT_TYPE) {
@@ -208,7 +209,7 @@ switch (TRAVIS_EVENT_TYPE) {
     break;
   }
   case 'push': {
-    if (TRAVIS_PULL_REQUEST !== 'false') {
+    if (TRAVIS_PULL_REQUEST !== 'false' || TRAVIS_BRANCH === 'master') {
       deploy(TRAVIS_COMMIT);
     } else {
       console.log(`Skip deploy of commits not updating a PR`);

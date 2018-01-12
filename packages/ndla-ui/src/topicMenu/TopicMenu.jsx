@@ -12,6 +12,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+
 import { Search, Home } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
@@ -110,41 +111,33 @@ export default class TopicMenu extends Component {
           <li {...classes('subject')}>
             <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
           </li>
-          {topics.map(topic => (
-            <li
-              {...classes(
-                'topic-item',
-                topic.id === expandedTopicId && 'active',
-              )}
-              onClick={event => this.handleClick(event, topic.id)}
-              role="button"
-              tabIndex="0"
-              onKeyPress={event => this.handleBtnKeyPress(event, topic.id)}
-              key={topic.id}>
-              <span {...classes('link')}> {topic.name} </span>
-              {topic.id === expandedTopicId && window.innerWidth < 700 ? (
-                <SubtopicLinkList
-                  classes={classes}
-                  className={classes('right').className}
-                  closeMenu={closeMenu}
-                  topic={expandedTopic}
-                  goToTitle={messages.goTo}
-                  toTopic={toTopic}
-                />
-              ) : null}
-            </li>
-          ))}
+          {topics.map(topic => {
+            const active = topic.id === expandedTopicId;
+            const tabIndex = active ? null : 0;
+
+            return (
+              <li
+                {...classes('topic-item', active && 'active')}
+                onClick={event => this.handleClick(event, topic.id)}
+                role="button"
+                tabIndex={tabIndex}
+                onKeyPress={event => this.handleBtnKeyPress(event, topic.id)}
+                key={topic.id}>
+                <span {...classes('link')}> {topic.name} </span>
+                {topic.id === expandedTopicId ? (
+                  <SubtopicLinkList
+                    classes={classes}
+                    className={classes('right').className}
+                    closeMenu={closeMenu}
+                    topic={expandedTopic}
+                    goToTitle={messages.goTo}
+                    toTopic={toTopic}
+                  />
+                ) : null}
+              </li>
+            );
+          })}
         </ul>
-        {expandedTopic && window.innerWidth > 700 ? (
-          <SubtopicLinkList
-            classes={classes}
-            className={classes('right').className}
-            closeMenu={closeMenu}
-            topic={expandedTopic}
-            goToTitle={messages.goTo}
-            toTopic={toTopic}
-          />
-        ) : null}
       </div>
     );
   }

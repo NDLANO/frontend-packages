@@ -17,6 +17,7 @@ import {
   TopicMenu,
   DisplayOnPageYOffset,
   BreadcrumbBlock,
+  ToggleSearchButton,
 } from 'ndla-ui';
 import { topicMenu, subjectList, topicList } from '../../dummydata';
 
@@ -71,6 +72,7 @@ export const MastheadWithTopicMenu = () => {
         </DisplayOnPageYOffset>
       </MastheadItem>
       <MastheadItem right>
+        <ToggleSearchButton messages={{ buttonText: 'Søk' }} />
         <Logo to="#" altText="Nasjonal digital læringsarena" />
       </MastheadItem>
     </Masthead>

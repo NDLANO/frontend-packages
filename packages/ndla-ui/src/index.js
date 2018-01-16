@@ -25,6 +25,7 @@ export { default as FilterList } from './filter/FilterList';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
+export { ToggleSearchButton } from './Search';
 export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,

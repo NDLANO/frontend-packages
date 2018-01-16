@@ -6,6 +6,8 @@
  *
  */
 
-import Search from './Search';
+import SearchField from './SearchField';
 
-export default Search;
+import ToggleSearchButton from './ToggleSearchButton';
+
+export { SearchField, ToggleSearchButton };

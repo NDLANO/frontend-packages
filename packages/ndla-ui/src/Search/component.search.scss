@@ -1,28 +1,3 @@
-.c-search {
-  margin: $spacing 0;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-}
-
-.c-search__input {
-  
-}
-
-.c-search__button {
-  @include inuit-font-size(20px);
-  background: $brand-color;
-  width: 47px;
-  height: 47px;
-  margin: 0 0 0 -2px;
-  cursor: pointer;
-  svg {
-    width: 24px;
-    height: 24px;
-    fill: $white;
-  }
-  
-  &:hover {
-    background: $brand-color--secondary;
-  }
-}
+@import './component.search-field';
+@import './component.toggle-search-button';
+@import './component.search-overlay';

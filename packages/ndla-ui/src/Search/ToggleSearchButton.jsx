@@ -4,7 +4,6 @@ import { Search } from 'ndla-icons/common';
 import BEMHelper from 'react-bem-helper';
 
 import ClickToggle from '../common/ClickToggle';
-import SearchOverlay from './SearchOverlay';
 
 const classes = BEMHelper({
   prefix: 'c-',
@@ -12,7 +11,7 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-const ToggleSearchButton = ({ messages }) => {
+const ToggleSearchButton = ({ messages, children }) => {
   const buttonContent = (
     <span className={classes('button-content')}>
       <span className={classes('button-text')}>{messages.buttonText}</span>
@@ -25,7 +24,7 @@ const ToggleSearchButton = ({ messages }) => {
       title={buttonContent}
       className={classes()}
       buttonClassName={classes('button')}>
-      <SearchOverlay />
+      {children}
     </ClickToggle>
   );
 };
@@ -34,6 +33,7 @@ ToggleSearchButton.propTypes = {
   messages: PropTypes.shape({
     buttonText: PropTypes.string.isRequired,
   }).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ToggleSearchButton;

@@ -7,7 +7,7 @@
  */
 
 import SearchField from './SearchField';
-
+import SearchOverlay from './SearchOverlay';
 import ToggleSearchButton from './ToggleSearchButton';
 
-export { SearchField, ToggleSearchButton };
+export { SearchField, ToggleSearchButton, SearchOverlay };

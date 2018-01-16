@@ -1,3 +1,19 @@
+@keyframes expand {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    opacity: 0.2;
+    display: block;
+    transform: scale3d(1, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 @keyframes fadeIn {
   0% {
     display: none;

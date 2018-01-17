@@ -21,7 +21,7 @@ const messagesShape = PropTypes.shape({
   allContentTypeResultLabel: PropTypes.string.isRequired,
 });
 
-const autocompleteResultShape = PropTypes.arrayOf(
+const searchResultShape = PropTypes.arrayOf(
   PropTypes.shape({
     title: PropTypes.string.isRequired,
     icon: PropTypes.node.isRequired,
@@ -36,31 +36,28 @@ const autocompleteResultShape = PropTypes.arrayOf(
   }),
 );
 
-const Autocomplete = ({
-  autocompleteResult,
-  messages,
-  searchString,
-  allResultUrl,
-}) => (
-  <div {...classes('autocomplete')}>
-    <div {...classes('autocomplete-content')}>
-      {autocompleteResult.map(result => (
-        <div {...classes('content-type-result')} key={result.title}>
-          <div {...classes('icon-wrapper')}>{result.icon}</div>
+const SearchResult = ({ result, messages, searchString, allResultUrl }) => (
+  <div {...classes('search-result')}>
+    <div {...classes('search-result-content')}>
+      {result.map(contentTypeResult => (
+        <div {...classes('content-type-result')} key={contentTypeResult.title}>
+          <div {...classes('icon-wrapper')}>{contentTypeResult.icon}</div>
           <div>
             <h2>
-              {result.title}{' '}
-              <span {...classes('total-count')}>({result.totalCount})</span>
+              {contentTypeResult.title}{' '}
+              <span {...classes('total-count')}>
+                ({contentTypeResult.totalCount})
+              </span>
             </h2>
             <ul>
-              {result.items.map(item => (
+              {contentTypeResult.items.map(item => (
                 <li key={item.url}>
                   <SafeLink to={item.url}>{item.display}</SafeLink>
                 </li>
               ))}
-              {result.showAllLinkUrl && (
+              {contentTypeResult.showAllLinkUrl && (
                 <li key="showAll" {...classes('show-all')}>
-                  <SafeLink to={result.showAllLinkUrl}>
+                  <SafeLink to={contentTypeResult.showAllLinkUrl}>
                     {messages.allContentTypeResultLabel}
                   </SafeLink>
                 </li>
@@ -77,8 +74,8 @@ const Autocomplete = ({
   </div>
 );
 
-Autocomplete.propTypes = {
-  autocompleteResult: autocompleteResultShape,
+SearchResult.propTypes = {
+  result: searchResultShape,
   messages: messagesShape.isRequired,
   searchString: PropTypes.string.isRequired,
   allResultUrl: PropTypes.string.isRequired,
@@ -90,23 +87,23 @@ const SearchField = ({
   onChange,
   filters,
   onFilterRemove,
-  autocompleteResult,
+  searchResult,
   messages,
   allResultUrl,
 }) => {
   const modifiers = [];
   let filtersView = null;
 
-  const hasAutocomplete = autocompleteResult && autocompleteResult.length > 0;
+  const hasSearchResult = searchResult && searchResult.length > 0;
 
-  let autocompleteView = null;
+  let searchResultView = null;
 
-  if (hasAutocomplete) {
-    modifiers.push('has-autocomplete');
+  if (hasSearchResult) {
+    modifiers.push('has-search-result');
 
-    autocompleteView = (
-      <Autocomplete
-        autocompleteResult={autocompleteResult}
+    searchResultView = (
+      <SearchResult
+        result={searchResult}
         messages={messages}
         searchString={value}
         allResultUrl={allResultUrl}
@@ -149,7 +146,7 @@ const SearchField = ({
       <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
         <SearchIcon />
       </button>
-      {autocompleteView}
+      {searchResultView}
     </div>
   );
 };
@@ -166,7 +163,7 @@ SearchField.propTypes = {
     }),
   ),
   messages: messagesShape.isRequired,
-  autocompleteResult: autocompleteResultShape,
+  searchResult: searchResultShape,
   allResultUrl: PropTypes.string.isRequired,
 };
 

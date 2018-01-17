@@ -6,7 +6,7 @@ import {
   AssessmentResourcesBadge,
 } from 'ndla-ui';
 
-export const autocompleteData = [
+export const searchFieldSearchResults = [
   {
     title: 'Læringsstier',
     icon: <LearningPathBadge size="x-small" />,

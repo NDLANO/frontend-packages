@@ -13,7 +13,7 @@
     }
   }
 
-  &--has-autocomplete {
+  &--has-search-result {
     .c-search-field {
       &__input {
         border-bottom-left-radius: 0;
@@ -98,7 +98,7 @@
     }
   }
 
-  &__autocomplete {
+  &__search-result {
     position: absolute;
     width: 100%;
     top: 58px;
@@ -112,7 +112,7 @@
     transform-origin: top;
   }
 
-  &__autocomplete-content {
+  &__search-result-content {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;

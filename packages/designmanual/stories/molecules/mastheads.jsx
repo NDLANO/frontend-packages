@@ -26,7 +26,7 @@ import {
   topicMenu,
   subjectList,
   topicList,
-  autocompleteData,
+  searchFieldSearchResults,
 } from '../../dummydata';
 
 export const MastheadLeftRight = () => (
@@ -59,8 +59,8 @@ class MastheadWithTopicMenu extends Component {
   }
 
   render() {
-    const autocompleteResult =
-      this.state.value.length > 1 ? autocompleteData : null;
+    const searchFieldResults =
+      this.state.value.length > 1 ? searchFieldSearchResults : null;
 
     return (
       <Masthead fixed>
@@ -110,7 +110,7 @@ class MastheadWithTopicMenu extends Component {
                   allResultLabel: 'Se alle søkeresultat for:',
                 }}
                 allResultUrl="#"
-                autocompleteResult={autocompleteResult}
+                searchResult={searchFieldResults}
               />
             </SearchOverlay>
           </ToggleSearchButton>

@@ -11,7 +11,7 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-const ToggleSearchButton = ({ messages, children }) => {
+const ToggleSearchButton = ({ messages, children, expanded }) => {
   const buttonContent = (
     <span className={classes('button-content')}>
       <span className={classes('button-text')}>{messages.buttonText}</span>
@@ -23,7 +23,8 @@ const ToggleSearchButton = ({ messages, children }) => {
     <ClickToggle
       title={buttonContent}
       className={classes()}
-      buttonClassName={classes('button')}>
+      buttonClassName={classes('button')}
+      expanded={expanded}>
       {children}
     </ClickToggle>
   );
@@ -34,6 +35,7 @@ ToggleSearchButton.propTypes = {
     buttonText: PropTypes.string.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
+  expanded: PropTypes.bool,
 };
 
 export default ToggleSearchButton;

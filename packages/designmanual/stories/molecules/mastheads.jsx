@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   SiteNav,
@@ -91,7 +92,9 @@ class MastheadWithTopicMenu extends Component {
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
-          <ToggleSearchButton messages={{ buttonText: 'Søk' }}>
+          <ToggleSearchButton
+            messages={{ buttonText: 'Søk' }}
+            expanded={this.props.searchFieldExpanded}>
             <SearchOverlay>
               <SearchField
                 placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
@@ -120,6 +123,14 @@ class MastheadWithTopicMenu extends Component {
     );
   }
 }
+
+MastheadWithTopicMenu.propTypes = {
+  searchFieldExpanded: PropTypes.bool,
+};
+
+MastheadWithTopicMenu.defaultProps = {
+  searchFieldExpanded: false,
+};
 
 export { MastheadWithTopicMenu };
 

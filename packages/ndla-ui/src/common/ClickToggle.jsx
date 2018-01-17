@@ -19,7 +19,7 @@ export default class ClickToggle extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: false,
+      isOpen: props.expanded,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -46,6 +46,10 @@ export default class ClickToggle extends React.Component {
       },
       clickOutsideDeactivates: true,
     });
+
+    if (this.props.expanded) {
+      this.focusTrap.activate();
+    }
   }
 
   componentWillUnmount() {
@@ -72,6 +76,7 @@ export default class ClickToggle extends React.Component {
       openTitle,
       buttonClassName,
       containerClass: Component,
+      expanded,
       ...rest
     } = this.props;
     const { isOpen } = this.state;
@@ -109,8 +114,10 @@ ClickToggle.propTypes = {
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
+  expanded: PropTypes.bool,
 };
 
 ClickToggle.defaultProps = {
   containerClass: 'div',
+  expanded: false,
 };

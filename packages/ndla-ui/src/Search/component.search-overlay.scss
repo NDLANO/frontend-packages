@@ -50,12 +50,13 @@
 
   &__container {
     padding: 0;
+    position: relative;
   }
 
   &__close-button {
     position: absolute;
-    top: $spacing;
-    right: 260px;
+    top: 36px;
+    right: -($spacing--large + 36px);
     width: 36px;
     height: 36px;
     color: $brand-color--dark;

@@ -12,10 +12,12 @@ const SearchOverlay = ({ close, children }) => (
   <Fragment>
     <div className="o-backdrop" />
     <div {...classes()}>
-      <div {...classes('container o-wrapper')}>{children}</div>
-      <button {...classes('close-button')} onClick={close}>
-        <Cross />
-      </button>
+      <div {...classes('container o-wrapper')}>
+        {children}
+        <button {...classes('close-button')} onClick={close}>
+          <Cross />
+        </button>
+      </div>
     </div>
   </Fragment>
 );

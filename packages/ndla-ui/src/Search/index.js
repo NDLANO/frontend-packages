@@ -9,5 +9,13 @@
 import SearchField from './SearchField';
 import SearchOverlay from './SearchOverlay';
 import ToggleSearchButton from './ToggleSearchButton';
+import { SearchPage, SearchResult, SearchResultList } from './SearchPage';
 
-export { SearchField, ToggleSearchButton, SearchOverlay };
+export {
+  SearchField,
+  ToggleSearchButton,
+  SearchOverlay,
+  SearchPage,
+  SearchResult,
+  SearchResultList,
+};

@@ -1,0 +1,89 @@
+$filter-width: 286px;
+$search-field-wrapper-margin: $filter-width + $spacing--small;
+.c-search-page {
+  &__filter-result-wrapper {
+    display: flex;
+  }
+
+  &__search-field-wrapper {
+    padding: $spacing--large 0;
+    margin-left: $search-field-wrapper-margin;
+  }
+
+  &__filter-wrapper {
+    flex-basis: $filter-width;
+    flex-shrink: 0;
+    margin-right: $spacing--small;
+    h2 {
+      text-transform: uppercase;
+    }
+  }
+
+  &__filter-wrapper,
+  &__result-wrapper {
+    h2 {
+      margin: 0;
+      font-weight: 600;
+      @include font-size(18px, 32px);
+    }
+  }
+
+  &__result-wrapper {
+    flex-grow: 1;
+  }
+}
+
+.c-search-result {
+  background: $white;
+  padding: $spacing--medium $spacing--medium;
+
+  & > h1 {
+    margin: 0 0 $spacing--medium;
+    @include font-size(24px, 32px);
+    font-weight: 400;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+.c-search-result-list {
+  list-style: none;
+  margin: $spacing--medium 0 0 0;
+  padding: 0;
+}
+
+.c-search-result-item {
+  border-bottom: 1px solid $brand-grey--light;
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  .c-content-type-badge {
+    margin: 0 $spacing--small/2;
+  }
+
+  &__content-type-label {
+    color: $text-light-color;
+    text-transform: uppercase;
+    @include font-size(14px, 18px);
+  }
+
+  &__ingress {
+    margin: $spacing--small 0 $spacing 0;
+    @include font-size(16px, 27px);
+  }
+
+  h3 {
+    margin: 0;
+    @include font-size(22px, 28px);
+    font-weight: 600;
+
+    a {
+      box-shadow: none;
+    }
+  }
+}

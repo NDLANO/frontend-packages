@@ -162,9 +162,9 @@ SearchField.propTypes = {
       display: PropTypes.string.isRequired,
     }),
   ),
-  messages: messagesShape.isRequired,
+  messages: messagesShape,
   searchResult: searchResultShape,
-  allResultUrl: PropTypes.string.isRequired,
+  allResultUrl: PropTypes.string,
 };
 
 export default SearchField;

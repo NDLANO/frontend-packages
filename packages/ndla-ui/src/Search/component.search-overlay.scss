@@ -55,7 +55,7 @@
 
   &__close-button {
     position: absolute;
-    top: 36px;
+    top: $spacing--small;
     right: -($spacing--large + 36px);
     width: 36px;
     height: 36px;

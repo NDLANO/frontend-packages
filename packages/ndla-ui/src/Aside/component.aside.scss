@@ -15,6 +15,19 @@
   }
 
   border-left: 4px solid $background-color--dark;
+
+  &--wideScreen {
+    display: none;
+    @include mq(tablet) {
+      display: block;
+    }
+  }
+
+  &--narrowScreen {
+    @include mq(tablet) {
+      display: none;
+    }
+  }
 }
 
 .c-aside__content {

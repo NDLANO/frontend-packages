@@ -83,8 +83,7 @@ class FigureWithLicense extends Component {
                 title="Mann med lupe"
                 caption={caption}
                 reuseLabel={reuseLabel}
-                licenseRights={license.rights}
-                licenseUrl={license.url}
+                license={license}
                 actionButtons={[
                   <Button key="copy" outline>
                     Kopier referanse
@@ -114,9 +113,8 @@ class FigureWithLicense extends Component {
             <FigureLicenseDialog
               id={this.id}
               key="details"
-              licenseRights={license.rights}
               authors={authors}
-              licenseUrl={license.url}
+              license={license}
               origin="https://www.wikimedia.com"
               title="Mann med lupe"
               messages={messages}>

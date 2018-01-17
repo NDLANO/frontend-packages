@@ -13,7 +13,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
-import { ContributorShape } from '../shapes';
+import { ContributorShape, LicenseShape } from '../shapes';
 import LicenseByline from '../LicenseByline';
 
 export const classLicenses = new BEMHelper({
@@ -66,24 +66,20 @@ FigureLicenseCta.propTypes = {
   title: PropTypes.string,
 };
 
-export const FigureLicenseByline = ({
-  messages,
-  licenseUrl,
-  licenseRights,
-}) => [
+export const FigureLicenseByline = ({ messages, license }) => [
   <LicenseByline
     key="byline"
     withDescription
     messages={messages}
-    licenseRights={licenseRights}
+    licenseRights={license.rights}
   />,
   <a
     key="link"
     {...classLicenses('link')}
     target="_blank"
     rel="noopener noreferrer"
-    href={licenseUrl}>
-    {messages.learnAboutLicenses}
+    href={license.url}>
+    {license.linkText}
   </a>,
 ];
 
@@ -92,6 +88,5 @@ FigureLicenseByline.propTypes = {
     modelPremission: PropTypes.string,
     learnAboutLicenses: PropTypes.string.isRequired,
   }).isRequired,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  licenseUrl: PropTypes.string.isRequired,
+  license: LicenseShape.isRequired,
 };

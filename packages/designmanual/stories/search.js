@@ -11,6 +11,7 @@ import {
   SubjectBadge,
   SubjectMaterialBadge,
   LearningPathBadge,
+  Image,
 } from 'ndla-ui';
 
 import { MastheadWithTopicMenu } from './molecules/mastheads';
@@ -65,7 +66,7 @@ storiesOf('Søk', module)
                       results={[
                         {
                           title: 'Ideskapning og mediedesign',
-                          url: '#',
+                          url: '#1',
                           ingress:
                             'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
                           contentTypeLabel: 'Emne',
@@ -84,6 +85,12 @@ storiesOf('Søk', module)
                           contentTypeIcon: (
                             <SubjectMaterialBadge size="x-small" />
                           ),
+                          image: (
+                            <Image
+                              alt="Forstørrelsesglass"
+                              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+                            />
+                          ),
                           subjects: [
                             {
                               url: '#1',
@@ -94,7 +101,7 @@ storiesOf('Søk', module)
                               display: 'Medieuttrykk og mediesamfunn',
                             },
                             {
-                              url: '#2',
+                              url: '#3',
                               display: 'Norsk',
                             },
                           ],

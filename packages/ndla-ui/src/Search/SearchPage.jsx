@@ -99,6 +99,7 @@ const searchResultItemShape = PropTypes.shape({
       display: PropTypes.string.isRequired,
     }),
   ),
+  image: PropTypes.node,
   ingress: PropTypes.string.isRequired,
   contentTypeIcon: PropTypes.node.isRequired,
   contentTypeLabel: PropTypes.string.isRequired,
@@ -110,48 +111,51 @@ const messagesShape = PropTypes.shape({
 
 const SearchResultItem = ({ item, messages }) => (
   <li key={item.title} {...searchResultItemClasses()}>
-    <div {...searchResultItemClasses('header')}>
-      <h3>
-        <SafeLink to={item.url}>{item.title}</SafeLink>
-      </h3>
-      {item.contentTypeIcon}
-      <span {...searchResultItemClasses('content-type-label')}>
-        {item.contentTypeLabel}
-      </span>
+    <div {...searchResultItemClasses('content')}>
+      <div {...searchResultItemClasses('header')}>
+        <h3>
+          <SafeLink to={item.url}>{item.title}</SafeLink>
+        </h3>
+        {item.contentTypeIcon}
+        <span {...searchResultItemClasses('content-type-label')}>
+          {item.contentTypeLabel}
+        </span>
+      </div>
+      {item.breadcrumb &&
+        item.breadcrumb.length > 0 && (
+          <div {...searchResultItemClasses('breadcrumb')}>
+            {item.breadcrumb.map((breadcrumbItem, index) => {
+              let icon = null;
+
+              if (index !== item.breadcrumb.length - 1) {
+                icon = <KeyboardArrowRight />;
+              }
+
+              return (
+                <Fragment key={breadcrumbItem}>
+                  <span>{breadcrumbItem}</span>
+                  {icon}
+                </Fragment>
+              );
+            })}
+          </div>
+        )}
+      <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
+      {item.subjects &&
+        item.subjects.length !== 0 && (
+          <div {...searchResultItemClasses('subjects')}>
+            <span>{messages.subjectsLabel}</span>
+            <ul>
+              {item.subjects.map(subject => (
+                <li>
+                  <SafeLink to={subject.url}>{subject.display}</SafeLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
     </div>
-    {item.breadcrumb &&
-      item.breadcrumb.length > 0 && (
-        <div {...searchResultItemClasses('breadcrumb')}>
-          {item.breadcrumb.map((breadcrumbItem, index) => {
-            let icon = null;
-
-            if (index !== item.breadcrumb.length - 1) {
-              icon = <KeyboardArrowRight />;
-            }
-
-            return (
-              <Fragment key={breadcrumbItem}>
-                <span>{breadcrumbItem}</span>
-                {icon}
-              </Fragment>
-            );
-          })}
-        </div>
-      )}
-    <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
-    {item.subjects &&
-      item.subjects.length !== 0 && (
-        <div {...searchResultItemClasses('subjects')}>
-          <span>{messages.subjectsLabel}</span>
-          <ul>
-            {item.subjects.map(subject => (
-              <li>
-                <SafeLink to={subject.url}>{subject.display}</SafeLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+    {item.image}
   </li>
 );
 

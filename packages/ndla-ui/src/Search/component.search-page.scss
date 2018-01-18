@@ -56,10 +56,25 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
 .c-search-result-item {
   border-bottom: 1px solid $brand-grey--light;
-  margin-bottom: $spacing--medium;
+  display: flex;
+  align-items: center;
+  margin: 0;
 
-  &:last-child {
-    margin-bottom: 0;
+  &:first-child {
+    .c-search-result-item__content {
+      padding-top: 0;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    padding-top: $spacing--medium;
+  }
+
+  & > img {
+    margin-left: $spacing--medium;
+    width: 80px;
+    height: 80px;
   }
 
   &__header {

@@ -36,7 +36,7 @@ const AudioPlayer = ({ type, src, title, typeLabel, speech }) => {
       <h1 {...classes('title')}>{title}</h1>
       <audio type={type} src={src} title={title} preload="metadata" />
       <div {...classes('controls')}>
-        <button disabled {...classes('play')}>
+        <button {...classes('play')}>
           <span {...classes('play-icon')}>
             <Play />
           </span>

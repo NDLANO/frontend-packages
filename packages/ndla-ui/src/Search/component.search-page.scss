@@ -75,6 +75,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     margin-left: $spacing--medium;
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
   }
 
   &__header {
@@ -85,6 +86,12 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     .c-learning-path-badge {
       margin: 0 $spacing--small/2;
     }
+  }
+
+  &__additional {
+    display: flex;
+    align-items: center;
+    margin-left: $spacing;
   }
 
   &__content-type-label {
@@ -103,6 +110,8 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     list-style: none;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
     @include font-size(16px, 32px);
     color: $text-light-color;
 
@@ -116,12 +125,14 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__subjects {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     @include font-size(16px, 8px);
     margin-bottom: $spacing;
 
     ul {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       list-style: none;
       margin: 0;
       padding: 0;

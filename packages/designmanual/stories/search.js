@@ -85,6 +85,7 @@ storiesOf('Søk', module)
                           contentTypeIcon: (
                             <SubjectMaterialBadge size="x-small" />
                           ),
+                          additional: true,
                           image: (
                             <Image
                               alt="Forstørrelsesglass"

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
-import { KeyboardArrowRight } from 'ndla-icons/common';
+import { KeyboardArrowRight, Additional } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
 
@@ -99,6 +99,7 @@ const searchResultItemShape = PropTypes.shape({
       display: PropTypes.string.isRequired,
     }),
   ),
+  additional: PropTypes.bool,
   image: PropTypes.node,
   ingress: PropTypes.string.isRequired,
   contentTypeIcon: PropTypes.node.isRequired,
@@ -120,6 +121,11 @@ const SearchResultItem = ({ item, messages }) => (
         <span {...searchResultItemClasses('content-type-label')}>
           {item.contentTypeLabel}
         </span>
+        {item.additional && (
+          <span {...searchResultItemClasses('additional')}>
+            <Additional className="c-icon--20" />
+          </span>
+        )}
       </div>
       {item.breadcrumb &&
         item.breadcrumb.length > 0 && (

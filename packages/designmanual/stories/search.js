@@ -7,6 +7,7 @@ import {
   SearchPage,
   SearchResult,
   SearchResultList,
+  SearchFilter,
   OneColumn,
   SubjectBadge,
   SubjectMaterialBadge,
@@ -47,7 +48,24 @@ storiesOf('Søk', module)
             }}
             filters={
               <Fragment>
-                <div>Test</div>
+                <SearchFilter
+                  label="Nivå:"
+                  options={[
+                    {
+                      title: 'VG1',
+                      value: 'VG1',
+                    },
+                    {
+                      title: 'VG2',
+                      value: 'VG2',
+                    },
+                    {
+                      title: 'VG3',
+                      value: 'VG3',
+                    },
+                  ]}
+                  values={['VG1']}
+                />
               </Fragment>
             }>
             <SearchResult

@@ -1,4 +1,4 @@
-$filter-width: 286px;
+$filter-width: 250px;
 $search-field-wrapper-margin: $filter-width + $spacing--small;
 .c-search-page {
   &__filter-result-wrapper {
@@ -179,4 +179,10 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
       box-shadow: none;
     }
   }
+}
+
+.c-search-filter {
+  background: $white;
+  width: 100%;
+  padding: $spacing--small $spacing;
 }

@@ -32,6 +32,7 @@ export {
   SearchPage,
   SearchResult,
   SearchResultList,
+  SearchFilter,
 } from './Search';
 export {
   default as ContentTypeBadge,

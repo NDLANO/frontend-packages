@@ -6,9 +6,8 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, createElement } from 'react';
+import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
 
 const filterClasses = new BEMHelper({
@@ -16,74 +15,62 @@ const filterClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-class FilterList extends Component {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange() {
-    return this.props.onClick;
-  }
-
-  render() {
-    const { modifiers, label, filterContent } = this.props;
-
-    return (
-      <div {...filterClasses('list', modifiers)}>
-        <span {...filterClasses('label')}>{label}</span>
-        {filterContent
-          ? filterContent.map(filterItem => (
-              <div {...filterClasses('item')} key={uuid()}>
-                <input
-                  {...filterClasses('input')}
-                  type="checkbox"
-                  name="gruppe"
-                  id={filterItem.title ? filterItem.title : null}
-                  value={filterItem.title ? filterItem.title : null}
-                  defaultChecked={filterItem.active ? 'true' : null}
-                  key={filterItem.title}
-                  onChange={this.props.onClick}
-                />
-                <label htmlFor={filterItem.title ? filterItem.title : null}>
-                  <span {...filterClasses('item-checkbox')} />
-                  {filterItem.title ? filterItem.title : null}
-                  {/* ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' }) */}
-                  {filterItem.icon
-                    ? createElement(filterItem.icon, {
-                        className: 'c-icon--20 u-margin-left-tiny',
-                      })
-                    : null}
-                </label>
-              </div>
-            ))
-          : null}
+const FilterList = ({ modifiers, label, options, values, onChange }) => (
+  <div {...filterClasses('list', modifiers)}>
+    <span {...filterClasses('label')}>{label}</span>
+    {options.map(option => (
+      <div {...filterClasses('item')} key={option.value}>
+        <input
+          {...filterClasses('input')}
+          type="checkbox"
+          id={option.value}
+          value={option.value}
+          checked={values.some(value => value === option.value)}
+          onChange={event => {
+            let newValues = null;
+            if (event.currentTarget.checked) {
+              newValues = [...values, option.value];
+            } else {
+              newValues = values.filter(value => value !== option.value);
+            }
+            onChange(newValues);
+          }}
+        />
+        <label htmlFor={option.value}>
+          <span {...filterClasses('item-checkbox')} />
+          {option.title}
+          {option.icon
+            ? createElement(option.icon, {
+                className: 'c-icon--20 u-margin-left-tiny',
+              })
+            : null}
+        </label>
       </div>
-    );
-  }
-}
+    ))}
+  </div>
+);
 
-// const FilterList = ({ filterContent, label, modifiers }) => (
-//
-// );
+const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 FilterList.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
   modifiers: PropTypes.string,
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  filterContent: PropTypes.arrayOf(
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      active: PropTypes.bool.isRequired,
+      value: valueShape.isRequired,
+      icon: PropTypes.node,
     }),
-  ),
+  ).isRequired,
+  values: PropTypes.arrayOf(valueShape),
 };
 
 FilterList.defaultProps = {
   label: 'FILTER:',
   modifiers: '',
+  values: [],
 };
 
 export default FilterList;

@@ -344,10 +344,11 @@ storiesOf('Emnesider', module)
             <LayoutItem layout="center">
               <h1 className="c-article__title">Mediefag</h1>
               <FilterList
-                filterContent={[
-                  { title: 'VG1', active: true },
-                  { title: 'VG2', active: true },
+                options={[
+                  { title: 'VG1', value: 'VG1' },
+                  { title: 'VG2', value: 'VG2' },
                 ]}
+                values={['VG1']}
               />
             </LayoutItem>
             <ResourcesSubTopics />

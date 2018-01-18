@@ -9,7 +9,12 @@
 import SearchField from './SearchField';
 import SearchOverlay from './SearchOverlay';
 import ToggleSearchButton from './ToggleSearchButton';
-import { SearchPage, SearchResult, SearchResultList } from './SearchPage';
+import {
+  SearchPage,
+  SearchResult,
+  SearchResultList,
+  SearchFilter,
+} from './SearchPage';
 
 export {
   SearchField,
@@ -18,4 +23,5 @@ export {
   SearchPage,
   SearchResult,
   SearchResultList,
+  SearchFilter,
 };

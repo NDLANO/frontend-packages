@@ -5,7 +5,7 @@ import Tabs from 'ndla-tabs';
 import { KeyboardArrowRight, Additional } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
-
+import FilterList from '../filter/FilterList';
 import SearchField from './SearchField';
 
 const classes = BEMHelper('c-search-page');
@@ -181,4 +181,38 @@ export const SearchResultList = ({ results, messages }) => (
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),
   messages: messagesShape.isRequired,
+};
+
+const searchFilterClasses = BEMHelper({
+  prefix: 'c-',
+  name: 'search-filter',
+  outputIsString: true,
+});
+
+const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
+
+export const SearchFilter = ({ label, options, values }) => (
+  <section className={searchFilterClasses()}>
+    <FilterList
+      options={options}
+      label={label}
+      values={values}
+      modifiers="search"
+    />
+  </section>
+);
+
+SearchFilter.propTypes = {
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: valueShape.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  values: PropTypes.arrayOf(valueShape),
+};
+
+SearchFilter.defaultProps = {
+  values: [],
 };

@@ -13,6 +13,7 @@ export { default as Document } from './Document';
 export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';
 export { default as Home } from './Home';
+export { default as KeyboardArrowRight } from './KeyboardArrowRight';
 export { default as Pause } from './Pause';
 export { default as Play } from './Play';
 export { default as Sad } from './Sad';

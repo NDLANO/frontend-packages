@@ -56,14 +56,20 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
 .c-search-result-item {
   border-bottom: 1px solid $brand-grey--light;
+  margin-bottom: $spacing--medium;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &__header {
     display: flex;
     align-items: center;
-  }
 
-  .c-content-type-badge {
-    margin: 0 $spacing--small/2;
+    & > .c-content-type-badge,
+    .c-learning-path-badge {
+      margin: 0 $spacing--small/2;
+    }
   }
 
   &__content-type-label {
@@ -75,6 +81,67 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__ingress {
     margin: $spacing--small 0 $spacing 0;
     @include font-size(16px, 27px);
+    max-width: 600px;
+  }
+
+  &__breadcrumb {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    @include font-size(16px, 32px);
+    color: $text-light-color;
+
+    .c-icon {
+      width: 12px;
+      height: 12px;
+      margin: 0 $spacing--small/2;
+    }
+  }
+
+  &__subjects {
+    display: flex;
+    align-items: center;
+    @include font-size(16px, 8px);
+    margin-bottom: $spacing;
+
+    ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      margin: 0;
+      position: relative;
+      padding: 0 $spacing--small;
+
+      &:after {
+        content: '';
+        width: 1px;
+        height: 15px;
+        background: $brand-grey--light;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 8px;
+      }
+
+      &:first-child {
+        font-weight: 600;
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    a {
+      box-shadow: none;
+    }
   }
 
   h3 {

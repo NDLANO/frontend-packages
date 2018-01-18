@@ -9,6 +9,8 @@ import {
   SearchResultList,
   OneColumn,
   SubjectBadge,
+  SubjectMaterialBadge,
+  LearningPathBadge,
 } from 'ndla-ui';
 
 import { MastheadWithTopicMenu } from './molecules/mastheads';
@@ -57,6 +59,9 @@ storiesOf('Søk', module)
                   title: 'Alle',
                   content: (
                     <SearchResultList
+                      messages={{
+                        subjectsLabel: 'Åpne i fag:',
+                      }}
                       results={[
                         {
                           title: 'Ideskapning og mediedesign',
@@ -65,6 +70,46 @@ storiesOf('Søk', module)
                             'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
                           contentTypeLabel: 'Emne',
                           contentTypeIcon: <SubjectBadge size="x-small" />,
+                          breadcrumb: [
+                            'Mediene i samfunnet',
+                            'Mediestruktur i Norge',
+                          ],
+                        },
+                        {
+                          title: 'Ideskapning og mediedesign',
+                          url: '#2',
+                          ingress:
+                            'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+                          contentTypeLabel: 'Fagstoff',
+                          contentTypeIcon: (
+                            <SubjectMaterialBadge size="x-small" />
+                          ),
+                          subjects: [
+                            {
+                              url: '#1',
+                              display: 'Flerfaglig',
+                            },
+                            {
+                              url: '#2',
+                              display: 'Medieuttrykk og mediesamfunn',
+                            },
+                            {
+                              url: '#2',
+                              display: 'Norsk',
+                            },
+                          ],
+                        },
+                        {
+                          title: 'Ideskapning og mediedesign',
+                          url: '#3',
+                          ingress:
+                            'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+                          contentTypeLabel: 'Læringssti',
+                          contentTypeIcon: <LearningPathBadge size="x-small" />,
+                          breadcrumb: [
+                            'Mediene i samfunnet',
+                            'Mediestruktur i Norge',
+                          ],
                         },
                       ]}
                     />

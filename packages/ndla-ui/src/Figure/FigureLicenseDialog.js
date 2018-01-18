@@ -13,7 +13,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dialog from '../Dialog';
-import { ContributorShape } from '../shapes';
+import { ContributorShape, LicenseShape } from '../shapes';
 import {
   classLicenses,
   FigureLicenseByline,
@@ -27,8 +27,7 @@ export const FigureLicenseDialog = ({
   authors,
   origin,
   title,
-  licenseUrl,
-  licenseRights,
+  license,
 }) => {
   const headingLabelId = `heading-${id}`;
   return (
@@ -38,11 +37,7 @@ export const FigureLicenseDialog = ({
           {messages.rulesForUse}
         </h3>
 
-        <FigureLicenseByline
-          licenseUrl={licenseUrl}
-          licenseRights={licenseRights}
-          messages={messages}
-        />
+        <FigureLicenseByline license={license} messages={messages} />
         <FigureLicenseCta
           authors={authors}
           title={title}
@@ -58,7 +53,6 @@ export const FigureLicenseDialog = ({
 FigureLicenseDialog.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   origin: PropTypes.string,
   authors: PropTypes.arrayOf(ContributorShape),
   messages: PropTypes.shape({
@@ -70,5 +64,5 @@ FigureLicenseDialog.propTypes = {
     title: PropTypes.string.isRequired,
   }).isRequired,
   title: PropTypes.string,
-  licenseUrl: PropTypes.string.isRequired,
+  license: LicenseShape.isRequired,
 };

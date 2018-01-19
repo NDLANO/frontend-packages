@@ -12,6 +12,14 @@
   position: fixed;
 }
 
+.c-masthead--hideOnNarrowScreen {
+  display: none;
+
+  @include mq(desktop) {
+    display: block;
+  }
+}
+
 .c-masthead > div {
   justify-content: center;
   text-align: center;

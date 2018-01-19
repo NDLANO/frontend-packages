@@ -29,7 +29,7 @@ storiesOf('Søk', module)
   .add('Søkeside', () => (
     <PageContainer background>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu hideOnNarrowScreen hideSearchButton />
         <OneColumn cssModifier="clear" wide noPadding>
           <SearchPage
             searchString=""

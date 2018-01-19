@@ -63,8 +63,40 @@ class MastheadWithTopicMenu extends Component {
     const searchFieldResults =
       this.state.value.length > 1 ? searchFieldSearchResults : null;
 
+    let searchButtonView = null;
+
+    if (!this.props.hideSearchButton) {
+      searchButtonView = (
+        <ToggleSearchButton
+          messages={{ buttonText: 'Søk' }}
+          expanded={this.props.searchFieldExpanded}>
+          <SearchOverlay>
+            <SearchField
+              placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
+              value={this.state.value}
+              onChange={event => {
+                this.setState({
+                  value: event.currentTarget.value,
+                });
+              }}
+              filters={[
+                { value: 'Value', display: 'Medieuttrykk og mediesamfunn' },
+              ]}
+              onFilterRemove={() => {}}
+              messages={{
+                allContentTypeResultLabel: 'Se alle',
+                allResultLabel: 'Se alle søkeresultat for:',
+              }}
+              allResultUrl="#"
+              searchResult={searchFieldResults}
+            />
+          </SearchOverlay>
+        </ToggleSearchButton>
+      );
+    }
+
     return (
-      <Masthead fixed>
+      <Masthead fixed hideOnNarrowScreen={this.props.hideOnNarrowScreen}>
         <MastheadItem left>
           <SiteNav>
             <ClickToggle
@@ -92,31 +124,7 @@ class MastheadWithTopicMenu extends Component {
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
-          <ToggleSearchButton
-            messages={{ buttonText: 'Søk' }}
-            expanded={this.props.searchFieldExpanded}>
-            <SearchOverlay>
-              <SearchField
-                placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-                value={this.state.value}
-                onChange={event => {
-                  this.setState({
-                    value: event.currentTarget.value,
-                  });
-                }}
-                filters={[
-                  { value: 'Value', display: 'Medieuttrykk og mediesamfunn' },
-                ]}
-                onFilterRemove={() => {}}
-                messages={{
-                  allContentTypeResultLabel: 'Se alle',
-                  allResultLabel: 'Se alle søkeresultat for:',
-                }}
-                allResultUrl="#"
-                searchResult={searchFieldResults}
-              />
-            </SearchOverlay>
-          </ToggleSearchButton>
+          {searchButtonView}
           <Logo to="#" altText="Nasjonal digital læringsarena" />
         </MastheadItem>
       </Masthead>
@@ -126,6 +134,8 @@ class MastheadWithTopicMenu extends Component {
 
 MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
+  hideOnNarrowScreen: PropTypes.bool,
+  hideSearchButton: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

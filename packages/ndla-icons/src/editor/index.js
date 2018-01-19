@@ -29,6 +29,7 @@ export { default as ListNumbered } from './ListNumbered';
 export { default as ListSquare } from './ListSquare';
 export { default as Paragraph } from './Paragraph';
 export { default as Quote } from './Quote';
+export { default as RelatertArtikkel } from './RelatertArtikkel';
 export { default as Section } from './Section';
 export { default as Table } from './Table';
 export { default as TextInBox } from './TextInBox';

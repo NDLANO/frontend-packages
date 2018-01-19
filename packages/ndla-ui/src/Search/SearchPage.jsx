@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
-import Tabs from 'ndla-tabs';
 import { ChevronRight, Additional } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
 import FilterList from '../filter/FilterList';
 import SearchField from './SearchField';
+import FilterTabs from '../filter/FilterTabs';
 
 const classes = BEMHelper('c-search-page');
 
@@ -65,26 +65,42 @@ SearchPage.propTypes = {
 
 const resultClasses = BEMHelper('c-search-result');
 
-export const SearchResult = ({ tabs, messages, searchString }) => (
+export const SearchResult = ({
+  tabOptions,
+  children,
+  messages,
+  searchString,
+  currentTab,
+  onTabChange,
+}) => (
   <div {...resultClasses()}>
     <h1>
       {messages.searchStringLabel} <span>{searchString}</span>
     </h1>
-    <Tabs tabs={tabs} />
+    <FilterTabs
+      value={currentTab}
+      options={tabOptions}
+      contentId="search-result-content"
+      onChange={onTabChange}>
+      {children}
+    </FilterTabs>
   </div>
 );
 
 SearchResult.propTypes = {
-  tabs: PropTypes.arrayOf(
+  tabOptions: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      content: PropTypes.node.isRequired,
+      value: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  currentTab: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   messages: PropTypes.shape({
     searchStringLabel: PropTypes.string.isRequired,
   }).isRequired,
   searchString: PropTypes.string.isRequired,
+  onTabChange: PropTypes.func.isRequired,
 };
 
 const searchResultItemClasses = BEMHelper('c-search-result-item');

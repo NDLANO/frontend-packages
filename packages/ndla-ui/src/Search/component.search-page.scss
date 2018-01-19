@@ -66,6 +66,10 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     }
   }
 
+  &:last-child {
+    border-bottom: 0;
+  }
+
   &__content {
     flex-grow: 1;
     padding-top: $spacing--medium;

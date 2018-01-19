@@ -58,6 +58,10 @@
         &__item {
           display: block;
           margin: 0 0 $spacing--small;
+
+          &--hidden {
+            display: none;
+          }
         }
       }
     }
@@ -81,6 +85,10 @@
     transition: $transition;
     cursor: pointer;
     @include inuit-font-size(16px);
+
+    &--hidden {
+      display: none;
+    }
 
     &:hover {
       .c-filter__item-checkbox {
@@ -160,6 +168,21 @@
       left: 6px;
       transition: width 50ms ease;
       transform-origin: 0% 0%;
+    }
+  }
+
+  &__expand {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: $brand-color;
+    @include font-size(16px, 32px);
+
+    span {
+      margin-right: $spacing;
     }
   }
 }

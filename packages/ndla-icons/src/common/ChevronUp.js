@@ -10,17 +10,17 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const KeyboardArrowRight = props => (
+const ChevronUp = props => (
   <Icon
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
     <g>
-      <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
-      <path d="M0-.25h24v24H0z" fill="none" />
+      <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
+      <path d="M0 0h24v24H0z" fill="none" />
     </g>
   </Icon>
 );
 
-export default KeyboardArrowRight;
+export default ChevronUp;

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
+import { Additional } from 'ndla-icons/common';
 
 import {
   PageContainer,
@@ -49,7 +50,7 @@ storiesOf('Søk', module)
             filters={
               <Fragment>
                 <SearchFilter
-                  label="Nivå:"
+                  label="Nivå"
                   options={[
                     {
                       title: 'VG1',
@@ -65,6 +66,56 @@ storiesOf('Søk', module)
                     },
                   ]}
                   values={['VG1']}
+                />
+                <SearchFilter
+                  label="Innhold"
+                  options={[
+                    {
+                      title: 'Tilleggstoff',
+                      value: 'additional',
+                      icon: Additional,
+                    },
+                  ]}
+                  values={['additional']}
+                />
+                <SearchFilter
+                  label="Språk"
+                  options={[
+                    {
+                      title: 'Bokmål',
+                      value: 'nb',
+                    },
+                    {
+                      title: 'Nynorsk',
+                      value: 'nn',
+                    },
+                    {
+                      title: 'Engelsk',
+                      value: 'en',
+                    },
+                    {
+                      title: 'Kinesisk',
+                      value: 'cn',
+                    },
+                  ]}
+                  values={['nb']}
+                  defaultVisibleCount={3}
+                  showLabel="Flere språk"
+                  hideLabel="Færre språk"
+                />
+                <SearchFilter
+                  label="Laget av"
+                  options={[
+                    {
+                      title: 'Ndla',
+                      value: 'ndla',
+                    },
+                    {
+                      title: 'Andre',
+                      value: 'other',
+                    },
+                  ]}
+                  values={['ndla']}
                 />
               </Fragment>
             }>

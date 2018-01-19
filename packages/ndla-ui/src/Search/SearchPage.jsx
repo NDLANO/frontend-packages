@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
-import { KeyboardArrowRight, Additional } from 'ndla-icons/common';
+import { ChevronRight, Additional } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
 import FilterList from '../filter/FilterList';
@@ -134,7 +134,7 @@ const SearchResultItem = ({ item, messages }) => (
               let icon = null;
 
               if (index !== item.breadcrumb.length - 1) {
-                icon = <KeyboardArrowRight />;
+                icon = <ChevronRight />;
               }
 
               return (
@@ -191,13 +191,23 @@ const searchFilterClasses = BEMHelper({
 
 const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
-export const SearchFilter = ({ label, options, values }) => (
+export const SearchFilter = ({
+  label,
+  options,
+  values,
+  defaultVisibleCount,
+  showLabel,
+  hideLabel,
+}) => (
   <section className={searchFilterClasses()}>
     <FilterList
       options={options}
       label={label}
       values={values}
+      defaultVisibleCount={defaultVisibleCount}
       modifiers="search"
+      showLabel={showLabel}
+      hideLabel={hideLabel}
     />
   </section>
 );
@@ -211,6 +221,9 @@ SearchFilter.propTypes = {
     }),
   ).isRequired,
   values: PropTypes.arrayOf(valueShape),
+  defaultVisibleCount: PropTypes.number,
+  showLabel: PropTypes.string,
+  hideLabel: PropTypes.string,
 };
 
 SearchFilter.defaultProps = {

@@ -1,21 +1,63 @@
 $filter-width: 250px;
 $search-field-wrapper-margin: $filter-width + $spacing--small;
 .c-search-page {
+  &__close-button {
+    display: inline-flex;
+    align-items: center;
+    box-shadow: none;
+    position: absolute;
+    right: $spacing--small;
+    top: $spacing--small;
+    @include font-size(16px, 20px);
+
+    span {
+      box-shadow: $link;
+      color: $brand-color;
+      margin-right: $spacing--small;
+    }
+
+    .c-icon {
+      color: $brand-color--dark;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   &__filter-result-wrapper {
-    display: flex;
+    @include mq(tablet) {
+      display: flex;
+    }
   }
 
   &__search-field-wrapper {
-    padding: $spacing--large 0;
-    margin-left: $search-field-wrapper-margin;
+    padding: $spacing--large 0 $spacing 0;
+
+    @include mq(tablet) {
+      padding: $spacing--large 0;
+
+      margin-left: $search-field-wrapper-margin;
+    }
+  }
+
+  &__active-filters {
+    margin-bottom: $spacing--small;
+
+    @include mq(tablet) {
+      display: none;
+    }
   }
 
   &__filter-wrapper {
+    display: none;
     flex-basis: $filter-width;
     flex-shrink: 0;
     margin-right: $spacing--small;
     h2 {
       text-transform: uppercase;
+    }
+
+    @include mq(tablet) {
+      display: block;
     }
   }
 
@@ -24,7 +66,12 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     h2 {
       margin: 0;
       font-weight: 600;
-      @include font-size(18px, 32px);
+      @include font-size(14px, 32px);
+      margin-bottom: $spacing--small;
+
+      @include mq(tablet) {
+        @include font-size(18px, 32px);
+      }
     }
   }
 
@@ -35,35 +82,64 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
 .c-search-result {
   background: $white;
-  padding: $spacing--medium $spacing--medium;
+  padding: $spacing 0;
+
+  @include mq(tablet) {
+    padding: $spacing--medium;
+  }
 
   & > h1 {
+    display: none;
     margin: 0 0 $spacing--medium;
     @include font-size(24px, 32px);
     font-weight: 400;
 
+    @include mq(tablet) {
+      display: block;
+    }
+
     span {
       font-weight: 600;
+    }
+  }
+
+  &__narrow-result {
+    @include mq(tablet) {
+      display: none;
+    }
+  }
+
+  .c-tabs {
+    display: none;
+
+    @include mq(tablet) {
+      display: block;
     }
   }
 }
 
 .c-search-result-list {
   list-style: none;
-  margin: $spacing--medium 0 0 0;
+  margin: 0;
   padding: 0;
+
+  @include mq(tablet) {
+    margin: $spacing--medium 0 0 0;
+  }
 }
 
 .c-search-result-item {
   border-bottom: 1px solid $brand-grey--light;
-  display: flex;
-  align-items: center;
+  padding: $spacing--medium $spacing 0 $spacing;
+
+  @include mq(tablet) {
+    padding: $spacing--medium 0 0 0;
+  }
+
   margin: 0;
 
   &:first-child {
-    .c-search-result-item__content {
-      padding-top: 0;
-    }
+    padding-top: 0;
   }
 
   &:last-child {
@@ -71,15 +147,35 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   }
 
   &__content {
-    flex-grow: 1;
-    padding-top: $spacing--medium;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > img {
+      width: 75px;
+      height: 75px;
+      flex-shrink: 0;
+      margin-left: $spacing;
+      margin-right: $spacing--small;
+
+      @include mq(tablet) {
+        width: 80px;
+        height: 80px;
+        margin-left: $spacing--medium;
+        margin-right: 0;
+      }
+    }
   }
 
-  & > img {
-    margin-left: $spacing--medium;
-    width: 80px;
-    height: 80px;
-    flex-shrink: 0;
+  &__ingress {
+    margin: $spacing--small 0 $spacing 0;
+    max-width: 600px;
+    @include font-size(14px, 22px);
+    flex-grow: 1;
+
+    @include mq(tablet) {
+      @include font-size(16px, 27px);
+    }
   }
 
   &__header {
@@ -95,19 +191,22 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__additional {
     display: flex;
     align-items: center;
-    margin-left: $spacing;
+    margin-left: $spacing--small;
+    
+    @include mq(tablet) {
+      margin-left: $spacing;
+    }
   }
 
   &__content-type-label {
     color: $text-light-color;
     text-transform: uppercase;
     @include font-size(14px, 18px);
-  }
+    display: none;
 
-  &__ingress {
-    margin: $spacing--small 0 $spacing 0;
-    @include font-size(16px, 27px);
-    max-width: 600px;
+    @include mq(tablet) {
+      display: inline;
+    }
   }
 
   &__breadcrumb {
@@ -115,14 +214,22 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-
-    @include font-size(16px, 32px);
     color: $text-light-color;
+
+    @include font-size(14px, 32px);
+
+    @include mq(tablet) {
+      @include font-size(16px, 32px);
+    }
 
     .c-icon {
       width: 12px;
       height: 12px;
-      margin: 0 $spacing--small/2;
+      margin: 0 $spacing--small/3;
+
+      @include mq(tablet) {
+        margin: 0 $spacing--small/2;
+      }
     }
   }
 
@@ -130,8 +237,22 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    @include font-size(16px, 8px);
     margin-bottom: $spacing;
+    @include font-size(14px, 22px);
+
+    @include mq(tablet) {
+      @include font-size(16px, 28px);
+    }
+
+    &>span {
+      display: none;
+
+      @include mq(tablet) {
+        display: inline;
+      }
+
+      padding-right: $spacing--small;
+    }
 
     ul {
       display: flex;
@@ -145,7 +266,14 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     li {
       margin: 0;
       position: relative;
-      padding: 0 $spacing--small;
+
+      padding: 0 $spacing--small/2 0 0;
+      margin-right: $spacing--small/2;
+
+      @include mq(tablet) {
+        padding: 0 $spacing--small 0 0;
+        margin-right: $spacing--small;
+      }
 
       &:after {
         content: '';
@@ -166,6 +294,8 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
         &:after {
           display: none;
         }
+
+        margin-right: 0;
       }
     }
 
@@ -176,8 +306,12 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
   h3 {
     margin: 0;
-    @include font-size(22px, 28px);
     font-weight: 600;
+    @include font-size(16px, 20px);
+
+    @include mq(tablet) {
+      @include font-size(22px, 28px);
+    }
 
     a {
       box-shadow: none;

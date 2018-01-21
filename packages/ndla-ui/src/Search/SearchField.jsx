@@ -10,9 +10,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
 
 import SafeLink from '../common/SafeLink';
+
+import ActiveFilters from './ActiveFilters';
 
 const classes = new BEMHelper('c-search-field');
 
@@ -113,25 +114,13 @@ const SearchField = ({
 
   if (filters && filters.length > 0) {
     modifiers.push('has-filter');
-
-    const filterItems = filters.map(filter => (
-      <li key={filter.value}>
-        <button
-          onClick={() => {
-            onFilterRemove(filter.value);
-          }}>
-          <span>{filter.display}</span>
-          <Cross />
-        </button>
-      </li>
-    ));
-
-    filtersView = <ul {...classes('filter')}>{filterItems}</ul>;
   }
 
   return (
     <div {...classes('', modifiers)}>
-      {filtersView}
+      <div {...classes('filters')}>
+        <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
+      </div>
       <input
         type="search"
         {...classes('input')}

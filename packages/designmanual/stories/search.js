@@ -19,7 +19,7 @@ storiesOf('Søk', module)
     <PageContainer background>
       <Content>
         <MastheadWithTopicMenu hideOnNarrowScreen hideSearchButton />
-        <OneColumn cssModifier="clear" wide noPadding>
+        <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample />
         </OneColumn>
       </Content>

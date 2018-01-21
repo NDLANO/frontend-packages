@@ -14,7 +14,7 @@ const classes = BEMHelper({
 });
 
 export const LearningPathBadge = ({ size }) => (
-  <div {...classes('', { size })}>
+  <div {...classes('', [size])}>
     <SubjectMaterialBadge type="subject-material" background size={size} />
     <span {...classes('plus')}>+</span>
     <TasksAndActivitiesBadge

@@ -1,0 +1,54 @@
+.c-active-filters {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: stretch;
+
+  @include mq(tablet) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  li {
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    margin-bottom: $spacing--small/2;
+
+    @include mq(tablet) {
+      margin: 0 $spacing--small 0 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  button {
+    height: 36px;
+    border: 0;
+    background: $brand-color;
+    color: $white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 $spacing--small;
+    width: 100%;
+    justify-content: space-between;
+    @include font-size(16px, 36px);
+
+    @include mq(tablet) {
+      width: auto;
+      justify-content: flex-start;
+      @include font-size(18px, 40px);
+      height: 40px;
+    }
+
+    span {
+      padding-right: $spacing--small;
+    }
+
+  }
+}

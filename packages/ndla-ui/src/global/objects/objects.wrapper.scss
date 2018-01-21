@@ -32,4 +32,10 @@
   &--clear {
     margin-top: $spacing--large * 2;
   }
+
+  &--clear-desktop {
+    @include mq(tablet) {
+      margin-top: $spacing--large * 2;
+    }
+  }
 }

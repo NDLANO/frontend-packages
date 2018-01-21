@@ -6,9 +6,11 @@
 
   &--has-filter {
     .c-search-field__input {
-      border-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      @include mq(tablet) {
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
   }
 
@@ -19,19 +21,15 @@
         border-bottom-right-radius: 0;
       }
 
-      &__filter {
+      &__filters {
         border-bottom-left-radius: 0;
       }
     }
   }
 
-  &__filter {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0;
-    height: 58px;
+  &__filters {
+    display: none;
+    height: 48px;
     background: $white;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -39,46 +37,43 @@
     padding-left: $spacing--small;
     padding-right: $spacing--small;
     border-right: 0;
+    flex-shrink: 0;
+    align-items: center;
 
-    li {
-      margin-bottom: 0;
-      list-style: none;
+    @include mq(tablet) {
+      height: 58px;
+
       display: flex;
-      margin-right: $spacing--small;
-
-      &:last-child {
-        margin-right: 0;
-      }
     }
 
-    button {
-      height: 40px;
-      line-height: 40px;
-      border: 0;
-      background: $brand-color;
-      color: $white;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      padding: 0 $spacing--small;
+    .c-active-filters {
+      display: none;
 
-      span {
-        padding-right: $spacing--small;
+      @include mq(tablet) {
+        display: flex;
+        height: 58px;
       }
-
-      @include font-size(18px, 18px);
     }
   }
 
   &__input {
     width: 100%;
-    height: 58px;
-    line-height: 58px;
+    height: 48px;
+    line-height: 48px;
     border: 1px solid $brand-grey--light;
     border-radius: 4px;
     padding-right: 58px;
+    padding-left: $spacing--small;
     flex-grow: 1;
+
+    @include font-size(16px, 20px);
+
+    @include mq(tablet) {
+      height: 58px;
+      line-height: 58px;
+      padding-left: $spacing--small/2;
+      @include font-size(18px, 24px);
+    }
   }
 
   &__button {
@@ -88,7 +83,11 @@
     cursor: pointer;
     background: none;
     border: 0;
-    padding: $spacing--small;
+    padding: $spacing--small/2;
+
+    @include mq(tablet) {
+      padding: $spacing--small;
+    }
 
     svg {
       width: 24px;

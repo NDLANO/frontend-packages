@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { ChevronRight, Additional } from 'ndla-icons/common';
+import { Cross } from 'ndla-icons/action';
 
 import SafeLink from '../common/SafeLink';
 import FilterList from '../filter/FilterList';
 import SearchField from './SearchField';
 import FilterTabs from '../filter/FilterTabs';
+import ActiveFilters from './ActiveFilters';
 
 const classes = BEMHelper('c-search-page');
 
@@ -16,11 +18,18 @@ export const SearchPage = ({
   searchFieldPlaceholder,
   onSearchFieldFilterRemove,
   searchFieldFilters,
+  // only on narrow screen
+  activeFilters,
+  onActiveFilterRemove,
   filters,
   children,
   messages,
+  closeUrl,
 }) => (
   <div {...classes()}>
+    <SafeLink to={closeUrl} {...classes('close-button')}>
+      <span>{messages.closeButton}</span> <Cross />
+    </SafeLink>
     <div {...classes('search-field-wrapper')}>
       <SearchField
         value={searchString}
@@ -37,6 +46,12 @@ export const SearchPage = ({
       </div>
       <div {...classes('result-wrapper')}>
         <h2>{messages.resultHeading}</h2>
+        <div {...classes('active-filters')}>
+          <ActiveFilters
+            filters={activeFilters}
+            onFilterRemove={onActiveFilterRemove}
+          />
+        </div>
         {children}
       </div>
     </div>
@@ -57,10 +72,20 @@ SearchPage.propTypes = {
       display: PropTypes.string.isRequired,
     }),
   ),
+  activeFilters: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired,
+      filterName: PropTypes.string.isRequired,
+    }),
+  ),
+  onActiveFilterRemove: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     filterHeading: PropTypes.string.isRequired,
     resultHeading: PropTypes.string,
+    closeButton: PropTypes.string.isRequired,
   }).isRequired,
+  closeUrl: PropTypes.string.isRequired,
 };
 
 const resultClasses = BEMHelper('c-search-result');
@@ -84,6 +109,7 @@ export const SearchResult = ({
       onChange={onTabChange}>
       {children}
     </FilterTabs>
+    <div {...resultClasses('narrow-result')}>{children}</div>
   </div>
 );
 
@@ -128,56 +154,56 @@ const messagesShape = PropTypes.shape({
 
 const SearchResultItem = ({ item, messages }) => (
   <li key={item.title} {...searchResultItemClasses()}>
-    <div {...searchResultItemClasses('content')}>
-      <div {...searchResultItemClasses('header')}>
-        <h3>
-          <SafeLink to={item.url}>{item.title}</SafeLink>
-        </h3>
-        {item.contentTypeIcon}
-        <span {...searchResultItemClasses('content-type-label')}>
-          {item.contentTypeLabel}
+    <div {...searchResultItemClasses('header')}>
+      <h3>
+        <SafeLink to={item.url}>{item.title}</SafeLink>
+      </h3>
+      {item.contentTypeIcon}
+      <span {...searchResultItemClasses('content-type-label')}>
+        {item.contentTypeLabel}
+      </span>
+      {item.additional && (
+        <span {...searchResultItemClasses('additional')}>
+          <Additional className="c-icon--20" />
         </span>
-        {item.additional && (
-          <span {...searchResultItemClasses('additional')}>
-            <Additional className="c-icon--20" />
-          </span>
-        )}
-      </div>
-      {item.breadcrumb &&
-        item.breadcrumb.length > 0 && (
-          <div {...searchResultItemClasses('breadcrumb')}>
-            {item.breadcrumb.map((breadcrumbItem, index) => {
-              let icon = null;
-
-              if (index !== item.breadcrumb.length - 1) {
-                icon = <ChevronRight />;
-              }
-
-              return (
-                <Fragment key={breadcrumbItem}>
-                  <span>{breadcrumbItem}</span>
-                  {icon}
-                </Fragment>
-              );
-            })}
-          </div>
-        )}
-      <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
-      {item.subjects &&
-        item.subjects.length !== 0 && (
-          <div {...searchResultItemClasses('subjects')}>
-            <span>{messages.subjectsLabel}</span>
-            <ul>
-              {item.subjects.map(subject => (
-                <li>
-                  <SafeLink to={subject.url}>{subject.display}</SafeLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      )}
     </div>
-    {item.image}
+    {item.breadcrumb &&
+      item.breadcrumb.length > 0 && (
+        <div {...searchResultItemClasses('breadcrumb')}>
+          {item.breadcrumb.map((breadcrumbItem, index) => {
+            let icon = null;
+
+            if (index !== item.breadcrumb.length - 1) {
+              icon = <ChevronRight />;
+            }
+
+            return (
+              <Fragment key={breadcrumbItem}>
+                <span>{breadcrumbItem}</span>
+                {icon}
+              </Fragment>
+            );
+          })}
+        </div>
+      )}
+    <div {...searchResultItemClasses('content')}>
+      <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
+      {item.image}
+    </div>
+    {item.subjects &&
+      item.subjects.length !== 0 && (
+        <div {...searchResultItemClasses('subjects')}>
+          <span>{messages.subjectsLabel}</span>
+          <ul>
+            {item.subjects.map(subject => (
+              <li>
+                <SafeLink to={subject.url}>{subject.display}</SafeLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
   </li>
 );
 

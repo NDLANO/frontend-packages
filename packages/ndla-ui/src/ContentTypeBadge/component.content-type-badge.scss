@@ -100,12 +100,23 @@
 
   &--x-small {
     border: 0;
-    width: 24px;
-    height: 24px;
+
+    width: 20px;
+    height: 20px;
+
+    @include mq(tablet) {
+      width: 24px;
+      height: 24px;
+    }
 
     svg {
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
+
+      @include mq(tablet) {
+        width: 15px;
+        height: 15px;
+      }
     }
 
     &.c-content-type-badge--background {
@@ -124,5 +135,13 @@
   &__plus {
     margin: 0 $spacing--small/4;
     color: $brand-color;
+  }
+
+  &--x-small {
+    @include font-size(16px, 18px);
+
+    @include mq(tablet) {
+      @include font-size(18px, 18px);
+    }
   }
 }

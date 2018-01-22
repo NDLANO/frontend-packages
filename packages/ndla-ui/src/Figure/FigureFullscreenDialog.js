@@ -13,7 +13,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dialog from '../Dialog';
-import { ContributorShape } from '../shapes';
+import { ContributorShape, LicenseShape } from '../shapes';
 import {
   classLicenses,
   FigureLicenseByline,
@@ -28,8 +28,7 @@ export const FigureFullscreenDialog = ({
   origin,
   title,
   actionButtons,
-  licenseUrl,
-  licenseRights,
+  license,
   caption,
   reuseLabel,
 }) => {
@@ -54,11 +53,7 @@ export const FigureFullscreenDialog = ({
           </p>
           <div {...classLicenses('hidden-content')}>
             <div>
-              <FigureLicenseByline
-                licenseUrl={licenseUrl}
-                licenseRights={licenseRights}
-                messages={messages}
-              />
+              <FigureLicenseByline license={license} messages={messages} />
             </div>
             <FigureLicenseCta
               authors={authors}
@@ -78,7 +73,6 @@ FigureFullscreenDialog.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node,
   actionButtons: PropTypes.node.isRequired,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   origin: PropTypes.string,
   authors: PropTypes.arrayOf(ContributorShape),
   messages: PropTypes.shape({
@@ -90,7 +84,7 @@ FigureFullscreenDialog.propTypes = {
     title: PropTypes.string.isRequired,
   }).isRequired,
   title: PropTypes.string.isRequired,
-  licenseUrl: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired,
   reuseLabel: PropTypes.string,
+  license: LicenseShape.isRequired,
 };

@@ -144,3 +144,20 @@
     // @debug $i;
   }
 }
+
+@keyframes slideIn {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  1% {
+    opacity: 0.1;
+    display: block;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

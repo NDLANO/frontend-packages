@@ -33,10 +33,7 @@ const SearchAndFilter = ({ messages }) => (
       {messages.search}
     </div>
     <FilterList
-      filterContent={[
-        { title: 'VG1', active: true },
-        { title: 'VG2', active: true },
-      ]}
+      options={[{ title: 'VG1', value: 'VG1' }, { title: 'VG2', value: 'VG2' }]}
     />
     <div {...classes('right-filler')} />
   </div>

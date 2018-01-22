@@ -100,6 +100,7 @@ class SearchPageExample extends Component {
           filterHeading: 'Filter',
           resultHeading: '43 treff i Ndla',
           closeButton: 'Lukk',
+          narrowScreenFilterHeading: '10 treff på «ideutvikling»',
         }}
         filters={
           <Fragment>

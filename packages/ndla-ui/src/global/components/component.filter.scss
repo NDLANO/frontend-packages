@@ -48,6 +48,12 @@
     }
 
     &--search {
+      padding: $spacing;
+
+      @include mq(tablet) {
+        padding: $spacing--small $spacing;
+      }
+
       .c-filter {
         &__label {
           display: block;
@@ -135,12 +141,19 @@
     content: '';
     display: inline-block;
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     padding: 0;
     background: transparent;
     border: 2px solid $brand-grey--light;
-    margin: -4px 3px;
+    margin: -5px $spacing--small -5px 3px;
+    border-radius: 2px;
+
+    @include mq(tablet) {
+      width: 20px;
+      height: 20px;
+      margin: -4px $spacing--small -4px 3px;
+    }
 
     &:before {
       content: '';
@@ -150,8 +163,13 @@
       background: $brand-color--tertiary;
       position: absolute;
       transform: rotate(45deg);
-      top: 7px;
-      left: 5px;
+      top: 10px;
+      left: 7px;
+
+      @include mq(tablet) {
+        top: 7px;
+        left: 5px;
+      }
       transition: width 50ms ease 50ms;
       transform-origin: 0% 0%;
     }
@@ -164,8 +182,13 @@
       background: $brand-color--tertiary;
       position: absolute;
       transform: rotate(305deg);
-      top: 10px;
-      left: 6px;
+      top: 13px;
+      left: 8px;
+
+      @include mq(tablet) {
+        top: 10px;
+        left: 6px;
+      }
       transition: width 50ms ease;
       transform-origin: 0% 0%;
     }

@@ -13,3 +13,4 @@ export { default as ExpandLess } from './ExpandLess';
 export { default as ExpandMore } from './ExpandMore';
 export { default as Minus } from './Minus';
 export { default as Plus } from './Plus';
+export { default as RightArrow } from './RightArrow';

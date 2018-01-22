@@ -15,7 +15,7 @@
 .c-masthead--hideOnNarrowScreen {
   display: none;
 
-  @include mq(desktop) {
+  @include mq(tablet) {
     display: block;
   }
 }

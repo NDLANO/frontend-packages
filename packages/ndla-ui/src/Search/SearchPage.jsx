@@ -325,19 +325,28 @@ export const SearchFilter = ({
   defaultVisibleCount,
   showLabel,
   hideLabel,
-}) => (
-  <section className={searchFilterClasses()}>
-    <FilterList
-      options={options}
-      label={label}
-      values={values}
-      defaultVisibleCount={defaultVisibleCount}
-      modifiers="search"
-      showLabel={showLabel}
-      hideLabel={hideLabel}
-    />
-  </section>
-);
+  narrowScreenOnly,
+}) => {
+  const modifiers = [];
+
+  if (narrowScreenOnly) {
+    modifiers.push('narrow-screen-only');
+  }
+
+  return (
+    <section className={searchFilterClasses('', modifiers)}>
+      <FilterList
+        options={options}
+        label={label}
+        values={values}
+        defaultVisibleCount={defaultVisibleCount}
+        modifiers="search"
+        showLabel={showLabel}
+        hideLabel={hideLabel}
+      />
+    </section>
+  );
+};
 
 SearchFilter.propTypes = {
   label: PropTypes.string.isRequired,
@@ -351,6 +360,7 @@ SearchFilter.propTypes = {
   defaultVisibleCount: PropTypes.number,
   showLabel: PropTypes.string,
   hideLabel: PropTypes.string,
+  narrowScreenOnly: PropTypes.bool,
 };
 
 SearchFilter.defaultProps = {

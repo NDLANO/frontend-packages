@@ -10,6 +10,7 @@ import {
   SubjectMaterialBadge,
   LearningPathBadge,
   Image,
+  Button,
 } from 'ndla-ui';
 
 class SearchPageExample extends Component {
@@ -105,6 +106,36 @@ class SearchPageExample extends Component {
         filters={
           <Fragment>
             <SearchFilter
+              label="Innholdstype"
+              narrowScreenOnly
+              defaultVisibleCount={3}
+              showLabel="Flere innholdstyper"
+              hideLabel="Færre innholdstyper"
+              options={[
+                {
+                  title: 'Læringssti',
+                  value: 'LEARNING_PATH',
+                },
+                {
+                  title: 'Fagstoff',
+                  value: 'SUBJECT_MATERIAL',
+                },
+                {
+                  title: 'Oppgaver og aktiviteter',
+                  value: 'TASKS_AND_ACTIVITIES',
+                },
+                {
+                  title: 'Ekstern læringsressurs',
+                  value: 'EXTERNAL_LEARNING_RESOURCES',
+                },
+                {
+                  title: 'Kildemateriale',
+                  value: 'SOURCE_MATERIAL',
+                },
+              ]}
+              values={['LEARNING_PATH']}
+            />
+            <SearchFilter
               label="Nivå"
               options={[
                 {
@@ -172,6 +203,7 @@ class SearchPageExample extends Component {
               ]}
               values={['ndla']}
             />
+            <Button outline>Vis flere filter</Button>
           </Fragment>
         }>
         <SearchResult

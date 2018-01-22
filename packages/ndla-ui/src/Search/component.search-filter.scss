@@ -1,0 +1,21 @@
+.c-search-filter {
+  background: $white;
+  width: 100%;
+  text-align: left;
+
+  &--narrow-screen-only {
+    @include mq(tablet) {
+      display: none;
+    }
+  }
+
+  @include mq(tablet) {
+    margin-bottom: $spacing--small;
+  }
+
+  &:first-child {
+    .c-filter__list {
+      border-top: 0;
+    }
+  }
+}

@@ -20,11 +20,16 @@ const SearchFilter = ({
   showLabel,
   hideLabel,
   narrowScreenOnly,
+  contextFilter,
 }) => {
   const modifiers = [];
 
   if (narrowScreenOnly) {
     modifiers.push('narrow-screen-only');
+  }
+
+  if (contextFilter) {
+    modifiers.push('context-filter');
   }
 
   return (
@@ -55,6 +60,7 @@ SearchFilter.propTypes = {
   showLabel: PropTypes.string,
   hideLabel: PropTypes.string,
   narrowScreenOnly: PropTypes.bool,
+  contextFilter: PropTypes.bool,
 };
 
 SearchFilter.defaultProps = {

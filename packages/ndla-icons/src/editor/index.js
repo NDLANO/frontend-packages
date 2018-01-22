@@ -40,6 +40,7 @@ export { default as Quote } from './Quote';
 export { default as Section } from './Section';
 export { default as SquareAudio } from './SquareAudio';
 export { default as SquareVideo } from './SquareVideo';
+export { default as SubjectMatter } from './SubjectMatter';
 export { default as Table } from './Table';
 export { default as Taxonomy } from './Taxonomy';
 export { default as TextInBox } from './TextInBox';

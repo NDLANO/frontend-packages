@@ -19,7 +19,7 @@ import {
   AudioPlayer,
   Translation,
   TranslationLine,
-  OneColumn
+  OneColumn,
 } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';

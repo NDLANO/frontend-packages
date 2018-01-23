@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Search } from 'ndla-icons/common';
 import BEMHelper from 'react-bem-helper';
 
 import ClickToggle from '../common/ClickToggle';
+import SafeLink from '../common/SafeLink';
 
 const classes = BEMHelper({
   prefix: 'c-',
@@ -11,7 +12,12 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-const ToggleSearchButton = ({ messages, children, expanded }) => {
+const ToggleSearchButton = ({
+  messages,
+  children,
+  expanded,
+  searchPageUrl,
+}) => {
   const buttonContent = (
     <span className={classes('button-content')}>
       <span className={classes('button-text')}>{messages.buttonText}</span>
@@ -20,13 +26,18 @@ const ToggleSearchButton = ({ messages, children, expanded }) => {
   );
 
   return (
-    <ClickToggle
-      title={buttonContent}
-      className={classes()}
-      buttonClassName={classes('button')}
-      expanded={expanded}>
-      {children}
-    </ClickToggle>
+    <Fragment>
+      <SafeLink to={searchPageUrl} className={classes('button', 'narrow')}>
+        {buttonContent}
+      </SafeLink>
+      <ClickToggle
+        title={buttonContent}
+        className={classes()}
+        buttonClassName={classes('button', 'wide')}
+        expanded={expanded}>
+        {children}
+      </ClickToggle>
+    </Fragment>
   );
 };
 
@@ -36,6 +47,7 @@ ToggleSearchButton.propTypes = {
   }).isRequired,
   children: PropTypes.node.isRequired,
   expanded: PropTypes.bool,
+  searchPageUrl: PropTypes.string.isRequired,
 };
 
 export default ToggleSearchButton;

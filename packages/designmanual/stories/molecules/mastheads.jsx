@@ -68,6 +68,7 @@ class MastheadWithTopicMenu extends Component {
     if (!this.props.hideSearchButton) {
       searchButtonView = (
         <ToggleSearchButton
+          searchPageUrl="#"
           messages={{ buttonText: 'Søk' }}
           expanded={this.props.searchFieldExpanded}>
           <SearchOverlay>

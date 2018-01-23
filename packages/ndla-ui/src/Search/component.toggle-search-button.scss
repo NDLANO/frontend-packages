@@ -13,6 +13,21 @@
     &:active {
       border: 0;
     }
+
+    &--narrow {
+      box-shadow: none;
+      @include mq(tablet) {
+        display: none;
+      }
+    }
+
+    &--wide {
+      display: none;
+
+      @include mq(tablet) {
+        display: block;
+      }
+    }
   }
 
   &__button-content {

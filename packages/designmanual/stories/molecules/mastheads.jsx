@@ -87,6 +87,7 @@ class MastheadWithTopicMenu extends Component {
               messages={{
                 allContentTypeResultLabel: 'Se alle',
                 allResultLabel: 'Se alle søkeresultat for:',
+                searchFieldTitle: 'Søk',
               }}
               allResultUrl="#"
               searchResult={searchFieldResults}

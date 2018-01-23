@@ -83,7 +83,7 @@ export default class SearchPage extends Component {
     }
 
     return (
-      <div {...classes()}>
+      <main {...classes()}>
         <SafeLink to={closeUrl} {...classes('close-button')}>
           <span>{messages.closeButton}</span> <Cross />
         </SafeLink>
@@ -94,10 +94,13 @@ export default class SearchPage extends Component {
             placeholder={searchFieldPlaceholder}
             filters={searchFieldFilters}
             onFilterRemove={onSearchFieldFilterRemove}
+            messages={{
+              searchFieldTitle: messages.searchFieldTitle,
+            }}
           />
         </div>
         <div {...classes('filter-result-wrapper')}>
-          <div
+          <aside
             {...classes('filter-wrapper', filterModifiers)}
             ref={ref => {
               this.filterContainerRef = ref;
@@ -112,11 +115,11 @@ export default class SearchPage extends Component {
               }}>
               <Back /> <span>{messages.narrowScreenFilterHeading}</span>
             </button>
-            <h2>{messages.filterHeading}</h2>
+            <h1>{messages.filterHeading}</h1>
             <div {...classes('filters')}>{filters}</div>
-          </div>
+          </aside>
           <div {...classes('result-wrapper')}>
-            <h2>{messages.resultHeading}</h2>
+            <h2 aria-hidden="true">{messages.resultHeading}</h2>
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
@@ -135,7 +138,7 @@ export default class SearchPage extends Component {
             {children}
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }
@@ -167,6 +170,7 @@ SearchPage.propTypes = {
     narrowScreenFilterHeading: PropTypes.string.isRequired,
     resultHeading: PropTypes.string,
     closeButton: PropTypes.string.isRequired,
+    searchFieldTitle: PropTypes.string.isRequired,
   }).isRequired,
   closeUrl: PropTypes.string.isRequired,
 };

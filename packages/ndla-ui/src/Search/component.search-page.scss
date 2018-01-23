@@ -80,10 +80,13 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     margin-right: $spacing--small;
     text-align: center;
 
-    h2 {
+    h1 {
       text-align: left;
       text-transform: uppercase;
       display: none;
+      margin: 0;
+      font-weight: 600;
+      @include font-size(18px, 32px);
 
       @include mq(tablet) {
         display: block;
@@ -107,8 +110,9 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     }
   }
 
-  &__filter-wrapper,
   &__result-wrapper {
+    flex-grow: 1;
+
     h2 {
       margin: 0;
       font-weight: 600;
@@ -120,10 +124,6 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
         margin-bottom: 0;
       }
     }
-  }
-
-  &__result-wrapper {
-    flex-grow: 1;
   }
 
   &__filter-close-button {

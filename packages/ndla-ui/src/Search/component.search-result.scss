@@ -21,6 +21,10 @@
     }
   }
 
+  & > h2 {
+    @include visually-hidden();
+  }
+
   &__narrow-result {
     @include mq(tablet) {
       display: none;
@@ -55,7 +59,7 @@
 
   &__empty {
     margin-top: $spacing--large;
-    h3 {
+    h1 {
       @include font-size(22px, 32px);
       font-weight: 700;
       margin: 0 0 $spacing--small;
@@ -190,7 +194,7 @@
       @include font-size(16px, 28px);
     }
 
-    &>span {
+    & > span {
       display: none;
 
       @include mq(tablet) {
@@ -250,7 +254,7 @@
     }
   }
 
-  h3 {
+  h1 {
     margin: 0;
     font-weight: 600;
     @include font-size(16px, 20px);

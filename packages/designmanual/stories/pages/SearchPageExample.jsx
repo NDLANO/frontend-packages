@@ -153,6 +153,7 @@ class SearchPageExample extends Component {
           resultHeading: '43 treff i Ndla',
           closeButton: 'Lukk',
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
+          searchFieldTitle: 'Søk',
         }}
         filters={
           <Fragment>
@@ -303,6 +304,7 @@ class SearchPageExample extends Component {
         <SearchResult
           messages={{
             searchStringLabel: 'Du søkte på:',
+            subHeading: '43 treff i Ndla',
           }}
           searchString="Test"
           tabOptions={[

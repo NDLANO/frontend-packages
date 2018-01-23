@@ -20,6 +20,7 @@ export const SearchResult = ({
     <h1>
       {messages.searchStringLabel} <span>{searchString}</span>
     </h1>
+    <h2>{messages.subHeading}</h2>
     <FilterTabs
       value={currentTab}
       options={tabOptions}
@@ -42,6 +43,7 @@ SearchResult.propTypes = {
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({
     searchStringLabel: PropTypes.string.isRequired,
+    subHeading: PropTypes.string.isRequired,
   }).isRequired,
   searchString: PropTypes.string.isRequired,
   onTabChange: PropTypes.func.isRequired,
@@ -74,56 +76,58 @@ const messagesShape = PropTypes.shape({
 
 const SearchResultItem = ({ item, messages }) => (
   <li key={item.title} {...searchResultItemClasses()}>
-    <div {...searchResultItemClasses('header')}>
-      <h3>
-        <SafeLink to={item.url}>{item.title}</SafeLink>
-      </h3>
-      {item.contentTypeIcon}
-      <span {...searchResultItemClasses('content-type-label')}>
-        {item.contentTypeLabel}
-      </span>
-      {item.additional && (
-        <span {...searchResultItemClasses('additional')}>
-          <Additional className="c-icon--20" />
+    <article>
+      <header {...searchResultItemClasses('header')}>
+        <h1>
+          <SafeLink to={item.url}>{item.title}</SafeLink>
+        </h1>
+        {item.contentTypeIcon}
+        <span {...searchResultItemClasses('content-type-label')}>
+          {item.contentTypeLabel}
         </span>
-      )}
-    </div>
-    {item.breadcrumb &&
-      item.breadcrumb.length > 0 && (
-        <div {...searchResultItemClasses('breadcrumb')}>
-          {item.breadcrumb.map((breadcrumbItem, index) => {
-            let icon = null;
+        {item.additional && (
+          <span {...searchResultItemClasses('additional')}>
+            <Additional className="c-icon--20" />
+          </span>
+        )}
+      </header>
+      {item.breadcrumb &&
+        item.breadcrumb.length > 0 && (
+          <div {...searchResultItemClasses('breadcrumb')}>
+            {item.breadcrumb.map((breadcrumbItem, index) => {
+              let icon = null;
 
-            if (index !== item.breadcrumb.length - 1) {
-              icon = <ChevronRight />;
-            }
+              if (index !== item.breadcrumb.length - 1) {
+                icon = <ChevronRight />;
+              }
 
-            return (
-              <Fragment key={breadcrumbItem}>
-                <span>{breadcrumbItem}</span>
-                {icon}
-              </Fragment>
-            );
-          })}
-        </div>
-      )}
-    <div {...searchResultItemClasses('content')}>
-      <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
-      {item.image}
-    </div>
-    {item.subjects &&
-      item.subjects.length !== 0 && (
-        <div {...searchResultItemClasses('subjects')}>
-          <span>{messages.subjectsLabel}</span>
-          <ul>
-            {item.subjects.map(subject => (
-              <li key={subject.url}>
-                <SafeLink to={subject.url}>{subject.title}</SafeLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+              return (
+                <Fragment key={breadcrumbItem}>
+                  <span>{breadcrumbItem}</span>
+                  {icon}
+                </Fragment>
+              );
+            })}
+          </div>
+        )}
+      <div {...searchResultItemClasses('content')}>
+        <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
+        {item.image}
+      </div>
+      {item.subjects &&
+        item.subjects.length !== 0 && (
+          <div {...searchResultItemClasses('subjects')}>
+            <span>{messages.subjectsLabel}</span>
+            <ul>
+              {item.subjects.map(subject => (
+                <li key={subject.url}>
+                  <SafeLink to={subject.url}>{subject.title}</SafeLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+    </article>
   </li>
 );
 
@@ -135,10 +139,10 @@ SearchResultItem.propTypes = {
 export const SearchResultList = ({ results, messages }) => {
   if (results.length === 0) {
     return (
-      <div className="c-search-result-list__empty">
-        <h3>{messages.noResultHeading}</h3>
+      <article className="c-search-result-list__empty">
+        <h1>{messages.noResultHeading}</h1>
         <p>{messages.noResultDescription}</p>
-      </div>
+      </article>
     );
   }
 

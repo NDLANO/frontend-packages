@@ -18,8 +18,9 @@ import ActiveFilters from './ActiveFilters';
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  allResultLabel: PropTypes.string.isRequired,
-  allContentTypeResultLabel: PropTypes.string.isRequired,
+  allResultLabel: PropTypes.string,
+  allContentTypeResultLabel: PropTypes.string,
+  searchFieldTitle: PropTypes.string.isRequired,
 });
 
 const searchResultShape = PropTypes.arrayOf(
@@ -121,6 +122,7 @@ const SearchField = ({
         <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
       </div>
       <input
+        title={messages.searchFieldTitle}
         type="search"
         {...classes('input')}
         aria-autocomplete="list"

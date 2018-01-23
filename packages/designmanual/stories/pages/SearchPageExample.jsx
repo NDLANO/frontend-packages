@@ -127,7 +127,7 @@ class SearchPageExample extends Component {
         closeUrl="#"
         searchString=""
         onSearchFieldChange={() => {}}
-        searchFieldPlaceholder="Søk..."
+        searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
         searchFieldFilters={[
           {
@@ -234,19 +234,20 @@ class SearchPageExample extends Component {
               label="Nivå"
               options={[
                 {
-                  title: 'VG1',
+                  title: 'VG1 (15)',
                   value: 'VG1',
                 },
                 {
-                  title: 'VG2',
+                  title: 'VG2 (20)',
                   value: 'VG2',
                 },
                 {
                   title: 'VG3',
                   value: 'VG3',
+                  noResults: true,
                 },
               ]}
-              values={['VG1']}
+              values={[]}
             />
             <SearchFilter
               label="Innhold"

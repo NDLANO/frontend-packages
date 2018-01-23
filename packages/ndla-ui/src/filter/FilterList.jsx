@@ -56,6 +56,10 @@ class FilterList extends Component {
             itemModifiers.push('hidden');
           }
 
+          if (option.noResults) {
+            itemModifiers.push('no-results');
+          }
+
           return (
             <div {...filterClasses('item', itemModifiers)} key={option.value}>
               <input
@@ -131,6 +135,7 @@ FilterList.propTypes = {
       title: PropTypes.string.isRequired,
       value: valueShape.isRequired,
       icon: PropTypes.func,
+      noResults: PropTypes.bool,
     }),
   ).isRequired,
   values: PropTypes.arrayOf(valueShape),

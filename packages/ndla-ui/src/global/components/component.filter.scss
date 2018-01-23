@@ -122,6 +122,14 @@
       display: none;
     }
 
+    &--no-results {
+      color: $brand-color--tertiary;
+
+      .c-filter__item-checkbox {
+        border-color: $brand-grey--lighter;
+      }
+    }
+
     &:hover {
       .c-filter__item-checkbox {
         border: 2px solid $brand-color--tertiary;

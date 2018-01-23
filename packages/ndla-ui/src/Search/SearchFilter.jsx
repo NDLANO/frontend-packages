@@ -56,6 +56,7 @@ SearchFilter.propTypes = {
     PropTypes.shape({
       value: valueShape.isRequired,
       title: PropTypes.string.isRequired,
+      noResults: PropTypes.bool,
     }),
   ).isRequired,
   values: PropTypes.arrayOf(valueShape),

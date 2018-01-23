@@ -68,6 +68,8 @@ const searchResultItemShape = PropTypes.shape({
 
 const messagesShape = PropTypes.shape({
   subjectsLabel: PropTypes.string.isRequired,
+  noResultHeading: PropTypes.string.isRequired,
+  noResultDescription: PropTypes.string.isRequired,
 });
 
 const SearchResultItem = ({ item, messages }) => (
@@ -130,13 +132,24 @@ SearchResultItem.propTypes = {
   messages: messagesShape.isRequired,
 };
 
-export const SearchResultList = ({ results, messages }) => (
-  <ul className="c-search-result-list">
-    {results.map(item => (
-      <SearchResultItem key={item.url} item={item} messages={messages} />
-    ))}
-  </ul>
-);
+export const SearchResultList = ({ results, messages }) => {
+  if (results.length === 0) {
+    return (
+      <div className="c-search-result-list__empty">
+        <h3>{messages.noResultHeading}</h3>
+        <p>{messages.noResultDescription}</p>
+      </div>
+    );
+  }
+
+  return (
+    <ul className="c-search-result-list">
+      {results.map(item => (
+        <SearchResultItem key={item.url} item={item} messages={messages} />
+      ))}
+    </ul>
+  );
+};
 
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),

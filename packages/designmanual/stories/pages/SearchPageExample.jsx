@@ -71,8 +71,27 @@ class SearchPageExample extends Component {
       },
     ];
 
-    let contextFilter =
-      this.state.currentTab !== 'all' ? (
+    let currentResult = null;
+
+    switch (this.state.currentTab) {
+      case 'learningPath':
+        currentResult = [results[2]];
+        break;
+      case 'subject':
+        currentResult = [results[0]];
+        break;
+      case 'subjectMaterial':
+        currentResult = [results[1]];
+        break;
+      case 'externalLearningResources':
+        currentResult = [];
+        break;
+      default:
+        currentResult = results;
+    }
+
+    const contextFilter =
+      this.state.currentTab !== 'all' && currentResult.length > 0 ? (
         <SearchFilter
           contextFilter
           label="Egenskaper"
@@ -255,6 +274,14 @@ class SearchPageExample extends Component {
               value: 'subjectMaterial',
               display: 'Fagstoff',
             },
+            {
+              value: 'learningPath',
+              display: 'Læringssti',
+            },
+            {
+              value: 'externalLearningResources',
+              display: 'Ekstern læringsressurs',
+            },
           ]}
           onTabChange={currentTab => {
             this.setState({
@@ -266,8 +293,11 @@ class SearchPageExample extends Component {
           <SearchResultList
             messages={{
               subjectsLabel: 'Åpne i fag:',
+              noResultHeading: 'Hmm, ikke noe innhold ...',
+              noResultDescription:
+                'Vi har dessverre ikke noe å tilby her. Hvis du vil foreslå noe innhold til dette området, kan du bruke Spør NDLA som du finner nede til høyre på skjermen.',
             }}
-            results={this.state.currentTab === 'all' ? results : [results[0]]}
+            results={currentResult}
           />
         </SearchResult>
       </SearchPage>

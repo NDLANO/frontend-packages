@@ -52,6 +52,25 @@
   @include mq(tablet) {
     margin: $spacing--medium 0 0 0;
   }
+
+  &__empty {
+    margin-top: $spacing--large;
+    h3 {
+      @include font-size(22px, 32px);
+      font-weight: 700;
+      margin: 0 0 $spacing--small;
+    }
+
+    p {
+      @include font-size(16px, 22px);
+      margin: 0;
+      font-family: $font-serif;
+
+      @include mq(tablet) {
+        @include font-size(18px, 32px);
+      }
+    }
+  }
 }
 
 .c-search-result-item {

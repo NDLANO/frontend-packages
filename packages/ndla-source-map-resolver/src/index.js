@@ -41,24 +41,41 @@ function printSourceLine(mapConsumer, orgPos) {
   process.stdout.write(chalk.bold.green(`${line} \n`));
 }
 
-function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
-  const orgPos = mapConsumer.originalPositionFor({
-    line: frame.line,
-    column: frame.column,
-  });
-  process.stdout.write(
-    chalk.bold.red(`  at ${orgPos.name} `) +
-      chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
+function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
+  const sourceMap = sourceMaps.find(
+    sourceMap => frame.url.indexOf(sourceMap.name) !== -1,
   );
 
-  if (printSourceLineFlag) {
-    printSourceLine(mapConsumer, orgPos);
+  if (sourceMap) {
+    const orgPos = sourceMap.mapping.originalPositionFor({
+      line: frame.line,
+      column: frame.column,
+    });
+    process.stdout.write(
+      chalk.bold.red(`  at ${orgPos.name} `) +
+        chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
+    );
+
+    if (printSourceLineFlag) {
+      printSourceLine(sourceMap.mapping, orgPos);
+    }
+  } else {
+    process.stdout.write(
+      chalk.bold.red(`  at ${frame.func} `) + chalk.cyan(`(${frame.url}) \n`),
+    );
   }
 }
 
 function runSourceMapResolver(argv) {
-  const mapFile = loadFile(argv.mapFile);
-  const { mapConsumer } = consumeSourceMap(mapFile);
+  const sourceMaps = argv.mapFiles.map(mapFile => {
+    const content = loadFile(mapFile);
+    const name = path.basename(mapFile).replace('.map', '');
+    const { mapConsumer } = consumeSourceMap(content);
+    return {
+      name,
+      mapping: mapConsumer,
+    };
+  });
 
   const errorEventFile = loadFile(argv.errorEventFile);
   const { stackInfo } = JSON.parse(errorEventFile);
@@ -67,7 +84,7 @@ function runSourceMapResolver(argv) {
   process.stdout.write(
     chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`),
   );
-  stack.forEach(frame => printOriginalPosition(mapConsumer, frame));
+  stack.forEach(frame => printOriginalPosition(sourceMaps, frame));
 }
 
 module.exports = runSourceMapResolver;

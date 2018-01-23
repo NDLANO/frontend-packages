@@ -3,10 +3,10 @@ const runSourceMapResolver = require('./index');
 
 const args = {
   options: {
-    mapFile: {
+    mapFiles: {
       alias: 'm',
-      description: 'Path to source map file',
-      type: 'string',
+      description: 'List of paths to source map files',
+      type: 'array',
     },
     errorEventFile: {
       alias: 'e',
@@ -15,7 +15,7 @@ const args = {
     },
   },
   usage:
-    'Usage: $0 --mapFile <pathToMapFile> --errorEventFile <pathToErrorEventFile>',
+    'Usage: $0 --mapFiles <pathToMapFile1> <pathToMapFile2> --errorEventFile <pathToErrorEventFile>',
   docs:
     'Documentation:\nhttps://github.com/NDLANO/frontend-packages/tree/ndla-source-map-resolver/packages/ndla-source-map-resolver',
 };
@@ -26,7 +26,7 @@ function run(programArgs) {
     .help('h')
     .alias('help', 'h')
     .options(args.options)
-    .demandOption(['mapFile', 'errorEventFile'])
+    .demandOption(['mapFiles', 'errorEventFile'])
     .epilogue(args.docs)
     .wrap(Math.min(100, process.stdout.columns));
 

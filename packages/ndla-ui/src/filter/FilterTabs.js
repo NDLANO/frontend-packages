@@ -81,7 +81,7 @@ class FilterTabs extends Component {
 
                   this.handleOnChange(options[newIndex].value);
                 }}>
-                {option.display}
+                {option.title}
               </li>
             );
           })}
@@ -101,7 +101,7 @@ class FilterTabs extends Component {
 FilterTabs.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      display: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
     }),
   ).isRequired,

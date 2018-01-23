@@ -23,7 +23,7 @@ const SearchOverlay = ({ close, children }) => (
 );
 
 SearchOverlay.propTypes = {
-  close: PropTypes.func.isRequired,
+  close: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 

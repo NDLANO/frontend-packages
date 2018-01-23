@@ -151,13 +151,13 @@ SearchPage.propTypes = {
   searchFieldFilters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     }),
   ),
   activeFilters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       filterName: PropTypes.string.isRequired,
     }),
   ),

@@ -55,8 +55,8 @@ const searchResultItemShape = PropTypes.shape({
   breadcrumb: PropTypes.arrayOf(PropTypes.string),
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
+      title: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
     }),
   ),
   additional: PropTypes.bool,
@@ -117,8 +117,8 @@ const SearchResultItem = ({ item, messages }) => (
           <span>{messages.subjectsLabel}</span>
           <ul>
             {item.subjects.map(subject => (
-              <li>
-                <SafeLink to={subject.url}>{subject.display}</SafeLink>
+              <li key={subject.url}>
+                <SafeLink to={subject.url}>{subject.title}</SafeLink>
               </li>
             ))}
           </ul>

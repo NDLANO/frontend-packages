@@ -93,7 +93,6 @@ const SearchField = ({
   allResultUrl,
 }) => {
   const modifiers = [];
-  let filtersView = null;
 
   const hasSearchResult = searchResult && searchResult.length > 0;
 
@@ -148,7 +147,7 @@ SearchField.propTypes = {
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     }),
   ),
   messages: messagesShape,

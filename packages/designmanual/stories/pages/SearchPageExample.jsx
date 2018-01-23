@@ -49,15 +49,15 @@ class SearchPageExample extends Component {
         subjects: [
           {
             url: '#1',
-            display: 'Flerfaglig',
+            title: 'Flerfaglig',
           },
           {
             url: '#2',
-            display: 'Medieuttrykk og mediesamfunn',
+            title: 'Medieuttrykk og mediesamfunn',
           },
           {
             url: '#3',
-            display: 'Norsk',
+            title: 'Norsk',
           },
         ],
       },
@@ -132,18 +132,18 @@ class SearchPageExample extends Component {
         searchFieldFilters={[
           {
             value: 'value',
-            display: 'Medieuttrykk og mediesamfunn',
+            title: 'Medieuttrykk og mediesamfunn',
           },
         ]}
         activeFilters={[
           {
             value: 'value',
-            display: 'Medieuttrykk og mediesamfunn',
+            title: 'Medieuttrykk og mediesamfunn',
             filterName: 'subject',
           },
           {
             value: 'value2',
-            display: 'Kjernestoff',
+            title: 'Kjernestoff',
             filterName: 'content',
           },
         ]}
@@ -308,23 +308,23 @@ class SearchPageExample extends Component {
           tabOptions={[
             {
               value: 'all',
-              display: 'Alle',
+              title: 'Alle',
             },
             {
               value: 'subject',
-              display: 'Emne',
+              title: 'Emne',
             },
             {
               value: 'subjectMaterial',
-              display: 'Fagstoff',
+              title: 'Fagstoff',
             },
             {
               value: 'learningPath',
-              display: 'Læringssti',
+              title: 'Læringssti',
             },
             {
               value: 'externalLearningResources',
-              display: 'Ekstern læringsressurs',
+              title: 'Ekstern læringsressurs',
             },
           ]}
           onTabChange={currentTab => {

@@ -73,7 +73,7 @@ class Popover extends Component {
 
 Popover.propTypes = {
   messages: messagesShape.isRequired,
-  close: PropTypes.func.isRequired,
+  close: PropTypes.func,
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({

@@ -17,7 +17,7 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
             onClick={() => {
               onFilterRemove(filter.value, filter.filterName);
             }}>
-            <span>{filter.display}</span>
+            <span>{filter.title}</span>
             <Cross />
           </button>
         </li>
@@ -34,7 +34,7 @@ ActiveFilters.propTypes = {
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       filterName: PropTypes.string,
     }),
   ),

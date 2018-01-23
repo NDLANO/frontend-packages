@@ -130,7 +130,7 @@ FilterList.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       value: valueShape.isRequired,
-      icon: PropTypes.node,
+      icon: PropTypes.func,
     }),
   ).isRequired,
   values: PropTypes.arrayOf(valueShape),

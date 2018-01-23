@@ -34,7 +34,10 @@ export default class ClickToggle extends React.Component {
         this.setState({
           isOpen: true,
         });
-        noScroll(true);
+
+        if (!this.props.noScrollDisabled) {
+          noScroll(true);
+        }
       },
       onDeactivate: () => {
         if (this.state.isOpen) {
@@ -42,7 +45,10 @@ export default class ClickToggle extends React.Component {
             isOpen: false,
           });
         }
-        noScroll(false);
+
+        if (!this.props.noScrollDisabled) {
+          noScroll(false);
+        }
       },
       clickOutsideDeactivates: true,
     });
@@ -75,6 +81,7 @@ export default class ClickToggle extends React.Component {
       title,
       openTitle,
       buttonClassName,
+      noScrollDisabled,
       containerClass: Component,
       expanded,
       ...rest
@@ -110,11 +117,12 @@ export default class ClickToggle extends React.Component {
 ClickToggle.propTypes = {
   containerClass: elementType,
   title: PropTypes.node.isRequired,
-  openTitle: PropTypes.node.isRequired,
+  openTitle: PropTypes.node,
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
   expanded: PropTypes.bool,
+  noScrollDisabled: PropTypes.bool,
 };
 
 ClickToggle.defaultProps = {

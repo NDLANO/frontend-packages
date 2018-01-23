@@ -6,6 +6,7 @@ import {
   SearchResult,
   SearchResultList,
   SearchFilter,
+  SearchPopoverFilter,
   SubjectBadge,
   SubjectMaterialBadge,
   LearningPathBadge,
@@ -155,6 +156,49 @@ class SearchPageExample extends Component {
         }}
         filters={
           <Fragment>
+            <SearchFilter
+              label="Medieuttrykk og mediasamfunnet"
+              options={[
+                {
+                  title: 'Medieuttrykk',
+                  value: 'value',
+                },
+                {
+                  title: 'Mediesamfunnet',
+                  value: 'value2',
+                },
+              ]}
+              values={['value']}>
+              <SearchPopoverFilter
+                messages={{
+                  backButton: 'Tilbake til filter',
+                  filterLabel: 'Velg fag',
+                  closeButton: 'Lukk',
+                  confirmButton: 'Bruk fag',
+                  hasValuesButtonText: 'Bytt fag',
+                  noValuesButtonText: 'Velg fag',
+                }}
+                options={[
+                  {
+                    title: 'Kinesisk',
+                    value: 'value1',
+                  },
+                  {
+                    title: 'Brønnteknikk',
+                    value: 'value2',
+                  },
+                  {
+                    title: 'Markedsføring og ledelse',
+                    value: 'value3',
+                  },
+                  {
+                    title: 'Naturbruk',
+                    value: 'value4',
+                  },
+                ]}
+                values={[]}
+              />
+            </SearchFilter>
             <SearchFilter
               label="Innholdstype"
               narrowScreenOnly

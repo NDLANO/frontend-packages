@@ -33,6 +33,7 @@ export {
   SearchResult,
   SearchResultList,
   SearchFilter,
+  SearchPopoverFilter,
 } from './Search';
 export {
   default as ContentTypeBadge,

@@ -14,6 +14,7 @@ import SearchPage from './SearchPage';
 import { SearchResult, SearchResultList } from './SearchResult';
 
 import SearchFilter from './SearchFilter';
+import SearchPopoverFilter from './SearchPopoverFilter';
 
 export {
   SearchField,
@@ -23,4 +24,5 @@ export {
   SearchResult,
   SearchResultList,
   SearchFilter,
+  SearchPopoverFilter,
 };

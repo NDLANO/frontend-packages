@@ -71,6 +71,37 @@ class SearchPageExample extends Component {
       },
     ];
 
+    let contextFilter =
+      this.state.currentTab !== 'all' ? (
+        <SearchFilter
+          contextFilter
+          label="Egenskaper"
+          options={[
+            {
+              title: 'Film og filmklipp',
+              value: 'value',
+            },
+            {
+              title: 'Fagartikkel',
+              value: 'value1',
+            },
+            {
+              title: 'Veilleding',
+              value: 'value2',
+            },
+            {
+              title: 'Verktøy og mal',
+              value: 'value3',
+            },
+            {
+              title: 'Verktøy og mal',
+              value: 'value4',
+            },
+          ]}
+          values={['value']}
+        />
+      ) : null;
+
     return (
       <SearchPage
         closeUrl="#"
@@ -231,6 +262,7 @@ class SearchPageExample extends Component {
             });
           }}
           currentTab={this.state.currentTab}>
+          {contextFilter}
           <SearchResultList
             messages={{
               subjectsLabel: 'Åpne i fag:',

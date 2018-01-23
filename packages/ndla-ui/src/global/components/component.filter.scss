@@ -29,6 +29,7 @@
     border-top: 1px solid $brand-color--light;
     padding-top: $spacing--small;
     font-family: $font;
+
     @include mq(tablet) {
       width: auto;
       position: relative;
@@ -80,6 +81,10 @@
       margin: 0 $spacing--small;
       display: inline-block;
     }
+
+    &--hidden {
+      @include visually-hidden();
+    }
   }
 
   &__item {
@@ -90,7 +95,7 @@
     border-radius: $border-radius;
     transition: $transition;
     cursor: pointer;
-    @include inuit-font-size(16px);
+    @include inuit-font-size(16px, 28px);
 
     &--hidden {
       display: none;
@@ -98,7 +103,7 @@
 
     &:hover {
       .c-filter__item-checkbox {
-        border: 2px solid $brand-color--light;
+        border: 2px solid $brand-color--secondary;
         &:before {
           width: 5px;
           transition: width 100ms ease;
@@ -145,7 +150,7 @@
     height: 24px;
     padding: 0;
     background: transparent;
-    border: 2px solid $brand-grey--light;
+    border: 2px solid $brand-color--secondary;
     margin: -5px $spacing--small -5px 3px;
     border-radius: 2px;
 
@@ -160,14 +165,14 @@
       width: 0px;
       height: 2px;
       border-radius: 2px;
-      background: $brand-color--tertiary;
+      background: $brand-color--secondary;
       position: absolute;
       transform: rotate(45deg);
       top: 10px;
       left: 7px;
 
       @include mq(tablet) {
-        top: 7px;
+        top: 8px;
         left: 5px;
       }
       transition: width 50ms ease 50ms;
@@ -179,14 +184,14 @@
       width: 0;
       height: 2px;
       border-radius: 2px;
-      background: $brand-color--tertiary;
+      background: $brand-color--secondary;
       position: absolute;
       transform: rotate(305deg);
       top: 13px;
       left: 8px;
 
       @include mq(tablet) {
-        top: 10px;
+        top: 11px;
         left: 6px;
       }
       transition: width 50ms ease;

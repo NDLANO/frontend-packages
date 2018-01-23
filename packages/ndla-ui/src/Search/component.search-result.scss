@@ -34,6 +34,14 @@
       display: block;
     }
   }
+
+  .c-search-filter {
+    display: none;
+
+    @include mq(tablet) {
+      display: block;
+    }
+  }
 }
 
 .c-search-result-list {

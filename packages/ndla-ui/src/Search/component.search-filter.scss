@@ -13,6 +13,11 @@
     margin-bottom: $spacing--small;
   }
 
+  &--context-filter {
+    background: $brand-color--light;
+    padding: $spacing--medium;
+  }
+
   &:first-child {
     .c-filter__list {
       border-top: 0;

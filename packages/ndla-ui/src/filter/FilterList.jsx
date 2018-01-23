@@ -28,6 +28,7 @@ class FilterList extends Component {
     const {
       modifiers,
       label,
+      labelNotVisible,
       options,
       values,
       onChange,
@@ -37,10 +38,15 @@ class FilterList extends Component {
     } = this.props;
 
     const showAll = defaultVisibleCount === null;
+    const labelModifiers = [];
+
+    if (labelNotVisible) {
+      labelModifiers.push('hidden');
+    }
 
     return (
       <div {...filterClasses('list', modifiers)}>
-        <span {...filterClasses('label')}>{label}</span>
+        <span {...filterClasses('label', labelModifiers)}>{label}</span>
         {options.map((option, index) => {
           const itemModifiers = [];
 
@@ -117,6 +123,7 @@ const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 FilterList.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
+  labelNotVisible: PropTypes.bool,
   modifiers: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(

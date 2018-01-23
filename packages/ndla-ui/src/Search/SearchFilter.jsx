@@ -37,9 +37,10 @@ const SearchFilter = ({
       <FilterList
         options={options}
         label={label}
+        labelNotVisible={contextFilter}
         values={values}
         defaultVisibleCount={defaultVisibleCount}
-        modifiers="search"
+        modifiers={!contextFilter ? 'search' : null}
         showLabel={showLabel}
         hideLabel={hideLabel}
       />

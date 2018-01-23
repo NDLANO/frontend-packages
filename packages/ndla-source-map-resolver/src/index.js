@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const sourceMap = require('source-map');
+const SourceMap = require('source-map');
 const chalk = require('chalk');
 
 function loadFile(fileName) {
@@ -27,7 +27,7 @@ function loadFile(fileName) {
 }
 
 function consumeSourceMap(sourceMapData) {
-  const mapConsumer = new sourceMap.SourceMapConsumer(sourceMapData);
+  const mapConsumer = new SourceMap.SourceMapConsumer(sourceMapData);
   return {
     mapConsumer,
   };
@@ -42,9 +42,7 @@ function printSourceLine(mapConsumer, orgPos) {
 }
 
 function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
-  const sourceMap = sourceMaps.find(
-    sourceMap => frame.url.indexOf(sourceMap.name) !== -1,
-  );
+  const sourceMap = sourceMaps.find(map => frame.url.indexOf(map.name) !== -1);
 
   if (sourceMap) {
     const orgPos = sourceMap.mapping.originalPositionFor({

@@ -11,6 +11,8 @@ const path = require('path');
 const util = require('util');
 const SourceMap = require('source-map');
 const chalk = require('chalk');
+const parseUrl = require('parse-url');
+const fetch = require('node-fetch');
 
 function loadFile(fileName) {
   try {
@@ -64,21 +66,64 @@ function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
   }
 }
 
-function runSourceMapResolver(argv) {
-  const sourceMaps = argv.mapFiles.map(mapFile => {
-    const content = loadFile(mapFile);
-    const name = path.basename(mapFile).replace('.map', '');
-    const { mapConsumer } = consumeSourceMap(content);
-    return {
-      name,
-      mapping: mapConsumer,
-    };
-  });
+async function fetchAssets(url) {
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
+}
 
-  const errorEventFile = loadFile(argv.errorEventFile);
-  const { stackInfo } = JSON.parse(errorEventFile);
+async function fetchSourceMapFile(url) {
+  const response = await fetch(url);
+  const text = await response.text();
+  return text;
+}
+
+function getSourceMapFileNames(assets) {
+  return Object.keys(assets)
+    .map(key => assets[key])
+    .filter(name => name.indexOf('.js.map') > -1);
+}
+
+async function collectSourceMaps(argv, url) {
+  if (argv.mapFiles) {
+    return argv.mapFiles.map(mapFile => {
+      const content = loadFile(mapFile);
+      const name = path.basename(mapFile).replace('.map', '');
+      const { mapConsumer } = consumeSourceMap(content);
+      return {
+        name,
+        mapping: mapConsumer,
+      };
+    });
+  } else if (url) {
+    const { resource, protocol, port } = parseUrl(url);
+    const base = resource + (port ? `:${port}` : '');
+    const assetsUrl = `${protocol}://${base}/assets/assets.json`;
+    const assets = await fetchAssets(assetsUrl);
+    const sourceMapFileNames = getSourceMapFileNames(assets);
+    return Promise.all(
+      sourceMapFileNames.map(async fileName => {
+        const urlToSourceMap = `${protocol}://${base}/assets/${fileName}`;
+        const content = await fetchSourceMapFile(urlToSourceMap);
+        const { mapConsumer } = consumeSourceMap(content);
+        const name = path.basename(fileName).replace('.map', '');
+        return {
+          name,
+          mapping: mapConsumer,
+        };
+      }),
+    );
+  }
+
+  throw new Error('No  sourcemaps to collect');
+}
+
+async function runSourceMapResolver(argv) {
+  const errorEvent = JSON.parse(loadFile(argv.errorEventFile));
+  const { stackInfo } = errorEvent;
   const { stack } = stackInfo;
-
+  const { url } = stack[0];
+  const sourceMaps = await collectSourceMaps(argv, url);
   process.stdout.write(
     chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`),
   );

@@ -13,6 +13,7 @@ const SourceMap = require('source-map');
 const chalk = require('chalk');
 const parseUrl = require('parse-url');
 const fetch = require('node-fetch');
+const ora = require('ora');
 
 function loadFile(fileName) {
   try {
@@ -67,14 +68,24 @@ function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
 }
 
 async function fetchAssets(url) {
+  const name = parseUrl(url)
+    .pathname.split('/')
+    .pop();
+  const spinner = ora(`fetching ${name}`).start();
   const response = await fetch(url);
   const json = await response.json();
+  spinner.succeed(`Fetched  ${name}`);
   return json;
 }
 
 async function fetchSourceMapFile(url) {
+  const name = parseUrl(url)
+    .pathname.split('/')
+    .pop();
+  const spinner = ora(`Fetching ${name}`).start();
   const response = await fetch(url);
   const text = await response.text();
+  spinner.succeed(`Fetched  ${name}`);
   return text;
 }
 

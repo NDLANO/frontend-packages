@@ -8,21 +8,24 @@
 
 import SearchField from './SearchField';
 import SearchOverlay from './SearchOverlay';
-import ToggleSearchButton from './ToggleSearchButton';
+import ToggleSearchButton, { OpenSearchButton } from './ToggleSearchButton';
 import SearchPage from './SearchPage';
 
 import { SearchResult, SearchResultList } from './SearchResult';
 
 import SearchFilter from './SearchFilter';
 import SearchPopoverFilter from './SearchPopoverFilter';
+import ContentTypeResult from './ContentTypeResult';
 
 export {
   SearchField,
   ToggleSearchButton,
+  OpenSearchButton,
   SearchOverlay,
   SearchPage,
   SearchResult,
   SearchResultList,
   SearchFilter,
   SearchPopoverFilter,
+  ContentTypeResult,
 };

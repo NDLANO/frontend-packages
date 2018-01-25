@@ -49,6 +49,8 @@ const messages = {
   goTo: 'Gå til',
   subjectOverview: 'Fagoversikt',
   search: 'Søk',
+  subjectPage: 'Fagforside',
+  learningResourcesHeading: 'Læringsressurser',
 };
 
 class MastheadWithTopicMenu extends Component {
@@ -56,6 +58,10 @@ class MastheadWithTopicMenu extends Component {
     super(props);
     this.state = {
       value: '',
+      menuIsOpen: false,
+      searchIsOpen: this.props.searchFieldExpanded,
+      expandedTopicId: undefined,
+      expandedSubtopicId: undefined,
     };
   }
 
@@ -68,9 +74,14 @@ class MastheadWithTopicMenu extends Component {
     if (!this.props.hideSearchButton) {
       searchButtonView = (
         <ToggleSearchButton
+          isOpen={this.state.searchIsOpen}
+          onToggle={isOpen => {
+            this.setState({
+              searchIsOpen: isOpen,
+            });
+          }}
           searchPageUrl="#"
-          messages={{ buttonText: 'Søk' }}
-          expanded={this.props.searchFieldExpanded}>
+          messages={{ buttonText: 'Søk' }}>
           <SearchOverlay>
             <SearchField
               placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
@@ -102,6 +113,12 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem left>
           <SiteNav>
             <ClickToggle
+              isOpen={this.state.menuIsOpen}
+              onToggle={isOpen => {
+                this.setState({
+                  menuIsOpen: isOpen,
+                });
+              }}
               title="Meny"
               openTitle="Lukk"
               className="c-topic-menu-container"
@@ -113,6 +130,33 @@ class MastheadWithTopicMenu extends Component {
                 withSearchAndFilter
                 topics={topicMenu}
                 messages={messages}
+                onOpenSearch={() => {
+                  this.setState({
+                    menuIsOpen: false,
+                    searchIsOpen: true,
+                  });
+                }}
+                filterOptions={[
+                  {
+                    title: 'Medieuttrykk',
+                    value: 'Medieuttrykk',
+                  },
+                  {
+                    title: 'Mediesamfunnet',
+                    value: 'Mediesamfunnet',
+                  },
+                ]}
+                values={['Medieuttrykk']}
+                searchPageUrl="#"
+                contentTypeResults={searchFieldSearchResults}
+                expandedTopicId={this.state.expandedTopicId}
+                expandedSubtopicId={this.state.expandedSubtopicId}
+                onNavigate={(expandedTopicId, expandedSubtopicId) => {
+                  this.setState({
+                    expandedTopicId,
+                    expandedSubtopicId,
+                  });
+                }}
               />
             </ClickToggle>
           </SiteNav>

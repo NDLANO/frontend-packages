@@ -8,6 +8,9 @@
 **/
 
 /* 1. */
+
+$column-width: 40%;
+
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -82,7 +85,6 @@
   max-width: 100%;
   height: 100%;
   padding: 0;
-  background: $brand-color--lighter;
   min-height: 250px;
   text-align: left;
   z-index: 40;
@@ -93,69 +95,115 @@
   text-transform: none;
   animation-name: fadeIn;
   animation-duration: 0.4s;
-  overflow-y: auto;
   @include mq(desktop) {
     display: flex;
   }
 }
+
+.c-topic-menu__content {
+  margin-top: 85px;
+  width: 100%;
+  height: calc(100% - 85px);
+  background: $brand-grey--lighter;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  padding-bottom: $spacing--large;
+}
+
+.c-topic-menu__subject-navigation {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+}
+.c-topic-menu__subject-structure {
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+}
+
 .c-topic-menu__list {
   padding: 0;
-  list-style: none;
   margin: 0;
+  list-style: none;
   overflow-y: auto;
   @include fadeInLeftItems(li, 30);
 }
+
 .c-topic-menu__left {
-  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
   margin-top: $spacing--small;
+  padding-right: $spacing;
+  padding-left: $spacing--large;
+
+  border-right: 1px solid $brand-color--light;
 
   @include mq(desktop) {
-    margin-top: 0;
-    flex: 1;
-    max-width: 30%;
-    padding-top: 105px;
+    max-width: $column-width;
+    margin-top: $spacing--medium;
+  }
+
+  &--no-border {
+    border-right: 0;
   }
 }
-.c-topic-menu__right {
-  z-index: 30;
-  background-color: $brand-color--tertiary;
-  animation-name: fadeInTop;
-  animation-duration: 0.2s;
-  padding: $spacing $spacing--small $spacing--small;
-  @include mq(desktop) {
-    position: absolute;
-    top: 85px;
-    left: 30%;
-    bottom: 0;
-    right: 0;
-    overflow-y: auto;
-    padding-top: 120px;
-    padding-left: $spacing--large;
-    padding-right: $spacing--large;
+
+.c-topic-menu__content-type-results {
+  margin-top: $spacing--medium;
+  padding: 0 $spacing--large;
+  border-left: 1px solid $brand-color--light;
+
+  h1 {
+    @include font-size(16px, 20px);
+    margin-bottom: $spacing--medium;
+
+    span {
+      text-transform: uppercase;
+      padding-right: $spacing--small;
+    }
+  }
+
+  .c-content-type-result {
+    &__icon-wrapper {
+      width: 149px;
+    }
   }
 }
 
 /* 4. */
 .c-topic-menu__subject {
-  @include inuit-font-size(20px);
-  font-weight: 600;
+  flex-shrink: 0;
   border-bottom: 1px solid rgba($brand-color, 0.3);
-  margin-left: $spacing--small;
-  padding-bottom: $spacing--small;
+  margin-top: 0;
   display: flex;
   justify-content: flex-start;
+  padding-bottom: $spacing--small;
+
   @include mq(desktop) {
-    padding-bottom: $spacing;
     margin-bottom: $spacing--small;
-    margin-right: $spacing--large;
-    margin-left: $spacing--large;
-    @include inuit-font-size(26px);
   }
+
   a {
-    padding-bottom: 2px;
+    box-shadow: none;
+  }
+
+  & > h1 {
+    margin: 0;
+    padding-left: $spacing--large;
+    padding-right: $spacing--large;
+    min-width: $column-width;
+    @include inuit-font-size(20px);
+    font-weight: 600;
+
+    @include mq(desktop) {
+      @include inuit-font-size(26px);
+    }
   }
 }
 
@@ -194,15 +242,19 @@
 
 .c-topic-menu__back {
   margin-left: $spacing--small;
+  margin-top: $spacing--medium;
+  margin-bottom: $spacing--medium;
+
+  @include inuit-font-size(18px, 23px);
+  display: block;
+  color: $brand-color;
+
   @include mq(desktop) {
     margin-left: $spacing--large;
     padding: $spacing--small 0;
   }
-  @include inuit-font-size(15px);
-  display: block;
-  color: $brand-color;
-  margin-bottom: $spacing;
 }
+
 .c-topic-menu__back-link {
   box-shadow: none;
   color: $brand-color;
@@ -211,24 +263,26 @@
   }
 }
 
-.c-topic-menu__topic-item {
+.c-topic-menu__link {
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  text-align: left;
   cursor: pointer;
-  padding: $spacing--small;
-  margin-bottom: 0;
+  height: 52px;
+  line-height: 52px;
+
   @include mq(desktop) {
-    margin-left: $spacing--large;
-    padding: $spacing--small 0;
+    padding: 0;
   }
+
   transition: all 0.1s ease-in-out;
   animation-name: fadeInLeft;
   animation-duration: 0.5s;
-  span {
-    box-shadow: $link;
-  }
 
   &:hover,
+  &:active,
   &:focus {
-    outline: none;
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
     span {
@@ -236,65 +290,80 @@
     }
   }
 
-  &:last-child {
-    border: none;
+  &--big {
+    margin-bottom: $spacing;
+    box-shadow: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: transparent;
+      padding-left: 0;
+    }
   }
-  a {
-    text-decoration: none;
-  }
+
+  background: none;
+  border: 0;
+  padding: 0;
+  color: $brand-color;
 }
-.c-topic-menu__topic-item--active {
-  background-color: $brand-color--tertiary;
-  padding-left: $spacing--small;
-}
+
 .c-topic-menu__link-label {
   color: $black;
   text-decoration: none;
   padding-right: $spacing--small;
   display: inline;
+  font-weight: 400;
 }
+
 .c-topic-menu__link-target {
+  box-shadow: $link;
+  font-weight: 600;
+
   &:hover {
     text-decoration: none;
+  }
+}
+
+.c-topic-menu__topic-item {
+  margin-bottom: 0;
+
+  &--active {
+    & > .c-topic-menu__link {
+      background-color: $brand-color--tertiary;
+      padding-left: $spacing--small;
+    }
   }
 }
 
 .c-topic-menu__subtopic-item {
-  padding: $spacing--small 0 $spacing--small $spacing;
   margin-bottom: 0;
-  transition: all 0.1s ease-in-out;
-
-  a:hover {
-    text-decoration: none;
+  a {
+    font-weight: 400;
+    box-shadow: none;
   }
-}
 
-.c-topic-menu__link {
-  color: $brand-color;
-  &:hover {
-  }
-}
-
-.c-topic-menu__link--big {
-  border-bottom: 1px solid rgba($brand-color--secondary, 0.5);
-  padding-bottom: $spacing;
-  display: block;
-  text-decoration: none;
-  margin-bottom: $spacing--small;
-  &:hover {
-    text-decoration: none;
+  &--active {
+    & > .c-topic-menu__link {
+      background-color: $brand-color--tertiary;
+      padding-left: $spacing--small;
+    }
   }
 }
 
 /* 5. */
 .c-topic-menu__masthead {
   width: 100%;
-  background: white;
+  background: $white;
   z-index: 99;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-content: space-between;
   flex-direction: column;
   padding: 80px $spacing--small $spacing--small $spacing--small;
@@ -304,7 +373,7 @@
     position: absolute;
     left: 30%;
     height: 85px;
-    padding: 0;
+    padding: 0 204px 0 0;
     width: 70%;
   }
 }

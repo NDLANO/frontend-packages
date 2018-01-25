@@ -11,19 +11,42 @@ import PropTypes from 'prop-types';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-const SubtopicLink = ({ classes, closeMenu, to, subtopic }) => (
-  <li {...classes('subtopic-item')} key={subtopic.id}>
-    <SafeLink {...classes('link', 'underline')} onClick={closeMenu} to={to}>
-      {subtopic.name}
-    </SafeLink>
-  </li>
-);
+const SubtopicLink = ({
+  classes,
+  closeMenu,
+  to,
+  subtopic,
+  onSubtopicExpand,
+  expandedSubtopicId,
+}) => {
+  const active = subtopic.id === expandedSubtopicId;
+  return (
+    <li {...classes('subtopic-item', active && 'active')} key={subtopic.id}>
+      <SafeLink
+        {...classes('link')}
+        onClick={event => {
+          if (subtopic.subtopics) {
+            event.preventDefault();
+            onSubtopicExpand(subtopic.id);
+          } else {
+            closeMenu();
+          }
+        }}
+        to={to}>
+        {subtopic.name}
+      </SafeLink>
+    </li>
+  );
+};
 
 SubtopicLink.propTypes = {
   classes: PropTypes.func.isRequired,
   closeMenu: PropTypes.func,
   subtopic: TopicShape.isRequired,
   to: PropTypes.string.isRequired,
+  onSubtopicExpand: PropTypes.func.isRequired,
+  expandedSubtopicId: PropTypes.string,
+  toTopic: PropTypes.func,
 };
 
 class SubtopicLinkList extends Component {
@@ -54,6 +77,8 @@ class SubtopicLinkList extends Component {
       closeMenu,
       topic,
       toTopic,
+      expandedSubtopicId,
+      onSubtopicExpand,
     } = this.props;
 
     return (
@@ -63,7 +88,7 @@ class SubtopicLinkList extends Component {
           this.containerRef = ref;
         }}>
         <SafeLink
-          {...classes('link', ['underline', 'big'])}
+          {...classes('link', ['big'])}
           onClick={closeMenu}
           to={toTopic(topic.id)}>
           <span {...classes('link-label')}>{goToTitle}: </span>
@@ -74,11 +99,14 @@ class SubtopicLinkList extends Component {
         <ul {...classes('list')}>
           {topic.subtopics.map(subtopic => (
             <SubtopicLink
+              onSubtopicExpand={onSubtopicExpand}
+              expandedSubtopicId={expandedSubtopicId}
               classes={classes}
               closeMenu={closeMenu}
               key={subtopic.id}
               to={toTopic(topic.id, subtopic.id)}
               subtopic={subtopic}
+              toTopic={toTopic}
             />
           ))}
         </ul>
@@ -88,6 +116,8 @@ class SubtopicLinkList extends Component {
 }
 
 SubtopicLinkList.propTypes = {
+  expandedSubtopicId: PropTypes.string,
+  onSubtopicExpand: PropTypes.func.isRequired,
   goToTitle: PropTypes.string.isRequired,
   classes: PropTypes.func.isRequired,
   className: PropTypes.string,

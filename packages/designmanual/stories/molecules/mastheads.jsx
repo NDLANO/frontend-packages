@@ -51,6 +51,7 @@ const messages = {
   search: 'Søk',
   subjectPage: 'Fagforside',
   learningResourcesHeading: 'Læringsressurser',
+  back: 'Tilbake',
 };
 
 class MastheadWithTopicMenu extends Component {
@@ -60,8 +61,8 @@ class MastheadWithTopicMenu extends Component {
       value: '',
       menuIsOpen: false,
       searchIsOpen: this.props.searchFieldExpanded,
-      expandedTopicId: undefined,
-      expandedSubtopicId: undefined,
+      expandedTopicId: null,
+      expandedSubtopicId: null,
     };
   }
 
@@ -117,6 +118,8 @@ class MastheadWithTopicMenu extends Component {
               onToggle={isOpen => {
                 this.setState({
                   menuIsOpen: isOpen,
+                  expandedTopicId: null,
+                  expandedSubtopicId: null,
                 });
               }}
               title="Meny"

@@ -3,10 +3,26 @@
   align-items: flex-start;
   padding-bottom: $spacing--large;
 
-  h2 {
-    margin-top: 0;
+  h1 {
+    margin: 0;
     @include font-size(18px, 23px);
-    margin-bottom: $spacing;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing--small;
+
+    @include mq(desktop) {
+      margin-bottom: $spacing;
+    }
+
+    .c-learning-path-badge,
+    .c-content-type-badge {
+      @include mq(desktop) {
+        display: none;
+      }
+    }
   }
 
   ul {
@@ -31,11 +47,19 @@
   &__icon-wrapper {
     margin-right: $spacing--small;
     text-align: right;
+    display: none;
+
+    @include mq(tablet) {
+      display: block;
+    }
   }
 
   &__show-all {
     font-weight: 600;
-    margin-top: $spacing;
+
+    @include mq(tablet) {
+      margin-top: $spacing;
+    }
   }
 
   &__total-count {

@@ -8,6 +8,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Back } from 'ndla-icons/common';
+
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
@@ -20,6 +22,7 @@ const SubtopicLink = ({
   expandedSubtopicId,
 }) => {
   const active = subtopic.id === expandedSubtopicId;
+
   return (
     <li {...classes('subtopic-item', active && 'active')} key={subtopic.id}>
       <SafeLink
@@ -71,7 +74,6 @@ class SubtopicLinkList extends Component {
 
   render() {
     const {
-      goToTitle,
       className,
       classes,
       closeMenu,
@@ -79,6 +81,8 @@ class SubtopicLinkList extends Component {
       toTopic,
       expandedSubtopicId,
       onSubtopicExpand,
+      onGoBack,
+      messages,
     } = this.props;
 
     return (
@@ -87,13 +91,16 @@ class SubtopicLinkList extends Component {
         ref={ref => {
           this.containerRef = ref;
         }}>
+        <button {...classes('back-button')} onClick={onGoBack}>
+          <Back /> <span>{messages.backButton}</span>
+        </button>
         <SafeLink
           {...classes('link', ['big'])}
           onClick={closeMenu}
           to={toTopic(topic.id)}>
-          <span {...classes('link-label')}>{goToTitle}: </span>
+          <span {...classes('link-label')}>{messages.goToLabel}: </span>
           <span {...classes('link-target')}>
-            {topic.name} {'›'}
+            {topic.name} <span {...classes('arrow')}>›</span>
           </span>
         </SafeLink>
         <ul {...classes('list')}>
@@ -117,13 +124,17 @@ class SubtopicLinkList extends Component {
 
 SubtopicLinkList.propTypes = {
   expandedSubtopicId: PropTypes.string,
-  onSubtopicExpand: PropTypes.func.isRequired,
-  goToTitle: PropTypes.string.isRequired,
+  onSubtopicExpand: PropTypes.func,
   classes: PropTypes.func.isRequired,
   className: PropTypes.string,
   closeMenu: PropTypes.func.isRequired,
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func.isRequired,
+  messages: PropTypes.shape({
+    goToLabel: PropTypes.string.isRequired,
+    backButton: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default SubtopicLinkList;

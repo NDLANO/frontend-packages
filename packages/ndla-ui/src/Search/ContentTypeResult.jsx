@@ -11,15 +11,19 @@ const classes = BEMHelper({
 });
 
 const ContentTypeResult = ({ contentTypeResult, messages }) => (
-  <div {...classes()}>
+  <section {...classes()}>
     <div {...classes('icon-wrapper')}>{contentTypeResult.icon}</div>
     <div>
-      <h2>
-        {contentTypeResult.title}{' '}
-        <span {...classes('total-count')}>
-          ({contentTypeResult.totalCount})
-        </span>
-      </h2>
+      <header>
+        <h1>
+          {contentTypeResult.title}{' '}
+          <span {...classes('total-count')}>
+            ({contentTypeResult.totalCount})
+          </span>
+        </h1>
+        {contentTypeResult.icon}
+      </header>
+
       <ul>
         {contentTypeResult.items.map(item => (
           <li key={item.url}>
@@ -35,7 +39,7 @@ const ContentTypeResult = ({ contentTypeResult, messages }) => (
         )}
       </ul>
     </div>
-  </div>
+  </section>
 );
 
 ContentTypeResult.propTypes = {

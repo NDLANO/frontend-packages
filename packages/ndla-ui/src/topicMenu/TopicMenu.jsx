@@ -9,9 +9,10 @@
 // Can be removed when updating to jsx-a11y 6.x
 /* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 1 */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
 
 import { Home } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
@@ -26,14 +27,6 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const handleBlur = target => {
-  if (target.nodeName === 'SPAN') {
-    target.parentNode.blur();
-  } else {
-    target.blur();
-  }
-};
-
 export default class TopicMenu extends Component {
   constructor(props) {
     super(props);
@@ -41,15 +34,43 @@ export default class TopicMenu extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleBtnKeyPress = this.handleBtnKeyPress.bind(this);
     this.handleSubtopicExpand = this.handleSubtopicExpand.bind(this);
+    this.handleOnGoBack = this.handleOnGoBack.bind(this);
+
+    this.state = {
+      isNarrowScreen: false,
+    };
+  }
+
+  componentDidMount() {
+    const currentBreakpoint = getCurrentBreakpoint();
+
+    const isNarrowScreen =
+      currentBreakpoint === breakpoints.mobile ||
+      currentBreakpoint === breakpoints.tablet;
+
+    /* eslint react/no-did-mount-set-state: 0 */
+    if (isNarrowScreen) {
+      this.setState({
+        isNarrowScreen,
+      });
+    }
+    /* eslint react/no-did-mount-set-state: 1 */
   }
 
   handleClick(event, topicId) {
-    this.props.onNavigate(topicId, undefined);
-    handleBlur(event.target);
+    this.props.onNavigate(topicId, null);
   }
 
   handleSubtopicExpand(subtopicId) {
     this.props.onNavigate(this.props.expandedTopicId, subtopicId);
+  }
+
+  handleOnGoBack() {
+    if (this.props.expandedSubtopicId) {
+      this.handleSubtopicExpand(null);
+    } else {
+      this.props.onNavigate(null, null);
+    }
   }
 
   handleBtnKeyPress(event, topicId) {
@@ -57,7 +78,6 @@ export default class TopicMenu extends Component {
       // space or enter
       event.preventDefault();
       this.props.onNavigate(topicId, undefined);
-      handleBlur(event.target);
     }
   }
 
@@ -80,6 +100,16 @@ export default class TopicMenu extends Component {
         topic => topic.id === expandedSubtopicId,
       );
     }
+
+    const subTopicModifiers = ['sub-topic'];
+
+    if (!expandedSubtopic) {
+      subTopicModifiers.push('no-border');
+    }
+
+    const disableMain = this.state.isNarrowScreen && expandedTopic;
+    const disableSubTopic = disableMain && expandedSubtopic;
+
     return (
       <nav {...classes('dropdown', null, 'o-wrapper u-1/1')}>
         <div {...classes('masthead')}>
@@ -92,80 +122,99 @@ export default class TopicMenu extends Component {
           />
         </div>
         <div {...classes('content')}>
-          <div {...classes('back')}>
-            <SafeLink {...classes('back-link')} to="/">
-              <Home {...classes('home-icon', '', 'c-icon--20')} />
-              {messages.subjectOverview}
-            </SafeLink>
-          </div>
-          <div {...classes('subject')}>
-            <h1>
-              <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
-            </h1>
-            {this.props.filterOptions &&
-              this.props.filterOptions.length > 0 && (
-                <FilterList
-                  options={this.props.filterOptions}
-                  values={this.props.filterValues}
-                />
-              )}
-          </div>
+          {!disableMain && (
+            <Fragment>
+              <div {...classes('back')}>
+                <SafeLink {...classes('back-link')} to="/">
+                  <Home {...classes('home-icon', '', 'c-icon--20')} />
+                  {messages.subjectOverview}
+                </SafeLink>
+              </div>
+              <div {...classes('subject')}>
+                <h1>
+                  <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
+                </h1>
+                {this.props.filterOptions &&
+                  this.props.filterOptions.length > 0 && (
+                    <FilterList
+                      options={this.props.filterOptions}
+                      values={this.props.filterValues}
+                    />
+                  )}
+              </div>
+            </Fragment>
+          )}
+
           <div {...classes('subject-navigation')}>
             <div {...classes('subject-structure')}>
-              <div {...classes('left')}>
-                <SafeLink
-                  to={toSubject()}
-                  className={classes('link', 'big').className}>
-                  <span {...classes('link-label')}>{messages.goTo}:</span>
-                  <span {...classes('link-target')}>
-                    {messages.subjectPage} ›
-                  </span>
-                </SafeLink>
-                <ul {...classes('list')}>
-                  {topics.map(topic => {
-                    const active = topic.id === expandedTopicId;
-                    const tabIndex = active ? null : 0;
+              {!disableMain && (
+                <Fragment>
+                  <div {...classes('section', 'main')}>
+                    <SafeLink
+                      to={toSubject()}
+                      className={classes('link', 'big').className}>
+                      <span {...classes('link-label')}>{messages.goTo}:</span>
+                      <span {...classes('link-target')}>
+                        {messages.subjectPage} ›
+                      </span>
+                    </SafeLink>
+                    <ul {...classes('list')}>
+                      {topics.map(topic => {
+                        const active = topic.id === expandedTopicId;
 
-                    return (
-                      <li
-                        {...classes('topic-item', active && 'active')}
-                        key={topic.id}>
-                        <button
-                          {...classes('link')}
-                          tabIndex={tabIndex}
-                          onClick={event => this.handleClick(event, topic.id)}
-                          onKeyPress={event =>
-                            this.handleBtnKeyPress(event, topic.id)
-                          }>
-                          {topic.name}
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              {expandedTopic && (
-                <SubtopicLinkList
-                  classes={classes}
-                  className={
-                    classes('left', !expandedSubtopic && 'no-border').className
-                  }
-                  closeMenu={closeMenu}
-                  topic={expandedTopic}
-                  goToTitle={messages.goTo}
-                  toTopic={toTopic}
-                  expandedSubtopicId={expandedSubtopicId}
-                  onSubtopicExpand={this.handleSubtopicExpand}
-                />
+                        return (
+                          <li
+                            {...classes('topic-item', active && 'active')}
+                            key={topic.id}>
+                            <button
+                              {...classes('link')}
+                              onClick={event =>
+                                this.handleClick(event, topic.id)
+                              }
+                              onKeyPress={event =>
+                                this.handleBtnKeyPress(event, topic.id)
+                              }>
+                              {topic.name}
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </Fragment>
               )}
+              {expandedTopic &&
+                !disableSubTopic && (
+                  <SubtopicLinkList
+                    classes={classes}
+                    className={classes('section', subTopicModifiers).className}
+                    closeMenu={closeMenu}
+                    topic={expandedTopic}
+                    messages={{
+                      backButton: messages.back,
+                      goToLabel: messages.goTo,
+                    }}
+                    goToTitle={messages.goTo}
+                    toTopic={toTopic}
+                    expandedSubtopicId={expandedSubtopicId}
+                    onSubtopicExpand={this.handleSubtopicExpand}
+                    onGoBack={this.handleOnGoBack}
+                  />
+                )}
               {expandedSubtopic && (
                 <SubtopicLinkList
                   classes={classes}
-                  className={classes('left', 'no-border').className}
+                  className={
+                    classes('section', ['sub-topic', 'no-border']).className
+                  }
                   closeMenu={closeMenu}
                   topic={expandedSubtopic}
-                  goToTitle={messages.goTo}
+                  messages={{
+                    backButton: messages.back,
+                    goToLabel: messages.goTo,
+                  }}
                   toTopic={toTopic}
+                  onGoBack={this.handleOnGoBack}
                 />
               )}
             </div>
@@ -206,6 +255,7 @@ TopicMenu.propTypes = {
     search: PropTypes.string.isRequired,
     subjectPage: PropTypes.string.isRequired,
     learningResourcesHeading: PropTypes.string.isRequired,
+    back: PropTypes.string.isRequired,
   }).isRequired,
   filterOptions: PropTypes.arrayOf(
     PropTypes.shape({

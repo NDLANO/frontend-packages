@@ -1,0 +1,30 @@
+$mq-breakpoints: (
+  mobile: 320px,
+  tablet: 601px,
+  desktop: 981px,
+  wide: 1301px
+);
+
+@import '../../../node_modules/sass-mq/mq';
+
+// expose breakpoints to js
+
+body:before {
+  display: none;
+
+  @include mq(mobile) {
+    content: 'mobile';
+  }
+
+  @include mq(tablet) {
+    content: 'tablet';
+  }
+
+  @include mq(desktop) {
+    content: 'desktop';
+  }
+
+  @include mq(wide) {
+    content: 'wide';
+  }
+}

@@ -218,21 +218,23 @@ export default class TopicMenu extends Component {
                 />
               )}
             </div>
-            {expandedTopic &&
-              this.props.contentTypeResults &&
+            {this.props.contentTypeResults &&
               this.props.contentTypeResults.length > 0 && (
                 <aside {...classes('content-type-results')}>
                   <h1>
                     <span>{messages.learningResourcesHeading}</span>{' '}
-                    <SafeLink to={toTopic(expandedTopic.id)}>
-                      {expandedTopic.name}
-                    </SafeLink>
+                    {expandedTopic && (
+                      <SafeLink to={toTopic(expandedTopic.id)}>
+                        {expandedTopic.name}
+                      </SafeLink>
+                    )}
                   </h1>
                   {this.props.contentTypeResults.map(result => (
                     <ContentTypeResult
                       key={result.title}
                       contentTypeResult={result}
                       messages={{ allResultLabel: 'Vis mer' }}
+                      iconOnRight
                     />
                   ))}
                 </aside>

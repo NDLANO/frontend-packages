@@ -9,8 +9,6 @@
 
 /* 1. */
 
-$column-width: 40%;
-
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -140,7 +138,7 @@ $column-width: 40%;
   position: relative;
 
   @include mq(desktop) {
-    flex-shrink: 1;
+    width: 75%;
   }
 }
 
@@ -158,14 +156,16 @@ $column-width: 40%;
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing 0 $spacing--large;
+  padding: $spacing--small $spacing $spacing--large $spacing--large;
 
   @include mq(desktop) {
-    max-width: $column-width;
     margin-top: $spacing--medium;
     padding-right: $spacing;
-    padding-left: $spacing--large;
+    padding-left: $spacing--medium;
+    padding-bottom: 0;
     border-right: 1px solid $brand-color--light;
+    width: 33.33333%;
+    flex-grow: 0;
   }
 
   &--no-border {
@@ -184,7 +184,6 @@ $column-width: 40%;
     @include mq($until: desktop) {
       background: $brand-color--light;
       padding-top: $spacing--large + $spacing;
-      padding-bottom: $spacing--large;
 
       .c-topic-menu__link--big {
         margin-bottom: 0;
@@ -200,14 +199,14 @@ $column-width: 40%;
 .c-topic-menu__content-type-results {
   background: $white;
   flex-grow: 1;
-  padding: 0 $spacing--large;
+  padding: 0 $spacing--medium;
   flex-shrink: 0;
 
   @include mq(desktop) {
+    width: 25%;
     margin-top: $spacing--medium;
     max-width: 800px;
     background: transparent;
-    flex-shrink: 1;
     border-left: 1px solid $brand-color--light;
   }
 
@@ -232,12 +231,6 @@ $column-width: 40%;
       }
     }
   }
-
-  .c-content-type-result {
-    &__icon-wrapper {
-      width: 149px;
-    }
-  }
 }
 
 /* 4. */
@@ -255,6 +248,7 @@ $column-width: 40%;
     padding-bottom: $spacing--small;
     margin-bottom: $spacing--small;
     border-bottom: 1px solid rgba($brand-color, 0.3);
+    padding-left: $spacing--medium;
   }
 
   a {
@@ -270,8 +264,7 @@ $column-width: 40%;
 
     @include mq(desktop) {
       margin: 0;
-      min-width: $column-width;
-      padding-left: $spacing--large;
+      min-width: 25%;
       padding-right: $spacing--large;
       @include inuit-font-size(26px);
     }
@@ -357,7 +350,7 @@ $column-width: 40%;
   color: $brand-color;
 
   @include mq(desktop) {
-    margin-left: $spacing--large;
+    margin-left: $spacing--medium;
     padding: $spacing--small 0;
   }
 }

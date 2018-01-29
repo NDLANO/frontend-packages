@@ -10,9 +10,11 @@ const classes = BEMHelper({
   name: 'content-type-result',
 });
 
-const ContentTypeResult = ({ contentTypeResult, messages }) => (
+const ContentTypeResult = ({ contentTypeResult, messages, iconOnRight }) => (
   <section {...classes()}>
-    <div {...classes('icon-wrapper')}>{contentTypeResult.icon}</div>
+    {!iconOnRight && (
+      <div {...classes('icon-wrapper')}>{contentTypeResult.icon}</div>
+    )}
     <div>
       <header>
         <h1>
@@ -21,7 +23,7 @@ const ContentTypeResult = ({ contentTypeResult, messages }) => (
             ({contentTypeResult.totalCount})
           </span>
         </h1>
-        {contentTypeResult.icon}
+        {iconOnRight && contentTypeResult.icon}
       </header>
 
       <ul>
@@ -43,6 +45,7 @@ const ContentTypeResult = ({ contentTypeResult, messages }) => (
 );
 
 ContentTypeResult.propTypes = {
+  iconOnRight: PropTypes.bool,
   contentTypeResult: ContentTypeResultShape.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,

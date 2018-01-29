@@ -47,7 +47,7 @@ SubtopicLink.propTypes = {
   closeMenu: PropTypes.func,
   subtopic: TopicShape.isRequired,
   to: PropTypes.string.isRequired,
-  onSubtopicExpand: PropTypes.func.isRequired,
+  onSubtopicExpand: PropTypes.func,
   expandedSubtopicId: PropTypes.string,
   toTopic: PropTypes.func,
 };

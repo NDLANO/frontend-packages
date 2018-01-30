@@ -12,10 +12,6 @@
     display: flex;
     align-items: center;
     margin-bottom: $spacing--small;
-
-    @include mq(desktop) {
-      margin-bottom: $spacing;
-    }
   }
 
   ul {

@@ -8,7 +8,7 @@
 
 $brand-color: #20588f;
 $brand-color--secondary: #507aa4;
-$brand-color--tertiary: #b7cde2;
+$brand-color--tertiary: #a5bcd3;
 $brand-color--light: #ceddea;
 $brand-color--lighter: #deebf6;
 $brand-color--dark: #184673;
@@ -73,7 +73,7 @@ $table-bg: #f9fafb;
 /** Link colors **/
 
 $link: inset 0 -1px $brand-color, inset 0 -1px $brand-color;
-$link--hover: inset 0 -3px rgba($brand-color, 0.2), inset 0 -1px rgba($brand-color, 0.2);
+$link--hover: none;
 
 /** Background colors **/
 

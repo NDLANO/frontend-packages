@@ -7,16 +7,6 @@
   align-items: center;
   justify-content: center;
 
-  &--large {
-    width: 50px;
-    height: 50px;
-
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-  }
-
   &--subject-material {
     border-color: $subject-material-dark;
 
@@ -97,6 +87,42 @@
       background: $source-material-light;
     }
   }
+
+  &--large {
+    width: 50px;
+    height: 50px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &--x-small {
+    border: 0;
+
+    width: 20px;
+    height: 20px;
+
+    @include mq(tablet) {
+      width: 24px;
+      height: 24px;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+
+      @include mq(tablet) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    &.c-content-type-badge--background {
+      background: none;
+    }
+  }
 }
 
 .c-learning-path-badge {
@@ -108,5 +134,14 @@
   }
   &__plus {
     margin: 0 $spacing--small/4;
+    color: $brand-color;
+  }
+
+  &--x-small {
+    @include font-size(16px, 18px);
+
+    @include mq(tablet) {
+      @include font-size(18px, 18px);
+    }
   }
 }

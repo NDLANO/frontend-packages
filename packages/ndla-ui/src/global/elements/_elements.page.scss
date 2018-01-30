@@ -27,6 +27,10 @@ body {
   height: 100%;
 }
 
+input, textarea, select, button {
+  font-family: $font;
+}
+
 a:not([class]) {
   color: $brand-color;
 

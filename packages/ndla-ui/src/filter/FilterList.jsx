@@ -6,10 +6,10 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, createElement } from 'react';
+import React, { Component, createElement, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'ndla-util';
 import BEMHelper from 'react-bem-helper';
+import { ChevronDown, ChevronUp } from 'ndla-icons/common';
 
 const filterClasses = new BEMHelper({
   name: 'filter',
@@ -19,71 +19,136 @@ const filterClasses = new BEMHelper({
 class FilterList extends Component {
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange() {
-    return this.props.onClick;
+    this.state = {
+      visibleCount: props.defaultVisibleCount,
+    };
   }
 
   render() {
-    const { modifiers, label, filterContent } = this.props;
+    const {
+      modifiers,
+      label,
+      labelNotVisible,
+      options,
+      values,
+      onChange,
+      defaultVisibleCount,
+      showLabel,
+      hideLabel,
+    } = this.props;
+
+    const showAll = defaultVisibleCount === null;
+    const labelModifiers = [];
+
+    if (labelNotVisible) {
+      labelModifiers.push('hidden');
+    }
 
     return (
       <div {...filterClasses('list', modifiers)}>
-        <span {...filterClasses('label')}>{label}</span>
-        {filterContent
-          ? filterContent.map(filterItem => (
-              <div {...filterClasses('item')} key={uuid()}>
-                <input
-                  {...filterClasses('input')}
-                  type="checkbox"
-                  name="gruppe"
-                  id={filterItem.title ? filterItem.title : null}
-                  value={filterItem.title ? filterItem.title : null}
-                  defaultChecked={filterItem.active ? 'true' : null}
-                  key={filterItem.title}
-                  onChange={this.props.onClick}
-                />
-                <label htmlFor={filterItem.title ? filterItem.title : null}>
-                  <span {...filterClasses('item-checkbox')} />
-                  {filterItem.title ? filterItem.title : null}
-                  {/* ? createElement(filterItem.icon, { className: 'c-icon--20 u-margin-left-tiny' }) */}
-                  {filterItem.icon
-                    ? createElement(filterItem.icon, {
-                        className: 'c-icon--20 u-margin-left-tiny',
-                      })
-                    : null}
-                </label>
-              </div>
-            ))
-          : null}
+        <span {...filterClasses('label', labelModifiers)}>{label}</span>
+        {options.map((option, index) => {
+          const itemModifiers = [];
+
+          const checked = values.some(value => value === option.value);
+
+          if (!showAll && !checked && index + 1 > this.state.visibleCount) {
+            itemModifiers.push('hidden');
+          }
+
+          if (option.noResults) {
+            itemModifiers.push('no-results');
+          }
+
+          return (
+            <div {...filterClasses('item', itemModifiers)} key={option.value}>
+              <input
+                {...filterClasses('input')}
+                type="checkbox"
+                id={option.value}
+                value={option.value}
+                checked={checked}
+                onChange={event => {
+                  let newValues = null;
+                  if (event.currentTarget.checked) {
+                    newValues = [...values, option.value];
+                  } else {
+                    newValues = values.filter(value => value !== option.value);
+                  }
+                  onChange(newValues);
+                }}
+              />
+              <label htmlFor={option.value}>
+                <span {...filterClasses('item-checkbox')} />
+                {option.title}
+                {option.icon
+                  ? createElement(option.icon, {
+                      className: 'c-icon--20 u-margin-left-small',
+                    })
+                  : null}
+              </label>
+            </div>
+          );
+        })}
+        {!showAll && (
+          <button
+            {...filterClasses('expand')}
+            onClick={() => {
+              this.setState(prevState => {
+                if (prevState.visibleCount === defaultVisibleCount) {
+                  return {
+                    visibleCount: options.length,
+                  };
+                }
+
+                return {
+                  visibleCount: defaultVisibleCount,
+                };
+              });
+            }}>
+            {this.state.visibleCount === defaultVisibleCount ? (
+              <Fragment>
+                <span>{showLabel}</span> <ChevronDown />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <span>{hideLabel}</span> <ChevronUp />
+              </Fragment>
+            )}
+          </button>
+        )}
       </div>
     );
   }
 }
 
-// const FilterList = ({ filterContent, label, modifiers }) => (
-//
-// );
+const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 FilterList.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
+  labelNotVisible: PropTypes.bool,
   modifiers: PropTypes.string,
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  filterContent: PropTypes.arrayOf(
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      active: PropTypes.bool.isRequired,
+      value: valueShape.isRequired,
+      icon: PropTypes.func,
+      noResults: PropTypes.bool,
     }),
-  ),
+  ).isRequired,
+  values: PropTypes.arrayOf(valueShape),
+  defaultVisibleCount: PropTypes.number,
+  showLabel: PropTypes.string,
+  hideLabel: PropTypes.string,
 };
 
 FilterList.defaultProps = {
   label: 'FILTER:',
   modifiers: '',
+  values: [],
+  defaultVisibleCount: null,
 };
 
 export default FilterList;

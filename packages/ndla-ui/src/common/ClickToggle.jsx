@@ -8,7 +8,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { noScroll } from 'ndla-util';
 import elementType from 'react-prop-types/lib/elementType';
+import createFocusTrap from 'focus-trap';
+
 import Button from '../button/Button';
 
 export default class ClickToggle extends React.Component {
@@ -16,19 +19,61 @@ export default class ClickToggle extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: false,
+      isOpen: props.expanded,
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.close = this.close.bind(this);
+    this.containerRef = null;
+    this.focusTrap = null;
+  }
+
+  componentDidMount() {
+    this.focusTrap = createFocusTrap(this.containerRef, {
+      onActivate: () => {
+        this.setState({
+          isOpen: true,
+        });
+
+        if (!this.props.noScrollDisabled) {
+          noScroll(true);
+        }
+      },
+      onDeactivate: () => {
+        if (this.state.isOpen) {
+          this.setState({
+            isOpen: false,
+          });
+        }
+
+        if (!this.props.noScrollDisabled) {
+          noScroll(false);
+        }
+      },
+      clickOutsideDeactivates: true,
+    });
+
+    if (this.props.expanded) {
+      this.focusTrap.activate();
+    }
+  }
+
+  componentWillUnmount() {
+    this.focusTrap.deactivate();
   }
 
   handleClick() {
-    this.setState({ isOpen: !this.state.isOpen });
+    const isOpen = !this.state.isOpen;
+
+    if (isOpen) {
+      this.focusTrap.activate();
+    } else {
+      this.focusTrap.deactivate();
+    }
   }
 
   close() {
-    this.setState({ isOpen: false });
+    this.focusTrap.deactivate();
   }
 
   render() {
@@ -36,7 +81,9 @@ export default class ClickToggle extends React.Component {
       title,
       openTitle,
       buttonClassName,
+      noScrollDisabled,
       containerClass: Component,
+      expanded,
       ...rest
     } = this.props;
     const { isOpen } = this.state;
@@ -45,13 +92,11 @@ export default class ClickToggle extends React.Component {
       close: this.close,
     });
     return (
-      <Component {...rest}>
-        {isOpen ? (
-          <Button
-            className="u-overlay"
-            onClick={() => this.setState({ isOpen: false })}
-          />
-        ) : null}
+      <Component
+        {...rest}
+        ref={ref => {
+          this.containerRef = ref;
+        }}>
         {isOpen ? (
           <Button
             className={`active ${buttonClassName}`}
@@ -72,12 +117,15 @@ export default class ClickToggle extends React.Component {
 ClickToggle.propTypes = {
   containerClass: elementType,
   title: PropTypes.node.isRequired,
-  openTitle: PropTypes.node.isRequired,
+  openTitle: PropTypes.node,
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
+  expanded: PropTypes.bool,
+  noScrollDisabled: PropTypes.bool,
 };
 
 ClickToggle.defaultProps = {
   containerClass: 'div',
+  expanded: false,
 };

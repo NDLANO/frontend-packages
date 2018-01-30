@@ -37,8 +37,8 @@ MastheadItem.defaultProps = {
   left: false,
 };
 
-export const Masthead = ({ children, fixed }) => (
-  <div {...classes(null, { fixed })}>
+export const Masthead = ({ children, fixed, hideOnNarrowScreen }) => (
+  <div {...classes(null, { fixed, hideOnNarrowScreen })}>
     <div className="u-1/1">{children}</div>
   </div>
 );
@@ -46,6 +46,7 @@ export const Masthead = ({ children, fixed }) => (
 Masthead.propTypes = {
   children: PropTypes.node,
   fixed: PropTypes.bool,
+  hideOnNarrowScreen: PropTypes.bool,
 };
 
 export default Masthead;

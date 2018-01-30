@@ -138,10 +138,12 @@
 
   @include mq(desktop) {
     padding-bottom: $spacing--large;
+    min-height: 500px;
   }
 
   @include mq(wide) {
     width: 75%;
+    padding-bottom: 0;
   }
 }
 

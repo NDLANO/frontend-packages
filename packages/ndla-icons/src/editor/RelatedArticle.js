@@ -10,7 +10,7 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const RelatertArtikkel = props => (
+const RelatedArticle = props => (
   <Icon
     viewBox="0 0 48 56.9"
     data-license="Apache License 2.0"
@@ -22,4 +22,4 @@ const RelatertArtikkel = props => (
   </Icon>
 );
 
-export default RelatertArtikkel;
+export default RelatedArticle;

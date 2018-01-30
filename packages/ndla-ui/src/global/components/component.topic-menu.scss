@@ -72,7 +72,7 @@
     width: 32px;
     height: 32px;
     top: 12px;
-    left: 15px;
+    left: 7px;
   }
 }
 
@@ -161,11 +161,11 @@
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large $spacing--large;
+  padding: $spacing--small $spacing $spacing--large ($spacing--large + $spacing--small);
 
   @include mq(desktop) {
     margin-top: $spacing;
-    padding: 0 $spacing 0 $spacing--medium;
+    padding: 0 $spacing 0 ($spacing--medium - $spacing--small);
     border-right: 1px solid $brand-color--light;
     width: 33.33333%;
     flex-grow: 0;
@@ -202,7 +202,7 @@
 .c-topic-menu__content-type-results {
   background: $white;
   flex-grow: 1;
-  padding: 0 $spacing--medium;
+  padding: 0 $spacing--large 0 ($spacing--large + $spacing--small);
   flex-shrink: 0;
 
   @include mq(wide) {
@@ -211,6 +211,7 @@
     max-width: 800px;
     background: transparent;
     border-left: 1px solid $brand-color--light;
+    padding: 0 $spacing--medium;
   }
 
   h1 {
@@ -244,7 +245,7 @@
   flex-shrink: 0;
   margin-top: 0;
   margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 $spacing--large;
+  padding: 0 $spacing 0 ($spacing--large + $spacing);
 
   @include mq(desktop) {
     margin-bottom: $spacing--small;
@@ -296,7 +297,7 @@
   background: none;
   @include font-size(16px, 20px);
   position: absolute;
-  left: $spacing;
+  left: 40px;
   top: $spacing;
 
   @include mq(desktop) {
@@ -346,7 +347,7 @@
 .c-topic-menu__back {
   margin-top: $spacing--medium;
   margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 $spacing--large;
+  padding: 0 $spacing 0 ($spacing--large + $spacing);
 
   @include inuit-font-size(18px, 23px);
   display: block;
@@ -375,10 +376,7 @@
   cursor: pointer;
   height: 52px;
   line-height: 24px;
-
-  @include mq(desktop) {
-    padding: 0;
-  }
+  padding: 0 $spacing--small;
 
   transition: all 0.1s ease-in-out;
   animation-name: fadeInLeft;
@@ -388,8 +386,7 @@
   &:active,
   &:focus {
     background-color: $brand-color--tertiary;
-    padding-left: $spacing--small;
-    padding-right: $spacing--small;
+
     span {
       box-shadow: $link--hover;
     }
@@ -407,7 +404,6 @@
     &:active,
     &:focus {
       background-color: transparent;
-      padding-left: 0;
     }
 
     @include mq(desktop) {
@@ -418,7 +414,6 @@
 
   background: none;
   border: 0;
-  padding: 0;
   color: $brand-color;
 }
 
@@ -446,8 +441,6 @@
   &--active {
     & > .c-topic-menu__link {
       background-color: $brand-color--tertiary;
-      padding-left: $spacing--small;
-      padding-right: $spacing--small;
     }
   }
 }

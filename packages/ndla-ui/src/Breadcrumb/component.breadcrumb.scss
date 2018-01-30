@@ -32,25 +32,35 @@
   margin-bottom: 0;
   margin-left: 0;
   display: block;
+
   @include mq(tablet) {
     display: inline-block;
   }
+
   a {
     text-decoration: none;
+    color: $primary-color;
+    box-shadow: inset 0 -1px $primary-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $primary-color;
+      box-shadow: none;
+    }
   }
-  a:hover {
-    box-shadow: none;
-  }
+
   &:before {
     display: none;
   }
+
   @include mq(tablet) {
     &:after {
       padding-right: $spacing--small/2;
       padding-left: $spacing--small;
       content: '|';
       @include inuit-font-size(14px);
-      color: $brand-color;
+      color: $primary-color;
       opacity: 0.4;
     }
   }

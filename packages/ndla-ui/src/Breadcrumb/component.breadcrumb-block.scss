@@ -49,6 +49,10 @@
     color: $brand-color;
     opacity: 0.4;
   }
+
+  span {
+    color: $brand-color;
+  }
 }
 .c-breadcrumb-block__item:last-child {
   &:after {

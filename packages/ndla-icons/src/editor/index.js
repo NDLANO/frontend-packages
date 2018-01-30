@@ -39,6 +39,7 @@ export { default as Media } from './Media';
 export { default as Paragraph } from './Paragraph';
 export { default as Quote } from './Quote';
 export { default as SavedSearch } from './SavedSearch';
+export { default as RelatedArticle } from './RelatedArticle';
 export { default as Section } from './Section';
 export { default as Settings } from './Settings';
 export { default as SquareAudio } from './SquareAudio';

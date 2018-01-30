@@ -41,13 +41,7 @@ OpenSearchButton.propTypes = {
   onOpen: PropTypes.func.isRequired,
 };
 
-const ToggleSearchButton = ({
-  messages,
-  children,
-  searchPageUrl,
-  isOpen,
-  onToggle,
-}) => {
+const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
   const buttonContent = (
     <span className={classes('button-content')}>
       <span className={classes('button-text')}>{messages.buttonText}</span>
@@ -56,19 +50,14 @@ const ToggleSearchButton = ({
   );
 
   return (
-    <Fragment>
-      <SafeLink to={searchPageUrl} className={classes('button', 'narrow')}>
-        {buttonContent}
-      </SafeLink>
-      <ClickToggle
-        isOpen={isOpen}
-        onToggle={onToggle}
-        title={buttonContent}
-        className={classes()}
-        buttonClassName={classes('button', 'wide')}>
-        {children}
-      </ClickToggle>
-    </Fragment>
+    <ClickToggle
+      isOpen={isOpen}
+      onToggle={onToggle}
+      title={buttonContent}
+      className={classes()}
+      buttonClassName={classes('button', 'wide')}>
+      {children}
+    </ClickToggle>
   );
 };
 
@@ -77,7 +66,6 @@ ToggleSearchButton.propTypes = {
     buttonText: PropTypes.string.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
-  searchPageUrl: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
 };

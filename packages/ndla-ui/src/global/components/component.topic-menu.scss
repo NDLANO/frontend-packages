@@ -125,7 +125,7 @@
   justify-content: space-between;
   flex-flow: column;
 
-  @include mq(desktop) {
+  @include mq(wide) {
     flex-flow: row;
   }
 }
@@ -137,6 +137,10 @@
   position: relative;
 
   @include mq(desktop) {
+    padding-bottom: $spacing--large;
+  }
+
+  @include mq(wide) {
     width: 75%;
   }
 }
@@ -199,7 +203,7 @@
   padding: 0 $spacing--medium;
   flex-shrink: 0;
 
-  @include mq(desktop) {
+  @include mq(wide) {
     width: 25%;
     margin-top: $spacing;
     max-width: 800px;
@@ -212,7 +216,7 @@
     margin-bottom: $spacing--medium;
     margin-top: $spacing--large;
 
-    @include mq(desktop) {
+    @include mq(wide) {
       margin-top: 0;
       height: 30px;
       @include font-size(16px, 30px);

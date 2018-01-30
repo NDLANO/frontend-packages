@@ -66,7 +66,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('En side med innhold', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -109,7 +109,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('Hent artikkel med id', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -134,7 +134,7 @@ storiesOf('Sidevisninger', module)
   ));
 storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -158,7 +158,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Oppgaver og aktiviteter', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <TasksAndActivitiesHero>
@@ -182,7 +182,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Vurderingsressurs', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <AssessmentResourcesHero>
@@ -206,7 +206,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Ekstern læringsressurs', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <ExternalLearningResourcesHero>
@@ -230,7 +230,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Kildemateriale', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SourceMaterialHero>
@@ -254,7 +254,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Tilleggsstoff', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -321,7 +321,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('2. Fag', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -344,10 +344,11 @@ storiesOf('Emnesider', module)
             <LayoutItem layout="center">
               <h1 className="c-article__title">Mediefag</h1>
               <FilterList
-                filterContent={[
-                  { title: 'VG1', active: true },
-                  { title: 'VG2', active: true },
+                options={[
+                  { title: 'VG1', value: 'VG1' },
+                  { title: 'VG2', value: 'VG2' },
                 ]}
+                values={['VG1']}
               />
             </LayoutItem>
             <ResourcesSubTopics />
@@ -358,7 +359,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('3. Hovedemne', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -388,7 +389,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('4. Underemne', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>

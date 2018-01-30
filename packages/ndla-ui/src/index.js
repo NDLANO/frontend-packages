@@ -26,6 +26,16 @@ export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
 export {
+  ToggleSearchButton,
+  SearchOverlay,
+  SearchField,
+  SearchPage,
+  SearchResult,
+  SearchResultList,
+  SearchFilter,
+  SearchPopoverFilter,
+} from './Search';
+export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,

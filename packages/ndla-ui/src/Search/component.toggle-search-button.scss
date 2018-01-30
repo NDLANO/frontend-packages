@@ -1,0 +1,46 @@
+.c-toggle-search-button {
+  &__button {
+    background: $brand-grey--lighter;
+    border-radius: 4px;
+    border: 0;
+    padding: $spacing--small $spacing;
+    color: $brand-color;
+
+    @include font-size(18px, 32px);
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: 0;
+    }
+
+    &--narrow {
+      box-shadow: none;
+      @include mq(tablet) {
+        display: none;
+      }
+    }
+
+    &--wide {
+      display: none;
+
+      @include mq(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &__button-content {
+    display: flex;
+    align-items: center;
+
+    .c-icon {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &__button-text {
+    margin-right: $spacing;
+  }
+}

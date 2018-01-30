@@ -12,6 +12,14 @@
   position: fixed;
 }
 
+.c-masthead--hideOnNarrowScreen {
+  display: none;
+
+  @include mq(tablet) {
+    display: block;
+  }
+}
+
 .c-masthead > div {
   justify-content: center;
   text-align: center;
@@ -33,7 +41,14 @@
 }
 .c-masthead__right {
   flex-grow: 1;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .c-toggle-search-button {
+    margin-right: $spacing--medium;
+  }
+
   @include mq(tablet) {
     padding: $spacing--small 0;
     padding: 0;

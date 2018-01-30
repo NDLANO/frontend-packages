@@ -1,6 +1,7 @@
 .c-related-articles {
   @include mq(tablet) {
     display: flex;
+    flex-wrap: wrap;
   }
 }
 .c-related-articles__item {

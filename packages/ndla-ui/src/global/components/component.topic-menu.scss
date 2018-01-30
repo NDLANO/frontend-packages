@@ -7,9 +7,6 @@
 ** 5. Masthead when menu is active
 **/
 
-
-
-
 /* 1. */
 .c-topic-menu-toggle-button {
   position: relative;
@@ -39,7 +36,8 @@
       @include svg_icon('menu', $white);
     }
   }
-  &:active, &:focus {
+  &:active,
+  &:focus {
     border: 3px solid $brand-color--lighter;
     background: $white;
     color: $brand-color;
@@ -48,7 +46,6 @@
     }
   }
 }
-
 
 /* 2. */
 .c-topic-menu-container {
@@ -61,7 +58,8 @@
   border: 3px solid transparent;
   box-shadow: none;
   color: $brand-color;
-  &:hover {
+  &:hover,
+  &:focus {
     color: $brand-color;
     box-shadow: $link--hover;
     &:before {
@@ -76,7 +74,6 @@
     left: 15px;
   }
 }
-
 
 /* 3. */
 .c-topic-menu__dropdown {
@@ -95,9 +92,9 @@
   box-shadow: 0 10px 20px rgba($black, 0.4);
   text-transform: none;
   animation-name: fadeIn;
-  animation-duration: .4s;
+  animation-duration: 0.4s;
   overflow-y: auto;
-  @include mq(tablet) {
+  @include mq(desktop) {
     display: flex;
   }
 }
@@ -112,13 +109,11 @@
   flex: 1;
   z-index: 30;
   animation-name: fadeInLeft;
-  animation-duration: .2s;
+  animation-duration: 0.2s;
   margin-top: $spacing--small;
-  @include mq(tablet) {
-    margin-top: 0;
-    padding-top: 105px;
-  }
+
   @include mq(desktop) {
+    margin-top: 0;
     flex: 1;
     max-width: 30%;
     padding-top: 105px;
@@ -128,30 +123,31 @@
   z-index: 30;
   background-color: $brand-color--tertiary;
   animation-name: fadeInTop;
-  animation-duration: .2s;
+  animation-duration: 0.2s;
   padding: $spacing $spacing--small $spacing--small;
-  @include mq(tablet) {
+  @include mq(desktop) {
+    position: absolute;
+    top: 85px;
+    left: 30%;
+    bottom: 0;
+    right: 0;
     overflow-y: auto;
     padding-top: 120px;
     padding-left: $spacing--large;
     padding-right: $spacing--large;
   }
-  @include mq(desktop) {
-    flex: 2;
-  }
 }
-
 
 /* 4. */
 .c-topic-menu__subject {
   @include inuit-font-size(20px);
   font-weight: 600;
-  border-bottom: 1px solid rgba($brand-color, .3);
+  border-bottom: 1px solid rgba($brand-color, 0.3);
   margin-left: $spacing--small;
   padding-bottom: $spacing--small;
   display: flex;
   justify-content: flex-start;
-  @include mq(tablet) {
+  @include mq(desktop) {
     padding-bottom: $spacing;
     margin-bottom: $spacing--small;
     margin-right: $spacing--large;
@@ -164,24 +160,24 @@
 }
 
 .c-topic-menu__home {
-  border-right: 1px solid rgba($brand-color, .3);
+  border-right: 1px solid rgba($brand-color, 0.3);
   padding-right: $spacing--small/1.5;
   margin-right: $spacing--small/1.5;
   width: 30px;
   height: 30px;
   color: $brand-color;
-  transition: width .2s ease-out;
+  transition: width 0.2s ease-out;
   &:after {
     display: inline-block;
-    transition: width .2s ease-out;
+    transition: width 0.2s ease-out;
   }
 
   &:hover {
     width: auto;
     &:after {
-      transition: all .1s ease-in-out;
+      transition: all 0.1s ease-in-out;
       animation-name: fadeInLeft;
-      animation-duration: .5s;
+      animation-duration: 0.5s;
       content: 'Hjem';
       display: inline-block;
       color: $brand-color;
@@ -198,7 +194,7 @@
 
 .c-topic-menu__back {
   margin-left: $spacing--small;
-  @include mq(tablet) {
+  @include mq(desktop) {
     margin-left: $spacing--large;
     padding: $spacing--small 0;
   }
@@ -215,23 +211,23 @@
   }
 }
 
-
 .c-topic-menu__topic-item {
   cursor: pointer;
   padding: $spacing--small;
   margin-bottom: 0;
-  @include mq(tablet) {
+  @include mq(desktop) {
     margin-left: $spacing--large;
     padding: $spacing--small 0;
   }
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   animation-name: fadeInLeft;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   span {
     box-shadow: $link;
   }
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     outline: none;
     background-color: $brand-color--tertiary;
     padding-left: $spacing--small;
@@ -266,7 +262,7 @@
 .c-topic-menu__subtopic-item {
   padding: $spacing--small 0 $spacing--small $spacing;
   margin-bottom: 0;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 
   a:hover {
     text-decoration: none;
@@ -280,7 +276,7 @@
 }
 
 .c-topic-menu__link--big {
-  border-bottom: 1px solid rgba($brand-color--secondary, .5);
+  border-bottom: 1px solid rgba($brand-color--secondary, 0.5);
   padding-bottom: $spacing;
   display: block;
   text-decoration: none;
@@ -289,9 +285,6 @@
     text-decoration: none;
   }
 }
-
-
-
 
 /* 5. */
 .c-topic-menu__masthead {
@@ -305,17 +298,19 @@
   align-content: space-between;
   flex-direction: column;
   padding: 80px $spacing--small $spacing--small $spacing--small;
-  @include mq(tablet) {
+
+  @include mq(desktop) {
     flex-direction: row;
     position: absolute;
     left: 30%;
     height: 85px;
     padding: 0;
+    width: 70%;
   }
 }
 .c-topic-menu__search {
-  display:none;
-  @include mq(tablet) {
+  display: none;
+  @include mq(desktop) {
     display: inline-block;
   }
   width: 200px;
@@ -337,7 +332,7 @@
   }
 }
 .c-topic-menu__right-filler {
-  @include mq(tablet) {
+  @include mq(desktop) {
     width: 200px;
     height: 100px;
     align-self: flex-end;

@@ -17,8 +17,11 @@
 .c-breadcrumb-block {
   opacity: 0;
   display: none;
-  @include mq(desktop) {
-    display: block;
+
+  &.u-fade-in {
+    @include mq(desktop) {
+      display: block;
+    }
   }
 }
 .c-breadcrumb-block__list {

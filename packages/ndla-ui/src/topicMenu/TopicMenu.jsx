@@ -13,6 +13,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
+import debounce from 'lodash/debounce';
 
 import { Home } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
@@ -35,6 +36,11 @@ export default class TopicMenu extends Component {
     this.handleBtnKeyPress = this.handleBtnKeyPress.bind(this);
     this.handleSubtopicExpand = this.handleSubtopicExpand.bind(this);
     this.handleOnGoBack = this.handleOnGoBack.bind(this);
+    this.setScreenSize = this.setScreenSize.bind(this);
+    this.setScreenSizeDebounced = debounce(
+      () => this.setScreenSize(false),
+      100,
+    );
 
     this.state = {
       isNarrowScreen: false,
@@ -42,14 +48,22 @@ export default class TopicMenu extends Component {
   }
 
   componentDidMount() {
-    const currentBreakpoint = getCurrentBreakpoint();
+    this.setScreenSize(true);
+    window.addEventListener('resize', this.setScreenSizeDebounced);
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setScreenSizeDebounced);
+  }
+
+  setScreenSize(initial = false) {
+    const currentBreakpoint = getCurrentBreakpoint();
     const isNarrowScreen =
       currentBreakpoint === breakpoints.mobile ||
       currentBreakpoint === breakpoints.tablet;
 
     /* eslint react/no-did-mount-set-state: 0 */
-    if (isNarrowScreen) {
+    if ((initial && isNarrowScreen) || !initial) {
       this.setState({
         isNarrowScreen,
       });

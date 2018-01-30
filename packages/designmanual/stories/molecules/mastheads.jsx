@@ -52,6 +52,7 @@ const messages = {
   subjectPage: 'Fagforside',
   learningResourcesHeading: 'Læringsressurser',
   back: 'Tilbake',
+  contentTypeResultsShowMore: 'Vis mer',
 };
 
 class MastheadWithTopicMenu extends Component {
@@ -149,7 +150,7 @@ class MastheadWithTopicMenu extends Component {
                     value: 'Mediesamfunnet',
                   },
                 ]}
-                values={['Medieuttrykk']}
+                filterValues={['Medieuttrykk']}
                 searchPageUrl="#"
                 contentTypeResults={searchFieldSearchResults}
                 expandedTopicId={this.state.expandedTopicId}

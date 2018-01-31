@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
 
+import { DisplayOnPageYOffset } from '../Animation';
+
 const classes = new BEMHelper({
   name: 'masthead',
   prefix: 'c-',
@@ -22,6 +24,7 @@ export const MastheadItem = ({ children, className, left, right }) => {
     { [classes('right').className]: right },
     className,
   );
+
   return <div className={itemClassNames}>{children}</div>;
 };
 
@@ -37,9 +40,39 @@ MastheadItem.defaultProps = {
   left: false,
 };
 
-export const Masthead = ({ children, fixed, hideOnNarrowScreen }) => (
-  <div {...classes(null, { fixed, hideOnNarrowScreen })}>
-    <div className="u-1/1">{children}</div>
+const MastheadInfo = ({ fadeIn, fadeOut, children }) => {
+  const className = {
+    'u-fade-in': fadeIn,
+    'u-fade-out': fadeOut,
+  };
+  return <div {...classes('info', '', className)}>{children}</div>;
+};
+
+MastheadInfo.propTypes = {
+  fadeIn: PropTypes.bool,
+  fadeOut: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
+
+MastheadInfo.defaultProps = {
+  fadeIn: false,
+  fadeOut: false,
+};
+
+export const Masthead = ({
+  children,
+  fixed,
+  hideOnNarrowScreen,
+  infoContent,
+}) => (
+  <div {...classes('', { fixed, hideOnNarrowScreen })}>
+    {infoContent && (
+      <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
+        <MastheadInfo>{infoContent}</MastheadInfo>
+      </DisplayOnPageYOffset>
+    )}
+
+    <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
   </div>
 );
 
@@ -47,6 +80,7 @@ Masthead.propTypes = {
   children: PropTypes.node,
   fixed: PropTypes.bool,
   hideOnNarrowScreen: PropTypes.bool,
+  infoContent: PropTypes.node,
 };
 
 export default Masthead;

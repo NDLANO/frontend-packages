@@ -7,4 +7,5 @@ require('./pages');
 require('./search');
 require('./licenses');
 require('./produksjonssystem');
+require('./beta');
 require('./experimental');

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -111,7 +111,17 @@ class MastheadWithTopicMenu extends Component {
     }
 
     return (
-      <Masthead fixed hideOnNarrowScreen={this.props.hideOnNarrowScreen}>
+      <Masthead
+        fixed
+        hideOnNarrowScreen={this.props.hideOnNarrowScreen}
+        infoContent={
+          this.props.beta && (
+            <Fragment>
+              <span>Du tester nå de nye nettsidene.</span>{' '}
+              <a href="#">Les mer om nye NDLA.no</a>
+            </Fragment>
+          )
+        }>
         <MastheadItem left>
           <SiteNav>
             <ClickToggle
@@ -165,7 +175,7 @@ class MastheadWithTopicMenu extends Component {
             </ClickToggle>
           </SiteNav>
 
-          <DisplayOnPageYOffset yOffset={150}>
+          <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock
               subject={subjectList[1]}
               topicPath={topicList.slice(0, 2)}
@@ -186,6 +196,7 @@ MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
   hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
+  beta: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

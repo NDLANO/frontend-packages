@@ -9,6 +9,5 @@
 import Breadcrumb from './Breadcrumb';
 
 export { default as BreadcrumbBlock } from './BreadcrumbBlock';
-export { default as DisplayOnPageYOffset } from './DisplayOnPageYOffset';
 
 export default Breadcrumb;

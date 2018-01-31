@@ -69,11 +69,7 @@ export {
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Concept } from './Concept';
-export {
-  default as Breadcrumb,
-  BreadcrumbBlock,
-  DisplayOnPageYOffset,
-} from './Breadcrumb';
+export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
@@ -106,3 +102,5 @@ export { default as TranslationLine } from './Translation/TranslationLine';
 export { default as ErrorMessage } from './ErrorMessage';
 
 export { default as constants } from './model';
+
+export { DisplayOnPageYOffset } from './Animation';

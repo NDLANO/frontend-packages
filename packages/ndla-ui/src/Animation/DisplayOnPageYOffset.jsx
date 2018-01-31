@@ -8,12 +8,17 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 
 export default class DisplayOnPageYOffset extends Component {
   constructor(props) {
     super(props);
-    this.state = { display: false, fadeIn: false, fadeOut: false };
-    this.handleScroll = this.handleScroll.bind(this);
+    this.state = {
+      display: props.yOffsetMin === 0,
+      fadeIn: false,
+      fadeOut: false,
+    };
+    this.handleScroll = throttle(this.handleScroll.bind(this), 50);
   }
 
   componentDidMount() {
@@ -30,19 +35,16 @@ export default class DisplayOnPageYOffset extends Component {
   }
 
   handleScroll() {
-    if (window.pageYOffset > this.props.yOffset) {
+    if (
+      window.pageYOffset >= this.props.yOffsetMin &&
+      (this.props.yOffsetMax === null ||
+        window.pageYOffset <= this.props.yOffsetMax)
+    ) {
       if (!this.state.display) {
         this.setState({ display: true, fadeIn: true, fadeOut: false });
       }
-    } else if (
-      this.state.display &&
-      window.pageYOffset < this.props.yOffset &&
-      window.pageYOffset > 0
-    ) {
+    } else if (this.state.display) {
       this.setState({ display: false, fadeOut: true, fadeIn: false });
-    } else if (window.pageYOffset === 0) {
-      // Don't fade out on route changes (typically when pageYOffset === 0)
-      this.setState({ display: false, fadeOut: false, fadeIn: false });
     }
   }
 
@@ -57,5 +59,10 @@ export default class DisplayOnPageYOffset extends Component {
 
 DisplayOnPageYOffset.propTypes = {
   children: PropTypes.node.isRequired,
-  yOffset: PropTypes.number.isRequired,
+  yOffsetMin: PropTypes.number.isRequired,
+  yOffsetMax: PropTypes.number,
+};
+
+DisplayOnPageYOffset.defaultProps = {
+  yOffsetMax: null,
 };

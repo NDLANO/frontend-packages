@@ -6,12 +6,15 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   RelatedArticleList,
   RelatedArticle,
   TasksAndActivitiesBadge,
   SubjectMaterialBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
+  Button,
 } from 'ndla-ui';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
@@ -52,21 +55,71 @@ export const RelatedArticleMixedList = () => (
     />
   </RelatedArticleList>
 );
-export default () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
-    <RelatedArticle
-      title={articleResources[0].title}
-      icon={<SubjectMaterialBadge background />}
-      modifier="subject-material"
-      introduction={articleResources[0].introduction}
-      to="#"
-    />
-    <RelatedArticle
-      title={articleResources[1].title}
-      icon={<SubjectMaterialBadge background />}
-      modifier="subject-material"
-      introduction={articleResources[1].introduction}
-      to="#"
-    />
-  </RelatedArticleList>
-);
+
+class ExpandExample extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false,
+    };
+  }
+  render() {
+    const articles = [
+      <RelatedArticle
+        title={articleResources[0].title}
+        icon={<SubjectMaterialBadge background />}
+        modifier="subject-material"
+        introduction={articleResources[0].introduction}
+        to="#"
+        key={articleResources[0].title}
+      />,
+      <RelatedArticle
+        title={articleResources[1].title}
+        icon={<SubjectMaterialBadge background />}
+        modifier="subject-material"
+        introduction={articleResources[1].introduction}
+        to="#"
+        key={articleResources[1].title}
+      />,
+      <RelatedArticle
+        title={articleResources[2].title}
+        icon={<SourceMaterialBadge background />}
+        modifier="source-material"
+        introduction={articleResources[2].introduction}
+        to="#"
+        key={articleResources[2].title}
+      />,
+      <RelatedArticle
+        title={articleResources[3].title}
+        icon={<ExternalLearningResourcesBadge background />}
+        modifier="external-learning-resources"
+        introduction={articleResources[3].introduction}
+        to="#"
+        key={articleResources[3].title}
+      />,
+    ];
+
+    const buttonText = this.state.expanded
+      ? 'Skjul relaterte artiker'
+      : 'Vis flere relaterte artiker';
+    return (
+      <RelatedArticleList
+        messages={{ title: 'Relaterte artikler' }}
+        button={
+          <Button
+            outline
+            onClick={() => {
+              this.setState(prevState => ({
+                expanded: !prevState.expanded,
+              }));
+            }}>
+            {buttonText}
+          </Button>
+        }>
+        {this.state.expanded ? articles : articles.slice(0, 2)}
+      </RelatedArticleList>
+    );
+  }
+}
+
+export default ExpandExample;

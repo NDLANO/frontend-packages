@@ -61,11 +61,24 @@
   &--external-learning-resources {
     border-color: $external-learning-resource-dark;
 
+    &.c-content-type-badge--large {
+      svg {
+        margin-top: 1px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &.c-content-type-badge--small {
+      svg {
+        margin-top: 1px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
     svg {
-      margin-top: 1px;
       color: $external-learning-resource-dark;
-      width: 32px;
-      height: 32px;
     }
 
     &.c-content-type-badge--background {
@@ -76,11 +89,24 @@
   &--source-material {
     border-color: $source-material-dark;
 
+    &.c-content-type-badge--large {
+      svg {
+        margin-top: 1px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &.c-content-type-badge--small {
+      svg {
+        margin-top: 1px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
     svg {
-      margin-top: 1px;
       color: $source-material-dark;
-      width: 32px;
-      height: 32px;
     }
 
     &.c-content-type-badge--background {

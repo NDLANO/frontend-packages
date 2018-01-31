@@ -11,15 +11,15 @@ const classes = new BEMHelper({
 export const RelatedArticle = ({ title, introduction, icon, modifier, to }) => {
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
-    <div {...classes('item', modifier)}>
-      <h3 {...classes('title')}>
+    <article {...classes('item', modifier)}>
+      <h1 {...classes('title')}>
         {iconWithClass}
         <SafeLink to={to} {...classes('link')}>
           {title}
         </SafeLink>
-      </h3>
+      </h1>
       <p {...classes('description')}>{introduction}</p>
-    </div>
+    </article>
   );
 };
 
@@ -31,16 +31,22 @@ RelatedArticle.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const RelatedArticleList = ({ messages, children }) => (
-  <div>
-    <h2 {...classes('component-title')}>{messages.title}</h2>
-    <div {...classes('')}>{children}</div>
-  </div>
+const RelatedArticleList = ({ messages, children, button }) => (
+  <section {...classes('')}>
+    <h1 {...classes('component-title')}>{messages.title}</h1>
+    <div {...classes('articles')}>{children}</div>
+    {button}
+  </section>
 );
 
 RelatedArticleList.propTypes = {
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
+  button: PropTypes.node,
+};
+
+RelatedArticleList.defaultProps = {
+  actions: null,
 };
 
 export default RelatedArticleList;

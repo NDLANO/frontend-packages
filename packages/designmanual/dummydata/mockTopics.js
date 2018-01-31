@@ -86,7 +86,15 @@ export const topicMenu = [
     id: 'urn:topic:172405',
     name: 'Medieproduksjon',
     subtopics: [
-      { id: 'urn:topic:169379', name: 'Nettsider', contentUri: null },
+      {
+        id: 'urn:topic:111111',
+        name: 'Nettsider',
+        contentUri: null,
+        subtopics: [
+          { id: 'urn:topic:162334', name: 'Html', contentUri: null },
+          { id: 'urn:topic:165354', name: 'Css', contentUri: null },
+        ],
+      },
       {
         id: 'urn:topic:170356',
         name: 'Produksjonsutstyr og HMS',

@@ -1,12 +1,16 @@
 .c-logo {
   width: 120px;
-  margin:0;
-  z-index: 100;
+  margin: 0;
   position: relative;
+
   &__graphic {
     fill: $brand-color;
   }
   &--large {
     width: 300px;
+  }
+
+  @include mq(desktop) {
+    z-index: 100;
   }
 }

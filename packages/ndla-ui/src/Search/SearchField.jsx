@@ -14,6 +14,7 @@ import { Search as SearchIcon } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 
 import ActiveFilters from './ActiveFilters';
+import ContentTypeResult from './ContentTypeResult';
 
 const classes = new BEMHelper('c-search-field');
 
@@ -42,31 +43,13 @@ const SearchResult = ({ result, messages, searchString, allResultUrl }) => (
   <div {...classes('search-result')}>
     <div {...classes('search-result-content')}>
       {result.map(contentTypeResult => (
-        <div {...classes('content-type-result')} key={contentTypeResult.title}>
-          <div {...classes('icon-wrapper')}>{contentTypeResult.icon}</div>
-          <div>
-            <h2>
-              {contentTypeResult.title}{' '}
-              <span {...classes('total-count')}>
-                ({contentTypeResult.totalCount})
-              </span>
-            </h2>
-            <ul>
-              {contentTypeResult.items.map(item => (
-                <li key={item.url}>
-                  <SafeLink to={item.url}>{item.display}</SafeLink>
-                </li>
-              ))}
-              {contentTypeResult.showAllLinkUrl && (
-                <li key="showAll" {...classes('show-all')}>
-                  <SafeLink to={contentTypeResult.showAllLinkUrl}>
-                    {messages.allContentTypeResultLabel}
-                  </SafeLink>
-                </li>
-              )}
-            </ul>
-          </div>
-        </div>
+        <ContentTypeResult
+          contentTypeResult={contentTypeResult}
+          key={contentTypeResult.title}
+          messages={{
+            allResultLabel: messages.allContentTypeResultLabel,
+          }}
+        />
       ))}
     </div>
     <div {...classes('go-to-search')}>

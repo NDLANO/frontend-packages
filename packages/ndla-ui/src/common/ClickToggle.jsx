@@ -17,11 +17,6 @@ import Button from '../button/Button';
 export default class ClickToggle extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isOpen: props.expanded,
-    };
-
     this.handleClick = this.handleClick.bind(this);
     this.close = this.close.bind(this);
     this.containerRef = null;
@@ -31,19 +26,15 @@ export default class ClickToggle extends React.Component {
   componentDidMount() {
     this.focusTrap = createFocusTrap(this.containerRef, {
       onActivate: () => {
-        this.setState({
-          isOpen: true,
-        });
+        this.props.onToggle(true);
 
         if (!this.props.noScrollDisabled) {
           noScroll(true);
         }
       },
       onDeactivate: () => {
-        if (this.state.isOpen) {
-          this.setState({
-            isOpen: false,
-          });
+        if (this.props.isOpen) {
+          this.props.onToggle(false);
         }
 
         if (!this.props.noScrollDisabled) {
@@ -53,8 +44,18 @@ export default class ClickToggle extends React.Component {
       clickOutsideDeactivates: true,
     });
 
-    if (this.props.expanded) {
+    if (this.props.isOpen) {
       this.focusTrap.activate();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      if (this.props.isOpen) {
+        this.focusTrap.activate();
+      } else {
+        this.focusTrap.deactivate();
+      }
     }
   }
 
@@ -63,7 +64,7 @@ export default class ClickToggle extends React.Component {
   }
 
   handleClick() {
-    const isOpen = !this.state.isOpen;
+    const isOpen = !this.props.isOpen;
 
     if (isOpen) {
       this.focusTrap.activate();
@@ -83,14 +84,14 @@ export default class ClickToggle extends React.Component {
       buttonClassName,
       noScrollDisabled,
       containerClass: Component,
-      expanded,
+      isOpen,
       ...rest
     } = this.props;
-    const { isOpen } = this.state;
 
     const children = React.cloneElement(this.props.children, {
       close: this.close,
     });
+
     return (
       <Component
         {...rest}
@@ -121,11 +122,11 @@ ClickToggle.propTypes = {
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
-  expanded: PropTypes.bool,
   noScrollDisabled: PropTypes.bool,
+  isOpen: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 ClickToggle.defaultProps = {
   containerClass: 'div',
-  expanded: false,
 };

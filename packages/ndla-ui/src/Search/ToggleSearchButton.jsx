@@ -5,6 +5,7 @@ import BEMHelper from 'react-bem-helper';
 
 import ClickToggle from '../common/ClickToggle';
 import SafeLink from '../common/SafeLink';
+import Button from '../button/Button';
 
 const classes = BEMHelper({
   prefix: 'c-',
@@ -12,12 +13,7 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-const ToggleSearchButton = ({
-  messages,
-  children,
-  expanded,
-  searchPageUrl,
-}) => {
+export const OpenSearchButton = ({ messages, onOpen, searchPageUrl }) => {
   const buttonContent = (
     <span className={classes('button-content')}>
       <span className={classes('button-text')}>{messages.buttonText}</span>
@@ -30,14 +26,38 @@ const ToggleSearchButton = ({
       <SafeLink to={searchPageUrl} className={classes('button', 'narrow')}>
         {buttonContent}
       </SafeLink>
-      <ClickToggle
-        title={buttonContent}
-        className={classes()}
-        buttonClassName={classes('button', 'wide')}
-        expanded={expanded}>
-        {children}
-      </ClickToggle>
+      <Button onClick={onOpen} className={classes('button', 'wide')}>
+        {buttonContent}
+      </Button>
     </Fragment>
+  );
+};
+
+OpenSearchButton.propTypes = {
+  messages: PropTypes.shape({
+    buttonText: PropTypes.string.isRequired,
+  }).isRequired,
+  searchPageUrl: PropTypes.string.isRequired,
+  onOpen: PropTypes.func.isRequired,
+};
+
+const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
+  const buttonContent = (
+    <span className={classes('button-content')}>
+      <span className={classes('button-text')}>{messages.buttonText}</span>
+      <Search />
+    </span>
+  );
+
+  return (
+    <ClickToggle
+      isOpen={isOpen}
+      onToggle={onToggle}
+      title={buttonContent}
+      className={classes()}
+      buttonClassName={classes('button', 'wide')}>
+      {children}
+    </ClickToggle>
   );
 };
 
@@ -46,8 +66,8 @@ ToggleSearchButton.propTypes = {
     buttonText: PropTypes.string.isRequired,
   }).isRequired,
   children: PropTypes.node.isRequired,
-  expanded: PropTypes.bool,
-  searchPageUrl: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default ToggleSearchButton;

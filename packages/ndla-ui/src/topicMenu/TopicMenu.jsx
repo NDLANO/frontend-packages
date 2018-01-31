@@ -109,6 +109,7 @@ export default class TopicMenu extends Component {
       filterValues,
       onFilterClick,
       contentTypeResults,
+      hideSearch,
     } = this.props;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     let expandedSubtopic = null;
@@ -131,13 +132,15 @@ export default class TopicMenu extends Component {
     return (
       <nav {...classes('dropdown', null, 'o-wrapper u-1/1')}>
         <div {...classes('masthead')}>
-          <OpenSearchButton
-            onOpen={this.props.onOpenSearch}
-            searchPageUrl={this.props.searchPageUrl}
-            messages={{
-              buttonText: messages.search,
-            }}
-          />
+          {!hideSearch && (
+            <OpenSearchButton
+              onOpen={this.props.onOpenSearch}
+              searchPageUrl={this.props.searchPageUrl}
+              messages={{
+                buttonText: messages.search,
+              }}
+            />
+          )}
         </div>
         <div {...classes('content')}>
           {!disableMain && (
@@ -296,4 +299,5 @@ TopicMenu.propTypes = {
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,
+  hideSearch: PropTypes.bool,
 };

@@ -105,6 +105,10 @@ export default class TopicMenu extends Component {
       messages,
       expandedTopicId,
       expandedSubtopicId,
+      filterOptions,
+      filterValues,
+      onFilterClick,
+      contentTypeResults,
     } = this.props;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     let expandedSubtopic = null;
@@ -148,11 +152,12 @@ export default class TopicMenu extends Component {
                 <h1>
                   <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
                 </h1>
-                {this.props.filterOptions &&
-                  this.props.filterOptions.length > 0 && (
+                {filterOptions &&
+                  filterOptions.length > 0 && (
                     <FilterList
-                      options={this.props.filterOptions}
-                      values={this.props.filterValues}
+                      options={filterOptions}
+                      values={filterValues}
+                      onChange={onFilterClick}
                     />
                   )}
               </div>
@@ -232,8 +237,8 @@ export default class TopicMenu extends Component {
                 />
               )}
             </div>
-            {this.props.contentTypeResults &&
-              this.props.contentTypeResults.length > 0 && (
+            {contentTypeResults &&
+              contentTypeResults.length > 0 && (
                 <aside {...classes('content-type-results')}>
                   <h1>
                     <span>{messages.learningResourcesHeading}</span>{' '}
@@ -243,7 +248,7 @@ export default class TopicMenu extends Component {
                       </SafeLink>
                     )}
                   </h1>
-                  {this.props.contentTypeResults.map(result => (
+                  {contentTypeResults.map(result => (
                     <ContentTypeResult
                       key={result.title}
                       contentTypeResult={result}
@@ -282,6 +287,7 @@ TopicMenu.propTypes = {
       value: PropTypes.string.isRequired,
     }),
   ),
+  onFilterClick: PropTypes.func,
   filterValues: PropTypes.arrayOf(PropTypes.string),
   subjectTitle: PropTypes.string.isRequired,
   onOpenSearch: PropTypes.func.isRequired,

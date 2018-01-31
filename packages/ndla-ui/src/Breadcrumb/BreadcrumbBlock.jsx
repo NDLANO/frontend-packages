@@ -45,7 +45,8 @@ const BreadcrumbBlock = ({
           <BreadcrumbItem
             key={topic.id}
             classes={classes}
-            to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}>
+            to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}
+            isCurrent={i === topicPath.length - 1}>
             {topic.name}
           </BreadcrumbItem>
         ))}

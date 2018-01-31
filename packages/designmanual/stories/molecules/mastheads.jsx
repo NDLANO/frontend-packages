@@ -185,7 +185,11 @@ class MastheadWithTopicMenu extends Component {
         </MastheadItem>
         <MastheadItem right>
           {searchButtonView}
-          <Logo to="#" altText="Nasjonal digital læringsarena" />
+          <Logo
+            to="#"
+            altText="Nasjonal digital læringsarena"
+            isBeta={this.props.beta}
+          />
         </MastheadItem>
       </Masthead>
     );

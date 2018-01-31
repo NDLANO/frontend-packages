@@ -7,10 +7,11 @@
  */
 /* eslint-disable max-len */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SvgLogo from './SvgLogo';
+import Beta from './Beta';
 import SafeLink from '../common/SafeLink';
 
 export const logoClasses = new BEMHelper({
@@ -18,15 +19,24 @@ export const logoClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Logo = ({ name, cssModifier, to }) => {
+export const Logo = ({ name, to, isBeta, cssModifier }) => {
+  const beta = isBeta ? <Beta /> : null;
+  const modifiers = [cssModifier];
+
+  if (isBeta) {
+    modifiers.push('beta');
+  }
+
   const logo = to ? (
     <SafeLink to={to}>
-      <SvgLogo name={name} />
+      <SvgLogo name={name} /> {beta}
     </SafeLink>
   ) : (
-    <SvgLogo name={name} />
+    <Fragment>
+      <SvgLogo name={name} /> {beta}
+    </Fragment>
   );
-  return <h1 {...logoClasses('', cssModifier)}>{logo}</h1>;
+  return <h1 {...logoClasses('', modifiers)}>{logo}</h1>;
 };
 
 Logo.propTypes = {
@@ -41,6 +51,7 @@ Logo.propTypes = {
   altText: PropTypes.string.isRequired,
   cssModifier: PropTypes.string,
   name: PropTypes.bool,
+  isBeta: PropTypes.bool,
 };
 
 Logo.defaultProps = {

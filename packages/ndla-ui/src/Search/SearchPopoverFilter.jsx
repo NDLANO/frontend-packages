@@ -1,3 +1,5 @@
+/* eslint-disable react/no-multi-comp */
+
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
@@ -30,6 +32,7 @@ class Popover extends Component {
       values: props.values,
     };
   }
+
   render() {
     const { messages, close, options, onChange } = this.props;
     const disabled = this.state.values.length === 0;
@@ -84,28 +87,44 @@ Popover.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const PopoverFilter = ({ messages, values, ...rest }) => {
-  const buttonText =
-    values.length > 0
-      ? messages.hasValuesButtonText
-      : messages.noValuesButtonText;
-  const buttonContent = (
-    <Fragment>
-      <span className={classes('button-text')}>{buttonText}</span>
-      <ChevronRight />
-    </Fragment>
-  );
+export class PopoverFilter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+  render() {
+    const { messages, values, ...rest } = this.props;
+    const buttonText =
+      values.length > 0
+        ? messages.hasValuesButtonText
+        : messages.noValuesButtonText;
 
-  return (
-    <ClickToggle
-      title={buttonContent}
-      className={classes()}
-      noScrollDisabled
-      buttonClassName={classes('button')}>
-      <Popover messages={messages} {...rest} values={values} />
-    </ClickToggle>
-  );
-};
+    const buttonContent = (
+      <Fragment>
+        <span className={classes('button-text')}>{buttonText}</span>
+        <ChevronRight />
+      </Fragment>
+    );
+
+    return (
+      <ClickToggle
+        isOpen={this.state.isOpen}
+        onToggle={isOpen => {
+          this.setState({
+            isOpen,
+          });
+        }}
+        title={buttonContent}
+        className={classes()}
+        noScrollDisabled
+        buttonClassName={classes('button')}>
+        <Popover messages={messages} {...rest} values={values} />
+      </ClickToggle>
+    );
+  }
+}
 
 PopoverFilter.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string).isRequired,

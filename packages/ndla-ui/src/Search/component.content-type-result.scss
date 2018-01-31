@@ -1,0 +1,52 @@
+.c-content-type-result {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: $spacing--large;
+
+  h1 {
+    margin: 0;
+    @include font-size(18px, 30px);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing--small;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: $spacing--small;
+    @include font-size(18px, 23px);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      box-shadow: none;
+    }
+  }
+
+  &__icon-wrapper {
+    margin-right: $spacing--small;
+    text-align: right;
+  }
+
+  &__show-all {
+    font-weight: 600;
+
+    @include mq(tablet) {
+      margin-top: $spacing;
+    }
+  }
+
+  &__total-count {
+    font-weight: 400;
+  }
+}

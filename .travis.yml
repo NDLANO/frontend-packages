@@ -12,7 +12,7 @@ cache:
   yarn: true
   directories:
   - node_modules
-after_script:
+after_success:
 - travis_wait node scripts/run-ndla-script.js now-travis --docker
 notifications:
   slack:

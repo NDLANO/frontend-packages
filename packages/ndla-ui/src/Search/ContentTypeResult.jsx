@@ -27,9 +27,9 @@ const ContentTypeResult = ({ contentTypeResult, messages, iconOnRight }) => (
       </header>
 
       <ul>
-        {contentTypeResult.items.map(item => (
-          <li key={item.url}>
-            <SafeLink to={item.url}>{item.display}</SafeLink>
+        {contentTypeResult.resources.map(item => (
+          <li key={item.path}>
+            <SafeLink to={item.path}>{item.name}</SafeLink>
           </li>
         ))}
         {contentTypeResult.showAllLinkUrl && (

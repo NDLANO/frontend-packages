@@ -84,7 +84,7 @@ export const contributorTypes = {
     distributor: 'Distributør',
     supplier: 'Leverandør',
   },
-    nn: {
+  nn: {
     originator: 'Opphavsmann',
     photographer: 'Fotograf',
     artist: 'Kunstnar',

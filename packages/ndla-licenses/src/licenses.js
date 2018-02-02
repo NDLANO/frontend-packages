@@ -10,11 +10,14 @@ import defined from 'defined';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
+const freeUseNN = 'Fri gjenbruk';
 const freeUseEN = 'Free reuse';
 const restrictedUseNB = 'Begrenset bruk';
+const restrictedUseNN = 'Begrenset bruk';
 const restrictedUseEN = 'Restricted use';
 
 const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
+const openLicenseLinkTextNN = 'Lær mer om åpne lisenser';
 const openLicenseLinkTextEN = 'Learn more about open licenses';
 
 const byncnd = {
@@ -36,7 +39,7 @@ const byncnd = {
     description:
       'Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphavspersonen, men de kan ikke endre det på noen måte, eller bruke det kommersielt.',
   },
-  
+
   en: {
     short: restrictedUseEN,
     title: 'Attribution-NonCommercial-NoDerivs',

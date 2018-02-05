@@ -44,6 +44,8 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:340',
     title: 'Refleksjonsoppgave om ideer og idéutvikling',
+    introduction:
+      'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     type: 'Fagstoff',
   },
   {

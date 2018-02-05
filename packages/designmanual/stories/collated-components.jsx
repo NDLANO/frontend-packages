@@ -281,15 +281,14 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Relaterte artikler">
         <p>Kan brukes i slutten av artikler, eller midt i.</p>
-        <p>1 eller 2 artikler vises.</p>
       </StoryIntro>
       <StoryBody>
-        <h2 className="u-heading">Fagstoff eksempel</h2>
-        <RelatedArticleListExample />
         <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
         <RelatedArticleExerciseList />
         <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
         <RelatedArticleMixedList />
+        <h2 className="u-heading">Eksempel med vis mer</h2>
+        <RelatedArticleListExample />
       </StoryBody>
     </div>
   ))

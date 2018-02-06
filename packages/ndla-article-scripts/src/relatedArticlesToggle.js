@@ -1,21 +1,33 @@
+import BEMHelper from 'react-bem-helper';
 import { forEachElement } from './domHelpers';
 
+const classes = new BEMHelper({
+  name: 'related-articles',
+  prefix: 'c-',
+});
+
 export const toggleRelatedArticles = () => {
+  const hiddenItem = classes('item--hidden').className;
+  const shownItem = classes('item--shown').className;
+
   forEachElement('.c-related-articles', el => {
-    const button = el.querySelector('.c-related-articles__button');
+    const button = el.querySelector(`.${classes('button').className}`);
     if (button) {
       button.onclick = () => {
-        const hiddenArticles = el.querySelector(
-          '.c-related-articles__hidden-articles',
-        );
-        if (button.classList.contains('show-hidden')) {
-          button.classList.remove('show-hidden');
-          hiddenArticles.classList.remove('show');
+        if (button.innerHTML === button.getAttribute('data-showless')) {
           button.innerHTML = button.getAttribute('data-showmore');
+
+          const hiddenArticles = el.querySelectorAll(`.${shownItem}`);
+          for (let i = 0; i < hiddenArticles.length; i += 1) {
+            hiddenArticles[i].classList.replace(shownItem, hiddenItem);
+          }
         } else {
-          button.classList.add('show-hidden');
-          hiddenArticles.classList.add('show');
           button.innerHTML = button.getAttribute('data-showless');
+
+          const hiddenArticles = el.querySelectorAll(`.${hiddenItem}`);
+          for (let i = 0; i < hiddenArticles.length; i += 1) {
+            hiddenArticles[i].classList.replace(hiddenItem, shownItem);
+          }
         }
       };
     }

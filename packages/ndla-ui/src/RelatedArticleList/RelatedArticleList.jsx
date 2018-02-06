@@ -27,7 +27,7 @@ export const RelatedArticle = ({ title, introduction, icon, modifier, to }) => {
 RelatedArticle.propTypes = {
   icon: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  modifier: PropTypes.oneOf(['subject-material', 'tasks-and-activities']),
+  modifier: PropTypes.string,
   introduction: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };
@@ -36,10 +36,14 @@ const RelatedArticleList = ({ messages, children }) => (
   <section {...classes('')}>
     <h1 {...classes('component-title')}>{messages.title}</h1>
     <div {...classes('articles')}>
-      {React.Children.map(children, (art, i) => (i < 2 ? art : null))}
-    </div>
-    <div {...classes('hidden-articles')}>
-      {React.Children.map(children, (art, i) => (i >= 2 ? art : null))}
+      {React.Children.map(children, (article, i) =>
+        React.cloneElement(article, {
+          modifier:
+            i >= 2
+              ? `${article.props.modifier} hidden`
+              : article.props.modifier,
+        }),
+      )}
     </div>
     {React.Children.count(children) > 2 && (
       <Button

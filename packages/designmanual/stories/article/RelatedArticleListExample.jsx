@@ -96,12 +96,12 @@ class ExpandExample extends Component {
         key={articleResources[3].title}
       />,
       <RelatedArticle
-        title={articleResources[3].title}
+        title={articleResources[4].title}
         icon={<ExternalLearningResourcesBadge background />}
         modifier="external-learning-resources"
-        introduction={articleResources[3].introduction}
+        introduction={articleResources[4].introduction}
         to="#"
-        key={articleResources[3].title}
+        key={articleResources[4].title}
       />,
     ];
 

@@ -17,6 +17,19 @@
       flex-wrap: wrap;
     }
   }
+  &__hidden-articles {
+    height: 0;
+    overflow: hidden;
+
+    &.show {
+      height: 100%;
+      text-align: left;
+      @include mq(tablet) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
 
   &__item {
     border-left: 6px solid rgba($brand-grey--light, 0.4);

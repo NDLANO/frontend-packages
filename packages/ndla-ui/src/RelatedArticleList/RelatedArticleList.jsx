@@ -1,5 +1,6 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 
@@ -31,18 +32,30 @@ RelatedArticle.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const RelatedArticleList = ({ messages, children, button }) => (
+const RelatedArticleList = ({ messages, children }) => (
   <section {...classes('')}>
     <h1 {...classes('component-title')}>{messages.title}</h1>
-    <div {...classes('articles')}>{children}</div>
-    {button}
+    <div {...classes('articles')}>
+      {React.Children.map(children, (art, i) => (i < 2 ? art : null))}
+    </div>
+    <div {...classes('hidden-articles')}>
+      {React.Children.map(children, (art, i) => (i >= 2 ? art : null))}
+    </div>
+    {React.Children.count(children) > 2 && (
+      <Button
+        {...classes('button')}
+        data-showmore={messages.showMore}
+        data-showless={messages.showLess}
+        outline>
+        {messages.showMore}
+      </Button>
+    )}
   </section>
 );
 
 RelatedArticleList.propTypes = {
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
-  button: PropTypes.node,
 };
 
 RelatedArticleList.defaultProps = {

@@ -14,8 +14,8 @@ import {
   SubjectMaterialBadge,
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
-  Button,
 } from 'ndla-ui';
+import { toggleRelatedArticles } from 'ndla-article-scripts';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
 export const RelatedArticleExerciseList = () => (
@@ -57,12 +57,10 @@ export const RelatedArticleMixedList = () => (
 );
 
 class ExpandExample extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expanded: false,
-    };
+  componentDidMount() {
+    toggleRelatedArticles();
   }
+
   render() {
     const articles = [
       <RelatedArticle
@@ -97,26 +95,24 @@ class ExpandExample extends Component {
         to="#"
         key={articleResources[3].title}
       />,
+      <RelatedArticle
+        title={articleResources[3].title}
+        icon={<ExternalLearningResourcesBadge background />}
+        modifier="external-learning-resources"
+        introduction={articleResources[3].introduction}
+        to="#"
+        key={articleResources[3].title}
+      />,
     ];
 
-    const buttonText = this.state.expanded
-      ? 'Skjul relaterte artiker'
-      : 'Vis flere relaterte artiker';
     return (
       <RelatedArticleList
-        messages={{ title: 'Relaterte artikler' }}
-        button={
-          <Button
-            outline
-            onClick={() => {
-              this.setState(prevState => ({
-                expanded: !prevState.expanded,
-              }));
-            }}>
-            {buttonText}
-          </Button>
-        }>
-        {this.state.expanded ? articles : articles.slice(0, 2)}
+        messages={{
+          title: 'Relaterte artikler',
+          showMore: 'Vis flere relaterte artikler',
+          showLess: 'Vis mindre',
+        }}>
+        {articles}
       </RelatedArticleList>
     );
   }

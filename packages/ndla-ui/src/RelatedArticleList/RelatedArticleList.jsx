@@ -1,5 +1,6 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 
@@ -26,23 +27,39 @@ export const RelatedArticle = ({ title, introduction, icon, modifier, to }) => {
 RelatedArticle.propTypes = {
   icon: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  modifier: PropTypes.oneOf(['subject-material', 'tasks-and-activities']),
+  modifier: PropTypes.string,
   introduction: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };
 
-const RelatedArticleList = ({ messages, children, button }) => (
+const RelatedArticleList = ({ messages, children }) => (
   <section {...classes('')}>
     <h1 {...classes('component-title')}>{messages.title}</h1>
-    <div {...classes('articles')}>{children}</div>
-    {button}
+    <div {...classes('articles')}>
+      {React.Children.map(children, (article, i) =>
+        React.cloneElement(article, {
+          modifier:
+            i >= 2
+              ? `${article.props.modifier} hidden`
+              : article.props.modifier,
+        }),
+      )}
+    </div>
+    {React.Children.count(children) > 2 && (
+      <Button
+        {...classes('button')}
+        data-showmore={messages.showMore}
+        data-showless={messages.showLess}
+        outline>
+        {messages.showMore}
+      </Button>
+    )}
   </section>
 );
 
 RelatedArticleList.propTypes = {
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
-  button: PropTypes.node,
 };
 
 RelatedArticleList.defaultProps = {

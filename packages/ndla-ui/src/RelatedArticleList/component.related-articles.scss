@@ -50,6 +50,14 @@
     &--learning-path {
       border-left: 6px solid $learning-path-background;
     }
+
+    &--hidden {
+      display: none;
+    }
+
+    &--shown {
+      display: block;
+    }
   }
 
   &__title {

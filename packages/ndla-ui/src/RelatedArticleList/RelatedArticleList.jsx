@@ -1,7 +1,7 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'ndla-ui';
 import BEMHelper from 'react-bem-helper';
+import Button from '../button/Button';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({

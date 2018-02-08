@@ -21,6 +21,7 @@ import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape, ContentTypeResultShape } from '../shapes';
 
 import { OpenSearchButton, ContentTypeResult } from '../Search';
+import Logo from '../Logo';
 import FilterList from '../filter/FilterList';
 
 const classes = new BEMHelper({
@@ -133,6 +134,11 @@ export default class TopicMenu extends Component {
             messages={{
               buttonText: messages.search,
             }}
+          />
+          <Logo
+            to="#"
+            altText="Nasjonal digital læringsarena"
+            isBeta={this.props.isBeta}
           />
         </div>
         <div {...classes('content')}>
@@ -290,4 +296,5 @@ TopicMenu.propTypes = {
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,
+  isBeta: PropTypes.bool,
 };

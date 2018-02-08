@@ -469,9 +469,22 @@
 
   @include mq(desktop) {
     position: absolute;
-    left: 30%;
-    padding: 0 204px 0 0;
-    width: 70%;
+    left: 168px;
+    padding: 0 $spacing--large 0 0;
+    width: calc(100% - 168px);
+  }
+
+  .c-toggle-search-button__button {
+    @include mq(desktop) {
+      margin-right: $spacing--medium;
+    }
+  }
+
+  .c-logo {
+    display: none;
+    @include mq(desktop) {
+      display: block;
+    }
   }
 }
 .c-topic-menu__search {

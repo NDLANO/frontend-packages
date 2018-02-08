@@ -138,6 +138,7 @@ class MastheadWithTopicMenu extends Component {
               className="c-topic-menu-container"
               buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
               <TopicMenu
+                isBeta={this.props.beta}
                 subjectTitle="Mediefag"
                 toSubject={() => '#'}
                 toTopic={() => '#'}

@@ -1,7 +1,5 @@
 .c-content-type-result {
-  display: flex;
-  align-items: flex-start;
-  padding-bottom: $spacing--large;
+  padding-bottom: $spacing--medium;
 
   h1 {
     margin: 0;
@@ -9,9 +7,13 @@
   }
 
   header {
-    display: flex;
-    align-items: center;
     margin-bottom: $spacing--small;
+  }
+
+  &__no-hit {
+    color: $text-light-color;
+    margin: 0;
+    font-style: italic;
   }
 
   ul {
@@ -31,11 +33,6 @@
     a {
       box-shadow: none;
     }
-  }
-
-  &__icon-wrapper {
-    margin-right: $spacing--small;
-    text-align: right;
   }
 
   &__show-all {

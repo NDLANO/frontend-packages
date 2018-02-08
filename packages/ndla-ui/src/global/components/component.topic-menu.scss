@@ -208,10 +208,10 @@
   @include mq(wide) {
     width: 25%;
     margin-top: $spacing;
-    max-width: 800px;
     background: transparent;
     border-left: 1px solid $brand-color--light;
     padding: 0 $spacing--medium;
+    min-height: 500px;
   }
 
   h1 {
@@ -221,9 +221,9 @@
 
     @include mq(wide) {
       margin-top: 0;
-      height: 30px;
+      min-height: 30px;
       @include font-size(16px, 30px);
-      margin-bottom: $spacing--large;
+      margin-bottom: $spacing--medium;
     }
 
     span {

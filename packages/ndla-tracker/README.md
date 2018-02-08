@@ -68,7 +68,7 @@ export default withTracker(SomeTrackableComponent);
 ```
 
 ## PropTypes
-###### PropTypes for for HelmetWithTracker
+###### PropTypes for HelmetWithTracker
 | Props                | Type    | Required | Description                         |
 | -------------------  | :----:  | :------: | :-----------------------------------|
 | title                | String  | *        | A title (meta) used for the tracker.|

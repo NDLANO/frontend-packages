@@ -17,6 +17,9 @@ export {
   ArticleWrapper,
   default as Article,
 } from './Article';
+
+export { BetaNavigation } from './Beta';
+
 export { default as Button } from './button/Button';
 export { default as Logo } from './Logo';
 export { default as Table } from './table/Table';
@@ -54,6 +57,7 @@ export {
 export { default as LicenseByline } from './LicenseByline';
 export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
+export { default as SafeLink } from './common/SafeLink';
 export {
   default as TopicIntroductionList,
 } from './topic/TopicIntroductionList';

@@ -21,6 +21,7 @@ import {
   ToggleSearchButton,
   SearchOverlay,
   SearchField,
+  SafeLink,
 } from 'ndla-ui';
 
 import {
@@ -114,14 +115,7 @@ class MastheadWithTopicMenu extends Component {
       <Masthead
         fixed
         hideOnNarrowScreen={this.props.hideOnNarrowScreen}
-        infoContent={
-          this.props.beta && (
-            <Fragment>
-              <span>Du tester nå de nye nettsidene.</span>{' '}
-              <a href="#">Les mer om nye NDLA.no</a>
-            </Fragment>
-          )
-        }>
+        infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
           <SiteNav>
             <ClickToggle
@@ -202,10 +196,17 @@ MastheadWithTopicMenu.propTypes = {
   hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
+  betaInfoContent: PropTypes.node,
 };
 
 MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
+  betaInfoContent: (
+    <Fragment>
+      <span>Du tester nå de nye nettsidene.</span>{' '}
+      <SafeLink to="#">Les mer om nye NDLA.no</SafeLink>
+    </Fragment>
+  ),
 };
 
 export { MastheadWithTopicMenu };

@@ -29,6 +29,10 @@
   &--source-material {
     background-color: $source-material-light;
   }
+
+  &--beta {
+    background: $brand-color;
+  }
 }
 .c-hero__content {
   padding: 90px 0 $spacing--small;

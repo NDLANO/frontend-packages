@@ -20,6 +20,11 @@ export const COPYRIGHTED = 'copyrighted'; // Copyrighted
 
 const by = {
   short: BY,
+  nn: {
+    title: 'Namngiving',
+    userFriendlyTitle: 'Namngiving',
+    description: 'Du må alltid oppgi kven som har laga innhaldet.',
+  },
   nb: {
     title: 'Navngivelse',
     userFriendlyTitle: 'Navngivelse',
@@ -34,6 +39,12 @@ const by = {
 
 const sa = {
   short: SA,
+  nn: {
+    title: 'Del på same vilkår',
+    userFriendlyTitle: 'Del på same vilkår',
+    description:
+      'Du kan berre dele innhaldet med same lisens som det opphavlege innhaldet.',
+  },
   nb: {
     title: 'Del på samme vilkår',
     userFriendlyTitle: 'Del på samme vilkår',
@@ -51,6 +62,11 @@ const sa = {
 
 const nc = {
   short: NC,
+  nn: {
+    title: 'Ikkje-kommersiell',
+    userFriendlyTitle: 'Ikkje-kommersiell',
+    description: 'Du kan ikkje tene pengar på bruk av dette innhaldet.',
+  },
   nb: {
     title: 'Ikke-kommersiell',
     userFriendlyTitle: 'Ikke-kommersiell',
@@ -65,6 +81,11 @@ const nc = {
 
 const nd = {
   short: ND,
+  nn: {
+    title: 'Ingen tilarbeiding',
+    userFriendlyTitle: 'Ingen tilarbeiding',
+    description: 'Du kan ikkje endre innhaldet.',
+  },
   nb: {
     title: 'Ingen bearbeiding',
     userFriendlyTitle: 'Ingen bearbeiding',
@@ -79,6 +100,11 @@ const nd = {
 
 const pd = {
   short: PD,
+  nn: {
+    title: 'Offentleg eigedom',
+    userFriendlyTitle: 'Offentleg eigedom',
+    description: 'Innhaldet er så gammalt at du kan bruka det som du vil.',
+  },
   nb: {
     title: 'Offentlig eiendom',
     userFriendlyTitle: 'Offentlig eiendom',
@@ -93,6 +119,11 @@ const pd = {
 
 const cc0 = {
   short: CC0,
+  nn: {
+    title: 'Gjeve til fellesskapet',
+    userFriendlyTitle: 'Gjeve til fellesskapet',
+    description: 'Du kan bruka innhaldet fritt.',
+  },
   nb: {
     title: 'Gitt til fellesskapet',
     userFriendlyTitle: 'Gitt til fellesskapet',
@@ -108,6 +139,12 @@ const cc0 = {
 
 const copyrighted = {
   short: COPYRIGHTED,
+  nn: {
+    title: 'Opphavsrett',
+    userFriendlyTitle: 'Opphavsrett',
+    description:
+      'Det er berre den som har laga innhaldet som kan endre, publisera og gje andre rett til å bruka innhaldet.',
+  },
   nb: {
     title: 'Opphavsrett',
     userFriendlyTitle: 'Opphavsrett',
@@ -124,6 +161,12 @@ const copyrighted = {
 
 const cc = {
   short: CC,
+  nn: {
+    title: 'Creative Commons',
+    userFriendlyTitle: 'Opphavsrett',
+    description:
+      'Denne lisensen gjev deg rett til å dela og bruka dette innhaldet på visse vilkår.',
+  },
   nb: {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',

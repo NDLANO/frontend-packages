@@ -11,14 +11,14 @@ export const searchFieldSearchResults = [
     title: 'Læringsstier',
     icon: <LearningPathBadge size="x-small" />,
     totalCount: 2,
-    items: [
+    resources: [
       {
-        url: '#1',
-        display: 'Mediemakt',
+        path: '#1',
+        name: 'Mediemakt',
       },
       {
-        url: '#2',
-        display: 'Media som dne fjerde statsmakt',
+        path: '#2',
+        name: 'Media som dne fjerde statsmakt',
       },
     ],
   },
@@ -26,10 +26,10 @@ export const searchFieldSearchResults = [
     title: 'Oppgaver og aktiviteter',
     icon: <TasksAndActivitiesBadge size="x-small" />,
     totalCount: 5,
-    items: [
+    resources: [
       {
-        url: '#1',
-        display: 'Hvem har mediemakt i dag?',
+        path: '#1',
+        name: 'Hvem har mediemakt i dag?',
       },
     ],
   },
@@ -38,14 +38,14 @@ export const searchFieldSearchResults = [
     icon: <SubjectMaterialBadge size="x-small" />,
     totalCount: 2,
     showAllLinkUrl: '#',
-    items: [
+    resources: [
       {
-        url: '#1',
-        display: 'Hva er makt?',
+        path: '#1',
+        name: 'Hva er makt?',
       },
       {
-        url: '#2',
-        display: 'Maktfordelingsprinsippet',
+        path: '#2',
+        name: 'Maktfordelingsprinsippet',
       },
     ],
   },
@@ -53,10 +53,10 @@ export const searchFieldSearchResults = [
     title: 'Vurderingsressurser',
     icon: <AssessmentResourcesBadge size="x-small" />,
     totalCount: 1,
-    items: [
+    resources: [
       {
-        url: '#1',
-        display: 'Vurdering i Mediestruktur',
+        path: '#1',
+        name: 'Vurdering i Mediestruktur',
       },
     ],
   },

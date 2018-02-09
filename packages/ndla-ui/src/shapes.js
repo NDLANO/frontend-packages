@@ -74,10 +74,10 @@ export const ContentTypeResultShape = PropTypes.shape({
   icon: PropTypes.node.isRequired,
   totalCount: PropTypes.number.isRequired,
   showAllLinkUrl: PropTypes.string,
-  items: PropTypes.arrayOf(
+  resources: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
     }),
   ),
 });

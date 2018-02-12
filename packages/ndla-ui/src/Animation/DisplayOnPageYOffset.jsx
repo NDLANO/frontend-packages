@@ -9,14 +9,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
+import Fade from './Fade';
 
 export default class DisplayOnPageYOffset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: props.yOffsetMin === 0,
-      fadeIn: false,
-      fadeOut: false,
+      show: props.yOffsetMin === 0,
     };
     this.handleScroll = throttle(this.handleScroll.bind(this), 50);
   }
@@ -40,20 +39,16 @@ export default class DisplayOnPageYOffset extends Component {
       (this.props.yOffsetMax === null ||
         window.pageYOffset <= this.props.yOffsetMax)
     ) {
-      if (!this.state.display) {
-        this.setState({ display: true, fadeIn: true, fadeOut: false });
+      if (!this.state.show) {
+        this.setState({ show: true });
       }
-    } else if (this.state.display) {
-      this.setState({ display: false, fadeOut: true, fadeIn: false });
+    } else if (this.state.show) {
+      this.setState({ show: false });
     }
   }
 
   render() {
-    return React.cloneElement(this.props.children, {
-      display: this.state.display,
-      fadeIn: this.state.fadeIn,
-      fadeOut: this.state.fadeOut,
-    });
+    return <Fade show={this.state.show}>{this.props.children}</Fade>;
   }
 }
 

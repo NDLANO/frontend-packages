@@ -3,6 +3,10 @@
   position: relative;
   background: white;
   border-bottom: 1px solid $brand-grey--lighter;
+  min-height: $masthead-height;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
 
   &--fixed {
     top: 0;
@@ -19,10 +23,15 @@
     }
   }
 
+  &__placeholder {
+    min-height: $masthead-height;
+    width: 100%;
+  }
+
   &__content {
     justify-content: center;
     text-align: center;
-    padding: $spacing--small $spacing $spacing--small;
+    padding: $spacing--small;
     font-weight: $font-weight-normal;
     display: flex;
 
@@ -37,14 +46,29 @@
   }
 
   &__info {
-    z-index: 1;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
+    text-align: center;
+  }
+
+  &__info-content {
     background: $yellow-light;
-    padding: 0 $spacing--large;
-    @include font-size(16px, 45px);
+    padding: 0 $spacing;
+    display: inline-block;
+    @include font-size(12px, 30px);
+
+    @include mq(tablet) {
+      padding: 0 $spacing--large;
+      @include font-size(14px, 35px);
+    }
+
+    @include mq(wide) {
+      @include font-size(16px, 45px);
+
+      z-index: 1;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
   }
 
   &__left {
@@ -68,6 +92,21 @@
     @include mq(desktop) {
       text-align: right;
       flex-grow: 1;
+    }
+  }
+}
+
+.c-masthead,
+.c-masthead__placeholder {
+  &--infoContent {
+    min-height: $masthead-height + 30px;
+
+    @include mq(tablet) {
+      min-height: $masthead-height + 35px;
+    }
+
+    @include mq(wide) {
+      min-height: $masthead-height;
     }
   }
 }

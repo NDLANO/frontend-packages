@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
@@ -40,23 +40,14 @@ MastheadItem.defaultProps = {
   left: false,
 };
 
-const MastheadInfo = ({ fadeIn, fadeOut, children }) => {
-  const className = {
-    'u-fade-in': fadeIn,
-    'u-fade-out': fadeOut,
-  };
-  return <div {...classes('info', '', className)}>{children}</div>;
-};
+const MastheadInfo = ({ children }) => (
+  <div {...classes('info')}>
+    <div {...classes('info-content')}>{children}</div>
+  </div>
+);
 
 MastheadInfo.propTypes = {
-  fadeIn: PropTypes.bool,
-  fadeOut: PropTypes.bool,
   children: PropTypes.node.isRequired,
-};
-
-MastheadInfo.defaultProps = {
-  fadeIn: false,
-  fadeOut: false,
 };
 
 export const Masthead = ({
@@ -65,15 +56,18 @@ export const Masthead = ({
   hideOnNarrowScreen,
   infoContent,
 }) => (
-  <div {...classes('', { fixed, hideOnNarrowScreen })}>
-    {infoContent && (
-      <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
-        <MastheadInfo>{infoContent}</MastheadInfo>
-      </DisplayOnPageYOffset>
-    )}
+  <Fragment>
+    <div {...classes('placeholder', { infoContent })} />
+    <div {...classes('', { fixed, hideOnNarrowScreen, infoContent })}>
+      {infoContent && (
+        <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
+          <MastheadInfo>{infoContent}</MastheadInfo>
+        </DisplayOnPageYOffset>
+      )}
 
-    <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
-  </div>
+      <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
+    </div>
+  </Fragment>
 );
 
 Masthead.propTypes = {

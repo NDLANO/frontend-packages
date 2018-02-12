@@ -2,8 +2,9 @@
   background-repeat: repeat;
   background-size: 20px;
   background-color: $brand-color--light;
+
   @include mq(tablet) {
-    min-height: 330px;
+    min-height: 246px;
   }
 
   &--subject-material {
@@ -35,11 +36,11 @@
   }
 }
 .c-hero__content {
-  padding: 90px 0 $spacing--small;
+  padding: 0 0 $spacing--small;
   z-index: 9;
 
   @include mq(tablet) {
-    min-height: 174px;
+    min-height: 90px;
     padding-bottom: $spacing--small/2;
   }
   display: flex;

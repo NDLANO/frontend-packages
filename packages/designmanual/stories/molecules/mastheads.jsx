@@ -47,6 +47,7 @@ export const MastheadWithLogo = () => (
 );
 
 const messages = {
+  closeButton: 'Lukk',
   goTo: 'Gå til',
   subjectOverview: 'Fagoversikt',
   search: 'Søk',

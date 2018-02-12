@@ -15,15 +15,13 @@
 **/
 
 .c-breadcrumb-block {
-  opacity: 0;
   display: none;
 
-  &.u-fade-in {
-    @include mq(desktop) {
-      display: block;
-    }
+  @include mq(desktop) {
+    display: block;
   }
 }
+
 .c-breadcrumb-block__list {
   padding-top: 1px;
   margin-left: $spacing;

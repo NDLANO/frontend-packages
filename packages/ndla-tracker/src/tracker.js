@@ -31,7 +31,6 @@ export const configureTracker = ({
   googleTagManagerId,
 }) => {
   initializeGA(gaTrackingId);
-
   // Push current page and start listning
   pageViewHistory.push({
     url: `${location.pathname}${location.search}${location.hash}`,

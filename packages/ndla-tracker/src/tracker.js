@@ -76,11 +76,15 @@ export const sendPageView = ({ title, dimensions }) => {
     current.resetDataLayer();
   }
 
-  window.ga('send', {
-    hitType: 'pageview',
-    page: current.url,
-    title,
-  }, dimensions.ga);
+  window.ga(
+    'send',
+    {
+      hitType: 'pageview',
+      page: current.url,
+      title,
+    },
+    dimensions.ga,
+  );
 
   window.dataLayer.push({
     page_title: title,

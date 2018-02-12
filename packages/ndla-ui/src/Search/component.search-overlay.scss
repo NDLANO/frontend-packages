@@ -1,3 +1,5 @@
+$overlay-height: 150px;
+
 @keyframes searchAnimation {
   0% {
     display: none;
@@ -13,7 +15,7 @@
   }
   100% {
     opacity: 1;
-    height: 85px;
+    height: $overlay-height;
     top: 0;
     left: 0;
     right: 0;
@@ -36,7 +38,7 @@
 
 .c-search-overlay {
   z-index: 1000;
-  height: 85px;
+  height: $overlay-height;
   background: $brand-grey--lighter;
   position: fixed;
   top: 0;

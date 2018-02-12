@@ -55,6 +55,7 @@ const messages = {
   learningResourcesHeading: 'Læringsressurser',
   back: 'Tilbake',
   contentTypeResultsShowMore: 'Vis mer',
+  contentTypeResultsNoHit: 'Ingen ressurser',
 };
 
 class MastheadWithTopicMenu extends Component {
@@ -101,8 +102,10 @@ class MastheadWithTopicMenu extends Component {
               onFilterRemove={() => {}}
               messages={{
                 allContentTypeResultLabel: 'Se alle',
-                allResultLabel: 'Se alle søkeresultat for:',
+                allResultButtonText: 'Vis alle søketreff',
                 searchFieldTitle: 'Søk',
+                searchResultHeading: 'Forslag:',
+                contentTypeResultNoHit: 'Ingen treff',
               }}
               allResultUrl="#"
               searchResult={searchFieldResults}

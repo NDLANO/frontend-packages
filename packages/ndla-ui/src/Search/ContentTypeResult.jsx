@@ -10,22 +10,18 @@ const classes = BEMHelper({
   name: 'content-type-result',
 });
 
-const ContentTypeResult = ({ contentTypeResult, messages, iconOnRight }) => (
+const ContentTypeResult = ({ contentTypeResult, messages }) => (
   <section {...classes()}>
-    {!iconOnRight && (
-      <div {...classes('icon-wrapper')}>{contentTypeResult.icon}</div>
-    )}
-    <div>
-      <header>
-        <h1>
-          {contentTypeResult.title}{' '}
-          <span {...classes('total-count')}>
-            ({contentTypeResult.totalCount})
-          </span>
-        </h1>
-        {iconOnRight && contentTypeResult.icon}
-      </header>
+    <header>
+      <h1>
+        {contentTypeResult.title}{' '}
+        <span {...classes('total-count')}>
+          ({contentTypeResult.totalCount})
+        </span>
+      </h1>
+    </header>
 
+    {contentTypeResult.totalCount > 0 ? (
       <ul>
         {contentTypeResult.resources.map(item => (
           <li key={item.path}>
@@ -40,15 +36,17 @@ const ContentTypeResult = ({ contentTypeResult, messages, iconOnRight }) => (
           </li>
         )}
       </ul>
-    </div>
+    ) : (
+      <p {...classes('no-hit')}>{messages.noHit}</p>
+    )}
   </section>
 );
 
 ContentTypeResult.propTypes = {
-  iconOnRight: PropTypes.bool,
   contentTypeResult: ContentTypeResultShape.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,
+    noHit: PropTypes.string.isRequired,
   }).isRequired,
 };
 

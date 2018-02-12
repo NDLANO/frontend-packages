@@ -19,9 +19,11 @@ import ContentTypeResult from './ContentTypeResult';
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  allResultLabel: PropTypes.string,
-  allContentTypeResultLabel: PropTypes.string,
+  searchResultHeading: PropTypes.string.isRequired,
+  allResultButtonText: PropTypes.string.isRequired,
+  allContentTypeResultLabel: PropTypes.string.isRequired,
   searchFieldTitle: PropTypes.string.isRequired,
+  contentTypeResultNoHit: PropTypes.string.isRequired,
 });
 
 const searchResultShape = PropTypes.arrayOf(
@@ -39,8 +41,11 @@ const searchResultShape = PropTypes.arrayOf(
   }),
 );
 
-const SearchResult = ({ result, messages, searchString, allResultUrl }) => (
-  <div {...classes('search-result')}>
+const SearchResult = ({ result, messages, allResultUrl }) => (
+  <section {...classes('search-result')}>
+    <h1 {...classes('search-result-heading')}>
+      {messages.searchResultHeading}
+    </h1>
     <div {...classes('search-result-content')}>
       {result.map(contentTypeResult => (
         <ContentTypeResult
@@ -48,21 +53,20 @@ const SearchResult = ({ result, messages, searchString, allResultUrl }) => (
           key={contentTypeResult.title}
           messages={{
             allResultLabel: messages.allContentTypeResultLabel,
+            noHit: messages.contentTypeResultNoHit,
           }}
         />
       ))}
     </div>
     <div {...classes('go-to-search')}>
-      <span>{messages.allResultLabel}</span>{' '}
-      <SafeLink to={allResultUrl}>{searchString}</SafeLink>
+      <SafeLink to={allResultUrl}>{messages.allResultButtonText}</SafeLink>
     </div>
-  </div>
+  </section>
 );
 
 SearchResult.propTypes = {
   result: searchResultShape,
   messages: messagesShape.isRequired,
-  searchString: PropTypes.string.isRequired,
   allResultUrl: PropTypes.string.isRequired,
 };
 
@@ -101,21 +105,21 @@ const SearchField = ({
 
   return (
     <div {...classes('', modifiers)}>
-      <div {...classes('filters')}>
-        <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
-      </div>
       <input
         title={messages.searchFieldTitle}
         type="search"
         {...classes('input')}
         aria-autocomplete="list"
-        autoComplete="on"
+        autoComplete="off"
         id="search"
         name="search"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
+      <div {...classes('filters')}>
+        <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
+      </div>
       <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
         <SearchIcon />
       </button>

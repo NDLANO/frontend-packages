@@ -1,6 +1,6 @@
 {
   "name": "ndla-icons",
-  "version": "0.1.17",
+  "version": "0.2.0",
   "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
   "main": "lib/index.js",

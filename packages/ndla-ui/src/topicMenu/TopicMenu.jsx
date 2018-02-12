@@ -273,6 +273,7 @@ export default class TopicMenu extends Component {
                       contentTypeResult={result}
                       messages={{
                         allResultLabel: messages.contentTypeResultsShowMore,
+                        noHit: messages.contentTypeResultsNoHit,
                       }}
                       iconOnRight
                     />
@@ -300,6 +301,7 @@ TopicMenu.propTypes = {
     learningResourcesHeading: PropTypes.string.isRequired,
     back: PropTypes.string.isRequired,
     contentTypeResultsShowMore: PropTypes.string.isRequired,
+    contentTypeResultsNoHit: PropTypes.string.isRequired,
   }).isRequired,
   filterOptions: PropTypes.arrayOf(
     PropTypes.shape({

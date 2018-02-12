@@ -3,7 +3,6 @@ import {
   LearningPathBadge,
   TasksAndActivitiesBadge,
   SubjectMaterialBadge,
-  AssessmentResourcesBadge,
 } from 'ndla-ui';
 
 export const searchFieldSearchResults = [
@@ -23,18 +22,7 @@ export const searchFieldSearchResults = [
     ],
   },
   {
-    title: 'Oppgaver og aktiviteter',
-    icon: <TasksAndActivitiesBadge size="x-small" />,
-    totalCount: 5,
-    resources: [
-      {
-        path: '#1',
-        name: 'Hvem har mediemakt i dag?',
-      },
-    ],
-  },
-  {
-    title: 'Fagartikler',
+    title: 'Fagstoff',
     icon: <SubjectMaterialBadge size="x-small" />,
     totalCount: 2,
     showAllLinkUrl: '#',
@@ -50,14 +38,9 @@ export const searchFieldSearchResults = [
     ],
   },
   {
-    title: 'Vurderingsressurser',
-    icon: <AssessmentResourcesBadge size="x-small" />,
-    totalCount: 1,
-    resources: [
-      {
-        path: '#1',
-        name: 'Vurdering i Mediestruktur',
-      },
-    ],
+    title: 'Oppgaver og aktiviteter',
+    icon: <TasksAndActivitiesBadge size="x-small" />,
+    totalCount: 0,
+    resources: [],
   },
 ];

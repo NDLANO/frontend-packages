@@ -1,6 +1,6 @@
 {
   "name": "ndla-tracker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple library for tracking NDLA applications",
   "license": "GPL-3.0",
   "main": "lib/index.js",

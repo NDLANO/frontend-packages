@@ -80,11 +80,12 @@ export const sendPageView = ({ title, dimensions }) => {
     hitType: 'pageview',
     page: current.url,
     title,
-  });
+  }, dimensions.ga);
 
   window.dataLayer.push({
     page_title: title,
     event: 'Pageview',
     url: current.url,
+    ...dimensions.gtm,
   });
 };

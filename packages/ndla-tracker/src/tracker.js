@@ -75,6 +75,8 @@ export const sendPageView = ({ title, dimensions }) => {
     current.resetDataLayer();
   }
 
+  const dim = dimensions || { ga: {}, gtm: {} };
+
   window.ga(
     'send',
     {
@@ -82,13 +84,13 @@ export const sendPageView = ({ title, dimensions }) => {
       page: current.url,
       title,
     },
-    dimensions.ga,
+    dim.ga,
   );
 
   window.dataLayer.push({
     page_title: title,
     event: 'Pageview',
     url: current.url,
-    ...dimensions.gtm,
+    ...dim.gtm,
   });
 };

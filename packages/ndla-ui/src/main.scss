@@ -65,8 +65,9 @@ $inuit-wrapper-width: 1024px;
 @import 'button/component.button';
 @import 'hero/component.hero';
 @import 'Masthead/component.masthead';
-@import 'global/components/component.article';
-@import 'global/components/component.article-byline';
+@import 'Article/component.article';
+@import 'Article/component.article-byline';
+@import 'Article/component.article-author-and-license';
 
 @import 'global/components/component.bodybox';
 @import 'Breadcrumb/component.breadcrumb';

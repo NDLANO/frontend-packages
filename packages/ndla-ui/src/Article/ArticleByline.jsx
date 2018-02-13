@@ -9,7 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Time, User } from 'ndla-icons/common';
+import { Time } from 'ndla-icons/common';
+import AuthorsAndLicense from './ArticleAuthorsAndLicense';
 
 const classes = new BEMHelper({
   name: 'article-byline',
@@ -18,15 +19,7 @@ const classes = new BEMHelper({
 
 const ArticleByline = ({ authors, license, messages, updated, children }) => (
   <div {...classes()}>
-    <span {...classes('flex')}>
-      <span {...classes('icon')}>
-        <User />
-      </span>
-      <span {...classes('authors')}>
-        {authors && `${authors.map(author => author.name).join(', ')}.`} <br />
-        ({license.abbreviation})
-      </span>
-    </span>
+    <AuthorsAndLicense license={license} authors={authors} />
     <span {...classes('flex')}>
       <span {...classes('icon')}>
         <Time />
@@ -47,7 +40,7 @@ ArticleByline.propTypes = {
   ).isRequired,
   updated: PropTypes.string.isRequired,
   license: PropTypes.shape({
-    rights: PropTypes.arrayOf(PropTypes.string).isRequired,
+    abbreviation: PropTypes.string.isRequired,
   }).isRequired,
   messages: PropTypes.shape({
     lastUpdated: PropTypes.string.isRequired,

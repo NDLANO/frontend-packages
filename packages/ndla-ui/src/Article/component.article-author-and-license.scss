@@ -1,0 +1,10 @@
+.c-article-authors-and-license {
+  display: flex;
+  color: $brand-grey;
+  @include inuit-font-size(14px, 20px);
+  clear:both;
+
+  &__icon {
+    padding-right: $spacing--small/2;
+  }
+}

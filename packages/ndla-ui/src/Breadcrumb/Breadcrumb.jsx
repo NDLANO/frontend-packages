@@ -36,6 +36,7 @@ const Breadcrumb = ({ children, subject, topicPath, toTopic, toSubjects }) => {
         <BreadcrumbItem
           classes={classes}
           key={subject.id}
+          isCurrent={topicPath.length === 0}
           topicIds={[]}
           to={toTopic(subject.id)}>
           {subject.name}
@@ -60,7 +61,6 @@ Breadcrumb.propTypes = {
   topicPath: PropTypes.arrayOf(TopicShape),
   toTopic: PropTypes.func.isRequired,
   toSubjects: PropTypes.func.isRequired,
-  subjectsTitle: PropTypes.string.isRequired,
 };
 
 export default Breadcrumb;

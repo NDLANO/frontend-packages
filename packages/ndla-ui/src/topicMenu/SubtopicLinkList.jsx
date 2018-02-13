@@ -17,26 +17,26 @@ const SubtopicLink = ({
   classes,
   closeMenu,
   to,
-  subtopic,
+  subtopic: { subtopics, id, name },
   onSubtopicExpand,
   expandedSubtopicId,
 }) => {
-  const active = subtopic.id === expandedSubtopicId;
-
+  const active = id === expandedSubtopicId;
+  const hasSubtopics = Array.isArray(subtopics) && subtopics.length > 0;
   return (
-    <li {...classes('subtopic-item', active && 'active')} key={subtopic.id}>
+    <li {...classes('subtopic-item', active && 'active')} key={id}>
       <SafeLink
         {...classes('link')}
         onClick={event => {
-          if (subtopic.subtopics) {
+          if (hasSubtopics) {
             event.preventDefault();
-            onSubtopicExpand(subtopic.id);
+            onSubtopicExpand(id);
           } else {
             closeMenu();
           }
         }}
         to={to}>
-        {subtopic.name}
+        {name}
       </SafeLink>
     </li>
   );

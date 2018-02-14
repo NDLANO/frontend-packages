@@ -111,7 +111,6 @@
 
   @include mq(desktop) {
     min-height: auto;
-    height: calc(100% - $masthead-height);
     margin-top: $masthead-height;
     padding: 0 0 $spacing--large 0;
     overflow: auto;
@@ -160,7 +159,8 @@
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large ($spacing--large + $spacing--small);
+  padding: $spacing--small $spacing $spacing--large ($spacing--large +
+        $spacing--small);
 
   @include mq(desktop) {
     margin-top: $spacing;

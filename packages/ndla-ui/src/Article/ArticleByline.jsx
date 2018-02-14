@@ -23,7 +23,7 @@ const ArticleByline = ({ authors, license, messages, updated, children }) => (
         <User />
       </span>
       <span {...classes('authors')}>
-        {authors && `${authors.map(author => author.name).join(', ')}`} <br />
+        {authors && `${authors.map(author => author.name).join(', ')}.`} <br />
         ({license.abbreviation})
       </span>
     </span>

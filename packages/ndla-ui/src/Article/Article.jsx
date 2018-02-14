@@ -71,42 +71,40 @@ ArticleIntroduction.propTypes = {
 };
 
 export const Article = ({
-  article,
+  article: {
+    title,
+    introduction,
+    updated,
+    content,
+    footNotes,
+    copyright: { license: licenseObj, creators, rightsholders },
+  },
   icon,
   licenseBox,
   modifier,
   messages,
   children,
 }) => {
-  const license = getLicenseByAbbreviation(article.copyright.license.license);
-
+  const license = getLicenseByAbbreviation(licenseObj.license);
+  const authors =
+    Array.isArray(creators) && creators.length > 0 ? creators : rightsholders;
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
         <ArticleTitle icon={icon} label={messages.label}>
-          {article.title}
+          {title}
         </ArticleTitle>
-        <ArticleIntroduction>{article.introduction}</ArticleIntroduction>
-        <ArticleByline
-          messages={messages}
-          authors={
-            article.copyright.authors
-              ? article.copyright.authors
-              : article.copyright.creators
-          }
-          license={license}
-          updated={article.updated}>
+        <ArticleIntroduction>{introduction}</ArticleIntroduction>
+        <ArticleByline {...{ messages, authors, updated, license }}>
           {licenseBox}
         </ArticleByline>
       </LayoutItem>
       <LayoutItem layout="center">
-        <ArticleContent content={article.content} />
+        <ArticleContent content={content} />
       </LayoutItem>
       <LayoutItem layout="center">
-        {article.footNotes &&
-          article.footNotes.length > 0 && (
-            <ArticleFootNotes footNotes={article.footNotes} />
-          )}
+        {footNotes &&
+          footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>

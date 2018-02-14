@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -21,6 +21,7 @@ import {
   ToggleSearchButton,
   SearchOverlay,
   SearchField,
+  SafeLink,
 } from 'ndla-ui';
 
 import {
@@ -46,6 +47,7 @@ export const MastheadWithLogo = () => (
 );
 
 const messages = {
+  closeButton: 'Lukk',
   goTo: 'Gå til',
   subjectOverview: 'Fagoversikt',
   search: 'Søk',
@@ -114,7 +116,10 @@ class MastheadWithTopicMenu extends Component {
     }
 
     return (
-      <Masthead fixed hideOnNarrowScreen={this.props.hideOnNarrowScreen}>
+      <Masthead
+        fixed
+        hideOnNarrowScreen={this.props.hideOnNarrowScreen}
+        infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
           <SiteNav>
             <ClickToggle
@@ -131,6 +136,7 @@ class MastheadWithTopicMenu extends Component {
               className="c-topic-menu-container"
               buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
               <TopicMenu
+                isBeta={this.props.beta}
                 subjectTitle="Mediefag"
                 toSubject={() => '#'}
                 toTopic={() => '#'}
@@ -168,7 +174,7 @@ class MastheadWithTopicMenu extends Component {
             </ClickToggle>
           </SiteNav>
 
-          <DisplayOnPageYOffset yOffset={150}>
+          <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock
               subject={subjectList[1]}
               topicPath={topicList.slice(0, 2)}
@@ -178,7 +184,11 @@ class MastheadWithTopicMenu extends Component {
         </MastheadItem>
         <MastheadItem right>
           {searchButtonView}
-          <Logo to="#" altText="Nasjonal digital læringsarena" />
+          <Logo
+            to="#"
+            altText="Nasjonal digital læringsarena"
+            isBeta={this.props.beta}
+          />
         </MastheadItem>
       </Masthead>
     );
@@ -189,10 +199,18 @@ MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
   hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
+  beta: PropTypes.bool,
+  betaInfoContent: PropTypes.node,
 };
 
 MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
+  betaInfoContent: (
+    <Fragment>
+      <span>Du tester nå de nye nettsidene.</span>{' '}
+      <SafeLink to="#">Les mer om nye NDLA.no</SafeLink>
+    </Fragment>
+  ),
 };
 
 export { MastheadWithTopicMenu };

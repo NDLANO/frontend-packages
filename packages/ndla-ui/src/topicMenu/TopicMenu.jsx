@@ -16,11 +16,14 @@ import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
 import debounce from 'lodash/debounce';
 
 import { Home } from 'ndla-icons/common';
+import { Cross } from 'ndla-icons/action';
+
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape, ContentTypeResultShape } from '../shapes';
 
 import { OpenSearchButton, ContentTypeResult } from '../Search';
+import Logo from '../Logo';
 import FilterList from '../filter/FilterList';
 
 const classes = new BEMHelper({
@@ -132,15 +135,28 @@ export default class TopicMenu extends Component {
     return (
       <nav {...classes('dropdown', null, 'o-wrapper u-1/1')}>
         <div {...classes('masthead')}>
-          {!hideSearch && (
-            <OpenSearchButton
-              onOpen={this.props.onOpenSearch}
-              searchPageUrl={this.props.searchPageUrl}
-              messages={{
-                buttonText: messages.search,
-              }}
+          <div {...classes('masthead-left')}>
+            <button {...classes('close-button')} onClick={closeMenu}>
+              <Cross />
+              <span>{messages.closeButton}</span>
+            </button>
+          </div>
+          <div {...classes('masthead-right')}>
+            {!hideSearch && (
+              <OpenSearchButton
+                onOpen={this.props.onOpenSearch}
+                searchPageUrl={this.props.searchPageUrl}
+                messages={{
+                  buttonText: messages.search,
+                }}
+              />
+            )}
+            <Logo
+              to="#"
+              altText="Nasjonal digital læringsarena"
+              isBeta={this.props.isBeta}
             />
-          )}
+          </div>
         </div>
         <div {...classes('content')}>
           {!disableMain && (
@@ -277,6 +293,7 @@ TopicMenu.propTypes = {
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,
   messages: PropTypes.shape({
+    closeButton: PropTypes.string.isRequired,
     goTo: PropTypes.string.isRequired,
     subjectOverview: PropTypes.string.isRequired,
     search: PropTypes.string.isRequired,
@@ -301,5 +318,6 @@ TopicMenu.propTypes = {
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,
+  isBeta: PropTypes.bool,
   hideSearch: PropTypes.bool,
 };

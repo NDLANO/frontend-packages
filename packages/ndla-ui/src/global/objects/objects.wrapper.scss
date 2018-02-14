@@ -30,12 +30,12 @@
 
   /* Add to clear masthead */
   &--clear {
-    margin-top: $spacing--large * 2;
+    margin-top: $spacing;
   }
 
   &--clear-desktop {
     @include mq(tablet) {
-      margin-top: $spacing--large * 2;
+      margin-top: $spacing;
     }
   }
 }

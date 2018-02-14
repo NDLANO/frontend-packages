@@ -12,7 +12,6 @@
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
-  z-index: 100;
   padding: $spacing--small;
   padding-right: $spacing;
   padding-left: $spacing*2;
@@ -107,13 +106,12 @@
   display: flex;
   flex-flow: column;
 
-  padding: 85px 0 0 0;
+  padding: $masthead-height 0 0 0;
   min-height: 100%;
 
   @include mq(desktop) {
     min-height: auto;
-    height: calc(100% - 85px);
-    margin-top: 85px;
+    margin-top: $masthead-height;
     padding: 0 0 $spacing--large 0;
     overflow: auto;
   }
@@ -161,7 +159,8 @@
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large ($spacing--large + $spacing--small);
+  padding: $spacing--small $spacing $spacing--large ($spacing--large +
+        $spacing--small);
 
   @include mq(desktop) {
     margin-top: $spacing;
@@ -307,6 +306,22 @@
   .c-icon {
     width: 24px;
     height: 24px;
+    margin-right: $spacing--small;
+  }
+}
+
+.c-topic-menu__close-button {
+  color: $brand-color;
+  background: none;
+  border: 0;
+  display: flex;
+  align-items: center;
+  padding: $spacing--small;
+  cursor: pointer;
+
+  .c-icon {
+    height: 24px;
+    width: 24px;
     margin-right: $spacing--small;
   }
 }
@@ -459,9 +474,8 @@
   z-index: 99;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  align-content: space-between;
-  height: 85px;
+  justify-content: space-between;
+  height: $masthead-height;
   padding: 0 $spacing--small;
   position: fixed;
   top: 0;
@@ -469,9 +483,30 @@
 
   @include mq(desktop) {
     position: absolute;
-    left: 30%;
-    padding: 0 204px 0 0;
-    width: 70%;
+    padding: 0 $spacing--large;
+  }
+
+  .c-toggle-search-button__button {
+    @include mq(desktop) {
+      margin-right: $spacing--medium;
+    }
+  }
+
+  .c-logo {
+    display: none;
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+
+  &-left,
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &-right {
+    justify-content: flex-end;
   }
 }
 .c-topic-menu__search {

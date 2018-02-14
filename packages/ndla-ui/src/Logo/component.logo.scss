@@ -3,14 +3,27 @@
   margin: 0;
   position: relative;
 
-  &__graphic {
-    fill: $brand-color;
+  &--beta {
+    width: 170px;
+    .c-logo__graphic {
+      height: 48px;
+      margin-right: 8px;
+    }
+
+    a {
+      display: flex;
+    }
   }
+
   &--large {
     width: 300px;
   }
 
-  @include mq(desktop) {
-    z-index: 100;
+  &__graphic {
+    fill: $brand-color;
+  }
+
+  &__beta {
+    margin-top: 9px;
   }
 }

@@ -20,6 +20,8 @@ export {
 
 export { BetaNavigation } from './Beta';
 
+export { SubjectHeader } from './Subject';
+
 export { default as Button } from './button/Button';
 export { default as Logo } from './Logo';
 export { default as Table } from './table/Table';

@@ -28,6 +28,7 @@ import {
   LayoutItem,
   Breadcrumb,
   Content,
+  SubjectHeader,
 } from 'ndla-ui';
 
 import {
@@ -324,36 +325,23 @@ storiesOf('Emnesider', module)
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
+        <SubjectHeader heading="Medieuttrykk og mediesamfunnet" />
         <OneColumn>
-          <div className="c-article">
-            <LayoutItem layout="center">
-              <h1 className="c-article__title">Mediefag</h1>
-              <FilterList
-                options={[
-                  { title: 'VG1', value: 'VG1' },
-                  { title: 'VG2', value: 'VG2' },
-                ]}
-                values={['VG1']}
-              />
-            </LayoutItem>
-            <ResourcesSubTopics />
-          </div>
+          <Breadcrumb
+            toSubjects={() => '#'}
+            subjectsTitle="Fag"
+            subject={subjectList[1]}
+            topicPath={[]}
+            toTopic={() => '#'}
+          />
         </OneColumn>
+        <FilterList
+          options={[
+            { title: 'VG1', value: 'VG1' },
+            { title: 'VG2', value: 'VG2' },
+          ]}
+          values={['VG1']}
+        />
       </Content>
       <FooterExample />
     </PageContainer>

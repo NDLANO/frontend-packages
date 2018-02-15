@@ -1,0 +1,50 @@
+.c-subject-header {
+  width: 100%;
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $brand-color;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--mobile {
+      display: none;
+      @include mq($from: mobile, $until: mobile) {
+        display: block;
+      }
+    }
+    &--tablet {
+      display: none;
+      @include mq($from: tablet, $until: tablet) {
+        display: block;
+      }
+    }
+    &--desktop {
+      display: none;
+      @include mq($from: desktop, $until: desktop) {
+        display: block;
+      }
+    }
+    &--wide {
+      display: none;
+      @include mq($from: wide, $until: wide) {
+        display: block;
+      }
+    }
+  }
+
+  &__heading {
+    color: $white;
+    @include font-size(52px, 52px);
+    text-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    margin: 0;
+    font-weight: 700;
+  }
+}

@@ -55,6 +55,8 @@ export const articleResources = [
     resourceTypes: [],
     contentUri: 'urn:article:341',
     title: 'Hvordan oppstår ideer?',
+    introduction:
+      'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
     type: 'Fagstoff',
   },
   {

@@ -68,6 +68,9 @@
   @include mq(tablet) {
     float: right;
   }
+  @include mq($until: desktop) {
+    margin-right: $spacing--small;
+  }
 }
 .license__heading {
   margin-left: $spacing;

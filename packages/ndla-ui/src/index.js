@@ -20,7 +20,13 @@ export {
 
 export { BetaNavigation } from './Beta';
 
-export { SubjectHeader } from './Subject';
+export {
+  SubjectHeader,
+  SubjectContent,
+  SubjectTopics,
+  SubjectSidebarWrapper,
+  SubjectShortcuts,
+} from './Subject';
 
 export { default as Button } from './button/Button';
 export { default as Logo } from './Logo';

@@ -1,1 +1,21 @@
+$subject-margin: $spacing--medium + $spacing--large;
+
 @import './component.subject-header';
+@import './component.subject-shortcut';
+
+.c-subject-content {
+  &__breadcrumb {
+    margin: $spacing--medium 0 0 $subject-margin;
+  }
+
+  &__content {
+    margin-top: $spacing--large;
+    display: flex;
+  }
+}
+
+.c-subject-sidebar-wrapper {
+  flex-basis: 390px;
+  flex-shrink: 0;
+  margin-top: 9px;
+}

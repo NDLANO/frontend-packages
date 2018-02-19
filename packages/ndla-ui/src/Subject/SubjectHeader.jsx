@@ -20,7 +20,7 @@ const SubjectHeader = ({ images, heading }) => (
           />
         )),
       )}
-    <OneColumn>
+    <OneColumn noPadding>
       <h1 {...classes('heading')}>{heading}</h1>
     </OneColumn>
   </header>

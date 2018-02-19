@@ -25,10 +25,12 @@ import {
   ResourcesWrapper,
   ResourcesTitle,
   TopicIntroductionList,
-  LayoutItem,
   Breadcrumb,
   Content,
   SubjectHeader,
+  SubjectContent,
+  SubjectSidebarWrapper,
+  SubjectShortcuts,
 } from 'ndla-ui';
 
 import {
@@ -44,15 +46,6 @@ import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import article, { topicList, subjectList } from '../../dummydata/index';
-
-const ResourcesSubTopics = () => (
-  <LayoutItem layout="extend">
-    <ResourcesWrapper>
-      <ResourcesTitle>Emner</ResourcesTitle>
-      <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-    </ResourcesWrapper>
-  </LayoutItem>
-);
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
@@ -325,23 +318,81 @@ storiesOf('Emnesider', module)
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectHeader heading="Medieuttrykk og mediesamfunnet" />
-        <OneColumn>
-          <Breadcrumb
-            toSubjects={() => '#'}
-            subjectsTitle="Fag"
-            subject={subjectList[1]}
-            topicPath={[]}
-            toTopic={() => '#'}
+        <article>
+          <SubjectHeader heading="Medieuttrykk og mediesamfunnet" />
+          <OneColumn noPadding>
+            <SubjectContent
+              breadcrumb={
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={[]}
+                  toTopic={() => '#'}
+                />
+              }>
+              <ResourcesWrapper
+                subjectPage
+                header={<ResourcesTitle>Emner</ResourcesTitle>}>
+                <TopicIntroductionList
+                  toTopic={() => '#'}
+                  topics={topicList}
+                  subjectPage
+                />
+              </ResourcesWrapper>
+              <SubjectSidebarWrapper>
+                <SubjectShortcuts
+                  messages={{
+                    heading: 'Gå direkte til',
+                    showMore: 'Flere',
+                    showLess: 'Færre',
+                  }}
+                  links={[
+                    {
+                      url: '#1',
+                      text: 'Fagstoff',
+                    },
+                    {
+                      url: '#2',
+                      text: 'Oppgaver',
+                    },
+                    {
+                      url: '#3',
+                      text: 'Læringsstier',
+                    },
+                    {
+                      url: '#4',
+                      text: 'Film',
+                    },
+                    {
+                      url: '#5',
+                      text: 'Spill',
+                    },
+                    {
+                      url: '#6',
+                      text: 'Verktøy og mal',
+                    },
+                    {
+                      url: '#7',
+                      text: 'Kategori 7',
+                    },
+                    {
+                      url: '#8',
+                      text: 'Kategori 8',
+                    },
+                  ]}
+                />
+              </SubjectSidebarWrapper>
+            </SubjectContent>
+          </OneColumn>
+          <FilterList
+            options={[
+              { title: 'VG1', value: 'VG1' },
+              { title: 'VG2', value: 'VG2' },
+            ]}
+            values={['VG1']}
           />
-        </OneColumn>
-        <FilterList
-          options={[
-            { title: 'VG1', value: 'VG1' },
-            { title: 'VG2', value: 'VG2' },
-          ]}
-          values={['VG1']}
-        />
+        </article>
       </Content>
       <FooterExample />
     </PageContainer>

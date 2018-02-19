@@ -84,7 +84,7 @@ storiesOf('Sidevisninger', module)
             </div>
           </OneColumn>
         </SubjectMaterialHero>
-        <ArticleLoader articleId="17477" />
+        <ArticleLoader articleId="744" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -378,7 +378,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="17507"
+          articleId="4824"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           hideResources
@@ -408,7 +408,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="5948"
+          articleId="4853"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
         />

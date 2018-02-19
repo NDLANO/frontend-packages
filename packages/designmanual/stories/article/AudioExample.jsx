@@ -55,9 +55,8 @@ class AudioExample extends Component {
         <FigureLicenseDialog
           id={this.id}
           key="details"
-          licenseRights={license.rights}
+          license={license}
           authors={authors}
-          licenseUrl={license.url}
           origin="https://www.wikimedia.com"
           title={caption}
           messages={messages}>

@@ -3,14 +3,12 @@
 ** Box listing all licensed items in article
 **/
 
-
-
 .c-licensebox {
-  position: relative;
+  position: fixed;
+  -webkit-overflow-scrolling: touch; // Fixes scrolling on iOS devices
   @include inuit-font-size(20px, 32px);
   display: none;
 
-  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -35,8 +33,7 @@
   background: $brand-color--lighter;
   padding-top: $spacing;
   color: $black;
-  box-shadow: 0 0 30px rgba($black, .2);
-
+  box-shadow: 0 0 30px rgba($black, 0.2);
 
   @include mq($until: desktop) {
     position: fixed;
@@ -69,7 +66,10 @@
     box-shadow: $link--hover;
   }
   @include mq(tablet) {
-    float:right;
+    float: right;
+  }
+  @include mq($until: desktop) {
+    margin-right: $spacing--small;
   }
 }
 .license__heading {
@@ -91,7 +91,7 @@
     a,
     div {
       animation-name: fadeInLeft;
-      animation-duration: .5s;
+      animation-duration: 0.5s;
     }
   }
 }
@@ -107,7 +107,10 @@
   overflow: hidden;
 }
 
-.license__list-item > img, .license__list-item > div, .license__list-item > embed, .license__list-item > iframe {
+.license__list-item > img,
+.license__list-item > div,
+.license__list-item > embed,
+.license__list-item > iframe {
   margin: 0 $spacing $spacing 0;
   float: left;
 }

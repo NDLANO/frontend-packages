@@ -17,6 +17,9 @@ import {
   Content,
   LayoutItem,
   Image,
+  FactBox,
+  ArticleAuthorsAndLicense,
+  Table,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -36,12 +39,6 @@ import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
 } from './article/RelatedArticleListExample';
-
-const toggle = () => {
-  document
-    .querySelector('.c-collate__panel')
-    .classList.toggle('c-collate__panel--expanded');
-};
 
 storiesOf('Sammensatte moduler', module)
   .add('Brødsmulesti', () => (
@@ -294,7 +291,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Sammensatte noder', () => (
     <div>
-      <StoryIntro title="Sammensatte moduler" />
+      <StoryIntro title="Sammensatte noder" />
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
         <p>
@@ -317,48 +314,125 @@ storiesOf('Sammensatte moduler', module)
             underernæring og internkontroll i helsetjenesten
           </em>. Helsedirektoratet
         </p>
-        <div className="c-collate">
-          <div className="c-collate__info">
-            <svg
-              onClick={toggle}
-              width="25px"
-              height="24px"
-              viewBox="48 682 25 24"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink">
-              <g
-                id="noun_90272_cc"
-                stroke="none"
-                strokeWidth="1"
-                fill="none"
-                fillRule="evenodd"
-                transform="translate(48.500000, 682.000000)">
-                <g id="Group" fill="#000">
-                  <path
-                    d="M12.1015038,0.327067669 C5.59928833,0.327067669 0.327067669,5.59854468 0.327067669,12.1015038 C0.327067669,18.6044628 5.59928833,23.8759398 12.1015038,23.8759398 C18.6037192,23.8759398 23.8759398,18.6044628 23.8759398,12.1015038 C23.8759398,5.59854468 18.6037192,0.327067669 12.1015038,0.327067669 Z M14.6864263,10.9567807 C14.5736396,11.4976611 12.9361254,14.4856412 12.4591987,15.4957638 C12.1872712,16.0740746 11.6525879,16.8759756 11.7698365,17.5499691 C11.8630404,18.085644 12.4168108,18.3761627 12.8996866,18.4929156 C13.0593231,18.5313374 13.5216247,18.5831449 13.5216247,18.81789 C13.5216247,18.9133249 13.4457725,18.9889292 13.3503376,18.991408 C13.3503376,18.9936389 9.71240871,18.9936389 9.71240871,18.9936389 C9.19334199,18.9936389 8.74194729,18.625285 8.67650621,18.1101844 C8.60164559,17.5301385 8.99379628,17.0088408 9.2307723,16.5125793 C9.73893217,15.4496576 10.3167471,14.4187128 10.8214366,13.3528165 C11.0036306,12.9681023 11.1721909,12.5779346 11.3573594,12.1954514 C11.5425279,11.8149512 11.7713238,11.3831392 11.6188758,10.951823 C11.455521,10.4920003 10.9121618,10.2612214 10.473657,10.1543839 C10.3137725,10.1164578 9.85171888,10.0641545 9.85171888,9.83064883 C9.85171888,9.73447028 9.9280668,9.65861812 10.0235017,9.65638718 C10.0235017,9.65415623 13.6609349,9.65415623 13.6609349,9.65415623 C14.1990886,9.65415623 14.6844432,10.0750613 14.7129497,10.6119756 C14.7196426,10.7262496 14.7094794,10.8412673 14.6864263,10.9567807 Z M13.8537877,8.57388271 C12.9247228,8.57388271 12.1716546,7.82007091 12.1716546,6.8915017 C12.1716546,5.96293249 12.9247228,5.20936858 13.8537877,5.20936858 C14.7816133,5.20936858 15.5359209,5.96318037 15.5359209,6.8915017 C15.5359209,7.82007091 14.7816133,8.57388271 13.8537877,8.57388271 Z"
-                    id="Shape"
-                  />
-                </g>
-              </g>
-            </svg>
-          </div>
-          <div className="c-collate__panel">
-            <p>Innhold her</p>
-            <h3>Utfordringer til deg:</h3>
-            <details>
-              <summary>Utfordringer</summary>
-              <ol>
-                <li>Beskriv hva internkontroll er.</li>
-                <li>
-                  Skriv ned noen forslag på hvordan man kan sikre at pasienter
-                  får dekket sine behov for ernæring. Ta gjerne utgangspunkt i
-                  en arbeidsplass. Diskuter deretter i klassen.
-                </li>
+        <FactBox isNode>
+          <h1>Node i node</h1>
+          <FigureWithLicense type="right">
+            <Image
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+            />
+          </FigureWithLicense>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <ol>
+            <li>Listepunkt 1</li>
+            <li>Listepunkt 2</li>
+            <li>
+              Listepunkt 3
+              <ol className="ol-list--roman">
+                <li>Underlistepunkt 1</li>
+                <li>Underlistepunkt 2</li>
               </ol>
-            </details>
-          </div>
-        </div>
+            </li>
+            <li>Listepunkt 4</li>
+            <li>Listepunkt 5</li>
+          </ol>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <h2>Overskrift</h2>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <FigureWithLicense
+            resizeIframe
+            caption="Utholdenhet - animasjon av oksygentransporten"
+            reuseLabel="videoen"
+            runScripts>
+            <iframe
+              title="Video: Utholdenhet - animasjon av oksygentransporten"
+              height="270"
+              width="480"
+              frameBorder="0"
+              src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+              allowFullScreen
+            />
+          </FigureWithLicense>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <Table>
+            <thead>
+              <tr>
+                <th>Tittel 1</th>
+                <th>Tittel 2</th>
+                <th>Tittel 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+              </tr>
+              <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+              </tr>
+              <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+              </tr>
+            </tbody>
+          </Table>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+            pitcher, blir idéen og historien i den filmen du planlegger å lage,
+            tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+            klassen.
+          </p>
+          <ArticleAuthorsAndLicense
+            authors={[
+              { name: 'Ola Nordnes', url: '#' },
+              { name: 'Kari Nordnes' },
+            ]}
+            license={{ abbreviation: 'CC BY-NC-ND' }}
+            singleLine
+          />
+        </FactBox>
       </StoryBody>
     </div>
   ))

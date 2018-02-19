@@ -10,7 +10,6 @@ import * as actionIcons from 'ndla-icons/action';
 import { BY, NC, ND } from 'ndla-licenses';
 import {
   Aside,
-  FactBox,
   Button,
   Logo,
   LayoutItem,
@@ -20,6 +19,7 @@ import {
   Translation,
   TranslationLine,
   OneColumn,
+  FactBox,
 } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
@@ -646,7 +646,7 @@ storiesOf('Enkle komponenter', module)
         </section>
 
         <FactBox>
-          <h2>Faktaboks</h2>
+          <h1>Faktaboks</h1>
           <p>
             En faktaboks kan inneholde punktlister eller korte fakta som er
             relevant for artikkelens innhold.

@@ -23,14 +23,15 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const FactBox = ({ children }) => (
-  <aside {...classes()}>
+const FactBox = ({ children, isNode }) => (
+  <aside {...classes('', { isNode })}>
     <div {...classes('content')}>{children}</div>
     <Button {...classes('button')} onClick={toggleFactBox} />
   </aside>
 );
 
 FactBox.propTypes = {
+  isNode: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 

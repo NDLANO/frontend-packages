@@ -15,6 +15,9 @@ import Article, {
 export { default as ArticleByline } from './ArticleByline';
 export { default as ArticleContent } from './ArticleContent';
 export { default as ArticleFootNotes } from './ArticleFootNotes';
+export {
+  default as ArticleAuthorsAndLicense,
+} from './ArticleAuthorsAndLicense';
 export { ArticleTitle, ArticleIntroduction, ArticleWrapper };
 
 export default Article;

@@ -23,7 +23,7 @@ $padding-bottom: 17px;
       text-align: center;
       position: absolute;
       top: 0;
-      bottom: 20px;
+      bottom: 18px;
       right: 0;
       width: 99%;
       margin: 0.5% 0.5% 0 0.5%;
@@ -112,32 +112,76 @@ $padding-bottom: 17px;
     box-shadow: 0px 0px 9px -3px $brand-grey;
   }
 
-  figure {
+  .c-figure {
     // Overrule default images width
     width: 100% !important;
-    left: 0 !important;
+    left: auto !important;
     padding: 0;
+
+    &.u-float-left {
+      @include mq(tablet) {
+        width: 50% !important;
+        margin-left: 0;
+      }
+
+    }
+    &.u-float-right {
+      @include mq(tablet) {
+        width: 50% !important;
+        margin-right: 0;
+      }
+    }
   }
 
-  h2:first-child {
-    border-bottom: 2px solid $brand-color;
-    margin-top: 0;
-    margin-bottom: $spacing;
-    @include inuit-font-size(22px, 34px);
-    font-weight: $font-weight-bold;
-    position: relative;
-    z-index: 2;
+  &:not(.c-factbox--isNode) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      letter-spacing: 0.1em;
+      margin-top: $spacing;
+      margin-bottom: $spacing--small;
+      border-bottom: 1px solid $brand-color--light;
+    }
+
+    h1 {
+      border-bottom: 2px solid $brand-color;
+      margin-bottom: $spacing;
+    }
   }
 
+  h1,
   h2,
   h3,
   h4,
   h5 {
     display: block;
     @include inuit-font-size(16px);
-    letter-spacing: 0.1em;
-    margin-top: $spacing;
-    margin-bottom: $spacing--small;
-    border-bottom: 1px solid $brand-color--light;
+  }
+
+  h1 {
+    @include inuit-font-size(22px, 34px);
+    font-weight: $font-weight-bold;
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+  }
+
+  &--isNode {
+    .c-factbox {
+      &__content {
+        padding-top: $spacing--large;
+        padding-left: $spacing--large;
+        padding-right: $spacing--large;
+      }
+    }
+
+    @include mq($from: desktop) {
+      @include grids-expand(4,6,2);
+    }
+
+    h1 {
+    }
   }
 }

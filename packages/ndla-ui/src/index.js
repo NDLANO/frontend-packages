@@ -15,6 +15,7 @@ export {
   ArticleIntroduction,
   ArticleTitle,
   ArticleWrapper,
+  ArticleAuthorsAndLicense,
   default as Article,
 } from './Article';
 

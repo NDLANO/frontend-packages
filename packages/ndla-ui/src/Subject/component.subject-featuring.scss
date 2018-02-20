@@ -1,0 +1,44 @@
+.c-subject-featuring {
+  max-width: 350px;
+
+  &__media-wrapper {
+    width: 100%;
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  border: 1px solid $brand-grey--light;
+
+
+  &__content {
+    padding: $spacing;
+  }
+
+  &__heading {
+    @include font-size(20px, 32px);
+    margin: 0 0 $spacing--small 0;
+  }
+
+
+  &__description {
+    margin: 0 0 $spacing 0;
+    @include font-size(16px, 26px);
+  }
+
+  &__archive {
+    color: $brand-color--secondary;
+    @include font-size(14px, 18px);
+
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+
+    .c-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: $spacing--small/2;
+    }
+  }
+}

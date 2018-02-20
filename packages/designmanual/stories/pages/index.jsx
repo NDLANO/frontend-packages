@@ -14,6 +14,7 @@ import {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
   SubjectHero,
+  Image,
   AssessmentResourcesHero,
   ExternalLearningResourcesHero,
   SourceMaterialHero,
@@ -32,6 +33,7 @@ import {
   SubjectSidebarWrapper,
   SubjectShortcuts,
   SubjectLinks,
+  SubjectFeaturing,
 } from 'ndla-ui';
 
 import {
@@ -403,6 +405,21 @@ storiesOf('Emnesider', module)
                       text: 'Grenseløs journalistikk',
                     },
                   ]}
+                />
+                <SubjectFeaturing
+                  media={
+                    <Image
+                      alt="Forstørrelsesglass"
+                      src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+                    />
+                  }
+                  heading="Tittel overskrift"
+                  description="Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato."
+                  url="#1"
+                  archiveUrl="#2"
+                  messages={{
+                    archive: 'Arkiv',
+                  }}
                 />
               </SubjectSidebarWrapper>
             </SubjectContent>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup } from 'react-transition-group';
 import BEMHelper from 'react-bem-helper';
-import { Forward, Back } from 'ndla-icons/common';
+import { Forward } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
 import Fade from '../Animation/Fade';

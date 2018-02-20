@@ -31,6 +31,7 @@ import {
   SubjectContent,
   SubjectSidebarWrapper,
   SubjectShortcuts,
+  SubjectLinks,
 } from 'ndla-ui';
 
 import {
@@ -379,6 +380,27 @@ storiesOf('Emnesider', module)
                     {
                       url: '#8',
                       text: 'Kategori 8',
+                    },
+                  ]}
+                />
+                <SubjectLinks
+                  heading="Mest lest"
+                  links={[
+                    {
+                      url: '#1',
+                      text: 'Grafisk design',
+                    },
+                    {
+                      url: '#2',
+                      text: 'Nettsider',
+                    },
+                    {
+                      url: '#3',
+                      text: 'Prøv deg som journalist',
+                    },
+                    {
+                      url: '#4',
+                      text: 'Grenseløs journalistikk',
                     },
                   ]}
                 />

@@ -2,6 +2,7 @@ $subject-margin: $spacing--medium + $spacing--large;
 
 @import './component.subject-header';
 @import './component.subject-shortcut';
+@import './component.subject-links';
 
 .c-subject-content {
   &__breadcrumb {

@@ -1,5 +1,6 @@
-.c-subject-featuring {
+.c-subject-box {
   max-width: 350px;
+  margin-bottom: $spacing--large;
 
   &__media-wrapper {
     width: 100%;
@@ -19,6 +20,11 @@
   &__heading {
     @include font-size(20px, 32px);
     margin: 0 0 $spacing--small 0;
+
+    &--smallHeading {
+      @include font-size(14px, 32px);
+      text-transform: uppercase;
+    }
   }
 
 

@@ -33,7 +33,7 @@ import {
   SubjectSidebarWrapper,
   SubjectShortcuts,
   SubjectLinks,
-  SubjectFeaturing,
+  SubjectBox,
 } from 'ndla-ui';
 
 import {
@@ -406,7 +406,7 @@ storiesOf('Emnesider', module)
                     },
                   ]}
                 />
-                <SubjectFeaturing
+                <SubjectBox
                   media={
                     <Image
                       alt="Forstørrelsesglass"
@@ -420,6 +420,17 @@ storiesOf('Emnesider', module)
                   messages={{
                     archive: 'Arkiv',
                   }}
+                />
+                <SubjectBox
+                  smallHeading
+                  media={
+                    <Image
+                      alt="Forstørrelsesglass"
+                      src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+                    />
+                  }
+                  heading="Om medieuttrykk og mediesamfunnet"
+                  description="Her kan det komme en tekstlig beskrivelse av hvordan faget er bygget opp eller hvilke særpreg dette faget har. Det kan også være i form av en film som introduserer faget"
                 />
               </SubjectSidebarWrapper>
             </SubjectContent>

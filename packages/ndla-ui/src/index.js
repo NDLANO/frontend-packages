@@ -27,7 +27,7 @@ export {
   SubjectSidebarWrapper,
   SubjectShortcuts,
   SubjectLinks,
-  SubjectFeaturing,
+  SubjectBox,
 } from './Subject';
 
 export { default as Button } from './button/Button';

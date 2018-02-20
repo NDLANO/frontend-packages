@@ -36,6 +36,8 @@ import {
   SubjectBox,
 } from 'ndla-ui';
 
+import { breakpoints } from 'ndla-util';
+
 import {
   MastheadWithTopicMenu,
   MastheadWithLogo,
@@ -49,6 +51,8 @@ import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import article, { topicList, subjectList } from '../../dummydata/index';
+
+import exampleBackground from '../images/medie-example.jpg';
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
@@ -322,7 +326,15 @@ storiesOf('Emnesider', module)
       <Content>
         <MastheadWithTopicMenu />
         <article>
-          <SubjectHeader heading="Medieuttrykk og mediesamfunnet" />
+          <SubjectHeader
+            heading="Medieuttrykk og mediesamfunnet"
+            images={[
+              {
+                url: exampleBackground,
+                types: Object.keys(breakpoints),
+              },
+            ]}
+          />
           <OneColumn noPadding>
             <SubjectContent
               breadcrumb={

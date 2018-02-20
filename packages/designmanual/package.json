@@ -30,6 +30,7 @@
     "autoprefixer": "^7.2.4",
     "btoa": "^1.1.2",
     "classnames": "2.2.5",
+    "file-loader": "^1.1.7",
     "isomorphic-fetch": "^2.2.1",
     "lazysizes": "^4.0.1",
     "moment": "^2.20.1",

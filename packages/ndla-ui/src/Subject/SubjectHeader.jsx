@@ -16,7 +16,7 @@ const SubjectHeader = ({ images, heading }) => (
           <div
             key={`${image.url}${type}`}
             {...classes('background', type)}
-            style={{ backgroundImage: image.url }}
+            style={{ backgroundImage: `url(${image.url})` }}
           />
         )),
       )}

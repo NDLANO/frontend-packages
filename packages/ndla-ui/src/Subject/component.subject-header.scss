@@ -1,7 +1,7 @@
 .c-subject-header {
   width: 100%;
   position: relative;
-  height: 300px;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,30 +13,40 @@
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 
     &--mobile {
       display: none;
-      @include mq($from: mobile, $until: mobile) {
+      @include mq($from: mobile, $until: tablet) {
         display: block;
       }
     }
     &--tablet {
       display: none;
-      @include mq($from: tablet, $until: tablet) {
+      @include mq($from: tablet, $until: desktop) {
         display: block;
       }
     }
     &--desktop {
       display: none;
-      @include mq($from: desktop, $until: desktop) {
+      @include mq($from: desktop, $until: wide) {
         display: block;
       }
     }
     &--wide {
       display: none;
-      @include mq($from: wide, $until: wide) {
+      @include mq($from: wide) {
         display: block;
       }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
     }
   }
 

@@ -8,7 +8,7 @@ import { Cross } from 'ndla-icons/action';
 
 import ClickToggle from '../common/ClickToggle';
 import FilterList from '../filter/FilterList';
-import Button from '../button/Button';
+import Button from '../Button';
 
 const classes = BEMHelper({
   prefix: 'c-',

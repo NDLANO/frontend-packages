@@ -12,7 +12,7 @@ import { noScroll } from 'ndla-util';
 import elementType from 'react-prop-types/lib/elementType';
 import createFocusTrap from 'focus-trap';
 
-import Button from '../button/Button';
+import Button from '../Button';
 
 export default class ClickToggle extends React.Component {
   constructor(props) {

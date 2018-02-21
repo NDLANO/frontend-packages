@@ -12,7 +12,7 @@ import classnames from 'classnames';
 import createFocusTrap from 'focus-trap';
 import { noScroll } from 'ndla-util';
 
-import Button from '../button/Button';
+import Button from '../Button';
 
 class ToggleLicenseBox extends Component {
   constructor(props) {

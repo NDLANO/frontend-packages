@@ -10,7 +10,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  SiteNav,
   Masthead,
   MastheadItem,
   Logo,
@@ -30,13 +29,6 @@ import {
   topicList,
   searchFieldSearchResults,
 } from '../../dummydata';
-
-export const MastheadLeftRight = () => (
-  <Masthead>
-    <MastheadItem left>Left</MastheadItem>
-    <MastheadItem right>Right</MastheadItem>
-  </Masthead>
-);
 
 export const MastheadWithLogo = () => (
   <Masthead fixed>
@@ -121,59 +113,56 @@ class MastheadWithTopicMenu extends Component {
         hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
-          <SiteNav>
-            <ClickToggle
-              isOpen={this.state.menuIsOpen}
-              onToggle={isOpen => {
+          <ClickToggle
+            isOpen={this.state.menuIsOpen}
+            onToggle={isOpen => {
+              this.setState({
+                menuIsOpen: isOpen,
+                expandedTopicId: null,
+                expandedSubtopicId: null,
+              });
+            }}
+            title="Meny"
+            openTitle="Lukk"
+            className="c-topic-menu-container"
+            buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+            <TopicMenu
+              isBeta={this.props.beta}
+              subjectTitle="Mediefag"
+              toSubject={() => '#'}
+              toTopic={() => '#'}
+              withSearchAndFilter
+              topics={topicMenu}
+              messages={messages}
+              onOpenSearch={() => {
                 this.setState({
-                  menuIsOpen: isOpen,
-                  expandedTopicId: null,
-                  expandedSubtopicId: null,
+                  menuIsOpen: false,
+                  searchIsOpen: true,
                 });
               }}
-              title="Meny"
-              openTitle="Lukk"
-              className="c-topic-menu-container"
-              buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-              <TopicMenu
-                isBeta={this.props.beta}
-                subjectTitle="Mediefag"
-                toSubject={() => '#'}
-                toTopic={() => '#'}
-                withSearchAndFilter
-                topics={topicMenu}
-                messages={messages}
-                onOpenSearch={() => {
-                  this.setState({
-                    menuIsOpen: false,
-                    searchIsOpen: true,
-                  });
-                }}
-                filterOptions={[
-                  {
-                    title: 'Medieuttrykk',
-                    value: 'Medieuttrykk',
-                  },
-                  {
-                    title: 'Mediesamfunnet',
-                    value: 'Mediesamfunnet',
-                  },
-                ]}
-                filterValues={['Medieuttrykk']}
-                searchPageUrl="#"
-                contentTypeResults={searchFieldSearchResults}
-                expandedTopicId={this.state.expandedTopicId}
-                expandedSubtopicId={this.state.expandedSubtopicId}
-                onNavigate={(expandedTopicId, expandedSubtopicId) => {
-                  this.setState({
-                    expandedTopicId,
-                    expandedSubtopicId,
-                  });
-                }}
-              />
-            </ClickToggle>
-          </SiteNav>
-
+              filterOptions={[
+                {
+                  title: 'Medieuttrykk',
+                  value: 'Medieuttrykk',
+                },
+                {
+                  title: 'Mediesamfunnet',
+                  value: 'Mediesamfunnet',
+                },
+              ]}
+              filterValues={['Medieuttrykk']}
+              searchPageUrl="#"
+              contentTypeResults={searchFieldSearchResults}
+              expandedTopicId={this.state.expandedTopicId}
+              expandedSubtopicId={this.state.expandedSubtopicId}
+              onNavigate={(expandedTopicId, expandedSubtopicId) => {
+                this.setState({
+                  expandedTopicId,
+                  expandedSubtopicId,
+                });
+              }}
+            />
+          </ClickToggle>
           <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock
               subject={subjectList[1]}

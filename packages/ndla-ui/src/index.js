@@ -101,6 +101,7 @@ export { default as Translation } from './Translation/Translation';
 export { default as TranslationLine } from './Translation/TranslationLine';
 
 export { default as ErrorMessage } from './ErrorMessage';
+export { default as ContentLoader } from './ContentLoader';
 
 export { default as constants } from './model';
 

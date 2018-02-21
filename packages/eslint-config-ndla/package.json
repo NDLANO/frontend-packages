@@ -18,12 +18,12 @@
   ],
   "author": "ndla@knowit.no",
   "dependencies": {
-    "babel-eslint": "8.1.2",
+    "babel-eslint": "8.2.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-flowtype": "^2.45.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.7.0"
   }
 }

@@ -33,6 +33,6 @@
     "react-tabs": "^2.1.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.5"
   }
 }

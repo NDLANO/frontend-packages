@@ -31,9 +31,9 @@
     "react": "^15.6.0 || ^16.0.0"
   },
   "dependencies": {
-    "hoist-non-react-statics": "^2.3.0",
+    "hoist-non-react-statics": "^2.5.0",
     "intl-format-cache": "^2.1.0",
     "intl-messageformat": "^2.2.0",
-    "invariant": "^2.2.2"
+    "invariant": "^2.2.3"
   }
 }

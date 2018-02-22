@@ -7,7 +7,7 @@ import { ChevronRight, Back } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 
 import ClickToggle from '../common/ClickToggle';
-import FilterList from '../filter/FilterList';
+import { FilterList } from '../Filter';
 import Button from '../Button';
 
 const classes = BEMHelper({

@@ -8,7 +8,7 @@
     "ndla-scripts": "src/index.js"
   },
   "scripts": {
-    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest"
+    "test": "NODE_ENV=unittest jest"
   },
   "repository": {
     "type": "git",

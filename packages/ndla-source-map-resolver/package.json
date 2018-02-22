@@ -9,9 +9,9 @@
   },
   "scripts": {
     "build": "npm run build:commonjs",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
-    "clean": "$(cd ..; npm bin)/rimraf lib",
-    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "clean": "rimraf lib",
+    "test": "NODE_ENV=unittest jest",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {

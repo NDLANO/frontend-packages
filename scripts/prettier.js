@@ -8,21 +8,11 @@ const isWindows = process.platform === 'win32';
 const prettier = isWindows ? 'prettier.cmd' : 'prettier';
 const prettierCmd = path.resolve(__dirname, `../node_modules/.bin/${prettier}`);
 
-const options = {
-  'jsx-bracket-same-line': 'true',
-  'single-quote': 'true',
-  'trailing-comma': 'all',
-};
-
-// prettier-ignore
-const args = Object.keys(options)
-  .map(key => `--${key}=${options[key]}`)
-  .concat(
-    `--${shouldWrite ? 'write' : 'l'}`,
-    '"scripts/*.js"',
-    '"packages/*/!(lib|es|dist)/**/*(*.js|*.jsx)"',
-    '"packages/*/*(*.js|*.jsx)"',
-  );
+const args = [].concat(
+  `--${shouldWrite ? 'write' : 'l'}`,
+  '"scripts/*.js"',
+  '"packages/**/*(*.js|*.jsx)"',
+);
 
 try {
   runCommand(prettierCmd, args, path.resolve(__dirname, '..'));

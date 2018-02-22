@@ -7,15 +7,11 @@ const path = require('path');
 const chalk = require('chalk');
 const rimraf = require('rimraf');
 const prettier = require('prettier');
+const prettierOptions = require('../.prettierrc');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
 const attrs = ['xlink:href'];
 
-const prettierOptions = {
-  jsxBracketSameLine: true,
-  singleQuote: true,
-  trailingComma: 'all',
-};
 const copyright = fs.readFileSync(
   path.join(__dirname, '..', 'COPYRIGHT'),
   'utf-8',

@@ -6,8 +6,6 @@
  *
  */
 
-import withTracker from './withTracker';
-import HelmetWithTracker from './HelmetWithTracker';
-import { configureTracker } from './tracker';
-
-export { withTracker, HelmetWithTracker, configureTracker };
+export { default as withTracker } from './withTracker';
+export { default as HelmetWithTracker } from './HelmetWithTracker';
+export { configureTracker, sendPageView } from './tracker';

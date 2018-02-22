@@ -24,10 +24,7 @@ import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 import { topicList, subjectList } from '../dummydata/index';
-import {
-  MastheadLeftRight,
-  MastheadWithTopicMenu,
-} from './molecules/mastheads';
+import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample from './article/LicenseExample';
@@ -179,7 +176,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Hovedhode', () => (
     <div>
-      <MastheadLeftRight />
+      <MastheadWithLogo />
     </div>
   ))
   .add('Hovedhode med innhold', () => (

@@ -5,7 +5,7 @@ import { Back } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 import createFocusTrap from 'focus-trap';
 import { noScroll } from 'ndla-util';
-import Button from '../button/Button';
+import Button from '../Button';
 
 import SafeLink from '../common/SafeLink';
 import SearchField from './SearchField';

@@ -2,7 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 
-import FilterList from '../filter/FilterList';
+import { FilterList } from '../Filter';
 
 const searchFilterClasses = BEMHelper({
   prefix: 'c-',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, Additional } from 'ndla-icons/common';
 
-import FilterTabs from '../filter/FilterTabs';
+import { FilterTabs } from '../Filter';
 import SafeLink from '../common/SafeLink';
 
 const resultClasses = BEMHelper('c-search-result');

@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import Button from '../button/Button';
+import Button from '../Button';
 
 const toggleFactBox = event => {
   const button = event.target;

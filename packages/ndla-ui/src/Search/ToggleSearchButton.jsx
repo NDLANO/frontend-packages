@@ -5,7 +5,7 @@ import BEMHelper from 'react-bem-helper';
 
 import ClickToggle from '../common/ClickToggle';
 import SafeLink from '../common/SafeLink';
-import Button from '../button/Button';
+import Button from '../Button';
 
 const classes = BEMHelper({
   prefix: 'c-',

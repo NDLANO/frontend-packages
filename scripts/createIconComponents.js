@@ -7,6 +7,7 @@ const path = require('path');
 const chalk = require('chalk');
 const rimraf = require('rimraf');
 const prettier = require('prettier');
+const prettierOptions = require('../.prettierrc');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
 const attrs = ['xlink:href'];
@@ -97,11 +98,7 @@ const ${name} = props => (
 
 export default ${name};
 `,
-    {
-      jsxBracketSameLine: true,
-      singleQuote: true,
-      trailingComma: 'all',
-    },
+    prettierOptions,
   );
 }
 
@@ -117,9 +114,9 @@ function writeIndexFiles(types) {
     const iconsModule = `${copyright}
 ${autoNotice}
 ${exportsString}\n`;
-
+    const formatedIconsModule = prettier.format(iconsModule, prettierOptions);
     const fileName = path.join(rootDir, 'src', folder, 'index.js');
-    fs.writeFileSync(fileName, iconsModule, 'utf-8');
+    fs.writeFileSync(fileName, formatedIconsModule, 'utf-8');
     console.log(
       `${chalk.green(`CREATED`)} ${chalk.dim(
         path.join(rootDir, 'src'),

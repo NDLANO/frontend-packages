@@ -40,10 +40,10 @@ const adjustToTerminalWidth = str => {
     .join('\n');
 };
 
-function resolveDestPath(file) {
+function resolveDestPath(file, dest) {
   const packageName = path.relative(PACKAGES_DIR, file).split(path.sep)[0];
   const packageSrcPath = path.resolve(PACKAGES_DIR, packageName, SRC_DIR);
-  const packageBuildPath = path.resolve(PACKAGES_DIR, packageName, 'es');
+  const packageBuildPath = path.resolve(PACKAGES_DIR, packageName, dest);
   const relativeToSrcPath = path.relative(packageSrcPath, file);
   const destPath = path.resolve(packageBuildPath, relativeToSrcPath);
 
@@ -54,8 +54,8 @@ function resolveDestPath(file) {
   return destPath;
 }
 
-function removeBuildFile(file) {
-  const destPath = resolveDestPath(file);
+function removeBuildFile(file, dest) {
+  const destPath = resolveDestPath(file, dest);
   fs.unlinkSync(destPath);
   process.stdout.write(
     `${chalk.red('\u2022 ') +
@@ -64,11 +64,14 @@ function removeBuildFile(file) {
   );
 }
 
-function buildFile(file, silent) {
-  const destPath = resolveDestPath(file);
+function buildFile(file, dest, { silent = false, plugins = [] } = {}) {
+  const destPath = resolveDestPath(file, dest);
   mkdirp.sync(path.dirname(destPath));
   try {
-    const transformed = babel.transformFileSync(file, babelOptions).code;
+    const transformed = babel.transformFileSync(file, {
+      ...babelOptions,
+      plugins: [...babelOptions.plugins, ...plugins],
+    }).code;
     fs.writeFileSync(destPath, transformed);
     if (!silent) {
       process.stdout.write(
@@ -93,7 +96,13 @@ function buildNodePackage(p) {
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
-  files.forEach(file => buildFile(file, true));
+  files.forEach(file => {
+    buildFile(file, 'es', { silent: true });
+    buildFile(file, 'lib', {
+      silent: true,
+      plugins: ['transform-es2015-modules-commonjs'],
+    });
+  });
   process.stdout.write(`${OK}\n`);
 }
 

@@ -8,10 +8,10 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "$(cd ..; npm bin)/rimraf lib es",
-    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
+    "clean": "rimraf lib es",
+    "test": "NODE_ENV=unittest jest",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {
@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "nock": "^9.1.5"
+    "nock": "^9.1.6"
   },
   "dependencies": {
-    "raven-js": "^3.21.0"
+    "raven-js": "^3.22.3"
   }
 }

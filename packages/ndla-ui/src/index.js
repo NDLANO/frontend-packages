@@ -6,7 +6,7 @@
  *
  */
 
-export { default as Footer } from './footer/Footer';
+export { default as Footer } from './Footer';
 
 export {
   ArticleByline,
@@ -20,11 +20,11 @@ export {
 
 export { BetaNavigation } from './Beta';
 
-export { default as Button } from './button/Button';
+export { default as Button } from './Button';
 export { default as Logo } from './Logo';
-export { default as Table } from './table/Table';
-export { default as Pager } from './pager/Pager';
-export { default as FilterList } from './filter/FilterList';
+export { default as Table } from './Table';
+export { default as Pager } from './Pager';
+export { FilterList } from './Filter';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
@@ -58,11 +58,8 @@ export { default as LicenseByline } from './LicenseByline';
 export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
 export { default as SafeLink } from './common/SafeLink';
-export {
-  default as TopicIntroductionList,
-} from './topic/TopicIntroductionList';
-export { default as TopicMenu } from './topicMenu/TopicMenu';
-export { default as Placeholder } from './placeholders/Placeholder';
+export { default as TopicIntroductionList } from './TopicIntroductionList';
+export { default as TopicMenu } from './TopicMenu';
 export {
   default as RelatedArticleList,
   RelatedArticle,
@@ -82,7 +79,7 @@ export {
   ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
-} from './hero/Hero';
+} from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
   Figure,
@@ -90,7 +87,6 @@ export {
   FigureLicenseDialog,
   FigureFullscreenDialog,
 } from './Figure';
-export { SiteNav, SiteNavItem } from './siteNav/SiteNav';
 export {
   MediaList,
   MediaListItem,
@@ -104,6 +100,7 @@ export { default as Translation } from './Translation/Translation';
 export { default as TranslationLine } from './Translation/TranslationLine';
 
 export { default as ErrorMessage } from './ErrorMessage';
+export { default as ContentLoader } from './ContentLoader';
 
 export { default as constants } from './model';
 

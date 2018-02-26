@@ -360,8 +360,8 @@ storiesOf('Emnesider', module)
                 <SubjectShortcuts
                   messages={{
                     heading: 'Gå direkte til',
-                    showMore: 'Flere',
-                    showLess: 'Færre',
+                    showMore: 'Vis flere',
+                    showLess: 'Vis færre',
                   }}
                   links={[
                     {

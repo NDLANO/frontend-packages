@@ -51,7 +51,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#20588F' }}
               />
               <div className="o-list__label">
-                NDLA primærfarge<br />#507AA4
+                NDLA primærfarge<br />#20588F
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">

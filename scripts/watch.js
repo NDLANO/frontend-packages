@@ -16,9 +16,14 @@ const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*.js*';
 const IGNORE_PATTERN = '**/__tests__/**';
 
-const packagePatterns = getPackages().map(p =>
-  path.resolve(p, SRC_DIR, JS_FILES_PATTERN),
-);
+const packagePatterns = getPackages().map((p) => {
+  // Check to return just p if running on Windows
+  if (process.platform === 'win32') {
+    return p
+  } else {
+    return path.resolve(p, SRC_DIR, JS_FILES_PATTERN)
+  }
+});
 
 // Initialize watcher
 const watcher = chokidar.watch(packagePatterns, {

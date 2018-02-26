@@ -34,6 +34,7 @@ import {
   SubjectShortcuts,
   SubjectLinks,
   SubjectBox,
+  SubjectCarousel,
 } from 'ndla-ui';
 
 import { breakpoints } from 'ndla-util';
@@ -50,7 +51,7 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import article, { topicList, subjectList } from '../../dummydata/index';
+import article, { topicList, subjectList, subjectCarouselList } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
 
@@ -446,6 +447,7 @@ storiesOf('Emnesider', module)
                 />
               </SubjectSidebarWrapper>
             </SubjectContent>
+            <SubjectCarousel subjects={ subjectCarouselList } />
           </OneColumn>
           <FilterList
             options={[

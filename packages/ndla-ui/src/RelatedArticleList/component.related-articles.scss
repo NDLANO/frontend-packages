@@ -61,9 +61,11 @@
   }
 
   &__title {
-    @include inuit-font-size(20px);
+    @include inuit-font-size(18px);
     margin: 0 0 $spacing--small 0;
-    font-weight: $font-weight-normal;
+    font-weight: $font-weight-semibold;
+    display: flex;
+    align-items: center;
   }
 
   &__description {
@@ -74,6 +76,9 @@
 
   &__link {
     color: $brand-color;
+  }
+
+  &__link-wrapper {
     margin-left: $spacing--small;
   }
 }

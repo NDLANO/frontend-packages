@@ -509,7 +509,7 @@ storiesOf('Enkle komponenter', module)
 
         <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
         <Aside>
-          <h2>Høyrespalte</h2>
+          <h1>Høyrespalte</h1>
           <p>Høyrespalten skal fases ut.</p>
           <p>
             I en midlertidig fase under flytting av innhold fra gammelt til nytt
@@ -580,7 +580,7 @@ storiesOf('Enkle komponenter', module)
         </div>
         <section>
           <Aside wideScreen>
-            <h2>Høyrespalte</h2>
+            <h1>Høyrespalte</h1>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
@@ -626,7 +626,7 @@ storiesOf('Enkle komponenter', module)
             klassen.
           </p>
           <Aside narrowScreen>
-            <h2>Høyrespalte</h2>
+            <h1>Høyrespalte</h1>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til

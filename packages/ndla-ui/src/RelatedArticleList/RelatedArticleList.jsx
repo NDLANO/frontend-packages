@@ -15,9 +15,11 @@ export const RelatedArticle = ({ title, introduction, icon, modifier, to }) => {
     <article {...classes('item', modifier)}>
       <h1 {...classes('title')}>
         {iconWithClass}
-        <SafeLink to={to} {...classes('link')}>
-          {title}
-        </SafeLink>
+        <span {...classes('link-wrapper')}>
+          <SafeLink to={to} {...classes('link')}>
+            {title}
+          </SafeLink>
+        </span>
       </h1>
       <p {...classes('description')}>{introduction}</p>
     </article>

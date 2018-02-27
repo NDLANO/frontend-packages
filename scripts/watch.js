@@ -17,9 +17,10 @@ const JS_FILES_PATTERN = '**/*.js*';
 const IGNORE_PATTERN = '**/__tests__/**';
 
 const winRegExp = new RegExp(/\\/g)
+
 const packagePatterns = getPackages().map((p) => {
   // Handle path formatting on Windows
-  if (process.platform === 'win32') {
+  if (process.platform === 'win32' && process.argv.indexOf('--wincmd') < 0) {
     // On windows the seperator will become \\ and if ran on any terminal that is not
     // Window's default cmd.exe won't work. @TODO add exception if someone actually wants to use cmd.exe?
     p = p.replace(winRegExp, "/")
@@ -31,6 +32,7 @@ const packagePatterns = getPackages().map((p) => {
   }
 });
 
+console.log(packagePatterns)
 // Initialize watcher
 const watcher = chokidar.watch(packagePatterns, {
   ignored: [IGNORE_PATTERN],

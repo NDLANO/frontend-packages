@@ -1,8 +1,15 @@
 .c-info-box {
   background: $yellow-light;
-  padding: $spacing;
-  @include font-size(16px, 20px);
+  padding: $spacing--small $spacing;
   font-family: $font;
+  @include font-size(14px, 18px);
+
+  margin-bottom: $spacing--medium;
+
+  @include mq(tablet) {
+    @include font-size(16px, 20px);
+    padding: $spacing;
+  }
 
   & > *:first-child {
     margin-top: 0;

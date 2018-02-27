@@ -7,6 +7,10 @@
   }
 }
 
+.o-list--no-margin-top {
+  margin-top: 0;
+}
+
 ol {
   .ol-list--roman {
     li:before {
@@ -17,7 +21,7 @@ ol {
 .ol-list--roman {
   counter-reset: item;
 }
-.ol-list--roman >li {
+.ol-list--roman > li {
   &:before {
     content: counter(item, upper-latin);
     counter-increment: item;

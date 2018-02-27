@@ -1,0 +1,14 @@
+.c-info-box {
+  background: $yellow-light;
+  padding: $spacing;
+  @include font-size(16px, 20px);
+  font-family: $font;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}

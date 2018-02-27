@@ -18,6 +18,8 @@ export {
   default as Article,
 } from './Article';
 
+export { InfoBox } from './InfoBox';
+
 export { BetaNavigation } from './Beta';
 
 export { default as Button } from './Button';

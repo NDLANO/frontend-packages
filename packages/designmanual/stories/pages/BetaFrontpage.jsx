@@ -14,12 +14,20 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
+  InfoBox,
 } from 'ndla-ui';
 
 export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
+        <InfoBox>
+          <p>
+            Alt innhold vil ikke være med i betaversjonen.<br />
+            Vi har prioritert kjernestoff framfor tilleggsstoff. Noen emner og
+            fagstoff kan mangle.
+          </p>
+        </InfoBox>
         <ArticleTitle>
           Vil du hjelpe oss å teste de nye fagssidene?
         </ArticleTitle>

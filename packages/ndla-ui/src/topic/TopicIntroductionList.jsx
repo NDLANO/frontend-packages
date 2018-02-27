@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
@@ -34,13 +34,22 @@ TopicIntroduction.propTypes = {
   subjectPage: PropTypes.bool,
 };
 
-const TopicIntroductionList = ({ topics, ...rest }) => (
-  <ul {...classes('list')}>
-    {topics.map(topic => (
-      <TopicIntroduction key={topic.id} {...rest} topic={topic} />
-    ))}
-  </ul>
-);
+
+class TopicIntroductionList extends Component {
+  render() {
+    console.log('TopicIntroductionList');
+    console.log(this.props)
+    const { topics, ...rest } = this.props;
+
+    return (
+      <ul {...classes('list')}>
+        { topics.map((topic) => {
+          return <TopicIntroduction key={topic.id} {...rest} topic={topic} />
+        })}
+      </ul>
+    );
+  }
+}
 
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,

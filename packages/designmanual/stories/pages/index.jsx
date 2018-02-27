@@ -7,7 +7,7 @@
  */
 
 /* eslint max-len: 0 */
-import React from 'react';
+import React, { Component } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
@@ -51,6 +51,7 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
+import TopicListExample from '../molecules/TopicListExample';
 import article, { topicList, subjectList, subjectCarouselList } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
@@ -350,11 +351,7 @@ storiesOf('Emnesider', module)
               <ResourcesWrapper
                 subjectPage
                 header={<ResourcesTitle>Emner</ResourcesTitle>}>
-                <TopicIntroductionList
-                  toTopic={() => '#'}
-                  topics={topicList}
-                  subjectPage
-                />
+                <TopicListExample />
               </ResourcesWrapper>
               <SubjectSidebarWrapper>
                 <SubjectShortcuts
@@ -449,13 +446,6 @@ storiesOf('Emnesider', module)
             </SubjectContent>
             <SubjectCarousel subjects={ subjectCarouselList } />
           </OneColumn>
-          <FilterList
-            options={[
-              { title: 'VG1', value: 'VG1' },
-              { title: 'VG2', value: 'VG2' },
-            ]}
-            values={['VG1']}
-          />
         </article>
       </Content>
       <FooterExample />

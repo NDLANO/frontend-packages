@@ -1,0 +1,94 @@
+.c-topic-shortcuts {
+  @include inuit-font-size(14px);
+  padding: $spacing--small 0 0 0;
+  line-height: 1.75rem;
+  .c-icon {
+    color: $brand-color;
+  }
+
+  &:hover {
+    cursor: default;
+  }
+
+  &__label {
+    color: $brand-color--secondary;
+    display: inline-block;
+    font-weight: 600;
+    line-height: 1rem;
+    margin-left: $spacing--small / 4;
+  }
+
+  &__list {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    line-height: 1rem;
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 0;
+    line-height: 1rem;
+    border-right: 1px solid $brand-grey--light;
+    padding: 0 $spacing--small 0 $spacing--small;
+    position: relative;
+  }
+
+  &__count {
+    color: $brand-color--secondary;
+    font-weight: 600; // $tasks-and-activities-dark $assessment-resource-dark $subject-material-dark
+    margin-left: $spacing--small / 2;
+  }
+
+  &__icons {
+    line-height: 1rem;
+    display: inline-block;
+    .c-learning-path-badge__plus {
+      @include inuit-font-size(12px);
+      margin-right: $spacing--small / 2;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .c-content-type-badge {
+      vertical-align: middle;
+
+      .c-icon {
+        width: 0.7rem;
+        height: auto;
+      }
+
+      &--subject-material {
+        .c-icon {
+          color: $subject-material-dark;
+        }
+      }
+
+      &--tasks-and-activities {
+        .c-icon {
+          color: $tasks-and-activities-dark;
+        }
+      }
+
+      &--assessment-resources {
+        .c-icon {
+          color: $assessment-resource-dark;
+        }
+      }
+    }
+  }
+
+  &__tooltip {
+    display: block;
+    position: absolute;
+    top: -2.25em;
+    left: -1em;
+    width: 200px;
+    line-height: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: $white;
+    background-color: $brand-color;
+    padding: $spacing--small / 2;
+  }
+}

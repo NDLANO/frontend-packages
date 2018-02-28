@@ -11,19 +11,23 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
+import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
+
+import * as contentTypes from '../model/ContentType';
 
 const classes = new BEMHelper({
   name: 'topic-introduction',
   prefix: 'c-',
 });
 
-const TopicIntroduction = ({ toTopic, topic, subjectPage }) => (
+const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts }) => (
   <li {...classes('item', { subjectPage })}>
     <article {...classes('body')}>
       <h1 {...classes('header')}>
         <SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink>
       </h1>
       <p>{topic.introduction}</p>
+      { shortcuts? <TopicIntroductionShortcuts shortcuts={ shortcuts } key={topic.id + '-shortcuts'}/> : null }
     </article>
   </li>
 );
@@ -37,14 +41,12 @@ TopicIntroduction.propTypes = {
 
 class TopicIntroductionList extends Component {
   render() {
-    console.log('TopicIntroductionList');
-    console.log(this.props)
     const { topics, ...rest } = this.props;
-
     return (
       <ul {...classes('list')}>
         { topics.map((topic) => {
-          return <TopicIntroduction key={topic.id} {...rest} topic={topic} />
+          const shortcuts = topic.shortcuts ? topic.shortcuts : [];
+          return <TopicIntroduction key={topic.id} {...rest} topic={topic}  shortcuts={shortcuts} />
         })}
       </ul>
     );
@@ -54,6 +56,7 @@ class TopicIntroductionList extends Component {
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(TopicShape).isRequired,
+  shortcuts: PropTypes.array
 };
 
 export default TopicIntroductionList;

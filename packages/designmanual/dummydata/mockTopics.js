@@ -1,3 +1,9 @@
+// import * as contentTypes from 'packages/ndla-ui/src/model/ContentType';
+
+const SUBJECT_MATERIAL = 'subject-material';
+const TASKS_AND_ACTIVITIES = 'tasks-and-activities';
+const ASSESSMENT_RESOURCES = 'assessment-resources';
+
 export const topicList = [
   {
     id: 'urn:topic:1:179373',
@@ -10,6 +16,36 @@ export const topicList = [
     path: '/subject:100/topic:1:179373',
     connectionId: 'urn:subject-topic:9f04fc8c-7b4b-4742-b0d0-21a9c227192b',
     tags: ['VG1'],
+    shortcuts: [
+      {
+        symbols: [
+          SUBJECT_MATERIAL,
+          SUBJECT_MATERIAL,
+          TASKS_AND_ACTIVITIES,
+        ],
+        count: 4,
+        linkTo: '#',
+        tooltip: 'Vis 4 artikler i dette emnet',
+      },
+      {
+        symbols: [SUBJECT_MATERIAL],
+        count: 12,
+        linkTo: '#',
+        tooltip: 'Vis 12 artikler i dette emnet',
+      },
+      {
+        symbols: [TASKS_AND_ACTIVITIES],
+        count: 5,
+        linkTo: '#',
+        tooltip: 'Vis 5 artikler i dette emnet',
+      },
+      {
+        symbols: [ASSESSMENT_RESOURCES],
+        count: 1,
+        linkTo: '#',
+        tooltip: 'Vis 1 artikler i dette emnet',
+      },
+    ],
   },
   {
     id: 'urn:topic:1:55163',
@@ -22,6 +58,36 @@ export const topicList = [
     path: '/subject:100/topic:1:55163',
     connectionId: 'urn:subject-topic:3e9772e9-14f6-4439-a8d2-5d75b3e5d772',
     tags: ['VG2'],
+    shortcuts: [
+      {
+        symbols: [
+          SUBJECT_MATERIAL,
+          SUBJECT_MATERIAL,
+          TASKS_AND_ACTIVITIES,
+        ],
+        count: 4,
+        linkTo: '#',
+        tooltip: 'Vis 4 artikler i dette emnet',
+      },
+      {
+        symbols: [SUBJECT_MATERIAL],
+        count: 12,
+        linkTo: '#',
+        tooltip: 'Vis 12 artikler i dette emnet',
+      },
+      {
+        symbols: [TASKS_AND_ACTIVITIES],
+        count: 5,
+        linkTo: '#',
+        tooltip: 'Vis 5 artikler i dette emnet',
+      },
+      {
+        symbols: [ASSESSMENT_RESOURCES],
+        count: 1,
+        linkTo: '#',
+        tooltip: 'Vis 1 artikler i dette emnet',
+      },
+    ],
   },
   {
     id: 'urn:topic:1:55212',
@@ -34,6 +100,36 @@ export const topicList = [
     path: '/subject:100/topic:1:55212',
     connectionId: 'urn:subject-topic:a3c98195-098a-48e2-b612-6b2e0e83ec64',
     tags: ['VG3'],
+    shortcuts: [
+      {
+        symbols: [
+          SUBJECT_MATERIAL,
+          SUBJECT_MATERIAL,
+          TASKS_AND_ACTIVITIES,
+        ],
+        count: 4,
+        linkTo: '#',
+        tooltip: 'Vis 4 artikler i dette emnet',
+      },
+      {
+        symbols: [SUBJECT_MATERIAL],
+        count: 12,
+        linkTo: '#',
+        tooltip: 'Vis 12 artikler i dette emnet',
+      },
+      {
+        symbols: [TASKS_AND_ACTIVITIES],
+        count: 5,
+        linkTo: '#',
+        tooltip: 'Vis 5 artikler i dette emnet',
+      },
+      {
+        symbols: [ASSESSMENT_RESOURCES],
+        count: 1,
+        linkTo: '#',
+        tooltip: 'Vis 1 artikler i dette emnet',
+      },
+    ],
   },
 ];
 

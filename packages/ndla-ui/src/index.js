@@ -111,6 +111,11 @@ export {
   MediaListItemImage,
   MediaListItemMeta,
 } from './MediaList';
+
+export {
+  EmbeddedTwitter,
+} from './Embedded';
+
 export { default as Image } from './Image';
 export { default as Translation } from './Translation/Translation';
 export { default as TranslationLine } from './Translation/TranslationLine';

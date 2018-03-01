@@ -36,6 +36,7 @@ import {
   SubjectBox,
   SubjectCarousel,
   SubjectConcepts,
+  EmbeddedTwitter,
 } from 'ndla-ui';
 
 import { breakpoints } from 'ndla-util';
@@ -447,6 +448,8 @@ storiesOf('Emnesider', module)
             </SubjectContent>
             <SubjectCarousel subjects={ subjectCarouselList } />
             <SubjectConcepts concepts={ subjectConcepts } />
+
+            <EmbeddedTwitter screenName='ndla_norsk' tweetLimit={10}/>
           </OneColumn>
         </article>
       </Content>

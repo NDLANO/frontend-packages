@@ -53,7 +53,7 @@ import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import TopicListExample from '../molecules/TopicListExample';
-import article, { topicList, subjectList, subjectCarouselList } from '../../dummydata/index';
+import article, { topicList, subjectList, subjectCarouselList, subjectConcepts } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
 
@@ -446,68 +446,7 @@ storiesOf('Emnesider', module)
               </SubjectSidebarWrapper>
             </SubjectContent>
             <SubjectCarousel subjects={ subjectCarouselList } />
-            <SubjectConcepts concepts={ [
-              {
-                content: 'Universell utforming er å forme omgivelsene slik at vi tar hensyn til variasjonen i funksjonsevne hos innbyggerne, inkludert personer med nedsatt funksjonsevne.',
-                authors: [],
-                source: 'snl.no',
-                title: 'Universell utforming',
-                messages: {
-                  ariaLabel: 'Vis begrep beskrivelse',
-                  close: 'Lukk',
-                },
-                license: 'by-nc-nd',
-                id: 1,
-              },
-              {
-                content: '',
-                authors: [],
-                source: 'snl.no',
-                title: 'App',
-                messages: {
-                  ariaLabel: 'Vis begrep beskrivelse',
-                  close: 'Lukk',
-                },
-                license: 'by-nc-nd',
-                id: 2,
-              },
-              {
-                content: '',
-                authors: [],
-                source: 'snl.no',
-                title: 'Brukersti',
-                messages: {
-                  ariaLabel: 'Vis begrep beskrivelse',
-                  close: 'Lukk',
-                },
-                license: 'by-nc-nd',
-                id: 3,
-              },
-              {
-                content: '',
-                authors: [],
-                source: 'snl.no',
-                title: 'Personas',
-                messages: {
-                  ariaLabel: 'Vis begrep beskrivelse',
-                  close: 'Lukk',
-                },
-                license: 'by-nc-nd',
-                id: 4,
-              },
-              {
-                content: '',
-                authors: [],
-                source: 'snl.no',
-                title: 'Brukergrensesnitt',
-                messages: {
-                  ariaLabel: 'Vis begrep beskrivelse',
-                  close: 'Lukk',
-                },
-                license: 'by-nc-nd',
-                id: 5,
-              },
-            ]} />
+            <SubjectConcepts concepts={ subjectConcepts } />
           </OneColumn>
         </article>
       </Content>

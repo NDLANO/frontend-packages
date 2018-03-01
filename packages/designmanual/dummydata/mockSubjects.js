@@ -72,3 +72,66 @@ export const subjectCarouselList = [
       linkTo: '#',
   }
 ];
+
+export const subjectConcepts =  [
+  {
+    content: 'Universell utforming er å forme omgivelsene slik at vi tar hensyn til variasjonen i funksjonsevne hos innbyggerne, inkludert personer med nedsatt funksjonsevne.',
+    authors: [],
+    source: 'snl.no',
+    title: 'Universell utforming',
+    messages: {
+      ariaLabel: 'Vis begrep beskrivelse',
+      close: 'Lukk',
+    },
+    license: 'by-nc-nd',
+    id: 1,
+  },
+  {
+    content: '',
+    authors: [],
+    source: 'snl.no',
+    title: 'App',
+    messages: {
+      ariaLabel: 'Vis begrep beskrivelse',
+      close: 'Lukk',
+    },
+    license: 'by-nc-nd',
+    id: 2,
+  },
+  {
+    content: '',
+    authors: [],
+    source: 'snl.no',
+    title: 'Brukersti',
+    messages: {
+      ariaLabel: 'Vis begrep beskrivelse',
+      close: 'Lukk',
+    },
+    license: 'by-nc-nd',
+    id: 3,
+  },
+  {
+    content: '',
+    authors: [],
+    source: 'snl.no',
+    title: 'Personas',
+    messages: {
+      ariaLabel: 'Vis begrep beskrivelse',
+      close: 'Lukk',
+    },
+    license: 'by-nc-nd',
+    id: 4,
+  },
+  {
+    content: '',
+    authors: [],
+    source: 'snl.no',
+    title: 'Brukergrensesnitt',
+    messages: {
+      ariaLabel: 'Vis begrep beskrivelse',
+      close: 'Lukk',
+    },
+    license: 'by-nc-nd',
+    id: 5,
+  },
+];

@@ -1,0 +1,23 @@
+.c-subject-concepts {
+  position: relative;
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $brand-color--lighter;
+    padding: $spacing--small;
+    margin: 0;
+  }
+
+  &__item {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    margin-bottom: 0.5em;
+
+    button {
+      background: transparent;
+    }
+  }
+}

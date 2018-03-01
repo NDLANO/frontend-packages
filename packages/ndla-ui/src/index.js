@@ -29,6 +29,7 @@ export {
   SubjectLinks,
   SubjectBox,
   SubjectCarousel,
+  SubjectConcepts,
 } from './Subject';
 
 export { default as Button } from './button/Button';

@@ -28,6 +28,7 @@ export const subjectCarouselList = [
       text: 'Her finner du mange gode råd',
       image: 'https://images.pexels.com/photos/7369/startup-photos.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
       linkTo: '#',
+      id: '1',
   },
   {
       title: 'Orions belte',
@@ -35,6 +36,7 @@ export const subjectCarouselList = [
       text: 'Se den legendariske norske filmen som har vunnet Oscar',
       image: 'https://gfx.nrk.no/KmvRr00Rlz0UmW1OspQ3KQ0q1fUKmqVaAiTLZgmvlRtg',
       linkTo: '#',
+      id: '2',
   },
   {
       title: 'Eksamen',
@@ -42,6 +44,7 @@ export const subjectCarouselList = [
       text: 'Hvordan bør du forberede deg?',
       image: 'https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
       linkTo: '#',
+      id: '3',
   },
   {
       title: 'Skisseteknik',
@@ -49,6 +52,7 @@ export const subjectCarouselList = [
       text: 'Skisseteknik for idéutvikling',
       image: 'https://images.pexels.com/photos/820673/pexels-photo-820673.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
       linkTo: '#',
+      id: '4',
   },
   {
       title: 'Orions belte',
@@ -56,6 +60,7 @@ export const subjectCarouselList = [
       text: 'Se den legendariske norske filmen som har vunnet Oscar',
       image: '',
       linkTo: '#',
+      id: '5',
   },
   {
       title: 'Tittel',
@@ -63,6 +68,7 @@ export const subjectCarouselList = [
       text: 'Kort beskrivelsetekst',
       image: '',
       linkTo: '#',
+      id: '6',
   },
   {
       title: 'Eksamen',
@@ -70,7 +76,8 @@ export const subjectCarouselList = [
       text: 'Hvordan bør du forberede deg?',
       image: 'https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
       linkTo: '#',
-  }
+      id: '7',
+  },
 ];
 
 export const subjectConcepts =  [

@@ -70,8 +70,29 @@ class SubjectConcepts extends Component {
   }
 }
 
-SubjectConcepts.PropTypes = {
-  concepts: PropTypes.array.isRequired
-}
+SubjectConcepts.propTypes = {
+  concepts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string),
+      source: PropTypes.string,
+      content: PropTypes.string.isRequired,
+      messages: PropTypes.shape({
+        ariaLabel: PropTypes.string.isRequired,
+        close: PropTypes.string.isRequired,
+      }),
+      license: PropTypes.string,
+      children: PropTypes.string,
+      visible: PropTypes.bool,
+      closeCallback: PropTypes.func,
+      dialogRef: PropTypes.func,
+    })
+  )
+};
+
+SubjectConcepts.defaultProps = {
+  concepts: []
+};
 
 export default SubjectConcepts;

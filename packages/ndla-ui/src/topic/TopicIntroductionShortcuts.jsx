@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
@@ -89,5 +90,16 @@ class TopicIntroductionShortcuts extends Component  {
     );
   }
 }
+
+TopicIntroductionShortcuts.propTypes = {
+  symbols: PropTypes.arrayOf(
+    PropTypes.shape({
+      symbols: PropTypes.arrayOf(PropTypes.string).isRequired,
+      count: PropTypes.number.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      tooltip: PropTypes.string.isRequired,
+    })
+  )
+};
 
 export default TopicIntroductionShortcuts;

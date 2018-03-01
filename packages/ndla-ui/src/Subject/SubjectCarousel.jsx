@@ -42,7 +42,7 @@ class SubjectCarousel extends Component {
               styleAttr['backgroundImage'] = 'url(' + subject.image + ')';
             }
             return (
-                <div { ...classes('subject') } key={'slide-index-' + index}>
+                <div { ...classes('subject') } key={'slide-' + subject.id}>
                     <div { ...classes('image') } style={styleAttr}>
                         <span { ...classes('type') }>{ subject.type }</span>
                         { subject.type === 'film' ?
@@ -66,7 +66,15 @@ class SubjectCarousel extends Component {
 }
 
 SubjectCarousel.propTypes = {
-  subjects: PropTypes.array.isRequired
+  subjects: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      image: PropTypes.string,
+      linkTo: PropTypes.string.isRequired,
+    })
+  )
 };
 
 SubjectCarousel.defaultProps = {

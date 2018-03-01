@@ -37,6 +37,7 @@ import {
   SubjectCarousel,
   SubjectConcepts,
   EmbeddedTwitter,
+  EmbeddedFacebook,
 } from 'ndla-ui';
 
 import { breakpoints } from 'ndla-util';
@@ -449,7 +450,14 @@ storiesOf('Emnesider', module)
             <SubjectCarousel subjects={ subjectCarouselList } />
             <SubjectConcepts concepts={ subjectConcepts } />
 
-            <EmbeddedTwitter screenName='ndla_norsk' tweetLimit={10}/>
+            <div className="c-subject-content__content">
+              <div style={{width: '50%', float: 'left', marginRight: '20px'}}>
+                <EmbeddedTwitter screenName='ndla_norsk' tweetLimit={10} />
+              </div>
+              <div style={{width: '50%', float: 'left', marginLeft: '20px'}}>
+                <EmbeddedFacebook href='https://www.facebook.com/NDLAmediefag' />
+              </div>
+            </div>
           </OneColumn>
         </article>
       </Content>

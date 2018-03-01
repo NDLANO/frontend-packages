@@ -114,6 +114,7 @@ export {
 
 export {
   EmbeddedTwitter,
+  EmbeddedFacebook,
 } from './Embedded';
 
 export { default as Image } from './Image';

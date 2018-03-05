@@ -28,12 +28,12 @@ import {
   LayoutItem,
   Breadcrumb,
   Content,
+  FrontpageHeader,
+  FrontpageSubjectsWrapper,
+  FrontpageSubjectsSection,
 } from 'ndla-ui';
 
-import {
-  MastheadWithTopicMenu,
-  MastheadWithLogo,
-} from '../molecules/mastheads';
+import { MastheadWithTopicMenu } from '../molecules/mastheads';
 import FooterExample from '../molecules/footers';
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
@@ -42,7 +42,7 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import article, { topicList, subjectList } from '../../dummydata/index';
+import { topicList, subjectList } from '../../dummydata/index';
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
@@ -280,42 +280,255 @@ storiesOf('Læringsressurser', module)
 
 storiesOf('Emnesider', module)
   .add('1. Fagoversikt', () => (
-    <PageContainer>
+    <PageContainer backgroundWide>
       <Content>
-        <MastheadWithLogo />
-        <OneColumn cssModifier="clear">
-          <article>
-            <h1>Yrkesfag</h1>
-            <ul>
-              {[
-                'Naturfag',
-                'Engelsk',
-                'Helsearbeiderfag vg2',
-                'Barne- og ungdomsarbeiderfag Vg2',
-                'Brønnteknikk Vg2BETA',
-                'Bygg- og anleggsteknikk Vg1BETA',
-                'Design og håndverk Vg1',
-                'Elektrofag Vg1',
-                'Helse- og oppvekstfag Vg1',
-                'Helsearbeiderfag Vg2 ',
-                'IKT-servicefag Vg2',
-                'Kokk- og servitørfag Vg2',
-                'Naturbruk Vg1',
-                'Reiseliv Vg2',
-                'Restaurant- og matfag Vg1',
-                'Romteknologi Vg3',
-                'Salg, service og sikkerhet Vg2',
-                'Service og samferdsel Vg1',
-                'Teknikk og industriell produksjon Vg1',
-                'Transport og logistikk Vg2',
-              ].map(subject => (
-                <li key={subject}>
-                  <a href="https://example.com">{subject}</a>
-                </li>
-              ))}
-            </ul>
-          </article>
-        </OneColumn>
+        <FrontpageHeader
+          searchFieldValue=""
+          onSearchFieldChange={() => {}}
+          searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
+          messages={{
+            searchFieldTitle: 'Søk',
+          }}
+          links={[
+            {
+              url: '#1',
+              text: 'Om NDLA',
+            },
+            {
+              url: '#2',
+              text: 'Åpne digitale læremidler for videregående opplæring',
+            },
+          ]}
+        />
+        <main>
+          <FrontpageSubjectsWrapper>
+            <FrontpageSubjectsSection
+              heading="Fellesfag"
+              subjects={[
+                {
+                  url: '#1',
+                  text: 'Engelsk',
+                },
+                {
+                  url: '#2',
+                  text: 'Historie',
+                  yearInfo: 'Vg2 og Vg3',
+                },
+                {
+                  url: '#3',
+                  text: 'Kroppsøving',
+                },
+                {
+                  url: '#3',
+                  text: 'Matematikk',
+                  yearInfo: 'Vg1P',
+                },
+                {
+                  url: '#4',
+                  text: 'Matematikk',
+                  yearInfo: 'Vg2P',
+                },
+                {
+                  url: '#5',
+                  text: 'Medie- informasjonskunnskap 1 og 2',
+                },
+                {
+                  url: '#6',
+                  text: 'Naturfag',
+                },
+                {
+                  url: '#7',
+                  text: 'Norsk',
+                  yearInfo: 'Vg2 og Vg3 SF',
+                },
+                {
+                  url: '#8',
+                  text: 'Norsk',
+                  yearInfo: 'YF ogh SF',
+                },
+                {
+                  url: '#9',
+                  text: 'Samfunnsfag',
+                },
+                {
+                  url: '#10',
+                  text: 'Sørsamisk som førstespråk',
+                },
+              ]}
+            />
+            <FrontpageSubjectsSection
+              heading="Yrkesfag"
+              subjects={[
+                {
+                  url: '#1',
+                  text: 'Barne- og undersarbeiderfag',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#2',
+                  text: 'Brønnteknikk',
+                },
+                {
+                  url: '#3',
+                  text: 'Bygg og annleggsteknikk',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#4',
+                  text: 'Design og håndverk',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#5',
+                  text: 'Elektrofag',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#6',
+                  text: 'Helse- og oppvekstfag',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#7',
+                  text: 'Helsearbeiderfag',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#8',
+                  text: 'IKT-servicefag',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#9',
+                  text: 'Kokk- og servitørfag',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#10',
+                  text: 'Naturbruk',
+                },
+                {
+                  url: '#11',
+                  text: 'Reiseliv',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#11',
+                  text: 'Restaurant- og matfag',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#12',
+                  text: 'Romteknologi',
+                  yearInfo: 'Vg3',
+                },
+                {
+                  url: '#13',
+                  text: 'Salg, service og samferdsel',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#14',
+                  text: 'Service og smaferdsel',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#15',
+                  text: 'Teknikk og industriell produksjon',
+                  yearInfo: 'Vg1',
+                },
+                {
+                  url: '#16',
+                  text: 'Transport og logistikk',
+                  yearInfo: 'Vg2',
+                },
+              ]}
+            />
+            <FrontpageSubjectsSection
+              heading="Studiespesialiserende"
+              subjects={[
+                {
+                  url: '#1',
+                  text: 'Biologi 1',
+                },
+                {
+                  url: '#2',
+                  text: 'Engelskspråklig litteratur og kultur',
+                },
+                {
+                  url: '#3',
+                  text: 'Internasjonal engelsk',
+                },
+                {
+                  url: '#4',
+                  text: 'Kinesisk 1',
+                },
+                {
+                  url: '#5',
+                  text: 'Kinesisk 2',
+                },
+                {
+                  url: '#6',
+                  text: 'Kommunikasjon og kultur 1',
+                },
+                {
+                  url: '#7',
+                  text: 'Kommunikasjon og kultur 2',
+                },
+                {
+                  url: '#8',
+                  text: 'Kommunikasjon og kultur 3',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#9',
+                  text: 'Markedsføring og ledelse 1',
+                  yearInfo: 'Vg2',
+                },
+                {
+                  url: '#10',
+                  text: 'Matematikk',
+                  yearInfo: 'R1',
+                },
+                {
+                  url: '#11',
+                  text: 'Matematikk',
+                  yearInfo: 'R2',
+                },
+                {
+                  url: '#12',
+                  text: 'Matematikk',
+                  yearInfo: 'S1',
+                },
+                {
+                  url: '#13',
+                  text: 'Matematikk',
+                  yearInfo: 'S2',
+                },
+                {
+                  url: '#14',
+                  text: 'Medie- og informasjonskunnskap 1 og 2',
+                },
+                {
+                  url: '#15',
+                  text: 'Medieuttrykk og mediesamfunnet',
+                },
+                {
+                  url: '#16',
+                  text: 'Samfunnsfaglig engelsk',
+                },
+                {
+                  url: '#17',
+                  text: 'Tysk 1',
+                },
+                {
+                  url: '#18',
+                  text: 'Tysk 2',
+                },
+              ]}
+            />
+          </FrontpageSubjectsWrapper>
+        </main>
       </Content>
       <FooterExample />
     </PageContainer>

@@ -1,0 +1,87 @@
+@keyframes backgroundAnimation {
+  0% {
+    background: $brand-color--dark;
+  }
+
+  20% {
+    background: $assessment-resource-dark;
+  }
+
+  40% {
+    background: $tasks-and-activities-dark;
+  }
+
+  60% {
+    background: $source-material-dark;
+  }
+
+  80% {
+    background: $external-learning-resource-dark;
+  }
+}
+
+.c-frontpage-header {
+  height: 310px;
+  background: $brand-color--dark;
+  animation: backgroundAnimation 60s linear 0s infinite running;
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    .c-search-field {
+      flex: 1 0 auto;
+      margin-left: $spacing--large;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding: $spacing 0 $spacing--small 0;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    li {
+      margin: 0 $spacing--small 0 0;
+      padding: 0 $spacing--small 0 0;
+      position: relative;
+
+      &:after {
+        right: 0;
+        top: 9px;
+        position: absolute;
+        display: block;
+        content: '';
+        height: 15px;
+        width: 1px;
+        background: $brand-color--light;
+      }
+
+      &:last-child {
+        margin: 0;
+        padding: 0;
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    a {
+      @include font-size(14px, 18px);
+      color: $white;
+      box-shadow: inset 0 -1px $white;
+
+      &:hover {
+        color: $white;
+        box-shadow: $link--hover;
+      }
+    }
+  }
+}

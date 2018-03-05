@@ -18,6 +18,12 @@ export {
   default as Article,
 } from './Article';
 
+export {
+  FrontpageHeader,
+  FrontpageSubjectsWrapper,
+  FrontpageSubjectsSection,
+} from './Frontpage';
+
 export { InfoBox } from './InfoBox';
 
 export { BetaNavigation } from './Beta';

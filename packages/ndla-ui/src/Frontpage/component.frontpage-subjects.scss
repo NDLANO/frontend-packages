@@ -1,0 +1,47 @@
+.c-frontpage-subjects-wrapper {
+  background: $white;
+  border-radius: 2px;
+  padding: $spacing--medium $spacing;
+  margin-top: -$spacing--large;
+
+  & > * {
+    margin-bottom: $spacing--medium;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.c-frontpage-subjects-section {
+  &__heading {
+    margin: 0 0 $spacing--small;
+    @include font-size(22px, 32px);
+  }
+
+  &__subjects {
+    margin: 0;
+    padding: 0;
+    column-count: 3;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: $spacing--small/2;
+  }
+
+  &__link {
+    box-shadow: none;
+    color: $brand-color--dark;
+    @include font-size(16px, 20px);
+  }
+
+  &__text {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__year-info {
+    padding-left: $spacing--small;
+    @include font-size(14px, 18px);
+  }
+}

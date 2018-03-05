@@ -19,21 +19,25 @@ export const logoClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Logo = ({ name, to, isBeta, cssModifier }) => {
+export const Logo = ({ name, to, isBeta, cssModifier, color, large }) => {
   const beta = isBeta ? <Beta /> : null;
-  const modifiers = [cssModifier];
+  const modifiers = { large };
+
+  if (cssModifier) {
+    modifiers[cssModifier] = true;
+  }
 
   if (isBeta) {
-    modifiers.push('beta');
+    modifiers.beta = true;
   }
 
   const logo = to ? (
     <SafeLink to={to}>
-      <SvgLogo name={name} /> {beta}
+      <SvgLogo name={name} color={color} /> {beta}
     </SafeLink>
   ) : (
     <Fragment>
-      <SvgLogo name={name} /> {beta}
+      <SvgLogo name={name} color={color} /> {beta}
     </Fragment>
   );
   return <h1 {...logoClasses('', modifiers)}>{logo}</h1>;
@@ -50,12 +54,15 @@ Logo.propTypes = {
   ]),
   altText: PropTypes.string.isRequired,
   cssModifier: PropTypes.string,
+  large: PropTypes.bool,
   name: PropTypes.bool,
   isBeta: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 Logo.defaultProps = {
   name: true,
+  large: false,
 };
 
 export default Logo;

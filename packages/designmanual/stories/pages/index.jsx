@@ -340,7 +340,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
-                  isCurrent={false}
+                  isCurrent
                 />
               </section>
             </div>

@@ -19,7 +19,7 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Breadcrumb = ({ children, subject, topicPath, toTopic, toSubjects }) => {
+const Breadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, isCurrent }) => {
   const topicIds = topicPath.map(topic => topic.id);
   return (
     <div {...classes()}>
@@ -46,7 +46,7 @@ const Breadcrumb = ({ children, subject, topicPath, toTopic, toSubjects }) => {
             classes={classes}
             key={topic.id}
             to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}
-            isCurrent={i === topicPath.length - 1}>
+            isCurrent={isCurrent && i === topicPath.length - 1}>
             {topic.name}
           </BreadcrumbItem>
         ))}
@@ -61,6 +61,11 @@ Breadcrumb.propTypes = {
   topicPath: PropTypes.arrayOf(TopicShape),
   toTopic: PropTypes.func.isRequired,
   toSubjects: PropTypes.func.isRequired,
+  isCurrent: PropTypes.bool,
+};
+
+Breadcrumb.defaultProps = {
+  isCurrent: true,
 };
 
 export default Breadcrumb;

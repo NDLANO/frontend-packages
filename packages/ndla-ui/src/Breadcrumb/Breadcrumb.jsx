@@ -19,7 +19,14 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Breadcrumb = ({ children, subject, topicPath, toTopic, toSubjects, isCurrent }) => {
+const Breadcrumb = ({
+  children,
+  subject,
+  topicPath,
+  toTopic,
+  toSubjects,
+  isCurrent,
+}) => {
   const topicIds = topicPath.map(topic => topic.id);
   return (
     <div {...classes()}>

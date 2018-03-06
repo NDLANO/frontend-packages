@@ -67,6 +67,7 @@ export {
 export {
   default as LayoutItem,
   OneColumn,
+  TwoColumns,
   PageContainer,
   Content,
 } from './Layout';

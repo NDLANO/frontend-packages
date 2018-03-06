@@ -21,6 +21,7 @@ import {
   SubjectBadge,
   ErrorMessage,
   OneColumn,
+  TwoColumns,
   PageContainer,
   ResourcesWrapper,
   ResourcesTitle,
@@ -476,7 +477,39 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('3. Hovedemne', () => (
+  .add('3. Fag med to kolonner', () =>
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <article>
+          <SubjectHeader
+            heading="Medieuttrykk og mediesamfunnet"
+            images={[
+              {
+                url: exampleBackground,
+                types: Object.keys(breakpoints),
+              },
+            ]}
+          />
+          <TwoColumns noPadding>
+            <SubjectContent
+              breadcrumb={
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={[]}
+                  toTopic={() => '#'}
+                />
+              }>
+                sadassd
+              </SubjectContent>
+          </TwoColumns>
+        </article>
+      </Content>
+    </PageContainer>
+  )
+  .add('4. Hovedemne', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
@@ -506,7 +539,7 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('4. Underemne', () => (
+  .add('5. Underemne', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
@@ -534,7 +567,7 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('5. Listevisning', () => (
+  .add('6. Listevisning', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />

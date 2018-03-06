@@ -242,4 +242,9 @@
       margin-right: $spacing;
     }
   }
+
+  &--background {
+    background-color: $brand-grey--lightest;
+    padding: $spacing $spacing--small $spacing $spacing--small;
+  }
 }

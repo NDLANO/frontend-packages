@@ -10,3 +10,5 @@ export {
   SubjectTopics,
   SubjectSidebarWrapper,
 } from './Subject';
+
+export { SubjectSocialContent, SubjectSocialSection } from './SubjectSocial';

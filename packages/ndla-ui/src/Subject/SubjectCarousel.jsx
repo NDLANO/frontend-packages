@@ -10,30 +10,30 @@ const classes = BEMHelper('c-subject-carousel');
 const settings = {
   dots: false,
   infinite: false,
-  slidesToShow: 5,
+  slidesToShow: 4.25,
   slidesToScroll: 2,
   swipeToScroll: false,
   responsive: [
     {
       breakpoint: 1200,
-      settings: { slidesToShow: 5 },
+      settings: { slidesToShow: 4.25 },
     },
     {
       breakpoint: 800,
-      settings: { slidesToShow: 4 },
+      settings: { slidesToShow: 3.5 },
     },
     {
       breakpoint: 600,
-      settings: { slidesToShow: 3 },
+      settings: { slidesToShow: 3.25 },
     },
     {
       breakpoint: 400,
-      settings: { slidesToShow: 2 },
+      settings: { slidesToShow: 2.25 },
     },
   ],
 };
 
-const SubjectCarousel = ({ subjects }) => {
+const SubjectCarousel = ({ subjects, title }) => {
   const slides = subjects.map(subject => {
     const styleAttr = {};
     if (subject.image) {
@@ -53,11 +53,15 @@ const SubjectCarousel = ({ subjects }) => {
     );
   });
   return (
-    <Slider {...classes()} {...settings}>
-      {slides}
-    </Slider>
+    <section>
+      <h1 className="c-subject-content__title">{title}</h1>
+      <Slider {...classes()} {...settings}>
+        {slides}
+      </Slider>
+    </section>
   );
 };
+
 SubjectCarousel.propTypes = {
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
@@ -68,10 +72,12 @@ SubjectCarousel.propTypes = {
       linkTo: PropTypes.string.isRequired,
     }),
   ),
+  title: PropTypes.string,
 };
 
 SubjectCarousel.defaultProps = {
   subjects: [],
+  title: '',
 };
 
 export default SubjectCarousel;

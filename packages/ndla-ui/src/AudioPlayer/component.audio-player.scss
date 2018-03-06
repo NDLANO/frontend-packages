@@ -65,7 +65,7 @@
   &__title {
     @include inuit-font-size(20px, 1);
     margin: $spacing--small 0;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-family: $font;
   }
 

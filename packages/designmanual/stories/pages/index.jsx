@@ -34,6 +34,8 @@ import {
   SubjectBox,
   SubjectCarousel,
   SubjectConcepts,
+  SubjectSocialContent,
+  SubjectSocialSection,
   ListView,
   EmbeddedTwitter,
   EmbeddedFacebook,
@@ -451,17 +453,23 @@ storiesOf('Emnesider', module)
                 />
               </SubjectSidebarWrapper>
             </SubjectContent>
-            <SubjectCarousel subjects={subjectCarouselList} />
-            <SubjectConcepts concepts={subjectConcepts} />
+            <SubjectCarousel
+              subjects={subjectCarouselList}
+              title="Litt forskjellig fra faget"
+            />
+            <SubjectConcepts
+              concepts={subjectConcepts}
+              title="Begreg i faget"
+            />
 
-            <div className="c-subject-content__content">
-              <div style={{ width: '50%', float: 'left', marginRight: '20px' }}>
+            <SubjectSocialContent>
+              <SubjectSocialSection title="Twitter">
                 <EmbeddedTwitter screenName="ndla_norsk" tweetLimit={10} />
-              </div>
-              <div style={{ width: '50%', float: 'left', marginLeft: '20px' }}>
+              </SubjectSocialSection>
+              <SubjectSocialSection title="Facebook">
                 <EmbeddedFacebook href="https://www.facebook.com/NDLAmediefag/posts/1648640581877981" />
-              </div>
-            </div>
+              </SubjectSocialSection>
+            </SubjectSocialContent>
           </OneColumn>
         </article>
       </Content>

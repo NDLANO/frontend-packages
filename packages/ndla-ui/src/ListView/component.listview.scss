@@ -68,7 +68,7 @@
     &-name {
       @include inuit-font-size(18px);
       color: $brand-color--dark;
-      font-weight: 700;
+      font-weight: $font-weight-bold;
       margin: 0;
     }
     &-description {

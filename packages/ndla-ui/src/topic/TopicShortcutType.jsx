@@ -62,9 +62,13 @@ class ShortcutType extends Component {
           <span {...classes('tooltip')}>{shortcut.tooltip}</span>
         ) : null}
         <span {...classes('icons')}>
-          {shortcut.symbols.map((symbol, index) =>
-            getShortcutSymbol(symbol, index),
-          )}
+          {shortcut.symbols.map((symbol, index) => {
+            const plus = shortcut.symbols[index + 1] ? (
+              <span {...classes('plus')}>+</span>
+            ) : null;
+            const shortcutSymbol = getShortcutSymbol(symbol, index);
+            return [shortcutSymbol, plus];
+          })}
         </span>
         <span
           {...classes('count')}

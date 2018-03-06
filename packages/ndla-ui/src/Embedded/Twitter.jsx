@@ -4,7 +4,6 @@ import { Timeline } from 'react-twitter-widgets';
 
 const EmbeddedTwitter = props => (
   <div>
-    <h1>Twitter</h1>
     <Timeline
       dataSource={{
         sourceType: 'profile',

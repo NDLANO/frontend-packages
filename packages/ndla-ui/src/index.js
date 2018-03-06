@@ -32,6 +32,8 @@ export {
   SubjectBox,
   SubjectCarousel,
   SubjectConcepts,
+  SubjectSocialContent,
+  SubjectSocialSection,
 } from './Subject';
 
 export { default as Button } from './button/Button';

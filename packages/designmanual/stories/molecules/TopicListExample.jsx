@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-
+import BEMHelper from 'react-bem-helper';
 import { FilterList, TopicIntroductionList } from 'ndla-ui';
 import { topicList } from '../../dummydata/index';
+
+const classes = BEMHelper('c-filter');
 
 class TopicListExample extends Component {
   constructor(props) {
@@ -35,18 +37,20 @@ class TopicListExample extends Component {
     const { filterValues } = this.state;
     return (
       <div>
-        <FilterList
-          label=""
-          options={[
-            { title: 'VG1', value: 'VG1' },
-            { title: 'VG2', value: 'VG2' },
-            { title: 'VG3', value: 'VG3' },
-          ]}
-          values={filterValues}
-          onChange={(newValues, value) => {
-            this.onFilterChange(newValues, value, this);
-          }}
-        />
+        <div {...classes('', 'background')}>
+          <FilterList
+            label=""
+            options={[
+              { title: 'VG1', value: 'VG1' },
+              { title: 'VG2', value: 'VG2' },
+              { title: 'VG3', value: 'VG3' },
+            ]}
+            values={filterValues}
+            onChange={(newValues, value) => {
+              this.onFilterChange(newValues, value, this);
+            }}
+          />
+        </div>
         <TopicIntroductionList
           toTopic={() => '#'}
           topics={this.filterTopics()}

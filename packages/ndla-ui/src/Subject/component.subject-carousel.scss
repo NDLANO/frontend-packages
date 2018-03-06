@@ -4,7 +4,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
-        height: 110px;
+        height: 125px;
         width: 100%;
         border-radius: .3em;
         position: relative;
@@ -12,29 +12,33 @@
 
     &__title {
       margin: $spacing--small 0 0 0;
+      font-weight: $font-weight-bold;
+      @include inuit-font-size(20px);
     }
 
     &__description {
-      margin: 0;
       @include inuit-font-size(14px);
       line-height: 1.25rem;
+      font-family: $font-serif;
+      margin: 0;
     }
 
     &__type {
-        position: relative;
-        top: 68%;
-        left: 10px;
-        display: inline-block;
-        background: $background-color--gray;
-        border-radius: 0.2em;
-        padding: 0 0.3rem 0 0.3rem;
-        text-transform: capitalize;
-        font-weight: 600;
-        line-height: .5rem;
-        @include inuit-font-size(12px);
+      @include inuit-font-size(12px);
+      position: relative;
+      top: 68%;
+      left: 10px;
+      display: inline-block;
+      background: $brand-grey--lightest;
+      border-radius: 0.2em;
+      padding: 0 0.2rem 0 0.2rem;
+      text-transform: capitalize;
+      font-weight: 600;
+      line-height: 1.5em;
     }
+
     &__subject {
-        padding: 10px;
+        padding: $spacing--small $spacing $spacing--small 0;
     }
 
     .c-icon {

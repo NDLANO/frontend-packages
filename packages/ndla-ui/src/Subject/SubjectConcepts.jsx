@@ -6,8 +6,9 @@ import SubjectConcept from './SubjectConcept';
 
 const classes = BEMHelper('c-subject-concepts');
 
-const SubjectConcepts = ({ concepts }) => (
+const SubjectConcepts = ({ concepts, title }) => (
   <section {...classes('')}>
+    <h1 className="c-subject-content__title">{title}</h1>
     <ul {...classes('list')}>
       {concepts.map(concept => (
         <SubjectConcept
@@ -38,10 +39,12 @@ SubjectConcepts.propTypes = {
       dialogRef: PropTypes.func,
     }),
   ),
+  title: PropTypes.string,
 };
 
 SubjectConcepts.defaultProps = {
   concepts: [],
+  title: '',
 };
 
 export default SubjectConcepts;

@@ -11,6 +11,10 @@
     @include mq(tablet) {
       background-color: $brand-grey--lightest;
     }
+
+    @include mq(desktop) {
+      background: $white;
+    }
   }
 }
 

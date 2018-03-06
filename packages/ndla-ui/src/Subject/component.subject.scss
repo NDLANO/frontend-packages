@@ -17,10 +17,39 @@ $subject-margin: $spacing--medium + $spacing--large;
     margin-top: $spacing--large;
     display: flex;
   }
+
+  &__title {
+    @include inuit-font-size(22px);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+  }
 }
 
 .c-subject-sidebar-wrapper {
   flex-basis: 390px;
   flex-shrink: 0;
   margin-top: 9px;
+}
+
+.c-subject-social {
+  &__title {
+    @extend .c-subject-content__title;
+  }
+  
+  &__content {
+    display: flex;
+  }
+
+  &__section {
+    flex-basis: 50%;
+    &:nth-child(odd) {
+      margin-right: $spacing;
+    }
+  }
+
+  .fb-embedded {
+    width: 100% !important;
+    overflow: hidden;
+    display: block;
+  }
 }

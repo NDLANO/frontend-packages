@@ -1,0 +1,105 @@
+@import './component.listview-dialog';
+
+.c-listview {
+  &__filter {
+    padding: $spacing--small;
+    border: 1px solid $brand-grey--light;
+    margin: $spacing--small / 4 0 $spacing--small / 4 0;
+    border-radius: 0.1em;
+
+    &:after {
+      content: "";
+      clear: both;
+      display: inline-table;
+    }
+  }
+
+  &__legend {
+    display: block;
+    float: left;
+    font-weight: 600;
+    @include inuit-font-size(14px);
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  /**
+   * Styles below is for __item and its child classes
+   */
+  &__item {
+    flex-basis: 25%;
+    padding: $spacing--small;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &-image {
+      background: $white;
+      position: relative;
+      border-bottom: 1px solid $brand-color--light;
+      height: 125px;
+      overflow: hidden;
+      text-align: center;
+
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    &-category {
+      position: absolute;
+      bottom: 0.3rem;
+      left: 0.3rem;
+      display: inline-block;
+      background: $brand-grey--lightest;
+      border-radius: 0.2em;
+      padding: 0 0.3rem 0 0.3rem;
+      text-transform: capitalize;
+      font-weight: 600;
+      line-height: .5rem;
+      @include inuit-font-size(12px);
+    }
+    &-subject {
+      color: $text-light-color;
+      @include inuit-font-size(16px);
+    }
+    &-name {
+      @include inuit-font-size(18px);
+      color: $brand-color--dark;
+      font-weight: 700;
+      margin: 0;
+    }
+    &-description {
+      @include inuit-font-size(14px);
+      margin: 0;
+    }
+  }
+}
+
+
+/*
+ * Modifier style for .c-filter__list for
+ */
+.c-filter__list {
+  &--listview {
+    padding: $spacing--small;
+    margin: 0.5rem 0 0.5rem 0;
+    border: 1px solid $brand-grey--light;
+
+    .c-filter__label {
+      width: 85px;
+      font-weight: 600;
+    }
+  }
+}
+
+.c-listview-dialog {
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+  background: $white;
+  padding: $spacing;
+}

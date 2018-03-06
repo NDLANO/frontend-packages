@@ -5,7 +5,11 @@ import {
   exerciseResources,
   assessmentResources,
 } from './mockResources';
-import { subjectList, subjectCarouselList, subjectConcepts } from './mockSubjects';
+import {
+  subjectList,
+  subjectCarouselList,
+  subjectConcepts,
+} from './mockSubjects';
 import {
   firstBrightcoveList,
   secondBrightcoveList,

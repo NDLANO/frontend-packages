@@ -20,6 +20,8 @@ export {
 
 export { BetaNavigation } from './Beta';
 
+export { ListView, ListViewDialog } from './ListView';
+
 export {
   SubjectHeader,
   SubjectContent,
@@ -112,10 +114,7 @@ export {
   MediaListItemMeta,
 } from './MediaList';
 
-export {
-  EmbeddedTwitter,
-  EmbeddedFacebook,
-} from './Embedded';
+export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
 
 export { default as Image } from './Image';
 export { default as Translation } from './Translation/Translation';

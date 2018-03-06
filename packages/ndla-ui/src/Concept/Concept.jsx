@@ -36,8 +36,8 @@ const Concept = ({
   children,
 }) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
-  const visibleClass = visible ? 'visible' : null
-  const closeFunc = closeCallback ? closeCallback : null
+  const visibleClass = visible ? 'visible' : null;
+  const closeFunc = closeCallback || null;
   return (
     <span {...classes('item')} id={id}>
       <button aria-label={messages.ariaLabel} {...classes('link')}>
@@ -52,7 +52,9 @@ const Concept = ({
           aria-labelledby={id}
           aria-describedby={id}
           {...classes('popup', visibleClass)}>
-          <button {...classes('close', 'u-close')} onClick={ closeFunc }>{messages.close}</button>
+          <button {...classes('close', 'u-close')} onClick={closeFunc}>
+            {messages.close}
+          </button>
           <h3 {...classes('title')}>{title}</h3>
           <p {...classes('content')}>{content}</p>
           <div {...sourceClasses()}>

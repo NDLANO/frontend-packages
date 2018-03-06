@@ -7,7 +7,7 @@
  */
 
 /* eslint max-len: 0 */
-import React, { Component } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
@@ -20,12 +20,10 @@ import {
   SourceMaterialHero,
   SubjectBadge,
   ErrorMessage,
-  FilterList,
   OneColumn,
   PageContainer,
   ResourcesWrapper,
   ResourcesTitle,
-  TopicIntroductionList,
   Breadcrumb,
   Content,
   SubjectHeader,
@@ -36,6 +34,7 @@ import {
   SubjectBox,
   SubjectCarousel,
   SubjectConcepts,
+  ListView,
   EmbeddedTwitter,
   EmbeddedFacebook,
 } from 'ndla-ui';
@@ -55,7 +54,12 @@ import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import TopicListExample from '../molecules/TopicListExample';
-import article, { topicList, subjectList, subjectCarouselList, subjectConcepts } from '../../dummydata/index';
+import article, {
+  topicList,
+  subjectList,
+  subjectCarouselList,
+  subjectConcepts,
+} from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
 
@@ -447,15 +451,15 @@ storiesOf('Emnesider', module)
                 />
               </SubjectSidebarWrapper>
             </SubjectContent>
-            <SubjectCarousel subjects={ subjectCarouselList } />
-            <SubjectConcepts concepts={ subjectConcepts } />
+            <SubjectCarousel subjects={subjectCarouselList} />
+            <SubjectConcepts concepts={subjectConcepts} />
 
             <div className="c-subject-content__content">
-              <div style={{width: '50%', float: 'left', marginRight: '20px'}}>
-                <EmbeddedTwitter screenName='ndla_norsk' tweetLimit={10} />
+              <div style={{ width: '50%', float: 'left', marginRight: '20px' }}>
+                <EmbeddedTwitter screenName="ndla_norsk" tweetLimit={10} />
               </div>
-              <div style={{width: '50%', float: 'left', marginLeft: '20px'}}>
-                <EmbeddedFacebook href='https://www.facebook.com/NDLAmediefag' />
+              <div style={{ width: '50%', float: 'left', marginLeft: '20px' }}>
+                <EmbeddedFacebook href="https://www.facebook.com/NDLAmediefag/posts/1648640581877981" />
               </div>
             </div>
           </OneColumn>
@@ -520,6 +524,27 @@ storiesOf('Emnesider', module)
         />
       </Content>
       <FooterExample />
+    </PageContainer>
+  ))
+  .add('5. Listevisning', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <OneColumn>
+          <section>
+            <Breadcrumb
+              toSubjects={() => '#'}
+              subjectsTitle="Fag"
+              subject={subjectList[1]}
+              topicPath={topicList}
+              toTopic={() => '#'}
+            />
+          </section>
+        </OneColumn>
+        <OneColumn>
+          <ListView list={{}} />
+        </OneColumn>
+      </Content>
     </PageContainer>
   ))
   .add('Last inn emne', () => (

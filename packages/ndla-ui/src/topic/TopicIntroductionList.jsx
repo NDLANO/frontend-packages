@@ -6,14 +6,12 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
-
-import * as contentTypes from '../model/ContentType';
 
 const classes = new BEMHelper({
   name: 'topic-introduction',
@@ -27,7 +25,12 @@ const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts }) => (
         <SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink>
       </h1>
       <p>{topic.introduction}</p>
-      { shortcuts? <TopicIntroductionShortcuts shortcuts={ shortcuts } key={topic.id + '-shortcuts'}/> : null }
+      {shortcuts ? (
+        <TopicIntroductionShortcuts
+          shortcuts={shortcuts}
+          key={`${topic.id}-shortcuts`}
+        />
+      ) : null}
     </article>
   </li>
 );
@@ -36,27 +39,29 @@ TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
   subjectPage: PropTypes.bool,
+  shortcuts: PropTypes.arrayOf(),
 };
 
-
-class TopicIntroductionList extends Component {
-  render() {
-    const { topics, ...rest } = this.props;
-    return (
-      <ul {...classes('list')}>
-        { topics.map((topic) => {
-          const shortcuts = topic.shortcuts ? topic.shortcuts : [];
-          return <TopicIntroduction key={topic.id} {...rest} topic={topic}  shortcuts={shortcuts} />
-        })}
-      </ul>
-    );
-  }
-}
+const TopicIntroductionList = ({ topics, ...rest }) => (
+  <ul {...classes('list')}>
+    {topics.map(topic => {
+      const shortcuts = topic.shortcuts ? topic.shortcuts : [];
+      return (
+        <TopicIntroduction
+          key={topic.id}
+          {...rest}
+          topic={topic}
+          shortcuts={shortcuts}
+        />
+      );
+    })}
+  </ul>
+);
 
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(TopicShape).isRequired,
-  shortcuts: PropTypes.array
+  shortcuts: PropTypes.arrayOf(),
 };
 
 export default TopicIntroductionList;

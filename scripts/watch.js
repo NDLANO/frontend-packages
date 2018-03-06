@@ -16,23 +16,23 @@ const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*.js*';
 const IGNORE_PATTERN = '**/__tests__/**';
 
-const winRegExp = new RegExp(/\\/g)
+const winRegExp = new RegExp(/\\/g);
 
-const packagePatterns = getPackages().map((p) => {
+const packagePatterns = getPackages().map(p => {
   // Handle path formatting on Windows
   if (process.platform === 'win32' && process.argv.indexOf('--wincmd') < 0) {
     // On windows the seperator will become \\ and if ran on any terminal that is not
     // Window's default cmd.exe won't work. @TODO add exception if someone actually wants to use cmd.exe?
-    p = p.replace(winRegExp, "/")
-    let pathArr = [p, SRC_DIR, JS_FILES_PATTERN]
-    return pathArr.join('/')
+    p = p.replace(winRegExp, '/');
+    let pathArr = [p, SRC_DIR, JS_FILES_PATTERN];
+    return pathArr.join('/');
     // return path.resolve(p, SRC_DIR, JS_FILES_PATTERN)
   } else {
-    return path.resolve(p, SRC_DIR, JS_FILES_PATTERN)
+    return path.resolve(p, SRC_DIR, JS_FILES_PATTERN);
   }
 });
 
-console.log(packagePatterns)
+console.log(packagePatterns);
 // Initialize watcher
 const watcher = chokidar.watch(packagePatterns, {
   ignored: [IGNORE_PATTERN],

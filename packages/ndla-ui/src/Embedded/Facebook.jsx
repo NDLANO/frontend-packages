@@ -1,24 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import FacebookProvider, { Page } from 'react-facebook';
+import FacebookProvider, { EmbeddedPost } from 'react-facebook';
 
-class EmbeddedFacebook extends Component {
-  render() {
-    const { props } = this;
-    return (
-      <div>
-        <h1>Facebook</h1>
-        <FacebookProvider appId="155745961798881">
-          <Page
-            href={props.href}
-            tabs="timeline"
-            hideCover={true}
-            smallHeader={true}
-            showFacepile={false} />
-        </FacebookProvider>
-      </div>
-    );
-  }
-}
+const EmbeddedFacebook = props => (
+  <div>
+    <h1>Facebook</h1>
+    <FacebookProvider appId="155745961798881">
+      <EmbeddedPost href={props.href} />
+    </FacebookProvider>
+  </div>
+);
+
+EmbeddedFacebook.propTypes = {
+  href: PropTypes.string.isRequired,
+};
 
 export default EmbeddedFacebook;

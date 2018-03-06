@@ -147,6 +147,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -171,6 +172,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -195,6 +197,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -219,6 +222,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -243,6 +247,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -267,6 +272,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -334,6 +340,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
@@ -372,6 +379,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
@@ -402,6 +410,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>

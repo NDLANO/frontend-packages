@@ -9,6 +9,11 @@
   overflow-x: hidden;
 }
 
+/* IE-10+ fix for footer */
+html.ie #root {
+  height: 100%;
+}
+
 /* Hack to differentiate CC-icon because it's not a license. Perhaps give it a class? */
 .c-figure-license .c-license-icons__item:first-child,
 .c-medialist__body .c-license-icons__item:first-child {

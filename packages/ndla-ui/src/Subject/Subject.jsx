@@ -43,3 +43,11 @@ export const SubjectSidebarWrapper = ({ children }) => (
 SubjectSidebarWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export const SubjectFlexWrapper = ({ children }) => (
+  <div className="c-subject-flex__wrapper">{children}</div>
+);
+
+SubjectFlexWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};

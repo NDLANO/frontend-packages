@@ -21,12 +21,20 @@ const topicClasses = new BEMHelper({
 
 const twoColumnsClass = new BEMHelper({
   prefix: 'c-',
-  name: 'subject-twocolumns',
+  name: 'subject-flex',
   outputIsString: true,
 });
 
-const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts, twoColumns }) => {
-  const className = `${(twoColumns ? twoColumnsClass('column') : '')} ${topicClasses('item', { subjectPage })}`;
+const TopicIntroduction = ({
+  toTopic,
+  topic,
+  subjectPage,
+  shortcuts,
+  twoColumns,
+}) => {
+  const className = `${
+    twoColumns ? twoColumnsClass('column') : ''
+  } ${topicClasses('item', { subjectPage })}`;
   return (
     <li className={className}>
       <article className={topicClasses('body')}>
@@ -43,7 +51,7 @@ const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts, twoColumns 
       </article>
     </li>
   );
-}
+};
 
 TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
@@ -54,7 +62,9 @@ TopicIntroduction.propTypes = {
 };
 
 const TopicIntroductionList = ({ topics, twoColumns, ...rest }) => {
-  const className = `${(twoColumns ? twoColumnsClass('wrapper') : '')} ${topicClasses('list')}`;
+  const className = `${
+    twoColumns ? twoColumnsClass('wrapper') : ''
+  } ${topicClasses('list')}`;
   return (
     <ul className={className}>
       {topics.map(topic => {

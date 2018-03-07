@@ -29,6 +29,7 @@ import {
   SubjectHeader,
   SubjectContent,
   SubjectSidebarWrapper,
+  SubjectFlexWrapper,
   SubjectShortcuts,
   SubjectLinks,
   SubjectBox,
@@ -477,7 +478,7 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('3. Fag med to kolonner', () =>
+  .add('3. Fag med to kolonner', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
@@ -499,13 +500,14 @@ storiesOf('Emnesider', module)
                   subjectsTitle="Fag"
                   subject={subjectList[1]}
                   topicPath={[]}
-                  toTopic={() => '#'} />
-            }>
+                  toTopic={() => '#'}
+                />
+              }>
               <ResourcesWrapper
                 subjectPage
                 header={<ResourcesTitle>Emner</ResourcesTitle>}>
                 <TwoColumnsExample />
-                <SubjectContent>
+                <SubjectFlexWrapper>
                   <SubjectShortcuts
                     messages={{
                       heading: 'Gå direkte til',
@@ -570,18 +572,19 @@ storiesOf('Emnesider', module)
                     ]}
                     twoColumns
                   />
-                </SubjectContent>
+                </SubjectFlexWrapper>
               </ResourcesWrapper>
             </SubjectContent>
             <SubjectCarousel
               subjects={subjectCarouselList}
               title="Litt forskjellig fra faget"
+              subjectPage
             />
           </OneColumn>
         </article>
       </Content>
     </PageContainer>
-  )
+  ))
   .add('4. Hovedemne', () => (
     <PageContainer backgroundWide>
       <Content>

@@ -9,6 +9,7 @@ export {
   SubjectContent,
   SubjectTopics,
   SubjectSidebarWrapper,
+  SubjectFlexWrapper,
 } from './Subject';
 
 export { SubjectSocialContent, SubjectSocialSection } from './SubjectSocial';

@@ -54,7 +54,7 @@ class SubjectShortcuts extends Component {
       );
     }
     return (
-      <section {...classes('', {'twoColumns' : twoColumns})}>
+      <section {...classes('', { twoColumns })}>
         <h1 {...classes('heading')}>{messages.heading}</h1>
         <nav>
           <TransitionGroup className={classes('list').className} component="ul">

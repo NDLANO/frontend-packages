@@ -27,6 +27,7 @@ export {
   SubjectContent,
   SubjectTopics,
   SubjectSidebarWrapper,
+  SubjectFlexWrapper,
   SubjectShortcuts,
   SubjectLinks,
   SubjectBox,

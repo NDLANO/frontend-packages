@@ -20,6 +20,13 @@ html {
   overflow-y: scroll; /* [2] */
   min-height: 100%; /* [3] */
 }
+
+/* IE-10+ fix for footer */
+html.ie {
+  height: 100%;
+  overflow-y: auto;
+}
+
 body {
   font-family: $font;
   background-color: $background-color;

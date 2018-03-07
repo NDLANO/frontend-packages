@@ -17,3 +17,8 @@
 .o-content {
   flex: 1;
 }
+
+/* IE-10+ fix for footer */
+html.ie .o-content {
+  flex: 1 1 auto;
+}

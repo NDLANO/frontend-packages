@@ -11,8 +11,14 @@
 
   &__list {
     list-style: none;
-    margin: 0;
+    margin: $spacing--small 0 0 0;
     padding: 0;
+    // No border on twocolumn items
+    &.c-two-columns__content {
+      .c-topic-introduction__item {
+        border-bottom: none;
+      }
+    }
   }
 
   &__body {
@@ -58,9 +64,5 @@
     color: $brand-color;
     margin-bottom: $spacing--small;
     margin-top: 0;
-  }
-
-  &__item:first-child .c-topic-introduction__header{
-    margin-top: $spacing--small;
   }
 }

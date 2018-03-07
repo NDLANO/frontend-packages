@@ -53,4 +53,8 @@
       @include font-size(14px, 18px);
     }
   }
+
+  &--twoColumns {
+    @extend .c-subject-twocolumns__column;
+  }
 }

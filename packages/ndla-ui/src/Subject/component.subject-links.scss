@@ -15,7 +15,7 @@
     list-style: none;
   }
 
-  &__item {
-
+  &--twoColumns {
+    @extend .c-subject-twocolumns__column;
   }
 }

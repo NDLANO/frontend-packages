@@ -5,8 +5,8 @@ import SafeLink from '../common/SafeLink';
 
 const classes = BEMHelper('c-subject-links');
 
-const SubjectLinks = ({ links, heading }) => (
-  <section {...classes()}>
+const SubjectLinks = ({ links, heading, twoColumns }) => (
+  <section {...classes('', {'twoColumns' : twoColumns})}>
     <h1 {...classes('heading')}>{heading}</h1>
     <nav>
       <ul {...classes('list')}>
@@ -28,6 +28,7 @@ SubjectLinks.propTypes = {
     }),
   ),
   heading: PropTypes.string.isRequired,
+  twoColumns: PropTypes.bool,
 };
 
 export default SubjectLinks;

@@ -21,7 +21,6 @@ import {
   SubjectBadge,
   ErrorMessage,
   OneColumn,
-  TwoColumns,
   PageContainer,
   ResourcesWrapper,
   ResourcesTitle,
@@ -57,6 +56,7 @@ import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import TopicListExample from '../molecules/TopicListExample';
+import TwoColumnsExample from '../molecules/TwoColumnsExample';
 import article, {
   topicList,
   subjectList,
@@ -491,7 +491,7 @@ storiesOf('Emnesider', module)
               },
             ]}
           />
-          <TwoColumns noPadding>
+          <OneColumn noPadding>
             <SubjectContent
               breadcrumb={
                 <Breadcrumb
@@ -499,12 +499,85 @@ storiesOf('Emnesider', module)
                   subjectsTitle="Fag"
                   subject={subjectList[1]}
                   topicPath={[]}
-                  toTopic={() => '#'}
-                />
-              }>
-                sadassd
-              </SubjectContent>
-          </TwoColumns>
+                  toTopic={() => '#'} />
+            }>
+              <ResourcesWrapper
+                subjectPage
+                header={<ResourcesTitle>Emner</ResourcesTitle>}>
+                <TwoColumnsExample />
+                <SubjectContent>
+                  <SubjectShortcuts
+                    messages={{
+                      heading: 'Gå direkte til',
+                      showMore: 'Vis flere',
+                      showLess: 'Vis færre',
+                    }}
+                    links={[
+                      {
+                        url: '#1',
+                        text: 'Fagstoff',
+                      },
+                      {
+                        url: '#2',
+                        text: 'Oppgaver',
+                      },
+                      {
+                        url: '#3',
+                        text: 'Læringsstier',
+                      },
+                      {
+                        url: '#4',
+                        text: 'Film',
+                      },
+                      {
+                        url: '#5',
+                        text: 'Spill',
+                      },
+                      {
+                        url: '#6',
+                        text: 'Verktøy og mal',
+                      },
+                      {
+                        url: '#7',
+                        text: 'Kategori 7',
+                      },
+                      {
+                        url: '#8',
+                        text: 'Kategori 8',
+                      },
+                    ]}
+                    twoColumns
+                  />
+                  <SubjectLinks
+                    heading="Mest lest"
+                    links={[
+                      {
+                        url: '#1',
+                        text: 'Grafisk design',
+                      },
+                      {
+                        url: '#2',
+                        text: 'Nettsider',
+                      },
+                      {
+                        url: '#3',
+                        text: 'Prøv deg som journalist',
+                      },
+                      {
+                        url: '#4',
+                        text: 'Grenseløs journalistikk',
+                      },
+                    ]}
+                    twoColumns
+                  />
+                </SubjectContent>
+              </ResourcesWrapper>
+            </SubjectContent>
+            <SubjectCarousel
+              subjects={subjectCarouselList}
+              title="Litt forskjellig fra faget"
+            />
+          </OneColumn>
         </article>
       </Content>
     </PageContainer>

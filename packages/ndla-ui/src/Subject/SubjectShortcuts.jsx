@@ -30,7 +30,7 @@ class SubjectShortcuts extends Component {
   }
 
   render() {
-    const { links, messages, defaultVisableCount } = this.props;
+    const { links, messages, defaultVisableCount, twoColumns } = this.props;
 
     const showExpand = defaultVisableCount < links.length;
     let button = null;
@@ -53,9 +53,8 @@ class SubjectShortcuts extends Component {
         (link, index) => index < this.state.visibleCount,
       );
     }
-
     return (
-      <section {...classes()}>
+      <section {...classes('', {'twoColumns' : twoColumns})}>
         <h1 {...classes('heading')}>{messages.heading}</h1>
         <nav>
           <TransitionGroup className={classes('list').className} component="ul">
@@ -87,6 +86,7 @@ SubjectShortcuts.propTypes = {
     showLess: PropTypes.string.isRequired,
   }).isRequired,
   defaultVisableCount: PropTypes.number,
+  twoColumns: PropTypes.bool,
 };
 
 SubjectShortcuts.defaultProps = {

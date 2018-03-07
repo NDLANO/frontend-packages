@@ -35,7 +35,7 @@ $subject-margin: $spacing--medium + $spacing--large;
   &__title {
     @extend .c-subject-content__title;
   }
-  
+
   &__content {
     display: flex;
   }
@@ -51,5 +51,18 @@ $subject-margin: $spacing--medium + $spacing--large;
     width: 100% !important;
     overflow: hidden;
     display: block;
+  }
+}
+
+.c-subject-twocolumns {
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    // margin-left: $spacing--medium + $spacing--large;
+  }
+
+  &__column {
+    flex-basis: 50%;
+    box-sizing: border-box;
   }
 }

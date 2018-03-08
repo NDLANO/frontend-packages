@@ -33,11 +33,9 @@ class ListItem extends Component {
           {item.image ? <img src={item.image} alt={item.description} /> : null}
           <span {...classes('item-category')}>{item.category.title}</span>
         </div>
-        <div {...classes('item-content')}>
-          <span {...classes('item-subject')}>{item.subject.title}</span>
-          <h3 {...classes('item-name')}>{item.name}</h3>
-          <p {...classes('item-description')}>{item.description}</p>
-        </div>
+        <span {...classes('item-subject')}>{item.subject.title}</span>
+        <h3 {...classes('item-name')}>{item.name}</h3>
+        <p {...classes('item-description')}>{item.description}</p>
       </div>
     );
   }

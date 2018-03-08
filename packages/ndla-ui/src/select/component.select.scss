@@ -1,0 +1,47 @@
+.c-select {
+  display: flex;
+  height: 41px;
+  line-height: 41px;
+
+  &__label {
+    flex: 0 1 33%;
+    @include inuit-font-size(16px, 41px);
+
+  }
+
+  &__wrapper {
+    flex: 0 1 67%;
+    border: 1px solid $brand-grey--light;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  &__input {
+    // Strip input (the <select> element) of all styles and apply them to wrapper element instead. Also remove default arrow
+    border: none;
+    display: block;
+    width: 100%;
+    height: 41px;
+    line-height: 41px;
+    background: transparent;
+    padding: 0 $spacing--small 0 $spacing--small;
+    @include inuit-font-size(16px);
+    // Remove dropdown ndla-icons
+    appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+
+  &__symbol {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 41px;
+    line-height: 41px;
+    width: 41px;
+    display: block;
+    text-align: center;
+    pointer-events: none;
+  }
+}

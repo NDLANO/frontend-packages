@@ -22,14 +22,59 @@
   }
 
   &__content {
-    display: flex;
+    list-style: none;
+
+    &--grid {
+      display: flex;
+      // Special styling for items when shown as grid
+      .c-listview {
+        &__item {
+          flex-basis: 25%;
+        }
+      }
+    }
+
+    &--list {
+      display: block;
+      // Style for items when shown as list
+      .c-listview {
+        &__item {
+          display: flex;
+          justify-content: space-around;
+
+          &-image {
+            flex: 1 1 25%;
+            order: 3;
+            border-bottom: none;
+
+            img {
+              height: 90%;
+            }
+          }
+
+          &-description {
+            flex: 1 2 50%;
+            @include inuit-font-size(16px);
+            order: 2;
+          }
+
+          &-name {
+            flex: 1 1 25%;
+            order: 1;
+          }
+
+          &-subject {
+            display: none;
+          }
+        }
+      }
+    }
   }
 
   /**
    * Styles below is for __item and its child classes
    */
   &__item {
-    flex-basis: 25%;
     padding: $spacing--small;
 
     &:hover {
@@ -76,8 +121,103 @@
       margin: 0;
     }
   }
-}
 
+  /**
+   * Style for filter/sorting elements
+   */
+   &__sorting {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+   }
+
+   &__style-button {
+     background-color: $brand-grey--lighter;
+     border: none;
+     border-radius: 5px;
+     color: $brand-color--tertiary;
+     margin-left: $spacing--small;
+     padding: $spacing--small;
+     text-align: center;
+
+     &--active {
+       background-color: $brand-color--lighter;
+       color: $brand-color--dark;
+     }
+
+     &:hover {
+       cursor: pointer;
+       color: $brand-color--dark;
+     }
+   }
+
+   &__sortBy {
+     flex: 0 1 33.33%;
+
+     label {
+       flex: 0 1 33%;
+     }
+
+     .c-select {
+       flex: 0 1 67%;
+     }
+   }
+
+   &__search {
+     flex: 0 1 33.33%;
+     padding-left: $spacing--small;
+     .c-search-field {
+       max-width: 75%;
+     }
+   }
+
+   &__list-style {
+     flex: 0 1 33.33%;
+     text-align: right;
+   }
+   /* Style for alphabet filter */
+   &__alphabet {
+     flex: 0 1 100%;
+     list-style: none;
+     display: flex;
+     align-items: stretch;
+     height: 32px;
+   }
+
+   &__letter {
+     flex: 1 1 32px;
+     text-align: center;
+     margin: 0;
+     &-button {
+       background: transparent;
+       border: none;
+       color: $brand-color;
+       font-weight: $font-weight-semibold;
+       text-transform: uppercase;
+       @include inuit-font-size(18px);
+       height: 100%;
+       width: 100%;
+       border-radius: 50%;
+
+       &:hover, &:focus {
+         &:not(.c-listview__letter-button--active) {
+           background-color: $brand-color--lighter;
+         }
+       }
+
+       &--active {
+         background-color: $brand-color;
+         color: $white;
+       }
+
+       &--disabled {
+         pointer-events: none;
+         opacity: 0.56;
+       }
+     }
+
+   }
+}
 
 /*
  * Modifier style for .c-filter__list for

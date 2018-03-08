@@ -63,6 +63,7 @@ import article, {
   subjectList,
   subjectCarouselList,
   subjectConcepts,
+  mockListView,
 } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
@@ -659,7 +660,7 @@ storiesOf('Emnesider', module)
           </section>
         </OneColumn>
         <OneColumn>
-          <ListView list={{}} />
+          <ListView list={mockListView} />
         </OneColumn>
       </Content>
     </PageContainer>

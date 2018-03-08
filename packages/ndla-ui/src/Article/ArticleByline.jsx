@@ -16,7 +16,14 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ArticleByline = ({ authors, license, messages, updated, children }) => (
+const ArticleByline = ({
+  authors,
+  license,
+  messages,
+  updated,
+  additional,
+  children,
+}) => (
   <div {...classes()}>
     <span {...classes('flex')}>
       <span {...classes('icon')}>
@@ -34,6 +41,7 @@ const ArticleByline = ({ authors, license, messages, updated, children }) => (
       <span {...classes('date')}>
         {messages.lastUpdated} {updated}
       </span>
+      <span {...classes('additional')}>{additional}</span>
       {children}
     </span>
   </div>
@@ -52,6 +60,7 @@ ArticleByline.propTypes = {
   messages: PropTypes.shape({
     lastUpdated: PropTypes.string.isRequired,
   }).isRequired,
+  additional: PropTypes.node,
   children: PropTypes.node,
 };
 

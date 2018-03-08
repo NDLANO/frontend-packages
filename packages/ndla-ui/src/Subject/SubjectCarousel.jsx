@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Play } from 'ndla-icons/common';
+import { ChevronLeft, ChevronRight, Play } from 'ndla-icons/common';
 import Slider from 'react-slick';
 import SafeLink from '../common/SafeLink';
 
@@ -9,11 +9,26 @@ import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-carousel');
 
+const arrow = direction => (
+  { className, style, onClick }, // eslint-disable-line
+) => (
+  <button
+    className={`${classes('arrow', [direction]).className} ${className}`}
+    onClick={onClick}>
+    {direction === 'prev' ? <ChevronLeft /> : <ChevronRight />}
+  </button>
+);
+
+const NextArrow = arrow('next');
+const PrevArrow = arrow('prev');
+
 const settings = {
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
   dots: false,
   infinite: false,
   slidesToShow: 4,
-  slidesToScroll: 2,
+  slidesToScroll: 4,
   swipeToScroll: false,
   responsive: [
     {

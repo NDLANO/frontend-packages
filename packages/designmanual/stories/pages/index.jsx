@@ -30,6 +30,7 @@ import {
   SubjectContent,
   SubjectSidebarWrapper,
   SubjectFlexWrapper,
+  SubjectFlexChild,
   SubjectShortcuts,
   SubjectLinks,
   SubjectBox,
@@ -37,6 +38,7 @@ import {
   SubjectConcepts,
   SubjectSocialContent,
   SubjectSocialSection,
+  SubjectChildContent,
   ListView,
   EmbeddedTwitter,
   EmbeddedFacebook,
@@ -67,6 +69,49 @@ import article, {
 } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
+
+const subjectBox1 = (
+  <SubjectBox
+    media={
+      <Image
+        alt="Forstørrelsesglass"
+        src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+      />
+    }
+    heading="Tittel overskrift"
+    description="Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato."
+    url="#1"
+    archiveUrl="#2"
+    messages={{
+      archive: 'Arkiv',
+    }}
+  />
+);
+
+const subjectBox2 = (
+  <SubjectBox
+    smallHeading
+    media={
+      <Image
+        alt="Forstørrelsesglass"
+        src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+      />
+    }
+    heading="Om medieuttrykk og mediesamfunnet"
+    description="Her kan det komme en tekstlig beskrivelse av hvordan faget er bygget opp eller hvilke særpreg dette faget har. Det kan også være i form av en film som introduserer faget"
+  />
+);
+
+const some = (
+  <SubjectSocialContent>
+    <SubjectSocialSection title="Twitter">
+      <EmbeddedTwitter screenName="ndla_norsk" tweetLimit={1} />
+    </SubjectSocialSection>
+    <SubjectSocialSection title="Facebook">
+      <EmbeddedFacebook href="https://www.facebook.com/NDLAmediefag/posts/1648640581877981" />
+    </SubjectSocialSection>
+  </SubjectSocialContent>
+);
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
@@ -428,32 +473,8 @@ storiesOf('Emnesider', module)
                     },
                   ]}
                 />
-                <SubjectBox
-                  media={
-                    <Image
-                      alt="Forstørrelsesglass"
-                      src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-                    />
-                  }
-                  heading="Tittel overskrift"
-                  description="Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato."
-                  url="#1"
-                  archiveUrl="#2"
-                  messages={{
-                    archive: 'Arkiv',
-                  }}
-                />
-                <SubjectBox
-                  smallHeading
-                  media={
-                    <Image
-                      alt="Forstørrelsesglass"
-                      src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-                    />
-                  }
-                  heading="Om medieuttrykk og mediesamfunnet"
-                  description="Her kan det komme en tekstlig beskrivelse av hvordan faget er bygget opp eller hvilke særpreg dette faget har. Det kan også være i form av en film som introduserer faget"
-                />
+                {subjectBox1}
+                {subjectBox2}
               </SubjectSidebarWrapper>
             </SubjectContent>
             <SubjectCarousel
@@ -465,14 +486,7 @@ storiesOf('Emnesider', module)
               title="Begreg i faget"
             />
 
-            <SubjectSocialContent>
-              <SubjectSocialSection title="Twitter">
-                <EmbeddedTwitter screenName="ndla_norsk" tweetLimit={10} />
-              </SubjectSocialSection>
-              <SubjectSocialSection title="Facebook">
-                <EmbeddedFacebook href="https://www.facebook.com/NDLAmediefag/posts/1648640581877981" />
-              </SubjectSocialSection>
-            </SubjectSocialContent>
+            {some}
           </OneColumn>
         </article>
       </Content>
@@ -495,6 +509,7 @@ storiesOf('Emnesider', module)
           />
           <OneColumn noPadding>
             <SubjectContent
+              twoColumns
               breadcrumb={
                 <Breadcrumb
                   toSubjects={() => '#'}
@@ -508,79 +523,88 @@ storiesOf('Emnesider', module)
                 subjectPage
                 header={<ResourcesTitle>Emner</ResourcesTitle>}>
                 <TwoColumnsExample />
-                <SubjectFlexWrapper>
-                  <SubjectShortcuts
-                    messages={{
-                      heading: 'Gå direkte til',
-                      showMore: 'Vis flere',
-                      showLess: 'Vis færre',
-                    }}
-                    links={[
-                      {
-                        url: '#1',
-                        text: 'Fagstoff',
-                      },
-                      {
-                        url: '#2',
-                        text: 'Oppgaver',
-                      },
-                      {
-                        url: '#3',
-                        text: 'Læringsstier',
-                      },
-                      {
-                        url: '#4',
-                        text: 'Film',
-                      },
-                      {
-                        url: '#5',
-                        text: 'Spill',
-                      },
-                      {
-                        url: '#6',
-                        text: 'Verktøy og mal',
-                      },
-                      {
-                        url: '#7',
-                        text: 'Kategori 7',
-                      },
-                      {
-                        url: '#8',
-                        text: 'Kategori 8',
-                      },
-                    ]}
-                    twoColumns
-                  />
-                  <SubjectLinks
-                    heading="Mest lest"
-                    links={[
-                      {
-                        url: '#1',
-                        text: 'Grafisk design',
-                      },
-                      {
-                        url: '#2',
-                        text: 'Nettsider',
-                      },
-                      {
-                        url: '#3',
-                        text: 'Prøv deg som journalist',
-                      },
-                      {
-                        url: '#4',
-                        text: 'Grenseløs journalistikk',
-                      },
-                    ]}
-                    twoColumns
-                  />
-                </SubjectFlexWrapper>
               </ResourcesWrapper>
+              <SubjectChildContent>
+                <SubjectFlexWrapper>
+                  <SubjectFlexChild>
+                    <SubjectShortcuts
+                      messages={{
+                        heading: 'Gå direkte til',
+                        showMore: 'Vis flere',
+                        showLess: 'Vis færre',
+                      }}
+                      links={[
+                        {
+                          url: '#1',
+                          text: 'Fagstoff',
+                        },
+                        {
+                          url: '#2',
+                          text: 'Oppgaver',
+                        },
+                        {
+                          url: '#3',
+                          text: 'Læringsstier',
+                        },
+                        {
+                          url: '#4',
+                          text: 'Film',
+                        },
+                        {
+                          url: '#5',
+                          text: 'Spill',
+                        },
+                        {
+                          url: '#6',
+                          text: 'Verktøy og mal',
+                        },
+                        {
+                          url: '#7',
+                          text: 'Kategori 7',
+                        },
+                        {
+                          url: '#8',
+                          text: 'Kategori 8',
+                        },
+                      ]}
+                    />
+                  </SubjectFlexChild>
+                  <SubjectFlexChild>
+                    <SubjectLinks
+                      heading="Mest lest"
+                      links={[
+                        {
+                          url: '#1',
+                          text: 'Grafisk design',
+                        },
+                        {
+                          url: '#2',
+                          text: 'Nettsider',
+                        },
+                        {
+                          url: '#3',
+                          text: 'Prøv deg som journalist',
+                        },
+                        {
+                          url: '#4',
+                          text: 'Grenseløs journalistikk',
+                        },
+                      ]}
+                    />
+                  </SubjectFlexChild>
+                </SubjectFlexWrapper>
+                <SubjectCarousel
+                  subjects={subjectCarouselList}
+                  title="Litt forskjellig fra faget"
+                  subjectPage
+                />
+                <SubjectFlexWrapper>
+                  <SubjectFlexChild>{subjectBox1}</SubjectFlexChild>
+                  <SubjectFlexChild>{subjectBox2}</SubjectFlexChild>
+                </SubjectFlexWrapper>
+                {some}
+              </SubjectChildContent>
             </SubjectContent>
-            <SubjectCarousel
-              subjects={subjectCarouselList}
-              title="Litt forskjellig fra faget"
-              subjectPage
-            />
           </OneColumn>
         </article>
       </Content>

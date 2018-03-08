@@ -4,6 +4,8 @@ import { TransitionGroup } from 'react-transition-group';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from 'ndla-icons/common';
 
+import { SubjectSectionTitle } from './Subject';
+
 import SafeLink from '../common/SafeLink';
 import Fade from '../Animation/Fade';
 
@@ -30,7 +32,7 @@ class SubjectShortcuts extends Component {
   }
 
   render() {
-    const { links, messages, defaultVisableCount, twoColumns } = this.props;
+    const { links, messages, defaultVisableCount } = this.props;
 
     const showExpand = defaultVisableCount < links.length;
     let button = null;
@@ -54,8 +56,8 @@ class SubjectShortcuts extends Component {
       );
     }
     return (
-      <section {...classes('', { twoColumns })}>
-        <h1 {...classes('heading')}>{messages.heading}</h1>
+      <section {...classes('')}>
+        <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
         <nav>
           <TransitionGroup className={classes('list').className} component="ul">
             {filteredLinks.map(link => (
@@ -86,7 +88,6 @@ SubjectShortcuts.propTypes = {
     showLess: PropTypes.string.isRequired,
   }).isRequired,
   defaultVisableCount: PropTypes.number,
-  twoColumns: PropTypes.bool,
 };
 
 SubjectShortcuts.defaultProps = {

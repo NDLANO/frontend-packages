@@ -19,39 +19,22 @@ const topicClasses = new BEMHelper({
   outputIsString: true,
 });
 
-const twoColumnsClass = new BEMHelper({
-  prefix: 'c-',
-  name: 'subject-flex',
-  outputIsString: true,
-});
-
-const TopicIntroduction = ({
-  toTopic,
-  topic,
-  subjectPage,
-  shortcuts,
-  twoColumns,
-}) => {
-  const className = `${
-    twoColumns ? twoColumnsClass('column') : ''
-  } ${topicClasses('item', { subjectPage })}`;
-  return (
-    <li className={className}>
-      <article className={topicClasses('body')}>
-        <h1 className={topicClasses('header')}>
-          <SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink>
-        </h1>
-        <p>{topic.introduction}</p>
-        {shortcuts ? (
-          <TopicIntroductionShortcuts
-            shortcuts={shortcuts}
-            key={`${topic.id}-shortcuts`}
-          />
-        ) : null}
-      </article>
-    </li>
-  );
-};
+const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts }) => (
+  <li className={topicClasses('item', { subjectPage })}>
+    <article className={topicClasses('body')}>
+      <h1 className={topicClasses('header')}>
+        <SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink>
+      </h1>
+      <p>{topic.introduction}</p>
+      {shortcuts ? (
+        <TopicIntroductionShortcuts
+          shortcuts={shortcuts}
+          key={`${topic.id}-shortcuts`}
+        />
+      ) : null}
+    </article>
+  </li>
+);
 
 TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
@@ -61,27 +44,21 @@ TopicIntroduction.propTypes = {
   twoColumns: PropTypes.bool,
 };
 
-const TopicIntroductionList = ({ topics, twoColumns, ...rest }) => {
-  const className = `${
-    twoColumns ? twoColumnsClass('wrapper') : ''
-  } ${topicClasses('list')}`;
-  return (
-    <ul className={className}>
-      {topics.map(topic => {
-        const shortcuts = topic.shortcuts ? topic.shortcuts : [];
-        return (
-          <TopicIntroduction
-            key={topic.id}
-            {...rest}
-            topic={topic}
-            shortcuts={shortcuts}
-            twoColumns
-          />
-        );
-      })}
-    </ul>
-  );
-};
+const TopicIntroductionList = ({ topics, twoColumns, ...rest }) => (
+  <ul className={topicClasses('list', { twoColumns })}>
+    {topics.map(topic => {
+      const shortcuts = topic.shortcuts ? topic.shortcuts : [];
+      return (
+        <TopicIntroduction
+          key={topic.id}
+          {...rest}
+          topic={topic}
+          shortcuts={shortcuts}
+        />
+      );
+    })}
+  </ul>
+);
 
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,

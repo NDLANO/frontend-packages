@@ -1,45 +1,46 @@
 .c-subject-carousel {
-    &__image {
-        background-color: $background-color--gray-dark;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        height: 125px;
-        width: 100%;
-        border-radius: .3em;
-        position: relative;
-    }
+  margin-bottom: $subject-section-padding;
 
-    &__title {
-      margin: $spacing--small 0 0 0;
-      font-weight: $font-weight-bold;
-      @include inuit-font-size(20px);
-    }
-
-    &__description {
-      @include inuit-font-size(14px);
-      line-height: 1.25rem;
-      font-family: $font-serif;
-      margin: 0;
-    }
-
-    &__type {
-      @include inuit-font-size(12px);
+  &__image {
+      background-color: $background-color--gray-dark;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 125px;
+      width: 100%;
+      border-radius: .3em;
       position: relative;
-      top: 68%;
-      left: 10px;
-      display: inline-block;
-      background: $brand-grey--lightest;
-      border-radius: 0.2em;
-      padding: 0 0.2rem 0 0.2rem;
-      text-transform: capitalize;
-      font-weight: 600;
-      line-height: 1.5em;
-    }
+  }
 
-    &__subject {
-        padding: $spacing--small $spacing $spacing--small 0;
-    }
+  &__title {
+    margin: $spacing--small 0 0 0;
+    font-weight: $font-weight-bold;
+    @include inuit-font-size(20px);
+  }
+
+  &__description {
+    @include inuit-font-size(14px);
+    line-height: 1.25rem;
+    font-family: $font-serif;
+    margin: 0;
+  }
+
+  &__type {
+    @include inuit-font-size(12px);
+    position: relative;
+    top: 68%;
+    left: 10px;
+    display: inline-block;
+    background: $brand-grey--lightest;
+    border-radius: 0.2em;
+    padding: 0 0.2rem 0 0.2rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    line-height: 1.5em;
+  }
+
+  &__subject {
+    padding: 0 $spacing 0 0;
 
     .c-icon {
       color: $white;
@@ -51,15 +52,60 @@
       margin-left: -26px;
       margin-top: -26px;
     }
+  }
 
-    &__link {
-      color: $primary-color;
+
+
+  &__link {
+    color: $primary-color;
+  }
+
+  &__arrow {
+    display: none;
+    position: absolute;
+    top: $spacing;
+    height: 76px;
+    width: 76px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 0;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    cursor: pointer;
+
+    .c-icon {
+      color: $white;
+      width: 64px;
+      height: 64px;
     }
+
+    &--prev {
+      left: $spacing;
+    }
+
+    &--next {
+      right: $spacing*2;
+    }
+
+  }
+
+  &__slider {
+    &:hover {
+      .c-subject-carousel__arrow {
+        display: flex;
+        animation-name: fadeIn;
+        animation-duration: 0.2s;
+
+        &.slick-disabled {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 
 /* Default react-slick style
    Included here to avoid having to import jQuery dependency package to project */
 .slick-list,.slick-slider,.slick-track{position:relative;display:block}.slick-loading .slick-slide,.slick-loading .slick-track{visibility:hidden}.slick-slider{box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}.slick-list{overflow:hidden;margin:0;padding:0}.slick-list:focus{outline:0}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.slick-track{top:0;left:0}.slick-track:after,.slick-track:before{display:table;content:''}.slick-track:after{clear:both}.slick-slide{display:none;float:left;height:100%;min-height:1px}[dir=rtl] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}.slick-arrow.slick-hidden{display:none}/*# sourceMappingURL=slick.min.css.map */
-
-.slick-dots,.slick-next,.slick-prev{position:absolute;display:block;padding:0}.slick-dots li button:before,.slick-next:before,.slick-prev:before{font-family:slick;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.slick-loading .slick-list{background: #fff;}@font-face{font-family:slick;font-weight:400;font-style:normal;}.slick-next,.slick-prev{font-size:0;line-height:0;top:50%;width:20px;height:20px;-webkit-transform:translate(0,-50%);-ms-transform:translate(0,-50%);transform:translate(0,-50%);cursor:pointer;color:transparent;border:none;outline:0;background:0 0}.slick-next:focus,.slick-next:hover,.slick-prev:focus,.slick-prev:hover{color:transparent;outline:0;background:0 0}.slick-next:focus:before,.slick-next:hover:before,.slick-prev:focus:before,.slick-prev:hover:before{opacity:1}.slick-next.slick-disabled:before,.slick-prev.slick-disabled:before{opacity:.25}.slick-next:before,.slick-prev:before{font-size:20px;line-height:1;opacity:.75;color:#fff}.slick-prev{left:-25px}[dir=rtl] .slick-prev{right:-25px;left:auto}.slick-prev:before{content:'â†'}.slick-next:before,[dir=rtl] .slick-prev:before{content:'â†’'}.slick-next{right:-25px}[dir=rtl] .slick-next{right:auto;left:-25px}[dir=rtl] .slick-next:before{content:''}.slick-dotted.slick-slider{margin-bottom:30px}.slick-dots{bottom:-25px;width:100%;margin:0;list-style:none;text-align:center}.slick-dots li{position:relative;display:inline-block;width:20px;height:20px;margin:0 5px;padding:0;cursor:pointer}.slick-dots li button{font-size:0;line-height:0;display:block;width:20px;height:20px;padding:5px;cursor:pointer;color:transparent;border:0;outline:0;background:0 0}.slick-dots li button:focus,.slick-dots li button:hover{outline:0}.slick-dots li button:focus:before,.slick-dots li button:hover:before{opacity:1}.slick-dots li button:before{font-size:6px;line-height:20px;position:absolute;top:0;left:0;width:20px;height:20px;content:'';text-align:center;opacity:.25;color:#000}.slick-dots li.slick-active button:before{opacity:.75;color:#000}/*# sourceMappingURL=slick-theme.min.css.map */

@@ -1,10 +1,7 @@
 .c-subject-links {
   margin-bottom: $spacing--large;
 
-  &__heading {
-    @include font-size(22px, 32px);
-    text-transform: uppercase;
-    font-weight: $font-weight-bold;
+  .c-subject-links__heading {
     margin: 0 0 $spacing--small 0;
   }
 
@@ -13,9 +10,5 @@
     padding: 0;
 
     list-style: none;
-  }
-
-  &--twoColumns {
-    @extend .c-subject-twocolumns__column;
   }
 }

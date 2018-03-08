@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-social');
 
@@ -14,7 +15,9 @@ SubjectSocialContent.propTypes = {
 
 export const SubjectSocialSection = ({ children, title }) => (
   <section {...classes('section')}>
-    <h1 {...classes('title')}>{title}</h1>
+    <SubjectSectionTitle className={classes('title').className}>
+      {title}
+    </SubjectSectionTitle>
     {children}
   </section>
 );

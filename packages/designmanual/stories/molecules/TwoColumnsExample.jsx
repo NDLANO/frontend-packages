@@ -55,6 +55,7 @@ class TopicListExample extends Component {
           toTopic={() => '#'}
           topics={this.filterTopics()}
           twoColumns
+          subjectPage
         />
       </section>
     );

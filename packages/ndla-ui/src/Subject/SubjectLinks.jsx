@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
 
+import { SubjectSectionTitle } from './Subject';
+
 const classes = BEMHelper('c-subject-links');
 
-const SubjectLinks = ({ links, heading, twoColumns }) => (
-  <section {...classes('', { twoColumns })}>
-    <h1 {...classes('heading')}>{heading}</h1>
+const SubjectLinks = ({ links, heading }) => (
+  <section {...classes()}>
+    <SubjectSectionTitle className={classes('heading').className}>
+      {heading}
+    </SubjectSectionTitle>
     <nav>
       <ul {...classes('list')}>
         {links.map(link => (
@@ -28,7 +32,6 @@ SubjectLinks.propTypes = {
     }),
   ),
   heading: PropTypes.string.isRequired,
-  twoColumns: PropTypes.bool,
 };
 
 export default SubjectLinks;

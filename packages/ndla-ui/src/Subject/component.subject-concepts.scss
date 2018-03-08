@@ -1,5 +1,6 @@
 .c-subject-concepts {
   position: relative;
+  margin-bottom: $subject-section-padding;
   &__list {
     list-style: none;
     display: flex;
@@ -23,7 +24,7 @@
       &:hover {
         border-bottom: none;
       }
-      
+
       .c-concept__link {
         @include inuit-font-size(16px);
         color: $brand-color--dark;

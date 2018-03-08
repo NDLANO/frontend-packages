@@ -1,4 +1,5 @@
 $subject-margin: $spacing--medium + $spacing--large;
+$subject-section-padding: 100px;
 
 @import './component.subject-header';
 @import './component.subject-shortcut';
@@ -16,12 +17,10 @@ $subject-margin: $spacing--medium + $spacing--large;
   &__content {
     margin-top: $spacing--large;
     display: flex;
-  }
 
-  &__title {
-    @include inuit-font-size(22px);
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
+    &--twoColumns {
+      flex-flow: column;
+    }
   }
 }
 
@@ -32,10 +31,6 @@ $subject-margin: $spacing--medium + $spacing--large;
 }
 
 .c-subject-social {
-  &__title {
-    @extend .c-subject-content__title;
-  }
-
   &__content {
     display: flex;
   }
@@ -55,25 +50,28 @@ $subject-margin: $spacing--medium + $spacing--large;
 }
 
 .c-subject-flex {
-  &__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
 
-  &__column {
+  &__child {
     flex-basis: 50%;
     box-sizing: border-box;
+    padding-right: $spacing--large;
+
+    & > * {
+      margin-bottom: 0;
+    }
   }
+
+  margin-bottom: $subject-section-padding;
 }
 
-.c-subject-twocolumns {
-  &__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
+.c-subject-section-title {
+  margin: 0 0 $spacing 0;
+  @include inuit-font-size(22px);
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
 
-  &__column {
-    flex-basis: 50%;
-    box-sizing: border-box;
-  }
+.c-subject-child-content {
+  padding-left: $subject-margin;
 }

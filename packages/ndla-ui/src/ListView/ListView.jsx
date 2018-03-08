@@ -16,20 +16,12 @@ const alphabet = 'abcdefghijklmnopqrstuvxyzæøå';
 class ListView extends Component {
   constructor(props) {
     super(props);
-    this.state = { detailedItem: null, nextItem: null, index: null, viewStyle: 'grid', sortBy: 'alphabet', searchWord: '', selectedLetter: '' };
+    this.state = { detailedItem: null, nextItem: null, index: null, viewStyle: this.props.viewStyle, sortBy: 'alphabet', searchWord: '', selectedLetter: '' };
     this.setDetailedItem = this.setDetailedItem.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.list.viewStyle) {
-      this.onMount(() => {
-        this.setState({ viewStyle: this.props.list.viewStyle });
-      });
-    }
-  }
-
   getActiveLetters() {
-    const { items } = this.props.list;
+    const { items } = this.props;
     const letters = {};
     const len = items.length;
     for (let i = 0; i < len; i += 1) {
@@ -40,7 +32,7 @@ class ListView extends Component {
   }
 
   setDetailedItem(item, index) {
-    const { items } = this.props.list;
+    const { items } = this.props;
     const nextItem = items[index + 1] ? items[index + 1] : null;
     const previousItem = items[index - 1] ? items[index - 1] : null;
     const stateObj = { detailedItem: item, nextItem, previousItem, index };
@@ -48,7 +40,7 @@ class ListView extends Component {
   }
 
   sortItems() {
-    const { items } = this.props.list;
+    const { items } = this.props;
     let result = [];
     let filtered = false;
     const sortedItems = items.sort((a, b) => {
@@ -96,6 +88,7 @@ class ListView extends Component {
   }
 
   render() {
+    const { filters } = this.props;
     const { viewStyle } = this.state;
     const sortedItems = this.sortItems();
     const listItems = sortedItems.map((item, index) => (
@@ -107,32 +100,19 @@ class ListView extends Component {
       />
     ));
 
+    const filterComponents = filters.map((filter) =>
+      <FilterList
+        modifiers="listview"
+        options={filter.options}
+        values={filter.values}
+        label={filter.label}
+        onChange={filter.onChange}
+      />
+    )
     return (
       <div {...classes()}>
         <h1>Listevisning</h1>
-        <FilterList
-          modifiers="listview"
-          options={[
-            { title: 'El-håndverkøy', value: 'elhandverktoy' },
-            { title: 'Håndverkøy', value: 'handverktoy' },
-            { title: 'Maskiner', value: 'maskiner' },
-            { title: 'Måleverkøy', value: 'maleverktoy' },
-          ]}
-          values={[]}
-          label="Fag"
-        />
-        <FilterList
-          modifiers="listview"
-          options={[
-            { title: 'Betongfaget', value: 'betongfaget' },
-            { title: 'Innredningsfaget', value: 'innredningsfaget' },
-            { title: 'Murerfaget', value: 'murerfaget' },
-            { title: 'Trelastfaget', value: 'trelastfaget' },
-            { title: 'Tømrerfaget', value: 'tomrerfaget' },
-          ]}
-          values={[]}
-          label="Kategori"
-        />
+        { filterComponents }
 
         <div {...classes('sorting')}>
           <div {...classes('sortBy')}>
@@ -162,6 +142,7 @@ class ListView extends Component {
             </button>
           </div>
 
+          { viewStyle === 'list' ?
           <ul {...classes('alphabet')}>
             { alphabet.split('').map((letter) =>
               <li key={`letter-${letter}`} {...classes('letter')}>
@@ -172,7 +153,7 @@ class ListView extends Component {
                 </button>
               </li>
             )}
-          </ul>
+          </ul> : null }
         </div>
 
         <ul {...classes('content', [viewStyle] )}>{listItems}</ul>
@@ -192,13 +173,18 @@ class ListView extends Component {
 }
 
 ListView.propTypes = {
-  list: PropTypes.shape({
-    items: PropTypes.array,
-    subjects: PropTypes.array,
-    categories: PropTypes.array,
-    viewStyle: PropTypes.oneOf(['grid', 'list']),
-  }).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+    })
+  ).isRequired,
+  filters: PropTypes.arrayOf(),
+  viewStyle: PropTypes.oneOf(['grid', 'list']),
 };
 
+ListView.defaultProps = {
+  filters: [],
+  viewStyle: 'grid',
+};
 
 export default ListView;

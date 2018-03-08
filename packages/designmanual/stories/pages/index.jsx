@@ -684,7 +684,21 @@ storiesOf('Emnesider', module)
           </section>
         </OneColumn>
         <OneColumn>
-          <ListView list={mockListView} />
+          <ListView
+            items={mockListView.items}
+            filters={[
+              {
+                options: [
+                  { title: 'El-håndverkøy', value: 'elhandverktoy' },
+                  { title: 'Håndverkøy', value: 'handverktoy' },
+                  { title: 'Maskiner', value: 'maskiner' },
+                  { title: 'Måleverkøy', value: 'maleverktoy' },
+                ],
+                values: [],
+                label: 'Fag',
+              }
+            ]}
+          />
         </OneColumn>
       </Content>
     </PageContainer>

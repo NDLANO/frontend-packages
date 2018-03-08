@@ -1,11 +1,12 @@
 .c-listview-dialog {
-  position: fixed;
-  top: 20%;
-  left: 25%;
-  width: 50%;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
   background: $white;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
   padding: $spacing;
+  @include inuit-font-size(16px);
 
   &__image {
     height: 347px;
@@ -21,13 +22,23 @@
   }
 
   &__name {
+    flex: 1 1 auto;
     margin: 0;
     font-weight: $font-weight-bold;
+    @include inuit-font-size(24px);
   }
 
   &__subject {
     color: $text-light-color;
+    font-weight: $font-weight-normal;
+    margin-left: $spacing--small;
+    padding-left: $spacing--small;
+    border-left: 1px solid #8A8888;
     @include inuit-font-size(16px);
+  }
+
+  &__meta {
+    margin: $spacing 0 $spacing 0;
   }
 
   &__category {
@@ -39,6 +50,10 @@
     padding: 0.3rem;
     line-height: .5rem;
     margin-left: 0.5em;
+
+    &-label {
+      font-family: $font-serif;
+    }
   }
 
   &__description {
@@ -46,8 +61,10 @@
   }
 
   &__topbar {
-    display: block;
-    text-align: right;
+    border-bottom: 2px solid $brand-color;
+    display: flex;
+    padding-bottom: $spacing--small / 4;
+    // text-align: right;
   }
   &__close {
     background: transparent;
@@ -57,19 +74,12 @@
 
     &:hover {
       cursor: pointer;
-
-      span {
-        border-bottom: none;
-      }
-    }
-
-    &-label {
-      border-bottom: 1px solid $brand-color;
     }
   }
 
   &__footer {
     display: flex;
+    border-top: 1px solid $brand-color--light;
   }
 
   &__navitem {

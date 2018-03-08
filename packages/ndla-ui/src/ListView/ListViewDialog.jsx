@@ -1,11 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Cross } from 'ndla-icons/action';
+import Tabs from 'ndla-tabs';
+import { getLicenseByAbbreviation } from 'ndla-licenses';
+
 import { createUniversalPortal } from '../utils/createUniversalPortal';
 
 const classes = BEMHelper('c-listview-dialog');
 
+const ConceptContent = ({ item }) =>
+<div>
+  <div {...classes('image')}>
+    <img src={item.image} alt={item.description} />
+  </div>
+  <p {...classes('description')}>{item.description}</p>
+  <div {...classes('meta')}>
+    <span {...classes('category-label')}>Brukes i:</span>
+    <span {...classes('category')}>{item.category.title}</span>
+  </div>
+</div>
+
+ConceptContent.propTypes = {
+  item: PropTypes.shape({
+    image: PropTypes.string,
+    category: PropTypes.shape({
+      title: PropTypes.string,
+      value: PropTypes.string,
+    })
+  })
+}
 class ListViewDialog extends Component {
   constructor(props) {
     super(props);
@@ -27,44 +50,33 @@ class ListViewDialog extends Component {
   }
 
   render() {
-    const { item, nextItem, previousItem } = this.props;
+    const { item } = this.props;
+    const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
     return (
       <div>
         {createUniversalPortal(
           <div {...classes('')}>
             <div {...classes('topbar')}>
+              <h1 {...classes('name')}>{item.name} <span {...classes('subject')}>{item.subject.title}</span></h1>
               <button {...classes('close')} onClickCapture={this.handleClick}>
-                <span {...classes('close-label')}>Lukk</span> <Cross />
+                <span {...classes('close-label')}>Lukk</span>
               </button>
             </div>
-            <div {...classes('image')}>
-              <img src={item.image} alt={item.description} />
-            </div>
-            <h1 {...classes('name')}>{item.name}</h1>
-            <div {...classes('meta')}>
-              <span {...classes('subject')}>{item.subject.title}</span>
-              <span {...classes('category')}>{item.category.title}</span>
-            </div>
-            <p {...classes('description')}>{item.description}</p>
+            <Tabs
+              selectedIndex={0}
+              tabs={[
+                {
+                  title: 'Begrep',
+                  content: <ConceptContent item={item} />,
+                },
+                {
+                  title: 'Ordliste',
+                  content: <p>Ordliste</p>,
+                }
+              ]} />
+
             <div {...classes('footer')}>
-              <div {...classes('navitem')}>
-                {previousItem ? (
-                  <button
-                    {...classes('navbutton', 'previous')}
-                    onClick={this.goToPreviousItem}>
-                    {previousItem.name}
-                  </button>
-                ) : null}
-              </div>
-              <div {...classes('navitem')}>
-                {nextItem ? (
-                  <button
-                    {...classes('navbutton', 'next')}
-                    onClick={this.goToNextItem}>
-                    {nextItem.name}
-                  </button>
-                ) : null}
-              </div>
+              <license />
             </div>
           </div>,
           'body',

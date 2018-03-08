@@ -1,0 +1,50 @@
+.c-background-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--mobile {
+      display: none;
+      @include mq($from: mobile, $until: tablet) {
+        display: block;
+      }
+    }
+    &--tablet {
+      display: none;
+      @include mq($from: tablet, $until: desktop) {
+        display: block;
+      }
+    }
+    &--desktop {
+      display: none;
+      @include mq($from: desktop, $until: wide) {
+        display: block;
+      }
+    }
+    &--wide {
+      display: none;
+      @include mq($from: wide) {
+        display: block;
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+  }
+}

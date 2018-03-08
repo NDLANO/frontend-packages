@@ -5,26 +5,28 @@ import { Play } from 'ndla-icons/common';
 import Slider from 'react-slick';
 import SafeLink from '../common/SafeLink';
 
+import { SubjectSectionTitle } from './Subject';
+
 const classes = BEMHelper('c-subject-carousel');
 
 const settings = {
   dots: false,
   infinite: false,
-  slidesToShow: 4.25,
+  slidesToShow: 4,
   slidesToScroll: 2,
   swipeToScroll: false,
   responsive: [
     {
       breakpoint: 1200,
-      settings: { slidesToShow: 4.25 },
+      settings: { slidesToShow: 4 },
     },
     {
       breakpoint: 800,
-      settings: { slidesToShow: 3.5 },
+      settings: { slidesToShow: 3.25 },
     },
     {
       breakpoint: 600,
-      settings: { slidesToShow: 3.25 },
+      settings: { slidesToShow: 2.25 },
     },
     {
       breakpoint: 400,
@@ -40,22 +42,22 @@ const SubjectCarousel = ({ subjects, title }) => {
       styleAttr.backgroundImage = `url(${subject.image})`;
     }
     return (
-      <div {...classes('subject')} key={`slide-${subject.id}`}>
+      <article {...classes('subject')} key={`slide-${subject.id}`}>
         <div {...classes('image')} style={styleAttr}>
           <span {...classes('type')}>{subject.type}</span>
           {subject.type === 'film' ? <Play /> : null}
         </div>
         <SafeLink to={subject.linkTo} {...classes('link')}>
-          <h4 {...classes('title')}>{subject.title}</h4>
+          <h1 {...classes('title')}>{subject.title}</h1>
           <p {...classes('description')}>{subject.text}</p>
         </SafeLink>
-      </div>
+      </article>
     );
   });
   return (
-    <section>
-      <h1 className="c-subject-content__title">{title}</h1>
-      <Slider {...classes()} {...settings}>
+    <section {...classes()}>
+      <SubjectSectionTitle>{title}</SubjectSectionTitle>
+      <Slider {...classes('slider')} {...settings}>
         {slides}
       </Slider>
     </section>

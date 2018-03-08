@@ -4,11 +4,13 @@ import BEMHelper from 'react-bem-helper';
 
 import SubjectConcept from './SubjectConcept';
 
+import { SubjectSectionTitle } from './Subject';
+
 const classes = BEMHelper('c-subject-concepts');
 
 const SubjectConcepts = ({ concepts, title }) => (
   <section {...classes('')}>
-    <h1 className="c-subject-content__title">{title}</h1>
+    <SubjectSectionTitle>{title}</SubjectSectionTitle>
     <ul {...classes('list')}>
       {concepts.map(concept => (
         <SubjectConcept

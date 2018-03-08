@@ -10,6 +10,9 @@ export {
   SubjectTopics,
   SubjectSidebarWrapper,
   SubjectFlexWrapper,
+  SubjectFlexChild,
+  SubjectSectionTitle,
+  SubjectChildContent,
 } from './Subject';
 
 export { SubjectSocialContent, SubjectSocialSection } from './SubjectSocial';

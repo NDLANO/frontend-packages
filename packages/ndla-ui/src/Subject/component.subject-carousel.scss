@@ -1,60 +1,62 @@
 .c-subject-carousel {
-    &__image {
-        background-color: $background-color--gray-dark;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        height: 125px;
-        width: 100%;
-        border-radius: .3em;
-        position: relative;
-    }
+  margin-bottom: $subject-section-padding;
 
-    &__title {
-      margin: $spacing--small 0 0 0;
-      font-weight: $font-weight-bold;
-      @include inuit-font-size(20px);
-    }
-
-    &__description {
-      @include inuit-font-size(14px);
-      line-height: 1.25rem;
-      font-family: $font-serif;
-      margin: 0;
-    }
-
-    &__type {
-      @include inuit-font-size(12px);
+  &__image {
+      background-color: $background-color--gray-dark;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 125px;
+      width: 100%;
+      border-radius: .3em;
       position: relative;
-      top: 68%;
-      left: 10px;
-      display: inline-block;
-      background: $brand-grey--lightest;
-      border-radius: 0.2em;
-      padding: 0 0.2rem 0 0.2rem;
-      text-transform: capitalize;
-      font-weight: 600;
-      line-height: 1.5em;
-    }
+  }
 
-    &__subject {
-        padding: $spacing--small $spacing $spacing--small 0;
-    }
+  &__title {
+    margin: $spacing--small 0 0 0;
+    font-weight: $font-weight-bold;
+    @include inuit-font-size(20px);
+  }
 
-    .c-icon {
-      color: $white;
-      height: 52px;
-      width: 52px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      margin-left: -26px;
-      margin-top: -26px;
-    }
+  &__description {
+    @include inuit-font-size(14px);
+    line-height: 1.25rem;
+    font-family: $font-serif;
+    margin: 0;
+  }
 
-    &__link {
-      color: $primary-color;
-    }
+  &__type {
+    @include inuit-font-size(12px);
+    position: relative;
+    top: 68%;
+    left: 10px;
+    display: inline-block;
+    background: $brand-grey--lightest;
+    border-radius: 0.2em;
+    padding: 0 0.2rem 0 0.2rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    line-height: 1.5em;
+  }
+
+  &__subject {
+    padding: 0 $spacing 0 0;
+  }
+
+  .c-icon {
+    color: $white;
+    height: 52px;
+    width: 52px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -26px;
+    margin-top: -26px;
+  }
+
+  &__link {
+    color: $primary-color;
+  }
 }
 
 

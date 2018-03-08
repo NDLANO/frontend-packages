@@ -28,6 +28,7 @@ export {
   SubjectTopics,
   SubjectSidebarWrapper,
   SubjectFlexWrapper,
+  SubjectFlexChild,
   SubjectShortcuts,
   SubjectLinks,
   SubjectBox,
@@ -35,6 +36,8 @@ export {
   SubjectConcepts,
   SubjectSocialContent,
   SubjectSocialSection,
+  SubjectSectionTitle,
+  SubjectChildContent,
 } from './Subject';
 
 export { default as Button } from './button/Button';

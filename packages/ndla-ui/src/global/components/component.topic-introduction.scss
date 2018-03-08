@@ -11,12 +11,18 @@
 
   &__list {
     list-style: none;
-    margin: $spacing--small 0 0 0;
+    margin: $spacing--small 0 $spacing--medium 0;
     padding: 0;
-    // No border on twocolumn items
-    &.c-subject-flex__wrapper {
-      .c-topic-introduction__item {
-        border-bottom: none;
+
+    &--twoColumns {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: none;
+
+      & > li {
+        flex-basis: 50%;
+        box-sizing: border-box;
+        padding-right: $spacing;
       }
     }
   }
@@ -25,15 +31,15 @@
     width: 100%;
   }
   &__item {
+    margin: 0;
     padding-top: $spacing--small;
-    padding-bottom: $spacing;
+    padding-bottom: $spacing--medium;
     @include mq(tablet) {
       padding-right: $spacing;
     }
     border-bottom: 2px solid $brand-grey--lighter;
     list-style: none;
     background-color: transparent;
-    margin-left: 0;
     @include inuit-font-size(16px, 26px);
 
     p {
@@ -47,6 +53,7 @@
 
     &:last-child {
       border: none;
+      padding-bottom: 0;
     }
 
     &--subjectPage {

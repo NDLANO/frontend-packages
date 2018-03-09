@@ -35,7 +35,6 @@ import {
   SubjectLinks,
   SubjectBox,
   SubjectCarousel,
-  SubjectConcepts,
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectChildContent,
@@ -64,13 +63,13 @@ import article, {
   topicList,
   subjectList,
   subjectCarouselList,
-  subjectConcepts,
 } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
 
-const subjectBox1 = (
+const subjectBox1 = (fixedWidth = false) => (
   <SubjectBox
+    fixedWidth={fixedWidth}
     media={
       <Image
         alt="Forstørrelsesglass"
@@ -87,8 +86,9 @@ const subjectBox1 = (
   />
 );
 
-const subjectBox2 = (
+const subjectBox2 = (fixedWidth = false) => (
   <SubjectBox
+    fixedWidth={fixedWidth}
     smallHeading
     media={
       <Image
@@ -380,7 +380,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('2. Fag', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
         <article>
@@ -472,20 +472,18 @@ storiesOf('Emnesider', module)
                     },
                   ]}
                 />
-                {subjectBox1}
-                {subjectBox2}
+                {subjectBox1(true)}
+                {subjectBox2(true)}
               </SubjectSidebarWrapper>
             </SubjectContent>
-            <SubjectCarousel
-              subjects={subjectCarouselList}
-              title="Litt forskjellig fra faget"
-            />
-            <SubjectConcepts
-              concepts={subjectConcepts}
-              title="Begreg i faget"
-            />
+            <SubjectChildContent>
+              <SubjectCarousel
+                subjects={subjectCarouselList}
+                title="Litt forskjellig fra faget"
+              />
 
-            {some}
+              {some}
+            </SubjectChildContent>
           </OneColumn>
         </article>
       </Content>
@@ -493,7 +491,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('3. Fag med to kolonner', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
         <article>
@@ -598,8 +596,8 @@ storiesOf('Emnesider', module)
                   subjectPage
                 />
                 <SubjectFlexWrapper>
-                  <SubjectFlexChild>{subjectBox1}</SubjectFlexChild>
-                  <SubjectFlexChild>{subjectBox2}</SubjectFlexChild>
+                  <SubjectFlexChild>{subjectBox1()}</SubjectFlexChild>
+                  <SubjectFlexChild>{subjectBox2()}</SubjectFlexChild>
                 </SubjectFlexWrapper>
                 {some}
               </SubjectChildContent>

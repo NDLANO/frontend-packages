@@ -8,6 +8,7 @@ import SafeLink from '../common/SafeLink';
 const classes = BEMHelper('c-subject-box');
 
 const SubjectBox = ({
+  fixedWidth,
   media,
   heading,
   description,
@@ -16,7 +17,7 @@ const SubjectBox = ({
   messages,
   smallHeading,
 }) => (
-  <section {...classes()}>
+  <section {...classes('', { fixedWidth })}>
     <div {...classes('media-wrapper')}>{media}</div>
     <div {...classes('content')}>
       <h1 {...classes('heading', { smallHeading })}>
@@ -33,6 +34,7 @@ const SubjectBox = ({
 );
 
 SubjectBox.propTypes = {
+  fixedWidth: PropTypes.bool,
   media: PropTypes.node.isRequired,
   heading: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -46,6 +48,7 @@ SubjectBox.propTypes = {
 
 SubjectBox.defaultProps = {
   smallHeading: false,
+  fixedWidth: false,
 };
 
 export default SubjectBox;

@@ -1,6 +1,10 @@
 .c-subject-box {
   margin-bottom: $spacing--large;
 
+  &--fixedWidth {
+    max-width: 350px;
+  }
+
   &__media-wrapper {
     width: 100%;
 

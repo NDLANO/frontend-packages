@@ -128,7 +128,7 @@ function spawnPromise(sha, command, ...args) {
 
 function getAliasUrl() {
   const repoName = TRAVIS_REPO_SLUG.split('/')[1];
-  if (TRAVIS_BRANCH === 'master') {
+  if (TRAVIS_PULL_REQUEST === 'false') {
     return `https://${repoName}-master.ndla.sh`;
   }
   return `https://${repoName}-pr-${TRAVIS_PULL_REQUEST}.ndla.sh`;

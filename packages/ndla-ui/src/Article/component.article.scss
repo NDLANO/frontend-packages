@@ -1,0 +1,81 @@
+/**
+** ARTICLE
+** Clean-modifier is used to avoid negative margin (when used in design manual)
+** Title has icon when article is a resource type
+**/
+
+.c-article {
+  font-family: $font-serif;
+  background: $white;
+  margin-top: $spacing--large;
+  margin-right: auto;
+  margin-bottom: $spacing--large;
+  margin-left: auto;
+  overflow-wrap: break-word;
+  @include inuit-font-size(16px, 28px);
+
+  @include mq(tablet) {
+    @include inuit-font-size(18px, 32px);
+    padding: 0 $spacing $spacing--large;
+    margin-top: -$spacing*6;
+    padding-top: $spacing--large + $spacing;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  p {
+    margin-top: 0;
+  }
+}
+.c-article--clean {
+  margin-top: $spacing;
+  padding: $spacing--small;
+  @include mq(tablet) {
+    padding: none;
+  }
+  border: none;
+}
+
+.c-article__title {
+  position: relative;
+
+  h1 {
+    margin: 0;
+  }
+
+  padding: 0 0 $spacing--small 0;
+
+  @include mq(tablet) {
+    padding: 0 0 $spacing 0;
+  }
+
+  p {
+    @include inuit-font-size(16px, 20px);
+
+    color: $text-light-color;
+    text-transform: uppercase;
+    margin-bottom: $spacing--small/4;
+    font-family: $font;
+  }
+}
+
+.c-article__title--icon {
+  padding-left: 70px;
+
+  @include mq(desktop) {
+    padding-left: 0;
+  }
+
+  .c-content-type-badge {
+    position: absolute;
+    left: 0;
+
+    @include mq(desktop) {
+      left: -70px;
+    }
+  }
+}

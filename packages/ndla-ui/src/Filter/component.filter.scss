@@ -1,0 +1,245 @@
+/**
+** FILTER
+** Component for filtering content
+**
+** EXAMPLE:
+** <div class="c-filter__list">
+**   <span class="c-filter__label">FILTER:</span>
+**   <div class="c-filter__item">
+**     <input type="checkbox" class="c-filter__input" name="gruppe" id="1T" value="1T">
+**     <label for="1T"><span class="c-filter__item-checkbox"></span></label>
+**   </div>
+**   <div class="c-filter__item">
+**    <input type="checkbox" class="c-filter__input" name="gruppe" id="R1" value="R1">
+**    <label for="R1"><span class="c-filter__item-checkbox"></span></label>
+**   </div>
+** </div>
+**/
+
+.c-filter {
+  align-items: center;
+  flex-grow: 2;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: 80px;
+    width: 100%;
+    border-top: 1px solid $brand-color--light;
+    padding-top: $spacing--small;
+    font-family: $font;
+
+    @include mq(tablet) {
+      width: auto;
+      position: relative;
+      top: 0;
+      border: none;
+      padding-top: 0;
+    }
+
+    &--float-right {
+      float: right;
+      top: 0;
+      width: auto;
+      padding: 0;
+      border: none;
+      margin-right: -$spacing--small;
+      margin-top: -4px;
+    }
+
+    &--search,
+    &--search-popover {
+      .c-filter {
+        &__label {
+          display: block;
+          margin: 0 0 $spacing--small 0;
+          font-weight: 600;
+        }
+        &__item {
+          display: block;
+          margin: 0 0 $spacing--small;
+
+          &--hidden {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &--search-popover {
+      .c-filter {
+        &__label {
+          @include font-size(16px, 32px);
+
+          @include mq(tablet) {
+            @include font-size(22px, 32px);
+            margin-bottom: $spacing--medium;
+          }
+        }
+      }
+    }
+
+    &--search {
+      padding: $spacing;
+
+      @include mq(tablet) {
+        padding: $spacing--small $spacing;
+      }
+
+      .c-filter {
+        &__label {
+          @include font-size(16px, 32px);
+        }
+      }
+    }
+  }
+
+  &__label {
+    @include inuit-font-size(16px);
+    display: block;
+    @include mq(tablet) {
+      margin: 0 $spacing--small;
+      display: inline-block;
+    }
+
+    &--hidden {
+      @include visually-hidden();
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    position: relative;
+    color: $brand-color;
+    margin: 0 $spacing--small 0 2px;
+    border-radius: $border-radius;
+    transition: $transition;
+    cursor: pointer;
+    @include inuit-font-size(16px, 28px);
+
+    &--hidden {
+      display: none;
+    }
+
+    &--no-results {
+      color: $brand-color--tertiary;
+
+      .c-filter__item-checkbox {
+        border-color: $brand-grey--lighter;
+      }
+    }
+
+    &:hover {
+      .c-filter__item-checkbox {
+        border: 2px solid $brand-color--tertiary;
+        &:before {
+          width: 5px;
+          transition: width 100ms ease;
+        }
+        &:after {
+          width: 10px;
+          transition: width 150ms ease 100ms;
+        }
+      }
+    }
+
+    input:checked {
+      & + label .c-filter__item-checkbox {
+        border: 2px solid $brand-color;
+        background: $brand-color;
+        &:before {
+          background: white;
+          width: 5px;
+        }
+        &:after {
+          background: white;
+          width: 10px;
+        }
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 5;
+    cursor: pointer;
+  }
+
+  &__item-checkbox {
+    content: '';
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: $white;
+    border: 2px solid $brand-color--tertiary;
+    margin: -5px $spacing--small -5px 3px;
+    border-radius: 2px;
+
+    @include mq(tablet) {
+      width: 20px;
+      height: 20px;
+      margin: -4px $spacing--small -4px 3px;
+    }
+
+    &:before {
+      content: '';
+      width: 0px;
+      height: 2px;
+      border-radius: 2px;
+      background: $brand-color--tertiary;
+      position: absolute;
+      transform: rotate(45deg);
+      top: 10px;
+      left: 7px;
+
+      @include mq(tablet) {
+        top: 8px;
+        left: 5px;
+      }
+      transition: width 50ms ease 50ms;
+      transform-origin: 0% 0%;
+    }
+
+    &:after {
+      content: '';
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: $brand-color--tertiary;
+      position: absolute;
+      transform: rotate(305deg);
+      top: 13px;
+      left: 8px;
+
+      @include mq(tablet) {
+        top: 11px;
+        left: 6px;
+      }
+      transition: width 50ms ease;
+      transform-origin: 0% 0%;
+    }
+  }
+
+  &__expand {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: $brand-color;
+    @include font-size(16px, 32px);
+
+    span {
+      margin-right: $spacing;
+    }
+  }
+}

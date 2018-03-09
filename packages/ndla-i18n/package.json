@@ -1,6 +1,6 @@
 {
   "name": "ndla-i18n",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "NDLA's own i18n package based on react-intl",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -8,10 +8,10 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "$(cd ..; npm bin)/rimraf lib es",
-    "test": "$(cd ..; npm bin)/jest",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
+    "clean": "rimraf lib es",
+    "test": "jest",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {
@@ -31,9 +31,9 @@
     "react": "^15.6.0 || ^16.0.0"
   },
   "dependencies": {
-    "hoist-non-react-statics": "^2.3.0",
+    "hoist-non-react-statics": "^2.5.0",
     "intl-format-cache": "^2.1.0",
     "intl-messageformat": "^2.2.0",
-    "invariant": "^2.2.2"
+    "invariant": "^2.2.3"
   }
 }

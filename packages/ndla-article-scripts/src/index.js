@@ -33,6 +33,14 @@ import { initAudioPlayers } from './audioPlayerScript';
 
 import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 
+import { toggleRelatedArticles } from './relatedArticlesToggle';
+
+export {
+  forEachElement,
+  findAncestorByClass,
+  getElementOffset,
+} from './domHelpers';
+
 export const initArticleScripts = () => {
   addEventListenerForResize();
   updateIFrameDimensions();
@@ -45,6 +53,7 @@ export const initArticleScripts = () => {
   addDetailsEventListeners();
   initAudioPlayers();
   addFootnoteClickListeners();
+  toggleRelatedArticles();
 };
 
 export {
@@ -63,4 +72,5 @@ export {
   initAudioPlayers,
   addFootnoteClickListeners,
   toggleLicenseInfoBox,
+  toggleRelatedArticles,
 };

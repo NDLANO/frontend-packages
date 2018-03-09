@@ -49,7 +49,7 @@ export const ContentTypeBadge = ({ type, background, size }) => {
       icon = <SharedResource />;
       break;
     case contentTypes.LEARNING_PATH:
-      return <LearningPathBadge />;
+      return <LearningPathBadge size={size} />;
     default:
       break;
   }
@@ -57,7 +57,7 @@ export const ContentTypeBadge = ({ type, background, size }) => {
 };
 
 ContentTypeBadge.propTypes = {
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(['x-small', 'small', 'large']),
   type: ContentTypeShape,
   background: PropTypes.bool,
 };

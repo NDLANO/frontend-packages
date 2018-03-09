@@ -6,6 +6,26 @@
  *
  */
 
-import Search from './Search';
+import SearchField from './SearchField';
+import SearchOverlay from './SearchOverlay';
+import ToggleSearchButton, { OpenSearchButton } from './ToggleSearchButton';
+import SearchPage from './SearchPage';
 
-export default Search;
+import { SearchResult, SearchResultList } from './SearchResult';
+
+import SearchFilter from './SearchFilter';
+import SearchPopoverFilter from './SearchPopoverFilter';
+import ContentTypeResult from './ContentTypeResult';
+
+export {
+  SearchField,
+  ToggleSearchButton,
+  OpenSearchButton,
+  SearchOverlay,
+  SearchPage,
+  SearchResult,
+  SearchResultList,
+  SearchFilter,
+  SearchPopoverFilter,
+  ContentTypeResult,
+};

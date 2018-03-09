@@ -67,4 +67,18 @@ export const ContentTypeShape = PropTypes.oneOf([
   contentTypes.EXTERNAL_LEARNING_RESOURCES,
   contentTypes.SOURCE_MATERIAL,
   contentTypes.LEARNING_PATH,
+  'beta',
 ]);
+
+export const ContentTypeResultShape = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  showAllLinkUrl: PropTypes.string,
+  resources: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
+});

@@ -1,0 +1,57 @@
+.c-toggle-search-button {
+  &__button {
+    background: $brand-grey--lighter;
+    border-radius: 4px;
+    border: 0;
+    color: $brand-color;
+
+    padding: $spacing--small/2 $spacing--small;
+
+    @include font-size(16px, 22px);
+
+    @include mq(tablet) {
+      @include font-size(18px, 32px);
+      padding: $spacing--small $spacing;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: 0;
+    }
+
+    &--narrow {
+      box-shadow: none;
+      @include mq(tablet) {
+        display: none;
+      }
+    }
+
+    &--wide {
+      display: none;
+
+      @include mq(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &__button-content {
+    display: flex;
+    align-items: center;
+
+    .c-icon {
+      height: 18px;
+      width: 18px;
+
+      @include mq(tablet) {
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
+
+  &__button-text {
+    margin-right: $spacing;
+  }
+}

@@ -1,45 +1,84 @@
 .c-related-articles {
-  @include mq(tablet) {
+  text-align: center;
+  &__component-title {
+    margin: $spacing--large 0 $spacing;
+    @include inuit-font-size(18px);
+    padding-bottom: 5px;
+    // border-bottom: 2px solid $brand-grey--light;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+  }
+
+  &__articles {
+    text-align: left;
+    @include mq(tablet) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    border-left: 6px solid rgba($brand-grey--light, 0.4);
+    padding-left: $spacing;
+    padding-right: $spacing;
+    margin: 0 0 $spacing--large 0;
+    flex-basis: 50%;
+    flex-grow: 0;
+    max-width: 600px;
+
+    &--subject-material {
+      border-left: 6px solid $subject-material-light;
+    }
+
+    &--tasks-and-activities {
+      border-left: 6px solid $tasks-and-activities-background;
+    }
+
+    &--assessment-resources {
+      border-left: 6px solid $assessment-resource-background;
+    }
+
+    &--external-learning-resources {
+      border-left: 6px solid $external-learning-resource-background;
+    }
+
+    &--source-material {
+      border-left: 6px solid $source-material-light;
+    }
+
+    &--learning-path {
+      border-left: 6px solid $learning-path-background;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &--shown {
+      display: block;
+    }
+  }
+
+  &__title {
+    @include inuit-font-size(18px);
+    margin: 0 0 $spacing--small 0;
+    font-weight: $font-weight-semibold;
     display: flex;
-  }
-}
-.c-related-articles__item {
-  border-left: 6px solid rgba($brand-grey--light, 0.4);
-  padding-left: $spacing;
-  padding-right: $spacing;
-  margin: 0 0 $spacing--large 0;
-  flex-basis: 50%;
-  flex-grow: 1;
-  max-width: 600px;
-
-  &--subject-material {
-    border-left: 6px solid rgba($mark-color, 0.1);
+    align-items: center;
   }
 
-  &--tasks-and-activities {
-    border-left: 6px solid rgba($green, 0.1);
+  &__description {
+    @include inuit-font-size(16px);
+    margin: 0;
+    font-family: $font;
   }
-}
 
-.c-related-articles__component-title {
-  margin: $spacing--large 0 $spacing;
-  @include inuit-font-size(18px);
-  padding-bottom: 5px;
-  // border-bottom: 2px solid $brand-grey--light;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.c-related-articles__title {
-  @include inuit-font-size(20px);
-  margin: 0 0 $spacing--small 0;
-  font-weight: $font-weight-normal;
-}
-.c-related-articles__description {
-  @include inuit-font-size(16px);
-  margin: 0;
-  font-family: $font;
-}
-.c-related-articles__link {
-  color: $brand-color;
-  margin-left: $spacing--small;
+  &__link {
+    color: $brand-color;
+  }
+
+  &__link-wrapper {
+    margin-left: $spacing--small;
+  }
 }

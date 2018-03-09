@@ -1,0 +1,48 @@
+.c-hero {
+  background-repeat: repeat;
+  background-size: 20px;
+  background-color: $brand-color--light;
+
+  @include mq(tablet) {
+    min-height: 246px;
+  }
+
+  &--subject-material {
+    background-color: $subject-material-light;
+  }
+
+  &--tasks-and-activities {
+    background-color: $tasks-and-activities-background;
+  }
+
+  &--subject {
+    background-color: $subject-light;
+  }
+
+  &--assessment-resources {
+    background-color: $assessment-resource-background;
+  }
+
+  &--external-learning-resources {
+    background-color: $external-learning-resource-background;
+  }
+
+  &--source-material {
+    background-color: $source-material-light;
+  }
+
+  &--beta {
+    background: $brand-color;
+  }
+}
+.c-hero__content {
+  padding: 0 0 $spacing--small;
+  z-index: 9;
+
+  @include mq(tablet) {
+    min-height: 90px;
+    padding-bottom: $spacing--small/2;
+  }
+  display: flex;
+  align-items: flex-end;
+}

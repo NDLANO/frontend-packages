@@ -15,7 +15,7 @@ const FooterExample = () => (
     </div>
     <Footer.Ruler />
     <Footer.Text>
-      <Footer.Editor title="Ansvarlig redaktør:" name="Øivind Høines" />
+      <Footer.Editor title="Ansvarlig redaktør:" name="Christer Gundersen" />
       <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
     </Footer.Text>
     <Footer.Text>

@@ -8,7 +8,7 @@
 
 $brand-color: #20588f;
 $brand-color--secondary: #507aa4;
-$brand-color--tertiary: #b7cde2;
+$brand-color--tertiary: #a5bcd3;
 $brand-color--light: #ceddea;
 $brand-color--lighter: #deebf6;
 $brand-color--dark: #184673;
@@ -65,15 +65,20 @@ $white: #fff;
 $black: #272728;
 $mark-color: #da788d;
 $red: #d1372e;
+$red-light: rgba($red, 0.3);
+
 $green: #5cbc80;
+$green-light: rgba($green, 0.3);
+
 $yellow: #ead854;
+$yellow-light: rgba($yellow, 0.3);
 
 $table-bg: #f9fafb;
 
 /** Link colors **/
 
-$link: inset 0 -1px $brand-color, inset 0 -1px $brand-color;
-$link--hover: inset 0 -3px rgba($brand-color, 0.2), inset 0 -1px rgba($brand-color, 0.2);
+$link: inset 0 -1px $brand-color;
+$link--hover: none;
 
 /** Background colors **/
 

@@ -1,6 +1,6 @@
 {
   "name": "ndla-ui",
-  "version": "0.10.1",
+  "version": "0.10.15",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -8,13 +8,13 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es && npm run build:css",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "$(cd ..; npm bin)/cross-env BABEL_ENV=es $(cd ..; npm bin)/babel src --quiet --out-dir es --ignore __tests__",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
     "build:frontend": "npm run build:css && cp ./lib/style.css ~/Dropbox/Sites/ndla-frontend/style",
-    "build:css": "$(cd ..; npm bin)/webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
-    "clean": "$(cd ..; npm bin)/rimraf lib es dist",
+    "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "clean": "rimraf lib es dist",
     "prepublish": "npm run clean && npm run build",
-    "test": "$(cd ..; npm bin)/jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -33,10 +33,12 @@
   ],
   "dependencies": {
     "classnames": "2.2.5",
-    "focus-trap": "^2.4.2",
+    "focus-trap": "^2.4.3",
     "jump.js": "^1.0.2",
+    "lodash": "^4.17.5",
     "react-bem-helper": "1.4.1",
-    "react-prop-types": "0.4.0"
+    "react-prop-types": "0.4.0",
+    "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
     "prop-types": "^15.6.0",

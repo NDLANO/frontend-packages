@@ -6,13 +6,16 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   RelatedArticleList,
   RelatedArticle,
   TasksAndActivitiesBadge,
   SubjectMaterialBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
 } from 'ndla-ui';
+import { toggleRelatedArticles } from 'ndla-article-scripts';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
 export const RelatedArticleExerciseList = () => (
@@ -52,21 +55,67 @@ export const RelatedArticleMixedList = () => (
     />
   </RelatedArticleList>
 );
-export default () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
-    <RelatedArticle
-      title={articleResources[0].title}
-      icon={<SubjectMaterialBadge background />}
-      modifier="subject-material"
-      introduction={articleResources[0].introduction}
-      to="#"
-    />
-    <RelatedArticle
-      title={articleResources[1].title}
-      icon={<SubjectMaterialBadge background />}
-      modifier="subject-material"
-      introduction={articleResources[1].introduction}
-      to="#"
-    />
-  </RelatedArticleList>
-);
+
+class ExpandExample extends Component {
+  componentDidMount() {
+    toggleRelatedArticles();
+  }
+
+  render() {
+    const articles = [
+      <RelatedArticle
+        title={articleResources[0].title}
+        icon={<SubjectMaterialBadge background />}
+        modifier="subject-material"
+        introduction={articleResources[0].introduction}
+        to="#"
+        key={articleResources[0].title}
+      />,
+      <RelatedArticle
+        title={articleResources[1].title}
+        icon={<SubjectMaterialBadge background />}
+        modifier="subject-material"
+        introduction={articleResources[1].introduction}
+        to="#"
+        key={articleResources[1].title}
+      />,
+      <RelatedArticle
+        title={articleResources[2].title}
+        icon={<SourceMaterialBadge background />}
+        modifier="source-material"
+        introduction={articleResources[2].introduction}
+        to="#"
+        key={articleResources[2].title}
+      />,
+      <RelatedArticle
+        title={articleResources[3].title}
+        icon={<ExternalLearningResourcesBadge background />}
+        modifier="external-learning-resources"
+        introduction={articleResources[3].introduction}
+        to="#"
+        key={articleResources[3].title}
+      />,
+      <RelatedArticle
+        title={articleResources[4].title}
+        icon={<ExternalLearningResourcesBadge background />}
+        modifier="external-learning-resources"
+        introduction={articleResources[4].introduction}
+        to="#"
+        key={articleResources[4].title}
+      />,
+    ];
+
+    return (
+      <RelatedArticleList
+        messages={{
+          title: 'Relaterte artikler',
+          showMore: 'Vis flere relaterte artikler',
+          showLess: 'Vis mindre',
+        }}>
+        {articles}
+      </RelatedArticleList>
+    );
+  }
+}
+
+export default ExpandExample;

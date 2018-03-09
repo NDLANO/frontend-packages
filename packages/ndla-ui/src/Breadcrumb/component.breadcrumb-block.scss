@@ -15,12 +15,13 @@
 **/
 
 .c-breadcrumb-block {
-  opacity: 0;
   display: none;
+
   @include mq(desktop) {
     display: block;
   }
 }
+
 .c-breadcrumb-block__list {
   padding-top: 1px;
   margin-left: $spacing;
@@ -48,6 +49,10 @@
     @include inuit-font-size(14px);
     color: $brand-color;
     opacity: 0.4;
+  }
+
+  span {
+    color: $brand-color;
   }
 }
 .c-breadcrumb-block__item:last-child {

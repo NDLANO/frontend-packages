@@ -4,6 +4,10 @@
   flex-direction: column;
 
   &--background {
+    background-color: $brand-grey--lightest;
+  }
+
+  &--backgroundWide {
     @include mq(tablet) {
       background-color: $brand-grey--lightest;
     }
@@ -12,4 +16,9 @@
 
 .o-content {
   flex: 1;
+}
+
+/* IE-10+ fix for footer */
+html.ie .o-content {
+  flex: 1 1 auto;
 }

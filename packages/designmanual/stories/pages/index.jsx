@@ -66,7 +66,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('En side med innhold', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -79,12 +79,13 @@ storiesOf('Sidevisninger', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
           </OneColumn>
         </SubjectMaterialHero>
-        <ArticleLoader articleId="17477" />
+        <ArticleLoader articleId="744" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -109,7 +110,7 @@ storiesOf('Sidevisninger', module)
     </PageContainer>
   ))
   .add('Hent artikkel med id', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -122,6 +123,7 @@ storiesOf('Sidevisninger', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -134,7 +136,7 @@ storiesOf('Sidevisninger', module)
   ));
 storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -147,6 +149,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -158,7 +161,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Oppgaver og aktiviteter', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <TasksAndActivitiesHero>
@@ -171,6 +174,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -182,7 +186,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Vurderingsressurs', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <AssessmentResourcesHero>
@@ -195,6 +199,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -206,7 +211,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Ekstern læringsressurs', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <ExternalLearningResourcesHero>
@@ -219,6 +224,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -230,7 +236,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Kildemateriale', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SourceMaterialHero>
@@ -243,6 +249,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -254,7 +261,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Tilleggsstoff', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectMaterialHero>
@@ -267,6 +274,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -321,7 +329,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('2. Fag', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -334,6 +342,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
@@ -344,10 +353,11 @@ storiesOf('Emnesider', module)
             <LayoutItem layout="center">
               <h1 className="c-article__title">Mediefag</h1>
               <FilterList
-                filterContent={[
-                  { title: 'VG1', active: true },
-                  { title: 'VG2', active: true },
+                options={[
+                  { title: 'VG1', value: 'VG1' },
+                  { title: 'VG2', value: 'VG2' },
                 ]}
+                values={['VG1']}
               />
             </LayoutItem>
             <ResourcesSubTopics />
@@ -358,7 +368,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('3. Hovedemne', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -371,13 +381,14 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="17507"
+          articleId="4824"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           hideResources
@@ -388,7 +399,7 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ))
   .add('4. Underemne', () => (
-    <PageContainer background>
+    <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
         <SubjectHero>
@@ -401,13 +412,14 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="5948"
+          articleId="4853"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
         />
@@ -429,6 +441,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>

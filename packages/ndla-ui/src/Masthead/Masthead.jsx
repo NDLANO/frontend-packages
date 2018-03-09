@@ -6,10 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
+
+import { DisplayOnPageYOffset } from '../Animation';
 
 const classes = new BEMHelper({
   name: 'masthead',
@@ -22,6 +24,7 @@ export const MastheadItem = ({ children, className, left, right }) => {
     { [classes('right').className]: right },
     className,
   );
+
   return <div className={itemClassNames}>{children}</div>;
 };
 
@@ -37,15 +40,41 @@ MastheadItem.defaultProps = {
   left: false,
 };
 
-export const Masthead = ({ children, fixed }) => (
-  <div {...classes(null, { fixed })}>
-    <div className="u-1/1">{children}</div>
+const MastheadInfo = ({ children }) => (
+  <div {...classes('info')}>
+    <div {...classes('info-content')}>{children}</div>
   </div>
+);
+
+MastheadInfo.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export const Masthead = ({
+  children,
+  fixed,
+  hideOnNarrowScreen,
+  infoContent,
+}) => (
+  <Fragment>
+    <div {...classes('placeholder', { infoContent })} />
+    <div {...classes('', { fixed, hideOnNarrowScreen, infoContent })}>
+      {infoContent && (
+        <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
+          <MastheadInfo>{infoContent}</MastheadInfo>
+        </DisplayOnPageYOffset>
+      )}
+
+      <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
+    </div>
+  </Fragment>
 );
 
 Masthead.propTypes = {
   children: PropTypes.node,
   fixed: PropTypes.bool,
+  hideOnNarrowScreen: PropTypes.bool,
+  infoContent: PropTypes.node,
 };
 
 export default Masthead;

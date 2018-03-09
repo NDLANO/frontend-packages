@@ -14,13 +14,22 @@ if (!process.env.CI || !process.env.TRAVIS) {
   throw new Error('Could not detect Travis CI environment');
 }
 
+const {
+  TRAVIS_BUILD_ID,
+  TRAVIS_EVENT_TYPE,
+  TRAVIS_PULL_REQUEST_SHA,
+  TRAVIS_PULL_REQUEST,
+  TRAVIS_COMMIT,
+  TRAVIS_REPO_SLUG,
+  TRAVIS_PULL_REQUEST_SLUG,
+  TRAVIS_BRANCH,
+} = process.env;
 const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
 const ghRepo = client.repo(process.env.TRAVIS_REPO_SLUG);
 const providedArgs = process.argv.slice(2);
 
 function isFork() {
-  const { TRAVIS_PULL_REQUEST_SLUG, TRAVIS_REPO_SLUG } = process.env;
   if (!TRAVIS_PULL_REQUEST_SLUG) {
     return false;
   }
@@ -117,8 +126,16 @@ function spawnPromise(sha, command, ...args) {
   });
 }
 
+function getAliasUrl() {
+  const repoName = TRAVIS_REPO_SLUG.split('/')[1];
+  if (TRAVIS_PULL_REQUEST === 'false') {
+    return `https://${repoName}-master.ndla.sh`;
+  }
+  return `https://${repoName}-pr-${TRAVIS_PULL_REQUEST}.ndla.sh`;
+}
+
 async function spawnAlias(sha, deployUrl) {
-  const newUrl = deployUrl.replace('now.sh', 'ndla.sh');
+  const newUrl = getAliasUrl();
   const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
   await spawnPromise(sha, 'now', cliArgs);
@@ -151,7 +168,6 @@ async function deploy(sha) {
   if (!nowToken) {
     throw new Error('Missing required environment variable NOW_TOKEN');
   }
-  const { TRAVIS_REPO_SLUG, TRAVIS_BUILD_ID } = process.env;
   let targetUrl = `https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}`;
 
   updateStatus(sha, {
@@ -194,14 +210,6 @@ async function deploy(sha) {
 
   console.log('🏁 All done!');
 }
-
-const {
-  TRAVIS_EVENT_TYPE,
-  TRAVIS_PULL_REQUEST_SHA,
-  TRAVIS_PULL_REQUEST,
-  TRAVIS_COMMIT,
-  TRAVIS_BRANCH,
-} = process.env;
 
 switch (TRAVIS_EVENT_TYPE) {
   case 'pull_request': {

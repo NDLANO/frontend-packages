@@ -24,10 +24,7 @@ import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 import { topicList, subjectList } from '../dummydata/index';
-import {
-  MastheadLeftRight,
-  MastheadWithTopicMenu,
-} from './molecules/mastheads';
+import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample from './article/LicenseExample';
@@ -127,49 +124,51 @@ storiesOf('Sammensatte moduler', module)
         <h2 className="u-heading">Filter (ufiltrert)</h2>
         <div className="c-filter u-margin-top">
           <FilterList
-            filterContent={[
-              { title: '1T', active: false },
-              { title: 'R1', active: false },
-              { title: 'R2', active: false },
-              { title: 'S1', active: false },
-              { title: 'S1', active: false },
+            options={[
+              { title: '1T', value: '1T' },
+              { title: 'R1', value: 'R1' },
+              { title: 'R2', value: 'R2' },
+              { title: 'S1', value: 'S1' },
             ]}
+            values={[]}
           />
         </div>
         <h2 className="u-heading">Filter med forhåndsvalgte elementer</h2>
         <div className="c-filter u-margin-top">
           <FilterList
-            filterContent={[
-              { title: '1T', active: true },
-              { title: 'R1', active: true },
-              { title: 'R2', active: false },
-              { title: 'S1', active: false },
-              { title: 'S1', active: false },
+            options={[
+              { title: '1T', value: '1T' },
+              { title: 'R1', value: 'R1' },
+              { title: 'R2', value: 'R2' },
+              { title: 'S1', value: 'S1' },
             ]}
+            values={['1T', 'R1']}
           />
         </div>
         <h2 className="u-heading">Eksempler fra fagene</h2>
         <div className="c-filter u-margin-top">
           <h3>Norsk</h3>
           <FilterList
-            filterContent={[
-              { title: 'SF VG1', active: true },
-              { title: 'SF VG2', active: true },
-              { title: 'SF VG3', active: false },
-              { title: 'YF VG1', active: false },
-              { title: 'YF VG2', active: false },
-              { title: 'PB VG3', active: false },
+            options={[
+              { title: 'SF VG1', value: 'SF VG1' },
+              { title: 'SF VG2', value: 'SF VG2' },
+              { title: 'SF VG3', value: 'SF VG3' },
+              { title: 'YF VG1', value: 'YF VG1' },
+              { title: 'YF VG2', value: 'YF VG2' },
+              { title: 'PB VG3', value: 'PB VG3' },
             ]}
+            values={['SF VG1', 'SF VG2']}
           />
         </div>
         <div className="c-filter u-margin-top">
           <h3>Medieuttrykk og mediesamfunnet</h3>
           <FilterList
-            filterContent={[
-              { title: 'VG1', active: true },
-              { title: 'VG2', active: false },
-              { title: 'VG3', active: false },
+            options={[
+              { title: 'VG1', value: 'VG1' },
+              { title: 'VG2', value: 'VG2' },
+              { title: 'VG3', value: 'VG3' },
             ]}
+            values={['VG1']}
           />
         </div>
       </StoryBody>
@@ -177,7 +176,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Hovedhode', () => (
     <div>
-      <MastheadLeftRight />
+      <MastheadWithLogo />
     </div>
   ))
   .add('Hovedhode med innhold', () => (
@@ -279,15 +278,14 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Relaterte artikler">
         <p>Kan brukes i slutten av artikler, eller midt i.</p>
-        <p>1 eller 2 artikler vises.</p>
       </StoryIntro>
       <StoryBody>
-        <h2 className="u-heading">Fagstoff eksempel</h2>
-        <RelatedArticleListExample />
         <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
         <RelatedArticleExerciseList />
         <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
         <RelatedArticleMixedList />
+        <h2 className="u-heading">Eksempel med vis mer</h2>
+        <RelatedArticleListExample />
       </StoryBody>
     </div>
   ))
@@ -377,7 +375,10 @@ storiesOf('Sammensatte moduler', module)
         </div>
         <Footer.Ruler />
         <Footer.Text>
-          <Footer.Editor title="Ansvarlig redaktør:" name="Øivind Høines" />
+          <Footer.Editor
+            title="Ansvarlig redaktør:"
+            name="Christer Gundersen"
+          />
           <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
         </Footer.Text>
         <Footer.Text>

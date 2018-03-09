@@ -9,9 +9,9 @@
   },
   "scripts": {
     "build": "npm run build:commonjs",
-    "build:commonjs": "$(cd ..; npm bin)/cross-env BABEL_ENV=commonjs $(cd ..; npm bin)/babel src --quiet --out-dir lib --ignore __tests__",
-    "clean": "$(cd ..; npm bin)/rimraf lib",
-    "test": "NODE_ENV=unittest $(cd ..; npm bin)/jest",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "clean": "rimraf lib",
+    "test": "NODE_ENV=unittest jest",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {
@@ -27,11 +27,11 @@
     "bin"
   ],
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^2.3.1",
     "node-fetch": "^1.7.3",
     "ora": "^1.3.0",
     "parse-url": "^3.0.2",
-    "source-map": "^0.6.1",
-    "yargs": "^10.0.3"
+    "source-map": "^0.7.1",
+    "yargs": "^11.0.0"
   }
 }

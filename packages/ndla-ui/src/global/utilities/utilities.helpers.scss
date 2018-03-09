@@ -83,3 +83,23 @@
   animation-duration: .3s;
   opacity: 0;
 }
+
+.u-fade {
+  &-enter {
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+
+    &-active {
+      opacity: 1;
+    }
+  }
+
+  &-exit {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+
+    &-active {
+      opacity: 0;
+    }
+  }
+}

@@ -17,6 +17,10 @@
   justify-content: space-between;
   align-self: flex-end;
 
+  > * {
+    margin-top: $spacing--small;
+  }
+
   @include mq(tablet) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -92,7 +96,7 @@
 .c-figure-license__hidden-content {
   display: none;
   flex-wrap: wrap;
-  >div {
+  > div {
     width: 48%;
     margin: 1%;
   }

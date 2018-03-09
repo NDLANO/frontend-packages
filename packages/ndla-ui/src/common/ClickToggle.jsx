@@ -8,27 +8,73 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { noScroll } from 'ndla-util';
 import elementType from 'react-prop-types/lib/elementType';
-import Button from '../button/Button';
+import createFocusTrap from 'focus-trap';
+
+import Button from '../Button';
 
 export default class ClickToggle extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isOpen: false,
-    };
-
     this.handleClick = this.handleClick.bind(this);
     this.close = this.close.bind(this);
+    this.containerRef = null;
+    this.focusTrap = null;
+  }
+
+  componentDidMount() {
+    this.focusTrap = createFocusTrap(this.containerRef, {
+      onActivate: () => {
+        this.props.onToggle(true);
+
+        if (!this.props.noScrollDisabled) {
+          noScroll(true);
+        }
+      },
+      onDeactivate: () => {
+        if (this.props.isOpen) {
+          this.props.onToggle(false);
+        }
+
+        if (!this.props.noScrollDisabled) {
+          noScroll(false);
+        }
+      },
+      clickOutsideDeactivates: true,
+    });
+
+    if (this.props.isOpen) {
+      this.focusTrap.activate();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isOpen !== this.props.isOpen) {
+      if (this.props.isOpen) {
+        this.focusTrap.activate();
+      } else {
+        this.focusTrap.deactivate();
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.focusTrap.deactivate();
   }
 
   handleClick() {
-    this.setState({ isOpen: !this.state.isOpen });
+    const isOpen = !this.props.isOpen;
+
+    if (isOpen) {
+      this.focusTrap.activate();
+    } else {
+      this.focusTrap.deactivate();
+    }
   }
 
   close() {
-    this.setState({ isOpen: false });
+    this.focusTrap.deactivate();
   }
 
   render() {
@@ -36,22 +82,22 @@ export default class ClickToggle extends React.Component {
       title,
       openTitle,
       buttonClassName,
+      noScrollDisabled,
       containerClass: Component,
+      isOpen,
       ...rest
     } = this.props;
-    const { isOpen } = this.state;
 
     const children = React.cloneElement(this.props.children, {
       close: this.close,
     });
+
     return (
-      <Component {...rest}>
-        {isOpen ? (
-          <Button
-            className="u-overlay"
-            onClick={() => this.setState({ isOpen: false })}
-          />
-        ) : null}
+      <Component
+        {...rest}
+        ref={ref => {
+          this.containerRef = ref;
+        }}>
         {isOpen ? (
           <Button
             className={`active ${buttonClassName}`}
@@ -72,10 +118,13 @@ export default class ClickToggle extends React.Component {
 ClickToggle.propTypes = {
   containerClass: elementType,
   title: PropTypes.node.isRequired,
-  openTitle: PropTypes.node.isRequired,
+  openTitle: PropTypes.node,
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
+  noScrollDisabled: PropTypes.bool,
+  isOpen: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 ClickToggle.defaultProps = {

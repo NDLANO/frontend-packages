@@ -1,12 +1,29 @@
 .c-logo {
   width: 120px;
-  margin:0;
-  z-index: 100;
+  margin: 0;
   position: relative;
+
+  &--beta {
+    width: 170px;
+    .c-logo__graphic {
+      height: 48px;
+      margin-right: 8px;
+    }
+
+    a {
+      display: flex;
+    }
+  }
+
+  &--large {
+    width: 300px;
+  }
+
   &__graphic {
     fill: $brand-color;
   }
-  &--large {
-    width: 300px;
+
+  &__beta {
+    margin-top: 9px;
   }
 }

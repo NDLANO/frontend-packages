@@ -8,17 +8,45 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import BEMHelper from 'react-bem-helper';
 
-export const OneColumn = ({ children, className, cssModifier }) => {
-  const modifierClass = cssModifier ? `o-wrapper--${cssModifier}` : '';
-  const classes = classNames('o-wrapper', modifierClass, ['', className]);
-  return <div className={classes}>{children}</div>;
+const classes = BEMHelper({
+  prefix: 'o-',
+  name: 'wrapper',
+  outputIsString: true,
+});
+
+export const OneColumn = ({
+  children,
+  className,
+  cssModifier,
+  wide,
+  noPadding,
+}) => {
+  const modifiers = [];
+
+  if (cssModifier) {
+    modifiers.push(cssModifier);
+  }
+
+  if (wide) {
+    modifiers.push('wide');
+  }
+
+  if (noPadding) {
+    modifiers.push('no-padding');
+  }
+
+  return (
+    <div className={`${classes('', modifiers)} ${className}`}>{children}</div>
+  );
 };
 
 OneColumn.propTypes = {
   children: PropTypes.node,
   cssModifier: PropTypes.string,
+  wide: PropTypes.bool,
+  noPadding: PropTypes.bool,
   className: PropTypes.string,
 };
 

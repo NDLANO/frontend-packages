@@ -1,16 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
+
 import {
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,
   AssessmentResourcesBadge,
 } from './ContentTypeBadge';
 
-export const LearningPathBadge = () => (
-  <div className="c-learning-path-badge">
-    <SubjectMaterialBadge type="subject-material" background />
-    <span className="c-learning-path-badge c-learning-path-badge__plus">+</span>
-    <TasksAndActivitiesBadge type="tasks-and-activities" background />
-    <span className="c-learning-path-badge c-learning-path-badge__plus">+</span>
-    <AssessmentResourcesBadge type="assessment-resources" background />
+const classes = BEMHelper({
+  prefix: 'c-',
+  name: 'learning-path-badge',
+});
+
+export const LearningPathBadge = ({ size }) => (
+  <div {...classes('', [size])}>
+    <SubjectMaterialBadge type="subject-material" background size={size} />
+    <span {...classes('plus')}>+</span>
+    <TasksAndActivitiesBadge
+      type="tasks-and-activities"
+      background
+      size={size}
+    />
+    <span {...classes('plus')}>+</span>
+    <AssessmentResourcesBadge
+      type="assessment-resources"
+      background
+      size={size}
+    />
   </div>
 );
+
+LearningPathBadge.propTypes = {
+  size: PropTypes.oneOf(['x-small', 'small']),
+};

@@ -39,7 +39,6 @@ import {
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectChildContent,
-  ListView,
   EmbeddedTwitter,
   EmbeddedFacebook,
 } from 'ndla-ui';
@@ -65,7 +64,6 @@ import article, {
   subjectList,
   subjectCarouselList,
   subjectConcepts,
-  mockListView,
 } from '../../dummydata/index';
 
 import exampleBackground from '../images/medie-example.jpg';
@@ -666,41 +664,6 @@ storiesOf('Emnesider', module)
         />
       </Content>
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('6. Listevisning', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu />
-        <OneColumn>
-          <section>
-            <Breadcrumb
-              toSubjects={() => '#'}
-              subjectsTitle="Fag"
-              subject={subjectList[1]}
-              topicPath={topicList}
-              toTopic={() => '#'}
-            />
-          </section>
-        </OneColumn>
-        <OneColumn>
-          <ListView
-            items={mockListView.items}
-            filters={[
-              {
-                options: [
-                  { title: 'El-håndverkøy', value: 'elhandverktoy' },
-                  { title: 'Håndverkøy', value: 'handverktoy' },
-                  { title: 'Maskiner', value: 'maskiner' },
-                  { title: 'Måleverkøy', value: 'maleverktoy' },
-                ],
-                values: [],
-                label: 'Fag',
-              }
-            ]}
-          />
-        </OneColumn>
-      </Content>
     </PageContainer>
   ))
   .add('Last inn emne', () => (

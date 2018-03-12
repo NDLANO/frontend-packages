@@ -36,6 +36,7 @@ export { default as ListAlphebetical } from './ListAlphebetical';
 export { default as ListCircle } from './ListCircle';
 export { default as ListNumbered } from './ListNumbered';
 export { default as ListSquare } from './ListSquare';
+export { default as ListTwoColumns } from './ListTwoColumns';
 export { default as Media } from './Media';
 export { default as Paragraph } from './Paragraph';
 export { default as Quote } from './Quote';

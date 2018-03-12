@@ -38,7 +38,6 @@ import {
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectChildContent,
-  ListView,
   EmbeddedTwitter,
   EmbeddedFacebook,
 } from 'ndla-ui';
@@ -670,27 +669,6 @@ storiesOf('Emnesider', module)
         />
       </Content>
       <FooterExample />
-    </PageContainer>
-  ))
-  .add('6. Listevisning', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu />
-        <OneColumn>
-          <section>
-            <Breadcrumb
-              toSubjects={() => '#'}
-              subjectsTitle="Fag"
-              subject={subjectList[1]}
-              topicPath={topicList}
-              toTopic={() => '#'}
-            />
-          </section>
-        </OneColumn>
-        <OneColumn>
-          <ListView list={{}} />
-        </OneColumn>
-      </Content>
     </PageContainer>
   ))
   .add('Last inn emne', () => (

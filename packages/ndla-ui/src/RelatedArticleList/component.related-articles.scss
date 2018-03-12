@@ -66,6 +66,10 @@
     font-weight: $font-weight-semibold;
     display: flex;
     align-items: center;
+
+    .c-content-type-badge {
+      flex-shrink: 0;
+    }
   }
 
   &__description {

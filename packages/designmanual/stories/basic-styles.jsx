@@ -388,10 +388,28 @@ storiesOf('Grunnstiler', module)
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
+                style={{ backgroundColor: '#797979' }}
+              />
+              <div className="o-list__label">
+                Læringssti Mørk<br />#797979
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
                 style={{ backgroundColor: '#F2EFEF' }}
               />
               <div className="o-list__label">
                 Læringssti bakgrunn<br />#F2EFEF
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#E8E3E3' }}
+              />
+              <div className="o-list__label">
+                Læringssti Lys<br />#E8E3E3
               </div>
             </li>
           </ul>

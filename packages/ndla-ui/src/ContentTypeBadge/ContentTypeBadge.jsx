@@ -9,12 +9,11 @@ import {
   Subject,
   ExternalLearningResource,
   SharedResource,
+  LearningPath,
 } from 'ndla-icons/contentType';
 
 import * as contentTypes from '../model/ContentType';
 import { ContentTypeShape } from '../shapes';
-
-import { LearningPathBadge } from './LearningPathBadge';
 
 const classes = new BEMHelper({
   name: 'content-type-badge',
@@ -49,7 +48,8 @@ export const ContentTypeBadge = ({ type, background, size }) => {
       icon = <SharedResource />;
       break;
     case contentTypes.LEARNING_PATH:
-      return <LearningPathBadge size={size} />;
+      icon = <LearningPath />;
+      break;
     default:
       break;
   }
@@ -86,4 +86,8 @@ export const ExternalLearningResourcesBadge = props => (
 );
 export const SourceMaterialBadge = props => (
   <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
+);
+
+export const LearningPathBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
 );

@@ -2,6 +2,12 @@
   @include inuit-font-size(14px);
   padding: $spacing--small 0 0 0;
   line-height: 1.75rem;
+  display: none;
+
+  @include mq(tablet) {
+    display: block;
+  }
+
   .c-icon {
     color: $brand-color;
   }

@@ -10,16 +10,44 @@ $subject-section-padding: 100px;
 @import './component.subject-concepts';
 
 .c-subject-content {
+  @include mq(tablet) {
+    margin-bottom: $subject-section-padding;
+  }
+
   &__breadcrumb {
+    display: none;
     margin: $spacing--medium 0 0 $subject-margin;
+
+    @include mq (tablet) {
+      display: block;
+    }
   }
 
   &__content {
-    margin-top: $spacing--large;
     display: flex;
+    flex-flow: column;
+    margin-top: $spacing--small;
+
+    @include mq(tablet) {
+      flex-flow: row;
+      margin-top: $spacing--large;
+    }
+
+    & > *:first-child {
+      @include mq(tablet) {
+        margin-right: 80px;
+      }
+    }
 
     &--twoColumns {
       flex-flow: column;
+
+      & > *:first-child {
+        @include mq(tablet) {
+          margin-right: 0;
+          margin-bottom: $subject-section-padding;
+        }
+      }
     }
   }
 }
@@ -27,12 +55,24 @@ $subject-section-padding: 100px;
 .c-subject-sidebar-wrapper {
   flex-basis: 390px;
   flex-shrink: 0;
-  margin-top: 9px;
+  margin: 0 $spacing;
+
+  @include mq(tablet) {
+    margin: 9px 0 0 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .c-subject-social {
   &__content {
-    display: flex;
+    display: none;
+
+    @include mq(tablet) {
+      display: flex;
+    }
   }
 
   &__section {
@@ -51,27 +91,57 @@ $subject-section-padding: 100px;
 
 .c-subject-flex {
   display: flex;
+  flex-direction: column;
+  margin-bottom: $spacing--large;
+
+  @include mq(tablet) {
+    flex-direction: row;
+    margin-bottom: $subject-section-padding;
+  }
 
   &__child {
-    flex-basis: 50%;
     box-sizing: border-box;
-    padding-right: $spacing--large;
+
+    @include mq(tablet) {
+      flex-basis: 50%;
+      flex-direction: row;
+      margin-right: $spacing--large;
+    }
+
+    &:last-child {
+      & > * {
+        @include mq($until: tablet) {
+          margin-bottom: 0;
+        }
+      }
+    }
 
     & > * {
-      margin-bottom: 0;
+      @include mq(tablet) {
+        margin-bottom: 0;
+      }
     }
   }
 
-  margin-bottom: $subject-section-padding;
 }
 
 .c-subject-section-title {
-  margin: 0 0 $spacing 0;
-  @include inuit-font-size(22px);
   font-weight: $font-weight-bold;
   text-transform: uppercase;
+  @include font-size(16px, 32px);
+  margin: 0 0 $spacing--small 0;
+
+
+  @include mq(tablet) {
+    margin: 0 0 $spacing 0;
+    @include font-size(22px);
+  }
 }
 
 .c-subject-child-content {
-  padding-left: $subject-margin;
+  padding: 0 $spacing;
+
+  @include mq(tablet) {
+    padding: 0 0 0 $subject-margin;
+  }
 }

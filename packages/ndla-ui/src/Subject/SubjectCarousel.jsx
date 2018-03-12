@@ -33,24 +33,24 @@ const settings = {
   responsive: [
     {
       breakpoint: 1200,
-      settings: { slidesToShow: 4 },
+      settings: { slidesToShow: 4, slidesToScroll: 4 },
     },
     {
       breakpoint: 800,
-      settings: { slidesToShow: 3.25 },
+      settings: { slidesToShow: 3.25, slidesToScroll: 3 },
     },
     {
       breakpoint: 600,
-      settings: { slidesToShow: 2.25 },
+      settings: { slidesToShow: 2.25, slidesToScroll: 2 },
     },
     {
       breakpoint: 400,
-      settings: { slidesToShow: 2.25 },
+      settings: { slidesToShow: 2.25, slidesToScroll: 2 },
     },
   ],
 };
 
-const SubjectCarousel = ({ subjects, title }) => {
+const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
   const slides = subjects.map(subject => {
     const styleAttr = {};
     if (subject.image) {
@@ -70,7 +70,7 @@ const SubjectCarousel = ({ subjects, title }) => {
     );
   });
   return (
-    <section {...classes()}>
+    <section {...classes('', { narrowScreen, wideScreen })}>
       <SubjectSectionTitle>{title}</SubjectSectionTitle>
       <Slider {...classes('slider')} {...settings}>
         {slides}
@@ -90,11 +90,15 @@ SubjectCarousel.propTypes = {
     }),
   ),
   title: PropTypes.string,
+  narrowScreen: PropTypes.bool,
+  wideScreen: PropTypes.bool,
 };
 
 SubjectCarousel.defaultProps = {
   subjects: [],
   title: '',
+  narrowScreen: false,
+  wideScreen: false,
 };
 
 export default SubjectCarousel;

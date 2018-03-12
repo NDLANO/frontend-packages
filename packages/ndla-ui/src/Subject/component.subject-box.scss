@@ -1,6 +1,18 @@
 .c-subject-box {
   margin-bottom: $spacing--large;
 
+  &--hasWrapper {
+    margin-bottom: 0;
+  }
+
+  &__wrapper {
+    margin-bottom: $spacing--large;
+  }
+
+  @include mq(tablet) {
+    border: 1px solid $brand-grey--light;
+  }
+
   &--fixedWidth {
     max-width: 350px;
   }
@@ -13,11 +25,12 @@
     }
   }
 
-  border: 1px solid $brand-grey--light;
-
-
   &__content {
-    padding: $spacing;
+    padding: $spacing--small 0 0 0;
+
+    @include mq(tablet) {
+      padding: $spacing;
+    }
   }
 
   &__heading {
@@ -27,16 +40,47 @@
     &--smallHeading {
       @include font-size(14px, 32px);
       text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    &--top {
+      @include font-size(16px, 32px);
+      text-transform: uppercase;
+      font-weight: 700;
+
+      @include mq(tablet) {
+        display: none;
+      }
+    }
+
+    &--main {
+      display: none;
+
+      @include mq(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &__top-heading {
+    @include font-size(16px, 32px);
+    text-transform: uppercase;
+    margin: 0 0 $spacing--small 0;
+    font-weight: 700;
+
+    @include mq(tablet) {
+      @include visually-hidden();
     }
   }
 
 
   &__description {
-    margin: 0 0 $spacing 0;
+    margin: 0;
     @include font-size(16px, 26px);
   }
 
   &__archive {
+    margin: $spacing 0 0 0;
     color: $brand-color--secondary;
     @include font-size(14px, 18px);
 

@@ -38,6 +38,7 @@ export {
   SubjectSocialSection,
   SubjectSectionTitle,
   SubjectChildContent,
+  SubjectFilter,
 } from './Subject';
 
 export { default as Button } from './button/Button';

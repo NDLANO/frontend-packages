@@ -38,7 +38,7 @@
 
   &--subjectPage {
     padding-top: 0;
-    margin-right: 80px;
+    padding-bottom: 0;
 
     .c-resources {
       &__title-wrapper {
@@ -46,17 +46,38 @@
         margin-top: 0;
 
         .c-content-type-badge {
-          display: inline-flex;
+          display: none;
+
+          @include mq(tablet) {
+            display: inline-flex;
+          }
         }
       }
 
       &__content {
-        margin-left: $spacing--medium + $spacing--large;
+        @include mq(tablet) {
+          margin-left: $spacing--medium + $spacing--large;
+        }
       }
 
       &__title {
-        @include inuit-font-size(22px, 32px);
+        @include inuit-font-size(16px, 32px);
+
+        @include mq(tablet) {
+          @include inuit-font-size(22px, 32px);
+        }
         letter-spacing: normal;
+      }
+
+      &__title-wrapper {
+        margin-left: $spacing;
+        margin-right: $spacing;
+      }
+    }
+
+    .c-topic-introduction__list {
+      @include mq($until: tablet) {
+        padding: 0 $spacing;
       }
     }
   }

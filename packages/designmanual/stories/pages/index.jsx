@@ -76,6 +76,7 @@ const subjectBox1 = (fixedWidth = false) => (
         src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
       />
     }
+    topHeading="Aktuelt"
     heading="Tittel overskrift"
     description="Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato."
     url="#1"
@@ -472,16 +473,21 @@ storiesOf('Emnesider', module)
                     },
                   ]}
                 />
+                <SubjectCarousel
+                  narrowScreen
+                  subjects={subjectCarouselList}
+                  title="Litt forskjellig fra faget"
+                />
                 {subjectBox1(true)}
                 {subjectBox2(true)}
               </SubjectSidebarWrapper>
             </SubjectContent>
             <SubjectChildContent>
               <SubjectCarousel
+                wideScreen
                 subjects={subjectCarouselList}
                 title="Litt forskjellig fra faget"
               />
-
               {some}
             </SubjectChildContent>
           </OneColumn>
@@ -605,6 +611,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </article>
       </Content>
+      <FooterExample />
     </PageContainer>
   ))
   .add('4. Hovedemne', () => (

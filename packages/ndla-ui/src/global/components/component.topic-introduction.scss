@@ -15,14 +15,22 @@
     padding: 0;
 
     &--twoColumns {
-      display: flex;
-      flex-wrap: wrap;
-      border-bottom: none;
+
+      @include mq(tablet) {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
 
       & > li {
         flex-basis: 50%;
         box-sizing: border-box;
-        padding-right: $spacing;
+
+        @include mq(tablet) {
+          padding-right: $spacing;
+        }
       }
     }
   }
@@ -57,10 +65,19 @@
     }
 
     &--subjectPage {
-      border-bottom: 0;
-
       @include mq(tablet) {
+        border-bottom: 0;
         padding-right: 0;
+      }
+
+      &:last-child {
+        padding-bottom: $spacing--medium;
+        border-bottom: 2px solid $brand-grey--lighter;
+
+        @include mq(tablet) {
+          border-bottom: 0;
+          padding-bottom: 0;
+        }
       }
     }
   }

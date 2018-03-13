@@ -33,7 +33,8 @@ import {
   SubjectFlexChild,
   SubjectShortcuts,
   SubjectLinks,
-  SubjectBox,
+  SubjectArchive,
+  SubjectAbout,
   SubjectCarousel,
   SubjectSocialContent,
   SubjectSocialSection,
@@ -66,30 +67,31 @@ import article, {
 
 import exampleBackground from '../images/medie-example.jpg';
 
-const subjectBox1 = (fixedWidth = false) => (
-  <SubjectBox
+const subjectArchive = (fixedWidth = false) => (
+  <SubjectArchive
+    featuringArticle={{
+      media: (
+        <Image
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
+      ),
+      heading: 'Tittel overskrift',
+      description:
+        'Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato.',
+      url: '#1',
+    }}
     fixedWidth={fixedWidth}
-    media={
-      <Image
-        alt="Forstørrelsesglass"
-        src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-      />
-    }
-    topHeading="Aktuelt"
-    heading="Tittel overskrift"
-    description="Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato."
-    url="#1"
-    archiveUrl="#2"
+    sectionHeading="Aktuelt"
     messages={{
       archive: 'Arkiv',
     }}
   />
 );
 
-const subjectBox2 = (fixedWidth = false) => (
-  <SubjectBox
+const subjectAbout = (fixedWidth = false) => (
+  <SubjectAbout
     fixedWidth={fixedWidth}
-    smallHeading
     media={
       <Image
         alt="Forstørrelsesglass"
@@ -486,8 +488,8 @@ storiesOf('Emnesider', module)
                   subjects={subjectCarouselList}
                   title="Litt forskjellig fra faget"
                 />
-                {subjectBox1(true)}
-                {subjectBox2(true)}
+                {subjectArchive(true)}
+                {subjectAbout(true)}
               </SubjectSidebarWrapper>
             </SubjectContent>
             <SubjectChildContent>
@@ -610,8 +612,8 @@ storiesOf('Emnesider', module)
                   subjectPage
                 />
                 <SubjectFlexWrapper>
-                  <SubjectFlexChild>{subjectBox1()}</SubjectFlexChild>
-                  <SubjectFlexChild>{subjectBox2()}</SubjectFlexChild>
+                  <SubjectFlexChild>{subjectArchive()}</SubjectFlexChild>
+                  <SubjectFlexChild>{subjectAbout()}</SubjectFlexChild>
                 </SubjectFlexWrapper>
                 {some}
               </SubjectChildContent>

@@ -4,10 +4,11 @@ $subject-section-padding: 100px;
 @import './component.subject-header';
 @import './component.subject-shortcut';
 @import './component.subject-links';
-@import './component.subject-box';
+@import './component.subject-archive';
 @import './component.subject-carousel';
 @import './component.subject-topic-shortcuts';
 @import './component.subject-concepts';
+@import './component.subject-about';
 
 .c-subject-content {
   @include mq(tablet) {
@@ -122,7 +123,6 @@ $subject-section-padding: 100px;
       }
     }
   }
-
 }
 
 .c-subject-section-title {
@@ -130,7 +130,6 @@ $subject-section-padding: 100px;
   text-transform: uppercase;
   @include font-size(16px, 32px);
   margin: 0 0 $spacing--small 0;
-
 
   @include mq(tablet) {
     margin: 0 0 $spacing 0;

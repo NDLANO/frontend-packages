@@ -32,7 +32,7 @@ export {
   SubjectFlexChild,
   SubjectShortcuts,
   SubjectLinks,
-  SubjectBox,
+  SubjectArchive,
   SubjectCarousel,
   SubjectConcepts,
   SubjectSocialContent,
@@ -40,6 +40,7 @@ export {
   SubjectSectionTitle,
   SubjectChildContent,
   SubjectFilter,
+  SubjectAbout,
 } from './Subject';
 
 export { default as Logo } from './Logo';

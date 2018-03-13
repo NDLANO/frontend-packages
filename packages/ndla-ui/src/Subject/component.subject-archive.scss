@@ -1,13 +1,5 @@
-.c-subject-box {
+.c-subject-archive {
   margin-bottom: $spacing--large;
-
-  &--hasWrapper {
-    margin-bottom: 0;
-  }
-
-  &__wrapper {
-    margin-bottom: $spacing--large;
-  }
 
   @include mq(tablet) {
     border: 1px solid $brand-grey--light;
@@ -36,33 +28,9 @@
   &__heading {
     @include font-size(20px, 32px);
     margin: 0 0 $spacing--small 0;
-
-    &--smallHeading {
-      @include font-size(14px, 32px);
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    &--top {
-      @include font-size(16px, 32px);
-      text-transform: uppercase;
-      font-weight: 700;
-
-      @include mq(tablet) {
-        display: none;
-      }
-    }
-
-    &--main {
-      display: none;
-
-      @include mq(tablet) {
-        display: block;
-      }
-    }
   }
 
-  &__top-heading {
+  &__section-heading {
     @include font-size(16px, 32px);
     text-transform: uppercase;
     margin: 0 0 $spacing--small 0;
@@ -73,16 +41,20 @@
     }
   }
 
-
   &__description {
     margin: 0;
     @include font-size(16px, 26px);
   }
 
-  &__archive {
-    margin: $spacing 0 0 0;
+  &__archive-button {
+    cursor: pointer;
+    background: none;
+    border: 0;
+    margin: $spacing--small 0 0 0;
     color: $brand-color--secondary;
     @include font-size(14px, 18px);
+
+    padding: $spacing--small/2 0;
 
     box-shadow: none;
     display: flex;

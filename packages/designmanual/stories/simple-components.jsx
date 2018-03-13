@@ -509,7 +509,7 @@ storiesOf('Enkle komponenter', module)
 
         <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
         <Aside>
-          <h2>Høyrespalte</h2>
+          <h1>Høyrespalte</h1>
           <p>Høyrespalten skal fases ut.</p>
           <p>
             I en midlertidig fase under flytting av innhold fra gammelt til nytt
@@ -580,7 +580,7 @@ storiesOf('Enkle komponenter', module)
         </div>
         <section>
           <Aside wideScreen>
-            <h2>Høyrespalte</h2>
+            <h1>Høyrespalte</h1>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
@@ -626,7 +626,7 @@ storiesOf('Enkle komponenter', module)
             klassen.
           </p>
           <Aside narrowScreen>
-            <h2>Høyrespalte</h2>
+            <h1>Høyrespalte</h1>
             <p>Høyrespalten skal fases ut.</p>
             <p>
               I en midlertidig fase under flytting av innhold fra gammelt til
@@ -728,9 +728,41 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Ikoner" />
       <OneColumn>
-        <h2>Felles</h2>
+        <LayoutItem layout="center">
+          <h2>Systemikoner</h2>
+          <p>
+            Systemikonene identifiserer handlinger en bruker kan ta på en gitt
+            skjerm, de kan også representere objekter og områder.
+          </p>
+          <p>
+            Systemikonene er hentet fra Google sitt Material Design som er open
+            source og tilgjengelig med Apache License Version 2.0. Hvis det er
+            behov for flere eller nye systemikoner skal disse hentes her:{' '}
+            <a href="https://material.io/icons/">https://material.io/icons/</a>{' '}
+            og hvis det ikke finnes et passende ikon i denne pakken kan man lage
+            nye ikoner ved å bruke disse retningslinjene:{' '}
+            <a href="https://material.io/guidelines/">
+              https://material.io/guidelines/
+            </a>
+          </p>
+        </LayoutItem>
+
         <IconList icons={commonIcons} folder="common" />
-        <h2>Innholdstyper</h2>
+        <LayoutItem layout="center">
+          <h2>Innholdstypeikoner</h2>
+          <p>
+            Hver innholdstype i NDLA systemet har et ikon knyttet til seg.
+            Ikonene er visuelle representasjoner av innholdstypen og skal sammen
+            med innholdstypefargen skape en gjenkjennelseseffekt for brukerne.
+          </p>
+          <p>
+            Hvis det skal lages nye innholdstypeikoner er det viktig at de
+            kommuniserer innholdstypens kjernefunksjon og hensikt. De må også ha
+            lik visuell utførelse og fremtoning som de eksisterende. Alle
+            innholdstypeikonene er bygget ut fra Material Design sine ikoner;
+            <a href="https://material.io/icons/">https://material.io/icons/</a>
+          </p>
+        </LayoutItem>
         <IconList icons={contentTypeIcons} folder="contentType" />
         <h2>Lisens</h2>
         <IconList icons={licenseIcons} folder="license" />

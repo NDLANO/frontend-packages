@@ -1,6 +1,6 @@
 {
   "name": "ndla-audio-search",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -8,10 +8,10 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs  babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es  babel src --quiet --out-dir es --ignore __tests__",
-    "clean": " rimraf lib es",
-    "test": " jest",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
+    "clean": "rimraf lib es",
+    "test": "jest",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {

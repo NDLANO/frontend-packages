@@ -35,7 +35,6 @@ const TasksAndActivities = props => (
             <polygon
               fill="currentColor"
               points="0 22 24 22 24 24 0 24"
-              fillOpacity="0.36"
               fillRule="nonzero"
             />
           </g>

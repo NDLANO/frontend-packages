@@ -138,12 +138,13 @@ storiesOf('Sidevisninger', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
           </OneColumn>
         </SubjectMaterialHero>
-        <ArticleLoader articleId="17477" />
+        <ArticleLoader articleId="744" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -181,6 +182,7 @@ storiesOf('Sidevisninger', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -206,6 +208,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -230,6 +233,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -254,6 +258,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -278,6 +283,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -302,6 +308,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -326,6 +333,7 @@ storiesOf('Læringsressurser', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent={false}
                 />
               </section>
             </div>
@@ -402,6 +410,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={[]}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               }>
               <ResourcesWrapper
@@ -627,13 +636,14 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="17507"
+          articleId="4824"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           hideResources
@@ -657,13 +667,14 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="5948"
+          articleId="4853"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
         />
@@ -685,6 +696,7 @@ storiesOf('Emnesider', module)
                   subject={subjectList[1]}
                   topicPath={topicList.slice(0, -1)}
                   toTopic={() => '#'}
+                  isCurrent
                 />
               </section>
             </div>

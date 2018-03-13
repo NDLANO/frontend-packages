@@ -23,11 +23,15 @@ storiesOf('Grunnstiler', module)
         <p>
           Fargene til NDLA er laget på grunnlag av å skape god lesbarhet og flyt
           for brukerne. Fargene skal alltid brukes på meningsfulle måter for å
-          gruppere innhold, skape hierarki og tilhørighet, fange oppmerksomheten
-          til viktige elementer og gi støtte i de oppgavene brukeren utfører.
-          Det skal alltid være nok kontrast mellom elementer som f.eks bakgrunn
-          og tekst. Systemet oppfyller alle standarder for WCAG (Web Content
-          Accessibility Guidelines).
+          gruppere innhold, skape hierarki og tilhørighet. De kan også brukes
+          for å gi oppmerksomhet til viktige elementer og støtte i de oppgavene
+          brukeren utfører. Det skal alltid være nok kontrast mellom elementer
+          som f.eks bakgrunn og tekst. Fargene skal til enhver tid oppfylle alle
+          standarder for WCAG (Web Content Accessibility Guidelines). Verktøy
+          for å kontrollere kontrast mellom tekst og bakgrunn finnes her:{' '}
+          <a href="https://webaim.org/resources/contrastchecker/">
+            https://webaim.org/resources/contrastchecker/
+          </a>
         </p>
       </StoryIntro>
       <StoryBody>
@@ -47,7 +51,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#20588F' }}
               />
               <div className="o-list__label">
-                NDLA primærfarge<br />#507AA4
+                NDLA primærfarge<br />#20588F
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -77,6 +81,15 @@ storiesOf('Grunnstiler', module)
                 NDLA lys<br />#CEDDEA
               </div>
             </li>
+            <li className="o-list__item o-list__item--colors o-list__item">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#DEEBF6' }}
+              />
+              <div className="o-list__label">
+                NDLA lysest<br />#DEEBF6
+              </div>
+            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -94,7 +107,17 @@ storiesOf('Grunnstiler', module)
             For å skape hierarki i innholdet finnes det to farger for tekst og
             systemikoner. Vektleggingen skjer i samhandling med stilingen av
             typografien. Når teksten eller ikonet er klikkbare linker skal man
-            bruke NDLA primærfarge.{' '}
+            bruke NDLA-blå farge. Hvit tekst blir brukt på f.eks knapper og
+            navigasjonselememnter med mørke bakgunner. Fargen og størrelsen på
+            teksten skal til enhver tid kombineres med bakgrunner med nok
+            kontrast og som oppfyller krav til WCAG. Verktøy for å teste
+            kontrast mellom tekst og bakgrunn finnes her:{' '}
+            <a
+              href="https://webaim.org/resources/contrastchecker/"
+              target="_blank"
+              rel="noopener noreferrer">
+              https://webaim.org/resources/contrastchecker/
+            </a>
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
@@ -122,6 +145,15 @@ storiesOf('Grunnstiler', module)
               />
               <div className="o-list__label">
                 Tekst Hvit<br />#FFFFFF
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#20588F' }}
+              />
+              <div className="o-list__label">
+                Tekst Link<br />#20588F
               </div>
             </li>
           </ul>
@@ -187,31 +219,11 @@ storiesOf('Grunnstiler', module)
         <div>
           <h2 className="u-heading">Innholdstypefarger</h2>
           <p>
-            Innholdstypene sine farger er inspirert av idéen om at
-            elevene/brukerne er i to moduser når de er inne på NDLA sine sider;
-            «Lesemodus» og «Aktiv modus».
-          </p>
-          <p>
-            “Lesemodus” fordrer et åpent, lett og dust uttrykk som gir fokus til
-            innholdet og bidrar til god lesbarhet og flyt. Innholdstypene som
-            kan kategoriseres i «lesemodus» er Emner, Fagstoff, Ekstern
-            læringsressurs og Kildemateriale. For disse innholdstypene er det
-            valgt å bruke NDLA blå på Emner. På de øvrige er det brukt
-            grønntoner som en forlengelse…av NDLA blå og fordi det hører til
-            egenskaper som vekst og produktivitet fra naturen sin side.
-          </p>
-          <p>
-            I “aktiv modus” er eleven i modus for å utføre og delta mer hands
-            on. Innholdstyper her er Oppgaver og Aktiviteter og
-            Vurderingsressurs. Fargene som er valgt er komplementære til
-            lesemodus. Rosa og orange er komplementær fargene til blå og grønn.
-          </p>
-          <p>
             Innholdstyper har to farger, en mørk og en lys, knyttet til seg. Den
             lyse fargen er brukt på bakgrunner og den mørke er brukt på ikonet
-            tilknyttet innholdstypen. Noen av innholdstypene har en tredje tone.
-            Dette da det er behov for en egen bakgrunnsfarge på ikonet og en
-            annen på bakgrunnen i artikkelmalen.
+            tilknyttet innholdstypen. Noen av innholdstypene har en tredje
+            farge. Dette da det er behov for en egen bakgrunnsfarge på ikonet og
+            en annen på bakgrunnen i artikkelmalen.
           </p>
           <p>
             Fargene er lette og duse i uttrykket for å la selve innholdet få
@@ -223,33 +235,24 @@ storiesOf('Grunnstiler', module)
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
-                style={{ backgroundColor: '#CEDDEA' }}
-              />
-              <div className="o-list__label">
-                Emner Lys<br />#CEDDEA
-              </div>
-            </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
                 style={{ backgroundColor: '#184673' }}
               />
               <div className="o-list__label">
                 Emner Mørk<br />#184673
               </div>
             </li>
-          </ul>
-          <h3>Fagstoff</h3>
-          <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
-                style={{ backgroundColor: '#DDE9D0' }}
+                style={{ backgroundColor: '#CEDDEA' }}
               />
               <div className="o-list__label">
-                Fagstoff Lys<br />#DDE9D0
+                Emner Lys<br />#CEDDEA
               </div>
             </li>
+          </ul>
+          <h3>Fagstoff</h3>
+          <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -259,9 +262,27 @@ storiesOf('Grunnstiler', module)
                 Fagstoff Mørk<br />#5C6A4F
               </div>
             </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#DDE9D0' }}
+              />
+              <div className="o-list__label">
+                Fagstoff Lys<br />#DDE9D0
+              </div>
+            </li>
           </ul>
           <h3>Ekstern læringressurs</h3>
           <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#4F7D76' }}
+              />
+              <div className="o-list__label">
+                Ekstern læringressurs Mørk<br />#4F7D76
+              </div>
+            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -280,27 +301,9 @@ storiesOf('Grunnstiler', module)
                 Ekstern læringressurs Lys<br />#E6F3ED
               </div>
             </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#4F7D76' }}
-              />
-              <div className="o-list__label">
-                Ekstern læringressurs Mørk<br />#4F7D76
-              </div>
-            </li>
           </ul>
           <h3>Kildemateriale</h3>
           <ul className="o-list--colors">
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#DCE5E0' }}
-              />
-              <div className="o-list__label">
-                Kildemateriale Lys<br />#DCE5E0
-              </div>
-            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -310,9 +313,27 @@ storiesOf('Grunnstiler', module)
                 Kildemateriale Mørk<br />#636E68
               </div>
             </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#DCE5E0' }}
+              />
+              <div className="o-list__label">
+                Kildemateriale Lys<br />#DCE5E0
+              </div>
+            </li>
           </ul>
           <h3>Oppgaver og Aktiviteter</h3>
           <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#D98229' }}
+              />
+              <div className="o-list__label">
+                Oppgaver og Aktiviteter Mørk<br />#D98229
+              </div>
+            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -331,18 +352,18 @@ storiesOf('Grunnstiler', module)
                 Oppgaver og Aktiviteter Lys<br />#FBEDDC
               </div>
             </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#D98229' }}
-              />
-              <div className="o-list__label">
-                Oppgaver og Aktiviteter Mørk<br />#D98229
-              </div>
-            </li>
           </ul>
           <h3>Vurderingsressurs</h3>
           <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#C0676F' }}
+              />
+              <div className="o-list__label">
+                Vurderingsressurs Mørk<br />#C0676F
+              </div>
+            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -361,18 +382,18 @@ storiesOf('Grunnstiler', module)
                 Vurderingsressurs Lys<br />#F5E7E5
               </div>
             </li>
-            <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#C0676F' }}
-              />
-              <div className="o-list__label">
-                Vurderingsressurs Mørk<br />#C0676F
-              </div>
-            </li>
           </ul>
           <h3>Læringsti</h3>
           <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#797979' }}
+              />
+              <div className="o-list__label">
+                Læringssti Mørk<br />#797979
+              </div>
+            </li>
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
@@ -380,6 +401,15 @@ storiesOf('Grunnstiler', module)
               />
               <div className="o-list__label">
                 Læringssti bakgrunn<br />#F2EFEF
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#E8E3E3' }}
+              />
+              <div className="o-list__label">
+                Læringssti Lys<br />#E8E3E3
               </div>
             </li>
           </ul>

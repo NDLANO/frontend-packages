@@ -34,6 +34,9 @@
   color: $brand-grey-dark;
   padding: $spacing;
 
+  & > *:first-child {
+    margin-top: 0;
+  }
   & > *:last-child {
     margin-bottom: 0;
   }
@@ -50,7 +53,7 @@
   padding: 0;
 }
 
-.c-aside h2:first-child {
+.c-aside h1 {
   margin-top: 0;
   margin-bottom: $spacing;
   @include inuit-font-size(22px, 34px);

@@ -38,13 +38,23 @@ const watcher = chokidar.watch(packagePatterns, {
   ignored: [IGNORE_PATTERN],
 });
 
+const handlBuildFile = file => {
+  buildFile(file, 'es');
+  buildFile(file, 'lib', {
+    plugins: ['transform-es2015-modules-commonjs'],
+  });
+};
+
 watcher
-  .on('change', buildFile)
+  .on('change', handlBuildFile)
   .on('ready', () => {
     // Attach add event listner after initial scan is completed.
-    watcher.on('add', buildFile);
+    watcher.on('add', handlBuildFile);
   })
-  .on('unlink', removeBuildFile);
+  .on('unlink', file => {
+    removeBuildFile(file, 'es');
+    removeBuildFile(file, 'lib');
+  });
 
 process.stdout.write(
   `${chalk.red('-> ') + chalk.cyan('Watching for changes...')}\n`,

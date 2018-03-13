@@ -24,7 +24,7 @@ import { TopicShape, ContentTypeResultShape } from '../shapes';
 
 import { OpenSearchButton, ContentTypeResult } from '../Search';
 import Logo from '../Logo';
-import FilterList from '../filter/FilterList';
+import { FilterList } from '../Filter';
 
 const classes = new BEMHelper({
   name: 'topic-menu',

@@ -18,7 +18,7 @@
     @include inuit-font-size(18px, 32px);
     padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;
-    padding-top: $spacing--large;
+    padding-top: $spacing--large + $spacing;
   }
 
   &:after {
@@ -50,7 +50,7 @@
   padding: 0 0 $spacing--small 0;
 
   @include mq(tablet) {
-    padding: $spacing 0;
+    padding: 0 0 $spacing 0;
   }
 
   p {

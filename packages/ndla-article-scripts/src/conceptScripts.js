@@ -21,9 +21,12 @@ export const addShowConceptDefinitionClickListeners = () => {
       const isHidden = !popup.classList.toggle('c-concept__popup--visible');
 
       if (!isHidden) {
+        const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom =
-          openBtn.getBoundingClientRect().bottom + window.pageYOffset;
-        popup.style.top = `${openBtnBottom + 5}px`;
+          openBtn.getBoundingClientRect().bottom +
+          window.pageYOffset -
+          parentOffset;
+        popup.style.top = `${openBtnBottom + 10}px`;
         const viewportHeight = Math.max(
           document.documentElement.clientHeight,
           window.innerHeight || 0,

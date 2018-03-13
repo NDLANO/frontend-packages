@@ -29,7 +29,7 @@ class TopicIntroductionShortcuts extends Component {
         {open ? (
           <ul {...classes('list')}>
             {shortcuts.map(shortcut => (
-              <ShortcutType key={shortcut.id} shortcut={shortcut} />
+              <ShortcutType key={shortcut.id} {...shortcut} />
             ))}
           </ul>
         ) : null}
@@ -39,14 +39,6 @@ class TopicIntroductionShortcuts extends Component {
 }
 
 TopicIntroductionShortcuts.propTypes = {
-  symbols: PropTypes.arrayOf(
-    PropTypes.shape({
-      symbols: PropTypes.arrayOf(PropTypes.string).isRequired,
-      count: PropTypes.number.isRequired,
-      linkTo: PropTypes.string.isRequired,
-      tooltip: PropTypes.string.isRequired,
-    }),
-  ),
   shortcuts: PropTypes.arrayOf(),
 };
 

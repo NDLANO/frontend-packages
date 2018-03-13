@@ -1,8 +1,6 @@
-// import * as contentTypes from 'packages/ndla-ui/src/model/ContentType';
+import { constants } from 'ndla-ui';
 
-const SUBJECT_MATERIAL = 'subject-material';
-const TASKS_AND_ACTIVITIES = 'tasks-and-activities';
-const ASSESSMENT_RESOURCES = 'assessment-resources';
+const { contentTypes } = constants;
 
 export const topicList = [
   {
@@ -18,30 +16,30 @@ export const topicList = [
     tags: ['VG1'],
     shortcuts: [
       {
-        symbols: [SUBJECT_MATERIAL, SUBJECT_MATERIAL, TASKS_AND_ACTIVITIES],
+        contentType: contentTypes.LEARNING_PATH,
         count: 4,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 4 artikler i dette emnet',
         id: '1',
       },
       {
-        symbols: [SUBJECT_MATERIAL],
+        contentType: contentTypes.SUBJECT_MATERIAL,
         count: 12,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 12 artikler i dette emnet',
         id: '2',
       },
       {
-        symbols: [TASKS_AND_ACTIVITIES],
+        contentType: contentTypes.TASKS_AND_ACTIVITIES,
         count: 5,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 5 artikler i dette emnet',
         id: '3',
       },
       {
-        symbols: [ASSESSMENT_RESOURCES],
+        contentType: contentTypes.ASSESSMENT_RESOURCES,
         count: 1,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 1 artikler i dette emnet',
         id: '4',
       },
@@ -60,30 +58,30 @@ export const topicList = [
     tags: ['VG2'],
     shortcuts: [
       {
-        symbols: [SUBJECT_MATERIAL, SUBJECT_MATERIAL, TASKS_AND_ACTIVITIES],
+        contentType: contentTypes.LEARNING_PATH,
         count: 4,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 4 artikler i dette emnet',
         id: '1',
       },
       {
-        symbols: [SUBJECT_MATERIAL],
+        contentType: contentTypes.SUBJECT_MATERIAL,
         count: 12,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 12 artikler i dette emnet',
         id: '2',
       },
       {
-        symbols: [TASKS_AND_ACTIVITIES],
+        contentType: contentTypes.TASKS_AND_ACTIVITIES,
         count: 5,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 5 artikler i dette emnet',
         id: '3',
       },
       {
-        symbols: [ASSESSMENT_RESOURCES],
+        contentType: contentTypes.ASSESSMENT_RESOURCES,
         count: 1,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 1 artikler i dette emnet',
         id: '4',
       },
@@ -102,30 +100,30 @@ export const topicList = [
     tags: ['VG3'],
     shortcuts: [
       {
-        symbols: [SUBJECT_MATERIAL, SUBJECT_MATERIAL, TASKS_AND_ACTIVITIES],
+        contentType: contentTypes.LEARNING_PATH,
         count: 4,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 4 artikler i dette emnet',
         id: '1',
       },
       {
-        symbols: [SUBJECT_MATERIAL],
+        contentType: contentTypes.SUBJECT_MATERIAL,
         count: 12,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 12 artikler i dette emnet',
         id: '2',
       },
       {
-        symbols: [TASKS_AND_ACTIVITIES],
+        contentType: contentTypes.TASKS_AND_ACTIVITIES,
         count: 5,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 5 artikler i dette emnet',
         id: '3',
       },
       {
-        symbols: [ASSESSMENT_RESOURCES],
+        contentType: contentTypes.ASSESSMENT_RESOURCES,
         count: 1,
-        linkTo: '#',
+        url: '#',
         tooltip: 'Vis 1 artikler i dette emnet',
         id: '4',
       },

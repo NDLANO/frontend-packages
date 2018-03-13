@@ -3,9 +3,10 @@
   padding: $spacing--small 0 0 0;
   line-height: 1.75rem;
   display: none;
+  align-items: center;
 
   @include mq(tablet) {
-    display: block;
+    display: flex;
   }
 
   .c-icon {
@@ -26,14 +27,16 @@
 
   &__list {
     list-style: none;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 0;
     margin: 0;
     line-height: 1rem;
   }
 
   &__item {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin: 0;
     line-height: 1rem;
     border-right: 1px solid $brand-grey--light;
@@ -43,49 +46,12 @@
 
   &__count {
     color: $brand-color--secondary;
-    font-weight: 600; // $tasks-and-activities-dark $assessment-resource-dark $subject-material-dark
+    font-weight: 600;
     margin-left: $spacing--small / 2;
     a {
       display: inline-block;
-      padding: 0.3em;
+      padding: 0 $spacing--small/3;
     }
-  }
-
-  &__icons {
-    line-height: 1rem;
-    display: inline-block;
-
-    .c-content-type-badge {
-      vertical-align: middle;
-
-      .c-icon {
-        width: 0.7rem;
-        height: auto;
-      }
-
-      &--subject-material {
-        .c-icon {
-          color: $subject-material-dark;
-        }
-      }
-
-      &--tasks-and-activities {
-        .c-icon {
-          color: $tasks-and-activities-dark;
-        }
-      }
-
-      &--assessment-resources {
-        .c-icon {
-          color: $assessment-resource-dark;
-        }
-      }
-    }
-  }
-
-  &__plus {
-    @extend .c-learning-path-badge__plus;
-    vertical-align: middle;
   }
 
   &__tooltip {

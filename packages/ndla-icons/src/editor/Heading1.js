@@ -17,11 +17,8 @@ const Heading1 = props => (
     data-source="Knowit"
     {...props}>
     <g>
-      <path class="cls-1" d="M0,0H1.7V5.5H7.8V0H9.4V13.1H7.8V7H1.7v6.1H0Z" />
-      <path
-        class="cls-1"
-        d="M12.8,11.8h2.9V2.4H13.4V1.3A7.7,7.7,0,0,0,16.1.4h1.3V11.8H20v1.3H12.8Z"
-      />
+      <path d="M0,0H1.7V5.5H7.8V0H9.4V13.1H7.8V7H1.7v6.1H0Z" />
+      <path d="M12.8,11.8h2.9V2.4H13.4V1.3A7.7,7.7,0,0,0,16.1.4h1.3V11.8H20v1.3H12.8Z" />
     </g>
   </Icon>
 );

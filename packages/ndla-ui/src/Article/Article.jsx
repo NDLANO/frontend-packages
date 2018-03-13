@@ -80,6 +80,7 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders },
   },
   icon,
+  additional,
   licenseBox,
   modifier,
   messages,
@@ -95,7 +96,7 @@ export const Article = ({
           {title}
         </ArticleTitle>
         <ArticleIntroduction>{introduction}</ArticleIntroduction>
-        <ArticleByline {...{ messages, authors, updated, license }}>
+        <ArticleByline {...{ messages, authors, updated, license, additional }}>
           {licenseBox}
         </ArticleByline>
       </LayoutItem>
@@ -116,6 +117,7 @@ Article.propTypes = {
   modifier: PropTypes.string,
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
+  additional: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,

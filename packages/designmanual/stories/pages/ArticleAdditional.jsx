@@ -44,15 +44,18 @@ export default () => (
             { name: 'Jon Nordgubbe' },
           ]}
           updated="12/10/2016"
+          additional={[
+            <Additional
+              key="additional"
+              className="c-icon--20 u-margin-right-tiny"
+            />,
+            'Tilleggsstoff',
+          ]}
           license={getLicenseByAbbreviation('by-nc-nd')}
           messages={{
             writtenBy: '',
             lastUpdated: 'Publisert',
           }}>
-          <div className="c-article-byline__additional">
-            <Additional className="c-icon--20 u-margin-right-tiny" />{' '}
-            Tilleggsstoff
-          </div>
           <LicenseExample />
         </ArticleByline>
       </LayoutItem>

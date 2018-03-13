@@ -81,10 +81,37 @@ const subjectArchive = (fixedWidth = false) => (
         'Denne modulen kan variere i innhold. Det kan være aktuelt-stoff, yrkesportretter, «populært hos elever» m.m. Dette er innhold som ikke passer inn i noen av de andre modulene. Det er begrensning på 1 slik modul per fagforside, og den bør ha en utløpsdato.',
       url: '#1',
     }}
+    archiveArticles={[
+      {
+        url: '#1',
+        heading: 'Artikkel 1',
+      },
+      {
+        url: '#2',
+        heading: 'Artikkel 2',
+      },
+      {
+        url: '#3',
+        heading: 'Artikkel 3',
+      },
+      {
+        url: '#4',
+        heading: 'Artikkel 4',
+      },
+      {
+        url: '#5',
+        heading: 'Artikkel 5',
+      },
+      {
+        url: '#6',
+        heading: 'Artikkel 6',
+      },
+    ]}
     fixedWidth={fixedWidth}
     sectionHeading="Aktuelt"
     messages={{
       archive: 'Arkiv',
+      close: 'Lukk',
     }}
   />
 );

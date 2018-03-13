@@ -11,6 +11,7 @@ export { default as AssessmentResource } from './AssessmentResource';
 export {
   default as ExternalLearningResource,
 } from './ExternalLearningResource';
+export { default as LearningPath } from './LearningPath';
 export { default as SharedResource } from './SharedResource';
 export { default as SubjectMaterial } from './SubjectMaterial';
 export { default as Subject } from './Subject';

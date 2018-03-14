@@ -285,7 +285,7 @@ storiesOf('Enkle komponenter', module)
                 <AudioPlayer
                   src="https://staging.api.ndla.no/audio/files/shu3jia4.mp3"
                   type="audio/mpeg"
-                  speach
+                  speech
                   title="Oversettelse"
                 />
               </td>

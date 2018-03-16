@@ -148,6 +148,7 @@ export default class TopicMenu extends Component {
 
     const disableMain = this.state.isNarrowScreen && expandedTopic;
     const disableSubTopic = disableMain && expandedSubtopic;
+    const disableSubTopicLevel2 = disableSubTopic && expandedSubtopicLevel2;
 
     const subTopicLinkListMessages = {
       backButton: messages.back,
@@ -258,23 +259,24 @@ export default class TopicMenu extends Component {
                   onGoBack={this.handleOnGoBack}
                 />
               )}
-            {expandedSubtopic && (
-              <SubtopicLinkList
-                classes={classes}
-                className={
-                  classes('section', ['sub-topic', 'no-border']).className
-                }
-                closeMenu={closeMenu}
-                topic={expandedSubtopic}
-                messages={subTopicLinkListMessages}
-                toTopic={toTopic}
-                expandedSubtopicId={expandedSubtopicLevel2Id}
-                onSubtopicExpand={id => {
-                  this.handleSubtopicExpand(id, true);
-                }}
-                onGoBack={this.handleOnGoBack}
-              />
-            )}
+            {expandedSubtopic &&
+              !disableSubTopicLevel2 && (
+                <SubtopicLinkList
+                  classes={classes}
+                  className={
+                    classes('section', ['sub-topic', 'no-border']).className
+                  }
+                  closeMenu={closeMenu}
+                  topic={expandedSubtopic}
+                  messages={subTopicLinkListMessages}
+                  toTopic={toTopic}
+                  expandedSubtopicId={expandedSubtopicLevel2Id}
+                  onSubtopicExpand={id => {
+                    this.handleSubtopicExpand(id, true);
+                  }}
+                  onGoBack={this.handleOnGoBack}
+                />
+              )}
             {expandedSubtopicLevel2 && (
               <SubtopicLinkList
                 classes={classes}

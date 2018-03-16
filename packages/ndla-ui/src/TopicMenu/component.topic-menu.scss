@@ -9,6 +9,8 @@
 
 /* 1. */
 
+$padding-left-narrow: 47px;
+
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -126,9 +128,6 @@
   @include mq(desktop) {
     padding-bottom: $spacing--large;
     min-height: 500px;
-  }
-
-  @include mq(wide) {
     flex-flow: row;
   }
 }
@@ -147,8 +146,7 @@
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large ($spacing--large +
-        $spacing--small);
+  padding: $spacing--small $spacing $spacing--large $padding-left-narrow;
 
   @include mq(desktop) {
     margin-top: $spacing;
@@ -212,7 +210,7 @@
   flex-shrink: 0;
   margin-top: 0;
   margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 ($spacing--large + $spacing);
+  padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
   @include mq(desktop) {
     margin-bottom: $spacing--small;
@@ -264,7 +262,7 @@
   background: none;
   @include font-size(16px, 20px);
   position: absolute;
-  left: 40px;
+  left: 28px;
   top: $spacing;
 
   @include mq(desktop) {
@@ -274,7 +272,7 @@
   .c-icon {
     width: 24px;
     height: 24px;
-    margin-right: $spacing--small;
+    margin-right: 9px;
   }
 }
 
@@ -330,7 +328,7 @@
 .c-topic-menu__back {
   margin-top: $spacing--medium;
   margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 ($spacing--large + $spacing);
+  padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
   @include inuit-font-size(18px, 23px);
   display: block;
@@ -387,6 +385,10 @@
     &:active,
     &:focus {
       background-color: transparent;
+
+      .c-topic-menu__link-target {
+        box-shadow: $link;
+      }
     }
 
     @include mq(desktop) {

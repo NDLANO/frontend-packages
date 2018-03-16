@@ -268,6 +268,7 @@ export default class TopicMenu extends Component {
                 topic={expandedSubtopic}
                 messages={subTopicLinkListMessages}
                 toTopic={toTopic}
+                expandedSubtopicId={expandedSubtopicLevel2Id}
                 onSubtopicExpand={id => {
                   this.handleSubtopicExpand(id, true);
                 }}

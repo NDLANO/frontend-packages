@@ -1,14 +1,6 @@
-import React from 'react';
-import {
-  LearningPathBadge,
-  TasksAndActivitiesBadge,
-  SubjectMaterialBadge,
-} from 'ndla-ui';
-
-export const searchFieldSearchResults = [
+export const contentTypeResults = [
   {
     title: 'Læringsstier',
-    icon: <LearningPathBadge size="x-small" />,
     totalCount: 2,
     resources: [
       {
@@ -23,7 +15,6 @@ export const searchFieldSearchResults = [
   },
   {
     title: 'Fagstoff',
-    icon: <SubjectMaterialBadge size="x-small" />,
     totalCount: 2,
     showAllLinkUrl: '#',
     resources: [
@@ -39,7 +30,6 @@ export const searchFieldSearchResults = [
   },
   {
     title: 'Oppgaver og aktiviteter',
-    icon: <TasksAndActivitiesBadge size="x-small" />,
     totalCount: 0,
     resources: [],
   },

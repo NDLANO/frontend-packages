@@ -13,27 +13,24 @@ import { Back } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
+import { ContentTypeResult } from '../Search';
+
 const SubtopicLink = ({
   classes,
-  closeMenu,
   to,
-  subtopic: { subtopics, id, name },
+  subtopic: { id, name },
   onSubtopicExpand,
   expandedSubtopicId,
 }) => {
   const active = id === expandedSubtopicId;
-  const hasSubtopics = Array.isArray(subtopics) && subtopics.length > 0;
+
   return (
     <li {...classes('subtopic-item', active && 'active')} key={id}>
       <SafeLink
         {...classes('link')}
         onClick={event => {
-          if (hasSubtopics) {
-            event.preventDefault();
-            onSubtopicExpand(id);
-          } else {
-            closeMenu();
-          }
+          event.preventDefault();
+          onSubtopicExpand(id);
         }}
         to={to}>
         {name}
@@ -44,7 +41,6 @@ const SubtopicLink = ({
 
 SubtopicLink.propTypes = {
   classes: PropTypes.func.isRequired,
-  closeMenu: PropTypes.func,
   subtopic: TopicShape.isRequired,
   to: PropTypes.string.isRequired,
   onSubtopicExpand: PropTypes.func,
@@ -85,6 +81,10 @@ class SubtopicLinkList extends Component {
       messages,
     } = this.props;
 
+    const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
+    const hasContentTypeResults =
+      topic.contentTypeResults && topic.contentTypeResults.length > 0;
+
     return (
       <div
         className={className}
@@ -103,20 +103,36 @@ class SubtopicLinkList extends Component {
             {topic.name} <span {...classes('arrow')}>›</span>
           </span>
         </SafeLink>
-        <ul {...classes('list')}>
-          {topic.subtopics.map(subtopic => (
-            <SubtopicLink
-              onSubtopicExpand={onSubtopicExpand}
-              expandedSubtopicId={expandedSubtopicId}
-              classes={classes}
-              closeMenu={closeMenu}
-              key={subtopic.id}
-              to={toTopic(topic.id, subtopic.id)}
-              subtopic={subtopic}
-              toTopic={toTopic}
-            />
-          ))}
-        </ul>
+        {hasSubTopics && (
+          <ul {...classes('list')}>
+            {topic.subtopics.map(subtopic => (
+              <SubtopicLink
+                onSubtopicExpand={onSubtopicExpand}
+                expandedSubtopicId={expandedSubtopicId}
+                classes={classes}
+                key={subtopic.id}
+                to={toTopic(topic.id, subtopic.id)}
+                subtopic={subtopic}
+              />
+            ))}
+          </ul>
+        )}
+        {hasContentTypeResults && (
+          <aside {...classes('content-type-results')}>
+            <h1>{messages.learningResourcesHeading}</h1>
+            {topic.contentTypeResults.map(result => (
+              <ContentTypeResult
+                key={result.title}
+                contentTypeResult={result}
+                messages={{
+                  allResultLabel: messages.contentTypeResultsShowMore,
+                  noHit: messages.contentTypeResultsNoHit,
+                }}
+                iconOnRight
+              />
+            ))}
+          </aside>
+        )}
       </div>
     );
   }
@@ -134,6 +150,9 @@ SubtopicLinkList.propTypes = {
   messages: PropTypes.shape({
     goToLabel: PropTypes.string.isRequired,
     backButton: PropTypes.string.isRequired,
+    contentTypeResultsShowMore: PropTypes.string.isRequired,
+    learningResourcesHeading: PropTypes.string.isRequired,
+    contentTypeResultsNoHit: PropTypes.string.isRequired,
   }).isRequired,
 };
 

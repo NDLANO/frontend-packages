@@ -20,9 +20,9 @@ import { Cross } from 'ndla-icons/action';
 
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
-import { TopicShape, ContentTypeResultShape } from '../shapes';
+import { TopicShape } from '../shapes';
 
-import { OpenSearchButton, ContentTypeResult } from '../Search';
+import { OpenSearchButton } from '../Search';
 import Logo from '../Logo';
 import { FilterList } from '../Filter';
 
@@ -111,7 +111,6 @@ export default class TopicMenu extends Component {
       filterOptions,
       filterValues,
       onFilterClick,
-      contentTypeResults,
       hideSearch,
     } = this.props;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -131,6 +130,14 @@ export default class TopicMenu extends Component {
 
     const disableMain = this.state.isNarrowScreen && expandedTopic;
     const disableSubTopic = disableMain && expandedSubtopic;
+
+    const subTopicLinkListMessages = {
+      backButton: messages.back,
+      goToLabel: messages.goTo,
+      contentTypeResultsShowMore: messages.contentTypeResultsShowMore,
+      learningResourcesHeading: messages.learningResourcesHeading,
+      contentTypeResultsNoHit: messages.contentTypeResultsNoHit,
+    };
 
     return (
       <nav {...classes('dropdown', null, 'o-wrapper u-1/1')}>
@@ -184,102 +191,68 @@ export default class TopicMenu extends Component {
           )}
 
           <div {...classes('subject-navigation')}>
-            <div {...classes('subject-structure')}>
-              {!disableMain && (
-                <Fragment>
-                  <div {...classes('section', 'main')}>
-                    <SafeLink
-                      to={toSubject()}
-                      className={classes('link', 'big').className}>
-                      <span {...classes('link-label')}>{messages.goTo}:</span>
-                      <span {...classes('link-target')}>
-                        {messages.subjectPage} ›
-                      </span>
-                    </SafeLink>
-                    <ul {...classes('list')}>
-                      {topics.map(topic => {
-                        const active = topic.id === expandedTopicId;
+            {!disableMain && (
+              <Fragment>
+                <div {...classes('section', 'main')}>
+                  <SafeLink
+                    to={toSubject()}
+                    className={classes('link', 'big').className}>
+                    <span {...classes('link-label')}>{messages.goTo}:</span>
+                    <span {...classes('link-target')}>
+                      {messages.subjectPage} ›
+                    </span>
+                  </SafeLink>
+                  <ul {...classes('list')}>
+                    {topics.map(topic => {
+                      const active = topic.id === expandedTopicId;
 
-                        return (
-                          <li
-                            {...classes('topic-item', active && 'active')}
-                            key={topic.id}>
-                            <button
-                              {...classes('link')}
-                              onClick={event =>
-                                this.handleClick(event, topic.id)
-                              }
-                              onKeyPress={event =>
-                                this.handleBtnKeyPress(event, topic.id)
-                              }>
-                              {topic.name}
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </Fragment>
-              )}
-              {expandedTopic &&
-                !disableSubTopic && (
-                  <SubtopicLinkList
-                    classes={classes}
-                    className={classes('section', subTopicModifiers).className}
-                    closeMenu={closeMenu}
-                    topic={expandedTopic}
-                    messages={{
-                      backButton: messages.back,
-                      goToLabel: messages.goTo,
-                    }}
-                    goToTitle={messages.goTo}
-                    toTopic={toTopic}
-                    expandedSubtopicId={expandedSubtopicId}
-                    onSubtopicExpand={this.handleSubtopicExpand}
-                    onGoBack={this.handleOnGoBack}
-                  />
-                )}
-              {expandedSubtopic && (
+                      return (
+                        <li
+                          {...classes('topic-item', active && 'active')}
+                          key={topic.id}>
+                          <button
+                            {...classes('link')}
+                            onClick={event => this.handleClick(event, topic.id)}
+                            onKeyPress={event =>
+                              this.handleBtnKeyPress(event, topic.id)
+                            }>
+                            {topic.name}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </Fragment>
+            )}
+            {expandedTopic &&
+              !disableSubTopic && (
                 <SubtopicLinkList
                   classes={classes}
-                  className={
-                    classes('section', ['sub-topic', 'no-border']).className
-                  }
+                  className={classes('section', subTopicModifiers).className}
                   closeMenu={closeMenu}
-                  topic={expandedSubtopic}
-                  messages={{
-                    backButton: messages.back,
-                    goToLabel: messages.goTo,
-                  }}
+                  topic={expandedTopic}
+                  messages={subTopicLinkListMessages}
+                  goToTitle={messages.goTo}
                   toTopic={toTopic}
+                  expandedSubtopicId={expandedSubtopicId}
+                  onSubtopicExpand={this.handleSubtopicExpand}
                   onGoBack={this.handleOnGoBack}
                 />
               )}
-            </div>
-            {contentTypeResults &&
-              contentTypeResults.length > 0 && (
-                <aside {...classes('content-type-results')}>
-                  <h1>
-                    <span>{messages.learningResourcesHeading}</span>{' '}
-                    {expandedTopic && (
-                      <SafeLink to={toTopic(expandedTopic.id)}>
-                        {expandedTopic.name}
-                      </SafeLink>
-                    )}
-                  </h1>
-                  {contentTypeResults.map(result => (
-                    <ContentTypeResult
-                      key={result.title}
-                      contentTypeResult={result}
-                      messages={{
-                        allResultLabel: messages.contentTypeResultsShowMore,
-                        noHit: messages.contentTypeResultsNoHit,
-                      }}
-                      iconOnRight
-                    />
-                  ))}
-                </aside>
-              )}
+            {expandedSubtopic && (
+              <SubtopicLinkList
+                classes={classes}
+                className={
+                  classes('section', ['sub-topic', 'no-border']).className
+                }
+                closeMenu={closeMenu}
+                topic={expandedSubtopic}
+                messages={subTopicLinkListMessages}
+                toTopic={toTopic}
+                onGoBack={this.handleOnGoBack}
+              />
+            )}
           </div>
         </div>
       </nav>
@@ -314,7 +287,6 @@ TopicMenu.propTypes = {
   subjectTitle: PropTypes.string.isRequired,
   onOpenSearch: PropTypes.func.isRequired,
   searchPageUrl: PropTypes.string.isRequired,
-  contentTypeResults: PropTypes.arrayOf(ContentTypeResultShape),
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,

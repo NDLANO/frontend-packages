@@ -1,3 +1,5 @@
+import { contentTypeResults } from './mockSearch';
+
 export const topicList = [
   {
     id: 'urn:topic:1:179373',
@@ -77,7 +79,12 @@ export const topicMenu = [
     id: 'urn:topic:172416',
     name: 'Idéutvikling og mediedesign',
     subtopics: [
-      { id: 'urn:topic:170363', name: 'Idéutvikling', contentUri: null },
+      {
+        id: 'urn:topic:170363',
+        name: 'Idéutvikling',
+        contentUri: null,
+        contentTypeResults,
+      },
       { id: 'urn:topic:169397', name: 'Mediedesign', contentUri: null },
     ],
     contentUri: null,
@@ -91,7 +98,12 @@ export const topicMenu = [
         name: 'Nettsider',
         contentUri: null,
         subtopics: [
-          { id: 'urn:topic:162334', name: 'Html', contentUri: null },
+          {
+            id: 'urn:topic:162334',
+            name: 'Html',
+            contentUri: null,
+            contentTypeResults,
+          },
           { id: 'urn:topic:165354', name: 'Css', contentUri: null },
         ],
       },

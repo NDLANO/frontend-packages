@@ -27,7 +27,7 @@ import {
   topicMenu,
   subjectList,
   topicList,
-  searchFieldSearchResults,
+  contentTypeResults,
 } from '../../dummydata';
 
 export const MastheadWithLogo = () => (
@@ -64,7 +64,7 @@ class MastheadWithTopicMenu extends Component {
 
   render() {
     const searchFieldResults =
-      this.state.value.length > 1 ? searchFieldSearchResults : null;
+      this.state.value.length > 1 ? contentTypeResults : null;
 
     let searchButtonView = null;
 
@@ -152,7 +152,6 @@ class MastheadWithTopicMenu extends Component {
               ]}
               filterValues={['Medieuttrykk']}
               searchPageUrl="#"
-              contentTypeResults={searchFieldSearchResults}
               expandedTopicId={this.state.expandedTopicId}
               expandedSubtopicId={this.state.expandedSubtopicId}
               onNavigate={(expandedTopicId, expandedSubtopicId) => {

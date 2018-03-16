@@ -146,7 +146,7 @@ $padding-left-narrow: 47px;
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large $padding-left-narrow;
+  padding: 0 $spacing $spacing--large $padding-left-narrow;
 
   @include mq(desktop) {
     margin-top: $spacing;
@@ -209,7 +209,7 @@ $padding-left-narrow: 47px;
 .c-topic-menu__subject {
   flex-shrink: 0;
   margin-top: 0;
-  margin-bottom: $spacing--medium;
+  margin-bottom: $spacing;
   padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
   @include mq(desktop) {
@@ -224,16 +224,25 @@ $padding-left-narrow: 47px;
   }
 
   & > h1 {
-    margin: 0 0 $spacing--medium 0;
     @include inuit-font-size(20px);
     font-weight: 600;
+    margin: 0;
 
     @include mq(desktop) {
-      margin: 0 0 $spacing 0;
       padding-bottom: $spacing--small;
       padding-right: $spacing--large;
       @include inuit-font-size(26px);
       border-bottom: 1px solid rgba($brand-color, 0.3);
+    }
+  }
+
+  &--hasFilter {
+    & > h1 {
+      margin: 0 0 $spacing--medium 0;
+
+      @include mq(desktop) {
+        margin: 0 0 $spacing 0;
+      }
     }
   }
 

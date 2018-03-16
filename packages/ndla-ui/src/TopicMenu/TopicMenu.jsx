@@ -193,7 +193,10 @@ export default class TopicMenu extends Component {
                   {messages.subjectOverview}
                 </SafeLink>
               </div>
-              <div {...classes('subject')}>
+              <div
+                {...classes('subject', {
+                  hasFilter: filterOptions && filterOptions.length > 0,
+                })}>
                 <h1>
                   <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
                 </h1>

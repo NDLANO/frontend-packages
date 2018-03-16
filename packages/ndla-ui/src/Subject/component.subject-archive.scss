@@ -11,6 +11,21 @@
     max-width: 350px;
   }
 
+  &--animate {
+    .c-subject-archive {
+      &__featuring,
+      &__archive {
+        animation: fadeIn 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &--archive {
+    .c-subject-archive__archive {
+      padding: 0;
+    }
+  }
+
   &__media-wrapper {
     width: 100%;
 
@@ -31,15 +46,6 @@
 
     @include mq(tablet) {
       padding: $spacing $spacing 0 $spacing;
-    }
-  }
-
-  &--animate {
-    .c-subject-archive {
-      &__featuring,
-      &__archive {
-        animation: fadeIn 0.3s ease-in-out;
-      }
     }
   }
 

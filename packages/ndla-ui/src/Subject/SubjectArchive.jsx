@@ -75,7 +75,11 @@ class SubjectArchive extends Component {
     return (
       <section
         style={wrapperStyles}
-        {...classes('', { fixedWidth, animate: this.state.minHeight })}
+        {...classes('', {
+          fixedWidth,
+          animate: this.state.minHeight,
+          archive: this.state.archiveOpen,
+        })}
         ref={ref => {
           this.wrapperRef = ref;
         }}>

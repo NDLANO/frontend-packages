@@ -153,16 +153,13 @@
   @include mq(desktop) {
     margin-top: $spacing;
     padding: 0 $spacing 0 ($spacing--medium - $spacing--small);
-    border-right: 1px solid $brand-color--light;
+    border-left: 1px solid $brand-color--light;
     width: 25%;
     flex-grow: 0;
   }
 
-  &--no-border {
-    border-right: 0;
-  }
-
   &--main {
+    border-left: 0;
     .c-topic-menu__link--big {
       @include mq($until: desktop) {
         display: none;

@@ -75,18 +75,28 @@ export default class TopicMenu extends Component {
   }
 
   handleClick(event, topicId) {
-    this.props.onNavigate(topicId, null);
+    this.props.onNavigate(topicId, null, null);
   }
 
-  handleSubtopicExpand(subtopicId) {
-    this.props.onNavigate(this.props.expandedTopicId, subtopicId);
+  handleSubtopicExpand(subtopicId, level2 = false) {
+    if (level2) {
+      this.props.onNavigate(
+        this.props.expandedTopicId,
+        this.props.expandedSubtopicId,
+        subtopicId,
+      );
+    } else {
+      this.props.onNavigate(this.props.expandedTopicId, subtopicId, null);
+    }
   }
 
   handleOnGoBack() {
-    if (this.props.expandedSubtopicId) {
+    if (this.props.expandedSubtopicLevel2Id) {
+      this.handleSubtopicExpand(this.props.expandedSubtopicId);
+    } else if (this.props.expandedSubtopicId) {
       this.handleSubtopicExpand(null);
     } else {
-      this.props.onNavigate(null, null);
+      this.props.onNavigate(null, null, null);
     }
   }
 
@@ -94,7 +104,7 @@ export default class TopicMenu extends Component {
     if (event.charCode === 32 || event.charCode === 13) {
       // space or enter
       event.preventDefault();
-      this.props.onNavigate(topicId, undefined);
+      this.props.onNavigate(topicId, null, null);
     }
   }
 
@@ -108,6 +118,7 @@ export default class TopicMenu extends Component {
       messages,
       expandedTopicId,
       expandedSubtopicId,
+      expandedSubtopicLevel2Id,
       filterOptions,
       filterValues,
       onFilterClick,
@@ -115,10 +126,17 @@ export default class TopicMenu extends Component {
     } = this.props;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     let expandedSubtopic = null;
+    let expandedSubtopicLevel2 = null;
 
     if (expandedTopic && expandedSubtopicId) {
       expandedSubtopic = expandedTopic.subtopics.find(
         topic => topic.id === expandedSubtopicId,
+      );
+    }
+
+    if (expandedSubtopic && expandedSubtopicLevel2Id) {
+      expandedSubtopicLevel2 = expandedSubtopic.subtopics.find(
+        topic => topic.id === expandedSubtopicLevel2Id,
       );
     }
 
@@ -250,6 +268,20 @@ export default class TopicMenu extends Component {
                 topic={expandedSubtopic}
                 messages={subTopicLinkListMessages}
                 toTopic={toTopic}
+                onSubtopicExpand={id => {
+                  this.handleSubtopicExpand(id, true);
+                }}
+                onGoBack={this.handleOnGoBack}
+              />
+            )}
+            {expandedSubtopicLevel2 && (
+              <SubtopicLinkList
+                classes={classes}
+                className={classes('section', ['sub-topic']).className}
+                closeMenu={closeMenu}
+                topic={expandedSubtopicLevel2}
+                messages={subTopicLinkListMessages}
+                toTopic={toTopic}
                 onGoBack={this.handleOnGoBack}
               />
             )}
@@ -290,6 +322,7 @@ TopicMenu.propTypes = {
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,
+  expandedSubtopicLevel2Id: PropTypes.string,
   isBeta: PropTypes.bool,
   hideSearch: PropTypes.bool,
 };

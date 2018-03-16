@@ -59,6 +59,7 @@ class MastheadWithTopicMenu extends Component {
       searchIsOpen: this.props.searchFieldExpanded,
       expandedTopicId: null,
       expandedSubtopicId: null,
+      expandedSubtopicLevel2Id: null,
     };
   }
 
@@ -154,10 +155,16 @@ class MastheadWithTopicMenu extends Component {
               searchPageUrl="#"
               expandedTopicId={this.state.expandedTopicId}
               expandedSubtopicId={this.state.expandedSubtopicId}
-              onNavigate={(expandedTopicId, expandedSubtopicId) => {
+              expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
+              onNavigate={(
+                expandedTopicId,
+                expandedSubtopicId,
+                expandedSubtopicLevel2Id,
+              ) => {
                 this.setState({
                   expandedTopicId,
                   expandedSubtopicId,
+                  expandedSubtopicLevel2Id,
                 });
               }}
             />

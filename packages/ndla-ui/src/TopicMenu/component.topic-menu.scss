@@ -375,7 +375,7 @@ $padding-left-narrow: 47px;
   &:hover,
   &:active,
   &:focus {
-    background-color: $brand-color--tertiary;
+    background-color: $brand-color--light;
 
     span {
       box-shadow: $link--hover;
@@ -434,7 +434,7 @@ $padding-left-narrow: 47px;
 
   &--active {
     & > .c-topic-menu__link {
-      background-color: $brand-color--tertiary;
+      background-color: $brand-color--light;
     }
   }
 }

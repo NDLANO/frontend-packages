@@ -525,8 +525,10 @@ storiesOf('Emnesider', module)
                 subjects={subjectCarouselList}
                 title="Litt forskjellig fra faget"
               />
-              {some}
             </SubjectChildContent>
+          </OneColumn>
+          <OneColumn noPadding>
+            <SubjectChildContent>{some}</SubjectChildContent>
           </OneColumn>
         </article>
       </Content>

@@ -63,8 +63,22 @@ ArticleTitle.defaultProps = {
   label: null,
 };
 
-export const ArticleIntroduction = ({ children }) =>
-  children ? <p className="article_introduction">{children}</p> : null;
+export const ArticleIntroduction = ({ children }) => {
+  if (Object.prototype.toString.call(children) === '[object String]') {
+    /* Since article introduction is already escaped from the api
+       we run into a double escaping issues as React escapes all strings.
+       Use dangerouslySetInnerHTML to circumvent the issue */
+    return (
+      <p
+        className="article_introduction"
+        dangerouslySetInnerHTML={{ __html: children }}
+      />
+    );
+  } else if (children) {
+    return <p className="article_introduction">{children}</p>;
+  }
+  return null;
+};
 
 ArticleIntroduction.propTypes = {
   children: PropTypes.node,

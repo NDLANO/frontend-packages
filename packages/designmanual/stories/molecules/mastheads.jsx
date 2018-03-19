@@ -47,6 +47,7 @@ const messages = {
   learningResourcesHeading: 'Læringsressurser',
   back: 'Tilbake',
   contentTypeResultsShowMore: 'Vis mer',
+  contentTypeResultsShowLess: 'Vis mindre',
   contentTypeResultsNoHit: 'Ingen ressurser',
 };
 
@@ -94,7 +95,8 @@ class MastheadWithTopicMenu extends Component {
               ]}
               onFilterRemove={() => {}}
               messages={{
-                allContentTypeResultLabel: 'Se alle',
+                contentTypeResultShowLessLabel: 'Se færre',
+                contentTypeResultShowMoreLabel: 'Se alle',
                 allResultButtonText: 'Vis alle søketreff',
                 searchFieldTitle: 'Søk',
                 searchResultHeading: 'Forslag:',
@@ -152,6 +154,7 @@ class MastheadWithTopicMenu extends Component {
                 },
               ]}
               filterValues={['Medieuttrykk']}
+              onFilterClick={() => {}}
               searchPageUrl="#"
               expandedTopicId={this.state.expandedTopicId}
               expandedSubtopicId={this.state.expandedSubtopicId}

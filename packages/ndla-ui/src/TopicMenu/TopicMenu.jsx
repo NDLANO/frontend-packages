@@ -154,6 +154,7 @@ export default class TopicMenu extends Component {
       backButton: messages.back,
       goToLabel: messages.goTo,
       contentTypeResultsShowMore: messages.contentTypeResultsShowMore,
+      contentTypeResultsShowLess: messages.contentTypeResultsShowLess,
       learningResourcesHeading: messages.learningResourcesHeading,
       contentTypeResultsNoHit: messages.contentTypeResultsNoHit,
     };
@@ -312,6 +313,7 @@ TopicMenu.propTypes = {
     learningResourcesHeading: PropTypes.string.isRequired,
     back: PropTypes.string.isRequired,
     contentTypeResultsShowMore: PropTypes.string.isRequired,
+    contentTypeResultsShowLess: PropTypes.string.isRequired,
     contentTypeResultsNoHit: PropTypes.string.isRequired,
   }).isRequired,
   filterOptions: PropTypes.arrayOf(

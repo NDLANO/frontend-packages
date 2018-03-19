@@ -16,30 +16,20 @@ import SafeLink from '../common/SafeLink';
 import ActiveFilters from './ActiveFilters';
 import ContentTypeResult from './ContentTypeResult';
 
+import { ContentTypeResultShape } from '../shapes';
+
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  searchResultHeading: PropTypes.string.isRequired,
-  allResultButtonText: PropTypes.string.isRequired,
-  allContentTypeResultLabel: PropTypes.string.isRequired,
   searchFieldTitle: PropTypes.string.isRequired,
-  contentTypeResultNoHit: PropTypes.string.isRequired,
-});
 
-const searchResultShape = PropTypes.arrayOf(
-  PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.node.isRequired,
-    totalCount: PropTypes.number.isRequired,
-    showAllLinkUrl: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        display: PropTypes.string.isRequired,
-      }),
-    ),
-  }),
-);
+  // required if search result
+  searchResultHeading: PropTypes.string,
+  allResultButtonText: PropTypes.string,
+  contentTypeResultShowMoreLabel: PropTypes.string,
+  contentTypeResultShowLessLabel: PropTypes.string,
+  contentTypeResultNoHit: PropTypes.string,
+});
 
 const SearchResult = ({ result, messages, allResultUrl }) => (
   <section {...classes('search-result')}>
@@ -52,7 +42,8 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
           contentTypeResult={contentTypeResult}
           key={contentTypeResult.title}
           messages={{
-            allResultLabel: messages.allContentTypeResultLabel,
+            allResultLabel: messages.contentTypeResultShowMoreLabel,
+            showLessResultLabel: messages.contentTypeResultShowLessLabel,
             noHit: messages.contentTypeResultNoHit,
           }}
         />
@@ -65,7 +56,7 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
 );
 
 SearchResult.propTypes = {
-  result: searchResultShape,
+  result: PropTypes.arrayOf(ContentTypeResultShape),
   messages: messagesShape.isRequired,
   allResultUrl: PropTypes.string.isRequired,
 };
@@ -140,7 +131,7 @@ SearchField.propTypes = {
     }),
   ),
   messages: messagesShape,
-  searchResult: searchResultShape,
+  searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
 };
 

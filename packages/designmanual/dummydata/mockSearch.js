@@ -1,7 +1,6 @@
 export const contentTypeResults = [
   {
     title: 'Læringsstier',
-    totalCount: 2,
     resources: [
       {
         path: '#1',
@@ -9,14 +8,12 @@ export const contentTypeResults = [
       },
       {
         path: '#2',
-        name: 'Media som dne fjerde statsmakt',
+        name: 'Media som den fjerde statsmakt',
       },
     ],
   },
   {
     title: 'Fagstoff',
-    totalCount: 2,
-    showAllLinkUrl: '#',
     resources: [
       {
         path: '#1',
@@ -26,11 +23,26 @@ export const contentTypeResults = [
         path: '#2',
         name: 'Maktfordelingsprinsippet',
       },
+      {
+        path: '#3',
+        name: 'Fagstoff 3',
+      },
+      {
+        path: '#4',
+        name: 'Fagstoff 4',
+      },
+      {
+        path: '#5',
+        name: 'Fagstoff 5',
+      },
+      {
+        path: '#6',
+        name: 'Fagstoff 6',
+      },
     ],
   },
   {
     title: 'Oppgaver og aktiviteter',
-    totalCount: 0,
     resources: [],
   },
 ];

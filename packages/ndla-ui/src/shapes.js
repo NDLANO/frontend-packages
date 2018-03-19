@@ -72,8 +72,6 @@ export const ContentTypeShape = PropTypes.oneOf([
 
 export const ContentTypeResultShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
-  totalCount: PropTypes.number.isRequired,
-  showAllLinkUrl: PropTypes.string,
   resources: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string.isRequired,

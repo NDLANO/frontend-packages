@@ -122,10 +122,12 @@ class SubtopicLinkList extends Component {
             <h1>{messages.learningResourcesHeading}</h1>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
+                onNavigate={closeMenu}
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
                   allResultLabel: messages.contentTypeResultsShowMore,
+                  showLessResultLabel: messages.contentTypeResultsShowLess,
                   noHit: messages.contentTypeResultsNoHit,
                 }}
                 iconOnRight
@@ -151,6 +153,7 @@ SubtopicLinkList.propTypes = {
     goToLabel: PropTypes.string.isRequired,
     backButton: PropTypes.string.isRequired,
     contentTypeResultsShowMore: PropTypes.string.isRequired,
+    contentTypeResultsShowLess: PropTypes.string.isRequired,
     learningResourcesHeading: PropTypes.string.isRequired,
     contentTypeResultsNoHit: PropTypes.string.isRequired,
   }).isRequired,

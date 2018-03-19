@@ -33,11 +33,11 @@ const Breadcrumb = ({
       {children}
       <ol {...classes('list')}>
         <BreadcrumbItem
+          home
           key={uuid()}
           classes={classes}
           topicIds={[]}
-          to={toSubjects()}
-          extraClass="home">
+          to={toSubjects()}>
           <Home className="c-icon--20" />
         </BreadcrumbItem>
         <BreadcrumbItem

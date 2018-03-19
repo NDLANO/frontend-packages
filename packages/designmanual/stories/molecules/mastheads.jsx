@@ -16,19 +16,15 @@ import {
   ClickToggle,
   TopicMenu,
   DisplayOnPageYOffset,
-  BreadcrumbBlock,
   ToggleSearchButton,
   SearchOverlay,
   SearchField,
   SafeLink,
 } from 'ndla-ui';
 
-import {
-  topicMenu,
-  subjectList,
-  topicList,
-  searchFieldSearchResults,
-} from '../../dummydata';
+import { topicMenu, searchFieldSearchResults } from '../../dummydata';
+
+import { BreadcrumbBlock } from './breadcrumbs';
 
 export const MastheadWithLogo = () => (
   <Masthead fixed>
@@ -164,11 +160,7 @@ class MastheadWithTopicMenu extends Component {
             />
           </ClickToggle>
           <DisplayOnPageYOffset yOffsetMin={150}>
-            <BreadcrumbBlock
-              subject={subjectList[1]}
-              topicPath={topicList.slice(0, 2)}
-              toTopic={() => '#'}
-            />
+            <BreadcrumbBlock />
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>

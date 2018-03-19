@@ -155,6 +155,7 @@ class SearchPageExample extends Component {
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
           searchFieldTitle: 'Søk',
         }}
+        resourceToLinkProps={() => {}}
         filters={
           <Fragment>
             <SearchFilter

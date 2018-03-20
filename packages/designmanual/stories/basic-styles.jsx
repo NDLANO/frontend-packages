@@ -662,6 +662,17 @@ storiesOf('Grunnstiler', module)
               </td>
             </tr>
             <tr>
+              <td>Stor brødtekst</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1 rem)</span>
+              </td>
+            </tr>
+            <tr>
               <td>Metatekst</td>
               <td>
                 16 px{' '}
@@ -735,6 +746,12 @@ storiesOf('Grunnstiler', module)
             dolore magna aliqua.
           </p>
         </div>
+        <h2 className="u-heading">Stor brødtekst</h2>
+        <p>
+          Stor brødtekst skal benyttes for å utheve tekst. Eksempel fra
+          kinesisk:
+        </p>
+        <p className="u-large-body-text">第一课：汉字</p>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>

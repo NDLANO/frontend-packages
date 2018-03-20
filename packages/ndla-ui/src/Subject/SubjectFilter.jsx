@@ -26,7 +26,7 @@ const SubjectFilter = ({ label, options, values, onChange }) => (
 
 SubjectFilter.propTypes = {
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: valueShape.isRequired,

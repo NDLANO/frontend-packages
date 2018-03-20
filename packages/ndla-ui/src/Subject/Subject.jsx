@@ -78,5 +78,9 @@ export const SubjectSectionTitle = ({ children, className }) => (
 
 SubjectSectionTitle.propTypes = {
   children: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+SubjectSectionTitle.defaultProps = {
+  className: null,
 };

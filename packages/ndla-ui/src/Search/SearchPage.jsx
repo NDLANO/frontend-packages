@@ -70,6 +70,7 @@ export default class SearchPage extends Component {
       // only on narrow screen
       activeFilters,
       onActiveFilterRemove,
+      resourceToLinkProps,
       filters,
       children,
       messages,
@@ -94,6 +95,7 @@ export default class SearchPage extends Component {
             placeholder={searchFieldPlaceholder}
             filters={searchFieldFilters}
             onFilterRemove={onSearchFieldFilterRemove}
+            resourceToLinkProps={resourceToLinkProps}
             messages={{
               searchFieldTitle: messages.searchFieldTitle,
             }}
@@ -151,6 +153,7 @@ SearchPage.propTypes = {
   onSearchFieldChange: PropTypes.func.isRequired,
   searchFieldPlaceholder: PropTypes.string.isRequired,
   onSearchFieldFilterRemove: PropTypes.func.isRequired,
+  resourceToLinkProps: PropTypes.func.isRequired,
   searchFieldFilters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

@@ -25,13 +25,11 @@ const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts }) => (
       <h1 className={topicClasses('header')}>
         <SafeLink to={toTopic(topic.id)}>{topic.name}</SafeLink>
       </h1>
-      <p>{topic.introduction}</p>
-      {shortcuts ? (
-        <TopicIntroductionShortcuts
-          shortcuts={shortcuts}
-          key={`${topic.id}-shortcuts`}
-        />
-      ) : null}
+      {/* Since topic introduction is already escaped from the api
+        we run into a double escaping issues as React escapes all strings.
+        Use dangerouslySetInnerHTML to circumvent the issue */}
+      <p dangerouslySetInnerHTML={{ __html: topic.introduction }} />
+      {shortcuts && <TopicIntroductionShortcuts shortcuts={shortcuts} />}
     </article>
   </li>
 );

@@ -1,5 +1,12 @@
 .c-related-articles {
   text-align: center;
+
+  &:before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
   &__component-title {
     margin: $spacing--large 0 $spacing;
     @include inuit-font-size(18px);

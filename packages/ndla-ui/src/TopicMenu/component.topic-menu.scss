@@ -182,6 +182,7 @@ $padding-left-narrow: 47px;
 }
 
 .c-topic-menu__content-type-results {
+  margin-top: $spacing;
   padding-left: $spacing--small;
   animation-name: fadeInLeft;
   animation-duration: 0.5s;

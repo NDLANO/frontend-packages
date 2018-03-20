@@ -10,7 +10,11 @@ const classes = BEMHelper({
   name: 'content-type-result',
 });
 
-const ContentTypeResult = ({ contentTypeResult, messages }) => (
+const ContentTypeResult = ({
+  contentTypeResult,
+  messages,
+  resourceToLinkProps,
+}) => (
   <section {...classes()}>
     <header>
       <h1>
@@ -23,11 +27,21 @@ const ContentTypeResult = ({ contentTypeResult, messages }) => (
 
     {contentTypeResult.totalCount > 0 ? (
       <ul>
-        {contentTypeResult.resources.map(item => (
-          <li key={item.path}>
-            <SafeLink to={item.path}>{item.name}</SafeLink>
-          </li>
-        ))}
+        {contentTypeResult.resources.map(resource => {
+          const linkProps = resourceToLinkProps(resource);
+          if (linkProps && linkProps.href) {
+            return (
+              <li key={resource.path}>
+                <a {...linkProps}>{resource.name}</a>
+              </li>
+            );
+          }
+          return (
+            <li key={resource.path}>
+              <SafeLink to={resource.path}>{resource.name}</SafeLink>
+            </li>
+          );
+        })}
         {contentTypeResult.showAllLinkUrl && (
           <li key="showAll" {...classes('show-all')}>
             <SafeLink to={contentTypeResult.showAllLinkUrl}>
@@ -44,6 +58,7 @@ const ContentTypeResult = ({ contentTypeResult, messages }) => (
 
 ContentTypeResult.propTypes = {
   contentTypeResult: ContentTypeResultShape.isRequired,
+  resourceToLinkProps: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,
     noHit: PropTypes.string.isRequired,

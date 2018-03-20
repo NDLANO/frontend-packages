@@ -112,6 +112,7 @@ export default class TopicMenu extends Component {
       filterValues,
       onFilterClick,
       contentTypeResults,
+      resourceToLinkProps,
       hideSearch,
     } = this.props;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -271,6 +272,7 @@ export default class TopicMenu extends Component {
                     <ContentTypeResult
                       key={result.title}
                       contentTypeResult={result}
+                      resourceToLinkProps={resourceToLinkProps}
                       messages={{
                         allResultLabel: messages.contentTypeResultsShowMore,
                         noHit: messages.contentTypeResultsNoHit,
@@ -315,6 +317,7 @@ TopicMenu.propTypes = {
   onOpenSearch: PropTypes.func.isRequired,
   searchPageUrl: PropTypes.string.isRequired,
   contentTypeResults: PropTypes.arrayOf(ContentTypeResultShape),
+  resourceToLinkProps: PropTypes.func.isRequired,
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,

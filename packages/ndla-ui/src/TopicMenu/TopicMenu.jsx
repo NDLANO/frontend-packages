@@ -291,7 +291,7 @@ export default class TopicMenu extends Component {
                 messages={subTopicLinkListMessages}
                 toTopic={toTopic}
                 onGoBack={this.handleOnGoBack}
-                      resourceToLinkProps={resourceToLinkProps}
+                resourceToLinkProps={resourceToLinkProps}
               />
             )}
           </div>

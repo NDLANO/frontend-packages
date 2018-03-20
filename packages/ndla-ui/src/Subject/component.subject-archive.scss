@@ -20,12 +20,6 @@
     }
   }
 
-  &--archive {
-    .c-subject-archive__archive {
-      padding: 0;
-    }
-  }
-
   &__media-wrapper {
     width: 100%;
 
@@ -97,7 +91,11 @@
   }
 
   &__archive {
-    padding: $spacing--large $spacing--large 0 $spacing--large;
+    padding: 0;
+
+    @include mq(tablet) {
+      padding: $spacing--large $spacing--large 0 $spacing--large;
+    }
   }
 
   &__archive-articles {

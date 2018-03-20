@@ -78,7 +78,6 @@ class SubjectArchive extends Component {
         {...classes('', {
           fixedWidth,
           animate: this.state.minHeight,
-          archive: this.state.archiveOpen,
         })}
         ref={ref => {
           this.wrapperRef = ref;

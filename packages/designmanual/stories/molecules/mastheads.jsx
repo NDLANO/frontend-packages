@@ -201,7 +201,6 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
-  resourceToLinkProps: PropTypes.func.isRequired,
 };
 
 MastheadWithTopicMenu.defaultProps = {

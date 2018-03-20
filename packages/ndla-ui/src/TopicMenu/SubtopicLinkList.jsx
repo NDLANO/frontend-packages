@@ -79,6 +79,7 @@ class SubtopicLinkList extends Component {
       onSubtopicExpand,
       onGoBack,
       messages,
+      resourceToLinkProps,
     } = this.props;
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
@@ -122,6 +123,7 @@ class SubtopicLinkList extends Component {
             <h1>{messages.learningResourcesHeading}</h1>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
+                resourceToLinkProps={resourceToLinkProps}
                 onNavigate={closeMenu}
                 key={result.title}
                 contentTypeResult={result}
@@ -141,6 +143,7 @@ class SubtopicLinkList extends Component {
 }
 
 SubtopicLinkList.propTypes = {
+  resourceToLinkProps: PropTypes.func.isRequired,
   expandedSubtopicId: PropTypes.string,
   onSubtopicExpand: PropTypes.func,
   classes: PropTypes.func.isRequired,

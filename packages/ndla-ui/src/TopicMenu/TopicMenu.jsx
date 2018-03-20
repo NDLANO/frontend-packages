@@ -262,6 +262,7 @@ export default class TopicMenu extends Component {
                   expandedSubtopicId={expandedSubtopicId}
                   onSubtopicExpand={this.handleSubtopicExpand}
                   onGoBack={this.handleOnGoBack}
+                  resourceToLinkProps={resourceToLinkProps}
                 />
               )}
             {expandedSubtopic &&
@@ -280,6 +281,7 @@ export default class TopicMenu extends Component {
                     this.handleSubtopicExpand(id, true);
                   }}
                   onGoBack={this.handleOnGoBack}
+                  resourceToLinkProps={resourceToLinkProps}
                 />
               )}
             {expandedSubtopicLevel2 && (

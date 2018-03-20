@@ -748,8 +748,11 @@ storiesOf('Grunnstiler', module)
         </div>
         <h2 className="u-heading">Stor brødtekst</h2>
         <p>
-          Stor brødtekst skal benyttes for å utheve tekst. Eksempel fra
-          kinesisk:
+          Stor brødtekst kan benyttes når det er spesielle behov for å utheve
+          noe. Dette kan feks være tegn på kinesisk eller formler i matematikk.
+          Stor brødtekst skal brukes på ord eller fraser som står for seg selv.
+          Det kan ikke være stor brødteskt og vanlig brødtekst på samme linje.
+          Eksempel fra kinesisk:
         </p>
         <p className="u-large-body-text">第一课：汉字</p>
         <h2 id="lenker" className="u-heading">

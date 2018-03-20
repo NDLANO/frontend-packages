@@ -63,8 +63,22 @@ ArticleTitle.defaultProps = {
   label: null,
 };
 
-export const ArticleIntroduction = ({ children }) =>
-  children ? <p className="article_introduction">{children}</p> : null;
+export const ArticleIntroduction = ({ children }) => {
+  if (Object.prototype.toString.call(children) === '[object String]') {
+    /* Since article introduction is already escaped from the api
+       we run into a double escaping issues as React escapes all strings.
+       Use dangerouslySetInnerHTML to circumvent the issue */
+    return (
+      <p
+        className="article_introduction"
+        dangerouslySetInnerHTML={{ __html: children }}
+      />
+    );
+  } else if (children) {
+    return <p className="article_introduction">{children}</p>;
+  }
+  return null;
+};
 
 ArticleIntroduction.propTypes = {
   children: PropTypes.node,
@@ -80,6 +94,7 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders },
   },
   icon,
+  additional,
   licenseBox,
   modifier,
   messages,
@@ -95,7 +110,7 @@ export const Article = ({
           {title}
         </ArticleTitle>
         <ArticleIntroduction>{introduction}</ArticleIntroduction>
-        <ArticleByline {...{ messages, authors, updated, license }}>
+        <ArticleByline {...{ messages, authors, updated, license, additional }}>
           {licenseBox}
         </ArticleByline>
       </LayoutItem>
@@ -116,6 +131,7 @@ Article.propTypes = {
   modifier: PropTypes.string,
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
+  additional: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,

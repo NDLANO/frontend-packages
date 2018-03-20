@@ -104,6 +104,7 @@ class MastheadWithTopicMenu extends Component {
               }}
               allResultUrl="#"
               searchResult={searchFieldResults}
+              resourceToLinkProps={() => {}}
             />
           </SearchOverlay>
         </ToggleSearchButton>
@@ -156,6 +157,7 @@ class MastheadWithTopicMenu extends Component {
               filterValues={['Medieuttrykk']}
               onFilterClick={() => {}}
               searchPageUrl="#"
+              resourceToLinkProps={() => {}}
               expandedTopicId={this.state.expandedTopicId}
               expandedSubtopicId={this.state.expandedSubtopicId}
               expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
@@ -199,6 +201,7 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
+  resourceToLinkProps: PropTypes.func.isRequired,
 };
 
 MastheadWithTopicMenu.defaultProps = {

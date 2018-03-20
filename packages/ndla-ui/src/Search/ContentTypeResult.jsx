@@ -23,6 +23,7 @@ class ContentTypeResult extends Component {
       messages,
       onNavigate,
       defaultCount,
+      resourceToLinkProps,
     } = this.props;
     let view = null;
 
@@ -37,19 +38,30 @@ class ContentTypeResult extends Component {
 
       view = (
         <ul>
-          {resources.map(item => (
-            <li key={item.path}>
-              <SafeLink
-                to={item.path}
-                onClick={() => {
-                  if (onNavigate) {
-                    onNavigate();
-                  }
-                }}>
-                {item.name}
-              </SafeLink>
-            </li>
-          ))}
+          {resources.map(item => {
+            const linkProps = resourceToLinkProps(item);
+            if (linkProps && linkProps.href) {
+              return (
+                <li key={item.path}>
+                  <a {...linkProps}>{item.name}</a>
+                </li>
+              );
+            }
+
+            return (
+              <li key={item.path}>
+                <SafeLink
+                  to={item.path}
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate();
+                    }
+                  }}>
+                  {item.name}
+                </SafeLink>
+              </li>
+            );
+          })}
           {totalCount > defaultCount && (
             <li key="showAll" {...classes('show-all')}>
               <button
@@ -88,6 +100,7 @@ ContentTypeResult.propTypes = {
   defaultCount: PropTypes.number,
   onNavigate: PropTypes.func,
   contentTypeResult: ContentTypeResultShape.isRequired,
+  resourceToLinkProps: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,
     showLessResultLabel: PropTypes.string.isRequired,

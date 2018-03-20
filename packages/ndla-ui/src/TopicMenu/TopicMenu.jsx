@@ -122,6 +122,7 @@ export default class TopicMenu extends Component {
       filterOptions,
       filterValues,
       onFilterClick,
+      resourceToLinkProps,
       hideSearch,
     } = this.props;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -290,6 +291,7 @@ export default class TopicMenu extends Component {
                 messages={subTopicLinkListMessages}
                 toTopic={toTopic}
                 onGoBack={this.handleOnGoBack}
+                      resourceToLinkProps={resourceToLinkProps}
               />
             )}
           </div>
@@ -327,6 +329,7 @@ TopicMenu.propTypes = {
   subjectTitle: PropTypes.string.isRequired,
   onOpenSearch: PropTypes.func.isRequired,
   searchPageUrl: PropTypes.string.isRequired,
+  resourceToLinkProps: PropTypes.func.isRequired,
   onNavigate: PropTypes.func.isRequired,
   expandedTopicId: PropTypes.string,
   expandedSubtopicId: PropTypes.string,

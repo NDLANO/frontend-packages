@@ -31,7 +31,12 @@ const messagesShape = PropTypes.shape({
   contentTypeResultNoHit: PropTypes.string,
 });
 
-const SearchResult = ({ result, messages, allResultUrl }) => (
+const SearchResult = ({
+  result,
+  messages,
+  allResultUrl,
+  resourceToLinkProps,
+}) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {messages.searchResultHeading}
@@ -40,6 +45,7 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
       {result.map(contentTypeResult => (
         <ContentTypeResult
           contentTypeResult={contentTypeResult}
+          resourceToLinkProps={resourceToLinkProps}
           key={contentTypeResult.title}
           messages={{
             allResultLabel: messages.contentTypeResultShowMoreLabel,
@@ -57,6 +63,7 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
 
 SearchResult.propTypes = {
   result: PropTypes.arrayOf(ContentTypeResultShape),
+  resourceToLinkProps: PropTypes.func.isRequired,
   messages: messagesShape.isRequired,
   allResultUrl: PropTypes.string.isRequired,
 };
@@ -70,6 +77,7 @@ const SearchField = ({
   searchResult,
   messages,
   allResultUrl,
+  resourceToLinkProps,
 }) => {
   const modifiers = [];
 
@@ -86,6 +94,7 @@ const SearchField = ({
         messages={messages}
         searchString={value}
         allResultUrl={allResultUrl}
+        resourceToLinkProps={resourceToLinkProps}
       />
     );
   }
@@ -133,6 +142,7 @@ SearchField.propTypes = {
   messages: messagesShape,
   searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
+  resourceToLinkProps: PropTypes.func.isRequired,
 };
 
 export default SearchField;

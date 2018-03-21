@@ -42,6 +42,7 @@ export {
   SubjectFilter,
   SubjectAbout,
   SubjectSecondaryContent,
+  SubjectNewContent,
 } from './Subject';
 
 export { default as Logo } from './Logo';

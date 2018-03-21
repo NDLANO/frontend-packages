@@ -40,6 +40,7 @@ import {
   SubjectSocialSection,
   SubjectChildContent,
   SubjectSecondaryContent,
+  SubjectNewContent,
   EmbeddedTwitter,
   EmbeddedFacebook,
   InfoWidget,
@@ -536,9 +537,28 @@ storiesOf('Emnesider', module)
               <SubjectChildContent>
                 <SubjectFlexWrapper>
                   <SubjectFlexChild>
+                    <SubjectNewContent
+                      heading="Nytt innhold"
+                      content={[
+                        {
+                          name: 'Radio- og tvstruktur',
+                          url: '#1',
+                          topicName: 'Mediene i samfunnet',
+                          formattedDate: '10.02.2018',
+                        },
+                        {
+                          name: 'Hva er makt?',
+                          url: '#2',
+                          topicName: 'Mediene i samfunnet',
+                          formattedDate: '24.01.2018',
+                        },
+                      ]}
+                    />
+                  </SubjectFlexChild>
+                  <SubjectFlexChild>
                     <InfoWidget
                       heading="Nyhetsbrev"
-                      description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet, l det som er nytt for undervisningen og aktuelt for tidspunktet"
+                      description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet."
                       mainLink={{
                         name: 'Meld deg på',
                         url: '#1',

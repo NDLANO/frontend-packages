@@ -9,6 +9,7 @@ $subject-section-padding: 100px;
 @import './component.subject-topic-shortcuts';
 @import './component.subject-concepts';
 @import './component.subject-about';
+@import './component.subject-new-content';
 
 .c-subject-content {
   @include mq(tablet) {
@@ -55,8 +56,14 @@ $subject-section-padding: 100px;
 
 .c-subject-secondary-content {
   background: $brand-grey--lightest;
-  padding: 100px 0 $spacing--large 0;
-  margin-bottom: 100px;
+  padding: $spacing 0;
+  margin-top: $spacing--large;
+
+  @include mq(tablet) {
+    padding: 100px 0 $spacing--large 0;
+    margin-bottom: 100px;
+    margin-top: 0;
+  }
 }
 
 .c-subject-sidebar-wrapper {

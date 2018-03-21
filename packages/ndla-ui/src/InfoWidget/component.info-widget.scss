@@ -38,4 +38,23 @@
     color: $brand-color--dark;
     @include font-size(14px, 24px);
   }
+
+  &__icon-link {
+    width: 47px;
+    height: 47px;
+    border-radius: 100%;
+    background: $brand-color--lighter;
+    color: $brand-color--dark;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .c-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    margin-right: $spacing--small;
+  }
 }

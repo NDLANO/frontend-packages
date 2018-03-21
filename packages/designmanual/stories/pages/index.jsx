@@ -45,6 +45,8 @@ import {
   InfoWidget,
 } from 'ndla-ui';
 
+import { EmailOutline } from 'ndla-icons/common';
+
 import { breakpoints } from 'ndla-util';
 
 import {
@@ -541,6 +543,12 @@ storiesOf('Emnesider', module)
                         name: 'Meld deg på',
                         url: '#1',
                       }}
+                      iconLinks={[
+                        {
+                          icon: <EmailOutline />,
+                          name: 'Meld deg på nyhetsbrev',
+                        },
+                      ]}
                     />
                   </SubjectFlexChild>
                 </SubjectFlexWrapper>

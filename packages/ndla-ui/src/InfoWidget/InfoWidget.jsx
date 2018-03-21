@@ -15,14 +15,27 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks }) => (
     </div>
     <div {...classes('links')}>
       {iconLinks &&
-        iconLinks.map(link => (
-          <SafeLink
-            {...classes('icon-link')}
-            to={link.url}
-            aria-label={link.name}>
-            {link.icon}
-          </SafeLink>
-        ))}
+        iconLinks.map(link => {
+          if (link.url) {
+            return (
+              <SafeLink
+                key={link.url}
+                {...classes('icon-link')}
+                to={link.url}
+                aria-label={link.name}>
+                {link.icon}
+              </SafeLink>
+            );
+          }
+          return (
+            <span
+              key={link.name}
+              {...classes('icon-link')}
+              aria-label={link.name}>
+              {link.icon}
+            </span>
+          );
+        })}
       <SafeLink {...classes('main-link')} to={mainLink.url}>
         <span>{mainLink.name}</span> <Forward />
       </SafeLink>
@@ -40,7 +53,7 @@ InfoWidget.propTypes = {
   iconLinks: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string,
       icon: PropTypes.node.isRequired,
     }),
   ),

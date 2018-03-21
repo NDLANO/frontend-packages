@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
+import isString from 'lodash/isString';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -64,7 +65,7 @@ ArticleTitle.defaultProps = {
 };
 
 export const ArticleIntroduction = ({ children }) => {
-  if (Object.prototype.toString.call(children) === '[object String]') {
+  if (isString(children)) {
     /* Since article introduction is already escaped from the api
        we run into a double escaping issues as React escapes all strings.
        Use dangerouslySetInnerHTML to circumvent the issue */

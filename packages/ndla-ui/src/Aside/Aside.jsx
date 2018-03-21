@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
@@ -7,7 +15,12 @@ const classes = BEMHelper({
   name: 'aside',
 });
 
-const Aside = ({ children, narrowScreen, wideScreen }) => {
+const Aside = ({
+  children,
+  narrowScreen,
+  dangerouslySetInnerHTML,
+  wideScreen,
+}) => {
   const modifiers = {
     narrowScreen,
     wideScreen,
@@ -15,13 +28,20 @@ const Aside = ({ children, narrowScreen, wideScreen }) => {
 
   return (
     <aside {...classes('', modifiers)}>
-      <div {...classes('content')}>{children}</div>
+      <div
+        {...classes('content')}
+        dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+        {children}
+      </div>
     </aside>
   );
 };
 
 Aside.propTypes = {
-  children: PropTypes.node.isRequired,
+  dangerouslySetInnerHTML: PropTypes.shape({
+    __html: PropTypes.string.isRequired,
+  }),
+  children: PropTypes.node,
   narrowScreen: PropTypes.bool,
   wideScreen: PropTypes.bool,
 };

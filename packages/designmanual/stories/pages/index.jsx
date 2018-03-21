@@ -39,8 +39,10 @@ import {
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectChildContent,
+  SubjectSecondaryContent,
   EmbeddedTwitter,
   EmbeddedFacebook,
+  InfoWidget,
 } from 'ndla-ui';
 
 import { breakpoints } from 'ndla-util';
@@ -527,6 +529,24 @@ storiesOf('Emnesider', module)
               />
             </SubjectChildContent>
           </OneColumn>
+          <SubjectSecondaryContent>
+            <OneColumn noPadding>
+              <SubjectChildContent>
+                <SubjectFlexWrapper>
+                  <SubjectFlexChild>
+                    <InfoWidget
+                      heading="Nyhetsbrev"
+                      description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet, l det som er nytt for undervisningen og aktuelt for tidspunktet"
+                      mainLink={{
+                        name: 'Meld deg på',
+                        url: '#1',
+                      }}
+                    />
+                  </SubjectFlexChild>
+                </SubjectFlexWrapper>
+              </SubjectChildContent>
+            </OneColumn>
+          </SubjectSecondaryContent>
           <OneColumn noPadding>
             <SubjectChildContent>{some}</SubjectChildContent>
           </OneColumn>

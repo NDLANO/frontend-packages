@@ -53,6 +53,12 @@ $subject-section-padding: 100px;
   }
 }
 
+.c-subject-secondary-content {
+  background: $brand-grey--lightest;
+  padding: 100px 0 $spacing--large 0;
+  margin-bottom: 100px;
+}
+
 .c-subject-sidebar-wrapper {
   flex-basis: 390px;
   flex-shrink: 0;
@@ -100,11 +106,16 @@ $subject-section-padding: 100px;
     margin-bottom: $subject-section-padding;
   }
 
+  &--noMargin {
+    margin-bottom: 0;
+  }
+
   &__child {
     box-sizing: border-box;
 
     @include mq(tablet) {
       flex-basis: 50%;
+      flex-grow: 1;
       flex-direction: row;
       margin-right: $spacing--large;
     }

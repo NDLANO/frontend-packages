@@ -15,6 +15,7 @@ export {
   SubjectFlexChild,
   SubjectSectionTitle,
   SubjectChildContent,
+  SubjectSecondaryContent,
 } from './Subject';
 
 export { SubjectSocialContent, SubjectSocialSection } from './SubjectSocial';

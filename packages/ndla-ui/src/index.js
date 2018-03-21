@@ -41,6 +41,7 @@ export {
   SubjectChildContent,
   SubjectFilter,
   SubjectAbout,
+  SubjectSecondaryContent,
 } from './Subject';
 
 export { default as Logo } from './Logo';
@@ -130,3 +131,5 @@ export { default as ContentLoader } from './ContentLoader';
 export { default as constants } from './model';
 
 export { DisplayOnPageYOffset } from './Animation';
+
+export { default as InfoWidget } from './InfoWidget';

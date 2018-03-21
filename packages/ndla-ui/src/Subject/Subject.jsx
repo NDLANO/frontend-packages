@@ -18,6 +18,16 @@ SubjectContent.propTypes = {
   twoColumns: PropTypes.bool,
 };
 
+const secondaryContentClass = BEMHelper('c-subject-secondary-content');
+
+export const SubjectSecondaryContent = ({ children }) => (
+  <div {...secondaryContentClass()}>{children}</div>
+);
+
+SubjectSecondaryContent.propTypes = {
+  children: PropTypes.number.isRequired,
+};
+
 const childContentClasses = BEMHelper('c-subject-child-content');
 
 export const SubjectChildContent = ({ children }) => (
@@ -56,12 +66,15 @@ SubjectSidebarWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const SubjectFlexWrapper = ({ children }) => (
-  <div className="c-subject-flex">{children}</div>
+const subjectFlexWrapperClasses = BEMHelper('c-subject-flex');
+
+export const SubjectFlexWrapper = ({ children, noMargin }) => (
+  <div {...subjectFlexWrapperClasses('', { noMargin })}>{children}</div>
 );
 
 SubjectFlexWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  noMargin: PropTypes.bool,
 };
 
 export const SubjectFlexChild = ({ children }) => (

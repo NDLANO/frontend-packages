@@ -27,7 +27,7 @@ import {
   topicMenu,
   subjectList,
   topicList,
-  searchFieldSearchResults,
+  contentTypeResults,
 } from '../../dummydata';
 
 export const MastheadWithLogo = () => (
@@ -47,6 +47,7 @@ const messages = {
   learningResourcesHeading: 'Læringsressurser',
   back: 'Tilbake',
   contentTypeResultsShowMore: 'Vis mer',
+  contentTypeResultsShowLess: 'Vis mindre',
   contentTypeResultsNoHit: 'Ingen ressurser',
 };
 
@@ -59,12 +60,13 @@ class MastheadWithTopicMenu extends Component {
       searchIsOpen: this.props.searchFieldExpanded,
       expandedTopicId: null,
       expandedSubtopicId: null,
+      expandedSubtopicLevel2Id: null,
     };
   }
 
   render() {
     const searchFieldResults =
-      this.state.value.length > 1 ? searchFieldSearchResults : null;
+      this.state.value.length > 1 ? contentTypeResults : null;
 
     let searchButtonView = null;
 
@@ -93,7 +95,8 @@ class MastheadWithTopicMenu extends Component {
               ]}
               onFilterRemove={() => {}}
               messages={{
-                allContentTypeResultLabel: 'Se alle',
+                contentTypeResultShowLessLabel: 'Se færre',
+                contentTypeResultShowMoreLabel: 'Se alle',
                 allResultButtonText: 'Vis alle søketreff',
                 searchFieldTitle: 'Søk',
                 searchResultHeading: 'Forslag:',
@@ -152,15 +155,21 @@ class MastheadWithTopicMenu extends Component {
                 },
               ]}
               filterValues={['Medieuttrykk']}
+              onFilterClick={() => {}}
               searchPageUrl="#"
-              contentTypeResults={searchFieldSearchResults}
               resourceToLinkProps={() => {}}
               expandedTopicId={this.state.expandedTopicId}
               expandedSubtopicId={this.state.expandedSubtopicId}
-              onNavigate={(expandedTopicId, expandedSubtopicId) => {
+              expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
+              onNavigate={(
+                expandedTopicId,
+                expandedSubtopicId,
+                expandedSubtopicLevel2Id,
+              ) => {
                 this.setState({
                   expandedTopicId,
                   expandedSubtopicId,
+                  expandedSubtopicLevel2Id,
                 });
               }}
             />
@@ -192,7 +201,6 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
-  resourceToLinkProps: PropTypes.func.isRequired,
 };
 
 MastheadWithTopicMenu.defaultProps = {

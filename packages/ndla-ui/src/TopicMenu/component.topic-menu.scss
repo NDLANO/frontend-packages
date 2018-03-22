@@ -9,6 +9,8 @@
 
 /* 1. */
 
+$padding-left-narrow: 47px;
+
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -118,30 +120,15 @@
 }
 
 .c-topic-menu__subject-navigation {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-  flex-flow: column;
-
-  @include mq(wide) {
-    flex-flow: row;
-  }
-}
-.c-topic-menu__subject-structure {
-  flex-grow: 1;
-  flex-shrink: 0;
-  display: flex;
-  align-items: stretch;
   position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
 
   @include mq(desktop) {
     padding-bottom: $spacing--large;
     min-height: 500px;
-  }
-
-  @include mq(wide) {
-    width: 75%;
-    padding-bottom: 0;
+    flex-flow: row;
   }
 }
 
@@ -159,22 +146,18 @@
   z-index: 30;
   animation-name: fadeInLeft;
   animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large ($spacing--large +
-        $spacing--small);
+  padding: 0 $spacing $spacing--large $padding-left-narrow;
 
   @include mq(desktop) {
     margin-top: $spacing;
     padding: 0 $spacing 0 ($spacing--medium - $spacing--small);
-    border-right: 1px solid $brand-color--light;
-    width: 33.33333%;
+    border-left: 1px solid $brand-color--light;
+    width: 25%;
     flex-grow: 0;
   }
 
-  &--no-border {
-    border-right: 0;
-  }
-
   &--main {
+    border-left: 0;
     .c-topic-menu__link--big {
       @include mq($until: desktop) {
         display: none;
@@ -199,42 +182,26 @@
 }
 
 .c-topic-menu__content-type-results {
-  background: $white;
-  flex-grow: 1;
-  padding: 0 $spacing--large 0 ($spacing--large + $spacing--small);
-  flex-shrink: 0;
+  margin-top: $spacing;
+  padding-left: $spacing--small;
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
 
   @include mq(wide) {
-    width: 25%;
-    margin-top: $spacing;
     background: transparent;
-    border-left: 1px solid $brand-color--light;
-    padding: 0 $spacing--medium;
     min-height: 500px;
   }
 
-  h1 {
+  & > h1 {
     @include font-size(16px, 20px);
-    margin-bottom: $spacing--medium;
+    margin-bottom: $spacing;
     margin-top: $spacing--large;
+    text-transform: uppercase;
 
     @include mq(wide) {
       margin-top: 0;
       min-height: 30px;
-      @include font-size(16px, 30px);
-      margin-bottom: $spacing--medium;
-    }
-
-    span {
-      text-transform: uppercase;
-      padding-right: $spacing--small;
-    }
-
-    a {
-      display: none;
-      @include mq(desktop) {
-        display: inline;
-      }
+      @include font-size(16px, 52px);
     }
   }
 }
@@ -243,8 +210,8 @@
 .c-topic-menu__subject {
   flex-shrink: 0;
   margin-top: 0;
-  margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 ($spacing--large + $spacing);
+  margin-bottom: $spacing;
+  padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
   @include mq(desktop) {
     margin-bottom: $spacing--small;
@@ -258,16 +225,25 @@
   }
 
   & > h1 {
-    margin: 0 0 $spacing--medium 0;
     @include inuit-font-size(20px);
     font-weight: 600;
+    margin: 0;
 
     @include mq(desktop) {
-      margin: 0 0 $spacing 0;
       padding-bottom: $spacing--small;
       padding-right: $spacing--large;
       @include inuit-font-size(26px);
       border-bottom: 1px solid rgba($brand-color, 0.3);
+    }
+  }
+
+  &--hasFilter {
+    & > h1 {
+      margin: 0 0 $spacing--medium 0;
+
+      @include mq(desktop) {
+        margin: 0 0 $spacing 0;
+      }
     }
   }
 
@@ -296,7 +272,7 @@
   background: none;
   @include font-size(16px, 20px);
   position: absolute;
-  left: 40px;
+  left: 28px;
   top: $spacing;
 
   @include mq(desktop) {
@@ -306,7 +282,7 @@
   .c-icon {
     width: 24px;
     height: 24px;
-    margin-right: $spacing--small;
+    margin-right: 9px;
   }
 }
 
@@ -362,7 +338,7 @@
 .c-topic-menu__back {
   margin-top: $spacing--medium;
   margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 ($spacing--large + $spacing);
+  padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
   @include inuit-font-size(18px, 23px);
   display: block;
@@ -400,7 +376,7 @@
   &:hover,
   &:active,
   &:focus {
-    background-color: $brand-color--tertiary;
+    background-color: $brand-color--light;
 
     span {
       box-shadow: $link--hover;
@@ -419,6 +395,10 @@
     &:active,
     &:focus {
       background-color: transparent;
+
+      .c-topic-menu__link-target {
+        box-shadow: $link;
+      }
     }
 
     @include mq(desktop) {
@@ -455,7 +435,7 @@
 
   &--active {
     & > .c-topic-menu__link {
-      background-color: $brand-color--tertiary;
+      background-color: $brand-color--light;
     }
   }
 }

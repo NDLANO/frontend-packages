@@ -1,15 +1,6 @@
-import React from 'react';
-import {
-  LearningPathBadge,
-  TasksAndActivitiesBadge,
-  SubjectMaterialBadge,
-} from 'ndla-ui';
-
-export const searchFieldSearchResults = [
+export const contentTypeResults = [
   {
     title: 'Læringsstier',
-    icon: <LearningPathBadge size="x-small" />,
-    totalCount: 2,
     resources: [
       {
         path: '#1',
@@ -17,15 +8,12 @@ export const searchFieldSearchResults = [
       },
       {
         path: '#2',
-        name: 'Media som dne fjerde statsmakt',
+        name: 'Media som den fjerde statsmakt',
       },
     ],
   },
   {
     title: 'Fagstoff',
-    icon: <SubjectMaterialBadge size="x-small" />,
-    totalCount: 2,
-    showAllLinkUrl: '#',
     resources: [
       {
         path: '#1',
@@ -35,12 +23,26 @@ export const searchFieldSearchResults = [
         path: '#2',
         name: 'Maktfordelingsprinsippet',
       },
+      {
+        path: '#3',
+        name: 'Fagstoff 3',
+      },
+      {
+        path: '#4',
+        name: 'Fagstoff 4',
+      },
+      {
+        path: '#5',
+        name: 'Fagstoff 5',
+      },
+      {
+        path: '#6',
+        name: 'Fagstoff 6',
+      },
     ],
   },
   {
     title: 'Oppgaver og aktiviteter',
-    icon: <TasksAndActivitiesBadge size="x-small" />,
-    totalCount: 0,
     resources: [],
   },
 ];

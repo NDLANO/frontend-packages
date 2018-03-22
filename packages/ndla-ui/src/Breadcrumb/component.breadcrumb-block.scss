@@ -33,7 +33,7 @@
 }
 .c-breadcrumb-block__item {
   display: inline-block;
-  margin-right: $spacing--small;
+  margin-right: $spacing--small/2;
   margin-bottom: 0;
   text-transform: none;
   a:hover {
@@ -42,13 +42,25 @@
   &:before {
     display: none;
   }
-  &:after {
-    padding-right: $spacing--small/2;
-    padding-left: $spacing--small;
-    content: '|';
-    @include inuit-font-size(14px);
+
+  .c-icon {
+    width: 14px;
+    height: 14px;
     color: $brand-color;
-    opacity: 0.4;
+    margin-top: -1px;
+    margin-left: $spacing--small/2;
+  }
+
+  &:first-child {
+    .c-icon {
+      display: none;
+    }
+  }
+
+  &:last-child {
+    .c-icon {
+      display: none;
+    }
   }
 
   span {

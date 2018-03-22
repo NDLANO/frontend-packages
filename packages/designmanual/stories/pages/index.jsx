@@ -26,7 +26,6 @@ import {
   ResourcesTitle,
   TopicIntroductionList,
   LayoutItem,
-  Breadcrumb,
   Content,
 } from 'ndla-ui';
 
@@ -42,7 +41,8 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import article, { topicList, subjectList } from '../../dummydata/index';
+import article, { topicList } from '../../dummydata/index';
+import Breadcrumb from '../molecules/breadcrumbs';
 
 const ResourcesSubTopics = () => (
   <LayoutItem layout="extend">
@@ -73,14 +73,7 @@ storiesOf('Sidevisninger', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -117,14 +110,7 @@ storiesOf('Sidevisninger', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -143,14 +129,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -168,14 +147,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -193,14 +165,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -218,14 +183,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -243,14 +201,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -268,14 +219,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent={false}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -336,14 +280,7 @@ storiesOf('Emnesider', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -375,14 +312,7 @@ storiesOf('Emnesider', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -406,14 +336,7 @@ storiesOf('Emnesider', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>
@@ -435,14 +358,7 @@ storiesOf('Emnesider', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                  isCurrent
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>

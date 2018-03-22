@@ -4,6 +4,12 @@
 **/
 
 .c-resource-group {
+  &:before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
   li {
     background-color: rgba($brand-grey--light, 0.4);
   }

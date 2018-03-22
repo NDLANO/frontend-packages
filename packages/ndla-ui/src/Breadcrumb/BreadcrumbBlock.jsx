@@ -17,22 +17,10 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const BreadcrumbBlock = ({
-  children,
-  subject,
-  topicPath,
-  toTopic,
-  fadeIn,
-  fadeOut,
-}) => {
+const BreadcrumbBlock = ({ children, subject, topicPath, toTopic }) => {
   const topicIds = topicPath.map(topic => topic.id);
-  const className = {
-    'u-fade-in': fadeIn,
-    'u-fade-out': fadeOut,
-  };
-
   return (
-    <div {...classes('', '', className)}>
+    <div {...classes('')}>
       {children}
       <ol {...classes('list')}>
         <BreadcrumbItem
@@ -55,17 +43,11 @@ const BreadcrumbBlock = ({
   );
 };
 
-BreadcrumbBlock.defaultProps = {
-  fadeIn: false,
-  fadeOut: false,
-};
 BreadcrumbBlock.propTypes = {
   children: PropTypes.node,
   subject: SubjectShape.isRequired,
   topicPath: PropTypes.arrayOf(TopicShape).isRequired,
   toTopic: PropTypes.func.isRequired,
-  fadeIn: PropTypes.bool,
-  fadeOut: PropTypes.bool,
 };
 
 export default BreadcrumbBlock;

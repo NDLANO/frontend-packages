@@ -21,7 +21,6 @@
     margin: 0;
   }
 
-
   &__title-wrapper {
     display: flex;
     align-items: center;
@@ -72,6 +71,11 @@
       &__title-wrapper {
         margin-left: $spacing;
         margin-right: $spacing;
+
+        @include mq(tablet) {
+          margin-left: 0;
+          margin-right: 0;
+        }
       }
     }
 

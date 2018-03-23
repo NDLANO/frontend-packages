@@ -10,42 +10,33 @@ import React from 'react';
 
 import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from 'ndla-ui';
 
-const subjectData = {
-  id: 'id',
-  name: 'Fag',
-};
-
-const topicData = [
+const items = [
   {
-    id: 'id1',
+    name: 'Home',
+    to: '#',
+  },
+  {
+    name: 'Fag',
+    to: '#',
+  },
+  {
     name: 'Hovedemne',
+    to: '#',
   },
   {
-    id: 'id2',
     name: 'Underemne',
+    to: '#',
   },
   {
-    id: 'id3',
     name: 'Tittel på side',
+    to: '#',
   },
 ];
 
-export const BreadcrumbDefault = () => (
-  <Breadcrumb
-    subject={subjectData}
-    topicPath={topicData}
-    subjectsTitle="Fag"
-    toSubjects={() => '#'}
-    toTopic={() => '#'}
-  />
-);
+export const BreadcrumbDefault = () => <Breadcrumb items={items} />;
 
 export default BreadcrumbDefault;
 
 export const BreadcrumbBlock = () => (
-  <BreadcrumbBlockUI
-    subject={subjectData}
-    topicPath={topicData}
-    toTopic={() => '#'}
-  />
+  <BreadcrumbBlockUI items={items.slice(1)} toTopic={() => '#'} />
 );

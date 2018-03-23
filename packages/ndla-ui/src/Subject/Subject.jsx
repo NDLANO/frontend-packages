@@ -25,7 +25,7 @@ export const SubjectSecondaryContent = ({ children }) => (
 );
 
 SubjectSecondaryContent.propTypes = {
-  children: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const childContentClasses = BEMHelper('c-subject-child-content');

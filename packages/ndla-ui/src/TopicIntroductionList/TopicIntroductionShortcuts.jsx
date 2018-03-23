@@ -4,6 +4,8 @@ import BEMHelper from 'react-bem-helper';
 import { Forward } from 'ndla-icons/common';
 import ShortcutType from './TopicShortcutType';
 
+import { ShortcutShape } from '../shapes';
+
 const classes = new BEMHelper({
   name: 'topic-shortcuts',
   prefix: 'c-',
@@ -29,7 +31,7 @@ class TopicIntroductionShortcuts extends Component {
         {open ? (
           <ul {...classes('list')}>
             {shortcuts.map(shortcut => (
-              <ShortcutType key={shortcut.id} {...shortcut} />
+              <ShortcutType key={shortcut.id} shortcut={shortcut} />
             ))}
           </ul>
         ) : null}
@@ -39,7 +41,7 @@ class TopicIntroductionShortcuts extends Component {
 }
 
 TopicIntroductionShortcuts.propTypes = {
-  shortcuts: PropTypes.arrayOf(),
+  shortcuts: PropTypes.arrayOf(ShortcutShape).isRequired,
 };
 
 export default TopicIntroductionShortcuts;

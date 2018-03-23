@@ -4,6 +4,8 @@ import BEMHelper from 'react-bem-helper';
 import { ContentTypeBadge } from 'ndla-ui';
 import SafeLink from '../common/SafeLink';
 
+import { ShortcutShape } from '../shapes';
+
 const classes = new BEMHelper({
   name: 'topic-shortcuts',
   prefix: 'c-',
@@ -16,7 +18,7 @@ class ShortcutType extends Component {
   }
 
   render() {
-    const { tooltip, contentType, url, count } = this.props;
+    const { tooltip, contentType, url, count } = this.props.shortcut;
     const { showtooltip } = this.state;
 
     return (
@@ -35,10 +37,7 @@ class ShortcutType extends Component {
 }
 
 ShortcutType.propTypes = {
-  tooltip: PropTypes.string.isRequired,
-  contentType: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
+  shortcut: ShortcutShape.isRequired,
 };
 
 export default ShortcutType;

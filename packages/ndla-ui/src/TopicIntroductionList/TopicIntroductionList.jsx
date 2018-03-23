@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '../common/SafeLink';
-import { TopicShape } from '../shapes';
+import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
 
 const topicClasses = new BEMHelper({
@@ -38,14 +38,14 @@ TopicIntroduction.propTypes = {
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
   subjectPage: PropTypes.bool,
-  shortcuts: PropTypes.arrayOf(),
+  shortcuts: PropTypes.arrayOf(ShortcutShape),
   twoColumns: PropTypes.bool,
 };
 
 const TopicIntroductionList = ({ topics, twoColumns, ...rest }) => (
   <ul className={topicClasses('list', { twoColumns })}>
     {topics.map(topic => {
-      const shortcuts = topic.shortcuts ? topic.shortcuts : [];
+      const { shortcuts } = topic;
       return (
         <TopicIntroduction
           key={topic.id}
@@ -61,7 +61,6 @@ const TopicIntroductionList = ({ topics, twoColumns, ...rest }) => (
 TopicIntroductionList.propTypes = {
   toTopic: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(TopicShape).isRequired,
-  shortcuts: PropTypes.arrayOf(),
   twoColumns: PropTypes.bool,
 };
 

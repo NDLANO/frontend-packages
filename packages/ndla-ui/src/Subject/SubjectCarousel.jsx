@@ -22,7 +22,7 @@ const arrow = direction => (
 const NextArrow = arrow('next');
 const PrevArrow = arrow('prev');
 
-const settings = {
+const getSettings = (maxCol = null) => ({
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
   dots: false,
@@ -34,15 +34,21 @@ const settings = {
   responsive: [
     {
       breakpoint: 3000,
-      settings: { slidesToShow: 7.5, slidesToScroll: 4 },
+      settings: { slidesToShow: maxCol || 7.5, slidesToScroll: 4 },
     },
     {
       breakpoint: 1800,
-      settings: { slidesToShow: 5.5, slidesToScroll: 4 },
+      settings: {
+        slidesToShow: maxCol && maxCol < 6 ? maxCol : 5.5,
+        slidesToScroll: 4,
+      },
     },
     {
       breakpoint: 1200,
-      settings: { slidesToShow: 4.25, slidesToScroll: 3 },
+      settings: {
+        slidesToShow: maxCol && maxCol === 4 ? maxCol : 4.25,
+        slidesToScroll: 3,
+      },
     },
     {
       breakpoint: 1000,
@@ -61,7 +67,7 @@ const settings = {
       settings: { slidesToShow: 2.25, slidesToScroll: 2 },
     },
   ],
-};
+});
 
 const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
   const slides = subjects.map(subject => {
@@ -86,8 +92,24 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
       </article>
     );
   });
+
+  const modifiers = { narrowScreen, wideScreen };
+  let settings = getSettings();
+
+  if (wideScreen) {
+    if (slides.length <= 4) {
+      modifiers.center = true;
+      settings = getSettings(4);
+    } else if (slides.length === 5) {
+      modifiers.center5Col = true;
+      settings = getSettings(5);
+    } else if (slides.length === 6) {
+      settings = getSettings(6);
+    }
+  }
+
   return (
-    <section {...classes('', { narrowScreen, wideScreen })}>
+    <section {...classes('', modifiers)}>
       <SubjectSectionTitle>{title}</SubjectSectionTitle>
       <Slider {...classes('slider')} {...settings}>
         {slides}

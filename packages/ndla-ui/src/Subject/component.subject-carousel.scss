@@ -20,6 +20,24 @@
     }
   }
 
+  &--center {
+    @include mq(wide) {
+      max-width: 1024px + $spacing--medium + $spacing--large;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: $spacing--medium + $spacing--large;
+    }
+  }
+
+  &--center5Col {
+    @include mq(ultraWide) {
+      max-width: 1540px + $spacing--medium + $spacing--large;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: $spacing--medium + $spacing--large;
+    }
+  }
+
   &--narrowScreen {
     margin-left: 0;
 

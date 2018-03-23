@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { SubjectShape, TopicShape } from '../shapes';
+import { uuid } from 'ndla-util';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const classes = BEMHelper({
@@ -17,55 +17,31 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const BreadcrumbBlock = ({
-  children,
-  subject,
-  topicPath,
-  toTopic,
-  fadeIn,
-  fadeOut,
-}) => {
-  const topicIds = topicPath.map(topic => topic.id);
-  const className = {
-    'u-fade-in': fadeIn,
-    'u-fade-out': fadeOut,
-  };
-
-  return (
-    <div {...classes('', '', className)}>
-      {children}
-      <ol {...classes('list')}>
+const BreadcrumbBlock = ({ children, items }) => (
+  <div {...classes('')}>
+    {children}
+    <ol {...classes('list')}>
+      {items.map((item, i) => (
         <BreadcrumbItem
-          key={subject.id}
-          to={toTopic(subject.id)}
-          classes={classes}>
-          {subject.name}
+          classes={classes}
+          key={uuid()}
+          isCurrent={i === items.length - 1}
+          to={item.to}>
+          {item.name}
         </BreadcrumbItem>
-        {topicPath.map((topic, i) => (
-          <BreadcrumbItem
-            key={topic.id}
-            classes={classes}
-            to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}
-            isCurrent={i === topicPath.length - 1}>
-            {topic.name}
-          </BreadcrumbItem>
-        ))}
-      </ol>
-    </div>
-  );
-};
+      ))}
+    </ol>
+  </div>
+);
 
-BreadcrumbBlock.defaultProps = {
-  fadeIn: false,
-  fadeOut: false,
-};
 BreadcrumbBlock.propTypes = {
   children: PropTypes.node,
-  subject: SubjectShape.isRequired,
-  topicPath: PropTypes.arrayOf(TopicShape).isRequired,
-  toTopic: PropTypes.func.isRequired,
-  fadeIn: PropTypes.bool,
-  fadeOut: PropTypes.bool,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 export default BreadcrumbBlock;

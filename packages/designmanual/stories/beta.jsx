@@ -6,7 +6,6 @@ import {
   Hero,
   OneColumn,
   PageContainer,
-  Breadcrumb,
   Content,
   BetaNavigation,
 } from 'ndla-ui';
@@ -15,8 +14,9 @@ import { MastheadWithTopicMenu } from './molecules/mastheads';
 
 import FooterExample from './molecules/footers';
 import ArticleLoader from './article/ArticleLoader';
-import { topicList, subjectList } from '../dummydata/index';
 import BetaFrontpage from './pages/BetaFrontpage';
+
+import Breadcrumb from './molecules/breadcrumbs';
 
 storiesOf('Beta', module)
   .add('Beta forside', () => (
@@ -61,13 +61,7 @@ storiesOf('Beta', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb
-                  toSubjects={() => '#'}
-                  subjectsTitle="Fag"
-                  subject={subjectList[1]}
-                  topicPath={topicList.slice(0, -1)}
-                  toTopic={() => '#'}
-                />
+                <Breadcrumb />
               </section>
             </div>
           </OneColumn>

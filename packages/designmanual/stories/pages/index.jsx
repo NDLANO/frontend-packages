@@ -135,6 +135,52 @@ const subjectAbout = (fixedWidth = false) => (
   />
 );
 
+const secondaryContent = (
+  <SubjectSecondaryContent>
+    <OneColumn noPadding>
+      <SubjectChildContent>
+        <SubjectFlexWrapper>
+          <SubjectFlexChild>
+            <SubjectNewContent
+              heading="Nytt innhold"
+              content={[
+                {
+                  name: 'Radio- og tvstruktur',
+                  url: '#1',
+                  topicName: 'Mediene i samfunnet',
+                  formattedDate: '10.02.2018',
+                },
+                {
+                  name: 'Hva er makt?',
+                  url: '#2',
+                  topicName: 'Mediene i samfunnet',
+                  formattedDate: '24.01.2018',
+                },
+              ]}
+            />
+          </SubjectFlexChild>
+          <SubjectFlexChild>
+            <InfoWidget
+              heading="Nyhetsbrev"
+              description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet."
+              mainLink={{
+                name: 'Meld deg på',
+                url: '#1',
+              }}
+              iconLinks={[
+                {
+                  icon: <EmailOutline />,
+                  name: 'Meld deg på nyhetsbrev',
+                },
+              ]}
+            />
+          </SubjectFlexChild>
+        </SubjectFlexWrapper>
+      </SubjectChildContent>
+    </OneColumn>
+  </SubjectSecondaryContent>
+);
+
 const some = (
   <SubjectSocialContent>
     <SubjectSocialSection title="Twitter">
@@ -524,57 +570,13 @@ storiesOf('Emnesider', module)
                 {subjectAbout(true)}
               </SubjectSidebarWrapper>
             </SubjectContent>
-            <SubjectChildContent>
-              <SubjectCarousel
-                wideScreen
-                subjects={subjectCarouselList}
-                title="Litt forskjellig fra faget"
-              />
-            </SubjectChildContent>
           </OneColumn>
-          <SubjectSecondaryContent>
-            <OneColumn noPadding>
-              <SubjectChildContent>
-                <SubjectFlexWrapper>
-                  <SubjectFlexChild>
-                    <SubjectNewContent
-                      heading="Nytt innhold"
-                      content={[
-                        {
-                          name: 'Radio- og tvstruktur',
-                          url: '#1',
-                          topicName: 'Mediene i samfunnet',
-                          formattedDate: '10.02.2018',
-                        },
-                        {
-                          name: 'Hva er makt?',
-                          url: '#2',
-                          topicName: 'Mediene i samfunnet',
-                          formattedDate: '24.01.2018',
-                        },
-                      ]}
-                    />
-                  </SubjectFlexChild>
-                  <SubjectFlexChild>
-                    <InfoWidget
-                      heading="Nyhetsbrev"
-                      description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet."
-                      mainLink={{
-                        name: 'Meld deg på',
-                        url: '#1',
-                      }}
-                      iconLinks={[
-                        {
-                          icon: <EmailOutline />,
-                          name: 'Meld deg på nyhetsbrev',
-                        },
-                      ]}
-                    />
-                  </SubjectFlexChild>
-                </SubjectFlexWrapper>
-              </SubjectChildContent>
-            </OneColumn>
-          </SubjectSecondaryContent>
+          <SubjectCarousel
+            wideScreen
+            subjects={subjectCarouselList}
+            title="Litt forskjellig fra faget"
+          />
+          {secondaryContent}
           <OneColumn noPadding>
             <SubjectChildContent>{some}</SubjectChildContent>
           </OneColumn>
@@ -684,17 +686,30 @@ storiesOf('Emnesider', module)
                   </SubjectFlexChild>
                 </SubjectFlexWrapper>
                 <SubjectCarousel
+                  narrowScreen
                   subjects={subjectCarouselList}
                   title="Litt forskjellig fra faget"
-                  subjectPage
                 />
-                <SubjectFlexWrapper>
-                  <SubjectFlexChild>{subjectArchive()}</SubjectFlexChild>
-                  <SubjectFlexChild>{subjectAbout()}</SubjectFlexChild>
-                </SubjectFlexWrapper>
-                {some}
               </SubjectChildContent>
             </SubjectContent>
+          </OneColumn>
+          <OneColumn noPadding>
+            <SubjectChildContent>
+              <SubjectFlexWrapper>
+                <SubjectFlexChild>{subjectArchive()}</SubjectFlexChild>
+                <SubjectFlexChild>{subjectAbout()}</SubjectFlexChild>
+              </SubjectFlexWrapper>
+            </SubjectChildContent>
+          </OneColumn>
+          <SubjectCarousel
+            wideScreen
+            subjects={subjectCarouselList}
+            title="Litt forskjellig fra faget"
+            subjectPage
+          />
+          {secondaryContent}
+          <OneColumn noPadding>
+            <SubjectChildContent>{some}</SubjectChildContent>
           </OneColumn>
         </article>
       </Content>

@@ -1,9 +1,16 @@
 .c-subject-carousel {
   margin-bottom: $spacing--large;
   margin-right: -$spacing;
+  margin-left: $spacing;
 
   @include mq(tablet) {
+    margin-right: 0;
+    margin-left: $spacing--medium;
     margin-bottom: $subject-section-padding;
+  }
+
+  @include mq(desktop) {
+    margin-left: $spacing--large + $spacing;
   }
 
   &--wideScreen {
@@ -14,6 +21,8 @@
   }
 
   &--narrowScreen {
+    margin-left: 0;
+
     @include mq(tablet) {
       display: none;
     }
@@ -26,7 +35,7 @@
     background-position: center center;
     width: 100%;
     height: 72px;
-    border-radius: .3em;
+    border-radius: 0.3em;
     position: relative;
 
     @include mq(tablet) {
@@ -81,20 +90,38 @@
     @include mq(tablet) {
       padding: 0 $spacing 0 0;
     }
+  }
+
+  &__play-background {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    height: 35px;
+    width: 35px;
+    background-color: rgba(0, 0, 0, 0.48);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mq(tablet) {
+      height: 42px;
+      width: 42px;
+    }
 
     .c-icon {
       color: $white;
-      height: 52px;
-      width: 52px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      margin-left: -26px;
-      margin-top: -26px;
+      height: 20px;
+      width: 20px;
+      margin-right: -1px;
+
+      @include mq(tablet) {
+        height: 25px;
+        width: 25px;
+      }
     }
   }
-
-
 
   &__link {
     color: $primary-color;
@@ -125,27 +152,109 @@
     }
 
     &--next {
-      right: $spacing*2;
+      right: $spacing;
     }
-
   }
 
   &__slider {
     &:hover {
-      .c-subject-carousel__arrow {
-        display: flex;
-        animation-name: fadeIn;
-        animation-duration: 0.2s;
+      @include mq(tablet) {
+        .c-subject-carousel__arrow {
+          display: flex;
+          animation-name: fadeIn;
+          animation-duration: 0.2s;
 
-        &.slick-disabled {
-          display: none;
+          &.slick-disabled {
+            display: none;
+          }
         }
       }
     }
   }
 }
 
-
 /* Default react-slick style
    Included here to avoid having to import jQuery dependency package to project */
-.slick-list,.slick-slider,.slick-track{position:relative;display:block}.slick-loading .slick-slide,.slick-loading .slick-track{visibility:hidden}.slick-slider{box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}.slick-list{overflow:hidden;margin:0;padding:0}.slick-list:focus{outline:0}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.slick-track{top:0;left:0}.slick-track:after,.slick-track:before{display:table;content:''}.slick-track:after{clear:both}.slick-slide{display:none;float:left;height:100%;min-height:1px}[dir=rtl] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}.slick-arrow.slick-hidden{display:none}/*# sourceMappingURL=slick.min.css.map */
+.slick-list,
+.slick-slider,
+.slick-track {
+  position: relative;
+  display: block;
+}
+.slick-loading .slick-slide,
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+.slick-slider {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.slick-list {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.slick-list:focus {
+  outline: 0;
+}
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+.slick-slider .slick-list,
+.slick-slider .slick-track {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.slick-track {
+  top: 0;
+  left: 0;
+}
+.slick-track:after,
+.slick-track:before {
+  display: table;
+  content: '';
+}
+.slick-track:after {
+  clear: both;
+}
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+.slick-slide img {
+  display: block;
+}
+.slick-slide.slick-loading img {
+  display: none;
+}
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+.slick-initialized .slick-slide {
+  display: block;
+}
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+  display: none;
+} /*# sourceMappingURL=slick.min.css.map */

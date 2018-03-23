@@ -27,21 +27,34 @@ const settings = {
   prevArrow: <PrevArrow />,
   dots: false,
   infinite: false,
-  slidesToShow: 4,
+  slidesToShow: 5.5,
   slidesToScroll: 4,
   swipeToScroll: false,
+  draggable: false,
   responsive: [
     {
-      breakpoint: 1200,
-      settings: { slidesToShow: 4, slidesToScroll: 4 },
+      breakpoint: 3000,
+      settings: { slidesToShow: 7.5, slidesToScroll: 4 },
     },
     {
-      breakpoint: 800,
+      breakpoint: 1800,
+      settings: { slidesToShow: 5.5, slidesToScroll: 4 },
+    },
+    {
+      breakpoint: 1200,
+      settings: { slidesToShow: 4.25, slidesToScroll: 3 },
+    },
+    {
+      breakpoint: 1000,
       settings: { slidesToShow: 3.25, slidesToScroll: 3 },
     },
     {
+      breakpoint: 720,
+      settings: { slidesToShow: 2.5, slidesToScroll: 2 },
+    },
+    {
       breakpoint: 600,
-      settings: { slidesToShow: 2.25, slidesToScroll: 2 },
+      settings: { slidesToShow: 3.25, slidesToScroll: 2 },
     },
     {
       breakpoint: 400,
@@ -58,11 +71,15 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
     }
     return (
       <article {...classes('subject')} key={`slide-${subject.id}`}>
-        <div {...classes('image')} style={styleAttr}>
-          <span {...classes('type')}>{subject.type}</span>
-          {subject.type === 'film' ? <Play /> : null}
-        </div>
         <SafeLink to={subject.linkTo} {...classes('link')}>
+          <div {...classes('image')} style={styleAttr}>
+            <span {...classes('type')}>{subject.type}</span>
+            {subject.type === 'film' && (
+              <div {...classes('play-background')}>
+                <Play />
+              </div>
+            )}
+          </div>
           <h1 {...classes('title')}>{subject.title}</h1>
           <p {...classes('description')}>{subject.text}</p>
         </SafeLink>

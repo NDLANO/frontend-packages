@@ -14,7 +14,6 @@ import {
   OneColumn,
   ResourcesWrapper,
   ResourcesTitle,
-  Breadcrumb,
   SubjectHeader,
   SubjectContent,
   SubjectSidebarWrapper,
@@ -46,6 +45,7 @@ import article, {
 
 import TopicListExample from '../molecules/TopicListExample';
 import TwoColumnsExample from '../molecules/TwoColumnsExample';
+import Breadcrumb from '../molecules/breadcrumbs';
 
 const subjectArchive = (fixedWidth = false) => (
   <SubjectArchive
@@ -179,17 +179,7 @@ export default () => (
       ]}
     />
     <OneColumn noPadding>
-      <SubjectContent
-        breadcrumb={
-          <Breadcrumb
-            toSubjects={() => '#'}
-            subjectsTitle="Fag"
-            subject={subjectList[1]}
-            topicPath={[]}
-            toTopic={() => '#'}
-            isCurrent
-          />
-        }>
+      <SubjectContent breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage
           header={<ResourcesTitle>Emner</ResourcesTitle>}>
@@ -292,17 +282,7 @@ export const SubjectWithTwoColumn = () => (
       ]}
     />
     <OneColumn noPadding>
-      <SubjectContent
-        twoColumns
-        breadcrumb={
-          <Breadcrumb
-            toSubjects={() => '#'}
-            subjectsTitle="Fag"
-            subject={subjectList[1]}
-            topicPath={[]}
-            toTopic={() => '#'}
-          />
-        }>
+      <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage
           header={<ResourcesTitle>Emner</ResourcesTitle>}>

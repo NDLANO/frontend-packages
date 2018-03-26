@@ -12,67 +12,38 @@ import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import { Home } from 'ndla-icons/common';
 import BreadcrumbItem from './BreadcrumbItem';
-import { SubjectShape, TopicShape } from '../shapes';
 
 const classes = BEMHelper({
   name: 'breadcrumb',
   prefix: 'c-',
 });
 
-const Breadcrumb = ({
-  children,
-  subject,
-  topicPath,
-  toTopic,
-  toSubjects,
-  isCurrent,
-}) => {
-  const topicIds = topicPath.map(topic => topic.id);
-  return (
-    <div {...classes()}>
-      {children}
-      <ol {...classes('list')}>
+const Breadcrumb = ({ children, items }) => (
+  <div {...classes()}>
+    {children}
+    <ol {...classes('list')}>
+      {items.map((item, i) => (
         <BreadcrumbItem
+          classes={classes}
+          home={i === 0}
           key={uuid()}
-          classes={classes}
-          topicIds={[]}
-          to={toSubjects()}
-          extraClass="home">
-          <Home className="c-icon--20" />
+          isCurrent={i === items.length - 1}
+          to={item.to}>
+          {i === 0 ? <Home className="c-icon--20" /> : item.name}
         </BreadcrumbItem>
-        <BreadcrumbItem
-          classes={classes}
-          key={subject.id}
-          isCurrent={topicPath.length === 0}
-          topicIds={[]}
-          to={toTopic(subject.id)}>
-          {subject.name}
-        </BreadcrumbItem>
-        {topicPath.map((topic, i) => (
-          <BreadcrumbItem
-            classes={classes}
-            key={topic.id}
-            to={toTopic(subject.id, ...topicIds.slice(0, 1 + i))}
-            isCurrent={isCurrent && i === topicPath.length - 1}>
-            {topic.name}
-          </BreadcrumbItem>
-        ))}
-      </ol>
-    </div>
-  );
-};
+      ))}
+    </ol>
+  </div>
+);
 
 Breadcrumb.propTypes = {
   children: PropTypes.node,
-  subject: SubjectShape.isRequired,
-  topicPath: PropTypes.arrayOf(TopicShape),
-  toTopic: PropTypes.func.isRequired,
-  toSubjects: PropTypes.func.isRequired,
-  isCurrent: PropTypes.bool,
-};
-
-Breadcrumb.defaultProps = {
-  isCurrent: true,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 export default Breadcrumb;

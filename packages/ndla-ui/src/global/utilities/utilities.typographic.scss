@@ -13,8 +13,17 @@
 .u-text-center {
   text-align: center;
 }
+
+.u-large-body-text {
+  @include font-size(18px, 30px);
+
+  @include mq(tablet) {
+    @include font-size(20px, 34px);
+  }
+}
 .article_introduction {
-  &,p {
+  &,
+  p {
     font-weight: $font-weight-light;
     font-family: $font;
     margin-top: $spacing--small;

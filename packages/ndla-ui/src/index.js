@@ -29,6 +29,28 @@ export { InfoBox } from './InfoBox';
 export { BetaNavigation } from './Beta';
 
 export { default as Button } from './Button';
+export {
+  SubjectHeader,
+  SubjectContent,
+  SubjectTopics,
+  SubjectSidebarWrapper,
+  SubjectFlexWrapper,
+  SubjectFlexChild,
+  SubjectShortcuts,
+  SubjectLinks,
+  SubjectArchive,
+  SubjectCarousel,
+  SubjectConcepts,
+  SubjectSocialContent,
+  SubjectSocialSection,
+  SubjectSectionTitle,
+  SubjectChildContent,
+  SubjectFilter,
+  SubjectAbout,
+  SubjectSecondaryContent,
+  SubjectNewContent,
+} from './Subject';
+
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { default as Pager } from './Pager';
@@ -103,6 +125,9 @@ export {
   MediaListItemImage,
   MediaListItemMeta,
 } from './MediaList';
+
+export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
+
 export { default as Image } from './Image';
 export { default as Translation } from './Translation/Translation';
 export { default as TranslationLine } from './Translation/TranslationLine';
@@ -113,3 +138,5 @@ export { default as ContentLoader } from './ContentLoader';
 export { default as constants } from './model';
 
 export { DisplayOnPageYOffset } from './Animation';
+
+export { default as InfoWidget } from './InfoWidget';

@@ -1,0 +1,60 @@
+.c-info-widget {
+  max-width: 600px;
+  margin: 0 auto;
+  &__heading {
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    @include font-size(16px, 32px);
+    margin: 0 0 $spacing--small 0;
+
+    @include mq(tablet) {
+      @include font-size(22px);
+    }
+  }
+
+  &__description {
+    padding: $spacing;
+    background: $brand-color--lighter;
+    color: $brand-color--dark;
+    @include font-size(16px, 26px);
+
+    p {
+      margin-top: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: $spacing;
+  }
+
+  &__main-link {
+    color: $brand-color--dark;
+    @include font-size(14px, 24px);
+  }
+
+  &__icon-link {
+    width: 47px;
+    height: 47px;
+    border-radius: 100%;
+    background: $brand-color--lighter;
+    color: $brand-color--dark;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .c-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    margin-right: $spacing--small;
+  }
+}

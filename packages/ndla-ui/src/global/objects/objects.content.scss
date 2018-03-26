@@ -11,9 +11,18 @@
     @include mq(tablet) {
       background-color: $brand-grey--lightest;
     }
+
+    @include mq(desktop) {
+      background: $white;
+    }
   }
 }
 
 .o-content {
   flex: 1;
+}
+
+/* IE-10+ fix for footer */
+html.ie .o-content {
+  flex: 1 1 auto;
 }

@@ -129,7 +129,7 @@ FilterList.propTypes = {
   label: PropTypes.string,
   labelNotVisible: PropTypes.bool,
   modifiers: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func, // isRequired
   options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,

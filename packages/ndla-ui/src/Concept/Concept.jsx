@@ -30,9 +30,14 @@ const Concept = ({
   id,
   messages,
   license,
+  visible,
+  closeCallback,
+  dialogRef,
   children,
 }) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
+  const visibleClass = visible ? 'visible' : null;
+  const closeFunc = closeCallback || null;
   return (
     <span {...classes('item')} id={id}>
       <button aria-label={messages.ariaLabel} {...classes('link')}>
@@ -40,13 +45,16 @@ const Concept = ({
       </button>
       {createUniversalPortal(
         <div
+          ref={dialogRef}
           aria-hidden="true"
           role="dialog"
           data-concept-id={id}
           aria-labelledby={id}
           aria-describedby={id}
-          {...classes('popup')}>
-          <button {...classes('close', 'u-close')}>{messages.close}</button>
+          {...classes('popup', visibleClass)}>
+          <button {...classes('close', 'u-close')} onClick={closeFunc}>
+            {messages.close}
+          </button>
           <h3 {...classes('title')}>{title}</h3>
           <p {...classes('content')}>{content}</p>
           <div {...sourceClasses()}>
@@ -84,6 +92,9 @@ Concept.propTypes = {
   }),
   license: PropTypes.string,
   children: PropTypes.string,
+  visible: PropTypes.bool,
+  closeCallback: PropTypes.func,
+  dialogRef: PropTypes.func,
 };
 
 export default Concept;

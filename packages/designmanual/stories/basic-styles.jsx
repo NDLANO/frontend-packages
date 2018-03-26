@@ -388,10 +388,28 @@ storiesOf('Grunnstiler', module)
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
+                style={{ backgroundColor: '#797979' }}
+              />
+              <div className="o-list__label">
+                Læringssti Mørk<br />#797979
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
                 style={{ backgroundColor: '#F2EFEF' }}
               />
               <div className="o-list__label">
                 Læringssti bakgrunn<br />#F2EFEF
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#E8E3E3' }}
+              />
+              <div className="o-list__label">
+                Læringssti Lys<br />#E8E3E3
               </div>
             </li>
           </ul>
@@ -644,6 +662,17 @@ storiesOf('Grunnstiler', module)
               </td>
             </tr>
             <tr>
+              <td>Stor brødtekst</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1 rem)</span>
+              </td>
+            </tr>
+            <tr>
               <td>Metatekst</td>
               <td>
                 16 px{' '}
@@ -717,6 +746,15 @@ storiesOf('Grunnstiler', module)
             dolore magna aliqua.
           </p>
         </div>
+        <h2 className="u-heading">Stor brødtekst</h2>
+        <p>
+          Stor brødtekst kan benyttes når det er spesielle behov for å utheve
+          noe. Dette kan feks være tegn på kinesisk eller formler i matematikk.
+          Stor brødtekst skal brukes på ord eller fraser som står for seg selv.
+          Det kan ikke være stor brødteskt og vanlig brødtekst på samme linje.
+          Eksempel fra kinesisk:
+        </p>
+        <p className="u-large-body-text">第一课：汉字</p>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>

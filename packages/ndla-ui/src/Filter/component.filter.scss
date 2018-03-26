@@ -20,14 +20,23 @@
   align-items: center;
   flex-grow: 2;
 
+  & > h1, & > h2, & > h3 {
+    border-bottom: 1px solid $brand-color--light;
+    margin-bottom: $spacing--small;
+
+    @include mq(tablet) {
+      border: none;
+    }
+  }
+
+
+
   &__list {
     list-style: none;
     margin: 0;
     padding: 0;
     top: 80px;
     width: 100%;
-    border-top: 1px solid $brand-color--light;
-    padding-top: $spacing--small;
     font-family: $font;
 
     @include mq(tablet) {
@@ -93,6 +102,8 @@
         }
       }
     }
+
+
   }
 
   &__label {
@@ -240,6 +251,33 @@
 
     span {
       margin-right: $spacing;
+    }
+  }
+
+  &--background {
+    background-color: $brand-grey--lightest;
+    padding: $spacing $spacing--small $spacing $spacing--small;
+  }
+
+  &--subject {
+    @include mq($until: tablet) {
+      padding: $spacing;
+    }
+
+    .c-filter {
+      &__item {
+        @include mq($until: tablet) {
+          display: block;
+          margin-left: 0;
+          margin-bottom: $spacing;
+        }
+
+        &:last-child {
+          @include mq($until: tablet) {
+            margin-bottom: 0;
+          }  
+        }
+      }
     }
   }
 }

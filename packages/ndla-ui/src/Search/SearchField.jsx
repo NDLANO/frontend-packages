@@ -16,32 +16,27 @@ import SafeLink from '../common/SafeLink';
 import ActiveFilters from './ActiveFilters';
 import ContentTypeResult from './ContentTypeResult';
 
+import { ContentTypeResultShape } from '../shapes';
+
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  searchResultHeading: PropTypes.string.isRequired,
-  allResultButtonText: PropTypes.string.isRequired,
-  allContentTypeResultLabel: PropTypes.string.isRequired,
   searchFieldTitle: PropTypes.string.isRequired,
-  contentTypeResultNoHit: PropTypes.string.isRequired,
+
+  // required if search result
+  searchResultHeading: PropTypes.string,
+  allResultButtonText: PropTypes.string,
+  contentTypeResultShowMoreLabel: PropTypes.string,
+  contentTypeResultShowLessLabel: PropTypes.string,
+  contentTypeResultNoHit: PropTypes.string,
 });
 
-const searchResultShape = PropTypes.arrayOf(
-  PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.node.isRequired,
-    totalCount: PropTypes.number.isRequired,
-    showAllLinkUrl: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        display: PropTypes.string.isRequired,
-      }),
-    ),
-  }),
-);
-
-const SearchResult = ({ result, messages, allResultUrl }) => (
+const SearchResult = ({
+  result,
+  messages,
+  allResultUrl,
+  resourceToLinkProps,
+}) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {messages.searchResultHeading}
@@ -50,9 +45,11 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
       {result.map(contentTypeResult => (
         <ContentTypeResult
           contentTypeResult={contentTypeResult}
+          resourceToLinkProps={resourceToLinkProps}
           key={contentTypeResult.title}
           messages={{
-            allResultLabel: messages.allContentTypeResultLabel,
+            allResultLabel: messages.contentTypeResultShowMoreLabel,
+            showLessResultLabel: messages.contentTypeResultShowLessLabel,
             noHit: messages.contentTypeResultNoHit,
           }}
         />
@@ -65,7 +62,8 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
 );
 
 SearchResult.propTypes = {
-  result: searchResultShape,
+  result: PropTypes.arrayOf(ContentTypeResultShape),
+  resourceToLinkProps: PropTypes.func.isRequired,
   messages: messagesShape.isRequired,
   allResultUrl: PropTypes.string.isRequired,
 };
@@ -79,6 +77,7 @@ const SearchField = ({
   searchResult,
   messages,
   allResultUrl,
+  resourceToLinkProps,
 }) => {
   const modifiers = [];
 
@@ -95,6 +94,7 @@ const SearchField = ({
         messages={messages}
         searchString={value}
         allResultUrl={allResultUrl}
+        resourceToLinkProps={resourceToLinkProps}
       />
     );
   }
@@ -140,8 +140,9 @@ SearchField.propTypes = {
     }),
   ),
   messages: messagesShape,
-  searchResult: searchResultShape,
+  searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
+  resourceToLinkProps: PropTypes.func.isRequired,
 };
 
 export default SearchField;

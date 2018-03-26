@@ -16,19 +16,14 @@ import {
   ClickToggle,
   TopicMenu,
   DisplayOnPageYOffset,
-  BreadcrumbBlock,
   ToggleSearchButton,
   SearchOverlay,
   SearchField,
   SafeLink,
 } from 'ndla-ui';
 
-import {
-  topicMenu,
-  subjectList,
-  topicList,
-  searchFieldSearchResults,
-} from '../../dummydata';
+import { topicMenu, contentTypeResults } from '../../dummydata';
+import { BreadcrumbBlock } from './breadcrumbs';
 
 export const MastheadWithLogo = () => (
   <Masthead fixed>
@@ -47,6 +42,7 @@ const messages = {
   learningResourcesHeading: 'Læringsressurser',
   back: 'Tilbake',
   contentTypeResultsShowMore: 'Vis mer',
+  contentTypeResultsShowLess: 'Vis mindre',
   contentTypeResultsNoHit: 'Ingen ressurser',
 };
 
@@ -59,12 +55,13 @@ class MastheadWithTopicMenu extends Component {
       searchIsOpen: this.props.searchFieldExpanded,
       expandedTopicId: null,
       expandedSubtopicId: null,
+      expandedSubtopicLevel2Id: null,
     };
   }
 
   render() {
     const searchFieldResults =
-      this.state.value.length > 1 ? searchFieldSearchResults : null;
+      this.state.value.length > 1 ? contentTypeResults : null;
 
     let searchButtonView = null;
 
@@ -93,7 +90,8 @@ class MastheadWithTopicMenu extends Component {
               ]}
               onFilterRemove={() => {}}
               messages={{
-                allContentTypeResultLabel: 'Se alle',
+                contentTypeResultShowLessLabel: 'Se færre',
+                contentTypeResultShowMoreLabel: 'Se alle',
                 allResultButtonText: 'Vis alle søketreff',
                 searchFieldTitle: 'Søk',
                 searchResultHeading: 'Forslag:',
@@ -101,6 +99,7 @@ class MastheadWithTopicMenu extends Component {
               }}
               allResultUrl="#"
               searchResult={searchFieldResults}
+              resourceToLinkProps={() => {}}
             />
           </SearchOverlay>
         </ToggleSearchButton>
@@ -151,24 +150,27 @@ class MastheadWithTopicMenu extends Component {
                 },
               ]}
               filterValues={['Medieuttrykk']}
+              onFilterClick={() => {}}
               searchPageUrl="#"
-              contentTypeResults={searchFieldSearchResults}
+              resourceToLinkProps={() => {}}
               expandedTopicId={this.state.expandedTopicId}
               expandedSubtopicId={this.state.expandedSubtopicId}
-              onNavigate={(expandedTopicId, expandedSubtopicId) => {
+              expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
+              onNavigate={(
+                expandedTopicId,
+                expandedSubtopicId,
+                expandedSubtopicLevel2Id,
+              ) => {
                 this.setState({
                   expandedTopicId,
                   expandedSubtopicId,
+                  expandedSubtopicLevel2Id,
                 });
               }}
             />
           </ClickToggle>
           <DisplayOnPageYOffset yOffsetMin={150}>
-            <BreadcrumbBlock
-              subject={subjectList[1]}
-              topicPath={topicList.slice(0, 2)}
-              toTopic={() => '#'}
-            />
+            <BreadcrumbBlock />
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>

@@ -36,10 +36,16 @@
   }
 
   &__show-all {
-    font-weight: 600;
-
     @include mq(tablet) {
       margin-top: $spacing;
+    }
+
+    button {
+      color: $brand-color;
+      font-weight: 600;
+      background: none;
+      border: 0;
+      padding: 0;
     }
   }
 

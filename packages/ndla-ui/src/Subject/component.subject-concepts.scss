@@ -1,0 +1,37 @@
+.c-subject-concepts {
+  position: relative;
+  margin-bottom: $subject-section-padding;
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $brand-color--light;
+    padding: $spacing;
+    margin: 0;
+  }
+
+  &__item {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    margin-bottom: 0.5em;
+
+    button {
+      background: transparent;
+      border-bottom: none;
+
+      &:hover {
+        border-bottom: none;
+      }
+
+      .c-concept__link {
+        @include inuit-font-size(16px);
+        color: $brand-color--dark;
+        font-family: $font;
+        font-weight: $font-weight-semibold;
+        border-bottom-width: 2px;
+      }
+    }
+  }
+}

@@ -24,7 +24,7 @@ export const subjectList = [
 export const subjectCarouselList = [
   {
     title: 'Holde presentasjon',
-    type: 'øvelse',
+    type: 'Øvelse',
     text: 'Her finner du mange gode råd',
     image:
       'https://images.pexels.com/photos/7369/startup-photos.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
@@ -33,7 +33,8 @@ export const subjectCarouselList = [
   },
   {
     title: 'Orions belte',
-    type: 'film',
+    type: 'Film',
+    isFilm: true,
     text: 'Se den legendariske norske filmen som har vunnet Oscar',
     image: 'https://gfx.nrk.no/KmvRr00Rlz0UmW1OspQ3KQ0q1fUKmqVaAiTLZgmvlRtg',
     linkTo: '#',
@@ -41,7 +42,7 @@ export const subjectCarouselList = [
   },
   {
     title: 'Eksamen',
-    type: 'vertøy',
+    type: 'Vertøy',
     text: 'Hvordan bør du forberede deg?',
     image:
       'https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
@@ -49,8 +50,8 @@ export const subjectCarouselList = [
     id: '3',
   },
   {
-    title: 'Skisseteknik',
-    type: 'fagartikkel',
+    title: 'Skisseteknikk',
+    type: 'Fagartikkel',
     text: 'Skisseteknik for idéutvikling',
     image:
       'https://images.pexels.com/photos/820673/pexels-photo-820673.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
@@ -59,7 +60,8 @@ export const subjectCarouselList = [
   },
   {
     title: 'Orions belte',
-    type: 'film',
+    type: 'Film',
+    isFilm: true,
     text: 'Se den legendariske norske filmen som har vunnet Oscar',
     image: '',
     linkTo: '#',
@@ -67,7 +69,7 @@ export const subjectCarouselList = [
   },
   {
     title: 'Tittel',
-    type: 'egenskap',
+    type: 'Egenskap',
     text: 'Kort beskrivelsetekst',
     image: '',
     linkTo: '#',
@@ -75,7 +77,7 @@ export const subjectCarouselList = [
   },
   {
     title: 'Eksamen',
-    type: 'vertøy',
+    type: 'Vertøy',
     text: 'Hvordan bør du forberede deg?',
     image:
       'https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',

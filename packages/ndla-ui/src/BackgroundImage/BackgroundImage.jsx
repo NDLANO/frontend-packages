@@ -6,8 +6,8 @@ import { breakpoints } from 'ndla-util';
 
 const classes = BEMHelper('c-background-image');
 
-const BackgroundImage = ({ images }) => (
-  <div {...classes()}>
+const BackgroundImage = ({ images, showOverlay }) => (
+  <div {...classes('', showOverlay)}>
     {images &&
       images.map(image =>
         image.types.map(type => (
@@ -22,6 +22,7 @@ const BackgroundImage = ({ images }) => (
 );
 
 BackgroundImage.propTypes = {
+  showOverlay: PropTypes.bool,
   className: PropTypes.string,
   images: PropTypes.arrayOf(
     PropTypes.shape({
@@ -30,6 +31,10 @@ BackgroundImage.propTypes = {
         .isRequired,
     }),
   ).isRequired,
+};
+
+BackgroundImage.defaultProps = {
+  showOverlay: false,
 };
 
 export default BackgroundImage;

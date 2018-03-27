@@ -46,103 +46,12 @@
     }
   }
 
-  &__image {
-    background-color: $background-color--gray-dark;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-    height: 72px;
-    border-radius: 0.3em;
-    position: relative;
-
-    @include mq(tablet) {
-      height: 125px;
-    }
-  }
-
-  &__title {
-    font-weight: $font-weight-bold;
-    @include font-size(12px);
-    margin: 0;
-
-    @include mq(tablet) {
-      margin: $spacing--small 0 0 0;
-      @include inuit-font-size(20px);
-    }
-  }
-
-  &__description {
-    @include inuit-font-size(14px);
-    line-height: 1.25rem;
-    font-family: $font-serif;
-    margin: 0;
-    display: none;
-
-    @include mq(tablet) {
-      display: block;
-    }
-  }
-
-  &__type {
-    @include inuit-font-size(12px);
-    position: relative;
-    top: 68%;
-    left: 10px;
-    background: $brand-grey--lightest;
-    border-radius: 0.2em;
-    padding: 0 0.2rem 0 0.2rem;
-    text-transform: capitalize;
-    font-weight: 600;
-    line-height: 1.5em;
-    display: none;
-
-    @include mq(tablet) {
-      display: inline-block;
-    }
-  }
-
-  &__subject {
+  .c-content-card {
     padding: 0 $spacing--small 0 0;
 
     @include mq(tablet) {
       padding: 0 $spacing 0 0;
     }
-  }
-
-  &__play-background {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    height: 35px;
-    width: 35px;
-    background-color: rgba(0, 0, 0, 0.48);
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @include mq(tablet) {
-      height: 42px;
-      width: 42px;
-    }
-
-    .c-icon {
-      color: $white;
-      height: 20px;
-      width: 20px;
-      margin-right: -1px;
-
-      @include mq(tablet) {
-        height: 25px;
-        width: 25px;
-      }
-    }
-  }
-
-  &__link {
-    color: $primary-color;
   }
 
   &__arrow {

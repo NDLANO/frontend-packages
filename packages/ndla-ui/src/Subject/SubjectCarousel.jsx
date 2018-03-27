@@ -4,6 +4,8 @@ import BEMHelper from 'react-bem-helper';
 import { ChevronLeft, ChevronRight, Play } from 'ndla-icons/common';
 import Slider from 'react-slick';
 import SafeLink from '../common/SafeLink';
+import ContentCard from '../ContentCard';
+import { breakpoints } from 'ndla-util';
 
 import { SubjectSectionTitle } from './Subject';
 
@@ -70,28 +72,24 @@ const getSettings = (maxCol = null) => ({
 });
 
 const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
-  const slides = subjects.map(subject => {
-    const styleAttr = {};
-    if (subject.image) {
-      styleAttr.backgroundImage = `url(${subject.image})`;
-    }
-    return (
-      <article {...classes('subject')} key={`slide-${subject.id}`}>
-        <SafeLink to={subject.linkTo} {...classes('link')}>
-          <div {...classes('image')} style={styleAttr}>
-            <span {...classes('type')}>{subject.type}</span>
-            {subject.type === 'film' && (
-              <div {...classes('play-background')}>
-                <Play />
-              </div>
-            )}
-          </div>
-          <h1 {...classes('title')}>{subject.title}</h1>
-          <p {...classes('description')}>{subject.text}</p>
-        </SafeLink>
-      </article>
-    );
-  });
+  const slides = subjects.map(subject => (
+    <div>
+      <ContentCard
+        key={`slide-${subject.id}`}
+        url={subject.linkTo}
+        heading={subject.title}
+        description={subject.text}
+        isFilm={subject.isFilm}
+        type={subject.type}
+        images={[
+          {
+            url: subject.image,
+            types: Object.keys(breakpoints),
+          },
+        ]}
+      />
+    </div>
+  ));
 
   const modifiers = { narrowScreen, wideScreen };
   let settings = getSettings();

@@ -24,6 +24,8 @@ export {
   FrontpageSubjectsSection,
 } from './Frontpage';
 
+export { default as ContentCard } from './ContentCard';
+
 export { InfoBox } from './InfoBox';
 
 export { BetaNavigation } from './Beta';

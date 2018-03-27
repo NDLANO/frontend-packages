@@ -16,12 +16,10 @@
     display: flex;
 
     & > * {
-      max-width: 25%;
       flex-basis: 25%;
-      flex-grow: 1;
       margin-right: $spacing;
 
-      &:nth-child(4n) {
+      &:last-child {
         margin-right: 0;
       }
     }

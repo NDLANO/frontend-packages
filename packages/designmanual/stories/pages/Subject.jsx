@@ -133,6 +133,7 @@ const secondaryContent = (
           </SubjectFlexChild>
           <SubjectFlexChild>
             <InfoWidget
+              center
               heading="Nyhetsbrev"
               description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet."
               mainLink={{

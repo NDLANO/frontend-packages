@@ -7,8 +7,8 @@ import SafeLink from '../common/SafeLink';
 
 const classes = BEMHelper('c-info-widget');
 
-const InfoWidget = ({ heading, description, mainLink, iconLinks }) => (
-  <section {...classes()}>
+const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
+  <section {...classes('', { center })}>
     <h1 {...classes('heading')}>{heading}</h1>
     <div {...classes('description')}>
       <p>{description}</p>
@@ -57,6 +57,11 @@ InfoWidget.propTypes = {
       icon: PropTypes.node.isRequired,
     }),
   ),
+  center: PropTypes.bool,
+};
+
+InfoWidget.defaultProps = {
+  center: false,
 };
 
 export default InfoWidget;

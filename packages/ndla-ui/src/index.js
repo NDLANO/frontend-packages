@@ -23,6 +23,7 @@ export {
   FrontpageSubjectsWrapper,
   FrontpageSubjectsSection,
   FrontpageHighlighted,
+  FrontpageInfo,
 } from './Frontpage';
 
 export { default as ContentCard } from './ContentCard';

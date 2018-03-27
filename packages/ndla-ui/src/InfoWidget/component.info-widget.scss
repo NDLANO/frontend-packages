@@ -1,6 +1,10 @@
 .c-info-widget {
   max-width: 600px;
-  margin: 0 auto;
+
+  &--center {
+    margin: 0 auto;
+  }
+
   &__heading {
     font-weight: $font-weight-bold;
     text-transform: uppercase;

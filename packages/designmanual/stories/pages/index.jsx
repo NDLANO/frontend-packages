@@ -284,6 +284,30 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Kompetansemål', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <TasksAndActivitiesHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                  isCurrent={false}
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </TasksAndActivitiesHero>
+        <ArticleExercise />
+      </Content>
+    </PageContainer>
   ));
 
 storiesOf('Emnesider', module)

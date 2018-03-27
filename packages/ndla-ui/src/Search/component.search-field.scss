@@ -20,12 +20,12 @@
 
   &--has-filter {
     .c-search-field__input {
-      border-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      padding-left: 0;
-      &:hover {
-        border-left: 0;
+      @include mq(tablet) {
+        padding-left: $spacing--small/2;
+      }
+
+      @include mq(desktop) {
+        padding-left: $spacing;
       }
     }
   }
@@ -69,6 +69,7 @@
 
     &:focus {
       border: 1px solid $brand-color;
+      border-left: 0;
 
       & + .c-search-field__filters {
         border: 1px solid $brand-color;
@@ -76,34 +77,17 @@
       }
     }
 
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 0;
+
     @include font-size(16px, 20px);
 
     @include mq(tablet) {
       height: 58px;
       line-height: 58px;
-      padding-left: $spacing--small/2;
       @include font-size(18px, 24px);
-    }
-    @include mq(desktop) {
-      padding-left: $spacing;
-    }
-
-    @include mq(tablet) {
-      &--small {
-        height: 41px;
-        line-height: 41px;
-        padding: $spacing--small;
-        @include inuit-font-size(16px);
-
-        & + .c-search-field__button {
-          padding: $spacing--small / 2;
-          top: 2px;
-          right: $spacing--small;
-          svg {
-            @include inuit-font-size(18px);
-          }
-        }
-      }
     }
   }
 

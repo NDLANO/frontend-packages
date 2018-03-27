@@ -38,7 +38,6 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import article, { topicList, subjectList } from '../../dummydata/index';
 import Breadcrumb from '../molecules/breadcrumbs';
 
 storiesOf('Sidevisninger', module)

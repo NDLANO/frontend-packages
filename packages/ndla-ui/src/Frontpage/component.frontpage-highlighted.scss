@@ -1,0 +1,29 @@
+.c-frontpage-highlighted {
+  margin-top: $spacing--large + $spacing;
+  &__heading {
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    @include font-size(16px, 32px);
+    margin: 0 0 $spacing--small 0;
+
+    @include mq(tablet) {
+      margin: 0 0 $spacing 0;
+      @include font-size(22px);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+
+    & > * {
+      max-width: 25%;
+      flex-basis: 25%;
+      flex-grow: 1;
+      margin-right: $spacing;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+}

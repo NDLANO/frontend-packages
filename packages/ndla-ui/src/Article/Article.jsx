@@ -99,6 +99,7 @@ export const Article = ({
   modifier,
   messages,
   children,
+  courseObjectives,
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license);
   const authors =
@@ -106,6 +107,7 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
+        { courseObjectives }
         <ArticleTitle icon={icon} label={messages.label}>
           {title}
         </ArticleTitle>
@@ -132,6 +134,7 @@ Article.propTypes = {
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
   additional: PropTypes.node,
+  courseObjectives: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,

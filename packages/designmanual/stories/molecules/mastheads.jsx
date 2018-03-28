@@ -152,6 +152,7 @@ class MastheadWithTopicMenu extends Component {
                 },
               ]}
               filterValues={['Medieuttrykk']}
+              courseObjectives={this.props.courseObjectives}
               searchPageUrl="#"
               contentTypeResults={searchFieldSearchResults}
               resourceToLinkProps={() => {}}
@@ -193,6 +194,7 @@ MastheadWithTopicMenu.propTypes = {
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
   resourceToLinkProps: PropTypes.func.isRequired,
+  courseObjectives: PropTypes.node,
 };
 
 MastheadWithTopicMenu.defaultProps = {

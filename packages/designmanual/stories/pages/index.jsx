@@ -42,6 +42,7 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
+import CourseObjectivesExample from './CourseObjectivesExample';
 import article, { topicList, subjectList } from '../../dummydata/index';
 
 const ResourcesSubTopics = () => (
@@ -476,6 +477,37 @@ storiesOf('Emnesider', module)
           closeButton
           icon={<SubjectBadge size="large" background />}
           label="Emne"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Emneside med kompetansemål', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu
+          courseObjectives={<CourseObjectivesExample />}/>
+        <SubjectHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb
+                  toSubjects={() => '#'}
+                  subjectsTitle="Fag"
+                  subject={subjectList[1]}
+                  topicPath={topicList.slice(0, -1)}
+                  toTopic={() => '#'}
+                  isCurrent
+                />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectHero>
+        <ArticleLoader
+          articleId="4853"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          courseObjectives={<CourseObjectivesExample />}
         />
       </Content>
       <FooterExample />

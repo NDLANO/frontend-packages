@@ -161,6 +161,8 @@
   animation-duration: 0.2s;
   padding: $spacing--small $spacing $spacing--large ($spacing--large +
         $spacing--small);
+  position: relative;
+  z-index: 1;
 
   @include mq(desktop) {
     margin-top: $spacing;
@@ -257,21 +259,49 @@
     }
   }
 
-  & > h1 {
-    margin: 0 0 $spacing--medium 0;
-    @include inuit-font-size(20px);
-    font-weight: 600;
+  &__header {
+    padding-right: $spacing--large;
+    border-bottom: 1px solid rgba($brand-color, 0.3);
+    margin: 0 0 $spacing 0;
+    position: relative;
 
-    @include mq(desktop) {
-      margin: 0 0 $spacing 0;
-      padding-bottom: $spacing--small;
-      padding-right: $spacing--large;
-      @include inuit-font-size(26px);
-      border-bottom: 1px solid rgba($brand-color, 0.3);
+    & > h1 {
+      margin: 0;
+      @include inuit-font-size(20px);
+      font-weight: $font-weight-bold;
+
+      @include mq(desktop) {
+        padding-bottom: $spacing--small;
+        @include inuit-font-size(26px);
+      }
+    }
+  }
+
+  &__competence {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    left: $spacing--medium;
+    right: $spacing;
+    height: 70vh;
+  }
+
+  .c-course-objectives__button {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    @include inuit-font-size(14px, 18px);
+    font-weight: $font-weight-bold;
+    color: $brand-color;
+    background: transparent;
+    border: none;
+    &:hover {
+      cursor: pointer;
     }
   }
 
   .c-filter {
+    position: relative;
     &__list {
       padding-top: 0;
       border-top: 0;

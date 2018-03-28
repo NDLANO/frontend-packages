@@ -29,7 +29,7 @@ export const Dialog = ({
 }) =>
   createUniversalPortal(
     <div
-      className={`c-dialog c-dialog--${modifier}`}
+      {...classes('', modifier)}
       data-dialog-id={id}
       role="dialog"
       aria-hidden="true"
@@ -51,5 +51,8 @@ Dialog.propTypes = {
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
-  modifier: PropTypes.string,
+  modifier: PropTypes.oneOf(
+    PropTypes.string,
+    PropTypes.array,
+  ),
 };

@@ -17,6 +17,7 @@ import {
   ResourcesWrapper,
   ResourcesTitle,
   TopicIntroductionList,
+  CourseObjectivesDialog,
 } from 'ndla-ui';
 import { Resources } from '../molecules/resources';
 import { fetchArticle } from './articleApi';
@@ -74,6 +75,7 @@ class ArticleLoader extends Component {
       label,
       hideResources,
       showSubTopics,
+      courseObjectives,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -109,7 +111,8 @@ class ArticleLoader extends Component {
                 publisher: 'Utgiver',
                 label,
               }}
-              licenseBox={<LicenseExample />}>
+              licenseBox={<LicenseExample />}
+              courseObjectives={<CourseObjectivesDialog label="Kompetansemål" closeLabel="Lukk">{ courseObjectives }</CourseObjectivesDialog>}>
               {articleChildren}
             </Article>
           </OneColumn>
@@ -138,6 +141,7 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
+  courseObjectives: PropTypes.node,
 };
 
 ArticleLoader.defaultProps = {

@@ -13,7 +13,8 @@
   margin-left: auto;
   overflow-wrap: break-word;
   @include inuit-font-size(16px, 28px);
-
+  position: relative;
+  
   @include mq(tablet) {
     @include inuit-font-size(18px, 32px);
     padding: 0 $spacing $spacing--large;

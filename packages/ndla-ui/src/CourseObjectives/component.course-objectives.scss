@@ -1,0 +1,41 @@
+.c-course-objectives {
+  background: $brand-color--lighter;
+  height: 100%;
+  margin-top: -$spacing;
+  padding: $spacing--large;
+
+  &__wrapper {
+    display: block;
+    height: 100%;
+  }
+  &--dialog {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 9;
+  }
+
+  &__button {
+    &--article {
+      @include inuit-font-size(12px, 15px);
+      background-color: $brand-color--lighter;
+      border: none;
+      color: $brand-color;
+      font-weight: $font-weight-semibold;
+      position: absolute;
+      z-index: 9;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+    color: $brand-color;
+    @include inuit-font-size(22px, 32px);
+  }
+
+  p, li {
+    font-family: $font-serif;
+  }
+}

@@ -66,6 +66,7 @@ export {
   default as RelatedArticleList,
   RelatedArticle,
 } from './RelatedArticleList';
+export { default as CourseObjectives, CourseObjectivesDialog } from './CourseObjectives';
 export {
   default as ResourcesWrapper,
   ResourcesTitle,

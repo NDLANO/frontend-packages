@@ -49,15 +49,20 @@
     height: auto;
     visibility: visible;
   }
-  
+
   .c-dialog--fullscreen {
   }
-  
+
+  .c-dialog__content--large {
+    max-width: 970px;
+    max-height: 85vh;
+  }
+
   .c-dialog__content--fullscreen {
     @include mq(tablet) {
-      max-height: 100vh;  
+      max-height: 100vh;
       max-width: 100%;
-      
+
       .c-figure-license__img {
         max-height: 85vh;
         width: auto;

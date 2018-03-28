@@ -11,17 +11,4 @@
       @include font-size(22px);
     }
   }
-
-  &__wrapper {
-    display: flex;
-
-    & > * {
-      flex-basis: 25%;
-      margin-right: $spacing;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
 }

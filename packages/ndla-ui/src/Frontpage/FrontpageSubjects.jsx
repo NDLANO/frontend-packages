@@ -27,7 +27,10 @@ export const FrontpageSubjectsSection = ({ heading, subjects }) => (
     <ul {...sectionClasses('subjects')}>
       {subjects.map(subject => (
         <li key={subject.url} {...sectionClasses('item')}>
-          <SafeLink to={subject.url} {...sectionClasses('link')}>
+          <SafeLink
+            to={subject.url}
+            {...sectionClasses('link')}
+            aria-label={`${subject.text} ${subject.yearInfo}`}>
             <span {...sectionClasses('text')}>{subject.text}</span>
             <span {...sectionClasses('year-info')}>{subject.yearInfo}</span>
           </SafeLink>

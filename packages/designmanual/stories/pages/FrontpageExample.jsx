@@ -266,10 +266,9 @@ export default () => (
       </FrontpageSubjectsWrapper>
       <OneColumn>
         <FrontpageHighlighted heading="Aktuelt">
-          <Fragment>
-            {contentCards.slice(0, 4).map(card => (
+          {contentCards.slice(0, 4).map(card => (
+            <div key={`slide-${card.id}`}>
               <ContentCard
-                key={`slide-${card.id}`}
                 url={card.linkTo}
                 heading={card.title}
                 description={card.text}
@@ -282,54 +281,52 @@ export default () => (
                   },
                 ]}
               />
-            ))}
-          </Fragment>
+            </div>
+          ))}
         </FrontpageHighlighted>
         <FrontpageInfo>
-          <Fragment>
-            <InfoWidget
-              heading="Nyhetsbrev"
-              description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet"
-              mainLink={{
-                name: 'Meld deg på',
-                url: '#1',
-              }}
-              iconLinks={[
-                {
-                  name: 'Nyhetsbrev',
-                  icon: <EmailOutline />,
-                },
-              ]}
-            />
-            <InfoWidget
-              heading="Følg oss"
-              description="Ndla har mange Facebook og Twitter kontoer. Finn den som passer for deg og følg oss!"
-              mainLink={{
-                name: 'Følg oss',
-                url: '#2',
-              }}
-              iconLinks={[
-                {
-                  name: 'Facebook',
-                  url: '#3',
-                  icon: <Facebook />,
-                },
-                {
-                  name: 'Twitter',
-                  url: '#4',
-                  icon: <Twitter />,
-                },
-              ]}
-            />
-            <InfoWidget
-              heading="Om NDLA"
-              description="NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid."
-              mainLink={{
-                name: 'Mer om Ndla',
-                url: '#5',
-              }}
-            />
-          </Fragment>
+          <InfoWidget
+            heading="Nyhetsbrev"
+            description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet"
+            mainLink={{
+              name: 'Meld deg på',
+              url: '#1',
+            }}
+            iconLinks={[
+              {
+                name: 'Nyhetsbrev',
+                icon: <EmailOutline />,
+              },
+            ]}
+          />
+          <InfoWidget
+            heading="Følg oss"
+            description="Ndla har mange Facebook og Twitter kontoer. Finn den som passer for deg og følg oss!"
+            mainLink={{
+              name: 'Følg oss',
+              url: '#2',
+            }}
+            iconLinks={[
+              {
+                name: 'Facebook',
+                url: '#3',
+                icon: <Facebook />,
+              },
+              {
+                name: 'Twitter',
+                url: '#4',
+                icon: <Twitter />,
+              },
+            ]}
+          />
+          <InfoWidget
+            heading="Om NDLA"
+            description="NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid."
+            mainLink={{
+              name: 'Mer om Ndla',
+              url: '#5',
+            }}
+          />
         </FrontpageInfo>
       </OneColumn>
     </main>

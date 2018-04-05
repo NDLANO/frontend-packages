@@ -217,7 +217,7 @@ storiesOf('Læringsressurser', module)
 
 storiesOf('Emnesider', module)
   .add('1. Fagoversikt', () => (
-    <PageContainer backgroundWide>
+    <PageContainer background>
       <Content>
         <Frontpage />
       </Content>

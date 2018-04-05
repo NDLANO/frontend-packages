@@ -42,6 +42,10 @@ class FrontpageExample extends Component {
               url: '#2',
               text: 'Åpne digitale læremidler for videregående opplæring',
             },
+            {
+              url: '#3',
+              text: 'Change language',
+            },
           ]}
         />
         <main>

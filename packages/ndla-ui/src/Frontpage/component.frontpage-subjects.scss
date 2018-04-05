@@ -1,4 +1,6 @@
 .c-frontpage-subjects-wrapper {
+  position: relative;
+
   @include mq(tablet) {
     border-radius: 2px;
     background: $white;

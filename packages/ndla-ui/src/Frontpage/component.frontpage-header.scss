@@ -1,29 +1,42 @@
-@keyframes backgroundAnimation {
+@keyframes aurora {
   0% {
-    background: $brand-color--dark;
+    background-position: left top;
   }
-
-  20% {
-    background: $assessment-resource-dark;
+  25% {
+    background-position: right top;
   }
-
-  40% {
-    background: $tasks-and-activities-dark;
+  50% {
+    background-position: right bottom;
   }
-
-  60% {
-    background: $source-material-dark;
+  75% {
+    background-position: left bottom;
   }
-
-  80% {
-    background: $external-learning-resource-dark;
+  100% {
+    background-position: left top;
   }
 }
 
 .c-frontpage-header {
   height: 310px;
-  background: $brand-color--dark;
-  animation: backgroundAnimation 60s linear 0s infinite running;
+  background: linear-gradient(45deg, #153758 0%, $brand-color 49%, #217389 85%);
+  background-size: 150% 200%;
+
+  animation: aurora 15s infinite;
+  position: relative;
+
+  &__inner-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: radial-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.15)
+    );
+    background-size: 150% 200%;
+    animation: aurora 11s infinite;
+  }
 
   &__content {
     display: flex;

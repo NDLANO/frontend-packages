@@ -17,6 +17,7 @@ const FrontpageHeader = ({
   messages,
 }) => (
   <header {...classes()}>
+    <div {...classes('inner-background')} />
     <OneColumn noPadding>
       <nav {...classes('navigation')}>
         <ul>

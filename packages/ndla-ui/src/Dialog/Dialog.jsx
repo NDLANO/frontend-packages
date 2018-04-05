@@ -51,8 +51,5 @@ Dialog.propTypes = {
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
-  modifier: PropTypes.oneOf(
-    PropTypes.string,
-    PropTypes.array,
-  ),
+  modifier: PropTypes.oneOf(PropTypes.string, PropTypes.array),
 };

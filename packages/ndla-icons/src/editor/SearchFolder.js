@@ -10,7 +10,7 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const SavedSearch = props => (
+const SearchFolder = props => (
   <Icon
     viewBox="0 0 59 44"
     data-license="CC-BY 4.0"
@@ -23,4 +23,4 @@ const SavedSearch = props => (
   </Icon>
 );
 
-export default SavedSearch;
+export default SearchFolder;

@@ -17,7 +17,7 @@ import {
   youTubeMockVideo,
 } from './mockYouTube';
 
-import { searchFieldSearchResults } from './mockSearch';
+import { contentTypeResults } from './mockSearch';
 
 export {
   topicMenu,
@@ -34,5 +34,5 @@ export {
   secondYouTubeList,
   youTubeMockVideo,
   assessmentResources,
-  searchFieldSearchResults,
+  contentTypeResults,
 };

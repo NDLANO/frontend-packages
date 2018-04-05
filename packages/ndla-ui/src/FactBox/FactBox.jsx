@@ -23,15 +23,22 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const FactBox = ({ children }) => (
+const FactBox = ({ children, dangerouslySetInnerHTML }) => (
   <aside {...classes()}>
-    <div {...classes('content')}>{children}</div>
+    <div
+      {...classes('content')}
+      dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+      {children}
+    </div>
     <Button {...classes('button')} onClick={toggleFactBox} />
   </aside>
 );
 
 FactBox.propTypes = {
-  children: PropTypes.node.isRequired,
+  dangerouslySetInnerHTML: PropTypes.shape({
+    __html: PropTypes.string.isRequired,
+  }),
+  children: PropTypes.node,
 };
 
 export default FactBox;

@@ -8,15 +8,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ChevronRight } from 'ndla-icons/common';
+
 import SafeLink from '../common/SafeLink';
 
-const BreadcrumbItem = ({ to, children, classes, extraClass, isCurrent }) => (
-  <li {...classes('item', extraClass)}>
+const BreadcrumbItem = ({ to, children, classes, isCurrent, home }) => (
+  <li {...classes('item', { home })}>
     {isCurrent ? (
       <span>{children}</span>
     ) : (
       <SafeLink to={to}>{children}</SafeLink>
     )}
+    {!home && <ChevronRight />}
   </li>
 );
 
@@ -25,7 +28,11 @@ BreadcrumbItem.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
   isCurrent: PropTypes.bool,
-  extraClass: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  home: PropTypes.bool,
+};
+
+BreadcrumbItem.defaultProps = {
+  home: false,
 };
 
 export default BreadcrumbItem;

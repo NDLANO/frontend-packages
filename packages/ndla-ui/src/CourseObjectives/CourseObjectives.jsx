@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import BEMHelper from 'react-bem-helper'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
 import ClickToggle from '../common/ClickToggle';
 import Dialog from '../Dialog';
 
@@ -10,12 +10,9 @@ const classes = new BEMHelper({
   outputIsString: true,
 });
 
-const CourseObjectivesWrapper = ({
-  children,
-  ...rest,
-}) => (
+const CourseObjectivesWrapper = ({ children, ...rest }) => (
   <div {...rest} {...classes('wrapper')}>
-    { children }
+    {children}
   </div>
 );
 
@@ -25,16 +22,12 @@ CourseObjectivesWrapper.propTypes = {
 
 export class CourseObjectivesDialog extends Component {
   constructor(props) {
-    super(props)
-    this.state = { isOpen: false }
+    super(props);
+    this.state = { isOpen: false };
   }
 
   render() {
-    const {
-      label,
-      closeLabel,
-      children,
-    } = this.props
+    const { label, closeLabel, children } = this.props;
 
     return (
       <CourseObjectivesWrapper>
@@ -48,17 +41,15 @@ export class CourseObjectivesDialog extends Component {
           title={label}
           noScrollDisabled
           stripped
-          buttonClassName='c-course-objectives__button c-course-objectives__button--article'>
-            <Dialog
-              messages={{ close: closeLabel }}
-              modifier={["active", "large"]}>
-              <CourseObjectives>
-                { children }
-              </CourseObjectives>
-            </Dialog>
+          buttonClassName="c-course-objectives__button c-course-objectives__button--article">
+          <Dialog
+            messages={{ close: closeLabel }}
+            modifier={['active', 'large']}>
+            <CourseObjectives>{children}</CourseObjectives>
+          </Dialog>
         </ClickToggle>
       </CourseObjectivesWrapper>
-    )
+    );
   }
 }
 
@@ -68,15 +59,12 @@ CourseObjectivesDialog.propTypes = {
   children: PropTypes.node,
 };
 
-export const CourseObjectives = ({
-  children,
-}) =>
-<div className={classes()}>
-  { children }
-</div>
+export const CourseObjectives = ({ children }) => (
+  <div className={classes()}>{children}</div>
+);
 
 CourseObjectives.propTypes = {
   children: PropTypes.node,
 };
 
-export default CourseObjectives
+export default CourseObjectives;

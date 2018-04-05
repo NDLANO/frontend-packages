@@ -112,7 +112,11 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseExample />}
-              courseObjectives={<CourseObjectivesDialog label="Kompetansemål" closeLabel="Lukk">{ courseObjectives }</CourseObjectivesDialog>}>
+              courseObjectives={
+                <CourseObjectivesDialog label="Kompetansemål" closeLabel="Lukk">
+                  {courseObjectives}
+                </CourseObjectivesDialog>
+              }>
               {articleChildren}
             </Article>
           </OneColumn>

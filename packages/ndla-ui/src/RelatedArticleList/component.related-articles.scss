@@ -1,5 +1,12 @@
 .c-related-articles {
   text-align: center;
+
+  &:before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
   &__component-title {
     margin: $spacing--large 0 $spacing;
     @include inuit-font-size(18px);
@@ -65,10 +72,10 @@
     margin: 0 0 $spacing--small 0;
     font-weight: $font-weight-semibold;
     display: flex;
-    align-items: center;
 
     .c-content-type-badge {
       flex-shrink: 0;
+      margin-top: 1px;
     }
   }
 

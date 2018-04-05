@@ -11,8 +11,6 @@ import {
   Footer,
   LicenseByline,
   TopicIntroductionList,
-  Breadcrumb,
-  BreadcrumbBlock,
   PageContainer,
   Content,
   LayoutItem,
@@ -23,12 +21,13 @@ import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
-import { topicList, subjectList } from '../dummydata/index';
+import { topicList } from '../dummydata/index';
 import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
 import LicenseExample from './article/LicenseExample';
 import ConceptExample from './organisms/ConceptExample';
+import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -44,25 +43,14 @@ storiesOf('Sammensatte moduler', module)
   .add('Brødsmulesti', () => (
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
-      <Breadcrumb
-        toSubjects={() => '#'}
-        subjectsTitle="Fag"
-        subject={subjectList[1]}
-        topicPath={topicList.slice(0, -1)}
-        toTopic={() => '#'}
-      />
+      <Breadcrumb />
       <h2 className="u-heading">Brødsmulesti-blokkeksempel</h2>
       <p>
         Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den
         ligger i header. På små enheter vil blokkvarianten gjemmes.
         Brødsmulestien er fortsatt tilgjengelig øverst på siden.
       </p>
-      <BreadcrumbBlock
-        fadeIn
-        subject={subjectList[1]}
-        topicPath={topicList.slice(0, -1)}
-        toTopic={() => '#'}
-      />
+      <BreadcrumbBlock />
     </Center>
   ))
   .add('Begrepsforklaring', () => (

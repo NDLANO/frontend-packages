@@ -19,7 +19,15 @@ export const logoClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Logo = ({ name, to, isBeta, cssModifier, color, large }) => {
+export const Logo = ({
+  name,
+  to,
+  isBeta,
+  cssModifier,
+  color,
+  large,
+  label,
+}) => {
   const beta = isBeta ? <Beta /> : null;
   const modifiers = { large };
 
@@ -32,7 +40,7 @@ export const Logo = ({ name, to, isBeta, cssModifier, color, large }) => {
   }
 
   const logo = to ? (
-    <SafeLink to={to}>
+    <SafeLink to={to} aria-label={label}>
       <SvgLogo name={name} color={color} /> {beta}
     </SafeLink>
   ) : (
@@ -52,6 +60,7 @@ Logo.propTypes = {
       hash: PropTypes.string,
     }),
   ]),
+  label: PropTypes.string,
   altText: PropTypes.string.isRequired,
   cssModifier: PropTypes.string,
   large: PropTypes.bool,

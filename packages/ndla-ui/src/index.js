@@ -24,6 +24,7 @@ export {
   FrontpageSubjectsSection,
   FrontpageHighlighted,
   FrontpageInfo,
+  FrontpageSearchSection,
 } from './Frontpage';
 
 export { default as ContentCard } from './ContentCard';

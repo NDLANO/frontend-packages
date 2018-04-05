@@ -1,5 +1,10 @@
 .c-frontpage-highlighted {
-  margin-top: $spacing--large + $spacing;
+  margin-top: $spacing--medium;
+
+  @include mq(tablet) {
+    margin-top: $spacing--large + $spacing;
+  }
+
   &__heading {
     font-weight: $font-weight-bold;
     text-transform: uppercase;

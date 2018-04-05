@@ -8,6 +8,7 @@ import {
   ContentCard,
   OneColumn,
   FrontpageInfo,
+  FrontpageSearchSection,
   InfoWidget,
 } from 'ndla-ui';
 import { breakpoints } from 'ndla-util';
@@ -27,6 +28,7 @@ class FrontpageExample extends Component {
     return (
       <Fragment>
         <FrontpageHeader
+          heading="Nasjonal digital læringsarena"
           searchFieldValue=""
           onSearchFieldChange={() => {}}
           searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
@@ -317,6 +319,11 @@ class FrontpageExample extends Component {
             />
           </FrontpageSubjectsWrapper>
           <OneColumn>
+            <FrontpageSearchSection
+              heading="Søk"
+              searchFieldValue=""
+              onSearchFieldChange={() => {}}
+            />
             <FrontpageHighlighted heading="Aktuelt">
               {contentCards.slice(0, 4).map(card => (
                 <div key={`slide-${card.id}`}>

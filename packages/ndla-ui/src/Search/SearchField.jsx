@@ -130,7 +130,6 @@ const SearchField = ({
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,
-  onFilterRemove: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(

@@ -15,6 +15,7 @@ const FrontpageHeader = ({
   searchFieldPlaceholder,
   links,
   messages,
+  heading,
 }) => (
   <header {...classes()}>
     <div {...classes('inner-background')} />
@@ -35,7 +36,7 @@ const FrontpageHeader = ({
           <button {...classes('menu-button')}>{messages.menuButton}</button>
           <Logo
             to="#"
-            altText="Nasjonal digital læringsarena"
+            label={heading}
             cssModifier="white"
             large
             color="currentColor"
@@ -53,6 +54,7 @@ const FrontpageHeader = ({
 );
 
 FrontpageHeader.propTypes = {
+  heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   searchFieldPlaceholder: PropTypes.string.isRequired,

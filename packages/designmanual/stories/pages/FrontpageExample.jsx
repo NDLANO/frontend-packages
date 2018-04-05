@@ -32,6 +32,7 @@ class FrontpageExample extends Component {
           searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
           messages={{
             searchFieldTitle: 'Søk',
+            menuButton: 'Meny',
           }}
           links={[
             {

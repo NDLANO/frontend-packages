@@ -18,34 +18,37 @@ const FrontpageHeader = ({
 }) => (
   <header {...classes()}>
     <div {...classes('inner-background')} />
-    <OneColumn noPadding>
-      <nav {...classes('navigation')}>
-        <ul>
-          {links.map(link => (
-            <li key={link.url}>
-              <SafeLink to={link.url}>{link.text}</SafeLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </OneColumn>
-    <OneColumn>
-      <div {...classes('content')}>
-        <Logo
-          to="#"
-          altText="Nasjonal digital læringsarena"
-          cssModifier="white"
-          large
-          color="currentColor"
-        />
-        <SearchField
-          value={searchFieldValue}
-          onChange={onSearchFieldChange}
-          placeholder={searchFieldPlaceholder}
-          messages={messages}
-        />
-      </div>
-    </OneColumn>
+    <div {...classes('wrapper')}>
+      <OneColumn noPadding>
+        <nav {...classes('navigation')}>
+          <ul>
+            {links.map(link => (
+              <li key={link.url}>
+                <SafeLink to={link.url}>{link.text}</SafeLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </OneColumn>
+      <OneColumn>
+        <div {...classes('content')}>
+          <button {...classes('menu-button')}>{messages.menuButton}</button>
+          <Logo
+            to="#"
+            altText="Nasjonal digital læringsarena"
+            cssModifier="white"
+            large
+            color="currentColor"
+          />
+          <SearchField
+            value={searchFieldValue}
+            onChange={onSearchFieldChange}
+            placeholder={searchFieldPlaceholder}
+            messages={messages}
+          />
+        </div>
+      </OneColumn>
+    </div>
   </header>
 );
 
@@ -55,6 +58,7 @@ FrontpageHeader.propTypes = {
   searchFieldPlaceholder: PropTypes.string.isRequired,
   messages: PropTypes.shape({
     searchFieldTitle: PropTypes.string.isRequired,
+    menuButton: PropTypes.string.isRequired,
   }).isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({

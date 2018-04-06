@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ContentTypeBadge } from 'ndla-ui';
 import SafeLink from '../common/SafeLink';

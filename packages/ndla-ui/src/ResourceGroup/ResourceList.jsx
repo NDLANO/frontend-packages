@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Link from 'react-router-dom/Link';
@@ -29,17 +29,17 @@ const Resource = ({
   const linkProps = resourceToLinkProps(resource);
   const hidden = resource.additional ? !showAdditionalResources : isHidden;
 
-  const linkContent = [
-    <div key="img" {...classes('icon o-flag__img')}>
-      {icon}
-    </div>,
-    <div key="body" {...classes('body o-flag__body')}>
-      <h1 {...classes('title')}>{resource.name}</h1>
-      {resource.additional ? (
-        <Additional className="c-icon--20 u-margin-left-tiny" />
-      ) : null}
-    </div>,
-  ];
+  const linkContent = (
+    <Fragment>
+      <div {...classes('icon o-flag__img')}>{icon}</div>
+      <div {...classes('body o-flag__body')}>
+        <h1 {...classes('title')}>{resource.name}</h1>
+        {resource.additional ? (
+          <Additional className="c-icon--20 u-margin-left-tiny" />
+        ) : null}
+      </div>
+    </Fragment>
+  );
 
   const link = linkProps.href ? (
     <a {...linkProps} {...classes('link o-flag o-flag--top')}>

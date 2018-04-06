@@ -28,7 +28,6 @@ FrontpageSearchSection.propTypes = {
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   heading: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 export default FrontpageSearchSection;

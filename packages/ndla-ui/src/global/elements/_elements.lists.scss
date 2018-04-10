@@ -1,24 +1,27 @@
-ul, ol {
+ul,
+ol {
   margin: $spacing--large 0;
   padding: 0 1rem 0 2rem;
   @include mq(desktop) {
     padding: 0 1rem 0 0;
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin: $spacing 0;
   }
 }
 
 ul {
-  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='5' r='3' fill='#{urlEncodeColor($brand-color--tertiary)} ' /></svg>");
+  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='5' r='3' fill='#{urlEncodeColor($brand-color--secondary)} ' /></svg>");
 }
 
 li {
   line-height: 1.7rem;
   margin-bottom: $spacing--small;
 }
-li ul, li ol {
+li ul,
+li ol {
   margin-top: $spacing;
   margin-left: $spacing;
 }
@@ -28,7 +31,7 @@ ol {
 
 $diameter: 30px;
 
-ol >li {
+ol > li {
   display: block;
   position: relative;
   margin-bottom: $spacing;

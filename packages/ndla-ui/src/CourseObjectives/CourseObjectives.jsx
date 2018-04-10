@@ -39,14 +39,17 @@ export class CourseObjectivesDialog extends Component {
             });
           }}
           title={label}
-          noScrollDisabled
-          stripped
           buttonClassName="c-course-objectives__button c-course-objectives__button--article">
-          <Dialog
-            messages={{ close: closeLabel }}
-            modifier={['active', 'large']}>
-            <CourseObjectives>{children}</CourseObjectives>
-          </Dialog>
+          {onClose => (
+            <Dialog
+              hidden={!this.state.isOpen}
+              onClose={onClose}
+              disablePortal
+              messages={{ close: closeLabel }}
+              modifier={['active', 'large']}>
+              <CourseObjectives>{children}</CourseObjectives>
+            </Dialog>
+          )}
         </ClickToggle>
       </CourseObjectivesWrapper>
     );

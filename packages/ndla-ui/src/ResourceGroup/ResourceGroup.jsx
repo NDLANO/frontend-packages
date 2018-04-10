@@ -51,18 +51,20 @@ class ResourceGroup extends Component {
     const normalResources = resources.filter(res => !res.additional);
     return resources.length > 0 ? (
       <section {...classes('', contentType, className)}>
-        {additionalResources.length > 0 && (
-          <ResourceToggleFilter
-            checked={showAdditionalResources}
-            label={messages.toggleFilterLabel}
-            onClick={() =>
-              this.setState(prevState => ({
-                showAdditionalResources: !prevState.showAdditionalResources,
-              }))
-            }
-          />
-        )}
-        <ResourcesTitle>{title}</ResourcesTitle>
+        <header {...classes('header')}>
+          {additionalResources.length > 0 && (
+            <ResourceToggleFilter
+              checked={showAdditionalResources}
+              label={messages.toggleFilterLabel}
+              onClick={() =>
+                this.setState(prevState => ({
+                  showAdditionalResources: !prevState.showAdditionalResources,
+                }))
+              }
+            />
+          )}
+          <ResourcesTitle>{title}</ResourcesTitle>
+        </header>
         <ResourceList
           onClick={this.showAdditionalResourcesFromLink}
           showAdditionalResources={showAdditionalResources}
@@ -90,8 +92,6 @@ ResourceGroup.propTypes = {
     activateAdditionalResources: PropTypes.string.isRequired,
     noCoreResourcesAvailable: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
-    showMore: PropTypes.string.isRequired,
-    showLess: PropTypes.string.isRequired,
   }),
 };
 

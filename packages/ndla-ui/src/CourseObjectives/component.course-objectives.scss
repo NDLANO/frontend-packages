@@ -30,6 +30,12 @@
       z-index: 9;
       right: 0;
       top: 0;
+
+      &:hover,
+      &:focus,
+      &:active {
+        border: none;
+      }
     }
   }
 

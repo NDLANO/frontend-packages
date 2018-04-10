@@ -229,23 +229,6 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
-  ))
-  .add('Kompetansemål', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu />
-        <TasksAndActivitiesHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </TasksAndActivitiesHero>
-        <ArticleExercise />
-      </Content>
-    </PageContainer>
   ));
 
 storiesOf('Emnesider', module)

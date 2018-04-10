@@ -9,13 +9,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { classes } from './ResourcesWrapper';
+import { SubjectBadge } from '../ContentTypeBadge';
 
 const ResourceTitle = ({ children }) => (
-  <h1 {...classes('title')}>{children}</h1>
+  <header {...classes('title-wrapper')}>
+    <SubjectBadge size="large" background />
+    <h1 {...classes('title')}>{children}</h1>
+  </header>
 );
 
 ResourceTitle.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default ResourceTitle;

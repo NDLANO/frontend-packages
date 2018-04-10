@@ -1,0 +1,19 @@
+.c-frontpage-highlighted {
+  margin-top: $spacing--medium;
+
+  @include mq(tablet) {
+    margin-top: $spacing--large + $spacing;
+  }
+
+  &__heading {
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    @include font-size(16px, 32px);
+    margin: 0 0 $spacing--small 0;
+
+    @include mq(tablet) {
+      margin: 0 0 $spacing 0;
+      @include font-size(22px);
+    }
+  }
+}

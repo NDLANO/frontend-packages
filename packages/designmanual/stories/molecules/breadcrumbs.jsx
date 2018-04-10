@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from 'ndla-ui';
 
 const items = [
@@ -33,7 +33,13 @@ const items = [
   },
 ];
 
-export const BreadcrumbDefault = () => <Breadcrumb items={items} />;
+export const BreadcrumbDefault = ({ onlySubject = false }) => (
+  <Breadcrumb items={onlySubject ? items.slice(0, 2) : items} />
+);
+
+BreadcrumbDefault.propTypes = {
+  onlySubject: PropTypes.bool,
+};
 
 export default BreadcrumbDefault;
 

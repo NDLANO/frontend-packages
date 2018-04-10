@@ -1,0 +1,164 @@
+$subject-margin: $spacing--medium + $spacing--large;
+$subject-section-padding: 100px;
+
+@import './component.subject-header';
+@import './component.subject-shortcut';
+@import './component.subject-links';
+@import './component.subject-archive';
+@import './component.subject-carousel';
+@import './component.subject-topic-shortcuts';
+@import './component.subject-concepts';
+@import './component.subject-about';
+@import './component.subject-new-content';
+
+.c-subject-content {
+  @include mq(tablet) {
+    margin-bottom: $subject-section-padding;
+  }
+
+  &__breadcrumb {
+    display: none;
+    margin: $spacing--medium 0 0 $subject-margin;
+
+    @include mq (tablet) {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: column;
+    margin-top: $spacing--small;
+
+    @include mq(tablet) {
+      flex-flow: row;
+      margin-top: $spacing--large;
+    }
+
+    & > *:first-child {
+      @include mq(tablet) {
+        margin-right: 80px;
+      }
+    }
+
+    &--twoColumns {
+      flex-flow: column;
+
+      & > *:first-child {
+        @include mq(tablet) {
+          margin-right: 0;
+          margin-bottom: $subject-section-padding;
+        }
+      }
+    }
+  }
+}
+
+.c-subject-secondary-content {
+  background: $brand-grey--lightest;
+  padding: $spacing 0;
+  margin-top: $spacing--large;
+
+  @include mq(tablet) {
+    padding: 100px 0 $spacing--large 0;
+    margin-bottom: 100px;
+    margin-top: 0;
+  }
+}
+
+.c-subject-sidebar-wrapper {
+  flex-basis: 390px;
+  flex-shrink: 0;
+  margin: 0 $spacing;
+
+  @include mq(tablet) {
+    margin: 9px 0 0 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.c-subject-social {
+  &__content {
+    display: none;
+
+    @include mq(tablet) {
+      display: flex;
+    }
+  }
+
+  &__section {
+    flex-basis: 50%;
+    &:nth-child(odd) {
+      margin-right: $spacing;
+    }
+  }
+
+  .fb-embedded {
+    width: 100% !important;
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.c-subject-flex {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $spacing--large;
+
+  @include mq(tablet) {
+    flex-direction: row;
+    margin-bottom: $subject-section-padding;
+  }
+
+  &--noMargin {
+    margin-bottom: 0;
+  }
+
+  &__child {
+    box-sizing: border-box;
+
+    @include mq(tablet) {
+      flex-basis: 50%;
+      flex-grow: 1;
+      flex-direction: row;
+      margin-right: $spacing--large;
+    }
+
+    &:last-child {
+      & > * {
+        @include mq($until: tablet) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    & > * {
+      @include mq(tablet) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.c-subject-section-title {
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  @include font-size(16px, 32px);
+  margin: 0 0 $spacing--small 0;
+
+  @include mq(tablet) {
+    margin: 0 0 $spacing 0;
+    @include font-size(22px);
+  }
+}
+
+.c-subject-child-content {
+  padding: 0 $spacing;
+
+  @include mq(tablet) {
+    padding: 0 0 0 $subject-margin;
+  }
+}

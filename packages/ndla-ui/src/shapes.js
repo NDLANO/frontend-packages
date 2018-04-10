@@ -59,6 +59,13 @@ export const ResourceShape = PropTypes.shape({
   primary: PropTypes.bool,
 });
 
+export const ShortcutShape = PropTypes.shape({
+  tooltip: PropTypes.string.isRequired,
+  contentType: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+});
+
 export const ContentTypeShape = PropTypes.oneOf([
   contentTypes.SUBJECT_MATERIAL,
   contentTypes.TASKS_AND_ACTIVITIES,

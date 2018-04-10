@@ -29,6 +29,7 @@ const packagePatterns = getPackages().map(p => {
   return path.resolve(p, SRC_DIR, JS_FILES_PATTERN);
 });
 
+console.log(packagePatterns);
 // Initialize watcher
 const watcher = chokidar.watch(packagePatterns, {
   ignored: [IGNORE_PATTERN],

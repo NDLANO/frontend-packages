@@ -15,10 +15,21 @@ export const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ResourcesWrapper = ({ children }) => <div {...classes()}>{children}</div>;
+const ResourcesWrapper = ({ children, header, subjectPage }) => (
+  <section {...classes('', { subjectPage })}>
+    {header}
+    <div {...classes('content')}>{children}</div>
+  </section>
+);
 
 ResourcesWrapper.propTypes = {
-  children: PropTypes.node,
+  header: PropTypes.shape().isRequired,
+  children: PropTypes.node.isRequired,
+  subjectPage: PropTypes.bool,
+};
+
+ResourcesWrapper.defaultProps = {
+  subjectPage: false,
 };
 
 export default ResourcesWrapper;

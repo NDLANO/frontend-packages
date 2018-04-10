@@ -11,7 +11,7 @@
     border-color: $subject-material-dark;
 
     svg {
-      color: $subject-material-dark;
+      color: $subject-material-dark !important;
       margin-top: 4px;
     }
 
@@ -24,7 +24,7 @@
     border-color: $tasks-and-activities-dark;
 
     svg {
-      color: $tasks-and-activities-dark;
+      color: $tasks-and-activities-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -37,7 +37,7 @@
 
     svg {
       margin-top: 4px;
-      color: $assessment-resource-dark;
+      color: $assessment-resource-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -50,7 +50,7 @@
 
     svg {
       margin-top: 2px;
-      color: $subject-dark;
+      color: $subject-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -78,7 +78,7 @@
     }
 
     svg {
-      color: $external-learning-resource-dark;
+      color: $external-learning-resource-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -106,7 +106,7 @@
     }
 
     svg {
-      color: $source-material-dark;
+      color: $source-material-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -139,7 +139,7 @@
     }
 
     svg {
-      color: $learning-path-dark;
+      color: $learning-path-dark !important;
     }
 
     &.c-content-type-badge--background {

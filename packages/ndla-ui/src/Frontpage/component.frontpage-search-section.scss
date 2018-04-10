@@ -1,0 +1,11 @@
+.c-frontpage-search-section {
+  margin-top: $spacing;
+
+  @include mq(tablet) {
+    display: none;
+  }
+
+  &__heading {
+    @include visually-hidden();
+  }
+}

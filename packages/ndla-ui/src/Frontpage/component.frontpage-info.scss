@@ -1,0 +1,29 @@
+.c-frontpage-info {
+  display: flex;
+  flex-flow: column;
+  margin-top: $spacing--large;
+
+  @include mq(tablet) {
+    flex-flow: row;
+    margin-top: $spacing--large + $spacing;
+  }
+
+  & > * {
+    margin-top: $spacing--large;
+
+    @include mq(tablet) {
+      flex-basis: 33.3333333%;
+      flex-grow: 0;
+      margin-top: 0;
+      margin-right: $spacing;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

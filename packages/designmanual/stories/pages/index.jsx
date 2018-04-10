@@ -19,20 +19,14 @@ import {
   SourceMaterialHero,
   SubjectBadge,
   ErrorMessage,
-  FilterList,
   OneColumn,
   PageContainer,
-  ResourcesWrapper,
-  ResourcesTitle,
-  TopicIntroductionList,
-  LayoutItem,
   Content,
 } from 'ndla-ui';
 
-import {
-  MastheadWithTopicMenu,
-  MastheadWithLogo,
-} from '../molecules/mastheads';
+import { MastheadWithTopicMenu } from '../molecules/mastheads';
+import Subject, { SubjectWithTwoColumn } from './Subject';
+
 import FooterExample from '../molecules/footers';
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
@@ -41,17 +35,8 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import article, { topicList } from '../../dummydata/index';
 import Breadcrumb from '../molecules/breadcrumbs';
-
-const ResourcesSubTopics = () => (
-  <LayoutItem layout="extend">
-    <ResourcesWrapper>
-      <ResourcesTitle>Emner</ResourcesTitle>
-      <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
-    </ResourcesWrapper>
-  </LayoutItem>
-);
+import Frontpage from './FrontpageExample';
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
@@ -232,79 +217,32 @@ storiesOf('Læringsressurser', module)
 
 storiesOf('Emnesider', module)
   .add('1. Fagoversikt', () => (
-    <PageContainer>
+    <PageContainer background>
       <Content>
-        <MastheadWithLogo />
-        <OneColumn cssModifier="clear">
-          <article>
-            <h1>Yrkesfag</h1>
-            <ul>
-              {[
-                'Naturfag',
-                'Engelsk',
-                'Helsearbeiderfag vg2',
-                'Barne- og ungdomsarbeiderfag Vg2',
-                'Brønnteknikk Vg2BETA',
-                'Bygg- og anleggsteknikk Vg1BETA',
-                'Design og håndverk Vg1',
-                'Elektrofag Vg1',
-                'Helse- og oppvekstfag Vg1',
-                'Helsearbeiderfag Vg2 ',
-                'IKT-servicefag Vg2',
-                'Kokk- og servitørfag Vg2',
-                'Naturbruk Vg1',
-                'Reiseliv Vg2',
-                'Restaurant- og matfag Vg1',
-                'Romteknologi Vg3',
-                'Salg, service og sikkerhet Vg2',
-                'Service og samferdsel Vg1',
-                'Teknikk og industriell produksjon Vg1',
-                'Transport og logistikk Vg2',
-              ].map(subject => (
-                <li key={subject}>
-                  <a href="https://example.com">{subject}</a>
-                </li>
-              ))}
-            </ul>
-          </article>
-        </OneColumn>
+        <Frontpage />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
   .add('2. Fag', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <OneColumn>
-          <div className="c-article">
-            <LayoutItem layout="center">
-              <h1 className="c-article__title">Mediefag</h1>
-              <FilterList
-                options={[
-                  { title: 'VG1', value: 'VG1' },
-                  { title: 'VG2', value: 'VG2' },
-                ]}
-                values={['VG1']}
-              />
-            </LayoutItem>
-            <ResourcesSubTopics />
-          </div>
-        </OneColumn>
+        <Subject />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('3. Hovedemne', () => (
+  .add('3. Fag med to kolonner', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectWithTwoColumn />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('4. Hovedemne', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
@@ -328,7 +266,7 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('4. Underemne', () => (
+  .add('5. Underemne', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />

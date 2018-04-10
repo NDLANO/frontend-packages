@@ -48,7 +48,7 @@ export default class DisplayOnPageYOffset extends Component {
   }
 
   render() {
-    return <Fade show={this.state.show}>{this.props.children}</Fade>;
+    return <Fade in={this.state.show}>{this.props.children}</Fade>;
   }
 }
 

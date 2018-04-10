@@ -55,7 +55,10 @@
 
   .c-dialog__content--large {
     max-width: 970px;
-    max-height: 85vh;
+
+    @include mq (tablet) {
+      max-height: 85vh;
+    }
   }
 
   .c-dialog__content--fullscreen {

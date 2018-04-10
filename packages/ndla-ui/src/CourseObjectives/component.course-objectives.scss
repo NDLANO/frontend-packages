@@ -2,7 +2,11 @@
   background: $brand-color--lighter;
   height: 100%;
   margin-top: -$spacing;
-  padding: $spacing--large;
+  padding: $spacing--large $spacing $spacing 0;
+
+  @include mq(tablet) {
+    padding: $spacing--large;
+  }
 
   &__wrapper {
     display: block;

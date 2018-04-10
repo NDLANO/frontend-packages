@@ -65,7 +65,7 @@ ToggleSearchButton.propTypes = {
   messages: PropTypes.shape({
     buttonText: PropTypes.string.isRequired,
   }).isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
 };

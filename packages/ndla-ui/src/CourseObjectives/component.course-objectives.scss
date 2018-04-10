@@ -39,13 +39,26 @@
     }
   }
 
-  h2 {
+  &__heading {
     margin-top: 0;
     color: $brand-color;
     @include inuit-font-size(22px, 32px);
   }
 
-  p, li {
+  &__topic-heading {
+    margin: 0 0 $spacing 0;
+    color: $brand-color;
+    @include inuit-font-size(18px, 23px);
+    font-weight: $font-weight-semibold;
+  }
+
+  &__topic-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  p,
+  li {
     font-family: $font-serif;
   }
 }

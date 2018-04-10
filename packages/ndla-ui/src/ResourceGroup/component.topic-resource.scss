@@ -20,11 +20,8 @@
   @include fadeInLeftItems(li, 40);
 }
 .c-topic-resource__body {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .c-topic-resource__item {
   max-width: 100%;
@@ -35,6 +32,7 @@
 .c-topic-resource__link {
   display: flex;
   color: $brand-color--dark;
+  align-items: center;
 
   h1 {
     box-shadow: $link;
@@ -63,12 +61,19 @@
   text-align: center;
   width: auto;
 }
+
 .c-topic-resource__title {
-  @include inuit-font-size(20px);
   text-transform: none;
   letter-spacing: 0;
   margin: 0;
+  display: inline;
+  @include font-size(18px);
+
+  @include mq(tablet) {
+    @include font-size(20px);
+  }
 }
+
 .c-topic-resource__button-wrapper {
   text-align: center;
 }

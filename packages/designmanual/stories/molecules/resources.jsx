@@ -80,8 +80,6 @@ export const Resources = ({ onlyAdditional }) => (
           noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
           activateAdditionalResources: 'Vis tilleggsstoff',
           toggleFilterLabel: 'Tilleggsstoff',
-          showLess: 'Vis mindre',
-          showMore: 'Vis mer',
         }}
         resourceToLinkProps={toLink}
       />

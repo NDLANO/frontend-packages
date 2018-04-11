@@ -1,17 +1,6 @@
 .c-course-objectives {
-  background: $brand-color--lighter;
   height: 100%;
-  margin-top: -$spacing;
-  padding: $spacing--large $spacing $spacing 0;
 
-  @include mq(tablet) {
-    padding: $spacing--large;
-  }
-
-  &__wrapper {
-    display: block;
-    height: 100%;
-  }
   &--dialog {
     top: 0;
     left: 0;
@@ -49,20 +38,95 @@
     @include inuit-font-size(22px, 32px);
   }
 
+  &__topic {
+    margin-bottom: $spacing;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--expandable {
+      margin-bottom: $spacing--small;
+      max-height: 35px;
+      transition: max-height 0.5s ease-in-out;
+
+      .c-course-objectives__topic-list {
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out 0.25s;
+      }
+    }
+
+    &--expanded {
+      max-height: 4000px;
+      .c-course-objectives {
+        &__topic-list {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
   &__topic-heading {
     margin: 0 0 $spacing 0;
+  }
+
+  &__topic-heading-button,
+  &__topic-heading {
     color: $brand-color;
     @include inuit-font-size(18px, 23px);
     font-weight: $font-weight-semibold;
   }
 
-  &__topic-list {
-    margin: 0;
-    padding: 0;
+  &__topic-heading-button {
+    background: none;
+    border: none;
+    margin: 0 0 0 -4px;
+    position: relative;
+    padding: $spacing--small/2 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    @include mq(desktop) {
+      margin: 0;
+    }
+
+    .c-icon {
+      @include mq(desktop) {
+        position: absolute;
+        left: -21px;
+        top: 9px;
+      }
+    }
   }
 
-  p,
-  li {
+  &__topic-list {
+    margin: 0 0 0 18px;
+    padding: 0;
+
+    @include mq(desktop) {
+      margin: 0;
+    }
+  }
+
+  &__topic-item,
+  &__description {
     font-family: $font-serif;
+  }
+
+  &__topic-item {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.c-course-objectives-dialog {
+  &__content {
+    padding: $spacing--large $spacing $spacing 0;
+
+    @include mq(tablet) {
+      padding: $spacing--large;
+    }
   }
 }

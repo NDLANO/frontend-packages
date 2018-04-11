@@ -208,6 +208,47 @@ $padding-left-narrow: 47px;
   }
 }
 
+.c-topic-menu {
+  &__competence {
+    flex-grow: 1;
+    background: $brand-color--lighter;
+
+    padding: $spacing;
+
+    @include mq(desktop) {
+      padding: $spacing--large;
+      margin: -($spacing + $spacing--small) $spacing 0 $spacing--medium;
+      min-height: 70vh;
+    }
+
+    & > * {
+      animation-name: fadeInLeft;
+      animation-duration: 0.5s;
+    }
+  }
+
+  &__competence-button {
+    @include mq(desktop) {
+      display: none;
+    }
+
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 0;
+    color: $brand-color;
+    background: none;
+    @include font-size(16px, 20px);
+    margin-bottom: $spacing;
+
+    .c-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 9px;
+    }
+  }
+}
+
 /* 4. */
 .c-topic-menu__subject {
   flex-shrink: 0;
@@ -227,36 +268,29 @@ $padding-left-narrow: 47px;
   }
 
   &__header {
-    padding-right: $spacing--large;
-    border-bottom: 1px solid rgba($brand-color, 0.3);
     margin: 0 0 $spacing 0;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    @include mq(desktop) {
+      border-bottom: 1px solid rgba($brand-color, 0.3);
+      padding-bottom: $spacing--small;
+    }
 
     & > h1 {
       @include inuit-font-size(20px);
       font-weight: $font-weight-bold;
-    margin: 0;
+      margin: 0;
 
       @include mq(desktop) {
-        padding-bottom: $spacing--small;
         @include inuit-font-size(26px);
       }
     }
   }
 
-  &__competence {
-    display: block;
-    position: absolute;
-    z-index: 5;
-    left: $spacing--medium;
-    right: $spacing;
-    height: 70vh;
-  }
-
   .c-course-objectives__button {
-    position: absolute;
-    top: 10px;
-    right: 0;
     @include inuit-font-size(14px, 18px);
     font-weight: $font-weight-bold;
     color: $brand-color;
@@ -390,7 +424,6 @@ $padding-left-narrow: 47px;
 }
 
 .c-topic-menu__link {
-  font-weight: 600;
   display: flex;
   align-items: center;
   width: 100%;
@@ -403,6 +436,10 @@ $padding-left-narrow: 47px;
   transition: all 0.1s ease-in-out;
   animation-name: fadeInLeft;
   animation-duration: 0.5s;
+
+  @include mq(desktop) {
+    font-weight: $font-weight-semibold;
+  }
 
   &:hover,
   &:active,

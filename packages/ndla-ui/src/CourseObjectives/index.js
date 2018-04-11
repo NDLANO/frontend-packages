@@ -1,4 +1,4 @@
-import CourseObjectives, { CourseObjectivesDialog } from './CourseObjectives';
+import CourseObjectives from './CourseObjectives';
 
-export { CourseObjectivesDialog };
+export { default as CourseObjectivesDialog } from './CourseObjectivesDialog';
 export default CourseObjectives;

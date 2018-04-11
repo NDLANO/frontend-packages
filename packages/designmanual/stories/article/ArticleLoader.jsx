@@ -17,8 +17,6 @@ import {
   ResourcesWrapper,
   ResourcesTitle,
   TopicIntroductionList,
-  CourseObjectivesDialog,
-  CourseObjectives,
 } from 'ndla-ui';
 import { Resources } from '../molecules/resources';
 import { fetchArticle } from './articleApi';
@@ -113,44 +111,7 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseExample />}
-              courseObjectives={
-                <CourseObjectivesDialog
-                  id="course-objectives-dialog"
-                  messages={{
-                    buttonText: 'Kompetansemål',
-                    closeButtonText: 'Lukk',
-                  }}>
-                  {headingId => (
-                    <CourseObjectives
-                      headingId={headingId}
-                      messages={{
-                        heading: 'Kompetansemål og læreplan',
-                        description:
-                          'Mål for opplæring er at elevene skal kunne',
-                      }}
-                      topics={[
-                        {
-                          heading: 'Emne',
-                          items: [
-                            {
-                              text:
-                                'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
-                            },
-                            {
-                              text:
-                                'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
-                            },
-                            {
-                              text:
-                                'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
-                            },
-                          ],
-                        },
-                      ]}
-                    />
-                  )}
-                </CourseObjectivesDialog>
-              }>
+              courseObjectives={courseObjectives}>
               {articleChildren}
             </Article>
           </OneColumn>
@@ -176,10 +137,10 @@ ArticleLoader.propTypes = {
   label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
+  courseObjectives: PropTypes.node,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
-  courseObjectives: PropTypes.node,
 };
 
 ArticleLoader.defaultProps = {

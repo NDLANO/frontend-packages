@@ -15,9 +15,9 @@ import BEMHelper from 'react-bem-helper';
 import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
 import debounce from 'lodash/debounce';
 
-import { Home } from 'ndla-icons/common';
+import { Home, Back } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import { Button, CourseObjectives } from 'ndla-ui';
+import { Button } from 'ndla-ui';
 import SafeLink from '../common/SafeLink';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
@@ -151,6 +151,8 @@ export default class TopicMenu extends Component {
     const disableMain = this.state.isNarrowScreen && expandedTopic;
     const disableSubTopic = disableMain && expandedSubtopic;
     const disableSubTopicLevel2 = disableSubTopic && expandedSubtopicLevel2;
+    const disableHeaderNavigation =
+      this.state.isNarrowScreen && courseObjectivesOpen;
 
     const subTopicLinkListMessages = {
       backButton: messages.back,
@@ -189,139 +191,161 @@ export default class TopicMenu extends Component {
         <div {...classes('content')}>
           {!disableMain && (
             <Fragment>
-              <div {...classes('back')}>
-                <SafeLink {...classes('back-link')} to="/">
-                  <Home {...classes('home-icon', '', 'c-icon--20')} />
-                  {messages.subjectOverview}
-                </SafeLink>
-              </div>
-              <div
-                {...classes('subject', {
-                  hasFilter: filterOptions && filterOptions.length > 0,
-                })}>
-                <div {...classes('subject__header')}>
-                  <h1>
-                    <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
-                  </h1>
-                  {courseObjectives ? (
-                    <Button
-                      className="c-course-objectives__button"
-                      stripped
-                      onClick={() =>
-                        this.setState({
-                          courseObjectivesOpen: !courseObjectivesOpen,
-                        })
-                      }>
-                      {courseObjectivesOpen ? (
-                        <span>
-                          Lukk kompetansemål <Cross />
-                        </span>
-                      ) : (
-                        'Kompetansemål'
-                      )}
-                    </Button>
-                  ) : null}
+              {!disableHeaderNavigation && (
+                <div {...classes('back')}>
+                  <SafeLink {...classes('back-link')} to="/">
+                    <Home {...classes('home-icon', '', 'c-icon--20')} />
+                    {messages.subjectOverview}
+                  </SafeLink>
                 </div>
-                {courseObjectivesOpen ? (
-                  <div {...classes('subject__competence')}>
-                    <CourseObjectives>{courseObjectives}</CourseObjectives>
+              )}
+              {!disableHeaderNavigation && (
+                <div
+                  {...classes('subject', {
+                    hasFilter:
+                      filterOptions &&
+                      filterOptions.length > 0 &&
+                      !courseObjectivesOpen,
+                  })}>
+                  <div {...classes('subject__header')}>
+                    <h1>
+                      <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
+                    </h1>
+                    {courseObjectives && (
+                      <Button
+                        className="c-course-objectives__button"
+                        stripped
+                        onClick={() =>
+                          this.setState({
+                            courseObjectivesOpen: !courseObjectivesOpen,
+                          })
+                        }>
+                        {courseObjectivesOpen ? (
+                          <span>
+                            Lukk kompetansemål <Cross />
+                          </span>
+                        ) : (
+                          'Kompetansemål'
+                        )}
+                      </Button>
+                    )}
                   </div>
-                ) : null}
-                {filterOptions &&
-                  filterOptions.length > 0 && (
-                    <FilterList
-                      options={filterOptions}
-                      values={filterValues}
-                      onChange={onFilterClick}
-                    />
-                  )}
-              </div>
+
+                  {!courseObjectivesOpen &&
+                    filterOptions &&
+                    filterOptions.length > 0 && (
+                      <FilterList
+                        options={filterOptions}
+                        values={filterValues}
+                        onChange={onFilterClick}
+                      />
+                    )}
+                </div>
+              )}
             </Fragment>
           )}
+          {courseObjectivesOpen && (
+            <div {...classes('competence')}>
+              <button
+                {...classes('competence-button')}
+                onClick={() =>
+                  this.setState({
+                    courseObjectivesOpen: false,
+                  })
+                }>
+                <Back />
+                Tilbake
+              </button>
+              {courseObjectives}
+            </div>
+          )}
+          {!courseObjectivesOpen && (
+            <div {...classes('subject-navigation')}>
+              {!disableMain && (
+                <Fragment>
+                  <div {...classes('section', 'main')}>
+                    <SafeLink
+                      to={toSubject()}
+                      className={classes('link', 'big').className}>
+                      <span {...classes('link-label')}>{messages.goTo}:</span>
+                      <span {...classes('link-target')}>
+                        {messages.subjectPage} ›
+                      </span>
+                    </SafeLink>
+                    <ul {...classes('list')}>
+                      {topics.map(topic => {
+                        const active = topic.id === expandedTopicId;
 
-          <div {...classes('subject-navigation')}>
-            {!disableMain && (
-              <Fragment>
-                <div {...classes('section', 'main')}>
-                  <SafeLink
-                    to={toSubject()}
-                    className={classes('link', 'big').className}>
-                    <span {...classes('link-label')}>{messages.goTo}:</span>
-                    <span {...classes('link-target')}>
-                      {messages.subjectPage} ›
-                    </span>
-                  </SafeLink>
-                  <ul {...classes('list')}>
-                    {topics.map(topic => {
-                      const active = topic.id === expandedTopicId;
-
-                      return (
-                        <li
-                          {...classes('topic-item', active && 'active')}
-                          key={topic.id}>
-                          <button
-                            {...classes('link')}
-                            onClick={event => this.handleClick(event, topic.id)}
-                            onKeyPress={event =>
-                              this.handleBtnKeyPress(event, topic.id)
-                            }>
-                            {topic.name}
-                          </button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </Fragment>
-            )}
-            {expandedTopic &&
-              !disableSubTopic && (
+                        return (
+                          <li
+                            {...classes('topic-item', active && 'active')}
+                            key={topic.id}>
+                            <button
+                              {...classes('link')}
+                              onClick={event =>
+                                this.handleClick(event, topic.id)
+                              }
+                              onKeyPress={event =>
+                                this.handleBtnKeyPress(event, topic.id)
+                              }>
+                              {topic.name}
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </Fragment>
+              )}
+              {expandedTopic &&
+                !disableSubTopic && (
+                  <SubtopicLinkList
+                    classes={classes}
+                    className={classes('section', subTopicModifiers).className}
+                    closeMenu={closeMenu}
+                    topic={expandedTopic}
+                    messages={subTopicLinkListMessages}
+                    goToTitle={messages.goTo}
+                    toTopic={toTopic}
+                    expandedSubtopicId={expandedSubtopicId}
+                    onSubtopicExpand={this.handleSubtopicExpand}
+                    onGoBack={this.handleOnGoBack}
+                    resourceToLinkProps={resourceToLinkProps}
+                  />
+                )}
+              {expandedSubtopic &&
+                !disableSubTopicLevel2 && (
+                  <SubtopicLinkList
+                    classes={classes}
+                    className={
+                      classes('section', ['sub-topic', 'no-border']).className
+                    }
+                    closeMenu={closeMenu}
+                    topic={expandedSubtopic}
+                    messages={subTopicLinkListMessages}
+                    toTopic={toTopic}
+                    expandedSubtopicId={expandedSubtopicLevel2Id}
+                    onSubtopicExpand={id => {
+                      this.handleSubtopicExpand(id, true);
+                    }}
+                    onGoBack={this.handleOnGoBack}
+                    resourceToLinkProps={resourceToLinkProps}
+                  />
+                )}
+              {expandedSubtopicLevel2 && (
                 <SubtopicLinkList
                   classes={classes}
-                  className={classes('section', subTopicModifiers).className}
+                  className={classes('section', ['sub-topic']).className}
                   closeMenu={closeMenu}
-                  topic={expandedTopic}
+                  topic={expandedSubtopicLevel2}
                   messages={subTopicLinkListMessages}
-                  goToTitle={messages.goTo}
                   toTopic={toTopic}
-                  expandedSubtopicId={expandedSubtopicId}
-                  onSubtopicExpand={this.handleSubtopicExpand}
                   onGoBack={this.handleOnGoBack}
                   resourceToLinkProps={resourceToLinkProps}
                 />
               )}
-            {expandedSubtopic &&
-              !disableSubTopicLevel2 && (
-                <SubtopicLinkList
-                  classes={classes}
-                  className={
-                    classes('section', ['sub-topic', 'no-border']).className
-                  }
-                  closeMenu={closeMenu}
-                  topic={expandedSubtopic}
-                  messages={subTopicLinkListMessages}
-                  toTopic={toTopic}
-                  expandedSubtopicId={expandedSubtopicLevel2Id}
-                  onSubtopicExpand={id => {
-                    this.handleSubtopicExpand(id, true);
-                  }}
-                  onGoBack={this.handleOnGoBack}
-                  resourceToLinkProps={resourceToLinkProps}
-                />
-              )}
-            {expandedSubtopicLevel2 && (
-              <SubtopicLinkList
-                classes={classes}
-                className={classes('section', ['sub-topic']).className}
-                closeMenu={closeMenu}
-                topic={expandedSubtopicLevel2}
-                messages={subTopicLinkListMessages}
-                toTopic={toTopic}
-                onGoBack={this.handleOnGoBack}
-                resourceToLinkProps={resourceToLinkProps}
-              />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </nav>
     );

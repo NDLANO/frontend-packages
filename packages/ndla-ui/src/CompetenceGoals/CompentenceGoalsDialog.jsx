@@ -5,9 +5,9 @@ import BEMHelper from 'react-bem-helper';
 import ClickToggle from '../common/ClickToggle';
 import Dialog from '../Dialog';
 
-const classes = BEMHelper('c-course-objectives-dialog');
+const classes = BEMHelper('c-compentence-goals-dialog');
 
-class CourseObjectivesDialog extends Component {
+class CompentenceGoalsDialog extends Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false };
@@ -44,7 +44,7 @@ class CourseObjectivesDialog extends Component {
   }
 }
 
-CourseObjectivesDialog.propTypes = {
+CompentenceGoalsDialog.propTypes = {
   id: PropTypes.string.isRequired,
   narrow: PropTypes.bool,
   wide: PropTypes.bool,
@@ -55,9 +55,9 @@ CourseObjectivesDialog.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
-CourseObjectivesDialog.defaultProps = {
+CompentenceGoalsDialog.defaultProps = {
   narrow: false,
   wide: false,
 };
 
-export default CourseObjectivesDialog;
+export default CompentenceGoalsDialog;

@@ -46,7 +46,7 @@ export default class TopicMenu extends Component {
 
     this.state = {
       isNarrowScreen: false,
-      courseObjectivesOpen: false,
+      competenceGoalsOpen: false,
     };
   }
 
@@ -124,9 +124,9 @@ export default class TopicMenu extends Component {
       onFilterClick,
       resourceToLinkProps,
       hideSearch,
-      courseObjectives,
+      competenceGoals,
     } = this.props;
-    const { courseObjectivesOpen } = this.state;
+    const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
     let expandedSubtopic = null;
     let expandedSubtopicLevel2 = null;
@@ -152,7 +152,7 @@ export default class TopicMenu extends Component {
     const disableSubTopic = disableMain && expandedSubtopic;
     const disableSubTopicLevel2 = disableSubTopic && expandedSubtopicLevel2;
     const disableHeaderNavigation =
-      this.state.isNarrowScreen && courseObjectivesOpen;
+      this.state.isNarrowScreen && competenceGoalsOpen;
 
     const subTopicLinkListMessages = {
       backButton: messages.back,
@@ -205,13 +205,13 @@ export default class TopicMenu extends Component {
                     hasFilter:
                       filterOptions &&
                       filterOptions.length > 0 &&
-                      !courseObjectivesOpen,
+                      !competenceGoalsOpen,
                   })}>
                   <div {...classes('subject__header')}>
                     <h1>
                       <SafeLink to={toSubject()}>{subjectTitle}</SafeLink>
                     </h1>
-                    {courseObjectives && (
+                    {competenceGoals && (
                       <Button
                         className={
                           classes('competence-toggle-button').className
@@ -219,10 +219,10 @@ export default class TopicMenu extends Component {
                         stripped
                         onClick={() =>
                           this.setState({
-                            courseObjectivesOpen: !courseObjectivesOpen,
+                            competenceGoalsOpen: !competenceGoalsOpen,
                           })
                         }>
-                        {courseObjectivesOpen ? (
+                        {competenceGoalsOpen ? (
                           <span>
                             {messages.compentenceGoalsToggleButtonClose}{' '}
                             <Cross />
@@ -234,7 +234,7 @@ export default class TopicMenu extends Component {
                     )}
                   </div>
 
-                  {!courseObjectivesOpen &&
+                  {!competenceGoalsOpen &&
                     filterOptions &&
                     filterOptions.length > 0 && (
                       <FilterList
@@ -247,22 +247,22 @@ export default class TopicMenu extends Component {
               )}
             </Fragment>
           )}
-          {courseObjectivesOpen && (
+          {competenceGoalsOpen && (
             <div {...classes('competence')}>
               <button
                 {...classes('competence-close-button')}
                 onClick={() =>
                   this.setState({
-                    courseObjectivesOpen: false,
+                    competenceGoalsOpen: false,
                   })
                 }>
                 <Back />
                 {messages.compentenceGoalsNarrowBackButton}
               </button>
-              {courseObjectives}
+              {competenceGoals}
             </div>
           )}
-          {!courseObjectivesOpen && (
+          {!competenceGoalsOpen && (
             <div {...classes('subject-navigation')}>
               {!disableMain && (
                 <Fragment>
@@ -348,12 +348,12 @@ export default class TopicMenu extends Component {
                 />
               )}
               {!disableMain &&
-                courseObjectives && (
+                competenceGoals && (
                   <button
                     {...classes('competence-open-button')}
                     onClick={() =>
                       this.setState({
-                        courseObjectivesOpen: true,
+                        competenceGoalsOpen: true,
                       })
                     }>
                     {messages.compentenceGoalsNarrowOpenButton}
@@ -406,5 +406,5 @@ TopicMenu.propTypes = {
   expandedSubtopicLevel2Id: PropTypes.string,
   isBeta: PropTypes.bool,
   hideSearch: PropTypes.bool,
-  courseObjectives: PropTypes.node,
+  competenceGoals: PropTypes.node,
 };

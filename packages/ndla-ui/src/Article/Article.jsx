@@ -108,8 +108,8 @@ export const Article = ({
   modifier,
   messages,
   children,
-  courseObjectives,
-  courseObjectivesNarrow,
+  compentenceGoals,
+  compentenceGoalsNarrow,
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license);
   const authors =
@@ -118,7 +118,7 @@ export const Article = ({
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          {courseObjectives}
+          {compentenceGoals}
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>
@@ -127,7 +127,7 @@ export const Article = ({
             {...{ messages, authors, updated, license, additional }}>
             {licenseBox}
           </ArticleByline>
-          {courseObjectivesNarrow}
+          {compentenceGoalsNarrow}
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -148,8 +148,8 @@ Article.propTypes = {
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
   additional: PropTypes.node,
-  courseObjectives: PropTypes.node,
-  courseObjectivesNarrow: PropTypes.node,
+  compentenceGoals: PropTypes.node,
+  compentenceGoalsNarrow: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
@@ -162,8 +162,8 @@ Article.propTypes = {
 Article.defaultProps = {
   licenseBox: null,
   additional: null,
-  courseObjectives: null,
-  courseObjectivesNarrow: null,
+  compentenceGoals: null,
+  compentenceGoalsNarrow: null,
   icon: null,
   children: null,
 };

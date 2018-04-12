@@ -24,7 +24,7 @@ import LicenseExample from './LicenseExample';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
 
-import { CourseObjectivesDialogExample } from '../pages/CourseObjectivesExample';
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
 const ResourcesSubTopics = () => (
   <ResourcesWrapper>
@@ -76,7 +76,7 @@ class ArticleLoader extends Component {
       label,
       hideResources,
       showSubTopics,
-      showCourseObjectives,
+      showCompentenceGoals,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -113,11 +113,11 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseExample />}
-              courseObjectives={
-                showCourseObjectives && <CourseObjectivesDialogExample wide />
+              compentenceGoals={
+                showCompentenceGoals && <CompentenceGoalsDialogExample wide />
               }
-              courseObjectivesNarrow={
-                showCourseObjectives && <CourseObjectivesDialogExample narrow />
+              compentenceGoalsNarrow={
+                showCompentenceGoals && <CompentenceGoalsDialogExample narrow />
               }>
               {articleChildren}
             </Article>
@@ -144,7 +144,7 @@ ArticleLoader.propTypes = {
   label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
-  showCourseObjectives: PropTypes.bool,
+  showCompentenceGoals: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,

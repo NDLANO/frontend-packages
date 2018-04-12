@@ -25,7 +25,7 @@ import {
 import { topicMenu, contentTypeResults } from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';
 
-import CourseObjectivesExample from '../pages/CourseObjectivesExample';
+import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 
 export const MastheadWithLogo = () => (
   <Masthead fixed>
@@ -160,9 +160,9 @@ class MastheadWithTopicMenu extends Component {
                   },
                 ]}
                 filterValues={['Medieuttrykk']}
-                courseObjectives={
-                  this.props.showCourseObjectives && (
-                    <CourseObjectivesExample menu />
+                competenceGoals={
+                  this.props.showCompentenceGoals && (
+                    <CompetenceGoalsExample menu />
                   )
                 }
                 onFilterClick={() => {}}
@@ -208,12 +208,12 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
-  showCourseObjectives: PropTypes.bool,
+  showCompentenceGoals: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
-  showCourseObjectives: false,
+  showCompentenceGoals: false,
   betaInfoContent: (
     <Fragment>
       <span>Du tester nå de nye nettsidene.</span>{' '}

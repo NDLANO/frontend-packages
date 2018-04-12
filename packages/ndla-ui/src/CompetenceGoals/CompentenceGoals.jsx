@@ -6,7 +6,7 @@ import { ChevronRight, ChevronDown } from 'ndla-icons/common';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
-  name: 'course-objectives',
+  name: 'compentence-goals',
   prefix: 'c-',
 });
 
@@ -26,7 +26,7 @@ const renderItem = (item, expanded = true) => {
   );
 };
 
-class CourseObjectives extends Component {
+class CompentenceGoals extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,7 +101,7 @@ class CourseObjectives extends Component {
   }
 }
 
-CourseObjectives.propTypes = {
+CompentenceGoals.propTypes = {
   id: PropTypes.string,
   headingId: PropTypes.string,
   menu: PropTypes.bool,
@@ -122,9 +122,9 @@ CourseObjectives.propTypes = {
   ),
 };
 
-CourseObjectives.defaultProps = {
+CompentenceGoals.defaultProps = {
   headingId: null,
   menu: false,
 };
 
-export default CourseObjectives;
+export default CompentenceGoals;

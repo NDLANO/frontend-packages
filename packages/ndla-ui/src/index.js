@@ -68,9 +68,10 @@ export {
   RelatedArticle,
 } from './RelatedArticleList';
 export {
-  default as CourseObjectives,
-  CourseObjectivesDialog,
-} from './CourseObjectives';
+  default as CompentenceGoals,
+  CompentenceGoalsDialog,
+} from './CompetenceGoals';
+
 export {
   default as ResourcesWrapper,
   ResourcesTitle,

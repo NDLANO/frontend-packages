@@ -376,7 +376,7 @@ storiesOf('Emnesider', module)
   .add('Emneside med kompetansemål', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu showCourseObjectives />
+        <MastheadWithTopicMenu showCompentenceGoals />
         <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -390,7 +390,7 @@ storiesOf('Emnesider', module)
           articleId="4853"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
-          showCourseObjectives
+          showCompentenceGoals
         />
       </Content>
       <FooterExample />

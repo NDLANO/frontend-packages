@@ -325,6 +325,8 @@ $link-height: 52px;
   }
 
   &--hasFilter {
+    margin-bottom: 0;
+
     & > h1 {
       margin: 0 0 $spacing--medium 0;
 
@@ -339,6 +341,10 @@ $link-height: 52px;
     &__list {
       padding-top: 0;
       border-top: 0;
+    }
+
+    &__item {
+      margin-bottom: $spacing--small;
     }
 
     &__label {

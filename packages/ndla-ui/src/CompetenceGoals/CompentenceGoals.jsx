@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronDown } from 'ndla-icons/common';
+import { FilterList } from '../Filter';
 
 import SafeLink from '../common/SafeLink';
 
@@ -35,7 +36,17 @@ class CompentenceGoals extends Component {
   }
 
   render() {
-    const { messages, headingId, topics, id, menu, subjectName } = this.props;
+    const {
+      messages,
+      headingId,
+      topics,
+      id,
+      menu,
+      subjectName,
+      filterOptions,
+      filterValues,
+      onFilterClick,
+    } = this.props;
 
     return (
       <div {...classes('', { menu })}>
@@ -62,6 +73,14 @@ class CompentenceGoals extends Component {
               {messages.heading}
             </h2>
             <p {...classes('description')}>{messages.description}</p>
+            {filterOptions &&
+              filterOptions.length > 0 && (
+                <FilterList
+                  options={filterOptions}
+                  values={filterValues}
+                  onChange={onFilterClick}
+                />
+              )}
             {topics.map(topic => (
               <div
                 {...classes('topic', {
@@ -120,6 +139,14 @@ CompentenceGoals.propTypes = {
     description: PropTypes.string.isRequired,
   }).isRequired,
   subjectName: PropTypes.string,
+  filterOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    }),
+  ),
+  filterValues: PropTypes.arrayOf(PropTypes.string),
+  onFilterClick: PropTypes.func,
   topics: PropTypes.arrayOf(
     PropTypes.shape({
       heading: PropTypes.string,

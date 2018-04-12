@@ -22,8 +22,28 @@
   }
 
   &__description {
+    margin-bottom: $spacing;
     @include mq($until: tablet) {
       @include font-size(16px, 20px);
+    }
+  }
+
+  .c-filter {
+    position: relative;
+
+    &__list {
+      padding-top: $spacing--small;
+      border-top: 0;
+      margin-bottom: $spacing--small;
+    }
+
+    &__item {
+      margin-bottom: $spacing--small;
+      margin-left: 0;
+    }
+
+    &__label {
+      @include visually-hidden();
     }
   }
 

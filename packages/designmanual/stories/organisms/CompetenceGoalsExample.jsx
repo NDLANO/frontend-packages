@@ -24,6 +24,9 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
     },
   ];
 
+  let filterOptions = null;
+  let filterValues = null;
+
   if (menu) {
     topics.push({
       heading: 'Emne 2',
@@ -36,6 +39,31 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
         },
       ],
     });
+
+    filterOptions = [
+      {
+        title: 'Medieuttrykk',
+        value: 'Medieuttrykk',
+      },
+      {
+        title: 'Mediesamfunnet',
+        value: 'Mediesamfunnet',
+      },
+      {
+        title: 'VG1',
+        value: 'VG1',
+      },
+      {
+        title: 'VG1',
+        value: 'VG2',
+      },
+      {
+        title: 'VG1',
+        value: 'VG3',
+      },
+    ];
+
+    filterValues = ['Medieuttrykk'];
   }
 
   return (
@@ -44,6 +72,8 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
       subjectName={menu ? 'Fag' : null}
       id={menu ? 'compentence-goals-menu' : 'compentence-goals'}
       headingId={headingId}
+      filterOptions={filterOptions}
+      filterValues={filterValues}
       messages={{
         heading: 'Kompetansemål',
         description: 'Mål for opplæring er at elevene skal kunne',

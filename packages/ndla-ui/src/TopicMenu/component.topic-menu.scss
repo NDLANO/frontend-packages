@@ -10,6 +10,7 @@
 /* 1. */
 
 $padding-left-narrow: 47px;
+$link-height: 52px;
 
 .c-topic-menu-toggle-button {
   position: relative;
@@ -159,6 +160,8 @@ $padding-left-narrow: 47px;
   }
 
   &--main {
+    padding-bottom: 0;
+    flex-grow: 0;
     border-left: 0;
     .c-topic-menu__link--big {
       @include mq($until: desktop) {
@@ -203,13 +206,14 @@ $padding-left-narrow: 47px;
     @include mq(wide) {
       margin-top: 0;
       min-height: 30px;
-      @include font-size(16px, 52px);
+      @include font-size(16px, $link-height);
     }
   }
 }
 
 .c-topic-menu {
   &__competence {
+    overflow: hidden;
     flex-grow: 1;
     background: $brand-color--lighter;
 
@@ -227,7 +231,23 @@ $padding-left-narrow: 47px;
     }
   }
 
-  &__competence-button {
+  &__competence-toggle-button {
+    @include inuit-font-size(14px, 18px);
+    font-weight: $font-weight-bold;
+    color: $brand-color;
+    background: transparent;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+    display: none;
+
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+
+  &__competence-close-button {
     @include mq(desktop) {
       display: none;
     }
@@ -245,6 +265,20 @@ $padding-left-narrow: 47px;
       width: 24px;
       height: 24px;
       margin-right: 9px;
+    }
+  }
+
+  &__competence-open-button {
+    background: none;
+    border: 0;
+    margin: 0 $spacing $spacing--large $padding-left-narrow;
+    padding: 0 $spacing--small;
+    height: $link-height;
+    color: $brand-color;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    @include mq(desktop) {
+      display: none;
     }
   }
 }
@@ -287,17 +321,6 @@ $padding-left-narrow: 47px;
       @include mq(desktop) {
         @include inuit-font-size(26px);
       }
-    }
-  }
-
-  .c-course-objectives__button {
-    @include inuit-font-size(14px, 18px);
-    font-weight: $font-weight-bold;
-    color: $brand-color;
-    background: transparent;
-    border: none;
-    &:hover {
-      cursor: pointer;
     }
   }
 
@@ -429,7 +452,7 @@ $padding-left-narrow: 47px;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  height: 52px;
+  height: $link-height;
   line-height: 24px;
   padding: 0 $spacing--small;
 

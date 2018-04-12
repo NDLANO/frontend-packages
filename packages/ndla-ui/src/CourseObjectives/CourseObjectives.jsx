@@ -35,10 +35,10 @@ class CourseObjectives extends Component {
   }
 
   render() {
-    const { messages, headingId, topics, id } = this.props;
+    const { messages, headingId, topics, id, menu } = this.props;
 
     return (
-      <div {...classes()}>
+      <div {...classes('', { menu })}>
         <h1 id={headingId} {...classes('heading')}>
           {messages.heading}
         </h1>
@@ -104,6 +104,7 @@ class CourseObjectives extends Component {
 CourseObjectives.propTypes = {
   id: PropTypes.string,
   headingId: PropTypes.string,
+  menu: PropTypes.bool,
   messages: PropTypes.shape({
     heading: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -123,6 +124,7 @@ CourseObjectives.propTypes = {
 
 CourseObjectives.defaultProps = {
   headingId: null,
+  menu: false,
 };
 
 export default CourseObjectives;

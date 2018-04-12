@@ -213,7 +213,9 @@ export default class TopicMenu extends Component {
                     </h1>
                     {courseObjectives && (
                       <Button
-                        className="c-course-objectives__button"
+                        className={
+                          classes('competence-toggle-button').className
+                        }
                         stripped
                         onClick={() =>
                           this.setState({
@@ -247,7 +249,7 @@ export default class TopicMenu extends Component {
           {courseObjectivesOpen && (
             <div {...classes('competence')}>
               <button
-                {...classes('competence-button')}
+                {...classes('competence-close-button')}
                 onClick={() =>
                   this.setState({
                     courseObjectivesOpen: false,
@@ -343,6 +345,17 @@ export default class TopicMenu extends Component {
                   onGoBack={this.handleOnGoBack}
                   resourceToLinkProps={resourceToLinkProps}
                 />
+              )}
+              {!disableMain && (
+                <button
+                  {...classes('competence-open-button')}
+                  onClick={() =>
+                    this.setState({
+                      courseObjectivesOpen: true,
+                    })
+                  }>
+                  Vis kompetansemål
+                </button>
               )}
             </div>
           )}

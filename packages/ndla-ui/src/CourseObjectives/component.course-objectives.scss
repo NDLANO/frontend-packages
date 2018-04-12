@@ -1,41 +1,20 @@
 .c-course-objectives {
   height: 100%;
 
-  &--dialog {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    z-index: 1000;
-
-    -webkit-overflow-scrolling: touch; // Fixes scrolling on iOS devices
-  }
-
-  &__button {
-    &--article {
-      @include inuit-font-size(12px, 15px);
-      background-color: $brand-color--lighter;
-      border: none;
-      color: $brand-color;
-      font-weight: $font-weight-semibold;
-      position: absolute;
-      z-index: 9;
-      right: 0;
-      top: 0;
-
-      &:hover,
-      &:focus,
-      &:active {
-        border: none;
-      }
-    }
-  }
-
   &__heading {
     margin-top: 0;
     color: $brand-color;
-    @include inuit-font-size(22px, 32px);
+    @include font-size(20px, 32px);
+
+    @include mq(tablet) {
+      @include font-size(22px, 32px);
+    }
+  }
+
+  &__description {
+    @include mq($until: tablet) {
+      @include font-size(16px, 20px);
+    }
   }
 
   &__topic {
@@ -50,9 +29,11 @@
       max-height: 35px;
       transition: max-height 0.5s ease-in-out;
 
-      .c-course-objectives__topic-list {
-        opacity: 0;
-        transition: opacity 0.1s ease-in-out 0.25s;
+      .c-course-objectives {
+        &__topic-list {
+          opacity: 0;
+          transition: opacity 0.1s ease-in-out 0.25s;
+        }
       }
     }
 
@@ -115,18 +96,51 @@
   }
 
   &__topic-item {
+    @include mq($until: tablet) {
+      @include font-size(16px, 24px);
+    }
+
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  &--menu {
+    .c-course-objectives {
+      &__heading {
+        text-transform: uppercase;
+        color: $primary-color;
+        font-weight: $font-weight-semibold;
+        @include font-size(16px, 20px);
+      }
     }
   }
 }
 
 .c-course-objectives-dialog {
   &__content {
-    padding: $spacing--large $spacing $spacing 0;
+    padding: $spacing--large 0 $spacing 0;
 
     @include mq(tablet) {
       padding: $spacing--large;
+    }
+  }
+
+  &__toggle-button {
+    @include inuit-font-size(12px, 15px);
+    background-color: $brand-color--lighter;
+    border: none;
+    color: $brand-color;
+    font-weight: $font-weight-semibold;
+    position: absolute;
+    z-index: 9;
+    right: 0;
+    top: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: none;
     }
   }
 }

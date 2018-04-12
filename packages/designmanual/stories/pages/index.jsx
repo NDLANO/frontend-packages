@@ -380,7 +380,7 @@ storiesOf('Emnesider', module)
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu
-          courseObjectives={<CourseObjectivesExample multi />}
+          courseObjectives={<CourseObjectivesExample menu />}
         />
         <SubjectHero>
           <OneColumn>

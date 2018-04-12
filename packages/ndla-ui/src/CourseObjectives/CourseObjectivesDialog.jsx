@@ -26,7 +26,7 @@ class CourseObjectivesDialog extends Component {
           });
         }}
         title={messages.buttonText}
-        buttonClassName="c-course-objectives__button c-course-objectives__button--article">
+        buttonClassName={classes('toggle-button').className}>
         {onClose => (
           <Dialog
             id={id}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { CourseObjectivesDialog, CourseObjectives } from 'ndla-ui';
 
-const CourseObjectivesExample = ({ headingId, multi }) => {
+const CourseObjectivesExample = ({ headingId, menu }) => {
   const topics = [
     {
       heading: 'Emne',
@@ -24,7 +24,7 @@ const CourseObjectivesExample = ({ headingId, multi }) => {
     },
   ];
 
-  if (multi) {
+  if (menu) {
     topics.push({
       heading: 'Emne 2',
       items: [
@@ -40,10 +40,11 @@ const CourseObjectivesExample = ({ headingId, multi }) => {
 
   return (
     <CourseObjectives
-      id={multi ? 'course-objectives-multi' : 'course-objectives'}
+      menu={menu}
+      id={menu ? 'course-objectives-menu' : 'course-objectives'}
       headingId={headingId}
       messages={{
-        heading: 'Kompetansemål og læreplan',
+        heading: 'Kompetansemål',
         description: 'Mål for opplæring er at elevene skal kunne',
       }}
       topics={topics}
@@ -53,7 +54,7 @@ const CourseObjectivesExample = ({ headingId, multi }) => {
 
 CourseObjectivesExample.propTypes = {
   headingId: PropTypes.string,
-  multi: PropTypes.bool,
+  menu: PropTypes.bool,
 };
 
 export default CourseObjectivesExample;

@@ -57,6 +57,7 @@ export { default as Section } from './Section';
 export { default as Settings } from './Settings';
 export { default as SquareAudio } from './SquareAudio';
 export { default as SquareVideo } from './SquareVideo';
+export { default as Star } from './Star';
 export { default as SubjectMatter } from './SubjectMatter';
 export { default as Table } from './Table';
 export { default as Taxonomy } from './Taxonomy';

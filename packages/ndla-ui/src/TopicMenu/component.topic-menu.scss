@@ -145,8 +145,6 @@ $link-height: 52px;
   flex-grow: 1;
   flex-shrink: 0;
   z-index: 30;
-  animation-name: fadeInLeft;
-  animation-duration: 0.2s;
   padding: 0 $spacing $spacing--large $padding-left-narrow;
   position: relative;
   z-index: 1;
@@ -277,6 +275,10 @@ $link-height: 52px;
     color: $brand-color;
     font-weight: $font-weight-semibold;
     text-align: left;
+    animation-name: fadeInLeft;
+    animation-duration: 0.5s;
+    cursor: pointer;
+
     @include mq(desktop) {
       display: none;
     }
@@ -290,7 +292,11 @@ $link-height: 52px;
   margin-bottom: $spacing;
   padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+
   @include mq(desktop) {
+    animation-name: none;
     margin-bottom: $spacing--small;
     padding-left: $spacing--medium;
   }
@@ -434,11 +440,15 @@ $link-height: 52px;
   margin-bottom: $spacing--medium;
   padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
-  @include inuit-font-size(18px, 23px);
+  @include font-size(18px, 23px);
   display: block;
   color: $brand-color;
 
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+
   @include mq(desktop) {
+    animation-name: none;
     margin-left: $spacing--medium;
     padding: $spacing--small 0;
   }

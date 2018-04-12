@@ -32,6 +32,14 @@ ArticleWrapper.propTypes = {
   modifier: PropTypes.string,
 };
 
+export const ArticleHeaderWrapper = ({ children }) => (
+  <div {...classes('header')}>{children}</div>
+);
+
+ArticleHeaderWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export const ArticleTitle = ({ children, icon, label }) => {
   const modifiers = [];
   if (icon) {
@@ -101,6 +109,7 @@ export const Article = ({
   messages,
   children,
   courseObjectives,
+  courseObjectivesNarrow,
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license);
   const authors =
@@ -108,14 +117,18 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
-        {courseObjectives}
-        <ArticleTitle icon={icon} label={messages.label}>
-          {title}
-        </ArticleTitle>
-        <ArticleIntroduction>{introduction}</ArticleIntroduction>
-        <ArticleByline {...{ messages, authors, updated, license, additional }}>
-          {licenseBox}
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          {courseObjectives}
+          <ArticleTitle icon={icon} label={messages.label}>
+            {title}
+          </ArticleTitle>
+          <ArticleIntroduction>{introduction}</ArticleIntroduction>
+          <ArticleByline
+            {...{ messages, authors, updated, license, additional }}>
+            {licenseBox}
+          </ArticleByline>
+          {courseObjectivesNarrow}
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <ArticleContent content={content} />
@@ -136,6 +149,7 @@ Article.propTypes = {
   licenseBox: PropTypes.node,
   additional: PropTypes.node,
   courseObjectives: PropTypes.node,
+  courseObjectivesNarrow: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
@@ -143,6 +157,15 @@ Article.propTypes = {
     lastUpdated: PropTypes.string.isRequired,
     label: PropTypes.string,
   }).isRequired,
+};
+
+Article.defaultProps = {
+  licenseBox: null,
+  additional: null,
+  courseObjectives: null,
+  courseObjectivesNarrow: null,
+  icon: null,
+  children: null,
 };
 
 export default Article;

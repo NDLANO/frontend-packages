@@ -59,8 +59,10 @@ CourseObjectivesExample.propTypes = {
 
 export default CourseObjectivesExample;
 
-export const CourseObjectivesDialogExample = () => (
+export const CourseObjectivesDialogExample = ({ narrow, wide }) => (
   <CourseObjectivesDialog
+    narrow={narrow}
+    wide={wide}
     id="course-objectives-dialog"
     messages={{
       buttonText: 'Kompetansemål',
@@ -69,3 +71,8 @@ export const CourseObjectivesDialogExample = () => (
     {headingId => <CourseObjectivesExample headingId={headingId} />}
   </CourseObjectivesDialog>
 );
+
+CourseObjectivesDialogExample.propTypes = {
+  narrow: PropTypes.bool,
+  wide: PropTypes.bool,
+};

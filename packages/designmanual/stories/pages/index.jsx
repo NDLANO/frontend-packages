@@ -41,9 +41,6 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import CourseObjectivesExample, {
-  CourseObjectivesDialogExample,
-} from './CourseObjectivesExample';
 import article, { topicList } from '../../dummydata/index';
 import Breadcrumb from '../molecules/breadcrumbs';
 
@@ -379,9 +376,7 @@ storiesOf('Emnesider', module)
   .add('Emneside med kompetansemål', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu
-          courseObjectives={<CourseObjectivesExample menu />}
-        />
+        <MastheadWithTopicMenu showCourseObjectives />
         <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -395,7 +390,7 @@ storiesOf('Emnesider', module)
           articleId="4853"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
-          courseObjectives={<CourseObjectivesDialogExample />}
+          showCourseObjectives
         />
       </Content>
       <FooterExample />

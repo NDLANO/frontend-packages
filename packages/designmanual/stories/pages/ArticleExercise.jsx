@@ -15,6 +15,7 @@ import {
   ArticleWrapper,
   ArticleByline,
   ArticleIntroduction,
+  ArticleHeaderWrapper,
   Image,
   TasksAndActivitiesBadge,
 } from 'ndla-ui';
@@ -29,29 +30,31 @@ export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<TasksAndActivitiesBadge background size="large" />}
-          label="Oppgaver og aktiviteter">
-          Lag en brukersti
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <ArticleTitle
+            icon={<TasksAndActivitiesBadge background size="large" />}
+            label="Oppgaver og aktiviteter">
+            Lag en brukersti
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleByline
+            authors={[
+              { name: 'Ola Nordnes' },
+              { name: 'Kari Nordnes' },
+              { name: 'Jon Nordgubbe' },
+            ]}
+            updated="12/10/2016"
+            license={getLicenseByAbbreviation('by-nc-nd')}
+            messages={{
+              writtenBy: '',
+              lastUpdated: 'Publisert',
+            }}>
+            <LicenseExample />
+          </ArticleByline>
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>

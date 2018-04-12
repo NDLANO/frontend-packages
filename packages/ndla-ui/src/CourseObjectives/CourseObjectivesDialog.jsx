@@ -14,7 +14,7 @@ class CourseObjectivesDialog extends Component {
   }
 
   render() {
-    const { messages, children, id } = this.props;
+    const { messages, children, id, narrow, wide } = this.props;
     const headingId = `${id}_heading`;
 
     return (
@@ -26,7 +26,7 @@ class CourseObjectivesDialog extends Component {
           });
         }}
         title={messages.buttonText}
-        buttonClassName={classes('toggle-button').className}>
+        buttonClassName={classes('toggle-button', { narrow, wide }).className}>
         {onClose => (
           <Dialog
             id={id}
@@ -46,11 +46,18 @@ class CourseObjectivesDialog extends Component {
 
 CourseObjectivesDialog.propTypes = {
   id: PropTypes.string.isRequired,
+  narrow: PropTypes.bool,
+  wide: PropTypes.bool,
   messages: PropTypes.shape({
     buttonText: PropTypes.string.isRequired,
     closeButtonText: PropTypes.string.isRequired,
   }).isRequired,
   children: PropTypes.func.isRequired,
+};
+
+CourseObjectivesDialog.defaultProps = {
+  narrow: false,
+  wide: false,
 };
 
 export default CourseObjectivesDialog;

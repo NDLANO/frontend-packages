@@ -224,10 +224,11 @@ export default class TopicMenu extends Component {
                         }>
                         {courseObjectivesOpen ? (
                           <span>
-                            Lukk kompetansemål <Cross />
+                            {messages.compentenceGoalsToggleButtonClose}{' '}
+                            <Cross />
                           </span>
                         ) : (
-                          'Kompetansemål'
+                          messages.compentenceGoalsToggleButtonOpen
                         )}
                       </Button>
                     )}
@@ -256,7 +257,7 @@ export default class TopicMenu extends Component {
                   })
                 }>
                 <Back />
-                Tilbake
+                {messages.compentenceGoalsNarrowBackButton}
               </button>
               {courseObjectives}
             </div>
@@ -346,17 +347,18 @@ export default class TopicMenu extends Component {
                   resourceToLinkProps={resourceToLinkProps}
                 />
               )}
-              {!disableMain && (
-                <button
-                  {...classes('competence-open-button')}
-                  onClick={() =>
-                    this.setState({
-                      courseObjectivesOpen: true,
-                    })
-                  }>
-                  Vis kompetansemål
-                </button>
-              )}
+              {!disableMain &&
+                courseObjectives && (
+                  <button
+                    {...classes('competence-open-button')}
+                    onClick={() =>
+                      this.setState({
+                        courseObjectivesOpen: true,
+                      })
+                    }>
+                    {messages.compentenceGoalsNarrowOpenButton}
+                  </button>
+                )}
             </div>
           )}
         </div>
@@ -371,6 +373,10 @@ TopicMenu.propTypes = {
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,
   messages: PropTypes.shape({
+    compentenceGoalsToggleButtonOpen: PropTypes.string.isRequired,
+    compentenceGoalsToggleButtonClose: PropTypes.string.isRequired,
+    compentenceGoalsNarrowOpenButton: PropTypes.string.isRequired,
+    compentenceGoalsNarrowBackButton: PropTypes.string.isRequired,
     closeButton: PropTypes.string.isRequired,
     goTo: PropTypes.string.isRequired,
     subjectOverview: PropTypes.string.isRequired,

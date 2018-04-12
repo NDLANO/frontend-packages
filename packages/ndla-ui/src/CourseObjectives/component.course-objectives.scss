@@ -127,15 +127,29 @@
   }
 
   &__toggle-button {
-    @include inuit-font-size(12px, 15px);
+    @include font-size(12px, 15px);
     background-color: $brand-color--lighter;
     border: none;
     color: $brand-color;
     font-weight: $font-weight-semibold;
-    position: absolute;
-    z-index: 9;
-    right: 0;
-    top: 0;
+
+    &--wide {
+      position: absolute;
+      z-index: 9;
+      right: 0;
+      top: 0;
+      display: none;
+
+      @include mq(desktop) {
+        display: block;
+      }
+    }
+
+    &--narrow {
+      @include mq(desktop) {
+        display: none;
+      }
+    }
 
     &:hover,
     &:focus,

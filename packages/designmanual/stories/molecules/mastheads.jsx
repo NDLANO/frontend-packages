@@ -25,6 +25,8 @@ import {
 import { topicMenu, contentTypeResults } from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';
 
+import CourseObjectivesExample from '../pages/CourseObjectivesExample';
+
 export const MastheadWithLogo = () => (
   <Masthead fixed>
     <MastheadItem right>
@@ -44,6 +46,10 @@ const messages = {
   contentTypeResultsShowMore: 'Vis mer',
   contentTypeResultsShowLess: 'Vis mindre',
   contentTypeResultsNoHit: 'Ingen ressurser',
+  compentenceGoalsToggleButtonOpen: 'Kompetansemål',
+  compentenceGoalsToggleButtonClose: 'Lukk kompetansemål',
+  compentenceGoalsNarrowOpenButton: 'Vis kompetansemål',
+  compentenceGoalsNarrowBackButton: 'Tilbake',
 };
 
 class MastheadWithTopicMenu extends Component {
@@ -154,7 +160,11 @@ class MastheadWithTopicMenu extends Component {
                   },
                 ]}
                 filterValues={['Medieuttrykk']}
-                courseObjectives={this.props.courseObjectives}
+                courseObjectives={
+                  this.props.showCourseObjectives && (
+                    <CourseObjectivesExample menu />
+                  )
+                }
                 onFilterClick={() => {}}
                 searchPageUrl="#"
                 resourceToLinkProps={() => {}}
@@ -198,11 +208,12 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
-  courseObjectives: PropTypes.node,
+  showCourseObjectives: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
+  showCourseObjectives: false,
   betaInfoContent: (
     <Fragment>
       <span>Du tester nå de nye nettsidene.</span>{' '}

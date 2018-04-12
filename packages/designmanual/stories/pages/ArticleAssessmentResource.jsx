@@ -14,6 +14,7 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleByline,
+  ArticleHeaderWrapper,
   ArticleIntroduction,
   Image,
   AssessmentResourcesBadge,
@@ -28,30 +29,32 @@ export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<AssessmentResourcesBadge background size="large" />}
-          label="Vurderingsressurs">
-          Portal for vurdering, engelsk fellesfag
-        </ArticleTitle>
-        <ArticleIntroduction>
-          På disse sidene har vi samlet ressurser som kan støtte elever og
-          lærere i arbeidet med vurdering. Ressursene her kan brukes til
-          egenevaluering av elevene og i dialog mellom elev og lærer.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <ArticleTitle
+            icon={<AssessmentResourcesBadge background size="large" />}
+            label="Vurderingsressurs">
+            Portal for vurdering, engelsk fellesfag
+          </ArticleTitle>
+          <ArticleIntroduction>
+            På disse sidene har vi samlet ressurser som kan støtte elever og
+            lærere i arbeidet med vurdering. Ressursene her kan brukes til
+            egenevaluering av elevene og i dialog mellom elev og lærer.
+          </ArticleIntroduction>
+          <ArticleByline
+            authors={[
+              { name: 'Ola Nordnes' },
+              { name: 'Kari Nordnes' },
+              { name: 'Jon Nordgubbe' },
+            ]}
+            updated="12/10/2016"
+            license={getLicenseByAbbreviation('by-nc-nd')}
+            messages={{
+              writtenBy: '',
+              lastUpdated: 'Publisert',
+            }}>
+            <LicenseExample />
+          </ArticleByline>
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>

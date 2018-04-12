@@ -45,7 +45,9 @@ class CompentenceGoals extends Component {
         <p {...classes('description')}>{messages.description}</p>
         {topics.length === 1 ? (
           <div {...classes('topic')}>
-            <h2 {...classes('topic-heading')}>{topics[0].heading}</h2>
+            {topics[0].heading && (
+              <h2 {...classes('topic-heading')}>{topics[0].heading}</h2>
+            )}
             <ul {...classes('topic-list')}>
               {topics[0].items.map(renderItem)}
             </ul>
@@ -111,7 +113,7 @@ CompentenceGoals.propTypes = {
   }).isRequired,
   topics: PropTypes.arrayOf(
     PropTypes.shape({
-      heading: PropTypes.string.isRequired,
+      heading: PropTypes.string,
       items: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string.isRequired,

@@ -24,12 +24,14 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import LicenseExample from '../article/LicenseExample';
 import { Resources } from '../molecules/resources';
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
+          <CompentenceGoalsDialogExample wide />
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -60,6 +62,7 @@ export default () => (
             }}>
             <LicenseExample />
           </ArticleByline>
+          <CompentenceGoalsDialogExample narrow />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

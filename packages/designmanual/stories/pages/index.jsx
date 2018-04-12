@@ -310,27 +310,4 @@ storiesOf('Emnesider', module)
       </Content>
       <FooterExample />
     </PageContainer>
-  ))
-  .add('Emneside med kompetansemål', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu showCompentenceGoals />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <ArticleLoader
-          articleId="4853"
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
-          showCompentenceGoals
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
   ));

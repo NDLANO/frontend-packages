@@ -113,12 +113,8 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseExample />}
-              compentenceGoals={
-                showCompentenceGoals && <CompentenceGoalsDialogExample wide />
-              }
-              compentenceGoalsNarrow={
-                showCompentenceGoals && <CompentenceGoalsDialogExample narrow />
-              }>
+              compentenceGoals={<CompentenceGoalsDialogExample wide />}
+              compentenceGoalsNarrow={<CompentenceGoalsDialogExample narrow />}>
               {articleChildren}
             </Article>
           </OneColumn>
@@ -144,7 +140,6 @@ ArticleLoader.propTypes = {
   label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
-  showCompentenceGoals: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,

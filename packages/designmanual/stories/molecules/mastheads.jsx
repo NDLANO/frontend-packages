@@ -160,11 +160,7 @@ class MastheadWithTopicMenu extends Component {
                   },
                 ]}
                 filterValues={['Medieuttrykk']}
-                competenceGoals={
-                  this.props.showCompentenceGoals && (
-                    <CompetenceGoalsExample menu />
-                  )
-                }
+                competenceGoals={<CompetenceGoalsExample menu />}
                 onFilterClick={() => {}}
                 searchPageUrl="#"
                 resourceToLinkProps={() => {}}
@@ -208,12 +204,10 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
-  showCompentenceGoals: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
-  showCompentenceGoals: false,
   betaInfoContent: (
     <Fragment>
       <span>Du tester nå de nye nettsidene.</span>{' '}

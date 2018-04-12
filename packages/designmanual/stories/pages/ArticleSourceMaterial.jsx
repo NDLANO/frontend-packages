@@ -26,11 +26,14 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
+          <CompentenceGoalsDialogExample wide />
           <ArticleTitle
             icon={<SourceMaterialBadge background size="large" />}
             label="Kildemateriale">
@@ -54,6 +57,7 @@ export default () => (
             }}>
             <LicenseExample />
           </ArticleByline>
+          <CompentenceGoalsDialogExample narrow />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

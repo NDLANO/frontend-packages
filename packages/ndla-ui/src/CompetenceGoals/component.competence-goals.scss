@@ -62,7 +62,7 @@
       .c-compentence-goals {
         &__topic-list {
           opacity: 0;
-          transition: opacity 0.1s ease-in-out 0.25s;
+          transition: opacity 0.1s ease-in-out 0.1s;
         }
       }
     }
@@ -185,6 +185,7 @@
     &:focus,
     &:active {
       border: none;
+      background: $brand-color;
     }
   }
 }

@@ -35,25 +35,33 @@ class CompentenceGoals extends Component {
   }
 
   render() {
-    const { messages, headingId, topics, id, menu } = this.props;
+    const { messages, headingId, topics, id, menu, subjectName } = this.props;
 
     return (
       <div {...classes('', { menu })}>
-        <h1 id={headingId} {...classes('heading')}>
-          {messages.heading}
-        </h1>
-        <p {...classes('description')}>{messages.description}</p>
-        {topics.length === 1 ? (
-          <div {...classes('topic')}>
-            {topics[0].heading && (
-              <h2 {...classes('topic-heading')}>{topics[0].heading}</h2>
-            )}
-            <ul {...classes('topic-list')}>
-              {topics[0].items.map(renderItem)}
-            </ul>
-          </div>
+        {!menu ? (
+          <Fragment>
+            <h1 id={headingId} {...classes('heading')}>
+              {messages.heading}
+            </h1>
+            <p {...classes('description')}>{messages.description}</p>
+
+            <div {...classes('topic')}>
+              {topics[0].heading && (
+                <h2 {...classes('topic-heading')}>{topics[0].heading}</h2>
+              )}
+              <ul {...classes('topic-list')}>
+                {topics[0].items.map(renderItem)}
+              </ul>
+            </div>
+          </Fragment>
         ) : (
           <Fragment>
+            <h1 {...classes('subject-heading')}>{subjectName}</h1>
+            <h2 id={headingId} {...classes('heading')}>
+              {messages.heading}
+            </h2>
+            <p {...classes('description')}>{messages.description}</p>
             {topics.map(topic => (
               <div
                 {...classes('topic', {
@@ -61,7 +69,7 @@ class CompentenceGoals extends Component {
                   expanded: this.state.expanded === topic.heading,
                 })}
                 key={topic.heading}>
-                <h2 {...classes('topic-heading')}>
+                <h3 {...classes('topic-heading')}>
                   <button
                     {...classes('topic-heading-button')}
                     aria-expanded={this.state.expanded === topic.heading}
@@ -85,7 +93,7 @@ class CompentenceGoals extends Component {
                     )}
                     {topic.heading}
                   </button>
-                </h2>
+                </h3>
                 <ul
                   id={id}
                   aria-hidden={this.state.expanded !== topic.heading}
@@ -111,6 +119,7 @@ CompentenceGoals.propTypes = {
     heading: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
+  subjectName: PropTypes.string,
   topics: PropTypes.arrayOf(
     PropTypes.shape({
       heading: PropTypes.string,

@@ -11,6 +11,16 @@
     }
   }
 
+  &__subject-heading {
+    @include font-size(20px, 32px);
+    margin: 0 0 $spacing 0;
+    color: $brand-color;
+
+    @include mq(desktop) {
+      display: none;
+    }
+  }
+
   &__description {
     @include mq($until: tablet) {
       @include font-size(16px, 20px);

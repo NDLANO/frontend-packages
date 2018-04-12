@@ -41,6 +41,7 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
   return (
     <CompentenceGoals
       menu={menu}
+      subjectName={menu ? 'Fag' : null}
       id={menu ? 'compentence-goals-menu' : 'compentence-goals'}
       headingId={headingId}
       messages={{

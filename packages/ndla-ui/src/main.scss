@@ -80,6 +80,7 @@ $inuit-wrapper-width: 1024px;
 @import 'Aside/component.aside';
 @import 'Article/component.footnotes';
 @import 'Concept/component.concept';
+@import 'BackgroundImage/component.background-image';
 @import 'global/components/component.icon';
 @import 'LicenseByline/component.license-icons';
 @import 'LicenseByline/component.license-byline';
@@ -103,8 +104,13 @@ $inuit-wrapper-width: 1024px;
 @import 'Translation/component.translation';
 @import 'Search/component.search';
 @import 'Beta/component.beta-navigation';
+@import 'Subject/component.subject';
 @import 'InfoBox/component.info-box';
 @import 'CompetenceGoals/component.competence-goals';
+@import 'ContentCard/component.content-card';
+@import 'Frontpage/component.frontpage';
+@import 'InfoWidget/component.info-widget';
+@import 'Carousel/component.carousel';
 
 // UTILITIES
 @import '../../../node_modules/inuitcss/utilities/utilities.widths';

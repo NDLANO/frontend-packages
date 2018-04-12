@@ -1,0 +1,93 @@
+.c-content-card {
+  position: relative;
+
+  &__image-wrapper {
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    height: 72px;
+    overflow: hidden;
+    background: $background-color--gray-dark;
+
+    @include mq(tablet) {
+      height: 125px;
+    }
+  }
+
+  &__link {
+    color: $primary-color;
+  }
+
+  &__type {
+    @include inuit-font-size(12px, 20px);
+    position: absolute;
+    left: $spacing--small;
+    bottom: $spacing--small;
+    display: inline-block;
+    background: $brand-grey--lightest;
+    border-radius: 2px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 $spacing--small/3;
+
+    display: none;
+
+    @include mq(tablet) {
+      display: inline-block;
+    }
+  }
+
+  &__heading {
+    font-weight: $font-weight-bold;
+    @include font-size(12px);
+    margin: 0;
+
+    @include mq(tablet) {
+      margin: $spacing--small 0 0 0;
+      @include inuit-font-size(20px);
+    }
+  }
+
+  &__description {
+    @include inuit-font-size(14px);
+    line-height: 1.25rem;
+    font-family: $font-serif;
+    margin: 0;
+    display: none;
+
+    @include mq(tablet) {
+      display: block;
+    }
+  }
+
+  &__play-background {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    height: 35px;
+    width: 35px;
+    background-color: rgba(0, 0, 0, 0.48);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mq(tablet) {
+      height: 42px;
+      width: 42px;
+    }
+
+    .c-icon {
+      color: $white;
+      height: 20px;
+      width: 20px;
+      margin-right: -1px;
+
+      @include mq(tablet) {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+}

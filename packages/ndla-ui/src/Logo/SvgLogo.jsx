@@ -11,12 +11,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { logoClasses } from './Logo';
 
-export const SvgLogo = ({ name }) => (
+export const SvgLogo = ({ name, color }) => (
   <svg
     {...logoClasses('graphic')}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 376 152"
-    fill="#000000"
+    fill={color}
     fillRule="evenodd">
     <path d="M355 67h-84v51h102V51h-18v16zm0 14h-66v19h66V81zm-84-48v18h84V33h-84z" />
     <rect width="18" height="118" x="236" transform="matrix(-1 0 0 1 490 0)" />
@@ -30,10 +30,12 @@ export const SvgLogo = ({ name }) => (
 
 SvgLogo.propTypes = {
   name: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 SvgLogo.defaultProps = {
   name: true,
+  color: '#000000',
 };
 
 export default SvgLogo;

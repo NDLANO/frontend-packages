@@ -61,7 +61,7 @@
     margin-top: $spacing--large;
     h1 {
       @include font-size(22px, 32px);
-      font-weight: 700;
+      font-weight: $font-weight-bold;
       margin: 0 0 $spacing--small;
     }
 

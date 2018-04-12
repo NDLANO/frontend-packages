@@ -118,7 +118,10 @@ const SearchField = ({
         onChange={onChange}
       />
       <div {...classes('filters')}>
-        <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
+        {filters &&
+          filters.length > 0 && (
+            <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
+          )}
       </div>
       <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
         <SearchIcon />
@@ -130,7 +133,6 @@ const SearchField = ({
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,
-  onFilterRemove: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
@@ -142,7 +144,8 @@ SearchField.propTypes = {
   messages: messagesShape,
   searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
-  resourceToLinkProps: PropTypes.func.isRequired,
+  resourceToLinkProps: PropTypes.func,
+  onFilterRemove: PropTypes.func,
 };
 
 export default SearchField;

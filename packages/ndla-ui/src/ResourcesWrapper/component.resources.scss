@@ -11,17 +11,78 @@
     // padding-left: $spacing;
     // padding-right: $spacing;
   }
-}
 
-// (Same as .c-resource-group__title)
-.c-resources__title {
-  display: block;
-  @include inuit-font-size(18px);
-  font-weight: $font-weight-bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 5px;
-  margin-top: $spacing--large;
-  padding-bottom: 5px;
-  border-bottom: 2px solid $brand-grey--light;
+  &__title {
+    display: block;
+    @include inuit-font-size(18px);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    padding-bottom: $spacing--small / 2;
+    margin-bottom: $spacing--small / 2;
+    margin-top: $spacing--large;
+    border-bottom: 2px solid $brand-grey--light;
+
+    .c-content-type-badge {
+      display: none;
+      margin-right: $spacing--medium + 2px;
+    }
+  }
+
+  &--subjectPage {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .c-resources {
+      &__title-wrapper {
+        border-bottom: 0;
+        margin-top: 0;
+
+        .c-content-type-badge {
+          display: none;
+
+          @include mq(tablet) {
+            display: inline-flex;
+          }
+        }
+      }
+
+      &__content {
+        @include mq(tablet) {
+          margin-left: $spacing--medium + $spacing--large;
+        }
+      }
+
+      &__title {
+        @include inuit-font-size(16px, 32px);
+
+        @include mq(tablet) {
+          @include inuit-font-size(22px, 32px);
+        }
+        letter-spacing: normal;
+      }
+
+      &__title-wrapper {
+        margin-left: $spacing;
+        margin-right: $spacing;
+
+        @include mq(tablet) {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .c-topic-introduction__list {
+      @include mq($until: tablet) {
+        padding: 0 $spacing;
+      }
+    }
+  }
 }

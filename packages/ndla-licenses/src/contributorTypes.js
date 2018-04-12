@@ -13,7 +13,6 @@ export const contributorGroups = {
     'originator',
     'photographer',
     'artist',
-    'editorial',
     'writer',
     'scriptwriter',
     'reader',

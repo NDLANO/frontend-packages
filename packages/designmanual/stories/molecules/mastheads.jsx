@@ -30,7 +30,7 @@ import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 export const MastheadWithLogo = () => (
   <Masthead fixed>
     <MastheadItem right>
-      <Logo to="#" altText="Nasjonal digital læringsarena" />
+      <Logo to="#" label="Nasjonal digital læringsarena" />
     </MastheadItem>
   </Masthead>
 );

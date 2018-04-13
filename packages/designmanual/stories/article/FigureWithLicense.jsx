@@ -109,6 +109,12 @@ class FigureWithLicense extends Component {
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
+            link={{
+              text: 'Lage kortfilm',
+              url: '#1',
+              description: '(Lenken tar deg til et annet nettsted)',
+              external: true,
+            }}
             authors={authors}>
             <FigureLicenseDialog
               id={this.id}

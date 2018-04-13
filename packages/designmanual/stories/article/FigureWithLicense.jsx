@@ -110,7 +110,7 @@ class FigureWithLicense extends Component {
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
             link={{
-              text: 'Mann med lupe',
+              text: 'Lage kortfilm',
               url: '#1',
               description: '(Lenken tar deg til et annet nettsted)',
             }}

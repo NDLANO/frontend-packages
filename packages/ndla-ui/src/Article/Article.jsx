@@ -32,6 +32,14 @@ ArticleWrapper.propTypes = {
   modifier: PropTypes.string,
 };
 
+export const ArticleHeaderWrapper = ({ children }) => (
+  <div {...classes('header')}>{children}</div>
+);
+
+ArticleHeaderWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export const ArticleTitle = ({ children, icon, label }) => {
   const modifiers = [];
   if (icon) {
@@ -100,6 +108,8 @@ export const Article = ({
   modifier,
   messages,
   children,
+  compentenceGoals,
+  compentenceGoalsNarrow,
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license);
   const authors =
@@ -107,13 +117,18 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
-        <ArticleTitle icon={icon} label={messages.label}>
-          {title}
-        </ArticleTitle>
-        <ArticleIntroduction>{introduction}</ArticleIntroduction>
-        <ArticleByline {...{ messages, authors, updated, license, additional }}>
-          {licenseBox}
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          {compentenceGoals}
+          <ArticleTitle icon={icon} label={messages.label}>
+            {title}
+          </ArticleTitle>
+          <ArticleIntroduction>{introduction}</ArticleIntroduction>
+          <ArticleByline
+            {...{ messages, authors, updated, license, additional }}>
+            {licenseBox}
+          </ArticleByline>
+          {compentenceGoalsNarrow}
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <ArticleContent content={content} />
@@ -133,6 +148,8 @@ Article.propTypes = {
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
   additional: PropTypes.node,
+  compentenceGoals: PropTypes.node,
+  compentenceGoalsNarrow: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
@@ -140,6 +157,15 @@ Article.propTypes = {
     lastUpdated: PropTypes.string.isRequired,
     label: PropTypes.string,
   }).isRequired,
+};
+
+Article.defaultProps = {
+  licenseBox: null,
+  additional: null,
+  compentenceGoals: null,
+  compentenceGoalsNarrow: null,
+  icon: null,
+  children: null,
 };
 
 export default Article;

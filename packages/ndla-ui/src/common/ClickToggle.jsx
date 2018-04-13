@@ -18,7 +18,7 @@ export default class ClickToggle extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.close = this.close.bind(this);
+    this.handleOnClose = this.handleOnClose.bind(this);
     this.containerRef = null;
     this.focusTrap = null;
   }
@@ -26,19 +26,17 @@ export default class ClickToggle extends React.Component {
   componentDidMount() {
     this.focusTrap = createFocusTrap(this.containerRef, {
       onActivate: () => {
-        this.props.onToggle(true);
-
         if (!this.props.noScrollDisabled) {
           noScroll(true);
         }
       },
       onDeactivate: () => {
-        if (this.props.isOpen) {
-          this.props.onToggle(false);
-        }
-
         if (!this.props.noScrollDisabled) {
           noScroll(false);
+        }
+
+        if (this.props.isOpen) {
+          this.props.onToggle(false);
         }
       },
       clickOutsideDeactivates: true,
@@ -65,16 +63,11 @@ export default class ClickToggle extends React.Component {
 
   handleClick() {
     const isOpen = !this.props.isOpen;
-
-    if (isOpen) {
-      this.focusTrap.activate();
-    } else {
-      this.focusTrap.deactivate();
-    }
+    this.props.onToggle(isOpen);
   }
 
-  close() {
-    this.focusTrap.deactivate();
+  handleOnClose() {
+    this.props.onToggle(false);
   }
 
   render() {
@@ -88,16 +81,8 @@ export default class ClickToggle extends React.Component {
       ...rest
     } = this.props;
 
-    const children = React.cloneElement(this.props.children, {
-      close: this.close,
-    });
-
     return (
-      <Component
-        {...rest}
-        ref={ref => {
-          this.containerRef = ref;
-        }}>
+      <Component {...rest}>
         {isOpen ? (
           <Button
             className={`active ${buttonClassName}`}
@@ -109,7 +94,12 @@ export default class ClickToggle extends React.Component {
             {title}
           </Button>
         )}
-        {isOpen ? children : null}
+        <div
+          ref={ref => {
+            this.containerRef = ref;
+          }}>
+          {isOpen ? this.props.children(this.handleOnClose) : null}
+        </div>
       </Component>
     );
   }
@@ -121,7 +111,7 @@ ClickToggle.propTypes = {
   openTitle: PropTypes.node,
   buttonClassName: PropTypes.string,
   className: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.func.isRequired,
   noScrollDisabled: PropTypes.bool,
   isOpen: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,

@@ -14,6 +14,7 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
+  ArticleHeaderWrapper,
   InfoBox,
 } from 'ndla-ui';
 
@@ -21,21 +22,23 @@ export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <InfoBox>
-          <p>
-            Alt innhold vil ikke være med i betaversjonen.<br />
-            Vi har prioritert kjernestoff framfor tilleggsstoff. Noen emner og
-            fagstoff kan mangle.
-          </p>
-        </InfoBox>
-        <ArticleTitle>
-          Vil du hjelpe oss å teste de nye fagssidene?
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Til nå har vi brukertestet over 100 elever og lærere og fått mange
-          gode tilbakemeldinger og forslag. Tusen takk for all hjelp så langt!
-          Nå vil vi gjerne ha din hjelp til å forbedre nettsidene enda mer.
-        </ArticleIntroduction>
+        <ArticleHeaderWrapper>
+          <InfoBox>
+            <p>
+              Alt innhold vil ikke være med i betaversjonen.<br />
+              Vi har prioritert kjernestoff framfor tilleggsstoff. Noen emner og
+              fagstoff kan mangle.
+            </p>
+          </InfoBox>
+          <ArticleTitle>
+            Vil du hjelpe oss å teste de nye fagssidene?
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Til nå har vi brukertestet over 100 elever og lærere og fått mange
+            gode tilbakemeldinger og forslag. Tusen takk for all hjelp så langt!
+            Nå vil vi gjerne ha din hjelp til å forbedre nettsidene enda mer.
+          </ArticleIntroduction>
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <h2>Hva trenger vi din hjelp til?</h2>

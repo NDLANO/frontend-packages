@@ -16,6 +16,7 @@ import {
   ArticleByline,
   ArticleIntroduction,
   SubjectMaterialBadge,
+  ArticleHeaderWrapper,
 } from 'ndla-ui';
 import { Additional } from 'ndla-icons/common';
 
@@ -23,41 +24,46 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import LicenseExample from '../article/LicenseExample';
 import { Resources } from '../molecules/resources';
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<SubjectMaterialBadge background size="large" />}
-          label="Fagstoff">
-          Artikkel Tilleggsstoff
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          additional={[
-            <Additional
-              key="additional"
-              className="c-icon--20 u-margin-right-tiny"
-            />,
-            'Tilleggsstoff',
-          ]}
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <CompentenceGoalsDialogExample wide />
+          <ArticleTitle
+            icon={<SubjectMaterialBadge background size="large" />}
+            label="Fagstoff">
+            Artikkel Tilleggsstoff
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleByline
+            authors={[
+              { name: 'Ola Nordnes' },
+              { name: 'Kari Nordnes' },
+              { name: 'Jon Nordgubbe' },
+            ]}
+            updated="12/10/2016"
+            additional={[
+              <Additional
+                key="additional"
+                className="c-icon--20 u-margin-right-tiny"
+              />,
+              'Tilleggsstoff',
+            ]}
+            license={getLicenseByAbbreviation('by-nc-nd')}
+            messages={{
+              writtenBy: '',
+              lastUpdated: 'Publisert',
+            }}>
+            <LicenseExample />
+          </ArticleByline>
+          <CompentenceGoalsDialogExample narrow />
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>

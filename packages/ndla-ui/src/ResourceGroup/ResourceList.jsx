@@ -23,11 +23,10 @@ const Resource = ({
   resource,
   icon,
   resourceToLinkProps,
-  isHidden,
   showAdditionalResources,
 }) => {
   const linkProps = resourceToLinkProps(resource);
-  const hidden = resource.additional ? !showAdditionalResources : isHidden;
+  const hidden = resource.additional ? !showAdditionalResources : false;
 
   const linkContent = (
     <Fragment>
@@ -66,7 +65,6 @@ const Resource = ({
 
 Resource.propTypes = {
   showAdditionalResources: PropTypes.bool,
-  isHidden: PropTypes.bool.isRequired,
   icon: PropTypes.node.isRequired,
   resource: ResourceShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
@@ -91,7 +89,6 @@ const ResourceList = ({
           showAdditionalResources={showAdditionalResources}
           {...rest}
           resource={resource}
-          isHidden={false}
         />
       ))}
       {normalResources.length === 0 && !showAdditionalResources ? (

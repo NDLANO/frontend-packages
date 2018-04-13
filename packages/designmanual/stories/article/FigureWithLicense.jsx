@@ -109,6 +109,11 @@ class FigureWithLicense extends Component {
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
+            link={{
+              text: 'Mann med lupe',
+              url: '#1',
+              description: '(Lenken tar deg til et annet nettsted)',
+            }}
             authors={authors}>
             <FigureLicenseDialog
               id={this.id}

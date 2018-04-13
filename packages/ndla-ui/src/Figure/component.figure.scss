@@ -67,9 +67,9 @@
   border: none;
   cursor: pointer;
   color: $brand-color;
-  height: 25px;
-  padding: $spacing--small/3 0 $spacing--small/2 0;
   box-shadow: $link;
+  padding: 0;
+  @include font-size(14px);
   &:hover {
     box-shadow: $link--hover;
   }
@@ -101,7 +101,7 @@
 }
 
 .c-figure__byline-authors {
-  @include inuit-font-size(14px);
+  @include font-size(14px);
   border-right: 1px solid $brand-grey--light;
   padding-right: $spacing--small;
   margin-right: $spacing--small;
@@ -123,11 +123,11 @@
   bottom: 0;
   right: 0;
   padding: 5px $spacing--small 8px;
-  transition: all .3s ease-out;
-  background: rgba($white, .2);
-  
+  transition: all 0.3s ease-out;
+  background: rgba($white, 0.2);
+
   svg {
-    transition: transform .4s ease-out;
+    transition: transform 0.4s ease-out;
     width: 26px;
     height: 26px;
     fill: $brand-color;
@@ -140,5 +140,44 @@
     svg {
       transform: scale(1.2);
     }
+  }
+}
+
+.c-figure {
+  &__link-wrapper {
+    margin-top: $spacing--small;
+
+    .c-icon {
+      margin-left: $spacing--small/2;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__link {
+    color: $brand-color;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    @include font-size(14px, 25px);
+
+    &:hover,
+    &:active,
+    &:focus {
+      .c-figure__link-text {
+        box-shadow: $link--hover;
+      }
+    }
+  }
+
+  &__link-text {
+    box-shadow: $link;
+    display: block;
+  }
+
+  &__link-description {
+    margin-top: $spacing--small/2 !important;
+    margin-bottom: 0;
+    @include font-size(14px, 25px);
   }
 }

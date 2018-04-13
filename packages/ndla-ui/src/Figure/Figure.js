@@ -12,8 +12,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Fullscreen } from 'ndla-icons/common';
+import { Fullscreen, Link as LinkIcon } from 'ndla-icons/common';
 import LicenseByline from '../LicenseByline';
+import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -27,6 +28,7 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
+  link,
 }) => (
   <figcaption {...classes('caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
@@ -39,8 +41,20 @@ export const FigureCaption = ({
           <button data-dialog-trigger-id={id} {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
+
           {children}
         </LicenseByline>
+        {link && (
+          <div {...classes('link-wrapper')}>
+            <SafeLink to={link.url} {...classes('link')}>
+              <span {...classes('link-text')}>{link.text}</span>
+              <LinkIcon />
+            </SafeLink>
+            {link.description && (
+              <p {...classes('link-description')}>{link.description}</p>
+            )}
+          </div>
+        )}
       </div>
     </footer>
   </figcaption>
@@ -57,6 +71,15 @@ FigureCaption.propTypes = {
       name: PropTypes.string.isRequired,
     }),
   ),
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    description: PropTypes.string,
+  }),
+};
+
+FigureCaption.defaultProps = {
+  link: null,
 };
 
 export const Figure = ({

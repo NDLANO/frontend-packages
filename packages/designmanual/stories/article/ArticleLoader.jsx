@@ -76,7 +76,6 @@ class ArticleLoader extends Component {
       label,
       hideResources,
       showSubTopics,
-      showCompentenceGoals,
     } = this.props;
     const scripts =
       article && article.requiredLibraries

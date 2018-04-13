@@ -46,7 +46,11 @@ export const FigureCaption = ({
         </LicenseByline>
         {link && (
           <div {...classes('link-wrapper')}>
-            <SafeLink to={link.url} {...classes('link')}>
+            <SafeLink
+              to={link.url}
+              {...classes('link')}
+              target={link.external ? '_blank' : null}
+              rel={link.external ? 'noopener noreferrer' : null}>
               <span {...classes('link-text')}>{link.text}</span>
               <LinkIcon />
             </SafeLink>
@@ -75,6 +79,7 @@ FigureCaption.propTypes = {
     url: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     description: PropTypes.string,
+    external: PropTypes.bool,
   }),
 };
 

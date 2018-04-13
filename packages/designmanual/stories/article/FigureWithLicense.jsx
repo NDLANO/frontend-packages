@@ -113,6 +113,7 @@ class FigureWithLicense extends Component {
               text: 'Lage kortfilm',
               url: '#1',
               description: '(Lenken tar deg til et annet nettsted)',
+              external: true,
             }}
             authors={authors}>
             <FigureLicenseDialog

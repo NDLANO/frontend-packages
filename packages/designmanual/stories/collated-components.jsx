@@ -35,6 +35,8 @@ import RelatedArticleListExample, {
 } from './article/RelatedArticleListExample';
 import FileListExample from './molecules/FileListExample';
 
+import doNotExistGif from './images/do-not-exist.gif';
+
 const toggle = () => {
   document
     .querySelector('.c-collate__panel')
@@ -451,6 +453,10 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <ErrorMessage
+          illustration={{
+            url: doNotExistGif,
+            altText: 'Finnes ikke',
+          }}
           messages={{
             title: 'Oisann, her gikk noe galt',
             description: 'En kort beskrivelse av feilen som oppsto.',

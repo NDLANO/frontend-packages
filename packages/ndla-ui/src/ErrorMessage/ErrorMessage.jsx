@@ -17,13 +17,19 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ErrorMessage = ({ children, messages }) => (
+export const ErrorMessage = ({ children, messages, illustration }) => (
   <div {...classes()}>
     <div>
-      <p>[illustrasjon]</p>
+      <img
+        {...classes('illustration')}
+        src={illustration.url}
+        alt={illustration.altText}
+      />
       <h1>{messages.title}</h1>
       <p {...classes('description')}>{messages.description}</p>
-      <h3>{messages.linksTitle && messages.linksTitle}</h3>
+      {messages.linksTitle && (
+        <h2 {...classes('link-heading')}>{messages.linksTitle}</h2>
+      )}
       {/*  <SearchField /> */}
       {messages.back &&
         typeof window !== 'undefined' &&
@@ -36,7 +42,7 @@ export const ErrorMessage = ({ children, messages }) => (
           </SafeLink>
         )}
       {messages.goToFrontPage && (
-        <div>
+        <div {...classes('link-wrapper')}>
           <SafeLink to="/" {...classes('front-link')}>
             {messages.goToFrontPage}
           </SafeLink>
@@ -54,6 +60,10 @@ ErrorMessage.propTypes = {
     description: PropTypes.string.isRequired,
     goToFrontPage: PropTypes.string,
     back: PropTypes.string,
+  }),
+  illustration: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
   }),
 };
 

@@ -67,6 +67,7 @@ export default class SearchPage extends Component {
       searchFieldPlaceholder,
       onSearchFieldFilterRemove,
       searchFieldFilters,
+      onSearch,
       // only on narrow screen
       activeFilters,
       onActiveFilterRemove,
@@ -92,6 +93,7 @@ export default class SearchPage extends Component {
           <SearchField
             value={searchString}
             onChange={onSearchFieldChange}
+            onSearch={onSearch}
             placeholder={searchFieldPlaceholder}
             filters={searchFieldFilters}
             onFilterRemove={onSearchFieldFilterRemove}

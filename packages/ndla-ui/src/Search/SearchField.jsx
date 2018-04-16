@@ -77,6 +77,7 @@ const SearchField = ({
   searchResult,
   messages,
   allResultUrl,
+  onSearch,
   resourceToLinkProps,
 }) => {
   const modifiers = [];
@@ -104,7 +105,7 @@ const SearchField = ({
   }
 
   return (
-    <div {...classes('', modifiers)}>
+    <form {...classes('', modifiers)} onSubmit={onSearch}>
       <input
         title={messages.searchFieldTitle}
         type="search"
@@ -127,7 +128,7 @@ const SearchField = ({
         <SearchIcon />
       </button>
       {searchResultView}
-    </div>
+    </form>
   );
 };
 
@@ -135,6 +136,7 @@ SearchField.propTypes = {
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

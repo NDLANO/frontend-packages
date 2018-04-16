@@ -7,21 +7,25 @@
  */
 
 .c-error-message {
-  padding-top: $spacing--large;
   text-align: center;
-  
+
   a {
-    margin-top: $spacing / 2 auto;
     color: $brand-color;
   }
-}
 
-.c-error-message__icon {
-  color: $brand-grey-dark;
-  width: 128px;
-  height: 128px;
-}
+  h1 {
+    margin-top: 0;
+  }
 
-.c-error-message__description {
-  margin-bottom: $spacing--large;
+  &__link-wrapper {
+    margin-top: $spacing--small/2;
+  }
+
+  &__description {
+    margin-bottom: $spacing;
+
+    @include mq(tablet) {
+      margin-bottom: $spacing--large;
+    }
+  }
 }

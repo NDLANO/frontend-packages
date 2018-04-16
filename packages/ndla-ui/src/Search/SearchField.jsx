@@ -105,7 +105,7 @@ const SearchField = ({
   }
 
   return (
-    <form {...classes('', modifiers)} onSubmit={onSearch}>
+    <div {...classes('', modifiers)}>
       <input
         title={messages.searchFieldTitle}
         type="search"
@@ -124,11 +124,16 @@ const SearchField = ({
             <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
           )}
       </div>
-      <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
+      <button
+        tabIndex="-1"
+        {...classes('button')}
+        type="submit"
+        value="Search"
+        onClick={onSearch}>
         <SearchIcon />
       </button>
       {searchResultView}
-    </form>
+    </div>
   );
 };
 

@@ -25,8 +25,6 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
 import { Resources } from '../molecules/resources';
 
-import FileListExample from '../molecules/FileListExample';
-
 export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
@@ -61,7 +59,6 @@ export default () => (
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FileListExample />
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få

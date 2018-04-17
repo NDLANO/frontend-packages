@@ -400,7 +400,32 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Nedlasting av filer" />
       <StoryBody>
+        <h2>Overskrift</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
         <FileListExample />
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
       </StoryBody>
     </div>
   ))

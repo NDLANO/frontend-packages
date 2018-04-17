@@ -63,6 +63,8 @@ export { FilterList } from './Filter';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
+export { default as FileList } from './FileList';
+
 export {
   ToggleSearchButton,
   SearchOverlay,

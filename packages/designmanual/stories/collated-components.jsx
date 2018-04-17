@@ -32,6 +32,7 @@ import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
 } from './article/RelatedArticleListExample';
+import FileListExample from './molecules/FileListExample';
 
 const toggle = () => {
   document
@@ -392,6 +393,14 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <Resources />
+      </StoryBody>
+    </div>
+  ))
+  .add('Nedlasting av filer', () => (
+    <div>
+      <StoryIntro title="Nedlasting av filer" />
+      <StoryBody>
+        <FileListExample />
       </StoryBody>
     </div>
   ))

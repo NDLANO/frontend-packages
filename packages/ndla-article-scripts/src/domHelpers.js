@@ -58,3 +58,11 @@ export const getElementOffset = element => {
 
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
 };
+
+export const inIframe = () => {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
+  }
+};

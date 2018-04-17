@@ -129,6 +129,7 @@ class SearchPageExample extends Component {
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
+        onSearch={() => {}}
         searchFieldFilters={[
           {
             value: 'value',

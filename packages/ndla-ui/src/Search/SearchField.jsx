@@ -77,6 +77,7 @@ const SearchField = ({
   searchResult,
   messages,
   allResultUrl,
+  onSearch,
   resourceToLinkProps,
 }) => {
   const modifiers = [];
@@ -123,7 +124,12 @@ const SearchField = ({
             <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
           )}
       </div>
-      <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
+      <button
+        tabIndex="-1"
+        {...classes('button')}
+        type="submit"
+        value="Search"
+        onClick={onSearch}>
         <SearchIcon />
       </button>
       {searchResultView}
@@ -135,6 +141,7 @@ SearchField.propTypes = {
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

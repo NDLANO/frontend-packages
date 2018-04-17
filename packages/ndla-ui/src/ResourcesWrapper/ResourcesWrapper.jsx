@@ -23,7 +23,7 @@ const ResourcesWrapper = ({ children, header, subjectPage }) => (
 );
 
 ResourcesWrapper.propTypes = {
-  header: PropTypes.shape().isRequired,
+  header: PropTypes.node,
   children: PropTypes.node.isRequired,
   subjectPage: PropTypes.bool,
 };

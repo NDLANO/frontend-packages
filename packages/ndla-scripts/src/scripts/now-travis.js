@@ -5,7 +5,7 @@
  */
 
 const github = require('octonode');
-const spawn = require('cross-spawn');
+const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
 const urlRegex = require('url-regex');
 const awaitUrl = require('await-url');
@@ -97,35 +97,6 @@ function onError(sha, err) {
   });
 }
 
-function spawnPromise(sha, command, ...args) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(command, ...args);
-    let stdout = '';
-    let stderr = '';
-    child.stdout.on('data', data => {
-      stdout += data;
-      safeLog(String(data));
-    });
-    child.stderr.on('data', data => {
-      safeError(String(data));
-      stderr += String(safeify(data));
-    });
-
-    child.on('error', error => {
-      onError(sha, error);
-      reject(safeify(error));
-    });
-
-    child.on('close', () => {
-      if (stderr) {
-        reject(stderr);
-      } else {
-        resolve(stdout);
-      }
-    });
-  });
-}
-
 function getAliasUrl() {
   const repoName = TRAVIS_REPO_SLUG.split('/')[1];
   if (TRAVIS_PULL_REQUEST === 'false') {
@@ -138,7 +109,12 @@ async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
   const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
-  await spawnPromise(sha, 'now', cliArgs);
+  try {
+    await spawn('now', cliArgs);
+  } catch (error) {
+    onError(sha, error);
+    throw error;
+  }
   return newUrl;
 }
 
@@ -147,12 +123,18 @@ async function spawnDeploy(sha) {
     '--token',
     nowToken,
     '--no-clipboard',
-    '--npm',
+    '--region',
+    'bru',
     ...providedArgs,
   ];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
-  const result = await spawnPromise(sha, 'now', cliArgs);
-  return getUrl(result);
+  try {
+    const result = await spawn('now', cliArgs);
+    return result.toString();
+  } catch (error) {
+    onError(sha, error);
+    throw error;
+  }
 }
 
 async function deploy(sha) {

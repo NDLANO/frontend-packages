@@ -65,7 +65,6 @@
         @include mq(tablet) {
           @include inuit-font-size(22px, 32px);
         }
-        letter-spacing: normal;
       }
 
       &__title-wrapper {

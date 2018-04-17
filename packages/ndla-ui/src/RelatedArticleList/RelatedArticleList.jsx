@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Button from '../Button';
 import SafeLink from '../common/SafeLink';
+import SectionHeading from '../SectionHeading';
 
 const classes = new BEMHelper({
   name: 'related-articles',
@@ -36,7 +37,9 @@ RelatedArticle.propTypes = {
 
 const RelatedArticleList = ({ messages, children }) => (
   <section {...classes('')}>
-    <h1 {...classes('component-title')}>{messages.title}</h1>
+    <SectionHeading className={classes('component-title').className}>
+      {messages.title}
+    </SectionHeading>
     <div {...classes('articles')}>
       {React.Children.map(children, (article, i) =>
         React.cloneElement(article, {

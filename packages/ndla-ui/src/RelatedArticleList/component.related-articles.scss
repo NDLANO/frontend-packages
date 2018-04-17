@@ -9,11 +9,7 @@
 
   &__component-title {
     margin: $spacing--large 0 $spacing;
-    @include inuit-font-size(18px);
     padding-bottom: 5px;
-    // border-bottom: 2px solid $brand-grey--light;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     text-align: left;
   }
 

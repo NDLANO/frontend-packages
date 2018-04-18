@@ -183,7 +183,7 @@ export default class TopicMenu extends Component {
             )}
             <Logo
               to="#"
-              altText="Nasjonal digital læringsarena"
+              label="Nasjonal digital læringsarena"
               isBeta={this.props.isBeta}
             />
           </div>

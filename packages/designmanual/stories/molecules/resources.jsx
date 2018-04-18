@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import {
   ResourcesWrapper,
   ResourceGroup,
+  ResourcesTopicTitle,
   ContentTypeBadge,
   constants,
 } from 'ndla-ui';
@@ -62,8 +63,17 @@ const resourceGroups = [
   resourceGroup4,
 ];
 
-export const Resources = ({ onlyAdditional }) => (
-  <ResourcesWrapper>
+export const Resources = ({ onlyAdditional, showTopicHeading }) => (
+  <ResourcesWrapper
+    header={
+      showTopicHeading && (
+        <ResourcesTopicTitle
+          messages={{ label: 'Emne' }}
+          title="Medieproduksjon"
+          url="#1"
+        />
+      )
+    }>
     {resourceGroups.map(group => (
       <ResourceGroup
         key={group.id}
@@ -88,5 +98,10 @@ export const Resources = ({ onlyAdditional }) => (
 );
 
 Resources.propTypes = {
+  showTopicHeading: PropTypes.bool,
   onlyAdditional: PropTypes.bool,
+};
+
+Resources.defaultProps = {
+  showTopicHeading: false,
 };

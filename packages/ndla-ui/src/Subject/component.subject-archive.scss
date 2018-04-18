@@ -50,11 +50,7 @@
   }
 
   &__section-heading {
-    @include font-size(16px, 32px);
-    text-transform: uppercase;
     margin: 0 0 $spacing--small 0;
-    font-weight: 700;
-
     @include mq(tablet) {
       @include visually-hidden();
     }

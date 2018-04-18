@@ -10,6 +10,7 @@
 /* 1. */
 
 $padding-left-narrow: 47px;
+$link-height: 52px;
 
 .c-topic-menu-toggle-button {
   position: relative;
@@ -144,9 +145,9 @@ $padding-left-narrow: 47px;
   flex-grow: 1;
   flex-shrink: 0;
   z-index: 30;
-  animation-name: fadeInLeft;
-  animation-duration: 0.2s;
   padding: 0 $spacing $spacing--large $padding-left-narrow;
+  position: relative;
+  z-index: 1;
 
   @include mq(desktop) {
     margin-top: $spacing;
@@ -157,6 +158,8 @@ $padding-left-narrow: 47px;
   }
 
   &--main {
+    padding-bottom: 0;
+    flex-grow: 0;
     border-left: 0;
     .c-topic-menu__link--big {
       @include mq($until: desktop) {
@@ -201,7 +204,83 @@ $padding-left-narrow: 47px;
     @include mq(wide) {
       margin-top: 0;
       min-height: 30px;
-      @include font-size(16px, 52px);
+      @include font-size(16px, $link-height);
+    }
+  }
+}
+
+.c-topic-menu {
+  &__competence {
+    overflow: hidden;
+    flex-grow: 1;
+    background: $brand-color--lighter;
+
+    padding: $spacing;
+
+    @include mq(desktop) {
+      padding: $spacing--large;
+      margin: -($spacing + $spacing--small) $spacing 0 $spacing--medium;
+      min-height: 70vh;
+    }
+
+    & > * {
+      animation-name: fadeInLeft;
+      animation-duration: 0.5s;
+    }
+  }
+
+  &__competence-toggle-button {
+    @include inuit-font-size(14px, 18px);
+    font-weight: $font-weight-bold;
+    color: $brand-color;
+    background: transparent;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+    display: none;
+
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+
+  &__competence-close-button {
+    @include mq(desktop) {
+      display: none;
+    }
+
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 0;
+    color: $brand-color;
+    background: none;
+    @include font-size(16px, 20px);
+    margin-bottom: $spacing;
+
+    .c-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 9px;
+    }
+  }
+
+  &__competence-open-button {
+    background: none;
+    border: 0;
+    margin: 0 $spacing $spacing--large $padding-left-narrow;
+    padding: 0 $spacing--small;
+    height: $link-height;
+    color: $brand-color;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    animation-name: fadeInLeft;
+    animation-duration: 0.5s;
+    cursor: pointer;
+
+    @include mq(desktop) {
+      display: none;
     }
   }
 }
@@ -213,7 +292,11 @@ $padding-left-narrow: 47px;
   margin-bottom: $spacing;
   padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+
   @include mq(desktop) {
+    animation-name: none;
     margin-bottom: $spacing--small;
     padding-left: $spacing--medium;
   }
@@ -224,20 +307,32 @@ $padding-left-narrow: 47px;
     }
   }
 
-  & > h1 {
-    @include inuit-font-size(20px);
-    font-weight: 600;
-    margin: 0;
+  &__header {
+    margin: 0 0 $spacing 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
     @include mq(desktop) {
-      padding-bottom: $spacing--small;
-      padding-right: $spacing--large;
-      @include inuit-font-size(26px);
       border-bottom: 1px solid rgba($brand-color, 0.3);
+      padding-bottom: $spacing--small;
+    }
+
+    & > h1 {
+      @include inuit-font-size(20px);
+      font-weight: $font-weight-bold;
+      margin: 0;
+
+      @include mq(desktop) {
+        @include inuit-font-size(26px);
+      }
     }
   }
 
   &--hasFilter {
+    margin-bottom: 0;
+
     & > h1 {
       margin: 0 0 $spacing--medium 0;
 
@@ -248,9 +343,14 @@ $padding-left-narrow: 47px;
   }
 
   .c-filter {
+    position: relative;
     &__list {
       padding-top: 0;
       border-top: 0;
+    }
+
+    &__item {
+      margin-bottom: $spacing--small;
     }
 
     &__label {
@@ -340,11 +440,15 @@ $padding-left-narrow: 47px;
   margin-bottom: $spacing--medium;
   padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
-  @include inuit-font-size(18px, 23px);
+  @include font-size(18px, 23px);
   display: block;
   color: $brand-color;
 
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+
   @include mq(desktop) {
+    animation-name: none;
     margin-left: $spacing--medium;
     padding: $spacing--small 0;
   }
@@ -359,19 +463,22 @@ $padding-left-narrow: 47px;
 }
 
 .c-topic-menu__link {
-  font-weight: 600;
   display: flex;
   align-items: center;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  height: 52px;
+  height: $link-height;
   line-height: 24px;
   padding: 0 $spacing--small;
 
   transition: all 0.1s ease-in-out;
   animation-name: fadeInLeft;
   animation-duration: 0.5s;
+
+  @include mq(desktop) {
+    font-weight: $font-weight-semibold;
+  }
 
   &:hover,
   &:active,

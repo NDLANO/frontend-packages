@@ -120,7 +120,14 @@ export class PopoverFilter extends Component {
         className={classes()}
         noScrollDisabled
         buttonClassName={classes('button')}>
-        <Popover messages={messages} {...rest} values={values} />
+        {onClose => (
+          <Popover
+            close={onClose}
+            messages={messages}
+            {...rest}
+            values={values}
+          />
+        )}
       </ClickToggle>
     );
   }

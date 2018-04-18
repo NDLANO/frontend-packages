@@ -76,7 +76,13 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+        <TopicIntroductionList
+          toTopic={() => '#'}
+          messages={{
+            shortcutButtonText: 'Lærestoff',
+          }}
+          topics={topicList}
+        />
       </StoryBody>
     </div>
   ))

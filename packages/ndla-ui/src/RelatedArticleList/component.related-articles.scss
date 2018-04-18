@@ -25,6 +25,7 @@
     border-left: 6px solid rgba($brand-grey--light, 0.4);
     padding-left: $spacing;
     padding-right: $spacing;
+    padding-bottom: $spacing--small;
     margin: 0 0 $spacing--large 0;
     flex-basis: 50%;
     flex-grow: 0;
@@ -87,5 +88,11 @@
 
   &__link-wrapper {
     margin-left: $spacing--small;
+  }
+
+  &__link-info {
+    font-weight: $font-weight-semibold;
+    @include font-size(16px, 20px);
+    margin: $spacing--small 0 0 0 !important;
   }
 }

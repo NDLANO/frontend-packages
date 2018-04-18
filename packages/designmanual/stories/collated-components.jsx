@@ -31,6 +31,7 @@ import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
+  RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
 
 const toggle = () => {
@@ -272,6 +273,8 @@ storiesOf('Sammensatte moduler', module)
         <RelatedArticleExerciseList />
         <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
         <RelatedArticleMixedList />
+        <h2 className="u-heading">Eksterne ressurser eksempel</h2>
+        <RelatedArticleExternal />
         <h2 className="u-heading">Eksempel med vis mer</h2>
         <RelatedArticleListExample />
       </StoryBody>

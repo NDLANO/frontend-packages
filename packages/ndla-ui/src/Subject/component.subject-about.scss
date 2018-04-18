@@ -25,27 +25,24 @@
     }
   }
 
-  &__heading {
+  &__top-heading {
+    margin: 0 0 $spacing--small 0;
+
+    @include mq(tablet) {
+      display: none;
+    }
+  }
+
+  &__main-heading {
     margin: 0 0 $spacing--small 0;
     @include font-size(14px, 32px);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
 
-    &--top {
-      @include font-size(16px, 32px);
-      text-transform: uppercase;
+    display: none;
 
-      @include mq(tablet) {
-        display: none;
-      }
-    }
-
-    &--main {
-      display: none;
-
-      @include mq(tablet) {
-        display: block;
-      }
+    @include mq(tablet) {
+      display: block;
     }
   }
 

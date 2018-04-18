@@ -13,6 +13,11 @@
   li {
     background-color: rgba($brand-grey--light, 0.4);
   }
+
+  &__header {
+    border-bottom: 2px solid $brand-grey--light;
+    margin-bottom: $spacing--small / 2;
+  }
 }
 
 .c-resource-group--subject-material {

@@ -144,14 +144,10 @@ $subject-section-padding: 100px;
 }
 
 .c-subject-section-title {
-  font-weight: $font-weight-bold;
-  text-transform: uppercase;
-  @include font-size(16px, 32px);
   margin: 0 0 $spacing--small 0;
 
   @include mq(tablet) {
     margin: 0 0 $spacing 0;
-    @include font-size(22px);
   }
 }
 

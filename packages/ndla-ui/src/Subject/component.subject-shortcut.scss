@@ -24,6 +24,13 @@
 
       color: $brand-color--dark;
       padding: 9px 20px;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $brand-color;
+        color: $white;
+      }
     }
   }
 
@@ -33,8 +40,9 @@
     border: 0;
     align-items: center;
     padding: 0;
-    color: $brand-color--secondary;
+    color: $brand-color;
     margin-top: $spacing;
+    cursor: pointer;
 
     .c-icon {
       width: 18px;

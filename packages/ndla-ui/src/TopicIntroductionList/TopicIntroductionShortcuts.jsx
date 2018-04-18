@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from 'ndla-icons/common';
-import ShortcutType from './TopicShortcutType';
+import ShortcutItem from './TopicShortcutItem';
 
 import { ShortcutShape } from '../shapes';
 
@@ -18,29 +18,46 @@ class TopicIntroductionShortcuts extends Component {
   }
 
   render() {
-    const { shortcuts } = this.props;
+    const { shortcuts, messages, id } = this.props;
     const { open } = this.state;
 
     return (
       <div
-        {...classes('')}
         onMouseEnter={() => this.setState({ open: true })}
-        onMouseLeave={() => this.setState({ open: false })}>
-        <Forward />
-        {!open ? <span {...classes('label')}>Lærestoff</span> : null}
-        {open ? (
-          <ul {...classes('list')}>
+        onMouseLeave={() => this.setState({ open: false })}
+        {...classes()}>
+        <button
+          aria-expanded={this.state.open}
+          aria-label={messages.toggleButtonText}
+          aria-controls={id}
+          {...classes('button')}
+          onClick={() => {
+            this.setState(prevState => ({
+              open: !prevState.open,
+            }));
+          }}>
+          <Forward />
+          {!open && (
+            <span {...classes('label')}>{messages.toggleButtonText}</span>
+          )}
+        </button>
+        {open && (
+          <ul {...classes('list')} id={id}>
             {shortcuts.map(shortcut => (
-              <ShortcutType key={shortcut.id} shortcut={shortcut} />
+              <ShortcutItem key={shortcut.id} shortcut={shortcut} />
             ))}
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
 }
 
 TopicIntroductionShortcuts.propTypes = {
+  id: PropTypes.string.isRequired,
+  messages: PropTypes.shape({
+    toggleButtonText: PropTypes.string.isRequired,
+  }),
   shortcuts: PropTypes.arrayOf(ShortcutShape).isRequired,
 };
 

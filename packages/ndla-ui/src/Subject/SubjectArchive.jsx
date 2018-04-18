@@ -42,8 +42,10 @@ class SubjectArchive extends Component {
       archiveArticles,
     } = this.props;
 
+    const archiveId = 'subject-archive';
+
     const section = this.state.archiveOpen ? (
-      <nav {...classes('archive')}>
+      <nav id={archiveId} {...classes('archive')}>
         <ul {...classes('archive-articles')}>
           {archiveArticles.map(article => (
             <li key={article.heading}>
@@ -86,6 +88,8 @@ class SubjectArchive extends Component {
         <div {...classes('wrapper')}>
           {section}
           <button
+            aria-expanded={this.state.archiveOpen}
+            aria-controls={archiveId}
             className={classes('archive-button').className}
             onClick={this.handleToggleArchive}>
             {this.state.archiveOpen ? (

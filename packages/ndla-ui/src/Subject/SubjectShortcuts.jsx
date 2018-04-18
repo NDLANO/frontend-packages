@@ -33,6 +33,7 @@ class SubjectShortcuts extends Component {
 
   render() {
     const { links, messages, defaultVisableCount } = this.props;
+    const id = 'subject-shortcut';
 
     const showExpand = defaultVisableCount < links.length;
     let button = null;
@@ -44,6 +45,8 @@ class SubjectShortcuts extends Component {
 
       button = (
         <button
+          aria-expanded={isExpanded}
+          aria-controls={id}
           onClick={() => this.handleOnExpand(!isExpanded)}
           {...classes('expand-button')}>
           <Forward />
@@ -58,7 +61,7 @@ class SubjectShortcuts extends Component {
     return (
       <section {...classes('')}>
         <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
-        <nav>
+        <nav id={id}>
           <TransitionGroup className={classes('list').className} component="ul">
             {filteredLinks.map(link => (
               <Fade key={link.url}>

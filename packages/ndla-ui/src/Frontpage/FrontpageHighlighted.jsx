@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 import Carousel from '../Carousel';
+import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-frontpage-highlighted');
 
 const FrontpageHighlighted = ({ heading, children }) => (
   <section {...classes()}>
-    <h1 {...classes('heading')}>{heading}</h1>
+    <SectionHeading large className={classes('heading').className}>
+      {heading}
+    </SectionHeading>
     <Carousel
       settings={{
         responsive: [

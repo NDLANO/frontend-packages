@@ -12,10 +12,10 @@ import { classes } from './ResourcesWrapper';
 import { SubjectBadge } from '../ContentTypeBadge';
 
 const ResourceTitle = ({ children }) => (
-  <header {...classes('title-wrapper')}>
+  <div {...classes('title-wrapper')}>
     <SubjectBadge size="large" background />
     <h1 {...classes('title')}>{children}</h1>
-  </header>
+  </div>
 );
 
 ResourceTitle.propTypes = {

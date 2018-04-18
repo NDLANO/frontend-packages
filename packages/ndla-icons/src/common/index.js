@@ -15,6 +15,7 @@ export { default as ChevronLeft } from './ChevronLeft';
 export { default as ChevronRight } from './ChevronRight';
 export { default as ChevronUp } from './ChevronUp';
 export { default as Document } from './Document';
+export { default as Download } from './Download';
 export { default as EmailOutline } from './EmailOutline';
 export { default as Facebook } from './Facebook';
 export { default as Forward } from './Forward';

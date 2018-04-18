@@ -41,8 +41,7 @@
     "react-facebook": "^4.2.1",
     "react-prop-types": "0.4.0",
     "react-slick": "^0.19.0",
-    "react-transition-group": "^2.2.1",
-    "react-twitter-widgets": "^1.7.1"
+    "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
     "prop-types": "^15.6.0",

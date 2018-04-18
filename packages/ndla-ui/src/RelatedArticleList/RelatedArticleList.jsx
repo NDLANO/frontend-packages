@@ -83,9 +83,4 @@ RelatedArticleList.propTypes = {
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
 };
-
-RelatedArticleList.defaultProps = {
-  actions: null,
-};
-
 export default RelatedArticleList;

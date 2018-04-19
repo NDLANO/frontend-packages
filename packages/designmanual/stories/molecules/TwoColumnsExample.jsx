@@ -51,6 +51,9 @@ class TopicListExample extends Component {
           topics={this.filterTopics()}
           twoColumns
           subjectPage
+          messages={{
+            shortcutButtonText: 'Lærestoff',
+          }}
         />
       </section>
     );

@@ -122,6 +122,9 @@ class SearchPageExample extends Component {
         />
       ) : null;
 
+    const onSearch = evt => {
+      evt.preventDefault();
+    };
     return (
       <SearchPage
         closeUrl="#"
@@ -129,7 +132,7 @@ class SearchPageExample extends Component {
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
-        onSearch={() => {}}
+        onSearch={onSearch}
         searchFieldFilters={[
           {
             value: 'value',

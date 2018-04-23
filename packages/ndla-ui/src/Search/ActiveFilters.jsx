@@ -14,6 +14,7 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
       return (
         <li key={filterKey}>
           <button
+            type="button"
             onClick={() => {
               onFilterRemove(filter.value, filter.filterName);
             }}>

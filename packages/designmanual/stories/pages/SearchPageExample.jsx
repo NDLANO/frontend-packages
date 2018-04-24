@@ -24,6 +24,7 @@ class SearchPageExample extends Component {
   render() {
     const results = [
       {
+        id: 1,
         title: 'Ideskapning og mediedesign',
         url: '#1',
         ingress:
@@ -33,6 +34,7 @@ class SearchPageExample extends Component {
         breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
       },
       {
+        id: 2,
         title: 'Ideskapning og mediedesign',
         url: '#2',
         ingress:
@@ -62,6 +64,7 @@ class SearchPageExample extends Component {
         ],
       },
       {
+        id: 3,
         title: 'Ideskapning og mediedesign',
         url: '#3',
         ingress:

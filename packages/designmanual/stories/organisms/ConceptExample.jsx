@@ -44,24 +44,26 @@ class ConceptExample extends Component {
             <section>
               <div>
                 <p>
-                  Gjennom{' '}
-                  <Concept
-                    content="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre med andre ord at de blir som de andre i samfunnet."
-                    authors={['Gary Waters']}
-                    source="snl.no"
-                    title="Sosialisering"
-                    messages={{
-                      ariaLabel: 'Vis begrep beskrivelse',
-                      close: 'Lukk',
-                    }}
-                    license="by-nc-nd"
-                    id={1}>
-                    sosialisering
-                  </Concept>{' '}
-                  lærer menneskene å fungere i et samfunn og får kjennskap til
-                  de regler og verdier som det forventes at man skal følge.
-                  Sosialisering er dermed den prosessen som gjør at vi tar til
-                  oss dette, fra vi blir født til vi dør.
+                  <i>
+                    Gjennom{' '}
+                    <Concept
+                      content="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre med andre ord at de blir som de andre i samfunnet."
+                      authors={['Gary Waters']}
+                      source="snl.no"
+                      title="Sosialisering"
+                      messages={{
+                        ariaLabel: 'Vis begrep beskrivelse',
+                        close: 'Lukk',
+                      }}
+                      license="by-nc-nd"
+                      id={1}>
+                      sosialisering
+                    </Concept>{' '}
+                    lærer menneskene å fungere i et samfunn og får kjennskap til
+                    de regler og verdier som det forventes at man skal følge.
+                    Sosialisering er dermed den prosessen som gjør at vi tar til
+                    oss dette, fra vi blir født til vi dør.
+                  </i>
                 </p>
                 <p>
                   Barn møtes med forventninger til hvordan de skal oppføre seg.

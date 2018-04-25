@@ -53,7 +53,7 @@ const searchResultItemClasses = BEMHelper('c-search-result-item');
 
 const searchResultItemShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   breadcrumb: PropTypes.arrayOf(PropTypes.string),
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
@@ -121,7 +121,12 @@ const SearchResultItem = ({ item, messages }) => (
             <ul>
               {item.subjects.map(subject => (
                 <li key={subject.url}>
-                  <SafeLink to={subject.url}>{subject.title}</SafeLink>
+                  <SafeLink
+                    to={`other_subjects_${
+                      typeof item.url === 'object' ? item.url.href : item.url
+                    }_${subject.id}`}>
+                    {subject.title}
+                  </SafeLink>
                 </li>
               ))}
             </ul>
@@ -149,7 +154,13 @@ export const SearchResultList = ({ results, messages }) => {
   return (
     <ul className="c-search-result-list">
       {results.map(item => (
-        <SearchResultItem key={item.url} item={item} messages={messages} />
+        <SearchResultItem
+          key={`search_result_item_${
+            typeof item.url === 'object' ? item.url.href : item.url
+          }`}
+          item={item}
+          messages={messages}
+        />
       ))}
     </ul>
   );

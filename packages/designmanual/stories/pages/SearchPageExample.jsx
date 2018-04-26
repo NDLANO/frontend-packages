@@ -211,7 +211,7 @@ class SearchPageExample extends Component {
             <SearchFilter
               label="Innholdstype"
               narrowScreenOnly
-              defaultVisibleCount={3}
+              defaultVisibleCount={2}
               showLabel="Flere innholdstyper"
               hideLabel="Færre innholdstyper"
               options={[
@@ -289,7 +289,7 @@ class SearchPageExample extends Component {
                 },
               ]}
               values={['nb']}
-              defaultVisibleCount={3}
+              defaultVisibleCount={2}
               showLabel="Flere språk"
               hideLabel="Færre språk"
             />

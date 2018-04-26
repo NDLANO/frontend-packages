@@ -65,6 +65,7 @@ class ContentTypeResult extends Component {
           {totalCount > defaultCount && (
             <li key="showAll" {...classes('show-all')}>
               <button
+                type="button"
                 onClick={() => {
                   this.setState(prevState => ({
                     showAll: !prevState.showAll,

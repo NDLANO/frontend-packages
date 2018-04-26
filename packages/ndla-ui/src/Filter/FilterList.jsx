@@ -37,7 +37,8 @@ class FilterList extends Component {
       hideLabel,
     } = this.props;
 
-    const showAll = defaultVisibleCount === null;
+    const showAll =
+      defaultVisibleCount === null || options.length <= defaultVisibleCount;
     const labelModifiers = [];
 
     if (labelNotVisible) {

@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "prop-types": "^15.6.0",
-    "react": "^15.6.0 || ^16.0.0"
+    "react": "^16.3.2"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",

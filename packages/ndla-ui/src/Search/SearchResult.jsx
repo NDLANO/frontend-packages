@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, Additional } from 'ndla-icons/common';
+import { uuid } from 'ndla-util';
 
 import { FilterTabs } from '../Filter';
 import SafeLink from '../common/SafeLink';
@@ -52,6 +53,7 @@ SearchResult.propTypes = {
 const searchResultItemClasses = BEMHelper('c-search-result-item');
 
 const searchResultItemShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   breadcrumb: PropTypes.arrayOf(PropTypes.string),
@@ -75,7 +77,7 @@ const messagesShape = PropTypes.shape({
 });
 
 const SearchResultItem = ({ item, messages }) => (
-  <li key={item.title} {...searchResultItemClasses()}>
+  <li key={item.id} {...searchResultItemClasses()}>
     <article>
       <header {...searchResultItemClasses('header')}>
         <h1>
@@ -100,9 +102,8 @@ const SearchResultItem = ({ item, messages }) => (
               if (index !== item.breadcrumb.length - 1) {
                 icon = <ChevronRight />;
               }
-
               return (
-                <Fragment key={breadcrumbItem}>
+                <Fragment key={uuid()}>
                   <span>{breadcrumbItem}</span>
                   {icon}
                 </Fragment>
@@ -111,7 +112,10 @@ const SearchResultItem = ({ item, messages }) => (
           </div>
         )}
       <div {...searchResultItemClasses('content')}>
-        <p {...searchResultItemClasses('ingress')}>{item.ingress}</p>
+        <p
+          {...searchResultItemClasses('ingress')}
+          dangerouslySetInnerHTML={{ __html: item.ingress }}
+        />
         {item.image}
       </div>
       {item.subjects &&

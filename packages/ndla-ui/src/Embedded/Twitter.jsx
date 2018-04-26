@@ -1,22 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Timeline } from 'react-twitter-widgets';
 
-const EmbeddedTwitter = props => (
-  <div>
-    <Timeline
-      dataSource={{
-        sourceType: 'profile',
-        screenName: props.screenName,
-      }}
-      options={{
-        tweetLimit: props.tweetLimit,
-        chrome: 'noheader nofooter noborders',
-        borderColor: '#e8e3e3',
-      }}
-    />
-  </div>
-);
+class EmbeddedTwitter extends React.Component {
+  static removeChildren(node) {
+    if (node) {
+      while (node.firstChild) {
+        node.removeChild(node.firstChild);
+      }
+    }
+  }
+
+  constructor(props) {
+    super(props);
+    this.loadWidget = this.loadWidget.bind(this);
+  }
+
+  componentDidMount() {
+    if (window.twttr) {
+      this.loadWidget();
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.screenName !== nextProps.screenName;
+  }
+
+  componentDidUpdate() {
+    if (window.twttr) {
+      this.loadWidget();
+    }
+  }
+
+  componentWillUnmount() {
+    EmbeddedTwitter.removeChildren(this.widgetWrapper);
+  }
+
+  loadWidget() {
+    window.twttr.ready(tw => {
+      // Delete existing
+      EmbeddedTwitter.removeChildren(this.widgetWrapper);
+
+      const { screenName, tweetLimit } = this.props;
+      // Create widget
+      tw.widgets.createTimeline(
+        { sourceType: 'profile', screenName },
+        this.widgetWrapper,
+        {
+          tweetLimit,
+          chrome: 'noheader nofooter noborders',
+          borderColor: '#e8e3e3',
+        },
+      );
+    });
+  }
+
+  render() {
+    return React.createElement('div', {
+      ref: c => {
+        this.widgetWrapper = c;
+      },
+    });
+  }
+}
 
 EmbeddedTwitter.propTypes = {
   screenName: PropTypes.string.isRequired,

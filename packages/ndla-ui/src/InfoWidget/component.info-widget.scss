@@ -6,14 +6,7 @@
   }
 
   &__heading {
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
-    @include font-size(16px, 32px);
     margin: 0 0 $spacing--small 0;
-
-    @include mq(tablet) {
-      @include font-size(22px);
-    }
   }
 
   &__description {

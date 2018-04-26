@@ -106,10 +106,12 @@ $inuit-wrapper-width: 1024px;
 @import 'Beta/component.beta-navigation';
 @import 'Subject/component.subject';
 @import 'InfoBox/component.info-box';
+@import 'CompetenceGoals/component.competence-goals';
 @import 'ContentCard/component.content-card';
 @import 'Frontpage/component.frontpage';
 @import 'InfoWidget/component.info-widget';
 @import 'Carousel/component.carousel';
+@import 'SectionHeading/component.section-heading';
 
 // UTILITIES
 @import '../../../node_modules/inuitcss/utilities/utilities.widths';

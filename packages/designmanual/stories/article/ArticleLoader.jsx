@@ -24,10 +24,18 @@ import LicenseExample from './LicenseExample';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
 
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+
 const ResourcesSubTopics = () => (
   <ResourcesWrapper>
     <ResourcesTitle>Emner</ResourcesTitle>
-    <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+    <TopicIntroductionList
+      toTopic={() => '#'}
+      topics={topicList}
+      messages={{
+        shortcutButtonText: 'Lærestoff',
+      }}
+    />
   </ResourcesWrapper>
 );
 
@@ -109,7 +117,9 @@ class ArticleLoader extends Component {
                 publisher: 'Utgiver',
                 label,
               }}
-              licenseBox={<LicenseExample />}>
+              licenseBox={<LicenseExample />}
+              compentenceGoals={<CompentenceGoalsDialogExample wide />}
+              compentenceGoalsNarrow={<CompentenceGoalsDialogExample narrow />}>
               {articleChildren}
             </Article>
           </OneColumn>

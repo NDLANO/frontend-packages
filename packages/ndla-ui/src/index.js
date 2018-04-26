@@ -15,6 +15,7 @@ export {
   ArticleIntroduction,
   ArticleTitle,
   ArticleWrapper,
+  ArticleHeaderWrapper,
   default as Article,
 } from './Article';
 
@@ -99,6 +100,11 @@ export {
   default as RelatedArticleList,
   RelatedArticle,
 } from './RelatedArticleList';
+export {
+  default as CompentenceGoals,
+  CompentenceGoalsDialog,
+} from './CompetenceGoals';
+
 export {
   default as ResourcesWrapper,
   ResourcesTitle,

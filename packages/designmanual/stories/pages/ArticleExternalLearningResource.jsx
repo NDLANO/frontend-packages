@@ -15,6 +15,7 @@ import {
   ArticleWrapper,
   ArticleIntroduction,
   ArticleByline,
+  ArticleHeaderWrapper,
   Image,
   ExternalLearningResourcesBadge,
 } from 'ndla-ui';
@@ -25,33 +26,39 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<ExternalLearningResourcesBadge background size="large" />}
-          label="Ekstern læringsressurs">
-          Artikkel delte læringsressurser
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <CompentenceGoalsDialogExample wide />
+          <ArticleTitle
+            icon={<ExternalLearningResourcesBadge background size="large" />}
+            label="Ekstern læringsressurs">
+            Artikkel delte læringsressurser
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleByline
+            authors={[
+              { name: 'Ola Nordnes' },
+              { name: 'Kari Nordnes' },
+              { name: 'Jon Nordgubbe' },
+            ]}
+            updated="12/10/2016"
+            license={getLicenseByAbbreviation('by-nc-nd')}
+            messages={{
+              writtenBy: '',
+              lastUpdated: 'Publisert',
+            }}>
+            <LicenseExample />
+          </ArticleByline>
+          <CompentenceGoalsDialogExample narrow />
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <FigureWithLicense type="left" caption="" runScripts>

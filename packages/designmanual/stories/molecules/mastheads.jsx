@@ -25,6 +25,8 @@ import {
 import { topicMenu, contentTypeResults } from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';
 
+import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
+
 export const MastheadWithLogo = () => (
   <Masthead fixed>
     <MastheadItem right>
@@ -44,6 +46,10 @@ const messages = {
   contentTypeResultsShowMore: 'Vis mer',
   contentTypeResultsShowLess: 'Vis mindre',
   contentTypeResultsNoHit: 'Ingen ressurser',
+  compentenceGoalsToggleButtonOpen: 'Kompetansemål',
+  compentenceGoalsToggleButtonClose: 'Lukk kompetansemål',
+  compentenceGoalsNarrowOpenButton: 'Vis kompetansemål',
+  compentenceGoalsNarrowBackButton: 'Tilbake',
 };
 
 class MastheadWithTopicMenu extends Component {
@@ -76,32 +82,34 @@ class MastheadWithTopicMenu extends Component {
           }}
           searchPageUrl="#"
           messages={{ buttonText: 'Søk' }}>
-          <SearchOverlay>
-            <SearchField
-              placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-              value={this.state.value}
-              onChange={event => {
-                this.setState({
-                  value: event.currentTarget.value,
-                });
-              }}
-              filters={[
-                { value: 'Value', title: 'Medieuttrykk og mediesamfunn' },
-              ]}
-              onFilterRemove={() => {}}
-              messages={{
-                contentTypeResultShowLessLabel: 'Se færre',
-                contentTypeResultShowMoreLabel: 'Se alle',
-                allResultButtonText: 'Vis alle søketreff',
-                searchFieldTitle: 'Søk',
-                searchResultHeading: 'Forslag:',
-                contentTypeResultNoHit: 'Ingen treff',
-              }}
-              allResultUrl="#"
-              searchResult={searchFieldResults}
-              resourceToLinkProps={() => {}}
-            />
-          </SearchOverlay>
+          {onClose => (
+            <SearchOverlay close={onClose}>
+              <SearchField
+                placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
+                value={this.state.value}
+                onChange={event => {
+                  this.setState({
+                    value: event.currentTarget.value,
+                  });
+                }}
+                filters={[
+                  { value: 'Value', title: 'Medieuttrykk og mediesamfunn' },
+                ]}
+                onFilterRemove={() => {}}
+                messages={{
+                  contentTypeResultShowLessLabel: 'Se færre',
+                  contentTypeResultShowMoreLabel: 'Se alle',
+                  allResultButtonText: 'Vis alle søketreff',
+                  searchFieldTitle: 'Søk',
+                  searchResultHeading: 'Forslag:',
+                  contentTypeResultNoHit: 'Ingen treff',
+                }}
+                allResultUrl="#"
+                searchResult={searchFieldResults}
+                resourceToLinkProps={() => {}}
+              />
+            </SearchOverlay>
+          )}
         </ToggleSearchButton>
       );
     }
@@ -125,49 +133,53 @@ class MastheadWithTopicMenu extends Component {
             openTitle="Lukk"
             className="c-topic-menu-container"
             buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-            <TopicMenu
-              isBeta={this.props.beta}
-              subjectTitle="Mediefag"
-              toSubject={() => '#'}
-              toTopic={() => '#'}
-              withSearchAndFilter
-              topics={topicMenu}
-              messages={messages}
-              onOpenSearch={() => {
-                this.setState({
-                  menuIsOpen: false,
-                  searchIsOpen: true,
-                });
-              }}
-              filterOptions={[
-                {
-                  title: 'Medieuttrykk',
-                  value: 'Medieuttrykk',
-                },
-                {
-                  title: 'Mediesamfunnet',
-                  value: 'Mediesamfunnet',
-                },
-              ]}
-              filterValues={['Medieuttrykk']}
-              onFilterClick={() => {}}
-              searchPageUrl="#"
-              resourceToLinkProps={() => {}}
-              expandedTopicId={this.state.expandedTopicId}
-              expandedSubtopicId={this.state.expandedSubtopicId}
-              expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
-              onNavigate={(
-                expandedTopicId,
-                expandedSubtopicId,
-                expandedSubtopicLevel2Id,
-              ) => {
-                this.setState({
+            {onClose => (
+              <TopicMenu
+                close={onClose}
+                isBeta={this.props.beta}
+                subjectTitle="Mediefag"
+                toSubject={() => '#'}
+                toTopic={() => '#'}
+                withSearchAndFilter
+                topics={topicMenu}
+                messages={messages}
+                onOpenSearch={() => {
+                  this.setState({
+                    menuIsOpen: false,
+                    searchIsOpen: true,
+                  });
+                }}
+                filterOptions={[
+                  {
+                    title: 'Medieuttrykk',
+                    value: 'Medieuttrykk',
+                  },
+                  {
+                    title: 'Mediesamfunnet',
+                    value: 'Mediesamfunnet',
+                  },
+                ]}
+                filterValues={['Medieuttrykk']}
+                competenceGoals={<CompetenceGoalsExample menu />}
+                onFilterClick={() => {}}
+                searchPageUrl="#"
+                resourceToLinkProps={() => {}}
+                expandedTopicId={this.state.expandedTopicId}
+                expandedSubtopicId={this.state.expandedSubtopicId}
+                expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
+                onNavigate={(
                   expandedTopicId,
                   expandedSubtopicId,
                   expandedSubtopicLevel2Id,
-                });
-              }}
-            />
+                ) => {
+                  this.setState({
+                    expandedTopicId,
+                    expandedSubtopicId,
+                    expandedSubtopicLevel2Id,
+                  });
+                }}
+              />
+            )}
           </ClickToggle>
           <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock />
@@ -177,7 +189,7 @@ class MastheadWithTopicMenu extends Component {
           {searchButtonView}
           <Logo
             to="#"
-            altText="Nasjonal digital læringsarena"
+            label="Nasjonal digital læringsarena"
             isBeta={this.props.beta}
           />
         </MastheadItem>

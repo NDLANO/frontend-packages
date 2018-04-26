@@ -4,6 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import { Forward } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 import SafeLink from '../common/SafeLink';
+import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-subject-archive');
 
@@ -42,8 +43,10 @@ class SubjectArchive extends Component {
       archiveArticles,
     } = this.props;
 
+    const archiveId = 'subject-archive';
+
     const section = this.state.archiveOpen ? (
-      <nav {...classes('archive')}>
+      <nav id={archiveId} {...classes('archive')}>
         <ul {...classes('archive-articles')}>
           {archiveArticles.map(article => (
             <li key={article.heading}>
@@ -82,10 +85,14 @@ class SubjectArchive extends Component {
         ref={ref => {
           this.wrapperRef = ref;
         }}>
-        <h1 {...classes('section-heading')}>{sectionHeading}</h1>
+        <SectionHeading large className={classes('section-heading').className}>
+          {sectionHeading}
+        </SectionHeading>
         <div {...classes('wrapper')}>
           {section}
           <button
+            aria-expanded={this.state.archiveOpen}
+            aria-controls={archiveId}
             className={classes('archive-button').className}
             onClick={this.handleToggleArchive}>
             {this.state.archiveOpen ? (

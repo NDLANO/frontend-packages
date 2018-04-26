@@ -13,6 +13,7 @@ import {
   TasksAndActivitiesBadge,
   SubjectMaterialBadge,
   ExternalLearningResourcesBadge,
+  AssessmentResourcesBadge,
   SourceMaterialBadge,
 } from 'ndla-ui';
 import { toggleRelatedArticles } from 'ndla-article-scripts';
@@ -56,6 +57,27 @@ export const RelatedArticleMixedList = () => (
   </RelatedArticleList>
 );
 
+export const RelatedArticleExternal = () => (
+  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+    <RelatedArticle
+      title="Bioteknologinemda"
+      icon={<ExternalLearningResourcesBadge background />}
+      modifier="external-learning-resources"
+      introduction="Bioteknologinemnda er et frittstående, rådgivende organ som er oppnevnt av Regjeringen og hjemlet (begrunnet) i Genteknologiloven og Bioteknologiloven."
+      linkInfo="Nettside hos bion.no"
+      to="#"
+    />
+    <RelatedArticle
+      title="Tittel på ekstern lenke"
+      icon={<ExternalLearningResourcesBadge background />}
+      modifier="external-learning-resources"
+      introduction="https://www.url.no/visuelt/vin…"
+      linkInfo="Nettside hos helsedirektoratet.no"
+      to="#"
+    />
+  </RelatedArticleList>
+);
+
 class ExpandExample extends Component {
   componentDidMount() {
     toggleRelatedArticles();
@@ -89,16 +111,17 @@ class ExpandExample extends Component {
       />,
       <RelatedArticle
         title={articleResources[3].title}
-        icon={<ExternalLearningResourcesBadge background />}
-        modifier="external-learning-resources"
+        icon={<AssessmentResourcesBadge background />}
+        modifier="assessment-resources"
         introduction={articleResources[3].introduction}
         to="#"
         key={articleResources[3].title}
       />,
+
       <RelatedArticle
         title={articleResources[4].title}
-        icon={<ExternalLearningResourcesBadge background />}
-        modifier="external-learning-resources"
+        icon={<AssessmentResourcesBadge background />}
+        modifier="assessment-resources"
         introduction={articleResources[4].introduction}
         to="#"
         key={articleResources[4].title}

@@ -17,6 +17,7 @@ import {
   ArticleByline,
   Image,
   SubjectMaterialBadge,
+  ArticleHeaderWrapper,
 } from 'ndla-ui';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
@@ -26,33 +27,39 @@ import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import { Resources } from '../molecules/resources';
 
+import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<SubjectMaterialBadge background size="large" />}
-          label="Fagstoff">
-          Artikkel fagstoff
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <CompentenceGoalsDialogExample wide />
+          <ArticleTitle
+            icon={<SubjectMaterialBadge background size="large" />}
+            label="Fagstoff">
+            Artikkel fagstoff
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleByline
+            authors={[
+              { name: 'Ola Nordnes' },
+              { name: 'Kari Nordnes' },
+              { name: 'Jon Nordgubbe' },
+            ]}
+            updated="12/10/2016"
+            license={getLicenseByAbbreviation('by-nc-nd')}
+            messages={{
+              writtenBy: '',
+              lastUpdated: 'Publisert',
+            }}>
+            <LicenseExample />
+          </ArticleByline>
+          <CompentenceGoalsDialogExample narrow />
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <FigureWithLicense type="left" caption="" runScripts>

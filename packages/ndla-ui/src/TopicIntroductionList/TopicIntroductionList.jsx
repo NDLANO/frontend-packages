@@ -19,7 +19,13 @@ const topicClasses = new BEMHelper({
   outputIsString: true,
 });
 
-const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts }) => (
+const TopicIntroduction = ({
+  toTopic,
+  topic,
+  subjectPage,
+  shortcuts,
+  messages,
+}) => (
   <li className={topicClasses('item', { subjectPage })}>
     <article className={topicClasses('body')}>
       <h1 className={topicClasses('header')}>
@@ -29,12 +35,23 @@ const TopicIntroduction = ({ toTopic, topic, subjectPage, shortcuts }) => (
         we run into a double escaping issues as React escapes all strings.
         Use dangerouslySetInnerHTML to circumvent the issue */}
       <p dangerouslySetInnerHTML={{ __html: topic.introduction }} />
-      {shortcuts && <TopicIntroductionShortcuts shortcuts={shortcuts} />}
+      {shortcuts && (
+        <TopicIntroductionShortcuts
+          id={`${topic.id}_shortcuts`}
+          shortcuts={shortcuts}
+          messages={{
+            toggleButtonText: messages.shortcutButtonText,
+          }}
+        />
+      )}
     </article>
   </li>
 );
 
 TopicIntroduction.propTypes = {
+  messages: PropTypes.shape({
+    shortcutButtonText: PropTypes.string.isRequired,
+  }),
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
   subjectPage: PropTypes.bool,

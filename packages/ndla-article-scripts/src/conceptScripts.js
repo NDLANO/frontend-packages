@@ -8,7 +8,7 @@
 
 import jump from 'jump.js';
 
-import { forEachElement, getElementOffset } from './domHelpers';
+import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
 export const addShowConceptDefinitionClickListeners = () => {
   forEachElement('.c-concept__item', item => {
@@ -50,11 +50,21 @@ export const addShowConceptDefinitionClickListeners = () => {
         } else {
           offset = popupHeight;
         }
-
-        jump(popup, {
-          duration: 300,
-          offset,
-        });
+        if (inIframe() && window.parent) {
+          window.parent.postMessage(
+            {
+              event: 'scrollTo',
+              // In an iframe viewport just returns the iframe height. So just offset the popup height
+              top: popupTop - popupHeight,
+            },
+            '*',
+          );
+        } else {
+          jump(popup, {
+            duration: 300,
+            offset,
+          });
+        }
       }
       popup.setAttribute('aria-hidden', isHidden);
     };

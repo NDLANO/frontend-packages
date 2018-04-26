@@ -1142,7 +1142,7 @@ storiesOf('Grunnstiler', module)
         <Table>
           <thead>
             <tr>
-              <th scope="col">Hva?</th>
+              <th />
               <th scope="col">Prefiks</th>
               <th scope="col">Symbol</th>
               <th scope="col">Namn</th>

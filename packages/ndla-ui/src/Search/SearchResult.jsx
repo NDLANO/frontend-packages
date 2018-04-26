@@ -60,7 +60,7 @@ const searchResultItemShape = PropTypes.shape({
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
+      url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     }),
   ),
   additional: PropTypes.bool,
@@ -81,7 +81,11 @@ const SearchResultItem = ({ item, messages }) => (
     <article>
       <header {...searchResultItemClasses('header')}>
         <h1>
-          <SafeLink to={item.url}>{item.title}</SafeLink>
+          {item.url.href ? (
+            <a {...item.url}>{item.title}</a>
+          ) : (
+            <SafeLink to={item.url}>{item.title}</SafeLink>
+          )}
         </h1>
         {item.contentTypeIcon}
         <span {...searchResultItemClasses('content-type-label')}>
@@ -124,13 +128,12 @@ const SearchResultItem = ({ item, messages }) => (
             <span>{messages.subjectsLabel}</span>
             <ul>
               {item.subjects.map(subject => (
-                <li key={subject.url}>
-                  <SafeLink
-                    to={`other_subjects_${
-                      typeof item.url === 'object' ? item.url.href : item.url
-                    }_${subject.id}`}>
-                    {subject.title}
-                  </SafeLink>
+                <li key={uuid()}>
+                  {subject.url.href ? (
+                    <a {...subject.url}>{subject.title}</a>
+                  ) : (
+                    <SafeLink to={subject.url}>{subject.title}</SafeLink>
+                  )}
                 </li>
               ))}
             </ul>

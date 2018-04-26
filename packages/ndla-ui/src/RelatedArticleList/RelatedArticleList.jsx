@@ -33,7 +33,10 @@ export const RelatedArticle = ({
           </SafeLink>
         </span>
       </h1>
-      <p {...classes('description')}>{introduction}</p>
+      <p
+        {...classes('description')}
+        dangerouslySetInnerHTML={{ __html: introduction }}
+      />
       {linkInfo && <p {...classes('link-info')}>{linkInfo}</p>}
     </article>
   );

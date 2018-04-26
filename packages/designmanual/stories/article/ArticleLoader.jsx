@@ -29,7 +29,13 @@ import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExamp
 const ResourcesSubTopics = () => (
   <ResourcesWrapper>
     <ResourcesTitle>Emner</ResourcesTitle>
-    <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+    <TopicIntroductionList
+      toTopic={() => '#'}
+      topics={topicList}
+      messages={{
+        shortcutButtonText: 'Lærestoff',
+      }}
+    />
   </ResourcesWrapper>
 );
 

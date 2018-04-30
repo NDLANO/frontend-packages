@@ -5,8 +5,34 @@
 **/
 
 .c-table {
+  $scrollbar-height: 8px;
+
+  &::-webkit-scrollbar {
+    height: $scrollbar-height;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: $brand-color--lighter;
+    border-radius: $scrollbar-height;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $brand-color--dark;
+    border-radius: $scrollbar-height;
+  }
+
   &__wrapper {
+    text-align: center;
     position: relative;
+    margin: $spacing--large 0 $spacing--large 0;
+
+    @include mq($from: desktop) {
+      @include grids-expand(4,6,2);
+    }
+
+    &--has-scroll {
+      .c-table {
+        padding-bottom: $spacing;
+      }
+    }
   }
 
   &__left-shadow,
@@ -14,7 +40,7 @@
     position: absolute;
     z-index: 1;
     top: 0;
-    height: 100%;
+    height: calc(100% - #{$spacing});
     width: 15px;
     background-attachment: scroll, scroll;
     background-repeat: no-repeat;
@@ -46,23 +72,28 @@
   }
 }
 
+.c-article table:not(.c-table),
+article table:not(.c-table) {
+  margin: $spacing--large 0 $spacing--large 0;
+}
+
 .c-table,
 .c-article table,
 article table {
+  padding-left: 1px;
+  padding-right: 1px;
+  display: inline-block;
   vertical-align: top;
   font-size: 85%;
   table-layout: fixed;
 
   overflow-x: auto;
   max-width: 100%;
-  margin: $spacing--large 0 $spacing--large 0;
 
   // optional - enable iOS momentum scrolling
   -webkit-overflow-scrolling: touch;
 
   // scrolling shadows on left/right
-
-  display: block;
 
   &:after,
   &:before {

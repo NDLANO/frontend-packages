@@ -22,6 +22,8 @@ import {
   toggleLicenseInfoBox,
 } from './figureScripts';
 
+import { initTableScript, removeTableEventListeners } from './tableScripts';
+
 import {
   addDetailsEventListeners,
   removeDetailsEventListeners,
@@ -54,9 +56,12 @@ export const initArticleScripts = () => {
   initAudioPlayers();
   addFootnoteClickListeners();
   toggleRelatedArticles();
+  initTableScript();
 };
 
 export {
+  initTableScript,
+  removeTableEventListeners,
   updateIFrameDimensions,
   addFactBoxClickListener,
   removeFactBoxClickListener,

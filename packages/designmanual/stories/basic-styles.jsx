@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, Translation, TranslationLine } from 'ndla-ui';
+import { Translation, TranslationLine } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
+
+import Table from './molecules/TableExample';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -548,7 +550,7 @@ storiesOf('Grunnstiler', module)
             Source Sans Pro
           </a>.
         </p>
-        <table className="c-table">
+        <Table runScripts>
           <thead>
             <tr>
               <th>Type tekst</th>
@@ -588,7 +590,7 @@ storiesOf('Grunnstiler', module)
               <td>400, inkl. kursiv</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
         <p>
           Tilbakefallsfonter er{' '}
           <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og{' '}
@@ -597,7 +599,7 @@ storiesOf('Grunnstiler', module)
         <h2 id="storrelser" className="u-heading">
           Skriftstørrelser
         </h2>
-        <table className="c-table">
+        <Table>
           <thead>
             <tr>
               <th>Type tekst</th>
@@ -684,7 +686,7 @@ storiesOf('Grunnstiler', module)
               </td>
             </tr>
           </tbody>
-        </table>
+        </Table>
 
         <p>
           Grunnlaget for REM-kalkulerte størrelser er 18px skriftstørrelse på
@@ -840,7 +842,7 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
-        <Table>
+        <Table runScripts>
           <caption>Tabelltittel</caption>
           <thead>
             <tr>
@@ -969,6 +971,8 @@ storiesOf('Grunnstiler', module)
               <th>Symbol</th>
               <th>Namn</th>
               <th style={{ textAlign: 'right' }}>Eksempel</th>
+              <th style={{ textAlign: 'right' }}>Eksempel</th>
+              <th style={{ textAlign: 'right' }}>Eksempel</th>
             </tr>
           </thead>
           <tbody>
@@ -980,6 +984,8 @@ storiesOf('Grunnstiler', module)
               <td>P</td>
               <td>billiard</td>
               <td style={{ textAlign: 'right' }}>1000000000000000</td>
+              <td style={{ textAlign: 'right' }}>1000000000000000</td>
+              <td style={{ textAlign: 'right' }}>1000000000000000</td>
             </tr>
             <tr>
               <td>
@@ -988,6 +994,8 @@ storiesOf('Grunnstiler', module)
               <td>tera</td>
               <td>T</td>
               <td>billion</td>
+              <td style={{ textAlign: 'right' }}>1000000000000</td>
+              <td style={{ textAlign: 'right' }}>1000000000000</td>
               <td style={{ textAlign: 'right' }}>1000000000000</td>
             </tr>
             <tr>
@@ -998,6 +1006,8 @@ storiesOf('Grunnstiler', module)
               <td>G</td>
               <td>milliard</td>
               <td style={{ textAlign: 'right' }}>1000000000</td>
+              <td style={{ textAlign: 'right' }}>1000000000</td>
+              <td style={{ textAlign: 'right' }}>1000000000</td>
             </tr>
             <tr>
               <td>
@@ -1006,6 +1016,8 @@ storiesOf('Grunnstiler', module)
               <td>mega</td>
               <td>M</td>
               <td>million</td>
+              <td style={{ textAlign: 'right' }}>1000000</td>
+              <td style={{ textAlign: 'right' }}>1000000</td>
               <td style={{ textAlign: 'right' }}>1000000</td>
             </tr>
             <tr>
@@ -1016,6 +1028,8 @@ storiesOf('Grunnstiler', module)
               <td>k</td>
               <td>tusen</td>
               <td style={{ textAlign: 'right' }}>1000</td>
+              <td style={{ textAlign: 'right' }}>1000</td>
+              <td style={{ textAlign: 'right' }}>1000</td>
             </tr>
             <tr>
               <td>
@@ -1024,6 +1038,8 @@ storiesOf('Grunnstiler', module)
               <td>hekto</td>
               <td>h</td>
               <td>hundre</td>
+              <td style={{ textAlign: 'right' }}>100</td>
+              <td style={{ textAlign: 'right' }}>100</td>
               <td style={{ textAlign: 'right' }}>100</td>
             </tr>
             <tr>
@@ -1034,6 +1050,8 @@ storiesOf('Grunnstiler', module)
               <td>da</td>
               <td>ti</td>
               <td style={{ textAlign: 'right' }}>10</td>
+              <td style={{ textAlign: 'right' }}>10</td>
+              <td style={{ textAlign: 'right' }}>10</td>
             </tr>
             <tr>
               <td>
@@ -1042,6 +1060,8 @@ storiesOf('Grunnstiler', module)
               <td>desi</td>
               <td>d</td>
               <td>tidel</td>
+              <td style={{ textAlign: 'right' }}>0,1</td>
+              <td style={{ textAlign: 'right' }}>0,1</td>
               <td style={{ textAlign: 'right' }}>0,1</td>
             </tr>
             <tr>
@@ -1062,6 +1082,12 @@ storiesOf('Grunnstiler', module)
               <td style={{ textAlign: 'right' }}>
                 <strong>0,01</strong>
               </td>
+              <td style={{ textAlign: 'right' }}>
+                <strong>0,01</strong>
+              </td>
+              <td style={{ textAlign: 'right' }}>
+                <strong>0,01</strong>
+              </td>
             </tr>
             <tr>
               <td>
@@ -1070,6 +1096,8 @@ storiesOf('Grunnstiler', module)
               <td>milli</td>
               <td>m</td>
               <td>tusendel</td>
+              <td style={{ textAlign: 'right' }}>0,001</td>
+              <td style={{ textAlign: 'right' }}>0,001</td>
               <td style={{ textAlign: 'right' }}>0,001</td>
             </tr>
             <tr>
@@ -1080,6 +1108,8 @@ storiesOf('Grunnstiler', module)
               <td />
               <td>milliondel</td>
               <td style={{ textAlign: 'right' }}>0,000001</td>
+              <td style={{ textAlign: 'right' }}>0,000001</td>
+              <td style={{ textAlign: 'right' }}>0,000001</td>
             </tr>
             <tr>
               <td>
@@ -1088,6 +1118,12 @@ storiesOf('Grunnstiler', module)
               <td>nano</td>
               <td>n</td>
               <td>milliarddel</td>
+              <td style={{ textAlign: 'right' }}>
+                <p>0,000000001</p>
+              </td>
+              <td style={{ textAlign: 'right' }}>
+                <p>0,000000001</p>
+              </td>
               <td style={{ textAlign: 'right' }}>
                 <p>0,000000001</p>
               </td>

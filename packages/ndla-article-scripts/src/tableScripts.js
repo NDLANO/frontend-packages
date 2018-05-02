@@ -79,7 +79,7 @@ export const initTableScript = () => {
 
       if (hasScrollbar(table)) {
         toggleShadows(table);
-
+        table.setAttribute('tabindex', '0');
         el.classList.add('c-table__wrapper--has-scroll');
         table.addEventListener('scroll', throttledEventListner);
       }

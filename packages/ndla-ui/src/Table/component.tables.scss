@@ -6,6 +6,7 @@
 
 .c-table {
   $scrollbar-height: 8px;
+  margin: 0;
 
   &::-webkit-scrollbar {
     height: $scrollbar-height;

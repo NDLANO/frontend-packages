@@ -14,11 +14,13 @@ const classes = new BEMHelper('c-table');
 
 const Table = ({ children, ...rest }) => (
   <div {...classes('wrapper')}>
-    <div {...classes('left-shadow')} />
-    <table {...classes({ extra: ['o-table'] })} {...rest}>
-      {children}
-    </table>
-    <div {...classes('right-shadow')} />
+    <div {...classes('content')}>
+      <div {...classes('left-shadow')} />
+      <table {...classes({ extra: ['o-table'] })} {...rest}>
+        {children}
+      </table>
+      <div {...classes('right-shadow')} />
+    </div>
   </div>
 );
 

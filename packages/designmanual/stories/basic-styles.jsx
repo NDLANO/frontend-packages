@@ -971,8 +971,6 @@ storiesOf('Grunnstiler', module)
               <th>Symbol</th>
               <th>Namn</th>
               <th style={{ textAlign: 'right' }}>Eksempel</th>
-              <th style={{ textAlign: 'right' }}>Eksempel</th>
-              <th style={{ textAlign: 'right' }}>Eksempel</th>
             </tr>
           </thead>
           <tbody>
@@ -984,8 +982,6 @@ storiesOf('Grunnstiler', module)
               <td>P</td>
               <td>billiard</td>
               <td style={{ textAlign: 'right' }}>1000000000000000</td>
-              <td style={{ textAlign: 'right' }}>1000000000000000</td>
-              <td style={{ textAlign: 'right' }}>1000000000000000</td>
             </tr>
             <tr>
               <td>
@@ -994,8 +990,6 @@ storiesOf('Grunnstiler', module)
               <td>tera</td>
               <td>T</td>
               <td>billion</td>
-              <td style={{ textAlign: 'right' }}>1000000000000</td>
-              <td style={{ textAlign: 'right' }}>1000000000000</td>
               <td style={{ textAlign: 'right' }}>1000000000000</td>
             </tr>
             <tr>
@@ -1006,8 +1000,6 @@ storiesOf('Grunnstiler', module)
               <td>G</td>
               <td>milliard</td>
               <td style={{ textAlign: 'right' }}>1000000000</td>
-              <td style={{ textAlign: 'right' }}>1000000000</td>
-              <td style={{ textAlign: 'right' }}>1000000000</td>
             </tr>
             <tr>
               <td>
@@ -1016,8 +1008,6 @@ storiesOf('Grunnstiler', module)
               <td>mega</td>
               <td>M</td>
               <td>million</td>
-              <td style={{ textAlign: 'right' }}>1000000</td>
-              <td style={{ textAlign: 'right' }}>1000000</td>
               <td style={{ textAlign: 'right' }}>1000000</td>
             </tr>
             <tr>
@@ -1028,8 +1018,6 @@ storiesOf('Grunnstiler', module)
               <td>k</td>
               <td>tusen</td>
               <td style={{ textAlign: 'right' }}>1000</td>
-              <td style={{ textAlign: 'right' }}>1000</td>
-              <td style={{ textAlign: 'right' }}>1000</td>
             </tr>
             <tr>
               <td>
@@ -1038,8 +1026,6 @@ storiesOf('Grunnstiler', module)
               <td>hekto</td>
               <td>h</td>
               <td>hundre</td>
-              <td style={{ textAlign: 'right' }}>100</td>
-              <td style={{ textAlign: 'right' }}>100</td>
               <td style={{ textAlign: 'right' }}>100</td>
             </tr>
             <tr>
@@ -1050,8 +1036,6 @@ storiesOf('Grunnstiler', module)
               <td>da</td>
               <td>ti</td>
               <td style={{ textAlign: 'right' }}>10</td>
-              <td style={{ textAlign: 'right' }}>10</td>
-              <td style={{ textAlign: 'right' }}>10</td>
             </tr>
             <tr>
               <td>
@@ -1060,8 +1044,6 @@ storiesOf('Grunnstiler', module)
               <td>desi</td>
               <td>d</td>
               <td>tidel</td>
-              <td style={{ textAlign: 'right' }}>0,1</td>
-              <td style={{ textAlign: 'right' }}>0,1</td>
               <td style={{ textAlign: 'right' }}>0,1</td>
             </tr>
             <tr>
@@ -1082,12 +1064,6 @@ storiesOf('Grunnstiler', module)
               <td style={{ textAlign: 'right' }}>
                 <strong>0,01</strong>
               </td>
-              <td style={{ textAlign: 'right' }}>
-                <strong>0,01</strong>
-              </td>
-              <td style={{ textAlign: 'right' }}>
-                <strong>0,01</strong>
-              </td>
             </tr>
             <tr>
               <td>
@@ -1096,8 +1072,6 @@ storiesOf('Grunnstiler', module)
               <td>milli</td>
               <td>m</td>
               <td>tusendel</td>
-              <td style={{ textAlign: 'right' }}>0,001</td>
-              <td style={{ textAlign: 'right' }}>0,001</td>
               <td style={{ textAlign: 'right' }}>0,001</td>
             </tr>
             <tr>
@@ -1108,8 +1082,6 @@ storiesOf('Grunnstiler', module)
               <td />
               <td>milliondel</td>
               <td style={{ textAlign: 'right' }}>0,000001</td>
-              <td style={{ textAlign: 'right' }}>0,000001</td>
-              <td style={{ textAlign: 'right' }}>0,000001</td>
             </tr>
             <tr>
               <td>
@@ -1118,12 +1090,6 @@ storiesOf('Grunnstiler', module)
               <td>nano</td>
               <td>n</td>
               <td>milliarddel</td>
-              <td style={{ textAlign: 'right' }}>
-                <p>0,000000001</p>
-              </td>
-              <td style={{ textAlign: 'right' }}>
-                <p>0,000000001</p>
-              </td>
               <td style={{ textAlign: 'right' }}>
                 <p>0,000000001</p>
               </td>
@@ -1327,6 +1293,94 @@ storiesOf('Grunnstiler', module)
                 <td>Data 2</td>
               </tr>
             ))}
+          </tbody>
+        </Table>
+        <h2 className="u-heading">Eksempel med scrollbar</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Fornavn</th>
+              <th>Etternavn</th>
+              <th>Epost</th>
+              <th>Adresse</th>
+              <th>Land</th>
+              <th>Språk</th>
+              <th>Brukernavn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Rogers</td>
+              <td>Hearson</td>
+              <td>rhearson0@nifty.com</td>
+
+              <td className="u-no-wrap">34704 Duke Circle</td>
+              <td>Brazil</td>
+              <td>Fijian</td>
+              <td>rhearson0</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Lucie</td>
+              <td>Jikylls</td>
+              <td>ljikylls1@csmonitor.com</td>
+              <td className="u-no-wrap">9824 Swallow Place</td>
+              <td>Sweden</td>
+              <td>Italian</td>
+              <td>ljikylls1</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Kippie</td>
+              <td>Reeveley</td>
+              <td>kreeveley2@ebay.com</td>
+              <td className="u-no-wrap">1 Stephen Court</td>
+              <td>Namibia</td>
+              <td>West Frisian</td>
+              <td>kreeveley2</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Klarrisa</td>
+              <td>Minghetti</td>
+              <td>kminghetti3@163.com</td>
+              <td className="u-no-wrap">7 Truax Point</td>
+              <td>Greece</td>
+              <td>Luxembourgish</td>
+              <td>kminghetti3</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Trefor</td>
+              <td>Lambregts</td>
+              <td>tlambregts4@youtu.be</td>
+              <td className="u-no-wrap">61 Monica Center</td>
+              <td>Sweden</td>
+              <td>Northern Sotho</td>
+              <td>tlambregts4</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Aridatha</td>
+              <td>Kuhnt</td>
+              <td>akuhnt5@sitemeter.com</td>
+              <td className="u-no-wrap">2898 Wayridge Terrace</td>
+              <td>China</td>
+              <td>Latvian</td>
+              <td>akuhnt5</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Kalie</td>
+              <td>Olander</td>
+              <td>kolander6@loc.gov</td>
+              <td className="u-no-wrap">554 Maywood Parkway</td>
+              <td>China</td>
+              <td>Czech</td>
+              <td>kolander6</td>
+            </tr>
           </tbody>
         </Table>
       </StoryBody>

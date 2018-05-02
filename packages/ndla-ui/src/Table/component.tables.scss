@@ -20,8 +20,6 @@
   }
 
   &__wrapper {
-    text-align: center;
-    position: relative;
     margin: $spacing--large 0 $spacing--large 0;
 
     @include mq($from: desktop) {
@@ -35,12 +33,17 @@
     }
   }
 
+  &__content {
+    text-align: center;
+    position: relative;
+  }
+
   &__left-shadow,
   &__right-shadow {
     position: absolute;
     z-index: 1;
     top: 0;
-    height: calc(100% - #{$spacing});
+    height: calc(100% - #{$spacing--large});
     width: 15px;
     background-attachment: scroll, scroll;
     background-repeat: no-repeat;

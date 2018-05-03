@@ -74,13 +74,13 @@
 }
 .u-fade-in {
   animation-name: fadeIn;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   opacity: 1;
 }
 
 .u-fade-out {
   animation-name: fadeOut;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   opacity: 0;
 }
 
@@ -102,4 +102,8 @@
       opacity: 0;
     }
   }
+}
+
+.u-no-wrap {
+  white-space: nowrap;
 }

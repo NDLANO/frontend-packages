@@ -168,7 +168,6 @@ article table {
     border-bottom: 0;
     border-right: 3px solid $brand-color--tertiary;
     padding: $spacing--small/1.5;
-    vertical-align: top;
   }
 
   thead tr:nth-child(2) th {
@@ -198,6 +197,10 @@ article table {
     p {
       margin: 0;
       line-height: 1.6em;
+    }
+
+    img {
+      max-width: 100%;
     }
   }
 

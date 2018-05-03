@@ -1297,6 +1297,87 @@ storiesOf('Grunnstiler', module)
           </tbody>
         </Table>
 
+        <h2 className="u-heading">Eksempel med bilde</h2>
+        <Table>
+          <caption>Caption</caption>
+          <thead>
+            <tr>
+              <th />
+              <th style={{ textAlign: 'center' }} scope="col">
+                Fly
+              </th>
+              <th style={{ textAlign: 'center' }} scope="col">
+                Buss
+              </th>
+              <th style={{ textAlign: 'center' }} scope="col">
+                Sykkel
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Bilde</th>
+              <td>
+                <img
+                  alt="Fly"
+                  src="https://images.pexels.com/photos/249581/pexels-photo-249581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=187&w=315"
+                />
+              </td>
+              <td>
+                <img
+                  alt="Buss"
+                  src="https://images.pexels.com/photos/34729/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=187&w=315"
+                />
+              </td>
+              <td>
+                <img
+                  alt="Sykkel"
+                  src="https://images.pexels.com/photos/326678/pexels-photo-326678.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=187&w=315"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Symbol</th>
+              <td style={{ textAlign: 'center' }}>
+                <svg
+                  style={{ width: '24px', height: '24px' }}
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="#6F6F6F"
+                    d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z"
+                  />
+                </svg>
+              </td>
+              <td style={{ textAlign: 'center' }}>
+                <svg
+                  style={{ width: '24px', height: '24px' }}
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="#6F6F6F"
+                    d="M18,11H6V6H18M16.5,17A1.5,1.5 0 0,1 15,15.5A1.5,1.5 0 0,1 16.5,14A1.5,1.5 0 0,1 18,15.5A1.5,1.5 0 0,1 16.5,17M7.5,17A1.5,1.5 0 0,1 6,15.5A1.5,1.5 0 0,1 7.5,14A1.5,1.5 0 0,1 9,15.5A1.5,1.5 0 0,1 7.5,17M4,16C4,16.88 4.39,17.67 5,18.22V20A1,1 0 0,0 6,21H7A1,1 0 0,0 8,20V19H16V20A1,1 0 0,0 17,21H18A1,1 0 0,0 19,20V18.22C19.61,17.67 20,16.88 20,16V6C20,2.5 16.42,2 12,2C7.58,2 4,2.5 4,6V16Z"
+                  />
+                </svg>
+              </td>
+              <td style={{ textAlign: 'center' }}>
+                <svg
+                  style={{ width: '24px', height: '24px' }}
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="#6F6F6F"
+                    d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19V8.2H15.8L13.86,4.93C13.57,4.43 13,4.1 12.4,4.1C11.93,4.1 11.5,4.29 11.2,4.6L7.5,8.29C7.19,8.6 7,9 7,9.5C7,10.13 7.33,10.66 7.85,10.97L11.2,13V18H13V11.5L10.75,9.85L13.07,7.5M19,20.5A3.5,3.5 0 0,1 15.5,17A3.5,3.5 0 0,1 19,13.5A3.5,3.5 0 0,1 22.5,17A3.5,3.5 0 0,1 19,20.5M19,12A5,5 0 0,0 14,17A5,5 0 0,0 19,22A5,5 0 0,0 24,17A5,5 0 0,0 19,12M16,4.8C17,4.8 17.8,4 17.8,3C17.8,2 17,1.2 16,1.2C15,1.2 14.2,2 14.2,3C14.2,4 15,4.8 16,4.8Z"
+                  />
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Ord</th>
+              <td style={{ textAlign: 'center' }}>Fly</td>
+              <td style={{ textAlign: 'center' }}>Buss</td>
+              <td style={{ textAlign: 'center' }}>Sykkel</td>
+            </tr>
+          </tbody>
+        </Table>
+
         <h2 className="u-heading">Eksempel med scrollbar</h2>
         <Table>
           <thead>

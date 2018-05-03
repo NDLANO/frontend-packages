@@ -24,6 +24,7 @@ export const Dialog = ({
   messages,
   id,
   labelledby,
+  label,
   modifier,
   disablePortal,
   hidden,
@@ -37,6 +38,7 @@ export const Dialog = ({
       role="dialog"
       aria-hidden={hidden}
       aria-labelledby={labelledby}
+      aria-label={label}
       {...rest}>
       <div {...classes('content', modifier)}>
         <button
@@ -63,19 +65,22 @@ export const Dialog = ({
 
 Dialog.propTypes = {
   id: PropTypes.string.isRequired,
-  labelledby: PropTypes.string.isRequired,
+  labelledby: PropTypes.string,
+  label: PropTypes.string,
   hidden: PropTypes.bool,
   children: PropTypes.node,
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
-  modifier: PropTypes.oneOf([PropTypes.string, PropTypes.array]),
+  modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   disablePortal: PropTypes.bool,
   onClose: PropTypes.func,
 };
 
 Dialog.defaultProps = {
   disablePortal: false,
+  labelledby: null,
+  label: null,
   hidden: true,
   onClose: null,
 };

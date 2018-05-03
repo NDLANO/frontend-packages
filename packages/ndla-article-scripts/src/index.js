@@ -12,15 +12,18 @@ import {
 } from './factBoxScripts';
 
 import {
-  addShowDialogClickListeners,
-  removeShowDialogClickListeners,
-  addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   updateIFrameDimensions,
   addEventListenerForResize,
   removeEventListenerForResize,
   toggleLicenseInfoBox,
 } from './figureScripts';
+
+import {
+  addShowDialogClickListeners,
+  removeShowDialogClickListeners,
+  addCloseDialogClickListeners,
+} from './dialogScripts';
 
 import { initTableScript, removeTableEventListeners } from './tableScripts';
 

@@ -12,7 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Fullscreen, Link as LinkIcon } from 'ndla-icons/common';
+import { ZoomOutMap, Link as LinkIcon } from 'ndla-icons/common';
 import LicenseByline from '../LicenseByline';
 import SafeLink from '../common/SafeLink';
 
@@ -22,6 +22,7 @@ const classes = new BEMHelper({
 });
 
 export const FigureCaption = ({
+  figureId,
   id,
   children,
   caption,
@@ -38,7 +39,10 @@ export const FigureCaption = ({
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button data-dialog-trigger-id={id} {...classes('captionbtn')}>
+          <button
+            data-dialog-trigger-id={id}
+            data-dialog-source-id={figureId}
+            {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
 
@@ -65,6 +69,7 @@ export const FigureCaption = ({
 );
 
 FigureCaption.propTypes = {
+  figureId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
@@ -110,7 +115,7 @@ export const Figure = ({
     <figure {...classes('', modifiers, typeClass)} {...rest}>
       {noFigcaption ? (
         <div {...classes('fullscreen-btn')}>
-          <Fullscreen />
+          <ZoomOutMap />
         </div>
       ) : null}
       {children}
@@ -119,6 +124,7 @@ export const Figure = ({
 };
 
 Figure.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf([
     'full',

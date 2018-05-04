@@ -41,7 +41,7 @@ export const FigureFullscreenDialog = ({
       modifier="fullscreen">
       <div {...classLicenses('', 'fullscreen')}>
         <div {...classLicenses('content')}>
-          {children}
+          <button {...classLicenses('image-wrapper')}>{children}</button>
           <h3 id={headingLabelId} {...classLicenses('image-title')}>
             {title}
           </h3>

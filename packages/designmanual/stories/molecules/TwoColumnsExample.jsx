@@ -54,9 +54,6 @@ class TopicListExample extends Component {
             shortcutButtonText: 'Lærestoff',
           }}
           subjectPage
-          messages={{
-            shortcutButtonText: 'Lærestoff',
-          }}
         />
       </section>
     );

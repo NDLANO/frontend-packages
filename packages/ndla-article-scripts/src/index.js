@@ -11,6 +11,8 @@ import {
   removeFactBoxClickListener,
 } from './factBoxScripts';
 
+import { addFilelistTooltipListners } from './fileListScript';
+
 import {
   addShowDialogClickListeners,
   removeShowDialogClickListeners,
@@ -54,6 +56,7 @@ export const initArticleScripts = () => {
   initAudioPlayers();
   addFootnoteClickListeners();
   toggleRelatedArticles();
+  addFilelistTooltipListners();
 };
 
 export {
@@ -73,4 +76,5 @@ export {
   addFootnoteClickListeners,
   toggleLicenseInfoBox,
   toggleRelatedArticles,
+  addFilelistTooltipListners,
 };

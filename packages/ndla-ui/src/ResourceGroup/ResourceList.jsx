@@ -31,7 +31,9 @@ const Resource = ({
   const linkContent = (
     <Fragment>
       <div {...classes('icon o-flag__img')}>{icon}</div>
-      <h1 {...classes('title')}><span>{resource.name}</span></h1>
+      <h1 {...classes('title')}>
+        <span>{resource.name}</span>
+      </h1>
       {resource.additional ? (
         <Additional className="c-icon--20 u-margin-left-tiny" />
       ) : null}
@@ -56,9 +58,7 @@ const Resource = ({
         hidden,
         additional: resource.additional,
       })}>
-        <div {...classes('body o-flag__body')}>
-          {link}
-        </div>
+      <div {...classes('body o-flag__body')}>{link}</div>
     </li>
   );
 };

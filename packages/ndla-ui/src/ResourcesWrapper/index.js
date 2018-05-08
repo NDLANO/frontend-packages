@@ -9,5 +9,6 @@
 import ResourcesWrapper from './ResourcesWrapper';
 
 export { default as ResourcesTitle } from './ResourcesTitle';
+export { default as ResourcesTopicTitle } from './ResourcesTopicTitle';
 
 export default ResourcesWrapper;

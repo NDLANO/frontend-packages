@@ -110,6 +110,7 @@ export {
 export {
   default as ResourcesWrapper,
   ResourcesTitle,
+  ResourcesTopicTitle,
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Concept } from './Concept';

@@ -225,8 +225,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser">
         <p>
           Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
-          aktiviteter. Hver del inneholder opp til åtte innholdselementer, før
-          listen brytes opp med en «Vis mer»-knapp.
+          aktiviteter.
         </p>
         <p>
           Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som
@@ -234,10 +233,10 @@ storiesOf('Sammensatte moduler', module)
           T-ikonet, samt med en noe dusere farge. Sjekkboksen skal være markert
           når tilleggsstoff er aktivt.
         </p>
-        <p>Knappen «Vis mer» lar brukeren utvide listen med flere elementer.</p>
+        <p>Emneoverskriften viser hvilke emne man står i.</p>
       </StoryIntro>
       <LayoutItem layout="center">
-        <Resources />
+        <Resources showTopicHeading />
       </LayoutItem>
     </div>
   ))

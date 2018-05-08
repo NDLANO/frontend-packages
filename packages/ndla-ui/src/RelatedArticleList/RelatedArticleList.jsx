@@ -3,25 +3,41 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Button from '../Button';
 import SafeLink from '../common/SafeLink';
+import SectionHeading from '../SectionHeading';
 
 const classes = new BEMHelper({
   name: 'related-articles',
   prefix: 'c-',
 });
 
-export const RelatedArticle = ({ title, introduction, icon, modifier, to }) => {
+export const RelatedArticle = ({
+  title,
+  introduction,
+  icon,
+  modifier,
+  to,
+  linkInfo,
+}) => {
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
     <article {...classes('item', modifier)}>
       <h1 {...classes('title')}>
         {iconWithClass}
         <span {...classes('link-wrapper')}>
-          <SafeLink to={to} {...classes('link')}>
+          <SafeLink
+            to={to}
+            {...classes('link')}
+            target={linkInfo ? '_blank' : null}
+            rel={linkInfo ? 'noopener noreferrer' : null}>
             {title}
           </SafeLink>
         </span>
       </h1>
-      <p {...classes('description')}>{introduction}</p>
+      <p
+        {...classes('description')}
+        dangerouslySetInnerHTML={{ __html: introduction }}
+      />
+      {linkInfo && <p {...classes('link-info')}>{linkInfo}</p>}
     </article>
   );
 };
@@ -32,11 +48,18 @@ RelatedArticle.propTypes = {
   modifier: PropTypes.string,
   introduction: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
+  linkInfo: PropTypes.string,
+};
+
+RelatedArticle.defaultProps = {
+  linkInfo: null,
 };
 
 const RelatedArticleList = ({ messages, children }) => (
   <section {...classes('')}>
-    <h1 {...classes('component-title')}>{messages.title}</h1>
+    <SectionHeading className={classes('component-title').className}>
+      {messages.title}
+    </SectionHeading>
     <div {...classes('articles')}>
       {React.Children.map(children, (article, i) =>
         React.cloneElement(article, {
@@ -63,9 +86,4 @@ RelatedArticleList.propTypes = {
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
 };
-
-RelatedArticleList.defaultProps = {
-  actions: null,
-};
-
 export default RelatedArticleList;

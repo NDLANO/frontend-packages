@@ -31,6 +31,7 @@ import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
+  RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
 import FileListExample from './molecules/FileListExample';
 
@@ -77,7 +78,13 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+        <TopicIntroductionList
+          toTopic={() => '#'}
+          messages={{
+            shortcutButtonText: 'Lærestoff',
+          }}
+          topics={topicList}
+        />
       </StoryBody>
     </div>
   ))
@@ -273,6 +280,11 @@ storiesOf('Sammensatte moduler', module)
         <RelatedArticleExerciseList />
         <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
         <RelatedArticleMixedList />
+        <h2 className="u-heading">Eksterne ressurser eksempel</h2>
+        <p>
+          Dersom en ekstern relatert artikkel ikke har metatekst, skal url vise.
+        </p>
+        <RelatedArticleExternal />
         <h2 className="u-heading">Eksempel med vis mer</h2>
         <RelatedArticleListExample />
       </StoryBody>

@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import {
   initArticleScripts,
   removeEventListenerForResize,
-  removeFactBoxClickListener,
 } from 'ndla-article-scripts';
 
 export default class ArticleContent extends Component {
@@ -19,9 +18,22 @@ export default class ArticleContent extends Component {
     initArticleScripts();
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.content !== this.props.content;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot) {
+      removeEventListenerForResize();
+      initArticleScripts();
+    }
+  }
   componentWillUnmount() {
     removeEventListenerForResize();
-    removeFactBoxClickListener();
+  }
+
+  getSnapshotBeforeUpdate(prevProps) {
+    return this.props.content !== prevProps.content;
   }
 
   render() {

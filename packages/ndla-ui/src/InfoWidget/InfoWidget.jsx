@@ -5,11 +5,15 @@ import { Forward } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
 
+import SectionHeading from '../SectionHeading';
+
 const classes = BEMHelper('c-info-widget');
 
 const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
   <section {...classes('', { center })}>
-    <h1 {...classes('heading')}>{heading}</h1>
+    <SectionHeading large className={classes('heading').className}>
+      {heading}
+    </SectionHeading>
     <div {...classes('description')}>
       <p>{description}</p>
     </div>

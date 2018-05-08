@@ -24,6 +24,7 @@ class SearchPageExample extends Component {
   render() {
     const results = [
       {
+        id: 1,
         title: 'Ideskapning og mediedesign',
         url: '#1',
         ingress:
@@ -33,6 +34,7 @@ class SearchPageExample extends Component {
         breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
       },
       {
+        id: 2,
         title: 'Ideskapning og mediedesign',
         url: '#2',
         ingress:
@@ -62,6 +64,7 @@ class SearchPageExample extends Component {
         ],
       },
       {
+        id: 3,
         title: 'Ideskapning og mediedesign',
         url: '#3',
         ingress:
@@ -122,6 +125,9 @@ class SearchPageExample extends Component {
         />
       ) : null;
 
+    const onSearch = evt => {
+      evt.preventDefault();
+    };
     return (
       <SearchPage
         closeUrl="#"
@@ -129,7 +135,7 @@ class SearchPageExample extends Component {
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
-        onSearch={() => {}}
+        onSearch={onSearch}
         searchFieldFilters={[
           {
             value: 'value',
@@ -205,7 +211,7 @@ class SearchPageExample extends Component {
             <SearchFilter
               label="Innholdstype"
               narrowScreenOnly
-              defaultVisibleCount={3}
+              defaultVisibleCount={2}
               showLabel="Flere innholdstyper"
               hideLabel="Færre innholdstyper"
               options={[
@@ -283,7 +289,7 @@ class SearchPageExample extends Component {
                 },
               ]}
               values={['nb']}
-              defaultVisibleCount={3}
+              defaultVisibleCount={2}
               showLabel="Flere språk"
               hideLabel="Færre språk"
             />

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
+import SectionHeading from '../SectionHeading';
+
 const classes = BEMHelper('c-subject-content');
 
 export const SubjectContent = ({ children, breadcrumb, twoColumns }) => (
@@ -86,7 +88,9 @@ SubjectFlexChild.propTypes = {
 };
 
 export const SubjectSectionTitle = ({ children, className }) => (
-  <h1 className={`c-subject-section-title ${className}`}>{children}</h1>
+  <SectionHeading large className={`c-subject-section-title ${className}`}>
+    {children}
+  </SectionHeading>
 );
 
 SubjectSectionTitle.propTypes = {

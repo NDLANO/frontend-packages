@@ -9,11 +9,7 @@
 
   &__component-title {
     margin: $spacing--large 0 $spacing;
-    @include inuit-font-size(18px);
     padding-bottom: 5px;
-    // border-bottom: 2px solid $brand-grey--light;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     text-align: left;
   }
 
@@ -29,6 +25,7 @@
     border-left: 6px solid rgba($brand-grey--light, 0.4);
     padding-left: $spacing;
     padding-right: $spacing;
+    padding-bottom: $spacing--small;
     margin: 0 0 $spacing--large 0;
     flex-basis: 50%;
     flex-grow: 0;
@@ -91,5 +88,11 @@
 
   &__link-wrapper {
     margin-left: $spacing--small;
+  }
+
+  &__link-info {
+    font-weight: $font-weight-semibold;
+    @include font-size(16px, 20px);
+    margin: $spacing--small 0 0 0 !important;
   }
 }

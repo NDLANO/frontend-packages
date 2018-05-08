@@ -456,6 +456,10 @@ export const LicenseBox = ({ headingId }) => (
   </div>
 );
 
+LicenseBox.propTypes = {
+  headingId: PropTypes.string.isRequired,
+};
+
 const LicenseExample = ({ expanded }) => {
   const dialogLabelledBy = 'dialogHeading';
   return (

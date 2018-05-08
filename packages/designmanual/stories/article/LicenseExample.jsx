@@ -437,9 +437,9 @@ const Files = () => (
   </div>
 );
 
-export const LicenseBox = () => (
+export const LicenseBox = ({ headingId }) => (
   <div>
-    <h1 className="license__heading" id="license-heading">
+    <h1 className="license__heading" id={headingId}>
       Slik gjenbruker du innhold
     </h1>
 
@@ -456,14 +456,18 @@ export const LicenseBox = () => (
   </div>
 );
 
-const LicenseExample = ({ expanded }) => (
-  <ToggleLicenseBox
-    openTitle="Bruk innhold"
-    closeTitle="Lukk boks"
-    expanded={expanded}>
-    <LicenseBox />
-  </ToggleLicenseBox>
-);
+const LicenseExample = ({ expanded }) => {
+  const dialogLabelledBy = 'dialogHeading';
+  return (
+    <ToggleLicenseBox
+      openTitle="Bruk innhold"
+      closeTitle="Lukk boks"
+      expanded={expanded}
+      dialogLabelledBy={dialogLabelledBy}>
+      <LicenseBox headingId={dialogLabelledBy} />
+    </ToggleLicenseBox>
+  );
+};
 
 LicenseExample.propTypes = {
   expanded: PropTypes.bool,

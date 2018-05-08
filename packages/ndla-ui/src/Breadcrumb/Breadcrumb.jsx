@@ -28,7 +28,8 @@ const Breadcrumb = ({ children, items }) => (
           home={i === 0}
           key={uuid()}
           isCurrent={i === items.length - 1}
-          to={item.to}>
+          to={item.to}
+          name={item.name}>
           {i === 0 ? <Home className="c-icon--20" /> : item.name}
         </BreadcrumbItem>
       ))}

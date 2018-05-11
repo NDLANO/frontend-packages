@@ -115,6 +115,10 @@ class ArticleLoader extends Component {
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
+                authorLabel: 'Opphavsmann',
+                authorDescription:
+                  'Denne artikkelen er laget av flere opphavsmenn',
+                close: 'Lukk',
                 label,
               }}
               licenseBox={<LicenseExample />}

@@ -46,6 +46,7 @@
   background-color: transparent;
   border: 2px solid $brand-color;
   font-weight: $font-weight-bold;
+  box-shadow: none;
   &:hover,
   &:focus {
     color: white;

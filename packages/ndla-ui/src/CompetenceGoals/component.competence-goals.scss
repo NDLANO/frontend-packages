@@ -176,6 +176,7 @@
     }
 
     &--narrow {
+      margin-top: $spacing;
       @include mq(desktop) {
         display: none;
       }

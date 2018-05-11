@@ -23,7 +23,7 @@ import {
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
+import { LicenseBox } from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
@@ -45,18 +45,31 @@ export default () => (
           </ArticleIntroduction>
           <ArticleByline
             authors={[
-              { name: 'Ola Nordnes' },
-              { name: 'Kari Nordnes' },
-              { name: 'Jon Nordgubbe' },
+              {
+                role: 'Opphavsmann',
+                name: 'Lene Fossbråten',
+                urlContributions: 'www.examplelink.com',
+                urlAuthor: 'www.examplelink.com',
+                licenses: '(CC BY-NC-SA)',
+                title: 'Forfatter',
+                phone: '+47 34 32 12 34',
+                email: 'email@post.no',
+                image: 'http://via.placeholder.com/350x150',
+                introduction: '<p>Some html <strong>Hello</strong><p>',
+              },
             ]}
             updated="12/10/2016"
             license={getLicenseByAbbreviation('by-nc-nd')}
+            licenseBox={<LicenseBox />}
             messages={{
               writtenBy: '',
               lastUpdated: 'Publisert',
-            }}>
-            <LicenseExample />
-          </ArticleByline>
+              authorLabel: 'Opphavsmann',
+              authorDescription:
+                'Denne artikkelen er laget av flere opphavsmenn',
+              close: 'Lukk',
+            }}
+          />
           <CompentenceGoalsDialogExample narrow />
         </ArticleHeaderWrapper>
       </LayoutItem>
@@ -68,9 +81,10 @@ export default () => (
           />
         </FigureWithLicense>
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+          333Du har en kjempegod idé til en kortfilm. Men det koster mange
+          penger å produsere filmen. Derfor er du avhengig av at noen tenner på
+          idéen din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell

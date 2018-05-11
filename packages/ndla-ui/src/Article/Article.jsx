@@ -124,9 +124,8 @@ export const Article = ({
           </ArticleTitle>
           <ArticleIntroduction>{introduction}</ArticleIntroduction>
           <ArticleByline
-            {...{ messages, authors, updated, license, additional }}>
-            {licenseBox}
-          </ArticleByline>
+            {...{ messages, authors, updated, license, additional, licenseBox }}
+          />
           {compentenceGoalsNarrow}
         </ArticleHeaderWrapper>
       </LayoutItem>
@@ -155,6 +154,8 @@ Article.propTypes = {
     edition: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
+    authorLabel: PropTypes.string.isRequired,
+    authorDescription: PropTypes.string.isRequired,
     label: PropTypes.string,
   }).isRequired,
 };

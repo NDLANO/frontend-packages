@@ -22,7 +22,7 @@ import { Additional } from 'ndla-icons/common';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import LicenseExample from '../article/LicenseExample';
+import { LicenseBox } from '../article/LicenseExample';
 import { Resources } from '../molecules/resources';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
@@ -43,9 +43,42 @@ export default () => (
           </ArticleIntroduction>
           <ArticleByline
             authors={[
-              { name: 'Ola Nordnes' },
-              { name: 'Kari Nordnes' },
-              { name: 'Jon Nordgubbe' },
+              {
+                role: 'Opphavsmann',
+                name: 'Lene Fossbråten',
+                urlContributions: 'www.examplelink.com',
+                urlAuthor: 'www.examplelink.com',
+                licenses: '(CC BY-NC-SA)',
+                title: 'Forfatter',
+                phone: '+47 34 32 12 34',
+                email: 'email@post.no',
+                image: 'http://via.placeholder.com/350x150',
+                introduction: 'Lorem ipsum dolores',
+              },
+              {
+                role: 'Opphavsmann',
+                name: 'Wenche Heir',
+                urlContributions: 'www.examplelink.com',
+                urlAuthor: 'www.examplelink.com',
+                licenses: '(CC BY-NC-SA)',
+                title: 'Forfatter',
+                phone: '+47 34 32 12 34',
+                email: 'email@post.no',
+                image: 'http://via.placeholder.com/350x150',
+                introduction: 'Lorem ipsum dolores',
+              },
+              {
+                role: 'Rettighetshaver',
+                name: 'Marit Smith',
+                urlContributions: 'www.examplelink.com',
+                urlAuthor: 'www.examplelink.com',
+                licenses: '(CC BY-NC-SA)',
+                title: 'Forfatter',
+                phone: '+47 34 32 12 34',
+                email: 'email@post.no',
+                image: 'http://via.placeholder.com/350x150',
+                introduction: 'Lorem ipsum dolores',
+              },
             ]}
             updated="12/10/2016"
             additional={[
@@ -56,12 +89,16 @@ export default () => (
               'Tilleggsstoff',
             ]}
             license={getLicenseByAbbreviation('by-nc-nd')}
+            licenseBox={<LicenseBox />}
             messages={{
               writtenBy: '',
               lastUpdated: 'Publisert',
-            }}>
-            <LicenseExample />
-          </ArticleByline>
+              authorLabel: 'Opphavsmann',
+              authorDescription:
+                'Denne artikkelen er laget av flere opphavsmenn',
+              close: 'Lukk',
+            }}
+          />
           <CompentenceGoalsDialogExample narrow />
         </ArticleHeaderWrapper>
       </LayoutItem>

@@ -456,10 +456,10 @@ export const LicenseBox = () => (
   </div>
 );
 
-const LicenseExample = ({ expanded }) => (
+const LicenseExample = ({ expanded, openTitle, closeTitle }) => (
   <ToggleLicenseBox
-    openTitle="Bruk innhold"
-    closeTitle="Lukk boks"
+    openTitle={openTitle}
+    closeTitle={closeTitle}
     expanded={expanded}>
     <LicenseBox />
   </ToggleLicenseBox>
@@ -467,10 +467,14 @@ const LicenseExample = ({ expanded }) => (
 
 LicenseExample.propTypes = {
   expanded: PropTypes.bool,
+  openTitle: PropTypes.string,
+  closeTitle: PropTypes.string,
 };
 
 LicenseExample.defaultProps = {
   expanded: false,
+  openTitle: 'Bruk innhold',
+  closeTitle: 'Lukk boks',
 };
 
 export default LicenseExample;

@@ -1,0 +1,117 @@
+/**
+** ARTICLE AUTHOR POPUP
+**
+** EXAMPLE:
+** <div class="c-article-author-popup">
+**  <span class="c-article-author-popup__authors"><svg /> [Opphavsperson].</span>
+**  <span class="c-article-author-popup__date"><svg /> Publisert [dato]</span>
+** </div>
+**/
+
+.c-article-author-popup{
+  &__content {
+    hr {
+      &:before, &:after {
+        display: none;
+      }
+      display: block;
+      height: 1px;
+      background: $brand-color--tertiary;
+      margin: 1rem 0;
+      width: 100%;
+    }
+  }
+
+  &__heading {
+    @include inuit-font-size(22px, 26px);
+    margin-top: $spacing / 2;
+    margin-bottom: 0;
+    + p {
+      margin-top: $spacing / 4;
+    }
+  }
+
+  &__ul-list {
+    @include font-size(16px, 20px);
+    list-style-type: none;
+    list-style-image: none;
+    margin: 0 0 $spacing / 2 0;
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+      span {
+        padding-right: $spacing / 2;
+      }
+    }
+    button {
+      outline: 0;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    @include mq($until: tablet) {
+      &:not(--large) {
+        li {
+          line-height: $spacing;
+          padding-bottom: $spacing;
+          span:first-child {
+            display: block;
+          }
+        }
+      }
+    }
+    &--large {
+      @include font-size(18px, 22px);
+    }
+  }
+
+  &__author-ingress {
+    @include font-size(16px, 20px);
+    margin: $spacing 0;
+  }
+
+  &__author-info {
+    display: flex;
+    margin-bottom: $spacing;
+    > figure img {
+      width: 160px;
+      height: 160px;
+      margin-right: $spacing;
+      margin-bottom: $spacing;
+    }
+    @include mq($until: tablet) {
+      display: block;
+      margin-bottom: 2rem;
+      > figure img {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+    }
+    hr {
+      &:before, &:after {
+        display: none;
+      }
+      display: block;
+      height: 1px;
+      background: $brand-color--tertiary;
+      margin: 1rem 0;
+      width: 100%;
+    }
+  }
+
+  &__author-link-container {
+    span:first-child {
+      margin-right: $spacing;
+    }
+    @include mq($until: tablet) {
+      span {
+        display: block;
+        margin-bottom: $spacing / 2;
+        &:first-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

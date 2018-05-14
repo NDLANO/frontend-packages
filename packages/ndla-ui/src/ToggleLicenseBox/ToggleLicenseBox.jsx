@@ -58,7 +58,7 @@ class ToggleLicenseBox extends Component {
   }
 
   render() {
-    const { openTitle, closeTitle, children } = this.props;
+    const { openTitle, closeTitle, dialogLabelledBy, children } = this.props;
     const { expanded } = this.state;
 
     const backdropClasses = classnames({
@@ -88,7 +88,7 @@ class ToggleLicenseBox extends Component {
           role="dialog"
           aria-hidden={!expanded}
           className="c-licensebox__content"
-          aria-labelledby="license-heading">
+          aria-labelledby={dialogLabelledBy}>
           <Button
             stripped
             className="c-article__license-toggler"
@@ -108,6 +108,7 @@ ToggleLicenseBox.propTypes = {
   children: PropTypes.node.isRequired,
   // only used in design manual for preview
   expanded: PropTypes.bool,
+  dialogLabelledBy: PropTypes.string.isRequired,
 };
 
 ToggleLicenseBox.defaultProps = {

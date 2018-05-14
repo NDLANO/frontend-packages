@@ -12,7 +12,7 @@ import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from 'ndla-ui';
 
 const items = [
   {
-    name: 'Home',
+    name: 'Til forsiden',
     to: '#',
   },
   {

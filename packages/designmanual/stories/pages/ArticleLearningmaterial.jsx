@@ -116,7 +116,7 @@ export default () => (
         <RelatedArticleListExample />
       </LayoutItem>
       <LayoutItem layout="extend">
-        <Resources />
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

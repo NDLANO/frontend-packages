@@ -11,6 +11,8 @@ import {
   removeFactBoxClickListener,
 } from './factBoxScripts';
 
+import { addFilelistTooltipListners } from './fileListScript';
+
 import {
   addCopyToClipboardListeners,
   updateIFrameDimensions,
@@ -62,6 +64,7 @@ export const initArticleScripts = () => {
   toggleRelatedArticles();
   initTableScript();
   addZoomImageListeners();
+  addFilelistTooltipListners();
 };
 
 export {
@@ -84,4 +87,5 @@ export {
   toggleLicenseInfoBox,
   toggleRelatedArticles,
   addZoomImageListeners,
+  addFilelistTooltipListners,
 };

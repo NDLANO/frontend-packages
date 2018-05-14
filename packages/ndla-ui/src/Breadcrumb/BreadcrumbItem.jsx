@@ -12,12 +12,14 @@ import { ChevronRight } from 'ndla-icons/common';
 
 import SafeLink from '../common/SafeLink';
 
-const BreadcrumbItem = ({ to, children, classes, isCurrent, home }) => (
+const BreadcrumbItem = ({ to, children, classes, isCurrent, home, name }) => (
   <li {...classes('item', { home })}>
     {isCurrent ? (
       <span>{children}</span>
     ) : (
-      <SafeLink to={to}>{children}</SafeLink>
+      <SafeLink to={to} aria-label={home ? name : null}>
+        {children}
+      </SafeLink>
     )}
     {!home && <ChevronRight />}
   </li>
@@ -29,6 +31,7 @@ BreadcrumbItem.propTypes = {
   to: PropTypes.string.isRequired,
   isCurrent: PropTypes.bool,
   home: PropTypes.bool,
+  name: PropTypes.string,
 };
 
 BreadcrumbItem.defaultProps = {

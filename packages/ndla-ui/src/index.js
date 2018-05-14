@@ -64,6 +64,8 @@ export { FilterList } from './Filter';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
+export { default as FileList } from './FileList';
+
 export {
   ToggleSearchButton,
   SearchOverlay,
@@ -108,6 +110,7 @@ export {
 export {
   default as ResourcesWrapper,
   ResourcesTitle,
+  ResourcesTopicTitle,
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Concept } from './Concept';

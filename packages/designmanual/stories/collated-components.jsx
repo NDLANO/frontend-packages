@@ -33,6 +33,7 @@ import RelatedArticleListExample, {
   RelatedArticleMixedList,
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
+import FileListExample from './molecules/FileListExample';
 
 const toggle = () => {
   document
@@ -224,8 +225,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser">
         <p>
           Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
-          aktiviteter. Hver del inneholder opp til åtte innholdselementer, før
-          listen brytes opp med en «Vis mer»-knapp.
+          aktiviteter.
         </p>
         <p>
           Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som
@@ -233,10 +233,10 @@ storiesOf('Sammensatte moduler', module)
           T-ikonet, samt med en noe dusere farge. Sjekkboksen skal være markert
           når tilleggsstoff er aktivt.
         </p>
-        <p>Knappen «Vis mer» lar brukeren utvide listen med flere elementer.</p>
+        <p>Emneoverskriften viser hvilke emne man står i.</p>
       </StoryIntro>
       <LayoutItem layout="center">
-        <Resources />
+        <Resources showTopicHeading />
       </LayoutItem>
     </div>
   ))
@@ -404,6 +404,39 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <Resources />
+      </StoryBody>
+    </div>
+  ))
+  .add('Nedlasting av filer', () => (
+    <div>
+      <StoryIntro title="Nedlasting av filer" />
+      <StoryBody>
+        <h2>Overskrift</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FileListExample />
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
       </StoryBody>
     </div>
   ))

@@ -25,6 +25,7 @@ import { getLicenseByAbbreviation } from 'ndla-licenses';
 import FigureWithLicense from '../article/FigureWithLicense';
 import { LicenseBox } from '../article/LicenseExample';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { Resources } from '../molecules/resources';
 
 export default () => (
   <OneColumn cssModifier="narrow">
@@ -130,6 +131,9 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

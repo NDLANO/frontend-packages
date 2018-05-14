@@ -437,9 +437,9 @@ const Files = () => (
   </div>
 );
 
-export const LicenseBox = () => (
+export const LicenseBox = ({ headingId }) => (
   <div>
-    <h1 className="license__heading" id="license-heading">
+    <h1 className="license__heading" id={headingId}>
       Slik gjenbruker du innhold
     </h1>
 
@@ -461,7 +461,9 @@ const LicenseExample = ({ expanded, openTitle, closeTitle }) => (
     openTitle={openTitle}
     closeTitle={closeTitle}
     expanded={expanded}>
-    <LicenseBox />
+    dialogLabelledBy={dialogLabelledBy}
+    >
+    <LicenseBox headingId={dialogLabelledBy} />
   </ToggleLicenseBox>
 );
 

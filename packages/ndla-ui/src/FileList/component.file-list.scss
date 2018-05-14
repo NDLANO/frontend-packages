@@ -1,0 +1,97 @@
+.c-file-list {
+  margin: $spacing--large 0;
+  padding: $spacing--small 0 $spacing $spacing;
+  border-left: 2px solid $brand-grey--lightest;
+
+  &__heading {
+    @include font-size(16px, 20px);
+    margin: 0;
+    padding-bottom: $spacing--small;
+
+    border-bottom: 2px solid $brand-grey--lightest;
+    margin-bottom: $spacing--small / 3;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+  }
+
+  &__files {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    min-height: 70px;
+    background: $brand-grey--lighter;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+    padding: $spacing--small;
+
+    @include mq(tablet) {
+      padding: $spacing--small $spacing;
+    }
+  }
+
+  &__link {
+    box-shadow: none;
+    position: relative;
+    color: $brand-color;
+    margin-right: $spacing;
+    display: flex;
+    align-items: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      .c-file-list__link-text {
+        & > span {
+          box-shadow: $link--hover;
+        }
+      }
+    }
+  }
+
+  &__link-text {
+    & > span {
+      box-shadow: $link;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    display: none;
+    left: 50%;
+    top: 40px;
+    transform: translate3d(-50%, 0, 0);
+    width: 300px;
+    text-align: center;
+
+    &[aria-hidden='false'] {
+      display: block;
+      animation-name: fadeIn;
+      animation-duration: 0.2s;
+    }
+  }
+
+  &__tooltip-text {
+    display: inline-block;
+    text-align: left;
+    background: $brand-color;
+    padding: $spacing--small;
+    @include font-size(14px, 18px);
+    color: $white;
+  }
+
+  .c-icon {
+    margin-top: 3px;
+    flex-shrink: 0;
+    margin-right: $spacing--small;
+    height: 18px;
+    width: 18px;
+  }
+}

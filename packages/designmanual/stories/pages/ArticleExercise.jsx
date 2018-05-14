@@ -133,7 +133,7 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
-        <Resources />
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

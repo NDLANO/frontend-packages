@@ -27,6 +27,7 @@ import { LicenseBox } from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { Resources } from '../molecules/resources';
 
 export default () => (
   <OneColumn>
@@ -127,6 +128,9 @@ export default () => (
           klassen.
         </p>
         <RelatedArticleListExample />
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

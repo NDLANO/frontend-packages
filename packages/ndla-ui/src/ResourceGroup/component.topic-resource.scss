@@ -34,7 +34,7 @@
   color: $brand-color--dark;
   align-items: center;
 
-  h1 {
+  h1 span {
     box-shadow: $link;
   }
 
@@ -45,7 +45,7 @@
   &:hover {
     box-shadow: none;
 
-    h1 {
+    h1 span {
       box-shadow: $link--hover;
     }
   }

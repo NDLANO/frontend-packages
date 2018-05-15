@@ -17,7 +17,6 @@ const Play = props => (
     data-source="Material Design"
     {...props}>
     <g>
-      <title>Play</title>
       <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z" />
     </g>
   </Icon>

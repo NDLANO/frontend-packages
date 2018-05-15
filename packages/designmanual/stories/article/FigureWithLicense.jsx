@@ -57,6 +57,7 @@ class FigureWithLicense extends Component {
         'Personen(e) på bildet har godkjent at det kan brukes videre.',
       source: 'Kilde',
       title: 'Tittel',
+      zoomImageButtonLabel: 'Forstørr bilde',
     };
 
     const caption = this.props.caption ? this.props.caption : ``;
@@ -79,6 +80,7 @@ class FigureWithLicense extends Component {
               data-dialog-trigger-id={`fs-${this.id}`}
               data-dialog-source-id={figureId}
               stripped
+              aria-label="Se stor utgave av bilde"
               className="u-fullw">
               {this.props.children}
             </Button>

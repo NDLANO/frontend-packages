@@ -9,7 +9,7 @@
 
     @include font-size(16px, 22px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(18px, 32px);
       padding: $spacing--small $spacing;
     }
@@ -22,7 +22,7 @@
 
     &--narrow {
       box-shadow: none;
-      @include mq(tablet) {
+      @include mq(desktop) {
         display: none;
       }
     }
@@ -30,7 +30,7 @@
     &--wide {
       display: none;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         display: block;
       }
     }
@@ -44,7 +44,7 @@
       height: 18px;
       width: 18px;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         height: 24px;
         width: 24px;
       }

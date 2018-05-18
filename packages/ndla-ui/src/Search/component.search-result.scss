@@ -3,7 +3,7 @@
   padding: $spacing 0;
   border: 1px solid $brand-grey--light;
 
-  @include mq(tablet) {
+  @include mq(desktop) {
     padding: $spacing--medium;
   }
 
@@ -13,7 +13,7 @@
     @include font-size(24px, 32px);
     font-weight: 400;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
 
@@ -27,7 +27,7 @@
   }
 
   &__narrow-result {
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
   }
@@ -35,7 +35,7 @@
   .c-tabs {
     display: none;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
   }
@@ -43,7 +43,7 @@
   .c-search-filter {
     display: none;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
   }
@@ -54,7 +54,7 @@
   margin: 0;
   padding: 0;
 
-  @include mq(tablet) {
+  @include mq(desktop) {
     margin: $spacing--medium 0 0 0;
   }
 
@@ -71,7 +71,7 @@
       margin: 0;
       font-family: $font-serif;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         @include font-size(18px, 32px);
       }
     }
@@ -82,7 +82,7 @@
   border-bottom: 1px solid $brand-grey--light;
   padding: $spacing--medium $spacing 0 $spacing;
 
-  @include mq(tablet) {
+  @include mq(desktop) {
     padding: $spacing--medium 0 0 0;
   }
 
@@ -108,7 +108,7 @@
       margin-left: $spacing;
       margin-right: $spacing--small;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         width: 80px;
         height: 80px;
         margin-left: $spacing--medium;
@@ -124,7 +124,7 @@
     flex-grow: 1;
     font-family: $font-serif;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(16px, 27px);
     }
   }
@@ -144,7 +144,7 @@
     align-items: center;
     margin-left: $spacing--small;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       margin-left: $spacing;
     }
   }
@@ -155,7 +155,7 @@
     @include font-size(14px, 18px);
     display: none;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: inline;
     }
   }
@@ -169,7 +169,7 @@
 
     @include font-size(14px, 32px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(16px, 32px);
     }
 
@@ -178,7 +178,7 @@
       height: 12px;
       margin: 0 $spacing--small/3;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         margin: 0 $spacing--small/2;
       }
     }
@@ -191,14 +191,14 @@
     margin-bottom: $spacing;
     @include font-size(14px, 22px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(16px, 28px);
     }
 
     & > span {
       display: none;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         display: inline;
       }
 
@@ -221,7 +221,7 @@
       padding: 0 $spacing--small/2 0 0;
       margin-right: $spacing--small/2;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         padding: 0 $spacing--small 0 0;
         margin-right: $spacing--small;
       }
@@ -260,7 +260,7 @@
     font-weight: 600;
     @include font-size(16px, 20px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(22px, 28px);
     }
 

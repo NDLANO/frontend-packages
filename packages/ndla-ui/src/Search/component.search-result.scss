@@ -105,8 +105,7 @@
       width: 75px;
       height: 75px;
       flex-shrink: 0;
-      margin-left: $spacing;
-      margin-right: $spacing--small;
+      margin: 0 $spacing--small $spacing $spacing;
 
       @include mq(desktop) {
         width: 80px;

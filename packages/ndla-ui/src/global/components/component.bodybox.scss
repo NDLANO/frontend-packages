@@ -10,7 +10,6 @@
 ** Attribute modifier used to display info on author etc. in license view
 **/
 
-
 .c-bodybox {
   padding: $spacing * 1.5;
   margin-top: $spacing--large;
@@ -19,24 +18,29 @@
   border-color: $brand-color--tertiary;
   border-width: 1px;
   overflow: hidden;
-}
-.c-bodybox--attribute {
-  padding: $spacing--small $spacing;
-  display: inline-block;
-  clear:both;
-  font-style: italic;
+
+  &--attribute {
+    padding: $spacing--small $spacing;
+    display: inline-block;
+    clear: both;
+    font-style: italic;
+  }
+
+  &--translation {
+    padding: 0 $spacing--large $spacing--small $spacing;
+  }
 }
 
 /* Hacks for complex content fetched inside bodybox */
-.c-bodybox>ul:not([class]),
-.c-bodybox :not(li)>ul:not([class]) {
+.c-bodybox > ul:not([class]),
+.c-bodybox :not(li) > ul:not([class]) {
   @include mq(desktop) {
     margin-left: $spacing;
   }
 }
 
-.c-bodybox>ol:not([class]),
-.c-bodybox :not(li)>ol:not([class]),
+.c-bodybox > ol:not([class]),
+.c-bodybox :not(li) > ol:not([class]),
 .c-bodybox .ol-list--roman {
   @include mq(desktop) {
     margin-left: $spacing--large;
@@ -49,13 +53,12 @@
   padding: 0;
 }
 
-// DEPRECATED TODO: remove article-float classes when not in use anymore. .u-float-[dir] should be used
-.c-bodybox .article_figure--float-right, .c-bodybox .c-figure.u-float-right {
+.c-bodybox .c-figure.u-float-right {
   width: 50% !important;
   margin-right: 0;
 }
 
-.c-bodybox .article_figure--float-left, .c-bodybox .c-figure.u-float-left {
+.c-bodybox .c-figure.u-float-left {
   width: 50% !important;
   margin-left: 0;
 }

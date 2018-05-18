@@ -264,7 +264,13 @@
     }
 
     a {
-      box-shadow: none;
+      color: $brand-color--dark;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $brand-color--dark;
+      }
     }
   }
 }

@@ -2,6 +2,7 @@
   background: $white;
   width: 100%;
   text-align: left;
+  border: 1px solid $brand-grey--light;
 
   &--narrow-screen-only {
     @include mq(tablet) {

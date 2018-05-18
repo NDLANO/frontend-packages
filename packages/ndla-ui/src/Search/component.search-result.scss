@@ -1,6 +1,7 @@
 .c-search-result {
   background: $white;
   padding: $spacing 0;
+  border: 1px solid $brand-grey--light;
 
   @include mq(tablet) {
     padding: $spacing--medium;

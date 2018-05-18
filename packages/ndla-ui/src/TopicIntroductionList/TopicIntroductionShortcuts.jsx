@@ -14,18 +14,23 @@ const classes = new BEMHelper({
 class TopicIntroductionShortcuts extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: props.alwaysExpanded };
   }
 
   render() {
-    const { shortcuts, messages, id } = this.props;
+    const { shortcuts, messages, id, alwaysExpanded } = this.props;
     const { open } = this.state;
 
-    return (
-      <div
-        onMouseEnter={() => this.setState({ open: true })}
-        onMouseLeave={() => this.setState({ open: false })}
-        {...classes()}>
+    let onMouseEnter = null;
+    let onMouseLeave = null;
+
+    let buttonView = null;
+
+    if (!alwaysExpanded) {
+      onMouseEnter = () => this.setState({ open: true });
+      onMouseLeave = () => this.setState({ open: false });
+
+      buttonView = (
         <button
           aria-expanded={this.state.open}
           aria-label={messages.toggleButtonText}
@@ -41,6 +46,15 @@ class TopicIntroductionShortcuts extends Component {
             <span {...classes('label')}>{messages.toggleButtonText}</span>
           )}
         </button>
+      );
+    }
+
+    return (
+      <div
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        {...classes()}>
+        {buttonView}
         {open && (
           <ul {...classes('list')} id={id}>
             {shortcuts.map(shortcut => (
@@ -55,10 +69,15 @@ class TopicIntroductionShortcuts extends Component {
 
 TopicIntroductionShortcuts.propTypes = {
   id: PropTypes.string.isRequired,
+  alwaysExpanded: PropTypes.bool,
   messages: PropTypes.shape({
     toggleButtonText: PropTypes.string.isRequired,
   }),
   shortcuts: PropTypes.arrayOf(ShortcutShape).isRequired,
+};
+
+TopicIntroductionShortcuts.defaultProps = {
+  alwaysExpanded: false,
 };
 
 export default TopicIntroductionShortcuts;

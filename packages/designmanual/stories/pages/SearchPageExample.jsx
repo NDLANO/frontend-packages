@@ -30,7 +30,7 @@ class SearchPageExample extends Component {
         ingress:
           'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
         contentTypeLabel: 'Emne',
-        contentTypeIcon: <SubjectBadge size="x-small" />,
+        contentTypeIcon: <SubjectBadge size="x-small" background />,
         breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
       },
       {
@@ -40,7 +40,7 @@ class SearchPageExample extends Component {
         ingress:
           'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
         contentTypeLabel: 'Fagstoff',
-        contentTypeIcon: <SubjectMaterialBadge size="x-small" />,
+        contentTypeIcon: <SubjectMaterialBadge size="x-small" background />,
         additional: true,
         image: (
           <Image
@@ -70,7 +70,7 @@ class SearchPageExample extends Component {
         ingress:
           'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
         contentTypeLabel: 'Læringssti',
-        contentTypeIcon: <LearningPathBadge size="x-small" />,
+        contentTypeIcon: <LearningPathBadge size="x-small" background />,
         breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
       },
     ];

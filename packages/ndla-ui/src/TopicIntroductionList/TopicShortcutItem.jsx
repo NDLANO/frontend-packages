@@ -44,7 +44,7 @@ class ShortcutItem extends Component {
           onMouseLeave={this.handleHideTooltip}
           onFocus={this.handleShowTooltip}
           onBlur={this.handleHideTooltip}>
-          <ContentTypeBadge type={contentType} size="x-small" />
+          <ContentTypeBadge type={contentType} size="x-small" background />
           <span {...classes('count')}>{count}</span>
         </SafeLink>
       </li>

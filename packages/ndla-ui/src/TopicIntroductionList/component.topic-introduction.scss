@@ -3,6 +3,7 @@
 ** Topic list with introductions
 **/
 
+@import './component.topic-shortcuts';
 
 .c-topic-introduction {
   &__text {
@@ -15,14 +16,12 @@
     padding: 0;
 
     &--twoColumns {
-
       @include mq(tablet) {
         display: flex;
         flex-wrap: wrap;
         border-bottom: none;
         margin-bottom: 0;
       }
-
 
       & > li {
         flex-basis: 50%;

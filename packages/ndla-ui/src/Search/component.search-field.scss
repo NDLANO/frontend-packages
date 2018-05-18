@@ -138,10 +138,7 @@
 
     .c-content-type-result {
       padding-right: $spacing--large;
-
-      &:last-child {
-        padding-right: 0;
-      }
+      flex: 0 0 33.3333333%;
     }
   }
 
@@ -151,7 +148,6 @@
 
     a {
       @extend .c-button;
-      @extend .c-button--outline;
       box-shadow: none;
     }
   }

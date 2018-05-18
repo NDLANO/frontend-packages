@@ -17,10 +17,10 @@ const classes = new BEMHelper({
 
 const TranslationLine = ({ children, lang, langName }) => (
   <div {...classes('line')}>
-    <div {...classes('line-body')}>{children}</div>
-    <div {...classes('line-lang')} lang={lang}>
-      {langName}
+    <div {...classes('line-body')} lang={lang}>
+      {children}
     </div>
+    <div {...classes('line-lang')}>{langName}</div>
   </div>
 );
 

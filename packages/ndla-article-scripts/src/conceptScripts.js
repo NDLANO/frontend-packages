@@ -18,9 +18,14 @@ export const addShowConceptDefinitionClickListeners = () => {
     const closeBtn = popup.querySelector('.c-concept__close');
 
     openBtn.onclick = () => {
-      const isHidden = !popup.classList.toggle('c-concept__popup--visible');
+      const wasHidden = !popup.classList.contains('c-concept__popup--visible');
 
-      if (!isHidden) {
+      forEachElement('.c-concept__popup--visible', visibleItem => {
+        visibleItem.classList.remove('c-concept__popup--visible');
+      });
+
+      if (wasHidden) {
+        popup.classList.add('c-concept__popup--visible');
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom =
           openBtn.getBoundingClientRect().bottom +
@@ -66,7 +71,7 @@ export const addShowConceptDefinitionClickListeners = () => {
           });
         }
       }
-      popup.setAttribute('aria-hidden', isHidden);
+      popup.setAttribute('aria-hidden', !wasHidden);
     };
 
     closeBtn.onclick = () => {

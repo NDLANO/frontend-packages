@@ -196,12 +196,13 @@
 
     & > span {
       display: none;
+      text-transform: uppercase;
+      color: $text-light-color;
+      padding-right: $spacing--small;
 
       @include mq(desktop) {
         display: inline;
       }
-
-      padding-right: $spacing--small;
     }
 
     ul {

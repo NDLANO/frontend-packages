@@ -160,7 +160,7 @@
   &--x-small {
     width: 20px;
     height: 20px;
-    border-width: 1px;
+    border-width: 0;
 
     @include mq(tablet) {
       width: 26px;

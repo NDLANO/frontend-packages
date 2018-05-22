@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { TransitionGroup } from 'react-transition-group';
 import { Forward } from 'ndla-icons/common';
+
 import ShortcutItem from './TopicShortcutItem';
+
+import Fade from '../Animation/Fade';
 
 import { ShortcutShape } from '../shapes';
 
@@ -11,15 +15,35 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const animationDelay = 50;
+const animationDuration = 300;
+
 class TopicIntroductionShortcuts extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: props.alwaysExpanded };
+    this.state = {
+      open: props.alwaysExpanded,
+      showButtonText: true,
+    };
+    this.handleOnToggle = this.handleOnToggle.bind(this);
+  }
+
+  handleOnToggle(open) {
+    if (open) {
+      this.setState({ open, showButtonText: false });
+    } else {
+      this.setState({ open });
+      const { shortcuts } = this.props;
+
+      setTimeout(() => {
+        this.setState({ showButtonText: true });
+      }, shortcuts.length * animationDelay + animationDuration);
+    }
   }
 
   render() {
     const { shortcuts, messages, id, alwaysExpanded } = this.props;
-    const { open } = this.state;
+    const { open, showButtonText } = this.state;
 
     let onMouseEnter = null;
     let onMouseLeave = null;
@@ -27,8 +51,8 @@ class TopicIntroductionShortcuts extends Component {
     let buttonView = null;
 
     if (!alwaysExpanded) {
-      onMouseEnter = () => this.setState({ open: true });
-      onMouseLeave = () => this.setState({ open: false });
+      onMouseEnter = () => this.handleOnToggle(true);
+      onMouseLeave = () => this.handleOnToggle(false);
 
       buttonView = (
         <button
@@ -37,12 +61,10 @@ class TopicIntroductionShortcuts extends Component {
           aria-controls={id}
           {...classes('button')}
           onClick={() => {
-            this.setState(prevState => ({
-              open: !prevState.open,
-            }));
+            this.handleOnToggle(!open);
           }}>
           <Forward />
-          {!open && (
+          {showButtonText && (
             <span {...classes('label')}>{messages.toggleButtonText}</span>
           )}
         </button>
@@ -55,13 +77,19 @@ class TopicIntroductionShortcuts extends Component {
         onMouseLeave={onMouseLeave}
         {...classes()}>
         {buttonView}
-        {open && (
-          <ul {...classes('list')} id={id}>
-            {shortcuts.map(shortcut => (
-              <ShortcutItem key={shortcut.id} shortcut={shortcut} />
-            ))}
-          </ul>
-        )}
+        <TransitionGroup className={classes('list').className} component="ul">
+          {(open ? shortcuts : []).map((shortcut, index, array) => (
+            <Fade
+              timeout={animationDuration}
+              key={shortcut.id}
+              delay={index * animationDelay}
+              exitDelay={(array.length - index) * animationDelay}>
+              <li {...classes('item')}>
+                <ShortcutItem shortcut={shortcut} />
+              </li>
+            </Fade>
+          ))}
+        </TransitionGroup>
       </div>
     );
   }

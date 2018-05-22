@@ -72,6 +72,14 @@
     box-shadow: none;
     display: flex;
     align-items: center;
+
+    &:hover,
+    &:focus,
+    &:active {
+      .c-content-type-badge {
+        border-width: 1px;
+      }
+    }
   }
 
   &__tooltip {

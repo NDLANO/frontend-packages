@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ContentTypeBadge } from 'ndla-ui';
+
 import SafeLink from '../common/SafeLink';
 
 import { ShortcutShape } from '../shapes';
@@ -32,7 +33,7 @@ class ShortcutItem extends Component {
     const { showtooltip } = this.state;
 
     return (
-      <li {...classes('item')}>
+      <Fragment>
         <Fade in={showtooltip}>
           <span {...classes('tooltip')}>{tooltip}</span>
         </Fade>
@@ -47,7 +48,7 @@ class ShortcutItem extends Component {
           <ContentTypeBadge type={contentType} size="x-small" background />
           <span {...classes('count')}>{count}</span>
         </SafeLink>
-      </li>
+      </Fragment>
     );
   }
 }

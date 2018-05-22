@@ -76,9 +76,14 @@ class MastheadWithTopicMenu extends Component {
         <ToggleSearchButton
           isOpen={this.state.searchIsOpen}
           onToggle={isOpen => {
-            this.setState({
+            const newState = {
               searchIsOpen: isOpen,
-            });
+            };
+
+            if (!isOpen) {
+              newState.value = '';
+            }
+            this.setState(newState);
           }}
           searchPageUrl="#"
           messages={{ buttonText: 'Søk' }}>

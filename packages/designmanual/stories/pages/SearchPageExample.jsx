@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Additional } from 'ndla-icons/common';
+import { Core, Additional } from 'ndla-icons/common';
 
 import {
   SearchPage,
@@ -269,6 +269,11 @@ class SearchPageExample extends Component {
                   title: 'Tilleggstoff',
                   value: 'additional',
                   icon: Additional,
+                },
+                {
+                  title: 'Kjernestoff',
+                  value: 'core',
+                  icon: Core,
                 },
               ]}
               values={['additional']}

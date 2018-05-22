@@ -81,10 +81,12 @@ class FilterList extends Component {
               />
               <label htmlFor={option.value}>
                 <span {...filterClasses('item-checkbox')} />
-                {option.title}
+                <span {...filterClasses('text')}>{option.title}</span>
                 {option.icon
                   ? createElement(option.icon, {
-                      className: 'c-icon--20 u-margin-left-small',
+                      className: `c-icon--22 u-margin-left-small ${
+                        filterClasses('icon').className
+                      }`,
                     })
                   : null}
               </label>

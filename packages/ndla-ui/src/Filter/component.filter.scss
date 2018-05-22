@@ -20,7 +20,9 @@
   align-items: center;
   flex-grow: 2;
 
-  & > h1, & > h2, & > h3 {
+  & > h1,
+  & > h2,
+  & > h3 {
     border-bottom: 1px solid $brand-color--light;
     margin-bottom: $spacing--small;
 
@@ -28,8 +30,6 @@
       border: none;
     }
   }
-
-
 
   &__list {
     list-style: none;
@@ -102,8 +102,6 @@
         }
       }
     }
-
-
   }
 
   &__label {
@@ -127,7 +125,7 @@
     border-radius: $border-radius;
     transition: $transition;
     cursor: pointer;
-    @include inuit-font-size(16px, 28px);
+    @include font-size(16px, 28px);
 
     &--hidden {
       display: none;
@@ -169,6 +167,24 @@
         }
       }
     }
+
+    input {
+      &:focus,
+      &:active {
+        & + label {
+          @include restore-outline();
+        }
+      }
+    }
+
+    label {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__icon {
+    margin: 3px 0;
   }
 
   &__input {
@@ -191,13 +207,14 @@
     padding: 0;
     background: $white;
     border: 2px solid $brand-color--tertiary;
-    margin: -5px $spacing--small -5px 3px;
+    margin: 2px $spacing--small 2px 3px;
     border-radius: 2px;
+    flex-shrink: 0;
 
     @include mq(tablet) {
       width: 20px;
       height: 20px;
-      margin: -4px $spacing--small -4px 3px;
+      margin: 4px $spacing--small 4px 3px;
     }
 
     &:before {
@@ -275,7 +292,7 @@
         &:last-child {
           @include mq($until: tablet) {
             margin-bottom: 0;
-          }  
+          }
         }
       }
     }

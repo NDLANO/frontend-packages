@@ -77,7 +77,9 @@ export default class ClickToggle extends React.Component {
       buttonClassName,
       noScrollDisabled,
       containerClass: Component,
+      alwaysRenderChildren,
       isOpen,
+      children,
       ...rest
     } = this.props;
 
@@ -98,7 +100,10 @@ export default class ClickToggle extends React.Component {
           ref={ref => {
             this.containerRef = ref;
           }}>
-          {isOpen ? this.props.children(this.handleOnClose) : null}
+          {alwaysRenderChildren && children(this.handleOnClose, isOpen)}
+          {!alwaysRenderChildren && isOpen
+            ? children(this.handleOnClose)
+            : null}
         </div>
       </Component>
     );
@@ -113,10 +118,12 @@ ClickToggle.propTypes = {
   className: PropTypes.string,
   children: PropTypes.func.isRequired,
   noScrollDisabled: PropTypes.bool,
+  alwaysRenderChildren: PropTypes.bool,
   isOpen: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
 };
 
 ClickToggle.defaultProps = {
   containerClass: 'div',
+  alwaysRenderChildren: false,
 };

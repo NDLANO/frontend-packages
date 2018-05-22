@@ -82,8 +82,8 @@ class MastheadWithTopicMenu extends Component {
           }}
           searchPageUrl="#"
           messages={{ buttonText: 'Søk' }}>
-          {onClose => (
-            <SearchOverlay close={onClose}>
+          {(onClose, isOpen) => (
+            <SearchOverlay close={onClose} isOpen={isOpen}>
               <SearchField
                 placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
                 value={this.state.value}

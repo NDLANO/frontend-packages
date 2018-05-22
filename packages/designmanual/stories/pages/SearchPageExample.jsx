@@ -183,7 +183,7 @@ class SearchPageExample extends Component {
                   closeButton: 'Lukk',
                   confirmButton: 'Bruk fag',
                   hasValuesButtonText: 'Vis flere fag',
-                  noValuesButtonText: 'Velg fag',
+                  noValuesButtonText: 'Filtrer på fag',
                 }}
                 options={[
                   {

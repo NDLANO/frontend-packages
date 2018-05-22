@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from 'ndla-icons/common';
@@ -68,69 +68,94 @@ SearchResult.propTypes = {
   allResultUrl: PropTypes.string.isRequired,
 };
 
-const SearchField = ({
-  placeholder,
-  value,
-  onChange,
-  filters,
-  onFilterRemove,
-  searchResult,
-  messages,
-  allResultUrl,
-  onSearch,
-  resourceToLinkProps,
-}) => {
-  const modifiers = [];
+class SearchField extends Component {
+  constructor(props) {
+    super(props);
 
-  const hasSearchResult = searchResult && searchResult.length > 0;
+    this.inputRef = null;
+    this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
+  }
 
-  let searchResultView = null;
+  handleOnFilterRemove(value, filterName) {
+    this.props.onFilterRemove(value, filterName);
+    this.inputRef.focus();
+  }
 
-  if (hasSearchResult) {
-    modifiers.push('has-search-result');
+  render() {
+    const {
+      placeholder,
+      value,
+      onChange,
+      filters,
+      searchResult,
+      messages,
+      allResultUrl,
+      onSearch,
+      resourceToLinkProps,
+    } = this.props;
 
-    searchResultView = (
-      <SearchResult
-        result={searchResult}
-        messages={messages}
-        searchString={value}
-        allResultUrl={allResultUrl}
-        resourceToLinkProps={resourceToLinkProps}
-      />
+    const modifiers = [];
+
+    const hasSearchResult = searchResult && searchResult.length > 0;
+
+    let searchResultView = null;
+
+    if (hasSearchResult) {
+      modifiers.push('has-search-result');
+
+      searchResultView = (
+        <SearchResult
+          result={searchResult}
+          messages={messages}
+          searchString={value}
+          allResultUrl={allResultUrl}
+          resourceToLinkProps={resourceToLinkProps}
+        />
+      );
+    }
+
+    if (filters && filters.length > 0) {
+      modifiers.push('has-filter');
+    }
+
+    return (
+      <form {...classes('', modifiers)} onSubmit={onSearch}>
+        <input
+          ref={ref => {
+            this.inputRef = ref;
+          }}
+          title={messages.searchFieldTitle}
+          type="search"
+          {...classes('input')}
+          aria-autocomplete="list"
+          autoComplete="off"
+          id="search"
+          name="search"
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+        <div {...classes('filters')}>
+          {filters &&
+            filters.length > 0 && (
+              <ActiveFilters
+                filters={filters}
+                onFilterRemove={this.handleOnFilterRemove}
+              />
+            )}
+        </div>
+        <button
+          tabIndex="-1"
+          {...classes('button')}
+          type="submit"
+          value="Search">
+          <SearchIcon />
+        </button>
+        {searchResultView}
+      </form>
     );
   }
-
-  if (filters && filters.length > 0) {
-    modifiers.push('has-filter');
-  }
-
-  return (
-    <form {...classes('', modifiers)} onSubmit={onSearch}>
-      <input
-        title={messages.searchFieldTitle}
-        type="search"
-        {...classes('input')}
-        aria-autocomplete="list"
-        autoComplete="off"
-        id="search"
-        name="search"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      <div {...classes('filters')}>
-        {filters &&
-          filters.length > 0 && (
-            <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
-          )}
-      </div>
-      <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
-        <SearchIcon />
-      </button>
-      {searchResultView}
-    </form>
-  );
-};
+}
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,

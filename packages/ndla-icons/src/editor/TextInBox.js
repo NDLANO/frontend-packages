@@ -12,17 +12,16 @@ import Icon from '../Icon';
 
 const TextInBox = props => (
   <Icon
+    title="TextInBox"
     viewBox="0 0 29 32"
     data-license="CC-BY 4.0"
     data-source="Knowit"
     {...props}>
-    <g>
-      <path
-        fill="none"
-        stroke="#444"
-        d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
-      />
-    </g>
+    <path
+      fill="none"
+      stroke="#444"
+      d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
+    />
   </Icon>
 );
 

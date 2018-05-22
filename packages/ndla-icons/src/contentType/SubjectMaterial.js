@@ -12,27 +12,21 @@ import Icon from '../Icon';
 
 const SubjectMaterial = props => (
   <Icon
+    title="SubjectMaterial"
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
-    <g>
-      <title>Fagstoff</title>
-      <g
-        id="Page-1"
-        stroke="none"
-        fill="none"
-        strokeWidth="1"
-        fillRule="evenodd">
-        <g id="fagstoff">
-          <g>
-            <polygon id="Shape" points="0 0 24 0 24 24 0 24" />
-            <path
-              d="M0,10 L0,8 L11,8 L11,10 L0,10 Z M24,0 L24,2 L0,2 L0,0 L24,0 Z M24,4 L24,6 L0,6 L0,4 L24,4 Z M13,8 L24,15.5 L13,23 L13,8 Z"
-              id="shape"
-              fill="currentColor"
-            />
-          </g>
+    <title>Fagstoff</title>
+    <g id="Page-1" stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
+      <g id="fagstoff">
+        <g>
+          <polygon id="Shape" points="0 0 24 0 24 24 0 24" />
+          <path
+            d="M0,10 L0,8 L11,8 L11,10 L0,10 Z M24,0 L24,2 L0,2 L0,0 L24,0 Z M24,4 L24,6 L0,6 L0,4 L24,4 Z M13,8 L24,15.5 L13,23 L13,8 Z"
+            id="shape"
+            fill="currentColor"
+          />
         </g>
       </g>
     </g>

@@ -12,13 +12,12 @@ import Icon from '../Icon';
 
 const Video = props => (
   <Icon
+    title="Video"
     viewBox="0 0 32 32"
     data-license="CC-BY 4.0"
     data-source="Knowit"
     {...props}>
-    <g>
-      <path fill="none" stroke="#444" d="M31.06 16L.942 31.06V.94z" />
-    </g>
+    <path fill="none" stroke="#444" d="M31.06 16L.942 31.06V.94z" />
   </Icon>
 );
 

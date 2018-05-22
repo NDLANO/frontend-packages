@@ -12,13 +12,12 @@ import Icon from '../Icon';
 
 const Home = props => (
   <Icon
+    title="Home"
     viewBox="0 0 48 48"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
-    <g>
-      <path d="M20 40V28h8v12h10V24h6L24 6 4 24h6v16z" />
-    </g>
+    <path d="M20 40V28h8v12h10V24h6L24 6 4 24h6v16z" />
   </Icon>
 );
 

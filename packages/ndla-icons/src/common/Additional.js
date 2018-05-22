@@ -12,19 +12,18 @@ import Icon from '../Icon';
 
 const Additional = props => (
   <Icon
+    title="Additional"
     viewBox="0 0 50 50"
     data-license="CC-BY 4.0"
     data-source="Netlife"
     {...props}>
+    <circle fill="#CEDDE9" cx="25" cy="25" r="24.7" />
     <g>
-      <circle fill="#CEDDE9" cx="25" cy="25" r="24.7" />
-      <g>
-        <path
-          fill="#21588F"
-          className="st1"
-          d="M22.5,21.1h-5V17h15v4.2h-5v14.7h-5V21.1z"
-        />
-      </g>
+      <path
+        fill="#21588F"
+        className="st1"
+        d="M22.5,21.1h-5V17h15v4.2h-5v14.7h-5V21.1z"
+      />
     </g>
   </Icon>
 );

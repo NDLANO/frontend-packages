@@ -18,39 +18,37 @@ const classes = new BEMHelper({
 });
 
 export const ErrorMessage = ({ children, messages, illustration }) => (
-  <div {...classes()}>
-    <div>
-      <img
-        {...classes('illustration')}
-        src={illustration.url}
-        alt={illustration.altText}
-      />
-      <h1>{messages.title}</h1>
-      <p {...classes('description')}>{messages.description}</p>
-      {messages.linksTitle && (
-        <h2 {...classes('link-heading')}>{messages.linksTitle}</h2>
+  <article {...classes()}>
+    <img
+      {...classes('illustration')}
+      src={illustration.url}
+      alt={illustration.altText}
+    />
+    <h1>{messages.title}</h1>
+    <p {...classes('description')}>{messages.description}</p>
+    {messages.linksTitle && (
+      <h2 {...classes('link-heading')}>{messages.linksTitle}</h2>
+    )}
+    {/*  <SearchField /> */}
+    {messages.back &&
+      typeof window !== 'undefined' &&
+      window.history.length > 1 && (
+        <SafeLink
+          to={`/#${encodeURI(messages.back)}`}
+          onClick={() => window.history.back()}
+          {...classes('back-link')}>
+          {messages.back}
+        </SafeLink>
       )}
-      {/*  <SearchField /> */}
-      {messages.back &&
-        typeof window !== 'undefined' &&
-        window.history.length > 1 && (
-          <SafeLink
-            to={`/#${encodeURI(messages.back)}`}
-            onClick={() => window.history.back()}
-            {...classes('back-link')}>
-            {messages.back}
-          </SafeLink>
-        )}
-      {messages.goToFrontPage && (
-        <div {...classes('link-wrapper')}>
-          <SafeLink to="/" {...classes('front-link')}>
-            {messages.goToFrontPage}
-          </SafeLink>
-        </div>
-      )}
-      {children}
-    </div>
-  </div>
+    {messages.goToFrontPage && (
+      <div {...classes('link-wrapper')}>
+        <SafeLink to="/" {...classes('front-link')}>
+          {messages.goToFrontPage}
+        </SafeLink>
+      </div>
+    )}
+    {children}
+  </article>
 );
 
 ErrorMessage.propTypes = {

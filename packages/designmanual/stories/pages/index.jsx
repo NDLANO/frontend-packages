@@ -38,7 +38,7 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 
-import OopsGif from '../images/oops-test.gif';
+import NotExist from '../images/not-exist.gif';
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
@@ -77,7 +77,7 @@ storiesOf('Sidevisninger', module)
         <OneColumn cssModifier="clear">
           <ErrorMessage
             illustration={{
-              url: OopsGif,
+              url: NotExist,
               altText: 'Finnes ikke',
             }}
             messages={{

@@ -35,7 +35,7 @@ import RelatedArticleListExample, {
 } from './article/RelatedArticleListExample';
 import FileListExample from './molecules/FileListExample';
 
-import doNotExistGif from './images/do-not-exist.gif';
+import Oops from './images/oops.gif';
 
 const toggle = () => {
   document
@@ -451,20 +451,18 @@ storiesOf('Sammensatte moduler', module)
           ved 404- eller 503-feil.
         </p>
       </StoryIntro>
-      <StoryBody>
-        <ErrorMessage
-          illustration={{
-            url: doNotExistGif,
-            altText: 'Finnes ikke',
-          }}
-          messages={{
-            title: 'Oisann, her gikk noe galt',
-            description: 'En kort beskrivelse av feilen som oppsto.',
-            linksTitle: 'Kom igang:',
-            back: 'Gå tilbake',
-            goToFrontPage: 'Gå til forsiden',
-          }}
-        />
-      </StoryBody>
+      <ErrorMessage
+        illustration={{
+          url: Oops,
+          altText: 'Systemfeil',
+        }}
+        messages={{
+          title: 'Oisann, her gikk noe galt',
+          description: 'En kort beskrivelse av feilen som oppsto.',
+          linksTitle: 'Kom igang:',
+          back: 'Gå tilbake',
+          goToFrontPage: 'Gå til forsiden',
+        }}
+      />
     </div>
   ));

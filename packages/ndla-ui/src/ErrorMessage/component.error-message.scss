@@ -21,6 +21,14 @@
     margin-top: $spacing--small/2;
   }
 
+  &__illustration {
+    margin-bottom: $spacing;
+
+    @include mq(tablet) {
+      margin-top: $spacing--large;
+    }
+  }
+
   &__description {
     margin-bottom: $spacing;
 

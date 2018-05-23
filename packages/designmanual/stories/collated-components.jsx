@@ -37,6 +37,8 @@ import FileListExample from './molecules/FileListExample';
 
 import doNotExistGif from './images/do-not-exist.gif';
 
+import doNotExistGif from './images/do-not-exist.gif';
+
 const toggle = () => {
   document
     .querySelector('.c-collate__panel')

@@ -5,7 +5,7 @@
     border-radius: 2px;
     background: $white;
     margin-top: -$spacing--large;
-    padding: $spacing--medium $spacing;
+    padding: $spacing--medium $spacing--large;
   }
 
   & > * {
@@ -112,9 +112,18 @@
     color: $brand-color--dark;
     display: flex;
     align-items: center;
+
+    &:hover,
+    &:active,
+    &:focus {
+      .c-frontpage-subjects-section__text {
+        box-shadow: $link--hover;
+      }
+    }
   }
 
   &__text {
+    box-shadow: $link;
     font-weight: $font-weight-semibold;
 
     @include font-size(14px, 18px);

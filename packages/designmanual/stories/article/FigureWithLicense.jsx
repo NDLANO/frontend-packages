@@ -66,8 +66,8 @@ class FigureWithLicense extends Component {
       <Figure
         resizeIframe={resizeIframe}
         type={type}
-        noFigcaption={this.props.noFigcaption}>
-        {!resizeIframe // Probably image
+        noFigcaption={this.props.noFigcaption && !this.props.isEmbed}>
+        {!this.props.isEmbed // Probably image
           ? [
               <Button
                 key="button"
@@ -89,7 +89,7 @@ class FigureWithLicense extends Component {
                     Kopier referanse
                   </Button>,
                   <Button key="download" outline>
-                    Last ned bilde
+                    {`Last ned ${this.props.reuseLabel || 'bildet'}`}
                   </Button>,
                 ]}
                 authors={authors}>
@@ -109,12 +109,16 @@ class FigureWithLicense extends Component {
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
-            link={{
-              text: 'Lage kortfilm',
-              url: '#1',
-              description: '(Lenken tar deg til et annet nettsted)',
-              external: true,
-            }}
+            link={
+              !this.props.isEmbed
+                ? {
+                    text: 'Lage kortfilm',
+                    url: '#1',
+                    description: '(Lenken tar deg til et annet nettsted)',
+                    external: true,
+                  }
+                : null
+            }
             authors={authors}>
             <FigureLicenseDialog
               id={this.id}
@@ -125,7 +129,8 @@ class FigureWithLicense extends Component {
               title="Mann med lupe"
               messages={messages}>
               <Button outline>Kopier referanse</Button>
-              <Button outline>Last ned bilde</Button>
+              <Button outline>{`Last ned ${this.props.reuseLabel ||
+                'bildet'}`}</Button>
             </FigureLicenseDialog>
           </FigureCaption>
         ) : null}
@@ -139,7 +144,7 @@ FigureWithLicense.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
   runScripts: PropTypes.bool,
-  noCaption: PropTypes.bool,
+  isEmbed: PropTypes.bool,
   resizeIframe: PropTypes.bool,
   noFigcaption: PropTypes.bool,
   type: PropTypes.oneOf([
@@ -156,8 +161,8 @@ FigureWithLicense.propTypes = {
 
 FigureWithLicense.defaultProps = {
   runScripts: false,
-  noCaption: false,
   noFigcaption: false,
+  isEmbed: false,
 };
 
 export default FigureWithLicense;

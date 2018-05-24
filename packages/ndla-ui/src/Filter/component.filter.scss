@@ -32,12 +32,14 @@
   }
 
   &__list {
-    list-style: none;
     margin: 0;
     padding: 0;
     top: 80px;
     width: 100%;
     font-family: $font;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column;
 
     @include mq(tablet) {
       width: auto;
@@ -45,6 +47,7 @@
       top: 0;
       border: none;
       padding-top: 0;
+      flex-flow: row;
     }
 
     &--float-right {
@@ -59,6 +62,8 @@
 
     &--search,
     &--search-popover {
+      flex-flow: column;
+
       .c-filter {
         &__label {
           display: block;
@@ -81,10 +86,20 @@
         &__label {
           @include font-size(16px, 32px);
 
-          @include mq(tablet) {
+          @include mq(desktop) {
             @include font-size(22px, 32px);
             margin-bottom: $spacing--medium;
           }
+        }
+
+        &__item-wrapper {
+          @include mq(desktop) {
+            columns: 2;
+          }
+        }
+
+        &__item {
+          display: list-item;
         }
       }
     }
@@ -105,16 +120,21 @@
   }
 
   &__label {
-    @include inuit-font-size(16px);
-    display: block;
+    @include font-size(16px, 28px);
+
     @include mq(tablet) {
       margin: 0 $spacing--small;
-      display: inline-block;
     }
 
     &--hidden {
       @include visually-hidden();
     }
+  }
+
+  &__item-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   &__item {

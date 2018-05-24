@@ -40,7 +40,10 @@ class Popover extends Component {
     return (
       <Fragment>
         <div className="o-backdrop" />
-        <div className={classes('popover')}>
+        <div
+          className={classes('popover')}
+          role="dialog"
+          aria-label={messages.filterLabel}>
           <button className={classes('popover-close-narrow')} onClick={close}>
             <Back /> <span>{messages.backButton}</span>
           </button>

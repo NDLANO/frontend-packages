@@ -32,8 +32,12 @@ const ResourceToggleFilter = props => {
         />
         <label htmlFor="resource-filter">
           <span {...classes('item-checkbox')} />
-          {label}
-          <Additional className="c-icon--20 u-margin-left-tiny" />
+          <span {...classes('text')}>{label}</span>
+          <Additional
+            className={`c-icon--22 u-margin-left-tiny ${
+              classes('icon').className
+            }`}
+          />
         </label>
       </div>
     </div>

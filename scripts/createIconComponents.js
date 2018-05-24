@@ -97,7 +97,9 @@ const ${name} = props => (
     data-license="${license}"
     data-source="${source}"
     {...props}>
-    ${iconSvg}
+    <g>
+      ${iconSvg}
+    </g>
   </Icon>
 );
 

@@ -17,7 +17,9 @@ const Video = props => (
     data-license="CC-BY 4.0"
     data-source="Knowit"
     {...props}>
-    <path fill="none" stroke="#444" d="M31.06 16L.942 31.06V.94z" />
+    <g>
+      <path fill="none" stroke="#444" d="M31.06 16L.942 31.06V.94z" />
+    </g>
   </Icon>
 );
 

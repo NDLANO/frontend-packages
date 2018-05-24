@@ -17,7 +17,9 @@ const Home = props => (
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
-    <path d="M20 40V28h8v12h10V24h6L24 6 4 24h6v16z" />
+    <g>
+      <path d="M20 40V28h8v12h10V24h6L24 6 4 24h6v16z" />
+    </g>
   </Icon>
 );
 

@@ -17,8 +17,10 @@ const ChevronDown = props => (
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
-    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-    <path d="M0 0h24v24H0z" fill="none" />
+    <g>
+      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </g>
   </Icon>
 );
 

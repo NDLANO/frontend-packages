@@ -17,7 +17,9 @@ const Play = props => (
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>
-    <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z" />
+    <g>
+      <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z" />
+    </g>
   </Icon>
 );
 

@@ -17,11 +17,13 @@ const TextInBox = props => (
     data-license="CC-BY 4.0"
     data-source="Knowit"
     {...props}>
-    <path
-      fill="none"
-      stroke="#444"
-      d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
-    />
+    <g>
+      <path
+        fill="none"
+        stroke="#444"
+        d="M.5.5h28v31H.5V.5zM7 7.778h16M7 13.11h16M7 18.444h16M7 23.778h16"
+      />
+    </g>
   </Icon>
 );
 

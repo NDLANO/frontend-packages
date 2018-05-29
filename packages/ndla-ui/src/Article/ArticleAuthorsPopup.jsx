@@ -154,10 +154,7 @@ class ArticleAuthorsPopup extends Component {
           }}>
           {authors.length === 1 ? authors[0].name : messages.authorLabel}
         </a>
-        <Dialog
-          id="authors-authors-dialog"
-          labelledby="author-labelled-by"
-          messages={messages}>
+        <Dialog id="authors-authors-dialog" messages={messages}>
           {showAuthor === null &&
             !onlyOneAuthor &&
             !showLicenseBox &&

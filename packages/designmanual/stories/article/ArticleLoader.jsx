@@ -121,9 +121,21 @@ class ArticleLoader extends Component {
                 close: 'Lukk',
                 label,
               }}
-              licenseBox={<LicenseBox />}
-              compentenceGoals={<CompentenceGoalsDialogExample wide />}
-              compentenceGoalsNarrow={<CompentenceGoalsDialogExample narrow />}>
+              licenseBox={
+                <LicenseBox headingId="article-license-box-heading-id" />
+              }
+              compentenceGoals={
+                <CompentenceGoalsDialogExample
+                  headingId="article-compentence-goals-heading-id"
+                  wide
+                />
+              }
+              compentenceGoalsNarrow={
+                <CompentenceGoalsDialogExample
+                  headingId="article-compentence-goals-narrow-heading-id"
+                  narrow
+                />
+              }>
               {articleChildren}
             </Article>
           </OneColumn>

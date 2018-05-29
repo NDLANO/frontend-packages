@@ -15,13 +15,14 @@
   border-top: 2px solid $brand-grey--lighter;
   @include inuit-font-size(14px, 20px);
   font-family: $font;
-  color: $brand-grey;
+  color: $brand-grey-dark;
   justify-content: space-between;
   flex-wrap: wrap;
   display: flex;
   align-items: center;
   margin-bottom: $spacing;
   &__icon {
+    color: $brand-grey;
     display: inline-block;
     padding-right: $spacing--small/2;
   }

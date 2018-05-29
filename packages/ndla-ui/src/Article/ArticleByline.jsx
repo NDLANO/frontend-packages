@@ -57,8 +57,7 @@ class ArticleByline extends Component {
             <span {...classes('authors')}>
               <ClickToggle
                 useDialog
-                id="authorsArticleId"
-                labelledby="authorsArticleId_heading"
+                labelledby="author-labelled-by"
                 isOpen={showAuthors}
                 renderAsLink
                 disablePortal
@@ -101,7 +100,7 @@ class ArticleByline extends Component {
             <ClickToggle
               useDialog
               id="useArticleId"
-              labelledby="useArticleId_heading"
+              labelledby="article-license-box-heading-id"
               renderAsLink
               buttonClassName={classes('toggle-use-article').className}
               dialogModifier={'large'}

@@ -134,7 +134,7 @@ export default class ClickToggleWithDialog extends React.Component {
           lighter={renderAsLightButton}
           className={`${showDialog ? 'active ' : ''}${buttonClassName}`}
           onClick={this.handleClick}>
-          {showDialog && openTitle ? openTitle : title}
+          {title}
         </Button>
         <div
           ref={ref => {

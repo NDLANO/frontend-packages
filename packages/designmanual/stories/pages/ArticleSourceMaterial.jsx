@@ -34,7 +34,10 @@ export default () => (
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          <CompentenceGoalsDialogExample wide />
+          <CompentenceGoalsDialogExample
+            wide
+            headingId="article-compentence-goals-heading-id"
+          />
           <ArticleTitle
             icon={<SourceMaterialBadge background size="large" />}
             label="Kildemateriale">
@@ -72,7 +75,10 @@ export default () => (
               close: 'Lukk',
             }}
           />
-          <CompentenceGoalsDialogExample narrow />
+          <CompentenceGoalsDialogExample
+            narrow
+            headingId="article-compentence-goals-narrow-heading-id"
+          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

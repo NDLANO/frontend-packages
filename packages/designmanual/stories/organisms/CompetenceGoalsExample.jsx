@@ -93,17 +93,17 @@ CompentenceGoalsExample.propTypes = {
 
 export default CompentenceGoalsExample;
 
-export const CompentenceGoalsDialogExample = ({ narrow, wide }) => (
+export const CompentenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
   <ClickToggle
     useDialog
     id="useArticleId"
-    labelledby="useArticleId_heading"
+    labelledby={headingId}
     dialogModifier={'large'}
     buttonClassName={classes('toggle-button', { wide, narrow }).className}
     title="Kompetansemål"
     openTitle="Lukk boks"
     renderAsLightButton>
-    <CompentenceGoalsExample />
+    <CompentenceGoalsExample headingId={headingId} />
   </ClickToggle>
 );
 

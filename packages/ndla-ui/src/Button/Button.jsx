@@ -20,31 +20,33 @@ const Button = ({
   square,
   stripped,
   link,
+  lighter,
   submit,
   loading,
   className,
+  type,
+  children,
+  disabled,
   ...rest
 }) => {
   const modifiers = {
     link,
     outline,
     square,
+    lighter,
     stripped,
   };
 
-  const type = submit ? 'submit' : rest.type || 'button';
-
   // Unless the disabled state is explicitly set, the button is disabled when loading.
-  const disabled =
-    (rest.disabled !== undefined ? rest.disabled : loading) || false;
+  const isDisabled = (disabled !== undefined ? disabled : loading) || false;
 
   return (
     <button
       {...classes('', modifiers, className)}
-      {...rest}
       type={type}
-      disabled={disabled}>
-      {rest.children}
+      disabled={isDisabled}
+      {...rest}>
+      {children}
     </button>
   );
 };
@@ -53,19 +55,16 @@ Button.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-
   outline: PropTypes.bool,
   link: PropTypes.bool,
   square: PropTypes.bool,
   stripped: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
-
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */
   submit: PropTypes.bool,
-
   /**
    * Defines HTML button type Attribute
    * @type {("button"|"reset"|"submit")}

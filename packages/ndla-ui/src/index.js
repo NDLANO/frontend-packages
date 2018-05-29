@@ -93,7 +93,6 @@ export {
   Content,
 } from './Layout';
 export { default as LicenseByline } from './LicenseByline';
-export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
 export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';

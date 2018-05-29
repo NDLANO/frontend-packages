@@ -20,7 +20,7 @@ import {
 } from 'ndla-ui';
 import { Resources } from '../molecules/resources';
 import { fetchArticle } from './articleApi';
-import LicenseExample from './LicenseExample';
+import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
 
@@ -121,7 +121,7 @@ class ArticleLoader extends Component {
                 close: 'Lukk',
                 label,
               }}
-              licenseBox={<LicenseExample />}
+              licenseBox={<LicenseBox />}
               compentenceGoals={<CompentenceGoalsDialogExample wide />}
               compentenceGoalsNarrow={<CompentenceGoalsDialogExample narrow />}>
               {articleChildren}

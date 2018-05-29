@@ -23,7 +23,7 @@ import {
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
 import FigureWithLicense from '../article/FigureWithLicense';
-import { LicenseBox } from '../article/LicenseExample';
+import LicenseBox from '../article/LicenseBox';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
@@ -62,6 +62,7 @@ export default () => (
             updated="12/10/2016"
             license={getLicenseByAbbreviation('by-nc-nd')}
             licenseBox={<LicenseBox />}
+            dialogLabelledBy="Opphavsmann"
             messages={{
               writtenBy: '',
               lastUpdated: 'Publisert',

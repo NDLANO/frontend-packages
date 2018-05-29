@@ -11,7 +11,7 @@ import { Time, User } from 'ndla-icons/common';
 import { Concept, OneColumn, LayoutItem, Image } from 'ndla-ui';
 import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
 
-import LicenseExample from '../article/LicenseExample';
+import LicenseBox from '../article/LicenseBox';
 import FigureWithLicense from '../article/FigureWithLicense';
 
 class ConceptExample extends Component {
@@ -37,7 +37,7 @@ class ConceptExample extends Component {
               <span className="c-article-byline__date">
                 <Time /> Sist oppdatert 03.03.2017
               </span>
-              <LicenseExample />
+              <LicenseBox />
             </div>
           </LayoutItem>
           <LayoutItem layout="center">

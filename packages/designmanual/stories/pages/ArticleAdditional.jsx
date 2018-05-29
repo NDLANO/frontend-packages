@@ -22,7 +22,7 @@ import { Additional } from 'ndla-icons/common';
 
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 
-import { LicenseBox } from '../article/LicenseExample';
+import LicenseBox from '../article/LicenseBox';
 import { Resources } from '../molecules/resources';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
@@ -35,7 +35,7 @@ export default () => (
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
-            Artikkel Tilleggsstoff
+            Artikkel Tilleggsstoff?
           </ArticleTitle>
           <ArticleIntroduction>
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
@@ -90,6 +90,7 @@ export default () => (
             ]}
             license={getLicenseByAbbreviation('by-nc-nd')}
             licenseBox={<LicenseBox />}
+            dialogLabelledBy="Opphavsmann"
             messages={{
               writtenBy: '',
               lastUpdated: 'Publisert',

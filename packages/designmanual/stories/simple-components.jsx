@@ -23,7 +23,6 @@ import {
 } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
-import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';

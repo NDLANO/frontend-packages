@@ -114,6 +114,8 @@ export const Article = ({
   const license = getLicenseByAbbreviation(licenseObj.license);
   const authors =
     Array.isArray(creators) && creators.length > 0 ? creators : rightsholders;
+
+  console.log('authors', authors);
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">

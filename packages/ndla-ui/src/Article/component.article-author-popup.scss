@@ -8,7 +8,7 @@
 ** </div>
 **/
 
-.c-article-author-popup{
+.c-article-author-popup {
   &__content {
     hr {
       &:before, &:after {
@@ -22,15 +22,6 @@
     }
   }
 
-  &__heading {
-    @include inuit-font-size(22px, 26px);
-    margin-top: $spacing / 2;
-    margin-bottom: 0;
-    + p {
-      margin-top: $spacing / 4;
-    }
-  }
-
   &__ul-list {
     @include font-size(16px, 20px);
     list-style-type: none;
@@ -39,30 +30,30 @@
     padding: 0;
     li {
       margin: 0;
-      padding: 0;
+      padding: $spacing--small / 2 0;
       span {
         padding-right: $spacing / 2;
       }
     }
     button {
-      outline: 0;
-      margin: 0;
-      padding: 0;
-      background: transparent;
+      font-size: inherit;
+      line-height: inherit;
     }
     @include mq($until: tablet) {
       &:not(--large) {
         li {
           line-height: $spacing;
           padding-bottom: $spacing;
-          span:first-child {
-            display: block;
+          span {
+            &:first-child {
+              display: block;
+            }
+            &:last-child {
+              @include font-size(14px, 20px);
+            }
           }
         }
       }
-    }
-    &--large {
-      @include font-size(18px, 22px);
     }
   }
 
@@ -74,9 +65,12 @@
   &__author-info {
     display: flex;
     margin-bottom: $spacing;
+    animation-name: fadeInLeft;
+    animation-duration: 0.5s;
     > figure img {
       width: 160px;
       height: 160px;
+      margin-top: $spacing;
       margin-right: $spacing;
       margin-bottom: $spacing;
     }
@@ -86,6 +80,7 @@
       > figure img {
         margin-right: 0;
         margin-bottom: 0;
+        margin-top: 0;
       }
     }
     hr {

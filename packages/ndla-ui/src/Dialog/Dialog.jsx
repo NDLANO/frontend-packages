@@ -42,8 +42,7 @@ export const Dialog = ({
       aria-hidden={hidden}
       aria-labelledby={labelledby}
       aria-label={label}
-      {...rest}
-    >
+      {...rest}>
       <div {...classes('content')}>
         <button
           {...classes('close')}

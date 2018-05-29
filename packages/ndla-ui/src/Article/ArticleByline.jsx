@@ -91,9 +91,11 @@ class ArticleByline extends Component {
             {messages.lastUpdated} {updated}
           </span>
         </span>
-        {additional && <span {...classes('flex')}>
-          <span {...classes('additional')}>{additional}</span>
-        </span>}
+        {additional && (
+          <span {...classes('flex')}>
+            <span {...classes('additional')}>{additional}</span>
+          </span>
+        )}
         <span {...classes('flex')}>
           {licenseBox && (
             <ClickToggle

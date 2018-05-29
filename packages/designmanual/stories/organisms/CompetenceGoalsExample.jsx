@@ -102,8 +102,7 @@ export const CompentenceGoalsDialogExample = ({ narrow, wide }) => (
     buttonClassName={classes('toggle-button', { wide, narrow }).className}
     title="Kompetansemål"
     openTitle="Lukk boks"
-    renderAsLightButton
-  >
+    renderAsLightButton>
     <CompentenceGoalsExample />
   </ClickToggle>
 );

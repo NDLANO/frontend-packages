@@ -20,7 +20,7 @@ export default class ClickToggleWithDialog extends React.Component {
     super(props);
     this.state = {
       isOpen: false,
-    }
+    };
     this.handleClick = this.handleClick.bind(this);
     this.handleOnClose = this.handleOnClose.bind(this);
     this.focusActive = null;
@@ -39,9 +39,16 @@ export default class ClickToggleWithDialog extends React.Component {
       this.handleFocustrap();
     }
     const useProps = nextProps.isOpen !== null;
-    if (((useProps && nextProps.isOpen !== this.props.isOpen) || this.state.isOpen) && !this.focusActive) {
+    if (
+      ((useProps && nextProps.isOpen !== this.props.isOpen) ||
+        this.state.isOpen) &&
+      !this.focusActive
+    ) {
       this.focusTrap.activate();
-    } else if ((nextProps.isOpen !== this.props.isOpen) || (!this.state.isOpen && nextProps.isOpen === null) && this.focusActive) {
+    } else if (
+      nextProps.isOpen !== this.props.isOpen ||
+      (!this.state.isOpen && nextProps.isOpen === null && this.focusActive)
+    ) {
       this.focusTrap.deactivate();
     }
   }
@@ -133,16 +140,20 @@ export default class ClickToggleWithDialog extends React.Component {
           ref={ref => {
             this.containerRef = ref;
           }}>
-          {useDialog && <Dialog
-            id={id}
-            labelledby={labelledby}
-            hidden={!showDialog}
-            onClose={this.handleClick}
-            disablePortal
-            messages={{ close: openTitle || 'lukk' }}
-            modifier={showDialog ? ['active', dialogModifier] : dialogModifier}>
-            {this.props.children}
-          </Dialog>}
+          {useDialog && (
+            <Dialog
+              id={id}
+              labelledby={labelledby}
+              hidden={!showDialog}
+              onClose={this.handleClick}
+              disablePortal
+              messages={{ close: openTitle || 'lukk' }}
+              modifier={
+                showDialog ? ['active', dialogModifier] : dialogModifier
+              }>
+              {this.props.children}
+            </Dialog>
+          )}
           {!useDialog && isOpen && this.props.children(this.handleOnClose)}
         </div>
       </Component>
@@ -155,15 +166,28 @@ ClickToggleWithDialog.propTypes = {
     if (typeof props[propName] !== 'string' && props[propName] !== undefined) {
       console.warn(`<${componentName} /> id prop type must be a string`);
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.',
       );
     }
-    if (typeof props.children !== 'function' && typeof props[propName] !== 'string') {
-      console.warn(`<${componentName} /> When children prop is a node, id prop is isRequired`);
+    if (
+      typeof props.children !== 'function' &&
+      typeof props[propName] !== 'string'
+    ) {
+      console.warn(
+        `<${componentName} /> When children prop is a node, id prop is isRequired`,
+      );
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.',
       );
     }
   },
@@ -178,17 +202,32 @@ ClickToggleWithDialog.propTypes = {
   isOpen: PropTypes.bool,
   onToggle: (props, propName, componentName) => {
     if (typeof props[propName] !== 'function' && props[propName] !== null) {
-      console.warn(`<${componentName} /> onToggle prop type must be a function`);
+      console.warn(
+        `<${componentName} /> onToggle prop type must be a function`,
+      );
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.',
       );
     }
-    if (typeof props.children === 'function' && typeof props[propName] !== 'function') {
-      console.warn(`<${componentName} /> When children prop is a function, onToggle prop is isRequired`);
+    if (
+      typeof props.children === 'function' &&
+      typeof props[propName] !== 'function'
+    ) {
+      console.warn(
+        `<${componentName} /> When children prop is a function, onToggle prop is isRequired`,
+      );
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.',
       );
     }
   },
@@ -198,17 +237,29 @@ ClickToggleWithDialog.propTypes = {
   dialogModifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   useDialog: (props, propName, componentName) => {
     if (typeof props[propName] !== 'boolean') {
-      console.warn(`<${componentName} /> useDialog prop type must be a boolean`);
+      console.warn(
+        `<${componentName} /> useDialog prop type must be a boolean`,
+      );
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.',
       );
     }
     if (typeof props.children === 'function' && props[propName]) {
-      console.warn(`<${componentName} /> When children prop is a function, useDialog prop can not be true.`);
+      console.warn(
+        `<${componentName} /> When children prop is a function, useDialog prop can not be true.`,
+      );
       return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Invalid prop `' +
+          propName +
+          '` supplied to' +
+          ' `' +
+          componentName +
+          '`. Validation failed.',
       );
     }
   },

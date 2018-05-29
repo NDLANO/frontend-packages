@@ -24,7 +24,10 @@ const ArticleAuthorContent = ({
   messages,
   onSelectAuthor,
 }) => {
-  if ((showAuthor === null || showAuthor === undefined) && authors.length !== 1) {
+  if (
+    (showAuthor === null || showAuthor === undefined) &&
+    authors.length !== 1
+  ) {
     // Render author list
     return (
       <div {...classes('content')}>
@@ -100,19 +103,23 @@ const ArticleAuthorContent = ({
         </section>
       </div>
       <div {...classes('author-link-container')}>
-        {urlContributions && <span>
-          <a
-            href={urlContributions}
-            target="_blank"
-            className="c-button c-button--outline">
-            Se hva {firstName} har bidratt med
-          </a>
-        </span>}
-        {urlAuthor && <span>
-          <a href={urlAuthor} target="_blank" className="c-button--link">
-            Les mer om {firstName}
-          </a>
-        </span>}
+        {urlContributions && (
+          <span>
+            <a
+              href={urlContributions}
+              target="_blank"
+              className="c-button c-button--outline">
+              Se hva {firstName} har bidratt med
+            </a>
+          </span>
+        )}
+        {urlAuthor && (
+          <span>
+            <a href={urlAuthor} target="_blank" className="c-button--link">
+              Les mer om {firstName}
+            </a>
+          </span>
+        )}
       </div>
     </div>
   );

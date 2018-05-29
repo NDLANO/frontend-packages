@@ -61,6 +61,7 @@ export const initArticleScripts = () => {
   initAudioPlayers();
   addFootnoteClickListeners();
   toggleRelatedArticles();
+  initTableScript();
   addFilelistTooltipListners();
 };
 

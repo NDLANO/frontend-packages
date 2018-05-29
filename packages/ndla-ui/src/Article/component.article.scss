@@ -4,6 +4,15 @@
 ** Title has icon when article is a resource type
 **/
 
+@mixin contentList() {
+  ul:not([class]),
+  ul.o-list--two-columns,
+  ul.o-list--bullets,
+  ol {
+    @content;
+  }
+}
+
 .c-article {
   font-family: $font-serif;
   background: $white;
@@ -21,7 +30,17 @@
     }
   }
 
+  @include contentList() {
+    @include chinese() {
+      @include font-size(18px, 28px);
+    }
+  }
+
   @include chinese() {
+    @include contentList() {
+      @include font-size(18px, 28px);
+    }
+
     p {
       @include font-size(18px, 28px);
     }
@@ -36,7 +55,16 @@
       }
     }
 
+    @include contentList() {
+      @include chinese() {
+        @include font-size(20px, 32px);
+      }
+    }
+
     @include chinese() {
+      @include contentList() {
+        @include font-size(20px, 32px);
+      }
       p {
         @include font-size(20px, 32px);
       }

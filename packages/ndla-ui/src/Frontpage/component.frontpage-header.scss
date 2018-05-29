@@ -136,11 +136,9 @@
     a {
       @include font-size(14px, 18px);
       color: $white;
-      box-shadow: inset 0 -1px $white;
 
       &:hover {
         color: $white;
-        box-shadow: $link--hover;
       }
     }
   }

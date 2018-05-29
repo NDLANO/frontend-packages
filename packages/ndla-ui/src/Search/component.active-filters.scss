@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: stretch;
 
-  @include mq(tablet) {
+  @include mq(desktop) {
     flex-direction: row;
     align-items: center;
   }
@@ -16,7 +16,7 @@
     display: flex;
     margin-bottom: $spacing--small/2;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       margin: 0 $spacing--small 0 0;
     }
 
@@ -29,8 +29,8 @@
   button {
     height: 36px;
     border: 0;
-    background: $brand-color;
-    color: $white;
+    background: $brand-color--light;
+    color: $brand-color--dark;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
@@ -39,8 +39,9 @@
     width: 100%;
     justify-content: space-between;
     @include font-size(16px, 36px);
+    font-weight: $font-weight-semibold;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       width: auto;
       justify-content: flex-start;
       @include font-size(18px, 40px);
@@ -50,6 +51,5 @@
     span {
       padding-right: $spacing--small;
     }
-
   }
 }

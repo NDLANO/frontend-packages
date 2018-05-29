@@ -662,17 +662,6 @@ storiesOf('Grunnstiler', module)
               </td>
             </tr>
             <tr>
-              <td>Stor brødtekst</td>
-              <td>
-                20 px{' '}
-                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
-              </td>
-              <td>
-                18 px{' '}
-                <span style={{ color: 'rgb(144, 144, 144)' }}>(1 rem)</span>
-              </td>
-            </tr>
-            <tr>
               <td>Metatekst</td>
               <td>
                 16 px{' '}
@@ -729,7 +718,7 @@ storiesOf('Grunnstiler', module)
           Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å
           lese. Dette betyr at linjene ikke skal være for lange, og at vi bruker
           stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter som en
-          standardstørrelse, men siden NDLA har mange teksttunge sider, bruker
+          standard størrelse, men siden NDLA har mange teksttunge sider, bruker
           vi 18 punkter.
         </p>
         <p>
@@ -746,15 +735,91 @@ storiesOf('Grunnstiler', module)
             dolore magna aliqua.
           </p>
         </div>
-        <h2 className="u-heading">Stor brødtekst</h2>
+        <h2 className="u-heading">Kinesisk</h2>
         <p>
-          Stor brødtekst kan benyttes når det er spesielle behov for å utheve
-          noe. Dette kan feks være tegn på kinesisk eller formler i matematikk.
-          Stor brødtekst skal brukes på ord eller fraser som står for seg selv.
-          Det kan ikke være stor brødteskt og vanlig brødtekst på samme linje.
-          Eksempel fra kinesisk:
+          Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten
+          skal være lesbar.
         </p>
-        <p className="u-large-body-text">第一课：汉字</p>
+        <table>
+          <thead>
+            <th>Teksttype</th>
+            <th>Størrelse på stor skjerm</th>
+            <th>Størrelse på liten skjerm</th>
+            <th>Eksempel</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overskrifter</td>
+              <td>
+                40 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(2.22rem)</span>
+              </td>
+              <td>
+                32 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.77rem)</span>
+              </td>
+              <td lang="zh-Hans">
+                <h1>人人生而自由</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>Mellomoverskrifter</td>
+              <td>
+                24 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
+              </td>
+              <td>
+                24 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
+              </td>
+              <td lang="zh-Hans">
+                <h2>人人生而自由</h2>
+              </td>
+            </tr>
+            <tr>
+              <td>Små overskrifter</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td lang="zh-Hans">
+                <h3>人人生而自由</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>Ingress</td>
+              <td>
+                28 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.55rem)</span>
+              </td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+              <td lang="zh-Hans" className="article_introduction">
+                人人生而自由,在尊严和权利上一律平等。
+              </td>
+            </tr>
+            <tr>
+              <td>Brødtekst</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+              <td lang="zh-Hans">
+                人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>

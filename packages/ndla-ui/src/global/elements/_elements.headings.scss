@@ -9,7 +9,7 @@
  */
 
 // We have all of our heading font sizes defined here. Passing these pixel
-// values into our `inuit-font-size()` mixin will generate a rem-based
+// values into our `font-size()` mixin will generate a rem-based
 // `font-size` with a pixel fallback, as well as generating a `line-height` that
 // will sit on our baseline grid.
 
@@ -26,11 +26,30 @@ h5 {
 
 h1 {
   font-weight: $font-weight-semibold;
-  @include inuit-font-size(30px, 40px);
+  @include font-size(30px, 40px);
   margin-bottom: $spacing--small;
+
   @include mq(tablet) {
-    @include inuit-font-size(38px, 45px);
+    @include font-size(38px, 45px);
     margin-bottom: $spacing;
+  }
+
+  @include chinese() {
+    @include font-size(32px, 40px);
+
+    @include mq(tablet) {
+      @include font-size(40px, 45px);
+    }
+  }
+}
+
+@include chinese() {
+  h1 {
+    @include font-size(32px, 40px);
+
+    @include mq(tablet) {
+      @include font-size(40px, 45px);
+    }
   }
 }
 
@@ -40,18 +59,44 @@ h4,
 h5 {
   margin-top: $spacing--large;
   margin-bottom: $spacing--small;
-  @include inuit-font-size(22px, 30px);
+  @include font-size(22px, 30px);
+
   @include mq(desktop) {
     line-height: 1.5;
+  }
+
+  @include chinese() {
+    @include font-size(24px, 30px);
+  }
+}
+
+@include chinese() {
+  h2,
+  h3,
+  h4,
+  h5 {
+    @include font-size(24px, 30px);
   }
 }
 
 h3,
 h4,
 h5 {
-  @include inuit-font-size(18px, 26px);
+  @include font-size(18px, 26px);
   margin-top: $spacing--medium;
   margin-bottom: $spacing--small / 2;
+
+  @include chinese() {
+    @include font-size(20px, 26px);
+  }
+}
+
+@include chinese() {
+  h3,
+  h4,
+  h5 {
+    @include font-size(20px, 26px);
+  }
 }
 
 h2 + h2 {

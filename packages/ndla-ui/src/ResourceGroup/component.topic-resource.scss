@@ -69,8 +69,16 @@
   display: inline;
   @include font-size(18px);
 
+  @include chinese() {
+    @include font-size(20px);
+  }
+
   @include mq(tablet) {
     @include font-size(20px);
+
+    @include chinese() {
+      @include font-size(22px);
+    }
   }
 }
 

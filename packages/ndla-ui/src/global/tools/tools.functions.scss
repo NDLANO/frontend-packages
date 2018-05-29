@@ -12,3 +12,12 @@
   clip: rect(0, 0, 0, 0);
   position: absolute;
 }
+
+@mixin chinese() {
+  &[lang='zh-Hans'],
+  [lang='zh-Hans'],
+  &[lang='zh-Hant'],
+  [lang='zh-Hant'] {
+    @content;
+  }
+}

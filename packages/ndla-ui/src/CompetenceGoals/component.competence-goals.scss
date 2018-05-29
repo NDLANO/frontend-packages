@@ -157,12 +157,6 @@
   }
 
   &__toggle-button {
-    @include font-size(12px, 15px);
-    background-color: $brand-color--lighter;
-    border: none;
-    color: $brand-color;
-    font-weight: $font-weight-semibold;
-
     &--wide {
       position: absolute;
       z-index: 9;
@@ -176,17 +170,9 @@
     }
 
     &--narrow {
-      margin-top: $spacing;
       @include mq(desktop) {
         display: none;
       }
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      border: none;
-      background: $brand-color;
     }
   }
 }

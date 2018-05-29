@@ -1,11 +1,27 @@
 .c-dialog {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  overflow: auto;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
   .o-backdrop {
     display: none;
-    z-index: 999;
+    z-index: 1;
+  }
+  &:not(.c-dialog--large, .c-dialog--fullscreen) {
+    h1 {
+      @include inuit-font-size(22px, 26px);
+    }
   }
 }
 
 .c-dialog--active {
+  display: flex;
   .o-backdrop {
     display: block;
     animation-name: fadeIn;
@@ -17,68 +33,45 @@
   overflow: hidden;
   height: 0;
   visibility: hidden;
+  position: relative;
+  z-index: 2;
+  color: $primary-color;
+  @include mq(tablet) {
+    min-width: 20rem;
+  }
+  @include font-size(18px);
 }
 
 .c-dialog--active {
   .c-dialog__content {
-    position: fixed;
     background-color: $brand-color--lighter;
     box-shadow: 0 0 30px rgba($black, 0.2);
     padding: $spacing;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
     animation-name: zoomIn;
     animation-duration: 0.3s;
     overflow: auto;
+    height: 100vh;
+    width: 100vw;
 
     @include mq(tablet) {
       width: 90%;
-      margin: 0 auto;
-      top: 50%;
-      transform: translateY(-50%);
-      max-width: 500px;
-      left: 0;
-      right: 0;
-      bottom: auto;
-      opacity: 1;
-      animation-name: fadeInBottom;
-    }
-    height: auto;
-    visibility: visible;
-  }
-
-  .c-dialog--fullscreen {
-  }
-
-  .c-dialog__content--large {
-    max-width: 970px;
-
-    @include mq (tablet) {
       max-height: 85vh;
+      margin: 0 auto;
+      padding: $spacing--medium;
+      max-width: 613px;
+      width: auto;
+      opacity: 1;
+      animation-name: fadeInBottomFixed;
+      height: auto;
     }
-  }
-
-  .c-dialog__content--fullscreen {
-    @include mq(tablet) {
-      max-height: 100vh;
-      max-width: 100%;
-
-      .c-figure-license__img {
-        max-height: 85vh;
-        width: auto;
-        margin: auto;
-      }
-    }
+    visibility: visible;
   }
 
   .c-dialog__close {
     display: block;
-    position: absolute;
-    top: $spacing*0.9;
-    right: $spacing;
+    float: right;
+    position: relative;
+    z-index: 3;
     background: transparent;
     border: none;
     color: $brand-color;
@@ -87,10 +80,27 @@
     padding: 0;
     box-shadow: $link;
     height: 25px;
-    z-index: 9;
     cursor: pointer;
     &:hover {
       box-shadow: $link--hover;
+    }
+  }
+}
+
+.c-dialog--large .c-dialog__content {
+  max-width: 970px;
+}
+
+.c-dialog--fullscreen .c-dialog__content {
+  @include mq(tablet) {
+    height: 100vh;
+    width: 90vw;
+    max-width: 90vw;
+    .c-figure-license__img {
+      max-height: 85vh;
+      max-height: 85vh;
+      width: auto;
+      margin: auto;
     }
   }
 }

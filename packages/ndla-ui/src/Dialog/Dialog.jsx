@@ -12,7 +12,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { Fade } from 'ndla-ui';
 import { createUniversalPortal } from '../utils/createUniversalPortal';
+
+const duration = 300;
 
 const classes = new BEMHelper({
   name: 'dialog',
@@ -39,8 +42,9 @@ export const Dialog = ({
       aria-hidden={hidden}
       aria-labelledby={labelledby}
       aria-label={label}
-      {...rest}>
-      <div {...classes('content', modifier)}>
+      {...rest}
+    >
+      <div {...classes('content')}>
         <button
           {...classes('close')}
           onClick={() => {

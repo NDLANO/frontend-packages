@@ -747,7 +747,6 @@ storiesOf('Grunnstiler', module)
             <th>Teksttype</th>
             <th>Størrelse på stor skjerm</th>
             <th>Størrelse på liten skjerm</th>
-            <th>Eksempel</th>
           </thead>
           <tbody>
             <tr>
@@ -760,9 +759,6 @@ storiesOf('Grunnstiler', module)
                 32 px{' '}
                 <span style={{ color: 'rgb(144, 144, 144)' }}>(1.77rem)</span>
               </td>
-              <td lang="zh-Hans">
-                <h1>人人生而自由</h1>
-              </td>
             </tr>
             <tr>
               <td>Mellomoverskrifter</td>
@@ -773,9 +769,6 @@ storiesOf('Grunnstiler', module)
               <td>
                 24 px{' '}
                 <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
-              </td>
-              <td lang="zh-Hans">
-                <h2>人人生而自由</h2>
               </td>
             </tr>
             <tr>
@@ -788,9 +781,6 @@ storiesOf('Grunnstiler', module)
                 20 px{' '}
                 <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
               </td>
-              <td lang="zh-Hans">
-                <h3>人人生而自由</h3>
-              </td>
             </tr>
             <tr>
               <td>Ingress</td>
@@ -801,9 +791,6 @@ storiesOf('Grunnstiler', module)
               <td>
                 22 px{' '}
                 <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
-              </td>
-              <td lang="zh-Hans" className="article_introduction">
-                人人生而自由,在尊严和权利上一律平等。
               </td>
             </tr>
             <tr>
@@ -816,12 +803,29 @@ storiesOf('Grunnstiler', module)
                 18 px{' '}
                 <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
               </td>
-              <td lang="zh-Hans">
-                人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。
-              </td>
             </tr>
           </tbody>
         </table>
+        <h3>Overskrifter</h3>
+        <div lang="zh-Hans">
+          <h1>人人生而自由</h1>
+        </div>
+        <h3>Mellomoverskrifter</h3>
+        <div lang="zh-Hans">
+          <h2>人人生而自由</h2>
+        </div>
+        <h3>Små overskrifter</h3>
+        <div lang="zh-Hans">
+          <h3>人人生而自由</h3>
+        </div>
+        <h3>Ingress</h3>
+        <p className="article_introduction" lang="zh-Hans">
+          人人生而自由,在尊严和权利上一律平等。
+        </p>
+        <h3>Brødtekst</h3>
+        <p lang="zh-Hans">
+          人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。
+        </p>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>

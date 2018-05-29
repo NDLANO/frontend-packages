@@ -126,6 +126,31 @@ article table {
 
   // scrolling shadows on left/right
 
+  @include chinese() {
+    th {
+      @include font-size(18px,22px);
+
+      @include mq(tablet) {
+        @include font-size(18px,30px);
+      }
+    }
+
+    thead tr:nth-child(2) th {
+      @include font-size(16px,18px);
+
+      @include mq(tablet) {
+        @include font-size(17px, 26px);
+      }
+    }
+
+    td {
+      @include font-size(16px,22px);
+      @include mq(tablet) {
+        @include font-size(17px,30px);
+      }
+    }
+  }
+
   &:after,
   &:before {
     content: '';
@@ -158,9 +183,16 @@ article table {
     border-bottom: 3px solid $brand-color--tertiary;
     font-family: $font;
 
-    @include inuit-font-size(16px,22px);
+    @include font-size(16px,22px);
     @include mq(tablet) {
-      @include inuit-font-size(16px,30px);
+      @include font-size(16px,30px);
+    }
+
+    @include chinese() {
+      @include font-size(18px,22px);
+      @include mq(tablet) {
+        @include font-size(18px,30px);
+      }
     }
   }
 
@@ -173,9 +205,9 @@ article table {
   thead tr:nth-child(2) th {
     border: 1px solid $brand-grey--lighter;
     text-transform: none;
-    @include inuit-font-size(14px,18px);
+    @include font-size(14px,18px);
     @include mq(tablet) {
-      @include inuit-font-size(15px, 26px);
+      @include font-size(15px, 26px);
     }
     font-weight: $font-weight-semibold;
     height: 40px;
@@ -185,15 +217,30 @@ article table {
     &:empty {
       background-color: transparent;
     }
+
+    @include chinese() {
+      @include font-size(16px,18px);
+      @include mq(tablet) {
+        @include font-size(17px, 26px);
+      }
+    }
   }
 
   td {
     border: 1px solid $brand-grey--lighter;
 
-    @include inuit-font-size(14px,22px);
+    @include font-size(14px,22px);
     @include mq(tablet) {
-      @include inuit-font-size(15px,30px);
+      @include font-size(15px,30px);
     }
+
+    @include chinese() {
+      @include font-size(16px,22px);
+      @include mq(tablet) {
+        @include font-size(17px,30px);
+      }
+    }
+
     p {
       margin: 0;
       line-height: 1.6em;

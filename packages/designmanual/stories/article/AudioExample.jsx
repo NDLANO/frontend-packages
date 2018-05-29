@@ -44,8 +44,10 @@ class AudioExample extends Component {
     const reuseLabel = 'Bruk lydklipp';
     const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
+    const figureId = `figure-${this.id}`;
+
     return (
-      <Figure type="full-column">
+      <Figure id={figureId} type="full-column">
         <AudioPlayer
           src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
           type="audio/mpeg"
@@ -64,6 +66,7 @@ class AudioExample extends Component {
           <Button outline>Last ned lydklipp</Button>
         </FigureLicenseDialog>
         <FigureCaption
+          figureId={figureId}
           id={this.id}
           key="caption"
           caption={caption}

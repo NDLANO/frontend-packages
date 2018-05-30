@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Additional } from 'ndla-icons/common';
+import { Core, Additional } from 'ndla-icons/common';
 
 import {
   SearchPage,
@@ -95,7 +95,9 @@ class SearchPageExample extends Component {
     }
 
     const contextFilter =
-      this.state.currentTab !== 'all' && currentResult.length > 0 ? (
+      this.state.currentTab !== 'all' &&
+      this.state.currentTab !== 'LEARNING_PATH' &&
+      currentResult.length > 0 ? (
         <SearchFilter
           contextFilter
           label="Egenskaper"
@@ -166,15 +168,11 @@ class SearchPageExample extends Component {
         filters={
           <Fragment>
             <SearchFilter
-              label="Medieuttrykk og mediasamfunnet"
+              label="Fag:"
               options={[
                 {
-                  title: 'Medieuttrykk',
+                  title: 'Medieuttrykk og mediasamfunnet',
                   value: 'value',
-                },
-                {
-                  title: 'Mediesamfunnet',
-                  value: 'value2',
                 },
               ]}
               values={['value']}>
@@ -184,37 +182,71 @@ class SearchPageExample extends Component {
                   filterLabel: 'Velg fag',
                   closeButton: 'Lukk',
                   confirmButton: 'Bruk fag',
-                  hasValuesButtonText: 'Bytt fag',
-                  noValuesButtonText: 'Velg fag',
+                  hasValuesButtonText: 'Vis flere fag',
+                  noValuesButtonText: 'Filtrer på fag',
                 }}
                 options={[
                   {
-                    title: 'Kinesisk',
-                    value: 'value1',
-                  },
-                  {
                     title: 'Brønnteknikk',
                     value: 'value2',
+                  },
+                  {
+                    title: 'Kinesisk',
+                    value: 'value1',
                   },
                   {
                     title: 'Markedsføring og ledelse',
                     value: 'value3',
                   },
                   {
+                    title: 'Medieuttrykk og mediasamfunnet',
+                    value: 'value',
+                  },
+                  {
                     title: 'Naturbruk',
                     value: 'value4',
                   },
                 ]}
-                values={[]}
+                values={['value']}
               />
             </SearchFilter>
             <SearchFilter
-              label="Innholdstype"
+              label="Medieuttrykk og mediasamfunnet:"
+              options={[
+                {
+                  title: 'Medieuttrykk',
+                  value: 'value',
+                },
+                {
+                  title: 'Mediesamfunnet',
+                  value: 'value1',
+                },
+                {
+                  title: 'VG1',
+                  value: 'value2',
+                },
+                {
+                  title: 'VG2',
+                  value: 'value3',
+                },
+                {
+                  title: 'VG3',
+                  value: 'value4',
+                },
+              ]}
+              values={[]}
+            />
+            <SearchFilter
+              label="Innholdstype:"
               narrowScreenOnly
               defaultVisibleCount={2}
               showLabel="Flere innholdstyper"
               hideLabel="Færre innholdstyper"
               options={[
+                {
+                  title: 'Emne',
+                  value: 'SUBJECT',
+                },
                 {
                   title: 'Læringssti',
                   value: 'LEARNING_PATH',
@@ -227,49 +259,27 @@ class SearchPageExample extends Component {
                   title: 'Oppgaver og aktiviteter',
                   value: 'TASKS_AND_ACTIVITIES',
                 },
-                {
-                  title: 'Ekstern læringsressurs',
-                  value: 'EXTERNAL_LEARNING_RESOURCES',
-                },
-                {
-                  title: 'Kildemateriale',
-                  value: 'SOURCE_MATERIAL',
-                },
               ]}
               values={['LEARNING_PATH']}
             />
             <SearchFilter
-              label="Nivå"
-              options={[
-                {
-                  title: 'VG1 (15)',
-                  value: 'VG1',
-                },
-                {
-                  title: 'VG2 (20)',
-                  value: 'VG2',
-                },
-                {
-                  title: 'VG3',
-                  value: 'VG3',
-                  noResults: true,
-                },
-              ]}
-              values={[]}
-            />
-            <SearchFilter
-              label="Innhold"
+              label="Innhold:"
               options={[
                 {
                   title: 'Tilleggstoff',
                   value: 'additional',
                   icon: Additional,
                 },
+                {
+                  title: 'Kjernestoff',
+                  value: 'core',
+                  icon: Core,
+                },
               ]}
               values={['additional']}
             />
             <SearchFilter
-              label="Språk"
+              label="Språk:"
               options={[
                 {
                   title: 'Bokmål',
@@ -294,7 +304,7 @@ class SearchPageExample extends Component {
               hideLabel="Færre språk"
             />
             <SearchFilter
-              label="Laget av"
+              label="Laget av:"
               options={[
                 {
                   title: 'Ndla',
@@ -318,24 +328,24 @@ class SearchPageExample extends Component {
           searchString="Test"
           tabOptions={[
             {
-              value: 'all',
               title: 'Alle',
+              value: 'all',
             },
             {
-              value: 'subject',
               title: 'Emne',
+              value: 'SUBJECT',
             },
             {
-              value: 'subjectMaterial',
-              title: 'Fagstoff',
-            },
-            {
-              value: 'learningPath',
               title: 'Læringssti',
+              value: 'LEARNING_PATH',
             },
             {
-              value: 'externalLearningResources',
-              title: 'Ekstern læringsressurs',
+              title: 'Fagstoff',
+              value: 'SUBJECT_MATERIAL',
+            },
+            {
+              title: 'Oppgaver og aktiviteter',
+              value: 'TASKS_AND_ACTIVITIES',
             },
           ]}
           onTabChange={currentTab => {

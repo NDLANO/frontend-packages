@@ -18,7 +18,7 @@
   &--hideOnNarrowScreen {
     display: none;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
   }

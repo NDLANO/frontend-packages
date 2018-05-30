@@ -14,15 +14,20 @@ import {
 import { addFilelistTooltipListners } from './fileListScript';
 
 import {
-  addShowDialogClickListeners,
-  removeShowDialogClickListeners,
-  addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   updateIFrameDimensions,
   addEventListenerForResize,
   removeEventListenerForResize,
   toggleLicenseInfoBox,
 } from './figureScripts';
+
+import {
+  addShowDialogClickListeners,
+  removeShowDialogClickListeners,
+  addCloseDialogClickListeners,
+} from './dialogScripts';
+
+import { initTableScript, removeTableEventListeners } from './tableScripts';
 
 import {
   addDetailsEventListeners,
@@ -58,11 +63,14 @@ export const initArticleScripts = () => {
   initAudioPlayers();
   addFootnoteClickListeners();
   toggleRelatedArticles();
+  initTableScript();
   addFilelistTooltipListners();
   initArticleTabs();
 };
 
 export {
+  initTableScript,
+  removeTableEventListeners,
   updateIFrameDimensions,
   addFactBoxClickListener,
   removeFactBoxClickListener,

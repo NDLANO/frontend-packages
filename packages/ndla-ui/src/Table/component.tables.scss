@@ -4,59 +4,158 @@
 ** Applied for tables both with and without c-table class.
 **/
 
+.c-table {
+  $scrollbar-height: 8px;
+  margin: 0;
 
+  &::-webkit-scrollbar {
+    height: $scrollbar-height;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: $brand-color--lighter;
+    border-radius: $scrollbar-height;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $brand-color--dark;
+    border-radius: $scrollbar-height;
+  }
 
-.c-table, .c-article table, article table {
+  &__wrapper {
+    margin: $spacing--large 0 $spacing--large 0;
+
+    @include mq($from: desktop) {
+      @include grids-expand(4,6,2);
+    }
+
+    &--has-scroll {
+      .c-table {
+        padding-bottom: $spacing;
+
+        &__expand-button {
+          @include mq($from: wide) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__expand-button {
+    display: none;
+    background: $brand-color--lighter;
+    border: 0;
+    height: 38px;
+    width: 38px;
+    border-radius: 0;
+    margin: $spacing 0 0 auto;
+  }
+
+  &__expanded-table-wrapper {
+    display: inline-block;
+    background: $white;
+    padding: $spacing--medium $spacing--medium $spacing--large $spacing--medium;
+    margin: $spacing--large;
+  }
+
+  &__dialog {
+    text-align: center;
+  }
+
+  &__content {
+    text-align: center;
+    position: relative;
+  }
+
+  &__left-shadow,
+  &__right-shadow {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    height: calc(100% - #{$spacing--large});
+    width: 15px;
+    background-attachment: scroll, scroll;
+    background-repeat: no-repeat;
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__left-shadow {
+    left: 0;
+    background: radial-gradient(
+        ellipse at left,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0) 75%
+      )
+      0 center;
+  }
+
+  &__right-shadow {
+    right: 0;
+    background: radial-gradient(
+        ellipse at right,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0) 75%
+      )
+      0 center;
+  }
+}
+
+.c-article table:not(.c-table),
+article table:not(.c-table) {
+  margin: $spacing--large 0 $spacing--large 0;
+}
+
+.c-table,
+.c-article table,
+article table {
+  padding-left: 1px;
+  padding-right: 1px;
+  display: inline-block;
   vertical-align: top;
   font-size: 85%;
   table-layout: fixed;
 
   overflow-x: auto;
   max-width: 100%;
-  margin: $spacing--large 0 $spacing--large 0;
 
   // optional - enable iOS momentum scrolling
   -webkit-overflow-scrolling: touch;
 
   // scrolling shadows on left/right
-  background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-  background-size: 15px 100%, 15px 100%;
-  background-attachment: scroll, scroll;
-  background-repeat: no-repeat;
 
-  display: inline-block;
-
-  &:after, &:before {
-    content: "";
+  &:after,
+  &:before {
+    content: '';
     display: table;
     clear: both;
   }
 
-  @include mq(tablet) {
-    display: table;
-  }
-
   caption {
-    background-color: $white;
+    background-color: transparent;
+    font-weight: $font-weight-bold;
+    @include font-size(16px, 20px);
+    text-align: left;
+    text-transform: uppercase;
+    font-family: $font;
+    margin-bottom: $spacing--small;
   }
 
   thead {
-    overflow:hidden;
+    overflow: hidden;
   }
 
-  td, th {
-    display: table-cell;
-    height: 45px;
-    padding: $spacing/3 $spacing $spacing/3 $spacing/3;
-  }
-  th, tbody td:before {
-    font-weight: $font-weight-bold;
-    padding: 4px 10px 4px 4px;
-  }
+  td,
   th {
+    display: table-cell;
+    padding: $spacing--small/2 $spacing--small;
+  }
+
+  th {
+    font-weight: $font-weight-bold;
     border-bottom: 3px solid $brand-color--tertiary;
-    padding: $spacing--small $spacing $spacing/3 $spacing/3;
     font-family: $font;
 
     @include inuit-font-size(16px,22px);
@@ -69,34 +168,10 @@
     border-bottom: 0;
     border-right: 3px solid $brand-color--tertiary;
     padding: $spacing--small/1.5;
-    vertical-align: top;
-  }
-
-  @mixin hide-gradient-first-child() {
-    background-color: transparent;
-    background-image: linear-gradient(to right, rgba($white, 1) 50%, rgba($white, 0) 100%);
-    background-repeat: no-repeat;
-    background-size: 25px 100%;
-  }
-
-  @mixin hide-gradient-last-child() {
-    background-color: transparent;
-    background-image: linear-gradient(to left, rgba($white, 1) 50%, rgba($white, 0) 100%);
-    background-repeat: no-repeat;
-    background-position: 100% 0;
-    background-size: 25px 100%;
-  }
-
-  @mixin hide-gradient-only-child() {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(to right, rgba($white, 1) 0, rgba($white, 0) 25px, rgba($white, 0) calc(100% - 25px), rgba($white, 1) 100%);
-    background-position: center;
-    background-size: cover;
   }
 
   thead tr:nth-child(2) th {
-    border-bottom: 0;
+    border: 1px solid $brand-grey--lighter;
     text-transform: none;
     @include inuit-font-size(14px,18px);
     @include mq(tablet) {
@@ -107,57 +182,34 @@
     background-color: $brand-color--lighter;
     padding: $spacing/6 $spacing $spacing/6 $spacing/3;
 
-    &:first-child, &:last-child {
-      background-color: none;
-    }
-
     &:empty {
       background-color: transparent;
-
-      &:first-child {
-        @include hide-gradient-first-child();
-      }
-
-      &:last-child {
-        @include hide-gradient-last-child();
-      }
-
-      &:only-child {
-        @include hide-gradient-only-child();
-      }
-    }
-  }
-
-  th, td {
-    &:first-child {
-      @include hide-gradient-first-child();
-
-    }
-    &:last-child {
-      @include hide-gradient-last-child();
-    }
-
-    &:only-child {
-      @include hide-gradient-only-child();
     }
   }
 
   td {
-    vertical-align: top;
-    border-bottom: 1px solid $brand-grey--lighter;
+    border: 1px solid $brand-grey--lighter;
 
     @include inuit-font-size(14px,22px);
     @include mq(tablet) {
       @include inuit-font-size(15px,30px);
     }
     p {
-      margin:0;
+      margin: 0;
       line-height: 1.6em;
+    }
+
+    img {
+      max-width: 100%;
     }
   }
 
   // Remove excess spacing on headings inside table
-  h1,h2,h3,h4,h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     margin-top: 0;
   }
 

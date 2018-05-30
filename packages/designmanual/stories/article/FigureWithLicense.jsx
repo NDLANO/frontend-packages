@@ -62,8 +62,11 @@ class FigureWithLicense extends Component {
       ? `Bruk ${this.props.reuseLabel}`
       : 'Bruk bildet';
 
+    const figureId = `figure-${this.id}`;
+
     return (
       <Figure
+        id={figureId}
         resizeIframe={resizeIframe}
         type={type}
         noFigcaption={this.props.noFigcaption}>
@@ -72,6 +75,7 @@ class FigureWithLicense extends Component {
               <Button
                 key="button"
                 data-dialog-trigger-id={`fs-${this.id}`}
+                data-dialog-source-id={figureId}
                 stripped
                 className="u-fullw">
                 {this.props.children}
@@ -104,6 +108,7 @@ class FigureWithLicense extends Component {
 
         {!this.props.noFigcaption ? (
           <FigureCaption
+            figureId={figureId}
             id={this.id}
             key="caption"
             caption={caption}

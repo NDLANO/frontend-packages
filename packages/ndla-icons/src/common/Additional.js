@@ -12,18 +12,29 @@ import Icon from '../Icon';
 
 const Additional = props => (
   <Icon
-    viewBox="0 0 50 50"
+    viewBox="0 0 23 23"
     data-license="CC-BY 4.0"
-    data-source="Netlife"
+    data-source="Keyteq"
     {...props}>
     <g>
-      <circle fill="#CEDDE9" cx="25" cy="25" r="24.7" />
-      <g>
-        <path
-          fill="#21588F"
-          className="st1"
-          d="M22.5,21.1h-5V17h15v4.2h-5v14.7h-5V21.1z"
-        />
+      <title>Tilleggstoff</title>
+      <g
+        id="icon/tilleggstoff"
+        stroke="none"
+        fill="none"
+        strokeWidth="1"
+        fillRule="evenodd">
+        <g
+          id="Group-2"
+          transform="translate(1.000000, 1.000000)"
+          fillRule="nonzero">
+          <circle id="Oval" stroke="#184673" cx="10.5" cy="10.5" r="10.5" />
+          <polygon
+            id="Shape"
+            fill="#184673"
+            points="9.3 8.886 7 8.886 7 7 13.9 7 13.9 8.932 11.6 8.932 11.6 15.694 9.3 15.694"
+          />
+        </g>
       </g>
     </g>
   </Icon>

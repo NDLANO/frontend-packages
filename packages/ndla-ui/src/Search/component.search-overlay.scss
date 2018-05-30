@@ -48,7 +48,33 @@ $overlay-height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  animation: searchAnimation 0.5s;
+
+  &-enter {
+    opacity: 0.3;
+    top: 13px;
+    height: 58px;
+    left: calc(100% - 302px);
+    right: 302px;
+
+    transition: all 0.3s ease;
+
+    &-active {
+      opacity: 1;
+      height: $overlay-height;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &-exit {
+    transition: all 0.3s ease;
+
+    &-active {
+      @extend .c-search-overlay-enter;
+      opacity: 0;
+    }
+  }
 
   &__container {
     padding: 0;

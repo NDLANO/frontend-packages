@@ -11,7 +11,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     @include font-size(16px, 20px);
     cursor: pointer;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
 
@@ -29,14 +29,14 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   }
 
   &__toggle-filter {
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
     margin-bottom: $spacing;
   }
 
   &__filter-result-wrapper {
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: flex;
     }
   }
@@ -44,7 +44,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__search-field-wrapper {
     padding: $spacing--large 0 $spacing 0;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       padding: $spacing--large 0;
 
       margin-left: $search-field-wrapper-margin;
@@ -54,7 +54,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__active-filters {
     margin-bottom: $spacing;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
   }
@@ -62,7 +62,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__filter-wrapper {
     display: none;
 
-    @include mq($until: tablet) {
+    @include mq($until: desktop) {
       position: fixed;
       top: 0;
       left: 0;
@@ -80,26 +80,26 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     margin-right: $spacing--small;
     text-align: center;
 
-    h1 {
-      text-align: left;
-      text-transform: uppercase;
-      display: none;
-      margin: 0;
-      font-weight: 600;
-      @include font-size(18px, 32px);
-
-      @include mq(tablet) {
-        display: block;
-      }
-    }
-
     &--expanded {
       display: block;
 
       animation: slideIn 0.5s;
     }
 
-    @include mq(tablet) {
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+
+  &__filter-heading {
+    text-align: left;
+    text-transform: uppercase;
+    display: none;
+    margin: 0;
+    font-weight: 600;
+    @include font-size(18px, 32px);
+
+    @include mq(desktop) {
       display: block;
     }
   }
@@ -119,7 +119,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
       @include font-size(14px, 32px);
       margin-bottom: $spacing--small;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         @include font-size(18px, 32px);
         margin-bottom: 0;
       }
@@ -140,7 +140,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     width: 100%;
     z-index: 1;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
 

@@ -16,7 +16,6 @@
 
   a {
     color: $white;
-    box-shadow: inset 0 -1px $white;
     @include font-size(18px, 22px);
     font-weight: 400;
 
@@ -24,7 +23,6 @@
     &:focus,
     &:active {
       color: $white;
-      box-shadow: none;
     }
   }
 }

@@ -6,19 +6,9 @@
  *
  */
 
-import { copyTextToClipboard, noScroll } from 'ndla-util';
-import createFocusTrap from 'focus-trap';
-import jump from 'jump.js';
+import { copyTextToClipboard } from 'ndla-util';
 
-import { findAncestorByClass, forEachElement } from './domHelpers';
-
-const trapInstances = {};
-
-const closeDialog = dialog => {
-  dialog.classList.remove('c-dialog--active');
-  dialog.setAttribute('aria-hidden', 'true');
-  noScroll(false);
-};
+import { forEachElement } from './domHelpers';
 
 export const toggleLicenseInfoBox = () => {
   forEachElement('.c-dialog', el => {
@@ -26,78 +16,24 @@ export const toggleLicenseInfoBox = () => {
     const toggleButton = target.querySelector('.c-figure__captionbtn');
     if (toggleButton) {
       toggleButton.onclick = () => {
-        target
-          .querySelector('.c-figure-license__hidden-content')
-          .classList.add('c-figure-license__hidden-content--active');
-        target.querySelector('.c-dialog__content--fullscreen').scrollTop = 350;
+        const activeClass = 'c-figure-license__hidden-content--active';
+        const hiddenContent = target.querySelector(
+          '.c-figure-license__hidden-content',
+        );
+
+        const dialogContent = target.querySelector(
+          '.c-dialog__content--fullscreen',
+        );
+
+        hiddenContent.classList.toggle(activeClass);
+
+        if (hiddenContent.classList.contains(activeClass)) {
+          dialogContent.scrollTop = dialogContent.scrollHeight;
+        } else {
+          dialogContent.scrollTop = 0;
+        }
       };
     }
-  });
-};
-
-export const addCloseDialogClickListeners = () => {
-  forEachElement('.c-dialog', el => {
-    const target = el;
-    const closeButton = target.querySelector('.c-dialog__close');
-
-    closeButton.onclick = () => {
-      const id = target.getAttribute('data-dialog-id');
-      const instance = trapInstances[id];
-      if (instance) {
-        instance.deactivate();
-      }
-    };
-  });
-};
-
-export const addShowDialogClickListeners = () => {
-  forEachElement('.c-figure [data-dialog-trigger-id]', el => {
-    const target = el;
-    const figure = findAncestorByClass(target, 'c-figure');
-    const id = target.getAttribute('data-dialog-trigger-id');
-
-    const dialog = document.querySelector(`[data-dialog-id='${id}']`);
-    const dialogContent = dialog.querySelector(`.c-dialog__content`);
-
-    trapInstances[id] = createFocusTrap(dialogContent, {
-      onDeactivate: () => {
-        closeDialog(dialog);
-      },
-      clickOutsideDeactivates: true,
-    });
-
-    target.onclick = () => {
-      noScroll(true);
-      const viewportHeight = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0,
-      );
-      const figureHeight = figure.offsetHeight;
-
-      jump(figure, {
-        offset: -((viewportHeight - figureHeight) / 2),
-        duration: 300,
-        callback: () => {
-          const instance = trapInstances[id];
-
-          if (instance) {
-            instance.activate();
-          }
-        },
-      });
-
-      setTimeout(() => {
-        dialog.setAttribute('aria-hidden', 'false');
-        dialog.classList.add('c-dialog--active');
-      }, 150);
-    };
-  });
-};
-
-export const removeShowDialogClickListeners = () => {
-  forEachElement('.c-figure [data-dialog-trigger-id]', el => {
-    const target = el;
-    target.onclick = undefined;
   });
 };
 

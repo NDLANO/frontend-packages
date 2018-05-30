@@ -46,51 +46,57 @@ class FilterList extends Component {
     }
 
     return (
-      <div {...filterClasses('list', modifiers)}>
-        <span {...filterClasses('label', labelModifiers)}>{label}</span>
-        {options.map((option, index) => {
-          const itemModifiers = [];
+      <section {...filterClasses('list', modifiers)}>
+        <h1 {...filterClasses('label', labelModifiers)}>{label}</h1>
+        <ul {...filterClasses('item-wrapper')}>
+          {options.map((option, index) => {
+            const itemModifiers = [];
 
-          const checked = values.some(value => value === option.value);
+            const checked = values.some(value => value === option.value);
 
-          if (!showAll && !checked && index + 1 > this.state.visibleCount) {
-            itemModifiers.push('hidden');
-          }
+            if (!showAll && !checked && index + 1 > this.state.visibleCount) {
+              itemModifiers.push('hidden');
+            }
 
-          if (option.noResults) {
-            itemModifiers.push('no-results');
-          }
+            if (option.noResults) {
+              itemModifiers.push('no-results');
+            }
 
-          return (
-            <div {...filterClasses('item', itemModifiers)} key={option.value}>
-              <input
-                {...filterClasses('input')}
-                type="checkbox"
-                id={option.value}
-                value={option.value}
-                checked={checked}
-                onChange={event => {
-                  let newValues = null;
-                  if (event.currentTarget.checked) {
-                    newValues = [...values, option.value];
-                  } else {
-                    newValues = values.filter(value => value !== option.value);
-                  }
-                  onChange(newValues, option.value);
-                }}
-              />
-              <label htmlFor={option.value}>
-                <span {...filterClasses('item-checkbox')} />
-                {option.title}
-                {option.icon
-                  ? createElement(option.icon, {
-                      className: 'c-icon--20 u-margin-left-small',
-                    })
-                  : null}
-              </label>
-            </div>
-          );
-        })}
+            return (
+              <li {...filterClasses('item', itemModifiers)} key={option.value}>
+                <input
+                  {...filterClasses('input')}
+                  type="checkbox"
+                  id={option.value}
+                  value={option.value}
+                  checked={checked}
+                  onChange={event => {
+                    let newValues = null;
+                    if (event.currentTarget.checked) {
+                      newValues = [...values, option.value];
+                    } else {
+                      newValues = values.filter(
+                        value => value !== option.value,
+                      );
+                    }
+                    onChange(newValues, option.value);
+                  }}
+                />
+                <label htmlFor={option.value}>
+                  <span {...filterClasses('item-checkbox')} />
+                  <span {...filterClasses('text')}>{option.title}</span>
+                  {option.icon
+                    ? createElement(option.icon, {
+                        className: `c-icon--22 u-margin-left-small ${
+                          filterClasses('icon').className
+                        }`,
+                      })
+                    : null}
+                </label>
+              </li>
+            );
+          })}
+        </ul>
         {!showAll && (
           <button
             {...filterClasses('expand')}
@@ -118,7 +124,7 @@ class FilterList extends Component {
             )}
           </button>
         )}
-      </div>
+      </section>
     );
   }
 }

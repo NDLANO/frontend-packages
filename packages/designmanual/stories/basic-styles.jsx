@@ -1671,7 +1671,7 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <Translation index={1}>
-          <TranslationLine lang="cn" langName="Kinesisk">
+          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
           <TranslationLine lang="pn" langName="Pinyin">
@@ -1682,7 +1682,7 @@ storiesOf('Grunnstiler', module)
           </TranslationLine>
         </Translation>
         <Translation index={2}>
-          <TranslationLine lang="cn" langName="Kinesisk">
+          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
           <TranslationLine lang="pn" langName="Pinyin">

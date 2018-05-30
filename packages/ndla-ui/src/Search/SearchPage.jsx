@@ -119,7 +119,7 @@ export default class SearchPage extends Component {
               }}>
               <Back /> <span>{messages.narrowScreenFilterHeading}</span>
             </button>
-            <h1>{messages.filterHeading}</h1>
+            <h1 {...classes('filter-heading')}>{messages.filterHeading}</h1>
             <div {...classes('filters')}>{filters}</div>
           </aside>
           <div {...classes('result-wrapper')}>

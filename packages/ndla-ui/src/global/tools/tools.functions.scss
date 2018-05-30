@@ -1,5 +1,5 @@
 @function urlEncodeColor($color) {
-    @return '%23' + str-slice('#{$color}', 2, -1);
+  @return '%23' + str-slice('#{$color}', 2, -1);
 }
 
 @mixin visually-hidden() {
@@ -11,4 +11,9 @@
   clip: rect(0 0 0 0);
   clip: rect(0, 0, 0, 0);
   position: absolute;
+}
+
+@mixin restore-outline() {
+  outline: 1px dotted #212121;
+  outline: -webkit-focus-ring-color auto 5px;
 }

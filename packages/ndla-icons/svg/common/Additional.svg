@@ -1,7 +1,9 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg" data-license="CC-BY 4.0" data-source="Netlife" viewBox="0 0 50 50">
-  <circle fill="#CEDDE9" cx="25" cy="25" r="24.7" />
-  <g>
-    <path fill="#21588F" className="st1" d="M22.5,21.1h-5V17h15v4.2h-5v14.7h-5V21.1z" />
-  </g>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-license="CC-BY 4.0" data-source="Keyteq">
+    <title>Tilleggstoff</title>
+    <g id="icon/tilleggstoff" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+            <circle id="Oval" stroke="#184673" cx="10.5" cy="10.5" r="10.5"></circle>
+            <polygon id="Shape" fill="#184673" points="9.3 8.886 7 8.886 7 7 13.9 7 13.9 8.932 11.6 8.932 11.6 15.694 9.3 15.694"></polygon>
+        </g>
+    </g>
 </svg>

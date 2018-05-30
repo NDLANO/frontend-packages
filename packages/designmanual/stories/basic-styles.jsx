@@ -1466,6 +1466,56 @@ storiesOf('Grunnstiler', module)
             </tr>
           </tbody>
         </Table>
+        <h2 className="u-heading">Eksempel med satt kolonnebredde</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th style={{ width: '33.333%' }}>Fremragende</th>
+              <th style={{ width: '33.333%' }}>Kompetent</th>
+              <th style={{ width: '33.333%' }}>På vei</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>mestrer ulike formater for nettreklame</td>
+              <td>
+                mestrer ett format godt, og er på god vei til å mestre flere
+              </td>
+              <td>mestrer ett reklameformat</td>
+            </tr>
+            <tr>
+              <td>
+                bruker de samme prinsippene for layout og komposisjon i begge
+                annonsene
+              </td>
+              <td>bruker layout og komposisjon i annonsene</td>
+              <td>
+                bruker til dels prinsipper for layout og komposisjon, men hvilke
+                og hvor de er brukt, kan være uklart
+              </td>
+            </tr>
+            <tr>
+              <td>
+                har reflekterte argumenter for hvorfor farger og fonter er valgt
+                og prioritert
+              </td>
+              <td>bruker farger og fonter som virkemidler i annonsene</td>
+              <td>Noen designvalg er gode, andre er mindre gjennomført.</td>
+            </tr>
+            <tr>
+              <td>Godt teknisk håndverk kjennetegner annonsene.</td>
+              <td>
+                Dette er bra, men noen elementer og piksler er upresist plassert
+                eller på avveier.
+              </td>
+              <td>
+                Noen elementer er godt bearbeidet, men det gjenstår litt før
+                annonsen er ferdig designet.
+              </td>
+            </tr>
+            <tr />
+          </tbody>
+        </Table>
       </StoryBody>
     </div>
   ))

@@ -38,6 +38,8 @@ import RelatedArticleListExample, {
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 
+import Oops from './images/oops.gif';
+
 const toggle = () => {
   document
     .querySelector('.c-collate__panel')
@@ -453,17 +455,19 @@ storiesOf('Sammensatte moduler', module)
           ved 404- eller 503-feil.
         </p>
       </StoryIntro>
-      <StoryBody>
-        <ErrorMessage
-          messages={{
-            title: 'Oisann, her gikk noe galt',
-            description: 'En kort beskrivelse av feilen som oppsto.',
-            linksTitle: 'Kom igang:',
-            back: 'Gå tilbake',
-            goToFrontPage: 'Gå til forsiden',
-          }}
-        />
-      </StoryBody>
+      <ErrorMessage
+        illustration={{
+          url: Oops,
+          altText: 'Systemfeil',
+        }}
+        messages={{
+          title: 'Oisann, her gikk noe galt',
+          description: 'En kort beskrivelse av feilen som oppsto.',
+          linksTitle: 'Kom igang:',
+          back: 'Gå tilbake',
+          goToFrontPage: 'Gå til forsiden',
+        }}
+      />
     </div>
   ))
 

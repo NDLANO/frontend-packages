@@ -38,6 +38,8 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 
+import NotExist from '../images/not-exist.gif';
+
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
     <PageContainer>
@@ -74,6 +76,10 @@ storiesOf('Sidevisninger', module)
         <MastheadWithTopicMenu />
         <OneColumn cssModifier="clear">
           <ErrorMessage
+            illustration={{
+              url: NotExist,
+              altText: 'Finnes ikke',
+            }}
             messages={{
               title: 'Oops, noe gikk galt',
               description:

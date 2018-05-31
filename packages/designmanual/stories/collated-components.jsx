@@ -82,6 +82,7 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <TopicIntroductionList
+          shortcutAlwaysExpanded
           toTopic={() => '#'}
           messages={{
             shortcutButtonText: 'Lærestoff',

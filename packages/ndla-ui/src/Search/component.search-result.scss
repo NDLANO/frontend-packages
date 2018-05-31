@@ -153,6 +153,7 @@
     text-transform: uppercase;
     @include font-size(14px, 18px);
     display: none;
+    margin-top: 2px;
 
     @include mq(desktop) {
       display: inline;

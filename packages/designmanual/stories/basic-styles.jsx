@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { Translation, TranslationLine } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
-
 import Table from './molecules/TableExample';
 
 const heading = (articleHTML, level) => {
@@ -663,17 +663,6 @@ storiesOf('Grunnstiler', module)
               </td>
             </tr>
             <tr>
-              <td>Stor brødtekst</td>
-              <td>
-                20 px{' '}
-                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.1rem)</span>
-              </td>
-              <td>
-                18 px{' '}
-                <span style={{ color: 'rgb(144, 144, 144)' }}>(1 rem)</span>
-              </td>
-            </tr>
-            <tr>
               <td>Metatekst</td>
               <td>
                 16 px{' '}
@@ -730,7 +719,7 @@ storiesOf('Grunnstiler', module)
           Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å
           lese. Dette betyr at linjene ikke skal være for lange, og at vi bruker
           stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter som en
-          standardstørrelse, men siden NDLA har mange teksttunge sider, bruker
+          standard størrelse, men siden NDLA har mange teksttunge sider, bruker
           vi 18 punkter.
         </p>
         <p>
@@ -747,15 +736,95 @@ storiesOf('Grunnstiler', module)
             dolore magna aliqua.
           </p>
         </div>
-        <h2 className="u-heading">Stor brødtekst</h2>
+        <h2 className="u-heading">Kinesisk</h2>
         <p>
-          Stor brødtekst kan benyttes når det er spesielle behov for å utheve
-          noe. Dette kan feks være tegn på kinesisk eller formler i matematikk.
-          Stor brødtekst skal brukes på ord eller fraser som står for seg selv.
-          Det kan ikke være stor brødteskt og vanlig brødtekst på samme linje.
-          Eksempel fra kinesisk:
+          Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten
+          skal være lesbar.
         </p>
-        <p className="u-large-body-text">第一课：汉字</p>
+        <table>
+          <thead>
+            <th>Teksttype</th>
+            <th>Størrelse på stor skjerm</th>
+            <th>Størrelse på liten skjerm</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overskrifter</td>
+              <td>
+                40 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(2.22rem)</span>
+              </td>
+              <td>
+                32 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.77rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Mellomoverskrifter</td>
+              <td>
+                24 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
+              </td>
+              <td>
+                24 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Små overskrifter</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Ingress</td>
+              <td>
+                28 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.55rem)</span>
+              </td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Brødtekst</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Overskrifter</h3>
+        <div lang="zh-Hans">
+          <h1>人人生而自由</h1>
+        </div>
+        <h3>Mellomoverskrifter</h3>
+        <div lang="zh-Hans">
+          <h2>人人生而自由</h2>
+        </div>
+        <h3>Små overskrifter</h3>
+        <div lang="zh-Hans">
+          <h3>人人生而自由</h3>
+        </div>
+        <h3>Ingress</h3>
+        <p className="article_introduction" lang="zh-Hans">
+          人人生而自由,在尊严和权利上一律平等。
+        </p>
+        <h3>Brødtekst</h3>
+        <p lang="zh-Hans">
+          人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。
+        </p>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>
@@ -1588,6 +1657,40 @@ storiesOf('Grunnstiler', module)
           <li>Listepunkt</li>
           <li>Listepunkt</li>
         </ol>
+      </StoryBody>
+    </div>
+  ))
+  .add('Oversettelser', () => (
+    <div>
+      <StoryIntro title="Oversettelser">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
+          derfor kan man i disse tilfellene bruke en liste for oversettelser.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <Translation index={1}>
+          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
+            你叫什么名字？你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
+            你叫什么名字？你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
       </StoryBody>
     </div>
   ))

@@ -4,6 +4,15 @@
 ** Title has icon when article is a resource type
 **/
 
+@mixin contentList() {
+  ul:not([class]),
+  ul.o-list--two-columns,
+  ul.o-list--bullets,
+  ol {
+    @content;
+  }
+}
+
 .c-article {
   font-family: $font-serif;
   background: $white;
@@ -12,11 +21,55 @@
   margin-bottom: $spacing--large;
   margin-left: auto;
   overflow-wrap: break-word;
-  @include inuit-font-size(16px, 28px);
+  @include font-size(16px, 28px);
   position: relative;
 
+  p {
+    @include chinese() {
+      @include font-size(18px, 28px);
+    }
+  }
+
+  @include contentList() {
+    @include chinese() {
+      @include font-size(18px, 28px);
+    }
+  }
+
+  @include chinese() {
+    @include contentList() {
+      @include font-size(18px, 28px);
+    }
+
+    p {
+      @include font-size(18px, 28px);
+    }
+  }
+
   @include mq(tablet) {
-    @include inuit-font-size(18px, 32px);
+    @include font-size(18px, 32px);
+
+    p {
+      @include chinese() {
+        @include font-size(20px, 32px);
+      }
+    }
+
+    @include contentList() {
+      @include chinese() {
+        @include font-size(20px, 32px);
+      }
+    }
+
+    @include chinese() {
+      @include contentList() {
+        @include font-size(20px, 32px);
+      }
+      p {
+        @include font-size(20px, 32px);
+      }
+    }
+
     padding: 0 $spacing $spacing--large;
     margin-top: -$spacing*6;
     padding-top: $spacing--large + $spacing;

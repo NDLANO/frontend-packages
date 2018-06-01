@@ -25,7 +25,11 @@ const FrontpageHeader = ({
           <ul>
             {links.map(link => (
               <li key={link.url}>
-                <SafeLink to={link.url}>{link.text}</SafeLink>
+                {link.url ? (
+                  <SafeLink to={link.url}>{link.text}</SafeLink>
+                ) : (
+                  <a href={link.href}>{link.text}</a>
+                )}
               </li>
             ))}
           </ul>
@@ -64,7 +68,8 @@ FrontpageHeader.propTypes = {
   }).isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      href: PropTypes.string,
       text: PropTypes.string.isRequired,
     }),
   ).isRequired,

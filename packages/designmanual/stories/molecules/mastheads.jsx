@@ -76,14 +76,19 @@ class MastheadWithTopicMenu extends Component {
         <ToggleSearchButton
           isOpen={this.state.searchIsOpen}
           onToggle={isOpen => {
-            this.setState({
+            const newState = {
               searchIsOpen: isOpen,
-            });
+            };
+
+            if (!isOpen) {
+              newState.value = '';
+            }
+            this.setState(newState);
           }}
           searchPageUrl="#"
           messages={{ buttonText: 'Søk' }}>
-          {onClose => (
-            <SearchOverlay close={onClose}>
+          {(onClose, isOpen) => (
+            <SearchOverlay close={onClose} isOpen={isOpen}>
               <SearchField
                 placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
                 value={this.state.value}

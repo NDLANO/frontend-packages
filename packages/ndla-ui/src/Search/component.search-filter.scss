@@ -4,13 +4,15 @@
   text-align: left;
 
   &--narrow-screen-only {
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
   }
 
-  @include mq(tablet) {
+  @include mq(desktop) {
+    border: none;
     margin-bottom: $spacing--small;
+    border: 1px solid $brand-grey--light;
   }
 
   &--context-filter {

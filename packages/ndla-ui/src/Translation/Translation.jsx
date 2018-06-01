@@ -18,7 +18,7 @@ const classes = new BEMHelper({
 const Translation = ({ children, index }) => (
   <div {...classes('')}>
     <div {...classes('index')}>{index}</div>
-    <div {...classes('wrapper')}>{children}</div>
+    <dl {...classes('wrapper')}>{children}</dl>
   </div>
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
-
+import { Translation, TranslationLine } from 'ndla-ui';
 import Table from './molecules/TableExample';
 
 const heading = (articleHTML, level) => {

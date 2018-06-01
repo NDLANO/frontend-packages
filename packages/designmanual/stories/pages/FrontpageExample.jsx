@@ -108,7 +108,7 @@ class FrontpageExample extends Component {
                 {
                   url: '#9',
                   text: 'Norsk',
-                  yearInfo: 'YF ogh SF',
+                  yearInfo: 'YF og SF',
                 },
                 {
                   url: '#10',

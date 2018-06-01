@@ -12,6 +12,7 @@ const classes = BEMHelper('c-frontpage-header');
 const FrontpageHeader = ({
   searchFieldValue,
   onSearchFieldChange,
+  onSearch,
   searchFieldPlaceholder,
   links,
   messages,
@@ -50,6 +51,7 @@ const FrontpageHeader = ({
             onChange={onSearchFieldChange}
             placeholder={searchFieldPlaceholder}
             messages={messages}
+            onSearch={onSearch}
           />
         </div>
       </OneColumn>
@@ -61,6 +63,7 @@ FrontpageHeader.propTypes = {
   heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   searchFieldPlaceholder: PropTypes.string.isRequired,
   messages: PropTypes.shape({
     searchFieldTitle: PropTypes.string.isRequired,

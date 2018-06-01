@@ -17,6 +17,7 @@ import {
   AssessmentResourcesHero,
   ExternalLearningResourcesHero,
   SourceMaterialHero,
+  Hero,
   SubjectBadge,
   ErrorMessage,
   OneColumn,
@@ -32,10 +33,11 @@ import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
+import ArticleSimple from './ArticleSimple';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import Breadcrumb from '../molecules/breadcrumbs';
+import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 
 import NotExist from '../images/not-exist.gif';
@@ -107,6 +109,24 @@ storiesOf('Sidevisninger', module)
           </OneColumn>
         </SubjectMaterialHero>
         <ArticleLoader closeButton />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Forenklet artikkelmal', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <BreadcrumbSimpleArticle />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
+        <ArticleSimple />
       </Content>
       <FooterExample />
     </PageContainer>

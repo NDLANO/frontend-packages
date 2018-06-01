@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -17,8 +17,6 @@ import {
   LicenseByline,
   Image,
   AudioPlayer,
-  Translation,
-  TranslationLine,
   OneColumn,
 } from 'ndla-ui';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
@@ -27,6 +25,51 @@ import LicenseExample from './article/LicenseExample';
 import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
+
+const floatVideo = left => (
+  <Fragment>
+    <h2 className="u-heading">{`Eksempel ${
+      !left ? 'høyrestilt' : 'venstrestilt'
+    }`}</h2>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher,
+      blir idéen og historien i den filmen du planlegger å lage, tydeligere for
+      både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+
+    <FigureWithLicense
+      type={left ? 'left' : 'right'}
+      resizeIframe
+      isEmbed
+      caption="Utholdenhet - animasjon av oksygentransporten"
+      reuseLabel="videoen">
+      <iframe
+        title="Video: Utholdenhet - animasjon av oksygentransporten"
+        height="270"
+        width="480"
+        frameBorder="0"
+        src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+        allowFullScreen
+      />
+    </FigureWithLicense>
+
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher,
+      blir idéen og historien i den filmen du planlegger å lage, tydeligere for
+      både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher,
+      blir idéen og historien i den filmen du planlegger å lage, tydeligere for
+      både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+    <p>
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher,
+      blir idéen og historien i den filmen du planlegger å lage, tydeligere for
+      både deg selv og dem du eventuelt jobber sammen med i klassen.
+    </p>
+  </Fragment>
+);
 
 storiesOf('Enkle komponenter', module)
   .add('Bilde', () => (
@@ -468,7 +511,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe runScripts noCaption>
+        <FigureWithLicense resizeIframe runScripts isEmbed noFigcaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Title"
@@ -483,7 +526,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe noCaption>
+        <FigureWithLicense resizeIframe isEmbed noFigcaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
@@ -495,6 +538,7 @@ storiesOf('Enkle komponenter', module)
         </h2>
         <FigureWithLicense
           resizeIframe
+          isEmbed
           caption="Utholdenhet - animasjon av oksygentransporten"
           reuseLabel="videoen">
           <iframe
@@ -506,7 +550,8 @@ storiesOf('Enkle komponenter', module)
             allowFullScreen
           />
         </FigureWithLicense>
-
+        {floatVideo(true)}
+        {floatVideo(false)}
         <h2 className="u-heading">Embedded innhold med høyrekolonne</h2>
         <Aside>
           <h1>Høyrespalte</h1>
@@ -530,7 +575,12 @@ storiesOf('Enkle komponenter', module)
           Denne varianten skal kun brukes om det er nødvendig. Visningen fases
           bort når høyrespalte fases bort.
         </p>
-        <FigureWithLicense resizeIframe noCaption type="full-column">
+        <FigureWithLicense
+          resizeIframe
+          noCaption
+          type="full-column"
+          isEmbed
+          reuseLabel="videoen">
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
@@ -854,40 +904,6 @@ storiesOf('Enkle komponenter', module)
           to="/"
           label="Nasjonal digital læringsarena"
         />
-      </StoryBody>
-    </div>
-  ))
-  .add('Oversettelse', () => (
-    <div>
-      <StoryIntro title="Oversettelse">
-        <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
-          derfor kan man i disse tilfellene heller bruke en oversettelse-liste.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <Translation index={1}>
-          <TranslationLine lang="cn" langName="Kinesisk">
-            你叫什么名字？//你叫什麼名字？
-          </TranslationLine>
-          <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ jiào shénme míngzi?
-          </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">
-            Hva heter du?
-          </TranslationLine>
-        </Translation>
-        <Translation index={2}>
-          <TranslationLine lang="cn" langName="Kinesisk">
-            你是学生。//你是學生。
-          </TranslationLine>
-          <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ shì xuésheng.
-          </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">
-            Du er student.
-          </TranslationLine>
-        </Translation>
       </StoryBody>
     </div>
   ));

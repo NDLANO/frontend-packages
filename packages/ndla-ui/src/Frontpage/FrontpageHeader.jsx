@@ -24,7 +24,7 @@ const FrontpageHeader = ({
         <nav {...classes('navigation')}>
           <ul>
             {links.map(link => (
-              <li key={link.url}>
+              <li key={link.url || link.href}>
                 {link.url ? (
                   <SafeLink to={link.url}>{link.text}</SafeLink>
                 ) : (

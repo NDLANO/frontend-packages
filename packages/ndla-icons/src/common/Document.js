@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Document = props => (
   <Icon
+    title="Document"
     viewBox="0 0 78 77"
     data-license="CC-BY 4.0"
     data-source="Netlife"

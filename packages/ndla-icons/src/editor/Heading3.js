@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Heading3 = props => (
   <Icon
+    title="Heading3"
     viewBox="0 0 20.2 13.4"
     data-license="CC-BY 4.0"
     data-source="Knowit"

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Time = props => (
   <Icon
+    title="Time"
     viewBox="0 0 48 48"
     data-license="Apache License 2.0"
     data-source="Material Design"

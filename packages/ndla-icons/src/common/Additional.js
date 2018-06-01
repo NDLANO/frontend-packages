@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Additional = props => (
   <Icon
+    title="Additional"
     viewBox="0 0 23 23"
     data-license="CC-BY 4.0"
     data-source="Keyteq"

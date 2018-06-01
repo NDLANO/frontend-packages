@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Download = props => (
   <Icon
+    title="Download"
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"

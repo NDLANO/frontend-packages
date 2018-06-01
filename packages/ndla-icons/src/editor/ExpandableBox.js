@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const ExpandableBox = props => (
   <Icon
+    title="ExpandableBox"
     viewBox="0 0 23 29"
     data-license="CC-BY 4.0"
     data-source="Knowit"

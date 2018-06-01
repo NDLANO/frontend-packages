@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Table = props => (
   <Icon
+    title="Table"
     viewBox="0 0 32 32"
     data-license="CC-BY 4.0"
     data-source="Icomoon"

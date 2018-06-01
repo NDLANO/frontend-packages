@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const SearchLinks = props => (
   <Icon
+    title="SearchLinks"
     viewBox="0 0 45.1 39.5"
     data-license="CC-BY 4.0"
     data-source="Knowit"

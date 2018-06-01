@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const SquareAudio = props => (
   <Icon
+    title="SquareAudio"
     viewBox="0 0 60 46"
     data-license="CC-BY 4.0"
     data-source="Knowit"

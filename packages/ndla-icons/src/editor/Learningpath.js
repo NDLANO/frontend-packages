@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Learningpath = props => (
   <Icon
+    title="Learningpath"
     viewBox="0 0 59.8 50.8"
     data-license="CC-BY 4.0"
     data-source="Knowit"

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Copy = props => (
   <Icon
+    title="Copy"
     viewBox="0 0 50 50"
     data-license="CC-BY 4.0"
     data-source="Netlife"

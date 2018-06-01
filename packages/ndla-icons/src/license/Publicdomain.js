@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Publicdomain = props => (
   <Icon
+    title="Publicdomain"
     viewBox="0 0 384 384.017"
     data-license="CC-BY 4.0"
     data-source="Creative Commons"

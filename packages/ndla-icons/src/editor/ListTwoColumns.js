@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const ListTwoColumns = props => (
   <Icon
+    title="ListTwoColumns"
     viewBox="0 0 48 48"
     data-license="CC-BY 4.0"
     data-source="Knowit"

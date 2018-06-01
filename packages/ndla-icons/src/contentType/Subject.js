@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Subject = props => (
   <Icon
+    title="Subject"
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"

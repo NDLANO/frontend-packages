@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Taxonomy = props => (
   <Icon
+    title="Taxonomy"
     viewBox="0 0 60 44"
     data-license="CC-BY 4.0"
     data-source="Knowit"

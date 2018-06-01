@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const EmailOutline = props => (
   <Icon
+    title="EmailOutline"
     viewBox="0 0 24 24"
     data-license="SIL Open Font License 1.1"
     data-source="Material Community Icons"

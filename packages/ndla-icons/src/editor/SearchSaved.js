@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const SearchSaved = props => (
   <Icon
+    title="SearchSaved"
     viewBox="0 0 58 40.7"
     data-license="CC-BY 4.0"
     data-source="Knowit"

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Agreement = props => (
   <Icon
+    title="Agreement"
     viewBox="0 0 52 44"
     data-license="CC-BY 4.0"
     data-source="Knowit"

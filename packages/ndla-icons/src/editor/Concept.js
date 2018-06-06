@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Concept = props => (
   <Icon
+    title="Concept"
     viewBox="0 0 47 54.9"
     data-license="CC-BY 4.0"
     data-source="Knowit"

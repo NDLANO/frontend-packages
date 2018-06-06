@@ -37,6 +37,18 @@ export const BreadcrumbDefault = ({ onlySubject = false }) => (
   <Breadcrumb items={onlySubject ? items.slice(0, 2) : items} />
 );
 
+export const BreadcrumbSimpleArticle = () => (
+  <Breadcrumb
+    items={[
+      ...items.slice(0, 2),
+      {
+        name: 'Artikkel',
+        to: '#',
+      },
+    ]}
+  />
+);
+
 BreadcrumbDefault.propTypes = {
   onlySubject: PropTypes.bool,
 };

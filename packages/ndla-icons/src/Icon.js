@@ -6,13 +6,14 @@ const IconBase = ({
   color,
   size,
   style,
+  title,
+  description,
   width,
   height,
   className,
   ...props
 }) => {
   const computedSize = size || '1em';
-
   const classes = className ? `c-icon ${className}` : 'c-icon';
   return (
     <svg
@@ -27,6 +28,8 @@ const IconBase = ({
         color,
         ...style,
       }}>
+      {title && <title>{title}</title>}
+      {description && <desc>{description}</desc>}
       {children}
     </svg>
   );
@@ -34,6 +37,8 @@ const IconBase = ({
 
 IconBase.propTypes = {
   color: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

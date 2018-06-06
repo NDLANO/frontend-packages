@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const TextInBox = props => (
   <Icon
+    title="TextInBox"
     viewBox="0 0 29 32"
     data-license="CC-BY 4.0"
     data-source="Knowit"

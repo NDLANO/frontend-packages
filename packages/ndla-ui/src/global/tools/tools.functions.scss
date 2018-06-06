@@ -17,3 +17,12 @@
   outline: 1px dotted #212121;
   outline: -webkit-focus-ring-color auto 5px;
 }
+
+@mixin chinese() {
+  &[lang='zh-Hans'],
+  [lang='zh-Hans'],
+  &[lang='zh-Hant'],
+  [lang='zh-Hant'] {
+    @content;
+  }
+}

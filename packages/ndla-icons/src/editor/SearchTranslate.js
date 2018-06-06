@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const SearchTranslate = props => (
   <Icon
+    title="SearchTranslate"
     viewBox="0 0 58.5 41"
     data-license="CC-BY 4.0"
     data-source="Knowit"

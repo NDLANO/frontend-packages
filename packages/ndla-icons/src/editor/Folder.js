@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Folder = props => (
   <Icon
+    title="Folder"
     viewBox="0 0 14 11"
     data-license="CC-BY 4.0"
     data-source="Knowit"

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const LastUsed = props => (
   <Icon
+    title="LastUsed"
     viewBox="0 0 25.3 24"
     data-license="CC-BY 4.0"
     data-source="Knowit"

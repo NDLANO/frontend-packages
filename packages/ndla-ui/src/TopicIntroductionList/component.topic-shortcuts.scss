@@ -24,6 +24,7 @@
     align-items: center;
     padding: 0;
     cursor: pointer;
+    margin-right: $spacing--small / 2;
   }
 
   &__label {
@@ -51,14 +52,20 @@
     border-right: 1px solid $brand-grey--light;
     padding: 0 $spacing--small 0 $spacing--small;
     position: relative;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
   }
 
   &__count {
     color: $brand-color--secondary;
-    font-weight: 600;
     margin-left: $spacing--small / 2;
-    padding: 0 $spacing--small/3;
-    box-shadow: $link;
+    @include font-size(16px, 16px);
   }
 
   &__item-link {
@@ -67,10 +74,10 @@
     align-items: center;
 
     &:hover,
-    &:active,
-    &:focus {
-      .c-topic-shortcuts__item-link {
-        box-shadow: $link;
+    &:focus,
+    &:active {
+      .c-content-type-badge {
+        border-width: 1px;
       }
     }
   }
@@ -78,7 +85,7 @@
   &__tooltip {
     display: block;
     position: absolute;
-    top: -2.25em;
+    top: -2.5em;
     left: -1em;
     width: 200px;
     line-height: 1rem;

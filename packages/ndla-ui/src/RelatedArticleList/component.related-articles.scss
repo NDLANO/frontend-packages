@@ -65,10 +65,14 @@
   }
 
   &__title {
-    @include inuit-font-size(18px);
+    @include font-size(18px);
     margin: 0 0 $spacing--small 0;
     font-weight: $font-weight-semibold;
     display: flex;
+
+    @include chinese() {
+      @include font-size(20px);
+    }
 
     .c-content-type-badge {
       flex-shrink: 0;
@@ -77,7 +81,18 @@
   }
 
   &__description {
-    @include inuit-font-size(16px);
+    @include font-size(16px);
+
+    @include chinese() {
+      @include font-size(18px);
+    }
+
+    span {
+      @include chinese() {
+        @include font-size(18px);
+      }
+    }
+
     margin: 0;
     font-family: $font;
   }

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const SearchMedia = props => (
   <Icon
+    title="SearchMedia"
     viewBox="0 0 52 40"
     data-license="CC-BY 4.0"
     data-source="Knowit"

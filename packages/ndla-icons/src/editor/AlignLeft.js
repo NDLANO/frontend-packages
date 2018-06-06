@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const AlignLeft = props => (
   <Icon
+    title="AlignLeft"
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"

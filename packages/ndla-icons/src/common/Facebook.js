@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Facebook = props => (
   <Icon
+    title="Facebook"
     viewBox="0 0 24 24"
     data-license="SIL Open Font License 1.1"
     data-source="Material Community Icons"

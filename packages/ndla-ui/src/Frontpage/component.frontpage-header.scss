@@ -19,9 +19,9 @@
 .c-frontpage-header {
   height: 150px;
   background: linear-gradient(45deg, #153758 0%, $brand-color 49%, #217389 85%);
-  background-size: 150% 200%;
+  background-size: 180% 300%;
 
-  animation: aurora 15s infinite;
+  animation: aurora 10s infinite;
   position: relative;
 
   @include mq(tablet) {

@@ -30,6 +30,16 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
                 {link.icon}
               </SafeLink>
             );
+          } else if (link.href) {
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                {...classes('icon-link')}
+                aria-label={link.name}>
+                {link.icon}
+              </a>
+            );
           }
           return (
             <span
@@ -40,9 +50,15 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
             </span>
           );
         })}
-      <SafeLink {...classes('main-link')} to={mainLink.url}>
-        <span>{mainLink.name}</span> <Forward />
-      </SafeLink>
+      {mainLink.url ? (
+        <SafeLink {...classes('main-link')} to={mainLink.url}>
+          <span>{mainLink.name}</span> <Forward />
+        </SafeLink>
+      ) : (
+        <a {...classes('main-link')} href={mainLink.href}>
+          {mainLink.name}
+        </a>
+      )}
     </div>
   </section>
 );
@@ -52,12 +68,14 @@ InfoWidget.propTypes = {
   description: PropTypes.string.isRequired,
   mainLink: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
+    href: PropTypes.string,
   }).isRequired,
   iconLinks: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       url: PropTypes.string,
+      href: PropTypes.string,
       icon: PropTypes.node.isRequired,
     }),
   ),

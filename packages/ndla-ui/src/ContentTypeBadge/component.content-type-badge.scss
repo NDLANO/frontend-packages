@@ -133,8 +133,8 @@
 
     &.c-content-type-badge--x-small {
       svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -158,28 +158,23 @@
   }
 
   &--x-small {
-    border: 0;
-
     width: 20px;
     height: 20px;
+    border-width: 0;
 
     @include mq(tablet) {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
     }
 
     svg {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
 
       @include mq(tablet) {
-        width: 15px;
-        height: 15px;
+        width: 12px;
+        height: 12px;
       }
-    }
-
-    &.c-content-type-badge--background {
-      background: none;
     }
   }
 }

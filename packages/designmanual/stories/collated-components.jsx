@@ -15,6 +15,8 @@ import {
   Content,
   LayoutItem,
   Image,
+  Translation,
+  TranslationLine,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -34,6 +36,9 @@ import RelatedArticleListExample, {
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
 import FileListExample from './molecules/FileListExample';
+import TranslationBoxExample from './organisms/TranslationBoxExample';
+
+import Oops from './images/oops.gif';
 
 const toggle = () => {
   document
@@ -79,6 +84,7 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <TopicIntroductionList
+          shortcutAlwaysExpanded
           toTopic={() => '#'}
           messages={{
             shortcutButtonText: 'Lærestoff',
@@ -449,16 +455,56 @@ storiesOf('Sammensatte moduler', module)
           ved 404- eller 503-feil.
         </p>
       </StoryIntro>
+      <ErrorMessage
+        illustration={{
+          url: Oops,
+          altText: 'Systemfeil',
+        }}
+        messages={{
+          title: 'Oisann, her gikk noe galt',
+          description: 'En kort beskrivelse av feilen som oppsto.',
+          linksTitle: 'Kom igang:',
+          back: 'Gå tilbake',
+          goToFrontPage: 'Gå til forsiden',
+        }}
+      />
+    </div>
+  ))
+
+  .add('Oversettelse', () => (
+    <div>
+      <StoryIntro title="Oversettelse">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
+          derfor kan man i disse tilfellene heller bruke en oversettelse-liste.
+        </p>
+      </StoryIntro>
       <StoryBody>
-        <ErrorMessage
-          messages={{
-            title: 'Oisann, her gikk noe galt',
-            description: 'En kort beskrivelse av feilen som oppsto.',
-            linksTitle: 'Kom igang:',
-            back: 'Gå tilbake',
-            goToFrontPage: 'Gå til forsiden',
-          }}
-        />
+        <h2 className="u-heading">Oversettelseliste</h2>
+        <Translation index={1}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你叫什么名字？//你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你是学生。//你是學生。
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Du er student.
+          </TranslationLine>
+        </Translation>
+        <h2 className="u-heading">Språkvelger</h2>
+        <TranslationBoxExample />
       </StoryBody>
     </div>
   ));

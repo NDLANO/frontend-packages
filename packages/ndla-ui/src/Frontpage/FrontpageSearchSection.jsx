@@ -9,6 +9,7 @@ const FrontpageSearchSection = ({
   heading,
   searchFieldValue,
   onSearchFieldChange,
+  onSearch,
 }) => (
   <section {...classes()}>
     <h1 {...classes('heading')}>{heading}</h1>
@@ -19,12 +20,14 @@ const FrontpageSearchSection = ({
       messages={{
         searchFieldTitle: 'Søk',
       }}
+      onSearch={onSearch}
       resourceToLinkProps={() => {}}
     />
   </section>
 );
 
 FrontpageSearchSection.propTypes = {
+  onSearch: PropTypes.func.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   heading: PropTypes.string.isRequired,

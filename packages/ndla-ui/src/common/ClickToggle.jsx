@@ -124,6 +124,7 @@ export default class ClickToggleWithDialog extends React.Component {
       dialogModifier,
       isOpen,
       useDialog,
+      children,
       ...rest
     } = this.props;
     const showDialog = isOpen === null ? this.state.isOpen : isOpen;
@@ -151,10 +152,10 @@ export default class ClickToggleWithDialog extends React.Component {
               modifier={
                 showDialog ? ['active', dialogModifier] : dialogModifier
               }>
-              {this.props.children}
+              {children}
             </Dialog>
           )}
-          {!useDialog && isOpen && this.props.children(this.handleOnClose)}
+          {!useDialog && isOpen && children(this.handleOnClose)}
         </div>
       </Component>
     );

@@ -34,6 +34,10 @@
   color: $brand-color--dark;
   align-items: center;
 
+  &:visited {
+    color: $link-visited;
+  }
+
   h1 span {
     box-shadow: $link;
   }
@@ -69,8 +73,16 @@
   display: inline;
   @include font-size(18px);
 
+  @include chinese() {
+    @include font-size(20px);
+  }
+
   @include mq(tablet) {
     @include font-size(20px);
+
+    @include chinese() {
+      @include font-size(22px);
+    }
   }
 }
 

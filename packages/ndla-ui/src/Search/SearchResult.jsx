@@ -4,7 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import { ChevronRight, Additional } from 'ndla-icons/common';
 import { uuid } from 'ndla-util';
 
-import { FilterTabs } from '../Filter';
+import { FilterTabs } from 'ndla-tabs';
 import SafeLink from '../common/SafeLink';
 
 const resultClasses = BEMHelper('c-search-result');

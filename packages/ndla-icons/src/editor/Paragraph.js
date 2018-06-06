@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Paragraph = props => (
   <Icon
+    title="Paragraph"
     viewBox="0 0 27 4"
     data-license="CC-BY 4.0"
     data-source="Knowit"

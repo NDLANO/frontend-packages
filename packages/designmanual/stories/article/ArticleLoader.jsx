@@ -30,6 +30,7 @@ const ResourcesSubTopics = () => (
   <ResourcesWrapper>
     <ResourcesTitle>Emner</ResourcesTitle>
     <TopicIntroductionList
+      shortcutAlwaysExpanded
       toTopic={() => '#'}
       topics={topicList}
       messages={{

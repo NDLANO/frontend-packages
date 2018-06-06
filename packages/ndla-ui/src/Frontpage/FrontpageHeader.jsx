@@ -12,6 +12,7 @@ const classes = BEMHelper('c-frontpage-header');
 const FrontpageHeader = ({
   searchFieldValue,
   onSearchFieldChange,
+  onSearch,
   searchFieldPlaceholder,
   links,
   messages,
@@ -24,8 +25,12 @@ const FrontpageHeader = ({
         <nav {...classes('navigation')}>
           <ul>
             {links.map(link => (
-              <li key={link.url}>
-                <SafeLink to={link.url}>{link.text}</SafeLink>
+              <li key={link.url || link.href}>
+                {link.url ? (
+                  <SafeLink to={link.url}>{link.text}</SafeLink>
+                ) : (
+                  <a href={link.href}>{link.text}</a>
+                )}
               </li>
             ))}
           </ul>
@@ -46,6 +51,7 @@ const FrontpageHeader = ({
             onChange={onSearchFieldChange}
             placeholder={searchFieldPlaceholder}
             messages={messages}
+            onSearch={onSearch}
           />
         </div>
       </OneColumn>
@@ -57,6 +63,7 @@ FrontpageHeader.propTypes = {
   heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   searchFieldPlaceholder: PropTypes.string.isRequired,
   messages: PropTypes.shape({
     searchFieldTitle: PropTypes.string.isRequired,
@@ -64,7 +71,8 @@ FrontpageHeader.propTypes = {
   }).isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      href: PropTypes.string,
       text: PropTypes.string.isRequired,
     }),
   ).isRequired,

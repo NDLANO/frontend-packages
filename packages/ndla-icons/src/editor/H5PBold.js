@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const H5PBold = props => (
   <Icon
+    title="H5PBold"
     viewBox="0 0 82 37"
     data-license="CC-BY 4.0"
     data-source="Knowit"

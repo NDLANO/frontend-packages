@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Crop = props => (
   <Icon
+    title="Crop"
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"

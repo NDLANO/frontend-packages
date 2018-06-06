@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Copyright = props => (
   <Icon
+    title="Copyright"
     viewBox="0 0 64 64"
     data-license="CC-BY 4.0"
     data-source="Creative Commons"

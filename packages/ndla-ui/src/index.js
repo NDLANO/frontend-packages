@@ -142,8 +142,7 @@ export {
 export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
 
 export { default as Image } from './Image';
-export { default as Translation } from './Translation/Translation';
-export { default as TranslationLine } from './Translation/TranslationLine';
+export { Translation, TranslationLine, TranslationBox } from './Translation';
 
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as ContentLoader } from './ContentLoader';

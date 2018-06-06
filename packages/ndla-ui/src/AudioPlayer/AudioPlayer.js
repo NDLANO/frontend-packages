@@ -24,7 +24,7 @@ const AudioPlayer = ({ type, src, title, typeLabel, speech }) => {
       <section {...classes('', 'speech')}>
         <audio type={type} src={src} title={title} preload="metadata" />
         <button {...classes('play')}>
-          <VolumeUp />
+          <VolumeUp role="img" aria-label="play" title="play" />
         </button>
       </section>
     );
@@ -38,10 +38,10 @@ const AudioPlayer = ({ type, src, title, typeLabel, speech }) => {
       <div {...classes('controls')}>
         <button {...classes('play')}>
           <span {...classes('play-icon')}>
-            <Play />
+            <Play role="img" aria-label="play" title="play" />
           </span>
           <span {...classes('pause-icon')}>
-            <Pause />
+            <Pause role="img" aria-label="pause" title="play" />
           </span>
         </button>
         <div {...classes('time')}>0:00</div>

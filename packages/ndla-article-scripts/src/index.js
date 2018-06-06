@@ -42,6 +42,8 @@ import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 
 import { toggleRelatedArticles } from './relatedArticlesToggle';
 
+import { initArticleTabs } from './articleTabScripts';
+
 export {
   forEachElement,
   findAncestorByClass,
@@ -63,6 +65,7 @@ export const initArticleScripts = () => {
   toggleRelatedArticles();
   initTableScript();
   addFilelistTooltipListners();
+  initArticleTabs();
 };
 
 export {
@@ -85,4 +88,5 @@ export {
   toggleLicenseInfoBox,
   toggleRelatedArticles,
   addFilelistTooltipListners,
+  initArticleTabs,
 };

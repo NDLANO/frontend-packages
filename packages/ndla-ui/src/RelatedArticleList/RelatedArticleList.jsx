@@ -97,7 +97,7 @@ const RelatedArticleList = ({
 };
 
 RelatedArticleList.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
   dangerouslySetInnerHTML: PropTypes.shape({
     __html: PropTypes.string.isRequired,

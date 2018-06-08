@@ -19,6 +19,7 @@ import {
   addEventListenerForResize,
   removeEventListenerForResize,
   toggleLicenseInfoBox,
+  addZoomImageListeners,
 } from './figureScripts';
 
 import {
@@ -64,6 +65,7 @@ export const initArticleScripts = () => {
   addFootnoteClickListeners();
   toggleRelatedArticles();
   initTableScript();
+  addZoomImageListeners();
   addFilelistTooltipListners();
   initArticleTabs();
 };
@@ -87,6 +89,7 @@ export {
   addFootnoteClickListeners,
   toggleLicenseInfoBox,
   toggleRelatedArticles,
+  addZoomImageListeners,
   addFilelistTooltipListners,
   initArticleTabs,
 };

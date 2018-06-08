@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import { uuid } from 'ndla-util';
@@ -15,6 +15,7 @@ import {
   addEventListenerForResize,
   updateIFrameDimensions,
   toggleLicenseInfoBox,
+  addZoomImageListeners,
 } from 'ndla-article-scripts';
 
 import {
@@ -40,6 +41,7 @@ class FigureWithLicense extends Component {
       updateIFrameDimensions();
       addEventListenerForResize();
       toggleLicenseInfoBox();
+      addZoomImageListeners();
     }
   }
 
@@ -55,6 +57,7 @@ class FigureWithLicense extends Component {
         'Personen(e) på bildet har godkjent at det kan brukes videre.',
       source: 'Kilde',
       title: 'Tittel',
+      zoomImageButtonLabel: 'Forstørr bilde',
     };
 
     const caption = this.props.caption ? this.props.caption : ``;
@@ -69,42 +72,45 @@ class FigureWithLicense extends Component {
         id={figureId}
         resizeIframe={resizeIframe}
         type={type}
-        noFigcaption={this.props.noFigcaption && !this.props.isEmbed}>
-        {!this.props.isEmbed // Probably image
-          ? [
-              <Button
-                key="button"
-                data-dialog-trigger-id={`fs-${this.id}`}
-                data-dialog-source-id={figureId}
-                stripped
-                className="u-fullw">
-                {this.props.children}
-              </Button>,
-              <FigureFullscreenDialog
-                key="dialog"
-                id={`fs-${this.id}`}
-                messages={messages}
-                title="Mann med lupe"
-                caption={caption}
-                reuseLabel={reuseLabel}
-                license={license}
-                actionButtons={[
-                  <Button key="copy" outline>
-                    Kopier referanse
-                  </Button>,
-                  <Button key="download" outline>
-                    {`Last ned ${this.props.reuseLabel || 'bildet'}`}
-                  </Button>,
-                ]}
-                authors={authors}>
-                <img
-                  className="c-figure-license__img"
-                  src={this.props.children.props.src}
-                  alt={this.props.children.props.alt}
-                />
-              </FigureFullscreenDialog>,
-            ]
-          : this.props.children}
+        noFigcaption={this.props.noFigcaption}>
+        {!resizeIframe ? ( // Probably image
+          <Fragment>
+            <Button
+              key="button"
+              data-dialog-trigger-id={`fs-${this.id}`}
+              data-dialog-source-id={figureId}
+              stripped
+              aria-label="Se stor utgave av bilde"
+              className="u-fullw">
+              {this.props.children}
+            </Button>
+            <FigureFullscreenDialog
+              key="dialog"
+              id={`fs-${this.id}`}
+              messages={messages}
+              title="Mann med lupe"
+              caption={caption}
+              reuseLabel={reuseLabel}
+              license={license}
+              actionButtons={[
+                <Button key="copy" outline>
+                  Kopier referanse
+                </Button>,
+                <Button key="download" outline>
+                  Last ned bilde
+                </Button>,
+              ]}
+              authors={authors}>
+              <img
+                className="c-figure-license__img"
+                src={this.props.children.props.src}
+                alt={this.props.children.props.alt}
+              />
+            </FigureFullscreenDialog>
+          </Fragment>
+        ) : (
+          this.props.children
+        )}
 
         {!this.props.noFigcaption ? (
           <FigureCaption
@@ -114,16 +120,12 @@ class FigureWithLicense extends Component {
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
-            link={
-              !this.props.isEmbed
-                ? {
-                    text: 'Lage kortfilm',
-                    url: '#1',
-                    description: '(Lenken tar deg til et annet nettsted)',
-                    external: true,
-                  }
-                : null
-            }
+            link={{
+              text: 'Lage kortfilm',
+              url: '#1',
+              description: '(Lenken tar deg til et annet nettsted)',
+              external: true,
+            }}
             authors={authors}>
             <FigureLicenseDialog
               id={this.id}
@@ -134,8 +136,7 @@ class FigureWithLicense extends Component {
               title="Mann med lupe"
               messages={messages}>
               <Button outline>Kopier referanse</Button>
-              <Button outline>{`Last ned ${this.props.reuseLabel ||
-                'bildet'}`}</Button>
+              <Button outline>Last ned bilde</Button>
             </FigureLicenseDialog>
           </FigureCaption>
         ) : null}
@@ -149,7 +150,7 @@ FigureWithLicense.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
   runScripts: PropTypes.bool,
-  isEmbed: PropTypes.bool,
+  noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
   noFigcaption: PropTypes.bool,
   type: PropTypes.oneOf([
@@ -166,8 +167,8 @@ FigureWithLicense.propTypes = {
 
 FigureWithLicense.defaultProps = {
   runScripts: false,
+  noCaption: false,
   noFigcaption: false,
-  isEmbed: false,
 };
 
 export default FigureWithLicense;

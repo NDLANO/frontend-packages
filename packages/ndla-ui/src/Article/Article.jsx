@@ -111,11 +111,11 @@ export const Article = ({
   compentenceGoals,
   compentenceGoalsNarrow,
 }) => {
-  const license = getLicenseByAbbreviation(licenseObj.license);
+  const license = getLicenseByAbbreviation(licenseObj.license).abbreviation;
+  const showCreators = Array.isArray(creators) && creators.length > 0;
   const authors =
-    Array.isArray(creators) && creators.length > 0 ? creators : rightsholders;
+    showCreators ? creators : rightsholders;
 
-  console.log('authors', authors);
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
@@ -126,7 +126,7 @@ export const Article = ({
           </ArticleTitle>
           <ArticleIntroduction>{introduction}</ArticleIntroduction>
           <ArticleByline
-            {...{ messages, authors, updated, license, additional, licenseBox }}
+            {...{ messages, authors, updated, license, additional, licenseBox, authorsLinkable: showCreators }}
           />
           {compentenceGoalsNarrow}
         </ArticleHeaderWrapper>

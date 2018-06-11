@@ -6,13 +6,12 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Time, User } from 'ndla-icons/common';
+import { Time, User, Additional } from 'ndla-icons/common';
 import ClickToggle from '../common/ClickToggle';
 import ArticleAuthorContent from './ArticleAuthorContent';
-import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
   name: 'article-byline',
@@ -30,22 +29,24 @@ class ArticleByline extends Component {
   }
   onSelectAuthor(showAuthor = null) {
     this.setState({
-      showAuthor: showAuthor,
+      showAuthor,
     });
   }
   render() {
     const {
       authors,
+      authorsLinkable,
       license,
       licenseBox,
       messages,
       updated,
       additional,
-      dialogLabelledBy,
       children,
+      id,
     } = this.props;
 
     const { showAuthor, showAuthors } = this.state;
+    const authorLabelledBy = `author-labelled-by_${id}`;
 
     return (
       <div {...classes()}>
@@ -55,16 +56,17 @@ class ArticleByline extends Component {
               <User />
             </span>
             <span {...classes('authors')}>
-              <ClickToggle
+              {authorsLinkable ? <ClickToggle
                 useDialog
-                labelledby="author-labelled-by"
+                id={`dialog-authors-${id}`}
+                labelledby={authorLabelledBy}
                 isOpen={showAuthors}
                 renderAsLink
                 disablePortal
                 buttonClassName={classes('toggle-authors').className}
-                onToggle={showAuthors => {
+                onToggle={(showAuthorsDialog) => {
                   this.setState({
-                    showAuthors,
+                    showAuthors: showAuthorsDialog,
                     showAuthor: null,
                   });
                 }}
@@ -76,9 +78,10 @@ class ArticleByline extends Component {
                   showAuthor={showAuthor}
                   authors={authors}
                   onSelectAuthor={this.onSelectAuthor}
+                  labelledBy={authorLabelledBy}
                 />
-              </ClickToggle>
-              ({license.abbreviation})
+              </ClickToggle> : `${authors.map(author => author.name).join(', ')}`}
+              ({license})
             </span>
           </span>
         )}
@@ -92,7 +95,13 @@ class ArticleByline extends Component {
         </span>
         {additional && (
           <span {...classes('flex')}>
-            <span {...classes('additional')}>{additional}</span>
+            <span {...classes('additional')}>
+              <Additional
+                key="additional"
+                className="c-icon--20 u-margin-right-tiny"
+              />
+              Tilleggsstoff
+            </span>
           </span>
         )}
         <span {...classes('flex')}>
@@ -100,10 +109,10 @@ class ArticleByline extends Component {
             <ClickToggle
               useDialog
               id="useArticleId"
-              labelledby="article-license-box-heading-id"
+              labelledby={licenseBox.headingId}
               renderAsLink
               buttonClassName={classes('toggle-use-article').className}
-              dialogModifier={'large'}
+              dialogModifier="large"
               title="Bruk innhold"
               openTitle="Lukk boks">
               {licenseBox}
@@ -114,9 +123,10 @@ class ArticleByline extends Component {
       </div>
     );
   }
-}
+};
 
 ArticleByline.propTypes = {
+  id: PropTypes.string,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -128,13 +138,11 @@ ArticleByline.propTypes = {
       role: PropTypes.string,
       urlContributions: PropTypes.string,
       urlAuthor: PropTypes.string,
-      licenses: PropTypes.string,
     }),
-  ).isRequired,
+  ),
+  authorsLinkable: PropTypes.bool,
   updated: PropTypes.string.isRequired,
-  license: PropTypes.shape({
-    rights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
+  license: PropTypes.string.isRequired,
   licenseBox: PropTypes.node,
   messages: PropTypes.shape({
     lastUpdated: PropTypes.string.isRequired,
@@ -143,6 +151,11 @@ ArticleByline.propTypes = {
   }).isRequired,
   additional: PropTypes.node,
   children: PropTypes.node,
+};
+
+ArticleByline.defaultProps = {
+  id: 'article-line-id',
+  authorsLinkable: true,
 };
 
 export default ArticleByline;

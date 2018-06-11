@@ -15,7 +15,7 @@ import createFocusTrap from 'focus-trap';
 import Button from '../Button';
 import Dialog from '../Dialog';
 
-export default class ClickToggleWithDialog extends React.Component {
+export default class ClickToggle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,7 +119,6 @@ export default class ClickToggleWithDialog extends React.Component {
       containerClass: Component,
       renderAsLink,
       renderAsLightButton,
-      lighter,
       disablePortal,
       dialogModifier,
       isOpen,
@@ -162,35 +161,18 @@ export default class ClickToggleWithDialog extends React.Component {
   }
 }
 
-ClickToggleWithDialog.propTypes = {
+ClickToggle.propTypes = {
   id: (props, propName, componentName) => {
     if (typeof props[propName] !== 'string' && props[propName] !== undefined) {
-      console.warn(`<${componentName} /> id prop type must be a string`);
-      return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
-      );
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. Type must be a string.`);
     }
     if (
       typeof props.children !== 'function' &&
       typeof props[propName] !== 'string'
     ) {
-      console.warn(
-        `<${componentName} /> When children prop is a node, id prop is isRequired`,
-      );
-      return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
-      );
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. When children prop is a node, id prop is isRequired.`);
     }
+    return null;
   },
   labelledby: PropTypes.string,
   containerClass: elementType,
@@ -203,34 +185,15 @@ ClickToggleWithDialog.propTypes = {
   isOpen: PropTypes.bool,
   onToggle: (props, propName, componentName) => {
     if (typeof props[propName] !== 'function' && props[propName] !== null) {
-      console.warn(
-        `<${componentName} /> onToggle prop type must be a function`,
-      );
-      return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
-      );
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. Type must be a function.`);
     }
     if (
       typeof props.children === 'function' &&
       typeof props[propName] !== 'function'
     ) {
-      console.warn(
-        `<${componentName} /> When children prop is a function, onToggle prop is isRequired`,
-      );
-      return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
-      );
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. When children prop is a function, onToggle prop is isRequired.`);
     }
+    return null;
   },
   disablePortal: PropTypes.bool,
   renderAsLink: PropTypes.bool,
@@ -238,35 +201,16 @@ ClickToggleWithDialog.propTypes = {
   dialogModifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   useDialog: (props, propName, componentName) => {
     if (typeof props[propName] !== 'boolean') {
-      console.warn(
-        `<${componentName} /> useDialog prop type must be a boolean`,
-      );
-      return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
-      );
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. useDialog prop type must be a boolean.`);
     }
     if (typeof props.children === 'function' && props[propName]) {
-      console.warn(
-        `<${componentName} /> When children prop is a function, useDialog prop can not be true.`,
-      );
-      return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
-      );
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. When children prop is a function, useDialog prop can not be true.`);
     }
+    return null;
   },
 };
 
-ClickToggleWithDialog.defaultProps = {
+ClickToggle.defaultProps = {
   containerClass: 'div',
   renderAsLink: false,
   renderAsLightButton: false,

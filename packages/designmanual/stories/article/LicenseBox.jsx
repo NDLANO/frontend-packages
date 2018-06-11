@@ -455,4 +455,8 @@ export const LicenseBox = ({ headingId }) => (
   </div>
 );
 
+LicenseBox.propTypes = {
+  headingId: PropTypes.string.isRequired,
+};
+
 export default LicenseBox;

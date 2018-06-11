@@ -6,9 +6,11 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+
+import { Portrait } from 'ndla-ui';
 
 import SafeLink from '../common/SafeLink';
 
@@ -19,10 +21,10 @@ const classes = new BEMHelper({
 
 const ArticleAuthorContent = ({
   showAuthor,
-  showLicenseBox,
   authors,
-  messages,
+  messages: { authorLabel, authorDescription },
   onSelectAuthor,
+  labelledBy,
 }) => {
   if (
     (showAuthor === null || showAuthor === undefined) &&
@@ -31,13 +33,13 @@ const ArticleAuthorContent = ({
     // Render author list
     return (
       <div {...classes('content')}>
-        <h1 id="author-labelled-by">{messages.authorLabel}</h1>
-        <p>{messages.authorDescription}</p>
+        <h1 id={labelledBy}>{authorLabel}</h1>
+        <p>{authorDescription}</p>
         <hr />
         <ul {...classes('ul-list')}>
           {authors.map((author, index) => (
             <li key={author.name}>
-              {author.role && <span>{author.role}:</span>}
+              <span>{author.role}:</span>
               <span>
                 <button
                   className="c-button--link"
@@ -72,14 +74,10 @@ const ArticleAuthorContent = ({
   return (
     <div {...classes('content')}>
       <div {...classes('author-info')}>
-        {image && (
-          <figure>
-            <img src={image} alt={name} />
-          </figure>
-        )}
+        {image && <Portrait src={image} alt={name} />}
         <section>
-          <h1 id="author-labelled-by">{name}</h1>
-          {title && <p>{title}</p>}
+          <h1 id={labelledBy}>{name}</h1>
+          <p>{`${title}${title ? ' / ' : ''}${role}`}</p>
           <ul {...classes('ul-list')}>
             {phone && (
               <li>
@@ -94,12 +92,9 @@ const ArticleAuthorContent = ({
               </li>
             )}
           </ul>
-          {introduction && (
-            <div
-              dangerouslySetInnerHTML={{ __html: introduction }}
-              {...classes('author-ingress')}
-            />
-          )}
+          <p {...classes('author-ingress')}>
+            {introduction}
+          </p>
         </section>
       </div>
       <div {...classes('author-link-container')}>
@@ -108,6 +103,7 @@ const ArticleAuthorContent = ({
             <a
               href={urlContributions}
               target="_blank"
+              rel="noopener noreferrer"
               className="c-button c-button--outline">
               Se hva {firstName} har bidratt med
             </a>
@@ -115,7 +111,11 @@ const ArticleAuthorContent = ({
         )}
         {urlAuthor && (
           <span>
-            <a href={urlAuthor} target="_blank" className="c-button--link">
+            <a
+              href={urlAuthor}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="c-button--link">
               Les mer om {firstName}
             </a>
           </span>
@@ -126,6 +126,7 @@ const ArticleAuthorContent = ({
 };
 
 ArticleAuthorContent.propTypes = {
+  labelledBy: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -133,8 +134,8 @@ ArticleAuthorContent.propTypes = {
       phone: PropTypes.string,
       email: PropTypes.string,
       image: PropTypes.string,
-      introduction: PropTypes.string,
-      role: PropTypes.string,
+      introduction: PropTypes.string.isRequired,
+      role: PropTypes.string.isRequired,
       urlContributions: PropTypes.string,
       urlAuthor: PropTypes.string,
       licenses: PropTypes.string,

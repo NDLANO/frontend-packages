@@ -13,18 +13,14 @@ import {
   LayoutItem,
   ArticleTitle,
   ArticleWrapper,
-  ArticleByline,
   ArticleIntroduction,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
 } from 'ndla-ui';
-import { Additional } from 'ndla-icons/common';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
-import LicenseBox from '../article/LicenseBox';
 import { Resources } from '../molecules/resources';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { ArticleBylineExample } from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
@@ -44,65 +40,7 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              {
-                role: 'Opphavsmann',
-                name: 'Lene Fossbråten',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: 'Lorem ipsum dolores',
-              },
-              {
-                role: 'Opphavsmann',
-                name: 'Wenche Heir',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: 'Lorem ipsum dolores',
-              },
-              {
-                role: 'Rettighetshaver',
-                name: 'Marit Smith',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: 'Lorem ipsum dolores',
-              },
-            ]}
-            updated="12/10/2016"
-            additional={[
-              <Additional
-                key="additional"
-                className="c-icon--20 u-margin-right-tiny"
-              />,
-              'Tilleggsstoff',
-            ]}
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            licenseBox={<LicenseBox />}
-            dialogLabelledBy="Opphavsmann"
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-              authorLabel: 'Opphavsmann',
-              authorDescription:
-                'Denne artikkelen er laget av flere opphavsmenn',
-              close: 'Lukk',
-            }}
-          />
+          <ArticleBylineExample useRealText/>
           <CompentenceGoalsDialogExample
             narrow
             headingId="article-compentence-goals-narrow-heading-id"

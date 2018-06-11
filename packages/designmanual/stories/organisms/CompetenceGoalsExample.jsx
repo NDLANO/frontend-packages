@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { CompentenceGoalsDialog, CompentenceGoals, ClickToggle } from 'ndla-ui';
+import { CompentenceGoals, ClickToggle } from 'ndla-ui';
 
 const classes = BEMHelper('c-compentence-goals-dialog');
 
@@ -98,7 +98,7 @@ export const CompentenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
     useDialog
     id="useArticleId"
     labelledby={headingId}
-    dialogModifier={'large'}
+    dialogModifier='large'
     buttonClassName={classes('toggle-button', { wide, narrow }).className}
     title="Kompetansemål"
     openTitle="Lukk boks"
@@ -110,4 +110,11 @@ export const CompentenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
 CompentenceGoalsDialogExample.propTypes = {
   narrow: PropTypes.bool,
   wide: PropTypes.bool,
+  headingId: PropTypes.string,
+};
+
+CompentenceGoalsDialogExample.defaultProps = {
+  narrow: false,
+  wide: false,
+  headingId: undefined,
 };

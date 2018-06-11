@@ -7,12 +7,11 @@
  */
 
 import React, { Component } from 'react';
-import { Time, User } from 'ndla-icons/common';
 import { Concept, OneColumn, LayoutItem, Image } from 'ndla-ui';
 import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
 
-import LicenseBox from '../article/LicenseBox';
 import FigureWithLicense from '../article/FigureWithLicense';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 class ConceptExample extends Component {
   componentDidMount() {
@@ -30,15 +29,7 @@ class ConceptExample extends Component {
               familie bestående av nære relasjoner. På den andre siden blir de
               fleste av oss født på en institusjon, et sykehus.
             </p>
-            <div className="c-article-byline">
-              <span className="c-article-byline__authors">
-                <User /> Gro-Anita Mortensen.
-              </span>{' '}
-              <span className="c-article-byline__date">
-                <Time /> Sist oppdatert 03.03.2017
-              </span>
-              <LicenseBox />
-            </div>
+            <ArticleBylineExample useRealText />
           </LayoutItem>
           <LayoutItem layout="center">
             <section>

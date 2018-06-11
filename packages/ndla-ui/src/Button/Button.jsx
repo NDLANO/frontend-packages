@@ -59,6 +59,7 @@ Button.propTypes = {
   link: PropTypes.bool,
   square: PropTypes.bool,
   stripped: PropTypes.bool,
+  lighter: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   /**

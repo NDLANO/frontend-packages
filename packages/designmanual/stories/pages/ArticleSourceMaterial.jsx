@@ -14,20 +14,17 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  ArticleByline,
   ArticleHeaderWrapper,
   Image,
   SourceMaterialBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseBox from '../article/LicenseBox';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 import { Resources } from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
@@ -47,34 +44,7 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              {
-                role: 'Opphavsmann',
-                name: 'Lene Fossbråten',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: '<p>Some html <strong>Hello</strong><p>',
-              },
-            ]}
-            updated="12/10/2016"
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            licenseBox={<LicenseBox />}
-            dialogLabelledBy="Opphavsmann"
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-              authorLabel: 'Opphavsmann',
-              authorDescription:
-                'Denne artikkelen er laget av flere opphavsmenn',
-              close: 'Lukk',
-            }}
-          />
+          <ArticleBylineExample useRealText />
           <CompentenceGoalsDialogExample
             narrow
             headingId="article-compentence-goals-narrow-heading-id"

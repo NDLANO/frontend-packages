@@ -13,19 +13,16 @@ import {
   LayoutItem,
   ArticleTitle,
   ArticleWrapper,
-  ArticleByline,
   ArticleHeaderWrapper,
   ArticleIntroduction,
   Image,
   AssessmentResourcesBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseBox from '../article/LicenseBox';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 import { Resources } from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn cssModifier="narrow">
@@ -46,58 +43,7 @@ export default () => (
             lærere i arbeidet med vurdering. Ressursene her kan brukes til
             egenevaluering av elevene og i dialog mellom elev og lærer.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              {
-                role: 'Opphavsmann',
-                name: 'Lene Fossbråten',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: '<p>Some html <strong>Hello</strong><p>',
-              },
-              {
-                role: 'Opphavsmann',
-                name: 'Wenche Heir',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: '<p>Some html <strong>Hello</strong><p>',
-              },
-              {
-                role: 'Rettighetshaver',
-                name: 'Marit Smith',
-                urlContributions: 'www.examplelink.com',
-                urlAuthor: 'www.examplelink.com',
-                licenses: '(CC BY-NC-SA)',
-                title: 'Forfatter',
-                phone: '+47 34 32 12 34',
-                email: 'email@post.no',
-                image: 'http://via.placeholder.com/350x150',
-                introduction: '<p>Some html <strong>Hello</strong><p>',
-              },
-            ]}
-            updated="12/10/2016"
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            licenseBox={<LicenseBox />}
-            dialogLabelledBy="Opphavsmann"
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-              authorLabel: 'Opphavsmann',
-              authorDescription:
-                'Denne artikkelen er laget av flere opphavsmenn',
-              close: 'Lukk',
-            }}
-          />
+          <ArticleBylineExample id="article-by-line-example-id" />
           <CompentenceGoalsDialogExample
             narrow
             headingId="article-compentence-goals-narrow-heading-id"

@@ -12,10 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Fade } from 'ndla-ui';
 import { createUniversalPortal } from '../utils/createUniversalPortal';
-
-const duration = 300;
 
 const classes = new BEMHelper({
   name: 'dialog',

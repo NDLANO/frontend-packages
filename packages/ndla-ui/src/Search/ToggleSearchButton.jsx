@@ -51,7 +51,6 @@ const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
 
   return (
     <ClickToggle
-      alwaysRenderChildren
       isOpen={isOpen}
       onToggle={onToggle}
       title={buttonContent}

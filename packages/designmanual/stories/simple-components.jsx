@@ -19,11 +19,13 @@ import {
   AudioPlayer,
   OneColumn,
 } from 'ndla-ui';
+
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
 import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
+import ArticleBylineExample from './molecules/ArticleBylineExample';
 
 const floatVideo = left => (
   <Fragment>
@@ -347,20 +349,12 @@ storiesOf('Enkle komponenter', module)
         <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
       </StoryIntro>
       <StoryBody>
-        <h1 className="c-article__title">Eksempelartikkel</h1>
+        <h1 className="c-article__title">Eksempelartikkels</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen.
         </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <commonIcons.User /> [Opphavsperson]. [lisens]
-          </span>{' '}
-          <span className="c-article-byline__date">
-            <commonIcons.Time /> Publisert [dato]
-          </span>
-          <LicenseExample />
-        </div>
+        <ArticleBylineExample />
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
@@ -618,15 +612,7 @@ storiesOf('Enkle komponenter', module)
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen.
         </p>
-        <div className="c-article-byline">
-          <span className="c-article-byline__authors">
-            <commonIcons.User /> [Opphavsperson]. [lisens]
-          </span>{' '}
-          <span className="c-article-byline__date">
-            <commonIcons.Time /> Publisert [dato]
-          </span>
-          <LicenseExample />
-        </div>
+        <ArticleBylineExample />
         <section>
           <Aside wideScreen>
             <h1>Høyrespalte</h1>

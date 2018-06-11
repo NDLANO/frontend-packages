@@ -92,9 +92,7 @@ const ArticleAuthorContent = ({
               </li>
             )}
           </ul>
-          <p {...classes('author-ingress')}>
-            {introduction}
-          </p>
+          <p {...classes('author-ingress')}>{introduction}</p>
         </section>
       </div>
       <div {...classes('author-link-container')}>

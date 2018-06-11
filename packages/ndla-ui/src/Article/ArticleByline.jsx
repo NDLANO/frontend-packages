@@ -56,31 +56,37 @@ class ArticleByline extends Component {
               <User />
             </span>
             <span {...classes('authors')}>
-              {authorsLinkable ? <ClickToggle
-                useDialog
-                id={`dialog-authors-${id}`}
-                labelledby={authorLabelledBy}
-                isOpen={showAuthors}
-                renderAsLink
-                disablePortal
-                buttonClassName={classes('toggle-authors').className}
-                onToggle={(showAuthorsDialog) => {
-                  this.setState({
-                    showAuthors: showAuthorsDialog,
-                    showAuthor: null,
-                  });
-                }}
-                title={
-                  authors.length === 1 ? authors[0].name : messages.authorLabel
-                }>
-                <ArticleAuthorContent
-                  messages={messages}
-                  showAuthor={showAuthor}
-                  authors={authors}
-                  onSelectAuthor={this.onSelectAuthor}
-                  labelledBy={authorLabelledBy}
-                />
-              </ClickToggle> : `${authors.map(author => author.name).join(', ')}`}
+              {authorsLinkable ? (
+                <ClickToggle
+                  useDialog
+                  id={`dialog-authors-${id}`}
+                  labelledby={authorLabelledBy}
+                  isOpen={showAuthors}
+                  renderAsLink
+                  disablePortal
+                  buttonClassName={classes('toggle-authors').className}
+                  onToggle={showAuthorsDialog => {
+                    this.setState({
+                      showAuthors: showAuthorsDialog,
+                      showAuthor: null,
+                    });
+                  }}
+                  title={
+                    authors.length === 1
+                      ? authors[0].name
+                      : messages.authorLabel
+                  }>
+                  <ArticleAuthorContent
+                    messages={messages}
+                    showAuthor={showAuthor}
+                    authors={authors}
+                    onSelectAuthor={this.onSelectAuthor}
+                    labelledBy={authorLabelledBy}
+                  />
+                </ClickToggle>
+              ) : (
+                `${authors.map(author => author.name).join(', ')}`
+              )}
               ({license})
             </span>
           </span>
@@ -123,7 +129,7 @@ class ArticleByline extends Component {
       </div>
     );
   }
-};
+}
 
 ArticleByline.propTypes = {
   id: PropTypes.string,

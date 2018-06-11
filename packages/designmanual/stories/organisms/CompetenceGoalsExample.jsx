@@ -98,7 +98,7 @@ export const CompentenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
     useDialog
     id="useArticleId"
     labelledby={headingId}
-    dialogModifier='large'
+    dialogModifier="large"
     buttonClassName={classes('toggle-button', { wide, narrow }).className}
     title="Kompetansemål"
     openTitle="Lukk boks"

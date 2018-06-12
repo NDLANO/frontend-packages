@@ -55,35 +55,53 @@ RelatedArticle.defaultProps = {
   linkInfo: null,
 };
 
-const RelatedArticleList = ({ messages, children }) => (
-  <section {...classes('')}>
-    <SectionHeading className={classes('component-title').className}>
-      {messages.title}
-    </SectionHeading>
-    <div {...classes('articles')}>
-      {React.Children.map(children, (article, i) =>
+const RelatedArticleList = ({
+  messages,
+  children,
+  articleCount,
+  dangerouslySetInnerHTML,
+}) => {
+  const clonedChildren = !dangerouslySetInnerHTML
+    ? React.Children.map(children, (article, i) =>
         React.cloneElement(article, {
           modifier:
             i >= 2
               ? `${article.props.modifier} hidden`
               : article.props.modifier,
         }),
+      )
+    : null;
+  const childrenCount = articleCount || React.Children.count(children);
+
+  return (
+    <section {...classes('')}>
+      <SectionHeading className={classes('component-title').className}>
+        {messages.title}
+      </SectionHeading>
+      <div
+        {...classes('articles')}
+        dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+        {clonedChildren}
+      </div>
+      {childrenCount > 2 && (
+        <Button
+          {...classes('button')}
+          data-showmore={messages.showMore}
+          data-showless={messages.showLess}
+          outline>
+          {messages.showMore}
+        </Button>
       )}
-    </div>
-    {React.Children.count(children) > 2 && (
-      <Button
-        {...classes('button')}
-        data-showmore={messages.showMore}
-        data-showless={messages.showLess}
-        outline>
-        {messages.showMore}
-      </Button>
-    )}
-  </section>
-);
+    </section>
+  );
+};
 
 RelatedArticleList.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
+  dangerouslySetInnerHTML: PropTypes.shape({
+    __html: PropTypes.string.isRequired,
+  }),
+  articleCount: PropTypes.number,
 };
 export default RelatedArticleList;

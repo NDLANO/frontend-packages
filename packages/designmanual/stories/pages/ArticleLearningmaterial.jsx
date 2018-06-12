@@ -21,7 +21,7 @@ import {
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
-import { Resources } from '../molecules/resources';
+import Topics from '../molecules/topics';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
@@ -106,7 +106,7 @@ export default () => (
         <RelatedArticleListExample />
       </LayoutItem>
       <LayoutItem layout="extend">
-        <Resources showTopicHeading />
+        <Topics />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

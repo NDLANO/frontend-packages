@@ -10,6 +10,13 @@
     padding: $spacing 0;
   }
 
+  &__heading-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__list {
     list-style: none;
     margin: $spacing--small 0 $spacing--medium 0;
@@ -40,7 +47,7 @@
   &__item {
     margin: 0;
     padding-top: $spacing--small;
-    padding-bottom: $spacing--medium;
+    padding-bottom: $spacing;
     @include mq(tablet) {
       padding-right: $spacing;
     }
@@ -58,26 +65,36 @@
       color: $brand-color;
     }
 
-    &:last-child {
-      border: none;
-      padding-bottom: 0;
-    }
-
     &--subjectPage {
       @include mq(tablet) {
-        border-bottom: 0;
+        // border-bottom: 0;
         padding-right: 0;
       }
-
+      margin-top: $spacing;
+      margin-bottom: $spacing--medium / 2;
       &:last-child {
-        padding-bottom: $spacing--medium;
-        border-bottom: 2px solid $brand-grey--lighter;
 
+        margin-bottom: 0;
         @include mq(tablet) {
-          border-bottom: 0;
-          padding-bottom: 0;
+          // border-bottom: 0;
+          // padding-bottom: 0;
         }
       }
+    }
+    &--additional {
+      display: none;
+    }
+    &--showAdditionalCores {
+      display: block;
+      padding: $spacing;
+      border: 1px solid $brand-color;
+      &.c-topic-introduction__item--additional {
+        animation-name: fadeIn;
+        animation-duration: 0.2s;
+      }
+    }
+    &--additional {
+      border: 1px dashed $brand-color;
     }
   }
   &__header {

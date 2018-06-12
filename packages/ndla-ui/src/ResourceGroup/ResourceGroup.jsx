@@ -19,80 +19,51 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class ResourceGroup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAdditionalResources: false,
-    };
-    this.showAdditionalResourcesFromLink = this.showAdditionalResourcesFromLink.bind(
-      this,
-    );
-  }
-
-  showAdditionalResourcesFromLink() {
-    this.setState(prevState => ({
-      showAdditionalResources: !prevState.showAdditionalResources,
-    }));
-  }
-
-  render() {
-    const {
-      title,
-      icon,
-      resources,
-      messages,
-      className,
-      contentType,
-      resourceToLinkProps,
-    } = this.props;
-    const { showAdditionalResources } = this.state;
-    const additionalResources = resources.filter(res => res.additional);
-    const normalResources = resources.filter(res => !res.additional);
-    return resources.length > 0 ? (
-      <section {...classes('', contentType, className)}>
-        <header {...classes('header')}>
-          {additionalResources.length > 0 && (
-            <ResourceToggleFilter
-              checked={showAdditionalResources}
-              label={messages.toggleFilterLabel}
-              onClick={() =>
-                this.setState(prevState => ({
-                  showAdditionalResources: !prevState.showAdditionalResources,
-                }))
-              }
-            />
-          )}
-          <ResourcesTitle>{title}</ResourcesTitle>
-        </header>
+const ResourceGroup = ({
+  title,
+  icon,
+  resources,
+  toggleAdditionalResources,
+  showAdditionalResources,
+  resourceToLinkProps,
+  messages,
+  contentType,
+}) => {
+  console.log('res', resources);
+  return (
+    <section
+      {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
+      <header {...classes('header')}>
+        <ResourcesTitle>{title}</ResourcesTitle>
+      </header>
+      {resources.length > 0 ? (
         <ResourceList
-          onClick={this.showAdditionalResourcesFromLink}
+          resourceToLinkProps={resourceToLinkProps}
+          onClick={toggleAdditionalResources}
           showAdditionalResources={showAdditionalResources}
           icon={icon}
           messages={messages}
-          resourceToLinkProps={resourceToLinkProps}
-          additionalResources={additionalResources}
-          normalResources={normalResources}
+          resources={resources}
         />
-      </section>
-    ) : null;
-  }
-}
+      ) : null}
+    </section>
+  );
+};
 
 ResourceGroup.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
-  className: PropTypes.string,
   contentType: ContentTypeShape.isRequired,
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
+  toggleAdditionalResources: PropTypes.func.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
   empty: PropTypes.bool,
   messages: PropTypes.shape({
-    activateAdditionalResources: PropTypes.string.isRequired,
-    noCoreResourcesAvailable: PropTypes.string.isRequired,
+    noContentBoxLabel: PropTypes.string.isRequired,
+    noContentBoxButtonText: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 ResourceGroup.defaultProps = {

@@ -4,17 +4,31 @@
 **/
 
 .c-resources {
-  padding-bottom: $spacing--large;
   padding-top: $spacing;
+  padding-bottom: $spacing;
 
   @include mq(tablet) {
     // padding-left: $spacing;
     // padding-right: $spacing;
   }
 
+  .c-filter__list--float-right {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &__topic-title-icon {
+    color: $brand-color;
+    flex-grow: 1;
+    justify-content: flex-end;
+    border: 0;
+    outline: 0;
+    background: transparent;
+  }
+
   &__title {
     display: block;
-    @include inuit-font-size(18px);
+    @include inuit-font-size(16px, 18px);
     font-weight: $font-weight-bold;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -25,7 +39,7 @@
     display: flex;
     align-items: center;
     padding-bottom: $spacing--small / 2;
-    margin-top: $spacing--large;
+    margin-top: $spacing--medium;
 
     .c-content-type-badge {
       display: none;
@@ -37,17 +51,40 @@
     display: flex;
     align-items: center;
     margin-top: $spacing--large;
+    border-bottom: 2px solid $brand-color--lighter;
+    padding-bottom: $spacing--small / 2;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    @include mq(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .c-resources__topic-title-icon {
+    padding-right: 0;
   }
 
   &__topic-title-label {
-    color: $text-light-color;
-    @include font-size(16px, 20px);
-    margin: 0;
+    font-family: $font;
+    @include font-size(20px, 26px);
+    font-weight: $font-weight-bold;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 $spacing--small 0 0;
   }
 
   &__topic-title {
-    @include font-size(22px, 32px);
+    font-weight: $font-weight-normal;
+    color: $primary-color;
+    @include font-size(20px, 26px);
     margin: 0;
   }
 
@@ -55,8 +92,14 @@
     color: $brand-color;
   }
 
-  &__topic-title-text {
-    margin-left: $spacing--small;
+  &__topic-filter-wrapper {
+    display: flex;
+    width: 100%;
+    @include mq(tablet) {
+      width: auto;
+      flex-grow: 1;
+      background: green;
+    }
   }
 
   &--subjectPage {

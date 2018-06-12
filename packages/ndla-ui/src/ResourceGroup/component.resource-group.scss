@@ -3,6 +3,24 @@
 ** List resource groups with different colors (and icons)
 **/
 
+@keyframes fakeLoadingAnimation {
+  0% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInAdditionals {
+  0% {
+    opacity: 0;
+    transform: translate3d(-10px, 0px, 0px);
+  }
+  100% {
+  }
+}
+
 .c-resource-group {
   &:before {
     content: '';
@@ -10,45 +28,69 @@
     clear: both;
   }
 
+  &--showall {
+    ul {
+      animation-name: fakeLoadingAnimation;
+      animation-duration: 0.4s;
+    }
+    .c-topic-resource__item--additional {
+      animation-name: fadeInAdditionals;
+      animation-duration: 0.4s;
+    }
+  }
+
+  ul {
+    min-height: 123px;
+  }
+
   li {
     background-color: rgba($brand-grey--light, 0.4);
+    border: 1px solid rgba(0,0,0,0);
+  }
+  .c-topic-resource__body {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
   }
 
   &__header {
     border-bottom: 2px solid $brand-grey--light;
     margin-bottom: $spacing--small / 2;
   }
-}
 
-.c-resource-group--subject-material {
-  li {
-    background-color: $subject-material-light;
+  &--subject-material {
+    li {
+      background-color: $subject-material-light;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $subject-material-additional;
+      border: 1px dashed $subject-material-dark;
+    }
   }
-  .c-topic-resource__item--additional {
-    background-color: $subject-material-additional;
-  }
-}
 
-.c-resource-group--tasks-and-activities {
-  li {
-    background-color: $tasks-and-activities-light;
+  &--tasks-and-activities {
+    li {
+      background-color: $tasks-and-activities-light;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $tasks-and-activities-additional;
+      border: 1px dashed $tasks-and-activities-dark;
+    }
   }
-  .c-topic-resource__item--additional {
-    background-color: $tasks-and-activities-additional;
-  }
-}
 
-.c-resource-group--assessment-resources {
-  li {
-    background-color: $assessment-resource-light;
+  &--assessment-resources {
+    li {
+      background-color: $assessment-resource-light;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $assessment-resource-additional;
+      border: 1px dashed $assessment-resource-dark;
+    }
   }
-  .c-topic-resource__item--additional {
-    background-color: $assessment-resource-additional;
-  }
-}
 
-.c-resource-group--learning-path {
-  li {
-    background-color: $learning-path-background;
+  &--learning-path {
+    li {
+      background-color: $learning-path-background;
+    }
   }
 }

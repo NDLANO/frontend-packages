@@ -18,9 +18,9 @@ import {
   ArticleHeaderWrapper,
 } from 'ndla-ui';
 
-import { Resources } from '../molecules/resources';
+import Resources from '../molecules/resources';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
-import { ArticleBylineExample } from '../molecules/ArticleBylineExample';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
@@ -220,6 +220,7 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
+      ????
         <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>

@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import {
   ResourcesWrapper,
   ResourceGroup,
@@ -88,7 +88,6 @@ class Resources extends Component {
     });
   }
   render() {
-    console.log('resourceGroups', resourceGroups);
     const { showAdditionalResources, showAdditionalDialog } = this.state;
     const hasAdditionalResources = resourceGroups.some(group =>
       group.resources.some(resource => resource.additional),
@@ -97,16 +96,7 @@ class Resources extends Component {
       <ResourcesWrapper
         header={
           <ResourcesTopicTitle
-            messages={{
-              label: 'Læringsressurser',
-              toggleFilterLabel: 'Vis tilleggsressurser',
-              additionalDialogLabel: 'Hva er kjernestoff og tilleggstoff?',
-              additionalDialogDescription1:
-                'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
-              additionalDialogDescription2:
-                'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
-              additionalDialogTooptip: 'Hva er kjernestoff og tilleggstoff?',
-            }}
+            typeOfContent="learningResources"
             explainationIconLabelledBy="learning-resources-info-header-id"
             id="learning-resources-id"
             title="Havbunnsløsninger"

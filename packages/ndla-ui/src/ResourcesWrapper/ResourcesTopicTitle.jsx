@@ -11,8 +11,10 @@ import ResourceToggleFilter from '../ResourceGroup/ResourceToggleFilter';
 import Dialog from '../Dialog';
 import Tooltip from '../Tooltip';
 
+import { ContextConsumer } from '../common/TextContexts';
+
 const ResourcesTopicTitle = ({
-  messages,
+  typeOfContent,
   title,
   url,
   explainationIconLabelledBy,
@@ -22,91 +24,72 @@ const ResourcesTopicTitle = ({
   showAdditionalDialog,
   toggleAdditionalDialog,
 }) => (
-  <header {...classes('topic-title-wrapper')}>
-    <div>
-      <p {...classes('topic-title-label')}>{messages.label}</p>
-      <h1 {...classes('topic-title')}>
-        {url ? (
-          <SafeLink to={url} {...classes('topic-title-link')}>
-            {title}
-          </SafeLink>
-        ) : (
-          title
-        )}
-      </h1>
-    </div>
-    {hasAdditionalResources && (
-      <div>
-        <ResourceToggleFilter
-          checked={showAdditionalResources}
-          label={messages.toggleFilterLabel}
-          onClick={toggleAdditionalResources}
-        />
-        <Tooltip tooltip={messages.additionalDialogTooptip} align="right">
-          <button
-            {...classes('topic-title-icon')}
-            aria-labelledby={explainationIconLabelledBy}
-            onClick={toggleAdditionalDialog}>
-            <HelpCircle
-              className={`c-icon--22 u-margin-left-tiny ${
-                classes('icon').className
-              }`}
-            />
-          </button>
-        </Tooltip>
-        <Dialog
-          labelledby={explainationIconLabelledBy}
-          hidden={!showAdditionalDialog}
-          onClose={toggleAdditionalDialog}
-          disablePortal
-          messages={{ close: 'lukk' }}
-          modifier={showAdditionalDialog ? 'active' : ''}>
-          <Fragment>
-            <h1 id={explainationIconLabelledBy}>
-              {messages.additionalDialogLabel}
+  <ContextConsumer>
+    {texts => {
+      console.log('typeOfContent', typeOfContent);
+      console.log('ContextApi', texts[typeOfContent]);
+      return (
+        <header {...classes('topic-title-wrapper')}>
+          <div>
+            <p {...classes('topic-title-label')}>
+              {texts[typeOfContent].heading}
+            </p>
+            <h1 {...classes('topic-title')}>
+              {url ? (
+                <SafeLink to={url} {...classes('topic-title-link')}>
+                  {title}
+                </SafeLink>
+              ) : (
+                title
+              )}
             </h1>
-            <hr />
-            <p>{messages.additionalDialogDescription1}</p>
-            {messages.additionalDialogDescription2 && (
-              <p>{messages.additionalDialogDescription2}</p>
-            )}
-          </Fragment>
-        </Dialog>
-      </div>
-    )}
-  </header>
+          </div>
+          {hasAdditionalResources && (
+            <div>
+              <ResourceToggleFilter
+                checked={showAdditionalResources}
+                label={texts[typeOfContent].additionalFilterLabel}
+                onClick={toggleAdditionalResources}
+              />
+              <Tooltip
+                tooltip={texts[typeOfContent].dialogTooltip}
+                align="right">
+                <button
+                  {...classes('topic-title-icon')}
+                  aria-labelledby={explainationIconLabelledBy}
+                  onClick={toggleAdditionalDialog}>
+                  <HelpCircle
+                    className={`c-icon--22 u-margin-left-tiny ${
+                      classes('icon').className
+                    }`}
+                  />
+                </button>
+              </Tooltip>
+              <Dialog
+                labelledby={explainationIconLabelledBy}
+                hidden={!showAdditionalDialog}
+                onClose={toggleAdditionalDialog}
+                disablePortal
+                modifier={showAdditionalDialog ? 'active' : ''}>
+                <Fragment>
+                  <h1 id={explainationIconLabelledBy}>
+                    {texts[typeOfContent].dialogHeading}
+                  </h1>
+                  <hr />
+                  {texts[typeOfContent].dialogTexts.map(text => <p>{text}</p>)}
+                </Fragment>
+              </Dialog>
+            </div>
+          )}
+        </header>
+      );
+    }}
+  </ContextConsumer>
 );
 
 /* eslint-disable no-console */
 ResourcesTopicTitle.propTypes = {
-  messages: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    toggleFilterLabel: PropTypes.string.isRequired,
-    additionalDialogLabel: (props, propName, componentName) => {
-      if (typeof props[propName] !== 'string' && props.hasAdditionalResources) {
-        console.warn(
-          `<${componentName} /> messages.additionalDialogLabel prop must be a string if props[hasAdditionalResources] === true`,
-        );
-        return new Error(
-          `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
-        );
-      }
-      return null;
-    },
-    additionalDialogDescription1: (props, propName, componentName) => {
-      if (typeof props[propName] !== 'string' && props.hasAdditionalResources) {
-        console.warn(
-          `<${componentName} /> messages.additionalDialogDescription1 prop must be a string if props[hasAdditionalResources] === true`,
-        );
-        return new Error(
-          `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
-        );
-      }
-      return null;
-    },
-    additionalDialogDescription2: PropTypes.string,
-    additionalDialogTooptip: PropTypes.string.isRequired,
-  }).isRequired,
+  typeOfContent: PropTypes.oneOf(['topic', 'learningResources']).isRequired,
   title: PropTypes.string.isRequired,
   toggleAdditionalResources: PropTypes.func.isRequired,
   hasAdditionalResources: PropTypes.bool.isRequired,

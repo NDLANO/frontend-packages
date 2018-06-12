@@ -27,7 +27,7 @@ import { topicList } from '../dummydata/index';
 import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import { Resources } from './molecules/resources';
-import LicenseExample from './article/LicenseExample';
+import LicenseBox from './article/LicenseBox';
 import ConceptExample from './organisms/ConceptExample';
 import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
@@ -219,7 +219,7 @@ storiesOf('Sammensatte moduler', module)
           <h2 className="u-heading">Lisensboks</h2>
           <article className="article">
             <LayoutItem layout="center">
-              <LicenseExample expanded />
+              <LicenseBox headingId="licenseBox-headingId" />
             </LayoutItem>
           </article>
         </Center>

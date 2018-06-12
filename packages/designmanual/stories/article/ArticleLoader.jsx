@@ -20,7 +20,7 @@ import {
 } from 'ndla-ui';
 import { Resources } from '../molecules/resources';
 import { fetchArticle } from './articleApi';
-import LicenseExample from './LicenseExample';
+import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
 
@@ -116,11 +116,27 @@ class ArticleLoader extends Component {
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
+                authorLabel: 'Opphavsmann',
+                authorDescription:
+                  'Denne artikkelen er laget av flere opphavsmenn',
+                close: 'Lukk',
                 label,
               }}
-              licenseBox={<LicenseExample />}
-              compentenceGoals={<CompentenceGoalsDialogExample wide />}
-              compentenceGoalsNarrow={<CompentenceGoalsDialogExample narrow />}>
+              licenseBox={
+                <LicenseBox headingId="article-license-box-heading-id" />
+              }
+              compentenceGoals={
+                <CompentenceGoalsDialogExample
+                  headingId="article-compentence-goals-heading-id"
+                  wide
+                />
+              }
+              compentenceGoalsNarrow={
+                <CompentenceGoalsDialogExample
+                  headingId="article-compentence-goals-narrow-heading-id"
+                  narrow
+                />
+              }>
               {articleChildren}
             </Article>
           </OneColumn>

@@ -6,6 +6,6 @@
  *
  */
 
-import ToggleLicenseBox from './ToggleLicenseBox';
+import Portrait from './Portrait';
 
-export default ToggleLicenseBox;
+export default Portrait;

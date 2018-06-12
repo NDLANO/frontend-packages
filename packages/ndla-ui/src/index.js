@@ -93,7 +93,6 @@ export {
   Content,
 } from './Layout';
 export { default as LicenseByline } from './LicenseByline';
-export { default as ToggleLicenseBox } from './ToggleLicenseBox';
 export { default as ClickToggle } from './common/ClickToggle';
 export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
@@ -143,6 +142,7 @@ export {
 export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
 
 export { default as Image } from './Image';
+export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 
 export { default as ErrorMessage } from './ErrorMessage';

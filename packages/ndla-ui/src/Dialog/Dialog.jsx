@@ -40,7 +40,7 @@ export const Dialog = ({
       aria-labelledby={labelledby}
       aria-label={label}
       {...rest}>
-      <div {...classes('content', modifier)}>
+      <div {...classes('content')}>
         <button
           {...classes('close')}
           onClick={() => {

@@ -41,11 +41,28 @@
   }
 }
 
+
+.c-button--lighter {
+  @include font-size(12px, 15px);
+  background-color: $brand-color--lighter;
+  border: none;
+  color: $brand-color;
+  font-weight: $font-weight-semibold;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+    background: $brand-color;
+  }
+}
+
 .c-button--outline {
   color: $brand-color;
   background-color: transparent;
   border: 2px solid $brand-color;
   font-weight: $font-weight-bold;
+  box-shadow: none;
   &:hover,
   &:focus {
     color: white;
@@ -80,7 +97,6 @@
   border-radius: 0;
   color: inherit;
   font-size: inherit;
-  font-family: inherit;
   background-color: transparent;
   box-shadow: none;
   border: none;
@@ -102,7 +118,8 @@
 
 .c-button--link {
   @extend .c-button--stripped;
-  @include inuit-font-size(18px, 20px);
+  font-size: inherit;
+  line-height: inherit;
   color: $brand-color;
   box-shadow: $link;
 

@@ -25,7 +25,6 @@ const Aside = ({
     narrowScreen,
     wideScreen,
   };
-
   return (
     <aside {...classes('', modifiers)}>
       <div

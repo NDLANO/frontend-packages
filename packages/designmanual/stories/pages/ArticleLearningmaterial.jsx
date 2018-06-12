@@ -14,18 +14,15 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  ArticleByline,
   Image,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import { Resources } from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
@@ -34,7 +31,10 @@ export default () => (
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          <CompentenceGoalsDialogExample wide />
+          <CompentenceGoalsDialogExample
+            wide
+            headingId="article-compentence-goals-heading-id"
+          />
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -44,21 +44,11 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              { name: 'Ola Nordnes' },
-              { name: 'Kari Nordnes' },
-              { name: 'Jon Nordgubbe' },
-            ]}
-            updated="12/10/2016"
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-            }}>
-            <LicenseExample />
-          </ArticleByline>
-          <CompentenceGoalsDialogExample narrow />
+          <ArticleBylineExample id="example-article-license-id" />
+          <CompentenceGoalsDialogExample
+            narrow
+            headingId="article-compentence-goals-narrow-heading-id"
+          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

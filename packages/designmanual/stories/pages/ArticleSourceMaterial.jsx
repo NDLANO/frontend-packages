@@ -14,27 +14,27 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  ArticleByline,
   ArticleHeaderWrapper,
   Image,
   SourceMaterialBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 import { Resources } from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          <CompentenceGoalsDialogExample wide />
+          <CompentenceGoalsDialogExample
+            wide
+            headingId="article-compentence-goals-heading-id"
+          />
           <ArticleTitle
             icon={<SourceMaterialBadge background size="large" />}
             label="Kildemateriale">
@@ -44,21 +44,11 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              { name: 'Ola Nordnes' },
-              { name: 'Kari Nordnes' },
-              { name: 'Jon Nordgubbe' },
-            ]}
-            updated="12/10/2016"
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-            }}>
-            <LicenseExample />
-          </ArticleByline>
-          <CompentenceGoalsDialogExample narrow />
+          <ArticleBylineExample useRealText />
+          <CompentenceGoalsDialogExample
+            narrow
+            headingId="article-compentence-goals-narrow-heading-id"
+          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -69,9 +59,10 @@ export default () => (
           />
         </FigureWithLicense>
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+          333Du har en kjempegod idé til en kortfilm. Men det koster mange
+          penger å produsere filmen. Derfor er du avhengig av at noen tenner på
+          idéen din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell

@@ -12,7 +12,6 @@ import Tabs from 'ndla-tabs';
 import { uuid } from 'ndla-util';
 
 import {
-  ToggleLicenseBox,
   MediaList,
   MediaListItem,
   MediaListItemBody,
@@ -460,25 +459,4 @@ LicenseBox.propTypes = {
   headingId: PropTypes.string.isRequired,
 };
 
-const LicenseExample = ({ expanded }) => {
-  const dialogLabelledBy = 'dialogHeading';
-  return (
-    <ToggleLicenseBox
-      openTitle="Bruk innhold"
-      closeTitle="Lukk boks"
-      expanded={expanded}
-      dialogLabelledBy={dialogLabelledBy}>
-      <LicenseBox headingId={dialogLabelledBy} />
-    </ToggleLicenseBox>
-  );
-};
-
-LicenseExample.propTypes = {
-  expanded: PropTypes.bool,
-};
-
-LicenseExample.defaultProps = {
-  expanded: false,
-};
-
-export default LicenseExample;
+export default LicenseBox;

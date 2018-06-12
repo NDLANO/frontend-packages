@@ -4,9 +4,9 @@ import { CSSTransition } from 'react-transition-group';
 
 const Fade = ({ children, delay, timeout, exitDelay, ...rest }) => (
   <CSSTransition
+    classNames="u-fade"
     {...rest}
     timeout={timeout}
-    classNames="u-fade"
     unmountOnExit
     onEnter={node => {
       const n = node;

@@ -14,15 +14,12 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  ArticleByline,
   Image,
   ArticleHeaderWrapper,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
@@ -34,20 +31,7 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              { name: 'Ola Nordnes' },
-              { name: 'Kari Nordnes' },
-              { name: 'Jon Nordgubbe' },
-            ]}
-            updated="12/10/2016"
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-            }}>
-            <LicenseExample />
-          </ArticleByline>
+          <ArticleBylineExample id="example-article-license-id" />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

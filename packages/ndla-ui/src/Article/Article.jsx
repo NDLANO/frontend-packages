@@ -111,9 +111,10 @@ export const Article = ({
   compentenceGoals,
   compentenceGoalsNarrow,
 }) => {
-  const license = getLicenseByAbbreviation(licenseObj.license);
-  const authors =
-    Array.isArray(creators) && creators.length > 0 ? creators : rightsholders;
+  const license = getLicenseByAbbreviation(licenseObj.license).abbreviation;
+  const showCreators = Array.isArray(creators) && creators.length > 0;
+  const authors = showCreators ? creators : rightsholders;
+
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
@@ -124,9 +125,16 @@ export const Article = ({
           </ArticleTitle>
           <ArticleIntroduction>{introduction}</ArticleIntroduction>
           <ArticleByline
-            {...{ messages, authors, updated, license, additional }}>
-            {licenseBox}
-          </ArticleByline>
+            {...{
+              messages,
+              authors,
+              updated,
+              license,
+              additional,
+              licenseBox,
+              authorsLinkable: showCreators,
+            }}
+          />
           {compentenceGoalsNarrow}
         </ArticleHeaderWrapper>
       </LayoutItem>
@@ -155,6 +163,8 @@ Article.propTypes = {
     edition: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
+    authorLabel: PropTypes.string.isRequired,
+    authorDescription: PropTypes.string.isRequired,
     label: PropTypes.string,
   }).isRequired,
 };

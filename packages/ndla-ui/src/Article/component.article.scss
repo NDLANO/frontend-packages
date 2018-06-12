@@ -88,6 +88,7 @@
   a:not([class]):visited {
     color: $link-visited;
   }
+
 }
 .c-article--clean {
   margin-top: $spacing;
@@ -99,7 +100,10 @@
 }
 
 .c-article__header {
-  margin-bottom: $spacing--large;
+  margin-bottom: $spacing;
+  @include mq(desktop) {
+    margin-bottom: $spacing--large;
+  }
 }
 
 .c-article__title {

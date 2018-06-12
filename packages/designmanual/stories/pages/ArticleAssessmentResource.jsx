@@ -13,26 +13,26 @@ import {
   LayoutItem,
   ArticleTitle,
   ArticleWrapper,
-  ArticleByline,
   ArticleHeaderWrapper,
   ArticleIntroduction,
   Image,
   AssessmentResourcesBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 import { Resources } from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          <CompentenceGoalsDialogExample wide />
+          <CompentenceGoalsDialogExample
+            wide
+            headingId="article-compentence-goals-heading-id"
+          />
           <ArticleTitle
             icon={<AssessmentResourcesBadge background size="large" />}
             label="Vurderingsressurs">
@@ -43,21 +43,11 @@ export default () => (
             lærere i arbeidet med vurdering. Ressursene her kan brukes til
             egenevaluering av elevene og i dialog mellom elev og lærer.
           </ArticleIntroduction>
-          <ArticleByline
-            authors={[
-              { name: 'Ola Nordnes' },
-              { name: 'Kari Nordnes' },
-              { name: 'Jon Nordgubbe' },
-            ]}
-            updated="12/10/2016"
-            license={getLicenseByAbbreviation('by-nc-nd')}
-            messages={{
-              writtenBy: '',
-              lastUpdated: 'Publisert',
-            }}>
-            <LicenseExample />
-          </ArticleByline>
-          <CompentenceGoalsDialogExample narrow />
+          <ArticleBylineExample id="article-by-line-example-id" />
+          <CompentenceGoalsDialogExample
+            narrow
+            headingId="article-compentence-goals-narrow-heading-id"
+          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

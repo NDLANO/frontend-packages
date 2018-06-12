@@ -1,20 +1,15 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+
+import { HelpCircle } from 'ndla-icons/common';
 
 import { classes } from './ResourcesWrapper';
 import SafeLink from '../common/SafeLink';
 
 import ResourceToggleFilter from '../ResourceGroup/ResourceToggleFilter';
-import ClickToggle from '../common/ClickToggle';
-import { HelpCircle } from 'ndla-icons/common';
+
 import Dialog from '../Dialog';
 import Tooltip from '../Tooltip';
-
-const classesButton = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
 
 const ResourcesTopicTitle = ({
   messages,
@@ -66,7 +61,7 @@ const ResourcesTopicTitle = ({
           disablePortal
           messages={{ close: 'lukk' }}
           modifier={showAdditionalDialog ? 'active' : ''}>
-          <div>
+          <Fragment>
             <h1 id={explainationIconLabelledBy}>
               {messages.additionalDialogLabel}
             </h1>
@@ -75,13 +70,14 @@ const ResourcesTopicTitle = ({
             {messages.additionalDialogDescription2 && (
               <p>{messages.additionalDialogDescription2}</p>
             )}
-          </div>
+          </Fragment>
         </Dialog>
       </div>
     )}
   </header>
 );
 
+/* eslint-disable no-console */
 ResourcesTopicTitle.propTypes = {
   messages: PropTypes.shape({
     label: PropTypes.string.isRequired,
@@ -92,14 +88,10 @@ ResourcesTopicTitle.propTypes = {
           `<${componentName} /> messages.additionalDialogLabel prop must be a string if props[hasAdditionalResources] === true`,
         );
         return new Error(
-          'Invalid prop `' +
-            propName +
-            '` supplied to' +
-            ' `' +
-            componentName +
-            '`. Validation failed.',
+          `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
         );
       }
+      return null;
     },
     additionalDialogDescription1: (props, propName, componentName) => {
       if (typeof props[propName] !== 'string' && props.hasAdditionalResources) {
@@ -107,14 +99,10 @@ ResourcesTopicTitle.propTypes = {
           `<${componentName} /> messages.additionalDialogDescription1 prop must be a string if props[hasAdditionalResources] === true`,
         );
         return new Error(
-          'Invalid prop `' +
-            propName +
-            '` supplied to' +
-            ' `' +
-            componentName +
-            '`. Validation failed.',
+          `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
         );
       }
+      return null;
     },
     additionalDialogDescription2: PropTypes.string,
     additionalDialogTooptip: PropTypes.string.isRequired,
@@ -128,14 +116,10 @@ ResourcesTopicTitle.propTypes = {
         `<${componentName} /> !toggleAdditionalDialog prop must be a function if props[hasAdditionalResources] === true`,
       );
       return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
+        `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
       );
     }
+    return null;
   },
   showAdditionalDialog: (props, propName, componentName) => {
     if (typeof props[propName] !== 'boolean' && props.hasAdditionalResources) {
@@ -143,14 +127,10 @@ ResourcesTopicTitle.propTypes = {
         `<${componentName} /> ?toggleAdditionalDialog prop must be a function if props[hasAdditionalResources] === true`,
       );
       return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
+        `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
       );
     }
+    return null;
   },
   explainationIconLabelledBy: (props, propName, componentName) => {
     if (typeof props[propName] !== 'string' && props.hasAdditionalResources) {
@@ -158,20 +138,16 @@ ResourcesTopicTitle.propTypes = {
         `<${componentName} /> explainationIconLabelledBy prop must be a string if props[hasAdditionalResources] === true`,
       );
       return new Error(
-        'Invalid prop `' +
-          propName +
-          '` supplied to' +
-          ' `' +
-          componentName +
-          '`. Validation failed.',
+        `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
       );
     }
+    return null;
   },
   url: PropTypes.string,
+  showAdditionalResources: PropTypes.bool.isRequired,
 };
 
 ResourcesTopicTitle.defaultProps = {
-  hasAdditionalResources: false,
   showAdditionalDialog: false,
 };
 

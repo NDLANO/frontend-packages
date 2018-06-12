@@ -6,12 +6,11 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ResourceShape, ContentTypeShape } from '../shapes';
 import ResourceList from './ResourceList';
-import ResourceToggleFilter from './ResourceToggleFilter';
 import ResourcesTitle from '../ResourcesWrapper/ResourcesTitle';
 
 const classes = new BEMHelper({
@@ -28,27 +27,24 @@ const ResourceGroup = ({
   resourceToLinkProps,
   messages,
   contentType,
-}) => {
-  console.log('res', resources);
-  return (
-    <section
-      {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
-      <header {...classes('header')}>
-        <ResourcesTitle>{title}</ResourcesTitle>
-      </header>
-      {resources.length > 0 ? (
-        <ResourceList
-          resourceToLinkProps={resourceToLinkProps}
-          onClick={toggleAdditionalResources}
-          showAdditionalResources={showAdditionalResources}
-          icon={icon}
-          messages={messages}
-          resources={resources}
-        />
-      ) : null}
-    </section>
-  );
-};
+}) => (
+  <section
+    {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
+    <header {...classes('header')}>
+      <ResourcesTitle>{title}</ResourcesTitle>
+    </header>
+    {resources.length > 0 ? (
+      <ResourceList
+        resourceToLinkProps={resourceToLinkProps}
+        onClick={toggleAdditionalResources}
+        showAdditionalResources={showAdditionalResources}
+        icon={icon}
+        messages={messages}
+        resources={resources}
+      />
+    ) : null}
+  </section>
+);
 
 ResourceGroup.propTypes = {
   title: PropTypes.string.isRequired,
@@ -59,6 +55,7 @@ ResourceGroup.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
   empty: PropTypes.bool,
+  showAdditionalResources: PropTypes.bool,
   messages: PropTypes.shape({
     noContentBoxLabel: PropTypes.string.isRequired,
     noContentBoxButtonText: PropTypes.string.isRequired,
@@ -68,6 +65,7 @@ ResourceGroup.propTypes = {
 
 ResourceGroup.defaultProps = {
   hideResourceToggleFilter: false,
+  showAdditionalResources: false,
 };
 
 export default ResourceGroup;

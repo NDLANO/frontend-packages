@@ -220,7 +220,7 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
-      ????
+        ????
         <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>

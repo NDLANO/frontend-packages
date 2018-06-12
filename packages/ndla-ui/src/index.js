@@ -107,6 +107,8 @@ export {
   CompentenceGoalsDialog,
 } from './CompetenceGoals';
 
+export { default as NoContentBox } from './NoContentBox';
+
 export {
   default as ResourcesWrapper,
   ResourcesTitle,

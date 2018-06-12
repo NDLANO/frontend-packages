@@ -1,0 +1,17 @@
+/**
+** NO CONTENT BOX
+** No content found in lists (used by Topic and resources lists)
+**/
+
+
+.c-no-content-box {
+  background: $brand-grey--lightest;
+  border: 1px dashed $brand-color--light;
+  text-align: center;
+  padding: $spacing--small $spacing--small $spacing;
+  font-family: $font;
+  p {
+    @include font-size(16px, 18px);
+    margin: $spacing--small;
+  }
+}

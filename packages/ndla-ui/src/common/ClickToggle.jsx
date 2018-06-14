@@ -155,7 +155,9 @@ export default class ClickToggle extends React.Component {
               {children}
             </Dialog>
           )}
-          {!useDialog && (isOpen || alwaysRenderChildren) && children(this.handleOnClose, isOpen)}
+          {!useDialog &&
+            (isOpen || alwaysRenderChildren) &&
+            children(this.handleOnClose, isOpen)}
         </div>
       </Component>
     );

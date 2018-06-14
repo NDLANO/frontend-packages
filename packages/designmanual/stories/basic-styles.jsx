@@ -1663,6 +1663,35 @@ storiesOf('Grunnstiler', module)
   .add('Oversettelser', () => (
     <div>
       <StoryIntro title="Oversettelser">
+        <h1>English</h1>
+        <h1>
+          <span lang="zh">你叫什么名字</span>
+        </h1>
+        <hr />
+        <h2>English</h2>
+        <h2>
+          <span lang="zh">你叫什么名字</span>
+        </h2>
+        <h3>English</h3>
+        <h3>
+          <span lang="zh">你叫什么名字</span>
+        </h3>
+        <h4>English</h4>
+        <h4>
+          <span lang="zh">你叫什么名字</span>
+        </h4>
+        <h5>English</h5>
+        <h5>
+          <span lang="zh">你叫什么名字</span>
+        </h5>
+        <h6>English</h6>
+        <h6>
+          <span lang="zh">你叫什么名字</span>
+        </h6>
+        <p>English</p>
+        <p>
+          <span lang="zh">你叫什么名字</span>
+        </p>
         <p>
           Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
           derfor kan man i disse tilfellene bruke en liste for oversettelser.
@@ -1670,7 +1699,7 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <Translation index={1}>
-          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
+          <TranslationLine lang="zh" langName="Kinesisk" isTerm>
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
           <TranslationLine lang="pn" langName="Pinyin">

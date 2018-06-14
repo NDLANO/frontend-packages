@@ -77,7 +77,7 @@ const ArticleAuthorContent = ({
         {image && <Portrait src={image} alt={name} />}
         <section>
           <h1 id={labelledBy}>{name}</h1>
-          <p>{`${title}${title ? ' / ' : ''}${role}`}</p>
+          {title && <p>{`${title}${title ? ' / ' : ''}${role}`}</p>}
           <ul {...classes('ul-list')}>
             {phone && (
               <li>
@@ -92,7 +92,7 @@ const ArticleAuthorContent = ({
               </li>
             )}
           </ul>
-          <p {...classes('author-ingress')}>{introduction}</p>
+          {introduction && <p {...classes('author-ingress')}>{introduction}</p>}
         </section>
       </div>
       <div {...classes('author-link-container')}>
@@ -132,8 +132,8 @@ ArticleAuthorContent.propTypes = {
       phone: PropTypes.string,
       email: PropTypes.string,
       image: PropTypes.string,
-      introduction: PropTypes.string.isRequired,
-      role: PropTypes.string.isRequired,
+      introduction: PropTypes.string,
+      role: PropTypes.string,
       urlContributions: PropTypes.string,
       urlAuthor: PropTypes.string,
       licenses: PropTypes.string,

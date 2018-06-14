@@ -22,7 +22,7 @@ export const toggleLicenseInfoBox = () => {
         );
 
         const dialogContent = target.querySelector(
-          '.c-dialog__content--fullscreen',
+          '.c-figure-license--fullscreen',
         );
 
         hiddenContent.classList.toggle(activeClass);

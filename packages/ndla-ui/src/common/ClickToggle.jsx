@@ -123,6 +123,7 @@ export default class ClickToggle extends React.Component {
       dialogModifier,
       isOpen,
       useDialog,
+      alwaysRenderChildren,
       children,
       ...rest
     } = this.props;
@@ -154,7 +155,7 @@ export default class ClickToggle extends React.Component {
               {children}
             </Dialog>
           )}
-          {!useDialog && isOpen && children(this.handleOnClose)}
+          {!useDialog && (isOpen || alwaysRenderChildren) && children(this.handleOnClose, isOpen)}
         </div>
       </Component>
     );
@@ -207,6 +208,7 @@ ClickToggle.propTypes = {
   renderAsLink: PropTypes.bool,
   renderAsLightButton: PropTypes.bool,
   dialogModifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  alwaysRenderChildren: PropTypes.bool,
   useDialog: (props, propName, componentName) => {
     if (typeof props[propName] !== 'boolean') {
       return new Error(
@@ -230,4 +232,5 @@ ClickToggle.defaultProps = {
   onToggle: null,
   useDialog: false,
   id: undefined,
+  alwaysRenderChildren: false,
 };

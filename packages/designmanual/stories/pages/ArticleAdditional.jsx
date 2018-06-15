@@ -20,7 +20,7 @@ import {
 
 import { Resources } from '../molecules/resources';
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
-import { ArticleBylineExample } from '../molecules/ArticleBylineExample';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>

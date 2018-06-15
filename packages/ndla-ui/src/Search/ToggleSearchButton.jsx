@@ -54,6 +54,7 @@ const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
       isOpen={isOpen}
       onToggle={onToggle}
       title={buttonContent}
+      alwaysRenderChildren
       className={classes()}
       buttonClassName={classes('button', 'wide')}>
       {children}

@@ -14,6 +14,11 @@ import {
   Button,
 } from 'ndla-ui';
 
+import {
+  searchTabOptions,
+  searchTabFilterOptions,
+} from '../../dummydata/index';
+
 class SearchPageExample extends Component {
   constructor(props) {
     super(props);
@@ -95,34 +100,12 @@ class SearchPageExample extends Component {
     }
 
     const contextFilter =
-      this.state.currentTab !== 'all' &&
-      this.state.currentTab !== 'LEARNING_PATH' &&
+      searchTabFilterOptions[this.state.currentTab] &&
       currentResult.length > 0 ? (
         <SearchFilter
           contextFilter
           label="Egenskaper"
-          options={[
-            {
-              title: 'Film og filmklipp',
-              value: 'value',
-            },
-            {
-              title: 'Fagartikkel',
-              value: 'value1',
-            },
-            {
-              title: 'Veilleding',
-              value: 'value2',
-            },
-            {
-              title: 'Verktøy og mal',
-              value: 'value3',
-            },
-            {
-              title: 'Verktøy og mal',
-              value: 'value4',
-            },
-          ]}
+          options={searchTabFilterOptions[this.state.currentTab]}
           values={['value']}
         />
       ) : null;
@@ -324,30 +307,11 @@ class SearchPageExample extends Component {
           messages={{
             searchStringLabel: 'Du søkte på:',
             subHeading: '43 treff i Ndla',
+            dropdownBtnLabel: 'Flere innholdstyper',
+            showingInfoLabel: 'Viser:',
           }}
           searchString="Test"
-          tabOptions={[
-            {
-              title: 'Alle',
-              value: 'all',
-            },
-            {
-              title: 'Emne',
-              value: 'SUBJECT',
-            },
-            {
-              title: 'Læringssti',
-              value: 'LEARNING_PATH',
-            },
-            {
-              title: 'Fagstoff',
-              value: 'SUBJECT_MATERIAL',
-            },
-            {
-              title: 'Oppgaver og aktiviteter',
-              value: 'TASKS_AND_ACTIVITIES',
-            },
-          ]}
+          tabOptions={searchTabOptions}
           onTabChange={currentTab => {
             this.setState({
               currentTab,

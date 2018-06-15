@@ -23,6 +23,7 @@ export const SearchResult = ({
     </h1>
     <h2>{messages.subHeading}</h2>
     <FilterTabs
+      messages={messages}
       value={currentTab}
       options={tabOptions}
       contentId="search-result-content"
@@ -40,11 +41,13 @@ SearchResult.propTypes = {
       value: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  currentTab: PropTypes.string.isRequired,
+  currentTab: PropTypes.string,
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({
     searchStringLabel: PropTypes.string.isRequired,
     subHeading: PropTypes.string.isRequired,
+    dropdownBtnLabel: PropTypes.string.isRequired,
+    showingInfoLabel: PropTypes.string.isRequired,
   }).isRequired,
   searchString: PropTypes.string.isRequired,
   onTabChange: PropTypes.func.isRequired,

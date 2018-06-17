@@ -28,8 +28,6 @@ export {
   FrontpageSearchSection,
 } from './Frontpage';
 
-export { ContextProvider, ContextConsumer } from './common/TextContexts';
-
 export { default as ContentCard } from './ContentCard';
 
 export { InfoBox } from './InfoBox';

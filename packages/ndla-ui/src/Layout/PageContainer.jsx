@@ -10,17 +10,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { ContextProvider } from 'ndla-ui';
-
 const classes = new BEMHelper({
   name: 'container',
   prefix: 'o-',
 });
 
 export const PageContainer = ({ children, background, backgroundWide }) => (
-  <ContextProvider>
-    <div {...classes('', { background, backgroundWide })}>{children}</div>
-  </ContextProvider>
+  <div {...classes('', { background, backgroundWide })}>{children}</div>
 );
 
 PageContainer.propTypes = {

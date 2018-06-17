@@ -2,58 +2,48 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { HelpCircle } from 'ndla-icons/common';
+import { uuid } from 'ndla-util';
 
 import { classes } from './ResourcesWrapper';
-import SafeLink from '../common/SafeLink';
 
 import ResourceToggleFilter from '../ResourceGroup/ResourceToggleFilter';
 
 import Dialog from '../Dialog';
 import Tooltip from '../Tooltip';
 
-import { ContextConsumer } from '../common/TextContexts';
-
 const ResourcesTopicTitle = ({
-  typeOfContent,
   title,
-  url,
   explainationIconLabelledBy,
   hasAdditionalResources,
   toggleAdditionalResources,
   showAdditionalResources,
   showAdditionalDialog,
   toggleAdditionalDialog,
-}) => (
-  <ContextConsumer>
-    {texts => {
-      console.log('typeOfContent', typeOfContent);
-      console.log('ContextApi', texts[typeOfContent]);
-      return (
-        <header {...classes('topic-title-wrapper')}>
-          <div>
-            <p {...classes('topic-title-label')}>
-              {texts[typeOfContent].heading}
-            </p>
-            <h1 {...classes('topic-title')}>
-              {url ? (
-                <SafeLink to={url} {...classes('topic-title-link')}>
-                  {title}
-                </SafeLink>
-              ) : (
-                title
-              )}
-            </h1>
-          </div>
-          {hasAdditionalResources && (
-            <div>
-              <ResourceToggleFilter
-                checked={showAdditionalResources}
-                label={texts[typeOfContent].additionalFilterLabel}
-                onClick={toggleAdditionalResources}
-              />
-              <Tooltip
-                tooltip={texts[typeOfContent].dialogTooltip}
-                align="right">
+  messages,
+}) => {
+  // Fix for heading while title not required when ready.
+  let heading;
+  if (title) {
+    heading = <h1 {...classes('topic-title')}>{title}</h1>;
+  } else {
+    heading = <h1 {...classes('topic-title')}>{messages.label}</h1>;
+  }
+  return (
+    <header {...classes('topic-title-wrapper')}>
+      <div>
+        {title && <p {...classes('topic-title-label')}>{messages.label}</p>}
+        {heading}
+      </div>
+      {hasAdditionalResources && (
+        <div>
+          <ResourceToggleFilter
+            checked={showAdditionalResources}
+            label={messages.additionalFilterLabel}
+            onClick={toggleAdditionalResources}
+          />
+          {messages.dialogTooltip && (
+            <Fragment>
+              <Tooltip tooltip={messages.dialogTooltip} align="right">
                 <button
                   {...classes('topic-title-icon')}
                   aria-labelledby={explainationIconLabelledBy}
@@ -66,6 +56,7 @@ const ResourcesTopicTitle = ({
                 </button>
               </Tooltip>
               <Dialog
+                id="content-explaination-dialog"
                 labelledby={explainationIconLabelledBy}
                 hidden={!showAdditionalDialog}
                 onClose={toggleAdditionalDialog}
@@ -73,24 +64,22 @@ const ResourcesTopicTitle = ({
                 modifier={showAdditionalDialog ? 'active' : ''}>
                 <Fragment>
                   <h1 id={explainationIconLabelledBy}>
-                    {texts[typeOfContent].dialogHeading}
+                    {messages.dialogHeading}
                   </h1>
-                  <hr />
-                  {texts[typeOfContent].dialogTexts.map(text => <p>{text}</p>)}
+                  {messages.dialogTexts.map(text => <p key={uuid()}>{text}</p>)}
                 </Fragment>
               </Dialog>
-            </div>
+            </Fragment>
           )}
-        </header>
-      );
-    }}
-  </ContextConsumer>
-);
+        </div>
+      )}
+    </header>
+  );
+};
 
 /* eslint-disable no-console */
 ResourcesTopicTitle.propTypes = {
-  typeOfContent: PropTypes.oneOf(['topic', 'learningResources']).isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string, // Should be required
   toggleAdditionalResources: PropTypes.func.isRequired,
   hasAdditionalResources: PropTypes.bool.isRequired,
   toggleAdditionalDialog: (props, propName, componentName) => {
@@ -126,8 +115,14 @@ ResourcesTopicTitle.propTypes = {
     }
     return null;
   },
-  url: PropTypes.string,
   showAdditionalResources: PropTypes.bool.isRequired,
+  messages: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    dialogTooltip: PropTypes.string, // should be required
+    dialogHeading: PropTypes.string, // should be required
+    dialogTexts: PropTypes.arrayOf(PropTypes.string), // should be required
+    additionalFilterLabel: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 ResourcesTopicTitle.defaultProps = {

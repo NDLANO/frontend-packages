@@ -9,10 +9,7 @@
 import React, { Component } from 'react';
 import {
   ResourcesWrapper,
-  ResourceGroup,
   ResourcesTopicTitle,
-  ContentTypeBadge,
-  constants,
   TopicIntroductionList,
 } from 'ndla-ui';
 import { topicList } from '../../dummydata/index';
@@ -43,7 +40,16 @@ class Topics extends Component {
       <ResourcesWrapper
         header={
           <ResourcesTopicTitle
-            typeOfContent="topic"
+            messages={{
+              label: 'Emner',
+              additionalFilterLabel: 'Vis tilleggsemner',
+              dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
+              dialogHeading: 'Kjernestoff og tilleggsstoff',
+              dialogTexts: [
+                'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
+                'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+              ],
+            }}
             explainationIconLabelledBy="subject-header-id"
             title="Medieproduksjon"
             hasAdditionalResources={topicList.some(topic => topic.additional)}

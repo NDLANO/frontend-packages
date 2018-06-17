@@ -96,7 +96,16 @@ class Resources extends Component {
       <ResourcesWrapper
         header={
           <ResourcesTopicTitle
-            typeOfContent="learningResources"
+            messages={{
+              label: 'Læringsressurser',
+              additionalFilterLabel: 'Vis tilleggsressurser',
+              dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
+              dialogHeading: 'Kjernestoff og tilleggsstoff',
+              dialogTexts: [
+                'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
+                'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+              ],
+            }}
             explainationIconLabelledBy="learning-resources-info-header-id"
             id="learning-resources-id"
             title="Havbunnsløsninger"

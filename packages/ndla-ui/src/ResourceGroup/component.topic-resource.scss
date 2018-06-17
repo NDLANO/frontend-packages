@@ -37,6 +37,7 @@
     align-items: center;
 
     h1 {
+      transform: translateY(-1px);
       @include font-size(16px, 26px);
       @include mq(tablet) {
         @include font-size(18px);
@@ -64,7 +65,7 @@
   }
 
   &__icon {
-    display: inline-block;
+    display: flex;
     text-align: center;
     width: auto;
     padding-right: $spacing--small;
@@ -103,4 +104,8 @@
       margin: $spacing--small;
     }
   }
+}
+
+.c-topic-resource__list__additional-icons {
+  line-height: 0;
 }

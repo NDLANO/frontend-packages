@@ -54,17 +54,19 @@ const Resource = ({
       <span id={id} hidden>
         {contentTypeDescription}
       </span>
+      <div>
       {resource.additional && (
         <Tooltip tooltip={contentTypeDescription} align="right">
-          <Additional className="c-icon--20 u-margin-left-tiny" />
+          <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
         </Tooltip>
       )}
       {!resource.additional &&
         showAdditionalResources && (
           <Tooltip tooltip={contentTypeDescription} align="right">
-            <Core className="c-icon--20 u-margin-left-tiny" />
+            <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"  />
           </Tooltip>
         )}
+      </div>
     </Fragment>
   ) : (
     <Link

@@ -123,7 +123,9 @@ export default class SearchPage extends Component {
             <div {...classes('filters')}>{filters}</div>
           </aside>
           <div {...classes('result-wrapper')}>
-            <h2 aria-hidden="true">{messages.resultHeading}</h2>
+            <h2 aria-hidden="true" {...classes('result-label', 'large-screen')}>
+              {messages.resultHeading}
+            </h2>
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
@@ -139,6 +141,9 @@ export default class SearchPage extends Component {
                 Filter
               </Button>
             </div>
+            <h2 aria-hidden="true" {...classes('result-label', 'small-screen')}>
+              {messages.resultHeading}
+            </h2>
             {children}
           </div>
         </div>

@@ -1,0 +1,5 @@
+{
+  "static": {
+    "rewrites": [{ "source": "health", "destination": "/index.html" }]
+  }
+}

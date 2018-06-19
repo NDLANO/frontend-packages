@@ -162,7 +162,7 @@ async function deploy(sha) {
   targetUrl = getUrl(result);
 
   updateStatus(sha, {
-    target_url: targetUrl,
+    target_url: `${targetUrl}/health`,
     state: 'pending',
     description: `▲ Now deployment build started...`,
   });

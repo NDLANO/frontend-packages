@@ -162,21 +162,23 @@ async function deploy(sha) {
   targetUrl = getUrl(result);
 
   updateStatus(sha, {
-    target_url: `${targetUrl}/health`,
+    target_url: `${targetUrl}`,
     state: 'pending',
     description: `▲ Now deployment build started...`,
   });
 
   console.log(
-    `🤠 Alrighty, deploy started. Now we're going to ping ${targetUrl} until it's ready!`,
+    `🤠 Alrighty, deploy started. Now we're going to ping ${targetUrl}/health until it's ready!`,
   );
 
   // check on the site for ~20 minutes every 10 seconds
-  await awaitUrl(targetUrl, { interval: 10000, tries: 119 }).catch(err => {
-    console.error('Error waiting for the deployment to be ready.');
-    onError(sha, err);
-    throw err;
-  });
+  await awaitUrl(`${targetUrl}/health`, { interval: 10000, tries: 119 }).catch(
+    err => {
+      console.error('Error waiting for the deployment to be ready.');
+      onError(sha, err);
+      throw err;
+    },
+  );
 
   console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
 

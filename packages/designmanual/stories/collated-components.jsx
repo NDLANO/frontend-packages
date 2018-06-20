@@ -493,7 +493,9 @@ storiesOf('Sammensatte moduler', module)
         </Translation>
       </StoryBody>
       <StoryBody>
-        <h2 className="u-heading">Oversettelseliste (Med props lang og langName definert)</h2>
+        <h2 className="u-heading">
+          Oversettelseliste (Med props lang og langName definert)
+        </h2>
         <Translation index={1}>
           <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？//你叫什麼名字？

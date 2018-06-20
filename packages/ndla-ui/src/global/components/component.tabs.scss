@@ -115,7 +115,9 @@ $tabs-spacing: 12px;
       transform: translateY(2px);
       animation-name: tabDropdownAnimation;
       animation-duration: 200ms;
-      opacity: 1;
+      animation-delay: 100ms;
+      animation-fill-mode: forwards;
+      opacity: 0;
       display: block;
       border: 1px solid $brand-grey--lightest;
       background: #fff;
@@ -131,12 +133,6 @@ $tabs-spacing: 12px;
     margin: $spacing/1.4 0 $spacing--small;
     border-bottom: 1px solid $brand-color--tertiary;
     padding: 0;
-  }
-
-  &__tabinfo {
-    @include font-size(16px, 20px);
-    color: $text-light-color;
-    margin: $spacing--small 0;
   }
 
   &__panel {

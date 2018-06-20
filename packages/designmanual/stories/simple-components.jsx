@@ -591,7 +591,8 @@ storiesOf('Enkle komponenter', module)
           vindu (det vil si at vi bruker <code>target=&quot;_self&quot;</code>{' '}
           eller ingen target-attributt). Unntaket er hvis lenken inngår i et
           skjema eller læringssammenhengen gjør det er nødvendig at brukerne
-          beholder vinduet eller fanen de står i.
+          beholder vinduet eller fanen de står i. Når lenker går til et annet
+          nettsted (eksterne lenker) skal disse alltid åpnes i ny fane
         </p>
       </StoryIntro>
     </div>

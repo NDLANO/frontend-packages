@@ -57,12 +57,16 @@ class FilterTabs extends Component {
     if (!this.tabWidths) {
       // Get all tabs widths
       this.tabWidths = [];
+      let widestNode = 0;
       this.props.options.forEach((option, counter) => {
-        this.tabWidths[counter] = this.liRefs[
-          option.value
-        ].parentNode.offsetWidth;
+        const nodeWidth = this.liRefs[option.value].parentNode.offsetWidth;
+        widestNode = Math.max(nodeWidth, widestNode);
+        this.tabWidths[counter] = nodeWidth;
       });
-      this.dropdownTabWidth = this.dropdownTabRef.parentNode.offsetWidth;
+      this.dropdownTabWidth = Math.max(
+        this.dropdownTabRef.parentNode.offsetWidth,
+        widestNode,
+      );
     }
   }
 
@@ -165,7 +169,7 @@ class FilterTabs extends Component {
   renderDropdownTabs() {
     this.showSelectedTab = false;
     if (
-      this.state.visibleTabsCounter > this.props.options.length &&
+      this.state.visibleTabsCounter === this.props.options.length &&
       this.dropdownTabRef
     ) {
       // No need for dropdown as every tab is showing.
@@ -234,12 +238,22 @@ class FilterTabs extends Component {
         </li>
       );
     });
+    const moreLabel = this.showSelectedTab
+      ? this.props.options[
+          this.props.options.findIndex(option => option.value === value)
+        ].title
+      : messages.dropdownBtnLabel;
+    const modifiers = ['no-margin', 'button-based', 'dropdown-btn'];
+    const isSelected = moreLabel !== messages.dropdownBtnLabel;
+    if (isSelected) {
+      modifiers.push('selected');
+    }
     return (
-      <li {...classes('tab', ['no-margin', 'button-based', 'dropdown-btn'])}>
+      <li {...classes('tab', modifiers)}>
         <button
           role="tab"
           tabIndex={-1}
-          aria-selected={false}
+          aria-selected={isSelected}
           aria-controls={contentId}
           onClick={() => {
             if (!this.state.showDropdown) {
@@ -250,14 +264,10 @@ class FilterTabs extends Component {
             }
           }}
           onBlur={() => {
-            if (
-              !this.liRefs[this.props.value].getAttribute('data-dropdowntab')
-            ) {
-              this.setState({
-                showDropdown: false,
-                focusOnSelected: false,
-              });
-            }
+            this.setState({
+              showDropdown: false,
+              focusOnSelected: false,
+            });
           }}
           onKeyDown={event => {
             if (escKeys.some(key => key === event.key)) {
@@ -269,7 +279,7 @@ class FilterTabs extends Component {
           ref={ref => {
             this.dropdownTabRef = ref;
           }}>
-          {messages.dropdownBtnLabel} <ArrowDropDown />
+          {moreLabel} <ArrowDropDown />
         </button>
         <div
           {...classes('tab-dropdown', tabDropdownModifier)}
@@ -293,16 +303,6 @@ class FilterTabs extends Component {
           {this.renderVisibleTabs()}
           {this.renderDropdownTabs()}
         </ul>
-        {this.showSelectedTab && (
-          <p {...classes('tabinfo')}>
-            {this.props.messages.showingInfoLabel}{' '}
-            {
-              this.props.options[
-                this.props.options.findIndex(option => option.value === value)
-              ].title
-            }
-          </p>
-        )}
         <div
           {...classes('panel')}
           role="tabpanel"

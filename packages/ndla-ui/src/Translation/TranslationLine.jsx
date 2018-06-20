@@ -16,20 +16,21 @@ const classes = new BEMHelper({
 });
 
 const TranslationLine = ({ children, lang, langName, isTerm }) => {
+  const hasLang = langName && lang;
   const content = (
     <Fragment>
       <div {...classes('line-body')} lang={lang}>
         {children}
       </div>
-      {langName && lang && <div {...classes('line-lang')}>{langName}</div>}
+      {hasLang && <div {...classes('line-lang')}>{langName}</div>}
     </Fragment>
   );
 
   if (isTerm) {
-    return <dt {...classes('line')}>{content}</dt>;
+    return <dt {...classes('line', hasLang ? 'lang' : '')}>{content}</dt>;
   }
 
-  return <dd {...classes('line')}>{content}</dd>;
+  return <dd {...classes('line', hasLang ? 'lang' : '')}>{content}</dd>;
 };
 
 TranslationLine.propTypes = {

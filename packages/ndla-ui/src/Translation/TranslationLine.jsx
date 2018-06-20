@@ -21,7 +21,7 @@ const TranslationLine = ({ children, lang, langName, isTerm }) => {
       <div {...classes('line-body')} lang={lang}>
         {children}
       </div>
-      <div {...classes('line-lang')}>{langName}</div>
+      {langName && lang && <div {...classes('line-lang')}>{langName}</div>}
     </Fragment>
   );
 
@@ -35,12 +35,14 @@ const TranslationLine = ({ children, lang, langName, isTerm }) => {
 TranslationLine.propTypes = {
   isTerm: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  lang: PropTypes.string.isRequired,
-  langName: PropTypes.string.isRequired,
+  lang: PropTypes.string,
+  langName: PropTypes.string,
 };
 
 TranslationLine.defaultProps = {
   isTerm: false,
+  lang: undefined,
+  langName: undefined,
 };
 
 export default TranslationLine;

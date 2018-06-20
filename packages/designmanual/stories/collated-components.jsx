@@ -480,7 +480,20 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <h2 className="u-heading">Oversettelseliste</h2>
+        <h2 className="u-heading">Oversettelseliste enkel [I BRUK]</h2>
+        <Translation index={1}>
+          <TranslationLine>你叫什么名字？//你叫什麼名字？</TranslationLine>
+          <TranslationLine>Nǐ jiào shénme míngzi?</TranslationLine>
+          <TranslationLine>Hva heter du?</TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine>你是学生。//你是學生。</TranslationLine>
+          <TranslationLine>Nǐ shì xuésheng.</TranslationLine>
+          <TranslationLine>Du er student.</TranslationLine>
+        </Translation>
+      </StoryBody>
+      <StoryBody>
+        <h2 className="u-heading">Oversettelseliste [IKKE I BRUK!]</h2>
         <Translation index={1}>
           <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？//你叫什麼名字？

@@ -323,7 +323,6 @@ FilterTabs.propTypes = {
   ).isRequired,
   messages: PropTypes.shape({
     dropdownBtnLabel: PropTypes.string.isRequired,
-    showingInfoLabel: PropTypes.string.isRequired,
   }).isRequired,
   contentId: PropTypes.string.isRequired,
   value: PropTypes.string,

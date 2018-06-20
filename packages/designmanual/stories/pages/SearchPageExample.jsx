@@ -308,7 +308,6 @@ class SearchPageExample extends Component {
             searchStringLabel: 'Du søkte på:',
             subHeading: '43 treff i Ndla',
             dropdownBtnLabel: 'Flere innholdstyper',
-            showingInfoLabel: 'Viser:',
           }}
           searchString="Test"
           tabOptions={searchTabOptions}

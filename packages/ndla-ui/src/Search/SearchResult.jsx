@@ -47,7 +47,6 @@ SearchResult.propTypes = {
     searchStringLabel: PropTypes.string.isRequired,
     subHeading: PropTypes.string.isRequired,
     dropdownBtnLabel: PropTypes.string.isRequired,
-    showingInfoLabel: PropTypes.string.isRequired,
   }).isRequired,
   searchString: PropTypes.string.isRequired,
   onTabChange: PropTypes.func.isRequired,

@@ -483,7 +483,9 @@ storiesOf('Sammensatte moduler', module)
         <h2 className="u-heading">Oversettelseliste enkel</h2>
         <Translation index={1}>
           <TranslationLine>你叫什么名字？//你叫什麼名字？</TranslationLine>
-          <TranslationLine>Nǐ jiào shénme míngzi?</TranslationLine>
+          <TranslationLine>
+            Nǐ jiào <strong>shénme</strong> míngzi?
+          </TranslationLine>
           <TranslationLine>Hva heter du?</TranslationLine>
         </Translation>
         <Translation index={2}>

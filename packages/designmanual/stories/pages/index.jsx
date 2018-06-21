@@ -43,7 +43,6 @@ import Frontpage from './FrontpageExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
-// import * as banners from '../../images/banners';
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (

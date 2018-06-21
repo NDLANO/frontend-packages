@@ -16,7 +16,7 @@ export const searchTabOptions = [
     value: 'SUBJECT_MATERIAL',
   },
   {
-    title: 'Oppgaver og aktiviteter',
+    title: 'Oppgaver..',
     value: 'TASKS_AND_ACTIVITIES',
   },
   {

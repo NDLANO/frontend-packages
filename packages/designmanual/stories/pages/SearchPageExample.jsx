@@ -1,6 +1,34 @@
 import React, { Fragment, Component } from 'react';
 import { Core, Additional } from 'ndla-icons/common';
 
+/*
+export const SubjectMaterialBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
+);
+export const TasksAndActivitiesBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
+);
+export const AssessmentResourcesBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
+);
+export const SubjectBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />
+);
+export const ExternalLearningResourcesBadge = props => (
+  <ContentTypeBadge
+    {...props}
+    type={contentTypes.EXTERNAL_LEARNING_RESOURCES}
+  />
+);
+export const SourceMaterialBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
+);
+
+export const LearningPathBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
+);
+*/
+
 import {
   SearchPage,
   SearchResult,
@@ -10,6 +38,10 @@ import {
   SubjectBadge,
   SubjectMaterialBadge,
   LearningPathBadge,
+  AssessmentResourcesBadge,
+  ExternalLearningResourcesBadge,
+  TasksAndActivitiesBadge,
+  SourceMaterialBadge,
   Image,
   Button,
 } from 'ndla-ui';
@@ -19,6 +51,95 @@ import {
   searchTabFilterOptions,
 } from '../../dummydata/index';
 
+const results = [
+  {
+    id: 1,
+    title: 'Ideskapning og mediedesign',
+    url: '#1',
+    ingress:
+      'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+    contentTypeLabel: 'Emne',
+    contentTypeIcon: <SubjectBadge size="x-small" background />,
+    breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
+    matchTab: ['SUBJECT'],
+  },
+  {
+    id: 2,
+    title: 'Ideskapning og mediedesign',
+    url: '#2',
+    ingress:
+      'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+    contentTypeLabel: 'Læringssti',
+    contentTypeIcon: <LearningPathBadge size="x-small" background />,
+    breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
+    matchTab: ['LEARNING_PATH'],
+  },
+  {
+    id: 3,
+    title: 'Ideskapning og mediedesign',
+    url: '#3',
+    ingress:
+      'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+    contentTypeLabel: 'Fagstoff',
+    contentTypeIcon: <SubjectMaterialBadge size="x-small" background />,
+    additional: true,
+    image: (
+      <Image
+        alt="Forstørrelsesglass"
+        src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+      />
+    ),
+    subjects: [
+      {
+        url: '#1',
+        title: 'Flerfaglig',
+      },
+      {
+        url: '#2',
+        title: 'Medieuttrykk og mediesamfunn',
+      },
+      {
+        url: '#3',
+        title: 'Norsk',
+      },
+    ],
+    matchTab: ['SUBJECT_MATERIAL'],
+  },
+  {
+    id: 4,
+    title: 'Hva kan du om platetektonikk?',
+    url: '#4',
+    ingress:
+      'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
+    contentTypeLabel: 'Oppgaver og aktiveter',
+    contentTypeIcon: <TasksAndActivitiesBadge size="x-small" background />,
+    breadcrumb: ['Brønnteknikk', 'Leting og boring', 'Geologi for brønnteknikk'],
+    matchTab: ['TASKS_AND_ACTIVITIES'],
+  },
+  {
+    id: 5,
+    title: 'Brukertips medier og kommunikasjon Vg1',
+    url: '#5',
+    ingress:
+      'Faget Medieuttrykk og mediesamfunnet Vg1 dekker kompetansemålene i de to felles programfagene i utdanningsprogrammet medier og kommunikasjon.',
+    contentTypeLabel: 'Vurderingsressurs',
+    contentTypeIcon: <AssessmentResourcesBadge size="x-small" background />,
+  breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
+    matchTab: ['EVALUATION_RESOURCE'],
+  },
+  {
+    id: 6,
+    title: 'En helt vanlig dag på jobben',
+    url: '#6',
+    ingress:
+      'Filmen En helt vanlig dag på jobben er regissert av Terje Rangnes etter et manus av Erlend Loe. Manuset er basert på en bok av tidligere Se og Hør-journalist Håvard Melnæs med samme tittel.',
+    contentTypeLabel: 'Delte ressurser',
+    contentTypeIcon: <ExternalLearningResourcesBadge size="x-small" background />,
+  breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Mediebransjen', 'Journalistikk'],
+    matchTab: ['SHARED_RESOURCES'],
+  },
+];
+
 class SearchPageExample extends Component {
   constructor(props) {
     super(props);
@@ -27,85 +148,15 @@ class SearchPageExample extends Component {
     };
   }
   render() {
-    const results = [
-      {
-        id: 1,
-        title: 'Ideskapning og mediedesign',
-        url: '#1',
-        ingress:
-          'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-        contentTypeLabel: 'Emne',
-        contentTypeIcon: <SubjectBadge size="x-small" background />,
-        breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-      },
-      {
-        id: 2,
-        title: 'Ideskapning og mediedesign',
-        url: '#2',
-        ingress:
-          'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-        contentTypeLabel: 'Fagstoff',
-        contentTypeIcon: <SubjectMaterialBadge size="x-small" background />,
-        additional: true,
-        image: (
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        ),
-        subjects: [
-          {
-            url: '#1',
-            title: 'Flerfaglig',
-          },
-          {
-            url: '#2',
-            title: 'Medieuttrykk og mediesamfunn',
-          },
-          {
-            url: '#3',
-            title: 'Norsk',
-          },
-        ],
-      },
-      {
-        id: 3,
-        title: 'Ideskapning og mediedesign',
-        url: '#3',
-        ingress:
-          'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-        contentTypeLabel: 'Læringssti',
-        contentTypeIcon: <LearningPathBadge size="x-small" background />,
-        breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-      },
-    ];
-
-    let currentResult = null;
-
-    switch (this.state.currentTab) {
-      case 'learningPath':
-        currentResult = [results[2]];
-        break;
-      case 'subject':
-        currentResult = [results[0]];
-        break;
-      case 'subjectMaterial':
-        currentResult = [results[1]];
-        break;
-      case 'externalLearningResources':
-        currentResult = [];
-        break;
-      default:
-        currentResult = results;
-    }
-
+    const { currentTab } = this.state;
+    const currentResult = currentTab === 'all' ? results : results.filter(result => (result.matchTab.indexOf(currentTab) !== -1));
     const contextFilter =
-      searchTabFilterOptions[this.state.currentTab] &&
+      searchTabFilterOptions[currentTab] &&
       currentResult.length > 0 ? (
         <SearchFilter
           contextFilter
           label="Egenskaper"
-          options={searchTabFilterOptions[this.state.currentTab]}
+          options={searchTabFilterOptions[currentTab]}
           values={['value']}
         />
       ) : null;
@@ -141,7 +192,7 @@ class SearchPageExample extends Component {
         ]}
         onActiveFilterRemove={() => {}}
         messages={{
-          filterHeading: 'Filter',
+          filterHeading: 'Filtrer:',
           resultHeading: '43 treff i Ndla',
           closeButton: 'Lukk',
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
@@ -311,12 +362,12 @@ class SearchPageExample extends Component {
           }}
           searchString="Test"
           tabOptions={searchTabOptions}
-          onTabChange={currentTab => {
+          onTabChange={newCurrentTab => {
             this.setState({
-              currentTab,
+              currentTab: newCurrentTab,
             });
           }}
-          currentTab={this.state.currentTab}>
+          currentTab={currentTab}>
           {contextFilter}
           <SearchResultList
             messages={{

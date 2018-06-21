@@ -55,7 +55,7 @@ $tabs-spacing: 12px;
       padding-right: 0;
       float: right;
       position: relative;
-      z-index: 9000;
+      z-index: 1;
       > button {
         padding-right: ($spacing--small) / 2 !important;
       }

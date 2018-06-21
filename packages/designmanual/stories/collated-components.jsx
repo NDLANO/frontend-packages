@@ -38,7 +38,7 @@ import RelatedArticleListExample, {
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 
-import Oops from './images/oops.gif';
+import Oops from '../images/oops.gif';
 
 const toggle = () => {
   document

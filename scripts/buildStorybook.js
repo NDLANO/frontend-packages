@@ -8,15 +8,7 @@ const storybookCmd = path.resolve(
   __dirname,
   `../node_modules/.bin/${storybook}`,
 );
-let args = process.argv.slice(-2);
-
-if (args[0] === '-o') {
-  // hack to accommodate storybook-to-ghpages script
-  args = [
-    args[0],
-    path.resolve(__dirname, '../packages/designmanual/', `../../${args[1]}`),
-  ];
-}
+const args = process.argv.slice(-2);
 
 runCommand(
   storybookCmd,

@@ -24,6 +24,7 @@ import {
   PageContainer,
   Content,
 } from 'ndla-ui';
+import { StoryIntro, BannerList } from '../wrappers';
 
 import { MastheadWithTopicMenu } from '../molecules/mastheads';
 import Subject, { SubjectWithTwoColumn } from './Subject';
@@ -40,7 +41,9 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 
-import NotExist from '../images/not-exist.gif';
+import NotExist from '../../images/not-exist.gif';
+import banners from '../../images/banners';
+// import * as banners from '../../images/banners';
 
 storiesOf('Sidevisninger', module)
   .add('En side uten innhold', () => (
@@ -313,6 +316,25 @@ storiesOf('Emnesider', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Bannerbilder', () => (
+    <div>
+      <StoryIntro title="Bannerbilder">
+        <p>
+          Hvert fag i NDLA kan ha sitt eget unike bannerbilde. Det er anbefalt
+          at bannerbildene er i SVG format og har en versjon for desktop og en
+          annen versjon for mobil.
+        </p>
+        <p>
+          Ved utfylling av importskjema må lenken til bannerbildet hentes
+          herfra. Ved å trykke på «Kopier mobil/desktop banner» knappene, får du
+          en lenke som kan limes inn i importskjemaet.
+        </p>
+      </StoryIntro>
+      <div style={{ width: '80%', margin: '0 auto' }}>
+        <BannerList banners={banners} />
+      </div>
+    </div>
   ))
   .add('Last inn emne', () => (
     <PageContainer>

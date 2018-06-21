@@ -113,7 +113,11 @@ const results = [
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
     contentTypeIcon: <TasksAndActivitiesBadge size="x-small" background />,
-    breadcrumb: ['Brønnteknikk', 'Leting og boring', 'Geologi for brønnteknikk'],
+    breadcrumb: [
+      'Brønnteknikk',
+      'Leting og boring',
+      'Geologi for brønnteknikk',
+    ],
     matchTab: ['TASKS_AND_ACTIVITIES'],
   },
   {
@@ -124,7 +128,7 @@ const results = [
       'Faget Medieuttrykk og mediesamfunnet Vg1 dekker kompetansemålene i de to felles programfagene i utdanningsprogrammet medier og kommunikasjon.',
     contentTypeLabel: 'Vurderingsressurs',
     contentTypeIcon: <AssessmentResourcesBadge size="x-small" background />,
-  breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
+    breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
     matchTab: ['EVALUATION_RESOURCE'],
   },
   {
@@ -134,8 +138,14 @@ const results = [
     ingress:
       'Filmen En helt vanlig dag på jobben er regissert av Terje Rangnes etter et manus av Erlend Loe. Manuset er basert på en bok av tidligere Se og Hør-journalist Håvard Melnæs med samme tittel.',
     contentTypeLabel: 'Delte ressurser',
-    contentTypeIcon: <ExternalLearningResourcesBadge size="x-small" background />,
-  breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Mediebransjen', 'Journalistikk'],
+    contentTypeIcon: (
+      <ExternalLearningResourcesBadge size="x-small" background />
+    ),
+    breadcrumb: [
+      'Medieuttrykk og mediesamfunnet',
+      'Mediebransjen',
+      'Journalistikk',
+    ],
     matchTab: ['SHARED_RESOURCES'],
   },
 ];
@@ -149,10 +159,12 @@ class SearchPageExample extends Component {
   }
   render() {
     const { currentTab } = this.state;
-    const currentResult = currentTab === 'all' ? results : results.filter(result => (result.matchTab.indexOf(currentTab) !== -1));
+    const currentResult =
+      currentTab === 'all'
+        ? results
+        : results.filter(result => result.matchTab.indexOf(currentTab) !== -1);
     const contextFilter =
-      searchTabFilterOptions[currentTab] &&
-      currentResult.length > 0 ? (
+      searchTabFilterOptions[currentTab] && currentResult.length > 0 ? (
         <SearchFilter
           contextFilter
           label="Egenskaper"
@@ -375,6 +387,7 @@ class SearchPageExample extends Component {
               noResultHeading: 'Hmm, ikke noe innhold ...',
               noResultDescription:
                 'Vi har dessverre ikke noe å tilby her. Hvis du vil foreslå noe innhold til dette området, kan du bruke Spør NDLA som du finner nede til høyre på skjermen.',
+              additionalContentToolip: 'Tilleggsstoff',
             }}
             results={currentResult}
           />

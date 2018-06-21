@@ -60,7 +60,7 @@ CopyButton.propTypes = {
 
 const BannerList = ({ banners }) =>
   banners.map(banner => (
-    <div style={{ marginTop: '26px' }}>
+    <div key={banner.desktop} style={{ marginTop: '26px' }}>
       <SubjectHeader
         heading={banner.name}
         images={[

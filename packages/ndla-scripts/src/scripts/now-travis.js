@@ -124,7 +124,7 @@ async function spawnDeploy(sha) {
     nowToken,
     '--no-clipboard',
     '--region',
-    'bru',
+    'bru1',
     ...providedArgs,
   ];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);

@@ -7,29 +7,61 @@ const authorSimple = {
   role: '[Rolle]',
   name: '[Ola nordmann]',
   urlContributions: '#',
+  urlContributionsLabel: 'Se hva Ole har bidratt med',
   urlAuthor: '#',
+  urlAuthorLabel: 'Les mer om Ole',
   title: '[Tittel]',
   phone: '[Telefon nr]',
   email: '[Epost]',
-  image: 'http://via.placeholder.com/350x150',
+  image: 'http://via.placeholder.com/200x200',
   introduction: '[Introduksjonstekst]',
 };
 
-const authorRealText = {
-  role: 'rolle',
-  name: 'Cecilie Isaksen Eftedal',
-  urlContributions: '#',
-  urlAuthor: '#',
-  title: 'Stilling',
-  phone: '+47 123 45 678',
-  email: 'cecilie@ndla.no',
-  image: 'http://via.placeholder.com/200x200',
-  introduction: 'Er fagleder for bla bla..',
-};
+const authorRealText = [
+  {
+    role: 'rolle',
+    name: 'Cecilie Isaksen Eftedal',
+    urlContributions: '#',
+    urlContributionsLabel: 'Se hva Cecilie har bidratt med',
+    urlAuthor: '#',
+    urlAuthorLabel: 'Les mer om Cecilie',
+    title: 'Stilling',
+    phone: '+47 123 45 678',
+    email: 'cecilie@ndla.no',
+    image: 'http://via.placeholder.com/200x200',
+    introduction: 'Er fagleder for bla bla..',
+  },
+  {
+    role: 'rolle',
+    name: 'Siv Mundal',
+    urlContributions: '#',
+    urlContributionsLabel: 'Se hva Siv har bidratt med',
+    urlAuthor: '#',
+    urlAuthorLabel: 'Les mer om Siv',
+    title: 'Stilling',
+    phone: '+47 123 45 678',
+    email: 'siv.mundal@keyteq.no',
+    image: 'http://via.placeholder.com/200x200',
+    introduction: 'Er fagleder for bla bla..',
+  },
+  {
+    role: 'rolle',
+    name: 'Pål Frøsndal',
+    urlContributions: '#',
+    urlContributionsLabel: 'Se hva Pål har bidratt med',
+    urlAuthor: '#',
+    urlAuthorLabel: 'Les mer om Cecilie',
+    title: 'Stilling',
+    phone: '+47 123 45 678',
+    email: 'paal.fronsdal@ndla.no',
+    image: 'http://via.placeholder.com/200x200',
+    introduction: 'Er fagleder for bla bla..',
+  },
+];
 
 const authors = {
   simple: [authorSimple, authorSimple, authorSimple],
-  real: [authorRealText, authorRealText, authorRealText],
+  real: authorRealText,
 };
 
 const ArticleBylineExample = ({ multipleAuthors, useRealText, additional }) => {
@@ -41,11 +73,11 @@ const ArticleBylineExample = ({ multipleAuthors, useRealText, additional }) => {
       license={useRealText ? 'CC BY-SA' : '[lisens]'}
       licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
       messages={{
-        writtenBy: '',
         lastUpdated: 'Publisert',
-        authorLabel: 'Opphavsmann',
+        authorLabel: 'Opphavsmenn',
         authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-        close: 'Lukk',
+        useContent: 'Bruk innhold',
+        closeLabel: 'Lukk',
       }}
       additional={additional}
     />

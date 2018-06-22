@@ -17,6 +17,7 @@ import {
   Image,
   Translation,
   TranslationLine,
+  ArticleByline,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -47,6 +48,104 @@ const toggle = () => {
 };
 
 storiesOf('Sammensatte moduler', module)
+  .add('Artikkel info linje', () => (
+    <Center>
+      <h2 className="u-heading">Linje artikkel enkel variant</h2>
+      <ArticleByline
+        authors={[
+          {
+            name: 'Cecilie Isaksen Eftedal',
+          },
+          {
+            name: 'Pål Frønsdal',
+          },
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        messages={{
+          lastUpdated: 'Publisert',
+          useContent: 'Bruk innhold',
+          closeLabel: 'Lukk',
+        }}
+      />
+      <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
+      <ArticleByline
+        authors={[
+          {
+            name: 'Cecilie Isaksen Eftedal',
+          },
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+        additional
+        messages={{
+          lastUpdated: 'Publisert',
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
+          additionalLabel: 'Tilleggsstoff',
+          useContent: 'Bruk innhold',
+          closeLabel: 'Lukk',
+        }}
+      />
+      <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
+      <ArticleByline
+        authors={[
+          {
+            role: 'rolle',
+            name: 'Cecilie Isaksen Eftedal',
+            urlContributions: '#',
+            urlContributionsLabel: 'Se hva Cecilie har bidratt med',
+            urlAuthor: '#',
+            urlAuthorLabel: 'Les mer om Cecilie',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'cecilie@ndla.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
+          },
+          {
+            role: 'rolle',
+            name: 'Siv Mundal',
+            urlContributions: '#',
+            urlContributionsLabel: 'Se hva Siv har bidratt med',
+            urlAuthor: '#',
+            urlAuthorLabel: 'Les mer om Siv',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'siv.mundal@keyteq.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
+          },
+          {
+            role: 'rolle',
+            name: 'Pål Frøsndal',
+            urlContributions: '#',
+            urlContributionsLabel: 'Se hva Pål har bidratt med',
+            urlAuthor: '#',
+            urlAuthorLabel: 'Les mer om Cecilie',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'paal.fronsdal@ndla.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
+          },
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+        additional
+        messages={{
+          lastUpdated: 'Publisert',
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
+          additionalLabel: 'Tilleggsstoff',
+          useContent: 'Bruk innhold',
+          closeLabel: 'Lukk',
+        }}
+      />
+    </Center>
+  ))
   .add('Brødsmulesti', () => (
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>

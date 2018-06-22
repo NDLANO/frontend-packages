@@ -15,15 +15,26 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Portrait = ({ src, alt }) => (
-  <figure {...classes()}>
-    <img src={src} alt={alt} />
-  </figure>
+const Portrait = ({ src, alt, modifier, className }) => (
+  <div {...classes('', modifier, className)}>
+    <span
+      role="img"
+      aria-label={alt}
+      style={{ backgroundImage: `url(${src})` }}
+    />
+  </div>
 );
 
 Portrait.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  modifier: PropTypes.oneOf(['small', 'large']),
+};
+
+Portrait.defaultProps = {
+  className: null,
+  modifier: null,
 };
 
 export default Portrait;

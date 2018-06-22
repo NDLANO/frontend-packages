@@ -40,7 +40,7 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleBylineExample useRealText />
+          <ArticleBylineExample useRealText multipleAuthors />
           <CompentenceGoalsDialogExample
             narrow
             headingId="article-compentence-goals-narrow-heading-id"

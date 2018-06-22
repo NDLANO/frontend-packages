@@ -10,9 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { Portrait } from 'ndla-ui';
-
-import SafeLink from '../common/SafeLink';
+import { Portrait, SafeLink } from 'ndla-ui';
 
 const classes = new BEMHelper({
   name: 'article-author-popup',
@@ -32,8 +30,10 @@ const ArticleAuthorContent = ({
   ) {
     // Render author list
     return (
-      <div {...classes('content')}>
-        <h1 id={labelledBy}>{authorLabel}</h1>
+      <div {...classes()}>
+        <h1 {...classes('heading')} id={labelledBy}>
+          {authorLabel}
+        </h1>
         <p>{authorDescription}</p>
         <hr />
         <ul {...classes('ul-list')}>
@@ -66,58 +66,34 @@ const ArticleAuthorContent = ({
     email,
     introduction,
     urlContributions,
+    urlContributionsLabel,
     urlAuthor,
+    urlAuthorLabel,
   } = authors[showAuthor !== null && showAuthor !== undefined ? showAuthor : 0];
-  const firstName =
-    name.indexOf(' ') === -1 ? name : name.substr(0, name.indexOf(' '));
 
   return (
-    <div {...classes('content')}>
+    <div {...classes()}>
       <div {...classes('author-info')}>
-        {image && <Portrait src={image} alt={name} />}
+        {image && <Portrait src={image} alt={name} {...classes('portrait')} />}
         <section>
-          <h1 id={labelledBy}>{name}</h1>
+          <h1 {...classes('heading')} id={labelledBy}>
+            {name}
+          </h1>
           {title && <p>{`${title}${title ? ' / ' : ''}${role}`}</p>}
-          <ul {...classes('ul-list')}>
-            {phone && (
-              <li>
-                <SafeLink to={`tel:${phone.replace(/\s/g, '')}`}>
-                  {phone}
-                </SafeLink>
-              </li>
-            )}
-            {email && (
-              <li>
-                <SafeLink to={`mailto:${email}`}>{email}</SafeLink>
-              </li>
-            )}
-          </ul>
-          {introduction && <p {...classes('author-ingress')}>{introduction}</p>}
+          {phone && <p>{phone}</p>}
+          {email && <SafeLink to={`mailto:${email}`}>{email}</SafeLink>}
+          {introduction && <p {...classes('', 'ingress')}>{introduction}</p>}
         </section>
       </div>
       <div {...classes('author-link-container')}>
         {urlContributions && (
-          <span>
-            <a
-              href={urlContributions}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="c-button c-button--outline">
-              Se hva {firstName} har bidratt med
-            </a>
-          </span>
+          <SafeLink
+            className="c-button c-button--outline"
+            to={urlContributions}>
+            {urlContributionsLabel}
+          </SafeLink>
         )}
-        {urlAuthor && (
-          <span>
-            <a
-              href={urlAuthor}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="c-button--link">
-              Les mer om {firstName}
-            </a>
-          </span>
-        )}
+        {urlAuthor && <SafeLink to={urlAuthor}>{urlAuthorLabel}</SafeLink>}
       </div>
     </div>
   );

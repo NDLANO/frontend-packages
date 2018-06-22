@@ -66,8 +66,16 @@
 
     @include mq(tablet) {
       margin: 0;
+      @include font-size(40px, 40px);
+      padding: 0 0 0 $subject-margin;
+    }
+
+    @include mq(desktop) {
+      margin: 0;
       @include font-size(52px, 52px);
       padding: 0 0 0 $subject-margin;
     }
+
+
   }
 }

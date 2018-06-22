@@ -9,11 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import SafeLink from '../common/SafeLink';
+import { Additional, Core } from 'ndla-icons/common';
+import { Tooltip, NoContentBox, SafeLink } from 'ndla-ui';
 import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
-import { Additional, Core } from 'ndla-icons/common';
-import { Tooltip, NoContentBox } from 'ndla-ui';
 
 const topicClasses = new BEMHelper({
   prefix: 'c-',
@@ -85,6 +84,8 @@ const TopicIntroduction = ({
 };
 
 TopicIntroduction.propTypes = {
+  additional: PropTypes.bool,
+  showAdditionalCores: PropTypes.bool,
   messages: PropTypes.shape({
     shortcutButtonText: PropTypes.string.isRequired,
     tooltipAdditionalTopic: PropTypes.string,
@@ -97,6 +98,11 @@ TopicIntroduction.propTypes = {
   twoColumns: PropTypes.bool,
   shortcutAlwaysExpanded: PropTypes.bool,
   id: PropTypes.string.isRequired,
+};
+
+TopicIntroduction.defaultProps = {
+  showAdditionalCores: false,
+  additional: false,
 };
 
 const TopicIntroductionList = ({

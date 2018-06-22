@@ -330,7 +330,7 @@ storiesOf('Emnesider', module)
           en lenke som kan limes inn i importskjemaet.
         </p>
       </StoryIntro>
-      <div style={{ width: '80%', margin: '0 auto' }}>
+      <div>
         <BannerList banners={banners} />
       </div>
     </div>

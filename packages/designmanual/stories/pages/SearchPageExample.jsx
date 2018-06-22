@@ -41,7 +41,6 @@ import {
   AssessmentResourcesBadge,
   ExternalLearningResourcesBadge,
   TasksAndActivitiesBadge,
-  SourceMaterialBadge,
   Image,
   Button,
 } from 'ndla-ui';

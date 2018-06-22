@@ -81,8 +81,6 @@ class FilterList extends Component {
                     }
                     if (onChange) {
                       onChange(newValues, option.value);
-                    } else {
-                      console.warn('props onChange should be required');
                     }
                   }}
                 />

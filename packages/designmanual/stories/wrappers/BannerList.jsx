@@ -25,6 +25,7 @@ class CopyButton extends Component {
 
   handleClick() {
     const { stringToCopy } = this.props;
+    console.log(stringToCopy);
     const success = copyTextToClipboard(stringToCopy, this.buttonContainer);
 
     if (success) {
@@ -58,6 +59,13 @@ CopyButton.propTypes = {
   hasCopiedTitle: PropTypes.string.isRequired,
 };
 
+const addLeadingSlash = str => {
+  if (str.startsWith('/')) {
+    return str;
+  }
+  return `${str}/`;
+};
+
 const BannerList = ({ banners }) =>
   banners.map(banner => (
     <div key={banner.desktop} style={{ marginTop: '26px' }}>
@@ -75,7 +83,9 @@ const BannerList = ({ banners }) =>
         <CopyButton
           style={{ margin: '13px' }}
           hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${banner.mobile}`}
+          stringToCopy={`${window.location.origin}${addLeadingSlash(
+            banner.mobile,
+          )}`}
           outline
           title="Kopier mobil banner til importskjema">
           <Copy /> Kopier mobil banner
@@ -84,7 +94,9 @@ const BannerList = ({ banners }) =>
           style={{ margin: '13px' }}
           outline
           hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${banner.desktop}`}
+          stringToCopy={`${window.location.origin}${addLeadingSlash(
+            banner.desktop,
+          )}`}
           title="Kopier mobil banner til importskjema">
           <Copy /> Kopier desktop banner
         </CopyButton>

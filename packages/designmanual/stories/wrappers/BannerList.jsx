@@ -63,7 +63,7 @@ const addLeadingSlash = str => {
   if (str.startsWith('/')) {
     return str;
   }
-  return `${str}/`;
+  return `/${str}`;
 };
 
 const BannerList = ({ banners }) =>

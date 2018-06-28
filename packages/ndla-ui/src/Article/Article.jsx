@@ -132,7 +132,6 @@ export const Article = ({
               license,
               additional,
               licenseBox,
-              authorsLinkable: showCreators,
             }}
           />
           {compentenceGoalsNarrow}

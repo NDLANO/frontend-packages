@@ -9,21 +9,29 @@
 **/
 
 .c-article-author-popup {
-  &__content {
-    hr {
-      &:before, &:after {
-        display: none;
-      }
-      display: block;
-      height: 1px;
-      background: $brand-color--tertiary;
-      margin: 1rem 0;
-      width: 100%;
+
+  &__heading {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing--small;
+  }
+
+  &__portrait {
+    margin-top: $spacing;
+  }
+
+  hr {
+    &:before, &:after {
+      display: none;
     }
+    display: block;
+    height: 1px;
+    background: $brand-color--tertiary;
+    margin: 1rem 0;
+    width: 100%;
   }
 
   &__ul-list {
-    @include font-size(16px, 20px);
+    @include font-size(18px, 20px);
     list-style-type: none;
     list-style-image: none;
     margin: 0 0 $spacing--small / 2 0;
@@ -48,18 +56,10 @@
             &:first-child {
               display: block;
             }
-            &:last-child {
-              @include font-size(14px, 20px);
-            }
           }
         }
       }
     }
-  }
-
-  &__author-ingress {
-    @include font-size(16px, 20px);
-    margin: $spacing 0;
   }
 
   &__author-info {
@@ -67,46 +67,41 @@
     margin-bottom: $spacing;
     animation-name: fadeInLeft;
     animation-duration: 0.5s;
-    > figure img {
-      width: 160px;
-      height: 160px;
-      margin-top: $spacing;
-      margin-right: $spacing;
-      margin-bottom: $spacing;
+
+    > :nth-child(2) {
+      padding-left: $spacing;
     }
-    @include mq($until: tablet) {
+
+    p, a {
+      margin: $spacing--small / 2 0;
+    }
+
+    @include mq($until: mobileWide) {
       display: block;
       margin-bottom: 2rem;
-      > figure img {
-        margin-right: 0;
-        margin-bottom: 0;
-        margin-top: 0;
+      > :nth-child(2) {
+        padding-left: 0;
       }
     }
-    hr {
-      &:before, &:after {
-        display: none;
-      }
-      display: block;
-      height: 1px;
-      background: $brand-color--tertiary;
-      margin: 1rem 0;
-      width: 100%;
+
+    .c-article-author-popup--ingress {
+      margin: $spacing 0 0;
     }
   }
 
   &__author-link-container {
-    span:first-child {
-      margin-right: $spacing;
-    }
-    @include mq($until: tablet) {
-      span {
-        display: block;
-        margin-bottom: $spacing / 2;
-        &:first-child {
-          margin-right: 0;
-        }
+    display: flex;
+    align-items: center;
+    margin: $spacing 0;
+    @include mq($until: mobileWide) {
+      flex-direction: column;
+      align-items: flex-start;
+      > * {
+        margin-bottom: $spacing--small;
       }
+    }
+    > * {
+      margin-right: $spacing;
     }
   }
 }

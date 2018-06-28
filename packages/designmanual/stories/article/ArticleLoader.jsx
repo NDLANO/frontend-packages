@@ -112,7 +112,6 @@ class ArticleLoader extends Component {
               article={article}
               modifier={reset ? 'clean' : ''}
               messages={{
-                writtenBy: 'Skrevet av',
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',

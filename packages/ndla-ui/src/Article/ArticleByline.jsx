@@ -35,18 +35,21 @@ class ArticleByline extends Component {
   render() {
     const {
       authors,
-      authorsLinkable,
       license,
       licenseBox,
       messages,
       updated,
       additional,
-      children,
       id,
     } = this.props;
 
     const { showAuthor, showAuthors } = this.state;
     const authorLabelledBy = `author-labelled-by_${id}`;
+
+    const authorsLinkable =
+      messages.authorLabel &&
+      messages.authorDescription &&
+      !authors.some(author => !author.title || !author.role);
 
     return (
       <div {...classes()}>
@@ -85,7 +88,7 @@ class ArticleByline extends Component {
                   />
                 </ClickToggle>
               ) : (
-                `${authors.map(author => author.name).join(', ')}`
+                `${authors.map(author => author.name).join(', ')} `
               )}
               ({license})
             </span>
@@ -106,12 +109,12 @@ class ArticleByline extends Component {
                 key="additional"
                 className="c-icon--20 u-margin-right-tiny"
               />
-              Tilleggsstoff
+              {messages.additionalLabel}
             </span>
           </span>
         )}
-        <span {...classes('flex')}>
-          {licenseBox && (
+        {licenseBox && (
+          <span {...classes('flex')}>
             <ClickToggle
               useDialog
               id="useArticleId"
@@ -119,13 +122,12 @@ class ArticleByline extends Component {
               renderAsLink
               buttonClassName={classes('toggle-use-article').className}
               dialogModifier="large"
-              title="Bruk innhold"
-              openTitle="Lukk boks">
+              title={messages.useContent}
+              openTitle={messages.closeLabel}>
               {licenseBox}
             </ClickToggle>
-          )}
-          {children}
-        </span>
+          </span>
+        )}
       </div>
     );
   }
@@ -143,25 +145,42 @@ ArticleByline.propTypes = {
       introduction: PropTypes.string,
       role: PropTypes.string,
       urlContributions: PropTypes.string,
+      urlContributionsLabel: (props, propName, componentName) => {
+        if (typeof props[propName] !== 'string' && props.urlContributions) {
+          return new Error(
+            `Invalid prop props.messages.urlContributionsLabel supplied to ${componentName}. Required as label for props.messages.urlContributions`,
+          );
+        }
+        return null;
+      },
       urlAuthor: PropTypes.string,
+      urlAuthorLabel: (props, propName, componentName) => {
+        if (typeof props[propName] !== 'string' && props.urlAuthor) {
+          return new Error(
+            `Invalid prop props.messages.urlAuthorLabel supplied to ${componentName}. Required as label for props.messages.urlAuthor`,
+          );
+        }
+        return null;
+      },
     }),
   ),
-  authorsLinkable: PropTypes.bool,
   updated: PropTypes.string.isRequired,
   license: PropTypes.string.isRequired,
   licenseBox: PropTypes.node,
   messages: PropTypes.shape({
     lastUpdated: PropTypes.string.isRequired,
-    authorLabel: PropTypes.string.isRequired,
-    authorDescription: PropTypes.string.isRequired,
+    authorLabel: PropTypes.string,
+    authorDescription: PropTypes.string,
+    additionalLabel: PropTypes.string,
+    useContent: PropTypes.string.isRequired,
+    closeLabel: PropTypes.string.isRequired,
   }).isRequired,
-  additional: PropTypes.node,
-  children: PropTypes.node,
+  additional: PropTypes.bool,
 };
 
 ArticleByline.defaultProps = {
   id: 'article-line-id',
-  authorsLinkable: true,
+  additional: false,
 };
 
 export default ArticleByline;

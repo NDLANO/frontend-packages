@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { ArrowDropDown } from 'ndla-icons/common';
+import debounce from 'lodash/debounce';
 
 const classes = BEMHelper('c-tabs');
 
@@ -18,6 +19,7 @@ class FilterTabs extends Component {
       focusOnSelected: false,
     };
     this.checkTabSizes = this.checkTabSizes.bind(this);
+    this.checkTabSizesDebounce = debounce(() => this.checkTabSizes(), 100);
     this.liRefs = {};
     this.tabWidths = null;
     this.dropdownTabWidth = null;
@@ -27,7 +29,7 @@ class FilterTabs extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.checkTabSizes);
+    window.addEventListener('resize', this.checkTabSizesDebounce);
     this.updateTabSizes();
     this.checkTabSizes();
   }
@@ -50,7 +52,7 @@ class FilterTabs extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.checkTabSizes);
+    window.removeEventListener('resize', this.checkTabSizesDebounce);
   }
 
   updateTabSizes() {

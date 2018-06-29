@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, copyTextToClipboard } from 'ndla-util';
 import { Copy } from 'ndla-icons/action';
@@ -25,7 +25,6 @@ class CopyButton extends Component {
 
   handleClick() {
     const { stringToCopy } = this.props;
-    console.log(stringToCopy);
     const success = copyTextToClipboard(stringToCopy, this.buttonContainer);
 
     if (success) {
@@ -39,7 +38,7 @@ class CopyButton extends Component {
 
   render() {
     const { hasCopied } = this.state;
-    const { children, hasCopiedTitle, ...rest } = this.props;
+    const { children, hasCopiedTitle, stringToCopy, ...rest } = this.props;
     return (
       <span
         ref={r => {
@@ -55,15 +54,8 @@ class CopyButton extends Component {
 
 CopyButton.propTypes = {
   stringToCopy: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   hasCopiedTitle: PropTypes.string.isRequired,
-};
-
-const addLeadingSlash = str => {
-  if (str.startsWith('/')) {
-    return str;
-  }
-  return `/${str}`;
 };
 
 const BannerList = ({ banners }) =>
@@ -83,22 +75,22 @@ const BannerList = ({ banners }) =>
         <CopyButton
           style={{ margin: '13px' }}
           hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${addLeadingSlash(
-            banner.mobile,
-          )}`}
+          stringToCopy={`${window.location.origin}${banner.mobile}`}
           outline
           title="Kopier mobil banner til importskjema">
-          <Copy /> Kopier mobil banner
+          <Fragment>
+            <Copy /> Kopier mobil banner
+          </Fragment>
         </CopyButton>
         <CopyButton
           style={{ margin: '13px' }}
           outline
           hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${addLeadingSlash(
-            banner.desktop,
-          )}`}
+          stringToCopy={`${window.location.origin}${banner.desktop}`}
           title="Kopier mobil banner til importskjema">
-          <Copy /> Kopier desktop banner
+          <Fragment>
+            <Copy /> Kopier desktop banner
+          </Fragment>
         </CopyButton>
       </div>
     </div>

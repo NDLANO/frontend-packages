@@ -18,7 +18,7 @@ import {
   ResourcesTitle,
   TopicIntroductionList,
 } from 'ndla-ui';
-import { Resources } from '../molecules/resources';
+import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';

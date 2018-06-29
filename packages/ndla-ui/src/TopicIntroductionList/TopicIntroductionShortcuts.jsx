@@ -24,15 +24,21 @@ class TopicIntroductionShortcuts extends Component {
     this.state = {
       open: props.alwaysExpanded,
       showButtonText: true,
+      disableToolTip: false,
     };
     this.handleOnToggle = this.handleOnToggle.bind(this);
+    this.disableToolTipTimeout = null;
   }
 
   handleOnToggle(open) {
+    clearInterval(this.disableToolTipTimeout);
     if (open) {
-      this.setState({ open, showButtonText: false });
+      this.setState({ open, showButtonText: false, disableToolTip: true });
+      this.disableToolTipTimeout = setTimeout(() => {
+        this.setState({ disableToolTip: false });
+      }, 400);
     } else {
-      this.setState({ open });
+      this.setState({ open, disableToolTip: false });
       const { shortcuts } = this.props;
 
       setTimeout(() => {
@@ -43,7 +49,7 @@ class TopicIntroductionShortcuts extends Component {
 
   render() {
     const { shortcuts, messages, id, alwaysExpanded } = this.props;
-    const { open, showButtonText } = this.state;
+    const { open, showButtonText, disableToolTip } = this.state;
 
     let onMouseEnter = null;
     let onMouseLeave = null;
@@ -70,7 +76,6 @@ class TopicIntroductionShortcuts extends Component {
         </button>
       );
     }
-
     return (
       <div
         onMouseEnter={onMouseEnter}
@@ -85,7 +90,10 @@ class TopicIntroductionShortcuts extends Component {
               delay={index * animationDelay}
               exitDelay={(array.length - index) * animationDelay}>
               <li {...classes('item')}>
-                <ShortcutItem shortcut={shortcut} />
+                <ShortcutItem
+                  shortcut={shortcut}
+                  disableToolTip={disableToolTip}
+                />
               </li>
             </Fade>
           ))}

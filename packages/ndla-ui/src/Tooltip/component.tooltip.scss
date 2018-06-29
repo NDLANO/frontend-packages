@@ -1,0 +1,19 @@
+.c-tooltip {
+  display: block;
+  position: absolute;
+  z-index: 9000;
+  background: $brand-color;
+  padding: $spacing--small;
+  font-family: $font;
+  @include font-size(14px, 18px);
+  color: $white;
+  transform: translate3d(-50%, calc(-100% - 0.25rem), 0);
+  text-align: center;
+  white-space: nowrap;
+  &--right {
+    transform: translate3d(calc(-100% + 2rem), calc(-100% - 0.25rem), 0);
+  }
+  &--left {
+    transform: translate3d(0, calc(-100% - 0.25rem), 0);
+  }
+}

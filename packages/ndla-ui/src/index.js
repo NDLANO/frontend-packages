@@ -35,6 +35,7 @@ export { InfoBox } from './InfoBox';
 export { BetaNavigation } from './Beta';
 
 export { default as Button } from './Button';
+export { default as Tooltip } from './Tooltip';
 export {
   SubjectHeader,
   SubjectContent,
@@ -102,6 +103,8 @@ export {
   RelatedArticle,
 } from './RelatedArticleList';
 export { default as CompentenceGoals } from './CompetenceGoals';
+
+export { default as NoContentBox } from './NoContentBox';
 
 export {
   default as ResourcesWrapper,

@@ -20,7 +20,7 @@ import {
 } from 'ndla-ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
-import { Resources } from '../molecules/resources';
+import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
@@ -86,7 +86,7 @@ export default () => (
         </p>
       </LayoutItem>
       <LayoutItem layout="extend">
-        <Resources showTopicHeading />
+        <Resources />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

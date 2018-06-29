@@ -35,6 +35,7 @@ import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
 import ArticleSimple from './ArticleSimple';
+import AuthorPage from './AuthorPage';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
@@ -129,6 +130,24 @@ storiesOf('Sidevisninger', module)
           </OneColumn>
         </Hero>
         <ArticleSimple />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Forfatter sidemal', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <Hero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <BreadcrumbSimpleArticle name="Cecilie Isaksen Eftedal" />
+              </section>
+            </div>
+          </OneColumn>
+        </Hero>
+        <AuthorPage />
       </Content>
       <FooterExample />
     </PageContainer>

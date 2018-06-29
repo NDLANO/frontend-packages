@@ -17,7 +17,11 @@ import {
   youTubeMockVideo,
 } from './mockYouTube';
 
-import { contentTypeResults } from './mockSearch';
+import {
+  contentTypeResults,
+  searchTabOptions,
+  searchTabFilterOptions,
+} from './mockSearch';
 
 import contentCards from './mockContentCards';
 
@@ -38,5 +42,7 @@ export {
   youTubeMockVideo,
   assessmentResources,
   contentTypeResults,
+  searchTabOptions,
+  searchTabFilterOptions,
   contentCards,
 };

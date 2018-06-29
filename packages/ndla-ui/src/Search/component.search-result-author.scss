@@ -1,0 +1,64 @@
+.c-search-result-author {
+  background: $brand-grey--lighter;
+  padding: $spacing;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  &--desktop {
+    @include mq($until: desktop) {
+      display: none;
+    }
+  }
+  &--tablet {
+    @include mq(desktop) {
+      display: none;
+    }
+  }
+  @include mq($until: desktop) {
+    flex-direction: row-reverse;
+    background: none;
+    padding: 0 0 $spacing 0;
+    justify-content: flex-end;
+    align-items: center;
+    &__portrait-image {
+      margin-right: $spacing--medium;
+    }
+    &__url {
+      display: none;
+    }
+  }
+  &__heading {
+    margin: 0 0 $spacing--small;
+    @include font-size(24px, 32px);
+    font-weight: $font-weight-bold;
+    @include mq($until: desktop) {
+      display: none;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  &__links {
+    display: flex;
+    &:empty {
+      display: none;
+    }
+    a:not(:last-child) {
+      margin-right: $spacing--large;
+    }
+  }
+  @include mq($until: tablet) {
+    p, a {
+      @include font-size(16px, 24px);
+    }
+    &__portrait-image {
+      margin-right: $spacing;
+      width: 4rem;
+      height: 4rem;
+      span {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+}

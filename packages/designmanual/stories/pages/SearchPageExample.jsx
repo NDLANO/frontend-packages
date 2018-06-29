@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
 import { Core, Additional } from 'ndla-icons/common';
 
 import {
@@ -6,13 +7,121 @@ import {
   SearchResult,
   SearchResultList,
   SearchFilter,
+  SearchResultAuthor,
   SearchPopoverFilter,
   SubjectBadge,
   SubjectMaterialBadge,
   LearningPathBadge,
+  AssessmentResourcesBadge,
+  ExternalLearningResourcesBadge,
+  TasksAndActivitiesBadge,
   Image,
   Button,
 } from 'ndla-ui';
+
+import {
+  searchTabOptions,
+  searchTabFilterOptions,
+} from '../../dummydata/index';
+
+const results = [
+  {
+    id: 1,
+    title: 'Ideskapning og mediedesign',
+    url: '#1',
+    ingress:
+      'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+    contentTypeLabel: 'Emne',
+    contentTypeIcon: <SubjectBadge size="x-small" background />,
+    breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
+    matchTab: ['SUBJECT'],
+  },
+  {
+    id: 2,
+    title: 'Ideskapning og mediedesign',
+    url: '#2',
+    ingress:
+      'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+    contentTypeLabel: 'Læringssti',
+    contentTypeIcon: <LearningPathBadge size="x-small" background />,
+    breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
+    matchTab: ['LEARNING_PATH'],
+  },
+  {
+    id: 3,
+    title: 'Ideskapning og mediedesign',
+    url: '#3',
+    ingress:
+      'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
+    contentTypeLabel: 'Fagstoff',
+    contentTypeIcon: <SubjectMaterialBadge size="x-small" background />,
+    additional: true,
+    image: (
+      <Image
+        alt="Forstørrelsesglass"
+        src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+      />
+    ),
+    subjects: [
+      {
+        url: '#1',
+        title: 'Flerfaglig',
+      },
+      {
+        url: '#2',
+        title: 'Medieuttrykk og mediesamfunn',
+      },
+      {
+        url: '#3',
+        title: 'Norsk',
+      },
+    ],
+    matchTab: ['SUBJECT_MATERIAL'],
+  },
+  {
+    id: 4,
+    title: 'Hva kan du om platetektonikk?',
+    url: '#4',
+    ingress:
+      'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
+    contentTypeLabel: 'Oppgaver og aktiveter',
+    contentTypeIcon: <TasksAndActivitiesBadge size="x-small" background />,
+    breadcrumb: [
+      'Brønnteknikk',
+      'Leting og boring',
+      'Geologi for brønnteknikk',
+    ],
+    matchTab: ['TASKS_AND_ACTIVITIES'],
+  },
+  {
+    id: 5,
+    title: 'Brukertips medier og kommunikasjon Vg1',
+    url: '#5',
+    ingress:
+      'Faget Medieuttrykk og mediesamfunnet Vg1 dekker kompetansemålene i de to felles programfagene i utdanningsprogrammet medier og kommunikasjon.',
+    contentTypeLabel: 'Vurderingsressurs',
+    contentTypeIcon: <AssessmentResourcesBadge size="x-small" background />,
+    breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
+    matchTab: ['EVALUATION_RESOURCE'],
+  },
+  {
+    id: 6,
+    title: 'En helt vanlig dag på jobben',
+    url: '#6',
+    ingress:
+      'Filmen En helt vanlig dag på jobben er regissert av Terje Rangnes etter et manus av Erlend Loe. Manuset er basert på en bok av tidligere Se og Hør-journalist Håvard Melnæs med samme tittel.',
+    contentTypeLabel: 'Delte ressurser',
+    contentTypeIcon: (
+      <ExternalLearningResourcesBadge size="x-small" background />
+    ),
+    breadcrumb: [
+      'Medieuttrykk og mediesamfunnet',
+      'Mediebransjen',
+      'Journalistikk',
+    ],
+    matchTab: ['SHARED_RESOURCES'],
+  },
+];
 
 class SearchPageExample extends Component {
   constructor(props) {
@@ -22,107 +131,34 @@ class SearchPageExample extends Component {
     };
   }
   render() {
-    const results = [
-      {
-        id: 1,
-        title: 'Ideskapning og mediedesign',
-        url: '#1',
-        ingress:
-          'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-        contentTypeLabel: 'Emne',
-        contentTypeIcon: <SubjectBadge size="x-small" background />,
-        breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-      },
-      {
-        id: 2,
-        title: 'Ideskapning og mediedesign',
-        url: '#2',
-        ingress:
-          'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-        contentTypeLabel: 'Fagstoff',
-        contentTypeIcon: <SubjectMaterialBadge size="x-small" background />,
-        additional: true,
-        image: (
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        ),
-        subjects: [
-          {
-            url: '#1',
-            title: 'Flerfaglig',
-          },
-          {
-            url: '#2',
-            title: 'Medieuttrykk og mediesamfunn',
-          },
-          {
-            url: '#3',
-            title: 'Norsk',
-          },
-        ],
-      },
-      {
-        id: 3,
-        title: 'Ideskapning og mediedesign',
-        url: '#3',
-        ingress:
-          'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-        contentTypeLabel: 'Læringssti',
-        contentTypeIcon: <LearningPathBadge size="x-small" background />,
-        breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-      },
-    ];
+    const { currentTab } = this.state;
+    const currentResult =
+      currentTab === 'all'
+        ? results
+        : results.filter(result => result.matchTab.indexOf(currentTab) !== -1);
 
-    let currentResult = null;
-
-    switch (this.state.currentTab) {
-      case 'learningPath':
-        currentResult = [results[2]];
-        break;
-      case 'subject':
-        currentResult = [results[0]];
-        break;
-      case 'subjectMaterial':
-        currentResult = [results[1]];
-        break;
-      case 'externalLearningResources':
-        currentResult = [];
-        break;
-      default:
-        currentResult = results;
-    }
+    const author = modifier =>
+      this.props.showAuthor ? (
+        <SearchResultAuthor
+          modifier={modifier}
+          messages={{
+            authorName: 'Cecilie Isaksen Eftedal',
+            role: 'Stilling / rolle',
+            phone: '+47 123 45 678',
+            email: 'cecilie@ndla.no',
+            readmoreLabel: 'Les om Cecilie',
+          }}
+          url="/?selectedKind=Sidevisninger&selectedStory=Forfatter%20sidemal&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
+          image="http://www.placehold.it/300x300"
+        />
+      ) : null;
 
     const contextFilter =
-      this.state.currentTab !== 'all' &&
-      this.state.currentTab !== 'LEARNING_PATH' &&
-      currentResult.length > 0 ? (
+      searchTabFilterOptions[currentTab] && currentResult.length > 0 ? (
         <SearchFilter
           contextFilter
           label="Egenskaper"
-          options={[
-            {
-              title: 'Film og filmklipp',
-              value: 'value',
-            },
-            {
-              title: 'Fagartikkel',
-              value: 'value1',
-            },
-            {
-              title: 'Veilleding',
-              value: 'value2',
-            },
-            {
-              title: 'Verktøy og mal',
-              value: 'value3',
-            },
-            {
-              title: 'Verktøy og mal',
-              value: 'value4',
-            },
-          ]}
+          options={searchTabFilterOptions[currentTab]}
           values={['value']}
         />
       ) : null;
@@ -130,36 +166,51 @@ class SearchPageExample extends Component {
     const onSearch = evt => {
       evt.preventDefault();
     };
+
+    const authorTablet = author('tablet');
+    const authorDesktop = author('desktop');
+    const hasAuthor = authorTablet !== null;
     return (
       <SearchPage
         closeUrl="#"
-        searchString=""
+        searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : ''}
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
         onSearch={onSearch}
-        searchFieldFilters={[
-          {
-            value: 'value',
-            title: 'Medieuttrykk og mediesamfunn',
-          },
-        ]}
-        activeFilters={[
-          {
-            value: 'value',
-            title: 'Medieuttrykk og mediesamfunn',
-            filterName: 'subject',
-          },
-          {
-            value: 'value2',
-            title: 'Kjernestoff',
-            filterName: 'content',
-          },
-        ]}
+        searchFieldFilters={
+          hasAuthor
+            ? null
+            : [
+                {
+                  value: 'value',
+                  title: 'Medieuttrykk og mediesamfunn',
+                },
+              ]
+        }
+        activeFilters={
+          hasAuthor
+            ? null
+            : [
+                {
+                  value: 'value',
+                  title: 'Medieuttrykk og mediesamfunn',
+                  filterName: 'subject',
+                },
+                {
+                  value: 'value2',
+                  title: 'Kjernestoff',
+                  filterName: 'content',
+                },
+              ]
+        }
+        author={authorTablet}
         onActiveFilterRemove={() => {}}
         messages={{
           filterHeading: 'Filter',
-          resultHeading: '43 treff i Ndla',
+          resultHeading: hasAuthor
+            ? '37 artikler skrevet av Cecilie'
+            : '43 treff i Ndla',
           closeButton: 'Lukk',
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
           searchFieldTitle: 'Søk',
@@ -321,39 +372,20 @@ class SearchPageExample extends Component {
           </Fragment>
         }>
         <SearchResult
+          author={authorDesktop}
           messages={{
             searchStringLabel: 'Du søkte på:',
             subHeading: '43 treff i Ndla',
+            dropdownBtnLabel: 'Flere innholdstyper',
           }}
-          searchString="Test"
-          tabOptions={[
-            {
-              title: 'Alle',
-              value: 'all',
-            },
-            {
-              title: 'Emne',
-              value: 'SUBJECT',
-            },
-            {
-              title: 'Læringssti',
-              value: 'LEARNING_PATH',
-            },
-            {
-              title: 'Fagstoff',
-              value: 'SUBJECT_MATERIAL',
-            },
-            {
-              title: 'Oppgaver og aktiviteter',
-              value: 'TASKS_AND_ACTIVITIES',
-            },
-          ]}
-          onTabChange={currentTab => {
+          searchString={hasAuthor ? null : 'Test'}
+          tabOptions={searchTabOptions}
+          onTabChange={newCurrentTab => {
             this.setState({
-              currentTab,
+              currentTab: newCurrentTab,
             });
           }}
-          currentTab={this.state.currentTab}>
+          currentTab={currentTab}>
           {contextFilter}
           <SearchResultList
             messages={{
@@ -361,6 +393,7 @@ class SearchPageExample extends Component {
               noResultHeading: 'Hmm, ikke noe innhold ...',
               noResultDescription:
                 'Vi har dessverre ikke noe å tilby her. Hvis du vil foreslå noe innhold til dette området, kan du bruke Spør NDLA som du finner nede til høyre på skjermen.',
+              additionalContentToolip: 'Tilleggsstoff',
             }}
             results={currentResult}
           />
@@ -369,5 +402,13 @@ class SearchPageExample extends Component {
     );
   }
 }
+
+SearchPageExample.propTypes = {
+  showAuthor: PropTypes.bool,
+};
+
+SearchPageExample.defaultProps = {
+  showAuthor: false,
+};
 
 export default SearchPageExample;

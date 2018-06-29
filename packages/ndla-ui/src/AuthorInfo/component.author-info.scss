@@ -1,0 +1,54 @@
+/**
+ * Copyright (c) 2017-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+.c-author-info {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: $spacing--large;
+  font-family: $font;
+  &__portrait-image {
+    margin-right: $spacing--large;
+    @include mq($until: desktop) {
+      margin-right: $spacing--medium;
+      width: 7rem;
+      height: 7rem;
+      span {
+        width: 7rem;
+        height: 7rem;
+      }
+    }
+    @include mq($until: tablet) {
+      margin-right: $spacing--small;
+      width: 4rem;
+      height: 4rem;
+      span {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+  &__heading {
+    margin: 0 0 $spacing--small;
+    @include mq($until: desktop) {
+      @include font-size(22px, 22px);
+    }
+    @include mq($until: tablet) {
+      @include font-size(18px, 18px);
+      margin-bottom: $spacing--small / 2;
+    }
+  }
+  p, a {
+    margin: 0;
+    @include mq($until: tablet) {
+      @include font-size(14px, 22px);
+    }
+  }
+  &__readmore {
+    margin: $spacing 0;
+  }
+}

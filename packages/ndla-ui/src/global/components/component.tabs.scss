@@ -26,6 +26,41 @@ $tabs-spacing: 12px;
       margin-left: $tabs-spacing;
     }
 
+    &--no-margin {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    &--button-based {
+      padding: 0 $spacing--medium / 2;
+      &:first-child {
+        padding-left: 0;
+      }
+      border-bottom: 5px solid transparent;
+      button {
+        transition: $transition;
+        transform: none;
+        font-weight: $font-weight-bold;
+        border: 0;
+        background: 0;
+        padding: $spacing--small ($spacing--small / 4);
+        font-size: inherit;
+        font-family: inherit;
+        color: inherit;
+      }
+    }
+
+    &--dropdown-btn {
+      margin: 0;
+      padding-right: 0;
+      float: right;
+      position: relative;
+      z-index: 1;
+      > button {
+        padding-right: ($spacing--small) / 2 !important;
+      }
+    }
+
     &--selected {
       color: $brand-color;
       border-bottom: 5px solid $brand-color;
@@ -33,6 +68,13 @@ $tabs-spacing: 12px;
       &.c-tabs__tab--muted {
         color: inherit;
         border-bottom: 5px solid lighten($brand-color, 40%);
+      }
+
+      &.c-tabs__tab--button-based {
+        border-bottom: 0;
+        button {
+          border-bottom: 5px solid $brand-color;
+        }
       }
     }
 
@@ -42,6 +84,44 @@ $tabs-spacing: 12px;
         color: $brand-grey--light;
         cursor: default;
       }
+    }
+  }
+
+  &__tab-dropdown {
+    position: absolute;
+    z-index: 1;
+    transform: translateX(9999px);
+    opacity: 0;
+    margin: 0;
+    padding: ($spacing--small / 2) 0 $spacing--small 0;
+    right: 0;
+    > ul {
+      margin: 0;
+      padding: 0;
+      > li {
+        display: block;
+        text-align: center;
+        button {
+          color: $primary-color;
+          width: 100%;
+          &:focus, &:hover {
+            background-color: $brand-grey--light;
+            color: $brand-color;
+          }
+        }
+      }
+    }
+    &--visible {
+      transform: translateY(2px);
+      animation-name: tabDropdownAnimation;
+      animation-duration: 200ms;
+      animation-delay: 100ms;
+      animation-fill-mode: forwards;
+      opacity: 0;
+      display: block;
+      border: 1px solid $brand-grey--lightest;
+      background: #fff;
+      box-shadow: 0 0 30px rgba($black, 0.2);
     }
   }
 
@@ -59,5 +139,16 @@ $tabs-spacing: 12px;
     &[aria-hidden='true'] {
       @include visually-hidden();
     }
+  }
+}
+
+@keyframes tabDropdownAnimation {
+  0% {
+    opacity: 0;
+    transform: translate3d(20px, 2px, 0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0px, 2px, 0px);
   }
 }

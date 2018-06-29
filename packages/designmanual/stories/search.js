@@ -25,4 +25,15 @@ storiesOf('Søk', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Søkeside opphavsmann', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu hideOnNarrowScreen hideSearchButton />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <SearchPageExample showAuthor />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));

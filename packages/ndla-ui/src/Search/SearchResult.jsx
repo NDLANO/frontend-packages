@@ -5,6 +5,7 @@ import { ChevronRight, Additional } from 'ndla-icons/common';
 import { uuid } from 'ndla-util';
 
 import { FilterTabs } from 'ndla-tabs';
+import Tooltip from '../Tooltip';
 import SafeLink from '../common/SafeLink';
 
 const resultClasses = BEMHelper('c-search-result');
@@ -16,13 +17,17 @@ export const SearchResult = ({
   searchString,
   currentTab,
   onTabChange,
+  author,
 }) => (
   <div {...resultClasses()}>
-    <h1>
-      {messages.searchStringLabel} <span>{searchString}</span>
-    </h1>
+    {author || (
+      <h1>
+        {messages.searchStringLabel} <span>{searchString}</span>
+      </h1>
+    )}
     <h2>{messages.subHeading}</h2>
     <FilterTabs
+      messages={messages}
       value={currentTab}
       options={tabOptions}
       contentId="search-result-content"
@@ -40,14 +45,27 @@ SearchResult.propTypes = {
       value: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  currentTab: PropTypes.string.isRequired,
+  currentTab: PropTypes.string,
   children: PropTypes.node.isRequired,
   messages: PropTypes.shape({
     searchStringLabel: PropTypes.string.isRequired,
     subHeading: PropTypes.string.isRequired,
+    dropdownBtnLabel: PropTypes.string.isRequired,
   }).isRequired,
-  searchString: PropTypes.string.isRequired,
+  searchString: (props, propName, componentName) => {
+    if (props.author === null && typeof props[propName] !== 'string') {
+      return new Error(
+        `Invalid prop 'searchString' in ${componentName}. Required unless props.author === PropTypes.node`,
+      );
+    }
+    return null;
+  },
   onTabChange: PropTypes.func.isRequired,
+  author: PropTypes.node,
+};
+
+SearchResult.defaultProps = {
+  author: null,
 };
 
 const searchResultItemClasses = BEMHelper('c-search-result-item');
@@ -74,6 +92,7 @@ const messagesShape = PropTypes.shape({
   subjectsLabel: PropTypes.string.isRequired,
   noResultHeading: PropTypes.string.isRequired,
   noResultDescription: PropTypes.string.isRequired,
+  additionalContentToolip: PropTypes.string,
 });
 
 const SearchResultItem = ({ item, messages }) => (
@@ -91,11 +110,18 @@ const SearchResultItem = ({ item, messages }) => (
         <span {...searchResultItemClasses('content-type-label')}>
           {item.contentTypeLabel}
         </span>
-        {item.additional && (
-          <span {...searchResultItemClasses('additional')}>
-            <Additional className="c-icon--20" />
-          </span>
-        )}
+        {item.additional &&
+          (messages.additionalContentToolip ? (
+            <Tooltip
+              tooltip={messages.additionalContentToolip}
+              {...searchResultItemClasses('additional')}>
+              <Additional className="c-icon--20" />
+            </Tooltip>
+          ) : (
+            <span {...searchResultItemClasses('additional')}>
+              <Additional className="c-icon--20" />
+            </span>
+          ))}
       </header>
       {item.breadcrumb &&
         item.breadcrumb.length > 0 && (
@@ -157,7 +183,6 @@ export const SearchResultList = ({ results, messages }) => {
       </article>
     );
   }
-
   return (
     <ul className="c-search-result-list">
       {results.map(item => (

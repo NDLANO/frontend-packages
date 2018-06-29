@@ -7,6 +7,11 @@
 */
 #root {
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
 }
 
 /* IE-10+ fix for footer */

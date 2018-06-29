@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { uuid } from 'ndla-util';
 
 import { Fade } from '../Animation';
 
@@ -27,6 +28,10 @@ class Tooltip extends Component {
     this.handleShowTooltip = this.handleShowTooltip.bind(this);
     this.handleHideTooltip = this.handleHideTooltip.bind(this);
     this.delayTimer = null;
+    this.contentRef = null;
+    this.widthRef = 0;
+    this.heightRef = 0;
+    this.uuid = uuid();
   }
 
   componentDidMount() {
@@ -45,6 +50,8 @@ class Tooltip extends Component {
 
   handleShowTooltip() {
     if (!this.state.showTooltip && this.state.disabled) {
+      this.widthRef = this.contentRef.offsetWidth;
+      this.heightRef = this.contentRef.offsetHeight;
       this.setState({ showtooltip: true });
     }
   }
@@ -54,19 +61,59 @@ class Tooltip extends Component {
   }
 
   render() {
+    let transform;
+    switch (this.props.align) {
+      case 'top':
+        transform = `translate3d(calc(-50% + ${this.widthRef /
+          2}px), calc(-100% - 0.25rem), 0)`;
+        break;
+      case 'left':
+        transform = `translate3d(calc(-100% - 0.25rem), calc(-50% + ${this
+          .heightRef / 2}px), 0)`;
+        break;
+      case 'right':
+        transform = `translate3d(calc(${
+          this.widthRef
+        }px + 0.25rem), calc(-50% + ${this.heightRef / 2}px), 0)`;
+        break;
+      case 'bottom':
+        transform = `translate3d(calc(-50% + ${this.widthRef / 2}px), calc(${
+          this.heightRef
+        }px + 0.25rem), 0)`;
+        break;
+      default:
+        break;
+    }
+
     return (
-      <div>
+      <div
+        className={`${classes('').className} ${
+          this.props.tooltipContainerClass
+        }`}>
         <Fade in={this.state.showtooltip}>
-          <span {...classes('', this.props.align)}>{this.props.tooltip}</span>
+          <span
+            role="tooltip"
+            id={this.uuid}
+            {...classes('tooltip')}
+            style={{ transform }}>
+            {this.props.tooltip}
+          </span>
         </Fade>
-        <div
-          onMouseEnter={this.handleShowTooltip}
+        <span
+          role="button"
+          tabIndex={0}
+          aria-describedby={this.uuid}
+          ref={r => {
+            this.contentRef = r;
+          }}
           onMouseMove={this.handleShowTooltip}
+          onMouseEnter={this.handleShowTooltip}
           onMouseLeave={this.handleHideTooltip}
           onFocus={this.handleShowTooltip}
-          onBlur={this.handleHideTooltip}>
+          onBlur={this.handleHideTooltip}
+          className={`c-tooltip__content ${this.props.className}`}>
           {this.props.children}
-        </div>
+        </span>
       </div>
     );
   }
@@ -77,13 +124,17 @@ Tooltip.propTypes = {
   tooltip: PropTypes.string.isRequired,
   delay: PropTypes.number,
   disabled: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right']),
+  align: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+  className: PropTypes.string,
+  tooltipContainerClass: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
-  align: undefined,
+  align: 'top',
   disabled: false,
   delay: 0,
+  className: '',
+  tooltipContainerClass: '',
 };
 
 export default Tooltip;

@@ -3,9 +3,15 @@ import kinesisk from './kinesisk.svg';
 import markedsfoering from './markedsføring.svg';
 import samfunnsfag from './samfunnsfag.svg';
 import serviceSamferdsel from './service_og_samferdsel.svg';
+import serviceSikkerhetSalg from './salg_service_sikkerhet.svg';
 
 export default [
   { desktop: broennfag, mobile: broennfag, name: 'Brønnteknikk' },
+  {
+    desktop: serviceSikkerhetSalg,
+    mobile: serviceSikkerhetSalg,
+    name: 'Salg, service og sikkerhet',
+  },
   { desktop: kinesisk, mobile: kinesisk, name: 'Kinesisk' },
   {
     desktop: markedsfoering,

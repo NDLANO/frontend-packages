@@ -53,13 +53,13 @@ const TopicIntroduction = ({
             {contentTypeDescription}
           </span>
           {additional && (
-            <Tooltip tooltip={messages.tooltipAdditionalTopic} align="right">
+            <Tooltip tooltip={messages.tooltipAdditionalTopic} align="left">
               <Additional className="c-icon--20 u-margin-left-tiny" />
             </Tooltip>
           )}
           {!additional &&
             showAdditionalCores && (
-              <Tooltip tooltip={messages.tooltipCoreTopic} align="right">
+              <Tooltip tooltip={messages.tooltipCoreTopic} align="left">
                 <Core className="c-icon--20 u-margin-left-tiny" />
               </Tooltip>
             )}

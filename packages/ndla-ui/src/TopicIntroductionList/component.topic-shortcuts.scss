@@ -25,6 +25,11 @@
     padding: 0;
     cursor: pointer;
     margin-right: $spacing--small / 2;
+    &--re-enter {
+      span {
+        animation: fadeInLeft 200ms;
+      }
+    }
   }
 
   &__label {
@@ -37,11 +42,15 @@
 
   &__list {
     list-style: none;
-    display: flex;
     align-items: center;
     padding: 0;
     margin: 0;
     line-height: 1rem;
+    display: none;
+    &--visible {
+      display: flex;
+      @include fadeInLeftItems(li, 10);
+    }
   }
 
   &__item {

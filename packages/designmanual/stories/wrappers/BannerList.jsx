@@ -12,6 +12,13 @@ import { breakpoints, copyTextToClipboard } from 'ndla-util';
 import { Copy } from 'ndla-icons/action';
 import { Button, SubjectHeader } from 'ndla-ui';
 
+const addLeadingSlash = str => {
+  if (str.startsWith('/')) {
+    return str;
+  }
+  return `/${str}`;
+};
+
 class CopyButton extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +82,9 @@ const BannerList = ({ banners }) =>
         <CopyButton
           style={{ margin: '13px' }}
           hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${banner.mobile}`}
+          stringToCopy={`${window.location.origin}${addLeadingSlash(
+            banner.mobile,
+          )}`}
           outline
           title="Kopier mobil banner til importskjema">
           <Fragment>
@@ -86,7 +95,9 @@ const BannerList = ({ banners }) =>
           style={{ margin: '13px' }}
           outline
           hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${banner.desktop}`}
+          stringToCopy={`${window.location.origin}${addLeadingSlash(
+            banner.desktop,
+          )}`}
           title="Kopier mobil banner til importskjema">
           <Fragment>
             <Copy /> Kopier desktop banner

@@ -129,7 +129,7 @@ class Resources extends Component {
               noContentBoxLabel: group.noContentLabel,
               noContentBoxButtonText: 'Vis tilleggsstoff',
               toggleFilterLabel: 'Tilleggsressurser',
-              coreTooptip: 'Kjernestoff er fagstoff som er på pensum',
+              coreTooltip: 'Kjernestoff er fagstoff som er på pensum',
               additionalTooltip: 'Tilleggsstoff er ikke på pensum',
             }}
             resourceToLinkProps={toLink}

@@ -41,16 +41,10 @@ const Resource = ({
 
   const contentTypeDescription = resource.additional
     ? messages.additionalTooltip
-    : messages.coreTooptip;
+    : messages.coreTooltip;
 
-  const link = linkProps.href ? (
+  const coreAdditionalContentToolTip = (
     <Fragment>
-      <a
-        {...linkProps}
-        {...classes('link o-flag o-flag--top')}
-        aria-describedby={id}>
-        {linkContent}
-      </a>
       <span id={id} hidden>
         {contentTypeDescription}
       </span>
@@ -68,12 +62,27 @@ const Resource = ({
           )}
       </div>
     </Fragment>
+  );
+
+  const link = linkProps.href ? (
+    <Fragment>
+      <a
+        {...linkProps}
+        {...classes('link o-flag o-flag--top')}
+        aria-describedby={id}>
+        {linkContent}
+      </a>
+      {coreAdditionalContentToolTip}
+    </Fragment>
   ) : (
-    <Link
-      {...resourceToLinkProps(resource)}
-      {...classes('link o-flag o-flag--top')}>
-      {linkContent}
-    </Link>
+    <Fragment>
+      <Link
+        {...resourceToLinkProps(resource)}
+        {...classes('link o-flag o-flag--top')}>
+        {linkContent}
+      </Link>
+      {coreAdditionalContentToolTip}
+    </Fragment>
   );
 
   return (
@@ -95,7 +104,7 @@ Resource.propTypes = {
   id: PropTypes.string.isRequired,
   messages: PropTypes.shape({
     additionalTooltip: PropTypes.string,
-    coreTooptip: PropTypes.string,
+    coreTooltip: PropTypes.string,
   }).isRequired,
 };
 
@@ -151,7 +160,7 @@ ResourceList.propTypes = {
     noContentBoxLabel: PropTypes.string.isRequired,
     noContentBoxButtonText: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
-    coreTooptip: PropTypes.string.isRequired,
+    coreTooltip: PropTypes.string.isRequired,
     additionalTooltip: PropTypes.string.isRequired,
   }).isRequired,
 };

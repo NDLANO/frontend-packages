@@ -37,7 +37,7 @@ import {
 import { EmailOutline } from 'ndla-icons/common';
 import { breakpoints } from 'ndla-util';
 
-import exampleBackground from '../images/medie-example.jpg';
+import exampleBackground from '../../images/medie-example.jpg';
 import article, { contentCards } from '../../dummydata/index';
 
 import TopicListExample from '../molecules/TopicListExample';

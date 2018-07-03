@@ -71,7 +71,7 @@ Dialog.propTypes = {
   children: PropTypes.node,
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   disablePortal: PropTypes.bool,
   onClose: PropTypes.func,
@@ -83,4 +83,7 @@ Dialog.defaultProps = {
   label: null,
   hidden: true,
   onClose: null,
+  messages: {
+    close: 'Lukk',
+  },
 };

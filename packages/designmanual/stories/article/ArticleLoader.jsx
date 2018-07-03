@@ -18,7 +18,7 @@ import {
   ResourcesTitle,
   TopicIntroductionList,
 } from 'ndla-ui';
-import { Resources } from '../molecules/resources';
+import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
@@ -112,7 +112,6 @@ class ArticleLoader extends Component {
               article={article}
               modifier={reset ? 'clean' : ''}
               messages={{
-                writtenBy: 'Skrevet av',
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',

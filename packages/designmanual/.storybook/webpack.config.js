@@ -21,8 +21,12 @@ module.exports = {
         include: path.resolve(__dirname, '../../ndla-ui/src/'),
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: 'file-loader',
+        test: /\.(png|jpg|svg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          context: '',
+        },
       },
     ],
   },

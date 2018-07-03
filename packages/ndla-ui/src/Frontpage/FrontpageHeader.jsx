@@ -15,6 +15,7 @@ const FrontpageHeader = ({
   onSearch,
   searchFieldPlaceholder,
   links,
+  logoTo,
   messages,
   heading,
 }) => (
@@ -25,12 +26,8 @@ const FrontpageHeader = ({
         <nav {...classes('navigation')}>
           <ul>
             {links.map(link => (
-              <li key={link.url || link.href}>
-                {link.url ? (
-                  <SafeLink to={link.url}>{link.text}</SafeLink>
-                ) : (
-                  <a href={link.href}>{link.text}</a>
-                )}
+              <li key={link.to}>
+                <SafeLink to={link.to}>{link.text}</SafeLink>
               </li>
             ))}
           </ul>
@@ -40,7 +37,7 @@ const FrontpageHeader = ({
         <div {...classes('content')}>
           <button {...classes('menu-button')}>{messages.menuButton}</button>
           <Logo
-            to="#"
+            to={logoTo}
             label={heading}
             cssModifier="white"
             large
@@ -65,14 +62,14 @@ FrontpageHeader.propTypes = {
   onSearchFieldChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
   searchFieldPlaceholder: PropTypes.string.isRequired,
+  logoTo: PropTypes.string,
   messages: PropTypes.shape({
     searchFieldTitle: PropTypes.string.isRequired,
     menuButton: PropTypes.string.isRequired,
   }).isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string,
-      href: PropTypes.string,
+      to: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
     }),
   ).isRequired,

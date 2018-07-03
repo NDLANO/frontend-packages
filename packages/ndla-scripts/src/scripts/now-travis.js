@@ -124,7 +124,7 @@ async function spawnDeploy(sha) {
     nowToken,
     '--no-clipboard',
     '--region',
-    'bru',
+    'bru1',
     ...providedArgs,
   ];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
@@ -155,34 +155,36 @@ async function deploy(sha) {
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'pending',
-    description: `▲ Now deployment pending`,
+    description: `▲ Now deployment starting`,
   });
+
+  console.log(`🤠 Alrighty, deploy starting.`);
 
   const result = await spawnDeploy(sha);
   targetUrl = getUrl(result);
 
+  console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
+
   updateStatus(sha, {
-    target_url: targetUrl,
+    target_url: `${targetUrl}`,
     state: 'pending',
-    description: `▲ Now deployment build started...`,
+    description: `▲ Aliasing now deployment...`,
   });
 
+  targetUrl = await spawnAlias(sha, targetUrl);
+
+  console.log(`🔗 It's linked!`);
+
   console.log(
-    `🤠 Alrighty, deploy started. Now we're going to ping ${targetUrl} until it's ready!`,
+    `⏳ Now we're going to ping ${targetUrl} to confirm it is ready for use!`,
   );
 
   // check on the site for ~20 minutes every 10 seconds
-  await awaitUrl(targetUrl, { interval: 10000, tries: 119 }).catch(err => {
+  await awaitUrl(`${targetUrl}`, { interval: 10000, tries: 119 }).catch(err => {
     console.error('Error waiting for the deployment to be ready.');
     onError(sha, err);
     throw err;
   });
-
-  console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
-
-  targetUrl = await spawnAlias(sha, targetUrl);
-
-  console.log(`🔗 It's linked and ready for use!`);
 
   updateStatus(sha, {
     target_url: targetUrl,

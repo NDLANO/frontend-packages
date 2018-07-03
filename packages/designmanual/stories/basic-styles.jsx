@@ -1674,7 +1674,7 @@ storiesOf('Grunnstiler', module)
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
           <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ jiào shénme míngzi?
+            Nǐ jiào <strong>shénme</strong> míngzi?
           </TranslationLine>
           <TranslationLine lang="nb" langName="Norsk">
             Hva heter du?

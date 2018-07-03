@@ -23,6 +23,7 @@ export { default as Facebook } from './Facebook';
 export { default as Forward } from './Forward';
 export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';
+export { default as HelpCircle } from './HelpCircle';
 export { default as Home } from './Home';
 export { default as Link } from './Link';
 export { default as Pause } from './Pause';

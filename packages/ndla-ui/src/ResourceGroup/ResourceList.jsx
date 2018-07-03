@@ -6,12 +6,11 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Link from 'react-router-dom/Link';
-import { Button } from 'ndla-ui';
-import { Additional } from 'ndla-icons/common';
+import { NoContentBox, Tooltip, SafeLink } from 'ndla-ui';
+import { Additional, Core } from 'ndla-icons/common';
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
@@ -24,33 +23,13 @@ const Resource = ({
   icon,
   resourceToLinkProps,
   showAdditionalResources,
+  messages,
+  id,
 }) => {
-  const linkProps = resourceToLinkProps(resource);
   const hidden = resource.additional ? !showAdditionalResources : false;
-
-  const linkContent = (
-    <Fragment>
-      <div {...classes('icon o-flag__img')}>{icon}</div>
-      <h1 {...classes('title')}>
-        <span>{resource.name}</span>
-      </h1>
-      {resource.additional ? (
-        <Additional className="c-icon--20 u-margin-left-tiny" />
-      ) : null}
-    </Fragment>
-  );
-
-  const link = linkProps.href ? (
-    <a {...linkProps} {...classes('link o-flag o-flag--top')}>
-      {linkContent}
-    </a>
-  ) : (
-    <Link
-      {...resourceToLinkProps(resource)}
-      {...classes('link o-flag o-flag--top')}>
-      {linkContent}
-    </Link>
-  );
+  const contentTypeDescription = resource.additional
+    ? messages.additionalTooltip
+    : messages.coreTooltip;
 
   return (
     <li
@@ -58,7 +37,33 @@ const Resource = ({
         hidden,
         additional: resource.additional,
       })}>
-      <div {...classes('body o-flag__body')}>{link}</div>
+      <div {...classes('body o-flag__body')}>
+        <SafeLink
+          {...resourceToLinkProps(resource)}
+          {...classes('link o-flag o-flag--top')}
+          aria-describedby={id}>
+          <div {...classes('icon o-flag__img')}>{icon}</div>
+          <h1 {...classes('title')}>
+            <span>{resource.name}</span>
+          </h1>
+        </SafeLink>
+        <span id={id} hidden>
+          {contentTypeDescription}
+        </span>
+        <div>
+          {resource.additional && (
+            <Tooltip tooltip={contentTypeDescription} align="right">
+              <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+            </Tooltip>
+          )}
+          {!resource.additional &&
+            showAdditionalResources && (
+              <Tooltip tooltip={contentTypeDescription} align="right">
+                <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+              </Tooltip>
+            )}
+        </div>
+      </div>
     </li>
   );
 };
@@ -68,69 +73,68 @@ Resource.propTypes = {
   icon: PropTypes.node.isRequired,
   resource: ResourceShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  messages: PropTypes.shape({
+    additionalTooltip: PropTypes.string,
+    coreTooltip: PropTypes.string,
+  }).isRequired,
 };
 
 const ResourceList = ({
-  additionalResources,
-  normalResources,
+  resources,
   onClick,
   messages,
   type,
-  empty,
   showAdditionalResources,
   ...rest
-}) => (
-  <div>
-    <ul {...classes('list')}>
-      {additionalResources.map(resource => (
-        <Resource
-          key={resource.id}
-          type={type}
-          showAdditionalResources={showAdditionalResources}
-          {...rest}
-          resource={resource}
-        />
-      ))}
-      {normalResources.length === 0 && !showAdditionalResources ? (
-        <div {...classes('additional-resources-trigger')}>
-          <span>
-            <div>
-              <p>{messages.noCoreResourcesAvailable}</p>
-              <Button outline onClick={onClick}>
-                {messages.activateAdditionalResources}
-              </Button>
-            </div>
-          </span>
-        </div>
-      ) : (
-        normalResources.map(resource => (
+}) => {
+  const renderAdditionalResourceTrigger =
+    !showAdditionalResources &&
+    resources.filter(res => res.additional).length > 0 &&
+    resources.filter(res => !res.additional).length === 0;
+
+  return (
+    <div>
+      <ul {...classes('list')}>
+        {resources.map((resource, index) => (
           <Resource
             key={resource.id}
             type={type}
             showAdditionalResources={showAdditionalResources}
             {...rest}
             resource={resource}
+            messages={messages}
+            id={`${resource.id}_${index}`}
           />
-        ))
-      )}
-    </ul>
-  </div>
-);
+        ))}
+        {renderAdditionalResourceTrigger && (
+          <li>
+            <NoContentBox
+              onClick={onClick}
+              buttonText={messages.noContentBoxButtonText}
+              text={messages.noContentBoxLabel}
+            />
+          </li>
+        )}
+      </ul>
+    </div>
+  );
+};
 
 ResourceList.propTypes = {
-  additionalResources: PropTypes.arrayOf(ResourceShape).isRequired,
-  normalResources: PropTypes.arrayOf(ResourceShape).isRequired,
+  resources: PropTypes.arrayOf(ResourceShape).isRequired,
   type: PropTypes.string,
   showAdditionalResources: PropTypes.bool,
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
-  empty: PropTypes.bool,
   messages: PropTypes.shape({
-    noCoreResourcesAvailable: PropTypes.string.isRequired,
-    activateAdditionalResources: PropTypes.string.isRequired,
+    noContentBoxLabel: PropTypes.string.isRequired,
+    noContentBoxButtonText: PropTypes.string.isRequired,
     toggleFilterLabel: PropTypes.string.isRequired,
-  }),
+    coreTooltip: PropTypes.string.isRequired,
+    additionalTooltip: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ResourceList;

@@ -6,7 +6,7 @@
     "lint": "yarn run lint-prettier --silent && eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
     "lint-prettier": "node scripts/prettier.js lint",
     "test": "cross-env NODE_ENV=unittest jest",
-    "deploy-storybook": "storybook-to-ghpages",
+    "deploy": "now --token $NDLA_NOW_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
     "clean": "lerna clean && lerna run clean",
     "bootstrap": "lerna bootstrap && lerna run prepublish",
     "watch": "node ./scripts/watch.js",
@@ -31,7 +31,6 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@storybook/storybook-deployer": "^2.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "22.4.0",

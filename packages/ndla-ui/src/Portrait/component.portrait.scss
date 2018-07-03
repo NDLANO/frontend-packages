@@ -1,9 +1,29 @@
 .c-portrait {
-	border-radius: 50%;
-	img {
-		max-width: 100%;
-		height: auto;
+	width: 7rem;
+	height: 7rem;
+	span {
+		display: block;
 		border-radius: 50%;
-		background: rgba(0,0,0,0.16);
+		background-color: rgba(0,0,0,0.16);
+		background-size: cover;
+		background-position: center center;
+		width: 7rem;
+		height: 7rem;
+	}
+	&--small {
+		width: 4rem;
+		height: 4rem;
+		span {
+			width: 4rem;
+			height: 4rem;
+		}
+	}
+	&--large {
+		width: 10rem;
+		height: 10rem;
+		span {
+			width: 10rem;
+			height: 10rem;
+		}
 	}
 }

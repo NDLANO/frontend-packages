@@ -110,6 +110,19 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     }
   }
 
+  &__result-label {
+    &--large-screen {
+      @include mq($until: desktop) {
+        display: none;
+      }
+    }
+    &--small-screen {
+      @include mq(desktop) {
+        display: none;
+      }
+    }
+  }
+
   &__result-wrapper {
     flex-grow: 1;
 

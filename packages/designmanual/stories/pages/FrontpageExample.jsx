@@ -30,6 +30,7 @@ class FrontpageExample extends Component {
         <FrontpageHeader
           heading="Nasjonal digital læringsarena"
           searchFieldValue=""
+          logoTo="#"
           onSearchFieldChange={() => {}}
           searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
           messages={{
@@ -38,15 +39,15 @@ class FrontpageExample extends Component {
           }}
           links={[
             {
-              url: '#1',
+              to: '#1',
               text: 'Om NDLA',
             },
             {
-              url: '#2',
+              to: '#2',
               text: 'Åpne digitale læremidler for videregående opplæring',
             },
             {
-              url: '#3',
+              to: '#3',
               text: 'Change language',
             },
           ]}

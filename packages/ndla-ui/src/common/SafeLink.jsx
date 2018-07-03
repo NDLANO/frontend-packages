@@ -9,15 +9,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
+import isString from 'lodash/isString';
 
-// Fallback to normal link if app is missing RouterContext
+const isExternalLink = to =>
+  to &&
+  isString(to) &&
+  (to.startsWith('https://') || to.startsWith('https://'));
+
+// Fallback to normal link if app is missing RouterContext or link is external
 const SafeLink = (props, context) => {
-  if (!context.router) {
-    const { to, onClick, className, ...rest } = props;
+  if (!context.router || isExternalLink(props.to)) {
+    const { to, ...rest } = props;
     delete rest.replace;
     const href = typeof to === 'string' ? to : '#';
     return (
-      <a href={href} onClick={onClick} className={className} {...rest}>
+      <a href={href} {...rest}>
         {props.children}
       </a>
     );

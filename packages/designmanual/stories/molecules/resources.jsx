@@ -25,7 +25,7 @@ import {
 const { contentTypes } = constants;
 
 const toLink = () => ({
-  href: '#',
+  to: '#',
 });
 
 const resourceGroup1 = {

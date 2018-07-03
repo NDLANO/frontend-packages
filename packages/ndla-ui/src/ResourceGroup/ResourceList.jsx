@@ -6,11 +6,10 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Link from 'react-router-dom/Link';
-import { NoContentBox, Tooltip } from 'ndla-ui';
+import { NoContentBox, Tooltip, SafeLink } from 'ndla-ui';
 import { Additional, Core } from 'ndla-icons/common';
 import { ResourceShape } from '../shapes';
 
@@ -27,63 +26,10 @@ const Resource = ({
   messages,
   id,
 }) => {
-  const linkProps = resourceToLinkProps(resource);
   const hidden = resource.additional ? !showAdditionalResources : false;
-
-  const linkContent = (
-    <Fragment>
-      <div {...classes('icon o-flag__img')}>{icon}</div>
-      <h1 {...classes('title')}>
-        <span>{resource.name}</span>
-      </h1>
-    </Fragment>
-  );
-
   const contentTypeDescription = resource.additional
     ? messages.additionalTooltip
     : messages.coreTooltip;
-
-  const coreAdditionalContentToolTip = (
-    <Fragment>
-      <span id={id} hidden>
-        {contentTypeDescription}
-      </span>
-      <div>
-        {resource.additional && (
-          <Tooltip tooltip={contentTypeDescription} align="right">
-            <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
-          </Tooltip>
-        )}
-        {!resource.additional &&
-          showAdditionalResources && (
-            <Tooltip tooltip={contentTypeDescription} align="right">
-              <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
-            </Tooltip>
-          )}
-      </div>
-    </Fragment>
-  );
-
-  const link = linkProps.href ? (
-    <Fragment>
-      <a
-        {...linkProps}
-        {...classes('link o-flag o-flag--top')}
-        aria-describedby={id}>
-        {linkContent}
-      </a>
-      {coreAdditionalContentToolTip}
-    </Fragment>
-  ) : (
-    <Fragment>
-      <Link
-        {...resourceToLinkProps(resource)}
-        {...classes('link o-flag o-flag--top')}>
-        {linkContent}
-      </Link>
-      {coreAdditionalContentToolTip}
-    </Fragment>
-  );
 
   return (
     <li
@@ -91,7 +37,33 @@ const Resource = ({
         hidden,
         additional: resource.additional,
       })}>
-      <div {...classes('body o-flag__body')}>{link}</div>
+      <div {...classes('body o-flag__body')}>
+        <SafeLink
+          {...resourceToLinkProps(resource)}
+          {...classes('link o-flag o-flag--top')}
+          aria-describedby={id}>
+          <div {...classes('icon o-flag__img')}>{icon}</div>
+          <h1 {...classes('title')}>
+            <span>{resource.name}</span>
+          </h1>
+        </SafeLink>
+        <span id={id} hidden>
+          {contentTypeDescription}
+        </span>
+        <div>
+          {resource.additional && (
+            <Tooltip tooltip={contentTypeDescription} align="right">
+              <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+            </Tooltip>
+          )}
+          {!resource.additional &&
+            showAdditionalResources && (
+              <Tooltip tooltip={contentTypeDescription} align="right">
+                <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+              </Tooltip>
+            )}
+        </div>
+      </div>
     </li>
   );
 };

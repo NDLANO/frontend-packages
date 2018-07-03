@@ -30,7 +30,7 @@ class FrontpageExample extends Component {
         <FrontpageHeader
           heading="Nasjonal digital læringsarena"
           searchFieldValue=""
-          logo="to"
+          logoTo="#"
           onSearchFieldChange={() => {}}
           searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
           messages={{

@@ -79,7 +79,9 @@ class FilterList extends Component {
                         value => value !== option.value,
                       );
                     }
-                    onChange(newValues, option.value);
+                    if (onChange) {
+                      onChange(newValues, option.value);
+                    }
                   }}
                 />
                 <label htmlFor={option.value}>

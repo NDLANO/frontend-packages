@@ -134,18 +134,16 @@
 
     & > .c-content-type-badge,
     .c-learning-path-badge {
-      margin: 0 $spacing--small/2;
+      margin: 0 $spacing--small / 2 0 $spacing;
+    }
+    & > .c-content-type-badge + span {
+      padding-right: $spacing;
     }
   }
 
   &__additional {
     display: flex;
     align-items: center;
-    margin-left: $spacing--small;
-
-    @include mq(desktop) {
-      margin-left: $spacing;
-    }
   }
 
   &__content-type-label {

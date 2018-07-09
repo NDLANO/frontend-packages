@@ -410,3 +410,5 @@ SearchPageExample.propTypes = {
 SearchPageExample.defaultProps = {
   showAuthor: false,
 };
+
+export default SearchPageExample;

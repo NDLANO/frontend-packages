@@ -34,8 +34,8 @@ class FilterTabs extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.options !== this.props.options) {
-      this.tabWidths = null;
-      this.state({
+      this.updateTabSizes();
+      this.setState({
         focusOnSelected: false,
         showDropdown: false,
       });

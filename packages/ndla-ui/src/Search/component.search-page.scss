@@ -72,7 +72,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
       background: $white;
       margin-right: 0;
       z-index: 100;
-      padding-top: 58px;
+      padding-top: $spacing * 3;
     }
 
     flex-basis: $filter-width;
@@ -82,7 +82,8 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
     &--expanded {
       display: block;
-
+      position: fixed;
+      padding-bottom: $spacing--large;
       animation: slideIn 0.5s;
     }
 
@@ -143,7 +144,10 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     height: 58px;
     background: $brand-grey--lighter;
     padding: 0 $spacing;
-    display: flex;
+    display: none;
+    &--expanded {
+      display: flex;
+    }
     align-items: center;
     border: 0;
     cursor: pointer;
@@ -151,7 +155,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 101;
 
     @include mq(desktop) {
       display: none;

@@ -1,39 +1,13 @@
 import React, { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
 import { Core, Additional } from 'ndla-icons/common';
-
-/*
-export const SubjectMaterialBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
-);
-export const TasksAndActivitiesBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
-);
-export const AssessmentResourcesBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
-);
-export const SubjectBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />
-);
-export const ExternalLearningResourcesBadge = props => (
-  <ContentTypeBadge
-    {...props}
-    type={contentTypes.EXTERNAL_LEARNING_RESOURCES}
-  />
-);
-export const SourceMaterialBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
-);
-
-export const LearningPathBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
-);
-*/
 
 import {
   SearchPage,
   SearchResult,
   SearchResultList,
   SearchFilter,
+  SearchResultAuthor,
   SearchPopoverFilter,
   SubjectBadge,
   SubjectMaterialBadge,
@@ -162,6 +136,23 @@ class SearchPageExample extends Component {
       currentTab === 'all'
         ? results
         : results.filter(result => result.matchTab.indexOf(currentTab) !== -1);
+
+    const author = modifier =>
+      this.props.showAuthor ? (
+        <SearchResultAuthor
+          modifier={modifier}
+          messages={{
+            authorName: 'Cecilie Isaksen Eftedal',
+            role: 'Stilling / rolle',
+            phone: '+47 123 45 678',
+            email: 'cecilie@ndla.no',
+            readmoreLabel: 'Les om Cecilie',
+          }}
+          url="/?selectedKind=Sidevisninger&selectedStory=Forfatter%20sidemal&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
+          image="http://www.placehold.it/300x300"
+        />
+      ) : null;
+
     const contextFilter =
       searchTabFilterOptions[currentTab] && currentResult.length > 0 ? (
         <SearchFilter
@@ -175,36 +166,51 @@ class SearchPageExample extends Component {
     const onSearch = evt => {
       evt.preventDefault();
     };
+
+    const authorTablet = author('tablet');
+    const authorDesktop = author('desktop');
+    const hasAuthor = authorTablet !== null;
     return (
       <SearchPage
         closeUrl="#"
-        searchString=""
+        searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : ''}
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
         onSearch={onSearch}
-        searchFieldFilters={[
-          {
-            value: 'value',
-            title: 'Medieuttrykk og mediesamfunn',
-          },
-        ]}
-        activeFilters={[
-          {
-            value: 'value',
-            title: 'Medieuttrykk og mediesamfunn',
-            filterName: 'subject',
-          },
-          {
-            value: 'value2',
-            title: 'Kjernestoff',
-            filterName: 'content',
-          },
-        ]}
+        searchFieldFilters={
+          hasAuthor
+            ? null
+            : [
+                {
+                  value: 'value',
+                  title: 'Medieuttrykk og mediesamfunn',
+                },
+              ]
+        }
+        activeFilters={
+          hasAuthor
+            ? null
+            : [
+                {
+                  value: 'value',
+                  title: 'Medieuttrykk og mediesamfunn',
+                  filterName: 'subject',
+                },
+                {
+                  value: 'value2',
+                  title: 'Kjernestoff',
+                  filterName: 'content',
+                },
+              ]
+        }
+        author={authorTablet}
         onActiveFilterRemove={() => {}}
         messages={{
-          filterHeading: 'Filtrer:',
-          resultHeading: '43 treff i Ndla',
+          filterHeading: 'Filter',
+          resultHeading: hasAuthor
+            ? '37 artikler skrevet av Cecilie'
+            : '43 treff i Ndla',
           closeButton: 'Lukk',
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
           searchFieldTitle: 'Søk',
@@ -366,12 +372,13 @@ class SearchPageExample extends Component {
           </Fragment>
         }>
         <SearchResult
+          author={authorDesktop}
           messages={{
             searchStringLabel: 'Du søkte på:',
             subHeading: '43 treff i Ndla',
             dropdownBtnLabel: 'Flere innholdstyper',
           }}
-          searchString="Test"
+          searchString={hasAuthor ? null : 'Test'}
           tabOptions={searchTabOptions}
           onTabChange={newCurrentTab => {
             this.setState({
@@ -396,4 +403,10 @@ class SearchPageExample extends Component {
   }
 }
 
-export default SearchPageExample;
+SearchPageExample.propTypes = {
+  showAuthor: PropTypes.bool,
+};
+
+SearchPageExample.defaultProps = {
+  showAuthor: false,
+};

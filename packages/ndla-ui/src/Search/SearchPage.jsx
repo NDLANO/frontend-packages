@@ -76,6 +76,7 @@ export default class SearchPage extends Component {
       children,
       messages,
       closeUrl,
+      author,
     } = this.props;
 
     const filterModifiers = [];
@@ -103,22 +104,23 @@ export default class SearchPage extends Component {
             }}
           />
         </div>
+        {author}
         <div {...classes('filter-result-wrapper')}>
+          <button
+            onClick={() => {
+              this.handleToggleFilter(false);
+            }}
+            {...classes('filter-close-button', filterModifiers)}
+            ref={ref => {
+              this.filterCloseButton = ref;
+            }}>
+            <Back /> <span>{messages.narrowScreenFilterHeading}</span>
+          </button>
           <aside
             {...classes('filter-wrapper', filterModifiers)}
             ref={ref => {
               this.filterContainerRef = ref;
             }}>
-            <button
-              onClick={() => {
-                this.handleToggleFilter(false);
-              }}
-              {...classes('filter-close-button')}
-              ref={ref => {
-                this.filterCloseButton = ref;
-              }}>
-              <Back /> <span>{messages.narrowScreenFilterHeading}</span>
-            </button>
             <h1 {...classes('filter-heading')}>{messages.filterHeading}</h1>
             <div {...classes('filters')}>{filters}</div>
           </aside>
@@ -184,4 +186,9 @@ SearchPage.propTypes = {
     searchFieldTitle: PropTypes.string.isRequired,
   }).isRequired,
   closeUrl: PropTypes.string.isRequired,
+  author: PropTypes.node,
+};
+
+SearchPage.defaultProps = {
+  author: null,
 };

@@ -17,11 +17,14 @@ export const SearchResult = ({
   searchString,
   currentTab,
   onTabChange,
+  author,
 }) => (
   <div {...resultClasses()}>
-    <h1>
-      {messages.searchStringLabel} <span>{searchString}</span>
-    </h1>
+    {author || (
+      <h1>
+        {messages.searchStringLabel} <span>{searchString}</span>
+      </h1>
+    )}
     <h2>{messages.subHeading}</h2>
     <FilterTabs
       messages={messages}
@@ -49,8 +52,20 @@ SearchResult.propTypes = {
     subHeading: PropTypes.string.isRequired,
     dropdownBtnLabel: PropTypes.string.isRequired,
   }).isRequired,
-  searchString: PropTypes.string.isRequired,
+  searchString: (props, propName, componentName) => {
+    if (props.author === null && typeof props[propName] !== 'string') {
+      return new Error(
+        `Invalid prop 'searchString' in ${componentName}. Required unless props.author === PropTypes.node`,
+      );
+    }
+    return null;
+  },
   onTabChange: PropTypes.func.isRequired,
+  author: PropTypes.node,
+};
+
+SearchResult.defaultProps = {
+  author: null,
 };
 
 const searchResultItemClasses = BEMHelper('c-search-result-item');

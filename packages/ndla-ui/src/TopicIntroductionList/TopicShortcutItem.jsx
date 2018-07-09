@@ -13,7 +13,7 @@ const classes = new BEMHelper({
 });
 
 const ShortcutItem = ({ shortcut: { tooltip, contentType, url, count } }) => (
-  <Tooltip tooltip={tooltip} delay={400} align="bottom">
+  <Tooltip tooltip={tooltip} delay={100} align="bottom">
     <SafeLink {...classes('item-link')} aria-label={tooltip} to={url}>
       <ContentTypeBadge type={contentType} size="x-small" background />
       <span {...classes('count')}>{count}</span>

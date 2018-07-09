@@ -6,11 +6,18 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, copyTextToClipboard } from 'ndla-util';
 import { Copy } from 'ndla-icons/action';
 import { Button, SubjectHeader } from 'ndla-ui';
+
+const addLeadingSlash = str => {
+  if (str.startsWith('/')) {
+    return str;
+  }
+  return `/${str}`;
+};
 
 class CopyButton extends Component {
   constructor(props) {
@@ -25,7 +32,6 @@ class CopyButton extends Component {
 
   handleClick() {
     const { stringToCopy } = this.props;
-    console.log(stringToCopy);
     const success = copyTextToClipboard(stringToCopy, this.buttonContainer);
 
     if (success) {
@@ -39,7 +45,7 @@ class CopyButton extends Component {
 
   render() {
     const { hasCopied } = this.state;
-    const { children, hasCopiedTitle, ...rest } = this.props;
+    const { children, hasCopiedTitle, stringToCopy, ...rest } = this.props;
     return (
       <span
         ref={r => {
@@ -55,15 +61,8 @@ class CopyButton extends Component {
 
 CopyButton.propTypes = {
   stringToCopy: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   hasCopiedTitle: PropTypes.string.isRequired,
-};
-
-const addLeadingSlash = str => {
-  if (str.startsWith('/')) {
-    return str;
-  }
-  return `/${str}`;
 };
 
 const BannerList = ({ banners }) =>
@@ -88,7 +87,9 @@ const BannerList = ({ banners }) =>
           )}`}
           outline
           title="Kopier mobil banner til importskjema">
-          <Copy /> Kopier mobil banner
+          <Fragment>
+            <Copy /> Kopier mobil banner
+          </Fragment>
         </CopyButton>
         <CopyButton
           style={{ margin: '13px' }}
@@ -98,7 +99,9 @@ const BannerList = ({ banners }) =>
             banner.desktop,
           )}`}
           title="Kopier mobil banner til importskjema">
-          <Copy /> Kopier desktop banner
+          <Fragment>
+            <Copy /> Kopier desktop banner
+          </Fragment>
         </CopyButton>
       </div>
     </div>

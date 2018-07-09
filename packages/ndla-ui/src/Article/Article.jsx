@@ -154,7 +154,7 @@ Article.propTypes = {
   modifier: PropTypes.string,
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
-  additional: PropTypes.node,
+  additional: PropTypes.bool,
   compentenceGoals: PropTypes.node,
   compentenceGoalsNarrow: PropTypes.node,
   children: PropTypes.node,

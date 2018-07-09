@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ArrowDropDown } from 'ndla-icons/common';
 import debounce from 'lodash/debounce';
 
+
 const classes = BEMHelper('c-tabs');
 
 const leftKeys = ['ArrowLeft', 'Left', 'ArrowUp', 'Up'];
@@ -37,7 +38,7 @@ class FilterTabs extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.options !== this.props.options) {
       this.tabWidths = null;
-      this.state({
+      this.setState({
         focusOnSelected: false,
         showDropdown: false,
       });

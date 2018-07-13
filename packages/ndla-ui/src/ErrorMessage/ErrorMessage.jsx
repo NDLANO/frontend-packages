@@ -57,6 +57,7 @@ ErrorMessage.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     goToFrontPage: PropTypes.string,
+    linksTitle: PropTypes.string,
     back: PropTypes.string,
   }),
   illustration: PropTypes.shape({

@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { uuid } from 'ndla-util';
 
 import { Fade } from '../Animation';
 
@@ -31,7 +30,6 @@ class Tooltip extends Component {
     this.contentRef = null;
     this.widthRef = 0;
     this.heightRef = 0;
-    this.uuid = uuid();
   }
 
   componentDidMount() {
@@ -93,7 +91,7 @@ class Tooltip extends Component {
         <Fade in={this.state.showtooltip}>
           <span
             role="tooltip"
-            id={this.uuid}
+            id={this.props.id}
             {...classes('tooltip')}
             style={{ transform }}>
             {this.props.tooltip}
@@ -102,7 +100,7 @@ class Tooltip extends Component {
         <span
           role="button"
           tabIndex={0}
-          aria-describedby={this.uuid}
+          aria-describedby={this.props.id}
           ref={r => {
             this.contentRef = r;
           }}
@@ -120,6 +118,7 @@ class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   tooltip: PropTypes.string.isRequired,
   delay: PropTypes.number,

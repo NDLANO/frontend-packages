@@ -75,11 +75,12 @@ const CompetenceGoalsExample = ({ headingId, menu, search }) => {
   return (
     <CompetenceGoals
       menu={menu}
+      search={search}
       subjectName={menu ? 'Fag' : null}
       id={menu ? 'competence-goals-menu' : 'competence-goals'}
       headingId={headingId}
-      filterOptions={!search ? filterOptions : null}
-      filterValues={!search ? filterValues : null}
+      filterOptions={!search || !menu ? filterOptions : null}
+      filterValues={!search || !menu ? filterValues : null}
       description="Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon"
       messages={{
         heading: 'Kompetansemål og læreplan',

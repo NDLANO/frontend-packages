@@ -26,7 +26,11 @@ export const SearchResult = ({
 }) => (
   <div {...resultClasses()}>
     {author || (
-      <h1 {...resultClasses('heading', currentCompetenceGoal ? 'competence-goal' : null)}>
+      <h1
+        {...resultClasses(
+          'heading',
+          currentCompetenceGoal ? 'competence-goal' : null,
+        )}>
         {messages.searchStringLabel} <span>{searchString}</span>
       </h1>
     )}

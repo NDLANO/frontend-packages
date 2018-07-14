@@ -105,7 +105,7 @@ export {
   default as RelatedArticleList,
   RelatedArticle,
 } from './RelatedArticleList';
-export { default as CompentenceGoals } from './CompetenceGoals';
+export { default as CompetenceGoals } from './CompetenceGoals';
 
 export { default as NoContentBox } from './NoContentBox';
 

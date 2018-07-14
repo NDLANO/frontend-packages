@@ -7,7 +7,7 @@
     padding: $spacing--medium;
   }
 
-  & > h1 {
+  &__heading {
     display: none;
     margin: 0 0 $spacing--medium;
     @include font-size(24px, 32px);
@@ -19,6 +19,9 @@
 
     span {
       font-weight: 600;
+    }
+    &--competence-goal {
+      margin-bottom: $spacing;
     }
   }
 
@@ -46,6 +49,26 @@
     @include mq(desktop) {
       display: block;
     }
+  }
+
+  &__current-goal {
+    margin: 0 0 0 $spacing--small*1.4;
+
+    li {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__current-goal-info {
+    margin: $spacing--small 0 $spacing--large ($spacing--small + 2px);
+    @include font-size(16px, 20px);
+  }
+
+  &__competence-goals {
+    background: $brand-color--lighter;
+    padding: $spacing;
   }
 }
 

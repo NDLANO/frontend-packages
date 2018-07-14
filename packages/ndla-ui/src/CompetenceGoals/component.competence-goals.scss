@@ -1,9 +1,8 @@
-.c-compentence-goals {
+.c-competence-goals {
   height: 100%;
 
   &__heading {
     margin-top: 0;
-    color: $brand-color;
     @include font-size(20px, 32px);
 
     @include mq(tablet) {
@@ -59,7 +58,7 @@
       max-height: 35px;
       transition: max-height 0.5s ease-in-out;
 
-      .c-compentence-goals {
+      .c-competence-goals {
         &__topic-list {
           opacity: 0;
           transition: opacity 0.1s ease-in-out 0.1s;
@@ -69,7 +68,7 @@
 
     &--expanded {
       max-height: 4000px;
-      .c-compentence-goals {
+      .c-competence-goals {
         &__topic-list {
           opacity: 1;
         }
@@ -114,6 +113,7 @@
   &__topic-list {
     margin: 0 0 0 18px;
     padding: 0;
+    max-width: 650px;
 
     @include mq(desktop) {
       margin: 0;
@@ -135,8 +135,9 @@
     }
   }
 
-  &--menu {
-    .c-compentence-goals {
+  &--menu,
+  &--search {
+    .c-competence-goals {
       &__heading {
         text-transform: uppercase;
         color: $primary-color;
@@ -144,10 +145,13 @@
         @include font-size(16px, 20px);
       }
     }
+    &__topic--expandable {
+      padding-left: ($spacing--small + 2px);
+    }
   }
 }
 
-.c-compentence-goals-dialog {
+.c-competence-goals-dialog {
   &__content {
     padding: $spacing--large 0 $spacing 0;
 

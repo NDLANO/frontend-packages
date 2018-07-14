@@ -1,3 +1,3 @@
-import CompentenceGoals from './CompentenceGoals';
+import CompetenceGoals from './CompetenceGoals';
 
-export default CompentenceGoals;
+export default CompetenceGoals;

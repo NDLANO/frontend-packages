@@ -173,8 +173,7 @@ class SearchPageExample extends Component {
     const authorTablet = author('tablet');
     const authorDesktop = author('desktop');
     const hasAuthor = authorTablet !== null;
-    const searchString = this.props.competenceGoals ? '' : 'Ideskaping';
-    const searchStringResults = this.props.competenceGoals ? 'Kompetansemål' : 'Ideskaping';
+    const searchString = this.props.competenceGoals ? 'Kompetansemål' : 'Ideskaping';
     return (
       <SearchPage
         closeUrl="#"
@@ -386,15 +385,15 @@ class SearchPageExample extends Component {
               '16 kompetansemål i medieuttrykk- og mediesamfunnet',
             dropdownBtnLabel: 'Flere innholdstyper',
           }}
-          currentCompetenceGoal="Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier"
-          competenceGoals={<CompetenceGoalsExample search />}
+          currentCompetenceGoal={this.props.competenceGoals ? 'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier' : null}
+          competenceGoals={this.props.competenceGoals ? <CompetenceGoalsExample search /> : null}
           competenceGoalsOpen={this.state.competenceGoalsOpen}
           onToggleCompetenceGoals={() => {
             this.setState(prevState => ({
               competenceGoalsOpen: !prevState.competenceGoalsOpen,
             }));
           }}
-          searchString={hasAuthor ? null : searchStringResults}
+          searchString={hasAuthor ? null : searchString}
           tabOptions={searchTabOptions}
           onTabChange={newCurrentTab => {
             this.setState({

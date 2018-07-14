@@ -10,11 +10,17 @@
   z-index: 9500;
   align-items: center;
   justify-content: center;
+  font-family: $font;
   .o-backdrop {
     display: none;
     z-index: 1;
   }
   &:not(&--large, &--fullscreen) {
+    h1 {
+      @include inuit-font-size(22px, 26px);
+    }
+  }
+  &--small-heading {
     h1 {
       @include inuit-font-size(22px, 26px);
     }
@@ -46,6 +52,9 @@
     background-color: $brand-color--lighter;
     box-shadow: 0 0 30px rgba($black, 0.2);
     padding: $spacing--large $spacing;
+    @include mq($until: tablet) {
+      padding: $spacing $spacing $spacing--large;
+    }
     animation-name: zoomIn;
     animation-duration: 0.3s;
     overflow: auto;
@@ -84,6 +93,11 @@
     padding: 0;
     box-shadow: $link;
     height: 25px;
+    @include mq($until: tablet) {
+      + * {
+        margin-top: $spacing--large;
+      }
+    }
     cursor: pointer;
     &:hover {
       box-shadow: $link--hover;

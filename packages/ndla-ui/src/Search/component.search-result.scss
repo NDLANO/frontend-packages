@@ -7,9 +7,23 @@
     padding: $spacing--medium;
   }
 
+  &__heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 $spacing--medium;
+    .c-button--link {
+      @include font-size(16px, 18px);
+      box-shadow: inset 0 0;
+      &:hover, &:focus {
+        box-shadow: inset 0 -1px;
+      }
+    }
+  }
+
   &__heading {
     display: none;
-    margin: 0 0 $spacing--medium;
+    margin: 0;
     @include font-size(24px, 32px);
     font-weight: 400;
 
@@ -19,9 +33,6 @@
 
     span {
       font-weight: 600;
-    }
-    &--competence-goal {
-      margin-bottom: $spacing;
     }
   }
 
@@ -69,6 +80,7 @@
   &__competence-goals {
     background: $brand-color--lighter;
     padding: $spacing;
+    margin-top: -$spacing--small;
   }
 }
 

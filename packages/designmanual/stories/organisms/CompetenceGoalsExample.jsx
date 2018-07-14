@@ -79,8 +79,8 @@ const CompetenceGoalsExample = ({ headingId, menu, search }) => {
       subjectName={menu ? 'Fag' : null}
       id={menu ? 'competence-goals-menu' : 'competence-goals'}
       headingId={headingId}
-      filterOptions={!search || !menu ? filterOptions : null}
-      filterValues={!search || !menu ? filterValues : null}
+      filterOptions={!search ? filterOptions : null}
+      filterValues={!search ? filterValues : null}
       description="Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon"
       messages={{
         heading: 'Kompetansemål og læreplan',
@@ -104,7 +104,7 @@ export const CompetenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
     useDialog
     id="useArticleId"
     labelledby={headingId}
-    dialogModifier="large"
+    dialogModifier="large small-heading"
     buttonClassName={classes('toggle-button', { wide, narrow }).className}
     title="Kompetansemål"
     openTitle="Lukk boks"

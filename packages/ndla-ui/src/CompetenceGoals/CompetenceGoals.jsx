@@ -53,19 +53,16 @@ class CompetenceGoals extends Component {
     return (
       <div {...classes('', { menu, search })}>
         {!menu && !search ? (
-          <Fragment>
-            <h1 id={headingId} {...classes('heading')}>
-              {messages.heading}
-            </h1>
+          <div {...classes('dialog-wrapper')}>
+            <h1 id={headingId}>{messages.heading}</h1>
             <p {...classes('description')}>{description}</p>
             <p {...classes('description')}>{messages.listDescription}</p>
-
             <div {...classes('topic')}>
               <ul {...classes('topic-list')}>
                 {topics[0].items.map(renderItem)}
               </ul>
             </div>
-          </Fragment>
+          </div>
         ) : (
           <Fragment>
             <h1 {...classes('subject-heading')}>{subjectName}</h1>

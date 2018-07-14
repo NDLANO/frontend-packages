@@ -180,6 +180,7 @@ class SearchPageExample extends Component {
       <SearchPage
         closeUrl="#"
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
+        hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
@@ -385,6 +386,7 @@ class SearchPageExample extends Component {
             openCompetenceGoalsButtonPrefix: '1 av',
             openCompetenceGoalsButton:
               '16 kompetansemål i medieuttrykk- og mediesamfunnet',
+            closeCompetenceGoalsLabel: 'Lukk kompetansemål',
             dropdownBtnLabel: 'Flere innholdstyper',
           }}
           currentCompetenceGoal={

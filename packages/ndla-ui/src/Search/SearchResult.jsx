@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, Additional } from 'ndla-icons/common';
+import { Cross } from 'ndla-icons/action';
 import { uuid } from 'ndla-util';
 
 import { FilterTabs } from 'ndla-tabs';
@@ -26,13 +27,21 @@ export const SearchResult = ({
 }) => (
   <div {...resultClasses()}>
     {author || (
-      <h1
-        {...resultClasses(
-          'heading',
-          currentCompetenceGoal ? 'competence-goal' : null,
-        )}>
-        {messages.searchStringLabel} <span>{searchString}</span>
-      </h1>
+      <div {...resultClasses('heading-wrapper')}>
+        <h1
+          {...resultClasses(
+            'heading',
+            currentCompetenceGoal ? 'competence-goal' : null,
+          )}>
+          {messages.searchStringLabel} <span>{searchString}</span>
+        </h1>
+        {competenceGoalsOpen && (
+          <Button link onClick={onToggleCompetenceGoals}>
+            {messages.closeCompetenceGoalsLabel}
+            <Cross className="c-icon--22 u-margin-left-tiny" />
+          </Button>
+        )}
+      </div>
     )}
     <h2>{messages.subHeading}</h2>
     {!competenceGoalsOpen &&
@@ -84,6 +93,7 @@ SearchResult.propTypes = {
     dropdownBtnLabel: PropTypes.string.isRequired,
     openCompetenceGoalsButtonPrefix: PropTypes.string,
     openCompetenceGoalsButton: PropTypes.string,
+    closeCompetenceGoalsLabel: PropTypes.string,
   }).isRequired,
   currentCompetenceGoal: PropTypes.string,
   competenceGoalsOpen: PropTypes.bool,

@@ -77,16 +77,19 @@ class Resources extends Component {
     this.toggleAdditionalResources = this.toggleAdditionalResources.bind(this);
     this.toggleAdditionalDialog = this.toggleAdditionalDialog.bind(this);
   }
+
   toggleAdditionalResources() {
-    this.setState({
-      showAdditionalResources: !this.state.showAdditionalResources,
-    });
+    this.setState(prevState => ({
+      showAdditionalResources: !prevState.showAdditionalResources,
+    }));
   }
+
   toggleAdditionalDialog() {
-    this.setState({
-      showAdditionalDialog: !this.state.showAdditionalDialog,
-    });
+    this.setState(prevState => ({
+      showAdditionalDialog: !prevState.showAdditionalDialog,
+    }));
   }
+
   render() {
     const { showAdditionalResources, showAdditionalDialog } = this.state;
     const hasAdditionalResources = resourceGroups.some(group =>

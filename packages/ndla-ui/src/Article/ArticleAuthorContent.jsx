@@ -42,6 +42,7 @@ const ArticleAuthorContent = ({
               <span>{author.role}:</span>
               <span>
                 <button
+                  type="button"
                   className="c-button--link"
                   onClick={() => {
                     onSelectAuthor(index);

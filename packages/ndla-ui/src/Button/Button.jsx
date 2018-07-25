@@ -35,6 +35,7 @@ const Button = ({
     lighter,
     stripped,
   };
+  /* eslint-disable react/button-has-type */
   const type = submit ? 'submit' : rest.type || 'button';
   // Unless the disabled state is explicitly set, the button is disabled when loading.
   const isDisabled = (disabled !== undefined ? disabled : loading) || false;

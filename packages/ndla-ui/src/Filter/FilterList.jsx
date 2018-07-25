@@ -102,6 +102,7 @@ class FilterList extends Component {
         {!showAll && (
           <button
             {...filterClasses('expand')}
+            type="button"
             onClick={() => {
               this.setState(prevState => {
                 if (prevState.visibleCount === defaultVisibleCount) {

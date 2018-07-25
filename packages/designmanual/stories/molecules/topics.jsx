@@ -24,16 +24,19 @@ class Topics extends Component {
     this.toggleAdditionalCores = this.toggleAdditionalCores.bind(this);
     this.toggleAdditionalDialog = this.toggleAdditionalDialog.bind(this);
   }
+
   toggleAdditionalCores() {
-    this.setState({
-      showAdditionalCores: !this.state.showAdditionalCores,
-    });
+    this.setState(prevState => ({
+      showAdditionalCores: !prevState.showAdditionalCores,
+    }));
   }
+
   toggleAdditionalDialog() {
-    this.setState({
-      showAdditionalDialog: !this.state.showAdditionalDialog,
-    });
+    this.setState(prevState => ({
+      showAdditionalDialog: !prevState.showAdditionalDialog,
+    }));
   }
+
   render() {
     const { showAdditionalCores, showAdditionalDialog } = this.state;
     return (

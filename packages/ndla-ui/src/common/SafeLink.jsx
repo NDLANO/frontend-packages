@@ -37,7 +37,7 @@ SafeLink.propTypes = Link.propTypes;
 SafeLink.defaultProps = Link.defaultProps;
 
 SafeLink.contextTypes = {
-  router: PropTypes.object,
+  router: PropTypes.object, // eslint-disable-line
 };
 
 export default SafeLink;

@@ -91,6 +91,7 @@ class CompentenceGoals extends Component {
                 <h3 {...classes('topic-heading')}>
                   <button
                     {...classes('topic-heading-button')}
+                    type="button"
                     aria-expanded={this.state.expanded === topic.heading}
                     aria-controls={id}
                     onClick={() => {

@@ -46,6 +46,7 @@ class TopicIntroductionShortcuts extends Component {
 
       buttonView = (
         <button
+          type="button"
           aria-expanded={this.state.open}
           aria-label={messages.toggleButtonText}
           aria-controls={id}

@@ -107,6 +107,7 @@ export default class SearchPage extends Component {
         {author}
         <div {...classes('filter-result-wrapper')}>
           <button
+            type="button"
             onClick={() => {
               this.handleToggleFilter(false);
             }}

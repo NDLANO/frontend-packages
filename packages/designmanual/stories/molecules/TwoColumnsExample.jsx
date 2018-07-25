@@ -30,6 +30,7 @@ class TopicListExample extends Component {
     }
     return topics;
   }
+
   render() {
     const { filterValues } = this.state;
     return (

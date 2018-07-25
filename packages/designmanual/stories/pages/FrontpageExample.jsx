@@ -24,6 +24,7 @@ class FrontpageExample extends Component {
       expanded: null,
     };
   }
+
   render() {
     return (
       <Fragment>

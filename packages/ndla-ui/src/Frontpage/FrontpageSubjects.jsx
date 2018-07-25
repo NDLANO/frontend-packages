@@ -47,6 +47,7 @@ export const FrontpageSubjectsSection = ({
     <nav {...sectionClasses('', { expanded })}>
       <h1 {...sectionClasses('heading')}>
         <button
+          type="button"
           onClick={() => {
             onExpand(!expanded);
           }}

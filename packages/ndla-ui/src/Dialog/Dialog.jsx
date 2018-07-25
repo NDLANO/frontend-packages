@@ -43,6 +43,7 @@ export const Dialog = ({
       <div {...classes('content')}>
         <button
           {...classes('close')}
+          type="button"
           onClick={() => {
             if (onClose) {
               onClose();

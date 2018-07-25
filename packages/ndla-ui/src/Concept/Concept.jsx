@@ -40,7 +40,10 @@ const Concept = ({
   const closeFunc = closeCallback || null;
   return (
     <span {...classes('item')} id={id}>
-      <button aria-label={messages.ariaLabel} {...classes('link')}>
+      <button
+        type="button"
+        aria-label={messages.ariaLabel}
+        {...classes('link')}>
         {children}
       </button>
       {createUniversalPortal(
@@ -52,7 +55,10 @@ const Concept = ({
           aria-labelledby={id}
           aria-describedby={id}
           {...classes('popup', visibleClass)}>
-          <button {...classes('close', 'u-close')} onClick={closeFunc}>
+          <button
+            {...classes('close', 'u-close')}
+            type="button"
+            onClick={closeFunc}>
             {messages.close}
           </button>
           <h3 {...classes('title')}>{title}</h3>

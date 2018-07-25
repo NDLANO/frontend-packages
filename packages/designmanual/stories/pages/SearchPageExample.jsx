@@ -130,6 +130,7 @@ class SearchPageExample extends Component {
       currentTab: 'all',
     };
   }
+
   render() {
     const { currentTab } = this.state;
     const currentResult =

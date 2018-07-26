@@ -83,7 +83,8 @@ export const ArticleIntroduction = ({ children }) => {
         dangerouslySetInnerHTML={{ __html: children }}
       />
     );
-  } if (children) {
+  }
+  if (children) {
     return <p className="article_introduction">{children}</p>;
   }
   return null;

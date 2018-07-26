@@ -30,7 +30,8 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
                 {link.icon}
               </SafeLink>
             );
-          } if (link.href) {
+          }
+          if (link.href) {
             return (
               <a
                 key={link.href}

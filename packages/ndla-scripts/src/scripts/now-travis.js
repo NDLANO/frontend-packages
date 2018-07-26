@@ -64,7 +64,8 @@ function safeify(s, safed = []) {
       .join('NOW_TOKEN')
       .split(githubToken)
       .join('GITHUB_TOKEN');
-  } if (typeof s === 'object' && s !== null) {
+  }
+  if (typeof s === 'object' && s !== null) {
     return Object.keys(s).reduce((acc, k) => {
       acc[k] = safeify(s, safed);
       return acc;

@@ -34,7 +34,7 @@ module.exports = {
 
     'import/no-named-as-default': 0,
     'import/prefer-default-export': 0,
-    'import/no-cycle': 1,
+    'import/no-cycle': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };

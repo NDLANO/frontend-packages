@@ -3,7 +3,7 @@
   "name": "frontend-packages",
   "description": "NDLA Frontend Packages",
   "scripts": {
-    "lint": "yarn run lint-prettier --silent && eslint --ext .js --ext .jsx ./packages --ignore-path .gitignore",
+    "lint": "yarn run lint-prettier --silent && eslint --cache --ext .js --ext .jsx ./packages --ignore-path .gitignore",
     "lint-prettier": "node scripts/prettier.js lint",
     "test": "cross-env NODE_ENV=unittest jest",
     "deploy": "now --token $NDLA_NOW_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
@@ -67,7 +67,7 @@
     "react-test-renderer": "^16.3.2",
     "rimraf": "2.6.2",
     "sass-loader": "^6.0.6",
-    "serve": "^6.4.11",
+    "serve": "^9.3.0",
     "sinon": "^4.3.0",
     "string-length": "^2.0.0",
     "style-loader": "^0.20.2",

@@ -27,7 +27,7 @@
     "es"
   ],
   "peerDependencies": {
-    "ndla-util": "^0.1.7"
+    "ndla-util": "^0.2.1"
   },
   "dependencies": {
     "focus-trap": "^2.4.3",

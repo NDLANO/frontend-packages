@@ -63,6 +63,7 @@ class ImageSearch extends React.Component {
     this.setState({ selectedImage: undefined });
     this.props.onImageSelect(image);
   }
+
   submitImageSearchQuery(query) {
     this.searchImages({ query, page: 1 });
   }

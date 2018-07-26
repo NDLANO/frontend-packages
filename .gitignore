@@ -2,6 +2,7 @@ node_modules
 *.log
 .out
 .test
+.eslintcache
 es/
 lib/
 dist/

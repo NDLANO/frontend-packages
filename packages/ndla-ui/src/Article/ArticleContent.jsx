@@ -28,6 +28,7 @@ export default class ArticleContent extends Component {
       initArticleScripts();
     }
   }
+
   componentWillUnmount() {
     removeEventListenerForResize();
   }

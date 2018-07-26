@@ -40,6 +40,7 @@ export const FigureCaption = ({
             {authors.map(author => author.name).join(', ')}
           </span>
           <button
+            type="button"
             data-dialog-trigger-id={id}
             data-dialog-source-id={figureId}
             {...classes('captionbtn')}>

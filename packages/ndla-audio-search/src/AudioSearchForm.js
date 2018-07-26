@@ -34,14 +34,14 @@ class AudioSearchForm extends Component {
   }
 
   handleQueryChange(evt) {
-    this.setState({
+    this.setState(prevState => ({
       queryObject: {
         query: evt.target.value,
-        page: this.state.queryObject.page,
-        pageSize: this.state.queryObject.pageSize,
-        locale: this.state.queryObject.locale,
+        page: prevState.queryObject.page,
+        pageSize: prevState.queryObject.pageSize,
+        locale: prevState.queryObject.locale,
       },
-    });
+    }));
   }
 
   handleSubmit(evt) {

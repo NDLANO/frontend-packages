@@ -17,6 +17,7 @@ class ContentTypeResult extends Component {
       showAll: false,
     };
   }
+
   render() {
     const {
       contentTypeResult,

@@ -44,10 +44,16 @@ class Popover extends Component {
           className={classes('popover')}
           role="dialog"
           aria-label={messages.filterLabel}>
-          <button className={classes('popover-close-narrow')} onClick={close}>
+          <button
+            type="button"
+            className={classes('popover-close-narrow')}
+            onClick={close}>
             <Back /> <span>{messages.backButton}</span>
           </button>
-          <button className={classes('popover-close-wide')} onClick={close}>
+          <button
+            type="button"
+            className={classes('popover-close-wide')}
+            onClick={close}>
             <span>{messages.closeButton}</span> <Cross />
           </button>
 
@@ -97,6 +103,7 @@ export class PopoverFilter extends Component {
       isOpen: false,
     };
   }
+
   render() {
     const { messages, values, ...rest } = this.props;
     const buttonText =

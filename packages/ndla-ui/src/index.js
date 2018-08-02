@@ -34,7 +34,7 @@ export { default as ContentCard } from './ContentCard';
 
 export { InfoBox } from './InfoBox';
 
-export { BetaNavigation } from './Beta';
+export { default as BetaNavigation, BetaNotification } from './Beta';
 
 export { default as Button } from './Button';
 export { default as Tooltip } from './Tooltip';

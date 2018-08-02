@@ -11,6 +11,7 @@ import {
 } from 'ndla-ui';
 
 import { MastheadWithTopicMenu } from './molecules/mastheads';
+import BetaNotificationExample from './molecules/BetaNotificationExample';
 
 import FooterExample from './molecules/footers';
 import ArticleLoader from './article/ArticleLoader';
@@ -26,6 +27,7 @@ storiesOf('Beta', module)
           beta
           betaInfoContent={<span>Velkommen til betaversjonen av ndla.no</span>}
         />
+        <BetaNotificationExample />
         <Hero contentType="beta">
           <OneColumn>
             <div className="c-hero__content">

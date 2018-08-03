@@ -15,7 +15,6 @@ export const toggleRelatedArticles = () => {
 
     if (button && typeof button.onclick !== 'function') {
       button.onclick = e => {
-        console.log('???');
         e.stopPropagation();
         if (button.innerHTML === button.getAttribute('data-showless')) {
           button.innerHTML = button.getAttribute('data-showmore');

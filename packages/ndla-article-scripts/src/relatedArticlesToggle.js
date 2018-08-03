@@ -15,19 +15,24 @@ export const toggleRelatedArticles = () => {
 
     if (button && typeof button.onclick !== 'function') {
       button.onclick = e => {
+        console.log('???');
         e.stopPropagation();
         if (button.innerHTML === button.getAttribute('data-showless')) {
           button.innerHTML = button.getAttribute('data-showmore');
 
           const hiddenArticles = el.querySelectorAll(`.${shownItem}`);
           for (let i = 0; i < hiddenArticles.length; i += 1) {
-            hiddenArticles[i].classList.replace(shownItem, hiddenItem);
+            // IE 11 dont support classList.replace('name', 'name');
+            hiddenArticles[i].classList.add(hiddenItem);
+            hiddenArticles[i].classList.remove(shownItem);
           }
         } else {
           button.innerHTML = button.getAttribute('data-showless');
           const hiddenArticles = el.querySelectorAll(`.${hiddenItem}`);
           for (let i = 0; i < hiddenArticles.length; i += 1) {
-            hiddenArticles[i].classList.replace(hiddenItem, shownItem);
+            // IE 11 dont support classList.replace('name', 'name');
+            hiddenArticles[i].classList.add(shownItem);
+            hiddenArticles[i].classList.remove(hiddenItem);
           }
         }
       };

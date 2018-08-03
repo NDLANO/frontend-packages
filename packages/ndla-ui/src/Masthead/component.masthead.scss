@@ -34,6 +34,7 @@
     padding: $spacing--small;
     font-weight: $font-weight-normal;
     display: flex;
+    height: $masthead-height;
 
     @include mq(tablet) {
       flex-direction: row;

@@ -19,7 +19,7 @@ const statusMessages = {
 
 const classes = BEMHelper('c-styleguide');
 
-const copyToClipboard = (str) => {
+const copyToClipboard = str => {
   const el = document.createElement('textarea');
   el.value = str;
   document.body.appendChild(el);
@@ -28,9 +28,7 @@ const copyToClipboard = (str) => {
   document.body.removeChild(el);
 };
 
-class CopyButton extends Component {
-
-}
+class CopyButton extends Component {}
 
 class Styleguide extends Component {
   constructor(props) {
@@ -51,7 +49,12 @@ class Styleguide extends Component {
   }
   render() {
     const {
-      guidance, reactCode, messages, status, propTypes, children,
+      guidance,
+      reactCode,
+      messages,
+      status,
+      propTypes,
+      children,
     } = this.props;
     const tabContent = [
       {
@@ -61,43 +64,56 @@ class Styleguide extends Component {
             <Button
               onClick={() => {
                 copyToClipboard(reactCode);
-                this.setState({
-                  coping: true,
-                }, () => {
-                  this.timeKeeper = window.setTimeout(this.resetTimeout, 5000);
-                });
+                this.setState(
+                  {
+                    coping: true,
+                  },
+                  () => {
+                    this.timeKeeper = window.setTimeout(
+                      this.resetTimeout,
+                      5000,
+                    );
+                  },
+                );
               }}
               outline
               title="Kopier til clipboard">
               <Fragment>
-                <Copy /> {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
+                <Copy />{' '}
+                {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
               </Fragment>
             </Button>
-            <SyntaxHighlighter language='jsx' style={docco}>{reactCode}</SyntaxHighlighter>
+            <SyntaxHighlighter language="jsx" style={docco}>
+              {reactCode}
+            </SyntaxHighlighter>
           </Fragment>
         ),
       },
       {
         title: 'PropTypes',
-        content: <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          {propTypes.map(prop => (
-            <tr key={uuid()}>
-              <td>{prop.name}</td>
-              <td>{prop.type}</td>
-              <td className={prop.default === 'Required' ? 'required' : ''}>{prop.default}</td>
-              <td>{prop.description}</td>
-            </tr>
-          ))}
-        </table>,
-      }
+        content: (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            {propTypes.map(prop => (
+              <tr key={uuid()}>
+                <td>{prop.name}</td>
+                <td>{prop.type}</td>
+                <td className={prop.default === 'Required' ? 'required' : ''}>
+                  {prop.default}
+                </td>
+                <td>{prop.description}</td>
+              </tr>
+            ))}
+          </table>
+        ),
+      },
     ];
     if (messages) {
       tabContent.push({
@@ -113,12 +129,14 @@ class Styleguide extends Component {
     }
     return (
       <div {...classes('')}>
-        <p {...classes('status-label', statusMessages[status][1])}>Status: {statusMessages[status][0]}</p>
+        <p {...classes('status-label', statusMessages[status][1])}>
+          Status: {statusMessages[status][0]}
+        </p>
         <Tabs tabs={tabContent} />
       </div>
     );
   }
-};
+}
 
 Styleguide.propTypes = {
   guidance: PropTypes.string,

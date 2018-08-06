@@ -897,9 +897,7 @@ storiesOf('Enkle komponenter', module)
   .add('Tooltip', () => (
     <div>
       <StoryIntro title="Tooltip">
-        <p>
-          Tooltip tekst
-        </p>
+        <p>Tooltip tekst</p>
       </StoryIntro>
       <StoryBody>
         <TooltipExample />

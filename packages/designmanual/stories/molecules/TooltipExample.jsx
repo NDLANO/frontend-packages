@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  Tooltip,
-  Styleguide,
-} from 'ndla-ui';
+import { Tooltip, Styleguide } from 'ndla-ui';
 
 const TooltipExample = () => (
   <Styleguide
@@ -36,12 +33,11 @@ const TooltipExample = () => (
       },
     ]}
     status={2}
-    messages="Sjekk Aria før lansering!"
-  >
+    messages="Sjekk Aria før lansering!">
     <p>
-      Wrappes rundt elementer hvor man vil ha en enkel tooltip-tekst ved fokus / hover events.
-      Skal tilpasse seg nettleservindu ved behov.
-      Ignoreres av mobil / tablets
+      Wrappes rundt elementer hvor man vil ha en enkel tooltip-tekst ved fokus /
+      hover events. Skal tilpasse seg nettleservindu ved behov. Ignoreres av
+      mobil / tablets
     </p>
     <h3>Vanlig tooltip:</h3>
     <Tooltip tooltip="Eksempel basic">
@@ -49,10 +45,14 @@ const TooltipExample = () => (
     </Tooltip>
     <h3>Delayed tooltip:</h3>
     <Tooltip tooltip="Eksempel basic" delay={500}>
-      <div className="c-button c-button--outline">Vent 500ms før visning av tooltip!</div>
+      <div className="c-button c-button--outline">
+        Vent 500ms før visning av tooltip!
+      </div>
     </Tooltip>
     <h3>Plasseringsvalg for tooltip:</h3>
-    <div className="c-button c-button--outline" className="c-styleguide__aslist">
+    <div
+      className="c-button c-button--outline"
+      className="c-styleguide__aslist">
       <Tooltip tooltip="Plasseres over" align="top">
         <div className="c-button c-button--outline">Topp</div>
       </Tooltip>

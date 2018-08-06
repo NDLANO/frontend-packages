@@ -12,6 +12,7 @@
     color: $white;
     text-align: center;
     white-space: nowrap;
+    max-width: calc(100vw - $spacing);
   }
   &__content {
     display: inline-block;

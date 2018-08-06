@@ -31,16 +31,8 @@ class Tooltip extends Component {
     this.widthRef = 0;
     this.heightRef = 0;
     this.leftRef = 0;
-    this.tooltipRefWidth = props.tooltip.length * 5; // Estimate incase user only uses keyboard navigation.
+    this.tooltipRefWidth = props.tooltip ? props.tooltip.length * 5 : 0; // Estimate incase user only uses keyboard navigation.
     this.currentStyles = {};
-  }
-
-  handleShowTooltip() {
-    this.setState({ showTooltip: !this.props.disabled });
-  }
-
-  handleHideTooltip() {
-    this.setState({ showTooltip: false });
   }
 
   getPosition() {
@@ -101,14 +93,19 @@ class Tooltip extends Component {
     return this.currentStyles;
   }
 
+  handleShowTooltip() {
+    this.setState({ showTooltip: !this.props.disabled });
+  }
+
+  handleHideTooltip() {
+    this.setState({ showTooltip: false });
+  }
+
   render() {
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
-        <div
-          className={`${classes('').className} ${
-            this.props.tooltipContainerClass
-          }`}>
+        <div {...classes('')}>
           <span className={`c-tooltip__content ${this.props.className}`}>
             {this.props.children}
           </span>
@@ -117,10 +114,7 @@ class Tooltip extends Component {
     }
 
     return (
-      <div
-        className={`${classes('').className} ${
-          this.props.tooltipContainerClass
-        }`}>
+      <div {...classes('')}>
         <Fade in={this.state.showTooltip} delay={this.props.delay}>
           <span
             role="tooltip"

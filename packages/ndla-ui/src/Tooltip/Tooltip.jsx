@@ -106,9 +106,7 @@ class Tooltip extends Component {
     if (isMobile) {
       return (
         <div {...classes('')}>
-          <span className={`c-tooltip__content ${this.props.className}`}>
-            {this.props.children}
-          </span>
+          <span {...classes('content')}>{this.props.children}</span>
         </div>
       );
     }
@@ -134,7 +132,7 @@ class Tooltip extends Component {
           onMouseMove={this.handleShowTooltip}
           onFocus={this.handleShowTooltip}
           onBlur={this.handleHideTooltip}
-          className={`c-tooltip__content ${this.props.className}`}>
+          {...classes('content')}>
           {this.props.children}
         </span>
       </div>

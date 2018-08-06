@@ -28,8 +28,6 @@ const copyToClipboard = str => {
   document.body.removeChild(el);
 };
 
-class CopyButton extends Component {}
-
 class Styleguide extends Component {
   constructor(props) {
     super(props);
@@ -48,14 +46,7 @@ class Styleguide extends Component {
     });
   }
   render() {
-    const {
-      guidance,
-      reactCode,
-      messages,
-      status,
-      propTypes,
-      children,
-    } = this.props;
+    const { reactCode, messages, status, usesPropTypes, children } = this.props;
     const tabContent = [
       {
         title: 'Kode eksempel',
@@ -101,16 +92,18 @@ class Styleguide extends Component {
                 <th>Description</th>
               </tr>
             </thead>
-            {propTypes.map(prop => (
-              <tr key={uuid()}>
-                <td>{prop.name}</td>
-                <td>{prop.type}</td>
-                <td className={prop.default === 'Required' ? 'required' : ''}>
-                  {prop.default}
-                </td>
-                <td>{prop.description}</td>
-              </tr>
-            ))}
+            <tbody>
+              {usesPropTypes.map(prop => (
+                <tr key={uuid()}>
+                  <td>{prop.name}</td>
+                  <td>{prop.type}</td>
+                  <td className={prop.default === 'Required' ? 'required' : ''}>
+                    {prop.default}
+                  </td>
+                  <td>{prop.description}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         ),
       },
@@ -139,20 +132,18 @@ class Styleguide extends Component {
 }
 
 Styleguide.propTypes = {
-  guidance: PropTypes.string,
   reactCode: PropTypes.string,
   messages: PropTypes.arrayOf(PropTypes.shape()),
   status: PropTypes.oneOf([0, 1, 2, 3]),
-  propTypes: PropTypes.arrayOf(PropTypes.shape()),
+  usesPropTypes: PropTypes.arrayOf(PropTypes.shape()),
   children: PropTypes.node,
 };
 
 Styleguide.defaultProps = {
-  guidance: 'Ikke lagt til enda',
   reactCode: `console.log('Nothing added yet..')`,
   messages: null,
   status: 0,
-  propTypes: [],
+  usesPropTypes: [],
   children: null,
 };
 

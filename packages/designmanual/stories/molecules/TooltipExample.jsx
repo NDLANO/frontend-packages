@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Tooltip, Styleguide } from 'ndla-ui';
 
@@ -12,7 +12,7 @@ const TooltipExample = () => (
         {children}
       </Tooltip>
     `}
-    propTypes={[
+    usesPropTypes={[
       {
         name: 'children',
         type: 'Node',

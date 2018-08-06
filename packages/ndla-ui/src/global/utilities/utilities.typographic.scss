@@ -18,9 +18,10 @@
   font-weight: $font-weight-light;
   font-family: $font;
   margin-top: $spacing--small;
-  @include font-size(20px, 32px);
+  @include font-size(20px, 28px);
 
   @include mq(tablet) {
+    font-weight: $font-weight-light;
     margin-top: $spacing*1.5;
     @include font-size(26px, 36px);
   }

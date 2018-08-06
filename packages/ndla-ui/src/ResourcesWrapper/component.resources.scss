@@ -7,14 +7,12 @@
   padding-top: $spacing;
   padding-bottom: $spacing;
 
-  @include mq(tablet) {
-    // padding-left: $spacing;
-    // padding-right: $spacing;
-  }
-
   .c-filter__list--float-right {
     flex-grow: 1;
     justify-content: flex-end;
+  }
+  .c-filter__text {
+    white-space: nowrap;
   }
 
   &__topic-title-icon {
@@ -48,23 +46,26 @@
   }
 
   &__topic-title-wrapper {
-    display: flex;
+    display: inline-flex;
+    flex-flow: wrap;
     align-items: center;
     margin-top: $spacing--large;
     border-bottom: 2px solid $brand-color--lighter;
     padding-bottom: $spacing--small / 2;
     width: 100%;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    @include mq(tablet) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     > div {
-      display: flex;
+      display: inline-flex;
+      flex-wrap: wrap;
       align-items: center;
+      .c-filter__list {
+        width: auto;
+      }
+      &:last-child {
+        padding: $spacing--small / 2 0;
+      }
     }
   }
 
@@ -74,17 +75,24 @@
 
   &__topic-title-label {
     font-family: $font;
-    @include font-size(20px, 26px);
+    @include font-size(18px, 24px);
     font-weight: $font-weight-bold;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin: 0 $spacing--small 0 0;
+    margin: 0 $spacing--small / 2 0 0;
+    @include mq(tablet) {
+      margin-right: $spacing--small;
+      @include font-size(20px, 26px);
+    }
   }
 
   &__topic-title {
     font-weight: $font-weight-normal;
     color: $primary-color;
-    @include font-size(20px, 26px);
+    @include font-size(18px, 24px);
+    @include mq(tablet) {
+      @include font-size(20px, 26px);
+    }
     margin: 0;
   }
 

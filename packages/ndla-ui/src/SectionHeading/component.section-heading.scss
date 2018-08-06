@@ -2,8 +2,10 @@
   font-weight: $font-weight-bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  @include font-size(18px);
-
+  @include font-size(18px, 24px);
+  @include mq(tablet) {
+    @include font-size(20px, 26px);
+  }
   &--large {
     @include font-size(16px, 32px);
 

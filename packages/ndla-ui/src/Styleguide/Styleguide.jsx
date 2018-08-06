@@ -37,14 +37,17 @@ class Styleguide extends Component {
     this.timeKeeper = null;
     this.resetTimeout = this.resetTimeout.bind(this);
   }
+
   componentWillUnmount() {
     clearTimeout(this.timeKeeper);
   }
+
   resetTimeout() {
     this.setState({
       coping: false,
     });
   }
+
   render() {
     const { reactCode, messages, status, usesPropTypes, children } = this.props;
     const tabContent = [

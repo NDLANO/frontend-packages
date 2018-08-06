@@ -50,9 +50,7 @@ const TooltipExample = () => (
       </div>
     </Tooltip>
     <h3>Plasseringsvalg for tooltip:</h3>
-    <div
-      className="c-button c-button--outline"
-      className="c-styleguide__aslist">
+    <div className="c-styleguide__aslist">
       <Tooltip tooltip="Plasseres over" align="top">
         <div className="c-button c-button--outline">Topp</div>
       </Tooltip>

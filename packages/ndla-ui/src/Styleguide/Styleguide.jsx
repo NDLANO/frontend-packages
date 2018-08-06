@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -8,6 +8,7 @@ import { docco } from 'react-syntax-highlighter/styles/hljs';
 import Tabs from 'ndla-tabs';
 import { uuid } from 'ndla-util';
 import { Button } from 'ndla-ui';
+import { Copy } from 'ndla-icons/action';
 
 const statusMessages = {
   0: ['Eksperimentel, ikke trygg å bruke', 'alert'],
@@ -27,62 +28,96 @@ const copyToClipboard = (str) => {
   document.body.removeChild(el);
 };
 
-const Styleguide = ({ reactCode, messages, propTypes, status, children }) => {
-  const tabContent = [
-    {
-      title: 'Kode eksempel',
-      content: (
-        <div>
-          <Button
-            outline
-            onClick={() => {
-              copyToClipboard(reactCode);
-            }}
-          >Copy code to clipboard</Button>
-          <SyntaxHighlighter language='jsx' style={docco}>{reactCode}</SyntaxHighlighter>
-        </div>
-      ),
-    },
-    {
-      title: 'PropTypes',
-      content: <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        {propTypes.map(prop => (
-          <tr key={uuid()}>
-            <td>{prop.name}</td>
-            <td>{prop.type}</td>
-            <td className={prop.default === 'Required' ? 'required' : ''}>{prop.default}</td>
-            <td>{prop.description}</td>
-          </tr>
-        ))}
-      </table>,
+class CopyButton extends Component {
+
+}
+
+class Styleguide extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      coping: false,
+    };
+    this.timeKeeper = null;
+    this.resetTimeout = this.resetTimeout.bind(this);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timeKeeper);
+  }
+  resetTimeout() {
+    this.setState({
+      coping: false,
+    });
+  }
+  render() {
+    const {
+      guidance, reactCode, messages, status, propTypes, children,
+    } = this.props;
+    const tabContent = [
+      {
+        title: 'Kode eksempel',
+        content: (
+          <Fragment>
+            <Button
+              onClick={() => {
+                copyToClipboard(reactCode);
+                this.setState({
+                  coping: true,
+                }, () => {
+                  this.timeKeeper = window.setTimeout(this.resetTimeout, 5000);
+                });
+              }}
+              outline
+              title="Kopier til clipboard">
+              <Fragment>
+                <Copy /> {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
+              </Fragment>
+            </Button>
+            <SyntaxHighlighter language='jsx' style={docco}>{reactCode}</SyntaxHighlighter>
+          </Fragment>
+        ),
+      },
+      {
+        title: 'PropTypes',
+        content: <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          {propTypes.map(prop => (
+            <tr key={uuid()}>
+              <td>{prop.name}</td>
+              <td>{prop.type}</td>
+              <td className={prop.default === 'Required' ? 'required' : ''}>{prop.default}</td>
+              <td>{prop.description}</td>
+            </tr>
+          ))}
+        </table>,
+      }
+    ];
+    if (messages) {
+      tabContent.push({
+        title: 'Annet',
+        content: <p>{messages}</p>,
+      });
     }
-  ];
-  if (messages) {
-    tabContent.push({
-      title: 'Messages',
-      content: <p>{messages}</p>,
-    });
+    if (children) {
+      tabContent.unshift({
+        title: 'Eksempel',
+        content: children,
+      });
+    }
+    return (
+      <div {...classes('')}>
+        <p {...classes('status-label', statusMessages[status][1])}>Status: {statusMessages[status][0]}</p>
+        <Tabs tabs={tabContent} />
+      </div>
+    );
   }
-  if (children) {
-    tabContent.unshift({
-      title: 'Eksempel',
-      content: children,
-    });
-  }
-  return (
-    <div {...classes('')}>
-      <p {...classes('status-label', statusMessages[status][1])}>{statusMessages[status][0]}</p>
-      <Tabs tabs={tabContent} />
-    </div>
-  )
 };
 
 Styleguide.propTypes = {
@@ -97,7 +132,7 @@ Styleguide.propTypes = {
 Styleguide.defaultProps = {
   guidance: 'Ikke lagt til enda',
   reactCode: `console.log('Nothing added yet..')`,
-  messages: 'Nothing to see here..',
+  messages: null,
   status: 0,
   propTypes: [],
   children: null,

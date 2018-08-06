@@ -4,6 +4,9 @@
     > .c-tabs__list {
       margin-bottom: $spacing--large;
     }
+    .react-tabs__tab-panel--selected > table {
+      margin-top: 0 !important;
+    }
   }
   &__aslist {
     display: flex;

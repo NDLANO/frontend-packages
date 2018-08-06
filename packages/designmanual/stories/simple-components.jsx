@@ -902,7 +902,6 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <h2>Tooltip eksempler</h2>
         <TooltipExample />
       </StoryBody>
     </div>

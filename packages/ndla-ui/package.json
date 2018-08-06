@@ -38,6 +38,7 @@
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5",
     "react-bem-helper": "1.4.1",
+    "react-device-detect": "^1.5.9",
     "react-facebook": "^4.2.1",
     "react-prop-types": "0.4.0",
     "react-slick": "^0.19.0",

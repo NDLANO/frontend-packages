@@ -21,28 +21,28 @@
   margin-bottom: $spacing;
   margin-left: auto;
   overflow-wrap: break-word;
-  @include font-size(16px, 26px);
+  @include font-size(18px, 28px);
   position: relative;
 
   p {
     @include chinese() {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
   }
 
   @include contentList() {
     @include chinese() {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
   }
 
   @include chinese() {
     @include contentList() {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
 
     p {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
   }
 

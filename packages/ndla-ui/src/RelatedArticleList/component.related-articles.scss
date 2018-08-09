@@ -35,7 +35,9 @@
     }
     flex-basis: 50%;
     flex-grow: 0;
-    max-width: 600px;
+    @include mq(tablet) {
+      max-width: 50%; // IE fix: box-sizing: border-box is ignored by IE when sizing with flex-basis.
+    }
 
     &--subject-material {
       border-left: 6px solid $subject-material-light;

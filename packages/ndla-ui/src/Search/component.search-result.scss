@@ -7,9 +7,23 @@
     padding: $spacing--medium;
   }
 
-  & > h1 {
-    display: none;
+  &__heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 0 0 $spacing--medium;
+    .c-button--link {
+      @include font-size(16px, 18px);
+      box-shadow: inset 0 0;
+      &:hover, &:focus {
+        box-shadow: inset 0 -1px;
+      }
+    }
+  }
+
+  &__heading {
+    display: none;
+    margin: 0;
     @include font-size(24px, 32px);
     font-weight: 400;
 
@@ -46,6 +60,27 @@
     @include mq(desktop) {
       display: block;
     }
+  }
+
+  &__current-goal {
+    margin: 0 0 0 $spacing--small*1.4;
+
+    li {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__current-goal-info {
+    margin: $spacing--small 0 $spacing--large ($spacing--small + 2px);
+    @include font-size(16px, 20px);
+  }
+
+  &__competence-goals {
+    background: $brand-color--lighter;
+    padding: $spacing;
+    margin-top: -$spacing--small;
   }
 }
 

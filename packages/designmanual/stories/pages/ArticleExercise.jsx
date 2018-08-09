@@ -23,16 +23,16 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
-import { CompentenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
 export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          <CompentenceGoalsDialogExample
+          <CompetenceGoalsDialogExample
             wide
-            headingId="article-compentence-goals-heading-id"
+            headingId="article-competence-goals-heading-id"
           />
           <ArticleTitle
             icon={<TasksAndActivitiesBadge background size="large" />}
@@ -44,9 +44,9 @@ export default () => (
             å produsere filmen.
           </ArticleIntroduction>
           <ArticleBylineExample id="example-article-license-id" />
-          <CompentenceGoalsDialogExample
+          <CompetenceGoalsDialogExample
             narrow
-            headingId="article-compentence-goals-narrow-heading-id"
+            headingId="article-competence-goals-narrow-heading-id"
           />
         </ArticleHeaderWrapper>
       </LayoutItem>

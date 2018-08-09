@@ -1,9 +1,19 @@
-.c-compentence-goals {
+.c-competence-goals {
+
+  a:not([class]):visited {
+    color: $brand-color;
+  }
+
   height: 100%;
+
+  &__dialog-wrapper {
+    @include mq(tablet) {
+      padding-left: $spacing;
+    }
+  }
 
   &__heading {
     margin-top: 0;
-    color: $brand-color;
     @include font-size(20px, 32px);
 
     @include mq(tablet) {
@@ -50,16 +60,12 @@
   &__topic {
     margin-bottom: $spacing;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-
     &--expandable {
       margin-bottom: $spacing--small;
       max-height: 35px;
-      transition: max-height 0.5s ease-in-out;
+      transition: max-height 0.3s ease-in-out;
 
-      .c-compentence-goals {
+      .c-competence-goals {
         &__topic-list {
           opacity: 0;
           transition: opacity 0.1s ease-in-out 0.1s;
@@ -69,7 +75,7 @@
 
     &--expanded {
       max-height: 4000px;
-      .c-compentence-goals {
+      .c-competence-goals {
         &__topic-list {
           opacity: 1;
         }
@@ -93,7 +99,7 @@
     border: none;
     margin: 0 0 0 -4px;
     position: relative;
-    padding: $spacing--small/2 0;
+    padding: $spacing--small/2 $spacing--small/2 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -114,15 +120,11 @@
   &__topic-list {
     margin: 0 0 0 18px;
     padding: 0;
+    max-width: 650px;
 
     @include mq(desktop) {
       margin: 0;
     }
-  }
-
-  &__topic-item,
-  &__description {
-    font-family: $font-serif;
   }
 
   &__topic-item {
@@ -135,19 +137,37 @@
     }
   }
 
-  &--menu {
-    .c-compentence-goals {
-      &__heading {
-        text-transform: uppercase;
-        color: $primary-color;
-        font-weight: $font-weight-semibold;
-        @include font-size(16px, 20px);
+  &--menu, &--search {
+    padding: $spacing--small $spacing $spacing--small $spacing--small;
+  }
+  .c-competence-goals {
+    &__heading {
+      text-transform: uppercase;
+      color: $primary-color;
+      font-weight: $font-weight-semibold;
+      @include font-size(16px, 20px);
+    }
+    &__topic--expandable {
+      padding-left: ($spacing--small + 10px);
+      .c-competence-goals__topic-list {
+        font-weight: $font-weight-normal;
+        padding-left: ($spacing--small + 12px);
+      }
+    }
+  }
+  @include mq($until: desktop) {
+    &--menu, &--search {
+      .c-competence-goals {
+        &__topic--expandable {
+          padding-left: 0;
+          margin-left: -4px;
+        }
       }
     }
   }
 }
 
-.c-compentence-goals-dialog {
+.c-competence-goals-dialog {
   &__content {
     padding: $spacing--large 0 $spacing 0;
 

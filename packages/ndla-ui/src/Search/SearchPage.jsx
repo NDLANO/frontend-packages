@@ -77,6 +77,7 @@ export default class SearchPage extends Component {
       messages,
       closeUrl,
       author,
+      hideResultText,
     } = this.props;
 
     const filterModifiers = [];
@@ -127,7 +128,7 @@ export default class SearchPage extends Component {
           </aside>
           <div {...classes('result-wrapper')}>
             <h2 aria-hidden="true" {...classes('result-label', 'large-screen')}>
-              {messages.resultHeading}
+              {!hideResultText ? messages.resultHeading : '\u00A0'}
             </h2>
             <div {...classes('active-filters')}>
               <ActiveFilters
@@ -145,7 +146,7 @@ export default class SearchPage extends Component {
               </Button>
             </div>
             <h2 aria-hidden="true" {...classes('result-label', 'small-screen')}>
-              {messages.resultHeading}
+              {!hideResultText ? messages.resultHeading : '\u00A0'}
             </h2>
             {children}
           </div>
@@ -188,6 +189,7 @@ SearchPage.propTypes = {
   }).isRequired,
   closeUrl: PropTypes.string.isRequired,
   author: PropTypes.node,
+  hideResultText: PropTypes.bool,
 };
 
 SearchPage.defaultProps = {

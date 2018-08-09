@@ -12,6 +12,8 @@
     color: $white;
     text-align: center;
     white-space: nowrap;
+    max-width: calc(100vw - $spacing);
+    pointer-events: none;
   }
   &__content {
     display: inline-block;

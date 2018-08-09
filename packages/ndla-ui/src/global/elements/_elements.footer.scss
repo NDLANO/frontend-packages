@@ -1,7 +1,9 @@
 .footer {
   color: $brand-grey-dark;
   padding: $spacing--large $spacing--small;
-  margin-top: $spacing--large;
+  @include mq(desktop) {
+    margin-top: $spacing--large;
+  }
   margin-left: auto;
   margin-right: auto;
   margin-bottom: $spacing;

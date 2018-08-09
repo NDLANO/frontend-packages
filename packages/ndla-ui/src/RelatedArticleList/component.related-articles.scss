@@ -8,7 +8,10 @@
   }
 
   &__component-title {
-    margin: $spacing--large 0 $spacing;
+    margin: $spacing 0;
+    @include mq(tablet) {
+      margin: $spacing--large 0 $spacing;
+    }
     padding-bottom: 5px;
     text-align: left;
   }
@@ -26,7 +29,10 @@
     padding-left: $spacing;
     padding-right: $spacing;
     padding-bottom: $spacing--small;
-    margin: 0 0 $spacing--large 0;
+    margin: 0 0 $spacing 0;
+    @include mq(tablet) {
+      margin-bottom: $spacing--large;
+    }
     flex-basis: 50%;
     flex-grow: 0;
     @include mq(tablet) {

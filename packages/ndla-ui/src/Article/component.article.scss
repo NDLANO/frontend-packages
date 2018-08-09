@@ -18,31 +18,31 @@
   background: $white;
   margin-top: $spacing--large;
   margin-right: auto;
-  margin-bottom: $spacing--large;
+  margin-bottom: $spacing;
   margin-left: auto;
   overflow-wrap: break-word;
-  @include font-size(16px, 28px);
+  @include font-size(18px, 28px);
   position: relative;
 
   p {
     @include chinese() {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
   }
 
   @include contentList() {
     @include chinese() {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
   }
 
   @include chinese() {
     @include contentList() {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
 
     p {
-      @include font-size(18px, 28px);
+      @include font-size(20px, 32px);
     }
   }
 
@@ -70,9 +70,14 @@
       }
     }
 
-    padding: 0 $spacing $spacing--large;
+    padding: 0 $spacing $spacing;
+    margin-bottom: $spacing--large;
     margin-top: -$spacing*6;
     padding-top: $spacing--large + $spacing;
+  }
+  @include mq(desktop) {
+    padding-bottom: $spacing--large;
+    margin-bottom: $spacing--large;
   }
 
   &:after {
@@ -101,6 +106,9 @@
 
 .c-article__header {
   margin-bottom: $spacing;
+  @include mq(tablet) {
+    margin-bottom: $spacing--large;
+  }
   @include mq(desktop) {
     margin-bottom: $spacing--large;
   }
@@ -111,6 +119,9 @@
 
   h1 {
     margin: 0;
+    @include mq($until: tablet) {
+      line-height: 2rem;
+    }
   }
 
   padding: 0 0 $spacing--small 0;
@@ -121,11 +132,13 @@
 
   p {
     @include inuit-font-size(16px, 20px);
-
     color: $text-light-color;
     text-transform: uppercase;
     margin-bottom: $spacing--small/4;
     font-family: $font;
+    @include mq($until: tablet) {
+      margin-bottom: 0;
+    }
   }
 }
 

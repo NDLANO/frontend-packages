@@ -46,10 +46,12 @@
   }
   &__item {
     margin: 0;
-    padding-top: $spacing--small;
+    padding-top: $spacing--small / 2;
     padding-bottom: $spacing;
     @include mq(tablet) {
       padding-right: $spacing;
+      padding-top: $spacing--small;
+      padding-bottom: $spacing--large;
     }
     border-bottom: 2px solid $brand-grey--lighter;
     list-style: none;
@@ -67,7 +69,6 @@
 
     &--subjectPage {
       @include mq(tablet) {
-        // border-bottom: 0;
         padding-right: 0;
       }
       margin-top: $spacing;
@@ -75,10 +76,6 @@
       &:last-child {
 
         margin-bottom: 0;
-        @include mq(tablet) {
-          // border-bottom: 0;
-          // padding-bottom: 0;
-        }
       }
     }
     &--additional {
@@ -98,11 +95,13 @@
     }
   }
   &__header {
-    @include inuit-font-size(20px);
-    font-weight: $font-weight-normal;
+    @include inuit-font-size(18px, 26px);
     text-decoration: none;
     color: $brand-color;
     margin-bottom: $spacing--small;
     margin-top: 0;
+    a:visited {
+      color: $brand-color !important;
+    }
   }
 }

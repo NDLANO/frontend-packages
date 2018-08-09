@@ -13,14 +13,14 @@ export const LayoutItem = ({ children, layout }) => {
   switch (layout) {
     case 'extend': {
       return (
-        <section className="u-10/12@desktop u-push-1/12@desktop">
+        <section className="u-10/12@desktop u-push-1/12@desktop u-10/12@tablet u-push-1/12@tablet">
           {children}
         </section>
       );
     }
     case 'center': {
       return (
-        <section className="u-4/6@desktop u-push-1/6@desktop">
+        <section className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
           {children}
         </section>
       );

@@ -18,9 +18,10 @@
   font-weight: $font-weight-light;
   font-family: $font;
   margin-top: $spacing--small;
-  @include font-size(20px, 32px);
+  @include font-size(22px, 30px);
 
   @include mq(tablet) {
+    font-weight: $font-weight-light;
     margin-top: $spacing*1.5;
     @include font-size(26px, 36px);
   }
@@ -28,7 +29,7 @@
 
 .c-article .article_introduction {
   @include chinese() {
-    @include font-size(22px, 32px);
+    @include font-size(24px, 32px);
   }
 
   @include mq(tablet) {
@@ -39,7 +40,7 @@
 
   span {
     @include chinese() {
-      @include font-size(22px, 32px);
+      @include font-size(24px, 32px);
     }
 
     @include mq(tablet) {

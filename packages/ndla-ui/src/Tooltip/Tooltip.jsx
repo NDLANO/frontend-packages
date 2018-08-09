@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { isMobile, isIE } from 'react-device-detect';
 
 import { Fade } from '../Animation';
 
@@ -21,95 +22,117 @@ class Tooltip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showtooltip: false,
-      disabled: props.delay === 0 || props.disabled,
+      showTooltip: false,
     };
     this.handleShowTooltip = this.handleShowTooltip.bind(this);
     this.handleHideTooltip = this.handleHideTooltip.bind(this);
-    this.delayTimer = null;
-    this.contentRef = null;
+    this.contentRef = React.createRef();
+    this.tooltipRef = React.createRef();
     this.widthRef = 0;
     this.heightRef = 0;
+    this.leftRef = 0;
+    this.tooltipRefWidth = props.tooltip ? props.tooltip.length * 5 : 0; // Estimate incase user only uses keyboard navigation.
+    this.currentStyles = {};
   }
 
-  componentDidMount() {
-    if (this.props.delay && !this.props.disabled) {
-      this.delayTimer = setTimeout(() => {
-        this.setState({
-          disabled: !this.props.disabled,
-        });
-      }, this.props.delay);
+  getPosition() {
+    if (this.state.showTooltip) {
+      this.currentStyles = {};
+      this.widthRef = this.contentRef.current.offsetWidth;
+      this.heightRef = this.contentRef.current.offsetHeight;
+      const elementRect = this.contentRef.current.getBoundingClientRect();
+      this.leftRef = elementRect.left;
+      const tooltipWidth = this.tooltipRef.current
+        ? this.tooltipRef.current.offsetWidth
+        : this.tooltipRefWidth;
+
+      this.tooltipRefWidth = tooltipWidth;
+
+      if (isIE) {
+        // IE is bad with transform % + px..
+        this.currentStyles.left = `-${(this.tooltipRef.current.offsetWidth -
+          this.widthRef) /
+          2}px`;
+        this.currentStyles.top = `-${this.tooltipRef.current.offsetHeight +
+          10}px`;
+      } else if (
+        this.props.align === 'top' ||
+        this.props.align === 'bottom' ||
+        (this.props.align === 'left' && this.leftRef - tooltipWidth < 20) ||
+        (this.props.align === 'right' &&
+          this.leftRef + this.widthRef + tooltipWidth > window.innerWidth - 40)
+      ) {
+        const centeredLeft = this.leftRef + this.widthRef / 2;
+        let moveHorizontal = Math.max(
+          centeredLeft + tooltipWidth / 2 + 20 - window.innerWidth,
+          0,
+        );
+        if (moveHorizontal === 0) {
+          moveHorizontal = Math.min(-(tooltipWidth / 2 - centeredLeft + 20), 0);
+        }
+        if (this.props.align === 'bottom') {
+          this.currentStyles.transform = `translate3d(calc(-50% + ${this
+            .widthRef /
+            2 -
+            moveHorizontal}px), calc(${this.heightRef}px + 0.25rem), 0)`;
+        } else {
+          this.currentStyles.transform = `translate3d(calc(-50% + ${this
+            .widthRef /
+            2 -
+            moveHorizontal}px), calc(-100% - 0.25rem), 0)`;
+        }
+      } else if (this.props.align === 'left') {
+        this.currentStyles.transform = `translate3d(calc(-100% - 0.25rem), calc(-50% + ${this
+          .heightRef / 2}px), 0)`;
+      } else {
+        this.currentStyles.transform = `translate3d(calc(${
+          this.widthRef
+        }px + 0.25rem), calc(-50% + ${this.heightRef / 2}px), 0)`;
+      }
     }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.delayTimer);
+    return this.currentStyles;
   }
 
   handleShowTooltip() {
-    if (!this.state.showTooltip && this.state.disabled) {
-      this.widthRef = this.contentRef.offsetWidth;
-      this.heightRef = this.contentRef.offsetHeight;
-      this.setState({ showtooltip: true });
-    }
+    this.setState({ showTooltip: !this.props.disabled });
   }
 
   handleHideTooltip() {
-    this.setState({ showtooltip: false });
+    this.setState({ showTooltip: false });
   }
 
   render() {
-    let transform;
-    switch (this.props.align) {
-      case 'top':
-        transform = `translate3d(calc(-50% + ${this.widthRef /
-          2}px), calc(-100% - 0.25rem), 0)`;
-        break;
-      case 'left':
-        transform = `translate3d(calc(-100% - 0.25rem), calc(-50% + ${this
-          .heightRef / 2}px), 0)`;
-        break;
-      case 'right':
-        transform = `translate3d(calc(${
-          this.widthRef
-        }px + 0.25rem), calc(-50% + ${this.heightRef / 2}px), 0)`;
-        break;
-      case 'bottom':
-        transform = `translate3d(calc(-50% + ${this.widthRef / 2}px), calc(${
-          this.heightRef
-        }px + 0.25rem), 0)`;
-        break;
-      default:
-        break;
+    // If phone ignore all tooltips //
+    if (isMobile) {
+      return (
+        <div {...classes('')}>
+          <span {...classes('content')}>{this.props.children}</span>
+        </div>
+      );
     }
 
     return (
-      <div
-        className={`${classes('').className} ${
-          this.props.tooltipContainerClass
-        }`}>
-        <Fade in={this.state.showtooltip}>
+      <div {...classes('')}>
+        <Fade in={this.state.showTooltip} delay={this.props.delay}>
           <span
             role="tooltip"
-            id={this.props.id}
             {...classes('tooltip')}
-            style={{ transform }}>
+            style={this.getPosition()}
+            ref={this.tooltipRef}>
             {this.props.tooltip}
           </span>
         </Fade>
         <span
           role="button"
           tabIndex={0}
-          aria-describedby={this.props.id}
-          ref={r => {
-            this.contentRef = r;
-          }}
-          onMouseMove={this.handleShowTooltip}
+          aria-label={this.props.tooltip}
+          ref={this.contentRef}
           onMouseEnter={this.handleShowTooltip}
-          onMouseLeave={this.handleHideTooltip}
+          onMouseOut={this.handleHideTooltip}
+          onMouseMove={this.handleShowTooltip}
           onFocus={this.handleShowTooltip}
           onBlur={this.handleHideTooltip}
-          className={`c-tooltip__content ${this.props.className}`}>
+          {...classes('content')}>
           {this.props.children}
         </span>
       </div>
@@ -118,22 +141,17 @@ class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
-  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   tooltip: PropTypes.string.isRequired,
   delay: PropTypes.number,
   disabled: PropTypes.bool,
   align: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  className: PropTypes.string,
-  tooltipContainerClass: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
   align: 'top',
   disabled: false,
   delay: 0,
-  className: '',
-  tooltipContainerClass: '',
 };
 
 export default Tooltip;

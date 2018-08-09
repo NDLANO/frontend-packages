@@ -31,9 +31,10 @@
   }
 }
 .c-figure {
-  margin: $spacing--large 0 $spacing--large;
+  margin: $spacing 0 $spacing;
 
   @include mq($from: desktop) {
+    margin: $spacing--large 0 $spacing--large;
     @include grids-expand(4,6,2);
   }
   transition: transform 0.2s, width 0.2s, height 0.2s;

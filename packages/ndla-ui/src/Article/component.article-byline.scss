@@ -20,7 +20,10 @@
   flex-wrap: wrap;
   display: flex;
   align-items: center;
-  margin-bottom: $spacing;
+  margin-bottom: $spacing--small;
+  @include mq(tablet) {
+    margin-bottom: $spacing;
+  }
   &__icon {
     color: $brand-grey;
     display: inline-block;

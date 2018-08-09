@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { CompentenceGoals, ClickToggle } from 'ndla-ui';
+import { CompetenceGoals, ClickToggle } from 'ndla-ui';
 
-const classes = BEMHelper('c-compentence-goals-dialog');
+const classes = BEMHelper('c-competence-goals-dialog');
 
-const CompentenceGoalsExample = ({ headingId, menu }) => {
+const CompetenceGoalsExample = ({ headingId, menu, search }) => {
   const topics = [
     {
       heading: 'Emne',
@@ -14,14 +14,17 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
         {
           text:
             'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
+          url: '#1',
         },
         {
           text:
             'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
+          url: '#2',
         },
         {
           text:
             'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
+          url: '#3',
         },
       ],
     },
@@ -30,7 +33,7 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
   let filterOptions = null;
   let filterValues = null;
 
-  if (menu) {
+  if (menu || search) {
     topics.push({
       heading: 'Emne 2',
       items: [
@@ -70,50 +73,53 @@ const CompentenceGoalsExample = ({ headingId, menu }) => {
   }
 
   return (
-    <CompentenceGoals
+    <CompetenceGoals
       menu={menu}
+      search={search}
       subjectName={menu ? 'Fag' : null}
-      id={menu ? 'compentence-goals-menu' : 'compentence-goals'}
+      id={menu ? 'competence-goals-menu' : 'competence-goals'}
       headingId={headingId}
-      filterOptions={filterOptions}
-      filterValues={filterValues}
+      filterOptions={!search ? filterOptions : null}
+      filterValues={!search ? filterValues : null}
+      description="Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon"
       messages={{
-        heading: 'Kompetansemål',
-        description: 'Mål for opplæring er at elevene skal kunne',
+        heading: 'Kompetansemål og læreplan',
+        listDescription: 'Mål for opplæring er at elevene skal kunne:',
       }}
       topics={topics}
     />
   );
 };
 
-CompentenceGoalsExample.propTypes = {
+CompetenceGoalsExample.propTypes = {
   headingId: PropTypes.string,
   menu: PropTypes.bool,
+  search: PropTypes.bool,
 };
 
-export default CompentenceGoalsExample;
+export default CompetenceGoalsExample;
 
-export const CompentenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
+export const CompetenceGoalsDialogExample = ({ narrow, wide, headingId }) => (
   <ClickToggle
     useDialog
     id="useArticleId"
     labelledby={headingId}
-    dialogModifier="large"
+    dialogModifier="large small-heading"
     buttonClassName={classes('toggle-button', { wide, narrow }).className}
     title="Kompetansemål"
     openTitle="Lukk boks"
     renderAsLightButton>
-    <CompentenceGoalsExample headingId={headingId} />
+    <CompetenceGoalsExample headingId={headingId} />
   </ClickToggle>
 );
 
-CompentenceGoalsDialogExample.propTypes = {
+CompetenceGoalsDialogExample.propTypes = {
   narrow: PropTypes.bool,
   wide: PropTypes.bool,
   headingId: PropTypes.string,
 };
 
-CompentenceGoalsDialogExample.defaultProps = {
+CompetenceGoalsDialogExample.defaultProps = {
   narrow: false,
   wide: false,
   headingId: undefined,

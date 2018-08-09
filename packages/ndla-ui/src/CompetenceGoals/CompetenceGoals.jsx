@@ -7,7 +7,7 @@ import { FilterList } from '../Filter';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
-  name: 'compentence-goals',
+  name: 'competence-goals',
   prefix: 'c-',
 });
 
@@ -27,7 +27,7 @@ const renderItem = (item, expanded = true) => {
   );
 };
 
-class CompentenceGoals extends Component {
+class CompetenceGoals extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,37 +42,34 @@ class CompentenceGoals extends Component {
       topics,
       id,
       menu,
+      search,
       subjectName,
       filterOptions,
       filterValues,
       onFilterClick,
+      description,
     } = this.props;
 
     return (
-      <div {...classes('', { menu })}>
-        {!menu ? (
-          <Fragment>
-            <h1 id={headingId} {...classes('heading')}>
-              {messages.heading}
-            </h1>
-            <p {...classes('description')}>{messages.description}</p>
-
+      <div {...classes('', { menu, search })}>
+        {!menu && !search ? (
+          <div {...classes('dialog-wrapper')}>
+            <h1 id={headingId}>{messages.heading}</h1>
+            <p {...classes('description')}>{description}</p>
+            <p {...classes('description')}>{messages.listDescription}</p>
             <div {...classes('topic')}>
-              {topics[0].heading && (
-                <h2 {...classes('topic-heading')}>{topics[0].heading}</h2>
-              )}
               <ul {...classes('topic-list')}>
                 {topics[0].items.map(renderItem)}
               </ul>
             </div>
-          </Fragment>
+          </div>
         ) : (
           <Fragment>
             <h1 {...classes('subject-heading')}>{subjectName}</h1>
             <h2 id={headingId} {...classes('heading')}>
               {messages.heading}
             </h2>
-            <p {...classes('description')}>{messages.description}</p>
+            <p {...classes('description')}>{messages.listDescription}</p>
             {filterOptions &&
               filterOptions.length > 0 && (
                 <FilterList
@@ -131,13 +128,15 @@ class CompentenceGoals extends Component {
   }
 }
 
-CompentenceGoals.propTypes = {
+CompetenceGoals.propTypes = {
   id: PropTypes.string,
   headingId: PropTypes.string,
   menu: PropTypes.bool,
+  search: PropTypes.bool,
+  description: PropTypes.string.isRequired,
   messages: PropTypes.shape({
     heading: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    listDescription: PropTypes.string.isRequired,
   }).isRequired,
   subjectName: PropTypes.string,
   filterOptions: PropTypes.arrayOf(
@@ -161,9 +160,10 @@ CompentenceGoals.propTypes = {
   ),
 };
 
-CompentenceGoals.defaultProps = {
+CompetenceGoals.defaultProps = {
   headingId: null,
   menu: false,
+  search: false,
 };
 
-export default CompentenceGoals;
+export default CompetenceGoals;

@@ -109,8 +109,8 @@ export const Article = ({
   modifier,
   messages,
   children,
-  compentenceGoals,
-  compentenceGoalsNarrow,
+  competenceGoals,
+  competenceGoalsNarrow,
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license).abbreviation;
   const showCreators = Array.isArray(creators) && creators.length > 0;
@@ -120,7 +120,7 @@ export const Article = ({
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
-          {compentenceGoals}
+          {competenceGoals}
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>
@@ -135,7 +135,7 @@ export const Article = ({
               licenseBox,
             }}
           />
-          {compentenceGoalsNarrow}
+          {competenceGoalsNarrow}
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -156,8 +156,8 @@ Article.propTypes = {
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
   additional: PropTypes.bool,
-  compentenceGoals: PropTypes.node,
-  compentenceGoalsNarrow: PropTypes.node,
+  competenceGoals: PropTypes.node,
+  competenceGoalsNarrow: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
@@ -172,8 +172,8 @@ Article.propTypes = {
 Article.defaultProps = {
   licenseBox: null,
   additional: null,
-  compentenceGoals: null,
-  compentenceGoalsNarrow: null,
+  competenceGoals: null,
+  competenceGoalsNarrow: null,
   icon: null,
   children: null,
 };

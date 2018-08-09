@@ -227,11 +227,11 @@ export default class TopicMenu extends Component {
                         }>
                         {competenceGoalsOpen ? (
                           <span>
-                            {messages.compentenceGoalsToggleButtonClose}{' '}
+                            {messages.competenceGoalsToggleButtonClose}{' '}
                             <Cross />
                           </span>
                         ) : (
-                          messages.compentenceGoalsToggleButtonOpen
+                          messages.competenceGoalsToggleButtonOpen
                         )}
                       </Button>
                     )}
@@ -261,7 +261,7 @@ export default class TopicMenu extends Component {
                   })
                 }>
                 <Back />
-                {messages.compentenceGoalsNarrowBackButton}
+                {messages.competenceGoalsNarrowBackButton}
               </button>
               {competenceGoals}
             </div>
@@ -362,7 +362,7 @@ export default class TopicMenu extends Component {
                         competenceGoalsOpen: true,
                       })
                     }>
-                    {messages.compentenceGoalsNarrowOpenButton}
+                    {messages.competenceGoalsNarrowOpenButton}
                   </button>
                 )}
             </div>
@@ -379,10 +379,10 @@ TopicMenu.propTypes = {
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,
   messages: PropTypes.shape({
-    compentenceGoalsToggleButtonOpen: PropTypes.string.isRequired,
-    compentenceGoalsToggleButtonClose: PropTypes.string.isRequired,
-    compentenceGoalsNarrowOpenButton: PropTypes.string.isRequired,
-    compentenceGoalsNarrowBackButton: PropTypes.string.isRequired,
+    competenceGoalsToggleButtonOpen: PropTypes.string.isRequired,
+    competenceGoalsToggleButtonClose: PropTypes.string.isRequired,
+    competenceGoalsNarrowOpenButton: PropTypes.string.isRequired,
+    competenceGoalsNarrowBackButton: PropTypes.string.isRequired,
     closeButton: PropTypes.string.isRequired,
     goTo: PropTypes.string.isRequired,
     subjectOverview: PropTypes.string.isRequired,

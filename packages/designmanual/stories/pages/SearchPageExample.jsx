@@ -19,6 +19,8 @@ import {
   Button,
 } from 'ndla-ui';
 
+import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
+
 import {
   searchTabOptions,
   searchTabFilterOptions,
@@ -128,6 +130,7 @@ class SearchPageExample extends Component {
     super(props);
     this.state = {
       currentTab: 'all',
+      competenceGoalsOpen: false,
     };
   }
 
@@ -171,10 +174,14 @@ class SearchPageExample extends Component {
     const authorTablet = author('tablet');
     const authorDesktop = author('desktop');
     const hasAuthor = authorTablet !== null;
+    const searchString = this.props.competenceGoals
+      ? 'Kompetansemål'
+      : 'Ideskaping';
     return (
       <SearchPage
         closeUrl="#"
-        searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : ''}
+        searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
+        hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
         onSearchFieldFilterRemove={() => {}}
@@ -377,9 +384,29 @@ class SearchPageExample extends Component {
           messages={{
             searchStringLabel: 'Du søkte på:',
             subHeading: '43 treff i Ndla',
+            openCompetenceGoalsButtonPrefix: '1 av',
+            openCompetenceGoalsButton:
+              '16 kompetansemål i medieuttrykk- og mediesamfunnet',
+            closeCompetenceGoalsLabel: 'Lukk kompetansemål',
             dropdownBtnLabel: 'Flere innholdstyper',
           }}
-          searchString={hasAuthor ? null : 'Test'}
+          currentCompetenceGoal={
+            this.props.competenceGoals
+              ? 'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier'
+              : null
+          }
+          competenceGoals={
+            this.props.competenceGoals ? (
+              <CompetenceGoalsExample search />
+            ) : null
+          }
+          competenceGoalsOpen={this.state.competenceGoalsOpen}
+          onToggleCompetenceGoals={() => {
+            this.setState(prevState => ({
+              competenceGoalsOpen: !prevState.competenceGoalsOpen,
+            }));
+          }}
+          searchString={hasAuthor ? null : searchString}
           tabOptions={searchTabOptions}
           onTabChange={newCurrentTab => {
             this.setState({
@@ -406,10 +433,12 @@ class SearchPageExample extends Component {
 
 SearchPageExample.propTypes = {
   showAuthor: PropTypes.bool,
+  competenceGoals: PropTypes.bool,
 };
 
 SearchPageExample.defaultProps = {
   showAuthor: false,
+  competenceGoals: false,
 };
 
 export default SearchPageExample;

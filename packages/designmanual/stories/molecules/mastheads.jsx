@@ -46,10 +46,10 @@ const messages = {
   contentTypeResultsShowMore: 'Vis mer',
   contentTypeResultsShowLess: 'Vis mindre',
   contentTypeResultsNoHit: 'Ingen ressurser',
-  compentenceGoalsToggleButtonOpen: 'Kompetansemål',
-  compentenceGoalsToggleButtonClose: 'Lukk kompetansemål',
-  compentenceGoalsNarrowOpenButton: 'Vis kompetansemål',
-  compentenceGoalsNarrowBackButton: 'Tilbake',
+  competenceGoalsToggleButtonOpen: 'Kompetansemål',
+  competenceGoalsToggleButtonClose: 'Lukk kompetansemål',
+  competenceGoalsNarrowOpenButton: 'Vis kompetansemål',
+  competenceGoalsNarrowBackButton: 'Tilbake',
 };
 
 class MastheadWithTopicMenu extends Component {

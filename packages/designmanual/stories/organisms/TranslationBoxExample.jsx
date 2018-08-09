@@ -6,6 +6,7 @@ class TranslationBoxExample extends Component {
   componentDidMount() {
     initArticleTabs();
   }
+
   render() {
     return (
       <TranslationBox

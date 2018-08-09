@@ -49,6 +49,7 @@ const ResourcesTopicTitle = ({
                 align="right">
                 <button
                   {...classes('topic-title-icon')}
+                  type="button"
                   aria-labelledby={explainationIconLabelledBy}
                   onClick={toggleAdditionalDialog}>
                   <HelpCircle

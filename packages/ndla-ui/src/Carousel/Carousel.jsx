@@ -10,6 +10,7 @@ const arrow = direction => (
   { className, style, onClick }, // eslint-disable-line
 ) => (
   <button
+    type="button"
     className={`${classes('arrow', [direction]).className} ${className}`}
     onClick={onClick}>
     {direction === 'prev' ? <ChevronLeft /> : <ChevronRight />}

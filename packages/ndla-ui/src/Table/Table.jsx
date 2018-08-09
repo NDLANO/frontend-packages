@@ -26,6 +26,7 @@ const Table = ({ children, messages, id, ...rest }) => {
           {children}
         </table>
         <button
+          type="button"
           data-dialog-trigger-id={dialogId}
           data-dialog-source-id={id}
           data-table-id={id}

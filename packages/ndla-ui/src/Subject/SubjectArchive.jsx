@@ -91,6 +91,7 @@ class SubjectArchive extends Component {
         <div {...classes('wrapper')}>
           {section}
           <button
+            type="button"
             aria-expanded={this.state.archiveOpen}
             aria-controls={archiveId}
             className={classes('archive-button').className}

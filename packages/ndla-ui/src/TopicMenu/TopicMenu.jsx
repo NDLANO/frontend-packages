@@ -166,7 +166,10 @@ export default class TopicMenu extends Component {
       <nav {...classes('dropdown', null, 'o-wrapper u-1/1')}>
         <div {...classes('masthead')}>
           <div {...classes('masthead-left')}>
-            <button {...classes('close-button')} onClick={closeMenu}>
+            <button
+              type="button"
+              {...classes('close-button')}
+              onClick={closeMenu}>
               <Cross />
               <span>{messages.closeButton}</span>
             </button>
@@ -250,6 +253,7 @@ export default class TopicMenu extends Component {
           {competenceGoalsOpen && (
             <div {...classes('competence')}>
               <button
+                type="button"
                 {...classes('competence-close-button')}
                 onClick={() =>
                   this.setState({
@@ -285,6 +289,7 @@ export default class TopicMenu extends Component {
                             key={topic.id}>
                             <button
                               {...classes('link')}
+                              type="button"
                               onClick={event =>
                                 this.handleClick(event, topic.id)
                               }
@@ -351,6 +356,7 @@ export default class TopicMenu extends Component {
                 competenceGoals && (
                   <button
                     {...classes('competence-open-button')}
+                    type="button"
                     onClick={() =>
                       this.setState({
                         competenceGoalsOpen: true,

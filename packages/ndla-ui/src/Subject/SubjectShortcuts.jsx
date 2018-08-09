@@ -45,6 +45,7 @@ class SubjectShortcuts extends Component {
 
       button = (
         <button
+          type="button"
           aria-expanded={isExpanded}
           aria-controls={id}
           onClick={() => this.handleOnExpand(!isExpanded)}

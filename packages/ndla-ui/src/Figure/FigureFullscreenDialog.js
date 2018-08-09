@@ -43,6 +43,7 @@ export const FigureFullscreenDialog = ({
         <div {...classLicenses('content')}>
           <button
             {...classLicenses('image-wrapper')}
+            type="button"
             aria-label={messages.zoomImageButtonLabel}>
             {children}
           </button>
@@ -51,7 +52,7 @@ export const FigureFullscreenDialog = ({
           </h1>
           {caption}
           <p>
-            <button className="c-figure__captionbtn">
+            <button className="c-figure__captionbtn" type="button">
               <span>{reuseLabel}</span>
             </button>
           </p>

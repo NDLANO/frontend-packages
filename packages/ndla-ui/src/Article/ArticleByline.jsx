@@ -27,11 +27,13 @@ class ArticleByline extends Component {
     };
     this.onSelectAuthor = this.onSelectAuthor.bind(this);
   }
+
   onSelectAuthor(showAuthor = null) {
     this.setState({
       showAuthor,
     });
   }
+
   render() {
     const {
       authors,

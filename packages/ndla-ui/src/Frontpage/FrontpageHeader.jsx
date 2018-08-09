@@ -35,7 +35,9 @@ const FrontpageHeader = ({
       </OneColumn>
       <OneColumn>
         <div {...classes('content')}>
-          <button {...classes('menu-button')}>{messages.menuButton}</button>
+          <button {...classes('menu-button')} type="button">
+            {messages.menuButton}
+          </button>
           <Logo
             to={logoTo}
             label={heading}

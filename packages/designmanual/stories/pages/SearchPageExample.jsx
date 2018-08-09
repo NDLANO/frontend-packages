@@ -133,6 +133,7 @@ class SearchPageExample extends Component {
       competenceGoalsOpen: false,
     };
   }
+
   render() {
     const { currentTab } = this.state;
     const currentResult =

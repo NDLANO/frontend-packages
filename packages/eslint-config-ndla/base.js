@@ -6,14 +6,16 @@ module.exports = {
     browser: true,
   },
   parserOptions: {
+    ecmaVersion: 9,
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
+      jsx: true,
     },
   },
   rules: {
     'no-constant-condition': [2, { checkLoops: false }],
 
     'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
+    'react/destructuring-assignment': 0,
     'react/forbid-prop-types': 1,
     'react/no-unused-prop-types': 0,
     'react/no-danger': 0,
@@ -32,6 +34,7 @@ module.exports = {
 
     'import/no-named-as-default': 0,
     'import/prefer-default-export': 0,
+    'import/no-cycle': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };

@@ -92,7 +92,7 @@ class SubtopicLinkList extends Component {
         ref={ref => {
           this.containerRef = ref;
         }}>
-        <button {...classes('back-button')} onClick={onGoBack}>
+        <button type="button" {...classes('back-button')} onClick={onGoBack}>
           <Back /> <span>{messages.backButton}</span>
         </button>
         <SafeLink

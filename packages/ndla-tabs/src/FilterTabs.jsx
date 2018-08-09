@@ -142,6 +142,7 @@ class FilterTabs extends Component {
       return (
         <li key={option.value} {...classes('tab', modifiers)}>
           <button
+            type="button"
             data-value={option.value}
             id={option.value}
             tabIndex={tabIndex}
@@ -201,6 +202,7 @@ class FilterTabs extends Component {
       return (
         <li key={option.value} {...classes('tab', ['no-margin'])}>
           <button
+            type="button"
             data-dropdowntab
             data-value={option.value}
             id={option.value}
@@ -254,6 +256,7 @@ class FilterTabs extends Component {
     return (
       <li {...classes('tab', modifiers)}>
         <button
+          type="button"
           role="tab"
           tabIndex={-1}
           aria-selected={isSelected}

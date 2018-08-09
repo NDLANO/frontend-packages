@@ -17,6 +17,7 @@
 /* IE-10+ fix for footer */
 html.ie #root {
   height: 100%;
+  overflow-x: visible; // fix for window.addEventListener('scroll')
 }
 
 /* Hack to differentiate CC-icon because it's not a license. Perhaps give it a class? */
@@ -28,4 +29,10 @@ html.ie #root {
   svg {
     fill: $brand-color;
   }
+}
+
+/* Move 'Spør NDLA' - Zendesk button to float on right side. */
+.c-button.c-zendesk__button {
+  left: auto;
+  right: 2rem;
 }

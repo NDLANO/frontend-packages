@@ -41,6 +41,7 @@
 
   @include mq(tablet) {
     min-height: 90px;
+    height: 90px; // IE fix.
     padding-bottom: $spacing--small/2;
   }
   display: flex;

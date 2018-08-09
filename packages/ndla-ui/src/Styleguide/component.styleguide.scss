@@ -1,0 +1,39 @@
+.c-styleguide {
+  > .c-tabs {
+    margin-left: 0 !important;
+    > .c-tabs__list {
+      margin-bottom: $spacing--large;
+    }
+    .react-tabs__tab-panel--selected > table {
+      margin-top: 0 !important;
+    }
+  }
+  &__aslist {
+    display: flex;
+    > * {
+      margin-right: $spacing--large;
+    }
+  }
+  code {
+    margin: 0;
+    padding: 0;
+    @include font-size(16px, 20px);
+  }
+  table td.required {
+    color: red;
+  }
+  &__status-label {
+    font-family: $font;
+    padding: $spacing;
+    &--alert {
+      background: $red;
+      color: #fff;
+    }
+    &--warn {
+      background: $tasks-and-activities-light;
+    }
+    &--safe {
+      background: $external-learning-resource-light;
+    }
+  }
+}

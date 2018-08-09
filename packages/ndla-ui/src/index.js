@@ -156,3 +156,5 @@ export { default as constants } from './model';
 export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';
+
+export { default as Styleguide } from './Styleguide';

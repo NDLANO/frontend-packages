@@ -26,6 +26,7 @@ import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
+import TooltipExample from './molecules/TooltipExample';
 
 const floatVideo = left => (
   <Fragment>
@@ -414,9 +415,9 @@ storiesOf('Enkle komponenter', module)
           </div>
           <LayoutItem layout="center">
             <div className="c-bodybox">
-              <h3>
+              <h2>
                 En boks i tekst fungerer <em>dårlig</em> med mye tekst.
-              </h3>
+              </h2>
               <p>
                 Pitching er også en god måte å bevisstgjøre seg selv på. Når du
                 pitcher, blir idéen og historien i den filmen du planlegger å
@@ -880,16 +881,26 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <h3>Logo uten url</h3>
+        <h2>Logo uten url</h2>
         <Logo cssModifier="large" name label="Nasjonal digital læringsarena" />
 
-        <h3>Logo med url</h3>
+        <h2>Logo med url</h2>
         <Logo
           cssModifier="large"
           name
           to="/"
           label="Nasjonal digital læringsarena"
         />
+      </StoryBody>
+    </div>
+  ))
+  .add('Tooltip', () => (
+    <div>
+      <StoryIntro title="Tooltip">
+        <p>Tooltip tekst</p>
+      </StoryIntro>
+      <StoryBody>
+        <TooltipExample />
       </StoryBody>
     </div>
   ));

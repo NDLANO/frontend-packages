@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
+import { isMobile } from 'react-device-detect';
 import isFunction from 'lodash/isFunction';
 import BEMHelper from 'react-bem-helper';
 
@@ -23,7 +24,25 @@ class Tabs extends Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.state = {
       index: props.selectedIndex || 0,
+      singleLineState: false,
     };
+    this.tabRef = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.props.singleLine && isMobile) {
+      // We only allow horisontal scrolling for phones..
+      const widthTotal = this.tabRef.current.offsetWidth;
+      let childrensWidthsTotal = 0;
+      this.tabRef.current.querySelectorAll('.c-tabs__list li').forEach(el => {
+        childrensWidthsTotal += el.offsetWidth;
+      });
+      if (childrensWidthsTotal > widthTotal) {
+        this.setState({
+          singleLineState: true,
+        });
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,31 +71,39 @@ class Tabs extends Component {
     const { index } = this.state;
 
     return (
-      <ReactTabs
-        {...classes({ modifier })}
-        onSelect={this.handleSelect}
-        selectedIndex={this.state.index}
-        forceRenderTabPanel={forceRenderTabPanel}>
-        <TabList {...classes('list', modifier)}>
+      <div ref={this.tabRef}>
+        <ReactTabs
+          {...classes({ modifier })}
+          onSelect={this.handleSelect}
+          selectedIndex={this.state.index}
+          forceRenderTabPanel={forceRenderTabPanel}>
+          <TabList
+            {...classes('list', {
+              [modifier]: modifier,
+              singleLine: this.state.singleLineState,
+            })}>
+            {tabs.map((tab, i) => (
+              <Tab
+                {...classes('tab', {
+                  selected: i === index,
+                  disabled: tab.disabled,
+                  [modifier]: modifier,
+                })}
+                key={tab.key ? tab.key : i}
+                disabled={tab.disabled}>
+                {tab.title}
+              </Tab>
+            ))}
+          </TabList>
           {tabs.map((tab, i) => (
-            <Tab
-              {...classes('tab', {
-                selected: i === index,
-                disabled: tab.disabled,
-                [modifier]: modifier,
-              })}
-              key={tab.key ? tab.key : i}
-              disabled={tab.disabled}>
-              {tab.title}
-            </Tab>
+            <TabPanel
+              {...classes('panel', modifier)}
+              key={tab.key ? tab.key : i}>
+              {isFunction(tab.content) ? tab.content() : tab.content}
+            </TabPanel>
           ))}
-        </TabList>
-        {tabs.map((tab, i) => (
-          <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
-            {isFunction(tab.content) ? tab.content() : tab.content}
-          </TabPanel>
-        ))}
-      </ReactTabs>
+        </ReactTabs>
+      </div>
     );
   }
 }
@@ -90,6 +117,7 @@ Tabs.propTypes = {
       disabled: PropTypes.string.bool,
     }),
   ),
+  singleLine: PropTypes.bool,
   onSelect: PropTypes.func,
   modifier: PropTypes.string,
   forceRenderTabPanel: PropTypes.bool,

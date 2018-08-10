@@ -51,7 +51,7 @@ MediaListItemImage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const MediaListCCLink = ({ children, url }) => (
+export const MediaListCCLink = ({ children, url }) => (
   <a
     className="c-figure-license__link"
     target="_blank"

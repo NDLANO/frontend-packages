@@ -7,61 +7,93 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
+import isFunction from 'lodash/isFunction';
+import BEMHelper from 'react-bem-helper';
 
-import Tabs from 'ndla-tabs';
-import { Button } from 'ndla-ui';
-import { InlineContainer } from '../helpers';
+const classes = new BEMHelper({
+  name: 'tabs',
+  prefix: 'c-',
+});
 
-export class TabsControlled extends Component {
+class Tabs extends Component {
   constructor(props) {
-    super(props);
+    super();
+    this.handleSelect = this.handleSelect.bind(this);
     this.state = {
-      selectedIndex: 0,
+      index: props.selectedIndex || 0,
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { index } = this.state;
+
+    if (
+      nextProps.selectedIndex !== undefined &&
+      nextProps.selectedIndex !== index
+    ) {
+      this.setState({ index: nextProps.selectedIndex });
+    }
+  }
+
+  handleSelect(index, last) {
+    this.setState({
+      index,
+    });
+
+    if (typeof this.props.onSelect === 'function') {
+      this.props.onSelect(index, last);
+    }
+  }
+
   render() {
+    const { tabs, forceRenderTabPanel, modifier } = this.props;
+    const { index } = this.state;
+
     return (
-      <div>
-        <Tabs
-          selectedIndex={this.state.selectedIndex}
-          tabs={[
-            { title: 'Bilde', content: <p>Bilde innhold</p> },
-            { title: 'Video', content: <p>Video innhold</p> },
-            { title: 'Lyd', content: <p>Lyd innhold</p> },
-          ]}
-        />
-        <InlineContainer>
-          <Button
-            style={{ marginRight: '5px' }}
-            onClick={() => this.setState({ selectedIndex: 0 })}>
-            Vis bildefane
-          </Button>
-          <Button
-            style={{ marginRight: '5px' }}
-            onClick={() => this.setState({ selectedIndex: 1 })}>
-            Vis videofane
-          </Button>
-          <Button
-            style={{ marginRight: '5px' }}
-            onClick={() => this.setState({ selectedIndex: 2 })}>
-            Vis lydfane
-          </Button>
-        </InlineContainer>
-      </div>
+      <ReactTabs
+        {...classes({ modifier })}
+        onSelect={this.handleSelect}
+        selectedIndex={this.state.index}
+        forceRenderTabPanel={forceRenderTabPanel}>
+        <TabList {...classes('list', modifier)}>
+          {tabs.map((tab, i) => (
+            <Tab
+              {...classes('tab', {
+                selected: i === index,
+                disabled: tab.disabled,
+                [modifier]: modifier,
+              })}
+              key={tab.key ? tab.key : i}
+              disabled={tab.disabled}>
+              {tab.title}
+            </Tab>
+          ))}
+        </TabList>
+        {tabs.map((tab, i) => (
+          <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
+            {isFunction(tab.content) ? tab.content() : tab.content}
+          </TabPanel>
+        ))}
+      </ReactTabs>
     );
   }
 }
 
-export const TabsDefault = () => (
-  <Tabs
-    tabs={[
-      { title: 'Bilde', content: <p>Bilde innhold</p> },
-      { title: 'Video', content: <p>Video innhold</p> },
-      { title: 'Lyd', content: <p>Lyd innhold</p> },
-      { title: 'Inaktiv', content: <p>Inaktivt innhold</p>, disabled: true },
-    ]}
-  />
-);
+Tabs.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
+      disabled: PropTypes.string.bool,
+    }),
+  ),
+  onSelect: PropTypes.func,
+  modifier: PropTypes.string,
+  forceRenderTabPanel: PropTypes.bool,
+  selectedIndex: PropTypes.number,
+};
 
-export default TabsDefault;
+export default Tabs;

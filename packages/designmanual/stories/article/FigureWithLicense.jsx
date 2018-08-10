@@ -24,6 +24,7 @@ import {
   FigureLicenseDialog,
   FigureFullscreenDialog,
   Button,
+  CopyButton,
 } from 'ndla-ui';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
@@ -47,7 +48,7 @@ class FigureWithLicense extends Component {
 
   render() {
     const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
-    const { resizeIframe, type } = this.props;
+    const { resizeIframe, type, figureCaptionLink } = this.props;
 
     const messages = {
       close: 'Lukk',
@@ -120,12 +121,7 @@ class FigureWithLicense extends Component {
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
-            link={{
-              text: 'Lage kortfilm',
-              url: '#1',
-              description: '(Lenken tar deg til et annet nettsted)',
-              external: true,
-            }}
+            link={figureCaptionLink}
             authors={authors}>
             <FigureLicenseDialog
               id={this.id}
@@ -135,7 +131,9 @@ class FigureWithLicense extends Component {
               origin="https://www.wikimedia.com"
               title="Mann med lupe"
               messages={messages}>
-              <Button outline>Kopier referanse</Button>
+              <CopyButton outline copyNode="Kopiert!">
+                Kopier referanse
+              </CopyButton>
               <Button outline>Last ned bilde</Button>
             </FigureLicenseDialog>
           </FigureCaption>
@@ -163,6 +161,12 @@ FigureWithLicense.propTypes = {
     'xsmall-right',
     'xsmall-left',
   ]),
+  figureCaptionLink: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    external: PropTypes.bool,
+  }),
 };
 
 FigureWithLicense.defaultProps = {

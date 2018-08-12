@@ -20,18 +20,18 @@
       border: 0;
     }
 
+    display: none;
+
+    @include mq(desktop) {
+      display: flex;
+      box-shadow: none;
+    }
     &--narrow {
+      display: flex;
+      margin-right: $spacing--small;
       box-shadow: none;
       @include mq(desktop) {
         display: none;
-      }
-    }
-
-    &--wide {
-      display: none;
-
-      @include mq(desktop) {
-        display: block;
       }
     }
   }

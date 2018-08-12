@@ -160,7 +160,6 @@ const SearchResultItem = ({ item, messages }) => (
         {item.additional &&
           (messages.additionalContentToolip ? (
             <Tooltip
-              id={`search-additional-tooltip-${item.id}`}
               tooltip={messages.additionalContentToolip}
               {...searchResultItemClasses('additional')}>
               <Additional className="c-icon--20" />

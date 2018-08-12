@@ -39,6 +39,11 @@ OpenSearchButton.propTypes = {
   }).isRequired,
   searchPageUrl: PropTypes.string.isRequired,
   onOpen: PropTypes.func.isRequired,
+  narrow: PropTypes.bool,
+};
+
+OpenSearchButton.defaultProps = {
+  narrow: true,
 };
 
 const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
@@ -48,7 +53,6 @@ const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
       <Search />
     </span>
   );
-
   return (
     <ClickToggle
       isOpen={isOpen}

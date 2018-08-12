@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from 'ndla-licenses';
@@ -18,6 +18,8 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
+  LanguageSelector,
+  LanguageSummary,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -40,6 +42,8 @@ import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 
 import Oops from '../images/oops.gif';
+
+import { topicListMessages } from '../messages/index';
 
 const toggle = () => {
   document
@@ -182,14 +186,29 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <TopicIntroductionList
-          shortcutAlwaysExpanded
-          toTopic={() => '#'}
-          messages={{
-            shortcutButtonText: 'Lærestoff',
-          }}
-          topics={topicList}
-        />
+        <LanguageSelector>
+          {(lang) => (
+            <Fragment>
+              <LanguageSummary
+                texts={{
+                  shortcutButtonText: topicListMessages.shortcutButtonText,
+                  tooltipCoreTopic: topicListMessages.tooltipCoreTopic,
+                  tooltipAdditionalTopic: topicListMessages.tooltipAdditionalTopic,
+                }}
+                lang={lang}
+              />
+              <TopicIntroductionList
+                toTopic={() => '#'}
+                messages={{
+                  shortcutButtonText: topicListMessages.shortcutButtonText.text[lang],
+                  tooltipCoreTopic: topicListMessages.tooltipCoreTopic.text[lang],
+                  tooltipAdditionalTopic: topicListMessages.tooltipAdditionalTopic.text[lang],
+                }}
+                topics={topicList}
+              />
+            </Fragment>
+          )}
+        </LanguageSelector>
       </StoryBody>
     </div>
   ))

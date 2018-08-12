@@ -14,7 +14,6 @@ export const topicListMessages = {
     description: 'Tooltip til ikon for kjernefag i emneliste',
     text: {
       nb: 'Kjernestoff i faget',
-      nn: 'dsfdsfdsfsf',
     },
     status: {
       nb: STATUS_TYPES.dummyText,
@@ -24,9 +23,13 @@ export const topicListMessages = {
     description: 'Hjelpetekst for relatert innhold under et emne i emnelisten',
     text: {
       nb: 'Lærestoff',
+      nn: 'Lærestoff',
+      en: 'Learning content',
     },
     status: {
-      nb: STATUS_TYPES.dummyText,
+      nb: STATUS_TYPES.approved,
+      nn: STATUS_TYPES.dummyText,
+      en: STATUS_TYPES.dummyText,
     },
   },
 };

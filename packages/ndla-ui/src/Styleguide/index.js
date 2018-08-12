@@ -6,6 +6,6 @@
  *
  */
 
-import Styleguide from './Styleguide';
-
-export default Styleguide;
+export { default as Styleguide } from './Styleguide';
+export { default as LanguageSelector } from './LanguageSelector';
+export { default as LanguageSummary } from './LanguageSummary';

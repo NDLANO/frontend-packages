@@ -43,7 +43,6 @@ class Messages extends Component {
 
   render() {
     const { lang, description } = this.props;
-    const { searchText } = this.state;
     return (
       <PageContainer>
         <div style={{ marginTop: '30px' }}>

@@ -71,7 +71,11 @@ class Messages extends Component {
               );
               return filteredSearch.length ? (
                 <Fragment key={uuid()}>
-                  <h3 className="u-heading">{messageElement.heading}</h3>
+                  <h3 className="u-heading">
+                    {messageElement.componentUrl ?
+                      <a href={messageElement.componentUrl}>{messageElement.componentName}</a> : messageElement.componentName
+                    }
+                  </h3>
                   <table {...classes({ extra: ['o-table'] })}>
                     <thead>
                       <tr>

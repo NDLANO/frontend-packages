@@ -4,11 +4,12 @@ import { topicListMessages } from './topicListMessages';
 const allMessages = [
   {
     messages: launchpadMessages,
-    heading: 'Launchpad',
+    componentName: 'Launchpad',
   },
   {
     messages: topicListMessages,
-    heading: 'Emneliste',
+    componentName: 'Emneliste',
+    componentUrl: '?selectedKind=Sammensatte%20moduler&selectedStory=Emneliste&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel',
   },
 ];
 

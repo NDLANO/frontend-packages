@@ -187,22 +187,26 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <LanguageSelector>
-          {(lang) => (
+          {lang => (
             <Fragment>
               <LanguageSummary
                 texts={{
                   shortcutButtonText: topicListMessages.shortcutButtonText,
                   tooltipCoreTopic: topicListMessages.tooltipCoreTopic,
-                  tooltipAdditionalTopic: topicListMessages.tooltipAdditionalTopic,
+                  tooltipAdditionalTopic:
+                    topicListMessages.tooltipAdditionalTopic,
                 }}
                 lang={lang}
               />
               <TopicIntroductionList
                 toTopic={() => '#'}
                 messages={{
-                  shortcutButtonText: topicListMessages.shortcutButtonText.text[lang],
-                  tooltipCoreTopic: topicListMessages.tooltipCoreTopic.text[lang],
-                  tooltipAdditionalTopic: topicListMessages.tooltipAdditionalTopic.text[lang],
+                  shortcutButtonText:
+                    topicListMessages.shortcutButtonText.text[lang],
+                  tooltipCoreTopic:
+                    topicListMessages.tooltipCoreTopic.text[lang],
+                  tooltipAdditionalTopic:
+                    topicListMessages.tooltipAdditionalTopic.text[lang],
                 }}
                 topics={topicList}
               />

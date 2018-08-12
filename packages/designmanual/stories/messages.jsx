@@ -7,8 +7,10 @@ import { uuid } from 'ndla-util';
 import { StoryBody } from './wrappers';
 import { Center } from './helpers';
 import { allMessages } from '../messages/index';
+import { STATUS_TYPES } from '../messages/statusTypes';
 
 const classes = BEMHelper('c-table');
+const styleguideClass = BEMHelper('c-styleguide');
 
 class Messages extends Component {
   constructor(props) {
@@ -49,7 +51,7 @@ class Messages extends Component {
           <Center>
             <center>
               <Logo label="Nasjonal digital læringsarena" />
-              <h1>Tekster på {description}</h1>
+              <h1>Tekster/Labels på {description}</h1>
             </center>
           </Center>
           <StoryBody>
@@ -60,6 +62,7 @@ class Messages extends Component {
               placeholder="Søk etter tekst eller label"
               value={this.state.searchString}
               onChange={this.onSearchChange}
+              style={{ width: '100%' }}
             />
             {allMessages.map(messageElement => {
               const filteredSearch = this.filterSearch(
@@ -79,19 +82,40 @@ class Messages extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredSearch.map(key => (
-                        <tr key={key}>
-                          <td>{key}</td>
-                          <td>{messageElement.messages[key].description}</td>
-                          <td>
-                            {messageElement.messages[key].text[lang] ||
-                              '[MANGLER]'}
-                          </td>
-                          <td>
-                            {messageElement.messages[key].status[lang] || '?'}
-                          </td>
-                        </tr>
-                      ))}
+                      {filteredSearch.map(key => {
+                        let modifierClass = '';
+                        if (
+                          !messageElement.messages[key].status[lang] ||
+                          messageElement.messages[key].status[lang] ===
+                            STATUS_TYPES.dummyText
+                        ) {
+                          modifierClass = 'missing';
+                        } else if (
+                          messageElement.messages[key].status[lang] ===
+                          STATUS_TYPES.approved
+                        ) {
+                          modifierClass = 'approved';
+                        } else {
+                          modifierClass = 'needsReview';
+                        }
+                        return (
+                          <tr key={key}>
+                            <td>{key}</td>
+                            <td>{messageElement.messages[key].description}</td>
+                            <td>
+                              {messageElement.messages[key].text[lang] ||
+                                '[MANGLER]'}
+                            </td>
+                            <td
+                              {...styleguideClass(
+                                'messages-table-cell',
+                                modifierClass,
+                              )}>
+                              {messageElement.messages[key].status[lang] || '?'}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </Fragment>

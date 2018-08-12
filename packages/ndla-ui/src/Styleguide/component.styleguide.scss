@@ -36,4 +36,16 @@
       background: $external-learning-resource-light;
     }
   }
+  &__messages-table-cell {
+    &--missing {
+      background: $red;
+      color: #fff;
+    }
+    &--needsReview {
+      background: $tasks-and-activities-light;
+    }
+    &--approved {
+      background: $external-learning-resource-light;
+    }
+  }
 }

@@ -14,7 +14,7 @@ const LANGUAGES = [
   {
     title: 'Engelsk',
     value: 'en',
-  }
+  },
 ];
 
 export default class LanguageSelector extends Component {

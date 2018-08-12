@@ -15,16 +15,24 @@ const LANG_NAMES = {
   nb: 'Norsk bokmål',
   nn: 'Nynorsk',
   en: 'Engelsk',
-}
+};
 
 const LanguageSummary = ({ texts, lang }) => {
-  const approvedTexts = Object.keys(texts).filter(textKey => (texts[textKey].status[lang] === STATUS_TYPES.approved)).length;
+  const approvedTexts = Object.keys(texts).filter(
+    textKey => texts[textKey].status[lang] === STATUS_TYPES.approved,
+  ).length;
   return (
     <details>
-      <summary>{approvedTexts} av {Object.keys(texts).length} tekster er godkjent på {LANG_NAMES[lang]}</summary>
+      <summary>
+        {approvedTexts} av {Object.keys(texts).length} tekster er godkjent på{' '}
+        {LANG_NAMES[lang]}
+      </summary>
       <ul>
-        {Object.keys(texts).map((textKey) => (
-          <li key={textKey}>{textKey}: {texts[textKey].text[lang] || '(???)'} ({texts[textKey].status[lang] || STATUS_TYPES.dummyText})</li>
+        {Object.keys(texts).map(textKey => (
+          <li key={textKey}>
+            {textKey}: {texts[textKey].text[lang] || '(???)'} ({texts[textKey]
+              .status[lang] || STATUS_TYPES.dummyText})
+          </li>
         ))}
       </ul>
     </details>
@@ -32,19 +40,21 @@ const LanguageSummary = ({ texts, lang }) => {
 };
 
 LanguageSummary.propTypes = {
-  texts: PropTypes.shape(PropTypes.shape({
-    description: PropTypes.string,
-    text: PropTypes.shape({
-      nb: PropTypes.string,
-      ny: PropTypes.string,
-      en: PropTypes.string,
+  texts: PropTypes.shape(
+    PropTypes.shape({
+      description: PropTypes.string,
+      text: PropTypes.shape({
+        nb: PropTypes.string,
+        ny: PropTypes.string,
+        en: PropTypes.string,
+      }),
+      status: {
+        nb: PropTypes.string,
+        ny: PropTypes.string,
+        en: PropTypes.string,
+      },
     }),
-    status: {
-      nb: PropTypes.string,
-      ny: PropTypes.string,
-      en: PropTypes.string,
-    },
-  })).isRequired,
+  ).isRequired,
   lang: PropTypes.oneOf(['nb', 'nn', 'en']),
 };
 

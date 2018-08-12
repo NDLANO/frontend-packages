@@ -39,7 +39,8 @@ export const renderAdditionalIcon = (isAdditional, label) => {
         <Additional className="c-icon--20" />
       </Tooltip>
     );
-  } else if (isAdditional) {
+  }
+  if (isAdditional) {
     return <Additional className="c-icon--20 c-topic-menu__tooltipContainer" />;
   }
   return null;
@@ -271,6 +272,7 @@ export default class TopicMenu extends Component {
                     {!competenceGoalsOpen && (
                       <div {...classes('back-button-slide-wrapper')}>
                         <button
+                          type="button"
                           {...classes(
                             'back-button-slides',
                             `slide-${currentlyExpandedSubTopics.length}`,
@@ -287,6 +289,7 @@ export default class TopicMenu extends Component {
             {competenceGoalsOpen && (
               <div {...classes('competence')}>
                 <button
+                  type="button"
                   {...classes('competence-close-button')}
                   onClick={() =>
                     this.setState({
@@ -395,6 +398,7 @@ export default class TopicMenu extends Component {
                 {!disableMain &&
                   competenceGoals && (
                     <button
+                      type="button"
                       {...classes('competence-open-button')}
                       onClick={() =>
                         this.setState({

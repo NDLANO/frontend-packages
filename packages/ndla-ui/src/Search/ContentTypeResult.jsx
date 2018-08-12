@@ -21,7 +21,8 @@ const renderAdditionalIcon = (isAdditional, label) => {
         <Additional className="c-icon--20" />
       </Tooltip>
     );
-  } else if (isAdditional) {
+  }
+  if (isAdditional) {
     return <Additional className="c-icon--20" />;
   }
   return null;

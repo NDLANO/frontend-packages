@@ -6,11 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import isString from 'lodash/isString';
+import { isMobile } from 'react-device-detect';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -32,9 +33,21 @@ ArticleWrapper.propTypes = {
   modifier: PropTypes.string,
 };
 
-export const ArticleHeaderWrapper = ({ children }) => (
-  <div {...classes('header')}>{children}</div>
-);
+export class ArticleHeaderWrapper extends Component {
+  componentDidMount() {
+    if (isMobile) {
+      const heroContentList = document.querySelectorAll('.c-article__header');
+      if (heroContentList.length === 1) {
+        heroContentList[0].scrollIntoView(true);
+        window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
+      }
+    }
+  }
+
+  render() {
+    return <div {...classes('header')}>{this.props.children}</div>;
+  }
+}
 
 ArticleHeaderWrapper.propTypes = {
   children: PropTypes.node.isRequired,

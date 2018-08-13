@@ -48,7 +48,10 @@ const VideoContent = () => (
       ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
-            <a href="https://example.com">
+            <a
+              href="https://www.youtube.com/watch?v=hjujTTRB01E"
+              target="_blank"
+              rel="noopener noreferrer">
               <img
                 src="https://images.unsplash.com/photo-1453733190371-0a9bedd82893?auto=format&fit=crop&w=500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
                 alt="Høna og egget"
@@ -103,9 +106,7 @@ const TextContent = () => (
       ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
-            <a href="https://example.com">
-              <FileDocumentOutline className="c-medialist__icon" />
-            </a>
+            <FileDocumentOutline className="c-medialist__icon" />
           </MediaListItemImage>
           <MediaListItemBody
             license={bysaLicenseAbbreviation}
@@ -168,9 +169,7 @@ const AudioContent = () => (
       ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
-            <a href="https://example.com">
-              <AudioDocument className="c-medialist__icon" />
-            </a>
+            <AudioDocument className="c-medialist__icon" />
           </MediaListItemImage>
           <MediaListItemBody
             license={bysaLicenseAbbreviation}
@@ -229,9 +228,7 @@ const ImageContent = () => (
       ].map(src => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
-            <a href="https://example.com">
-              <img alt="alt" src={src} />
-            </a>
+            <img alt="alt" src={src} />
           </MediaListItemImage>
           <MediaListItemBody
             license={byncndLicenseAbbreviation}
@@ -339,7 +336,7 @@ const OtherContent = () => (
       {H5PExamples.map(example => (
         <MediaListItem key={example.id}>
           <MediaListItemImage>
-            <a href="https://example.com">
+            <a href={example.url} target="_blank" rel="noopener noreferrer">
               <img
                 src={example.image}
                 alt={example.name}

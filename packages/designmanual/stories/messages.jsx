@@ -1,16 +1,25 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { storiesOf } from '@storybook/react';
 import { Logo, PageContainer } from 'ndla-ui';
-import { uuid } from 'ndla-util';
+import { phrases } from 'ndla-i18n';
 import { StoryBody } from './wrappers';
 import { Center } from './helpers';
-import { allMessages } from '../messages/index';
-import { STATUS_TYPES } from '../messages/statusTypes';
 
 const classes = BEMHelper('c-table');
 const styleguideClass = BEMHelper('c-styleguide');
+
+const flatten = object => (
+  Object.assign({}, ...function _flatten(objectBit, path = '') {
+    return [].concat(
+      ...Object.keys(objectBit).map(
+        key => typeof objectBit[key] === 'object' ?
+          _flatten(objectBit[key], `${path}.${key}`) :
+          ({[`${path}.${key}`]: objectBit[key]})
+      )
+    )
+  }(object))
+);
 
 class Messages extends Component {
   constructor(props) {
@@ -19,6 +28,9 @@ class Messages extends Component {
       searchText: '',
     };
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.flattenedNb = flatten(phrases.nb);
+    this.flattenedNn = flatten(phrases.nn);
+    this.flattenedEn = flatten(phrases.en);
   }
 
   onSearchChange(e) {
@@ -27,31 +39,51 @@ class Messages extends Component {
     });
   }
 
-  filterSearch(filterArray, lang) {
+  filterSearch() {
     const { searchText } = this.state;
     if (searchText === '') {
-      return Object.keys(filterArray);
+      return this.flattenedNb;
     }
 
-    return Object.keys(filterArray).filter(
-      t =>
-        (filterArray[t].text[lang] &&
-          filterArray[t].text[lang].search(new RegExp(searchText, 'i')) !==
-            -1) ||
-        filterArray[t].description.search(new RegExp(searchText, 'i')) !== -1 ||
-        t.search(searchText, 'i') !== -1,
-    );
+    const filtered = Object.keys(this.flattenedNb).filter((key) => (
+      key.search(new RegExp(searchText, 'i')) !== -1 ||
+      this.flattenedNb[key].search(new RegExp(searchText, 'i')) !== -1 ||
+      this.flattenedNn[key].search(new RegExp(searchText, 'i')) !== -1 ||
+      this.flattenedEn[key].search(new RegExp(searchText, 'i')) !== -1
+    ));
+
+    return filtered.reduce((result, key) => ({ ...result, [key]: this.flattenedNb[key] }), {});
+  }
+
+  renderAllPhrases() {
+    // 1. Loop through all phrases with lang "nb"
+    // 2. Show other all languages next to it
+    return Object.keys(this.filterSearch()).map(key => (
+      <tr key={key}>
+        <td>
+          {key.substr(1)}
+        </td>
+        <td>
+          {this.flattenedNb[key]}
+        </td>
+        <td>
+          {this.flattenedNn[key]}
+        </td>
+        <td>
+          {this.flattenedEn[key]}
+        </td>
+      </tr>
+    ));
   }
 
   render() {
-    const { lang, description } = this.props;
     return (
       <PageContainer>
         <div style={{ marginTop: '30px' }}>
           <Center>
             <center>
               <Logo label="Nasjonal digital læringsarena" />
-              <h1>Tekster/Labels på {description}</h1>
+              <h1>Tekster og Labels</h1>
             </center>
           </Center>
           <StoryBody>
@@ -64,71 +96,19 @@ class Messages extends Component {
               onChange={this.onSearchChange}
               style={{ width: '100%' }}
             />
-            {allMessages.map(messageElement => {
-              const filteredSearch = this.filterSearch(
-                messageElement.messages,
-                this.props.lang,
-              );
-              return filteredSearch.length ? (
-                <Fragment key={uuid()}>
-                  <h3 className="u-heading">
-                    {messageElement.componentUrl ? (
-                      <a href={messageElement.componentUrl}>
-                        {messageElement.componentName}
-                      </a>
-                    ) : (
-                      messageElement.componentName
-                    )}
-                  </h3>
-                  <table {...classes({ extra: ['o-table'] })}>
-                    <thead>
-                      <tr>
-                        <th>Nøkkelord</th>
-                        <th>Forklaring</th>
-                        <th>Tekst</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredSearch.map(key => {
-                        let modifierClass = '';
-                        if (
-                          !messageElement.messages[key].status[lang] ||
-                          messageElement.messages[key].status[lang] ===
-                            STATUS_TYPES.dummyText
-                        ) {
-                          modifierClass = 'missing';
-                        } else if (
-                          messageElement.messages[key].status[lang] ===
-                          STATUS_TYPES.approved
-                        ) {
-                          modifierClass = 'approved';
-                        } else {
-                          modifierClass = 'needsReview';
-                        }
-                        return (
-                          <tr key={key}>
-                            <td>{key}</td>
-                            <td>{messageElement.messages[key].description}</td>
-                            <td>
-                              {messageElement.messages[key].text[lang] ||
-                                '[MANGLER]'}
-                            </td>
-                            <td
-                              {...styleguideClass(
-                                'messages-table-cell',
-                                modifierClass,
-                              )}>
-                              {messageElement.messages[key].status[lang] || '?'}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </Fragment>
-              ) : null;
-            })}
+            <table {...classes({ extra: ['o-table'] })}>
+              <thead>
+                <tr>
+                  <th>Nøkkelord</th>
+                  <th>Forklaring</th>
+                  <th>Tekst</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.renderAllPhrases()}
+              </tbody>
+            </table>
           </StoryBody>
         </div>
       </PageContainer>
@@ -136,13 +116,5 @@ class Messages extends Component {
   }
 }
 
-Messages.propTypes = {
-  lang: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  showApp: PropTypes.func,
-};
-
 storiesOf('Tekster og labels', module)
-  .add('Bokmål', () => <Messages lang="nb" description="bokmål" />)
-  .add('Nynorsk', () => <Messages lang="nn" description="nynorsk" />)
-  .add('Engelsk', () => <Messages lang="en" description="engelsk" />);
+  .add('Tekster og labels', () => <Messages />);

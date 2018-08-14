@@ -132,7 +132,7 @@ CopyButton.propTypes = {
 CopyButton.defaultProps = {
   showCopyTimer: 4000,
   onClick: () => {
-    console.log('Clicked CopyButton');
+    console.log('Clicked CopyButton'); //eslint-disable-line
   },
 };
 

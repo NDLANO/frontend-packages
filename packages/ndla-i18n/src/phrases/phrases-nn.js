@@ -18,11 +18,11 @@ const phrases = {
     notFound: `Sida finst ikkje${titleTemplate}`,
   },
   newsLetter: {
-    heading: 'Nyheitsbrev',
+    heading: '*Nyheitsbrev',
     description:
-      'Få tilgang til det som er nytt for undervisninga og aktuelt for tidspunktet.',
-    mainLinkName: 'Meld deg på',
-    iconLinkName: 'Meld deg på nyheitsbrev',
+      '*Få tilgang til det som er nytt for undervisninga og aktuelt for tidspunktet.',
+    mainLinkName: '*Meld deg på',
+    iconLinkName: '*Meld deg på nyheitsbrev',
   },
   askNDLA: 'Spør NDLA',
   articlePage: {

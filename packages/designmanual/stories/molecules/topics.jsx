@@ -68,14 +68,6 @@ class Topics extends Component {
           subjectPage
           showAdditionalCores={showAdditionalCores}
           toggleAdditionalCores={this.toggleAdditionalCores}
-          messages={{
-            noContentBoxLabel: 'Det er ikke noe kjernestoff tilgjengelig.',
-            noContentBoxButtonText: 'Vis tilleggsstoff',
-            shortcutButtonText: 'Lærestoff',
-            tooltipCoreTopic: 'Kjernestoff er fagstoff som er på pensum',
-            tooltipAdditionalTopic:
-              'Tilleggsstoff er fagstoff som er på pensum',
-          }}
         />
       </ResourcesWrapper>
     );

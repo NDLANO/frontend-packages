@@ -118,7 +118,6 @@ const TopicIntroductionList = ({
   shortcutAlwaysExpanded,
   showAdditionalCores,
   toggleAdditionalCores,
-  messages,
   t,
   ...rest
 }) => {
@@ -142,6 +141,8 @@ const TopicIntroductionList = ({
             shortcutAlwaysExpanded={shortcutAlwaysExpanded}
             messages={{
               shortcutButtonText: t('resource.label'),
+              tooltipAdditionalTopic: t('resource.tooltipAdditionalTopic'),
+              tooltipCoreTopic: t('resource.tooltipCoreTopic'),
             }}
             id={`${topic.id}_${index}`}
           />
@@ -151,8 +152,10 @@ const TopicIntroductionList = ({
         <li>
           <NoContentBox
             onClick={toggleAdditionalCores}
-            text={messages.noContentBoxLabel}
-            buttonText={messages.noContentBoxButtonText}
+            text={t('resouce.noCoreResourcesAvailableUnspecific', {
+              name: 'Test',
+            })}
+            buttonText={t('resouce.activateAdditionalResources')}
           />
         </li>
       )}
@@ -167,10 +170,6 @@ TopicIntroductionList.propTypes = {
   shortcutAlwaysExpanded: PropTypes.bool,
   showAdditionalCores: PropTypes.bool,
   toggleAdditionalCores: PropTypes.func.isRequired,
-  messages: PropTypes.shape({
-    noContentBoxLabel: PropTypes.string.isRequired,
-    noContentBoxButtonText: PropTypes.string.isRequired,
-  }).isRequired,
   t: PropTypes.func.isRequired,
 };
 

@@ -49,7 +49,10 @@ class Messages extends Component {
 
   filterSearch() {
     const { findNotApprovedLabels } = this.state;
-    const searchText = this.state.searchText.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1"); // remove failing letters like '*, +'..
+    const searchText = this.state.searchText.replace(
+      /([.?*+^$[\]\\(){}|-])/g,
+      '',
+    ); // remove failing letters like '*, +'..
 
     const flattened = findNotApprovedLabels
       ? Object.keys(this.flattenedNb)

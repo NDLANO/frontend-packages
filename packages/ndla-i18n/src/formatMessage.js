@@ -18,7 +18,7 @@ const getNestedObject = (obj, pathArr) => {
   } catch (err) {
     return 'text missing';
   }
-}
+};
 
 export default function formatMessage(
   locale,

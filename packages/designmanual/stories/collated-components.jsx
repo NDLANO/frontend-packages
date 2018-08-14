@@ -187,10 +187,8 @@ storiesOf('Sammensatte moduler', module)
         <TopicIntroductionList
           toTopic={() => '#'}
           messages={{
-            shortcutButtonText:
-              'phrases[lang].resource.shortcutButtonText',
-            tooltipCoreTopic:
-              'topicListMessages.tooltipCoreTopic.text[lang]',
+            shortcutButtonText: 'phrases[lang].resource.shortcutButtonText',
+            tooltipCoreTopic: 'topicListMessages.tooltipCoreTopic.text[lang]',
             tooltipAdditionalTopic:
               'topicListMessages.tooltipAdditionalTopic.text[lang]',
           }}

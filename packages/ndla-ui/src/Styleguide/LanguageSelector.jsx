@@ -27,7 +27,9 @@ const LanguageSelector = () => (
             labelNotVisible
             options={LANGUAGES}
             values={[context.lang]}
-            onChange={(e) => { context.changeLanguage(e.pop()) }}
+            onChange={e => {
+              context.changeLanguage(e.pop());
+            }}
           />
         </div>
       </Fragment>

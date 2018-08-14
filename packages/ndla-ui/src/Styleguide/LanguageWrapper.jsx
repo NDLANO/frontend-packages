@@ -29,18 +29,19 @@ class LanguageWrapperProvider extends Component {
 
   render() {
     return (
-      <LanguageContext.Provider value={{ lang: this.state.lang, changeLanguage: this.changeLanguage }}>
+      <LanguageContext.Provider
+        value={{ lang: this.state.lang, changeLanguage: this.changeLanguage }}>
         {this.props.children}
       </LanguageContext.Provider>
-    )
+    );
   }
-};
+}
 
 LanguageWrapperProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const LanguageWrapper = (storyFn) => (
+const LanguageWrapper = storyFn => (
   <LanguageWrapperProvider>
     <LanguageContext.Consumer>
       {context => (

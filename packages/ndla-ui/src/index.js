@@ -157,4 +157,4 @@ export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';
 
-export { Styleguide, LanguageSelector, LanguageSummary } from './Styleguide';
+export { Styleguide, LanguageSelector, LanguageSummary, LanguageWrapper, LanguageContext } from './Styleguide';

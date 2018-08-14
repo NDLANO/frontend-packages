@@ -9,7 +9,24 @@
 import IntlProvider from './IntlProvider';
 import injectT from './injectT';
 import formatMessage from './formatMessage';
+import phrasesEn from './phrases/phrases-en';
+import phrasesNb from './phrases/phrases-nb';
+import phrasesNn from './phrases/phrases-nn';
 
-export { IntlProvider, injectT, formatMessage };
+const phrases = {
+  en: phrasesEn,
+  nb: phrasesNb,
+  nn: phrasesNn,
+};
+
+export {
+  IntlProvider,
+  injectT,
+  formatMessage,
+  phrases,
+  phrasesEn,
+  phrasesNb,
+  phrasesNn,
+};
 
 export default IntlProvider;

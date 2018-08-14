@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Additional, Core } from 'ndla-icons/common';
 import { Tooltip, NoContentBox, SafeLink } from 'ndla-ui';
+import { injectT } from 'ndla-i18n';
 import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
 
@@ -118,6 +119,7 @@ const TopicIntroductionList = ({
   showAdditionalCores,
   toggleAdditionalCores,
   messages,
+  t,
   ...rest
 }) => {
   const renderAdditionalTopicsTrigger =
@@ -138,7 +140,9 @@ const TopicIntroductionList = ({
             additional={additional}
             showAdditionalCores={showAdditionalCores}
             shortcutAlwaysExpanded={shortcutAlwaysExpanded}
-            messages={messages}
+            messages={{
+              shortcutButtonText: t('resource.label'),
+            }}
             id={`${topic.id}_${index}`}
           />
         );
@@ -167,6 +171,7 @@ TopicIntroductionList.propTypes = {
     noContentBoxLabel: PropTypes.string.isRequired,
     noContentBoxButtonText: PropTypes.string.isRequired,
   }).isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 TopicIntroductionList.defaultProps = {
@@ -175,4 +180,4 @@ TopicIntroductionList.defaultProps = {
   showAdditionalCores: false,
 };
 
-export default TopicIntroductionList;
+export default injectT(TopicIntroductionList);

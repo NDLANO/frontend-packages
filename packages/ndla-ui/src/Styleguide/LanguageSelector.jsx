@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
+import { LanguageContext } from 'ndla-ui';
 import { FilterList } from '../Filter';
 
 const LANGUAGES = [
@@ -17,39 +17,22 @@ const LANGUAGES = [
   },
 ];
 
-export default class LanguageSelector extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lang: LANGUAGES[0].value,
-    };
-    this.onChangeLanguage = this.onChangeLanguage.bind(this);
-  }
-
-  onChangeLanguage(lang) {
-    this.setState({
-      lang: lang.pop(),
-    });
-  }
-
-  render() {
-    return (
+const LanguageSelector = () => (
+  <LanguageContext.Consumer value="en">
+    {context => (
       <Fragment>
         <h2 className="u-heading">Velg språk for labels</h2>
         <div className="c-filter u-margin-top">
           <FilterList
             labelNotVisible
             options={LANGUAGES}
-            values={[this.state.lang]}
-            onChange={this.onChangeLanguage}
+            values={[context.lang]}
+            onChange={(e) => { context.changeLanguage(e.pop()) }}
           />
         </div>
-        {this.props.children(this.state.lang)}
       </Fragment>
-    );
-  }
-}
+    )}
+  </LanguageContext.Consumer>
+);
 
-LanguageSelector.propTypes = {
-  children: PropTypes.func.isRequired,
-};
+export default LanguageSelector;

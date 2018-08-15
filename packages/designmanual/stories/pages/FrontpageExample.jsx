@@ -348,7 +348,7 @@ class FrontpageExample extends Component {
             <FrontpageInfo>
               <InfoWidget
                 heading="Nyhetsbrev"
-                description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet"
+                description="Hold deg oppdatert. Abonnér på siste nytt fra NDLA."
                 mainLink={{
                   name: 'Meld deg på',
                   url: '#1',
@@ -362,7 +362,7 @@ class FrontpageExample extends Component {
               />
               <InfoWidget
                 heading="Følg oss"
-                description="Ndla har mange Facebook og Twitter kontoer. Finn den som passer for deg og følg oss!"
+                description="Ndla har mange Facebook og Twitterkontoer. Finn den som passer for deg og følg oss!"
                 mainLink={{
                   name: 'Følg oss',
                   url: '#2',

@@ -135,7 +135,7 @@ const secondaryContent = (
             <InfoWidget
               center
               heading="Nyhetsbrev"
-              description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet."
+              description="Hold deg oppdatert. Abonnér på siste nytt fra NDLA."
               mainLink={{
                 name: 'Meld deg på',
                 url: '#1',

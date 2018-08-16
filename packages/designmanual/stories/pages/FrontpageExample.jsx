@@ -348,7 +348,7 @@ class FrontpageExample extends Component {
             <FrontpageInfo>
               <InfoWidget
                 heading="Nyhetsbrev"
-                description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet"
+                description="Hold deg oppdatert. Abonnér på siste nytt fra NDLA."
                 mainLink={{
                   name: 'Meld deg på',
                   url: '#1',
@@ -362,7 +362,7 @@ class FrontpageExample extends Component {
               />
               <InfoWidget
                 heading="Følg oss"
-                description="Ndla har mange Facebook og Twitter kontoer. Finn den som passer for deg og følg oss!"
+                description="NDLA har mange Facebook og Twitterkontoer. Finn den som passer for deg og følg oss!"
                 mainLink={{
                   name: 'Følg oss',
                   url: '#2',
@@ -384,7 +384,7 @@ class FrontpageExample extends Component {
                 heading="Om NDLA"
                 description="NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid."
                 mainLink={{
-                  name: 'Mer om Ndla',
+                  name: 'Mer om NDLA',
                   url: '#5',
                 }}
               />

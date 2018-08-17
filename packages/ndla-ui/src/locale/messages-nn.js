@@ -8,7 +8,7 @@
 
 const titleTemplate = ' - NDLA';
 
-const phrases = {
+const messages = {
   htmlTitles: {
     titleTemplate,
     welcomePage: `Framsida${titleTemplate}`,
@@ -345,4 +345,4 @@ const phrases = {
   },
 };
 
-export default phrases;
+export default messages;

@@ -7,9 +7,10 @@
  */
 
 import IntlProvider from './IntlProvider';
-import injectT from './injectT';
-import formatMessage from './formatMessage';
 
-export { IntlProvider, injectT, formatMessage };
+export { default as injectT } from './injectT';
+export { default as formatMessage } from './formatMessage';
+export { default as Trans } from './Trans';
 
+export { IntlProvider };
 export default IntlProvider;

@@ -7,26 +7,14 @@ import {
   FilterList,
   OneColumn,
   LayoutItem,
+  messagesNN,
+  messagesNB,
+  messagesEN,
 } from 'ndla-ui';
-import { phrases } from 'ndla-i18n';
+import { formatNestedMessages } from 'ndla-i18n';
 import { Center } from './helpers';
 
 const classes = BEMHelper('c-table');
-
-const flatten = object =>
-  Object.assign(
-    {},
-    ...(function _flatten(objectBit, path = '') {
-      return [].concat(
-        ...Object.keys(objectBit).map(
-          key =>
-            typeof objectBit[key] === 'object'
-              ? _flatten(objectBit[key], `${path}.${key}`)
-              : { [`${path}.${key}`]: objectBit[key] },
-        ),
-      );
-    })(object),
-  );
 
 class Messages extends Component {
   constructor(props) {
@@ -36,9 +24,9 @@ class Messages extends Component {
       findNotApprovedLabels: false,
     };
     this.onSearchChange = this.onSearchChange.bind(this);
-    this.flattenedNb = flatten(phrases.nb);
-    this.flattenedNn = flatten(phrases.nn);
-    this.flattenedEn = flatten(phrases.en);
+    this.flattenedNb = formatNestedMessages(messagesNB);
+    this.flattenedNn = formatNestedMessages(messagesNN);
+    this.flattenedEn = formatNestedMessages(messagesEN);
   }
 
   onSearchChange(e) {
@@ -91,7 +79,7 @@ class Messages extends Component {
     // 2. Show other all languages next to it
     return Object.keys(this.filterSearch()).map(key => (
       <tr key={key}>
-        <td>{key.substr(1)}</td>
+        <td>{key}</td>
         <td
           className={
             this.flattenedNb[key].substr(0, 1) === '*'

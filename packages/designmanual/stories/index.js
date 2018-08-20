@@ -1,5 +1,5 @@
 import { addDecorator } from '@storybook/react';
-import { LanguageWrapper } from './MessagesOverview';
+import { LanguageWrapper } from './LanguageWrapper';
 
 addDecorator(LanguageWrapper);
 

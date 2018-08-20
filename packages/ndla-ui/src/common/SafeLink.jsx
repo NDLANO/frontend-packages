@@ -16,9 +16,12 @@ const isExternalLink = to =>
   isString(to) &&
   (to.startsWith('https://') || to.startsWith('https://'));
 
-// Fallback to normal link if app is missing RouterContext or link is external
+export const isOldNdlaLink = to =>
+  (to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/)) !== null;
+
+// Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 const SafeLink = (props, context) => {
-  if (!context.router || isExternalLink(props.to)) {
+  if (!context.router || isExternalLink(props.to) || isOldNdlaLink(props.to)) {
     const { to, ...rest } = props;
     delete rest.replace;
     const href = typeof to === 'string' ? to : '#';

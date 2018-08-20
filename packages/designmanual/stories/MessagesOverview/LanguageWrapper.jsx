@@ -9,14 +9,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import IntlProvider, { formatNestedMessages } from 'ndla-i18n';
-import nb from '../locale/messages-nb';
-import nn from '../locale/messages-nn';
-import en from '../locale/messages-en';
+import { messagesNB, messagesNN, messagesEN } from 'ndla-ui';
 
 const messages = {
-  nb: formatNestedMessages(nb),
-  nn: formatNestedMessages(nn),
-  en: formatNestedMessages(en),
+  nb: formatNestedMessages(messagesNB),
+  nn: formatNestedMessages(messagesNN),
+  en: formatNestedMessages(messagesEN),
 };
 export const LanguageContext = React.createContext();
 

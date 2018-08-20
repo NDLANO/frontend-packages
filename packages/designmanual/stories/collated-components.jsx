@@ -18,7 +18,6 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
-  LanguageSelector,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -37,6 +36,7 @@ import RelatedArticleListExample, {
   RelatedArticleMixedList,
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
+import { LanguageSelector } from './MessagesOverview';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 

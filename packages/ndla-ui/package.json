@@ -42,7 +42,6 @@
     "react-facebook": "^4.2.1",
     "react-prop-types": "0.4.0",
     "react-slick": "^0.19.0",
-    "react-syntax-highlighter": "^8.0.1",
     "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {

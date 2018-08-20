@@ -1,5 +1,5 @@
 import { addDecorator } from '@storybook/react';
-import { LanguageWrapper } from 'ndla-ui';
+import { LanguageWrapper } from './MessagesOverview';
 
 addDecorator(LanguageWrapper);
 

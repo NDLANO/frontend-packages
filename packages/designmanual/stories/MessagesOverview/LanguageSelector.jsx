@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { LanguageContext } from 'ndla-ui';
-import { FilterList } from '../Filter';
+import { LanguageContext } from './LanguageWrapper';
+import { FilterList } from 'ndla-ui';
 
 const LANGUAGES = [
   {

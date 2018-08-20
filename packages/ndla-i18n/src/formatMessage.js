@@ -8,6 +8,18 @@
 
 import invariant from 'invariant';
 
+const getNestedObject = (obj, pathArr) => {
+  let nested = obj;
+  try {
+    pathArr.split('.').forEach(key => {
+      nested = nested[key];
+    });
+    return nested;
+  } catch (err) {
+    return 'text missing';
+  }
+};
+
 export default function formatMessage(
   locale,
   messages,
@@ -18,7 +30,7 @@ export default function formatMessage(
   // `id` is a required parameter.
   invariant(id, 'An `id` must be provided to format a message.');
 
-  const message = messages && messages[id];
+  const message = messages && getNestedObject(messages[locale], id);
   const hasValues = Object.keys(values).length > 0;
 
   // Avoid expensive message formatting for simple messages without values. In

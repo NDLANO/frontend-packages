@@ -18,6 +18,7 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
+  LanguageSelector,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -182,13 +183,11 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
+        <LanguageSelector />
         <TopicIntroductionList
-          shortcutAlwaysExpanded
           toTopic={() => '#'}
-          messages={{
-            shortcutButtonText: 'Lærestoff',
-          }}
           topics={topicList}
+          toggleAdditionalCores={() => {}}
         />
       </StoryBody>
     </div>

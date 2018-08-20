@@ -33,9 +33,7 @@ const ResourcesSubTopics = () => (
       shortcutAlwaysExpanded
       toTopic={() => '#'}
       topics={topicList}
-      messages={{
-        shortcutButtonText: 'Lærestoff',
-      }}
+      toggleAdditionalCores={() => {}}
     />
   </ResourcesWrapper>
 );

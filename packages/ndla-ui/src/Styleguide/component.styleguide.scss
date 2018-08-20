@@ -36,4 +36,8 @@
       background: $external-learning-resource-light;
     }
   }
+  &__warning-cell {
+    background: $red;
+    color: #fff;
+  }
 }

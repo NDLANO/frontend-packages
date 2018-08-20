@@ -22,7 +22,7 @@ ReactDOM.render(
   ...
     <IntlProvider locale="NB" messages={messages}>
       ...
-      </IntlProvider>
+    </IntlProvider>
   ...
   document.getElementById('root'),
 );
@@ -43,4 +43,24 @@ class i18nReactComponent extends Component {
 ...
 
 export default injectT(i18nReactComponent);
+```
+
+```jsx
+// Using it with a render props component
+...
+import { Trans } from 'ndla-i18n';
+
+class i18nReactComponent extends Component {
+  ...
+  render() {
+    return(
+      <Trans>
+      {({ t }) => (<button>{t('translationItem.buttonText')}</button>)}
+      </Trans>
+    )
+  }
+}
+...
+
+export default i18nReactComponent;
 ```

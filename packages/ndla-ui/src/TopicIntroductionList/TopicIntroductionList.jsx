@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Additional, Core } from 'ndla-icons/common';
 import { Tooltip, NoContentBox, SafeLink } from 'ndla-ui';
-import { injectT } from 'ndla-i18n';
+import { Trans } from 'ndla-i18n';
 import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
 
@@ -118,7 +118,6 @@ const TopicIntroductionList = ({
   shortcutAlwaysExpanded,
   showAdditionalCores,
   toggleAdditionalCores,
-  t,
   ...rest
 }) => {
   const renderAdditionalTopicsTrigger =
@@ -127,39 +126,43 @@ const TopicIntroductionList = ({
     topics.filter(topic => !topic.additional).length === 0;
 
   return (
-    <ul className={topicClasses('list', { twoColumns })}>
-      {topics.map((topic, index) => {
-        const { shortcuts, additional } = topic;
-        return (
-          <TopicIntroduction
-            key={topic.id}
-            {...rest}
-            topic={topic}
-            shortcuts={shortcuts}
-            additional={additional}
-            showAdditionalCores={showAdditionalCores}
-            shortcutAlwaysExpanded={shortcutAlwaysExpanded}
-            messages={{
-              shortcutButtonText: t('resource.label'),
-              tooltipAdditionalTopic: t('resource.tooltipAdditionalTopic'),
-              tooltipCoreTopic: t('resource.tooltipCoreTopic'),
-            }}
-            id={`${topic.id}_${index}`}
-          />
-        );
-      })}
-      {renderAdditionalTopicsTrigger && (
-        <li>
-          <NoContentBox
-            onClick={toggleAdditionalCores}
-            text={t('resouce.noCoreResourcesAvailableUnspecific', {
-              name: 'Test',
-            })}
-            buttonText={t('resouce.activateAdditionalResources')}
-          />
-        </li>
+    <Trans>
+      {({ t }) => (
+        <ul className={topicClasses('list', { twoColumns })}>
+          {topics.map((topic, index) => {
+            const { shortcuts, additional } = topic;
+            return (
+              <TopicIntroduction
+                key={topic.id}
+                {...rest}
+                topic={topic}
+                shortcuts={shortcuts}
+                additional={additional}
+                showAdditionalCores={showAdditionalCores}
+                shortcutAlwaysExpanded={shortcutAlwaysExpanded}
+                messages={{
+                  shortcutButtonText: t('resource.label'),
+                  tooltipAdditionalTopic: t('resource.tooltipAdditionalTopic'),
+                  tooltipCoreTopic: t('resource.tooltipCoreTopic'),
+                }}
+                id={`${topic.id}_${index}`}
+              />
+            );
+          })}
+          {renderAdditionalTopicsTrigger && (
+            <li>
+              <NoContentBox
+                onClick={toggleAdditionalCores}
+                text={t('resouce.noCoreResourcesAvailableUnspecific', {
+                  name: 'Test',
+                })}
+                buttonText={t('resouce.activateAdditionalResources')}
+              />
+            </li>
+          )}
+        </ul>
       )}
-    </ul>
+    </Trans>
   );
 };
 
@@ -170,7 +173,6 @@ TopicIntroductionList.propTypes = {
   shortcutAlwaysExpanded: PropTypes.bool,
   showAdditionalCores: PropTypes.bool,
   toggleAdditionalCores: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 TopicIntroductionList.defaultProps = {
@@ -179,4 +181,4 @@ TopicIntroductionList.defaultProps = {
   showAdditionalCores: false,
 };
 
-export default injectT(TopicIntroductionList);
+export default TopicIntroductionList;

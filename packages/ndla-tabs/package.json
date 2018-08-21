@@ -1,6 +1,6 @@
 {
   "name": "ndla-tabs",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

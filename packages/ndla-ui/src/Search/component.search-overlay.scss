@@ -1,4 +1,5 @@
 $overlay-height: 150px;
+$overlay-height-mobile: 100px;
 
 @keyframes searchAnimation {
   0% {
@@ -49,6 +50,13 @@ $overlay-height: 150px;
   justify-content: space-between;
   align-items: center;
 
+  @include mq($until: desktop) {
+    height: auto;
+  }
+  @include mq($from: desktop, $until: wide) {
+    margin: 0;
+  }
+
   &-enter {
     opacity: 0.3;
     top: 13px;
@@ -61,6 +69,9 @@ $overlay-height: 150px;
     &-active {
       opacity: 1;
       height: $overlay-height;
+      @include mq($until: desktop) {
+        height: $overlay-height-mobile;
+      }
       top: 0;
       left: 0;
       right: 0;
@@ -79,12 +90,14 @@ $overlay-height: 150px;
   &__container {
     padding: 0;
     position: relative;
+    @include mq($from: desktop, $until: wide) {
+      max-width: 900px;
+    }
   }
 
   &__close-button {
     position: absolute;
-    top: $spacing--small;
-    right: -($spacing--large + 36px);
+    right: 1%;
     width: 36px;
     height: 36px;
     color: $brand-color--dark;
@@ -92,6 +105,29 @@ $overlay-height: 150px;
     border: 0;
     padding: 0;
     cursor: pointer;
+
+    @include mq($until: desktop) {
+      top: $spacing;
+      right: $spacing--small;
+      width: 24px;
+      height: 24px;
+    }
+
+    @include mq(1024px) {
+      right: 1%;
+    }
+
+    @include mq(1100px) {
+      right: 3%;
+    }
+
+    @include mq(wide) {
+      right: 5%;
+    }
+
+    @include mq(ultraWide) {
+      right: 10%;
+    }
 
     animation: closeButton 0.7s;
 

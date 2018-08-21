@@ -117,41 +117,42 @@ class SearchField extends Component {
     if (filters && filters.length > 0) {
       modifiers.push('has-filter');
     }
-
     return (
-      <form {...classes('', modifiers)} onSubmit={onSearch}>
-        <input
-          ref={ref => {
-            this.inputRef = ref;
-          }}
-          title={messages.searchFieldTitle}
-          type="search"
-          {...classes('input')}
-          aria-autocomplete="list"
-          autoComplete="off"
-          id="search"
-          name="search"
-          placeholder={placeholder}
-          aria-label={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-        <div {...classes('filters')}>
-          {filters &&
-            filters.length > 0 && (
-              <ActiveFilters
-                filters={filters}
-                onFilterRemove={this.handleOnFilterRemove}
-              />
-            )}
+      <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
+        <div {...classes('input-wrapper')}>
+          <input
+            ref={ref => {
+              this.inputRef = ref;
+            }}
+            title={messages.searchFieldTitle}
+            type="search"
+            {...classes('input')}
+            aria-autocomplete="list"
+            autoComplete="off"
+            id="search"
+            name="search"
+            placeholder={placeholder}
+            aria-label={placeholder}
+            value={value}
+            onChange={onChange}
+          />
+          <div {...classes('filters')}>
+            {filters &&
+              filters.length > 0 && (
+                <ActiveFilters
+                  filters={filters}
+                  onFilterRemove={this.handleOnFilterRemove}
+                />
+              )}
+          </div>
+          <button
+            tabIndex="-1"
+            {...classes('button')}
+            type="submit"
+            value="Search">
+            <SearchIcon />
+          </button>
         </div>
-        <button
-          tabIndex="-1"
-          {...classes('button')}
-          type="submit"
-          value="Search">
-          <SearchIcon />
-        </button>
         {searchResultView}
       </form>
     );

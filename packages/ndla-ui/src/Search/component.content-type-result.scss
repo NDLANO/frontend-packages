@@ -1,19 +1,50 @@
 .c-content-type-result {
   padding-bottom: $spacing--medium;
 
-  h1 {
-    margin: 0;
-    @include font-size(18px, 30px);
-  }
-
   header {
     margin-bottom: $spacing--small;
+    display: flex;
+    align-items: center;
+    > div {
+      margin-right: $spacing--small;
+    }
+    h1 {
+      margin: 0;
+      text-transform: uppercase;
+      @include font-size(14px, 16px);
+    }
   }
 
   &__no-hit {
     color: $text-light-color;
     margin: 0;
     font-style: italic;
+  }
+
+  &--subject-material {
+    a:hover, a:focus {
+      background: $subject-material-light;
+    }
+  }
+  &--external-learning-resource {
+    a:hover, a:focus {
+      background: $external-learning-resource-light;
+    }
+  }
+  &--tasks-and-activities {
+    a:hover, a:focus {
+      background: $tasks-and-activities-light;
+    }
+  }
+  &--assessment-resource {
+    a:hover, a:focus {
+      background: $assessment-resource-light;
+    }
+  }
+  &--learning-path {
+    a:hover, a:focus {
+      background: $learning-path-light;
+    }
   }
 
   ul {
@@ -23,7 +54,7 @@
   }
 
   li {
-    margin-bottom: $spacing--small;
+    margin: 0 0 -$spacing--small;
     @include font-size(18px, 23px);
 
     &:last-child {
@@ -31,7 +62,25 @@
     }
 
     a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       box-shadow: none;
+      padding: $spacing--small/2 $spacing--small;
+      flex-grow: 1;
+      transition: background 200ms ease;
+      .c-content-type-result__additional-icon {
+        padding-right: $spacing--small;
+      }
+    }
+    .c-icon {
+      transform: translateY(-2px);
+    }
+    @include mq($until: desktop) {
+      margin: 0 0 -$spacing--small;
+      a {
+        padding: $spacing--small;
+      }
     }
   }
 
@@ -39,13 +88,12 @@
     @include mq(desktop) {
       margin-top: $spacing;
     }
-
     button {
       color: $brand-color;
       font-weight: 600;
       background: none;
       border: 0;
-      padding: 0;
+      padding: $spacing--small;
     }
   }
 

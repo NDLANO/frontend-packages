@@ -43,11 +43,28 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
   &__search-field-wrapper {
     padding: $spacing--large 0 $spacing 0;
-
+    .c-search-field__filters {
+      padding-right: 0;
+    }
     @include mq(desktop) {
       padding: $spacing--large 0;
-
       margin-left: $search-field-wrapper-margin;
+
+    }
+    .c-search-field__input-wrapper {
+      padding: 0;
+      margin: 0;
+      .c-search-field__button {
+        @include mq($until: desktop) {
+          top: 0px;
+          right: 2px;
+        }
+      }
+    }
+    @include mq($until: desktop) {
+      .c-active-filters {
+        display: none;
+      }
     }
   }
 

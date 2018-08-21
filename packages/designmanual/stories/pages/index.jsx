@@ -263,7 +263,7 @@ storiesOf('Læringsressurser', module)
   ));
 
 storiesOf('Emnesider', module)
-  .add('1. Fagoversikt', () => (
+  .add('1. Alle fag', () => (
     <PageContainer background>
       <Content>
         <Frontpage />

@@ -18,6 +18,7 @@ const FrontpageHeader = ({
   logoTo,
   messages,
   heading,
+  hideSearch,
 }) => (
   <header {...classes()}>
     <div {...classes('inner-background')} />
@@ -45,13 +46,15 @@ const FrontpageHeader = ({
             large
             color="currentColor"
           />
-          <SearchField
-            value={searchFieldValue}
-            onChange={onSearchFieldChange}
-            placeholder={searchFieldPlaceholder}
-            messages={messages}
-            onSearch={onSearch}
-          />
+          {!hideSearch && (
+            <SearchField
+              value={searchFieldValue}
+              onChange={onSearchFieldChange}
+              placeholder={searchFieldPlaceholder}
+              messages={messages}
+              onSearch={onSearch}
+            />
+          )}
         </div>
       </OneColumn>
     </div>
@@ -59,6 +62,7 @@ const FrontpageHeader = ({
 );
 
 FrontpageHeader.propTypes = {
+  hideSearch: PropTypes.bool, // TODO: Search is temporary hidden as default.
   heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
@@ -75,6 +79,10 @@ FrontpageHeader.propTypes = {
       text: PropTypes.string.isRequired,
     }),
   ).isRequired,
+};
+
+FrontpageHeader.defaultProps = {
+  hideSearch: true,
 };
 
 export default FrontpageHeader;

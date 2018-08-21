@@ -4,6 +4,10 @@ input {
   border-style: solid;
   border-color: $brand-grey--light;
 }
+input::-ms-clear { // Remove X-button on input for IE
+  width: 0;
+  height: 0;
+}
 button.search {
   margin-left: -55px;
 }

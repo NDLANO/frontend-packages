@@ -63,12 +63,10 @@ class ArticleByline extends Component {
             <span {...classes('authors')}>
               {authorsLinkable ? (
                 <ClickToggle
-                  useDialog
                   id={`dialog-authors-${id}`}
                   labelledby={authorLabelledBy}
                   isOpen={showAuthors}
                   renderAsLink
-                  disablePortal
                   buttonClassName={classes('toggle-authors').className}
                   onToggle={showAuthorsDialog => {
                     this.setState({
@@ -118,12 +116,11 @@ class ArticleByline extends Component {
         {licenseBox && (
           <span {...classes('flex')}>
             <ClickToggle
-              useDialog
               id="useArticleId"
               labelledby={licenseBox.headingId}
               renderAsLink
               buttonClassName={classes('toggle-use-article').className}
-              dialogModifier="large"
+              dialogModifier="medium"
               title={messages.useContent}
               openTitle={messages.closeLabel}>
               {licenseBox}

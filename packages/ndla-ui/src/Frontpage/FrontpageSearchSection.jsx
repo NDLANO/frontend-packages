@@ -10,27 +10,34 @@ const FrontpageSearchSection = ({
   searchFieldValue,
   onSearchFieldChange,
   onSearch,
-}) => (
-  <section {...classes()}>
-    <h1 {...classes('heading')}>{heading}</h1>
-    <SearchField
-      placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-      value={searchFieldValue}
-      onChange={onSearchFieldChange}
-      messages={{
-        searchFieldTitle: 'Søk',
-      }}
-      onSearch={onSearch}
-      resourceToLinkProps={() => {}}
-    />
-  </section>
-);
+  hideSearch,
+}) =>
+  !hideSearch ? (
+    <section {...classes()}>
+      <h1 {...classes('heading')}>{heading}</h1>
+      <SearchField
+        placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
+        value={searchFieldValue}
+        onChange={onSearchFieldChange}
+        messages={{
+          searchFieldTitle: 'Søk',
+        }}
+        onSearch={onSearch}
+        resourceToLinkProps={() => {}}
+      />
+    </section>
+  ) : null;
 
 FrontpageSearchSection.propTypes = {
+  hideSearch: PropTypes.bool, // TODO: Search is temporary hidden as default.
   onSearch: PropTypes.func.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   heading: PropTypes.string.isRequired,
+};
+
+FrontpageSearchSection.defaultProps = {
+  hideSearch: true,
 };
 
 export default FrontpageSearchSection;

@@ -40,7 +40,7 @@ class SearchFilterWrapper extends Component {
 SearchFilterWrapper.propTypes = {
   children: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  values: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+  values: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)),
   isNarrowScreen: PropTypes.bool.isRequired,
 };
 

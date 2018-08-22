@@ -131,8 +131,24 @@ const filterOptions = {
     label: 'Fag:',
     options: [
       {
+        title: 'Brønnteknikk',
+        value: 'value2',
+      },
+      {
+        title: 'Kinesisk',
+        value: 'value1',
+      },
+      {
+        title: 'Markedsføring og ledelse',
+        value: 'value3',
+      },
+      {
         title: 'Medieuttrykk og mediasamfunnet',
         value: 'value',
+      },
+      {
+        title: 'Naturbruk',
+        value: 'value4',
       },
     ],
   },
@@ -377,7 +393,7 @@ class SearchPageExample extends Component {
               <Fragment>
                 <SearchFilter
                   label={filterOptions.subject.label}
-                  options={filterOptions.subject.options}
+                  options={[filterOptions.subject.options[3]]}
                   onChange={values => {
                     onChange(values, 'subject');
                   }}
@@ -391,28 +407,7 @@ class SearchPageExample extends Component {
                       hasValuesButtonText: 'Vis flere fag',
                       noValuesButtonText: 'Filtrer på fag',
                     }}
-                    options={[
-                      {
-                        title: 'Brønnteknikk',
-                        value: 'value2',
-                      },
-                      {
-                        title: 'Kinesisk',
-                        value: 'value1',
-                      },
-                      {
-                        title: 'Markedsføring og ledelse',
-                        value: 'value3',
-                      },
-                      {
-                        title: 'Medieuttrykk og mediasamfunnet',
-                        value: 'value',
-                      },
-                      {
-                        title: 'Naturbruk',
-                        value: 'value4',
-                      },
-                    ]}
+                    options={filterOptions.subject.options}
                     values={allValues.subject || []}
                     onChange={values => {
                       onChange(values, 'subject');

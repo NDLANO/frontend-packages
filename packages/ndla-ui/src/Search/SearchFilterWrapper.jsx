@@ -12,7 +12,6 @@ class SearchFilterWrapper extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.isNarrowScreen && this.props.isNarrowScreen) {
-      console.log('changed triggered, do send it!');
       this.props.onChange(this.state.allValues);
     }
   }
@@ -26,8 +25,6 @@ class SearchFilterWrapper extends Component {
     // If allowed to pass on
     if (!this.props.isNarrowScreen) {
       this.props.onChange(allValues);
-    } else {
-      console.log('wait with sending...');
     }
   }
 

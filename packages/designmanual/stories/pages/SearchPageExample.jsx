@@ -310,7 +310,7 @@ class SearchPageExample extends Component {
           options={searchTabFilterOptions[currentTab]}
           values={['value']}
           onChange={values => {
-            console.log('onChange filter', values);
+            console.log('Changed filter', values); // eslint-disable-line no-console
           }}
         />
       ) : null;

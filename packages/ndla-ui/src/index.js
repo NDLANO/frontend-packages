@@ -78,6 +78,7 @@ export {
   SearchResultAuthor,
   SearchResultList,
   SearchFilter,
+  SearchFilterWrapper,
   SearchPopoverFilter,
 } from './Search';
 export {

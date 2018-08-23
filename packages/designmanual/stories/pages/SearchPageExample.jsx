@@ -158,15 +158,14 @@ class SearchPageExample extends Component {
         />
       ) : null;
 
-    const contextFilter =
-      searchTabFilterOptions[currentTab] ? (
-        <SearchFilter
-          contextFilter
-          label="Egenskaper"
-          options={searchTabFilterOptions[currentTab]}
-          values={['value']}
-        />
-      ) : null;
+    const contextFilter = searchTabFilterOptions[currentTab] ? (
+      <SearchFilter
+        contextFilter
+        label="Egenskaper"
+        options={searchTabFilterOptions[currentTab]}
+        values={['value']}
+      />
+    ) : null;
 
     const onSearch = evt => {
       evt.preventDefault();
@@ -252,12 +251,20 @@ class SearchPageExample extends Component {
             <SearchFilter
               label="Fag:"
               noFilterSelectedLabel="Ingen filter valgt"
-              options={subjectFilterOptions.filter(option => this.state.exampleSubjectFilterValues.indexOf(option.value) !== -1)
+              options={
+                subjectFilterOptions.filter(
+                  option =>
+                    this.state.exampleSubjectFilterValues.indexOf(
+                      option.value,
+                    ) !== -1,
+                )
                 /*
                   Note: We only pass along selected options to this component!
                 */
               }
-              onChange={(values) => { this.setState({ exampleSubjectFilterValues: values }); }}
+              onChange={values => {
+                this.setState({ exampleSubjectFilterValues: values });
+              }}
               values={this.state.exampleSubjectFilterValues}>
               <SearchPopoverFilter
                 messages={{
@@ -270,7 +277,9 @@ class SearchPageExample extends Component {
                 }}
                 options={subjectFilterOptions}
                 values={this.state.exampleSubjectFilterValues}
-                onChange={(values) => { this.setState({ exampleSubjectFilterValues: values }); }}
+                onChange={values => {
+                  this.setState({ exampleSubjectFilterValues: values });
+                }}
               />
             </SearchFilter>
             <SearchFilter

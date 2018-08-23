@@ -6,8 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+
+import { ClickToggle } from 'ndla-ui';
+import Tabs from 'ndla-tabs';
 
 export const FooterText = ({ children }) => (
   <p className="footer_text">{children}</p>
@@ -25,15 +28,39 @@ export const FooterEditor = ({ title, name }) => (
   </span>
 );
 
+const FooterPrivacy = () => (
+  <ClickToggle
+    id="privacyId"
+    renderAsLink
+    containerClass="span"
+    title="Personvernserklæring">
+    <Fragment>
+      <h1 id="privacyId">Retningslinjer for personvern og bruk av informasjonskapsler</h1>
+      <Tabs
+        tabs={[
+          { title: 'Bilder1', content: <div>Lorem</div> },
+          { title: 'Bilder2', content: <div>Lorem</div> },
+          { title: 'Bilder3', content: <div>Lorem</div> },
+        ]}
+      />
+    </Fragment>
+  </ClickToggle>
+);
+
 FooterEditor.propTypes = {
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
 
-const Footer = ({ children }) => <footer className="footer">{children}</footer>;
+const Footer = ({ children }) => <footer className="footer">{children}<FooterPrivacy /></footer>;
 
 Footer.propTypes = {
   children: PropTypes.node.isRequired,
+  lang: PropTypes.oneOf(['nb', 'nn', 'en']),
+};
+
+Footer.defaultProps = {
+  lang: 'nb',
 };
 
 // expose the children to top level exports for ease of use

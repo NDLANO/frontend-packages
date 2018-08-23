@@ -1,0 +1,27 @@
+.c-frontpage-film {
+  margin-top: $spacing--large;
+  &__image {
+    background: $brand-color--dark;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 160px;
+    @include mq(mobileWide) {
+      height: 200px;
+    }
+    @include mq(tablet) {
+      height: 250px;
+    }
+    @include mq(desktop) {
+      height: 300px;
+    }
+  }
+  &__link-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $spacing;
+    .c-icon {
+      margin-left: $spacing--small;
+    }
+  }
+}

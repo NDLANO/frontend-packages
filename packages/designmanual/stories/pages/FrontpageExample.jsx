@@ -5,6 +5,7 @@ import {
   FrontpageSubjectsWrapper,
   FrontpageSubjectsSection,
   FrontpageHighlighted,
+  FrontpageFilm,
   ContentCard,
   OneColumn,
   FrontpageInfo,
@@ -345,6 +346,13 @@ class FrontpageExample extends Component {
                 </div>
               ))}
             </FrontpageHighlighted>
+            <FrontpageFilm
+              url="http:"
+              messages={{
+                header: 'NDLA film',
+                linkLabel: 'Gå til NDLA film',
+              }}
+            />
             <FrontpageInfo>
               <InfoWidget
                 heading="Nyhetsbrev"

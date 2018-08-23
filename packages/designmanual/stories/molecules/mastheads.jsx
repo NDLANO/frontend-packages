@@ -122,7 +122,6 @@ class MastheadWithTopicMenu extends Component {
     return (
       <Masthead
         fixed
-        hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
           <ClickToggle
@@ -205,7 +204,6 @@ class MastheadWithTopicMenu extends Component {
 
 MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
-  hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,

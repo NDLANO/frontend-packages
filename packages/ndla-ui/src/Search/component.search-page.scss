@@ -42,11 +42,10 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   }
 
   &__search-field-wrapper {
-    padding: $spacing--large 0 $spacing 0;
+    padding: $spacing 0 $spacing 0;
 
     @include mq(desktop) {
       padding: $spacing--large 0;
-
       margin-left: $search-field-wrapper-margin;
     }
   }

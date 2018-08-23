@@ -35,7 +35,7 @@ class Popover extends Component {
 
   render() {
     const { messages, close, options, onChange } = this.props;
-    const disabled = this.state.values.length === 0;
+    // const disabled = this.state.values.length === 0;
 
     return (
       <Fragment>
@@ -69,7 +69,6 @@ class Popover extends Component {
             }}
           />
           <Button
-            disabled={disabled}
             className={classes('confirm-button')}
             onClick={() => {
               close();
@@ -105,7 +104,7 @@ export class PopoverFilter extends Component {
   }
 
   render() {
-    const { messages, values, ...rest } = this.props;
+    const { messages, values, onChange, ...rest } = this.props;
     const buttonText =
       values.length > 0
         ? messages.hasValuesButtonText
@@ -113,7 +112,7 @@ export class PopoverFilter extends Component {
 
     const buttonContent = (
       <Fragment>
-        <span className={classes('button-text')}>{buttonText}</span>
+        <span>{buttonText}</span>
         <ChevronRight />
       </Fragment>
     );
@@ -129,10 +128,11 @@ export class PopoverFilter extends Component {
         title={buttonContent}
         className={classes()}
         noScrollDisabled
-        buttonClassName={classes('button')}>
+        buttonClassName={`${classes('button')} c-button--stripped`}>
         {onClose => (
           <Popover
             close={onClose}
+            onChange={onChange}
             messages={messages}
             {...rest}
             values={values}
@@ -146,6 +146,7 @@ export class PopoverFilter extends Component {
 PopoverFilter.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
   messages: messagesShape.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default PopoverFilter;

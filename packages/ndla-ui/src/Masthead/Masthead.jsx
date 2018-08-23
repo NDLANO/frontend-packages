@@ -53,12 +53,11 @@ MastheadInfo.propTypes = {
 export const Masthead = ({
   children,
   fixed,
-  hideOnNarrowScreen,
   infoContent,
 }) => (
   <Fragment>
     <div {...classes('placeholder', { infoContent })} />
-    <div {...classes('', { fixed, hideOnNarrowScreen, infoContent })}>
+    <div {...classes('', { fixed, infoContent })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>
@@ -73,7 +72,6 @@ export const Masthead = ({
 Masthead.propTypes = {
   children: PropTypes.node,
   fixed: PropTypes.bool,
-  hideOnNarrowScreen: PropTypes.bool,
   infoContent: PropTypes.node,
 };
 

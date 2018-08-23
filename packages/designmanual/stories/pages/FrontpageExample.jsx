@@ -17,6 +17,7 @@ import { breakpoints } from 'ndla-util';
 import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
 
 import { contentCards } from '../../dummydata/index';
+import NdlaFilmIllustration from '../../images/film_illustrasjon.png';
 
 class FrontpageExample extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class FrontpageExample extends Component {
           searchFieldValue=""
           logoTo="#"
           onSearchFieldChange={() => {}}
+          onSearch={() => {}}
           searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
           messages={{
             searchFieldTitle: 'Søk',
@@ -325,6 +327,7 @@ class FrontpageExample extends Component {
             <FrontpageSearchSection
               heading="Søk"
               searchFieldValue=""
+              onSearch={() => {}}
               onSearchFieldChange={() => {}}
             />
             <FrontpageHighlighted heading="Aktuelt">
@@ -347,10 +350,13 @@ class FrontpageExample extends Component {
               ))}
             </FrontpageHighlighted>
             <FrontpageFilm
-              url="http:"
+              imageUrl={NdlaFilmIllustration}
+              url="https://ndla.no/nb/film"
               messages={{
                 header: 'NDLA film',
                 linkLabel: 'Gå til NDLA film',
+                text:
+                  'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
               }}
             />
             <FrontpageInfo>

@@ -8,14 +8,18 @@ import SafeLink from '../common/SafeLink';
 
 const classes = BEMHelper('c-frontpage-film');
 
-const FrontpageFilm = ({ messages, url }) => (
+const FrontpageFilm = ({ messages, url, imageUrl }) => (
   <section {...classes('')}>
     <SectionHeading large className="c-frontpage-highlighted__heading">
       {messages.header}
     </SectionHeading>
-    <div {...classes('image')} style={{ backgroundImage: 'url(http://keyteq-designmanual.surge.sh/images/banners/samfunnsfag.svg)' }} />
+    <div {...classes('image')} style={{ backgroundImage: `url(${imageUrl})` }}>
+      {messages.text && <span>{messages.text}</span>}
+    </div>
     <div {...classes('link-container')}>
-      <SafeLink className={`${classes('link').className} c-button--link c-button`} to={url}>
+      <SafeLink
+        className={`${classes('link').className} c-button--link c-button`}
+        to={url}>
         {messages.linkLabel}
         <Forward />
       </SafeLink>
@@ -27,11 +31,12 @@ FrontpageFilm.propTypes = {
   messages: PropTypes.shape({
     header: PropTypes.string.isRequired,
     linkLabel: PropTypes.string.isRequired,
+    text: PropTypes.string,
   }).isRequired,
   url: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 };
 
-FrontpageFilm.defaultProps = {
-};
+FrontpageFilm.defaultProps = {};
 
 export default FrontpageFilm;

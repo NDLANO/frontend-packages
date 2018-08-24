@@ -35,7 +35,6 @@ class Popover extends Component {
 
   render() {
     const { messages, close, options, onChange } = this.props;
-    // const disabled = this.state.values.length === 0;
 
     return (
       <Fragment>

@@ -122,70 +122,71 @@ class MastheadWithTopicMenu extends Component {
     return (
       <Masthead
         fixed
-        hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
-          <ClickToggle
-            isOpen={this.state.menuIsOpen}
-            onToggle={isOpen => {
-              this.setState({
-                menuIsOpen: isOpen,
-                expandedTopicId: null,
-                expandedSubtopicId: null,
-              });
-            }}
-            title="Meny"
-            openTitle="Lukk"
-            className="c-topic-menu-container"
-            buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-            {onClose => (
-              <TopicMenu
-                close={onClose}
-                isBeta={this.props.beta}
-                subjectTitle="Mediefag"
-                toSubject={() => '#'}
-                toTopic={() => '#'}
-                withSearchAndFilter
-                topics={topicMenu}
-                messages={messages}
-                onOpenSearch={() => {
-                  this.setState({
-                    menuIsOpen: false,
-                    searchIsOpen: true,
-                  });
-                }}
-                filterOptions={[
-                  {
-                    title: 'Medieuttrykk',
-                    value: 'Medieuttrykk',
-                  },
-                  {
-                    title: 'Mediesamfunnet',
-                    value: 'Mediesamfunnet',
-                  },
-                ]}
-                filterValues={['Medieuttrykk']}
-                competenceGoals={<CompetenceGoalsExample menu />}
-                onFilterClick={() => {}}
-                searchPageUrl="#"
-                resourceToLinkProps={() => {}}
-                expandedTopicId={this.state.expandedTopicId}
-                expandedSubtopicId={this.state.expandedSubtopicId}
-                expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
-                onNavigate={(
-                  expandedTopicId,
-                  expandedSubtopicId,
-                  expandedSubtopicLevel2Id,
-                ) => {
-                  this.setState({
+          {!this.props.hideMenu && (
+            <ClickToggle
+              isOpen={this.state.menuIsOpen}
+              onToggle={isOpen => {
+                this.setState({
+                  menuIsOpen: isOpen,
+                  expandedTopicId: null,
+                  expandedSubtopicId: null,
+                });
+              }}
+              title="Meny"
+              openTitle="Lukk"
+              className="c-topic-menu-container"
+              buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+              {onClose => (
+                <TopicMenu
+                  close={onClose}
+                  isBeta={this.props.beta}
+                  subjectTitle="Mediefag"
+                  toSubject={() => '#'}
+                  toTopic={() => '#'}
+                  withSearchAndFilter
+                  topics={topicMenu}
+                  messages={messages}
+                  onOpenSearch={() => {
+                    this.setState({
+                      menuIsOpen: false,
+                      searchIsOpen: true,
+                    });
+                  }}
+                  filterOptions={[
+                    {
+                      title: 'Medieuttrykk',
+                      value: 'Medieuttrykk',
+                    },
+                    {
+                      title: 'Mediesamfunnet',
+                      value: 'Mediesamfunnet',
+                    },
+                  ]}
+                  filterValues={['Medieuttrykk']}
+                  competenceGoals={<CompetenceGoalsExample menu />}
+                  onFilterClick={() => {}}
+                  searchPageUrl="#"
+                  resourceToLinkProps={() => {}}
+                  expandedTopicId={this.state.expandedTopicId}
+                  expandedSubtopicId={this.state.expandedSubtopicId}
+                  expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
+                  onNavigate={(
                     expandedTopicId,
                     expandedSubtopicId,
                     expandedSubtopicLevel2Id,
-                  });
-                }}
-              />
-            )}
-          </ClickToggle>
+                  ) => {
+                    this.setState({
+                      expandedTopicId,
+                      expandedSubtopicId,
+                      expandedSubtopicLevel2Id,
+                    });
+                  }}
+                />
+              )}
+            </ClickToggle>
+          )}
           <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock />
           </DisplayOnPageYOffset>
@@ -205,13 +206,14 @@ class MastheadWithTopicMenu extends Component {
 
 MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
-  hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
+  hideMenu: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
 };
 
 MastheadWithTopicMenu.defaultProps = {
+  hideMenu: false,
   searchFieldExpanded: false,
   betaInfoContent: (
     <Fragment>

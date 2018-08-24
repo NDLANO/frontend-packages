@@ -29,7 +29,7 @@ storiesOf('Søk', module)
   .add('Søk kompetansemål', () => (
     <PageContainer background>
       <Content>
-        <MastheadWithTopicMenu hideSearchButton />
+        <MastheadWithTopicMenu hideSearchButton hideMenu />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample competenceGoals />
         </OneColumn>

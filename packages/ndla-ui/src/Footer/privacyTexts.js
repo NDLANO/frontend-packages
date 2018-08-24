@@ -6,6 +6,7 @@ import { ContentGeneralEn, ContentCookiesEn } from './privacy_en';
 
 export const privacyTexts = {
   nb: {
+    linkLabel: 'Personvernserklæring',
     header: 'Retningslinjer for personvern og bruk av informasjonskapsler',
     tabs: [
       {
@@ -19,27 +20,30 @@ export const privacyTexts = {
     ],
   },
   nn: {
-    header: 'Retningslinjer for personvern og bruk av informasjonskapsler',
+    linkLabel: 'Personvernserklæring',
+    header: 'Retningslinjer for bruk av informasjonskapslar',
     tabs: [
       {
         title: 'Generelt',
         content: <ContentGeneralNn />,
       },
       {
-        title: 'Cookies og lovtekst',
+        title: 'Informasjonskapslar',
         content: <ContentCookiesNn />,
       },
     ],
   },
   en: {
-    header: 'Retningslinjer for personvern og bruk av informasjonskapsler',
+    linkLabel: 'Personvernserklæring',
+    header:
+      '(Only available in norwegian). Retningslinjer for personvern og bruk av informasjonskapsler',
     tabs: [
       {
-        title: 'Generelt',
+        title: 'General info',
         content: <ContentGeneralEn />,
       },
       {
-        title: 'Cookies og lovtekst',
+        title: 'Cookies',
         content: <ContentCookiesEn />,
       },
     ],

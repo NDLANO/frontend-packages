@@ -48,10 +48,8 @@ class ArticleByline extends Component {
     const { showAuthor, showAuthors } = this.state;
     const authorLabelledBy = `author-labelled-by_${id}`;
 
-    const authorsLinkable =
-      messages.authorLabel &&
-      messages.authorDescription &&
-      !authors.some(author => !author.title || !author.role);
+    const authorsLinkable = messages.authorLabel && messages.authorDescription;
+    // !authors.some(author => !author.title || !author.role);
 
     return (
       <div {...classes()}>

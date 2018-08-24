@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Back } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 import createFocusTrap from 'focus-trap';
-import { noScroll } from 'ndla-util';
+import debounce from 'lodash/debounce';
+import { noScroll, getCurrentBreakpoint, breakpoints } from 'ndla-util';
 import Button from '../Button';
 
 import SafeLink from '../common/SafeLink';
@@ -18,6 +19,7 @@ export default class SearchPage extends Component {
     super(props);
     this.state = {
       filterExpanded: false,
+      isNarrowScreen: false,
     };
 
     this.filterContainerRef = null;
@@ -25,17 +27,24 @@ export default class SearchPage extends Component {
     this.focusTrap = null;
 
     this.handleToggleFilter = this.handleToggleFilter.bind(this);
+    this.checkScreenSize = this.checkScreenSize.bind(this);
+    this.checkScreenSizeDebounce = debounce(() => this.checkScreenSize(), 100);
   }
 
   componentDidMount() {
+    window.addEventListener('resize', this.checkScreenSizeDebounce);
+    this.checkScreenSize();
+
     this.focusTrap = createFocusTrap(this.filterContainerRef, {
       onActivate: () => {
+        this.props.filterScreenChange(true);
         this.setState({
           filterExpanded: true,
         });
         noScroll(true);
       },
       onDeactivate: () => {
+        this.props.filterScreenChange(false);
         if (this.state.filterExpanded) {
           this.setState({
             filterExpanded: false,
@@ -49,7 +58,25 @@ export default class SearchPage extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this.checkScreenSizeDebounce);
     this.focusTrap.deactivate();
+  }
+
+  checkScreenSize() {
+    const currentBreakpoint = getCurrentBreakpoint();
+    const isNarrowScreen =
+      currentBreakpoint === breakpoints.mobile ||
+      currentBreakpoint === breakpoints.tablet;
+
+    /* eslint react/no-did-mount-set-state: 0 */
+    if (isNarrowScreen !== this.state.isNarrowScreen) {
+      if (this.state.filterExpanded && !isNarrowScreen) {
+        this.focusTrap.deactivate();
+      }
+      this.setState({
+        isNarrowScreen,
+      });
+    }
   }
 
   handleToggleFilter(expanded) {
@@ -70,7 +97,6 @@ export default class SearchPage extends Component {
       onSearch,
       // only on narrow screen
       activeFilters,
-      onActiveFilterRemove,
       resourceToLinkProps,
       filters,
       children,
@@ -133,7 +159,7 @@ export default class SearchPage extends Component {
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
-                onFilterRemove={onActiveFilterRemove}
+                onFilterRemove={onSearchFieldFilterRemove}
               />
             </div>
             <div {...classes('toggle-filter')}>
@@ -179,7 +205,6 @@ SearchPage.propTypes = {
       filterName: PropTypes.string.isRequired,
     }),
   ),
-  onActiveFilterRemove: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     filterHeading: PropTypes.string.isRequired,
     narrowScreenFilterHeading: PropTypes.string.isRequired,
@@ -190,6 +215,7 @@ SearchPage.propTypes = {
   closeUrl: PropTypes.string.isRequired,
   author: PropTypes.node,
   hideResultText: PropTypes.bool,
+  filterScreenChange: PropTypes.func,
 };
 
 SearchPage.defaultProps = {

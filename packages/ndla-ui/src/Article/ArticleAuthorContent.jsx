@@ -39,16 +39,23 @@ const ArticleAuthorContent = ({
         <ul {...classes('ul-list')}>
           {authors.map((author, index) => (
             <li key={author.name}>
-              <span>{author.role}:</span>
+              {author.role && <span>{author.role}:</span>}
               <span>
-                <button
-                  type="button"
-                  className="c-button--link"
-                  onClick={() => {
-                    onSelectAuthor(index);
-                  }}>
-                  {author.name}
-                </button>
+                {author.phone ||
+                author.email ||
+                author.introduction ||
+                author.title ? (
+                  <button
+                    type="button"
+                    className="c-button--link"
+                    onClick={() => {
+                      onSelectAuthor(index);
+                    }}>
+                    {author.name}
+                  </button>
+                ) : (
+                  author.name
+                )}
               </span>
               {author.licenses && <span>{author.licenses}</span>}
             </li>

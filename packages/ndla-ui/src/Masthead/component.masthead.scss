@@ -15,14 +15,6 @@
     position: fixed;
   }
 
-  &--hideOnNarrowScreen {
-    display: none;
-
-    @include mq(desktop) {
-      display: block;
-    }
-  }
-
   &__placeholder {
     min-height: $masthead-height;
     width: 100%;

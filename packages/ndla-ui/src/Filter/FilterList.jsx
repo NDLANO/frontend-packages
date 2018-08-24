@@ -48,6 +48,12 @@ class FilterList extends Component {
     return (
       <section {...filterClasses('list', modifiers)}>
         <h1 {...filterClasses('label', labelModifiers)}>{label}</h1>
+        {this.props.noFilterSelectedLabel &&
+          options.length === 0 && (
+            <span {...filterClasses('no-filter-selected')}>
+              {this.props.noFilterSelectedLabel}
+            </span>
+          )}
         <ul {...filterClasses('item-wrapper')}>
           {options.map((option, index) => {
             const itemModifiers = [];
@@ -151,6 +157,7 @@ FilterList.propTypes = {
   values: PropTypes.arrayOf(valueShape),
   defaultVisibleCount: PropTypes.number,
   showLabel: PropTypes.string,
+  noFilterSelectedLabel: PropTypes.string,
   hideLabel: PropTypes.string,
 };
 

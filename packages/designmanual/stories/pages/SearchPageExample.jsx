@@ -131,6 +131,7 @@ class SearchPageExample extends Component {
     this.state = {
       currentTab: 'all',
       competenceGoalsOpen: false,
+      exampleSubjectFilterValues: ['value'],
     };
   }
 
@@ -157,15 +158,14 @@ class SearchPageExample extends Component {
         />
       ) : null;
 
-    const contextFilter =
-      searchTabFilterOptions[currentTab] && currentResult.length > 0 ? (
-        <SearchFilter
-          contextFilter
-          label="Egenskaper"
-          options={searchTabFilterOptions[currentTab]}
-          values={['value']}
-        />
-      ) : null;
+    const contextFilter = searchTabFilterOptions[currentTab] ? (
+      <SearchFilter
+        contextFilter
+        label="Egenskaper"
+        options={searchTabFilterOptions[currentTab]}
+        values={['value']}
+      />
+    ) : null;
 
     const onSearch = evt => {
       evt.preventDefault();
@@ -177,9 +177,32 @@ class SearchPageExample extends Component {
     const searchString = this.props.competenceGoals
       ? 'Kompetansemål'
       : 'Ideskaping';
+
+    const subjectFilterOptions = [
+      {
+        title: 'Brønnteknikk',
+        value: 'value2',
+      },
+      {
+        title: 'Kinesisk',
+        value: 'value1',
+      },
+      {
+        title: 'Markedsføring og ledelse',
+        value: 'value3',
+      },
+      {
+        title: 'Medieuttrykk og mediasamfunnet',
+        value: 'value',
+      },
+      {
+        title: 'Naturbruk',
+        value: 'value4',
+      },
+    ];
+
     return (
       <SearchPage
-        closeUrl="#"
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
         hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
@@ -219,7 +242,6 @@ class SearchPageExample extends Component {
           resultHeading: hasAuthor
             ? '37 artikler skrevet av Cecilie'
             : '43 treff i Ndla',
-          closeButton: 'Lukk',
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
           searchFieldTitle: 'Søk',
         }}
@@ -228,45 +250,36 @@ class SearchPageExample extends Component {
           <Fragment>
             <SearchFilter
               label="Fag:"
-              options={[
-                {
-                  title: 'Medieuttrykk og mediasamfunnet',
-                  value: 'value',
-                },
-              ]}
-              values={['value']}>
+              noFilterSelectedLabel="Ingen filter valgt"
+              options={
+                subjectFilterOptions.filter(
+                  option =>
+                    this.state.exampleSubjectFilterValues.indexOf(
+                      option.value,
+                    ) !== -1,
+                )
+                /*
+                  Note: We only pass along selected options to this component!
+                */
+              }
+              onChange={values => {
+                this.setState({ exampleSubjectFilterValues: values });
+              }}
+              values={this.state.exampleSubjectFilterValues}>
               <SearchPopoverFilter
                 messages={{
                   backButton: 'Tilbake til filter',
                   filterLabel: 'Velg fag',
                   closeButton: 'Lukk',
-                  confirmButton: 'Bruk fag',
-                  hasValuesButtonText: 'Vis flere fag',
+                  confirmButton: 'Oppdater filter',
+                  hasValuesButtonText: 'Flere fag',
                   noValuesButtonText: 'Filtrer på fag',
                 }}
-                options={[
-                  {
-                    title: 'Brønnteknikk',
-                    value: 'value2',
-                  },
-                  {
-                    title: 'Kinesisk',
-                    value: 'value1',
-                  },
-                  {
-                    title: 'Markedsføring og ledelse',
-                    value: 'value3',
-                  },
-                  {
-                    title: 'Medieuttrykk og mediasamfunnet',
-                    value: 'value',
-                  },
-                  {
-                    title: 'Naturbruk',
-                    value: 'value4',
-                  },
-                ]}
-                values={['value']}
+                options={subjectFilterOptions}
+                values={this.state.exampleSubjectFilterValues}
+                onChange={values => {
+                  this.setState({ exampleSubjectFilterValues: values });
+                }}
               />
             </SearchFilter>
             <SearchFilter

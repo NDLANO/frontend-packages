@@ -102,24 +102,21 @@
   &__button {
     background: none;
     color: $brand-color;
-    width: 100%;
     border: 0;
     display: flex;
+    margin-top: -26px;
     justify-content: space-between;
     align-items: center;
     padding: $spacing--small $spacing;
     cursor: pointer;
     border-radius: 0;
 
+    @include font-size(16px, 32px);
+
     @include mq(desktop) {
       box-shadow: $link;
       padding: 0;
       margin: 0 $spacing;
-      width: auto;
-
-      .c-icon {
-        display: none;
-      }
     }
 
     &:hover,

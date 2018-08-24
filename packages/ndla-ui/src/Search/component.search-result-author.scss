@@ -4,6 +4,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: $spacing;
   &--desktop {
     @include mq($until: desktop) {
       display: none;

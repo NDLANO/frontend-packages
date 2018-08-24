@@ -36,7 +36,7 @@ const FooterPrivacy = ({ lang }) => (
     renderAsLink
     containerClass="span"
     dialogModifier="medium"
-    title="Personvernserklæring">
+    title={privacyTexts[lang].linkLabel}>
     <div className="footer_privacy">
       <h1 id="privacyId">{privacyTexts[lang].header}</h1>
       <Tabs

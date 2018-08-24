@@ -167,7 +167,7 @@ export const ContentCookiesNb = () => (
             </p>
             <p>
               GA1.<strong>2</strong>.xxxxxxxxxx.yyyyyyyyyy - 2 forteller om
-              domenet inneholder flere ledd (punktum)
+              domenet inneholder flere ledd
             </p>
             <p>
               GA1.2.<strong>xxxxxxxxxx</strong>.yyyyyyyyyy - er en ID som

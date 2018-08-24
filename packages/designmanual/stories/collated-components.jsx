@@ -66,6 +66,8 @@ storiesOf('Sammensatte moduler', module)
           lastUpdated: 'Publisert',
           useContent: 'Bruk innhold',
           closeLabel: 'Lukk',
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
         }}
       />
       <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>

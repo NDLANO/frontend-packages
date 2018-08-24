@@ -317,4 +317,8 @@
       }
     }
   }
+  &__no-filter-selected {
+    color: $text-light-color;
+    @include font-size(16px, 16px);
+  }
 }

@@ -1,6 +1,7 @@
 .c-search-result {
   background: $white;
-  padding: $spacing 0;
+  padding: 0 0 $spacing 0;
+  margin-bottom: $spacing--large;
   border: 1px solid $brand-grey--light;
 
   @include mq(desktop) {
@@ -73,8 +74,11 @@
   }
 
   &__current-goal-info {
-    margin: $spacing--small 0 $spacing--large ($spacing--small + 2px);
+    margin: $spacing--small 0 $spacing--large $spacing--large + 2;
     @include font-size(16px, 20px);
+    @include mq(desktop) {
+      margin-left: $spacing--small + 4px;
+    }
   }
 
   &__competence-goals {
@@ -115,20 +119,17 @@
 
 .c-search-result-item {
   border-bottom: 1px solid $brand-grey--light;
-  padding: $spacing--medium $spacing 0 $spacing;
+  padding: 0 $spacing 0 $spacing;
 
   @include mq(desktop) {
-    padding: $spacing--medium 0 0 0;
+    padding: 0;
   }
 
-  margin: 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
+  margin: 0 0 $spacing;
 
   &:last-child {
     border-bottom: 0;
+    margin-bottom: 0;
   }
 
   &__content {

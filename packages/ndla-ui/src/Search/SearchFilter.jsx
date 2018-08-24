@@ -22,6 +22,7 @@ const SearchFilter = ({
   narrowScreenOnly,
   contextFilter,
   onChange,
+  noFilterSelectedLabel,
   children,
 }) => {
   const modifiers = [];
@@ -46,6 +47,7 @@ const SearchFilter = ({
         showLabel={showLabel}
         hideLabel={hideLabel}
         onChange={onChange}
+        noFilterSelectedLabel={noFilterSelectedLabel}
       />
       {children}
     </div>
@@ -67,6 +69,7 @@ SearchFilter.propTypes = {
   showLabel: PropTypes.string,
   hideLabel: PropTypes.string,
   narrowScreenOnly: PropTypes.bool,
+  noFilterSelectedLabel: PropTypes.string,
   contextFilter: PropTypes.bool,
   children: PropTypes.node,
 };

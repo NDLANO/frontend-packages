@@ -106,7 +106,8 @@ async function collectSourceMaps(argv, url) {
         mapping: mapConsumer,
       };
     });
-  } else if (url) {
+  }
+  if (url) {
     const { resource, protocol, port } = parseUrl(url);
     const base = resource + (port ? `:${port}` : '');
     const assetsUrl = `${protocol}://${base}/assets/assets.json`;

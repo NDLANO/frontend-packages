@@ -1,7 +1,7 @@
 const yargs = require('yargs');
-const runSourceMapResolver = require('./index');
 const util = require('util');
 const chalk = require('chalk');
+const runSourceMapResolver = require('./index');
 
 const args = {
   options: {

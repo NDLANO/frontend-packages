@@ -55,6 +55,7 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
     <div key={`slide-${subject.id}`}>
       <ContentCard
         url={subject.linkTo}
+        urlTarget={subject.linkToTarget}
         heading={subject.title}
         description={subject.text}
         isFilm={subject.isFilm}
@@ -102,6 +103,7 @@ SubjectCarousel.propTypes = {
       text: PropTypes.string.isRequired,
       image: PropTypes.string,
       linkTo: PropTypes.string.isRequired,
+      linkToTarget: PropTypes.string,
     }),
   ),
   title: PropTypes.string,

@@ -9,9 +9,9 @@ import BackgroundImage from '../BackgroundImage';
 
 const classes = BEMHelper('c-content-card');
 
-const ContentCard = ({ heading, images, description, type, url, isFilm }) => (
+const ContentCard = ({ heading, images, description, type, url, isFilm, urlTarget }) => (
   <article {...classes()}>
-    <SafeLink to={url} {...classes('link')}>
+    <SafeLink to={url} target={urlTarget} rel={urlTarget === '_blank' ? 'noreferrer noopener' : undefined} {...classes('link')}>
       <header>
         <div {...classes('image-wrapper')}>
           <BackgroundImage images={images} />
@@ -36,6 +36,7 @@ ContentCard.propTypes = {
   images: BackgroundImage.propTypes.images,
   url: PropTypes.string.isRequired,
   isFilm: PropTypes.bool,
+  urlTarget: PropTypes.string,
 };
 
 ContentCard.defaultProps = {

@@ -1,0 +1,57 @@
+.c-subject-shortcuts {
+  margin-bottom: $spacing--large;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: block;
+    margin-right: 9px;
+    margin-bottom: 9px;
+
+    a {
+      display: block;
+      background: $brand-color--light;
+      box-shadow: none;
+      border-radius: 5px;
+      @include font-size(18px, 23px);
+      font-weight: 600;
+
+      color: $brand-color--dark;
+      padding: 9px 20px;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $brand-color;
+        color: $white;
+      }
+    }
+  }
+
+  &__expand-button {
+    display: flex;
+    background: none;
+    border: 0;
+    align-items: center;
+    padding: 0;
+    color: $brand-color;
+    margin-top: $spacing;
+    cursor: pointer;
+
+    .c-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: $spacing--small/2;
+    }
+
+    span {
+      @include font-size(14px, 18px);
+    }
+  }
+}

@@ -18,6 +18,14 @@
     }
   }
 
+  &--has-filter {
+    .c-search-field__input {
+      @include mq(desktop) {
+        padding-left: $spacing;
+      }
+    }
+  }
+
   &__filters {
     display: flex;
     height: 48px;
@@ -31,14 +39,14 @@
     flex-shrink: 0;
     align-items: center;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       height: 58px;
     }
 
     .c-active-filters {
       display: none;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         display: flex;
         height: 58px;
       }
@@ -50,17 +58,10 @@
     height: 48px;
     line-height: 48px;
     border: 1px solid $brand-grey--light;
-    border-left: 0;
     border-radius: 4px;
     padding-right: 58px;
-    padding-left: $spacing--small;
     flex-grow: 1;
     outline: 0;
-    padding-left: 0;
-
-    border-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 
     &:focus {
       border: 1px solid $brand-color;
@@ -72,12 +73,16 @@
       }
     }
 
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 0;
+
     @include font-size(16px, 20px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       height: 58px;
       line-height: 58px;
-      padding-left: $spacing--small/2;
       @include font-size(18px, 24px);
     }
   }
@@ -91,7 +96,7 @@
     border: 0;
     padding: $spacing--small/2;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       padding: $spacing--small;
     }
 
@@ -129,10 +134,7 @@
 
     .c-content-type-result {
       padding-right: $spacing--large;
-
-      &:last-child {
-        padding-right: 0;
-      }
+      flex: 0 0 33.3333333%;
     }
   }
 
@@ -142,7 +144,6 @@
 
     a {
       @extend .c-button;
-      @extend .c-button--outline;
       box-shadow: none;
     }
   }

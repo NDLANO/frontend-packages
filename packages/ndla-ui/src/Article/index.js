@@ -10,11 +10,17 @@ import Article, {
   ArticleTitle,
   ArticleIntroduction,
   ArticleWrapper,
+  ArticleHeaderWrapper,
 } from './Article';
 
 export { default as ArticleByline } from './ArticleByline';
 export { default as ArticleContent } from './ArticleContent';
 export { default as ArticleFootNotes } from './ArticleFootNotes';
-export { ArticleTitle, ArticleIntroduction, ArticleWrapper };
+export {
+  ArticleTitle,
+  ArticleIntroduction,
+  ArticleWrapper,
+  ArticleHeaderWrapper,
+};
 
 export default Article;

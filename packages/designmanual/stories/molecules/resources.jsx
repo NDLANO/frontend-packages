@@ -6,11 +6,12 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
 import {
   ResourcesWrapper,
   ResourceGroup,
+  ResourcesTopicTitle,
   ContentTypeBadge,
   constants,
 } from 'ndla-ui';
@@ -24,7 +25,7 @@ import {
 const { contentTypes } = constants;
 
 const toLink = () => ({
-  href: '#',
+  to: '#',
 });
 
 const resourceGroup1 = {
@@ -32,6 +33,7 @@ const resourceGroup1 = {
   title: 'Læringsstier',
   contentType: contentTypes.LEARNING_PATH,
   resources: learningPathResources,
+  noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
 const resourceGroup2 = {
@@ -39,6 +41,7 @@ const resourceGroup2 = {
   title: 'Fagstoff',
   contentType: contentTypes.SUBJECT_MATERIAL,
   resources: articleResources,
+  noContentLabel: 'Det er ikke noe kjernestoff for fagstoff.',
 };
 
 const resourceGroup3 = {
@@ -46,6 +49,7 @@ const resourceGroup3 = {
   title: 'Oppgaver og aktiviteter',
   contentType: contentTypes.TASKS_AND_ACTIVITIES,
   resources: exerciseResources,
+  noContentLabel: 'Det er ikke noe kjernestoff for oppgaver og aktiviteter.',
 };
 
 const resourceGroup4 = {
@@ -53,6 +57,7 @@ const resourceGroup4 = {
   title: 'Vurderingsressurser',
   contentType: contentTypes.ASSESSMENT_RESOURCES,
   resources: assessmentResources,
+  noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
 const resourceGroups = [
@@ -62,33 +67,80 @@ const resourceGroups = [
   resourceGroup4,
 ];
 
-export const Resources = ({ onlyAdditional }) => (
-  <ResourcesWrapper>
-    {resourceGroups.map(group => (
-      <ResourceGroup
-        key={group.id}
-        title={group.title}
-        resources={group.resources.filter(resource => {
-          if (onlyAdditional) {
-            return resource.additional;
-          }
-          return true;
-        })}
-        contentType={group.contentType}
-        icon={<ContentTypeBadge type={group.contentType} />}
-        messages={{
-          noCoreResourcesAvailable: 'Det er ikke noe kjernestoff tilgjengelig.',
-          activateAdditionalResources: 'Vis tilleggsstoff',
-          toggleFilterLabel: 'Tilleggsstoff',
-          showLess: 'Vis mindre',
-          showMore: 'Vis mer',
-        }}
-        resourceToLinkProps={toLink}
-      />
-    ))}
-  </ResourcesWrapper>
-);
+class Resources extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAdditionalResources: false,
+      showAdditionalDialog: false,
+    };
+    this.toggleAdditionalResources = this.toggleAdditionalResources.bind(this);
+    this.toggleAdditionalDialog = this.toggleAdditionalDialog.bind(this);
+  }
 
-Resources.propTypes = {
-  onlyAdditional: PropTypes.bool,
-};
+  toggleAdditionalResources() {
+    this.setState(prevState => ({
+      showAdditionalResources: !prevState.showAdditionalResources,
+    }));
+  }
+
+  toggleAdditionalDialog() {
+    this.setState(prevState => ({
+      showAdditionalDialog: !prevState.showAdditionalDialog,
+    }));
+  }
+
+  render() {
+    const { showAdditionalResources, showAdditionalDialog } = this.state;
+    const hasAdditionalResources = resourceGroups.some(group =>
+      group.resources.some(resource => resource.additional),
+    );
+    return (
+      <ResourcesWrapper
+        header={
+          <ResourcesTopicTitle
+            messages={{
+              label: 'Læringsressurser',
+              additionalFilterLabel: 'Vis tilleggsressurser',
+              dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
+              dialogHeading: 'Kjernestoff og tilleggsstoff',
+              dialogTexts: [
+                'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
+                'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+              ],
+            }}
+            explainationIconLabelledBy="learning-resources-info-header-id"
+            id="learning-resources-id"
+            title="Havbunnsløsninger"
+            toggleAdditionalResources={this.toggleAdditionalResources}
+            showAdditionalResources={showAdditionalResources}
+            hasAdditionalResources={hasAdditionalResources}
+            toggleAdditionalDialog={this.toggleAdditionalDialog}
+            showAdditionalDialog={showAdditionalDialog}
+          />
+        }>
+        {resourceGroups.map(group => (
+          <ResourceGroup
+            key={group.id}
+            title={group.title}
+            resources={group.resources}
+            showAdditionalResources={showAdditionalResources}
+            toggleAdditionalResources={this.toggleAdditionalResources}
+            contentType={group.contentType}
+            icon={<ContentTypeBadge type={group.contentType} />}
+            messages={{
+              noContentBoxLabel: group.noContentLabel,
+              noContentBoxButtonText: 'Vis tilleggsstoff',
+              toggleFilterLabel: 'Tilleggsressurser',
+              coreTooltip: 'Kjernestoff er fagstoff som er på pensum',
+              additionalTooltip: 'Tilleggsstoff er ikke på pensum',
+            }}
+            resourceToLinkProps={toLink}
+          />
+        ))}
+      </ResourcesWrapper>
+    );
+  }
+}
+
+export default Resources;

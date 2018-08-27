@@ -14,44 +14,42 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  ArticleByline,
+  ArticleHeaderWrapper,
   Image,
   ExternalLearningResourcesBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
+
+import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import Resources from '../molecules/resources';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<ExternalLearningResourcesBadge background size="large" />}
-          label="Ekstern læringsressurs">
-          Artikkel delte læringsressurser
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <CompetenceGoalsDialogExample
+            wide
+            headingId="article-competence-goals-heading-id"
+          />
+          <ArticleTitle
+            icon={<ExternalLearningResourcesBadge background size="large" />}
+            label="Ekstern læringsressurs">
+            Artikkel delte læringsressurser
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleBylineExample />
+          <CompetenceGoalsDialogExample
+            narrow
+            headingId="article-competence-goals-narrow-heading-id"
+          />
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <FigureWithLicense type="left" caption="" runScripts>
@@ -106,6 +104,9 @@ export default () => (
           klassen.
         </p>
         <RelatedArticleListExample />
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

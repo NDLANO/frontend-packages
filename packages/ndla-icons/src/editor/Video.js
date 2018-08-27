@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Video = props => (
   <Icon
+    title="Video"
     viewBox="0 0 32 32"
     data-license="CC-BY 4.0"
     data-source="Knowit"

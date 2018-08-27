@@ -41,13 +41,18 @@ export const FigureFullscreenDialog = ({
       modifier="fullscreen">
       <div {...classLicenses('', 'fullscreen')}>
         <div {...classLicenses('content')}>
-          {children}
-          <h3 id={headingLabelId} {...classLicenses('image-title')}>
+          <button
+            {...classLicenses('image-wrapper')}
+            type="button"
+            aria-label={messages.zoomImageButtonLabel}>
+            {children}
+          </button>
+          <h1 id={headingLabelId} {...classLicenses('image-title')}>
             {title}
-          </h3>
+          </h1>
           {caption}
           <p>
-            <button className="c-figure__captionbtn">
+            <button className="c-figure__captionbtn" type="button">
               <span>{reuseLabel}</span>
             </button>
           </p>
@@ -76,6 +81,7 @@ FigureFullscreenDialog.propTypes = {
   origin: PropTypes.string,
   authors: PropTypes.arrayOf(ContributorShape),
   messages: PropTypes.shape({
+    zoomImageButtonLabel: PropTypes.string.isRequired,
     modelPremission: PropTypes.string,
     close: PropTypes.string.isRequired,
     rulesForUse: PropTypes.string.isRequired,

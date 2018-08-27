@@ -29,7 +29,7 @@ $extra-margin: 10px;
       width: ($cols-tablet/$maxcols)*100% !important;
       left: auto !important;
       padding: 0;
-      margin: $spacing ($spacing + $extra-margin) 0 0;
+      margin: $spacing ($spacing + $extra-margin) $spacing--small 0;
     }
     @include mq(desktop) {
       width: ($cols/$maxcols)*100% !important;

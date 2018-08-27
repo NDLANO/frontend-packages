@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Fullscreen = props => (
   <Icon
+    title="Fullscreen"
     viewBox="0 0 48 48"
     data-license="Apache License 2.0"
     data-source="Material Design"

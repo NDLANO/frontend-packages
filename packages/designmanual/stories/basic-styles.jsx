@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Table, Translation, TranslationLine } from 'ndla-ui';
+import { Translation, TranslationLine } from 'ndla-ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
+import Table from './molecules/TableExample';
 
 const heading = (articleHTML, level) => {
   if (!articleHTML) return `<h${level}>Overskrift ${level}</h${level}>`;
@@ -388,10 +389,28 @@ storiesOf('Grunnstiler', module)
             <li className="o-list__item o-list__item--colors">
               <div
                 className="o-list__bgcolor"
+                style={{ backgroundColor: '#797979' }}
+              />
+              <div className="o-list__label">
+                Læringssti Mørk<br />#797979
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
                 style={{ backgroundColor: '#F2EFEF' }}
               />
               <div className="o-list__label">
                 Læringssti bakgrunn<br />#F2EFEF
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: '#E8E3E3' }}
+              />
+              <div className="o-list__label">
+                Læringssti Lys<br />#E8E3E3
               </div>
             </li>
           </ul>
@@ -530,7 +549,7 @@ storiesOf('Grunnstiler', module)
             Source Sans Pro
           </a>.
         </p>
-        <table className="c-table">
+        <Table runScripts>
           <thead>
             <tr>
               <th>Type tekst</th>
@@ -570,7 +589,7 @@ storiesOf('Grunnstiler', module)
               <td>400, inkl. kursiv</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
         <p>
           Tilbakefallsfonter er{' '}
           <span style={{ fontFamily: 'Helvetica' }}>Helvetica</span> og{' '}
@@ -579,7 +598,7 @@ storiesOf('Grunnstiler', module)
         <h2 id="storrelser" className="u-heading">
           Skriftstørrelser
         </h2>
-        <table className="c-table">
+        <Table>
           <thead>
             <tr>
               <th>Type tekst</th>
@@ -655,7 +674,7 @@ storiesOf('Grunnstiler', module)
               </td>
             </tr>
           </tbody>
-        </table>
+        </Table>
 
         <p>
           Grunnlaget for REM-kalkulerte størrelser er 18px skriftstørrelse på
@@ -700,7 +719,7 @@ storiesOf('Grunnstiler', module)
           Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å
           lese. Dette betyr at linjene ikke skal være for lange, og at vi bruker
           stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter som en
-          standardstørrelse, men siden NDLA har mange teksttunge sider, bruker
+          standard størrelse, men siden NDLA har mange teksttunge sider, bruker
           vi 18 punkter.
         </p>
         <p>
@@ -717,6 +736,95 @@ storiesOf('Grunnstiler', module)
             dolore magna aliqua.
           </p>
         </div>
+        <h2 className="u-heading">Kinesisk</h2>
+        <p>
+          Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten
+          skal være lesbar.
+        </p>
+        <table>
+          <thead>
+            <th>Teksttype</th>
+            <th>Størrelse på stor skjerm</th>
+            <th>Størrelse på liten skjerm</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overskrifter</td>
+              <td>
+                40 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(2.22rem)</span>
+              </td>
+              <td>
+                32 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.77rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Mellomoverskrifter</td>
+              <td>
+                24 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
+              </td>
+              <td>
+                24 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.33rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Små overskrifter</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Ingress</td>
+              <td>
+                28 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.55rem)</span>
+              </td>
+              <td>
+                22 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.22rem)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Brødtekst</td>
+              <td>
+                20 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1.11rem)</span>
+              </td>
+              <td>
+                18 px{' '}
+                <span style={{ color: 'rgb(144, 144, 144)' }}>(1rem)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Overskrifter</h3>
+        <div lang="zh-Hans">
+          <h1>人人生而自由</h1>
+        </div>
+        <h3>Mellomoverskrifter</h3>
+        <div lang="zh-Hans">
+          <h2>人人生而自由</h2>
+        </div>
+        <h3>Små overskrifter</h3>
+        <div lang="zh-Hans">
+          <h3>人人生而自由</h3>
+        </div>
+        <h3>Ingress</h3>
+        <p className="article_introduction" lang="zh-Hans">
+          人人生而自由,在尊严和权利上一律平等。
+        </p>
+        <h3>Brødtekst</h3>
+        <p lang="zh-Hans">
+          人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。
+        </p>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>
@@ -802,7 +910,7 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
-        <Table>
+        <Table runScripts>
           <caption>Tabelltittel</caption>
           <thead>
             <tr>
@@ -1104,7 +1212,7 @@ storiesOf('Grunnstiler', module)
         <Table>
           <thead>
             <tr>
-              <th scope="col">Hva?</th>
+              <th />
               <th scope="col">Prefiks</th>
               <th scope="col">Symbol</th>
               <th scope="col">Namn</th>
@@ -1149,6 +1257,7 @@ storiesOf('Grunnstiler', module)
             </tr>
           </tbody>
         </Table>
+
         <h2 className="u-heading">
           Eksempel med titler som går over flere kolonner (colspan)
         </h2>
@@ -1255,6 +1364,226 @@ storiesOf('Grunnstiler', module)
             ))}
           </tbody>
         </Table>
+
+        <h2 className="u-heading">Eksempel med bilde</h2>
+        <Table>
+          <caption>Caption</caption>
+          <thead>
+            <tr>
+              <th />
+              <th style={{ textAlign: 'center' }} scope="col">
+                Fly
+              </th>
+              <th style={{ textAlign: 'center' }} scope="col">
+                Buss
+              </th>
+              <th style={{ textAlign: 'center' }} scope="col">
+                Sykkel
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Bilde</th>
+              <td>
+                <img
+                  alt="Fly"
+                  src="https://images.pexels.com/photos/249581/pexels-photo-249581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=187&w=315"
+                />
+              </td>
+              <td>
+                <img
+                  alt="Buss"
+                  src="https://images.pexels.com/photos/34729/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=187&w=315"
+                />
+              </td>
+              <td>
+                <img
+                  alt="Sykkel"
+                  src="https://images.pexels.com/photos/326678/pexels-photo-326678.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=187&w=315"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Symbol</th>
+              <td style={{ textAlign: 'center' }}>
+                <svg
+                  style={{ width: '24px', height: '24px' }}
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="#6F6F6F"
+                    d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z"
+                  />
+                </svg>
+              </td>
+              <td style={{ textAlign: 'center' }}>
+                <svg
+                  style={{ width: '24px', height: '24px' }}
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="#6F6F6F"
+                    d="M18,11H6V6H18M16.5,17A1.5,1.5 0 0,1 15,15.5A1.5,1.5 0 0,1 16.5,14A1.5,1.5 0 0,1 18,15.5A1.5,1.5 0 0,1 16.5,17M7.5,17A1.5,1.5 0 0,1 6,15.5A1.5,1.5 0 0,1 7.5,14A1.5,1.5 0 0,1 9,15.5A1.5,1.5 0 0,1 7.5,17M4,16C4,16.88 4.39,17.67 5,18.22V20A1,1 0 0,0 6,21H7A1,1 0 0,0 8,20V19H16V20A1,1 0 0,0 17,21H18A1,1 0 0,0 19,20V18.22C19.61,17.67 20,16.88 20,16V6C20,2.5 16.42,2 12,2C7.58,2 4,2.5 4,6V16Z"
+                  />
+                </svg>
+              </td>
+              <td style={{ textAlign: 'center' }}>
+                <svg
+                  style={{ width: '24px', height: '24px' }}
+                  viewBox="0 0 24 24">
+                  <path
+                    fill="#6F6F6F"
+                    d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19V8.2H15.8L13.86,4.93C13.57,4.43 13,4.1 12.4,4.1C11.93,4.1 11.5,4.29 11.2,4.6L7.5,8.29C7.19,8.6 7,9 7,9.5C7,10.13 7.33,10.66 7.85,10.97L11.2,13V18H13V11.5L10.75,9.85L13.07,7.5M19,20.5A3.5,3.5 0 0,1 15.5,17A3.5,3.5 0 0,1 19,13.5A3.5,3.5 0 0,1 22.5,17A3.5,3.5 0 0,1 19,20.5M19,12A5,5 0 0,0 14,17A5,5 0 0,0 19,22A5,5 0 0,0 24,17A5,5 0 0,0 19,12M16,4.8C17,4.8 17.8,4 17.8,3C17.8,2 17,1.2 16,1.2C15,1.2 14.2,2 14.2,3C14.2,4 15,4.8 16,4.8Z"
+                  />
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Ord</th>
+              <td style={{ textAlign: 'center' }}>Fly</td>
+              <td style={{ textAlign: 'center' }}>Buss</td>
+              <td style={{ textAlign: 'center' }}>Sykkel</td>
+            </tr>
+          </tbody>
+        </Table>
+
+        <h2 className="u-heading">Eksempel med scrollbar</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Fornavn</th>
+              <th>Etternavn</th>
+              <th>Epost</th>
+              <th>Adresse</th>
+              <th>Land</th>
+              <th>Språk</th>
+              <th>Brukernavn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Rogers</td>
+              <td>Hearson</td>
+              <td>rhearson0@nifty.com</td>
+
+              <td className="u-no-wrap">34704 Duke Circle</td>
+              <td>Brazil</td>
+              <td>Fijian</td>
+              <td>rhearson0</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Lucie</td>
+              <td>Jikylls</td>
+              <td>ljikylls1@csmonitor.com</td>
+              <td className="u-no-wrap">9824 Swallow Place</td>
+              <td>Sweden</td>
+              <td>Italian</td>
+              <td>ljikylls1</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Kippie</td>
+              <td>Reeveley</td>
+              <td>kreeveley2@ebay.com</td>
+              <td className="u-no-wrap">1 Stephen Court</td>
+              <td>Namibia</td>
+              <td>West Frisian</td>
+              <td>kreeveley2</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Klarrisa</td>
+              <td>Minghetti</td>
+              <td>kminghetti3@163.com</td>
+              <td className="u-no-wrap">7 Truax Point</td>
+              <td>Greece</td>
+              <td>Luxembourgish</td>
+              <td>kminghetti3</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Trefor</td>
+              <td>Lambregts</td>
+              <td>tlambregts4@youtu.be</td>
+              <td className="u-no-wrap">61 Monica Center</td>
+              <td>Sweden</td>
+              <td>Northern Sotho</td>
+              <td>tlambregts4</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Aridatha</td>
+              <td>Kuhnt</td>
+              <td>akuhnt5@sitemeter.com</td>
+              <td className="u-no-wrap">2898 Wayridge Terrace</td>
+              <td>China</td>
+              <td>Latvian</td>
+              <td>akuhnt5</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Kalie</td>
+              <td>Olander</td>
+              <td>kolander6@loc.gov</td>
+              <td className="u-no-wrap">554 Maywood Parkway</td>
+              <td>China</td>
+              <td>Czech</td>
+              <td>kolander6</td>
+            </tr>
+          </tbody>
+        </Table>
+        <h2 className="u-heading">Eksempel med satt kolonnebredde</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th style={{ width: '33.333%' }}>Fremragende</th>
+              <th style={{ width: '33.333%' }}>Kompetent</th>
+              <th style={{ width: '33.333%' }}>På vei</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>mestrer ulike formater for nettreklame</td>
+              <td>
+                mestrer ett format godt, og er på god vei til å mestre flere
+              </td>
+              <td>mestrer ett reklameformat</td>
+            </tr>
+            <tr>
+              <td>
+                bruker de samme prinsippene for layout og komposisjon i begge
+                annonsene
+              </td>
+              <td>bruker layout og komposisjon i annonsene</td>
+              <td>
+                bruker til dels prinsipper for layout og komposisjon, men hvilke
+                og hvor de er brukt, kan være uklart
+              </td>
+            </tr>
+            <tr>
+              <td>
+                har reflekterte argumenter for hvorfor farger og fonter er valgt
+                og prioritert
+              </td>
+              <td>bruker farger og fonter som virkemidler i annonsene</td>
+              <td>Noen designvalg er gode, andre er mindre gjennomført.</td>
+            </tr>
+            <tr>
+              <td>Godt teknisk håndverk kjennetegner annonsene.</td>
+              <td>
+                Dette er bra, men noen elementer og piksler er upresist plassert
+                eller på avveier.
+              </td>
+              <td>
+                Noen elementer er godt bearbeidet, men det gjenstår litt før
+                annonsen er ferdig designet.
+              </td>
+            </tr>
+            <tr />
+          </tbody>
+        </Table>
       </StoryBody>
     </div>
   ))
@@ -1341,18 +1670,18 @@ storiesOf('Grunnstiler', module)
       </StoryIntro>
       <StoryBody>
         <Translation index={1}>
-          <TranslationLine lang="cn" langName="Kinesisk">
+          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
           <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ jiào shénme míngzi?
+            Nǐ jiào <strong>shénme</strong> míngzi?
           </TranslationLine>
           <TranslationLine lang="nb" langName="Norsk">
             Hva heter du?
           </TranslationLine>
         </Translation>
         <Translation index={2}>
-          <TranslationLine lang="cn" langName="Kinesisk">
+          <TranslationLine lang="zh-Hans" langName="Kinesisk" isTerm>
             你叫什么名字？你叫什麼名字？
           </TranslationLine>
           <TranslationLine lang="pn" langName="Pinyin">

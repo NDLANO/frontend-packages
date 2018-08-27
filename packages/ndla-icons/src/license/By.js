@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const By = props => (
   <Icon
+    title="By"
     viewBox="5.5 -3.5 64 64"
     data-license="CC-BY 4.0"
     data-source="Creative Commons"

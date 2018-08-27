@@ -19,6 +19,14 @@
     width: 300px;
   }
 
+  &--white {
+    .c-logo {
+      &__graphic {
+        fill: $white;
+      }
+    }
+  }
+
   &__graphic {
     fill: $brand-color;
   }

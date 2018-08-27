@@ -6,10 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
+import isString from 'lodash/isString';
+import { isMobile } from 'react-device-detect';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -29,6 +31,26 @@ export const ArticleWrapper = ({ children, modifier }) => (
 ArticleWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   modifier: PropTypes.string,
+};
+
+export class ArticleHeaderWrapper extends Component {
+  componentDidMount() {
+    if (isMobile) {
+      const heroContentList = document.querySelectorAll('.c-article__header');
+      if (heroContentList.length === 1) {
+        heroContentList[0].scrollIntoView(true);
+        window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
+      }
+    }
+  }
+
+  render() {
+    return <div {...classes('header')}>{this.props.children}</div>;
+  }
+}
+
+ArticleHeaderWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export const ArticleTitle = ({ children, icon, label }) => {
@@ -63,8 +85,23 @@ ArticleTitle.defaultProps = {
   label: null,
 };
 
-export const ArticleIntroduction = ({ children }) =>
-  children ? <p className="article_introduction">{children}</p> : null;
+export const ArticleIntroduction = ({ children }) => {
+  if (isString(children)) {
+    /* Since article introduction is already escaped from the api
+       we run into a double escaping issues as React escapes all strings.
+       Use dangerouslySetInnerHTML to circumvent the issue */
+    return (
+      <p
+        className="article_introduction"
+        dangerouslySetInnerHTML={{ __html: children }}
+      />
+    );
+  }
+  if (children) {
+    return <p className="article_introduction">{children}</p>;
+  }
+  return null;
+};
 
 ArticleIntroduction.propTypes = {
   children: PropTypes.node,
@@ -80,24 +117,39 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders },
   },
   icon,
+  additional,
   licenseBox,
   modifier,
   messages,
   children,
+  competenceGoals,
+  competenceGoalsNarrow,
 }) => {
-  const license = getLicenseByAbbreviation(licenseObj.license);
-  const authors =
-    Array.isArray(creators) && creators.length > 0 ? creators : rightsholders;
+  const license = getLicenseByAbbreviation(licenseObj.license).abbreviation;
+  const showCreators = Array.isArray(creators) && creators.length > 0;
+  const authors = showCreators ? creators : rightsholders;
+
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
-        <ArticleTitle icon={icon} label={messages.label}>
-          {title}
-        </ArticleTitle>
-        <ArticleIntroduction>{introduction}</ArticleIntroduction>
-        <ArticleByline {...{ messages, authors, updated, license }}>
-          {licenseBox}
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          {competenceGoals}
+          <ArticleTitle icon={icon} label={messages.label}>
+            {title}
+          </ArticleTitle>
+          <ArticleIntroduction>{introduction}</ArticleIntroduction>
+          <ArticleByline
+            {...{
+              messages,
+              authors,
+              updated,
+              license,
+              additional,
+              licenseBox,
+            }}
+          />
+          {competenceGoalsNarrow}
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <ArticleContent content={content} />
@@ -116,13 +168,27 @@ Article.propTypes = {
   modifier: PropTypes.string,
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
+  additional: PropTypes.bool,
+  competenceGoals: PropTypes.node,
+  competenceGoalsNarrow: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
     edition: PropTypes.string.isRequired,
     publisher: PropTypes.string.isRequired,
     lastUpdated: PropTypes.string.isRequired,
+    authorLabel: PropTypes.string.isRequired,
+    authorDescription: PropTypes.string.isRequired,
     label: PropTypes.string,
   }).isRequired,
+};
+
+Article.defaultProps = {
+  licenseBox: null,
+  additional: null,
+  competenceGoals: null,
+  competenceGoalsNarrow: null,
+  icon: null,
+  children: null,
 };
 
 export default Article;

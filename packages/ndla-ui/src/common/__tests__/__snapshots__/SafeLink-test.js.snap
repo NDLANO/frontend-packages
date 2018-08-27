@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SafeLink defaults to normal link if to prop is an external link 1`] = `
+<div>
+  <a
+    href="https://example.com"
+  >
+    Snapshot should not contain onClick
+  </a>
+  ,
+</div>
+`;
+
+exports[`SafeLink renderers Link correctly if router context is present 1`] = `
+<div>
+  <a
+    href="/my/path"
+    onClick={[Function]}
+  >
+    Snapshot should contain onClick
+  </a>
+  ,
+</div>
+`;
+
+exports[`SafeLink renderers normal link correctly when router context is not present 1`] = `
+<a
+  href="/my/path"
+>
+  No router context
+</a>
+`;

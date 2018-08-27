@@ -15,14 +15,6 @@
     position: fixed;
   }
 
-  &--hideOnNarrowScreen {
-    display: none;
-
-    @include mq(tablet) {
-      display: block;
-    }
-  }
-
   &__placeholder {
     min-height: $masthead-height;
     width: 100%;
@@ -34,6 +26,7 @@
     padding: $spacing--small;
     font-weight: $font-weight-normal;
     display: flex;
+    height: $masthead-height;
 
     @include mq(tablet) {
       flex-direction: row;

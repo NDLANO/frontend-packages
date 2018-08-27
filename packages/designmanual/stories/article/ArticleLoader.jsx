@@ -18,16 +18,25 @@ import {
   ResourcesTitle,
   TopicIntroductionList,
 } from 'ndla-ui';
-import { Resources } from '../molecules/resources';
+import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
-import LicenseExample from './LicenseExample';
+import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
+
+import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
 const ResourcesSubTopics = () => (
   <ResourcesWrapper>
     <ResourcesTitle>Emner</ResourcesTitle>
-    <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+    <TopicIntroductionList
+      shortcutAlwaysExpanded
+      toTopic={() => '#'}
+      topics={topicList}
+      messages={{
+        shortcutButtonText: 'Lærestoff',
+      }}
+    />
   </ResourcesWrapper>
 );
 
@@ -103,13 +112,30 @@ class ArticleLoader extends Component {
               article={article}
               modifier={reset ? 'clean' : ''}
               messages={{
-                writtenBy: 'Skrevet av',
                 lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
+                authorLabel: 'Opphavsmann',
+                authorDescription:
+                  'Denne artikkelen er laget av flere opphavsmenn',
+                close: 'Lukk',
                 label,
               }}
-              licenseBox={<LicenseExample />}>
+              licenseBox={
+                <LicenseBox headingId="article-license-box-heading-id" />
+              }
+              competenceGoals={
+                <CompetenceGoalsDialogExample
+                  headingId="article-competence-goals-heading-id"
+                  wide
+                />
+              }
+              competenceGoalsNarrow={
+                <CompetenceGoalsDialogExample
+                  headingId="article-competence-goals-narrow-heading-id"
+                  narrow
+                />
+              }>
               {articleChildren}
             </Article>
           </OneColumn>

@@ -5,7 +5,7 @@
  */
 
 const github = require('octonode');
-const spawn = require('cross-spawn');
+const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
 const urlRegex = require('url-regex');
 const awaitUrl = require('await-url');
@@ -64,7 +64,8 @@ function safeify(s, safed = []) {
       .join('NOW_TOKEN')
       .split(githubToken)
       .join('GITHUB_TOKEN');
-  } else if (typeof s === 'object' && s !== null) {
+  }
+  if (typeof s === 'object' && s !== null) {
     return Object.keys(s).reduce((acc, k) => {
       acc[k] = safeify(s, safed);
       return acc;
@@ -97,35 +98,6 @@ function onError(sha, err) {
   });
 }
 
-function spawnPromise(sha, command, ...args) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(command, ...args);
-    let stdout = '';
-    let stderr = '';
-    child.stdout.on('data', data => {
-      stdout += data;
-      safeLog(String(data));
-    });
-    child.stderr.on('data', data => {
-      safeError(String(data));
-      stderr += String(safeify(data));
-    });
-
-    child.on('error', error => {
-      onError(sha, error);
-      reject(safeify(error));
-    });
-
-    child.on('close', () => {
-      if (stderr) {
-        reject(stderr);
-      } else {
-        resolve(stdout);
-      }
-    });
-  });
-}
-
 function getAliasUrl() {
   const repoName = TRAVIS_REPO_SLUG.split('/')[1];
   if (TRAVIS_PULL_REQUEST === 'false') {
@@ -138,7 +110,12 @@ async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
   const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
-  await spawnPromise(sha, 'now', cliArgs);
+  try {
+    await spawn('now', cliArgs);
+  } catch (error) {
+    onError(sha, error);
+    throw error;
+  }
   return newUrl;
 }
 
@@ -147,12 +124,18 @@ async function spawnDeploy(sha) {
     '--token',
     nowToken,
     '--no-clipboard',
-    '--npm',
+    '--region',
+    'bru1',
     ...providedArgs,
   ];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
-  const result = await spawnPromise(sha, 'now', cliArgs);
-  return getUrl(result);
+  try {
+    const result = await spawn('now', cliArgs);
+    return result.toString();
+  } catch (error) {
+    onError(sha, error);
+    throw error;
+  }
 }
 
 async function deploy(sha) {
@@ -173,34 +156,36 @@ async function deploy(sha) {
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'pending',
-    description: `▲ Now deployment pending`,
+    description: `▲ Now deployment starting`,
   });
+
+  console.log(`🤠 Alrighty, deploy starting.`);
 
   const result = await spawnDeploy(sha);
   targetUrl = getUrl(result);
 
+  console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
+
   updateStatus(sha, {
-    target_url: targetUrl,
+    target_url: `${targetUrl}`,
     state: 'pending',
-    description: `▲ Now deployment build started...`,
+    description: `▲ Aliasing now deployment...`,
   });
 
+  targetUrl = await spawnAlias(sha, targetUrl);
+
+  console.log(`🔗 It's linked!`);
+
   console.log(
-    `🤠 Alrighty, deploy started. Now we're going to ping ${targetUrl} until it's ready!`,
+    `⏳ Now we're going to ping ${targetUrl} to confirm it is ready for use!`,
   );
 
   // check on the site for ~20 minutes every 10 seconds
-  await awaitUrl(targetUrl, { interval: 10000, tries: 119 }).catch(err => {
+  await awaitUrl(`${targetUrl}`, { interval: 10000, tries: 119 }).catch(err => {
     console.error('Error waiting for the deployment to be ready.');
     onError(sha, err);
     throw err;
   });
-
-  console.log(`💪 Deploy finished! Now we're going to alias to ndla.sh`);
-
-  targetUrl = await spawnAlias(sha, targetUrl);
-
-  console.log(`🔗 It's linked and ready for use!`);
 
   updateStatus(sha, {
     target_url: targetUrl,

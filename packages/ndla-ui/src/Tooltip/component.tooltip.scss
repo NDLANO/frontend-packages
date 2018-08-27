@@ -1,0 +1,21 @@
+.c-tooltip {
+  position: relative;
+  &__tooltip {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    background: $brand-color;
+    padding: $spacing--small;
+    font-family: $font;
+    font-weight: $font-weight-normal;
+    @include font-size(14px, 18px);
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    max-width: calc(100vw - #{$spacing});
+    pointer-events: none;
+  }
+  &__content {
+    display: inline-block;
+  }
+}

@@ -19,6 +19,7 @@ export class TabsControlled extends Component {
       selectedIndex: 0,
     };
   }
+
   render() {
     return (
       <div>

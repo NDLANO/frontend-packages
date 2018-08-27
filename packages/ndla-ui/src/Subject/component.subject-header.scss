@@ -1,0 +1,81 @@
+.c-subject-header {
+  width: 100%;
+  position: relative;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  background: $brand-color;
+
+  @include mq(tablet) {
+    height: 320px;
+    align-items: center;
+  }
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center right;
+
+    &--mobile {
+      display: none;
+      @include mq($from: mobile, $until: tablet) {
+        display: block;
+      }
+    }
+    &--tablet {
+      display: none;
+      @include mq($from: tablet, $until: desktop) {
+        display: block;
+      }
+    }
+    &--desktop {
+      display: none;
+      @include mq($from: desktop, $until: wide) {
+        display: block;
+      }
+    }
+    &--wide {
+      display: none;
+      @include mq($from: wide) {
+        display: block;
+      }
+    }
+    /*
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    */
+  }
+
+  &__heading {
+    @include font-size(24px, 28px);
+    color: $white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    margin: $spacing--medium 0 0 0;
+    font-weight: $font-weight-bold;
+    padding: 0 $spacing;
+
+    @include mq(tablet) {
+      margin: 0;
+      @include font-size(40px, 40px);
+      padding: 0 0 0 $subject-margin;
+    }
+
+    @include mq(desktop) {
+      margin: 0;
+      @include font-size(52px, 52px);
+      padding: 0 0 0 $subject-margin;
+    }
+
+
+  }
+}

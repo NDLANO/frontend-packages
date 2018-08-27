@@ -9,15 +9,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
+import isString from 'lodash/isString';
 
-// Fallback to normal link if app is missing RouterContext
+const isExternalLink = to =>
+  to &&
+  isString(to) &&
+  (to.startsWith('https://') || to.startsWith('https://'));
+
+export const isOldNdlaLink = to =>
+  (to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/)) !== null;
+
+// Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 const SafeLink = (props, context) => {
-  if (!context.router) {
-    const { to, onClick, className, ...rest } = props;
+  if (!context.router || isExternalLink(props.to) || isOldNdlaLink(props.to)) {
+    const { to, ...rest } = props;
     delete rest.replace;
     const href = typeof to === 'string' ? to : '#';
     return (
-      <a href={href} onClick={onClick} className={className} {...rest}>
+      <a href={href} {...rest}>
         {props.children}
       </a>
     );
@@ -31,7 +40,7 @@ SafeLink.propTypes = Link.propTypes;
 SafeLink.defaultProps = Link.defaultProps;
 
 SafeLink.contextTypes = {
-  router: PropTypes.object,
+  router: PropTypes.object, // eslint-disable-line
 };
 
 export default SafeLink;

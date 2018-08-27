@@ -7,19 +7,54 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from 'ndla-ui';
 
-import { Breadcrumb } from 'ndla-ui';
-import { topicList, subjectList } from '../../dummydata/index';
+const items = [
+  {
+    name: 'Til forsiden',
+    to: '#',
+  },
+  {
+    name: 'Fag',
+    to: '#',
+  },
+  {
+    name: 'Hovedemne',
+    to: '#',
+  },
+  {
+    name: 'Underemne',
+    to: '#',
+  },
+  {
+    name: 'Tittel på side',
+    to: '#',
+  },
+];
 
-export const BreadcrumbDefault = () => (
-  <Breadcrumb
-    subject={subjectList[1]}
-    topicPath={topicList.slice(2)}
-    subjectsTitle="Fag"
-    toSubjects={() => '#'}
-    toTopic={() => '#'}>
-    Du er her:
-  </Breadcrumb>
+export const BreadcrumbDefault = ({ onlySubject = false }) => (
+  <Breadcrumb items={onlySubject ? items.slice(0, 2) : items} />
 );
 
+export const BreadcrumbSimpleArticle = () => (
+  <Breadcrumb
+    items={[
+      ...items.slice(0, 2),
+      {
+        name: 'Artikkel',
+        to: '#',
+      },
+    ]}
+  />
+);
+
+BreadcrumbDefault.propTypes = {
+  onlySubject: PropTypes.bool,
+};
+
 export default BreadcrumbDefault;
+
+export const BreadcrumbBlock = () => (
+  <BreadcrumbBlockUI items={items.slice(1)} toTopic={() => '#'} />
+);

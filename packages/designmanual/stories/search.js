@@ -18,9 +18,31 @@ storiesOf('Søk', module)
   .add('Søkeside', () => (
     <PageContainer background>
       <Content>
-        <MastheadWithTopicMenu hideOnNarrowScreen hideSearchButton />
+        <MastheadWithTopicMenu hideSearchButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Søk kompetansemål', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu hideSearchButton hideMenu />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <SearchPageExample competenceGoals />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Søkeside opphavsmann', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu hideSearchButton />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <SearchPageExample showAuthor />
         </OneColumn>
       </Content>
       <FooterExample />

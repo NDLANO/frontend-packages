@@ -1,0 +1,53 @@
+.c-subject-about {
+  margin-bottom: $spacing--large;
+
+  @include mq(tablet) {
+    border: 1px solid $brand-grey--light;
+  }
+
+  &--fixedWidth {
+    max-width: 350px;
+  }
+
+  &__media-wrapper {
+    width: 100%;
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    padding: $spacing--small 0 0 0;
+
+    @include mq(tablet) {
+      padding: $spacing;
+    }
+  }
+
+  &__top-heading {
+    margin: 0 0 $spacing--small 0;
+
+    @include mq(tablet) {
+      display: none;
+    }
+  }
+
+  &__main-heading {
+    margin: 0 0 $spacing--small 0;
+    @include font-size(14px, 32px);
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+
+    display: none;
+
+    @include mq(tablet) {
+      display: block;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    @include font-size(16px, 26px);
+  }
+}

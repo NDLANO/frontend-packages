@@ -10,7 +10,7 @@ const Welcome = () => (
     <div style={{ marginTop: '30px' }}>
       <Center>
         <center>
-          <Logo altText="Nasjonal digital læringsarena" />
+          <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </center>
       </Center>

@@ -14,44 +14,42 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  ArticleByline,
+  ArticleHeaderWrapper,
   Image,
   SourceMaterialBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
+
+import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import Resources from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<SourceMaterialBadge background size="large" />}
-          label="Kildemateriale">
-          Artikkel kildemateriale
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <CompetenceGoalsDialogExample
+            wide
+            headingId="article-competence-goals-heading-id"
+          />
+          <ArticleTitle
+            icon={<SourceMaterialBadge background size="large" />}
+            label="Kildemateriale">
+            Artikkel kildemateriale
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleBylineExample useRealText />
+          <CompetenceGoalsDialogExample
+            narrow
+            headingId="article-competence-goals-narrow-heading-id"
+          />
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <FigureWithLicense type="left" caption="" runScripts>
@@ -61,9 +59,10 @@ export default () => (
           />
         </FigureWithLicense>
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+          333Du har en kjempegod idé til en kortfilm. Men det koster mange
+          penger å produsere filmen. Derfor er du avhengig av at noen tenner på
+          idéen din og bestemmer seg for å bruke ressurser på nettopp dette
+          prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
@@ -106,6 +105,9 @@ export default () => (
           klassen.
         </p>
         <RelatedArticleListExample />
+      </LayoutItem>
+      <LayoutItem layout="extend">
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

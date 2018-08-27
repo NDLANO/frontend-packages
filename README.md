@@ -19,6 +19,7 @@ To view all of the available packages, see the [`packages/` directory](packages)
 ## Development
 
 ### Setup
+
 Install root dependencies and [bootstrap](https://github.com/lerna/lerna#bootstrap) packages.
 
 ```js
@@ -28,6 +29,7 @@ yarn && yarn bootstrap
 Se package README for package specific details.
 
 ### Lint
+
 Run linting for all packages:
 
 ```js
@@ -51,6 +53,7 @@ yarn start
 ## Publishing
 
 ### Publish packages to npm:
+
 [Lerna](https://github.com/lerna/lerna) is needed for easy publishing. Install latest 2.x version of lerna
 
 ```js
@@ -63,8 +66,8 @@ Publish with lerna:
 lerna publish
 ```
 
-### Publish storybook to  Github pages
+### Alias master to designmanual.ndla.sh
 
 ```js
-npm run deploy-storybook
+yarn deploy-designmanual
 ```

@@ -74,20 +74,21 @@
 }
 .u-fade-in {
   animation-name: fadeIn;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   opacity: 1;
 }
 
 .u-fade-out {
   animation-name: fadeOut;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   opacity: 0;
 }
 
 .u-fade {
   &-enter {
-    opacity: 0.1;
-    transition: opacity 0.3s ease;
+    opacity: 0;
+    transition-property: opacity;
+    transition-timing-function: ease;
 
     &-active {
       opacity: 1;
@@ -95,11 +96,16 @@
   }
 
   &-exit {
-    transition: opacity 0.3s ease;
+    transition-property: opacity;
+    transition-timing-function: ease;
     opacity: 1;
 
     &-active {
       opacity: 0;
     }
   }
+}
+
+.u-no-wrap {
+  white-space: nowrap;
 }

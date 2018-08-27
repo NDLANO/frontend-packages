@@ -12,8 +12,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Fullscreen } from 'ndla-icons/common';
+import { ZoomOutMap, Link as LinkIcon } from 'ndla-icons/common';
 import LicenseByline from '../LicenseByline';
+import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -21,12 +22,14 @@ const classes = new BEMHelper({
 });
 
 export const FigureCaption = ({
+  figureId,
   id,
   children,
   caption,
   authors,
   reuseLabel,
   licenseRights,
+  link,
 }) => (
   <figcaption {...classes('caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
@@ -36,17 +39,38 @@ export const FigureCaption = ({
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
-          <button data-dialog-trigger-id={id} {...classes('captionbtn')}>
+          <button
+            type="button"
+            data-dialog-trigger-id={id}
+            data-dialog-source-id={figureId}
+            {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
+
           {children}
         </LicenseByline>
+        {link && (
+          <div {...classes('link-wrapper')}>
+            <SafeLink
+              to={link.url}
+              {...classes('link')}
+              target={link.external ? '_blank' : null}
+              rel={link.external ? 'noopener noreferrer' : null}>
+              <span {...classes('link-text')}>{link.text}</span>
+              <LinkIcon />
+            </SafeLink>
+            {link.description && (
+              <p {...classes('link-description')}>{link.description}</p>
+            )}
+          </div>
+        )}
       </div>
     </footer>
   </figcaption>
 );
 
 FigureCaption.propTypes = {
+  figureId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   caption: PropTypes.string,
   reuseLabel: PropTypes.string.isRequired,
@@ -57,6 +81,16 @@ FigureCaption.propTypes = {
       name: PropTypes.string.isRequired,
     }),
   ),
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    external: PropTypes.bool,
+  }),
+};
+
+FigureCaption.defaultProps = {
+  link: null,
 };
 
 export const Figure = ({
@@ -82,7 +116,7 @@ export const Figure = ({
     <figure {...classes('', modifiers, typeClass)} {...rest}>
       {noFigcaption ? (
         <div {...classes('fullscreen-btn')}>
-          <Fullscreen />
+          <ZoomOutMap />
         </div>
       ) : null}
       {children}
@@ -91,6 +125,7 @@ export const Figure = ({
 };
 
 Figure.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf([
     'full',

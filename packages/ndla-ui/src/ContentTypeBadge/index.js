@@ -1,6 +1,5 @@
 import { ContentTypeBadge } from './ContentTypeBadge';
 
-export { LearningPathBadge } from './LearningPathBadge';
 export {
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,
@@ -8,6 +7,7 @@ export {
   SubjectBadge,
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
+  LearningPathBadge,
 } from './ContentTypeBadge';
 
 export default ContentTypeBadge;

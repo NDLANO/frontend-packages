@@ -8,7 +8,7 @@
 
 import jump from 'jump.js';
 
-import { forEachElement, getElementOffset } from './domHelpers';
+import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
 export const addShowConceptDefinitionClickListeners = () => {
   forEachElement('.c-concept__item', item => {
@@ -18,9 +18,14 @@ export const addShowConceptDefinitionClickListeners = () => {
     const closeBtn = popup.querySelector('.c-concept__close');
 
     openBtn.onclick = () => {
-      const isHidden = !popup.classList.toggle('c-concept__popup--visible');
+      const wasHidden = !popup.classList.contains('c-concept__popup--visible');
 
-      if (!isHidden) {
+      forEachElement('.c-concept__popup--visible', visibleItem => {
+        visibleItem.classList.remove('c-concept__popup--visible');
+      });
+
+      if (wasHidden) {
+        popup.classList.add('c-concept__popup--visible');
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom =
           openBtn.getBoundingClientRect().bottom +
@@ -50,13 +55,23 @@ export const addShowConceptDefinitionClickListeners = () => {
         } else {
           offset = popupHeight;
         }
-
-        jump(popup, {
-          duration: 300,
-          offset,
-        });
+        if (inIframe() && window.parent) {
+          window.parent.postMessage(
+            {
+              event: 'scrollTo',
+              // In an iframe viewport just returns the iframe height. So just offset the popup height
+              top: popupTop - popupHeight,
+            },
+            '*',
+          );
+        } else {
+          jump(popup, {
+            duration: 300,
+            offset,
+          });
+        }
       }
-      popup.setAttribute('aria-hidden', isHidden);
+      popup.setAttribute('aria-hidden', !wasHidden);
     };
 
     closeBtn.onclick = () => {

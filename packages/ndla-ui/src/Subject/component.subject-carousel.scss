@@ -1,0 +1,48 @@
+.c-subject-carousel {
+  margin-bottom: $spacing--large;
+  margin-right: -$spacing;
+  margin-left: $spacing;
+
+  @include mq(tablet) {
+    margin-right: 0;
+    margin-left: $spacing--medium;
+    margin-bottom: $subject-section-padding;
+  }
+
+  @include mq(desktop) {
+    margin-left: $spacing--large + $spacing;
+  }
+
+  &--wideScreen {
+    display: none;
+    @include mq(tablet) {
+      display: block;
+    }
+  }
+
+  &--center {
+    @include mq(wide) {
+      max-width: 1024px + $spacing--medium + $spacing--large;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: $spacing--medium + $spacing--large;
+    }
+  }
+
+  &--center5Col {
+    @include mq(ultraWide) {
+      max-width: 1540px + $spacing--medium + $spacing--large;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: $spacing--medium + $spacing--large;
+    }
+  }
+
+  &--narrowScreen {
+    margin-left: 0;
+
+    @include mq(tablet) {
+      display: none;
+    }
+  }
+}

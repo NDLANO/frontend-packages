@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const FactBox = props => (
   <Icon
+    title="FactBox"
     viewBox="0 0 30 23"
     data-license="CC-BY 4.0"
     data-source="Knowit"

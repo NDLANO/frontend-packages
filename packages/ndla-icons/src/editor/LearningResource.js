@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const LearningResource = props => (
   <Icon
+    title="LearningResource"
     viewBox="0 0 47 55"
     data-license="CC-BY 4.0"
     data-source="Knowit"

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const TasksAndActivities = props => (
   <Icon
+    title="TasksAndActivities"
     viewBox="0 0 24 24"
     data-license="Apache License 2.0"
     data-source="Material Design"
@@ -35,7 +36,6 @@ const TasksAndActivities = props => (
             <polygon
               fill="currentColor"
               points="0 22 24 22 24 24 0 24"
-              fillOpacity="0.36"
               fillRule="nonzero"
             />
           </g>

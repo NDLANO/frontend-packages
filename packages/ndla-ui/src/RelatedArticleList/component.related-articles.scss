@@ -1,12 +1,18 @@
 .c-related-articles {
   text-align: center;
+
+  &:before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
   &__component-title {
-    margin: $spacing--large 0 $spacing;
-    @include inuit-font-size(18px);
+    margin: $spacing 0;
+    @include mq(tablet) {
+      margin: $spacing--large 0 $spacing;
+    }
     padding-bottom: 5px;
-    // border-bottom: 2px solid $brand-grey--light;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     text-align: left;
   }
 
@@ -22,10 +28,16 @@
     border-left: 6px solid rgba($brand-grey--light, 0.4);
     padding-left: $spacing;
     padding-right: $spacing;
-    margin: 0 0 $spacing--large 0;
+    padding-bottom: $spacing--small;
+    margin: 0 0 $spacing 0;
+    @include mq(tablet) {
+      margin-bottom: $spacing--large;
+    }
     flex-basis: 50%;
     flex-grow: 0;
-    max-width: 600px;
+    @include mq(tablet) {
+      max-width: 50%; // IE fix: box-sizing: border-box is ignored by IE when sizing with flex-basis.
+    }
 
     &--subject-material {
       border-left: 6px solid $subject-material-light;
@@ -61,15 +73,34 @@
   }
 
   &__title {
-    @include inuit-font-size(18px);
+    @include font-size(18px);
     margin: 0 0 $spacing--small 0;
     font-weight: $font-weight-semibold;
     display: flex;
-    align-items: center;
+
+    @include chinese() {
+      @include font-size(20px);
+    }
+
+    .c-content-type-badge {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
   }
 
   &__description {
-    @include inuit-font-size(16px);
+    @include font-size(16px);
+
+    @include chinese() {
+      @include font-size(18px);
+    }
+
+    span {
+      @include chinese() {
+        @include font-size(18px);
+      }
+    }
+
     margin: 0;
     font-family: $font;
   }
@@ -80,5 +111,11 @@
 
   &__link-wrapper {
     margin-left: $spacing--small;
+  }
+
+  &__link-info {
+    font-weight: $font-weight-semibold;
+    @include font-size(16px, 20px);
+    margin: $spacing--small 0 0 0 !important;
   }
 }

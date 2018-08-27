@@ -17,34 +17,38 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ErrorMessage = ({ children, messages }) => (
-  <div {...classes()}>
-    <div>
-      <p>[illustrasjon]</p>
-      <h1>{messages.title}</h1>
-      <p {...classes('description')}>{messages.description}</p>
-      <h3>{messages.linksTitle && messages.linksTitle}</h3>
-      {/*  <SearchField /> */}
-      {messages.back &&
-        typeof window !== 'undefined' &&
-        window.history.length > 1 && (
-          <SafeLink
-            to={`/#${encodeURI(messages.back)}`}
-            onClick={() => window.history.back()}
-            {...classes('back-link')}>
-            {messages.back}
-          </SafeLink>
-        )}
-      {messages.goToFrontPage && (
-        <div>
-          <SafeLink to="/" {...classes('front-link')}>
-            {messages.goToFrontPage}
-          </SafeLink>
-        </div>
+export const ErrorMessage = ({ children, messages, illustration }) => (
+  <article {...classes()}>
+    <img
+      {...classes('illustration')}
+      src={illustration.url}
+      alt={illustration.altText}
+    />
+    <h1>{messages.title}</h1>
+    <p {...classes('description')}>{messages.description}</p>
+    {messages.linksTitle && (
+      <h2 {...classes('link-heading')}>{messages.linksTitle}</h2>
+    )}
+    {/*  <SearchField /> */}
+    {messages.back &&
+      typeof window !== 'undefined' &&
+      window.history.length > 1 && (
+        <SafeLink
+          to={`/#${encodeURI(messages.back)}`}
+          onClick={() => window.history.back()}
+          {...classes('back-link')}>
+          {messages.back}
+        </SafeLink>
       )}
-      {children}
-    </div>
-  </div>
+    {messages.goToFrontPage && (
+      <div {...classes('link-wrapper')}>
+        <SafeLink to="/" {...classes('front-link')}>
+          {messages.goToFrontPage}
+        </SafeLink>
+      </div>
+    )}
+    {children}
+  </article>
 );
 
 ErrorMessage.propTypes = {
@@ -53,7 +57,12 @@ ErrorMessage.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     goToFrontPage: PropTypes.string,
+    linksTitle: PropTypes.string,
     back: PropTypes.string,
+  }),
+  illustration: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
   }),
 };
 

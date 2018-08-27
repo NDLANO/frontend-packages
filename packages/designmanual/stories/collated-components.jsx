@@ -11,28 +11,35 @@ import {
   Footer,
   LicenseByline,
   TopicIntroductionList,
-  Breadcrumb,
-  BreadcrumbBlock,
   PageContainer,
   Content,
   LayoutItem,
   Image,
+  Translation,
+  TranslationLine,
+  ArticleByline,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
-import { topicList, subjectList } from '../dummydata/index';
+import { topicList } from '../dummydata/index';
 import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
-import { Resources } from './molecules/resources';
-import LicenseExample from './article/LicenseExample';
+import Resources from './molecules/resources';
+import LicenseBox from './article/LicenseBox';
 import ConceptExample from './organisms/ConceptExample';
+import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
+  RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
+import FileListExample from './molecules/FileListExample';
+import TranslationBoxExample from './organisms/TranslationBoxExample';
+
+import Oops from '../images/oops.gif';
 
 const toggle = () => {
   document
@@ -41,28 +48,117 @@ const toggle = () => {
 };
 
 storiesOf('Sammensatte moduler', module)
+  .add('Artikkel info linje', () => (
+    <Center>
+      <h2 className="u-heading">Linje artikkel enkel variant</h2>
+      <ArticleByline
+        authors={[
+          {
+            name: 'Cecilie Isaksen Eftedal',
+          },
+          {
+            name: 'Pål Frønsdal',
+          },
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        messages={{
+          lastUpdated: 'Publisert',
+          useContent: 'Bruk innhold',
+          closeLabel: 'Lukk',
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
+        }}
+      />
+      <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
+      <ArticleByline
+        authors={[
+          {
+            name: 'Cecilie Isaksen Eftedal',
+          },
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+        additional
+        messages={{
+          lastUpdated: 'Publisert',
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
+          additionalLabel: 'Tilleggsstoff',
+          useContent: 'Bruk innhold',
+          closeLabel: 'Lukk',
+        }}
+      />
+      <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
+      <ArticleByline
+        authors={[
+          {
+            role: 'rolle',
+            name: 'Cecilie Isaksen Eftedal',
+            urlContributions: '#',
+            urlContributionsLabel: 'Se hva Cecilie har bidratt med',
+            urlAuthor: '#',
+            urlAuthorLabel: 'Les mer om Cecilie',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'cecilie@ndla.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
+          },
+          {
+            role: 'rolle',
+            name: 'Siv Mundal',
+            urlContributions: '#',
+            urlContributionsLabel: 'Se hva Siv har bidratt med',
+            urlAuthor: '#',
+            urlAuthorLabel: 'Les mer om Siv',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'siv.mundal@keyteq.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
+          },
+          {
+            role: 'rolle',
+            name: 'Pål Frøsndal',
+            urlContributions: '#',
+            urlContributionsLabel: 'Se hva Pål har bidratt med',
+            urlAuthor: '#',
+            urlAuthorLabel: 'Les mer om Cecilie',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'paal.fronsdal@ndla.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
+          },
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+        additional
+        messages={{
+          lastUpdated: 'Publisert',
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
+          additionalLabel: 'Tilleggsstoff',
+          useContent: 'Bruk innhold',
+          closeLabel: 'Lukk',
+        }}
+      />
+    </Center>
+  ))
   .add('Brødsmulesti', () => (
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
-      <Breadcrumb
-        toSubjects={() => '#'}
-        subjectsTitle="Fag"
-        subject={subjectList[1]}
-        topicPath={topicList.slice(0, -1)}
-        toTopic={() => '#'}
-      />
+      <Breadcrumb />
       <h2 className="u-heading">Brødsmulesti-blokkeksempel</h2>
       <p>
         Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den
         ligger i header. På små enheter vil blokkvarianten gjemmes.
         Brødsmulestien er fortsatt tilgjengelig øverst på siden.
       </p>
-      <BreadcrumbBlock
-        fadeIn
-        subject={subjectList[1]}
-        topicPath={topicList.slice(0, -1)}
-        toTopic={() => '#'}
-      />
+      <BreadcrumbBlock />
     </Center>
   ))
   .add('Begrepsforklaring', () => (
@@ -88,7 +184,14 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <TopicIntroductionList toTopic={() => '#'} topics={topicList} />
+        <TopicIntroductionList
+          shortcutAlwaysExpanded
+          toTopic={() => '#'}
+          messages={{
+            shortcutButtonText: 'Lærestoff',
+          }}
+          topics={topicList}
+        />
       </StoryBody>
     </div>
   ))
@@ -217,7 +320,7 @@ storiesOf('Sammensatte moduler', module)
           <h2 className="u-heading">Lisensboks</h2>
           <article className="article">
             <LayoutItem layout="center">
-              <LicenseExample expanded />
+              <LicenseBox headingId="licenseBox-headingId" />
             </LayoutItem>
           </article>
         </Center>
@@ -229,8 +332,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser">
         <p>
           Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
-          aktiviteter. Hver del inneholder opp til åtte innholdselementer, før
-          listen brytes opp med en «Vis mer»-knapp.
+          aktiviteter.
         </p>
         <p>
           Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som
@@ -238,10 +340,10 @@ storiesOf('Sammensatte moduler', module)
           T-ikonet, samt med en noe dusere farge. Sjekkboksen skal være markert
           når tilleggsstoff er aktivt.
         </p>
-        <p>Knappen «Vis mer» lar brukeren utvide listen med flere elementer.</p>
+        <p>Emneoverskriften viser hvilke emne man står i.</p>
       </StoryIntro>
       <LayoutItem layout="center">
-        <Resources />
+        <Resources showTopicHeading />
       </LayoutItem>
     </div>
   ))
@@ -284,6 +386,11 @@ storiesOf('Sammensatte moduler', module)
         <RelatedArticleExerciseList />
         <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
         <RelatedArticleMixedList />
+        <h2 className="u-heading">Eksterne ressurser eksempel</h2>
+        <p>
+          Dersom en ekstern relatert artikkel ikke har metatekst, skal url vise.
+        </p>
+        <RelatedArticleExternal />
         <h2 className="u-heading">Eksempel med vis mer</h2>
         <RelatedArticleListExample />
       </StoryBody>
@@ -407,6 +514,39 @@ storiesOf('Sammensatte moduler', module)
       </StoryBody>
     </div>
   ))
+  .add('Nedlasting av filer', () => (
+    <div>
+      <StoryIntro title="Nedlasting av filer" />
+      <StoryBody>
+        <h2>Overskrift</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <FileListExample />
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+          pitcher, blir idéen og historien i den filmen du planlegger å lage,
+          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
+          klassen.
+        </p>
+      </StoryBody>
+    </div>
+  ))
   .add('Feilmelding', () => (
     <div>
       <StoryIntro title="Feilmelding">
@@ -416,16 +556,73 @@ storiesOf('Sammensatte moduler', module)
           ved 404- eller 503-feil.
         </p>
       </StoryIntro>
+      <ErrorMessage
+        illustration={{
+          url: Oops,
+          altText: 'Systemfeil',
+        }}
+        messages={{
+          title: 'Oisann, her gikk noe galt',
+          description: 'En kort beskrivelse av feilen som oppsto.',
+          linksTitle: 'Kom igang:',
+          back: 'Gå tilbake',
+          goToFrontPage: 'Gå til forsiden',
+        }}
+      />
+    </div>
+  ))
+
+  .add('Oversettelse', () => (
+    <div>
+      <StoryIntro title="Oversettelse">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
+          derfor kan man i disse tilfellene heller bruke en oversettelse-liste.
+        </p>
+      </StoryIntro>
       <StoryBody>
-        <ErrorMessage
-          messages={{
-            title: 'Oisann, her gikk noe galt',
-            description: 'En kort beskrivelse av feilen som oppsto.',
-            linksTitle: 'Kom igang:',
-            back: 'Gå tilbake',
-            goToFrontPage: 'Gå til forsiden',
-          }}
-        />
+        <h2 className="u-heading">Oversettelseliste enkel</h2>
+        <Translation index={1}>
+          <TranslationLine>你叫什么名字？//你叫什麼名字？</TranslationLine>
+          <TranslationLine>
+            Nǐ jiào <strong>shénme</strong> míngzi?
+          </TranslationLine>
+          <TranslationLine>Hva heter du?</TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine>你是学生。//你是學生。</TranslationLine>
+          <TranslationLine>Nǐ shì xuésheng.</TranslationLine>
+          <TranslationLine>Du er student.</TranslationLine>
+        </Translation>
+      </StoryBody>
+      <StoryBody>
+        <h2 className="u-heading">
+          Oversettelseliste (Med props lang og langName definert)
+        </h2>
+        <Translation index={1}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你叫什么名字？//你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你是学生。//你是學生。
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Du er student.
+          </TranslationLine>
+        </Translation>
+        <h2 className="u-heading">Språkvelger</h2>
+        <TranslationBoxExample />
       </StoryBody>
     </div>
   ));

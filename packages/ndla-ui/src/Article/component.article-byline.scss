@@ -8,64 +8,74 @@
 ** </div>
 **/
 
-
 .c-article-byline {
   margin-top: $spacing;
-  margin-bottom: $spacing--large;
   padding-top: $spacing--small/2;
   padding-bottom: $spacing--small/2;
   border-top: 2px solid $brand-grey--lighter;
   @include inuit-font-size(14px, 20px);
   font-family: $font;
-  color: $brand-grey;
-  @include mq(tablet) {
-    display: flex;
-  }
-}
-.c-article-byline__icon {
-  display: inline-block;
-  padding-right: $spacing--small/2;
-}
-.c-article-byline__flex {
-  margin-bottom: $spacing--small;
-  display: block;
-  @include mq(tablet) {
-    margin-bottom: 0;
-    display: flex;
-    flex-grow: 1;
-  }
-}
-.c-article-byline__licenses {
-  margin-right: $spacing--small;
+  color: $brand-grey-dark;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 110px;
-  flex-direction: row !important;
-}
-.c-article-byline__additional {
+  display: flex;
+  align-items: center;
   margin-bottom: $spacing--small;
   @include mq(tablet) {
-    display: flex;
-    padding-left: $spacing;
-    margin-bottom: 0;
+    margin-bottom: $spacing;
   }
-}
+  &__icon {
+    color: $brand-grey;
+    display: inline-block;
+    padding-right: $spacing--small/2;
+  }
+  &__flex {
+    align-items: center;
+    height: 1.5rem;
+    @include mq($from: mobileWide, $until: tablet) {
+      width: 50%;
+      &:nth-child(even) {
+        text-align: right;
+      }
+    }
+    @include mq($until: mobileWide) {
+      width: 100%;
+    }
+  }
+  &__toggle-authors {
+    @include inuit-font-size(14px, 20px);
+    margin-right: $spacing--small / 2;
+  }
+  &__licenses {
+    align-items: center;
+    margin-right: $spacing--small;
+    flex-wrap: wrap;
+    width: 110px;
+    flex-direction: row !important;
+  }
+  &__additional {
+    align-items: center;
+    @include mq(tablet) {
+      display: flex;
+    }
+  }
 
-.c-article-byline__authors {
-  padding-right: $spacing;
-  margin-bottom: $spacing--small;
-  @include mq(tablet) {
-    margin-bottom: 0;
+  &__authors {
+    display: inline-flex;
+    align-items: center;
+    svg {
+      margin-top: -3px;
+    }
+    > a {
+      margin-right: 0.25rem;
+    }
   }
-  svg {
-    margin-top: -3px;
+  &__date {
+    svg {
+      margin-top: -3px;
+    }
   }
-}
-.c-article-byline__date {
-  flex-grow: 1;
-  svg {
-    margin-top: -3px;
+  h1 + .c-article__byline {
+    margin-top: -$spacing / 2;
   }
-}
-h1 + .c-article__byline {
-  margin-top: -$spacing / 2;
 }

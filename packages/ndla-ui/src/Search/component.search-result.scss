@@ -1,18 +1,34 @@
 .c-search-result {
   background: $white;
-  padding: $spacing 0;
+  padding: 0 0 $spacing 0;
+  margin-bottom: $spacing--large;
+  border: 1px solid $brand-grey--light;
 
-  @include mq(tablet) {
+  @include mq(desktop) {
     padding: $spacing--medium;
   }
 
-  & > h1 {
-    display: none;
+  &__heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 0 0 $spacing--medium;
+    .c-button--link {
+      @include font-size(16px, 18px);
+      box-shadow: inset 0 0;
+      &:hover, &:focus {
+        box-shadow: inset 0 -1px;
+      }
+    }
+  }
+
+  &__heading {
+    display: none;
+    margin: 0;
     @include font-size(24px, 32px);
     font-weight: 400;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
 
@@ -26,7 +42,7 @@
   }
 
   &__narrow-result {
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: none;
     }
   }
@@ -34,7 +50,7 @@
   .c-tabs {
     display: none;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
   }
@@ -42,9 +58,33 @@
   .c-search-filter {
     display: none;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: block;
     }
+  }
+
+  &__current-goal {
+    margin: 0 0 0 $spacing--small*1.4;
+
+    li {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__current-goal-info {
+    margin: $spacing--small 0 $spacing--large $spacing--large + 2;
+    @include font-size(16px, 20px);
+    @include mq(desktop) {
+      margin-left: $spacing--small + 4px;
+    }
+  }
+
+  &__competence-goals {
+    background: $brand-color--lighter;
+    padding: $spacing;
+    margin-top: -$spacing--small;
   }
 }
 
@@ -53,7 +93,7 @@
   margin: 0;
   padding: 0;
 
-  @include mq(tablet) {
+  @include mq(desktop) {
     margin: $spacing--medium 0 0 0;
   }
 
@@ -61,7 +101,7 @@
     margin-top: $spacing--large;
     h1 {
       @include font-size(22px, 32px);
-      font-weight: 700;
+      font-weight: $font-weight-bold;
       margin: 0 0 $spacing--small;
     }
 
@@ -70,7 +110,7 @@
       margin: 0;
       font-family: $font-serif;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         @include font-size(18px, 32px);
       }
     }
@@ -79,20 +119,17 @@
 
 .c-search-result-item {
   border-bottom: 1px solid $brand-grey--light;
-  padding: $spacing--medium $spacing 0 $spacing;
+  padding: 0 $spacing 0 $spacing;
 
-  @include mq(tablet) {
-    padding: $spacing--medium 0 0 0;
+  @include mq(desktop) {
+    padding: 0;
   }
 
-  margin: 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
+  margin: 0 0 $spacing;
 
   &:last-child {
     border-bottom: 0;
+    margin-bottom: 0;
   }
 
   &__content {
@@ -104,10 +141,9 @@
       width: 75px;
       height: 75px;
       flex-shrink: 0;
-      margin-left: $spacing;
-      margin-right: $spacing--small;
+      margin: 0 $spacing--small $spacing $spacing;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         width: 80px;
         height: 80px;
         margin-left: $spacing--medium;
@@ -123,7 +159,7 @@
     flex-grow: 1;
     font-family: $font-serif;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(16px, 27px);
     }
   }
@@ -134,18 +170,16 @@
 
     & > .c-content-type-badge,
     .c-learning-path-badge {
-      margin: 0 $spacing--small/2;
+      margin: 0 $spacing--small / 2 0 $spacing;
+    }
+    & > .c-content-type-badge + span {
+      padding-right: $spacing;
     }
   }
 
   &__additional {
     display: flex;
     align-items: center;
-    margin-left: $spacing--small;
-
-    @include mq(tablet) {
-      margin-left: $spacing;
-    }
   }
 
   &__content-type-label {
@@ -153,8 +187,9 @@
     text-transform: uppercase;
     @include font-size(14px, 18px);
     display: none;
+    margin-top: 2px;
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       display: inline;
     }
   }
@@ -168,7 +203,7 @@
 
     @include font-size(14px, 32px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(16px, 32px);
     }
 
@@ -177,7 +212,7 @@
       height: 12px;
       margin: 0 $spacing--small/3;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         margin: 0 $spacing--small/2;
       }
     }
@@ -190,18 +225,19 @@
     margin-bottom: $spacing;
     @include font-size(14px, 22px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(16px, 28px);
     }
 
     & > span {
       display: none;
+      text-transform: uppercase;
+      color: $text-light-color;
+      padding-right: $spacing--small;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         display: inline;
       }
-
-      padding-right: $spacing--small;
     }
 
     ul {
@@ -220,7 +256,7 @@
       padding: 0 $spacing--small/2 0 0;
       margin-right: $spacing--small/2;
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         padding: 0 $spacing--small 0 0;
         margin-right: $spacing--small;
       }
@@ -259,12 +295,18 @@
     font-weight: 600;
     @include font-size(16px, 20px);
 
-    @include mq(tablet) {
+    @include mq(desktop) {
       @include font-size(22px, 28px);
     }
 
     a {
-      box-shadow: none;
+      color: $brand-color--dark;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $brand-color--dark;
+      }
     }
   }
 }

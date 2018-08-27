@@ -1,0 +1,145 @@
+@keyframes aurora {
+  0% {
+    background-position: left top;
+  }
+  25% {
+    background-position: right top;
+  }
+  50% {
+    background-position: right bottom;
+  }
+  75% {
+    background-position: left bottom;
+  }
+  100% {
+    background-position: left top;
+  }
+}
+
+.c-frontpage-header {
+  height: 150px;
+  background: linear-gradient(45deg, #153758 0%, $brand-color 49%, #217389 85%);
+  background-size: 180% 300%;
+
+  animation: aurora 10s infinite;
+  position: relative;
+
+  @include mq(tablet) {
+    height: 310px;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__inner-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: radial-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.15)
+    );
+    background-size: 150% 200%;
+    animation: aurora 11s infinite;
+  }
+
+  &__menu-button {
+    color: white;
+    background: none;
+    border: 1px solid white;
+    padding: 0 $spacing--small;
+    border-radius: 4px;
+    font-weight: 600;
+    @include font-size(16px, 45px);
+    height: 45px;
+    min-width: 80px;
+    display: none; // TODO: Fix Menu on Frontpage, then show again..
+    @include mq(tablet) {
+      display: none;
+    }
+  }
+
+  .c-logo {
+    max-width: 120px;
+
+    @include mq(tablet) {
+      max-width: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    padding: $spacing--medium $spacing--small $spacing--small $spacing--small;
+    justify-content: space-between;
+
+    @include mq(tablet) {
+      padding-top: 0;
+      align-items: center;
+    }
+
+    .c-search-field {
+      flex: 1 0 auto;
+      margin-left: $spacing--large;
+      display: none;
+
+      @include mq(tablet) {
+        display: flex;
+      }
+    }
+  }
+
+  &__navigation {
+    display: none;
+    justify-content: flex-end;
+    padding: $spacing 0 $spacing--small 0;
+
+    @include mq(tablet) {
+      display: flex;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    li {
+      margin: 0 $spacing--small 0 0;
+      padding: 0 $spacing--small 0 0;
+      position: relative;
+
+      &:after {
+        right: 0;
+        top: 9px;
+        position: absolute;
+        display: block;
+        content: '';
+        height: 15px;
+        width: 1px;
+        background: $brand-color--light;
+      }
+
+      &:last-child {
+        margin: 0;
+        padding: 0;
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    a {
+      @include font-size(14px, 18px);
+      color: $white;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

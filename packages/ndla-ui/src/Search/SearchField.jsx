@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from 'ndla-icons/common';
@@ -16,32 +16,27 @@ import SafeLink from '../common/SafeLink';
 import ActiveFilters from './ActiveFilters';
 import ContentTypeResult from './ContentTypeResult';
 
+import { ContentTypeResultShape } from '../shapes';
+
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  searchResultHeading: PropTypes.string.isRequired,
-  allResultButtonText: PropTypes.string.isRequired,
-  allContentTypeResultLabel: PropTypes.string.isRequired,
   searchFieldTitle: PropTypes.string.isRequired,
-  contentTypeResultNoHit: PropTypes.string.isRequired,
+
+  // required if search result
+  searchResultHeading: PropTypes.string,
+  allResultButtonText: PropTypes.string,
+  contentTypeResultShowMoreLabel: PropTypes.string,
+  contentTypeResultShowLessLabel: PropTypes.string,
+  contentTypeResultNoHit: PropTypes.string,
 });
 
-const searchResultShape = PropTypes.arrayOf(
-  PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.node.isRequired,
-    totalCount: PropTypes.number.isRequired,
-    showAllLinkUrl: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        display: PropTypes.string.isRequired,
-      }),
-    ),
-  }),
-);
-
-const SearchResult = ({ result, messages, allResultUrl }) => (
+const SearchResult = ({
+  result,
+  messages,
+  allResultUrl,
+  resourceToLinkProps,
+}) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {messages.searchResultHeading}
@@ -50,9 +45,11 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
       {result.map(contentTypeResult => (
         <ContentTypeResult
           contentTypeResult={contentTypeResult}
+          resourceToLinkProps={resourceToLinkProps}
           key={contentTypeResult.title}
           messages={{
-            allResultLabel: messages.allContentTypeResultLabel,
+            allResultLabel: messages.contentTypeResultShowMoreLabel,
+            showLessResultLabel: messages.contentTypeResultShowLessLabel,
             noHit: messages.contentTypeResultNoHit,
           }}
         />
@@ -65,74 +62,107 @@ const SearchResult = ({ result, messages, allResultUrl }) => (
 );
 
 SearchResult.propTypes = {
-  result: searchResultShape,
+  result: PropTypes.arrayOf(ContentTypeResultShape),
+  resourceToLinkProps: PropTypes.func.isRequired,
   messages: messagesShape.isRequired,
   allResultUrl: PropTypes.string.isRequired,
 };
 
-const SearchField = ({
-  placeholder,
-  value,
-  onChange,
-  filters,
-  onFilterRemove,
-  searchResult,
-  messages,
-  allResultUrl,
-}) => {
-  const modifiers = [];
+class SearchField extends Component {
+  constructor(props) {
+    super(props);
 
-  const hasSearchResult = searchResult && searchResult.length > 0;
+    this.inputRef = null;
+    this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
+  }
 
-  let searchResultView = null;
+  handleOnFilterRemove(value, filterName) {
+    this.props.onFilterRemove(value, filterName);
+    this.inputRef.focus();
+  }
 
-  if (hasSearchResult) {
-    modifiers.push('has-search-result');
+  render() {
+    const {
+      placeholder,
+      value,
+      onChange,
+      filters,
+      searchResult,
+      messages,
+      allResultUrl,
+      onSearch,
+      resourceToLinkProps,
+    } = this.props;
 
-    searchResultView = (
-      <SearchResult
-        result={searchResult}
-        messages={messages}
-        searchString={value}
-        allResultUrl={allResultUrl}
-      />
+    const modifiers = [];
+
+    const hasSearchResult = searchResult && searchResult.length > 0;
+
+    let searchResultView = null;
+
+    if (hasSearchResult) {
+      modifiers.push('has-search-result');
+
+      searchResultView = (
+        <SearchResult
+          result={searchResult}
+          messages={messages}
+          searchString={value}
+          allResultUrl={allResultUrl}
+          resourceToLinkProps={resourceToLinkProps}
+        />
+      );
+    }
+
+    if (filters && filters.length > 0) {
+      modifiers.push('has-filter');
+    }
+
+    return (
+      <form {...classes('', modifiers)} onSubmit={onSearch}>
+        <input
+          ref={ref => {
+            this.inputRef = ref;
+          }}
+          title={messages.searchFieldTitle}
+          type="search"
+          {...classes('input')}
+          aria-autocomplete="list"
+          autoComplete="off"
+          id="search"
+          name="search"
+          placeholder={placeholder}
+          aria-label={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+        <div {...classes('filters')}>
+          {filters &&
+            filters.length > 0 && (
+              <ActiveFilters
+                filters={filters}
+                onFilterRemove={this.handleOnFilterRemove}
+              />
+            )}
+        </div>
+        <button
+          tabIndex="-1"
+          {...classes('button')}
+          type="submit"
+          value="Search">
+          <SearchIcon />
+        </button>
+        {searchResultView}
+      </form>
     );
   }
-
-  if (filters && filters.length > 0) {
-    modifiers.push('has-filter');
-  }
-
-  return (
-    <div {...classes('', modifiers)}>
-      <input
-        title={messages.searchFieldTitle}
-        type="search"
-        {...classes('input')}
-        aria-autocomplete="list"
-        autoComplete="off"
-        id="search"
-        name="search"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      <div {...classes('filters')}>
-        <ActiveFilters filters={filters} onFilterRemove={onFilterRemove} />
-      </div>
-      <button tabIndex="-1" {...classes('button')} type="submit" value="Search">
-        <SearchIcon />
-      </button>
-      {searchResultView}
-    </div>
-  );
-};
+}
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,
-  onFilterRemove: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
@@ -140,8 +170,10 @@ SearchField.propTypes = {
     }),
   ),
   messages: messagesShape,
-  searchResult: searchResultShape,
+  searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
+  resourceToLinkProps: PropTypes.func,
+  onFilterRemove: PropTypes.func,
 };
 
 export default SearchField;

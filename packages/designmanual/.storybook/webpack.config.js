@@ -20,6 +20,14 @@ module.exports = {
         ],
         include: path.resolve(__dirname, '../../ndla-ui/src/'),
       },
+      {
+        test: /\.(png|jpg|svg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          context: '',
+        },
+      },
     ],
   },
 };

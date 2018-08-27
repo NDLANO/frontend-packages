@@ -8,12 +8,13 @@ script:
 - yarn bootstrap
 - yarn lint
 - yarn test
+- yarn build-storybook
 cache:
   yarn: true
   directories:
   - node_modules
 after_success:
-- travis_wait node scripts/run-ndla-script.js now-travis --docker
+- travis_wait node scripts/run-ndla-script.js now-travis --static packages/designmanual/storybook-static
 notifications:
   slack:
     on_success: change

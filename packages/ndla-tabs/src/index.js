@@ -10,4 +10,7 @@ import Tabs from './Tabs';
 
 export { resetIdCounter } from 'react-tabs';
 
+export { default as FilterTabs } from './FilterTabs';
+export { default as ArticleTabs } from './ArticleTabs';
+
 export default Tabs;

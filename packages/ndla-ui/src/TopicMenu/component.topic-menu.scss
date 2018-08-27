@@ -9,6 +9,9 @@
 
 /* 1. */
 
+$padding-left-narrow: 47px;
+$link-height: 52px;
+
 .c-topic-menu-toggle-button {
   position: relative;
   background: transparent;
@@ -118,30 +121,15 @@
 }
 
 .c-topic-menu__subject-navigation {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-  flex-flow: column;
-
-  @include mq(wide) {
-    flex-flow: row;
-  }
-}
-.c-topic-menu__subject-structure {
-  flex-grow: 1;
-  flex-shrink: 0;
-  display: flex;
-  align-items: stretch;
   position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
 
   @include mq(desktop) {
     padding-bottom: $spacing--large;
     min-height: 500px;
-  }
-
-  @include mq(wide) {
-    width: 75%;
-    padding-bottom: 0;
+    flex-flow: row;
   }
 }
 
@@ -157,24 +145,22 @@
   flex-grow: 1;
   flex-shrink: 0;
   z-index: 30;
-  animation-name: fadeInLeft;
-  animation-duration: 0.2s;
-  padding: $spacing--small $spacing $spacing--large ($spacing--large +
-        $spacing--small);
+  padding: 0 $spacing $spacing--large $padding-left-narrow;
+  position: relative;
+  z-index: 1;
 
   @include mq(desktop) {
     margin-top: $spacing;
     padding: 0 $spacing 0 ($spacing--medium - $spacing--small);
-    border-right: 1px solid $brand-color--light;
-    width: 33.33333%;
+    border-left: 1px solid $brand-color--light;
+    width: 25%;
     flex-grow: 0;
   }
 
-  &--no-border {
-    border-right: 0;
-  }
-
   &--main {
+    padding-bottom: 0;
+    flex-grow: 0;
+    border-left: 0;
     .c-topic-menu__link--big {
       @include mq($until: desktop) {
         display: none;
@@ -199,42 +185,102 @@
 }
 
 .c-topic-menu__content-type-results {
-  background: $white;
-  flex-grow: 1;
-  padding: 0 $spacing--large 0 ($spacing--large + $spacing--small);
-  flex-shrink: 0;
+  margin-top: $spacing;
+  padding-left: $spacing--small;
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
 
   @include mq(wide) {
-    width: 25%;
-    margin-top: $spacing;
     background: transparent;
-    border-left: 1px solid $brand-color--light;
-    padding: 0 $spacing--medium;
     min-height: 500px;
   }
 
-  h1 {
+  & > h1 {
     @include font-size(16px, 20px);
-    margin-bottom: $spacing--medium;
+    margin-bottom: $spacing;
     margin-top: $spacing--large;
+    text-transform: uppercase;
 
     @include mq(wide) {
       margin-top: 0;
       min-height: 30px;
-      @include font-size(16px, 30px);
-      margin-bottom: $spacing--medium;
+      @include font-size(16px, $link-height);
+    }
+  }
+}
+
+.c-topic-menu {
+  &__competence {
+    overflow: hidden;
+    flex-grow: 1;
+    background: $brand-color--lighter;
+
+    padding: $spacing;
+
+    @include mq(desktop) {
+      padding: $spacing--large;
+      margin: -($spacing + $spacing--small) $spacing 0 $spacing--medium;
+      min-height: 70vh;
     }
 
-    span {
-      text-transform: uppercase;
-      padding-right: $spacing--small;
+    & > * {
+      animation-name: fadeInLeft;
+      animation-duration: 0.5s;
     }
+  }
 
-    a {
+  &__competence-toggle-button {
+    @include inuit-font-size(14px, 18px);
+    font-weight: $font-weight-bold;
+    color: $brand-color;
+    background: transparent;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+    display: none;
+
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+
+  &__competence-close-button {
+    @include mq(desktop) {
       display: none;
-      @include mq(desktop) {
-        display: inline;
-      }
+    }
+
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 0;
+    color: $brand-color;
+    background: none;
+    @include font-size(16px, 20px);
+    margin-bottom: $spacing;
+
+    .c-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 9px;
+    }
+  }
+
+  &__competence-open-button {
+    background: none;
+    border: 0;
+    margin: 0 $spacing $spacing--large $padding-left-narrow;
+    padding: 0 $spacing--small;
+    height: $link-height;
+    color: $brand-color;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    animation-name: fadeInLeft;
+    animation-duration: 0.5s;
+    cursor: pointer;
+
+    @include mq(desktop) {
+      display: none;
     }
   }
 }
@@ -243,10 +289,14 @@
 .c-topic-menu__subject {
   flex-shrink: 0;
   margin-top: 0;
-  margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 ($spacing--large + $spacing);
+  margin-bottom: $spacing;
+  padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
+
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
 
   @include mq(desktop) {
+    animation-name: none;
     margin-bottom: $spacing--small;
     padding-left: $spacing--medium;
   }
@@ -257,24 +307,50 @@
     }
   }
 
-  & > h1 {
-    margin: 0 0 $spacing--medium 0;
-    @include inuit-font-size(20px);
-    font-weight: 600;
+  &__header {
+    margin: 0 0 $spacing 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
     @include mq(desktop) {
-      margin: 0 0 $spacing 0;
-      padding-bottom: $spacing--small;
-      padding-right: $spacing--large;
-      @include inuit-font-size(26px);
       border-bottom: 1px solid rgba($brand-color, 0.3);
+      padding-bottom: $spacing--small;
+    }
+
+    & > h1 {
+      @include inuit-font-size(20px);
+      font-weight: $font-weight-bold;
+      margin: 0;
+
+      @include mq(desktop) {
+        @include inuit-font-size(26px);
+      }
+    }
+  }
+
+  &--hasFilter {
+    margin-bottom: 0;
+
+    & > h1 {
+      margin: 0 0 $spacing--medium 0;
+
+      @include mq(desktop) {
+        margin: 0 0 $spacing 0;
+      }
     }
   }
 
   .c-filter {
+    position: relative;
     &__list {
       padding-top: 0;
       border-top: 0;
+    }
+
+    &__item {
+      margin-bottom: $spacing--small;
     }
 
     &__label {
@@ -296,7 +372,7 @@
   background: none;
   @include font-size(16px, 20px);
   position: absolute;
-  left: 40px;
+  left: 28px;
   top: $spacing;
 
   @include mq(desktop) {
@@ -306,7 +382,7 @@
   .c-icon {
     width: 24px;
     height: 24px;
-    margin-right: $spacing--small;
+    margin-right: 9px;
   }
 }
 
@@ -362,13 +438,17 @@
 .c-topic-menu__back {
   margin-top: $spacing--medium;
   margin-bottom: $spacing--medium;
-  padding: 0 $spacing 0 ($spacing--large + $spacing);
+  padding: 0 $spacing 0 ($padding-left-narrow + $spacing--small);
 
-  @include inuit-font-size(18px, 23px);
+  @include font-size(18px, 23px);
   display: block;
   color: $brand-color;
 
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+
   @include mq(desktop) {
+    animation-name: none;
     margin-left: $spacing--medium;
     padding: $spacing--small 0;
   }
@@ -383,13 +463,12 @@
 }
 
 .c-topic-menu__link {
-  font-weight: 600;
   display: flex;
   align-items: center;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  height: 52px;
+  height: $link-height;
   line-height: 24px;
   padding: 0 $spacing--small;
 
@@ -397,10 +476,14 @@
   animation-name: fadeInLeft;
   animation-duration: 0.5s;
 
+  @include mq(desktop) {
+    font-weight: $font-weight-semibold;
+  }
+
   &:hover,
   &:active,
   &:focus {
-    background-color: $brand-color--tertiary;
+    background-color: $brand-color--light;
 
     span {
       box-shadow: $link--hover;
@@ -419,6 +502,10 @@
     &:active,
     &:focus {
       background-color: transparent;
+
+      .c-topic-menu__link-target {
+        box-shadow: $link;
+      }
     }
 
     @include mq(desktop) {
@@ -455,7 +542,7 @@
 
   &--active {
     & > .c-topic-menu__link {
-      background-color: $brand-color--tertiary;
+      background-color: $brand-color--light;
     }
   }
 }

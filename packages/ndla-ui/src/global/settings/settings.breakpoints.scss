@@ -1,8 +1,10 @@
 $mq-breakpoints: (
   mobile: 320px,
+  mobileWide: 426px,
   tablet: 601px,
   desktop: 981px,
-  wide: 1301px
+  wide: 1301px,
+  ultraWide: 1601px
 );
 
 @import '../../../node_modules/sass-mq/mq';

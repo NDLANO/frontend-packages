@@ -24,32 +24,67 @@ export const Dialog = ({
   messages,
   id,
   labelledby,
+  label,
   modifier,
+  disablePortal,
+  hidden,
+  onClose,
   ...rest
-}) =>
-  createUniversalPortal(
+}) => {
+  const content = (
     <div
-      className={`c-dialog c-dialog--${modifier}`}
+      {...classes('', modifier)}
       data-dialog-id={id}
       role="dialog"
-      aria-hidden="true"
+      aria-hidden={hidden}
       aria-labelledby={labelledby}
+      aria-label={label}
       {...rest}>
-      <div {...classes('content', modifier)}>
-        <button {...classes('close')}>{messages.close}</button>
+      <div {...classes('content')}>
+        <button
+          {...classes('close')}
+          type="button"
+          onClick={() => {
+            if (onClose) {
+              onClose();
+            }
+          }}>
+          {messages.close}
+        </button>
         {children}
       </div>
       <div className="o-backdrop" />
-    </div>,
-    'body',
+    </div>
   );
+
+  if (disablePortal) {
+    return content;
+  }
+
+  return createUniversalPortal(content, 'body');
+};
 
 Dialog.propTypes = {
   id: PropTypes.string.isRequired,
-  labelledby: PropTypes.string.isRequired,
+  labelledby: PropTypes.string,
+  label: PropTypes.string,
+  hidden: PropTypes.bool,
   children: PropTypes.node,
   messages: PropTypes.shape({
     close: PropTypes.string.isRequired,
-  }).isRequired,
-  modifier: PropTypes.string,
+  }),
+  modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  disablePortal: PropTypes.bool,
+  onClose: PropTypes.func,
+};
+
+Dialog.defaultProps = {
+  disablePortal: false,
+  labelledby: null,
+  label: null,
+  hidden: true,
+  onClose: null,
+  messages: {
+    close: 'Lukk',
+  },
 };

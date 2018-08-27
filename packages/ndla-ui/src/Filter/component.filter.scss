@@ -20,15 +20,26 @@
   align-items: center;
   flex-grow: 2;
 
+  & > h1,
+  & > h2,
+  & > h3 {
+    border-bottom: 1px solid $brand-color--light;
+    margin-bottom: $spacing--small;
+
+    @include mq(tablet) {
+      border: none;
+    }
+  }
+
   &__list {
-    list-style: none;
     margin: 0;
     padding: 0;
     top: 80px;
     width: 100%;
-    border-top: 1px solid $brand-color--light;
-    padding-top: $spacing--small;
     font-family: $font;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column;
 
     @include mq(tablet) {
       width: auto;
@@ -36,6 +47,7 @@
       top: 0;
       border: none;
       padding-top: 0;
+      flex-flow: row;
     }
 
     &--float-right {
@@ -50,6 +62,8 @@
 
     &--search,
     &--search-popover {
+      flex-flow: column;
+
       .c-filter {
         &__label {
           display: block;
@@ -72,10 +86,20 @@
         &__label {
           @include font-size(16px, 32px);
 
-          @include mq(tablet) {
+          @include mq(desktop) {
             @include font-size(22px, 32px);
             margin-bottom: $spacing--medium;
           }
+        }
+
+        &__item-wrapper {
+          @include mq(desktop) {
+            columns: 2;
+          }
+        }
+
+        &__item {
+          display: list-item;
         }
       }
     }
@@ -96,16 +120,21 @@
   }
 
   &__label {
-    @include inuit-font-size(16px);
-    display: block;
+    @include font-size(16px, 28px);
+
     @include mq(tablet) {
       margin: 0 $spacing--small;
-      display: inline-block;
     }
 
     &--hidden {
       @include visually-hidden();
     }
+  }
+
+  &__item-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   &__item {
@@ -116,7 +145,7 @@
     border-radius: $border-radius;
     transition: $transition;
     cursor: pointer;
-    @include inuit-font-size(16px, 28px);
+    @include font-size(16px, 28px);
 
     &--hidden {
       display: none;
@@ -158,6 +187,24 @@
         }
       }
     }
+
+    input {
+      &:focus,
+      &:active {
+        & + label {
+          @include restore-outline();
+        }
+      }
+    }
+
+    label {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__icon {
+    margin: 3px 0;
   }
 
   &__input {
@@ -180,13 +227,14 @@
     padding: 0;
     background: $white;
     border: 2px solid $brand-color--tertiary;
-    margin: -5px $spacing--small -5px 3px;
+    margin: 2px $spacing--small 2px 3px;
     border-radius: 2px;
+    flex-shrink: 0;
 
     @include mq(tablet) {
       width: 20px;
       height: 20px;
-      margin: -4px $spacing--small -4px 3px;
+      margin: 4px $spacing--small 4px 3px;
     }
 
     &:before {
@@ -241,5 +289,36 @@
     span {
       margin-right: $spacing;
     }
+  }
+
+  &--background {
+    background-color: $brand-grey--lightest;
+    padding: $spacing $spacing--small $spacing $spacing--small;
+  }
+
+  &--subject {
+    @include mq($until: tablet) {
+      padding: $spacing;
+    }
+
+    .c-filter {
+      &__item {
+        @include mq($until: tablet) {
+          display: block;
+          margin-left: 0;
+          margin-bottom: $spacing;
+        }
+
+        &:last-child {
+          @include mq($until: tablet) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  &__no-filter-selected {
+    color: $text-light-color;
+    @include font-size(16px, 16px);
   }
 }

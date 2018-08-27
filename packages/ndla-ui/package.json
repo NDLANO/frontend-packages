@@ -1,11 +1,12 @@
 {
   "name": "ndla-ui",
-  "version": "0.10.15",
+  "version": "0.13.12",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
+  "sideEffects": false,
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es && npm run build:css",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
@@ -37,12 +38,16 @@
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5",
     "react-bem-helper": "1.4.1",
+    "react-device-detect": "^1.5.9",
+    "react-facebook": "^4.2.1",
     "react-prop-types": "0.4.0",
+    "react-slick": "^0.19.0",
+    "react-syntax-highlighter": "^8.0.1",
     "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
     "prop-types": "^15.6.0",
-    "react": "^15.6.0 || ^16.0.0"
+    "react": "^16.3.2"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",

@@ -1,7 +1,9 @@
 .footer {
   color: $brand-grey-dark;
   padding: $spacing--large $spacing--small;
-  margin-top: $spacing--large;
+  @include mq(desktop) {
+    margin-top: $spacing--large;
+  }
   margin-left: auto;
   margin-right: auto;
   margin-bottom: $spacing;
@@ -47,4 +49,22 @@
 .footer_text {
   margin-bottom: 0;
   margin-top: 0.3em;
+}
+.footer_privacy {
+  tbody {
+    background: #fff;
+  }
+  ul, ol {
+    margin: $spacing $spacing $spacing 0;
+    @include mq(desktop) {
+      margin-left: $spacing--large;
+    }
+  }
+
+  .c-tabs__list {
+    margin: $spacing 0;
+  }
+  .c-table {
+    margin-bottom: $spacing--large;
+  }
 }

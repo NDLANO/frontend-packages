@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const ListAlphebetical = props => (
   <Icon
+    title="ListAlphebetical"
     viewBox="0 0 38.4 32.3"
     data-license="CC-BY 4.0"
     data-source="Knowit"

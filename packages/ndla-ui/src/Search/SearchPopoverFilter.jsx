@@ -35,16 +35,24 @@ class Popover extends Component {
 
   render() {
     const { messages, close, options, onChange } = this.props;
-    const disabled = this.state.values.length === 0;
 
     return (
       <Fragment>
         <div className="o-backdrop" />
-        <div className={classes('popover')}>
-          <button className={classes('popover-close-narrow')} onClick={close}>
+        <div
+          className={classes('popover')}
+          role="dialog"
+          aria-label={messages.filterLabel}>
+          <button
+            type="button"
+            className={classes('popover-close-narrow')}
+            onClick={close}>
             <Back /> <span>{messages.backButton}</span>
           </button>
-          <button className={classes('popover-close-wide')} onClick={close}>
+          <button
+            type="button"
+            className={classes('popover-close-wide')}
+            onClick={close}>
             <span>{messages.closeButton}</span> <Cross />
           </button>
 
@@ -60,7 +68,6 @@ class Popover extends Component {
             }}
           />
           <Button
-            disabled={disabled}
             className={classes('confirm-button')}
             onClick={() => {
               close();
@@ -94,8 +101,9 @@ export class PopoverFilter extends Component {
       isOpen: false,
     };
   }
+
   render() {
-    const { messages, values, ...rest } = this.props;
+    const { messages, values, onChange, ...rest } = this.props;
     const buttonText =
       values.length > 0
         ? messages.hasValuesButtonText
@@ -103,7 +111,7 @@ export class PopoverFilter extends Component {
 
     const buttonContent = (
       <Fragment>
-        <span className={classes('button-text')}>{buttonText}</span>
+        <span>{buttonText}</span>
         <ChevronRight />
       </Fragment>
     );
@@ -119,8 +127,16 @@ export class PopoverFilter extends Component {
         title={buttonContent}
         className={classes()}
         noScrollDisabled
-        buttonClassName={classes('button')}>
-        <Popover messages={messages} {...rest} values={values} />
+        buttonClassName={`${classes('button')} c-button--stripped`}>
+        {onClose => (
+          <Popover
+            close={onClose}
+            onChange={onChange}
+            messages={messages}
+            {...rest}
+            values={values}
+          />
+        )}
       </ClickToggle>
     );
   }
@@ -129,6 +145,7 @@ export class PopoverFilter extends Component {
 PopoverFilter.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
   messages: messagesShape.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default PopoverFilter;

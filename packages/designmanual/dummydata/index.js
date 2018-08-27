@@ -5,7 +5,7 @@ import {
   exerciseResources,
   assessmentResources,
 } from './mockResources';
-import { subjectList } from './mockSubjects';
+import { subjectList, subjectConcepts } from './mockSubjects';
 import {
   firstBrightcoveList,
   secondBrightcoveList,
@@ -17,12 +17,19 @@ import {
   youTubeMockVideo,
 } from './mockYouTube';
 
-import { searchFieldSearchResults } from './mockSearch';
+import {
+  contentTypeResults,
+  searchTabOptions,
+  searchTabFilterOptions,
+} from './mockSearch';
+
+import contentCards from './mockContentCards';
 
 export {
   topicMenu,
   topicList,
   subjectList,
+  subjectConcepts,
   learningPathResources,
   articleResources,
   exerciseResources,
@@ -34,5 +41,8 @@ export {
   secondYouTubeList,
   youTubeMockVideo,
   assessmentResources,
-  searchFieldSearchResults,
+  contentTypeResults,
+  searchTabOptions,
+  searchTabFilterOptions,
+  contentCards,
 };

@@ -11,7 +11,7 @@
     border-color: $subject-material-dark;
 
     svg {
-      color: $subject-material-dark;
+      color: $subject-material-dark !important;
       margin-top: 4px;
     }
 
@@ -24,7 +24,7 @@
     border-color: $tasks-and-activities-dark;
 
     svg {
-      color: $tasks-and-activities-dark;
+      color: $tasks-and-activities-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -37,7 +37,7 @@
 
     svg {
       margin-top: 4px;
-      color: $assessment-resource-dark;
+      color: $assessment-resource-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -50,7 +50,7 @@
 
     svg {
       margin-top: 2px;
-      color: $subject-dark;
+      color: $subject-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -78,7 +78,7 @@
     }
 
     svg {
-      color: $external-learning-resource-dark;
+      color: $external-learning-resource-dark !important;
     }
 
     &.c-content-type-badge--background {
@@ -106,11 +106,44 @@
     }
 
     svg {
-      color: $source-material-dark;
+      color: $source-material-dark !important;
     }
 
     &.c-content-type-badge--background {
       background: $source-material-light;
+    }
+  }
+
+  &--learning-path {
+    border-color: $learning-path-dark;
+
+    &.c-content-type-badge--large {
+      svg {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    &.c-content-type-badge--small {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &.c-content-type-badge--x-small {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    svg {
+      color: $learning-path-dark !important;
+    }
+
+    &.c-content-type-badge--background {
+      background: $learning-path-light;
     }
   }
 
@@ -125,49 +158,23 @@
   }
 
   &--x-small {
-    border: 0;
-
     width: 20px;
     height: 20px;
+    border-width: 0;
 
     @include mq(tablet) {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
     }
 
     svg {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
 
       @include mq(tablet) {
-        width: 15px;
-        height: 15px;
+        width: 12px;
+        height: 12px;
       }
-    }
-
-    &.c-content-type-badge--background {
-      background: none;
-    }
-  }
-}
-
-.c-learning-path-badge {
-  display: inline-flex;
-  align-items: center;
-
-  & > * {
-    flex-shrink: 0;
-  }
-  &__plus {
-    margin: 0 $spacing--small/4;
-    color: $brand-color;
-  }
-
-  &--x-small {
-    @include font-size(16px, 18px);
-
-    @include mq(tablet) {
-      @include font-size(18px, 18px);
     }
   }
 }

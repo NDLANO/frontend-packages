@@ -9,36 +9,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Additional } from 'ndla-icons/common';
 
 const classes = new BEMHelper({
   name: 'filter',
   prefix: 'c-',
 });
 
-const ResourceToggleFilter = props => {
-  const { checked, onClick, label } = props;
-
-  return (
-    <div {...classes('list', 'float-right')}>
-      <div {...classes('item')}>
-        <input
-          {...classes('input')}
-          type="checkbox"
-          name="resource-filter"
-          id="resource-filter"
-          checked={checked}
-          onChange={onClick}
-        />
-        <label htmlFor="resource-filter">
-          <span {...classes('item-checkbox')} />
-          {label}
-          <Additional className="c-icon--20 u-margin-left-tiny" />
-        </label>
-      </div>
+const ResourceToggleFilter = ({ checked, onClick, label }) => (
+  <div {...classes('list', '')}>
+    <div {...classes('item')}>
+      <input
+        {...classes('input')}
+        type="checkbox"
+        name="resource-filter"
+        id="resource-filter"
+        checked={checked}
+        onChange={onClick}
+      />
+      <label htmlFor="resource-filter">
+        <span {...classes('item-checkbox')} />
+        <span {...classes('text')}>{label}</span>
+      </label>
     </div>
-  );
-};
+  </div>
+);
 
 ResourceToggleFilter.propTypes = {
   checked: PropTypes.bool,

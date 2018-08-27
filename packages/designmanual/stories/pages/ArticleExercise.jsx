@@ -13,45 +13,42 @@ import {
   LayoutItem,
   ArticleTitle,
   ArticleWrapper,
-  ArticleByline,
   ArticleIntroduction,
+  ArticleHeaderWrapper,
   Image,
   TasksAndActivitiesBadge,
 } from 'ndla-ui';
 
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-
 import FigureWithLicense from '../article/FigureWithLicense';
-import LicenseExample from '../article/LicenseExample';
-import { Resources } from '../molecules/resources';
+import Resources from '../molecules/resources';
+import ArticleBylineExample from '../molecules/ArticleBylineExample';
+
+import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
 export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleTitle
-          icon={<TasksAndActivitiesBadge background size="large" />}
-          label="Oppgaver og aktiviteter">
-          Lag en brukersti
-        </ArticleTitle>
-        <ArticleIntroduction>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen.
-        </ArticleIntroduction>
-        <ArticleByline
-          authors={[
-            { name: 'Ola Nordnes' },
-            { name: 'Kari Nordnes' },
-            { name: 'Jon Nordgubbe' },
-          ]}
-          updated="12/10/2016"
-          license={getLicenseByAbbreviation('by-nc-nd')}
-          messages={{
-            writtenBy: '',
-            lastUpdated: 'Publisert',
-          }}>
-          <LicenseExample />
-        </ArticleByline>
+        <ArticleHeaderWrapper>
+          <CompetenceGoalsDialogExample
+            wide
+            headingId="article-competence-goals-heading-id"
+          />
+          <ArticleTitle
+            icon={<TasksAndActivitiesBadge background size="large" />}
+            label="Oppgaver og aktiviteter">
+            Lag en brukersti
+          </ArticleTitle>
+          <ArticleIntroduction>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen.
+          </ArticleIntroduction>
+          <ArticleBylineExample id="example-article-license-id" />
+          <CompetenceGoalsDialogExample
+            narrow
+            headingId="article-competence-goals-narrow-heading-id"
+          />
+        </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>

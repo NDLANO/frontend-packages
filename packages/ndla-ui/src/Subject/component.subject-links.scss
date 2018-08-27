@@ -1,0 +1,14 @@
+.c-subject-links {
+  margin-bottom: $spacing--large;
+
+  .c-subject-links__heading {
+    margin: 0 0 $spacing--small 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+}

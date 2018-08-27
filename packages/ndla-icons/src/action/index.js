@@ -12,5 +12,7 @@ export { default as Cross } from './Cross';
 export { default as ExpandLess } from './ExpandLess';
 export { default as ExpandMore } from './ExpandMore';
 export { default as Minus } from './Minus';
+export { default as Pencil } from './Pencil';
 export { default as Plus } from './Plus';
+export { default as RemoveCircle } from './RemoveCircle';
 export { default as RightArrow } from './RightArrow';

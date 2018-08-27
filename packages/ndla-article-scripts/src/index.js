@@ -11,16 +11,24 @@ import {
   removeFactBoxClickListener,
 } from './factBoxScripts';
 
+import { addFilelistTooltipListners } from './fileListScript';
+
 import {
-  addShowDialogClickListeners,
-  removeShowDialogClickListeners,
-  addCloseDialogClickListeners,
   addCopyToClipboardListeners,
   updateIFrameDimensions,
   addEventListenerForResize,
   removeEventListenerForResize,
   toggleLicenseInfoBox,
+  addZoomImageListeners,
 } from './figureScripts';
+
+import {
+  addShowDialogClickListeners,
+  removeShowDialogClickListeners,
+  addCloseDialogClickListeners,
+} from './dialogScripts';
+
+import { initTableScript, removeTableEventListeners } from './tableScripts';
 
 import {
   addDetailsEventListeners,
@@ -34,6 +42,8 @@ import { initAudioPlayers } from './audioPlayerScript';
 import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 
 import { toggleRelatedArticles } from './relatedArticlesToggle';
+
+import { initArticleTabs } from './articleTabScripts';
 
 export {
   forEachElement,
@@ -54,9 +64,15 @@ export const initArticleScripts = () => {
   initAudioPlayers();
   addFootnoteClickListeners();
   toggleRelatedArticles();
+  initTableScript();
+  addZoomImageListeners();
+  addFilelistTooltipListners();
+  initArticleTabs();
 };
 
 export {
+  initTableScript,
+  removeTableEventListeners,
   updateIFrameDimensions,
   addFactBoxClickListener,
   removeFactBoxClickListener,
@@ -73,4 +89,7 @@ export {
   addFootnoteClickListeners,
   toggleLicenseInfoBox,
   toggleRelatedArticles,
+  addZoomImageListeners,
+  addFilelistTooltipListners,
+  initArticleTabs,
 };

@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Zero = props => (
   <Icon
+    title="Zero"
     viewBox="-0.5 0.5 64 64"
     data-license="CC-BY 4.0"
     data-source="Creative Commons"

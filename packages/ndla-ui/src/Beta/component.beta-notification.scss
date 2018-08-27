@@ -1,0 +1,27 @@
+.c-beta-notification {
+  background: $yellow-light;
+  padding: $spacing--large $spacing--small $spacing--large 0;
+  &__heading {
+    color: $brand-color;
+    @include font-size(18px, 22px);
+    margin: 0;
+  }
+  &__text {
+    margin: $spacing--small 0 $spacing 0;
+    @include font-size(18px, 30px);
+  }
+  &__button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  @include mq($until: tablet) {
+    padding: $spacing;
+    &__text {
+      @include font-size(16px, 24px);
+    }
+    &__button-wrapper {
+      justify-content: center;
+    }
+  }
+}

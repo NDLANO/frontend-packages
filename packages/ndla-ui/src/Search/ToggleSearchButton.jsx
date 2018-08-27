@@ -54,6 +54,7 @@ const ToggleSearchButton = ({ messages, children, isOpen, onToggle }) => {
       isOpen={isOpen}
       onToggle={onToggle}
       title={buttonContent}
+      alwaysRenderChildren
       className={classes()}
       buttonClassName={classes('button', 'wide')}>
       {children}
@@ -65,7 +66,7 @@ ToggleSearchButton.propTypes = {
   messages: PropTypes.shape({
     buttonText: PropTypes.string.isRequired,
   }).isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
 };

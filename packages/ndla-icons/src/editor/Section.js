@@ -12,6 +12,7 @@ import Icon from '../Icon';
 
 const Section = props => (
   <Icon
+    title="Section"
     viewBox="0 0 32 32"
     data-license="CC-BY 4.0"
     data-source="Icomoon"

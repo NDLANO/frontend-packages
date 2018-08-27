@@ -29,11 +29,9 @@ function loadFile(fileName) {
   return undefined;
 }
 
-function consumeSourceMap(sourceMapData) {
-  const mapConsumer = new SourceMap.SourceMapConsumer(sourceMapData);
-  return {
-    mapConsumer,
-  };
+async function consumeSourceMap(sourceMapData) {
+  const mapConsumer = await new SourceMap.SourceMapConsumer(sourceMapData);
+  return mapConsumer;
 }
 
 function printSourceLine(mapConsumer, orgPos) {
@@ -90,9 +88,7 @@ async function fetchSourceMapFile(url) {
 }
 
 function getSourceMapFileNames(assets) {
-  return Object.keys(assets)
-    .map(key => assets[key])
-    .filter(name => name.indexOf('.js.map') > -1);
+  return Object.keys(assets).map(key => `${assets[key].js}.map`);
 }
 
 async function collectSourceMaps(argv, url) {
@@ -110,18 +106,18 @@ async function collectSourceMaps(argv, url) {
   if (url) {
     const { resource, protocol, port } = parseUrl(url);
     const base = resource + (port ? `:${port}` : '');
-    const assetsUrl = `${protocol}://${base}/assets/assets.json`;
+    const assetsUrl = `${protocol}://${base}/static/assets.json`;
     const assets = await fetchAssets(assetsUrl);
     const sourceMapFileNames = getSourceMapFileNames(assets);
     return Promise.all(
       sourceMapFileNames.map(async fileName => {
-        const urlToSourceMap = `${protocol}://${base}/assets/${fileName}`;
+        const urlToSourceMap = `${protocol}://${base}${fileName}`;
         const content = await fetchSourceMapFile(urlToSourceMap);
-        const { mapConsumer } = consumeSourceMap(content);
+        const mapping = await consumeSourceMap(content);
         const name = path.basename(fileName).replace('.map', '');
         return {
           name,
-          mapping: mapConsumer,
+          mapping,
         };
       }),
     );

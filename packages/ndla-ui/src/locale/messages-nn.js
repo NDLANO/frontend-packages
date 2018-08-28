@@ -208,6 +208,7 @@ const messages = {
     tooltipCoreTopic: 'Kjernestoff er fagstoff',
     tooltipAdditionalTopic: 'Tilleggsstoff er fagstoff',
     additionalTooltip: 'Tilleggsstoff',
+    shortcutsTooltip: 'Vis {count} artikler i dette emnet',
     dialogTooltip: 'Kva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
     dialogText1:

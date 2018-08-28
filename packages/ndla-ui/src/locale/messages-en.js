@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2018-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -19,8 +19,7 @@ const messages = {
   },
   newsLetter: {
     heading: 'Newsletter',
-    description:
-      'Get access to new learning material and what is current at the moment.',
+    description: 'Stay updated! Subscribe to the latest news from NDLA.',
     mainLinkName: 'Sign up',
     iconLinkName: 'Sign up for newsletters',
   },
@@ -51,6 +50,7 @@ const messages = {
       levels: 'More levels',
       'language-filter': 'More languages',
       subjects: 'Change subject',
+      noFilter: 'No filter choosen',
     },
     hideLabel: {
       contentTypes: 'Hide content types',
@@ -67,7 +67,7 @@ const messages = {
     },
     searchResultMessages: {
       searchStringLabel: 'You searched on:',
-      subHeading: '{totalCount} hits in Ndla',
+      subHeading: '{totalCount} hits in NDLA',
     },
     searchResultListMessages: {
       subjectsLabel: 'Open in subject:',
@@ -77,15 +77,15 @@ const messages = {
     },
     searchPageMessages: {
       filterHeading: 'Filter',
-      resultHeading: '{totalCount} hits in Ndla',
+      resultHeading: '{totalCount} hits in NDLA',
       narrowScreenFilterHeading: '{totalCount} hits on «{query}»',
       dropdownBtnLabel: 'More content types',
     },
     searchFilterMessages: {
       backButton: 'Back to filter',
       filterLabel: 'Chose subjects',
-      confirmButton: 'Use subject',
-      hasValuesButtonText: 'Change subject',
+      confirmButton: 'Refresh filter',
+      hasValuesButtonText: 'More subjects',
       noValuesButtonText: 'Pick subject',
     },
   },
@@ -101,7 +101,7 @@ const messages = {
       showLess: 'Show less',
     },
     mostRead: {
-      heading: 'Most read',
+      heading: 'Most used',
     },
     editorsChoices: {
       heading: 'Editor choices from the subject',
@@ -148,7 +148,7 @@ const messages = {
     socialMedia: {
       heading: 'Follow us',
       description:
-        'NDLA has many Facebook and Twitter accounts. Find the one that suits you and follow us!',
+        'NDLA has several Facebook- and Twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },
@@ -167,18 +167,13 @@ const messages = {
       studiespesialiserende: 'Specialization',
       imported: 'Imported subjects',
     },
-    errorDescription: 'Sorry, an error occurd while loading the subjects.',
-    betaMessages: {
-      heading: 'Hi!',
-      text: `You have entered our new webpages. We are trying out
-      a new solution on selected subjects and will ensure that everything
-      works as it should before school starts. If you experience any issues
-      we appriciate if you send us a message. Contact us on the "ask NDLA"
-      at the bottom left on the pages.`,
-      readmoreText: 'Read more at om.ndla.no',
-      readmoreLink: 'http://www.om.ndla.no',
-      buttonText: 'Ok, now I know',
+    film: {
+      header: 'NDLA film',
+      text:
+        'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
+      linkLabel: 'Go to NDLA film',
     },
+    errorDescription: 'Sorry, an error occurd while loading the subjects.',
   },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',
@@ -188,7 +183,7 @@ const messages = {
       close: 'Close',
       goTo: 'Go to',
       search: 'Search',
-      subjectOverview: 'Subject overview',
+      subjectOverview: 'All subjects',
       title: 'Menu',
       subjectPage: 'Subject front page',
       learningResourcesHeading: 'Educational Resources',
@@ -196,8 +191,6 @@ const messages = {
       contentTypeResultsShowMore: 'Show more',
       contentTypeResultsShowLess: 'Show Less',
       contentTypeResultsNoHit: 'No hits',
-      betaInfo: 'Du tester nå de nye nettsidene. ',
-      readMore: 'Les mer om nye NDLA.no',
     },
   },
   logo: {
@@ -216,7 +209,6 @@ const messages = {
     tooltipAdditionalTopic:
       'Additional content is a subject that is not on the curriculum',
     additionalTooltip: 'Additional content is not on the curriculum',
-    shortcutsTooltip: 'Show {count} articles in this subject',
     dialogTooltip: 'What is core content and additional content?',
     dialogHeading: 'Core content and additional content',
     dialogText1:

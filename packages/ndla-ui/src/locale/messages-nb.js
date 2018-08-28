@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2018-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -19,8 +19,7 @@ const messages = {
   },
   newsLetter: {
     heading: 'Nyhetsbrev',
-    description:
-      'Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet.',
+    description: 'Hold deg oppdatert. Abonnér på siste nytt fra NDLA.',
     mainLinkName: 'Meld deg på',
     iconLinkName: 'Meld deg på nyhetsbrev',
   },
@@ -44,6 +43,7 @@ const messages = {
       levels: 'Nivå',
       'language-filter': 'Språk',
       subjects: 'Fag',
+      noFilter: 'Ingen filter valgt',
     },
     showLabel: {
       contentTypes: 'Flere innholdstyper',
@@ -66,7 +66,7 @@ const messages = {
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
-      subHeading: '{totalCount} treff i Ndla',
+      subHeading: '{totalCount} treff i NDLA',
     },
     searchResultListMessages: {
       subjectsLabel: 'Åpne i fag:',
@@ -76,15 +76,15 @@ const messages = {
     },
     searchPageMessages: {
       filterHeading: 'Filter',
-      resultHeading: '{totalCount} treff i Ndla',
+      resultHeading: '{totalCount} treff i NDLA',
       narrowScreenFilterHeading: '{totalCount} treff på «{query}»',
       dropdownBtnLabel: 'Flere innholdstyper',
     },
     searchFilterMessages: {
       backButton: 'Tilbake til filter',
       filterLabel: 'Velg fag',
-      confirmButton: 'Bruk fag',
-      hasValuesButtonText: 'Bytt fag',
+      confirmButton: 'Oppdater filter',
+      hasValuesButtonText: 'Flere fag',
       noValuesButtonText: 'Velg fag',
     },
   },
@@ -99,7 +99,7 @@ const messages = {
       showLess: 'Vis færre',
     },
     mostRead: {
-      heading: 'Mest lest',
+      heading: 'Mest brukt',
     },
     editorsChoices: {
       heading: 'Litt forskjellig fra faget',
@@ -145,7 +145,7 @@ const messages = {
     socialMedia: {
       heading: 'Følg oss',
       description:
-        'NDLA har mange Facebook og Twitter kontoer. Finn den som passer for deg og følg oss!',
+        'NDLA har mange Facebook- og Twitterkontoer. Finn den som passer for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },
@@ -155,7 +155,7 @@ const messages = {
       description:
         'NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
       mainLink: {
-        name: 'Mer om Ndla',
+        name: 'Mer om NDLA',
       },
     },
     category: {
@@ -165,17 +165,11 @@ const messages = {
       imported: 'Spoltefag',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
-    betaMessages: {
-      heading: 'Hei!',
-      text: `Du har nå kommet inn på de nye nettsidene våre.
-        Vi prøver ut en ny løsning i utvalgte fag og vil
-        forsikre oss om at alt virker som det skal før skolestart.
-        Får du problemer på sidene, setter vi pris på om du sender
-        oss en melding. Kontakt oss på "Spør NDLA" nederst til
-        venstre på sidene.`,
-      readmoreText: 'Les mer på om.ndla.no',
-      readmoreLink: 'http://www.om.ndla.no',
-      buttonText: 'Ok, nå vet jeg det',
+    film: {
+      header: 'NDLA film',
+      text:
+        'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
+      linkLabel: 'Gå til NDLA film',
     },
   },
   meta: {
@@ -187,7 +181,7 @@ const messages = {
       close: 'Lukk',
       goTo: 'Gå til',
       search: 'Søk',
-      subjectOverview: 'Fagoversikt',
+      subjectOverview: 'Alle fag',
       title: 'Meny',
       subjectPage: 'Fagforside',
       learningResourcesHeading: 'Læringsressurser',
@@ -195,8 +189,6 @@ const messages = {
       contentTypeResultsShowMore: 'Vis mer',
       contentTypeResultsShowLess: 'Vis mindre',
       contentTypeResultsNoHit: 'Ingen treff',
-      betaInfo: 'Du tester nå de nye nettsidene. ',
-      readMore: 'Les mer om nye NDLA.no',
     },
   },
   logo: {
@@ -212,10 +204,9 @@ const messages = {
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
     shortcutButtonText: 'Lærestoff',
-    tooltipCoreTopic: 'Kjernestoff er fagstoff som er på pensum',
-    tooltipAdditionalTopic: 'Tilleggsstoff er fagstoff som ikke er på pensum',
-    additionalTooltip: 'Tilleggsstoff er ikke på pensum',
-    shortcutsTooltip: 'Vis {count} artikler i dette emnet',
+    tooltipCoreTopic: 'Kjernestoff',
+    tooltipAdditionalTopic: 'Tilleggsstoff',
+    additionalTooltip: 'Tilleggsstoff',
     dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
     dialogText1:

@@ -35,6 +35,7 @@ const ResourceGroup = ({
     </header>
     {resources.length > 0 ? (
       <ResourceList
+        title={title}
         resourceToLinkProps={resourceToLinkProps}
         onClick={toggleAdditionalResources}
         showAdditionalResources={showAdditionalResources}

@@ -36,6 +36,7 @@ import RelatedArticleListExample, {
   RelatedArticleMixedList,
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
+import { LanguageSelector } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 
@@ -184,13 +185,11 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
+        <LanguageSelector />
         <TopicIntroductionList
-          shortcutAlwaysExpanded
           toTopic={() => '#'}
-          messages={{
-            shortcutButtonText: 'Lærestoff',
-          }}
           topics={topicList}
+          toggleAdditionalCores={() => {}}
         />
       </StoryBody>
     </div>

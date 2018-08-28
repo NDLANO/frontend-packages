@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/styles/hljs';
 
 import Tabs from 'ndla-tabs';
-import { uuid } from 'ndla-util';
+import { uuid, copyTextToClipboard } from 'ndla-util';
 import { Button } from 'ndla-ui';
 import { Copy } from 'ndla-icons/action';
 
@@ -17,18 +17,9 @@ const statusMessages = {
   3: ['Klar for bruk', 'safe'],
 };
 
-const classes = BEMHelper('c-styleguide');
+const classes = BEMHelper('c-componentinfo');
 
-const copyToClipboard = str => {
-  const el = document.createElement('textarea');
-  el.value = str;
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
-};
-
-class Styleguide extends Component {
+class ComponentInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,7 +48,7 @@ class Styleguide extends Component {
           <Fragment>
             <Button
               onClick={() => {
-                copyToClipboard(reactCode);
+                copyTextToClipboard(reactCode);
                 this.setState(
                   {
                     coping: true,
@@ -134,7 +125,7 @@ class Styleguide extends Component {
   }
 }
 
-Styleguide.propTypes = {
+ComponentInfo.propTypes = {
   reactCode: PropTypes.string,
   messages: PropTypes.arrayOf(PropTypes.shape()),
   status: PropTypes.oneOf([0, 1, 2, 3]),
@@ -142,7 +133,7 @@ Styleguide.propTypes = {
   children: PropTypes.node,
 };
 
-Styleguide.defaultProps = {
+ComponentInfo.defaultProps = {
   reactCode: `console.log('Nothing added yet..')`,
   messages: null,
   status: 0,
@@ -150,4 +141,4 @@ Styleguide.defaultProps = {
   children: null,
 };
 
-export default Styleguide;
+export default ComponentInfo;

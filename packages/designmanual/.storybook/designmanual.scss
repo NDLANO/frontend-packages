@@ -1,4 +1,6 @@
-.c-styleguide {
+@import '../../ndla-ui/src/main';
+
+.c-componentinfo {
   > .c-tabs {
     margin-left: 0 !important;
     > .c-tabs__list {
@@ -35,5 +37,9 @@
     &--safe {
       background: $external-learning-resource-light;
     }
+  }
+  &__warning-cell {
+    background: $red;
+    color: #fff;
   }
 }

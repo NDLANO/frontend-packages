@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Tooltip, Styleguide } from 'ndla-ui';
+import { Tooltip } from 'ndla-ui';
+import ComponentInfo from '../ComponentInfo';
 
 const TooltipExample = () => (
-  <Styleguide
+  <ComponentInfo
     reactCode={`
       <Tooltip
         align="right"
@@ -64,7 +65,7 @@ const TooltipExample = () => (
         <div className="c-button c-button--outline">Bunn</div>
       </Tooltip>
     </div>
-  </Styleguide>
+  </ComponentInfo>
 );
 
 export default TooltipExample;

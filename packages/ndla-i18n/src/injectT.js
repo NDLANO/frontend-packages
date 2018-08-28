@@ -26,7 +26,6 @@ export const injectT = (WrappedComponent, prefix = '') => {
   };
 
   InjectT.displayName = `InjectT(${getDisplayName(WrappedComponent)})`;
-
   return hoistNonReactStatics(InjectT, WrappedComponent);
 };
 

@@ -1,3 +1,8 @@
+import { addDecorator } from '@storybook/react';
+import { LanguageWrapper } from './LanguageWrapper';
+
+addDecorator(LanguageWrapper);
+
 require('./welcome');
 require('./concepts');
 require('./basic-styles');
@@ -9,3 +14,4 @@ require('./licenses');
 require('./produksjonssystem');
 require('./beta');
 require('./experimental');
+require('./messages');

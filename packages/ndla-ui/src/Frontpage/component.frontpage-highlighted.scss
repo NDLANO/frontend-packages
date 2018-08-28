@@ -7,9 +7,5 @@
 
   &__heading {
     margin: 0 0 $spacing--small 0;
-
-    @include mq(tablet) {
-      margin: 0 0 $spacing 0;
-    }
   }
 }

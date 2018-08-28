@@ -5,6 +5,7 @@ import {
   FrontpageSubjectsWrapper,
   FrontpageSubjectsSection,
   FrontpageHighlighted,
+  FrontpageFilm,
   ContentCard,
   OneColumn,
   FrontpageInfo,
@@ -16,6 +17,7 @@ import { breakpoints } from 'ndla-util';
 import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
 
 import { contentCards } from '../../dummydata/index';
+import NdlaFilmIllustration from '../../images/film_illustrasjon.png';
 
 class FrontpageExample extends Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class FrontpageExample extends Component {
           searchFieldValue=""
           logoTo="#"
           onSearchFieldChange={() => {}}
+          onSearch={() => {}}
           searchFieldPlaceholder="Søk etter f.eks emner, lærestoff, nøkkelord …"
           messages={{
             searchFieldTitle: 'Søk',
@@ -324,6 +327,7 @@ class FrontpageExample extends Component {
             <FrontpageSearchSection
               heading="Søk"
               searchFieldValue=""
+              onSearch={() => {}}
               onSearchFieldChange={() => {}}
             />
             <FrontpageHighlighted heading="Aktuelt">
@@ -345,10 +349,20 @@ class FrontpageExample extends Component {
                 </div>
               ))}
             </FrontpageHighlighted>
+            <FrontpageFilm
+              imageUrl={NdlaFilmIllustration}
+              url="https://ndla.no/nb/film"
+              messages={{
+                header: 'NDLA film',
+                linkLabel: 'Gå til NDLA film',
+                text:
+                  'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
+              }}
+            />
             <FrontpageInfo>
               <InfoWidget
                 heading="Nyhetsbrev"
-                description="Få tilgang til det som er nytt for undervisningen og aktuelt for tidspunktet"
+                description="Hold deg oppdatert. Abonnér på siste nytt fra NDLA."
                 mainLink={{
                   name: 'Meld deg på',
                   url: '#1',
@@ -362,7 +376,7 @@ class FrontpageExample extends Component {
               />
               <InfoWidget
                 heading="Følg oss"
-                description="Ndla har mange Facebook og Twitter kontoer. Finn den som passer for deg og følg oss!"
+                description="NDLA har mange Facebook og Twitterkontoer. Finn den som passer for deg og følg oss!"
                 mainLink={{
                   name: 'Følg oss',
                   url: '#2',
@@ -384,7 +398,7 @@ class FrontpageExample extends Component {
                 heading="Om NDLA"
                 description="NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid."
                 mainLink={{
-                  name: 'Mer om Ndla',
+                  name: 'Mer om NDLA',
                   url: '#5',
                 }}
               />

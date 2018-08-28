@@ -139,6 +139,9 @@
 
   &--menu, &--search {
     padding: $spacing--small $spacing $spacing--small $spacing--small;
+    @include mq($until: mobileWide) {
+      padding-left: 0;
+    }
   }
   .c-competence-goals {
     &__heading {

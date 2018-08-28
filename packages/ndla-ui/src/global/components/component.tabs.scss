@@ -32,7 +32,7 @@ $tabs-spacing: 12px;
     }
 
     &--button-based {
-      padding: 0 $spacing--medium / 2;
+      padding: 0 $spacing--small;
       &:first-child {
         padding-left: 0;
       }
@@ -43,7 +43,7 @@ $tabs-spacing: 12px;
         font-weight: $font-weight-bold;
         border: 0;
         background: 0;
-        padding: $spacing--small ($spacing--small / 4);
+        padding: $spacing--small 0;
         font-size: inherit;
         font-family: inherit;
         color: inherit;
@@ -127,7 +127,7 @@ $tabs-spacing: 12px;
 
   &__list {
     max-width: 100%;
-    font-size: 18px;
+    @include font-size(18px);
     font-weight: $font-weight-bold;
     list-style: none;
     margin: $spacing/1.4 0 $spacing--small;

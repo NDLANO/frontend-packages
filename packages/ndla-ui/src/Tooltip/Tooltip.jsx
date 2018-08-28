@@ -105,14 +105,22 @@ class Tooltip extends Component {
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
-        <div {...classes('')}>
-          <span {...classes('content')}>{this.props.children}</span>
+        <div
+          className={`${classes('').className} ${
+            this.props.tooltipContainerClass
+          }`}>
+          <span className={`c-tooltip__content ${this.props.className}`}>
+            {this.props.children}
+          </span>
         </div>
       );
     }
 
     return (
-      <div {...classes('')}>
+      <div
+        className={`${classes('').className} ${
+          this.props.tooltipContainerClass
+        }`}>
         <Fade in={this.state.showTooltip} delay={this.props.delay}>
           <span
             role="tooltip"
@@ -132,7 +140,7 @@ class Tooltip extends Component {
           onMouseMove={this.handleShowTooltip}
           onFocus={this.handleShowTooltip}
           onBlur={this.handleHideTooltip}
-          {...classes('content')}>
+          className={`c-tooltip__content ${this.props.className}`}>
           {this.props.children}
         </span>
       </div>
@@ -146,12 +154,16 @@ Tooltip.propTypes = {
   delay: PropTypes.number,
   disabled: PropTypes.bool,
   align: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+  className: PropTypes.string,
+  tooltipContainerClass: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
   align: 'top',
   disabled: false,
   delay: 0,
+  className: '',
+  tooltipContainerClass: '',
 };
 
 export default Tooltip;

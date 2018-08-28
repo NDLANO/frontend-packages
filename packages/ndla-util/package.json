@@ -1,6 +1,6 @@
 {
   "name": "ndla-util",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

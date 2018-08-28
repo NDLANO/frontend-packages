@@ -50,3 +50,21 @@
   margin-bottom: 0;
   margin-top: 0.3em;
 }
+.footer_privacy {
+  tbody {
+    background: #fff;
+  }
+  ul, ol {
+    margin: $spacing $spacing $spacing 0;
+    @include mq(desktop) {
+      margin-left: $spacing--large;
+    }
+  }
+
+  .c-tabs__list {
+    margin: $spacing 0;
+  }
+  .c-table {
+    margin-bottom: $spacing--large;
+  }
+}

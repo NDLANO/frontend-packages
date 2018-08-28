@@ -35,6 +35,7 @@
   "dependencies": {
     "classnames": "2.2.5",
     "focus-trap": "^2.4.3",
+    "focus-trap-react": "^4.0.0",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5",
     "react-bem-helper": "1.4.1",

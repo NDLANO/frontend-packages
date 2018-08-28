@@ -16,7 +16,14 @@ const SubjectLinks = ({ links, heading }) => (
       <ul {...classes('list')}>
         {links.map(link => (
           <li key={link.url} {...classes('item')}>
-            <SafeLink to={link.url} target={link.target} rel={link.target === '_blank' ? 'noreferrer noopener' : undefined}>{link.text}</SafeLink>
+            <SafeLink
+              to={link.url}
+              target={link.target}
+              rel={
+                link.target === '_blank' ? 'noreferrer noopener' : undefined
+              }>
+              {link.text}
+            </SafeLink>
           </li>
         ))}
       </ul>

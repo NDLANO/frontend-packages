@@ -35,6 +35,7 @@ class FilterList extends Component {
       defaultVisibleCount,
       showLabel,
       hideLabel,
+      extendedPadding,
     } = this.props;
 
     const showAll =
@@ -54,7 +55,7 @@ class FilterList extends Component {
               {this.props.noFilterSelectedLabel}
             </span>
           )}
-        <ul {...filterClasses('item-wrapper')}>
+        <ul {...filterClasses('item-wrapper', extendedPadding && 'extended-padding')}>
           {options.map((option, index) => {
             const itemModifiers = [];
 
@@ -159,6 +160,7 @@ FilterList.propTypes = {
   showLabel: PropTypes.string,
   noFilterSelectedLabel: PropTypes.string,
   hideLabel: PropTypes.string,
+  extendedPadding: PropTypes.bool,
 };
 
 FilterList.defaultProps = {
@@ -166,6 +168,7 @@ FilterList.defaultProps = {
   modifiers: '',
   values: [],
   defaultVisibleCount: null,
+  extendedPadding: false,
 };
 
 export default FilterList;

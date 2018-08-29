@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { Back } from 'ndla-icons/common';
-import createFocusTrap from 'focus-trap';
-import { noScroll } from 'ndla-util';
-import Button from '../Button';
+import debounce from 'lodash/debounce';
+import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
+import { Button, Modal, ModalHeader, ModalBody, ModalCloseButton } from 'ndla-ui';
 
 import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';
@@ -15,46 +15,35 @@ export default class SearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterExpanded: false,
+      isNarrowScreen: false,
     };
 
-    this.filterContainerRef = null;
     this.filterCloseButton = null;
-    this.focusTrap = null;
 
-    this.handleToggleFilter = this.handleToggleFilter.bind(this);
+    this.checkScreenSize = this.checkScreenSize.bind(this);
+    this.checkScreenSizeDebounce = debounce(() => this.checkScreenSize(), 100);
   }
 
   componentDidMount() {
-    this.focusTrap = createFocusTrap(this.filterContainerRef, {
-      onActivate: () => {
-        this.setState({
-          filterExpanded: true,
-        });
-        noScroll(true);
-      },
-      onDeactivate: () => {
-        if (this.state.filterExpanded) {
-          this.setState({
-            filterExpanded: false,
-          });
-        }
-        noScroll(false);
-      },
-      clickOutsideDeactivates: true,
-      initialFocus: this.filterCloseButton,
-    });
+    window.addEventListener('resize', this.checkScreenSizeDebounce);
+    this.checkScreenSize();
   }
 
   componentWillUnmount() {
-    this.focusTrap.deactivate();
+    window.removeEventListener('resize', this.checkScreenSizeDebounce);
   }
 
-  handleToggleFilter(expanded) {
-    if (expanded) {
-      this.focusTrap.activate();
-    } else {
-      this.focusTrap.deactivate();
+  checkScreenSize() {
+    const currentBreakpoint = getCurrentBreakpoint();
+    const isNarrowScreen =
+      currentBreakpoint === breakpoints.mobile ||
+      currentBreakpoint === breakpoints.tablet;
+
+    /* eslint react/no-did-mount-set-state: 0 */
+    if (isNarrowScreen !== this.state.isNarrowScreen) {
+      this.setState({
+        isNarrowScreen,
+      });
     }
   }
 
@@ -68,7 +57,6 @@ export default class SearchPage extends Component {
       onSearch,
       // only on narrow screen
       activeFilters,
-      onActiveFilterRemove,
       resourceToLinkProps,
       filters,
       children,
@@ -76,12 +64,6 @@ export default class SearchPage extends Component {
       author,
       hideResultText,
     } = this.props;
-
-    const filterModifiers = [];
-
-    if (this.state.filterExpanded) {
-      filterModifiers.push('expanded');
-    }
 
     return (
       <main {...classes()}>
@@ -106,19 +88,12 @@ export default class SearchPage extends Component {
             onClick={() => {
               this.handleToggleFilter(false);
             }}
-            {...classes('filter-close-button', filterModifiers)}
-            ref={ref => {
-              this.filterCloseButton = ref;
-            }}>
+            {...classes('filter-close-button')}>
             <Back /> <span>{messages.narrowScreenFilterHeading}</span>
           </button>
-          <aside
-            {...classes('filter-wrapper', filterModifiers)}
-            ref={ref => {
-              this.filterContainerRef = ref;
-            }}>
+          <aside {...classes('filter-wrapper')}>
             <h1 {...classes('filter-heading')}>{messages.filterHeading}</h1>
-            <div {...classes('filters')}>{filters}</div>
+            <div {...classes('filters')}>{!this.state.isNarrowScreen && filters}</div>
           </aside>
           <div {...classes('result-wrapper')}>
             <h2 aria-hidden="true" {...classes('result-label', 'large-screen')}>
@@ -127,17 +102,28 @@ export default class SearchPage extends Component {
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
-                onFilterRemove={onActiveFilterRemove}
+                onFilterRemove={onSearchFieldFilterRemove}
               />
             </div>
             <div {...classes('toggle-filter')}>
-              <Button
-                outline
-                onClick={() => {
-                  this.handleToggleFilter(true);
-                }}>
-                Filter
-              </Button>
+              <Modal
+                animation="subtle"
+                animationDuration={150}
+                size="fullscreen"
+                backgroundColor="grey"
+                activateButton={(<Button outline>Filter</Button>)}
+              >
+                {(onClose) => (
+                  <Fragment>
+                    <ModalHeader modifier="white">
+                      <ModalCloseButton title="Lukk" onClick={onClose}>Close</ModalCloseButton>
+                    </ModalHeader>
+                    <ModalBody modifier="slide-in-left">
+                      {filters}
+                    </ModalBody>
+                  </Fragment>
+                )}
+              </Modal>
             </div>
             <h2 aria-hidden="true" {...classes('result-label', 'small-screen')}>
               {!hideResultText ? messages.resultHeading : '\u00A0'}
@@ -173,7 +159,6 @@ SearchPage.propTypes = {
       filterName: PropTypes.string.isRequired,
     }),
   ),
-  onActiveFilterRemove: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     filterHeading: PropTypes.string.isRequired,
     narrowScreenFilterHeading: PropTypes.string.isRequired,
@@ -182,6 +167,7 @@ SearchPage.propTypes = {
   }).isRequired,
   author: PropTypes.node,
   hideResultText: PropTypes.bool,
+  filterScreenChange: PropTypes.func,
 };
 
 SearchPage.defaultProps = {

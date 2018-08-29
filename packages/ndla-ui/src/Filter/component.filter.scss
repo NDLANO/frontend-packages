@@ -200,7 +200,7 @@
     @include font-size(16px, 28px);
 
     &--hidden {
-      display: none;
+      display: none !important;
     }
 
     &--no-results {

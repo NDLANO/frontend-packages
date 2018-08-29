@@ -183,6 +183,10 @@
     }
   }
   &__body {
+    &--slide-in-left {
+      animation-name: fadeInLeft;
+      animation-duration: 500ms;
+    }
     padding: $spacing $spacing $spacing--large $spacing;
     &--no-padding {
       padding: 0 !important;

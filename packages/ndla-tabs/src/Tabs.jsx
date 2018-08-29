@@ -66,7 +66,7 @@ class Tabs extends Component {
                 [modifier]: modifier,
               })}
               key={tab.key ? tab.key : i}
-              tabIndex={tab.disabled || '0'}
+              tabIndex={tab.disabled ? '-1' : '0'}
               disabled={tab.disabled}>
               {tab.title}
             </Tab>

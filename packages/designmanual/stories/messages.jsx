@@ -28,7 +28,7 @@ class Messages extends Component {
     super(props);
     this.state = {
       searchText: '',
-      findNotApprovedLabels: false,
+      findNotApprovedLabels: 0,
     };
     this.onSearchChange = this.onSearchChange.bind(this);
     this.flattenedNb = formatNestedMessages(messagesNB);
@@ -130,8 +130,8 @@ class Messages extends Component {
                 <div className="c-filter u-margin-top">
                   <FilterList
                     options={[
-                      { title: 'Vis alle', value: false },
-                      { title: 'Vis ikke godkjente', value: true },
+                      { title: 'Vis alle', value: 0 },
+                      { title: 'Vis ikke godkjente', value: 1 },
                     ]}
                     values={[this.state.findNotApprovedLabels]}
                     onChange={e => {

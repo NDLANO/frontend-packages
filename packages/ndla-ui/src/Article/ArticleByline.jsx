@@ -6,11 +6,18 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Time, User, Additional } from 'ndla-icons/common';
-import ClickToggle from '../common/ClickToggle';
+import { Trans } from 'ndla-i18n';
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+} from 'ndla-ui';
 import ArticleAuthorContent from './ArticleAuthorContent';
 
 const classes = new BEMHelper({
@@ -23,7 +30,6 @@ class ArticleByline extends Component {
     super(props);
     this.state = {
       showAuthor: null,
-      showAuthors: false,
     };
     this.onSelectAuthor = this.onSelectAuthor.bind(this);
   }
@@ -35,97 +41,97 @@ class ArticleByline extends Component {
   }
 
   render() {
-    const {
-      authors,
-      license,
-      licenseBox,
-      messages,
-      updated,
-      additional,
-      id,
-    } = this.props;
-
-    const { showAuthor, showAuthors } = this.state;
-    const authorLabelledBy = `author-labelled-by_${id}`;
-
+    const { authors, license, licenseBox, updated, additional } = this.props;
+    const { showAuthor } = this.state;
     const authorsLinkable =
-      messages.authorLabel && messages.authorDescription && authors.length > 1;
+      authors.length > 1 || (authors[0].title && authors[0].role);
 
     return (
-      <div {...classes()}>
-        {authors.length && (
-          <span {...classes('flex')}>
-            <span {...classes('icon')}>
-              <User />
+      <Trans>
+        {({ t }) => (
+          <div {...classes()}>
+            {authors.length && (
+              <span {...classes('flex')}>
+                <span {...classes('icon')}>
+                  <User />
+                </span>
+                <span {...classes('authors')}>
+                  {authorsLinkable ? (
+                    <Modal
+                      narrow
+                      onClose={this.onSelectAuthor}
+                      activateButton={
+                        <Button link>
+                          {authors.length > 1
+                            ? t('article.multipleAuthorsLabel')
+                            : authors[0].name}
+                        </Button>
+                      }>
+                      {onClose => (
+                        <Fragment>
+                          <ModalHeader modifier="no-bottom-padding">
+                            <ModalCloseButton
+                              onClick={onClose}
+                              title={t('article.closeLabel')}
+                            />
+                          </ModalHeader>
+                          <ModalBody>
+                            <ArticleAuthorContent
+                              showAuthor={showAuthor}
+                              onSelectAuthor={this.onSelectAuthor}
+                              authors={authors}
+                            />
+                          </ModalBody>
+                        </Fragment>
+                      )}
+                    </Modal>
+                  ) : (
+                    `${authors.map(author => author.name).join(', ')} `
+                  )}
+                </span>
+                <span>{` (${license})`}</span>
+              </span>
+            )}
+            <span {...classes('flex')}>
+              <span {...classes('icon')}>
+                <Time />
+              </span>
+              <span {...classes('date')}>
+                {t('article.lastUpdated')} {updated}
+              </span>
             </span>
-            <span {...classes('authors')}>
-              {authorsLinkable ? (
-                <ClickToggle
-                  id={`dialog-authors-${id}`}
-                  labelledby={authorLabelledBy}
-                  isOpen={showAuthors}
-                  renderAsLink
-                  buttonClassName={classes('toggle-authors').className}
-                  onToggle={showAuthorsDialog => {
-                    this.setState({
-                      showAuthors: showAuthorsDialog,
-                      showAuthor: null,
-                    });
-                  }}
-                  title={
-                    authors.length === 1
-                      ? authors[0].name
-                      : messages.authorLabel
-                  }>
-                  <ArticleAuthorContent
-                    messages={messages}
-                    showAuthor={showAuthor}
-                    authors={authors}
-                    onSelectAuthor={this.onSelectAuthor}
-                    labelledBy={authorLabelledBy}
+            {additional && (
+              <span {...classes('flex')}>
+                <span {...classes('additional')}>
+                  <Additional
+                    key="additional"
+                    className="c-icon--20 u-margin-right-tiny"
                   />
-                </ClickToggle>
-              ) : (
-                `${authors.map(author => author.name).join(', ')} `
-              )}
-              ({license})
-            </span>
-          </span>
+                  {t('article.additionalLabel')}
+                </span>
+              </span>
+            )}
+            {licenseBox && (
+              <span {...classes('flex')}>
+                <Modal
+                  activateButton={
+                    <Button link>{t('article.useContent')}</Button>
+                  }
+                  size="medium">
+                  {onClose => (
+                    <Fragment>
+                      <ModalHeader modifier="no-bottom-padding">
+                        <ModalCloseButton onClick={onClose} title="Lukk" />
+                      </ModalHeader>
+                      <ModalBody>{licenseBox}</ModalBody>
+                    </Fragment>
+                  )}
+                </Modal>
+              </span>
+            )}
+          </div>
         )}
-        <span {...classes('flex')}>
-          <span {...classes('icon')}>
-            <Time />
-          </span>
-          <span {...classes('date')}>
-            {messages.lastUpdated} {updated}
-          </span>
-        </span>
-        {additional && (
-          <span {...classes('flex')}>
-            <span {...classes('additional')}>
-              <Additional
-                key="additional"
-                className="c-icon--20 u-margin-right-tiny"
-              />
-              {messages.additionalLabel}
-            </span>
-          </span>
-        )}
-        {licenseBox && (
-          <span {...classes('flex')}>
-            <ClickToggle
-              id="useArticleId"
-              labelledby={licenseBox.headingId}
-              renderAsLink
-              buttonClassName={classes('toggle-use-article').className}
-              dialogModifier="medium"
-              title={messages.useContent}
-              openTitle={messages.closeLabel}>
-              {licenseBox}
-            </ClickToggle>
-          </span>
-        )}
-      </div>
+      </Trans>
     );
   }
 }
@@ -142,36 +148,12 @@ ArticleByline.propTypes = {
       introduction: PropTypes.string,
       role: PropTypes.string,
       urlContributions: PropTypes.string,
-      urlContributionsLabel: (props, propName, componentName) => {
-        if (typeof props[propName] !== 'string' && props.urlContributions) {
-          return new Error(
-            `Invalid prop props.messages.urlContributionsLabel supplied to ${componentName}. Required as label for props.messages.urlContributions`,
-          );
-        }
-        return null;
-      },
       urlAuthor: PropTypes.string,
-      urlAuthorLabel: (props, propName, componentName) => {
-        if (typeof props[propName] !== 'string' && props.urlAuthor) {
-          return new Error(
-            `Invalid prop props.messages.urlAuthorLabel supplied to ${componentName}. Required as label for props.messages.urlAuthor`,
-          );
-        }
-        return null;
-      },
     }),
   ),
   updated: PropTypes.string.isRequired,
   license: PropTypes.string.isRequired,
   licenseBox: PropTypes.node,
-  messages: PropTypes.shape({
-    lastUpdated: PropTypes.string.isRequired,
-    authorLabel: PropTypes.string,
-    authorDescription: PropTypes.string,
-    additionalLabel: PropTypes.string,
-    useContent: PropTypes.string.isRequired,
-    closeLabel: PropTypes.string.isRequired,
-  }).isRequired,
   additional: PropTypes.bool,
 };
 

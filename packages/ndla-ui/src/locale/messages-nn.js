@@ -225,6 +225,11 @@ const messages = {
     closeLabel: 'Lukk',
     useContent: 'Bruk innhald',
     additionalLabel: 'Tilleggsstoff',
+    urlContributionsLabel: '*Sjå kva {name} har bidratt med',
+    urlAuthorLabel: '*Les meir om {name}',
+    multipleAuthorsLabel: '*Opphavsmenn',
+    multipleAuthorsExplanation:
+      '*Denne artikkelen er laga av fleire opphavsmenn',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

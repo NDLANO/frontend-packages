@@ -65,9 +65,6 @@ storiesOf('Sammensatte moduler', module)
         updated="21.06.2018"
         license="CC BY-SA"
         messages={{
-          lastUpdated: 'Publisert',
-          useContent: 'Bruk innhold',
-          closeLabel: 'Lukk',
           authorLabel: 'Opphavsmenn',
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
         }}
@@ -84,12 +81,7 @@ storiesOf('Sammensatte moduler', module)
         licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
         additional
         messages={{
-          lastUpdated: 'Publisert',
-          authorLabel: 'Opphavsmenn',
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-          additionalLabel: 'Tilleggsstoff',
-          useContent: 'Bruk innhold',
-          closeLabel: 'Lukk',
         }}
       />
       <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
@@ -98,10 +90,10 @@ storiesOf('Sammensatte moduler', module)
           {
             role: 'rolle',
             name: 'Cecilie Isaksen Eftedal',
+            shortName: 'Cecilie',
             urlContributions: '#',
-            urlContributionsLabel: 'Se hva Cecilie har bidratt med',
             urlAuthor: '#',
-            urlAuthorLabel: 'Les mer om Cecilie',
+            licenses: 'CC BY-SA',
             title: 'Stilling',
             phone: '+47 123 45 678',
             email: 'cecilie@ndla.no',
@@ -111,10 +103,10 @@ storiesOf('Sammensatte moduler', module)
           {
             role: 'rolle',
             name: 'Siv Mundal',
+            shortName: 'Siv',
             urlContributions: '#',
-            urlContributionsLabel: 'Se hva Siv har bidratt med',
             urlAuthor: '#',
-            urlAuthorLabel: 'Les mer om Siv',
+            licenses: 'CC BY-SA',
             title: 'Stilling',
             phone: '+47 123 45 678',
             email: 'siv.mundal@keyteq.no',
@@ -124,10 +116,10 @@ storiesOf('Sammensatte moduler', module)
           {
             role: 'rolle',
             name: 'Pål Frøsndal',
+            shortName: 'Pål',
             urlContributions: '#',
-            urlContributionsLabel: 'Se hva Pål har bidratt med',
             urlAuthor: '#',
-            urlAuthorLabel: 'Les mer om Cecilie',
+            licenses: 'CC BY-SA',
             title: 'Stilling',
             phone: '+47 123 45 678',
             email: 'paal.fronsdal@ndla.no',
@@ -140,12 +132,8 @@ storiesOf('Sammensatte moduler', module)
         licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
         additional
         messages={{
-          lastUpdated: 'Publisert',
           authorLabel: 'Opphavsmenn',
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-          additionalLabel: 'Tilleggsstoff',
-          useContent: 'Bruk innhold',
-          closeLabel: 'Lukk',
         }}
       />
     </Center>

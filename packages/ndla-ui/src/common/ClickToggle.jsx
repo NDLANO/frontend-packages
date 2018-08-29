@@ -83,14 +83,14 @@ export default class ClickToggle extends React.Component {
           onClick={this.handleClick}>
           {title}
         </Button>
-        {useDialog &&
-          (alwaysRenderChildren || showDialog) && (
-            <FocusTrap
-              active={showDialog}
-              focusTrapOptions={{
-                onDeactivate: this.unmountTrap,
-                clickOutsideDeactivates: true,
-              }}>
+        <FocusTrap
+          active={showDialog}
+          focusTrapOptions={{
+            onDeactivate: this.unmountTrap,
+            clickOutsideDeactivates: true, // Only works when click on scrollbar
+          }}>
+          {useDialog &&
+            (alwaysRenderChildren || showDialog) && (
               <Dialog
                 id={id}
                 labelledby={labelledby}
@@ -103,19 +103,11 @@ export default class ClickToggle extends React.Component {
                 }>
                 {children}
               </Dialog>
-            </FocusTrap>
-          )}
-        {!useDialog &&
-          (isOpen || alwaysRenderChildren) && (
-            <FocusTrap
-              active={showDialog}
-              focusTrapOptions={{
-                onDeactivate: this.unmountTrap,
-                clickOutsideDeactivates: true,
-              }}>
-              {children(this.handleOnClose, isOpen)}
-            </FocusTrap>
-          )}
+            )}
+          {!useDialog &&
+            (isOpen || alwaysRenderChildren) &&
+            children(this.handleOnClose, isOpen)}
+        </FocusTrap>
       </Component>
     );
   }

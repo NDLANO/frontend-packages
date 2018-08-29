@@ -71,9 +71,25 @@ SearchResult.propTypes = {
 class SearchField extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      inputHasFocus: false,
+    };
     this.inputRef = null;
     this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
+    this.onInputBlur = this.onInputBlur.bind(this);
+    this.onInputFocus = this.onInputFocus.bind(this);
+  }
+
+  onInputBlur() {
+    this.setState({
+      inputHasFocus: false,
+    });
+  }
+
+  onInputFocus() {
+    this.setState({
+      inputHasFocus: true,
+    });
   }
 
   handleOnFilterRemove(value, filterName) {
@@ -118,40 +134,47 @@ class SearchField extends Component {
       modifiers.push('has-filter');
     }
 
+    if (this.state.inputHasFocus) {
+      modifiers.push('input-has-focus');
+    }
     return (
-      <form {...classes('', modifiers)} onSubmit={onSearch}>
-        <input
-          ref={ref => {
-            this.inputRef = ref;
-          }}
-          title={messages.searchFieldTitle}
-          type="search"
-          {...classes('input')}
-          aria-autocomplete="list"
-          autoComplete="off"
-          id="search"
-          name="search"
-          placeholder={placeholder}
-          aria-label={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-        <div {...classes('filters')}>
-          {filters &&
-            filters.length > 0 && (
-              <ActiveFilters
-                filters={filters}
-                onFilterRemove={this.handleOnFilterRemove}
-              />
-            )}
+      <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
+        <div {...classes('input-wrapper')}>
+          <input
+            ref={ref => {
+              this.inputRef = ref;
+            }}
+            title={messages.searchFieldTitle}
+            type="search"
+            {...classes('input')}
+            aria-autocomplete="list"
+            autoComplete="off"
+            id="search"
+            name="search"
+            placeholder={placeholder}
+            aria-label={placeholder}
+            value={value}
+            onChange={onChange}
+            onBlur={this.onInputBlur}
+            onFocus={this.onInputFocus}
+          />
+          <div {...classes('filters')}>
+            {filters &&
+              filters.length > 0 && (
+                <ActiveFilters
+                  filters={filters}
+                  onFilterRemove={this.handleOnFilterRemove}
+                />
+              )}
+          </div>
+          <button
+            tabIndex="-1"
+            {...classes('button')}
+            type="submit"
+            value="Search">
+            <SearchIcon />
+          </button>
         </div>
-        <button
-          tabIndex="-1"
-          {...classes('button')}
-          type="submit"
-          value="Search">
-          <SearchIcon />
-        </button>
         {searchResultView}
       </form>
     );

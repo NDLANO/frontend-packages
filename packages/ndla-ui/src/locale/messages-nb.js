@@ -230,6 +230,10 @@ const messages = {
     multipleAuthorsExplanation:
       'Denne artikkelen er laget av flere opphavsmenn',
   },
+  competenceGoals: {
+    closeCompetenceGoals: 'Lukk kompetansemål',
+    showCompetenceGoals: 'Vis kompetansemål',
+  },
   subject: {
     associatedTopics: 'Tilhørende emner',
   },

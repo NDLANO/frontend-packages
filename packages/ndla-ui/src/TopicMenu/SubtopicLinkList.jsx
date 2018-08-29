@@ -8,19 +8,22 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Back } from 'ndla-icons/common';
+import { Back, ChevronRight } from 'ndla-icons/common';
 
-import SafeLink from '../common/SafeLink';
+import { SafeLink } from 'ndla-ui';
 import { TopicShape } from '../shapes';
 
-import { ContentTypeResult } from '../Search';
+import { ContentTypeResult, SearchToggleFilter } from '../Search';
+import { renderAdditionalIcon } from './TopicMenu';
 
 const SubtopicLink = ({
   classes,
   to,
-  subtopic: { id, name },
+  subtopic: { id, name, additional },
   onSubtopicExpand,
   expandedSubtopicId,
+  subtopicId,
+  messages,
 }) => {
   const active = id === expandedSubtopicId;
 
@@ -30,10 +33,14 @@ const SubtopicLink = ({
         {...classes('link')}
         onClick={event => {
           event.preventDefault();
-          onSubtopicExpand(id);
+          onSubtopicExpand(subtopicId);
         }}
         to={to}>
-        {name}
+        <span>
+          {name}
+          {renderAdditionalIcon(additional, messages.additionalTooltipLabel)}
+        </span>
+        <ChevronRight />
       </SafeLink>
     </li>
   );
@@ -46,11 +53,19 @@ SubtopicLink.propTypes = {
   onSubtopicExpand: PropTypes.func,
   expandedSubtopicId: PropTypes.string,
   toTopic: PropTypes.func,
+  subtopicId: PropTypes.string,
+  messages: PropTypes.shape({
+    additionalTooltipLabel: PropTypes.string,
+  }),
 };
 
 class SubtopicLinkList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showAdditionalResources: false,
+    };
+    this.toggleAdditionalResources = this.toggleAdditionalResources.bind(this);
     this.containerRef = null;
   }
 
@@ -68,6 +83,12 @@ class SubtopicLinkList extends Component {
     this.containerRef.querySelector('a').focus();
   }
 
+  toggleAdditionalResources() {
+    this.setState(prevState => ({
+      showAdditionalResources: !prevState.showAdditionalResources,
+    }));
+  }
+
   render() {
     const {
       className,
@@ -78,13 +99,20 @@ class SubtopicLinkList extends Component {
       expandedSubtopicId,
       onSubtopicExpand,
       onGoBack,
+      backLabel,
       messages,
       resourceToLinkProps,
     } = this.props;
 
+    const { showAdditionalResources } = this.state;
+
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
     const hasContentTypeResults =
       topic.contentTypeResults && topic.contentTypeResults.length > 0;
+
+    const hasContentTypeInfo =
+      hasContentTypeResults &&
+      topic.contentTypeResults.some(result => result.contentType);
 
     return (
       <div
@@ -93,7 +121,7 @@ class SubtopicLinkList extends Component {
           this.containerRef = ref;
         }}>
         <button type="button" {...classes('back-button')} onClick={onGoBack}>
-          <Back /> <span>{messages.backButton}</span>
+          <Back /> <span>{backLabel}</span>
         </button>
         <SafeLink
           {...classes('link', ['big'])}
@@ -103,6 +131,7 @@ class SubtopicLinkList extends Component {
           <span {...classes('link-target')}>
             {topic.name} <span {...classes('arrow')}>›</span>
           </span>
+          <ChevronRight />
         </SafeLink>
         {hasSubTopics && (
           <ul {...classes('list')}>
@@ -113,14 +142,32 @@ class SubtopicLinkList extends Component {
                 classes={classes}
                 key={subtopic.id}
                 to={toTopic(topic.id, subtopic.id)}
+                subtopicId={subtopic.id}
                 subtopic={subtopic}
+                messages={{
+                  additionalTooltipLabel: messages.additionalTooltipLabel,
+                }}
               />
             ))}
           </ul>
         )}
+        {this.props.competenceButton}
         {hasContentTypeResults && (
-          <aside {...classes('content-type-results')}>
-            <h1>{messages.learningResourcesHeading}</h1>
+          <aside
+            {...classes('content-type-results', [
+              hasContentTypeInfo ? 'with-content-badges' : '',
+              this.state.showAdditionalResources ? 'show-all' : '',
+            ])}>
+            <div>
+              <h1>{messages.learningResourcesHeading}</h1>
+              {messages.additionalFilterLabel && (
+                <SearchToggleFilter
+                  checked={showAdditionalResources}
+                  label={messages.additionalFilterLabel}
+                  onClick={this.toggleAdditionalResources}
+                />
+              )}
+            </div>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
                 resourceToLinkProps={resourceToLinkProps}
@@ -128,11 +175,21 @@ class SubtopicLinkList extends Component {
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  allResultLabel: messages.contentTypeResultsShowMore,
-                  showLessResultLabel: messages.contentTypeResultsShowLess,
+                  allResultLabel:
+                    result.messages && result.messages.allResultLabel
+                      ? result.messages.allResultLabel
+                      : messages.contentTypeResultsShowMore,
+                  showLessResultLabel:
+                    result.messages && result.messages.showLessResultLabel
+                      ? result.messages.showLessResultLabel
+                      : messages.contentTypeResultsShowLess,
                   noHit: messages.contentTypeResultsNoHit,
+                  additionalTooltipLabel: messages.additionalTooltipLabel,
                 }}
                 iconOnRight
+                showAdditionalResources={
+                  showAdditionalResources || !messages.additionalFilterLabel
+                }
               />
             ))}
           </aside>
@@ -152,14 +209,17 @@ SubtopicLinkList.propTypes = {
   topic: TopicShape.isRequired,
   toTopic: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
+  backLabel: PropTypes.string.isRequired,
   messages: PropTypes.shape({
-    goToLabel: PropTypes.string.isRequired,
     backButton: PropTypes.string.isRequired,
     contentTypeResultsShowMore: PropTypes.string.isRequired,
     contentTypeResultsShowLess: PropTypes.string.isRequired,
     learningResourcesHeading: PropTypes.string.isRequired,
     contentTypeResultsNoHit: PropTypes.string.isRequired,
+    additionalFilterLabel: PropTypes.string, // should be required
+    additionalTooltipLabel: PropTypes.string, // should be required
   }).isRequired,
+  competenceButton: PropTypes.node,
 };
 
 export default SubtopicLinkList;

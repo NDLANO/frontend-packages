@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronDown } from 'ndla-icons/common';
-import { FilterList } from '../Filter';
+import { FilterListPhone } from '../Filter';
 
 import SafeLink from '../common/SafeLink';
 
@@ -51,16 +51,17 @@ class CompetenceGoals extends Component {
     return (
       <div {...classes('', { menu, search })}>
         {!menu && !search ? (
-          <div {...classes('dialog-wrapper')}>
+          <Fragment>
             <h1 id={headingId}>{messages.heading}</h1>
-            <p {...classes('description')}>{description}</p>
-            <p {...classes('description')}>{messages.listDescription}</p>
+            <hr />
+            <p>{description}</p>
+            <p>{messages.listDescription}</p>
             <div {...classes('topic')}>
               <ul {...classes('topic-list')}>
                 {topics[0].items.map(renderItem)}
               </ul>
             </div>
-          </div>
+          </Fragment>
         ) : (
           <Fragment>
             <h1 {...classes('subject-heading')}>{subjectName}</h1>
@@ -70,11 +71,14 @@ class CompetenceGoals extends Component {
             <p {...classes('description')}>{messages.listDescription}</p>
             {filterOptions &&
               filterOptions.length > 0 && (
-                <FilterList
-                  options={filterOptions}
-                  values={filterValues}
-                  onChange={onFilterClick}
-                />
+                <Fragment>
+                  <FilterListPhone
+                    label="Filtrer kompetansemål"
+                    options={filterOptions}
+                    values={filterValues}
+                    onChange={onFilterClick}
+                  />
+                </Fragment>
               )}
             {topics.map(topic => (
               <div
@@ -142,7 +146,7 @@ CompetenceGoals.propTypes = {
     }),
   ),
   filterValues: PropTypes.arrayOf(PropTypes.string),
-  onFilterClick: PropTypes.func,
+  onFilterClick: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(
     PropTypes.shape({
       heading: PropTypes.string,

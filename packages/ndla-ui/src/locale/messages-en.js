@@ -232,7 +232,11 @@ const messages = {
     urlContributionsLabel: '*See {name}`s contributions',
     urlAuthorLabel: '*Read more about {name}',
     multipleAuthorsLabel: '*Authors',
-    multipleAuthorsExplanation: '*This article was created by multiple authors',
+    multipleAuthorsExplanation: '*This article has several authors',
+  },
+  competenceGoals: {
+    closeCompetenceGoals: '*Close competance goals',
+    showCompetenceGoals: '*Show competance goals',
   },
   subject: {
     associatedTopics: 'Associated topics',

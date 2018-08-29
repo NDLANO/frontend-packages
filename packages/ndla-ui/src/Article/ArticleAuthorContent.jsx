@@ -19,7 +19,6 @@ const classes = new BEMHelper({
 });
 
 const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
-  console.log(authors[0], 'has licenses?');
   if (
     (showAuthor === null || showAuthor === undefined) &&
     authors.length !== 1

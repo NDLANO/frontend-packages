@@ -105,7 +105,7 @@ class ComponentInfo extends Component {
     if (messages) {
       tabContent.push({
         title: 'Annet',
-        content: <p>{messages}</p>,
+        content: messages.map(msg => <p key={uuid()}>{msg}</p>),
       });
     }
     if (children) {
@@ -127,7 +127,7 @@ class ComponentInfo extends Component {
 
 ComponentInfo.propTypes = {
   reactCode: PropTypes.string,
-  messages: PropTypes.arrayOf(PropTypes.shape()),
+  messages: PropTypes.arrayOf(PropTypes.string),
   status: PropTypes.oneOf([0, 1, 2, 3]),
   usesPropTypes: PropTypes.arrayOf(PropTypes.shape()),
   children: PropTypes.node,

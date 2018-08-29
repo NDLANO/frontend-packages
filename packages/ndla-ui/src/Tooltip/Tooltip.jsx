@@ -26,6 +26,7 @@ class Tooltip extends Component {
     };
     this.handleShowTooltip = this.handleShowTooltip.bind(this);
     this.handleHideTooltip = this.handleHideTooltip.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.contentRef = React.createRef();
     this.tooltipRef = React.createRef();
     this.widthRef = 0;
@@ -71,23 +72,23 @@ class Tooltip extends Component {
           moveHorizontal = Math.min(-(tooltipWidth / 2 - centeredLeft + 20), 0);
         }
         if (this.props.align === 'bottom') {
-          this.currentStyles.transform = `translate3d(calc(-50% + ${this
+          this.currentStyles.transform = `translate(calc(-50% + ${this
             .widthRef /
             2 -
-            moveHorizontal}px), calc(${this.heightRef}px + 0.25rem), 0)`;
+            moveHorizontal}px), calc(${this.heightRef}px + 0.25rem))`;
         } else {
-          this.currentStyles.transform = `translate3d(calc(-50% + ${this
+          this.currentStyles.transform = `translate(calc(-50% + ${this
             .widthRef /
             2 -
-            moveHorizontal}px), calc(-100% - 0.25rem), 0)`;
+            moveHorizontal}px), calc(-100% - 0.25rem))`;
         }
       } else if (this.props.align === 'left') {
-        this.currentStyles.transform = `translate3d(calc(-100% - 0.25rem), calc(-50% + ${this
-          .heightRef / 2}px), 0)`;
+        this.currentStyles.transform = `translate(calc(-100% - 0.25rem), calc(-50% + ${this
+          .heightRef / 2}px))`;
       } else {
-        this.currentStyles.transform = `translate3d(calc(${
+        this.currentStyles.transform = `translate(calc(${
           this.widthRef
-        }px + 0.25rem), calc(-50% + ${this.heightRef / 2}px), 0)`;
+        }px + 0.25rem), calc(-50% + ${this.heightRef / 2}px))`;
       }
     }
     return this.currentStyles;
@@ -99,6 +100,18 @@ class Tooltip extends Component {
 
   handleHideTooltip() {
     this.setState({ showTooltip: false });
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      try {
+        this.contentRef.current
+          .querySelectorAll('[type="button"], a')[0]
+          .click();
+      } catch (err) {
+        console.log('error', err); // eslint-disable-line no-console
+      }
+    }
   }
 
   render() {
@@ -139,6 +152,7 @@ class Tooltip extends Component {
           onMouseOut={this.handleHideTooltip}
           onMouseMove={this.handleShowTooltip}
           onFocus={this.handleShowTooltip}
+          onKeyPress={this.handleKeyPress}
           onBlur={this.handleHideTooltip}
           className={`c-tooltip__content ${this.props.className}`}>
           {this.props.children}

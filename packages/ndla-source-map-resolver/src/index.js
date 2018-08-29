@@ -9,8 +9,11 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const sourceMap = require('source-map');
+const SourceMap = require('source-map');
 const chalk = require('chalk');
+const parseUrl = require('parse-url');
+const fetch = require('node-fetch');
+const ora = require('ora');
 
 function loadFile(fileName) {
   try {
@@ -26,11 +29,9 @@ function loadFile(fileName) {
   return undefined;
 }
 
-function consumeSourceMap(sourceMapData) {
-  const mapConsumer = new sourceMap.SourceMapConsumer(sourceMapData);
-  return {
-    mapConsumer,
-  };
+async function consumeSourceMap(sourceMapData) {
+  const mapConsumer = await new SourceMap.SourceMapConsumer(sourceMapData);
+  return mapConsumer;
 }
 
 function printSourceLine(mapConsumer, orgPos) {
@@ -41,33 +42,100 @@ function printSourceLine(mapConsumer, orgPos) {
   process.stdout.write(chalk.bold.green(`${line} \n`));
 }
 
-function printOriginalPosition(mapConsumer, frame, printSourceLineFlag) {
-  const orgPos = mapConsumer.originalPositionFor({
-    line: frame.line,
-    column: frame.column,
-  });
-  process.stdout.write(
-    chalk.bold.red(`  at ${orgPos.name} `) +
-      chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
-  );
+function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
+  const sourceMap = sourceMaps.find(map => frame.url.indexOf(map.name) !== -1);
 
-  if (printSourceLineFlag) {
-    printSourceLine(mapConsumer, orgPos);
+  if (sourceMap) {
+    const orgPos = sourceMap.mapping.originalPositionFor({
+      line: frame.line,
+      column: frame.column,
+    });
+    process.stdout.write(
+      chalk.bold.red(`  at ${orgPos.name} `) +
+        chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
+    );
+
+    if (printSourceLineFlag) {
+      printSourceLine(sourceMap.mapping, orgPos);
+    }
+  } else {
+    process.stdout.write(
+      chalk.bold.red(`  at ${frame.func} `) + chalk.cyan(`(${frame.url}) \n`),
+    );
   }
 }
 
-function runSourceMapResolver(argv) {
-  const mapFile = loadFile(argv.mapFile);
-  const { mapConsumer } = consumeSourceMap(mapFile);
+async function fetchAssets(url) {
+  const name = parseUrl(url)
+    .pathname.split('/')
+    .pop();
+  const spinner = ora(`fetching ${name}`).start();
+  const response = await fetch(url);
+  const json = await response.json();
+  spinner.succeed(`Fetched  ${name}`);
+  return json;
+}
 
-  const errorEventFile = loadFile(argv.errorEventFile);
-  const { stackInfo } = JSON.parse(errorEventFile);
-  const { stack } = stackInfo;
+async function fetchSourceMapFile(url) {
+  const name = parseUrl(url)
+    .pathname.split('/')
+    .pop();
+  const spinner = ora(`Fetching ${name}`).start();
+  const response = await fetch(url);
+  const text = await response.text();
+  spinner.succeed(`Fetched  ${name}`);
+  return text;
+}
 
+function getSourceMapFileNames(assets) {
+  return Object.keys(assets).map(key => `${assets[key].js}.map`);
+}
+
+async function collectSourceMaps(argv, url) {
+  if (argv.mapFiles) {
+    return argv.mapFiles.map(mapFile => {
+      const content = loadFile(mapFile);
+      const name = path.basename(mapFile).replace('.map', '');
+      const { mapConsumer } = consumeSourceMap(content);
+      return {
+        name,
+        mapping: mapConsumer,
+      };
+    });
+  }
+  if (url) {
+    const { resource, protocol, port } = parseUrl(url);
+    const base = resource + (port ? `:${port}` : '');
+    const assetsUrl = `${protocol}://${base}/static/assets.json`;
+    const assets = await fetchAssets(assetsUrl);
+    const sourceMapFileNames = getSourceMapFileNames(assets);
+    return Promise.all(
+      sourceMapFileNames.map(async fileName => {
+        const urlToSourceMap = `${protocol}://${base}${fileName}`;
+        const content = await fetchSourceMapFile(urlToSourceMap);
+        const mapping = await consumeSourceMap(content);
+        const name = path.basename(fileName).replace('.map', '');
+        return {
+          name,
+          mapping,
+        };
+      }),
+    );
+  }
+
+  throw new Error('No  sourcemaps to collect');
+}
+
+async function runSourceMapResolver(argv) {
+  const data = JSON.parse(loadFile(argv.errorEventFile));
+  const first = data.events[0];
+  const { event: { json: { stackInfo } } } = first;
+  const { url } = stackInfo.stack[0];
+  const sourceMaps = await collectSourceMaps(argv, url);
   process.stdout.write(
     chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`),
   );
-  stack.forEach(frame => printOriginalPosition(mapConsumer, frame));
+  stackInfo.stack.forEach(frame => printOriginalPosition(sourceMaps, frame));
 }
 
 module.exports = runSourceMapResolver;

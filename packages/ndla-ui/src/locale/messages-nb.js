@@ -11,7 +11,7 @@ const titleTemplate = ' - NDLA';
 const messages = {
   htmlTitles: {
     titleTemplate,
-    welcomePage: `*Forsiden${titleTemplate}`,
+    welcomePage: `Forsiden${titleTemplate}`,
     topicPage: 'Emne',
     subjectsPage: `Velg fag${titleTemplate}`,
     searchPage: `Søk${titleTemplate}`,
@@ -145,7 +145,7 @@ const messages = {
     socialMedia: {
       heading: 'Følg oss',
       description:
-        'NDLA har mange Facebook- og Twitterkontoer. Finn den som passer for deg, og følg oss!',
+        'NDLA har mange facebook- og twitterkontoer. Finn den som passer for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },

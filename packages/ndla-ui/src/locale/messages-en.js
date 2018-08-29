@@ -44,13 +44,13 @@ const messages = {
       levels: 'Level',
       'language-filter': 'Language',
       subjects: 'Subjects',
+      noFilter: 'No filter selected',
     },
     showLabel: {
       contentTypes: 'More content types',
       levels: 'More levels',
       'language-filter': 'More languages',
       subjects: 'Change subject',
-      noFilter: 'No filter choosen',
     },
     hideLabel: {
       contentTypes: 'Hide content types',
@@ -148,7 +148,7 @@ const messages = {
     socialMedia: {
       heading: 'Follow us',
       description:
-        'NDLA has several Facebook- and Twitter accounts. Find the one that suits you, and follow us!',
+        'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },

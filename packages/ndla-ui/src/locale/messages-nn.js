@@ -146,7 +146,7 @@ const messages = {
     socialMedia: {
       heading: 'Følg oss',
       description:
-        'NDLA har mange Facebook- og Twitterkontoar. Finn den som passar for deg, og følg oss!',
+        'NDLA har mange facebook- og twitterkontoar. Finn den som passar for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },

@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Back, ChevronRight } from 'ndla-icons/common';
+import { injectT } from 'ndla-i18n';
 
 import { SafeLink } from 'ndla-ui';
 import { TopicShape } from '../shapes';
@@ -23,7 +24,7 @@ const SubtopicLink = ({
   onSubtopicExpand,
   expandedSubtopicId,
   subtopicId,
-  messages,
+  additionalTooltipLabel,
 }) => {
   const active = id === expandedSubtopicId;
 
@@ -38,7 +39,7 @@ const SubtopicLink = ({
         to={to}>
         <span>
           {name}
-          {renderAdditionalIcon(additional, messages.additionalTooltipLabel)}
+          {renderAdditionalIcon(additional, additionalTooltipLabel)}
         </span>
         <ChevronRight />
       </SafeLink>
@@ -54,9 +55,7 @@ SubtopicLink.propTypes = {
   expandedSubtopicId: PropTypes.string,
   toTopic: PropTypes.func,
   subtopicId: PropTypes.string,
-  messages: PropTypes.shape({
-    additionalTooltipLabel: PropTypes.string,
-  }),
+  additionalTooltipLabel: PropTypes.string,
 };
 
 class SubtopicLinkList extends Component {
@@ -100,7 +99,6 @@ class SubtopicLinkList extends Component {
       onSubtopicExpand,
       onGoBack,
       backLabel,
-      messages,
       resourceToLinkProps,
     } = this.props;
 
@@ -127,7 +125,7 @@ class SubtopicLinkList extends Component {
           {...classes('link', ['big'])}
           onClick={closeMenu}
           to={toTopic(topic.id)}>
-          <span {...classes('link-label')}>{messages.goToLabel}: </span>
+          <span {...classes('link-label')}>{this.props.t('masthead.menu.goTo')}: </span>
           <span {...classes('link-target')}>
             {topic.name} <span {...classes('arrow')}>›</span>
           </span>
@@ -144,9 +142,7 @@ class SubtopicLinkList extends Component {
                 to={toTopic(topic.id, subtopic.id)}
                 subtopicId={subtopic.id}
                 subtopic={subtopic}
-                messages={{
-                  additionalTooltipLabel: messages.additionalTooltipLabel,
-                }}
+                additionalTooltipLabel={this.props.t('resource.additionalTooltip')}
               />
             ))}
           </ul>
@@ -159,14 +155,12 @@ class SubtopicLinkList extends Component {
               this.state.showAdditionalResources ? 'show-all' : '',
             ])}>
             <div>
-              <h1>{messages.learningResourcesHeading}</h1>
-              {messages.additionalFilterLabel && (
-                <SearchToggleFilter
-                  checked={showAdditionalResources}
-                  label={messages.additionalFilterLabel}
-                  onClick={this.toggleAdditionalResources}
-                />
-              )}
+              <h1>{this.props.t('masthead.menu.learningResourcesHeading')}</h1>
+              <SearchToggleFilter
+                checked={showAdditionalResources}
+                label={this.props.t('masthead.menu.additionalFilterLabel')}
+                onClick={this.toggleAdditionalResources}
+              />
             </div>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
@@ -175,21 +169,12 @@ class SubtopicLinkList extends Component {
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  allResultLabel:
-                    result.messages && result.messages.allResultLabel
-                      ? result.messages.allResultLabel
-                      : messages.contentTypeResultsShowMore,
-                  showLessResultLabel:
-                    result.messages && result.messages.showLessResultLabel
-                      ? result.messages.showLessResultLabel
-                      : messages.contentTypeResultsShowLess,
-                  noHit: messages.contentTypeResultsNoHit,
-                  additionalTooltipLabel: messages.additionalTooltipLabel,
+                  allResultLabel: this.props.t(`masthead.menu.contentTypeResultsShowMore.${result.contentType}`),
+                  showLessResultLabel: this.props.t(`masthead.menu.contentTypeResultsShowLess.${result.contentType}`),
+                  noHit: this.props.t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
                 }}
                 iconOnRight
-                showAdditionalResources={
-                  showAdditionalResources || !messages.additionalFilterLabel
-                }
+                showAdditionalResources={showAdditionalResources}
               />
             ))}
           </aside>
@@ -210,16 +195,8 @@ SubtopicLinkList.propTypes = {
   toTopic: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
   backLabel: PropTypes.string.isRequired,
-  messages: PropTypes.shape({
-    backButton: PropTypes.string.isRequired,
-    contentTypeResultsShowMore: PropTypes.string.isRequired,
-    contentTypeResultsShowLess: PropTypes.string.isRequired,
-    learningResourcesHeading: PropTypes.string.isRequired,
-    contentTypeResultsNoHit: PropTypes.string.isRequired,
-    additionalFilterLabel: PropTypes.string, // should be required
-    additionalTooltipLabel: PropTypes.string, // should be required
-  }).isRequired,
   competenceButton: PropTypes.node,
+  t: PropTypes.func.isRequired,
 };
 
-export default SubtopicLinkList;
+export default injectT(SubtopicLinkList);

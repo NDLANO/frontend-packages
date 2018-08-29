@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from 'ndla-icons/common';
+import { injectT } from 'ndla-i18n';
 
 import SafeLink from '../common/SafeLink';
 
@@ -21,11 +22,8 @@ import { ContentTypeResultShape } from '../shapes';
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  searchFieldTitle: PropTypes.string.isRequired,
-
   // required if search result
   searchResultHeading: PropTypes.string,
-  allResultButtonText: PropTypes.string,
   contentTypeResultShowMoreLabel: PropTypes.string,
   contentTypeResultShowLessLabel: PropTypes.string,
   contentTypeResultNoHit: PropTypes.string,
@@ -33,13 +31,13 @@ const messagesShape = PropTypes.shape({
 
 const SearchResult = ({
   result,
-  messages,
   allResultUrl,
   resourceToLinkProps,
+  t,
 }) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
-      {messages.searchResultHeading}
+      {t('searchPage.searchField.searchResultHeading')}
     </h1>
     <div {...classes('search-result-content')}>
       {result.map(contentTypeResult => (
@@ -48,15 +46,15 @@ const SearchResult = ({
           resourceToLinkProps={resourceToLinkProps}
           key={contentTypeResult.title}
           messages={{
-            allResultLabel: messages.contentTypeResultShowMoreLabel,
-            showLessResultLabel: messages.contentTypeResultShowLessLabel,
-            noHit: messages.contentTypeResultNoHit,
+            allResultLabel: t('searchPage.searchField.contentTypeResultShowMoreLabel'),
+            showLessResultLabel: t('searchPage.searchField.contentTypeResultShowLessLabel'),
+            noHit: t('searchPage.searchField.contentTypeResultNoHit'),
           }}
         />
       ))}
     </div>
     <div {...classes('go-to-search')}>
-      <SafeLink to={allResultUrl}>{messages.allResultButtonText}</SafeLink>
+      <SafeLink to={allResultUrl}>{t('searchPage.searchField.allResultButtonText')}</SafeLink>
     </div>
   </section>
 );
@@ -64,8 +62,8 @@ const SearchResult = ({
 SearchResult.propTypes = {
   result: PropTypes.arrayOf(ContentTypeResultShape),
   resourceToLinkProps: PropTypes.func.isRequired,
-  messages: messagesShape.isRequired,
   allResultUrl: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 class SearchField extends Component {
@@ -108,6 +106,7 @@ class SearchField extends Component {
       allResultUrl,
       onSearch,
       resourceToLinkProps,
+      t,
     } = this.props;
 
     const modifiers = [];
@@ -122,10 +121,10 @@ class SearchField extends Component {
       searchResultView = (
         <SearchResult
           result={searchResult}
-          messages={messages}
           searchString={value}
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
+          t={t}
         />
       );
     }
@@ -197,6 +196,7 @@ SearchField.propTypes = {
   allResultUrl: PropTypes.string,
   resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
+  t: PropTypes.func.isRequired,
 };
 
-export default SearchField;
+export default injectT(SearchField);

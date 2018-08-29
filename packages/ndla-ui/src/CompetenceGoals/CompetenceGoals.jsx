@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronDown } from 'ndla-icons/common';
+import { Trans } from 'ndla-i18n';
 import { FilterListPhone } from '../Filter';
 
 import SafeLink from '../common/SafeLink';
@@ -49,81 +50,90 @@ class CompetenceGoals extends Component {
     } = this.props;
 
     return (
-      <div {...classes('', { menu, search })}>
-        {!menu && !search ? (
-          <Fragment>
-            <h1 id={headingId}>{messages.heading}</h1>
-            <hr />
-            <p>{description}</p>
-            <p>{messages.listDescription}</p>
-            <div {...classes('topic')}>
-              <ul {...classes('topic-list')}>
-                {topics[0].items.map(renderItem)}
-              </ul>
-            </div>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <h1 {...classes('subject-heading')}>{subjectName}</h1>
-            <h2 id={headingId} {...classes('heading')}>
-              {messages.heading}
-            </h2>
-            <p {...classes('description')}>{messages.listDescription}</p>
-            {filterOptions &&
-              filterOptions.length > 0 && (
-                <Fragment>
-                  <FilterListPhone
-                    label="Filtrer kompetansemål"
-                    options={filterOptions}
-                    values={filterValues}
-                    onChange={onFilterClick}
-                  />
-                </Fragment>
-              )}
-            {topics.map(topic => (
-              <div
-                {...classes('topic', {
-                  expandable: true,
-                  expanded: this.state.expanded === topic.heading,
-                })}
-                key={topic.heading}>
-                <h3 {...classes('topic-heading')}>
-                  <button
-                    {...classes('topic-heading-button')}
-                    type="button"
-                    aria-expanded={this.state.expanded === topic.heading}
-                    aria-controls={id}
-                    onClick={() => {
-                      this.setState(prevState => {
-                        let expanded = null;
-                        if (prevState.expanded !== topic.heading) {
-                          expanded = topic.heading;
-                        }
+      <Trans>
+        {(t) => (
+          <div {...classes('', { menu, search })}>
+            {!menu && !search ? (
+              <Fragment>
+                <h1 id={headingId}>{messages.heading}</h1>
+                <hr />
+                <p>{description}</p>
+                <p>{messages.listDescription}</p>
+                <div {...classes('topic')}>
+                  <ul {...classes('topic-list')}>
+                    {topics[0].items.map(renderItem)}
+                  </ul>
+                </div>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <h1 {...classes('subject-heading')}>{subjectName}</h1>
+                <h2 id={headingId} {...classes('heading')}>
+                  {messages.heading}
+                </h2>
+                <p {...classes('description')}>{messages.listDescription}</p>
+                {filterOptions &&
+                  filterOptions.length > 0 && (
+                    <Fragment>
+                      <FilterListPhone
+                        label="Filtrer kompetansemål"
+                        options={filterOptions}
+                        values={filterValues}
+                        onChange={onFilterClick}
+                        messages={{
+                          openFilter: t('componetence.openCompentenceGoalsFilter'),
+                          useFilter: t('componetence.useCompentenceGoalsFilter'),
+                          closeFilter: t('componetence.closeCompentenceGoalsFilter'),
+                        }}
+                      />
+                    </Fragment>
+                  )}
+                {topics.map(topic => (
+                  <div
+                    {...classes('topic', {
+                      expandable: true,
+                      expanded: this.state.expanded === topic.heading,
+                    })}
+                    key={topic.heading}>
+                    <h3 {...classes('topic-heading')}>
+                      <button
+                        {...classes('topic-heading-button')}
+                        type="button"
+                        aria-expanded={this.state.expanded === topic.heading}
+                        aria-controls={id}
+                        onClick={() => {
+                          this.setState(prevState => {
+                            let expanded = null;
+                            if (prevState.expanded !== topic.heading) {
+                              expanded = topic.heading;
+                            }
 
-                        return {
-                          expanded,
-                        };
-                      });
-                    }}>
-                    {this.state.expanded === topic.heading ? (
-                      <ChevronDown />
-                    ) : (
-                      <ChevronRight />
-                    )}
-                    {topic.heading}
-                  </button>
-                </h3>
-                <ul
-                  id={id}
-                  aria-hidden={this.state.expanded !== topic.heading}
-                  {...classes('topic-list')}>
-                  {topic.items.map(item => renderItem(item))}
-                </ul>
-              </div>
-            ))}
-          </Fragment>
+                            return {
+                              expanded,
+                            };
+                          });
+                        }}>
+                        {this.state.expanded === topic.heading ? (
+                          <ChevronDown />
+                        ) : (
+                          <ChevronRight />
+                        )}
+                        {topic.heading}
+                      </button>
+                    </h3>
+                    <ul
+                      id={id}
+                      aria-hidden={this.state.expanded !== topic.heading}
+                      {...classes('topic-list')}>
+                      {topic.items.map(item => renderItem(item))}
+                    </ul>
+                  </div>
+                ))}
+              </Fragment>
+            )}
+          </div>
         )}
-      </div>
+      </Trans>
     );
   }
 }

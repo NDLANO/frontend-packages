@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { injectT } from 'ndla-i18n';
 
 import { ContentTypeBadge, SafeLink, Tooltip } from 'ndla-ui';
 import { Additional } from 'ndla-icons/common';
@@ -39,11 +40,11 @@ class ContentTypeResult extends Component {
   render() {
     const {
       contentTypeResult,
-      messages,
       onNavigate,
       defaultCount,
       resourceToLinkProps,
       showAdditionalResources,
+      messages,
     } = this.props;
     let view = null;
 
@@ -86,7 +87,7 @@ class ContentTypeResult extends Component {
                   {item.name}
                   {renderAdditionalIcon(
                     item.additional,
-                    messages.additionalTooltipLabel,
+                    this.props.t('resource.additionalTooltip'),
                   )}
                 </SafeLink>
               </li>
@@ -141,12 +142,12 @@ ContentTypeResult.propTypes = {
   contentTypeResult: ContentTypeResultShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   showAdditionalResources: PropTypes.bool,
+  t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,
     showLessResultLabel: PropTypes.string.isRequired,
     noHit: PropTypes.string.isRequired,
     filterAdditionalLabel: PropTypes.string,
-    additionalTooltipLabel: PropTypes.string,
   }).isRequired,
 };
 
@@ -155,4 +156,4 @@ ContentTypeResult.defaultProps = {
   showAdditionalResources: false,
 };
 
-export default ContentTypeResult;
+export default injectT(ContentTypeResult);

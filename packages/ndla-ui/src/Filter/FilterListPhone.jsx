@@ -106,14 +106,14 @@ class FilterListPhone extends Component {
             size="fullscreen"
             animation="slide-up"
             backgroundColor="grey"
-            activateButton={<Button outline>Filter</Button>}>
+            activateButton={<Button outline>{messages.openFilter}</Button>}>
             {onClose => (
               <Fragment>
                 <ModalHeader modifier={['grey-dark', 'left-align']}>
                   <ModalCloseButton
                     title={
                       <Fragment>
-                        <Cross /> Lukk filter
+                        <Cross /> {messages.closeFilter}
                       </Fragment>
                     }
                     onClick={onClose}
@@ -280,8 +280,10 @@ FilterListPhone.propTypes = {
   hideLabel: PropTypes.string,
   onToggle: PropTypes.func,
   messages: PropTypes.shape({
-    useFilter: PropTypes.string,
-  }),
+    useFilter: PropTypes.string.isRequired,
+    openFilter: PropTypes.string.isRequired,
+    closeFilter: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 FilterListPhone.defaultProps = {
@@ -289,9 +291,6 @@ FilterListPhone.defaultProps = {
   values: [],
   defaultVisibleCount: null,
   onToggle: null,
-  messages: {
-    useFilter: 'Bruk filter',
-  },
 };
 
 export default FilterListPhone;

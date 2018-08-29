@@ -9,6 +9,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { injectT } from 'ndla-i18n';
 
 import {
   Masthead,
@@ -38,25 +39,6 @@ export const MastheadWithLogo = () => (
     </MastheadItem>
   </Masthead>
 );
-
-const messages = {
-  closeButton: 'Lukk',
-  goTo: 'Gå til',
-  subjectOverview: 'Alle fag',
-  search: 'Søk',
-  subjectPage: 'Fagforside',
-  learningResourcesHeading: 'Læringsressurser',
-  back: 'Tilbake',
-  contentTypeResultsShowMore: 'Vis mer',
-  contentTypeResultsShowLess: 'Vis mindre',
-  contentTypeResultsNoHit: 'Ingen ressurser',
-  competenceGoalsToggleButtonOpen: 'Vis kompetansemål',
-  competenceGoalsToggleButtonClose: 'Lukk kompetansemål',
-  competenceGoalsNarrowOpenButton: 'Vis kompetansemål',
-  competenceGoalsNarrowBackButton: 'Tilbake',
-  additionalTooltipLabel: 'Tilleggsstoff',
-  additionalFilterLabel: 'Vis tilleggsressurser',
-};
 
 const classes = BEMHelper({
   prefix: 'c-',
@@ -111,7 +93,7 @@ class MastheadWithTopicMenu extends Component {
 
     return (
       <SearchField
-        placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
+        placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
         value={this.state.value}
         onChange={event => {
           this.setState({
@@ -129,12 +111,7 @@ class MastheadWithTopicMenu extends Component {
         filters={[{ value: 'Value', title: 'Medieuttrykk og mediesamfunn' }]}
         onFilterRemove={() => {}}
         messages={{
-          contentTypeResultShowLessLabel: 'Se færre',
-          contentTypeResultShowMoreLabel: 'Se alle',
-          allResultButtonText: 'Vis alle søketreff',
           searchFieldTitle: 'Søk',
-          searchResultHeading: 'Forslag:',
-          contentTypeResultNoHit: 'Ingen treff',
         }}
         allResultUrl="#"
         searchResult={searchFieldResults}
@@ -195,7 +172,7 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem left>
           {this.state.renderToFrontpageButton && (
             <SubjectOverviewButton>
-              {messages.subjectOverview}
+              {this.props.t('masthead.menu.subjectOverview')}
             </SubjectOverviewButton>
           )}
           <Modal
@@ -223,7 +200,6 @@ class MastheadWithTopicMenu extends Component {
             }}>
             {onClose => (
               <TopicMenu
-                id="mastheadSearchId"
                 close={onClose}
                 isBeta={this.props.beta}
                 searchFieldComponent={searchButtonView}
@@ -231,7 +207,6 @@ class MastheadWithTopicMenu extends Component {
                 toSubject={() => '#'}
                 toTopic={() => '#'}
                 topics={topicMenu}
-                messages={messages}
                 filterOptions={[
                   {
                     title: 'Medieuttrykk',
@@ -298,6 +273,7 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
+  t: PropTypes.func.isRequired,
 };
 
 MastheadWithTopicMenu.defaultProps = {
@@ -310,6 +286,4 @@ MastheadWithTopicMenu.defaultProps = {
   ),
 };
 
-export { MastheadWithTopicMenu };
-
-export default MastheadWithTopicMenu;
+export default injectT(MastheadWithTopicMenu);

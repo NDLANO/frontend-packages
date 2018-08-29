@@ -6,6 +6,10 @@
  *
  */
 
+import { constants } from 'ndla-ui';
+
+const { contentTypes } = constants;
+
 const titleTemplate = ' - NDLA';
 
 const messages = {
@@ -186,11 +190,27 @@ const messages = {
       subjectOverview: 'All subjects',
       title: 'Menu',
       subjectPage: 'Subject front page',
+      openFilter: '*Filter',
+      useFilter: '*Use filter',
+      closeFilter: '*Close filter',
       learningResourcesHeading: 'Educational Resources',
       back: 'Back',
-      contentTypeResultsShowMore: 'Show more',
-      contentTypeResultsShowLess: 'Show Less',
-      contentTypeResultsNoHit: 'No hits',
+      additionalFilterLabel: '*Show addition resources',
+      contentTypeResultsShowMore: {
+        [contentTypes.SUBJECT_MATERIAL]: '*Show more subjects',
+        [contentTypes.TASKS_AND_ACTIVITIES]: '*Show more tasks and activities',
+        [contentTypes.LEARNING_PATH]: '*Vis flere learningpaths',
+      },
+      contentTypeResultsShowLess: {
+        [contentTypes.SUBJECT_MATERIAL]: '*Show less subjects',
+        [contentTypes.TASKS_AND_ACTIVITIES]: '*Show less tasks and activities',
+        [contentTypes.LEARNING_PATH]: '*Show less learningpaths',
+      },
+      contentTypeResultsNoHit: {
+        [contentTypes.SUBJECT_MATERIAL]: '*No subjects',
+        [contentTypes.TASKS_AND_ACTIVITIES]: '*No tasks and activities',
+        [contentTypes.LEARNING_PATH]: '*No learningpaths',
+      },
     },
   },
   logo: {
@@ -237,6 +257,10 @@ const messages = {
   competenceGoals: {
     closeCompetenceGoals: '*Close competance goals',
     showCompetenceGoals: '*Show competance goals',
+    openCompentenceGoalsFilter: '*Filter competence goals',
+    useCompentenceGoalsFilter: '*Use filter',
+    closeCompentenceGoalsFilter: '*Close filter',
+    competenceGoalsNarrowBackButton: 'Go back',
   },
   subject: {
     associatedTopics: 'Associated topics',

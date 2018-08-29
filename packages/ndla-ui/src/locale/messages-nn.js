@@ -6,6 +6,10 @@
  *
  */
 
+import { constants } from 'ndla-ui';
+
+const { contentTypes } = constants;
+
 const titleTemplate = ' - NDLA';
 
 const messages = {
@@ -185,11 +189,27 @@ const messages = {
       subjectOverview: 'Alle fag',
       title: 'Meny',
       subjectPage: 'Fagforside',
+      openFilter: 'Filter',
+      useFilter: 'Bruk filter',
+      closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      contentTypeResultsShowMore: 'Vis mer',
-      contentTypeResultsShowLess: 'Vis mindre',
-      contentTypeResultsNoHit: 'Ingen treff',
+      additionalFilterLabel: '*Vis tilleggsressursar',
+      contentTypeResultsShowMore: {
+        [contentTypes.SUBJECT_MATERIAL]: '*Vis meir fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]: '*Vis fleire oppgåver og aktivitetar',
+        [contentTypes.LEARNING_PATH]: '*Vis flere læringsstier',
+      },
+      contentTypeResultsShowLess: {
+        [contentTypes.SUBJECT_MATERIAL]: '*Vis mindre fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]: '*Vis færre oppgåver og aktivitetar',
+        [contentTypes.LEARNING_PATH]: '*Vis færre læringsstier',
+      },
+      contentTypeResultsNoHit: {
+        [contentTypes.SUBJECT_MATERIAL]: '*Ikke noe fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]: '*Ingen oppgåver',
+        [contentTypes.LEARNING_PATH]: '*Ingen læringsstiar',
+      },
     },
   },
   logo: {
@@ -234,6 +254,10 @@ const messages = {
   competenceGoals: {
     closeCompetenceGoals: '*Lukk kompetansemål',
     showCompetenceGoals: '*Vis kompetansemål',
+    openCompentenceGoalsFilter: 'Filtrer kompetansemål',
+    useCompentenceGoalsFilter: 'Bruk filter',
+    closeCompentenceGoalsFilter: 'Lukk filter',
+    competenceGoalsNarrowBackButton: 'Tilbake',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

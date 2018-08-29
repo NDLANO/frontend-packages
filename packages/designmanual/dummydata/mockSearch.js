@@ -171,7 +171,7 @@ export const contentTypeResults = [
     title: 'Fagstoff',
     contentType: contentTypes.SUBJECT_MATERIAL,
     messages: {
-      allResultLabel: 'Vis alt fagstoff',
+      allResultLabel: 'Vis alt fagstoff?',
       showLessResultLabel: 'Vis færre fagstoff',
     },
     resources: [

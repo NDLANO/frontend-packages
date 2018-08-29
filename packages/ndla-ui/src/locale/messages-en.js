@@ -38,19 +38,19 @@ const messages = {
     abilities: 'Abilities',
     search: 'Search',
     searchFieldPlaceholder:
-      'Search for subjets, tasks and activities or learningpaths',
+      'Search for subjects, tasks and activities or learningpaths',
     label: {
       contentTypes: 'Content types',
       levels: 'Level',
       'language-filter': 'Language',
-      subjects: 'Subjets',
+      subjects: 'Subjects',
+      noFilter: 'No filter selected',
     },
     showLabel: {
       contentTypes: 'More content types',
       levels: 'More levels',
       'language-filter': 'More languages',
       subjects: 'Change subject',
-      noFilter: 'No filter choosen',
     },
     hideLabel: {
       contentTypes: 'Hide content types',
@@ -148,7 +148,7 @@ const messages = {
     socialMedia: {
       heading: 'Follow us',
       description:
-        'NDLA has several Facebook- and Twitter accounts. Find the one that suits you, and follow us!',
+        'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },
@@ -325,6 +325,9 @@ const messages = {
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
   },
+  modal: {
+    closeModal: 'Close',
+  },
   languages: {
     nb: 'Norwegian Bokmål',
     nn: 'Norwegian Nynorsk',
@@ -334,7 +337,7 @@ const messages = {
     se: 'Sami',
     es: 'Spanish',
     zh: 'Chinese',
-    unkown: 'Unkown',
+    unknown: 'Unknown',
   },
   breadcrumb: {
     toFrontpage: 'To the frontpage',

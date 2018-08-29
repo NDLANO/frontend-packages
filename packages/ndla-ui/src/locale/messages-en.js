@@ -38,12 +38,12 @@ const messages = {
     abilities: 'Abilities',
     search: 'Search',
     searchFieldPlaceholder:
-      'Search for subjets, tasks and activities or learningpaths',
+      'Search for subjects, tasks and activities or learningpaths',
     label: {
       contentTypes: 'Content types',
       levels: 'Level',
       'language-filter': 'Language',
-      subjects: 'Subjets',
+      subjects: 'Subjects',
     },
     showLabel: {
       contentTypes: 'More content types',
@@ -325,6 +325,9 @@ const messages = {
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
   },
+  modal: {
+    closeModal: 'Close',
+  },
   languages: {
     nb: 'Norwegian Bokmål',
     nn: 'Norwegian Nynorsk',
@@ -334,7 +337,7 @@ const messages = {
     se: 'Sami',
     es: 'Spanish',
     zh: 'Chinese',
-    unkown: 'Unkown',
+    unknown: 'Unknown',
   },
   breadcrumb: {
     toFrontpage: 'To the frontpage',

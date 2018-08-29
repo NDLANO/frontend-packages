@@ -11,7 +11,7 @@ const titleTemplate = ' - NDLA';
 const messages = {
   htmlTitles: {
     titleTemplate,
-    welcomePage: `Forsiden${titleTemplate}`,
+    welcomePage: `*Forsiden${titleTemplate}`,
     topicPage: 'Emne',
     subjectsPage: `Velg fag${titleTemplate}`,
     searchPage: `Søk${titleTemplate}`,
@@ -320,6 +320,9 @@ const messages = {
     'source-material': 'Kildemateriale',
     'assessment-resources': 'Vurderingsressurs',
   },
+  modal: {
+    closeModal: 'Lukk',
+  },
   languages: {
     nb: 'Bokmål',
     nn: 'Nynorsk',
@@ -329,7 +332,7 @@ const messages = {
     se: 'Samisk',
     es: 'Spansk',
     zh: 'Kinesisk',
-    unkown: 'Ukjent',
+    unknown: 'Ukjent',
   },
   breadcrumb: {
     toFrontpage: 'Til forsiden',

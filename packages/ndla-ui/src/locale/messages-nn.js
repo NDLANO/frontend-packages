@@ -321,6 +321,9 @@ const messages = {
     'source-material': 'Kjeldemateriale',
     'assessment-resources': 'Vurderingsressurs',
   },
+  modal: {
+    closeModal: 'Lukk',
+  },
   languages: {
     nb: 'Bokmål',
     nn: 'Nynorsk',
@@ -330,7 +333,7 @@ const messages = {
     se: 'Samisk',
     es: 'Spansk',
     zh: 'Kinesisk',
-    unkown: 'Ukjent',
+    unknown: 'Ukjent',
   },
   breadcrumb: {
     toFrontpage: 'Til framsida',

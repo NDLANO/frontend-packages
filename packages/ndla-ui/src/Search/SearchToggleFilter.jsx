@@ -15,8 +15,11 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const SearchToggleFilter = ({ checked, onClick, label }) => (
-  <div {...classes('list', '')}>
+const SearchToggleFilter = ({ checked, onClick, label, narrow, wide }) => (
+  <div {...classes('list', {
+      narrow,
+      wide,
+    })}>
     <div {...classes('item')}>
       <input
         {...classes('input')}
@@ -38,6 +41,8 @@ SearchToggleFilter.propTypes = {
   checked: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
+  narrow: PropTypes.bool,
+  wide: PropTypes.bool,
 };
 
 SearchToggleFilter.defaultProps = {

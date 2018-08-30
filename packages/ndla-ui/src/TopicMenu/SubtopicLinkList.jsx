@@ -100,6 +100,9 @@ class SubtopicLinkList extends Component {
       onGoBack,
       backLabel,
       resourceToLinkProps,
+      competenceButton,
+      defaultCount,
+      t,
     } = this.props;
 
     const { showAdditionalResources } = this.state;
@@ -125,7 +128,7 @@ class SubtopicLinkList extends Component {
           {...classes('link', ['big'])}
           onClick={closeMenu}
           to={toTopic(topic.id)}>
-          <span {...classes('link-label')}>{this.props.t('masthead.menu.goTo')}: </span>
+          <span {...classes('link-label')}>{t('masthead.menu.goTo')}: </span>
           <span {...classes('link-target')}>
             {topic.name} <span {...classes('arrow')}>›</span>
           </span>
@@ -142,12 +145,11 @@ class SubtopicLinkList extends Component {
                 to={toTopic(topic.id, subtopic.id)}
                 subtopicId={subtopic.id}
                 subtopic={subtopic}
-                additionalTooltipLabel={this.props.t('resource.additionalTooltip')}
+                additionalTooltipLabel={t('resource.additionalTooltip')}
               />
             ))}
           </ul>
         )}
-        {this.props.competenceButton}
         {hasContentTypeResults && (
           <aside
             {...classes('content-type-results', [
@@ -155,10 +157,11 @@ class SubtopicLinkList extends Component {
               this.state.showAdditionalResources ? 'show-all' : '',
             ])}>
             <div>
-              <h1>{this.props.t('masthead.menu.learningResourcesHeading')}</h1>
+              <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
               <SearchToggleFilter
+                wide
                 checked={showAdditionalResources}
-                label={this.props.t('masthead.menu.additionalFilterLabel')}
+                label={t('masthead.menu.additionalFilterLabel')}
                 onClick={this.toggleAdditionalResources}
               />
             </div>
@@ -169,16 +172,24 @@ class SubtopicLinkList extends Component {
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  allResultLabel: this.props.t(`masthead.menu.contentTypeResultsShowMore.${result.contentType}`),
-                  showLessResultLabel: this.props.t(`masthead.menu.contentTypeResultsShowLess.${result.contentType}`),
-                  noHit: this.props.t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
+                  allResultLabel: t(`masthead.menu.contentTypeResultsShowMore.${result.contentType}`),
+                  showLessResultLabel: t(`masthead.menu.contentTypeResultsShowLess.${result.contentType}`),
+                  noHit: t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
                 }}
+                defaultCount={defaultCount}
                 iconOnRight
                 showAdditionalResources={showAdditionalResources}
               />
             ))}
+            <SearchToggleFilter
+              narrow
+              checked={showAdditionalResources}
+              label={t('masthead.menu.additionalFilterLabel')}
+              onClick={this.toggleAdditionalResources}
+            />
           </aside>
         )}
+        {competenceButton}
       </div>
     );
   }
@@ -196,6 +207,7 @@ SubtopicLinkList.propTypes = {
   onGoBack: PropTypes.func.isRequired,
   backLabel: PropTypes.string.isRequired,
   competenceButton: PropTypes.node,
+  defaultCount: PropTypes.number,
   t: PropTypes.func.isRequired,
 };
 

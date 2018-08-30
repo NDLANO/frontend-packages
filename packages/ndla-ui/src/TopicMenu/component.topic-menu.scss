@@ -320,23 +320,26 @@ $navigation-row-width--small: 810px / 3;
 
   @include mq($until: mobileWide) {
     margin-top: 0;
+    margin-bottom: 0;
     padding-left: 0;
     padding-right: 0;
     > div {
+      margin-top: $spacing !important;
+      margin-bottom: 0 !important;
       h1 {
         padding-left: $left-margin-narrow-screen;
       }
-      .c-filter__list {
-        width: 100% !important;
-        margin: $spacing--small 0 0 0 !important;
-        padding: $spacing--small / 2 $left-margin-narrow-screen;
-        background: $brand-grey--lighter;
+    }
+    .c-filter__list {
+      width: 100% !important;
+      margin: $spacing 0 0 0 !important;
+      padding: $spacing--small / 2 $left-margin-narrow-screen;
+      background: $brand-grey--lighter;
+      flex-direction: row;
+      .c-filter__item label {
         flex-direction: row;
-        .c-filter__item label {
-          flex-direction: row;
-          .c-filter__item-checkbox {
-            margin-right: $spacing--small;
-          }
+        .c-filter__item-checkbox {
+          margin-right: $spacing--small;
         }
       }
     }
@@ -457,6 +460,18 @@ $navigation-row-width--small: 810px / 3;
       padding-right: $spacing;
     }
   }
+  .c-filter__list {
+    &--wide {
+      @include mq($until: mobileWide) {
+        display: none;
+      }
+    }
+    &--narrow {
+      @include mq(mobileWide) {
+        display: none;
+      }
+    }
+  }
 }
 
 .c-topic-menu {
@@ -475,14 +490,18 @@ $navigation-row-width--small: 810px / 3;
     }
   }
   &__competence {
-    overflow: hidden;
     flex-grow: 1;
     background: $brand-color--lighter;
-
-    padding: $spacing $spacing $spacing--large + $spacing;
-    margin-bottom: -$spacing--medium;
+    overflow: visible;
 
     @include mq($until: tablet) {
+      padding: $spacing $spacing $spacing--large;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       .c-topic-menu__filter-phone-wrapper {
         padding: 0 0 $spacing;
       }
@@ -492,7 +511,7 @@ $navigation-row-width--small: 810px / 3;
       padding: $spacing $spacing $spacing--large;
       margin: -$spacing--large $spacing 0 $spacing;
       height: auto;
-      overflow: visible;
+
     }
 
     @include mq(desktop) {
@@ -843,6 +862,9 @@ $navigation-row-width--small: 810px / 3;
       padding-left: $spacing;
       &:hover, &:focus {
         box-shadow: none;
+      }
+      &--hidden-phone {
+        bottom: -100%;
       }
     }
     animation-name: fadeInBottomFixed;

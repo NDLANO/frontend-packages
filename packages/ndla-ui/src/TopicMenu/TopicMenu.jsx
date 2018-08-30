@@ -396,6 +396,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      defaultCount={this.props.defaultCount}
                       competenceButton={
                         this.state.isNarrowScreen &&
                         this.renderCompentenceGoals(false, t)
@@ -417,6 +418,7 @@ TopicMenu.propTypes = {
   toTopic: PropTypes.func.isRequired,
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,
+  defaultCount: PropTypes.number,
   messages: PropTypes.shape({
     subjectPage: PropTypes.string.isRequired,
     learningResourcesHeading: PropTypes.string.isRequired,
@@ -443,4 +445,8 @@ TopicMenu.propTypes = {
   hideSearch: PropTypes.bool,
   competenceGoals: PropTypes.node,
   searchFieldComponent: PropTypes.node,
+};
+
+TopicMenu.defaultProps = {
+  defaultCount: 12,
 };

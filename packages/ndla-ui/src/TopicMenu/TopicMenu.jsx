@@ -18,7 +18,7 @@ import debounce from 'lodash/debounce';
 
 import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import { Button, SafeLink, Tooltip, ModalHeader } from 'ndla-ui';
+import { Button, SafeLink, Tooltip, ModalHeader, createUniversalPortal } from 'ndla-ui';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
@@ -44,6 +44,27 @@ export const renderAdditionalIcon = (isAdditional, label) => {
     return <Additional className="c-icon--20 c-topic-menu__tooltipContainer" />;
   }
   return null;
+};
+
+const SubjectOverviewButton = ({ children, competenceGoalsOpen }) => {
+  const content = (
+    <div
+      {...classes('back', {
+        'hidden-phone': competenceGoalsOpen,
+        narrow: true,
+      })}>
+      <SafeLink {...classes('back-link')} to="/">
+        <Home {...classes('home-icon', '', 'c-icon--20')} />
+        {children}
+      </SafeLink>
+    </div>
+  );
+  return createUniversalPortal(content, 'body');
+};
+
+SubjectOverviewButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  competenceGoalsOpen: PropTypes.bool.isRequired,
 };
 
 export default class TopicMenu extends Component {
@@ -192,6 +213,9 @@ export default class TopicMenu extends Component {
       <Trans>
         {({ t }) => (
           <nav>
+            <SubjectOverviewButton competenceGoalsOpen={competenceGoalsOpen}>
+              {t('masthead.menu.subjectOverview')}
+            </SubjectOverviewButton>
             <ModalHeader modifier={['white', 'menu']}>
               <div {...classes('masthead-left')}>
                 <button
@@ -239,10 +263,9 @@ export default class TopicMenu extends Component {
                           !this.state.isNarrowScreen &&
                           this.renderCompentenceGoals(competenceGoalsOpen, t)}
                       </div>
-
                       {!competenceGoalsOpen &&
                         filterOptions &&
-                        filterOptions.length > 0 && (
+                        filterOptions.length > 1 && (
                           <Fragment>
                             <FilterListPhone
                               options={filterOptions}
@@ -370,6 +393,7 @@ export default class TopicMenu extends Component {
                         onGoBack={this.handleOnGoBack}
                         resourceToLinkProps={resourceToLinkProps}
                         competenceButton={
+                          competenceGoals &&
                           this.state.isNarrowScreen &&
                           this.renderCompentenceGoals(false, t)
                         }
@@ -398,6 +422,7 @@ export default class TopicMenu extends Component {
                       resourceToLinkProps={resourceToLinkProps}
                       defaultCount={this.props.defaultCount}
                       competenceButton={
+                        competenceGoals &&
                         this.state.isNarrowScreen &&
                         this.renderCompentenceGoals(false, t)
                       }

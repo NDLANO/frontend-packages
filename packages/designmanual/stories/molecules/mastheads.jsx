@@ -21,10 +21,9 @@ import {
   SearchField,
   SafeLink,
   Modal,
-  createUniversalPortal,
 } from 'ndla-ui';
 
-import { Search, Home } from 'ndla-icons/common';
+import { Search } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 
 import { topicMenu, contentTypeResults } from '../../dummydata';
@@ -50,30 +49,6 @@ const searchFieldClasses = BEMHelper({
   prefix: 'c-',
   name: 'search-field',
 });
-
-const TopicMenuClasses = new BEMHelper({
-  name: 'topic-menu',
-  prefix: 'c-',
-});
-
-const SubjectOverviewButton = ({ children }) => {
-  const content = (
-    <div
-      {...TopicMenuClasses('back', {
-        narrow: true,
-      })}>
-      <SafeLink {...TopicMenuClasses('back-link')} to="/">
-        <Home {...TopicMenuClasses('home-icon', '', 'c-icon--20')} />
-        {children}
-      </SafeLink>
-    </div>
-  );
-  return createUniversalPortal(content, 'body');
-};
-
-SubjectOverviewButton.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
@@ -170,11 +145,6 @@ class MastheadWithTopicMenu extends Component {
         hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
-          {this.state.renderToFrontpageButton && (
-            <SubjectOverviewButton>
-              {this.props.t('masthead.menu.subjectOverview')}
-            </SubjectOverviewButton>
-          )}
           <Modal
             size="fullscreen"
             activateButton={
@@ -186,14 +156,8 @@ class MastheadWithTopicMenu extends Component {
             animationDuration={150}
             backgroundColor="grey"
             noBackdrop
-            onOpen={() => {
-              this.setState({
-                renderToFrontpageButton: true,
-              });
-            }}
             onClose={() => {
               this.setState({
-                renderToFrontpageButton: false,
                 expandedTopicId: null,
                 expandedSubtopicsId: [],
               });
@@ -219,7 +183,7 @@ class MastheadWithTopicMenu extends Component {
                 ]}
                 filterValues={this.state.filterMenuValues}
                 competenceGoals={
-                  <CompetenceGoalsExample menu subjectName="Mediefag" />
+                  <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
                 }
                 onFilterClick={values => {
                   this.setState({

@@ -115,6 +115,10 @@ class SubtopicLinkList extends Component {
       hasContentTypeResults &&
       topic.contentTypeResults.some(result => result.contentType);
 
+    const someResourcesAreAdditional =
+      hasContentTypeResults &&
+      topic.contentTypeResults.some(result => (result.resources.some(resource => (resource.additional))));
+
     return (
       <div
         className={className}
@@ -158,12 +162,12 @@ class SubtopicLinkList extends Component {
             ])}>
             <div>
               <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
-              <SearchToggleFilter
+              {someResourcesAreAdditional && <SearchToggleFilter
                 wide
                 checked={showAdditionalResources}
                 label={t('masthead.menu.additionalFilterLabel')}
                 onClick={this.toggleAdditionalResources}
-              />
+              />}
             </div>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
@@ -181,12 +185,12 @@ class SubtopicLinkList extends Component {
                 showAdditionalResources={showAdditionalResources}
               />
             ))}
-            <SearchToggleFilter
+            {someResourcesAreAdditional && <SearchToggleFilter
               narrow
               checked={showAdditionalResources}
               label={t('masthead.menu.additionalFilterLabel')}
               onClick={this.toggleAdditionalResources}
-            />
+            />}
           </aside>
         )}
         {competenceButton}

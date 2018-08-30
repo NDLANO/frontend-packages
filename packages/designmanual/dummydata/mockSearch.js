@@ -42,7 +42,7 @@ export const searchTabFilterOptions = {
       value: 'value',
     },
     {
-      title: 'Forelesning og presentasjon',
+      title: 'Forelesning, presentasjon',
       value: 'value1',
     },
     {

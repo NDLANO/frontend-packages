@@ -83,7 +83,7 @@ class MastheadWithTopicMenu extends Component {
           );
           e.preventDefault();
         }}
-        filters={[{ value: 'Value', title: 'Medieuttrykk og mediesamfunn' }]}
+        filters={[{ value: 'Value', title: 'Medieuttrykk og mediesamfunnet' }]}
         onFilterRemove={() => {}}
         messages={{
           searchFieldTitle: 'Søk',

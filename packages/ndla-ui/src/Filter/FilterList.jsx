@@ -36,6 +36,7 @@ class FilterList extends Component {
       showLabel,
       hideLabel,
       extendedPadding,
+      alignedGroup,
     } = this.props;
 
     const showAll =
@@ -55,7 +56,10 @@ class FilterList extends Component {
               {this.props.noFilterSelectedLabel}
             </span>
           )}
-        <ul {...filterClasses('item-wrapper', extendedPadding && 'extended-padding')}>
+        <ul {...filterClasses('item-wrapper', {
+            'extended-padding': extendedPadding,
+            'aligned-grouping': alignedGroup,
+          })}>
           {options.map((option, index) => {
             const itemModifiers = [];
 
@@ -161,6 +165,7 @@ FilterList.propTypes = {
   noFilterSelectedLabel: PropTypes.string,
   hideLabel: PropTypes.string,
   extendedPadding: PropTypes.bool,
+  alignedGroup: PropTypes.bool,
 };
 
 FilterList.defaultProps = {

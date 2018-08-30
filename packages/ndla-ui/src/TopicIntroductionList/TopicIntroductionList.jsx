@@ -147,10 +147,8 @@ const TopicIntroductionList = ({
             <li>
               <NoContentBox
                 onClick={toggleAdditionalCores}
-                text={t('resouce.noCoreResourcesAvailableUnspecific', {
-                  name: 'Test',
-                })}
-                buttonText={t('resouce.activateAdditionalResources')}
+                text={t('resource.noCoreResourcesAvailableUnspecific')}
+                buttonText={t('resource.activateAdditionalResources')}
               />
             </li>
           )}

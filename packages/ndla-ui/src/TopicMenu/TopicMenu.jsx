@@ -188,19 +188,6 @@ export default class TopicMenu extends Component {
 
     const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
 
-    const subTopicLinkListMessages = {
-      /*
-      backButton: messages.back,
-      goToLabel: messages.goTo,
-      contentTypeResultsShowMore: messages.contentTypeResultsShowMore,
-      contentTypeResultsShowLess: messages.contentTypeResultsShowLess,
-      learningResourcesHeading: messages.learningResourcesHeading,
-      contentTypeResultsNoHit: messages.contentTypeResultsNoHit,
-      additionalFilterLabel: messages.additionalFilterLabel,
-      additionalTooltipLabel: messages.additionalTooltipLabel,
-      */
-    };
-
     return (
       <Trans>
         {({ t }) => (
@@ -371,7 +358,6 @@ export default class TopicMenu extends Component {
                                 currentlyExpandedSubTopics.length - 1
                               ].name
                         }
-                        messages={subTopicLinkListMessages}
                         goToTitle={t('masthead.menu.goTo')}
                         toTopic={toTopic}
                         expandedSubtopicId={
@@ -399,7 +385,6 @@ export default class TopicMenu extends Component {
                       closeMenu={closeMenu}
                       topic={subTopic}
                       backLabel={index === 0 ? this.props.topics.find(topic => topic.id === this.props.expandedTopicId).name : currentlyExpandedSubTopics[index - 1].name}
-                      messages={subTopicLinkListMessages}
                       toTopic={toTopic}
                       expandedSubtopicId={
                         currentlyExpandedSubTopics[index + 1]

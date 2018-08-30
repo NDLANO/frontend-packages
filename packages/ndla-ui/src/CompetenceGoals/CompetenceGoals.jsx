@@ -51,7 +51,7 @@ class CompetenceGoals extends Component {
 
     return (
       <Trans>
-        {(t) => (
+        {({ t }) => (
           <div {...classes('', { menu, search })}>
             {!menu && !search ? (
               <Fragment>
@@ -81,9 +81,9 @@ class CompetenceGoals extends Component {
                         values={filterValues}
                         onChange={onFilterClick}
                         messages={{
-                          openFilter: t('componetence.openCompentenceGoalsFilter'),
-                          useFilter: t('componetence.useCompentenceGoalsFilter'),
-                          closeFilter: t('componetence.closeCompentenceGoalsFilter'),
+                          openFilter: t('competenceGoals.openCompentenceGoalsFilter'),
+                          useFilter: t('competenceGoals.useCompentenceGoalsFilter'),
+                          closeFilter: t('competenceGoals.closeCompentenceGoalsFilter'),
                         }}
                       />
                     </Fragment>

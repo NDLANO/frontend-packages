@@ -333,6 +333,16 @@ export const searchFilterOptions = {
       value: 'contentTypeFilter:4',
       hits: 21,
     },
+    {
+      title: 'Vurderingsressurs',
+      value: 'contentTypeFilter:5',
+      hits: 21,
+    },
+    {
+      title: 'Delte ressurser',
+      value: 'contentTypeFilter:6',
+      hits: 21,
+    },
   ],
   contentFilter: [
     {

@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { Core, Additional } from 'ndla-icons/common';
 
 import {
@@ -17,7 +16,6 @@ import {
   ExternalLearningResourcesBadge,
   TasksAndActivitiesBadge,
   Image,
-  Button,
 } from 'ndla-ui';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
@@ -126,11 +124,6 @@ const results = [
     matchTab: ['SHARED_RESOURCES'],
   },
 ];
-
-const filterClasses = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
 
 const getActiveFilters = (filterName, fromOptions, currentState) => {
   if (currentState.length) {

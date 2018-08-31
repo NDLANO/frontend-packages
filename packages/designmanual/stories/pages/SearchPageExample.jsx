@@ -25,6 +25,7 @@ import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 import {
   searchTabOptions,
   searchTabFilterOptions,
+  searchFilterOptions,
 } from '../../dummydata/index';
 
 const results = [
@@ -131,60 +132,33 @@ const filterClasses = new BEMHelper({
   prefix: 'c-',
 });
 
+const getActiveFilters = (filterName, fromOptions, currentState) => {
+  if (currentState.length) {
+    return currentState.map(value => {
+      const activeFilter = fromOptions.find(option => option.value === value);
+      activeFilter.filterName = filterName;
+      return activeFilter;
+    });
+  }
+  return [];
+}
+
 class SearchPageExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentTab: 'all',
       competenceGoalsOpen: false,
-      exampleSubjectFilterValues: ['subjectFilterOptions_value'],
-      exampleSubjectsFilterValue: [],
-      exampleContentTypesFilterValue: [],
-      exampleContentIsType: [],
-      exampleLanguageFilterValues: ['LanguageFilterOptions_nb'],
-      exampleCreatedByFilterValues: ['CreatedByFilterOptions_ndla'],
+      filter_subjects: ['subjects:medieuttrykk_og_mediesamfunnet'],
+      filter_subject_values: {
+        'subjects:medieuttrykk_og_mediesamfunnet': [],
+      },
+      filter_contentFilter: [],
+      filter_contentTypeFilter: [],
+      filter_languageFilter: [],
+      filter_createdByFilter: [],
     };
   }
-/*
-  getActiveFilters(filterOnly) {
-    const filterValues = [].concat(
-      this.state.exampleSubjectFilterValues,
-      this.state.exampleSubjectsFilterValue,
-      this.state.exampleContentTypesFilterValue,
-      this.state.exampleContentIsType,
-      this.state.exampleLanguageFilterValues,
-      this.state.exampleCreatedByFilterValues,
-    );
-    const activeFilters = [];
-
-    if (!filterOnly) {
-      Object.keys(filterValues).forEach(key => {
-        filterValues[key].forEach(value => {
-          activeFilters.push({
-            value,
-            title: filterOptions[key].options.find(
-              searchWithin => searchWithin.value === value,
-            ).title,
-            filterName: key,
-          });
-        });
-      });
-    } else if (!filterValues[filterOnly]) {
-      return [];
-    } else {
-      filterValues[filterOnly].forEach(value => {
-        activeFilters.push({
-          value,
-          title: filterOptions[filterOnly].options.find(
-            searchWithin => searchWithin.value === value,
-          ).title,
-          filterName: filterOnly,
-        });
-      });
-    }
-    return activeFilters;
-  }
-*/
 
   render() {
     const { currentTab } = this.state;
@@ -222,6 +196,26 @@ class SearchPageExample extends Component {
       evt.preventDefault();
     };
 
+    const activeSubjectFilters = searchFilterOptions.subjects
+      .filter(option => this.state.filter_subjects.includes(option.value));
+
+    const activeSubjects = [].concat(...this.state.filter_subjects.map(subjectKey => (
+      searchFilterOptions.subjects
+        .find(option => option.value === subjectKey).subjectFilters
+        .filter(subjectFilter => this.state.filter_subject_values[subjectKey] && this.state.filter_subject_values[subjectKey].includes(subjectFilter.value)).map(subjects => ({
+          filterName: subjectKey,
+          ...subjects,
+      }))
+    )));
+
+    const activeOtherFilters = [
+      ...activeSubjects,
+      ...getActiveFilters('filter_contentFilter', searchFilterOptions.contentFilter ,this.state.filter_contentFilter),
+      ...getActiveFilters('filter_contentTypeFilter', searchFilterOptions.contentTypeFilter ,this.state.filter_contentTypeFilter),
+      ...getActiveFilters('filter_languageFilter', searchFilterOptions.languageFilter ,this.state.filter_languageFilter),
+      ...getActiveFilters('filter_createdByFilter', searchFilterOptions.createdByFilter ,this.state.filter_createdByFilter),
+    ];
+
     const authorTablet = author('tablet');
     const authorDesktop = author('desktop');
     const hasAuthor = authorTablet !== null;
@@ -229,65 +223,31 @@ class SearchPageExample extends Component {
       ? 'Kompetansemål'
       : 'Ideskaping';
 
-    const subjectFilterOptions = [
-      {
-        title: 'Brønnteknikk',
-        value: 'subjectFilterOptions_value2',
-      },
-      {
-        title: 'Kinesisk',
-        value: 'subjectFilterOptions_value1',
-      },
-      {
-        title: 'Markedsføring og ledelse',
-        value: 'subjectFilterOptions_value3',
-      },
-      {
-        title: 'Medieuttrykk og mediasamfunnet',
-        value: 'subjectFilterOptions_value',
-      },
-      {
-        title: 'Naturbruk',
-        value: 'subjectFilterOptions_value4',
-      },
-    ];
-
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
         hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
         searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-        onSearchFieldFilterRemove={() => {}}
+        onSearchFieldFilterRemove={(value, filterName) => {
+          if (this.state[filterName]) {
+            this.setState((prevState) => ({
+              [filterName]: prevState[filterName].filter(option => option !== value)
+            }))
+          } else {
+            this.setState((prevState) => {
+              const currentFilterSubjects = prevState.filter_subject_values;
+              currentFilterSubjects[filterName] = currentFilterSubjects[filterName].filter(option => option !== value)
+              return {
+                filter_subject_values: currentFilterSubjects,
+              };
+            });
+          }
+        }}
         onSearch={onSearch}
-        searchFieldFilters={
-          hasAuthor
-            ? null
-            : [
-                {
-                  value: 'subjectFilterOptions_value4',
-                  title: 'Medieuttrykk og mediesamfunnet',
-                },
-              ]
-        }
-        activeFilters={
-          hasAuthor
-            ? null
-            : [
-                {
-                  value: 'value',
-                  title: 'Medieuttrykk og mediesamfunnet',
-                  filterName: 'subject',
-                },
-                {
-                  value: 'value2',
-                  title: 'Kjernestoff',
-                  filterName: 'content',
-                },
-              ]
-        }
+        searchFieldFilters={activeSubjectFilters}
+        activeFilters={activeSubjectFilters.concat(activeOtherFilters)}
         author={authorTablet}
-        onActiveFilterRemove={() => {}}
         messages={{
           filterHeading: 'Filter',
           resultHeading: hasAuthor
@@ -303,20 +263,14 @@ class SearchPageExample extends Component {
               label="Fag:"
               noFilterSelectedLabel="Ingen filter valgt"
               options={
-                subjectFilterOptions.filter(
-                  option =>
-                    this.state.exampleSubjectFilterValues.indexOf(
-                      option.value,
-                    ) !== -1,
+                searchFilterOptions.subjects.filter(
+                  option => this.state.filter_subjects.includes(option.value)
                 )
-                /*
-                  Note: We only pass along selected options to this component!
-                */
               }
               onChange={values => {
-                this.setState({ exampleSubjectFilterValues: values });
+                this.setState({ filter_subjects: values });
               }}
-              values={this.state.exampleSubjectFilterValues}>
+              values={this.state.filter_subjects}>
               <SearchPopoverFilter
                 messages={{
                   backButton: 'Tilbake til filter',
@@ -326,138 +280,76 @@ class SearchPageExample extends Component {
                   hasValuesButtonText: 'Flere fag',
                   noValuesButtonText: 'Filtrer på fag',
                 }}
-                options={subjectFilterOptions}
-                values={this.state.exampleSubjectFilterValues}
+                options={searchFilterOptions.subjects}
+                values={this.state.filter_subjects}
                 onChange={values => {
-                  this.setState({ exampleSubjectFilterValues: values });
+                  this.setState({ filter_subjects: values });
                 }}
               />
             </SearchFilter>
-            <SearchFilter
-              label="Medieuttrykk og mediasamfunnet:"
-              options={[
-                {
-                  title: 'Medieuttrykk',
-                  value: 'ContentSubjectOptions_value',
-                },
-                {
-                  title: 'Mediesamfunnet',
-                  value: 'ContentSubjectOptions_value1',
-                },
-                {
-                  title: 'VG1',
-                  value: 'ContentSubjectOptions_value2',
-                },
-                {
-                  title: 'VG2',
-                  value: 'ContentSubjectOptions_value3',
-                },
-                {
-                  title: 'VG3',
-                  value: 'ContentSubjectOptions_value4',
-                },
-              ]}
-              values={this.state.exampleSubjectsFilterValue}
-              onChange={values => {
-                this.setState({ exampleSubjectsFilterValue: values });
-              }}
-            />
+            {
+              this.state.filter_subjects.map(subjectValue => {
+                const subjectOption = searchFilterOptions.subjects.find(option => option.value === subjectValue);
+                return (<SearchFilter
+                  key={subjectValue}
+                  label={subjectOption.title}
+                  options={subjectOption.subjectFilters}
+                  values={this.state.filter_subject_values[subjectValue]}
+                  onChange={values => {
+                    this.setState((prevState) => {
+                      const newValues = prevState.filter_subject_values;
+                      newValues[subjectValue] = values;
+                      return {
+                        filter_subject_values: newValues,
+                      }
+                    });
+                  }}
+                />);
+              })
+            }
             <SearchFilter
               label="Innholdstype:"
               narrowScreenOnly
               defaultVisibleCount={2}
               showLabel="Flere innholdstyper"
               hideLabel="Færre innholdstyper"
-              options={[
-                {
-                  title: 'Emne',
-                  value: 'ContentTypesOptions_SUBJECT',
-                },
-                {
-                  title: 'Læringssti',
-                  value: 'ContentTypesOptions_LEARNING_PATH',
-                },
-                {
-                  title: 'Fagstoff',
-                  value: 'ContentTypesOptions_SUBJECT_MATERIAL',
-                },
-                {
-                  title: 'Oppgaver og aktiviteter',
-                  value: 'ContentTypesOptions_TASKS_AND_ACTIVITIES',
-                },
-              ]}
-              values={this.state.exampleContentTypesFilterValue}
+              options={searchFilterOptions.contentTypeFilter}
+              values={this.state.filter_contentTypeFilter}
               onChange={values => {
-                this.setState({ exampleContentTypesFilterValue: values });
+                this.setState({ filter_contentTypeFilter: values });
               }}
             />
             <SearchFilter
               label="Innhold:"
-              options={[
-                {
-                  title: 'Tilleggstoff',
-                  value: 'ContentIsTypeOptions_additional',
-                  icon: Additional,
-                },
-                {
-                  title: 'Kjernestoff',
-                  value: 'ContentIsTypeOptions_core',
-                  icon: Core,
-                },
-              ]}
-              values={this.state.exampleContentIsType}
+              options={searchFilterOptions.contentFilter.map(option => ({
+                title: option.title,
+                value: option.value,
+                icon: option.additional ? Additional : Core,
+              }))}
+              values={this.state.filter_contentFilter}
               onChange={values => {
-                this.setState({ exampleContentIsType: values });
+                this.setState({ filter_contentFilter: values });
               }}
             />
             <SearchFilter
               label="Språk:"
-              options={[
-                {
-                  title: 'Bokmål',
-                  value: 'LanguageFilterOptions_nb',
-                },
-                {
-                  title: 'Nynorsk',
-                  value: 'LanguageFilterOptions_nn',
-                },
-                {
-                  title: 'Engelsk',
-                  value: 'LanguageFilterOptions_en',
-                },
-                {
-                  title: 'Kinesisk',
-                  value: 'LanguageFilterOptions_cn',
-                },
-              ]}
+              options={searchFilterOptions.languageFilter}
               defaultVisibleCount={2}
               showLabel="Flere språk"
               hideLabel="Færre språk"
-              values={this.state.exampleLanguageFilterValues}
+              values={this.state.filter_languageFilter}
               onChange={values => {
-                this.setState({ exampleLanguageFilterValues: values });
+                this.setState({ filter_languageFilter: values });
               }}
             />
             <SearchFilter
               label="Laget av:"
-              options={[
-                {
-                  title: 'Ndla',
-                  value: 'CreatedByFilterOptions_ndla',
-                },
-                {
-                  title: 'Andre',
-                  value: 'CreatedByFilterOptions_other',
-                },
-              ]}
-              values={this.state.exampleCreatedByFilterValues}
+              options={searchFilterOptions.createdByFilter}
+              values={this.state.filter_createdByFilter}
               onChange={values => {
-                this.setState({ exampleCreatedByFilterValues: values });
+                this.setState({ filter_createdByFilter: values });
               }}
             />
-          <div {...filterClasses('usefilter-wrapper')}>
-              <Button outline>Vis flere filter</Button>
-            </div>
           </Fragment>
         }>
         <SearchResult

@@ -71,6 +71,11 @@ class FilterList extends Component {
               itemModifiers.push('no-results');
             }
 
+            const disabled = option.hits === 0;
+            if (disabled) {
+              itemModifiers.push('disabled');
+            }
+
             return (
               <li {...filterClasses('item', itemModifiers)} key={option.value}>
                 <input
@@ -78,6 +83,7 @@ class FilterList extends Component {
                   type="checkbox"
                   id={option.value}
                   value={option.value}
+                  disabled={disabled}
                   checked={checked}
                   onChange={event => {
                     let newValues = null;
@@ -95,7 +101,10 @@ class FilterList extends Component {
                 />
                 <label htmlFor={option.value}>
                   <span {...filterClasses('item-checkbox')} />
-                  <span {...filterClasses('text')}>{option.title}</span>
+                  <span {...filterClasses('text')}>
+                    {option.title}
+                    {option.hits !== undefined && ` (${option.hits})`}
+                  </span>
                   {option.icon
                     ? createElement(option.icon, {
                         className: `c-icon--22 ${
@@ -153,6 +162,7 @@ FilterList.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       value: valueShape.isRequired,
+      hits: PropTypes.number,
       icon: PropTypes.func,
       noResults: PropTypes.bool,
     }),

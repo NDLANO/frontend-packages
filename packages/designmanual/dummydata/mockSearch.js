@@ -213,3 +213,172 @@ export const contentTypeResults = [
     resources: [],
   },
 ];
+
+export const searchFilterOptions = {
+  subjects: [
+    {
+      title: 'Brønnteknikk',
+      value: 'subjects:bronnteknikk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'YF VG2',
+          value: 'bronnteknikk:yfvg2',
+          hits: 7,
+        },
+        {
+          title: 'YF VG3',
+          value: 'bronnteknikk:yfvg3',
+          hits: 23,
+        },
+      ],
+    },
+    {
+      title: 'Kinesisk',
+      value: 'subjects:kinesisk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'kinesisk:vg1',
+          hits: 0,
+        },
+        {
+          title: 'VG2',
+          value: 'kinesisk:vg2',
+          hits: 3,
+        },
+      ],
+    },
+    {
+      title: 'Markedsføring og ledelse',
+      value: 'subjects:markedsforing_og_ledelse',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'markedsforing_og_ledelse:vg1',
+          hits: 6,
+        },
+        {
+          title: 'VG2',
+          value: 'markedsforing_og_ledelse:vg2',
+          hits: 8,
+        },
+      ],
+    },
+    {
+      title: 'Medieuttrykk og mediesamfunnet',
+      value: 'subjects:medieuttrykk_og_mediesamfunnet',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'Medieuttrykk',
+          value: 'medieuttrykk_og_mediesamfunnet:medieuttrykk',
+          hits: 3,
+        },
+        {
+          title: 'Mediesamfunnet',
+          value: 'medieuttrykk_og_mediesamfunnet:mediesamfunnet',
+          hits: 1,
+        },
+        {
+          title: 'VG1',
+          value: 'medieuttrykk_og_mediesamfunnet:vg1',
+          hits: 2,
+        },
+        {
+          title: 'VG2',
+          value: 'medieuttrykk_og_mediesamfunnet:vg2',
+          hits: 6,
+        },
+        {
+          title: 'VG3',
+          value: 'medieuttrykk_og_mediesamfunnet:vg3',
+          hits: 0,
+        },
+      ],
+    },
+    {
+      title: 'Naturbruk',
+      value: 'subjects:naturbruk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'naturbruk:vg1',
+          hits: 8,
+        },
+      ],
+    },
+  ],
+  contentTypeFilter: [
+    {
+      title: 'Emne',
+      value: 'contentTypeFilter:1',
+      hits: 19,
+    },
+    {
+      title: 'Læringssti',
+      value: 'contentTypeFilter:2',
+      hits: 52,
+    },
+    {
+      title: 'Fagstoff',
+      value: 'contentTypeFilter:3',
+      hits: 74,
+    },
+    {
+      title: 'Oppgaver og aktiviteter',
+      value: 'contentTypeFilter:4',
+      hits: 21,
+    },
+  ],
+  contentFilter: [
+    {
+      title: 'Tilleggstoff',
+      additional: true,
+      value: 'contentFilter:1',
+      hits: 46,
+    },
+    {
+      title: 'Kjærnestoff',
+      value: 'contentFilter:2',
+      hits: 102,
+    },
+  ],
+  languageFilter: [
+    {
+      title: 'Bokmål',
+      value: 'languageFilter:1',
+      hits: 73,
+    },
+    {
+      title: 'Nynorsk',
+      value: 'languageFilter:2',
+      hits: 39,
+    },
+    {
+      title: 'Engelsk',
+      value: 'languageFilter:3',
+      hits: 5,
+    },
+    {
+      title: 'Kinesisk',
+      value: 'languageFilter:4',
+      hits: 0,
+    },
+  ],
+  createdByFilter: [
+    {
+      title: 'Ndla',
+      value: 'createdByFilter:1',
+      hits: 123,
+    },
+    {
+      title: 'Andre',
+      value: 'createdByFilter:2',
+      hits: 44,
+    },
+  ],
+};

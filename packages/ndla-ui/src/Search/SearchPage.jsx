@@ -10,6 +10,7 @@ import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';
 
 const classes = BEMHelper('c-search-page');
+const filterClasses = BEMHelper('c-filter');
 
 export default class SearchPage extends Component {
   constructor(props) {
@@ -102,7 +103,7 @@ export default class SearchPage extends Component {
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
-                onFilterRemove={onSearchFieldFilterRemove}
+                onFilterRemove={(value, filterName) => onSearchFieldFilterRemove(value, filterName)}
               />
             </div>
             <div {...classes('toggle-filter')}>
@@ -120,6 +121,9 @@ export default class SearchPage extends Component {
                     </ModalHeader>
                     <ModalBody modifier="slide-in-left no-side-padding-mobile">
                       {filters}
+                      <div {...filterClasses('usefilter-wrapper')}>
+                        <Button outline onClick={onClose}>Bruk filter</Button>
+                      </div>
                     </ModalBody>
                   </Fragment>
                 )}
@@ -150,6 +154,7 @@ SearchPage.propTypes = {
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      filterName: PropTypes.string.isRequired,
     }),
   ),
   activeFilters: PropTypes.arrayOf(

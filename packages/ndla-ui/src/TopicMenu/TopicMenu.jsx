@@ -12,7 +12,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
 import { Trans } from 'ndla-i18n';
 import debounce from 'lodash/debounce';
 
@@ -94,9 +93,8 @@ export default class TopicMenu extends Component {
   }
 
   setScreenSize(initial = false) {
-    const currentBreakpoint = getCurrentBreakpoint();
-    const isNarrowScreen =
-      currentBreakpoint === breakpoints.mobile || currentBreakpoint === 'none';
+    const isNarrowScreen = (window.innerWidth || document.documentElement.clientWidth) < 769;
+    console.log(isNarrowScreen)
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -268,6 +266,7 @@ export default class TopicMenu extends Component {
                         filterOptions.length > 1 && (
                           <Fragment>
                             <FilterListPhone
+                              alignedGroup
                               options={filterOptions}
                               values={filterValues}
                               onChange={onFilterClick}

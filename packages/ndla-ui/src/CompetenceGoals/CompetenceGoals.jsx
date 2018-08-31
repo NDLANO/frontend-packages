@@ -78,6 +78,7 @@ class CompetenceGoals extends Component {
                       <FilterListPhone
                         label="Filtrer kompetansemål"
                         options={filterOptions}
+                        alignedGroup
                         values={filterValues}
                         onChange={onFilterClick}
                         messages={{

@@ -48,6 +48,9 @@
       border: none;
       padding-top: 0;
       flex-flow: row;
+      .c-filter__label {
+        margin-right: $spacing;
+      }
     }
 
     &--float-right {
@@ -105,27 +108,19 @@
         }
       }
     }
-
-    &--search {
-      padding: $spacing 0;
-
-      @include mq(tablet) {
-        padding: $spacing--small $spacing;
-      }
-
-      .c-filter {
-        &__label {
-          @include font-size(16px, 32px);
-        }
-      }
-    }
   }
 
   &__label {
     @include font-size(16px, 28px);
 
+
     @include mq(tablet) {
-      margin: 0 $spacing--small;
+      margin: 0 0 $spacing--small;
+    }
+
+    @include mq($until: mobileWide) {
+      padding-left: $spacing;
+      padding-right: $spacing;
     }
 
     &--hidden {
@@ -139,35 +134,28 @@
     list-style: none;
 
     @include mq($until: mobileWide) {
-      display: flex;
-      flex-flow: column;
-      align-items: flex-start;
       width: 100%;
-      background: #fff;
-
-      &--extended-padding {
-        li:before {
-          content: "";
-          display: block;
-          width: 100%;
-          left: 0;
-          position: absolute;
-          z-index: -1;
-          height: $spacing--large;
-          background: #fff;
-          border-bottom: 1px solid $brand-grey--lighter;
-        }
-      }
-
-      .c-filter__item-wrapper {
-        background: #fff;
-      }
+      flex-flow: column;
       .c-filter__item {
+        width: 100%;
+      }
+    }
+    @include mq($from: mobileWide, $until: tabletWide) {
+      flex-flow: wrap;
+      .c-filter__item {
+        width: 50% !important;
+      }
+    }
+    @include mq($until: tabletWide) {
+      display: flex;
+      align-items: flex-start;
+
+      .c-filter__item {
+        background: #fff;
         margin: 0;
         display: flex;
         position: static;
-        width: 100%;
-        height: $spacing--large;
+        min-height: 52px;
         align-items: center;
         border-bottom: 1px solid $brand-grey--lighter;
       }
@@ -187,9 +175,14 @@
       }
     }
     &--aligned-grouping {
-      @include mq(mobileWide) {
+      @include mq($until: 568px) {
         > li {
-          width: 214px;
+          width: 100%;
+        }
+      }
+      @include mq(568px) {
+        > li {
+          width: 235px;
         }
       }
     }
@@ -231,6 +224,10 @@
       }
     }
 
+    .c-icon {
+      margin-left: $spacing--small;
+    }
+
     input:checked {
       & + label .c-filter__item-checkbox {
         border: 2px solid $brand-color;
@@ -261,15 +258,20 @@
       align-items: flex-start;
       @include mq($until: mobileWide) {
         width: 100%;
+        padding: $spacing--small / 2 $spacing;
         justify-items: space-between;
         flex-direction: row-reverse;
-        height: 52px;
+        min-height: 52px;
         align-items: center;
         .c-filter__text {
           flex-grow: 1;
         }
         .c-filter__item-checkbox {
           margin-right: 0;
+        }
+        .c-icon {
+          margin-left: 0;
+          margin-right: $spacing--small;
         }
       }
     }
@@ -352,6 +354,7 @@
     background: none;
     border: 0;
     padding: 0;
+    margin-top: $spacing;
     cursor: pointer;
     color: $brand-color;
     @include font-size(16px, 32px);
@@ -359,18 +362,25 @@
     span {
       margin-right: $spacing;
     }
+    @include mq($until: mobileWide) {
+      margin-top: 0;
+      padding: $spacing--small / 2 $spacing;
+      width: 100%;
+      justify-content: space-between;
+      min-height: 52px;
+      border-bottom: 1px solid $brand-grey--lighter;
+    }
   }
 
   &--background {
     background-color: $brand-grey--lightest;
     padding: $spacing;
+    @include mq($until: mobileWide) {
+      padding: 0;
+    }
   }
 
   &--subject {
-    @include mq($until: tablet) {
-      padding: $spacing;
-    }
-
     .c-filter {
       &__item {
         @include mq($until: tablet) {
@@ -398,5 +408,8 @@
   &__no-filter-selected {
     color: $text-light-color;
     @include font-size(16px, 16px);
+    @include mq($until: mobileWide) {
+      padding: 0 $spacing $spacing--small $spacing;
+    }
   }
 }

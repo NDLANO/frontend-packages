@@ -12,7 +12,6 @@ $padding-left-narrow: 32px;
 $left-margin-narrow-screen: 20px;
 $link-height: 52px;
 $navigation-row-width: 980px / 3;
-$navigation-row-width--small: 810px / 3;
 
 .c-topic-menu-toggle-button {
   position: relative;
@@ -54,7 +53,7 @@ $navigation-row-width--small: 810px / 3;
 
 /* 2. */
 .c-topic-menu-container {
-  @include mq(tablet) {
+  @include mq(tabletWide) {
     display: inline-block;
   }
 }
@@ -97,44 +96,12 @@ $navigation-row-width--small: 810px / 3;
   flex-flow: column;
   flex-flow: row;
 
-  @include mq(tablet) {
+  @include mq(tabletWide) {
     transition: transform 400ms ease;
     padding-bottom: $spacing--large;
     min-height: 500px;
-    &--slide-0, &--slide-1 {
-      transform: none;
-    }
-    &--slide-2 {
-      transform: translate3d(-$navigation-row-width--small, 0, 0);
-    }
-    &--slide-3 {
-      transform: translate3d(-$navigation-row-width--small * 2, 0, 0);
-    }
-    &--slide-4 {
-      transform: translate3d(-$navigation-row-width--small * 3, 0, 0);
-    }
-    &--slide-5 {
-      transform: translate3d(-$navigation-row-width--small * 4, 0, 0);
-    }
-    &--slide-6 {
-      transform: translate3d(-$navigation-row-width--small * 5, 0, 0);
-    }
-    &--slide-7 {
-      transform: translate3d(-$navigation-row-width--small * 6, 0, 0);
-    }
-    &--slide-8 {
-      transform: translate3d(-$navigation-row-width--small * 7, 0, 0);
-    }
-    &--slide-9 {
-      transform: translate3d(-$navigation-row-width--small * 8, 0, 0);
-    }
-    &--slide-10 {
-      transform: translate3d(-$navigation-row-width--small * 9, 0, 0);
-    }
-  }
-
-  @include mq(730px) {
-    &--slide-0, &--slide-1 {
+    &--slide-0,
+    &--slide-1 {
       transform: none;
     }
     &--slide-2 {
@@ -165,6 +132,7 @@ $navigation-row-width--small: 810px / 3;
       transform: translate3d(-$navigation-row-width * 9, 0, 0);
     }
   }
+
   @include mq(wide) {
     &--slide-2 {
       transform: none;
@@ -194,10 +162,9 @@ $navigation-row-width--small: 810px / 3;
       transform: translate3d(-$navigation-row-width * 8, 0, 0);
     }
   }
+
   @include mq(ultraWide) {
-    &--slide-2 {
-      transform: none;
-    }
+    &--slide-2,
     &--slide-3 {
       transform: none;
     }
@@ -230,7 +197,7 @@ $navigation-row-width--small: 810px / 3;
   margin: 0 0 $spacing--large;
   list-style: none;
   overflow-y: auto;
-  @include mq($until: tablet) {
+  @include mq($until: tabletWide) {
     margin-bottom: 0;
   }
 }
@@ -241,15 +208,12 @@ $navigation-row-width--small: 810px / 3;
   padding: 0 0 $spacing--large 0;
   width: 100%;
 
-  @include mq(tablet) {
+  @include mq(tabletWide) {
     margin-top: $spacing;
     padding: 0 $spacing--small;
     border-left: 1px solid $brand-color--light;
-    width: $navigation-row-width--small;
-    flex-grow: 0;
-  }
-  @include mq(730px) {
     width: $navigation-row-width;
+    flex-grow: 0;
   }
   @include mq(desktop) {
     padding: 0 $spacing;
@@ -260,14 +224,14 @@ $navigation-row-width--small: 810px / 3;
     flex-grow: 0;
     border-left: 0;
     .c-topic-menu__link--big {
-      @include mq($until: tablet) {
+      @include mq($until: tabletWide) {
         display: none;
       }
     }
   }
 
   &--sub-topic {
-    @include mq($until: tablet) {
+    @include mq($until: tabletWide) {
       @include font-size(16px, 20px);
       padding-top: $spacing--large + $spacing;
       padding-left: $spacing--large - 4px;
@@ -289,7 +253,7 @@ $navigation-row-width--small: 810px / 3;
         }
       }
     }
-    @include mq($until: tablet) {
+    @include mq($until: tabletWide) {
       padding-left: 0;
     }
   }
@@ -307,12 +271,12 @@ $navigation-row-width--small: 810px / 3;
     white-space: nowrap;
   }
 
-  @include mq($until: tablet) {
+  @include mq($until: tabletWide) {
     margin-top: 0;
     padding-left: $spacing;
   }
 
-  @include mq(tablet) {
+  @include mq(tabletWide) {
     .c-content-type-result h1 {
       @include font-size(18px);
     }
@@ -400,14 +364,14 @@ $navigation-row-width--small: 810px / 3;
         .c-content-type-result__additional-icon {
           margin-left: $spacing--small;
         }
-        @include mq($until: tablet) {
+        @include mq($until: tabletWide) {
           background: none !important;
         }
         @include mq($until: desktop) {
           padding-left: $spacing--small;
           margin-left: -$spacing--small;
         }
-        @include mq(tablet) {
+        @include mq(tabletWide) {
           flex-grow: 1;
           justify-content: space-between;
         }
@@ -497,7 +461,7 @@ $navigation-row-width--small: 810px / 3;
     background: $brand-color--lighter;
     overflow: visible;
 
-    @include mq($until: tablet) {
+    @include mq($until: tabletWide) {
       padding: $spacing $spacing $spacing--large;
       margin: 0;
       position: fixed;
@@ -510,7 +474,7 @@ $navigation-row-width--small: 810px / 3;
       }
     }
 
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       padding: $spacing $spacing $spacing--large;
       margin: -$spacing--large $spacing 0 $spacing;
       height: auto;
@@ -546,7 +510,7 @@ $navigation-row-width--small: 810px / 3;
   }
 
   &__competence-close-button {
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       display: none;
     }
     display: flex;
@@ -596,7 +560,7 @@ $navigation-row-width--small: 810px / 3;
   margin-bottom: $spacing;
   padding: 0 $spacing;
 
-  @include mq($until: tablet) {
+  @include mq($until: tabletWide) {
     animation-name: fadeInLeft;
     animation-duration: 0.5s;
     transform: translate3d(0px, 0px, 0px);
@@ -611,7 +575,7 @@ $navigation-row-width--small: 810px / 3;
   }
 
   a {
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       box-shadow: none;
     }
   }
@@ -623,12 +587,12 @@ $navigation-row-width--small: 810px / 3;
     justify-content: space-between;
     align-items: flex-end;
 
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       border-bottom: 1px solid rgba($brand-color, 0.3);
       padding-bottom: $spacing--small;
     }
 
-    @include mq($until: tablet) {
+    @include mq($until: tabletWide) {
       margin-bottom: 0;
     }
 
@@ -641,11 +605,11 @@ $navigation-row-width--small: 810px / 3;
       font-weight: $font-weight-semibold;
       margin: 0;
 
-      @include mq(tablet) {
+      @include mq(tabletWide) {
         @include inuit-font-size(26px);
       }
 
-      @include mq($until: tablet) {
+      @include mq($until: tabletWide) {
         width: 100%;
         a {
           background: $brand-color--lighter;
@@ -675,7 +639,7 @@ $navigation-row-width--small: 810px / 3;
     & > h1 {
       margin: 0 0 $spacing--medium 0;
 
-      @include mq(tablet) {
+      @include mq(tabletWide) {
         margin: 0 0 $spacing 0;
       }
     }
@@ -695,7 +659,7 @@ $navigation-row-width--small: 810px / 3;
     &__label {
       margin-left: 0;
       font-weight: 600;
-      @include mq($until: tablet) {
+      @include mq($until: tabletWide) {
         @include visually-hidden();
       }
     }
@@ -717,7 +681,7 @@ $navigation-row-width--small: 810px / 3;
   }
   top: $spacing;
 
-  @include mq(tablet) {
+  @include mq(tabletWide) {
     display: none;
   }
   .c-icon {
@@ -728,7 +692,7 @@ $navigation-row-width--small: 810px / 3;
 }
 
 .c-topic-menu__back-button-slide-wrapper {
-  @include mq($until: tablet) {
+  @include mq($until: tabletWide) {
     display: none;
   }
   height: $spacing;
@@ -753,7 +717,7 @@ $navigation-row-width--small: 810px / 3;
     &--slide-0, &--slide-1, &--slide-2, &--slide-3, &--slide-4, &--slide-5, &--slide-6, &--slide-7, &--slide-8, &--slide-9, &--slide-10 {
       display: flex;
     }
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       &--slide-2, &--slide-3, &--slide-4, &--slide-5, &--slide-6, &--slide-7, &--slide-8, &--slide-9, &--slide-10 {
         display: flex;
         animation-name: fadeIn;
@@ -829,19 +793,19 @@ $navigation-row-width--small: 810px / 3;
 
 
   &--wide {
-    @include mq($until: tablet) {
+    @include mq($until: tabletWide) {
       display: none;
     }
   }
   &--narrow {
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       display: none;
     }
   }
   @include mq($until: desktop) {
     padding: 0 $spacing;
   }
-  @include mq($until: tablet) {
+  @include mq($until: tabletWide) {
     animation-name: fadeInLeft;
     animation-duration: 0.5s;
     transform: translate3d(0px, 0px, 0px);
@@ -910,7 +874,7 @@ $navigation-row-width--small: 810px / 3;
   > span {
     display: flex;
   }
-  @include mq($until: tablet) {
+  @include mq($until: tabletWide) {
     @include font-size(17px, 20px);
     font-weight: $font-weight-normal;
     padding-left: $spacing;
@@ -923,16 +887,13 @@ $navigation-row-width--small: 810px / 3;
       display: flex;
     }
   }
-  @include mq($from: tablet, $until: 730px) {
-    @include font-size(16px, 20px);
-  }
 
   @include mq($until: mobileWide) {
     padding-left: $left-margin-narrow-screen;
     padding-right: $left-margin-narrow-screen;
   }
 
-  @include mq(tablet) {
+  @include mq(tabletWide) {
     font-weight: $font-weight-semibold;
     &--big .c-icon {
       display: none;

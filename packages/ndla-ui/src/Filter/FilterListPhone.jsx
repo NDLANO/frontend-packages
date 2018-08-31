@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
 import {
   Button,
   Modal,
@@ -53,9 +52,7 @@ class FilterListPhone extends Component {
   }
 
   setScreenSize(initial = false) {
-    const currentBreakpoint = getCurrentBreakpoint();
-    const isNarrowScreen =
-      currentBreakpoint === breakpoints.mobile || currentBreakpoint === 'none';
+    const isNarrowScreen = (window.innerWidth || document.documentElement.clientWidth) < 769;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -78,6 +75,7 @@ class FilterListPhone extends Component {
       showLabel,
       hideLabel,
       messages,
+      alignedGroup,
     } = this.props;
 
     const showAll =
@@ -119,9 +117,11 @@ class FilterListPhone extends Component {
                     onClick={onClose}
                   />
                 </ModalHeader>
-                <ModalBody>
+                <ModalBody modifier="no-side-padding-mobile">
                   <h1 {...filterClasses('label')}>{label}</h1>
-                  <ul {...filterClasses('item-wrapper', 'extended-padding')}>
+                  <ul {...filterClasses('item-wrapper', {
+                      'aligned-grouping': alignedGroup,
+                    })}>
                     {options.map(option => (
                       <li {...filterClasses('item')} key={option.value}>
                         <input
@@ -279,6 +279,7 @@ FilterListPhone.propTypes = {
   showLabel: PropTypes.string,
   hideLabel: PropTypes.string,
   onToggle: PropTypes.func,
+  alignedGroup: PropTypes.bool,
   messages: PropTypes.shape({
     useFilter: PropTypes.string.isRequired,
     openFilter: PropTypes.string.isRequired,
@@ -291,6 +292,7 @@ FilterListPhone.defaultProps = {
   values: [],
   defaultVisibleCount: null,
   onToggle: null,
+  alignedGroup: false,
 };
 
 export default FilterListPhone;

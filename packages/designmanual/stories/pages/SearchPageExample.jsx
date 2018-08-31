@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
 import { Core, Additional } from 'ndla-icons/common';
 
 import {
@@ -124,6 +125,11 @@ const results = [
     matchTab: ['SHARED_RESOURCES'],
   },
 ];
+
+const filterClasses = new BEMHelper({
+  name: 'filter',
+  prefix: 'c-',
+});
 
 class SearchPageExample extends Component {
   constructor(props) {
@@ -449,7 +455,9 @@ class SearchPageExample extends Component {
                 this.setState({ exampleCreatedByFilterValues: values });
               }}
             />
-            <Button outline>Vis flere filter</Button>
+          <div {...filterClasses('usefilter-wrapper')}>
+              <Button outline>Vis flere filter</Button>
+            </div>
           </Fragment>
         }>
         <SearchResult

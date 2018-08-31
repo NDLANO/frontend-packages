@@ -35,7 +35,6 @@ class FilterList extends Component {
       defaultVisibleCount,
       showLabel,
       hideLabel,
-      extendedPadding,
       alignedGroup,
     } = this.props;
 
@@ -57,7 +56,6 @@ class FilterList extends Component {
             </span>
           )}
         <ul {...filterClasses('item-wrapper', {
-            'extended-padding': extendedPadding,
             'aligned-grouping': alignedGroup,
           })}>
           {options.map((option, index) => {
@@ -100,7 +98,7 @@ class FilterList extends Component {
                   <span {...filterClasses('text')}>{option.title}</span>
                   {option.icon
                     ? createElement(option.icon, {
-                        className: `c-icon--22 u-margin-left-small ${
+                        className: `c-icon--22 ${
                           filterClasses('icon').className
                         }`,
                       })
@@ -164,7 +162,6 @@ FilterList.propTypes = {
   showLabel: PropTypes.string,
   noFilterSelectedLabel: PropTypes.string,
   hideLabel: PropTypes.string,
-  extendedPadding: PropTypes.bool,
   alignedGroup: PropTypes.bool,
 };
 
@@ -173,7 +170,6 @@ FilterList.defaultProps = {
   modifiers: '',
   values: [],
   defaultVisibleCount: null,
-  extendedPadding: false,
 };
 
 export default FilterList;

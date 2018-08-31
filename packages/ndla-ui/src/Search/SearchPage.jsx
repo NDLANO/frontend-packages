@@ -118,7 +118,7 @@ export default class SearchPage extends Component {
                     <ModalHeader modifier="white">
                       <ModalCloseButton title="Lukk" onClick={onClose}>Close</ModalCloseButton>
                     </ModalHeader>
-                    <ModalBody modifier="slide-in-left">
+                    <ModalBody modifier="slide-in-left no-side-padding-mobile">
                       {filters}
                     </ModalBody>
                   </Fragment>

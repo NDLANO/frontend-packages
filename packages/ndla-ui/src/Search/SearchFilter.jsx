@@ -47,7 +47,6 @@ const SearchFilter = ({
         showLabel={showLabel}
         hideLabel={hideLabel}
         onChange={onChange}
-        extendedPadding
         alignedGroup
         noFilterSelectedLabel={noFilterSelectedLabel}
       />

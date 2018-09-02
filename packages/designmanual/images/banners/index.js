@@ -4,6 +4,8 @@ import markedsfoering from './markedsføring.svg';
 import samfunnsfag from './samfunnsfag.svg';
 import serviceSamferdsel from './service_og_samferdsel.svg';
 import serviceSikkerhetSalg from './salg_service_sikkerhet.svg';
+import tysk from './tysk.svg';
+import historie from './historie.svg';
 
 export default [
   { desktop: broennfag, mobile: broennfag, name: 'Brønnteknikk' },
@@ -23,5 +25,15 @@ export default [
     desktop: serviceSamferdsel,
     mobile: serviceSamferdsel,
     name: 'Service og samferdsel',
+  },
+  {
+    desktop: historie,
+    mobile: historie,
+    name: 'Historie',
+  },
+  {
+    desktop: tysk,
+    mobile: tysk,
+    name: 'Tysk',
   },
 ];

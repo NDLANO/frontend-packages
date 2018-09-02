@@ -90,7 +90,7 @@ const messages = {
       filterLabel: 'Chose subjects',
       confirmButton: 'Refresh filter',
       hasValuesButtonText: 'More subjects',
-      noValuesButtonText: 'Pick subject',
+      noValuesButtonText: 'Filter by subjects',
     },
   },
 

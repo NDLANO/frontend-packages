@@ -138,8 +138,18 @@
     }
     @include mq($from: mobileWide, $until: tabletWide) {
       flex-flow: wrap;
+      width: calc(100% + 24px);
+      margin-left: -24px;
       .c-filter__item {
-        width: 50% !important;
+        width: auto;
+        max-width: 50%;
+        flex: 50%;
+        padding-left: $spacing--small;
+        padding-right: $spacing--small;
+        transform: translateX($spacing--small);
+        &:nth-child(odd) {
+          transform: translateX($spacing--small - 2);
+        }
       }
     }
     @include mq($until: tabletWide) {
@@ -192,7 +202,7 @@
     border-radius: $border-radius;
     transition: $transition;
     cursor: pointer;
-    @include font-size(16px, 28px);
+    @include font-size(16px, 18px);
 
     &--hidden {
       display: none !important;
@@ -258,7 +268,7 @@
     label {
       cursor: pointer;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       @include mq($until: mobileWide) {
         width: 100%;
         padding: $spacing--small / 2 $spacing;

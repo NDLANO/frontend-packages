@@ -304,6 +304,7 @@ $navigation-row-width: 980px / 3;
       background: $brand-grey--lighter;
       flex-direction: row;
       .c-filter__item label {
+        padding-left: 0;
         flex-direction: row;
         .c-filter__item-checkbox {
           margin-right: $spacing--small;

@@ -186,7 +186,13 @@ class FilterTabs extends Component {
       return null;
     }
 
-    const { options, value, messages, contentId, onChange } = this.props;
+    const {
+      options,
+      value,
+      dropdownBtnLabel,
+      contentId,
+      onChange,
+    } = this.props;
     let minimumWidthDropdownContainer = 0;
     const tabDropdownModifier = ['no-margin'];
     if (this.state.showDropdown) {
@@ -253,9 +259,9 @@ class FilterTabs extends Component {
       ? this.props.options[
           this.props.options.findIndex(option => option.value === value)
         ].title
-      : messages.dropdownBtnLabel;
+      : dropdownBtnLabel;
     const modifiers = ['no-margin', 'button-based', 'dropdown-btn'];
-    const isSelected = moreLabel !== messages.dropdownBtnLabel;
+    const isSelected = moreLabel !== dropdownBtnLabel;
     if (isSelected) {
       modifiers.push('selected');
     }
@@ -326,9 +332,7 @@ FilterTabs.propTypes = {
       value: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  messages: PropTypes.shape({
-    dropdownBtnLabel: PropTypes.string.isRequired,
-  }).isRequired,
+  dropdownBtnLabel: PropTypes.string.isRequired,
   contentId: PropTypes.string.isRequired,
   value: PropTypes.string,
   children: PropTypes.node.isRequired,

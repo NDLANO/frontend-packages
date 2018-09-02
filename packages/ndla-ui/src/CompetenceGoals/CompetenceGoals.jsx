@@ -82,9 +82,15 @@ class CompetenceGoals extends Component {
                         values={filterValues}
                         onChange={onFilterClick}
                         messages={{
-                          openFilter: t('competenceGoals.openCompentenceGoalsFilter'),
-                          useFilter: t('competenceGoals.useCompentenceGoalsFilter'),
-                          closeFilter: t('competenceGoals.closeCompentenceGoalsFilter'),
+                          openFilter: t(
+                            'competenceGoals.openCompentenceGoalsFilter',
+                          ),
+                          useFilter: t(
+                            'competenceGoals.useCompentenceGoalsFilter',
+                          ),
+                          closeFilter: t(
+                            'competenceGoals.closeCompentenceGoalsFilter',
+                          ),
                         }}
                       />
                     </Fragment>

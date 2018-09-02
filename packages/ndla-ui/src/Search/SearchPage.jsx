@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import { Back } from 'ndla-icons/common';
 import debounce from 'lodash/debounce';
 import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
-import { Button, Modal, ModalHeader, ModalBody, ModalCloseButton } from 'ndla-ui';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from 'ndla-ui';
+import { injectT } from 'ndla-i18n';
 
 import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';
@@ -12,7 +19,7 @@ import ActiveFilters from './ActiveFilters';
 const classes = BEMHelper('c-search-page');
 const filterClasses = BEMHelper('c-filter');
 
-export default class SearchPage extends Component {
+class SearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,7 +59,6 @@ export default class SearchPage extends Component {
     const {
       searchString,
       onSearchFieldChange,
-      searchFieldPlaceholder,
       onSearchFieldFilterRemove,
       searchFieldFilters,
       onSearch,
@@ -64,6 +70,7 @@ export default class SearchPage extends Component {
       messages,
       author,
       hideResultText,
+      t,
     } = this.props;
 
     return (
@@ -73,12 +80,12 @@ export default class SearchPage extends Component {
             value={searchString}
             onChange={onSearchFieldChange}
             onSearch={onSearch}
-            placeholder={searchFieldPlaceholder}
+            placeholder={t('searchPage.searchFieldPlaceholder')}
             filters={searchFieldFilters}
             onFilterRemove={onSearchFieldFilterRemove}
             resourceToLinkProps={resourceToLinkProps}
             messages={{
-              searchFieldTitle: messages.searchFieldTitle,
+              searchFieldTitle: t('searchPage.search'),
             }}
           />
         </div>
@@ -93,8 +100,12 @@ export default class SearchPage extends Component {
             <Back /> <span>{messages.narrowScreenFilterHeading}</span>
           </button>
           <aside {...classes('filter-wrapper')}>
-            <h1 {...classes('filter-heading')}>{messages.filterHeading}</h1>
-            <div {...classes('filters')}>{!this.state.isNarrowScreen && filters}</div>
+            <h1 {...classes('filter-heading')}>
+              {t('searchPage.searchPageMessages.filterHeading')}
+            </h1>
+            <div {...classes('filters')}>
+              {!this.state.isNarrowScreen && filters}
+            </div>
           </aside>
           <div {...classes('result-wrapper')}>
             <h2 aria-hidden="true" {...classes('result-label', 'large-screen')}>
@@ -103,7 +114,9 @@ export default class SearchPage extends Component {
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
-                onFilterRemove={(value, filterName) => onSearchFieldFilterRemove(value, filterName)}
+                onFilterRemove={(value, filterName) =>
+                  onSearchFieldFilterRemove(value, filterName)
+                }
               />
             </div>
             <div {...classes('toggle-filter')}>
@@ -112,17 +125,26 @@ export default class SearchPage extends Component {
                 animationDuration={150}
                 size="fullscreen"
                 backgroundColor="grey"
-                activateButton={(<Button outline>Filter</Button>)}
-              >
-                {(onClose) => (
+                activateButton={
+                  <Button outline>
+                    {t('searchPage.searchPageMessages.filterHeading')}
+                  </Button>
+                }>
+                {onClose => (
                   <Fragment>
                     <ModalHeader modifier="white">
-                      <ModalCloseButton title="Lukk" onClick={onClose}>Close</ModalCloseButton>
+                      <ModalCloseButton
+                        title={t('searchPage.searchFilterMessages.closeFilter')}
+                        onClick={onClose}>
+                        Close
+                      </ModalCloseButton>
                     </ModalHeader>
                     <ModalBody modifier="slide-in-left no-side-padding-mobile">
                       {filters}
                       <div {...filterClasses('usefilter-wrapper')}>
-                        <Button outline onClick={onClose}>Bruk filter</Button>
+                        <Button outline onClick={onClose}>
+                          {t('searchPage.searchFilterMessages.useFilter')}
+                        </Button>
                       </div>
                     </ModalBody>
                   </Fragment>
@@ -165,16 +187,17 @@ SearchPage.propTypes = {
     }),
   ),
   messages: PropTypes.shape({
-    filterHeading: PropTypes.string.isRequired,
     narrowScreenFilterHeading: PropTypes.string.isRequired,
     resultHeading: PropTypes.string,
-    searchFieldTitle: PropTypes.string.isRequired,
   }).isRequired,
   author: PropTypes.node,
   hideResultText: PropTypes.bool,
   filterScreenChange: PropTypes.func,
+  t: PropTypes.func.isRequired,
 };
 
 SearchPage.defaultProps = {
   author: null,
 };
+
+export default injectT(SearchPage);

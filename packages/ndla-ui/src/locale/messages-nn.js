@@ -90,7 +90,7 @@ const messages = {
       filterLabel: 'Vel fag',
       confirmButton: 'Oppdater filter',
       hasValuesButtonText: 'Fleire fag',
-      noValuesButtonText: 'Vel fag',
+      noValuesButtonText: 'Filtrer på fag',
     },
   },
   subjectPage: {
@@ -197,12 +197,14 @@ const messages = {
       additionalFilterLabel: '*Vis tilleggsressursar',
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: '*Vis meir fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]: '*Vis fleire oppgåver og aktivitetar',
+        [contentTypes.TASKS_AND_ACTIVITIES]:
+          '*Vis fleire oppgåver og aktivitetar',
         [contentTypes.LEARNING_PATH]: '*Vis flere læringsstier',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: '*Vis mindre fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]: '*Vis færre oppgåver og aktivitetar',
+        [contentTypes.TASKS_AND_ACTIVITIES]:
+          '*Vis færre oppgåver og aktivitetar',
         [contentTypes.LEARNING_PATH]: '*Vis færre læringsstier',
       },
       contentTypeResultsNoHit: {

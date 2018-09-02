@@ -5,7 +5,14 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight } from 'ndla-icons/common';
 // import { Cross } from 'ndla-icons/action';
-import { Button, FilterList, Modal, ModalCloseButton, ModalHeader, ModalBody } from 'ndla-ui';
+import {
+  Button,
+  FilterList,
+  Modal,
+  ModalCloseButton,
+  ModalHeader,
+  ModalBody,
+} from 'ndla-ui';
 
 const filterClasses = new BEMHelper({
   name: 'filter',
@@ -45,16 +52,16 @@ class Popover extends Component {
             });
           }}
         />
-      <div {...filterClasses('usefilter-wrapper')}>
-        <Button
-          outline
-          onClick={() => {
-            close();
-            onChange(this.state.values);
-          }}>
-          {messages.confirmButton}
-        </Button>
-      </div>
+        <div {...filterClasses('usefilter-wrapper')}>
+          <Button
+            outline
+            onClick={() => {
+              close();
+              onChange(this.state.values);
+            }}>
+            {messages.confirmButton}
+          </Button>
+        </div>
       </Fragment>
     );
   }
@@ -73,9 +80,7 @@ Popover.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const PopoverFilter = ({
-  messages, values, onChange, ...rest,
-}) => {
+const PopoverFilter = ({ messages, values, onChange, ...rest }) => {
   const buttonText =
     values.length > 0
       ? messages.hasValuesButtonText
@@ -93,7 +98,7 @@ const PopoverFilter = ({
       size="medium"
       backgroundColor="grey"
       activateButton={buttonContent}>
-      {(onClose) => (
+      {onClose => (
         <Fragment>
           <ModalHeader modifiers="white">
             <ModalCloseButton title="Lukk" onClick={onClose} />
@@ -106,11 +111,11 @@ const PopoverFilter = ({
               {...rest}
               values={values}
             />
-        </ModalBody>
+          </ModalBody>
         </Fragment>
       )}
     </Modal>
-  )
+  );
 };
 
 PopoverFilter.propTypes = {

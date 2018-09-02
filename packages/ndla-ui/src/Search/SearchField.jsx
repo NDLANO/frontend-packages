@@ -29,12 +29,7 @@ const messagesShape = PropTypes.shape({
   contentTypeResultNoHit: PropTypes.string,
 });
 
-const SearchResult = ({
-  result,
-  allResultUrl,
-  resourceToLinkProps,
-  t,
-}) => (
+const SearchResult = ({ result, allResultUrl, resourceToLinkProps, t }) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {t('searchPage.searchField.searchResultHeading')}
@@ -46,15 +41,21 @@ const SearchResult = ({
           resourceToLinkProps={resourceToLinkProps}
           key={contentTypeResult.title}
           messages={{
-            allResultLabel: t('searchPage.searchField.contentTypeResultShowMoreLabel'),
-            showLessResultLabel: t('searchPage.searchField.contentTypeResultShowLessLabel'),
+            allResultLabel: t(
+              'searchPage.searchField.contentTypeResultShowMoreLabel',
+            ),
+            showLessResultLabel: t(
+              'searchPage.searchField.contentTypeResultShowLessLabel',
+            ),
             noHit: t('searchPage.searchField.contentTypeResultNoHit'),
           }}
         />
       ))}
     </div>
     <div {...classes('go-to-search')}>
-      <SafeLink to={allResultUrl}>{t('searchPage.searchField.allResultButtonText')}</SafeLink>
+      <SafeLink to={allResultUrl}>
+        {t('searchPage.searchField.allResultButtonText')}
+      </SafeLink>
     </div>
   </section>
 );

@@ -16,7 +16,8 @@ const classes = new BEMHelper({
 });
 
 const SearchToggleFilter = ({ checked, onClick, label, narrow, wide }) => (
-  <div {...classes('list', {
+  <div
+    {...classes('list', {
       narrow,
       wide,
     })}>

@@ -52,7 +52,8 @@ class FilterListPhone extends Component {
   }
 
   setScreenSize(initial = false) {
-    const isNarrowScreen = (window.innerWidth || document.documentElement.clientWidth) < 769;
+    const isNarrowScreen =
+      (window.innerWidth || document.documentElement.clientWidth) < 769;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -119,7 +120,8 @@ class FilterListPhone extends Component {
                 </ModalHeader>
                 <ModalBody modifier="no-side-padding-mobile">
                   <h1 {...filterClasses('label')}>{label}</h1>
-                  <ul {...filterClasses('item-wrapper', {
+                  <ul
+                    {...filterClasses('item-wrapper', {
                       'aligned-grouping': alignedGroup,
                     })}>
                     {options.map(option => (

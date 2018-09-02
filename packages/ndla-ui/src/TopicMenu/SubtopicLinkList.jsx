@@ -117,7 +117,9 @@ class SubtopicLinkList extends Component {
 
     const someResourcesAreAdditional =
       hasContentTypeResults &&
-      topic.contentTypeResults.some(result => (result.resources.some(resource => (resource.additional))));
+      topic.contentTypeResults.some(result =>
+        result.resources.some(resource => resource.additional),
+      );
 
     return (
       <div
@@ -162,12 +164,14 @@ class SubtopicLinkList extends Component {
             ])}>
             <div>
               <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
-              {someResourcesAreAdditional && <SearchToggleFilter
-                wide
-                checked={showAdditionalResources}
-                label={t('masthead.menu.additionalFilterLabel')}
-                onClick={this.toggleAdditionalResources}
-              />}
+              {someResourcesAreAdditional && (
+                <SearchToggleFilter
+                  wide
+                  checked={showAdditionalResources}
+                  label={t('masthead.menu.additionalFilterLabel')}
+                  onClick={this.toggleAdditionalResources}
+                />
+              )}
             </div>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
@@ -176,21 +180,35 @@ class SubtopicLinkList extends Component {
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  allResultLabel: t(`masthead.menu.contentTypeResultsShowMore.${result.contentType}`),
-                  showLessResultLabel: t(`masthead.menu.contentTypeResultsShowLess.${result.contentType}`),
-                  noHit: t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
+                  allResultLabel: t(
+                    `masthead.menu.contentTypeResultsShowMore.${
+                      result.contentType
+                    }`,
+                  ),
+                  showLessResultLabel: t(
+                    `masthead.menu.contentTypeResultsShowLess.${
+                      result.contentType
+                    }`,
+                  ),
+                  noHit: t(
+                    `masthead.menu.contentTypeResultsNoHit.${
+                      result.contentType
+                    }`,
+                  ),
                 }}
                 defaultCount={defaultCount}
                 iconOnRight
                 showAdditionalResources={showAdditionalResources}
               />
             ))}
-            {someResourcesAreAdditional && <SearchToggleFilter
-              narrow
-              checked={showAdditionalResources}
-              label={t('masthead.menu.additionalFilterLabel')}
-              onClick={this.toggleAdditionalResources}
-            />}
+            {someResourcesAreAdditional && (
+              <SearchToggleFilter
+                narrow
+                checked={showAdditionalResources}
+                label={t('masthead.menu.additionalFilterLabel')}
+                onClick={this.toggleAdditionalResources}
+              />
+            )}
           </aside>
         )}
         {competenceButton}

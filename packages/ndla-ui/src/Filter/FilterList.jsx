@@ -55,7 +55,8 @@ class FilterList extends Component {
               {this.props.noFilterSelectedLabel}
             </span>
           )}
-        <ul {...filterClasses('item-wrapper', {
+        <ul
+          {...filterClasses('item-wrapper', {
             'aligned-grouping': alignedGroup,
           })}>
           {options.map((option, index) => {

@@ -352,7 +352,7 @@ export const searchFilterOptions = {
       hits: 46,
     },
     {
-      title: 'Kjærnestoff',
+      title: 'Kjernestoff',
       value: 'contentFilter:2',
       hits: 102,
     },

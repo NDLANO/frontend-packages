@@ -17,7 +17,13 @@ import debounce from 'lodash/debounce';
 
 import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import { Button, SafeLink, Tooltip, ModalHeader, createUniversalPortal } from 'ndla-ui';
+import {
+  Button,
+  SafeLink,
+  Tooltip,
+  ModalHeader,
+  createUniversalPortal,
+} from 'ndla-ui';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
@@ -93,8 +99,9 @@ export default class TopicMenu extends Component {
   }
 
   setScreenSize(initial = false) {
-    const isNarrowScreen = (window.innerWidth || document.documentElement.clientWidth) < 769;
-    console.log(isNarrowScreen)
+    const isNarrowScreen =
+      (window.innerWidth || document.documentElement.clientWidth) < 769;
+    console.log(isNarrowScreen);
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -146,7 +153,9 @@ export default class TopicMenu extends Component {
           <span>
             {t('competenceGoals.closeCompetenceGoals')} <Cross />
           </span>
-        ) : t('competenceGoals.showCompetenceGoals')}
+        ) : (
+          t('competenceGoals.showCompetenceGoals')
+        )}
       </Button>
     );
   }
@@ -317,14 +326,17 @@ export default class TopicMenu extends Component {
                 </div>
               )}
               {!competenceGoalsOpen && (
-                <div {...classes('subject-navigation', `slide-${sliderCounter}`)}>
+                <div
+                  {...classes('subject-navigation', `slide-${sliderCounter}`)}>
                   {!disableMain && (
                     <Fragment>
                       <div {...classes('section', 'main')}>
                         <SafeLink
                           to={toSubject()}
                           className={classes('link', 'big').className}>
-                          <span {...classes('link-label')}>{t('masthead.menu.goTo')}:</span>
+                          <span {...classes('link-label')}>
+                            {t('masthead.menu.goTo')}:
+                          </span>
                           <span {...classes('link-target')}>
                             {t('masthead.menu.subjectPage')}
                             <span {...classes('arrow')}>›</span>
@@ -370,7 +382,9 @@ export default class TopicMenu extends Component {
                     !disableSubTopic && (
                       <SubtopicLinkList
                         classes={classes}
-                        className={classes('section', subTopicModifiers).className}
+                        className={
+                          classes('section', subTopicModifiers).className
+                        }
                         closeMenu={closeMenu}
                         topic={expandedTopic}
                         backLabel={
@@ -407,7 +421,13 @@ export default class TopicMenu extends Component {
                       }
                       closeMenu={closeMenu}
                       topic={subTopic}
-                      backLabel={index === 0 ? this.props.topics.find(topic => topic.id === this.props.expandedTopicId).name : currentlyExpandedSubTopics[index - 1].name}
+                      backLabel={
+                        index === 0
+                          ? this.props.topics.find(
+                              topic => topic.id === this.props.expandedTopicId,
+                            ).name
+                          : currentlyExpandedSubTopics[index - 1].name
+                      }
                       toTopic={toTopic}
                       expandedSubtopicId={
                         currentlyExpandedSubTopics[index + 1]

@@ -30,6 +30,7 @@ const FrontpageHeader = ({
   heading,
   menuSubject,
   hideSearch,
+  hideMenu,
 }) => (
   <header {...classes()}>
     <div {...classes('inner-background')} />
@@ -47,8 +48,9 @@ const FrontpageHeader = ({
       </OneColumn>
       <OneColumn wide noPadding>
         <div {...classes('content')}>
-          <Modal
+          {!hideMenu && <Modal
             size="fullscreen"
+            animation="subtle"
             backgroundColor="gray-dark"
             activateButton={
               <Button className="c-frontpage-header__menu-button">Meny</Button>
@@ -73,7 +75,7 @@ const FrontpageHeader = ({
                     />
                   </div>
                 </ModalHeader>
-                <div {...classesMenu('content')}>
+                <div {...classesMenu('content', 'fill-page')}>
                   {menuSubject}
                   <div {...classes('main-menu-content')}>
                     <ul {...classesMenu('content-type-results')}>
@@ -88,6 +90,7 @@ const FrontpageHeader = ({
               </nav>
             )}
           </Modal>
+          }
           <Logo
             to={logoTo}
             label={heading}
@@ -112,6 +115,7 @@ const FrontpageHeader = ({
 
 FrontpageHeader.propTypes = {
   hideSearch: PropTypes.bool, // TODO: Search is temporary hidden as default.
+  hideMenu: PropTypes.bool, // TODO: Menu is temporary hidden as default.
   heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
@@ -132,7 +136,8 @@ FrontpageHeader.propTypes = {
 };
 
 FrontpageHeader.defaultProps = {
-  hideSearch: false,
+  hideSearch: true,
+  hideMenu: true,
 };
 
 export default FrontpageHeader;

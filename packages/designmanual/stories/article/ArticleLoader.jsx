@@ -15,7 +15,7 @@ import {
   Article,
   Button,
   ResourcesWrapper,
-  ResourcesTitle,
+  ResourcesTopicTitle,
   TopicIntroductionList,
 } from 'ndla-ui';
 import Resources from '../molecules/resources';
@@ -26,25 +26,50 @@ import { topicList } from '../../dummydata/index';
 
 import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
 
-const ResourcesSubTopics = () => (
-  <ResourcesWrapper>
-    <ResourcesTitle>Emner</ResourcesTitle>
+const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
+  <ResourcesWrapper
+    header={
+      <ResourcesTopicTitle
+        messages={{
+          label: 'Emner',
+          additionalFilterLabel: 'Vis tilleggsemner',
+          dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
+          dialogHeading: 'Kjernestoff og tilleggsstoff',
+          dialogTexts: [
+            'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
+            'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+          ],
+        }}
+        title="Medieproduksjon"
+        hasAdditionalResources={topicList.some(topic => topic.additional)}
+        toggleAdditionalResources={toggleAdditionalCores}
+        showAdditionalResources={showAdditionalCores}
+      />
+    }>
     <TopicIntroductionList
-      shortcutAlwaysExpanded
       toTopic={() => '#'}
       topics={topicList}
-      toggleAdditionalCores={() => {}}
+      messages={{
+        shortcutButtonText: 'Lærestoff',
+      }}
     />
   </ResourcesWrapper>
 );
+
+ResourcesSubTopics.propTypes = {
+  showAdditionalCores: PropTypes.bool,
+  toggleAdditionalCores: PropTypes.func,
+};
 
 class ArticleLoader extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
+      showAdditionalCores: false,
       article: undefined,
     };
+    this.toggleAdditionalCores = this.toggleAdditionalCores.bind(this);
   }
 
   componentDidMount() {
@@ -72,6 +97,12 @@ class ArticleLoader extends Component {
       });
   }
 
+  toggleAdditionalCores() {
+    this.setState(prevState => ({
+      showAdditionalCores: !prevState.showAdditionalCores,
+    }));
+  }
+
   render() {
     const { article, message } = this.state;
     const {
@@ -93,7 +124,7 @@ class ArticleLoader extends Component {
     const articleChildren = [];
 
     if (showSubTopics) {
-      articleChildren.push(<ResourcesSubTopics key="subTopic" />);
+      articleChildren.push(<ResourcesSubTopics key="subTopic" toggleAdditionalCores={this.toggleAdditionalCores} showAdditionalCores={this.state.showAdditionalCores} />);
     }
 
     if (!hideResources) {
@@ -110,6 +141,7 @@ class ArticleLoader extends Component {
               article={article}
               modifier={reset ? 'clean' : ''}
               messages={{
+                lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
                 authorLabel: 'Opphavsmann',
@@ -118,9 +150,7 @@ class ArticleLoader extends Component {
                 close: 'Lukk',
                 label,
               }}
-              licenseBox={
-                <LicenseBox headingId="article-license-box-heading-id" />
-              }
+              licenseBox={<LicenseBox />}
               competenceGoals={
                 <CompetenceGoalsDialogExample
                   headingId="article-competence-goals-heading-id"

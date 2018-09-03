@@ -112,6 +112,10 @@ $link-height: 52px;
   padding: $masthead-height 0 0 0;
   min-height: 100%;
 
+  &--fill-page {
+    min-height: calc(100vh - 77px);
+  }
+
   @include mq(desktop) {
     min-height: auto;
     margin-top: $masthead-height;

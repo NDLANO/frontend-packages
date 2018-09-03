@@ -111,7 +111,7 @@
       a {
         padding-top: $spacing--small;
         padding-bottom: $spacing--small;
-        display: inline-flex;
+        display: flex;
       }
       margin-bottom: 0;
     }
@@ -175,7 +175,7 @@
   &__content {
     @include mq($until: tablet) {
       .c-frontpage-subjects-wrapper {
-        margin-top: $spacing--large;
+        margin-top: 0;
       }
       .c-frontpage-subjects-section {
         background: #fff;

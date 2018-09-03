@@ -447,6 +447,6 @@ const LicenseBox = ({ t }) => (
 
 LicenseBox.propTypes = {
   t: PropTypes.func.isRequired,
-}
+};
 
 export default injectT(LicenseBox);

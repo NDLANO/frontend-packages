@@ -10,7 +10,7 @@
 
 .c-article-byline {
   margin-top: $spacing;
-  padding-top: $spacing--small/2;
+  padding-top: $spacing--small;
   padding-bottom: $spacing--small/2;
   border-top: 2px solid $brand-grey--lighter;
   @include inuit-font-size(14px, 20px);

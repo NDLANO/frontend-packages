@@ -10,26 +10,6 @@
 
 .c-article-author-popup {
 
-  &__heading {
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing--small;
-  }
-
-  &__portrait {
-    margin-top: $spacing;
-  }
-
-  hr {
-    &:before, &:after {
-      display: none;
-    }
-    display: block;
-    height: 1px;
-    background: $brand-color--tertiary;
-    margin: 1rem 0;
-    width: 100%;
-  }
-
   &__ul-list {
     @include font-size(18px, 20px);
     list-style-type: none;
@@ -62,46 +42,49 @@
     }
   }
 
+  &--author-licenses {
+    @include font-size(14px, 20px);
+    color: $brand-grey-dark;
+  }
+
+  ul {
+    margin: $spacing--small 0;
+    padding: 0;
+    list-style: none;
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__link-container {
+    margin-top: $spacing;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    > a:not(:first-child) {
+      margin-top: $spacing--small;
+    }
+  }
+
   &__author-info {
     display: flex;
     margin-bottom: $spacing;
-    animation-name: fadeInLeft;
+    animation-name: fadeIn;
     animation-duration: 0.5s;
 
     > :nth-child(2) {
+      flex-grow: 1;
       padding-left: $spacing;
-    }
-
-    p, a {
-      margin: $spacing--small / 2 0;
     }
 
     @include mq($until: mobileWide) {
       display: block;
       margin-bottom: 2rem;
       > :nth-child(2) {
+        padding-top: $spacing;
         padding-left: 0;
       }
-    }
-
-    .c-article-author-popup--ingress {
-      margin: $spacing 0 0;
-    }
-  }
-
-  &__author-link-container {
-    display: flex;
-    align-items: center;
-    margin: $spacing 0;
-    @include mq($until: mobileWide) {
-      flex-direction: column;
-      align-items: flex-start;
-      > * {
-        margin-bottom: $spacing--small;
-      }
-    }
-    > * {
-      margin-right: $spacing;
     }
   }
 }

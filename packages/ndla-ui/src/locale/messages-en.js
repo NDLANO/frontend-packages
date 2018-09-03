@@ -229,6 +229,10 @@ const messages = {
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',
+    urlContributionsLabel: '*See {name}`s contributions',
+    urlAuthorLabel: '*Read more about {name}',
+    multipleAuthorsLabel: '*Authors',
+    multipleAuthorsExplanation: '*This article was created by multiple authors',
   },
   subject: {
     associatedTopics: 'Associated topics',

@@ -241,6 +241,8 @@ const messages = {
       images: 'Bilder',
       audio: 'Lyd',
       video: 'Video',
+      files: 'Filer',
+      other: 'Annet innhold',
     },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',

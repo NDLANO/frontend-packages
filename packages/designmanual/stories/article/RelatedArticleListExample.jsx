@@ -14,6 +14,7 @@ import {
   SubjectMaterialBadge,
   ExternalLearningResourcesBadge,
   AssessmentResourcesBadge,
+  SubjectBadge,
   SourceMaterialBadge,
 } from 'ndla-ui';
 import { toggleRelatedArticles } from 'ndla-article-scripts';
@@ -120,8 +121,8 @@ class ExpandExample extends Component {
 
       <RelatedArticle
         title={articleResources[4].title}
-        icon={<AssessmentResourcesBadge background />}
-        modifier="assessment-resources"
+        icon={<SubjectBadge background />}
+        modifier="subject"
         introduction={articleResources[4].introduction}
         to="#"
         key={articleResources[4].title}

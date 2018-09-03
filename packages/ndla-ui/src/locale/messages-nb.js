@@ -145,7 +145,7 @@ const messages = {
     socialMedia: {
       heading: 'Følg oss',
       description:
-        'NDLA har mange Facebook- og Twitterkontoer. Finn den som passer for deg, og følg oss!',
+        'NDLA har mange facebook- og twitterkontoer. Finn den som passer for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },
@@ -224,6 +224,11 @@ const messages = {
     useContent: 'Bruk innhold',
     closeLabel: 'Lukk',
     additionalLabel: 'Tilleggsstoff',
+    urlContributionsLabel: 'Se hva {name} har bidratt med',
+    urlAuthorLabel: 'Les mer om {name}',
+    multipleAuthorsLabel: 'Opphavsmenn',
+    multipleAuthorsExplanation:
+      'Denne artikkelen er laget av flere opphavsmenn',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',
@@ -320,6 +325,9 @@ const messages = {
     'source-material': 'Kildemateriale',
     'assessment-resources': 'Vurderingsressurs',
   },
+  modal: {
+    closeModal: 'Lukk',
+  },
   languages: {
     nb: 'Bokmål',
     nn: 'Nynorsk',
@@ -329,7 +337,7 @@ const messages = {
     se: 'Samisk',
     es: 'Spansk',
     zh: 'Kinesisk',
-    unkown: 'Ukjent',
+    unknown: 'Ukjent',
   },
   breadcrumb: {
     toFrontpage: 'Til forsiden',

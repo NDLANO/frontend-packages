@@ -44,10 +44,4 @@ AuthorInfo.propTypes = {
   image: PropTypes.string,
 };
 
-AuthorInfo.defaultProps = {
-  phone: undefined,
-  image: undefined,
-  email: undefined,
-};
-
 export default AuthorInfo;

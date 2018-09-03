@@ -272,3 +272,10 @@ article table {
     left: 0 !important;
   }
 }
+
+.c-styleguide-table {
+  &__warning-cell {
+    background: red;
+    color: #fff;
+  }
+}

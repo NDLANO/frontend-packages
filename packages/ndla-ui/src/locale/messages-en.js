@@ -240,6 +240,8 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
+      files: 'Files',
+      other: 'Other content',
     },
     images: {
       heading: 'How to use images from the article',

@@ -63,6 +63,10 @@
       border-left: 6px solid $learning-path-background;
     }
 
+    &--subject {
+      border-left: 6px solid $subject-light;
+    }
+
     &--hidden {
       display: none;
     }

@@ -42,15 +42,11 @@ let currentScrollPosition;
 const scrollTargets = [];
 
 const noScroll = (enable, uuid) => {
-  console.log('noScroll', enable, uuid);
   const htmlElement = document.querySelector('html');
-  console.log('htmlElement', htmlElement);
   if (enable) {
-    console.log('includes', !scrollTargets.includes(uuid));
     if (!scrollTargets.includes(uuid)) {
       scrollTargets.push(uuid);
       const scrollWidth = getScrollbarWidth();
-      console.log('scrWidth', scrollWidth);
       currentScrollPosition = getBodyScrollTop();
       htmlElement.style.overflow = 'hidden';
       htmlElement.style.paddingRight = `${scrollWidth}px`;

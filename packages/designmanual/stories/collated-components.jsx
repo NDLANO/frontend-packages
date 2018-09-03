@@ -39,6 +39,7 @@ import RelatedArticleListExample, {
 import { LanguageSelector } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
+import ModalExample from './molecules/ModalExample';
 
 import Oops from '../images/oops.gif';
 
@@ -622,6 +623,17 @@ storiesOf('Sammensatte moduler', module)
         </Translation>
         <h2 className="u-heading">Språkvelger</h2>
         <TranslationBoxExample />
+      </StoryBody>
+    </div>
+  ))
+
+  .add('Modalboks', () => (
+    <div>
+      <StoryIntro title="Modalboks">
+        <p>Some tekst</p>
+      </StoryIntro>
+      <StoryBody>
+        <ModalExample />
       </StoryBody>
     </div>
   ));

@@ -19,7 +19,7 @@ const getScrollbarWidth = () => {
   return scrollbarWidth;
 };
 
-const isIosDevice =
+export const isIosDevice =
   typeof window !== 'undefined' &&
   window.navigator &&
   window.navigator.platform &&
@@ -39,28 +39,50 @@ const setBodyScrollTop = top => {
 
 let currentScrollPosition;
 
-const noScroll = enable => {
+const scrollTargets = [];
+
+const noScroll = (enable, uuid) => {
+  console.log('noScroll', enable, uuid);
   const htmlElement = document.querySelector('html');
+  console.log('htmlElement', htmlElement);
   if (enable) {
-    const scrollWidth = getScrollbarWidth();
-    currentScrollPosition = getBodyScrollTop();
-    htmlElement.style.overflow = 'hidden';
-    htmlElement.style.paddingRight = `${scrollWidth}px`;
-    htmlElement.style.position = isIosDevice ? 'fixed' : 'static'; // iOS scrolling fix
-    htmlElement.style.left = 0;
-    htmlElement.style.right = 0;
-    if (isIosDevice) {
-      htmlElement.classList.add('scrollFix');
+    console.log('includes', !scrollTargets.includes(uuid));
+    if (!scrollTargets.includes(uuid)) {
+      scrollTargets.push(uuid);
+      const scrollWidth = getScrollbarWidth();
+      console.log('scrWidth', scrollWidth);
+      currentScrollPosition = getBodyScrollTop();
+      htmlElement.style.overflow = 'hidden';
+      htmlElement.style.paddingRight = `${scrollWidth}px`;
+      const mastHead = document.querySelector('.c-masthead--fixed');
+      if (mastHead) {
+        mastHead.style.paddingRight = `${scrollWidth}px`;
+      }
+      htmlElement.style.position = isIosDevice ? 'fixed' : 'static'; // iOS scrolling fix
+      htmlElement.style.left = 0;
+      htmlElement.style.right = 0;
+      if (isIosDevice) {
+        htmlElement.classList.add('scrollFixIOS');
+      }
     }
   } else {
-    htmlElement.style.overflow = null;
-    htmlElement.style.paddingRight = null;
-    htmlElement.style.position = 'static';
-    htmlElement.style.left = 'auto';
-    htmlElement.style.right = 'auto';
-    if (isIosDevice) {
-      htmlElement.classList.remove('scrollFix');
-      setBodyScrollTop(currentScrollPosition);
+    if (scrollTargets.indexOf(uuid) !== -1) {
+      scrollTargets.splice(scrollTargets.indexOf(uuid), 1);
+    }
+    if (scrollTargets.length === 0) {
+      htmlElement.style.overflow = 'visible';
+      htmlElement.style.position = 'static';
+      htmlElement.style.paddingRight = 0;
+      const mastHead = document.querySelector('.c-masthead--fixed');
+      if (mastHead) {
+        mastHead.style.paddingRight = 0;
+      }
+      htmlElement.style.left = 'auto';
+      htmlElement.style.right = 'auto';
+      if (isIosDevice) {
+        htmlElement.classList.remove('scrollFixIOS');
+        setBodyScrollTop(currentScrollPosition);
+      }
     }
   }
 };

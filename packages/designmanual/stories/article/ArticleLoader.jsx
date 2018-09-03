@@ -124,7 +124,13 @@ class ArticleLoader extends Component {
     const articleChildren = [];
 
     if (showSubTopics) {
-      articleChildren.push(<ResourcesSubTopics key="subTopic" toggleAdditionalCores={this.toggleAdditionalCores} showAdditionalCores={this.state.showAdditionalCores} />);
+      articleChildren.push(
+        <ResourcesSubTopics
+          key="subTopic"
+          toggleAdditionalCores={this.toggleAdditionalCores}
+          showAdditionalCores={this.state.showAdditionalCores}
+        />,
+      );
     }
 
     if (!hideResources) {

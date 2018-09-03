@@ -48,49 +48,52 @@ const FrontpageHeader = ({
       </OneColumn>
       <OneColumn wide noPadding>
         <div {...classes('content')}>
-          {!hideMenu && <Modal
-            size="fullscreen"
-            animation="subtle"
-            backgroundColor="gray-dark"
-            activateButton={
-              <Button className="c-frontpage-header__menu-button">Meny</Button>
-            }>
-            {closeMenu => (
-              <nav>
-                <ModalHeader modifier={['white', 'menu']}>
-                  <div {...classesMenu('masthead-left')}>
-                    <button
-                      type="button"
-                      {...classesMenu('close-button')}
-                      onClick={closeMenu}>
-                      <Cross />
-                      <span>Lukk</span>
-                    </button>
+          {!hideMenu && (
+            <Modal
+              size="fullscreen"
+              animation="subtle"
+              backgroundColor="gray-dark"
+              activateButton={
+                <Button className="c-frontpage-header__menu-button">
+                  Meny
+                </Button>
+              }>
+              {closeMenu => (
+                <nav>
+                  <ModalHeader modifier={['white', 'menu']}>
+                    <div {...classesMenu('masthead-left')}>
+                      <button
+                        type="button"
+                        {...classesMenu('close-button')}
+                        onClick={closeMenu}>
+                        <Cross />
+                        <span>Lukk</span>
+                      </button>
+                    </div>
+                    <div {...classesMenu('masthead-right')}>
+                      <Logo
+                        to="#"
+                        label="Nasjonal digital læringsarena"
+                        cssModifier="always-show"
+                      />
+                    </div>
+                  </ModalHeader>
+                  <div {...classesMenu('content', 'fill-page')}>
+                    {menuSubject}
+                    <div {...classes('main-menu-content')}>
+                      <ul {...classesMenu('content-type-results')}>
+                        {links.map(link => (
+                          <li key={uuid()}>
+                            <SafeLink to={link.to}>{link.text}</SafeLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div {...classesMenu('masthead-right')}>
-                    <Logo
-                      to="#"
-                      label="Nasjonal digital læringsarena"
-                      cssModifier="always-show"
-                    />
-                  </div>
-                </ModalHeader>
-                <div {...classesMenu('content', 'fill-page')}>
-                  {menuSubject}
-                  <div {...classes('main-menu-content')}>
-                    <ul {...classesMenu('content-type-results')}>
-                      {links.map(link => (
-                        <li key={uuid()}>
-                          <SafeLink to={link.to}>{link.text}</SafeLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </nav>
-            )}
-          </Modal>
-          }
+                </nav>
+              )}
+            </Modal>
+          )}
           <Logo
             to={logoTo}
             label={heading}

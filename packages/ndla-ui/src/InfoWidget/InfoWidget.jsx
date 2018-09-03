@@ -52,9 +52,11 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
           );
         })}
       {mainLink.url ? (
-        <SafeLink {...classes('main-link')} to={mainLink.url}>
-          <span>{mainLink.name}</span> <Forward />
-        </SafeLink>
+        <div className="o-text-link__wrapper o-text-link__wrapper--right">
+          <SafeLink className="o-text-link" to={mainLink.url}>
+            <span>{mainLink.name}</span> <Forward />
+          </SafeLink>
+        </div>
       ) : (
         <a {...classes('main-link')} href={mainLink.href}>
           {mainLink.name}

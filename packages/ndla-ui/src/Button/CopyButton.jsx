@@ -50,19 +50,10 @@ class CopyButton extends Component {
   }
 
   render() {
-    const {
-      children,
-      onClick,
-      copyNode,
-      showCopyTimer,
-      ...rest
-    } = this.props;
+    const { children, onClick, copyNode, showCopyTimer, ...rest } = this.props;
 
     return (
-      <Button
-        onClick={this.handleCopy}
-        ref={this.buttonRef}
-        {...rest}>
+      <Button onClick={this.handleCopy} ref={this.buttonRef} {...rest}>
         {this.state.showCopyState ? copyNode : children}
       </Button>
     );

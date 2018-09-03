@@ -1,6 +1,6 @@
 {
   "name": "ndla-source-map-resolver",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Source map resolver for errors logged via ndla-error-reporter.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -8,11 +8,7 @@
     "source-map-resolver": "bin/source-map-resolver.js"
   },
   "scripts": {
-    "build": "npm run build:commonjs",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
-    "clean": "rimraf lib",
-    "test": "NODE_ENV=unittest jest",
-    "prepublish": "npm run clean && npm run build"
+    "test": "NODE_ENV=unittest jest"
   },
   "repository": {
     "type": "git",
@@ -23,7 +19,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "lib",
+    "src",
     "bin"
   ],
   "dependencies": {

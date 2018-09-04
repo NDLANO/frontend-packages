@@ -14,7 +14,7 @@
     @include font-size(18px, 20px);
     list-style-type: none;
     list-style-image: none;
-    margin: 0 0 $spacing--small / 2 0;
+    margin: $spacing--small 0;
     padding: 0;
     li {
       margin: 0;

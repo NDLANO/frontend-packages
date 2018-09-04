@@ -101,7 +101,7 @@ storiesOf('Sammensatte moduler', module)
             email: 'cecilie@ndla.no',
             image: 'http://via.placeholder.com/200x200',
             introduction: 'Er fagleder for bla bla..',
-          }
+          },
         ]}
         updated="21.06.2018"
         license="CC BY-SA"
@@ -112,7 +112,9 @@ storiesOf('Sammensatte moduler', module)
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
         }}
       />
-    <h2 className="u-heading">Linje med flere forfattere med detaljert informasjon</h2>
+      <h2 className="u-heading">
+        Linje med flere forfattere med detaljert informasjon
+      </h2>
       <ArticleByline
         authors={[
           {

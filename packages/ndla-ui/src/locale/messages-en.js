@@ -232,11 +232,10 @@ const messages = {
     urlContributionsLabel: 'See {name}`s contributions',
     urlAuthorLabel: 'Read more about {name}',
     multipleAuthorsLabelAbbreviation: 'et al.',
-    multipleAuthorsLabel: 'Authors',
+    multipleAuthorsLabel: 'Article authors:',
     multipleAuthorsLabelAria: 'Authors of this article are {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'The author of this article is {name}',
-    multipleAuthorsExplanation: 'This article was created by:',
   },
   subject: {
     associatedTopics: 'Associated topics',

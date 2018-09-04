@@ -48,22 +48,27 @@ class ArticleByline extends Component {
 
     let authorAriaLabel;
     if (authorsLinkable) {
-      authorAriaLabel = authors.length > 1 ?
-        t('article.multipleAuthorsLabelAria', {
-          names: authors.reduce((prev, current, index) => {
-            if (index === 1) {
-              if (index === authors.length - 1) {
-                return `${prev.name} ${t('article.multipleAuthorsLabelAriaConjunction')} ${current.name}`;
-              }
-              return `${prev.name}, ${current.name}`;
-            }
-            if (index === authors.length - 1) {
-              return `${prev} ${t('article.multipleAuthorsLabelAriaConjunction')} ${current.name}`;
-            }
-            return `${prev}, ${current.name}`;
-          }),
-        }) :
-        t('article.singleAuthorsLabelAria', { name: authors[0].name });
+      authorAriaLabel =
+        authors.length > 1
+          ? t('article.multipleAuthorsLabelAria', {
+              names: authors.reduce((prev, current, index) => {
+                if (index === 1) {
+                  if (index === authors.length - 1) {
+                    return `${prev.name} ${t(
+                      'article.multipleAuthorsLabelAriaConjunction',
+                    )} ${current.name}`;
+                  }
+                  return `${prev.name}, ${current.name}`;
+                }
+                if (index === authors.length - 1) {
+                  return `${prev} ${t(
+                    'article.multipleAuthorsLabelAriaConjunction',
+                  )} ${current.name}`;
+                }
+                return `${prev}, ${current.name}`;
+              }),
+            })
+          : t('article.singleAuthorsLabelAria', { name: authors[0].name });
     }
 
     return (
@@ -79,12 +84,11 @@ class ArticleByline extends Component {
                   narrow
                   onClose={this.onSelectAuthor}
                   activateButton={
-                    <Button
-                      aria-label={authorAriaLabel}
-                      link
-                    >
+                    <Button aria-label={authorAriaLabel} link>
                       {authors.length > 1
-                        ? `${authors[0].name} ${t('article.multipleAuthorsLabelAbbreviation')}`
+                        ? `${authors[0].name} ${t(
+                            'article.multipleAuthorsLabelAbbreviation',
+                          )}`
                         : authors[0].name}
                     </Button>
                   }>
@@ -135,9 +139,7 @@ class ArticleByline extends Component {
         {licenseBox && (
           <span {...classes('flex')}>
             <Modal
-              activateButton={
-                <Button link>{t('article.useContent')}</Button>
-              }
+              activateButton={<Button link>{t('article.useContent')}</Button>}
               size="medium">
               {onClose => (
                 <Fragment>

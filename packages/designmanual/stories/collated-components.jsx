@@ -66,11 +66,13 @@ storiesOf('Sammensatte moduler', module)
           authors={[
             {
               name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
               role: 'Forfatter',
             },
             {
               name: 'Pål Frønsdal',
-              role: 'Forfatter',
+              shortName: 'Pål',
+              role: 'Fagansvarlig',
             },
           ]}
           updated="21.06.2018"
@@ -81,6 +83,7 @@ storiesOf('Sammensatte moduler', module)
           authors={[
             {
               name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
             },
           ]}
           updated="21.06.2018"
@@ -116,7 +119,7 @@ storiesOf('Sammensatte moduler', module)
         <ArticleByline
           authors={[
             {
-              role: 'rolle',
+              role: 'Forfatter',
               name: 'Cecilie Isaksen Eftedal',
               shortName: 'Cecilie',
               urlContributions: '#',
@@ -129,7 +132,7 @@ storiesOf('Sammensatte moduler', module)
               introduction: 'Er fagleder for bla bla..',
             },
             {
-              role: 'rolle',
+              role: 'Fagansvarlig',
               name: 'Siv Mundal',
               shortName: 'Siv',
               urlContributions: '#',
@@ -142,7 +145,7 @@ storiesOf('Sammensatte moduler', module)
               introduction: 'Er fagleder for bla bla..',
             },
             {
-              role: 'rolle',
+              role: 'Medvirkende',
               name: 'Pål Frøsndal',
               shortName: 'Pål',
               urlContributions: '#',

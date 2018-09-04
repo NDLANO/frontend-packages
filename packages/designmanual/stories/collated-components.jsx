@@ -101,6 +101,32 @@ storiesOf('Sammensatte moduler', module)
             email: 'cecilie@ndla.no',
             image: 'http://via.placeholder.com/200x200',
             introduction: 'Er fagleder for bla bla..',
+          }
+        ]}
+        updated="21.06.2018"
+        license="CC BY-SA"
+        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+        additional
+        messages={{
+          authorLabel: 'Opphavsmenn',
+          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
+        }}
+      />
+    <h2 className="u-heading">Linje med flere forfattere med detaljert informasjon</h2>
+      <ArticleByline
+        authors={[
+          {
+            role: 'rolle',
+            name: 'Cecilie Isaksen Eftedal',
+            shortName: 'Cecilie',
+            urlContributions: '#',
+            urlAuthor: '#',
+            licenses: 'CC BY-SA',
+            title: 'Stilling',
+            phone: '+47 123 45 678',
+            email: 'cecilie@ndla.no',
+            image: 'http://via.placeholder.com/200x200',
+            introduction: 'Er fagleder for bla bla..',
           },
           {
             role: 'rolle',

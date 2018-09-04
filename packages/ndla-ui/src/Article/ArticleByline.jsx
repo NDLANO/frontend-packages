@@ -51,13 +51,16 @@ class ArticleByline extends Component {
       authorAriaLabel = authors.length > 1 ?
         t('article.multipleAuthorsLabelAria', {
           names: authors.reduce((prev, current, index) => {
-            if (index === 0) {
-              return current.name;
+            if (index === 1) {
+              if (index === authors.length - 1) {
+                return `${prev.name} ${t('article.multipleAuthorsLabelAriaConjunction')} ${current.name}`;
+              }
+              return `${prev.name}, ${current.name}`;
             }
-            if (index === authors.length -1) {
-              return `${prev.name} ${t('article.multipleAuthorsLabelAriaConjunction')} ${current.name}`;
+            if (index === authors.length - 1) {
+              return `${prev} ${t('article.multipleAuthorsLabelAriaConjunction')} ${current.name}`;
             }
-            return `${prev.name}, ${current.name}`;
+            return `${prev}, ${current.name}`;
           }),
         }) :
         t('article.singleAuthorsLabelAria', { name: authors[0].name });

@@ -1,4 +1,9 @@
-import { topicMenu, subtopicList, topicList } from './mockTopics';
+import {
+  topicMenu,
+  subtopicList,
+  topicList,
+  topicListChinese,
+} from './mockTopics';
 import {
   learningPathResources,
   articleResources,
@@ -28,6 +33,7 @@ import contentCards from './mockContentCards';
 export {
   topicMenu,
   topicList,
+  topicListChinese,
   subjectList,
   subjectConcepts,
   learningPathResources,

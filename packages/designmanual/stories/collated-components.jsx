@@ -25,7 +25,7 @@ import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 import { topicList } from '../dummydata/index';
-import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
+import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';

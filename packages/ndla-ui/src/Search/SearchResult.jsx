@@ -4,6 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import { ChevronRight, Additional } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 import { uuid } from 'ndla-util';
+import { Trans } from 'ndla-i18n';
 
 import { FilterTabs } from 'ndla-tabs';
 import Tooltip from '../Tooltip';
@@ -25,57 +26,66 @@ export const SearchResult = ({
   onToggleCompetenceGoals,
   competenceGoals,
 }) => (
-  <div {...resultClasses()}>
-    {author || (
-      <div {...resultClasses('heading-wrapper')}>
-        <h1
-          {...resultClasses(
-            'heading',
-            currentCompetenceGoal ? 'competence-goal' : null,
-          )}>
-          {messages.searchStringLabel} <span>{searchString}</span>
-        </h1>
+  <Trans>
+    {({ t }) => (
+      <div {...resultClasses()}>
+        {author || (
+          <div {...resultClasses('heading-wrapper')}>
+            <h1
+              {...resultClasses(
+                'heading',
+                currentCompetenceGoal ? 'competence-goal' : null,
+              )}>
+              {messages.searchStringLabel} <span>{searchString}</span>
+            </h1>
+            {competenceGoalsOpen && (
+              <Button
+                link
+                {...resultClasses('close-competencegoals-btn')}
+                onClick={onToggleCompetenceGoals}>
+                {t('competenceGoals.closeCompetenceGoals')}
+                <Cross className="c-icon--22 u-margin-left-tiny" />
+              </Button>
+            )}
+          </div>
+        )}
+        <h2>{messages.subHeading}</h2>
+        {!competenceGoalsOpen &&
+          currentCompetenceGoal && (
+            <ul {...resultClasses('current-goal')}>
+              <li>{currentCompetenceGoal}</li>
+            </ul>
+          )}
+        {!competenceGoalsOpen &&
+          competenceGoals !== null && (
+            <p {...resultClasses('current-goal-info')}>
+              {messages.openCompetenceGoalsButtonPrefix}{' '}
+              <Button link onClick={onToggleCompetenceGoals}>
+                {messages.openCompetenceGoalsButton}
+              </Button>
+            </p>
+          )}
         {competenceGoalsOpen && (
-          <Button link onClick={onToggleCompetenceGoals}>
-            {messages.closeCompetenceGoalsLabel}
-            <Cross className="c-icon--22 u-margin-left-tiny" />
-          </Button>
+          <div {...resultClasses('competence-goals')}>{competenceGoals}</div>
+        )}
+        {!competenceGoalsOpen && (
+          <Fragment>
+            <FilterTabs
+              dropdownBtnLabel={t(
+                'searchPage.searchPageMessages.dropdownBtnLabel',
+              )}
+              value={currentTab}
+              options={tabOptions}
+              contentId="search-result-content"
+              onChange={onTabChange}>
+              {children}
+            </FilterTabs>
+            <div {...resultClasses('narrow-result')}>{children}</div>
+          </Fragment>
         )}
       </div>
     )}
-    <h2>{messages.subHeading}</h2>
-    {!competenceGoalsOpen &&
-      currentCompetenceGoal && (
-        <ul {...resultClasses('current-goal')}>
-          <li>{currentCompetenceGoal}</li>
-        </ul>
-      )}
-    {!competenceGoalsOpen &&
-      competenceGoals !== null && (
-        <p {...resultClasses('current-goal-info')}>
-          {messages.openCompetenceGoalsButtonPrefix}{' '}
-          <Button link onClick={onToggleCompetenceGoals}>
-            {messages.openCompetenceGoalsButton}
-          </Button>
-        </p>
-      )}
-    {competenceGoalsOpen && (
-      <div {...resultClasses('competence-goals')}>{competenceGoals}</div>
-    )}
-    {!competenceGoalsOpen && (
-      <Fragment>
-        <FilterTabs
-          messages={messages}
-          value={currentTab}
-          options={tabOptions}
-          contentId="search-result-content"
-          onChange={onTabChange}>
-          {children}
-        </FilterTabs>
-        <div {...resultClasses('narrow-result')}>{children}</div>
-      </Fragment>
-    )}
-  </div>
+  </Trans>
 );
 
 SearchResult.propTypes = {
@@ -90,10 +100,8 @@ SearchResult.propTypes = {
   messages: PropTypes.shape({
     searchStringLabel: PropTypes.string.isRequired,
     subHeading: PropTypes.string.isRequired,
-    dropdownBtnLabel: PropTypes.string.isRequired,
     openCompetenceGoalsButtonPrefix: PropTypes.string,
     openCompetenceGoalsButton: PropTypes.string,
-    closeCompetenceGoalsLabel: PropTypes.string,
   }).isRequired,
   currentCompetenceGoal: PropTypes.string,
   competenceGoalsOpen: PropTypes.bool,
@@ -142,7 +150,7 @@ const messagesShape = PropTypes.shape({
   additionalContentToolip: PropTypes.string,
 });
 
-const SearchResultItem = ({ item, messages }) => (
+const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
   <li key={item.id} {...searchResultItemClasses()}>
     <article>
       <header {...searchResultItemClasses('header')}>
@@ -158,10 +166,10 @@ const SearchResultItem = ({ item, messages }) => (
           {item.contentTypeLabel}
         </span>
         {item.additional &&
-          (messages.additionalContentToolip ? (
+          (additionalContentToolip ? (
             <Tooltip
               id={`search-additional-tooltip-${item.id}`}
-              tooltip={messages.additionalContentToolip}
+              tooltip={additionalContentToolip}
               {...searchResultItemClasses('additional')}>
               <Additional className="c-icon--20" />
             </Tooltip>
@@ -199,7 +207,7 @@ const SearchResultItem = ({ item, messages }) => (
       {item.subjects &&
         item.subjects.length !== 0 && (
           <div {...searchResultItemClasses('subjects')}>
-            <span>{messages.subjectsLabel}</span>
+            <span>{subjectsLabel}</span>
             <ul>
               {item.subjects.map(subject => (
                 <li key={uuid()}>
@@ -219,32 +227,37 @@ const SearchResultItem = ({ item, messages }) => (
 
 SearchResultItem.propTypes = {
   item: searchResultItemShape.isRequired,
-  messages: messagesShape.isRequired,
+  additionalContentToolip: PropTypes.string.isRequired,
+  subjectsLabel: PropTypes.string.isRequired,
 };
 
-export const SearchResultList = ({ results, messages }) => {
-  if (results.length === 0) {
-    return (
-      <article className="c-search-result-list__empty">
-        <h1>{messages.noResultHeading}</h1>
-        <p>{messages.noResultDescription}</p>
-      </article>
-    );
-  }
-  return (
-    <ul className="c-search-result-list">
-      {results.map(item => (
-        <SearchResultItem
-          key={`search_result_item_${
-            typeof item.url === 'object' ? item.url.href : item.url
-          }`}
-          item={item}
-          messages={messages}
-        />
-      ))}
-    </ul>
-  );
-};
+export const SearchResultList = ({ results }) => (
+  <Trans>
+    {({ t }) =>
+      results.length === 0 ? (
+        <article className="c-search-result-list__empty">
+          <h1>{t('searchPage.searchResultListMessages.noResultHeading')}</h1>
+          <p>{t('searchPage.searchResultListMessages.noResultDescription')}</p>
+        </article>
+      ) : (
+        <ul className="c-search-result-list">
+          {results.map(item => (
+            <SearchResultItem
+              key={`search_result_item_${
+                typeof item.url === 'object' ? item.url.href : item.url
+              }`}
+              item={item}
+              additionalContentToolip={t('resource.tooltipAdditionalTopic')}
+              subjectsLabel={t(
+                'searchPage.searchResultListMessages.subjectsLabel',
+              )}
+            />
+          ))}
+        </ul>
+      )
+    }
+  </Trans>
+);
 
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),

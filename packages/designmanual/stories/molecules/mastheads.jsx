@@ -8,19 +8,23 @@
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import BEMHelper from 'react-bem-helper';
+import { injectT } from 'ndla-i18n';
 
 import {
   Masthead,
   MastheadItem,
   Logo,
-  ClickToggle,
+  Button,
   TopicMenu,
   DisplayOnPageYOffset,
-  ToggleSearchButton,
-  SearchOverlay,
   SearchField,
   SafeLink,
+  Modal,
 } from 'ndla-ui';
+
+import { Search } from 'ndla-icons/common';
+import { Cross } from 'ndla-icons/action';
 
 import { topicMenu, contentTypeResults } from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';
@@ -35,158 +39,181 @@ export const MastheadWithLogo = () => (
   </Masthead>
 );
 
-const messages = {
-  closeButton: 'Lukk',
-  goTo: 'Gå til',
-  subjectOverview: 'Fagoversikt',
-  search: 'Søk',
-  subjectPage: 'Fagforside',
-  learningResourcesHeading: 'Læringsressurser',
-  back: 'Tilbake',
-  contentTypeResultsShowMore: 'Vis mer',
-  contentTypeResultsShowLess: 'Vis mindre',
-  contentTypeResultsNoHit: 'Ingen ressurser',
-  competenceGoalsToggleButtonOpen: 'Kompetansemål',
-  competenceGoalsToggleButtonClose: 'Lukk kompetansemål',
-  competenceGoalsNarrowOpenButton: 'Vis kompetansemål',
-  competenceGoalsNarrowBackButton: 'Tilbake',
-};
+const classes = BEMHelper({
+  prefix: 'c-',
+  name: 'toggle-search-button',
+  outputIsString: true,
+});
+
+const searchFieldClasses = BEMHelper({
+  prefix: 'c-',
+  name: 'search-field',
+});
 
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: '',
-      menuIsOpen: false,
-      searchIsOpen: this.props.searchFieldExpanded,
       expandedTopicId: null,
-      expandedSubtopicId: null,
-      expandedSubtopicLevel2Id: null,
+      expandedSubtopicsId: [],
+      filterMenuValues: ['Medieuttrykk'],
     };
+    this.searchFieldRef = React.createRef();
   }
 
-  render() {
+  renderSearchField() {
     const searchFieldResults =
       this.state.value.length > 1 ? contentTypeResults : null;
 
+    return (
+      <SearchField
+        placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
+        value={this.state.value}
+        onChange={event => {
+          this.setState({
+            value: event.currentTarget.value,
+          });
+        }}
+        onSearch={e => {
+          /* eslint-disable no-console */
+          console.log(
+            'search for:',
+            e.target.getElementsByTagName('input')[0].value,
+          );
+          e.preventDefault();
+        }}
+        filters={[{ value: 'Value', title: 'Medieuttrykk og mediesamfunnet' }]}
+        onFilterRemove={() => {}}
+        messages={{
+          searchFieldTitle: 'Søk',
+        }}
+        allResultUrl="#"
+        searchResult={searchFieldResults}
+        resourceToLinkProps={() => {}}
+      />
+    );
+  }
+
+  render() {
     let searchButtonView = null;
 
     if (!this.props.hideSearchButton) {
       searchButtonView = (
-        <ToggleSearchButton
-          isOpen={this.state.searchIsOpen}
-          onToggle={isOpen => {
-            const newState = {
-              searchIsOpen: isOpen,
-            };
-
-            if (!isOpen) {
-              newState.value = '';
-            }
-            this.setState(newState);
+        <Modal
+          backgroundColor="grey"
+          animation="slide-down"
+          animationDuration={200}
+          size="full-width"
+          onOpen={() => {
+            this.searchFieldRef.current
+              .getElementsByTagName('input')[0]
+              .focus();
           }}
-          searchPageUrl="#"
-          messages={{ buttonText: 'Søk' }}>
-          {(onClose, isOpen) => (
-            <SearchOverlay close={onClose} isOpen={isOpen}>
-              <SearchField
-                placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-                value={this.state.value}
-                onChange={event => {
-                  this.setState({
-                    value: event.currentTarget.value,
-                  });
-                }}
-                filters={[
-                  { value: 'Value', title: 'Medieuttrykk og mediesamfunn' },
-                ]}
-                onFilterRemove={() => {}}
-                messages={{
-                  contentTypeResultShowLessLabel: 'Se færre',
-                  contentTypeResultShowMoreLabel: 'Se alle',
-                  allResultButtonText: 'Vis alle søketreff',
-                  searchFieldTitle: 'Søk',
-                  searchResultHeading: 'Forslag:',
-                  contentTypeResultNoHit: 'Ingen treff',
-                }}
-                allResultUrl="#"
-                searchResult={searchFieldResults}
-                resourceToLinkProps={() => {}}
-              />
-            </SearchOverlay>
+          onClose={() => {
+            this.setState({ value: '' });
+          }}
+          className="c-search-field__overlay-content"
+          activateButton={
+            <button
+              type="button"
+              className="c-button c-toggle-search-button__button c-toggle-search-button__button--wide">
+              <span className={classes('button-text')}>Søk</span>
+              <Search />
+            </button>
+          }>
+          {onClose => (
+            <Fragment>
+              <div className="c-search-field__overlay-top" />
+              <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
+                <div {...searchFieldClasses('header-container')}>
+                  {this.renderSearchField()}
+                  <Button stripped onClick={onClose}>
+                    <Cross className="c-icon--medium" />
+                  </Button>
+                </div>
+              </div>
+            </Fragment>
           )}
-        </ToggleSearchButton>
+        </Modal>
       );
     }
 
     return (
       <Masthead
         fixed
+        hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
-          {!this.props.hideMenu && (
-            <ClickToggle
-              isOpen={this.state.menuIsOpen}
-              onToggle={isOpen => {
-                this.setState({
-                  menuIsOpen: isOpen,
-                  expandedTopicId: null,
-                  expandedSubtopicId: null,
-                });
-              }}
-              title="Meny"
-              openTitle="Lukk"
-              className="c-topic-menu-container"
-              buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-              {onClose => (
-                <TopicMenu
-                  close={onClose}
-                  isBeta={this.props.beta}
-                  subjectTitle="Mediefag"
-                  toSubject={() => '#'}
-                  toTopic={() => '#'}
-                  withSearchAndFilter
-                  topics={topicMenu}
-                  messages={messages}
-                  onOpenSearch={() => {
-                    this.setState({
-                      menuIsOpen: false,
-                      searchIsOpen: true,
-                    });
-                  }}
-                  filterOptions={[
-                    {
-                      title: 'Medieuttrykk',
-                      value: 'Medieuttrykk',
-                    },
-                    {
-                      title: 'Mediesamfunnet',
-                      value: 'Mediesamfunnet',
-                    },
-                  ]}
-                  filterValues={['Medieuttrykk']}
-                  competenceGoals={<CompetenceGoalsExample menu />}
-                  onFilterClick={() => {}}
-                  searchPageUrl="#"
-                  resourceToLinkProps={() => {}}
-                  expandedTopicId={this.state.expandedTopicId}
-                  expandedSubtopicId={this.state.expandedSubtopicId}
-                  expandedSubtopicLevel2Id={this.state.expandedSubtopicLevel2Id}
-                  onNavigate={(
+          <Modal
+            size="fullscreen"
+            activateButton={
+              <Button outline className="c-topic-menu-toggle-button">
+                Meny
+              </Button>
+            }
+            animation="subtle"
+            animationDuration={150}
+            backgroundColor="grey"
+            noBackdrop
+            onClose={() => {
+              this.setState({
+                expandedTopicId: null,
+                expandedSubtopicsId: [],
+              });
+            }}>
+            {onClose => (
+              <TopicMenu
+                close={onClose}
+                isBeta={this.props.beta}
+                searchFieldComponent={searchButtonView}
+                subjectTitle="Mediefag"
+                toSubject={() => '#'}
+                toTopic={() => '#'}
+                topics={topicMenu}
+                filterOptions={[
+                  {
+                    title: 'Medieuttrykk',
+                    value: 'Medieuttrykk',
+                  },
+                  {
+                    title: 'Mediesamfunnet',
+                    value: 'Mediesamfunnet',
+                  },
+                ]}
+                filterValues={this.state.filterMenuValues}
+                competenceGoals={
+                  <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
+                }
+                onFilterClick={values => {
+                  this.setState({
+                    filterMenuValues: values,
+                  });
+                }}
+                resourceToLinkProps={() => {}}
+                expandedTopicId={this.state.expandedTopicId}
+                expandedSubtopicsId={this.state.expandedSubtopicsId}
+                onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
+                  let { expandedSubtopicsId } = this.state;
+                  if (expandedSubtopicsId.length > currentIndex) {
+                    expandedSubtopicsId = expandedSubtopicsId.slice(
+                      0,
+                      currentIndex,
+                    );
+                  }
+                  if (subtopicId) {
+                    expandedSubtopicsId.push(subtopicId);
+                  } else {
+                    expandedSubtopicsId.pop();
+                  }
+                  this.setState({
                     expandedTopicId,
-                    expandedSubtopicId,
-                    expandedSubtopicLevel2Id,
-                  ) => {
-                    this.setState({
-                      expandedTopicId,
-                      expandedSubtopicId,
-                      expandedSubtopicLevel2Id,
-                    });
-                  }}
-                />
-              )}
-            </ClickToggle>
-          )}
+                    expandedSubtopicsId,
+                  });
+                }}
+              />
+            )}
+          </Modal>
           <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock />
           </DisplayOnPageYOffset>
@@ -206,14 +233,14 @@ class MastheadWithTopicMenu extends Component {
 
 MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
+  hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
-  hideMenu: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
+  t: PropTypes.func.isRequired,
 };
 
 MastheadWithTopicMenu.defaultProps = {
-  hideMenu: false,
   searchFieldExpanded: false,
   betaInfoContent: (
     <Fragment>
@@ -223,6 +250,4 @@ MastheadWithTopicMenu.defaultProps = {
   ),
 };
 
-export { MastheadWithTopicMenu };
-
-export default MastheadWithTopicMenu;
+export default injectT(MastheadWithTopicMenu);

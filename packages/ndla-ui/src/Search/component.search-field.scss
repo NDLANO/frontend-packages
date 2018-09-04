@@ -1,19 +1,65 @@
+$overlay-height-mobile: 74px;
+$overlay-height-tablet: 110px;
+$overlay-height: 136px;
+
 .c-search-field {
-  position: relative;
   display: flex;
   align-items: center;
   text-align: left;
-  flex-flow: row-reverse;
+  flex-direction: column;
+  justify-content: center;
 
-  &--has-search-result {
-    .c-search-field {
-      &__input {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+  &__overlay-content > div:first-child {
+    background: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $overlay-height;
+    overflow-y: visible;
+    box-shadow: none;
+  }
+
+  &__overlay-top {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: $overlay-height-mobile;
+    background: $brand-grey--lighter;
+    @include mq(tablet) {
+      height: $overlay-height-tablet;
+    }
+    @include mq(desktop) {
+      height: $overlay-height;
+    }
+    box-shadow: 0 0 30px rgba($black, 0.2);
+  }
+
+  @include mq(desktop) {
+    &--has-search-result {
+      .c-search-field {
+        &__input {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &__filters {
+          border-bottom-left-radius: 0;
+        }
       }
+    }
+  }
 
-      &__filters {
-        border-bottom-left-radius: 0;
+  @supports (-webkit-overflow-scrolling: touch) {
+    .c-search-field__search-result {
+      padding-bottom: $spacing--large + $spacing;
+    }
+    &--input-has-focus {
+      .c-search-field__search-result {
+        @supports (-webkit-overflow-scrolling: touch) {
+          padding-bottom: 300px;
+        }
       }
     }
   }
@@ -34,21 +80,31 @@
     border-bottom-left-radius: 4px;
     border: 1px solid $brand-grey--light;
     padding-left: $spacing--small;
-    padding-right: $spacing--small;
+    padding-right: 0;
     border-right: 0;
     flex-shrink: 0;
     align-items: center;
 
-    @include mq(desktop) {
+    @include mq($from: mobileWide, $until: desktop) {
+      padding-right: $spacing--small / 2;
+    }
+
+    @include mq(tablet) {
       height: 58px;
+      padding-right: $spacing--small;
     }
 
     .c-active-filters {
       display: none;
 
-      @include mq(desktop) {
+      @include mq(tablet) {
         display: flex;
-        height: 58px;
+        li {
+          margin-bottom: 0;
+        }
+      }
+      @include mq($until: desktop) {
+        padding-right: $spacing--small;
       }
     }
   }
@@ -59,7 +115,7 @@
     line-height: 48px;
     border: 1px solid $brand-grey--light;
     border-radius: 4px;
-    padding-right: 58px;
+    padding-right: $spacing--large;
     flex-grow: 1;
     outline: 0;
 
@@ -80,7 +136,7 @@
 
     @include font-size(16px, 20px);
 
-    @include mq(desktop) {
+    @include mq(tablet) {
       height: 58px;
       line-height: 58px;
       @include font-size(18px, 24px);
@@ -89,15 +145,14 @@
 
   &__button {
     position: absolute;
-    top: 5px;
-    right: 10px;
     cursor: pointer;
     background: none;
     border: 0;
-    padding: $spacing--small/2;
+    padding: $spacing--small;
 
-    @include mq(desktop) {
-      padding: $spacing--small;
+    @include mq(tablet) {
+      top: 5px;
+      right: 10px;
     }
 
     svg {
@@ -107,10 +162,22 @@
     }
   }
 
-  &__search-result {
-    position: absolute;
+  &__input-wrapper {
     width: 100%;
-    top: 58px;
+    padding: 0 $spacing--large 0 $spacing;
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+    @include mq(tablet) {
+      position: relative;
+      padding: 0;
+    }
+  }
+
+  &__search-result {
+    overflow-y: auto;
+    width: 100%;
+
     background: $white;
     border: 1px solid $brand-grey--light;
     border-top: 0;
@@ -119,22 +186,42 @@
     padding: $spacing--medium $spacing--large 0 $spacing--large;
     animation: expand 0.2s;
     transform-origin: top;
+
+    @include mq(tablet) {
+      max-height: calc(100vh - 110px);
+    }
+    @include mq(desktop) {
+      max-height: calc(100vh - 136px);
+    }
+
+    @include mq($until: tablet) {
+      margin-top: $spacing--small;
+      height: calc(100vh - 76px);
+      max-height: none;
+      padding: $spacing;
+    }
   }
 
   &__search-result-heading {
     @include font-size(18px, 24px);
-    margin: 0 0 $spacing--medium 0;
+    margin: 0 0 $spacing 0;
   }
 
   &__search-result-content {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $brand-color--light;
-    margin: 0 $spacing--medium;
+    margin: 0;
+    padding-bottom: $spacing;
 
     .c-content-type-result {
-      padding-right: $spacing--large;
-      flex: 0 0 33.3333333%;
+      @include mq(desktop) {
+        flex: 0 0 30%;
+      }
+    }
+    @include mq($until: desktop) {
+      flex-direction: column;
+      padding-bottom: $spacing--small;
     }
   }
 
@@ -145,6 +232,47 @@
     a {
       @extend .c-button;
       box-shadow: none;
+    }
+  }
+  /** Header adjustments... */
+  &__header {
+    @include mq(tablet) {
+      width: $inuit-wrapper-width;
+      max-width: calc(100vw - 156px);
+    }
+    padding: 0;
+    margin: 0 auto;
+  }
+  &__header-container {
+    display: flex;
+    padding-top: $spacing--small;
+    @include mq(tablet) {
+      padding-top: $spacing;
+    }
+    @include mq(desktop) {
+      padding-top: $spacing + $spacing--small;
+    }
+    > .c-search-field {
+      width: 100%;
+      margin-right: -$spacing--large;
+    }
+    > button {
+      width: $spacing--large;
+      height: 48px;
+      @include mq(tablet) {
+        transform: translate($spacing--large, 0);
+        width: $spacing--large;
+        height: 56px;
+        &:hover, &:focus {
+          transform: translate($spacing--large + 1, 1px);
+        }
+      }
+      @include mq(wide) {
+        transform: translate($spacing--large * 2, 0);
+        &:hover, &:focus {
+          transform: translate(($spacing--large * 2) + 1, 1px);
+        }
+      }
     }
   }
 }

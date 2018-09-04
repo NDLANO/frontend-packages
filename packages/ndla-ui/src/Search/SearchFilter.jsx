@@ -47,6 +47,7 @@ const SearchFilter = ({
         showLabel={showLabel}
         hideLabel={hideLabel}
         onChange={onChange}
+        alignedGroup
         noFilterSelectedLabel={noFilterSelectedLabel}
       />
       {children}

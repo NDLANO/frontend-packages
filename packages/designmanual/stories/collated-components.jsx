@@ -52,112 +52,114 @@ const toggle = () => {
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
     <div>
-        <StoryIntro title="Artikkel informasjonslinje">
-          <p>
-            Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk av innhold, ikon hvis artikkel er tilleggsstoff og dato for forrige oppdatering.
-          </p>
-        </StoryIntro>
-        <StoryBody layout="extend">
-          <LanguageSelector />
-          <h2 className="u-heading">Linje artikkel enkel variant</h2>
-          <ArticleByline
-            authors={[
-              {
-                name: 'Cecilie Isaksen Eftedal',
-                role: 'Forfatter',
-              },
-              {
-                name: 'Pål Frønsdal',
-                role: 'Forfatter',
-              },
-            ]}
-            updated="21.06.2018"
-            license="CC BY-SA"
-          />
-          <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
-          <ArticleByline
-            authors={[
-              {
-                name: 'Cecilie Isaksen Eftedal',
-              },
-            ]}
-            updated="21.06.2018"
-            license="CC BY-SA"
-            licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
-            additional
-          />
-          <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
-          <ArticleByline
-            authors={[
-              {
-                role: 'rolle',
-                name: 'Cecilie Isaksen Eftedal',
-                shortName: 'Cecilie',
-                urlContributions: '#',
-                urlAuthor: '#',
-                licenses: 'CC BY-SA',
-                title: 'Stilling',
-                phone: '+47 123 45 678',
-                email: 'cecilie@ndla.no',
-                image: 'http://via.placeholder.com/200x200',
-                introduction: 'Er fagleder for bla bla..',
-              },
-            ]}
-            updated="21.06.2018"
-            license="CC BY-SA"
-            licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
-            additional
-          />
-          <h2 className="u-heading">
-            Linje med flere forfattere med detaljert informasjon
-          </h2>
-          <ArticleByline
-            authors={[
-              {
-                role: 'rolle',
-                name: 'Cecilie Isaksen Eftedal',
-                shortName: 'Cecilie',
-                urlContributions: '#',
-                urlAuthor: '#',
-                licenses: 'CC BY-SA',
-                title: 'Stilling',
-                phone: '+47 123 45 678',
-                email: 'cecilie@ndla.no',
-                image: 'http://via.placeholder.com/200x200',
-                introduction: 'Er fagleder for bla bla..',
-              },
-              {
-                role: 'rolle',
-                name: 'Siv Mundal',
-                shortName: 'Siv',
-                urlContributions: '#',
-                urlAuthor: '#',
-                licenses: 'CC BY-SA',
-                title: 'Stilling',
-                phone: '+47 123 45 678',
-                email: 'siv.mundal@keyteq.no',
-                image: 'http://via.placeholder.com/200x200',
-                introduction: 'Er fagleder for bla bla..',
-              },
-              {
-                role: 'rolle',
-                name: 'Pål Frøsndal',
-                shortName: 'Pål',
-                urlContributions: '#',
-                urlAuthor: '#',
-                licenses: 'CC BY-SA',
-                title: 'Stilling',
-                phone: '+47 123 45 678',
-                email: 'paal.fronsdal@ndla.no',
-                image: 'http://via.placeholder.com/200x200',
-                introduction: 'Er fagleder for bla bla..',
-              },
-            ]}
-            updated="21.06.2018"
-            license="CC BY-SA"
-            licenseBox={<LicenseBox />}
-            additional
-          />
+      <StoryIntro title="Artikkel informasjonslinje">
+        <p>
+          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse
+          av regler ved bruk av innhold, ikon hvis artikkel er tilleggsstoff og
+          dato for forrige oppdatering.
+        </p>
+      </StoryIntro>
+      <StoryBody layout="extend">
+        <LanguageSelector />
+        <h2 className="u-heading">Linje artikkel enkel variant</h2>
+        <ArticleByline
+          authors={[
+            {
+              name: 'Cecilie Isaksen Eftedal',
+              role: 'Forfatter',
+            },
+            {
+              name: 'Pål Frønsdal',
+              role: 'Forfatter',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+        />
+        <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
+        <ArticleByline
+          authors={[
+            {
+              name: 'Cecilie Isaksen Eftedal',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+          additional
+        />
+        <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
+        <ArticleByline
+          authors={[
+            {
+              role: 'rolle',
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'cecilie@ndla.no',
+              image: 'http://via.placeholder.com/200x200',
+              introduction: 'Er fagleder for bla bla..',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
+          additional
+        />
+        <h2 className="u-heading">
+          Linje med flere forfattere med detaljert informasjon
+        </h2>
+        <ArticleByline
+          authors={[
+            {
+              role: 'rolle',
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'cecilie@ndla.no',
+              image: 'http://via.placeholder.com/200x200',
+              introduction: 'Er fagleder for bla bla..',
+            },
+            {
+              role: 'rolle',
+              name: 'Siv Mundal',
+              shortName: 'Siv',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'siv.mundal@keyteq.no',
+              image: 'http://via.placeholder.com/200x200',
+              introduction: 'Er fagleder for bla bla..',
+            },
+            {
+              role: 'rolle',
+              name: 'Pål Frøsndal',
+              shortName: 'Pål',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'paal.fronsdal@ndla.no',
+              image: 'http://via.placeholder.com/200x200',
+              introduction: 'Er fagleder for bla bla..',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+          additional
+        />
       </StoryBody>
     </div>
   ))
@@ -641,7 +643,11 @@ storiesOf('Sammensatte moduler', module)
   .add('Modalboks', () => (
     <div>
       <StoryIntro title="Modalboks">
-        <p>Brukes som modalboks (dialog). Innebygget logikk for håndtering av åpne/lukke, focusTrap og git mulighet å lytte på callbacks som onOpen og onClose</p>
+        <p>
+          Brukes som modalboks (dialog). Innebygget logikk for håndtering av
+          åpne/lukke, focusTrap og git mulighet å lytte på callbacks som onOpen
+          og onClose
+        </p>
       </StoryIntro>
       <StoryBody>
         <ModalExample />

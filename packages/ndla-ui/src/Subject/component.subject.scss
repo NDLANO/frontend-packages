@@ -17,7 +17,11 @@ $subject-section-padding: 100px;
 
   &__breadcrumb {
     display: none;
-    margin: $spacing--medium 0 0 $subject-margin;
+    margin: $spacing--medium 0 0 0;
+
+    @include mq (desktop) {
+      margin-left: $subject-margin;
+    }
 
     @include mq (tablet) {
       display: block;
@@ -66,7 +70,10 @@ $subject-section-padding: 100px;
 }
 
 .c-subject-sidebar-wrapper {
-  flex-basis: 390px;
+  flex-basis: 50%;
+  @include mq(desktop) {
+    flex-basis: 390px;
+  }
   flex-shrink: 0;
   margin: 0 $spacing;
 

@@ -46,12 +46,9 @@
   }
   &__item {
     margin: 0;
-    padding-top: $spacing--small / 2;
     padding-bottom: $spacing;
     @include mq(tablet) {
-      padding-right: $spacing;
-      padding-top: $spacing--small;
-      padding-bottom: $spacing--large;
+      padding: 0 $spacing $spacing--medium 0;
     }
     border-bottom: 2px solid $brand-grey--lighter;
     list-style: none;
@@ -67,17 +64,12 @@
       color: $brand-color;
     }
 
-    &--subjectPage {
-      @include mq(tablet) {
-        padding-right: 0;
-      }
-      margin-top: $spacing;
-      margin-bottom: $spacing--medium / 2;
-      &:last-child {
-
-        margin-bottom: 0;
-      }
+    @include mq(tablet) {
+      padding-right: 0;
     }
+    margin-top: $spacing;
+    margin-bottom: $spacing--small;
+
     &--additional {
       display: none;
     }

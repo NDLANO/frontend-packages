@@ -49,16 +49,18 @@
   &__menu-button {
     color: white;
     background: none;
-    border: 1px solid white;
+    border: 2px solid white;
     padding: 0 $spacing--small;
     border-radius: 4px;
     font-weight: 600;
-    @include font-size(16px, 45px);
+    @include font-size(16px, 24px);
     height: 45px;
     min-width: 80px;
-    display: none; // TODO: Fix Menu on Frontpage, then show again..
     @include mq(tablet) {
       display: none;
+    }
+    &:focus, &:hover {
+      border: 2px solid white;
     }
   }
 
@@ -72,18 +74,26 @@
 
   &__content {
     display: flex;
-    padding: $spacing--medium $spacing--small $spacing--small $spacing--small;
+    padding: $spacing--medium $spacing $spacing--large;
     justify-content: space-between;
 
     @include mq(tablet) {
-      padding-top: 0;
+      padding: $spacing--medium $spacing--large $spacing--large;
       align-items: center;
     }
 
     .c-search-field {
       flex: 1 0 auto;
-      margin-left: $spacing--large;
+      margin-left: $spacing--large * 2;
       display: none;
+
+      .c-search-field__input-wrapper {
+        padding-right: 0;
+      }
+
+      .c-search-field__button {
+        right: 0;
+      }
 
       @include mq(tablet) {
         display: flex;
@@ -94,7 +104,7 @@
   &__navigation {
     display: none;
     justify-content: flex-end;
-    padding: $spacing 0 $spacing--small 0;
+    padding: $spacing $spacing--large $spacing--small $spacing--large;
 
     @include mq(tablet) {
       display: flex;
@@ -139,6 +149,17 @@
 
       &:hover {
         color: $white;
+      }
+    }
+  }
+
+  &__main-menu-content {
+    margin: $spacing 0 $spacing--large * 2 0;
+    ul {
+      padding: 0 $spacing !important;
+      list-style: none;
+      li {
+        padding: 0 !important;
       }
     }
   }

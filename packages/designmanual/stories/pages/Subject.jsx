@@ -37,7 +37,7 @@ import {
 import { EmailOutline } from 'ndla-icons/common';
 import { breakpoints } from 'ndla-util';
 
-import exampleBackground from '../../images/medie-example.jpg';
+import exampleBackground from '../../images/banners/salg_service_sikkerhet.svg';
 import kinesisk from '../../images/banners/kinesisk.svg';
 import article, { contentCards } from '../../dummydata/index';
 
@@ -178,7 +178,7 @@ export default () => (
         },
       ]}
     />
-    <OneColumn noPadding>
+    <OneColumn wide>
       <SubjectContent breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage

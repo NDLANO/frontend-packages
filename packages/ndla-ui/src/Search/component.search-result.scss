@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 $spacing--medium;
+    margin: 0;
     .c-button--link {
       @include font-size(16px, 18px);
       box-shadow: inset 0 0;
@@ -64,7 +64,7 @@
   }
 
   &__current-goal {
-    margin: 0 0 0 $spacing--small*1.4;
+    margin: $spacing--medium $spacing 0 $spacing--small*1.4;
 
     li {
       &:last-child {
@@ -83,8 +83,23 @@
 
   &__competence-goals {
     background: $brand-color--lighter;
-    padding: $spacing;
-    margin-top: -$spacing--small;
+    padding: $spacing + $spacing--large $spacing $spacing;
+    margin-top: -24px - $spacing--large;
+    margin-bottom: -$spacing;
+    @include mq(desktop) {
+      margin-top: $spacing;
+      margin-bottom: $spacing;
+    }
+  }
+
+  &__close-competencegoals-btn {
+    @include mq($until: desktop) {
+      margin-top: $spacing--large;
+      margin-left: $spacing + $spacing--small;
+    }
+    @include mq($until: mobileWide) {
+      margin-left: $spacing;
+    }
   }
 }
 
@@ -126,6 +141,10 @@
   }
 
   margin: 0 0 $spacing;
+
+  &:first-child {
+    margin-top: $spacing;
+  }
 
   &:last-child {
     border-bottom: 0;

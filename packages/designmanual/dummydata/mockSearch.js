@@ -1,3 +1,7 @@
+import { constants } from 'ndla-ui';
+
+const { contentTypes } = constants;
+
 export const searchTabOptions = [
   {
     title: 'Alle',
@@ -38,7 +42,7 @@ export const searchTabFilterOptions = {
       value: 'value',
     },
     {
-      title: 'Forelesning og presentasjon',
+      title: 'Forelesning, presentasjon',
       value: 'value1',
     },
     {
@@ -147,6 +151,11 @@ export const searchTabFilterOptions = {
 export const contentTypeResults = [
   {
     title: 'Læringsstier',
+    contentType: contentTypes.LEARNING_PATH,
+    messages: {
+      allResultLabel: 'Vis alle læringsstier',
+      showLessResultLabel: 'Vis færre læringsstier',
+    },
     resources: [
       {
         path: '#1',
@@ -160,6 +169,11 @@ export const contentTypeResults = [
   },
   {
     title: 'Fagstoff',
+    contentType: contentTypes.SUBJECT_MATERIAL,
+    messages: {
+      allResultLabel: 'Vis alt fagstoff?',
+      showLessResultLabel: 'Vis færre fagstoff',
+    },
     resources: [
       {
         path: '#1',
@@ -168,6 +182,7 @@ export const contentTypeResults = [
       {
         path: '#2',
         name: 'Maktfordelingsprinsippet',
+        additional: true,
       },
       {
         path: '#3',
@@ -176,6 +191,7 @@ export const contentTypeResults = [
       {
         path: '#4',
         name: 'Fagstoff 4',
+        additional: true,
       },
       {
         path: '#5',
@@ -189,6 +205,190 @@ export const contentTypeResults = [
   },
   {
     title: 'Oppgaver og aktiviteter',
+    contentType: contentTypes.TASKS_AND_ACTIVITIES,
+    messages: {
+      allResultLabel: 'Vis alle oppgaver og aktiviteter',
+      showLessResultLabel: 'Vis færre oppgaver og aktiviteter',
+    },
     resources: [],
   },
 ];
+
+export const searchFilterOptions = {
+  subjects: [
+    {
+      title: 'Brønnteknikk',
+      value: 'subjects:bronnteknikk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'YF VG2',
+          value: 'bronnteknikk:yfvg2',
+          hits: 7,
+        },
+        {
+          title: 'YF VG3',
+          value: 'bronnteknikk:yfvg3',
+          hits: 23,
+        },
+      ],
+    },
+    {
+      title: 'Kinesisk',
+      value: 'subjects:kinesisk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'kinesisk:vg1',
+          hits: 0,
+        },
+        {
+          title: 'VG2',
+          value: 'kinesisk:vg2',
+          hits: 3,
+        },
+      ],
+    },
+    {
+      title: 'Markedsføring og ledelse',
+      value: 'subjects:markedsforing_og_ledelse',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'markedsforing_og_ledelse:vg1',
+          hits: 6,
+        },
+        {
+          title: 'VG2',
+          value: 'markedsforing_og_ledelse:vg2',
+          hits: 8,
+        },
+      ],
+    },
+    {
+      title: 'Medieuttrykk og mediesamfunnet',
+      value: 'subjects:medieuttrykk_og_mediesamfunnet',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'Medieuttrykk',
+          value: 'medieuttrykk_og_mediesamfunnet:medieuttrykk',
+          hits: 3,
+        },
+        {
+          title: 'Mediesamfunnet',
+          value: 'medieuttrykk_og_mediesamfunnet:mediesamfunnet',
+          hits: 1,
+        },
+        {
+          title: 'VG1',
+          value: 'medieuttrykk_og_mediesamfunnet:vg1',
+          hits: 2,
+        },
+        {
+          title: 'VG2',
+          value: 'medieuttrykk_og_mediesamfunnet:vg2',
+          hits: 6,
+        },
+        {
+          title: 'VG3',
+          value: 'medieuttrykk_og_mediesamfunnet:vg3',
+          hits: 0,
+        },
+      ],
+    },
+    {
+      title: 'Naturbruk',
+      value: 'subjects:naturbruk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'naturbruk:vg1',
+          hits: 8,
+        },
+      ],
+    },
+  ],
+  contentTypeFilter: [
+    {
+      title: 'Emne',
+      value: 'contentTypeFilter:1',
+      hits: 19,
+    },
+    {
+      title: 'Læringssti',
+      value: 'contentTypeFilter:2',
+      hits: 52,
+    },
+    {
+      title: 'Fagstoff',
+      value: 'contentTypeFilter:3',
+      hits: 74,
+    },
+    {
+      title: 'Oppgaver og aktiviteter',
+      value: 'contentTypeFilter:4',
+      hits: 21,
+    },
+    {
+      title: 'Vurderingsressurs',
+      value: 'contentTypeFilter:5',
+      hits: 21,
+    },
+    {
+      title: 'Delte ressurser',
+      value: 'contentTypeFilter:6',
+      hits: 21,
+    },
+  ],
+  contentFilter: [
+    {
+      title: 'Tilleggstoff',
+      additional: true,
+      value: 'contentFilter:1',
+      hits: 46,
+    },
+    {
+      title: 'Kjernestoff',
+      value: 'contentFilter:2',
+      hits: 102,
+    },
+  ],
+  languageFilter: [
+    {
+      title: 'Bokmål',
+      value: 'languageFilter:1',
+      hits: 73,
+    },
+    {
+      title: 'Nynorsk',
+      value: 'languageFilter:2',
+      hits: 39,
+    },
+    {
+      title: 'Engelsk',
+      value: 'languageFilter:3',
+      hits: 5,
+    },
+    {
+      title: 'Kinesisk',
+      value: 'languageFilter:4',
+      hits: 0,
+    },
+  ],
+  createdByFilter: [
+    {
+      title: 'Ndla',
+      value: 'createdByFilter:1',
+      hits: 123,
+    },
+    {
+      title: 'Andre',
+      value: 'createdByFilter:2',
+      hits: 44,
+    },
+  ],
+};

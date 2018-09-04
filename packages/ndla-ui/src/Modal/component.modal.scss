@@ -183,9 +183,19 @@
     }
   }
   &__body {
+    &--slide-in-left {
+      animation-name: fadeInLeft;
+      animation-duration: 500ms;
+    }
     padding: $spacing $spacing $spacing--large $spacing;
     &--no-padding {
       padding: 0 !important;
+    }
+    &--no-side-padding-mobile {
+      @include mq($until: mobileWide) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
     }
     h2 {
       margin: $spacing--large 0 0;

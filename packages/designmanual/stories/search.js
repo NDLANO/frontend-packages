@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { PageContainer, Content, OneColumn } from 'ndla-ui';
 
-import { MastheadWithTopicMenu } from './molecules/mastheads';
+import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
 import SearchPageExample from './pages/SearchPageExample';
 

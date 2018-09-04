@@ -16,14 +16,16 @@ import {
   ExternalLearningResourcesBadge,
   TasksAndActivitiesBadge,
   Image,
-  Button,
 } from 'ndla-ui';
+
+import { injectT } from 'ndla-i18n';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 
 import {
   searchTabOptions,
   searchTabFilterOptions,
+  searchFilterOptions,
 } from '../../dummydata/index';
 
 const results = [
@@ -71,7 +73,7 @@ const results = [
       },
       {
         url: '#2',
-        title: 'Medieuttrykk og mediesamfunn',
+        title: 'Medieuttrykk og mediesamfunnet',
       },
       {
         url: '#3',
@@ -125,17 +127,36 @@ const results = [
   },
 ];
 
+const getActiveFilters = (filterName, fromOptions, currentState) => {
+  if (currentState.length) {
+    return currentState.map(value => {
+      const activeFilter = fromOptions.find(option => option.value === value);
+      activeFilter.filterName = filterName;
+      return activeFilter;
+    });
+  }
+  return [];
+};
+
 class SearchPageExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentTab: 'all',
       competenceGoalsOpen: false,
-      exampleSubjectFilterValues: ['value'],
+      filter_subjects: ['subjects:medieuttrykk_og_mediesamfunnet'],
+      filter_subject_values: {
+        'subjects:medieuttrykk_og_mediesamfunnet': [],
+      },
+      filter_contentFilter: [],
+      filter_contentTypeFilter: [],
+      filter_languageFilter: [],
+      filter_createdByFilter: [],
     };
   }
 
   render() {
+    const { t } = this.props;
     const { currentTab } = this.state;
     const currentResult =
       currentTab === 'all'
@@ -151,7 +172,7 @@ class SearchPageExample extends Component {
             role: 'Stilling / rolle',
             phone: '+47 123 45 678',
             email: 'cecilie@ndla.no',
-            readmoreLabel: 'Les om Cecilie',
+            readmoreLabel: t('article.urlAuthorLabel', { name: 'Cecilie' }),
           }}
           url="/?selectedKind=Sidevisninger&selectedStory=Forfatter%20sidemal&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
           image="http://www.placehold.it/300x300"
@@ -161,7 +182,7 @@ class SearchPageExample extends Component {
     const contextFilter = searchTabFilterOptions[currentTab] ? (
       <SearchFilter
         contextFilter
-        label="Egenskaper"
+        label={t('searchPage.abilities')}
         options={searchTabFilterOptions[currentTab]}
         values={['value']}
       />
@@ -171,6 +192,52 @@ class SearchPageExample extends Component {
       evt.preventDefault();
     };
 
+    const activeSubjectFilters = searchFilterOptions.subjects.filter(option =>
+      this.state.filter_subjects.includes(option.value),
+    );
+
+    const activeSubjects = [].concat(
+      ...this.state.filter_subjects.map(subjectKey =>
+        searchFilterOptions.subjects
+          .find(option => option.value === subjectKey)
+          .subjectFilters.filter(
+            subjectFilter =>
+              this.state.filter_subject_values[subjectKey] &&
+              this.state.filter_subject_values[subjectKey].includes(
+                subjectFilter.value,
+              ),
+          )
+          .map(subjects => ({
+            filterName: subjectKey,
+            ...subjects,
+          })),
+      ),
+    );
+
+    const activeOtherFilters = [
+      ...activeSubjects,
+      ...getActiveFilters(
+        'filter_contentFilter',
+        searchFilterOptions.contentFilter,
+        this.state.filter_contentFilter,
+      ),
+      ...getActiveFilters(
+        'filter_contentTypeFilter',
+        searchFilterOptions.contentTypeFilter,
+        this.state.filter_contentTypeFilter,
+      ),
+      ...getActiveFilters(
+        'filter_languageFilter',
+        searchFilterOptions.languageFilter,
+        this.state.filter_languageFilter,
+      ),
+      ...getActiveFilters(
+        'filter_createdByFilter',
+        searchFilterOptions.createdByFilter,
+        this.state.filter_createdByFilter,
+      ),
+    ];
+
     const authorTablet = author('tablet');
     const authorDesktop = author('desktop');
     const hasAuthor = authorTablet !== null;
@@ -178,230 +245,159 @@ class SearchPageExample extends Component {
       ? 'Kompetansemål'
       : 'Ideskaping';
 
-    const subjectFilterOptions = [
-      {
-        title: 'Brønnteknikk',
-        value: 'value2',
-      },
-      {
-        title: 'Kinesisk',
-        value: 'value1',
-      },
-      {
-        title: 'Markedsføring og ledelse',
-        value: 'value3',
-      },
-      {
-        title: 'Medieuttrykk og mediasamfunnet',
-        value: 'value',
-      },
-      {
-        title: 'Naturbruk',
-        value: 'value4',
-      },
-    ];
-
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
         hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
-        searchFieldPlaceholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-        onSearchFieldFilterRemove={() => {}}
+        onSearchFieldFilterRemove={(value, filterName) => {
+          if (this.state[filterName]) {
+            this.setState(prevState => ({
+              [filterName]: prevState[filterName].filter(
+                option => option !== value,
+              ),
+            }));
+          } else {
+            this.setState(prevState => {
+              const currentFilterSubjects = prevState.filter_subject_values;
+              currentFilterSubjects[filterName] = currentFilterSubjects[
+                filterName
+              ].filter(option => option !== value);
+              return {
+                filter_subject_values: currentFilterSubjects,
+              };
+            });
+          }
+        }}
         onSearch={onSearch}
-        searchFieldFilters={
-          hasAuthor
-            ? null
-            : [
-                {
-                  value: 'value',
-                  title: 'Medieuttrykk og mediesamfunn',
-                },
-              ]
-        }
-        activeFilters={
-          hasAuthor
-            ? null
-            : [
-                {
-                  value: 'value',
-                  title: 'Medieuttrykk og mediesamfunn',
-                  filterName: 'subject',
-                },
-                {
-                  value: 'value2',
-                  title: 'Kjernestoff',
-                  filterName: 'content',
-                },
-              ]
-        }
+        searchFieldFilters={activeSubjectFilters}
+        activeFilters={activeSubjectFilters.concat(activeOtherFilters)}
         author={authorTablet}
-        onActiveFilterRemove={() => {}}
         messages={{
-          filterHeading: 'Filter',
           resultHeading: hasAuthor
-            ? '37 artikler skrevet av Cecilie'
-            : '43 treff i Ndla',
+            ? t('searchPage.searchPageMessages.resultHeadingByAuthor', {
+                totalCount: 37,
+                author: 'Cecilie',
+              })
+            : t('searchPage.searchPageMessages.resultHeading', {
+                totalCount: 43,
+              }),
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
-          searchFieldTitle: 'Søk',
         }}
         resourceToLinkProps={() => {}}
         filters={
           <Fragment>
             <SearchFilter
-              label="Fag:"
-              noFilterSelectedLabel="Ingen filter valgt"
-              options={
-                subjectFilterOptions.filter(
-                  option =>
-                    this.state.exampleSubjectFilterValues.indexOf(
-                      option.value,
-                    ) !== -1,
-                )
-                /*
-                  Note: We only pass along selected options to this component!
-                */
-              }
+              label={t('searchPage.label.subjects')}
+              noFilterSelectedLabel={t('searchPage.label.noFilter')}
+              options={searchFilterOptions.subjects.filter(option =>
+                this.state.filter_subjects.includes(option.value),
+              )}
               onChange={values => {
-                this.setState({ exampleSubjectFilterValues: values });
+                this.setState({ filter_subjects: values });
               }}
-              values={this.state.exampleSubjectFilterValues}>
+              values={this.state.filter_subjects}>
               <SearchPopoverFilter
                 messages={{
-                  backButton: 'Tilbake til filter',
-                  filterLabel: 'Velg fag',
-                  closeButton: 'Lukk',
-                  confirmButton: 'Oppdater filter',
-                  hasValuesButtonText: 'Flere fag',
-                  noValuesButtonText: 'Filtrer på fag',
+                  backButton: t('searchPage.searchFilterMessages.backButton'),
+                  filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
+                  closeButton: t('searchPage.searchFilterMessages.closeFilter'),
+                  confirmButton: t(
+                    'searchPage.searchFilterMessages.confirmButton',
+                  ),
+                  hasValuesButtonText: t(
+                    'searchPage.searchFilterMessages.hasValuesButtonText',
+                  ),
+                  noValuesButtonText: t(
+                    'searchPage.searchFilterMessages.noValuesButtonText',
+                  ),
                 }}
-                options={subjectFilterOptions}
-                values={this.state.exampleSubjectFilterValues}
+                options={searchFilterOptions.subjects}
+                values={this.state.filter_subjects}
                 onChange={values => {
-                  this.setState({ exampleSubjectFilterValues: values });
+                  this.setState({ filter_subjects: values });
                 }}
               />
             </SearchFilter>
+            {this.state.filter_subjects.map(subjectValue => {
+              const subjectOption = searchFilterOptions.subjects.find(
+                option => option.value === subjectValue,
+              );
+              return (
+                <SearchFilter
+                  key={subjectValue}
+                  label={`${subjectOption.title}:`}
+                  options={subjectOption.subjectFilters}
+                  values={this.state.filter_subject_values[subjectValue]}
+                  onChange={values => {
+                    this.setState(prevState => {
+                      const newValues = prevState.filter_subject_values;
+                      newValues[subjectValue] = values;
+                      return {
+                        filter_subject_values: newValues,
+                      };
+                    });
+                  }}
+                />
+              );
+            })}
             <SearchFilter
-              label="Medieuttrykk og mediasamfunnet:"
-              options={[
-                {
-                  title: 'Medieuttrykk',
-                  value: 'value',
-                },
-                {
-                  title: 'Mediesamfunnet',
-                  value: 'value1',
-                },
-                {
-                  title: 'VG1',
-                  value: 'value2',
-                },
-                {
-                  title: 'VG2',
-                  value: 'value3',
-                },
-                {
-                  title: 'VG3',
-                  value: 'value4',
-                },
-              ]}
-              values={[]}
-            />
-            <SearchFilter
-              label="Innholdstype:"
+              label={t('searchPage.label.contentTypes')}
               narrowScreenOnly
               defaultVisibleCount={2}
-              showLabel="Flere innholdstyper"
-              hideLabel="Færre innholdstyper"
-              options={[
-                {
-                  title: 'Emne',
-                  value: 'SUBJECT',
-                },
-                {
-                  title: 'Læringssti',
-                  value: 'LEARNING_PATH',
-                },
-                {
-                  title: 'Fagstoff',
-                  value: 'SUBJECT_MATERIAL',
-                },
-                {
-                  title: 'Oppgaver og aktiviteter',
-                  value: 'TASKS_AND_ACTIVITIES',
-                },
-              ]}
-              values={['LEARNING_PATH']}
+              showLabel={t('searchPage.showLabel.contentTypes')}
+              hideLabel={t('searchPage.hideLabel.contentTypes')}
+              options={searchFilterOptions.contentTypeFilter}
+              values={this.state.filter_contentTypeFilter}
+              onChange={values => {
+                this.setState({ filter_contentTypeFilter: values });
+              }}
             />
             <SearchFilter
-              label="Innhold:"
-              options={[
-                {
-                  title: 'Tilleggstoff',
-                  value: 'additional',
-                  icon: Additional,
-                },
-                {
-                  title: 'Kjernestoff',
-                  value: 'core',
-                  icon: Core,
-                },
-              ]}
-              values={['additional']}
+              label={t('searchPage.label.content')}
+              options={searchFilterOptions.contentFilter.map(option => ({
+                title: option.title,
+                value: option.value,
+                icon: option.additional ? Additional : Core,
+              }))}
+              values={this.state.filter_contentFilter}
+              onChange={values => {
+                this.setState({ filter_contentFilter: values });
+              }}
             />
             <SearchFilter
-              label="Språk:"
-              options={[
-                {
-                  title: 'Bokmål',
-                  value: 'nb',
-                },
-                {
-                  title: 'Nynorsk',
-                  value: 'nn',
-                },
-                {
-                  title: 'Engelsk',
-                  value: 'en',
-                },
-                {
-                  title: 'Kinesisk',
-                  value: 'cn',
-                },
-              ]}
-              values={['nb']}
+              label={t('searchPage.label.language-filter')}
+              options={searchFilterOptions.languageFilter}
               defaultVisibleCount={2}
-              showLabel="Flere språk"
-              hideLabel="Færre språk"
+              showLabel={t('searchPage.showLabel.language-filter')}
+              hideLabel={t('searchPage.hideLabel.language-filter')}
+              values={this.state.filter_languageFilter}
+              onChange={values => {
+                this.setState({ filter_languageFilter: values });
+              }}
             />
             <SearchFilter
-              label="Laget av:"
-              options={[
-                {
-                  title: 'Ndla',
-                  value: 'ndla',
-                },
-                {
-                  title: 'Andre',
-                  value: 'other',
-                },
-              ]}
-              values={['ndla']}
+              label={t('searchPage.label.createdBy')}
+              options={searchFilterOptions.createdByFilter}
+              values={this.state.filter_createdByFilter}
+              onChange={values => {
+                this.setState({ filter_createdByFilter: values });
+              }}
             />
-            <Button outline>Vis flere filter</Button>
           </Fragment>
         }>
         <SearchResult
           author={authorDesktop}
           messages={{
-            searchStringLabel: 'Du søkte på:',
-            subHeading: '43 treff i Ndla',
+            searchStringLabel: t(
+              'searchPage.searchResultMessages.searchStringLabel',
+            ),
+            subHeading: t('searchPage.searchPageMessages.resultHeading', {
+              totalCount: 43,
+            }),
             openCompetenceGoalsButtonPrefix: '1 av',
             openCompetenceGoalsButton:
               '16 kompetansemål i medieuttrykk- og mediesamfunnet',
-            closeCompetenceGoalsLabel: 'Lukk kompetansemål',
-            dropdownBtnLabel: 'Flere innholdstyper',
           }}
           currentCompetenceGoal={
             this.props.competenceGoals
@@ -428,16 +424,7 @@ class SearchPageExample extends Component {
           }}
           currentTab={currentTab}>
           {contextFilter}
-          <SearchResultList
-            messages={{
-              subjectsLabel: 'Åpne i fag:',
-              noResultHeading: 'Hmm, ikke noe innhold ...',
-              noResultDescription:
-                'Vi har dessverre ikke noe å tilby her. Hvis du vil foreslå noe innhold til dette området, kan du bruke Spør NDLA som du finner nede til høyre på skjermen.',
-              additionalContentToolip: 'Tilleggsstoff',
-            }}
-            results={currentResult}
-          />
+          <SearchResultList results={currentResult} />
         </SearchResult>
       </SearchPage>
     );
@@ -447,6 +434,7 @@ class SearchPageExample extends Component {
 SearchPageExample.propTypes = {
   showAuthor: PropTypes.bool,
   competenceGoals: PropTypes.bool,
+  t: PropTypes.func.isRequired,
 };
 
 SearchPageExample.defaultProps = {
@@ -454,4 +442,4 @@ SearchPageExample.defaultProps = {
   competenceGoals: false,
 };
 
-export default SearchPageExample;
+export default injectT(SearchPageExample);

@@ -26,7 +26,7 @@ import {
 } from 'ndla-ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
-import { MastheadWithTopicMenu } from '../molecules/mastheads';
+import MastheadWithTopicMenu from '../molecules/mastheads';
 import Subject, { SubjectWithTwoColumn } from './Subject';
 
 import FooterExample from '../molecules/footers';

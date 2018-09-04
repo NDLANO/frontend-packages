@@ -1,5 +1,9 @@
 .c-search-filter {
-  background: $white;
+  @include mq(mobileWide) {
+    + .c-search-filter {
+      margin-top: $spacing--medium;
+    }
+  }
   width: 100%;
   text-align: left;
 
@@ -10,6 +14,8 @@
   }
 
   @include mq(desktop) {
+    padding: $spacing;
+    background: $white;
     border: none;
     margin-bottom: $spacing--small;
   }
@@ -23,5 +29,9 @@
     .c-filter__list {
       border-top: 0;
     }
+  }
+
+  @include mq($until: mobileWide) {
+    margin-bottom: $spacing;
   }
 }

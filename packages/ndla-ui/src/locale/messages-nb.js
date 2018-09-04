@@ -6,6 +6,10 @@
  *
  */
 
+import { constants } from 'ndla-ui';
+
+const { contentTypes } = constants;
+
 const titleTemplate = ' - NDLA';
 
 const messages = {
@@ -39,11 +43,13 @@ const messages = {
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgaver og aktiviteter eller læringsstier',
     label: {
-      contentTypes: 'Innholdstyper',
-      levels: 'Nivå',
-      'language-filter': 'Språk',
-      subjects: 'Fag',
+      content: 'Innhold:',
+      contentTypes: 'Innholdstyper:',
+      levels: 'Nivå:',
+      'language-filter': 'Språk:',
+      subjects: 'Fag:',
       noFilter: 'Ingen filter valgt',
+      createdBy: 'Laget av:',
     },
     showLabel: {
       contentTypes: 'Flere innholdstyper',
@@ -77,6 +83,7 @@ const messages = {
     searchPageMessages: {
       filterHeading: 'Filter',
       resultHeading: '{totalCount} treff i NDLA',
+      resultHeadingByAuthor: '{totalCount} artikler skrevet av {author}',
       narrowScreenFilterHeading: '{totalCount} treff på «{query}»',
       dropdownBtnLabel: 'Flere innholdstyper',
     },
@@ -85,7 +92,9 @@ const messages = {
       filterLabel: 'Velg fag',
       confirmButton: 'Oppdater filter',
       hasValuesButtonText: 'Flere fag',
-      noValuesButtonText: 'Velg fag',
+      noValuesButtonText: 'Filtrer på fag',
+      useFilter: 'Bruk filter',
+      closeFilter: 'Lukk filter',
     },
   },
   subjectPage: {
@@ -184,11 +193,29 @@ const messages = {
       subjectOverview: 'Alle fag',
       title: 'Meny',
       subjectPage: 'Fagforside',
+      openFilter: 'Filter',
+      useFilter: 'Bruk filter',
+      closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      contentTypeResultsShowMore: 'Vis mer',
-      contentTypeResultsShowLess: 'Vis mindre',
-      contentTypeResultsNoHit: 'Ingen treff',
+      additionalFilterLabel: 'Vis tilleggsressurser',
+      contentTypeResultsShowMore: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Vis mer fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]:
+          'Vis flere oppgaver og aktiviteter',
+        [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
+      },
+      contentTypeResultsShowLess: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]:
+          'Vis færre oppgaver og aktiviteter',
+        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
+      },
+      contentTypeResultsNoHit: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'Ingen oppgaver',
+        [contentTypes.LEARNING_PATH]: 'Ingen læringsstier',
+      },
     },
   },
   logo: {
@@ -229,6 +256,14 @@ const messages = {
     multipleAuthorsLabel: 'Opphavsmenn',
     multipleAuthorsExplanation:
       'Denne artikkelen er laget av flere opphavsmenn',
+  },
+  competenceGoals: {
+    closeCompetenceGoals: 'Lukk kompetansemål',
+    showCompetenceGoals: 'Vis kompetansemål',
+    openCompentenceGoalsFilter: 'Filtrer kompetansemål',
+    useCompentenceGoalsFilter: 'Bruk filter',
+    closeCompentenceGoalsFilter: 'Lukk filter',
+    competenceGoalsNarrowBackButton: 'Tilbake',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

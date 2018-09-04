@@ -6,6 +6,10 @@
  *
  */
 
+import { constants } from 'ndla-ui';
+
+const { contentTypes } = constants;
+
 const titleTemplate = ' - NDLA';
 
 const messages = {
@@ -40,11 +44,13 @@ const messages = {
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
     label: {
-      contentTypes: 'Innhaldstypar',
-      levels: 'Nivå',
-      'language-filter': 'Språk',
+      content: 'Innhald:',
+      contentTypes: 'Innhaldstypar:',
+      levels: 'Nivå:',
+      'language-filter': 'Språk:',
+      subjects: 'Fag:',
       noFilter: 'Ingen filter valde',
-      subjects: 'Fag',
+      createdBy: 'Laga av:',
     },
     showLabel: {
       contentTypes: 'Fleire innhaldstypar',
@@ -78,6 +84,7 @@ const messages = {
     searchPageMessages: {
       filterHeading: 'Filter',
       resultHeading: '{totalCount} treff i NDLA',
+      resultHeadingByAuthor: '{totalCount} artiklar skrevet av {author}',
       narrowScreenFilterHeading: '{totalCount} treff på «{query}»',
       dropdownBtnLabel: 'Fleire innhaldstypar',
     },
@@ -86,7 +93,9 @@ const messages = {
       filterLabel: 'Vel fag',
       confirmButton: 'Oppdater filter',
       hasValuesButtonText: 'Fleire fag',
-      noValuesButtonText: 'Vel fag',
+      noValuesButtonText: 'Filtrer på fag',
+      useFilter: 'Bruk filter',
+      closeFilter: 'Lukk filter',
     },
   },
   subjectPage: {
@@ -185,11 +194,29 @@ const messages = {
       subjectOverview: 'Alle fag',
       title: 'Meny',
       subjectPage: 'Fagforside',
+      openFilter: 'Filter',
+      useFilter: 'Bruk filter',
+      closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      contentTypeResultsShowMore: 'Vis mer',
-      contentTypeResultsShowLess: 'Vis mindre',
-      contentTypeResultsNoHit: 'Ingen treff',
+      additionalFilterLabel: 'Vis tilleggsressursar',
+      contentTypeResultsShowMore: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]:
+          'Vis fleire oppgåver og aktivitetar',
+        [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
+      },
+      contentTypeResultsShowLess: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]:
+          'Vis færre oppgåver og aktivitetar',
+        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
+      },
+      contentTypeResultsNoHit: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'Ingen oppgåver',
+        [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
+      },
     },
   },
   logo: {
@@ -225,11 +252,19 @@ const messages = {
     closeLabel: 'Lukk',
     useContent: 'Bruk innhald',
     additionalLabel: 'Tilleggsstoff',
-    urlContributionsLabel: '*Sjå kva {name} har bidratt med',
-    urlAuthorLabel: '*Les meir om {name}',
-    multipleAuthorsLabel: '*Opphavsmenn',
+    urlContributionsLabel: 'Sjå kva {name} har bidratt med',
+    urlAuthorLabel: 'Les meir om {name}',
+    multipleAuthorsLabel: 'Opphavsmenn',
     multipleAuthorsExplanation:
-      '*Denne artikkelen er laga av fleire opphavsmenn',
+      'Denne artikkelen er laga av fleire opphavsmenn',
+  },
+  competenceGoals: {
+    closeCompetenceGoals: 'Lukk kompetansemål',
+    showCompetenceGoals: 'Vis kompetansemål',
+    openCompentenceGoalsFilter: 'Filtrer kompetansemål',
+    useCompentenceGoalsFilter: 'Bruk filter',
+    closeCompentenceGoalsFilter: 'Lukk filter',
+    competenceGoalsNarrowBackButton: 'Tilbake',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

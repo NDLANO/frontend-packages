@@ -222,6 +222,7 @@ export const topicMenu = [
         name: 'Produksjonsutstyr og HMS',
         contentUri: null,
         contentTypeResults,
+        additional: true,
       },
       {
         id: 'urn:topic:170364',
@@ -249,6 +250,7 @@ export const topicMenu = [
       },
     ],
     contentUri: null,
+    additional: true,
   },
   {
     id: 'urn:topic:172532',

@@ -281,7 +281,7 @@ export const SubjectWithTwoColumn = () => (
         },
       ]}
     />
-    <OneColumn noPadding>
+    <OneColumn wide>
       <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage
@@ -397,7 +397,7 @@ export const SubjectLanguage = () => (
         },
       ]}
     />
-    <OneColumn noPadding>
+    <OneColumn wide>
       <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage
@@ -480,14 +480,6 @@ export const SubjectLanguage = () => (
           />
         </SubjectChildContent>
       </SubjectContent>
-    </OneColumn>
-    <OneColumn noPadding>
-      <SubjectChildContent>
-        <SubjectFlexWrapper>
-          <SubjectFlexChild>{subjectArchive()}</SubjectFlexChild>
-          <SubjectFlexChild>{subjectAbout()}</SubjectFlexChild>
-        </SubjectFlexWrapper>
-      </SubjectChildContent>
     </OneColumn>
     <SubjectCarousel
       wideScreen

@@ -48,6 +48,7 @@ $subject-section-padding: 100px;
       flex-flow: column;
 
       & > *:first-child {
+        margin-bottom: $spacing--large;
         @include mq(tablet) {
           margin-right: 0;
           margin-bottom: $subject-section-padding;
@@ -180,6 +181,9 @@ $subject-section-padding: 100px;
     margin: $spacing--small 0;
   }
   .c-topic-introduction__item {
+    @include mq(tablet) {
+      padding-right: $spacing--large;
+    }
     &:last-child, &:nth-last-child(2):nth-child(even) {
       border-bottom: 0;
     }

@@ -226,9 +226,13 @@ const messages = {
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
-    multipleAuthorsLabel: 'Opphavsmenn',
+    multipleAuthorsLabelAbbreviation: 'm. fl.',
+    multipleAuthorsLabel: 'Opphavere',
+    multipleAuthorsLabelAria: 'Opphavere av artikkelen er {names}',
+    multipleAuthorsLabelAriaConjunction: 'og',
+    singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
     multipleAuthorsExplanation:
-      'Denne artikkelen er laget av flere opphavsmenn',
+      'Denne artikkelen er laget av:',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

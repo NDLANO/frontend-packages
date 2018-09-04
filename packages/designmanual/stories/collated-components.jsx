@@ -57,9 +57,11 @@ storiesOf('Sammensatte moduler', module)
         authors={[
           {
             name: 'Cecilie Isaksen Eftedal',
+            role: 'Forfatter',
           },
           {
             name: 'Pål Frønsdal',
+            role: 'Forfatter',
           },
         ]}
         updated="21.06.2018"

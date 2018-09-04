@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from 'ndla-icons/common';
+import { injectT } from 'ndla-i18n';
 
 import SafeLink from '../common/SafeLink';
 
@@ -21,25 +22,17 @@ import { ContentTypeResultShape } from '../shapes';
 const classes = new BEMHelper('c-search-field');
 
 const messagesShape = PropTypes.shape({
-  searchFieldTitle: PropTypes.string.isRequired,
-
   // required if search result
   searchResultHeading: PropTypes.string,
-  allResultButtonText: PropTypes.string,
   contentTypeResultShowMoreLabel: PropTypes.string,
   contentTypeResultShowLessLabel: PropTypes.string,
   contentTypeResultNoHit: PropTypes.string,
 });
 
-const SearchResult = ({
-  result,
-  messages,
-  allResultUrl,
-  resourceToLinkProps,
-}) => (
+const SearchResult = ({ result, allResultUrl, resourceToLinkProps, t }) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
-      {messages.searchResultHeading}
+      {t('searchPage.searchField.searchResultHeading')}
     </h1>
     <div {...classes('search-result-content')}>
       {result.map(contentTypeResult => (
@@ -48,15 +41,21 @@ const SearchResult = ({
           resourceToLinkProps={resourceToLinkProps}
           key={contentTypeResult.title}
           messages={{
-            allResultLabel: messages.contentTypeResultShowMoreLabel,
-            showLessResultLabel: messages.contentTypeResultShowLessLabel,
-            noHit: messages.contentTypeResultNoHit,
+            allResultLabel: t(
+              'searchPage.searchField.contentTypeResultShowMoreLabel',
+            ),
+            showLessResultLabel: t(
+              'searchPage.searchField.contentTypeResultShowLessLabel',
+            ),
+            noHit: t('searchPage.searchField.contentTypeResultNoHit'),
           }}
         />
       ))}
     </div>
     <div {...classes('go-to-search')}>
-      <SafeLink to={allResultUrl}>{messages.allResultButtonText}</SafeLink>
+      <SafeLink to={allResultUrl}>
+        {t('searchPage.searchField.allResultButtonText')}
+      </SafeLink>
     </div>
   </section>
 );
@@ -64,16 +63,32 @@ const SearchResult = ({
 SearchResult.propTypes = {
   result: PropTypes.arrayOf(ContentTypeResultShape),
   resourceToLinkProps: PropTypes.func.isRequired,
-  messages: messagesShape.isRequired,
   allResultUrl: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 class SearchField extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      inputHasFocus: false,
+    };
     this.inputRef = null;
     this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
+    this.onInputBlur = this.onInputBlur.bind(this);
+    this.onInputFocus = this.onInputFocus.bind(this);
+  }
+
+  onInputBlur() {
+    this.setState({
+      inputHasFocus: false,
+    });
+  }
+
+  onInputFocus() {
+    this.setState({
+      inputHasFocus: true,
+    });
   }
 
   handleOnFilterRemove(value, filterName) {
@@ -92,6 +107,7 @@ class SearchField extends Component {
       allResultUrl,
       onSearch,
       resourceToLinkProps,
+      t,
     } = this.props;
 
     const modifiers = [];
@@ -106,10 +122,10 @@ class SearchField extends Component {
       searchResultView = (
         <SearchResult
           result={searchResult}
-          messages={messages}
           searchString={value}
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
+          t={t}
         />
       );
     }
@@ -118,40 +134,47 @@ class SearchField extends Component {
       modifiers.push('has-filter');
     }
 
+    if (this.state.inputHasFocus) {
+      modifiers.push('input-has-focus');
+    }
     return (
-      <form {...classes('', modifiers)} onSubmit={onSearch}>
-        <input
-          ref={ref => {
-            this.inputRef = ref;
-          }}
-          title={messages.searchFieldTitle}
-          type="search"
-          {...classes('input')}
-          aria-autocomplete="list"
-          autoComplete="off"
-          id="search"
-          name="search"
-          placeholder={placeholder}
-          aria-label={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-        <div {...classes('filters')}>
-          {filters &&
-            filters.length > 0 && (
-              <ActiveFilters
-                filters={filters}
-                onFilterRemove={this.handleOnFilterRemove}
-              />
-            )}
+      <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
+        <div {...classes('input-wrapper')}>
+          <input
+            ref={ref => {
+              this.inputRef = ref;
+            }}
+            title={messages.searchFieldTitle}
+            type="search"
+            {...classes('input')}
+            aria-autocomplete="list"
+            autoComplete="off"
+            id="search"
+            name="search"
+            placeholder={placeholder}
+            aria-label={placeholder}
+            value={value}
+            onChange={onChange}
+            onBlur={this.onInputBlur}
+            onFocus={this.onInputFocus}
+          />
+          <div {...classes('filters')}>
+            {filters &&
+              filters.length > 0 && (
+                <ActiveFilters
+                  filters={filters}
+                  onFilterRemove={this.handleOnFilterRemove}
+                />
+              )}
+          </div>
+          <button
+            tabIndex="-1"
+            {...classes('button')}
+            type="submit"
+            value="Search">
+            <SearchIcon />
+          </button>
         </div>
-        <button
-          tabIndex="-1"
-          {...classes('button')}
-          type="submit"
-          value="Search">
-          <SearchIcon />
-        </button>
         {searchResultView}
       </form>
     );
@@ -174,6 +197,7 @@ SearchField.propTypes = {
   allResultUrl: PropTypes.string,
   resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
+  t: PropTypes.func.isRequired,
 };
 
-export default SearchField;
+export default injectT(SearchField);

@@ -4,6 +4,7 @@
   padding: 0;
   flex-direction: column;
   align-items: stretch;
+  flex-wrap: wrap;
 
   @include mq(desktop) {
     flex-direction: row;
@@ -11,7 +12,6 @@
   }
 
   li {
-    margin-bottom: 0;
     list-style: none;
     display: flex;
     margin-bottom: $spacing--small/2;
@@ -22,7 +22,6 @@
 
     &:last-child {
       margin-right: 0;
-      margin-bottom: 0;
     }
   }
 
@@ -49,6 +48,7 @@
     }
 
     span {
+      white-space: nowrap;
       padding-right: $spacing--small;
     }
   }

@@ -140,7 +140,6 @@ export const Article = ({
           <ArticleIntroduction>{introduction}</ArticleIntroduction>
           <ArticleByline
             {...{
-              messages,
               authors,
               updated,
               license,
@@ -173,11 +172,6 @@ Article.propTypes = {
   competenceGoalsNarrow: PropTypes.node,
   children: PropTypes.node,
   messages: PropTypes.shape({
-    edition: PropTypes.string.isRequired,
-    publisher: PropTypes.string.isRequired,
-    lastUpdated: PropTypes.string.isRequired,
-    authorLabel: PropTypes.string.isRequired,
-    authorDescription: PropTypes.string.isRequired,
     label: PropTypes.string,
   }).isRequired,
 };

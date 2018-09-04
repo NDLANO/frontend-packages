@@ -6,6 +6,10 @@
  *
  */
 
+import { constants } from 'ndla-ui';
+
+const { contentTypes } = constants;
+
 const titleTemplate = ' - NDLA';
 
 const messages = {
@@ -38,19 +42,21 @@ const messages = {
     abilities: 'Abilities',
     search: 'Search',
     searchFieldPlaceholder:
-      'Search for subjets, tasks and activities or learningpaths',
+      'Search for subjects, tasks and activities or learningpaths',
     label: {
+      content: 'Content:',
       contentTypes: 'Content types',
       levels: 'Level',
       'language-filter': 'Language',
-      subjects: 'Subjets',
+      subjects: 'Subjects',
+      noFilter: 'No filter selected',
+      createdBy: 'Created by:',
     },
     showLabel: {
       contentTypes: 'More content types',
       levels: 'More levels',
       'language-filter': 'More languages',
       subjects: 'Change subject',
-      noFilter: 'No filter choosen',
     },
     hideLabel: {
       contentTypes: 'Hide content types',
@@ -78,6 +84,7 @@ const messages = {
     searchPageMessages: {
       filterHeading: 'Filter',
       resultHeading: '{totalCount} hits in NDLA',
+      resultHeadingByAuthor: '{totalCount} articles written by {author}',
       narrowScreenFilterHeading: '{totalCount} hits on «{query}»',
       dropdownBtnLabel: 'More content types',
     },
@@ -86,7 +93,9 @@ const messages = {
       filterLabel: 'Chose subjects',
       confirmButton: 'Refresh filter',
       hasValuesButtonText: 'More subjects',
-      noValuesButtonText: 'Pick subject',
+      noValuesButtonText: 'Filter by subjects',
+      useFilter: 'Use filter',
+      closeFilter: 'Close filter',
     },
   },
 
@@ -148,7 +157,7 @@ const messages = {
     socialMedia: {
       heading: 'Follow us',
       description:
-        'NDLA has several Facebook- and Twitter accounts. Find the one that suits you, and follow us!',
+        'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },
@@ -186,11 +195,27 @@ const messages = {
       subjectOverview: 'All subjects',
       title: 'Menu',
       subjectPage: 'Subject front page',
+      openFilter: 'Filter',
+      useFilter: 'Use filter',
+      closeFilter: 'Close filter',
       learningResourcesHeading: 'Educational Resources',
       back: 'Back',
-      contentTypeResultsShowMore: 'Show more',
-      contentTypeResultsShowLess: 'Show Less',
-      contentTypeResultsNoHit: 'No hits',
+      additionalFilterLabel: 'Show addition resources',
+      contentTypeResultsShowMore: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Show more subjects',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'Show more tasks and activities',
+        [contentTypes.LEARNING_PATH]: 'Vis flere learningpaths',
+      },
+      contentTypeResultsShowLess: {
+        [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'Show less tasks and activities',
+        [contentTypes.LEARNING_PATH]: 'Show less learningpaths',
+      },
+      contentTypeResultsNoHit: {
+        [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'No tasks and activities',
+        [contentTypes.LEARNING_PATH]: 'No learningpaths',
+      },
     },
   },
   logo: {
@@ -229,6 +254,18 @@ const messages = {
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',
+    urlContributionsLabel: 'See {name}`s contributions',
+    urlAuthorLabel: 'Read more about {name}',
+    multipleAuthorsLabel: 'Authors',
+    multipleAuthorsExplanation: 'This article has several authors',
+  },
+  competenceGoals: {
+    closeCompetenceGoals: 'Close competance goals',
+    showCompetenceGoals: 'Show competance goals',
+    openCompentenceGoalsFilter: 'Filter competence goals',
+    useCompentenceGoalsFilter: 'Use filter',
+    closeCompentenceGoalsFilter: 'Close filter',
+    competenceGoalsNarrowBackButton: 'Go back',
   },
   subject: {
     associatedTopics: 'Associated topics',
@@ -327,6 +364,9 @@ const messages = {
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
   },
+  modal: {
+    closeModal: 'Close',
+  },
   languages: {
     nb: 'Norwegian Bokmål',
     nn: 'Norwegian Nynorsk',
@@ -336,7 +376,7 @@ const messages = {
     se: 'Sami',
     es: 'Spanish',
     zh: 'Chinese',
-    unkown: 'Unkown',
+    unknown: 'Unknown',
   },
   breadcrumb: {
     toFrontpage: 'To the frontpage',

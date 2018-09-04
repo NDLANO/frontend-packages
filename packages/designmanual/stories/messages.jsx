@@ -16,12 +16,19 @@ import { Center } from './helpers';
 
 const classes = BEMHelper('c-table');
 
+const phraseApprovedClass = phrase => {
+  if (typeof phrase !== 'string' || phrase.substr(0, 1) === '*') {
+    return 'c-styleguide-table__warning-cell';
+  }
+  return '';
+};
+
 class Messages extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchText: '',
-      findNotApprovedLabels: false,
+      findNotApprovedLabels: 0,
     };
     this.onSearchChange = this.onSearchChange.bind(this);
     this.flattenedNb = formatNestedMessages(messagesNB);
@@ -37,8 +44,9 @@ class Messages extends Component {
 
   filterSearch() {
     const { findNotApprovedLabels } = this.state;
+
     const searchText = this.state.searchText.replace(
-      /([.?*+^$[\]\\(){}|-])/g,
+      /([*+^$[\]\\(){}|-])/g,
       '',
     ); // remove failing letters like '*, +'..
 
@@ -46,16 +54,18 @@ class Messages extends Component {
       ? Object.keys(this.flattenedNb)
           .filter(
             key =>
+              !this.flattenedNb[key] ||
               this.flattenedNb[key].substr(0, 1) === '*' ||
-              this.flattenedNn[key].substr(0, 1) === '*' ||
-              this.flattenedEn[key].substr(0, 1) === '*',
+              (!this.flattenedNn[key] ||
+                this.flattenedNn[key].substr(0, 1) === '*') ||
+              (!this.flattenedEn[key] ||
+                this.flattenedEn[key].substr(0, 1) === '*'),
           )
           .reduce(
             (result, key) => ({ ...result, [key]: this.flattenedNb[key] }),
             {},
           )
       : this.flattenedNb;
-
     if (searchText === '') {
       return flattened;
     }
@@ -63,11 +73,13 @@ class Messages extends Component {
     const filtered = Object.keys(flattened).filter(
       key =>
         key.search(new RegExp(searchText, 'i')) !== -1 ||
-        flattened[key].search(new RegExp(searchText, 'i')) !== -1 ||
-        flattened[key].search(new RegExp(searchText, 'i')) !== -1 ||
-        flattened[key].search(new RegExp(searchText, 'i')) !== -1,
+        (this.flattenedNb[key] &&
+          this.flattenedNb[key].search(new RegExp(searchText, 'i')) !== -1) ||
+        (this.flattenedNn[key] &&
+          this.flattenedNn[key].search(new RegExp(searchText, 'i')) !== -1) ||
+        (this.flattenedEn[key] &&
+          this.flattenedEn[key].search(new RegExp(searchText, 'i')) !== -1),
     );
-
     return filtered.reduce(
       (result, key) => ({ ...result, [key]: flattened[key] }),
       {},
@@ -80,28 +92,13 @@ class Messages extends Component {
     return Object.keys(this.filterSearch()).map(key => (
       <tr key={key}>
         <td>{key}</td>
-        <td
-          className={
-            this.flattenedNb[key].substr(0, 1) === '*'
-              ? 'c-styleguide__warning-cell'
-              : ''
-          }>
+        <td className={phraseApprovedClass(this.flattenedNb[key])}>
           {this.flattenedNb[key]}
         </td>
-        <td
-          className={
-            this.flattenedNn[key].substr(0, 1) === '*'
-              ? 'c-styleguide__warning-cell'
-              : ''
-          }>
+        <td className={phraseApprovedClass(this.flattenedNn[key])}>
           {this.flattenedNn[key]}
         </td>
-        <td
-          className={
-            this.flattenedEn[key].substr(0, 1) === '*'
-              ? 'c-styleguide__warning-cell'
-              : ''
-          }>
+        <td className={phraseApprovedClass(this.flattenedEn[key])}>
           {this.flattenedEn[key]}
         </td>
       </tr>
@@ -133,8 +130,8 @@ class Messages extends Component {
                 <div className="c-filter u-margin-top">
                   <FilterList
                     options={[
-                      { title: 'Vis alle', value: false },
-                      { title: 'Vis ikke godkjente', value: true },
+                      { title: 'Vis alle', value: 0 },
+                      { title: 'Vis ikke godkjente', value: 1 },
                     ]}
                     values={[this.state.findNotApprovedLabels]}
                     onChange={e => {

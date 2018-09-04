@@ -1,0 +1,271 @@
+/**
+** MODAL
+** Modal with dialog classes.
+**/
+
+.c-modal {
+  position: fixed;
+  z-index: 9500;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__animation-container {
+    z-index: 9001;
+    position: fixed;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 100vh;
+    // 1. Animations
+    &--zoom-in {
+      animation-name: modal-zoomIn-exit;
+      &.c-modal__animation-container--animateIn {
+        animation-name: modal-zoomIn;
+      }
+    }
+    &--slide-up {
+      animation-name: modal-slideup-exit;
+      &.c-modal__animation-container--animateIn {
+        animation-name: modal-slideup;
+      }
+    }
+    &--slide-down {
+      animation-name: modal-slidedown-exit;
+      &.c-modal__animation-container--animateIn {
+        animation-name: modal-slidedown;
+      }
+    }
+    &--subtle {
+      animation-name: fadeOut;
+      &.c-modal__animation-container--animateIn {
+        animation-name: fadeIn;
+      }
+    }
+    // 2. Modal size modifiers
+    &--fullscreen {
+      width: 100vw;
+      height: 100vh;
+    }
+    &--full-width {
+      width: 100vw;
+      height: auto;
+      box-shadow: 0 0 30px rgba($black, 0.2);
+    }
+    &--large {
+      max-width: 970px;
+      width: 970px;
+      max-height: 85vh;
+      box-shadow: 0 0 30px rgba($black, 0.2);
+      @include mq($until: 970px) {
+        box-shadow: none;
+        width: 100vw;
+        height: 100vw;
+        max-height: 100vh;
+        min-height: 100vh;
+      }
+    }
+    &--medium {
+      max-width: 790px;
+      width: 790px;
+      max-height: 85vh;
+      box-shadow: 0 0 30px rgba($black, 0.2);
+      @include mq($until: 790px) {
+        box-shadow: none;
+        height: 100vh;
+        width: 100vw;
+        min-height: 100vh;
+      }
+    }
+    &--regular {
+      @include mq($until: tablet) {
+        height: 100vh;
+        width: 100vw;
+      }
+      @include mq(tablet) {
+        box-shadow: 0 0 30px rgba($black, 0.2);
+        width: 90%;
+        max-height: 85vh;
+        max-width: 613px;
+        min-width: 613px;
+      }
+    }
+    &--medium, &--large {
+      .c-modal__body, .c-modal__header {
+        @include mq(790px) {
+          padding-left: $spacing--large;
+          padding-right: $spacing--large;
+        }
+      }
+    }
+    // 3. background modifiers
+    &--white {
+      background: #fff;
+    }
+    &--grey {
+      background: $brand-grey--lightest;
+    }
+    &--grey-dark {
+      background: $brand-grey--lighter;
+    }
+    &--blue {
+      background: $brand-color--lighter;
+    }
+  }
+  &__backdrop {
+    position: fixed;
+    z-index: 9000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(1, 1, 1, 0.3);
+    animation-name: fadeOut;
+    animation-duration: 400ms;
+    &--in {
+      animation-name: fadeIn;
+    }
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: $spacing;
+    &--no-bottom-padding {
+      padding-bottom: 0;
+    }
+    + .c-modal__body {
+      padding-top: 0;
+    }
+    &--white {
+      background: #fff;
+      + .c-modal__body {
+        padding-top: $spacing;
+      }
+    }
+    &--grey {
+      background: $brand-grey--lightest;
+      + .c-modal__body {
+        padding-top: $spacing;
+      }
+    }
+    &--grey-dark {
+      background: $brand-grey--lighter;
+      + .c-modal__body {
+        padding-top: $spacing;
+      }
+    }
+    &--blue {
+      background: $brand-color--lighter;
+      + .c-modal__body {
+        padding-top: $spacing;
+      }
+    }
+    &--left-align {
+      justify-content: flex-start;
+    }
+    &--menu {
+      padding: $spacing--small $spacing--large;
+      justify-content: space-between;
+      border-bottom: 1px solid $brand-grey--lighter;
+      @include mq($until: desktop) {
+        padding: $spacing--small $spacing;
+        .c-button {
+          display: block;
+          margin: 0;
+        }
+        .c-logo {
+          display: none;
+        }
+      }
+    }
+  }
+  &__body {
+    &--slide-in-left {
+      animation-name: fadeInLeft;
+      animation-duration: 500ms;
+    }
+    padding: $spacing $spacing $spacing--large $spacing;
+    &--no-padding {
+      padding: 0 !important;
+    }
+    &--no-side-padding-mobile {
+      @include mq($until: mobileWide) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+    h2 {
+      margin: $spacing--large 0 0;
+      + p {
+        margin-top: $spacing--small / 2;
+      }
+    }
+    ol {
+      padding: 0;
+      > li {
+        margin-left: $spacing--large + $spacing;
+      }
+    }
+    hr {
+      position: static;
+      border: 0;
+      height: 1px;
+      background: $brand-color--tertiary;
+      margin: 0;
+      &:before {
+        content:none
+      }
+    }
+    .c-tabs {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .c-medialist {
+      padding-right: 0;
+    }
+    .react-tabs__tab-panel--selected {
+      animation-name: fadeInLeft;
+      animation-duration: 500ms;
+    }
+  }
+  &--narrow {
+    .c-modal__header {
+      padding-bottom: 0;
+      + .c-modal__body {
+        padding-top: 0;
+      }
+    }
+    .c-modal__body {
+      padding-bottom: $spacing--medium;
+      h1 {
+        @include font-size(22px, 26px);
+        font-weight: $font-weight-semibold;
+        margin: 0 0 $spacing--small;
+        color: $brand-color;
+      }
+    }
+  }
+}
+
+.scrollFixIOS {
+  .c-modal {
+    &:not(.c-search-field__overlay-content) {
+      .c-modal__animation-container {
+        padding-top: 38px;
+      }
+    }
+  }
+
+  .c-modal__animation-container {
+    // 1. Animations
+    .c-modal__animation-container--zoom-in {
+      animation-name: FadeIn;
+      &.c-modal__animation-container--animateIn {
+        animation-name: FadeOut;
+      }
+    }
+  }
+}

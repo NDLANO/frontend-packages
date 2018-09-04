@@ -10,7 +10,7 @@ import {
   BetaNavigation,
 } from 'ndla-ui';
 
-import { MastheadWithTopicMenu } from './molecules/mastheads';
+import MastheadWithTopicMenu from './molecules/mastheads';
 import BetaNotificationExample from './molecules/BetaNotificationExample';
 
 import FooterExample from './molecules/footers';

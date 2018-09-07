@@ -101,7 +101,7 @@ export const initTableScript = () => {
       // detect if parent has c-bodybox class and add container adjustment class
       // a hacky fix for table cropped when inside a c-bodybox.
       if (el.parentNode.classList.contains('c-bodybox')) {
-        el.parentNode.classList.add('c-bodybox--contains-table')
+        el.parentNode.classList.add('c-bodybox--contains-table');
       }
     });
 

@@ -97,6 +97,12 @@ export const initTableScript = () => {
         el.classList.add('c-table__wrapper--has-scroll');
         table.addEventListener('scroll', throttledEventListner);
       }
+
+      // detect if parent has c-bodybox class and add container adjustment class
+      // a hacky fix for table cropped when inside a c-bodybox.
+      if (el.parentNode.classList.contains('c-bodybox')) {
+        el.parentNode.classList.add('c-bodybox--contains-table')
+      }
     });
 
     forEachElement('.c-table__expand-button', el =>

@@ -43,10 +43,24 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
   &__search-field-wrapper {
     padding: $spacing 0 $spacing 0;
-
     @include mq(desktop) {
-      padding: $spacing--large 0;
+      padding: $spacing--large 0 $spacing--large $spacing + $spacing--small;
       margin-left: $search-field-wrapper-margin;
+
+    }
+    .c-search-field__input-wrapper {
+      padding: 0;
+      margin: 0;
+      .c-search-field__button {
+        @include mq($from: tablet, $until: desktop) {
+          right: 2px;
+        }
+      }
+    }
+    @include mq($until: desktop) {
+      .c-active-filters {
+        display: none;
+      }
     }
   }
 
@@ -130,7 +144,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
       margin: 0;
       font-weight: 600;
       @include font-size(14px, 32px);
-      margin-bottom: $spacing--small;
+      margin-bottom: $spacing--small / 2;
 
       @include mq(desktop) {
         @include font-size(18px, 32px);

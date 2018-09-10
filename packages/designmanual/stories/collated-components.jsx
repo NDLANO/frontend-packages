@@ -25,7 +25,7 @@ import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import FigureWithLicense from './article/FigureWithLicense';
 import { topicList } from '../dummydata/index';
-import { MastheadWithLogo, MastheadWithTopicMenu } from './molecules/mastheads';
+import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
@@ -36,8 +36,10 @@ import RelatedArticleListExample, {
   RelatedArticleMixedList,
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
+import { LanguageSelector } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
+import ModalExample from './molecules/ModalExample';
 
 import Oops from '../images/oops.gif';
 
@@ -63,9 +65,6 @@ storiesOf('Sammensatte moduler', module)
         updated="21.06.2018"
         license="CC BY-SA"
         messages={{
-          lastUpdated: 'Publisert',
-          useContent: 'Bruk innhold',
-          closeLabel: 'Lukk',
           authorLabel: 'Opphavsmenn',
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
         }}
@@ -82,12 +81,7 @@ storiesOf('Sammensatte moduler', module)
         licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
         additional
         messages={{
-          lastUpdated: 'Publisert',
-          authorLabel: 'Opphavsmenn',
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-          additionalLabel: 'Tilleggsstoff',
-          useContent: 'Bruk innhold',
-          closeLabel: 'Lukk',
         }}
       />
       <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
@@ -96,10 +90,10 @@ storiesOf('Sammensatte moduler', module)
           {
             role: 'rolle',
             name: 'Cecilie Isaksen Eftedal',
+            shortName: 'Cecilie',
             urlContributions: '#',
-            urlContributionsLabel: 'Se hva Cecilie har bidratt med',
             urlAuthor: '#',
-            urlAuthorLabel: 'Les mer om Cecilie',
+            licenses: 'CC BY-SA',
             title: 'Stilling',
             phone: '+47 123 45 678',
             email: 'cecilie@ndla.no',
@@ -109,10 +103,10 @@ storiesOf('Sammensatte moduler', module)
           {
             role: 'rolle',
             name: 'Siv Mundal',
+            shortName: 'Siv',
             urlContributions: '#',
-            urlContributionsLabel: 'Se hva Siv har bidratt med',
             urlAuthor: '#',
-            urlAuthorLabel: 'Les mer om Siv',
+            licenses: 'CC BY-SA',
             title: 'Stilling',
             phone: '+47 123 45 678',
             email: 'siv.mundal@keyteq.no',
@@ -122,10 +116,10 @@ storiesOf('Sammensatte moduler', module)
           {
             role: 'rolle',
             name: 'Pål Frøsndal',
+            shortName: 'Pål',
             urlContributions: '#',
-            urlContributionsLabel: 'Se hva Pål har bidratt med',
             urlAuthor: '#',
-            urlAuthorLabel: 'Les mer om Cecilie',
+            licenses: 'CC BY-SA',
             title: 'Stilling',
             phone: '+47 123 45 678',
             email: 'paal.fronsdal@ndla.no',
@@ -138,12 +132,8 @@ storiesOf('Sammensatte moduler', module)
         licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
         additional
         messages={{
-          lastUpdated: 'Publisert',
           authorLabel: 'Opphavsmenn',
           authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-          additionalLabel: 'Tilleggsstoff',
-          useContent: 'Bruk innhold',
-          closeLabel: 'Lukk',
         }}
       />
     </Center>
@@ -184,13 +174,11 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
+        <LanguageSelector />
         <TopicIntroductionList
-          shortcutAlwaysExpanded
           toTopic={() => '#'}
-          messages={{
-            shortcutButtonText: 'Lærestoff',
-          }}
           topics={topicList}
+          toggleAdditionalCores={() => {}}
         />
       </StoryBody>
     </div>
@@ -623,6 +611,17 @@ storiesOf('Sammensatte moduler', module)
         </Translation>
         <h2 className="u-heading">Språkvelger</h2>
         <TranslationBoxExample />
+      </StoryBody>
+    </div>
+  ))
+
+  .add('Modalboks', () => (
+    <div>
+      <StoryIntro title="Modalboks">
+        <p>Some tekst</p>
+      </StoryIntro>
+      <StoryBody>
+        <ModalExample />
       </StoryBody>
     </div>
   ));

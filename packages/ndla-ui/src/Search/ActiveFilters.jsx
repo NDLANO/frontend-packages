@@ -14,10 +14,9 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
       return (
         <li key={filterKey}>
           <button
+            aria-label={`Fjern filter ${filter.filterName}`}
             type="button"
-            onClick={() => {
-              onFilterRemove(filter.value, filter.filterName);
-            }}>
+            onClick={() => onFilterRemove(filter.value, filter.filterName)}>
             <span>{filter.title}</span>
             <Cross />
           </button>

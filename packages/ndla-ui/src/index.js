@@ -64,14 +64,13 @@ export {
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { default as Pager } from './Pager';
-export { FilterList } from './Filter';
+export { FilterList, FilterListPhone } from './Filter';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
 export { default as FileList, File } from './FileList';
 
 export {
-  ToggleSearchButton,
   SearchOverlay,
   SearchField,
   SearchPage,
@@ -79,7 +78,9 @@ export {
   SearchResultAuthor,
   SearchResultList,
   SearchFilter,
+  SearchFilterWrapper,
   SearchPopoverFilter,
+  ActiveFilters,
 } from './Search';
 export {
   default as ContentTypeBadge,
@@ -99,6 +100,7 @@ export {
 } from './Layout';
 export { default as LicenseByline } from './LicenseByline';
 export { default as ClickToggle } from './common/ClickToggle';
+export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu } from './TopicMenu';
@@ -158,4 +160,13 @@ export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';
 
-export { default as Styleguide } from './Styleguide';
+export { default as messagesNB } from './locale/messages-nb';
+export { default as messagesNN } from './locale/messages-nn';
+export { default as messagesEN } from './locale/messages-en';
+
+export {
+  default as Modal,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from './Modal';

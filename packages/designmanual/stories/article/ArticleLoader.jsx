@@ -33,9 +33,7 @@ const ResourcesSubTopics = () => (
       shortcutAlwaysExpanded
       toTopic={() => '#'}
       topics={topicList}
-      messages={{
-        shortcutButtonText: 'Lærestoff',
-      }}
+      toggleAdditionalCores={() => {}}
     />
   </ResourcesWrapper>
 );
@@ -112,7 +110,6 @@ class ArticleLoader extends Component {
               article={article}
               modifier={reset ? 'clean' : ''}
               messages={{
-                lastUpdated: 'Sist oppdatert',
                 edition: 'Utgave',
                 publisher: 'Utgiver',
                 authorLabel: 'Opphavsmann',

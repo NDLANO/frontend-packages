@@ -1,12 +1,14 @@
 const yargs = require('yargs');
+const util = require('util');
+const chalk = require('chalk');
 const runSourceMapResolver = require('./index');
 
 const args = {
   options: {
-    mapFile: {
+    mapFiles: {
       alias: 'm',
-      description: 'Path to source map file',
-      type: 'string',
+      description: 'List of paths to source map files',
+      type: 'array',
     },
     errorEventFile: {
       alias: 'e',
@@ -15,18 +17,18 @@ const args = {
     },
   },
   usage:
-    'Usage: $0 --mapFile <pathToMapFile> --errorEventFile <pathToErrorEventFile>',
+    'Usage: $0 --mapFiles <pathToMapFile1> <pathToMapFile2> --errorEventFile <pathToErrorEventFile>',
   docs:
     'Documentation:\nhttps://github.com/NDLANO/frontend-packages/tree/ndla-source-map-resolver/packages/ndla-source-map-resolver',
 };
 
-function run(programArgs) {
+async function run(programArgs) {
   const { argv } = yargs(programArgs || process.argv.slice(2))
     .usage(args.usage)
     .help('h')
     .alias('help', 'h')
     .options(args.options)
-    .demandOption(['mapFile', 'errorEventFile'])
+    .demandOption(['errorEventFile'])
     .epilogue(args.docs)
     .wrap(Math.min(100, process.stdout.columns));
 
@@ -34,6 +36,12 @@ function run(programArgs) {
     yargs.showHelp();
     process.on('exit', () => process.exit(1));
   }
-  runSourceMapResolver(argv);
+
+  try {
+    await runSourceMapResolver(argv);
+  } catch (e) {
+    process.stdout.write(chalk.bold.red(util.format(e)));
+    process.on('exit', () => process.exit(1));
+  }
 }
 exports.run = run;

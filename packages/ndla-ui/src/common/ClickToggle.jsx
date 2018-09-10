@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { noScroll } from 'ndla-util';
 import elementType from 'react-prop-types/lib/elementType';
-import createFocusTrap from 'focus-trap';
+import FocusTrap from 'focus-trap-react';
 
 import Button from '../Button';
 import Dialog from '../Dialog';
@@ -23,78 +23,15 @@ export default class ClickToggle extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleOnClose = this.handleOnClose.bind(this);
-    this.focusActive = null;
-    this.containerRef = React.createRef();
-    this.focusTrap = null;
+    this.unmountTrap = this.unmountTrap.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.isOpen !== null) {
-      this.handleFocustrap(this.props.isOpen);
-    }
-  }
-
-  componentDidUpdate(nextProps) {
-    if (this.focusTrap === null) {
-      this.handleFocustrap();
-    }
-    if (this.focusTrap !== null) {
-      const useProps = nextProps.isOpen !== null;
-      if (
-        ((useProps && nextProps.isOpen !== this.props.isOpen) ||
-          this.state.isOpen) &&
-        !this.focusActive
-      ) {
-        this.focusTrap.activate();
-      } else if (
-        nextProps.isOpen !== this.props.isOpen ||
-        (!this.state.isOpen && nextProps.isOpen === null && this.focusActive)
-      ) {
-        this.focusTrap.deactivate();
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.focusTrap) {
-      this.focusTrap.deactivate();
-      this.focusTrap = null;
-      this.focusActive = false;
-    }
-  }
-
-  handleFocustrap(isActive) {
-    const target =
-      typeof this.props.children === 'function'
-        ? this.containerRef.current
-        : document.querySelector(`[data-dialog-id='${this.props.id}']`);
-    if (target) {
-      this.focusTrap = createFocusTrap(target, {
-        onActivate: () => {
-          if (!this.props.noScrollDisabled) {
-            noScroll(true, target);
-          }
-          this.focusActive = true;
-        },
-        onDeactivate: () => {
-          if (!this.props.noScrollDisabled) {
-            noScroll(false, target);
-          }
-
-          if (this.props.isOpen) {
-            this.props.onToggle(false);
-          } else if (this.state.isOpen) {
-            this.setState({
-              isOpen: false,
-            });
-          }
-          this.focusActive = false;
-        },
-        clickOutsideDeactivates: true,
-      });
-      if (isActive) {
-        this.focusTrap.activate();
-      }
+  unmountTrap() {
+    if (this.props.onToggle) {
+      this.handleOnClose();
+    } else {
+      noScroll(false);
+      this.setState({ isOpen: false });
     }
   }
 
@@ -103,8 +40,8 @@ export default class ClickToggle extends React.Component {
     const isOpen = useState ? !this.state.isOpen : !this.props.isOpen;
     if (this.props.onToggle) {
       this.props.onToggle(isOpen);
-    }
-    if (this.props.isOpen === null) {
+    } else {
+      noScroll(this.props.noScrollDisabled ? false : isOpen);
       this.setState({
         isOpen,
       });
@@ -146,9 +83,11 @@ export default class ClickToggle extends React.Component {
           onClick={this.handleClick}>
           {title}
         </Button>
-        <div
-          ref={ref => {
-            this.containerRef = ref;
+        <FocusTrap
+          active={showDialog}
+          focusTrapOptions={{
+            onDeactivate: this.unmountTrap,
+            clickOutsideDeactivates: true, // Only works when click on scrollbar
           }}>
           {useDialog &&
             (alwaysRenderChildren || showDialog) && (
@@ -168,7 +107,7 @@ export default class ClickToggle extends React.Component {
           {!useDialog &&
             (isOpen || alwaysRenderChildren) &&
             children(this.handleOnClose, isOpen)}
-        </div>
+        </FocusTrap>
       </Component>
     );
   }

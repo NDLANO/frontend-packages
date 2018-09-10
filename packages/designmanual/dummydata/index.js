@@ -21,6 +21,7 @@ import {
   contentTypeResults,
   searchTabOptions,
   searchTabFilterOptions,
+  searchFilterOptions,
 } from './mockSearch';
 
 import contentCards from './mockContentCards';
@@ -44,5 +45,6 @@ export {
   contentTypeResults,
   searchTabOptions,
   searchTabFilterOptions,
+  searchFilterOptions,
   contentCards,
 };

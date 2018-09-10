@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Tooltip, Styleguide } from 'ndla-ui';
+import { Tooltip } from 'ndla-ui';
+import ComponentInfo from '../ComponentInfo';
 
 const TooltipExample = () => (
-  <Styleguide
+  <ComponentInfo
     reactCode={`
       <Tooltip
         align="right"
@@ -33,7 +34,7 @@ const TooltipExample = () => (
       },
     ]}
     status={2}
-    messages="Sjekk Aria før lansering!">
+    messages={['Sjekk Aria før lansering!']}>
     <p>
       Wrappes rundt elementer hvor man vil ha en enkel tooltip-tekst ved fokus /
       hover events. Skal tilpasse seg nettleservindu ved behov. Ignoreres av
@@ -50,7 +51,7 @@ const TooltipExample = () => (
       </div>
     </Tooltip>
     <h3>Plasseringsvalg for tooltip:</h3>
-    <div className="c-styleguide__aslist">
+    <div className="u-horisontal-list">
       <Tooltip tooltip="Plasseres over" align="top">
         <div className="c-button c-button--outline">Topp</div>
       </Tooltip>
@@ -64,7 +65,7 @@ const TooltipExample = () => (
         <div className="c-button c-button--outline">Bunn</div>
       </Tooltip>
     </div>
-  </Styleguide>
+  </ComponentInfo>
 );
 
 export default TooltipExample;

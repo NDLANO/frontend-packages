@@ -18,7 +18,6 @@ module.exports = {
           },
           'sass-loader',
         ],
-        include: path.resolve(__dirname, '../../ndla-ui/src/'),
       },
       {
         test: /\.(png|jpg|svg|gif)$/,

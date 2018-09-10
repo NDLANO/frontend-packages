@@ -35,6 +35,7 @@ class FilterList extends Component {
       defaultVisibleCount,
       showLabel,
       hideLabel,
+      alignedGroup,
     } = this.props;
 
     const showAll =
@@ -54,7 +55,10 @@ class FilterList extends Component {
               {this.props.noFilterSelectedLabel}
             </span>
           )}
-        <ul {...filterClasses('item-wrapper')}>
+        <ul
+          {...filterClasses('item-wrapper', {
+            'aligned-grouping': alignedGroup,
+          })}>
           {options.map((option, index) => {
             const itemModifiers = [];
 
@@ -68,6 +72,11 @@ class FilterList extends Component {
               itemModifiers.push('no-results');
             }
 
+            const disabled = option.hits === 0;
+            if (disabled) {
+              itemModifiers.push('disabled');
+            }
+
             return (
               <li {...filterClasses('item', itemModifiers)} key={option.value}>
                 <input
@@ -75,6 +84,7 @@ class FilterList extends Component {
                   type="checkbox"
                   id={option.value}
                   value={option.value}
+                  disabled={disabled}
                   checked={checked}
                   onChange={event => {
                     let newValues = null;
@@ -92,10 +102,13 @@ class FilterList extends Component {
                 />
                 <label htmlFor={option.value}>
                   <span {...filterClasses('item-checkbox')} />
-                  <span {...filterClasses('text')}>{option.title}</span>
+                  <span {...filterClasses('text')}>
+                    {option.title}
+                    {option.hits !== undefined && ` (${option.hits})`}
+                  </span>
                   {option.icon
                     ? createElement(option.icon, {
-                        className: `c-icon--22 u-margin-left-small ${
+                        className: `c-icon--22 ${
                           filterClasses('icon').className
                         }`,
                       })
@@ -150,6 +163,7 @@ FilterList.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       value: valueShape.isRequired,
+      hits: PropTypes.number,
       icon: PropTypes.func,
       noResults: PropTypes.bool,
     }),
@@ -159,6 +173,7 @@ FilterList.propTypes = {
   showLabel: PropTypes.string,
   noFilterSelectedLabel: PropTypes.string,
   hideLabel: PropTypes.string,
+  alignedGroup: PropTypes.bool,
 };
 
 FilterList.defaultProps = {

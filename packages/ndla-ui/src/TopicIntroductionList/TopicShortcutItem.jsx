@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ContentTypeBadge, Tooltip } from 'ndla-ui';
+import { Trans } from 'ndla-i18n';
 
 import SafeLink from '../common/SafeLink';
 
@@ -12,13 +13,23 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ShortcutItem = ({ shortcut: { tooltip, contentType, url, count } }) => (
-  <Tooltip tooltip={tooltip} delay={100} align="bottom">
-    <SafeLink {...classes('item-link')} aria-label={tooltip} to={url}>
-      <ContentTypeBadge type={contentType} size="x-small" background />
-      <span {...classes('count')}>{count}</span>
-    </SafeLink>
-  </Tooltip>
+const ShortcutItem = ({
+  shortcut: { id, tooltip, contentType, url, count },
+}) => (
+  <Trans>
+    {({ t }) => (
+      <Tooltip
+        id={`shortcut-tooltip-${id}`}
+        tooltip={t('resource.shortcutsTooltip', { count })}
+        delay={100}
+        align="bottom">
+        <SafeLink {...classes('item-link')} aria-label={tooltip} to={url}>
+          <ContentTypeBadge type={contentType} size="x-small" background />
+          <span {...classes('count')}>{count}</span>
+        </SafeLink>
+      </Tooltip>
+    )}
+  </Trans>
 );
 
 ShortcutItem.propTypes = {

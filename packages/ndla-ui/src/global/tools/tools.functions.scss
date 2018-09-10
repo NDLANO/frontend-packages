@@ -24,7 +24,8 @@
   &[lang='zh-Hans'],
   [lang='zh-Hans'],
   &[lang='zh-Hant'],
-  [lang='zh-Hant'] {
+  [lang='zh-Hant'],
+  .u-large-body-text {
     @content;
   }
 }

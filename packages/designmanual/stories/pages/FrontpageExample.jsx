@@ -255,11 +255,13 @@ class FrontpageExample extends Component {
                   text: 'Internasjonal engelsk',
                 },
                 {
-                  url: '#4',
+                  url:
+                    '?selectedKind=Emnesider&selectedStory=4.%20Fagforside%20språk&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&filterexample=Kinesisk1',
                   text: 'Kinesisk 1',
                 },
                 {
-                  url: '#5',
+                  url:
+                    '?selectedKind=Emnesider&selectedStory=4.%20Fagforside%20språk&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&filterexample=Kinesisk2',
                   text: 'Kinesisk 2',
                 },
                 {

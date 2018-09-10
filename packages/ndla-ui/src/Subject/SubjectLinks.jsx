@@ -7,7 +7,7 @@ import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-links');
 
-const SubjectLinks = ({ links, heading }) => (
+const SubjectLinks = ({ links, heading, toLinkProps }) => (
   <section {...classes()}>
     <SubjectSectionTitle className={classes('heading').className}>
       {heading}
@@ -16,14 +16,7 @@ const SubjectLinks = ({ links, heading }) => (
       <ul {...classes('list')}>
         {links.map(link => (
           <li key={link.url} {...classes('item')}>
-            <SafeLink
-              to={link.url}
-              target={link.target}
-              rel={
-                link.target === '_blank' ? 'noreferrer noopener' : undefined
-              }>
-              {link.text}
-            </SafeLink>
+            <SafeLink {...toLinkProps(link)}>{link.text}</SafeLink>
           </li>
         ))}
       </ul>
@@ -35,8 +28,7 @@ SubjectLinks.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
-      target: PropTypes.string,
-      text: PropTypes.string.isRequired,
+      toLinkProps: PropTypes.func.isRequired,
     }),
   ),
   heading: PropTypes.string.isRequired,

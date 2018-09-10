@@ -18,15 +18,7 @@ const SubjectNewContent = ({ heading, content }) => (
         {content.map(item => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
-              <SafeLink
-                to={item.url}
-                target={item.urlTarget}
-                rel={
-                  item.urlTarget === '_blank'
-                    ? 'noreferrer noopener'
-                    : undefined
-                }
-                {...classes('link')}>
+              <SafeLink toLinkProps={item.toLinkProps} {...classes('link')}>
                 {item.name}
               </SafeLink>
               <ChevronLeft />
@@ -46,9 +38,9 @@ SubjectNewContent.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
+      toLinkProps: PropTypes.func.isRequired,
       topicName: PropTypes.string.isRequired,
       formattedDate: PropTypes.string.isRequired,
-      urlTarget: PropTypes.string,
     }),
   ).isRequired,
 };

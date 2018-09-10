@@ -14,16 +14,11 @@ const ContentCard = ({
   images,
   description,
   type,
-  url,
   isFilm,
-  urlTarget,
+  toLinkProps,
 }) => (
   <article {...classes()}>
-    <SafeLink
-      to={url}
-      target={urlTarget}
-      rel={urlTarget === '_blank' ? 'noreferrer noopener' : undefined}
-      {...classes('link')}>
+    <SafeLink {...toLinkProps()} {...classes('link')}>
       <header>
         <div {...classes('image-wrapper')}>
           <BackgroundImage images={images} />
@@ -46,9 +41,8 @@ ContentCard.propTypes = {
   description: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   images: BackgroundImage.propTypes.images,
-  url: PropTypes.string.isRequired,
   isFilm: PropTypes.bool,
-  urlTarget: PropTypes.string,
+  toLinkProps: PropTypes.func.isRequired,
 };
 
 ContentCard.defaultProps = {

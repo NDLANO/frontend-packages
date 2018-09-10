@@ -7,7 +7,7 @@ import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-links');
 
-const SubjectLinks = ({ links, heading, toLinkProps }) => (
+const SubjectLinks = ({ links, heading }) => (
   <section {...classes()}>
     <SubjectSectionTitle className={classes('heading').className}>
       {heading}
@@ -16,7 +16,7 @@ const SubjectLinks = ({ links, heading, toLinkProps }) => (
       <ul {...classes('list')}>
         {links.map(link => (
           <li key={link.url} {...classes('item')}>
-            <SafeLink {...toLinkProps(link)}>{link.text}</SafeLink>
+            <SafeLink {...link.toLinkProps()}>{link.text}</SafeLink>
           </li>
         ))}
       </ul>

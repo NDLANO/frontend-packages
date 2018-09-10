@@ -101,7 +101,6 @@ export default class TopicMenu extends Component {
   setScreenSize(initial = false) {
     const isNarrowScreen =
       (window.innerWidth || document.documentElement.clientWidth) < 769;
-    console.log(isNarrowScreen);
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {

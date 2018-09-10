@@ -153,18 +153,17 @@
 
   &__content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 
     & > img {
       width: 75px;
-      height: 75px;
+      height: auto;
       flex-shrink: 0;
-      margin: 0 $spacing--small $spacing $spacing;
+      margin: $spacing--small $spacing--small $spacing--small $spacing;
 
       @include mq(desktop) {
         width: 80px;
-        height: 80px;
         margin-left: $spacing--medium;
         margin-right: 0;
       }
@@ -219,11 +218,12 @@
     align-items: center;
     flex-wrap: wrap;
     color: $text-light-color;
+    padding-top: $spacing--small / 2;
 
-    @include font-size(14px, 32px);
+    @include font-size(14px, 18px);
 
     @include mq(desktop) {
-      @include font-size(16px, 32px);
+      @include font-size(16px, 24px);
     }
 
     .c-icon {

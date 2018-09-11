@@ -1,4 +1,4 @@
-import Brønnteknikk from './Brønnteknikk.svg';
+import Broennteknikk from './Broennteknikk.svg';
 import ByggOgAnleggsteknikk from './Bygg-og-anleggsteknikk.svg';
 import Elektro from './Elektro.svg';
 import Engelsk from './Engelsk.svg';
@@ -7,7 +7,7 @@ import HelseOgOppvekst from './Helse-og-oppvekst.svg';
 import Historie from './Historie.svg';
 import IKTService from './IKT-service.svg';
 import Kinesisk from './Kinesisk.svg';
-import Markedsføring from './Markedsføring.svg';
+import Markedsfoering from './Markedsfoering.svg';
 import Matematikk from './Matematikk.svg';
 import MedieuttrykkOgMediesamfunnet from './Medieuttrykk-og-mediesamfunnet.svg';
 import MedieOgInformasjonskunnskap from './Medie-og-informasjonskunnskap.svg';
@@ -15,11 +15,11 @@ import Naturbruk from './Naturbruk.svg';
 import SalgServiceOgSikkerhet from './Salg-service-og-sikkerhet.svg';
 import Samfunnsfag from './Samfunnsfag.svg';
 import ServiceOgSamferdsel from './Service-og-samferdsel.svg';
-import Soersamisk from './Sørsamisk.svg';
+import Soersamisk from './Soersamisk.svg';
 import Tysk from './Tysk.svg';
 
 export default [
-  { desktop: Brønnteknikk, mobile: Brønnteknikk, name: 'Brønnteknikk' },
+  { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
   {
     desktop: ByggOgAnleggsteknikk,
     mobile: ByggOgAnleggsteknikk,
@@ -37,8 +37,8 @@ export default [
   { desktop: IKTService, mobile: IKTService, name: 'IKT Service' },
   { desktop: Kinesisk, mobile: Kinesisk, name: 'Kinesisk' },
   {
-    desktop: Markedsføring,
-    mobile: Markedsføring,
+    desktop: Markedsfoering,
+    mobile: Markedsfoering,
     name: 'Markedsføring og ledelse',
   },
   { desktop: Matematikk, mobile: Matematikk, name: 'Matematikk' },

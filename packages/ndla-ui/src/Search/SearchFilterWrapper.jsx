@@ -26,7 +26,6 @@ class SearchFilterWrapper extends Component {
     if (!this.props.isNarrowScreen) {
       this.props.onChange(allValues);
     }
-    console.log('changed filter...');
   }
 
   render() {

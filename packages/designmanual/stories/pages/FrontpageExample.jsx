@@ -19,6 +19,10 @@ import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
 import { contentCards } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.png';
 
+const toLinkProps = url => ({
+  to: url,
+});
+
 class FrontpageExample extends Component {
   constructor(props) {
     super(props);
@@ -334,6 +338,7 @@ class FrontpageExample extends Component {
               {contentCards.slice(0, 4).map(card => (
                 <div key={`slide-${card.id}`}>
                   <ContentCard
+                    toLinkProps={() => toLinkProps(card.linkTo)}
                     url={card.linkTo}
                     heading={card.title}
                     description={card.text}

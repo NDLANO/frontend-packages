@@ -18,7 +18,7 @@ const SubjectNewContent = ({ heading, content }) => (
         {content.map(item => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
-              <SafeLink {...item.toLinkProps} {...classes('link')}>
+              <SafeLink {...item.toLinkProps()} {...classes('link')}>
                 {item.name}
               </SafeLink>
               <ChevronLeft />

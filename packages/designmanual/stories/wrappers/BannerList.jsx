@@ -10,8 +10,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, copyTextToClipboard } from 'ndla-util';
 import { Copy } from 'ndla-icons/action';
-import { PageContainer, LayoutItem, OneColumn, SubjectHeader, CopyButton } from 'ndla-ui';
-
+import {
+  PageContainer,
+  LayoutItem,
+  OneColumn,
+  SubjectHeader,
+  CopyButton,
+} from 'ndla-ui';
 
 const addLeadingSlash = str => {
   if (str.startsWith('/')) {
@@ -52,53 +57,77 @@ class BannerList extends Component {
                 onChange={this.handleInputChange}
                 style={{ width: '100%' }}
               />
-          </article>
+            </article>
           </LayoutItem>
         </OneColumn>
-        {banners.filter(banner => (bannerSearchLowerCase === '' || banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1)).map(banner => (
-          <div key={banner.desktop} style={{ marginTop: '26px' }}>
-            <SubjectHeader
-              heading={banner.name}
-              images={[
-                {
-                  url: banner.desktop,
-                  types: [breakpoints.desktop, breakpoints.tablet, breakpoints.wide],
-                },
-                { url: banner.mobile, types: [breakpoints.mobile] },
-              ]}
-            />
-            <div style={{ margin: '13px' }}>
-              <CopyButton
-                style={{ margin: '13px' }}
-                copyNode={<Fragment><Copy /> Kopiert!</Fragment>}
-                onClick={() => {
-                  copyTextToClipboard(`${window.location.origin}${addLeadingSlash(
-                    banner.mobile,
-                  )}`, this.buttonContainer);
-                }}
-                outline
-                title="Kopier mobil banner til importskjema">
-                <Fragment>
-                  <Copy /> Kopier mobil banner
-                </Fragment>
-              </CopyButton>
-              <CopyButton
-                style={{ margin: '13px' }}
-                outline
-                copyNode={<Fragment><Copy /> Kopiert!</Fragment>}
-                onClick={() => {
-                  copyTextToClipboard(`${window.location.origin}${addLeadingSlash(
-                    banner.desktop,
-                  )}`, this.buttonContainer);
-                }}
-                title="Kopier mobil banner til importskjema">
-                <Fragment>
-                  <Copy /> Kopier desktop banner
-                </Fragment>
-              </CopyButton>
+        {banners
+          .filter(
+            banner =>
+              bannerSearchLowerCase === '' ||
+              banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1,
+          )
+          .map(banner => (
+            <div key={banner.desktop} style={{ marginTop: '26px' }}>
+              <SubjectHeader
+                heading={banner.name}
+                images={[
+                  {
+                    url: banner.desktop,
+                    types: [
+                      breakpoints.desktop,
+                      breakpoints.tablet,
+                      breakpoints.wide,
+                    ],
+                  },
+                  { url: banner.mobile, types: [breakpoints.mobile] },
+                ]}
+              />
+              <div style={{ margin: '13px' }}>
+                <CopyButton
+                  style={{ margin: '13px' }}
+                  copyNode={
+                    <Fragment>
+                      <Copy /> Kopiert!
+                    </Fragment>
+                  }
+                  onClick={() => {
+                    copyTextToClipboard(
+                      `${window.location.origin}${addLeadingSlash(
+                        banner.mobile,
+                      )}`,
+                      this.buttonContainer,
+                    );
+                  }}
+                  outline
+                  title="Kopier mobil banner til importskjema">
+                  <Fragment>
+                    <Copy /> Kopier mobil banner
+                  </Fragment>
+                </CopyButton>
+                <CopyButton
+                  style={{ margin: '13px' }}
+                  outline
+                  copyNode={
+                    <Fragment>
+                      <Copy /> Kopiert!
+                    </Fragment>
+                  }
+                  onClick={() => {
+                    copyTextToClipboard(
+                      `${window.location.origin}${addLeadingSlash(
+                        banner.desktop,
+                      )}`,
+                      this.buttonContainer,
+                    );
+                  }}
+                  title="Kopier mobil banner til importskjema">
+                  <Fragment>
+                    <Copy /> Kopier desktop banner
+                  </Fragment>
+                </CopyButton>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </PageContainer>
     );
   }

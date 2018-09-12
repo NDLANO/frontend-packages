@@ -205,17 +205,24 @@ const messages = {
         [contentTypes.TASKS_AND_ACTIVITIES]:
           'Vis fleire oppgåver og aktivitetar',
         [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressursar',
+        [contentTypes.SOURCE_MATERIAL]: 'Vis flere kjeldematerialer',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
           'Vis færre oppgåver og aktivitetar',
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
+        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
+        [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldematerialer',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]: 'Ingen oppgåver',
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressursar',
+        [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldematerialer',
       },
     },
   },

@@ -1,0 +1,70 @@
+@import 'global/settings/settings.config';
+@import '../../../node_modules/inuitcss/settings/_settings.core';
+@import 'global/settings/settings.global';
+@import 'global/settings/settings.colors';
+@import 'global/settings/settings.animations';
+
+// Grids
+@import 'global/utilities/utilities.widths';
+@import 'global/utilities/utilities.grids';
+
+// TOOLS
+@import '../../../node_modules/inuitcss/tools/tools.font-size';
+@import '../../../node_modules/inuitcss/tools/tools.clearfix';
+@import '../../../node_modules/inuitcss/tools/tools.rem';
+@import 'global/utilities/mixin_icons';
+
+$inuit-fractions: 1 2 3 4 5 6 10 12;
+
+@import 'global/settings/settings.breakpoints';
+
+@import 'global/tools/tools.aliases';
+@import 'global/tools/tools.functions';
+
+// GENERIC
+@import '../../../node_modules/inuitcss/generic/generic.box-sizing';
+@import '../../../node_modules/inuitcss/generic/generic.normalize';
+@import '../../../node_modules/inuitcss/generic/generic.shared';
+
+// ELEMENTS
+$inuit-wrapper-width: 1024px;
+@import 'global/elements/elements.page';
+@import '../../../node_modules/inuitcss/elements/elements.headings';
+@import 'global/elements/elements.headings';
+@import 'global/elements/elements.figure';
+@import 'global/elements/elements.quotations';
+@import 'global/elements/elements.navigation';
+@import 'global/elements/elements.images';
+@import 'global/elements/elements.tables';
+@import 'global/elements/elements.lists';
+@import 'global/elements/elements.details';
+@import 'global/elements/elements.links';
+// @import "global/elements/elements.aside";
+@import 'global/elements/elements.footer';
+@import 'global/elements/elements.iframe';
+@import 'global/elements/elements.audio';
+@import 'global/elements/elements.input';
+@import 'global/elements/elements.code';
+
+// OBJECTS
+@import '../../../node_modules/inuitcss/objects/objects.block';
+@import '../../../node_modules/inuitcss/objects/objects.box';
+@import '../../../node_modules/inuitcss/objects/objects.flag';
+@import '../../../node_modules/inuitcss/objects/objects.layout';
+@import '../../../node_modules/inuitcss/objects/objects.list-bare';
+@import '../../../node_modules/inuitcss/objects/objects.list-inline';
+@import '../../../node_modules/inuitcss/objects/objects.media';
+@import '../../../node_modules/inuitcss/objects/objects.wrapper';
+@import 'global/objects/objects.lists';
+@import 'global/objects/objects.wrapper';
+@import 'global/objects/objects.content';
+@import 'global/objects/objects.backdrop';
+
+// UTILITIES
+@import '../../../node_modules/inuitcss/utilities/utilities.widths';
+@import '../../../node_modules/inuitcss/utilities/utilities.headings';
+@import '../../../node_modules/inuitcss/utilities/utilities.spacing';
+@import 'global/utilities/utilities.typographic';
+@import 'global/utilities/utilities.shame';
+@import 'global/utilities/utilities.mobile';
+@import 'global/utilities/utilities.helpers';

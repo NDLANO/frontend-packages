@@ -23,10 +23,12 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "scss",
     "lib",
     "es"
   ],
   "peerDependencies": {
+    "ndla-core": "0.0.1",
     "classnames": "^2.2.6",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",

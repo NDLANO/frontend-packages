@@ -1,0 +1,21 @@
+{
+  "name": "ndla-core",
+  "version": "0.0.1",
+  "description": "UI component library for NDLA.",
+  "license": "GPL-3.0",
+  "scripts": { },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-core/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "scss"
+  ],
+  "dependencies": {
+    "inuitcss": "6.0.0-beta.4"
+  }
+}

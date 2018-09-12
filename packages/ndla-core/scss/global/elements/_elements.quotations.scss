@@ -1,0 +1,6 @@
+blockquote {
+  margin: $spacing--large 0;
+  padding-left: $spacing;
+  border-left: $inuit-global-border-width * 2 solid $background-color--dark;
+  @include font-size(20px, 32px);
+}

@@ -71,3 +71,9 @@ lerna publish
 ```js
 yarn deploy-designmanual
 ```
+
+## Upcoming features and updates
+
+### Upcoming updates to the designmanual can be previewed here.
+
+[Designmanual WIP](https://designmanual-ndla-keyteq.surge.sh)

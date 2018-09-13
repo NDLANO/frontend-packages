@@ -26,24 +26,52 @@
 
 .c-medialist__body {
   @include inuit-font-size(14px, 24px);
-  min-width: 50%;
+  @include mq(tablet) {
+    max-width: 70% !important;
+  }
+  @include mq(970px) {
+    max-width: 75% !important;
+  }
 }
 
 .c-medialist__img {
-  float:none;
+  float: none;
   margin: 0 0 $spacing--small;
   @include mq(tablet) {
-    width: 30%;
-    margin-right: $spacing;
+    width: 30% !important;
+  }
+  @include mq(970px) {
+    width: 25% !important;
   }
   img {
-    max-width: 100%;
-    width: 100%;
-    margin:0;
+    &.other-content-image {
+      max-width: 70%;
+      margin: $spacing;
+    }
   }
-
-  a {
+  > div {
     box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lighten($brand-color--tertiary, 10);
+    @include mq(tablet) {
+      margin-right: $spacing;
+    }
+    a {
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: $border-radius;
+      border: 2px solid $brand-color--tertiary;
+      transition: all 300ms ease;
+      width: 100%;
+      &:hover, &:focus {
+        border-color: $brand-color;
+        background: lighten($brand-color--tertiary, 5);
+      }
+    }
   }
 }
 
@@ -51,6 +79,7 @@
   margin-top: $spacing--small;
   margin-bottom: $spacing--small;
   margin-left: 0;
+  padding-left: 0;
   list-style: none;
   width: 100%;
   button, a {
@@ -64,24 +93,30 @@
 .c-medialist__meta-item {
   width: 100%;
   padding-right: $spacing--small;
-  margin-left: 0;
-  margin-bottom: 0;
+  margin: $spacing--small / 4 0;
+  line-height: 1.1rem;
 }
 .c-medialist__ref {
   background: $white;
-  padding: $spacing--small/4 $spacing--small;
+  padding: $spacing--small $spacing $spacing;
+  @include mq(tablet) {
+    padding-left: $spacing--small + 24px;
+  }
   margin-top: $spacing--small;
   margin-right: $spacing;
   width: 100%;
+  @include mq($until: tablet) {
+    .c-button {
+      width: 100%;
+      margin: $spacing--small / 4 0;
+    }
+  }
 }
 .c-medialist__icon {
   color: $brand-color;
-  width: 150px !important;
+  width: $spacing * 3;
   height: auto !important;
-  padding: 0 $spacing--small $spacing--small;
-}
-.c-medialist__h5p {
-  height: 185px;
+  margin: $spacing;
 }
 .c-medialist__title {
   margin-top: 0;

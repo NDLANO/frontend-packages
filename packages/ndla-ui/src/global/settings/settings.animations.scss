@@ -58,6 +58,23 @@
     transform: translateX(0px);
   }
 }
+
+@keyframes fadeInRightFlex {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    opacity: 0;
+    display: flex;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
 @keyframes fadeInLeft {
   0% {
     display: none;

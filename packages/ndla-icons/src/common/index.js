@@ -10,6 +10,8 @@
 export { default as Additional } from './Additional';
 export { default as ArrowDropDown } from './ArrowDropDown';
 export { default as Audio } from './Audio';
+export { default as Audiobook } from './Audiobook';
+export { default as AudioDocument } from './AudioDocument';
 export { default as Back } from './Back';
 export { default as ChevronDown } from './ChevronDown';
 export { default as ChevronLeft } from './ChevronLeft';
@@ -20,6 +22,8 @@ export { default as Document } from './Document';
 export { default as Download } from './Download';
 export { default as EmailOutline } from './EmailOutline';
 export { default as Facebook } from './Facebook';
+export { default as FileDocumentOutline } from './FileDocumentOutline';
+export { default as FileDownloadOutline } from './FileDownloadOutline';
 export { default as Forward } from './Forward';
 export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';

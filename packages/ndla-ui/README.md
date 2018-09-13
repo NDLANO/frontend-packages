@@ -23,6 +23,7 @@ react-motion
 react-router
 ndla-article-scripts
 ndla-licenses
+ndla-icons
 ndla-tabs
 ndla-util
 ```

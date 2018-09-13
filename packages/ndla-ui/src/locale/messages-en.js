@@ -262,8 +262,11 @@ const messages = {
     additionalLabel: 'Additional content',
     urlContributionsLabel: 'See {name}`s contributions',
     urlAuthorLabel: 'Read more about {name}',
-    multipleAuthorsLabel: 'Authors',
-    multipleAuthorsExplanation: 'This article has several authors',
+    multipleAuthorsLabelAbbreviation: 'et al.',
+    multipleAuthorsLabel: 'Article authors:',
+    multipleAuthorsLabelAria: 'Authors of this article are {names}',
+    multipleAuthorsLabelAriaConjunction: 'og',
+    singleAuthorsLabelAria: 'The author of this article is {name}',
   },
   competenceGoals: {
     closeCompetenceGoals: 'Close competance goals',

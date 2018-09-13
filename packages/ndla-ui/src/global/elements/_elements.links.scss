@@ -5,3 +5,38 @@ a {
 a:hover {
   box-shadow: $link--hover;
 }
+
+.o-text-link {
+  .c-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: $spacing--small;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin: $spacing 0;
+    &--right {
+      justify-content: flex-end;
+      .c-icon {
+        margin-left: $spacing--small;
+        margin-right: 0;
+      }
+    }
+  }
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: $brand-color;
+  @include font-size(16px, 24px);
+  font-weight: $font-weight-semibold;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &--ignore-underline {
+    box-shadow: none;
+  }
+}

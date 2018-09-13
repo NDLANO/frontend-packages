@@ -15,10 +15,11 @@
 }
 
 .c-license-icons__item {
-  display: inline-block;
+  display: flex;
   padding-bottom: 5px;
   margin-bottom: 0;
   margin-right: 0.2em;
+  line-height: 1.3rem;
 }
 
 .c-license-icons__hover {
@@ -30,7 +31,9 @@
   background: $brand-color;
   color: $white;
   text-align: left;
-  padding: $spacing--small/2;
+  padding: $spacing--small/2 $spacing--small;
+  font-family: $font;
+  transform: translate(0, calc(-100% - 6.5px));
   @include inuit-font-size(13px);
 }
 .c-license-icons__item:hover {
@@ -40,18 +43,21 @@
   .c-license-icons__hover {
     display: block;
     opacity: 1;
+    // animation-name: fadeIn;
+    // animation-duration: 400ms;
   }
 }
 
 .c-license-icons__icon {
-  width: $spacing / 1.1;
-  height: $spacing / 1.1;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
 }
 
 .c-license-icons__modelpermission {
   svg {
-    width: $spacing / 1.1;
-    height: $spacing / 1.1;
+    width: 24px;
+    height: 24px;
     margin-right: $spacing--small;
   }
   margin-top: $spacing--small/2;

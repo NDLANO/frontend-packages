@@ -16,10 +16,8 @@ const FrontpageFilm = ({ messages, url, imageUrl }) => (
     <div {...classes('image')} style={{ backgroundImage: `url(${imageUrl})` }}>
       {messages.text && <span>{messages.text}</span>}
     </div>
-    <div {...classes('link-container')}>
-      <SafeLink
-        className={`${classes('link').className} c-button--link c-button`}
-        to={url}>
+    <div className="o-text-link__wrapper o-text-link__wrapper--right">
+      <SafeLink className="o-text-link" to={url}>
         {messages.linkLabel}
         <Forward />
       </SafeLink>

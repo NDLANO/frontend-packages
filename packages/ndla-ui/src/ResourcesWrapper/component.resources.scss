@@ -121,14 +121,14 @@
         .c-content-type-badge {
           display: none;
 
-          @include mq(tablet) {
+          @include mq(desktop) {
             display: inline-flex;
           }
         }
       }
 
       &__content {
-        @include mq(tablet) {
+        @include mq(desktop) {
           margin-left: $spacing--medium + $spacing--large;
         }
       }

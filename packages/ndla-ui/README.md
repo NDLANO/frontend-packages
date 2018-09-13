@@ -1,6 +1,6 @@
 # ndla-ui
 
-UI component library for NDLA.
+Main UI component library for NDLA.
 
 ## Installation
 
@@ -31,14 +31,22 @@ See: [package.json](package.json) for version requirements
 
 **N.B!** All optional dependencies are required if you use `import {...} from 'ndla-ui'`
 
-
 ## Usage
 
+### Styling
+
+```scss
+/* Your project's main .scss import file */
+@import '~ndla-ui/scss/main'; // with webpack and sass-loader
+@import '../path/to/node_modules/ndla-ui/scss/main'; // direct reference
+```
+
 ### Simplified example
+
 ```jsx
 import { Hero, OneColumn, Article, Breadcrumb } from 'ndla-ui';
 
-const MyPage = ({topicPath, topic, article}) => {
+const MyPage = ({ topicPath, topic, article }) => {
   return (
     <div>
       <Hero>
@@ -57,19 +65,20 @@ const MyPage = ({topicPath, topic, article}) => {
         </OneColumn>
       </div>
     </div>
-  )
-}
+  );
+};
 ```
 
 ### Only import specific components
+
 ```jsx
-import  Hero from 'ndla-ui/es/hero/Hero';
+import Hero from 'ndla-ui/es/hero/Hero';
 
 const MyPage = () => {
   return (
     <Hero>
       <MyAwesomeComponent />
     </Hero>
-  )
-}
+  );
+};
 ```

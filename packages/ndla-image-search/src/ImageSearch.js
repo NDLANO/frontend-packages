@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pager } from 'ndla-ui';
+import Pager from 'ndla-pager';
 import BEMHelper from 'react-bem-helper';
 
 import ImageSearchForm from './ImageSearchForm';

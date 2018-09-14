@@ -124,7 +124,7 @@ async function spawnDeploy(sha) {
     '--token',
     nowToken,
     '--no-clipboard',
-    '--region',
+    '--regions',
     'bru1',
     ...providedArgs,
   ];

@@ -107,7 +107,7 @@ function getAliasUrl() {
 }
 
 async function spawnAlias(sha, deployUrl) {
-  const newUrl = getAliasUrl();
+  const newUrl = deployUrl.replace('now.sh', 'ndla.sh');
   const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
   try {
@@ -124,7 +124,7 @@ async function spawnDeploy(sha) {
     '--token',
     nowToken,
     '--no-clipboard',
-    '--region',
+    '--regions',
     'bru1',
     ...providedArgs,
   ];

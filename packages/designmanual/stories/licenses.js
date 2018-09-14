@@ -9,14 +9,14 @@ import { LanguageSelectorNonMessages } from './LanguageWrapper';
 import { StoryIntro, StoryBody } from './wrappers';
 
 const licensesRights = {
-  nb: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(
-    license => getLicenseRightByAbbreviation(license, 'nb'),
+  nb: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+    getLicenseRightByAbbreviation(license, 'nb'),
   ),
-  nn: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(
-    license => getLicenseRightByAbbreviation(license, 'nn'),
+  nn: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+    getLicenseRightByAbbreviation(license, 'nn'),
   ),
-  en: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(
-    license => getLicenseRightByAbbreviation(license, 'en'),
+  en: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+    getLicenseRightByAbbreviation(license, 'en'),
   ),
 };
 
@@ -73,7 +73,7 @@ storiesOf('Lisensgivning', module)
       </StoryIntro>
       <StoryBody>
         <LanguageSelectorNonMessages>
-          {({ lang }) => (
+          {({ lang }) =>
             licenses[lang].map(license => (
               <article key={uuid()}>
                 <h2>{license.data.title}</h2>
@@ -108,7 +108,7 @@ storiesOf('Lisensgivning', module)
                 </table>
               </article>
             ))
-          )}
+          }
         </LanguageSelectorNonMessages>
       </StoryBody>
     </div>
@@ -120,14 +120,14 @@ storiesOf('Lisensgivning', module)
       </StoryIntro>
       <StoryBody>
         <LanguageSelectorNonMessages>
-          {({ lang }) => (
+          {({ lang }) =>
             licensesRights[lang].map(license => (
               <article key={uuid()}>
                 <h2>{license.title}</h2>
                 <p>{license.description}</p>
               </article>
             ))
-          )}
+          }
         </LanguageSelectorNonMessages>
       </StoryBody>
     </div>

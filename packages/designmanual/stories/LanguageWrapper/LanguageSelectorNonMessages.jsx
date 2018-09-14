@@ -45,7 +45,7 @@ class LanguageSelectorNonMessages extends Component {
             }}
           />
         </div>
-          {this.props.children({ lang: this.state.value })}
+        {this.props.children({ lang: this.state.value })}
       </Fragment>
     );
   }

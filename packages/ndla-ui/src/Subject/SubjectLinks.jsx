@@ -16,7 +16,7 @@ const SubjectLinks = ({ links, heading }) => (
       <ul {...classes('list')}>
         {links.map(link => (
           <li key={link.url} {...classes('item')}>
-            <SafeLink to={link.url}>{link.text}</SafeLink>
+            <SafeLink {...link.toLinkProps()}>{link.text}</SafeLink>
           </li>
         ))}
       </ul>
@@ -28,7 +28,7 @@ SubjectLinks.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
+      toLinkProps: PropTypes.func.isRequired,
     }),
   ),
   heading: PropTypes.string.isRequired,

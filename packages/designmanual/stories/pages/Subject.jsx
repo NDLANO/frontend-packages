@@ -119,12 +119,14 @@ const secondaryContent = (
                 {
                   name: 'Radio- og tvstruktur',
                   url: '#1',
+                  toLinkProps: () => ({ to: '#1' }),
                   topicName: 'Mediene i samfunnet',
                   formattedDate: '10.02.2018',
                 },
                 {
                   name: 'Hva er makt?',
                   url: '#2',
+                  toLinkProps: () => ({ to: '#2' }),
                   topicName: 'Mediene i samfunnet',
                   formattedDate: '24.01.2018',
                 },
@@ -230,18 +232,22 @@ export default () => (
             links={[
               {
                 url: '#1',
+                toLinkProps: () => ({ to: '#1' }),
                 text: 'Grafisk design',
               },
               {
                 url: '#2',
+                toLinkProps: () => ({ to: '#2' }),
                 text: 'Nettsider',
               },
               {
                 url: '#3',
+                toLinkProps: () => ({ to: '#3' }),
                 text: 'Prøv deg som journalist',
               },
               {
                 url: '#4',
+                toLinkProps: () => ({ to: '#4' }),
                 text: 'Grenseløs journalistikk',
               },
             ]}
@@ -336,18 +342,22 @@ export const SubjectWithTwoColumn = () => (
                 heading="Mest lest"
                 links={[
                   {
+                    toLinkProps: () => ({ to: '#1' }),
                     url: '#1',
                     text: 'Grafisk design',
                   },
                   {
+                    toLinkProps: () => ({ to: '#2' }),
                     url: '#2',
                     text: 'Nettsider',
                   },
                   {
+                    toLinkProps: () => ({ to: '#3' }),
                     url: '#3',
                     text: 'Prøv deg som journalist',
                   },
                   {
+                    toLinkProps: () => ({ to: '#4' }),
                     url: '#4',
                     text: 'Grenseløs journalistikk',
                   },

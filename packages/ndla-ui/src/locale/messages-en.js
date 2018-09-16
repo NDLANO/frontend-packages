@@ -205,17 +205,23 @@ const messages = {
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show more subjects',
         [contentTypes.TASKS_AND_ACTIVITIES]: 'Show more tasks and activities',
-        [contentTypes.LEARNING_PATH]: 'Vis flere learningpaths',
+        [contentTypes.LEARNING_PATH]: 'Show more learningpaths',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
+        [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
         [contentTypes.TASKS_AND_ACTIVITIES]: 'Show less tasks and activities',
         [contentTypes.LEARNING_PATH]: 'Show less learningpaths',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
+        [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
         [contentTypes.TASKS_AND_ACTIVITIES]: 'No tasks and activities',
         [contentTypes.LEARNING_PATH]: 'No learningpaths',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
+        [contentTypes.SOURCE_MATERIAL]: 'No source materials',
       },
     },
   },
@@ -278,6 +284,8 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
+      files: 'Files',
+      other: 'Other content',
     },
     images: {
       heading: 'How to use images from the article',

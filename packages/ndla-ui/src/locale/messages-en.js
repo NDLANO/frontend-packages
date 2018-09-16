@@ -180,6 +180,7 @@ const messages = {
       header: 'NDLA film',
       text:
         'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
+      textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
     errorDescription: 'Sorry, an error occurd while loading the subjects.',

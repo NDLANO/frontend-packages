@@ -89,7 +89,7 @@
   p {
     margin-top: 0;
   }
-  
+
   a:not([class]):visited {
     color: $link-visited;
   }
@@ -121,6 +121,18 @@
     margin: 0;
     @include mq($until: tablet) {
       line-height: 2rem;
+    }
+  }
+
+  &--with-competence-goals {
+    // Adjust first line width if article has competence goals
+    @include mq(desktop) {
+      h1:before {
+        content: '';
+        float: right;
+        width: 140px;
+        height: 1em;
+      }
     }
   }
 

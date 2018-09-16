@@ -53,10 +53,14 @@ ArticleHeaderWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const ArticleTitle = ({ children, icon, label }) => {
+export const ArticleTitle = ({ children, icon, label, hasCompetenceGoals }) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
+  }
+
+  if (hasCompetenceGoals) {
+    modifiers.push('with-competence-goals');
   }
 
   let labelView = null;
@@ -75,6 +79,7 @@ export const ArticleTitle = ({ children, icon, label }) => {
 };
 
 ArticleTitle.propTypes = {
+  hasCompetenceGoals: PropTypes.bool,
   children: PropTypes.node.isRequired,
   label: PropTypes.string,
   icon: PropTypes.node,
@@ -134,7 +139,10 @@ export const Article = ({
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
           {competenceGoals}
-          <ArticleTitle icon={icon} label={messages.label}>
+          <ArticleTitle
+            icon={icon}
+            label={messages.label}
+            hasCompetenceGoals={competenceGoals !== null}>
             {title}
           </ArticleTitle>
           <ArticleIntroduction>{introduction}</ArticleIntroduction>

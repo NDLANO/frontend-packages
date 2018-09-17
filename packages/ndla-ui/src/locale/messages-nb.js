@@ -178,6 +178,7 @@ const messages = {
       header: 'NDLA film',
       text:
         'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
+      textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
   },

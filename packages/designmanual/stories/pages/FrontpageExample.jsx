@@ -18,7 +18,7 @@ import { breakpoints } from 'ndla-util';
 import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
 
 import { contentCards, subjectsFrontpage } from '../../dummydata/index';
-import NdlaFilmIllustration from '../../images/film_illustrasjon.png';
+import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const FrontpageExample = ({ t }) => (
   <Fragment>
@@ -84,11 +84,6 @@ const FrontpageExample = ({ t }) => (
         <FrontpageFilm
           imageUrl={NdlaFilmIllustration}
           url="https://ndla.no/nb/film"
-          messages={{
-            header: t('welcomePage.film.header'),
-            linkLabel: t('welcomePage.film.linkLabel'),
-            text: t('welcomePage.film.text'),
-          }}
         />
         <FrontpageInfo>
           <InfoWidget

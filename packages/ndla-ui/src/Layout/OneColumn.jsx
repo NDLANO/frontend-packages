@@ -22,6 +22,7 @@ export const OneColumn = ({
   cssModifier,
   wide,
   noPadding,
+  extraPadding,
 }) => {
   const modifiers = [];
 
@@ -37,6 +38,10 @@ export const OneColumn = ({
     modifiers.push('no-padding');
   }
 
+  if (extraPadding) {
+    modifiers.push('extra-padding');
+  }
+
   return (
     <div className={`${classes('', modifiers)} ${className}`}>{children}</div>
   );
@@ -47,6 +52,7 @@ OneColumn.propTypes = {
   cssModifier: PropTypes.string,
   wide: PropTypes.bool,
   noPadding: PropTypes.bool,
+  extraPadding: PropTypes.bool,
   className: PropTypes.string,
 };
 

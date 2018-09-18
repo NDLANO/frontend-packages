@@ -29,6 +29,14 @@
   &--translation {
     padding: 0 $spacing--large $spacing--small $spacing;
   }
+
+  &--contains-table {
+    @include mq($from: desktop) {
+      @include grids-expand(4,6,2);
+      padding-left: 16.667%;
+      padding-right: 16.667%;
+    }
+  }
 }
 
 /* Hacks for complex content fetched inside bodybox */

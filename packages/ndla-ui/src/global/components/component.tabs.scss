@@ -133,6 +133,19 @@ $tabs-spacing: 12px;
     margin: $spacing/1.4 0 $spacing--small;
     border-bottom: 1px solid $brand-color--tertiary;
     padding: 0;
+    &--singleLine {
+      @include mq($until: mobileWide) {
+        max-width: auto;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling-x: touch;
+        overflow-y: hidden;
+        min-width: 100%;
+        display: flex;
+        li {
+          white-space: nowrap;
+        }
+      }
+    }
   }
 
   &__panel {
@@ -142,10 +155,30 @@ $tabs-spacing: 12px;
   }
 }
 
+// fix for when inside dialog..
+.c-tabs__list--singleLine {
+  @include mq($until: mobileWide) {
+    animation-name: fadeInRightFlex;
+    animation-duration: 0.6s;
+    min-width: calc(100% + 52px);
+    margin-left: -$spacing !important;
+    li {
+      &:first-child {
+        margin-left: $spacing;
+      }
+      &:last-child:after {
+        content: "";
+        display: inline-flex;
+        width: $spacing;
+      }
+    }
+  }
+}
+
 @keyframes tabDropdownAnimation {
   0% {
     opacity: 0;
-    transform: translate3d(20px, 2px, 0px);
+    transform: translate(20px, 2px, 0px);
   }
   100% {
     opacity: 1;

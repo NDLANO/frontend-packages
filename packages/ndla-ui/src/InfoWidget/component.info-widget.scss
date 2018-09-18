@@ -13,7 +13,7 @@
     padding: $spacing;
     background: $brand-color--lighter;
     color: $brand-color--dark;
-    @include font-size(16px, 26px);
+    @include font-size(18px, 26px);
 
     p {
       margin-top: 0;
@@ -28,12 +28,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: $spacing;
   }
 
   &__main-link {
     color: $brand-color--dark;
-    @include font-size(14px, 24px);
+    @include font-size(16px, 24px);
   }
 
   &__icon-link {

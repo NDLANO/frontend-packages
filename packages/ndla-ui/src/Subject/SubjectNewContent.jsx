@@ -18,7 +18,7 @@ const SubjectNewContent = ({ heading, content }) => (
         {content.map(item => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
-              <SafeLink to={item.url} {...classes('link')}>
+              <SafeLink {...item.toLinkProps()} {...classes('link')}>
                 {item.name}
               </SafeLink>
               <ChevronLeft />
@@ -38,6 +38,7 @@ SubjectNewContent.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
+      toLinkProps: PropTypes.func.isRequired,
       topicName: PropTypes.string.isRequired,
       formattedDate: PropTypes.string.isRequired,
     }),

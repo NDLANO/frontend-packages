@@ -21,9 +21,14 @@
   margin-bottom: $spacing;
   margin-left: auto;
   overflow-wrap: break-word;
-  @include font-size(18px, 28px);
+  @include font-size(18px, 29px);
   position: relative;
 
+  > section > p {
+    &:not([class]) {
+      margin-bottom: 29px;
+    }
+  }
   p {
     @include chinese() {
       @include font-size(20px, 32px);
@@ -47,11 +52,17 @@
   }
 
   @include mq(tablet) {
-    @include font-size(18px, 32px);
+    @include font-size(19px, 31px);
 
     p {
       @include chinese() {
         @include font-size(20px, 32px);
+      }
+    }
+
+    > section > p {
+      &:not([class]) {
+        margin-bottom: 31px;
       }
     }
 
@@ -89,7 +100,7 @@
   p {
     margin-top: 0;
   }
-  
+
   a:not([class]):visited {
     color: $link-visited;
   }
@@ -134,7 +145,7 @@
     @include inuit-font-size(16px, 20px);
     color: $text-light-color;
     text-transform: uppercase;
-    margin-bottom: $spacing--small/4;
+    margin-bottom: 0;
     font-family: $font;
     @include mq($until: tablet) {
       margin-bottom: 0;
@@ -153,8 +164,13 @@
     position: absolute;
     left: 0;
 
+    @include mq(tablet) {
+      top: $spacing--small / 2;
+    }
+
     @include mq(desktop) {
       left: -70px;
+      top: $spacing--small / 2;
     }
   }
 }

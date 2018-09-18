@@ -118,7 +118,7 @@
   }
 
   &__list-item--active > &__list-item-inner::after {
-    animation: fadeInTop 500ms ease;
+    animation: fadeInSearchPreview 500ms ease;
     top: 190px;
     left: 50%;
     border: solid transparent;
@@ -135,7 +135,7 @@
 }
 
 .c-image-preview {
-  animation: fadeInTop 500ms ease;
+  animation: fadeInSearchPreview 500ms ease;
   position: relative;
   width: 400%;
   background-color: $brand-color--lighter;
@@ -283,7 +283,7 @@
   }
 }
 
-@keyframes fadeInTop {
+@keyframes fadeInSearchPreview {
   0% {
     display: none;
     opacity: 0;

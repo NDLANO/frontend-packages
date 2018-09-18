@@ -66,7 +66,7 @@ const FrontpageExample = ({ t }) => (
           {contentCards.slice(0, 4).map(card => (
             <div key={`slide-${card.id}`}>
               <ContentCard
-                url={card.linkTo}
+                toLinkProps={card.toLinkProps}
                 heading={card.title}
                 description={card.text}
                 isFilm={card.isFilm}

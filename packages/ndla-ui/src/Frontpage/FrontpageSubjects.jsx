@@ -1,29 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
+import { injectT } from 'ndla-i18n';
 import { ChevronDown, ChevronUp } from 'ndla-icons/common';
 
 import { OneColumn } from '../Layout';
 import SafeLink from '../common/SafeLink';
 
 const wrapperClasses = BEMHelper('c-frontpage-subjects-wrapper');
-
-const FrontpageSubjectsWrapper = ({ children }) => (
-  <OneColumn noPadding>
-    <div {...wrapperClasses()}>{children}</div>
-  </OneColumn>
-);
-
-FrontpageSubjectsWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default FrontpageSubjectsWrapper;
-
 const sectionClasses = BEMHelper('c-frontpage-subjects-section');
 
 export const FrontpageSubjectsSection = ({
-  heading,
+  name,
   subjects,
   expanded,
   onExpand,
@@ -54,10 +42,10 @@ export const FrontpageSubjectsSection = ({
           {...sectionClasses('expand-button')}
           aria-expanded={expanded}
           aria-controls={id}>
-          <span {...sectionClasses('expand-button-text')}>{heading}</span>
+          <span {...sectionClasses('expand-button-text')}>{name}</span>
           {expanded ? <ChevronUp /> : <ChevronDown />}
         </button>
-        <span {...sectionClasses('heading-text')}>{heading}</span>
+        <span {...sectionClasses('heading-text')}>{name}</span>
       </h1>
       <ul {...sectionClasses('subjects', 'wide')}>{getItems()}</ul>
       <ul
@@ -74,7 +62,7 @@ FrontpageSubjectsSection.propTypes = {
   id: PropTypes.string.isRequired,
   expanded: PropTypes.bool.isRequired,
   onExpand: PropTypes.func.isRequired,
-  heading: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
@@ -84,6 +72,58 @@ FrontpageSubjectsSection.propTypes = {
   ),
 };
 
-FrontpageSubjectsSection.defaultProps = {
-  expanded: false,
+export class FrontpageSubjects extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: props.expanded,
+    };
+  }
+
+  render() {
+    const { subjects, t } = this.props;
+
+    return (
+      <OneColumn wide noPadding>
+        <div {...wrapperClasses()}>
+          {Object.keys(subjects).map(key => (
+            <FrontpageSubjectsSection
+              key={key}
+              expanded={this.state.expanded === key}
+              onExpand={expanded => {
+                this.setState({
+                  expanded: expanded ? key : undefined,
+                });
+              }}
+              id={key}
+              name={t(`welcomePage.category.${subjects[key].name}`)}
+              subjects={subjects[key].subjects}
+            />
+          ))}
+        </div>
+      </OneColumn>
+    );
+  }
+}
+
+FrontpageSubjects.propTypes = {
+  t: PropTypes.func.isRequired,
+  expanded: PropTypes.string,
+  subjects: PropTypes.shape({
+    id: PropTypes.isRequired,
+    name: PropTypes.isRequired,
+    subject: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        yearInfo: PropTypes.string,
+      }),
+    ),
+  }),
 };
+
+FrontpageSubjects.defaultProps = {
+  expanded: undefined,
+};
+
+export default injectT(FrontpageSubjects);

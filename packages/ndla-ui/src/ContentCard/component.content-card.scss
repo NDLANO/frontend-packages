@@ -38,20 +38,21 @@
   }
 
   &__heading {
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-semibold;
     @include font-size(12px);
     margin: 0;
+    color: $brand-color--dark;
 
     @include mq(tablet) {
-      margin: $spacing--small 0 0 0;
+      margin: $spacing--small 0 0;
       @include inuit-font-size(20px);
     }
   }
 
   &__description {
-    @include inuit-font-size(14px);
+    @include inuit-font-size(16px);
     line-height: 1.25rem;
-    font-family: $font-serif;
+    // font-family: $font-serif;
     margin: 0;
     display: none;
 

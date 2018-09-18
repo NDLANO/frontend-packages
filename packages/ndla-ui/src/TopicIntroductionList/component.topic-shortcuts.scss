@@ -6,11 +6,7 @@
   align-items: center;
 
   @include mq(tablet) {
-    display: flex;
-  }
-
-  .c-icon {
-    color: $brand-color;
+    display: inline-flex;
   }
 
   &:hover {
@@ -18,26 +14,12 @@
   }
 
   &__button {
-    background: none;
-    border: 0;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    cursor: pointer;
-    margin-right: $spacing--small / 2;
+    @extend .o-text-link;
     &--re-enter {
       span {
         animation: fadeInLeft 200ms;
       }
     }
-  }
-
-  &__label {
-    color: $brand-color--secondary;
-    display: inline-block;
-    font-weight: 600;
-    line-height: 1rem;
-    margin-left: $spacing--small / 4;
   }
 
   &__list {

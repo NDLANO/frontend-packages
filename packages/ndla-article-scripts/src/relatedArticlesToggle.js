@@ -1,4 +1,5 @@
 import BEMHelper from 'react-bem-helper';
+import jump from 'jump.js';
 import { forEachElement } from './domHelpers';
 
 const classes = new BEMHelper({
@@ -17,6 +18,7 @@ export const toggleRelatedArticles = () => {
       button.onclick = e => {
         e.stopPropagation();
         if (button.innerHTML === button.getAttribute('data-showless')) {
+          const buttonPosition = button.getBoundingClientRect().top;
           button.innerHTML = button.getAttribute('data-showmore');
 
           const hiddenArticles = el.querySelectorAll(`.${shownItem}`);
@@ -25,6 +27,7 @@ export const toggleRelatedArticles = () => {
             hiddenArticles[i].classList.add(hiddenItem);
             hiddenArticles[i].classList.remove(shownItem);
           }
+          jump(button, { offset: -buttonPosition, duration: 300 });
         } else {
           button.innerHTML = button.getAttribute('data-showless');
           const hiddenArticles = el.querySelectorAll(`.${hiddenItem}`);

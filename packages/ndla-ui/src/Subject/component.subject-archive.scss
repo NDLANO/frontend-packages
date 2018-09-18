@@ -62,25 +62,9 @@
   }
 
   &__archive-button {
-    cursor: pointer;
-    background: none;
-    border: 0;
+    @extend .o-text-link;
     margin: $spacing--small 0 0 0;
-    color: $brand-color--secondary;
-    @include font-size(14px, 18px);
-
     padding: $spacing--small/2 0;
-
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-
-    .c-icon {
-      width: 18px;
-      height: 18px;
-      margin-right: 9px;
-    }
-
     @include mq(tablet) {
       margin: $spacing--small/2 $spacing $spacing;
     }

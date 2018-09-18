@@ -107,6 +107,7 @@ export class FrontpageSubjects extends Component {
 }
 
 FrontpageSubjects.propTypes = {
+  t: PropTypes.func.isRequired,
   expanded: PropTypes.string,
   subjects: PropTypes.shape({
     id: PropTypes.isRequired,

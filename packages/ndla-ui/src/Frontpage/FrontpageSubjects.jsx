@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
+import { injectT } from 'ndla-i18n';
 import { ChevronDown, ChevronUp } from 'ndla-icons/common';
 
 import { OneColumn } from '../Layout';
@@ -80,10 +81,12 @@ export class FrontpageSubjects extends Component {
   }
 
   render() {
+    const { subjects, t } = this.props;
+
     return (
       <OneColumn wide noPadding>
         <div {...wrapperClasses()}>
-          {Object.keys(this.props.subjects).map(key => (
+          {Object.keys(subjects).map(key => (
             <FrontpageSubjectsSection
               key={key}
               expanded={this.state.expanded === key}
@@ -93,8 +96,8 @@ export class FrontpageSubjects extends Component {
                 });
               }}
               id={key}
-              name={this.props.subjects[key].name}
-              subjects={this.props.subjects[key].subjects}
+              name={t(`welcomePage.category.${subjects[key].name}`)}
+              subjects={subjects[key].subjects}
             />
           ))}
         </div>
@@ -122,4 +125,4 @@ FrontpageSubjects.defaultProps = {
   expanded: undefined,
 };
 
-export default FrontpageSubjects;
+export default injectT(FrontpageSubjects);

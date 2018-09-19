@@ -170,7 +170,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialiserende',
+      studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',

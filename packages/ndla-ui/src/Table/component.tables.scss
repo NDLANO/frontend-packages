@@ -128,10 +128,10 @@ article table {
 
   @include chinese() {
     th {
-      @include font-size(18px,22px);
+      @include font-size(18px, 22px);
 
       @include mq(tablet) {
-        @include font-size(18px,30px);
+        @include font-size(18px, 30px);
       }
     }
 
@@ -139,14 +139,14 @@ article table {
       @include font-size(16px,18px);
 
       @include mq(tablet) {
-        @include font-size(17px, 26px);
+        @include font-size(18px, 26px);
       }
     }
 
     td {
       @include font-size(16px,22px);
       @include mq(tablet) {
-        @include font-size(17px,30px);
+        @include font-size(18px, 30px);
       }
     }
   }
@@ -221,13 +221,15 @@ article table {
     @include chinese() {
       @include font-size(16px,18px);
       @include mq(tablet) {
-        @include font-size(17px, 26px);
+        @include font-size(18px, 26px);
       }
     }
   }
 
   td {
     border: 1px solid $brand-grey--lighter;
+    vertical-align: top;
+    line-height: 1.6em;
 
     @include font-size(14px,22px);
     @include mq(tablet) {
@@ -237,13 +239,16 @@ article table {
     @include chinese() {
       @include font-size(16px,22px);
       @include mq(tablet) {
-        @include font-size(17px,30px);
+        @include font-size(18px,30px);
       }
     }
 
     p {
-      margin: 0;
       line-height: 1.6em;
+    }
+
+    p:last-child {
+      margin: 0;
     }
 
     img {

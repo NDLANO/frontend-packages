@@ -73,6 +73,7 @@
     transform: translate3d(-50%, 0, 0);
     width: 300px;
     text-align: center;
+    z-index: 1;
 
     &[aria-hidden='false'] {
       display: block;

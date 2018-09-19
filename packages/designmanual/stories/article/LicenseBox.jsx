@@ -9,7 +9,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from 'ndla-tabs';
-import { uuid } from 'ndla-util';
+import { uuid, downloadPdf } from 'ndla-util';
 
 import { injectT } from 'ndla-i18n';
 import {
@@ -31,15 +31,7 @@ import H5PExamples from '../../images/h5p-contenttype';
 
 const triggerDownloadText = () => {
   // TODO: Fetch texts and name from article..
-  const blob = new Blob([mockDownloadArticleText], { type: 'text/html' });
-  const anchor = document.createElement('a');
-
-  anchor.download = 'navn på artikkel';
-  anchor.href = window.URL.createObjectURL(blob);
-  anchor.dataset.downloadurl = ['text/html', anchor.download, anchor.href].join(
-    ':',
-  );
-  anchor.click();
+  downloadPdf({ content: mockDownloadArticleText, title: 'Eksempel artikkel' });
 };
 
 const byncndLicenseAbbreviation = 'by-nc-nd';

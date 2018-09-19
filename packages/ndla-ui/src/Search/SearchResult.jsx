@@ -154,10 +154,15 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
             <SafeLink to={item.url}>{item.title}</SafeLink>
           )}
         </h1>
-        {item.contentTypeIcon}
-        <span {...searchResultItemClasses('content-type-label')}>
-          {item.contentTypeLabel}
-        </span>
+        <div {...searchResultItemClasses('content-type-wrapper')}>
+          {item.contentTypeIcon}
+          <span {...searchResultItemClasses('content-type-label')}>
+            {item.contentTypeLabel}
+          </span>
+        </div>
+        {item.type &&
+          <div {...searchResultItemClasses('pills')}>{item.type}</div>
+        }
         {item.additional &&
           (additionalContentToolip ? (
             <Tooltip
@@ -171,9 +176,6 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
               <Additional className="c-icon--20" />
             </span>
           ))}
-        {item.type &&
-          <span>{item.type}</span>
-        }
       </header>
       {item.breadcrumb &&
         item.breadcrumb.length > 0 && (

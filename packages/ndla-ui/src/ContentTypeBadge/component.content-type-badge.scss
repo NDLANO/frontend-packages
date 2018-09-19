@@ -178,4 +178,16 @@
       }
     }
   }
+
+  &--xx-small {
+    width: 20px;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
 }

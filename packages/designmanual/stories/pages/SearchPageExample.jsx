@@ -36,7 +36,7 @@ const results = [
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Emne',
-    contentTypeIcon: <SubjectBadge size="x-small" background />,
+    contentTypeIcon: <SubjectBadge size="xx-small" background />,
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
     matchTab: ['SUBJECT'],
   },
@@ -47,7 +47,7 @@ const results = [
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Læringssti',
-    contentTypeIcon: <LearningPathBadge size="x-small" background />,
+    contentTypeIcon: <LearningPathBadge size="xx-small" background />,
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
     matchTab: ['LEARNING_PATH'],
   },
@@ -58,7 +58,7 @@ const results = [
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Fagstoff',
-    contentTypeIcon: <SubjectMaterialBadge size="x-small" background />,
+    contentTypeIcon: <SubjectMaterialBadge size="xx-small" background />,
     additional: true,
     image: (
       <Image
@@ -90,7 +90,7 @@ const results = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    contentTypeIcon: <TasksAndActivitiesBadge size="x-small" background />,
+    contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -106,7 +106,7 @@ const results = [
     ingress:
       'Faget Medieuttrykk og mediesamfunnet Vg1 dekker kompetansemålene i de to felles programfagene i utdanningsprogrammet medier og kommunikasjon.',
     contentTypeLabel: 'Vurderingsressurs',
-    contentTypeIcon: <AssessmentResourcesBadge size="x-small" background />,
+    contentTypeIcon: <AssessmentResourcesBadge size="xx-small" background />,
     breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
     matchTab: ['EVALUATION_RESOURCE'],
     type: 'Lærervurdering',
@@ -119,7 +119,7 @@ const results = [
       'Filmen En helt vanlig dag på jobben er regissert av Terje Rangnes etter et manus av Erlend Loe. Manuset er basert på en bok av tidligere Se og Hør-journalist Håvard Melnæs med samme tittel.',
     contentTypeLabel: 'Delte ressurser',
     contentTypeIcon: (
-      <ExternalLearningResourcesBadge size="x-small" background />
+      <ExternalLearningResourcesBadge size="xx-small" background />
     ),
     breadcrumb: [
       'Medieuttrykk og mediesamfunnet',

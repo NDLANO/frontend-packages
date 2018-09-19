@@ -46,6 +46,14 @@ import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
 
 storiesOf('Sidevisninger', module)
+  .add('En side, laster innhold (helt tom)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
   .add('En side uten innhold', () => (
     <PageContainer>
       <Content>

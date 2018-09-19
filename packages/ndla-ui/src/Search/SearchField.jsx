@@ -166,8 +166,8 @@ class SearchField extends Component {
                   filters={filters}
                   onFilterRemove={this.handleOnFilterRemove}
                 />
-            </div>
-          )}
+              </div>
+            )}
           <button
             tabIndex="-1"
             {...classes('button')}

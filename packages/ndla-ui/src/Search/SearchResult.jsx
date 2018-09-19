@@ -160,9 +160,9 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
             {item.contentTypeLabel}
           </span>
         </div>
-        {item.type &&
+        {item.type && (
           <div {...searchResultItemClasses('pills')}>{item.type}</div>
-        }
+        )}
         {item.additional &&
           (additionalContentToolip ? (
             <Tooltip

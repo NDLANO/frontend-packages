@@ -28,6 +28,8 @@ import {
   searchFilterOptions,
 } from './mockSearch';
 
+import { mockDownloadArticleText } from './mockDownloadArticleText';
+
 import contentCards from './mockContentCards';
 
 export {
@@ -52,4 +54,5 @@ export {
   searchTabFilterOptions,
   searchFilterOptions,
   contentCards,
+  mockDownloadArticleText,
 };

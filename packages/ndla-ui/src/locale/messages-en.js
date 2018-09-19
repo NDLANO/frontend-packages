@@ -292,6 +292,9 @@ const messages = {
       description:
         'Remember to copy the text to be attached to the image where you use it.',
       rules: 'Rules for use of image:',
+      itemImage: {
+        ariaLabel: 'Open image in new window',
+      },
       source: 'Source',
       title: 'Title',
     },
@@ -313,6 +316,26 @@ const messages = {
       description:
         'Remember to copy the text to be attached to the video where you use it.',
       rules: 'Rules for use of audio file:',
+      itemImage: {
+        ariaLabel: 'Open video in new window',
+      },
+    },
+    other: {
+      heading: 'How to use other content from the article',
+      description:
+        'You will find guidelines for use of other content in the asset',
+      itemImage: {
+        ariaLabel: 'Open video in new window',
+      },
+    },
+    files: {
+      heading: 'How to use files from the article',
+      description:
+        'Remember to copy the text to be attached to the file where you use it.',
+      rules: 'Rules for use of file:',
+      itemImage: {
+        ariaLabel: 'Open video in new window',
+      },
     },
     learnMore: 'Learn more about open licenses',
     copyTitle: 'Copy reference',

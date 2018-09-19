@@ -298,6 +298,9 @@ const messages = {
       description:
         'Hugs å kopiera teksten som skal leggjast ved bildet der du bruker det.',
       rules: 'Regler for bruk av bildet:',
+      itemImage: {
+        ariaLabel: 'Opne bilde i eit nytt vindauge',
+      },
       source: 'Kjelde',
       title: 'Tittel',
     },
@@ -315,10 +318,30 @@ const messages = {
       rules: 'Regler for bruk av lydfila:',
     },
     video: {
-      heading: 'Slik bruker du video fra artikkelen',
+      heading: 'Slik bruker du video frå artikkelen',
       description:
         'Hugs å kopiera teksten som skal leggjast ved videoen der du bruker han.',
       rules: 'Regler for bruk av videoen:',
+      itemImage: {
+        ariaLabel: 'Opne video i eit nytt vindauge',
+      },
+    },
+    other: {
+      heading: 'Slik bruker du annet innhold frå artikkelen',
+      description:
+        'Du finner retningslinjene for bruk av innholdet i innholdselementet.',
+      itemImage: {
+        ariaLabel: 'Åpne i nytt vindauge',
+      },
+    },
+    files: {
+      heading: 'Slik bruker du filer frå artikkelen',
+      description:
+        'Husk å kopier teksten som skal legges ved filen der du bruker den.',
+      rules: 'Regler for bruk av filen:',
+      itemImage: {
+        ariaLabel: 'Åpne i nytt vindauge',
+      },
     },
     creditType: {
       originator: 'Opphavsmann',

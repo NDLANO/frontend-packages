@@ -64,12 +64,29 @@
       align-items: center;
       justify-content: center;
       border-radius: $border-radius;
-      border: 2px solid $brand-color--tertiary;
-      transition: all 300ms ease;
       width: 100%;
-      &:hover, &:focus {
-        border-color: $brand-color;
-        background: lighten($brand-color--tertiary, 5);
+      position: relative;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        right: $spacing--small;
+        bottom: $spacing--small;
+        border-radius: 100%;
+        @include svg_icon(openInNew, #fff);
+        background-color: $brand-color;
+        background-size: 18px 18px;
+        background-position-x: center;
+        background-position-y: center;
+        background-repeat: no-repeat;
+        width: $spacing--medium;
+        height: $spacing--medium;
+      }
+      &:hover {
+        &:before {
+          background-color: $brand-color--dark;
+          transform: scale3d(1.1, 1.1, 1);
+        }
       }
     }
   }
@@ -98,7 +115,7 @@
 }
 .c-medialist__ref {
   background: $white;
-  padding: $spacing--small $spacing $spacing;
+  padding: $spacing--small $spacing;
   @include mq(tablet) {
     padding-left: $spacing--small + 24px;
   }
@@ -123,4 +140,7 @@
   margin-bottom: $spacing--small/2;
   @include inuit-font-size(16px);
   color: $brand-color;
+  + p {
+    margin-top: 0;
+  }
 }

@@ -25,7 +25,7 @@ html.ie #root {
 .c-medialist__body .c-license-icons__item:first-child {
   margin-bottom: $spacing--small;
   border-bottom: 1px solid $brand-color--tertiary;
-
+  padding-bottom: $spacing--small;
   svg {
     fill: $brand-color;
   }

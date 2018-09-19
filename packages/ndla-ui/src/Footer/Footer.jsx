@@ -9,7 +9,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Modal, ModalHeader, ModalBody, ModalCloseButton } from 'ndla-ui';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from 'ndla-ui';
 
 import { privacyTexts } from './privacyTexts';
 

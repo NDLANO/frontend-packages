@@ -50,7 +50,12 @@ MastheadInfo.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const Masthead = ({ children, fixed, infoContent, showLoaderWhenNeeded }) => (
+export const Masthead = ({
+  children,
+  fixed,
+  infoContent,
+  showLoaderWhenNeeded,
+}) => (
   <Fragment>
     <div {...classes('placeholder', { infoContent })} />
     <div {...classes('', { fixed, infoContent, showLoaderWhenNeeded })}>

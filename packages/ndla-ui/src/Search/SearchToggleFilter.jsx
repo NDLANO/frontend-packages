@@ -20,6 +20,7 @@ const SearchToggleFilter = ({ checked, onClick, label, narrow, wide }) => (
     {...classes('list', {
       narrow,
       wide,
+      'filter-single-checkbox': true,
     })}>
     <div {...classes('item')}>
       <input

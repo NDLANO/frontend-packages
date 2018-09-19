@@ -1,7 +1,7 @@
 .c-toggle-search-button {
   &__button {
     background: $brand-grey--lighter;
-    border-radius: 4px;
+    border-radius: $border-radius;
     border: 0;
     color: $brand-color;
     margin-right: $spacing--medium;

@@ -81,6 +81,7 @@ const results = [
       },
     ],
     matchTab: ['SUBJECT_MATERIAL'],
+    type: 'Undervisningsfilm',
   },
   {
     id: 4,
@@ -96,6 +97,7 @@ const results = [
       'Geologi for brønnteknikk',
     ],
     matchTab: ['TASKS_AND_ACTIVITIES'],
+    type: 'Oppgave',
   },
   {
     id: 5,
@@ -107,6 +109,7 @@ const results = [
     contentTypeIcon: <AssessmentResourcesBadge size="x-small" background />,
     breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
     matchTab: ['EVALUATION_RESOURCE'],
+    type: 'Lærervurdering',
   },
   {
     id: 6,
@@ -124,6 +127,7 @@ const results = [
       'Journalistikk',
     ],
     matchTab: ['SHARED_RESOURCES'],
+    type: 'Delt læringsressurs',
   },
 ];
 

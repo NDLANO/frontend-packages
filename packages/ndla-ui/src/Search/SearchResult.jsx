@@ -143,13 +143,6 @@ const searchResultItemShape = PropTypes.shape({
   contentTypeLabel: PropTypes.string.isRequired,
 });
 
-const messagesShape = PropTypes.shape({
-  subjectsLabel: PropTypes.string.isRequired,
-  noResultHeading: PropTypes.string.isRequired,
-  noResultDescription: PropTypes.string.isRequired,
-  additionalContentToolip: PropTypes.string,
-});
-
 const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
   <li key={item.id} {...searchResultItemClasses()}>
     <article>
@@ -178,6 +171,9 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
               <Additional className="c-icon--20" />
             </span>
           ))}
+        {item.type &&
+          <span>{item.type}</span>
+        }
       </header>
       {item.breadcrumb &&
         item.breadcrumb.length > 0 && (
@@ -261,5 +257,4 @@ export const SearchResultList = ({ results }) => (
 
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),
-  messages: messagesShape.isRequired,
 };

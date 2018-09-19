@@ -107,6 +107,7 @@ class SearchField extends Component {
       allResultUrl,
       onSearch,
       resourceToLinkProps,
+      small,
       t,
     } = this.props;
 
@@ -146,7 +147,7 @@ class SearchField extends Component {
             }}
             title={messages.searchFieldTitle}
             type="search"
-            {...classes('input')}
+            {...classes('input', { small })}
             aria-autocomplete="list"
             autoComplete="off"
             id="search"
@@ -158,15 +159,15 @@ class SearchField extends Component {
             onBlur={this.onInputBlur}
             onFocus={this.onInputFocus}
           />
-          <div {...classes('filters')}>
-            {filters &&
-              filters.length > 0 && (
+          {filters &&
+            filters.length > 0 && (
+              <div {...classes('filters')}>
                 <ActiveFilters
                   filters={filters}
                   onFilterRemove={this.handleOnFilterRemove}
                 />
-              )}
-          </div>
+            </div>
+          )}
           <button
             tabIndex="-1"
             {...classes('button')}
@@ -197,6 +198,7 @@ SearchField.propTypes = {
   allResultUrl: PropTypes.string,
   resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
+  small: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 

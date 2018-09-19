@@ -91,14 +91,6 @@ class SearchPage extends Component {
         </div>
         {author}
         <div {...classes('filter-result-wrapper')}>
-          <button
-            type="button"
-            onClick={() => {
-              this.handleToggleFilter(false);
-            }}
-            {...classes('filter-close-button')}>
-            <Back /> <span>{messages.narrowScreenFilterHeading}</span>
-          </button>
           <aside {...classes('filter-wrapper')}>
             <h1 {...classes('filter-heading')}>
               {t('searchPage.searchPageMessages.filterHeading')}
@@ -132,9 +124,13 @@ class SearchPage extends Component {
                 }>
                 {onClose => (
                   <Fragment>
-                    <ModalHeader modifier="white">
+                    <ModalHeader modifier="white left-align">
                       <ModalCloseButton
-                        title={t('searchPage.searchFilterMessages.closeFilter')}
+                        title={
+                          <Fragment>
+                            <Back /> {messages.narrowScreenFilterHeading}
+                          </Fragment>
+                        }
                         onClick={onClose}>
                         Close
                       </ModalCloseButton>

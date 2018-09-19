@@ -69,6 +69,20 @@ $overlay-height: 136px;
       @include mq(desktop) {
         padding-left: $spacing;
       }
+      padding-left: 0;
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &:focus {
+        border: 1px solid $brand-color;
+        border-left: 0;
+
+        & + .c-search-field__filters {
+          border: 1px solid $brand-color;
+          border-right: 0;
+        }
+      }
     }
   }
 
@@ -114,32 +128,24 @@ $overlay-height: 136px;
     height: 48px;
     line-height: 48px;
     border: 1px solid $brand-grey--light;
-    border-radius: 4px;
+    border-radius: $border-radius;
     padding-right: $spacing--large;
+    padding-left: $spacing;
     flex-grow: 1;
     outline: 0;
 
     &:focus {
-      border: 1px solid $brand-color;
-      border-left: 0;
-
-      & + .c-search-field__filters {
-        border: 1px solid $brand-color;
-        border-right: 0;
-      }
+      border-color: $brand-color;
     }
-
-    border-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    padding-left: 0;
 
     @include font-size(16px, 20px);
 
-    @include mq(tablet) {
-      height: 58px;
-      line-height: 58px;
-      @include font-size(18px, 24px);
+    &:not(&--small) {
+      @include mq(tablet) {
+        height: 58px;
+        line-height: 58px;
+        @include font-size(18px, 24px);
+      }
     }
   }
 
@@ -171,6 +177,20 @@ $overlay-height: 136px;
     @include mq(tablet) {
       position: relative;
       padding: 0;
+    }
+
+    &--with-icon {
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        @include svg_icon(search, $brand-grey);
+        background-size: 24px 24px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: $spacing--large;
+        height: 24px;
+      }
     }
   }
 

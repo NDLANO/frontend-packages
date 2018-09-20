@@ -35,11 +35,13 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
         <h2 {...classes('title')}>
           {convertFieldWithFallback(image, 'title', '')}
         </h2>
-        <div {...classes('copyright-author')}>
-          <span {...classes('text', 'right')}>
-            {image.copyright.creators.map(creator => creator.name).join(', ')}
-          </span>
-        </div>
+        {image.copyright.creators && image.copyright.creators.length > 0 ? (
+          <div {...classes('copyright-author')}>
+            <span {...classes('text', 'right')}>
+              {image.copyright.creators.map(creator => creator.name).join(', ')}
+            </span>
+          </div>
+        ) : null}
         <div {...classes('license')}>
           <span {...classes('text', 'right')}>
             {image.copyright.license.description}

@@ -64,6 +64,7 @@ export const ImageSearcher = () => {
       locale="nb"
       onImageSelect={imageSelect}
       onError={onError}
+      noResults={<div>Søket gav ingen treff</div>}
     />
   );
 };

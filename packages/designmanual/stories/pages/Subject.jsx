@@ -37,8 +37,8 @@ import {
 import { EmailOutline } from 'ndla-icons/common';
 import { breakpoints } from 'ndla-util';
 
-import exampleBackground from '../../images/banners/salg_service_sikkerhet.svg';
-import chineseBackground from '../../images/banners/kinesisk.svg';
+import exampleBackground from '../../images/banners/Salg-service-og-sikkerhet.svg';
+import chineseBackground from '../../images/banners/Kinesisk.svg';
 import article, { contentCards } from '../../dummydata/index';
 
 import TopicListExample from '../molecules/TopicListExample';

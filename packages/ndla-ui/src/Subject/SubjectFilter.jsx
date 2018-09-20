@@ -13,7 +13,7 @@ const searchFilterClasses = BEMHelper({
 const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 const SubjectFilter = ({ label, options, values, onChange }) => (
-  <div className={searchFilterClasses('', ['subject', 'background'])}>
+  <div className={searchFilterClasses('', 'background')}>
     <FilterList
       onChange={onChange}
       labelNotVisible

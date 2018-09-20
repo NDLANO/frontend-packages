@@ -27,7 +27,7 @@ import {
 import { StoryIntro, BannerList } from '../wrappers';
 
 import MastheadWithTopicMenu from '../molecules/mastheads';
-import Subject, { SubjectWithTwoColumn } from './Subject';
+import Subject, { SubjectWithTwoColumn, SubjectLanguage } from './Subject';
 
 import FooterExample from '../molecules/footers';
 import ArticleLoader from '../article/ArticleLoader';
@@ -289,7 +289,16 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('4. Hovedemne', () => (
+  .add('4. Fagforside språk', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectLanguage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('5. Hovedemne', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />
@@ -313,7 +322,7 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('5. Underemne', () => (
+  .add('6. Underemne', () => (
     <PageContainer backgroundWide>
       <Content>
         <MastheadWithTopicMenu />

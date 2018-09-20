@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { ArticleByline } from 'ndla-ui';
 import LicenseBox from '../article/LicenseBox';
 
+import cecilie from '../../images/cecilie.png';
+
 export const authorSimple = {
   role: '[Rolle]',
   name: 'Ola nordmann',
@@ -12,7 +14,7 @@ export const authorSimple = {
   title: '[Tittel]',
   phone: '[Telefon nr]',
   email: '[Epost]',
-  image: 'http://via.placeholder.com/200x200',
+  image: cecilie,
   introduction: '[Introduksjonstekst]',
 };
 
@@ -26,12 +28,13 @@ export const authorRealText = [
     title: 'Stilling',
     phone: '+47 123 45 678',
     email: 'cecilie@ndla.no',
-    image: 'http://via.placeholder.com/200x200',
-    introduction: 'Er fagleder for bla bla..',
+    image: cecilie,
+    introduction:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     licenses: 'CC BY-NC-SA',
   },
   {
-    role: 'Fotograf',
+    role: 'Illustratør',
     name: 'Siv Mundal',
     shortName: 'Siv',
     urlContributions: '#',
@@ -39,12 +42,13 @@ export const authorRealText = [
     title: 'Stilling',
     phone: '+47 123 45 678',
     email: 'siv.mundal@keyteq.no',
-    image: 'http://via.placeholder.com/200x200',
-    introduction: 'Er fagleder for bla bla..',
+    image: cecilie,
+    introduction:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     licenses: 'CC BY-NC-SA',
   },
   {
-    role: 'Fagansvarlig',
+    role: 'Manusforfatter',
     name: 'Pål Frønsdal',
     shortName: 'Pål',
     urlContributions: '#',
@@ -52,8 +56,9 @@ export const authorRealText = [
     title: 'Stilling',
     phone: '+47 123 45 678',
     email: 'paal.fronsdal@ndla.no',
-    image: 'http://via.placeholder.com/200x200',
-    introduction: 'Er fagleder for bla bla..',
+    image: cecilie,
+    introduction:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     licenses: 'CC BY-NC-SA',
   },
 ];

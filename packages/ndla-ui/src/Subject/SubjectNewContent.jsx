@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronLeft } from 'ndla-icons/common';
+import { ChevronRight } from 'ndla-icons/common';
+import { ContentTypeBadge, SafeLink } from 'ndla-ui';
 
 import { SubjectSectionTitle } from './Subject';
-import SafeLink from '../common/SafeLink';
 
 const classes = BEMHelper('c-subject-new-content');
 
@@ -18,13 +18,27 @@ const SubjectNewContent = ({ heading, content }) => (
         {content.map(item => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
-              <SafeLink {...item.toLinkProps()} {...classes('link')}>
-                {item.name}
-              </SafeLink>
-              <ChevronLeft />
-              <span {...classes('topic-name')}>{item.topicName}</span>
+              <ContentTypeBadge
+                type={item.contentType}
+                size="x-small"
+                background
+                outline
+              />
+              <div {...classes('content-link')}>
+                <div {...classes('date')}>{item.formattedDate}</div>
+                <SafeLink to={item.url} {...classes('link')}>
+                  {item.name}
+                </SafeLink>
+                <div {...classes('topic-name')}>
+                  {item.topicName.map((topic, index) => (
+                    <Fragment key={topic}>
+                      {index > 0 && <ChevronRight />}
+                      {topic}
+                    </Fragment>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div {...classes('date')}>{item.formattedDate}</div>
           </li>
         ))}
       </ul>
@@ -38,9 +52,9 @@ SubjectNewContent.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-      toLinkProps: PropTypes.func.isRequired,
-      topicName: PropTypes.string.isRequired,
+      topicName: PropTypes.arrayOf(PropTypes.string).isRequired,
       formattedDate: PropTypes.string.isRequired,
+      contentType: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };

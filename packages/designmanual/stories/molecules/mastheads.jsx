@@ -168,6 +168,7 @@ class MastheadWithTopicMenu extends Component {
                 isBeta={this.props.beta}
                 searchFieldComponent={searchButtonView}
                 subjectTitle="Mediefag"
+                toFrontpage={() => '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'}
                 toSubject={() => '#'}
                 toTopic={() => '#'}
                 topics={topicMenu}
@@ -221,7 +222,7 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem right>
           {searchButtonView}
           <Logo
-            to="#"
+            to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
             label="Nasjonal digital læringsarena"
             isBeta={this.props.beta}
           />

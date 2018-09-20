@@ -26,11 +26,6 @@ const filterClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-const topicMenuClasses = new BEMHelper({
-  name: 'topic-menu',
-  prefix: 'c-',
-});
-
 class FilterListPhone extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +48,7 @@ class FilterListPhone extends Component {
 
   setScreenSize(initial = false) {
     const isNarrowScreen =
-      (window.innerWidth || document.documentElement.clientWidth) < 769;
+      (window.innerWidth || document.documentElement.clientWidth) < 768;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -77,6 +72,8 @@ class FilterListPhone extends Component {
       hideLabel,
       messages,
       alignedGroup,
+      collapseMobile,
+      activeFiltersNarrow,
     } = this.props;
 
     const showAll =
@@ -92,7 +89,7 @@ class FilterListPhone extends Component {
         values.some(value => value === option.value),
       );
       return (
-        <div {...topicMenuClasses('filter-phone-wrapper')}>
+        <div className={activeFiltersNarrow && filterClasses('narrow-active-filters').className}>
           {currentlyActiveFilters.length > 0 && (
             <ActiveFilters
               filters={currentlyActiveFilters}
@@ -105,7 +102,7 @@ class FilterListPhone extends Component {
             size="fullscreen"
             animation="slide-up"
             backgroundColor="grey"
-            activateButton={<Button outline>{messages.openFilter}</Button>}>
+            activateButton={<Button outline {...filterClasses('modal-button')}>{messages.openFilter}</Button>}>
             {onClose => (
               <Fragment>
                 <ModalHeader modifier={['grey-dark', 'left-align']}>
@@ -123,6 +120,7 @@ class FilterListPhone extends Component {
                   <ul
                     {...filterClasses('item-wrapper', {
                       'aligned-grouping': alignedGroup,
+                      'collapse-mobile': collapseMobile,
                     })}>
                     {options.map(option => (
                       <li {...filterClasses('item')} key={option.value}>
@@ -197,6 +195,7 @@ class FilterListPhone extends Component {
                   type="checkbox"
                   id={option.value}
                   value={option.value}
+                  tabIndex={option.noResults ? -1 : 0}
                   checked={checked}
                   onChange={event => {
                     let newValues = null;
@@ -282,6 +281,8 @@ FilterListPhone.propTypes = {
   hideLabel: PropTypes.string,
   onToggle: PropTypes.func,
   alignedGroup: PropTypes.bool,
+  collapseMobile: PropTypes.bool,
+  activeFiltersNarrow: PropTypes.bool,
   messages: PropTypes.shape({
     useFilter: PropTypes.string.isRequired,
     openFilter: PropTypes.string.isRequired,
@@ -295,6 +296,7 @@ FilterListPhone.defaultProps = {
   defaultVisibleCount: null,
   onToggle: null,
   alignedGroup: false,
+  collapseMobile: true,
 };
 
 export default FilterListPhone;

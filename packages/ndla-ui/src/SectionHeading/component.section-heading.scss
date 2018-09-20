@@ -7,6 +7,7 @@
     @include font-size(20px, 26px);
   }
   &--large {
+    margin: 0 0 $spacing--small 0;
     @include font-size(16px, 32px);
 
     @include mq(tablet) {

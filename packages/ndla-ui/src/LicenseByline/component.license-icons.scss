@@ -31,10 +31,11 @@
   background: $brand-color;
   color: $white;
   text-align: left;
-  padding: $spacing--small/2 $spacing--small;
+  border-radius: 2px;
+  padding: $spacing--small;
   font-family: $font;
-  transform: translate(0, calc(-100% - 6.5px));
-  @include inuit-font-size(13px);
+  transform: translate(0, calc(-100% - 6px));
+  @include font-size(14px, 18px);
 }
 .c-license-icons__item:hover {
   .c-license-icons__icon--hover {
@@ -43,8 +44,8 @@
   .c-license-icons__hover {
     display: block;
     opacity: 1;
-    // animation-name: fadeIn;
-    // animation-duration: 400ms;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
   }
 }
 

@@ -23,7 +23,7 @@ export const Hero = ({ children, contentType }) => (
 );
 
 Hero.propTypes = {
-  contentType: ContentTypeShape.isRequired,
+  contentType: ContentTypeShape,
   children: PropTypes.node,
 };
 

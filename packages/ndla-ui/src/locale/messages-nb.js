@@ -123,7 +123,13 @@ const messages = {
       label: 'Filter',
     },
     newContent: {
-      heading: 'Nytt innhold',
+      heading: 'Har du fått med deg?',
+    },
+    subjectIsBeta: {
+      iconLabel: 'i arbeid',
+      dialogHeader: 'Faget er i arbeid',
+      dialogText:
+        'Du kan lese mer om hva dette betyr på',
     },
   },
   subjectsPage: {

@@ -100,7 +100,7 @@ export default class TopicMenu extends Component {
 
   setScreenSize(initial = false) {
     const isNarrowScreen =
-      (window.innerWidth || document.documentElement.clientWidth) < 769;
+      (window.innerWidth || document.documentElement.clientWidth) < 768;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -272,8 +272,9 @@ export default class TopicMenu extends Component {
                       {!competenceGoalsOpen &&
                         filterOptions &&
                         filterOptions.length > 1 && (
-                          <Fragment>
+                          <div {...classes('filter-wrapper')}>
                             <FilterListPhone
+                              activeFiltersNarrow
                               alignedGroup
                               options={filterOptions}
                               values={filterValues}
@@ -285,7 +286,7 @@ export default class TopicMenu extends Component {
                               }}
                               label={`${subjectTitle}:`}
                             />
-                          </Fragment>
+                          </div>
                         )}
                       {!competenceGoalsOpen && (
                         <div {...classes('back-button-slide-wrapper')}>
@@ -458,6 +459,7 @@ export default class TopicMenu extends Component {
 
 TopicMenu.propTypes = {
   topics: PropTypes.arrayOf(TopicShape).isRequired,
+  toFrontpage: PropTypes.func.isRequired,
   toTopic: PropTypes.func.isRequired,
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,

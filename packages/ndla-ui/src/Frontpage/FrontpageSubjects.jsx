@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { injectT } from 'ndla-i18n';
 import { ChevronDown, ChevronUp } from 'ndla-icons/common';
+import {
+  Modal,
+  ModalBody,
+  ModalHeader,
+  ModalCloseButton,
+  Button,
+} from 'ndla-ui';
 
 import { OneColumn } from '../Layout';
 import SafeLink from '../common/SafeLink';
@@ -10,12 +17,14 @@ import SafeLink from '../common/SafeLink';
 const wrapperClasses = BEMHelper('c-frontpage-subjects-wrapper');
 const sectionClasses = BEMHelper('c-frontpage-subjects-section');
 
-export const FrontpageSubjectsSection = ({
+export const FrontpageSubjectsSection = injectT(({
   name,
   subjects,
+  linkToAbout,
   expanded,
   onExpand,
   id,
+  t,
 }) => {
   const getItems = (disable = false) =>
     subjects.map(subject => (
@@ -26,8 +35,37 @@ export const FrontpageSubjectsSection = ({
           {...sectionClasses('link')}
           aria-label={`${subject.text} ${subject.yearInfo}`}>
           <span {...sectionClasses('text')}>{subject.text}</span>
-          <span {...sectionClasses('year-info')}>{subject.yearInfo}</span>
+          {subject.yearInfo && <span {...sectionClasses('year-info')}>{subject.yearInfo}</span>}
         </SafeLink>
+        {subject.beta && (
+          <Modal
+            narrow
+            containerClass={sectionClasses('beta-label-container').className}
+            activateButton={
+              <Button
+                lighter
+                {...sectionClasses('beta-label')}
+                aria-label={t('subjectPage.subjectIsBeta.dialogHeader')}>
+                {t('subjectPage.subjectIsBeta.iconLabel')}
+              </Button>
+            }>
+            {onClose => (
+              <Fragment>
+                <ModalHeader>
+                  <ModalCloseButton
+                    onClick={onClose}
+                    title={t('modal.closeModal')}
+                  />
+                </ModalHeader>
+                <ModalBody>
+                  <h1>{t('subjectPage.subjectIsBeta.dialogHeader')}</h1>
+                  <hr />
+                  <p>{t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}</p>
+                </ModalBody>
+              </Fragment>
+            )}
+          </Modal>
+        )}
       </li>
     ));
 
@@ -56,13 +94,14 @@ export const FrontpageSubjectsSection = ({
       </ul>
     </nav>
   );
-};
+});
 
 FrontpageSubjectsSection.propTypes = {
   id: PropTypes.string.isRequired,
   expanded: PropTypes.bool.isRequired,
   onExpand: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  linkToAbout: PropTypes.node.isRequired,
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
@@ -81,7 +120,7 @@ export class FrontpageSubjects extends Component {
   }
 
   render() {
-    const { subjects, t } = this.props;
+    const { subjects, linkToAbout, t } = this.props;
 
     return (
       <OneColumn wide noPadding>
@@ -98,6 +137,7 @@ export class FrontpageSubjects extends Component {
               id={key}
               name={t(`welcomePage.category.${subjects[key].name}`)}
               subjects={subjects[key].subjects}
+              linkToAbout={linkToAbout}
             />
           ))}
         </div>
@@ -120,6 +160,7 @@ FrontpageSubjects.propTypes = {
       }),
     ),
   }),
+  linkToAbout: PropTypes.node.isRequired,
 };
 
 FrontpageSubjects.defaultProps = {

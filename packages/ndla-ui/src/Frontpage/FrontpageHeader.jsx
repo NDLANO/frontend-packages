@@ -72,7 +72,7 @@ const FrontpageHeader = ({
                     </div>
                     <div {...classesMenu('masthead-right')}>
                       <Logo
-                        to="#"
+                        to={logoTo}
                         label="Nasjonal digital læringsarena"
                         cssModifier="always-show"
                       />

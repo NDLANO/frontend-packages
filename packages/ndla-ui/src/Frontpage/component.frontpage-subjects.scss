@@ -28,9 +28,12 @@
     min-height: 48px;
     background: $white;
     margin-bottom: 2px;
-    padding: 0 $spacing--medium;
-
+    padding: 0 $spacing;
     overflow: hidden;
+  }
+
+  @include mq($until: mobileWide) {
+    padding: 0 20px;
   }
 
   &--expanded {
@@ -102,18 +105,21 @@
 
   &__item {
     margin: $spacing--small / 2 0;
-    display: block;
-    a {
+    display: inline-flex;
+    width: 100%;
+    > * {
       padding: $spacing--small / 2 0;
+      display: inline-flex;
     }
 
     @include mq($until: tablet) {
-      a {
+      > a {
         padding-top: $spacing--small;
         padding-bottom: $spacing--small;
         display: flex;
       }
       margin-bottom: 0;
+      justify-content: space-between;
     }
 
     &:last-child {
@@ -160,6 +166,13 @@
     @include mq(tablet) {
       @include font-size(14px, 18px);
     }
+  }
+  &__beta-label-container {
+    margin-left: $spacing--small;
+  }
+  &__beta-label {
+    padding: $spacing--small / 2;
+    line-height: 1em;
   }
 }
 

@@ -85,7 +85,7 @@ $navigation-row-width: 980px / 3;
   position: relative;
   display: flex;
   flex-flow: column;
-  padding: $masthead-height 0 0 0;
+  padding: 0;
   min-height: 100%;
   &--fill-page {
     min-height: calc(100vh - 77px);
@@ -93,7 +93,6 @@ $navigation-row-width: 980px / 3;
 
   @include mq(desktop) {
     min-height: auto;
-    margin-top: $masthead-height;
     padding: 0 0 $spacing--large 0;
     overflow: auto;
   }
@@ -283,6 +282,7 @@ $navigation-row-width: 980px / 3;
 
   @include mq($until: tabletWide) {
     margin-top: 0;
+    margin-bottom: 0;
     padding-left: $spacing;
   }
 
@@ -305,20 +305,6 @@ $navigation-row-width: 980px / 3;
       margin-bottom: 0 !important;
       h1 {
         padding-left: $left-margin-narrow-screen;
-      }
-    }
-    .c-filter__list {
-      width: 100% !important;
-      margin: $spacing 0 0 0 !important;
-      padding: $spacing--small / 2 $left-margin-narrow-screen;
-      background: $brand-grey--lighter;
-      flex-direction: row;
-      .c-filter__item label {
-        padding-left: 0;
-        flex-direction: row;
-        .c-filter__item-checkbox {
-          margin-right: $spacing--small;
-        }
       }
     }
     .c-content-type-result {
@@ -453,20 +439,6 @@ $navigation-row-width: 980px / 3;
 }
 
 .c-topic-menu {
-  &__filter-phone-wrapper {
-    padding: $spacing;
-    @include mq($until: mobileWide) {
-      padding: $left-margin-narrow-screen;
-    }
-    .c-active-filters {
-      padding-bottom: 0;
-      flex-direction: row;
-      button {
-        margin-right: $spacing--small / 2;
-        width: auto;
-      }
-    }
-  }
   &__competence {
     flex-grow: 1;
     background: $brand-color--lighter;
@@ -480,9 +452,6 @@ $navigation-row-width: 980px / 3;
       left: 0;
       right: 0;
       bottom: 0;
-      .c-topic-menu__filter-phone-wrapper {
-        padding: 0 0 $spacing;
-      }
     }
 
     @include mq(tabletWide) {
@@ -501,6 +470,12 @@ $navigation-row-width: 980px / 3;
       animation-name: fadeInLeft;
       animation-duration: 0.5s;
       transform: translate3d(0px, 0px, 0px);
+    }
+  }
+
+  &__filter-wrapper {
+    @include mq($until: tabletWide) {
+      padding: $left-margin-narrow-screen;
     }
   }
 

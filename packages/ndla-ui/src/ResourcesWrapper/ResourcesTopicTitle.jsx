@@ -1,21 +1,35 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { HelpCircle } from 'ndla-icons/common';
-import { uuid } from 'ndla-util';
-import { ClickToggle, Tooltip } from 'ndla-ui';
+import { HelpCircleDual } from 'ndla-icons/common';
+import { injectT } from 'ndla-i18n';
+import {
+  Modal,
+  ModalBody,
+  ModalHeader,
+  ModalCloseButton,
+  Tooltip,
+} from 'ndla-ui';
 
 import { classes } from './ResourcesWrapper';
 
 import ResourceToggleFilter from '../ResourceGroup/ResourceToggleFilter';
 
+const HelpIcon = () => (
+  <div {...classes('topic-title-icon')}>
+    <HelpCircleDual
+      className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`}
+    />
+  </div>
+);
+
 const ResourcesTopicTitle = ({
   title,
-  explainationIconLabelledBy,
   hasAdditionalResources,
   toggleAdditionalResources,
   showAdditionalResources,
   messages,
+  t,
 }) => {
   // Fix for heading while title not required when ready.
   let heading;
@@ -37,34 +51,35 @@ const ResourcesTopicTitle = ({
             label={messages.additionalFilterLabel}
             onClick={toggleAdditionalResources}
           />
-          {messages.dialogTooltip && (
-            <ClickToggle
-              id="resource-title-tooltip"
-              stripped
-              labelledby={explainationIconLabelledBy}
-              title={
-                <Tooltip
-                  id="resource-title-tooltip"
-                  tooltip={messages.dialogTooltip}
-                  align="top">
-                  <div {...classes('topic-title-icon')}>
-                    <HelpCircle
-                      className={`c-icon--22 u-margin-left-tiny ${
-                        classes('icon').className
-                      }`}
-                    />
-                  </div>
-                </Tooltip>
-              }
-              openTitle={messages.closeLabel}>
+          <Modal
+            narrow
+            wrapperFunctionForButton={activateButton => (
+              <Tooltip tooltip={t('resource.dialogTooltip')}>
+                {activateButton}
+              </Tooltip>
+            )}
+            activateButton={
+              <button className="c-button c-button--stripped" type="button">
+                <HelpIcon />
+              </button>
+            }>
+            {onClose => (
               <Fragment>
-                <h1 id={explainationIconLabelledBy}>
-                  {messages.dialogHeading}
-                </h1>
-                {messages.dialogTexts.map(text => <p key={uuid()}>{text}</p>)}
+                <ModalHeader>
+                  <ModalCloseButton
+                    title={t('modal.closeModal')}
+                    onClick={onClose}
+                  />
+                </ModalHeader>
+                <ModalBody>
+                  <h1>{t('resource.dialogHeading')}</h1>
+                  <hr />
+                  <p>{t('resource.dialogText1')}</p>
+                  <p>{t('resource.dialogText2')}</p>
+                </ModalBody>
               </Fragment>
-            </ClickToggle>
-          )}
+            )}
+          </Modal>
         </div>
       )}
     </header>
@@ -76,25 +91,12 @@ ResourcesTopicTitle.propTypes = {
   title: PropTypes.string, // Should be required
   toggleAdditionalResources: PropTypes.func.isRequired,
   hasAdditionalResources: PropTypes.bool.isRequired,
-  explainationIconLabelledBy: (props, propName, componentName) => {
-    if (typeof props[propName] !== 'string' && props.hasAdditionalResources) {
-      console.warn(
-        `<${componentName} /> explainationIconLabelledBy prop must be a string if props[hasAdditionalResources] === true`,
-      );
-      return new Error(
-        `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`,
-      );
-    }
-    return null;
-  },
   showAdditionalResources: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     label: PropTypes.string.isRequired,
-    dialogTooltip: PropTypes.string, // should be required
-    dialogHeading: PropTypes.string, // should be required
-    dialogTexts: PropTypes.arrayOf(PropTypes.string), // should be required
     additionalFilterLabel: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default ResourcesTopicTitle;
+export default injectT(ResourcesTopicTitle);

@@ -23,20 +23,18 @@
     padding: 0;
 
     &--twoColumns {
-      @include mq(tablet) {
+      @include mq(850px) {
         display: flex;
         flex-wrap: wrap;
         border-bottom: none;
         margin-bottom: 0;
+        justify-content: space-between;
       }
 
       & > li {
-        flex-basis: 50%;
+        flex-basis: calc(50% - 52px);
+        margin-right: 52px;
         box-sizing: border-box;
-
-        @include mq(tablet) {
-          padding-right: $spacing;
-        }
       }
     }
   }
@@ -76,14 +74,14 @@
     &--showAdditionalCores {
       display: block;
       padding: $spacing;
-      border: 1px solid $brand-color;
+      border: 1px solid $brand-color--tertiary;
       &.c-topic-introduction__item--additional {
         animation-name: fadeIn;
         animation-duration: 0.2s;
       }
     }
     &--additional {
-      border: 1px dashed $brand-color;
+      border: 1px dashed $brand-color--tertiary;
     }
   }
   &__header {

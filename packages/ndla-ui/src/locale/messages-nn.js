@@ -126,6 +126,12 @@ const messages = {
     newContent: {
       heading: 'Nytt innhald',
     },
+    subjectIsBeta: {
+      iconLabel: 'i arbeid',
+      dialogHeader: 'Faget er i arbeid',
+      dialogText:
+        'Du kan lese mer om hva dette betyr på',
+    },
   },
   subjectsPage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
@@ -236,7 +242,7 @@ const messages = {
       'Det er ikkje noko kjernestoff tilgjengeleg.',
     noCoreResourcesAvailable:
       'Det er ikkje noko kjernestoff tilgjengeleg for {name}.',
-    toggleFilterLabel: 'Tilleggsressursar',
+    toggleFilterLabel: 'Vis tilleggsressursar',
     activateAdditionalResources: 'Vis tilleggsressursar',
     label: 'Læringsressursar',
     shortcutButtonText: 'Lærestoff',

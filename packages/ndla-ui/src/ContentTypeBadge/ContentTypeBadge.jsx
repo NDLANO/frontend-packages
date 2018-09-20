@@ -57,7 +57,7 @@ export const ContentTypeBadge = ({ type, background, size }) => {
 };
 
 ContentTypeBadge.propTypes = {
-  size: PropTypes.oneOf(['x-small', 'small', 'large']),
+  size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'large']),
   type: ContentTypeShape,
   background: PropTypes.bool,
 };

@@ -160,39 +160,52 @@
       width: 75px;
       height: auto;
       flex-shrink: 0;
-      margin: $spacing--small $spacing--small $spacing--small $spacing;
+      margin: 0 0 $spacing--small $spacing--small;
 
-      @include mq(desktop) {
+      @include mq(tabletWide) {
         width: 80px;
-        margin-left: $spacing--medium;
-        margin-right: 0;
+        margin-left: $spacing;
+        margin-right: $spacing--small;
       }
     }
   }
 
   &__ingress {
-    margin: $spacing--small 0 $spacing 0;
+    margin: 0 0 $spacing 0;
     max-width: 600px;
     @include font-size(14px, 22px);
     flex-grow: 1;
     font-family: $font-serif;
 
     @include mq(desktop) {
-      @include font-size(16px, 27px);
+      @include font-size(16px, 24px);
     }
   }
 
   &__header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
-    & > .c-content-type-badge,
-    .c-learning-path-badge {
-      margin: 0 $spacing--small / 2 0 $spacing;
+    .c-content-type-badge {
+      margin: 0 $spacing--small / 2 0 0;
     }
-    & > .c-content-type-badge + span {
-      padding-right: $spacing;
+
+    > * {
+      margin: 0 $spacing--small $spacing--small 0;
     }
+
+    @include mq($until: tablet) {
+      h1 {
+        width: 100%;
+      }
+    }
+  }
+
+  &__content-type-wrapper {
+      margin: 0 $spacing--small $spacing--small 0;
+      display: flex;
+      align-items: center;
   }
 
   &__additional {
@@ -204,12 +217,22 @@
     color: $text-light-color;
     text-transform: uppercase;
     @include font-size(14px, 18px);
-    display: none;
+    // display: none;
     margin-top: 2px;
-
+    /*
     @include mq(desktop) {
       display: inline;
     }
+    */
+  }
+
+  &__pills {
+    background: $brand-grey--lightest;
+    margin-right: $spacing--small;
+    padding: 0 $spacing--small / 3;
+    border-radius: $border-radius;
+    @include font-size(12px, 20px);
+    font-weight: $font-weight-semibold;
   }
 
   &__breadcrumb {
@@ -218,7 +241,7 @@
     align-items: center;
     flex-wrap: wrap;
     color: $text-light-color;
-    padding-top: $spacing--small / 2;
+    margin-bottom: $spacing--small;
 
     @include font-size(14px, 18px);
 
@@ -242,21 +265,17 @@
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: $spacing;
-    @include font-size(14px, 22px);
+    @include font-size(14px, 16px);
 
     @include mq(desktop) {
-      @include font-size(16px, 28px);
+      @include font-size(16px, 18px);
     }
 
     & > span {
-      display: none;
       text-transform: uppercase;
       color: $text-light-color;
       padding-right: $spacing--small;
-
-      @include mq(desktop) {
-        display: inline;
-      }
+      @include font-size(14px, 16px);
     }
 
     ul {
@@ -271,6 +290,7 @@
     li {
       margin: 0;
       position: relative;
+      line-height: 1rem;
 
       padding: 0 $spacing--small/2 0 0;
       margin-right: $spacing--small/2;
@@ -288,7 +308,7 @@
         display: block;
         position: absolute;
         right: 0;
-        top: 8px;
+        top: 3px;
       }
 
       &:first-child {
@@ -303,14 +323,9 @@
         margin-right: 0;
       }
     }
-
-    a {
-      box-shadow: none;
-    }
   }
 
   h1 {
-    margin: 0;
     font-weight: 600;
     @include font-size(16px, 20px);
 

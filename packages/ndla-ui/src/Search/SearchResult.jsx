@@ -143,13 +143,6 @@ const searchResultItemShape = PropTypes.shape({
   contentTypeLabel: PropTypes.string.isRequired,
 });
 
-const messagesShape = PropTypes.shape({
-  subjectsLabel: PropTypes.string.isRequired,
-  noResultHeading: PropTypes.string.isRequired,
-  noResultDescription: PropTypes.string.isRequired,
-  additionalContentToolip: PropTypes.string,
-});
-
 const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
   <li key={item.id} {...searchResultItemClasses()}>
     <article>
@@ -161,10 +154,15 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
             <SafeLink to={item.url}>{item.title}</SafeLink>
           )}
         </h1>
-        {item.contentTypeIcon}
-        <span {...searchResultItemClasses('content-type-label')}>
-          {item.contentTypeLabel}
-        </span>
+        <div {...searchResultItemClasses('content-type-wrapper')}>
+          {item.contentTypeIcon}
+          <span {...searchResultItemClasses('content-type-label')}>
+            {item.contentTypeLabel}
+          </span>
+        </div>
+        {item.type && (
+          <div {...searchResultItemClasses('pills')}>{item.type}</div>
+        )}
         {item.additional &&
           (additionalContentToolip ? (
             <Tooltip
@@ -261,5 +259,4 @@ export const SearchResultList = ({ results }) => (
 
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),
-  messages: messagesShape.isRequired,
 };

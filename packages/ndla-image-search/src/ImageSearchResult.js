@@ -37,6 +37,7 @@ export default function ImageSearchResult({
             srcSet={getPreviewSrcSets(encodeURI(image.previewUrl))}
             src={image.previewUrl}
           />
+          <span {...classes('list-item-title')}>{image.title.title}</span>
         </Button>
       </div>
       {selectedImage && selectedImage.id === image.id ? (

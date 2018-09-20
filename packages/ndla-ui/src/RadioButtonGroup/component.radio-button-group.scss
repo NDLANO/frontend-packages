@@ -1,0 +1,66 @@
+.c-radio-button-group {
+  &__wrapper {
+    padding: $spacing--small 0;
+    font-family: $font;
+    display: flex;
+    align-items: center;
+    flex-flow: flow;
+  }
+  &__label-heading {
+    @include font-size(16px, 20px);
+    margin: 0 $spacing 0 0;
+    font-weight: 600;
+  }
+  &__label {
+    @include font-size(16px, 28px);
+    color: $brand-color;
+    align-items: center;
+    display: inline-flex;
+    &:before {
+      content: "";
+      margin-right: $spacing--small;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      border: 2px solid $brand-color--tertiary;
+      transition: 200ms border-color ease;
+    }
+    &:after {
+      content: "";
+      background: transparent;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      position: absolute;
+      transform: translateX(5px) scale(0, 0);
+      transition: 200ms all ease;
+    }
+    &:not(:last-child) {
+      margin-right: $spacing--medium;
+    }
+  }
+  &__input {
+    opacity: 0;
+    position: absolute;
+    &:hover, &:focus {
+      + .c-radio-button-group__label {
+        @include restore-outline();
+        &:after {
+          transform: translateX(5px) scale(1, 1);
+          background: $brand-color--tertiary;
+        }
+      }
+    }
+    &:checked {
+      + .c-radio-button-group__label {
+        &:before {
+          border-color: $brand-color;
+        }
+        &:after {
+          transform: translateX(5px) scale(1, 1);
+          background: $brand-color;
+        }
+      }
+    }
+  }
+}

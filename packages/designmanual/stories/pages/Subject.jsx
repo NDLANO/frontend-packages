@@ -37,8 +37,8 @@ import {
 import { EmailOutline } from 'ndla-icons/common';
 import { breakpoints } from 'ndla-util';
 
-import exampleBackground from '../../images/banners/salg_service_sikkerhet.svg';
-import chineseBackground from '../../images/banners/kinesisk.svg';
+import exampleBackground from '../../images/banners/Salg-service-og-sikkerhet.svg';
+import chineseBackground from '../../images/banners/Kinesisk.svg';
 import article, { contentCards } from '../../dummydata/index';
 
 import TopicListExample from '../molecules/TopicListExample';
@@ -464,18 +464,22 @@ export const SubjectLanguage = () => (
                 heading="Mest lest"
                 links={[
                   {
+                    toLinkProps: () => ({ to: '#1' }),
                     url: '#1',
                     text: 'Grafisk design',
                   },
                   {
+                    toLinkProps: () => ({ to: '#2' }),
                     url: '#2',
                     text: 'Nettsider',
                   },
                   {
+                    toLinkProps: () => ({ to: '#3' }),
                     url: '#3',
                     text: 'Prøv deg som journalist',
                   },
                   {
+                    toLinkProps: () => ({ to: '#4' }),
                     url: '#4',
                     text: 'Grenseløs journalistikk',
                   },

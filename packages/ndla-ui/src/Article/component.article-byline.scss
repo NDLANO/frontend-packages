@@ -32,12 +32,6 @@
   &__flex {
     align-items: center;
     height: 1.5rem;
-    @include mq($from: mobileWide, $until: tablet) {
-      width: 50%;
-      &:nth-child(even) {
-        text-align: right;
-      }
-    }
     @include mq($until: mobileWide) {
       width: 100%;
     }

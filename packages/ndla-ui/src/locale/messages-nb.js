@@ -260,9 +260,11 @@ const messages = {
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
-    multipleAuthorsLabel: 'Opphavsmenn',
-    multipleAuthorsExplanation:
-      'Denne artikkelen er laget av flere opphavsmenn',
+    multipleAuthorsLabelAbbreviation: 'm. fl.',
+    multipleAuthorsLabel: 'Opphavere av artikkel:',
+    multipleAuthorsLabelAria: 'Opphavere av artikkelen er {names}',
+    multipleAuthorsLabelAriaConjunction: 'og',
+    singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
   },
   competenceGoals: {
     closeCompetenceGoals: 'Lukk kompetansemål',

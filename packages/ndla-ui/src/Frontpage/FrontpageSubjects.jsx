@@ -17,84 +17,82 @@ import SafeLink from '../common/SafeLink';
 const wrapperClasses = BEMHelper('c-frontpage-subjects-wrapper');
 const sectionClasses = BEMHelper('c-frontpage-subjects-section');
 
-export const FrontpageSubjectsSection = injectT(({
-  name,
-  subjects,
-  linkToAbout,
-  expanded,
-  onExpand,
-  id,
-  t,
-}) => {
-  const getItems = (disable = false) =>
-    subjects.map(subject => (
-      <li key={subject.url} {...sectionClasses('item')}>
-        <SafeLink
-          tabIndex={disable ? '-1' : null}
-          to={subject.url}
-          {...sectionClasses('link')}
-          aria-label={`${subject.text} ${subject.yearInfo}`}>
-          <span {...sectionClasses('text')}>{subject.text}</span>
-          {subject.yearInfo && <span {...sectionClasses('year-info')}>{subject.yearInfo}</span>}
-        </SafeLink>
-        {subject.beta && (
-          <Modal
-            narrow
-            containerClass={sectionClasses('beta-label-container').className}
-            activateButton={
-              <Button
-                lighter
-                {...sectionClasses('beta-label')}
-                aria-label={t('subjectPage.subjectIsBeta.dialogHeader')}>
-                {t('subjectPage.subjectIsBeta.iconLabel')}
-              </Button>
-            }>
-            {onClose => (
-              <Fragment>
-                <ModalHeader>
-                  <ModalCloseButton
-                    onClick={onClose}
-                    title={t('modal.closeModal')}
-                  />
-                </ModalHeader>
-                <ModalBody>
-                  <h1>{t('subjectPage.subjectIsBeta.dialogHeader')}</h1>
-                  <hr />
-                  <p>{t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}</p>
-                </ModalBody>
-              </Fragment>
+export const FrontpageSubjectsSection = injectT(
+  ({ name, subjects, linkToAbout, expanded, onExpand, id, t }) => {
+    const getItems = (disable = false) =>
+      subjects.map(subject => (
+        <li key={subject.url} {...sectionClasses('item')}>
+          <SafeLink
+            tabIndex={disable ? '-1' : null}
+            to={subject.url}
+            {...sectionClasses('link')}
+            aria-label={`${subject.text} ${subject.yearInfo}`}>
+            <span {...sectionClasses('text')}>{subject.text}</span>
+            {subject.yearInfo && (
+              <span {...sectionClasses('year-info')}>{subject.yearInfo}</span>
             )}
-          </Modal>
-        )}
-      </li>
-    ));
+          </SafeLink>
+          {subject.beta && (
+            <Modal
+              narrow
+              containerClass={sectionClasses('beta-label-container').className}
+              activateButton={
+                <Button
+                  lighter
+                  {...sectionClasses('beta-label')}
+                  aria-label={t('subjectPage.subjectIsBeta.dialogHeader')}>
+                  {t('subjectPage.subjectIsBeta.iconLabel')}
+                </Button>
+              }>
+              {onClose => (
+                <Fragment>
+                  <ModalHeader>
+                    <ModalCloseButton
+                      onClick={onClose}
+                      title={t('modal.closeModal')}
+                    />
+                  </ModalHeader>
+                  <ModalBody>
+                    <h1>{t('subjectPage.subjectIsBeta.dialogHeader')}</h1>
+                    <hr />
+                    <p>
+                      {t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}
+                    </p>
+                  </ModalBody>
+                </Fragment>
+              )}
+            </Modal>
+          )}
+        </li>
+      ));
 
-  return (
-    <nav {...sectionClasses('', { expanded })}>
-      <h1 {...sectionClasses('heading')}>
-        <button
-          type="button"
-          onClick={() => {
-            onExpand(!expanded);
-          }}
-          {...sectionClasses('expand-button')}
-          aria-expanded={expanded}
-          aria-controls={id}>
-          <span {...sectionClasses('expand-button-text')}>{name}</span>
-          {expanded ? <ChevronUp /> : <ChevronDown />}
-        </button>
-        <span {...sectionClasses('heading-text')}>{name}</span>
-      </h1>
-      <ul {...sectionClasses('subjects', 'wide')}>{getItems()}</ul>
-      <ul
-        {...sectionClasses('subjects', 'narrow')}
-        id={id}
-        aria-hidden={!expanded}>
-        {getItems(!expanded)}
-      </ul>
-    </nav>
-  );
-});
+    return (
+      <nav {...sectionClasses('', { expanded })}>
+        <h1 {...sectionClasses('heading')}>
+          <button
+            type="button"
+            onClick={() => {
+              onExpand(!expanded);
+            }}
+            {...sectionClasses('expand-button')}
+            aria-expanded={expanded}
+            aria-controls={id}>
+            <span {...sectionClasses('expand-button-text')}>{name}</span>
+            {expanded ? <ChevronUp /> : <ChevronDown />}
+          </button>
+          <span {...sectionClasses('heading-text')}>{name}</span>
+        </h1>
+        <ul {...sectionClasses('subjects', 'wide')}>{getItems()}</ul>
+        <ul
+          {...sectionClasses('subjects', 'narrow')}
+          id={id}
+          aria-hidden={!expanded}>
+          {getItems(!expanded)}
+        </ul>
+      </nav>
+    );
+  },
+);
 
 FrontpageSubjectsSection.propTypes = {
   id: PropTypes.string.isRequired,

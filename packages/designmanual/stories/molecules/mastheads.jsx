@@ -168,7 +168,9 @@ class MastheadWithTopicMenu extends Component {
                 isBeta={this.props.beta}
                 searchFieldComponent={searchButtonView}
                 subjectTitle="Mediefag"
-                toFrontpage={() => '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'}
+                toFrontpage={() =>
+                  '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
+                }
                 toSubject={() => '#'}
                 toTopic={() => '#'}
                 topics={topicMenu}

@@ -30,7 +30,12 @@ const FrontpageExample = ({ t }) => (
       onSearchFieldChange={() => {}}
       onSearch={() => {}}
       searchFieldPlaceholder={t('welcomePage.heading.searchFieldPlaceholder')}
-      menuSubject={<FrontpageSubjects subjects={subjectsFrontpage} linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>} />}
+      menuSubject={
+        <FrontpageSubjects
+          subjects={subjectsFrontpage}
+          linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
+        />
+      }
       messages={{
         searchFieldTitle: t('welcomePage.heading.messages.searchFieldTitle'),
         menuButton: t('welcomePage.heading.messages.menuButton'),
@@ -55,7 +60,10 @@ const FrontpageExample = ({ t }) => (
       ]}
     />
     <main>
-      <FrontpageSubjects subjects={subjectsFrontpage} linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>} />
+      <FrontpageSubjects
+        subjects={subjectsFrontpage}
+        linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
+      />
       <OneColumn wide extraPadding>
         <FrontpageSearchSection
           heading={t('welcomePage.heading.messages.searchFieldTitle')}

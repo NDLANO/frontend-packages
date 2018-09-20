@@ -89,7 +89,11 @@ class FilterListPhone extends Component {
         values.some(value => value === option.value),
       );
       return (
-        <div className={activeFiltersNarrow && filterClasses('narrow-active-filters').className}>
+        <div
+          className={
+            activeFiltersNarrow &&
+            filterClasses('narrow-active-filters').className
+          }>
           {currentlyActiveFilters.length > 0 && (
             <ActiveFilters
               filters={currentlyActiveFilters}
@@ -102,7 +106,11 @@ class FilterListPhone extends Component {
             size="fullscreen"
             animation="slide-up"
             backgroundColor="grey"
-            activateButton={<Button outline {...filterClasses('modal-button')}>{messages.openFilter}</Button>}>
+            activateButton={
+              <Button outline {...filterClasses('modal-button')}>
+                {messages.openFilter}
+              </Button>
+            }>
             {onClose => (
               <Fragment>
                 <ModalHeader modifier={['grey-dark', 'left-align']}>

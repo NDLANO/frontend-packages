@@ -129,8 +129,7 @@ const messages = {
     subjectIsBeta: {
       iconLabel: 'i arbeid',
       dialogHeader: 'Faget er i arbeid',
-      dialogText:
-        'Du kan lese mer om hva dette betyr på',
+      dialogText: 'Du kan lese mer om hva dette betyr på',
     },
   },
   subjectsPage: {

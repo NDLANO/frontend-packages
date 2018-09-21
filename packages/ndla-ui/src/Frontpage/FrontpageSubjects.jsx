@@ -118,23 +118,23 @@ export class FrontpageSubjects extends Component {
   }
 
   render() {
-    const { subjects, linkToAbout, t } = this.props;
+    const { categories, linkToAbout, t } = this.props;
 
     return (
       <OneColumn wide noPadding>
         <div {...wrapperClasses()}>
-          {Object.keys(subjects).map(key => (
+          {categories.map(category => (
             <FrontpageSubjectsSection
-              key={key}
-              expanded={this.state.expanded === key}
+              key={category.name}
+              expanded={this.state.expanded === category.name}
               onExpand={expanded => {
                 this.setState({
-                  expanded: expanded ? key : undefined,
+                  expanded: expanded ? category.name : undefined,
                 });
               }}
-              id={key}
-              name={t(`welcomePage.category.${subjects[key].name}`)}
-              subjects={subjects[key].subjects}
+              id={category.name}
+              name={t(`welcomePage.category.${category.name}`)}
+              subjects={category.subjects}
               linkToAbout={linkToAbout}
             />
           ))}
@@ -147,17 +147,19 @@ export class FrontpageSubjects extends Component {
 FrontpageSubjects.propTypes = {
   t: PropTypes.func.isRequired,
   expanded: PropTypes.string,
-  subjects: PropTypes.shape({
-    id: PropTypes.isRequired,
-    name: PropTypes.isRequired,
-    subject: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-        yearInfo: PropTypes.string,
-      }),
-    ),
-  }),
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.isRequired,
+      subjects: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          yearInfo: PropTypes.string,
+          beta: PropTypes.bool,
+        }),
+      ),
+    }),
+  ),
   linkToAbout: PropTypes.node.isRequired,
 };
 

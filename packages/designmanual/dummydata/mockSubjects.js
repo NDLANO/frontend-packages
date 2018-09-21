@@ -85,8 +85,8 @@ export const subjectConcepts = [
   },
 ];
 
-export const subjectsFrontpage = {
-  fellesfag: {
+export const categories = [
+  {
     name: 'fellesfag',
     subjects: [
       {
@@ -142,7 +142,7 @@ export const subjectsFrontpage = {
       },
     ],
   },
-  yrkesfag: {
+  {
     name: 'yrkesfag',
     subjects: [
       {
@@ -230,7 +230,7 @@ export const subjectsFrontpage = {
       },
     ],
   },
-  studiespesialiserende: {
+  {
     name: 'studiespesialiserende',
     subjects: [
       {
@@ -315,4 +315,4 @@ export const subjectsFrontpage = {
       },
     ],
   },
-};
+];

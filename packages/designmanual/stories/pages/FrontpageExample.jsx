@@ -18,7 +18,7 @@ import { breakpoints } from 'ndla-util';
 
 import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
 
-import { contentCards, subjectsFrontpage } from '../../dummydata/index';
+import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const FrontpageExample = ({ t }) => (
@@ -32,7 +32,7 @@ const FrontpageExample = ({ t }) => (
       searchFieldPlaceholder={t('welcomePage.heading.searchFieldPlaceholder')}
       menuSubject={
         <FrontpageSubjects
-          subjects={subjectsFrontpage}
+          categories={categories}
           linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
         />
       }
@@ -61,7 +61,7 @@ const FrontpageExample = ({ t }) => (
     />
     <main>
       <FrontpageSubjects
-        subjects={subjectsFrontpage}
+        categories={categories}
         linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
       />
       <OneColumn wide extraPadding>

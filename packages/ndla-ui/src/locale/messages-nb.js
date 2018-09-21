@@ -127,7 +127,7 @@ const messages = {
     },
     subjectIsBeta: {
       iconLabel: 'i arbeid',
-      dialogHeader: 'Faget er i arbeid',
+      dialogHeader: 'Denne fagsiden er under arbeid',
       dialogText: 'Du kan lese mer om hva dette betyr på',
     },
   },

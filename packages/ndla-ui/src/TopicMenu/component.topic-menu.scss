@@ -105,6 +105,10 @@ $navigation-row-width: 980px / 3;
   flex-flow: column;
   flex-flow: row;
 
+  @include mq($until: tabletWide) {
+    padding-bottom: 100px;
+  }
+
   @include mq(tabletWide) {
     transition: transform 400ms ease;
     padding-bottom: $spacing--large;
@@ -452,6 +456,7 @@ $navigation-row-width: 980px / 3;
       left: 0;
       right: 0;
       bottom: 0;
+      overflow-y: scroll;
     }
 
     @include mq(tabletWide) {

@@ -128,10 +128,9 @@ const messages = {
       heading: 'New content',
     },
     subjectIsBeta: {
-      iconLabel: 'i arbeid',
-      dialogHeader: '*Faget er i arbeid',
-      dialogText:
-        '*Lorem ipsum, forklaringstekst til hva det betyr at et fag er "i arbeid"',
+      iconLabel: 'in beta',
+      dialogHeader: 'This website is under construction.',
+      dialogText: 'Read more at',
     },
   },
   subjectsPage: {

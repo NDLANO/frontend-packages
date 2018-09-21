@@ -22,11 +22,11 @@
     "react": "^15.6.0 || ^16.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "3.3.14",
-    "@storybook/addon-knobs": "3.3.14",
-    "@storybook/addon-links": "3.3.14",
-    "@storybook/addon-options": "3.3.14",
-    "@storybook/react": "3.3.14",
+    "@storybook/addon-actions": "3.4.11",
+    "@storybook/addon-knobs": "3.4.11",
+    "@storybook/addon-links": "3.4.11",
+    "@storybook/addon-options": "3.4.11",
+    "@storybook/react": "3.4.11",
     "autoprefixer": "^8.0.0",
     "btoa": "^1.1.2",
     "classnames": "2.2.5",

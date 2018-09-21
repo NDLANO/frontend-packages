@@ -129,7 +129,7 @@ const messages = {
     },
     subjectIsBeta: {
       iconLabel: 'in beta',
-      dialogHeader: 'This website is under construction.',
+      dialogHeader: '{title} is under construction',
       dialogText: 'Read more at',
     },
   },

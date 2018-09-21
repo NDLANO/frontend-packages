@@ -53,7 +53,7 @@ export const FrontpageSubjectsSection = injectT(
                     />
                   </ModalHeader>
                   <ModalBody>
-                    <h1>{t('subjectPage.subjectIsBeta.dialogHeader')}</h1>
+                    <h1>{t('subjectPage.subjectIsBeta.dialogHeader', {title: subject.text})}</h1>
                     <hr />
                     <p>
                       {t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}

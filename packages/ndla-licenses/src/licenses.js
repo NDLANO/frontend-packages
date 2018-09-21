@@ -15,6 +15,9 @@ const freeUseEN = 'Free reuse';
 const restrictedUseNB = 'Begrenset bruk';
 const restrictedUseNN = 'Begrenset bruk';
 const restrictedUseEN = 'Restricted use';
+const restrictedReuseNB = 'Begrenset gjenbruk';
+const restrictedReuseNN = 'Begrenset gjenbruk';
+const restrictedReuseEN = 'Restricted reuse';
 
 const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
 const openLicenseLinkTextNN = 'Lær mer om åpne lisenser';
@@ -22,7 +25,7 @@ const openLicenseLinkTextEN = 'Learn more about open licenses';
 
 const byncnd = {
   nn: {
-    short: restrictedUseNN,
+    short: restrictedReuseNN,
     title: 'Namngiving-IkkjeKommersiell-IngenTilarbeiding',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
@@ -31,7 +34,7 @@ const byncnd = {
       'Denne lisensen er den mest restriktive av dei seks kjernelisensane våre. Den tillet andre å lasta ned verket ditt og dela det med andre så lenge du er namngitt som opphavspersonen, men dei kan ikkje endra det på nokon måte, eller bruka det kommersielt.',
   },
   nb: {
-    short: restrictedUseNB,
+    short: restrictedReuseNB,
     title: 'Navngivelse-IkkeKommersiell-IngenBearbeidelser',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
@@ -41,7 +44,7 @@ const byncnd = {
   },
 
   en: {
-    short: restrictedUseEN,
+    short: restrictedReuseEN,
     title: 'Attribution-NonCommercial-NoDerivs',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en',
@@ -55,7 +58,7 @@ const byncnd = {
 
 const byncsa = {
   nn: {
-    short: restrictedUseNN,
+    short: restrictedReuseNN,
     title: 'Namngiving-IkkjeKommersiell-DelPåSameVilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.no',
@@ -64,7 +67,7 @@ const byncsa = {
       'Denne lisensen let andre distribuera, endra, remixa, og byggja vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavspersonen og avledeta verk må bera ein lisens som svarar til denne.',
   },
   nb: {
-    short: restrictedUseNB,
+    short: restrictedReuseNB,
     title: 'Navngivelse-IkkeKommersiell-DelPåSammeVilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.no',
@@ -74,7 +77,7 @@ const byncsa = {
   },
 
   en: {
-    short: restrictedUseEN,
+    short: restrictedReuseEN,
     title: 'Attribution-NonCommercial-ShareAlike',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en',
@@ -88,7 +91,7 @@ const byncsa = {
 
 const bync = {
   nn: {
-    short: freeUseNN,
+    short: restrictedReuseNN,
     title: 'Namngiving-IkkjeKommersiell',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.no',
@@ -97,7 +100,7 @@ const bync = {
       'Denne lisensen let andre distribuera, endra, remixa, og byggja videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavsperson og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
   },
   nb: {
-    short: freeUseNB,
+    short: restrictedReuseNB,
     title: 'Navngivelse-IkkeKommersiell',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.no',
@@ -107,7 +110,7 @@ const bync = {
   },
 
   en: {
-    short: freeUseEN,
+    short: restrictedReuseEN,
     title: 'Attribution-NonCommercial',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.en',
@@ -121,7 +124,7 @@ const bync = {
 
 const bynd = {
   nn: {
-    short: freeUseNN,
+    short: restrictedReuseNN,
     title: 'Namngiving-IngenTilarbeiding',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.no',
@@ -130,7 +133,7 @@ const bynd = {
       'Denne lisensen gjev høve til å distribuera verket vidare, både for kommersielle og ikkje-kommersielle formål, så lenge det vert gjeve vidare uendra og i sitt heile, og at du vert namngjeven som den som har skapt verket.',
   },
   nb: {
-    short: freeUseNB,
+    short: restrictedReuseNB,
     title: 'Navngivelse-IngenBearbeidelse',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.no',
@@ -140,7 +143,7 @@ const bynd = {
   },
 
   en: {
-    short: freeUseEN,
+    short: restrictedReuseEN,
     title: 'Attribution-NoDerivs',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.en',
@@ -154,7 +157,7 @@ const bynd = {
 
 const bysa = {
   nn: {
-    short: freeUseNN,
+    short: restrictedReuseNN,
     title: 'Namngiving-DelPåSameVilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.no',
@@ -163,7 +166,7 @@ const bysa = {
       'Fri gjenbruk ved namngiving. Navngiving vil seie at du oppgir namnet til opphavspersonen/ane. Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
   },
   nb: {
-    short: freeUseNB,
+    short: restrictedReuseNB,
     title: 'Navngivelse-DelPåSammeVilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.no',
@@ -173,7 +176,7 @@ const bysa = {
   },
 
   en: {
-    short: freeUseEN,
+    short: restrictedReuseEN,
     title: 'Attribution ShareAlike',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',

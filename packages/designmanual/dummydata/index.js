@@ -10,11 +10,7 @@ import {
   exerciseResources,
   assessmentResources,
 } from './mockResources';
-import {
-  subjectList,
-  subjectConcepts,
-  subjectsFrontpage,
-} from './mockSubjects';
+import { subjectList, subjectConcepts, categories } from './mockSubjects';
 import {
   firstBrightcoveList,
   secondBrightcoveList,
@@ -41,7 +37,7 @@ export {
   topicListChinese,
   subjectList,
   subjectConcepts,
-  subjectsFrontpage,
+  categories,
   learningPathResources,
   articleResources,
   exerciseResources,

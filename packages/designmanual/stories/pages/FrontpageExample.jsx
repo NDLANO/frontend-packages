@@ -17,7 +17,7 @@ import { breakpoints } from 'ndla-util';
 
 import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
 
-import { contentCards, subjectsFrontpage } from '../../dummydata/index';
+import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const FrontpageExample = ({ t }) => (
@@ -29,7 +29,7 @@ const FrontpageExample = ({ t }) => (
       onSearchFieldChange={() => {}}
       onSearch={() => {}}
       searchFieldPlaceholder={t('welcomePage.heading.searchFieldPlaceholder')}
-      menuSubject={<FrontpageSubjects subjects={subjectsFrontpage} />}
+      menuSubject={<FrontpageSubjects categories={categories} />}
       messages={{
         searchFieldTitle: t('welcomePage.heading.messages.searchFieldTitle'),
         menuButton: t('welcomePage.heading.messages.menuButton'),
@@ -54,7 +54,7 @@ const FrontpageExample = ({ t }) => (
       ]}
     />
     <main>
-      <FrontpageSubjects subjects={subjectsFrontpage} />
+      <FrontpageSubjects categories={categories} />
       <OneColumn wide extraPadding>
         <FrontpageSearchSection
           heading={t('welcomePage.heading.messages.searchFieldTitle')}

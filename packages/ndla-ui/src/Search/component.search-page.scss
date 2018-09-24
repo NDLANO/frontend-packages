@@ -1,5 +1,5 @@
 $filter-width: 250px;
-$search-field-wrapper-margin: $filter-width + $spacing--small;
+$search-field-wrapper-margin: $filter-width;
 .c-search-page {
   &__close-button {
     display: inline-flex;
@@ -44,9 +44,8 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
   &__search-field-wrapper {
     padding: $spacing 0 $spacing 0;
     @include mq(desktop) {
-      padding: $spacing--large 0 $spacing--large $spacing + $spacing--small;
+      padding: $spacing--large 0 $spacing--large $spacing--small;
       margin-left: $search-field-wrapper-margin;
-
     }
     .c-search-field__input-wrapper {
       padding: 0;
@@ -102,6 +101,7 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
 
     @include mq(desktop) {
       display: block;
+      width: $filter-width;
     }
   }
 
@@ -150,40 +150,6 @@ $search-field-wrapper-margin: $filter-width + $spacing--small;
         @include font-size(18px, 32px);
         margin-bottom: 0;
       }
-    }
-  }
-
-  &__filter-close-button {
-    height: 58px;
-    background: $brand-grey--lighter;
-    padding: 0 $spacing;
-    display: none;
-    &--expanded {
-      display: flex;
-    }
-    align-items: center;
-    border: 0;
-    cursor: pointer;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 101;
-
-    @include mq(desktop) {
-      display: none;
-    }
-
-    .c-icon {
-      width: 24px;
-      height: 24px;
-      color: $brand-color--dark;
-    }
-
-    span {
-      @include font-size(16px, 20px);
-      color: $brand-color;
-      margin-left: $spacing;
     }
   }
 }

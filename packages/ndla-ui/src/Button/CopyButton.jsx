@@ -19,7 +19,6 @@ class CopyButton extends Component {
     this.timer = null;
     this.handleCopy = this.handleCopy.bind(this);
     this.exitCopyState = this.exitCopyState.bind(this);
-    this.buttonRef = React.createRef();
   }
 
   componentWillUnmount() {
@@ -30,9 +29,6 @@ class CopyButton extends Component {
     this.setState({
       showCopyState: false,
     });
-    if (this.buttonRef.current === document.activeElement) {
-      this.buttonRef.current.blur();
-    }
   }
 
   handleCopy(e) {
@@ -53,7 +49,7 @@ class CopyButton extends Component {
     const { children, onClick, copyNode, showCopyTimer, ...rest } = this.props;
 
     return (
-      <Button onClick={this.handleCopy} ref={this.buttonRef} {...rest}>
+      <Button onClick={this.handleCopy} {...rest}>
         {this.state.showCopyState ? copyNode : children}
       </Button>
     );

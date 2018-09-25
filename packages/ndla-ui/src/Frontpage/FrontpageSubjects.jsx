@@ -40,7 +40,9 @@ export const FrontpageSubjectsSection = injectT(
                 <Button
                   lighter
                   {...sectionClasses('beta-label')}
-                  aria-label={t('subjectPage.subjectIsBeta.dialogHeader')}>
+                  aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
+                    title: subject.text,
+                  })}>
                   {t('subjectPage.subjectIsBeta.iconLabel')}
                 </Button>
               }>

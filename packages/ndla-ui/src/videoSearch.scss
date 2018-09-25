@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-@import "global/settings/settings.config";
-@import "global/settings/settings.colors";
-$medium-viewport: "(max-width: 800px)";
-$small-viewport: "(max-width: 600px)";
+@import '~ndla-core/scss/core';
+
+$medium-viewport: '(max-width: 800px)';
+$small-viewport: '(max-width: 600px)';
 
 .c-video-search {
   padding: 1rem;

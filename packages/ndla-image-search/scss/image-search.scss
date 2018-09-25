@@ -5,14 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- @import "global/settings/settings.config";
- @import "global/settings/settings.colors";
- $xxlarge-viewport-max: "max-width: 1400px)";
- $xlarge-viewport: "(min-width: 1200px)";
- $large-viewport: "(min-width: 800px)";
- $medium-viewport: "(max-width: 800px)";
- $small-viewport: "(max-width: 600px)";
- $xsmall-viewport: "(max-width: 400px)";
+$xxlarge-viewport-max: 'max-width: 1400px)';
+$xlarge-viewport: '(min-width: 1200px)';
+$large-viewport: '(min-width: 800px)';
+$medium-viewport: '(max-width: 800px)';
+$small-viewport: '(max-width: 600px)';
+$xsmall-viewport: '(max-width: 400px)';
 
 .c-image-search {
   &__form-query {
@@ -122,7 +120,7 @@
     top: 190px;
     left: 50%;
     border: solid transparent;
-    content: " ";
+    content: ' ';
     height: 0;
     width: 0;
     position: absolute;
@@ -209,31 +207,28 @@
   }
 }
 
-
-
-
 @media #{$large-viewport} {
   .c-image-search {
-    &__list-item:nth-of-type(4n+2) .c-image-preview {
+    &__list-item:nth-of-type(4n + 2) .c-image-preview {
       margin-left: -100%;
     }
 
-    &__list-item:nth-of-type(4n+3) .c-image-preview {
+    &__list-item:nth-of-type(4n + 3) .c-image-preview {
       margin-left: -200%;
     }
 
-    &__list-item:nth-of-type(4n+4) .c-image-preview {
+    &__list-item:nth-of-type(4n + 4) .c-image-preview {
       margin-left: -300%;
     }
   }
 }
 
 @media #{$medium-viewport} {
-
   .c-image-preview {
     width: 200%;
 
-    &__image, &__information {
+    &__image,
+    &__information {
       width: 100%;
     }
   }
@@ -244,25 +239,27 @@
       max-width: 50%;
     }
 
-    &__list-item:nth-of-type(4n+2) .c-image-preview {
+    &__list-item:nth-of-type(4n + 2) .c-image-preview {
       margin-left: -100%;
     }
 
-    &__list-item:nth-of-type(4n+4) .c-image-preview {
+    &__list-item:nth-of-type(4n + 4) .c-image-preview {
       margin-left: -100%;
     }
   }
 }
 
-@media #{$xsmall-viewport}{
+@media #{$xsmall-viewport} {
   .c-image-preview {
     width: 100%;
 
-    &__image, &__information {
+    &__image,
+    &__information {
       width: 100%;
     }
 
-    &__text--left, &__text--right {
+    &__text--left,
+    &__text--right {
       width: 100%;
     }
   }
@@ -273,11 +270,11 @@
       max-width: 100%;
     }
 
-    &__list-item:nth-of-type(4n+2) .c-image-preview {
+    &__list-item:nth-of-type(4n + 2) .c-image-preview {
       margin-left: 0;
     }
 
-    &__list-item:nth-of-type(4n+4) .c-image-preview {
+    &__list-item:nth-of-type(4n + 4) .c-image-preview {
       margin-left: 0;
     }
   }

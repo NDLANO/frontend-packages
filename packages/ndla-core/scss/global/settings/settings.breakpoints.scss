@@ -8,7 +8,7 @@ $mq-breakpoints: (
   ultraWide: 1601px
 );
 
-@import '../../../node_modules/sass-mq/mq';
+@import '~sass-mq/mq';
 
 // expose breakpoints to js
 

@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 import Link from 'react-router-dom/Link';
 
-import SafeLink from '../common/SafeLink';
+import SafeLink from './SafeLink'; // TODO: find a solution for sharing common components
 import { stepNumbers } from './pagerHelpers';
 
 const createQueryString = obj =>

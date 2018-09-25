@@ -63,7 +63,6 @@ export {
 
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
-export { default as Pager } from './Pager';
 export { FilterList, FilterListPhone } from './Filter';
 export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';

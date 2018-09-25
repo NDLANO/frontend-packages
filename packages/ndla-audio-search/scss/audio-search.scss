@@ -6,11 +6,6 @@
  *
  */
 
-@import "global/settings/settings.config";
-@import "../../../node_modules/inuitcss/settings/_settings.core";
-@import "global/settings/settings.colors";
-@import "global/tools/tools.aliases";
-
 .c-audio-search {
   padding: 1rem;
   border: 1px solid $brand-color--lighter;

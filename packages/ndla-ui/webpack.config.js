@@ -4,10 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: {
     main: path.resolve(__dirname, 'src/main.scss'),
-    editor: path.resolve(__dirname, 'src/editor.scss'),
-    audioSearch: path.resolve(__dirname, 'src/audioSearch.scss'),
-    imageSearch: path.resolve(__dirname, 'src/imageSearch.scss'),
-    videoSearch: path.resolve(__dirname, 'src/videoSearch.scss'),
   },
   target: 'web',
 

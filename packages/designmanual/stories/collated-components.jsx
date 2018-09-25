@@ -7,7 +7,6 @@ import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from 'ndla-licenses';
 import {
   ErrorMessage,
   FilterList,
-  Pager,
   Footer,
   LicenseByline,
   TopicIntroductionList,
@@ -20,6 +19,7 @@ import {
   ArticleByline,
   RadioButtonGroup,
 } from 'ndla-ui';
+import Pager from 'ndla-pager';
 
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';

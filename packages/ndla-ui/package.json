@@ -8,10 +8,9 @@
   "jsnext:main": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:commonjs && npm run build:es && npm run build:css",
+    "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
-    "build:frontend": "npm run build:css && cp ./lib/style.css ~/Dropbox/Sites/ndla-frontend/style",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "clean": "rimraf lib es dist",
     "prepublish": "npm run clean && npm run build",
@@ -28,8 +27,8 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "icons",
     "lib",
+    "src",
     "es"
   ],
   "dependencies": {
@@ -46,13 +45,14 @@
     "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
+    "ndla-core": "0.0.1",
     "prop-types": "^15.6.0",
     "react": "^16.3.2"
   },
   "devDependencies": {
+    "ndla-core": "0.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "extract-text-webpack-plugin": "3.0.2",
-    "inuitcss": "6.0.0-beta.4"
+    "extract-text-webpack-plugin": "3.0.2"
   }
 }

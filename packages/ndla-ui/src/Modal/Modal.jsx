@@ -169,7 +169,8 @@ export default class Modal extends React.Component {
       wrapperFunctionForButton,
       onClose,
       onOpen,
-      containerClass: Component,
+      containerComponent: Component,
+      containerClass,
       onClick: onClickEvent,
       noBackdrop,
       closeOnBackdrop,
@@ -209,7 +210,7 @@ export default class Modal extends React.Component {
       );
 
     return (
-      <Component {...rest}>
+      <Component {...rest} className={containerClass}>
         {wrapperFunctionForButton
           ? wrapperFunctionForButton(clonedComponent)
           : clonedComponent}
@@ -240,6 +241,7 @@ export default class Modal extends React.Component {
 
 Modal.propTypes = {
   children: PropTypes.func.isRequired,
+  containerComponent: PropTypes.string,
   containerClass: PropTypes.string,
   onClick: PropTypes.func,
   onClose: PropTypes.func,
@@ -263,7 +265,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  containerClass: 'div',
+  containerComponent: 'div',
   animation: 'zoom-in',
   size: 'regular',
   backgroundColor: 'blue',

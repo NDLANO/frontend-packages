@@ -39,6 +39,7 @@ $subject-section-padding: 100px;
     }
 
     & > *:first-child {
+      margin-bottom: $spacing--large;
       @include mq(tablet) {
         margin-right: 80px;
       }

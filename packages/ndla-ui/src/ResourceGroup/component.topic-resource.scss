@@ -28,7 +28,7 @@
 
   &__item {
     max-width: 100%;
-    margin-bottom: $spacing--small / 2;
+    margin-bottom: $spacing--small / 4;
   }
 
   &__link {
@@ -41,6 +41,9 @@
       @include font-size(16px, 26px);
       @include mq(tablet) {
         @include font-size(18px);
+      }
+      @include mq(desktop) {
+        @include font-size(20px);
       }
     }
     h1 span {

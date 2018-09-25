@@ -12,6 +12,7 @@ import {
   FrontpageSearchSection,
   FrontpageFilm,
   InfoWidget,
+  SafeLink,
 } from 'ndla-ui';
 import { breakpoints } from 'ndla-util';
 
@@ -25,11 +26,16 @@ const FrontpageExample = ({ t }) => (
     <FrontpageHeader
       heading="Nasjonal digital læringsarena"
       searchFieldValue=""
-      logoTo="#"
+      logoTo="home"
       onSearchFieldChange={() => {}}
       onSearch={() => {}}
       searchFieldPlaceholder={t('welcomePage.heading.searchFieldPlaceholder')}
-      menuSubject={<FrontpageSubjects categories={categories} />}
+      menuSubject={
+        <FrontpageSubjects
+          categories={categories}
+          linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
+        />
+      }
       messages={{
         searchFieldTitle: t('welcomePage.heading.messages.searchFieldTitle'),
         menuButton: t('welcomePage.heading.messages.menuButton'),
@@ -54,7 +60,10 @@ const FrontpageExample = ({ t }) => (
       ]}
     />
     <main>
-      <FrontpageSubjects categories={categories} />
+      <FrontpageSubjects
+        categories={categories}
+        linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
+      />
       <OneColumn wide extraPadding>
         <FrontpageSearchSection
           heading={t('welcomePage.heading.messages.searchFieldTitle')}

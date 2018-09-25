@@ -19,10 +19,11 @@ const getScrollbarWidth = () => {
   return scrollbarWidth;
 };
 
-export const isIosDevice =
+export const isIosDeviceSafari =
   typeof window !== 'undefined' &&
   window.navigator &&
   window.navigator.platform &&
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
   /iPad|iPhone|iPod|(iPad Simulator)|(iPhone Simulator)|(iPod Simulator)/.test(
     window.navigator.platform,
   );
@@ -54,10 +55,10 @@ const noScroll = (enable, uuid) => {
       if (mastHead) {
         mastHead.style.paddingRight = `${scrollWidth}px`;
       }
-      htmlElement.style.position = isIosDevice ? 'fixed' : 'static'; // iOS scrolling fix
+      htmlElement.style.position = isIosDeviceSafari ? 'fixed' : 'static'; // iOS scrolling fix
       htmlElement.style.left = 0;
       htmlElement.style.right = 0;
-      if (isIosDevice) {
+      if (isIosDeviceSafari) {
         htmlElement.classList.add('scrollFixIOS');
       }
     }
@@ -75,7 +76,7 @@ const noScroll = (enable, uuid) => {
       }
       htmlElement.style.left = 'auto';
       htmlElement.style.right = 'auto';
-      if (isIosDevice) {
+      if (isIosDeviceSafari) {
         htmlElement.classList.remove('scrollFixIOS');
         setBodyScrollTop(currentScrollPosition);
       }

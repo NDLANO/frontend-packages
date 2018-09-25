@@ -16,7 +16,7 @@ const classes = new BEMHelper({
 });
 
 const ResourceToggleFilter = ({ checked, onClick, label }) => (
-  <div {...classes('list', '')}>
+  <div {...classes('list', 'filter-single-checkbox')}>
     <div {...classes('item')}>
       <input
         {...classes('input')}

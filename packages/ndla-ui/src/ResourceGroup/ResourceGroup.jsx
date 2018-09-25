@@ -25,7 +25,6 @@ const ResourceGroup = ({
   toggleAdditionalResources,
   showAdditionalResources,
   resourceToLinkProps,
-  messages,
   contentType,
 }) => (
   <section
@@ -40,7 +39,6 @@ const ResourceGroup = ({
         onClick={toggleAdditionalResources}
         showAdditionalResources={showAdditionalResources}
         icon={icon}
-        messages={messages}
         resources={resources}
       />
     ) : null}
@@ -57,11 +55,6 @@ ResourceGroup.propTypes = {
   hideResourceToggleFilter: PropTypes.bool,
   empty: PropTypes.bool,
   showAdditionalResources: PropTypes.bool,
-  messages: PropTypes.shape({
-    noContentBoxLabel: PropTypes.string.isRequired,
-    noContentBoxButtonText: PropTypes.string.isRequired,
-    toggleFilterLabel: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 ResourceGroup.defaultProps = {

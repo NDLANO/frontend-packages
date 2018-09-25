@@ -21,26 +21,22 @@
   &__left-wrapper {
     display: flex;
     justify-content: flex-start;
-    flex-flow: column;
     align-items: flex-start;
-
-    @include mq(tablet) {
-      flex-flow: row;
-      align-items: center;
-    }
 
     .c-icon {
       width: 14px;
       height: 14px;
       margin-left: $spacing--small/2;
       margin-right: $spacing--small/2;
-      color: $text-light-color;
-      display: none;
-      flex-flow: row;
+    }
 
-      @include mq(tablet) {
-        display: block;
-      }
+    .c-content-type-badge {
+      margin-top: $spacing;
+    }
+
+    .c-subject-new-content__content-link {
+      padding-left: $spacing;
+      padding-bottom: $spacing--small;
     }
   }
 

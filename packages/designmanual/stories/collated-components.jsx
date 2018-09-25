@@ -18,6 +18,7 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
+  RadioButtonGroup,
 } from 'ndla-ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
@@ -43,6 +44,7 @@ import ModalExample from './molecules/ModalExample';
 
 import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
+import ComponentInfo from './ComponentInfo';
 
 const toggle = () => {
   document
@@ -302,6 +304,85 @@ storiesOf('Sammensatte moduler', module)
             values={['VG1']}
           />
         </div>
+      </StoryBody>
+    </div>
+  ))
+  .add('Radiobuttons', () => (
+    <div>
+      <StoryIntro title="Filter">
+        <p>
+          Radiobutton group komponent som håndterer states og gir callback ved
+          endring
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <ComponentInfo
+          reactCode={`
+            <RadioButtonGroup
+              options={[
+                { title: '1T', value: '1T' },
+                { title: 'R1', value: 'R1' },
+                { title: 'R2', value: 'R2' },
+                { title: 'S1', value: 'S1' },
+              ]}
+              onChange={(value) => {
+                console.log('changed to', value);
+              }}
+            />
+          `}
+          usesPropTypes={[
+            {
+              name: 'options',
+              type: 'ArrayOf(Shape)',
+              default: 'Required',
+              description: `[{ title: '1T', value '1T' }, { title: 'R1', value: 'R1' }]`,
+            },
+            {
+              name: 'onChange',
+              type: 'Function',
+              default: 'Required',
+              description: '(val) => {}',
+            },
+            {
+              name: 'uniqeIds',
+              type: 'Bool',
+              default: 'null',
+              description:
+                'Lager unike id på input og label. Sørger for at ikke htmlFor og input name/id ikke krasjer med andre komponenter på siden',
+            },
+          ]}
+          status={2}>
+          <h2 className="u-heading">Radiobuttons (group) uten label</h2>
+          <div className="c-filter u-margin-top">
+            <RadioButtonGroup
+              options={[
+                { title: '1T', value: '1T' },
+                { title: 'R1', value: 'R1' },
+                { title: 'R2', value: 'R2' },
+                { title: 'S1', value: 'S1' },
+              ]}
+              onChange={value => {
+                console.log('changed to', value); // eslint-disable-line no-console
+              }}
+            />
+          </div>
+          <h2 className="u-heading">Radiobuttons (group) med label</h2>
+          <div className="c-filter u-margin-top">
+            <RadioButtonGroup
+              options={[
+                { title: '1T', value: '1T' },
+                { title: 'R1', value: 'R1' },
+                { title: 'R2', value: 'R2' },
+                { title: 'S1', value: 'S1' },
+              ]}
+              uniqeIds
+              label="Velg fag"
+              onChange={value => {
+                console.log('changed to', value); // eslint-disable-line no-console
+              }}
+            />
+          </div>
+        </ComponentInfo>
       </StoryBody>
     </div>
   ))

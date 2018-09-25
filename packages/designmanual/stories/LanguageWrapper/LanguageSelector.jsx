@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { FilterList } from 'ndla-ui';
+import { RadioButtonGroup } from 'ndla-ui';
 import { LanguageContext } from './LanguageWrapper';
 
 const LANGUAGES = [
@@ -23,12 +23,12 @@ const LanguageSelector = () => (
       <Fragment>
         <h2 className="u-heading">Velg språk for labels</h2>
         <div className="c-filter u-margin-top">
-          <FilterList
-            labelNotVisible
+          <RadioButtonGroup
+            label="Velg språk:"
             options={LANGUAGES}
-            values={[context.lang]}
-            onChange={e => {
-              context.changeLanguage(e.pop());
+            selected={context.lang}
+            onChange={value => {
+              context.changeLanguage(value);
             }}
           />
         </div>

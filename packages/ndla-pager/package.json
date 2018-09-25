@@ -1,6 +1,6 @@
 {
   "name": "ndla-pager",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Pager component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "lodash": "^4.17.5",
     "ndla-core": "^0.0.1",
     "react": "^16.4.2",
-    "react-prop-types": "0.4.0",
-    "react-bem-helper": "^1.4.1"
+    "react-bem-helper": "^1.4.1",
+    "react-prop-types": "0.4.0"
   }
 }

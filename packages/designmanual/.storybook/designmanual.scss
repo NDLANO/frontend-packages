@@ -1,7 +1,8 @@
+@import '~ndla-core/scss/core';
+@import '~ndla-icons/scss/icons'; // N.B. icons need to import before ndla-ui main
 @import '~ndla-ui/src/main';
 @import '~ndla-tabs/scss/tabs';
 @import '~ndla-pager/scss/pager';
-@import '~ndla-icons/scss/icons';
 
 .c-componentinfo {
   > .c-tabs {

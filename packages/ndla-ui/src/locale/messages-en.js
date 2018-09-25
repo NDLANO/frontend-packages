@@ -127,6 +127,11 @@ const messages = {
     newContent: {
       heading: 'New content',
     },
+    subjectIsBeta: {
+      iconLabel: 'in beta',
+      dialogHeader: '{title} is under construction',
+      dialogText: 'Read more at',
+    },
   },
   subjectsPage: {
     chooseSubject: 'Choose subject',
@@ -234,7 +239,7 @@ const messages = {
     noCoreResourcesAvailableUnspecific: 'There is no core content available.',
     noCoreResourcesAvailable: 'There is no core content available for {name}.',
     activateAdditionalResources: 'Show additional content',
-    toggleFilterLabel: 'Additional content',
+    toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
     shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',

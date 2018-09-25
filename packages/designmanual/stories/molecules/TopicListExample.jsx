@@ -50,6 +50,7 @@ class TopicListExample extends Component {
         <TopicIntroductionList
           toTopic={() => '#'}
           topics={this.filterTopics()}
+          toggleAdditionalCores={() => {}}
           messages={{
             shortcutButtonText: 'Lærestoff',
           }}

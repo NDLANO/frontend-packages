@@ -46,6 +46,28 @@
   li {
     background-color: rgba($brand-grey--light, 0.4);
     border: 1px solid rgba(0,0,0,0);
+    .c-topic-resource__link {
+      min-height: 62px;
+      @include mq(tablet) {
+        min-height: 68px;
+      }
+      @include mq(desktop) {
+        min-height: 70px;
+      }
+      &:visited {
+        color: $brand-grey-dark;
+      }
+    }
+    .c-topic-resource__icon {
+      padding-right: $spacing--small;
+      @include mq(tablet) {
+        padding-right: $spacing--small;
+        padding-left: $spacing--small / 2;
+      }
+      @include mq(desktop) {
+        padding-right: $spacing--small * 1.5;
+      }
+    }
   }
   .c-topic-resource__body {
     display: flex;
@@ -55,7 +77,7 @@
 
   &__header {
     border-bottom: 2px solid $brand-grey--light;
-    margin-bottom: $spacing--small / 2;
+    margin-bottom: $spacing--small / 4;
   }
 
   &--subject-material {
@@ -64,7 +86,7 @@
     }
     .c-topic-resource__item--additional {
       background-color: $subject-material-additional;
-      border: 1px dashed $subject-material-dark;
+      border: 1px dashed rgba($subject-material-dark, 0.4);
     }
   }
 
@@ -74,7 +96,7 @@
     }
     .c-topic-resource__item--additional {
       background-color: $tasks-and-activities-additional;
-      border: 1px dashed $tasks-and-activities-dark;
+      border: 1px dashed rgba($tasks-and-activities-dark, 0.4);
     }
   }
 
@@ -91,6 +113,10 @@
   &--learning-path {
     li {
       background-color: $learning-path-background;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $learning-path-background-additional;
+      border: 1px dashed rgba($learning-path-dark, 0.4);
     }
   }
 }

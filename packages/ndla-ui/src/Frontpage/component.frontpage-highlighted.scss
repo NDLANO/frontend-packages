@@ -4,8 +4,4 @@
   @include mq(tablet) {
     margin-top: $spacing--large + $spacing;
   }
-
-  &__heading {
-    margin: 0 0 $spacing--small 0;
-  }
 }

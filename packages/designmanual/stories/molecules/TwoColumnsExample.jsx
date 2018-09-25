@@ -51,6 +51,7 @@ class TopicListExample extends Component {
           toTopic={() => '#'}
           topics={this.filterTopics()}
           twoColumns
+          toggleAdditionalCores={() => {}}
           messages={{
             shortcutButtonText: 'Lærestoff',
           }}

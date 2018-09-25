@@ -16,6 +16,11 @@
 
   &__link {
     color: $primary-color;
+    &:hover, &:focus {
+      .c-content-card__heading {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__type {
@@ -38,20 +43,21 @@
   }
 
   &__heading {
-    font-weight: $font-weight-bold;
-    @include font-size(12px);
-    margin: 0;
+    font-weight: $font-weight-semibold;
+    @include font-size(14px, 16px);
+    margin: $spacing--small / 2 0;
+    color: $brand-color;
 
     @include mq(tablet) {
-      margin: $spacing--small 0 0 0;
-      @include inuit-font-size(20px);
+      margin: $spacing--small 0 $spacing--small / 2;
+      @include font-size(20px, 22px);
     }
   }
 
   &__description {
-    @include inuit-font-size(14px);
+    @include inuit-font-size(16px);
     line-height: 1.25rem;
-    font-family: $font-serif;
+    // font-family: $font-serif;
     margin: 0;
     display: none;
 

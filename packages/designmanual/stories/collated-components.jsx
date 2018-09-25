@@ -17,6 +17,7 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
+  RadioButtonGroup,
 } from 'ndla-ui';
 import Pager from 'ndla-pager';
 
@@ -42,6 +43,8 @@ import TranslationBoxExample from './organisms/TranslationBoxExample';
 import ModalExample from './molecules/ModalExample';
 
 import Oops from '../images/oops.gif';
+import cecilie from '../images/cecilie.png';
+import ComponentInfo from './ComponentInfo';
 
 const toggle = () => {
   document
@@ -51,92 +54,131 @@ const toggle = () => {
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
-    <Center>
-      <h2 className="u-heading">Linje artikkel enkel variant</h2>
-      <ArticleByline
-        authors={[
-          {
-            name: 'Cecilie Isaksen Eftedal',
-          },
-          {
-            name: 'Pål Frønsdal',
-          },
-        ]}
-        updated="21.06.2018"
-        license="CC BY-SA"
-        messages={{
-          authorLabel: 'Opphavsmenn',
-          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-        }}
-      />
-      <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
-      <ArticleByline
-        authors={[
-          {
-            name: 'Cecilie Isaksen Eftedal',
-          },
-        ]}
-        updated="21.06.2018"
-        license="CC BY-SA"
-        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
-        additional
-        messages={{
-          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-        }}
-      />
-      <h2 className="u-heading">Linje med detaljert forfatter informasjon</h2>
-      <ArticleByline
-        authors={[
-          {
-            role: 'rolle',
-            name: 'Cecilie Isaksen Eftedal',
-            shortName: 'Cecilie',
-            urlContributions: '#',
-            urlAuthor: '#',
-            licenses: 'CC BY-SA',
-            title: 'Stilling',
-            phone: '+47 123 45 678',
-            email: 'cecilie@ndla.no',
-            image: 'http://via.placeholder.com/200x200',
-            introduction: 'Er fagleder for bla bla..',
-          },
-          {
-            role: 'rolle',
-            name: 'Siv Mundal',
-            shortName: 'Siv',
-            urlContributions: '#',
-            urlAuthor: '#',
-            licenses: 'CC BY-SA',
-            title: 'Stilling',
-            phone: '+47 123 45 678',
-            email: 'siv.mundal@keyteq.no',
-            image: 'http://via.placeholder.com/200x200',
-            introduction: 'Er fagleder for bla bla..',
-          },
-          {
-            role: 'rolle',
-            name: 'Pål Frøsndal',
-            shortName: 'Pål',
-            urlContributions: '#',
-            urlAuthor: '#',
-            licenses: 'CC BY-SA',
-            title: 'Stilling',
-            phone: '+47 123 45 678',
-            email: 'paal.fronsdal@ndla.no',
-            image: 'http://via.placeholder.com/200x200',
-            introduction: 'Er fagleder for bla bla..',
-          },
-        ]}
-        updated="21.06.2018"
-        license="CC BY-SA"
-        licenseBox={<LicenseBox headingId="article-license-box-heading-id" />}
-        additional
-        messages={{
-          authorLabel: 'Opphavsmenn',
-          authorDescription: 'Denne artikkelen er laget av flere opphavsmenn',
-        }}
-      />
-    </Center>
+    <div>
+      <StoryIntro title="Artikkel informasjonslinje">
+        <p>
+          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse
+          av regler ved bruk av innhold, ikon hvis artikkel er tilleggsstoff og
+          dato for forrige oppdatering.
+        </p>
+      </StoryIntro>
+      <StoryBody layout="extend">
+        <LanguageSelector />
+        <h2 className="u-heading">Linje artikkel enkel variant</h2>
+        <ArticleByline
+          authors={[
+            {
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+              role: 'Forfatter',
+            },
+            {
+              name: 'Pål Frønsdal',
+              shortName: 'Pål',
+              role: 'Manusforfatter',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+        />
+        <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
+        <ArticleByline
+          authors={[
+            {
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+          additional
+        />
+        <h2 className="u-heading">Linje med detaljert opphaver informasjon</h2>
+        <ArticleByline
+          authors={[
+            {
+              role: 'rolle',
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'cecilie@ndla.no',
+              image: cecilie,
+              introduction:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+          additional
+        />
+        <h2 className="u-heading">
+          Linje med flere opphavere med detaljert informasjon
+        </h2>
+        <ArticleByline
+          authors={[
+            {
+              role: 'Forfatter',
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'cecilie@ndla.no',
+              image: cecilie,
+              introduction:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+            },
+            {
+              role: 'Illustratør',
+              name: 'Siv Mundal',
+              shortName: 'Siv',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'siv.mundal@keyteq.no',
+              image: cecilie,
+              introduction:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+            },
+            {
+              role: 'Manusforfatter',
+              name: 'Pål Frønsdal',
+              shortName: 'Pål',
+              urlContributions: '#',
+              urlAuthor: '#',
+              licenses: 'CC BY-SA',
+              title: 'Stilling',
+              phone: '+47 123 45 678',
+              email: 'paal.fronsdal@ndla.no',
+              image: cecilie,
+              introduction:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+            },
+          ]}
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+        />
+        <h2 className="u-heading">
+          Linje uten opphavere detaljert informasjon
+        </h2>
+        <ArticleByline
+          updated="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+        />
+      </StoryBody>
+    </div>
   ))
   .add('Brødsmulesti', () => (
     <Center>
@@ -262,6 +304,85 @@ storiesOf('Sammensatte moduler', module)
             values={['VG1']}
           />
         </div>
+      </StoryBody>
+    </div>
+  ))
+  .add('Radiobuttons', () => (
+    <div>
+      <StoryIntro title="Filter">
+        <p>
+          Radiobutton group komponent som håndterer states og gir callback ved
+          endring
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <ComponentInfo
+          reactCode={`
+            <RadioButtonGroup
+              options={[
+                { title: '1T', value: '1T' },
+                { title: 'R1', value: 'R1' },
+                { title: 'R2', value: 'R2' },
+                { title: 'S1', value: 'S1' },
+              ]}
+              onChange={(value) => {
+                console.log('changed to', value);
+              }}
+            />
+          `}
+          usesPropTypes={[
+            {
+              name: 'options',
+              type: 'ArrayOf(Shape)',
+              default: 'Required',
+              description: `[{ title: '1T', value '1T' }, { title: 'R1', value: 'R1' }]`,
+            },
+            {
+              name: 'onChange',
+              type: 'Function',
+              default: 'Required',
+              description: '(val) => {}',
+            },
+            {
+              name: 'uniqeIds',
+              type: 'Bool',
+              default: 'null',
+              description:
+                'Lager unike id på input og label. Sørger for at ikke htmlFor og input name/id ikke krasjer med andre komponenter på siden',
+            },
+          ]}
+          status={2}>
+          <h2 className="u-heading">Radiobuttons (group) uten label</h2>
+          <div className="c-filter u-margin-top">
+            <RadioButtonGroup
+              options={[
+                { title: '1T', value: '1T' },
+                { title: 'R1', value: 'R1' },
+                { title: 'R2', value: 'R2' },
+                { title: 'S1', value: 'S1' },
+              ]}
+              onChange={value => {
+                console.log('changed to', value); // eslint-disable-line no-console
+              }}
+            />
+          </div>
+          <h2 className="u-heading">Radiobuttons (group) med label</h2>
+          <div className="c-filter u-margin-top">
+            <RadioButtonGroup
+              options={[
+                { title: '1T', value: '1T' },
+                { title: 'R1', value: 'R1' },
+                { title: 'R2', value: 'R2' },
+                { title: 'S1', value: 'S1' },
+              ]}
+              uniqeIds
+              label="Velg fag"
+              onChange={value => {
+                console.log('changed to', value); // eslint-disable-line no-console
+              }}
+            />
+          </div>
+        </ComponentInfo>
       </StoryBody>
     </div>
   ))

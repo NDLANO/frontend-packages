@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { NoContentBox, Tooltip, SafeLink } from 'ndla-ui';
+import { injectT } from 'ndla-i18n';
 import { Additional, Core } from 'ndla-icons/common';
 import { ResourceShape } from '../shapes';
 
@@ -23,13 +24,10 @@ const Resource = ({
   icon,
   resourceToLinkProps,
   showAdditionalResources,
-  messages,
   id,
+  contentTypeDescription,
 }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
-  const contentTypeDescription = resource.additional
-    ? messages.additionalTooltip
-    : messages.coreTooltip;
 
   return (
     <li
@@ -74,18 +72,18 @@ Resource.propTypes = {
   resource: ResourceShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  messages: PropTypes.shape({
-    additionalTooltip: PropTypes.string,
-    coreTooltip: PropTypes.string,
-  }).isRequired,
+  contentTypeDescription: PropTypes.string.isRequired,
 };
+
+injectT(Resource);
 
 const ResourceList = ({
   resources,
   onClick,
-  messages,
   type,
+  title,
   showAdditionalResources,
+  t,
   ...rest
 }) => {
   const renderAdditionalResourceTrigger =
@@ -103,7 +101,11 @@ const ResourceList = ({
             showAdditionalResources={showAdditionalResources}
             {...rest}
             resource={resource}
-            messages={messages}
+            contentTypeDescription={
+              resource.additional
+                ? t('resource.tooltipAdditionalTopic')
+                : t('resource.tooltipCoreTopic')
+            }
             id={`${resource.id}_${index}`}
           />
         ))}
@@ -111,8 +113,10 @@ const ResourceList = ({
           <li>
             <NoContentBox
               onClick={onClick}
-              buttonText={messages.noContentBoxButtonText}
-              text={messages.noContentBoxLabel}
+              buttonText={t('resource.toggleFilterLabel')}
+              text={t('resource.noCoreResourcesAvailable', {
+                name: title.toLowerCase(),
+              })}
             />
           </li>
         )}
@@ -128,13 +132,8 @@ ResourceList.propTypes = {
   onChange: PropTypes.func,
   resourceToLinkProps: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
-  messages: PropTypes.shape({
-    noContentBoxLabel: PropTypes.string.isRequired,
-    noContentBoxButtonText: PropTypes.string.isRequired,
-    toggleFilterLabel: PropTypes.string.isRequired,
-    coreTooltip: PropTypes.string.isRequired,
-    additionalTooltip: PropTypes.string.isRequired,
-  }).isRequired,
+  title: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default ResourceList;
+export default injectT(ResourceList);

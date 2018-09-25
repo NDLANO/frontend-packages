@@ -123,7 +123,12 @@ const messages = {
       label: 'Filter',
     },
     newContent: {
-      heading: 'Nytt innhold',
+      heading: 'Har du fått med deg?',
+    },
+    subjectIsBeta: {
+      iconLabel: 'i arbeid',
+      dialogHeader: '{title} er under arbeid.',
+      dialogText: 'Du kan lese mer om hva dette betyr på',
     },
   },
   subjectsPage: {
@@ -170,7 +175,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialiserende',
+      studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
@@ -178,6 +183,7 @@ const messages = {
       header: 'NDLA film',
       text:
         'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
+      textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
   },
@@ -259,9 +265,11 @@ const messages = {
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
-    multipleAuthorsLabel: 'Opphavsmenn',
-    multipleAuthorsExplanation:
-      'Denne artikkelen er laget av flere opphavsmenn',
+    multipleAuthorsLabelAbbreviation: 'm. fl.',
+    multipleAuthorsLabel: 'Opphavere av artikkel:',
+    multipleAuthorsLabelAria: 'Opphavere av artikkelen er {names}',
+    multipleAuthorsLabelAriaConjunction: 'og',
+    singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
   },
   competenceGoals: {
     closeCompetenceGoals: 'Lukk kompetansemål',
@@ -287,12 +295,17 @@ const messages = {
       images: 'Bilder',
       audio: 'Lyd',
       video: 'Video',
+      files: 'Filer',
+      other: 'Annet innhold',
     },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',
       description:
         'Husk å kopiere teksten som skal legges ved bildet der du bruker det.',
       rules: 'Regler for bruk av bildet:',
+      itemImage: {
+        ariaLabel: 'Åpne bilde i et nytt vindu',
+      },
       source: 'Kilde',
       title: 'Tittel',
     },
@@ -314,6 +327,26 @@ const messages = {
       description:
         'Husk å kopiere teksten som skal legges ved videoen der du bruker den.',
       rules: 'Regler for bruk av videoen:',
+      itemImage: {
+        ariaLabel: 'Åpne video i et nytt vindu',
+      },
+    },
+    other: {
+      heading: 'Slik bruker du annet innhold fra artikkelen',
+      description:
+        'Du finner retningslinjene for bruk av innholdet i innholdselementet',
+      itemImage: {
+        ariaLabel: 'Åpne i nytt vindu',
+      },
+    },
+    files: {
+      heading: 'Slik bruker du filer fra artikkelen',
+      description:
+        'Husk å kopier teksten som skal legges ved filen der du bruker den.',
+      rules: 'Regler for bruk av filen:',
+      itemImage: {
+        ariaLabel: 'Åpne i nytt vindu',
+      },
     },
     creditType: {
       originator: 'Opphavsmann',

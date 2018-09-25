@@ -17,7 +17,11 @@ $subject-section-padding: 100px;
 
   &__breadcrumb {
     display: none;
-    margin: $spacing--medium 0 0 $subject-margin;
+    margin: $spacing--medium 0 0 0;
+
+    @include mq (desktop) {
+      margin-left: $subject-margin;
+    }
 
     @include mq (tablet) {
       display: block;
@@ -35,6 +39,7 @@ $subject-section-padding: 100px;
     }
 
     & > *:first-child {
+      margin-bottom: $spacing--large;
       @include mq(tablet) {
         margin-right: 80px;
       }
@@ -66,7 +71,10 @@ $subject-section-padding: 100px;
 }
 
 .c-subject-sidebar-wrapper {
-  flex-basis: 390px;
+  flex-basis: 50%;
+  @include mq(desktop) {
+    flex-basis: 390px;
+  }
   flex-shrink: 0;
   margin: 0 $spacing;
 
@@ -155,5 +163,32 @@ $subject-section-padding: 100px;
 
   @include mq(tablet) {
     padding: 0 0 0 $subject-margin;
+  }
+}
+
+.c-subject-topic-language-container {
+  background: $brand-grey--lightest;
+  padding: $spacing;
+  margin-top: $spacing;
+  .c-topic-shortcuts__button {
+    background: none;
+  }
+  &__heading {
+    text-transform: uppercase;
+    @include font-size(22px, 24px);
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.05em;
+    margin: $spacing--small 0;
+  }
+  .c-topic-introduction__item {
+    &:last-child, &:nth-last-child(2):nth-child(even) {
+      border-bottom: 0;
+    }
+  }
+  @include mq($until: tablet) {
+    .c-topic-introduction__list {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

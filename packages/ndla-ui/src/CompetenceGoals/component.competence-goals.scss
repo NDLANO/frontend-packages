@@ -59,6 +59,11 @@
 
   &__topic {
     margin-bottom: $spacing;
+    padding-top: $spacing;
+
+     @include mq(tabletWide) {
+      padding-top: $spacing--small;
+    }
 
     &--expandable {
       margin-bottom: $spacing--small;
@@ -140,7 +145,7 @@
   &--menu, &--search {
     padding: $spacing--small $spacing $spacing--small $spacing--small;
     @include mq($until: mobileWide) {
-      padding-left: 0;
+      padding: 0;
     }
   }
   .c-competence-goals {

@@ -9,4 +9,7 @@
 import LanguageWrapper, { LanguageContext } from './LanguageWrapper';
 
 export { default as LanguageSelector } from './LanguageSelector';
+export {
+  default as LanguageSelectorNonMessages,
+} from './LanguageSelectorNonMessages';
 export { LanguageWrapper, LanguageContext };

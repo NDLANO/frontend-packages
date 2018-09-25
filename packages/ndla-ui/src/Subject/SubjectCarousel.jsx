@@ -101,14 +101,12 @@ SubjectCarousel.propTypes = {
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       image: PropTypes.string,
-      linkTo: PropTypes.string.isRequired,
-      linkToTarget: PropTypes.string,
+      toLinkProps: PropTypes.func.isRequired,
     }),
   ),
   title: PropTypes.string,
   narrowScreen: PropTypes.bool,
   wideScreen: PropTypes.bool,
-  toLinkProps: PropTypes.func.isRequired,
 };
 
 SubjectCarousel.defaultProps = {

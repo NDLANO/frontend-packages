@@ -10,7 +10,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, copyTextToClipboard } from 'ndla-util';
 import { Copy } from 'ndla-icons/action';
-import { Button, SubjectHeader } from 'ndla-ui';
+import {
+  PageContainer,
+  LayoutItem,
+  OneColumn,
+  SubjectHeader,
+  CopyButton,
+} from 'ndla-ui';
 
 const addLeadingSlash = str => {
   if (str.startsWith('/')) {
@@ -19,93 +25,113 @@ const addLeadingSlash = str => {
   return `/${str}`;
 };
 
-class CopyButton extends Component {
+class BannerList extends Component {
   constructor(props) {
     super(props);
-    this.state = { hasCopied: false };
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      bannerSearch: '',
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  componentWillUnmount() {
-    window.clearTimeout(this.timeout);
-  }
-
-  handleClick() {
-    const { stringToCopy } = this.props;
-    const success = copyTextToClipboard(stringToCopy, this.buttonContainer);
-
-    if (success) {
-      this.setState({ hasCopied: true });
-
-      this.timeout = setTimeout(() => {
-        this.setState({ hasCopied: false });
-      }, 10000);
-    }
+  handleInputChange(e) {
+    this.setState({
+      bannerSearch: e.target.value,
+    });
   }
 
   render() {
-    const { hasCopied } = this.state;
-    const { children, hasCopiedTitle, stringToCopy, ...rest } = this.props;
+    const { banners } = this.props;
+    const bannerSearchLowerCase = this.state.bannerSearch.toLowerCase();
     return (
-      <span
-        ref={r => {
-          this.buttonContainer = r;
-        }}>
-        <Button disabled={hasCopied} onClick={this.handleClick} {...rest}>
-          {hasCopied ? hasCopiedTitle : children}
-        </Button>
-      </span>
+      <PageContainer>
+        <OneColumn>
+          <LayoutItem layout="full">
+            <article className="c-article c-article--clean">
+              <input
+                type="search"
+                id="search"
+                name="search"
+                placeholder="Søk etter fag"
+                value={this.state.bannerSearch}
+                onChange={this.handleInputChange}
+                style={{ width: '100%' }}
+              />
+            </article>
+          </LayoutItem>
+        </OneColumn>
+        {banners
+          .filter(
+            banner =>
+              bannerSearchLowerCase === '' ||
+              banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1,
+          )
+          .map(banner => (
+            <div key={banner.desktop} style={{ marginTop: '26px' }}>
+              <SubjectHeader
+                heading={banner.name}
+                images={[
+                  {
+                    url: banner.desktop,
+                    types: [
+                      breakpoints.desktop,
+                      breakpoints.tablet,
+                      breakpoints.wide,
+                    ],
+                  },
+                  { url: banner.mobile, types: [breakpoints.mobile] },
+                ]}
+              />
+              <div style={{ margin: '13px' }}>
+                <CopyButton
+                  style={{ margin: '13px' }}
+                  copyNode={
+                    <Fragment>
+                      <Copy /> Kopiert!
+                    </Fragment>
+                  }
+                  onClick={() => {
+                    copyTextToClipboard(
+                      `${window.location.origin}${addLeadingSlash(
+                        banner.mobile,
+                      )}`,
+                      this.buttonContainer,
+                    );
+                  }}
+                  outline
+                  title="Kopier mobil banner til importskjema">
+                  <Fragment>
+                    <Copy /> Kopier mobil banner
+                  </Fragment>
+                </CopyButton>
+                <CopyButton
+                  style={{ margin: '13px' }}
+                  outline
+                  copyNode={
+                    <Fragment>
+                      <Copy /> Kopiert!
+                    </Fragment>
+                  }
+                  onClick={() => {
+                    copyTextToClipboard(
+                      `${window.location.origin}${addLeadingSlash(
+                        banner.desktop,
+                      )}`,
+                      this.buttonContainer,
+                    );
+                  }}
+                  title="Kopier mobil banner til importskjema">
+                  <Fragment>
+                    <Copy /> Kopier desktop banner
+                  </Fragment>
+                </CopyButton>
+              </div>
+            </div>
+          ))}
+      </PageContainer>
     );
   }
 }
-
-CopyButton.propTypes = {
-  stringToCopy: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  hasCopiedTitle: PropTypes.string.isRequired,
-};
-
-const BannerList = ({ banners }) =>
-  banners.map(banner => (
-    <div key={banner.desktop} style={{ marginTop: '26px' }}>
-      <SubjectHeader
-        heading={banner.name}
-        images={[
-          {
-            url: banner.desktop,
-            types: [breakpoints.desktop, breakpoints.tablet, breakpoints.wide],
-          },
-          { url: banner.mobile, types: [breakpoints.mobile] },
-        ]}
-      />
-      <div style={{ margin: '13px' }}>
-        <CopyButton
-          style={{ margin: '13px' }}
-          hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${addLeadingSlash(
-            banner.mobile,
-          )}`}
-          outline
-          title="Kopier mobil banner til importskjema">
-          <Fragment>
-            <Copy /> Kopier mobil banner
-          </Fragment>
-        </CopyButton>
-        <CopyButton
-          style={{ margin: '13px' }}
-          outline
-          hasCopiedTitle="Kopiert!"
-          stringToCopy={`${window.location.origin}${addLeadingSlash(
-            banner.desktop,
-          )}`}
-          title="Kopier mobil banner til importskjema">
-          <Fragment>
-            <Copy /> Kopier desktop banner
-          </Fragment>
-        </CopyButton>
-      </div>
-    </div>
-  ));
 
 BannerList.propTypes = {
   banners: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types

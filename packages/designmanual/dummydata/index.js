@@ -1,11 +1,16 @@
-import { topicMenu, subtopicList, topicList } from './mockTopics';
+import {
+  topicMenu,
+  subtopicList,
+  topicList,
+  topicListChinese,
+} from './mockTopics';
 import {
   learningPathResources,
   articleResources,
   exerciseResources,
   assessmentResources,
 } from './mockResources';
-import { subjectList, subjectConcepts } from './mockSubjects';
+import { subjectList, subjectConcepts, categories } from './mockSubjects';
 import {
   firstBrightcoveList,
   secondBrightcoveList,
@@ -24,13 +29,17 @@ import {
   searchFilterOptions,
 } from './mockSearch';
 
+import { mockDownloadArticleText } from './mockDownloadArticleText';
+
 import contentCards from './mockContentCards';
 
 export {
   topicMenu,
   topicList,
+  topicListChinese,
   subjectList,
   subjectConcepts,
+  categories,
   learningPathResources,
   articleResources,
   exerciseResources,
@@ -47,4 +56,5 @@ export {
   searchTabFilterOptions,
   searchFilterOptions,
   contentCards,
+  mockDownloadArticleText,
 };

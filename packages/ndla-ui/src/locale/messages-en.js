@@ -127,6 +127,11 @@ const messages = {
     newContent: {
       heading: 'New content',
     },
+    subjectIsBeta: {
+      iconLabel: 'in beta',
+      dialogHeader: '{title} is under construction',
+      dialogText: 'Read more at',
+    },
   },
   subjectsPage: {
     chooseSubject: 'Choose subject',
@@ -180,6 +185,7 @@ const messages = {
       header: 'NDLA film',
       text:
         'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
+      textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
     errorDescription: 'Sorry, an error occurd while loading the subjects.',
@@ -233,7 +239,7 @@ const messages = {
     noCoreResourcesAvailableUnspecific: 'There is no core content available.',
     noCoreResourcesAvailable: 'There is no core content available for {name}.',
     activateAdditionalResources: 'Show additional content',
-    toggleFilterLabel: 'Additional content',
+    toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
     shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
@@ -262,8 +268,11 @@ const messages = {
     additionalLabel: 'Additional content',
     urlContributionsLabel: 'See {name}`s contributions',
     urlAuthorLabel: 'Read more about {name}',
-    multipleAuthorsLabel: 'Authors',
-    multipleAuthorsExplanation: 'This article has several authors',
+    multipleAuthorsLabelAbbreviation: 'et al.',
+    multipleAuthorsLabel: 'Article authors:',
+    multipleAuthorsLabelAria: 'Authors of this article are {names}',
+    multipleAuthorsLabelAriaConjunction: 'og',
+    singleAuthorsLabelAria: 'The author of this article is {name}',
   },
   competenceGoals: {
     closeCompetenceGoals: 'Close competance goals',
@@ -283,12 +292,17 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
+      files: 'Files',
+      other: 'Other content',
     },
     images: {
       heading: 'How to use images from the article',
       description:
         'Remember to copy the text to be attached to the image where you use it.',
       rules: 'Rules for use of image:',
+      itemImage: {
+        ariaLabel: 'Open image in new window',
+      },
       source: 'Source',
       title: 'Title',
     },
@@ -310,6 +324,26 @@ const messages = {
       description:
         'Remember to copy the text to be attached to the video where you use it.',
       rules: 'Rules for use of audio file:',
+      itemImage: {
+        ariaLabel: 'Open video in new window',
+      },
+    },
+    other: {
+      heading: 'How to use other content from the article',
+      description:
+        'You will find guidelines for use of other content in the asset',
+      itemImage: {
+        ariaLabel: 'Open video in new window',
+      },
+    },
+    files: {
+      heading: 'How to use files from the article',
+      description:
+        'Remember to copy the text to be attached to the file where you use it.',
+      rules: 'Rules for use of file:',
+      itemImage: {
+        ariaLabel: 'Open video in new window',
+      },
     },
     learnMore: 'Learn more about open licenses',
     copyTitle: 'Copy reference',

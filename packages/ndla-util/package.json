@@ -28,6 +28,7 @@
     "es"
   ],
   "dependencies": {
-    "defined": "1.0.0"
+    "defined": "1.0.0",
+    "pdfmake": "^0.1.38"
   }
 }

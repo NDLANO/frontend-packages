@@ -126,6 +126,11 @@ const messages = {
     newContent: {
       heading: 'Nytt innhald',
     },
+    subjectIsBeta: {
+      iconLabel: 'i arbeid',
+      dialogHeader: '{title} er under arbeid.',
+      dialogText: 'Du kan lese meir om kva dette betyr på',
+    },
   },
   subjectsPage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
@@ -171,13 +176,14 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialiserende',
+      studiespesialiserende: 'studiespesialisering',
       imported: 'Spoltefag',
     },
     film: {
       header: 'NDLA film',
       text:
         'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
+      textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
@@ -235,7 +241,7 @@ const messages = {
       'Det er ikkje noko kjernestoff tilgjengeleg.',
     noCoreResourcesAvailable:
       'Det er ikkje noko kjernestoff tilgjengeleg for {name}.',
-    toggleFilterLabel: 'Tilleggsressursar',
+    toggleFilterLabel: 'Vis tilleggsressursar',
     activateAdditionalResources: 'Vis tilleggsressursar',
     label: 'Læringsressursar',
     shortcutButtonText: 'Lærestoff',
@@ -261,9 +267,11 @@ const messages = {
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Sjå kva {name} har bidratt med',
     urlAuthorLabel: 'Les meir om {name}',
-    multipleAuthorsLabel: 'Opphavsmenn',
-    multipleAuthorsExplanation:
-      'Denne artikkelen er laga av fleire opphavsmenn',
+    multipleAuthorsLabelAbbreviation: 'm. fl.',
+    multipleAuthorsLabel: 'Opphavere av artikkel:',
+    multipleAuthorsLabelAria: 'Opphavere av artikkelen er {names}',
+    multipleAuthorsLabelAriaConjunction: 'og',
+    singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
   },
   competenceGoals: {
     closeCompetenceGoals: 'Lukk kompetansemål',
@@ -289,12 +297,17 @@ const messages = {
       images: 'Bilde',
       audio: 'Lyd',
       video: 'Video',
+      files: 'Filer',
+      other: 'Anna innhald',
     },
     images: {
       heading: 'Slik bruker du bilder frå artikkelen',
       description:
         'Hugs å kopiera teksten som skal leggjast ved bildet der du bruker det.',
       rules: 'Regler for bruk av bildet:',
+      itemImage: {
+        ariaLabel: 'Opne bilde i eit nytt vindauge',
+      },
       source: 'Kjelde',
       title: 'Tittel',
     },
@@ -312,10 +325,30 @@ const messages = {
       rules: 'Regler for bruk av lydfila:',
     },
     video: {
-      heading: 'Slik bruker du video fra artikkelen',
+      heading: 'Slik bruker du video frå artikkelen',
       description:
         'Hugs å kopiera teksten som skal leggjast ved videoen der du bruker han.',
       rules: 'Regler for bruk av videoen:',
+      itemImage: {
+        ariaLabel: 'Opne video i eit nytt vindauge',
+      },
+    },
+    other: {
+      heading: 'Slik bruker du annet innhold frå artikkelen',
+      description:
+        'Du finner retningslinjene for bruk av innholdet i innholdselementet.',
+      itemImage: {
+        ariaLabel: 'Åpne i nytt vindauge',
+      },
+    },
+    files: {
+      heading: 'Slik bruker du filer frå artikkelen',
+      description:
+        'Husk å kopier teksten som skal legges ved filen der du bruker den.',
+      rules: 'Regler for bruk av filen:',
+      itemImage: {
+        ariaLabel: 'Åpne i nytt vindauge',
+      },
     },
     creditType: {
       originator: 'Opphavsmann',

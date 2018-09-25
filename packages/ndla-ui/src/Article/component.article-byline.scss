@@ -17,7 +17,7 @@
   font-family: $font;
   color: $brand-grey-dark;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   display: flex;
   align-items: center;
   margin-bottom: $spacing--small;
@@ -32,12 +32,6 @@
   &__flex {
     align-items: center;
     height: 1.5rem;
-    @include mq($from: mobileWide, $until: tablet) {
-      width: 50%;
-      &:nth-child(even) {
-        text-align: right;
-      }
-    }
     @include mq($until: mobileWide) {
       width: 100%;
     }

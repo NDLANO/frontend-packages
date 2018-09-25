@@ -9,6 +9,7 @@
 /* eslint max-len: 0 */
 import React from 'react';
 
+import { Trans } from 'ndla-i18n';
 import {
   Image,
   OneColumn,
@@ -32,17 +33,22 @@ import {
   EmbeddedTwitter,
   EmbeddedFacebook,
   InfoWidget,
+  constants,
 } from 'ndla-ui';
 
 import { EmailOutline } from 'ndla-icons/common';
 import { breakpoints } from 'ndla-util';
 
-import exampleBackground from '../../images/medie-example.jpg';
+import exampleBackground from '../../images/banners/Salg-service-og-sikkerhet.svg';
+import chineseBackground from '../../images/banners/Kinesisk.svg';
 import article, { contentCards } from '../../dummydata/index';
 
 import TopicListExample from '../molecules/TopicListExample';
 import TwoColumnsExample from '../molecules/TwoColumnsExample';
+import TwoColumnsLanguageExample from '../molecules/TwoColumnsLanguageExample';
 import Breadcrumb from '../molecules/breadcrumbs';
+
+const { contentTypes } = constants;
 
 const subjectArchive = (fixedWidth = false) => (
   <SubjectArchive
@@ -106,52 +112,70 @@ const subjectAbout = (fixedWidth = false) => (
     description="Her kan det komme en tekstlig beskrivelse av hvordan faget er bygget opp eller hvilke særpreg dette faget har. Det kan også være i form av en film som introduserer faget"
   />
 );
-
 const secondaryContent = (
-  <SubjectSecondaryContent>
-    <OneColumn noPadding>
-      <SubjectChildContent>
-        <SubjectFlexWrapper>
-          <SubjectFlexChild>
-            <SubjectNewContent
-              heading="Nytt innhold"
-              content={[
-                {
-                  name: 'Radio- og tvstruktur',
-                  url: '#1',
-                  topicName: 'Mediene i samfunnet',
-                  formattedDate: '10.02.2018',
-                },
-                {
-                  name: 'Hva er makt?',
-                  url: '#2',
-                  topicName: 'Mediene i samfunnet',
-                  formattedDate: '24.01.2018',
-                },
-              ]}
-            />
-          </SubjectFlexChild>
-          <SubjectFlexChild>
-            <InfoWidget
-              center
-              heading="Nyhetsbrev"
-              description="Hold deg oppdatert. Abonnér på siste nytt fra NDLA."
-              mainLink={{
-                name: 'Meld deg på',
-                url: '#1',
-              }}
-              iconLinks={[
-                {
-                  icon: <EmailOutline />,
-                  name: 'Meld deg på nyhetsbrev',
-                },
-              ]}
-            />
-          </SubjectFlexChild>
-        </SubjectFlexWrapper>
-      </SubjectChildContent>
-    </OneColumn>
-  </SubjectSecondaryContent>
+  <Trans>
+    {({ t }) => (
+      <SubjectSecondaryContent>
+        <OneColumn noPadding>
+          <SubjectChildContent>
+            <SubjectFlexWrapper>
+              <SubjectFlexChild>
+                <SubjectNewContent
+                  heading={t('subjectPage.newContent.heading')}
+                  content={[
+                    {
+                      name: 'Hvordan finne svar på det du lurer på?',
+                      url: '#1d',
+                      topicName: [
+                        'Mediene i samfunnet',
+                        'Kildebruk, opphavsrett og personvern',
+                      ],
+                      formattedDate: '10.02.2018',
+                      contentType: contentTypes.SUBJECT_MATERIAL,
+                    },
+                    {
+                      name: 'Hva koster det å nå bærekraftmålene?',
+                      url: '#2d',
+                      topicName: [
+                        'Mediene i samfunnet',
+                        'Mediestruktur i Norge',
+                      ],
+                      formattedDate: '24.01.2018',
+                      contentType: contentTypes.SUBJECT_MATERIAL,
+                    },
+                    {
+                      name: 'Hva koster det å nå bærekraftmålene?',
+                      url: '#3d',
+                      topicName: ['Mediene i samfunnet', 'Mediebruk'],
+                      formattedDate: '24.01.2018',
+                      contentType: contentTypes.SUBJECT_MATERIAL,
+                    },
+                  ]}
+                />
+              </SubjectFlexChild>
+              <SubjectFlexChild>
+                <InfoWidget
+                  center
+                  heading={t('newsLetter.heading')}
+                  description={t('newsLetter.description')}
+                  mainLink={{
+                    name: t('newsLetter.mainLinkName'),
+                    url: '#1',
+                  }}
+                  iconLinks={[
+                    {
+                      icon: <EmailOutline />,
+                      name: t('newsLetter.iconLinkName'),
+                    },
+                  ]}
+                />
+              </SubjectFlexChild>
+            </SubjectFlexWrapper>
+          </SubjectChildContent>
+        </OneColumn>
+      </SubjectSecondaryContent>
+    )}
+  </Trans>
 );
 
 const some = (
@@ -176,7 +200,7 @@ export default () => (
         },
       ]}
     />
-    <OneColumn noPadding>
+    <OneColumn wide>
       <SubjectContent breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage
@@ -229,20 +253,20 @@ export default () => (
             heading="Mest lest"
             links={[
               {
-                url: '#1',
                 text: 'Grafisk design',
+                toLinkProps: () => ({ to: '#1a' }),
               },
               {
-                url: '#2',
                 text: 'Nettsider',
+                toLinkProps: () => ({ to: '#2a' }),
               },
               {
-                url: '#3',
                 text: 'Prøv deg som journalist',
+                toLinkProps: () => ({ to: '#3a' }),
               },
               {
-                url: '#4',
                 text: 'Grenseløs journalistikk',
+                toLinkProps: () => ({ to: '#4a' }),
               },
             ]}
           />
@@ -279,7 +303,7 @@ export const SubjectWithTwoColumn = () => (
         },
       ]}
     />
-    <OneColumn noPadding>
+    <OneColumn wide>
       <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           subjectPage
@@ -336,20 +360,20 @@ export const SubjectWithTwoColumn = () => (
                 heading="Mest lest"
                 links={[
                   {
-                    url: '#1',
                     text: 'Grafisk design',
+                    toLinkProps: () => ({ to: '#1b' }),
                   },
                   {
-                    url: '#2',
                     text: 'Nettsider',
+                    toLinkProps: () => ({ to: '#2b' }),
                   },
                   {
-                    url: '#3',
                     text: 'Prøv deg som journalist',
+                    toLinkProps: () => ({ to: '#3b' }),
                   },
                   {
-                    url: '#4',
                     text: 'Grenseløs journalistikk',
+                    toLinkProps: () => ({ to: '#4b' }),
                   },
                 ]}
               />
@@ -370,6 +394,114 @@ export const SubjectWithTwoColumn = () => (
           <SubjectFlexChild>{subjectAbout()}</SubjectFlexChild>
         </SubjectFlexWrapper>
       </SubjectChildContent>
+    </OneColumn>
+    <SubjectCarousel
+      wideScreen
+      subjects={contentCards}
+      title="Litt forskjellig fra faget"
+      subjectPage
+    />
+    {secondaryContent}
+    <OneColumn noPadding>
+      <SubjectChildContent>{some}</SubjectChildContent>
+    </OneColumn>
+  </article>
+);
+
+export const SubjectLanguage = () => (
+  <article>
+    <SubjectHeader
+      heading="Kinesisk"
+      images={[
+        {
+          url: chineseBackground,
+          types: Object.keys(breakpoints),
+        },
+      ]}
+    />
+    <OneColumn wide>
+      <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
+        <ResourcesWrapper
+          subjectPage
+          header={<ResourcesTitle>Emner</ResourcesTitle>}>
+          <TwoColumnsLanguageExample />
+        </ResourcesWrapper>
+        <SubjectChildContent>
+          <SubjectFlexWrapper>
+            <SubjectFlexChild>
+              <SubjectShortcuts
+                messages={{
+                  heading: 'Gå direkte til',
+                  showMore: 'Vis flere',
+                  showLess: 'Vis færre',
+                }}
+                links={[
+                  {
+                    url: '#1',
+                    text: 'Fagstoff',
+                  },
+                  {
+                    url: '#2',
+                    text: 'Oppgaver',
+                  },
+                  {
+                    url: '#3',
+                    text: 'Læringsstier',
+                  },
+                  {
+                    url: '#4',
+                    text: 'Film',
+                  },
+                  {
+                    url: '#5',
+                    text: 'Spill',
+                  },
+                  {
+                    url: '#6',
+                    text: 'Verktøy og mal',
+                  },
+                  {
+                    url: '#7',
+                    text: 'Kategori 7',
+                  },
+                  {
+                    url: '#8',
+                    text: 'Kategori 8',
+                  },
+                ]}
+              />
+            </SubjectFlexChild>
+            <SubjectFlexChild>
+              <SubjectLinks
+                heading="Mest lest"
+                links={[
+                  {
+                    text: 'Grafisk design',
+                    toLinkProps: () => ({ to: '#1c' }),
+                  },
+                  {
+                    text: 'Nettsider',
+                    toLinkProps: () => ({ to: '#2c' }),
+                  },
+                  {
+                    text: 'Prøv deg som journalist',
+                    toLinkProps: () => ({ to: '#3c' }),
+                  },
+                  {
+                    text: 'Grenseløs journalistikk',
+                    toLinkProps: () => ({ to: '#4c' }),
+                  },
+                ]}
+              />
+            </SubjectFlexChild>
+          </SubjectFlexWrapper>
+          <SubjectCarousel
+            narrowScreen
+            subjects={contentCards}
+            title="Litt forskjellig fra faget"
+          />
+        </SubjectChildContent>
+      </SubjectContent>
     </OneColumn>
     <SubjectCarousel
       wideScreen

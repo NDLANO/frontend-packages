@@ -5,7 +5,7 @@ const contentCards = [
     text: 'Her finner du mange gode råd',
     image:
       'https://images.pexels.com/photos/7369/startup-photos.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#1' }),
     id: '1',
   },
   {
@@ -14,7 +14,7 @@ const contentCards = [
     isFilm: true,
     text: 'Se den legendariske norske filmen som har vunnet Oscar',
     image: 'https://gfx.nrk.no/KmvRr00Rlz0UmW1OspQ3KQ0q1fUKmqVaAiTLZgmvlRtg',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#2' }),
     id: '2',
   },
   {
@@ -23,7 +23,7 @@ const contentCards = [
     text: 'Hvordan bør du forberede deg?',
     image:
       'https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#3' }),
     id: '3',
   },
   {
@@ -32,7 +32,7 @@ const contentCards = [
     text: 'Skisseteknik for idéutvikling',
     image:
       'https://images.pexels.com/photos/820673/pexels-photo-820673.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#4' }),
     id: '4',
   },
   {
@@ -41,7 +41,7 @@ const contentCards = [
     isFilm: true,
     text: 'Se den legendariske norske filmen som har vunnet Oscar',
     image: '',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#5' }),
     id: '5',
   },
   {
@@ -49,7 +49,7 @@ const contentCards = [
     type: 'Egenskap',
     text: 'Kort beskrivelsetekst',
     image: '',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#6' }),
     id: '6',
   },
   {
@@ -58,7 +58,7 @@ const contentCards = [
     text: 'Hvordan bør du forberede deg?',
     image:
       'https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
-    linkTo: '#',
+    toLinkProps: () => ({ to: '#7' }),
     id: '7',
   },
 ];

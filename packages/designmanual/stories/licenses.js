@@ -5,26 +5,65 @@ import {
   getLicenseByAbbreviation,
 } from 'ndla-licenses';
 import { storiesOf } from '@storybook/react';
+import { LanguageSelectorNonMessages } from './LanguageWrapper';
 import { StoryIntro, StoryBody } from './wrappers';
 
-const licensesRights = ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(
-  license => getLicenseRightByAbbreviation(license),
-);
+const licensesRights = {
+  nb: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+    getLicenseRightByAbbreviation(license, 'nb'),
+  ),
+  nn: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+    getLicenseRightByAbbreviation(license, 'nn'),
+  ),
+  en: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+    getLicenseRightByAbbreviation(license, 'en'),
+  ),
+};
 
-const licenses = [
-  'by-nc-nd',
-  'by-nc-sa',
-  'by-nc',
-  'by-nd',
-  'by-sa',
-  'by',
-  'pd',
-  'cc0',
-  'copyrighted',
-].map(license => ({
-  code: license,
-  data: getLicenseByAbbreviation(license, 'nb'),
-}));
+const licenses = {
+  nb: [
+    'by-nc-nd',
+    'by-nc-sa',
+    'by-nc',
+    'by-nd',
+    'by-sa',
+    'by',
+    'pd',
+    'cc0',
+    'copyrighted',
+  ].map(license => ({
+    code: license,
+    data: getLicenseByAbbreviation(license, 'nb'),
+  })),
+  nn: [
+    'by-nc-nd',
+    'by-nc-sa',
+    'by-nc',
+    'by-nd',
+    'by-sa',
+    'by',
+    'pd',
+    'cc0',
+    'copyrighted',
+  ].map(license => ({
+    code: license,
+    data: getLicenseByAbbreviation(license, 'nn'),
+  })),
+  en: [
+    'by-nc-nd',
+    'by-nc-sa',
+    'by-nc',
+    'by-nd',
+    'by-sa',
+    'by',
+    'pd',
+    'cc0',
+    'copyrighted',
+  ].map(license => ({
+    code: license,
+    data: getLicenseByAbbreviation(license, 'en'),
+  })),
+};
 
 storiesOf('Lisensgivning', module)
   .add('Sammensatte lisenser', () => (
@@ -33,40 +72,44 @@ storiesOf('Lisensgivning', module)
         <p>Liste over lisenser som brukes på ndla</p>
       </StoryIntro>
       <StoryBody>
-        {licenses.map(license => (
-          <article key={uuid()}>
-            <h2>{license.data.title}</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th colSpan="2">Felter</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Kode</td>
-                  <td>{license.code.toUpperCase()}</td>
-                </tr>
-                <tr>
-                  <td>Kort tittel</td>
-                  <td>{license.data.short}</td>
-                </tr>
-                <tr>
-                  <td>Url</td>
-                  <td>{license.data.url}</td>
-                </tr>
-                <tr>
-                  <td>Linktekst</td>
-                  <td>{license.data.linkText}</td>
-                </tr>
-                <tr>
-                  <td>Beskrivelse</td>
-                  <td>{license.data.description}</td>
-                </tr>
-              </tbody>
-            </table>
-          </article>
-        ))}
+        <LanguageSelectorNonMessages>
+          {({ lang }) =>
+            licenses[lang].map(license => (
+              <article key={uuid()}>
+                <h2>{license.data.title}</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th colSpan="2">Felter</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Kode</td>
+                      <td>{license.code.toUpperCase()}</td>
+                    </tr>
+                    <tr>
+                      <td>Kort tittel</td>
+                      <td>{license.data.short}</td>
+                    </tr>
+                    <tr>
+                      <td>Url</td>
+                      <td>{license.data.url}</td>
+                    </tr>
+                    <tr>
+                      <td>Linktekst</td>
+                      <td>{license.data.linkText}</td>
+                    </tr>
+                    <tr>
+                      <td>Beskrivelse</td>
+                      <td>{license.data.description}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            ))
+          }
+        </LanguageSelectorNonMessages>
       </StoryBody>
     </div>
   ))
@@ -76,12 +119,16 @@ storiesOf('Lisensgivning', module)
         <p>Lisenstekster og merking</p>
       </StoryIntro>
       <StoryBody>
-        {licensesRights.map(license => (
-          <article key={uuid()}>
-            <h2>{license.title}</h2>
-            <p>{license.description}</p>
-          </article>
-        ))}
+        <LanguageSelectorNonMessages>
+          {({ lang }) =>
+            licensesRights[lang].map(license => (
+              <article key={uuid()}>
+                <h2>{license.title}</h2>
+                <p>{license.description}</p>
+              </article>
+            ))
+          }
+        </LanguageSelectorNonMessages>
       </StoryBody>
     </div>
   ))

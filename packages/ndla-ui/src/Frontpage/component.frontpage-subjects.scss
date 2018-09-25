@@ -5,7 +5,7 @@
     border-radius: 2px;
     background: $white;
     margin-top: -$spacing--large;
-    padding: $spacing--medium $spacing--large;
+    padding: $spacing--small $spacing--large $spacing--large;
   }
 
   & > * {
@@ -21,15 +21,19 @@
 
 .c-frontpage-subjects-section {
   transition: max-height 0.3s ease-in-out;
+  padding-bottom: $spacing;
 
   @include mq($until: tablet) {
     max-height: 48px;
     min-height: 48px;
     background: $white;
     margin-bottom: 2px;
-    padding: 0 $spacing--medium;
-
+    padding: 0 $spacing;
     overflow: hidden;
+  }
+
+  @include mq($until: mobileWide) {
+    padding: 0 20px;
   }
 
   &--expanded {
@@ -45,8 +49,8 @@
 
   &__heading-text {
     display: none;
-    @include font-size(22px, 32px);
-    margin: 0 0 $spacing--small;
+    @include font-size(26px, 32px);
+    margin: $spacing--large 0 $spacing--small 0;
 
     @include mq(tablet) {
       display: block;
@@ -64,8 +68,7 @@
     width: 100%;
     height: 48px;
     @include font-size(16px, 32px);
-    font-weight: $font-weight-bold;
-
+    font-weight: $font-weight-semibold;
     @include mq(tablet) {
       display: none;
     }
@@ -75,10 +78,14 @@
     margin: 0;
     padding: 0 0 $spacing 0;
     list-style: none;
+    column-count: 3;
 
-    @include mq(tablet) {
-      padding: 0;
-      column-count: 3;
+    @include mq($until: desktop) {
+      column-count: 2;
+    }
+
+    @include mq($until: 800px) {
+      column-count: 1;
     }
 
     &--narrow {
@@ -97,8 +104,23 @@
   }
 
   &__item {
-    margin-bottom: $spacing--small;
-    display: block;
+    margin: $spacing--small / 2 0;
+    display: inline-flex;
+    width: 100%;
+    > * {
+      padding: $spacing--small / 2 0;
+      display: inline-flex;
+    }
+
+    @include mq($until: tablet) {
+      > a {
+        padding-top: $spacing--small;
+        padding-bottom: $spacing--small;
+        display: flex;
+      }
+      margin-bottom: 0;
+      justify-content: space-between;
+    }
 
     &:last-child {
       @include mq($until: tablet) {
@@ -109,7 +131,7 @@
 
   &__link {
     box-shadow: none;
-    color: $brand-color--dark;
+    color: $brand-color;
     display: flex;
     align-items: center;
 
@@ -126,10 +148,14 @@
     box-shadow: $link;
     font-weight: $font-weight-semibold;
 
-    @include font-size(14px, 18px);
+    @include font-size(16px, 18px);
 
     @include mq(tablet) {
-      @include font-size(16px, 20px);
+      @include font-size(18px, 22px);
+    }
+
+    @include mq($from: desktop, $until: 1165px) {
+      @include font-size(16px, 18px);
     }
   }
 
@@ -139,6 +165,68 @@
 
     @include mq(tablet) {
       @include font-size(14px, 18px);
+    }
+  }
+  &__beta-label-container {
+    margin-left: $spacing--small;
+  }
+  &__beta-label {
+    padding: $spacing--small / 2;
+    line-height: 1em;
+  }
+}
+
+.c-modal__animation-container--gray-dark {
+  .c-topic-menu {
+    &__content {
+      background: $brand-grey--lighter;
+    }
+  }
+}
+
+.c-topic-menu {
+  &__content {
+    @include mq($until: tablet) {
+      .c-frontpage-subjects-wrapper {
+        margin-top: 0;
+      }
+      .c-frontpage-subjects-section {
+        background: #fff;
+        padding: 0;
+        margin-bottom: 1px;
+        max-height: 52px;
+        min-height: 52px;
+        &--expanded {
+          max-height: 1400px;
+        }
+        &__expand-button {
+          padding: 0 $spacing;
+          color: $brand-color;
+          @include font-size(17px, 20px);
+          height: 52px;
+        }
+        .c-frontpage-subjects-section__subjects--narrow {
+          padding: 0;
+          li {
+            margin: 1px 0 0 0;
+            padding: 0 $spacing;
+            background: $brand-color--lighter;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            @include font-size(17px, 20px);
+            .c-frontpage-subjects-section__text {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+      .c-topic-menu__content-type-results {
+        a {
+          box-shadow: none;
+        }
+        @include font-size(17px, 20px);
+      }
     }
   }
 }

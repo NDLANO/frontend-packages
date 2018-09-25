@@ -58,6 +58,7 @@ $tabs-spacing: 12px;
       z-index: 1;
       > button {
         padding-right: ($spacing--small) / 2 !important;
+        text-align: left;
       }
     }
 
@@ -101,9 +102,14 @@ $tabs-spacing: 12px;
       > li {
         display: block;
         text-align: center;
+        padding: 0;
         button {
           color: $primary-color;
           width: 100%;
+          text-align: left;
+          padding-left: $spacing--small;
+          padding-right: $spacing--small;
+          //transform: translateX(-$spacing--small);
           &:focus, &:hover {
             background-color: $brand-grey--light;
             color: $brand-color;
@@ -115,7 +121,6 @@ $tabs-spacing: 12px;
       transform: translateY(2px);
       animation-name: tabDropdownAnimation;
       animation-duration: 200ms;
-      animation-delay: 100ms;
       animation-fill-mode: forwards;
       opacity: 0;
       display: block;
@@ -133,6 +138,19 @@ $tabs-spacing: 12px;
     margin: $spacing/1.4 0 $spacing--small;
     border-bottom: 1px solid $brand-color--tertiary;
     padding: 0;
+    &--singleLine {
+      @include mq($until: mobileWide) {
+        max-width: auto;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling-x: touch;
+        overflow-y: hidden;
+        min-width: 100%;
+        display: flex;
+        li {
+          white-space: nowrap;
+        }
+      }
+    }
   }
 
   &__panel {
@@ -142,10 +160,30 @@ $tabs-spacing: 12px;
   }
 }
 
+// fix for when inside dialog..
+.c-tabs__list--singleLine {
+  @include mq($until: mobileWide) {
+    animation-name: fadeInRightFlex;
+    animation-duration: 0.6s;
+    min-width: calc(100% + 52px);
+    margin-left: -$spacing !important;
+    li {
+      &:first-child {
+        margin-left: $spacing;
+      }
+      &:last-child:after {
+        content: "";
+        display: inline-flex;
+        width: $spacing;
+      }
+    }
+  }
+}
+
 @keyframes tabDropdownAnimation {
   0% {
     opacity: 0;
-    transform: translate3d(20px, 2px, 0px);
+    transform: translate3d(0px, -8px, 0px);
   }
   100% {
     opacity: 1;

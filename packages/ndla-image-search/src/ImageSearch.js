@@ -108,6 +108,7 @@ class ImageSearch extends React.Component {
     } = this.state;
 
     const { query, page } = queryObject;
+    const noResultsFound = !searching && images.length === 0;
 
     return (
       <div {...classes()}>
@@ -119,6 +120,7 @@ class ImageSearch extends React.Component {
           searchPlaceholder={searchPlaceholder}
           searchButtonTitle={searchButtonTitle}
         />
+        {noResultsFound && this.props.noResults}
         <div {...classes('list')}>
           {images.map(image => (
             <ImageSearchResult
@@ -153,6 +155,7 @@ ImageSearch.propTypes = {
   searchButtonTitle: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
   useImageTitle: PropTypes.string.isRequired,
+  noResults: PropTypes.node,
 };
 
 export default ImageSearch;

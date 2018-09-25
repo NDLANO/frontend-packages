@@ -30,7 +30,6 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
           <div>
             <h1>{t('article.multipleAuthorsLabel')}</h1>
             <hr />
-            <p>{t('article.multipleAuthorsExplanation')}</p>
             <ul {...classes('ul-list')}>
               {authors.map((author, index) => (
                 <li key={author.name}>

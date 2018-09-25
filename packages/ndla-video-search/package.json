@@ -23,11 +23,13 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "scss",
     "lib",
     "es"
   ],
   "peerDependencies": {
     "classnames": "^2.2.5",
+    "ndla-core": "^0.0.1",
     "ndla-licenses": "^0.2.0",
     "ndla-tabs": "^0.6.0",
     "ndla-ui": "^0.13.0",

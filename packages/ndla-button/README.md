@@ -25,5 +25,7 @@ $ npm install ndla-button --save
 ### Basic example
 
 ```js
+import Button from 'ndla-button'
+
 <Button onClick={() => alert('Hello worls')}>Click me!</Button>
 ```

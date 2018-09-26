@@ -19,9 +19,8 @@ import {
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
-  CopyButton,
-  Button,
 } from 'ndla-ui';
+import Button, { CopyButton } from 'ndla-button';
 import { FileDocumentOutline, AudioDocument } from 'ndla-icons/common';
 
 import { COPYRIGHTED, metaTypes } from 'ndla-licenses';

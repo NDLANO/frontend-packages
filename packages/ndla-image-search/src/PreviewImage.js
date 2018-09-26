@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Button } from 'ndla-ui';
+import Button from 'ndla-button';
 import { uuid, convertFieldWithFallback } from 'ndla-util';
 import { getSrcSets } from './util/imageUtil';
 

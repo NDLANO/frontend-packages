@@ -4,12 +4,12 @@ import BEMHelper from 'react-bem-helper';
 
 import {
   CompetenceGoals,
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalCloseButton,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 
 import { Trans } from 'ndla-i18n';
 

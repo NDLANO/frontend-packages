@@ -29,6 +29,7 @@
   ],
   "peerDependencies": {
     "classnames": "^2.2.5",
+    "ndla-button": "^0.0.1",
     "ndla-core": "^0.0.1",
     "ndla-licenses": "^0.2.0",
     "ndla-ui": "^0.13.0",

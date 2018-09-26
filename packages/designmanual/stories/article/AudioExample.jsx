@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
   AudioPlayer,
   Figure,
   FigureCaption,
   FigureLicenseDialog,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 import { uuid } from 'ndla-util';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
 import {

@@ -9,8 +9,8 @@ import {
   OneColumn,
   Logo,
   SafeLink,
-  Button,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 import { uuid } from 'ndla-util';
 
 const classes = BEMHelper('c-frontpage-header');

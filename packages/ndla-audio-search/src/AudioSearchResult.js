@@ -10,7 +10,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { Button, LicenseByline } from 'ndla-ui';
+import { LicenseByline } from 'ndla-ui';
+import Button from 'ndla-button';
 import AudioBar from './AudioBar';
 
 const classes = new BEMHelper({

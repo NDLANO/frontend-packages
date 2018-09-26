@@ -6,10 +6,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Button,
   Tooltip,
   FilterList,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 import { HelpCircle } from 'ndla-icons/common';
 
 import ComponentInfo from '../ComponentInfo';

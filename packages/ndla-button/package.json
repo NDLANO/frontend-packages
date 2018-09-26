@@ -28,11 +28,9 @@
     "es"
   ],
   "peerDependencies": {
-    "classnames": "^2.2.6",
-    "lodash": "^4.17.5",
     "ndla-core": "^0.0.1",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",
-    "react-prop-types": "0.4.0"
+    "prop-types": "15.6.1"
   }
 }

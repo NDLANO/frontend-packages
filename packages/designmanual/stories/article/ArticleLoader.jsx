@@ -13,11 +13,11 @@ import moment from 'moment';
 import {
   OneColumn,
   Article,
-  Button,
   ResourcesWrapper,
   ResourcesTopicTitle,
   TopicIntroductionList,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';

@@ -11,9 +11,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { noScroll, uuid } from 'ndla-util';
 import FocusTrapReact from 'focus-trap-react';
+import Button from 'ndla-button';
 import { createUniversalPortal } from '../utils/createUniversalPortal';
-
-import Button from '../Button';
 
 const classes = new BEMHelper({
   name: 'modal',

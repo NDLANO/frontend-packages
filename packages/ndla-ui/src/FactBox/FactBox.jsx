@@ -9,8 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-
-import Button from '../Button';
+import Button from 'ndla-button';
 
 const toggleFactBox = event => {
   const button = event.target;

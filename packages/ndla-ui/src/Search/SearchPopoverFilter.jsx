@@ -6,13 +6,13 @@ import BEMHelper from 'react-bem-helper';
 import { ChevronRight } from 'ndla-icons/common';
 // import { Cross } from 'ndla-icons/action';
 import {
-  Button,
   FilterList,
   Modal,
   ModalCloseButton,
   ModalHeader,
   ModalBody,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 
 const filterClasses = new BEMHelper({
   name: 'filter',

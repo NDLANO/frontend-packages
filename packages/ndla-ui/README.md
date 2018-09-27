@@ -22,6 +22,7 @@ react-height
 react-motion
 react-router
 ndla-article-scripts
+ndla-button
 ndla-licenses
 ndla-icons
 ndla-tabs

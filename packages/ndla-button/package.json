@@ -1,7 +1,7 @@
 {
-  "name": "ndla-image-search",
-  "version": "0.4.0",
-  "description": "A simple library for searching images from NDLA",
+  "name": "ndla-button",
+  "version": "0.0.1",
+  "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -28,16 +28,9 @@
     "es"
   ],
   "peerDependencies": {
-    "classnames": "^2.2.5",
-    "ndla-button": "^0.0.1",
     "ndla-core": "^0.0.1",
-    "ndla-licenses": "^0.2.0",
-    "ndla-ui": "^0.13.0",
-    "ndla-util": "^0.2.1",
-    "react": "^15.6.0 || ^16.0.0",
-    "react-bem-helper": "^1.4.1"
-  },
-  "dependencies": {
-    "react-bem-helper": "^1.4.1"
+    "react": "^16.4.2",
+    "react-bem-helper": "^1.4.1",
+    "prop-types": "15.6.1"
   }
 }

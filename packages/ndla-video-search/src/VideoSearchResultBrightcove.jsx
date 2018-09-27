@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, LicenseByline } from 'ndla-ui';
+import { LicenseByline } from 'ndla-ui';
+import Button from 'ndla-button';
 import { getLicenseByNBTitle } from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';

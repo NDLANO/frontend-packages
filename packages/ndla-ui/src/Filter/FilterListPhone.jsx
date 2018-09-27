@@ -12,13 +12,13 @@ import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
 import {
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalCloseButton,
   ActiveFilters,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 import debounce from 'lodash/debounce';
 
 const filterClasses = new BEMHelper({

@@ -11,7 +11,6 @@ import { BY, NC, ND } from 'ndla-licenses';
 import {
   Aside,
   FactBox,
-  Button,
   Logo,
   LayoutItem,
   LicenseByline,
@@ -19,6 +18,7 @@ import {
   AudioPlayer,
   OneColumn,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';

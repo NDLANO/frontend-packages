@@ -11,13 +11,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Time, User, Additional } from 'ndla-icons/common';
 import { injectT } from 'ndla-i18n';
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-} from 'ndla-ui';
+import { Modal, ModalHeader, ModalBody, ModalCloseButton } from 'ndla-ui';
+import Button from 'ndla-button';
 import ArticleAuthorContent from './ArticleAuthorContent';
 
 const classes = new BEMHelper({

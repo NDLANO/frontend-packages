@@ -10,13 +10,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, copyTextToClipboard } from 'ndla-util';
 import { Copy } from 'ndla-icons/action';
-import {
-  PageContainer,
-  LayoutItem,
-  OneColumn,
-  SubjectHeader,
-  CopyButton,
-} from 'ndla-ui';
+import { PageContainer, LayoutItem, OneColumn, SubjectHeader } from 'ndla-ui';
+import { CopyButton } from 'ndla-button';
 
 const addLeadingSlash = str => {
   if (str.startsWith('/')) {

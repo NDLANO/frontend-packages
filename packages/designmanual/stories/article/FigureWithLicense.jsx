@@ -23,8 +23,8 @@ import {
   FigureCaption,
   FigureLicenseDialog,
   FigureFullscreenDialog,
-  Button,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 

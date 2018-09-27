@@ -15,13 +15,13 @@ import {
   Masthead,
   MastheadItem,
   Logo,
-  Button,
   TopicMenu,
   DisplayOnPageYOffset,
   SearchField,
   SafeLink,
   Modal,
 } from 'ndla-ui';
+import Button from 'ndla-button';
 
 import { Search } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';

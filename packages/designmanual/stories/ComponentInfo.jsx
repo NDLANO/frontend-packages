@@ -7,7 +7,7 @@ import { docco } from 'react-syntax-highlighter/styles/hljs';
 
 import Tabs from 'ndla-tabs';
 import { uuid, copyTextToClipboard } from 'ndla-util';
-import { Button } from 'ndla-ui';
+import Button from 'ndla-button';
 import { Copy } from 'ndla-icons/action';
 
 const statusMessages = {

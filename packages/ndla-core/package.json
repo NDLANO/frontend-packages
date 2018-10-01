@@ -26,7 +26,8 @@
   ],
   "dependencies": {
     "inuitcss": "6.0.0-beta.4",
-    "polished": "^2.1.1",
+    "polished": "^2.2.0",
     "sass-mq": "^5.0.0"
-  }
+  },
+  "devDependencies": {}
 }

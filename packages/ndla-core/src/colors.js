@@ -1,23 +1,9 @@
 import { rgba, darken } from 'polished';
 
-const darkenFactor = 0.1;
-
 const brandLight = '#ceddea';
 const brandDark = '#184673';
 const brandGreyLight = '#e8e3e3';
 const brandGreyLightest = '#f8f8f8';
-
-const subjectMaterialLight = '#dde9d0';
-const externalLearningResourceBackground = '#d0e8de';
-const sourceMaterialLight = '#dce5e0';
-const assessmentResourceLight = '#f5e7e5';
-const tasksAndActivitiesLight = '#fbeddc';
-
-const red = '#d1372e';
-const green = '#5cbc80';
-const yellow = '#ead854';
-
-const backgroundDefault = '#ffffff'; /* old: EFF0F2 (gray) */
 
 export default {
   /**
@@ -43,39 +29,50 @@ export default {
   /**
    * Content type colors
    */
-  subjectLight: brandLight,
-  subjectDark: brandDark,
+  subject: {
+    light: brandLight,
+    dark: brandDark,
+  },
 
-  subjectMaterialLight,
-  subjectMaterialDark: '#5c6a4f',
-  subjectMaterialAdditional: rgba(subjectMaterialLight, 0.4),
+  subjectMaterial: {
+    light: '#dde9d0',
+    dark: '#5c6a4f',
+    additional: rgba('#dde9d0', 0.4),
+  },
 
-  externalLearningResourceBackground,
-  externalLearningResourceLight: '#e6f3ed',
-  externalLearningResourceDark: '#4f7d76',
-  externalLearningResourceAdditional: rgba(
-    externalLearningResourceBackground,
-    0.4,
-  ),
+  externalLearningResource: {
+    background: '#d0e8de',
+    light: '#e6f3ed',
+    dark: '#4f7d76',
+    additional: rgba('#d0e8de', 0.4),
+  },
 
-  sourceMaterialLight,
-  sourceMaterialDark: '#636e68',
-  sourceMaterialAdditional: rgba(sourceMaterialLight, 0.4),
+  sourceMaterial: {
+    light: '#dce5e0',
+    dark: '#636e68',
+    additional: rgba('#dce5e0', 0.4),
+  },
 
-  tasksAndActivitiesBackground: '#f8e0c4',
-  tasksAndActivitiesLight,
-  tasksAndActivitiesDark: '#d98229',
-  tasksAndActivitiesAdditional: rgba(tasksAndActivitiesLight, 0.4),
+  tasksAndActivities: {
+    background: '#f8e0c4',
+    light: '#fbeddc',
+    dark: '#d98229',
+    additional: rgba('#fbeddc', 0.4),
+  },
 
-  assessmentResourceBackground: '#efd5d5',
-  assessmentResourceLight,
-  assessmentResourceDark: '#c0676f',
-  assessmentResourceAdditional: rgba(assessmentResourceLight, 0.4),
+  assessmentResource: {
+    background: '#efd5d5',
+    light: '#f5e7e5',
+    dark: '#c0676f',
+    additional: rgba('#f5e7e5', 0.4),
+  },
 
-  learningPathBackground: '#f2efef',
-  learningPathLight: brandGreyLight,
-  learningPathDark: '#797979',
-  learningPathBackgroundAdditional: rgba(brandGreyLight, 0.4),
+  learningPath: {
+    background: '#f2efef',
+    light: '#e8e3e3',
+    dark: '#797979',
+    backgroundAdditional: rgba('#e8e3e3', 0.4),
+  },
 
   /**
    * Supplementary colors,
@@ -89,11 +86,11 @@ export default {
   markColor: '#da788d',
   support: {
     red: '#d1372e',
-    redLight: rgba(red, 0.3),
+    redLight: rgba('#d1372e', 0.3),
     green: '#5cbc80',
-    greenLight: rgba(green, 0.3),
+    greenLight: rgba('#5cbc80', 0.3),
     yellow: '#ead854',
-    yellowLight: rgba(yellow, 0.3),
+    yellowLight: rgba('#ead854', 0.3),
   },
   tableBg: '#f9fafb',
 
@@ -109,9 +106,9 @@ export default {
    * Background colors
    * */
   background: {
-    default: backgroundDefault,
-    dark: darken(darkenFactor, backgroundDefault),
-    darker: darken(darkenFactor * 2, backgroundDefault),
+    default: '#ffffff' /* old: EFF0F2 (gray) */,
+    dark: darken(0.1, '#ffffff'),
+    darker: darken(0.2, '#ffffff'),
     backgroundGray: brandGreyLightest,
     grayDark: '#e4e4e4',
   },

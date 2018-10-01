@@ -8,9 +8,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
 import Link from 'react-router-dom/Link';
+import styled, { css, cx } from 'react-emotion';
+import rgba from 'polished/lib/color/rgba';
+import { colors } from 'ndla-core';
 
 import SafeLink from './SafeLink'; // TODO: find a solution for sharing common components
 import { stepNumbers } from './pagerHelpers';
@@ -20,18 +22,35 @@ const createQueryString = obj =>
     .map(key => `${key}=${obj[key]}`)
     .join('&');
 
+const pageItemActiveStyle = css`
+  border-top: 3px solid ${colors.brand.primary};
+  background-color: ${rgba(colors.brand.lighter, 0.5)};
+`;
+
+const pageItemStyle = css`
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid ${colors.background.dark};
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  text-decoration: none;
+  box-shadow: none;
+  color: ${colors.brand.primary};
+  cursor: pointer;
+  &:hover {
+    ${pageItemActiveStyle};
+  }
+`;
+
 export const PageItem = ({
   children,
   page,
   query: currentQuery,
   pathname,
   onClick,
-  modifier,
   pageItemComponentClass: Component,
 }) => {
-  const modifierClass = modifier ? `c-pager__step--${modifier}` : '';
-  const classes = classNames('c-pager__step', modifierClass);
-
   const query = { ...currentQuery, page };
   const linkToPage = {
     pathname,
@@ -42,13 +61,13 @@ export const PageItem = ({
 
   if (Component === SafeLink || Component === Link) {
     return (
-      <SafeLink className={classes} onClick={handleClick} to={linkToPage}>
+      <SafeLink className={pageItemStyle} onClick={handleClick} to={linkToPage}>
         {children}
       </SafeLink>
     );
   }
   return (
-    <Component className={classes} onClick={handleClick}>
+    <Component className={pageItemStyle} onClick={handleClick}>
       {children}
     </Component>
   );
@@ -61,8 +80,14 @@ PageItem.propTypes = {
   query: PropTypes.object.isRequired, // eslint-disable-line
   pathname: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  modifier: PropTypes.string,
 };
+
+const StyledPager = styled('div')`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
+`;
 
 export default function Pager(props) {
   const { page, lastPage, ...rest } = props;
@@ -72,7 +97,7 @@ export default function Pager(props) {
   const PageItems = steps.map(n => {
     if (n === page) {
       return (
-        <span key={n} className="c-pager__step c-pager__step--active">
+        <span key={n} className={cx(pageItemStyle, pageItemActiveStyle)}>
           {n}
         </span>
       );
@@ -86,25 +111,25 @@ export default function Pager(props) {
 
   const prevPageItem =
     steps[0] < page ? (
-      <PageItem modifier="back" page={page - 1} {...rest}>
+      <PageItem page={page - 1} {...rest}>
         {' '}
         {'<'}{' '}
       </PageItem>
     ) : null;
   const nextPageItem =
     page < lastPage ? (
-      <PageItem modifier="forward" page={page + 1} {...rest}>
+      <PageItem page={page + 1} {...rest}>
         {' '}
         {'>'}{' '}
       </PageItem>
     ) : null;
 
   return (
-    <div className="c-pager">
+    <StyledPager>
       {prevPageItem}
       {PageItems}
       {nextPageItem}
-    </div>
+    </StyledPager>
   );
 }
 

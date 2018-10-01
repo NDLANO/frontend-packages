@@ -1,6 +1,6 @@
 {
   "name": "ndla-button",
-  "version": "0.0.1",
+  "version": "0.0.2-2",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -29,8 +29,8 @@
   ],
   "peerDependencies": {
     "ndla-core": "^0.0.1",
+    "prop-types": "15.6.1",
     "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1",
-    "prop-types": "15.6.1"
+    "react-bem-helper": "^1.4.1"
   }
 }

@@ -13,3 +13,5 @@ storybook-static/
 *.iml
 .eslintcache
 *.log.1
+packages/*/.vscode
+*.code-workspace

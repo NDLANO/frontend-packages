@@ -1,26 +1,22 @@
-# ndla-tabs
+# ndla-pager
 
-A simple tabs component. Mainly a wrapper for [react-tabs](https://github.com/reactjs/react-tabs).
+A pager component.
 
 ## Installation
 
 ```sh
-$ yarn add --save ndla-pager
+$ yarn add ndla-pager
 ```
 
 ```sh
-$ npm install ndla-pager --save
+$ npm install ndla-pager
 ```
 
 ## Usage
 
 ### Styling
 
-```scss
-/* Your project's main .scss import file */
-@import '~ndla-pager/scss/pager'; // with webpack and sass-loader
-@import '../path/to/node_modules/ndla-pager/scss/pager'; // direct reference
-```
+Uses [Emotion](https://emotion.sh/). [See](https://emotion.sh/docs/ssr) for ssr.
 
 ### Basic example
 

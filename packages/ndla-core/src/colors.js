@@ -1,4 +1,5 @@
-import { rgba, darken } from 'polished';
+import darken from 'polished/lib/color/darken';
+import rgba from 'polished/lib/color/rgba';
 
 const brandLight = '#ceddea';
 const brandDark = '#184673';

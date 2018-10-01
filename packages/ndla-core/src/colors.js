@@ -23,21 +23,22 @@ export default {
   /**
    * NDLA Brand colors
    */
-  brandColor: '#20588f',
-  brandSecondary: '#507aa4',
-  brandTertiary: '#a5bcd3',
-  brandLight,
-  brandLighter: '#deebf6',
-  brandDark,
-
-  /**
-   * NDLA Grays
-   */
-  brandGrey: '#777777',
-  brandGreyLight,
-  brandGreyLighter: '#eff0f2',
-  brandGreyLightest,
-  brandGreyDark: '#4d4d4d',
+  brand: {
+    primary: '#20588f',
+    secondary: '#507aa4',
+    tertiary: '#a5bcd3',
+    light: brandLight,
+    lighter: '#deebf6',
+    dark: brandDark,
+    /**
+     * NDLA Grays
+     */
+    grey: '#777777',
+    greyLight: brandGreyLight,
+    greyLighter: '#eff0f2',
+    greyLightest: brandGreyLightest,
+    greyDark: '#4d4d4d',
+  },
 
   /**
    * Content type colors

@@ -33,18 +33,17 @@ function pagerTest({ setup, expected }) {
 
       switch (value) {
         case 'current':
-          expect(step.is('.c-pager__step--active')).toBeTruthy();
           expect(step.text()).toBe(setup.page.toString());
           expect(step.is(PageItem)).not.toBe('Current page not linked');
           break;
         case 'back':
           expect(step.is(PageItem)).toBeTruthy();
-          expect(step.props().modifier).toBe(value);
+          expect(step.props().children.join('')).toBe(' < ');
           expect(step.props().page).toBe(prev);
           break;
         case 'forward':
           expect(step.is(PageItem)).toBeTruthy();
-          expect(step.props().modifier).toBe(value);
+          expect(step.props().children.join('')).toBe(' > ');
           expect(step.props().page).toBe(next);
           break;
         default:

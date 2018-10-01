@@ -22,6 +22,8 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "lib",
+    "es",
     "scss"
   ],
   "dependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "ndla-video-search",
-  "version": "0.5.0-1",
+  "version": "0.5.0",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "main": "lib/index.js",

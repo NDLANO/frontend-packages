@@ -9,4 +9,9 @@ export default {
     semibold: 600,
     bold: 700,
   },
+  sizes: (fontSize, lineHeightFactor) =>
+    lineHeightFactor
+      ? `font-size: ${fontSize}; line-height: ${parseInt(lineHeightFactor, 10) *
+          parseInt(fontSize, 10)}px;`
+      : `font-size: ${fontSize};`,
 };

@@ -11,6 +11,9 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { Image } from 'ndla-ui';
+import Button from 'ndla-button';
+import Accordion from 'ndla-accordion';
+import { spacing, colors } from 'ndla-core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
@@ -18,6 +21,83 @@ import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 
 storiesOf('Produksjonssystem', module)
+  .add('Trekkspill', () => (
+    <div
+      style={{
+        backgroundColor: colors.brand.greyLightest,
+        marginBottom: spacing.large,
+      }}>
+      <StoryIntro title="Trekkspill">
+        <p>Noe fornuftig tekst her</p>
+      </StoryIntro>
+      <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+        <h2>Eksempel</h2>
+        <Accordion
+          tabs={[
+            {
+              title: 'Tab 1',
+              children: (
+                <div>
+                  <p>noe innhold 1</p>
+                </div>
+              ),
+              open: true,
+            },
+            {
+              title: 'Tab 2',
+              children: (
+                <div>
+                  <p>noe innhold 2</p>
+                  <Button>Hello</Button>
+                </div>
+              ),
+            },
+            {
+              title: 'Tab 3',
+              children: (
+                <div>
+                  <p>noe innhold 3</p>
+                </div>
+              ),
+            },
+          ]}
+        />
+        <h2>Eksempel 2, framed og kun en tillatt åpen om gangen</h2>
+        <Accordion
+          framedChildren
+          onlyOpenOne
+          tabs={[
+            {
+              title: 'Tab 1',
+              children: (
+                <div>
+                  <p>noe innhold 1</p>
+                </div>
+              ),
+              open: true,
+            },
+            {
+              title: 'Tab 2',
+              children: (
+                <div>
+                  <p>noe innhold 2</p>
+                  <Button>Hello</Button>
+                </div>
+              ),
+            },
+            {
+              title: 'Tab 3',
+              children: (
+                <div>
+                  <p>noe innhold 3</p>
+                </div>
+              ),
+            },
+          ]}
+        />
+      </div>
+    </div>
+  ))
   .add('Bildeutsnitt og fokuspunkt', () => (
     <div>
       <StoryIntro title="Bildesøk">

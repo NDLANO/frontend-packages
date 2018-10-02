@@ -8,47 +8,56 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import styled from 'react-emotion';
+import { colors, spacing, mq } from 'ndla-core';
 import SafeLink from '../common/SafeLink';
-/* import { SearchField } from '../Search'; */
 
-const classes = new BEMHelper({
-  name: 'error-message',
-  prefix: 'c-',
-});
+const StyledErrorMessage = styled('article')`
+  text-align: center;
+  a {
+    ${colors.brand.primary};
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+`;
+
+const Illustration = styled('img')(
+  mq.tablet({
+    marginBottom: spacing.normal,
+    marginTop: [null, spacing.large],
+  }),
+);
+
+const Description = styled('p')(
+  mq.tablet({
+    marginBottom: [spacing.normal, spacing.large],
+  }),
+);
 
 export const ErrorMessage = ({ children, messages, illustration }) => (
-  <article {...classes()}>
-    <img
-      {...classes('illustration')}
-      src={illustration.url}
-      alt={illustration.altText}
-    />
+  <StyledErrorMessage>
+    <Illustration src={illustration.url} alt={illustration.altText} />
     <h1>{messages.title}</h1>
-    <p {...classes('description')}>{messages.description}</p>
-    {messages.linksTitle && (
-      <h2 {...classes('link-heading')}>{messages.linksTitle}</h2>
-    )}
-    {/*  <SearchField /> */}
+    <Description>{messages.description}</Description>
+    {messages.linksTitle && <h2>{messages.linksTitle}</h2>}
     {messages.back &&
       typeof window !== 'undefined' &&
       window.history.length > 1 && (
         <SafeLink
           to={`/#${encodeURI(messages.back)}`}
-          onClick={() => window.history.back()}
-          {...classes('back-link')}>
+          onClick={() => window.history.back()}>
           {messages.back}
         </SafeLink>
       )}
     {messages.goToFrontPage && (
-      <div {...classes('link-wrapper')}>
-        <SafeLink to="/" {...classes('front-link')}>
-          {messages.goToFrontPage}
-        </SafeLink>
+      <div css={{ marginTop: spacing.xsmall }}>
+        <SafeLink to="/">{messages.goToFrontPage}</SafeLink>
       </div>
     )}
     {children}
-  </article>
+  </StyledErrorMessage>
 );
 
 ErrorMessage.propTypes = {

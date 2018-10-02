@@ -1,9 +1,11 @@
+import em from 'polished/lib/helpers/em';
+
 export default {
-  mobile: '320px',
-  mobileWide: '476px',
-  tablet: '601px',
-  tabletWide: '768px',
-  desktop: '981px',
-  wide: '1301px',
-  ultraWide: '1601px',
+  mobile: em('320px'),
+  mobileWide: em('476px'),
+  tablet: em('601px'),
+  tabletWide: em('768px'),
+  desktop: em('981px'),
+  wide: em('1301px'),
+  ultraWide: em('1601px'),
 };

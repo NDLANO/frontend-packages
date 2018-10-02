@@ -350,7 +350,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       return licenseByLocale(cc0, locale);
     case 'COPYRIGHTED':
       return licenseByLocale(copy, locale);
-    // TODO: deprecated. Remove when all api's are updated
+    // TODO: Following cases are deprecated. Remove when all api's are updated
     case 'by-nc-nd':
       return licenseByLocale(byncnd, locale);
     case 'by-nc-sa':

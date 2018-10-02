@@ -148,6 +148,13 @@ class AccordionExample extends Component {
               children: (
                 <div>
                   <p>Innhold 1</p>
+                  <p>Innhold 1</p>
+                  <p>Innhold 1</p>
+                  <p>Innhold 1</p>
+                  <p>Innhold 1</p>
+                  <p>Innhold 1</p>
+                  <p>Innhold 1</p>
+                  <p>Innhold 1</p>
                 </div>
               ),
               open: true,

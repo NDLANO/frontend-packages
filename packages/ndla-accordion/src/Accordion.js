@@ -32,7 +32,7 @@ const AccordionChildWrapper = styled.section`
   padding-bottom: ${spacing.large};
   ${props =>
     css`
-      max-height: ${props.maxHeight}px;
+      max-height: ${props.maxHeight ? `${props.maxHeight}px` : 'auto'};
     `};
   &.error {
     border: 2px solid ${colors.support.redLight};
@@ -191,10 +191,6 @@ Accordion.propTypes = {
   ).isRequired,
   onlyOpenOne: PropTypes.bool,
   maxHeight: PropTypes.number,
-};
-
-Accordion.defaultProps = {
-  maxHeight: 1000,
 };
 
 export default Accordion;

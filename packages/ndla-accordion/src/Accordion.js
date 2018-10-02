@@ -17,6 +17,7 @@ import { colors, spacing, fonts } from 'ndla-core';
 const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin: ${spacing.normal} 0;
 `;
 
 const AccordionChildWrapper = styled.section`
@@ -33,9 +34,17 @@ const AccordionChildWrapper = styled.section`
     css`
       max-height: ${props.maxHeight}px;
     `};
+  &.error {
+    border: 2px solid ${colors.support.redLight};
+    border-top: 0;
+    padding-left: ${spacing.units.large + spacing.units.small - 2}px;
+    padding-right: ${spacing.units.large - 2}px;
+    padding-bottom: ${spacing.units.large - 2}px;
+  }
   &.closed {
     margin-bottom: ${spacing.xsmall};
     padding: 0;
+    border: 0;
     > div {
       display: none;
       max-height: 0;
@@ -46,8 +55,8 @@ const AccordionChildWrapper = styled.section`
 `;
 
 const AccordionTitleBar = styled.div`
-  background: ${colors.brand.light};
-  padding: ${spacing.normal} ${spacing.normal};
+  background: #fff;
+  padding: ${spacing.normal};
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
@@ -56,12 +65,24 @@ const AccordionTitleBar = styled.div`
   transition: color 100ms ease, background 100ms ease;
   > .c-icon {
     transition: transform 100ms ease;
+    transform: rotate(90deg);
     margin-right: ${spacing.small};
   }
-  &.open {
-    background: #fff;
+  &.error {
+    border: 2px solid ${colors.support.redLight};
+    padding: ${spacing.units.normal - 2}px;
+    &:not(.closed) {
+      border-bottom: 0;
+      padding-bottom: ${spacing.normal};
+    }
+  }
+  &.closed {
     > .c-icon {
-      transform: rotate(90deg);
+      transform: rotate(0deg);
+    }
+    background: ${colors.brand.light};
+    &.error {
+      background: ${colors.support.redLight};
     }
   }
 `;
@@ -82,12 +103,12 @@ class Accordion extends React.Component {
     this.toggleTab = this.toggleTab.bind(this);
   }
 
-  toggleTab(index) {
+  toggleTab(index, e) {
     const { tabsOpen } = this.state;
-    const { controllable, toggleTab, onlyOpenOne } = this.props;
+    const { onlyOpenOne, controlledCallback } = this.props;
 
-    if (controllable) {
-      toggleTab(index);
+    if (controlledCallback) {
+      this.props.controlledCallback(index, e);
     } else if (onlyOpenOne) {
       this.setState({
         tabsOpen: tabsOpen.includes(index) ? [] : [index],
@@ -106,19 +127,22 @@ class Accordion extends React.Component {
   }
 
   render() {
-    const { tabsOpen } = this.state;
+    const { controlledCallback } = this.props;
 
     return (
       <AccordionWrapper>
         {this.props.tabs.map((tab, index) => {
-          const expanded = tabsOpen.includes(index);
+          const expanded = controlledCallback
+            ? tab.open
+            : this.state.tabsOpen.includes(index);
           const tabId = `${tab.title}-id`;
           const classes = classNames({
             closed: !expanded,
+            error: tab.error,
           });
           return (
             <Fragment key={tab.title}>
-              <AccordionTitleBar className={expanded ? 'open' : null}>
+              <AccordionTitleBar className={classes}>
                 <ChevronRight className="c-icon--medium" />
                 <Button
                   link
@@ -146,16 +170,26 @@ class Accordion extends React.Component {
 }
 
 Accordion.propTypes = {
+  controlledCallback: PropTypes.func,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       children: PropTypes.node.isRequired,
-      open: PropTypes.bool,
+      open: (props, propName, componentName) => {
+        if (
+          typeof props.controlledCallback === 'function' &&
+          typeof props[propName] !== 'boolean'
+        ) {
+          return new Error(
+            `Invalid prop tabs[].${propName} supplied to ${componentName}. Required if props.controlledCallback is function (controlled Accordion).`,
+          );
+        }
+        return null;
+      },
+      error: PropTypes.bool,
     }),
   ).isRequired,
-  controllable: PropTypes.bool, // TODO: implement it!
   onlyOpenOne: PropTypes.bool,
-  toggleTab: PropTypes.func, // TODO: create example of usage!
   maxHeight: PropTypes.number,
 };
 

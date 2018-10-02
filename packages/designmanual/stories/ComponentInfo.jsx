@@ -77,7 +77,7 @@ class ComponentInfo extends Component {
       {
         title: 'PropTypes',
         content: (
-          <table>
+          <table className="c-table o-table">
             <thead>
               <tr>
                 <th>Name</th>

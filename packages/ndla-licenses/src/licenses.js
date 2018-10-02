@@ -332,6 +332,25 @@ function licenseByLocale(license, locale) {
 
 export function getLicenseByAbbreviation(abbreviation, locale) {
   switch (abbreviation) {
+    case 'CC-BY-NC-ND-4.0':
+      return licenseByLocale(byncnd, locale);
+    case 'CC-BY-NC-SA-4.0':
+      return licenseByLocale(byncsa, locale);
+    case 'CC-BY-NC-4.0':
+      return licenseByLocale(bync, locale);
+    case 'CC-BY-ND-4.0':
+      return licenseByLocale(bynd, locale);
+    case 'CC-BY-SA-4.0':
+      return licenseByLocale(bysa, locale);
+    case 'CC-BY-4.0':
+      return licenseByLocale(by, locale);
+    case 'PD':
+      return licenseByLocale(pd, locale);
+    case 'CC0-1.0':
+      return licenseByLocale(cc0, locale);
+    case 'COPYRIGHTED':
+      return licenseByLocale(copy, locale);
+    // TODO: deprecated. Remove when all api's are updated
     case 'by-nc-nd':
       return licenseByLocale(byncnd, locale);
     case 'by-nc-sa':

@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import classNames from 'classnames';
 import { ChevronRight } from 'ndla-icons/common';
-import Button from 'ndla-button';
 import { colors, spacing, fonts } from 'ndla-core';
 
 const AccordionWrapper = styled.div`
@@ -56,14 +55,15 @@ const AccordionChildWrapper = styled.section`
 
 const AccordionTitleBar = styled.div`
   background: #fff;
-  padding: ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal} ${spacing.small}
+    ${spacing.units.xsmall * 3}px;
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border: 0;
   transition: color 100ms ease, background 100ms ease;
-  > .c-icon {
+  .c-icon {
     transition: transform 100ms ease;
     transform: rotate(90deg);
     margin-right: ${spacing.small};
@@ -77,7 +77,7 @@ const AccordionTitleBar = styled.div`
     }
   }
   &.closed {
-    > .c-icon {
+    .c-icon {
       transform: rotate(0deg);
     }
     background: ${colors.brand.light};
@@ -88,8 +88,24 @@ const AccordionTitleBar = styled.div`
 `;
 
 const accordionButtonCss = css`
-  font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes(spacing.normal, 1.1)};
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: ${colors.brand.primary};
+  display: flex;
+  align-items: center;
+  height: ${spacing.large};
+  span {
+    box-shadow: inset 0 -1px;
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.sizes(spacing.normal, 1.1)};
+  }
+  &:hover,
+  &:focus {
+    span {
+      box-shadow: none;
+    }
+  }
 `;
 
 class Accordion extends React.Component {
@@ -143,16 +159,16 @@ class Accordion extends React.Component {
           return (
             <Fragment key={tab.title}>
               <AccordionTitleBar className={classes}>
-                <ChevronRight className="c-icon--medium" />
-                <Button
-                  link
+                <button
+                  type="button"
                   aria-label={tab.title}
                   aria-expanded={expanded}
                   aria-controls={tabId}
                   onClick={e => this.toggleTab(index, e)}
                   className={accordionButtonCss}>
-                  {tab.title}
-                </Button>
+                  <ChevronRight className="c-icon--medium" />
+                  <span>{tab.title}</span>
+                </button>
               </AccordionTitleBar>
               <AccordionChildWrapper
                 maxHeight={this.props.maxHeight}

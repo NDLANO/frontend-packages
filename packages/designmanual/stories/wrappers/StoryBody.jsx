@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { OneColumn, LayoutItem } from 'ndla-ui';
 
-const StoryIntro = ({ children }) => (
+const StoryBody = ({ children }) => (
   <OneColumn>
     <LayoutItem layout="center">
       <article className="c-article c-article--clean">{children}</article>
@@ -18,8 +18,8 @@ const StoryIntro = ({ children }) => (
   </OneColumn>
 );
 
-StoryIntro.propTypes = {
+StoryBody.propTypes = {
   children: PropTypes.node,
 };
 
-export default StoryIntro;
+export default StoryBody;

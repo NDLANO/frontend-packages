@@ -11,13 +11,34 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { Image } from 'ndla-ui';
+import { spacing, colors } from 'ndla-core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
+import AccordionExample from './AccordionExample';
 
 storiesOf('Produksjonssystem', module)
+  .add('Trekkspill', () => (
+    <div
+      style={{
+        backgroundColor: colors.brand.greyLightest,
+        paddingBottom: spacing.large,
+        minHeight: '100vh',
+      }}>
+      <StoryIntro title="Trekkspill">
+        <p>
+          Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget
+          kontrollere for åpning og lukking, men kan også kontrolleres manuelt.
+          Støtter feil-status via boolean prop tabs[x].error
+        </p>
+      </StoryIntro>
+      <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
+        <AccordionExample />
+      </div>
+    </div>
+  ))
   .add('Bildeutsnitt og fokuspunkt', () => (
     <div>
       <StoryIntro title="Bildesøk">

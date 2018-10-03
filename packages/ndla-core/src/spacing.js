@@ -1,4 +1,5 @@
 const spacingUnit = 26;
+
 export default {
   xsmall: `${spacingUnit / 4}px`,
   small: `${spacingUnit / 2}px`,

@@ -70,7 +70,8 @@ const AccordionTitleBar = styled.div`
   }
   &.error {
     border: 2px solid ${colors.support.redLight};
-    padding: calc(${spacing.normal} - 2px);
+    padding: calc(${spacing.small} - 2px) calc(${spacing.normal} - 2px)
+      calc(${spacing.small} - 2px) calc((${spacing.xsmall} * 3) - 2px);
     &:not(.closed) {
       border-bottom: 0;
       padding-bottom: ${spacing.normal};
@@ -112,14 +113,14 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      panelsOpen: props.tabs
-        .map((tab, index) => (tab.open ? index : null))
+      panelsOpen: props.panels
+        .map((panel, index) => (panel.open ? index : null))
         .filter(isOpen => isOpen !== null),
     };
-    this.toggleTab = this.toggleTab.bind(this);
+    this.togglePanel = this.togglePanel.bind(this);
   }
 
-  toggleTab(index, e) {
+  togglePanel(index, e) {
     const { panelsOpen } = this.state;
     const { onlyOpenOne, controlledCallback } = this.props;
 
@@ -147,35 +148,35 @@ class Accordion extends React.Component {
 
     return (
       <AccordionWrapper>
-        {this.props.tabs.map((tab, index) => {
+        {this.props.panels.map((panel, index) => {
           const expanded = controlledCallback
-            ? tab.open
+            ? panel.open
             : this.state.panelsOpen.includes(index);
-          const tabId = `${tab.title}-id`;
+          const panelId = `${panel.title}-id`;
           const classes = classNames({
             closed: !expanded,
-            error: tab.error,
+            error: panel.error,
           });
           return (
-            <Fragment key={tab.title}>
+            <Fragment key={panel.title}>
               <AccordionTitleBar className={classes}>
                 <button
                   type="button"
-                  aria-label={tab.title}
+                  aria-label={panel.title}
                   aria-expanded={expanded}
-                  aria-controls={tabId}
-                  onClick={e => this.toggleTab(index, e)}
+                  aria-controls={panelId}
+                  onClick={e => this.togglePanel(index, e)}
                   className={accordionButtonCss}>
                   <ChevronRight className="c-icon--medium" />
-                  <span>{tab.title}</span>
+                  <span>{panel.title}</span>
                 </button>
               </AccordionTitleBar>
               <AccordionChildWrapper
                 maxHeight={this.props.maxHeight}
                 className={classes}
-                id={tabId}
+                id={panelId}
                 aria-hidden={expanded}>
-                <div>{tab.children}</div>
+                <div>{panel.children}</div>
               </AccordionChildWrapper>
             </Fragment>
           );
@@ -187,7 +188,7 @@ class Accordion extends React.Component {
 
 Accordion.propTypes = {
   controlledCallback: PropTypes.func,
-  tabs: PropTypes.arrayOf(
+  panels: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       children: PropTypes.node.isRequired,
@@ -197,7 +198,7 @@ Accordion.propTypes = {
           typeof props[propName] !== 'boolean'
         ) {
           return new Error(
-            `Invalid prop tabs[].${propName} supplied to ${componentName}. Required if props.controlledCallback is function (controlled Accordion).`,
+            `Invalid prop panels[].${propName} supplied to ${componentName}. Required if props.controlledCallback is function (controlled Accordion).`,
           );
         }
         return null;

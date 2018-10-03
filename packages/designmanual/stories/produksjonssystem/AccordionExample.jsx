@@ -17,40 +17,40 @@ class AccordionExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openTabs: [], // used by controlled example
-      errorTabs: [2], // used by controlled example
+      openedPanels: [], // used by controlled example
+      errorPanels: [2], // used by controlled example
     };
     this.handleTabToggle = this.handleTabToggle.bind(this);
-    this.handleErrorTabs = this.handleErrorTabs.bind(this);
+    this.handlePanelErrors = this.handlePanelErrors.bind(this);
   }
 
   handleTabToggle(tabIndex) {
     this.setState(prevState => {
-      const { openTabs } = prevState;
-      if (openTabs.includes(tabIndex)) {
-        openTabs.splice(openTabs.indexOf(tabIndex), 1);
+      const { openedPanels } = prevState;
+      if (openedPanels.includes(tabIndex)) {
+        openedPanels.splice(openedPanels.indexOf(tabIndex), 1);
       } else {
-        openTabs.push(tabIndex);
+        openedPanels.push(tabIndex);
       }
       return {
-        openTabs,
+        openedPanels,
       };
     });
   }
 
-  handleErrorTabs(values) {
+  handlePanelErrors(values) {
     this.setState({
-      errorTabs: values,
+      errorPanels: values,
     });
   }
 
   render() {
-    const { errorTabs, openTabs } = this.state;
+    const { errorPanels, openedPanels } = this.state;
     return (
       <ComponentInfo
         reactCode={`
             <Accordion
-              tabs={[
+              panels={[
                 {
                   title: 'Tab 1',
                   children: <div>Tab content 1</div>,
@@ -65,31 +65,31 @@ class AccordionExample extends Component {
           `}
         usesPropTypes={[
           {
-            name: 'tabs',
+            name: 'panels',
             type: `PropTypes.arrayOf(PropTypes.shape)`,
             default: 'Required',
             description: `Array med innhold for trekkspill.`,
           },
           {
-            name: 'tabs[0].title',
+            name: 'panels[0].title',
             type: `PropTypes.string`,
             default: 'Required',
             description: `Tittel tab`,
           },
           {
-            name: 'tabs[0].children',
+            name: 'panels[0].children',
             type: `PropTypes.node`,
             default: 'Required',
             description: `Tab content`,
           },
           {
-            name: 'tabs[0].open',
+            name: 'panels[0].open',
             type: `PropTypes.bool`,
             default: 'false',
             description: `Påkrevd hvis trekkspill kontrolleres manuelt`,
           },
           {
-            name: 'tabs[0].error',
+            name: 'panels[0].error',
             type: `PropTypes.bool`,
             default: 'false',
             description: `Markerer accordions som rød / har feil`,
@@ -105,13 +105,13 @@ class AccordionExample extends Component {
             type: 'Function',
             default: 'undefined',
             description:
-              'Callback ved manuell kontrollering. Noter at tabs[x].open da blir påkrevd.',
+              'Callback ved manuell kontrollering. Noter at panels[x].open da blir påkrevd.',
           },
         ]}
         status={2}>
         <h2>Eksempel</h2>
         <Accordion
-          tabs={[
+          panels={[
             {
               title: 'Tab 1',
               children: (
@@ -142,18 +142,11 @@ class AccordionExample extends Component {
         <h2>Eksempel 2, kun en tillatt åpen om gangen</h2>
         <Accordion
           onlyOpenOne
-          tabs={[
+          panels={[
             {
               title: 'Tab 1',
               children: (
                 <div>
-                  <p>Innhold 1</p>
-                  <p>Innhold 1</p>
-                  <p>Innhold 1</p>
-                  <p>Innhold 1</p>
-                  <p>Innhold 1</p>
-                  <p>Innhold 1</p>
-                  <p>Innhold 1</p>
                   <p>Innhold 1</p>
                 </div>
               ),
@@ -187,12 +180,12 @@ class AccordionExample extends Component {
             { title: 'Tab 2', value: 1 },
             { title: 'Tab 3', value: 2 },
           ]}
-          values={this.state.errorTabs}
-          onChange={this.handleErrorTabs}
+          values={this.state.errorPanels}
+          onChange={this.handlePanelErrors}
         />
         <Accordion
           controlledCallback={this.handleTabToggle}
-          tabs={[
+          panels={[
             {
               title: 'Tab 1',
               children: (
@@ -201,8 +194,8 @@ class AccordionExample extends Component {
                   <Button onClick={() => this.handleTabToggle(0)}>Lukk</Button>
                 </div>
               ),
-              error: errorTabs.includes(0),
-              open: openTabs.includes(0),
+              error: errorPanels.includes(0),
+              open: openedPanels.includes(0),
             },
             {
               title: 'Tab 2',
@@ -212,8 +205,8 @@ class AccordionExample extends Component {
                   <Button onClick={() => this.handleTabToggle(1)}>Lukk</Button>
                 </div>
               ),
-              error: errorTabs.includes(1),
-              open: openTabs.includes(1),
+              error: errorPanels.includes(1),
+              open: openedPanels.includes(1),
             },
             {
               title: 'Tab 3',
@@ -223,8 +216,8 @@ class AccordionExample extends Component {
                   <Button onClick={() => this.handleTabToggle(2)}>Lukk</Button>
                 </div>
               ),
-              error: errorTabs.includes(2),
-              open: openTabs.includes(2),
+              error: errorPanels.includes(2),
+              open: openedPanels.includes(2),
             },
           ]}
         />

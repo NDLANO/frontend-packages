@@ -8,58 +8,51 @@ import { storiesOf } from '@storybook/react';
 import { LanguageSelectorNonMessages } from './LanguageWrapper';
 import { StoryIntro, StoryBody } from './wrappers';
 
+const licenseRightAbbreviations = [
+  'by',
+  'sa',
+  'nc',
+  'nd',
+  'pd',
+  'cc0',
+  'cc',
+  'copy',
+];
+
 const licensesRights = {
-  nb: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+  nb: licenseRightAbbreviations.map(license =>
     getLicenseRightByAbbreviation(license, 'nb'),
   ),
-  nn: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+  nn: licenseRightAbbreviations.map(license =>
     getLicenseRightByAbbreviation(license, 'nn'),
   ),
-  en: ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copy'].map(license =>
+  en: licenseRightAbbreviations.map(license =>
     getLicenseRightByAbbreviation(license, 'en'),
   ),
 };
 
+const licenseAbbreviations = [
+  'CC-BY-NC-ND-4.0',
+  'CC-BY-NC-SA-4.0',
+  'CC-BY-NC-4.0',
+  'CC-BY-ND-4.0',
+  'CC-BY-SA-4.0',
+  'CC-BY-4.0',
+  'PD',
+  'CC0-1.0',
+  'COPYRIGHTED',
+];
+
 const licenses = {
-  nb: [
-    'by-nc-nd',
-    'by-nc-sa',
-    'by-nc',
-    'by-nd',
-    'by-sa',
-    'by',
-    'pd',
-    'cc0',
-    'copyrighted',
-  ].map(license => ({
+  nb: licenseAbbreviations.map(license => ({
     code: license,
     data: getLicenseByAbbreviation(license, 'nb'),
   })),
-  nn: [
-    'by-nc-nd',
-    'by-nc-sa',
-    'by-nc',
-    'by-nd',
-    'by-sa',
-    'by',
-    'pd',
-    'cc0',
-    'copyrighted',
-  ].map(license => ({
+  nn: licenseAbbreviations.map(license => ({
     code: license,
     data: getLicenseByAbbreviation(license, 'nn'),
   })),
-  en: [
-    'by-nc-nd',
-    'by-nc-sa',
-    'by-nc',
-    'by-nd',
-    'by-sa',
-    'by',
-    'pd',
-    'cc0',
-    'copyrighted',
-  ].map(license => ({
+  en: licenseAbbreviations.map(license => ({
     code: license,
     data: getLicenseByAbbreviation(license, 'en'),
   })),

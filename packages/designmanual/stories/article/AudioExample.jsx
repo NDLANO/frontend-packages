@@ -30,7 +30,7 @@ class AudioExample extends Component {
   }
 
   render() {
-    const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
+    const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
 
     const messages = {
       close: 'Lukk',

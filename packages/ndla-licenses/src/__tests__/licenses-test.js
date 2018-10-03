@@ -15,15 +15,15 @@ import {
 
 import { BY, SA, NC, CC, COPYRIGHTED } from '../licenseRights';
 
-test('licenses/getLicenseByAbbreviation get license for by-sa in english', () => {
-  const license = getLicenseByAbbreviation('by-sa', 'en');
+test('licenses/getLicenseByAbbreviation get license for CC-BY-SA-4.0 in english', () => {
+  const license = getLicenseByAbbreviation('CC-BY-SA-4.0', 'en');
 
   expect(license.title).toBe('Attribution ShareAlike');
   expect(license.rights).toEqual([CC, BY, SA]);
 });
 
 test('licenses/getLicenseByAbbreviation get license without locale defaults to nb', () => {
-  const license = getLicenseByAbbreviation('by-nc-sa');
+  const license = getLicenseByAbbreviation('CC-BY-NC-SA-4.0');
 
   expect(license.title).toBe('Navngivelse-IkkeKommersiell-DelPåSammeVilkår');
   expect(license.rights).toEqual([CC, BY, NC, SA]);

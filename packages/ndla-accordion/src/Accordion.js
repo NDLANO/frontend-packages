@@ -26,7 +26,7 @@ const AccordionChildWrapper = styled.section`
   opacity: 1;
   margin-bottom: ${spacing.normal};
   background: #fff;
-  padding-left: ${spacing.units.large + spacing.units.small}px;
+  padding-left: calc(${spacing.large} + ${spacing.small});
   padding-right: ${spacing.large};
   padding-bottom: ${spacing.large};
   ${props =>
@@ -36,9 +36,9 @@ const AccordionChildWrapper = styled.section`
   &.error {
     border: 2px solid ${colors.support.redLight};
     border-top: 0;
-    padding-left: ${spacing.units.large + spacing.units.small - 2}px;
-    padding-right: ${spacing.units.large - 2}px;
-    padding-bottom: ${spacing.units.large - 2}px;
+    padding-left: calc(${spacing.large} + ${spacing.small} - 2px);
+    padding-right: calc(${spacing.large} - 2px);
+    padding-bottom: calc(${spacing.large} - 2px);
   }
   &.closed {
     margin-bottom: ${spacing.xsmall};
@@ -56,7 +56,7 @@ const AccordionChildWrapper = styled.section`
 const AccordionTitleBar = styled.div`
   background: #fff;
   padding: ${spacing.small} ${spacing.normal} ${spacing.small}
-    ${spacing.units.xsmall * 3}px;
+    calc(${spacing.xsmall} * 3);
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ const AccordionTitleBar = styled.div`
   }
   &.error {
     border: 2px solid ${colors.support.redLight};
-    padding: ${spacing.units.normal - 2}px;
+    padding: calc(${spacing.normal} - 2px);
     &:not(.closed) {
       border-bottom: 0;
       padding-bottom: ${spacing.normal};
@@ -112,7 +112,7 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabsOpen: props.tabs
+      panelsOpen: props.tabs
         .map((tab, index) => (tab.open ? index : null))
         .filter(isOpen => isOpen !== null),
     };
@@ -120,24 +120,24 @@ class Accordion extends React.Component {
   }
 
   toggleTab(index, e) {
-    const { tabsOpen } = this.state;
+    const { panelsOpen } = this.state;
     const { onlyOpenOne, controlledCallback } = this.props;
 
     if (controlledCallback) {
       this.props.controlledCallback(index, e);
     } else if (onlyOpenOne) {
       this.setState({
-        tabsOpen: tabsOpen.includes(index) ? [] : [index],
+        panelsOpen: panelsOpen.includes(index) ? [] : [index],
       });
-    } else if (tabsOpen.includes(index)) {
-      tabsOpen.splice(tabsOpen.indexOf(index), 1);
+    } else if (panelsOpen.includes(index)) {
+      panelsOpen.splice(panelsOpen.indexOf(index), 1);
       this.setState({
-        tabsOpen,
+        panelsOpen,
       });
     } else {
-      tabsOpen.push(index);
+      panelsOpen.push(index);
       this.setState({
-        tabsOpen,
+        panelsOpen,
       });
     }
   }
@@ -150,7 +150,7 @@ class Accordion extends React.Component {
         {this.props.tabs.map((tab, index) => {
           const expanded = controlledCallback
             ? tab.open
-            : this.state.tabsOpen.includes(index);
+            : this.state.panelsOpen.includes(index);
           const tabId = `${tab.title}-id`;
           const classes = classNames({
             closed: !expanded,

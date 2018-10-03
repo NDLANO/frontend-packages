@@ -16,15 +16,15 @@ $ yarn ndla-accordion
 import Accordion from 'ndla-accordion';
 
 <Accordion
-  tabs={[
+  panels={[
     {
-      title: 'Tab 1',
-      children: <div>Tab content 1</div>,
+      title: 'Panel 1',
+      children: <div>Panel content 1</div>,
       open: true,
     },
     {
-      title: 'Tab 2',
-      children: <div>Tab content 2</div>,
+      title: 'Panel 2',
+      children: <div>Panel content 2</div>,
     },
   ]}
 />;

@@ -150,6 +150,24 @@ class FormExampleAuthors extends Component {
             <FormRemoveButton>remove</FormRemoveButton>
           </div>
         </FormSections>
+        <FormHeader title="Form heading" subTitle="example" width={3 / 4}>
+          ?
+        </FormHeader>
+        <FormSections>
+          <div>
+            <FormSplitter>
+              <FormInput
+                container="div"
+                type="text"
+                placeholder="Skriv navn"
+                autoExpand
+              />
+            </FormSplitter>
+          </div>
+          <div>
+            <FormRemoveButton>remove</FormRemoveButton>
+          </div>
+        </FormSections>
       </Fragment>
     );
   }

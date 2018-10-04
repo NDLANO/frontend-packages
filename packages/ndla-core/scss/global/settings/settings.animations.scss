@@ -186,7 +186,7 @@
     #{$item}:nth-of-type(#{$i}) {
       // @include transition($a-delay linear ($a-duration + ($i - 1) * 0.1));
       animation-name: fadeInLeft;
-      animation-duration: (.05s+$i/10);
+      animation-duration: (0.05s+$i/10);
     }
     // @debug $i;
   }
@@ -208,7 +208,6 @@
     transform: translateX(0%);
   }
 }
-
 
 /* Modal animations */
 @keyframes modal-zoomIn {
@@ -280,7 +279,7 @@
 }
 /* Modal animation ends */
 
- @keyframes pulseAnimation {
+@keyframes pulseAnimation {
   0% {
     opacity: 0.5;
   }

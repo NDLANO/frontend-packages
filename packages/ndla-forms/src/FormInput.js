@@ -20,19 +20,28 @@ const inputWrapperCSS = css`
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
   padding-right: ${spacing.small};
-  input {
+  input,
+  textarea {
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
-    ${fonts.sizes(18, 1.1)};
+    ${fonts.sizes(18, 1.3)};
     background: none;
     border: 0;
     display: flex;
     flex-grow: 1;
-    padding: ${spacing.xsmall} ${spacing.small};
     &:focus {
       appearance: none;
       outline: none;
     }
+  }
+  input {
+    padding: ${spacing.xsmall} ${spacing.small};
+  }
+  textarea {
+    padding: 0 ${spacing.small};
+    height: 20px;
+    margin: 14px 0;
+    resize: none;
   }
   > .c-icon {
     width: 24px;
@@ -70,6 +79,18 @@ class FormInput extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    this.onCheckHeight();
+  }
+
+  onCheckHeight() {
+    if (this.props.autoExpand) {
+      this.inputRef.current.style.height = `0px`;
+      const { scrollHeight } = this.inputRef.current;
+      this.inputRef.current.style.height = `${scrollHeight}px`;
+    }
+  }
+
   handleBlur() {
     this.setState({
       hasFocus: false,
@@ -94,8 +115,11 @@ class FormInput extends React.Component {
       warningText,
       focusOnMount,
       white,
+      autoExpand,
       ...rest
     } = this.props;
+
+    const InputComponent = autoExpand ? 'textarea' : 'input';
 
     return (
       <div>
@@ -108,9 +132,14 @@ class FormInput extends React.Component {
           ref={this.wrapperRef}>
           {tags && tags}
           {iconLeft && !tags && iconLeft}
-          <input
+          <InputComponent
             ref={this.inputRef}
-            onChange={onChange}
+            onChange={e => {
+              this.onCheckHeight();
+              if (onChange) {
+                onChange(e);
+              }
+            }}
             onFocus={e => {
               this.handleFocus();
               if (onFocus) {
@@ -144,10 +173,12 @@ FormInput.propTypes = {
   white: PropTypes.bool,
   warningText: PropTypes.string,
   focusOnMount: PropTypes.bool,
+  autoExpand: PropTypes.bool,
 };
 
 FormInput.defaultProps = {
   container: 'form',
+  autoExpand: false,
 };
 
 export default FormInput;

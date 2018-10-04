@@ -1,31 +1,19 @@
-# ndla-accordion
+# ndla-forms
 
-Accordion component
+Forms elements and helper components
 
 ## Installation
 
 ```sh
-$ yarn ndla-accordion
+$ yarn add ndla-forms
 ```
 
 ## Usage
 
-### Simple example where Tab is open on render and logic is handled by component.
+### Different Form elements and form wrappers for NDLA
 
 ```js
-import Accordion from 'ndla-accordion';
+import { FromInput } from 'ndla-forms';
 
-<Accordion
-  tabs={[
-    {
-      title: 'Tab 1',
-      children: <div>Tab content 1</div>,
-      open: true,
-    },
-    {
-      title: 'Tab 2',
-      children: <div>Tab content 2</div>,
-    },
-  ]}
-/>;
+<FromInput onChange={() => {}} autoExpand />;
 ```

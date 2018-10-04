@@ -5,7 +5,7 @@ Accordion component
 ## Installation
 
 ```sh
-$ yarn ndla-accordion
+$ yarn add ndla-accordion
 ```
 
 ## Usage

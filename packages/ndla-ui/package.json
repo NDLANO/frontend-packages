@@ -8,7 +8,7 @@
   "jsnext:main": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:commonjs && npm run build:es",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:css",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",

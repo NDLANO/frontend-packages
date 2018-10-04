@@ -15,6 +15,7 @@ import {
   FormInput,
   FormDropdown,
   FormSplitter,
+  FormRemoveButton,
 } from 'ndla-forms';
 import { Search as SearchIcon } from 'ndla-icons/common';
 
@@ -146,7 +147,7 @@ class FormExampleAuthors extends Component {
             </FormSplitter>
           </div>
           <div>
-            <Button outline>remove</Button>
+            <FormRemoveButton>remove</FormRemoveButton>
           </div>
         </FormSections>
       </Fragment>

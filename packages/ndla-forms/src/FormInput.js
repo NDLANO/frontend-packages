@@ -49,7 +49,9 @@ const whiteCSS = css`
 `;
 
 const FormWarningText = styled.span`
+  font-family: ${fonts.sans};
   color: ${colors.support.red};
+  ${fonts.sizes(14, 1.1)};
 `;
 
 class FormInput extends React.Component {

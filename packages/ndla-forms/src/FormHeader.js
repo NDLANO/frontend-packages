@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   border-bottom: 2px solid ${colors.brand.light};
   padding-top: ${spacing.normal};
   padding-bottom: ${spacing.xsmall};
+  margin-top: ${spacing.normal};
   margin-bottom: ${spacing.normal};
   ${props =>
     css`
@@ -43,11 +44,6 @@ const Title = styled.h2`
     text-transform: none;
     padding-left: ${spacing.small};
   }
-`;
-
-const SubTitle = styled.span`
-  font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes(spacing.normal, 1.1)};
 `;
 
 const FormHeader = ({ title, subTitle, width, children }) => (

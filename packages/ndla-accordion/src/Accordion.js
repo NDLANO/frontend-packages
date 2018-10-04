@@ -27,7 +27,7 @@ const AccordionChildWrapper = styled.section`
   margin-bottom: ${spacing.normal};
   background: #fff;
   padding-left: calc(${spacing.large} + ${spacing.small});
-  padding-right: ${spacing.large};
+  padding-right: calc(${spacing.large} + ${spacing.small});
   padding-bottom: ${spacing.large};
   ${props =>
     css`
@@ -39,6 +39,9 @@ const AccordionChildWrapper = styled.section`
     padding-left: calc(${spacing.large} + ${spacing.small} - 2px);
     padding-right: calc(${spacing.large} - 2px);
     padding-bottom: calc(${spacing.large} - 2px);
+  }
+  > div {
+    width: 100%;
   }
   &.closed {
     margin-bottom: ${spacing.xsmall};

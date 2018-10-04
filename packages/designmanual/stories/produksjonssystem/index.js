@@ -18,6 +18,7 @@ import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
+import FormExampleAuthors from './FormExampleAuthors';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -119,6 +120,20 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <VideoSearcher />
+      </StoryBody>
+    </div>
+  ))
+  .add('Form elements', () => (
+    <div>
+      <StoryIntro title="Form elementer">
+        <p>
+          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove,
+          samt YouTube via Google Custom Search. Denne modulen krever at det
+          både finnes en token og api url (for brightcove).
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <FormExampleAuthors />
       </StoryBody>
     </div>
   ));

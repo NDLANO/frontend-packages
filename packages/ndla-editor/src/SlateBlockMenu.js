@@ -17,13 +17,13 @@ const ICON_SIZE = '48px';
 const Wrapper = styled.div`
   position: absolute;
   transform: translate(
-    calc(${ICON_SIZE} + ${spacing.normal}),
-    calc(-${ICON_SIZE} - ${spacing.small})
+    calc(${ICON_SIZE} + ${spacing.small}),
+    calc(-${ICON_SIZE} - (${spacing.large} + ${spacing.small}))
   );
   display: inline-block;
   z-index: 10;
   > div {
-    padding: ${spacing.small} ${spacing.normal};
+    padding: ${spacing.normal} 0;
     background: #fff;
     box-shadow: ${shadows.levitate1};
     ${animations.fadeInLeft(animations.durations.fast)};
@@ -31,14 +31,47 @@ const Wrapper = styled.div`
 `;
 
 const HeaderLabel = styled.div`
-  margin: 0 0 ${spacing.normal} 0;
+  font-weight: ${fonts.weight.normal};
+  text-transform: uppercase;
+  font-family: ${fonts.sans};
+  color: ${colors.text.light};
+  ${fonts.sizes(16, 1.1)};
+  margin: 0 ${spacing.normal} ${spacing.normal} ${spacing.normal};
 `;
 
 const Item = styled.div`
   display: flex;
-  height: ${spacing.medium};
-  align-items: space-between;
-  justify-content: center;
+  height: 42px;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+const itemButton = css`
+  padding: ${spacing.xsmall} ${spacing.large} ${spacing.xsmall}
+    ${spacing.normal};
+  border: 0;
+  background: 0;
+  color: ${colors.brand.primary};
+  ${fonts.sizes(18, 1.1)};
+  font-weight: ${fonts.weight.semibold};
+  span {
+    box-shadow: inset 0 -1px;
+  }
+  .c-icon {
+    color: ${colors.brand.tertiary};
+    margin-right: ${spacing.xsmall};
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+  }
+  &:hover,
+  &:focus {
+    span {
+      box-shadow: none;
+    }
+    .c-icon {
+      color: ${colors.brand.primary};
+    }
+  }
 `;
 
 const buttonCSS = css`
@@ -90,10 +123,13 @@ const SlateBlockMenu = ({
         <div>
           <HeaderLabel>{heading}</HeaderLabel>
           {actions.map(action => (
-            <Item key={action.data.type}>
-              <button type="button" onClick={() => clickItem(action.data)}>
-                {action.icon}
-                {action.label}
+            <Item key={action.data.object}>
+              <button
+                className={itemButton}
+                type="button"
+                onClick={() => clickItem(action.data)}>
+                {action.icon && action.icon}
+                <span>{action.label}</span>
               </button>
               {action.helpIcon}
             </Item>

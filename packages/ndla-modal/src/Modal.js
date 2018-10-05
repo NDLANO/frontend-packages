@@ -179,8 +179,8 @@ const ModalWrapper = styled.div`
     }
     &.medium,
     &.large {
-      .body,
-      .header {
+      .modal-body,
+      .modal-header {
         ${mq.range({ until: '790px' })} {
           padding-left: ${spacing.large};
           padding-right: ${spacing.large};
@@ -215,7 +215,7 @@ const ModalWrapper = styled.div`
       animation-name: fadeIn;
     }
   }
-  .header {
+  .modal-header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -223,30 +223,30 @@ const ModalWrapper = styled.div`
     &.no-bottom-padding {
       padding-bottom: 0;
     }
-    + .body {
+    + .modal-body {
       padding-top: 0;
     }
     &.white {
       background: #fff;
-      + .body {
+      + .modal-body {
         padding-top: ${spacing.normal};
       }
     }
     &.grey {
       background: ${colors.brand.greyLightest};
-      + .body {
+      + .modal-body {
         padding-top: ${spacing.normal};
       }
     }
     &.grey-dark {
       background: ${colors.brand.greyLighter};
-      + .body {
+      + .modal-body {
         padding-top: ${spacing.normal};
       }
     }
     &.blue {
       background: ${colors.brand.lighter};
-      + .body {
+      + .modal-body {
         padding-top: ${spacing.normal};
       }
     }
@@ -269,7 +269,7 @@ const ModalWrapper = styled.div`
       }
     }
   }
-  .body {
+  .modal-body {
     &.slide-in-left {
       animation-name: fadeInLeft;
       animation-duration: 500ms;
@@ -320,13 +320,13 @@ const ModalWrapper = styled.div`
     }
   }
   &.narrow {
-    .header {
+    .modal-header {
       padding-bottom: 0;
-      + .body {
+      + .modal-body {
         padding-top: 0;
       }
     }
-    .body {
+    .modal-body {
       padding-bottom: ${spacing.medium};
       h1 {
         ${fonts.sizes('22px', 1.2)};
@@ -448,7 +448,8 @@ class Modal extends React.Component {
         this.removedModal,
       );
     } else if (this.state.animateIn && this.state.isOpen) {
-      this.el = document.body.querySelector(`[data-modal='${this.uuid}']`);
+      this.el =
+        document.modal - body.querySelector(`[data-modal='${this.uuid}']`);
       if (this.props.onOpen) {
         this.props.onOpen();
       }

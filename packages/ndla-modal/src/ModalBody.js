@@ -8,15 +8,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-
-const classes = new BEMHelper({
-  name: 'modal',
-  prefix: 'c-',
-});
+import { cx } from 'react-emotion';
 
 const ModalBody = ({ children, modifier }) => (
-  <div {...classes('body', modifier)}>{children}</div>
+  <div className={cx('body', modifier)}>{children}</div>
 );
 
 ModalBody.propTypes = {

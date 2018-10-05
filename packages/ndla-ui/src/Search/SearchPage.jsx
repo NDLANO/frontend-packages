@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Back } from 'ndla-icons/common';
 import debounce from 'lodash/debounce';
 import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
-import { Modal, ModalHeader, ModalBody, ModalCloseButton } from 'ndla-ui';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
 import Button from 'ndla-button';
 import { injectT } from 'ndla-i18n';
 

@@ -8,8 +8,7 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
-import classNames from 'classnames';
+import styled, { css, cx } from 'react-emotion';
 import { ChevronRight } from 'ndla-icons/common';
 import { colors, spacing, fonts } from 'ndla-core';
 
@@ -29,6 +28,10 @@ const AccordionChildWrapper = styled.section`
   padding-left: calc(${spacing.large} + ${spacing.small});
   padding-right: ${spacing.large};
   padding-bottom: ${spacing.large};
+  &.extraPadding {
+    padding-left: calc(${spacing.large} * 3);
+    padding-right: calc(${spacing.large} * 3);
+  }
   ${props =>
     css`
       max-height: ${props.maxHeight ? `${props.maxHeight}px` : 'auto'};
@@ -145,7 +148,7 @@ class Accordion extends React.Component {
 
   render() {
     const { controlledCallback } = this.props;
-
+    console.log('accordion fixes', this.props.panels);
     return (
       <AccordionWrapper>
         {this.props.panels.map((panel, index) => {
@@ -153,13 +156,13 @@ class Accordion extends React.Component {
             ? panel.open
             : this.state.panelsOpen.includes(index);
           const panelId = `${panel.title}-id`;
-          const classes = classNames({
-            closed: !expanded,
-            error: panel.error,
-          });
           return (
             <Fragment key={panel.title}>
-              <AccordionTitleBar className={classes}>
+              <AccordionTitleBar
+                className={cx({
+                  closed: !expanded,
+                  error: panel.error,
+                })}>
                 <button
                   type="button"
                   aria-label={panel.title}
@@ -173,7 +176,11 @@ class Accordion extends React.Component {
               </AccordionTitleBar>
               <AccordionChildWrapper
                 maxHeight={this.props.maxHeight}
-                className={classes}
+                className={cx({
+                  closed: !expanded,
+                  error: panel.error,
+                  extraPadding: panel.extraPadding,
+                })}
                 id={panelId}
                 aria-hidden={expanded}>
                 <div>{panel.children}</div>

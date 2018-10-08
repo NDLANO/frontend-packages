@@ -107,6 +107,13 @@ class AccordionExample extends Component {
             description:
               'Callback ved manuell kontrollering. Noter at panels[x].open da blir påkrevd.',
           },
+          {
+            name: 'extraPadding',
+            type: 'Boolean',
+            default: 'false',
+            description:
+              'Øker padding på innhold i Accordion til spacing.large * 3',
+          },
         ]}
         status={2}>
         <h2>Eksempel</h2>

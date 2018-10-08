@@ -13,9 +13,10 @@ export {
   default as convertFieldWithFallback,
 } from './convertFieldWithFallback';
 export { tagsI18N } from './i18nFieldFinder';
-export { default as noScroll } from './noScroll';
+export { default as noScroll, isIosDeviceSafari } from './noScroll';
 export {
   default as getCurrentBreakpoint,
   breakpoints,
 } from './getCurrentBreakpoint';
 export { default as downloadPdf } from './downloadPdf';
+export { createUniversalPortal } from './createUniversalPortal';

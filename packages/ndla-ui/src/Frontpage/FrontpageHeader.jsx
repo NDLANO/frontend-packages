@@ -2,14 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Cross } from 'ndla-icons/action';
-import {
-  Modal,
-  ModalHeader,
-  SearchField,
-  OneColumn,
-  Logo,
-  SafeLink,
-} from 'ndla-ui';
+import { SearchField, OneColumn, Logo, SafeLink } from 'ndla-ui';
+import Modal, { ModalHeader } from 'ndla-modal';
 import Button from 'ndla-button';
 import { uuid } from 'ndla-util';
 

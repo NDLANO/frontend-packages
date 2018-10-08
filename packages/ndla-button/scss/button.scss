@@ -41,7 +41,6 @@
   }
 }
 
-
 .c-button--lighter {
   @include font-size(12px, 15px);
   background-color: $brand-color--lighter;
@@ -130,11 +129,4 @@
   &:focus {
     box-shadow: $link--hover;
   }
-}
-
-.c-button--square {
-  border-radius: 0;
-}
-.c-button--small {
-  padding: 0;
 }

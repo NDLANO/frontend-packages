@@ -1,7 +1,7 @@
 {
-  "name": "ndla-button",
-  "version": "0.0.3",
-  "description": "Button component for NDLA",
+  "name": "ndla-modal",
+  "version": "0.1.0",
+  "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -24,14 +24,17 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
     "lib",
     "es"
   ],
   "peerDependencies": {
+    "emotion": "^9.2.10",
     "ndla-core": "^0.0.1",
-    "prop-types": "15.6.1",
+    "ndla-utils": "^0.0.1",
+    "ndla-button": "^0.0.1",
     "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1"
+    "react-emotion": "^9.2.10",
+    "react-prop-types": "0.4.0",
+    "focus-trap-react": "^4.0.0"
   }
 }

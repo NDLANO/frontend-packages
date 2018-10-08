@@ -11,13 +11,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  ActiveFilters,
-} from 'ndla-ui';
+import { ActiveFilters } from 'ndla-ui';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
 import Button from 'ndla-button';
 import debounce from 'lodash/debounce';
 

@@ -188,7 +188,9 @@ function licenseRightByLocale(license, locale) {
   };
 }
 
+export const licenseRights = [BY, SA, NC, ND, PD, CC, CC0, COPYRIGHTED];
 export function getLicenseRightByAbbreviation(abbreviation, locale) {
+  // const
   switch (abbreviation) {
     case BY:
       return licenseRightByLocale(by, locale);

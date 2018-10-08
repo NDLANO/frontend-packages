@@ -46,7 +46,7 @@ class ConceptExample extends Component {
                         ariaLabel: 'Vis begrep beskrivelse',
                         close: 'Lukk',
                       }}
-                      license="by-nc-nd"
+                      license="CC-BY-ND-4.0"
                       id={1}>
                       sosialisering
                     </Concept>{' '}
@@ -91,7 +91,7 @@ class ConceptExample extends Component {
                       ariaLabel: 'Vis begrep beskrivelse',
                       close: 'Lukk',
                     }}
-                    license="by-nc-nd"
+                    license="CC-BY-ND-4.0"
                     id={2}>
                     Sanksjonene
                   </Concept>{' '}
@@ -105,7 +105,7 @@ class ConceptExample extends Component {
                       ariaLabel: 'Vis begrep beskrivelse',
                       close: 'Lukk',
                     }}
-                    license="by-nc-nd"
+                    license="CC-BY-ND-4.0"
                     id={3}>
                     normene
                   </Concept>{' '}
@@ -161,7 +161,7 @@ class ConceptExample extends Component {
                       ariaLabel: 'Vis begrep beskrivelse',
                       close: 'Lukk',
                     }}
-                    license="by-nc-nd"
+                    license="CC-BY-ND-4.0"
                     id={4}>
                     usikker
                   </Concept>.

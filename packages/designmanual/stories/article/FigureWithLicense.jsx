@@ -46,7 +46,7 @@ class FigureWithLicense extends Component {
   }
 
   render() {
-    const license = getLicenseByAbbreviation('by-nc-nd', 'nb');
+    const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
     const { resizeIframe, type } = this.props;
 
     const messages = {

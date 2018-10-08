@@ -19,8 +19,8 @@ import {
   DisplayOnPageYOffset,
   SearchField,
   SafeLink,
-  Modal,
 } from 'ndla-ui';
+import Modal from 'ndla-modal';
 import Button from 'ndla-button';
 
 import { Search } from 'ndla-icons/common';
@@ -104,7 +104,7 @@ class MastheadWithTopicMenu extends Component {
           backgroundColor="grey"
           animation="slide-down"
           animationDuration={200}
-          size="full-width"
+          size="custom"
           onOpen={() => {
             this.searchFieldRef.current
               .getElementsByTagName('input')[0]

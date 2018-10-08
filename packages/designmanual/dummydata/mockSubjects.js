@@ -32,7 +32,7 @@ export const subjectConcepts = [
       ariaLabel: 'Vis begrep beskrivelse',
       close: 'Lukk',
     },
-    license: 'by-nc-nd',
+    license: 'CC-BY-ND-4.0',
     id: 1,
   },
   {
@@ -44,7 +44,7 @@ export const subjectConcepts = [
       ariaLabel: 'Vis begrep beskrivelse',
       close: 'Lukk',
     },
-    license: 'by-nc-nd',
+    license: 'CC-BY-ND-4.0',
     id: 2,
   },
   {
@@ -56,7 +56,7 @@ export const subjectConcepts = [
       ariaLabel: 'Vis begrep beskrivelse',
       close: 'Lukk',
     },
-    license: 'by-nc-nd',
+    license: 'CC-BY-ND-4.0',
     id: 3,
   },
   {
@@ -68,7 +68,7 @@ export const subjectConcepts = [
       ariaLabel: 'Vis begrep beskrivelse',
       close: 'Lukk',
     },
-    license: 'by-nc-nd',
+    license: 'CC-BY-ND-4.0',
     id: 4,
   },
   {
@@ -80,7 +80,7 @@ export const subjectConcepts = [
       ariaLabel: 'Vis begrep beskrivelse',
       close: 'Lukk',
     },
-    license: 'by-nc-nd',
+    license: 'CC-BY-ND-4.0',
     id: 5,
   },
 ];

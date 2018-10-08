@@ -17,7 +17,8 @@ import debounce from 'lodash/debounce';
 
 import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import { SafeLink, Tooltip, ModalHeader, createUniversalPortal } from 'ndla-ui';
+import { SafeLink, Tooltip, createUniversalPortal } from 'ndla-ui';
+import { ModalHeader } from 'ndla-modal';
 import Button from 'ndla-button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';

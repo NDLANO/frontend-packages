@@ -20,11 +20,11 @@ class AccordionExample extends Component {
       openedPanels: [], // used by controlled example
       errorPanels: [2], // used by controlled example
     };
-    this.handleTabToggle = this.handleTabToggle.bind(this);
+    this.handlePanelToggle = this.handlePanelToggle.bind(this);
     this.handlePanelErrors = this.handlePanelErrors.bind(this);
   }
 
-  handleTabToggle(tabIndex) {
+  handlePanelToggle(tabIndex) {
     this.setState(prevState => {
       const { openedPanels } = prevState;
       if (openedPanels.includes(tabIndex)) {
@@ -184,14 +184,16 @@ class AccordionExample extends Component {
           onChange={this.handlePanelErrors}
         />
         <Accordion
-          controlledCallback={this.handleTabToggle}
+          controlledCallback={this.handlePanelToggle}
           panels={[
             {
               title: 'Tab 1',
               children: (
                 <div>
                   <p>Innhold 1</p>
-                  <Button onClick={() => this.handleTabToggle(0)}>Lukk</Button>
+                  <Button onClick={() => this.handlePanelToggle(0)}>
+                    Lukk
+                  </Button>
                 </div>
               ),
               error: errorPanels.includes(0),
@@ -202,7 +204,9 @@ class AccordionExample extends Component {
               children: (
                 <div>
                   <p>Innhold 2</p>
-                  <Button onClick={() => this.handleTabToggle(1)}>Lukk</Button>
+                  <Button onClick={() => this.handlePanelToggle(1)}>
+                    Lukk
+                  </Button>
                 </div>
               ),
               error: errorPanels.includes(1),
@@ -213,7 +217,9 @@ class AccordionExample extends Component {
               children: (
                 <div>
                   <p>Innhold 3</p>
-                  <Button onClick={() => this.handleTabToggle(2)}>Lukk</Button>
+                  <Button onClick={() => this.handlePanelToggle(2)}>
+                    Lukk
+                  </Button>
                 </div>
               ),
               error: errorPanels.includes(2),

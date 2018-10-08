@@ -33,8 +33,8 @@ const triggerDownloadText = () => {
   downloadPdf({ content: mockDownloadArticleText, title: 'Eksempel artikkel' });
 };
 
-const byncndLicenseAbbreviation = 'by-nc-nd';
-const bysaLicenseAbbreviation = 'by-sa';
+const byncndLicenseAbbreviation = 'CC-BY-ND-4.0';
+const bysaLicenseAbbreviation = 'CC-BY-SA-40';
 
 const VideoContent = injectT(({ t }) => (
   <div>

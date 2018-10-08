@@ -1,11 +1,12 @@
 {
   "name": "ndla-accordion",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple accordion from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
+  "sideEffects": false,
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
@@ -27,12 +28,12 @@
     "es"
   ],
   "peerDependencies": {
+    "classnames": "^2.2.6",
     "emotion": "^9.2.10",
     "ndla-core": "^0.0.1",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",
     "react-emotion": "^9.2.10",
-    "react-prop-types": "0.4.0",
-    "classnames": "^2.2.6"
+    "react-prop-types": "0.4.0"
   }
 }

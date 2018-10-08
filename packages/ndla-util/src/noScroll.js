@@ -58,9 +58,6 @@ const noScroll = (enable, uuid) => {
       htmlElement.style.position = isIosDeviceSafari ? 'fixed' : 'static'; // iOS scrolling fix
       htmlElement.style.left = 0;
       htmlElement.style.right = 0;
-      if (isIosDeviceSafari) {
-        htmlElement.classList.add('scrollFixIOS');
-      }
     }
   } else {
     if (scrollTargets.indexOf(uuid) !== -1) {
@@ -77,7 +74,6 @@ const noScroll = (enable, uuid) => {
       htmlElement.style.left = 'auto';
       htmlElement.style.right = 'auto';
       if (isIosDeviceSafari) {
-        htmlElement.classList.remove('scrollFixIOS');
         setBodyScrollTop(currentScrollPosition);
       }
     }

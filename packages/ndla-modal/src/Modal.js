@@ -448,8 +448,7 @@ class Modal extends React.Component {
         this.removedModal,
       );
     } else if (this.state.animateIn && this.state.isOpen) {
-      this.el =
-        document.modal - body.querySelector(`[data-modal='${this.uuid}']`);
+      this.el = document.body.querySelector(`[data-modal='${this.uuid}']`);
       if (this.props.onOpen) {
         this.props.onOpen();
       }

@@ -70,6 +70,7 @@ class MastheadWithTopicMenu extends Component {
       <SearchField
         placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
         value={this.state.value}
+        autofocus
         onChange={event => {
           this.setState({
             value: event.currentTarget.value,
@@ -105,11 +106,6 @@ class MastheadWithTopicMenu extends Component {
           animation="slide-down"
           animationDuration={200}
           size="custom"
-          onOpen={() => {
-            this.searchFieldRef.current
-              .getElementsByTagName('input')[0]
-              .focus();
-          }}
           onClose={() => {
             this.setState({ value: '' });
           }}

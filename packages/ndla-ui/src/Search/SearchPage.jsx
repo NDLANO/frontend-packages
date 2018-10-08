@@ -160,7 +160,6 @@ SearchPage.propTypes = {
   searchString: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  searchFieldPlaceholder: PropTypes.string.isRequired,
   onSearchFieldFilterRemove: PropTypes.func.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   searchFieldFilters: PropTypes.arrayOf(

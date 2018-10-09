@@ -76,7 +76,7 @@ class AccordionExample extends Component {
             description: `Array med index til paneler som skal være åpne`,
           },
           {
-            name: 'onlyOpenOne',
+            name: 'single',
             type: 'Boolean',
             default: 'false',
             description: 'Vis kun et panel omgangen',
@@ -109,7 +109,7 @@ class AccordionExample extends Component {
           )}
         </Accordion>
         <h2>Eksempel 2, kun en tillatt åpen om gangen</h2>
-        <Accordion onlyOpenOne>
+        <Accordion single>
           {({ openIndexes, handleItemClick }) => (
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (

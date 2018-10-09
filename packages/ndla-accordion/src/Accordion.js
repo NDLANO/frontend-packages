@@ -28,9 +28,9 @@ export class Accordion extends React.Component {
 
   togglePanel(index) {
     const { panelsOpen } = this.state;
-    const { onlyOpenOne } = this.props;
+    const { single } = this.props;
 
-    if (onlyOpenOne) {
+    if (single) {
       this.setState({
         panelsOpen: panelsOpen.includes(index) ? [] : [index],
       });
@@ -57,7 +57,7 @@ export class Accordion extends React.Component {
 
 Accordion.propTypes = {
   children: PropTypes.func.isRequired,
-  onlyOpenOne: PropTypes.bool,
+  single: PropTypes.bool,
   openIndexes: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   ),

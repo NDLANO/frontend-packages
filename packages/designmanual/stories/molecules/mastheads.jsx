@@ -19,8 +19,8 @@ import {
   DisplayOnPageYOffset,
   SearchField,
   SafeLink,
-  Modal,
 } from 'ndla-ui';
+import Modal from 'ndla-modal';
 import Button from 'ndla-button';
 
 import { Search } from 'ndla-icons/common';
@@ -70,6 +70,7 @@ class MastheadWithTopicMenu extends Component {
       <SearchField
         placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
         value={this.state.value}
+        autofocus
         onChange={event => {
           this.setState({
             value: event.currentTarget.value,
@@ -104,12 +105,7 @@ class MastheadWithTopicMenu extends Component {
           backgroundColor="grey"
           animation="slide-down"
           animationDuration={200}
-          size="full-width"
-          onOpen={() => {
-            this.searchFieldRef.current
-              .getElementsByTagName('input')[0]
-              .focus();
-          }}
+          size="custom"
           onClose={() => {
             this.setState({ value: '' });
           }}

@@ -17,7 +17,8 @@ import debounce from 'lodash/debounce';
 
 import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
 import { Cross } from 'ndla-icons/action';
-import { SafeLink, Tooltip, ModalHeader, createUniversalPortal } from 'ndla-ui';
+import { SafeLink, Tooltip } from 'ndla-ui';
+import { ModalHeader } from 'ndla-modal';
 import Button from 'ndla-button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
@@ -44,27 +45,6 @@ export const renderAdditionalIcon = (isAdditional, label) => {
     return <Additional className="c-icon--20 c-topic-menu__tooltipContainer" />;
   }
   return null;
-};
-
-const SubjectOverviewButton = ({ children, competenceGoalsOpen }) => {
-  const content = (
-    <div
-      {...classes('back', {
-        'hidden-phone': competenceGoalsOpen,
-        narrow: true,
-      })}>
-      <SafeLink {...classes('back-link')} to="/">
-        <Home {...classes('home-icon', '', 'c-icon--20')} />
-        {children}
-      </SafeLink>
-    </div>
-  );
-  return createUniversalPortal(content, 'body');
-};
-
-SubjectOverviewButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  competenceGoalsOpen: PropTypes.bool.isRequired,
 };
 
 export default class TopicMenu extends Component {
@@ -170,6 +150,7 @@ export default class TopicMenu extends Component {
       hideSearch,
       competenceGoals,
       searchFieldComponent,
+      toFrontpage,
     } = this.props;
     const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -214,9 +195,6 @@ export default class TopicMenu extends Component {
       <Trans>
         {({ t }) => (
           <nav>
-            <SubjectOverviewButton competenceGoalsOpen={competenceGoalsOpen}>
-              {t('masthead.menu.subjectOverview')}
-            </SubjectOverviewButton>
             <ModalHeader modifier={['white', 'menu']}>
               <div {...classes('masthead-left')}>
                 <button
@@ -238,7 +216,17 @@ export default class TopicMenu extends Component {
             </ModalHeader>
             <div {...classes('content')}>
               <div {...classes('back', 'wide')}>
-                <SafeLink {...classes('back-link')} to="/">
+                <SafeLink {...classes('back-link')} to={toFrontpage()}>
+                  <Home {...classes('home-icon', '', 'c-icon--20')} />
+                  {t('masthead.menu.subjectOverview')}
+                </SafeLink>
+              </div>
+              <div
+                {...classes('back', {
+                  'hidden-phone': competenceGoalsOpen,
+                  narrow: true,
+                })}>
+                <SafeLink {...classes('back-link')} to={toFrontpage()}>
                   <Home {...classes('home-icon', '', 'c-icon--20')} />
                   {t('masthead.menu.subjectOverview')}
                 </SafeLink>

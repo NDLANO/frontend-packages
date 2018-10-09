@@ -46,6 +46,8 @@ import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
+import ListViewExample from './organisms/ListViewExample';
+
 const toggle = () => {
   document
     .querySelector('.c-collate__panel')
@@ -745,4 +747,13 @@ storiesOf('Sammensatte moduler', module)
         <ModalExample />
       </StoryBody>
     </div>
+  ))
+
+  .add('Listevisning', () => (
+    <PageContainer>
+      <StoryIntro title="Listevisning" />
+      <LayoutItem layout="center">
+        <ListViewExample />
+      </LayoutItem>
+    </PageContainer>
   ));

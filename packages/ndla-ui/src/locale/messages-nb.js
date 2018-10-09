@@ -416,6 +416,20 @@ const messages = {
   breadcrumb: {
     toFrontpage: 'Til forsiden',
   },
+  listview: {
+    filters: {
+      subject: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på fag',
+        closeFilter: 'Lukk filter',
+      },
+      category: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på kategori',
+        closeFilter: 'Lukk filter',
+      },
+    },
+  },
 };
 
 export default messages;

@@ -9,98 +9,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-import LicenseByline from '../LicenseByline';
 import { createUniversalPortal } from '../utils/createUniversalPortal';
+import ConceptDialog from './ConceptDialog';
 
 const classes = new BEMHelper({
   name: 'concept',
   prefix: 'c-',
 });
-const sourceClasses = new BEMHelper({
-  name: 'source-list',
-  prefix: 'c-',
-});
 
-const Concept = ({
-  title,
-  authors,
-  source,
-  content,
-  id,
-  messages,
-  license,
-  visible,
-  closeCallback,
-  dialogRef,
-  children,
-}) => {
-  const licenseRights = getLicenseByAbbreviation(license).rights;
-  const visibleClass = visible ? 'visible' : null;
-  const closeFunc = closeCallback || null;
-  return (
-    <span {...classes('item')} id={id}>
-      <button
-        type="button"
-        aria-label={messages.ariaLabel}
-        {...classes('link')}>
-        {children}
-      </button>
-      {createUniversalPortal(
-        <div
-          ref={dialogRef}
-          aria-hidden="true"
-          role="dialog"
-          data-concept-id={id}
-          aria-labelledby={id}
-          aria-describedby={id}
-          {...classes('popup', visibleClass)}>
-          <button
-            {...classes('close', 'u-close')}
-            type="button"
-            onClick={closeFunc}>
-            {messages.close}
-          </button>
-          <h3 {...classes('title')}>{title}</h3>
-          <p {...classes('content')}>{content}</p>
-          <div {...sourceClasses()}>
-            {licenseRights.length > 0 && (
-              <LicenseByline
-                className="c-source-list__item"
-                licenseRights={licenseRights}
-              />
-            )}
-            {authors.map(author => (
-              <span {...sourceClasses('item')} key={author}>
-                {author}
-              </span>
-            ))}
-            <span {...sourceClasses('item')} key={source}>
-              {source}
-            </span>
-          </div>
-        </div>,
-        'body',
-      )}
-    </span>
-  );
-};
+const Concept = ({ id, messages, children, ...rest }) => (
+  <span {...classes('item')} id={id}>
+    <button type="button" aria-label={messages.ariaLabel} {...classes('link')}>
+      {children}
+    </button>
+    {createUniversalPortal(
+      <ConceptDialog {...rest} id={id} messages={messages} />,
+      'body',
+    )}
+  </span>
+);
 
 Concept.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.string),
   source: PropTypes.string,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   messages: PropTypes.shape({
     ariaLabel: PropTypes.string.isRequired,
     close: PropTypes.string.isRequired,
   }),
   license: PropTypes.string,
   children: PropTypes.string,
-  visible: PropTypes.bool,
-  closeCallback: PropTypes.func,
-  dialogRef: PropTypes.func,
+  linkTo: PropTypes.shape({
+    label: PropTypes.string,
+    href: PropTypes.string,
+  }),
 };
 
 export default Concept;

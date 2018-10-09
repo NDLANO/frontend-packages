@@ -1,0 +1,40 @@
+{
+  "name": "ndla-listview",
+  "version": "0.0.1",
+  "description": "Listview components for NDLA",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build:commonjs && npm run build:es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
+    "clean": "rimraf lib es",
+    "test": "jest",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "peerDependencies": {
+    "emotion": "^9.2.10",
+    "ndla-ui": "^0.0.1",
+    "ndla-core": "^0.0.1",
+    "ndla-icons": "^0.0.1",
+    "react": "^16.4.2",
+    "react-bem-helper": "^1.4.1",
+    "react-emotion": "^9.2.10",
+    "react-prop-types": "0.4.0"
+  }
+}

@@ -412,9 +412,10 @@ const Portal = ({
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+    const autoOpen = props.controllable && props.isOpen;
     this.state = {
-      isOpen: false,
-      animateIn: false,
+      isOpen: autoOpen,
+      animateIn: autoOpen,
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -425,6 +426,18 @@ class Modal extends React.Component {
     this.scrollPosition = null;
     this.el = null;
     this.uuid = uuid();
+  }
+
+  componentDidMount() {
+    if (
+      uuidList.indexOf(this.uuid) === -1 &&
+      this.props.controllable &&
+      this.props.isOpen
+    ) {
+      noScroll(true, this.uuid);
+      uuidList.push(this.uuid);
+      window.addEventListener('keyup', this.onKeypressed, true);
+    }
   }
 
   componentDidUpdate() {
@@ -517,38 +530,47 @@ class Modal extends React.Component {
       className,
       children,
       narrow,
+      controllable,
+      isOpen: propsIsOpen,
       ...rest
     } = this.props;
 
     const { isOpen, animateIn } = this.state;
 
-    const clonedComponent =
-      typeof activateButton === 'string' ? (
-        <Button
-          outline
-          onClick={() => {
-            this.openModal();
-            if (onClickEvent) {
-              onClickEvent();
-            }
-          }}>
-          {activateButton}
-        </Button>
-      ) : (
-        React.cloneElement(activateButton, {
-          onClick: () => {
-            this.openModal();
-            if (onClickEvent) {
-              onClickEvent();
-            }
-          },
-        })
-      );
+    let clonedComponent;
+    if (!controllable) {
+      clonedComponent =
+        typeof activateButton === 'string' ? (
+          <Button
+            outline
+            onClick={() => {
+              this.openModal();
+              if (onClickEvent) {
+                onClickEvent();
+              }
+            }}>
+            {activateButton}
+          </Button>
+        ) : (
+          React.cloneElement(activateButton, {
+            onClick: () => {
+              this.openModal();
+              if (onClickEvent) {
+                onClickEvent();
+              }
+            },
+          })
+        );
+    }
+
+    const modalButton =
+      !controllable &&
+      (wrapperFunctionForButton
+        ? wrapperFunctionForButton(clonedComponent)
+        : clonedComponent);
     return (
       <Component {...rest} className={containerClass}>
-        {wrapperFunctionForButton
-          ? wrapperFunctionForButton(clonedComponent)
-          : clonedComponent}
+        {modalButton}
         <div ref={this.containerRef}>
           {isOpen && (
             <Portal
@@ -591,13 +613,27 @@ Modal.propTypes = {
   ]),
   backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue']),
   animationDuration: PropTypes.number,
-  activateButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  activateButton: (props, propName, componentName) => {
+    if (
+      !props.controllable &&
+      (typeof props[propName] !== 'string' &&
+        !React.isValidElement(props[propName]))
+    ) {
+      return new Error(
+        `Invalid prop \`${propName}\` supplied to` +
+          ` \`${componentName}\`. Validation failed.`,
+      );
+    }
+    return null;
+  },
   wrapperFunctionForButton: PropTypes.func,
   noBackdrop: PropTypes.bool,
   closeOnBackdrop: PropTypes.bool,
   className: PropTypes.string,
   onOpen: PropTypes.func,
   narrow: PropTypes.bool,
+  controllable: PropTypes.bool,
+  isOpen: PropTypes.bool,
 };
 
 Modal.defaultProps = {

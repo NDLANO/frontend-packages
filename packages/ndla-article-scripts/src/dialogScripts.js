@@ -59,7 +59,7 @@ export const addShowDialogClickListeners = () => {
 };
 
 export const removeShowDialogClickListeners = () => {
-  forEachElement('[data-dialog-trigger-id]', el => {
+  forEachElement('.c-article [data-dialog-trigger-id]', el => {
     const target = el;
     target.onclick = undefined;
   });

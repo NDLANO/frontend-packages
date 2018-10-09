@@ -155,9 +155,6 @@ class ListViewExample extends Component {
               },
             ],
           }}
-          activeFilters={{
-            subject: ['murerfaget', 'betongfaget'],
-          }}
           filters={[
             {
               options: [

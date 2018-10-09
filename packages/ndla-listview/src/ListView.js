@@ -28,7 +28,7 @@ const SelectWrapper = styled.div`
     font-family: ${fonts.sans};
     font-weight: ${fonts.weight.semibold};
     flex: 0 1 33%;
-    ${fonts.sizes(16, 1.2)};
+    ${fonts.sizes('16px', 1.3)};
   }
 
   .select-wrapper {
@@ -46,7 +46,7 @@ const SelectWrapper = styled.div`
     height: 48px;
     background: transparent;
     padding: 0 ${spacing.normal};
-    ${fonts.sizes(16, 1.2)};
+    ${fonts.sizes('16px', 1.3)};
     // Remove dropdown ndla-icons
     appearance: none;
     -moz-appearance: none;
@@ -119,39 +119,43 @@ const ListViewWrapper = styled.div`
 
     &.grid {
       display: flex;
+      margin-left: -${spacing.small};
+      margin-right: -${spacing.small};
     }
 
     &.list {
       display: block;
+      margin-left: -${spacing.small};
+      margin-right: -${spacing.small};
     }
   }
   .list-style {
     display: flex;
   }
 
-  /* Style for alphabet filter */
   .alphabet {
-    flex: 0 1 100%;
-    list-style: none;
     display: flex;
-    align-items: stretch;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    list-style: none;
+    justify-content: space-between;
     height: 32px;
     margin: ${spacing.normal} 0 ${spacing.normal} 0;
   }
 
   .letter {
-    flex: 1 1 32px;
     text-align: center;
     margin: 0;
     button {
       background: transparent;
+      transition: background 100ms ease;
       border: none;
       color: ${colors.brand.primary};
       text-transform: uppercase;
       font-weight: ${fonts.weight.semibold};
-      ${fonts.sizes(18, 1.1)};
-      height: 100%;
-      width: 100%;
+      ${fonts.sizes('18px', 1.3)};
+      height: ${spacing.normal};
+      width: ${spacing.normal};
       border-radius: 50%;
 
       &:hover,

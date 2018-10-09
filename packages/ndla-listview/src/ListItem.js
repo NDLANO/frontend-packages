@@ -8,16 +8,18 @@ const ListItemWrapper = styled.div`
   padding: ${spacing.small};
   animation: fadeIn 150ms ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
   }
   .item-image {
     background: #fff;
     position: relative;
-    border-bottom: 1px solid $brand-color--light;
     height: 125px;
     overflow: hidden;
     text-align: center;
+    border-bottom: 1px solid ${colors.brand.light};
+    margin-bottom: ${spacing.xsmall};
 
     img {
       height: 90%;
@@ -27,7 +29,7 @@ const ListItemWrapper = styled.div`
   .item-category {
     position: absolute;
     bottom: ${spacing.xsmall};
-    left: ${spacing.xsmall};
+    left: 0;
     display: inline-block;
     background: ${colors.brand.greyLightest};
     border-radius: ${misc.borderRadius};
@@ -35,19 +37,23 @@ const ListItemWrapper = styled.div`
     text-transform: capitalize;
     font-weight: 600;
     line-height: 0.5rem;
-    ${fonts.sizes(12, 1.1)};
+    ${fonts.sizes('12px', 1.7)};
   }
   .item-subject {
     color: ${colors.text.light};
-    ${fonts.sizes(16, 1.1)};
+    ${fonts.sizes('16px', 1.3)};
   }
   .item-name {
-    ${fonts.sizes(18, 1.1)} color: ${colors.brand.primary};
+    display: inline-block;
+    ${fonts.sizes('18px', 1.3)};
+    color: ${colors.brand.primary};
     font-weight: ${fonts.weight.bold};
-    margin: 0;
+    margin: 0 0 ${spacing.xsmall} 0;
   }
   .item-description {
-    ${fonts.sizes(14, 1.1)} margin: 0;
+    ${fonts.sizes('14px', 1.3)};
+    margin: 0;
+    color: ${colors.brand.text};
   }
 
   &.list {
@@ -57,7 +63,7 @@ const ListItemWrapper = styled.div`
     .item-image {
       flex: 1 1 25%;
       order: 3;
-      border-bottom: none;
+      border-bottom: 0;
 
       img {
         height: 90%;
@@ -80,6 +86,9 @@ const ListItemWrapper = styled.div`
     }
   }
   &.grid {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
     flex-basis: 25%;
   }
 `;

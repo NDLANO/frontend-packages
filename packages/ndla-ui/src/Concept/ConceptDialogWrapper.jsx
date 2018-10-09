@@ -30,7 +30,7 @@ const ConceptDialogWrapper = ({
 }) => {
   const licenseRights = getLicenseByAbbreviation(license).rights;
   return (
-    <Modal controllable isOpen onClose={closeCallback}>
+    <Modal controllable isOpen animation="subtle" onClose={closeCallback}>
       {onCloseModal => (
         <div {...classes('popup', modifiers)}>
           <button

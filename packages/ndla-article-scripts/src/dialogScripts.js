@@ -13,7 +13,7 @@ const closeDialog = dialog => {
 };
 
 export const addShowDialogClickListeners = () => {
-  forEachElement('[data-dialog-trigger-id]', el => {
+  forEachElement('.c-article [data-dialog-trigger-id]', el => {
     const target = el;
     const id = target.getAttribute('data-dialog-trigger-id');
 

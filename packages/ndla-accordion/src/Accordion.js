@@ -6,19 +6,19 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { ChevronRight } from 'ndla-icons/common';
 import { colors, spacing, fonts } from 'ndla-core';
 
-const AccordionWrapper = styled.div`
+export const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: ${spacing.normal} 0;
 `;
 
-const AccordionChildWrapper = styled.section`
+export const StyledAccordionPanel = styled.section`
   display: flex;
   overflow-y: auto;
   transition: opacity 200ms ease;
@@ -28,36 +28,41 @@ const AccordionChildWrapper = styled.section`
   padding-left: calc(${spacing.large} + ${spacing.small});
   padding-right: ${spacing.large};
   padding-bottom: ${spacing.large};
-  &.extraPadding {
-    padding-left: calc(${spacing.large} * 3);
-    padding-right: calc(${spacing.large} * 3);
-  }
+  max-height: auto;
   ${props =>
+    !props.isOpen &&
     css`
-      max-height: ${props.maxHeight ? `${props.maxHeight}px` : 'auto'};
-    `};
-  &.error {
-    border: 2px solid ${colors.support.redLight};
-    border-top: 0;
-    padding-left: calc(${spacing.large} + ${spacing.small} - 2px);
-    padding-right: calc(${spacing.large} - 2px);
-    padding-bottom: calc(${spacing.large} - 2px);
-  }
-  &.closed {
-    margin-bottom: ${spacing.xsmall};
-    padding: 0;
-    border: 0;
-    > div {
-      display: none;
+      margin-bottom: ${spacing.xsmall};
+      padding: 0;
+      border: 0;
       max-height: 0;
       opacity: 0;
-      margin-bottom: ${spacing.xsmall};
-    }
-  }
+    `};
+  ${props =>
+    props.hasError &&
+    props.isOpen &&
+    css`
+      border: 2px solid ${colors.support.redLight};
+      border-top: 0;
+      padding-left: calc(${spacing.large} + ${spacing.small} - 2px);
+      padding-right: calc(${spacing.large} - 2px);
+      padding-bottom: calc(${spacing.large} - 2px);
+    `};
 `;
 
-const AccordionTitleBar = styled.div`
-  background: #fff;
+export const AccordionPanel = ({ children, ...rest }) => (
+  <StyledAccordionPanel {...rest}>{children}</StyledAccordionPanel>
+);
+
+AccordionPanel.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  children: PropTypes.node.isRequired,
+  hasError: PropTypes.bool,
+  isOpen: PropTypes.bool,
+};
+
+export const StyledAccordionBar = styled.div`
+  background: ${colors.brand.light};
   padding: ${spacing.small} ${spacing.normal} ${spacing.small}
     calc(${spacing.xsmall} * 3);
   color: ${colors.brand.primary};
@@ -68,27 +73,38 @@ const AccordionTitleBar = styled.div`
   transition: color 100ms ease, background 100ms ease;
   .c-icon {
     transition: transform 100ms ease;
-    transform: rotate(90deg);
+    transform: rotate(0deg);
     margin-right: ${spacing.small};
   }
-  &.error {
-    border: 2px solid ${colors.support.redLight};
-    padding: calc(${spacing.small} - 2px) calc(${spacing.normal} - 2px)
-      calc(${spacing.small} - 2px) calc((${spacing.xsmall} * 3) - 2px);
-    &:not(.closed) {
+
+  ${props =>
+    props.isOpen &&
+    css`
+      .c-icon {
+        transform: rotate(90deg);
+      }
+      background: #fff;
+    `};
+
+  ${props =>
+    props.hasError &&
+    css`
+      border: 2px solid ${colors.support.redLight};
+      padding: calc(${spacing.small} - 2px) calc(${spacing.normal} - 2px)
+        calc(${spacing.small} - 2px) calc((${spacing.xsmall} * 3) - 2px);
+    `};
+
+  ${props =>
+    props.hasError &&
+    props.isOpen &&
+    css`
       border-bottom: 0;
       padding-bottom: ${spacing.normal};
-    }
-  }
-  &.closed {
-    .c-icon {
-      transform: rotate(0deg);
-    }
-    background: ${colors.brand.light};
-    &.error {
-      background: ${colors.support.redLight};
-    }
-  }
+    `};
+  ${props =>
+    props.hasError &&
+    !props.isOpen &&
+    `background: ${colors.support.redLight}`};
 `;
 
 const accordionButtonCss = css`
@@ -112,24 +128,51 @@ const accordionButtonCss = css`
   }
 `;
 
+export const AccordionBar = ({
+  ariaLabel,
+  children,
+  panelId,
+  hasError,
+  isOpen,
+  onClick,
+}) => (
+  <StyledAccordionBar isOpen={isOpen} hasError={hasError}>
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      aria-expanded={isOpen}
+      aria-controls={panelId}
+      onClick={onClick}
+      className={accordionButtonCss}>
+      <ChevronRight className="c-icon--medium" />
+      <span>{children}</span>
+    </button>
+  </StyledAccordionBar>
+);
+
+AccordionBar.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  panelId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  hasError: PropTypes.bool,
+  isOpen: PropTypes.bool,
+};
+
 class Accordion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      panelsOpen: props.panels
-        .map((panel, index) => (panel.open ? index : null))
-        .filter(isOpen => isOpen !== null),
+      panelsOpen: props.openIndexes,
     };
     this.togglePanel = this.togglePanel.bind(this);
   }
 
-  togglePanel(index, e) {
+  togglePanel(index) {
     const { panelsOpen } = this.state;
-    const { onlyOpenOne, controlledCallback } = this.props;
+    const { onlyOpenOne } = this.props;
 
-    if (controlledCallback) {
-      this.props.controlledCallback(index, e);
-    } else if (onlyOpenOne) {
+    if (onlyOpenOne) {
       this.setState({
         panelsOpen: panelsOpen.includes(index) ? [] : [index],
       });
@@ -147,74 +190,23 @@ class Accordion extends React.Component {
   }
 
   render() {
-    const { controlledCallback } = this.props;
-    console.log('accordion fixes', this.props.panels);
-    return (
-      <AccordionWrapper>
-        {this.props.panels.map((panel, index) => {
-          const expanded = controlledCallback
-            ? panel.open
-            : this.state.panelsOpen.includes(index);
-          const panelId = `${panel.title}-id`;
-          return (
-            <Fragment key={panel.title}>
-              <AccordionTitleBar
-                className={cx({
-                  closed: !expanded,
-                  error: panel.error,
-                })}>
-                <button
-                  type="button"
-                  aria-label={panel.title}
-                  aria-expanded={expanded}
-                  aria-controls={panelId}
-                  onClick={e => this.togglePanel(index, e)}
-                  className={accordionButtonCss}>
-                  <ChevronRight className="c-icon--medium" />
-                  <span>{panel.title}</span>
-                </button>
-              </AccordionTitleBar>
-              <AccordionChildWrapper
-                maxHeight={this.props.maxHeight}
-                className={cx({
-                  closed: !expanded,
-                  error: panel.error,
-                  extraPadding: panel.extraPadding,
-                })}
-                id={panelId}
-                aria-hidden={expanded}>
-                <div>{panel.children}</div>
-              </AccordionChildWrapper>
-            </Fragment>
-          );
-        })}
-      </AccordionWrapper>
-    );
+    return this.props.children({
+      openIndexes: this.state.panelsOpen,
+      handleItemClick: this.togglePanel,
+    });
   }
 }
 
 Accordion.propTypes = {
-  controlledCallback: PropTypes.func,
-  panels: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      children: PropTypes.node.isRequired,
-      open: (props, propName, componentName) => {
-        if (
-          typeof props.controlledCallback === 'function' &&
-          typeof props[propName] !== 'boolean'
-        ) {
-          return new Error(
-            `Invalid prop panels[].${propName} supplied to ${componentName}. Required if props.controlledCallback is function (controlled Accordion).`,
-          );
-        }
-        return null;
-      },
-      error: PropTypes.bool,
-    }),
-  ).isRequired,
+  children: PropTypes.func.isRequired,
   onlyOpenOne: PropTypes.bool,
-  maxHeight: PropTypes.number,
+  openIndexes: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ),
+};
+
+Accordion.defaultProps = {
+  openIndexes: [],
 };
 
 export default Accordion;

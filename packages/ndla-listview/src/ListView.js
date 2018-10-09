@@ -71,7 +71,7 @@ const SelectWrapper = styled.div`
 `;
 
 /* TODO: USE NDLA-FORM WHEN FORM IS OUT! */
-const Select = ({ children, label, value, onChange }) => (
+const Select = ({ children, label, value, id, onChange }) => (
   <SelectWrapper>
     <label htmlFor={id} className={cx('select-label')}>
       {label}
@@ -80,7 +80,8 @@ const Select = ({ children, label, value, onChange }) => (
       <select
         className={cx('select-input')}
         value={value}
-        onChange={onChange}>
+        onChange={onChange}
+        name={id}>
         {children}
       </select>
       <span className={cx('symbol')}>
@@ -93,7 +94,9 @@ const Select = ({ children, label, value, onChange }) => (
 Select.propTypes = {
   children: PropTypes.node.isRequired,
   label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 // import ListViewCSS from './listviewCSS';
@@ -226,13 +229,8 @@ class ListView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewStyle: props.viewStyle,
-      searchInput: '',
-      filters: props.activeFilters,
-      sortBy: props.sortBy,
       detailedItem: null,
     };
-    this.handleSortBy = this.handleSortBy.bind(this);
     this.handleSelectItem = this.handleSelectItem.bind(this);
   }
 
@@ -247,22 +245,6 @@ class ListView extends Component {
     return letters;
   }
 
-  handleChangeFilters(key, values) {
-    this.setState(prevState => {
-      const currentFilters = prevState.filters;
-      currentFilters[key] = values;
-      return {
-        filters: currentFilters,
-      };
-    });
-  }
-
-  handleSortBy(sortBy) {
-    this.setState({
-      sortBy,
-    });
-  }
-
   handleSelectItem(detailedItem) {
     this.setState({
       detailedItem,
@@ -272,105 +254,57 @@ class ListView extends Component {
   render() {
     const {
       items,
-      filters: useFilters,
       selectedLetter,
       selectedLetterCallback,
-      disableSortBy,
       disableSearch,
       disableViewOption,
+      onChangedViewStyle,
+      viewStyle,
+      filters,
+      sortBy,
+      searchValue,
+      onChangedSearchValue,
       t,
     } = this.props;
 
-    const { searchInput, filters, sortBy, detailedItem } = this.state;
+    const { detailedItem } = this.state;
 
-    let filteredItems = items;
-
-    // 1. Filter items on subjects
-    if (filters.subject && filters.subject.length) {
-      filteredItems = filteredItems.filter(item =>
-        item.subject.some(subject => filters.subject.includes(subject.value)),
-      );
-    }
-
-    // 2 Filter items on category
-    if (filters.category && filters.category.length) {
-      filteredItems = filteredItems.filter(item =>
-        filters.category.includes(item.category.value),
-      );
-    }
-
-    // 3. Filter with search (testing name, description and tags[])
-    if (searchInput.length > 0) {
-      const searchInputLowercase = searchInput.toLowerCase();
-      filteredItems = filteredItems.filter(
-        item =>
-          (item.tags &&
-            item.tags.some(
-              tag => tag.toLowerCase().indexOf(searchInputLowercase) !== -1,
-            )) ||
-          (item.description &&
-            item.description.toLowerCase().indexOf(searchInputLowercase) !==
-              -1) ||
-          item.name.toLowerCase().indexOf(searchInputLowercase) !== -1,
-      );
-    }
-
-    // 4. Sort filtered results
-    if (sortBy === 'title') {
-      filteredItems = filteredItems.sort(
-        (a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1),
-      );
-    } else if (sortBy === 'category') {
-      filteredItems = filteredItems.sort(
-        (a, b) =>
-          a.category.title.toLowerCase() > b.category.title.toLowerCase()
-            ? 1
-            : -1,
-      );
-    } else {
-      // TODO: Clarify, how do you sort an array of subjects?
-      filteredItems = filteredItems.sort(
-        (a, b) =>
-          a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()
-            ? 1
-            : -1,
-      );
-    }
-
-    const { viewStyle } = this.state;
     return (
       <ListViewWrapper>
-        {useFilters && (
+        {filters && (
           <div {...filterClasses('wrapper-multiple-filters')}>
-            {useFilters.map(filter => (
+            {filters.map(filter => (
               <FilterListPhone
                 key={filter.key}
                 label={filter.label}
                 options={filter.options}
                 alignedGroup
-                values={filters[filter.key]}
+                values={filter.filterValues}
                 messages={{
                   useFilter: t(`listview.filters.${filter.key}.useFilter`),
                   openFilter: t(`listview.filters.${filter.key}.openFilter`),
                   closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
                 }}
                 onChange={values => {
-                  this.handleChangeFilters(filter.key, values);
+                  filter.onChange(filter.key, values);
                 }}
               />
             ))}
           </div>
         )}
         <div className={cx('sorting')}>
-          {!sortBy && (
+          {sortBy && (
             <div className={cx('sortBy')}>
               <Select
                 label={sortBy.label}
                 value={sortBy.value}
-                onChange={sortBy.handleChange}>
+                id={sortBy.id}
+                onChange={sortBy.onChange}>
                 {sortBy.options.map(sortOption => (
-                  <option key={sortOption.value} value={sortOption.value}>{sortOption.title}</option>
-                )}
+                  <option key={sortOption.value} value={sortOption.value}>
+                    {sortOption.label}
+                  </option>
+                ))}
               </Select>
             </div>
           )}
@@ -382,10 +316,8 @@ class ListView extends Component {
                     {...searchFieldClasses('input', 'small')}
                     type="search"
                     placeholder="Søk i listevisning"
-                    value={searchInput}
-                    onChange={e =>
-                      this.setState({ searchInput: e.target.value })
-                    }
+                    value={searchValue}
+                    onChange={onChangedSearchValue}
                   />
                 </div>
               </div>
@@ -396,13 +328,13 @@ class ListView extends Component {
               <button
                 type="button"
                 className={cx('style-button', { active: viewStyle === 'list' })}
-                onClick={() => this.setState({ viewStyle: 'list' })}>
+                onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
                 <ListIcon />
               </button>
               <button
                 type="button"
                 className={cx('style-button', { active: viewStyle === 'grid' })}
-                onClick={() => this.setState({ viewStyle: 'grid' })}>
+                onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
                 <GridIcon />
               </button>
             </div>
@@ -433,7 +365,7 @@ class ListView extends Component {
 
         <div className={cx('content-wrapper')}>
           <div className={cx('content', { [viewStyle]: true })}>
-            {filteredItems.map(item => (
+            {items.map(item => (
               <ListItem
                 item={item}
                 key={item.id}
@@ -494,30 +426,40 @@ const filterShapes = PropTypes.shape({
 });
 
 const sortByShape = PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    options: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
-    }).isRequired,
-  });
+    }),
+  ).isRequired,
+});
 
 ListView.propTypes = {
   items: PropTypes.arrayOf(listItemShape).isRequired,
   filters: PropTypes.arrayOf(filterShapes),
-  activeFilters: PropTypes.shape({
-    subject: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    ),
-    category: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    ),
-  }),
   selectedLetterCallback: PropTypes.func,
   selectedLetter: PropTypes.string,
   viewStyle: PropTypes.oneOf(['grid', 'list']),
   viewStyleToggleable: PropTypes.bool,
   disableSearch: PropTypes.bool,
+  disableViewOption: PropTypes.bool,
+  onChangedViewStyle: (props, propName, componentName) => {
+    if (
+      props.disableViewOption !== true &&
+      typeof props[propName] !== 'function'
+    ) {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}. Must be a function when disableViewOption !== true.`,
+      );
+    }
+    return null;
+  },
+  onChangedSearchValue: PropTypes.func,
+  searchValue: PropTypes.string,
   sortBy: sortByShape,
   t: PropTypes.func.isRequired,
 };
@@ -525,7 +467,6 @@ ListView.propTypes = {
 ListView.defaultProps = {
   viewStyle: 'grid',
   selectedLetter: '',
-  activeFilters: {},
 };
 
 export default injectT(ListView);

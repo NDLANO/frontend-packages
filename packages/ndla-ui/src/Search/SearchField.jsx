@@ -29,7 +29,13 @@ const messagesShape = PropTypes.shape({
   contentTypeResultNoHit: PropTypes.string,
 });
 
-const SearchResult = ({ result, allResultUrl, resourceToLinkProps, t }) => (
+const SearchResult = ({
+  result,
+  allResultUrl,
+  resourceToLinkProps,
+  onNavigate,
+  t,
+}) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {t('searchPage.searchField.searchResultHeading')}
@@ -37,8 +43,10 @@ const SearchResult = ({ result, allResultUrl, resourceToLinkProps, t }) => (
     <div {...classes('search-result-content')}>
       {result.map(contentTypeResult => (
         <ContentTypeResult
+          onNavigate={onNavigate}
           contentTypeResult={contentTypeResult}
           resourceToLinkProps={resourceToLinkProps}
+          defaultCount={window.innerWidth > 980 ? 7 : 3}
           key={contentTypeResult.title}
           messages={{
             allResultLabel: t(
@@ -64,6 +72,7 @@ SearchResult.propTypes = {
   result: PropTypes.arrayOf(ContentTypeResultShape),
   resourceToLinkProps: PropTypes.func.isRequired,
   allResultUrl: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func,
   t: PropTypes.func.isRequired,
 };
 
@@ -109,6 +118,7 @@ class SearchField extends Component {
       resourceToLinkProps,
       small,
       autofocus,
+      onNavigate,
       t,
     } = this.props;
 
@@ -128,6 +138,7 @@ class SearchField extends Component {
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
           autofocus={autofocus}
+          onNavigate={onNavigate}
           t={t}
         />
       );
@@ -202,6 +213,7 @@ SearchField.propTypes = {
   onFilterRemove: PropTypes.func,
   small: PropTypes.bool,
   autofocus: PropTypes.bool,
+  onNavigate: PropTypes.func,
   t: PropTypes.func.isRequired,
 };
 

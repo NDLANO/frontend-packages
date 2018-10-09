@@ -8,14 +8,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'ndla-button';
 
 const ModalClose = ({ title, onClick, className }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={`c-button c-button--link ${className}`}>
+  <Button onClick={onClick} link className={className}>
     {title}
-  </button>
+  </Button>
 );
 
 ModalClose.propTypes = {

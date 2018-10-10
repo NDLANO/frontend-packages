@@ -447,15 +447,6 @@ TopicMenu.propTypes = {
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,
   defaultCount: PropTypes.number,
-  messages: PropTypes.shape({
-    subjectPage: PropTypes.string.isRequired,
-    learningResourcesHeading: PropTypes.string.isRequired,
-    back: PropTypes.string.isRequired,
-    contentTypeResultsShowMore: PropTypes.string.isRequired,
-    contentTypeResultsShowLess: PropTypes.string.isRequired,
-    contentTypeResultsNoHit: PropTypes.string.isRequired,
-    additionalTooltipLabel: PropTypes.string,
-  }),
   filterOptions: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,

@@ -13,7 +13,7 @@ const closeDialog = dialog => {
 };
 
 export const addShowDialogClickListeners = () => {
-  forEachElement('[data-dialog-trigger-id]', el => {
+  forEachElement('.c-article [data-dialog-trigger-id]', el => {
     const target = el;
     const id = target.getAttribute('data-dialog-trigger-id');
 
@@ -59,7 +59,7 @@ export const addShowDialogClickListeners = () => {
 };
 
 export const removeShowDialogClickListeners = () => {
-  forEachElement('[data-dialog-trigger-id]', el => {
+  forEachElement('.c-article [data-dialog-trigger-id]', el => {
     const target = el;
     target.onclick = undefined;
   });

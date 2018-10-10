@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
 import BEMHelper from 'react-bem-helper';
+import Tabs from 'ndla-tabs';
 import { spacing, fonts, colors, misc, breakpoints, mq } from 'ndla-core';
 import { injectT } from 'ndla-i18n';
 import {
-  FilterListPhone,
-  ConceptDialogWrapper,
-  ConceptDialogContent,
-  ConceptDialogImage,
-  ConceptDialogText,
-} from 'ndla-ui';
+  NotionDialogWrapper,
+  NotionDialogContent,
+  NotionDialogImage,
+  NotionDialogText,
+  NotionDialogTags,
+  NotionDialogLicenses,
+} from 'ndla-notion';
+import { FilterListPhone } from 'ndla-ui';
 
 import { ChevronDown } from 'ndla-icons/common';
 import { List as ListIcon, Grid as GridIcon } from 'ndla-icons/action';
@@ -27,19 +30,22 @@ const SelectWrapper = styled.div`
   .select-label {
     font-family: ${fonts.sans};
     font-weight: ${fonts.weight.semibold};
-    flex: 0 1 33%;
+    display: flex;
     ${fonts.sizes('16px', 1.3)};
+    margin-right: ${spacing.normal};
+    width: 120px;
   }
 
   .select-wrapper {
-    flex: 0 1 67%;
+    display: flex;
     border: 1px solid ${colors.brand.greyLight};
     border-radius: ${misc.borderRadius};
+    margin-right: ${spacing.small};
+    padding-right: ${spacing.large};
     position: relative;
   }
 
   .select-input {
-    // Strip input (the <select> element) of all styles and apply them to wrapper element instead. Also remove default arrow
     border: none;
     display: block;
     width: 100%;
@@ -47,11 +53,11 @@ const SelectWrapper = styled.div`
     background: transparent;
     padding: 0 ${spacing.normal};
     ${fonts.sizes('16px', 1.3)};
-    // Remove dropdown ndla-icons
     appearance: none;
     -moz-appearance: none;
     text-indent: 0;
     text-overflow: '';
+    margin: 0;
 
     &:hover {
       cursor: pointer;
@@ -104,8 +110,10 @@ const ListViewWrapper = styled.div`
   .sorting {
     display: none;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    > * {
+    justify-content: space-between;
+    .sorting-wrapper {
+      display: flex;
+      margin-right: calc(${spacing.large} * 2);
       &:not(:last-child) {
         margin-right: ${spacing.medium};
       }
@@ -114,11 +122,15 @@ const ListViewWrapper = styled.div`
       display: flex;
     }
   }
+  .content-wrapper {
+    margin-top: ${spacing.normal};
+  }
   .content {
     list-style: none;
 
     &.grid {
       display: flex;
+      flex-wrap: wrap;
       margin-left: -${spacing.small};
       margin-right: -${spacing.small};
     }
@@ -131,6 +143,9 @@ const ListViewWrapper = styled.div`
   }
   .list-style {
     display: flex;
+    > button:first-child {
+      margin-right: ${spacing.xsmall};
+    }
   }
 
   .alphabet {
@@ -140,6 +155,7 @@ const ListViewWrapper = styled.div`
     list-style: none;
     justify-content: space-between;
     height: 32px;
+    padding: 0;
     margin: ${spacing.normal} 0 ${spacing.normal} 0;
   }
 
@@ -227,7 +243,6 @@ const listItemShape = PropTypes.shape({
 
 const filterClasses = BEMHelper('c-filter');
 const searchFieldClasses = new BEMHelper('c-search-field');
-const alphabet = 'abcdefghijklmnopqrstuvxyzæøå';
 
 class ListView extends Component {
   constructor(props) {
@@ -236,17 +251,6 @@ class ListView extends Component {
       detailedItem: null,
     };
     this.handleSelectItem = this.handleSelectItem.bind(this);
-  }
-
-  getActiveLetters() {
-    const { items } = this.props;
-    const letters = {};
-    const len = items.length;
-    for (let i = 0; i < len; i += 1) {
-      const item = items[i];
-      letters[item.name.charAt(0).toLowerCase()] = true;
-    }
-    return letters;
   }
 
   handleSelectItem(detailedItem) {
@@ -268,6 +272,7 @@ class ListView extends Component {
       sortBy,
       searchValue,
       onChangedSearchValue,
+      alphabet,
       t,
     } = this.props;
 
@@ -297,34 +302,38 @@ class ListView extends Component {
           </div>
         )}
         <div className={cx('sorting')}>
-          {sortBy && (
-            <div className={cx('sortBy')}>
-              <Select
-                label={sortBy.label}
-                value={sortBy.value}
-                id={sortBy.id}
-                onChange={sortBy.onChange}>
-                {sortBy.options.map(sortOption => (
-                  <option key={sortOption.value} value={sortOption.value}>
-                    {sortOption.label}
-                  </option>
-                ))}
-              </Select>
-            </div>
-          )}
-          {!disableSearch && (
-            <div className={cx('search')}>
-              <div {...searchFieldClasses()}>
-                <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
-                  <input
-                    {...searchFieldClasses('input', 'small')}
-                    type="search"
-                    placeholder="Søk i listevisning"
-                    value={searchValue}
-                    onChange={onChangedSearchValue}
-                  />
+          {(sortBy || !disableSearch) && (
+            <div className={cx('sorting-wrapper')}>
+              {sortBy && (
+                <div className={cx('sortBy')}>
+                  <Select
+                    label={sortBy.label}
+                    value={sortBy.value}
+                    id={sortBy.id}
+                    onChange={sortBy.onChange}>
+                    {sortBy.options.map(sortOption => (
+                      <option key={sortOption.value} value={sortOption.value}>
+                        {sortOption.label}
+                      </option>
+                    ))}
+                  </Select>
                 </div>
-              </div>
+              )}
+              {!disableSearch && (
+                <div className={cx('search')}>
+                  <div {...searchFieldClasses()}>
+                    <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
+                      <input
+                        {...searchFieldClasses('input', 'small')}
+                        type="search"
+                        placeholder="Søk i listevisning"
+                        value={searchValue}
+                        onChange={onChangedSearchValue}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
           {!disableViewOption && (
@@ -346,13 +355,13 @@ class ListView extends Component {
 
           {viewStyle === 'list' && selectedLetterCallback ? (
             <ul className={cx('alphabet')}>
-              {alphabet.split('').map(letter => (
+              {Object.keys(alphabet).map(letter => (
                 <li key={`letter-${letter}`} className={cx('letter')}>
                   <button
                     type="button"
                     className={cx('letter-button', {
                       active: selectedLetter === letter,
-                      disabled: !this.getActiveLetters()[letter],
+                      disabled: !alphabet[letter],
                     })}
                     onClick={() =>
                       selectedLetter === letter
@@ -380,33 +389,45 @@ class ListView extends Component {
           </div>
         </div>
         {detailedItem && (
-          <ConceptDialogWrapper
+          <NotionDialogWrapper
             title={detailedItem.name}
             subtitle={detailedItem.category.title}
-            content={
-              <ConceptDialogContent>
-                {detailedItem.image ? (
-                  <ConceptDialogImage
-                    src={detailedItem.image}
-                    alt={detailedItem.description}
-                    wide
-                  />
-                ) : null}
-                <ConceptDialogText>
-                  {detailedItem.description}
-                </ConceptDialogText>
-              </ConceptDialogContent>
-            }
-            modifiers={['visible', 'listview']}
-            messages={{
-              close: 'Lukk',
-              ariaLabel: '',
-            }}
-            closeCallback={this.handleSelectItem}
-            license={detailedItem.license}
-            source={detailedItem.source}
-            tags={detailedItem.tags}
-          />
+            closeCallback={this.handleSelectItem}>
+            <Tabs
+              singleLine
+              tabs={[
+                {
+                  title: 'Begrep',
+                  content: (
+                    <Fragment>
+                      <NotionDialogContent>
+                        {detailedItem.image ? (
+                          <NotionDialogImage
+                            src={detailedItem.image}
+                            alt={detailedItem.description}
+                            wide
+                          />
+                        ) : null}
+                        <NotionDialogText>
+                          {detailedItem.longDescription}
+                        </NotionDialogText>
+                      </NotionDialogContent>
+                      <NotionDialogTags tags={detailedItem.tags} />
+                      <NotionDialogLicenses
+                        license={detailedItem.license}
+                        source={detailedItem.source}
+                        authors={detailedItem.authors}
+                      />
+                    </Fragment>
+                  ),
+                },
+                {
+                  title: 'Ordbok',
+                  content: <div>Innhold til ordbok her...</div>,
+                },
+              ]}
+            />
+          </NotionDialogWrapper>
         )}
       </ListViewWrapper>
     );
@@ -462,6 +483,7 @@ ListView.propTypes = {
     }
     return null;
   },
+  alphabet: PropTypes.objectOf(PropTypes.bool),
   onChangedSearchValue: PropTypes.func,
   searchValue: PropTypes.string,
   sortBy: sortByShape,

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
 
-import { spacing, fonts, colors, misc } from 'ndla-core';
+import { spacing, fonts, colors, misc, mq, breakpoints } from 'ndla-core';
 
 const ListItemWrapper = styled.div`
   padding: ${spacing.small};
@@ -16,14 +16,18 @@ const ListItemWrapper = styled.div`
     background: #fff;
     position: relative;
     height: 125px;
-    overflow: hidden;
     text-align: center;
     border-bottom: 1px solid ${colors.brand.light};
     margin-bottom: ${spacing.xsmall};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
-      height: 90%;
       width: auto;
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
     }
   }
   .item-category {
@@ -58,27 +62,23 @@ const ListItemWrapper = styled.div`
 
   &.list {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    border-bottom: 1px solid ${colors.brand.greyLighter};
 
     .item-image {
-      flex: 1 1 25%;
-      order: 3;
-      border-bottom: 0;
-
-      img {
-        height: 90%;
-        width: auto;
-      }
+      border: 1px solid ${colors.brand.greyLighter};
+      width: 125px;
+      padding: ${spacing.small};
+      margin-right: ${spacing.normal};
     }
 
     .item-description {
-      flex: 1 2 50%;
-      ${fonts.sizes(16, 1.1)} order: 2;
+      ${fonts.sizes('16px', 1.3)};
+      max-width: 500px;
     }
 
     .item-name {
-      flex: 1 1 25%;
-      order: 1;
+      max-width: 500px;
     }
 
     .item-subject {
@@ -89,7 +89,13 @@ const ListItemWrapper = styled.div`
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    flex-basis: 25%;
+    flex-basis: 50%;
+    ${mq.range({ from: breakpoints.tablet })} {
+      flex-basis: 33.33%;
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      flex-basis: 25%;
+    }
   }
 `;
 
@@ -132,6 +138,17 @@ class ListItem extends Component {
     }
   }
 
+  renderItem() {
+    const { item } = this.props;
+    return (
+      <Fragment>
+        <span className={cx('item-subject')}>{item.subject[0].title}</span>
+        <h3 className={cx('item-name')}>{item.name}</h3>
+        <p className={cx('item-description')}>{item.description}</p>
+      </Fragment>
+    );
+  }
+
   render() {
     const { item, viewStyle } = this.props;
     return (
@@ -145,9 +162,11 @@ class ListItem extends Component {
           {item.image ? <img src={item.image} alt={item.description} /> : null}
           <span className={cx('item-category')}>{item.category.title}</span>
         </div>
-        <span className={cx('item-subject')}>{item.subject[0].title}</span>
-        <h3 className={cx('item-name')}>{item.name}</h3>
-        <p className={cx('item-description')}>{item.description}</p>
+        {viewStyle === 'grid' ? (
+          this.renderItem()
+        ) : (
+          <div>{this.renderItem()}</div>
+        )}
       </ListItemWrapper>
     );
   }

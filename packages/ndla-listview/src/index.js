@@ -1,7 +1,7 @@
 import ListView from './ListView';
-import ListViewDialog from './ListViewDialog';
 import ListItem from './ListItem';
+import activeAlphabet from './activeAlphabet';
 
-export { ListViewDialog, ListItem };
+export { ListItem, activeAlphabet };
 
 export default ListView;

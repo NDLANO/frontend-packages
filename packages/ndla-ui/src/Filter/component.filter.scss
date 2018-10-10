@@ -32,6 +32,7 @@
   }
 
   &__wrapper-multiple-filters {
+    margin-bottom: $spacing;
     > * {
       > .c-filter__label {
         width: 120px;
@@ -153,7 +154,6 @@
 
   &__label {
     @include font-size(16px, 22px);
-
 
     @include mq(tablet) {
       margin: 0 0 $spacing--small;

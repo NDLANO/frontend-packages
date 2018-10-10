@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Concept } from 'ndla-ui';
+import Notion from 'ndla-notion';
 
 const classes = BEMHelper('c-subject-concepts');
 
@@ -44,7 +44,7 @@ class SubjectConcept extends Component {
     const { concept } = this.props;
     return (
       <li {...classes('item')}>
-        <Concept
+        <Notion
           dialogRef={el => {
             this.conceptDialog = el;
           }}
@@ -68,7 +68,7 @@ class SubjectConcept extends Component {
             }}>
             {concept.title}
           </span>
-        </Concept>
+        </Notion>
       </li>
     );
   }

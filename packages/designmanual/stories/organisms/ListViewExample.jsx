@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListView from 'ndla-listview';
+import ListView, { activeAlphabet } from 'ndla-listview';
 import { mockListView } from '../../dummydata';
 
 class ListViewExample extends Component {
@@ -58,7 +58,8 @@ class ListViewExample extends Component {
   }
 
   filterItems() {
-    const { filters, sortByValue, selectedLetter, searchValue } = this.state;
+    const { filters, sortByValue, searchValue } = this.state;
+
     let filteredItems = mockListView.items;
     // 1. Filter items on subjects
     if (filters.subject && filters.subject.length) {
@@ -123,10 +124,16 @@ class ListViewExample extends Component {
       searchValue,
     } = this.state;
 
+    const filteredItems = this.filterItems();
+
+    console.log(activeAlphabet);
+    const alphabet = activeAlphabet(filteredItems);
+
     return (
       <div>
         <ListView
           items={this.filterItems()}
+          alphabet={alphabet}
           detailedItem={detailedItem}
           selectedLetter={selectedLetter}
           selectCallback={this.setDetailedItem}

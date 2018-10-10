@@ -7,13 +7,14 @@
  */
 
 import React, { Component } from 'react';
-import { Concept, OneColumn, LayoutItem, Image } from 'ndla-ui';
+import { OneColumn, LayoutItem, Image } from 'ndla-ui';
+import Notion from 'ndla-notion';
 import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
-class ConceptExample extends Component {
+class NotionExample extends Component {
   componentDidMount() {
     addShowConceptDefinitionClickListeners();
   }
@@ -37,7 +38,7 @@ class ConceptExample extends Component {
                 <p>
                   <i>
                     Gjennom{' '}
-                    <Concept
+                    <Notion
                       content="Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i seg, eller internaliserer, samfunnets normer og atferdsmønstre med andre ord at de blir som de andre i samfunnet."
                       authors={['Gary Waters']}
                       source="snl.no"
@@ -49,7 +50,7 @@ class ConceptExample extends Component {
                       license="CC-BY-ND-4.0"
                       id={1}>
                       sosialisering
-                    </Concept>{' '}
+                    </Notion>{' '}
                     lærer menneskene å fungere i et samfunn og får kjennskap til
                     de regler og verdier som det forventes at man skal følge.
                     Sosialisering er dermed den prosessen som gjør at vi tar til
@@ -83,7 +84,7 @@ class ConceptExample extends Component {
                 <p>
                   For å forsterke innlæringen av normer følges de opp av
                   reaksjoner eller sanksjoner.{' '}
-                  <Concept
+                  <Notion
                     content="Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å oppfatte sanksjoner først og fremst som negative reaksjoner rettet mot uønsket atferd eller avvik. Et eksempel er foreldrene som nekter ungen lørdagsgodteri (sanksjon) fordi han eller hun ikke spiser opp grønnsakene sine (uønsket atferd)."
                     authors={[]}
                     title="sanksjon"
@@ -94,10 +95,10 @@ class ConceptExample extends Component {
                     license="CC-BY-ND-4.0"
                     id={2}>
                     Sanksjonene
-                  </Concept>{' '}
+                  </Notion>{' '}
                   kan både være positive og negative. Ønsket adferd belønnes,
                   men uønsket adferd straffes. Når en person har gjort{' '}
-                  <Concept
+                  <Notion
                     content="Norm, særskilt sosiale normer, er en sosiologisk betegnelse for intersubjektive, allment delte og ofte underforståtte regler og forventninger på oppførsel som gjelder for et mindre sosialt fellesskap og for samfunnet i sin helhet."
                     authors={[]}
                     title="Norm"
@@ -108,7 +109,7 @@ class ConceptExample extends Component {
                     license="CC-BY-ND-4.0"
                     id={3}>
                     normene
-                  </Concept>{' '}
+                  </Notion>{' '}
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
                 </p>
@@ -153,7 +154,7 @@ class ConceptExample extends Component {
                   urettferdige, skaper utrygghet. I verste fall kan utydelige
                   normer og uregelmessig belønning medføre psykiske lidelser
                   fordi de gjør personen utrygg og{' '}
-                  <Concept
+                  <Notion
                     content="De signalene andre mennesker sender ut, kan for et individ oppleves som forvirrende og i mange tilfeller også motstridende. Det kalles normforvirring. Denne normforvirringen er en naturlig del av sosialiseringsprosessen, og noe vi må lære oss å forholde oss til. En vanlig konflikt er at venner ønsker at du skal spille internettspill eller bli med på kino, mens foreldrene ber deg skru av PC-en for å gjøre husarbeid og lekser."
                     authors={[]}
                     title="usikker"
@@ -164,7 +165,7 @@ class ConceptExample extends Component {
                     license="CC-BY-ND-4.0"
                     id={4}>
                     usikker
-                  </Concept>.
+                  </Notion>.
                 </p>
               </div>
             </section>
@@ -175,4 +176,4 @@ class ConceptExample extends Component {
   }
 }
 
-export default ConceptExample;
+export default NotionExample;

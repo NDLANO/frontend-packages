@@ -87,6 +87,28 @@ const modalAnimations = `
       transform: translate3d(0, -52px, 0);
     }
   }
+
+  @keyframes modal-subtleIn {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -13px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes modal-subtleOut {
+    0% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(0, -13px, 0);
+    }
+  }
 `;
 
 const ModalWrapper = styled.div`
@@ -124,9 +146,9 @@ const ModalWrapper = styled.div`
       }
     }
     &.subtle {
-      animation-name: fadeOut;
+      animation-name: modal-subtleOut;
       &.animateIn {
-        animation-name: fadeIn;
+        animation-name: modal-subtleIn;
       }
     }
     // 2. Modal size modifiers
@@ -217,14 +239,36 @@ const ModalWrapper = styled.div`
   }
   .modal-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
+    h1 {
+      margin: 0;
+      flex-grow: 1;
+      font-weight: ${fonts.weight.bold};
+      ${fonts.sizes('22px', 1.2)};
+      color: ${colors.text.primary};
+      small {
+        padding-left: ${spacing.small};
+        margin-left: ${spacing.xsmall};
+        border-left: 1px solid ${colors.brand.greyLight};
+        ${fonts.sizes('20px', 1.2)};
+        font-weight: ${fonts.weight.normal};
+      }
+    }
+    hr {
+      flex-basis: 100%;
+    }
     padding: ${spacing.normal};
     &.no-bottom-padding {
       padding-bottom: 0;
     }
     + .modal-body {
       padding-top: 0;
+    }
+    hr {
+      display: block;
+      height: 2px;
+      background-color: ${colors.brand.primary};
     }
     &.white {
       background: #fff;
@@ -278,6 +322,9 @@ const ModalWrapper = styled.div`
       ${spacing.normal};
     &.no-padding {
       padding: 0 !important;
+    }
+    &.no-padding-buttom {
+      padding-bottom: 0 !important;
     }
     &.no-side-padding-mobile {
       ${mq.range({ until: breakpoints.mobileWide })} {

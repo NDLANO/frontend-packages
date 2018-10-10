@@ -30,7 +30,7 @@ import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
-import ConceptExample from './organisms/ConceptExample';
+import NotionExample from './organisms/NotionExample';
 import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
@@ -197,7 +197,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Begrepsforklaring', () => (
     <Center>
-      <ConceptExample />
+      <NotionExample />
     </Center>
   ))
   .add('Emnebeskrivelse', () => (
@@ -752,8 +752,8 @@ storiesOf('Sammensatte moduler', module)
   .add('Listevisning', () => (
     <PageContainer>
       <StoryIntro title="Listevisning" />
-      <LayoutItem layout="center">
+      <Center>
         <ListViewExample />
-      </LayoutItem>
+      </Center>
     </PageContainer>
   ));

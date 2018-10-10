@@ -1,20 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import styled, { cx } from 'react-emotion';
 import { fonts, spacing, colors, misc } from 'ndla-core';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { ForwardArrow } from 'ndla-icons/action';
-import { LicenseByline } from 'ndla-ui';
-
-const classes = new BEMHelper({
-  name: 'concept',
-  prefix: 'c-',
-});
-const sourceClasses = new BEMHelper({
-  name: 'source-list',
-  prefix: 'c-',
-});
 
 const NotionDialogContentWrapper = styled.div`
   padding-bottom: ${spacing.normal};
@@ -155,9 +142,8 @@ const NotionDialog = ({ title, children, id, subtitle, ariaHidden }) => {
       <button type="button" data-notion-close>
         Lukk
       </button>
-      <h1 {...classes('title')}>
-        {title}{' '}
-        {subtitle ? <span {...classes('subtitle')}>{subtitle}</span> : null}
+      <h1>
+        {title} {subtitle ? <small>{subtitle}</small> : null}
       </h1>
       {children}
     </NotionDialogStyledWrapper>

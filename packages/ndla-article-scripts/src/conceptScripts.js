@@ -10,6 +10,28 @@ import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
+const closeAllVisibleNotions = returnFocusToParent => {
+  forEachElement('[data-notion]', item => {
+    const id = item.getAttribute('id');
+    const popup = document.querySelector(`[data-concept-id='${id}']`);
+    if (popup.classList.contains('visible')) {
+      popup.classList.remove('visible');
+      popup.setAttribute('aria-hidden', true);
+      if (returnFocusToParent) {
+        const openBtn = item.querySelector('[data-notion-link]');
+        openBtn.focus();
+      }
+    }
+  });
+};
+
+const ESCKeyListener = e => {
+  if (e.key === 'Escape') {
+    closeAllVisibleNotions(true);
+    window.removeEventListener('keyup', ESCKeyListener, true);
+  }
+};
+
 export const addShowConceptDefinitionClickListeners = () => {
   forEachElement('[data-notion]', item => {
     const id = item.getAttribute('id');
@@ -20,12 +42,12 @@ export const addShowConceptDefinitionClickListeners = () => {
     openBtn.onclick = () => {
       const wasHidden = !popup.classList.contains('visible');
 
-      forEachElement('.visible', visibleItem => {
-        visibleItem.classList.remove('visible');
-      });
+      closeAllVisibleNotions();
+      window.removeEventListener('keyup', ESCKeyListener, true);
 
       if (wasHidden) {
         popup.classList.add('visible');
+        popup.setAttribute('aria-hidden', false);
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom =
           openBtn.getBoundingClientRect().bottom +
@@ -70,13 +92,17 @@ export const addShowConceptDefinitionClickListeners = () => {
             offset,
           });
         }
+        window.addEventListener('keyup', ESCKeyListener, true);
+        closeBtn.focus();
       }
-      popup.setAttribute('aria-hidden', !wasHidden);
     };
 
     closeBtn.onclick = () => {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
+      console.log('removed keylistener');
+      window.removeEventListener('keyup', ESCKeyListener, true);
+      openBtn.focus();
     };
   });
 };

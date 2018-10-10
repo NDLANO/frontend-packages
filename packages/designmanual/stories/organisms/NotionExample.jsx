@@ -10,11 +10,8 @@ import React, { Component, Fragment } from 'react';
 import { OneColumn, LayoutItem, Image } from 'ndla-ui';
 import Notion, {
   NotionDialogContent,
-  NotionDialogImage,
   NotionDialogText,
-  NotionDialogTags,
   NotionDialogLicenses,
-  NotionDialogWrapper,
 } from 'ndla-notion';
 import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
 
@@ -97,6 +94,28 @@ class NotionExample extends Component {
                   forventninger om at du skal håndhilse når du kommer inn til et
                   jobbintervju, eller at det er uhøflig å svare på
                   telefonsamtaler mens intervjuet pågår.
+                  <Notion
+                    id="NotionId_2"
+                    ariaLabel="Vis begrep beskrivelse"
+                    content={
+                      <Fragment>
+                        <NotionDialogContent>
+                          <NotionDialogText>
+                            Sosialisering, betegnelse for de sosiale prosessene
+                            som fører til at individer tar opp i seg, eller
+                            internaliserer, samfunnets normer og atferdsmønstre
+                            med andre ord at de blir som de andre i samfunnet.
+                          </NotionDialogText>
+                        </NotionDialogContent>
+                        <NotionDialogLicenses
+                          license="CC-BY-ND-4.0"
+                          source="snl.no"
+                          authors={['Gary Waters']}
+                        />
+                      </Fragment>
+                    }>
+                    Sosialisering
+                  </Notion>{' '}
                 </p>
                 <p>
                   For å forsterke innlæringen av normer følges de opp av

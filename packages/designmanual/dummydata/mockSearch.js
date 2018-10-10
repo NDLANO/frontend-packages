@@ -226,6 +226,40 @@ export const contentTypeResults = [
         path: '#6',
         name: 'Fagstoff 6',
       },
+      {
+        path: '#7',
+        name: 'Fagstoff 7',
+        additional: true,
+      },
+      {
+        path: '#8',
+        name: 'Fagstoff 8',
+      },
+      {
+        path: '#9',
+        name: 'Fagstoff 9',
+      },
+      {
+        path: '#10',
+        name: 'Fagstoff 10',
+        additional: true,
+      },
+      {
+        path: '#11',
+        name: 'Fagstoff 11',
+      },
+      {
+        path: '#12',
+        name: 'Fagstoff 12',
+      },
+      {
+        path: '#13',
+        name: 'Fagstoff 13',
+      },
+      {
+        path: '#14',
+        name: 'Fagstoff 14',
+      },
     ],
   },
   {

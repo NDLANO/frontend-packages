@@ -60,6 +60,7 @@ class MastheadWithTopicMenu extends Component {
       filterMenuValues: ['Medieuttrykk'],
     };
     this.searchFieldRef = React.createRef();
+    this.closeAllModals = [null, null];
   }
 
   renderSearchField() {
@@ -88,6 +89,18 @@ class MastheadWithTopicMenu extends Component {
         onFilterRemove={() => {}}
         messages={{
           searchFieldTitle: 'Søk',
+        }}
+        onNavigate={() => {
+          try {
+            this.closeAllModals[1]();
+          } catch (e) {
+            console.log('no search modal to close');
+          }
+          try {
+            this.closeAllModals[0]();
+          } catch (e) {
+            console.log('no menu modal to close');
+          }
         }}
         allResultUrl="#"
         searchResult={searchFieldResults}
@@ -118,19 +131,24 @@ class MastheadWithTopicMenu extends Component {
               <Search />
             </button>
           }>
-          {onClose => (
-            <Fragment>
-              <div className="c-search-field__overlay-top" />
-              <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
-                <div {...searchFieldClasses('header-container')}>
-                  {this.renderSearchField()}
-                  <Button stripped onClick={onClose}>
-                    <Cross className="c-icon--medium" />
-                  </Button>
+          {onClose => {
+            this.closeAllModals[1] = onClose;
+            return (
+              <Fragment>
+                <div className="c-search-field__overlay-top" />
+                <div
+                  ref={this.searchFieldRef}
+                  {...searchFieldClasses('header')}>
+                  <div {...searchFieldClasses('header-container')}>
+                    {this.renderSearchField()}
+                    <Button stripped onClick={onClose}>
+                      <Cross className="c-icon--medium" />
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </Fragment>
-          )}
+              </Fragment>
+            );
+          }}
         </Modal>
       );
     }
@@ -158,60 +176,63 @@ class MastheadWithTopicMenu extends Component {
                 expandedSubtopicsId: [],
               });
             }}>
-            {onClose => (
-              <TopicMenu
-                close={onClose}
-                isBeta={this.props.beta}
-                searchFieldComponent={searchButtonView}
-                subjectTitle="Mediefag"
-                toFrontpage={() =>
-                  '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
-                }
-                toSubject={() => '#'}
-                toTopic={() => '#'}
-                topics={topicMenu}
-                filterOptions={[
-                  {
-                    title: 'Medieuttrykk',
-                    value: 'Medieuttrykk',
-                  },
-                  {
-                    title: 'Mediesamfunnet',
-                    value: 'Mediesamfunnet',
-                  },
-                ]}
-                filterValues={this.state.filterMenuValues}
-                competenceGoals={
-                  <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
-                }
-                onFilterClick={values => {
-                  this.setState({
-                    filterMenuValues: values,
-                  });
-                }}
-                resourceToLinkProps={() => {}}
-                expandedTopicId={this.state.expandedTopicId}
-                expandedSubtopicsId={this.state.expandedSubtopicsId}
-                onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
-                  let { expandedSubtopicsId } = this.state;
-                  if (expandedSubtopicsId.length > currentIndex) {
-                    expandedSubtopicsId = expandedSubtopicsId.slice(
-                      0,
-                      currentIndex,
-                    );
+            {onClose => {
+              this.closeAllModals[0] = onClose;
+              return (
+                <TopicMenu
+                  close={onClose}
+                  isBeta={this.props.beta}
+                  searchFieldComponent={searchButtonView}
+                  subjectTitle="Mediefag"
+                  toFrontpage={() =>
+                    '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
                   }
-                  if (subtopicId) {
-                    expandedSubtopicsId.push(subtopicId);
-                  } else {
-                    expandedSubtopicsId.pop();
+                  toSubject={() => '#'}
+                  toTopic={() => '#'}
+                  topics={topicMenu}
+                  filterOptions={[
+                    {
+                      title: 'Medieuttrykk',
+                      value: 'Medieuttrykk',
+                    },
+                    {
+                      title: 'Mediesamfunnet',
+                      value: 'Mediesamfunnet',
+                    },
+                  ]}
+                  filterValues={this.state.filterMenuValues}
+                  competenceGoals={
+                    <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
                   }
-                  this.setState({
-                    expandedTopicId,
-                    expandedSubtopicsId,
-                  });
-                }}
-              />
-            )}
+                  onFilterClick={values => {
+                    this.setState({
+                      filterMenuValues: values,
+                    });
+                  }}
+                  resourceToLinkProps={() => {}}
+                  expandedTopicId={this.state.expandedTopicId}
+                  expandedSubtopicsId={this.state.expandedSubtopicsId}
+                  onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
+                    let { expandedSubtopicsId } = this.state;
+                    if (expandedSubtopicsId.length > currentIndex) {
+                      expandedSubtopicsId = expandedSubtopicsId.slice(
+                        0,
+                        currentIndex,
+                      );
+                    }
+                    if (subtopicId) {
+                      expandedSubtopicsId.push(subtopicId);
+                    } else {
+                      expandedSubtopicsId.pop();
+                    }
+                    this.setState({
+                      expandedTopicId,
+                      expandedSubtopicsId,
+                    });
+                  }}
+                />
+              );
+            }}
           </Modal>
           <DisplayOnPageYOffset yOffsetMin={150}>
             <BreadcrumbBlock />

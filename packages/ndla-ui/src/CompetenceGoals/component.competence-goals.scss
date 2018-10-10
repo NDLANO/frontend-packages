@@ -1,9 +1,4 @@
 .c-competence-goals {
-
-  a:not([class]):visited {
-    color: $brand-color;
-  }
-
   height: 100%;
 
   &__dialog-wrapper {
@@ -61,7 +56,7 @@
     margin-bottom: $spacing;
     padding-top: $spacing;
 
-     @include mq(tabletWide) {
+    @include mq(tabletWide) {
       padding-top: $spacing--small;
     }
 
@@ -142,7 +137,8 @@
     }
   }
 
-  &--menu, &--search {
+  &--menu,
+  &--search {
     padding: $spacing--small $spacing $spacing--small $spacing--small;
     @include mq($until: mobileWide) {
       padding: 0;
@@ -164,7 +160,8 @@
     }
   }
   @include mq($until: desktop) {
-    &--menu, &--search {
+    &--menu,
+    &--search {
       .c-competence-goals {
         &__topic--expandable {
           padding-left: 0;

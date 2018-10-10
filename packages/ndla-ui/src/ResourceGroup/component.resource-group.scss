@@ -45,7 +45,7 @@
 
   li {
     background-color: rgba($brand-grey--light, 0.4);
-    border: 1px solid rgba(0,0,0,0);
+    border: 1px solid rgba(0, 0, 0, 0);
     .c-topic-resource__link {
       min-height: 62px;
       @include mq(tablet) {
@@ -53,9 +53,6 @@
       }
       @include mq(desktop) {
         min-height: 70px;
-      }
-      &:visited {
-        color: $brand-grey-dark;
       }
     }
     .c-topic-resource__icon {

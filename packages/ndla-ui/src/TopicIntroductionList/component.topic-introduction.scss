@@ -48,7 +48,7 @@
     @include mq(tablet) {
       padding: 0 $spacing $spacing--medium 0;
     }
-    border-bottom: 2px solid $brand-grey--lighter;
+    border-bottom: 1px solid $brand-grey--lighter;
     list-style: none;
     background-color: transparent;
     @include inuit-font-size(16px, 26px);
@@ -90,8 +90,5 @@
     color: $brand-color;
     margin-bottom: $spacing--small;
     margin-top: 0;
-    a:visited {
-      color: $brand-color !important;
-    }
   }
 }

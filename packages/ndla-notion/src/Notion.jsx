@@ -9,9 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css, cx } from 'react-emotion';
-import BEMHelper from 'react-bem-helper';
 import { createUniversalPortal } from 'ndla-util';
-import { colors, spacing, fonts, mq, breakpoints } from 'ndla-core';
+import { colors } from 'ndla-core';
 import NotionDialog from './NotionDialog';
 
 const NotionCSS = css`
@@ -19,7 +18,7 @@ const NotionCSS = css`
   .link {
     background: none;
     border: none;
-    font-family: $font-serif;
+    font-family: inherit;
     line-height: 1.3em;
     padding: 0;
     text-decoration: none;
@@ -32,11 +31,7 @@ const NotionCSS = css`
       content: '';
       display: inline-block;
       position: absolute;
-      margin: auto;
-      margin-top: 21px;
-      @include mq(tablet) {
-        margin-top: 24px;
-      }
+      margin: 24px auto 0;
       left: 0;
       right: 0;
       width: 0;
@@ -59,21 +54,19 @@ const NotionCSS = css`
   }
 `;
 
-const classes = new BEMHelper({
-  name: 'concept',
-  prefix: 'c-',
-});
-
-const Notion = ({ id, messages, children, ...rest }) => (
-  <span className={NotionCSS} id={id}>
+const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
+  <span className={NotionCSS} id={id} data-notion>
     <button
       type="button"
-      aria-label={messages.ariaLabel}
-      className={cx('link')}>
+      aria-label={ariaLabel}
+      className={cx('link')}
+      data-notion-link>
       {children}
     </button>
     {createUniversalPortal(
-      <NotionDialog {...rest} id={id} messages={messages} />,
+      <NotionDialog {...rest} id={id}>
+        {content}
+      </NotionDialog>,
       'body',
     )}
   </span>
@@ -82,19 +75,9 @@ const Notion = ({ id, messages, children, ...rest }) => (
 Notion.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.string),
-  source: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  messages: PropTypes.shape({
-    ariaLabel: PropTypes.string.isRequired,
-    close: PropTypes.string.isRequired,
-  }),
-  license: PropTypes.string,
-  children: PropTypes.string,
-  linkTo: PropTypes.shape({
-    label: PropTypes.string,
-    href: PropTypes.string,
-  }),
+  ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType(['string', 'node']),
+  content: PropTypes.node.isRequired,
 };
 
 export default Notion;

@@ -1,20 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
 import BEMHelper from 'react-bem-helper';
-import Tabs from 'ndla-tabs';
 import { spacing, fonts, colors, misc, breakpoints, mq } from 'ndla-core';
 import { injectT } from 'ndla-i18n';
-import {
-  NotionDialogWrapper,
-  NotionDialogContent,
-  NotionDialogImage,
-  NotionDialogText,
-  NotionDialogTags,
-  NotionDialogLicenses,
-} from 'ndla-notion';
 import { FilterListPhone } from 'ndla-ui';
-
 import { ChevronDown } from 'ndla-icons/common';
 import { List as ListIcon, Grid as GridIcon } from 'ndla-icons/action';
 
@@ -105,7 +95,6 @@ Select.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-// import ListViewCSS from './listviewCSS';
 const ListViewWrapper = styled.div`
   .sorting {
     display: none;
@@ -244,195 +233,135 @@ const listItemShape = PropTypes.shape({
 const filterClasses = BEMHelper('c-filter');
 const searchFieldClasses = new BEMHelper('c-search-field');
 
-class ListView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      detailedItem: null,
-    };
-    this.handleSelectItem = this.handleSelectItem.bind(this);
-  }
-
-  handleSelectItem(detailedItem) {
-    this.setState({
-      detailedItem,
-    });
-  }
-
-  render() {
-    const {
-      items,
-      selectedLetter,
-      selectedLetterCallback,
-      disableSearch,
-      disableViewOption,
-      onChangedViewStyle,
-      viewStyle,
-      filters,
-      sortBy,
-      searchValue,
-      onChangedSearchValue,
-      alphabet,
-      t,
-    } = this.props;
-
-    const { detailedItem } = this.state;
-
-    return (
-      <ListViewWrapper>
-        {filters && (
-          <div {...filterClasses('wrapper-multiple-filters')}>
-            {filters.map(filter => (
-              <FilterListPhone
-                key={filter.key}
-                label={filter.label}
-                options={filter.options}
-                alignedGroup
-                values={filter.filterValues}
-                messages={{
-                  useFilter: t(`listview.filters.${filter.key}.useFilter`),
-                  openFilter: t(`listview.filters.${filter.key}.openFilter`),
-                  closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
-                }}
-                onChange={values => {
-                  filter.onChange(filter.key, values);
-                }}
-              />
-            ))}
-          </div>
-        )}
-        <div className={cx('sorting')}>
-          {(sortBy || !disableSearch) && (
-            <div className={cx('sorting-wrapper')}>
-              {sortBy && (
-                <div className={cx('sortBy')}>
-                  <Select
-                    label={sortBy.label}
-                    value={sortBy.value}
-                    id={sortBy.id}
-                    onChange={sortBy.onChange}>
-                    {sortBy.options.map(sortOption => (
-                      <option key={sortOption.value} value={sortOption.value}>
-                        {sortOption.label}
-                      </option>
-                    ))}
-                  </Select>
-                </div>
-              )}
-              {!disableSearch && (
-                <div className={cx('search')}>
-                  <div {...searchFieldClasses()}>
-                    <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
-                      <input
-                        {...searchFieldClasses('input', 'small')}
-                        type="search"
-                        placeholder="Søk i listevisning"
-                        value={searchValue}
-                        onChange={onChangedSearchValue}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
+const ListView = ({
+  items,
+  selectedLetter,
+  selectedLetterCallback,
+  disableSearch,
+  disableViewOption,
+  onChangedViewStyle,
+  viewStyle,
+  filters,
+  sortBy,
+  searchValue,
+  onChangedSearchValue,
+  alphabet,
+  onSelectItem,
+  selectedItem,
+  t,
+}) => (
+  <ListViewWrapper>
+    {filters && (
+      <div {...filterClasses('wrapper-multiple-filters')}>
+        {filters.map(filter => (
+          <FilterListPhone
+            key={filter.key}
+            label={filter.label}
+            options={filter.options}
+            alignedGroup
+            values={filter.filterValues}
+            messages={{
+              useFilter: t(`listview.filters.${filter.key}.useFilter`),
+              openFilter: t(`listview.filters.${filter.key}.openFilter`),
+              closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
+            }}
+            onChange={values => {
+              filter.onChange(filter.key, values);
+            }}
+          />
+        ))}
+      </div>
+    )}
+    <div className={cx('sorting')}>
+      {(sortBy || !disableSearch) && (
+        <div className={cx('sorting-wrapper')}>
+          {sortBy && (
+            <div className={cx('sortBy')}>
+              <Select
+                label={sortBy.label}
+                value={sortBy.value}
+                id={sortBy.id}
+                onChange={sortBy.onChange}>
+                {sortBy.options.map(sortOption => (
+                  <option key={sortOption.value} value={sortOption.value}>
+                    {sortOption.label}
+                  </option>
+                ))}
+              </Select>
             </div>
           )}
-          {!disableViewOption && (
-            <div className={cx('list-style')}>
-              <button
-                type="button"
-                className={cx('style-button', { active: viewStyle === 'list' })}
-                onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
-                <ListIcon />
-              </button>
-              <button
-                type="button"
-                className={cx('style-button', { active: viewStyle === 'grid' })}
-                onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
-                <GridIcon />
-              </button>
+          {!disableSearch && (
+            <div className={cx('search')}>
+              <div {...searchFieldClasses()}>
+                <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
+                  <input
+                    {...searchFieldClasses('input', 'small')}
+                    type="search"
+                    placeholder="Søk i listevisning"
+                    value={searchValue}
+                    onChange={onChangedSearchValue}
+                  />
+                </div>
+              </div>
             </div>
           )}
-
-          {viewStyle === 'list' && selectedLetterCallback ? (
-            <ul className={cx('alphabet')}>
-              {Object.keys(alphabet).map(letter => (
-                <li key={`letter-${letter}`} className={cx('letter')}>
-                  <button
-                    type="button"
-                    className={cx('letter-button', {
-                      active: selectedLetter === letter,
-                      disabled: !alphabet[letter],
-                    })}
-                    onClick={() =>
-                      selectedLetter === letter
-                        ? selectedLetterCallback('')
-                        : selectedLetterCallback(letter)
-                    }>
-                    {letter}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : null}
         </div>
-
-        <div className={cx('content-wrapper')}>
-          <div className={cx('content', { [viewStyle]: true })}>
-            {items.map(item => (
-              <ListItem
-                item={item}
-                key={item.id}
-                clickCallback={() => this.handleSelectItem(item)}
-                viewStyle={viewStyle}
-              />
-            ))}
-          </div>
+      )}
+      {!disableViewOption && (
+        <div className={cx('list-style')}>
+          <button
+            type="button"
+            className={cx('style-button', { active: viewStyle === 'list' })}
+            onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
+            <ListIcon />
+          </button>
+          <button
+            type="button"
+            className={cx('style-button', { active: viewStyle === 'grid' })}
+            onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
+            <GridIcon />
+          </button>
         </div>
-        {detailedItem && (
-          <NotionDialogWrapper
-            title={detailedItem.name}
-            subtitle={detailedItem.category.title}
-            closeCallback={this.handleSelectItem}>
-            <Tabs
-              singleLine
-              tabs={[
-                {
-                  title: 'Begrep',
-                  content: (
-                    <Fragment>
-                      <NotionDialogContent>
-                        {detailedItem.image ? (
-                          <NotionDialogImage
-                            src={detailedItem.image}
-                            alt={detailedItem.description}
-                            wide
-                          />
-                        ) : null}
-                        <NotionDialogText>
-                          {detailedItem.longDescription}
-                        </NotionDialogText>
-                      </NotionDialogContent>
-                      <NotionDialogTags tags={detailedItem.tags} />
-                      <NotionDialogLicenses
-                        license={detailedItem.license}
-                        source={detailedItem.source}
-                        authors={detailedItem.authors}
-                      />
-                    </Fragment>
-                  ),
-                },
-                {
-                  title: 'Ordbok',
-                  content: <div>Innhold til ordbok her...</div>,
-                },
-              ]}
-            />
-          </NotionDialogWrapper>
-        )}
-      </ListViewWrapper>
-    );
-  }
-}
+      )}
+
+      {viewStyle === 'list' && selectedLetterCallback ? (
+        <ul className={cx('alphabet')}>
+          {Object.keys(alphabet).map(letter => (
+            <li key={`letter-${letter}`} className={cx('letter')}>
+              <button
+                type="button"
+                className={cx('letter-button', {
+                  active: selectedLetter === letter,
+                  disabled: !alphabet[letter],
+                })}
+                onClick={() =>
+                  selectedLetter === letter
+                    ? selectedLetterCallback('')
+                    : selectedLetterCallback(letter)
+                }>
+                {letter}
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+
+    <div className={cx('content-wrapper')}>
+      <div className={cx('content', { [viewStyle]: true })}>
+        {items.map(item => (
+          <ListItem
+            item={item}
+            key={item.id}
+            clickCallback={() => onSelectItem(item)}
+            viewStyle={viewStyle}
+          />
+        ))}
+      </div>
+    </div>
+    {selectedItem}
+  </ListViewWrapper>
+);
 
 const filterShapes = PropTypes.shape({
   options: PropTypes.arrayOf(
@@ -487,6 +416,8 @@ ListView.propTypes = {
   onChangedSearchValue: PropTypes.func,
   searchValue: PropTypes.string,
   sortBy: sortByShape,
+  onSelectItem: PropTypes.func.isRequired,
+  selectedItem: PropTypes.node,
   t: PropTypes.func.isRequired,
 };
 

@@ -1,6 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import ListView, { activeAlphabet } from 'ndla-listview';
+import Tabs from 'ndla-tabs';
+import {
+  NotionDialogContent,
+  NotionDialogImage,
+  NotionDialogText,
+  NotionDialogTags,
+  NotionDialogLicenses,
+  NotionDialogWrapper,
+} from 'ndla-notion';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
+import Button from 'ndla-button';
+import { injectT } from 'ndla-i18n';
 import { mockListView } from '../../dummydata';
+import LicenseBox from '../article/LicenseBox';
 
 class ListViewExample extends Component {
   constructor(props) {
@@ -19,6 +33,7 @@ class ListViewExample extends Component {
     this.handleChangeFilters = this.handleChangeFilters.bind(this);
     this.handleChangedViewStyle = this.handleChangedViewStyle.bind(this);
     this.handleChangeSearchValue = this.handleChangeSearchValue.bind(this);
+    this.handleSelectItem = this.handleSelectItem.bind(this);
   }
 
   setDetailedItem(item) {
@@ -54,6 +69,12 @@ class ListViewExample extends Component {
   handleChangedViewStyle({ viewStyle }) {
     this.setState({
       viewStyle,
+    });
+  }
+
+  handleSelectItem(selectedItem) {
+    this.setState({
+      selectedItem,
     });
   }
 
@@ -115,6 +136,85 @@ class ListViewExample extends Component {
     return filteredItems;
   }
 
+  filterOnSelectedLetter(filteredItems) {
+    const { selectedLetter } = this.state;
+    if (selectedLetter) {
+      return filteredItems.filter(
+        item => item.name.toLowerCase().substr(0, 1) === selectedLetter,
+      );
+    }
+    return filteredItems;
+  }
+
+  renderSelectedItem() {
+    const { selectedItem } = this.state;
+
+    return selectedItem ? (
+      <NotionDialogWrapper
+        title={selectedItem.name}
+        subtitle={selectedItem.category.title}
+        closeCallback={() => this.handleSelectItem()}>
+        <Tabs
+          singleLine
+          tabs={[
+            {
+              title: 'Begrep',
+              content: (
+                <Fragment>
+                  <NotionDialogContent>
+                    {selectedItem.image ? (
+                      <NotionDialogImage
+                        src={selectedItem.image}
+                        alt={selectedItem.description}
+                        wide
+                      />
+                    ) : null}
+                    <NotionDialogText>
+                      {selectedItem.longDescription}
+                    </NotionDialogText>
+                  </NotionDialogContent>
+                  <NotionDialogTags tags={selectedItem.tags} />
+                  <NotionDialogLicenses
+                    license={selectedItem.license}
+                    source={selectedItem.source}
+                    authors={selectedItem.authors}
+                    licenseBox={
+                      <Modal
+                        activateButton={
+                          <Button link>
+                            {this.props.t('article.useContent')}
+                          </Button>
+                        }
+                        size="medium">
+                        {onClose => (
+                          <Fragment>
+                            <ModalHeader modifier="no-bottom-padding">
+                              <ModalCloseButton
+                                onClick={onClose}
+                                title="lukk"
+                              />
+                            </ModalHeader>
+                            <ModalBody>
+                              <LicenseBox />
+                            </ModalBody>
+                          </Fragment>
+                        )}
+                      </Modal>
+                    }
+                  />
+                </Fragment>
+              ),
+            },
+            {
+              title: 'Ordbok',
+              content: <div>Innhold til ordbok her...</div>,
+            },
+          ]}
+        />
+      </NotionDialogWrapper>
+    ) : null;
+  }
+
   render() {
     const {
       detailedItem,
@@ -125,14 +225,12 @@ class ListViewExample extends Component {
     } = this.state;
 
     const filteredItems = this.filterItems();
-
-    console.log(activeAlphabet);
     const alphabet = activeAlphabet(filteredItems);
 
     return (
       <div>
         <ListView
-          items={this.filterItems()}
+          items={this.filterOnSelectedLetter(filteredItems)}
           alphabet={alphabet}
           detailedItem={detailedItem}
           selectedLetter={selectedLetter}
@@ -142,6 +240,8 @@ class ListViewExample extends Component {
           viewStyle={viewStyle}
           searchValue={searchValue}
           onChangedSearchValue={this.handleChangeSearchValue}
+          onSelectItem={this.handleSelectItem}
+          selectedItem={this.renderSelectedItem()}
           sortBy={{
             onChange: this.handleChangeSortBy,
             value: sortByValue,
@@ -195,4 +295,8 @@ class ListViewExample extends Component {
   }
 }
 
-export default ListViewExample;
+ListViewExample.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default injectT(ListViewExample);

@@ -11,21 +11,21 @@ import jump from 'jump.js';
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
 export const addShowConceptDefinitionClickListeners = () => {
-  forEachElement('.c-concept__item', item => {
+  forEachElement('[data-notion]', item => {
     const id = item.getAttribute('id');
     const popup = document.querySelector(`[data-concept-id='${id}']`);
-    const openBtn = item.querySelector('.c-concept__link');
-    const closeBtn = popup.querySelector('.c-concept__close');
+    const openBtn = item.querySelector('[data-notion-link]');
+    const closeBtn = popup.querySelector('[data-notion-close]');
 
     openBtn.onclick = () => {
-      const wasHidden = !popup.classList.contains('c-concept__popup--visible');
+      const wasHidden = !popup.classList.contains('visible');
 
-      forEachElement('.c-concept__popup--visible', visibleItem => {
-        visibleItem.classList.remove('c-concept__popup--visible');
+      forEachElement('.visible', visibleItem => {
+        visibleItem.classList.remove('visible');
       });
 
       if (wasHidden) {
-        popup.classList.add('c-concept__popup--visible');
+        popup.classList.add('visible');
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom =
           openBtn.getBoundingClientRect().bottom +
@@ -75,7 +75,7 @@ export const addShowConceptDefinitionClickListeners = () => {
     };
 
     closeBtn.onclick = () => {
-      popup.classList.remove('c-concept__popup--visible');
+      popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
     };
   });

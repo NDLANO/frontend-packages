@@ -45,6 +45,8 @@ class NotionExample extends Component {
                     <Notion
                       id="NotionId_1"
                       ariaLabel="Vis begrep beskrivelse"
+                      title="Sosialisering"
+                      subTitle="forklaring"
                       content={
                         <Fragment>
                           <NotionDialogContent>

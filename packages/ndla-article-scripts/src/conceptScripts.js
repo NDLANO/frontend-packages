@@ -100,7 +100,6 @@ export const addShowConceptDefinitionClickListeners = () => {
     closeBtn.onclick = () => {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
-      console.log('removed keylistener');
       window.removeEventListener('keyup', ESCKeyListener, true);
       openBtn.focus();
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
-import { fonts, spacing, colors, misc } from 'ndla-core';
+import { fonts, spacing, colors, misc, breakpoints, mq } from 'ndla-core';
 
 const NotionDialogContentWrapper = styled.div`
   padding-bottom: ${spacing.normal};
@@ -95,13 +95,46 @@ NotionDialogImage.propTypes = {
   src: PropTypes.string.isRequired,
 };
 
+const NotionHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  border-bottom: 2px solid ${colors.brand.tertiary};
+  h1 {
+    margin: 0;
+    flex-grow: 1;
+    font-weight: ${fonts.weight.bold};
+    ${fonts.sizes('22px', 1.2)};
+    color: ${colors.text.primary};
+    small {
+      padding-left: ${spacing.small};
+      margin-left: ${spacing.xsmall};
+      border-left: 1px solid ${colors.brand.greyLight};
+      ${fonts.sizes('20px', 1.2)};
+      font-weight: ${fonts.weight.normal};
+    }
+  }
+`;
+
 export const NotionDialogStyledWrapper = styled.div`
+  @keyframes animateIn {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -13px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
   display: none;
   position: absolute;
   width: 90%;
   left: 5%;
   z-index: 1;
-  @include mq($until: mobileWide) {
+  animation-name: animateIn;
+  animation-duration: 300ms;
+  ${mq.range({ until: breakpoints.mobileWide })} {
     left: 0;
     right: 0;
     top: 0 !important;
@@ -111,20 +144,20 @@ export const NotionDialogStyledWrapper = styled.div`
     overflow-y: scroll;
     z-index: 9999;
   }
-  @include mq($from: tablet) {
+  ${mq.range({ from: breakpoints.tablet })} {
     max-width: 500px;
     left: 50%;
     margin-left: -250px;
   }
-  @include mq($from: desktop) {
+  ${mq.range({ from: breakpoints.desktop })} {
     max-width: 720px;
     margin-left: -360px;
     left: 50%;
   }
-  box-shadow: 0 0 30px rgba($black, 0.2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  background: $white;
-  padding: $spacing;
+  background: #fff;
+  padding: ${spacing.normal};
   &.visible {
     display: block;
     opacity: 1;
@@ -139,12 +172,14 @@ const NotionDialog = ({ title, children, id, subtitle, ariaHidden }) => {
       data-concept-id={id}
       aria-labelledby={id}
       aria-describedby={id}>
-      <button type="button" data-notion-close>
-        Lukk
-      </button>
-      <h1>
-        {title} {subtitle ? <small>{subtitle}</small> : null}
-      </h1>
+      <NotionHeader>
+        <h1>
+          {title} {subtitle ? <small>{subtitle}</small> : null}
+        </h1>
+        <button type="button" data-notion-close>
+          Lukk
+        </button>
+      </NotionHeader>
       {children}
     </NotionDialogStyledWrapper>
   );

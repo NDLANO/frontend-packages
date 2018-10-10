@@ -108,6 +108,7 @@ class SearchField extends Component {
       onSearch,
       resourceToLinkProps,
       small,
+      autofocus,
       t,
     } = this.props;
 
@@ -126,6 +127,7 @@ class SearchField extends Component {
           searchString={value}
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
+          autofocus={autofocus}
           t={t}
         />
       );
@@ -199,6 +201,7 @@ SearchField.propTypes = {
   resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
   small: PropTypes.bool,
+  autofocus: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 

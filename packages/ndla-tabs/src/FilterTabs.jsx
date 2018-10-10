@@ -35,8 +35,8 @@ class FilterTabs extends Component {
     this.checkTabSizes();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.options !== this.state.options) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options !== this.state.options) {
       this.tabWidths = null;
       // It's fine: https://reactjs.org/docs/react-component.html#componentdidupdate
       // eslint-disable-next-line react/no-did-update-set-state

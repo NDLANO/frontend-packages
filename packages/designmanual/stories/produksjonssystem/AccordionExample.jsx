@@ -38,20 +38,16 @@ class AccordionExample extends Component {
       <ComponentInfo
         reactCode={`
     <Accordion openIndexes={[0]}>
-      {({ openIndexes, handleItemClick }) => (
+      {({ getBarProps }) => (
         <AccordionWrapper>
           {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
             <React.Fragment key={item}>
               <AccordionBar
-                panelId={index}
-                ariaLabel={\`Panel \${index + 1}\`}
-                onClick={() => handleItemClick(index)}
-                isOpen={openIndexes.includes(index)}>
+                {...getBarProps(index)}
+                ariaLabel={\`Panel \${index + 1}\`}>
                 Panel {index + 1}
               </AccordionBar>
-              <AccordionPanel
-                id={index}
-                isOpen={openIndexes.includes(index)}>
+              <AccordionPanel {...getPanelProps(index)}>
                 <div>
                   <p>{item}</p>
                 </div>
@@ -85,20 +81,16 @@ class AccordionExample extends Component {
         status={2}>
         <h2>Eksempel</h2>
         <Accordion openIndexes={[0]}>
-          {({ openIndexes, handleItemClick }) => (
+          {({ getPanelProps, getBarProps }) => (
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
                 <React.Fragment key={item}>
                   <AccordionBar
-                    panelId={`panel-${index}`}
-                    ariaLabel={`Panel ${index + 1}`}
-                    onClick={() => handleItemClick(index)}
-                    isOpen={openIndexes.includes(index)}>
+                    {...getBarProps(`panel-${index}`)}
+                    ariaLabel={`Panel ${index + 1}`}>
                     Panel {index + 1}
                   </AccordionBar>
-                  <AccordionPanel
-                    id={`panel-${index}`}
-                    isOpen={openIndexes.includes(index)}>
+                  <AccordionPanel {...getPanelProps(`panel-${index}`)}>
                     <div>
                       <p>{item}</p>
                     </div>
@@ -110,20 +102,16 @@ class AccordionExample extends Component {
         </Accordion>
         <h2>Eksempel 2, kun en tillatt åpen om gangen</h2>
         <Accordion single>
-          {({ openIndexes, handleItemClick }) => (
+          {({ getPanelProps, getBarProps }) => (
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
                 <React.Fragment key={item}>
                   <AccordionBar
-                    panelId={`panel-${index}`}
-                    ariaLabel={`Panel ${index + 1}`}
-                    onClick={() => handleItemClick(index)}
-                    isOpen={openIndexes.includes(index)}>
+                    {...getBarProps(`panel-${index}`)}
+                    ariaLabel={`Panel ${index + 1}`}>
                     Panel {index + 1}
                   </AccordionBar>
-                  <AccordionPanel
-                    id={`panel-${index}`}
-                    isOpen={openIndexes.includes(index)}>
+                  <AccordionPanel {...getPanelProps(`panel-${index}`)}>
                     <p>{item}</p>
                   </AccordionPanel>
                 </React.Fragment>

@@ -21,36 +21,45 @@ export class Accordion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      panelsOpen: props.openIndexes,
+      openIndexes: props.openIndexes,
     };
     this.togglePanel = this.togglePanel.bind(this);
   }
 
   togglePanel(index) {
-    const { panelsOpen } = this.state;
+    const { openIndexes } = this.state;
     const { single } = this.props;
 
     if (single) {
       this.setState({
-        panelsOpen: panelsOpen.includes(index) ? [] : [index],
+        openIndexes: openIndexes.includes(index) ? [] : [index],
       });
-    } else if (panelsOpen.includes(index)) {
-      panelsOpen.splice(panelsOpen.indexOf(index), 1);
+    } else if (openIndexes.includes(index)) {
+      openIndexes.splice(openIndexes.indexOf(index), 1);
       this.setState({
-        panelsOpen,
+        openIndexes,
       });
     } else {
-      panelsOpen.push(index);
+      openIndexes.push(index);
       this.setState({
-        panelsOpen,
+        openIndexes,
       });
     }
   }
 
   render() {
     return this.props.children({
-      openIndexes: this.state.panelsOpen,
+      openIndexes: this.state.openIndexes,
       handleItemClick: this.togglePanel,
+      getBarProps: panelId => ({
+        panelId,
+        isOpen: this.state.openIndexes.includes(panelId),
+        onClick: () => this.togglePanel(panelId),
+      }),
+      getPanelProps: panelId => ({
+        id: panelId,
+        isOpen: this.state.openIndexes.includes(panelId),
+      }),
     });
   }
 }

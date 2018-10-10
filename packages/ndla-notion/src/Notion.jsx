@@ -19,19 +19,20 @@ const NotionCSS = css`
     background: none;
     border: none;
     font-family: inherit;
-    line-height: 1.3em;
-    padding: 0;
+    font-style: inherit;
+    line-height: 1em;
+    padding: 0 0 4px 0;
+    margin-bottom: -4px;
     text-decoration: none;
     color: #000;
-    border-bottom: 1px solid ${colors.brand.primary};
-    transition: border 0.2s ease-out;
+    border-bottom: 1px solid ${colors.brand.tertiary};
     position: relative;
     cursor: pointer;
     &:after {
       content: '';
       display: inline-block;
       position: absolute;
-      margin: 24px auto 0;
+      margin: calc(1em + 4px) auto 0;
       left: 0;
       right: 0;
       width: 0;
@@ -39,16 +40,14 @@ const NotionCSS = css`
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
       border-top: 5px solid ${colors.brand.primary};
-      transition: border 0.2s ease-out;
+      transition: transform 0.1s ease;
     }
     &:hover,
     &:focus {
-      border-bottom: 1px solid ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
       outline: none;
       &:after {
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid ${colors.brand.primary};
+        transform: scale(1.7) translateY(1px);
       }
     }
   }

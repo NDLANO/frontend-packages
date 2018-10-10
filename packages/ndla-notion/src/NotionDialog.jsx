@@ -114,6 +114,11 @@ const NotionHeader = styled.div`
       font-weight: ${fonts.weight.normal};
     }
   }
+  button {
+    border: none;
+    background: none;
+    color: ${colors.brand.primary};
+  }
 `;
 
 export const NotionDialogStyledWrapper = styled.div`

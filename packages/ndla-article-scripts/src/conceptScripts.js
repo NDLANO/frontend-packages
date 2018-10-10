@@ -94,6 +94,21 @@ export const addShowConceptDefinitionClickListeners = () => {
         }
         window.addEventListener('keyup', ESCKeyListener, true);
         closeBtn.focus();
+        // Add Tab exit listener with a hijack of keydown
+        const focusableElements = popup.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        );
+        focusableElements[focusableElements.length - 1].addEventListener(
+          'keydown',
+          e => {
+            if (e.key === 'Tab') {
+              e.preventDefault();
+              openBtn.focus();
+              closeAllVisibleNotions();
+            }
+          },
+          true,
+        );
       }
     };
 

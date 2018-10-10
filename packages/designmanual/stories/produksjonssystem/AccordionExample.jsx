@@ -44,7 +44,7 @@ class AccordionExample extends Component {
             <React.Fragment key={item}>
               <AccordionBar
                 panelId={index}
-                ariaTitle={\`Panel \${index + 1}\`}
+                ariaLabel={\`Panel \${index + 1}\`}
                 onClick={() => handleItemClick(index)}
                 isOpen={openIndexes.includes(index)}>
                 Panel {index + 1}
@@ -91,7 +91,7 @@ class AccordionExample extends Component {
                 <React.Fragment key={item}>
                   <AccordionBar
                     panelId={`panel-${index}`}
-                    ariaTitle={`Panel ${index + 1}`}
+                    ariaLabel={`Panel ${index + 1}`}
                     onClick={() => handleItemClick(index)}
                     isOpen={openIndexes.includes(index)}>
                     Panel {index + 1}
@@ -116,7 +116,7 @@ class AccordionExample extends Component {
                 <React.Fragment key={item}>
                   <AccordionBar
                     panelId={`panel-${index}`}
-                    ariaTitle={`Panel ${index + 1}`}
+                    ariaLabel={`Panel ${index + 1}`}
                     onClick={() => handleItemClick(index)}
                     isOpen={openIndexes.includes(index)}>
                     Panel {index + 1}

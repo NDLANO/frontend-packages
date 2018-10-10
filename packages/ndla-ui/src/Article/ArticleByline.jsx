@@ -165,7 +165,7 @@ ArticleByline.propTypes = {
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      shortName: PropTypes.string.isRequired,
+      shortName: PropTypes.string,
       title: PropTypes.string,
       phone: PropTypes.string,
       email: PropTypes.string,

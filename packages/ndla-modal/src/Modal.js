@@ -8,6 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import em from 'polished/lib/helpers/em';
 import styled, { cx } from 'react-emotion';
 import {
   noScroll,
@@ -162,11 +163,11 @@ const ModalWrapper = styled.div`
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     }
     &.large {
-      max-width: 970px;
-      width: 970px;
+      max-width: ${em('970px')};
+      width: ${em('970px')};
       max-height: 85vh;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      ${mq.range({ until: '970px' })} {
+      ${mq.range({ until: em('970px') })} {
         box-shadow: none;
         width: 100vw;
         height: 100vw;
@@ -175,11 +176,11 @@ const ModalWrapper = styled.div`
       }
     }
     &.medium {
-      max-width: 790px;
-      width: 790px;
+      max-width: ${em('790px')};
+      width: ${em('790px')};
       max-height: 85vh;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      ${mq.range({ until: '790px' })} {
+      ${mq.range({ until: em('790px') })} {
         box-shadow: none;
         height: 100vh;
         width: 100vw;
@@ -195,8 +196,8 @@ const ModalWrapper = styled.div`
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
         width: 90%;
         max-height: 85vh;
-        max-width: 613px;
-        min-width: 613px;
+        max-width: ${em('613px')};
+        min-width: ${em('613px')};
       }
     }
     &.medium,

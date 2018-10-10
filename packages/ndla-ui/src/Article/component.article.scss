@@ -31,53 +31,53 @@
   }
   p {
     @include chinese() {
-      @include font-size(20px, 32px);
+      @include font-size(20px, 35px);
     }
   }
 
   @include contentList() {
     @include chinese() {
-      @include font-size(20px, 32px);
+      @include font-size(20px, 35px);
     }
   }
 
   @include chinese() {
     @include contentList() {
-      @include font-size(20px, 32px);
+      @include font-size(22px, 35px);
     }
 
     p {
-      @include font-size(20px, 32px);
+      @include font-size(22px, 35px);
     }
   }
 
   @include mq(tablet) {
-    @include font-size(19px, 31px);
+    @include font-size(20px, 35px);
 
     p {
       @include chinese() {
-        @include font-size(20px, 32px);
+        @include font-size(22px, 35px);
       }
     }
 
     > section > p {
       &:not([class]) {
-        margin-bottom: 31px;
+        margin-bottom: 35px;
       }
     }
 
     @include contentList() {
       @include chinese() {
-        @include font-size(20px, 32px);
+        @include font-size(22px, 35px);
       }
     }
 
     @include chinese() {
       @include contentList() {
-        @include font-size(20px, 32px);
+        @include font-size(22px, 35px);
       }
       p {
-        @include font-size(20px, 32px);
+        @include font-size(22px, 35px);
       }
     }
 
@@ -100,11 +100,6 @@
   p {
     margin-top: 0;
   }
-
-  a:not([class]):visited {
-    color: $link-visited;
-  }
-
 }
 .c-article--clean {
   margin-top: $spacing;

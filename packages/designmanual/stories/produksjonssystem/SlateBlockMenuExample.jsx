@@ -141,7 +141,7 @@ class SlateBlockMenuExample extends Component {
           actions={actions}
           onToggleOpen={this.onToggleOpen}
           clickItem={data => {
-            console.log(data);
+            console.log(data); // eslint-disable-line no-console
           }}
         />
       </div>

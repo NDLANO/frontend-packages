@@ -11,8 +11,8 @@ export default {
   },
   sizes: (fontSize, lineHeightFactor) =>
     lineHeightFactor
-      ? `font-size: ${parseInt(fontSize, 10)}px; line-height: ${Math.ceil(
-          lineHeightFactor * parseInt(fontSize, 10),
+      ? `font-size: ${fontSize}; line-height: ${Math.ceil(
+          parseFloat(lineHeightFactor) * parseInt(fontSize, 10),
         )}px;`
       : `font-size: ${fontSize};`,
 };

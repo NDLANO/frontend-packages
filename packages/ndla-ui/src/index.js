@@ -49,7 +49,6 @@ export {
   SubjectLinks,
   SubjectArchive,
   SubjectCarousel,
-  SubjectConcepts,
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectSectionTitle,

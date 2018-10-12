@@ -72,10 +72,10 @@ const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
 );
 
 Notion.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   title: PropTypes.string.isRequired,
   ariaLabel: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType(['string', 'node']),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   content: PropTypes.node.isRequired,
 };
 

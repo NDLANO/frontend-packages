@@ -154,78 +154,53 @@ class ListViewExample extends Component {
         title={selectedItem.name}
         subTitle={selectedItem.category.title}
         closeCallback={() => this.handleSelectItem()}>
-        <Tabs
-          singleLine
-          tabs={[
-            {
-              title: 'Begrep',
-              content: (
+        <NotionDialogContent>
+          {selectedItem.image ? (
+            <NotionDialogImage
+              src={selectedItem.image}
+              alt={selectedItem.description}
+            />
+          ) : null}
+          <NotionDialogText>{selectedItem.longDescription}</NotionDialogText>
+        </NotionDialogContent>
+        <NotionDialogTags tags={selectedItem.tags} />
+        <NotionDialogLicenses
+          license={selectedItem.license}
+          source={selectedItem.source}
+          authors={selectedItem.authors}
+          licenseBox={
+            <Modal
+              activateButton={
+                <Button link>{this.props.t('article.useContent')}</Button>
+              }
+              size="medium">
+              {onClose => (
                 <Fragment>
-                  <NotionDialogContent>
-                    {selectedItem.image ? (
-                      <NotionDialogImage
-                        src={selectedItem.image}
-                        alt={selectedItem.description}
+                  <ModalHeader modifier="no-bottom-padding">
+                    <ModalCloseButton onClick={onClose} title="lukk" />
+                  </ModalHeader>
+                  <ModalBody>
+                    <Fragment>
+                      <h1>{this.props.t('license.heading')}</h1>
+                      <Tabs
+                        singleLine
+                        tabs={[
+                          {
+                            title: this.props.t('license.tabs.text'),
+                            content: <TextContent />,
+                          },
+                          {
+                            title: this.props.t('license.tabs.images'),
+                            content: <ImageContent />,
+                          },
+                        ]}
                       />
-                    ) : null}
-                    <NotionDialogText>
-                      {selectedItem.longDescription}
-                    </NotionDialogText>
-                  </NotionDialogContent>
-                  <NotionDialogTags tags={selectedItem.tags} />
-                  <NotionDialogLicenses
-                    license={selectedItem.license}
-                    source={selectedItem.source}
-                    authors={selectedItem.authors}
-                    licenseBox={
-                      <Modal
-                        activateButton={
-                          <Button link>
-                            {this.props.t('article.useContent')}
-                          </Button>
-                        }
-                        size="medium">
-                        {onClose => (
-                          <Fragment>
-                            <ModalHeader modifier="no-bottom-padding">
-                              <ModalCloseButton
-                                onClick={onClose}
-                                title="lukk"
-                              />
-                            </ModalHeader>
-                            <ModalBody>
-                              <Fragment>
-                                <h1>{this.props.t('license.heading')}</h1>
-                                <Tabs
-                                  singleLine
-                                  tabs={[
-                                    {
-                                      title: this.props.t('license.tabs.text'),
-                                      content: <TextContent />,
-                                    },
-                                    {
-                                      title: this.props.t(
-                                        'license.tabs.images',
-                                      ),
-                                      content: <ImageContent />,
-                                    },
-                                  ]}
-                                />
-                              </Fragment>
-                            </ModalBody>
-                          </Fragment>
-                        )}
-                      </Modal>
-                    }
-                  />
+                    </Fragment>
+                  </ModalBody>
                 </Fragment>
-              ),
-            },
-            {
-              title: 'Ordbok',
-              content: <div>Innhold til ordbok her...</div>,
-            },
-          ]}
+              )}
+            </Modal>
+          }
         />
       </NotionDialogWrapper>
     ) : null;

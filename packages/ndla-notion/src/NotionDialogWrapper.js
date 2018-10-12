@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import { spacing } from 'ndla-core';
 import Modal from 'ndla-modal';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';

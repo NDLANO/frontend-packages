@@ -430,6 +430,9 @@ const messages = {
       },
     },
   },
+  notions: {
+    closeNotion: 'Lukk',
+  },
 };
 
 export default messages;

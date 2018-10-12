@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { injectT } from 'ndla-i18n';
 import { spacing, colors, fonts, misc } from 'ndla-core';
 
 const NotionHeaderWrapper = styled.div`
@@ -37,22 +38,22 @@ const NotionHeaderWrapper = styled.div`
   }
 `;
 
-const NotionHeader = ({ title, subTitle, onClose }) => (
+const NotionHeader = injectT(({ title, subTitle, onClose, t }) => (
   <NotionHeaderWrapper>
     <h1>
       {title} {subTitle ? <small>{subTitle}</small> : null}
     </h1>
     {onClose ? (
       <button type="button" onClick={onClose}>
-        Lukk
+        {t('notions.closeNotion')}
       </button>
     ) : (
       <button type="button" data-notion-close>
-        Lukk
+        {t('notions.closeNotion')}
       </button>
     )}
   </NotionHeaderWrapper>
-);
+));
 
 NotionHeader.propTypes = {
   title: PropTypes.string.isRequired,

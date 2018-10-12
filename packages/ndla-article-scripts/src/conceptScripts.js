@@ -29,6 +29,29 @@ const ESCKeyListener = e => {
   if (e.key === 'Escape') {
     closeAllVisibleNotions(true);
     window.removeEventListener('keyup', ESCKeyListener, true);
+    window.removeEventListener(
+      'mousedown',
+      checkClickOutside,
+      true,
+    ); /* eslint no-use-before-define: ["error", { "variables": false }] */
+  }
+};
+
+const checkClickOutside = e => {
+  // click out side will close concept box.
+  let { target } = e;
+  let clickedInside = false;
+  while (target.nodeName !== 'BODY' && !clickedInside) {
+    if (target.getAttribute('data-concept-id')) {
+      clickedInside = true;
+    } else {
+      target = target.parentNode;
+    }
+  }
+  if (!clickedInside) {
+    closeAllVisibleNotions();
+    window.removeEventListener('keyup', ESCKeyListener, true);
+    window.removeEventListener('mousedown', checkClickOutside, true);
   }
 };
 
@@ -44,6 +67,7 @@ export const addShowConceptDefinitionClickListeners = () => {
 
       closeAllVisibleNotions();
       window.removeEventListener('keyup', ESCKeyListener, true);
+      window.removeEventListener('mousedown', checkClickOutside, true);
 
       if (wasHidden) {
         popup.classList.add('visible');
@@ -93,6 +117,7 @@ export const addShowConceptDefinitionClickListeners = () => {
           });
         }
         window.addEventListener('keyup', ESCKeyListener, true);
+        window.addEventListener('mousedown', checkClickOutside, true);
         closeBtn.focus();
         // Add Tab exit listener with a hijack of keydown
         const focusableElements = popup.querySelectorAll(

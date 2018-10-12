@@ -374,7 +374,9 @@ const filterShapes = PropTypes.shape({
     }),
   ).isRequired,
   onChange: PropTypes.func.isRequired,
-  filterValues: PropTypes.arrayOf([PropTypes.string, PropTypes.number]),
+  filterValues: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ),
   label: PropTypes.string.isRequired,
   key: PropTypes.oneOf(['subject', 'category']),
 });

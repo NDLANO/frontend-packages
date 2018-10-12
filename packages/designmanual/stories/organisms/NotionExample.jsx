@@ -11,6 +11,7 @@ import { OneColumn, LayoutItem, Image } from 'ndla-ui';
 import Notion, {
   NotionDialogContent,
   NotionDialogText,
+  NotionDialogImage,
   NotionDialogLicenses,
 } from 'ndla-notion';
 import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
@@ -96,17 +97,26 @@ class NotionExample extends Component {
                   forventninger om at du skal håndhilse når du kommer inn til et
                   jobbintervju, eller at det er uhøflig å svare på
                   telefonsamtaler mens intervjuet pågår.
+                </p>
+                <p>
+                  For å forsterke innlæringen av normer følges de opp av
+                  reaksjoner eller sanksjoner.{' '}
                   <Notion
                     id="NotionId_2"
                     ariaLabel="Vis begrep beskrivelse"
+                    title="Sanksjon"
+                    subTitle="forklaring"
                     content={
                       <Fragment>
                         <NotionDialogContent>
                           <NotionDialogText>
-                            Sosialisering, betegnelse for de sosiale prosessene
-                            som fører til at individer tar opp i seg, eller
-                            internaliserer, samfunnets normer og atferdsmønstre
-                            med andre ord at de blir som de andre i samfunnet.
+                            Sanksjon, en negativ eller positiv reaksjon på noens
+                            atferd. I dagligtalen er det vanlig å oppfatte
+                            sanksjoner først og fremst som negative reaksjoner
+                            rettet mot uønsket atferd eller avvik. Et eksempel
+                            er foreldrene som nekter ungen lørdagsgodteri
+                            (sanksjon) fordi han eller hun ikke spiser opp
+                            grønnsakene sine (uønsket atferd).
                           </NotionDialogText>
                         </NotionDialogContent>
                         <NotionDialogLicenses
@@ -116,12 +126,109 @@ class NotionExample extends Component {
                         />
                       </Fragment>
                     }>
-                    Sosialisering
+                    Sanksjon
                   </Notion>{' '}
+                  kan både være positive og negative. Ønsket adferd belønnes,
+                  men uønsket adferd straffes. Når en person har gjort{' '}
+                  <Notion
+                    id="NotionId_3"
+                    ariaLabel="Vis begrep beskrivelse"
+                    title="Norm"
+                    subTitle="forklaring"
+                    content={
+                      <Fragment>
+                        <NotionDialogContent>
+                          <NotionDialogImage
+                            src="https://test.api.ndla.no/image-api/raw/futrue%2520padawan.jpg?width=800"
+                            alt="Normer i samfunnet"
+                          />
+                          <NotionDialogText>
+                            Norm, særskilt sosiale normer, er en sosiologisk
+                            betegnelse for intersubjektive, allment delte og
+                            ofte underforståtte regler og forventninger på
+                            oppførsel som gjelder for et mindre sosialt
+                            fellesskap og for samfunnet i sin helhet.
+                          </NotionDialogText>
+                        </NotionDialogContent>
+                        <NotionDialogLicenses
+                          license="CC-BY-ND-4.0"
+                          source="snl.no"
+                        />
+                      </Fragment>
+                    }>
+                    Norm
+                  </Notion>{' '}
+                  til sine egne og følger dem, sier man at normene er
+                  internalisert.
                 </p>
                 <p>
-                  For å forsterke innlæringen av normer følges de opp av
-                  reaksjoner eller sanksjoner.
+                  Alle man møter, er normsendere. I første omgang er det
+                  foreldre, søsken og nær familie. Også venner og lekekamerater
+                  er normsendere. Dette kalles primærsosialisering. Barn har
+                  også normsendere utenfor de nære relasjonene. I barnehagen
+                  møter de voksne som er tydelige rollemodeller, og som har en
+                  klar oppgave i forhold til mer formell sosialisering. Det
+                  kalles sekundærsosialisering og blir fulgt opp av andre
+                  formelle utdanningsinstitusjoner, som skolen. Barn møter
+                  uformell sosialisering når de ser på TV eller spiller
+                  dataspill.
+                </p>
+                <h2>Normforvirring</h2>
+                <p>
+                  De signalene andre mennesker sender ut, kan for et individ
+                  oppleves som forvirrende og i mange tilfeller også
+                  motstridende. Det kalles normforvirring. Denne
+                  normforvirringen er en naturlig del av
+                  sosialiseringsprosessen, og noe vi må lære oss å forholde oss
+                  til. En vanlig konflikt er at venner ønsker at du skal spille
+                  internettspill eller bli med på kino, mens foreldrene ber deg
+                  skru av PC-en for å gjøre husarbeid og lekser.
+                </p>
+                <p>
+                  Selv om informasjonen om narkotika er entydig, fordi det er
+                  forbudt gjennom norsk lov, kan enkeltpersoner bli utfordret
+                  også på disse normene. I noen miljøer er det akseptert å bruke
+                  narkotika, og de skadelige sidene av bruken bagatelliseres. I
+                  slike situasjoner kan internaliserte normer hjelpe oss til å
+                  føle oss trygge fordi vi har tatt stilling til spørsmålet på
+                  forhånd. Det bidrar til at mange føler at de vet hva som er
+                  riktige valg, og de føler seg trygge når de blir utfordret.
+                </p>
+                <p>
+                  Motstridende signaler fra normsendere, som følges opp av
+                  sanksjoner som enten er vilkårlige, eller som føles
+                  urettferdige, skaper utrygghet. I verste fall kan utydelige
+                  normer og uregelmessig belønning medføre psykiske lidelser
+                  fordi de gjør personen utrygg og{' '}
+                  <Notion
+                    id="NotionId_4"
+                    ariaLabel="Vis begrep beskrivelse"
+                    title="Usikker"
+                    subTitle="forklaring"
+                    content={
+                      <Fragment>
+                        <NotionDialogContent>
+                          <NotionDialogText>
+                            De signalene andre mennesker sender ut, kan for et
+                            individ oppleves som forvirrende og i mange
+                            tilfeller også motstridende. Det kalles
+                            normforvirring. Denne normforvirringen er en
+                            naturlig del av sosialiseringsprosessen, og noe vi
+                            må lære oss å forholde oss til. En vanlig konflikt
+                            er at venner ønsker at du skal spille internettspill
+                            eller bli med på kino, mens foreldrene ber deg skru
+                            av PC-en for å gjøre husarbeid og lekser.
+                          </NotionDialogText>
+                        </NotionDialogContent>
+                        <NotionDialogLicenses
+                          license="CC-BY-ND-4.0"
+                          source="snl.no"
+                          authors={['Gary Waters']}
+                        />
+                      </Fragment>
+                    }>
+                    Usikker
+                  </Notion>.
                 </p>
               </div>
             </section>

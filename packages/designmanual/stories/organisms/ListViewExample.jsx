@@ -14,7 +14,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
 import Button from 'ndla-button';
 import { injectT } from 'ndla-i18n';
 import { mockListView } from '../../dummydata';
-import LicenseBox from '../article/LicenseBox';
+import { TextContent, ImageContent } from '../article/LicenseBox';
 
 class ListViewExample extends Component {
   constructor(props) {
@@ -152,7 +152,7 @@ class ListViewExample extends Component {
     return selectedItem ? (
       <NotionDialogWrapper
         title={selectedItem.name}
-        subtitle={selectedItem.category.title}
+        subTitle={selectedItem.category.title}
         closeCallback={() => this.handleSelectItem()}>
         <Tabs
           singleLine
@@ -166,7 +166,6 @@ class ListViewExample extends Component {
                       <NotionDialogImage
                         src={selectedItem.image}
                         alt={selectedItem.description}
-                        wide
                       />
                     ) : null}
                     <NotionDialogText>
@@ -195,7 +194,24 @@ class ListViewExample extends Component {
                               />
                             </ModalHeader>
                             <ModalBody>
-                              <LicenseBox />
+                              <Fragment>
+                                <h1>{this.props.t('license.heading')}</h1>
+                                <Tabs
+                                  singleLine
+                                  tabs={[
+                                    {
+                                      title: this.props.t('license.tabs.text'),
+                                      content: <TextContent />,
+                                    },
+                                    {
+                                      title: this.props.t(
+                                        'license.tabs.images',
+                                      ),
+                                      content: <ImageContent />,
+                                    },
+                                  ]}
+                                />
+                              </Fragment>
                             </ModalBody>
                           </Fragment>
                         )}
@@ -228,69 +244,67 @@ class ListViewExample extends Component {
     const alphabet = activeAlphabet(filteredItems);
 
     return (
-      <div>
-        <ListView
-          items={this.filterOnSelectedLetter(filteredItems)}
-          alphabet={alphabet}
-          detailedItem={detailedItem}
-          selectedLetter={selectedLetter}
-          selectCallback={this.setDetailedItem}
-          selectedLetterCallback={this.setSelectedLetter}
-          onChangedViewStyle={this.handleChangedViewStyle}
-          viewStyle={viewStyle}
-          searchValue={searchValue}
-          onChangedSearchValue={this.handleChangeSearchValue}
-          onSelectItem={this.handleSelectItem}
-          selectedItem={this.renderSelectedItem()}
-          sortBy={{
-            onChange: this.handleChangeSortBy,
-            value: sortByValue,
-            label: 'Sorter etter',
-            id: 'sortbyId',
-            options: [
-              {
-                label: 'Tittel',
-                value: 'title',
-              },
-              {
-                label: 'Fag',
-                value: 'subject',
-              },
-              {
-                label: 'Kategori',
-                value: 'category',
-              },
-            ],
-          }}
-          filters={[
+      <ListView
+        items={this.filterOnSelectedLetter(filteredItems)}
+        alphabet={alphabet}
+        detailedItem={detailedItem}
+        selectedLetter={selectedLetter}
+        selectCallback={this.setDetailedItem}
+        selectedLetterCallback={this.setSelectedLetter}
+        onChangedViewStyle={this.handleChangedViewStyle}
+        viewStyle={viewStyle}
+        searchValue={searchValue}
+        onChangedSearchValue={this.handleChangeSearchValue}
+        onSelectItem={this.handleSelectItem}
+        selectedItem={this.renderSelectedItem()}
+        sortBy={{
+          onChange: this.handleChangeSortBy,
+          value: sortByValue,
+          label: 'Sorter etter',
+          id: 'sortbyId',
+          options: [
             {
-              options: [
-                { title: 'Betongfaget', value: 'betongfaget' },
-                { title: 'Innredningsfaget', value: 'innredningsfaget' },
-                { title: 'Murerfaget', value: 'murerfaget' },
-                { title: 'Trelastfaget', value: 'trelastfaget' },
-                { title: 'Tømrerfaget', value: 'tomrerfaget' },
-              ],
-              filterValues: this.state.filters.subject,
-              onChange: this.handleChangeFilters,
-              key: 'subject',
+              label: 'Tittel',
+              value: 'title',
+            },
+            {
               label: 'Fag',
+              value: 'subject',
             },
             {
-              options: [
-                { title: 'El-håndverkøy', value: 'elhandverktoy' },
-                { title: 'Håndverkøy', value: 'handverktoy' },
-                { title: 'Maskiner', value: 'maskiner' },
-                { title: 'Måleverkøy', value: 'maleverktoy' },
-              ],
-              filterValues: this.state.filters.category,
-              onChange: this.handleChangeFilters,
-              key: 'category',
-              label: 'Verktøy',
+              label: 'Kategori',
+              value: 'category',
             },
-          ]}
-        />
-      </div>
+          ],
+        }}
+        filters={[
+          {
+            options: [
+              { title: 'Betongfaget', value: 'betongfaget' },
+              { title: 'Innredningsfaget', value: 'innredningsfaget' },
+              { title: 'Murerfaget', value: 'murerfaget' },
+              { title: 'Trelastfaget', value: 'trelastfaget' },
+              { title: 'Tømrerfaget', value: 'tomrerfaget' },
+            ],
+            filterValues: this.state.filters.subject,
+            onChange: this.handleChangeFilters,
+            key: 'subject',
+            label: 'Fag',
+          },
+          {
+            options: [
+              { title: 'El-håndverkøy', value: 'elhandverktoy' },
+              { title: 'Håndverkøy', value: 'handverktoy' },
+              { title: 'Maskiner', value: 'maskiner' },
+              { title: 'Måleverkøy', value: 'maleverktoy' },
+            ],
+            filterValues: this.state.filters.category,
+            onChange: this.handleChangeFilters,
+            key: 'category',
+            label: 'Verktøy',
+          },
+        ]}
+      />
     );
   }
 }

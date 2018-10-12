@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
 import { fonts, spacing, colors, misc, breakpoints, mq } from 'ndla-core';
+import NotionHeader from './NotionHeader';
+import NotionBody from './NotionBody';
 
 const NotionDialogContentWrapper = styled.div`
   padding-bottom: ${spacing.normal};
@@ -83,6 +85,7 @@ const NotionDialogImageWrapper = styled.div`
   justify-content: center;
   background: #fff;
   flex-grow: 1;
+  margin: ${spacing.xsmall} 0;
 `;
 export const NotionDialogImage = ({ alt, src }) => (
   <NotionDialogImageWrapper>
@@ -94,32 +97,6 @@ NotionDialogImage.propTypes = {
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
 };
-
-const NotionHeader = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  border-bottom: 2px solid ${colors.brand.tertiary};
-  h1 {
-    margin: 0;
-    flex-grow: 1;
-    font-weight: ${fonts.weight.bold};
-    ${fonts.sizes('22px', 1.2)};
-    color: ${colors.text.primary};
-    small {
-      padding-left: ${spacing.small};
-      margin-left: ${spacing.xsmall};
-      border-left: 1px solid ${colors.brand.greyLight};
-      ${fonts.sizes('20px', 1.2)};
-      font-weight: ${fonts.weight.normal};
-    }
-  }
-  button {
-    border: none;
-    background: none;
-    color: ${colors.brand.primary};
-  }
-`;
 
 export const NotionDialogStyledWrapper = styled.div`
   @keyframes animateIn {
@@ -134,8 +111,8 @@ export const NotionDialogStyledWrapper = styled.div`
   }
   display: none;
   position: absolute;
-  width: 90%;
-  left: 5%;
+  width: calc(100% - (${spacing.normal} * 2));
+  left: ${spacing.normal};
   z-index: 1;
   animation-name: animateIn;
   animation-duration: 300ms;
@@ -162,39 +139,29 @@ export const NotionDialogStyledWrapper = styled.div`
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   background: #fff;
-  padding: ${spacing.normal};
   &.visible {
     display: block;
     opacity: 1;
   }
 `;
 
-const NotionDialog = ({ title, children, id, subtitle, ariaHidden }) => {
-  return (
-    <NotionDialogStyledWrapper
-      aria-hidden={ariaHidden}
-      role="dialog"
-      data-concept-id={id}
-      aria-labelledby={id}
-      aria-describedby={id}>
-      <NotionHeader>
-        <h1>
-          {title} {subtitle ? <small>{subtitle}</small> : null}
-        </h1>
-        <button type="button" data-notion-close>
-          Lukk
-        </button>
-      </NotionHeader>
-      {children}
-    </NotionDialogStyledWrapper>
-  );
-};
+const NotionDialog = ({ title, children, id, subTitle, ariaHidden }) => (
+  <NotionDialogStyledWrapper
+    aria-hidden={ariaHidden}
+    role="dialog"
+    data-concept-id={id}
+    aria-labelledby={id}
+    aria-describedby={id}>
+    <NotionHeader title={title} subTitle={subTitle} />
+    <NotionBody>{children}</NotionBody>
+  </NotionDialogStyledWrapper>
+);
 
 NotionDialog.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   closeCallback: PropTypes.func,
-  subtitle: PropTypes.string,
+  subTitle: PropTypes.string,
   ariaHidden: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };

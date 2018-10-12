@@ -17,6 +17,7 @@ const inputWrapperCSS = css`
   align-items: center;
   justify-content: center;
   border: 1px solid ${colors.brand.greyLighter};
+  transition: border-color 100ms ease;
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
   padding-right: ${spacing.small};

@@ -44,10 +44,23 @@ const Item = styled.div`
   height: 42px;
   align-items: flex-start;
   justify-content: space-between;
+  padding-right: ${spacing.large};
+  > div {
+    display: none;
+    margin-right: ${spacing.normal};
+    align-items: center;
+    position: absolute;
+    right: 0;
+  }
+  &:hover {
+    > div {
+      display: flex;
+    }
+  }
 `;
 
 const itemButton = css`
-  padding: ${spacing.xsmall} ${spacing.large} ${spacing.xsmall}
+  padding: ${spacing.xsmall} ${spacing.normal} ${spacing.xsmall}
     ${spacing.normal};
   border: 0;
   background: 0;
@@ -62,6 +75,7 @@ const itemButton = css`
     margin-right: ${spacing.xsmall};
     width: ${spacing.normal};
     height: ${spacing.normal};
+    transition: color 100ms ease;
   }
   &:hover,
   &:focus {
@@ -70,6 +84,9 @@ const itemButton = css`
     }
     .c-icon {
       color: ${colors.brand.primary};
+    }
+    + div {
+      display: block;
     }
   }
 `;

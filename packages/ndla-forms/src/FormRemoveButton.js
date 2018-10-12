@@ -21,6 +21,7 @@ const buttonCSS = css`
   justify-content: center;
   height: ${spacing.medium};
   margin: 0;
+  padding-top: ${spacing.small};
   span {
     color: ${colors.brand.primary};
     box-shadow: inset 0 -1px;

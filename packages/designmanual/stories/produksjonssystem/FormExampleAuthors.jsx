@@ -39,7 +39,7 @@ class FormExampleAuthors extends Component {
     this.state = {
       authors: [
         {
-          name: 'my name is',
+          name: '',
           role: '',
           key: uuid(),
         },
@@ -94,15 +94,15 @@ class FormExampleAuthors extends Component {
     const { authors } = this.state;
     return (
       <Fragment>
-        <FormHeader title="Form heading" subTitle="example" width={3 / 4}>
-          ?
-        </FormHeader>
+        <FormHeader title="Form heading" subTitle="example" width={3 / 4} />
         {authors.map((author, index) => (
           <FormSections key={author.key}>
             <div>
               <FormSplitter>
                 <FormInput
-                  warningText="hello"
+                  warningText={
+                    author.name === '' ? 'Du må oppgi navn på forfatter' : null
+                  }
                   container="div"
                   type="text"
                   focusOnMount={author.focusOnMount}
@@ -123,18 +123,16 @@ class FormExampleAuthors extends Component {
               </FormSplitter>
             </div>
             <div>
-              <Button onClick={() => this.handleRemoveAuthor(index)}>
-                remove
-              </Button>
+              <FormRemoveButton onClick={() => this.handleRemoveAuthor(index)}>
+                Ta bort
+              </FormRemoveButton>
             </div>
           </FormSections>
         ))}
         <Button outline onClick={this.handleAddAuthor}>
           Legg til
         </Button>
-        <FormHeader title="Form heading" subTitle="example" width={3 / 4}>
-          ?
-        </FormHeader>
+        <FormHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FormSections>
           <div>
             <FormSplitter>
@@ -147,12 +145,10 @@ class FormExampleAuthors extends Component {
             </FormSplitter>
           </div>
           <div>
-            <FormRemoveButton>remove</FormRemoveButton>
+            <FormRemoveButton>Ta bort</FormRemoveButton>
           </div>
         </FormSections>
-        <FormHeader title="Form heading" subTitle="example" width={3 / 4}>
-          ?
-        </FormHeader>
+        <FormHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FormSections>
           <div>
             <FormSplitter>
@@ -165,7 +161,7 @@ class FormExampleAuthors extends Component {
             </FormSplitter>
           </div>
           <div>
-            <FormRemoveButton>remove</FormRemoveButton>
+            <FormRemoveButton>Ta bort</FormRemoveButton>
           </div>
         </FormSections>
       </Fragment>

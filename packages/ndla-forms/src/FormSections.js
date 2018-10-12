@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { colors, spacing } from 'ndla-core';
 
 const Wrapper = styled.div`
@@ -20,7 +20,8 @@ const Wrapper = styled.div`
       + div {
         width: 25%;
         padding-left: ${spacing.normal};
-        padding-top: ${spacing.xsmall};
+        display: flex;
+        align-items: flex-start;
       }
     }
   }

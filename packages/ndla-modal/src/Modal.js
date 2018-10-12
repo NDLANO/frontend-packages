@@ -427,6 +427,7 @@ const Portal = ({
       <ModalWrapper
         className={cx(className, { narrow, scrollFixIOS: isIosDeviceSafari })}>
         <div
+          role="dialog"
           onScroll={onScroll}
           data-modal={uuidData}
           style={{ animationDuration: `${animationDuration}ms` }}

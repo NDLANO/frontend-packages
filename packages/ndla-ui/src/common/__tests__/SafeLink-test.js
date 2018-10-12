@@ -70,6 +70,5 @@ test('isOldNdlaLink checks', () => {
   expect(isOldNdlaLink('/nb/nde/12')).toBe(false);
   expect(isOldNdlaLink('/subjects')).toBe(false);
   expect(isOldNdlaLink('/sanodesd43/')).toBe(false);
-  expect(isOldNdlaLink({someUrl: '/sanodesd43/'})).toBe(false);
-
+  expect(isOldNdlaLink({ someUrl: '/sanodesd43/' })).toBe(false);
 });

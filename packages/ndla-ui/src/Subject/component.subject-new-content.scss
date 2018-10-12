@@ -3,6 +3,12 @@
     margin-bottom: $spacing--large;
   }
 
+  &__heading {
+    @include mq(tabletWide) {
+      margin-left: $spacing--large !important;
+    }
+  }
+
   &__list {
     margin: 0;
     padding: 0;
@@ -32,10 +38,15 @@
 
     .c-content-type-badge {
       margin-top: $spacing;
+      @include mq($until: tabletWide) {
+        display: none;
+      }
     }
 
     .c-subject-new-content__content-link {
-      padding-left: $spacing;
+      @include mq(tabletWide) {
+        padding-left: $spacing;
+      }
       padding-bottom: $spacing--small;
     }
   }

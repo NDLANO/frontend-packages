@@ -32,8 +32,8 @@ storiesOf('Produksjonssystem', module)
       <StoryIntro title="Trekkspill">
         <p>
           Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget
-          kontrollere for åpning og lukking, men kan også kontrolleres manuelt.
-          Støtter feil-status via boolean prop tabs[x].error
+          kontroll for åpning og lukking gjennom render props. Støtter
+          feil-status via boolean prop på paneler.
         </p>
       </StoryIntro>
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">

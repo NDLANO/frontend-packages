@@ -10,22 +10,35 @@ $ yarn add ndla-accordion
 
 ## Usage
 
-### Simple example where Tab is open on render and logic is handled by component.
+### Simple example where panel is open on render.
 
 ```js
-import Accordion from 'ndla-accordion';
+import Accordion, {
+  AccordionWrapper,
+  AccordionPanel,
+  AccordionBar,
+} from 'ndla-accordion';
 
-<Accordion
-  panels={[
-    {
-      title: 'Panel 1',
-      children: <div>Panel content 1</div>,
-      open: true,
-    },
-    {
-      title: 'Panel 2',
-      children: <div>Panel content 2</div>,
-    },
-  ]}
-/>;
+<Accordion openIndexes={[0]} single>
+  {({ openIndexes, handleItemClick }) => (
+    <AccordionWrapper>
+      {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
+        <React.Fragment key={item}>
+          <AccordionBar
+            panelId={`panel-${index}`}
+            ariaTitle={`Panel ${index + 1}`}
+            onClick={() => handleItemClick(index)}
+            isOpen={openIndexes.includes(index)}>
+            Panel {index + 1}
+          </AccordionBar>
+          <AccordionPanel
+            id={`panel-${index}`}
+            isOpen={openIndexes.includes(index)}>
+            <p>{item}</p>
+          </AccordionPanel>
+        </React.Fragment>
+      ))}
+    </AccordionWrapper>
+  )}
+</Accordion>;
 ```

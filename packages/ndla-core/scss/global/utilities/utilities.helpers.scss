@@ -29,20 +29,20 @@
   @include float(2, 4, 'left');
   @include mq(tablet) {
     @include float(1, 4, 'left');
-    margin: $spacing--small $spacing $spacing 0;
+    margin: $spacing--small $spacing $spacing--medium 0;
   }
   @include mq(desktop) {
-    margin: $spacing--small $spacing $spacing 0;
+    margin: $spacing--small $spacing $spacing--medium 0;
   }
 }
 .u-float-xsmall-right {
   @include float(2, 4, 'right');
   @include mq(tablet) {
     @include float(1, 4, 'right');
-    margin: $spacing--small 0 $spacing $spacing;
+    margin: $spacing--small 0 $spacing--medium $spacing;
   }
   @include mq(desktop) {
-    margin: $spacing--small 0 $spacing $spacing;
+    margin: $spacing--small 0 $spacing--medium $spacing;
   }
 }
 

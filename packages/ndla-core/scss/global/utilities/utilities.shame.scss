@@ -5,12 +5,13 @@
 * LICENSE file in the root directory of this source tree.
 *
 */
-#root {
+body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
   }
 }
 

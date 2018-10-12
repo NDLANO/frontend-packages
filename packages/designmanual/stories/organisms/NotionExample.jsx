@@ -14,6 +14,7 @@ import Notion, {
   NotionDialogImage,
   NotionDialogLicenses,
 } from 'ndla-notion';
+import Tabs from 'ndla-tabs';
 import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
 
 import FigureWithLicense from '../article/FigureWithLicense';
@@ -66,7 +67,7 @@ class NotionExample extends Component {
                           />
                         </Fragment>
                       }>
-                      Sosialisering
+                      sosialisering
                     </Notion>{' '}
                     lærer menneskene å fungere i et samfunn og får kjennskap til
                     de regler og verdier som det forventes at man skal følge.
@@ -126,7 +127,7 @@ class NotionExample extends Component {
                         />
                       </Fragment>
                     }>
-                    Sanksjon
+                    sanksjon
                   </Notion>{' '}
                   kan både være positive og negative. Ønsket adferd belønnes,
                   men uønsket adferd straffes. Når en person har gjort{' '}
@@ -138,25 +139,56 @@ class NotionExample extends Component {
                     content={
                       <Fragment>
                         <NotionDialogContent>
-                          <NotionDialogImage
-                            src="https://test.api.ndla.no/image-api/raw/futrue%2520padawan.jpg?width=800"
-                            alt="Normer i samfunnet"
+                          <Tabs
+                            singleLine
+                            tabs={[
+                              {
+                                title: 'Forklaring',
+                                content: (
+                                  <Fragment>
+                                    <NotionDialogImage
+                                      src="https://test.api.ndla.no/image-api/raw/futrue%2520padawan.jpg?width=800"
+                                      alt="Normer i samfunnet"
+                                    />
+                                    <NotionDialogText>
+                                      Norm, særskilt sosiale normer, er en
+                                      sosiologisk betegnelse for
+                                      intersubjektive, allment delte og ofte
+                                      underforståtte regler og forventninger på
+                                      oppførsel som gjelder for et mindre
+                                      sosialt fellesskap og for samfunnet i sin
+                                      helhet.
+                                    </NotionDialogText>
+                                    <NotionDialogLicenses
+                                      license="CC-BY-ND-4.0"
+                                      source="snl.no"
+                                    />
+                                  </Fragment>
+                                ),
+                              },
+                              {
+                                title: 'Ordbok',
+                                content: (
+                                  <Fragment>
+                                    <NotionDialogText>
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit, sed do eiusmod tempor
+                                      incididunt ut labore et dolore magna
+                                      aliqua.
+                                    </NotionDialogText>
+                                    <NotionDialogLicenses
+                                      license="CC-BY-4.0"
+                                      source="lipsum.com"
+                                    />
+                                  </Fragment>
+                                ),
+                              },
+                            ]}
                           />
-                          <NotionDialogText>
-                            Norm, særskilt sosiale normer, er en sosiologisk
-                            betegnelse for intersubjektive, allment delte og
-                            ofte underforståtte regler og forventninger på
-                            oppførsel som gjelder for et mindre sosialt
-                            fellesskap og for samfunnet i sin helhet.
-                          </NotionDialogText>
                         </NotionDialogContent>
-                        <NotionDialogLicenses
-                          license="CC-BY-ND-4.0"
-                          source="snl.no"
-                        />
                       </Fragment>
                     }>
-                    Norm
+                    norm
                   </Notion>{' '}
                   til sine egne og følger dem, sier man at normene er
                   internalisert.
@@ -227,7 +259,7 @@ class NotionExample extends Component {
                         />
                       </Fragment>
                     }>
-                    Usikker
+                    usikker
                   </Notion>.
                 </p>
               </div>

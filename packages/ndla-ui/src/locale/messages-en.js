@@ -419,6 +419,9 @@ const messages = {
   breadcrumb: {
     toFrontpage: 'To the frontpage',
   },
+  notions: {
+    closeNotion: 'Close',
+  },
 };
 
 export default messages;

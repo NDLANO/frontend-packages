@@ -32,6 +32,7 @@
   }
 
   &__wrapper-multiple-filters {
+    margin-bottom: $spacing;
     > * {
       > .c-filter__label {
         width: 120px;

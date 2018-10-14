@@ -126,10 +126,10 @@ class SlateBlockMenuExample extends Component {
     this.onToggleOpen = this.onToggleOpen.bind(this);
   }
 
-  onToggleOpen() {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
+  onToggleOpen(isOpen) {
+    this.setState({
+      isOpen,
+    });
   }
 
   render() {

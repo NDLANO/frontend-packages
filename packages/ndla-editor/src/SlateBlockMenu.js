@@ -7,6 +7,7 @@
  */
 
 import React, { Fragment } from 'react';
+import FocusTrapReact from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import styled, { css, cx } from 'react-emotion';
 import { spacing, colors, fonts, shadows, animations } from 'ndla-core';
@@ -15,7 +16,7 @@ import { Plus } from 'ndla-icons/action';
 const ICON_SIZE = '48px';
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: relative;
   transform: translate(
     calc(${ICON_SIZE} + ${spacing.small}),
     calc(-${ICON_SIZE} - (${spacing.large} + ${spacing.small}))
@@ -121,40 +122,61 @@ const buttonCSS = css`
   }
 `;
 
-const SlateBlockMenu = ({
-  heading,
-  actions,
-  clickItem,
-  onToggleOpen,
-  isOpen,
-}) => (
-  <Fragment>
-    <button
-      className={cx(buttonCSS, { '--open': isOpen })}
-      type="button"
-      onClick={onToggleOpen}>
-      <Plus />
-    </button>
-    {isOpen && (
-      <Wrapper>
-        <div>
-          <HeaderLabel>{heading}</HeaderLabel>
-          {actions.map(action => (
-            <Item key={action.data.object}>
-              <button
-                className={itemButton}
-                type="button"
-                onClick={() => clickItem(action.data)}>
-                {action.icon && action.icon}
-                <span>{action.label}</span>
-              </button>
-              {action.helpIcon}
-            </Item>
-          ))}
-        </div>
-      </Wrapper>
-    )}
-  </Fragment>
+const FocusWrapper = ({ isOpen, onToggleOpen, children }) => (
+  <FocusTrapReact
+    focusTrapOptions={{
+      onDeactivate: () => {
+        onToggleOpen(false);
+      },
+      clickOutsideDeactivates: true,
+      escapeDeactivates: true,
+    }}
+    active={isOpen}>
+    {children}
+  </FocusTrapReact>
+);
+
+FocusWrapper.propTypes = {
+  isOpen: PropTypes.bool,
+  onToggleOpen: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+const SlateBlockMenu = React.forwardRef(
+  ({ heading, actions, clickItem, onToggleOpen, isOpen, cy }, ref) => (
+    <FocusWrapper isOpen={isOpen} onToggleOpen={onToggleOpen}>
+      <button
+        ref={ref}
+        className={cx(buttonCSS, { '--open': isOpen })}
+        type="button"
+        data-cy={cy}
+        onClick={() => {
+          onToggleOpen(!isOpen);
+        }}>
+        <Plus />
+      </button>
+      {isOpen && (
+        <Wrapper>
+          <div>
+            <HeaderLabel>{heading}</HeaderLabel>
+            {actions.map(action => (
+              <Item key={action.data.object}>
+                <button
+                  className={itemButton}
+                  data-cy={`create-${action.data.object}`}
+                  type="button"
+                  onClick={() => clickItem(action.data)}>
+                  {action.icon && action.icon}
+                  <span>{action.label}</span>
+                </button>
+                {action.helpIcon}
+              </Item>
+            ))}
+          </div>
+        </Wrapper>
+      )}
+    </FocusWrapper>
+  ),
 );
 
 SlateBlockMenu.propTypes = {
@@ -173,6 +195,11 @@ SlateBlockMenu.propTypes = {
       helpIcon: PropTypes.node,
     }),
   ),
+  cy: PropTypes.string,
+};
+
+SlateBlockMenu.defaultProps = {
+  cy: 'slate-block-picker',
 };
 
 export default SlateBlockMenu;

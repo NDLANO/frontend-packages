@@ -25,7 +25,6 @@ const FrontpageExample = ({ t }) => (
   <Fragment>
     <FrontpageHeader
       locale="nb"
-      heading="Nasjonal digital læringsarena"
       searchFieldValue=""
       logoTo="home"
       onSearchFieldChange={() => {}}

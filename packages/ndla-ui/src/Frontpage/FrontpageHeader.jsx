@@ -23,7 +23,6 @@ const FrontpageHeader = ({
   logoTo,
   messages,
   locale,
-  heading,
   menuSubject,
   hideSearch,
   hideMenu,
@@ -118,7 +117,6 @@ const FrontpageHeader = ({
 FrontpageHeader.propTypes = {
   hideSearch: PropTypes.bool, // TODO: Search is temporary hidden as default.
   hideMenu: PropTypes.bool, // TODO: Menu is temporary hidden as default.
-  heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func,

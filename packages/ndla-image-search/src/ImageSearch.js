@@ -13,7 +13,6 @@ import { fonts, colors, spacing, mq, breakpoints } from 'ndla-core';
 import Pager from 'ndla-pager';
 import { FormInput } from 'ndla-forms';
 import { Search as SearchIcon } from 'ndla-icons/common';
-import BEMHelper from 'react-bem-helper';
 
 /**
  * Copyright (c) 2016-present, NDLA.
@@ -51,59 +50,56 @@ const ImageSearchWrapper = styled.div`
     ${mq.range({ from: breakpoints.wide })} {
       width: 20%;
     }
-  }
-
-  &__list-item {
-    &--active {
+    &.active {
       height: inherit;
     }
   }
 
-  &__list {
+  .list {
     display: flex;
     align-items: stretch;
     flex-flow: row wrap;
     position: relative;
-    margin-left: -0.5em;
-    margin-right: -0.5em;
-    margin-top: 26px;
+    margin-left: -${spacing.small};
+    margin-right: -${spacing.small};
+    margin-top: ${spacing.normal};
   }
 
-  &__list-item-inner {
-    padding: 0.5em;
+  .list-item-inner {
+    padding: ${spacing.small};
     text-align: center;
     height: 210px;
 
-    .c-image-search__list-item-title {
-      margin: 8px 0;
-      font-size: 14px;
+    .list-item-title {
+      margin: ${spacing.xsmall}; 0;
+      ${fonts.sizes('14px', 1.2)};
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
-      line-height: 16px;
-      max-height: 48px;
+      max-height: ${spacing.large};
     }
   }
 
-  &__list-item-inner img {
+  .list-item-inner img {
     max-height: 135px;
     max-width: 100%;
     border: 2px solid white;
+    transition: border-color 100ms ease;
   }
 
-  &__list-item-inner:hover {
+  .list-item-inner:hover {
     img {
-      border: 2px solid var(--brand-color);
+      border: 2px solid ${colors.brand.primary};
     }
   }
 
-  &__list-item-inner > &__list-item-inner img {
-    border: 2px solid var(--brand-color);
+  .list-item-inner > .list-item-inner img {
+    border: 2px solid ${colors.brand.primary};
   }
 
-  &__list-item--active > &__list-item-inner::after {
+  .list-item.active > .list-item-inner::after {
     animation: fadeInSearchPreview 300ms ease;
     top: 190px;
     left: 50%;
@@ -114,93 +110,87 @@ const ImageSearchWrapper = styled.div`
     position: absolute;
     pointer-events: none;
     border-color: rgba(136, 183, 213, 0);
-    border-bottom-color: $brand-color--lighter;
+    border-bottom-color: ${colors.brand.lighter};
     border-width: 20px;
     margin-left: -20px;
   }
 }
 
-.c-image-preview {
+.image-preview {
   animation: fadeInSearchPreview 300ms ease;
   position: relative;
   width: 100%;
-  @include mq($from: tablet) {
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
     width: 200%;
   }
-  @include mq($from: tabletWide) {
+  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     width: 300%;
   }
-  @include mq(desktop) {
+  ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
     width: 400%;
   }
-  @include mq(wide) {
+  ${mq.range({ from: breakpoints.wide })} {
     width: 500%;
   }
-  background-color: $brand-color--lighter;
+  background-color: ${colors.brand.lighter};
   border-radius: 2px;
   margin: 20px 0;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 
-  &__image {
+  .image {
     width: 50%;
-    padding: 1em;
+    padding: ${spacing.small};
   }
 
-  &__license {
-    font-size: 16px;
-    line-height: 20px;
+  .license {
+    ${fonts.sizes('16px', 1.3)}
   }
 
-  .button {
-    padding: 0.7em 1em;
-  }
-
-  &__image img {
+  .image img {
     max-width: 100%;
     max-height: 300px;
   }
 
-  &__information {
+  .information {
     width: 50%;
-    padding: 1em;
+    padding: ${spacing.normal};
     word-break: initial;
   }
 
-  &__information > * {
-    margin-top: 1em;
+  .information > * {
+    margin-top: ${spacing.small};
   }
 
-  &__title {
+  .title {
     padding-top: 0;
     margin: 0;
     line-height: 1.3;
   }
-  &__text--left {
+  .text--left {
     width: 20%;
     display: inline-block;
   }
 
-  &__text--right {
+  .text--right {
     width: 80%;
     display: inline-block;
   }
-  &__tags > b {
+  .tags > b {
     display: block;
-    margin-bottom: 1em;
+    margin-bottom: ${spacing.normal};
   }
 
-  &__tags > .tag_item {
-    font-weight: $font-weight-semibold;
-    margin-right: 0.5em;
-    margin-bottom: 0.4em;
+  .tags > .tag_item {
+    font-weight: ${fonts.weight.semibold};
+    margin-right: ${spacing.xsmall};
+    margin-bottom: ${spacing.xsmall};
     display: inline-block;
-    font-size: 16px;
-    line-height: 18px;
+    ${fonts.sizes('16px', 1.3)}
   }
 
-  &__tags > .tag_item:hover {
+  .tags > .tag_item:hover {
     text-decoration: none;
   }
 
@@ -210,64 +200,63 @@ const ImageSearchWrapper = styled.div`
 
   width: 100%;
 }
+${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
 
-@include mq($from: tablet, $until: tabletWide) {
-  .c-image-search {
-    &__list-item .c-image-preview {
+    .list-item .image-preview {
       width: 200%;
     }
-    &__list-item:nth-of-type(2n) .c-image-preview {
+    .list-item:nth-of-type(2n) .image-preview {
       margin-left: -100%;
     }
-  }
+
 }
-@include mq($from: tabletWide, $until: desktop) {
-  .c-image-search {
-    &__list-item .c-image-preview {
+${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
+
+    .list-item .image-preview {
       width: 300%;
     }
-    &__list-item:nth-of-type(3n - 1) .c-image-preview {
+    .list-item:nth-of-type(3n - 1) .image-preview {
       margin-left: -100%;
     }
-    &__list-item:nth-of-type(3n) .c-image-preview {
+    .list-item:nth-of-type(3n) .image-preview {
       margin-left: -200%;
     }
-  }
+
 }
-@include mq($from: desktop, $until: wide) {
-  .c-image-search {
-    &__list-item .c-image-preview {
+${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
+
+    .list-item .image-preview {
       width: 400%;
     }
-    &__list-item:nth-of-type(4n - 2) .c-image-preview {
+    .list-item:nth-of-type(4n - 2) .image-preview {
       margin-left: -100%;
     }
-    &__list-item:nth-of-type(4n - 1) .c-image-preview {
+    .list-item:nth-of-type(4n - 1) .image-preview {
       margin-left: -200%;
     }
-    &__list-item:nth-of-type(4n) .c-image-preview {
+    .list-item:nth-of-type(4n) .image-preview {
       margin-left: -300%;
     }
-  }
+
 }
-@include mq(wide) {
-  .c-image-search {
-    &__list-item .c-image-preview {
+${mq.range({ from: breakpoints.wide })} {
+
+    .list-item .image-preview {
       width: 500%;
     }
-    &__list-item:nth-of-type(5n - 3) .c-image-preview {
+    .list-item:nth-of-type(5n - 3) .image-preview {
       margin-left: -100%;
     }
-    &__list-item:nth-of-type(5n - 2) .c-image-preview {
+    .list-item:nth-of-type(5n - 2) .image-preview {
       margin-left: -200%;
     }
-    &__list-item:nth-of-type(5n - 1) .c-image-preview {
+    .list-item:nth-of-type(5n - 1) .image-preview {
       margin-left: -300%;
     }
-    &__list-item:nth-of-type(5n) .c-image-preview {
+    .list-item:nth-of-type(5n) .image-preview {
       margin-left: -400%;
     }
-  }
+
 }
 
 @keyframes fadeInSearchPreview {
@@ -288,11 +277,6 @@ const ImageSearchWrapper = styled.div`
 `;
 
 import ImageSearchResult from './ImageSearchResult';
-
-const classes = new BEMHelper({
-  name: 'image-search',
-  prefix: 'c-',
-});
 
 const searchIconClass = css`
   border: 0;
@@ -410,7 +394,7 @@ class ImageSearch extends React.Component {
           }}
         />
         {noResultsFound && this.props.noResults}
-        <div {...classes('list')}>
+        <div className="list">
           {images.map(image => (
             <ImageSearchResult
               key={image.id}

@@ -13,14 +13,7 @@ import { fonts, colors, spacing, mq, breakpoints } from 'ndla-core';
 import Pager from 'ndla-pager';
 import { FormInput } from 'ndla-forms';
 import { Search as SearchIcon } from 'ndla-icons/common';
-
-/**
- * Copyright (c) 2016-present, NDLA.
- *
- * This source code is licensed under the GPLv3 license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
+import ImageSearchResult from './ImageSearchResult';
 
 const ImageSearchWrapper = styled.div`
   .border {
@@ -111,8 +104,8 @@ const ImageSearchWrapper = styled.div`
     pointer-events: none;
     border-color: rgba(136, 183, 213, 0);
     border-bottom-color: ${colors.brand.lighter};
-    border-width: 20px;
-    margin-left: -20px;
+    border-width: ${spacing.normal};
+    margin-left: -${spacing.normal};
   }
 }
 
@@ -139,9 +132,16 @@ const ImageSearchWrapper = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    display: block;
+  }
+
   .image {
     width: 50%;
     padding: ${spacing.small};
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      width: 100%;
+    }
   }
 
   .license {
@@ -155,8 +155,14 @@ const ImageSearchWrapper = styled.div`
 
   .information {
     width: 50%;
-    padding: ${spacing.normal};
+    padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${
+  spacing.normal
+} ${spacing.small};
     word-break: initial;
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      width: 100%;
+      padding: 0 ${spacing.small} ${spacing.normal};
+    }
   }
 
   .information > * {
@@ -275,8 +281,6 @@ ${mq.range({ from: breakpoints.wide })} {
   }
 }
 `;
-
-import ImageSearchResult from './ImageSearchResult';
 
 const searchIconClass = css`
   border: 0;

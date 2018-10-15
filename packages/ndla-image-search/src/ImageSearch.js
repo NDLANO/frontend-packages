@@ -16,16 +16,9 @@ import { Search as SearchIcon } from 'ndla-icons/common';
 import ImageSearchResult from './ImageSearchResult';
 
 const ImageSearchWrapper = styled.div`
-  .border {
-    margin: ${spacing.small} -${spacing.normal};
-    height: 1px;
-    border-bottom: 1px solid ${colors.brand.lighter};
-  }
-
   .text {
     text-align: center;
   }
-
   .list-item {
     position: relative;
     float: left;
@@ -137,7 +130,7 @@ const ImageSearchWrapper = styled.div`
   }
 
   .image {
-    width: 50%;
+    max-width: 50%;
     padding: ${spacing.small};
     ${mq.range({ until: breakpoints.mobileWide })} {
       width: 100%;

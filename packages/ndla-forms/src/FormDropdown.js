@@ -15,7 +15,7 @@ const FormSelectWrapper = styled.select`
   font-weight: ${fonts.weight.normal};
   color: ${colors.brand.primary};
   border: 0;
-  ${fonts.sizes(18, 1.1)};
+  ${fonts.sizes('18px', 1.1)};
   height: ${spacing.large};
   width: 100%;
   padding-left: ${spacing.small};

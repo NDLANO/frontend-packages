@@ -421,6 +421,7 @@ const Portal = ({
   uuidData,
   narrow,
   onScroll,
+  minHeight,
 }) => {
   const content = (
     <FocusTrapReact>
@@ -430,7 +431,10 @@ const Portal = ({
           role="dialog"
           onScroll={onScroll}
           data-modal={uuidData}
-          style={{ animationDuration: `${animationDuration}ms` }}
+          style={{
+            animationDuration: `${animationDuration}ms`,
+            minHeight: minHeight || 0,
+          }}
           onAnimationEnd={onAnimationEnd}
           className={cx('animation-container', {
             [animation]: true,
@@ -582,6 +586,7 @@ class Modal extends React.Component {
       narrow,
       controllable,
       isOpen: propsIsOpen,
+      minHeight,
       ...rest
     } = this.props;
 
@@ -636,7 +641,8 @@ class Modal extends React.Component {
               onScroll={this.onScroll}
               className={className}
               uuidData={this.uuid}
-              narrow={narrow}>
+              narrow={narrow}
+              minHeight={minHeight}>
               {children}
             </Portal>
           )}
@@ -684,6 +690,7 @@ Modal.propTypes = {
   narrow: PropTypes.bool,
   controllable: PropTypes.bool,
   isOpen: PropTypes.bool,
+  minHeight: PropTypes.string,
 };
 
 Modal.defaultProps = {

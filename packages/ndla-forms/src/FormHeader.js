@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   padding-top: ${spacing.normal};
   padding-bottom: ${spacing.xsmall};
   margin-top: ${spacing.normal};
-  margin-bottom: ${spacing.normal};
+  margin-bottom: ${spacing.small};
   ${props =>
     css`
       width: ${props.wrapperWidth}%;
@@ -37,9 +37,9 @@ const Title = styled.h2`
   text-transform: uppercase;
   padding-right: ${spacing.small};
   margin: 0;
-  ${fonts.sizes(20, 1.1)};
+  ${fonts.sizes('20px', 1.1)};
   span {
-    ${fonts.sizes(20, 1.1)};
+    ${fonts.sizes('20px', 1.1)};
     font-weight: ${fonts.weight.normal};
     text-transform: none;
     padding-left: ${spacing.small};

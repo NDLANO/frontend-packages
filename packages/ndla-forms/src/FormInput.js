@@ -25,7 +25,7 @@ const inputWrapperCSS = css`
   textarea {
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
-    ${fonts.sizes(18, 1.3)};
+    ${fonts.sizes('18px', 1.3)};
     background: none;
     border: 0;
     display: flex;
@@ -44,7 +44,7 @@ const inputWrapperCSS = css`
     margin: 14px 0;
     resize: none;
   }
-  > .c-icon {
+  .c-icon {
     width: 24px;
     height: 24px;
   }
@@ -61,7 +61,7 @@ const whiteCSS = css`
 const FormWarningText = styled.span`
   font-family: ${fonts.sans};
   color: ${colors.support.red};
-  ${fonts.sizes(14, 1.1)};
+  ${fonts.sizes('14px', 1.1)};
 `;
 
 class FormInput extends React.Component {
@@ -117,6 +117,7 @@ class FormInput extends React.Component {
       focusOnMount,
       white,
       autoExpand,
+      value,
       ...rest
     } = this.props;
 
@@ -153,6 +154,7 @@ class FormInput extends React.Component {
                 onBlur(e);
               }
             }}
+            value={value}
             {...rest}
           />
           {iconRight && iconRight}
@@ -175,11 +177,13 @@ FormInput.propTypes = {
   warningText: PropTypes.string,
   focusOnMount: PropTypes.bool,
   autoExpand: PropTypes.bool,
+  value: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
 };
 
 FormInput.defaultProps = {
   container: 'form',
   autoExpand: false,
+  value: '',
 };
 
 export default FormInput;

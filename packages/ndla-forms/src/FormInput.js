@@ -176,7 +176,7 @@ FormInput.propTypes = {
   warningText: PropTypes.string,
   focusOnMount: PropTypes.bool,
   autoExpand: PropTypes.bool,
-  value: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 FormInput.defaultProps = {

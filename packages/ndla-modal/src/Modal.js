@@ -16,6 +16,7 @@ import {
   createUniversalPortal,
   isIosDeviceSafari,
 } from 'ndla-util';
+
 import { spacing, colors, mq, breakpoints, fonts } from 'ndla-core';
 import FocusTrapReact from 'focus-trap-react';
 import Button from 'ndla-button';
@@ -88,6 +89,28 @@ const modalAnimations = `
       transform: translate3d(0, -52px, 0);
     }
   }
+
+  @keyframes modal-subtleIn {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -13px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes modal-subtleOut {
+    0% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(0, -13px, 0);
+    }
+  }
 `;
 
 const ModalWrapper = styled.div`
@@ -125,9 +148,9 @@ const ModalWrapper = styled.div`
       }
     }
     &.subtle {
-      animation-name: fadeOut;
+      animation-name: modal-subtleOut;
       &.animateIn {
-        animation-name: fadeIn;
+        animation-name: modal-subtleIn;
       }
     }
     // 2. Modal size modifiers
@@ -218,14 +241,36 @@ const ModalWrapper = styled.div`
   }
   .modal-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
+    h1 {
+      margin: 0;
+      flex-grow: 1;
+      font-weight: ${fonts.weight.bold};
+      ${fonts.sizes('22px', 1.2)};
+      color: ${colors.text.primary};
+      small {
+        padding-left: ${spacing.small};
+        margin-left: ${spacing.xsmall};
+        border-left: 1px solid ${colors.brand.greyLight};
+        ${fonts.sizes('20px', 1.2)};
+        font-weight: ${fonts.weight.normal};
+      }
+    }
+    hr {
+      flex-basis: 100%;
+    }
     padding: ${spacing.normal};
     &.no-bottom-padding {
       padding-bottom: 0;
     }
     + .modal-body {
       padding-top: 0;
+    }
+    hr {
+      display: block;
+      height: 2px;
+      background-color: ${colors.brand.primary};
     }
     &.white {
       background: #fff;
@@ -279,6 +324,9 @@ const ModalWrapper = styled.div`
       ${spacing.normal};
     &.no-padding {
       padding: 0 !important;
+    }
+    &.no-padding-buttom {
+      padding-bottom: 0 !important;
     }
     &.no-side-padding-mobile {
       ${mq.range({ until: breakpoints.mobileWide })} {
@@ -379,6 +427,7 @@ const Portal = ({
       <ModalWrapper
         className={cx(className, { narrow, scrollFixIOS: isIosDeviceSafari })}>
         <div
+          role="dialog"
           onScroll={onScroll}
           data-modal={uuidData}
           style={{ animationDuration: `${animationDuration}ms` }}
@@ -413,9 +462,10 @@ const Portal = ({
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+    const autoOpen = props.controllable && props.isOpen;
     this.state = {
-      isOpen: false,
-      animateIn: false,
+      isOpen: autoOpen,
+      animateIn: autoOpen,
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -426,6 +476,18 @@ class Modal extends React.Component {
     this.scrollPosition = null;
     this.el = null;
     this.uuid = uuid();
+  }
+
+  componentDidMount() {
+    if (
+      uuidList.indexOf(this.uuid) === -1 &&
+      this.props.controllable &&
+      this.props.isOpen
+    ) {
+      noScroll(true, this.uuid);
+      uuidList.push(this.uuid);
+      window.addEventListener('keyup', this.onKeypressed, true);
+    }
   }
 
   componentDidUpdate() {
@@ -518,38 +580,47 @@ class Modal extends React.Component {
       className,
       children,
       narrow,
+      controllable,
+      isOpen: propsIsOpen,
       ...rest
     } = this.props;
 
     const { isOpen, animateIn } = this.state;
 
-    const clonedComponent =
-      typeof activateButton === 'string' ? (
-        <Button
-          outline
-          onClick={() => {
-            this.openModal();
-            if (onClickEvent) {
-              onClickEvent();
-            }
-          }}>
-          {activateButton}
-        </Button>
-      ) : (
-        React.cloneElement(activateButton, {
-          onClick: () => {
-            this.openModal();
-            if (onClickEvent) {
-              onClickEvent();
-            }
-          },
-        })
-      );
+    let clonedComponent;
+    if (!controllable) {
+      clonedComponent =
+        typeof activateButton === 'string' ? (
+          <Button
+            outline
+            onClick={() => {
+              this.openModal();
+              if (onClickEvent) {
+                onClickEvent();
+              }
+            }}>
+            {activateButton}
+          </Button>
+        ) : (
+          React.cloneElement(activateButton, {
+            onClick: () => {
+              this.openModal();
+              if (onClickEvent) {
+                onClickEvent();
+              }
+            },
+          })
+        );
+    }
+
+    const modalButton =
+      !controllable &&
+      (wrapperFunctionForButton
+        ? wrapperFunctionForButton(clonedComponent)
+        : clonedComponent);
     return (
       <Component {...rest} className={containerClass}>
-        {wrapperFunctionForButton
-          ? wrapperFunctionForButton(clonedComponent)
-          : clonedComponent}
+        {modalButton}
         <div ref={this.containerRef}>
           {isOpen && (
             <Portal
@@ -592,13 +663,27 @@ Modal.propTypes = {
   ]),
   backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue']),
   animationDuration: PropTypes.number,
-  activateButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  activateButton: (props, propName, componentName) => {
+    if (
+      !props.controllable &&
+      (typeof props[propName] !== 'string' &&
+        !React.isValidElement(props[propName]))
+    ) {
+      return new Error(
+        `Invalid prop \`${propName}\` supplied to` +
+          ` \`${componentName}\`. Validation failed.`,
+      );
+    }
+    return null;
+  },
   wrapperFunctionForButton: PropTypes.func,
   noBackdrop: PropTypes.bool,
   closeOnBackdrop: PropTypes.bool,
   className: PropTypes.string,
   onOpen: PropTypes.func,
   narrow: PropTypes.bool,
+  controllable: PropTypes.bool,
+  isOpen: PropTypes.bool,
 };
 
 Modal.defaultProps = {

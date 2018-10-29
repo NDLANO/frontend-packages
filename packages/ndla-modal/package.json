@@ -1,6 +1,6 @@
 {
   "name": "ndla-modal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

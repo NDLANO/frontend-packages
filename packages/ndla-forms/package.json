@@ -1,12 +1,11 @@
 {
-  "name": "ndla-accordion",
-  "version": "0.2.1",
-  "description": "A simple accordion from NDLA",
+  "name": "ndla-forms",
+  "version": "0.0.1",
+  "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
-  "sideEffects": false,
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
@@ -17,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-forms/"
   },
   "keywords": [
     "ndla"
@@ -30,6 +29,7 @@
   "peerDependencies": {
     "emotion": "^9.2.10",
     "ndla-core": "^0.0.1",
+    "ndla-icons": "^0.0.1",
     "react": "^16.4.2",
     "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"

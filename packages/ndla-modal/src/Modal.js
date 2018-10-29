@@ -411,6 +411,7 @@ const Portal = ({
   animateIn,
   animation,
   size,
+  minHeight,
   backgroundColor,
   noBackdrop,
   closeOnBackdrop,
@@ -430,7 +431,7 @@ const Portal = ({
           role="dialog"
           onScroll={onScroll}
           data-modal={uuidData}
-          style={{ animationDuration: `${animationDuration}ms` }}
+          style={{ animationDuration: `${animationDuration}ms`, minHeight }}
           onAnimationEnd={onAnimationEnd}
           className={cx('animation-container', {
             [animation]: true,
@@ -576,6 +577,7 @@ class Modal extends React.Component {
       animationDuration,
       animation,
       size,
+      minHeight,
       backgroundColor,
       className,
       children,
@@ -625,6 +627,7 @@ class Modal extends React.Component {
           {isOpen && (
             <Portal
               size={size}
+              minHeight={minHeight}
               backgroundColor={backgroundColor}
               animationDuration={animationDuration}
               animateIn={animateIn}
@@ -683,6 +686,7 @@ Modal.propTypes = {
   onOpen: PropTypes.func,
   narrow: PropTypes.bool,
   controllable: PropTypes.bool,
+  minHeight: PropTypes.string,
   isOpen: PropTypes.bool,
 };
 

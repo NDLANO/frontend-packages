@@ -1,6 +1,6 @@
 {
   "name": "ndla-pager",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Pager component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

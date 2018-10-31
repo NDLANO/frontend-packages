@@ -140,7 +140,16 @@ class TaxonomySelectPath extends Component {
         animation="subtle"
         controllable
         isOpen={modalOpen}
-        onClose={this.props.resetSubject}>
+        onClose={() => {
+          this.setState({
+            mainTopics: [],
+            mainTopicName: '',
+            subTopics: [],
+            subTopicNames: [],
+            topicFilters: [],
+          });
+          this.props.resetSubject();
+        }}>
         {onCloseModal => (
           <Fragment>
             <ModalHeader>

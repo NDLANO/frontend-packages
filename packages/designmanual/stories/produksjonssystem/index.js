@@ -22,6 +22,8 @@ import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import TaxonomyEditorExample from './TaxonomyEditorExample';
 
+import { Center } from '../helpers';
+
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
     <div
@@ -150,8 +152,8 @@ storiesOf('Produksjonssystem', module)
       <StoryIntro title="Taksonomi editor">
         <p>Tekst kommer</p>
       </StoryIntro>
-      <StoryBody>
+      <Center>
         <TaxonomyEditorExample />
-      </StoryBody>
+      </Center>
     </div>
   ));

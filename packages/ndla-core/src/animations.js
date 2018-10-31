@@ -22,4 +22,17 @@ export default {
               opacity: 1;
             }
           }`,
+  fadeInBottom: duration => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    animation-name: fadeInBottom;
+        @keyframes fadeInBottom {
+            0% {
+              transform: translateY(${spacing.small});
+              opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+              opacity: 1;
+            }
+          }`,
 };

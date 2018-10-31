@@ -58,12 +58,14 @@ class TaxonomyEditorExample extends Component {
       resourceTypeSelected: '',
       subjects: [],
       connections: [],
+      primaryId: null,
     };
     this.updateResourceType = this.updateResourceType.bind(this);
     this.selectSubject = this.selectSubject.bind(this);
     this.addConnection = this.addConnection.bind(this);
     this.removeConnection = this.removeConnection.bind(this);
     this.toggleItemCore = this.toggleItemCore.bind(this);
+    this.selectPrimary = this.selectPrimary.bind(this);
   }
 
   componentDidMount() {
@@ -95,18 +97,34 @@ class TaxonomyEditorExample extends Component {
   }
 
   selectSubject(subjectId) {
-    this.setState({
-      subjectId,
-    });
+    if (subjectId) {
+      this.setState(prevState => ({
+        subjectId,
+        subjectName: prevState.subjects.find(
+          subject => subject.id === subjectId,
+        ).name,
+      }));
+    } else {
+      this.setState({
+        subjectId,
+        subjectName: '',
+        resourceTypeSelected: '',
+      });
+    }
   }
 
-  addConnection(newConnection) {
+  addConnection(addedConnection) {
     this.setState(prevState => {
-      const { connections } = prevState;
+      const { connections, subjectName } = prevState;
+      const newConnection = addedConnection;
+      newConnection.subjectName = subjectName;
       connections.push(newConnection);
+      const primaryId =
+        connections.length === 1 ? newConnection.uniqeId : prevState.primaryId;
       return {
         subjectId: undefined,
         connections,
+        primaryId,
       };
     });
   }
@@ -135,13 +153,21 @@ class TaxonomyEditorExample extends Component {
     });
   }
 
+  selectPrimary(primaryId) {
+    this.setState({
+      primaryId,
+    });
+  }
+
   render() {
     const {
       resourceTypes,
       resourceTypeSelected,
       subjects,
       subjectId,
+      subjectName,
       connections,
+      primaryId,
     } = this.state;
     return (
       <Fragment>
@@ -182,13 +208,15 @@ class TaxonomyEditorExample extends Component {
           list={connections}
           removeItem={this.removeConnection}
           toggleItemCore={this.toggleItemCore}
+          selectPrimary={this.selectPrimary}
+          primaryId={primaryId}
           removeLabel="Ta bort"
         />
         <FormDropdownButton
           value=""
           onChange={e => this.selectSubject(e.target.value)}>
           <option value="">
-            {this.state.addedConnection
+            {this.state.connections.length > 0
               ? 'Legg til flere emnetilknytninger'
               : 'Legg til emnetilknytning'}
           </option>
@@ -199,6 +227,7 @@ class TaxonomyEditorExample extends Component {
           ))}
         </FormDropdownButton>
         <TaxonomySelectPath
+          subjectName={subjectName}
           subjectId={subjectId}
           resetSubject={this.selectSubject}
           addConnection={this.addConnection}

@@ -423,6 +423,7 @@ const Portal = ({
   narrow,
   onScroll,
 }) => {
+  console.log('???? modal');
   const content = (
     <FocusTrapReact>
       <ModalWrapper
@@ -488,6 +489,16 @@ class Modal extends React.Component {
       noScroll(true, this.uuid);
       uuidList.push(this.uuid);
       window.addEventListener('keyup', this.onKeypressed, true);
+    }
+  }
+
+  componentWillReceiveProps(nextProps, prevProps) {
+    if (nextProps.controllable && nextProps.isOpen !== prevProps.isOpen) {
+      if (nextProps.isOpen) {
+        this.openModal();
+      } else {
+        this.closeModal();
+      }
     }
   }
 

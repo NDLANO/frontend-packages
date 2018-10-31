@@ -20,6 +20,7 @@ import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
+import TaxonomyEditorExample from './TaxonomyEditorExample';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -141,6 +142,16 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <SlateBlockMenuExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('Taksonomi editor', () => (
+    <div>
+      <StoryIntro title="Taksonomi editor">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <TaxonomyEditorExample />
       </StoryBody>
     </div>
   ));

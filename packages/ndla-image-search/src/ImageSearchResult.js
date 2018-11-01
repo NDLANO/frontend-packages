@@ -9,14 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'ndla-button';
-import BEMHelper from 'react-bem-helper';
+import { cx } from 'react-emotion';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
-
-const classes = new BEMHelper({
-  name: 'image-search',
-  prefix: 'c-',
-});
 
 export default function ImageSearchResult({
   image,
@@ -28,8 +23,8 @@ export default function ImageSearchResult({
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
   return (
-    <div key={image.id} {...classes('list-item', active)}>
-      <div {...classes('list-item-inner')}>
+    <div key={image.id} className={cx('list-item', { active })}>
+      <div className="list-item-inner">
         <Button stripped onClick={() => onImageClick(image)}>
           <img
             role="presentation"
@@ -37,7 +32,7 @@ export default function ImageSearchResult({
             srcSet={getPreviewSrcSets(encodeURI(image.previewUrl))}
             src={image.previewUrl}
           />
-          <span {...classes('list-item-title')}>{image.title.title}</span>
+          <span className="list-item-title">{image.title.title}</span>
         </Button>
       </div>
       {selectedImage && selectedImage.id === image.id ? (

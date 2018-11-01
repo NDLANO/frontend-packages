@@ -18,14 +18,14 @@ import { BY, SA, NC, CC, COPYRIGHTED } from '../licenseRights';
 test('licenses/getLicenseByAbbreviation get license for CC-BY-SA-4.0 in english', () => {
   const license = getLicenseByAbbreviation('CC-BY-SA-4.0', 'en');
 
-  expect(license.title).toBe('Attribution ShareAlike');
+  expect(license.title).toBe('CC BY-SA 4.0: Attribution ShareAlike');
   expect(license.rights).toEqual([CC, BY, SA]);
 });
 
 test('licenses/getLicenseByAbbreviation get license without locale defaults to nb', () => {
   const license = getLicenseByAbbreviation('CC-BY-NC-SA-4.0');
 
-  expect(license.title).toBe('Navngivelse-IkkeKommersiell-DelPåSammeVilkår');
+  expect(license.title).toBe('CC BY-NC-SA 4.0: Navngivelse-Ikkekommersiell-Del på samme vilkår');
   expect(license.rights).toEqual([CC, BY, NC, SA]);
 });
 

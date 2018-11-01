@@ -13,7 +13,6 @@ import { colors, spacing } from 'ndla-core';
 
 const StyledAccordionPanel = styled.section`
   display: flex;
-  overflow-y: auto;
   transition: opacity 200ms ease;
   opacity: 1;
   margin-bottom: ${spacing.normal};

@@ -24,7 +24,7 @@ import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 const FrontpageExample = ({ t }) => (
   <Fragment>
     <FrontpageHeader
-      heading="Nasjonal digital læringsarena"
+      locale="nb"
       searchFieldValue=""
       logoTo="home"
       onSearchFieldChange={() => {}}

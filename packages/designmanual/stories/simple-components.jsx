@@ -102,7 +102,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <FigureWithLicense
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
           runScripts>
           <Image
             alt="Forstørrelsesglass"

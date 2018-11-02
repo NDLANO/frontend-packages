@@ -33,5 +33,8 @@
   "dependencies": {
     "@ndla/util": "^0.2.9",
     "raven-js": "^3.22.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

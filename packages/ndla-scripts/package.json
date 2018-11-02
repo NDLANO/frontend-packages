@@ -29,5 +29,8 @@
     "now": "^11.4.2",
     "octonode": "^0.9.4",
     "url-regex": "^4.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

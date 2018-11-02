@@ -39,5 +39,8 @@
     "react-bem-helper": "^1.4.1",
     "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

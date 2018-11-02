@@ -36,5 +36,8 @@
     "intl-format-cache": "^2.1.0",
     "intl-messageformat": "^2.2.0",
     "invariant": "^2.2.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

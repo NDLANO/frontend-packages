@@ -6,3 +6,4 @@
   "module": "../es/action/index.js",
   "jsnext:main": "../es/action/index.js"
 }
+    

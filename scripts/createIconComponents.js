@@ -9,7 +9,7 @@ const rimraf = require('rimraf');
 const prettier = require('prettier');
 const prettierOptions = require('../.prettierrc');
 
-const rootDir = path.join(__dirname, '..', 'packages', '@ndla/icons');
+const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
 const attrs = ['xlink:href'];
 
 const copyright = fs.readFileSync(

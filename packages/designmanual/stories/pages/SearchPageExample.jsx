@@ -370,11 +370,11 @@ class SearchPageExample extends Component {
               }}
             />
             <SearchFilter
-              label={t('searchPage.label.language-filter')}
+              label={t('searchPage.label.languageFilter')}
               options={searchFilterOptions.languageFilter}
               defaultVisibleCount={2}
-              showLabel={t('searchPage.showLabel.language-filter')}
-              hideLabel={t('searchPage.hideLabel.language-filter')}
+              showLabel={t('searchPage.showLabel.languageFilter')}
+              hideLabel={t('searchPage.hideLabel.languageFilter')}
               values={this.state.filter_languageFilter}
               onChange={values => {
                 this.setState({ filter_languageFilter: values });

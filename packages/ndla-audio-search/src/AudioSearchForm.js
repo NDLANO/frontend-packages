@@ -33,13 +33,11 @@ class AudioSearchForm extends Component {
     }
   }
 
-  handleQueryChange(evt) {
+  handleQueryChange({ target: { value } }) {
     this.setState(prevState => ({
       queryObject: {
-        query: evt.target.value,
-        page: prevState.queryObject.page,
-        pageSize: prevState.queryObject.pageSize,
-        locale: prevState.queryObject.locale,
+        ...prevState.queryObject,
+        query: value,
       },
     }));
   }

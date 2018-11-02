@@ -18,6 +18,8 @@ import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
+import FormExampleAuthors from './FormExampleAuthors';
+import SlateBlockMenuExample from './SlateBlockMenuExample';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -119,6 +121,26 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <VideoSearcher />
+      </StoryBody>
+    </div>
+  ))
+  .add('Form elements', () => (
+    <div>
+      <StoryIntro title="Form elementer">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <FormExampleAuthors />
+      </StoryBody>
+    </div>
+  ))
+  .add('Editor', () => (
+    <div>
+      <StoryIntro title="Editor komponenter">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <SlateBlockMenuExample />
       </StoryBody>
     </div>
   ));

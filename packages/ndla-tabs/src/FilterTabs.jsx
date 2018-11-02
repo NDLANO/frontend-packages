@@ -15,6 +15,7 @@ class FilterTabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      options: props.options,
       visibleTabsCounter: 999,
       focusOnSelected: false,
     };
@@ -34,18 +35,16 @@ class FilterTabs extends Component {
     this.checkTabSizes();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.options !== this.props.options) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options !== this.state.options) {
       this.tabWidths = null;
-      this.updateTabSizes();
+      // It's fine: https://reactjs.org/docs/react-component.html#componentdidupdate
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         focusOnSelected: false,
         showDropdown: false,
       });
     }
-  }
-
-  componentDidUpdate() {
     this.updateTabSizes();
     if (this.state.focusOnSelected) {
       this.liRefs[this.props.value].focus();

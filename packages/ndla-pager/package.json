@@ -28,9 +28,11 @@
     "lib",
     "es"
   ],
+  "dependencies": {
+    "@ndla/core": "^0.3.5"
+  },
   "peerDependencies": {
     "emotion": "^9.2.10",
-    "ndla-core": "^0.0.1",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",
     "react-emotion": "^9.2.10",

@@ -27,13 +27,15 @@
     "lib",
     "es"
   ],
+  "dependencies": {
+    "@ndla/button": "^0.0.3",
+    "@ndla/core": "^0.3.5",
+    "@ndla/forms": "^0.0.3",
+    "@ndla/licenses": "^0.3.1",
+    "@ndla/util": "^0.2.9"
+  },
   "peerDependencies": {
     "emotion": "^9.2.10",
-    "ndla-button": "^0.0.1",
-    "ndla-core": "^0.0.1",
-    "ndla-forms": "^0.0.1",
-    "ndla-licenses": "^0.2.0",
-    "ndla-util": "^0.2.1",
     "react": "^16.0.0",
     "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"

@@ -100,7 +100,7 @@ const modalAnimations = `
       transform: translate3d(0, 0, 0);
     }
   }
-  
+
   @keyframes modal-subtleOut {
     0% {
       opacity: 1;

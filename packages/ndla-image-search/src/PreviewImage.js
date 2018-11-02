@@ -8,21 +8,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import Button from 'ndla-button';
 import { uuid, convertFieldWithFallback } from 'ndla-util';
 import { getSrcSets } from './util/imageUtil';
 
-const classes = new BEMHelper({
-  name: 'image-preview',
-  prefix: 'c-',
-});
-
 export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
   const tags = convertFieldWithFallback(image, 'tags', []);
   return (
-    <div {...classes()}>
-      <div {...classes('image')}>
+    <div className="image-preview">
+      <div className="image">
         <img
           role="presentation"
           alt="presentation"
@@ -31,32 +25,28 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
           src={image.imageUrl}
         />
       </div>
-      <div {...classes('information')}>
-        <h2 {...classes('title')}>
+      <div className="information">
+        <h2 className="title">
           {convertFieldWithFallback(image, 'title', '')}
         </h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
-          <div {...classes('copyright-author')}>
-            <span {...classes('text', 'right')}>
+          <div className="copyright-author">
+            <span className="text right">
               {image.copyright.creators.map(creator => creator.name).join(', ')}
             </span>
           </div>
         ) : null}
-        <div {...classes('license')}>
-          <span {...classes('text', 'right')}>
+        <div className="license">
+          <span className="text right">
             {image.copyright.license.description}
           </span>
         </div>
-        <div {...classes('tags')}>
+        <div className="tags">
           {tags.map(tag => (
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
         </div>
-        <Button
-          className="button button--primary button--block"
-          onClick={() => onSelectImage(image)}>
-          {useImageTitle}
-        </Button>
+        <Button onClick={() => onSelectImage(image)}>{useImageTitle}</Button>
       </div>
       <div className="clear" />
     </div>

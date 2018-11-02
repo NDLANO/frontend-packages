@@ -418,6 +418,9 @@ const messages = {
   breadcrumb: {
     toFrontpage: 'Til framsida',
   },
+  notions: {
+    closeNotion: 'Lukk',
+  },
 };
 
 export default messages;

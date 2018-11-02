@@ -13,8 +13,8 @@ import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const fetchImages = (query, page) => {
   const queryString = query
-    ? `query=${query}&page=${page}&page-size=16`
-    : `page=${page}&page-size=16`;
+    ? `query=${query}&page=${page}&page-size=15`
+    : `page=${page}&page-size=15`;
   return new Promise((resolve, reject) => {
     getToken().then(token => {
       fetch(`https://test.api.ndla.no/image-api/v2/images/?${queryString}`, {

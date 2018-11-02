@@ -1,11 +1,12 @@
 {
-  "name": "ndla-image-search",
-  "version": "0.6.1",
-  "description": "A simple library for searching images from NDLA",
+  "name": "ndla-notion",
+  "version": "0.0.1",
+  "description": "Notions and dictionary-notions for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
+  "sideEffects": false,
   "scripts": {
     "build": "npm run build:commonjs && npm run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
@@ -23,19 +24,17 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
     "lib",
     "es"
   ],
   "peerDependencies": {
     "emotion": "^9.2.10",
-    "ndla-button": "^0.0.1",
     "ndla-core": "^0.0.1",
-    "ndla-forms": "^0.0.1",
-    "ndla-licenses": "^0.2.0",
-    "ndla-util": "^0.2.1",
-    "react": "^16.0.0",
+    "ndla-ui": "^0.0.1",
+    "ndla-licenses": "^0.0.1",
+    "react": "^16.4.2",
     "react-emotion": "^9.2.10",
-    "react-prop-types": "0.4.0"
+    "react-prop-types": "0.4.0",
+    "ndla-modal": "^0.0.1"
   }
 }

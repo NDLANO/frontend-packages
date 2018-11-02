@@ -252,7 +252,6 @@ class SearchPageExample extends Component {
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
-        hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
         onSearchFieldFilterRemove={(value, filterName) => {
           if (this.state[filterName]) {
@@ -392,6 +391,7 @@ class SearchPageExample extends Component {
         }>
         <SearchResult
           author={authorDesktop}
+          hideResultText={this.state.competenceGoalsOpen}
           messages={{
             searchStringLabel: t(
               'searchPage.searchResultMessages.searchStringLabel',

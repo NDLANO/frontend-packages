@@ -64,7 +64,6 @@ class SearchPage extends Component {
       children,
       messages,
       author,
-      hideResultText,
       t,
     } = this.props;
 
@@ -95,9 +94,6 @@ class SearchPage extends Component {
             </div>
           </aside>
           <div {...classes('result-wrapper')}>
-            <h2 aria-hidden="true" {...classes('result-label', 'large-screen')}>
-              {!hideResultText ? messages.resultHeading : '\u00A0'}
-            </h2>
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
@@ -142,9 +138,7 @@ class SearchPage extends Component {
                 )}
               </Modal>
             </div>
-            <h2 aria-hidden="true" {...classes('result-label', 'small-screen')}>
-              {!hideResultText ? messages.resultHeading : '\u00A0'}
-            </h2>
+
             {children}
           </div>
         </div>
@@ -178,7 +172,6 @@ SearchPage.propTypes = {
   ),
   messages: PropTypes.shape({
     narrowScreenFilterHeading: PropTypes.string.isRequired,
-    resultHeading: PropTypes.string,
   }).isRequired,
   author: PropTypes.node,
   hideResultText: PropTypes.bool,

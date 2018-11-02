@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Cross } from 'ndla-icons/action';
-import { SearchField, OneColumn, Logo, SafeLink } from 'ndla-ui';
-import Modal, { ModalHeader } from 'ndla-modal';
-import Button from 'ndla-button';
-import { uuid } from 'ndla-util';
-import { injectT } from 'ndla-i18n';
+import { Cross } from '@ndla/icons/action';
+import { SearchField, OneColumn, Logo, SafeLink } from '@ndla/ui';
+import Modal, { ModalHeader } from '@ndla/modal';
+import Button from '@ndla/button';
+import { uuid } from '@ndla/util';
+import { injectT } from '@ndla/i18n';
 
 const classes = BEMHelper('c-frontpage-header');
 const classesMenu = new BEMHelper({

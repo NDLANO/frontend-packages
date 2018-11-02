@@ -1,5 +1,5 @@
 {
-  "name": "ndla-button",
+  "name": "@ndla/button",
   "version": "0.0.3",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",

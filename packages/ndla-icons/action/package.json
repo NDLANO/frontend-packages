@@ -1,9 +1,8 @@
 
 {
-  "name": "ndla-icons/action",
+  "name": "@ndla/icons/action",
   "private": true,
   "main": "../lib/action/index.js",
   "module": "../es/action/index.js",
   "jsnext:main": "../es/action/index.js"
 }
-    

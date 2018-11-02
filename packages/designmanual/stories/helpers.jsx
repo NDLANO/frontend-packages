@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'ndla-util';
+import { uuid } from '@ndla/util';
 
 export const Center = ({ children, style }) => (
   <div

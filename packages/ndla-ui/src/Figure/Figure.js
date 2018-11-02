@@ -12,7 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ZoomOutMap, Link as LinkIcon } from 'ndla-icons/common';
+import { ZoomOutMap, Link as LinkIcon } from '@ndla/icons/common';
 import LicenseByline from '../LicenseByline';
 import SafeLink from '../common/SafeLink';
 

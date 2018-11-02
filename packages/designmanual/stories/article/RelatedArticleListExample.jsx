@@ -16,8 +16,8 @@ import {
   AssessmentResourcesBadge,
   SubjectBadge,
   SourceMaterialBadge,
-} from 'ndla-ui';
-import { toggleRelatedArticles } from 'ndla-article-scripts';
+} from '@ndla/ui';
+import { toggleRelatedArticles } from '@ndla/article-scripts';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
 export const RelatedArticleExerciseList = () => (

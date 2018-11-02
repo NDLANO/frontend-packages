@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
 
-import { spacing, fonts, colors, misc, mq, breakpoints } from 'ndla-core';
+import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
 
 const ListItemWrapper = styled.div`
   padding: ${spacing.small};

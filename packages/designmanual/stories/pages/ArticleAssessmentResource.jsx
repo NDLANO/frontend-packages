@@ -17,7 +17,7 @@ import {
   ArticleIntroduction,
   Image,
   AssessmentResourcesBadge,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';

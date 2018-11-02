@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Cross } from 'ndla-icons/action';
+import { Cross } from '@ndla/icons/action';
 import { CSSTransition } from 'react-transition-group';
 
 import Fade from '../Animation/Fade';

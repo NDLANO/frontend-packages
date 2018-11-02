@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { TopicIntroductionList, SubjectFilter } from 'ndla-ui';
+import { TopicIntroductionList, SubjectFilter } from '@ndla/ui';
 import { topicListChinese } from '../../dummydata/index';
 
 export const classes = new BEMHelper({

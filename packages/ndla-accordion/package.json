@@ -1,5 +1,5 @@
 {
-  "name": "ndla-accordion",
+  "name": "@ndla/accordion",
   "version": "0.2.3",
   "description": "A simple accordion from NDLA",
   "license": "GPL-3.0",

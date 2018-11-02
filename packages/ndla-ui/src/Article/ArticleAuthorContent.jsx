@@ -9,9 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 
-import { Portrait, SafeLink } from 'ndla-ui';
+import { Portrait, SafeLink } from '@ndla/ui';
 
 const classes = new BEMHelper({
   name: 'article-author-popup',

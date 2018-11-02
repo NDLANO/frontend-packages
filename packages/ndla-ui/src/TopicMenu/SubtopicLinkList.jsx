@@ -8,10 +8,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Back, ChevronRight } from 'ndla-icons/common';
-import { injectT } from 'ndla-i18n';
+import { Back, ChevronRight } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
 
-import { SafeLink } from 'ndla-ui';
+import { SafeLink } from '@ndla/ui';
 import { TopicShape } from '../shapes';
 
 import { ContentTypeResult, SearchToggleFilter } from '../Search';

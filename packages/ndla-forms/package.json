@@ -1,5 +1,5 @@
 {
-  "name": "ndla-forms",
+  "name": "@ndla/forms",
   "version": "0.0.3",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",

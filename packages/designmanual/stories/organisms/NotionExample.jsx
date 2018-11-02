@@ -7,15 +7,15 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { OneColumn, LayoutItem, Image } from 'ndla-ui';
+import { OneColumn, LayoutItem, Image } from '@ndla/ui';
 import Notion, {
   NotionDialogContent,
   NotionDialogText,
   NotionDialogImage,
   NotionDialogLicenses,
-} from 'ndla-notion';
-import Tabs from 'ndla-tabs';
-import { addShowConceptDefinitionClickListeners } from 'ndla-article-scripts';
+} from '@ndla/notion';
+import Tabs from '@ndla/tabs';
+import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';

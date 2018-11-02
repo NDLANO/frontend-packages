@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { fonts, spacing, colors } from 'ndla-core';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { LicenseByline } from 'ndla-ui';
+import { fonts, spacing, colors } from '@ndla/core';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline } from '@ndla/ui';
 
 const NotionDialogLicensesWrapper = styled.div`
   border-top: 1px solid ${colors.brand.tertiary};

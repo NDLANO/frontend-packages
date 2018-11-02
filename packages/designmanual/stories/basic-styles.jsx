@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Translation, TranslationLine } from 'ndla-ui';
+import { Translation, TranslationLine } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 import Table from './molecules/TableExample';

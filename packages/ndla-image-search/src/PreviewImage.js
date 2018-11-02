@@ -8,8 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'ndla-button';
-import { uuid, convertFieldWithFallback } from 'ndla-util';
+import Button from '@ndla/button';
+import { uuid, convertFieldWithFallback } from '@ndla/util';
 import { getSrcSets } from './util/imageUtil';
 
 export default function PreviewImage({ image, onSelectImage, useImageTitle }) {

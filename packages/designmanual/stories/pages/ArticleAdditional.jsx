@@ -16,7 +16,7 @@ import {
   ArticleIntroduction,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 import Resources from '../molecules/resources';
 import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';

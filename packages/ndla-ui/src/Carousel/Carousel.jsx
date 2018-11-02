@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronLeft, ChevronRight } from 'ndla-icons/common';
+import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
 import Slider from 'react-slick';
 
 const classes = BEMHelper('c-carousel');

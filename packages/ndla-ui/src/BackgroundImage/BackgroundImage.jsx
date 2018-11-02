@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { breakpoints } from 'ndla-util';
+import { breakpoints } from '@ndla/util';
 
 const classes = BEMHelper('c-background-image');
 

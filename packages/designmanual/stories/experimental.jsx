@@ -2,7 +2,7 @@ import React from 'react';
 import 'lazysizes';
 
 import { storiesOf } from '@storybook/react';
-import { Image, ContentLoader } from 'ndla-ui';
+import { Image, ContentLoader } from '@ndla/ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
 

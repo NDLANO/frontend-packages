@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ListView, { activeAlphabet } from 'ndla-listview';
-import Tabs from 'ndla-tabs';
+import ListView, { activeAlphabet } from '@ndla/listview';
+import Tabs from '@ndla/tabs';
 import {
   NotionDialogContent,
   NotionDialogImage,
@@ -9,10 +9,10 @@ import {
   NotionDialogTags,
   NotionDialogLicenses,
   NotionDialogWrapper,
-} from 'ndla-notion';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import Button from 'ndla-button';
-import { injectT } from 'ndla-i18n';
+} from '@ndla/notion';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
+import { injectT } from '@ndla/i18n';
 import { mockListView } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
 

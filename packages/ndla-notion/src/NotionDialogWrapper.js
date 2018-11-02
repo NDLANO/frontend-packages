@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'ndla-modal';
+import Modal from '@ndla/modal';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';
 

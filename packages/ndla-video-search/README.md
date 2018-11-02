@@ -23,7 +23,7 @@ $ npm install ndla-video-search
 To use the `VideoSearch` component, some functions for handling search and fetching video is needed. In addition, some translations is needed.
 
 ```js
-import VideoSearch from 'ndla-video-search';
+import VideoSearch from '@ndla/video-search';
 
 const videoSelector = image => {
   // handle video

@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'ndla-button';
+import Button from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({

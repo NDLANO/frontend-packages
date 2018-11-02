@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Tabs from 'ndla-tabs';
+import Tabs from '@ndla/tabs';
 
 class VideoTabs extends Component {
   constructor(props) {

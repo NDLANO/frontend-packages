@@ -9,10 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { fonts, colors, spacing, mq, breakpoints } from 'ndla-core';
-import Pager from 'ndla-pager';
-import { FormInput } from 'ndla-forms';
-import { Search as SearchIcon } from 'ndla-icons/common';
+import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
+import Pager from '@ndla/pager';
+import { FormInput } from '@ndla/forms';
+import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
 
 const ImageSearchWrapper = styled.div`

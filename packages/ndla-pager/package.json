@@ -1,5 +1,5 @@
 {
-  "name": "ndla-pager",
+  "name": "@ndla/pager",
   "version": "0.2.2",
   "description": "Pager component for NDLA",
   "license": "GPL-3.0",

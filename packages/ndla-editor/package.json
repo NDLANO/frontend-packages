@@ -1,5 +1,5 @@
 {
-  "name": "ndla-editor",
+  "name": "@ndla/editor",
   "version": "0.2.4",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",

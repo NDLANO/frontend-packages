@@ -25,7 +25,7 @@ $ npm install ndla-tabs --save
 ### Basic example
 
 ```js
-import Tabs from 'ndla-tabs';
+import Tabs from '@ndla/tabs';
 import BananaComponent from 'banana';
 import PickleComponent from 'picke';
 
@@ -43,7 +43,7 @@ const Fruits = () => {
 ### Example where selected tab is controlled via `selectedIndex` prop
 
 ```js
-import Tabs from 'ndla-tabs';
+import Tabs from '@ndla/tabs';
 import fruitTabs from 'fruit-tabs';
 
 class FruitTabSelector extends Component {
@@ -83,7 +83,7 @@ class FruitTabSelector extends Component {
 resetIdCounter should be called on server before render to prevent server and client markup diff. Example:
 
 ```js
-  import { resetIdCounter } from 'ndla-tabs';
+  import { resetIdCounter } from '@ndla/tabs';
   resetIdCounter();
   ReactDOMServer.renderToString(...);
 ```

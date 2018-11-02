@@ -9,7 +9,7 @@
 import React, { Component, createElement, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronDown, ChevronUp } from 'ndla-icons/common';
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
 const filterClasses = new BEMHelper({
   name: 'filter',

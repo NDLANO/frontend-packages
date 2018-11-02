@@ -1,5 +1,5 @@
 {
-  "name": "ndla-core",
+  "name": "@ndla/core",
   "version": "0.3.5",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",

@@ -1,5 +1,5 @@
 {
-  "name": "ndla-tracker",
+  "name": "@ndla/tracker",
   "version": "0.2.1",
   "description": "A simple library for tracking NDLA applications",
   "license": "GPL-3.0",

@@ -1,5 +1,5 @@
 {
-  "name": "ndla-i18n",
+  "name": "@ndla/i18n",
   "version": "0.3.1",
   "description": "NDLA's own i18n package based on react-intl",
   "license": "GPL-3.0",

@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import ImageSearch from 'ndla-image-search';
+import ImageSearch from '@ndla/image-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const fetchImages = (query, page) => {

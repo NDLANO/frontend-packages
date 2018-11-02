@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from 'ndla-licenses';
+import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
@@ -18,8 +18,8 @@ import {
   TranslationLine,
   ArticleByline,
   RadioButtonGroup,
-} from 'ndla-ui';
-import Pager from 'ndla-pager';
+} from '@ndla/ui';
+import Pager from '@ndla/pager';
 
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';

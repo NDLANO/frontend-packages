@@ -9,7 +9,7 @@ const rimraf = require('rimraf');
 const prettier = require('prettier');
 const prettierOptions = require('../.prettierrc');
 
-const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
+const rootDir = path.join(__dirname, '..', 'packages', '@ndla/icons');
 const attrs = ['xlink:href'];
 
 const copyright = fs.readFileSync(
@@ -136,7 +136,7 @@ function writePackageFiles(types) {
   Object.keys(types).forEach(folder => {
     const iconsModule = `
 {
-  "name": "ndla-icons${folder}",
+  "name": "@ndla/icons${folder}",
   "private": true,
   "main": "../lib${folder}/index.js",
   "module": "../es${folder}/index.js",

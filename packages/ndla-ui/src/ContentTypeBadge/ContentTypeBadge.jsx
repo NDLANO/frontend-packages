@@ -10,7 +10,7 @@ import {
   ExternalLearningResource,
   SharedResource,
   LearningPath,
-} from 'ndla-icons/contentType';
+} from '@ndla/icons/contentType';
 
 import * as contentTypes from '../model/ContentType';
 import { ContentTypeShape } from '../shapes';

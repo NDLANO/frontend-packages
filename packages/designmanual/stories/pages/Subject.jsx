@@ -9,7 +9,7 @@
 /* eslint max-len: 0 */
 import React from 'react';
 
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 import {
   Image,
   OneColumn,
@@ -34,10 +34,10 @@ import {
   EmbeddedFacebook,
   InfoWidget,
   constants,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
-import { EmailOutline } from 'ndla-icons/common';
-import { breakpoints } from 'ndla-util';
+import { EmailOutline } from '@ndla/icons/common';
+import { breakpoints } from '@ndla/util';
 
 import exampleBackground from '../../images/banners/Salg-service-og-sikkerhet.svg';
 import chineseBackground from '../../images/banners/Kinesisk.svg';

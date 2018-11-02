@@ -1,5 +1,5 @@
 {
-  "name": "ndla-scripts",
+  "name": "@ndla/scripts",
   "version": "0.6.1",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",

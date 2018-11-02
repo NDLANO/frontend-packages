@@ -1,5 +1,5 @@
 {
-  "name": "ndla-listview",
+  "name": "@ndla/listview",
   "version": "0.0.1",
   "description": "Listview components for NDLA",
   "license": "GPL-3.0",

@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { Portrait, SafeLink } from 'ndla-ui';
+import { Portrait, SafeLink } from '@ndla/ui';
 
 const classes = new BEMHelper('c-search-result-author');
 

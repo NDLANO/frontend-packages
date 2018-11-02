@@ -23,7 +23,7 @@ import {
   OneColumn,
   PageContainer,
   Content,
-} from 'ndla-ui';
+} from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
 import MastheadWithTopicMenu from '../molecules/mastheads';

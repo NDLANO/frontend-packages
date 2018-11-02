@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Play, Pause, VolumeUp } from 'ndla-icons/common';
+import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 
 /* eslint jsx-a11y/media-has-caption: 0 jsx-a11y/no-noninteractive-tabindex: 0 */
 

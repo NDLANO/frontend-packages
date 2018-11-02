@@ -12,7 +12,7 @@ import elementType from 'react-prop-types/lib/elementType';
 import Link from 'react-router-dom/Link';
 import styled, { css, cx } from 'react-emotion';
 import rgba from 'polished/lib/color/rgba';
-import { colors } from 'ndla-core';
+import { colors } from '@ndla/core';
 
 import SafeLink from './SafeLink'; // TODO: find a solution for sharing common components
 import { stepNumbers } from './pagerHelpers';

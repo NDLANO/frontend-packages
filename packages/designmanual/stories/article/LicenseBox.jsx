@@ -88,7 +88,7 @@ const VideoContent = injectT(({ t }) => (
   </div>
 ));
 
-const TextContent = injectT(({ t }) => (
+export const TextContent = injectT(({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.text.heading')}</h2>
@@ -207,7 +207,7 @@ const AudioContent = injectT(({ t }) => (
   </div>
 ));
 
-const ImageContent = injectT(({ t }) => (
+export const ImageContent = injectT(({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.images.heading')}</h2>

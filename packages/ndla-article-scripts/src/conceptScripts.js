@@ -10,22 +10,68 @@ import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
-export const addShowConceptDefinitionClickListeners = () => {
-  forEachElement('.c-concept__item', item => {
+const closeAllVisibleNotions = returnFocusToParent => {
+  forEachElement('[data-notion]', item => {
     const id = item.getAttribute('id');
     const popup = document.querySelector(`[data-concept-id='${id}']`);
-    const openBtn = item.querySelector('.c-concept__link');
-    const closeBtn = popup.querySelector('.c-concept__close');
+    if (popup.classList.contains('visible')) {
+      popup.classList.remove('visible');
+      popup.setAttribute('aria-hidden', true);
+      if (returnFocusToParent) {
+        const openBtn = item.querySelector('[data-notion-link]');
+        openBtn.focus();
+      }
+    }
+  });
+};
+
+const ESCKeyListener = e => {
+  if (e.key === 'Escape') {
+    closeAllVisibleNotions(true);
+    window.removeEventListener('keyup', ESCKeyListener, true);
+    window.removeEventListener(
+      'mousedown',
+      checkClickOutside,
+      true,
+    ); /* eslint no-use-before-define: ["error", { "variables": false }] */
+  }
+};
+
+const checkClickOutside = e => {
+  // click out side will close concept box.
+  let { target } = e;
+  let clickedInside = false;
+  while (target.nodeName !== 'BODY' && !clickedInside) {
+    if (target.getAttribute('data-concept-id')) {
+      clickedInside = true;
+    } else {
+      target = target.parentNode;
+    }
+  }
+  if (!clickedInside) {
+    closeAllVisibleNotions();
+    window.removeEventListener('keyup', ESCKeyListener, true);
+    window.removeEventListener('mousedown', checkClickOutside, true);
+  }
+};
+
+export const addShowConceptDefinitionClickListeners = () => {
+  forEachElement('[data-notion]', item => {
+    const id = item.getAttribute('id');
+    const popup = document.querySelector(`[data-concept-id='${id}']`);
+    const openBtn = item.querySelector('[data-notion-link]');
+    const closeBtn = popup.querySelector('[data-notion-close]');
 
     openBtn.onclick = () => {
-      const wasHidden = !popup.classList.contains('c-concept__popup--visible');
+      const wasHidden = !popup.classList.contains('visible');
 
-      forEachElement('.c-concept__popup--visible', visibleItem => {
-        visibleItem.classList.remove('c-concept__popup--visible');
-      });
+      closeAllVisibleNotions();
+      window.removeEventListener('keyup', ESCKeyListener, true);
+      window.removeEventListener('mousedown', checkClickOutside, true);
 
       if (wasHidden) {
-        popup.classList.add('c-concept__popup--visible');
+        popup.classList.add('visible');
+        popup.setAttribute('aria-hidden', false);
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom =
           openBtn.getBoundingClientRect().bottom +
@@ -70,13 +116,32 @@ export const addShowConceptDefinitionClickListeners = () => {
             offset,
           });
         }
+        window.addEventListener('keyup', ESCKeyListener, true);
+        window.addEventListener('mousedown', checkClickOutside, true);
+        closeBtn.focus();
+        // Add Tab exit listener with a hijack of keydown
+        const focusableElements = popup.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        );
+        focusableElements[focusableElements.length - 1].addEventListener(
+          'keydown',
+          e => {
+            if (e.key === 'Tab') {
+              e.preventDefault();
+              openBtn.focus();
+              closeAllVisibleNotions();
+            }
+          },
+          true,
+        );
       }
-      popup.setAttribute('aria-hidden', !wasHidden);
     };
 
     closeBtn.onclick = () => {
-      popup.classList.remove('c-concept__popup--visible');
+      popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
+      window.removeEventListener('keyup', ESCKeyListener, true);
+      openBtn.focus();
     };
   });
 };

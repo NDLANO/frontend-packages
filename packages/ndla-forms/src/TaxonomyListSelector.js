@@ -108,56 +108,65 @@ const TaxonomyListSelector = ({
         <span>Velg primærkobling</span>
         <span>Kjernestoff</span>
       </div>
-      {list.map(listItem => (
-        <FormSections key={listItem.uniqeId}>
-          <TaxonomyListItem primary={primaryId === listItem.uniqeId}>
-            <div>
-              <RadiobuttonItem
-                checked={primaryId === listItem.uniqeId}
-                id={listItem.uniqeId}
-                onChange={selectPrimary}
-              />
-            </div>
-            <div className="__taxonomy-content">
-              <p className="__taxonomy-header">
-                {listItem.subjectName}
-                {listItem.filterName && (
-                  <span className="__taxonomy-filtertag">
-                    {listItem.filterName}
-                  </span>
-                )}
-              </p>
-              <div className="__taxonomy-breadcrumb">
-                <ChevronRight />
-                <span>{listItem.mainTopicName}</span>
-                {listItem.subTopicNames.map(subTopicName => (
-                  <Fragment key={subTopicName}>
-                    <ChevronRight />
-                    <span>{subTopicName}</span>
-                  </Fragment>
-                ))}
+      {list
+        .sort(
+          (a, b) =>
+            `${a.subjectName.toLowerCase()}${a.subTopicNames.toString()}` >=
+            `${b.subjectName.toLowerCase()}${b.subTopicNames.toString()}`
+              ? 1
+              : -1,
+        )
+        .map(listItem => (
+          <FormSections key={listItem.uniqeId}>
+            <TaxonomyListItem primary={primaryId === listItem.uniqeId}>
+              <div>
+                <RadiobuttonItem
+                  checked={primaryId === listItem.uniqeId}
+                  id={listItem.uniqeId}
+                  onChange={selectPrimary}
+                />
               </div>
-            </div>
+              <div className="__taxonomy-content">
+                <p className="__taxonomy-header">
+                  {listItem.subjectName}
+                  {listItem.filterName && (
+                    <span className="__taxonomy-filtertag">
+                      {listItem.filterName}
+                    </span>
+                  )}
+                </p>
+                <div className="__taxonomy-breadcrumb">
+                  <ChevronRight />
+                  <span>{listItem.mainTopicName}</span>
+                  {listItem.subTopicNames &&
+                    listItem.subTopicNames.map(subTopicName => (
+                      <Fragment key={subTopicName}>
+                        <ChevronRight />
+                        <span>{subTopicName}</span>
+                      </Fragment>
+                    ))}
+                </div>
+              </div>
+              <div>
+                <CheckboxItem
+                  checked={listItem.core}
+                  id={`checkboxId_${listItem.uniqeId}`}
+                  onChange={() => {
+                    toggleItemCore(listItem.uniqeId);
+                  }}
+                />
+              </div>
+            </TaxonomyListItem>
             <div>
-              <CheckboxItem
-                checked={listItem.core}
-                id={`checkboxId_${listItem.uniqeId}`}
-                onChange={() => {
-                  toggleItemCore(listItem.uniqeId);
-                }}
-              />
+              <FormRemoveButton
+                onClick={() => {
+                  removeItem(listItem.uniqeId);
+                }}>
+                {removeLabel}
+              </FormRemoveButton>
             </div>
-          </TaxonomyListItem>
-          <div>
-            <FormRemoveButton
-              onClick={() => {
-                removeItem(listItem.uniqeId);
-              }}>
-              {removeLabel}
-            </FormRemoveButton>
-          </div>
-        </FormSections>
-      ))}
+          </FormSections>
+        ))}
     </Fragment>
   ) : null;
 
@@ -166,7 +175,6 @@ TaxonomyListSelector.propTypes = {
     PropTypes.shape({
       subjectName: PropTypes.string.isRequired,
       uniqeId: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
       filterName: PropTypes.string,
       subTopicNames: PropTypes.arrayOf(PropTypes.string),
       core: PropTypes.bool,
@@ -175,7 +183,7 @@ TaxonomyListSelector.propTypes = {
   removeLabel: PropTypes.string,
   primaryLabel: PropTypes.string,
   coreLabel: PropTypes.string,
-  primaryId: PropTypes.string.isRequired,
+  primaryId: PropTypes.string,
   removeItem: PropTypes.func.isRequired,
   selectPrimary: PropTypes.func.isRequired,
   toggleItemCore: PropTypes.func.isRequired,

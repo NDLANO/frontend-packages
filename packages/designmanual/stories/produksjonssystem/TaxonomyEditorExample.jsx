@@ -50,6 +50,18 @@ const fetchSubjects = lang =>
     });
   });
 
+const mainTopicConnections = connections => {
+  const mainTopics = {};
+  connections.forEach(connection => {
+    if (!mainTopics[connection.subjectName]) {
+      mainTopics[connection.subjectName] = [];
+    }
+    mainTopics[connection.subjectName].push(connection);
+  });
+
+  return Object.keys(mainTopics).length > 1 ? mainTopics : null;
+};
+
 class TaxonomyEditorExample extends Component {
   constructor(props) {
     super(props);
@@ -114,17 +126,43 @@ class TaxonomyEditorExample extends Component {
   }
 
   addConnection(addedConnection) {
+    console.log('add connections...', addedConnection);
+
     this.setState(prevState => {
       const { connections, subjectName } = prevState;
-      const newConnection = addedConnection;
-      newConnection.subjectName = subjectName;
-      connections.push(newConnection);
-      const primaryId =
-        connections.length === 1 ? newConnection.uniqeId : prevState.primaryId;
+      // Does it exist already?
+      const testConnection =
+        subjectName +
+        addedConnection.mainTopicName +
+        addedConnection.filterId +
+        addedConnection.subTopicNames.toString();
+
+      const alreadyAdded = connections.some(connection => {
+        const stingyfied =
+          connection.subjectName +
+          connection.mainTopicName +
+          connection.filterId +
+          connection.subTopicNames.toString();
+        return testConnection === stingyfied;
+      });
+
+      if (!alreadyAdded) {
+        const newConnection = addedConnection;
+        newConnection.subjectName = subjectName;
+        connections.push(newConnection);
+        const primaryId =
+          connections.length === 1
+            ? newConnection.uniqeId
+            : prevState.primaryId;
+        return {
+          subjectId: undefined,
+          connections,
+          primaryId,
+        };
+      }
+      // Was already added, just reset selected id's and ignore connection update.
       return {
         subjectId: undefined,
-        connections,
-        primaryId,
       };
     });
   }
@@ -169,6 +207,8 @@ class TaxonomyEditorExample extends Component {
       connections,
       primaryId,
     } = this.state;
+    const topicSortedConnections = mainTopicConnections(connections);
+    console.log(topicSortedConnections);
     return (
       <Fragment>
         <FormHeader
@@ -232,6 +272,46 @@ class TaxonomyEditorExample extends Component {
           resetSubject={this.selectSubject}
           addConnection={this.addConnection}
         />
+        {topicSortedConnections && (
+          <Fragment>
+            <FormHeader
+              title="Flerfaglige primærkoblinger"
+              subTitle="Angi primærkobling for hvert av fagene"
+              width={3 / 4}
+            />
+            {Object.keys(topicSortedConnections).map(topicName => (
+              <FormSections key={topicName}>
+                <div>
+                  <h1>{topicName}:</h1>
+                  <FormDropdown
+                    value=""
+                    onChange={() => {
+                      console.log('tverfaglig primærkobling');
+                    }}>
+                    <option value="">Løst i fag</option>
+                    {topicSortedConnections[topicName].map(connection => (
+                      <option
+                        value={connection.uniqeId}
+                        key={connection.uniqeId}>
+                        {connection.mainTopicName}
+                        {connection.filterName ? (
+                          <Fragment>
+                            {` > `}
+                            {connection.filterName}
+                          </Fragment>
+                        ) : (
+                          ''
+                        )}
+                        {` > `}
+                        {connection.subTopicNames.toString(' > ')}
+                      </option>
+                    ))}
+                  </FormDropdown>
+                </div>
+              </FormSections>
+            ))}
+          </Fragment>
+        )}
       </Fragment>
     );
   }

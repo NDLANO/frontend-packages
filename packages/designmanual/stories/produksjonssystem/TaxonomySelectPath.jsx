@@ -10,9 +10,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
 import { uuid } from 'ndla-util';
+import { spacing, colors, fonts } from 'ndla-core';
+import Button from 'ndla-button';
+import styled from 'react-emotion';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const LANGUAGE = 'nb';
+const COLUMN_WIDTH = 330;
 
 const fetchData = url =>
   new Promise((resolve, reject) => {
@@ -28,6 +32,73 @@ const fetchData = url =>
       });
     });
   });
+
+const MenuButton = styled('button')`
+  ${fonts.sizes(18, 1.25)} font-weight: ${fonts.weight.semibold};
+  color: ${colors.brand.primary};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  height: 52px;
+  line-height: 24px;
+  padding: 0 ${spacing.small};
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  > span {
+    display: flex;
+  }
+  background: ${props => (props.selected ? colors.brand.light : 'transparent')};
+  &:hover,
+  &:focus {
+    background: ${colors.brand.light};
+  }
+`;
+
+const TaxonomyMenu = styled('div')`
+  display: flex;
+  overflow-x: hidden;
+  .animatedWrapper {
+    width: ${props => `${props.numberOfColumns * COLUMN_WIDTH}px`};
+    transition: transform 300ms ease;
+    transform: translateX(
+      ${props => `-${Math.max(props.numberOfColumns - 3, 0) * COLUMN_WIDTH}px`}
+    );
+    display: flex;
+    > div {
+      width: ${COLUMN_WIDTH}px;
+      &:nth-child(n + 1) {
+        ul {
+          animation-name: fadeInLeft;
+          animation-duration: 0.5s;
+        }
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        list-style-image: none;
+        padding: ${spacing.normal};
+        min-height: calc(85vh - 300px);
+        li {
+          margin: 0 0 1px 0;
+        }
+      }
+      &:not(:last-child) {
+        ul {
+          border-right: 1px solid blue;
+        }
+      }
+      &:first-child {
+        ul {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+`;
 
 class TaxonomySelectPath extends Component {
   constructor(props) {
@@ -138,10 +209,13 @@ class TaxonomySelectPath extends Component {
       <Modal
         backgroundColor="white"
         animation="subtle"
+        size="large"
+        minHeight="85vh"
         controllable
         isOpen={modalOpen}
         onClose={() => {
           this.setState({
+            filterId: undefined,
             mainTopics: [],
             mainTopicName: '',
             subTopics: [],
@@ -156,114 +230,179 @@ class TaxonomySelectPath extends Component {
               <ModalCloseButton onClick={onCloseModal} title="Lukk" />
             </ModalHeader>
             <ModalBody>
-              <ul>
-                {topicFilters.map(filter => (
-                  <li key={filter.id}>
-                    <button
-                      type="button"
-                      style={{ backgroundColor: filter.id === filterId }}
-                      onClick={() => {
-                        this.setState({
-                          filterId: filter.id,
-                          subTopics: [],
-                          filterName: filter.name,
-                        });
-                      }}>
-                      {filter.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              <ul>
-                {filterId &&
-                  mainTopics
-                    .filter(subject =>
-                      subject.filters.some(
-                        subjectFilter => subjectFilter.id === filterId,
-                      ),
-                    )
-                    .map(subject => (
-                      <li key={subject.id}>
-                        <button
+              <div>Tilbake</div>
+              <TaxonomyMenu
+                numberOfColumns={subTopics ? subTopics.length + 2 : 0}>
+                <div className="animatedWrapper">
+                  <div>
+                    <span>Velg nivåfilter:</span>
+                    <ul>
+                      <li>
+                        <MenuButton
                           type="button"
-                          style={{
-                            backgroundColor: subject.id === mainTopicId,
-                          }}
-                          onClick={() =>
-                            this.getResources({
-                              id: subject.id,
-                              index: 0,
-                              name: subject.name,
-                            })
-                          }>
-                          {subject.name}
-                        </button>
+                          selected={filterId === 0}
+                          onClick={() => {
+                            this.setState({
+                              filterId: 0,
+                              subTopics: [],
+                              filterName: 'Ingen nivå valgt',
+                            });
+                          }}>
+                          Alle
+                        </MenuButton>
                       </li>
-                    ))}
-              </ul>
-              {subTopics.map(
-                (subTopicsGroup, index) =>
-                  subTopicsGroup.length ? (
-                    <ul key={`group_${subTopicsIds[index]}`}>
-                      {subTopicsGroup.map(subTopicItem => (
-                        <li key={subTopicItem.id}>
-                          <button
+                      {topicFilters.map(filter => (
+                        <li key={filter.id}>
+                          <MenuButton
                             type="button"
-                            style={{
-                              backgroundColor:
-                                subTopicItem.id === subTopicsIds[index],
-                            }}
-                            onClick={() =>
-                              this.getResources({
-                                id: subTopicItem.id,
-                                index: index + 1,
-                                name: subTopicItem.name,
-                              })
-                            }>
-                            {subTopicItem.name}
-                          </button>
+                            selected={filter.id === filterId}
+                            onClick={() => {
+                              this.setState({
+                                filterId: filter.id,
+                                subTopics: [],
+                                filterName: filter.name,
+                              });
+                            }}>
+                            <span>{filter.name}</span>
+                          </MenuButton>
                         </li>
                       ))}
                     </ul>
-                  ) : (
+                    <div>
+                      <Button
+                        onClick={() => {
+                          this.props.addConnection({
+                            core: true,
+                            filterName: '',
+                            subTopicNames: [],
+                            mainTopicId,
+                            mainTopicName,
+                            uniqeId: uuid(),
+                          });
+                          this.setState({
+                            filterId: undefined,
+                            mainTopicId: undefined,
+                            subTopics: [],
+                          });
+                        }}>
+                        Legg til løst i emne
+                      </Button>
+                    </div>
+                  </div>
+                  <div>
+                    <span>Velg hovedemne:</span>
                     <ul>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            this.props.addConnection({
-                              core: true,
-                              filterId,
-                              mainTopicId,
-                              subTopicsIds,
-                              filterName,
-                              subTopicNames,
-                              mainTopicName,
-                              uniqeId: uuid(),
-                            })
-                          }>
-                          Legg til som kjerne!
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            this.props.addConnection({
-                              core: false,
-                              filterId,
-                              mainTopicId,
-                              subTopicsIds,
-                              filterName,
-                              subTopicNames,
-                              mainTopicName,
-                              uniqeId: uuid(),
-                            })
-                          }>
-                          Legg til som tillegg!
-                        </button>
-                      </li>
+                      {filterId !== undefined &&
+                        mainTopics
+                          .filter(
+                            subject =>
+                              filterId === 0 ||
+                              subject.filters.some(
+                                subjectFilter => subjectFilter.id === filterId,
+                              ),
+                          )
+                          .map(subject => (
+                            <li key={subject.id}>
+                              <MenuButton
+                                type="button"
+                                selected={subject.id === mainTopicId}
+                                onClick={() =>
+                                  this.getResources({
+                                    id: subject.id,
+                                    index: 0,
+                                    name: subject.name,
+                                  })
+                                }>
+                                <span>{subject.name}</span>
+                              </MenuButton>
+                            </li>
+                          ))}
                     </ul>
-                  ),
-              )}
+                  </div>
+                  {subTopics.map(
+                    (subTopicsGroup, index) =>
+                      subTopicsGroup.length ? (
+                        <div key={`group_${subTopicsIds[index]}`}>
+                          <span>
+                            Velg underemne av{' '}
+                            {index === 0
+                              ? mainTopicName
+                              : subTopicNames[index - 1]}
+                          </span>
+                          <ul>
+                            {subTopicsGroup.map(subTopicItem => (
+                              <li key={subTopicItem.id}>
+                                <MenuButton
+                                  type="button"
+                                  selected={
+                                    subTopicItem.id === subTopicsIds[index]
+                                  }
+                                  onClick={() =>
+                                    this.getResources({
+                                      id: subTopicItem.id,
+                                      index: index + 1,
+                                      name: subTopicItem.name,
+                                    })
+                                  }>
+                                  <span>{subTopicItem.name}</span>
+                                </MenuButton>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : (
+                        <div>
+                          <span>Lag tilknytning:</span>
+                          <ul>
+                            <li>
+                              <Button
+                                onClick={() => {
+                                  this.props.addConnection({
+                                    core: true,
+                                    filterId,
+                                    mainTopicId,
+                                    subTopicsIds,
+                                    filterName,
+                                    subTopicNames,
+                                    mainTopicName,
+                                    uniqeId: uuid(),
+                                  });
+                                  this.setState({
+                                    filterId: undefined,
+                                    mainTopicId: undefined,
+                                    subTopics: [],
+                                  });
+                                }}>
+                                Legg til som kjerneressurs
+                              </Button>
+                              <Button
+                                outline
+                                onClick={() => {
+                                  this.props.addConnection({
+                                    core: false,
+                                    filterId,
+                                    mainTopicId,
+                                    subTopicsIds,
+                                    filterName,
+                                    subTopicNames,
+                                    mainTopicName,
+                                    uniqeId: uuid(),
+                                  });
+                                  this.setState({
+                                    filterId: undefined,
+                                    mainTopicId: undefined,
+                                    subTopics: [],
+                                  });
+                                }}>
+                                Legg til som tilleggressurs
+                              </Button>
+                            </li>
+                          </ul>
+                        </div>
+                      ),
+                  )}
+                </div>
+              </TaxonomyMenu>
             </ModalBody>
           </Fragment>
         )}

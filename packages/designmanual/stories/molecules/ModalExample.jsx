@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { Tooltip, FilterList } from 'ndla-ui';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import Button from 'ndla-button';
-import { HelpCircle } from 'ndla-icons/common';
+import { Tooltip, FilterList } from '@ndla/ui';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
+import { HelpCircle } from '@ndla/icons/common';
 
 import ComponentInfo from '../ComponentInfo';
 
@@ -59,7 +59,7 @@ class ModalExample extends Component {
     return (
       <ComponentInfo
         reactCode={`
-          import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
+          import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 
           <Modal
             activateButton={<Button>Open modal</Button>}

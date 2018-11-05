@@ -17,7 +17,7 @@ import Accordion, {
   AccordionWrapper,
   AccordionPanel,
   AccordionBar,
-} from 'ndla-accordion';
+} from '@ndla/accordion';
 
 <Accordion openIndexes={[0]} single>
   {({ openIndexes, handleItemClick }) => (

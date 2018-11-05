@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { colors, spacing } from 'ndla-core';
+import { colors, spacing } from '@ndla/core';
 
 const Wrapper = styled.div`
   margin-bottom: ${spacing.small};

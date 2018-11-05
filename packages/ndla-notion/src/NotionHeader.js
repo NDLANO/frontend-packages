@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { injectT } from 'ndla-i18n';
-import { spacing, colors, fonts, misc } from 'ndla-core';
+import { injectT } from '@ndla/i18n';
+import { spacing, colors, fonts, misc } from '@ndla/core';
 
 const NotionHeaderWrapper = styled.div`
   margin: ${spacing.normal} ${spacing.normal} ${spacing.small};

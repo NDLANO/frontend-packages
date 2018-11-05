@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css, cx } from 'react-emotion';
-import { colors, spacing, fonts, misc } from 'ndla-core';
+import { colors, spacing, fonts, misc } from '@ndla/core';
 
 const inputWrapperCSS = css`
   display: flex;

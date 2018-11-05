@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import IntlProvider, { formatNestedMessages } from 'ndla-i18n';
-import { messagesNB, messagesNN, messagesEN } from 'ndla-ui';
+import IntlProvider, { formatNestedMessages } from '@ndla/i18n';
+import { messagesNB, messagesNN, messagesEN } from '@ndla/ui';
 
 const messages = {
   nb: formatNestedMessages(messagesNB),

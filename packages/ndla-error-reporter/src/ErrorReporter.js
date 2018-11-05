@@ -7,7 +7,7 @@
  */
 
 import TraceKit from 'raven-js/vendor/TraceKit/tracekit';
-import { uuid } from 'ndla-util';
+import { uuid } from '@ndla/util';
 
 import send from './logglyApi';
 

@@ -10,8 +10,8 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { Image } from 'ndla-ui';
-import { spacing, colors } from 'ndla-core';
+import { Image } from '@ndla/ui';
+import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';

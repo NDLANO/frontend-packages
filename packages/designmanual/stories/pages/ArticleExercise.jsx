@@ -17,7 +17,7 @@ import {
   ArticleHeaderWrapper,
   Image,
   TasksAndActivitiesBadge,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import Resources from '../molecules/resources';

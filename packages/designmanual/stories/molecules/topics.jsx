@@ -11,7 +11,7 @@ import {
   ResourcesWrapper,
   ResourcesTopicTitle,
   TopicIntroductionList,
-} from 'ndla-ui';
+} from '@ndla/ui';
 import { topicList } from '../../dummydata/index';
 
 class Topics extends Component {

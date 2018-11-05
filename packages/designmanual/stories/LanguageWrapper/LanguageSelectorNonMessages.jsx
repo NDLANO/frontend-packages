@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { FilterList } from 'ndla-ui';
+import { FilterList } from '@ndla/ui';
 
 const LANGUAGES = [
   {

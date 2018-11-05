@@ -17,7 +17,7 @@ import {
   Image,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';

@@ -7,8 +7,8 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import Button from 'ndla-button';
-import { uuid } from 'ndla-util';
+import Button from '@ndla/button';
+import { uuid } from '@ndla/util';
 import {
   FormHeader,
   FormSections,
@@ -16,8 +16,8 @@ import {
   FormDropdown,
   FormSplitter,
   FormRemoveButton,
-} from 'ndla-forms';
-import { Search as SearchIcon } from 'ndla-icons/common';
+} from '@ndla/forms';
+import { Search as SearchIcon } from '@ndla/icons/common';
 
 const roleExamples = [
   'Opphavsmann',

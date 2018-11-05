@@ -10,8 +10,8 @@ import React from 'react';
 import FocusTrapReact from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import styled, { css, cx } from 'react-emotion';
-import { spacing, colors, fonts, shadows, animations } from 'ndla-core';
-import { Plus } from 'ndla-icons/action';
+import { spacing, colors, fonts, shadows, animations } from '@ndla/core';
+import { Plus } from '@ndla/icons/action';
 
 const ICON_SIZE = '48px';
 

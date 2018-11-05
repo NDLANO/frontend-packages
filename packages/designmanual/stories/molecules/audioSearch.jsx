@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import AudioSearch from 'ndla-audio-search';
+import AudioSearch from '@ndla/audio-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const fetchAudios = queryObject => {

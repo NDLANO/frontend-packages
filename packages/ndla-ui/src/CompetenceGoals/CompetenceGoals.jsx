@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight, ChevronDown } from 'ndla-icons/common';
-import { Trans } from 'ndla-i18n';
+import { ChevronRight, ChevronDown } from '@ndla/icons/common';
+import { Trans } from '@ndla/i18n';
 import { FilterListPhone } from '../Filter';
 
 import SafeLink from '../common/SafeLink';

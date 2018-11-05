@@ -16,7 +16,7 @@ import {
   ArticleIntroduction,
   ArticleHeaderWrapper,
   InfoBox,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 export default () => (
   <OneColumn cssModifier="narrow">

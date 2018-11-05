@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Footer } from 'ndla-ui';
+import { Footer } from '@ndla/ui';
 
 const FooterExample = () => (
   <Footer>

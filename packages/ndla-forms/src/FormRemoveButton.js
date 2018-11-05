@@ -9,8 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
-import { Cross } from 'ndla-icons/action';
-import { colors, spacing, fonts } from 'ndla-core';
+import { Cross } from '@ndla/icons/action';
+import { colors, spacing, fonts } from '@ndla/core';
 
 const buttonCSS = css`
   border: 0;

@@ -24,11 +24,11 @@ const image = {
   ],
 };
 
-test('ndla-util/tagsI18N translate', () => {
+test('@ndla/util/tagsI18N translate', () => {
   expect(tagsI18N(image, 'nb')).toEqual(norwegianTags);
   expect(tagsI18N(image, 'en')).toEqual(englishTags);
 });
 
-test('ndla-util/tagsI18N with fallback', () => {
+test('@ndla/util/tagsI18N with fallback', () => {
   expect(tagsI18N(image, 'zh', true, ['en', 'nb', 'nn'])).toEqual(englishTags);
 });

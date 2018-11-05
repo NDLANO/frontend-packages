@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { HelpCircleDual } from 'ndla-icons/common';
-import { injectT } from 'ndla-i18n';
-import Modal, { ModalBody, ModalHeader, ModalCloseButton } from 'ndla-modal';
-import { Tooltip } from 'ndla-ui';
+import { HelpCircleDual } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
+import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
+import { Tooltip } from '@ndla/ui';
 
 import { classes } from './ResourcesWrapper';
 

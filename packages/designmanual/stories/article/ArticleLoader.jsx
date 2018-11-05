@@ -16,8 +16,8 @@ import {
   ResourcesWrapper,
   ResourcesTopicTitle,
   TopicIntroductionList,
-} from 'ndla-ui';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Button from '@ndla/button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';

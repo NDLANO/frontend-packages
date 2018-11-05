@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { Core, Additional } from 'ndla-icons/common';
+import { Core, Additional } from '@ndla/icons/common';
 
 import {
   SearchPage,
@@ -16,9 +16,9 @@ import {
   ExternalLearningResourcesBadge,
   TasksAndActivitiesBadge,
   Image,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 

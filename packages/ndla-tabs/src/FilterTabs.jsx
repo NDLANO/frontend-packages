@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
-import { ArrowDropDown } from 'ndla-icons/common';
+import { ArrowDropDown } from '@ndla/icons/common';
 import debounce from 'lodash/debounce';
 
 const classes = BEMHelper('c-tabs');

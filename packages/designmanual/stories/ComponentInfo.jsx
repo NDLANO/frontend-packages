@@ -5,10 +5,10 @@ import BEMHelper from 'react-bem-helper';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/styles/hljs';
 
-import Tabs from 'ndla-tabs';
-import { uuid, copyTextToClipboard } from 'ndla-util';
-import Button from 'ndla-button';
-import { Copy } from 'ndla-icons/action';
+import Tabs from '@ndla/tabs';
+import { uuid, copyTextToClipboard } from '@ndla/util';
+import Button from '@ndla/button';
+import { Copy } from '@ndla/icons/action';
 
 const statusMessages = {
   0: ['Eksperimentel, ikke trygg å bruke', 'alert'],

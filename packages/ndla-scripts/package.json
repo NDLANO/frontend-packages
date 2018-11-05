@@ -1,11 +1,11 @@
 {
-  "name": "ndla-scripts",
-  "version": "0.6.3",
+  "name": "@ndla/scripts",
+  "version": "0.7.0",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
   "main": "src/index.js",
   "bin": {
-    "ndla-scripts": "src/index.js"
+    "@ndla/scripts": "src/index.js"
   },
   "scripts": {
     "test": "NODE_ENV=unittest jest"
@@ -29,5 +29,8 @@
     "now": "^11.4.2",
     "octonode": "^0.9.4",
     "url-regex": "^4.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

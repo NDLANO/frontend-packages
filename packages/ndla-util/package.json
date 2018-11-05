@@ -1,6 +1,6 @@
 {
-  "name": "ndla-util",
-  "version": "0.2.11",
+  "name": "@ndla/util",
+  "version": "0.3.0",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,5 +30,8 @@
   "dependencies": {
     "defined": "1.0.0",
     "pdfmake": "^0.1.38"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

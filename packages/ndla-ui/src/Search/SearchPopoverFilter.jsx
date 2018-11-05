@@ -3,11 +3,11 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight } from 'ndla-icons/common';
-// import { Cross } from 'ndla-icons/action';
-import { FilterList } from 'ndla-ui';
-import Modal, { ModalCloseButton, ModalHeader, ModalBody } from 'ndla-modal';
-import Button from 'ndla-button';
+import { ChevronRight } from '@ndla/icons/common';
+// import { Cross } from '@ndla/icons/action';
+import { FilterList } from '@ndla/ui';
+import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
+import Button from '@ndla/button';
 
 const filterClasses = new BEMHelper({
   name: 'filter',

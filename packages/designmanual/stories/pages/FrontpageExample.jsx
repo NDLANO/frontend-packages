@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 import {
   FrontpageHeader,
   FrontpageSubjects,
@@ -13,10 +13,10 @@ import {
   FrontpageFilm,
   InfoWidget,
   SafeLink,
-} from 'ndla-ui';
-import { breakpoints } from 'ndla-util';
+} from '@ndla/ui';
+import { breakpoints } from '@ndla/util';
 
-import { EmailOutline, Facebook, Twitter } from 'ndla-icons/common';
+import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 
 import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';

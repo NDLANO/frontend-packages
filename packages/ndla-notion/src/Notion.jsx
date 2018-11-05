@@ -9,8 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css, cx } from 'react-emotion';
-import { createUniversalPortal } from 'ndla-util';
-import { colors } from 'ndla-core';
+import { createUniversalPortal } from '@ndla/util';
+import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
 
 const NotionCSS = css`

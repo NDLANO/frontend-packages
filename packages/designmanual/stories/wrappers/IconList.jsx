@@ -8,9 +8,9 @@
 
 import React, { createElement, Component } from 'react';
 import PropTypes from 'prop-types';
-import { copyTextToClipboard } from 'ndla-util';
-import { Copy } from 'ndla-icons/action';
-import Button from 'ndla-button';
+import { copyTextToClipboard } from '@ndla/util';
+import { Copy } from '@ndla/icons/action';
+import Button from '@ndla/button';
 import elementType from 'react-prop-types/lib/elementType';
 
 class IconItem extends Component {
@@ -51,7 +51,7 @@ class IconItem extends Component {
               stripped
               onClick={() =>
                 copyTextToClipboard(
-                  `import { ${name} } from 'ndla-icons/${folder}';`,
+                  `import { ${name} } from '@ndla/icons/${folder}';`,
                 )
               }
               style={{ float: 'right' }}

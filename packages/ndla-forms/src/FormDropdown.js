@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { colors, spacing, fonts } from 'ndla-core';
+import { colors, spacing, fonts } from '@ndla/core';
 
 const FormSelectWrapper = styled.select`
   font-weight: ${fonts.weight.normal};

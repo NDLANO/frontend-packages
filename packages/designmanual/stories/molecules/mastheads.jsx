@@ -9,7 +9,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 
 import {
   Masthead,
@@ -19,12 +19,12 @@ import {
   DisplayOnPageYOffset,
   SearchField,
   SafeLink,
-} from 'ndla-ui';
-import Modal from 'ndla-modal';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Modal from '@ndla/modal';
+import Button from '@ndla/button';
 
-import { Search } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
+import { Search } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
 
 import { topicMenu, contentTypeResults } from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';

@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
 import BEMHelper from 'react-bem-helper';
-import { spacing, fonts, colors, misc, breakpoints, mq } from 'ndla-core';
-import { injectT } from 'ndla-i18n';
-import { FilterListPhone } from 'ndla-ui';
-import { ChevronDown } from 'ndla-icons/common';
-import { List as ListIcon, Grid as GridIcon } from 'ndla-icons/action';
+import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
+import { injectT } from '@ndla/i18n';
+import { FilterListPhone } from '@ndla/ui';
+import { ChevronDown } from '@ndla/icons/common';
+import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
 
 import ListItem from './ListItem';
 

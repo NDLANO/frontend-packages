@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { cx } from 'react-emotion';
-import { fonts, spacing, colors, misc, breakpoints, mq } from 'ndla-core';
+import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';
 

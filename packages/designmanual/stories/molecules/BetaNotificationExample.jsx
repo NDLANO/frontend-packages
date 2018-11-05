@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BetaNotification } from 'ndla-ui';
+import { BetaNotification } from '@ndla/ui';
 
 const betaMessages = {
   heading: 'Hei!',

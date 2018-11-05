@@ -16,7 +16,7 @@ $ yarn add ndla-i18n
 
 ```jsx
 // In app/server entry index file:
-import IntlProvider from 'ndla-i18n';
+import IntlProvider from '@ndla/i18n';
 ...
 ReactDOM.render(
   ...
@@ -31,7 +31,7 @@ ReactDOM.render(
 ```jsx
 // After initial instantiation, using it with a React component
 ...
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 
 class i18nReactComponent extends Component {
   ...
@@ -48,7 +48,7 @@ export default injectT(i18nReactComponent);
 ```jsx
 // Using it with a render props component
 ...
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 
 class i18nReactComponent extends Component {
   ...

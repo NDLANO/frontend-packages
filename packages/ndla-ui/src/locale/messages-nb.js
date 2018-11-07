@@ -46,7 +46,7 @@ const messages = {
       content: 'Innhold:',
       contentTypes: 'Innholdstyper:',
       levels: 'Nivå:',
-      'language-filter': 'Språk:',
+      languageFilter: 'Språk:',
       subjects: 'Fag:',
       noFilter: 'Ingen filter valgt',
       createdBy: 'Laget av:',
@@ -54,13 +54,13 @@ const messages = {
     showLabel: {
       contentTypes: 'Flere innholdstyper',
       levels: 'Flere nivåer',
-      'language-filter': 'Flere språk',
+      languageFilter: 'Flere språk',
       subjects: 'Bytt fag',
     },
     hideLabel: {
       contentTypes: 'Færre innholdstyper',
       levels: 'Færre nivåer',
-      'language-filter': 'Færre språk',
+      languageFilter: 'Færre språk',
       subjects: 'Færre fag',
     },
     searchField: {

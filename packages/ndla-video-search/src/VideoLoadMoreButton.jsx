@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Button from 'ndla-button';
+import Button from '@ndla/button';
 import { BrightcoveShape, YouTubeShape } from './shapes';
 
 const classes = new BEMHelper({

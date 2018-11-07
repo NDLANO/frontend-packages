@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { OneColumn, LayoutItem } from 'ndla-ui';
+import { OneColumn, LayoutItem } from '@ndla/ui';
 
 const StoryBody = ({ children }) => (
   <OneColumn>

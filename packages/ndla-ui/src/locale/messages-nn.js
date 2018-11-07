@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -229,6 +229,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Ingen eksterne læringsressursar',
       },
     },
   },
@@ -417,6 +419,9 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til framsida',
+  },
+  notions: {
+    closeNotion: 'Lukk',
   },
 };
 

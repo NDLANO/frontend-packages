@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import * as licenseIcons from 'ndla-icons/license';
-import * as contentTypeIcons from 'ndla-icons/contentType';
-import * as commonIcons from 'ndla-icons/common';
-import * as editorIcons from 'ndla-icons/editor';
-import * as actionIcons from 'ndla-icons/action';
-import { BY, NC, ND } from 'ndla-licenses';
+import * as licenseIcons from '@ndla/icons/license';
+import * as contentTypeIcons from '@ndla/icons/contentType';
+import * as commonIcons from '@ndla/icons/common';
+import * as editorIcons from '@ndla/icons/editor';
+import * as actionIcons from '@ndla/icons/action';
+import { BY, NC, ND } from '@ndla/licenses';
 import {
   Aside,
   FactBox,
@@ -17,8 +17,8 @@ import {
   Image,
   AudioPlayer,
   OneColumn,
-} from 'ndla-ui';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Button from '@ndla/button';
 
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';

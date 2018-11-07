@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addFootnoteClickListeners } from 'ndla-article-scripts';
+import { addFootnoteClickListeners } from '@ndla/article-scripts';
 
 class FootnotesExample extends Component {
   componentDidMount() {

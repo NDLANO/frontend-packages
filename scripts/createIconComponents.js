@@ -136,7 +136,7 @@ function writePackageFiles(types) {
   Object.keys(types).forEach(folder => {
     const iconsModule = `
 {
-  "name": "ndla-icons${folder}",
+  "name": "@ndla/icons${folder}",
   "private": true,
   "main": "../lib${folder}/index.js",
   "module": "../es${folder}/index.js",

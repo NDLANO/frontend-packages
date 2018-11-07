@@ -31,7 +31,7 @@ ndla-util
 
 See: [package.json](package.json) for version requirements
 
-**N.B!** All optional dependencies are required if you use `import {...} from 'ndla-ui'`
+**N.B!** All optional dependencies are required if you use `import {...} from '@ndla/ui'`
 
 ## Usage
 
@@ -46,7 +46,7 @@ See: [package.json](package.json) for version requirements
 ### Simplified example
 
 ```jsx
-import { Hero, OneColumn, Article, Breadcrumb } from 'ndla-ui';
+import { Hero, OneColumn, Article, Breadcrumb } from '@ndla/ui';
 
 const MyPage = ({ topicPath, topic, article }) => {
   return (

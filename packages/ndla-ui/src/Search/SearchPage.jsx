@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
-import { Back } from 'ndla-icons/common';
+import { Back } from '@ndla/icons/common';
 import debounce from 'lodash/debounce';
-import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import Button from 'ndla-button';
-import { injectT } from 'ndla-i18n';
+import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
+import { injectT } from '@ndla/i18n';
 
 import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';

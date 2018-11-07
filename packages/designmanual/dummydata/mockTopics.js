@@ -1,4 +1,4 @@
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 import { contentTypeResults } from './mockSearch';
 

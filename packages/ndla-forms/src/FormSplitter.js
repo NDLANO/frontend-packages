@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
-import { spacing } from 'ndla-core';
+import { spacing } from '@ndla/core';
 
 const FormSplitterCSS = css`
   display: flex;

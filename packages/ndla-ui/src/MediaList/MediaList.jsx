@@ -14,9 +14,9 @@ import {
   getResourceTypeNamespace,
   isCreativeCommonsLicense,
   metaTypes,
-} from 'ndla-licenses';
+} from '@ndla/licenses';
 import BEMHelper from 'react-bem-helper';
-import { uuid } from 'ndla-util';
+import { uuid } from '@ndla/util';
 import LicenseByline from '../LicenseByline';
 
 const oClasses = new BEMHelper({

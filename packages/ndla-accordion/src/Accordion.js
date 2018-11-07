@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { spacing } from 'ndla-core';
+import { spacing } from '@ndla/core';
 
 export const AccordionWrapper = styled.div`
   display: flex;

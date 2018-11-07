@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import VideoSearch from 'ndla-video-search';
+import VideoSearch from '@ndla/video-search';
 import {
   firstBrightcoveList,
   firstYouTubeList,

@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { CompetenceGoals } from 'ndla-ui';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import Button from 'ndla-button';
+import { CompetenceGoals } from '@ndla/ui';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
 
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 
 const classes = BEMHelper('c-competence-goals-dialog');
 

@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -227,6 +227,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Ingen eksterne læringsressurser',
       },
     },
   },
@@ -415,6 +417,23 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til forsiden',
+  },
+  listview: {
+    filters: {
+      subject: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på fag',
+        closeFilter: 'Lukk filter',
+      },
+      category: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på kategori',
+        closeFilter: 'Lukk filter',
+      },
+    },
+  },
+  notions: {
+    closeNotion: 'Lukk',
   },
 };
 

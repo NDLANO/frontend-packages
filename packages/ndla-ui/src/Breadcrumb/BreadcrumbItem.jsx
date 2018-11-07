@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ChevronRight } from 'ndla-icons/common';
+import { ChevronRight } from '@ndla/icons/common';
 
 import SafeLink from '../common/SafeLink';
 

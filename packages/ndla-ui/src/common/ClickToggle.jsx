@@ -8,10 +8,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { noScroll } from 'ndla-util';
+import { noScroll } from '@ndla/util';
 import elementType from 'react-prop-types/lib/elementType';
 import FocusTrap from 'focus-trap-react';
-import Button from 'ndla-button';
+import Button from '@ndla/button';
 
 import Dialog from '../Dialog';
 

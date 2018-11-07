@@ -1,7 +1,7 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Button from 'ndla-button';
+import Button from '@ndla/button';
 import SafeLink from '../common/SafeLink';
 import SectionHeading from '../SectionHeading';
 

@@ -12,7 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { uuid } from 'ndla-util';
+import { uuid } from '@ndla/util';
 import { ContributorShape, LicenseShape } from '../shapes';
 import LicenseByline from '../LicenseByline';
 

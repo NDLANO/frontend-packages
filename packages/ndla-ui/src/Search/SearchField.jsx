@@ -9,8 +9,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Search as SearchIcon } from 'ndla-icons/common';
-import { injectT } from 'ndla-i18n';
+import { Search as SearchIcon } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
 
 import SafeLink from '../common/SafeLink';
 

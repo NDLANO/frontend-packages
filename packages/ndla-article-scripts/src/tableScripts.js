@@ -103,6 +103,9 @@ export const initTableScript = () => {
       if (el.parentNode.classList.contains('c-bodybox')) {
         el.parentNode.classList.add('c-bodybox--contains-table');
       }
+      if (el.parentNode.classList.contains('wrapper')) {
+        el.classList.remove('c-table__wrapper');
+      }
     });
 
     forEachElement('.c-table__expand-button', el =>

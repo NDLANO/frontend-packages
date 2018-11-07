@@ -1,6 +1,6 @@
 
 {
-  "name": "ndla-icons/editor",
+  "name": "@ndla/icons/editor",
   "private": true,
   "main": "../lib/editor/index.js",
   "module": "../es/editor/index.js",

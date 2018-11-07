@@ -8,7 +8,7 @@ import {
   PageContainer,
   Content,
   BetaNavigation,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 import MastheadWithTopicMenu from './molecules/mastheads';
 import BetaNotificationExample from './molecules/BetaNotificationExample';

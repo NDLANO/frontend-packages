@@ -9,11 +9,11 @@
 import React, { Component, createElement, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronDown, ChevronUp } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
-import { ActiveFilters } from 'ndla-ui';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import Button from 'ndla-button';
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
+import { ActiveFilters } from '@ndla/ui';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
 import debounce from 'lodash/debounce';
 
 const filterClasses = new BEMHelper({

@@ -12,14 +12,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 import debounce from 'lodash/debounce';
 
-import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
-import { SafeLink, Tooltip } from 'ndla-ui';
-import { ModalHeader } from 'ndla-modal';
-import Button from 'ndla-button';
+import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
+import { SafeLink, Tooltip } from '@ndla/ui';
+import { ModalHeader } from '@ndla/modal';
+import Button from '@ndla/button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
@@ -151,6 +151,7 @@ export default class TopicMenu extends Component {
       competenceGoals,
       searchFieldComponent,
       toFrontpage,
+      locale,
     } = this.props;
     const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -209,8 +210,9 @@ export default class TopicMenu extends Component {
                 {!hideSearch && searchFieldComponent}
                 <Logo
                   to="#"
-                  label="Nasjonal digital læringsarena"
                   isBeta={this.props.isBeta}
+                  label={t('logo.altText')}
+                  locale={locale}
                 />
               </div>
             </ModalHeader>
@@ -464,6 +466,7 @@ TopicMenu.propTypes = {
   hideSearch: PropTypes.bool,
   competenceGoals: PropTypes.node,
   searchFieldComponent: PropTypes.node,
+  locale: PropTypes.string,
 };
 
 TopicMenu.defaultProps = {

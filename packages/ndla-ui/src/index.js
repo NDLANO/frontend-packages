@@ -49,7 +49,6 @@ export {
   SubjectLinks,
   SubjectArchive,
   SubjectCarousel,
-  SubjectConcepts,
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectSectionTitle,
@@ -116,7 +115,6 @@ export {
   ResourcesTopicTitle,
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
-export { default as Concept } from './Concept';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 export {
   SubjectMaterialHero,

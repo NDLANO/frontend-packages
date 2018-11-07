@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import { isMobile } from 'react-device-detect';
 

@@ -6,7 +6,7 @@
  *
  */
 
-import { copyTextToClipboard } from 'ndla-util';
+import { copyTextToClipboard } from '@ndla/util';
 
 import { forEachElement, getElementOffset } from './domHelpers';
 

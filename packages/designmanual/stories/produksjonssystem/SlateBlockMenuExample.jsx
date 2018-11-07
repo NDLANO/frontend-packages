@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { css } from 'react-emotion';
-import { colors } from 'ndla-core';
-import Button from 'ndla-button';
-import { SlateBlockMenu } from 'ndla-editor';
+import { colors } from '@ndla/core';
+import Button from '@ndla/button';
+import { SlateBlockMenu } from '@ndla/editor';
 import {
   Quote,
   Camera,
@@ -13,9 +13,9 @@ import {
   Framed,
   PlayBoxOutline,
   PresentationPlay,
-} from 'ndla-icons/editor';
-import { VolumeUp, HelpCircleDual } from 'ndla-icons/common';
-import Modal, { ModalBody, ModalHeader, ModalCloseButton } from 'ndla-modal';
+} from '@ndla/icons/editor';
+import { VolumeUp, HelpCircleDual } from '@ndla/icons/common';
+import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 
 const dualIconCSS = css`
   // dual coloured icon..

@@ -1,6 +1,6 @@
 {
-  "name": "ndla-pager",
-  "version": "0.2.4",
+  "name": "@ndla/pager",
+  "version": "0.3.0",
   "description": "Pager component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,12 +28,17 @@
     "lib",
     "es"
   ],
+  "dependencies": {
+    "@ndla/core": "^0.4.0"
+  },
   "peerDependencies": {
     "emotion": "^9.2.10",
-    "ndla-core": "^0.0.1",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",
     "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

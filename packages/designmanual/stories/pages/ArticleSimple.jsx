@@ -16,7 +16,7 @@ import {
   ArticleIntroduction,
   Image,
   ArticleHeaderWrapper,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';

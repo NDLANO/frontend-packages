@@ -15,11 +15,11 @@ import {
   uuid,
   createUniversalPortal,
   isIosDeviceSafari,
-} from 'ndla-util';
+} from '@ndla/util';
 
-import { spacing, colors, mq, breakpoints, fonts } from 'ndla-core';
+import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
-import Button from 'ndla-button';
+import Button from '@ndla/button';
 
 const modalAnimations = `
   @keyframes modal-zoomIn {
@@ -100,7 +100,7 @@ const modalAnimations = `
       transform: translate3d(0, 0, 0);
     }
   }
-  
+
   @keyframes modal-subtleOut {
     0% {
       opacity: 1;

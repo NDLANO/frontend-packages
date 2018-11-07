@@ -8,10 +8,10 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Tabs from 'ndla-tabs';
-import { uuid, downloadPdf } from 'ndla-util';
+import Tabs from '@ndla/tabs';
+import { uuid, downloadPdf } from '@ndla/util';
 
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 import {
   MediaList,
   MediaListItem,
@@ -19,11 +19,11 @@ import {
   MediaListItemActions,
   MediaListItemImage,
   MediaListItemMeta,
-} from 'ndla-ui';
-import Button, { CopyButton } from 'ndla-button';
-import { FileDocumentOutline, AudioDocument } from 'ndla-icons/common';
+} from '@ndla/ui';
+import Button, { CopyButton } from '@ndla/button';
+import { FileDocumentOutline, AudioDocument } from '@ndla/icons/common';
 
-import { COPYRIGHTED, metaTypes } from 'ndla-licenses';
+import { COPYRIGHTED, metaTypes } from '@ndla/licenses';
 
 import { mockDownloadArticleText } from '../../dummydata';
 import H5PExamples from '../../images/h5p-contenttype';
@@ -88,7 +88,7 @@ const VideoContent = injectT(({ t }) => (
   </div>
 ));
 
-const TextContent = injectT(({ t }) => (
+export const TextContent = injectT(({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.text.heading')}</h2>
@@ -207,7 +207,7 @@ const AudioContent = injectT(({ t }) => (
   </div>
 ));
 
-const ImageContent = injectT(({ t }) => (
+export const ImageContent = injectT(({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.images.heading')}</h2>

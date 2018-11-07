@@ -227,6 +227,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'No learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'No source materials',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'No external learning resources',
       },
     },
   },

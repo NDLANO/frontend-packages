@@ -277,14 +277,6 @@ class SearchPageExample extends Component {
         activeFilters={activeSubjectFilters.concat(activeOtherFilters)}
         author={authorTablet}
         messages={{
-          resultHeading: hasAuthor
-            ? t('searchPage.searchPageMessages.resultHeadingByAuthor', {
-                totalCount: 37,
-                author: 'Cecilie',
-              })
-            : t('searchPage.searchPageMessages.resultHeading', {
-                totalCount: 43,
-              }),
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
         }}
         resourceToLinkProps={() => {}}
@@ -396,6 +388,14 @@ class SearchPageExample extends Component {
             searchStringLabel: t(
               'searchPage.searchResultMessages.searchStringLabel',
             ),
+            resultHeading: hasAuthor
+              ? t('searchPage.searchPageMessages.resultHeadingByAuthor', {
+                  totalCount: 37,
+                  author: 'Cecilie',
+                })
+              : t('searchPage.searchPageMessages.resultHeading', {
+                  totalCount: 43,
+                }),
             subHeading: t('searchPage.searchPageMessages.resultHeading', {
               totalCount: 43,
             }),

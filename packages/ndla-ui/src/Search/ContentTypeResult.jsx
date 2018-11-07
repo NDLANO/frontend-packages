@@ -53,7 +53,7 @@ class ContentTypeResult extends Component {
         ? contentTypeResult.resources
         : contentTypeResult.resources.filter(items => !items.additional);
 
-    const totalCount = results ? results.length : 0;
+    const { totalCount } = contentTypeResult;
 
     if (totalCount > 0) {
       const resources = this.state.showAll

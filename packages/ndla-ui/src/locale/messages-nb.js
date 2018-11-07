@@ -227,6 +227,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Ingen eksterne læringsressurser',
       },
     },
   },

@@ -15,3 +15,4 @@ storybook-static/
 *.log.1
 packages/*/.vscode
 *.code-workspace
+.cache

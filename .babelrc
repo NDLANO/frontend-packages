@@ -1,6 +1,6 @@
 {
-  "presets": ["react", ["env", { "modules": false }]],
-  "plugins": ["emotion", "polished", "transform-object-rest-spread"],
+  "presets": ["@babel/preset-react", ["@babel/env", { "modules": false }]],
+  "plugins": ["emotion", "polished"],
   "env": {
     "test": {
       "presets": [

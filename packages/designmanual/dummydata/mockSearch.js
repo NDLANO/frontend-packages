@@ -390,7 +390,7 @@ export const searchFilterOptions = {
   ],
   contentFilter: [
     {
-      title: 'Tilleggstoff',
+      title: 'Tilleggsstoff',
       additional: true,
       value: 'contentFilter:1',
       hits: 46,

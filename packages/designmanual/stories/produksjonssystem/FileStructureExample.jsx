@@ -44,7 +44,7 @@ const fetchResourceConnections = (resourceId, lang) =>
       `https://test.api.ndla.no/taxonomy/v1/resources/${resourceId}/full/?language=${lang}`,
     ),
   ])
-    .then(result => result[0].sort(sortByName))
+    .then(result => result)
     .catch(err => {
       console.log(err);
     });
@@ -60,21 +60,10 @@ const fetchSubjects = lang =>
       console.log(err);
     });
 
-const fetchAllSubjectToTopicConnections = lang =>
-  Promise.all([
-    fetchData(
-      `https://test.api.ndla.no/taxonomy/v1/subject-topics/?language=${lang}`,
-    ),
-  ])
-    .then(result => result[0].sort(sortByName))
-    .catch(err => {
-      console.log(err);
-    });
-
 const fetchSubjectsTopics = (subjectId, lang) =>
   Promise.all([
     fetchData(
-      `https://test.api.ndla.no/taxonomy/v1/subjects/${subjectId}/topics/?language=${lang}`,
+      `https://test.api.ndla.no/taxonomy/v1/subjects/${subjectId}/topics/?recursive=true&language=${lang}`,
     ),
   ])
     .then(result => result[0])
@@ -82,24 +71,20 @@ const fetchSubjectsTopics = (subjectId, lang) =>
       console.log(err);
     });
 
-const fetchTopics = (topicsIds, lang) => {
-  /*****  API HAS recursive=true !! ******/
-  // API has a limit on simultaneous request, split in batches of max 10 per call.
-  // Can we allow for more based on url?
-  const limitedByAPI = topicsIds.slice(0, 9); // TODO: - This is a hack, find solution to API limit / API calls
-  console.log('limitedByAPI', limitedByAPI);
-  return Promise.all(
-    limitedByAPI.map(id =>
-      fetchData(
-        `https://test.api.ndla.no/taxonomy/v1/topics/${id}/topics/?language=${lang}`,
-      ),
-    ),
-  )
-    .then(result => result)
-    .catch(err => {
-      console.log(err);
-    });
-};
+const TitleModal = styled('h1')`
+  color: ${colors.text.primary};
+`;
+
+const Spinner = styled('div')`
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-bottom-color: ${colors.brand.primary};
+  border-radius: 50%;
+  animation: loadVideoSpinner 0.7s linear infinite;
+  height: ${spacing.large};
+  width: ${spacing.large};
+  display: block;
+  margin: ${spacing.normal} auto;
+`;
 
 const NoRelevanceIcon = styled('span')`
   width: 20px;
@@ -227,12 +212,48 @@ const SelectRelevanceWrapper = styled('div')`
   }
 `;
 
+const connectSubConnections = (items, parents) => {
+  const currentParents = parents;
+  items.forEach(connection => {
+    const currentConnection = connection;
+    if (parents[currentConnection.id]) {
+      currentConnection.subtopics = parents[currentConnection.id];
+      delete currentParents[currentConnection.id];
+      connectSubConnections(connection.subtopics, currentParents);
+    } else {
+      currentConnection.subtopics = [];
+    }
+  });
+};
+
+const connectionTopicsToParent = (unConnectedTopics, id) => {
+  const parents = {};
+  // Group into arrays
+  unConnectedTopics.forEach(unconnected => {
+    if (!parents[unconnected.parent]) {
+      parents[unconnected.parent] = [];
+    }
+    parents[unconnected.parent].push(unconnected);
+  });
+  // Sort groups by name
+  Object.keys(parents).forEach(parentKey => {
+    parents[parentKey] = parents[parentKey].sort(sortByName);
+  });
+  // Get all direct connections
+  const directConnections = parents[id];
+  delete parents[id];
+  // Connect subconnections
+  connectSubConnections(directConnections, parents);
+  return directConnections;
+};
+
 class FileStructureExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addedItems: {},
       structure: [],
+      loadingEssentials: true,
     };
     this.renderListItems = this.renderListItems.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
@@ -241,38 +262,44 @@ class FileStructureExample extends Component {
   componentDidMount() {
     fetchSubjects('nb')
       .then(result => {
-        this.setState({
-          structure: result,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    fetchResourceConnections('3089', 'nb')
-      .then(result => {
-        console.log('resource connections', result);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    fetchAllSubjectToTopicConnections('nb')
-      .then(result => {
-        console.log('fetchAllSubjectToTopicConnections', result);
+        this.setState(
+          {
+            structure: result,
+          },
+          () => {
+            fetchResourceConnections('urn:resource:1:148635', 'nb')
+              .then(resourceResult => {
+                this.setState({
+                  resource: resourceResult[0],
+                });
+                const subjectId = resourceResult[0].path.split('/');
+                this.onOpenPath({
+                  id: `urn:${subjectId[1]}`,
+                  level: 0,
+                  updateResource: true,
+                });
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          },
+        );
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  onOpenPath(id, level, stringedPath) {
+  onOpenPath({ id, level, updateResource }) {
     if (level === 0) {
       // already loaded?
       const index = this.state.structure.findIndex(
         subject => subject.id === id,
       );
-      if (!this.state.structure[index].subtopics) {
+      if (
+        !this.state.structure[index].subtopics &&
+        !this.state.structure[index].loading
+      ) {
         this.setState(
           prevState => {
             const { structure } = prevState;
@@ -284,37 +311,29 @@ class FileStructureExample extends Component {
           () => {
             fetchSubjectsTopics(id, 'nb')
               .then(result => {
+                const { structure } = this.state;
+                const { id: subjectId } = structure[index];
+
+                structure[index].subtopics = connectionTopicsToParent(
+                  result,
+                  subjectId,
+                );
+
+                structure[index].loading = false;
                 this.setState(
-                  prevState => {
-                    const { structure } = prevState;
-                    structure[index].subtopics = result.sort(sortByName);
-                    structure[index].loading = false;
-                    return {
-                      structure,
-                    };
+                  {
+                    structure,
                   },
                   () => {
-                    // Fetch all subtopics from all topics retreived.. (need to know endpoints)
-                    const topicIds = this.state.structure[index].subtopics.map(
-                      subtopic => subtopic.id,
-                    );
-                    fetchTopics(topicIds, 'nb')
-                      .then(topicsResult => {
-                        this.setState(prevState => {
-                          const { structure } = prevState;
-                          topicsResult.forEach((topicResult, topicIndex) => {
-                            structure[index].subtopics[
-                              topicIndex
-                            ].subtopics = topicResult.sort(sortByName);
-                          });
-                          return {
-                            structure,
-                          };
-                        });
-                      })
-                      .catch(err => {
-                        console.log(err);
+                    if (updateResource) {
+                      console.log(
+                        'connect resource to subject!',
+                        this.state.resource,
+                      );
+                      this.setState({
+                        loadingEssentials: false,
                       });
+                    }
                   },
                 );
               })
@@ -323,51 +342,6 @@ class FileStructureExample extends Component {
               });
           },
         );
-      }
-    } else {
-      const pathArray = stringedPath.split(',');
-      const subjectId = pathArray[0];
-      const pathIds = pathArray.splice(1);
-      const { structure } = this.state;
-      let currentSubject = structure.find(subject => subject.id === subjectId);
-      pathIds.forEach(pathId => {
-        currentSubject =
-          currentSubject &&
-          currentSubject.subtopics &&
-          currentSubject.subtopics.find(subtopic => subtopic.id === pathId);
-      });
-
-      if (!currentSubject.subtopics[0].subtopics) {
-        // Not loaded, fetch data from topic where id=${id}
-        const subtopicIds = currentSubject.subtopics.map(
-          subtopic => subtopic.id,
-        );
-        fetchTopics(subtopicIds, 'nb')
-          .then(subtopicsResult => {
-            // Add to correct subtopics in structure..
-            this.setState(prevState => {
-              const { structure: prevStructure } = prevState;
-              let updateSubtopics = prevStructure.find(
-                subject => subject.id === subjectId,
-              );
-              pathIds.forEach(pathId => {
-                updateSubtopics = updateSubtopics.subtopics.find(
-                  subtopic => subtopic.id === pathId,
-                );
-              });
-              subtopicsResult.forEach((resultItem, index) => {
-                updateSubtopics.subtopics[index].subtopics = resultItem.sort(
-                  sortByName,
-                );
-              });
-              return {
-                structure: prevStructure,
-              };
-            });
-          })
-          .catch(err => {
-            console.log(err);
-          });
       }
     }
   }
@@ -384,7 +358,10 @@ class FileStructureExample extends Component {
     });
   }
 
-  renderListItems(path, filters) {
+  renderListItems(path, filters, level) {
+    if (level === 0) {
+      return null; // not allowed to add directly to subject with no topic connection
+    }
     const { addedItems: addedItemsState, activeFilterPath } = this.state;
     return (
       <div
@@ -460,35 +437,42 @@ class FileStructureExample extends Component {
   }
 
   render() {
-    console.log(this.state.structure);
+    const { loadingEssentials, activePath, structure } = this.state;
     return (
       <Fragment>
         <h1>This article has connections....</h1>
-        <Modal
-          backgroundColor="white"
-          animation="subtle"
-          size="large"
-          minHeight="85vh"
-          activateButton={<Button>Legg til eller endre koblinger</Button>}>
-          {onCloseModal => (
-            <Fragment>
-              <ModalHeader>
-                <ModalCloseButton title="Lukk" onClick={onCloseModal} />
-              </ModalHeader>
-              <ModalBody>
-                <FileStructure
-                  openedPaths={[]}
-                  structure={this.state.structure}
-                  toggleOpen={this.handleOpenToggle}
-                  renderListItems={this.renderListItems}
-                  listClass={listClass}
-                  activeItem={this.state.activePath}
-                  onOpenPath={this.onOpenPath}
-                />
-              </ModalBody>
-            </Fragment>
-          )}
-        </Modal>
+        {loadingEssentials ? (
+          <Spinner />
+        ) : (
+          <Modal
+            backgroundColor="white"
+            animation="subtle"
+            size="large"
+            narrow
+            minHeight="85vh"
+            activateButton={<Button>Legg til eller endre koblinger</Button>}>
+            {onCloseModal => (
+              <Fragment>
+                <ModalHeader>
+                  <ModalCloseButton title="Lukk" onClick={onCloseModal} />
+                </ModalHeader>
+                <ModalBody>
+                  <TitleModal>Lag tilknytninger for ressurs</TitleModal>
+                  <hr />
+                  <FileStructure
+                    openedPaths={[]}
+                    structure={structure}
+                    toggleOpen={this.handleOpenToggle}
+                    renderListItems={this.renderListItems}
+                    listClass={listClass}
+                    activeItem={activePath}
+                    onOpenPath={this.onOpenPath}
+                  />
+                </ModalBody>
+              </Fragment>
+            )}
+          </Modal>
+        )}
       </Fragment>
     );
   }

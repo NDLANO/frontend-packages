@@ -153,7 +153,7 @@ class FileStructure extends Component {
       if (index === -1) {
         openedPaths.push(path);
         if (this.props.onOpenPath) {
-          this.props.onOpenPath(id, level, path);
+          this.props.onOpenPath({ id, level });
         }
       } else {
         openedPaths.splice(index, 1);
@@ -189,7 +189,7 @@ class FileStructure extends Component {
                   }
                   level={level}>
                   {renderListItems &&
-                    renderListItems(pathToString, topic.filters)}
+                    renderListItems(pathToString, topic.filters, level)}
                 </ItemName>
                 {hasSubtopics && this.renderItems(topic.subtopics, path)}
                 {topic.loading && <Spinner />}

@@ -7,5 +7,6 @@
  */
 
 import SlateBlockMenu from './SlateBlockMenu';
+import FileStructure from './FileStructure';
 
-export { SlateBlockMenu };
+export { SlateBlockMenu, FileStructure };

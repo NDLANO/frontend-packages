@@ -21,7 +21,7 @@ import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import TaxonomyEditorExample from './TaxonomyEditorExample';
-
+import FileStructureExample from './FileStructureExample';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
@@ -154,6 +154,16 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <Center>
         <TaxonomyEditorExample />
+      </Center>
+    </div>
+  ))
+  .add('Sidesturktur', () => (
+    <div>
+      <StoryIntro title="Taksonomi editor">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <Center>
+        <FileStructureExample />
       </Center>
     </div>
   ));

@@ -38,6 +38,19 @@ const fetchData = url =>
     });
   });
 
+const fetchTopics = (ids, lang) =>
+  Promise.all(
+    ids.map(id =>
+      fetchData(
+        `https://test.api.ndla.no/taxonomy/v1/topics/${id}/?language=${lang}`,
+      ),
+    ),
+  )
+    .then(result => result)
+    .catch(err => {
+      console.log(err);
+    });
+
 const fetchResourceConnections = (resourceId, lang) =>
   Promise.all([
     fetchData(
@@ -330,9 +343,20 @@ class FileStructureExample extends Component {
                         'connect resource to subject!',
                         this.state.resource,
                       );
-                      this.setState({
-                        loadingEssentials: false,
-                      });
+                      const loadTopics = this.state.resource.parentTopics.map(
+                        parentTopic => parentTopic.id,
+                      );
+                      fetchTopics(loadTopics, 'nb')
+                        .then(result => {
+                          // TODO: Must load all subjects inside result. + move this outside of onOpenPath!
+                          console.log(result);
+                          this.setState({
+                            loadingEssentials: false,
+                          });
+                        })
+                        .catch(err => {
+                          console.log(err);
+                        });
                     }
                   },
                 );

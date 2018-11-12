@@ -23,6 +23,17 @@ const sortByName = (a, b) => {
   return 0;
 };
 
+const filterToSubjects = allFilters => {
+  const filterObject = {};
+  allFilters.forEach(filter => {
+    if (!filterObject[filter.subjectId]) {
+      filterObject[filter.subjectId] = [];
+    }
+    filterObject[filter.subjectId].push(filter);
+  });
+  return filterObject;
+};
+
 const fetchData = url =>
   new Promise((resolve, reject) => {
     getToken().then(token => {
@@ -62,13 +73,14 @@ const fetchResourceConnections = (resourceId, lang) =>
       console.log(err);
     });
 
-const fetchSubjects = lang =>
+const fetchSubjectsAndFilters = lang =>
   Promise.all([
     fetchData(
       `https://test.api.ndla.no/taxonomy/v1/subjects/?language=${lang}`,
     ),
+    fetchData(`https://test.api.ndla.no/taxonomy/v1/filters`),
   ])
-    .then(result => result[0].sort(sortByName))
+    .then(result => result)
     .catch(err => {
       console.log(err);
     });
@@ -266,18 +278,19 @@ class FileStructureExample extends Component {
     this.state = {
       addedItems: {},
       structure: [],
-      loadingEssentials: true,
+      loadedEssentials: false,
     };
     this.renderListItems = this.renderListItems.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
   }
 
   componentDidMount() {
-    fetchSubjects('nb')
+    fetchSubjectsAndFilters('nb')
       .then(result => {
         this.setState(
           {
-            structure: result,
+            structure: result[0].sort(sortByName),
+            filters: filterToSubjects(result[1]),
           },
           () => {
             fetchResourceConnections('urn:resource:1:148635', 'nb')
@@ -285,12 +298,32 @@ class FileStructureExample extends Component {
                 this.setState({
                   resource: resourceResult[0],
                 });
-                const subjectId = resourceResult[0].path.split('/');
-                this.onOpenPath({
-                  id: `urn:${subjectId[1]}`,
-                  level: 0,
-                  updateResource: true,
-                });
+                // Fetch all topics where this connection has been added..
+                const fetchTopicsWithId = resourceResult[0].parentTopics.map(
+                  parentTopic => parentTopic.id,
+                );
+                fetchTopics(fetchTopicsWithId, 'nb')
+                  .then(topicResults => {
+                    const getSubjects = topicResults.map(
+                      topic => topic.path.split('/')[1],
+                    );
+                    this.requestedSubjectsOnLoad = 0;
+                    const requestedSubjects = [];
+                    getSubjects.forEach(id => {
+                      if (!requestedSubjects.includes(id)) {
+                        requestedSubjects.push(id);
+                        this.requestedSubjectsOnLoad += 1;
+                        this.onOpenPath({
+                          id: `urn:${id}`,
+                          level: 0,
+                          updateResource: true,
+                        });
+                      }
+                    });
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
               })
               .catch(err => {
                 console.log(err);
@@ -339,24 +372,15 @@ class FileStructureExample extends Component {
                   },
                   () => {
                     if (updateResource) {
-                      console.log(
-                        'connect resource to subject!',
-                        this.state.resource,
-                      );
-                      const loadTopics = this.state.resource.parentTopics.map(
-                        parentTopic => parentTopic.id,
-                      );
-                      fetchTopics(loadTopics, 'nb')
-                        .then(result => {
-                          // TODO: Must load all subjects inside result. + move this outside of onOpenPath!
-                          console.log(result);
-                          this.setState({
-                            loadingEssentials: false,
-                          });
-                        })
-                        .catch(err => {
-                          console.log(err);
+                      // Update connection for resource for easier access..
+                      console.log('get data from:', structure[index]);
+                      this.requestedSubjectsOnLoad -= 1;
+                      if (this.requestedSubjectsOnLoad === 0) {
+                        console.log(this.state.resource);
+                        this.setState({
+                          loadedEssentials: true,
                         });
+                      }
                     }
                   },
                 );
@@ -460,42 +484,50 @@ class FileStructureExample extends Component {
     );
   }
 
+  renderConnections() {
+    console.log('this.addedItems', this.state.filters);
+    return <h1>Where do I belong????</h1>;
+  }
+
   render() {
-    const { loadingEssentials, activePath, structure } = this.state;
+    const { loadedEssentials, activePath, structure } = this.state;
     return (
       <Fragment>
         <h1>This article has connections....</h1>
-        {loadingEssentials ? (
+        {!loadedEssentials ? (
           <Spinner />
         ) : (
-          <Modal
-            backgroundColor="white"
-            animation="subtle"
-            size="large"
-            narrow
-            minHeight="85vh"
-            activateButton={<Button>Legg til eller endre koblinger</Button>}>
-            {onCloseModal => (
-              <Fragment>
-                <ModalHeader>
-                  <ModalCloseButton title="Lukk" onClick={onCloseModal} />
-                </ModalHeader>
-                <ModalBody>
-                  <TitleModal>Lag tilknytninger for ressurs</TitleModal>
-                  <hr />
-                  <FileStructure
-                    openedPaths={[]}
-                    structure={structure}
-                    toggleOpen={this.handleOpenToggle}
-                    renderListItems={this.renderListItems}
-                    listClass={listClass}
-                    activeItem={activePath}
-                    onOpenPath={this.onOpenPath}
-                  />
-                </ModalBody>
-              </Fragment>
-            )}
-          </Modal>
+          <Fragment>
+            {this.renderConnections()}
+            <Modal
+              backgroundColor="white"
+              animation="subtle"
+              size="large"
+              narrow
+              minHeight="85vh"
+              activateButton={<Button>Legg til eller endre koblinger</Button>}>
+              {onCloseModal => (
+                <Fragment>
+                  <ModalHeader>
+                    <ModalCloseButton title="Lukk" onClick={onCloseModal} />
+                  </ModalHeader>
+                  <ModalBody>
+                    <TitleModal>Lag tilknytninger for ressurs</TitleModal>
+                    <hr />
+                    <FileStructure
+                      openedPaths={[]}
+                      structure={structure}
+                      toggleOpen={this.handleOpenToggle}
+                      renderListItems={this.renderListItems}
+                      listClass={listClass}
+                      activeItem={activePath}
+                      onOpenPath={this.onOpenPath}
+                    />
+                  </ModalBody>
+                </Fragment>
+              )}
+            </Modal>
+          </Fragment>
         )}
       </Fragment>
     );

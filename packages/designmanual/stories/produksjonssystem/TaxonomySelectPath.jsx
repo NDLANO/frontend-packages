@@ -154,6 +154,7 @@ class TaxonomySelectPath extends Component {
   }
 
   getResources({ id, name, index }) {
+    console.log(getResources);
     if (index === 0) {
       this.setState({
         mainTopicId: id,

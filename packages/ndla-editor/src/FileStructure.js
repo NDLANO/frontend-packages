@@ -97,6 +97,14 @@ const ItemsList = styled.li`
         display: block;
       }
     `};
+  ${props =>
+    props.isOpen &&
+    props.level === 0 &&
+    css`
+      > div {
+        background: ${colors.brand.light};
+      }
+    `};
 `;
 
 const itemNameStyling = css`

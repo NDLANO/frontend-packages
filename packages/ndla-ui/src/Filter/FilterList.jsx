@@ -27,6 +27,7 @@ class FilterList extends Component {
   render() {
     const {
       modifiers,
+      preid,
       label,
       labelNotVisible,
       options,
@@ -81,7 +82,7 @@ class FilterList extends Component {
                 <input
                   {...filterClasses('input')}
                   type="checkbox"
-                  id={option.value}
+                  id={preid + option.value}
                   value={option.value}
                   disabled={disabled}
                   tabIndex={disabled ? -1 : 0}
@@ -100,7 +101,7 @@ class FilterList extends Component {
                     }
                   }}
                 />
-                <label htmlFor={option.value}>
+                <label htmlFor={preid + option.value}>
                   <span {...filterClasses('item-checkbox')} />
                   <span {...filterClasses('text')}>
                     {option.title}
@@ -156,6 +157,7 @@ const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 FilterList.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
+  preid: PropTypes.string,
   labelNotVisible: PropTypes.bool,
   modifiers: PropTypes.string,
   onChange: PropTypes.func, // isRequired
@@ -179,6 +181,7 @@ FilterList.propTypes = {
 
 FilterList.defaultProps = {
   label: 'FILTER:',
+  preid: '',
   modifiers: '',
   values: [],
   defaultVisibleCount: null,

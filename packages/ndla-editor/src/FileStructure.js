@@ -197,7 +197,7 @@ class FileStructure extends Component {
                   }
                   level={level}>
                   {renderListItems &&
-                    renderListItems(pathToString, topic.filters, level)}
+                    renderListItems(paths, pathToString, topic.filters, level)}
                 </ItemName>
                 {hasSubtopics && this.renderItems(topic.subtopics, path)}
                 {topic.loading && <Spinner />}

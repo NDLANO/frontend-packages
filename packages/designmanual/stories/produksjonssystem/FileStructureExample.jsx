@@ -15,7 +15,6 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
 import { Additional, Core } from 'ndla-icons/common';
 import { colors, spacing, fonts, shadows, animations } from 'ndla-core';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
-import { mockFilters } from './mockData/mockTopics';
 
 const sortByName = (a, b) => {
   if (a.name < b.name) return -1;
@@ -89,6 +88,17 @@ const fetchSubjectsTopics = (subjectId, lang) =>
   Promise.all([
     fetchData(
       `https://test.api.ndla.no/taxonomy/v1/subjects/${subjectId}/topics/?recursive=true&language=${lang}`,
+    ),
+  ])
+    .then(result => result[0])
+    .catch(err => {
+      console.log(err);
+    });
+
+const fetchResourceFilters = (resourceId, lang) =>
+  Promise.all([
+    fetchData(
+      `https://test.api.ndla.no/taxonomy/v1/resource-filters/${resourceId}`,
     ),
   ])
     .then(result => result[0])
@@ -285,6 +295,16 @@ class FileStructureExample extends Component {
   }
 
   componentDidMount() {
+    fetchResourceFilters(
+      'urn:resource-filter:05e1205d-f215-48f1-979f-f8433a06d17c',
+      'nb',
+    )
+      .then(result => {
+        console.log('resourceFilters', result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     fetchSubjectsAndFilters('nb')
       .then(result => {
         this.setState(
@@ -298,6 +318,7 @@ class FileStructureExample extends Component {
                 this.setState({
                   resource: resourceResult[0],
                 });
+                console.log(resourceResult[0]);
                 // Fetch all topics where this connection has been added..
                 const fetchTopicsWithId = resourceResult[0].parentTopics.map(
                   parentTopic => parentTopic.id,
@@ -394,10 +415,10 @@ class FileStructureExample extends Component {
     }
   }
 
-  addItem(relevance) {
+  addItem(relevance, parentTopic) {
     this.setState(prevState => {
       const { addedItems, activeFilterPath } = prevState;
-      addedItems[activeFilterPath] = relevance;
+      addedItems[activeFilterPath] = { relevance };
       return {
         addedItems,
         activeFilterPath: null,
@@ -406,19 +427,26 @@ class FileStructureExample extends Component {
     });
   }
 
-  renderListItems(path, filters, level) {
+  renderListItems(paths, path, filters, level) {
     if (level === 0) {
       return null; // not allowed to add directly to subject with no topic connection
     }
-    const { addedItems: addedItemsState, activeFilterPath } = this.state;
+    const {
+      addedItems: addedItemsState,
+      activeFilterPath,
+      filters: stateFilters,
+    } = this.state;
+    if (!stateFilters[paths[0]]) {
+      return null;
+    }
     return (
       <div
         className={cx('filestructure', {
           'filterstructure--active': this.state.activePath === path,
         })}>
         <AddTitle>Legg på nivå:</AddTitle>
-        {mockFilters.map(filter => (
-          <Fragment>
+        {stateFilters[paths[0]].map(filter => (
+          <Fragment key={filter.id}>
             {activeFilterPath === filter.id + path && (
               <FocusTrapReact
                 focusTrapOptions={{
@@ -433,13 +461,13 @@ class FileStructureExample extends Component {
                     <RelevanceTitle>Sett relevans:</RelevanceTitle>
                     <AddRelevanceButton
                       type="button"
-                      onClick={() => this.addItem('core')}>
+                      onClick={() => this.addItem('core', paths.pop())}>
                       <Core className="c-icon--20" />
                       <span>Kjerneressurs</span>
                     </AddRelevanceButton>
                     <AddRelevanceButton
                       link
-                      onClick={() => this.addItem('additional')}>
+                      onClick={() => this.addItem('additional', paths.pop())}>
                       <Additional className="c-icon--20" />
                       <span>Tillleggssressurs</span>
                     </AddRelevanceButton>
@@ -469,12 +497,13 @@ class FileStructureExample extends Component {
                   });
                 }
               }}>
-              {addedItemsState[filter.id + path] === 'core' && (
-                <Core className="c-icon--20" />
-              )}
-              {addedItemsState[filter.id + path] === 'additional' && (
-                <Additional className="c-icon--20" />
-              )}
+              {addedItemsState[filter.id + path] &&
+                addedItemsState[filter.id + path].relevance === 'core' && (
+                  <Core className="c-icon--20" />
+                )}
+              {addedItemsState[filter.id + path] &&
+                addedItemsState[filter.id + path].relevance ===
+                  'additional' && <Additional className="c-icon--20" />}
               {!addedItemsState[filter.id + path] && <NoRelevanceIcon />}
               {filter.name}
             </ConnectionButton>
@@ -485,7 +514,7 @@ class FileStructureExample extends Component {
   }
 
   renderConnections() {
-    console.log('this.addedItems', this.state.filters);
+    console.log('this.addedItems', this.state);
     return <h1>Where do I belong????</h1>;
   }
 
@@ -493,7 +522,7 @@ class FileStructureExample extends Component {
     const { loadedEssentials, activePath, structure } = this.state;
     return (
       <Fragment>
-        <h1>This article has connections....</h1>
+        <h1>This article has connections....?????</h1>
         {!loadedEssentials ? (
           <Spinner />
         ) : (

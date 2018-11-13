@@ -95,17 +95,6 @@ const fetchSubjectsTopics = (subjectId, lang) =>
       console.log(err);
     });
 
-const fetchResourceFilters = (resourceId, lang) =>
-  Promise.all([
-    fetchData(
-      `https://test.api.ndla.no/taxonomy/v1/resource-filters/${resourceId}`,
-    ),
-  ])
-    .then(result => result[0])
-    .catch(err => {
-      console.log(err);
-    });
-
 const TitleModal = styled('h1')`
   color: ${colors.text.primary};
 `;
@@ -119,13 +108,6 @@ const Spinner = styled('div')`
   width: ${spacing.large};
   display: block;
   margin: ${spacing.normal} auto;
-`;
-
-const NoRelevanceIcon = styled('span')`
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-  border: 1px solid ${colors.text.light};
 `;
 
 const RelevanceTitle = styled('div')`
@@ -145,32 +127,6 @@ const AddTitle = styled('span')`
   white-space: no-wrap;
 `;
 
-const AddRelevanceButton = styled('button')`
-  border: 0;
-  margin: 0 0 0 ${spacing.xsmall};
-  padding: 0;
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall}
-    ${spacing.xsmall};
-  color: ${colors.brand.primary};
-  &:disabled {
-    color: ${colors.brand.light};
-  }
-  &:not(:disabled) {
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
-  span {
-    margin-left: ${spacing.xsmall};
-  }
-`;
-
 const ConnectionButton = styled('button')`
   border: 0;
   margin: 0 0 0 ${spacing.xsmall};
@@ -181,25 +137,79 @@ const ConnectionButton = styled('button')`
   justify-content: center;
   text-align: left;
   padding: ${spacing.xsmall};
-  color: ${colors.text.light};
+  color: ${colors.brand.primary};
   ${fonts.sizes(14, 1.2)} opacity: 0;
   white-space: no-wrap;
-  > :first-child {
-    margin-right: ${spacing.xsmall};
-  }
   &:disabled {
     color: ${colors.brand.light};
-    > :first-child {
-      border-color: ${colors.brand.light};
+  }
+  > span:first-child {
+    border: 2px solid ${colors.brand.tertiary};
+    background: transparent;
+    width: 18px;
+    height: 18px;
+    margin: 4px ${spacing.xsmall} 4px 0;
+    border-radius: 2px;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 0px;
+      height: 2px;
+      border-radius: 2px;
+      position: absolute;
+      background: ${colors.brand.tertiary};
+      transform: rotate(45deg);
+      transition: width 50ms ease;
+      transform-origin: 0% 0%;
+      top: 7px;
+      left: 4px;
+    }
+
+    &:after {
+      content: '';
+      width: 0px;
+      height: 2px;
+      border-radius: 2px;
+      position: absolute;
+      background: ${colors.brand.tertiary};
+      transform: rotate(305deg);
+      transition: width 50ms ease;
+      transform-origin: 0% 0%;
+      top: 10px;
+      left: 5px;
     }
   }
   &:not(:disabled) {
     &:hover,
     &:focus {
-      text-decoration: underline;
-      color: ${colors.brand.primary};
-      > :first-child {
-        border-color: ${colors.brand.primary};
+      opacity: 1;
+      > span:first-child {
+        &:before {
+          width: 5px;
+          transition: width 100ms ease;
+        }
+        &:after {
+          width: 10px;
+          transition: width 150ms ease 100ms;
+        }
+      }
+    }
+  }
+  &.checkboxItem--checked {
+    opacity: 1;
+    > span:first-child {
+      background: ${colors.brand.primary};
+      border: 2px solid ${colors.brand.primary};
+      &:before {
+        width: 5px;
+        transition: width 100ms ease;
+        background: #fff;
+      }
+      &:after {
+        width: 10px;
+        transition: width 150ms ease 100ms;
+        background: #fff;
       }
     }
   }
@@ -232,18 +242,6 @@ const listClass = css`
         opacity: 1;
       }
     }
-  }
-`;
-
-const SelectRelevanceWrapper = styled('div')`
-  position: relative;
-  > div {
-    background: #fff;
-    padding: ${spacing.small} ${spacing.small} ${spacing.normal};
-    position: absolute;
-    bottom: 100%;
-    box-shadow: ${shadows.levitate1};
-    ${animations.fadeInBottom(animations.durations.fast)};
   }
 `;
 
@@ -282,6 +280,12 @@ const connectionTopicsToParent = (unConnectedTopics, id) => {
   return directConnections;
 };
 
+const hasMatch = (checkSubTopic, findId, paths) => {
+  if (checkSubTopic.id === findId) {
+    return paths;
+  }
+};
+
 class FileStructureExample extends Component {
   constructor(props) {
     super(props);
@@ -295,16 +299,6 @@ class FileStructureExample extends Component {
   }
 
   componentDidMount() {
-    fetchResourceFilters(
-      'urn:resource-filter:05e1205d-f215-48f1-979f-f8433a06d17c',
-      'nb',
-    )
-      .then(result => {
-        console.log('resourceFilters', result);
-      })
-      .catch(err => {
-        console.log(err);
-      });
     fetchSubjectsAndFilters('nb')
       .then(result => {
         this.setState(
@@ -318,7 +312,6 @@ class FileStructureExample extends Component {
                 this.setState({
                   resource: resourceResult[0],
                 });
-                console.log(resourceResult[0]);
                 // Fetch all topics where this connection has been added..
                 const fetchTopicsWithId = resourceResult[0].parentTopics.map(
                   parentTopic => parentTopic.id,
@@ -394,14 +387,11 @@ class FileStructureExample extends Component {
                   () => {
                     if (updateResource) {
                       // Update connection for resource for easier access..
-                      console.log('get data from:', structure[index]);
                       this.requestedSubjectsOnLoad -= 1;
-                      if (this.requestedSubjectsOnLoad === 0) {
-                        console.log(this.state.resource);
-                        this.setState({
-                          loadedEssentials: true,
-                        });
-                      }
+                      this.getPathsFromResourceTopics(
+                        structure[index].subtopics,
+                        this.requestedSubjectsOnLoad === 0,
+                      );
                     }
                   },
                 );
@@ -415,111 +405,92 @@ class FileStructureExample extends Component {
     }
   }
 
-  addItem(relevance, parentTopic) {
-    this.setState(prevState => {
-      const { addedItems, activeFilterPath } = prevState;
-      addedItems[activeFilterPath] = { relevance };
-      return {
-        addedItems,
-        activeFilterPath: null,
-        activePath: null,
-      };
+  getPathsFromResourceTopics(mapToSubject, loadedEssentials) {
+    const { resource } = this.state;
+    const { parentTopics } = resource;
+    console.log(mapToSubject);
+    parentTopics.forEach(parentTopic => {
+      mapToSubject.forEach(subtopics => {
+        if (parentTopic.id === subtopics.id) {
+          console.log('matched level 0');
+        }
+      });
+    });
+    this.setState({
+      loadedEssentials,
     });
   }
 
-  renderListItems(paths, path, filters, level) {
+  renderListItems({ paths, pathToString, filters, level, names }) {
     if (level === 0) {
       return null; // not allowed to add directly to subject with no topic connection
     }
-    const {
-      addedItems: addedItemsState,
-      activeFilterPath,
-      filters: stateFilters,
-    } = this.state;
+    const { addedItems: addedItemsState, filters: stateFilters } = this.state;
     if (!stateFilters[paths[0]]) {
       return null;
     }
     return (
-      <div
-        className={cx('filestructure', {
-          'filterstructure--active': this.state.activePath === path,
-        })}>
+      <div className={cx('filestructure')}>
         <AddTitle>Legg på nivå:</AddTitle>
         {stateFilters[paths[0]].map(filter => (
-          <Fragment key={filter.id}>
-            {activeFilterPath === filter.id + path && (
-              <FocusTrapReact
-                focusTrapOptions={{
-                  onDeactivate: () => {
-                    this.setState({ activeFilterPath: null, activePath: null });
-                  },
-                  clickOutsideDeactivates: true,
-                  escapeDeactivates: true,
-                }}>
-                <SelectRelevanceWrapper>
-                  <div>
-                    <RelevanceTitle>Sett relevans:</RelevanceTitle>
-                    <AddRelevanceButton
-                      type="button"
-                      onClick={() => this.addItem('core', paths.pop())}>
-                      <Core className="c-icon--20" />
-                      <span>Kjerneressurs</span>
-                    </AddRelevanceButton>
-                    <AddRelevanceButton
-                      link
-                      onClick={() => this.addItem('additional', paths.pop())}>
-                      <Additional className="c-icon--20" />
-                      <span>Tillleggssressurs</span>
-                    </AddRelevanceButton>
-                  </div>
-                </SelectRelevanceWrapper>
-              </FocusTrapReact>
-            )}
-            <ConnectionButton
-              type="button"
-              key={filter.id}
-              style={addedItemsState[filter.id + path] ? { opacity: 1 } : null}
-              disabled={filters && filters.includes(filter.id)}
-              onClick={() => {
-                if (addedItemsState[filter.id + path]) {
-                  // remove item
-                  this.setState(prevState => {
-                    const { addedItems } = prevState;
-                    delete addedItems[filter.id + path];
-                    return {
-                      addedItems,
-                    };
-                  });
-                } else {
-                  this.setState({
-                    activeFilterPath: filter.id + path,
-                    activePath: path,
-                  });
-                }
-              }}>
-              {addedItemsState[filter.id + path] &&
-                addedItemsState[filter.id + path].relevance === 'core' && (
-                  <Core className="c-icon--20" />
-                )}
-              {addedItemsState[filter.id + path] &&
-                addedItemsState[filter.id + path].relevance ===
-                  'additional' && <Additional className="c-icon--20" />}
-              {!addedItemsState[filter.id + path] && <NoRelevanceIcon />}
-              {filter.name}
-            </ConnectionButton>
-          </Fragment>
+          <ConnectionButton
+            type="button"
+            key={filter.id}
+            disabled={filters && filters.includes(filter.id)}
+            className={
+              addedItemsState[filter.id + pathToString]
+                ? 'checkboxItem--checked'
+                : ''
+            }
+            onClick={() => {
+              if (addedItemsState[filter.id + pathToString]) {
+                // remove item
+                this.setState(prevState => {
+                  const { addedItems } = prevState;
+                  delete addedItems[filter.id + pathToString];
+                  return {
+                    addedItems,
+                  };
+                });
+              } else {
+                /*
+                  contentUri: ""
+                  id: "urn:topic:1:110002"
+                  isPrimary: false
+                  name: "Behov og motiv"
+                */
+                /*
+                ["urn:subject:14", "urn:topic:1:185036", "urn:topic:1:185600"]
+                FileStructureExample.jsx:442 names (3) ["Medie- og informasjonskunnskap", "Journalistikk, informasjon og reklame", "Kommunikasjonsvirksomhet"]0: "Medie- og informasjonskunnskap"1: "Journalistikk, informasjon og reklame"2: "Kommunikasjonsvirksomhet"length: 3__proto__: Array(0)
+                FileStructureExample.jsx:443 with filter urn:filter:77db55c9-b7ae-4702-8a57-eaa4f88c6332
+               */
+                console.log('paths', paths);
+                console.log('names', names);
+                console.log('with filter', filter.id);
+
+                this.setState(prevState => {
+                  const { addedItems } = prevState;
+                  addedItems[filter.id + pathToString] = true;
+                  return {
+                    addedItems,
+                  };
+                });
+              }
+            }}>
+            <span />
+            <span>{filter.name}</span>
+          </ConnectionButton>
         ))}
       </div>
     );
   }
 
   renderConnections() {
-    console.log('this.addedItems', this.state);
     return <h1>Where do I belong????</h1>;
   }
 
   render() {
-    const { loadedEssentials, activePath, structure } = this.state;
+    const { loadedEssentials, structure } = this.state;
     return (
       <Fragment>
         <h1>This article has connections....?????</h1>
@@ -549,7 +520,6 @@ class FileStructureExample extends Component {
                       toggleOpen={this.handleOpenToggle}
                       renderListItems={this.renderListItems}
                       listClass={listClass}
-                      activeItem={activePath}
                       onOpenPath={this.onOpenPath}
                     />
                   </ModalBody>

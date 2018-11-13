@@ -172,17 +172,19 @@ class FileStructure extends Component {
     });
   }
 
-  renderItems(topics, paths) {
+  renderItems(topics, paths, names) {
     const level = paths.length;
     const { openedPaths } = this.state;
     const { renderListItems, listClass } = this.props;
     return (
       <ItemListWrapper>
         {topics.map(topic => {
-          const path = paths.slice();
-          path.push(topic.id);
+          const currentPaths = paths.slice();
+          const currentNames = names.slice();
+          currentPaths.push(topic.id);
+          currentNames.push(topic.name);
           const hasSubtopics = topic.subtopics && topic.subtopics.length > 1;
-          const pathToString = path.toString();
+          const pathToString = currentPaths.toString();
           const isOpen = openedPaths.includes(pathToString);
           return (
             <Fragment key={pathToString}>
@@ -197,9 +199,16 @@ class FileStructure extends Component {
                   }
                   level={level}>
                   {renderListItems &&
-                    renderListItems(paths, pathToString, topic.filters, level)}
+                    renderListItems({
+                      paths: currentPaths,
+                      pathToString,
+                      filters: topic.filters,
+                      level,
+                      names: currentNames,
+                    })}
                 </ItemName>
-                {hasSubtopics && this.renderItems(topic.subtopics, path)}
+                {hasSubtopics &&
+                  this.renderItems(topic.subtopics, currentPaths, currentNames)}
                 {topic.loading && <Spinner />}
               </ItemsList>
             </Fragment>
@@ -211,7 +220,7 @@ class FileStructure extends Component {
 
   render() {
     const { structure } = this.props;
-    return this.renderItems(structure, []);
+    return this.renderItems(structure, [], []);
   }
 }
 

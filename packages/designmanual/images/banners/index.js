@@ -31,12 +31,12 @@ export default [
   {
     desktop: Helsearbeiderfag,
     mobile: Helsearbeiderfag,
-    name: 'Helsearbeiderfag',
+    name: 'Helsearbeiderfag Vg2',
   },
   {
     desktop: HelseOgOppvekst,
     mobile: HelseOgOppvekst,
-    name: 'Helse- og oppvekstfag',
+    name: 'Helse- og oppvekstsfag Vg1',
   },
   { desktop: Historie, mobile: Historie, name: 'Historie' },
   { desktop: IKTService, mobile: IKTService, name: 'IKT Service' },

@@ -255,6 +255,7 @@ const ListView = ({
       <div {...filterClasses('wrapper-multiple-filters')}>
         {filters.map(filter => (
           <FilterListPhone
+            preid="list-view"
             key={filter.key}
             label={filter.label}
             options={filter.options}

@@ -51,6 +51,7 @@ class FilterListPhone extends Component {
 
   render() {
     const {
+      preid,
       modifiers,
       label,
       labelNotVisible,
@@ -124,7 +125,7 @@ class FilterListPhone extends Component {
                         <input
                           {...classes('input')}
                           type="checkbox"
-                          id={option.value}
+                          id={preid + option.value}
                           value={option.value}
                           checked={values.some(value => value === option.value)}
                           onChange={event => {
@@ -190,7 +191,7 @@ class FilterListPhone extends Component {
                 <input
                   {...classes('input')}
                   type="checkbox"
-                  id={option.value}
+                  id={preid + option.value}
                   value={option.value}
                   tabIndex={option.noResults ? -1 : 0}
                   checked={checked}
@@ -259,6 +260,7 @@ class FilterListPhone extends Component {
 const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 FilterListPhone.propTypes = {
+  preid: PropTypes.string.isRequired,
   children: PropTypes.node,
   label: PropTypes.string.isRequired,
   labelNotVisible: PropTypes.bool,

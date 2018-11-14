@@ -6,15 +6,12 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, createElement, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
-const filterClasses = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
+import { classes } from './filterClasses';
+import ToggleItem from './ToggleItem';
 
 class FilterList extends Component {
   constructor(props) {
@@ -49,16 +46,16 @@ class FilterList extends Component {
     }
 
     return (
-      <section {...filterClasses('list', modifiers)}>
-        <h1 {...filterClasses('label', labelModifiers)}>{label}</h1>
+      <section {...classes('list', modifiers)}>
+        <h1 {...classes('label', labelModifiers)}>{label}</h1>
         {this.props.noFilterSelectedLabel &&
           options.length === 0 && (
-            <span {...filterClasses('no-filter-selected')}>
+            <span {...classes('no-filter-selected')}>
               {this.props.noFilterSelectedLabel}
             </span>
           )}
         <ul
-          {...filterClasses('item-wrapper', {
+          {...classes('item-wrapper', {
             'aligned-grouping': alignedGroup,
             'collapse-mobile': collapseMobile,
           })}>
@@ -78,50 +75,34 @@ class FilterList extends Component {
             }
 
             return (
-              <li {...filterClasses('item', itemModifiers)} key={option.value}>
-                <input
-                  {...filterClasses('input')}
-                  type="checkbox"
-                  id={preid + option.value}
-                  value={option.value}
-                  disabled={disabled}
-                  tabIndex={disabled ? -1 : 0}
-                  checked={checked}
-                  onChange={event => {
-                    let newValues = null;
-                    if (event.currentTarget.checked) {
-                      newValues = [...values, option.value];
-                    } else {
-                      newValues = values.filter(
-                        value => value !== option.value,
-                      );
-                    }
-                    if (onChange) {
-                      onChange(newValues, option.value);
-                    }
-                  }}
-                />
-                <label htmlFor={preid + option.value}>
-                  <span {...filterClasses('item-checkbox')} />
-                  <span {...filterClasses('text')}>
-                    {option.title}
-                    {option.hits !== undefined && ` (${option.hits})`}
-                  </span>
-                  {option.icon
-                    ? createElement(option.icon, {
-                        className: `c-icon--22 ${
-                          filterClasses('icon').className
-                        }`,
-                      })
-                    : null}
-                </label>
-              </li>
+              <ToggleItem
+                modifiers={itemModifiers}
+                id={preid + option.value}
+                key={option.value}
+                value={option.value}
+                disabled={disabled}
+                tabIndex={disabled ? -1 : 0}
+                checked={checked}
+                icon={option.icon}
+                label={option.title}
+                onChange={event => {
+                  let newValues = null;
+                  if (event.currentTarget.checked) {
+                    newValues = [...values, option.value];
+                  } else {
+                    newValues = values.filter(value => value !== option.value);
+                  }
+                  if (onChange) {
+                    onChange(newValues, option.value);
+                  }
+                }}
+              />
             );
           })}
         </ul>
         {!showAll && (
           <button
-            {...filterClasses('expand')}
+            {...classes('expand')}
             type="button"
             onClick={() => {
               this.setState(prevState => {

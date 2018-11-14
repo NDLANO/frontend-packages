@@ -6,20 +6,16 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, createElement, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { ActiveFilters } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import debounce from 'lodash/debounce';
-
-const filterClasses = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
+import { classes } from './filterClasses';
+import ToggleItem from './ToggleItem';
 
 class FilterListPhone extends Component {
   constructor(props) {
@@ -29,6 +25,7 @@ class FilterListPhone extends Component {
       visibleCount: props.defaultVisibleCount,
     };
     this.setScreenSizeDebounced = debounce(() => this.setScreenSize(false), 50);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -54,8 +51,22 @@ class FilterListPhone extends Component {
     /* eslint react/no-did-mount-set-state: 1 */
   }
 
+  handleChange(event, option) {
+    const { onChange, values } = this.props;
+    let newValues = null;
+    if (event.currentTarget.checked) {
+      newValues = [...values, option.value];
+    } else {
+      newValues = values.filter(value => value !== option.value);
+    }
+    if (onChange) {
+      onChange(newValues, option.value);
+    }
+  }
+
   render() {
     const {
+      preid,
       modifiers,
       label,
       labelNotVisible,
@@ -86,8 +97,7 @@ class FilterListPhone extends Component {
       return (
         <div
           className={
-            activeFiltersNarrow &&
-            filterClasses('narrow-active-filters').className
+            activeFiltersNarrow && classes('narrow-active-filters').className
           }>
           {currentlyActiveFilters.length > 0 && (
             <ActiveFilters
@@ -102,7 +112,7 @@ class FilterListPhone extends Component {
             animation="slide-up"
             backgroundColor="grey"
             activateButton={
-              <Button outline {...filterClasses('modal-button')}>
+              <Button outline {...classes('modal-button')}>
                 {messages.openFilter}
               </Button>
             }>
@@ -119,49 +129,27 @@ class FilterListPhone extends Component {
                   />
                 </ModalHeader>
                 <ModalBody modifier="no-side-padding-mobile">
-                  <h1 {...filterClasses('label')}>{label}</h1>
+                  <h1 {...classes('label')}>{label}</h1>
                   <ul
-                    {...filterClasses('item-wrapper', {
+                    {...classes('item-wrapper', {
                       'aligned-grouping': alignedGroup,
                       'collapse-mobile': collapseMobile,
                     })}>
                     {options.map(option => (
-                      <li {...filterClasses('item')} key={option.value}>
-                        <input
-                          {...filterClasses('input')}
-                          type="checkbox"
-                          id={option.value}
-                          value={option.value}
-                          checked={values.some(value => value === option.value)}
-                          onChange={event => {
-                            let newValues = null;
-                            if (event.currentTarget.checked) {
-                              newValues = [...values, option.value];
-                            } else {
-                              newValues = values.filter(
-                                value => value !== option.value,
-                              );
-                            }
-                            if (onChange) {
-                              onChange(newValues, option.value);
-                            }
-                          }}
-                        />
-                        <label htmlFor={option.value}>
-                          <span {...filterClasses('item-checkbox')} />
-                          <span {...filterClasses('text')}>{option.title}</span>
-                          {option.icon
-                            ? createElement(option.icon, {
-                                className: `c-icon--22 u-margin-left-small ${
-                                  filterClasses('icon').className
-                                }`,
-                              })
-                            : null}
-                        </label>
-                      </li>
+                      <ToggleItem
+                        key={option.value}
+                        id={preid + option.value}
+                        value={option.value}
+                        checked={values.some(value => value === option.value)}
+                        onChange={event => {
+                          this.handleChange(event, option);
+                        }}
+                        icon={option.icon}
+                        label={option.title}
+                      />
                     ))}
                   </ul>
-                  <div {...filterClasses('usefilter-wrapper')}>
+                  <div {...classes('usefilter-wrapper')}>
                     <Button outline onClick={onClose}>
                       {messages.useFilter}
                     </Button>
@@ -175,9 +163,9 @@ class FilterListPhone extends Component {
     }
 
     return (
-      <section {...filterClasses('list', modifiers)}>
-        <h1 {...filterClasses('label', labelModifiers)}>{label}</h1>
-        <ul {...filterClasses('item-wrapper')}>
+      <section {...classes('list', modifiers)}>
+        <h1 {...classes('label', labelModifiers)}>{label}</h1>
+        <ul {...classes('item-wrapper')}>
           {options.map((option, index) => {
             const itemModifiers = [];
 
@@ -192,46 +180,25 @@ class FilterListPhone extends Component {
             }
 
             return (
-              <li {...filterClasses('item', itemModifiers)} key={option.value}>
-                <input
-                  {...filterClasses('input')}
-                  type="checkbox"
-                  id={option.value}
-                  value={option.value}
-                  tabIndex={option.noResults ? -1 : 0}
-                  checked={checked}
-                  onChange={event => {
-                    let newValues = null;
-                    if (event.currentTarget.checked) {
-                      newValues = [...values, option.value];
-                    } else {
-                      newValues = values.filter(
-                        value => value !== option.value,
-                      );
-                    }
-                    if (onChange) {
-                      onChange(newValues, option.value);
-                    }
-                  }}
-                />
-                <label htmlFor={option.value}>
-                  <span {...filterClasses('item-checkbox')} />
-                  <span {...filterClasses('text')}>{option.title}</span>
-                  {option.icon
-                    ? createElement(option.icon, {
-                        className: `c-icon--22 u-margin-left-small ${
-                          filterClasses('icon').className
-                        }`,
-                      })
-                    : null}
-                </label>
-              </li>
+              <ToggleItem
+                key={option.value}
+                id={preid + option.value}
+                value={option.value}
+                tabIndex={option.noResults ? -1 : 0}
+                checked={checked}
+                onChange={event => {
+                  this.handleChange(event, option);
+                }}
+                icon={option.icon}
+                label={option.title}
+                modifiers={itemModifiers}
+              />
             );
           })}
         </ul>
         {!showAll && (
           <button
-            {...filterClasses('expand')}
+            {...classes('expand')}
             type="button"
             onClick={() => {
               this.setState(prevState => {
@@ -265,6 +232,7 @@ class FilterListPhone extends Component {
 const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 FilterListPhone.propTypes = {
+  preid: PropTypes.string.isRequired,
   children: PropTypes.node,
   label: PropTypes.string.isRequired,
   labelNotVisible: PropTypes.bool,

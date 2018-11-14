@@ -8,18 +8,13 @@
 
 import React, { Component, createElement, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { ActiveFilters } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import debounce from 'lodash/debounce';
-
-const filterClasses = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
+import { classes } from './filterClasses';
 
 class FilterListPhone extends Component {
   constructor(props) {
@@ -86,8 +81,7 @@ class FilterListPhone extends Component {
       return (
         <div
           className={
-            activeFiltersNarrow &&
-            filterClasses('narrow-active-filters').className
+            activeFiltersNarrow && classes('narrow-active-filters').className
           }>
           {currentlyActiveFilters.length > 0 && (
             <ActiveFilters
@@ -102,7 +96,7 @@ class FilterListPhone extends Component {
             animation="slide-up"
             backgroundColor="grey"
             activateButton={
-              <Button outline {...filterClasses('modal-button')}>
+              <Button outline {...classes('modal-button')}>
                 {messages.openFilter}
               </Button>
             }>
@@ -119,16 +113,16 @@ class FilterListPhone extends Component {
                   />
                 </ModalHeader>
                 <ModalBody modifier="no-side-padding-mobile">
-                  <h1 {...filterClasses('label')}>{label}</h1>
+                  <h1 {...classes('label')}>{label}</h1>
                   <ul
-                    {...filterClasses('item-wrapper', {
+                    {...classes('item-wrapper', {
                       'aligned-grouping': alignedGroup,
                       'collapse-mobile': collapseMobile,
                     })}>
                     {options.map(option => (
-                      <li {...filterClasses('item')} key={option.value}>
+                      <li {...classes('item')} key={option.value}>
                         <input
-                          {...filterClasses('input')}
+                          {...classes('input')}
                           type="checkbox"
                           id={option.value}
                           value={option.value}
@@ -148,12 +142,12 @@ class FilterListPhone extends Component {
                           }}
                         />
                         <label htmlFor={option.value}>
-                          <span {...filterClasses('item-checkbox')} />
-                          <span {...filterClasses('text')}>{option.title}</span>
+                          <span {...classes('item-checkbox')} />
+                          <span {...classes('text')}>{option.title}</span>
                           {option.icon
                             ? createElement(option.icon, {
                                 className: `c-icon--22 u-margin-left-small ${
-                                  filterClasses('icon').className
+                                  classes('icon').className
                                 }`,
                               })
                             : null}
@@ -161,7 +155,7 @@ class FilterListPhone extends Component {
                       </li>
                     ))}
                   </ul>
-                  <div {...filterClasses('usefilter-wrapper')}>
+                  <div {...classes('usefilter-wrapper')}>
                     <Button outline onClick={onClose}>
                       {messages.useFilter}
                     </Button>
@@ -175,9 +169,9 @@ class FilterListPhone extends Component {
     }
 
     return (
-      <section {...filterClasses('list', modifiers)}>
-        <h1 {...filterClasses('label', labelModifiers)}>{label}</h1>
-        <ul {...filterClasses('item-wrapper')}>
+      <section {...classes('list', modifiers)}>
+        <h1 {...classes('label', labelModifiers)}>{label}</h1>
+        <ul {...classes('item-wrapper')}>
           {options.map((option, index) => {
             const itemModifiers = [];
 
@@ -192,9 +186,9 @@ class FilterListPhone extends Component {
             }
 
             return (
-              <li {...filterClasses('item', itemModifiers)} key={option.value}>
+              <li {...classes('item', itemModifiers)} key={option.value}>
                 <input
-                  {...filterClasses('input')}
+                  {...classes('input')}
                   type="checkbox"
                   id={option.value}
                   value={option.value}
@@ -215,12 +209,12 @@ class FilterListPhone extends Component {
                   }}
                 />
                 <label htmlFor={option.value}>
-                  <span {...filterClasses('item-checkbox')} />
-                  <span {...filterClasses('text')}>{option.title}</span>
+                  <span {...classes('item-checkbox')} />
+                  <span {...classes('text')}>{option.title}</span>
                   {option.icon
                     ? createElement(option.icon, {
                         className: `c-icon--22 u-margin-left-small ${
-                          filterClasses('icon').className
+                          classes('icon').className
                         }`,
                       })
                     : null}
@@ -231,7 +225,7 @@ class FilterListPhone extends Component {
         </ul>
         {!showAll && (
           <button
-            {...filterClasses('expand')}
+            {...classes('expand')}
             type="button"
             onClick={() => {
               this.setState(prevState => {

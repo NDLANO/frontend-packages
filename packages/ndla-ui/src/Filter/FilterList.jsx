@@ -8,13 +8,9 @@
 
 import React, { Component, createElement, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
-const filterClasses = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
+import { classes } from './filterClasses';
 
 class FilterList extends Component {
   constructor(props) {
@@ -49,16 +45,16 @@ class FilterList extends Component {
     }
 
     return (
-      <section {...filterClasses('list', modifiers)}>
-        <h1 {...filterClasses('label', labelModifiers)}>{label}</h1>
+      <section {...classes('list', modifiers)}>
+        <h1 {...classes('label', labelModifiers)}>{label}</h1>
         {this.props.noFilterSelectedLabel &&
           options.length === 0 && (
-            <span {...filterClasses('no-filter-selected')}>
+            <span {...classes('no-filter-selected')}>
               {this.props.noFilterSelectedLabel}
             </span>
           )}
         <ul
-          {...filterClasses('item-wrapper', {
+          {...classes('item-wrapper', {
             'aligned-grouping': alignedGroup,
             'collapse-mobile': collapseMobile,
           })}>
@@ -78,9 +74,9 @@ class FilterList extends Component {
             }
 
             return (
-              <li {...filterClasses('item', itemModifiers)} key={option.value}>
+              <li {...classes('item', itemModifiers)} key={option.value}>
                 <input
-                  {...filterClasses('input')}
+                  {...classes('input')}
                   type="checkbox"
                   id={preid + option.value}
                   value={option.value}
@@ -102,16 +98,14 @@ class FilterList extends Component {
                   }}
                 />
                 <label htmlFor={preid + option.value}>
-                  <span {...filterClasses('item-checkbox')} />
-                  <span {...filterClasses('text')}>
+                  <span {...classes('item-checkbox')} />
+                  <span {...classes('text')}>
                     {option.title}
                     {option.hits !== undefined && ` (${option.hits})`}
                   </span>
                   {option.icon
                     ? createElement(option.icon, {
-                        className: `c-icon--22 ${
-                          filterClasses('icon').className
-                        }`,
+                        className: `c-icon--22 ${classes('icon').className}`,
                       })
                     : null}
                 </label>
@@ -121,7 +115,7 @@ class FilterList extends Component {
         </ul>
         {!showAll && (
           <button
-            {...filterClasses('expand')}
+            {...classes('expand')}
             type="button"
             onClick={() => {
               this.setState(prevState => {

@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, createElement, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
@@ -15,6 +15,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
+import ToggleItem from './ToggleItem';
 
 class FilterListPhone extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class FilterListPhone extends Component {
       visibleCount: props.defaultVisibleCount,
     };
     this.setScreenSizeDebounced = debounce(() => this.setScreenSize(false), 50);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +49,19 @@ class FilterListPhone extends Component {
       });
     }
     /* eslint react/no-did-mount-set-state: 1 */
+  }
+
+  handleChange(event, option) {
+    const { onChange, values } = this.props;
+    let newValues = null;
+    if (event.currentTarget.checked) {
+      newValues = [...values, option.value];
+    } else {
+      newValues = values.filter(value => value !== option.value);
+    }
+    if (onChange) {
+      onChange(newValues, option.value);
+    }
   }
 
   render() {
@@ -121,39 +136,17 @@ class FilterListPhone extends Component {
                       'collapse-mobile': collapseMobile,
                     })}>
                     {options.map(option => (
-                      <li {...classes('item')} key={option.value}>
-                        <input
-                          {...classes('input')}
-                          type="checkbox"
-                          id={preid + option.value}
-                          value={option.value}
-                          checked={values.some(value => value === option.value)}
-                          onChange={event => {
-                            let newValues = null;
-                            if (event.currentTarget.checked) {
-                              newValues = [...values, option.value];
-                            } else {
-                              newValues = values.filter(
-                                value => value !== option.value,
-                              );
-                            }
-                            if (onChange) {
-                              onChange(newValues, option.value);
-                            }
-                          }}
-                        />
-                        <label htmlFor={option.value}>
-                          <span {...classes('item-checkbox')} />
-                          <span {...classes('text')}>{option.title}</span>
-                          {option.icon
-                            ? createElement(option.icon, {
-                                className: `c-icon--22 u-margin-left-small ${
-                                  classes('icon').className
-                                }`,
-                              })
-                            : null}
-                        </label>
-                      </li>
+                      <ToggleItem
+                        key={option.value}
+                        id={preid + option.value}
+                        value={option.value}
+                        checked={values.some(value => value === option.value)}
+                        onChange={event => {
+                          this.handleChange(event, option);
+                        }}
+                        icon={option.icon}
+                        label={option.title}
+                      />
                     ))}
                   </ul>
                   <div {...classes('usefilter-wrapper')}>
@@ -187,40 +180,19 @@ class FilterListPhone extends Component {
             }
 
             return (
-              <li {...classes('item', itemModifiers)} key={option.value}>
-                <input
-                  {...classes('input')}
-                  type="checkbox"
-                  id={preid + option.value}
-                  value={option.value}
-                  tabIndex={option.noResults ? -1 : 0}
-                  checked={checked}
-                  onChange={event => {
-                    let newValues = null;
-                    if (event.currentTarget.checked) {
-                      newValues = [...values, option.value];
-                    } else {
-                      newValues = values.filter(
-                        value => value !== option.value,
-                      );
-                    }
-                    if (onChange) {
-                      onChange(newValues, option.value);
-                    }
-                  }}
-                />
-                <label htmlFor={option.value}>
-                  <span {...classes('item-checkbox')} />
-                  <span {...classes('text')}>{option.title}</span>
-                  {option.icon
-                    ? createElement(option.icon, {
-                        className: `c-icon--22 u-margin-left-small ${
-                          classes('icon').className
-                        }`,
-                      })
-                    : null}
-                </label>
-              </li>
+              <ToggleItem
+                key={option.value}
+                id={preid + option.value}
+                value={option.value}
+                tabIndex={option.noResults ? -1 : 0}
+                checked={checked}
+                onChange={event => {
+                  this.handleChange(event, option);
+                }}
+                icon={option.icon}
+                label={option.title}
+                modifiers={itemModifiers}
+              />
             );
           })}
         </ul>

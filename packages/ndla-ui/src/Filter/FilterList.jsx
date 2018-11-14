@@ -6,11 +6,12 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, createElement, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
 import { classes } from './filterClasses';
+import ToggleItem from './ToggleItem';
 
 class FilterList extends Component {
   constructor(props) {
@@ -74,42 +75,28 @@ class FilterList extends Component {
             }
 
             return (
-              <li {...classes('item', itemModifiers)} key={option.value}>
-                <input
-                  {...classes('input')}
-                  type="checkbox"
-                  id={preid + option.value}
-                  value={option.value}
-                  disabled={disabled}
-                  tabIndex={disabled ? -1 : 0}
-                  checked={checked}
-                  onChange={event => {
-                    let newValues = null;
-                    if (event.currentTarget.checked) {
-                      newValues = [...values, option.value];
-                    } else {
-                      newValues = values.filter(
-                        value => value !== option.value,
-                      );
-                    }
-                    if (onChange) {
-                      onChange(newValues, option.value);
-                    }
-                  }}
-                />
-                <label htmlFor={preid + option.value}>
-                  <span {...classes('item-checkbox')} />
-                  <span {...classes('text')}>
-                    {option.title}
-                    {option.hits !== undefined && ` (${option.hits})`}
-                  </span>
-                  {option.icon
-                    ? createElement(option.icon, {
-                        className: `c-icon--22 ${classes('icon').className}`,
-                      })
-                    : null}
-                </label>
-              </li>
+              <ToggleItem
+                modifiers={itemModifiers}
+                id={preid + option.value}
+                key={option.value}
+                value={option.value}
+                disabled={disabled}
+                tabIndex={disabled ? -1 : 0}
+                checked={checked}
+                icon={option.icon}
+                label={option.title}
+                onChange={event => {
+                  let newValues = null;
+                  if (event.currentTarget.checked) {
+                    newValues = [...values, option.value];
+                  } else {
+                    newValues = values.filter(value => value !== option.value);
+                  }
+                  if (onChange) {
+                    onChange(newValues, option.value);
+                  }
+                }}
+              />
             );
           })}
         </ul>

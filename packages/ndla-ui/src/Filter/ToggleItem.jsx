@@ -18,6 +18,7 @@ const ToggleItem = ({
   component: Component,
   icon,
   onChange,
+  tabIndex,
   value,
   disabled,
   hits,
@@ -29,7 +30,7 @@ const ToggleItem = ({
       id={id}
       value={value}
       disabled={disabled}
-      tabIndex={disabled ? -1 : 0}
+      tabIndex={tabIndex}
       checked={checked}
       onChange={onChange}
     />
@@ -54,7 +55,11 @@ ToggleItem.propTypes = {
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  modifiers: PropTypes.string,
+  tabIndex: PropTypes.number,
+  modifiers: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   component: PropTypes.oneOfType([
     PropTypes.string,

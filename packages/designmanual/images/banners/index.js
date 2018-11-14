@@ -18,7 +18,7 @@ import ServiceOgSamferdsel from './Service-og-samferdsel.svg';
 import Soersamisk from './Soersamisk.svg';
 import Tysk from './Tysk.svg';
 import InternasjonalEngelsk from './Internasjonal-Engelsk.svg';
-import SamfunnsfagligEngelsk from './SamfunnsfagligEngelsk.svg';
+import SamfunnsfagligEngelsk from './Samfunnsfaglig-engelsk.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },

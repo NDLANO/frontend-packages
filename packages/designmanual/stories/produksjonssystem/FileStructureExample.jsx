@@ -408,14 +408,39 @@ class FileStructureExample extends Component {
   getPathsFromResourceTopics(mapToSubject, loadedEssentials) {
     const { resource } = this.state;
     const { parentTopics } = resource;
-    console.log(mapToSubject);
-    parentTopics.forEach(parentTopic => {
-      mapToSubject.forEach(subtopics => {
-        if (parentTopic.id === subtopics.id) {
-          console.log('matched level 0');
+    if (parentTopics.length) {
+      const allPaths = [];
+      const removedTopics = [];
+      const getAllPaths = subtopics => {
+        subtopics.forEach(subtopic => {
+          allPaths.push(subtopic.path);
+          if (subtopic.subtopics.length) {
+            getAllPaths(subtopic.subtopics);
+          }
+        });
+      };
+      getAllPaths(mapToSubject);
+      parentTopics.forEach((parentTopic, parentTopicIndex) => {
+        const index = allPaths.findIndex(
+          path =>
+            `urn:${path.substr(path.lastIndexOf('/') + 1)}` === parentTopic.id,
+        );
+        if (index !== 0) {
+          const pathTopicIds = allPaths[index].split('/').splice(2);
+          const pathNames = [];
+          let mappedTopics = mapToSubject;
+          pathTopicIds.forEach(pathId => {
+            mappedTopics = mappedTopics.find(
+              topicId => topicId.id === `urn:${pathId}`,
+            );
+            pathNames.push(mappedTopics.name);
+            mappedTopics = mappedTopics.subtopics;
+          });
+          removedTopics.push(parentTopicIndex);
         }
       });
-    });
+    }
+    console.log(this.state.structure);
     this.setState({
       loadedEssentials,
     });
@@ -491,6 +516,7 @@ class FileStructureExample extends Component {
 
   render() {
     const { loadedEssentials, structure } = this.state;
+    console.log(this.addedItems);
     return (
       <Fragment>
         <h1>This article has connections....?????</h1>

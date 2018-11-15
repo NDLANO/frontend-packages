@@ -40,7 +40,8 @@ test('SafeLink defaults to normal link if to prop is an external link', () => {
       <div>
         <Safelink to="https://example.com">
           Snapshot should not contain onClick
-        </Safelink>,
+        </Safelink>
+        ,
       </div>
     </StaticRouter>,
   );
@@ -55,7 +56,8 @@ test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
       <div>
         <Safelink to="/nb/node/54">
           Snapshot should not contain onClick
-        </Safelink>,
+        </Safelink>
+        ,
       </div>
     </StaticRouter>,
   );

@@ -53,9 +53,8 @@ const panEventHandler = event => {
   const posX = event.pageX || touch.pageX;
   const posY = event.pageY || touch.pageY;
 
-  const transformOrigin = `${(posX - offset.left) /
-    image.clientWidth *
-    100}% ${(posY - offset.top) / image.clientHeight * 100}%`;
+  const transformOrigin = `${((posX - offset.left) / image.clientWidth) *
+    100}% ${((posY - offset.top) / image.clientHeight) * 100}%`;
 
   image.style.transformOrigin = transformOrigin;
 };

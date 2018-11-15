@@ -260,7 +260,8 @@ class NotionExample extends Component {
                       </Fragment>
                     }>
                     usikker
-                  </Notion>.
+                  </Notion>
+                  .
                 </p>
               </div>
             </section>

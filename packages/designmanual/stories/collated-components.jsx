@@ -530,7 +530,8 @@ storiesOf('Sammensatte moduler', module)
           <em>
             Nasjonale faglige retningslinjer for forebygging og behandling av
             underernæring og internkontroll i helsetjenesten
-          </em>. Helsedirektoratet
+          </em>
+          . Helsedirektoratet
         </p>
         <div className="c-collate">
           <div className="c-collate__info">

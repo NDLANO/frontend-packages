@@ -162,8 +162,9 @@ export const Article = ({
         <ArticleContent content={content} />
       </LayoutItem>
       <LayoutItem layout="center">
-        {footNotes &&
-          footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
+        {footNotes && footNotes.length > 0 && (
+          <ArticleFootNotes footNotes={footNotes} />
+        )}
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>

@@ -139,7 +139,8 @@ class FootnotesExample extends Component {
               kommer tilbake.» Bergens Tidende. 11.05.2003.{' '}
               <a href="http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html">
                 http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html
-              </a>.
+              </a>
+              .
             </cite>
           </li>
           <li className="c-footnotes__item">

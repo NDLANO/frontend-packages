@@ -58,12 +58,11 @@ const TopicIntroduction = ({
               <Additional className="c-icon--20 u-margin-left-tiny" />
             </Tooltip>
           )}
-          {!additional &&
-            showAdditionalCores && (
-              <Tooltip tooltip={messages.tooltipCoreTopic} align="left">
-                <Core className="c-icon--20 u-margin-left-tiny" />
-              </Tooltip>
-            )}
+          {!additional && showAdditionalCores && (
+            <Tooltip tooltip={messages.tooltipCoreTopic} align="left">
+              <Core className="c-icon--20 u-margin-left-tiny" />
+            </Tooltip>
+          )}
         </div>
         {/* Since topic introduction is already escaped from the api
           we run into a double escaping issues as React escapes all strings.

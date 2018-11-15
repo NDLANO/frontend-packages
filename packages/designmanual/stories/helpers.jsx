@@ -53,7 +53,9 @@ export const AnchorNavigation = ({ links }) => (
       margin: 0,
       padding: 0,
     }}>
-    {links.map(link => <li key={uuid()}>{link}</li>)}
+    {links.map(link => (
+      <li key={uuid()}>{link}</li>
+    ))}
   </ul>
 );
 

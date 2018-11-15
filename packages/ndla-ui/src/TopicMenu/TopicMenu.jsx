@@ -363,40 +363,39 @@ export default class TopicMenu extends Component {
                       </div>
                     </Fragment>
                   )}
-                  {expandedTopic &&
-                    !disableSubTopic && (
-                      <SubtopicLinkList
-                        classes={classes}
-                        className={
-                          classes('section', subTopicModifiers).className
-                        }
-                        closeMenu={closeMenu}
-                        topic={expandedTopic}
-                        backLabel={
-                          !hasExpandedSubtopics
-                            ? subjectTitle
-                            : currentlyExpandedSubTopics[
-                                currentlyExpandedSubTopics.length - 1
-                              ].name
-                        }
-                        goToTitle={t('masthead.menu.goTo')}
-                        toTopic={toTopic}
-                        expandedSubtopicId={
-                          currentlyExpandedSubTopics[0] &&
-                          currentlyExpandedSubTopics[0].id
-                        }
-                        onSubtopicExpand={id => {
-                          this.handleSubtopicExpand(id, 0);
-                        }}
-                        onGoBack={this.handleOnGoBack}
-                        resourceToLinkProps={resourceToLinkProps}
-                        competenceButton={
-                          competenceGoals &&
-                          this.state.isNarrowScreen &&
-                          this.renderCompentenceGoals(false, t)
-                        }
-                      />
-                    )}
+                  {expandedTopic && !disableSubTopic && (
+                    <SubtopicLinkList
+                      classes={classes}
+                      className={
+                        classes('section', subTopicModifiers).className
+                      }
+                      closeMenu={closeMenu}
+                      topic={expandedTopic}
+                      backLabel={
+                        !hasExpandedSubtopics
+                          ? subjectTitle
+                          : currentlyExpandedSubTopics[
+                              currentlyExpandedSubTopics.length - 1
+                            ].name
+                      }
+                      goToTitle={t('masthead.menu.goTo')}
+                      toTopic={toTopic}
+                      expandedSubtopicId={
+                        currentlyExpandedSubTopics[0] &&
+                        currentlyExpandedSubTopics[0].id
+                      }
+                      onSubtopicExpand={id => {
+                        this.handleSubtopicExpand(id, 0);
+                      }}
+                      onGoBack={this.handleOnGoBack}
+                      resourceToLinkProps={resourceToLinkProps}
+                      competenceButton={
+                        competenceGoals &&
+                        this.state.isNarrowScreen &&
+                        this.renderCompentenceGoals(false, t)
+                      }
+                    />
+                  )}
                   {currentlyExpandedSubTopics.map((subTopic, index) => (
                     <SubtopicLinkList
                       key={subTopic.id}

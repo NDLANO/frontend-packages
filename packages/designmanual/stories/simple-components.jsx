@@ -285,8 +285,8 @@ storiesOf('Enkle komponenter', module)
           skyver brødteksten for langt ned på siden.
         </p>
         <p>
-          Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
-          bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
+          Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />
+          Anbefalt bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
         </p>
       </StoryIntro>
       <StoryBody>
@@ -745,7 +745,8 @@ storiesOf('Enkle komponenter', module)
           Kildehenvisninger benytter{' '}
           <a href="http://sokogskriv.no/kildebruk-og-referanser/referansestiler/chicago-fotnoter/">
             Chicago 16-stilen
-          </a>.
+          </a>
+          .
         </p>
         <p>
           I teksten brukes en enkel nummerering for å henvise til referanse.

@@ -582,6 +582,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Footer>
         <div className="footer_form">
+          {/* eslint-disable jsx-a11y/label-has-associated-control  */}
           <label
             htmlFor="language-select"
             className="footer_label footer--bold">

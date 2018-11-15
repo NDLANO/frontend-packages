@@ -29,16 +29,16 @@
   ],
   "dependencies": {
     "@ndla/core": "^0.4.0",
-    "classnames": "2.2.5",
-    "focus-trap": "^2.4.3",
+    "classnames": "2.2.6",
+    "focus-trap": "^3.0.0",
     "focus-trap-react": "^4.0.0",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^1.5.9",
-    "react-facebook": "^4.2.1",
+    "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
-    "react-slick": "^0.19.0",
+    "react-slick": "^0.23.2",
     "react-transition-group": "^2.2.1"
   },
   "peerDependencies": {
@@ -50,7 +50,9 @@
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "extract-text-webpack-plugin": "3.0.2"
+    "mini-css-extract-plugin": "^0.4.4",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
   },
   "publishConfig": {
     "access": "public"

@@ -56,21 +56,19 @@ export const SearchResult = ({
             </div>
           )}
           <h2>{messages.subHeading}</h2>
-          {!competenceGoalsOpen &&
-            currentCompetenceGoal && (
-              <ul {...resultClasses('current-goal')}>
-                <li>{currentCompetenceGoal}</li>
-              </ul>
-            )}
-          {!competenceGoalsOpen &&
-            competenceGoals && (
-              <p {...resultClasses('current-goal-info')}>
-                {messages.openCompetenceGoalsButtonPrefix}{' '}
-                <Button link onClick={onToggleCompetenceGoals}>
-                  {messages.openCompetenceGoalsButton}
-                </Button>
-              </p>
-            )}
+          {!competenceGoalsOpen && currentCompetenceGoal && (
+            <ul {...resultClasses('current-goal')}>
+              <li>{currentCompetenceGoal}</li>
+            </ul>
+          )}
+          {!competenceGoalsOpen && competenceGoals && (
+            <p {...resultClasses('current-goal-info')}>
+              {messages.openCompetenceGoalsButtonPrefix}{' '}
+              <Button link onClick={onToggleCompetenceGoals}>
+                {messages.openCompetenceGoalsButton}
+              </Button>
+            </p>
+          )}
           {competenceGoalsOpen && (
             <div {...resultClasses('competence-goals')}>{competenceGoals}</div>
           )}
@@ -185,24 +183,23 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
             </span>
           ))}
       </header>
-      {item.breadcrumb &&
-        item.breadcrumb.length > 0 && (
-          <div {...searchResultItemClasses('breadcrumb')}>
-            {item.breadcrumb.map((breadcrumbItem, index) => {
-              let icon = null;
+      {item.breadcrumb && item.breadcrumb.length > 0 && (
+        <div {...searchResultItemClasses('breadcrumb')}>
+          {item.breadcrumb.map((breadcrumbItem, index) => {
+            let icon = null;
 
-              if (index !== item.breadcrumb.length - 1) {
-                icon = <ChevronRight />;
-              }
-              return (
-                <Fragment key={uuid()}>
-                  <span>{breadcrumbItem}</span>
-                  {icon}
-                </Fragment>
-              );
-            })}
-          </div>
-        )}
+            if (index !== item.breadcrumb.length - 1) {
+              icon = <ChevronRight />;
+            }
+            return (
+              <Fragment key={uuid()}>
+                <span>{breadcrumbItem}</span>
+                {icon}
+              </Fragment>
+            );
+          })}
+        </div>
+      )}
       <div {...searchResultItemClasses('content')}>
         <p
           {...searchResultItemClasses('ingress')}
@@ -210,23 +207,22 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
         />
         {item.image}
       </div>
-      {item.subjects &&
-        item.subjects.length !== 0 && (
-          <div {...searchResultItemClasses('subjects')}>
-            <span>{subjectsLabel}</span>
-            <ul>
-              {item.subjects.map(subject => (
-                <li key={uuid()}>
-                  {subject.url.href ? (
-                    <a {...subject.url}>{subject.title}</a>
-                  ) : (
-                    <SafeLink to={subject.url}>{subject.title}</SafeLink>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      {item.subjects && item.subjects.length !== 0 && (
+        <div {...searchResultItemClasses('subjects')}>
+          <span>{subjectsLabel}</span>
+          <ul>
+            {item.subjects.map(subject => (
+              <li key={uuid()}>
+                {subject.url.href ? (
+                  <a {...subject.url}>{subject.title}</a>
+                ) : (
+                  <SafeLink to={subject.url}>{subject.title}</SafeLink>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </article>
   </li>
 );

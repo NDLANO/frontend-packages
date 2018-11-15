@@ -11,6 +11,6 @@ const storybookCmd = path.resolve(
 
 runCommand(
   storybookCmd,
-  ['-p', 6006],
+  ['-p', 6006, '--ci', '--quiet'],
   path.resolve(__dirname, '../packages/designmanual/'),
 );

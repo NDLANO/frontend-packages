@@ -7,7 +7,7 @@
  */
 
 const chalk = require('chalk');
-const babel = require('babel-core');
+const babel = require('@babel/core');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
@@ -115,6 +115,10 @@ function buildPackages() {
 
 if (process.argv[2] === 'packages') {
   buildPackages();
+}
+
+if (process.argv[2] === 'package') {
+  buildNodePackage(process.cwd());
 }
 
 module.exports = {

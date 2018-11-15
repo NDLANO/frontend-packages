@@ -36,10 +36,10 @@ import { Audio } from '@ndla/icons/lib/common/Audio');
 
 ### Icons are currently grouped into three folders
 
-* common
-* license
-* editor
-* contentType
+- common
+- license
+- editor
+- contentType
 
 ## Development
 

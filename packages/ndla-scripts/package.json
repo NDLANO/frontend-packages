@@ -5,7 +5,7 @@
   "license": "GPL-3.0",
   "main": "src/index.js",
   "bin": {
-    "@ndla/scripts": "src/index.js"
+    "ndla-scripts": "src/index.js"
   },
   "scripts": {
     "test": "NODE_ENV=unittest jest"
@@ -25,8 +25,8 @@
     "await-url": "^0.3.0",
     "cross-spawn": "^6.0.5",
     "cross-spawn-promise": "^0.10.1",
-    "normalize-url": "^3.3.0",
-    "now": "^11.4.2",
+    "normalize-url": "^4.0.0",
+    "now": "^12.1.2",
     "octonode": "^0.9.4",
     "url-regex": "^4.1.1"
   },

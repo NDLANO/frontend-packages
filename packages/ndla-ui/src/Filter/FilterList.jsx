@@ -48,12 +48,11 @@ class FilterList extends Component {
     return (
       <section {...classes('list', modifiers)}>
         <h1 {...classes('label', labelModifiers)}>{label}</h1>
-        {this.props.noFilterSelectedLabel &&
-          options.length === 0 && (
-            <span {...classes('no-filter-selected')}>
-              {this.props.noFilterSelectedLabel}
-            </span>
-          )}
+        {this.props.noFilterSelectedLabel && options.length === 0 && (
+          <span {...classes('no-filter-selected')}>
+            {this.props.noFilterSelectedLabel}
+          </span>
+        )}
         <ul
           {...classes('item-wrapper', {
             'aligned-grouping': alignedGroup,

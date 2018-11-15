@@ -25,7 +25,8 @@ export default () => (
         <ArticleHeaderWrapper>
           <InfoBox>
             <p>
-              Alt innhold vil ikke være med i betaversjonen.<br />
+              Alt innhold vil ikke være med i betaversjonen.
+              <br />
               Vi har prioritert kjernestoff framfor tilleggsstoff. Noen emner og
               fagstoff kan mangle.
             </p>

@@ -114,23 +114,21 @@ class ListViewExample extends Component {
 
     // 4. Sort filtered results
     if (sortByValue === 'title') {
-      filteredItems = filteredItems.sort(
-        (a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1),
+      filteredItems = filteredItems.sort((a, b) =>
+        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1,
       );
     } else if (sortByValue === 'category') {
-      filteredItems = filteredItems.sort(
-        (a, b) =>
-          a.category.title.toLowerCase() > b.category.title.toLowerCase()
-            ? 1
-            : -1,
+      filteredItems = filteredItems.sort((a, b) =>
+        a.category.title.toLowerCase() > b.category.title.toLowerCase()
+          ? 1
+          : -1,
       );
     } else {
       // TODO: Clarify, how do you sort an array of subjects?
-      filteredItems = filteredItems.sort(
-        (a, b) =>
-          a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()
-            ? 1
-            : -1,
+      filteredItems = filteredItems.sort((a, b) =>
+        a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()
+          ? 1
+          : -1,
       );
     }
     return filteredItems;

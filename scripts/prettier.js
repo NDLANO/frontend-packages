@@ -10,8 +10,7 @@ const prettierCmd = path.resolve(__dirname, `../node_modules/.bin/${prettier}`);
 
 const args = [].concat(
   `--${shouldWrite ? 'write' : 'l'}`,
-  '"scripts/*.js"',
-  '"packages/**/*(*.js|*.jsx)"',
+  '"**/*(*.js|*.jsx|*.md)"',
 );
 
 try {
@@ -22,7 +21,7 @@ try {
     console.log(
       `${chalk.red(`\nThis project uses prettier to format all JavaScript code.\n`) +
         chalk.dim(`Please run `) +
-        chalk.reset('yarn prettier') +
+        chalk.reset('yarn format') +
         chalk.dim(` and add changes to files listed above to your commit.`)
        }\n`
     );

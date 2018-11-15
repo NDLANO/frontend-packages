@@ -530,7 +530,8 @@ storiesOf('Sammensatte moduler', module)
           <em>
             Nasjonale faglige retningslinjer for forebygging og behandling av
             underernæring og internkontroll i helsetjenesten
-          </em>. Helsedirektoratet
+          </em>
+          . Helsedirektoratet
         </p>
         <div className="c-collate">
           <div className="c-collate__info">
@@ -581,6 +582,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Footer>
         <div className="footer_form">
+          {/* eslint-disable jsx-a11y/label-has-associated-control  */}
           <label
             htmlFor="language-select"
             className="footer_label footer--bold">

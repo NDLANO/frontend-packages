@@ -5,16 +5,7 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "sideEffects": false,
-  "scripts": {
-    "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "rimraf lib es",
-    "test": "jest",
-    "prepublish": "npm run clean && npm run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
@@ -29,7 +20,7 @@
   ],
   "dependencies": {
     "@ndla/util": "^0.3.0",
-    "focus-trap": "^2.4.3",
+    "focus-trap": "^3.0.0",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5"
   },

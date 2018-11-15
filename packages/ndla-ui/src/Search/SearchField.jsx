@@ -172,15 +172,14 @@ class SearchField extends Component {
             onBlur={this.onInputBlur}
             onFocus={this.onInputFocus}
           />
-          {filters &&
-            filters.length > 0 && (
-              <div {...classes('filters')}>
-                <ActiveFilters
-                  filters={filters}
-                  onFilterRemove={this.handleOnFilterRemove}
-                />
-              </div>
-            )}
+          {filters && filters.length > 0 && (
+            <div {...classes('filters')}>
+              <ActiveFilters
+                filters={filters}
+                onFilterRemove={this.handleOnFilterRemove}
+              />
+            </div>
+          )}
           <button
             tabIndex="-1"
             {...classes('button')}

@@ -72,30 +72,29 @@ class CompetenceGoals extends Component {
                   {messages.heading}
                 </h2>
                 <p {...classes('description')}>{messages.listDescription}</p>
-                {filterOptions &&
-                  filterOptions.length > 0 && (
-                    <Fragment>
-                      <FilterListPhone
-                        preid="competence"
-                        label="Filtrer kompetansemål"
-                        options={filterOptions}
-                        alignedGroup
-                        values={filterValues}
-                        onChange={onFilterClick}
-                        messages={{
-                          openFilter: t(
-                            'competenceGoals.openCompentenceGoalsFilter',
-                          ),
-                          useFilter: t(
-                            'competenceGoals.useCompentenceGoalsFilter',
-                          ),
-                          closeFilter: t(
-                            'competenceGoals.closeCompentenceGoalsFilter',
-                          ),
-                        }}
-                      />
-                    </Fragment>
-                  )}
+                {filterOptions && filterOptions.length > 0 && (
+                  <Fragment>
+                    <FilterListPhone
+                      preid="competence"
+                      label="Filtrer kompetansemål"
+                      options={filterOptions}
+                      alignedGroup
+                      values={filterValues}
+                      onChange={onFilterClick}
+                      messages={{
+                        openFilter: t(
+                          'competenceGoals.openCompentenceGoalsFilter',
+                        ),
+                        useFilter: t(
+                          'competenceGoals.useCompentenceGoalsFilter',
+                        ),
+                        closeFilter: t(
+                          'competenceGoals.closeCompentenceGoalsFilter',
+                        ),
+                      }}
+                    />
+                  </Fragment>
+                )}
                 {topics.map(topic => (
                   <div
                     {...classes('topic', {

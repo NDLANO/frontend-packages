@@ -55,8 +55,8 @@ class TwoColumnsLanguageExample extends Component {
 
   render() {
     const { filterValues } = this.state;
-    const topics = this.getSortedTopics().sort(
-      (a, b) => (a.heading.toLowerCase() > b.heading.toLowerCase() ? 1 : -1),
+    const topics = this.getSortedTopics().sort((a, b) =>
+      a.heading.toLowerCase() > b.heading.toLowerCase() ? 1 : -1,
     );
 
     return (
@@ -74,9 +74,8 @@ class TwoColumnsLanguageExample extends Component {
             <h1 {...classes('heading')}>{filteredTopics.heading}</h1>
             <TopicIntroductionList
               toTopic={() => '#'}
-              topics={filteredTopics.topics.sort(
-                (a, b) =>
-                  a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1,
+              topics={filteredTopics.topics.sort((a, b) =>
+                a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1,
               )}
               twoColumns
               subjectPage

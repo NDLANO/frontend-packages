@@ -89,21 +89,20 @@ export default class ClickToggle extends React.Component {
             onDeactivate: this.unmountTrap,
             clickOutsideDeactivates: true, // Only works when click on scrollbar
           }}>
-          {useDialog &&
-            (alwaysRenderChildren || showDialog) && (
-              <Dialog
-                id={id}
-                labelledby={labelledby}
-                hidden={!showDialog}
-                onClose={this.handleClick}
-                disablePortal={disablePortal}
-                messages={{ close: openTitle || 'lukk' }}
-                modifier={
-                  showDialog ? ['active', dialogModifier] : dialogModifier
-                }>
-                {children}
-              </Dialog>
-            )}
+          {useDialog && (alwaysRenderChildren || showDialog) && (
+            <Dialog
+              id={id}
+              labelledby={labelledby}
+              hidden={!showDialog}
+              onClose={this.handleClick}
+              disablePortal={disablePortal}
+              messages={{ close: openTitle || 'lukk' }}
+              modifier={
+                showDialog ? ['active', dialogModifier] : dialogModifier
+              }>
+              {children}
+            </Dialog>
+          )}
           {!useDialog &&
             (isOpen || alwaysRenderChildren) &&
             children(this.handleOnClose, isOpen)}

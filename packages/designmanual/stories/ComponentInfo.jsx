@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/styles/hljs';
+import { docco } from 'react-syntax-highlighter/dist/styles/hljs';
 
 import Tabs from '@ndla/tabs';
 import { uuid, copyTextToClipboard } from '@ndla/util';

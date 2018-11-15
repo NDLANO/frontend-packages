@@ -5,20 +5,22 @@
   "scripts": {
     "build-clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist",
     "build": "node ./scripts/build.js packages",
-    "lint": "yarn run lint-prettier --silent && eslint --cache --ext .js --ext .jsx ./packages --ignore-path .gitignore",
-    "lint-prettier": "node scripts/prettier.js lint",
+    "lint": "yarn format-check && yarn lint-es",
+    "lint-es": "eslint --cache --ext .js --ext .jsx ./packages --ignore-path .gitignore",
+    "format": "node ./scripts/prettier.js write",
+    "format-check": "node scripts/prettier.js lint",
     "test": "cross-env NODE_ENV=unittest jest",
+    "check-all": "yarn format-check && yarn lint-es && yarn test",
     "deploy": "now --token $NDLA_NOW_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
-    "clean": "lerna clean && yarn build-clean",
+    "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist",
     "bootstrap": "lerna bootstrap && yarn build",
-    "publish": "yarn build-clean && yarn bootstrap && lerna publish",
+    "publish": "yarn clean && yarn bootstrap && lerna publish",
     "watch": "node ./scripts/watch.js",
     "start": "yarn build && concurrently -r --kill-others \"yarn watch\" \"yarn start-storybook\"",
     "start-storybook": "node ./scripts/startStorybook.js",
     "prebuild-storybook": "yarn bootstrap",
     "build-storybook": "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
-    "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static",
-    "prettier": "node ./scripts/prettier.js write"
+    "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static"
   },
   "repository": {
     "type": "git",

@@ -69,9 +69,11 @@ copyTextToClipboard('Hello world!');
 ```
 
 ### `tagsI18N(object, locale, withFallback, preferdLocales)`
+
 Finds translation for a specific language in an array named tags from an object. Prefered locales is a fallback option if the given locale translation does not exist.
 If no preferdLocales is defined, it is default sat to `['nb', 'nn', 'en']`.
-```js
+
+````js
 import { tagsI18N } from '@ndla/util';
 tagsI18N(object, 'nb', false, ['nb', 'nn', 'en']);
 
@@ -80,4 +82,4 @@ Creates a PDF document based of content. Content is an array of objects with key
 ```js
 import { downloadPdf } from '@ndla/util';
 downloadPdf({ title: 'myPdf', content: [{ text: 'PDF example', style: 'header'}, { text: 'Ingress text', style: 'ingress'}, { text: 'paragraph text #1', style: 'paragraph'}, { text: 'paragraph text #2', style: 'paragraph'}]);
-```
+````

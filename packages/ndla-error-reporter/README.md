@@ -12,7 +12,6 @@ $ npm install ndla-error-reporter
 
 A polyfill for [fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) is needed for cross-browser support.
 
-
 ## Usage
 
 ```js
@@ -39,7 +38,6 @@ import ErrorReporter from 'ndla-error-reporter');
 ErrorReporter.getInstance().captureMessage('Testing');
 ```
 
-
 ## API(functions)
 
 ### `ErrorReporter.captureError(error, [additionalInfo])`
@@ -50,16 +48,16 @@ Processes error and sends error info to Loggly with optional additional info.
 try {
   // some "dangerous" code
 } catch (e) {
-  errorReporter.captureError(e, {url: 'http://example.com'});
+  errorReporter.captureError(e, { url: 'http://example.com' });
 }
 ```
 
 **Parameters:**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `error` | `Object` | **Required.** [Error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) to process and send to Loggy. |
-| `additionalInfo` | `Object` | **Optional.** Additional information you want to send to Loggly. |
+| Name             | Type     | Description                                                                                                                                        |
+| ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `error`          | `Object` | **Required.** [Error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) to process and send to Loggy. |
+| `additionalInfo` | `Object` | **Optional.** Additional information you want to send to Loggly.                                                                                   |
 
 ### `ErrorReporter.captureMessage(msg)`
 
@@ -71,8 +69,8 @@ errorReporter.captureMessage('Testing');
 
 **Parameters:**
 
-| Name | Type | Description |
-| --- | --- | --- |
+| Name  | Type     | Description                                           |
+| ----- | -------- | ----------------------------------------------------- |
 | `msg` | `String` | **Required.** The message you want to send to Loggly. |
 
 ### `ErrorReporter.refresh()`

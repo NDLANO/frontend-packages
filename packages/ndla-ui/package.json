@@ -8,9 +8,9 @@
   "jsnext:main": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:css",
+    "build": "yarn build:css",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
-    "prepublish": "npm run build"
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",

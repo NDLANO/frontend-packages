@@ -5,7 +5,7 @@
   "license": "GPL-3.0",
   "main": "src/index.js",
   "bin": {
-    "@ndla/scripts": "src/index.js"
+    "ndla-scripts": "src/index.js"
   },
   "scripts": {
     "test": "NODE_ENV=unittest jest"

@@ -19,6 +19,8 @@ import Soersamisk from './Soersamisk.svg';
 import Tysk from './Tysk.svg';
 import InternasjonalEngelsk from './Internasjonal-Engelsk.svg';
 import SamfunnsfagligEngelsk from './Samfunnsfaglig-engelsk.svg';
+import Kroppsoving from './Kroppsoving.svg';
+import BarneOgUngdomsarbeider from './Barne-og-ungdomsarbeider.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
@@ -81,5 +83,15 @@ export default [
     desktop: SamfunnsfagligEngelsk,
     mobile: SamfunnsfagligEngelsk,
     name: 'Samfunnsfaglig engelsk',
+  },
+  {
+    desktop: BarneOgUngdomsarbeider,
+    mobile: BarneOgUngdomsarbeider,
+    name: 'Barne- og ungdomsarbeiderfag Vg2',
+  },
+  {
+    desktop: Kroppsoving,
+    mobile: Kroppsoving,
+    name: 'Kroppsøving',
   },
 ];

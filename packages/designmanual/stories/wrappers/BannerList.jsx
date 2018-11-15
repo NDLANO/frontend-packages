@@ -61,6 +61,7 @@ class BannerList extends Component {
               bannerSearchLowerCase === '' ||
               banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1,
           )
+          .sort((a, b) => a.name.localeCompare(b.name, { sensitivity: 'base' }))
           .map(banner => (
             <div key={banner.desktop} style={{ marginTop: '26px' }}>
               <SubjectHeader

@@ -9,12 +9,13 @@
 import React, { Component, Fragment } from 'react';
 import { FileStructure } from 'ndla-editor';
 import styled, { cx, css } from 'react-emotion';
-import FocusTrapReact from 'focus-trap-react';
 import Button from 'ndla-button';
+import { FormHeader, FormSections, FormDropdown } from 'ndla-forms';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
 import { Additional, Core } from 'ndla-icons/common';
 import { colors, spacing, fonts, shadows, animations } from 'ndla-core';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
+import { Object } from 'core-js';
 
 const sortByName = (a, b) => {
   if (a.name < b.name) return -1;
@@ -23,14 +24,17 @@ const sortByName = (a, b) => {
 };
 
 const filterToSubjects = allFilters => {
-  const filterObject = {};
+  const filterObjects = {};
   allFilters.forEach(filter => {
-    if (!filterObject[filter.subjectId]) {
-      filterObject[filter.subjectId] = [];
+    if (!filterObjects[filter.subjectId]) {
+      filterObjects[filter.subjectId] = [];
     }
-    filterObject[filter.subjectId].push(filter);
+    filterObjects[filter.subjectId].push(filter);
   });
-  return filterObject;
+  Object.keys(filterObjects).forEach(subjectId => {
+    filterObjects[subjectId] = filterObjects[subjectId].sort(sortByName);
+  });
+  return filterObjects;
 };
 
 const fetchData = url =>
@@ -95,6 +99,24 @@ const fetchSubjectsTopics = (subjectId, lang) =>
       console.log(err);
     });
 
+const fetchResourceTypes = lang =>
+  new Promise((resolve, reject) => {
+    getToken().then(token => {
+      fetch(
+        `https://test.api.ndla.no/taxonomy/v1/resource-types/?language=${lang}`,
+        {
+          method: 'GET',
+          headers: headerWithAccessToken(token),
+        },
+      ).then(res => {
+        if (res.ok) {
+          return resolve(res.json());
+        }
+        return res.json().then(json => reject(json));
+      });
+    });
+  });
+
 const TitleModal = styled('h1')`
   color: ${colors.text.primary};
 `;
@@ -110,6 +132,10 @@ const Spinner = styled('div')`
   margin: ${spacing.normal} auto;
 `;
 
+const SpinnerWrapper = styled('div')`
+  width: 75%;
+`;
+
 const RelevanceTitle = styled('div')`
   ${fonts.sizes(16, 1.2)} font-weight: ${fonts.weight.semibold};
   color: ${colors.text.primary};
@@ -120,7 +146,7 @@ const AddTitle = styled('span')`
   ${fonts.sizes(16, 1.2)} font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
   color: ${colors.text.primary};
-  opacity: 0;
+  opacity: ${props => (props.show ? 1 : 0)};
   display: flex;
   align-items: center;
   padding-right: ${spacing.small};
@@ -138,8 +164,7 @@ const ConnectionButton = styled('button')`
   text-align: left;
   padding: ${spacing.xsmall};
   color: ${colors.brand.primary};
-  ${fonts.sizes(14, 1.2)} opacity: 0;
-  white-space: no-wrap;
+  ${fonts.sizes(14, 1.2)} white-space: no-wrap;
   &:disabled {
     color: ${colors.brand.light};
   }
@@ -183,7 +208,6 @@ const ConnectionButton = styled('button')`
   &:not(:disabled) {
     &:hover,
     &:focus {
-      opacity: 1;
       > span:first-child {
         &:before {
           width: 5px;
@@ -197,7 +221,6 @@ const ConnectionButton = styled('button')`
     }
   }
   &.checkboxItem--checked {
-    opacity: 1;
     > span:first-child {
       background: ${colors.brand.primary};
       border: 2px solid ${colors.brand.primary};
@@ -213,6 +236,14 @@ const ConnectionButton = styled('button')`
       }
     }
   }
+`;
+
+const buttonAddition = css`
+  opacity: 0;
+  height: auto;
+  padding: 0 ${spacing.small};
+  margin: 3px ${spacing.xsmall};
+  ${fonts.sizes(14, 1.1)};
 `;
 
 const listClass = css`
@@ -280,31 +311,39 @@ const connectionTopicsToParent = (unConnectedTopics, id) => {
   return directConnections;
 };
 
-const hasMatch = (checkSubTopic, findId, paths) => {
-  if (checkSubTopic.id === findId) {
-    return paths;
-  }
-};
-
 class FileStructureExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addedItems: {},
       structure: [],
       loadedEssentials: false,
+      resourceTypes: [],
+      resourceTypeSelected: '',
+      FileStructureFilters: [],
+      availableFilters: [],
     };
     this.renderListItems = this.renderListItems.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
+    this.updateResourceType = this.updateResourceType.bind(this);
   }
 
   componentDidMount() {
+    fetchResourceTypes('nb')
+      .then(result => {
+        this.setState({
+          resourceTypes: result,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     fetchSubjectsAndFilters('nb')
       .then(result => {
         this.setState(
           {
             structure: result[0].sort(sortByName),
-            filters: filterToSubjects(result[1]),
+            availableFilters: filterToSubjects(result[1]),
           },
           () => {
             fetchResourceConnections('urn:resource:1:148635', 'nb')
@@ -388,10 +427,12 @@ class FileStructureExample extends Component {
                     if (updateResource) {
                       // Update connection for resource for easier access..
                       this.requestedSubjectsOnLoad -= 1;
-                      this.getPathsFromResourceTopics(
-                        structure[index].subtopics,
-                        this.requestedSubjectsOnLoad === 0,
-                      );
+                      this.getPathsFromResourceTopics({
+                        mapToSubject: structure[index].subtopics,
+                        subjectId: structure[index].id,
+                        subjectName: structure[index].name,
+                        loadedEssentials: this.requestedSubjectsOnLoad === 0,
+                      });
                     }
                   },
                 );
@@ -405,12 +446,17 @@ class FileStructureExample extends Component {
     }
   }
 
-  getPathsFromResourceTopics(mapToSubject, loadedEssentials) {
+  getPathsFromResourceTopics({
+    mapToSubject,
+    subjectName,
+    subjectId,
+    loadedEssentials,
+  }) {
     const { resource } = this.state;
     const { parentTopics } = resource;
+
     if (parentTopics.length) {
       const allPaths = [];
-      const removedTopics = [];
       const getAllPaths = subtopics => {
         subtopics.forEach(subtopic => {
           allPaths.push(subtopic.path);
@@ -436,92 +482,237 @@ class FileStructureExample extends Component {
             pathNames.push(mappedTopics.name);
             mappedTopics = mappedTopics.subtopics;
           });
-          removedTopics.push(parentTopicIndex);
+          parentTopics[parentTopicIndex].paths = [subjectName].concat(
+            pathNames,
+          );
+          parentTopics[parentTopicIndex].subjectId = subjectId;
         }
       });
+      resource.parentTopics = parentTopics;
     }
-    console.log(this.state.structure);
     this.setState({
       loadedEssentials,
+      resource,
     });
   }
 
-  renderListItems({ paths, pathToString, filters, level, names }) {
+  updateResourceType(resourceTypeSelected) {
+    this.setState({
+      resourceTypeSelected,
+    });
+  }
+
+  renderListItems({ paths, names, level, isOpen, id }) {
+    const { availableFilters } = this.state;
+
     if (level === 0) {
-      return null; // not allowed to add directly to subject with no topic connection
+      if (!availableFilters[paths[0]] || !isOpen) {
+        return null;
+      }
+      return (
+        <div className={cx('filestructure')}>
+          <AddTitle show>Filtrer emner:</AddTitle>
+          {availableFilters[paths[0]].map(filter => (
+            <ConnectionButton
+              type="button"
+              key={filter.id}
+              className={
+                this.state.FileStructureFilters.some(
+                  FileStructureFilter => FileStructureFilter === filter.id,
+                )
+                  ? 'checkboxItem--checked'
+                  : ''
+              }
+              onClick={() => {
+                const currentIndex = this.state.FileStructureFilters.findIndex(
+                  FileStructureFilter => FileStructureFilter === filter.id,
+                );
+                if (currentIndex === -1) {
+                  this.setState(prevState => {
+                    const { FileStructureFilters } = prevState;
+                    FileStructureFilters.push(filter.id);
+                    return {
+                      FileStructureFilters,
+                    };
+                  });
+                } else {
+                  this.setState(prevState => {
+                    const { FileStructureFilters } = prevState;
+                    FileStructureFilters.splice(currentIndex, 1);
+                    return {
+                      FileStructureFilters,
+                    };
+                  });
+                }
+              }}>
+              <span />
+              <span>{filter.name}</span>
+            </ConnectionButton>
+          ))}
+        </div>
+      );
     }
-    const { addedItems: addedItemsState, filters: stateFilters } = this.state;
-    if (!stateFilters[paths[0]]) {
-      return null;
-    }
+    const { resource } = this.state;
+    const currentIndex = resource.parentTopics.findIndex(
+      parentTopic => parentTopic.id === id,
+    );
     return (
       <div className={cx('filestructure')}>
-        <AddTitle>Legg på nivå:</AddTitle>
-        {stateFilters[paths[0]].map(filter => (
-          <ConnectionButton
-            type="button"
-            key={filter.id}
-            disabled={filters && filters.includes(filter.id)}
-            className={
-              addedItemsState[filter.id + pathToString]
-                ? 'checkboxItem--checked'
-                : ''
+        <Button
+          className={buttonAddition}
+          style={currentIndex !== -1 ? { opacity: 1 } : null}
+          onClick={() => {
+            if (currentIndex !== -1) {
+              // remove item
+              resource.parentTopics.splice(currentIndex, 1);
+              this.setState({
+                resource,
+              });
+            } else {
+              resource.parentTopics.push({
+                id,
+                paths: names,
+                subjectId: paths[0],
+              });
+              this.setState({
+                resource,
+              });
             }
-            onClick={() => {
-              if (addedItemsState[filter.id + pathToString]) {
-                // remove item
-                this.setState(prevState => {
-                  const { addedItems } = prevState;
-                  delete addedItems[filter.id + pathToString];
-                  return {
-                    addedItems,
-                  };
-                });
-              } else {
-                /*
-                  contentUri: ""
-                  id: "urn:topic:1:110002"
-                  isPrimary: false
-                  name: "Behov og motiv"
-                */
-                /*
-                ["urn:subject:14", "urn:topic:1:185036", "urn:topic:1:185600"]
-                FileStructureExample.jsx:442 names (3) ["Medie- og informasjonskunnskap", "Journalistikk, informasjon og reklame", "Kommunikasjonsvirksomhet"]0: "Medie- og informasjonskunnskap"1: "Journalistikk, informasjon og reklame"2: "Kommunikasjonsvirksomhet"length: 3__proto__: Array(0)
-                FileStructureExample.jsx:443 with filter urn:filter:77db55c9-b7ae-4702-8a57-eaa4f88c6332
-               */
-                console.log('paths', paths);
-                console.log('names', names);
-                console.log('with filter', filter.id);
-
-                this.setState(prevState => {
-                  const { addedItems } = prevState;
-                  addedItems[filter.id + pathToString] = true;
-                  return {
-                    addedItems,
-                  };
-                });
-              }
-            }}>
-            <span />
-            <span>{filter.name}</span>
-          </ConnectionButton>
-        ))}
+          }}>
+          {currentIndex !== -1
+            ? 'Ta bort emnetilknytning'
+            : 'Opprett emnetilknytning'}
+        </Button>
       </div>
     );
   }
 
   renderConnections() {
-    return <h1>Where do I belong????</h1>;
+    return this.state.resource.parentTopics.map(parentTopic => (
+      <FormSections key={parentTopic.id}>
+        <div>
+          <Button>Primærkobling</Button>
+          {parentTopic.paths.map(path => (
+            <span key={`${parentTopic.id}${path}`}>{path}</span>
+          ))}
+        </div>
+      </FormSections>
+    ));
+  }
+
+  renderSubjectFilters() {
+    const { availableFilters, resource, structure } = this.state;
+    const availableSubjects = {};
+    console.log(resource.filters);
+    resource.parentTopics.forEach(parentTopic => {
+      if (!availableSubjects[parentTopic.subjectId]) {
+        availableSubjects[parentTopic.subjectId] = true;
+      }
+    });
+    return (
+      <table>
+        <thead>
+          <th>Nivå</th>
+          <th>Relevanse</th>
+        </thead>
+        <tbody>
+          {Object.keys(availableSubjects).map(filterSubjectKey => {
+            const subjectName = structure.find(
+              structureItem => structureItem.id === filterSubjectKey,
+            ).name;
+            return availableFilters[filterSubjectKey].map(filter => {
+              const currentFilter = resource.filters.find(
+                resourceFilter => resourceFilter.id === filter.id,
+              );
+              return (
+                <tr
+                  key={filter.id}
+                  className={currentFilter ? 'filter--connected' : ''}>
+                  <td>
+                    {subjectName}: {filter.name}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        console.log('add or make filter id', filter.id);
+                      }}>
+                      Tilleggsressurs
+                      {currentFilter &&
+                        currentFilter.relevanceId ===
+                          'urn:relevance:supplementary' &&
+                        ' YES!'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        console.log('add or make filter id', filter.id);
+                      }}>
+                      Kjerneressurs
+                      {currentFilter &&
+                        currentFilter.relevanceId === 'urn:relevance:core' &&
+                        ' YES!'}
+                    </button>
+                  </td>
+                </tr>
+              );
+            });
+          })}
+        </tbody>
+      </table>
+    );
   }
 
   render() {
-    const { loadedEssentials, structure } = this.state;
-    console.log(this.addedItems);
+    const {
+      loadedEssentials,
+      structure,
+      resourceTypeSelected,
+      resourceTypes,
+      FileStructureFilters,
+      availableFilters,
+      resource,
+    } = this.state;
+
     return (
       <Fragment>
-        <h1>This article has connections....?????</h1>
+        <FormHeader
+          title="Innholdstype"
+          subTitle="Hvilken innholdstype har denne siden?"
+          width={3 / 4}
+        />
+        <FormSections>
+          <div>
+            <FormDropdown
+              value={resourceTypeSelected}
+              onChange={e => this.updateResourceType(e.target.value)}>
+              <option value="">Velg innholdstype</option>
+              {resourceTypes.map(
+                resourceType =>
+                  resourceType.subtypes ? (
+                    resourceType.subtypes.map(subtype => (
+                      <option value={subtype.id} key={subtype.id}>
+                        {resourceType.name} - {subtype.name}
+                      </option>
+                    ))
+                  ) : (
+                    <option key={resourceType.id} value={resourceType.id}>
+                      {resourceType.name}
+                    </option>
+                  ),
+              )}
+            </FormDropdown>
+          </div>
+        </FormSections>
+        <FormHeader
+          title="Emnetilknytninger"
+          subTitle="Hvor i taksonomien skal ressursen ligge?"
+          width={3 / 4}
+        />
         {!loadedEssentials ? (
-          <Spinner />
+          <SpinnerWrapper>
+            <Spinner />
+          </SpinnerWrapper>
         ) : (
           <Fragment>
             {this.renderConnections()}
@@ -531,7 +722,9 @@ class FileStructureExample extends Component {
               size="large"
               narrow
               minHeight="85vh"
-              activateButton={<Button>Legg til eller endre koblinger</Button>}>
+              activateButton={
+                <Button>Opprett tilknytninger for ressurs</Button>
+              }>
               {onCloseModal => (
                 <Fragment>
                   <ModalHeader>
@@ -547,11 +740,23 @@ class FileStructureExample extends Component {
                       renderListItems={this.renderListItems}
                       listClass={listClass}
                       onOpenPath={this.onOpenPath}
+                      FileStructureFilters={FileStructureFilters}
+                      filters={availableFilters}
                     />
                   </ModalBody>
                 </Fragment>
               )}
             </Modal>
+            {resource.parentTopics.length > 0 && (
+              <Fragment>
+                <FormHeader
+                  title="Filter"
+                  subTitle="Sett filternivå og relevanser for ressursen"
+                  width={3 / 4}
+                />
+                {this.renderSubjectFilters()}
+              </Fragment>
+            )}
           </Fragment>
         )}
       </Fragment>

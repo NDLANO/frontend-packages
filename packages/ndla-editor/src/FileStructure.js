@@ -156,9 +156,16 @@ class FileStructure extends Component {
 
   handleOpenToggle(path, id, level) {
     this.setState(prevState => {
-      const { openedPaths } = prevState;
+      let { openedPaths } = prevState;
       const index = openedPaths.indexOf(path);
       if (index === -1) {
+        // Has other subjects open and !allowMultipleSubjectsOpen?
+        if (level === 0 && !this.props.allowMultipleSubjectsOpen) {
+          openedPaths = openedPaths.filter(
+            openPath =>
+              !this.props.structure.some(subject => subject.id === openPath),
+          );
+        }
         openedPaths.push(path);
         if (this.props.onOpenPath) {
           this.props.onOpenPath({ id, level });
@@ -172,48 +179,75 @@ class FileStructure extends Component {
     });
   }
 
-  renderItems(topics, paths, names) {
+  renderItems(topics, paths, names, subjectId) {
     const level = paths.length;
     const { openedPaths } = this.state;
-    const { renderListItems, listClass } = this.props;
+    const {
+      renderListItems,
+      listClass,
+      FileStructureFilters,
+      filters,
+    } = this.props;
+
+    const ignoreFilter =
+      level === 0 ||
+      !filters[subjectId].some(filter =>
+        FileStructureFilters.includes(filter.id),
+      );
+
     return (
       <ItemListWrapper>
-        {topics.map(topic => {
-          const currentPaths = paths.slice();
-          const currentNames = names.slice();
-          currentPaths.push(topic.id);
-          currentNames.push(topic.name);
-          const hasSubtopics = topic.subtopics && topic.subtopics.length > 1;
-          const pathToString = currentPaths.toString();
-          const isOpen = openedPaths.includes(pathToString);
-          return (
-            <Fragment key={pathToString}>
-              <ItemsList className={listClass} level={level} isOpen={isOpen}>
-                <ItemName
-                  isOpen={isOpen}
-                  title={topic.name}
-                  path={pathToString}
-                  hasSubtopics={hasSubtopics || level === 0}
-                  toggleOpen={() =>
-                    this.handleOpenToggle(pathToString, topic.id, level)
-                  }
-                  level={level}>
-                  {renderListItems &&
-                    renderListItems({
-                      paths: currentPaths,
-                      pathToString,
-                      filters: topic.filters,
-                      level,
-                      names: currentNames,
-                    })}
-                </ItemName>
-                {hasSubtopics &&
-                  this.renderItems(topic.subtopics, currentPaths, currentNames)}
-                {topic.loading && <Spinner />}
-              </ItemsList>
-            </Fragment>
-          );
-        })}
+        {topics
+          .filter(
+            topic =>
+              ignoreFilter ||
+              topic.filters.some(topicFilter =>
+                FileStructureFilters.includes(topicFilter.id),
+              ),
+          )
+          .map(topic => {
+            const currentPaths = paths.slice();
+            const currentNames = names.slice();
+            currentPaths.push(topic.id);
+            currentNames.push(topic.name);
+            const hasSubtopics = topic.subtopics && topic.subtopics.length > 1;
+            const pathToString = currentPaths.toString();
+            const isOpen = openedPaths.includes(pathToString);
+            return (
+              <Fragment key={pathToString}>
+                <ItemsList className={listClass} level={level} isOpen={isOpen}>
+                  <ItemName
+                    isOpen={isOpen}
+                    title={topic.name}
+                    path={pathToString}
+                    hasSubtopics={hasSubtopics || level === 0}
+                    toggleOpen={() =>
+                      this.handleOpenToggle(pathToString, topic.id, level)
+                    }
+                    level={level}>
+                    {renderListItems &&
+                      renderListItems({
+                        paths: currentPaths,
+                        pathToString,
+                        filters: topic.filters,
+                        level,
+                        names: currentNames,
+                        isOpen,
+                        id: topic.id,
+                      })}
+                  </ItemName>
+                  {hasSubtopics &&
+                    this.renderItems(
+                      topic.subtopics,
+                      currentPaths,
+                      currentNames,
+                      level === 0 ? topic.id : subjectId,
+                    )}
+                  {topic.loading && <Spinner />}
+                </ItemsList>
+              </Fragment>
+            );
+          })}
       </ItemListWrapper>
     );
   }
@@ -230,12 +264,24 @@ FileStructure.propTypes = {
   renderListItems: PropTypes.func,
   listClass: PropTypes.string,
   onOpenPath: PropTypes.func,
+  FileStructureFilters: PropTypes.arrayOf(PropTypes.string),
+  filters: PropTypes.shape(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+      }),
+    ),
+  ),
+  allowMultipleSubjectsOpen: PropTypes.bool,
 };
 
 FileStructure.defaultProps = {
   structure: [],
   openedPaths: [],
   className: '',
+  FileStructureFilters: [],
+  filters: [],
+  allowMultipleSubjectsOpen: false,
 };
 
 export default FileStructure;

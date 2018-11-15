@@ -8,34 +8,29 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import { ToggleItem, filterClasses } from '../Filter';
 
-const classes = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
-
-const SearchToggleFilter = ({ checked, onClick, label, narrow, wide }) => (
+const SearchToggleFilter = ({
+  checked,
+  onClick,
+  label,
+  narrow,
+  wide,
+  preid,
+}) => (
   <div
-    {...classes('list', {
+    {...filterClasses('list', {
       narrow,
       wide,
       'filter-single-checkbox': true,
     })}>
-    <div {...classes('item')}>
-      <input
-        {...classes('input')}
-        type="checkbox"
-        name="resource-filter"
-        id="resource-filter"
-        checked={checked}
-        onChange={onClick}
-      />
-      <label htmlFor="resource-filter">
-        <span {...classes('item-checkbox')} />
-        <span {...classes('text')}>{label}</span>
-      </label>
-    </div>
+    <ToggleItem
+      id={`${preid}search-toggle-filter`}
+      component="div"
+      checked={checked}
+      onChange={onClick}
+      label={label}
+    />
   </div>
 );
 
@@ -43,12 +38,14 @@ SearchToggleFilter.propTypes = {
   checked: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
+  preid: PropTypes.string,
   narrow: PropTypes.bool,
   wide: PropTypes.bool,
 };
 
 SearchToggleFilter.defaultProps = {
   checked: false,
+  preid: '',
 };
 
 export default SearchToggleFilter;

@@ -166,6 +166,7 @@ class SubtopicLinkList extends Component {
               <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
               {someResourcesAreAdditional && (
                 <SearchToggleFilter
+                  preid="wide-"
                   wide
                   checked={showAdditionalResources}
                   label={t('masthead.menu.additionalFilterLabel')}
@@ -203,6 +204,7 @@ class SubtopicLinkList extends Component {
             ))}
             {someResourcesAreAdditional && (
               <SearchToggleFilter
+                preid="narrow-"
                 narrow
                 checked={showAdditionalResources}
                 label={t('masthead.menu.additionalFilterLabel')}

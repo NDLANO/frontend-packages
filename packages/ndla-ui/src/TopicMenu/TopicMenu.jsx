@@ -259,6 +259,7 @@ export default class TopicMenu extends Component {
                         filterOptions.length > 1 && (
                           <div {...classes('filter-wrapper')}>
                             <FilterListPhone
+                              preid="topic-menu"
                               activeFiltersNarrow
                               alignedGroup
                               options={filterOptions}

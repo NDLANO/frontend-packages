@@ -476,7 +476,7 @@ storiesOf('Grunnstiler', module)
               </div>
             </li>
           </ul>
-          <h3>Tilleggstoff</h3>
+          <h3>Tilleggsstoff</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div
@@ -484,7 +484,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(221, 233, 208, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Fagstoff
+                Tilleggsstoff Fagstoff
                 <br />
                 #DDE9D0: 40% opacity
               </div>
@@ -495,7 +495,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(208, 232, 222, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff ekstern Læringsressurs
+                Tilleggsstoff ekstern Læringsressurs
                 <br />
                 #D0E8DE: 40% opacity
               </div>
@@ -506,7 +506,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(220, 229, 224, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Kildemateriale
+                Tilleggsstoff Kildemateriale
                 <br />
                 #DCE5E0: 40% opacity
               </div>
@@ -517,7 +517,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(251, 237, 220, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Oppgaver og Aktiviteter
+                Tilleggsstoff Oppgaver og Aktiviteter
                 <br />
                 #FBEDDC: 40% opacity
               </div>
@@ -528,7 +528,7 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(245, 231, 229, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Vurderingsressurs
+                Tilleggsstoff Vurderingsressurs
                 <br />
                 #F5E7E5: 40% opacity
               </div>

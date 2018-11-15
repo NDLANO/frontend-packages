@@ -75,6 +75,7 @@ class CompetenceGoals extends Component {
                 {filterOptions && filterOptions.length > 0 && (
                   <Fragment>
                     <FilterListPhone
+                      preid="competence"
                       label="Filtrer kompetansemål"
                       options={filterOptions}
                       alignedGroup

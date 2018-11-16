@@ -86,3 +86,9 @@ export const ContentTypeResultShape = PropTypes.shape({
     }),
   ),
 });
+
+export const CompetenceGoalShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string,
+});

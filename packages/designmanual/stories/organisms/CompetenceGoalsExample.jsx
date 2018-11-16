@@ -25,17 +25,20 @@ class CompetenceGoalsExample extends Component {
         heading: 'Emne',
         items: [
           {
-            text:
+            id: 'med-1',
+            name:
               'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
             url: '#1',
           },
           {
-            text:
+            id: 'med-2',
+            name:
               'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
             url: '#2',
           },
           {
-            text:
+            id: 'med-3',
+            name:
               'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
             url: '#3',
           },
@@ -50,10 +53,12 @@ class CompetenceGoalsExample extends Component {
         heading: 'Emne 2',
         items: [
           {
-            text: 'Lorum ipsum',
+            id: 'lorem 1',
+            name: 'Lorum ipsum',
           },
           {
-            text: 'Lorum ipsum 2',
+            id: 'lorem 2',
+            name: 'Lorum ipsum 2',
           },
         ],
       });

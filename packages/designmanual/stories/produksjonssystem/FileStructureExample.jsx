@@ -10,12 +10,16 @@ import React, { Component, Fragment } from 'react';
 import { FileStructure } from 'ndla-editor';
 import styled, { cx, css } from 'react-emotion';
 import Button from 'ndla-button';
-import { FormHeader, FormSections, FormDropdown } from 'ndla-forms';
+import { FormHeader, FormDropdown } from 'ndla-forms';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import { Additional, Core } from 'ndla-icons/common';
-import { colors, spacing, fonts, shadows, animations } from 'ndla-core';
+import { Additional, Core, ChevronRight } from 'ndla-icons/common';
+import { Check } from 'ndla-icons/editor';
+import { Cross } from 'ndla-icons/action';
+import { colors, spacing, fonts, misc } from 'ndla-core';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
-import { Object } from 'core-js';
+
+const FILTER_SUPPLEMENTARY_ID = 'urn:relevance:supplementary';
+const FILTER_CORE_ID = 'urn:relevance:core';
 
 const sortByName = (a, b) => {
   if (a.name < b.name) return -1;
@@ -76,10 +80,13 @@ const fetchResourceConnections = (resourceId, lang) =>
       console.log(err);
     });
 
-const fetchSubjectsAndFilters = lang =>
+const fetchSubjectsAndResourceTypesAndFilters = lang =>
   Promise.all([
     fetchData(
       `https://test.api.ndla.no/taxonomy/v1/subjects/?language=${lang}`,
+    ),
+    fetchData(
+      `https://test.api.ndla.no/taxonomy/v1/resource-types/?language=${lang}`,
     ),
     fetchData(`https://test.api.ndla.no/taxonomy/v1/filters`),
   ])
@@ -99,26 +106,53 @@ const fetchSubjectsTopics = (subjectId, lang) =>
       console.log(err);
     });
 
-const fetchResourceTypes = lang =>
-  new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(
-        `https://test.api.ndla.no/taxonomy/v1/resource-types/?language=${lang}`,
-        {
-          method: 'GET',
-          headers: headerWithAccessToken(token),
-        },
-      ).then(res => {
-        if (res.ok) {
-          return resolve(res.json());
-        }
-        return res.json().then(json => reject(json));
-      });
-    });
-  });
-
 const TitleModal = styled('h1')`
   color: ${colors.text.primary};
+`;
+
+const FilterButton = styled('button')`
+  border: 0;
+  background: none;
+  transition: opacity 200ms ease;
+  opacity: ${props => (props.selected ? 1 : 0.3)};
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+  display: flex;
+  align-items: center;
+  ${fonts.sizes(14, 1.1)};
+  svg {
+    margin-right: ${spacing.xsmall};
+  }
+`;
+
+const filterbuttonwrapper = css`
+  display: flex;
+  align-items: center;
+`;
+
+const FilterListTR = styled('tr')`
+  border-bottom: 1px solid ${colors.brand.lighter};
+  td:last-child {
+    transition: opacity 200ms ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  ${props =>
+    !props.active &&
+    css`
+      td:last-child {
+        opacity: 0;
+      }
+      &:hover,
+      &:focus-within {
+        td:last-child {
+          opacity: 1;
+        }
+      }
+    `};
 `;
 
 const Spinner = styled('div')`
@@ -132,14 +166,27 @@ const Spinner = styled('div')`
   margin: ${spacing.normal} auto;
 `;
 
-const SpinnerWrapper = styled('div')`
-  width: 75%;
+const FilterTable = styled('table')`
+  width: 100%;
+  td:first-child {
+    width: 100%;
+  }
 `;
 
-const RelevanceTitle = styled('div')`
-  ${fonts.sizes(16, 1.2)} font-weight: ${fonts.weight.semibold};
-  color: ${colors.text.primary};
-  margin: ${spacing.small};
+const PrimaryConnectionButton = styled('button')`
+  background: ${colors.support.green};
+  border: 0;
+  border-radius: ${misc.borderRadius};
+  padding: ${spacing.xsmall} ${spacing.small};
+  margin-right: ${spacing.xsmall};
+  text-transform: uppercase;
+  opacity: 0.3;
+  ${fonts.sizes(14, 1.1)} font-weight: ${fonts.weight.semibold};
+  ${props =>
+    props.isPrimary &&
+    css`
+      opacity: 1;
+    `};
 `;
 
 const AddTitle = styled('span')`
@@ -151,6 +198,97 @@ const AddTitle = styled('span')`
   align-items: center;
   padding-right: ${spacing.small};
   white-space: no-wrap;
+`;
+
+const checkboxItemCSS = css`
+  border: 2px solid ${colors.brand.tertiary};
+  background: transparent;
+  width: 18px;
+  height: 18px;
+  margin: 4px ${spacing.xsmall} 4px 0;
+  border-radius: 2px;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 0px;
+    height: 2px;
+    border-radius: 2px;
+    position: absolute;
+    background: ${colors.brand.tertiary};
+    transform: rotate(45deg);
+    transition: width 50ms ease;
+    transform-origin: 0% 0%;
+    top: 7px;
+    left: 4px;
+  }
+
+  &:after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    border-radius: 2px;
+    position: absolute;
+    background: ${colors.brand.tertiary};
+    transform: rotate(305deg);
+    transition: width 50ms ease;
+    transform-origin: 0% 0%;
+    top: 10px;
+    left: 5px;
+  }
+`;
+
+const checkboxItemSelectedCSS = css`
+  background: ${colors.brand.primary};
+  border: 2px solid ${colors.brand.primary};
+  &:before {
+    width: 5px;
+    transition: width 100ms ease;
+    background: #fff;
+  }
+  &:after {
+    width: 10px;
+    transition: width 150ms ease 100ms;
+    background: #fff;
+  }
+`;
+
+const checkboxItemHoverCSS = css`
+  &:before {
+    width: 5px;
+    transition: width 100ms ease;
+  }
+  &:after {
+    width: 10px;
+    transition: width 150ms ease 100ms;
+  }
+`;
+
+const FilterCheckBox = styled('button')`
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: ${spacing.xsmall};
+  color: ${colors.text.primary};
+  ${fonts.sizes(16, 1.1)} font-weight: ${fonts.weight.semibold};
+  > span:first-child {
+    ${checkboxItemCSS};
+    margin-right: ${spacing.small};
+  }
+  &:hover,
+  &:focus {
+    > span:first-child {
+      ${checkboxItemHoverCSS};
+    }
+  }
+  &.checkboxItem--checked {
+    > span:first-child {
+      ${checkboxItemSelectedCSS};
+    }
+  }
 `;
 
 const ConnectionButton = styled('button')`
@@ -169,73 +307,31 @@ const ConnectionButton = styled('button')`
     color: ${colors.brand.light};
   }
   > span:first-child {
-    border: 2px solid ${colors.brand.tertiary};
-    background: transparent;
-    width: 18px;
-    height: 18px;
-    margin: 4px ${spacing.xsmall} 4px 0;
-    border-radius: 2px;
-    position: relative;
-
-    &:before {
-      content: '';
-      width: 0px;
-      height: 2px;
-      border-radius: 2px;
-      position: absolute;
-      background: ${colors.brand.tertiary};
-      transform: rotate(45deg);
-      transition: width 50ms ease;
-      transform-origin: 0% 0%;
-      top: 7px;
-      left: 4px;
-    }
-
-    &:after {
-      content: '';
-      width: 0px;
-      height: 2px;
-      border-radius: 2px;
-      position: absolute;
-      background: ${colors.brand.tertiary};
-      transform: rotate(305deg);
-      transition: width 50ms ease;
-      transform-origin: 0% 0%;
-      top: 10px;
-      left: 5px;
-    }
+    ${checkboxItemCSS};
   }
   &:not(:disabled) {
     &:hover,
     &:focus {
       > span:first-child {
-        &:before {
-          width: 5px;
-          transition: width 100ms ease;
-        }
-        &:after {
-          width: 10px;
-          transition: width 150ms ease 100ms;
-        }
+        ${checkboxItemHoverCSS};
       }
     }
   }
   &.checkboxItem--checked {
     > span:first-child {
-      background: ${colors.brand.primary};
-      border: 2px solid ${colors.brand.primary};
-      &:before {
-        width: 5px;
-        transition: width 100ms ease;
-        background: #fff;
-      }
-      &:after {
-        width: 10px;
-        transition: width 150ms ease 100ms;
-        background: #fff;
-      }
+      ${checkboxItemSelectedCSS};
     }
   }
+`;
+
+const RemoveConnectionButton = styled('button')`
+  border: 0;
+  background: none;
+`;
+
+const SubjectName = styled('div')`
+  padding: ${props => (props.firstSubject ? spacing.small : spacing.medium)} 0
+    ${spacing.xsmall};
 `;
 
 const buttonAddition = css`
@@ -243,7 +339,46 @@ const buttonAddition = css`
   height: auto;
   padding: 0 ${spacing.small};
   margin: 3px ${spacing.xsmall};
+  transition: background 200ms ease;
   ${fonts.sizes(14, 1.1)};
+`;
+
+const ConnectionsWrapper = styled('div')`
+  padding-bottom: ${spacing.small};
+`;
+
+const Connections = styled('div')`
+  display: flex;
+  align-items: center;
+  background: ${colors.brand.greyLightest};
+  padding: ${spacing.xsmall};
+  margin-bottom: 2px;
+  border-radius: ${misc.borderRadius};
+  span {
+    padding: ${spacing.xsmall};
+    ${fonts.sizes(16, 1.1)} &:nth-child(2) {
+      font-weight: ${fonts.weight.semibold};
+    }
+  }
+`;
+
+const BreadCrumb = styled('div')`
+  flex-grow: 1;
+  span:last-of-type {
+    font-weight: ${fonts.weight.semibold};
+  }
+`;
+
+const Checked = styled('div')`
+  ${fonts.sizes(16, 1.1)} font-weight: ${fonts.weight.semibold};
+  display: flex;
+  align-items: center;
+  span {
+    margin: 0 ${spacing.xsmall};
+  }
+  svg {
+    fill: ${colors.support.green};
+  }
 `;
 
 const listClass = css`
@@ -321,6 +456,7 @@ class FileStructureExample extends Component {
       resourceTypeSelected: '',
       FileStructureFilters: [],
       availableFilters: [],
+      modalIsOpen: false,
     };
     this.renderListItems = this.renderListItems.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
@@ -328,22 +464,13 @@ class FileStructureExample extends Component {
   }
 
   componentDidMount() {
-    fetchResourceTypes('nb')
-      .then(result => {
-        this.setState({
-          resourceTypes: result,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    fetchSubjectsAndFilters('nb')
+    fetchSubjectsAndResourceTypesAndFilters('nb')
       .then(result => {
         this.setState(
           {
             structure: result[0].sort(sortByName),
-            availableFilters: filterToSubjects(result[1]),
+            resourceTypes: result[1],
+            availableFilters: filterToSubjects(result[2]),
           },
           () => {
             fetchResourceConnections('urn:resource:1:148635', 'nb')
@@ -490,9 +617,85 @@ class FileStructureExample extends Component {
       });
       resource.parentTopics = parentTopics;
     }
-    this.setState({
-      loadedEssentials,
-      resource,
+    if (loadedEssentials) {
+      // map resourceType.
+      const resourceTypeSelected =
+        resource.resourceTypes &&
+        resource.resourceTypes.find(
+          resourceType => resourceType.parentId !== null,
+        );
+      this.setState({
+        loadedEssentials,
+        resource,
+        resourceTypeSelected: resourceTypeSelected
+          ? resourceTypeSelected.id
+          : '',
+      });
+    } else {
+      this.setState({
+        resource,
+      });
+    }
+  }
+
+  setFilter({ hasFilter, filter, filterId, removeIfAdded }) {
+    if (hasFilter) {
+      this.setState(prevState => {
+        const { resource: editResource } = prevState;
+        const index = editResource.filters.findIndex(
+          filterItem => filterItem.id === filter.id,
+        );
+        if (removeIfAdded) {
+          editResource.filters.splice(index, 1);
+        } else {
+          editResource.filters[index].relevanceId = filterId;
+        }
+
+        return {
+          resource: editResource,
+        };
+      });
+    } else {
+      this.setState(prevState => {
+        const { resource: editResource } = prevState;
+        editResource.filters.push({
+          name: filter.name,
+          id: filter.id,
+          relevanceId: filterId,
+        });
+        return {
+          resource: editResource,
+        };
+      });
+    }
+  }
+
+  setPrimaryConnection(parentTopicId) {
+    this.setState(prevState => {
+      const { resource } = prevState;
+      const oldPrimaryIndex = resource.parentTopics.findIndex(
+        topic => topic.isPrimary,
+      );
+      const newPrimaryIndex = resource.parentTopics.findIndex(
+        topic => topic.id === parentTopicId,
+      );
+      resource.parentTopics[oldPrimaryIndex].isPrimary = false;
+      resource.parentTopics[newPrimaryIndex].isPrimary = true;
+      return {
+        resource,
+      };
+    });
+  }
+
+  removeConnection(id) {
+    this.setState(prevState => {
+      const { resource } = prevState;
+      resource.parentTopics = resource.parentTopics.filter(
+        parentTopic => parentTopic.id !== id,
+      );
+      return {
+        resource,
+      };
     });
   }
 
@@ -558,108 +761,160 @@ class FileStructureExample extends Component {
     );
     return (
       <div className={cx('filestructure')}>
-        <Button
-          className={buttonAddition}
-          style={currentIndex !== -1 ? { opacity: 1 } : null}
-          onClick={() => {
-            if (currentIndex !== -1) {
-              // remove item
-              resource.parentTopics.splice(currentIndex, 1);
-              this.setState({
-                resource,
-              });
-            } else {
+        {currentIndex === -1 ? (
+          <Button
+            outline
+            className={buttonAddition}
+            onClick={() => {
               resource.parentTopics.push({
                 id,
                 paths: names,
                 subjectId: paths[0],
+                isPrimary: resource.parentTopics.length === 0,
               });
               this.setState({
                 resource,
+                modalIsOpen: false,
               });
-            }
-          }}>
-          {currentIndex !== -1
-            ? 'Ta bort emnetilknytning'
-            : 'Opprett emnetilknytning'}
-        </Button>
+            }}>
+            Opprett emnetilknytning
+          </Button>
+        ) : (
+          <Checked>
+            <Check
+              className="c-icon--22"
+              style={{ fill: colors.support.green }}
+            />{' '}
+            <span>Lagt til</span>
+          </Checked>
+        )}
       </div>
     );
   }
 
   renderConnections() {
-    return this.state.resource.parentTopics.map(parentTopic => (
-      <FormSections key={parentTopic.id}>
-        <div>
-          <Button>Primærkobling</Button>
-          {parentTopic.paths.map(path => (
-            <span key={`${parentTopic.id}${path}`}>{path}</span>
-          ))}
-        </div>
-      </FormSections>
-    ));
+    return (
+      <ConnectionsWrapper>
+        {this.state.resource.parentTopics.map(parentTopic => (
+          <Connections key={parentTopic.id}>
+            <PrimaryConnectionButton
+              isPrimary={parentTopic.isPrimary}
+              onClick={() => {
+                this.setPrimaryConnection(parentTopic.id);
+              }}>
+              Primærkobling
+            </PrimaryConnectionButton>
+            <BreadCrumb style={{ flexGrow: 1 }}>
+              {parentTopic.paths.map(path => (
+                <Fragment>
+                  <span key={`${parentTopic.id}${path}`}>{path}</span>
+                  <ChevronRight />
+                </Fragment>
+              ))}
+            </BreadCrumb>
+            <RemoveConnectionButton
+              type="button"
+              onClick={() => this.removeConnection(parentTopic.id)}>
+              <Cross />
+            </RemoveConnectionButton>
+          </Connections>
+        ))}
+      </ConnectionsWrapper>
+    );
   }
 
   renderSubjectFilters() {
     const { availableFilters, resource, structure } = this.state;
     const availableSubjects = {};
-    console.log(resource.filters);
     resource.parentTopics.forEach(parentTopic => {
       if (!availableSubjects[parentTopic.subjectId]) {
-        availableSubjects[parentTopic.subjectId] = true;
+        availableSubjects[parentTopic.subjectId] = {};
       }
     });
     return (
-      <table>
-        <thead>
-          <th>Nivå</th>
-          <th>Relevanse</th>
-        </thead>
+      <FilterTable>
         <tbody>
-          {Object.keys(availableSubjects).map(filterSubjectKey => {
+          {Object.keys(availableSubjects).map((filterSubjectKey, index) => {
             const subjectName = structure.find(
               structureItem => structureItem.id === filterSubjectKey,
             ).name;
-            return availableFilters[filterSubjectKey].map(filter => {
-              const currentFilter = resource.filters.find(
-                resourceFilter => resourceFilter.id === filter.id,
-              );
-              return (
-                <tr
-                  key={filter.id}
-                  className={currentFilter ? 'filter--connected' : ''}>
+
+            return (
+              <Fragment>
+                <tr>
                   <td>
-                    {subjectName}: {filter.name}
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        console.log('add or make filter id', filter.id);
-                      }}>
-                      Tilleggsressurs
-                      {currentFilter &&
-                        currentFilter.relevanceId ===
-                          'urn:relevance:supplementary' &&
-                        ' YES!'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        console.log('add or make filter id', filter.id);
-                      }}>
-                      Kjerneressurs
-                      {currentFilter &&
-                        currentFilter.relevanceId === 'urn:relevance:core' &&
-                        ' YES!'}
-                    </button>
+                    <SubjectName firstSubject={index === 0}>
+                      {subjectName}:
+                    </SubjectName>
                   </td>
                 </tr>
-              );
-            });
+                {availableFilters[filterSubjectKey].map(filter => {
+                  const currentFilter = resource.filters.find(
+                    resourceFilter => resourceFilter.id === filter.id,
+                  );
+                  const active = currentFilter !== undefined;
+                  return (
+                    <FilterListTR key={filter.id} active={active}>
+                      <td>
+                        <FilterCheckBox
+                          type="button"
+                          onClick={() =>
+                            this.setFilter({
+                              hasFilter: active,
+                              filter,
+                              filterId: FILTER_CORE_ID,
+                              removeIfAdded: true,
+                            })
+                          }
+                          className={active ? 'checkboxItem--checked' : ''}>
+                          <span />
+                          <span>{filter.name}</span>
+                        </FilterCheckBox>
+                      </td>
+                      <td>
+                        <div className={filterbuttonwrapper}>
+                          <FilterButton
+                            type="button"
+                            selected={
+                              currentFilter &&
+                              currentFilter.relevanceId ===
+                                FILTER_SUPPLEMENTARY_ID
+                            }
+                            onClick={() =>
+                              this.setFilter({
+                                hasFilter: active,
+                                filter,
+                                filterId: FILTER_SUPPLEMENTARY_ID,
+                              })
+                            }>
+                            <Additional className="c-icon--22" />{' '}
+                            Tilleggsressurs
+                          </FilterButton>
+                          <FilterButton
+                            type="button"
+                            selected={
+                              currentFilter &&
+                              currentFilter.relevanceId === FILTER_CORE_ID
+                            }
+                            onClick={() => {
+                              this.setFilter({
+                                hasFilter: active,
+                                filter,
+                                filterId: FILTER_CORE_ID,
+                              });
+                            }}>
+                            <Core className="c-icon--22" /> Kjerneressurs
+                          </FilterButton>
+                        </div>
+                      </td>
+                    </FilterListTR>
+                  );
+                })}
+              </Fragment>
+            );
           })}
         </tbody>
-      </table>
+      </FilterTable>
     );
   }
 
@@ -672,91 +927,84 @@ class FileStructureExample extends Component {
       FileStructureFilters,
       availableFilters,
       resource,
+      modalIsOpen,
     } = this.state;
 
-    return (
+    console.log(resourceTypeSelected);
+
+    return !loadedEssentials ? (
+      <Spinner />
+    ) : (
       <Fragment>
         <FormHeader
           title="Innholdstype"
-          subTitle="Hvilken innholdstype har denne siden?"
-          width={3 / 4}
+          subTitle="Hvilken innholdstype har denne ressursen?"
         />
-        <FormSections>
-          <div>
-            <FormDropdown
-              value={resourceTypeSelected}
-              onChange={e => this.updateResourceType(e.target.value)}>
-              <option value="">Velg innholdstype</option>
-              {resourceTypes.map(
-                resourceType =>
-                  resourceType.subtypes ? (
-                    resourceType.subtypes.map(subtype => (
-                      <option value={subtype.id} key={subtype.id}>
-                        {resourceType.name} - {subtype.name}
-                      </option>
-                    ))
-                  ) : (
-                    <option key={resourceType.id} value={resourceType.id}>
-                      {resourceType.name}
-                    </option>
-                  ),
-              )}
-            </FormDropdown>
-          </div>
-        </FormSections>
+        <FormDropdown
+          value={resourceTypeSelected}
+          onChange={e => this.updateResourceType(e.target.value)}>
+          <option value="">Velg innholdstype</option>
+          {resourceTypes.map(
+            resourceType =>
+              resourceType.subtypes ? (
+                resourceType.subtypes.map(subtype => (
+                  <option value={subtype.id} key={subtype.id}>
+                    {resourceType.name} - {subtype.name}
+                  </option>
+                ))
+              ) : (
+                <option key={resourceType.id} value={resourceType.id}>
+                  {resourceType.name}
+                </option>
+              ),
+          )}
+        </FormDropdown>
         <FormHeader
           title="Emnetilknytninger"
           subTitle="Hvor i taksonomien skal ressursen ligge?"
-          width={3 / 4}
         />
-        {!loadedEssentials ? (
-          <SpinnerWrapper>
-            <Spinner />
-          </SpinnerWrapper>
-        ) : (
-          <Fragment>
-            {this.renderConnections()}
-            <Modal
-              backgroundColor="white"
-              animation="subtle"
-              size="large"
-              narrow
-              minHeight="85vh"
-              activateButton={
-                <Button>Opprett tilknytninger for ressurs</Button>
-              }>
-              {onCloseModal => (
-                <Fragment>
-                  <ModalHeader>
-                    <ModalCloseButton title="Lukk" onClick={onCloseModal} />
-                  </ModalHeader>
-                  <ModalBody>
-                    <TitleModal>Lag tilknytninger for ressurs</TitleModal>
-                    <hr />
-                    <FileStructure
-                      openedPaths={[]}
-                      structure={structure}
-                      toggleOpen={this.handleOpenToggle}
-                      renderListItems={this.renderListItems}
-                      listClass={listClass}
-                      onOpenPath={this.onOpenPath}
-                      FileStructureFilters={FileStructureFilters}
-                      filters={availableFilters}
-                    />
-                  </ModalBody>
-                </Fragment>
-              )}
-            </Modal>
-            {resource.parentTopics.length > 0 && (
-              <Fragment>
-                <FormHeader
-                  title="Filter"
-                  subTitle="Sett filternivå og relevanser for ressursen"
-                  width={3 / 4}
+        {this.renderConnections()}
+        <Button onClick={() => this.setState({ modalIsOpen: true })}>
+          Opprett emnetilknytning
+        </Button>
+        <Modal
+          backgroundColor="white"
+          animation="subtle"
+          size="large"
+          narrow
+          minHeight="85vh"
+          controllable
+          onClose={() => this.setState({ modalIsOpen: false })}
+          isOpen={modalIsOpen}>
+          {onCloseModal => (
+            <Fragment>
+              <ModalHeader>
+                <ModalCloseButton title="Lukk" onClick={onCloseModal} />
+              </ModalHeader>
+              <ModalBody>
+                <TitleModal>Velg emnetilknytning:</TitleModal>
+                <hr />
+                <FileStructure
+                  openedPaths={[]}
+                  structure={structure}
+                  toggleOpen={this.handleOpenToggle}
+                  renderListItems={this.renderListItems}
+                  listClass={listClass}
+                  onOpenPath={this.onOpenPath}
+                  FileStructureFilters={FileStructureFilters}
+                  filters={availableFilters}
                 />
-                {this.renderSubjectFilters()}
-              </Fragment>
-            )}
+              </ModalBody>
+            </Fragment>
+          )}
+        </Modal>
+        {resource.parentTopics.length > 0 && (
+          <Fragment>
+            <FormHeader
+              title="Filter"
+              subTitle="Hvilket fagfilter gjelder for denne ressursen?"
+            />
+            {this.renderSubjectFilters()}
           </Fragment>
         )}
       </Fragment>

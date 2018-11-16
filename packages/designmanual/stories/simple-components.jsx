@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import * as licenseIcons from '@ndla/icons/license';
+import * as licenseIcons from '@ndla/icons/licenses';
 import * as contentTypeIcons from '@ndla/icons/contentType';
 import * as commonIcons from '@ndla/icons/common';
 import * as editorIcons from '@ndla/icons/editor';

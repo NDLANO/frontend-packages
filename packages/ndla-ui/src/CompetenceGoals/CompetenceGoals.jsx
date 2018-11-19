@@ -6,7 +6,7 @@ import { Trans } from '@ndla/i18n';
 import { FilterListPhone } from '../Filter';
 import CompetenceGoalList from './CompetenceGoalsList';
 
-const classes = new BEMHelper({
+export const classes = new BEMHelper({
   name: 'competence-goals',
   prefix: 'c-',
 });

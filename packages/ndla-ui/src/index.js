@@ -109,6 +109,7 @@ export {
   default as CompetenceGoals,
   CompetenceGoalsList,
   CompetenceGoal,
+  CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
 export { default as NoContentBox } from './NoContentBox';

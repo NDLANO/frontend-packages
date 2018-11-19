@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -47,7 +47,7 @@ const messages = {
       content: 'Innhald:',
       contentTypes: 'Innhaldstypar:',
       levels: 'Nivå:',
-      'language-filter': 'Språk:',
+      languageFilter: 'Språk:',
       subjects: 'Fag:',
       noFilter: 'Ingen filter valde',
       createdBy: 'Laga av:',
@@ -55,13 +55,13 @@ const messages = {
     showLabel: {
       contentTypes: 'Fleire innhaldstypar',
       levels: 'Fleire nivå',
-      'language-filter': 'Fleire språk',
+      languageFilter: 'Fleire språk',
       subjects: 'Bytt fag',
     },
     hideLabel: {
       contentTypes: 'Færre innhaldstypar',
       levels: 'Færre nivå',
-      'language-filter': 'Færre språk',
+      languageFilter: 'Færre språk',
       subjects: 'Færre fag',
     },
     searchField: {
@@ -229,6 +229,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Ingen eksterne læringsressursar',
       },
     },
   },
@@ -254,7 +256,7 @@ const messages = {
     dialogText1:
       'Når du lærar deg kjernestoffet skaffar du deg den kompetansen som beskrives i læreplanen for faget.',
     dialogText2:
-      'Tilleggstoff er innhald i faget som du kan velje i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordjupe deg i et emne eller tilnærma deg emnet på en anna måte.',
+      'Tilleggsstoff er innhald i faget som du kan velje i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordjupe deg i et emne eller tilnærma deg emnet på en anna måte.',
     showLess: 'Vis mindre',
     showMore: 'Vis mer',
   },
@@ -417,6 +419,9 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til framsida',
+  },
+  notions: {
+    closeNotion: 'Lukk',
   },
 };
 

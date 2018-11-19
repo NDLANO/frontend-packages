@@ -8,10 +8,10 @@
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { breakpoints, copyTextToClipboard } from 'ndla-util';
-import { Copy } from 'ndla-icons/action';
-import { PageContainer, LayoutItem, OneColumn, SubjectHeader } from 'ndla-ui';
-import { CopyButton } from 'ndla-button';
+import { breakpoints, copyTextToClipboard } from '@ndla/util';
+import { Copy } from '@ndla/icons/action';
+import { PageContainer, LayoutItem, OneColumn, SubjectHeader } from '@ndla/ui';
+import { CopyButton } from '@ndla/button';
 
 const addLeadingSlash = str => {
   if (str.startsWith('/')) {
@@ -61,6 +61,7 @@ class BannerList extends Component {
               bannerSearchLowerCase === '' ||
               banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1,
           )
+          .sort((a, b) => a.name.localeCompare(b.name, { sensitivity: 'base' }))
           .map(banner => (
             <div key={banner.desktop} style={{ marginTop: '26px' }}>
               <SubjectHeader

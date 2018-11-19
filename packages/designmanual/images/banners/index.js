@@ -17,6 +17,10 @@ import Samfunnsfag from './Samfunnsfag.svg';
 import ServiceOgSamferdsel from './Service-og-samferdsel.svg';
 import Soersamisk from './Soersamisk.svg';
 import Tysk from './Tysk.svg';
+import InternasjonalEngelsk from './Internasjonal-Engelsk.svg';
+import SamfunnsfagligEngelsk from './Samfunnsfaglig-engelsk.svg';
+import Kroppsoving from './Kroppsoving.svg';
+import BarneOgUngdomsarbeider from './Barne-og-ungdomsarbeider.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
@@ -27,11 +31,15 @@ export default [
   },
   { desktop: Elektro, mobile: Elektro, name: 'Elektro' },
   { desktop: Engelsk, mobile: Engelsk, name: 'Engelsk' },
-  { desktop: Helsearbeiderfag, mobile: Helsearbeiderfag, name: 'Helse' },
+  {
+    desktop: Helsearbeiderfag,
+    mobile: Helsearbeiderfag,
+    name: 'Helsearbeiderfag Vg2',
+  },
   {
     desktop: HelseOgOppvekst,
     mobile: HelseOgOppvekst,
-    name: 'Helse og oppvekst',
+    name: 'Helse- og oppvekstsfag Vg1',
   },
   { desktop: Historie, mobile: Historie, name: 'Historie' },
   { desktop: IKTService, mobile: IKTService, name: 'IKT Service' },
@@ -66,4 +74,24 @@ export default [
   { desktop: Samfunnsfag, mobile: Samfunnsfag, name: 'Samfunnsfag' },
   { desktop: Soersamisk, mobile: Soersamisk, name: 'Sørsamisk' },
   { desktop: Tysk, mobile: Tysk, name: 'Tysk' },
+  {
+    desktop: InternasjonalEngelsk,
+    mobile: InternasjonalEngelsk,
+    name: 'Internasjonal engelsk',
+  },
+  {
+    desktop: SamfunnsfagligEngelsk,
+    mobile: SamfunnsfagligEngelsk,
+    name: 'Samfunnsfaglig engelsk',
+  },
+  {
+    desktop: BarneOgUngdomsarbeider,
+    mobile: BarneOgUngdomsarbeider,
+    name: 'Barne- og ungdomsarbeiderfag Vg2',
+  },
+  {
+    desktop: Kroppsoving,
+    mobile: Kroppsoving,
+    name: 'Kroppsøving',
+  },
 ];

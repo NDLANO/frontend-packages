@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Forward } from 'ndla-icons/common';
-import { injectT } from 'ndla-i18n';
+import { Forward } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
 
 import SectionHeading from '../SectionHeading';
 import SafeLink from '../common/SafeLink';

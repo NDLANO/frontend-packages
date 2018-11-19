@@ -10,9 +10,9 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { Image } from 'ndla-ui';
-import { spacing, colors } from 'ndla-core';
-import { Spinner } from 'ndla-editor';
+import { Image } from '@ndla/ui';
+import { Spinner } from '@ndla/editor';
+import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';

@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 
-import Tabs from 'ndla-tabs';
-import Button from 'ndla-button';
+import Tabs from '@ndla/tabs';
+import Button from '@ndla/button';
 import { InlineContainer } from '../helpers';
 
 export class TabsControlled extends Component {

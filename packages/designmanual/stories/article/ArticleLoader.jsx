@@ -16,8 +16,8 @@ import {
   ResourcesWrapper,
   ResourcesTopicTitle,
   TopicIntroductionList,
-} from 'ndla-ui';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Button from '@ndla/button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
@@ -37,7 +37,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
           dialogHeading: 'Kjernestoff og tilleggsstoff',
           dialogTexts: [
             'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
-            'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+            'Tilleggsstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
           ],
         }}
         title="Medieproduksjon"

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Cross } from 'ndla-icons/action';
-import { SearchField, OneColumn, Logo, SafeLink } from 'ndla-ui';
-import Modal, { ModalHeader } from 'ndla-modal';
-import Button from 'ndla-button';
-import { uuid } from 'ndla-util';
+import { Cross } from '@ndla/icons/action';
+import { SearchField, OneColumn, Logo, SafeLink } from '@ndla/ui';
+import Modal, { ModalHeader } from '@ndla/modal';
+import Button from '@ndla/button';
+import { uuid } from '@ndla/util';
+import { injectT } from '@ndla/i18n';
 
 const classes = BEMHelper('c-frontpage-header');
 const classesMenu = new BEMHelper({
@@ -21,10 +22,11 @@ const FrontpageHeader = ({
   links,
   logoTo,
   messages,
-  heading,
+  locale,
   menuSubject,
   hideSearch,
   hideMenu,
+  t,
 }) => (
   <header {...classes()}>
     <div {...classes('inner-background')} />
@@ -67,8 +69,9 @@ const FrontpageHeader = ({
                     <div {...classesMenu('masthead-right')}>
                       <Logo
                         to={logoTo}
-                        label="Nasjonal digital læringsarena"
+                        label={t('logo.altText')}
                         cssModifier="always-show"
+                        locale={locale}
                       />
                     </div>
                   </ModalHeader>
@@ -90,10 +93,11 @@ const FrontpageHeader = ({
           )}
           <Logo
             to={logoTo}
-            label={heading}
-            cssModifier="white"
             large
             color="currentColor"
+            label={t('logo.altText')}
+            cssModifier="white"
+            locale={locale}
           />
           {!hideSearch && (
             <SearchField
@@ -113,12 +117,12 @@ const FrontpageHeader = ({
 FrontpageHeader.propTypes = {
   hideSearch: PropTypes.bool, // TODO: Search is temporary hidden as default.
   hideMenu: PropTypes.bool, // TODO: Menu is temporary hidden as default.
-  heading: PropTypes.string.isRequired,
   searchFieldValue: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func,
   searchFieldPlaceholder: PropTypes.string.isRequired,
   logoTo: PropTypes.string,
+  locale: PropTypes.string,
   messages: PropTypes.shape({
     searchFieldTitle: PropTypes.string.isRequired,
     menuButton: PropTypes.string.isRequired,
@@ -130,6 +134,7 @@ FrontpageHeader.propTypes = {
       text: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 FrontpageHeader.defaultProps = {
@@ -137,4 +142,4 @@ FrontpageHeader.defaultProps = {
   hideMenu: true,
 };
 
-export default FrontpageHeader;
+export default injectT(FrontpageHeader);

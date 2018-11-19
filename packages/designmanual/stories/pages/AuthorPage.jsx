@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { OneColumn, LayoutItem, ArticleWrapper, AuthorInfo } from 'ndla-ui';
-import Button from 'ndla-button';
+import { OneColumn, LayoutItem, ArticleWrapper, AuthorInfo } from '@ndla/ui';
+import Button from '@ndla/button';
 
 export default () => (
   <OneColumn>

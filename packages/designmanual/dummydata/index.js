@@ -32,6 +32,7 @@ import {
 import { mockDownloadArticleText } from './mockDownloadArticleText';
 
 import contentCards from './mockContentCards';
+import { mockListView } from './mockListView';
 
 export {
   topicMenu,
@@ -57,4 +58,5 @@ export {
   searchFilterOptions,
   contentCards,
   mockDownloadArticleText,
+  mockListView,
 };

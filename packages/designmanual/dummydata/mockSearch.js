@@ -1,4 +1,4 @@
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -191,6 +191,7 @@ export const contentTypeResults = [
         name: 'Media som den fjerde statsmakt',
       },
     ],
+    totalCount: 2,
   },
   {
     title: 'Fagstoff',
@@ -261,6 +262,7 @@ export const contentTypeResults = [
         name: 'Fagstoff 14',
       },
     ],
+    totalCount: 14,
   },
   {
     title: 'Oppgaver og aktiviteter',
@@ -270,6 +272,7 @@ export const contentTypeResults = [
       showLessResultLabel: 'Vis færre oppgaver og aktiviteter',
     },
     resources: [],
+    totalCount: 0,
   },
 ];
 
@@ -387,7 +390,7 @@ export const searchFilterOptions = {
   ],
   contentFilter: [
     {
-      title: 'Tilleggstoff',
+      title: 'Tilleggsstoff',
       additional: true,
       value: 'contentFilter:1',
       hits: 46,

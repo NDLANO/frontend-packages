@@ -49,7 +49,6 @@ export {
   SubjectLinks,
   SubjectArchive,
   SubjectCarousel,
-  SubjectConcepts,
   SubjectSocialContent,
   SubjectSocialSection,
   SubjectSectionTitle,
@@ -106,7 +105,11 @@ export {
   default as RelatedArticleList,
   RelatedArticle,
 } from './RelatedArticleList';
-export { default as CompetenceGoals } from './CompetenceGoals';
+export {
+  default as CompetenceGoals,
+  CompetenceGoalsList,
+  CompetenceGoal,
+} from './CompetenceGoals';
 
 export { default as NoContentBox } from './NoContentBox';
 
@@ -116,7 +119,6 @@ export {
   ResourcesTopicTitle,
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
-export { default as Concept } from './Concept';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 export {
   SubjectMaterialHero,

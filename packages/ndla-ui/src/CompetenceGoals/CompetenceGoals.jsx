@@ -1,30 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight, ChevronDown } from 'ndla-icons/common';
-import { Trans } from 'ndla-i18n';
+import { ChevronRight, ChevronDown } from '@ndla/icons/common';
+import { Trans } from '@ndla/i18n';
 import { FilterListPhone } from '../Filter';
-
-import SafeLink from '../common/SafeLink';
+import CompetenceGoalList from './CompetenceGoalsList';
 
 const classes = new BEMHelper({
   name: 'competence-goals',
   prefix: 'c-',
 });
-
-const renderItem = item => {
-  const content = item.url ? (
-    <SafeLink to={item.url}>{item.text}</SafeLink>
-  ) : (
-    item.text
-  );
-
-  return (
-    <li {...classes('topic-item')} key={item.text}>
-      {content}
-    </li>
-  );
-};
 
 class CompetenceGoals extends Component {
   constructor(props) {
@@ -60,9 +45,7 @@ class CompetenceGoals extends Component {
                 <p>{description}</p>
                 <p>{messages.listDescription}</p>
                 <div {...classes('topic')}>
-                  <ul {...classes('topic-list')}>
-                    {topics[0].items.map(renderItem)}
-                  </ul>
+                  <CompetenceGoalList goals={topics[0].items} />
                 </div>
               </Fragment>
             ) : (
@@ -72,29 +55,29 @@ class CompetenceGoals extends Component {
                   {messages.heading}
                 </h2>
                 <p {...classes('description')}>{messages.listDescription}</p>
-                {filterOptions &&
-                  filterOptions.length > 0 && (
-                    <Fragment>
-                      <FilterListPhone
-                        label="Filtrer kompetansemål"
-                        options={filterOptions}
-                        alignedGroup
-                        values={filterValues}
-                        onChange={onFilterClick}
-                        messages={{
-                          openFilter: t(
-                            'competenceGoals.openCompentenceGoalsFilter',
-                          ),
-                          useFilter: t(
-                            'competenceGoals.useCompentenceGoalsFilter',
-                          ),
-                          closeFilter: t(
-                            'competenceGoals.closeCompentenceGoalsFilter',
-                          ),
-                        }}
-                      />
-                    </Fragment>
-                  )}
+                {filterOptions && filterOptions.length > 0 && (
+                  <Fragment>
+                    <FilterListPhone
+                      preid="competence"
+                      label="Filtrer kompetansemål"
+                      options={filterOptions}
+                      alignedGroup
+                      values={filterValues}
+                      onChange={onFilterClick}
+                      messages={{
+                        openFilter: t(
+                          'competenceGoals.openCompentenceGoalsFilter',
+                        ),
+                        useFilter: t(
+                          'competenceGoals.useCompentenceGoalsFilter',
+                        ),
+                        closeFilter: t(
+                          'competenceGoals.closeCompentenceGoalsFilter',
+                        ),
+                      }}
+                    />
+                  </Fragment>
+                )}
                 {topics.map(topic => (
                   <div
                     {...classes('topic', {
@@ -128,12 +111,12 @@ class CompetenceGoals extends Component {
                         {topic.heading}
                       </button>
                     </h3>
-                    <ul
+
+                    <CompetenceGoalList
                       id={id}
                       aria-hidden={this.state.expanded !== topic.heading}
-                      {...classes('topic-list')}>
-                      {topic.items.map(item => renderItem(item))}
-                    </ul>
+                      goals={topic.items}
+                    />
                   </div>
                 ))}
               </Fragment>

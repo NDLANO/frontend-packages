@@ -129,7 +129,11 @@ async function collectSourceMaps(argv, url) {
 async function runSourceMapResolver(argv) {
   const data = JSON.parse(loadFile(argv.errorEventFile));
   const first = data.events[0];
-  const { event: { json: { stackInfo } } } = first;
+  const {
+    event: {
+      json: { stackInfo },
+    },
+  } = first;
   const { url } = stackInfo.stack[0];
   const sourceMaps = await collectSourceMaps(argv, url);
   process.stdout.write(

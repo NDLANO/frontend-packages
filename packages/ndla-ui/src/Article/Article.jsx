@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import { isMobile } from 'react-device-detect';
 
@@ -162,8 +162,9 @@ export const Article = ({
         <ArticleContent content={content} />
       </LayoutItem>
       <LayoutItem layout="center">
-        {footNotes &&
-          footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
+        {footNotes && footNotes.length > 0 && (
+          <ArticleFootNotes footNotes={footNotes} />
+        )}
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>

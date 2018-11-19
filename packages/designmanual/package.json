@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "1.8.5",
+  "version": "1.9.5",
   "description": "Styleguide and ui component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -22,24 +22,25 @@
     "react": "^15.6.0 || ^16.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "3.4.11",
-    "@storybook/addon-knobs": "3.4.11",
-    "@storybook/addon-links": "3.4.11",
-    "@storybook/addon-options": "3.4.11",
-    "@storybook/react": "3.4.11",
-    "autoprefixer": "^8.0.0",
+    "@storybook/addon-actions": "4.0.6",
+    "@storybook/addon-knobs": "4.0.6",
+    "@storybook/addon-links": "4.0.6",
+    "@storybook/addon-options": "4.0.6",
+    "@storybook/react": "4.0.6",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.4",
     "btoa": "^1.1.2",
-    "classnames": "2.2.5",
+    "classnames": "2.2.6",
     "emotion": "^9.2.10",
-    "file-loader": "^1.1.7",
+    "file-loader": "^2.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lazysizes": "^4.0.1",
     "moment": "^2.20.1",
-    "postcss-loader": "^2.1.0",
+    "postcss-loader": "^3.0.0",
     "react-bem-helper": "1.4.1",
     "react-emotion": "^9.2.10",
     "react-helmet": "5.2.0",
     "react-prop-types": "0.4.0",
-    "react-syntax-highlighter": "^8.0.1"
+    "react-syntax-highlighter": "^10.0.1"
   }
 }

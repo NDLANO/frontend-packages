@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Forward } from 'ndla-icons/common';
+import { Forward } from '@ndla/icons/common';
 
 import ShortcutItem from './TopicShortcutItem';
 

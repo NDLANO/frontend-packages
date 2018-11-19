@@ -10,8 +10,8 @@ import React from 'react';
 import FocusTrapReact from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import styled, { css, cx } from 'react-emotion';
-import { spacing, colors, fonts, shadows, animations } from 'ndla-core';
-import { Plus } from 'ndla-icons/action';
+import { spacing, colors, fonts, shadows, animations } from '@ndla/core';
+import { Plus } from '@ndla/icons/action';
 
 const ICON_SIZE = '48px';
 
@@ -95,6 +95,7 @@ const itemButton = css`
 const buttonCSS = css`
   width: ${ICON_SIZE};
   height: ${ICON_SIZE};
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,10 +104,11 @@ const buttonCSS = css`
   border-radius: 100%;
   transition: background 200ms ease, transform 200ms ease;
   .c-icon {
-    width: ${spacing.medium};
-    height: ${spacing.medium};
+    width: calc(${spacing.medium} + 14px);
+    height: calc(${spacing.medium} + 14px);
     color: ${colors.brand.primary};
-    transition: transform 200ms ease;
+    transition: transform 300ms ease;
+    padding: 7px;
   }
   &.--open {
     .c-icon {

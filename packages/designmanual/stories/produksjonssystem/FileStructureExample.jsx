@@ -7,15 +7,15 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { FileStructure } from 'ndla-editor';
+import { FileStructure } from '@ndla/editor';
 import styled, { cx, css } from 'react-emotion';
-import Button from 'ndla-button';
-import { FormHeader, FormDropdown } from 'ndla-forms';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from 'ndla-modal';
-import { Additional, Core, ChevronRight } from 'ndla-icons/common';
-import { Check } from 'ndla-icons/editor';
-import { Cross } from 'ndla-icons/action';
-import { colors, spacing, fonts, misc } from 'ndla-core';
+import Button from '@ndla/button';
+import { FormHeader, FormDropdown } from '@ndla/forms';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { Additional, Core, ChevronRight } from '@ndla/icons/common';
+import { Check } from '@ndla/icons/editor';
+import { Cross } from '@ndla/icons/action';
+import { colors, spacing, fonts, misc } from '@ndla/core';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const FILTER_SUPPLEMENTARY_ID = 'urn:relevance:supplementary';
@@ -946,19 +946,18 @@ class FileStructureExample extends Component {
           value={resourceTypeSelected}
           onChange={e => this.updateResourceType(e.target.value)}>
           <option value="">Velg innholdstype</option>
-          {resourceTypes.map(
-            resourceType =>
-              resourceType.subtypes ? (
-                resourceType.subtypes.map(subtype => (
-                  <option value={subtype.id} key={subtype.id}>
-                    {resourceType.name} - {subtype.name}
-                  </option>
-                ))
-              ) : (
-                <option key={resourceType.id} value={resourceType.id}>
-                  {resourceType.name}
+          {resourceTypes.map(resourceType =>
+            resourceType.subtypes ? (
+              resourceType.subtypes.map(subtype => (
+                <option value={subtype.id} key={subtype.id}>
+                  {resourceType.name} - {subtype.name}
                 </option>
-              ),
+              ))
+            ) : (
+              <option key={resourceType.id} value={resourceType.id}>
+                {resourceType.name}
+              </option>
+            ),
           )}
         </FormDropdown>
         <FormHeader

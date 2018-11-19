@@ -423,7 +423,6 @@ const Portal = ({
   narrow,
   onScroll,
 }) => {
-  console.log('???? modal');
   const content = (
     <FocusTrapReact>
       <ModalWrapper

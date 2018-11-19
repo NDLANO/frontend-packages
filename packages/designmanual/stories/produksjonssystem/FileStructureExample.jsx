@@ -7,7 +7,7 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { FileStructure } from '@ndla/editor';
+import { FileStructure, Spinner } from '@ndla/editor';
 import styled, { cx, css } from 'react-emotion';
 import Button from '@ndla/button';
 import { FormHeader, FormDropdown } from '@ndla/forms';
@@ -153,17 +153,6 @@ const FilterListTR = styled('tr')`
         }
       }
     `};
-`;
-
-const Spinner = styled('div')`
-  border: 8px solid rgba(0, 0, 0, 0.1);
-  border-bottom-color: ${colors.brand.primary};
-  border-radius: 50%;
-  animation: loadVideoSpinner 0.7s linear infinite;
-  height: ${spacing.large};
-  width: ${spacing.large};
-  display: block;
-  margin: ${spacing.normal} auto;
 `;
 
 const FilterTable = styled('table')`
@@ -756,7 +745,6 @@ class FileStructureExample extends Component {
       );
     }
     const { resource } = this.state;
-    console.log(resource, 'resource');
     const currentIndex = resource.parentTopics.findIndex(
       parentTopic => parentTopic.id === id,
     );
@@ -930,9 +918,6 @@ class FileStructureExample extends Component {
       resource,
       modalIsOpen,
     } = this.state;
-
-    console.log(this.state);
-    // console.log(resourceTypeSelected);
 
     return !loadedEssentials ? (
       <Spinner />

@@ -10,17 +10,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { spacing, colors, fonts } from '@ndla/core';
-
-const Spinner = styled.span`
-  border: 5px solid rgba(0, 0, 0, 0.1);
-  border-bottom-color: ${colors.brand.primary};
-  border-radius: 50%;
-  animation: loadVideoSpinner 0.7s linear infinite;
-  height: 22px;
-  width: 22px;
-  display: block;
-  margin: 4px 17px;
-`;
+import Spinner from './Spinner';
 
 const ItemListWrapper = styled.ul`
   margin: 0;
@@ -243,7 +233,11 @@ class FileStructure extends Component {
                       currentNames,
                       level === 0 ? topic.id : subjectId,
                     )}
-                  {topic.loading && <Spinner />}
+                  {topic.loading && (
+                    <span>
+                      <Spinner size="normal" margin="4px 26px" />
+                    </span>
+                  )}
                 </ItemsList>
               </Fragment>
             );

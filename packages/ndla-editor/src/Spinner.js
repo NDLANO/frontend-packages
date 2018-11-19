@@ -19,7 +19,7 @@ const SpinnerDiv = styled('div')`
   height: ${props => spacing[props.size]};
   width: ${props => spacing[props.size]};
   display: block;
-  margin: ${spacing.normal} auto;
+  margin: ${props => props.margin};
   @keyframes spinnerAnimation {
     0% {
       transform: rotate(0deg);
@@ -30,14 +30,18 @@ const SpinnerDiv = styled('div')`
   }
 `;
 
-const Spinner = ({ size }) => <SpinnerDiv size={size} />;
+const Spinner = ({ size, margin }) => (
+  <SpinnerDiv size={size} margin={margin} />
+);
 
 Spinner.propTypes = {
   size: PropTypes.oneOf(['large', 'medium', 'normal']),
+  margin: PropTypes.string,
 };
 
 Spinner.defaultProps = {
   size: 'large',
+  margin: `${spacing.normal} auto`,
 };
 
 export default Spinner;

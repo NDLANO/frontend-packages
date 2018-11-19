@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { spacing, colors } from 'ndla-core';
+import { spacing, colors } from '@ndla/core';
 
 const SpinnerDiv = styled('div')`
   border: calc(${props => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);

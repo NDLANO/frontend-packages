@@ -9,7 +9,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { spacing, colors, fonts } from 'ndla-core';
+import { spacing, colors, fonts } from '@ndla/core';
 
 const Spinner = styled.span`
   border: 5px solid rgba(0, 0, 0, 0.1);

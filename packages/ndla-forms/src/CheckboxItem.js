@@ -6,10 +6,10 @@
  *
  */
 
-import { colors, fonts, spacing, utils } from 'ndla-core';
-import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { colors, fonts, spacing, utils } from '@ndla/core';
 
 const CheckboxInput = styled.input`
   position: absolute;

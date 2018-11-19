@@ -12,6 +12,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Image } from 'ndla-ui';
 import { spacing, colors } from 'ndla-core';
+import { Spinner } from 'ndla-editor';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
@@ -20,7 +21,6 @@ import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
-import TaxonomyEditorExample from './TaxonomyEditorExample';
 import FileStructureExample from './FileStructureExample';
 import { Center } from '../helpers';
 
@@ -147,23 +147,21 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Taksonomi editor', () => (
+  .add('Sidestrurktur og taksonomi', () => (
     <div>
-      <StoryIntro title="Taksonomi editor">
-        <p>Tekst kommer</p>
-      </StoryIntro>
+      <StoryIntro title="Sidesturktur og taksonomi" />
       <Center>
-        <TaxonomyEditorExample />
+        <FileStructureExample />
       </Center>
     </div>
   ))
-  .add('Sidesturktur', () => (
+  .add('Loading', () => (
     <div>
-      <StoryIntro title="Taksonomi editor">
-        <p>Tekst kommer</p>
-      </StoryIntro>
+      <StoryIntro title="Loading komponent" />
       <Center>
-        <FileStructureExample />
+        <Spinner />
+        <Spinner size="medium" />
+        <Spinner size="normal" />
       </Center>
     </div>
   ));

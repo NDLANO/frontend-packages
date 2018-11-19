@@ -756,6 +756,7 @@ class FileStructureExample extends Component {
       );
     }
     const { resource } = this.state;
+    console.log(resource, 'resource');
     const currentIndex = resource.parentTopics.findIndex(
       parentTopic => parentTopic.id === id,
     );
@@ -930,7 +931,8 @@ class FileStructureExample extends Component {
       modalIsOpen,
     } = this.state;
 
-    console.log(resourceTypeSelected);
+    console.log(this.state);
+    // console.log(resourceTypeSelected);
 
     return !loadedEssentials ? (
       <Spinner />

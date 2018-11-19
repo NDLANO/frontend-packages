@@ -268,7 +268,7 @@ FileStructure.propTypes = {
   filters: PropTypes.shape(
     PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.string,
       }),
     ),
   ),

@@ -8,5 +8,6 @@
 
 import SlateBlockMenu from './SlateBlockMenu';
 import FileStructure from './FileStructure';
+import Spinner from './Spinner';
 
-export { SlateBlockMenu, FileStructure };
+export { SlateBlockMenu, FileStructure, Spinner };

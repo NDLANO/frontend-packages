@@ -23,8 +23,7 @@ import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
-
-import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
 
 const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
   <ResourcesWrapper
@@ -156,18 +155,7 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseBox />}
-              competenceGoals={
-                <CompetenceGoalsDialogExample
-                  headingId="article-competence-goals-heading-id"
-                  wide
-                />
-              }
-              competenceGoalsNarrow={
-                <CompetenceGoalsDialogExample
-                  headingId="article-competence-goals-narrow-heading-id"
-                  narrow
-                />
-              }>
+              competenceGoals={<CompetenceGoalsListExample />}>
               {articleChildren}
             </Article>
           </OneColumn>

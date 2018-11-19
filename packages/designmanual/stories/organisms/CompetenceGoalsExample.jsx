@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import { CompetenceGoals } from '@ndla/ui';
+import { CompetenceGoals, CompetenceGoalsList } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 
@@ -114,6 +114,41 @@ CompetenceGoalsExample.propTypes = {
 };
 
 export default CompetenceGoalsExample;
+
+export const CompetenceGoalsListExample = () => (
+  <>
+    {[
+      {
+        id: 'NOR1-05',
+        name: 'Læreplan i norsk',
+        goals: [
+          {
+            id: 'K15502',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+          },
+        ],
+      },
+      {
+        id: 'MOK2-01',
+        name:
+          'Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon',
+        goals: [
+          {
+            id: 'K17637',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+          },
+        ],
+      },
+    ].map(curriculum => (
+      <Fragment key={curriculum.id}>
+        <p>{curriculum.name}:</p>
+        <CompetenceGoalsList goals={curriculum.goals} />
+      </Fragment>
+    ))}
+  </>
+);
 
 export const CompetenceGoalsDialogExample = ({ narrow, wide }) => (
   <Trans>

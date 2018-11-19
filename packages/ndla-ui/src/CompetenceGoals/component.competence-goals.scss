@@ -171,33 +171,3 @@
     }
   }
 }
-
-.c-competence-goals-dialog {
-  &__content {
-    padding: $spacing--large 0 $spacing 0;
-
-    @include mq(tablet) {
-      padding: $spacing--large;
-    }
-  }
-
-  &__toggle-button {
-    &--wide {
-      position: absolute;
-      z-index: 9;
-      right: 0;
-      top: 0;
-      display: none;
-
-      @include mq(desktop) {
-        display: block;
-      }
-    }
-
-    &--narrow {
-      @include mq(desktop) {
-        display: none;
-      }
-    }
-  }
-}

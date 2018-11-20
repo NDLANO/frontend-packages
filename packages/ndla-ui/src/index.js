@@ -108,6 +108,7 @@ export {
 export {
   default as CompetenceGoals,
   CompetenceGoalList,
+  CompetenceGoalListHeading,
   CompetenceGoal,
   CompetenceGoalsDialog,
 } from './CompetenceGoals';

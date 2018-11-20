@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { mq, breakpoints, fonts } from '@ndla/core';
+import { mq, breakpoints, fonts, spacing } from '@ndla/core';
 
 import { classes } from './CompetenceGoals';
 import SafeLink from '../common/SafeLink';
 import { CompetenceGoalShape } from '../shapes';
 
+export const CompetenceGoalListHeading = styled('p')`
+  font-weight: ${fonts.weight.semibold};
+  margin-bottom: ${spacing.small};
+`;
+
 const StyledListItem = styled('li')`
+  line-height: ${spacing.normal};
   ${mq.range({ until: breakpoints.tablet })} {
     ${fonts.sizes(16, 1.5)};
   }
@@ -31,12 +37,9 @@ CompetenceGoal.propTypes = {
 };
 
 const StyledList = styled('ul')`
-  margin: 0 0 0 18px;
+  margin: 0 0 ${spacing.large} ${spacing.normal};
   padding: 0;
   max-width: 650px;
-  ${mq.range({ from: breakpoints.desktop })} {
-    margin: 0;
-  }
 `;
 
 export const CompetenceGoalList = ({ goals, ...rest }) => (

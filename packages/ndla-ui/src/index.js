@@ -107,8 +107,10 @@ export {
 } from './RelatedArticleList';
 export {
   default as CompetenceGoals,
-  CompetenceGoalsList,
+  CompetenceGoalList,
+  CompetenceGoalListHeading,
   CompetenceGoal,
+  CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
 export { default as NoContentBox } from './NoContentBox';

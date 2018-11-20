@@ -117,26 +117,6 @@
     }
   }
 
-  &__topic-list {
-    margin: 0 0 0 18px;
-    padding: 0;
-    max-width: 650px;
-
-    @include mq(desktop) {
-      margin: 0;
-    }
-  }
-
-  &__topic-item {
-    @include mq($until: tablet) {
-      @include font-size(16px, 24px);
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   &--menu,
   &--search {
     padding: $spacing--small $spacing $spacing--small $spacing--small;

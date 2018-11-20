@@ -212,6 +212,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis flere kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis flere eksterne læringsressurser',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
@@ -220,6 +222,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis færre eksterne læringsressurser',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',

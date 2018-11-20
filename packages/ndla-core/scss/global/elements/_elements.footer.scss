@@ -54,7 +54,8 @@
   tbody {
     background: #fff;
   }
-  ul, ol {
+  ul,
+  ol {
     margin: $spacing $spacing $spacing 0;
     @include mq(desktop) {
       margin-left: $spacing--large;

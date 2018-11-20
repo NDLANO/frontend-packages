@@ -20,7 +20,7 @@ import {
 } from '@ndla/ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
-import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
@@ -28,7 +28,7 @@ export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle
             icon={<AssessmentResourcesBadge background size="large" />}
             label="Vurderingsressurs">

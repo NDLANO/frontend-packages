@@ -23,14 +23,14 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
-import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle
             icon={<ExternalLearningResourcesBadge background size="large" />}
             label="Ekstern læringsressurs">

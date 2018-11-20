@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { CompetenceGoals, CompetenceGoalsList } from '@ndla/ui';
+import { CompetenceGoals, CompetenceGoalList } from '@ndla/ui';
 
 class CompetenceGoalsExample extends Component {
   constructor(props) {
@@ -108,7 +108,7 @@ CompetenceGoalsExample.propTypes = {
 
 export default CompetenceGoalsExample;
 
-export const CompetenceGoalsListExample = () => (
+export const CompetenceGoalListExample = () => (
   <>
     {[
       {
@@ -144,7 +144,7 @@ export const CompetenceGoalsListExample = () => (
     ].map(curriculum => (
       <Fragment key={curriculum.id}>
         <p>{curriculum.name}:</p>
-        <CompetenceGoalsList goals={curriculum.goals} />
+        <CompetenceGoalList goals={curriculum.goals} />
       </Fragment>
     ))}
   </>

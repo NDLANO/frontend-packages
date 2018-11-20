@@ -19,14 +19,14 @@ import {
 } from '@ndla/ui';
 
 import Resources from '../molecules/resources';
-import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">

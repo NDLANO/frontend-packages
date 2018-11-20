@@ -24,13 +24,13 @@ import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import Topics from '../molecules/topics';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
-import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">

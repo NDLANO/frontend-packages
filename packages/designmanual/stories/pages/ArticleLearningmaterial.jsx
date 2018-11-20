@@ -24,17 +24,13 @@ import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import Topics from '../molecules/topics';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
-import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper>
-          <CompetenceGoalsDialogExample
-            wide
-            headingId="article-competence-goals-heading-id"
-          />
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -45,10 +41,6 @@ export default () => (
             å produsere filmen.
           </ArticleIntroduction>
           <ArticleBylineExample id="example-article-license-id" />
-          <CompetenceGoalsDialogExample
-            narrow
-            headingId="article-competence-goals-narrow-heading-id"
-          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

@@ -19,18 +19,14 @@ import {
 } from '@ndla/ui';
 
 import Resources from '../molecules/resources';
-import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper>
-          <CompetenceGoalsDialogExample
-            wide
-            headingId="article-competence-goals-heading-id"
-          />
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -41,10 +37,6 @@ export default () => (
             å produsere filmen.
           </ArticleIntroduction>
           <ArticleBylineExample useRealText multipleAuthors />
-          <CompetenceGoalsDialogExample
-            narrow
-            headingId="article-competence-goals-narrow-heading-id"
-          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

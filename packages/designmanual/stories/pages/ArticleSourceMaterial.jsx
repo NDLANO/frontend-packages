@@ -22,7 +22,7 @@ import {
 import FigureWithLicense from '../article/FigureWithLicense';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
-import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
@@ -30,11 +30,7 @@ export default () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper>
-          <CompetenceGoalsDialogExample
-            wide
-            headingId="article-competence-goals-heading-id"
-          />
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
           <ArticleTitle
             icon={<SourceMaterialBadge background size="large" />}
             label="Kildemateriale">
@@ -45,10 +41,6 @@ export default () => (
             å produsere filmen.
           </ArticleIntroduction>
           <ArticleBylineExample useRealText />
-          <CompetenceGoalsDialogExample
-            narrow
-            headingId="article-competence-goals-narrow-heading-id"
-          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

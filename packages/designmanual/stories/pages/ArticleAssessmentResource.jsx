@@ -20,7 +20,7 @@ import {
 } from '@ndla/ui';
 
 import FigureWithLicense from '../article/FigureWithLicense';
-import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalsListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
@@ -28,11 +28,7 @@ export default () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper>
-          <CompetenceGoalsDialogExample
-            wide
-            headingId="article-competence-goals-heading-id"
-          />
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalsListExample />}>
           <ArticleTitle
             icon={<AssessmentResourcesBadge background size="large" />}
             label="Vurderingsressurs">
@@ -44,10 +40,6 @@ export default () => (
             egenevaluering av elevene og i dialog mellom elev og lærer.
           </ArticleIntroduction>
           <ArticleBylineExample id="article-by-line-example-id" />
-          <CompetenceGoalsDialogExample
-            narrow
-            headingId="article-competence-goals-narrow-heading-id"
-          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">

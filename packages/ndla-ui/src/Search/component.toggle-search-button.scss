@@ -39,6 +39,14 @@
         box-shadow: none;
       }
     }
+
+    &--inverted {
+      background: #0f2b47;
+      color: #fff;
+      .c-icon {
+        fill: #fff;
+      }
+    }
   }
 
   &__button-text {

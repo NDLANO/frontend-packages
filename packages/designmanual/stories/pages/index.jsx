@@ -41,6 +41,7 @@ import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
+import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
@@ -394,3 +395,12 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ));
+storiesOf('Ndla film', module).add('Forside', () => (
+  <PageContainer>
+    <Content>
+      <MastheadWithTopicMenu ndlaFilm />
+      <NdlaFilmFrontpage />
+    </Content>
+    <FooterExample />
+  </PageContainer>
+));

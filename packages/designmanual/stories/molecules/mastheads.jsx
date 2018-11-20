@@ -85,7 +85,14 @@ class MastheadWithTopicMenu extends Component {
           );
           e.preventDefault();
         }}
-        filters={[{ value: 'Value', title: 'Medieuttrykk og mediesamfunnet' }]}
+        filters={[
+          {
+            value: 'Value',
+            title: this.props.ndlaFilm
+              ? 'NDLA Film'
+              : 'Medieuttrykk og mediesamfunnet',
+          },
+        ]}
         onFilterRemove={() => {}}
         messages={{
           searchFieldTitle: 'Søk',
@@ -126,7 +133,11 @@ class MastheadWithTopicMenu extends Component {
           activateButton={
             <button
               type="button"
-              className="c-button c-toggle-search-button__button c-toggle-search-button__button--wide">
+              className={`c-button c-toggle-search-button__button c-toggle-search-button__button--wide${
+                this.props.ndlaFilm
+                  ? ' c-toggle-search-button__button--inverted'
+                  : ''
+              }`}>
               <span className={classes('button-text')}>Søk</span>
               <Search />
             </button>
@@ -156,13 +167,20 @@ class MastheadWithTopicMenu extends Component {
     return (
       <Masthead
         fixed
+        ndlaFilm={this.props.ndlaFilm}
         hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
           <Modal
             size="fullscreen"
             activateButton={
-              <Button outline className="c-topic-menu-toggle-button">
+              <Button
+                outline
+                className={`c-topic-menu-toggle-button${
+                  this.props.ndlaFilm
+                    ? ' c-topic-menu-toggle-button--white'
+                    : ''
+                }`}>
                 Meny
               </Button>
             }
@@ -244,6 +262,7 @@ class MastheadWithTopicMenu extends Component {
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
             label="Nasjonal digital læringsarena"
             isBeta={this.props.beta}
+            cssModifier={this.props.ndlaFilm && 'white'}
           />
         </MastheadItem>
       </Masthead>
@@ -258,6 +277,7 @@ MastheadWithTopicMenu.propTypes = {
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
   t: PropTypes.func.isRequired,
+  ndlaFilm: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

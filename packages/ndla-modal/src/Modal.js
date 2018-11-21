@@ -491,16 +491,6 @@ class Modal extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps, prevProps) {
-    if (nextProps.controllable && nextProps.isOpen !== prevProps.isOpen) {
-      if (nextProps.isOpen) {
-        this.openModal();
-      } else {
-        this.closeModal();
-      }
-    }
-  }
-
   componentDidUpdate() {
     if (this.scrollPosition && this.el) {
       this.el.scrollTop = this.scrollPosition;

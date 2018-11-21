@@ -445,7 +445,6 @@ class FileStructureExample extends Component {
       resourceTypeSelected: '',
       fileStructureFilters: [],
       availableFilters: [],
-      modalIsOpen: false,
     };
     this.renderListItems = this.renderListItems.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
@@ -694,7 +693,7 @@ class FileStructureExample extends Component {
     });
   }
 
-  renderListItems({ paths, names, level, isOpen, id }) {
+  renderListItems({ paths, names, level, isOpen, id, onCloseModal }) {
     const { availableFilters } = this.state;
 
     if (level === 0) {
@@ -761,10 +760,14 @@ class FileStructureExample extends Component {
                 subjectId: paths[0],
                 isPrimary: resource.parentTopics.length === 0,
               });
-              this.setState({
-                resource,
-                modalIsOpen: false,
-              });
+              this.setState(
+                {
+                  resource,
+                },
+                () => {
+                  onCloseModal();
+                },
+              );
             }}>
             Opprett emnetilknytning
           </Button>
@@ -916,7 +919,6 @@ class FileStructureExample extends Component {
       fileStructureFilters,
       availableFilters,
       resource,
-      modalIsOpen,
     } = this.state;
 
     return !loadedEssentials ? (
@@ -950,18 +952,13 @@ class FileStructureExample extends Component {
           subTitle="Hvor i taksonomien skal ressursen ligge?"
         />
         {this.renderConnections()}
-        <Button onClick={() => this.setState({ modalIsOpen: true })}>
-          Opprett emnetilknytning
-        </Button>
         <Modal
           backgroundColor="white"
           animation="subtle"
           size="large"
           narrow
           minHeight="85vh"
-          controllable
-          onClose={() => this.setState({ modalIsOpen: false })}
-          isOpen={modalIsOpen}>
+          activateButton={<Button>Opprett emnetilknytning</Button>}>
           {onCloseModal => (
             <Fragment>
               <ModalHeader>
@@ -979,6 +976,7 @@ class FileStructureExample extends Component {
                   onOpenPath={this.onOpenPath}
                   fileStructureFilters={fileStructureFilters}
                   filters={availableFilters}
+                  onCloseModal={onCloseModal}
                 />
               </ModalBody>
             </Fragment>

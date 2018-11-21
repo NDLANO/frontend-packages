@@ -87,6 +87,7 @@ class FileStructure extends Component {
       listClass,
       fileStructureFilters,
       filters,
+      onCloseModal,
     } = this.props;
 
     const ignoreFilter =
@@ -134,6 +135,7 @@ class FileStructure extends Component {
                         names: currentNames,
                         isOpen,
                         id: topic.id,
+                        onCloseModal,
                       })}
                   </ItemName>
                   {hasSubtopics &&
@@ -177,6 +179,7 @@ FileStructure.propTypes = {
     ),
   ),
   allowMultipleSubjectsOpen: PropTypes.bool,
+  onCloseModal: PropTypes.func,
 };
 
 FileStructure.defaultProps = {

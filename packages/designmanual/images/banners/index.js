@@ -49,7 +49,7 @@ export default [
     name: 'Helse- og oppvekstsfag Vg1',
   },
   { desktop: Historie, mobile: Historie, name: 'Historie' },
-  { desktop: IKTService, mobile: IKTService, name: 'IKT Service' },
+  { desktop: IKTService, mobile: IKTService, name: 'IKT-servicefag Vg2' },
   { desktop: Kinesisk, mobile: Kinesisk, name: 'Kinesisk' },
   {
     desktop: Markedsfoering,
@@ -134,6 +134,6 @@ export default [
   {
     desktop: EngelskLitteratur2,
     mobile: EngelskLitteratur2,
-    name: 'Engelsk litteratur 2',
+    name: 'Engelskspråklig litteratur og kultur',
   },
 ];

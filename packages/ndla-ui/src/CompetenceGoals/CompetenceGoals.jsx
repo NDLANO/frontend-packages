@@ -4,9 +4,9 @@ import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronDown } from '@ndla/icons/common';
 import { Trans } from '@ndla/i18n';
 import { FilterListPhone } from '../Filter';
-import CompetenceGoalList from './CompetenceGoalsList';
+import CompetenceGoalList from './CompetenceGoalList';
 
-const classes = new BEMHelper({
+export const classes = new BEMHelper({
   name: 'competence-goals',
   prefix: 'c-',
 });

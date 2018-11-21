@@ -1,14 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 
-import { CompetenceGoals } from '@ndla/ui';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
-
-import { Trans } from '@ndla/i18n';
-
-const classes = BEMHelper('c-competence-goals-dialog');
+import {
+  CompetenceGoals,
+  CompetenceGoalList,
+  CompetenceGoalListHeading,
+} from '@ndla/ui';
 
 class CompetenceGoalsExample extends Component {
   constructor(props) {
@@ -115,40 +112,46 @@ CompetenceGoalsExample.propTypes = {
 
 export default CompetenceGoalsExample;
 
-export const CompetenceGoalsDialogExample = ({ narrow, wide }) => (
-  <Trans>
-    {({ t }) => (
-      <Modal
-        activateButton={
-          <Button lighter {...classes('toggle-button', { wide, narrow })}>
-            {t('competenceGoals.showCompetenceGoals')}
-          </Button>
-        }
-        narrow>
-        {onClose => (
-          <Fragment>
-            <ModalHeader>
-              <ModalCloseButton
-                onClick={onClose}
-                title={t('competenceGoals.closeCompetenceGoals')}
-              />
-            </ModalHeader>
-            <ModalBody>
-              <CompetenceGoalsExample />
-            </ModalBody>
-          </Fragment>
-        )}
-      </Modal>
-    )}
-  </Trans>
+export const CompetenceGoalListExample = () => (
+  <>
+    {[
+      {
+        id: 'NOR1-05',
+        name: 'Læreplan i norsk',
+        goals: [
+          {
+            id: 'K15502',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+            url: '#1',
+          },
+        ],
+      },
+      {
+        id: 'MOK2-01',
+        name:
+          'Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon',
+        goals: [
+          {
+            id: 'K17637',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+            url: '#1',
+          },
+          {
+            id: 'K17635',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal',
+            url: '#1',
+          },
+        ],
+      },
+    ].map(curriculum => (
+      <Fragment key={curriculum.id}>
+        <CompetenceGoalListHeading>
+          {curriculum.name}:
+        </CompetenceGoalListHeading>
+        <CompetenceGoalList goals={curriculum.goals} />
+      </Fragment>
+    ))}
+  </>
 );
-
-CompetenceGoalsDialogExample.propTypes = {
-  narrow: PropTypes.bool,
-  wide: PropTypes.bool,
-};
-
-CompetenceGoalsDialogExample.defaultProps = {
-  narrow: false,
-  wide: false,
-};

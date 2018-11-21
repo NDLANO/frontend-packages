@@ -466,7 +466,7 @@ class Modal extends React.Component {
     const autoOpen = props.controllable && props.isOpen;
     this.state = {
       isOpen: autoOpen,
-      animateIn: autoOpen,
+      animateIn: props.controllable,
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -624,7 +624,7 @@ class Modal extends React.Component {
       <Component {...rest} className={containerClass}>
         {modalButton}
         <div ref={this.containerRef}>
-          {isOpen && (
+          {(isOpen || propsIsOpen) && (
             <Portal
               size={size}
               minHeight={minHeight}

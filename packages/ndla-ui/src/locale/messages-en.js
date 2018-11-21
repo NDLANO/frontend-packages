@@ -281,6 +281,7 @@ const messages = {
     singleAuthorsLabelAria: 'The author of this article is {name}',
   },
   competenceGoals: {
+    title: 'Competance goals and curriculum ',
     closeCompetenceGoals: 'Close competance goals',
     showCompetenceGoals: 'Show competance goals',
     openCompentenceGoalsFilter: 'Filter competence goals',

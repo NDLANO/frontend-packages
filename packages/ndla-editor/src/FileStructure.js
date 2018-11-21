@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
@@ -49,47 +49,18 @@ const ItemsList = styled.li`
     `};
 `;
 
-class FileStructure extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      openedPaths: props.openedPaths.map(path => path.toString()),
-    };
-  }
-
-  handleOpenToggle(path, id, level) {
-    this.setState(prevState => {
-      let { openedPaths } = prevState;
-      const index = openedPaths.indexOf(path);
-      if (index === -1) {
-        // Has other subjects open and !allowMultipleSubjectsOpen?
-        if (level === 0 && !this.props.allowMultipleSubjectsOpen) {
-          openedPaths = [];
-        }
-        openedPaths.push(path);
-        if (this.props.onOpenPath) {
-          this.props.onOpenPath({ id, level });
-        }
-      } else {
-        openedPaths.splice(index, 1);
-      }
-      return {
-        openedPaths,
-      };
-    });
-  }
-
-  renderItems(topics, paths, names, subjectId) {
+const FileStructure = ({
+  renderListItems,
+  listClass,
+  fileStructureFilters,
+  filters,
+  structure,
+  openedPaths,
+  toggleOpen,
+  onCloseModal,
+}) => {
+  const renderItems = (topics, paths, names, subjectId) => {
     const level = paths.length;
-    const { openedPaths } = this.state;
-    const {
-      renderListItems,
-      listClass,
-      fileStructureFilters,
-      filters,
-      onCloseModal,
-    } = this.props;
-
     const ignoreFilter =
       level === 0 ||
       !filters[subjectId].some(filter =>
@@ -122,9 +93,7 @@ class FileStructure extends Component {
                     title={topic.name}
                     path={pathToString}
                     hasSubtopics={hasSubtopics || level === 0}
-                    toggleOpen={() =>
-                      this.handleOpenToggle(pathToString, topic.id, level)
-                    }
+                    toggleOpen={toggleOpen}
                     level={level}>
                     {renderListItems &&
                       renderListItems({
@@ -139,7 +108,7 @@ class FileStructure extends Component {
                       })}
                   </ItemName>
                   {hasSubtopics &&
-                    this.renderItems(
+                    renderItems(
                       topic.subtopics,
                       currentPaths,
                       currentNames,
@@ -156,22 +125,18 @@ class FileStructure extends Component {
           })}
       </ItemListWrapper>
     );
-  }
+  };
 
-  render() {
-    const { structure } = this.props;
-    return this.renderItems(structure, [], []);
-  }
-}
+  return renderItems(structure, [], []);
+};
 
 FileStructure.propTypes = {
   structure: PropTypes.arrayOf(PropTypes.shape()),
-  openedPaths: PropTypes.arrayOf(PropTypes.string),
+  openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
   listClass: PropTypes.string,
-  onOpenPath: PropTypes.func,
   fileStructureFilters: PropTypes.arrayOf(PropTypes.string),
-  filters: PropTypes.shape(
+  filters: PropTypes.objectOf(
     PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
@@ -184,7 +149,6 @@ FileStructure.propTypes = {
 
 FileStructure.defaultProps = {
   structure: [],
-  openedPaths: [],
   className: '',
   fileStructureFilters: [],
   filters: [],

@@ -18,11 +18,12 @@
   text-decoration: none;
   @include inuit-font-size(16px);
   font-family: $font;
+  font-weight: $font-weight-bold;
   transition: $transition;
   &:hover,
   &:focus {
     color: white;
-    background-color: rgba($brand-color, 0.8);
+    background-color: $brand-color--dark;
     border: 2px solid rgba($brand-color, 0);
     transform: translateY(1px) translateX(1px);
   }
@@ -32,7 +33,7 @@
   &:disabled {
     color: $brand-grey;
     background-color: $background-color--dark;
-    border: 0;
+    border-color: transparent;
     cursor: not-allowed;
     transform: translateY(0) translateX(0);
   }
@@ -40,7 +41,6 @@
     box-shadow: 0 0 2px $brand-color;
   }
 }
-
 
 .c-button--lighter {
   @include font-size(12px, 15px);
@@ -83,6 +83,7 @@
   color: $brand-color;
   background-color: transparent;
   border: none;
+  font-weight: $font-weight-normal;
   &:hover,
   &:focus {
     background-color: transparent;
@@ -100,6 +101,7 @@
   background-color: transparent;
   box-shadow: none;
   border: none;
+  font-weight: $font-weight-normal;
   &:hover,
   &:active,
   &:disabled,

@@ -19,11 +19,11 @@ $subject-section-padding: 100px;
     display: none;
     margin: $spacing--medium 0 0 0;
 
-    @include mq (desktop) {
+    @include mq(desktop) {
       margin-left: $subject-margin;
     }
 
-    @include mq (tablet) {
+    @include mq(tablet) {
       display: block;
     }
   }
@@ -32,6 +32,11 @@ $subject-section-padding: 100px;
     display: flex;
     flex-flow: column;
     margin-top: $spacing--small;
+
+    // Two children or more children
+    > *:not(:only-child) {
+      max-width: 50%;
+    }
 
     @include mq(tablet) {
       flex-flow: row;
@@ -181,7 +186,8 @@ $subject-section-padding: 100px;
     margin: $spacing--small 0;
   }
   .c-topic-introduction__item {
-    &:last-child, &:nth-last-child(2):nth-child(even) {
+    &:last-child,
+    &:nth-last-child(2):nth-child(even) {
       border-bottom: 0;
     }
   }

@@ -22,6 +22,9 @@
   &:last-child {
     border-bottom: none;
   }
+  img {
+    width: 100%;
+  }
 }
 
 .c-medialist__body {
@@ -67,7 +70,7 @@
       width: 100%;
       position: relative;
       &:before {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         right: $spacing--small;
@@ -99,7 +102,8 @@
   padding-left: 0;
   list-style: none;
   width: 100%;
-  button, a {
+  button,
+  a {
     margin: 0 $spacing--small $spacing--small 0;
   }
 }

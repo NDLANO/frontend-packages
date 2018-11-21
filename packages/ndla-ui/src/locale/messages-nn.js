@@ -210,9 +210,11 @@ const messages = {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
           'Vis fleire oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Vis flere kjeldematerialer',
+        [contentTypes.LEARNING_PATH]: 'Vis fleire læringsstier',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis fleire vurderingsressursar',
+        [contentTypes.SOURCE_MATERIAL]: 'Vis fleire kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis fleire eksterne læringsressursar',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
@@ -222,6 +224,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis færre eksterne læringsressursar',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
@@ -276,6 +280,7 @@ const messages = {
     singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
   },
   competenceGoals: {
+    title: 'Kompetansemål og læreplan',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
     openCompentenceGoalsFilter: 'Filtrer kompetansemål',

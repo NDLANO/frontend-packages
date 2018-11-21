@@ -83,7 +83,7 @@
 
     padding: 0 $spacing $spacing;
     margin-bottom: $spacing--large;
-    margin-top: -$spacing*6;
+    margin-top: -$spacing * 6;
     padding-top: $spacing--large + $spacing;
   }
   @include mq(desktop) {
@@ -130,15 +130,13 @@
     }
   }
 
-  &--with-competence-goals {
-    // Adjust first line width if article has competence goals
-    @include mq(desktop) {
-      h1:before {
-        content: '';
-        float: right;
-        width: 140px;
-        height: 1em;
-      }
+  // Adjust first line width for competence goals button
+  @include mq(desktop) {
+    h1:before {
+      content: '';
+      float: right;
+      width: 140px;
+      height: 1em;
     }
   }
 
@@ -178,6 +176,25 @@
     @include mq(desktop) {
       left: -70px;
       top: $spacing--small / 2;
+    }
+  }
+}
+
+.c-article__competence-goals-button {
+  &--wide {
+    position: absolute;
+    z-index: 9;
+    right: 0;
+    top: 0;
+    display: none;
+    @include mq(desktop) {
+      display: block;
+    }
+  }
+
+  &--narrow {
+    @include mq(desktop) {
+      display: none;
     }
   }
 }

@@ -39,7 +39,7 @@
     padding: $spacing--small 0 0 0;
 
     @include mq(tablet) {
-      padding: $spacing $spacing 0 $spacing;
+      padding: $spacing;
     }
   }
 
@@ -62,6 +62,7 @@
   }
 
   &__archive-button {
+    display: none;
     @extend .o-text-link;
     margin: $spacing--small 0 0 0;
     padding: $spacing--small/2 0;

@@ -443,7 +443,7 @@ class FileStructureExample extends Component {
       loadedEssentials: false,
       resourceTypes: [],
       resourceTypeSelected: '',
-      FileStructureFilters: [],
+      fileStructureFilters: [],
       availableFilters: [],
       modalIsOpen: false,
     };
@@ -709,30 +709,30 @@ class FileStructureExample extends Component {
               type="button"
               key={filter.id}
               className={
-                this.state.FileStructureFilters.some(
+                this.state.fileStructureFilters.some(
                   FileStructureFilter => FileStructureFilter === filter.id,
                 )
                   ? 'checkboxItem--checked'
                   : ''
               }
               onClick={() => {
-                const currentIndex = this.state.FileStructureFilters.findIndex(
+                const currentIndex = this.state.fileStructureFilters.findIndex(
                   FileStructureFilter => FileStructureFilter === filter.id,
                 );
                 if (currentIndex === -1) {
                   this.setState(prevState => {
-                    const { FileStructureFilters } = prevState;
-                    FileStructureFilters.push(filter.id);
+                    const { fileStructureFilters } = prevState;
+                    fileStructureFilters.push(filter.id);
                     return {
-                      FileStructureFilters,
+                      fileStructureFilters,
                     };
                   });
                 } else {
                   this.setState(prevState => {
-                    const { FileStructureFilters } = prevState;
-                    FileStructureFilters.splice(currentIndex, 1);
+                    const { fileStructureFilters } = prevState;
+                    fileStructureFilters.splice(currentIndex, 1);
                     return {
-                      FileStructureFilters,
+                      fileStructureFilters,
                     };
                   });
                 }
@@ -913,7 +913,7 @@ class FileStructureExample extends Component {
       structure,
       resourceTypeSelected,
       resourceTypes,
-      FileStructureFilters,
+      fileStructureFilters,
       availableFilters,
       resource,
       modalIsOpen,
@@ -977,7 +977,7 @@ class FileStructureExample extends Component {
                   renderListItems={this.renderListItems}
                   listClass={listClass}
                   onOpenPath={this.onOpenPath}
-                  FileStructureFilters={FileStructureFilters}
+                  fileStructureFilters={fileStructureFilters}
                   filters={availableFilters}
                 />
               </ModalBody>

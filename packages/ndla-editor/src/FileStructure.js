@@ -59,6 +59,7 @@ const FileStructure = ({
   toggleOpen,
   onCloseModal,
 }) => {
+  console.log(filters);
   const renderItems = (topics, paths, names, subjectId) => {
     const level = paths.length;
     const ignoreFilter =
@@ -82,7 +83,7 @@ const FileStructure = ({
             const currentNames = names.slice();
             currentPaths.push(topic.id);
             currentNames.push(topic.name);
-            const hasSubtopics = topic.subtopics && topic.subtopics.length > 1;
+            const hasSubtopics = topic.subtopics && topic.subtopics.length > 0;
             const pathToString = currentPaths.toString();
             const isOpen = openedPaths.includes(pathToString);
             return (
@@ -132,8 +133,20 @@ const FileStructure = ({
   return renderItems(structure, [], []);
 };
 
+const ItemShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
 FileStructure.propTypes = {
-  structure: PropTypes.arrayOf(PropTypes.shape()),
+  structure: PropTypes.arrayOf(
+    PropTypes.shape({
+      ...ItemShape,
+      loading: PropTypes.bool,
+      filters: PropTypes.arrayOf(PropTypes.shape({})),
+      subtopics: PropTypes.arrayOf(PropTypes.shape(ItemShape)),
+    }),
+  ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
   listClass: PropTypes.string,
@@ -145,7 +158,6 @@ FileStructure.propTypes = {
       }),
     ),
   ),
-  allowMultipleSubjectsOpen: PropTypes.bool,
   onCloseModal: PropTypes.func,
 };
 
@@ -154,7 +166,6 @@ FileStructure.defaultProps = {
   className: '',
   fileStructureFilters: [],
   filters: [],
-  allowMultipleSubjectsOpen: false,
 };
 
 export default FileStructure;

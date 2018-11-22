@@ -11,7 +11,11 @@ import { FileStructure, Spinner } from '@ndla/editor';
 import styled, { cx, css } from 'react-emotion';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
-import { subjectTopics, subjects, allFilters } from './fileStructureMock';
+import {
+  subjectTopics,
+  subjects,
+  allFilters,
+} from '../../dummydata/mockTaxonomyStructure';
 
 function delay(t, v) {
   return new Promise(resolve => {

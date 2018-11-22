@@ -93,7 +93,9 @@ const FileStructure = ({
                     title={topic.name}
                     path={pathToString}
                     hasSubtopics={hasSubtopics || level === 0}
-                    toggleOpen={toggleOpen}
+                    toggleOpen={() =>
+                      toggleOpen({ path: pathToString, level, id: topic.id })
+                    }
                     level={level}>
                     {renderListItems &&
                       renderListItems({

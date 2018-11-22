@@ -59,7 +59,6 @@ const FileStructure = ({
   toggleOpen,
   onCloseModal,
 }) => {
-  console.log(filters);
   const renderItems = (topics, paths, names, subjectId) => {
     const level = paths.length;
     const ignoreFilter =

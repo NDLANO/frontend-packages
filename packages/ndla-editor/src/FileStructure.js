@@ -57,7 +57,6 @@ const FileStructure = ({
   structure,
   openedPaths,
   toggleOpen,
-  onCloseModal,
 }) => {
   const renderItems = (topics, paths, names, subjectId) => {
     const level = paths.length;
@@ -106,7 +105,6 @@ const FileStructure = ({
                         names: currentNames,
                         isOpen,
                         id: topic.id,
-                        onCloseModal,
                       })}
                   </ItemName>
                   {hasSubtopics &&
@@ -165,7 +163,6 @@ FileStructure.propTypes = {
   listClass: PropTypes.string,
   fileStructureFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
-  onCloseModal: PropTypes.func,
 };
 
 FileStructure.defaultProps = {

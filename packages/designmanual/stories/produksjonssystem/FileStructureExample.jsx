@@ -319,7 +319,6 @@ class FileStructureExample extends Component {
           listClass={listClass}
           fileStructureFilters={fileStructureFilters}
           filters={availableFilters}
-          onCloseModal={() => {}}
         />
       </Fragment>
     );

@@ -109,78 +109,37 @@ export const kinesiskTopics = [
   {
     id: 'urn:topic:1:181994',
     name: 'Introduksjon til kinesisk',
-    filters: kinesiskFilter.slice(-1),
+    filters: kinesiskFilter.slice(0, 1),
   },
   {
     id: 'urn:topic:1:181998',
     name: 'Leksjon 1: Hei!',
-    filters: [
-      {
-        id: 'urn:filter:a294489b-7ca6-42a0-9243-6ab0b6be9028',
-        name: 'Kinesisk 1',
-        relevanceId: 'urn:relevance:core',
-      },
-    ],
+    filters: kinesiskFilter.slice(0, 1),
   },
   {
     id: 'urn:topic:1:181980',
     name: 'Leksjon 1: Reise',
-    filters: [
-      {
-        id: 'urn:filter:1ceede07-0824-4dee-b5f6-c2f008b4924a',
-        name: 'Kinesisk 2',
-        relevanceId: 'urn:relevance:core',
-      },
-    ],
+    filters: kinesiskFilter.slice(1),
   },
   {
     id: 'urn:topic:1:181981',
     name: 'Leksjon 2: På tur til Shanghai',
-    filters: [
-      {
-        id: 'urn:filter:1ceede07-0824-4dee-b5f6-c2f008b4924a',
-        name: 'Kinesisk 2',
-        relevanceId: 'urn:relevance:core',
-      },
-    ],
+    filters: kinesiskFilter.slice(1),
   },
   {
     id: 'urn:topic:1:182001',
     name: 'Leksjon 2: Å bli kjent med en medstudent',
-    filters: [
-      {
-        id: 'urn:filter:a294489b-7ca6-42a0-9243-6ab0b6be9028',
-        name: 'Kinesisk 1',
-        relevanceId: 'urn:relevance:core',
-      },
-    ],
+    filters: kinesiskFilter.slice(0, 1),
   },
   {
+    name: 'Leksjon 3: Familie',
     id: 'urn:topic:1:182003',
-    filters: [
-      {
-        id: 'urn:filter:a294489b-7ca6-42a0-9243-6ab0b6be9028',
-        name: 'Kinesisk 1',
-        relevanceId: 'urn:relevance:core',
-      },
-    ],
+    filters: kinesiskFilter.slice(0, 1),
   },
   {
     id: 'urn:topic:1:181982',
     name: 'Leksjon 3: I Shanghai',
-    contentUri: 'urn:article:8563',
-    parent: 'urn:subject:2',
-    path: '/subject:2/topic:1:181982',
-    connectionId: 'urn:subject-topic:1598c1f8-4d42-40bc-b1fb-3414fd8ca896',
-    isPrimary: true,
-    rank: 19,
-    filters: [
-      {
-        id: 'urn:filter:1ceede07-0824-4dee-b5f6-c2f008b4924a',
-        name: 'kinesisk 2',
-        relevanceId: 'urn:relevance:core',
-      },
-    ],
+    filters: kinesiskFilter.slice(1),
   },
 ];
 

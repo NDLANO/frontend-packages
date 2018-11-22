@@ -11,69 +11,16 @@ import { FileStructure, Spinner } from '@ndla/editor';
 import styled, { cx, css } from 'react-emotion';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
-import { headerWithAccessToken, getToken } from '../apiFunctions';
+import { subjectTopics, subjects, allFilters } from './fileStructureMock';
 
-const sortByName = (a, b) => {
-  if (a.name < b.name) return -1;
-  if (a.name > b.name) return 1;
-  return 0;
-};
-
-const filterToSubjects = allFilters => {
-  const filterObjects = {};
-  allFilters.forEach(filter => {
-    if (!filterObjects[filter.subjectId]) {
-      filterObjects[filter.subjectId] = [];
-    }
-    filterObjects[filter.subjectId].push(filter);
+function delay(t, v) {
+  return new Promise(resolve => {
+    setTimeout(resolve.bind(null, v), t);
   });
-  Object.keys(filterObjects).forEach(subjectId => {
-    filterObjects[subjectId] = filterObjects[subjectId].sort(sortByName);
-  });
-  return filterObjects;
-};
+}
 
-const fetchData = url =>
-  new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(url, {
-        method: 'GET',
-        headers: headerWithAccessToken(token),
-      }).then(res => {
-        if (res.ok) {
-          return resolve(res.json());
-        }
-        return res.json().then(json => reject(json));
-      });
-    });
-  });
-
-const fetchSubjectsAndResourceTypesAndFilters = lang =>
-  Promise.all([
-    fetchData(
-      `https://test.api.ndla.no/taxonomy/v1/subjects/?language=${lang}`,
-    ),
-    fetchData(`https://test.api.ndla.no/taxonomy/v1/filters`),
-  ])
-    .then(result => result)
-    .catch(err => {
-      console.log(err);
-    });
-
-const fetchSubjectsTopics = (subjectId, lang) =>
-  Promise.all([
-    fetchData(
-      `https://test.api.ndla.no/taxonomy/v1/subjects/${subjectId}/topics/?recursive=true&language=${lang}`,
-    ),
-  ])
-    .then(result => result[0])
-    .catch(err => {
-      console.log(err);
-    });
-
-const TitleModal = styled('h1')`
-  color: ${colors.text.primary};
-`;
+const fetchSubjectsTopics = subjectId =>
+  delay(1000).then(() => subjectTopics[subjectId]);
 
 const AddTitle = styled('span')`
   ${fonts.sizes(16, 1.2)} font-weight: ${fonts.weight.semibold};
@@ -222,41 +169,6 @@ const listClass = css`
   }
 `;
 
-const connectSubConnections = (items, parents) => {
-  const currentParents = parents;
-  items.forEach(connection => {
-    const currentConnection = connection;
-    if (parents[currentConnection.id]) {
-      currentConnection.subtopics = parents[currentConnection.id];
-      delete currentParents[currentConnection.id];
-      connectSubConnections(connection.subtopics, currentParents);
-    } else {
-      currentConnection.subtopics = [];
-    }
-  });
-};
-
-const connectionTopicsToParent = (unConnectedTopics, id) => {
-  const parents = {};
-  // Group into arrays
-  unConnectedTopics.forEach(unconnected => {
-    if (!parents[unconnected.parent]) {
-      parents[unconnected.parent] = [];
-    }
-    parents[unconnected.parent].push(unconnected);
-  });
-  // Sort groups by name
-  Object.keys(parents).forEach(parentKey => {
-    parents[parentKey] = parents[parentKey].sort(sortByName);
-  });
-  // Get all direct connections
-  const directConnections = parents[id];
-  delete parents[id];
-  // Connect subconnections
-  connectSubConnections(directConnections, parents);
-  return directConnections;
-};
-
 class FileStructureExample extends Component {
   constructor(props) {
     super(props);
@@ -272,17 +184,13 @@ class FileStructureExample extends Component {
   }
 
   componentDidMount() {
-    fetchSubjectsAndResourceTypesAndFilters('nb')
-      .then(result => {
-        this.setState({
-          structure: result[0].sort(sortByName),
-          loadedEssentials: true,
-          availableFilters: filterToSubjects(result[1]),
-        });
-      })
-      .catch(err => {
-        console.log(err);
+    delay(1000).then(() => {
+      this.setState({
+        structure: subjects,
+        loadedEssentials: true,
+        availableFilters: allFilters,
       });
+    });
   }
 
   onOpenPath({ id, level }) {
@@ -304,36 +212,18 @@ class FileStructureExample extends Component {
             };
           },
           () => {
-            fetchSubjectsTopics(id, 'nb')
-              .then(result => {
-                const { structure } = this.state;
-                const { id: subjectId } = structure[index];
+            fetchSubjectsTopics(id).then(result => {
+              const { structure } = this.state;
 
-                structure[index].subtopics = connectionTopicsToParent(
-                  result,
-                  subjectId,
-                );
-
-                structure[index].loading = false;
-                this.setState({
-                  structure,
-                  loadedEssentials: true,
-                });
-              })
-              .catch(err => {
-                console.log(err);
+              structure[index].subtopics = result;
+              structure[index].loading = false;
+              this.setState({
+                structure,
               });
+            });
           },
         );
       }
-    }
-  }
-
-  getPathsFromResourceTopics({ loadedEssentials }) {
-    if (loadedEssentials) {
-      this.setState({
-        loadedEssentials,
-      });
     }
   }
 
@@ -408,16 +298,13 @@ class FileStructureExample extends Component {
       <Spinner />
     ) : (
       <Fragment>
-        <TitleModal>Velg emnetilknytning:</TitleModal>
-        <hr />
         <FileStructure
           openedPaths={this.state.openedPaths}
           structure={structure}
           toggleOpen={({ path, id, level }) => {
             this.setState(prevState => {
-              const index = prevState.openedPaths.indexOf(path);
               const filtered = prevState.openedPaths.filter(p => p !== path);
-              if (index === -1) {
+              if (filtered.length === prevState.openedPaths.length) {
                 this.onOpenPath({ id, level });
                 return { openedPaths: [...prevState.openedPaths, path] };
               }
@@ -426,7 +313,6 @@ class FileStructureExample extends Component {
           }}
           renderListItems={this.renderListItems}
           listClass={listClass}
-          onOpenPath={this.onOpenPath}
           fileStructureFilters={fileStructureFilters}
           filters={availableFilters}
           onCloseModal={() => {}}

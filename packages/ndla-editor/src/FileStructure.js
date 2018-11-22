@@ -132,31 +132,39 @@ const FileStructure = ({
   return renderItems(structure, [], []);
 };
 
-const ItemShape = {
+function lazyFunction(f, ...args) {
+  return () => f.apply(this, args);
+}
+
+const FilterShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-};
+});
+
+const ItemShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  // eslint-disable-next-line no-use-before-define
+  subtopics: PropTypes.arrayOf(LazyItemShape),
+  filters: PropTypes.arrayOf(FilterShape),
+}).isRequired;
+
+const LazyItemShape = lazyFunction(() => ItemShape);
 
 FileStructure.propTypes = {
   structure: PropTypes.arrayOf(
     PropTypes.shape({
-      ...ItemShape,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      subtopics: PropTypes.arrayOf(ItemShape),
       loading: PropTypes.bool,
-      filters: PropTypes.arrayOf(PropTypes.shape({})),
-      subtopics: PropTypes.arrayOf(PropTypes.shape(ItemShape)),
     }),
   ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
   listClass: PropTypes.string,
   fileStructureFilters: PropTypes.arrayOf(PropTypes.string),
-  filters: PropTypes.objectOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-      }),
-    ),
-  ),
+  filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
   onCloseModal: PropTypes.func,
 };
 

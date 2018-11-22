@@ -11,6 +11,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
+import { Spinner } from '@ndla/editor';
 import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
@@ -20,6 +21,8 @@ import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
+import FileStructureExample from './FileStructureExample';
+import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -142,5 +145,23 @@ storiesOf('Produksjonssystem', module)
       <StoryBody>
         <SlateBlockMenuExample />
       </StoryBody>
+    </div>
+  ))
+  .add('Sidestrurktur og taksonomi', () => (
+    <div>
+      <StoryIntro title="Sidesturktur og taksonomi" />
+      <Center>
+        <FileStructureExample />
+      </Center>
+    </div>
+  ))
+  .add('Loading', () => (
+    <div>
+      <StoryIntro title="Loading komponent" />
+      <Center>
+        <Spinner />
+        <Spinner size="medium" />
+        <Spinner size="normal" />
+      </Center>
     </div>
   ));

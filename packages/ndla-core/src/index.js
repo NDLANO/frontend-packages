@@ -6,3 +6,4 @@ export { default as mq } from './mq';
 export { default as misc } from './misc';
 export { default as shadows } from './shadows';
 export { default as animations } from './animations';
+export { default as utils } from './utils';

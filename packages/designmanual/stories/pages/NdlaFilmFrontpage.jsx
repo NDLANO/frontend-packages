@@ -8,16 +8,49 @@
 
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { OneColumn } from '@ndla/ui';
+import { OneColumn, FilmFrontpage } from '@ndla/ui';
 
-const slideshowData = [
+import DirtyWars from '../../images/ndla-film/documentary/Dirty-wars.jpg';
+import ExitThroughTheGiftShop from '../../images/ndla-film/documentary/Exit-through-the-gift-shop.jpg';
+import KonTiki from '../../images/ndla-film/documentary/Kon-tiki.jpg';
+
+const highlighted = [
   {
-    url: 'www.placeholder.it/1000x1000',
-    src: 'www.placeholder.it/1000x1000',
-    alt: 'alt text',
-    title: 'Title img 1',
-    ingress: 'Ingress 1',
+    name: 'Dirty wars',
+    id: 'highlighted1',
+    path: 'www.test.no',
+    metaData: {
+      description: 'PropTypes.string',
+      image: {
+        alt: 'img alt txt',
+        img: DirtyWars,
+      },
+    },
+  },
+  {
+    name: 'Exit through the gift shop',
+    id: 'highlighted2',
+    path: 'www.tes2t.no',
+    metaData: {
+      description: 'Pdesg',
+      image: {
+        alt: 'img alt txt',
+        img: ExitThroughTheGiftShop,
+      },
+    },
+  },
+  {
+    name: 'Kon Tiki',
+    id: 'highlighted3',
+    path: 'www.tes2t.no',
+    metaData: {
+      description: 'Pdesg',
+      image: {
+        alt: 'img alt txt',
+        img: KonTiki,
+      },
+    },
   },
 ];
 
-export default () => <div>Hello</div>;
+export default () => <FilmFrontpage highlighted={highlighted} />;

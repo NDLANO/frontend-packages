@@ -91,29 +91,9 @@ class FilmMovieList extends Component {
 
     return (
       <section {...classes()}>
-        <h1 {...classes('heading')} style={{ marginLeft: `${margin + 13}px` }}>
+        <h1 {...classes('heading')} style={{ marginLeft: `${margin + 7}px` }}>
           {title}
         </h1>
-        <button
-          type="button"
-          style={{ width: marginString }}
-          {...classes('slide-navigation', {
-            prev: true,
-            hidden: slideIndex === 0,
-          })}
-          onClick={() => this.slidePage(1)}>
-          <ChevronLeft />
-        </button>
-        <button
-          type="button"
-          style={{ width: marginString }}
-          {...classes('slide-navigation', {
-            next: true,
-            hidden: slideIndex === -(movies.length - columnsPrSlide),
-          })}
-          onClick={() => this.slidePage(-1)}>
-          <ChevronRight />
-        </button>
         <Swipe
           nodeName="div"
           className="test"
@@ -121,6 +101,26 @@ class FilmMovieList extends Component {
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
           <div {...classes('slide-wrapper')}>
+            <button
+              type="button"
+              style={{ width: marginString }}
+              {...classes('slide-navigation', {
+                prev: true,
+                hidden: slideIndex === 0,
+              })}
+              onClick={() => this.slidePage(1)}>
+              <ChevronLeft />
+            </button>
+            <button
+              type="button"
+              style={{ width: marginString }}
+              {...classes('slide-navigation', {
+                next: true,
+                hidden: slideIndex === -(movies.length - columnsPrSlide),
+              })}
+              onClick={() => this.slidePage(-1)}>
+              <ChevronRight />
+            </button>
             <div
               {...classes('slide-content', swiping ? 'swiping' : '')}
               ref={this.slideshow}

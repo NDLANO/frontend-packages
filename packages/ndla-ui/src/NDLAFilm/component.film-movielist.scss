@@ -1,5 +1,5 @@
 .c-film-movielist {
-  margin-bottom: $spacing--large;
+  margin-bottom: $spacing--medium;
   &__heading {
     @include font-size(22px, 26px);
     font-weight: $font-weight-bold;
@@ -15,7 +15,7 @@
     margin: $spacing--small 0;
   }
   &__slide-item {
-    padding: $spacing--small;
+    padding: $spacing--small / 2;
     color: #fff;
     box-shadow: none;
     &:hover,
@@ -34,6 +34,7 @@
   &__slide-wrapper {
     width: 100%;
     overflow: hidden;
+    position: relative;
   }
   &__slide-content {
     display: flex;
@@ -46,7 +47,8 @@
     background: #091a2a80;
     border: 0;
     outline: 0;
-    height: 300px;
+    bottom: $spacing--medium;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,22 +59,32 @@
       opacity: 0;
       width: 78px;
       height: 78px;
-      transition: opacity 200ms ease;
+      transition: transform 200ms ease, opacity 200ms ease;
     }
     &--prev {
       left: 0;
+      .c-icon {
+        opacity: 0.5;
+        transform: translate(-$spacing--small / 2, -$spacing--small);
+      }
     }
     &--next {
       right: 0;
+      .c-icon {
+        opacity: 0.5;
+        transform: translate($spacing--small / 2, -$spacing--small);
+      }
     }
     &:focus {
       .c-icon {
         opacity: 0.5;
+        transform: translate(0, -$spacing--small);
       }
     }
     &:hover {
       .c-icon {
         opacity: 1;
+        transform: translate(0, -$spacing--small);
       }
     }
     &--hidden {

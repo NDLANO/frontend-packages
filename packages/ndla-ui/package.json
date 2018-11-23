@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "0.18.7",
+  "version": "0.18.8",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.4.2",
+    "@ndla/core": "^0.4.3",
     "classnames": "2.2.6",
     "focus-trap": "^3.0.0",
     "focus-trap-react": "^4.0.0",

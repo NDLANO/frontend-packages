@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.4.2"
+    "@ndla/core": "^0.4.3"
   },
   "peerDependencies": {
     "prop-types": "15.6.1",

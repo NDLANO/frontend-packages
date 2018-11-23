@@ -7,6 +7,6 @@
  */
 
 import FilmFrontpage from './FilmFrontpage';
-import FrontpageSlideshow from './FrontpageSlideshow';
+import FilmSlideshow from './FilmSlideshow';
 
-export { FilmFrontpage, FrontpageSlideshow };
+export { FilmFrontpage, FilmSlideshow };

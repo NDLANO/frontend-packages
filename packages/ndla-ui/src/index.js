@@ -168,4 +168,4 @@ export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
 
-export { FilmFrontpage, FrontpageSlideshow } from './NDLAFilm';
+export { FilmFrontpage, FilmSlideshow } from './NDLAFilm';

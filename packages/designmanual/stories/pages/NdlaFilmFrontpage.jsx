@@ -10,47 +10,45 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { OneColumn, FilmFrontpage } from '@ndla/ui';
 
-import DirtyWars from '../../images/ndla-film/documentary/Dirty-wars.jpg';
-import ExitThroughTheGiftShop from '../../images/ndla-film/documentary/Exit-through-the-gift-shop.jpg';
-import KonTiki from '../../images/ndla-film/documentary/Kon-tiki.jpg';
+import {
+  allMovies,
+  contentTypes,
+  DOCUMENTARY_CONTENTTYPE_ID,
+  MOVIE_CONTENTTYPE_ID,
+  TVSERIES_CONTENTTYPE_ID,
+  SHORTMOVIE_CONTENTTYPE_ID,
+} from '../../dummydata/mockFilm';
 
-const highlighted = [
+const highlightedIds = [
+  'adjo',
+  'gullkysten',
+  '12ye',
+  'KampenOmTungtvannet',
+  'Halvbroren',
+];
+
+const highlighted = allMovies.filter(movie =>
+  highlightedIds.includes(movie.id),
+);
+
+const themes = [
   {
-    name: 'Dirty wars',
-    id: 'highlighted1',
-    path: 'www.test.no',
-    metaData: {
-      description: 'PropTypes.string',
-      image: {
-        alt: 'img alt txt',
-        img: DirtyWars,
-      },
-    },
+    title: 'Mest sett',
+    movies: allMovies,
   },
   {
-    name: 'Exit through the gift shop',
-    id: 'highlighted2',
-    path: 'www.tes2t.no',
-    metaData: {
-      description: 'Pdesg',
-      image: {
-        alt: 'img alt txt',
-        img: ExitThroughTheGiftShop,
-      },
-    },
+    title: 'Nyeste',
+    movies: allMovies,
   },
   {
-    name: 'Kon Tiki',
-    id: 'highlighted3',
-    path: 'www.tes2t.no',
-    metaData: {
-      description: 'Pdesg',
-      image: {
-        alt: 'img alt txt',
-        img: KonTiki,
-      },
-    },
+    title: 'Tema',
+    movies: allMovies,
   },
 ];
 
-export default () => <FilmFrontpage highlighted={highlighted} />;
+console.log(highlighted);
+console.log(allMovies);
+
+export default () => (
+  <FilmFrontpage highlighted={highlighted} themes={themes} />
+);

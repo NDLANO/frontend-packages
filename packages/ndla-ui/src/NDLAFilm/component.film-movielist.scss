@@ -1,0 +1,82 @@
+.c-film-movielist {
+  margin-bottom: $spacing--large;
+  &__heading {
+    @include font-size(22px, 26px);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: $spacing--small 0;
+  }
+  &__movie-title {
+    @include font-size(18px, 22px);
+    font-weight: $font-weight-bold;
+    color: #fff;
+    margin: $spacing--small 0;
+  }
+  &__slide-item {
+    padding: $spacing--small;
+    color: #fff;
+    box-shadow: none;
+    &:hover,
+    &:focus {
+      .c-film-movielist__movie-title {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__slidecolumn-image {
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+  }
+  &__slide-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  &__slide-content {
+    display: flex;
+    transition: transform 600ms ease;
+    &--swiping {
+      transition: none;
+    }
+  }
+  &__slide-navigation {
+    background: #091a2a80;
+    border: 0;
+    outline: 0;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    .c-icon {
+      fill: #fff;
+      opacity: 0;
+      width: 78px;
+      height: 78px;
+      transition: opacity 200ms ease;
+    }
+    &--prev {
+      left: 0;
+    }
+    &--next {
+      right: 0;
+    }
+    &:focus {
+      .c-icon {
+        opacity: 0.5;
+      }
+    }
+    &:hover {
+      .c-icon {
+        opacity: 1;
+      }
+    }
+    &--hidden {
+      display: none;
+    }
+  }
+}

@@ -11,11 +11,11 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
-  name: 'film-frontpage',
+  name: 'film-movie-search',
   prefix: 'c-',
 });
 
-const FrontpageMovieSearch = ({
+const FilmMovieSearch = ({
   contentSubTypes,
   topics,
   onSearch,
@@ -24,7 +24,7 @@ const FrontpageMovieSearch = ({
   contentTypeSelected,
 }) => <div>helllo from search!</div>;
 
-FrontpageMovieSearch.propTypes = {
+FilmMovieSearch.propTypes = {
   contentSubTypes: PropTypes.arrayOf(PropTypes.shape),
   topics: PropTypes.arrayOf(PropTypes.shape),
   onSearch: PropTypes.func.isRequired,
@@ -33,4 +33,4 @@ FrontpageMovieSearch.propTypes = {
   contentTypeSelected: PropTypes.string,
 };
 
-export default FrontpageMovieSearch;
+export default FilmMovieSearch;

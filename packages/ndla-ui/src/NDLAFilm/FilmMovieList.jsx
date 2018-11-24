@@ -132,19 +132,19 @@ class FilmMovieList extends Component {
               }}>
               {movies.map(slide => (
                 <a
-                  href={slide.path}
+                  href={slide.url}
                   key={slide.id}
                   {...classes('slide-item')}
                   style={{ width: `${columnWidth}px` }}>
                   <div
                     {...classes('slidecolumn-image')}
                     role="img"
-                    aria-label={slide.metaData.image.alt}
+                    aria-label={slide.metaImage.alt}
                     style={{
-                      backgroundImage: `url(${slide.metaData.image.img})`,
+                      backgroundImage: `url(${slide.metaImage.url})`,
                     }}
                   />
-                  <h2 {...classes('movie-title')}>{slide.name}</h2>
+                  <h2 {...classes('movie-title')}>{slide.title.title}</h2>
                 </a>
               ))}
             </div>

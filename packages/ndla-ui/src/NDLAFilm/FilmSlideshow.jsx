@@ -32,6 +32,9 @@ class FilmSlideshow extends Component {
   render() {
     const { slideshow } = this.props;
     const { slideIndex: onSlide, hideText } = this.state;
+    if (slideshow.length === 0) {
+      return null;
+    }
     return (
       <section>
         <ReactSwipe
@@ -61,8 +64,8 @@ class FilmSlideshow extends Component {
               {...classes('item')}
               key={slide.id}
               role="img"
-              aria-label={slide.metaData.image.alt}
-              style={{ backgroundImage: `url(${slide.metaData.image.img})` }}>
+              aria-label={slide.metaImage.alt}
+              style={{ backgroundImage: `url(${slide.metaImage.url})` }}>
               <div
                 {...classes(
                   'text',
@@ -70,10 +73,10 @@ class FilmSlideshow extends Component {
                 )}>
                 <div>
                   <OneColumn>
-                    <a href={slide.path}>
-                      <h1>{slide.name}</h1>
+                    <a href={slide.url}>
+                      <h1>{slide.title.title}</h1>
                     </a>
-                    <p>{slide.metaData.description}</p>
+                    <p>{slide.metaDescription.metaDescription}</p>
                   </OneColumn>
                 </div>
               </div>

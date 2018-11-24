@@ -10,27 +10,78 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
+import { OneColumn } from '../Layout';
+
 const classes = new BEMHelper({
   name: 'film-movie-search',
   prefix: 'c-',
 });
 
-const FilmMovieSearch = ({
-  contentSubTypes,
-  topics,
-  onSearch,
-  searchText,
-  topicSelected,
-  contentTypeSelected,
-}) => <div>helllo from search!</div>;
+class FilmMovieSearch extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contextFilterIsOpen: false,
+      topicIsOpen: false,
+    };
+  }
+
+  render() {
+    const {
+      topics,
+      contextFilter,
+      searchValue,
+      topicSelected,
+      contextFilterSelected,
+      onChangeSearch,
+      onChangeTopic,
+      onChangeContextFilter,
+    } = this.props;
+
+    const { contextFilterIsOpen, topicIsOpen } = this.state;
+    return (
+      <OneColumn>
+        <input
+          type="search"
+          {...classes('input')}
+          id="search"
+          name="search"
+          placeholder="Søk på film"
+          aria-label="Søk på film"
+          value={searchValue}
+          onChange={e => onChangeSearch(e.target.value)}
+        />
+        <button
+          type="button"
+          onClick={() => {
+            this.setState({
+              topicIsOpen: true,
+            });
+          }}>
+          Select topic
+        </button>
+        {topicIsOpen && <div>Choose a topic!</div>}
+        <button
+          type="button"
+          onClick={() => {
+            this.setState({
+              contextFilterIsOpen: true,
+            });
+          }}>
+          Select topic
+        </button>
+        {contextFilterIsOpen && <div>Choose a contextFilter!</div>}
+      </OneColumn>
+    );
+  }
+}
 
 FilmMovieSearch.propTypes = {
-  contentSubTypes: PropTypes.arrayOf(PropTypes.shape),
   topics: PropTypes.arrayOf(PropTypes.shape),
-  onSearch: PropTypes.func.isRequired,
-  searchText: PropTypes.string.isRequired,
-  topicSelected: PropTypes.string,
-  contentTypeSelected: PropTypes.string,
+  contextFilter: PropTypes.arrayOf(PropTypes.shape),
+  onChangeSearch: PropTypes.func.isRequired,
+  onChangeTopic: PropTypes.func.isRequired,
+  onChangeContextFilter: PropTypes.func.isRequired,
 };
 
 export default FilmMovieSearch;

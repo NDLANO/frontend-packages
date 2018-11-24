@@ -12,10 +12,10 @@ import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import { OneColumn } from '../Layout';
 import FilmSlideshow from './FilmSlideshow';
 import FilmpageMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
-import { allMovies } from '../../../designmanual/dummydata/mockFilm';
 
 const classes = new BEMHelper({
   name: 'film-frontpage',
@@ -26,13 +26,17 @@ class FilmFrontpage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: '',
+      searchValue: '',
       topicSelected: null,
-      contentTypeSelected: null,
+      contextFilterSelected: null,
       columnWidth: 260,
       columnsPrSlide: 1,
       margin: 26,
+      activeSearch: false,
     };
+    this.onChangeContextFilter = this.onChangeSearch.bind(this);
+    this.onChangeTopic = this.onChangeTopic.bind(this);
+    this.onChangeSearch = this.onChangeSearch.bind(this);
     this.setScreenSize = this.setScreenSize.bind(this);
     this.setScreenSizeDebounced = debounce(() => this.setScreenSize(false), 50);
   }
@@ -47,10 +51,35 @@ class FilmFrontpage extends Component {
     window.removeEventListener('resize', this.setScreenSizeDebounced);
   }
 
-  onSearch(searchText) {
-    this.setState({
-      searchText,
-    });
+  onChangeContextFilter(contextFilterSelected) {
+    this.setState(prevState => ({
+      contextFilterSelected,
+      activeSearch:
+        contextFilterSelected ||
+        prevState.topicSelected ||
+        prevState.searchValue.length,
+    }));
+  }
+
+  onChangeTopic(topicSelected) {
+    this.setState(prevState => ({
+      topicSelected,
+      activeSearch:
+        topicSelected ||
+        prevState.contextFilterSelected ||
+        prevState.searchValue.length,
+    }));
+  }
+
+  onChangeSearch(searchValue) {
+    console.log('searchValue', searchValue);
+    this.setState(prevState => ({
+      searchValue,
+      activeSearch:
+        searchValue.length ||
+        prevState.contextFilterSelected ||
+        prevState.topicSelected,
+    }));
   }
 
   setScreenSize() {
@@ -89,13 +118,20 @@ class FilmFrontpage extends Component {
   }
 
   render() {
-    const { highlighted, themes, contentSubTypes, topics } = this.props;
     const {
-      searchText,
+      highlighted,
+      themes,
+      contextFilter,
+      topics,
+      allMovies,
+    } = this.props;
+    const {
+      searchValue,
       topicSelected,
-      contentTypeSelected,
+      contextFilterSelected,
       columnWidth,
       columnsPrSlide,
+      activeSearch,
       margin,
     } = this.state;
 
@@ -103,18 +139,44 @@ class FilmFrontpage extends Component {
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
         <FilmpageMovieSearch
-          contentSubTypes={contentSubTypes}
           topics={topics}
-          onSearch={this.onSearch}
-          searchText={searchText}
+          contextFilter={contextFilter}
+          searchValue={searchValue}
           topicSelected={topicSelected}
-          contentTypeSelected={contentTypeSelected}
+          contextFilterSelected={contextFilterSelected}
+          onChangeSearch={this.onChangeSearch}
+          onChangeTopic={this.onChangeTopic}
+          onChangeContextFilter={this.onChangeContextFilter}
         />
-        {searchText !== '' &&
-          allMovies
-            .filter(movie => movie.name.indexOf(searchText !== -1))
-            .map(movie => <div key={movie.id}>{movie.title}</div>)}
-        {searchText === '' &&
+        {activeSearch ? (
+          <OneColumn>
+            <div {...classes('movie-listing')}>
+              {allMovies
+                .filter(
+                  movie =>
+                    movie.title.title.search(new RegExp(searchValue, 'i')) !==
+                    -1,
+                )
+                .map(movie => (
+                  <a
+                    href={movie.url}
+                    key={movie.id}
+                    {...classes('movie-item')}
+                    style={{ width: `${columnWidth}px` }}>
+                    <div
+                      {...classes('movie-image')}
+                      role="img"
+                      aria-label={movie.metaImage.alt}
+                      style={{
+                        backgroundImage: `url(${movie.metaImage.url})`,
+                      }}
+                    />
+                    <h2 {...classes('movie-title')}>{movie.title.title}</h2>
+                  </a>
+                ))}
+            </div>
+          </OneColumn>
+        ) : (
           themes.map(theme => (
             <FilmMovieList
               key={theme.title}
@@ -124,26 +186,35 @@ class FilmFrontpage extends Component {
               columnWidth={columnWidth}
               margin={margin}
             />
-          ))}
+          ))
+        )}
       </div>
     );
   }
 }
 
 export const movieShape = PropTypes.shape({
-  name: PropTypes.string,
-  id: PropTypes.string,
-  path: PropTypes.string,
-  metaData: PropTypes.shape({
-    description: PropTypes.string,
-    image: PropTypes.shape({
-      alt: PropTypes.string,
-      img: PropTypes.string,
+  contexts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
     }),
+  ).isRequired,
+  id: PropTypes.string.isRequired,
+  metaDescription: PropTypes.shape({
+    metaDescription: PropTypes.string,
   }),
+  metaImage: PropTypes.shape({
+    url: PropTypes.string,
+    alt: PropTypes.string,
+  }),
+  title: PropTypes.shape({
+    title: PropTypes.string,
+  }),
+  url: PropTypes.string,
 });
 
 FilmFrontpage.propTypes = {
+  allMovies: PropTypes.arrayOf(movieShape),
   highlighted: PropTypes.arrayOf(movieShape),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
@@ -151,14 +222,15 @@ FilmFrontpage.propTypes = {
       movies: PropTypes.arrayOf(movieShape),
     }),
   ),
-  contentSubTypes: PropTypes.arrayOf(PropTypes.shape),
+  contextFilter: PropTypes.arrayOf(PropTypes.shape),
   topics: PropTypes.arrayOf(PropTypes.shape),
 };
 
 FilmFrontpage.defaultProps = {
+  allMovies: [],
   highlighted: [],
   themes: [],
-  contentSubTypes: [],
+  contextFilter: [],
   topics: [],
 };
 

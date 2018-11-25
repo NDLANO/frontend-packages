@@ -68,6 +68,7 @@ class NdlaFilmExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      topics: [],
       movies: [],
       highlightedMovies: [],
       movieThemes: [],
@@ -75,62 +76,161 @@ class NdlaFilmExample extends Component {
     };
   }
 
-  componentDidMount() {
-    fetchData({ apiUrl: 'taxonomy/v1/resource-types', query: '' }).then(
-      result => {
-        console.log(result);
+  async componentDidMount() {
+    // Get this data from Firebase or something?
+    const subjectId = 'urn:subject:14';
+    const parentTopic = 'urn:topic:1:185588';
+    const highlightedMoviesIds = [
+      'topic:1:185993',
+      'urn:topic:1:186323',
+      'urn:topic:1:186347',
+      'urn:topic:1:186446',
+      'urn:topic:1:79218',
+    ];
+    const useThemes = [
+      {
+        name: 'Mest sett',
+        movieIds: [
+          'urn:topic:1:79218',
+          'urn:topic:1:81818',
+          'urn:topic:1:103870',
+          'urn:topic:1:115982',
+          'urn:topic:1:125903',
+          'urn:topic:1:172557',
+        ],
       },
-    );
-    const contextFilters = ['urn:resourcetype:SourceMaterial'];
+      {
+        name: 'Nyeste',
+        movieIds: [
+          'urn:topic:1:79218',
+          'urn:topic:1:81818',
+          'urn:topic:1:103870',
+          'urn:topic:1:115982',
+          'urn:topic:1:125903',
+          'urn:topic:1:172557',
+        ],
+      },
+      {
+        name: 'Tema',
+        movieIds: [
+          'urn:topic:1:79218',
+          'urn:topic:1:81818',
+          'urn:topic:1:103870',
+          'urn:topic:1:115982',
+          'urn:topic:1:125903',
+          'urn:topic:1:172557',
+        ],
+      },
+    ];
+    const resourceTypes = [
+      { name: 'Dokumentarer', id: 'urn:resourcetype:movieAndClip' },
+      { name: 'Spillefilmer', id: 'urn:resourcetype:featureFilm' },
+      { name: 'Kort film', id: 'urn:resourcetype:shortFilm' },
+      { name: 'Læringsressurser', id: 'urn:resourcetype:learningPath' },
+    ];
     const languageFilter = ['nb'];
-    fetchData({
-      apiUrl: 'search-api/v1/search',
-      query: `?contextFilters=${contextFilters.toString(
-        ',',
-      )}&languageFilter=${languageFilter.toString(',')}&page=1&page-size=100`,
-    }).then(results => {
-      const highlightedMoviesIds = [13, 2, 3, 4, 6];
-      const highlightedMovies = highlightedMoviesIds
-        .map(id => results.results.find(result => result.id === id))
-        .filter(foundMovie => foundMovie);
 
-      const useThemes = [
-        {
-          name: 'Mest sett',
-          movieIds: [1, 2, 6, 7, 10, 12],
-        },
-        {
-          name: 'Mest sett',
-          movieIds: [80, 90, 100],
-        },
-        {
-          name: 'Mest sett',
-          movieIds: [4, 5, 6, 7, 8],
-        },
-      ];
-      const movieThemes = useThemes.map(theme => ({
-        name: theme.name,
-        movies: theme.movieIds
-          .map(id => results.results.find(result => result.id === id))
-          .filter(foundMovie => foundMovie),
-      }));
+    const resourceTypesIds = resourceTypes
+      .reduce((value, item) => `${value},${item.id}`, '')
+      .substring(1);
 
-      this.setState({
-        movieThemes,
-        highlightedMovies,
-        movies: results.results,
+    const resourceQuery = `?resource-types=${resourceTypesIds}&languageFilter=${languageFilter.toString(
+      ',',
+    )}&page=1&page-size=999&subjects=${subjectId}`;
+
+    const topicQuery = `?context-types=topic-article&languageFilter=${languageFilter.toString(
+      ',',
+    )}&page=1&page-size=999&subjects=${subjectId}`;
+
+    const [topics, allResources, allTopics] = await Promise.all([
+      fetchData({
+        apiUrl: `taxonomy/v1/subjects/${subjectId}/topics`,
+        query: '?recursive=true',
+      }),
+      fetchData({
+        apiUrl: 'search-api/v1/search',
+        query: resourceQuery,
+      }),
+      fetchData({
+        apiUrl: 'search-api/v1/search',
+        query: topicQuery,
+      }),
+    ]);
+
+    const resourceTypesId = resourceTypes.map(resourceType => resourceType.id);
+    const validTopicIds = {};
+
+    allResources.results.forEach(resource => {
+      resource.contexts.forEach(context => {
+        context.resourceTypes.forEach(resourceType => {
+          if (resourceTypesId.includes(resourceType.id)) {
+            const paths = context.path.split('/');
+            const tmpId = `urn:${paths[paths.length - 2]}`;
+            if (!validTopicIds[tmpId]) {
+              validTopicIds[tmpId] = {};
+            }
+            validTopicIds[tmpId][resourceType.id] = true;
+          }
+        });
       });
+    });
+
+    const filteredTopics = allTopics.results
+      .map(topic => {
+        const context = topic.contexts.find(
+          currentContext => validTopicIds[currentContext.id],
+        );
+        if (context) {
+          return { ...topic, movieTypes: validTopicIds[context.id] };
+        }
+        return null;
+      })
+      .filter(topic => topic);
+
+    const highlightedMovies = highlightedMoviesIds
+      .map(id =>
+        filteredTopics.find(topic =>
+          topic.contexts.some(context => context.id === id),
+        ),
+      )
+      .filter(foundMovie => foundMovie);
+
+    const movieThemes = useThemes.map(theme => ({
+      name: theme.name,
+      movies: theme.movieIds
+        .map(id =>
+          filteredTopics.find(topic =>
+            topic.contexts.some(context => context.id === id),
+          ),
+        )
+        .filter(foundMovie => foundMovie),
+    }));
+
+    this.setState({
+      movieThemes,
+      highlightedMovies,
+      movies: filteredTopics,
+      topics: topics.filter(topic => topic.parent === parentTopic),
+      resourceTypes,
     });
   }
 
   render() {
-    const { movieThemes, highlightedMovies, movies } = this.state;
-    console.log('ex,', movies);
+    const {
+      movieThemes,
+      highlightedMovies,
+      movies,
+      topics,
+      resourceTypes,
+    } = this.state;
+    console.log(movies, resourceTypes);
     return (
       <FilmFrontpage
         highlighted={highlightedMovies}
         themes={movieThemes}
         allMovies={movies}
+        topics={topics}
+        resourceTypes={resourceTypes}
       />
     );
   }

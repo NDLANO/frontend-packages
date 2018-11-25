@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 import ReactSwipe from 'react-swipe';
 import BEMHelper from 'react-bem-helper';
 
-import { movieShape } from './FilmFrontpage';
 import { OneColumn } from '../Layout';
+import { movieShape } from './FilmFrontpage';
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -64,8 +64,12 @@ class FilmSlideshow extends Component {
               {...classes('item')}
               key={slide.id}
               role="img"
-              aria-label={slide.metaImage.alt}
-              style={{ backgroundImage: `url(${slide.metaImage.url})` }}>
+              aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
+              style={{
+                backgroundImage: `url(${(slide.metaImage &&
+                  slide.metaImage.url) ||
+                  ''})`,
+              }}>
               <div
                 {...classes(
                   'text',

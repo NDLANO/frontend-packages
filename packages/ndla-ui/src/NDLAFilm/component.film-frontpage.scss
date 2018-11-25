@@ -2,5 +2,26 @@
   background: #091a2a;
   &__movie-listing {
     display: flex;
+    flex-wrap: wrap;
+    margin: 0 -$spacing--small / 2;
+  }
+  &__movie-item {
+    box-shadow: none;
+    padding: $spacing--small / 2;
+    @include mq($from: tablet) {
+      width: 25%;
+    }
+    @include mq($from: mobileWide, $until: tablet) {
+      width: 33.3%;
+    }
+    @include mq($until: mobileWide) {
+      width: 50%;
+    }
+  }
+  &__movie-image {
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
   }
 }

@@ -395,12 +395,37 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ));
-storiesOf('Ndla film', module).add('Forside', () => (
-  <PageContainer>
-    <Content>
-      <MastheadWithTopicMenu ndlaFilm />
-      <NdlaFilmFrontpage />
-    </Content>
-    <FooterExample />
-  </PageContainer>
-));
+storiesOf('Ndla film', module)
+  .add('Fag forside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <NdlaFilmFrontpage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Film (emne)', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <SubjectHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectHero>
+        <ArticleLoader
+          articleId="4824"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ));

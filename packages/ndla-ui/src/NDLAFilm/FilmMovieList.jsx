@@ -24,7 +24,6 @@ class FilmMovieList extends Component {
     super(props);
     this.state = {
       slideIndex: 0,
-      swiped: 0,
       swiping: false,
     };
     this.swipeDistance = 0;
@@ -85,14 +84,14 @@ class FilmMovieList extends Component {
   }
 
   render() {
-    const { movies, title, columnWidth, columnsPrSlide, margin } = this.props;
+    const { movies, name, columnWidth, columnsPrSlide, margin } = this.props;
     const { slideIndex, swiping } = this.state;
     const marginString = `${margin}px`;
 
     return (
       <section {...classes()}>
         <h1 {...classes('heading')} style={{ marginLeft: `${margin + 7}px` }}>
-          {title}
+          {name}
         </h1>
         <Swipe
           nodeName="div"
@@ -139,9 +138,11 @@ class FilmMovieList extends Component {
                   <div
                     {...classes('slidecolumn-image')}
                     role="img"
-                    aria-label={slide.metaImage.alt}
+                    aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
                     style={{
-                      backgroundImage: `url(${slide.metaImage.url})`,
+                      backgroundImage: `url(${(slide.metaImage &&
+                        slide.metaImage.url) ||
+                        ''})`,
                     }}
                   />
                   <h2 {...classes('movie-title')}>{slide.title.title}</h2>
@@ -157,7 +158,7 @@ class FilmMovieList extends Component {
 
 FilmMovieList.propTypes = {
   movies: PropTypes.arrayOf(movieShape),
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   columnsPrSlide: PropTypes.number.isRequired,
   columnWidth: PropTypes.number.isRequired,
   margin: PropTypes.number.isRequired,

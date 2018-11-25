@@ -22,19 +22,24 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const movieListClasses = new BEMHelper({
+  name: 'film-movielist',
+  prefix: 'c-',
+});
+
 class FilmFrontpage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchValue: '',
       topicSelected: null,
-      contextFilterSelected: null,
+      resourceTypeSelected: null,
       columnWidth: 260,
       columnsPrSlide: 1,
       margin: 26,
       activeSearch: false,
     };
-    this.onChangeContextFilter = this.onChangeSearch.bind(this);
+    this.onChangeResourceType = this.onChangeResourceType.bind(this);
     this.onChangeTopic = this.onChangeTopic.bind(this);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.setScreenSize = this.setScreenSize.bind(this);
@@ -51,11 +56,11 @@ class FilmFrontpage extends Component {
     window.removeEventListener('resize', this.setScreenSizeDebounced);
   }
 
-  onChangeContextFilter(contextFilterSelected) {
+  onChangeResourceType(resourceTypeSelected) {
     this.setState(prevState => ({
-      contextFilterSelected,
+      resourceTypeSelected,
       activeSearch:
-        contextFilterSelected ||
+        resourceTypeSelected ||
         prevState.topicSelected ||
         prevState.searchValue.length,
     }));
@@ -66,7 +71,7 @@ class FilmFrontpage extends Component {
       topicSelected,
       activeSearch:
         topicSelected ||
-        prevState.contextFilterSelected ||
+        prevState.resourceTypeSelected ||
         prevState.searchValue.length,
     }));
   }
@@ -77,7 +82,7 @@ class FilmFrontpage extends Component {
       searchValue,
       activeSearch:
         searchValue.length ||
-        prevState.contextFilterSelected ||
+        prevState.resourceTypeSelected ||
         prevState.topicSelected,
     }));
   }
@@ -121,66 +126,87 @@ class FilmFrontpage extends Component {
     const {
       highlighted,
       themes,
-      contextFilter,
+      resourceTypes,
       topics,
       allMovies,
     } = this.props;
     const {
       searchValue,
       topicSelected,
-      contextFilterSelected,
+      resourceTypeSelected,
       columnWidth,
       columnsPrSlide,
       activeSearch,
       margin,
     } = this.state;
 
+    console.log(topicSelected);
+    console.log('resourceTypes', resourceTypes);
+
     return (
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
         <FilmpageMovieSearch
           topics={topics}
-          contextFilter={contextFilter}
+          resourceTypes={resourceTypes}
           searchValue={searchValue}
           topicSelected={topicSelected}
-          contextFilterSelected={contextFilterSelected}
+          resourceTypeSelected={resourceTypeSelected}
           onChangeSearch={this.onChangeSearch}
           onChangeTopic={this.onChangeTopic}
-          onChangeContextFilter={this.onChangeContextFilter}
+          onChangeResourceType={this.onChangeResourceType}
         />
         {activeSearch ? (
-          <OneColumn>
-            <div {...classes('movie-listing')}>
-              {allMovies
-                .filter(
-                  movie =>
-                    movie.title.title.search(new RegExp(searchValue, 'i')) !==
-                    -1,
-                )
-                .map(movie => (
-                  <a
-                    href={movie.url}
-                    key={movie.id}
-                    {...classes('movie-item')}
-                    style={{ width: `${columnWidth}px` }}>
-                    <div
-                      {...classes('movie-image')}
-                      role="img"
-                      aria-label={movie.metaImage.alt}
-                      style={{
-                        backgroundImage: `url(${movie.metaImage.url})`,
-                      }}
-                    />
-                    <h2 {...classes('movie-title')}>{movie.title.title}</h2>
-                  </a>
-                ))}
-            </div>
-          </OneColumn>
+          <section>
+            <OneColumn>
+              <h1 {...movieListClasses('heading')}>Treff:</h1>
+              <div {...classes('movie-listing')}>
+                {allMovies
+                  .filter(
+                    movie =>
+                      (searchValue === '' ||
+                        movie.title.title.search(
+                          new RegExp(searchValue, 'i'),
+                        ) !== -1) &&
+                      (!topicSelected ||
+                        movie.contexts.some(
+                          context => context.id === topicSelected,
+                        )) &&
+                      (!resourceTypeSelected ||
+                        Object.keys(movie.movieTypes).some(
+                          movieTypeId => movieTypeId === resourceTypeSelected,
+                        )),
+                  )
+                  .map(movie => (
+                    <a
+                      href={movie.url}
+                      key={movie.id}
+                      {...classes('movie-item')}>
+                      <div
+                        {...classes('movie-image')}
+                        role="img"
+                        aria-label={movie.metaImage ? movie.metaImage.alt : ''}
+                        style={{
+                          backgroundImage: `url(${
+                            movie.metaImage && movie.metaImage.url
+                              ? movie.metaImage.url
+                              : ''
+                          })`,
+                        }}
+                      />
+                      <h2 {...movieListClasses('movie-title')}>
+                        {movie.title.title}
+                      </h2>
+                    </a>
+                  ))}
+              </div>
+            </OneColumn>
+          </section>
         ) : (
           themes.map(theme => (
             <FilmMovieList
-              key={theme.title}
-              title={theme.title}
+              key={theme.name}
+              name={theme.name}
               movies={theme.movies}
               columnsPrSlide={columnsPrSlide}
               columnWidth={columnWidth}
@@ -197,9 +223,16 @@ export const movieShape = PropTypes.shape({
   contexts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
+      resourceTypes: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+          id: PropTypes.string,
+        }),
+      ),
+      subject: PropTypes.string,
     }),
   ).isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   metaDescription: PropTypes.shape({
     metaDescription: PropTypes.string,
   }),
@@ -213,24 +246,34 @@ export const movieShape = PropTypes.shape({
   url: PropTypes.string,
 });
 
+export const topicShape = PropTypes.shape({
+  id: PropTypes.string,
+  name: PropTypes.string,
+});
+
 FilmFrontpage.propTypes = {
   allMovies: PropTypes.arrayOf(movieShape),
   highlighted: PropTypes.arrayOf(movieShape),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       movies: PropTypes.arrayOf(movieShape),
     }),
   ),
-  contextFilter: PropTypes.arrayOf(PropTypes.shape),
-  topics: PropTypes.arrayOf(PropTypes.shape),
+  topics: PropTypes.arrayOf(topicShape),
+  resourceTypes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      id: PropTypes.id,
+    }),
+  ),
 };
 
 FilmFrontpage.defaultProps = {
   allMovies: [],
   highlighted: [],
   themes: [],
-  contextFilter: [],
+  resourceTypes: [],
   topics: [],
 };
 

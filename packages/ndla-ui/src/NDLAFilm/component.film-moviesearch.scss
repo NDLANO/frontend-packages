@@ -1,0 +1,27 @@
+.c-film-moviesearch {
+  &__input {
+    display: flex;
+    border-radius: $border-radius;
+    border: 0;
+    width: 100%;
+    @include font-size(18px);
+  }
+  &__dropdown-wrap {
+    display: flex;
+    margin: -$spacing--small;
+    > div {
+      width: 50%;
+      padding: $spacing--small;
+    }
+  }
+  &__dropdown-button {
+    @include font-size(18px);
+    border: 0;
+    background: #20588f;
+    color: #fff;
+    &--open {
+      color: $primary-color;
+      background: #deebf6;
+    }
+  }
+}

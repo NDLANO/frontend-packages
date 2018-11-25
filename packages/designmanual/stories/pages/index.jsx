@@ -31,6 +31,7 @@ import Subject, { SubjectWithTwoColumn, SubjectLanguage } from './Subject';
 
 import FooterExample from '../molecules/footers';
 import ArticleLoader from '../article/ArticleLoader';
+import ArticleLoaderNdlaFilm from '../article/ArticleLoaderNdlaFilm';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
@@ -406,26 +407,22 @@ storiesOf('Ndla film', module)
     </PageContainer>
   ))
   .add('Film (emne)', () => (
-    <PageContainer backgroundWide>
+    <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <ArticleLoader
-          articleId="4824"
+        <ArticleLoaderNdlaFilm
+          articleId="3396"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
-          hideResources
-          showSubTopics
         />
       </Content>
       <FooterExample />
+    </PageContainer>
+  ))
+  .add('Ndla film editor', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <NdlaFilmFrontpage editor />
+      </Content>
     </PageContainer>
   ));

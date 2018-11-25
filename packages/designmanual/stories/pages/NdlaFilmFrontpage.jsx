@@ -7,24 +7,17 @@
  */
 
 import React, { Component } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { OneColumn, FilmFrontpage } from '@ndla/ui';
+import PropTypes from 'prop-types';
+import firebase from 'firebase';
+import { FilmFrontpage } from '@ndla/ui';
+import { NdlaFilmEditor } from '@ndla/editor';
 
 import { headerWithAccessToken, getToken } from '../apiFunctions';
-
-import {
-  allMovies,
-  contentTypes,
-  DOCUMENTARY_CONTENTTYPE_ID,
-  MOVIE_CONTENTTYPE_ID,
-  TVSERIES_CONTENTTYPE_ID,
-  SHORTMOVIE_CONTENTTYPE_ID,
-} from '../../dummydata/mockFilm';
 
 const fetchData = ({ apiUrl, query }) => {
   return new Promise((resolve, reject) => {
     getToken().then(token => {
-      fetch(`https://test.api.ndla.no/${apiUrl}${query}`, {
+      fetch(`https://staging.api.ndla.no/${apiUrl}${query}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
       }).then(res => {
@@ -37,33 +30,6 @@ const fetchData = ({ apiUrl, query }) => {
   });
 };
 
-const highlightedIds = [
-  'adjo',
-  'gullkysten',
-  '12ye',
-  'KampenOmTungtvannet',
-  'Halvbroren',
-];
-
-const highlighted = allMovies.filter(movie =>
-  highlightedIds.includes(movie.id),
-);
-
-const themes = [
-  {
-    title: 'Mest sett',
-    movies: allMovies,
-  },
-  {
-    title: 'Nyeste',
-    movies: allMovies,
-  },
-  {
-    title: 'Tema',
-    movies: allMovies,
-  },
-];
-
 class NdlaFilmExample extends Component {
   constructor(props) {
     super(props);
@@ -72,56 +38,40 @@ class NdlaFilmExample extends Component {
       movies: [],
       highlightedMovies: [],
       movieThemes: [],
-      loading: true,
+      loaded: false,
+      savingToFirebase: false,
     };
+    this.saveToFirebase = this.saveToFirebase.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyA58h8H0l0Q4f-PdIOX38lTpnkO4hJK-I8',
+      authDomain: 'ndla-film.firebaseapp.com',
+      databaseURL: 'https://ndla-film.firebaseio.com',
+      projectId: 'ndla-film',
+    };
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    // Fetch all data from database.
+    firebase
+      .database()
+      .ref()
+      .once('value', snapshot => {
+        const firebaseData = snapshot.val();
+        if (firebaseData) {
+          this.loadNdlaFilmContent(firebaseData);
+        }
+        // Failed to get data from firebase...
+      });
+  }
+
+  async loadNdlaFilmContent(firebaseData) {
     // Get this data from Firebase or something?
-    const subjectId = 'urn:subject:14';
-    const parentTopic = 'urn:topic:1:185588';
-    const highlightedMoviesIds = [
-      'topic:1:185993',
-      'urn:topic:1:186323',
-      'urn:topic:1:186347',
-      'urn:topic:1:186446',
-      'urn:topic:1:79218',
-    ];
-    const useThemes = [
-      {
-        name: 'Mest sett',
-        movieIds: [
-          'urn:topic:1:79218',
-          'urn:topic:1:81818',
-          'urn:topic:1:103870',
-          'urn:topic:1:115982',
-          'urn:topic:1:125903',
-          'urn:topic:1:172557',
-        ],
-      },
-      {
-        name: 'Nyeste',
-        movieIds: [
-          'urn:topic:1:79218',
-          'urn:topic:1:81818',
-          'urn:topic:1:103870',
-          'urn:topic:1:115982',
-          'urn:topic:1:125903',
-          'urn:topic:1:172557',
-        ],
-      },
-      {
-        name: 'Tema',
-        movieIds: [
-          'urn:topic:1:79218',
-          'urn:topic:1:81818',
-          'urn:topic:1:103870',
-          'urn:topic:1:115982',
-          'urn:topic:1:125903',
-          'urn:topic:1:172557',
-        ],
-      },
-    ];
+    const { subjectId, highlighted, parentTopic, themes } = firebaseData;
+
     const resourceTypes = [
       { name: 'Dokumentarer', id: 'urn:resourcetype:movieAndClip' },
       { name: 'Spillefilmer', id: 'urn:resourcetype:featureFilm' },
@@ -187,7 +137,8 @@ class NdlaFilmExample extends Component {
       })
       .filter(topic => topic);
 
-    const highlightedMovies = highlightedMoviesIds
+    const highlightedMovies = Object.keys(highlighted)
+      .sort((a, b) => highlighted[a] - highlighted[b])
       .map(id =>
         filteredTopics.find(topic =>
           topic.contexts.some(context => context.id === id),
@@ -195,16 +146,19 @@ class NdlaFilmExample extends Component {
       )
       .filter(foundMovie => foundMovie);
 
-    const movieThemes = useThemes.map(theme => ({
-      name: theme.name,
-      movies: theme.movieIds
-        .map(id =>
-          filteredTopics.find(topic =>
-            topic.contexts.some(context => context.id === id),
-          ),
-        )
-        .filter(foundMovie => foundMovie),
-    }));
+    const movieThemes = Object.keys(themes)
+      .sort((a, b) => themes[a].order - themes[b].order)
+      .map(theme => ({
+        name: themes[theme].name,
+        movies: Object.keys(themes[theme].movies)
+          .sort((a, b) => themes[theme].movies[a] - themes[theme].movies[b])
+          .map(id =>
+            filteredTopics.find(topic =>
+              topic.contexts.some(context => context.id === id),
+            ),
+          )
+          .filter(foundMovie => foundMovie),
+      }));
 
     this.setState({
       movieThemes,
@@ -212,7 +166,27 @@ class NdlaFilmExample extends Component {
       movies: filteredTopics,
       topics: topics.filter(topic => topic.parent === parentTopic),
       resourceTypes,
+      firebaseData,
+      loaded: true,
     });
+  }
+
+  saveToFirebase(data) {
+    this.setState({
+      savingToFirebase: true,
+    });
+    firebase
+      .database()
+      .ref()
+      .update(data)
+      .then(() => {
+        this.setState({
+          savingToFirebase: false,
+        });
+      })
+      .catch(() => {
+        console.log('something went terrible wrong here...');
+      });
   }
 
   render() {
@@ -222,8 +196,27 @@ class NdlaFilmExample extends Component {
       movies,
       topics,
       resourceTypes,
+      firebaseData,
+      loaded,
+      savingToFirebase,
     } = this.state;
-    console.log(movies, resourceTypes);
+
+    const { editor } = this.props;
+
+    if (editor) {
+      return (
+        <NdlaFilmEditor
+          loaded={loaded}
+          firebaseData={firebaseData}
+          allMovies={movies}
+          topics={topics}
+          resourceTypes={resourceTypes}
+          saveToFirebase={this.saveToFirebase}
+          savingToFirebase={savingToFirebase}
+        />
+      );
+    }
+
     return (
       <FilmFrontpage
         highlighted={highlightedMovies}
@@ -235,5 +228,9 @@ class NdlaFilmExample extends Component {
     );
   }
 }
+
+NdlaFilmExample.propTypes = {
+  editor: PropTypes.bool,
+};
 
 export default NdlaFilmExample;

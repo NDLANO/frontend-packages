@@ -34,6 +34,40 @@
   &--beta {
     background: $brand-color;
   }
+
+  &--ndla-film {
+    background: $film-color;
+    height: 2000px;
+    margin-bottom: -1754px;
+    .c-hero__content {
+      .c-breadcrumb__item,
+      .c-breadcrumb__item--home:after,
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+.c-hero__background {
+  position: absolute;
+  width: 100%;
+  img {
+    display: block;
+    width: 100%;
+    opacity: 0.5;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-image: linear-gradient(
+      unquote('#091a2a00'),
+      unquote('#091a2aff')
+    );
+    width: 100%;
+    height: 100px;
+    bottom: 0px;
+  }
 }
 .c-hero__content {
   padding: 0 0 $spacing--small;

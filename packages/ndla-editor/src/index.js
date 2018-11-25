@@ -7,5 +7,6 @@
  */
 
 import SlateBlockMenu from './SlateBlockMenu';
+import NdlaFilmEditor from './NdlaFilmEditor';
 
-export { SlateBlockMenu };
+export { SlateBlockMenu, NdlaFilmEditor };

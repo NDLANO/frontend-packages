@@ -75,6 +75,7 @@ export const ContentTypeShape = PropTypes.oneOf([
   contentTypes.SOURCE_MATERIAL,
   contentTypes.LEARNING_PATH,
   'beta',
+  'ndla-film',
 ]);
 
 export const ContentTypeResultShape = PropTypes.shape({

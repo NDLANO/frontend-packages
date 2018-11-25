@@ -77,7 +77,6 @@ class FilmFrontpage extends Component {
   }
 
   onChangeSearch(searchValue) {
-    console.log('searchValue', searchValue);
     this.setState(prevState => ({
       searchValue,
       activeSearch:
@@ -140,8 +139,7 @@ class FilmFrontpage extends Component {
       margin,
     } = this.state;
 
-    console.log(topicSelected);
-    console.log('resourceTypes', resourceTypes);
+    console.log('allMovies', allMovies);
 
     return (
       <div {...classes()}>

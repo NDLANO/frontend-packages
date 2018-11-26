@@ -130,10 +130,6 @@ const FileStructure = ({
   return renderItems(structure, [], []);
 };
 
-function lazyFunction(f, ...args) {
-  return () => f.apply(this, args);
-}
-
 const FilterShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -143,18 +139,16 @@ const ItemShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   // eslint-disable-next-line no-use-before-define
-  subtopics: PropTypes.arrayOf(LazyItemShape),
+  topics: PropTypes.arrayOf(ItemShape),
   filters: PropTypes.arrayOf(FilterShape),
 }).isRequired;
-
-const LazyItemShape = lazyFunction(() => ItemShape);
 
 FileStructure.propTypes = {
   structure: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      subtopics: PropTypes.arrayOf(ItemShape),
+      topics: PropTypes.arrayOf(ItemShape),
       loading: PropTypes.bool,
     }),
   ),

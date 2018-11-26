@@ -21,7 +21,7 @@ import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
-import FileStructureExample from './FileStructureExample';
+import StructureExample from './StructureExample';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
@@ -151,7 +151,7 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Sidesturktur og taksonomi" />
       <Center>
-        <FileStructureExample />
+        <StructureExample />
       </Center>
     </div>
   ))

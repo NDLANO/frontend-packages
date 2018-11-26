@@ -49,39 +49,39 @@ const ItemsList = styled.li`
     `};
 `;
 
-const FileStructure = ({
+const Structure = ({
   renderListItems,
   listClass,
   fileStructureFilters,
-  filters,
+  filters: subjectFilters,
   structure,
   openedPaths,
   toggleOpen,
 }) => {
-  const renderItems = (topics, paths, names, subjectId) => {
+  const renderItems = (subjectsOrTopics, paths, names, subjectId) => {
     const level = paths.length;
     const ignoreFilter =
       level === 0 ||
-      !filters[subjectId].some(filter =>
+      !subjectFilters[subjectId].some(filter =>
         fileStructureFilters.includes(filter.id),
       );
 
     return (
       <ItemListWrapper>
-        {topics
+        {subjectsOrTopics
           .filter(
-            topic =>
+            subjectOrTopic =>
               ignoreFilter ||
-              topic.filters.some(topicFilter =>
+              subjectOrTopic.filters.some(topicFilter =>
                 fileStructureFilters.includes(topicFilter.id),
               ),
           )
-          .map(topic => {
+          .map(({ id, name, topics, subtopics, filters, loading }) => {
             const currentPaths = paths.slice();
             const currentNames = names.slice();
-            currentPaths.push(topic.id);
-            currentNames.push(topic.name);
-            const hasSubtopics = topic.subtopics && topic.subtopics.length > 0;
+            currentPaths.push(id);
+            currentNames.push(name);
+            const children = topics || subtopics;
             const pathToString = currentPaths.toString();
             const isOpen = openedPaths.includes(pathToString);
             return (
@@ -89,32 +89,36 @@ const FileStructure = ({
                 <ItemsList className={listClass} level={level} isOpen={isOpen}>
                   <ItemName
                     isOpen={isOpen}
-                    title={topic.name}
+                    title={name}
                     path={pathToString}
-                    hasSubtopics={hasSubtopics || level === 0}
+                    hasSubtopics={!!children || level === 0}
                     toggleOpen={() =>
-                      toggleOpen({ path: pathToString, level, id: topic.id })
+                      toggleOpen({
+                        path: pathToString,
+                        level,
+                        id,
+                      })
                     }
                     level={level}>
                     {renderListItems &&
                       renderListItems({
                         paths: currentPaths,
                         pathToString,
-                        filters: topic.filters,
+                        filters,
                         level,
                         names: currentNames,
                         isOpen,
-                        id: topic.id,
+                        id,
                       })}
                   </ItemName>
-                  {hasSubtopics &&
+                  {children &&
                     renderItems(
-                      topic.subtopics,
+                      children,
                       currentPaths,
                       currentNames,
-                      level === 0 ? topic.id : subjectId,
+                      level === 0 ? id : subjectId,
                     )}
-                  {topic.loading && (
+                  {loading && (
                     <span>
                       <Spinner size="normal" margin="4px 26px" />
                     </span>
@@ -143,7 +147,7 @@ const ItemShape = PropTypes.shape({
   filters: PropTypes.arrayOf(FilterShape),
 }).isRequired;
 
-FileStructure.propTypes = {
+Structure.propTypes = {
   structure: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -159,11 +163,11 @@ FileStructure.propTypes = {
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
 };
 
-FileStructure.defaultProps = {
+Structure.defaultProps = {
   structure: [],
   className: '',
   fileStructureFilters: [],
   filters: [],
 };
 
-export default FileStructure;
+export default Structure;

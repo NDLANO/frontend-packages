@@ -49,7 +49,7 @@ const ItemsList = styled.li`
     `};
 `;
 
-const FileStructure = ({
+const Structure = ({
   renderListItems,
   listClass,
   fileStructureFilters,
@@ -147,7 +147,7 @@ const ItemShape = PropTypes.shape({
   filters: PropTypes.arrayOf(FilterShape),
 }).isRequired;
 
-FileStructure.propTypes = {
+Structure.propTypes = {
   structure: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -163,11 +163,11 @@ FileStructure.propTypes = {
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
 };
 
-FileStructure.defaultProps = {
+Structure.defaultProps = {
   structure: [],
   className: '',
   fileStructureFilters: [],
   filters: [],
 };
 
-export default FileStructure;
+export default Structure;

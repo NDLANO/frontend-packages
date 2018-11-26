@@ -7,7 +7,7 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { FileStructure, Spinner } from '@ndla/editor';
+import { Structure, Spinner } from '@ndla/editor';
 import styled, { cx, css } from 'react-emotion';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
@@ -173,7 +173,7 @@ const listClass = css`
   }
 `;
 
-class FileStructureExample extends Component {
+class StructureExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -247,14 +247,14 @@ class FileStructureExample extends Component {
               key={filter.id}
               className={
                 this.state.fileStructureFilters.some(
-                  FileStructureFilter => FileStructureFilter === filter.id,
+                  StructureFilter => StructureFilter === filter.id,
                 )
                   ? 'checkboxItem--checked'
                   : ''
               }
               onClick={() => {
                 const currentIndex = this.state.fileStructureFilters.findIndex(
-                  FileStructureFilter => FileStructureFilter === filter.id,
+                  StructureFilter => StructureFilter === filter.id,
                 );
                 if (currentIndex === -1) {
                   this.setState(prevState => {
@@ -302,7 +302,7 @@ class FileStructureExample extends Component {
       <Spinner />
     ) : (
       <Fragment>
-        <FileStructure
+        <Structure
           openedPaths={this.state.openedPaths}
           structure={structure}
           toggleOpen={({ path, id, level }) => {
@@ -325,4 +325,4 @@ class FileStructureExample extends Component {
   }
 }
 
-export default FileStructureExample;
+export default StructureExample;

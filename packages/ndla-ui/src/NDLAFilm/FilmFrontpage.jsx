@@ -139,8 +139,6 @@ class FilmFrontpage extends Component {
       margin,
     } = this.state;
 
-    console.log('allMovies', allMovies);
-
     return (
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
@@ -211,6 +209,21 @@ class FilmFrontpage extends Component {
               margin={margin}
             />
           ))
+        )}
+        {!activeSearch && (
+          <aside className="u-8/12@tablet u-push-2/12@tablet c-film-frontpage__about">
+            <div>
+              <div {...classes('video')}>[video]</div>
+            </div>
+            <div>
+              <h1>Hva er NDLA film?</h1>
+              <p>
+                Ndla film er en nettbasert filmtjeneste for elever og lærere i
+                videregående skole. Her funner du spillefilmer, kortfilmer,
+                dokumentarfilmer og TV-serier.
+              </p>
+            </div>
+          </aside>
         )}
       </div>
     );

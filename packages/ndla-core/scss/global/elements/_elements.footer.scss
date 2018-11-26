@@ -16,6 +16,10 @@
   @include mq(desktop) {
     padding: 0 $spacing;
   }
+  &.inverted {
+    color: #fff;
+    background: $film-color;
+  }
 }
 .footer_editor {
   display: block;
@@ -54,7 +58,8 @@
   tbody {
     background: #fff;
   }
-  ul, ol {
+  ul,
+  ol {
     margin: $spacing $spacing $spacing 0;
     @include mq(desktop) {
       margin-left: $spacing--large;

@@ -11,7 +11,11 @@
     margin: -$spacing--small;
     > div {
       width: 50%;
-      padding: $spacing--small;
+      padding: $spacing--large $spacing--small;
+      display: flex;
+      &:first-child {
+        justify-content: flex-end;
+      }
     }
   }
   &__dropdown-button {
@@ -19,9 +23,44 @@
     border: 0;
     background: #20588f;
     color: #fff;
+    border-radius: $border-radius;
+    padding: $spacing--small $spacing;
+    font-weight: $font-weight-semibold;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
     &--open {
       color: $primary-color;
       background: #deebf6;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &__dropdown-wrapper {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing--small;
+    padding-bottom: $spacing;
+    background: #deebf6;
+    min-width: 300px;
+    border-radius: $border-radius;
+    border-top-left-radius: 0;
+    button {
+      color: $primary-color;
+      border: 0;
+      outline: 0;
+      text-align: left;
+      background: transparent;
+      padding: $spacing--small;
+      font-weight: $font-weight-semibold;
+      &:hover,
+      &:focus {
+        span {
+          box-shadow: $link;
+        }
+      }
     }
   }
 }

@@ -38,8 +38,9 @@
   &--ndla-film {
     background: $film-color;
     height: 2000px;
-    margin-bottom: -1754px;
+    margin-bottom: -1800px;
     .c-hero__content {
+      min-height: $spacing--large;
       .c-breadcrumb__item,
       .c-breadcrumb__item--home:after,
       a {
@@ -54,7 +55,7 @@
   img {
     display: block;
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.4;
   }
   &:after {
     content: '';

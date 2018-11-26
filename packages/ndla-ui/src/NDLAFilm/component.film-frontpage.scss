@@ -1,5 +1,6 @@
 .c-film-frontpage {
   background: #091a2a;
+  padding-bottom: $spacing--large;
   &__movie-listing {
     display: flex;
     flex-wrap: wrap;
@@ -8,6 +9,7 @@
   &__movie-item {
     box-shadow: none;
     padding: $spacing--small / 2;
+    margin-bottom: $spacing--large;
     @include mq($from: tablet) {
       width: 25%;
     }
@@ -23,5 +25,26 @@
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
+  }
+  &__about {
+    background: #184673;
+    color: #fff;
+    display: flex;
+    padding: $spacing;
+    > div {
+      padding: $spacing;
+      width: 50%;
+      h1 {
+        margin: 0;
+      }
+    }
+  }
+  &__video {
+    width: 100%;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

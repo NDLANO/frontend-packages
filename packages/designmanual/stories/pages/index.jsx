@@ -398,12 +398,12 @@ storiesOf('Emnesider', module)
   ));
 storiesOf('Ndla film', module)
   .add('Fag forside', () => (
-    <PageContainer>
+    <PageContainer ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
         <NdlaFilmFrontpage />
       </Content>
-      <FooterExample />
+      <FooterExample inverted />
     </PageContainer>
   ))
   .add('Film (emne)', () => (
@@ -416,7 +416,7 @@ storiesOf('Ndla film', module)
           label="Emne"
         />
       </Content>
-      <FooterExample />
+      <FooterExample inverted />
     </PageContainer>
   ))
   .add('Ndla film editor', () => (

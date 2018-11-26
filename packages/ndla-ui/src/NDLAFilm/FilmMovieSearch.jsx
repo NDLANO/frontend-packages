@@ -43,7 +43,7 @@ class FilmMovieSearch extends Component {
     const { resourceTypesIsOpen, topicIsOpen } = this.state;
     return (
       <OneColumn>
-        <div className="u-6/12@tablet u-push-3/12@tablet">
+        <div className="u-8/12@tablet u-push-2/12@tablet">
           <input
             type="search"
             {...classes('input')}
@@ -79,22 +79,25 @@ class FilmMovieSearch extends Component {
                     topicIsOpen: !topicIsOpen,
                   });
                 }}>
-                Velg emne
+                <span>Velg emne</span>
               </button>
-              {topicIsOpen &&
-                topics.map(topic => (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onChangeTopic(topic.id);
-                      this.setState({
-                        topicIsOpen: false,
-                      });
-                    }}
-                    key={topic.id}>
-                    {topic.name}
-                  </button>
-                ))}
+              {topicIsOpen && (
+                <div {...classes('dropdown-wrapper')}>
+                  {topics.map(topic => (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onChangeTopic(topic.id);
+                        this.setState({
+                          topicIsOpen: false,
+                        });
+                      }}
+                      key={topic.id}>
+                      <span>{topic.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </FocusTrapReact>
           </div>
           <div>
@@ -123,22 +126,25 @@ class FilmMovieSearch extends Component {
                     resourceTypesIsOpen: !resourceTypesIsOpen,
                   });
                 }}>
-                Select topic
+                <span>Velg filmkategori</span>
               </button>
-              {resourceTypesIsOpen &&
-                resourceTypes.map(resourceType => (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onChangeResourceType(resourceType.id);
-                      this.setState({
-                        resourceTypesIsOpen: false,
-                      });
-                    }}
-                    key={resourceType.id}>
-                    {resourceType.name}
-                  </button>
-                ))}
+              {resourceTypesIsOpen && (
+                <div {...classes('dropdown-wrapper')}>
+                  {resourceTypes.map(resourceType => (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onChangeResourceType(resourceType.id);
+                        this.setState({
+                          resourceTypesIsOpen: false,
+                        });
+                      }}
+                      key={resourceType.id}>
+                      <span>{resourceType.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </FocusTrapReact>
           </div>
         </div>

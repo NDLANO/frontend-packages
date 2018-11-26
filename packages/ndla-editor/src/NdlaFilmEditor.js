@@ -13,7 +13,7 @@ import { spacing, colors, fonts, shadows, animations, misc } from '@ndla/core';
 import { FormDropdown } from '@ndla/forms';
 import { uuid } from '@ndla/util';
 import Button from '@ndla/button';
-import { Plus, Cross } from '@ndla/icons/action';
+import { Pencil, Cross } from '@ndla/icons/action';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 
 const MovieImage = styled.div`
@@ -41,23 +41,30 @@ const MovieTitle = styled.h3`
     margin: ${spacing.small} 0;
 `;
 
-const ThemeName = styled.h2`
-${fonts.sizes(20, 1.1)} font-weight: ${fonts.weight.semibold};
-    margin: ${spacing.normal} 0;
-`;
-
 const Header = styled.h1`
 ${fonts.sizes(26, 1.1)} font-weight: ${fonts.weight.semibold};
     margin: ${spacing.normal} 0;
 `;
 
 const IconButton = styled.button`
-  background: 0;
+  background: none;
   border: 0;
-  margin: 0;
-  padding: ${spacing.xsmall};
+  margin: 0 ${spacing.xsmall} 0 0;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  transition: background 100ms ease;
   svg {
     fill: #fff;
+    width: 22px;
+    height: 22px;
+  }
+  &:hover,
+  &:focus {
+    background: #20588f;
   }
 `;
 
@@ -68,12 +75,6 @@ const ButtonWrappper = styled.div`
   flex-grow: 1;
 `;
 
-const HeaderWrapper = styled.div`
-  display: flex;
-  justify-items: space-between;
-  align-items: center;
-`;
-
 const Wrapper = styled.div`
   max-width: 1024px;
   margin: 0 auto;
@@ -82,7 +83,72 @@ const Wrapper = styled.div`
   a {
     color: #fff;
   }
+  > section {
+    margin-bottom: ${spacing.large};
+  }
 `;
+
+const ThemeNameHeader = styled.div`
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: ${spacing.small};
+  margin-bottom: ${spacing.small};
+  margin-top: ${spacing.medium};
+  padding-top: ${spacing.normal};
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &:hover,
+  &:focus-within {
+    svg {
+      opacity: 1;
+    }
+  }
+`;
+
+const SlideShowName = styled.h2`
+${fonts.sizes(20, 1.1)} font-weight: ${fonts.weight.semibold};
+margin-left: -${spacing.normal};
+color: #fff;
+padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.medium};
+`;
+
+const inputHeader = css`
+${fonts.sizes(20, 1.1)} font-weight: ${fonts.weight.semibold};
+    margin-left: -${spacing.normal};
+    color: #fff;
+    padding: ${spacing.small} ${spacing.small} ${spacing.small} ${
+  spacing.medium
+};
+    border: 0;
+    background: transparent;
+`;
+
+const dropdownBtn = css`
+  ${fonts.sizes(16, 1.1)} font-weight: ${fonts.weight.semibold};
+  width: 240px;
+  height: 42px;
+`;
+
+const ThemeName = ({ value, onChange }) => (
+  <InputWrapper>
+    <Pencil />
+    <input className={inputHeader} value={value} onChange={onChange} />
+  </InputWrapper>
+);
+
+ThemeName.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 class NdlaFilmEditor extends Component {
   constructor(props) {
@@ -130,7 +196,7 @@ class NdlaFilmEditor extends Component {
     this.setState(prevState => {
       const { firebaseData: updateFirebaseData } = prevState;
       updateFirebaseData.themes[uuid()] = {
-        name: 'Some chosen name..',
+        name: 'Velg navn',
         movies: {},
       };
       return {
@@ -210,6 +276,14 @@ class NdlaFilmEditor extends Component {
     }
   }
 
+  updateTitle(themeKey, value) {
+    this.setState(prevState => {
+      const { firebaseData: updateFirebaseData } = prevState;
+      updateFirebaseData.themes[themeKey].name = value;
+      return { firebaseData: updateFirebaseData, unsavedChanges: true };
+    });
+  }
+
   renderAddMovieOptions(addedMovies) {
     const addedKeys = Object.keys(addedMovies);
     return this.props.allMovies.map(movie => (
@@ -230,20 +304,21 @@ class NdlaFilmEditor extends Component {
       firebaseData: { highlighted, themes },
       firebaseData,
     } = this.state;
-    const { allMovies } = this.props;
-
-    console.log(themes);
-
+    const { allMovies, savingToFirebase } = this.props;
     return (
       <Wrapper>
         <section>
-          <HeaderWrapper>
+          <ThemeNameHeader>
             <Header>Slideshow:</Header>
-            <FormDropdown value="" onChange={e => this.addItem(e.target.value)}>
-              <option value="">Legg til film</option>
+            <FormDropdown
+              value=""
+              onChange={e => this.addItem(e.target.value)}
+              className={dropdownBtn}>
+              <option value="">Legg til film i slideshow</option>
               {this.renderAddMovieOptions(highlighted)}
             </FormDropdown>
-          </HeaderWrapper>
+          </ThemeNameHeader>
+
           {Object.keys(highlighted)
             .sort((a, b) => highlighted[a] - highlighted[b])
             .map(key => {
@@ -290,15 +365,19 @@ class NdlaFilmEditor extends Component {
             .sort((a, b) => themes[a] - themes[b])
             .map(themeKey => (
               <Fragment>
-                <ThemeName>{themes[themeKey].name}</ThemeName>
-                <FormDropdown
-                  value=""
-                  onChange={e => this.addItem(e.target.value, key)}>
-                  <option value="">
-                    Legg til film i {themes[themeKey].name}
-                  </option>
-                  {this.renderAddMovieOptions(themes[themeKey].movies)}
-                </FormDropdown>
+                <ThemeNameHeader>
+                  <ThemeName
+                    value={themes[themeKey].name}
+                    onChange={e => this.updateTitle(themeKey, e.target.value)}
+                  />
+                  <FormDropdown
+                    className={dropdownBtn}
+                    value=""
+                    onChange={e => this.addItem(e.target.value, themeKey)}>
+                    <option value="">Legg til film i gruppe</option>
+                    {this.renderAddMovieOptions(themes[themeKey].movies)}
+                  </FormDropdown>
+                </ThemeNameHeader>
                 {Object.keys(themes[themeKey].movies)
                   .sort(
                     (a, b) =>
@@ -348,11 +427,15 @@ class NdlaFilmEditor extends Component {
               </Fragment>
             ))}
         </section>
-        <Button onClick={() => this.addNewMovieGroup()}>
+        <Button
+          onClick={() => this.addNewMovieGroup()}
+          style={{ marginRight: spacing.normal }}>
           Lag ny temagruppe
         </Button>
-        <Button onClick={() => this.props.saveToFirebase(firebaseData)}>
-          Save changes
+        <Button
+          disabled={savingToFirebase}
+          onClick={() => this.props.saveToFirebase(firebaseData)}>
+          {savingToFirebase ? 'Lagrer' : 'Lagre endringer'}
         </Button>
       </Wrapper>
     );
@@ -366,6 +449,7 @@ NdlaFilmEditor.propTypes = {
   firebaseData: PropTypes.shape(),
   saveToFirebase: PropTypes.func.isRequired,
   loaded: PropTypes.bool.isRequired,
+  savingToFirebase: PropTypes.bool,
 };
 
 export default NdlaFilmEditor;

@@ -204,7 +204,7 @@ class FileStructureExample extends Component {
         subject => subject.id === id,
       );
       if (
-        !this.state.structure[index].subtopics &&
+        !this.state.structure[index].topics &&
         !this.state.structure[index].loading
       ) {
         this.setState(
@@ -219,7 +219,7 @@ class FileStructureExample extends Component {
             fetchSubjectsTopics(id).then(result => {
               const { structure } = this.state;
 
-              structure[index].subtopics = result;
+              structure[index].topics = result;
               structure[index].loading = false;
               this.setState({
                 structure,

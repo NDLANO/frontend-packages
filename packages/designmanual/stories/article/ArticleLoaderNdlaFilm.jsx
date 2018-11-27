@@ -26,7 +26,6 @@ import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
-import YearsASlave from '../../images/ndla-film/movies/12-Years-a-slave.jpg';
 
 const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
   <ResourcesWrapper

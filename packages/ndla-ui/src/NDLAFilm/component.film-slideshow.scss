@@ -2,7 +2,20 @@
   margin-bottom: $spacing--large;
   &__item {
     width: 100%;
-    padding-top: 10%; /* 1:2 aspect ratio */
+    /* aspect ratios */
+    padding-top: 17%;
+    @include mq(mobileWide) {
+      padding-top: 16%;
+    }
+    @include mq(tablet) {
+      padding-top: 14%;
+    }
+    @include mq(desktop) {
+      padding-top: 12%;
+    }
+    @include mq(wide) {
+      padding-top: 10%;
+    }
     background-color: '#222';
     background-size: cover;
     background-position-x: center;
@@ -33,7 +46,13 @@
     display: flex;
     justify-items: center;
     align-items: flex-end;
-    padding-bottom: 100px;
+    padding-bottom: $spacing;
+    @include mq(tablet) {
+      padding-bottom: 78px;
+    }
+    @include mq(desktop) {
+      padding-bottom: 100px;
+    }
     &--visible {
       opacity: 1;
     }
@@ -46,27 +65,34 @@
           @include font-size(24px, 28px);
           color: $white;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-          margin: $spacing--small 0;
+          margin: 0;
           font-weight: $font-weight-bold;
-          padding: 0 $spacing;
-
+          padding: 0 0 0 $spacing--small;
           @include mq(tablet) {
-            margin: 0;
+            padding: 0 $spacing;
+            margin: $spacing--small 0;
             @include font-size(40px, 40px);
           }
 
           @include mq(desktop) {
-            margin: 0;
+            padding: 0 $spacing;
+            margin: $spacing--small 0;
             @include font-size(52px, 52px);
           }
         }
       }
       p {
         color: #fff;
-        padding: $spacing;
         background-color: rgba(3, 23, 43, 0.7);
         display: inline-block;
-        max-width: 800px;
+        max-width: 600px;
+        padding: $spacing--small;
+        @include font-size(15px, 20px);
+        @include mq(tablet) {
+          padding: $spacing;
+          max-width: 700px;
+          @include font-size(18px, 22px);
+        }
       }
     }
   }
@@ -74,19 +100,28 @@
     position: absolute;
     z-index: 2;
     width: 100%;
-    margin-top: -100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -85px;
+    @include mq(tablet) {
+      margin-top: -100px;
+    }
   }
   &__indicator-dot {
     border: 0;
     background: #fff;
     opacity: 0.3;
     transition: opacity 100ms ease;
-    margin: $spacing--small / 2;
-    height: 16px;
-    width: 16px;
+    margin: $spacing--small / 3;
+    height: 12px;
+    width: 12px;
+    padding: 0;
+    @include mq(tablet) {
+      margin: $spacing--small / 2;
+      height: 16px;
+      width: 16px;
+    }
     border-radius: 100%;
     &:hover,
     &:focus,

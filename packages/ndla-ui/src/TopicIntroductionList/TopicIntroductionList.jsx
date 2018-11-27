@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Additional, Core } from '@ndla/icons/common';
@@ -64,20 +64,29 @@ const TopicIntroduction = ({
             </Tooltip>
           )}
         </div>
-        {/* Since topic introduction is already escaped from the api
-          we run into a double escaping issues as React escapes all strings.
-          Use dangerouslySetInnerHTML to circumvent the issue */}
-        <p dangerouslySetInnerHTML={{ __html: topic.introduction }} />
-        {shortcuts && (
-          <TopicIntroductionShortcuts
-            alwaysExpanded={shortcutAlwaysExpanded}
-            id={`${topic.id}_shortcuts`}
-            shortcuts={shortcuts}
-            messages={{
-              toggleButtonText: messages.shortcutButtonText,
-            }}
-          />
-        )}
+        <div className={topicClasses('content-wrapper')}>
+          <div>
+            {/* Since topic introduction is already escaped from the api
+            we run into a double escaping issues as React escapes all strings.
+            Use dangerouslySetInnerHTML to circumvent the issue */}
+            <p dangerouslySetInnerHTML={{ __html: topic.introduction }} />
+            {shortcuts && (
+              <TopicIntroductionShortcuts
+                alwaysExpanded={shortcutAlwaysExpanded}
+                id={`${topic.id}_shortcuts`}
+                shortcuts={shortcuts}
+                messages={{
+                  toggleButtonText: messages.shortcutButtonText,
+                }}
+              />
+            )}
+          </div>
+          {topic.metaImage && (
+            <div>
+              <img src={topic.metaImage.url} alt={topic.metaImage.alt} />
+            </div>
+          )}
+        </div>
       </article>
     </li>
   );

@@ -67,26 +67,29 @@ class FilmMovieList extends Component {
   }
 
   slidePage(direction) {
-    this.setState(prevState => {
-      let slideIndex =
-        prevState.slideIndex + this.props.columnsPrSlide * direction;
-      if (slideIndex > 0) {
-        slideIndex = 0;
-      } else if (
-        slideIndex < -(this.props.movies.length - this.props.columnsPrSlide)
-      ) {
-        slideIndex = -(this.props.movies.length - this.props.columnsPrSlide);
-      }
-      return {
-        slideIndex,
-      };
-    });
+    if (this.props.columnsPrSlide < this.props.movies.length) {
+      this.setState(prevState => {
+        let slideIndex =
+          prevState.slideIndex + this.props.columnsPrSlide * direction;
+        if (slideIndex > 0) {
+          slideIndex = 0;
+        } else if (
+          slideIndex < -(this.props.movies.length - this.props.columnsPrSlide)
+        ) {
+          slideIndex = -(this.props.movies.length - this.props.columnsPrSlide);
+        }
+        return {
+          slideIndex,
+        };
+      });
+    }
   }
 
   render() {
     const { movies, name, columnWidth, columnsPrSlide, margin } = this.props;
     const { slideIndex, swiping } = this.state;
     const marginString = `${margin}px`;
+    const hideButtons = columnsPrSlide >= movies.length;
 
     return (
       <section {...classes()}>
@@ -105,7 +108,7 @@ class FilmMovieList extends Component {
               style={{ width: marginString }}
               {...classes('slide-navigation', {
                 prev: true,
-                hidden: slideIndex === 0,
+                hidden: slideIndex === 0 || hideButtons,
               })}
               onClick={() => this.slidePage(1)}>
               <ChevronLeft />
@@ -115,7 +118,9 @@ class FilmMovieList extends Component {
               style={{ width: marginString }}
               {...classes('slide-navigation', {
                 next: true,
-                hidden: slideIndex === -(movies.length - columnsPrSlide),
+                hidden:
+                  hideButtons ||
+                  slideIndex === -(movies.length - columnsPrSlide),
               })}
               onClick={() => this.slidePage(-1)}>
               <ChevronRight />

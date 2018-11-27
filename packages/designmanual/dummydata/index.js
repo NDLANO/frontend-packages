@@ -3,6 +3,7 @@ import {
   subtopicList,
   topicList,
   topicListChinese,
+  topicListFilm,
 } from './mockTopics';
 import {
   learningPathResources,
@@ -38,6 +39,7 @@ export {
   topicMenu,
   topicList,
   topicListChinese,
+  topicListFilm,
   subjectList,
   subjectConcepts,
   categories,

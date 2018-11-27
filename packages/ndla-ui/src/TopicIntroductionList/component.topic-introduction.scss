@@ -42,6 +42,23 @@
   &__body {
     width: 100%;
   }
+  &__content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    img {
+      max-width: 120px;
+      margin-left: $spacing--medium;
+      @include mq(tablet) {
+        max-width: 160px;
+        margin-left: $spacing--medium;
+      }
+      @include mq(desktop) {
+        max-width: 200px;
+        margin-left: $spacing--large;
+      }
+    }
+  }
   &__item {
     margin: 0;
     padding-bottom: $spacing;

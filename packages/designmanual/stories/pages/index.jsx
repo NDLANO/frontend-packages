@@ -11,6 +11,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
+  NdlaFilmHero,
   SubjectMaterialHero,
   TasksAndActivitiesHero,
   SubjectHero,
@@ -415,6 +416,24 @@ storiesOf('Ndla film', module)
           icon={<SubjectBadge size="large" background />}
           label="Emne"
         />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Emne (over film)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <NdlaFilmHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </NdlaFilmHero>
+        <ArticleLearningmaterial ndlaFilm />
       </Content>
       <FooterExample inverted />
     </PageContainer>

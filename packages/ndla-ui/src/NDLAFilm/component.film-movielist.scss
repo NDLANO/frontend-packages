@@ -47,8 +47,9 @@
     background: #091a2a80;
     border: 0;
     outline: 0;
-    bottom: $spacing--medium;
+    bottom: 0;
     top: 0;
+    height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,30 +65,33 @@
     &--prev {
       left: 0;
       .c-icon {
-        opacity: 0.5;
-        transform: translate(-$spacing--small / 2, -$spacing--small);
+        opacity: 0.7;
+        transform: translate(-$spacing--small / 2, -$spacing--medium);
       }
     }
     &--next {
       right: 0;
       .c-icon {
-        opacity: 0.5;
-        transform: translate($spacing--small / 2, -$spacing--small);
+        opacity: 0.7;
+        transform: translate($spacing--small / 2, -$spacing--medium);
       }
     }
     &:focus {
       .c-icon {
-        opacity: 0.5;
-        transform: translate(0, -$spacing--small);
+        opacity: 0.7;
+        transform: translate(0, -$spacing--medium);
       }
     }
     &:hover {
       .c-icon {
         opacity: 1;
-        transform: translate(0, -$spacing--small);
+        transform: translate(0, -$spacing--medium);
       }
     }
     &--hidden {
+      display: none;
+    }
+    @include mq($until: tablet) {
       display: none;
     }
   }

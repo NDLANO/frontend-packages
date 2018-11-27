@@ -94,16 +94,16 @@ $subject-section-padding: 100px;
 }
 
 .c-subject-sidebar-wrapper {
-  flex-basis: 50%;
-  @include mq(tablet) {
-    flex-basis: 390px;
-  }
-  flex-shrink: 0;
-  margin: 0 $spacing;
+  display: block;
 
   @include mq(tablet) {
+    flex-basis: 50%;
+    flex-basis: 390px;
+    flex-shrink: 0;
     margin: 9px 0 0 0;
   }
+
+  margin: 0 $spacing;
 
   & > *:last-child {
     margin-bottom: 0;

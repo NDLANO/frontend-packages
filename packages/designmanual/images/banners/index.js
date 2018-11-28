@@ -21,6 +21,13 @@ import InternasjonalEngelsk from './Internasjonal-Engelsk.svg';
 import SamfunnsfagligEngelsk from './Samfunnsfaglig-engelsk.svg';
 import Kroppsoving from './Kroppsoving.svg';
 import BarneOgUngdomsarbeider from './Barne-og-ungdomsarbeider.svg';
+import Matematikk1T from './1T-matematikk.svg';
+import Matematikk1P from './1P-matematikk.svg';
+import FellesMatte from './Felles-matte.svg';
+import RealfagMatte from './Realfag-matte.svg';
+import SamfunnsfagligMatte from './Samfunnsfaglig-matte.svg';
+import YrkesfagligMatte from './Yrkesfaglig-matte.svg';
+import EngelskLitteratur2 from './Engelsk-litteratur-2.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
@@ -42,7 +49,7 @@ export default [
     name: 'Helse- og oppvekstsfag Vg1',
   },
   { desktop: Historie, mobile: Historie, name: 'Historie' },
-  { desktop: IKTService, mobile: IKTService, name: 'IKT Service' },
+  { desktop: IKTService, mobile: IKTService, name: 'IKT-servicefag Vg2' },
   { desktop: Kinesisk, mobile: Kinesisk, name: 'Kinesisk' },
   {
     desktop: Markedsfoering,
@@ -93,5 +100,40 @@ export default [
     desktop: Kroppsoving,
     mobile: Kroppsoving,
     name: 'Kroppsøving',
+  },
+  {
+    desktop: Matematikk1T,
+    mobile: Matematikk1T,
+    name: '1T - Matematikk fellesfag',
+  },
+  {
+    desktop: Matematikk1P,
+    mobile: Matematikk1P,
+    name: '1P - Matematikk fellesfag',
+  },
+  {
+    desktop: FellesMatte,
+    mobile: FellesMatte,
+    name: 'Praktisk matematikk',
+  },
+  {
+    desktop: RealfagMatte,
+    mobile: RealfagMatte,
+    name: 'Matematikk for realfag',
+  },
+  {
+    desktop: SamfunnsfagligMatte,
+    mobile: SamfunnsfagligMatte,
+    name: 'Matematikk for samfunnsfag',
+  },
+  {
+    desktop: YrkesfagligMatte,
+    mobile: YrkesfagligMatte,
+    name: 'Matematikk for yrkesfaglige programmer',
+  },
+  {
+    desktop: EngelskLitteratur2,
+    mobile: EngelskLitteratur2,
+    name: 'Engelskspråklig litteratur og kultur',
   },
 ];

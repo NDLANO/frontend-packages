@@ -7,6 +7,8 @@
  */
 
 import SlateBlockMenu from './SlateBlockMenu';
+import Spinner from './Spinner';
+import Structure from './Structure';
 import NdlaFilmEditor from './NdlaFilmEditor';
 
-export { SlateBlockMenu, NdlaFilmEditor };
+export { SlateBlockMenu, Structure, Spinner, NdlaFilmEditor };

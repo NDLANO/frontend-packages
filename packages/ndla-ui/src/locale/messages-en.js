@@ -213,6 +213,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Show more learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Show more external learning resources',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
@@ -220,6 +222,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Show less learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Show less external learning resources',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'No subjects',

@@ -9,6 +9,8 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 
+import Spinner from '@ndla/editor';
+
 const classes = new BEMHelper({
   name: 'film-frontpage-placeholder',
   prefix: 'c-',
@@ -16,7 +18,9 @@ const classes = new BEMHelper({
 
 const FrontpagePlaceholder = () => (
   <div>
-    <div {...classes('slideshow')}>Laster</div>
+    <div {...classes('slideshow')}>
+      <Spinner />
+    </div>
   </div>
 );
 

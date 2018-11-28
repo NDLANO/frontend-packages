@@ -34,6 +34,7 @@ OpenButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   modifier: PropTypes.string,
 };
+
 class ArticleHeaderWrapper extends Component {
   constructor(props) {
     super(props);
@@ -66,6 +67,22 @@ class ArticleHeaderWrapper extends Component {
       return <div {...classes('header')}>{children}</div>;
     }
 
+    const dialog =
+      typeof competenceGoals === 'function' ? (
+        competenceGoals({
+          Dialog: CompetenceGoalsDialog,
+          dialogProps: {
+            isOpen: this.state.isOpen,
+            onClose: this.closeDialog,
+          },
+        })
+      ) : (
+        <CompetenceGoalsDialog
+          onClose={this.closeDialog}
+          isOpen={this.state.isOpen}>
+          {competenceGoals}
+        </CompetenceGoalsDialog>
+      );
     return (
       <Trans>
         {({ t }) => (
@@ -77,11 +94,7 @@ class ArticleHeaderWrapper extends Component {
             <OpenButton onClick={this.openDialog} modifier="narrow">
               {t('competenceGoals.showCompetenceGoals')}
             </OpenButton>
-            <CompetenceGoalsDialog
-              onClose={this.closeDialog}
-              isOpen={this.state.isOpen}>
-              {competenceGoals}
-            </CompetenceGoalsDialog>
+            {dialog}
           </div>
         )}
       </Trans>
@@ -90,7 +103,7 @@ class ArticleHeaderWrapper extends Component {
 }
 
 ArticleHeaderWrapper.propTypes = {
-  competenceGoals: PropTypes.node,
+  competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node.isRequired,
 };
 

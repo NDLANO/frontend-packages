@@ -39,10 +39,11 @@ const Title = styled.h2`
   margin: 0;
   ${fonts.sizes(20, 1.1)};
   span {
-    ${fonts.sizes(20, 1.1)};
+    ${fonts.sizes(16, 1.1)};
     font-weight: ${fonts.weight.normal};
     text-transform: none;
     padding-left: ${spacing.small};
+    color: ${colors.text.light};
   }
 `;
 

@@ -24,7 +24,7 @@
     margin: $spacing--large 0 $spacing--large 0;
 
     @include mq($from: desktop) {
-      @include grids-expand(4,6,2);
+      @include grids-expand(4, 6, 2);
     }
 
     &--has-scroll {
@@ -136,7 +136,7 @@ article table {
     }
 
     thead tr:nth-child(2) th {
-      @include font-size(16px,18px);
+      @include font-size(16px, 18px);
 
       @include mq(tablet) {
         @include font-size(18px, 26px);
@@ -144,7 +144,7 @@ article table {
     }
 
     td {
-      @include font-size(16px,22px);
+      @include font-size(16px, 22px);
       @include mq(tablet) {
         @include font-size(18px, 30px);
       }
@@ -183,15 +183,15 @@ article table {
     border-bottom: 3px solid $brand-color--tertiary;
     font-family: $font;
 
-    @include font-size(16px,22px);
+    @include font-size(16px, 22px);
     @include mq(tablet) {
-      @include font-size(16px,30px);
+      @include font-size(16px, 30px);
     }
 
     @include chinese() {
-      @include font-size(18px,22px);
+      @include font-size(18px, 22px);
       @include mq(tablet) {
-        @include font-size(18px,30px);
+        @include font-size(18px, 30px);
       }
     }
   }
@@ -205,7 +205,7 @@ article table {
   thead tr:nth-child(2) th {
     border: 1px solid $brand-grey--lighter;
     text-transform: none;
-    @include font-size(14px,18px);
+    @include font-size(14px, 18px);
     @include mq(tablet) {
       @include font-size(15px, 26px);
     }
@@ -219,7 +219,7 @@ article table {
     }
 
     @include chinese() {
-      @include font-size(16px,18px);
+      @include font-size(16px, 18px);
       @include mq(tablet) {
         @include font-size(18px, 26px);
       }
@@ -231,15 +231,15 @@ article table {
     vertical-align: top;
     line-height: 1.6em;
 
-    @include font-size(14px,22px);
+    @include font-size(14px, 22px);
     @include mq(tablet) {
-      @include font-size(15px,30px);
+      @include font-size(15px, 30px);
     }
 
     @include chinese() {
-      @include font-size(16px,22px);
+      @include font-size(16px, 22px);
       @include mq(tablet) {
-        @include font-size(18px,30px);
+        @include font-size(18px, 30px);
       }
     }
 
@@ -267,7 +267,7 @@ article table {
   }
 
   ul {
-    margin: 0 0 0 $spacing--small*1.4;
+    margin: 0 0 0 $spacing--small * 1.4;
   }
 
   .c-figure {
@@ -283,4 +283,12 @@ article table {
     background: red;
     color: #fff;
   }
+}
+
+// Fix for tables in framed <details />
+details .frame .c-table__wrapper {
+  position: static !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

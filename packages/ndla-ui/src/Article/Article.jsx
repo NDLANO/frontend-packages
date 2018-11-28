@@ -147,7 +147,7 @@ Article.propTypes = {
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
   additional: PropTypes.bool,
-  competenceGoals: PropTypes.node,
+  competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node,
   messages: PropTypes.shape({
     label: PropTypes.string,

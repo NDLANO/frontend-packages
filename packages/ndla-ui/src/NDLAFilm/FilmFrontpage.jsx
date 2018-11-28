@@ -93,7 +93,11 @@ class FilmFrontpage extends Component {
     const currentBreakpoint = getCurrentBreakpoint();
     let margin;
     let itemSize;
-    if (screenWidth < 450) {
+
+    if (screenWidth < 385) {
+      margin = 26;
+      itemSize = 130;
+    } else if (screenWidth < 450) {
       margin = 26;
       itemSize = 160;
     } else if (currentBreakpoint === breakpoints.mobile) {
@@ -139,6 +143,20 @@ class FilmFrontpage extends Component {
       margin,
     } = this.state;
 
+    const filteredMovies =
+      activeSearch &&
+      allMovies.filter(
+        movie =>
+          (searchValue === '' ||
+            movie.title.title.search(new RegExp(searchValue, 'i')) !== -1) &&
+          (!topicSelected ||
+            movie.contexts.some(context => context.id === topicSelected)) &&
+          (!resourceTypeSelected ||
+            Object.keys(movie.movieTypes).some(
+              movieTypeId => movieTypeId === resourceTypeSelected,
+            )),
+      );
+
     return (
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
@@ -147,56 +165,50 @@ class FilmFrontpage extends Component {
           resourceTypes={resourceTypes}
           searchValue={searchValue}
           topicSelected={topicSelected}
-          resourceTypeSelected={resourceTypeSelected}
+          resourceTypeSelected={
+            resourceTypeSelected &&
+            resourceTypes.find(
+              resourceType => resourceType.id === resourceTypeSelected,
+            ).name
+          }
           onChangeSearch={this.onChangeSearch}
           onChangeTopic={this.onChangeTopic}
           onChangeResourceType={this.onChangeResourceType}
         />
         {activeSearch ? (
           <section>
-            <OneColumn>
-              <h1 {...movieListClasses('heading')}>Treff:</h1>
-              <div {...classes('movie-listing')}>
-                {allMovies
-                  .filter(
-                    movie =>
-                      (searchValue === '' ||
-                        movie.title.title.search(
-                          new RegExp(searchValue, 'i'),
-                        ) !== -1) &&
-                      (!topicSelected ||
-                        movie.contexts.some(
-                          context => context.id === topicSelected,
-                        )) &&
-                      (!resourceTypeSelected ||
-                        Object.keys(movie.movieTypes).some(
-                          movieTypeId => movieTypeId === resourceTypeSelected,
-                        )),
-                  )
-                  .map(movie => (
-                    <a
-                      href={movie.url}
-                      key={movie.id}
-                      {...classes('movie-item')}>
-                      <div
-                        {...classes('movie-image')}
-                        role="img"
-                        aria-label={movie.metaImage ? movie.metaImage.alt : ''}
-                        style={{
-                          backgroundImage: `url(${
-                            movie.metaImage && movie.metaImage.url
-                              ? movie.metaImage.url
-                              : ''
-                          })`,
-                        }}
-                      />
-                      <h2 {...movieListClasses('movie-title')}>
-                        {movie.title.title}
-                      </h2>
-                    </a>
-                  ))}
-              </div>
-            </OneColumn>
+            <h1
+              {...movieListClasses('heading')}
+              style={{ marginLeft: `${margin + 7}px` }}>
+              Treff ({filteredMovies.length}):
+            </h1>
+            <div
+              {...classes('movie-listing')}
+              style={{ marginLeft: `${margin}px` }}>
+              {filteredMovies.map(movie => (
+                <a
+                  href={movie.url}
+                  key={movie.id}
+                  {...classes('movie-item')}
+                  style={{ width: `${columnWidth}px` }}>
+                  <div
+                    {...classes('movie-image')}
+                    role="img"
+                    aria-label={movie.metaImage ? movie.metaImage.alt : ''}
+                    style={{
+                      backgroundImage: `url(${
+                        movie.metaImage && movie.metaImage.url
+                          ? movie.metaImage.url
+                          : ''
+                      })`,
+                    }}
+                  />
+                  <h2 {...movieListClasses('movie-title')}>
+                    {movie.title.title}
+                  </h2>
+                </a>
+              ))}
+            </div>
           </section>
         ) : (
           themes.map(theme => (

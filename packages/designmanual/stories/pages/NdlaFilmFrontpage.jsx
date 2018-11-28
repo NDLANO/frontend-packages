@@ -40,8 +40,11 @@ class NdlaFilmExample extends Component {
       movieThemes: [],
       loaded: false,
       savingToFirebase: false,
+      user: null,
+      userMessage: undefined,
     };
     this.saveToFirebase = this.saveToFirebase.bind(this);
+    this.userLogout = this.userLogout.bind(this);
   }
 
   componentDidMount() {
@@ -61,25 +64,16 @@ class NdlaFilmExample extends Component {
         .auth()
         .signInWithPopup(provider)
         .then(result => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
-          // The signed-in user info.
-          var user = result.user;
-          console.log(result);
-          // ...
+          this.setState({
+            user: result.user,
+            userMessage: undefined,
+          });
         })
         .catch(error => {
           console.log(error);
-          /*
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        */
+          this.setState({
+            userMessage: error.message,
+          });
         });
     }
 
@@ -217,6 +211,22 @@ class NdlaFilmExample extends Component {
       });
   }
 
+  userLogout() {
+    firebase
+      .auth()
+      .signOut()
+      .then(res => {
+        console.log('signedout', res);
+        this.setState({
+          user: null,
+          userMessage: 'Du er ikke innlogget',
+        });
+      })
+      .catch(err => {
+        console.log('couldnt signout');
+      });
+  }
+
   render() {
     const {
       movieThemes,
@@ -227,6 +237,8 @@ class NdlaFilmExample extends Component {
       firebaseData,
       loaded,
       savingToFirebase,
+      user,
+      userMessage,
     } = this.state;
 
     const { editor } = this.props;
@@ -241,6 +253,9 @@ class NdlaFilmExample extends Component {
           resourceTypes={resourceTypes}
           saveToFirebase={this.saveToFirebase}
           savingToFirebase={savingToFirebase}
+          user={user}
+          userMessage={userMessage}
+          userLogout={this.userLogout}
         />
       );
     }

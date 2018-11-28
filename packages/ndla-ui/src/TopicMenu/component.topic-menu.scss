@@ -55,6 +55,15 @@ $navigation-row-width: 980px / 3;
     &:before {
       @include svg_icon('menu', $white);
     }
+    &:active,
+    &:focus {
+      color: #fff;
+      background: $brand-color;
+      border-color: transparent;
+      &:hover:before {
+        @include svg_icon('menu', $white);
+      }
+    }
   }
 }
 

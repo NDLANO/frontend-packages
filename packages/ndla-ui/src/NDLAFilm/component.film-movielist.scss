@@ -9,10 +9,17 @@
     margin: $spacing--small 0;
   }
   &__movie-title {
-    @include font-size(18px, 22px);
+    @include font-size(14px, 20px);
     font-weight: $font-weight-bold;
     color: #fff;
-    margin: $spacing--small 0;
+    margin: $spacing--small / 2 0 $spacing--small;
+    @include mq(mobileWide) {
+      @include font-size(16px, 22px);
+    }
+    @include mq(tablet) {
+      margin: $spacing--small 0;
+      @include font-size(18px, 24px);
+    }
   }
   &__slide-item {
     padding: $spacing--small / 2;

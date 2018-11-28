@@ -38,7 +38,6 @@
   &--ndla-film {
     background: $film-color;
     .c-hero__content {
-      min-height: $spacing--large;
       .c-breadcrumb__item,
       .c-breadcrumb__item--home:after,
       a {
@@ -46,18 +45,29 @@
       }
     }
     @include mq(tablet) {
+      .c-hero__content {
+        min-height: 90px;
+      }
       height: 2000px;
-      margin-bottom: -1800px;
+      margin-bottom: -1910px;
+    }
+    &.c-hero--has-image {
+      @include mq(tablet) {
+        margin-bottom: -1800px;
+        .c-hero__content {
+          min-height: 190px;
+        }
+      }
     }
     @include mq($until: tablet) {
       + div article.c-article {
         margin-left: -$spacing;
         margin-right: -$spacing;
-        margin-top: $spacing;
+        margin-top: 0;
         background: #fff;
         padding-left: $spacing;
         padding-right: $spacing;
-        padding-top: $spacing;
+        padding-top: $spacing--large;
       }
     }
   }

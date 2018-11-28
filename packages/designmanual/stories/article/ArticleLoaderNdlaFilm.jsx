@@ -133,7 +133,7 @@ class ArticleLoaderNdlaFilm extends Component {
 
     return (
       <Fragment>
-        <NdlaFilmHero>
+        <NdlaFilmHero hasImage={backgroundImage}>
           {backgroundImage && (
             <div className="c-hero__background">
               <img src={backgroundImage} alt={article.metaImage.alt} />

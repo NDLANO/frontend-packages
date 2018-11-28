@@ -45,17 +45,17 @@ const ArticleLearningMaterial = ({ ndlaFilm }) => (
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense type="left" caption="" runScripts>
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
+        <FigureWithLicense caption="" classes="u-float-right">
+          <Image
+            alt=""
+            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          />
+        </FigureWithLicense>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
@@ -79,12 +79,6 @@ const ArticleLearningMaterial = ({ ndlaFilm }) => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="" classes="u-float-right">
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få

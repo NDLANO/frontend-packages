@@ -51,10 +51,9 @@ export default () => (
           />
         </FigureWithLicense>
         <p>
-          333Du har en kjempegod idé til en kortfilm. Men det koster mange
-          penger å produsere filmen. Derfor er du avhengig av at noen tenner på
-          idéen din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
+          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
@@ -66,12 +65,6 @@ export default () => (
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
           andre til å tenne på idéen din og se potensialet i den.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du

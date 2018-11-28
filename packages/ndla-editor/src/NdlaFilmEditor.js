@@ -138,6 +138,19 @@ const dropdownBtn = css`
   height: 42px;
 `;
 
+const Avatar = styled.div`
+  width: ${spacing.medium};
+  height: ${spacing.medium};
+  margin: 0 ${spacing.small} 0 0;
+  border-radius: 100%;
+  background-position: center center;
+  background-size: cover;
+`;
+
+const UserHeader = styled.aside`
+  display: flex;
+`;
+
 const ThemeName = ({ value, onChange }) => (
   <InputWrapper>
     <Pencil />
@@ -304,9 +317,19 @@ class NdlaFilmEditor extends Component {
       firebaseData: { highlighted, themes },
       firebaseData,
     } = this.state;
-    const { allMovies, savingToFirebase } = this.props;
+    const { allMovies, savingToFirebase, user, userMessage, userLogout } = this.props;
     return (
       <Wrapper>
+        
+          <UserHeader>
+          {user && (<Fragment>
+            <Avatar style={{ backgroundImage: `url(${user.photoURL})` }} />
+            {user.displayName}
+            <Button onClick={userLogout} style={{ marginLeft: spacing.normal }}>
+              Logout
+            </Button></Fragment>) : userMessage}
+          </UserHeader>
+        )}
         <section>
           <ThemeNameHeader>
             <Header>Slideshow:</Header>
@@ -433,7 +456,7 @@ class NdlaFilmEditor extends Component {
           Lag ny temagruppe
         </Button>
         <Button
-          disabled={savingToFirebase}
+          disabled={savingToFirebase || !user}
           onClick={() => this.props.saveToFirebase(firebaseData)}>
           {savingToFirebase ? 'Lagrer' : 'Lagre endringer'}
         </Button>
@@ -450,6 +473,9 @@ NdlaFilmEditor.propTypes = {
   saveToFirebase: PropTypes.func.isRequired,
   loaded: PropTypes.bool.isRequired,
   savingToFirebase: PropTypes.bool,
+  user: PropTypes.shape({}),
+  userLogout: PropTypes.func,
+  userMessage: PropTypes.string,
 };
 
 export default NdlaFilmEditor;

@@ -118,6 +118,7 @@ class MastheadWithTopicMenu extends Component {
 
   render() {
     let searchButtonView = null;
+    console.log(this.state.modalOpen);
 
     if (!this.props.hideSearchButton) {
       searchButtonView = (
@@ -134,7 +135,7 @@ class MastheadWithTopicMenu extends Component {
             <button
               type="button"
               className={`c-button c-toggle-search-button__button c-toggle-search-button__button--wide${
-                this.props.ndlaFilm
+                this.props.ndlaFilm && !this.state.modalOpen
                   ? ' c-toggle-search-button__button--inverted'
                   : ''
               }`}>
@@ -188,10 +189,16 @@ class MastheadWithTopicMenu extends Component {
             animationDuration={150}
             backgroundColor="grey"
             noBackdrop
+            onOpen={() => {
+              this.setState({
+                modalOpen: true,
+              });
+            }}
             onClose={() => {
               this.setState({
                 expandedTopicId: null,
                 expandedSubtopicsId: [],
+                modalOpen: false,
               });
             }}>
             {onClose => {

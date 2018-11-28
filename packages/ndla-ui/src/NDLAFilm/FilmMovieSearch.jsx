@@ -126,7 +126,7 @@ class FilmMovieSearch extends Component {
                     resourceTypesIsOpen: !resourceTypesIsOpen,
                   });
                 }}>
-                <span>Velg filmkategori</span>
+                <span>{resourceTypeSelected || 'Velg filmkategori'}</span>
               </button>
               {resourceTypesIsOpen && (
                 <div {...classes('dropdown-wrapper')}>

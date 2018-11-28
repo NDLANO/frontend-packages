@@ -420,6 +420,19 @@ storiesOf('Ndla film', module)
       <FooterExample inverted />
     </PageContainer>
   ))
+  .add('Film (emne uten bilde)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <ArticleLoaderNdlaFilm
+          articleId="3396"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+        />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
   .add('Emne (over film)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>

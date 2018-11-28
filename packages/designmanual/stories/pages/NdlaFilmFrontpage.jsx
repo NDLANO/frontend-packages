@@ -129,6 +129,9 @@ class NdlaFilmExample extends Component {
       }),
     ]);
 
+    console.log('topics', topics);
+    console.log('search topics', allTopics);
+
     const resourceTypesId = resourceTypes.map(resourceType => resourceType.id);
     const validTopicIds = {};
 

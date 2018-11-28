@@ -1,0 +1,11 @@
+.c-film-frontpage-placeholder {
+  &__slideshow {
+    background: #fff;
+    opacity: 0.08;
+    margin-bottom: $spacing--large * 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vw;
+  }
+}

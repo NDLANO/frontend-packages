@@ -16,6 +16,7 @@ import { OneColumn } from '../Layout';
 import FilmSlideshow from './FilmSlideshow';
 import FilmpageMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
+import FrontpagePlaceholder from './FrontpagePlaceholder';
 
 const classes = new BEMHelper({
   name: 'film-frontpage',
@@ -143,6 +144,11 @@ class FilmFrontpage extends Component {
       margin,
     } = this.state;
 
+    if (highlighted.length === 0) {
+      // Loading.
+      return <FrontpagePlaceholder />;
+    }
+
     const filteredMovies =
       activeSearch &&
       allMovies.filter(
@@ -157,6 +163,12 @@ class FilmFrontpage extends Component {
             )),
       );
 
+    const resourceTypeName =
+      resourceTypeSelected &&
+      resourceTypes.find(
+        resourceType => resourceType.id === resourceTypeSelected,
+      ).name;
+
     return (
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
@@ -165,12 +177,7 @@ class FilmFrontpage extends Component {
           resourceTypes={resourceTypes}
           searchValue={searchValue}
           topicSelected={topicSelected}
-          resourceTypeSelected={
-            resourceTypeSelected &&
-            resourceTypes.find(
-              resourceType => resourceType.id === resourceTypeSelected,
-            ).name
-          }
+          resourceTypeSelected={resourceTypeName}
           onChangeSearch={this.onChangeSearch}
           onChangeTopic={this.onChangeTopic}
           onChangeResourceType={this.onChangeResourceType}
@@ -180,7 +187,8 @@ class FilmFrontpage extends Component {
             <h1
               {...movieListClasses('heading')}
               style={{ marginLeft: `${margin + 7}px` }}>
-              Treff ({filteredMovies.length}):
+              Søk gav{resourceTypeName && ` i ${resourceTypeName}`}{' '}
+              {filteredMovies.length} treff:
             </h1>
             <div
               {...classes('movie-listing')}

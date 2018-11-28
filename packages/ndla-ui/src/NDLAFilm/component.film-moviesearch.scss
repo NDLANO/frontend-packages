@@ -3,18 +3,29 @@
     display: flex;
     border-radius: $border-radius;
     border: 0;
+    height: $spacing--large;
     width: 100%;
+    padding: 0 $spacing;
     @include font-size(18px);
   }
   &__dropdown-wrap {
-    display: flex;
-    margin: -$spacing--small;
-    > div {
-      width: 50%;
-      padding: $spacing--large $spacing--small;
+    @include mq($until: tablet) {
+      > div {
+        padding: 0 0 $spacing--medium;
+        &:first-child {
+          padding: $spacing 0 $spacing--small;
+        }
+      }
+    }
+    @include mq(tablet) {
       display: flex;
-      &:first-child {
-        justify-content: flex-end;
+      > div {
+        width: 50%;
+        padding: $spacing $spacing--small;
+        display: flex;
+        &:first-child {
+          justify-content: flex-end;
+        }
       }
     }
   }
@@ -28,7 +39,10 @@
     font-weight: $font-weight-semibold;
     display: flex;
     justify-content: space-between;
-    width: 200px;
+    width: 100%;
+    @include mq(tablet) {
+      width: 200px;
+    }
     &--open {
       color: $primary-color;
       background: #deebf6;
@@ -47,7 +61,8 @@
     min-width: 300px;
     border-radius: $border-radius;
     border-top-left-radius: 0;
-    button {
+    button,
+    a {
       color: $primary-color;
       border: 0;
       outline: 0;
@@ -55,10 +70,13 @@
       background: transparent;
       padding: $spacing--small;
       font-weight: $font-weight-semibold;
+      text-decoration: none;
+      box-shadow: none;
       &:hover,
       &:focus {
         span {
           box-shadow: $link;
+          text-decoration: none;
         }
       }
     }

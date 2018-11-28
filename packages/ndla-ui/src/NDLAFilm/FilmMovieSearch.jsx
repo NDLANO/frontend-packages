@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 
-import { OneColumn } from '@ndla/ui';
+import { OneColumn, SafeLink } from '@ndla/ui';
 import topicShape from './FilmFrontpage';
 
 const classes = new BEMHelper({
@@ -79,22 +79,14 @@ class FilmMovieSearch extends Component {
                     topicIsOpen: !topicIsOpen,
                   });
                 }}>
-                <span>Velg emne</span>
+                <span>Gå til emne</span>
               </button>
               {topicIsOpen && (
                 <div {...classes('dropdown-wrapper')}>
                   {topics.map(topic => (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onChangeTopic(topic.id);
-                        this.setState({
-                          topicIsOpen: false,
-                        });
-                      }}
-                      key={topic.id}>
+                    <SafeLink to="#" key={topic.id}>
                       <span>{topic.name}</span>
-                    </button>
+                    </SafeLink>
                   ))}
                 </div>
               )}

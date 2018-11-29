@@ -192,6 +192,8 @@ export default class TopicMenu extends Component {
 
     const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
 
+    console.log(sliderCounter, expandedSubtopicsId);
+
     return (
       <Trans>
         {({ t }) => (
@@ -390,6 +392,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={!hasExpandedSubtopics}
                       competenceButton={
                         competenceGoals &&
                         this.state.isNarrowScreen &&
@@ -424,6 +427,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={sliderCounter === index + 2}
                       defaultCount={this.props.defaultCount}
                       competenceButton={
                         competenceGoals &&

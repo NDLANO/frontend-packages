@@ -429,6 +429,17 @@ const messages = {
   notions: {
     closeNotion: 'Close',
   },
+  ndlaFilm: {
+    about: {
+      heading: 'About NDLA Film',
+      text: 'Ndla film is ...',
+    },
+    search: {
+      placeholder: 'Search on moviename',
+      categoryButton: 'Choose category',
+      subjectButton: 'Go to subject',
+    },
+  },
 };
 
 export default messages;

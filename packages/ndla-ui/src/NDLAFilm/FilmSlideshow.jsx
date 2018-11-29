@@ -90,6 +90,7 @@ class FilmSlideshow extends Component {
         <div {...classes('indicator-wrapper')}>
           {slideshow.map((slide, index) => (
             <button
+              key={`indicator_${index}`} // eslint-disable-line react/no-array-index-key
               type="button"
               {...classes(
                 'indicator-dot',

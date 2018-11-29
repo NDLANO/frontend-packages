@@ -12,6 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import { injectT } from '@ndla/i18n';
 import FilmSlideshow from './FilmSlideshow';
 import FilmpageMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
@@ -132,6 +133,7 @@ class FilmFrontpage extends Component {
       resourceTypes,
       topics,
       allMovies,
+      t,
     } = this.props;
     const {
       searchValue,
@@ -235,12 +237,8 @@ class FilmFrontpage extends Component {
               <div {...classes('video')}>[video]</div>
             </div>
             <div>
-              <h1>Hva er NDLA film?</h1>
-              <p>
-                Ndla film er en nettbasert filmtjeneste for elever og lærere i
-                videregående skole. Her funner du spillefilmer, kortfilmer,
-                dokumentarfilmer og TV-serier.
-              </p>
+              <h1>{t('ndlaFilm.about.heading')}</h1>
+              <p>{t('ndlaFilm.about.text')}</p>
             </div>
           </aside>
         )}
@@ -297,6 +295,7 @@ FilmFrontpage.propTypes = {
       id: PropTypes.id,
     }),
   ),
+  t: PropTypes.shape({}),
 };
 
 FilmFrontpage.defaultProps = {
@@ -307,4 +306,4 @@ FilmFrontpage.defaultProps = {
   topics: [],
 };
 
-export default FilmFrontpage;
+export default injectT(FilmFrontpage);

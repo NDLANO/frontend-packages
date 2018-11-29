@@ -440,6 +440,18 @@ const messages = {
   notions: {
     closeNotion: 'Lukk',
   },
+  ndlaFilm: {
+    about: {
+      heading: 'Om NDLA Film',
+      text:
+        'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+    },
+    search: {
+      placeholder: 'Søk på filmnavn',
+      categoryButton: 'Velg kategori',
+      subjectButton: 'Gå til emne',
+    },
+  },
 };
 
 export default messages;

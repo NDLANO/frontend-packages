@@ -6,12 +6,13 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 
 import { OneColumn, SafeLink } from '@ndla/ui';
+import { injectT } from '@ndla/i18n';
 import topicShape from './FilmFrontpage';
 
 const classes = new BEMHelper({
@@ -33,11 +34,11 @@ class FilmMovieSearch extends Component {
       topics,
       resourceTypes,
       searchValue,
-      topicSelected,
       resourceTypeSelected,
       onChangeSearch,
       onChangeTopic,
       onChangeResourceType,
+      t,
     } = this.props;
 
     const { resourceTypesIsOpen, topicIsOpen } = this.state;
@@ -49,8 +50,8 @@ class FilmMovieSearch extends Component {
             {...classes('input')}
             id="search"
             name="search"
-            placeholder="Søk på film"
-            aria-label="Søk på film"
+            placeholder={t('ndlaFilm.search.placeholder')}
+            aria-label={t('ndlaFilm.search.placeholder')}
             value={searchValue}
             onChange={e => onChangeSearch(e.target.value)}
           />
@@ -79,7 +80,7 @@ class FilmMovieSearch extends Component {
                     topicIsOpen: !topicIsOpen,
                   });
                 }}>
-                <span>Gå til emne</span>
+                <span>{t('ndlaFilm.search.subjectButton')}</span>
               </button>
               {topicIsOpen && (
                 <div {...classes('dropdown-wrapper')}>
@@ -118,7 +119,9 @@ class FilmMovieSearch extends Component {
                     resourceTypesIsOpen: !resourceTypesIsOpen,
                   });
                 }}>
-                <span>{resourceTypeSelected || 'Velg filmkategori'}</span>
+                <span>
+                  {resourceTypeSelected || t('ndlaFilm.search.categoryButton')}
+                </span>
               </button>
               {resourceTypesIsOpen && (
                 <div {...classes('dropdown-wrapper')}>
@@ -151,6 +154,7 @@ FilmMovieSearch.propTypes = {
   onChangeSearch: PropTypes.func.isRequired,
   onChangeTopic: PropTypes.func.isRequired,
   onChangeResourceType: PropTypes.func.isRequired,
+  t: PropTypes.shape({}),
 };
 
-export default FilmMovieSearch;
+export default injectT(FilmMovieSearch);

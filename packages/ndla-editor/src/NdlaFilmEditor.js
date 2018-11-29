@@ -317,18 +317,30 @@ class NdlaFilmEditor extends Component {
       firebaseData: { highlighted, themes },
       firebaseData,
     } = this.state;
-    const { allMovies, savingToFirebase, user, userMessage, userLogout } = this.props;
+    const {
+      allMovies,
+      savingToFirebase,
+      user,
+      userMessage,
+      userLogout,
+    } = this.props;
     return (
       <Wrapper>
-        
-          <UserHeader>
-          {user && (<Fragment>
-            <Avatar style={{ backgroundImage: `url(${user.photoURL})` }} />
-            {user.displayName}
-            <Button onClick={userLogout} style={{ marginLeft: spacing.normal }}>
-              Logout
-            </Button></Fragment>) : userMessage}
-          </UserHeader>
+        <UserHeader>
+          {user ? (
+            <Fragment>
+              <Avatar style={{ backgroundImage: `url(${user.photoURL})` }} />
+              {user.displayName}
+              <Button
+                onClick={userLogout}
+                style={{ marginLeft: spacing.normal }}>
+                Logout
+              </Button>
+            </Fragment>
+          ) : (
+            userMessage
+          )}
+        </UserHeader>
         )}
         <section>
           <ThemeNameHeader>

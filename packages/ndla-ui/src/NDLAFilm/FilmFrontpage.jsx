@@ -6,13 +6,12 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
-import { OneColumn } from '../Layout';
 import FilmSlideshow from './FilmSlideshow';
 import FilmpageMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';

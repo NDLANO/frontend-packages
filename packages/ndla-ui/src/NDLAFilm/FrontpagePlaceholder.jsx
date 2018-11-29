@@ -9,7 +9,7 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 
-import Spinner from '@ndla/editor';
+import { Spinner } from '@ndla/editor';
 
 const classes = new BEMHelper({
   name: 'film-frontpage-placeholder',
@@ -19,7 +19,7 @@ const classes = new BEMHelper({
 const FrontpagePlaceholder = () => (
   <div>
     <div {...classes('slideshow')}>
-      <Spinner />
+      <Spinner inverted />
     </div>
   </div>
 );

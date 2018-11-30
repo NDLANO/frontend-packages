@@ -47,16 +47,15 @@ display: flex;
 align-items: center;
 text-align: left;
 white-space: nowrap;
-${props => props.arrowDirection !== undefined && itemTitleArrow};
-${props =>
-  props.arrowDirection === undefined && !props.isMainTopic && itemTitleLinked};
+cursor: pointer;
+
+${props => props.hasSubtopics && itemTitleArrow};
+${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
 &:before {
   transition: transform 200ms ease;
-  transform: rotate(${props => props.arrowDirection}deg);
+  transform: rotate(${props => props.hasSubtopics && props.arrowDirection}deg);
 }
 `;
-
-const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
 const itemNameStyling = css`
   display: flex;
@@ -71,18 +70,19 @@ const ItemName = ({
   hasSubtopics,
   isOpen,
   level,
+  isMainActive,
 }) => (
   <div className={itemNameStyling}>
-    {hasSubtopics ? (
-      <ItemTitleButton
-        type="button"
-        arrowDirection={isOpen ? 90 : 0}
-        onClick={() => toggleOpen(path)}>
-        {title}
-      </ItemTitleButton>
-    ) : (
-      <ItemTitleSpan isMainTopic={level === 0}>{title}</ItemTitleSpan>
-    )}
+    <ItemTitleButton
+      type="button"
+      hasSubtopics={hasSubtopics}
+      level={level}
+      arrowDirection={isOpen ? 90 : 0}
+      isMainActive={isMainActive}
+      onClick={() => toggleOpen(path)}>
+      {title}
+    </ItemTitleButton>
+
     {children}
   </div>
 );
@@ -95,6 +95,7 @@ ItemName.propTypes = {
   hasSubtopics: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
   level: PropTypes.number,
+  isMainActive: PropTypes.bool,
 };
 
 export default ItemName;

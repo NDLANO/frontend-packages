@@ -41,7 +41,7 @@ const ItemsList = styled.li`
     `};
   ${props =>
     props.isOpen &&
-    props.level === 0 &&
+    props.isMainActive &&
     css`
       > div {
         background: ${colors.brand.light};
@@ -58,10 +58,11 @@ const Structure = ({
   openedPaths,
   toggleOpen,
 }) => {
-  const renderItems = (subjectsOrTopics, paths, names, subjectId) => {
+  const renderItems = (subjectsOrTopics, paths, subjectId) => {
     const level = paths.length;
     const ignoreFilter =
       level === 0 ||
+      !subjectFilters[subjectId] ||
       !subjectFilters[subjectId].some(filter =>
         fileStructureFilters.includes(filter.id),
       );
@@ -76,62 +77,65 @@ const Structure = ({
                 fileStructureFilters.includes(topicFilter.id),
               ),
           )
-          .map(({ id, name, topics, subtopics, filters, loading }) => {
+          .map(({ id, name, topics, subtopics, filters, loading, ...rest }) => {
             const currentPaths = paths.slice();
-            const currentNames = names.slice();
             currentPaths.push(id);
-            currentNames.push(name);
             const children = topics || subtopics;
-            const pathToString = currentPaths.toString();
+            const pathToString = currentPaths.join('/');
             const isOpen = openedPaths.includes(pathToString);
+            const isMainActive = openedPaths.slice(-1).pop() === pathToString;
             return (
-              <Fragment key={pathToString}>
-                <ItemsList className={listClass} level={level} isOpen={isOpen}>
-                  <ItemName
-                    isOpen={isOpen}
-                    title={name}
-                    path={pathToString}
-                    hasSubtopics={!!children || level === 0}
-                    toggleOpen={() =>
-                      toggleOpen({
-                        path: pathToString,
-                        level,
-                        id,
-                      })
-                    }
-                    level={level}>
-                    {renderListItems &&
-                      renderListItems({
-                        paths: currentPaths,
-                        pathToString,
-                        filters,
-                        level,
-                        names: currentNames,
-                        isOpen,
-                        id,
-                      })}
-                  </ItemName>
-                  {children &&
-                    renderItems(
-                      children,
-                      currentPaths,
-                      currentNames,
-                      level === 0 ? id : subjectId,
-                    )}
-                  {loading && (
-                    <span>
-                      <Spinner size="normal" margin="4px 26px" />
-                    </span>
+              <ItemsList
+                key={pathToString}
+                className={listClass}
+                level={level}
+                isMainActive={isMainActive}
+                isOpen={isOpen}>
+                <ItemName
+                  isOpen={isOpen}
+                  title={name}
+                  isMainActive={isMainActive}
+                  path={pathToString}
+                  hasSubtopics={!!children || level === 0}
+                  toggleOpen={() =>
+                    toggleOpen({
+                      path: pathToString,
+                      level,
+                      id,
+                    })
+                  }
+                  level={level}>
+                  {renderListItems &&
+                    renderListItems({
+                      paths: currentPaths,
+                      pathToString,
+                      filters,
+                      level,
+                      isOpen,
+                      id,
+                      name,
+                      ...rest,
+                    })}
+                </ItemName>
+                {children &&
+                  renderItems(
+                    children,
+                    currentPaths,
+                    level === 0 ? id : subjectId,
                   )}
-                </ItemsList>
-              </Fragment>
+                {loading && (
+                  <span>
+                    <Spinner size="normal" margin="4px 26px" />
+                  </span>
+                )}
+              </ItemsList>
             );
           })}
       </ItemListWrapper>
     );
   };
 
-  return renderItems(structure, [], []);
+  return renderItems(structure, []);
 };
 
 const FilterShape = PropTypes.shape({
@@ -167,7 +171,6 @@ Structure.defaultProps = {
   structure: [],
   className: '',
   fileStructureFilters: [],
-  filters: [],
 };
 
 export default Structure;

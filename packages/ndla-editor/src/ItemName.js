@@ -70,7 +70,6 @@ const ItemName = ({
   hasSubtopics,
   isOpen,
   level,
-  isMainActive,
 }) => (
   <div className={itemNameStyling}>
     <ItemTitleButton
@@ -78,7 +77,6 @@ const ItemName = ({
       hasSubtopics={hasSubtopics}
       level={level}
       arrowDirection={isOpen ? 90 : 0}
-      isMainActive={isMainActive}
       onClick={() => toggleOpen(path)}>
       {title}
     </ItemTitleButton>
@@ -95,7 +93,6 @@ ItemName.propTypes = {
   hasSubtopics: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
   level: PropTypes.number,
-  isMainActive: PropTypes.bool,
 };
 
 export default ItemName;

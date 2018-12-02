@@ -40,11 +40,17 @@ const ItemsList = styled.li`
       }
     `};
   ${props =>
-    props.isOpen &&
-    props.isMainActive &&
+    props.highlight &&
     css`
       > div {
         background: ${colors.brand.light};
+      }
+    `};
+  ${props =>
+    props.greyedOut &&
+    css`
+      > div {
+        opacity: 0.5;
       }
     `};
 `;
@@ -57,6 +63,7 @@ const Structure = ({
   structure,
   openedPaths,
   toggleOpen,
+  highlightMainActive,
 }) => {
   const renderItems = (subjectsOrTopics, paths, subjectId) => {
     const level = paths.length;
@@ -89,12 +96,14 @@ const Structure = ({
                 key={pathToString}
                 className={listClass}
                 level={level}
-                isMainActive={isMainActive}
+                highlight={
+                  highlightMainActive ? isMainActive : isOpen && level === 0
+                }
+                greyedOut={!isOpen && level === 0 && openedPaths.length > 0}
                 isOpen={isOpen}>
                 <ItemName
                   isOpen={isOpen}
                   title={name}
-                  isMainActive={isMainActive}
                   path={pathToString}
                   hasSubtopics={!!children || level === 0}
                   toggleOpen={() =>

@@ -176,23 +176,6 @@ async function deploy(sha) {
 
   console.log(`🔗 It's linked!`);
 
-  console.log(
-    `⏳ Now we're going to ping ${targetUrl} to confirm it is ready for use!`,
-  );
-
-  // check on the site for ~20 minutes every 10 seconds
-  await awaitUrl(`${targetUrl}`, { interval: 10000, tries: 119 }).catch(err => {
-    console.error('Error waiting for the deployment to be ready.');
-    onError(sha, err);
-    throw err;
-  });
-
-  updateStatus(sha, {
-    target_url: targetUrl,
-    state: 'success',
-    description: `▲ Now deployment complete`,
-  });
-
   console.log('🏁 All done!');
 }
 

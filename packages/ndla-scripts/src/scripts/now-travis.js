@@ -175,6 +175,12 @@ async function deploy(sha) {
 
   console.log(`🔗 It's linked!`);
 
+  updateStatus(sha, {
+    target_url: targetUrl,
+    state: 'success',
+    description: `▲ Now deployment complete`,
+  });
+
   console.log('🏁 All done!');
 }
 

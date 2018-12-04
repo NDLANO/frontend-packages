@@ -8,7 +8,6 @@ const github = require('octonode');
 const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
 const urlRegex = require('url-regex');
-const awaitUrl = require('await-url');
 
 if (!process.env.CI || !process.env.TRAVIS) {
   throw new Error('Could not detect Travis CI environment');

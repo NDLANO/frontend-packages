@@ -22,11 +22,10 @@
     "src"
   ],
   "dependencies": {
-    "await-url": "^0.3.0",
     "cross-spawn": "^6.0.5",
     "cross-spawn-promise": "^0.10.1",
     "normalize-url": "^4.0.0",
-    "now": "^12.1.2",
+    "now": "^12.1.8",
     "octonode": "^0.9.4",
     "url-regex": "^4.1.1"
   },

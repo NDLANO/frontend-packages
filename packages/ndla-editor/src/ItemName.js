@@ -70,11 +70,12 @@ const ItemName = ({
   hasSubtopics,
   isOpen,
   level,
+  id,
 }) => (
   <div className={itemNameStyling}>
     <ItemTitleButton
       type="button"
-      id={path}
+      id={id}
       hasSubtopics={hasSubtopics}
       level={level}
       arrowDirection={isOpen ? 90 : 0}
@@ -93,6 +94,7 @@ ItemName.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   hasSubtopics: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
+  id: PropTypes.string,
   level: PropTypes.number,
 };
 

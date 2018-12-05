@@ -94,6 +94,7 @@ const Structure = ({
             currentPaths.push(id);
             const children = topics || subtopics;
             const pathToString = currentPaths.join('/');
+            const parentId = paths.slice(-1);
             const isOpen = openedPaths.includes(pathToString);
             const isMainActive = openedPaths.slice(-1).pop() === pathToString;
             return (
@@ -110,6 +111,7 @@ const Structure = ({
                   isOpen={isOpen}
                   title={name}
                   path={pathToString}
+                  id={id.includes('topic') ? `${parentId}/${id}` : id}
                   hasSubtopics={!!children || level === 0}
                   toggleOpen={() =>
                     toggleOpen({

@@ -9,7 +9,7 @@
     "lint-es": "eslint --cache --ext .js --ext .jsx ./packages --ignore-path .gitignore",
     "format": "node ./scripts/prettier.js write",
     "format-check": "node scripts/prettier.js lint",
-    "test": "cross-env NODE_ENV=unittest jest",
+    "test": "cross-env BABEL_ENV=test NODE_ENV=unittest jest",
     "check-all": "yarn format-check && yarn lint-es && yarn test",
     "deploy": "now --token $NDLA_NOW_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
     "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist",

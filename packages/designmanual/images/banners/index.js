@@ -28,6 +28,13 @@ import RealfagMatte from './Realfag-matte.svg';
 import SamfunnsfagligMatte from './Samfunnsfaglig-matte.svg';
 import YrkesfagligMatte from './Yrkesfaglig-matte.svg';
 import EngelskLitteratur2 from './Engelsk-litteratur-2.svg';
+import Tip from './Tip.svg';
+import KommunikasjonOgKultur from './Kommunikasjon-og-Kultur.svg';
+import TransportOgLogistikk from './Transport-og-logistikk.svg';
+import Reiseliv from './Reiseliv.svg';
+import Naturfag from './Naturfag.svg';
+import KokkOgServitor from './Kokk-og-servitor.svg';
+import RestaurantOgMatfag from './Restaurant-og-matfag.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
@@ -135,5 +142,40 @@ export default [
     desktop: EngelskLitteratur2,
     mobile: EngelskLitteratur2,
     name: 'Engelskspråklig litteratur og kultur',
+  },
+  {
+    desktop: Tip,
+    mobile: Tip,
+    name: 'Teknikk og industriell produksjon Vg1',
+  },
+  {
+    desktop: KommunikasjonOgKultur,
+    mobile: KommunikasjonOgKultur,
+    name: 'Kommunikasjon og kultur',
+  },
+  {
+    desktop: TransportOgLogistikk,
+    mobile: TransportOgLogistikk,
+    name: 'Transport og logistikk Vg2',
+  },
+  {
+    desktop: Reiseliv,
+    mobile: Reiseliv,
+    name: 'Reiseliv Vg2',
+  },
+  {
+    desktop: Naturfag,
+    mobile: Naturfag,
+    name: 'Naturfag',
+  },
+  {
+    desktop: KokkOgServitor,
+    mobile: KokkOgServitor,
+    name: 'Kokk- og servitørfag Vg2',
+  },
+  {
+    desktop: RestaurantOgMatfag,
+    mobile: RestaurantOgMatfag,
+    name: 'Restaurant- og matfag Vg1',
   },
 ];

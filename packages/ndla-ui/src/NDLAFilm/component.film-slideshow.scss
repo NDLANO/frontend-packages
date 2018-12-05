@@ -1,27 +1,45 @@
 .c-film-slideshow {
   margin-bottom: $spacing--large;
+  &__item-wrapper {
+    display: flex;
+    &--text {
+      position: absolute;
+      z-index: 1;
+      width: 100vw;
+      @include mq(mobileWide) {
+        height: 100vw;
+      }
+      @include mq(tablet) {
+        height: 75vw;
+      }
+      @include mq(desktop) {
+        height: 60vw;
+      }
+      @include mq(wide) {
+        height: 50vw;
+      }
+    }
+  }
   &__item {
-    width: 100%;
+    width: 100vw;
     /* aspect ratios */
-    padding-top: 17%;
     @include mq(mobileWide) {
-      padding-top: 16%;
+      height: 100vw;
     }
     @include mq(tablet) {
-      padding-top: 14%;
+      height: 75vw;
     }
     @include mq(desktop) {
-      padding-top: 12%;
+      height: 60vw;
     }
     @include mq(wide) {
-      padding-top: 10%;
+      height: 50vw;
     }
     background-color: '#222';
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
     border: 0;
-    transition-timing-function: cubic-bezier(0.98, 0, 0.21, 1);
     position: relative;
     &:before {
       content: '';
@@ -35,64 +53,50 @@
       z-index: 1;
     }
   }
-  &__text {
-    transition: opacity 300ms ease;
-    opacity: 0;
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+  &__slide-info {
     display: flex;
-    justify-items: center;
-    align-items: flex-end;
-    padding-bottom: $spacing;
-    @include mq(tablet) {
-      padding-bottom: 78px;
-    }
-    @include mq(desktop) {
-      padding-bottom: 100px;
-    }
-    &--visible {
-      opacity: 1;
-    }
+    flex-direction: column;
+    border: 0;
+    background: none;
     > div {
-      width: 100%;
-      a {
-        border: 0;
-        background: none;
-        h1 {
-          @include font-size(24px, 28px);
-          color: $white;
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-          margin: 0;
-          font-weight: $font-weight-bold;
-          padding: 0 0 0 $spacing--small;
-          @include mq(tablet) {
-            padding: 0 $spacing;
-            margin: $spacing--small 0;
-            @include font-size(40px, 40px);
-          }
-
-          @include mq(desktop) {
-            padding: 0 $spacing;
-            margin: $spacing--small 0;
-            @include font-size(52px, 52px);
-          }
-        }
+      height: 50%;
+      &:first-child {
+        display: flex;
+        align-items: flex-end;
       }
-      p {
-        color: #fff;
-        background-color: rgba(3, 23, 43, 0.7);
-        display: inline-block;
-        max-width: 600px;
-        padding: $spacing--small;
-        @include font-size(15px, 20px);
-        @include mq(tablet) {
-          padding: $spacing;
-          max-width: 700px;
-          @include font-size(18px, 22px);
-        }
+    }
+
+    h1 {
+      @include font-size(24px, 28px);
+      color: $white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      margin: 0;
+      font-weight: $font-weight-bold;
+      padding: 0 0 0 $spacing--small;
+      @include mq(tablet) {
+        padding: 0 $spacing;
+        margin: $spacing--small 0;
+        @include font-size(40px, 40px);
+      }
+
+      @include mq(desktop) {
+        padding: 0 $spacing;
+        margin: $spacing--small 0;
+        @include font-size(52px, 52px);
+      }
+    }
+
+    p {
+      color: #fff;
+      background-color: rgba(3, 23, 43, 0.7);
+      display: inline-block;
+      max-width: 600px;
+      padding: $spacing--small;
+      @include font-size(15px, 20px);
+      @include mq(tablet) {
+        padding: $spacing;
+        max-width: 700px;
+        @include font-size(18px, 22px);
       }
     }
   }

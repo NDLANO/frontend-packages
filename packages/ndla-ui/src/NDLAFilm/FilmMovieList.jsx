@@ -98,7 +98,6 @@ class FilmMovieList extends Component {
         </h1>
         <Swipe
           nodeName="div"
-          className="test"
           mouseSwipe={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>

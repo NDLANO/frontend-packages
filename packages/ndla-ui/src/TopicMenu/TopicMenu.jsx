@@ -192,8 +192,6 @@ export default class TopicMenu extends Component {
 
     const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
 
-    console.log(sliderCounter, expandedSubtopicsId);
-
     return (
       <Trans>
         {({ t }) => (

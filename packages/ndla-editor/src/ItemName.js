@@ -74,6 +74,7 @@ const ItemName = ({
   <div className={itemNameStyling}>
     <ItemTitleButton
       type="button"
+      id={path}
       hasSubtopics={hasSubtopics}
       level={level}
       arrowDirection={isOpen ? 90 : 0}

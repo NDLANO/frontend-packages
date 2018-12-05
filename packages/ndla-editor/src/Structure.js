@@ -110,6 +110,7 @@ const Structure = ({
                 <ItemName
                   isOpen={isOpen}
                   title={name}
+                  lastItemClickable={highlightMainActive}
                   path={pathToString}
                   id={id.includes('topic') ? `${parentId}/${id}` : id}
                   hasSubtopics={!!children || level === 0}

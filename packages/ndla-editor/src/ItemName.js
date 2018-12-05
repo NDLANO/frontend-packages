@@ -47,9 +47,13 @@ display: flex;
 align-items: center;
 text-align: left;
 white-space: nowrap;
-cursor: pointer;
 
 ${props => props.hasSubtopics && itemTitleArrow};
+${props =>
+  props.lastItemClickable &&
+  css`
+    cursor: pointer;
+  `};
 ${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
 &:before {
   transition: transform 200ms ease;
@@ -62,6 +66,8 @@ const itemNameStyling = css`
   justify-content: space-between;
 `;
 
+const ItemTitleSpan = ItemTitleButton.withComponent('span');
+
 const ItemName = ({
   title,
   children,
@@ -70,19 +76,24 @@ const ItemName = ({
   hasSubtopics,
   isOpen,
   level,
+  lastItemClickable,
   id,
 }) => (
   <div className={itemNameStyling}>
-    <ItemTitleButton
-      type="button"
-      id={id}
-      hasSubtopics={hasSubtopics}
-      level={level}
-      arrowDirection={isOpen ? 90 : 0}
-      onClick={() => toggleOpen(path)}>
-      {title}
-    </ItemTitleButton>
-
+    {lastItemClickable || hasSubtopics ? (
+      <ItemTitleButton
+        type="button"
+        id={id}
+        hasSubtopics={hasSubtopics}
+        level={level}
+        lastItemClickable={lastItemClickable}
+        arrowDirection={isOpen ? 90 : 0}
+        onClick={() => toggleOpen(path)}>
+        {title}
+      </ItemTitleButton>
+    ) : (
+      <ItemTitleSpan>{title}</ItemTitleSpan>
+    )}
     {children}
   </div>
 );
@@ -94,6 +105,7 @@ ItemName.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   hasSubtopics: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
+  lastItemClickable: PropTypes.bool,
   id: PropTypes.string,
   level: PropTypes.number,
 };

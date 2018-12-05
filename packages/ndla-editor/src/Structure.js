@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
@@ -28,6 +28,11 @@ const ItemsList = styled.li`
       calc(${props => props.level} * 17px + ${spacing.small});
     height: 40px;
     border-bottom: 1px solid ${colors.brand.greyLighter};
+
+    &:hover {
+      background: ${props =>
+        props.highlight ? colors.brand.light : '#f1f5f8'};
+    }
   }
   > ul {
     display: none;

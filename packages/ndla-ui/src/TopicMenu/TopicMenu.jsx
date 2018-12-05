@@ -390,6 +390,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={!hasExpandedSubtopics}
                       competenceButton={
                         competenceGoals &&
                         this.state.isNarrowScreen &&
@@ -424,6 +425,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={sliderCounter === index + 2}
                       defaultCount={this.props.defaultCount}
                       competenceButton={
                         competenceGoals &&

@@ -102,6 +102,7 @@ class SubtopicLinkList extends Component {
       resourceToLinkProps,
       competenceButton,
       defaultCount,
+      lastOpen,
       t,
     } = this.props;
 
@@ -109,7 +110,9 @@ class SubtopicLinkList extends Component {
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
     const hasContentTypeResults =
-      topic.contentTypeResults && topic.contentTypeResults.length > 0;
+      lastOpen &&
+      topic.contentTypeResults &&
+      topic.contentTypeResults.length > 0;
 
     const hasContentTypeInfo =
       hasContentTypeResults &&
@@ -233,6 +236,7 @@ SubtopicLinkList.propTypes = {
   competenceButton: PropTypes.node,
   defaultCount: PropTypes.number,
   t: PropTypes.func.isRequired,
+  lastOpen: PropTypes.bool,
 };
 
 export default injectT(SubtopicLinkList);

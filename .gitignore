@@ -16,3 +16,4 @@ storybook-static/
 packages/*/.vscode
 *.code-workspace
 .cache
+.vscode

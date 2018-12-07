@@ -36,6 +36,10 @@ const messages = {
   notFoundPage: {
     errorDescription: "We can't seem to find the page you are looking for.",
   },
+  lti: {
+    embed: 'Embed',
+    notSupported: 'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
+  },
   searchPage: {
     noHits: 'Your search - {query} - did not match any articles. ',
     close: 'Close',

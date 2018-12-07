@@ -36,6 +36,10 @@ const messages = {
   notFoundPage: {
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
+  lti: {
+    embed: 'Sett inn',
+    notSupported: 'Det fungerte ikkje å sette inn innhaldet automatisk. Du kan kopiere kildekoden under i ditt innhald.'
+  },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',
     search: 'Søk',

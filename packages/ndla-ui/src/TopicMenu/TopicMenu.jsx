@@ -12,14 +12,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 import debounce from 'lodash/debounce';
 
-import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
-import { SafeLink, Tooltip } from 'ndla-ui';
-import { ModalHeader } from 'ndla-modal';
-import Button from 'ndla-button';
+import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
+import { SafeLink, Tooltip } from '@ndla/ui';
+import { ModalHeader } from '@ndla/modal';
+import Button from '@ndla/button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
@@ -151,6 +151,7 @@ export default class TopicMenu extends Component {
       competenceGoals,
       searchFieldComponent,
       toFrontpage,
+      locale,
     } = this.props;
     const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -209,8 +210,9 @@ export default class TopicMenu extends Component {
                 {!hideSearch && searchFieldComponent}
                 <Logo
                   to="#"
-                  label="Nasjonal digital læringsarena"
                   isBeta={this.props.isBeta}
+                  label={t('logo.altText')}
+                  locale={locale}
                 />
               </div>
             </ModalHeader>
@@ -257,6 +259,7 @@ export default class TopicMenu extends Component {
                         filterOptions.length > 1 && (
                           <div {...classes('filter-wrapper')}>
                             <FilterListPhone
+                              preid="topic-menu"
                               activeFiltersNarrow
                               alignedGroup
                               options={filterOptions}
@@ -361,40 +364,40 @@ export default class TopicMenu extends Component {
                       </div>
                     </Fragment>
                   )}
-                  {expandedTopic &&
-                    !disableSubTopic && (
-                      <SubtopicLinkList
-                        classes={classes}
-                        className={
-                          classes('section', subTopicModifiers).className
-                        }
-                        closeMenu={closeMenu}
-                        topic={expandedTopic}
-                        backLabel={
-                          !hasExpandedSubtopics
-                            ? subjectTitle
-                            : currentlyExpandedSubTopics[
-                                currentlyExpandedSubTopics.length - 1
-                              ].name
-                        }
-                        goToTitle={t('masthead.menu.goTo')}
-                        toTopic={toTopic}
-                        expandedSubtopicId={
-                          currentlyExpandedSubTopics[0] &&
-                          currentlyExpandedSubTopics[0].id
-                        }
-                        onSubtopicExpand={id => {
-                          this.handleSubtopicExpand(id, 0);
-                        }}
-                        onGoBack={this.handleOnGoBack}
-                        resourceToLinkProps={resourceToLinkProps}
-                        competenceButton={
-                          competenceGoals &&
-                          this.state.isNarrowScreen &&
-                          this.renderCompentenceGoals(false, t)
-                        }
-                      />
-                    )}
+                  {expandedTopic && !disableSubTopic && (
+                    <SubtopicLinkList
+                      classes={classes}
+                      className={
+                        classes('section', subTopicModifiers).className
+                      }
+                      closeMenu={closeMenu}
+                      topic={expandedTopic}
+                      backLabel={
+                        !hasExpandedSubtopics
+                          ? subjectTitle
+                          : currentlyExpandedSubTopics[
+                              currentlyExpandedSubTopics.length - 1
+                            ].name
+                      }
+                      goToTitle={t('masthead.menu.goTo')}
+                      toTopic={toTopic}
+                      expandedSubtopicId={
+                        currentlyExpandedSubTopics[0] &&
+                        currentlyExpandedSubTopics[0].id
+                      }
+                      onSubtopicExpand={id => {
+                        this.handleSubtopicExpand(id, 0);
+                      }}
+                      onGoBack={this.handleOnGoBack}
+                      resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={!hasExpandedSubtopics}
+                      competenceButton={
+                        competenceGoals &&
+                        this.state.isNarrowScreen &&
+                        this.renderCompentenceGoals(false, t)
+                      }
+                    />
+                  )}
                   {currentlyExpandedSubTopics.map((subTopic, index) => (
                     <SubtopicLinkList
                       key={subTopic.id}
@@ -422,6 +425,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={sliderCounter === index + 2}
                       defaultCount={this.props.defaultCount}
                       competenceButton={
                         competenceGoals &&
@@ -464,6 +468,7 @@ TopicMenu.propTypes = {
   hideSearch: PropTypes.bool,
   competenceGoals: PropTypes.node,
   searchFieldComponent: PropTypes.node,
+  locale: PropTypes.string,
 };
 
 TopicMenu.defaultProps = {

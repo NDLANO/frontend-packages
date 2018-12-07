@@ -9,8 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { uuid } from 'ndla-util';
-import { Home } from 'ndla-icons/common';
+import { uuid } from '@ndla/util';
+import { Home } from '@ndla/icons/common';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const classes = BEMHelper({

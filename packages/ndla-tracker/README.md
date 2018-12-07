@@ -13,6 +13,7 @@ $ yarn add ndla-tracker
 ```
 
 ## Usage
+
 To use the tracker you need to configure the tracker with correct google analytics id, google tag manager id and a listener for when the history changes:
 
 ```javascript
@@ -34,10 +35,11 @@ ReactDOM.render(
 ```
 
 Tracking can be used in two different ways. Either with a default React component called `HelmetWithTracker`:
+
 ```javascript
 import { HelmetWithTracker } from 'ndla-tracker';
 
-const SomeTrackableComponent = ({title}) => {
+const SomeTrackableComponent = ({ title }) => {
   return (
     <div>
       <HelmetWithTracker title={title} />
@@ -98,7 +100,9 @@ export default withTracker(SomeTrackableComponent);
 ```
 
 ## PropTypes
+
 ###### PropTypes for HelmetWithTracker
-| Props                | Type    | Required | Description                         |
-| -------------------  | :----:  | :------: | :-----------------------------------|
-| title                | String  | *        | A title (meta) used for the tracker.|
+
+| Props |  Type  | Required | Description                          |
+| ----- | :----: | :------: | :----------------------------------- |
+| title | String |    \*    | A title (meta) used for the tracker. |

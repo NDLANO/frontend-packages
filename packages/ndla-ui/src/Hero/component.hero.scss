@@ -36,11 +36,11 @@
   }
 }
 .c-hero__content {
-  padding: 0 0 $spacing--small;
+  padding: $spacing--small 0 $spacing--small;
   z-index: 9;
 
   @include mq(tablet) {
-    min-height: 90px;
+    height: 90px;
     padding-bottom: $spacing--small/2;
   }
   display: flex;

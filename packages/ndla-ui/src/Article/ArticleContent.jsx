@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import {
   initArticleScripts,
   removeEventListenerForResize,
-} from 'ndla-article-scripts';
+} from '@ndla/article-scripts';
 
 export default class ArticleContent extends Component {
   componentDidMount() {

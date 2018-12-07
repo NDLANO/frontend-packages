@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FacebookProvider, { EmbeddedPost } from 'react-facebook';
+import { FacebookProvider, EmbeddedPost } from 'react-facebook';
 
 const EmbeddedFacebook = props => (
   <div>

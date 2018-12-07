@@ -26,7 +26,7 @@ const openLicenseLinkTextEN = 'Learn more about open licenses';
 const byncnd = {
   nn: {
     short: restrictedReuseNN,
-    title: 'Namngiving-IkkjeKommersiell-IngenTilarbeiding',
+    title: 'CC BY-NC-ND 4.0: Namngiving-Ikkjekommersiell-Ingen tilarbeiding',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
@@ -35,7 +35,7 @@ const byncnd = {
   },
   nb: {
     short: restrictedReuseNB,
-    title: 'Navngivelse-IkkeKommersiell-IngenBearbeidelser',
+    title: 'CC BY-NC-ND 4.0: Navngivelse-Ikkekommersiell-Ingen bearbeidelse',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
@@ -45,7 +45,7 @@ const byncnd = {
 
   en: {
     short: restrictedReuseEN,
-    title: 'Attribution-NonCommercial-NoDerivs',
+    title: 'CC BY-NC-ND 4.0: Attribution-NonCommercial-NoDerivs',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
@@ -59,16 +59,16 @@ const byncnd = {
 const byncsa = {
   nn: {
     short: restrictedReuseNN,
-    title: 'Namngiving-IkkjeKommersiell-DelPåSameVilkår',
+    title: 'CC BY-NC-SA 4.0: Namngiving-Ikkjekommersiell-Del på same vilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
     description:
-      'Denne lisensen let andre distribuera, endra, remixa, og byggja vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavspersonen og avledeta verk må bera ein lisens som svarar til denne.',
+      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt for ikkje-kommersielle formål. Deira verk må namngje deg som den opprinnelige opphavspersonen og avleia verk må bera ein lisens som svarar til denne.',
   },
   nb: {
     short: restrictedReuseNB,
-    title: 'Navngivelse-IkkeKommersiell-DelPåSammeVilkår',
+    title: 'CC BY-NC-SA 4.0: Navngivelse-Ikkekommersiell-Del på samme vilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
@@ -78,7 +78,7 @@ const byncsa = {
 
   en: {
     short: restrictedReuseEN,
-    title: 'Attribution-NonCommercial-ShareAlike',
+    title: 'CC BY-NC-SA 4.0: Attribution-NonCommercial-ShareAlike',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
@@ -92,16 +92,16 @@ const byncsa = {
 const bync = {
   nn: {
     short: restrictedReuseNN,
-    title: 'Namngiving-IkkjeKommersiell',
+    title: 'CC BY-NC 4.0: Namngiving-Ikkjekommersiell',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
     description:
-      'Denne lisensen let andre distribuera, endra, remixa, og byggja videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavsperson og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
+      'Denne lisensen let andre distribuer, endre, remixe, og byggje videre på verket ditt for ikkje-kommersielle formål. Verket deira må namngje deg som opphavsperson og også vera ikkje-kommersielle, men dei treng ikkje krevja at verk avleda av deira ber dei same vilkåra.',
   },
   nb: {
     short: restrictedReuseNB,
-    title: 'Navngivelse-IkkeKommersiell',
+    title: 'CC BY-NC 4.0: Navngivelse-Ikkekommersiell',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
@@ -111,7 +111,7 @@ const bync = {
 
   en: {
     short: restrictedReuseEN,
-    title: 'Attribution-NonCommercial',
+    title: 'CC BY-NC 4.0: Attribution-NonCommercial',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nc/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
@@ -125,7 +125,7 @@ const bync = {
 const bynd = {
   nn: {
     short: restrictedReuseNN,
-    title: 'Namngiving-IngenTilarbeiding',
+    title: 'CC BY-ND 4.0: Namngiving-Ingen tilarbeiding',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
@@ -134,7 +134,7 @@ const bynd = {
   },
   nb: {
     short: restrictedReuseNB,
-    title: 'Navngivelse-IngenBearbeidelse',
+    title: 'CC BY-ND 4.0: Navngivelse-Ingen bearbeidelse',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
@@ -144,7 +144,7 @@ const bynd = {
 
   en: {
     short: restrictedReuseEN,
-    title: 'Attribution-NoDerivs',
+    title: 'CC BY-ND 4.0: Attribution-NoDerivs',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-nd/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
@@ -158,16 +158,16 @@ const bynd = {
 const bysa = {
   nn: {
     short: restrictedReuseNN,
-    title: 'Namngiving-DelPåSameVilkår',
+    title: 'CC BY-SA 4.0: Namngiving-Del på samme vilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
     description:
-      'Fri gjenbruk ved namngiving. Navngiving vil seie at du oppgir namnet til opphavspersonen/ane. Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
+      'Fri gjenbruk ved namngiving. Namngiving vil seie at du oppgir namnet til opphavspersonen/ane. Om du deler, må andre også få lov til å dele vidare på same vilkår. Dette sikrar vidare gjenbruk og bidreg til delingskultur.',
   },
   nb: {
     short: restrictedReuseNB,
-    title: 'Navngivelse-DelPåSammeVilkår',
+    title: 'CC BY-SA 4.0: Navngivelse-Del på samme vilkår',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
@@ -177,7 +177,7 @@ const bysa = {
 
   en: {
     short: restrictedReuseEN,
-    title: 'Attribution ShareAlike',
+    title: 'CC BY-SA 4.0: Attribution ShareAlike',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
@@ -191,16 +191,16 @@ const bysa = {
 const by = {
   nn: {
     short: freeUseNN,
-    title: 'Navngivelse',
+    title: 'CC BY 4.0: Namngiving',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by/4.0/deed.no',
     linkText: openLicenseLinkTextNN,
     description:
-      'Denne lisensen let andre distribuera, endra, remixa, og byggje vidare på verket ditt, også for kommersielle formål, så lenge dei namngir deg som den opphavlege opphavspersonen. Dette er den mest fleksible og opne lisensen vi tilbyr. Den vert tilrådd om du ynsker maksimal spreiing og bruk av materiale under ein CC-lisens.',
+      'Denne lisensen let andre distribuere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, så lenge dei namngir deg som den opphavlege opphavspersonen. Dette er den mest fleksible og opne lisensen vi tilbyr. Den vert tilrådd om du ynsker maksimal spreiing og bruk av materiale under ein CC-lisens.',
   },
   nb: {
     short: freeUseNB,
-    title: 'Navngivelse',
+    title: 'CC BY 4.0: Navngivelse',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by/4.0/deed.no',
     linkText: openLicenseLinkTextNB,
@@ -210,7 +210,7 @@ const by = {
 
   en: {
     short: freeUseEN,
-    title: 'Attribution',
+    title: 'CC BY 4.0: Attribution',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/licenses/by/4.0/deed.en',
     linkText: openLicenseLinkTextEN,
@@ -224,16 +224,16 @@ const by = {
 const pd = {
   nn: {
     short: freeUseNN,
-    title: 'Offentleg domene',
+    title: 'PD Public domain merket: Offentleg eigedom',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
     linkText: 'Lær meir om public domain-merker',
     description:
-      'Dette merket let andre kopiera, endra, remixa, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
+      'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
   nb: {
     short: freeUseNB,
-    title: 'Offentlig domene',
+    title: 'PD Public domain merket: Offentlig eiendom',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/deed.no',
     linkText: 'Lær mer om public domain-merker',
@@ -243,7 +243,7 @@ const pd = {
 
   en: {
     short: freeUseEN,
-    title: 'Public Domain Mark',
+    title: 'PD: Public Domain Mark',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/mark/1.0/',
     linkText: 'Learn more about public domain marks',
@@ -258,16 +258,16 @@ const pd = {
 const cc0 = {
   nn: {
     short: freeUseNN,
-    title: 'Fristatus-erklæring',
+    title: 'CC0 Public domain dedication: Gitt til fellesskapet',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
     linkText: 'Lær meir om public domain-merker',
     description:
-      'Dette merket let andre kopiera, endra, remixa, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
+      'Dette merket let andre kopiere, endre, remixe, og byggje vidare på verket ditt, også for kommersielle formål, utan å be om løyve.',
   },
   nb: {
     short: freeUseNB,
-    title: 'Fristatus-erklæring',
+    title: 'CC0 Public domain dedication: Gitt til fellesskapet',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.no',
     linkText: 'Lær mer om public domain-merker',
@@ -277,7 +277,7 @@ const cc0 = {
 
   en: {
     short: freeUseEN,
-    title: 'Public Domain Dedication',
+    title: 'CC0: Public Domain Dedication',
     userFriendlyTitle: '',
     url: 'https://creativecommons.org/publicdomain/zero/1.0/',
     linkText: 'Learn more about public domain marks',
@@ -296,7 +296,7 @@ const copy = {
     url: 'http://www.delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær meir om opphavsrett',
     description:
-      'Det er berre den som har laga innhaldet som kan endra, publisera og gje andre rett til å bruka innhaldet.',
+      'Det er berre den som har laga innhaldet som kan endra, publisera og gje andre rett til å nytte innhaldet.',
   },
   nb: {
     short: restrictedUseNB,

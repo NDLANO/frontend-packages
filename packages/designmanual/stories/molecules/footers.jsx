@@ -1,17 +1,18 @@
 import React from 'react';
 
-import { Footer } from 'ndla-ui';
+import { Footer } from '@ndla/ui';
 
 const FooterExample = () => (
   <Footer>
     <div className="footer_form">
+      {/* eslint-disable jsx-a11y/label-has-associated-control  */}
       <label htmlFor="language-select" className="footer_label footer--bold">
         Velg språk
+        <select id="language-select" className="footer_language-select">
+          <option value="Norsk">Norsk</option>
+          <option value="English">English</option>
+        </select>
       </label>
-      <select id="language-select" className="footer_language-select">
-        <option value="Norsk">Norsk</option>
-        <option value="English">English</option>
-      </select>
     </div>
     <Footer.Ruler />
     <Footer.Text>

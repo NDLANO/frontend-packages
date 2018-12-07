@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Forward } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
+import { Forward } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
 import SafeLink from '../common/SafeLink';
 import SectionHeading from '../SectionHeading';
 
@@ -69,15 +69,8 @@ class SubjectArchive extends Component {
       </section>
     );
 
-    const wrapperStyles = this.state.minHeight
-      ? {
-          minHeight: this.state.minHeight,
-        }
-      : null;
-
     return (
       <section
-        style={wrapperStyles}
         {...classes('', {
           fixedWidth,
           animate: this.state.minHeight,

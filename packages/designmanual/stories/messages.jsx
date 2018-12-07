@@ -10,8 +10,8 @@ import {
   messagesNN,
   messagesNB,
   messagesEN,
-} from 'ndla-ui';
-import { formatNestedMessages } from 'ndla-i18n';
+} from '@ndla/ui';
+import { formatNestedMessages } from '@ndla/i18n';
 import { Center } from './helpers';
 
 const classes = BEMHelper('c-table');

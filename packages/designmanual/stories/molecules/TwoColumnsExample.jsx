@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TopicIntroductionList, SubjectFilter } from 'ndla-ui';
+import { TopicIntroductionList, SubjectFilter } from '@ndla/ui';
 import { topicList } from '../../dummydata/index';
 
 class TopicListExample extends Component {

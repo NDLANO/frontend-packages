@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import * as licenseIcons from 'ndla-icons/license';
-import * as contentTypeIcons from 'ndla-icons/contentType';
-import * as commonIcons from 'ndla-icons/common';
-import * as editorIcons from 'ndla-icons/editor';
-import * as actionIcons from 'ndla-icons/action';
-import { BY, NC, ND } from 'ndla-licenses';
+import * as licenseIcons from '@ndla/icons/licenses';
+import * as contentTypeIcons from '@ndla/icons/contentType';
+import * as commonIcons from '@ndla/icons/common';
+import * as editorIcons from '@ndla/icons/editor';
+import * as actionIcons from '@ndla/icons/action';
+import { BY, NC, ND } from '@ndla/licenses';
 import {
   Aside,
   FactBox,
@@ -17,8 +17,8 @@ import {
   Image,
   AudioPlayer,
   OneColumn,
-} from 'ndla-ui';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Button from '@ndla/button';
 
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import { InlineContainer } from './helpers';
@@ -285,8 +285,8 @@ storiesOf('Enkle komponenter', module)
           skyver brødteksten for langt ned på siden.
         </p>
         <p>
-          Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />Anbefalt
-          bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
+          Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />
+          Anbefalt bildestørrelse minimum: 1000px (bredde) x 500px (høyde).
         </p>
       </StoryIntro>
       <StoryBody>
@@ -745,7 +745,8 @@ storiesOf('Enkle komponenter', module)
           Kildehenvisninger benytter{' '}
           <a href="http://sokogskriv.no/kildebruk-og-referanser/referansestiler/chicago-fotnoter/">
             Chicago 16-stilen
-          </a>.
+          </a>
+          .
         </p>
         <p>
           I teksten brukes en enkel nummerering for å henvise til referanse.

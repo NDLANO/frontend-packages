@@ -9,11 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { colors, spacing } from 'ndla-core';
+import { colors, spacing } from '@ndla/core';
 
 const StyledAccordionPanel = styled.section`
   display: flex;
-  overflow-y: auto;
   transition: opacity 200ms ease;
   opacity: 1;
   margin-bottom: ${spacing.normal};

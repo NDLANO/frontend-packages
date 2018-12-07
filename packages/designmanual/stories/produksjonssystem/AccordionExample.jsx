@@ -11,9 +11,9 @@ import Accordion, {
   AccordionBar,
   AccordionPanel,
   AccordionWrapper,
-} from 'ndla-accordion';
-import Button from 'ndla-button';
-import { FilterList } from 'ndla-ui';
+} from '@ndla/accordion';
+import Button from '@ndla/button';
+import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';
 

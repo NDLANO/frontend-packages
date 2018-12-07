@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { TranslationBox } from 'ndla-ui';
-import { initArticleTabs } from 'ndla-article-scripts';
+import { TranslationBox } from '@ndla/ui';
+import { initArticleTabs } from '@ndla/article-scripts';
 
 class TranslationBoxExample extends Component {
   componentDidMount() {

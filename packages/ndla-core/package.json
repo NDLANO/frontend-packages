@@ -1,19 +1,11 @@
 {
-  "name": "ndla-core",
-  "version": "0.3.1",
+  "name": "@ndla/core",
+  "version": "0.4.3",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "sideEffects": false,
-  "scripts": {
-    "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "rimraf lib es",
-    "prepublish": "npm run clean && npm run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-core/"
@@ -32,5 +24,8 @@
     "inuitcss": "6.0.0-beta.4",
     "polished": "^2.2.0",
     "sass-mq": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

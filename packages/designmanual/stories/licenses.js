@@ -1,9 +1,9 @@
 import React from 'react';
-import { uuid } from 'ndla-util';
+import { uuid } from '@ndla/util';
 import {
   getLicenseRightByAbbreviation,
   getLicenseByAbbreviation,
-} from 'ndla-licenses';
+} from '@ndla/licenses';
 import { storiesOf } from '@storybook/react';
 import { LanguageSelectorNonMessages } from './LanguageWrapper';
 import { StoryIntro, StoryBody } from './wrappers';

@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -47,7 +47,7 @@ const messages = {
       content: 'Content:',
       contentTypes: 'Content types',
       levels: 'Level',
-      'language-filter': 'Language',
+      languageFilter: 'Language',
       subjects: 'Subjects',
       noFilter: 'No filter selected',
       createdBy: 'Created by:',
@@ -55,13 +55,13 @@ const messages = {
     showLabel: {
       contentTypes: 'More content types',
       levels: 'More levels',
-      'language-filter': 'More languages',
+      languageFilter: 'More languages',
       subjects: 'Change subject',
     },
     hideLabel: {
       contentTypes: 'Hide content types',
       levels: 'Hide levels',
-      'language-filter': 'Hide languages',
+      languageFilter: 'Hide languages',
       subjects: 'Hide subjects',
     },
     searchField: {
@@ -213,6 +213,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Show more learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Show more external learning resources',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
@@ -220,6 +222,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Show less learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Show less external learning resources',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
@@ -227,6 +231,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'No learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'No source materials',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'No external learning resources',
       },
     },
   },
@@ -275,6 +281,7 @@ const messages = {
     singleAuthorsLabelAria: 'The author of this article is {name}',
   },
   competenceGoals: {
+    title: 'Competance goals and curriculum ',
     closeCompetenceGoals: 'Close competance goals',
     showCompetenceGoals: 'Show competance goals',
     openCompentenceGoalsFilter: 'Filter competence goals',
@@ -418,6 +425,9 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'To the frontpage',
+  },
+  notions: {
+    closeNotion: 'Close',
   },
 };
 

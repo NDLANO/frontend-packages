@@ -11,7 +11,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SvgLogo from './SvgLogo';
-import Beta from './Beta';
 import SafeLink from '../common/SafeLink';
 
 export const logoClasses = new BEMHelper({
@@ -22,30 +21,25 @@ export const logoClasses = new BEMHelper({
 export const Logo = ({
   name,
   to,
-  isBeta,
   cssModifier,
   color,
   large,
+  locale,
   label,
 }) => {
-  const beta = isBeta ? <Beta /> : null;
   const modifiers = { large };
 
   if (cssModifier) {
     modifiers[cssModifier] = true;
   }
 
-  if (isBeta) {
-    modifiers.beta = true;
-  }
-
   const logo = to ? (
     <SafeLink to={to} aria-label={label}>
-      <SvgLogo name={name} color={color} /> {beta}
+      <SvgLogo name={name} color={color} locale={locale} />
     </SafeLink>
   ) : (
     <Fragment>
-      <SvgLogo name={name} color={color} /> {beta}
+      <SvgLogo name={name} color={color} locale={locale} />
     </Fragment>
   );
   return <h1 {...logoClasses('', modifiers)}>{logo}</h1>;
@@ -61,10 +55,10 @@ Logo.propTypes = {
     }),
   ]),
   label: PropTypes.string.isRequired,
+  locale: PropTypes.string,
   cssModifier: PropTypes.string,
   large: PropTypes.bool,
   name: PropTypes.bool,
-  isBeta: PropTypes.bool,
   color: PropTypes.string,
 };
 

@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight, Additional } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
-import { uuid } from 'ndla-util';
-import { Trans } from 'ndla-i18n';
-import Button from 'ndla-button';
+import { ChevronRight, Additional } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
+import { uuid } from '@ndla/util';
+import { Trans } from '@ndla/i18n';
+import Button from '@ndla/button';
 
-import { FilterTabs } from 'ndla-tabs';
+import { FilterTabs } from '@ndla/tabs';
 import Tooltip from '../Tooltip';
 import SafeLink from '../common/SafeLink';
 
@@ -25,39 +25,43 @@ export const SearchResult = ({
   competenceGoalsOpen,
   onToggleCompetenceGoals,
   competenceGoals,
+  hideResultText,
 }) => (
   <Trans>
     {({ t }) => (
-      <div {...resultClasses()}>
-        {author || (
-          <div {...resultClasses('heading-wrapper')}>
-            <h1
-              {...resultClasses(
-                'heading',
-                currentCompetenceGoal ? 'competence-goal' : null,
-              )}>
-              {messages.searchStringLabel} <span>{searchString}</span>
-            </h1>
-            {competenceGoalsOpen && (
-              <Button
-                link
-                {...resultClasses('close-competencegoals-btn')}
-                onClick={onToggleCompetenceGoals}>
-                {t('competenceGoals.closeCompetenceGoals')}
-                <Cross className="c-icon--22 u-margin-left-tiny" />
-              </Button>
-            )}
-          </div>
-        )}
-        <h2>{messages.subHeading}</h2>
-        {!competenceGoalsOpen &&
-          currentCompetenceGoal && (
+      <Fragment>
+        <h2 aria-hidden="true" {...resultClasses('result-label')}>
+          {!hideResultText ? messages.resultHeading : '\u00A0'}
+        </h2>
+
+        <div {...resultClasses()}>
+          {author || (
+            <div {...resultClasses('heading-wrapper')}>
+              <h1
+                {...resultClasses(
+                  'heading',
+                  currentCompetenceGoal ? 'competence-goal' : null,
+                )}>
+                {messages.searchStringLabel} <span>{searchString}</span>
+              </h1>
+              {competenceGoalsOpen && (
+                <Button
+                  link
+                  {...resultClasses('close-competencegoals-btn')}
+                  onClick={onToggleCompetenceGoals}>
+                  {t('competenceGoals.closeCompetenceGoals')}
+                  <Cross className="c-icon--22 u-margin-left-tiny" />
+                </Button>
+              )}
+            </div>
+          )}
+          <h2>{messages.subHeading}</h2>
+          {!competenceGoalsOpen && currentCompetenceGoal && (
             <ul {...resultClasses('current-goal')}>
               <li>{currentCompetenceGoal}</li>
             </ul>
           )}
-        {!competenceGoalsOpen &&
-          competenceGoals !== null && (
+          {!competenceGoalsOpen && competenceGoals && (
             <p {...resultClasses('current-goal-info')}>
               {messages.openCompetenceGoalsButtonPrefix}{' '}
               <Button link onClick={onToggleCompetenceGoals}>
@@ -65,30 +69,32 @@ export const SearchResult = ({
               </Button>
             </p>
           )}
-        {competenceGoalsOpen && (
-          <div {...resultClasses('competence-goals')}>{competenceGoals}</div>
-        )}
-        {!competenceGoalsOpen && (
-          <Fragment>
-            <FilterTabs
-              dropdownBtnLabel={t(
-                'searchPage.searchPageMessages.dropdownBtnLabel',
-              )}
-              value={currentTab}
-              options={tabOptions}
-              contentId="search-result-content"
-              onChange={onTabChange}>
-              {children}
-            </FilterTabs>
-            <div {...resultClasses('narrow-result')}>{children}</div>
-          </Fragment>
-        )}
-      </div>
+          {competenceGoalsOpen && (
+            <div {...resultClasses('competence-goals')}>{competenceGoals}</div>
+          )}
+          {!competenceGoalsOpen && (
+            <Fragment>
+              <FilterTabs
+                dropdownBtnLabel={t(
+                  'searchPage.searchPageMessages.dropdownBtnLabel',
+                )}
+                value={currentTab}
+                options={tabOptions}
+                contentId="search-result-content"
+                onChange={onTabChange}>
+                {children}
+              </FilterTabs>
+              <div {...resultClasses('narrow-result')}>{children}</div>
+            </Fragment>
+          )}
+        </div>
+      </Fragment>
     )}
   </Trans>
 );
 
 SearchResult.propTypes = {
+  hideResultText: PropTypes.bool,
   tabOptions: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -177,24 +183,23 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
             </span>
           ))}
       </header>
-      {item.breadcrumb &&
-        item.breadcrumb.length > 0 && (
-          <div {...searchResultItemClasses('breadcrumb')}>
-            {item.breadcrumb.map((breadcrumbItem, index) => {
-              let icon = null;
+      {item.breadcrumb && item.breadcrumb.length > 0 && (
+        <div {...searchResultItemClasses('breadcrumb')}>
+          {item.breadcrumb.map((breadcrumbItem, index) => {
+            let icon = null;
 
-              if (index !== item.breadcrumb.length - 1) {
-                icon = <ChevronRight />;
-              }
-              return (
-                <Fragment key={uuid()}>
-                  <span>{breadcrumbItem}</span>
-                  {icon}
-                </Fragment>
-              );
-            })}
-          </div>
-        )}
+            if (index !== item.breadcrumb.length - 1) {
+              icon = <ChevronRight />;
+            }
+            return (
+              <Fragment key={uuid()}>
+                <span>{breadcrumbItem}</span>
+                {icon}
+              </Fragment>
+            );
+          })}
+        </div>
+      )}
       <div {...searchResultItemClasses('content')}>
         <p
           {...searchResultItemClasses('ingress')}
@@ -202,23 +207,22 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
         />
         {item.image}
       </div>
-      {item.subjects &&
-        item.subjects.length !== 0 && (
-          <div {...searchResultItemClasses('subjects')}>
-            <span>{subjectsLabel}</span>
-            <ul>
-              {item.subjects.map(subject => (
-                <li key={uuid()}>
-                  {subject.url.href ? (
-                    <a {...subject.url}>{subject.title}</a>
-                  ) : (
-                    <SafeLink to={subject.url}>{subject.title}</SafeLink>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      {item.subjects && item.subjects.length !== 0 && (
+        <div {...searchResultItemClasses('subjects')}>
+          <span>{subjectsLabel}</span>
+          <ul>
+            {item.subjects.map(subject => (
+              <li key={uuid()}>
+                {subject.url.href ? (
+                  <a {...subject.url}>{subject.title}</a>
+                ) : (
+                  <SafeLink to={subject.url}>{subject.title}</SafeLink>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </article>
   </li>
 );
@@ -229,33 +233,38 @@ SearchResultItem.propTypes = {
   subjectsLabel: PropTypes.string.isRequired,
 };
 
-export const SearchResultList = ({ results }) => (
-  <Trans>
-    {({ t }) =>
-      results.length === 0 ? (
-        <article className="c-search-result-list__empty">
-          <h1>{t('searchPage.searchResultListMessages.noResultHeading')}</h1>
-          <p>{t('searchPage.searchResultListMessages.noResultDescription')}</p>
-        </article>
-      ) : (
-        <ul className="c-search-result-list">
-          {results.map(item => (
-            <SearchResultItem
-              key={`search_result_item_${
-                typeof item.url === 'object' ? item.url.href : item.url
-              }`}
-              item={item}
-              additionalContentToolip={t('resource.tooltipAdditionalTopic')}
-              subjectsLabel={t(
-                'searchPage.searchResultListMessages.subjectsLabel',
-              )}
-            />
-          ))}
-        </ul>
-      )
-    }
-  </Trans>
-);
+export const SearchResultList = ({ results }) => {
+  if (!results) return <article className="c-search-result-list__empty" />;
+  return (
+    <Trans>
+      {({ t }) =>
+        results.length === 0 ? (
+          <article className="c-search-result-list__empty">
+            <h1>{t('searchPage.searchResultListMessages.noResultHeading')}</h1>
+            <p>
+              {t('searchPage.searchResultListMessages.noResultDescription')}
+            </p>
+          </article>
+        ) : (
+          <ul className="c-search-result-list">
+            {results.map(item => (
+              <SearchResultItem
+                key={`search_result_item_${
+                  typeof item.url === 'object' ? item.url.href : item.url
+                }`}
+                item={item}
+                additionalContentToolip={t('resource.tooltipAdditionalTopic')}
+                subjectsLabel={t(
+                  'searchPage.searchResultListMessages.subjectsLabel',
+                )}
+              />
+            ))}
+          </ul>
+        )
+      }
+    </Trans>
+  );
+};
 
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),

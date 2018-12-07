@@ -13,7 +13,7 @@ $ npm install ndla-licenses
 ### Get license by abbreviation
 
 ```js
-import getLicenseByAbbreviation from 'ndla-licenses';
+import getLicenseByAbbreviation from '@ndla/licenses';
 
 const license = getLicenseByAbbreviation('CC-BY-NC-4.0', 'en');
 
@@ -34,7 +34,7 @@ console.log(license);
 ### Get license right info by abbreviation/constant
 
 ```js
-import { getLicenseRightByAbbreviation, BY, CC } from 'ndla-licenses';
+import { getLicenseRightByAbbreviation, BY, CC } from '@ndla/licenses';
 
 const licenseRight = getLicenseRightByAbbreviation(BY, 'en');
 
@@ -56,7 +56,7 @@ console.log(licenseRight);
 
 ```js
 import React from 'react';
-import { BY, SA } from 'ndla-licenses';
+import { BY, SA } from '@ndla/licenses';
 import Icon from './Icons';
 
 const LicenseIcon = ({ licenseRight }) => {

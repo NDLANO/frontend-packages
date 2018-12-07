@@ -3,7 +3,7 @@
   position: relative;
   height: 180px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   background: $brand-color;
 
   @include mq(tablet) {
@@ -60,7 +60,7 @@
   &__heading {
     @include font-size(24px, 28px);
     color: $white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     margin: $spacing--medium 0 0 0;
     font-weight: $font-weight-bold;
     padding: 0 $spacing;
@@ -76,7 +76,5 @@
       @include font-size(52px, 52px);
       padding: 0 0 0 $subject-margin;
     }
-
-
   }
 }

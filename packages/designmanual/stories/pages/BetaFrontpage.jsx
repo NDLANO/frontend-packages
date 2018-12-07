@@ -16,7 +16,7 @@ import {
   ArticleIntroduction,
   ArticleHeaderWrapper,
   InfoBox,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
 export default () => (
   <OneColumn cssModifier="narrow">
@@ -25,7 +25,8 @@ export default () => (
         <ArticleHeaderWrapper>
           <InfoBox>
             <p>
-              Alt innhold vil ikke være med i betaversjonen.<br />
+              Alt innhold vil ikke være med i betaversjonen.
+              <br />
               Vi har prioritert kjernestoff framfor tilleggsstoff. Noen emner og
               fagstoff kan mangle.
             </p>

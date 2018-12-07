@@ -29,7 +29,8 @@
     #HelpCircleDual-symbol {
       fill: $brand-color--dark;
     }
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       #HelpCircleDual-background {
         fill: $brand-color;
       }
@@ -153,14 +154,14 @@
         .c-content-type-badge {
           display: none;
 
-          @include mq(desktop) {
+          @include mq(tablet) {
             display: inline-flex;
           }
         }
       }
 
       &__content {
-        @include mq(desktop) {
+        @include mq(tablet) {
           margin-left: $spacing--medium + $spacing--large;
         }
       }

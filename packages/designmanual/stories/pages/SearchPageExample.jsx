@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { Core, Additional } from 'ndla-icons/common';
+import { Core, Additional } from '@ndla/icons/common';
 
 import {
   SearchPage,
@@ -16,9 +16,9 @@ import {
   ExternalLearningResourcesBadge,
   TasksAndActivitiesBadge,
   Image,
-} from 'ndla-ui';
+} from '@ndla/ui';
 
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 
@@ -252,7 +252,6 @@ class SearchPageExample extends Component {
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
-        hideResultText={this.state.competenceGoalsOpen}
         onSearchFieldChange={() => {}}
         onSearchFieldFilterRemove={(value, filterName) => {
           if (this.state[filterName]) {
@@ -278,14 +277,6 @@ class SearchPageExample extends Component {
         activeFilters={activeSubjectFilters.concat(activeOtherFilters)}
         author={authorTablet}
         messages={{
-          resultHeading: hasAuthor
-            ? t('searchPage.searchPageMessages.resultHeadingByAuthor', {
-                totalCount: 37,
-                author: 'Cecilie',
-              })
-            : t('searchPage.searchPageMessages.resultHeading', {
-                totalCount: 43,
-              }),
           narrowScreenFilterHeading: '10 treff på «ideutvikling»',
         }}
         resourceToLinkProps={() => {}}
@@ -370,11 +361,11 @@ class SearchPageExample extends Component {
               }}
             />
             <SearchFilter
-              label={t('searchPage.label.language-filter')}
+              label={t('searchPage.label.languageFilter')}
               options={searchFilterOptions.languageFilter}
               defaultVisibleCount={2}
-              showLabel={t('searchPage.showLabel.language-filter')}
-              hideLabel={t('searchPage.hideLabel.language-filter')}
+              showLabel={t('searchPage.showLabel.languageFilter')}
+              hideLabel={t('searchPage.hideLabel.languageFilter')}
               values={this.state.filter_languageFilter}
               onChange={values => {
                 this.setState({ filter_languageFilter: values });
@@ -392,10 +383,19 @@ class SearchPageExample extends Component {
         }>
         <SearchResult
           author={authorDesktop}
+          hideResultText={this.state.competenceGoalsOpen}
           messages={{
             searchStringLabel: t(
               'searchPage.searchResultMessages.searchStringLabel',
             ),
+            resultHeading: hasAuthor
+              ? t('searchPage.searchPageMessages.resultHeadingByAuthor', {
+                  totalCount: 37,
+                  author: 'Cecilie',
+                })
+              : t('searchPage.searchPageMessages.resultHeading', {
+                  totalCount: 43,
+                }),
             subHeading: t('searchPage.searchPageMessages.resultHeading', {
               totalCount: 43,
             }),

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { colors, spacing, mq } from 'ndla-core';
+import { colors, spacing, mq } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
 
 const StyledErrorMessage = styled('article')`

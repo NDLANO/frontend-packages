@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { isMobile, isIE } from 'react-device-detect';
-
 import { Fade } from '../Animation';
 
 const classes = new BEMHelper({
@@ -37,7 +36,7 @@ class Tooltip extends Component {
   }
 
   getPosition() {
-    if (this.state.showTooltip) {
+    if (this.state.showTooltip && this.tooltipRef.current) {
       this.currentStyles = {};
       this.widthRef = this.contentRef.current.offsetWidth;
       this.heightRef = this.contentRef.current.offsetHeight;

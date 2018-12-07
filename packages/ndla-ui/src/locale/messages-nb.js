@@ -37,7 +37,8 @@ const messages = {
   },
   lti: {
     embed: 'Sett inn',
-    notSupported: 'Det fungerte ikke å sette inn innholdet automatisk. Du kan kopiere kildekoden under i ditt innhold.'
+    notSupported:
+      'Det fungerte ikke å sette inn innholdet automatisk. Du kan kopiere kildekoden under i ditt innhold.',
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',

@@ -38,7 +38,8 @@ const messages = {
   },
   lti: {
     embed: 'Embed',
-    notSupported: 'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
+    notSupported:
+      'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
   },
   searchPage: {
     noHits: 'Your search - {query} - did not match any articles. ',

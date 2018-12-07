@@ -39,7 +39,7 @@ const messages = {
   lti: {
     embed: 'Sett inn',
     notSupported:
-      'Det fungerte ikkje å sette inn innhaldet automatisk. Du kan kopiere kildekoden under i ditt innhald.',
+      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på din side.',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',

@@ -35,7 +35,6 @@
     "@ndla/licenses": "^0.4.1",
     "@ndla/modal": "^0.2.4",
     "@ndla/tabs": "^0.9.3",
-    "@ndla/ui": "^0.18.10",
     "@ndla/util": "^0.3.1",
     "classnames": "2.2.6",
     "focus-trap": "^3.0.0",

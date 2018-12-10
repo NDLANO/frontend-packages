@@ -27,6 +27,7 @@ class AccordionExample extends Component {
   }
 
   handlePanelErrors(values) {
+    console.log(values);
     this.setState({
       errorPanels: values,
     });
@@ -124,6 +125,7 @@ class AccordionExample extends Component {
         </h2>
         <FilterList
           label="Simuler feilmeldinger:"
+          preid="filter-list"
           options={[
             { title: 'Tab 1', value: 0 },
             { title: 'Tab 2', value: 1 },

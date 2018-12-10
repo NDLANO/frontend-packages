@@ -23,7 +23,7 @@
     "@ndla/core": "^0.4.3"
   },
   "peerDependencies": {
-    "prop-types": "15.6.1",
+    "prop-types": "^15.6.0",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1"
   },

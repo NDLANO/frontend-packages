@@ -34,9 +34,9 @@
     "@ndla/icons": "^0.6.1",
     "@ndla/licenses": "^0.4.1",
     "@ndla/modal": "^0.2.4",
+    "@ndla/tabs": "^0.9.3",
     "@ndla/ui": "^0.18.10",
     "@ndla/util": "^0.3.1",
-    "@ndla/tabs": "^0.9.3",
     "classnames": "2.2.6",
     "focus-trap": "^3.0.0",
     "focus-trap-react": "^4.0.0",
@@ -56,9 +56,11 @@
     "react-emotion": "^9.2.10"
   },
   "devDependencies": {
+    "css-loader": "^2.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "mini-css-extract-plugin": "^0.4.4",
+    "sass-loader": "^7.1.0",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },

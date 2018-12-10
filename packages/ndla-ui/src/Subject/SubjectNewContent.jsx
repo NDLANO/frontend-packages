@@ -2,8 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight } from '@ndla/icons/common';
-import { ContentTypeBadge, SafeLink } from '@ndla/ui';
 
+import SafeLink from '../common/SafeLink';
+import ContentTypeBadge from '../ContentTypeBadge';
 import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-new-content');

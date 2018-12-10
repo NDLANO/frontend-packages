@@ -10,8 +10,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Additional, Core } from '@ndla/icons/common';
-import { Tooltip, NoContentBox, SafeLink } from '@ndla/ui';
 import { Trans } from '@ndla/i18n';
+import SafeLink from '../common/SafeLink';
+import Tooltip from '../Tooltip';
+import NoContentBox from '../NoContentBox';
 import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
 

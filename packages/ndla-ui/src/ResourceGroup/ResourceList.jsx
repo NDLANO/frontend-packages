@@ -9,9 +9,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { NoContentBox, Tooltip, SafeLink } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
 import { Additional, Core } from '@ndla/icons/common';
+import SafeLink from '../common/SafeLink';
+import Tooltip from '../Tooltip';
+import NoContentBox from '../NoContentBox';
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({

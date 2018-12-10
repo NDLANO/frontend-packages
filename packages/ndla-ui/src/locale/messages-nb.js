@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from '@ndla/ui';
+import constants from '../model';
 
 const { contentTypes } = constants;
 

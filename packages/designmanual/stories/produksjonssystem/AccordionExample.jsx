@@ -86,11 +86,11 @@ class AccordionExample extends Component {
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
                 <React.Fragment key={item}>
                   <AccordionBar
-                    {...getBarProps(`panel-${index}`)}
+                    {...getBarProps(index)}
                     ariaLabel={`Panel ${index + 1}`}>
                     Panel {index + 1}
                   </AccordionBar>
-                  <AccordionPanel {...getPanelProps(`panel-${index}`)}>
+                  <AccordionPanel {...getPanelProps(index)}>
                     <div>
                       <p>{item}</p>
                     </div>
@@ -107,11 +107,11 @@ class AccordionExample extends Component {
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
                 <React.Fragment key={item}>
                   <AccordionBar
-                    {...getBarProps(`panel-${index}`)}
+                    {...getBarProps(index)}
                     ariaLabel={`Panel ${index + 1}`}>
                     Panel {index + 1}
                   </AccordionBar>
-                  <AccordionPanel {...getPanelProps(`panel-${index}`)}>
+                  <AccordionPanel {...getPanelProps(index)}>
                     <p>{item}</p>
                   </AccordionPanel>
                 </React.Fragment>

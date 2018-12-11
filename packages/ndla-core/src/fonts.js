@@ -31,9 +31,4 @@ export default {
     bold: 700,
   },
   sizes,
-  // sizes: (fontSize, lineHeightFactor) =>
-  //   lineHeightFactor
-  //     ? `font-size: ${parseFloat(fontSize)}px;
-  //       line-height: ${parseFloat(lineHeightFactor) * parseFloat(fontSize)}px;`
-  //     : `font-size: ${parseFloat(fontSize)}px;`,
 };

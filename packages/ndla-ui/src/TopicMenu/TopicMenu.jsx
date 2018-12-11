@@ -12,13 +12,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Trans } from 'ndla-i18n';
+import { Trans } from '@ndla/i18n';
 import debounce from 'lodash/debounce';
 
-import { Home, Back, Additional, ChevronRight } from 'ndla-icons/common';
-import { Cross } from 'ndla-icons/action';
-import { SafeLink, Tooltip, ModalHeader, createUniversalPortal } from 'ndla-ui';
-import Button from 'ndla-button';
+import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
+import { SafeLink, Tooltip } from '@ndla/ui';
+import { ModalHeader } from '@ndla/modal';
+import Button from '@ndla/button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
@@ -44,27 +45,6 @@ export const renderAdditionalIcon = (isAdditional, label) => {
     return <Additional className="c-icon--20 c-topic-menu__tooltipContainer" />;
   }
   return null;
-};
-
-const SubjectOverviewButton = ({ children, competenceGoalsOpen }) => {
-  const content = (
-    <div
-      {...classes('back', {
-        'hidden-phone': competenceGoalsOpen,
-        narrow: true,
-      })}>
-      <SafeLink {...classes('back-link')} to="/">
-        <Home {...classes('home-icon', '', 'c-icon--20')} />
-        {children}
-      </SafeLink>
-    </div>
-  );
-  return createUniversalPortal(content, 'body');
-};
-
-SubjectOverviewButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  competenceGoalsOpen: PropTypes.bool.isRequired,
 };
 
 export default class TopicMenu extends Component {
@@ -170,6 +150,8 @@ export default class TopicMenu extends Component {
       hideSearch,
       competenceGoals,
       searchFieldComponent,
+      toFrontpage,
+      locale,
     } = this.props;
     const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -214,9 +196,6 @@ export default class TopicMenu extends Component {
       <Trans>
         {({ t }) => (
           <nav>
-            <SubjectOverviewButton competenceGoalsOpen={competenceGoalsOpen}>
-              {t('masthead.menu.subjectOverview')}
-            </SubjectOverviewButton>
             <ModalHeader modifier={['white', 'menu']}>
               <div {...classes('masthead-left')}>
                 <button
@@ -230,15 +209,26 @@ export default class TopicMenu extends Component {
               <div {...classes('masthead-right')}>
                 {!hideSearch && searchFieldComponent}
                 <Logo
-                  to="#"
-                  label="Nasjonal digital læringsarena"
+                  to="/"
                   isBeta={this.props.isBeta}
+                  label={t('logo.altText')}
+                  locale={locale}
                 />
               </div>
             </ModalHeader>
             <div {...classes('content')}>
               <div {...classes('back', 'wide')}>
-                <SafeLink {...classes('back-link')} to="/">
+                <SafeLink {...classes('back-link')} to={toFrontpage()}>
+                  <Home {...classes('home-icon', '', 'c-icon--20')} />
+                  {t('masthead.menu.subjectOverview')}
+                </SafeLink>
+              </div>
+              <div
+                {...classes('back', {
+                  'hidden-phone': competenceGoalsOpen,
+                  narrow: true,
+                })}>
+                <SafeLink {...classes('back-link')} to={toFrontpage()}>
                   <Home {...classes('home-icon', '', 'c-icon--20')} />
                   {t('masthead.menu.subjectOverview')}
                 </SafeLink>
@@ -269,6 +259,7 @@ export default class TopicMenu extends Component {
                         filterOptions.length > 1 && (
                           <div {...classes('filter-wrapper')}>
                             <FilterListPhone
+                              preid="topic-menu"
                               activeFiltersNarrow
                               alignedGroup
                               options={filterOptions}
@@ -373,40 +364,40 @@ export default class TopicMenu extends Component {
                       </div>
                     </Fragment>
                   )}
-                  {expandedTopic &&
-                    !disableSubTopic && (
-                      <SubtopicLinkList
-                        classes={classes}
-                        className={
-                          classes('section', subTopicModifiers).className
-                        }
-                        closeMenu={closeMenu}
-                        topic={expandedTopic}
-                        backLabel={
-                          !hasExpandedSubtopics
-                            ? subjectTitle
-                            : currentlyExpandedSubTopics[
-                                currentlyExpandedSubTopics.length - 1
-                              ].name
-                        }
-                        goToTitle={t('masthead.menu.goTo')}
-                        toTopic={toTopic}
-                        expandedSubtopicId={
-                          currentlyExpandedSubTopics[0] &&
-                          currentlyExpandedSubTopics[0].id
-                        }
-                        onSubtopicExpand={id => {
-                          this.handleSubtopicExpand(id, 0);
-                        }}
-                        onGoBack={this.handleOnGoBack}
-                        resourceToLinkProps={resourceToLinkProps}
-                        competenceButton={
-                          competenceGoals &&
-                          this.state.isNarrowScreen &&
-                          this.renderCompentenceGoals(false, t)
-                        }
-                      />
-                    )}
+                  {expandedTopic && !disableSubTopic && (
+                    <SubtopicLinkList
+                      classes={classes}
+                      className={
+                        classes('section', subTopicModifiers).className
+                      }
+                      closeMenu={closeMenu}
+                      topic={expandedTopic}
+                      backLabel={
+                        !hasExpandedSubtopics
+                          ? subjectTitle
+                          : currentlyExpandedSubTopics[
+                              currentlyExpandedSubTopics.length - 1
+                            ].name
+                      }
+                      goToTitle={t('masthead.menu.goTo')}
+                      toTopic={toTopic}
+                      expandedSubtopicId={
+                        currentlyExpandedSubTopics[0] &&
+                        currentlyExpandedSubTopics[0].id
+                      }
+                      onSubtopicExpand={id => {
+                        this.handleSubtopicExpand(id, 0);
+                      }}
+                      onGoBack={this.handleOnGoBack}
+                      resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={!hasExpandedSubtopics}
+                      competenceButton={
+                        competenceGoals &&
+                        this.state.isNarrowScreen &&
+                        this.renderCompentenceGoals(false, t)
+                      }
+                    />
+                  )}
                   {currentlyExpandedSubTopics.map((subTopic, index) => (
                     <SubtopicLinkList
                       key={subTopic.id}
@@ -434,6 +425,7 @@ export default class TopicMenu extends Component {
                       }}
                       onGoBack={this.handleOnGoBack}
                       resourceToLinkProps={resourceToLinkProps}
+                      lastOpen={sliderCounter === index + 2}
                       defaultCount={this.props.defaultCount}
                       competenceButton={
                         competenceGoals &&
@@ -459,15 +451,6 @@ TopicMenu.propTypes = {
   toSubject: PropTypes.func.isRequired,
   close: PropTypes.func,
   defaultCount: PropTypes.number,
-  messages: PropTypes.shape({
-    subjectPage: PropTypes.string.isRequired,
-    learningResourcesHeading: PropTypes.string.isRequired,
-    back: PropTypes.string.isRequired,
-    contentTypeResultsShowMore: PropTypes.string.isRequired,
-    contentTypeResultsShowLess: PropTypes.string.isRequired,
-    contentTypeResultsNoHit: PropTypes.string.isRequired,
-    additionalTooltipLabel: PropTypes.string,
-  }),
   filterOptions: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -485,6 +468,7 @@ TopicMenu.propTypes = {
   hideSearch: PropTypes.bool,
   competenceGoals: PropTypes.node,
   searchFieldComponent: PropTypes.node,
+  locale: PropTypes.string,
 };
 
 TopicMenu.defaultProps = {

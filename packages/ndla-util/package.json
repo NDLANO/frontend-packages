@@ -1,20 +1,11 @@
 {
-  "name": "ndla-util",
-  "version": "0.2.8",
+  "name": "@ndla/util",
+  "version": "0.3.1",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "sideEffects": false,
-  "scripts": {
-    "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "rimraf lib es",
-    "test": "jest",
-    "prepublish": "npm run clean && npm run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-util/"
@@ -30,5 +21,8 @@
   "dependencies": {
     "defined": "1.0.0",
     "pdfmake": "^0.1.38"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

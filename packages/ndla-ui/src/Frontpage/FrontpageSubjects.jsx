@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
-import { injectT } from 'ndla-i18n';
-import { ChevronDown, ChevronUp } from 'ndla-icons/common';
-import { Modal, ModalBody, ModalHeader, ModalCloseButton } from 'ndla-ui';
-import Button from 'ndla-button';
+import { injectT } from '@ndla/i18n';
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
+import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
 
 import { OneColumn } from '../Layout';
 import SafeLink from '../common/SafeLink';

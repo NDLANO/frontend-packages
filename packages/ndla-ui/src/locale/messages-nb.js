@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -35,6 +35,11 @@ const messages = {
   notFoundPage: {
     errorDescription: 'Beklager, finner ikke siden du prøvde å komme til.',
   },
+  lti: {
+    embed: 'Sett inn',
+    notSupported:
+      'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
+  },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',
     search: 'Søk',
@@ -46,7 +51,7 @@ const messages = {
       content: 'Innhold:',
       contentTypes: 'Innholdstyper:',
       levels: 'Nivå:',
-      'language-filter': 'Språk:',
+      languageFilter: 'Språk:',
       subjects: 'Fag:',
       noFilter: 'Ingen filter valgt',
       createdBy: 'Laget av:',
@@ -54,13 +59,13 @@ const messages = {
     showLabel: {
       contentTypes: 'Flere innholdstyper',
       levels: 'Flere nivåer',
-      'language-filter': 'Flere språk',
+      languageFilter: 'Flere språk',
       subjects: 'Bytt fag',
     },
     hideLabel: {
       contentTypes: 'Færre innholdstyper',
       levels: 'Færre nivåer',
-      'language-filter': 'Færre språk',
+      languageFilter: 'Færre språk',
       subjects: 'Færre fag',
     },
     searchField: {
@@ -212,6 +217,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis flere kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis flere eksterne læringsressurser',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
@@ -220,6 +227,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis færre eksterne læringsressurser',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
@@ -227,6 +236,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kildematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Ingen eksterne læringsressurser',
       },
     },
   },
@@ -252,7 +263,7 @@ const messages = {
     dialogText1:
       'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
     dialogText2:
-      'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+      'Tilleggsstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
     showLess: 'Vis mindre',
     showMore: 'Vis mer',
   },
@@ -272,6 +283,7 @@ const messages = {
     singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
   },
   competenceGoals: {
+    title: 'Kompetansemål og læreplan',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
     openCompentenceGoalsFilter: 'Filtrer kompetansemål',
@@ -415,6 +427,23 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til forsiden',
+  },
+  listview: {
+    filters: {
+      subject: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på fag',
+        closeFilter: 'Lukk filter',
+      },
+      category: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på kategori',
+        closeFilter: 'Lukk filter',
+      },
+    },
+  },
+  notions: {
+    closeNotion: 'Lukk',
   },
 };
 

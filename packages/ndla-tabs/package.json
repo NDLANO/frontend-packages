@@ -1,20 +1,11 @@
 {
-  "name": "ndla-tabs",
-  "version": "0.7.1",
+  "name": "@ndla/tabs",
+  "version": "0.9.3",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "sideEffects": false,
-  "scripts": {
-    "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "rimraf lib es",
-    "test": "jest",
-    "prepublish": "npm run clean && npm run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
@@ -30,12 +21,15 @@
   ],
   "peerDependencies": {
     "classnames": "^2.2.6",
-    "ndla-core": "0.0.1",
-    "react": "^16.4.2",
+    "react": "^16.5.2",
     "react-bem-helper": "^1.4.1",
-    "react-tabs": "^2.2.2"
+    "react-tabs": "^2.3.2"
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "@ndla/core": "^0.4.3",
+    "lodash": "^4.17.11"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

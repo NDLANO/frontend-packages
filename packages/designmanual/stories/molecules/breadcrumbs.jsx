@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from 'ndla-ui';
+import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from '@ndla/ui';
 
 const items = [
   {

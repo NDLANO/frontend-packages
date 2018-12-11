@@ -16,15 +16,14 @@ import {
   ResourcesWrapper,
   ResourcesTopicTitle,
   TopicIntroductionList,
-} from 'ndla-ui';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Button from '@ndla/button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
 import { topicList } from '../../dummydata/index';
-
-import { CompetenceGoalsDialogExample } from '../organisms/CompetenceGoalsExample';
+import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 
 const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
   <ResourcesWrapper
@@ -37,7 +36,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
           dialogHeading: 'Kjernestoff og tilleggsstoff',
           dialogTexts: [
             'Når du lærer deg kjernestoffet skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
-            'Tilleggstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
+            'Tilleggsstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
           ],
         }}
         title="Medieproduksjon"
@@ -156,18 +155,7 @@ class ArticleLoader extends Component {
                 label,
               }}
               licenseBox={<LicenseBox />}
-              competenceGoals={
-                <CompetenceGoalsDialogExample
-                  headingId="article-competence-goals-heading-id"
-                  wide
-                />
-              }
-              competenceGoalsNarrow={
-                <CompetenceGoalsDialogExample
-                  headingId="article-competence-goals-narrow-heading-id"
-                  narrow
-                />
-              }>
+              competenceGoals={<CompetenceGoalListExample />}>
               {articleChildren}
             </Article>
           </OneColumn>

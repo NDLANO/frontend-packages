@@ -8,29 +8,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-
-const classes = new BEMHelper({
-  name: 'filter',
-  prefix: 'c-',
-});
+import { ToggleItem, filterClasses } from '../Filter';
 
 const ResourceToggleFilter = ({ checked, onClick, label }) => (
-  <div {...classes('list', 'filter-single-checkbox')}>
-    <div {...classes('item')}>
-      <input
-        {...classes('input')}
-        type="checkbox"
-        name="resource-filter"
-        id="resource-filter"
-        checked={checked}
-        onChange={onClick}
-      />
-      <label htmlFor="resource-filter">
-        <span {...classes('item-checkbox')} />
-        <span {...classes('text')}>{label}</span>
-      </label>
-    </div>
+  <div {...filterClasses('list', 'filter-single-checkbox')}>
+    <ToggleItem
+      id="resource-toggle-filter"
+      component="div"
+      checked={checked}
+      onChange={onClick}
+      label={label}
+    />
   </div>
 );
 

@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
-import { Back } from 'ndla-icons/common';
+import { Back } from '@ndla/icons/common';
 import debounce from 'lodash/debounce';
-import { getCurrentBreakpoint, breakpoints } from 'ndla-util';
-import { Modal, ModalHeader, ModalBody, ModalCloseButton } from 'ndla-ui';
-import Button from 'ndla-button';
-import { injectT } from 'ndla-i18n';
+import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
+import { injectT } from '@ndla/i18n';
 
 import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';
@@ -64,7 +64,6 @@ class SearchPage extends Component {
       children,
       messages,
       author,
-      hideResultText,
       t,
     } = this.props;
 
@@ -95,9 +94,6 @@ class SearchPage extends Component {
             </div>
           </aside>
           <div {...classes('result-wrapper')}>
-            <h2 aria-hidden="true" {...classes('result-label', 'large-screen')}>
-              {!hideResultText ? messages.resultHeading : '\u00A0'}
-            </h2>
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
@@ -142,9 +138,7 @@ class SearchPage extends Component {
                 )}
               </Modal>
             </div>
-            <h2 aria-hidden="true" {...classes('result-label', 'small-screen')}>
-              {!hideResultText ? messages.resultHeading : '\u00A0'}
-            </h2>
+
             {children}
           </div>
         </div>
@@ -160,7 +154,6 @@ SearchPage.propTypes = {
   searchString: PropTypes.string.isRequired,
   onSearchFieldChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  searchFieldPlaceholder: PropTypes.string.isRequired,
   onSearchFieldFilterRemove: PropTypes.func.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   searchFieldFilters: PropTypes.arrayOf(
@@ -179,7 +172,6 @@ SearchPage.propTypes = {
   ),
   messages: PropTypes.shape({
     narrowScreenFilterHeading: PropTypes.string.isRequired,
-    resultHeading: PropTypes.string,
   }).isRequired,
   author: PropTypes.node,
   hideResultText: PropTypes.bool,

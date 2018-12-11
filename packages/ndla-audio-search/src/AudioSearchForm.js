@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'ndla-button';
+import Button from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -33,13 +33,11 @@ class AudioSearchForm extends Component {
     }
   }
 
-  handleQueryChange(evt) {
+  handleQueryChange({ target: { value } }) {
     this.setState(prevState => ({
       queryObject: {
-        query: evt.target.value,
-        page: prevState.queryObject.page,
-        pageSize: prevState.queryObject.pageSize,
-        locale: prevState.queryObject.locale,
+        ...prevState.queryObject,
+        query: value,
       },
     }));
   }

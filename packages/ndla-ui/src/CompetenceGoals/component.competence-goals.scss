@@ -1,9 +1,4 @@
 .c-competence-goals {
-
-  a:not([class]):visited {
-    color: $brand-color;
-  }
-
   height: 100%;
 
   &__dialog-wrapper {
@@ -61,7 +56,7 @@
     margin-bottom: $spacing;
     padding-top: $spacing;
 
-     @include mq(tabletWide) {
+    @include mq(tabletWide) {
       padding-top: $spacing--small;
     }
 
@@ -122,27 +117,8 @@
     }
   }
 
-  &__topic-list {
-    margin: 0 0 0 18px;
-    padding: 0;
-    max-width: 650px;
-
-    @include mq(desktop) {
-      margin: 0;
-    }
-  }
-
-  &__topic-item {
-    @include mq($until: tablet) {
-      @include font-size(16px, 24px);
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &--menu, &--search {
+  &--menu,
+  &--search {
     padding: $spacing--small $spacing $spacing--small $spacing--small;
     @include mq($until: mobileWide) {
       padding: 0;
@@ -164,42 +140,13 @@
     }
   }
   @include mq($until: desktop) {
-    &--menu, &--search {
+    &--menu,
+    &--search {
       .c-competence-goals {
         &__topic--expandable {
           padding-left: 0;
           margin-left: -4px;
         }
-      }
-    }
-  }
-}
-
-.c-competence-goals-dialog {
-  &__content {
-    padding: $spacing--large 0 $spacing 0;
-
-    @include mq(tablet) {
-      padding: $spacing--large;
-    }
-  }
-
-  &__toggle-button {
-    &--wide {
-      position: absolute;
-      z-index: 9;
-      right: 0;
-      top: 0;
-      display: none;
-
-      @include mq(desktop) {
-        display: block;
-      }
-    }
-
-    &--narrow {
-      @include mq(desktop) {
-        display: none;
       }
     }
   }

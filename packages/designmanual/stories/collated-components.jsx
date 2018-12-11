@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from 'ndla-licenses';
+import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
@@ -18,8 +18,8 @@ import {
   TranslationLine,
   ArticleByline,
   RadioButtonGroup,
-} from 'ndla-ui';
-import Pager from 'ndla-pager';
+} from '@ndla/ui';
+import Pager from '@ndla/pager';
 
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
@@ -30,7 +30,7 @@ import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
-import ConceptExample from './organisms/ConceptExample';
+import NotionExample from './organisms/NotionExample';
 import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
@@ -45,6 +45,8 @@ import ModalExample from './molecules/ModalExample';
 import Oops from '../images/oops.gif';
 import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
+
+import ListViewExample from './organisms/ListViewExample';
 
 const toggle = () => {
   document
@@ -195,7 +197,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Begrepsforklaring', () => (
     <Center>
-      <ConceptExample />
+      <NotionExample />
     </Center>
   ))
   .add('Emnebeskrivelse', () => (
@@ -528,7 +530,8 @@ storiesOf('Sammensatte moduler', module)
           <em>
             Nasjonale faglige retningslinjer for forebygging og behandling av
             underernæring og internkontroll i helsetjenesten
-          </em>. Helsedirektoratet
+          </em>
+          . Helsedirektoratet
         </p>
         <div className="c-collate">
           <div className="c-collate__info">
@@ -579,6 +582,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Footer>
         <div className="footer_form">
+          {/* eslint-disable jsx-a11y/label-has-associated-control  */}
           <label
             htmlFor="language-select"
             className="footer_label footer--bold">
@@ -745,4 +749,13 @@ storiesOf('Sammensatte moduler', module)
         <ModalExample />
       </StoryBody>
     </div>
+  ))
+
+  .add('Listevisning', () => (
+    <PageContainer>
+      <StoryIntro title="Listevisning" />
+      <Center>
+        <ListViewExample />
+      </Center>
+    </PageContainer>
   ));

@@ -59,9 +59,7 @@
 .c-figure__caption {
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  display: block;
 }
 .c-figure__captionbtn {
   background: none;

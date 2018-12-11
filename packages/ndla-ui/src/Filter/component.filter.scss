@@ -32,6 +32,7 @@
   }
 
   &__wrapper-multiple-filters {
+    margin-bottom: $spacing;
     > * {
       > .c-filter__label {
         width: 120px;
@@ -154,7 +155,6 @@
   &__label {
     @include font-size(16px, 22px);
 
-
     @include mq(tablet) {
       margin: 0 0 $spacing--small;
     }
@@ -249,9 +249,7 @@
   &__item {
     display: inline-block;
     position: relative;
-    @include mq(tabletWide) {
-      margin: 0 $spacing--small 0 2px;
-    }
+    margin: 0 $spacing--small 0 2px;
     color: $brand-color;
     border-radius: $border-radius;
     transition: $transition;
@@ -268,7 +266,7 @@
       color: $brand-color--tertiary;
 
       .c-filter__item-checkbox {
-        border-color: $brand-grey--lighter;
+        opacity: 0.5;
       }
     }
 

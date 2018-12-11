@@ -9,9 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Additional, Core } from 'ndla-icons/common';
-import { Tooltip, NoContentBox, SafeLink } from 'ndla-ui';
-import { Trans } from 'ndla-i18n';
+import { Additional, Core } from '@ndla/icons/common';
+import { Tooltip, NoContentBox, SafeLink } from '@ndla/ui';
+import { Trans } from '@ndla/i18n';
 import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
 
@@ -58,12 +58,11 @@ const TopicIntroduction = ({
               <Additional className="c-icon--20 u-margin-left-tiny" />
             </Tooltip>
           )}
-          {!additional &&
-            showAdditionalCores && (
-              <Tooltip tooltip={messages.tooltipCoreTopic} align="left">
-                <Core className="c-icon--20 u-margin-left-tiny" />
-              </Tooltip>
-            )}
+          {!additional && showAdditionalCores && (
+            <Tooltip tooltip={messages.tooltipCoreTopic} align="left">
+              <Core className="c-icon--20 u-margin-left-tiny" />
+            </Tooltip>
+          )}
         </div>
         {/* Since topic introduction is already escaped from the api
           we run into a double escaping issues as React escapes all strings.

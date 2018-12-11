@@ -124,32 +124,7 @@ $search-field-wrapper-margin: $filter-width;
     }
   }
 
-  &__result-label {
-    &--large-screen {
-      @include mq($until: desktop) {
-        display: none;
-      }
-    }
-    &--small-screen {
-      @include mq(desktop) {
-        display: none;
-      }
-    }
-  }
-
   &__result-wrapper {
     flex-grow: 1;
-
-    h2 {
-      margin: 0;
-      font-weight: 600;
-      @include font-size(14px, 32px);
-      margin-bottom: $spacing--small / 2;
-
-      @include mq(desktop) {
-        @include font-size(18px, 32px);
-        margin-bottom: 0;
-      }
-    }
   }
 }

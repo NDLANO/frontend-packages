@@ -1,7 +1,7 @@
 import createFocusTrap from 'focus-trap';
 import jump from 'jump.js';
 
-import { noScroll } from 'ndla-util';
+import { noScroll } from '@ndla/util';
 import { forEachElement } from './domHelpers';
 
 const trapInstances = {};

@@ -9,9 +9,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { NoContentBox, Tooltip, SafeLink } from 'ndla-ui';
-import { injectT } from 'ndla-i18n';
-import { Additional, Core } from 'ndla-icons/common';
+import { NoContentBox, Tooltip, SafeLink } from '@ndla/ui';
+import { injectT } from '@ndla/i18n';
+import { Additional, Core } from '@ndla/icons/common';
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
@@ -54,12 +54,11 @@ const Resource = ({
               <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
             </Tooltip>
           )}
-          {!resource.additional &&
-            showAdditionalResources && (
-              <Tooltip tooltip={contentTypeDescription} align="left">
-                <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
-              </Tooltip>
-            )}
+          {!resource.additional && showAdditionalResources && (
+            <Tooltip tooltip={contentTypeDescription} align="left">
+              <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+            </Tooltip>
+          )}
         </div>
       </div>
     </li>

@@ -8,10 +8,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Back, ChevronRight } from 'ndla-icons/common';
-import { injectT } from 'ndla-i18n';
+import { Back, ChevronRight } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
 
-import { SafeLink } from 'ndla-ui';
+import { SafeLink } from '@ndla/ui';
 import { TopicShape } from '../shapes';
 
 import { ContentTypeResult, SearchToggleFilter } from '../Search';
@@ -102,6 +102,7 @@ class SubtopicLinkList extends Component {
       resourceToLinkProps,
       competenceButton,
       defaultCount,
+      lastOpen,
       t,
     } = this.props;
 
@@ -109,7 +110,9 @@ class SubtopicLinkList extends Component {
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
     const hasContentTypeResults =
-      topic.contentTypeResults && topic.contentTypeResults.length > 0;
+      lastOpen &&
+      topic.contentTypeResults &&
+      topic.contentTypeResults.length > 0;
 
     const hasContentTypeInfo =
       hasContentTypeResults &&
@@ -166,6 +169,7 @@ class SubtopicLinkList extends Component {
               <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
               {someResourcesAreAdditional && (
                 <SearchToggleFilter
+                  preid="wide-"
                   wide
                   checked={showAdditionalResources}
                   label={t('masthead.menu.additionalFilterLabel')}
@@ -203,6 +207,7 @@ class SubtopicLinkList extends Component {
             ))}
             {someResourcesAreAdditional && (
               <SearchToggleFilter
+                preid="narrow-"
                 narrow
                 checked={showAdditionalResources}
                 label={t('masthead.menu.additionalFilterLabel')}
@@ -231,6 +236,7 @@ SubtopicLinkList.propTypes = {
   competenceButton: PropTypes.node,
   defaultCount: PropTypes.number,
   t: PropTypes.func.isRequired,
+  lastOpen: PropTypes.bool,
 };
 
 export default injectT(SubtopicLinkList);

@@ -28,9 +28,9 @@ yarn && yarn bootstrap
 
 Se package README for package specific details.
 
-### Lint
+### Lint and format
 
-Run linting for all packages:
+Run lint and format check for all packages:
 
 ```js
 yarn lint
@@ -44,6 +44,14 @@ Run tests for all packages:
 yarn test
 ```
 
+### Check all
+
+Make sure everthing is OK before push:
+
+```js
+yarn check-all
+```
+
 ### Develop
 
 ```js
@@ -54,22 +62,14 @@ yarn start
 
 ### Publish packages to npm:
 
-[Lerna](https://github.com/lerna/lerna) is needed for easy publishing. Install latest 2.x version of lerna
-
 ```js
-npm install --global lerna
-```
-
-Publish with lerna:
-
-```js
-lerna publish
+yarn run publish
 ```
 
 ### Alias master to designmanual.ndla.sh
 
 ```js
-yarn deploy-designmanual
+yarn deploy
 ```
 
 ## Upcoming features and updates

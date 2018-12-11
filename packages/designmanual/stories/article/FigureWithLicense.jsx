@@ -7,8 +7,8 @@
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
-import { uuid } from 'ndla-util';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { uuid } from '@ndla/util';
 import {
   addCloseDialogClickListeners,
   addShowDialogClickListeners,
@@ -16,15 +16,15 @@ import {
   updateIFrameDimensions,
   toggleLicenseInfoBox,
   addZoomImageListeners,
-} from 'ndla-article-scripts';
+} from '@ndla/article-scripts';
 
 import {
   Figure,
   FigureCaption,
   FigureLicenseDialog,
   FigureFullscreenDialog,
-} from 'ndla-ui';
-import Button from 'ndla-button';
+} from '@ndla/ui';
+import Button from '@ndla/button';
 
 const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
@@ -120,12 +120,6 @@ class FigureWithLicense extends Component {
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}
-            link={{
-              text: 'Lage kortfilm',
-              url: '#1',
-              description: '(Lenken tar deg til et annet nettsted)',
-              external: true,
-            }}
             authors={authors}>
             <FigureLicenseDialog
               id={this.id}

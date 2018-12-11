@@ -9,8 +9,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Search as SearchIcon } from 'ndla-icons/common';
-import { injectT } from 'ndla-i18n';
+import { Search as SearchIcon } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
 
 import SafeLink from '../common/SafeLink';
 
@@ -29,7 +29,13 @@ const messagesShape = PropTypes.shape({
   contentTypeResultNoHit: PropTypes.string,
 });
 
-const SearchResult = ({ result, allResultUrl, resourceToLinkProps, t }) => (
+const SearchResult = ({
+  result,
+  allResultUrl,
+  resourceToLinkProps,
+  onNavigate,
+  t,
+}) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {t('searchPage.searchField.searchResultHeading')}
@@ -37,8 +43,10 @@ const SearchResult = ({ result, allResultUrl, resourceToLinkProps, t }) => (
     <div {...classes('search-result-content')}>
       {result.map(contentTypeResult => (
         <ContentTypeResult
+          onNavigate={onNavigate}
           contentTypeResult={contentTypeResult}
           resourceToLinkProps={resourceToLinkProps}
+          defaultCount={window.innerWidth > 980 ? 7 : 3}
           key={contentTypeResult.title}
           messages={{
             allResultLabel: t(
@@ -64,6 +72,7 @@ SearchResult.propTypes = {
   result: PropTypes.arrayOf(ContentTypeResultShape),
   resourceToLinkProps: PropTypes.func.isRequired,
   allResultUrl: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func,
   t: PropTypes.func.isRequired,
 };
 
@@ -108,6 +117,8 @@ class SearchField extends Component {
       onSearch,
       resourceToLinkProps,
       small,
+      autofocus,
+      onNavigate,
       t,
     } = this.props;
 
@@ -126,6 +137,8 @@ class SearchField extends Component {
           searchString={value}
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
+          autofocus={autofocus}
+          onNavigate={onNavigate}
           t={t}
         />
       );
@@ -159,15 +172,14 @@ class SearchField extends Component {
             onBlur={this.onInputBlur}
             onFocus={this.onInputFocus}
           />
-          {filters &&
-            filters.length > 0 && (
-              <div {...classes('filters')}>
-                <ActiveFilters
-                  filters={filters}
-                  onFilterRemove={this.handleOnFilterRemove}
-                />
-              </div>
-            )}
+          {filters && filters.length > 0 && (
+            <div {...classes('filters')}>
+              <ActiveFilters
+                filters={filters}
+                onFilterRemove={this.handleOnFilterRemove}
+              />
+            </div>
+          )}
           <button
             tabIndex="-1"
             {...classes('button')}
@@ -199,6 +211,8 @@ SearchField.propTypes = {
   resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
   small: PropTypes.bool,
+  autofocus: PropTypes.bool,
+  onNavigate: PropTypes.func,
   t: PropTypes.func.isRequired,
 };
 

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { RadioButtonGroup } from 'ndla-ui';
+import { RadioButtonGroup } from '@ndla/ui';
 import { LanguageContext } from './LanguageWrapper';
 
 const LANGUAGES = [

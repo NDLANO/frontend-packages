@@ -7,19 +7,17 @@
  */
 
 const chalk = require('chalk');
-const babel = require('babel-core');
+const babel = require('@babel/core');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const mkdirp = require('mkdirp');
 const stringLength = require('string-length');
 const getPackages = require('./_getPackages');
+const babelOptions = require('../babel.config');
 
 const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
 
-const babelOptions = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '..', '.babelrc'), 'utf8'),
-);
 babelOptions.babelrc = false;
 const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*.js*';
@@ -115,6 +113,10 @@ function buildPackages() {
 
 if (process.argv[2] === 'packages') {
   buildPackages();
+}
+
+if (process.argv[2] === 'package') {
+  buildNodePackage(process.cwd());
 }
 
 module.exports = {

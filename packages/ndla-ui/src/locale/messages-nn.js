@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from 'ndla-ui';
+import { constants } from '@ndla/ui';
 
 const { contentTypes } = constants;
 
@@ -36,6 +36,11 @@ const messages = {
   notFoundPage: {
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
+  lti: {
+    embed: 'Sett inn',
+    notSupported:
+      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på din side.',
+  },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',
     search: 'Søk',
@@ -47,7 +52,7 @@ const messages = {
       content: 'Innhald:',
       contentTypes: 'Innhaldstypar:',
       levels: 'Nivå:',
-      'language-filter': 'Språk:',
+      languageFilter: 'Språk:',
       subjects: 'Fag:',
       noFilter: 'Ingen filter valde',
       createdBy: 'Laga av:',
@@ -55,13 +60,13 @@ const messages = {
     showLabel: {
       contentTypes: 'Fleire innhaldstypar',
       levels: 'Fleire nivå',
-      'language-filter': 'Fleire språk',
+      languageFilter: 'Fleire språk',
       subjects: 'Bytt fag',
     },
     hideLabel: {
       contentTypes: 'Færre innhaldstypar',
       levels: 'Færre nivå',
-      'language-filter': 'Færre språk',
+      languageFilter: 'Færre språk',
       subjects: 'Færre fag',
     },
     searchField: {
@@ -210,9 +215,11 @@ const messages = {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
           'Vis fleire oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
-        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Vis flere kjeldematerialer',
+        [contentTypes.LEARNING_PATH]: 'Vis fleire læringsstier',
+        [contentTypes.ASSESSMENT_RESOURCES]: 'Vis fleire vurderingsressursar',
+        [contentTypes.SOURCE_MATERIAL]: 'Vis fleire kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis fleire eksterne læringsressursar',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
@@ -222,6 +229,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Vis færre eksterne læringsressursar',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
@@ -229,6 +238,8 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldematerialer',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
+          'Ingen eksterne læringsressursar',
       },
     },
   },
@@ -254,7 +265,7 @@ const messages = {
     dialogText1:
       'Når du lærar deg kjernestoffet skaffar du deg den kompetansen som beskrives i læreplanen for faget.',
     dialogText2:
-      'Tilleggstoff er innhald i faget som du kan velje i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordjupe deg i et emne eller tilnærma deg emnet på en anna måte.',
+      'Tilleggsstoff er innhald i faget som du kan velje i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordjupe deg i et emne eller tilnærma deg emnet på en anna måte.',
     showLess: 'Vis mindre',
     showMore: 'Vis mer',
   },
@@ -274,6 +285,7 @@ const messages = {
     singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
   },
   competenceGoals: {
+    title: 'Kompetansemål og læreplan',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
     openCompentenceGoalsFilter: 'Filtrer kompetansemål',
@@ -417,6 +429,9 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til framsida',
+  },
+  notions: {
+    closeNotion: 'Lukk',
   },
 };
 

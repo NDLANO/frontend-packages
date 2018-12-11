@@ -14,7 +14,7 @@ import {
   ResourcesTopicTitle,
   ContentTypeBadge,
   constants,
-} from 'ndla-ui';
+} from '@ndla/ui';
 import {
   learningPathResources,
   articleResources,

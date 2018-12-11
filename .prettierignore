@@ -2,4 +2,5 @@ package.json
 packages/*/lib/**/*.js
 packages/*/es/**/*js
 packages/*/dist/**/*js
+node_modules/
 packages/**/.scss

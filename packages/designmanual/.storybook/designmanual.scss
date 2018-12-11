@@ -1,11 +1,11 @@
-@import '~ndla-core/scss/core';
-@import '~ndla-icons/scss/icons'; // N.B. icons need to import before ndla-ui main
-@import '~ndla-button/scss/button';
-@import '~ndla-ui/src/main';
-@import '~ndla-tabs/scss/tabs';
-@import '~ndla-image-search/scss/image-search';
-@import '~ndla-audio-search/scss/audio-search';
-@import '~ndla-video-search/scss/video-search';
+@import '~@ndla/core/scss/core';
+@import '~@ndla/icons/scss/icons'; // N.B. icons need to import before @ndla/ui main
+@import '~@ndla/button/scss/button';
+@import '~@ndla/ui/src/main';
+@import '~@ndla/tabs/scss/tabs';
+@import '~@ndla/core/scss/utilities';
+@import '~@ndla/audio-search/scss/audio-search';
+@import '~@ndla/video-search/scss/video-search';
 
 .c-componentinfo {
   > .c-tabs {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Table } from 'ndla-ui';
-import { uuid } from 'ndla-util';
+import { Table } from '@ndla/ui';
+import { uuid } from '@ndla/util';
 
 import {
   addCloseDialogClickListeners,
@@ -10,7 +10,7 @@ import {
   removeShowDialogClickListeners,
   initTableScript,
   removeTableEventListeners,
-} from 'ndla-article-scripts';
+} from '@ndla/article-scripts';
 
 class TableExample extends Component {
   constructor(props) {

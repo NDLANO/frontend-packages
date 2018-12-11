@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { injectT } from 'ndla-i18n';
+import { injectT } from '@ndla/i18n';
 
-import { ContentTypeBadge, SafeLink, Tooltip } from 'ndla-ui';
-import { Additional } from 'ndla-icons/common';
+import { ContentTypeBadge, SafeLink, Tooltip } from '@ndla/ui';
+import { Additional } from '@ndla/icons/common';
 import { ContentTypeResultShape } from '../shapes';
 
 const classes = BEMHelper({
@@ -53,7 +53,7 @@ class ContentTypeResult extends Component {
         ? contentTypeResult.resources
         : contentTypeResult.resources.filter(items => !items.additional);
 
-    const totalCount = results ? results.length : 0;
+    const totalCount = contentTypeResult.totalCount || results.length;
 
     if (totalCount > 0) {
       const resources = this.state.showAll

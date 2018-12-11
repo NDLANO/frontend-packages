@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Translation, TranslationLine } from 'ndla-ui';
+import { Translation, TranslationLine } from '@ndla/ui';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 import Table from './molecules/TableExample';
@@ -52,7 +52,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#20588F' }}
               />
               <div className="o-list__label">
-                NDLA primærfarge<br />#20588F
+                NDLA primærfarge
+                <br />
+                #20588F
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -61,7 +63,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#507AA4' }}
               />
               <div className="o-list__label">
-                NDLA sekundærfarge<br />#507AA4
+                NDLA sekundærfarge
+                <br />
+                #507AA4
               </div>
             </li>
             <li className="o-list__item o-list__item--colors o-list__item ">
@@ -70,7 +74,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#A5BCD3' }}
               />
               <div className="o-list__label">
-                NDLA tertiærfarge<br />#A5BCD3
+                NDLA tertiærfarge
+                <br />
+                #A5BCD3
               </div>
             </li>
             <li className="o-list__item o-list__item--colors o-list__item">
@@ -79,7 +85,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#CEDDEA' }}
               />
               <div className="o-list__label">
-                NDLA lys<br />#CEDDEA
+                NDLA lys
+                <br />
+                #CEDDEA
               </div>
             </li>
             <li className="o-list__item o-list__item--colors o-list__item">
@@ -88,7 +96,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#DEEBF6' }}
               />
               <div className="o-list__label">
-                NDLA lysest<br />#DEEBF6
+                NDLA lysest
+                <br />
+                #DEEBF6
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -97,7 +107,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#184673' }}
               />
               <div className="o-list__label">
-                NDLA mørk<br />#184673
+                NDLA mørk
+                <br />
+                #184673
               </div>
             </li>
           </ul>
@@ -127,7 +139,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#444444' }}
               />
               <div className="o-list__label">
-                Tekst Mørk<br />#444444
+                Tekst Mørk
+                <br />
+                #444444
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -136,7 +150,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#757575' }}
               />
               <div className="o-list__label">
-                Tekst Lys<br />#757575
+                Tekst Lys
+                <br />
+                #757575
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -145,7 +161,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#FFFFFF', border: swatchBorder }}
               />
               <div className="o-list__label">
-                Tekst Hvit<br />#FFFFFF
+                Tekst Hvit
+                <br />
+                #FFFFFF
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -154,7 +172,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#20588F' }}
               />
               <div className="o-list__label">
-                Tekst Link<br />#20588F
+                Tekst Link
+                <br />
+                #20588F
               </div>
             </li>
           </ul>
@@ -176,7 +196,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#FFFFFF', border: swatchBorder }}
               />
               <div className="o-list__label">
-                Nøytral Hvit<br />#FFFFFF
+                Nøytral Hvit
+                <br />
+                #FFFFFF
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -185,7 +207,8 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#F8F8F8' }}
               />
               <div className="o-list__label">
-                Nøytral 1<br />#F8F8F8
+                Nøytral 1<br />
+                #F8F8F8
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -194,7 +217,8 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#EFF0F2' }}
               />
               <div className="o-list__label">
-                Nøytral 2<br />#EFF0F2
+                Nøytral 2<br />
+                #EFF0F2
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -203,7 +227,8 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#E8E3E3' }}
               />
               <div className="o-list__label">
-                Nøytral 3<br />#E8E3E3
+                Nøytral 3<br />
+                #E8E3E3
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -212,7 +237,8 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#8A8888' }}
               />
               <div className="o-list__label">
-                Nøytral 4<br />#8A8888
+                Nøytral 4<br />
+                #8A8888
               </div>
             </li>
           </ul>
@@ -239,7 +265,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#184673' }}
               />
               <div className="o-list__label">
-                Emner Mørk<br />#184673
+                Emner Mørk
+                <br />
+                #184673
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -248,7 +276,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#CEDDEA' }}
               />
               <div className="o-list__label">
-                Emner Lys<br />#CEDDEA
+                Emner Lys
+                <br />
+                #CEDDEA
               </div>
             </li>
           </ul>
@@ -260,7 +290,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#5C6A4F' }}
               />
               <div className="o-list__label">
-                Fagstoff Mørk<br />#5C6A4F
+                Fagstoff Mørk
+                <br />
+                #5C6A4F
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -269,7 +301,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#DDE9D0' }}
               />
               <div className="o-list__label">
-                Fagstoff Lys<br />#DDE9D0
+                Fagstoff Lys
+                <br />
+                #DDE9D0
               </div>
             </li>
           </ul>
@@ -281,7 +315,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#4F7D76' }}
               />
               <div className="o-list__label">
-                Ekstern læringressurs Mørk<br />#4F7D76
+                Ekstern læringressurs Mørk
+                <br />
+                #4F7D76
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -290,7 +326,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#D0E8DE' }}
               />
               <div className="o-list__label">
-                Ekstern læringressurs Bakgrunn<br />#D0E8DE
+                Ekstern læringressurs Bakgrunn
+                <br />
+                #D0E8DE
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -299,7 +337,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#E6F3ED' }}
               />
               <div className="o-list__label">
-                Ekstern læringressurs Lys<br />#E6F3ED
+                Ekstern læringressurs Lys
+                <br />
+                #E6F3ED
               </div>
             </li>
           </ul>
@@ -311,7 +351,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#636E68' }}
               />
               <div className="o-list__label">
-                Kildemateriale Mørk<br />#636E68
+                Kildemateriale Mørk
+                <br />
+                #636E68
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -320,7 +362,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#DCE5E0' }}
               />
               <div className="o-list__label">
-                Kildemateriale Lys<br />#DCE5E0
+                Kildemateriale Lys
+                <br />
+                #DCE5E0
               </div>
             </li>
           </ul>
@@ -332,7 +376,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#D98229' }}
               />
               <div className="o-list__label">
-                Oppgaver og Aktiviteter Mørk<br />#D98229
+                Oppgaver og Aktiviteter Mørk
+                <br />
+                #D98229
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -341,7 +387,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#F8E0C4' }}
               />
               <div className="o-list__label">
-                Oppgaver og Aktiviteter Bakgrunn<br />#F8E0C4
+                Oppgaver og Aktiviteter Bakgrunn
+                <br />
+                #F8E0C4
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -350,7 +398,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#FBEDDC' }}
               />
               <div className="o-list__label">
-                Oppgaver og Aktiviteter Lys<br />#FBEDDC
+                Oppgaver og Aktiviteter Lys
+                <br />
+                #FBEDDC
               </div>
             </li>
           </ul>
@@ -362,7 +412,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#C0676F' }}
               />
               <div className="o-list__label">
-                Vurderingsressurs Mørk<br />#C0676F
+                Vurderingsressurs Mørk
+                <br />
+                #C0676F
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -371,7 +423,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#EFD5D5' }}
               />
               <div className="o-list__label">
-                Vurderingsressurs Bakgrunn<br />#EFD5D5
+                Vurderingsressurs Bakgrunn
+                <br />
+                #EFD5D5
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -380,7 +434,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#F5E7E5' }}
               />
               <div className="o-list__label">
-                Vurderingsressurs Lys<br />#F5E7E5
+                Vurderingsressurs Lys
+                <br />
+                #F5E7E5
               </div>
             </li>
           </ul>
@@ -392,7 +448,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#797979' }}
               />
               <div className="o-list__label">
-                Læringssti Mørk<br />#797979
+                Læringssti Mørk
+                <br />
+                #797979
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -401,7 +459,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#F2EFEF' }}
               />
               <div className="o-list__label">
-                Læringssti bakgrunn<br />#F2EFEF
+                Læringssti bakgrunn
+                <br />
+                #F2EFEF
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -410,11 +470,13 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#E8E3E3' }}
               />
               <div className="o-list__label">
-                Læringssti Lys<br />#E8E3E3
+                Læringssti Lys
+                <br />
+                #E8E3E3
               </div>
             </li>
           </ul>
-          <h3>Tilleggstoff</h3>
+          <h3>Tilleggsstoff</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
               <div
@@ -422,7 +484,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(221, 233, 208, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Fagstoff<br />#DDE9D0: 40% opacity
+                Tilleggsstoff Fagstoff
+                <br />
+                #DDE9D0: 40% opacity
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -431,7 +495,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(208, 232, 222, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff ekstern Læringsressurs<br />#D0E8DE: 40% opacity
+                Tilleggsstoff ekstern Læringsressurs
+                <br />
+                #D0E8DE: 40% opacity
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -440,7 +506,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(220, 229, 224, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Kildemateriale<br />#DCE5E0: 40% opacity
+                Tilleggsstoff Kildemateriale
+                <br />
+                #DCE5E0: 40% opacity
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -449,7 +517,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(251, 237, 220, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Oppgaver og Aktiviteter<br />#FBEDDC: 40% opacity
+                Tilleggsstoff Oppgaver og Aktiviteter
+                <br />
+                #FBEDDC: 40% opacity
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -458,7 +528,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: 'rgba(245, 231, 229, 0.4)' }}
               />
               <div className="o-list__label">
-                Tilleggstoff Vurderingsressurs<br />#F5E7E5: 40% opacity
+                Tilleggsstoff Vurderingsressurs
+                <br />
+                #F5E7E5: 40% opacity
               </div>
             </li>
           </ul>
@@ -480,7 +552,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#d1372e' }}
               />
               <div className="o-list__label">
-                Support Rød<br />#D1372E
+                Support Rød
+                <br />
+                #D1372E
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -489,7 +563,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#5CBC80' }}
               />
               <div className="o-list__label">
-                Support Grønn<br />#5CBC80
+                Support Grønn
+                <br />
+                #5CBC80
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
@@ -498,7 +574,9 @@ storiesOf('Grunnstiler', module)
                 style={{ backgroundColor: '#EAD854' }}
               />
               <div className="o-list__label">
-                Support Gul<br />#EAD854
+                Support Gul
+                <br />
+                #EAD854
               </div>
             </li>
           </ul>
@@ -547,7 +625,8 @@ storiesOf('Grunnstiler', module)
           og{' '}
           <a href="https://fonts.google.com/specimen/Source+Sans+Pro">
             Source Sans Pro
-          </a>.
+          </a>
+          .
         </p>
         <Table runScripts>
           <thead>
@@ -729,9 +808,8 @@ storiesOf('Grunnstiler', module)
         </p>
         <div className="c-bodybox">
           <p className="u-serif">
-            Lorem ipsum dolor sit amet, consectetur adip<span className="u-mark">
-              *
-            </span>isicing elit, sed do eiusmod{' '}
+            Lorem ipsum dolor sit amet, consectetur adip
+            <span className="u-mark">*</span>isicing elit, sed do eiusmod{' '}
             <span className="u-mark">*</span>tempor incididunt ut labore et
             dolore magna aliqua.
           </p>
@@ -1708,8 +1786,8 @@ storiesOf('Grunnstiler', module)
         <blockquote>
           «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
           og hun viser oss at det å tre ut av den typiske sildestimen alle
-          absolutt skal følge, er kult.» <br />(Jente 19 år, Si;D, Aftenposten
-          23. mai 2016)
+          absolutt skal følge, er kult.» <br />
+          (Jente 19 år, Si;D, Aftenposten 23. mai 2016)
         </blockquote>
       </StoryBody>
     </div>

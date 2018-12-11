@@ -6,18 +6,18 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
-import { isMobile } from 'react-device-detect';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import { ArticleShape } from '../shapes';
+import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -33,34 +33,10 @@ ArticleWrapper.propTypes = {
   modifier: PropTypes.string,
 };
 
-export class ArticleHeaderWrapper extends Component {
-  componentDidMount() {
-    if (isMobile) {
-      const heroContentList = document.querySelectorAll('.c-article__header');
-      if (heroContentList.length === 1) {
-        heroContentList[0].scrollIntoView(true);
-        window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
-      }
-    }
-  }
-
-  render() {
-    return <div {...classes('header')}>{this.props.children}</div>;
-  }
-}
-
-ArticleHeaderWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export const ArticleTitle = ({ children, icon, label, hasCompetenceGoals }) => {
+export const ArticleTitle = ({ children, icon, label }) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
-  }
-
-  if (hasCompetenceGoals) {
-    modifiers.push('with-competence-goals');
   }
 
   let labelView = null;
@@ -128,7 +104,6 @@ export const Article = ({
   messages,
   children,
   competenceGoals,
-  competenceGoalsNarrow,
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license).abbreviation;
   const showCreators = Array.isArray(creators) && creators.length > 0;
@@ -137,12 +112,8 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper>
-          {competenceGoals}
-          <ArticleTitle
-            icon={icon}
-            label={messages.label}
-            hasCompetenceGoals={competenceGoals !== null}>
+        <ArticleHeaderWrapper competenceGoals={competenceGoals}>
+          <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>
           <ArticleIntroduction>{introduction}</ArticleIntroduction>
@@ -155,15 +126,15 @@ export const Article = ({
               licenseBox,
             }}
           />
-          {competenceGoalsNarrow}
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <ArticleContent content={content} />
       </LayoutItem>
       <LayoutItem layout="center">
-        {footNotes &&
-          footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
+        {footNotes && footNotes.length > 0 && (
+          <ArticleFootNotes footNotes={footNotes} />
+        )}
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>
@@ -176,8 +147,7 @@ Article.propTypes = {
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
   additional: PropTypes.bool,
-  competenceGoals: PropTypes.node,
-  competenceGoalsNarrow: PropTypes.node,
+  competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node,
   messages: PropTypes.shape({
     label: PropTypes.string,
@@ -188,7 +158,6 @@ Article.defaultProps = {
   licenseBox: null,
   additional: null,
   competenceGoals: null,
-  competenceGoalsNarrow: null,
   icon: null,
   children: null,
 };

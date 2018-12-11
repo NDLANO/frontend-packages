@@ -5,15 +5,15 @@ import {
   Figure,
   FigureCaption,
   FigureLicenseDialog,
-} from 'ndla-ui';
-import Button from 'ndla-button';
-import { uuid } from 'ndla-util';
-import { getLicenseByAbbreviation } from 'ndla-licenses';
+} from '@ndla/ui';
+import Button from '@ndla/button';
+import { uuid } from '@ndla/util';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 import {
   addCloseDialogClickListeners,
   addShowDialogClickListeners,
   initAudioPlayers,
-} from 'ndla-article-scripts';
+} from '@ndla/article-scripts';
 
 class AudioExample extends Component {
   constructor(props) {

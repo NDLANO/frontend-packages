@@ -10,14 +10,19 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { Image } from 'ndla-ui';
-import { spacing, colors } from 'ndla-core';
+import { Image } from '@ndla/ui';
+import { Spinner } from '@ndla/editor';
+import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 import ImageSearcher from '../molecules/imageSearch';
 import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
+import FormExampleAuthors from './FormExampleAuthors';
+import SlateBlockMenuExample from './SlateBlockMenuExample';
+import StructureExample from './StructureExample';
+import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -30,8 +35,8 @@ storiesOf('Produksjonssystem', module)
       <StoryIntro title="Trekkspill">
         <p>
           Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget
-          kontrollere for åpning og lukking, men kan også kontrolleres manuelt.
-          Støtter feil-status via boolean prop tabs[x].error
+          kontroll for åpning og lukking gjennom render props. Støtter
+          feil-status via boolean prop på paneler.
         </p>
       </StoryIntro>
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
@@ -120,5 +125,43 @@ storiesOf('Produksjonssystem', module)
       <StoryBody>
         <VideoSearcher />
       </StoryBody>
+    </div>
+  ))
+  .add('Form elements', () => (
+    <div>
+      <StoryIntro title="Form elementer">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <FormExampleAuthors />
+      </StoryBody>
+    </div>
+  ))
+  .add('Editor', () => (
+    <div>
+      <StoryIntro title="Editor komponenter">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <SlateBlockMenuExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('Sidestrurktur og taksonomi', () => (
+    <div>
+      <StoryIntro title="Sidesturktur og taksonomi" />
+      <Center>
+        <StructureExample />
+      </Center>
+    </div>
+  ))
+  .add('Loading', () => (
+    <div>
+      <StoryIntro title="Loading komponent" />
+      <Center>
+        <Spinner />
+        <Spinner size="medium" />
+        <Spinner size="normal" />
+      </Center>
     </div>
   ));

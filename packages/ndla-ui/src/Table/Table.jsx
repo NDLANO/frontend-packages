@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ZoomOutMap } from 'ndla-icons/common';
+import { ZoomOutMap } from '@ndla/icons/common';
 
 import Dialog from '../Dialog';
 

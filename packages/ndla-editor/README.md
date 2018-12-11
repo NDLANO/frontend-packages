@@ -5,7 +5,7 @@ Editor for ndla content. Work in progress.
 ## Installation
 
 ```sh
-$ npm install ndla-editor --save
+$ yarn add ndla-editor
 ```
 
 ## Usage

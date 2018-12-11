@@ -1,20 +1,11 @@
 {
-  "name": "ndla-article-scripts",
-  "version": "0.4.7",
+  "name": "@ndla/article-scripts",
+  "version": "0.5.2",
   "description": "A collection of functions for making article content responsive (and interactive)",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "sideEffects": false,
-  "scripts": {
-    "build": "npm run build:commonjs && npm run build:es",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --quiet --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es babel src --quiet --out-dir es --ignore __tests__",
-    "clean": "rimraf lib es",
-    "test": "jest",
-    "prepublish": "npm run clean && npm run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
@@ -27,12 +18,13 @@
     "lib",
     "es"
   ],
-  "peerDependencies": {
-    "ndla-util": "^0.2.1"
-  },
   "dependencies": {
-    "focus-trap": "^2.4.3",
+    "@ndla/util": "^0.3.1",
+    "focus-trap": "^3.0.0",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

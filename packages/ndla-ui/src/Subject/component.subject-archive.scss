@@ -1,7 +1,7 @@
 .c-subject-archive {
   margin-bottom: $spacing--large;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 
   @include mq(tablet) {
     border: 1px solid $brand-grey--light;
@@ -29,17 +29,17 @@
   }
 
   &__wrapper {
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   &__content {
     padding: $spacing--small 0 0 0;
 
     @include mq(tablet) {
-      padding: $spacing $spacing 0 $spacing;
+      padding: $spacing;
     }
   }
 
@@ -62,6 +62,7 @@
   }
 
   &__archive-button {
+    display: none;
     @extend .o-text-link;
     margin: $spacing--small 0 0 0;
     padding: $spacing--small/2 0;

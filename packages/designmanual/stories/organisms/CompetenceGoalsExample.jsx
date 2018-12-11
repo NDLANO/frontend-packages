@@ -1,19 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 
 import {
   CompetenceGoals,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-} from 'ndla-ui';
-import Button from 'ndla-button';
-
-import { Trans } from 'ndla-i18n';
-
-const classes = BEMHelper('c-competence-goals-dialog');
+  CompetenceGoalList,
+  CompetenceGoalListHeading,
+} from '@ndla/ui';
 
 class CompetenceGoalsExample extends Component {
   constructor(props) {
@@ -30,17 +22,20 @@ class CompetenceGoalsExample extends Component {
         heading: 'Emne',
         items: [
           {
-            text:
+            id: 'med-1',
+            name:
               'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
             url: '#1',
           },
           {
-            text:
+            id: 'med-2',
+            name:
               'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
             url: '#2',
           },
           {
-            text:
+            id: 'med-3',
+            name:
               'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
             url: '#3',
           },
@@ -55,10 +50,12 @@ class CompetenceGoalsExample extends Component {
         heading: 'Emne 2',
         items: [
           {
-            text: 'Lorum ipsum',
+            id: 'lorem 1',
+            name: 'Lorum ipsum',
           },
           {
-            text: 'Lorum ipsum 2',
+            id: 'lorem 2',
+            name: 'Lorum ipsum 2',
           },
         ],
       });
@@ -115,40 +112,46 @@ CompetenceGoalsExample.propTypes = {
 
 export default CompetenceGoalsExample;
 
-export const CompetenceGoalsDialogExample = ({ narrow, wide }) => (
-  <Trans>
-    {({ t }) => (
-      <Modal
-        activateButton={
-          <Button lighter {...classes('toggle-button', { wide, narrow })}>
-            {t('competenceGoals.showCompetenceGoals')}
-          </Button>
-        }
-        narrow>
-        {onClose => (
-          <Fragment>
-            <ModalHeader>
-              <ModalCloseButton
-                onClick={onClose}
-                title={t('competenceGoals.closeCompetenceGoals')}
-              />
-            </ModalHeader>
-            <ModalBody>
-              <CompetenceGoalsExample />
-            </ModalBody>
-          </Fragment>
-        )}
-      </Modal>
-    )}
-  </Trans>
+export const CompetenceGoalListExample = () => (
+  <>
+    {[
+      {
+        id: 'NOR1-05',
+        name: 'Læreplan i norsk',
+        goals: [
+          {
+            id: 'K15502',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+            url: '#1',
+          },
+        ],
+      },
+      {
+        id: 'MOK2-01',
+        name:
+          'Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon',
+        goals: [
+          {
+            id: 'K17637',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+            url: '#1',
+          },
+          {
+            id: 'K17635',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal',
+            url: '#1',
+          },
+        ],
+      },
+    ].map(curriculum => (
+      <Fragment key={curriculum.id}>
+        <CompetenceGoalListHeading>
+          {curriculum.name}:
+        </CompetenceGoalListHeading>
+        <CompetenceGoalList goals={curriculum.goals} />
+      </Fragment>
+    ))}
+  </>
 );
-
-CompetenceGoalsDialogExample.propTypes = {
-  narrow: PropTypes.bool,
-  wide: PropTypes.bool,
-};
-
-CompetenceGoalsDialogExample.defaultProps = {
-  narrow: false,
-  wide: false,
-};

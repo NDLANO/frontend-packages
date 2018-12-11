@@ -1,3 +1,3 @@
-import Accordion from './Accordion';
+import ZendeskButton from './ZendeskButton';
 
-export default Accordion;
+export default ZendeskButton;

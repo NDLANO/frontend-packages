@@ -209,7 +209,7 @@ export default class TopicMenu extends Component {
               <div {...classes('masthead-right')}>
                 {!hideSearch && searchFieldComponent}
                 <Logo
-                  to="#"
+                  to="/"
                   isBeta={this.props.isBeta}
                   label={t('logo.altText')}
                   locale={locale}

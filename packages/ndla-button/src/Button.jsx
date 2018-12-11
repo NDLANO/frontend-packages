@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { colors, spacing, misc, fonts } from 'ndla-core';
+import { colors, spacing, misc, fonts } from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 
 const strippedStyle = css`
@@ -21,6 +21,7 @@ const strippedStyle = css`
   background-color: transparent;
   box-shadow: none;
   border: none;
+  font-weight: ${fonts.weight.normal};
   &:hover,
   &:active,
   &:disabled,
@@ -101,11 +102,12 @@ const StyledButton = styled('button')`
   text-decoration: none;
   ${fonts.sizes('16px')};
   font-family: ${fonts.sans};
+  font-weight: ${fonts.weight.bold};
   transition: ${misc.transition.default};
   &:hover,
   &:focus {
     color: white;
-    background-color: ${rgba(colors.brand.primary, 0.8)};
+    background-color: ${colors.brand.dark};
     border: 2px solid ${rgba(colors.brand.primary, 0)};
     transform: translateY(1px) translateX(1px);
   }
@@ -116,7 +118,7 @@ const StyledButton = styled('button')`
   &[disabled] {
     color: ${colors.brand.grey};
     background-color: ${colors.background.dark};
-    border: 0;
+    border-color: transparent;
     cursor: not-allowed;
     transform: translateY(0) translateX(0);
   }

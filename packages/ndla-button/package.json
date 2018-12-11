@@ -24,7 +24,6 @@
   },
   "peerDependencies": {
     "emotion": "^9.2.10",
-    "ndla-core": "^0.2.1",
     "react": "^16.4.2",
     "react-emotion": "^9.2.10",
     "react-bem-helper": "^1.4.1",

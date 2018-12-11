@@ -37,6 +37,7 @@ const ItemsList = styled.li`
   > ul {
     display: none;
   }
+
   ${props =>
     props.isOpen &&
     css`

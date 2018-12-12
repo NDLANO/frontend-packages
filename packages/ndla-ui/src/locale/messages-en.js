@@ -320,8 +320,7 @@ const messages = {
     },
     text: {
       heading: 'How to use text from the article',
-      description:
-        'Remember to refer to the source when reusing text.',
+      description: 'Remember to refer to the source when reusing text.',
       rules: 'Rules for use of text:',
       published: 'Published',
     },

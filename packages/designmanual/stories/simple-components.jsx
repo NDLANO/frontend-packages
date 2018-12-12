@@ -596,10 +596,15 @@ storiesOf('Enkle komponenter', module)
           nettsted (eksterne lenker) skal disse alltid åpnes i ny fane
         </p>
         <p>
-        Når det finnes flere kontekster til en lenke/node skal den ta konteksten/fag til det en stod i før en klikket seg videre, hvis ikke den finnes i samme, skal den ta primærkoblingen til noden.
-Dette gjelder både for relaterte artikler og interne lenker.
+          Når det finnes flere kontekster til en lenke/node skal den ta
+          konteksten/fag til det en stod i før en klikket seg videre, hvis ikke
+          den finnes i samme, skal den ta primærkoblingen til noden. Dette
+          gjelder både for relaterte artikler og interne lenker.
         </p>
-        <p>Interne lenker blir styrt av html innstilling i nettleser (samme vindu eller ny fane) avhengig av koden som ligger der, brukerens/browserens preferanser skal styre
+        <p>
+          Interne lenker blir styrt av html innstilling i nettleser (samme vindu
+          eller ny fane) avhengig av koden som ligger der, brukerens/browserens
+          preferanser skal styre
         </p>
       </StoryIntro>
     </div>

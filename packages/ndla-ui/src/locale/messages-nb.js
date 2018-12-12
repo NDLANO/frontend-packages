@@ -323,8 +323,7 @@ const messages = {
     },
     text: {
       heading: 'Slik bruker du tekst fra artikkelen',
-      description:
-        'Husk å henvise til kilden når du gjenbruker tekst.',
+      description: 'Husk å henvise til kilden når du gjenbruker tekst.',
       rules: 'Regler for bruk av teksten:',
       published: 'Publiseringsdato',
     },

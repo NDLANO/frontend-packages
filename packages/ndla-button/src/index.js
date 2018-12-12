@@ -7,8 +7,6 @@
  */
 
 import Button from './Button';
-import CopyButton from './CopyButton';
 
-export { CopyButton };
-
+export { default as CopyButton } from './CopyButton';
 export default Button;

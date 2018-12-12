@@ -69,8 +69,8 @@
     position: absolute;
     display: none;
     left: 50%;
-    top: 40px;
-    transform: translate3d(-50%, 0, 0);
+    top: -$spacing--small;
+    transform: translate3d(-50%, -100%, 0);
     width: 300px;
     text-align: center;
     z-index: 1;

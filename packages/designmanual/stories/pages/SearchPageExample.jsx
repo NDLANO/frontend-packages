@@ -27,6 +27,7 @@ import {
   searchTabFilterOptions,
   searchFilterOptions,
 } from '../../dummydata/index';
+import { SourceMaterialBadge } from '@ndla/ui/lib/ContentTypeBadge';
 
 const results = [
   {
@@ -128,6 +129,18 @@ const results = [
     ],
     matchTab: ['SHARED_RESOURCES'],
     type: 'Delt læringsressurs',
+  },
+  {
+    id: 7,
+    title: 'Brukertips medier og kommunikasjon Vg1',
+    url: '#7',
+    ingress:
+      'Faget Medieuttrykk og mediesamfunnet Vg1 dekker kompetansemålene i de to felles programfagene i utdanningsprogrammet medier og kommunikasjon.',
+    contentTypeLabel: 'Vurderingsressurs',
+    contentTypeIcon: <SourceMaterialBadge size="xx-small" background />,
+    breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
+    matchTab: ['SOURCE_MATERIAL'],
+    type: 'Lærervurdering',
   },
 ];
 

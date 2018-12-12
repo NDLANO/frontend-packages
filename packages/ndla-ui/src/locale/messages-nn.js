@@ -181,7 +181,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'studiespesialisering',
+      studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
     },
     film: {

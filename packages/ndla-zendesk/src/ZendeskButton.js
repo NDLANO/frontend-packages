@@ -13,7 +13,7 @@ import { css } from 'emotion';
 
 const desktopStyling = css`
   position: fixed;
-  left: 2rem;
+  right: 2rem;
   bottom: 2rem;
   padding: 0.4rem 0.6rem;
   border-radius: 2px;
@@ -22,52 +22,34 @@ const desktopStyling = css`
 
 class ZendeskButton extends React.Component {
   componentDidMount() {
-    const { locale, zendeskHost } = this.props;
-    if (window.zEmbed) {
-      return;
-    }
-    (function(e, t) {
-      let n,
-        d,
-        i,
-        s,
-        a = [],
-        r = document.createElement('iframe');
-      window.zEmbed = function() {
-        a.push(arguments);
-      };
-      window.zE = window.zE || window.zEmbed;
-      window.zE(function() {
-        window.zE.setLocale(locale);
-        window.zE.hide();
-      });
-      r.title = '';
-      r.role = 'presentation';
-      (r.frameElement || r).style.cssText = 'display: none';
-      d = document.getElementsByTagName('script');
-      d = d[d.length - 1];
-      d.parentNode.insertBefore(r, d);
-      i = r.contentWindow;
-      s = i.document;
-      s.open()._l = function() {
-        let e = this.createElement('script');
-        if (n) {
-          this.domain = n;
-        }
-        e.id = 'js-iframe-async';
-        e.src = 'https://assets.zendesk.com/embeddable_framework/main.js';
-        this.t = +new Date();
-        this.zendeskHost = zendeskHost;
-        this.zEQueue = a;
-        this.body.appendChild(e);
-      };
-      s.write('<body onload="document._l();">');
-      s.close();
-    })();
+    const { locale, widgetKey } = this.props;
+    // Hack to check that zendesk scripts are loaded before we hide the widget.
+    // This enables us to provide our own "widget activation" button.
+    this.interval = window.setInterval(() => {
+      if (window.zE) {
+        window.zE('webWidget', 'hide');
+        window.zE('webWidget', 'setLocale', locale);
+        window.clearInterval(this.interval);
+      }
+    }, 50);
+
+    window.zESettings = {
+      webWidget: {
+        zIndex: 0, // Prevents flash of zendesk activation button
+      },
+    };
+
+    // Asynchronously load zendesk scripts for better performance
+    const script = document.createElement('script');
+    script.id = 'ze-snippet';
+    script.src = `https://static.zdassets.com/ekr/snippet.js?key=${widgetKey}`;
+    script.async = true;
+    document.body.appendChild(script);
   }
 
   render() {
-    const { children, locale, zendeskHost, ...rest } = this.props;
+    const { children, locale, ...rest } = this.props;
+
     return (
       <Button
         type="button"
@@ -83,7 +65,7 @@ class ZendeskButton extends React.Component {
 ZendeskButton.propTypes = {
   children: PropTypes.node.isRequired,
   locale: PropTypes.string.isRequired,
-  zendeskHost: PropTypes.string.isRequired,
+  widgetKey: PropTypes.string.isRequired,
   isMobile: PropTypes.bool.isRequired,
 };
 

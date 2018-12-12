@@ -27,7 +27,7 @@ const FooterExample = () => (
     <ZendeskButton
       isMobile={isMobile}
       locale="nb"
-      zendeskHost="ndla.zendesk.com">
+      widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
       Spør NDLA
     </ZendeskButton>
   </Footer>

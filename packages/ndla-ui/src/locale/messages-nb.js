@@ -324,7 +324,7 @@ const messages = {
     text: {
       heading: 'Slik bruker du tekst fra artikkelen',
       description:
-        'Artikkelen kan være sammensatt av flere tekster som listes opp her.',
+        'Husk å henvise til kilden når du gjenbruker tekst.',
       rules: 'Regler for bruk av teksten:',
       published: 'Publiseringsdato',
     },

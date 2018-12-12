@@ -321,7 +321,7 @@ const messages = {
     text: {
       heading: 'How to use text from the article',
       description:
-        'The article may be composed of several different texts, which are listed here.',
+        'Remember to refer to the source when reusing text.',
       rules: 'Rules for use of text:',
       published: 'Published',
     },

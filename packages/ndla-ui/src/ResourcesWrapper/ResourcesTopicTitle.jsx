@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { HelpCircleDual } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
-import { Tooltip } from '@ndla/ui';
+import Tooltip from '../Tooltip';
 
 import { classes } from './ResourcesWrapper';
 

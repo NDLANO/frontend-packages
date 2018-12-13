@@ -17,11 +17,12 @@ import debounce from 'lodash/debounce';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
-import { SafeLink, Tooltip } from '@ndla/ui';
 import { ModalHeader } from '@ndla/modal';
 import Button from '@ndla/button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
+import SafeLink from '../common/SafeLink';
+import Tooltip from '../Tooltip';
 
 import Logo from '../Logo';
 import { FilterListPhone } from '../Filter';

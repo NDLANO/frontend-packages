@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ContentTypeBadge, Tooltip } from '@ndla/ui';
 import { Trans } from '@ndla/i18n';
 
 import SafeLink from '../common/SafeLink';
+import Tooltip from '../Tooltip';
+import ContentTypeBadge from '../ContentTypeBadge';
 
 import { ShortcutShape } from '../shapes';
 

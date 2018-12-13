@@ -23,7 +23,7 @@
     "classnames": "^2.2.6",
     "react": "^16.5.2",
     "react-bem-helper": "^1.4.1",
-    "react-tabs": "^2.3.2"
+    "react-tabs": "^2.3.0"
   },
   "dependencies": {
     "@ndla/core": "^0.4.3",

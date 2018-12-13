@@ -454,22 +454,6 @@ $navigation-row-width: 980px / 3;
     }
   }
 
-  &__competence-toggle-button {
-    @include inuit-font-size(14px, 18px);
-    font-weight: $font-weight-bold;
-    color: $brand-color;
-    background: transparent;
-    border: none;
-    &:hover {
-      cursor: pointer;
-    }
-    // display: none;
-
-    @include mq(desktop) {
-      display: block;
-    }
-  }
-
   &__competence-close-button {
     @include mq(tabletWide) {
       display: none;
@@ -489,23 +473,6 @@ $navigation-row-width: 980px / 3;
       width: 24px;
       height: 24px;
       margin-right: 9px;
-    }
-  }
-
-  &__competence-open-button {
-    animation-name: fadeInLeft;
-    animation-duration: 0.5s;
-    transform: translate3d(0px, 0px, 0px);
-    margin: $spacing 0 $spacing $spacing;
-
-    @include font-size(14px);
-
-    @include mq($until: mobileWide) {
-      margin-left: $left-margin-narrow-screen;
-      margin-right: $left-margin-narrow-screen;
-    }
-    @include mq(desktop) {
-      display: none;
     }
   }
 

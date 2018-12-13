@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { colors, spacing, misc, fonts } from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 

@@ -78,6 +78,7 @@ export {
   SearchFilterWrapper,
   SearchPopoverFilter,
   ActiveFilters,
+  ToggleSearchButton,
 } from './Search';
 export {
   default as ContentTypeBadge,

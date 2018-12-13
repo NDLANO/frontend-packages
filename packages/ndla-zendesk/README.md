@@ -1,31 +1,23 @@
-# ndla-accordion
+# Zendesk
 
-Zendesk button (and loading) for NDLA
+Exports a Zendesk button which should ideally be placed in the [`packages/ndla-ui/src/Footer/Footer.jsx`](Footer) component. The component also ensures that required zendesk script(s) are loaded asynchronously.
 
 ## Installation
 
 ```sh
-$ yarn ndla-accordion
+$ yarn @ndla/zendesk
 ```
 
 ## Usage
 
-### Simple example where Tab is open on render and logic is handled by component.
+### Simple example with required props
 
 ```js
-import Accordion from 'ndla-accordion';
+import Zendesk from '@ndla/zendesk';
 
-<Accordion
-  panels={[
-    {
-      title: 'Panel 1',
-      children: <div>Panel content 1</div>,
-      open: true,
-    },
-    {
-      title: 'Panel 2',
-      children: <div>Panel content 2</div>,
-    },
-  ]}
-/>;
+<Footer>
+  <ZendeskButton isMobile={false} locale="nb" widgetKey="a393e616-39d91">
+    Spør NDLA
+  </ZendeskButton>
+</Footer>;
 ```

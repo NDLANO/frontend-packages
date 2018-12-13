@@ -7,5 +7,6 @@
  */
 
 import TopicMenu from './TopicMenu';
+export { default as TopicMenuButton } from './TopicMenuButton';
 
 export default TopicMenu;

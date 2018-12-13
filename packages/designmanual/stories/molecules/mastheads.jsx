@@ -19,6 +19,7 @@ import {
   DisplayOnPageYOffset,
   SearchField,
   SafeLink,
+  TopicMenuButton,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import Button from '@ndla/button';
@@ -161,11 +162,7 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem left>
           <Modal
             size="fullscreen"
-            activateButton={
-              <Button outline className="c-topic-menu-toggle-button">
-                Meny
-              </Button>
-            }
+            activateButton={<TopicMenuButton>Meny</TopicMenuButton>}
             animation="subtle"
             animationDuration={150}
             backgroundColor="grey"

@@ -90,7 +90,8 @@ const appearances = {
     }
   `,
 };
-const StyledButton = styled('button')`
+
+export const buttonStyle = css`
   display: inline-block;
   color: ${colors.background.default};
   background-color: ${colors.brand.primary};
@@ -125,6 +126,9 @@ const StyledButton = styled('button')`
   &:focus {
     box-shadow: 0 0 2px ${colors.brand.primary};
   }
+`;
+const StyledButton = styled('button')`
+  ${buttonStyle}
   ${p => appearances[p.appearance]};
 `;
 
@@ -132,7 +136,7 @@ function modifierToApperance(modifiers) {
   return Object.keys(modifiers).find(key => modifiers[key]);
 }
 
-const Button = ({
+export const Button = ({
   outline,
   stripped,
   link,
@@ -190,5 +194,3 @@ Button.propTypes = {
    */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };
-
-export default Button;

@@ -9,9 +9,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { css } from 'emotion';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';
+import { mq, breakpoints } from '@ndla/core';
 
 import CompetenceGoalsDialog from '../CompetenceGoals/CompetenceGoalsDialog';
 
@@ -24,7 +26,24 @@ export const OpenButton = ({ children, modifier, onClick }) => (
   <Button
     lighter
     onClick={onClick}
-    {...classes('competence-goals-button', modifier)}>
+    css={
+      modifier === 'wide'
+        ? css`
+            position: absolute;
+            z-index: 9;
+            right: 0;
+            top: 0;
+            display: none;
+            ${mq.range({ from: breakpoints.desktop })} {
+              display: block;
+            }
+          `
+        : css`
+            ${mq.range({ from: breakpoints.desktop })} {
+              display: none;
+            }
+          `
+    }>
     {children}
   </Button>
 );

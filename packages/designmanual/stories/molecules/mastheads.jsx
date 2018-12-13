@@ -188,8 +188,6 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    const { hideSearchButton } = this.props;
-
     return (
       <Masthead
         fixed

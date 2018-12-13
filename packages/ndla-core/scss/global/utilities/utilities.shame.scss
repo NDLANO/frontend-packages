@@ -31,9 +31,3 @@ html.ie #root {
     fill: $brand-color;
   }
 }
-
-/* Move 'Spør NDLA' - Zendesk button to float on right side. */
-.c-button.c-zendesk__button {
-  left: auto;
-  right: 2rem;
-}

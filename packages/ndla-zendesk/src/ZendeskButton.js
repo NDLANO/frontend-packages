@@ -10,25 +10,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { css } from 'emotion';
+import { mq, breakpoints } from '@ndla/core';
 
-const commonStyling = css`
+const styling = props => css`
   border-radius: 2px;
   background-color: white;
-`;
-
-const desktopStyling = css`
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  padding: 0.4rem 0.6rem;
-  ${commonStyling}
-`;
-
-const mobileStyling = css`
-  position: absolute;
-  right: 20px;
-  margin-top: -8px;
-  ${commonStyling}
+  float: right;
+  ${mq.range({ from: breakpoints.desktop })} {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    padding: 0.4rem 0.6rem;
+  }
 `;
 
 class ZendeskButton extends React.Component {
@@ -75,7 +68,7 @@ class ZendeskButton extends React.Component {
     return (
       <Button
         type="button"
-        css={isMobile ? mobileStyling : desktopStyling}
+        css={styling}
         onClick={this.handleClick}
         appearance="outline"
         {...rest}>
@@ -88,7 +81,6 @@ ZendeskButton.propTypes = {
   children: PropTypes.node.isRequired,
   locale: PropTypes.string.isRequired,
   widgetKey: PropTypes.string.isRequired,
-  isMobile: PropTypes.bool.isRequired,
 };
 
 export default ZendeskButton;

@@ -16,7 +16,7 @@ $ yarn @ndla/zendesk
 import Zendesk from '@ndla/zendesk';
 
 <Footer>
-  <ZendeskButton isMobile={false} locale="nb" widgetKey="a393e616-39d91">
+  <ZendeskButton locale="nb" widgetKey="a393e616-39d91">
     Spør NDLA
   </ZendeskButton>
 </Footer>;

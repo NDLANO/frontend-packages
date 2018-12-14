@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Footer } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
-import { isMobile } from 'react-device-detect';
 
 const FooterExample = () => (
   <Footer>
@@ -24,10 +23,7 @@ const FooterExample = () => (
     <Footer.Text>
       Nettstedet er utarbeidet av NDLA med åpen kildekode.
     </Footer.Text>
-    <ZendeskButton
-      isMobile={isMobile}
-      locale="nb"
-      widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+    <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
       Spør NDLA
     </ZendeskButton>
   </Footer>

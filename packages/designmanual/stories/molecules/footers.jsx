@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Footer } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
+import { Trans } from '@ndla/i18n';
 
 const FooterExample = () => (
   <Footer>
@@ -24,7 +25,7 @@ const FooterExample = () => (
       Nettstedet er utarbeidet av NDLA med åpen kildekode.
     </Footer.Text>
     <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
-      Spør NDLA
+      <Trans>{({ t }) => t('askNDLA')}</Trans>
     </ZendeskButton>
   </Footer>
 );

@@ -12,7 +12,7 @@ import Button from '@ndla/button';
 import { css } from 'emotion';
 import { mq, breakpoints } from '@ndla/core';
 
-const styling = props => css`
+const styling = css`
   border-radius: 2px;
   background-color: white;
   float: right;

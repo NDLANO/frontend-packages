@@ -27,7 +27,6 @@ class AccordionExample extends Component {
   }
 
   handlePanelErrors(values) {
-    console.log(values);
     this.setState({
       errorPanels: values,
     });

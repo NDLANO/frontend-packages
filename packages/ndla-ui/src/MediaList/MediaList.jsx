@@ -77,10 +77,11 @@ export const MediaListItemBody = ({
   license: licenseAbbreviation,
   messages,
   title,
+  locale,
   resourceUrl,
   resourceType,
 }) => {
-  const license = getLicenseByAbbreviation(licenseAbbreviation);
+  const license = getLicenseByAbbreviation(licenseAbbreviation, locale);
 
   const containerProps = isCreativeCommonsLicense(license.rights)
     ? {
@@ -119,6 +120,7 @@ export const MediaListItemBody = ({
 MediaListItemBody.propTypes = {
   children: PropTypes.node.isRequired,
   license: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
   resourceUrl: PropTypes.string,
   resourceType: PropTypes.oneOf(
     Object.keys(resourceTypes).map(key => resourceTypes[key]),

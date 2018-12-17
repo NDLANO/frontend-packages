@@ -117,8 +117,7 @@ class FigureWithLicense extends Component {
             figureId={figureId}
             id={this.id}
             key="caption"
-            locale="nb
-            "
+            locale="nb"
             caption={caption}
             reuseLabel={reuseLabel}
             licenseRights={license.rights}

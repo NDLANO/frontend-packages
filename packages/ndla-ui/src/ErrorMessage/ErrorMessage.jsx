@@ -15,7 +15,7 @@ import SafeLink from '../common/SafeLink';
 const StyledErrorMessage = styled('article')`
   text-align: center;
   a {
-    ${colors.brand.primary};
+    color: ${colors.brand.primary};
   }
 
   h1 {

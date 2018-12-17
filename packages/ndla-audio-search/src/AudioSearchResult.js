@@ -34,7 +34,7 @@ export default function AudioSearchResult({
         <h2>{audio.title.title}</h2>
         <div {...classes('license')}>
           {license.rights ? (
-            <LicenseByline licenseRights={license.rights} />
+            <LicenseByline licenseRights={license.rights} locale={locale} />
           ) : (
             license
           )}

@@ -25,6 +25,7 @@ export const FigureFullscreenDialog = ({
   messages,
   id,
   authors,
+  locale,
   origin,
   title,
   actionButtons,
@@ -58,7 +59,11 @@ export const FigureFullscreenDialog = ({
           </p>
           <div {...classLicenses('hidden-content')}>
             <div>
-              <FigureLicenseByline license={license} messages={messages} />
+              <FigureLicenseByline
+                license={license}
+                messages={messages}
+                locale={locale}
+              />
             </div>
             <FigureLicenseCta
               authors={authors}
@@ -93,4 +98,5 @@ FigureFullscreenDialog.propTypes = {
   caption: PropTypes.string.isRequired,
   reuseLabel: PropTypes.string,
   license: LicenseShape.isRequired,
+  locale: PropTypes.string,
 };

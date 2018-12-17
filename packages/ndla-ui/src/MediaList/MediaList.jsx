@@ -82,7 +82,6 @@ export const MediaListItemBody = ({
   resourceType,
 }) => {
   const license = getLicenseByAbbreviation(licenseAbbreviation, locale);
-
   const containerProps = isCreativeCommonsLicense(license.rights)
     ? {
         ...oClasses('body', null, cClasses('body').className),
@@ -108,6 +107,7 @@ export const MediaListItemBody = ({
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
       <LicenseByline
         withDescription
+        locale={locale}
         messages={messages}
         licenseRights={license.rights}
       />

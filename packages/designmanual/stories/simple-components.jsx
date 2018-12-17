@@ -380,6 +380,7 @@ storiesOf('Enkle komponenter', module)
             <div className="c-source-list">
               <LicenseByline
                 className="c-source-list__item"
+                locale="nb"
                 licenseRights={[BY, NC, ND]}
               />
               <span className="c-source-list__item">Gary Waters</span>
@@ -701,6 +702,7 @@ storiesOf('Enkle komponenter', module)
           <div className="c-source-list">
             <LicenseByline
               className="c-source-list__item"
+              locale="nb"
               licenseRights={[BY, NC, ND]}
             />
             <span className="c-source-list__item">Gary Waters</span>

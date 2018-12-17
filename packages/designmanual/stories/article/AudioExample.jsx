@@ -68,6 +68,7 @@ class AudioExample extends Component {
         <FigureCaption
           figureId={figureId}
           id={this.id}
+          locale="nb"
           key="caption"
           caption={caption}
           reuseLabel={reuseLabel}

@@ -103,9 +103,11 @@ export const Article = ({
   modifier,
   messages,
   children,
+  locale,
   competenceGoals,
 }) => {
-  const license = getLicenseByAbbreviation(licenseObj.license).abbreviation;
+  const license = getLicenseByAbbreviation(licenseObj.license, locale)
+    .abbreviation;
   const showCreators = Array.isArray(creators) && creators.length > 0;
   const authors = showCreators ? creators : rightsholders;
 
@@ -146,6 +148,7 @@ Article.propTypes = {
   modifier: PropTypes.string,
   icon: PropTypes.node,
   licenseBox: PropTypes.node,
+  locale: PropTypes.string,
   additional: PropTypes.bool,
   competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node,

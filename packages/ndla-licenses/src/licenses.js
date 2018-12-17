@@ -331,7 +331,6 @@ function licenseByLocale(license, locale) {
 }
 
 export function getLicenseByAbbreviation(abbreviation, locale) {
-  console.log(abbreviation, 'LOL', locale);
   switch (abbreviation) {
     case 'CC-BY-NC-ND-4.0':
       return licenseByLocale(byncnd, locale);

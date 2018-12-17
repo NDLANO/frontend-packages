@@ -8914,14 +8914,6 @@ react-facebook@^6.0.15:
     can-use-dom "^0.1.0"
     react-spinner-children "^1.0.8"
 
-react-fns@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-fns/-/react-fns-1.4.0.tgz#7b74017f9850849560dfe98f98bba3f7948495b5"
-  integrity sha512-Cchvz3d6Hh9Ho8SPQOU3/HDeiL/D/QaHozs0X0lePOI2yPoT15GFEVUbz3RHoDsnyUp8HA5A7HAKEPx3nggs8w==
-  dependencies:
-    qs "^6.5.1"
-    react-media "^1.6.1"
-
 react-fuzzy@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-fuzzy/-/react-fuzzy-0.5.2.tgz#fc13bf6f0b785e5fefe908724efebec4935eaefe"
@@ -8960,15 +8952,6 @@ react-is@^16.3.2, react-is@^16.6.1, react-is@^16.6.3:
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
-
-react-media@^1.6.1:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/react-media/-/react-media-1.8.0.tgz#b86d6d62313f95d53af7d06e23d4f49adfb131d3"
-  integrity sha512-XcfqkDQj5/hmJod/kXUAZljJyMVkWrBWOkzwynAR8BXOGlbFLGBwezM0jQHtp2BrSymhf14/XrQrb3gGBnGK4g==
-  dependencies:
-    invariant "^2.2.2"
-    json2mq "^0.2.0"
-    prop-types "^15.5.10"
 
 react-modal@^3.6.1:
   version "3.6.1"
@@ -9089,9 +9072,19 @@ react-textarea-autosize@^7.0.4:
   dependencies:
     prop-types "^15.6.0"
 
-react-transition-group@^2.0.0, react-transition-group@^2.2.1:
+react-transition-group@^2.0.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.0.tgz#70bca0e3546102c4dc5cf3f5f57f73447cce6874"
+  dependencies:
+    dom-helpers "^3.3.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+    react-lifecycles-compat "^3.0.4"
+
+react-transition-group@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.1.tgz#67fbd8d30ebb1c57a149d554dbb82eabefa61f0d"
+  integrity sha512-8x/CxUL9SjYFmUdzsBPTgtKeCxt7QArjNSte0wwiLtF/Ix/o1nWNJooNy5o9XbHIKS31pz7J5VF2l41TwlvbHQ==
   dependencies:
     dom-helpers "^3.3.1"
     loose-envify "^1.4.0"

@@ -27,8 +27,7 @@
     "react-prop-types": "0.4.0"
   },
   "dependencies": {
-    "@ndla/core": "^0.4.3",
-    "react-fns": "^1.4.0"
+    "@ndla/core": "^0.4.3"
   },
   "publishConfig": {
     "access": "public"

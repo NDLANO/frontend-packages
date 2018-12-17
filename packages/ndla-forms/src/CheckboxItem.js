@@ -39,7 +39,8 @@ const CheckboxInput = styled.input`
 
 const CheckboxLabel = styled.label`
   font-family: ${fonts.sans};
-  ${fonts.sizes(16, 1.75)} color: ${colors.brand.primary};
+  ${fonts.sizes(16, 1.75)};
+  color: ${colors.brand.primary};
   align-items: center;
   display: inline-flex;
   &:not(:last-child) {

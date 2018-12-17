@@ -127,7 +127,7 @@
   margin-right: $spacing;
   width: 100%;
   @include mq($until: tablet) {
-    .c-button {
+    button {
       width: 100%;
       margin: $spacing--small / 4 0;
     }

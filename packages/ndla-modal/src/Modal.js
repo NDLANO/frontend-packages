@@ -305,10 +305,6 @@ const ModalWrapper = styled.div`
       border-bottom: 1px solid ${colors.brand.greyLighter};
       ${mq.range({ until: breakpoints.desktop })} {
         padding: ${spacing.small} ${spacing.normal};
-        .c-button {
-          display: block;
-          margin: 0;
-        }
         .c-logo {
           display: none;
         }

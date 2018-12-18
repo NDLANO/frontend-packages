@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Tooltip from '@ndla/tooltip';
+import Button from '@ndla/button';
 import ComponentInfo from '../ComponentInfo';
 
 const TooltipExample = () => (
@@ -42,27 +43,25 @@ const TooltipExample = () => (
     </p>
     <h3>Vanlig tooltip:</h3>
     <Tooltip tooltip="Eksempel basic">
-      <div className="c-button c-button--outline">Hover me!</div>
+      <Button appearance="outline">Hover me!</Button>
     </Tooltip>
     <h3>Delayed tooltip:</h3>
     <Tooltip tooltip="Eksempel basic" delay={500}>
-      <div className="c-button c-button--outline">
-        Vent 500ms før visning av tooltip!
-      </div>
+      <Button appearance="outline">Vent 500ms før visning av tooltip!</Button>
     </Tooltip>
     <h3>Plasseringsvalg for tooltip:</h3>
     <div className="u-horisontal-list">
       <Tooltip tooltip="Plasseres over" align="top">
-        <div className="c-button c-button--outline">Topp</div>
+        <Button appearance="outline">Topp</Button>
       </Tooltip>
       <Tooltip tooltip="Plasseres til venstre" align="left">
-        <div className="c-button c-button--outline">Venstre</div>
+        <Button appearance="outline">Venstre</Button>
       </Tooltip>
       <Tooltip tooltip="Plasseres til høyre" align="right">
-        <div className="c-button c-button--outline">Høyre</div>
+        <Button appearance="outline">Høyre</Button>
       </Tooltip>
       <Tooltip tooltip="Plasseres under" align="bottom">
-        <div className="c-button c-button--outline">Bunn</div>
+        <Button appearance="outline">Bunn</Button>
       </Tooltip>
     </div>
   </ComponentInfo>

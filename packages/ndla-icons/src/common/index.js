@@ -32,6 +32,7 @@ export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';
 export { default as Information } from './Information';
 export { default as Link } from './Link';
+export { default as Menu } from './Menu';
 export { default as Pause } from './Pause';
 export { default as Play } from './Play';
 export { default as Sad } from './Sad';

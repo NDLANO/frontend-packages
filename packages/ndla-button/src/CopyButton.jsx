@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import { Button } from './Button';
 
 class CopyButton extends Component {
   constructor(props) {

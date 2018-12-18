@@ -38,7 +38,8 @@ const RadioInput = styled.input`
 
 const RadioLabel = styled.label`
   font-family: ${fonts.sans};
-  ${fonts.sizes(16, 1.75)} color: ${colors.brand.primary};
+  ${fonts.sizes(16, 1.75)};
+  color: ${colors.brand.primary};
   align-items: center;
   display: inline-flex;
   &:before {

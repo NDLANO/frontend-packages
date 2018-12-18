@@ -255,11 +255,6 @@ $overlay-height: 136px;
   &__go-to-search {
     text-align: center;
     margin: $spacing--medium 0;
-
-    a {
-      @extend .c-button;
-      box-shadow: none;
-    }
   }
   /** Header adjustments... */
   &__header {

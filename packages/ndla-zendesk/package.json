@@ -1,7 +1,7 @@
 {
-  "name": "@ndla/pager",
-  "version": "0.3.4",
-  "description": "Pager component for NDLA",
+  "name": "@ndla/zendesk",
+  "version": "0.1.2",
+  "description": "Zendesk button (and loading) for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,19 +15,19 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
     "lib",
     "es"
   ],
-  "dependencies": {
-    "@ndla/core": "^0.4.4"
-  },
   "peerDependencies": {
+    "classnames": "^2.2.6",
     "emotion": "^9.2.10",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",
     "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"
+  },
+  "dependencies": {
+    "@ndla/core": "^0.4.4"
   },
   "publishConfig": {
     "access": "public"

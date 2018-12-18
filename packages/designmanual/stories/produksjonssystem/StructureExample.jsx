@@ -27,7 +27,8 @@ const fetchSubjectsTopics = subjectId =>
   delay(1000).then(() => subjectTopics[subjectId]);
 
 const AddTitle = styled('span')`
-  ${fonts.sizes(16, 1.2)} font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes(16, 1.2)};
+  font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
   color: ${colors.text.primary};
   opacity: ${props => (props.show ? 1 : 0)};
@@ -112,7 +113,8 @@ const ConnectionButton = styled('button')`
   text-align: left;
   padding: ${spacing.xsmall};
   color: ${colors.brand.primary};
-  ${fonts.sizes(14, 1.2)} white-space: no-wrap;
+  ${fonts.sizes(14, 1.2)};
+  white-space: no-wrap;
   &:disabled {
     color: ${colors.brand.light};
   }

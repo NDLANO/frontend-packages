@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { HelpCircleDual } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
+import Button from '@ndla/button';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 
@@ -54,9 +55,9 @@ const ResourcesTopicTitle = ({
               </Tooltip>
             )}
             activateButton={
-              <button className="c-button c-button--stripped" type="button">
+              <Button appearance="stripped">
                 <HelpIcon />
-              </button>
+              </Button>
             }>
             {onClose => (
               <Fragment>

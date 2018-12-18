@@ -34,6 +34,11 @@ const styling = css`
 
 class ZendeskButton extends React.Component {
   componentDidMount() {
+    // Check if Zendesk is already loaded..
+    if (window.zE) {
+      return;
+    }
+
     const { locale, widgetKey } = this.props;
     // Hack to check that zendesk scripts are loaded before we set the locale.
     this.interval = window.setInterval(() => {

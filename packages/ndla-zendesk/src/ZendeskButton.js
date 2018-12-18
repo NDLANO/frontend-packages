@@ -10,7 +10,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { css } from 'emotion';
+import { injectGlobal } from 'emotion';
 import { mq, breakpoints } from '@ndla/core';
+
+injectGlobal`
+  /* Hide default launcher so that we can provide our own. */
+  .zEWidget-launcher {
+    display:none;
+  }
+`;
 
 const styling = css`
   border-radius: 2px;
@@ -27,26 +35,13 @@ const styling = css`
 class ZendeskButton extends React.Component {
   componentDidMount() {
     const { locale, widgetKey } = this.props;
-    // Hack to check that zendesk scripts are loaded before we hide the widget.
-    // This enables us to provide our own "widget activation" button.
+    // Hack to check that zendesk scripts are loaded before we set the locale.
     this.interval = window.setInterval(() => {
       if (window.zE) {
-        window.zE('webWidget', 'hide');
         window.zE('webWidget', 'setLocale', locale);
-        window.zE('webWidget', 'updateSettings', {
-          webWidget: {
-            zIndex: 9999, // Reset z-index
-          },
-        });
         window.clearInterval(this.interval);
       }
     }, 50);
-
-    window.zESettings = {
-      webWidget: {
-        zIndex: 0, // Prevents flash of zendesk activation button
-      },
-    };
 
     // Asynchronously load zendesk scripts for better performance
     const script = document.createElement('script');

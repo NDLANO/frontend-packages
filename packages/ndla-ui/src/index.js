@@ -37,7 +37,6 @@ export { InfoBox } from './InfoBox';
 
 export { default as BetaNavigation, BetaNotification } from './Beta';
 
-export { default as Tooltip } from './Tooltip';
 export {
   SubjectHeader,
   SubjectContent,

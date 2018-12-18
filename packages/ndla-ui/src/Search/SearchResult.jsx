@@ -6,9 +6,8 @@ import { Cross } from '@ndla/icons/action';
 import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
-
+import Tooltip from '@ndla/tooltip';
 import { FilterTabs } from '@ndla/tabs';
-import Tooltip from '../Tooltip';
 import SafeLink from '../common/SafeLink';
 
 const resultClasses = BEMHelper('c-search-result');

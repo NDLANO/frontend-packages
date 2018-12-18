@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tooltip } from '@ndla/ui';
+import Tooltip from '@ndla/tooltip';
 import ComponentInfo from '../ComponentInfo';
 
 const TooltipExample = () => (

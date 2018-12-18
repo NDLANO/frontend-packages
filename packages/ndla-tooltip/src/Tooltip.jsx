@@ -23,7 +23,7 @@ const TooltipElement = css`
   z-index: 9999;
   background: ${colors.brand.primary};
   border-radius: 2px;
-  padding: ${spacing.small};
+  padding: 2px ${spacing.small};
   font-family: ${fonts.sans};
   ${fonts.sizes(14, 1.2)} font-weight: ${fonts.weight.normal};
   color: $white;

@@ -10,7 +10,11 @@ import SearchField from './SearchField';
 import SearchOverlay from './SearchOverlay';
 import SearchPage from './SearchPage';
 
-import { SearchResult, SearchResultList } from './SearchResult';
+import {
+  SearchResult,
+  SearchResultList,
+  SearchResultItem,
+} from './SearchResult';
 
 import SearchFilter from './SearchFilter';
 import SearchFilterWrapper from './SearchFilterWrapper';
@@ -26,6 +30,7 @@ export {
   SearchOverlay,
   SearchPage,
   SearchResult,
+  SearchResultItem,
   SearchResultList,
   SearchFilter,
   SearchFilterWrapper,

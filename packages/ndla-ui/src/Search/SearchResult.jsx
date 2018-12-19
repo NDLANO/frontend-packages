@@ -239,7 +239,7 @@ SearchResultItem.propTypes = {
   subjectsLabel: PropTypes.string.isRequired,
 };
 
-export const SearchResultList = ({ results, children }) => {
+export const SearchResultList = ({ results, component: Component }) => {
   if (!results) return <article className="c-search-result-list__empty" />;
   return (
     <Trans>
@@ -253,24 +253,28 @@ export const SearchResultList = ({ results, children }) => {
           </article>
         ) : (
           <ul className="c-search-result-list">
-            {children ||
-              results.map(item => (
-                <SearchResultItem
-                  key={`search_result_item_${
-                    typeof item.url === 'object' ? item.url.href : item.url
-                  }`}
-                  item={item}
-                  additionalContentToolip={t('resource.tooltipAdditionalTopic')}
-                  subjectsLabel={t(
-                    'searchPage.searchResultListMessages.subjectsLabel',
-                  )}
-                />
-              ))}
+            {results.map(item => (
+              <Component
+                key={`search_result_item_${
+                  typeof item.url === 'object' ? item.url.href : item.url
+                }`}
+                item={item}
+                additionalContentToolip={t('resource.tooltipAdditionalTopic')}
+                subjectsLabel={t(
+                  'searchPage.searchResultListMessages.subjectsLabel',
+                )}>
+                {item.children}
+              </Component>
+            ))}
           </ul>
         )
       }
     </Trans>
   );
+};
+
+SearchResultList.defaultProps = {
+  component: SearchResultItem,
 };
 
 SearchResultList.propTypes = {

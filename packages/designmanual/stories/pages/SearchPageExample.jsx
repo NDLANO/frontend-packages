@@ -11,6 +11,7 @@ import {
   SearchPopoverFilter,
   SubjectBadge,
   SubjectMaterialBadge,
+  SourceMaterialBadge,
   LearningPathBadge,
   AssessmentResourcesBadge,
   ExternalLearningResourcesBadge,

@@ -39,26 +39,29 @@ const itemTitleLinked = css`
 `;
 
 const ItemTitleButton = styled.button`
-${fonts.sizes(16, 1)} font-weight: ${fonts.weight.semibold};
-border: 0;
-background: 0;
-color: ${colors.brand.primary};
-display: flex;
-align-items: center;
-text-align: left;
-white-space: nowrap;
+  ${fonts.sizes(16, 1)};
+  font-weight: ${fonts.weight.semibold};
+  border: 0;
+  background: 0;
+  color: ${colors.brand.primary};
+  display: flex;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
 
-${props => props.hasSubtopics && itemTitleArrow};
-${props =>
-  props.lastItemClickable &&
-  css`
-    cursor: pointer;
-  `};
-${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
-&:before {
-  transition: transform 200ms ease;
-  transform: rotate(${props => props.hasSubtopics && props.arrowDirection}deg);
-}
+  ${props => props.hasSubtopics && itemTitleArrow};
+  ${props =>
+    props.lastItemClickable &&
+    css`
+      cursor: pointer;
+    `};
+  ${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
+  &:before {
+    transition: transform 200ms ease;
+    transform: rotate(
+      ${props => props.hasSubtopics && props.arrowDirection}deg
+    );
+  }
 `;
 
 const itemNameStyling = css`

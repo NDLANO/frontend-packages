@@ -6,9 +6,5 @@
  *
  */
 
-import Button from './Button';
-import CopyButton from './CopyButton';
-
-export { CopyButton };
-
-export default Button;
+export { Button as default, buttonStyle } from './Button';
+export { default as CopyButton } from './CopyButton';

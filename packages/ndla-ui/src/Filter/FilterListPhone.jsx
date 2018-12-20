@@ -10,12 +10,12 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
-import { ActiveFilters } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
 import ToggleItem from './ToggleItem';
+import ActiveFilters from '../Search/ActiveFilters';
 
 class FilterListPhone extends Component {
   constructor(props) {

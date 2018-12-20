@@ -14,14 +14,17 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Trans } from '@ndla/i18n';
 import debounce from 'lodash/debounce';
+import { css } from 'emotion';
+import { mq, breakpoints, spacing, fonts, colors } from '@ndla/core';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
-import { SafeLink, Tooltip } from '@ndla/ui';
 import { ModalHeader } from '@ndla/modal';
 import Button from '@ndla/button';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
+import SafeLink from '../common/SafeLink';
+import Tooltip from '../Tooltip';
 
 import Logo from '../Logo';
 import { FilterListPhone } from '../Filter';
@@ -112,12 +115,34 @@ export default class TopicMenu extends Component {
   renderCompentenceGoals(competenceGoalsOpen, t) {
     return (
       <Button
-        className={
+        css={
           this.state.isNarrowScreen
-            ? 'c-button c-button--lighter c-topic-menu__competence-open-button'
-            : 'c-topic-menu__competence-toggle-button'
+            ? css`
+                animation-name: fadeInLeft;
+                animation-duration: 0.5s;
+                transform: translate3d(0px, 0px, 0px);
+                margin: ${spacing.normal} 0 ${spacing.normal} ${spacing.normal};
+                ${fonts.sizes('14px')};
+                ${mq.range({ until: breakpoints.mobileWide })} {
+                  margin-left: 20px;
+                  margin-right: 20px;
+                }
+                ${mq.range({ from: breakpoints.desktop })} {
+                  display: none;
+                }
+              `
+            : css`
+                ${fonts.sizes('14px', '18px')};
+                font-weight: ${fonts.weight.bold};
+                color: ${colors.brand.primary};
+                background: transparent;
+                border: none;
+                &:hover {
+                  cursor: pointer;
+                }
+              `
         }
-        stripped={!this.state.isNarrowScreen}
+        appearance={this.state.isNarrowScreen ? 'lighter' : 'stripped'}
         onClick={() =>
           this.setState({
             competenceGoalsOpen: !competenceGoalsOpen,

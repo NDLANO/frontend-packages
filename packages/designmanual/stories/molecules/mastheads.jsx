@@ -19,11 +19,12 @@ import {
   DisplayOnPageYOffset,
   SearchField,
   SafeLink,
+  TopicMenuButton,
+  ToggleSearchButton,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import Button from '@ndla/button';
 
-import { Search } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 
 import { topicMenu, contentTypeResults } from '../../dummydata';
@@ -39,16 +40,54 @@ export const MastheadWithLogo = () => (
   </Masthead>
 );
 
-const classes = BEMHelper({
-  prefix: 'c-',
-  name: 'toggle-search-button',
-  outputIsString: true,
-});
-
 const searchFieldClasses = BEMHelper({
   prefix: 'c-',
   name: 'search-field',
 });
+
+const SearchButtonView = ({ hideSearchButton, hideOnNarrowScreen }) => {
+  if (hideSearchButton) {
+    return null;
+  }
+  return (
+    <Modal
+      backgroundColor="grey"
+      animation="slide-down"
+      animationDuration={200}
+      size="custom"
+      onClose={() => {
+        this.setState({ value: '' });
+      }}
+      className="c-search-field__overlay-content"
+      activateButton={
+        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen}>
+          Søk
+        </ToggleSearchButton>
+      }>
+      {onClose => {
+        this.closeAllModals[1] = onClose;
+        return (
+          <Fragment>
+            <div className="c-search-field__overlay-top" />
+            <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
+              <div {...searchFieldClasses('header-container')}>
+                {this.renderSearchField()}
+                <Button stripped onClick={onClose}>
+                  <Cross className="c-icon--medium" />
+                </Button>
+              </div>
+            </div>
+          </Fragment>
+        );
+      }}
+    </Modal>
+  );
+};
+
+SearchButtonView.propTypes = {
+  hideOnNarrowScreen: PropTypes.bool,
+  hideSearchButton: PropTypes.bool,
+};
 
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
@@ -109,50 +148,46 @@ class MastheadWithTopicMenu extends Component {
     );
   }
 
-  render() {
-    let searchButtonView = null;
-
-    if (!this.props.hideSearchButton) {
-      searchButtonView = (
-        <Modal
-          backgroundColor="grey"
-          animation="slide-down"
-          animationDuration={200}
-          size="custom"
-          onClose={() => {
-            this.setState({ value: '' });
-          }}
-          className="c-search-field__overlay-content"
-          activateButton={
-            <button
-              type="button"
-              className="c-button c-toggle-search-button__button c-toggle-search-button__button--wide">
-              <span className={classes('button-text')}>Søk</span>
-              <Search />
-            </button>
-          }>
-          {onClose => {
-            this.closeAllModals[1] = onClose;
-            return (
-              <Fragment>
-                <div className="c-search-field__overlay-top" />
-                <div
-                  ref={this.searchFieldRef}
-                  {...searchFieldClasses('header')}>
-                  <div {...searchFieldClasses('header-container')}>
-                    {this.renderSearchField()}
-                    <Button stripped onClick={onClose}>
-                      <Cross className="c-icon--medium" />
-                    </Button>
-                  </div>
-                </div>
-              </Fragment>
-            );
-          }}
-        </Modal>
-      );
+  renderSearchButtonView = hideOnNarrowScreen => {
+    if (this.props.hideSearchButton) {
+      return null;
     }
+    return (
+      <Modal
+        backgroundColor="grey"
+        animation="slide-down"
+        animationDuration={200}
+        size="custom"
+        onClose={() => {
+          this.setState({ value: '' });
+        }}
+        className="c-search-field__overlay-content"
+        activateButton={
+          <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen}>
+            Søk
+          </ToggleSearchButton>
+        }>
+        {onClose => {
+          this.closeAllModals[1] = onClose;
+          return (
+            <Fragment>
+              <div className="c-search-field__overlay-top" />
+              <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
+                <div {...searchFieldClasses('header-container')}>
+                  {this.renderSearchField()}
+                  <Button stripped onClick={onClose}>
+                    <Cross className="c-icon--medium" />
+                  </Button>
+                </div>
+              </div>
+            </Fragment>
+          );
+        }}
+      </Modal>
+    );
+  };
 
+  render() {
     return (
       <Masthead
         fixed
@@ -161,11 +196,7 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem left>
           <Modal
             size="fullscreen"
-            activateButton={
-              <Button outline className="c-topic-menu-toggle-button">
-                Meny
-              </Button>
-            }
+            activateButton={<TopicMenuButton>Meny</TopicMenuButton>}
             animation="subtle"
             animationDuration={150}
             backgroundColor="grey"
@@ -182,7 +213,7 @@ class MastheadWithTopicMenu extends Component {
                 <TopicMenu
                   close={onClose}
                   isBeta={this.props.beta}
-                  searchFieldComponent={searchButtonView}
+                  searchFieldComponent={this.renderSearchButtonView()}
                   subjectTitle="Mediefag"
                   toFrontpage={() =>
                     '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
@@ -239,7 +270,7 @@ class MastheadWithTopicMenu extends Component {
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
-          {searchButtonView}
+          {this.renderSearchButtonView(true)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
             label="Nasjonal digital læringsarena"

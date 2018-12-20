@@ -10,8 +10,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Trans } from '@ndla/i18n';
-
-import { Portrait, SafeLink } from '@ndla/ui';
+import Button from '@ndla/button';
+import SafeLink from '../common/SafeLink';
+import Portrait from '../Portrait';
 
 const classes = new BEMHelper({
   name: 'article-author-popup',
@@ -39,14 +40,14 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
                     author.email ||
                     author.introduction ||
                     author.title ? (
-                      <button
+                      <Button
                         type="button"
-                        className="c-button--link"
+                        appearance="link"
                         onClick={() => {
                           onSelectAuthor(index);
                         }}>
                         {author.name}
-                      </button>
+                      </Button>
                     ) : (
                       author.name
                     )}
@@ -101,9 +102,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
               {introduction && <p>{introduction}</p>}
               <div {...classes('link-container')}>
                 {urlContributions && (
-                  <SafeLink
-                    className="c-button c-button--outline"
-                    to={urlContributions}>
+                  <SafeLink to={urlContributions}>
                     {t('article.urlContributionsLabel', { name: shortName })}
                   </SafeLink>
                 )}

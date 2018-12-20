@@ -27,7 +27,6 @@ import {
   searchTabFilterOptions,
   searchFilterOptions,
 } from '../../dummydata/index';
-import { SourceMaterialBadge } from '@ndla/ui/lib/ContentTypeBadge';
 
 const results = [
   {

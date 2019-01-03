@@ -107,6 +107,7 @@ export const TextContent = injectT(({ t }) => (
             license={bysaLicenseAbbreviation}
             title={t('license.text.rules')}
             resourceUrl=""
+            locale="nn"
             resourceType="text">
             <MediaListItemActions>
               <div className="c-medialist__ref">

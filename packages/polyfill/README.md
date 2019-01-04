@@ -20,14 +20,21 @@ import '@ndla/polyfill';
 ### Advanced
 
 1. Create an umd build of `@ndla/polyfill`
-2. Conditionally load it in `<head>`
+2. Use `<ScriptLoader>` to conditional load the polyfill based on the following [features](src/featureDetect.js). Scripts that depend on the polyfill are loaded after the polyfill.
 
 ```js
-import useragent from 'useragent';
-...
-<head>
-  {useragent.parse(userAgentString).family === 'IE' && (
-    <script src="https://example.com/polyfill.min.js" />
-  )}
-</head>;
+import ScriptLoader from '@ndla/polyfill/lib/ScriptLoader';
+
+const Document = props => {
+  const polyfill = { src: '/polyfill.min.js' };
+  const scripts = [{ src: '/vendor.min.js' }, { src: '/client.min.js' }];
+  return (
+    <html>
+      <head />
+      <body>
+        <ScriptLoader polyfill={polyfill} scripts={scripts} />
+      </body>
+    </html>
+  );
+};
 ```

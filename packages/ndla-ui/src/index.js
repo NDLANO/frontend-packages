@@ -37,7 +37,6 @@ export { InfoBox } from './InfoBox';
 
 export { default as BetaNavigation, BetaNotification } from './Beta';
 
-export { default as Tooltip } from './Tooltip';
 export {
   SubjectHeader,
   SubjectContent,
@@ -74,10 +73,12 @@ export {
   SearchResult,
   SearchResultAuthor,
   SearchResultList,
+  SearchResultItem,
   SearchFilter,
   SearchFilterWrapper,
   SearchPopoverFilter,
   ActiveFilters,
+  ToggleSearchButton,
 } from './Search';
 export {
   default as ContentTypeBadge,
@@ -100,7 +101,7 @@ export { default as ClickToggle } from './common/ClickToggle';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
-export { default as TopicMenu } from './TopicMenu';
+export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
 export {
   default as RelatedArticleList,
   RelatedArticle,

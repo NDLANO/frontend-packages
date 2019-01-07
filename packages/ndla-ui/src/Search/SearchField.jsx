@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
+import { buttonStyle } from '@ndla/button';
+import { css } from 'emotion';
 
 import SafeLink from '../common/SafeLink';
 
@@ -61,7 +63,11 @@ const SearchResult = ({
       ))}
     </div>
     <div {...classes('go-to-search')}>
-      <SafeLink to={allResultUrl}>
+      <SafeLink
+        to={allResultUrl}
+        css={css`
+          ${buttonStyle} box-shadow: none;
+        `}>
         {t('searchPage.searchField.allResultButtonText')}
       </SafeLink>
     </div>

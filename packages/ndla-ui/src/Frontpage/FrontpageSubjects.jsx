@@ -5,6 +5,8 @@ import { injectT } from '@ndla/i18n';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
+import { spacing } from '@ndla/core';
+import { css } from 'emotion';
 
 import { OneColumn } from '../Layout';
 import SafeLink from '../common/SafeLink';
@@ -34,7 +36,10 @@ export const FrontpageSubjectsSection = injectT(
               activateButton={
                 <Button
                   lighter
-                  {...sectionClasses('beta-label')}
+                  css={css`
+                    padding: ${spacing.xsmall};
+                    line-height: 1em;
+                  `}
                   aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
                     title: subject.text,
                   })}>

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
-
-import { ContentTypeBadge, SafeLink, Tooltip } from '@ndla/ui';
+import Tooltip from '@ndla/tooltip';
 import { Additional } from '@ndla/icons/common';
+
+import SafeLink from '../common/SafeLink';
+import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultShape } from '../shapes';
 
 const classes = BEMHelper({

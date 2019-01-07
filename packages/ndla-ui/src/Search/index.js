@@ -10,7 +10,11 @@ import SearchField from './SearchField';
 import SearchOverlay from './SearchOverlay';
 import SearchPage from './SearchPage';
 
-import { SearchResult, SearchResultList } from './SearchResult';
+import {
+  SearchResult,
+  SearchResultList,
+  SearchResultItem,
+} from './SearchResult';
 
 import SearchFilter from './SearchFilter';
 import SearchFilterWrapper from './SearchFilterWrapper';
@@ -19,12 +23,14 @@ import ContentTypeResult from './ContentTypeResult';
 import SearchResultAuthor from './SearchResultAuthor';
 import SearchToggleFilter from './SearchToggleFilter';
 import ActiveFilters from './ActiveFilters';
+export { default as ToggleSearchButton } from './ToggleSearchButton';
 
 export {
   SearchField,
   SearchOverlay,
   SearchPage,
   SearchResult,
+  SearchResultItem,
   SearchResultList,
   SearchFilter,
   SearchFilterWrapper,

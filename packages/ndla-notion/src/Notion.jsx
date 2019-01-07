@@ -47,7 +47,7 @@ const NotionCSS = css`
       border-color: ${colors.brand.primary};
       outline: none;
       &:after {
-        transform: scale(1.7) translateY(1px);
+        transform: scale(1.4) translateY(1px);
       }
     }
   }

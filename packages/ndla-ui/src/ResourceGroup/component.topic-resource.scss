@@ -20,6 +20,7 @@
 
   &__body {
     flex: 1 1 auto;
+    justify-content: space-between;
     text-align: left;
     .c-icon {
       flex-shrink: 0;

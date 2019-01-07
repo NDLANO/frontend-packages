@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from '@ndla/ui';
+import constants from '../model';
 
 const { contentTypes } = constants;
 
@@ -183,7 +183,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'studiespesialisering',
+      studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
     },
     film: {
@@ -327,8 +327,7 @@ const messages = {
     },
     text: {
       heading: 'Slik bruker du tekst frå artikkelen',
-      description:
-        'Artikkelen kan vera samansett av fleire ulike tekstar som vert lista her.',
+      description: 'Hugs å vise til kjelda når du gjenbruker tekst.',
       rules: 'Reglar for bruk av teksten:',
       published: 'Publiseringsdato',
     },

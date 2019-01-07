@@ -48,7 +48,7 @@ export default function VideoSearchResultBrightcove({
           </div>
           <div {...classes('license')}>
             {license.rights ? (
-              <LicenseByline licenseRights={license.rights} />
+              <LicenseByline licenseRights={license.rights} locale={locale} />
             ) : (
               license
             )}

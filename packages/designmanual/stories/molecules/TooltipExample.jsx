@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tooltip } from '@ndla/ui';
+import Tooltip from '@ndla/tooltip';
 import Button from '@ndla/button';
 import ComponentInfo from '../ComponentInfo';
 

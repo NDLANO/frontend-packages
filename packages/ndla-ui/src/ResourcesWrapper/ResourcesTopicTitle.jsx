@@ -5,7 +5,7 @@ import { HelpCircleDual } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
-import Tooltip from '../Tooltip';
+import Tooltip from '@ndla/tooltip';
 
 import { classes } from './ResourcesWrapper';
 

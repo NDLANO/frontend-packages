@@ -10,9 +10,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
+import Tooltip from '@ndla/tooltip';
 import { Additional, Core } from '@ndla/icons/common';
 import SafeLink from '../common/SafeLink';
-import Tooltip from '../Tooltip';
 import NoContentBox from '../NoContentBox';
 import { ResourceShape } from '../shapes';
 

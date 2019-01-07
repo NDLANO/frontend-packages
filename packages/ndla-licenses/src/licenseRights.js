@@ -33,7 +33,7 @@ const by = {
   en: {
     title: 'Attribution',
     userFriendlyTitle: 'Refer to name',
-    description: 'The work&CloseCurlyQuote;s creator have to be named',
+    description: `The work's creator have to be named`,
   },
 };
 

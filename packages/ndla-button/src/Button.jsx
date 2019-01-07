@@ -37,7 +37,7 @@ const strippedStyle = css`
   }
 `;
 
-const appearances = {
+export const appearances = {
   lighter: css`
     ${fonts.sizes('12px', '15px')};
     background-color: ${colors.brand.lighter};

@@ -1,11 +1,11 @@
-# ndla-accordion
+# Tooltip component
 
-Tooltip wrapper component
+A Tooltip component that can be used to wrap any element. A tooltip is shown when the mouse pointer is hovering the wrapped element.
 
 ## Installation
 
 ```sh
-$ yarn ndla-tooltip
+$ yarn add @ndla/tooltip
 ```
 
 ## Usage

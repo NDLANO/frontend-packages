@@ -69,6 +69,7 @@
     "react": "^16.3.2",
     "react-bem-helper": "1.4.1",
     "react-collapse": "^4.0.3",
+    "react-device-detect": "^1.6.1",
     "react-dom": "^16.3.2",
     "react-emotion": "^9.2.10",
     "react-height": "3.0.0",

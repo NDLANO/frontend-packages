@@ -11,7 +11,6 @@ import { metaTypes } from './CCRel';
 export const contributorGroups = {
   creators: [
     'originator',
-    'editorial',
     'photographer',
     'artist',
     'writer',
@@ -26,6 +25,7 @@ export const contributorGroups = {
   processors: [
     'processor',
     'facilitator',
+    'editorial',
     'linguistic',
     'idea',
     'compiler',

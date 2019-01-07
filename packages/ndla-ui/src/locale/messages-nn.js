@@ -101,6 +101,8 @@ const messages = {
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
+      coreRelevance: 'Kjernestoff',
+      supplementaryRelevance: 'tilleggsstoff',
     },
   },
   subjectPage: {

@@ -57,7 +57,7 @@ const Fade = styled.div`
   }
   animation-fill-mode: forwards;
   animation-delay: ${props => props.delay}ms;
-  animation-name: ${props => (props.in ? 'fadeInTooltip' : '')};
+  animation-name: ${props => (props.animateIn ? 'fadeInTooltip' : '')};
   animation-duration: 300ms;
 `;
 
@@ -156,7 +156,7 @@ class Tooltip extends Component {
 
     return (
       <TooltipWrapper className={this.props.tooltipContainerClass}>
-        <Fade in={this.state.showTooltip} delay={this.props.delay}>
+        <Fade animateIn={this.state.showTooltip} delay={this.props.delay}>
           <span
             role="tooltip"
             className={TooltipElement}

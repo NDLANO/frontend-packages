@@ -28,7 +28,11 @@ const LicenseByline = ({
 }) => (
   <div {...classes()}>
     {!withDescription ? (
-      <LicenseIconList className={className} licenseRights={licenseRights} />
+      <LicenseIconList
+        className={className}
+        licenseRights={licenseRights}
+        locale={locale}
+      />
     ) : (
       <div>
         <LicenseIconDescriptionList

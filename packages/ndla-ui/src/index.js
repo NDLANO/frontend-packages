@@ -73,6 +73,7 @@ export {
   SearchResult,
   SearchResultAuthor,
   SearchResultList,
+  SearchResultItem,
   SearchFilter,
   SearchFilterWrapper,
   SearchPopoverFilter,

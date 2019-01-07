@@ -343,6 +343,7 @@ export default class TopicMenu extends Component {
                     <Fragment>
                       <div {...classes('section', 'main')}>
                         <SafeLink
+                          onClick={closeMenu}
                           to={toSubject()}
                           className={classes('link', 'big').className}>
                           <span {...classes('link-label')}>

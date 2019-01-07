@@ -126,27 +126,18 @@ const secondaryContent = (
                     {
                       name: 'Hvordan finne svar på det du lurer på?',
                       url: '#1d',
-                      topicName: [
-                        'Mediene i samfunnet',
-                        'Kildebruk, opphavsrett og personvern',
-                      ],
                       formattedDate: '10.02.2018',
                       contentType: contentTypes.SUBJECT_MATERIAL,
                     },
                     {
                       name: 'Hva koster det å nå bærekraftmålene?',
                       url: '#2d',
-                      topicName: [
-                        'Mediene i samfunnet',
-                        'Mediestruktur i Norge',
-                      ],
                       formattedDate: '24.01.2018',
                       contentType: contentTypes.SUBJECT_MATERIAL,
                     },
                     {
                       name: 'Hva koster det å nå bærekraftmålene?',
                       url: '#3d',
-                      topicName: ['Mediene i samfunnet', 'Mediebruk'],
                       formattedDate: '24.01.2018',
                       contentType: contentTypes.SUBJECT_MATERIAL,
                     },

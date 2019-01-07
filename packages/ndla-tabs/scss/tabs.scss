@@ -109,6 +109,7 @@ $tabs-spacing: 12px;
           text-align: left;
           padding-left: $spacing--small;
           padding-right: $spacing--small;
+          white-space: nowrap;
           //transform: translateX(-$spacing--small);
           &:focus, &:hover {
             background-color: $brand-grey--light;

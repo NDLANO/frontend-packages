@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight } from '@ndla/icons/common';
-
 import SafeLink from '../common/SafeLink';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { SubjectSectionTitle } from './Subject';
@@ -30,14 +28,6 @@ const SubjectNewContent = ({ heading, content }) => (
                 <SafeLink to={item.url} {...classes('link')}>
                   {item.name}
                 </SafeLink>
-                <div {...classes('topic-name')}>
-                  {item.topicName.map((topic, index) => (
-                    <Fragment key={topic}>
-                      {index > 0 && <ChevronRight />}
-                      {topic}
-                    </Fragment>
-                  ))}
-                </div>
               </div>
             </div>
           </li>
@@ -53,7 +43,6 @@ SubjectNewContent.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-      topicName: PropTypes.arrayOf(PropTypes.string).isRequired,
       formattedDate: PropTypes.string.isRequired,
       contentType: PropTypes.string.isRequired,
     }),

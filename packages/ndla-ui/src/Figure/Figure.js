@@ -29,13 +29,14 @@ export const FigureCaption = ({
   authors,
   reuseLabel,
   licenseRights,
+  locale,
   link,
 }) => (
   <figcaption {...classes('caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={licenseRights}>
+        <LicenseByline licenseRights={licenseRights} locale={locale}>
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
@@ -87,6 +88,7 @@ FigureCaption.propTypes = {
     description: PropTypes.string,
     external: PropTypes.bool,
   }),
+  locale: PropTypes.string,
 };
 
 FigureCaption.defaultProps = {

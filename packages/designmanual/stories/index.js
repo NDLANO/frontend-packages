@@ -12,6 +12,7 @@ require('./pages');
 require('./search');
 require('./licenses');
 require('./produksjonssystem');
+require('./produksjonssystem/hjelp');
 require('./beta');
 require('./experimental');
 require('./messages');

@@ -9,8 +9,9 @@
 import Modal from './Modal';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
+import ModalFullScreen from './ModalFullScreen';
 import ModalCloseButton from './ModalCloseButton';
 
-export { ModalHeader, ModalBody, ModalCloseButton };
+export { ModalHeader, ModalBody, ModalCloseButton, ModalFullScreen };
 
 export default Modal;

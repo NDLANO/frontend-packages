@@ -86,11 +86,19 @@ class FilmMovieList extends Component {
   }
 
   render() {
-    const { movies, name, columnWidth, columnsPrSlide, margin } = this.props;
+    const {
+      movies,
+      name,
+      columnWidth,
+      columnsPrSlide,
+      margin,
+      slideBackwardsLabel,
+      slideForwardsLabel,
+      resourceTypes,
+    } = this.props;
     const { slideIndex, swiping } = this.state;
     const marginString = `${margin}px`;
     const hideButtons = columnsPrSlide >= movies.length;
-
     return (
       <section {...classes()}>
         <h1 {...classes('heading')} style={{ marginLeft: `${margin + 7}px` }}>
@@ -104,6 +112,7 @@ class FilmMovieList extends Component {
           <div {...classes('slide-wrapper')}>
             <button
               type="button"
+              aria-label={slideBackwardsLabel}
               style={{ width: marginString }}
               {...classes('slide-navigation', {
                 prev: true,
@@ -114,6 +123,7 @@ class FilmMovieList extends Component {
             </button>
             <button
               type="button"
+              aria-label={slideForwardsLabel}
               style={{ width: marginString }}
               {...classes('slide-navigation', {
                 next: true,
@@ -147,8 +157,19 @@ class FilmMovieList extends Component {
                       backgroundImage: `url(${(slide.metaImage &&
                         slide.metaImage.url) ||
                         ''})`,
-                    }}
-                  />
+                    }}>
+                    <div {...classes('movie-tags-wrapper')}>
+                      {Object.keys(slide.movieTypes).map(movieType => (
+                        <span {...classes('movie-tags')} key={movieType}>
+                          {
+                            resourceTypes.find(
+                              resourceType => resourceType.id === movieType,
+                            ).name
+                          }
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                   <h2 {...classes('movie-title')}>{slide.title.title}</h2>
                 </a>
               ))}
@@ -166,6 +187,9 @@ FilmMovieList.propTypes = {
   columnsPrSlide: PropTypes.number.isRequired,
   columnWidth: PropTypes.number.isRequired,
   margin: PropTypes.number.isRequired,
+  slideBackwardsLabel: PropTypes.string.isRequired,
+  slideForwardsLabel: PropTypes.string.isRequired,
+  resourceTypes: PropTypes.shape().isRequired,
 };
 
 FilmMovieList.defaultProps = {

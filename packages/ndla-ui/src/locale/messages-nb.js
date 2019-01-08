@@ -441,6 +441,8 @@ const messages = {
     closeNotion: 'Lukk',
   },
   ndlaFilm: {
+    slideBackwardsLabel: 'Scroll bakover',
+    slideForwardsLabel: 'Scroll fremover',
     about: {
       heading: 'Om NDLA Film',
       text:

@@ -452,7 +452,7 @@ storiesOf('Ndla film', module)
     </PageContainer>
   ))
   .add('Ndla film editor', () => (
-    <PageContainer backgroundWide ndlaFilm>
+    <PageContainer>
       <Content>
         <NdlaFilmFrontpage editor />
       </Content>

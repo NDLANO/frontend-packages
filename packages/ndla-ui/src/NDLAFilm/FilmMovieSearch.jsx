@@ -13,6 +13,9 @@ import FocusTrapReact from 'focus-trap-react';
 
 import { OneColumn, SafeLink } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
+import { ChevronDown } from '@ndla/icons/common';
+import { Done } from '@ndla/icons/editor';
+import { Cross } from '@ndla/icons/action';
 import topicShape from './FilmFrontpage';
 
 const classes = new BEMHelper({
@@ -44,7 +47,8 @@ class FilmMovieSearch extends Component {
     const { resourceTypesIsOpen, topicIsOpen } = this.state;
     return (
       <OneColumn>
-        <div className="u-8/12@tablet u-push-2/12@tablet">
+        <div
+          {...classes('input-wrapper', '', 'u-8/12@tablet u-push-2/12@tablet')}>
           <input
             type="search"
             {...classes('input')}
@@ -55,6 +59,14 @@ class FilmMovieSearch extends Component {
             value={searchValue}
             onChange={e => onChangeSearch(e.target.value)}
           />
+          {searchValue !== '' && (
+            <button
+              {...classes('input', 'remove-button')}
+              type="button"
+              onClick={() => onChangeSearch('')}>
+              <Cross className="c-icon--22" />
+            </button>
+          )}
         </div>
         <div {...classes('dropdown-wrap')}>
           <div>
@@ -81,6 +93,7 @@ class FilmMovieSearch extends Component {
                   });
                 }}>
                 <span>{t('ndlaFilm.search.subjectButton')}</span>
+                <ChevronDown className="c-icon--22" />
               </button>
               {topicIsOpen && (
                 <div {...classes('dropdown-wrapper')}>
@@ -112,16 +125,15 @@ class FilmMovieSearch extends Component {
                   resourceTypesIsOpen ? 'open' : '',
                 )}
                 onClick={() => {
-                  if (resourceTypesIsOpen) {
-                    onChangeResourceType();
-                  }
                   this.setState({
                     resourceTypesIsOpen: !resourceTypesIsOpen,
                   });
                 }}>
                 <span>
-                  {resourceTypeSelected || t('ndlaFilm.search.categoryButton')}
+                  {(resourceTypeSelected && resourceTypeSelected.name) ||
+                    t('ndlaFilm.search.categoryButton')}
                 </span>
+                <ChevronDown className="c-icon--22" />
               </button>
               {resourceTypesIsOpen && (
                 <div {...classes('dropdown-wrapper')}>
@@ -134,8 +146,17 @@ class FilmMovieSearch extends Component {
                           resourceTypesIsOpen: false,
                         });
                       }}
+                      {...classes('dropdown-button', {
+                        selected:
+                          resourceTypeSelected &&
+                          resourceTypeSelected.id === resourceType.id,
+                      })}
                       key={resourceType.id}>
                       <span>{resourceType.name}</span>
+                      {resourceTypeSelected &&
+                        resourceTypeSelected.id === resourceType.id && (
+                          <Done className="c-icon--22" />
+                        )}
                     </button>
                   ))}
                 </div>
@@ -154,6 +175,10 @@ FilmMovieSearch.propTypes = {
   onChangeSearch: PropTypes.func.isRequired,
   onChangeTopic: PropTypes.func.isRequired,
   onChangeResourceType: PropTypes.func.isRequired,
+  resourceTypeSelected: PropTypes.shape({
+    name: PropTypes.string,
+    id: PropTypes.string,
+  }),
   t: PropTypes.shape({}),
 };
 

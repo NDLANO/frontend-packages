@@ -430,6 +430,8 @@ const messages = {
     closeNotion: 'Close',
   },
   ndlaFilm: {
+    slideBackwardsLabel: 'Scroll backwards',
+    slideForwardsLabel: 'Scroll forwards',
     about: {
       heading: 'About NDLA Film',
       text: 'Ndla film is ...',

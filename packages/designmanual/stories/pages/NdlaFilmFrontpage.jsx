@@ -30,6 +30,15 @@ const fetchData = ({ apiUrl, query }) => {
   });
 };
 
+/* eslint-disable jsx-a11y/media-has-caption  */
+const renderVideoExample = () => (
+  <video
+    width="100%"
+    poster="https://videoapi.streamps.net/video/ndlaseria/uai66jcyfg2e1sb/720.jpg?signature=21c88e4fc86a6654cd63c191dde426d8">
+    <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+  </video>
+);
+
 class NdlaFilmExample extends Component {
   constructor(props) {
     super(props);
@@ -129,9 +138,6 @@ class NdlaFilmExample extends Component {
       }),
     ]);
 
-    console.log('topics', topics);
-    console.log('search topics', allTopics);
-
     const resourceTypesId = resourceTypes.map(resourceType => resourceType.id);
     const validTopicIds = {};
 
@@ -218,15 +224,14 @@ class NdlaFilmExample extends Component {
     firebase
       .auth()
       .signOut()
-      .then(res => {
-        console.log('signedout', res);
+      .then(() => {
         this.setState({
           user: null,
           userMessage: 'Du er ikke innlogget',
         });
       })
-      .catch(err => {
-        console.log('couldnt signout');
+      .catch(e => {
+        console.log('couldnt signout', e);
       });
   }
 
@@ -270,6 +275,7 @@ class NdlaFilmExample extends Component {
         allMovies={movies}
         topics={topics}
         resourceTypes={resourceTypes}
+        aboutNDLAVideo={renderVideoExample()}
       />
     );
   }

@@ -1,13 +1,31 @@
 .c-film-moviesearch {
+  &__input-wrapper {
+    display: flex;
+    position: relative;
+  }
   &__input {
     display: flex;
     border-radius: $border-radius;
     border: 0;
     height: $spacing--large;
     width: 100%;
-    padding: 0 $spacing;
+    margin-top: $spacing--large;
+    padding: 0 $spacing--small * 1.5;
+    @include mq(tablet) {
+      padding: 0 $spacing;
+    }
     @include font-size(18px);
+    &--remove-button {
+      position: absolute;
+      background: transparent;
+      right: 0;
+      width: $spacing--large;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
+
   &__dropdown-wrap {
     @include mq($until: tablet) {
       > div {
@@ -35,32 +53,43 @@
     background: #20588f;
     color: #fff;
     border-radius: $border-radius;
-    padding: $spacing--small $spacing;
+    padding: $spacing--small $spacing--small * 1.5;
     font-weight: $font-weight-semibold;
     display: flex;
     justify-content: space-between;
     width: 100%;
     @include mq(tablet) {
       width: 200px;
+      padding: $spacing--small $spacing;
     }
     &--open {
       color: $primary-color;
       background: #deebf6;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      svg {
+        transform: rotate(180deg);
+      }
     }
   }
   &__dropdown-wrapper {
-    position: absolute;
-    z-index: 1;
     display: flex;
     flex-direction: column;
-    padding: $spacing--small;
-    padding-bottom: $spacing;
+    padding: 0 $spacing--small * 0.5;
+    padding-bottom: $spacing--small;
     background: #deebf6;
-    min-width: 300px;
-    border-radius: $border-radius;
-    border-top-left-radius: 0;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    @include mq(mobileWide) {
+      position: absolute;
+      z-index: 1;
+      min-width: 300px;
+      border-top-right-radius: $border-radius;
+    }
+    @include mq(tablet) {
+      padding: $spacing--small;
+      padding-bottom: $spacing;
+    }
     button,
     a {
       color: $primary-color;

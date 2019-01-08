@@ -6,17 +6,20 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import Button from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 import FilmSlideshow from './FilmSlideshow';
-import FilmpageMovieSearch from './FilmMovieSearch';
+import FilmMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
 import FrontpagePlaceholder from './FrontpagePlaceholder';
+import { AboutNDLAFilmNb } from './AboutNDLAFilmNb';
 
 const classes = new BEMHelper({
   name: 'film-frontpage',
@@ -59,7 +62,10 @@ class FilmFrontpage extends Component {
 
   onChangeResourceType(resourceTypeSelected) {
     this.setState(prevState => ({
-      resourceTypeSelected,
+      resourceTypeSelected:
+        prevState.resourceTypeSelected === resourceTypeSelected
+          ? null
+          : resourceTypeSelected,
       activeSearch:
         resourceTypeSelected ||
         prevState.topicSelected ||
@@ -133,6 +139,7 @@ class FilmFrontpage extends Component {
       resourceTypes,
       topics,
       allMovies,
+      aboutNDLAVideo: Video,
       t,
     } = this.props;
     const {
@@ -168,12 +175,12 @@ class FilmFrontpage extends Component {
       resourceTypeSelected &&
       resourceTypes.find(
         resourceType => resourceType.id === resourceTypeSelected,
-      ).name;
+      );
 
     return (
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
-        <FilmpageMovieSearch
+        <FilmMovieSearch
           topics={topics}
           resourceTypes={resourceTypes}
           searchValue={searchValue}
@@ -188,7 +195,7 @@ class FilmFrontpage extends Component {
             <h1
               {...movieListClasses('heading')}
               style={{ marginLeft: `${margin + 7}px` }}>
-              Søk gav{resourceTypeName && ` i ${resourceTypeName}`}{' '}
+              Søk gav{resourceTypeName && ` i ${resourceTypeName.name}`}{' '}
               {filteredMovies.length} treff:
             </h1>
             <div
@@ -198,10 +205,10 @@ class FilmFrontpage extends Component {
                 <a
                   href={movie.url}
                   key={movie.id}
-                  {...classes('movie-item')}
+                  {...classes('movie-item', '', 'c-film-movielist__slide-item')}
                   style={{ width: `${columnWidth}px` }}>
                   <div
-                    {...classes('movie-image')}
+                    {...movieListClasses('slidecolumn-image')}
                     role="img"
                     aria-label={movie.metaImage ? movie.metaImage.alt : ''}
                     style={{
@@ -210,8 +217,21 @@ class FilmFrontpage extends Component {
                           ? movie.metaImage.url
                           : ''
                       })`,
-                    }}
-                  />
+                    }}>
+                    <div {...movieListClasses('movie-tags-wrapper')}>
+                      {Object.keys(movie.movieTypes).map(movieType => (
+                        <span
+                          {...movieListClasses('movie-tags')}
+                          key={movieType}>
+                          {
+                            resourceTypes.find(
+                              resourceType => resourceType.id === movieType,
+                            ).name
+                          }
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                   <h2 {...movieListClasses('movie-title')}>
                     {movie.title.title}
                   </h2>
@@ -228,19 +248,39 @@ class FilmFrontpage extends Component {
               columnsPrSlide={columnsPrSlide}
               columnWidth={columnWidth}
               margin={margin}
+              slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
+              slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
+              resourceTypes={resourceTypes}
             />
           ))
         )}
         {!activeSearch && (
-          <aside className="u-8/12@tablet u-push-2/12@tablet c-film-frontpage__about">
-            <div>
-              <div {...classes('video')}>[video]</div>
-            </div>
-            <div>
-              <h1>{t('ndlaFilm.about.heading')}</h1>
-              <p>{t('ndlaFilm.about.text')}</p>
-            </div>
-          </aside>
+          <div className="o-wrapper">
+            <aside className="c-film-frontpage__about">
+              <div>
+                <div {...classes('video')}>{Video}</div>
+              </div>
+              <div>
+                <h1>{t('ndlaFilm.about.heading')}</h1>
+                <p>{t('ndlaFilm.about.text')}</p>
+                <Modal
+                  activateButton={
+                    <Button stripped>Les mer om NDLA film</Button>
+                  }>
+                  {onClose => (
+                    <Fragment>
+                      <ModalHeader>
+                        <ModalCloseButton onClick={onClose} title="Lukk" />
+                      </ModalHeader>
+                      <ModalBody>
+                        <AboutNDLAFilmNb />
+                      </ModalBody>
+                    </Fragment>
+                  )}
+                </Modal>
+              </div>
+            </aside>
+          </div>
         )}
       </div>
     );
@@ -295,6 +335,7 @@ FilmFrontpage.propTypes = {
       id: PropTypes.id,
     }),
   ),
+  aboutNDLAVideo: PropTypes.node.isRequired,
   t: PropTypes.shape({}),
 };
 

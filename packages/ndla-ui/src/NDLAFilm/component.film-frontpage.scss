@@ -9,7 +9,9 @@
   &__movie-item {
     box-shadow: none;
     padding: $spacing--small / 2;
-    margin-bottom: $spacing--large;
+    @include mq(tablet) {
+      margin-bottom: $spacing--large;
+    }
     @include mq($from: tablet) {
       width: 25%;
     }
@@ -35,13 +37,17 @@
       padding: $spacing;
       width: 50%;
       h1 {
-        margin: 0;
+        @include font-size(22px, 26px);
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #fff;
+        margin: $spacing--small 0;
       }
     }
   }
   &__video {
     width: 100%;
-    height: 200px;
     background: rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;

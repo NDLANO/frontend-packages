@@ -1,11 +1,13 @@
 .c-film-slideshow {
-  margin-bottom: $spacing--large;
   &__item-wrapper {
     display: flex;
+    box-shadow: none;
     &--text {
+      transition: opacity 300ms ease;
       position: absolute;
       z-index: 1;
       width: 100vw;
+      height: 100vw;
       @include mq(mobileWide) {
         height: 100vw;
       }
@@ -13,15 +15,19 @@
         height: 75vw;
       }
       @include mq(desktop) {
-        height: 60vw;
+        height: 55vw;
       }
       @include mq(wide) {
-        height: 50vw;
+        height: 40vw;
+      }
+      &.out {
+        opacity: 0;
       }
     }
   }
   &__item {
     width: 100vw;
+    height: 100vw;
     /* aspect ratios */
     @include mq(mobileWide) {
       height: 100vw;
@@ -30,10 +36,10 @@
       height: 75vw;
     }
     @include mq(desktop) {
-      height: 60vw;
+      height: 55vw;
     }
     @include mq(wide) {
-      height: 50vw;
+      height: 40vw;
     }
     background-color: '#222';
     background-size: cover;
@@ -71,6 +77,7 @@
       color: $white;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
       margin: 0;
+      max-width: 600px;
       font-weight: $font-weight-bold;
       padding: 0 0 0 $spacing--small;
       @include mq(tablet) {
@@ -90,13 +97,14 @@
       color: #fff;
       background-color: rgba(3, 23, 43, 0.7);
       display: inline-block;
-      max-width: 600px;
+      max-width: 640px;
       padding: $spacing--small;
+      border-radius: $border-radius;
       @include font-size(15px, 20px);
       @include mq(tablet) {
-        padding: $spacing;
+        padding: $spacing $spacing--large $spacing $spacing;
         max-width: 700px;
-        @include font-size(18px, 22px);
+        @include font-size(18px, 24px);
       }
     }
   }
@@ -107,9 +115,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -85px;
+    margin-top: -$spacing;
+    @include mq(mobileWide) {
+      margin-top: -$spacing * 2;
+    }
     @include mq(tablet) {
-      margin-top: -100px;
+      margin-top: -$spacing * 3;
+    }
+    &--isMobile {
+      pointer-events: none;
     }
   }
   &__indicator-dot {
@@ -118,8 +132,12 @@
     opacity: 0.3;
     transition: opacity 100ms ease;
     margin: $spacing--small / 3;
-    height: 12px;
-    width: 12px;
+    height: 8px;
+    width: 8px;
+    @include mq(mobileWide) {
+      height: 12px;
+      width: 12px;
+    }
     padding: 0;
     @include mq(tablet) {
       margin: $spacing--small / 2;

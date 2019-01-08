@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipe from 'react-swipe-component';
 import BEMHelper from 'react-bem-helper';
+import { isMobile } from 'react-device-detect';
 
 import { OneColumn } from '../Layout';
 import { movieShape } from './FilmFrontpage';
@@ -20,20 +21,36 @@ const classes = new BEMHelper({
 });
 
 const defaultTransition = 'transform 600ms cubic-bezier(0.98, 0, 0.21, 1)';
+const defaultTransitionSwipeEnd =
+  'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
+const defaultTransitionText = 'opacity 300ms cubic-bezier(0.98, 0, 0.21, 1)';
+
+const renderSlideItem = slide => (
+  <div
+    {...classes('item')}
+    key={slide.id}
+    role="img"
+    aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
+    style={{
+      backgroundImage: `url(${(slide.metaImage && slide.metaImage.url) || ''})`,
+    }}
+  />
+);
 
 class FilmSlideshow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       slideIndex: 0,
-      swiping: false,
+      slideIndexTarget: 0,
+      animationComplete: true,
     };
     this.swipeDistance = 0;
     this.slideRef = React.createRef();
+    this.slideText = React.createRef();
     this.onSwipeEnd = this.onSwipeEnd.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
     this.gotoSlide = this.gotoSlide.bind(this);
-    this.renderSlideItem = this.renderSlideItem.bind(this);
     this.onChangedSlide = this.onChangedSlide.bind(this);
 
     this.timer = null;
@@ -44,34 +61,31 @@ class FilmSlideshow extends Component {
     this.initTimer();
   }
 
-  clearTimer() {
-    clearTimeout(this.timer);
-  }
-
-  initTimer() {
-    this.clearTimer();
-    this.timer = setTimeout(() => {
-      this.gotoSlide(this.state.slideIndex + 1);
-    }, this.props.slideInterval);
-  }
-
   onChangedSlide() {
-    if (this.state.slideIndex === -1) {
+    if (this.state.slideIndexTarget === -1) {
       // Go to last slide for continuous loop
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = `translateX(${this.props.slideshow.length * 100}vw))`;
+      this.slideRef.current.style.transform = `translateX(${this.props.slideshow
+        .length * 100}vw))`;
       this.setState({
         slideIndex: this.props.slideshow.length - 1,
-        swiping: false,
+        slideIndexTarget: this.props.slideshow.length - 1,
+        animationComplete: true,
       });
-    } else if (this.state.slideIndex === this.props.slideshow.length) {
+    } else if (this.state.slideIndexTarget === this.props.slideshow.length) {
       // Go to first slide for continuous loop
       this.slideRef.current.style.transition = 'none';
       this.slideRef.current.style.transform = `translateX(100vw))`;
       this.setState({
         slideIndex: 0,
-        swiping: false,
+        slideIndexTarget: 0,
+        animationComplete: true,
       });
+    } else {
+      this.setState(prevState => ({
+        animationComplete: true,
+        slideIndex: prevState.slideIndexTarget,
+      }));
     }
   }
 
@@ -84,56 +98,54 @@ class FilmSlideshow extends Component {
     } else {
       slide = 0;
     }
-    this.slideRef.current.style.transition = defaultTransition;
+    this.slideRef.current.style.transition = defaultTransitionSwipeEnd;
+    this.slideText.current.style.transition = defaultTransitionText;
+    this.slideText.current.style.opacity = 1;
     this.swipeDistance = 0;
     this.initTimer();
     this.setState(prevState => ({
-      swiping: false,
       slideIndex: prevState.slideIndex + slide,
+      slideIndexTarget: prevState.slideIndex + slide,
     }));
   }
 
   onSwipe(e) {
-    this.clearTimer();
-    this.setState({
-      swiping: true,
-    });
+    clearTimeout(this.timer);
     this.swipeDistance = e[0];
     this.slideRef.current.style.transition = 'none';
     this.slideRef.current.style.transform = this.getSlidePosition();
-  }
-
-  gotoSlide(slideIndex) {
-    this.swipeDistance = 0;
-    this.initTimer();
-    this.slideRef.current.style.transition = defaultTransition;
-    this.setState({
-      slideIndex,
-    });
+    const opacityText = 1 - Math.min(100, Math.abs(this.swipeDistance)) / 100;
+    this.slideText.current.style.transition = 'none';
+    this.slideText.current.style.opacity = opacityText;
   }
 
   getSlidePosition() {
     return `translateX(calc(${this.swipeDistance}px -
-      ${(this.state.slideIndex + 1) * 100}vw))`;
+      ${(this.state.slideIndexTarget + 1) * 100}vw))`;
   }
 
-  renderSlideItem(slide) {
-    return (<div
-      {...classes('item')}
-      key={slide.id}
-      role="img"
-      aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
-      style={{
-        backgroundImage: `url(${(slide.metaImage &&
-          slide.metaImage.url) ||
-          ''})`,
-      }}>
-    </div>);
+  gotoSlide(slideIndexTarget, useAnimation) {
+    this.swipeDistance = 0;
+    clearTimeout(this.timer);
+    this.initTimer();
+    this.slideRef.current.style.transition = defaultTransition;
+    this.setState({
+      slideIndexTarget,
+      animationComplete: !useAnimation,
+    });
+  }
+
+  initTimer() {
+    if (this.props.autoSlide) {
+      this.timer = setTimeout(() => {
+        this.gotoSlide(this.state.slideIndex + 1);
+      }, this.props.slideInterval);
+    }
   }
 
   render() {
     const { slideshow } = this.props;
-    const { slideIndex, swiping } = this.state;
+    const { slideIndex, animationComplete } = this.state;
 
     if (slideshow.length === 0) {
       return null;
@@ -153,8 +165,14 @@ class FilmSlideshow extends Component {
           mouseSwipe={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
-          <a href={slideshow[activeSlide].url} {...classes('item-wrapper', 'text')}>
-            <div {...classes('slide-info')}>
+          <a
+            href={slideshow[activeSlide].url}
+            ref={this.slideText}
+            {...classes('item-wrapper', 'text', { out: !animationComplete })}>
+            <div
+              className={`u-10/12@tablet u-push-1/12@tablet u-8/12@desktop u-push-2/12@desktop ${
+                classes('slide-info').className
+              }`}>
               <div>
                 <OneColumn>
                   <h1>{slideshow[activeSlide].title.title}</h1>
@@ -162,19 +180,25 @@ class FilmSlideshow extends Component {
               </div>
               <div>
                 <OneColumn>
-                  <p>{slideshow[activeSlide].metaDescription.metaDescription}</p>
+                  <p>
+                    {slideshow[activeSlide].metaDescription.metaDescription}
+                  </p>
                 </OneColumn>
               </div>
             </div>
           </a>
-          <div ref={this.slideRef} onTransitionEnd={this.onChangedSlide} {...classes('item-wrapper')} style={{
-            width: slideshowWidth,
-            transform: this.getSlidePosition(),
-            transition: defaultTransition,
-          }}>
-            {this.renderSlideItem(slideshow[slideshow.length - 1], -1)}
-            {slideshow.map(this.renderSlideItem)}
-            {this.renderSlideItem(slideshow[0], slideshow.length)}
+          <div
+            ref={this.slideRef}
+            onTransitionEnd={this.onChangedSlide}
+            {...classes('item-wrapper')}
+            style={{
+              width: slideshowWidth,
+              transform: this.getSlidePosition(),
+              transition: defaultTransition,
+            }}>
+            {renderSlideItem(slideshow[slideshow.length - 1], -1)}
+            {slideshow.map(renderSlideItem)}
+            {renderSlideItem(slideshow[0], slideshow.length)}
           </div>
         </Swipe>
         <div {...classes('indicator-wrapper')}>
@@ -186,7 +210,7 @@ class FilmSlideshow extends Component {
                 'indicator-dot',
                 index === activeSlide ? 'active' : '',
               )}
-              onClick={() => this.gotoSlide(index)}
+              onClick={() => !isMobile && this.gotoSlide(index, true)}
             />
           ))}
         </div>
@@ -196,11 +220,15 @@ class FilmSlideshow extends Component {
 }
 
 FilmSlideshow.propTypes = {
+  autoSlide: PropTypes.bool,
+  randomStart: PropTypes.bool,
   slideshow: PropTypes.arrayOf(movieShape),
   slideInterval: PropTypes.number,
 };
 
 FilmSlideshow.defaultProps = {
+  autoSlide: false,
+  randomStart: true,
   slideshow: [],
   slideInterval: 5000,
 };

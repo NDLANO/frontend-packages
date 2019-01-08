@@ -10,7 +10,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css, cx } from 'react-emotion';
 import { spacing, colors, fonts, shadows, animations, misc } from '@ndla/core';
-import { FormDropdown } from '@ndla/forms';
+import { FormDropdown, FormHeader } from '@ndla/forms';
 import { uuid } from '@ndla/util';
 import Button from '@ndla/button';
 import { Pencil, Cross } from '@ndla/icons/action';
@@ -36,7 +36,7 @@ const MovieSelected = styled.div`
   }
 `;
 
-const MovieTitle = styled.h3`
+const MovieTitle = styled.a`
     ${fonts.sizes(16, 1.1)} font-weight: ${fonts.weight.semibold};
     margin: ${spacing.small} 0;
 `;
@@ -58,13 +58,16 @@ const IconButton = styled.button`
   border-radius: 100%;
   transition: background 100ms ease;
   svg {
-    fill: #fff;
+    fill: ${colors.text.primary};
     width: 22px;
     height: 22px;
   }
   &:hover,
   &:focus {
     background: #20588f;
+    svg {
+      fill: #fff;
+    }
   }
 `;
 
@@ -79,9 +82,8 @@ const Wrapper = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: ${spacing.large};
-  color: #fff;
+
   a {
-    color: #fff;
   }
   > section {
     margin-bottom: ${spacing.large};
@@ -112,13 +114,6 @@ const InputWrapper = styled.div`
       opacity: 1;
     }
   }
-`;
-
-const SlideShowName = styled.h2`
-${fonts.sizes(20, 1.1)} font-weight: ${fonts.weight.semibold};
-margin-left: -${spacing.normal};
-color: #fff;
-padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.medium};
 `;
 
 const inputHeader = css`
@@ -324,36 +319,12 @@ class NdlaFilmEditor extends Component {
       userMessage,
       userLogout,
     } = this.props;
+
+    console.log(allMovies);
     return (
       <Wrapper>
-        <UserHeader>
-          {user ? (
-            <Fragment>
-              <Avatar style={{ backgroundImage: `url(${user.photoURL})` }} />
-              {user.displayName}
-              <Button
-                onClick={userLogout}
-                style={{ marginLeft: spacing.normal }}>
-                Logout
-              </Button>
-            </Fragment>
-          ) : (
-            userMessage
-          )}
-        </UserHeader>
-        )}
         <section>
-          <ThemeNameHeader>
-            <Header>Slideshow:</Header>
-            <FormDropdown
-              value=""
-              onChange={e => this.addItem(e.target.value)}
-              className={dropdownBtn}>
-              <option value="">Legg til film i slideshow</option>
-              {this.renderAddMovieOptions(highlighted)}
-            </FormDropdown>
-          </ThemeNameHeader>
-
+          <FormHeader title="Slideshow" subTitle="example" width={4 / 4} />
           {Object.keys(highlighted)
             .sort((a, b) => highlighted[a] - highlighted[b])
             .map(key => {
@@ -369,7 +340,13 @@ class NdlaFilmEditor extends Component {
                           selectedMovie.metaImage.url})`,
                       }}
                     />
-                    <MovieTitle>{selectedMovie.title.title}</MovieTitle>
+                    <MovieTitle
+                      href={selectedMovie.url}
+                      target="_blank"
+                      noopener
+                      noreferrer>
+                      {selectedMovie.title.title}
+                    </MovieTitle>
                     <ButtonWrappper>
                       <IconButton
                         type="button"
@@ -393,6 +370,13 @@ class NdlaFilmEditor extends Component {
                 );
               }
             })}
+          <FormDropdown
+            value=""
+            onChange={e => this.addItem(e.target.value)}
+            className={dropdownBtn}>
+            <option value="">Legg til film i slideshow</option>
+            {this.renderAddMovieOptions(highlighted)}
+          </FormDropdown>
         </section>
         <section>
           <Header>Temaer:</Header>

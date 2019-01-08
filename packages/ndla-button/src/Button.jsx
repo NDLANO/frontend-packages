@@ -37,7 +37,7 @@ const strippedStyle = css`
   }
 `;
 
-export const appearances = {
+const appearances = {
   lighter: css`
     ${fonts.sizes('12px', '15px')};
     background-color: ${colors.brand.lighter};
@@ -91,7 +91,7 @@ export const appearances = {
   `,
 };
 
-export const buttonStyle = css`
+const buttonStyle = css`
   display: inline-block;
   color: ${colors.background.default};
   background-color: ${colors.brand.primary};
@@ -127,7 +127,8 @@ export const buttonStyle = css`
     box-shadow: 0 0 2px ${colors.brand.primary};
   }
 `;
-const StyledButton = styled('button')`
+
+export const StyledButton = styled('button')`
   ${buttonStyle}
   ${p => appearances[p.appearance]};
 `;

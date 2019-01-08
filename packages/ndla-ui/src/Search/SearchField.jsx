@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
-import { buttonStyle } from '@ndla/button';
+import { StyledButton } from '@ndla/button';
 import { css } from 'emotion';
 
 import SafeLink from '../common/SafeLink';
@@ -30,6 +30,8 @@ const messagesShape = PropTypes.shape({
   contentTypeResultShowLessLabel: PropTypes.string,
   contentTypeResultNoHit: PropTypes.string,
 });
+
+const AnchorButton = StyledButton.withComponent(SafeLink);
 
 const SearchResult = ({
   result,
@@ -63,13 +65,13 @@ const SearchResult = ({
       ))}
     </div>
     <div {...classes('go-to-search')}>
-      <SafeLink
+      <AnchorButton
         to={allResultUrl}
         css={css`
-          ${buttonStyle} box-shadow: none;
+          box-shadow: none;
         `}>
         {t('searchPage.searchField.allResultButtonText')}
-      </SafeLink>
+      </AnchorButton>
     </div>
   </section>
 );

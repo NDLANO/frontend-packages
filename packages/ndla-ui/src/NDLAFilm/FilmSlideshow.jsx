@@ -12,7 +12,6 @@ import Swipe from 'react-swipe-component';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 
-import { OneColumn } from '../Layout';
 import { movieShape } from './FilmFrontpage';
 
 const classes = new BEMHelper({
@@ -20,10 +19,9 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const defaultTransition = 'transform 600ms cubic-bezier(0.98, 0, 0.21, 1)';
 const defaultTransitionSwipeEnd =
   'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
-const defaultTransitionText = 'opacity 300ms cubic-bezier(0.98, 0, 0.21, 1)';
+const defaultTransitionText = 'opacity 600ms ease';
 
 const renderSlideItem = slide => (
   <div
@@ -40,9 +38,12 @@ const renderSlideItem = slide => (
 class FilmSlideshow extends Component {
   constructor(props) {
     super(props);
+    const startIndex = this.props.randomStart
+      ? Math.floor(Math.random() * this.props.slideshow.length)
+      : 0;
     this.state = {
-      slideIndex: 0,
-      slideIndexTarget: 0,
+      slideIndex: startIndex,
+      slideIndexTarget: startIndex,
       animationComplete: true,
     };
     this.swipeDistance = 0;
@@ -62,7 +63,15 @@ class FilmSlideshow extends Component {
   }
 
   onChangedSlide() {
-    if (this.state.slideIndexTarget === -1) {
+    if (!this.state.animationComplete) {
+      this.slideRef.current.style.transition = 'none';
+      this.slideRef.current.style.transform = `translateX(${this.state
+        .slideIndexTarget * 100}vw))`;
+      this.setState(prevState => ({
+        animationComplete: true,
+        slideIndex: prevState.slideIndexTarget,
+      }));
+    } else if (this.state.slideIndexTarget === -1) {
       // Go to last slide for continuous loop
       this.slideRef.current.style.transition = 'none';
       this.slideRef.current.style.transform = `translateX(${this.props.slideshow
@@ -113,22 +122,23 @@ class FilmSlideshow extends Component {
     clearTimeout(this.timer);
     this.swipeDistance = e[0];
     this.slideRef.current.style.transition = 'none';
-    this.slideRef.current.style.transform = this.getSlidePosition();
+    this.slideRef.current.style.transform = this.getSlidePosition(
+      this.state.slideIndexTarget,
+    );
     const opacityText = 1 - Math.min(100, Math.abs(this.swipeDistance)) / 100;
     this.slideText.current.style.transition = 'none';
     this.slideText.current.style.opacity = opacityText;
   }
 
-  getSlidePosition() {
+  getSlidePosition(target) {
     return `translateX(calc(${this.swipeDistance}px -
-      ${(this.state.slideIndexTarget + 1) * 100}vw))`;
+      ${(target + 1) * 100}vw))`;
   }
 
   gotoSlide(slideIndexTarget, useAnimation) {
     this.swipeDistance = 0;
     clearTimeout(this.timer);
     this.initTimer();
-    this.slideRef.current.style.transition = defaultTransition;
     this.setState({
       slideIndexTarget,
       animationComplete: !useAnimation,
@@ -145,7 +155,7 @@ class FilmSlideshow extends Component {
 
   render() {
     const { slideshow } = this.props;
-    const { slideIndex, animationComplete } = this.state;
+    const { slideIndex, slideIndexTarget, animationComplete } = this.state;
 
     if (slideshow.length === 0) {
       return null;
@@ -165,36 +175,36 @@ class FilmSlideshow extends Component {
           mouseSwipe={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
-          <a
-            href={slideshow[activeSlide].url}
-            ref={this.slideText}
-            {...classes('item-wrapper', 'text', { out: !animationComplete })}>
+          <div {...classes('slide-link-wrapper', '', 'o-wrapper')}>
+            <a
+              href={slideshow[activeSlide].url}
+              ref={this.slideText}
+              {...classes('item-wrapper', 'text', { out: !animationComplete })}>
+              <div {...classes('slide-info')}>
+                <h1>{slideshow[activeSlide].title.title}</h1>
+                <p>{slideshow[activeSlide].metaDescription.metaDescription}</p>
+              </div>
+            </a>
+          </div>
+          {!animationComplete && (
             <div
-              className={`u-10/12@tablet u-push-1/12@tablet u-8/12@desktop u-push-2/12@desktop ${
-                classes('slide-info').className
-              }`}>
-              <div>
-                <OneColumn>
-                  <h1>{slideshow[activeSlide].title.title}</h1>
-                </OneColumn>
-              </div>
-              <div>
-                <OneColumn>
-                  <p>
-                    {slideshow[activeSlide].metaDescription.metaDescription}
-                  </p>
-                </OneColumn>
-              </div>
-            </div>
-          </a>
+              {...classes('item', 'fade-over')}
+              role="img"
+              onAnimationEnd={this.onChangedSlide}
+              style={{
+                backgroundImage: `url(${(slideshow[slideIndexTarget]
+                  .metaImage &&
+                  slideshow[slideIndexTarget].metaImage.url) ||
+                  ''})`,
+              }}
+            />
+          )}
           <div
             ref={this.slideRef}
-            onTransitionEnd={this.onChangedSlide}
             {...classes('item-wrapper')}
             style={{
               width: slideshowWidth,
-              transform: this.getSlidePosition(),
-              transition: defaultTransition,
+              transform: this.getSlidePosition(slideIndex),
             }}>
             {renderSlideItem(slideshow[slideshow.length - 1], -1)}
             {slideshow.map(renderSlideItem)}
@@ -208,7 +218,7 @@ class FilmSlideshow extends Component {
               type="button"
               {...classes(
                 'indicator-dot',
-                index === activeSlide ? 'active' : '',
+                index === slideIndexTarget ? 'active' : '',
               )}
               onClick={() => !isMobile && this.gotoSlide(index, true)}
             />

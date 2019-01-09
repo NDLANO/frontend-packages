@@ -154,6 +154,7 @@ class FilmMovieList extends Component {
                     role="img"
                     aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
                     style={{
+                      height: `${columnWidth * 0.5625}px`,
                       backgroundImage: `url(${(slide.metaImage &&
                         slide.metaImage.url) ||
                         ''})`,

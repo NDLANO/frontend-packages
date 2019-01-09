@@ -100,7 +100,6 @@ class FilmFrontpage extends Component {
     const currentBreakpoint = getCurrentBreakpoint();
     let margin;
     let itemSize;
-
     if (screenWidth < 385) {
       margin = 26;
       itemSize = 130;
@@ -116,9 +115,12 @@ class FilmFrontpage extends Component {
     } else if (currentBreakpoint === breakpoints.desktop) {
       margin = 78;
       itemSize = 240;
-    } else {
+    } else if (screenWidth < 1600) {
       margin = 104;
       itemSize = 260;
+    } else {
+      margin = 104;
+      itemSize = 300;
     }
 
     const columnsPrSlide = Math.floor((screenWidth - margin * 2) / itemSize);
@@ -212,6 +214,7 @@ class FilmFrontpage extends Component {
                     role="img"
                     aria-label={movie.metaImage ? movie.metaImage.alt : ''}
                     style={{
+                      height: `${columnWidth * 0.5625}px`,
                       backgroundImage: `url(${
                         movie.metaImage && movie.metaImage.url
                           ? movie.metaImage.url

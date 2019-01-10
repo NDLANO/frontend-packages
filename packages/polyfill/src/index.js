@@ -18,6 +18,7 @@ import 'core-js/fn/array/includes';
 import 'core-js/fn/string/starts-with';
 import 'core-js/fn/string/includes';
 import 'core-js/fn/number/is-integer';
+import 'core-js/fn/number/is-nan';
 
 // polyfill for <details></details> and <summary></summary> html elements used in articles.
 import 'details-polyfill';

@@ -39,4 +39,8 @@ export default [
     test: `('isInteger' in Number.prototype)`,
     feature: 'Number.prototype.isInteger',
   },
+  {
+    test: `('isNaN' in Number.prototype)`,
+    feature: 'Number.prototype.isNaN',
+  },
 ];

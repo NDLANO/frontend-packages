@@ -5,7 +5,6 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"

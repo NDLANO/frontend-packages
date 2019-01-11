@@ -1,95 +1,81 @@
 .c-film-moviesearch {
-  &__input-wrapper {
-    display: flex;
-    position: relative;
-  }
-  &__input {
-    display: flex;
-    border-radius: $border-radius;
-    border: 0;
-    height: $spacing--large;
-    width: 100%;
-    margin-top: $spacing--large;
-    padding: 0 $spacing--small * 1.5;
+  margin: $spacing 0 $spacing--large;
+  &__topic-navigation {
+    margin: $spacing 0;
     @include mq(tablet) {
+      display: flex;
+      align-items: flex-start;
       padding: 0 $spacing;
     }
-    @include font-size(18px);
-    &--remove-button {
-      position: absolute;
-      background: transparent;
-      right: 0;
-      width: $spacing--large;
+    ul {
+      list-style-type: none;
+      list-style-image: none;
       display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  &__dropdown-wrap {
-    @include mq($until: tablet) {
-      > div {
-        padding: 0 0 $spacing--medium;
-        &:first-child {
-          padding: $spacing 0 $spacing--small;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 0;
+      padding-left: $spacing;
+      margin: $spacing--small 0;
+      li {
+        padding: 0;
+        width: 100%;
+        @include mq(tablet) {
+          width: 50%;
         }
-      }
-    }
-    @include mq(tablet) {
-      display: flex;
-      > div {
-        width: 50%;
-        padding: $spacing $spacing--small;
-        display: flex;
-        &:first-child {
-          justify-content: flex-end;
+        a {
+          color: #fff;
+          &:hover,
+          &:focus {
+            color: $brand-color--light;
+          }
         }
       }
     }
   }
   &__dropdown-button {
-    @include font-size(18px);
-    border: 0;
-    background: #20588f;
-    color: #fff;
     border-radius: $border-radius;
+    @include font-size(22px, 26px);
+    border: 0;
+    text-transform: uppercase;
+    background: $film-color-bright;
+    color: #fff;
     padding: $spacing--small $spacing--small * 1.5;
     font-weight: $font-weight-semibold;
     display: flex;
+    text-align: left;
     justify-content: space-between;
     width: 100%;
+    letter-spacing: 0.05em;
     @include mq(tablet) {
-      width: 200px;
       padding: $spacing--small $spacing;
     }
-    &--open {
-      color: $primary-color;
-      background: #deebf6;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      svg {
-        transform: rotate(180deg);
-      }
+    small {
+      text-transform: none;
+      padding-left: $spacing--small;
+      font-weight: normal;
     }
   }
+  &__dropdown-container {
+    position: relative;
+    margin: 0 0 $spacing;
+  }
   &__dropdown-wrapper {
+    .c-film-moviesearch__dropdown-button {
+      border-radius: 0;
+      text-transform: none;
+      letter-spacing: 0;
+    }
     display: flex;
     flex-direction: column;
-    padding: 0 $spacing--small * 0.5;
-    padding-bottom: $spacing--small;
+    padding: $spacing--small 0;
     background: #deebf6;
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-    @include mq(mobileWide) {
-      position: absolute;
-      z-index: 1;
-      min-width: 300px;
-      border-top-right-radius: $border-radius;
-    }
-    @include mq(tablet) {
-      padding: $spacing--small;
-      padding-bottom: $spacing;
-    }
+    border-radius: $border-radius;
+    left: 0;
+    right: 0;
+    animation: zoomInSelect 200ms ease;
+    box-shadow: 0 0 30px rgba($black, 0.6);
+    position: absolute;
+    z-index: 9999;
     button,
     a {
       color: $primary-color;
@@ -98,16 +84,32 @@
       text-align: left;
       background: transparent;
       padding: $spacing--small;
+      padding-left: $spacing;
       font-weight: $font-weight-semibold;
       text-decoration: none;
       box-shadow: none;
+      transition: background 200ms ease;
       &:hover,
       &:focus {
-        span {
-          box-shadow: $link;
-          text-decoration: none;
-        }
+        color: $brand-color;
+        background: rgba(0, 0, 0, 0.2);
       }
     }
+  }
+}
+
+@keyframes zoomInSelect {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    transform: scale3d(0.95, 0.95, 0.95);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
   }
 }

@@ -1,6 +1,24 @@
+@mixin set-animations() {
+  @for $i from 1 through 20 {
+    > a:nth-child(#{$i + 1}) {
+      animation-delay: #{$i * 50}ms;
+    }
+  }
+}
+
 .c-film-frontpage {
   background: #091a2a;
   padding-bottom: $spacing--large;
+  &__movie-listing,
+  .c-film-movielist__slide-content {
+    @include set-animations();
+    a {
+      opacity: 0;
+      animation-fill-mode: forwards;
+      animation-name: fadeIn;
+      animation-duration: 300ms;
+    }
+  }
   &__movie-listing {
     display: flex;
     flex-wrap: wrap;
@@ -45,6 +63,13 @@
         margin: $spacing--small 0;
       }
     }
+    button {
+      color: #fff;
+      &:hover,
+      &:focus {
+        color: $brand-color--light;
+      }
+    }
   }
   &__video {
     width: 100%;
@@ -52,5 +77,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__titles {
+    @include font-size(14px, 20px);
+    font-weight: $font-weight-bold;
+    color: #fff;
+    margin: $spacing--small / 2 0 $spacing--small;
+    @include mq(mobileWide) {
+      @include font-size(16px, 22px);
+    }
+    @include mq(tablet) {
+      margin: $spacing--small 0;
+      @include font-size(18px, 24px);
+    }
   }
 }

@@ -438,7 +438,7 @@ const messages = {
     },
     search: {
       placeholder: 'Søk på filmnavn',
-      categoryButton: 'Velg kategori',
+      categoryButton: 'Velg filmkategori',
       subjectButton: 'Gå til emne',
     },
   },

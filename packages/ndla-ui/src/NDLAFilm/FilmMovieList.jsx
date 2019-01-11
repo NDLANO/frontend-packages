@@ -145,7 +145,7 @@ class FilmMovieList extends Component {
               }}>
               {movies.map(slide => (
                 <a
-                  href={slide.url}
+                  href={slide.contexts[0].path}
                   key={slide.id}
                   {...classes('slide-item')}
                   style={{ width: `${columnWidth}px` }}>

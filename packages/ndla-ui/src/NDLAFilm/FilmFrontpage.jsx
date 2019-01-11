@@ -31,21 +31,18 @@ const movieListClasses = new BEMHelper({
   prefix: 'c-',
 });
 
+const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
+
 class FilmFrontpage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: '',
-      topicSelected: null,
       resourceTypeSelected: null,
       columnWidth: 260,
       columnsPrSlide: 1,
       margin: 26,
-      activeSearch: false,
     };
     this.onChangeResourceType = this.onChangeResourceType.bind(this);
-    this.onChangeTopic = this.onChangeTopic.bind(this);
-    this.onChangeSearch = this.onChangeSearch.bind(this);
     this.setScreenSize = this.setScreenSize.bind(this);
     this.setScreenSizeDebounced = debounce(() => this.setScreenSize(false), 50);
   }
@@ -61,36 +58,9 @@ class FilmFrontpage extends Component {
   }
 
   onChangeResourceType(resourceTypeSelected) {
-    this.setState(prevState => ({
-      resourceTypeSelected:
-        prevState.resourceTypeSelected === resourceTypeSelected
-          ? null
-          : resourceTypeSelected,
-      activeSearch:
-        resourceTypeSelected ||
-        prevState.topicSelected ||
-        prevState.searchValue.length,
-    }));
-  }
-
-  onChangeTopic(topicSelected) {
-    this.setState(prevState => ({
-      topicSelected,
-      activeSearch:
-        topicSelected ||
-        prevState.resourceTypeSelected ||
-        prevState.searchValue.length,
-    }));
-  }
-
-  onChangeSearch(searchValue) {
-    this.setState(prevState => ({
-      searchValue,
-      activeSearch:
-        searchValue.length ||
-        prevState.resourceTypeSelected ||
-        prevState.topicSelected,
-    }));
+    this.setState({
+      resourceTypeSelected,
+    });
   }
 
   setScreenSize() {
@@ -141,16 +111,13 @@ class FilmFrontpage extends Component {
       resourceTypes,
       topics,
       allMovies,
-      aboutNDLAVideo: Video,
+      aboutNDLAVideo,
       t,
     } = this.props;
     const {
-      searchValue,
-      topicSelected,
       resourceTypeSelected,
       columnWidth,
       columnsPrSlide,
-      activeSearch,
       margin,
     } = this.state;
 
@@ -160,17 +127,11 @@ class FilmFrontpage extends Component {
     }
 
     const filteredMovies =
-      activeSearch &&
-      allMovies.filter(
-        movie =>
-          (searchValue === '' ||
-            movie.title.title.search(new RegExp(searchValue, 'i')) !== -1) &&
-          (!topicSelected ||
-            movie.contexts.some(context => context.id === topicSelected)) &&
-          (!resourceTypeSelected ||
-            Object.keys(movie.movieTypes).some(
-              movieTypeId => movieTypeId === resourceTypeSelected,
-            )),
+      resourceTypeSelected &&
+      allMovies.filter(movie =>
+        Object.keys(movie.movieTypes).some(
+          movieTypeId => movieTypeId === resourceTypeSelected,
+        ),
       );
 
     const resourceTypeName =
@@ -183,108 +144,107 @@ class FilmFrontpage extends Component {
       <div {...classes()}>
         <FilmSlideshow slideshow={highlighted} />
         <FilmMovieSearch
+          ariaControlId={ARIA_FILMCATEGORY_ID}
           topics={topics}
           resourceTypes={resourceTypes}
-          searchValue={searchValue}
-          topicSelected={topicSelected}
           resourceTypeSelected={resourceTypeName}
-          onChangeSearch={this.onChangeSearch}
-          onChangeTopic={this.onChangeTopic}
           onChangeResourceType={this.onChangeResourceType}
         />
-        {activeSearch ? (
-          <section>
-            <h1
-              {...movieListClasses('heading')}
-              style={{ marginLeft: `${margin + 7}px` }}>
-              Søk gav{resourceTypeName && ` i ${resourceTypeName.name}`}{' '}
-              {filteredMovies.length} treff:
-            </h1>
-            <div
-              {...classes('movie-listing')}
-              style={{ marginLeft: `${margin}px` }}>
-              {filteredMovies.map(movie => (
-                <a
-                  href={movie.url}
-                  key={movie.id}
-                  {...classes('movie-item', '', 'c-film-movielist__slide-item')}
-                  style={{ width: `${columnWidth}px` }}>
-                  <div
-                    {...movieListClasses('slidecolumn-image')}
-                    role="img"
-                    aria-label={movie.metaImage ? movie.metaImage.alt : ''}
-                    style={{
-                      height: `${columnWidth * 0.5625}px`,
-                      backgroundImage: `url(${
-                        movie.metaImage && movie.metaImage.url
-                          ? movie.metaImage.url
-                          : ''
-                      })`,
-                    }}>
-                    <div {...movieListClasses('movie-tags-wrapper')}>
-                      {Object.keys(movie.movieTypes).map(movieType => (
-                        <span
-                          {...movieListClasses('movie-tags')}
-                          key={movieType}>
-                          {
-                            resourceTypes.find(
-                              resourceType => resourceType.id === movieType,
-                            ).name
-                          }
-                        </span>
-                      ))}
+        <div id={ARIA_FILMCATEGORY_ID}>
+          {resourceTypeSelected ? (
+            <section>
+              <h1
+                {...movieListClasses('heading')}
+                style={{ marginLeft: `${margin + 7}px` }}>
+                {resourceTypeName && resourceTypeName.name}
+                <small>
+                  {filteredMovies.length} {t('ndlaFilm.movieMatchInCategory')}
+                </small>
+              </h1>
+              <div
+                {...classes('movie-listing')}
+                style={{ marginLeft: `${margin}px` }}>
+                {filteredMovies.map(movie => (
+                  <a
+                    href={movie.contexts[0].path}
+                    key={movie.id}
+                    {...classes(
+                      'movie-item',
+                      '',
+                      'c-film-movielist__slide-item',
+                    )}
+                    style={{ width: `${columnWidth}px` }}>
+                    <div
+                      {...movieListClasses('slidecolumn-image')}
+                      role="img"
+                      aria-label={movie.metaImage ? movie.metaImage.alt : ''}
+                      style={{
+                        height: `${columnWidth * 0.5625}px`,
+                        backgroundImage: `url(${
+                          movie.metaImage && movie.metaImage.url
+                            ? movie.metaImage.url
+                            : ''
+                        })`,
+                      }}>
+                      <div {...movieListClasses('movie-tags-wrapper')}>
+                        {Object.keys(movie.movieTypes).map(movieType => (
+                          <span
+                            {...movieListClasses('movie-tags')}
+                            key={movieType}>
+                            {
+                              resourceTypes.find(
+                                resourceType => resourceType.id === movieType,
+                              ).name
+                            }
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <h2 {...movieListClasses('movie-title')}>
-                    {movie.title.title}
-                  </h2>
-                </a>
-              ))}
+                    <h2 {...movieListClasses('movie-title')}>
+                      {movie.title.title}
+                    </h2>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : (
+            themes.map(theme => (
+              <FilmMovieList
+                key={theme.name}
+                name={theme.name}
+                movies={theme.movies}
+                columnsPrSlide={columnsPrSlide}
+                columnWidth={columnWidth}
+                margin={margin}
+                slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
+                slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
+                resourceTypes={resourceTypes}
+              />
+            ))
+          )}
+        </div>
+        <div className="o-wrapper">
+          <aside className="c-film-frontpage__about">
+            <div>{aboutNDLAVideo}</div>
+            <div>
+              <h1>{t('ndlaFilm.about.heading')}</h1>
+              <p>{t('ndlaFilm.about.text')}</p>
+              <Modal
+                activateButton={<Button link>Les mer om NDLA film</Button>}>
+                {onClose => (
+                  <Fragment>
+                    <ModalHeader>
+                      <ModalCloseButton onClick={onClose} title="Lukk" />
+                    </ModalHeader>
+                    <ModalBody>
+                      <AboutNDLAFilmNb />
+                    </ModalBody>
+                  </Fragment>
+                )}
+              </Modal>
             </div>
-          </section>
-        ) : (
-          themes.map(theme => (
-            <FilmMovieList
-              key={theme.name}
-              name={theme.name}
-              movies={theme.movies}
-              columnsPrSlide={columnsPrSlide}
-              columnWidth={columnWidth}
-              margin={margin}
-              slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
-              slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
-              resourceTypes={resourceTypes}
-            />
-          ))
-        )}
-        {!activeSearch && (
-          <div className="o-wrapper">
-            <aside className="c-film-frontpage__about">
-              <div>
-                <div {...classes('video')}>{Video}</div>
-              </div>
-              <div>
-                <h1>{t('ndlaFilm.about.heading')}</h1>
-                <p>{t('ndlaFilm.about.text')}</p>
-                <Modal
-                  activateButton={
-                    <Button stripped>Les mer om NDLA film</Button>
-                  }>
-                  {onClose => (
-                    <Fragment>
-                      <ModalHeader>
-                        <ModalCloseButton onClick={onClose} title="Lukk" />
-                      </ModalHeader>
-                      <ModalBody>
-                        <AboutNDLAFilmNb />
-                      </ModalBody>
-                    </Fragment>
-                  )}
-                </Modal>
-              </div>
-            </aside>
-          </div>
-        )}
+          </aside>
+        </div>
       </div>
     );
   }

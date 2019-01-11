@@ -10,6 +10,11 @@
     letter-spacing: 0.05em;
     color: #fff;
     margin: $spacing--small 0;
+    small {
+      font-weight: normal;
+      padding-left: $spacing--small;
+      color: $brand-grey--light;
+    }
   }
   &__movie-title {
     @include font-size(14px, 20px);

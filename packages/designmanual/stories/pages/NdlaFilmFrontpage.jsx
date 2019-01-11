@@ -13,6 +13,7 @@ import { FilmFrontpage } from '@ndla/ui';
 import { NdlaFilmEditor } from '@ndla/editor';
 
 import { headerWithAccessToken, getToken } from '../apiFunctions';
+import Poster from '../../images/filmposter-aboutNDLA.png';
 
 const fetchData = ({ apiUrl, query }) => {
   return new Promise((resolve, reject) => {
@@ -29,15 +30,6 @@ const fetchData = ({ apiUrl, query }) => {
     });
   });
 };
-
-/* eslint-disable jsx-a11y/media-has-caption  */
-const renderVideoExample = () => (
-  <video
-    width="100%"
-    poster="https://videoapi.streamps.net/video/ndlaseria/uai66jcyfg2e1sb/720.jpg?signature=21c88e4fc86a6654cd63c191dde426d8">
-    <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
-  </video>
-);
 
 class NdlaFilmExample extends Component {
   constructor(props) {
@@ -267,7 +259,6 @@ class NdlaFilmExample extends Component {
         />
       );
     }
-
     return (
       <FilmFrontpage
         highlighted={highlightedMovies}
@@ -275,7 +266,7 @@ class NdlaFilmExample extends Component {
         allMovies={movies}
         topics={topics}
         resourceTypes={resourceTypes}
-        aboutNDLAVideo={renderVideoExample()}
+        aboutNDLAVideo={<img src={Poster} alt="example of video" />}
       />
     );
   }

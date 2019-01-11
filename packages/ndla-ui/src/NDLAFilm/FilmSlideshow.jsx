@@ -11,7 +11,8 @@ import PropTypes from 'prop-types';
 import Swipe from 'react-swipe-component';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
-
+import { OneColumn } from '@ndla/ui';
+import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import { movieShape } from './FilmFrontpage';
 
 const classes = new BEMHelper({
@@ -171,20 +172,57 @@ class FilmSlideshow extends Component {
     return (
       <section>
         <Swipe
+          {...classes('')}
           nodeName="div"
           mouseSwipe={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
-          <div {...classes('slide-link-wrapper', '', 'o-wrapper')}>
-            <a
-              href={slideshow[activeSlide].url}
-              ref={this.slideText}
-              {...classes('item-wrapper', 'text', { out: !animationComplete })}>
-              <div {...classes('slide-info')}>
-                <h1>{slideshow[activeSlide].title.title}</h1>
-                <p>{slideshow[activeSlide].metaDescription.metaDescription}</p>
-              </div>
-            </a>
+          <div {...classes('slide-link-wrapper')}>
+            <OneColumn>
+              <a
+                href={slideshow[activeSlide].contexts[0].path}
+                ref={this.slideText}
+                {...classes('item-wrapper', 'text', {
+                  out: !animationComplete,
+                })}>
+                <div {...classes('slide-info')}>
+                  <h1>{slideshow[activeSlide].title.title}</h1>
+                  <p>
+                    {slideshow[activeSlide].metaDescription.metaDescription}
+                  </p>
+                </div>
+              </a>
+            </OneColumn>
+          </div>
+          <div {...classes('navigation-arrows')}>
+            <button
+              type="button"
+              tabIndex={-1}
+              onClick={() => {
+                this.gotoSlide(
+                  slideIndexTarget > 0
+                    ? slideIndexTarget - 1
+                    : slideshow.length - 1,
+                  true,
+                );
+              }}>
+              <ChevronLeft />
+            </button>
+          </div>
+          <div {...classes('navigation-arrows', 'right')}>
+            <button
+              type="button"
+              tabIndex={-1}
+              onClick={() => {
+                this.gotoSlide(
+                  slideIndexTarget < slideshow.length - 1
+                    ? slideIndexTarget + 1
+                    : 0,
+                  true,
+                );
+              }}>
+              <ChevronRight />
+            </button>
           </div>
           {!animationComplete && (
             <div
@@ -220,8 +258,9 @@ class FilmSlideshow extends Component {
                 'indicator-dot',
                 index === slideIndexTarget ? 'active' : '',
               )}
-              onClick={() => !isMobile && this.gotoSlide(index, true)}
-            />
+              onClick={() => !isMobile && this.gotoSlide(index, true)}>
+              <span />
+            </button>
           ))}
         </div>
       </section>

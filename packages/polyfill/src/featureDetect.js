@@ -19,7 +19,7 @@ export const generateFeatureChecks = () => {
     .join('');
 };
 
-export const featureDetect = (polyfill, scripts) => {
+export const featureDetect = (polyfill, scripts = []) => {
   return `
   var feats = [];
   ${generateFeatureChecks()}
@@ -44,7 +44,7 @@ export const featureDetect = (polyfill, scripts) => {
     }
   }
 
-  if (feats.length) {
+  if (feats.length && ${polyfill}) {
     cs(${polyfill}, true, _polyfillComplete);
   } else {
     _polyfillComplete();

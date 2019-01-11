@@ -23,3 +23,8 @@ import 'core-js/fn/number/is-nan';
 
 // polyfill for <details></details> and <summary></summary> html elements used in articles.
 import 'details-polyfill';
+
+// Check for ie and add .ie class to body
+if (/Trident\/|MSIE /.test(window.navigator.userAgent)) {
+  document.body.classList.add("ie");
+}

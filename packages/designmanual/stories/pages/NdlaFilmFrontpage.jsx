@@ -94,7 +94,7 @@ class NdlaFilmExample extends Component {
   }
 
   async loadNdlaFilmContent(firebaseData) {
-    // Get this data from Firebase or something?
+    // Example uses Firebase, this needs to be changed..
     const { subjectId, highlighted, parentTopic, themes } = firebaseData;
 
     const resourceTypes = [
@@ -149,6 +149,11 @@ class NdlaFilmExample extends Component {
       });
     });
 
+    // allTopics har alle emner under faget (fra subjectId'en)
+    // Vi har på forhånd definert hvilke ressurstyper som er riktig mtp film. (resourceTypes)
+    // Vi søker igjennom alle topics og filtrer ut de som ikke har riktig ressurstype.
+    // Så legger vi med movieTypes som brukes til labels på hover og for å sortere på ressurstypene.
+
     const filteredTopics = allTopics.results
       .map(topic => {
         const context = topic.contexts.find(
@@ -161,6 +166,7 @@ class NdlaFilmExample extends Component {
       })
       .filter(topic => topic);
 
+    // Basert på definerte id'er fra firebase finner vi filmene basert på ID'er derfra.
     const highlightedMovies = Object.keys(highlighted)
       .sort((a, b) => highlighted[a] - highlighted[b])
       .map(id =>
@@ -170,6 +176,7 @@ class NdlaFilmExample extends Component {
       )
       .filter(foundMovie => foundMovie);
 
+    // Basert på definerte id'er fra firebase finner vi filmene fra filmgruppene samt grupperer disse og sorterer gruppene og filmene.
     const movieThemes = Object.keys(themes)
       .sort((a, b) => themes[a].order - themes[b].order)
       .map(theme => ({

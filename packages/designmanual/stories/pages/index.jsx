@@ -407,15 +407,6 @@ storiesOf('Ndla film', module)
       <FooterExample inverted />
     </PageContainer>
   ))
-  .add('Filmkategori', () => (
-    <PageContainer ndlaFilm>
-      <Content>
-        <MastheadWithTopicMenu ndlaFilm />
-        <NdlaFilmFrontpage />
-      </Content>
-      <FooterExample inverted />
-    </PageContainer>
-  ))
   .add('Film (emne)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>

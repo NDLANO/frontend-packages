@@ -207,6 +207,7 @@ export const topicMenu = [
         id: 'urn:topic:111111',
         name: 'Nettsider',
         contentUri: null,
+        contentTypeResults,
         subtopics: [
           {
             id: 'urn:topic:162334',

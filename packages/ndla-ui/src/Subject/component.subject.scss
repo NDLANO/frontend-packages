@@ -19,7 +19,7 @@ $subject-section-padding: 100px;
     display: none;
     margin: $spacing--medium 0 0 0;
 
-    @include mq(desktop) {
+    @include mq(tablet) {
       margin-left: $subject-margin;
     }
 
@@ -29,13 +29,32 @@ $subject-section-padding: 100px;
   }
 
   &__content {
-    display: flex;
+    display: block;
     flex-flow: column;
     margin-top: $spacing--small;
 
+    @include mq($from: tablet) {
+      display: flex;
+      > *:not(:only-child):last-child {
+        padding-left: $subject-margin;
+      }
+    }
+
     // Two children or more children
-    > *:not(:only-child) {
-      max-width: 50%;
+    &:not(.c-subject-content__content--twoColumns) {
+      @include mq(desktop) {
+        > *:not(:only-child) {
+          max-width: 50%;
+        }
+      }
+      @include mq($until: desktop) {
+        flex-direction: column;
+      }
+      @include mq($from: tablet, $until: desktop) {
+        > *:not(:only-child):last-child {
+          padding-left: $subject-margin;
+        }
+      }
     }
 
     @include mq(tablet) {
@@ -56,7 +75,6 @@ $subject-section-padding: 100px;
       & > *:first-child {
         @include mq(tablet) {
           margin-right: 0;
-          margin-bottom: $subject-section-padding;
         }
       }
     }
@@ -65,27 +83,27 @@ $subject-section-padding: 100px;
 
 .c-subject-secondary-content {
   background: $brand-grey--lightest;
-  padding: $spacing 0;
+  padding: $spacing--large 0;
   margin-top: $spacing--large;
 
   @include mq(tablet) {
-    padding: 100px 0 $spacing--large 0;
+    padding: $subject-section-padding 0 $spacing--large;
     margin-bottom: 100px;
     margin-top: 0;
   }
 }
 
 .c-subject-sidebar-wrapper {
-  flex-basis: 50%;
-  @include mq(desktop) {
-    flex-basis: 390px;
-  }
-  flex-shrink: 0;
-  margin: 0 $spacing;
+  display: block;
 
   @include mq(tablet) {
+    flex-basis: 50%;
+    flex-basis: 390px;
+    flex-shrink: 0;
     margin: 9px 0 0 0;
   }
+
+  margin: 0 $spacing;
 
   & > *:last-child {
     margin-bottom: 0;
@@ -96,7 +114,7 @@ $subject-section-padding: 100px;
   &__content {
     display: none;
 
-    @include mq(tablet) {
+    @include mq(tabletWide) {
       display: flex;
     }
   }
@@ -122,7 +140,6 @@ $subject-section-padding: 100px;
 
   @include mq(tablet) {
     flex-direction: row;
-    margin-bottom: $subject-section-padding;
   }
 
   &--noMargin {
@@ -131,12 +148,12 @@ $subject-section-padding: 100px;
 
   &__child {
     box-sizing: border-box;
+    padding: 0 $spacing--small;
 
     @include mq(tablet) {
       flex-basis: 50%;
       flex-grow: 1;
       flex-direction: row;
-      margin-right: $spacing--large;
     }
 
     &:last-child {
@@ -165,10 +182,6 @@ $subject-section-padding: 100px;
 
 .c-subject-child-content {
   padding: 0 $spacing;
-
-  @include mq(tablet) {
-    padding: 0 0 0 $subject-margin;
-  }
 }
 
 .c-subject-topic-language-container {

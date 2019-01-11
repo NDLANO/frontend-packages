@@ -25,7 +25,8 @@ const inputWrapperCSS = css`
   textarea {
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
-    ${fonts.sizes(18, 1.3)} background: none;
+    ${fonts.sizes(18, 1.3)};
+    background: none;
     border: 0;
     display: flex;
     flex-grow: 1;

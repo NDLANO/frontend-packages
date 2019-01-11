@@ -8,7 +8,6 @@ const github = require('octonode');
 const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
 const urlRegex = require('url-regex');
-const awaitUrl = require('await-url');
 
 if (!process.env.CI || !process.env.TRAVIS) {
   throw new Error('Could not detect Travis CI environment');
@@ -175,17 +174,6 @@ async function deploy(sha) {
   targetUrl = await spawnAlias(sha, targetUrl);
 
   console.log(`🔗 It's linked!`);
-
-  console.log(
-    `⏳ Now we're going to ping ${targetUrl} to confirm it is ready for use!`,
-  );
-
-  // check on the site for ~20 minutes every 10 seconds
-  await awaitUrl(`${targetUrl}`, { interval: 10000, tries: 119 }).catch(err => {
-    console.error('Error waiting for the deployment to be ready.');
-    onError(sha, err);
-    throw err;
-  });
 
   updateStatus(sha, {
     target_url: targetUrl,

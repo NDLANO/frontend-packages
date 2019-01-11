@@ -6,9 +6,8 @@ import { Cross } from '@ndla/icons/action';
 import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
-
+import Tooltip from '@ndla/tooltip';
 import { FilterTabs } from '@ndla/tabs';
-import Tooltip from '../Tooltip';
 import SafeLink from '../common/SafeLink';
 
 const resultClasses = BEMHelper('c-search-result');
@@ -149,7 +148,12 @@ const searchResultItemShape = PropTypes.shape({
   contentTypeLabel: PropTypes.string.isRequired,
 });
 
-const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
+export const SearchResultItem = ({
+  item,
+  subjectsLabel,
+  additionalContentToolip,
+  children,
+}) => (
   <li key={item.id} {...searchResultItemClasses()}>
     <article>
       <header {...searchResultItemClasses('header')}>
@@ -182,6 +186,7 @@ const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip }) => (
               <Additional className="c-icon--20" />
             </span>
           ))}
+        {children}
       </header>
       {item.breadcrumb && item.breadcrumb.length > 0 && (
         <div {...searchResultItemClasses('breadcrumb')}>
@@ -233,7 +238,7 @@ SearchResultItem.propTypes = {
   subjectsLabel: PropTypes.string.isRequired,
 };
 
-export const SearchResultList = ({ results }) => {
+export const SearchResultList = ({ results, component: Component }) => {
   if (!results) return <article className="c-search-result-list__empty" />;
   return (
     <Trans>
@@ -248,7 +253,7 @@ export const SearchResultList = ({ results }) => {
         ) : (
           <ul className="c-search-result-list">
             {results.map(item => (
-              <SearchResultItem
+              <Component
                 key={`search_result_item_${
                   typeof item.url === 'object' ? item.url.href : item.url
                 }`}
@@ -256,14 +261,19 @@ export const SearchResultList = ({ results }) => {
                 additionalContentToolip={t('resource.tooltipAdditionalTopic')}
                 subjectsLabel={t(
                   'searchPage.searchResultListMessages.subjectsLabel',
-                )}
-              />
+                )}>
+                {item.children}
+              </Component>
             ))}
           </ul>
         )
       }
     </Trans>
   );
+};
+
+SearchResultList.defaultProps = {
+  component: SearchResultItem,
 };
 
 SearchResultList.propTypes = {

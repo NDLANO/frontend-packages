@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from '@ndla/ui';
+import constants from '../model';
 
 const { contentTypes } = constants;
 
@@ -35,6 +35,11 @@ const messages = {
   },
   notFoundPage: {
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
+  },
+  lti: {
+    embed: 'Sett inn',
+    notSupported:
+      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på din side.',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',
@@ -96,6 +101,8 @@ const messages = {
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
+      coreRelevance: 'Kjernestoff',
+      supplementaryRelevance: 'tilleggsstoff',
     },
   },
   subjectPage: {
@@ -176,7 +183,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'studiespesialisering',
+      studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
     },
     film: {
@@ -320,8 +327,7 @@ const messages = {
     },
     text: {
       heading: 'Slik bruker du tekst frå artikkelen',
-      description:
-        'Artikkelen kan vera samansett av fleire ulike tekstar som vert lista her.',
+      description: 'Hugs å vise til kjelda når du gjenbruker tekst.',
       rules: 'Reglar for bruk av teksten:',
       published: 'Publiseringsdato',
     },

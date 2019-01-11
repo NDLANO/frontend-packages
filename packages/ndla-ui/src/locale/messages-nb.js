@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from '@ndla/ui';
+import constants from '../model';
 
 const { contentTypes } = constants;
 
@@ -34,6 +34,11 @@ const messages = {
   },
   notFoundPage: {
     errorDescription: 'Beklager, finner ikke siden du prøvde å komme til.',
+  },
+  lti: {
+    embed: 'Sett inn',
+    notSupported:
+      'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',
@@ -95,6 +100,8 @@ const messages = {
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
+      coreRelevance: 'Kjernestoff',
+      supplementaryRelevance: 'tilleggsstoff',
     },
   },
   subjectPage: {
@@ -318,8 +325,7 @@ const messages = {
     },
     text: {
       heading: 'Slik bruker du tekst fra artikkelen',
-      description:
-        'Artikkelen kan være sammensatt av flere tekster som listes opp her.',
+      description: 'Husk å henvise til kilden når du gjenbruker tekst.',
       rules: 'Regler for bruk av teksten:',
       published: 'Publiseringsdato',
     },

@@ -39,29 +39,37 @@ const itemTitleLinked = css`
 `;
 
 const ItemTitleButton = styled.button`
-${fonts.sizes(16, 1)} font-weight: ${fonts.weight.semibold};
-border: 0;
-background: 0;
-color: ${colors.brand.primary};
-display: flex;
-align-items: center;
-text-align: left;
-white-space: nowrap;
-${props => props.arrowDirection !== undefined && itemTitleArrow};
-${props =>
-  props.arrowDirection === undefined && !props.isMainTopic && itemTitleLinked};
-&:before {
-  transition: transform 200ms ease;
-  transform: rotate(${props => props.arrowDirection}deg);
-}
-`;
+  ${fonts.sizes(16, 1)};
+  font-weight: ${fonts.weight.semibold};
+  border: 0;
+  background: 0;
+  color: ${colors.brand.primary};
+  display: flex;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
 
-const ItemTitleSpan = ItemTitleButton.withComponent('span');
+  ${props => props.hasSubtopics && itemTitleArrow};
+  ${props =>
+    props.lastItemClickable &&
+    css`
+      cursor: pointer;
+    `};
+  ${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
+  &:before {
+    transition: transform 200ms ease;
+    transform: rotate(
+      ${props => props.hasSubtopics && props.arrowDirection}deg
+    );
+  }
+`;
 
 const itemNameStyling = css`
   display: flex;
   justify-content: space-between;
 `;
+
+const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
 const ItemName = ({
   title,
@@ -71,17 +79,23 @@ const ItemName = ({
   hasSubtopics,
   isOpen,
   level,
+  lastItemClickable,
+  id,
 }) => (
   <div className={itemNameStyling}>
-    {hasSubtopics ? (
+    {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"
+        id={id}
+        hasSubtopics={hasSubtopics}
+        level={level}
+        lastItemClickable={lastItemClickable}
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}>
         {title}
       </ItemTitleButton>
     ) : (
-      <ItemTitleSpan isMainTopic={level === 0}>{title}</ItemTitleSpan>
+      <ItemTitleSpan>{title}</ItemTitleSpan>
     )}
     {children}
   </div>
@@ -94,6 +108,8 @@ ItemName.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   hasSubtopics: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool,
+  lastItemClickable: PropTypes.bool,
+  id: PropTypes.string,
   level: PropTypes.number,
 };
 

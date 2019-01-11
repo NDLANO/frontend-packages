@@ -37,7 +37,7 @@
     }
 
     .c-content-type-badge {
-      margin-top: $spacing;
+      margin-top: 23px;
       @include mq($until: tabletWide) {
         display: none;
       }

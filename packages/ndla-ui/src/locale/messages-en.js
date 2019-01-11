@@ -6,7 +6,7 @@
  *
  */
 
-import { constants } from '@ndla/ui';
+import constants from '../model';
 
 const { contentTypes } = constants;
 
@@ -35,6 +35,11 @@ const messages = {
   },
   notFoundPage: {
     errorDescription: "We can't seem to find the page you are looking for.",
+  },
+  lti: {
+    embed: 'Embed',
+    notSupported:
+      'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
   },
   searchPage: {
     noHits: 'Your search - {query} - did not match any articles. ',
@@ -96,6 +101,8 @@ const messages = {
       noValuesButtonText: 'Filter by subjects',
       useFilter: 'Use filter',
       closeFilter: 'Close filter',
+      coreRelevance: 'Core',
+      supplementaryRelevance: 'Supplementary',
     },
   },
 
@@ -315,8 +322,7 @@ const messages = {
     },
     text: {
       heading: 'How to use text from the article',
-      description:
-        'The article may be composed of several different texts, which are listed here.',
+      description: 'Remember to refer to the source when reusing text.',
       rules: 'Rules for use of text:',
       published: 'Published',
     },

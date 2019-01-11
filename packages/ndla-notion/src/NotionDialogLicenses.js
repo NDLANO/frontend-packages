@@ -27,13 +27,20 @@ const NotionDialogLicensesWrapper = styled.div`
   }
 `;
 
-const NotionDialogLicenses = ({ license, authors, source, licenseBox }) => {
-  const licenseRights = getLicenseByAbbreviation(license).rights;
+const NotionDialogLicenses = ({
+  license,
+  authors,
+  source,
+  locale,
+  licenseBox,
+}) => {
+  const licenseRights = getLicenseByAbbreviation(license, locale).rights;
   const authorsLength = authors.length;
   return (
     <NotionDialogLicensesWrapper>
       {licenseRights.length > 0 && (
         <LicenseByline
+          locale={locale}
           className="c-source-list__item"
           licenseRights={licenseRights}
         />
@@ -60,6 +67,7 @@ NotionDialogLicenses.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.string),
   source: PropTypes.string,
   licenseBox: PropTypes.node,
+  locale: PropTypes.string,
 };
 
 NotionDialogLicenses.defaultProps = {

@@ -27,6 +27,7 @@ export const FigureLicenseDialog = ({
   authors,
   origin,
   title,
+  locale,
   license,
 }) => {
   const headingLabelId = `heading-${id}`;
@@ -37,7 +38,11 @@ export const FigureLicenseDialog = ({
           {messages.rulesForUse}
         </h3>
 
-        <FigureLicenseByline license={license} messages={messages} />
+        <FigureLicenseByline
+          license={license}
+          messages={messages}
+          locale={locale}
+        />
         <FigureLicenseCta
           authors={authors}
           title={title}
@@ -65,4 +70,5 @@ FigureLicenseDialog.propTypes = {
   }).isRequired,
   title: PropTypes.string,
   license: LicenseShape.isRequired,
+  locale: PropTypes.string,
 };

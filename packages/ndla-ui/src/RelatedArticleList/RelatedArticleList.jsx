@@ -85,7 +85,7 @@ const RelatedArticleList = ({
       </div>
       {childrenCount > 2 && (
         <Button
-          {...classes('button')}
+          data-type="related-article-button"
           data-showmore={messages.showMore}
           data-showless={messages.showLess}
           outline>

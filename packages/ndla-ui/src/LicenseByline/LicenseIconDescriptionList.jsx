@@ -17,8 +17,8 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const LicenseIconItem = ({ licenseRight }) => {
-  const { description } = getLicenseRightByAbbreviation(licenseRight);
+const LicenseIconItem = ({ licenseRight, locale }) => {
+  const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
     <li {...classes('item')}>
@@ -27,21 +27,24 @@ const LicenseIconItem = ({ licenseRight }) => {
         description={description}
         {...classes('icon')}
       />
-      <span className="c-license-icons__licenselabel">
-        {getLicenseRightByAbbreviation(licenseRight).description}
-      </span>
+      <span className="c-license-icons__licenselabel">{description}</span>
     </li>
   );
 };
 
 LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
+  locale: PropTypes.string,
 };
 
-const LicenseIconDescriptionList = ({ licenseRights, className }) => (
+const LicenseIconDescriptionList = ({ licenseRights, className, locale }) => (
   <ul {...classes('list', '', className)}>
     {licenseRights.map(licenseRight => (
-      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} />
+      <LicenseIconItem
+        key={licenseRight}
+        licenseRight={licenseRight}
+        locale={locale}
+      />
     ))}
   </ul>
 );
@@ -49,6 +52,7 @@ const LicenseIconDescriptionList = ({ licenseRights, className }) => (
 LicenseIconDescriptionList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
   className: PropTypes.string,
+  locale: PropTypes.string,
 };
 
 export default LicenseIconDescriptionList;

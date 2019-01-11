@@ -69,15 +69,8 @@ class SubjectArchive extends Component {
       </section>
     );
 
-    const wrapperStyles = this.state.minHeight
-      ? {
-          minHeight: this.state.minHeight,
-        }
-      : null;
-
     return (
       <section
-        style={wrapperStyles}
         {...classes('', {
           fixedWidth,
           animate: this.state.minHeight,

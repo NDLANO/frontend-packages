@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4000px" height="320px" viewBox="0 0 4000 320" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Transport og logistikk</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Transport-og-logistikk" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="transport-og-logistikk" transform="translate(-1.000000, 52.000000)" stroke="#FFFFFF">
+            <path d="M0.5,236.5 L23,236.5" id="Path"></path>
+            <path d="M68.4,236.5 L3949.8,237" id="Path" stroke-dasharray="45.3966,45.3966"></path>
+            <path d="M3972.5,237 L3995,237" id="Path"></path>
+            <path d="M3770.4,64.7 L3762.5,66.1 C3762.5,66.1 3771.7,1.42108547e-14 3876.9,1.42108547e-14 C3982.1,1.42108547e-14 3994,66.1 3994,66.1 L3983.5,67.5" id="Path"></path>
+            <path d="M3943.5,202 L3942.7,96.3 L3945.3,96.3 L3946.6,84.8 L3808.5,83.4 L3809.8,96.3 L3813.7,97.7 C3813.7,97.7 3813.7,199.1 3813.7,200.5" id="Path"></path>
+            <path d="M3821.7,201.3 C3821.7,198.4 3821.7,96.3 3821.7,96.3 L3933.5,97.7 L3935.5,202.4 L3943.5,202.4" id="Path"></path>
+            <path d="M3939,202.5 L3812.5,201.3" id="Path"></path>
+            <path d="M3813.4,111.3 L3821.2,122.6" id="Path"></path>
+            <path d="M3814.4,133.8 L3820.7,142.4" id="Path"></path>
+            <path d="M3814.4,155.2 L3821.2,164.3" id="Path"></path>
+            <path d="M3934.3,110.8 L3942.1,121.5" id="Path"></path>
+            <path d="M3934.3,134.9 L3941.6,142.4" id="Path"></path>
+            <path d="M3935.7,153.6 L3941.6,162.7" id="Path"></path>
+            <path d="M3942.6,175.5 L3982.7,175" id="Path"></path>
+            <path d="M3812.5,175.4 L3778,175.5" id="Path"></path>
+            <path d="M3943,202.5 L3983.5,202 L3983.5,67.6 C3983.5,67.6 3976.9,12.9 3887.5,10.1 C3795.4,7.2 3774.4,51.8 3770.4,64.7 L3770.5,147" id="Path"></path>
+            <path d="M3814,201.5 L3778.5,201.5" id="Path"></path>
+            <path d="M3822.5,175.5 C3827.2,175.4 3934.5,175.5 3934.5,175.5" id="Path"></path>
+            <path d="M3842,175.4 L3842,201.1" id="Path"></path>
+            <path d="M3849.8,175.9 L3849.8,200.8" id="Path"></path>
+            <path d="M3903.1,175.9 C3903.5,176.5 3903.4,201.6 3903.4,201.6" id="Path"></path>
+            <path d="M3912,175.9 C3912.5,176.5 3912.3,201.6 3912.3,201.6" id="Path"></path>
+            <polygon id="Path" points="3708 147.1 3777.7 147.1 3779 197.1 3709.3 197.1 3708.6 171.5"></polygon>
+            <path d="M3776.4,172.1 C3775.1,170.8 3708,172.1 3708,172.1" id="Path"></path>
+            <path d="M3741.8,147.3 L3741.8,196.9" id="Path"></path>
+            <path d="M3668.5,170.8 C3669.8,170.8 3705.3,172.1 3705.3,172.1 L3705.3,198.4 C3705.3,198.4 3669.8,198.4 3668.5,198.4 C3668.5,195.8 3668.5,170.8 3668.5,170.8 Z" id="Path"></path>
+            <path d="M3708,206.3 L3779,206.3" id="Path"></path>
+            <path d="M3713.2,197.1 L3713.2,206.3" id="Path"></path>
+            <path d="M3719.8,197.1 C3719.8,198.4 3719.8,207 3719.8,207" id="Path"></path>
+            <path d="M3743.5,197.8 L3743.5,207" id="Path"></path>
+            <path d="M3750.1,197.8 L3750.1,207" id="Path"></path>
+            <path d="M3769.8,197.1 L3769.8,205.7" id="Path"></path>
+            <path d="M3777.7,197.8 L3777.7,207" id="Path"></path>
+            <path d="M3668.5,206.3 L3705.3,206.3" id="Path"></path>
+            <path d="M3698.8,198.4 L3698.9,206.3" id="Path"></path>
+            <path d="M3704,198.4 L3704,207" id="Path"></path>
+            <path d="M3669.8,198.4 L3670.2,206.2" id="Path"></path>
+            <path d="M3677.7,198.4 L3677.7,206.3" id="Path"></path>
+        </g>
+    </g>
+</svg>

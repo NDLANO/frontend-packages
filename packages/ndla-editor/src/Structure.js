@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
@@ -28,10 +28,16 @@ const ItemsList = styled.li`
       calc(${props => props.level} * 17px + ${spacing.small});
     height: 40px;
     border-bottom: 1px solid ${colors.brand.greyLighter};
+
+    &:hover {
+      background: ${props =>
+        props.highlight ? colors.brand.light : '#f1f5f8'};
+    }
   }
   > ul {
     display: none;
   }
+
   ${props =>
     props.isOpen &&
     css`
@@ -40,11 +46,17 @@ const ItemsList = styled.li`
       }
     `};
   ${props =>
-    props.isOpen &&
-    props.level === 0 &&
+    props.highlight &&
     css`
       > div {
         background: ${colors.brand.light};
+      }
+    `};
+  ${props =>
+    props.greyedOut &&
+    css`
+      > div {
+        opacity: 0.5;
       }
     `};
 `;
@@ -57,11 +69,13 @@ const Structure = ({
   structure,
   openedPaths,
   toggleOpen,
+  highlightMainActive,
 }) => {
-  const renderItems = (subjectsOrTopics, paths, names, subjectId) => {
+  const renderItems = (subjectsOrTopics, paths, subjectId) => {
     const level = paths.length;
     const ignoreFilter =
       level === 0 ||
+      !subjectFilters[subjectId] ||
       !subjectFilters[subjectId].some(filter =>
         fileStructureFilters.includes(filter.id),
       );
@@ -76,62 +90,70 @@ const Structure = ({
                 fileStructureFilters.includes(topicFilter.id),
               ),
           )
-          .map(({ id, name, topics, subtopics, filters, loading }) => {
+          .map(({ id, name, topics, subtopics, filters, loading, ...rest }) => {
             const currentPaths = paths.slice();
-            const currentNames = names.slice();
             currentPaths.push(id);
-            currentNames.push(name);
             const children = topics || subtopics;
-            const pathToString = currentPaths.toString();
+            const pathToString = currentPaths.join('/');
+            const parentId = paths.slice(-1);
             const isOpen = openedPaths.includes(pathToString);
+            const isMainActive = openedPaths.slice(-1).pop() === pathToString;
             return (
-              <Fragment key={pathToString}>
-                <ItemsList className={listClass} level={level} isOpen={isOpen}>
-                  <ItemName
-                    isOpen={isOpen}
-                    title={name}
-                    path={pathToString}
-                    hasSubtopics={!!children || level === 0}
-                    toggleOpen={() =>
-                      toggleOpen({
-                        path: pathToString,
-                        level,
-                        id,
-                      })
-                    }
-                    level={level}>
-                    {renderListItems &&
-                      renderListItems({
-                        paths: currentPaths,
-                        pathToString,
-                        filters,
-                        level,
-                        names: currentNames,
-                        isOpen,
-                        id,
-                      })}
-                  </ItemName>
-                  {children &&
-                    renderItems(
-                      children,
-                      currentPaths,
-                      currentNames,
-                      level === 0 ? id : subjectId,
-                    )}
-                  {loading && (
-                    <span>
-                      <Spinner size="normal" margin="4px 26px" />
-                    </span>
+              <ItemsList
+                key={pathToString}
+                className={listClass}
+                level={level}
+                highlight={
+                  highlightMainActive ? isMainActive : isOpen && level === 0
+                }
+                greyedOut={!isOpen && level === 0 && openedPaths.length > 0}
+                isOpen={isOpen}>
+                <ItemName
+                  isOpen={isOpen}
+                  title={name}
+                  lastItemClickable={highlightMainActive}
+                  path={pathToString}
+                  id={id.includes('topic') ? `${parentId}/${id}` : id}
+                  hasSubtopics={!!children || level === 0}
+                  toggleOpen={() =>
+                    toggleOpen({
+                      path: pathToString,
+                      level,
+                      id,
+                    })
+                  }
+                  level={level}>
+                  {renderListItems &&
+                    renderListItems({
+                      paths: currentPaths,
+                      pathToString,
+                      filters,
+                      level,
+                      isOpen,
+                      id,
+                      name,
+                      ...rest,
+                    })}
+                </ItemName>
+                {children &&
+                  renderItems(
+                    children,
+                    currentPaths,
+                    level === 0 ? id : subjectId,
                   )}
-                </ItemsList>
-              </Fragment>
+                {loading && (
+                  <span>
+                    <Spinner size="normal" margin="4px 26px" />
+                  </span>
+                )}
+              </ItemsList>
             );
           })}
       </ItemListWrapper>
     );
   };
 
-  return renderItems(structure, [], []);
+  return renderItems(structure, []);
 };
 
 const FilterShape = PropTypes.shape({
@@ -167,7 +189,6 @@ Structure.defaultProps = {
   structure: [],
   className: '',
   fileStructureFilters: [],
-  filters: [],
 };
 
 export default Structure;

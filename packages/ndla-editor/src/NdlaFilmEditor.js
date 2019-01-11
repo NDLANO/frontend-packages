@@ -6,15 +6,47 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
-import { spacing, colors, fonts, shadows, animations, misc } from '@ndla/core';
-import { FormDropdown, FormHeader } from '@ndla/forms';
+import styled from 'react-emotion';
+import { spacing, colors, fonts, animations, misc } from '@ndla/core';
+import { FormHeader,
+  FormInput,
+  FormDropdown } from '@ndla/forms';
+  import { Spinner } from '@ndla/editor';
+
 import { uuid } from '@ndla/util';
 import Button from '@ndla/button';
-import { Pencil, Cross } from '@ndla/icons/action';
+import { Cross } from '@ndla/icons/action';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
+
+const ThemeGroup = styled.div`
+  animation-duration: ${animations.durations.slow};
+  @keyframes themeFade1 {
+      0% {
+        transform: translateY(${spacing.small});
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes themeFade2 {
+      0% {
+        transform: translateY(${spacing.small});
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    animation-name: themeFade1;
+  &.repaint {
+    animation-name: themeFade2;
+  }
+`;
 
 const MovieImage = styled.div`
   width: 80px;
@@ -22,6 +54,10 @@ const MovieImage = styled.div`
   margin-right: ${spacing.normal};
   background-position: center center;
   background-size: cover;
+`;
+
+const MovieSelectedWrapper = styled.div`
+  margin: ${spacing.normal} 0 ${spacing.large};
 `;
 
 const MovieSelected = styled.div`
@@ -39,11 +75,6 @@ const MovieSelected = styled.div`
 const MovieTitle = styled.a`
     ${fonts.sizes(16, 1.1)} font-weight: ${fonts.weight.semibold};
     margin: ${spacing.small} 0;
-`;
-
-const Header = styled.h1`
-${fonts.sizes(26, 1.1)} font-weight: ${fonts.weight.semibold};
-    margin: ${spacing.normal} 0;
 `;
 
 const IconButton = styled.button`
@@ -91,70 +122,59 @@ const Wrapper = styled.div`
 `;
 
 const ThemeNameHeader = styled.div`
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: ${spacing.small};
-  margin-bottom: ${spacing.small};
-  margin-top: ${spacing.medium};
-  padding-top: ${spacing.normal};
+  padding-top: ${spacing.small};
 `;
 
-const InputWrapper = styled.div`
+const ThemeNamesWrapper = styled.div`
   display: flex;
-  align-items: center;
-  svg {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  &:hover,
-  &:focus-within {
-    svg {
-      opacity: 1;
-    }
-  }
+  justify-content: space-between;
+  width: 100%;
 `;
 
-const inputHeader = css`
-${fonts.sizes(20, 1.1)} font-weight: ${fonts.weight.semibold};
-    margin-left: -${spacing.normal};
-    color: #fff;
-    padding: ${spacing.small} ${spacing.small} ${spacing.small} ${
-  spacing.medium
-};
-    border: 0;
-    background: transparent;
+const ThemeName = styled.div`
+  width: calc(33.3% - ${spacing.normal} * 0.667);
 `;
 
-const dropdownBtn = css`
-  ${fonts.sizes(16, 1.1)} font-weight: ${fonts.weight.semibold};
-  width: 240px;
-  height: 42px;
-`;
-
-const Avatar = styled.div`
-  width: ${spacing.medium};
-  height: ${spacing.medium};
-  margin: 0 ${spacing.small} 0 0;
-  border-radius: 100%;
-  background-position: center center;
-  background-size: cover;
-`;
-
-const UserHeader = styled.aside`
+const HeaderButtons = styled.div`
   display: flex;
+  button {
+    margin-left: ${spacing.small};
+  }
 `;
 
-const ThemeName = ({ value, onChange }) => (
-  <InputWrapper>
-    <Pencil />
-    <input className={inputHeader} value={value} onChange={onChange} />
-  </InputWrapper>
+const InputLabel = styled.div`
+  ${fonts.sizes(16, 1.1)};
+  font-weight: ${fonts.weight.semibold};
+  margin-bottom: ${spacing.xsmall};
+`;
+
+const ThemeNames = ({ themeKey, values, onChange }) => (
+  <ThemeNamesWrapper>
+  {values.map(val => (
+    <ThemeName key={val.lang}>
+    <InputLabel>Tittel {val.label}:</InputLabel>
+      <FormInput
+        container="div"
+        type="text"
+        placeholder={`Skriv tittel på ${val.label}`}
+        value={val.name}
+        onChange={e => onChange(e.target.value, themeKey, val.lang)}
+      />
+    </ThemeName>
+    ))}
+    </ThemeNamesWrapper>
 );
 
-ThemeName.propTypes = {
-  value: PropTypes.string.isRequired,
+ThemeNames.propTypes = {
+  values: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    lang: PropTypes.string,
+    themeKey: PropTypes.string,
+  })).isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -164,7 +184,10 @@ class NdlaFilmEditor extends Component {
     this.state = {
       unsavedChanges: false,
       firebaseData: null,
+      themegroupRepaint: false,
     };
+    this.deleteMovieGroup = this.deleteMovieGroup.bind(this);
+    this.rearrangeMovieGroup = this.rearrangeMovieGroup.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -204,7 +227,9 @@ class NdlaFilmEditor extends Component {
     this.setState(prevState => {
       const { firebaseData: updateFirebaseData } = prevState;
       updateFirebaseData.themes[uuid()] = {
-        name: 'Velg navn',
+        nb: '',
+        nn: '',
+        en: '',
         movies: {},
       };
       return {
@@ -284,10 +309,32 @@ class NdlaFilmEditor extends Component {
     }
   }
 
-  updateTitle(themeKey, value) {
+  deleteMovieGroup(themeKey) {
     this.setState(prevState => {
       const { firebaseData: updateFirebaseData } = prevState;
-      updateFirebaseData.themes[themeKey].name = value;
+      delete updateFirebaseData.themes[themeKey];
+      return { firebaseData: updateFirebaseData, unsavedChanges: true };
+    });
+  }
+
+  rearrangeMovieGroup(FromThemeKey, oldIndex, swapWith) {
+    this.setState(prevState => {
+      const { firebaseData: updateFirebaseData } = prevState;
+      Object.keys(updateFirebaseData.themes).forEach(themeKey => {
+        if (updateFirebaseData.themes[themeKey].order === oldIndex) {
+          updateFirebaseData.themes[themeKey].order = swapWith;
+        } else if (updateFirebaseData.themes[themeKey].order === swapWith && FromThemeKey !== themeKey) {
+          updateFirebaseData.themes[themeKey].order = oldIndex;
+        }
+      });
+      return { firebaseData: updateFirebaseData, unsavedChanges: true, themegroupRepaint: !prevState.themegroupRepaint };
+    });
+  }
+
+  updateTitle(value, themeKey, lang) {
+    this.setState(prevState => {
+      const { firebaseData: updateFirebaseData } = prevState;
+      updateFirebaseData.themes[themeKey][lang] = value;
       return { firebaseData: updateFirebaseData, unsavedChanges: true };
     });
   }
@@ -306,7 +353,7 @@ class NdlaFilmEditor extends Component {
 
   render() {
     if (!this.props.loaded) {
-      return 'loading...';
+      return <Wrapper><Spinner /></Wrapper>;
     }
     const {
       firebaseData: { highlighted, themes },
@@ -315,16 +362,15 @@ class NdlaFilmEditor extends Component {
     const {
       allMovies,
       savingToFirebase,
-      user,
-      userMessage,
-      userLogout,
     } = this.props;
 
-    console.log(allMovies);
+    const themeLength = Object.keys(themes).length;
+    console.log(this.state.themegroupRepaint ? 'repaint' : '');
     return (
       <Wrapper>
         <section>
-          <FormHeader title="Slideshow" subTitle="example" width={4 / 4} />
+          <FormHeader title="Hovedfilmer" subTitle="på forsiden" width={4 / 4} />
+          <MovieSelectedWrapper>
           {Object.keys(highlighted)
             .sort((a, b) => highlighted[a] - highlighted[b])
             .map(key => {
@@ -370,33 +416,55 @@ class NdlaFilmEditor extends Component {
                 );
               }
             })}
+            </MovieSelectedWrapper>
           <FormDropdown
             value=""
             onChange={e => this.addItem(e.target.value)}
-            className={dropdownBtn}>
+          >
             <option value="">Legg til film i slideshow</option>
             {this.renderAddMovieOptions(highlighted)}
           </FormDropdown>
         </section>
         <section>
-          <Header>Temaer:</Header>
           {Object.keys(themes)
-            .sort((a, b) => themes[a] - themes[b])
-            .map(themeKey => (
-              <Fragment>
+            .sort((a, b) => themes[a].order - themes[b].order)
+            .map((themeKey, index) => (
+              <ThemeGroup key={themeKey} className={this.state.themegroupRepaint ? 'repaint' : ''}>
+                <FormHeader title={`Filmgruppe`} subTitle={`Rekkefølge ${index +1}`} width={4 / 4}>
+                  <HeaderButtons>
+                    <Button outline disabled={index === 0} onClick={() => this.rearrangeMovieGroup(themeKey, index, index - 1)}>Flytt opp</Button>
+                    <Button outline disabled={index === themeLength - 1} onClick={() => this.rearrangeMovieGroup(themeKey, index, index + 1)}>Flytt ned</Button>
+                    <Button onClick={() => this.deleteMovieGroup(themeKey)}>Slett tema</Button>
+                  </HeaderButtons>
+                </FormHeader>
                 <ThemeNameHeader>
-                  <ThemeName
-                    value={themes[themeKey].name}
-                    onChange={e => this.updateTitle(themeKey, e.target.value)}
+                  <ThemeNames
+                    values={[{
+                      lang: 'nb',
+                      name: themes[themeKey].nb,
+                      label: 'bokmål',
+                    },
+                    {
+                      lang: 'nn',
+                      name: themes[themeKey].nn,
+                      label: 'nynorsk',
+                    },
+                    {
+                      lang: 'en',
+                      name: themes[themeKey].en,
+                      label: 'engelsk',
+                    }]}
+                    themeKey={themeKey}
+                    onChange={(value, key, lang) => { console.log('???'); this.updateTitle(value, key, lang); }}
                   />
-                  <FormDropdown
-                    className={dropdownBtn}
-                    value=""
-                    onChange={e => this.addItem(e.target.value, themeKey)}>
-                    <option value="">Legg til film i gruppe</option>
-                    {this.renderAddMovieOptions(themes[themeKey].movies)}
-                  </FormDropdown>
                 </ThemeNameHeader>
+                <FormDropdown
+                  value=""
+                  onChange={e => this.addItem(e.target.value, themeKey)}>
+                  <option value="">Legg til film i gruppe</option>
+                  {this.renderAddMovieOptions(themes[themeKey].movies)}
+                </FormDropdown>
+                <MovieSelectedWrapper>
                 {Object.keys(themes[themeKey].movies)
                   .sort(
                     (a, b) =>
@@ -443,7 +511,8 @@ class NdlaFilmEditor extends Component {
                       );
                     }
                   })}
-              </Fragment>
+                  </MovieSelectedWrapper>
+              </ThemeGroup>
             ))}
         </section>
         <Button
@@ -452,7 +521,7 @@ class NdlaFilmEditor extends Component {
           Lag ny temagruppe
         </Button>
         <Button
-          disabled={savingToFirebase || !user}
+          disabled={savingToFirebase}
           onClick={() => this.props.saveToFirebase(firebaseData)}>
           {savingToFirebase ? 'Lagrer' : 'Lagre endringer'}
         </Button>
@@ -469,9 +538,6 @@ NdlaFilmEditor.propTypes = {
   saveToFirebase: PropTypes.func.isRequired,
   loaded: PropTypes.bool.isRequired,
   savingToFirebase: PropTypes.bool,
-  user: PropTypes.shape({}),
-  userLogout: PropTypes.func,
-  userMessage: PropTypes.string,
 };
 
 export default NdlaFilmEditor;

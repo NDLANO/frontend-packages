@@ -136,10 +136,6 @@
     align-items: center;
     justify-content: flex-end;
 
-    .c-toggle-search-button {
-      margin-right: $spacing--medium;
-    }
-
     @include mq(tablet) {
       padding: $spacing--small 0;
       padding: 0;

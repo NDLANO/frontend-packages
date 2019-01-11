@@ -28,8 +28,12 @@ export const searchTabOptions = [
     value: 'EVALUATION_RESOURCE',
   },
   {
-    title: 'Delte ressurser',
+    title: 'Eksterne ressurser',
     value: 'SHARED_RESOURCES',
+  },
+  {
+    title: 'Kildemateriale',
+    value: 'SOURCE_MATERIAL',
   },
 ];
 

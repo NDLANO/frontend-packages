@@ -1,11 +1,16 @@
 module.exports = {
   presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
-  plugins: ['emotion', 'polished'],
+  plugins: [
+    'emotion',
+    'polished',
+    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-class-properties',
+  ],
   env: {
     test: {
       presets: [
         [
-          'env',
+          '@babel/preset-env',
           {
             targets: {
               node: 'current',
@@ -15,9 +20,6 @@ module.exports = {
       ],
     },
     commonjs: {
-      plugins: [['transform-es2015-modules-commonjs']],
-    },
-    unittest: {
       plugins: [['transform-es2015-modules-commonjs']],
     },
   },

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Footer } from '@ndla/ui';
+import ZendeskButton from '@ndla/zendesk';
+import { Trans } from '@ndla/i18n';
 
 const FooterExample = ({ inverted }) => (
   <Footer inverted={inverted}>
@@ -23,6 +25,9 @@ const FooterExample = ({ inverted }) => (
     <Footer.Text>
       Nettstedet er utarbeidet av NDLA med åpen kildekode.
     </Footer.Text>
+    <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+      <Trans>{({ t }) => t('askNDLA')}</Trans>
+    </ZendeskButton>
   </Footer>
 );
 

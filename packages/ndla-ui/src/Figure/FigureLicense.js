@@ -66,10 +66,11 @@ FigureLicenseCta.propTypes = {
   title: PropTypes.string,
 };
 
-export const FigureLicenseByline = ({ messages, license }) => [
+export const FigureLicenseByline = ({ messages, license, locale }) => [
   <LicenseByline
     key="byline"
     withDescription
+    locale={locale}
     messages={messages}
     licenseRights={license.rights}
   />,
@@ -89,4 +90,5 @@ FigureLicenseByline.propTypes = {
     learnAboutLicenses: PropTypes.string.isRequired,
   }).isRequired,
   license: LicenseShape.isRequired,
+  locale: PropTypes.string.isRequired,
 };

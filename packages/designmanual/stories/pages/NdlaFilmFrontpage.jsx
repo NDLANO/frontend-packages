@@ -172,7 +172,7 @@ class NdlaFilmExample extends Component {
     const movieThemes = Object.keys(themes)
       .sort((a, b) => themes[a].order - themes[b].order)
       .map(theme => ({
-        name: themes[theme].name,
+        name: themes[theme].nb,
         movies: Object.keys(themes[theme].movies)
           .sort((a, b) => themes[theme].movies[a] - themes[theme].movies[b])
           .map(id =>

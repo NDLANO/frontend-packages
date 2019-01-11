@@ -19,10 +19,10 @@
   "author": "ndla@knowit.no",
   "dependencies": {
     "babel-eslint": "9.x",
-    "eslint-config-react-app": "^3.0.5",
+    "eslint-config-react-app": "^3.0.6",
     "eslint-plugin-flowtype": "2.x",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.12.3"
   }
 }

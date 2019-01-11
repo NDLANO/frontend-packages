@@ -36,6 +36,10 @@ export default [
     feature: 'String.prototype.startsWith',
   },
   {
+    test: `('endsWith' in String.prototype)`,
+    feature: 'String.prototype.endsWith',
+  },
+  {
     test: `('isInteger' in Number.prototype)`,
     feature: 'Number.prototype.isInteger',
   },

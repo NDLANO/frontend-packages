@@ -191,7 +191,7 @@ export const Button = ({
   const type = submit ? 'submit' : rest.type || 'button';
   // Unless the disabled state is explicitly set, the button is disabled when loading.
   const isDisabled = (disabled !== undefined ? disabled : loading) || false;
-  console.log(styledAppearance);
+
   return (
     <StyledButton
       type={type}
@@ -213,7 +213,14 @@ Button.propTypes = {
   lighter: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
-  appearance: PropTypes.oneOf(['outline', 'link', 'stripped', 'lighter', 'inverted', 'invertedOutline']),
+  appearance: PropTypes.oneOf([
+    'outline',
+    'link',
+    'stripped',
+    'lighter',
+    'inverted',
+    'invertedOutline',
+  ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

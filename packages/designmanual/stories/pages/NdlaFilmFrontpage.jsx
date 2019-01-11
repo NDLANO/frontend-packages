@@ -15,6 +15,8 @@ import { NdlaFilmEditor } from '@ndla/editor';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 import Poster from '../../images/filmposter-aboutNDLA.png';
 
+const languageFilter = ['nb'];
+
 const fetchData = ({ apiUrl, query }) => {
   return new Promise((resolve, reject) => {
     getToken().then(token => {
@@ -101,7 +103,6 @@ class NdlaFilmExample extends Component {
       { name: 'Kort film', id: 'urn:resourcetype:shortFilm' },
       { name: 'Læringsressurser', id: 'urn:resourcetype:learningPath' },
     ];
-    const languageFilter = ['nb'];
 
     const resourceTypesIds = resourceTypes
       .reduce((value, item) => `${value},${item.id}`, '')
@@ -172,7 +173,7 @@ class NdlaFilmExample extends Component {
     const movieThemes = Object.keys(themes)
       .sort((a, b) => themes[a].order - themes[b].order)
       .map(theme => ({
-        name: themes[theme].nb,
+        name: themes[theme][languageFilter],
         movies: Object.keys(themes[theme].movies)
           .sort((a, b) => themes[theme].movies[a] - themes[theme].movies[b])
           .map(id =>

@@ -170,7 +170,9 @@ class MastheadWithTopicMenu extends Component {
         }}
         className="c-search-field__overlay-content"
         activateButton={
-          <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={this.props.ndlaFilm}>
+          <ToggleSearchButton
+            hideOnNarrowScreen={hideOnNarrowScreen}
+            ndlaFilm={this.props.ndlaFilm}>
             Søk
           </ToggleSearchButton>
         }>
@@ -195,7 +197,6 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    console.log('render mastheads', this.props.ndlaFilm);
     return (
       <Masthead
         fixed
@@ -205,7 +206,11 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem left>
           <Modal
             size="fullscreen"
-            activateButton={<TopicMenuButton ndlaFilm={this.props.ndlaFilm}>Meny</TopicMenuButton>}
+            activateButton={
+              <TopicMenuButton ndlaFilm={this.props.ndlaFilm}>
+                Meny
+              </TopicMenuButton>
+            }
             animation="subtle"
             animationDuration={150}
             backgroundColor="grey"

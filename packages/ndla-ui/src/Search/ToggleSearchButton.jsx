@@ -14,7 +14,9 @@ import { Search } from '@ndla/icons/common';
 import Button from '@ndla/button';
 
 const style = (hideOnNarrowScreen, ndlaFilm) => css`
-  background: ${ndlaFilm ? colors.ndlaFilm.filmColorBright : colors.brand.greyLighter};
+  background: ${ndlaFilm
+    ? colors.ndlaFilm.filmColorBright
+    : colors.brand.greyLighter};
   border-radius: ${misc.borderRadius};
   border: 0;
   color: ${ndlaFilm ? '#fff' : colors.brand.primary};
@@ -51,7 +53,12 @@ const style = (hideOnNarrowScreen, ndlaFilm) => css`
   }
 `;
 
-const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, ...rest }) => (
+const ToggleSearchButton = ({
+  children,
+  ndlaFilm,
+  hideOnNarrowScreen,
+  ...rest
+}) => (
   <Button type="button" css={style(hideOnNarrowScreen, ndlaFilm)} {...rest}>
     <span css={{ marginRight: spacing.normal }}>{children}</span>
     <Search />

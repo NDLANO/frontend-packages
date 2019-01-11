@@ -10,10 +10,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { spacing, colors, fonts, animations, misc } from '@ndla/core';
-import { FormHeader,
-  FormInput,
-  FormDropdown } from '@ndla/forms';
-  import { Spinner } from '@ndla/editor';
+import { FormHeader, FormInput, FormDropdown } from '@ndla/forms';
+import { Spinner } from '@ndla/editor';
+import Tooltip from '@ndla/tooltip';
 
 import { uuid } from '@ndla/util';
 import Button from '@ndla/button';
@@ -23,26 +22,26 @@ import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 const ThemeGroup = styled.div`
   animation-duration: ${animations.durations.slow};
   @keyframes themeFade1 {
-      0% {
-        transform: translateY(${spacing.small});
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    0% {
+      transform: translateY(${spacing.small});
+      opacity: 0;
     }
-    @keyframes themeFade2 {
-      0% {
-        transform: translateY(${spacing.small});
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
-    animation-name: themeFade1;
+  }
+  @keyframes themeFade2 {
+    0% {
+      transform: translateY(${spacing.small});
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  animation-name: themeFade1;
   &.repaint {
     animation-name: themeFade2;
   }
@@ -154,27 +153,29 @@ const InputLabel = styled.div`
 
 const ThemeNames = ({ themeKey, values, onChange }) => (
   <ThemeNamesWrapper>
-  {values.map(val => (
-    <ThemeName key={val.lang}>
-    <InputLabel>Tittel {val.label}:</InputLabel>
-      <FormInput
-        container="div"
-        type="text"
-        placeholder={`Skriv tittel på ${val.label}`}
-        value={val.name}
-        onChange={e => onChange(e.target.value, themeKey, val.lang)}
-      />
-    </ThemeName>
+    {values.map(val => (
+      <ThemeName key={val.lang}>
+        <InputLabel>Tittel {val.label}:</InputLabel>
+        <FormInput
+          container="div"
+          type="text"
+          placeholder={`Skriv tittel på ${val.label}`}
+          value={val.name}
+          onChange={e => onChange(e.target.value, themeKey, val.lang)}
+        />
+      </ThemeName>
     ))}
-    </ThemeNamesWrapper>
+  </ThemeNamesWrapper>
 );
 
 ThemeNames.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    lang: PropTypes.string,
-    themeKey: PropTypes.string,
-  })).isRequired,
+  values: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      lang: PropTypes.string,
+      themeKey: PropTypes.string,
+    }),
+  ).isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -323,11 +324,18 @@ class NdlaFilmEditor extends Component {
       Object.keys(updateFirebaseData.themes).forEach(themeKey => {
         if (updateFirebaseData.themes[themeKey].order === oldIndex) {
           updateFirebaseData.themes[themeKey].order = swapWith;
-        } else if (updateFirebaseData.themes[themeKey].order === swapWith && FromThemeKey !== themeKey) {
+        } else if (
+          updateFirebaseData.themes[themeKey].order === swapWith &&
+          FromThemeKey !== themeKey
+        ) {
           updateFirebaseData.themes[themeKey].order = oldIndex;
         }
       });
-      return { firebaseData: updateFirebaseData, unsavedChanges: true, themegroupRepaint: !prevState.themegroupRepaint };
+      return {
+        firebaseData: updateFirebaseData,
+        unsavedChanges: true,
+        themegroupRepaint: !prevState.themegroupRepaint,
+      };
     });
   }
 
@@ -353,74 +361,82 @@ class NdlaFilmEditor extends Component {
 
   render() {
     if (!this.props.loaded) {
-      return <Wrapper><Spinner /></Wrapper>;
+      return (
+        <Wrapper>
+          <Spinner />
+        </Wrapper>
+      );
     }
     const {
       firebaseData: { highlighted, themes },
       firebaseData,
     } = this.state;
-    const {
-      allMovies,
-      savingToFirebase,
-    } = this.props;
+    const { allMovies, savingToFirebase } = this.props;
 
     const themeLength = Object.keys(themes).length;
     console.log(this.state.themegroupRepaint ? 'repaint' : '');
     return (
       <Wrapper>
         <section>
-          <FormHeader title="Hovedfilmer" subTitle="på forsiden" width={4 / 4} />
+          <FormHeader
+            title="Hovedfilmer"
+            subTitle="på forsiden"
+            width={4 / 4}
+          />
           <MovieSelectedWrapper>
-          {Object.keys(highlighted)
-            .sort((a, b) => highlighted[a] - highlighted[b])
-            .map(key => {
-              const selectedMovie = allMovies.find(movie =>
-                movie.contexts.some(context => context.id === key),
-              );
-              if (selectedMovie) {
-                return (
-                  <MovieSelected key={key}>
-                    <MovieImage
-                      style={{
-                        backgroundImage: `url(${selectedMovie.metaImage &&
-                          selectedMovie.metaImage.url})`,
-                      }}
-                    />
-                    <MovieTitle
-                      href={selectedMovie.url}
-                      target="_blank"
-                      noopener
-                      noreferrer>
-                      {selectedMovie.title.title}
-                    </MovieTitle>
-                    <ButtonWrappper>
-                      <IconButton
-                        type="button"
-                        onClick={() => this.changeOrder(key, 1)}>
-                        <ChevronUp />
-                      </IconButton>
-                      <IconButton
-                        type="button"
-                        onClick={() => this.changeOrder(key, -1)}>
-                        <ChevronDown />
-                      </IconButton>
-                      <IconButton
-                        type="button"
-                        onClick={() => {
-                          this.deleteMovie(key);
-                        }}>
-                        <Cross />
-                      </IconButton>
-                    </ButtonWrappper>
-                  </MovieSelected>
+            {Object.keys(highlighted)
+              .sort((a, b) => highlighted[a] - highlighted[b])
+              .map(key => {
+                const selectedMovie = allMovies.find(movie =>
+                  movie.contexts.some(context => context.id === key),
                 );
-              }
-            })}
-            </MovieSelectedWrapper>
-          <FormDropdown
-            value=""
-            onChange={e => this.addItem(e.target.value)}
-          >
+                if (selectedMovie) {
+                  return (
+                    <MovieSelected key={key}>
+                      <MovieImage
+                        style={{
+                          backgroundImage: `url(${selectedMovie.metaImage &&
+                            selectedMovie.metaImage.url})`,
+                        }}
+                      />
+                      <MovieTitle
+                        href={selectedMovie.url}
+                        target="_blank"
+                        noopener
+                        noreferrer>
+                        {selectedMovie.title.title}
+                      </MovieTitle>
+                      <ButtonWrappper>
+                        <Tooltip tooltip="Flytt opp">
+                          <IconButton
+                            type="button"
+                            onClick={() => this.changeOrder(key, 1)}>
+                            <ChevronUp />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip tooltip="Flytt ned">
+                          <IconButton
+                            type="button"
+                            onClick={() => this.changeOrder(key, -1)}>
+                            <ChevronDown />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip tooltip="Ta bort film">
+                          <IconButton
+                            type="button"
+                            onClick={() => {
+                              this.deleteMovie(key);
+                            }}>
+                            <Cross />
+                          </IconButton>
+                        </Tooltip>
+                      </ButtonWrappper>
+                    </MovieSelected>
+                  );
+                }
+              })}
+          </MovieSelectedWrapper>
+          <FormDropdown value="" onChange={e => this.addItem(e.target.value)}>
             <option value="">Legg til film i slideshow</option>
             {this.renderAddMovieOptions(highlighted)}
           </FormDropdown>
@@ -429,33 +445,59 @@ class NdlaFilmEditor extends Component {
           {Object.keys(themes)
             .sort((a, b) => themes[a].order - themes[b].order)
             .map((themeKey, index) => (
-              <ThemeGroup key={themeKey} className={this.state.themegroupRepaint ? 'repaint' : ''}>
-                <FormHeader title={`Filmgruppe`} subTitle={`Rekkefølge ${index +1}`} width={4 / 4}>
+              <ThemeGroup
+                key={themeKey}
+                className={this.state.themegroupRepaint ? 'repaint' : ''}>
+                <FormHeader
+                  title={`Filmgruppe`}
+                  subTitle={`Rekkefølge ${index + 1}`}
+                  width={4 / 4}>
                   <HeaderButtons>
-                    <Button outline disabled={index === 0} onClick={() => this.rearrangeMovieGroup(themeKey, index, index - 1)}>Flytt opp</Button>
-                    <Button outline disabled={index === themeLength - 1} onClick={() => this.rearrangeMovieGroup(themeKey, index, index + 1)}>Flytt ned</Button>
-                    <Button onClick={() => this.deleteMovieGroup(themeKey)}>Slett tema</Button>
+                    <Button
+                      outline
+                      disabled={index === 0}
+                      onClick={() =>
+                        this.rearrangeMovieGroup(themeKey, index, index - 1)
+                      }>
+                      Flytt opp
+                    </Button>
+                    <Button
+                      outline
+                      disabled={index === themeLength - 1}
+                      onClick={() =>
+                        this.rearrangeMovieGroup(themeKey, index, index + 1)
+                      }>
+                      Flytt ned
+                    </Button>
+                    <Button onClick={() => this.deleteMovieGroup(themeKey)}>
+                      Slett tema
+                    </Button>
                   </HeaderButtons>
                 </FormHeader>
                 <ThemeNameHeader>
                   <ThemeNames
-                    values={[{
-                      lang: 'nb',
-                      name: themes[themeKey].nb,
-                      label: 'bokmål',
-                    },
-                    {
-                      lang: 'nn',
-                      name: themes[themeKey].nn,
-                      label: 'nynorsk',
-                    },
-                    {
-                      lang: 'en',
-                      name: themes[themeKey].en,
-                      label: 'engelsk',
-                    }]}
+                    values={[
+                      {
+                        lang: 'nb',
+                        name: themes[themeKey].nb,
+                        label: 'bokmål',
+                      },
+                      {
+                        lang: 'nn',
+                        name: themes[themeKey].nn,
+                        label: 'nynorsk',
+                      },
+                      {
+                        lang: 'en',
+                        name: themes[themeKey].en,
+                        label: 'engelsk',
+                      },
+                    ]}
                     themeKey={themeKey}
-                    onChange={(value, key, lang) => { console.log('???'); this.updateTitle(value, key, lang); }}
+                    onChange={(value, key, lang) => {
+                      console.log('???');
+                      this.updateTitle(value, key, lang);
+                    }}
                   />
                 </ThemeNameHeader>
                 <FormDropdown
@@ -465,53 +507,59 @@ class NdlaFilmEditor extends Component {
                   {this.renderAddMovieOptions(themes[themeKey].movies)}
                 </FormDropdown>
                 <MovieSelectedWrapper>
-                {Object.keys(themes[themeKey].movies)
-                  .sort(
-                    (a, b) =>
-                      themes[themeKey].movies[a] - themes[themeKey].movies[b],
-                  )
-                  .map(key => {
-                    const selectedMovie = allMovies.find(movie =>
-                      movie.contexts.some(context => context.id === key),
-                    );
-                    if (selectedMovie) {
-                      return (
-                        <MovieSelected key={key}>
-                          <MovieImage
-                            style={{
-                              backgroundImage: `url(${selectedMovie.metaImage &&
-                                selectedMovie.metaImage.url})`,
-                            }}
-                          />
-                          <MovieTitle>{selectedMovie.title.title}</MovieTitle>
-                          <ButtonWrappper>
-                            <IconButton
-                              type="button"
-                              onClick={() =>
-                                this.changeOrder(key, 1, themeKey)
-                              }>
-                              <ChevronUp />
-                            </IconButton>
-                            <IconButton
-                              type="button"
-                              onClick={() =>
-                                this.changeOrder(key, -1, themeKey)
-                              }>
-                              <ChevronDown />
-                            </IconButton>
-                            <IconButton
-                              type="button"
-                              onClick={() => {
-                                this.deleteMovie(key, themeKey);
-                              }}>
-                              <Cross />
-                            </IconButton>
-                          </ButtonWrappper>
-                        </MovieSelected>
+                  {Object.keys(themes[themeKey].movies)
+                    .sort(
+                      (a, b) =>
+                        themes[themeKey].movies[a] - themes[themeKey].movies[b],
+                    )
+                    .map(key => {
+                      const selectedMovie = allMovies.find(movie =>
+                        movie.contexts.some(context => context.id === key),
                       );
-                    }
-                  })}
-                  </MovieSelectedWrapper>
+                      if (selectedMovie) {
+                        return (
+                          <MovieSelected key={key}>
+                            <MovieImage
+                              style={{
+                                backgroundImage: `url(${selectedMovie.metaImage &&
+                                  selectedMovie.metaImage.url})`,
+                              }}
+                            />
+                            <MovieTitle>{selectedMovie.title.title}</MovieTitle>
+                            <ButtonWrappper>
+                              <Tooltip tooltip="Flytt opp">
+                                <IconButton
+                                  type="button"
+                                  onClick={() =>
+                                    this.changeOrder(key, 1, themeKey)
+                                  }>
+                                  <ChevronUp />
+                                </IconButton>
+                              </Tooltip>
+                              <Tooltip tooltip="Flytt ned">
+                                <IconButton
+                                  type="button"
+                                  onClick={() =>
+                                    this.changeOrder(key, -1, themeKey)
+                                  }>
+                                  <ChevronDown />
+                                </IconButton>
+                              </Tooltip>
+                              <Tooltip tooltip="Ta bort film">
+                                <IconButton
+                                  type="button"
+                                  onClick={() => {
+                                    this.deleteMovie(key, themeKey);
+                                  }}>
+                                  <Cross />
+                                </IconButton>
+                              </Tooltip>
+                            </ButtonWrappper>
+                          </MovieSelected>
+                        );
+                      }
+                    })}
+                </MovieSelectedWrapper>
               </ThemeGroup>
             ))}
         </section>

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/polyfill",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "NDLA polyfills for various browser",
   "license": "GPL-3.0",
   "main": "lib/index.js",

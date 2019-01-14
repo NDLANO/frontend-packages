@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import * as licenseIcons from '@ndla/icons/licenses';
 import * as contentTypeIcons from '@ndla/icons/contentType';
 import * as commonIcons from '@ndla/icons/common';
@@ -18,15 +17,14 @@ import {
   AudioPlayer,
   OneColumn,
 } from '@ndla/ui';
-import Button from '@ndla/button';
 
 import { StoryIntro, IconList, StoryBody } from './wrappers';
-import { InlineContainer } from './helpers';
 import FigureWithLicense from './article/FigureWithLicense';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
-import TooltipExample from './molecules/TooltipExample';
+import TooltipExample from './atoms/TooltipExample';
+import ButtonExample from './atoms/ButtonExample';
 
 const floatVideo = left => (
   <Fragment>
@@ -824,55 +822,7 @@ storiesOf('Enkle komponenter', module)
       </OneColumn>
     </div>
   ))
-  .add('Knapper', () => (
-    <div>
-      <StoryIntro title="Knapper">
-        <p>
-          Knapper er til å klikke på for å navigere på samme side, ikke for å
-          lenke til en annen. De skal altså brukes til interaktivitet på samme
-          side. For å sende brukeren til en annen side brukes vanlig lenke.
-        </p>
-        <p>
-          Knapp med ramme brukes for de fleste knapper, men er det behov for
-          ekstra oppmerksomhet, kan fylt knapp benyttes.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2 className="u-heading">Eksempel</h2>
-        <InlineContainer>
-          <Button outline onClick={action('clicked')}>
-            Knapp med ramme
-          </Button>{' '}
-          <Button outline disabled onClick={action('clicked')}>
-            Deaktivert knapp med ramme
-          </Button>
-        </InlineContainer>
-        <InlineContainer>
-          <Button onClick={action('clicked')}>Fylt knapp</Button>{' '}
-          <Button disabled onClick={action('clicked')}>
-            Knapp deaktivert
-          </Button>
-        </InlineContainer>
-        {process.env.NODE_ENV === 'development' && [
-          <h2 key="heading" className="u-heading">
-            Alternativer når UU krever en knapp
-          </h2>,
-          <InlineContainer key="buttons">
-            <Button link onClick={action('clicked')}>
-              Knapp stylet som link
-            </Button>{' '}
-            <p>
-              Ser{' '}
-              <Button stripped onClick={action('clicked')}>
-                dette
-              </Button>{' '}
-              ut som en knapp
-            </p>
-          </InlineContainer>,
-        ]}
-      </StoryBody>
-    </div>
-  ))
+  .add('Knapper', () => <ButtonExample />)
   .add('Logo', () => (
     <div>
       <StoryIntro title="Logo">

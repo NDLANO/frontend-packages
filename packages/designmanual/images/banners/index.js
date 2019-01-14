@@ -35,6 +35,7 @@ import Reiseliv from './Reiseliv.svg';
 import Naturfag from './Naturfag.svg';
 import KokkOgServitor from './Kokk-og-servitor.svg';
 import RestaurantOgMatfag from './Restaurant-og-matfag.svg';
+import DesignOgHandverk.svg from './Design-og-Handverk.svg.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
@@ -178,4 +179,9 @@ export default [
     mobile: RestaurantOgMatfag,
     name: 'Restaurant- og matfag Vg1',
   },
+  {
+    desktop: DesignOgHandverk,
+    mobile: DesignOgHandverk,
+    name: 'Design og Håndverk Vg1',
+  }
 ];

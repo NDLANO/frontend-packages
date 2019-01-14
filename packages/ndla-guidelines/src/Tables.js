@@ -69,7 +69,9 @@ TableExample.defaultProps = {
 
 
 export const Tables = () => (
-  <Fragment><div>
+  <section>
+    <h1>Tabeller</h1>
+    <div>
     <p>Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.
 </p><p>
 Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens stilsett, men gjøres i redaktørgrensesnittet.</p>
@@ -395,5 +397,5 @@ Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens stilsett, 
             </tr>
           </tbody>
         </TableExample>
-  </Fragment>
+  </section>
 );

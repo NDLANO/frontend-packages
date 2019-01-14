@@ -21,3 +21,4 @@ export { ImagesChoice } from './ImagesChoice';
 export { ImagesTechnical } from './ImagesTechnical';
 export { ImagesPlacement } from './ImagesPlacement';
 export { ImagesLicenses } from './ImagesLicenses';
+export { Chapters } from './Chapters';

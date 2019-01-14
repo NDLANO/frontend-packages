@@ -9,7 +9,8 @@
 import React from 'react';
 
 export const ImagesChoice = () => (
-  <div>
+  <section>
+    <h1>Valg av bilde</h1>
     <p>
         <b>Etos: </b>Bildet må være troverdig, ryddig, lettlest og gjenkjennelig.
     </p>
@@ -29,5 +30,5 @@ export const ImagesChoice = () => (
     <p>Bilder bør ikke brukes til å formidle tekst da skjermlesere ikke kan lese bildene.</p>
     <h2>Vær forsiktig med å vise merkevarer</h2>
     <p>Når du velger bilder, bør du være oppmerksom på om enkelte produkter eller merkevarer får en oppmerksomhet som ikke er relevant i sammenhengen. Vi skal ikke ensidig vise enkeltprodukter eller bidra i markedsføring.</p>
-  </div>
+  </section>
 );

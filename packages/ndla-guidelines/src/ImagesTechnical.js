@@ -9,7 +9,8 @@
 import React from 'react';
 
 export const ImagesTechnical = () => (
-  <div>
+  <section>
+    <h1>Teknisk kvalitet</h1>
     <p>Hvilken teknisk kvalitet et bilde må ha, avhenger av hva bildet skal brukes til. Uavhengig av bruk – bildet må være skarpt!</p>
-  </div>
+  </section>
 );

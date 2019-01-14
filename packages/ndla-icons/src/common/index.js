@@ -27,6 +27,7 @@ export { default as FileDownloadOutline } from './FileDownloadOutline';
 export { default as Forward } from './Forward';
 export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';
+export { default as HamburgerMenu } from './HamburgerMenu';
 export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';

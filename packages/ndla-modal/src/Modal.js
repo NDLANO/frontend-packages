@@ -201,6 +201,10 @@ const ModalWrapper = styled.div`
         min-width: ${em('613px')};
       }
     }
+    &.guide-lines {
+      width: calc(100vw - ${spacing.large} * 2);
+      height: calc(100vh - ${spacing.large} * 2);
+    }
     &.medium,
     &.large {
       .modal-body,
@@ -418,6 +422,7 @@ const Portal = ({
   uuidData,
   narrow,
   onScroll,
+  renderAsGuidelines,
 }) => {
   const content = (
     <FocusTrapReact>
@@ -432,8 +437,8 @@ const Portal = ({
           className={cx('animation-container', {
             [animation]: true,
             animateIn,
-            [size]: true,
-            [backgroundColor]: true,
+            [renderAsGuidelines ? 'guide-lines' : size]: true,
+            [renderAsGuidelines ? 'white' : backgroundColor]: true,
           })}>
           {children(closeModal)}
         </div>
@@ -453,6 +458,7 @@ const Portal = ({
       </ModalWrapper>
     </FocusTrapReact>
   );
+  console.log('renderAsGuidelines', renderAsGuidelines);
   return createUniversalPortal(content, 'body');
 };
 
@@ -580,6 +586,7 @@ class Modal extends React.Component {
       narrow,
       controllable,
       isOpen: propsIsOpen,
+      renderAsGuidelines,
       ...rest
     } = this.props;
 
@@ -635,7 +642,8 @@ class Modal extends React.Component {
               onScroll={this.onScroll}
               className={className}
               uuidData={this.uuid}
-              narrow={narrow}>
+              narrow={narrow}
+              renderAsGuidelines={renderAsGuidelines}>
               {children}
             </Portal>
           )}
@@ -659,6 +667,7 @@ Modal.propTypes = {
     'fullscreen',
     'full-width',
     'custom',
+    'guide-lines',
   ]),
   backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue']),
   animationDuration: PropTypes.number,
@@ -684,6 +693,7 @@ Modal.propTypes = {
   controllable: PropTypes.bool,
   minHeight: PropTypes.string,
   isOpen: PropTypes.bool,
+  renderAsGuidelines: PropTypes.bool,
 };
 
 Modal.defaultProps = {

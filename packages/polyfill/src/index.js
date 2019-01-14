@@ -16,9 +16,15 @@ import 'core-js/fn/array/find-index';
 import 'core-js/fn/array/fill';
 import 'core-js/fn/array/includes';
 import 'core-js/fn/string/starts-with';
+import 'core-js/fn/string/ends-with';
 import 'core-js/fn/string/includes';
 import 'core-js/fn/number/is-integer';
 import 'core-js/fn/number/is-nan';
 
 // polyfill for <details></details> and <summary></summary> html elements used in articles.
 import 'details-polyfill';
+
+// Check for ie and add .ie class to <html> tag
+if (/Trident\/|MSIE /.test(window.navigator.userAgent)) {
+  document.documentElement.classList.add('ie');
+}

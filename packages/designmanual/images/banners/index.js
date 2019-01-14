@@ -183,5 +183,5 @@ export default [
     desktop: DesignOgHandverk,
     mobile: DesignOgHandverk,
     name: 'Design og Håndverk Vg1',
-  }
+  },
 ];

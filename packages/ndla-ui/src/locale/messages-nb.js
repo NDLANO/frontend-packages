@@ -101,7 +101,7 @@ const messages = {
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
       coreRelevance: 'Kjernestoff',
-      supplementaryRelevance: 'tilleggsstoff',
+      supplementaryRelevance: 'Tilleggsstoff',
     },
   },
   subjectPage: {

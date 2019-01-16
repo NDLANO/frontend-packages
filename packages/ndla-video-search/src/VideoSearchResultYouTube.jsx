@@ -35,7 +35,7 @@ export default function VideoSearchResultYouTube({
       : '';
 
   return (
-    <div key={videoData.videoid} {...classes('list-item', active)}>
+    <div {...classes('list-item', active)}>
       <div {...classes('list-item-inner')}>
         <img
           role="presentation"

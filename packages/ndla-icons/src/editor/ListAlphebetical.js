@@ -10,9 +10,9 @@
 import React from 'react';
 import Icon from '../Icon';
 
-const ListAlphabetical = props => (
+const ListAlphebetical = props => (
   <Icon
-    title="ListAlphabetical"
+    title="ListAlphebetical"
     viewBox="0 0 38.4 32.3"
     data-license="CC-BY 4.0"
     data-source="Knowit"
@@ -39,4 +39,4 @@ const ListAlphabetical = props => (
   </Icon>
 );
 
-export default ListAlphabetical;
+export default ListAlphebetical;

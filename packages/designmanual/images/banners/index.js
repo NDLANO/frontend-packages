@@ -29,7 +29,7 @@ import SamfunnsfagligMatte from './Samfunnsfaglig-matte.svg';
 import YrkesfagligMatte from './Yrkesfaglig-matte.svg';
 import EngelskLitteratur2 from './Engelsk-litteratur-2.svg';
 import Tip from './Tip.svg';
-import KommunikasjonOgKultur from './Kommunikasjon-og-Kultur.svg';
+import KommunikasjonOgKultur from './Kommunikasjon-og-Kultur-new.svg';
 import TransportOgLogistikk from './Transport-og-logistikk.svg';
 import Reiseliv from './Reiseliv.svg';
 import Naturfag from './Naturfag.svg';

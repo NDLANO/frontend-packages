@@ -2,6 +2,7 @@ import Broennteknikk from './Broennteknikk.svg';
 import ByggOgAnleggsteknikk from './Bygg-og-anleggsteknikk.svg';
 import Elektro from './Elektro.svg';
 import Engelsk from './Engelsk.svg';
+import EngelskVg1 from './Engelsk-vg1.svg';
 import Helsearbeiderfag from './Helsearbeiderfag.svg';
 import HelseOgOppvekst from './Helse-og-oppvekst.svg';
 import Historie from './Historie.svg';
@@ -46,6 +47,11 @@ export default [
   },
   { desktop: Elektro, mobile: Elektro, name: 'Elektro' },
   { desktop: Engelsk, mobile: Engelsk, name: 'Engelsk' },
+  {
+    desktop: EngelskVg1,
+    mobile: EngelskVg1,
+    name: 'Engelsk Vg1',
+  },
   {
     desktop: Helsearbeiderfag,
     mobile: Helsearbeiderfag,

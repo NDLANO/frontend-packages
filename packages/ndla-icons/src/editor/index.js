@@ -46,6 +46,7 @@ export { default as ListCircle } from './ListCircle';
 export { default as ListNumbered } from './ListNumbered';
 export { default as ListSquare } from './ListSquare';
 export { default as ListTwoColumns } from './ListTwoColumns';
+export { default as Math } from './Math';
 export { default as Media } from './Media';
 export { default as Paragraph } from './Paragraph';
 export { default as PlayBoxOutline } from './PlayBoxOutline';

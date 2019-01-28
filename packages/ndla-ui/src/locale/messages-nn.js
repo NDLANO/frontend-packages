@@ -282,9 +282,9 @@ const messages = {
     urlAuthorLabel: 'Les meir om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
     multipleAuthorsLabel: 'Rettshavarar:',
-    multipleAuthorsLabelAria: 'rettshavarar av artikkelen er {names}',
+    multipleAuthorsLabelAria: 'Rettshavarar av artikkelen er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'rettshavar av artikkelen er {name}',
+    singleAuthorsLabelAria: 'Rettshavar av artikkelen er {name}',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

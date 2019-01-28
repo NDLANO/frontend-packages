@@ -17,6 +17,7 @@ const renderFormat = (format, title, isPrimary, id) => {
       {...classes('link')}
       key={format.url}
       to={format.url}
+      target="_blank"
       aria-label={titleWithFormat}
       aria-describedby={formatId}>
       <Download />

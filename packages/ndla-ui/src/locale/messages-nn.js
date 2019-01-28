@@ -281,10 +281,10 @@ const messages = {
     urlContributionsLabel: 'Sjå kva {name} har bidratt med',
     urlAuthorLabel: 'Les meir om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
-    multipleAuthorsLabel: 'Opphavere av artikkel:',
-    multipleAuthorsLabelAria: 'Opphavere av artikkelen er {names}',
+    multipleAuthorsLabel: 'Rettshavarar:',
+    multipleAuthorsLabelAria: 'Rettshavarar av artikkelen er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
+    singleAuthorsLabelAria: 'Rettshavar av artikkelen er {name}',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

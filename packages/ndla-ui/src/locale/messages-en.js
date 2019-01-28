@@ -282,10 +282,10 @@ const messages = {
     urlContributionsLabel: 'See {name}`s contributions',
     urlAuthorLabel: 'Read more about {name}',
     multipleAuthorsLabelAbbreviation: 'et al.',
-    multipleAuthorsLabel: 'Article authors:',
-    multipleAuthorsLabelAria: 'Authors of this article are {names}',
+    multipleAuthorsLabel: 'Licensees:',
+    multipleAuthorsLabelAria: 'Licensees of this article are {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'The author of this article is {name}',
+    singleAuthorsLabelAria: 'The Licensee of this article is {name}',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',

@@ -195,5 +195,5 @@ export default [
     desktop: Norsk,
     mobile: Norsk,
     name: 'Norsk',
-  }
+  },
 ];

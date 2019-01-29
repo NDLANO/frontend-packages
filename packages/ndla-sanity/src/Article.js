@@ -4,12 +4,12 @@ import FetchArticle from './FetchArticle';
 import SearchBlock from './SearchBlock';
 import { serializers, getArticleQuery } from './helpers';
 import {
-    Wrapper,
-    PushGrid,
-    Heading,
-    Lead,
-    ImageWrapper,
-    RichTextBlock,
+  Wrapper,
+  PushGrid,
+  Heading,
+  Lead,
+  ImageWrapper,
+  RichTextBlock,
 } from './Styles';
 
 const BlockContent = require('@sanity/block-content-to-react');
@@ -20,10 +20,10 @@ class SanityArticle extends Component {
     this.state = {};
   }
 
-  static getDerivedStateFromProps(nextProps, prevState){
+  static getDerivedStateFromProps(nextProps, prevState) {
     const oldPageId = prevState.pageId;
     const newPageId = nextProps.pageId;
-    if(newPageId !== oldPageId) {
+    if (newPageId !== oldPageId) {
       return {
         pageId: newPageId,
       };
@@ -42,20 +42,20 @@ class SanityArticle extends Component {
   }
 
   loadArticle() {
-      const query = getArticleQuery(this.state.pageId);
-      this.props.sanityClient.fetch(query).then(story => {
-        console.log('plain query', story);
-        if (!story) {
-          this.setState({
-            notFound: true,
-          });
-        } else {
-          this.setState({
-            story,
-            notFound: false,
-          });
-        }
-      });
+    const query = getArticleQuery(this.state.pageId);
+    this.props.sanityClient.fetch(query).then(story => {
+      console.log('plain query', story);
+      if (!story) {
+        this.setState({
+          notFound: true,
+        });
+      } else {
+        this.setState({
+          story,
+          notFound: false,
+        });
+      }
+    });
   }
 
   render() {
@@ -82,34 +82,35 @@ class SanityArticle extends Component {
       <Wrapper>
         <div>
           <Heading>{story.title}</Heading>
-            {story.imageUrl && (
-              <ImageWrapper>
-                <img alt="Bilde eksempel" src={story.imageUrl} />
-              </ImageWrapper>
-            )}
-          <Lead>
-            {story.lead}
-          </Lead>
+          {story.imageUrl && (
+            <ImageWrapper>
+              <img alt="Bilde eksempel" src={story.imageUrl} />
+            </ImageWrapper>
+          )}
+          <Lead>{story.lead}</Lead>
         </div>
-        {story.reactComponent ?
+        {story.reactComponent ? (
           <FetchArticle
             useComponent={story.reactComponent.name}
             sanityClient={sanityClient}
             sanityConfig={sanityConfig}
-            sanityContent={story.content && (
-              <PushGrid>
-                <RichTextBlock>
-                  <BlockContent
-                    projectId={sanityConfig.projectId}
-                    dataset={sanityConfig.dataset}
-                    blocks={story.content}
-                    serializers={serializers}
-                  />
-                </RichTextBlock>
-                {Search}
-              </PushGrid>
-            )}
-          /> : 
+            sanityContent={
+              story.content && (
+                <PushGrid>
+                  <RichTextBlock>
+                    <BlockContent
+                      projectId={sanityConfig.projectId}
+                      dataset={sanityConfig.dataset}
+                      blocks={story.content}
+                      serializers={serializers}
+                    />
+                  </RichTextBlock>
+                  {Search}
+                </PushGrid>
+              )
+            }
+          />
+        ) : (
           <PushGrid>
             <RichTextBlock>
               <BlockContent
@@ -121,11 +122,11 @@ class SanityArticle extends Component {
             </RichTextBlock>
             {Search}
           </PushGrid>
-        }
+        )}
       </Wrapper>
     );
   }
-};
+}
 
 SanityArticle.propTypes = {
   pageId: PropTypes.string.isRequired,

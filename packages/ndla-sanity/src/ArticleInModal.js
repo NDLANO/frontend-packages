@@ -6,13 +6,13 @@ import { InformationOutline } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { Spinner } from '@ndla/editor';
 import {
-    Wrapper,
-    InModalHeader,
-    Heading,
-    Lead,
-    ImageWrapper,
-    IconButton,
-    PushGrid,
+  Wrapper,
+  InModalHeader,
+  Heading,
+  Lead,
+  ImageWrapper,
+  IconButton,
+  PushGrid,
 } from './Styles';
 import FetchArticle from './FetchArticle';
 import SearchBlock from './SearchBlock';
@@ -20,8 +20,14 @@ import { serializers, getArticleQuery } from './helpers';
 
 const BlockContent = require('@sanity/block-content-to-react');
 
-const ModalContent = ({ story, sanityConfig, sanityClient, pageId, onClose, notFound }) => {
-
+const ModalContent = ({
+  story,
+  sanityConfig,
+  sanityClient,
+  pageId,
+  onClose,
+  notFound,
+}) => {
   if (notFound) {
     return (
       <Wrapper>
@@ -35,7 +41,7 @@ const ModalContent = ({ story, sanityConfig, sanityClient, pageId, onClose, notF
           </InModalHeader>
         </div>
       </Wrapper>
-    )
+    );
   }
   if (!story) {
     return (
@@ -43,7 +49,7 @@ const ModalContent = ({ story, sanityConfig, sanityClient, pageId, onClose, notF
         <div>
           <InModalHeader>
             <InformationOutline />
-            <Heading></Heading>
+            <Heading />
             <IconButton type="button" onClick={onClose}>
               <Cross />
             </IconButton>
@@ -63,12 +69,12 @@ const ModalContent = ({ story, sanityConfig, sanityClient, pageId, onClose, notF
       currentPageId={pageId}
     />
   );
-     
+
   return (
     <Wrapper>
       <div>
         <InModalHeader>
-          <InformationOutline style={{ position: 'absolute'}} />
+          <InformationOutline style={{ position: 'absolute' }} />
           <Heading inModal>{story.title}</Heading>
           <IconButton type="button" onClick={onClose}>
             <Cross />
@@ -79,27 +85,28 @@ const ModalContent = ({ story, sanityConfig, sanityClient, pageId, onClose, notF
             <img alt="Bilde eksempel" src={story.imageUrl} />
           </ImageWrapper>
         )}
-        <Lead>
-          {story.lead}
-        </Lead>
+        <Lead>{story.lead}</Lead>
       </div>
-      {story.reactComponent ?
+      {story.reactComponent ? (
         <FetchArticle
           useComponent={story.reactComponent.name}
           sanityClient={sanityClient}
           sanityConfig={sanityConfig}
-          sanityContent={story.content && (
-            <PushGrid>
-              <BlockContent
-                projectId={sanityConfig.projectId}
-                dataset={sanityConfig.dataset}
-                blocks={story.content}
-                serializers={serializers}
-              />
-              {Search}
-            </PushGrid>
-          )}
-        /> : 
+          sanityContent={
+            story.content && (
+              <PushGrid>
+                <BlockContent
+                  projectId={sanityConfig.projectId}
+                  dataset={sanityConfig.dataset}
+                  blocks={story.content}
+                  serializers={serializers}
+                />
+                {Search}
+              </PushGrid>
+            )
+          }
+        />
+      ) : (
         <PushGrid>
           <BlockContent
             projectId={sanityConfig.projectId}
@@ -109,10 +116,10 @@ const ModalContent = ({ story, sanityConfig, sanityClient, pageId, onClose, notF
           />
           {Search}
         </PushGrid>
-      }
-      </Wrapper>
-    );
-}
+      )}
+    </Wrapper>
+  );
+};
 
 class ArticleInModal extends Component {
   constructor(props) {
@@ -122,24 +129,24 @@ class ArticleInModal extends Component {
   }
 
   loadArticle() {
-      if (!this.state.loading && !this.state.story) {
-        this.setState({
-            loading: true,
-        });
-        const query = getArticleQuery(this.props.pageId);
-        this.props.sanityClient.fetch(query).then(story => {
-          if (!story) {
-            this.setState({
-              notFound: true,
-            });
-          } else {
-            this.setState({
-              story,
-              notFound: false,
-            });
-          }
-        });
-      }
+    if (!this.state.loading && !this.state.story) {
+      this.setState({
+        loading: true,
+      });
+      const query = getArticleQuery(this.props.pageId);
+      this.props.sanityClient.fetch(query).then(story => {
+        if (!story) {
+          this.setState({
+            notFound: true,
+          });
+        } else {
+          this.setState({
+            story,
+            notFound: false,
+          });
+        }
+      });
+    }
   }
 
   render() {
@@ -147,22 +154,32 @@ class ArticleInModal extends Component {
     const { sanityClient, sanityConfig, pageId } = this.props;
 
     return (
-        <Modal
-            size="medium"
-            backgroundColor="white"
-            wrapperFunctionForButton={this.props.tooltip &&
+      <Modal
+        size="medium"
+        backgroundColor="white"
+        wrapperFunctionForButton={
+          this.props.tooltip && (
             <Tooltip tooltip={this.props.tooltip}>
-                {this.props.activateButton}
+              {this.props.activateButton}
             </Tooltip>
-            }
-            activateButton={!this.props.tooltip && this.props.activateButton}
-            onOpen={this.loadArticle}
-        >
-        {onClose => ModalContent({ pageId, story, notFound, sanityClient, sanityConfig, onClose })}
+          )
+        }
+        activateButton={!this.props.tooltip && this.props.activateButton}
+        onOpen={this.loadArticle}>
+        {onClose =>
+          ModalContent({
+            pageId,
+            story,
+            notFound,
+            sanityClient,
+            sanityConfig,
+            onClose,
+          })
+        }
       </Modal>
     );
   }
-};
+}
 
 ArticleInModal.propTypes = {
   pageId: PropTypes.string.isRequired,

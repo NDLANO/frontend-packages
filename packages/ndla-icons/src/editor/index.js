@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -16,6 +16,7 @@ export { default as Bold } from './Bold';
 export { default as Calendar } from './Calendar';
 export { default as Camera } from './Camera';
 export { default as Check } from './Check';
+export { default as Code } from './Code';
 export { default as Concept } from './Concept';
 export { default as Crop } from './Crop';
 export { default as DeleteForever } from './DeleteForever';

@@ -6,4 +6,5 @@ export default {
   normal: `${spacingUnit}px`,
   medium: `${spacingUnit * 1.25}px`,
   large: `${spacingUnit * 2}px`,
+  spacingUnit,
 };

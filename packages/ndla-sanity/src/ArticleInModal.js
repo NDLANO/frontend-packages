@@ -152,7 +152,7 @@ class ArticleInModal extends Component {
 
   render() {
     const { story, notFound } = this.state;
-    const { sanityClient, sanityConfig, pageId } = this.props;
+    const { sanityClient, sanityConfig, pageId, inBeta } = this.props;
 
     return (
       <Modal
@@ -175,6 +175,7 @@ class ArticleInModal extends Component {
             sanityClient,
             sanityConfig,
             onClose,
+            inBeta,
           })
         }
       </Modal>

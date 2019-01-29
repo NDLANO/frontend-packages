@@ -1,0 +1,37 @@
+{
+  "name": "@ndla/sanity",
+  "version": "0.0.1",
+  "description": "Components for Sanity queries",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-sanity/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ivar.borthen@keyteq.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "@ndla/core": "^0.4.5",
+    "@ndla/editor": "^0.3.11",
+    "@ndla/tabs": "^0.9.6",
+    "@ndla/tooltip": "^0.1.2",
+    "@sanity/block-content-to-react": "^2.0.6"
+  },
+  "peerDependencies": {
+    "emotion": "^9.2.10",
+    "react": "^16.7.0",
+    "react-emotion": "^9.2.10",
+    "react-prop-types": "0.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

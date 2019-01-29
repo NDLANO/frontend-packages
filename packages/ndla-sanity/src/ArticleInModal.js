@@ -21,6 +21,7 @@ import { serializers, getArticleQuery } from './helpers';
 const BlockContent = require('@sanity/block-content-to-react');
 
 const ModalContent = ({
+  inBeta,
   story,
   sanityConfig,
   sanityClient,
@@ -60,7 +61,7 @@ const ModalContent = ({
     );
   }
   // Search block
-  const Search = story.searchBlock && (
+  const Search = !inBeta && story.searchBlock && (
     <SearchBlock
       searchFor={story.searchBlock}
       search={story.searchBlock}
@@ -187,6 +188,7 @@ ArticleInModal.propTypes = {
   tooltip: PropTypes.string,
   sanityClient: PropTypes.shape({}).isRequired,
   sanityConfig: PropTypes.shape({}).isRequired,
+  inBeta: PropTypes.bool,
 };
 
 export default ArticleInModal;

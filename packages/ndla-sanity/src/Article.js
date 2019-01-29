@@ -60,7 +60,7 @@ class SanityArticle extends Component {
 
   render() {
     const { story, notFound } = this.state;
-    const { sanityClient, sanityConfig } = this.props;
+    const { sanityClient, sanityConfig, inBeta } = this.props;
     if (notFound) {
       return <div>Not Found...</div>;
     }
@@ -69,7 +69,7 @@ class SanityArticle extends Component {
     }
 
     // Search block
-    const Search = story.searchBlock && (
+    const Search = !inBeta && story.searchBlock && (
       <SearchBlock
         searchFor={story.searchBlock}
         search={story.searchBlock}
@@ -89,7 +89,7 @@ class SanityArticle extends Component {
           )}
           <Lead>{story.lead}</Lead>
         </div>
-        {story.reactComponent ? (
+        {!inBeta && story.reactComponent ? (
           <FetchArticle
             useComponent={story.reactComponent.name}
             sanityClient={sanityClient}
@@ -132,6 +132,7 @@ SanityArticle.propTypes = {
   pageId: PropTypes.string.isRequired,
   sanityClient: PropTypes.shape({}).isRequired,
   sanityConfig: PropTypes.shape({}).isRequired,
+  inBeta: PropTypes.bool,
 };
 
 export default SanityArticle;

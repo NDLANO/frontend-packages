@@ -135,4 +135,8 @@ SanityArticle.propTypes = {
   inBeta: PropTypes.bool,
 };
 
+SanityArticle.defaultProps = {
+  inBeta: true,
+};
+
 export default SanityArticle;

@@ -86,6 +86,8 @@ class VideoSearch extends React.Component {
         queryObject,
         selectedType: type,
         selectedVideo: undefined,
+        videos: [],
+        searching: true,
       },
       this.searchVideos(queryObject, type),
     );
@@ -133,21 +135,22 @@ class VideoSearch extends React.Component {
 
   searchVideos(queryObject, selectedType = this.state.selectedType) {
     const { searchVideos, onError } = this.props;
-    this.setState({ searching: true, videos: [] });
     searchVideos(queryObject, selectedType)
       .then(result => {
-        this.setState(prevState => ({
-          queryObject: {
-            ...prevState.queryObject,
-            query: queryObject.query,
-            page: queryObject.page,
-            start: queryObject.start,
-            offset: 0,
-          },
-          videos: selectedType === 'youtube' ? result.items : result,
-          searching: false,
-          lastPage: getLastPage(result, selectedType),
-        }));
+        if (selectedType === this.state.selectedType) {
+          this.setState(prevState => ({
+            queryObject: {
+              ...prevState.queryObject,
+              query: queryObject.query,
+              page: queryObject.page,
+              start: queryObject.start,
+              offset: 0,
+            },
+            videos: selectedType === 'youtube' ? result.items : result,
+            searching: false,
+            lastPage: getLastPage(result, selectedType),
+          }));
+        }
       })
       .catch(err => {
         onError(err);
@@ -194,16 +197,18 @@ class VideoSearch extends React.Component {
       title: source,
       content: (
         <div {...classes('list')}>
-          <VideoSearchList
-            translations={translations}
-            selectedType={source.toLowerCase()}
-            selectedVideo={selectedVideo}
-            videos={videos}
-            locale={locale}
-            onVideoPreview={this.onVideoPreview}
-            searching={searching}
-            onSelectVideo={this.onSelectVideo}
-          />
+          {selectedType === source.toLowerCase() && (
+            <VideoSearchList
+              translations={translations}
+              selectedType={source.toLowerCase()}
+              selectedVideo={selectedVideo}
+              videos={videos}
+              locale={locale}
+              onVideoPreview={this.onVideoPreview}
+              searching={searching}
+              onSelectVideo={this.onSelectVideo}
+            />
+          )}
         </div>
       ),
     }));

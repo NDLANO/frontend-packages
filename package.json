@@ -88,7 +88,4 @@
     "style-loader": "^0.23.1",
     "warning": "3.0.0"
   },
-  "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0"
-  }
 }

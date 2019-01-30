@@ -143,7 +143,8 @@ class Figure extends Component {
         {noFigcaption ? (
           <button
             {...classes('fullscreen-btn', expanded ? 'expanded' : '')}
-            ariaLabel={ariaLabel}
+            type="button"
+            aria-label={ariaLabel}
             onClick={() =>
               this.setState(prevState => ({
                 expanded: !prevState.expanded,

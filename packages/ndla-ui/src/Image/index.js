@@ -7,5 +7,6 @@
  */
 
 import Image from './Image';
+export { makeSrcQueryString } from './Image';
 
 export default Image;

@@ -61,6 +61,7 @@ class AudioExample extends Component {
           authors={authors}
           origin="https://www.wikimedia.com"
           title={caption}
+          locale="nb"
           messages={messages}>
           <Button outline>Kopier referanse</Button>
           <Button outline>Last ned lydklipp</Button>

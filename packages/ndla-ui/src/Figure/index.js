@@ -6,10 +6,5 @@
  *
  */
 
-import Figure from './Figure';
-
 export { Figure, FigureCaption } from './Figure';
 export { FigureLicenseDialog } from './FigureLicenseDialog';
-export { FigureFullscreenDialog } from './FigureFullscreenDialog';
-
-export default Figure;

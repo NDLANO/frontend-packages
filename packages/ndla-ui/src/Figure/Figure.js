@@ -9,7 +9,7 @@
 // N.B These component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ZoomOutMap, Link as LinkIcon } from '@ndla/icons/common';
@@ -31,8 +31,9 @@ export const FigureCaption = ({
   licenseRights,
   locale,
   link,
+  hideFigcaption,
 }) => (
-  <figcaption {...classes('caption')}>
+  <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
@@ -89,42 +90,56 @@ FigureCaption.propTypes = {
     external: PropTypes.bool,
   }),
   locale: PropTypes.string,
+  hideFigcaption: PropTypes.bool,
 };
 
 FigureCaption.defaultProps = {
   link: null,
 };
 
-export const Figure = ({
-  children,
-  type,
-  resizeIframe,
-  noFigcaption,
-  ...rest
-}) => {
-  const typeClass = `u-float-${type}`;
-
-  const modifiers = [];
-
-  if (resizeIframe) {
-    modifiers.push('resize');
+export class Figure extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      expanded: false,
+    };
   }
 
-  if (type === 'full-column') {
-    modifiers.push('full-column');
-  }
+  render() {
+    const { children, type, resizeIframe, noFigcaption, ...rest } = this.props;
 
-  return (
-    <figure {...classes('', modifiers, typeClass)} {...rest}>
-      {noFigcaption ? (
-        <div {...classes('fullscreen-btn')}>
-          <ZoomOutMap />
-        </div>
-      ) : null}
-      {children}
-    </figure>
-  );
-};
+    const { expanded } = this.state;
+
+    const typeClass = `u-float-${type}`;
+    const modifiers = [];
+
+    if (!expanded) {
+      if (resizeIframe) {
+        modifiers.push('resize');
+      }
+      if (type === 'full-column') {
+        modifiers.push('full-column');
+      }
+    }
+
+    return (
+      <figure {...classes('', modifiers, !expanded && typeClass)} {...rest}>
+        {noFigcaption ? (
+          <button
+            {...classes('fullscreen-btn', expanded ? 'expanded' : '')}
+            onClick={() =>
+              this.setState(prevState => ({
+                expanded: !prevState.expanded,
+              }))
+            }>
+            <ZoomOutMap />
+          </button>
+        ) : null}
+        {children}
+      </figure>
+    );
+  }
+}
 
 Figure.propTypes = {
   id: PropTypes.string.isRequired,
@@ -148,5 +163,3 @@ Figure.defaultProps = {
   resizeIframe: false,
   noFigcaption: false,
 };
-
-export default Figure;

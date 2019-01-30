@@ -133,12 +133,7 @@ export {
   Hero,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  FigureFullscreenDialog,
-} from './Figure';
+export { Figure, FigureCaption, FigureLicenseDialog } from './Figure';
 export {
   MediaList,
   MediaListItem,
@@ -151,6 +146,7 @@ export {
 export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
 
 export { default as Image } from './Image';
+export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 

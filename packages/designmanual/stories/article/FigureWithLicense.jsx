@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { uuid } from '@ndla/util';
@@ -22,7 +22,7 @@ import {
   Figure,
   FigureCaption,
   FigureLicenseDialog,
-  FigureFullscreenDialog,
+  makeSrcQueryString,
 } from '@ndla/ui';
 import Button from '@ndla/button';
 
@@ -73,68 +73,43 @@ class FigureWithLicense extends Component {
         resizeIframe={resizeIframe}
         type={type}
         noFigcaption={this.props.noFigcaption}>
-        {!resizeIframe ? ( // Probably image
-          <Fragment>
-            <Button
-              key="button"
-              data-dialog-trigger-id={`fs-${this.id}`}
-              data-dialog-source-id={figureId}
-              stripped
-              aria-label="Se stor utgave av bilde"
-              className="u-fullw">
-              {this.props.children}
-            </Button>
-            <FigureFullscreenDialog
-              key="dialog"
-              id={`fs-${this.id}`}
-              messages={messages}
-              title="Mann med lupe"
-              caption={caption}
-              reuseLabel={reuseLabel}
-              license={license}
-              actionButtons={[
-                <Button key="copy" outline>
-                  Kopier referanse
-                </Button>,
-                <Button key="download" outline>
-                  Last ned bilde
-                </Button>,
-              ]}
-              authors={authors}>
-              <img
-                className="c-figure-license__img"
-                src={this.props.children.props.src}
-                alt={this.props.children.props.alt}
-              />
-            </FigureFullscreenDialog>
-          </Fragment>
+        {!resizeIframe ? (
+          <a
+            target="_blank"
+            href={`${this.props.children.props.src}?${makeSrcQueryString(
+              2720,
+              this.props.children.props.crop,
+              this.props.children.props.focalPoint,
+            )}`}
+            rel="noopener noreferrer">
+            {this.props.children}
+          </a>
         ) : (
           this.props.children
         )}
-
-        {!this.props.noFigcaption ? (
-          <FigureCaption
-            figureId={figureId}
+        <FigureCaption
+          hideFigcaption={this.props.noFigcaption}
+          figureId={figureId}
+          id={this.id}
+          key="caption"
+          locale="nb"
+          caption={caption}
+          reuseLabel={reuseLabel}
+          licenseRights={license.rights}
+          authors={authors}>
+          <FigureLicenseDialog
             id={this.id}
-            key="caption"
+            key="details"
+            authors={authors}
+            license={license}
+            origin="https://www.wikimedia.com"
+            title="Mann med lupe"
             locale="nb"
-            caption={caption}
-            reuseLabel={reuseLabel}
-            licenseRights={license.rights}
-            authors={authors}>
-            <FigureLicenseDialog
-              id={this.id}
-              key="details"
-              authors={authors}
-              license={license}
-              origin="https://www.wikimedia.com"
-              title="Mann med lupe"
-              messages={messages}>
-              <Button outline>Kopier referanse</Button>
-              <Button outline>Last ned bilde</Button>
-            </FigureLicenseDialog>
-          </FigureCaption>
-        ) : null}
+            messages={messages}>
+            <Button outline>Kopier referanse</Button>
+            <Button outline>Last ned bilde</Button>
+          </FigureLicenseDialog>
+        </FigureCaption>
       </Figure>
     );
   }

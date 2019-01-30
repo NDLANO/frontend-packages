@@ -12,10 +12,6 @@ import {
   ImageWrapper,
   IconButton,
   PushGrid,
-  BreadCrumbs,
-  SearchResultLead,
-  SearchResultLink,
-  SearchBlockWrapper,
 } from './Styles';
 
 import { stories } from './StaticInfoComponents';

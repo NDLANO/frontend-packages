@@ -6,5 +6,6 @@
  *
  */
 
-export { Figure, FigureCaption } from './Figure';
+import Figure, { FigureCaption } from './Figure';
+export { Figure, FigureCaption };
 export { FigureLicenseDialog } from './FigureLicenseDialog';

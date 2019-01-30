@@ -319,6 +319,8 @@ const messages = {
       rules: 'Regler for bruk av bildet:',
       itemImage: {
         ariaLabel: 'Åpne bilde i et nytt vindu',
+        zoomImageButtonLabel: 'Forstørr bilde',
+        zoomOutImageButtonLabel: 'Forminsk bilde',
       },
       source: 'Kilde',
       title: 'Tittel',

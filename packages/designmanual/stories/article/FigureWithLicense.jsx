@@ -15,7 +15,6 @@ import {
   addEventListenerForResize,
   updateIFrameDimensions,
   toggleLicenseInfoBox,
-  addZoomImageListeners,
 } from '@ndla/article-scripts';
 
 import {
@@ -41,7 +40,6 @@ class FigureWithLicense extends Component {
       updateIFrameDimensions();
       addEventListenerForResize();
       toggleLicenseInfoBox();
-      addZoomImageListeners();
     }
   }
 
@@ -57,7 +55,6 @@ class FigureWithLicense extends Component {
         'Personen(e) på bildet har godkjent at det kan brukes videre.',
       source: 'Kilde',
       title: 'Tittel',
-      zoomImageButtonLabel: 'Forstørr bilde',
     };
 
     const caption = this.props.caption ? this.props.caption : ``;
@@ -73,7 +70,7 @@ class FigureWithLicense extends Component {
         resizeIframe={resizeIframe}
         type={type}
         noFigcaption={this.props.noFigcaption}>
-        {!resizeIframe ? (
+        {!this.props.noFigcaption ? (
           <a
             target="_blank"
             href={`${this.props.children.props.src}?${makeSrcQueryString(
@@ -81,6 +78,7 @@ class FigureWithLicense extends Component {
               this.props.children.props.crop,
               this.props.children.props.focalPoint,
             )}`}
+            aria-label="Åpne bilde i et nytt vindu"
             rel="noopener noreferrer">
             {this.props.children}
           </a>

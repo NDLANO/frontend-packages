@@ -59,29 +59,6 @@ const panEventHandler = event => {
   image.style.transformOrigin = transformOrigin;
 };
 
-const toggleZoomImage = event => {
-  const target = event.currentTarget;
-
-  const zoomClass = 'c-figure-license__image-wrapper--zoom';
-  const zoomed = target.classList.contains(zoomClass);
-
-  if (zoomed) {
-    target.classList.remove(zoomClass);
-    target.removeEventListener('mousemove', panEventHandler);
-    target.removeEventListener('touchmove', panEventHandler);
-  } else {
-    target.classList.add(zoomClass);
-    target.addEventListener('mousemove', panEventHandler);
-    target.addEventListener('touchmove', panEventHandler);
-  }
-};
-
-export const addZoomImageListeners = () => {
-  forEachElement('.c-figure-license__image-wrapper', el => {
-    el.addEventListener('click', toggleZoomImage);
-  });
-};
-
 export const addCopyToClipboardListeners = () => {
   forEachElement('button[data-copy-string]', el => {
     const target = el;

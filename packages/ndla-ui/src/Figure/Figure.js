@@ -12,7 +12,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ZoomOutMap, Link as LinkIcon } from '@ndla/icons/common';
+import { injectT } from '@ndla/i18n';
+import {
+  ZoomOutMap,
+  ArrowCollapse,
+  Link as LinkIcon,
+} from '@ndla/icons/common';
 import LicenseByline from '../LicenseByline';
 import SafeLink from '../common/SafeLink';
 
@@ -97,7 +102,7 @@ FigureCaption.defaultProps = {
   link: null,
 };
 
-export class Figure extends Component {
+class Figure extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -106,7 +111,14 @@ export class Figure extends Component {
   }
 
   render() {
-    const { children, type, resizeIframe, noFigcaption, ...rest } = this.props;
+    const {
+      children,
+      type,
+      resizeIframe,
+      noFigcaption,
+      t,
+      ...rest
+    } = this.props;
 
     const { expanded } = this.state;
 
@@ -122,17 +134,22 @@ export class Figure extends Component {
       }
     }
 
+    const ariaLabel = expanded
+      ? t('license.images.itemImage.zoomOutImageButtonLabel')
+      : t('license.images.itemImage.zoomImageButtonLabel');
+
     return (
       <figure {...classes('', modifiers, !expanded && typeClass)} {...rest}>
         {noFigcaption ? (
           <button
             {...classes('fullscreen-btn', expanded ? 'expanded' : '')}
+            ariaLabel={ariaLabel}
             onClick={() =>
               this.setState(prevState => ({
                 expanded: !prevState.expanded,
               }))
             }>
-            <ZoomOutMap />
+            {expanded ? <ArrowCollapse /> : <ZoomOutMap />}
           </button>
         ) : null}
         {children}
@@ -163,3 +180,5 @@ Figure.defaultProps = {
   resizeIframe: false,
   noFigcaption: false,
 };
+
+export default injectT(Figure);

@@ -1,17 +1,9 @@
-# ndla-sanity
+# ndla-howto
 
-Sanity wrapper component for NDLA
+This package will be removed and is only temporary 
 
 ## Installation
 
 ```sh
-$ yarn ndla-sanity
-```
-
-## Usage
-
-### Simple example below..
-
-```js
-Example coming..
+$ yarn ndla-howto
 ```

@@ -84,7 +84,6 @@ AudioExample.propTypes = {
   runScripts: PropTypes.bool,
 };
 
-
 const AudioPlayerExamples = () => (
   <div>
     <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>

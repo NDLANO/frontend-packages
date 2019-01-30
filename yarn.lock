@@ -1273,24 +1273,6 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
-"@sanity/block-content-to-hyperscript@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-hyperscript/-/block-content-to-hyperscript-2.0.7.tgz#aa64d1689fdf5263b03fbd7e377028ec2307f3c2"
-  integrity sha512-En1qjMARu/evRb1BKgzs6RsRPpFqg45NB+odpCGE2H+DDZ/pM7qXZN0Br7ej6RPT7xxPs4IK3222VyrzFcn62g==
-  dependencies:
-    "@sanity/generate-help-url" "^0.139.0"
-    "@sanity/image-url" "^0.139.0"
-    hyperscript "^2.0.2"
-    object-assign "^4.1.1"
-
-"@sanity/block-content-to-react@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-react/-/block-content-to-react-2.0.6.tgz#be8b090e3c24d7bc66dc6a140dd5ee6ebd70713d"
-  integrity sha512-fLZKU+tZbJVzoKNOeWgRGQjIv9yoiYXOYq+1XhWyUlC167P2e663wCQe8fYhSzoM8Yn6FlsbC7UUtQANtLMNIA==
-  dependencies:
-    "@sanity/block-content-to-hyperscript" "^2.0.7"
-    prop-types "^15.6.2"
-
 "@sanity/client@^0.140.0":
   version "0.140.0"
   resolved "https://registry.yarnpkg.com/@sanity/client/-/client-0.140.0.tgz#7b60fe5ef8a73ff010cf15af7b8359c168d528aa"
@@ -1316,16 +1298,6 @@
   version "0.140.0"
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.140.0.tgz#f60ab75be5fdc346b9f0d1c2a0858aa3c2870109"
   integrity sha512-H/G/WA9S22TXcXST52CIiTsHx3S2hH0gvK7LnI5w76vfKS0obnDPh8jrPg4xeNRYGPuV9MHYRlyERGpRGoo4Qw==
-
-"@sanity/generate-help-url@^0.139.0":
-  version "0.139.0"
-  resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-0.139.0.tgz#cf31df07ec69b645f85284bb83aeb943be0db987"
-  integrity sha512-M5VMpZfF2KjuaHO5tatq+w+hD43cjmFiAD8z17NL8/rvB8GmTCmbF9ikqms0ZbVuIWT4rww8KCbV4up9NaJqHw==
-
-"@sanity/image-url@^0.139.0":
-  version "0.139.0"
-  resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-0.139.0.tgz#47cf2f4b583dc48f1ff590e5abdc86947a4c88ca"
-  integrity sha512-/ec7Tof1mR61+AP8jJcIspzdkL55WM+s/pDLTSScBgoYXNETfBOePBAa7kHl9FeN3CsYCm4WuthhnC7Qv84MnQ==
 
 "@sanity/observable@0.140.0":
   version "0.140.0"
@@ -3012,11 +2984,6 @@ browser-resolve@^1.11.3, browser-resolve@^1.8.1:
   dependencies:
     resolve "1.1.7"
 
-browser-split@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/browser-split/-/browser-split-0.0.0.tgz#41419caef769755929dd518967d3eec0a6262771"
-  integrity sha1-QUGcrvdpdVkp3VGJZ9PuwKYmJ3E=
-
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
@@ -3417,13 +3384,6 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
 circular-json@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
-
-class-list@~0.1.0, class-list@~0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/class-list/-/class-list-0.1.1.tgz#9b9745192c4179b5da0a0d7633658e3c70d796cb"
-  integrity sha1-m5dFGSxBebXaCg12M2WOPHDXlss=
-  dependencies:
-    indexof "0.0.1"
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -5880,13 +5840,6 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.6.0:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
 
-html-element@^2.0.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/html-element/-/html-element-2.2.0.tgz#c3c1ff88c261db74d0af6391eef90c346f900730"
-  integrity sha1-w8H/iMJh23TQr2OR7vkMNG+QBzA=
-  dependencies:
-    class-list "~0.1.1"
-
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-1.0.2.tgz#e70d84b94da53aa375e11fe3a351be6642ca46f8"
@@ -5988,15 +5941,6 @@ humanize-ms@^1.2.1:
   resolved "https://registry.yarnpkg.com/humanize-ms/-/humanize-ms-1.2.1.tgz#c46e3159a293f6b896da29316d8b6fe8bb79bbed"
   dependencies:
     ms "^2.0.0"
-
-hyperscript@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/hyperscript/-/hyperscript-2.0.2.tgz#3839cba45554bdfe27bb81c2142d1684f8135af5"
-  integrity sha1-ODnLpFVUvf4nu4HCFC0WhPgTWvU=
-  dependencies:
-    browser-split "0.0.0"
-    class-list "~0.1.0"
-    html-element "^2.0.0"
 
 hyphenate-style-name@^1.0.2:
   version "1.0.2"

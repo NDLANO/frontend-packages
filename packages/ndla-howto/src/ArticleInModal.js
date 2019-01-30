@@ -20,10 +20,7 @@ import {
 
 import { stories } from './StaticInfoComponents';
 
-const ModalContent = ({
-  pageId,
-  onClose,
-}) => (
+const ModalContent = ({ pageId, onClose }) => (
   <Wrapper>
     <div>
       <InModalHeader>
@@ -40,25 +37,39 @@ const ModalContent = ({
       )}
       <Lead>{stories[pageId].lead}</Lead>
     </div>
-      {stories[pageId].body && 
-        <PushGrid>
-          {stories[pageId].body.map((block, index) => {
-            if (block.type === 'text') {
-              return <p key={`${pageId}-${index}`}>{block.content}</p>
-            }
-            if (block.type === 'image') {
-              return <img key={`${pageId}-${index}`} src={block.content} alt="example" />
-            }
-            if (block.type === 'component') {
-              return block.content
-            }
-            if (block.type === 'link') {
-              return <a key={`${pageId}-${index}`} href={block.content.href} target="_blank" rel="noopener noreferrer">{block.content.text}</a>
-            }
-            return null;
-          })}
-        </PushGrid>
-      }
+    {stories[pageId].body && (
+      <PushGrid>
+        {stories[pageId].body.map((block, index) => {
+          if (block.type === 'text') {
+            return <p key={`${pageId}-${index}`}>{block.content}</p>;
+          }
+          if (block.type === 'image') {
+            return (
+              <img
+                key={`${pageId}-${index}`}
+                src={block.content}
+                alt="example"
+              />
+            );
+          }
+          if (block.type === 'component') {
+            return block.content;
+          }
+          if (block.type === 'link') {
+            return (
+              <a
+                key={`${pageId}-${index}`}
+                href={block.content.href}
+                target="_blank"
+                rel="noopener noreferrer">
+                {block.content.text}
+              </a>
+            );
+          }
+          return null;
+        })}
+      </PushGrid>
+    )}
   </Wrapper>
 );
 
@@ -67,11 +78,7 @@ const ArticleInModal = ({ pageId, tooltip, activateButton }) => (
     size="medium"
     backgroundColor="white"
     wrapperFunctionForButton={
-      tooltip && (
-        <Tooltip tooltip={tooltip}>
-          {activateButton}
-        </Tooltip>
-      )
+      tooltip && <Tooltip tooltip={tooltip}>{activateButton}</Tooltip>
     }
     activateButton={!tooltip && activateButton}>
     {onClose =>

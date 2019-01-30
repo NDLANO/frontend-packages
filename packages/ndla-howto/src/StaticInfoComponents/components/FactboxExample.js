@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  FactBox,
-  LicenseByline,
-} from '@ndla/ui';
+import { FactBox, LicenseByline } from '@ndla/ui';
 import { BY, NC, ND } from '@ndla/licenses';
 
 const FactBoxExample = () => (
   <FactBox>
     <h2>Faktaboks</h2>
     <p>
-      En faktaboks kan inneholde punktlister eller korte fakta som er
-      relevant for artikkelens innhold.
+      En faktaboks kan inneholde punktlister eller korte fakta som er relevant
+      for artikkelens innhold.
     </p>
     <p>
       Det anbefales å ikke ha for mye innhold i faktaboks, slik at
@@ -19,8 +16,7 @@ const FactBoxExample = () => (
     <h2>Enkel tittel</h2>
     <p>
       Faktaboksen kan også brukes til å oppsummere innhold i slutten av en
-      artikkel, og den kan inneholde lisensiering om eksternt innhold er
-      brukt.
+      artikkel, og den kan inneholde lisensiering om eksternt innhold er brukt.
     </p>
     <div className="c-source-list">
       <LicenseByline

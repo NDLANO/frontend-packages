@@ -8,7 +8,7 @@
 
 import { copyTextToClipboard } from '@ndla/util';
 
-import { forEachElement, getElementOffset } from './domHelpers';
+import { forEachElement } from './domHelpers';
 
 export const toggleLicenseInfoBox = () => {
   forEachElement('.c-dialog', el => {
@@ -35,28 +35,6 @@ export const toggleLicenseInfoBox = () => {
       };
     }
   });
-};
-
-const panEventHandler = event => {
-  const target = event.currentTarget;
-
-  const image = target.querySelector('img');
-
-  const offset = getElementOffset(target);
-
-  let touch;
-
-  if (event.touches) {
-    [touch] = event.touches;
-  }
-
-  const posX = event.pageX || touch.pageX;
-  const posY = event.pageY || touch.pageY;
-
-  const transformOrigin = `${((posX - offset.left) / image.clientWidth) *
-    100}% ${((posY - offset.top) / image.clientHeight) * 100}%`;
-
-  image.style.transformOrigin = transformOrigin;
 };
 
 export const addCopyToClipboardListeners = () => {

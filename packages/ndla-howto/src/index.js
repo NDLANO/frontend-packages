@@ -6,8 +6,6 @@
  *
  */
 
-import Article from './Article';
 import ArticleInModal from './ArticleInModal';
-import InfoIcon from './InfoIcon';
 
-export { Article, ArticleInModal, InfoIcon };
+export { ArticleInModal };

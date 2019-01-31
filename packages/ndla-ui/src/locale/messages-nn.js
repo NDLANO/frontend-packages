@@ -205,6 +205,7 @@ const messages = {
       goTo: 'Gå til',
       search: 'Søk',
       subjectOverview: 'Alle fag',
+      backToSubjectFrontpage: 'Tilbake til fagforsida',
       title: 'Meny',
       subjectPage: 'Fagforside',
       openFilter: 'Filter',

@@ -216,9 +216,6 @@ export default class TopicMenu extends Component {
       this.state.isNarrowScreen && competenceGoalsOpen;
 
     const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
-    const toSubjectUrl = toSubject();
-
-    const isOnSubjectFrontPage = window.location.pathname === toSubjectUrl;
 
     return (
       <Trans>
@@ -273,22 +270,10 @@ export default class TopicMenu extends Component {
                       })}>
                       <div {...classes('subject__header')}>
                         <h1>
-                          {isOnSubjectFrontPage ? (
-                            <button
-                              type="button"
-                              onClick={closeMenu}
-                              aria-label={t(
-                                'masthead.menu.backToSubjectFrontpage',
-                              )}>
-                              {subjectTitle}
-                              <ChevronRight className="c-icon--22" />
-                            </button>
-                          ) : (
-                            <SafeLink to={toSubjectUrl}>
-                              {subjectTitle}
-                              <ChevronRight className="c-icon--22" />
-                            </SafeLink>
-                          )}
+                          <SafeLink to={toSubject()}>
+                            {subjectTitle}
+                            <ChevronRight />
+                          </SafeLink>
                         </h1>
                         {competenceGoals &&
                           !this.state.isNarrowScreen &&
@@ -366,9 +351,7 @@ export default class TopicMenu extends Component {
                           </span>
                           <span {...classes('link-target')}>
                             {t('masthead.menu.subjectPage')}
-                            <span>
-                              <ChevronRight className="c-icon--22" />
-                            </span>
+                            <span {...classes('arrow')}>›</span>
                           </span>
                         </SafeLink>
                         <ul {...classes('list')}>

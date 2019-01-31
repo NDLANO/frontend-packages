@@ -206,7 +206,6 @@ const messages = {
       goTo: 'Go to',
       search: 'Search',
       subjectOverview: 'All subjects',
-      backToSubjectFrontpage: 'Back til subjects frontpage',
       title: 'Menu',
       subjectPage: 'Subject front page',
       openFilter: 'Filter',

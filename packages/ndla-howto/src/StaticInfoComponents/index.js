@@ -5,7 +5,8 @@ import FactboxExample from './components/FactboxExample';
 export const stories = {
   Paragraph: {
     title: 'Paragraf',
-    lead: 'Lead tekst',
+    lead:
+      'Dette lager en ny seksjon i teksten. Det skiller seg fra et hard linjeskrift..',
   },
   FactASide: {
     title: 'Faktaboks',
@@ -131,5 +132,58 @@ export const stories = {
         content: 'Artiklene det lenkes til kan være interne eller eksterne.',
       },
     ],
+  },
+  userAgreements: {
+    title: 'Avtaler',
+    lead:
+      'Avtaler beskriver lisensiering samt hvem som er rettighethavere, opphavspersoner m.m. for ressursen. I tilfeller hvor flere ressurser deler samme lisensiering anbefales det å bruke en avtale.',
+    body: [
+      {
+        type: 'text',
+        content:
+          'Du kan opprette nye avtaler ved å bruke hovedmenyen med pluss-tegnet oppe til venstre og så trykke på "avtale" knappen',
+      },
+    ],
+  },
+  userLicense: {
+    title: 'Lisenser',
+    lead:
+      'Alle ressurser skal merkes med en lisensiering. I NDLA ønsker vi å bidra til deling og gjenbruk. Vi bruker derfor åpne lisenser så langt det er mulig.',
+    body: [
+      {
+        type: 'text',
+        content:
+          'Vi skal også ivareta alle rettigheter til åndsverk. For mer informasjon se:',
+      },
+      {
+        type: 'link',
+        content: {
+          href: 'https://brukskvalitetsplattform.ndla.no/bruk-av-lisenser.html',
+          text: 'https://brukskvalitetsplattform.ndla.no/bruk-av-lisenser.html',
+        },
+      },
+    ],
+  },
+  MetaKeyword: {
+    title: 'Nøkkelord',
+    lead:
+      'Nøkkelord hjelper søkemotorer og søk intern på ndla.no og finne relevant og riktig innhold. Et nyttig tips er å legge til synonymer for ord som brukt i teksten eller som er relevant for ressursen',
+  },
+  MetaDescription: {
+    title: 'Metabeskrivelse',
+    lead:
+      'Metabeskrivelsen gir kort informasjon om hva emnebeskrivelsen inneholder. Den skal brukes til utlisting både eksternt, i f.eks. Google og på sosiale medier, og i emnelister på ndla.no.',
+    body: [
+      {
+        type: 'text',
+        content:
+          'Den formuleres derfor slik at den er til hjelp både for de som søker på Internett, og for elevene våre når de orienterer seg på sidene våre og skaffer seg oversikt. Metabeskrivelsen bør beskrive essensen av innholdet og være en selvstendig tekst og er begrenset til 155 tegn.',
+      },
+    ],
+  },
+  MetaImage: {
+    title: 'Metabilde',
+    lead:
+      'Dette bildet skal kunne benyttes som bilde på emnekortene (både som bannerbilde og lite bannerbilde), ved visning i sosiale medier og ved opplisting i søkemotorer. Bildet må ha god pikselbredde, som f.eks. Scanpix-bilder.',
   },
 };

@@ -1,9 +1,11 @@
 import styled, { css } from 'react-emotion';
-import { spacing, colors, fonts } from '@ndla/core';
+import { spacing, colors, fonts, mq, breakpoints } from '@ndla/core';
 
 const gridPush = css`
-  width: 83.33%;
-  margin-left: 8.33%;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    width: 83.33%;
+    margin-left: 8.33%;
+  }
 `;
 
 export const PushGrid = styled.div`
@@ -12,7 +14,10 @@ export const PushGrid = styled.div`
 
 export const Wrapper = styled.section`
   margin: ${spacing.large} auto ${spacing.spacingUnit * 4}px;
-  max-width: 800px;
+  max-width: calc(100vw - ${spacing.spacingUnit * 4}px);
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    max-width: 800px;
+  }
 `;
 
 export const Header = styled.div`
@@ -26,11 +31,13 @@ export const Header = styled.div`
 
 export const Heading = styled.div`
   margin: 0 0 ${props => (!props.inModal ? spacing.medium : '0 0')};
-  ${fonts.sizes(38, 1.1)};
+  ${fonts.sizes(38, 1.4)};
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.primary};
   ${props => !props.inModal && gridPush};
-  padding-left: ${props => props.inModal && '8.33%'};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding-left: ${props => props.inModal && '8.33%'};
+  }
 `;
 
 export const IconButton = styled.button`
@@ -53,6 +60,12 @@ export const InModalHeader = styled.div`
     width: ${spacing.large};
     height: ${spacing.large};
     color: ${colors.brand.primary};
+  }
+  > .c-icon {
+    display: none;
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      display: flex;
+    }
   }
 `;
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
 import { SlateBlockMenu } from '@ndla/editor';
@@ -129,7 +130,7 @@ class SlateBlockMenuExample extends Component {
 
   render() {
     return (
-      <div style={{ height: '700px' }}>
+      <div style={{ height: `${this.props.height}px` }}>
         <SlateBlockMenu
           isOpen={this.state.isOpen}
           heading="Legg til"
@@ -143,5 +144,13 @@ class SlateBlockMenuExample extends Component {
     );
   }
 }
+
+SlateBlockMenuExample.propTypes = {
+  height: PropTypes.number,
+};
+
+SlateBlockMenuExample.defaultProps = {
+  height: 700,
+};
 
 export default SlateBlockMenuExample;

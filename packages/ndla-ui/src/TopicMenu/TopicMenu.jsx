@@ -273,7 +273,7 @@ export default class TopicMenu extends Component {
                       })}>
                       <div {...classes('subject__header')}>
                         <h1>
-                          {!isOnSubjectFrontPage ? (
+                          {isOnSubjectFrontPage ? (
                             <button
                               type="button"
                               onClick={closeMenu}

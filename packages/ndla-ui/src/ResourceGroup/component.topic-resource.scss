@@ -30,6 +30,27 @@
   &__item {
     max-width: 100%;
     margin-bottom: $spacing--small / 4;
+    &--currentPage {
+      .c-topic-resource__link {
+        color: $brand-grey-dark;
+        span {
+          box-shadow: none;
+        }
+        small {
+          padding-left: $spacing--small;
+          font-weight: $font-weight-normal;
+        }
+      }
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: $spacing--small;
+        height: $spacing--small;
+        border-radius: 100%;
+        transform: translate(-($spacing + $spacing--small), $spacing + 1);
+      }
+    }
   }
 
   &__link {

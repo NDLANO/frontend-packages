@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
@@ -30,23 +30,45 @@ const Resource = ({
   contentTypeDescription,
 }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
+  // Designmanual is in iframe, test to get location
+  const currentPage = window.frameElement
+    ? document.referrer.includes(resource.contentUri)
+    : window.location.pathname.includes(resource.contentUri);
+
+  console.log(currentPage, resource.name);
+
+  const linkContent = (
+    <Fragment>
+      <div {...classes('icon o-flag__img')}>{icon}</div>
+      <h1 {...classes('title')}>
+        <span>
+          {resource.name}
+          {currentPage && <small>Du er her</small>}
+        </span>
+      </h1>
+    </Fragment>
+  );
 
   return (
     <li
       {...classes('item', {
         hidden,
         additional: resource.additional,
+        currentPage,
       })}>
       <div {...classes('body o-flag__body')}>
-        <SafeLink
-          {...resourceToLinkProps(resource)}
-          {...classes('link o-flag o-flag--top')}
-          aria-describedby={id}>
-          <div {...classes('icon o-flag__img')}>{icon}</div>
-          <h1 {...classes('title')}>
-            <span>{resource.name}</span>
-          </h1>
-        </SafeLink>
+        {currentPage ? (
+          <div {...classes('link o-flag o-flag--top', '', 'currentPage')}>
+            {linkContent}
+          </div>
+        ) : (
+          <SafeLink
+            {...resourceToLinkProps(resource)}
+            {...classes('link o-flag o-flag--top')}
+            aria-describedby={id}>
+            {linkContent}
+          </SafeLink>
+        )}
         <span id={id} hidden>
           {contentTypeDescription}
         </span>

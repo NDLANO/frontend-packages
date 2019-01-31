@@ -42,13 +42,15 @@
         }
       }
       &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: $spacing--small;
-        height: $spacing--small;
-        border-radius: 100%;
-        transform: translate(-($spacing + $spacing--small), $spacing + 1);
+        @include mq(tablet) {
+          content: "";
+          display: block;
+          position: absolute;
+          width: $spacing--small;
+          height: $spacing--small;
+          border-radius: 100%;
+          transform: translate(-($spacing + $spacing--small), $spacing + 1);
+        }
       }
     }
   }

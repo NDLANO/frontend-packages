@@ -206,6 +206,7 @@ const messages = {
       subjectOverview: 'Alle fag',
       title: 'Meny',
       subjectPage: 'Fagforside',
+      backToSubjectFrontpage: 'Tilbake til fagforsiden',
       openFilter: 'Filter',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',

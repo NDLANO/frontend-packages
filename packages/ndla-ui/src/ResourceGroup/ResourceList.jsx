@@ -28,6 +28,7 @@ const Resource = ({
   showAdditionalResources,
   id,
   contentTypeDescription,
+  youAreHere,
 }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
   // Designmanual is in iframe, test to get location
@@ -43,7 +44,7 @@ const Resource = ({
       <h1 {...classes('title')}>
         <span>
           {resource.name}
-          {currentPage && <small>Du er her</small>}
+          {currentPage && <small>{youAreHere}</small>}
         </span>
       </h1>
     </Fragment>
@@ -124,6 +125,7 @@ const ResourceList = ({
             showAdditionalResources={showAdditionalResources}
             {...rest}
             resource={resource}
+            youAreHere={t('resource.youAreHere')}
             contentTypeDescription={
               resource.additional
                 ? t('resource.tooltipAdditionalTopic')

@@ -26,33 +26,71 @@ const iconClass = css`
   }
 `;
 
-const renderArticleInModal = pageId => (
+const renderArticleInModal = ({ pageId, tooltip }) => (
   <ArticleInModal
     pageId={pageId}
+    tooltip={tooltip}
     activateButton={<InformationOutline className={iconClass} />}
   />
 );
 
 const HowToExamples = () => (
   <div>
-    <h3>Innholdstyper, se informasjonsikonene i ( + )-knappen</h3>
+    <h1>Innholdstyper:</h1>
     <SlateBlockMenuExample height={100} />
-    <h3>Hjelpetekster "Lisens og bruker":</h3>
+    <br />
+    <br />
+    <h1>Lisens og bruker:</h1>
     <FormHeader title="Koble til avtale">
-      {renderArticleInModal('userAgreements')}
+      {renderArticleInModal({
+        pageId: 'userAgreements',
+        tooltip: 'Hva er dette?',
+      })}
     </FormHeader>
     <FormHeader title="Lisens">
-      {renderArticleInModal('userLicense')}
+      {renderArticleInModal({
+        pageId: 'userLicense',
+        tooltip: 'Hva er dette?',
+      })}
     </FormHeader>
-    <h3>Hjelpetekster "Meta":</h3>
+    <br />
+    <br />
+    <h1>Taksonomi:</h1>
+    <FormHeader title="Innholdstyper">
+      {renderArticleInModal({
+        pageId: 'TaxonomyContentTypes',
+        tooltip: 'Hva er dette?',
+      })}
+    </FormHeader>
+    <FormHeader title="Emnetilknytninger">
+      {renderArticleInModal({
+        pageId: 'TaxonomySubjectConnections',
+        tooltip: 'Hva er dette?',
+      })}
+    </FormHeader>
+    <FormHeader title="Fagfilter">
+      {renderArticleInModal({
+        pageId: 'TaxonomySubjectFilters',
+        tooltip: 'Hva er dette?',
+      })}
+    </FormHeader>
+    <br />
+    <br />
+    <h1>Metadata:</h1>
     <FormHeader title="Nøkkelord">
-      {renderArticleInModal('MetaKeyword')}
+      {renderArticleInModal({
+        pageId: 'MetaKeyword',
+        tooltip: 'Hva er dette?',
+      })}
     </FormHeader>
     <FormHeader title="Metabeskrivelse">
-      {renderArticleInModal('MetaDescription')}
+      {renderArticleInModal({
+        pageId: 'MetaDescription',
+        tooltip: 'Hva er dette?',
+      })}
     </FormHeader>
     <FormHeader title="Metabilde">
-      {renderArticleInModal('MetaImage')}
+      {renderArticleInModal({ pageId: 'MetaImage', tooltip: 'Hva er dette?' })}
     </FormHeader>
   </div>
 );

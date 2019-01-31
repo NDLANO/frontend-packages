@@ -186,4 +186,28 @@ export const stories = {
     lead:
       'Dette bildet skal kunne benyttes som bilde på emnekortene (både som bannerbilde og lite bannerbilde), ved visning i sosiale medier og ved opplisting i søkemotorer. Bildet må ha god pikselbredde, som f.eks. Scanpix-bilder.',
   },
+  TaxonomyContentTypes: {
+    title: 'Innholdstyper',
+    lead:
+      'Alle ressurser skal få en innholdstype. Du kan lese mer om innholdstyper i Brukskvalitetsplattformen',
+    body: [
+      {
+        type: 'link',
+        content: {
+          href: 'https://brukskvalitetsplattform.ndla.no/innholdstyper.html',
+          text: 'https://brukskvalitetsplattform.ndla.no/innholdstyper.html',
+        },
+      },
+    ],
+  },
+  TaxonomySubjectConnections: {
+    title: 'Emnetilknytninger',
+    lead:
+      'For at en ressurs skal bli tilgjengelig i meny må den tilknyttes et (eller flere) emne.',
+  },
+  TaxonomySubjectFilters: {
+    title: 'Fagfilter',
+    lead:
+      'Alle ressurser må ha ett eller fagfilter. Fagfilterene du kan velge mellom blir gitt utfra emnetilknytningen og derav faget det tilhører. Itillegg til å velge fagfilter kan velge om ressursen skal være tilleggsstoff og kjernestoff under hvert av fagfilterene.',
+  },
 };

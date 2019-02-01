@@ -20,6 +20,7 @@ import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
+import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
 import { Center } from '../helpers';
@@ -144,6 +145,16 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <SlateBlockMenuExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('How-to', () => (
+    <div>
+      <StoryIntro title="Veiledningstekster">
+        <p>Midlertidige og statiske veiledningstekster</p>
+      </StoryIntro>
+      <StoryBody>
+        <HowtoExamples />
       </StoryBody>
     </div>
   ))

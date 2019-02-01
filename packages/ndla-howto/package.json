@@ -1,0 +1,40 @@
+{
+  "name": "@ndla/howto",
+  "version": "0.0.1",
+  "description": "Temporary how-to texts for production system",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-howto/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ivar.borthen@keyteq.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "@ndla/core": "^0.4.5",
+    "@ndla/editor": "^0.3.11",
+    "@ndla/ui": "^0.19.12",
+    "@ndla/button": "^0.2.3",
+    "@ndla/licenses": "^0.4.3",
+    "@ndla/icons": "^0.6.5",
+    "@ndla/modal":  "^0.2.8",
+    "@ndla/tooltip": "^0.1.2"
+  },
+  "peerDependencies": {
+    "emotion": "^9.2.10",
+    "react": "^16.7.0",
+    "react-emotion": "^9.2.10",
+    "react-prop-types": "0.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

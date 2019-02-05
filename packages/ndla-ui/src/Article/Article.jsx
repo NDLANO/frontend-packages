@@ -95,7 +95,7 @@ export const Article = ({
     updated,
     content,
     footNotes,
-    copyright: { license: licenseObj, creators, rightsholders },
+    copyright: { license: licenseObj, creators, rightsholders, processors },
   },
   icon,
   additional,
@@ -108,8 +108,14 @@ export const Article = ({
 }) => {
   const license = getLicenseByAbbreviation(licenseObj.license, locale)
     .abbreviation;
-  const showCreators = Array.isArray(creators) && creators.length > 0;
-  const authors = showCreators ? creators : rightsholders;
+
+  let authors = creators;
+  if (Array.isArray(authors) && authors.length === 0) {
+    authors = rightsholders;
+  }
+  if (Array.isArray(authors) && authors.length === 0) {
+    authors = processors;
+  }
 
   return (
     <ArticleWrapper modifier={modifier}>

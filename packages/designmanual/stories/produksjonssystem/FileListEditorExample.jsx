@@ -47,10 +47,10 @@ class StructureExample extends Component {
       ],
     };
     this.onUpdateFileName = this.onUpdateFileName.bind(this);
-    this.onUpdateOrder = this.onUpdateOrder.bind(this);
+    this.onUpdateFiles = this.onUpdateFiles.bind(this);
   }
 
-  onUpdateOrder(addedFiles) {
+  onUpdateFiles(addedFiles) {
     this.setState({
       addedFiles,
     });
@@ -76,7 +76,7 @@ class StructureExample extends Component {
       <FileListEditor
         files={addedFiles}
         onEditFileName={this.onUpdateFileName}
-        onUpdateOrder={this.onUpdateOrder}
+        onUpdateFiles={this.onUpdateFiles}
       />
     );
   }

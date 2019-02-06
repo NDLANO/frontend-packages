@@ -43,21 +43,35 @@ const StyledFile = styled.li`
       width: 18px;
       height: 18px;
     }
-    a {
-      margin-left: ${spacing.xsmall};
-      span {
-        text-transform: uppercase;
-      }
-    }
   }
   ${props => props.delete && css`
     ${animations.fadeOut()}
   `}
 `;
 
+const LinkButton = styled.button`
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  margin: 0 0 0 ${spacing.xsmall};
+  padding: 0;
+  color: ${colors.brand.primary};
+  box-shadow: inset 0 -1px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  span {
+    text-transform: uppercase;
+  }
+  &:hover, &:focus {
+    box-shadow: none;
+  }
+`;
+
 const ListWrapper = styled.ul`
   overflow: visible;
-  margin: 0;
+  margin: 0 0 ${props => props.draggingIndex > -1 ? `${FILE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0'};
   padding: 0;
   position: relative;
   list-style: none;
@@ -153,7 +167,7 @@ class FileListEditor extends Component {
     files.splice(this.state.deleteIndex, 1);
     this.setState({
       deleteIndex: -1,
-    }, () => this.props.onUpdateOrder(files));
+    }, () => this.props.onUpdateFiles(files));
   }
 
   editFile(editFileIndex) {
@@ -215,7 +229,7 @@ class FileListEditor extends Component {
     const moveFile = files[this.initialPosition];
     files.splice(this.initialPosition, 1);
     files.splice(toIndex, 0, moveFile);
-    this.props.onUpdateOrder(files);
+    this.props.onUpdateFiles(files);
 
     this.setState({
       draggingIndex: -1,
@@ -248,11 +262,11 @@ class FileListEditor extends Component {
   }
   
   render() {
-    const { files, onEditFileName, onUpdateOrder } = this.props;
+    const { files, onEditFileName, onUpdateFiles } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
     return (
-      <ListWrapper innerRef={this.filesWrapperRef} draggingIndex={draggingIndex} initialPosition={this.initialPosition}>
+      <ListWrapper innerRef={this.filesWrapperRef} draggingIndex={draggingIndex}>
         {files.map((file, index) => (
           <StyledFile
             key={file.path}
@@ -278,19 +292,18 @@ class FileListEditor extends Component {
               /> : 
                 <Fragment>
                   <Download />
-                  <a
-                    href={file.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <LinkButton
+                    type="button"
+                    onClick={() => window.open(file.path)}
                   >
                     {file.title}
                     {` `}
                     <span>({file.type})</span>
-                  </a>
+                  </LinkButton>
                 </Fragment>
               }
             </div>
-            {onEditFileName && onUpdateOrder && (<div>
+            {onEditFileName && onUpdateFiles && (<div>
               <Tooltip tooltip="Endre navn">
                 <ButtonIcons tabIndex={-1} type="button" onClick={() => this.editFile(index)}>
                   <Pencil />
@@ -331,7 +344,7 @@ FileListEditor.propTypes = {
   })),
   sortable: PropTypes.bool,
   onEditFileName: PropTypes.func,
-  onUpdateOrder: PropTypes.func,
+  onUpdateFiles: PropTypes.func,
 };
 
 export default FileListEditor;

@@ -24,6 +24,7 @@ import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
+import HowtoExamples from './HowtoExamples';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
@@ -159,8 +160,6 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-<<<<<<< Updated upstream
-=======
   .add('FileListEditor', () => (
     <div>
       <StoryIntro title="Editor for redigering av fillister">
@@ -181,7 +180,6 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
->>>>>>> Stashed changes
   .add('Sidestrurktur og taksonomi', () => (
     <div>
       <StoryIntro title="Sidesturktur og taksonomi" />

@@ -13,6 +13,7 @@ import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, fonts, colors, shadows, animations } from '@ndla/core';
+import { createUniversalPortal } from '@ndla/util';
 import { Download } from '@ndla/icons/common';
 
 const FILE_HEIGHT = 69;
@@ -25,7 +26,6 @@ const StyledFile = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: box-shadow 100ms ease, margin 100ms ease;
   height: ${FILE_HEIGHT - FILE_MARGIN}px;
   max-width: 100%;
   box-sizing: border-box;
@@ -59,19 +59,8 @@ const ListWrapper = styled.ul`
   overflow: visible;
   margin: 0;
   padding: 0;
-  transition: padding-top 200ms ease;
   position: relative;
   list-style: none;
-  ${props => props.draggingIndex > -1 && css`
-    li:nth-child(${props.draggingIndex}) {
-      margin-bottom: ${FILE_HEIGHT}px;
-    }
-  `}
-  ${props => props.draggingIndex === 0 && css`
-    li:nth-child(${props.initialPosition === 0 ? 2 : 1}) {
-      margin-top: ${FILE_HEIGHT}px;
-    }
-  `};
 `;
 
 const ButtonIcons = styled.button`
@@ -102,9 +91,15 @@ const ButtonIcons = styled.button`
 `;
 
 const StyledInput = styled.input`
-    height: ${spacing.medium};
-    width: 100%;
+  height: ${spacing.medium};
+  position: absolute;
+  z-index: 9999;
+  ${fonts.sizes(18, 1.1)};
+  font-weight: ${fonts.weight.normal};
+  font-family: ${fonts.sans};
 `;
+
+/* We need to use a portal so we can edit names when inside Slate editor */
 
 class InputComponent extends Component {
   constructor(props) {
@@ -112,16 +107,25 @@ class InputComponent extends Component {
     this.inputRef = React.createRef();
   }
   componentDidMount() {
+    // Get position from props.forwardedRef.
+    const rect = this.props.forwardedRef.current.childNodes[this.props.childIndex].firstChild.getBoundingClientRect();
+    this.inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
+    this.inputRef.current.style.left = `${rect.left + spacing.spacingUnit * 0.75}px`;
+    this.inputRef.current.style.width = `${rect.width - spacing.spacingUnit}px`;
     this.inputRef.current.focus();
   }
 
   render() {
-    const { ...rest } = this.props;
+    const { forwardedRef, ...rest } = this.props;
     return (
-      <StyledInput innerRef={this.inputRef} {...rest} />
+      createUniversalPortal(<StyledInput innerRef={this.inputRef} {...rest} />, 'body')
     );
   }
 }
+
+const InputForwardRef = React.forwardRef((props, ref) => {
+  return <InputComponent {...props} forwardedRef={ref} />;
+});
 
 class FileListEditor extends Component {
   constructor(props) {
@@ -164,10 +168,22 @@ class FileListEditor extends Component {
     })
   }
 
+  updateTransforms(dragIndex) {
+    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node, index) => {
+      if (index !== this.initialPosition) {
+        const value = (index >= dragIndex) ? FILE_HEIGHT : 0;
+        node.style.transform = `translateY(${value}px)`; 
+      }
+    });
+  }
+
   onDragStart(e, dragIndex) {
     e.preventDefault();
     this.mouseMovement = -FILE_HEIGHT + (dragIndex * FILE_HEIGHT);
     this.initialPosition = dragIndex;
+
+    this.updateTransforms(dragIndex);
+
     this.DraggingFile = this.filesWrapperRef.current.childNodes[dragIndex];
     this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
     this.DraggingFile.style.position = 'absolute';
@@ -175,9 +191,17 @@ class FileListEditor extends Component {
     this.DraggingFile.style.zIndex = 9999;
     this.DraggingFile.style.boxShadow = shadows.levitate1;
     this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
+
     this.setState({
       draggingIndex: dragIndex,
+    }, () => {
+      // Add transitions
+      Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(node => {
+        node.style.transition = 'transform 100ms ease';
+      });
+      this.DraggingFile.style.transition = 'box-shadow 100ms ease';
     });
+    
     window.addEventListener('mousemove', this.onDragging);
     window.addEventListener('mouseup', this.onDragEnd);
   }
@@ -187,7 +211,7 @@ class FileListEditor extends Component {
     window.removeEventListener('mouseup', this.onDragEnd);
     const { files } = this.props;
     // Rearrange files
-    const toIndex = this.state.draggingIndex - (this.initialPosition < this.state.draggingIndex ? 1 : 0);
+    const toIndex = this.state.draggingIndex;
     const moveFile = files[this.initialPosition];
     files.splice(this.initialPosition, 1);
     files.splice(toIndex, 0, moveFile);
@@ -196,20 +220,31 @@ class FileListEditor extends Component {
     this.setState({
       draggingIndex: -1,
     });
+
+    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node, index) => {
+      node.style.transition = 'none';
+      node.style.transform = 'none';
+    });
+
     this.DraggingFile.style.width = 'auto';
-    this.DraggingFile.style.transform = 'none';
     this.DraggingFile.style.position = 'static';
+    this.DraggingFile.style.zIndex = 0;
     this.DraggingFile.style.boxShadow = 'none';
+    
   }
 
   onDragging(e) {
     this.mouseMovement += e.movementY;
-    const currentPosition = Math.max(Math.ceil(this.mouseMovement / FILE_HEIGHT), 0);
+    const currentPosition = Math.max(Math.ceil((this.mouseMovement + (FILE_HEIGHT / 2)) / FILE_HEIGHT), 0);
     const addToPosition = this.initialPosition < currentPosition ? 1 : 0;
+    const dragIndex = Math.min(this.props.files.length, Math.max(currentPosition, 0));
     this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
-    this.setState({
-      draggingIndex: Math.min(this.props.files.length, Math.max(currentPosition + addToPosition, 0)),
-    });
+    this.updateTransforms(dragIndex + addToPosition);
+    if (this.state.draggingIndex !== dragIndex) {
+      this.setState({
+        draggingIndex: dragIndex,
+      });
+    }
   }
   
   render() {
@@ -225,8 +260,10 @@ class FileListEditor extends Component {
             onAnimationEnd={deleteIndex === index ? this.executeDeleteFile : undefined}
           >
             <div>
-              {editFileIndex === index ? <InputComponent
+              {editFileIndex === index ? <InputForwardRef
+                ref={this.filesWrapperRef}
                 value={file.title}
+                childIndex={index}
                 type="text"
                 placeholder="Oppgi et filnavn"
                 onChange={e => {

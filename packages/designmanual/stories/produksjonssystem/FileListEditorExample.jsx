@@ -15,32 +15,32 @@ class StructureExample extends Component {
     this.state = {
       addedFiles: [
         {
-          path: 'http://www.exampleurl.com',
+          path: 'http://www.exampleurl1.com',
           title: 'Filename',
           type: 'pdf',
         },
         {
-          path: 'http://www.exampleurl.com',
+          path: 'http://www.exampleurl2.com',
           title: 'Filename 2',
           type: 'pdf',
         },
         {
-          path: 'http://www.exampleurl.com',
+          path: 'http://www.exampleurl3.com',
           title: 'Filename 3',
           type: 'pdf',
         },
         {
-          path: 'http://www.exampleurl.com',
+          path: 'http://www.exampleurl4.com',
           title: 'Filename 4',
           type: 'pdf',
         },
         {
-          path: 'http://www.exampleurl.com',
+          path: 'http://www.exampleurl5.com',
           title: 'Filename 5',
           type: 'pdf',
         },
         {
-          path: 'http://www.exampleurl.com',
+          path: 'http://www.exampleurl6.com',
           title: 'Filename 6',
           type: 'pdf',
         }

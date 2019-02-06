@@ -1,34 +1,36 @@
 {
-  "name": "@ndla/listview",
-  "version": "0.1.28",
-  "description": "Listview components for NDLA",
+  "name": "@ndla/howto",
+  "version": "0.0.2",
+  "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-howto/"
   },
   "keywords": [
     "ndla"
   ],
-  "author": "ndla@knowit.no",
+  "author": "ivar.borthen@keyteq.no",
   "files": [
     "lib",
     "es"
   ],
   "dependencies": {
+    "@ndla/button": "^0.2.5",
     "@ndla/core": "^0.4.7",
-    "@ndla/i18n": "^0.4.1",
+    "@ndla/editor": "^0.3.14",
     "@ndla/icons": "^0.6.6",
+    "@ndla/licenses": "^0.4.3",
+    "@ndla/modal": "^0.2.10",
+    "@ndla/tooltip": "^0.1.4",
     "@ndla/ui": "^0.19.14"
   },
   "peerDependencies": {
     "emotion": "^9.2.10",
-    "prop-types": "^15.6.0",
-    "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1",
+    "react": "^16.7.0",
     "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"
   },

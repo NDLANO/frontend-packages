@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
-import { colors } from '@ndla/core';
-import Button from '@ndla/button';
+import { spacing, colors } from '@ndla/core';
 import { SlateBlockMenu } from '@ndla/editor';
 import {
   Quote,
@@ -13,45 +13,28 @@ import {
   Framed,
   PlayBoxOutline,
   PresentationPlay,
+  RelatedArticle,
 } from '@ndla/icons/editor';
-import { VolumeUp, HelpCircleDual } from '@ndla/icons/common';
-import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
+import { ArticleInModal } from '@ndla/howto';
+import { VolumeUp, Download, InformationOutline } from '@ndla/icons/common';
 
-const dualIconCSS = css`
-  // dual coloured icon..
-  #HelpCircleDual-background {
-    fill: ${colors.brand.light};
-  }
-  #HelpCircleDual-symbol {
-    fill: ${colors.brand.dark};
-  }
+const iconClass = css`
+  color: ${colors.brand.tertiary};
+  width: ${26 * 1.5}px;
+  height: ${26 * 1.5}px;
+  padding: ${spacing.xsmall};
+
   &:hover,
   &:focus {
-    #HelpCircleDual-background {
-      fill: ${colors.brand.primary};
-    }
-    #HelpCircleDual-symbol {
-      fill: #fff;
-    }
+    color: ${colors.brand.primary};
   }
 `;
 
-const ExampleHelpIcon = () => (
-  <Modal
-    activateButton={
-      <Button stripped tabIndex={-1} className={dualIconCSS}>
-        <HelpCircleDual className="c-icon--22" />
-      </Button>
-    }>
-    {onClose => (
-      <Fragment>
-        <ModalHeader>
-          <ModalCloseButton onClick={onClose} title="Lukk" />
-        </ModalHeader>
-        <ModalBody>Some tekst..</ModalBody>
-      </Fragment>
-    )}
-  </Modal>
+const renderArticleInModal = pageId => (
+  <ArticleInModal
+    pageId={pageId}
+    activateButton={<InformationOutline className={iconClass} />}
+  />
 );
 
 const actions = [
@@ -59,61 +42,74 @@ const actions = [
     data: { type: 'block', object: 'block' },
     label: 'Paragraf',
     icon: <Quote />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('Paragraph'),
   },
   {
     data: { type: 'aside', object: 'factAside' },
     label: 'Faktaboks',
     icon: <FactBoxMaterial />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('FactASide'),
   },
   {
     data: { type: 'table', object: 'table' },
     label: 'Tabell',
     icon: <TableMaterial />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('Table'),
   },
   {
     data: { type: 'bodybox', object: 'bodybox' },
     label: 'Tekst i ramme',
     icon: <Framed />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('BodyBox'),
   },
   {
     data: { type: 'details', object: 'details' },
-    label: 'Ekspanderende boks',
+    label: 'Ekspanderbar boks',
     icon: <ArrowExpand />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('Details'),
   },
   {
     data: { type: 'embed', object: 'image' },
     label: 'Bilde',
     icon: <Camera />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('Images'),
   },
   {
     data: { type: 'embed', object: 'video' },
     label: 'Video',
     icon: <PlayBoxOutline />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('Videos'),
   },
   {
     data: { type: 'embed', object: 'audio' },
     label: 'Lyd',
     icon: <VolumeUp />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('Audios'),
   },
   {
     data: { type: 'embed', object: 'h5p' },
     label: 'H5P',
     icon: <PresentationPlay />,
-    helpIcon: <ExampleHelpIcon />,
+    helpIcon: renderArticleInModal('H5P'),
+  },
+
+  {
+    data: { type: 'embed', object: 'url' },
+    label: 'Ressurs fra lenke',
+    icon: <LinkIcon />,
+    helpIcon: renderArticleInModal('ResourceFromLink'),
+  },
+  {
+    data: { type: 'file', object: 'file' },
+    label: 'Fil',
+    icon: <Download />,
+    helpIcon: renderArticleInModal('File'),
   },
   {
     data: { type: 'related', object: 'related' },
     label: 'Relatert artikkel',
-    icon: <LinkIcon />,
-    helpIcon: <ExampleHelpIcon />,
+    icon: <RelatedArticle />,
+    helpIcon: renderArticleInModal('RelatedArticle'),
   },
 ];
 
@@ -134,7 +130,7 @@ class SlateBlockMenuExample extends Component {
 
   render() {
     return (
-      <div style={{ height: '700px' }}>
+      <div style={{ height: `${this.props.height}px` }}>
         <SlateBlockMenu
           isOpen={this.state.isOpen}
           heading="Legg til"
@@ -148,5 +144,13 @@ class SlateBlockMenuExample extends Component {
     );
   }
 }
+
+SlateBlockMenuExample.propTypes = {
+  height: PropTypes.number,
+};
+
+SlateBlockMenuExample.defaultProps = {
+  height: 700,
+};
 
 export default SlateBlockMenuExample;

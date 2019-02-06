@@ -20,11 +20,11 @@ import AudioSearcher from '../molecules/audioSearch';
 import VideoSearcher from '../molecules/videoSearch';
 import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
+import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
-import HowtoExamples from './HowtoExamples';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)

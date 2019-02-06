@@ -22,6 +22,8 @@ import AccordionExample from './AccordionExample';
 import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
+import UploaderExample from './UploaderExample';
+import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
@@ -137,6 +139,16 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
+  .add('Uploader', () => (
+    <div>
+      <StoryIntro title="Form elementer">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <UploaderExample />
+      </StoryBody>
+    </div>
+  ))
   .add('Editor', () => (
     <div>
       <StoryIntro title="Editor komponenter">
@@ -147,6 +159,29 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
+<<<<<<< Updated upstream
+=======
+  .add('FileListEditor', () => (
+    <div>
+      <StoryIntro title="Editor for redigering av fillister">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <FileListEditorExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('How-to', () => (
+    <div>
+      <StoryIntro title="Veiledningstekster">
+        <p>Midlertidige og statiske veiledningstekster</p>
+      </StoryIntro>
+      <StoryBody>
+        <HowtoExamples />
+      </StoryBody>
+    </div>
+  ))
+>>>>>>> Stashed changes
   .add('Sidestrurktur og taksonomi', () => (
     <div>
       <StoryIntro title="Sidesturktur og taksonomi" />

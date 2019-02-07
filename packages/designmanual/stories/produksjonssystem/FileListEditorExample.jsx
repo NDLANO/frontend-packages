@@ -43,7 +43,7 @@ class StructureExample extends Component {
           path: 'http://www.exampleurl6.com',
           title: 'Filename 6',
           type: 'pdf',
-        }
+        },
       ],
     };
     this.onUpdateFileName = this.onUpdateFileName.bind(this);
@@ -68,9 +68,7 @@ class StructureExample extends Component {
   }
 
   render() {
-    const {
-      addedFiles,
-    } = this.state;
+    const { addedFiles } = this.state;
 
     return (
       <FileListEditor

@@ -82,9 +82,11 @@ const FormWarningText = styled.span`
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
-  ${props => props.withLabel && css`
-    padding-left: ${spacing.spacingUnit * 4}px;
-  `}
+  ${props =>
+    props.withLabel &&
+    css`
+      padding-left: ${spacing.spacingUnit * 4}px;
+    `}
 `;
 
 class FormInput extends React.Component {
@@ -186,7 +188,9 @@ class FormInput extends React.Component {
             {iconRight && iconRight}
           </Component>
         </ComponentWrapper>
-        {warningText && <FormWarningText withLabel={label}>{warningText}</FormWarningText>}
+        {warningText && (
+          <FormWarningText withLabel={label}>{warningText}</FormWarningText>
+        )}
       </Wrapper>
     );
   }

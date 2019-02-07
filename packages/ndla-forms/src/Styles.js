@@ -6,7 +6,7 @@
  *
  */
 
-import { css } from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
 
 export const FormHeaderIconClass = css`
@@ -21,4 +21,15 @@ export const FormHeaderIconClass = css`
   &:focus {
     color: ${colors.brand.primary};
   }
+`;
+
+export const StyledButtonWrapper = styled.div`
+  display: flex;
+  margin-top: ${spacing.medium};
+
+  > button {
+    margin-right: ${spacing.small};
+  }
+  padding-left: ${props =>
+    props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0};
 `;

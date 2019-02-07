@@ -6,8 +6,7 @@ import { UploadDropZone } from '@ndla/forms';
 import { spacing, colors } from '@ndla/core';
 import { VolumeUp, Download, InformationOutline } from '@ndla/icons/common';
 
-const iconClass = css`
-`;
+const iconClass = css``;
 
 class SlateBlockMenuExample extends Component {
   constructor(props) {
@@ -32,8 +31,7 @@ class SlateBlockMenuExample extends Component {
           allowedFiles={['application/*', '.gif', '.csv']}
           onAddedFiles={this.addedFiles}
           multiple
-          loading={addedFiles.length > 0}
-        >
+          loading={addedFiles.length > 0}>
           <strong>Dra og slipp</strong> eller trykk for å laste opp bilde(r)
         </UploadDropZone>
         {addedFiles.map(file => (

@@ -59,4 +59,15 @@ export default {
               opacity: 0;
             }
           }`,
+  fadeIn: duration => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    animation-name: fadeOut;
+        @keyframes fadeOut {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }`,
 };

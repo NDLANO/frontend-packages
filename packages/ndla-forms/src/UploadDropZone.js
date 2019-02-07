@@ -34,7 +34,8 @@ const ContentWrapper = styled.div`
     width: ${spacing.large};
     height: ${spacing.large};
     color: ${colors.brand.tertiary};
-    transition: transform 300ms cubic-bezier(.2,1.44,.53,1), color 200ms ease;
+    transition: transform 300ms cubic-bezier(0.2, 1.44, 0.53, 1),
+      color 200ms ease;
   }
 `;
 
@@ -50,7 +51,7 @@ const DropZone = styled.div`
   border-radius: ${spacing.xsmall};
 
   input {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     background: red;
@@ -63,7 +64,7 @@ const DropZone = styled.div`
   }
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     background: ${colors.brand.tertiary};
@@ -72,7 +73,7 @@ const DropZone = styled.div`
     left: ${spacing.small};
     bottom: ${spacing.small};
     border-radius: ${misc.borderRadius};
-    opacity: ${props => props.draggedOver ? '0.32' : '0.16'};
+    opacity: ${props => (props.draggedOver ? '0.32' : '0.16')};
     transition: opacity 200ms ease;
   }
 `;
@@ -108,7 +109,8 @@ const cssLoading = css`
 const Wrapper = styled.div`
   margin: ${spacing.normal} 0 ${spacing.large};
   ${animations.fadeInBottom()};
-  &:hover, &:focus-within {
+  &:hover,
+  &:focus-within {
     ${cssHover}
   }
 `;
@@ -132,7 +134,7 @@ const AlertMessages = styled.div`
   ${fonts.sizes(14, 1.1)};
 `;
 
-const getFiles = e => {  
+const getFiles = e => {
   const files = [];
   let i;
   if (e.dataTransfer.items) {
@@ -147,7 +149,7 @@ const getFiles = e => {
     }
   }
   return files;
-}
+};
 
 class UploadDropZone extends Component {
   constructor(props) {
@@ -167,7 +169,8 @@ class UploadDropZone extends Component {
 
   componentDidMount() {
     // update size of input.
-    const dropZoneWidth = this.dropZoneRef.current.getBoundingClientRect().width - 6;
+    const dropZoneWidth =
+      this.dropZoneRef.current.getBoundingClientRect().width - 6;
     this.inputRef.current.style.width = `${dropZoneWidth}px`;
   }
 
@@ -178,7 +181,7 @@ class UploadDropZone extends Component {
   illegalFormats(files) {
     return files.filter(file => {
       const typeToArray = file.type.split('/');
-      const fileTypeAllowed = 
+      const fileTypeAllowed =
         this.props.allowedFiles.includes(`${typeToArray[0]}/*`) ||
         this.props.allowedFiles.includes(`.${typeToArray[1]}`);
 
@@ -200,7 +203,7 @@ class UploadDropZone extends Component {
     this.setState({
       dropAllowed: true,
       draggedOver: true,
-    }); 
+    });
   }
 
   onDragLeave() {
@@ -218,7 +221,9 @@ class UploadDropZone extends Component {
     if (!hasIllegalFiles) {
       this.props.onAddedFiles(files);
     } else {
-      const illegalFileTypes = files.map(file => file.type.substr(file.type.indexOf('/') + 1)).toString(', ');
+      const illegalFileTypes = files
+        .map(file => file.type.substr(file.type.indexOf('/') + 1))
+        .toString(', ');
       errorMessage = `Filetype(s) not supported: ${illegalFileTypes}`;
       clearTimeout(this.errorTimer);
       this.errorTimer = setTimeout(() => {
@@ -235,15 +240,19 @@ class UploadDropZone extends Component {
   }
 
   render() {
-    const { allowedFiles, multiple, useIcon, children, ariaLabel, loading } = this.props;
+    const {
+      allowedFiles,
+      multiple,
+      useIcon,
+      children,
+      ariaLabel,
+      loading,
+    } = this.props;
     const { dropAllowed, draggedOver, errorMessage } = this.state;
     return (
       <Fragment>
         <Wrapper className={cx(draggedOver && cssHover, loading && cssLoading)}>
-          <DropZone
-            dropAllowed={dropAllowed}
-            innerRef={this.dropZoneRef}
-          >
+          <DropZone dropAllowed={dropAllowed} innerRef={this.dropZoneRef}>
             <InputField
               type="file"
               name="file"
@@ -280,7 +289,7 @@ class UploadDropZone extends Component {
       </Fragment>
     );
   }
-};
+}
 
 UploadDropZone.propTypes = {
   allowedFiles: PropTypes.arrayOf(PropTypes.string).isRequired,

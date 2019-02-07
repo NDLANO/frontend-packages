@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
 import Button from '@ndla/button';
 import { UploadDropZone } from '@ndla/forms';
-import { spacing, colors } from '@ndla/core';
-import { VolumeUp, Download, InformationOutline } from '@ndla/icons/common';
 
-const iconClass = css``;
-
-class SlateBlockMenuExample extends Component {
+class UploadDropZoneExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,12 +36,4 @@ class SlateBlockMenuExample extends Component {
   }
 }
 
-SlateBlockMenuExample.propTypes = {
-  height: PropTypes.number,
-};
-
-SlateBlockMenuExample.defaultProps = {
-  height: 700,
-};
-
-export default SlateBlockMenuExample;
+export default UploadDropZoneExample;

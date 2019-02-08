@@ -9,7 +9,7 @@
 import React from 'react';
 import { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
-import { FormHeader } from '@ndla/forms';
+import { FormFieldHeader } from '@ndla/forms';
 import { InformationOutline } from '@ndla/icons/common';
 import { ArticleInModal } from '@ndla/howto';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
@@ -41,57 +41,57 @@ const HowToExamples = () => (
     <br />
     <br />
     <h1>Lisens og bruker:</h1>
-    <FormHeader title="Koble til avtale">
+    <FormFieldHeader title="Koble til avtale">
       {renderArticleInModal({
         pageId: 'userAgreements',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
-    <FormHeader title="Lisens">
+    </FormFieldHeader>
+    <FormFieldHeader title="Lisens">
       {renderArticleInModal({
         pageId: 'userLicense',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
+    </FormFieldHeader>
     <br />
     <br />
     <h1>Taksonomi:</h1>
-    <FormHeader title="Innholdstyper">
+    <FormFieldHeader title="Innholdstyper">
       {renderArticleInModal({
         pageId: 'TaxonomyContentTypes',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
-    <FormHeader title="Emnetilknytninger">
+    </FormFieldHeader>
+    <FormFieldHeader title="Emnetilknytninger">
       {renderArticleInModal({
         pageId: 'TaxonomySubjectConnections',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
-    <FormHeader title="Fagfilter">
+    </FormFieldHeader>
+    <FormFieldHeader title="Fagfilter">
       {renderArticleInModal({
         pageId: 'TaxonomySubjectFilters',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
+    </FormFieldHeader>
     <br />
     <br />
     <h1>Metadata:</h1>
-    <FormHeader title="Nøkkelord">
+    <FormFieldHeader title="Nøkkelord">
       {renderArticleInModal({
         pageId: 'MetaKeyword',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
-    <FormHeader title="Metabeskrivelse">
+    </FormFieldHeader>
+    <FormFieldHeader title="Metabeskrivelse">
       {renderArticleInModal({
         pageId: 'MetaDescription',
         tooltip: 'Hva er dette?',
       })}
-    </FormHeader>
-    <FormHeader title="Metabilde">
+    </FormFieldHeader>
+    <FormFieldHeader title="Metabilde">
       {renderArticleInModal({ pageId: 'MetaImage', tooltip: 'Hva er dette?' })}
-    </FormHeader>
+    </FormFieldHeader>
   </div>
 );
 

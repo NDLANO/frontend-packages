@@ -41,12 +41,12 @@ const siblingCSS = css`
   }
 `;
 
-const FormSections = ({ children }) => (
-  <Wrapper className={siblingCSS}>{children}</Wrapper>
+const FormFieldSection = ({ children }) => (
+  <Wrapper css={siblingCSS}>{children}</Wrapper>
 );
 
-FormSections.propTypes = {
+FormFieldSection.propTypes = {
   children: PropTypes.node,
 };
 
-export default FormSections;
+export default FormFieldSection;

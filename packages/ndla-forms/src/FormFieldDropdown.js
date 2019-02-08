@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { colors, spacing, fonts } from '@ndla/core';
 
-const FormSelectWrapper = styled.select`
+const StyledFormFieldSelect = styled.select`
   font-weight: ${fonts.weight.normal};
   color: ${colors.brand.primary};
   border: 0;
@@ -32,13 +32,13 @@ const FormSelectWrapper = styled.select`
   }
 `;
 
-const FormDropdown = ({ children, ...rest }) => (
-  <FormSelectWrapper {...rest}>{children}</FormSelectWrapper>
+const FormFieldDropdown = ({ children, ...rest }) => (
+  <StyledFormFieldSelect {...rest}>{children}</StyledFormFieldSelect>
 );
 
-FormDropdown.propTypes = {
+FormFieldDropdown.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func.isRequired,
 };
 
-export default FormDropdown;
+export default FormFieldDropdown;

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { colors, spacing, fonts } from '@ndla/core';
 
-const Wrapper = styled.div`
+const StyledFormFieldHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 2px solid ${colors.brand.light};
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Title = styled.h2`
+const StyledTitle = styled.h2`
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.bold};
   text-transform: uppercase;
@@ -47,25 +47,25 @@ const Title = styled.h2`
   }
 `;
 
-const FormHeader = ({ title, subTitle, width, children }) => (
-  <Wrapper wrapperWidth={width * 100}>
-    <Title>
+const FormFieldHeader = ({ title, subTitle, width, children }) => (
+  <StyledFormFieldHeaderWrapper wrapperWidth={width * 100}>
+    <StyledTitle>
       {title}
       {subTitle && <span>{subTitle}</span>}
-    </Title>
+    </StyledTitle>
     <div>{children}</div>
-  </Wrapper>
+  </StyledFormFieldHeaderWrapper>
 );
 
-FormHeader.propTypes = {
+FormFieldHeader.propTypes = {
   width: PropTypes.number,
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   children: PropTypes.node,
 };
 
-FormHeader.defaultProps = {
+FormFieldHeader.defaultProps = {
   width: 1,
 };
 
-export default FormHeader;
+export default FormFieldHeader;

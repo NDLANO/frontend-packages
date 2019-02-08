@@ -64,7 +64,7 @@ const FormWarningText = styled.span`
   ${fonts.sizes(14, 1.1)};
 `;
 
-class FormInput extends React.Component {
+class FormFieldInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -165,7 +165,7 @@ class FormInput extends React.Component {
   }
 }
 
-FormInput.propTypes = {
+FormFieldInput.propTypes = {
   iconRight: PropTypes.node,
   iconLeft: PropTypes.node,
   tags: PropTypes.node,
@@ -180,10 +180,10 @@ FormInput.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-FormInput.defaultProps = {
+FormFieldInput.defaultProps = {
   container: 'form',
   autoExpand: false,
   value: '',
 };
 
-export default FormInput;
+export default FormFieldInput;

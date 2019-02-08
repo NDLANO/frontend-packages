@@ -154,10 +154,12 @@ class InputComponent extends Component {
         spacing.spacingUnit}px`;
     }
     this.inputRef.current.focus();
+    this.inputRef.current.select();
   }
 
   render() {
     const { forwardedRef, usePortal, ...rest } = this.props;
+
     if (!usePortal) {
       return <StyledInput innerRef={this.inputRef} {...rest} />;
     }
@@ -204,7 +206,9 @@ class FileListEditor extends Component {
     );
   }
 
-  editFile(editFileIndex) {
+  editFile(e, editFileIndex) {
+    e.preventDefault();
+    e.stopPropagation();
     this.setState({
       editFileIndex,
     });
@@ -367,7 +371,7 @@ class FileListEditor extends Component {
                   <ButtonIcons
                     tabIndex={-1}
                     type="button"
-                    onClick={() => this.editFile(index)}>
+                    onClick={e => this.editFile(e, index)}>
                     <Pencil />
                   </ButtonIcons>
                 </Tooltip>

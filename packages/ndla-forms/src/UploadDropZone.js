@@ -195,7 +195,7 @@ class UploadDropZone extends Component {
       files.push(e.target.files[i]);
     }
     // Impossible to select illegal files so skip check.
-    this.props.onAddedFiles(files);
+    this.props.onAddedFiles(files, e);
     e.target.value = '';
   }
 
@@ -219,7 +219,7 @@ class UploadDropZone extends Component {
     const hasIllegalFiles = illegalFiles.length > 0;
     let errorMessage;
     if (!hasIllegalFiles) {
-      this.props.onAddedFiles(files);
+      this.props.onAddedFiles(files, e);
     } else {
       const illegalFileTypes = files
         .map(file => file.type.substr(file.type.indexOf('/') + 1))
@@ -241,6 +241,7 @@ class UploadDropZone extends Component {
 
   render() {
     const {
+      name,
       allowedFiles,
       multiple,
       useIcon,
@@ -255,7 +256,7 @@ class UploadDropZone extends Component {
           <DropZone dropAllowed={dropAllowed} innerRef={this.dropZoneRef}>
             <InputField
               type="file"
-              name="file"
+              name={name}
               aria-label={ariaLabel}
               accept={allowedFiles.toString()}
               multiple={multiple}
@@ -292,6 +293,7 @@ class UploadDropZone extends Component {
 }
 
 UploadDropZone.propTypes = {
+  name: PropTypes.string.isRequired,
   allowedFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
   onAddedFiles: PropTypes.func.isRequired,
   multiple: PropTypes.bool,

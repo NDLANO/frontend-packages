@@ -214,14 +214,11 @@ class UploadDropZone extends Component {
   }
 
   onDrop(e) {
-    e.preventDefault();
     const files = getFiles(e);
     const illegalFiles = this.illegalFormats(files);
     const hasIllegalFiles = illegalFiles.length > 0;
     let errorMessage;
-    if (!hasIllegalFiles) {
-      this.props.onAddedFiles(files, e);
-    } else {
+    if (hasIllegalFiles) {
       const illegalFileTypes = files
         .map(file => file.type.substr(file.type.indexOf('/') + 1))
         .toString(', ');
@@ -232,6 +229,7 @@ class UploadDropZone extends Component {
           dropAllowed: true,
         });
       }, 5000);
+      e.preventDefault();
     }
     this.setState({
       dropAllowed: !hasIllegalFiles,

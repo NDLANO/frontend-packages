@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@ndla/button';
 import { UploadDropZone } from '@ndla/forms';
 
 class UploadDropZoneExample extends Component {
@@ -7,30 +6,42 @@ class UploadDropZoneExample extends Component {
     super(props);
     this.state = {
       addedFiles: [],
+      uploading: false,
     };
     this.addedFiles = this.addedFiles.bind(this);
   }
 
   addedFiles(newFiles) {
-    this.setState(prevState => ({
-      addedFiles: prevState.addedFiles.concat(newFiles),
-    }));
+    clearInterval(this.fakeTimer);
+    this.setState({
+      uploading: true,
+    }, () => {
+      this.fakeTimer = setTimeout(() => {
+        this.setState(prevState => ({
+          addedFiles: prevState.addedFiles.concat(newFiles),
+          uploading: false,
+        }));
+      }, 500);
+    });
   }
 
   render() {
-    const { addedFiles } = this.state;
+    const { addedFiles, uploading } = this.state;
     return (
       <div>
         <UploadDropZone
-          allowedFiles={['application/*', '.gif', '.csv']}
+          allowedFiles={['application/pdf', 'image/*']}
           onAddedFiles={this.addedFiles}
           multiple
-          loading={addedFiles.length > 0}>
+          ariaLabel="Upload example"
+          loading={uploading}>
           <strong>Dra og slipp</strong> eller trykk for å laste opp bilde(r)
         </UploadDropZone>
-        {addedFiles.map(file => (
-          <Button key={file.name}>{file.name}</Button>
-        ))}
+        <ul>
+          {addedFiles.map(file => (
+            <li key={file.name}>{file.name}</li>
+          ))}
+        </ul>
       </div>
     );
   }

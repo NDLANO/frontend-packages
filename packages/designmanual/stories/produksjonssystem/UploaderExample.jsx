@@ -13,16 +13,19 @@ class UploadDropZoneExample extends Component {
 
   addedFiles(newFiles) {
     clearInterval(this.fakeTimer);
-    this.setState({
-      uploading: true,
-    }, () => {
-      this.fakeTimer = setTimeout(() => {
-        this.setState(prevState => ({
-          addedFiles: prevState.addedFiles.concat(newFiles),
-          uploading: false,
-        }));
-      }, 500);
-    });
+    this.setState(
+      {
+        uploading: true,
+      },
+      () => {
+        this.fakeTimer = setTimeout(() => {
+          this.setState(prevState => ({
+            addedFiles: prevState.addedFiles.concat(newFiles),
+            uploading: false,
+          }));
+        }, 500);
+      },
+    );
   }
 
   render() {

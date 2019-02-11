@@ -182,6 +182,7 @@ class UploadDropZone extends Component {
     return files.filter(file => {
       const typeToArray = file.type.split('/');
       const fileTypeAllowed =
+        this.props.allowedFiles.includes(file.type) ||
         this.props.allowedFiles.includes(`${typeToArray[0]}/*`) ||
         this.props.allowedFiles.includes(`.${typeToArray[1]}`);
 

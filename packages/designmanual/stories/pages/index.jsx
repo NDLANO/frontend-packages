@@ -44,6 +44,7 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
+import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
@@ -407,7 +408,7 @@ storiesOf('Ndla film', module)
       <FooterExample inverted />
     </PageContainer>
   ))
-  .add('Film (emne)', () => (
+  .add('Film (emne side)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
@@ -415,38 +416,23 @@ storiesOf('Ndla film', module)
           articleId="3396"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
+          withBackgroundImage
         />
       </Content>
       <FooterExample inverted />
     </PageContainer>
   ))
-  .add('Film (emne uten bilde)', () => (
+  .add('Film emne (over film)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
         <ArticleLoaderNdlaFilm
-          articleId="3396"
+          articleId="4824"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
+          hideResources
+          showSubTopics
         />
-      </Content>
-      <FooterExample inverted />
-    </PageContainer>
-  ))
-  .add('Emne (over film)', () => (
-    <PageContainer backgroundWide ndlaFilm>
-      <Content>
-        <MastheadWithTopicMenu ndlaFilm />
-        <NdlaFilmHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </NdlaFilmHero>
-        <ArticleLearningmaterial ndlaFilm />
       </Content>
       <FooterExample inverted />
     </PageContainer>
@@ -454,7 +440,7 @@ storiesOf('Ndla film', module)
   .add('Ndla film editor', () => (
     <PageContainer>
       <Content>
-        <NdlaFilmFrontpage editor />
+        <NdlaFilmEditorExample />
       </Content>
     </PageContainer>
   ));

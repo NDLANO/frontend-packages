@@ -12,7 +12,7 @@ import Swipe from 'react-swipe-component';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 
-import { movieShape } from './FilmFrontpage';
+import { movieShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'film-movielist',
@@ -145,7 +145,7 @@ class FilmMovieList extends Component {
               }}>
               {movies.map(slide => (
                 <a
-                  href={slide.contexts[0].path}
+                  href={slide.url}
                   key={slide.id}
                   {...classes('slide-item')}
                   style={{ width: `${columnWidth}px` }}>
@@ -160,18 +160,19 @@ class FilmMovieList extends Component {
                         ''})`,
                     }}>
                     <div {...classes('movie-tags-wrapper')}>
-                      {Object.keys(slide.movieTypes).map(movieType => (
-                        <span {...classes('movie-tags')} key={movieType}>
-                          {
-                            resourceTypes.find(
-                              resourceType => resourceType.id === movieType,
-                            ).name
-                          }
-                        </span>
-                      ))}
+                      {Object.keys(slide.movieTypes).map(movieType => {
+                        const resource = resourceTypes.find(
+                          resourceType => resourceType.id === movieType,
+                        );
+                        return resource ? (
+                          <span {...classes('movie-tags')} key={movieType}>
+                            {resource.name}
+                          </span>
+                        ) : null;
+                      })}
                     </div>
                   </div>
-                  <h2 {...classes('movie-title')}>{slide.title.title}</h2>
+                  <h2 {...classes('movie-title')}>{slide.title}</h2>
                 </a>
               ))}
             </div>
@@ -190,11 +191,17 @@ FilmMovieList.propTypes = {
   margin: PropTypes.number.isRequired,
   slideBackwardsLabel: PropTypes.string.isRequired,
   slideForwardsLabel: PropTypes.string.isRequired,
-  resourceTypes: PropTypes.shape().isRequired,
+  resourceTypes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      id: PropTypes.id,
+    }),
+  ),
 };
 
 FilmMovieList.defaultProps = {
   movies: [],
+  resourceTypes: [],
 };
 
 export default FilmMovieList;

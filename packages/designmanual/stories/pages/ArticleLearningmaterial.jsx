@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   OneColumn,
@@ -27,7 +26,7 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 
-const ArticleLearningMaterial = ({ ndlaFilm }) => (
+const ArticleLearningMaterial = () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
@@ -93,14 +92,10 @@ const ArticleLearningMaterial = ({ ndlaFilm }) => (
         <RelatedArticleListExample />
       </LayoutItem>
       <LayoutItem layout="extend">
-        <Topics ndlaFilm={ndlaFilm} />
+        <Topics />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>
 );
-
-ArticleLearningMaterial.PropTypes = {
-  ndlaFilm: PropTypes.bool,
-};
 
 export default ArticleLearningMaterial;

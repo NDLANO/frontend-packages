@@ -13,7 +13,7 @@ import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn } from '@ndla/ui';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
-import { movieShape } from './FilmFrontpage';
+import { movieShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -180,13 +180,13 @@ class FilmSlideshow extends Component {
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <a
-                href={slideshow[activeSlide].contexts[0].path}
+                href={slideshow[activeSlide].url}
                 ref={this.slideText}
                 {...classes('item-wrapper', 'text', {
                   out: !animationComplete,
                 })}>
                 <div {...classes('slide-info')}>
-                  <h1>{slideshow[activeSlide].title.title}</h1>
+                  <h1>{slideshow[activeSlide].title}</h1>
                   <p>
                     {slideshow[activeSlide].metaDescription.metaDescription}
                   </p>

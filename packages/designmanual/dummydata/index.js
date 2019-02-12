@@ -35,6 +35,15 @@ import { mockDownloadArticleText } from './mockDownloadArticleText';
 import contentCards from './mockContentCards';
 import { mockListView } from './mockListView';
 
+import {
+  mockAllMovies,
+  mockHighlightedMovies,
+  movieTopics,
+  movieThemes,
+  mockMovieTopics,
+  mockMovieResourceTypes,
+} from './mockFilm';
+
 export {
   topicMenu,
   topicList,
@@ -61,4 +70,10 @@ export {
   contentCards,
   mockDownloadArticleText,
   mockListView,
+  mockAllMovies,
+  mockHighlightedMovies,
+  movieTopics,
+  movieThemes,
+  mockMovieTopics,
+  mockMovieResourceTypes,
 };

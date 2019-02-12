@@ -450,6 +450,8 @@ const messages = {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',
     movieMatchInCategory: 'Treff',
+    loadingMovies: 'Henter filmer..',
+    subjectsInMovies: 'Emner i film',
     about: {
       heading: 'Om NDLA Film',
       text:

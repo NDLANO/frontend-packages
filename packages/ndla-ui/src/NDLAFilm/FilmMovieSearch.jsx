@@ -14,7 +14,7 @@ import FocusTrapReact from 'focus-trap-react';
 import { OneColumn, SafeLink } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
 import { ChevronDown } from '@ndla/icons/common';
-import topicShape from './FilmFrontpage';
+import { topicShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'film-moviesearch',
@@ -58,12 +58,12 @@ class FilmMovieSearch extends Component {
         <OneColumn>
           <div {...classes('topic-navigation')}>
             <h2 {...classesMovieList('heading', '', 'u-12/12 u-4/12@tablet')}>
-              Emner i film:
+              {t('ndlaFilm.subjectsInMovies')}:
             </h2>
             <nav className="u-12/12 u-8/12@tablet">
               <ul>
                 {topics.map(topic => (
-                  <li>
+                  <li key={topic.id}>
                     <SafeLink to="#" key={topic.id}>
                       <span>{topic.name}</span>
                     </SafeLink>
@@ -104,7 +104,7 @@ class FilmMovieSearch extends Component {
                 aria-expanded={!resourceTypesIsOpen}
                 aria-controls="selectCategory"
                 type="button"
-                {...classes('dropdown-button')}
+                {...classes('dropdown-button', 'toggleButton')}
                 tabIndex={resourceTypesIsOpen ? -1 : 0}
                 ref={this.buttonRef}
                 onClick={() => {
@@ -112,14 +112,16 @@ class FilmMovieSearch extends Component {
                     resourceTypesIsOpen: !resourceTypesIsOpen,
                   });
                 }}>
-                <span>
-                  {t('ndlaFilm.search.chooseCategory')}
+                <div>
+                  <span>{t('ndlaFilm.search.chooseCategory')}</span>
                   <small>
                     {(resourceTypeSelected && resourceTypeSelected.name) ||
                       t('ndlaFilm.search.categoryFromNdla')}
                   </small>
-                </span>
-                <ChevronDown className="c-icon--22" />
+                </div>
+                <div>
+                  <ChevronDown className="c-icon--22" />
+                </div>
               </button>
               {resourceTypesIsOpen && (
                 <div
@@ -177,7 +179,7 @@ FilmMovieSearch.propTypes = {
     id: PropTypes.string,
   }),
   ariaControlId: PropTypes.string.isRequired,
-  t: PropTypes.shape({}),
+  t: PropTypes.func.isRequired,
 };
 
 export default injectT(FilmMovieSearch);

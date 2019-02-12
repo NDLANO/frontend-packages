@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
@@ -15,11 +15,12 @@ import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import { injectT } from '@ndla/i18n';
+import { movieShape, topicShape } from './shapes';
 import FilmSlideshow from './FilmSlideshow';
 import FilmMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
 import FrontpagePlaceholder from './FrontpagePlaceholder';
-import { AboutNDLAFilmNb } from './AboutNDLAFilmNb';
+import { AboutNDLAFilmNb, AboutNDLAFilmNn, AboutNDLAFilmEn } from './aboutNDLA';
 
 const classes = new BEMHelper({
   name: 'film-frontpage',
@@ -45,6 +46,7 @@ class FilmFrontpage extends Component {
     this.onChangeResourceType = this.onChangeResourceType.bind(this);
     this.setScreenSize = this.setScreenSize.bind(this);
     this.setScreenSizeDebounced = debounce(() => this.setScreenSize(false), 50);
+    this.movieListRef = React.createRef();
   }
 
   componentDidMount() {
@@ -58,8 +60,17 @@ class FilmFrontpage extends Component {
   }
 
   onChangeResourceType(resourceTypeSelected) {
+    const loadingPlaceholderHeight = `${
+      this.movieListRef.current.getBoundingClientRect().height
+    }px`;
+
+    if (resourceTypeSelected) {
+      this.props.onSelectedMovieByType(resourceTypeSelected);
+    }
+
     this.setState({
       resourceTypeSelected,
+      loadingPlaceholderHeight,
     });
   }
 
@@ -104,14 +115,28 @@ class FilmFrontpage extends Component {
     /* eslint react/no-did-mount-set-state: 1 */
   }
 
+  renderAboutNDLA() {
+    const { language } = this.props;
+    if (language === 'nb') {
+      return <AboutNDLAFilmNb />;
+    }
+    if (language === 'nn') {
+      return <AboutNDLAFilmNn />;
+    }
+    if (language === 'en') {
+      return <AboutNDLAFilmEn />;
+    }
+  }
+
   render() {
     const {
       highlighted,
       themes,
       resourceTypes,
       topics,
-      allMovies,
       aboutNDLAVideo,
+      moviesByType,
+      fetchingMoviesByType,
       t,
     } = this.props;
     const {
@@ -122,17 +147,8 @@ class FilmFrontpage extends Component {
     } = this.state;
 
     if (highlighted.length === 0) {
-      // Loading.
       return <FrontpagePlaceholder />;
     }
-
-    const filteredMovies =
-      resourceTypeSelected &&
-      allMovies.filter(movie =>
-        Object.keys(movie.movieTypes).some(
-          movieTypeId => movieTypeId === resourceTypeSelected,
-        ),
-      );
 
     const resourceTypeName =
       resourceTypeSelected &&
@@ -150,7 +166,7 @@ class FilmFrontpage extends Component {
           resourceTypeSelected={resourceTypeName}
           onChangeResourceType={this.onChangeResourceType}
         />
-        <div id={ARIA_FILMCATEGORY_ID}>
+        <div id={ARIA_FILMCATEGORY_ID} ref={this.movieListRef}>
           {resourceTypeSelected ? (
             <section>
               <h1
@@ -158,53 +174,69 @@ class FilmFrontpage extends Component {
                 style={{ marginLeft: `${margin + 7}px` }}>
                 {resourceTypeName && resourceTypeName.name}
                 <small>
-                  {filteredMovies.length} {t('ndlaFilm.movieMatchInCategory')}
+                  {fetchingMoviesByType
+                    ? t('ndlaFilm.loadingMovies')
+                    : `${moviesByType.length} ${t(
+                        'ndlaFilm.movieMatchInCategory',
+                      )}`}
                 </small>
               </h1>
               <div
                 {...classes('movie-listing')}
                 style={{ marginLeft: `${margin}px` }}>
-                {filteredMovies.map(movie => (
-                  <a
-                    href={movie.contexts[0].path}
-                    key={movie.id}
-                    {...classes(
-                      'movie-item',
-                      '',
-                      'c-film-movielist__slide-item',
-                    )}
-                    style={{ width: `${columnWidth}px` }}>
-                    <div
-                      {...movieListClasses('slidecolumn-image')}
-                      role="img"
-                      aria-label={movie.metaImage ? movie.metaImage.alt : ''}
-                      style={{
-                        height: `${columnWidth * 0.5625}px`,
-                        backgroundImage: `url(${
-                          movie.metaImage && movie.metaImage.url
-                            ? movie.metaImage.url
-                            : ''
-                        })`,
-                      }}>
-                      <div {...movieListClasses('movie-tags-wrapper')}>
-                        {Object.keys(movie.movieTypes).map(movieType => (
-                          <span
-                            {...movieListClasses('movie-tags')}
-                            key={movieType}>
-                            {
-                              resourceTypes.find(
-                                resourceType => resourceType.id === movieType,
-                              ).name
-                            }
-                          </span>
-                        ))}
+                {fetchingMoviesByType && (
+                  <div
+                    style={{ height: this.state.loadingPlaceholderHeight }}
+                  />
+                )}
+                {!fetchingMoviesByType &&
+                  moviesByType.map(movie => (
+                    <a
+                      href={movie.url}
+                      key={movie.id}
+                      {...classes(
+                        'movie-item',
+                        '',
+                        'c-film-movielist__slide-item',
+                      )}
+                      style={{ width: `${columnWidth}px` }}>
+                      <div
+                        {...movieListClasses('slidecolumn-image')}
+                        role="img"
+                        aria-label={movie.metaImage ? movie.metaImage.alt : ''}
+                        style={{
+                          height: `${columnWidth * 0.5625}px`,
+                          backgroundImage: `url(${
+                            movie.metaImage && movie.metaImage.url
+                              ? movie.metaImage.url
+                              : ''
+                          })`,
+                        }}>
+                        <div {...movieListClasses('movie-tags-wrapper')}>
+                          {Object.keys(movie.movieTypes).map(movieType => {
+                            const resource = resourceTypes.find(
+                              resourceType => resourceType.id === movieType,
+                            );
+                            return resource ? (
+                              <span
+                                {...movieListClasses('movie-tags')}
+                                key={movieType}>
+                                {
+                                  resourceTypes.find(
+                                    resourceType =>
+                                      resourceType.id === movieType,
+                                  ).name
+                                }
+                              </span>
+                            ) : null;
+                          })}
+                        </div>
                       </div>
-                    </div>
-                    <h2 {...movieListClasses('movie-title')}>
-                      {movie.title.title}
-                    </h2>
-                  </a>
-                ))}
+                      <h2 {...movieListClasses('movie-title')}>
+                        {movie.title}
+                      </h2>
+                    </a>
+                  ))}
               </div>
             </section>
           ) : (
@@ -232,14 +264,12 @@ class FilmFrontpage extends Component {
               <Modal
                 activateButton={<Button link>Les mer om NDLA film</Button>}>
                 {onClose => (
-                  <Fragment>
+                  <>
                     <ModalHeader>
                       <ModalCloseButton onClick={onClose} title="Lukk" />
                     </ModalHeader>
-                    <ModalBody>
-                      <AboutNDLAFilmNb />
-                    </ModalBody>
-                  </Fragment>
+                    <ModalBody>{this.renderAboutNDLA()}</ModalBody>
+                  </>
                 )}
               </Modal>
             </div>
@@ -250,40 +280,9 @@ class FilmFrontpage extends Component {
   }
 }
 
-export const movieShape = PropTypes.shape({
-  contexts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      resourceTypes: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string,
-          id: PropTypes.string,
-        }),
-      ),
-      subject: PropTypes.string,
-    }),
-  ).isRequired,
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  metaDescription: PropTypes.shape({
-    metaDescription: PropTypes.string,
-  }),
-  metaImage: PropTypes.shape({
-    url: PropTypes.string,
-    alt: PropTypes.string,
-  }),
-  title: PropTypes.shape({
-    title: PropTypes.string,
-  }),
-  url: PropTypes.string,
-});
-
-export const topicShape = PropTypes.shape({
-  id: PropTypes.string,
-  name: PropTypes.string,
-});
-
 FilmFrontpage.propTypes = {
-  allMovies: PropTypes.arrayOf(movieShape),
+  fetchingMoviesByType: PropTypes.bool,
+  moviesByType: PropTypes.arrayOf(movieShape),
   highlighted: PropTypes.arrayOf(movieShape),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
@@ -298,12 +297,14 @@ FilmFrontpage.propTypes = {
       id: PropTypes.id,
     }),
   ),
+  onSelectedMovieByType: PropTypes.func.isRequired,
   aboutNDLAVideo: PropTypes.node.isRequired,
-  t: PropTypes.shape({}),
+  language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 FilmFrontpage.defaultProps = {
-  allMovies: [],
+  moviesByType: [],
   highlighted: [],
   themes: [],
   resourceTypes: [],

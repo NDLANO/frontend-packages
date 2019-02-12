@@ -1,3 +1,5 @@
+import { uuid } from '@ndla/util';
+
 // Documentaries
 import DirtyWars from '../images/ndla-film/documentary/Dirty-wars.jpg';
 import ExitThroughTheGiftShop from '../images/ndla-film/documentary/Exit-through-the-gift-shop.jpg';
@@ -33,7 +35,7 @@ export const MOVIE_CONTENTTYPE_ID = 'contentTypeId:movie';
 export const TVSERIES_CONTENTTYPE_ID = 'contentTypeId:tvseries';
 export const SHORTMOVIE_CONTENTTYPE_ID = 'contentTypeId:shortmovie';
 
-export const contentTypes = [
+export const mockMovieResourceTypes = [
   {
     name: 'Dokumentar',
     id: DOCUMENTARY_CONTENTTYPE_ID,
@@ -52,304 +54,282 @@ export const contentTypes = [
   },
 ];
 
+// helper function
+const returnMovie = ({ title, image, metaDescription, movieTypes }) => ({
+  title,
+  id: uuid(),
+  url: '#',
+  metaDescription: {
+    metaDescription,
+  },
+  metaImage: {
+    url: image,
+    alt: 'Image alt-text',
+  },
+  movieTypes,
+});
+
 export const tvSeries = [
-  {
-    name: 'Tørk aldri tårer uten hansker',
-    id: 'TorkAldriTorer',
-    path: '#',
-    contentType: TVSERIES_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: TorkAldriTorer,
-      },
+  returnMovie({
+    title: 'Tørk aldri tårer uten hansker',
+    image: TorkAldriTorer,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [TVSERIES_CONTENTTYPE_ID]: true,
     },
-  },
-  {
-    name: 'Krigens unge hjerter',
-    id: 'KrigensUngeHjerter',
-    path: '#',
-    contentType: TVSERIES_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: KrigensUngeHjerter,
-      },
+  }),
+  returnMovie({
+    title: 'Krigens unge hjerter',
+    image: KrigensUngeHjerter,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [TVSERIES_CONTENTTYPE_ID]: true,
     },
-  },
-  {
-    name: 'Kampen om tungtvannet',
-    id: 'KampenOmTungtvannet',
-    path: '#',
-    contentType: TVSERIES_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: KampenOmTungtvannet,
-      },
+  }),
+  returnMovie({
+    title: 'Kampen om tungtvannet',
+    image: KampenOmTungtvannet,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [TVSERIES_CONTENTTYPE_ID]: true,
     },
-  },
-  {
-    name: 'Halvbroren',
-    id: 'Halvbroren',
-    path: '#',
-    contentType: TVSERIES_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Halvbroren,
-      },
+  }),
+  returnMovie({
+    title: 'Halvbroren',
+    image: Halvbroren,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [TVSERIES_CONTENTTYPE_ID]: true,
     },
-  },
+  }),
 ];
 export const shortmovies = [
-  {
-    name: 'Mannen fra isøde',
-    id: 'Mann',
-    path: '#',
-    contentType: SHORTMOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: MannenFraIsode,
-      },
+  returnMovie({
+    title: 'Mannen fra isøde',
+    image: MannenFraIsode,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [SHORTMOVIE_CONTENTTYPE_ID]: true,
     },
-  },
-  {
-    name: 'Inn i vårt mørke hus',
-    id: 'innI',
-    path: '#',
-    contentType: SHORTMOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: IVartHus,
-      },
+  }),
+  returnMovie({
+    title: 'Inn i vårt mørke hus',
+    image: IVartHus,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [SHORTMOVIE_CONTENTTYPE_ID]: true,
     },
-  },
-  {
-    name: 'Cold Mailman. My recurring dream',
-    id: 'coldmail',
-    path: '#',
-    contentType: SHORTMOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: ColdMailman,
-      },
+  }),
+  returnMovie({
+    title: 'Cold Mailman. My recurring dream',
+    image: ColdMailman,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [SHORTMOVIE_CONTENTTYPE_ID]: true,
     },
-  },
-  {
-    name: '1994',
-    id: '1994',
-    path: '#',
-    contentType: SHORTMOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Film1994,
-      },
+  }),
+  returnMovie({
+    title: '1994',
+    image: Film1994,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [SHORTMOVIE_CONTENTTYPE_ID]: true,
     },
-  },
-];
-export const documentaries = [
-  {
-    name: 'Dirty wars',
-    id: 'dirtywars',
-    path: '#',
-    contentType: DOCUMENTARY_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: DirtyWars,
-      },
-    },
-  },
-  {
-    name: 'Exit through the gift shop',
-    id: 'film2',
-    path: '#',
-    contentType: DOCUMENTARY_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: ExitThroughTheGiftShop,
-      },
-    },
-  },
-  {
-    name: 'Kon Tiki',
-    id: 'film3',
-    path: '#',
-    contentType: DOCUMENTARY_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: KonTiki,
-      },
-    },
-  },
-  {
-    name: 'Inequality for all',
-    id: 'film4',
-    path: '#',
-    contentType: DOCUMENTARY_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: InequalityForAll,
-      },
-    },
-  },
-];
-export const movies = [
-  {
-    name: 'Gullkysten',
-    id: 'gullkysten',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Gullkysten,
-      },
-    },
-  },
-  {
-    name: 'Girlhood',
-    id: 'girlhood',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Girlhood,
-      },
-    },
-  },
-  {
-    name: 'Die Welle',
-    id: 'diewelle',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: DieWelle,
-      },
-    },
-  },
-  {
-    name: 'Citizen Kane',
-    id: 'citizenKane',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: CitizenKane,
-      },
-    },
-  },
-  {
-    name: 'Børning',
-    id: 'borning',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Borning,
-      },
-    },
-  },
-  {
-    name: 'Beatles',
-    id: 'beatles',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Beatles,
-      },
-    },
-  },
-  {
-    name: 'Arn Tempelridderen',
-    id: 'arn',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: ArnTempelridderen,
-      },
-    },
-  },
-  {
-    name: 'Amalie',
-    id: 'amalie',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: Amalie,
-      },
-    },
-  },
-  {
-    name: 'Adjø Montebello',
-    id: 'adjo',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: AdjoMontebello,
-      },
-    },
-  },
-  {
-    name: '12 Years a slave',
-    id: '12ye',
-    path: '#',
-    contentType: MOVIE_CONTENTTYPE_ID,
-    metaData: {
-      description: 'Fin film..',
-      image: {
-        alt: 'alt',
-        img: YearsASlave,
-      },
-    },
-  },
+  }),
 ];
 
-export const allMovies = [
+export const documentaries = [
+  returnMovie({
+    title: 'Dirty wars',
+    image: DirtyWars,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [DOCUMENTARY_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Exit through the gift shop',
+    image: ExitThroughTheGiftShop,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [DOCUMENTARY_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Kon Tiki',
+    image: KonTiki,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [DOCUMENTARY_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Inequality for all',
+    image: InequalityForAll,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [DOCUMENTARY_CONTENTTYPE_ID]: true,
+    },
+  }),
+];
+
+export const movies = [
+  returnMovie({
+    title: 'Gullkysten',
+    image: Gullkysten,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Girlhood',
+    image: Girlhood,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Die Welle',
+    image: DieWelle,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Citizen Kane',
+    image: CitizenKane,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Børning',
+    image: Borning,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Beatles',
+    image: Beatles,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Arn Tempelridderen',
+    image: ArnTempelridderen,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Amalie',
+    image: Amalie,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: 'Adjø Montebello',
+    image: AdjoMontebello,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+  returnMovie({
+    title: '12 Years a slave',
+    image: YearsASlave,
+    metaDescription: 'Lorem ipsum..',
+    movieTypes: {
+      [MOVIE_CONTENTTYPE_ID]: true,
+    },
+  }),
+];
+
+export const mockAllMovies = [
   ...documentaries,
   ...shortmovies,
   ...movies,
   ...tvSeries,
 ];
+
+export const movieTopics = [
+  {
+    id: 'topicId',
+    name: 'topicName',
+  },
+];
+
+export const movieThemes = [
+  {
+    name: 'Mest sett',
+    movies: [
+      documentaries[0],
+      tvSeries[0],
+      movies[0],
+      movies[1],
+      tvSeries[2],
+      documentaries[2],
+    ],
+  },
+  {
+    name: 'Tema eksempel',
+    movies: [
+      documentaries[3],
+      tvSeries[1],
+      movies[3],
+      documentaries[1],
+      movies[1],
+      tvSeries[3],
+      documentaries[2],
+      movies[4],
+      movies[5],
+    ],
+  },
+  {
+    name: 'Tema eksempel 2',
+    movies: [
+      movies[6],
+      movies[1],
+      movies[7],
+      documentaries[1],
+      movies[0],
+      tvSeries[2],
+    ],
+  },
+];
+
+export const mockMovieTopics = [
+  {
+    name: 'Filmkunnskap',
+    id: 'urn:topic:1:185592',
+    path: '/subject:14/topic:1:185588/topic:1:185592',
+  },
+  {
+    name: 'Demokrati og medborgerskap',
+    id: 'urn:topic:1:185591',
+    path: '/subject:14/topic:1:185588/topic:1:185591',
+  },
+  {
+    name: 'Folkehelse og livsmestring',
+    id: 'urn:topic:1:185593',
+    path: '/subject:14/topic:1:185588/topic:1:185593',
+  },
+  {
+    name: 'Bærekraftig utvikling',
+    id: 'urn:topic:1:185594',
+    path: '/subject:14/topic:1:185588/topic:1:185594',
+  },
+];
+
+export const mockHighlightedMovies = tvSeries;

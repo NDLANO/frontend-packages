@@ -14,8 +14,10 @@
       align-items: flex-start;
       flex-wrap: wrap;
       padding: 0;
-      padding-left: $spacing;
       margin: $spacing--small 0;
+      @include mq(tablet) {
+        padding-left: $spacing;
+      }
       li {
         padding: 0;
         width: 100%;
@@ -42,12 +44,22 @@
     padding: $spacing--small $spacing--small * 1.5;
     font-weight: $font-weight-semibold;
     display: flex;
+    align-items: center;
     text-align: left;
     justify-content: space-between;
     width: 100%;
     letter-spacing: 0.05em;
     @include mq(tablet) {
       padding: $spacing--small $spacing;
+    }
+    div:first-child {
+      @include mq($until: tablet) {
+        display: flex;
+        flex-direction: column;
+        small {
+          padding: 0;
+        }
+      }
     }
     small {
       text-transform: none;

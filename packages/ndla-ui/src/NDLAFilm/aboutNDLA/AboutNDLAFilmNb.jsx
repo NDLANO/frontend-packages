@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 export const AboutNDLAFilmNb = () => (
-  <Fragment>
+  <>
     <h1>NDLA Film</h1>
     <hr />
     <p>
@@ -49,5 +49,5 @@ export const AboutNDLAFilmNb = () => (
     <p>
       <strong>Vi ønsker alle filmelskere en god og lærerik opplevelse!</strong>
     </p>
-  </Fragment>
+  </>
 );

@@ -6,61 +6,27 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import moment from 'moment';
-import {
-  OneColumn,
-  Article,
-  ResourcesWrapper,
-  ResourcesTopicTitle,
-  TopicIntroductionList,
-  NdlaFilmHero,
-} from '@ndla/ui';
+import { OneColumn, Article, NdlaFilmHero } from '@ndla/ui';
 import Button from '@ndla/button';
 import Breadcrumb from '../molecules/breadcrumbs';
 import Resources from '../molecules/resources';
+import Topics from '../molecules/topics';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import { topicList } from '../../dummydata/index';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
-
-const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
-  <ResourcesWrapper
-    header={
-      <ResourcesTopicTitle
-        title="Medieproduksjon"
-        hasAdditionalResources={topicList.some(topic => topic.additional)}
-        toggleAdditionalResources={toggleAdditionalCores}
-        showAdditionalResources={showAdditionalCores}
-      />
-    }>
-    <TopicIntroductionList
-      toTopic={() => '#'}
-      topics={topicList}
-      messages={{
-        shortcutButtonText: 'Lærestoff',
-      }}
-    />
-  </ResourcesWrapper>
-);
-
-ResourcesSubTopics.propTypes = {
-  showAdditionalCores: PropTypes.bool,
-  toggleAdditionalCores: PropTypes.func,
-};
 
 class ArticleLoaderNdlaFilm extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      showAdditionalCores: false,
       article: undefined,
     };
-    this.toggleAdditionalCores = this.toggleAdditionalCores.bind(this);
   }
 
   componentDidMount() {
@@ -88,12 +54,6 @@ class ArticleLoaderNdlaFilm extends Component {
       });
   }
 
-  toggleAdditionalCores() {
-    this.setState(prevState => ({
-      showAdditionalCores: !prevState.showAdditionalCores,
-    }));
-  }
-
   render() {
     const { article, message } = this.state;
     const {
@@ -103,6 +63,7 @@ class ArticleLoaderNdlaFilm extends Component {
       label,
       hideResources,
       showSubTopics,
+      withBackgroundImage,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -115,13 +76,7 @@ class ArticleLoaderNdlaFilm extends Component {
     const articleChildren = [];
 
     if (showSubTopics) {
-      articleChildren.push(
-        <ResourcesSubTopics
-          key="subTopic"
-          toggleAdditionalCores={this.toggleAdditionalCores}
-          showAdditionalCores={this.state.showAdditionalCores}
-        />,
-      );
+      articleChildren.push(<Topics ndlaFilm />);
     }
 
     if (!hideResources) {
@@ -132,9 +87,9 @@ class ArticleLoaderNdlaFilm extends Component {
       article && article.metaImage && article.metaImage.url;
 
     return (
-      <Fragment>
-        <NdlaFilmHero hasImage={backgroundImage}>
-          {backgroundImage && (
+      <>
+        <NdlaFilmHero hasImage={withBackgroundImage && backgroundImage}>
+          {withBackgroundImage && backgroundImage && (
             <div className="c-hero__background">
               <img src={backgroundImage} alt={article.metaImage.alt} />
             </div>
@@ -182,7 +137,7 @@ class ArticleLoaderNdlaFilm extends Component {
             </Button>
           ) : null}
         </div>
-      </Fragment>
+      </>
     );
   }
 }
@@ -195,6 +150,7 @@ ArticleLoaderNdlaFilm.propTypes = {
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
+  withBackgroundImage: PropTypes.bool,
 };
 
 ArticleLoaderNdlaFilm.defaultProps = {

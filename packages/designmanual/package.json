@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "1.9.14",
+  "version": "1.9.18",
   "description": "Styleguide and ui component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "babel-loader": "^8.0.4",
     "btoa": "^1.1.2",
     "classnames": "2.2.6",
-    "css-loader": "^2.0.0",
+    "css-loader": "^2.1.0",
     "emotion": "^9.2.10",
     "file-loader": "^2.0.0",
     "isomorphic-fetch": "^2.2.1",
@@ -44,6 +44,6 @@
     "react-prop-types": "0.4.0",
     "react-syntax-highlighter": "^10.0.1",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.23.1",
+    "webpack": "^4.29.0"
   }
 }

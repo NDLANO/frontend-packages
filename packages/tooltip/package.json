@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -19,7 +19,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.4.5"
+    "@ndla/core": "^0.4.7"
   },
   "peerDependencies": {
     "emotion": "^9.2.10",

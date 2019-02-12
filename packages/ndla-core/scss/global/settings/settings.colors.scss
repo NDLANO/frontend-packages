@@ -108,31 +108,31 @@ $background-color--gray-dark: #e4e4e4;
  */
 
 :root {
-  --brand-color: $brand-color;
-  --brand-color--secondary: $brand-color--secondary;
-  --brand-color--tertiary: $brand-color--tertiary;
-  --brand-color--light: $brand-color--light;
-  --brand-color--lighter: $brand-color--lighter;
+  --brand-color: #{$brand-color};
+  --brand-color--secondary: #{$brand-color--secondary};
+  --brand-color--tertiary: #{$brand-color--tertiary};
+  --brand-color--light: #{$brand-color--light};
+  --brand-color--lighter: #{$brand-color--lighter};
 
-  --brand-grey: $brand-grey;
-  --brand-grey--light: $brand-grey--light;
-  --brand-grey--lighter: $brand-grey--lighter;
-  --brand-grey--lightest: $brand-grey--lightest;
-  --brand-grey-dark: $brand-grey-dark;
+  --brand-grey: #{$brand-grey};
+  --brand-grey--light: #{$brand-grey--light};
+  --brand-grey--lighter: #{$brand-grey--lighter};
+  --brand-grey--lightest: #{$brand-grey--lightest};
+  --brand-grey-dark: #{$brand-grey-dark};
 
-  --primary-color: $primary-color;
-  --text-light-color: $text-light-color;
-  --white: $white;
-  --black: $black;
+  --primary-color: #{$primary-color};
+  --text-light-color: #{$text-light-color};
+  --white: #{$white};
+  --black: #{$black};
   --mark-color: $mark-color;
-  --brand-color--dark: $brand-color--dark;
-  --green: $green;
-  --red: $red;
+  --brand-color--dark: #{$brand-color--dark};
+  --green: #{$green};
+  --red: #{$red};
 
-  --background-color: $background-color;
-  --background-color--dark: $background-color--dark;
-  --background-color--darker: $background-color--darker;
-  --background-color--light: $background-color--light;
-  --background-color--gray: $background-color--gray;
-  --background-color--gray-dark: $background-color--gray-dark;
+  --background-color: #{$background-color};
+  --background-color--dark: #{$background-color--dark};
+  --background-color--darker: #{$background-color--darker};
+  --background-color--light: #{$background-color--light};
+  --background-color--gray: #{$background-color--gray};
+  --background-color--gray-dark: #{$background-color--gray-dark};
 }

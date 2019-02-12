@@ -2,6 +2,7 @@ import Broennteknikk from './Broennteknikk.svg';
 import ByggOgAnleggsteknikk from './Bygg-og-anleggsteknikk.svg';
 import Elektro from './Elektro.svg';
 import Engelsk from './Engelsk.svg';
+import EngelskVg1 from './Engelsk-vg1.svg';
 import Helsearbeiderfag from './Helsearbeiderfag.svg';
 import HelseOgOppvekst from './Helse-og-oppvekst.svg';
 import Historie from './Historie.svg';
@@ -29,12 +30,14 @@ import SamfunnsfagligMatte from './Samfunnsfaglig-matte.svg';
 import YrkesfagligMatte from './Yrkesfaglig-matte.svg';
 import EngelskLitteratur2 from './Engelsk-litteratur-2.svg';
 import Tip from './Tip.svg';
-import KommunikasjonOgKultur from './Kommunikasjon-og-Kultur.svg';
+import KommunikasjonOgKultur from './Kommunikasjon-og-Kultur-new.svg';
 import TransportOgLogistikk from './Transport-og-logistikk.svg';
 import Reiseliv from './Reiseliv.svg';
 import Naturfag from './Naturfag.svg';
 import KokkOgServitor from './Kokk-og-servitor.svg';
 import RestaurantOgMatfag from './Restaurant-og-matfag.svg';
+import DesignOgHandverk from './Design-og-Handverk.svg';
+import Norsk from './Norsk.svg';
 
 export default [
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
@@ -45,6 +48,11 @@ export default [
   },
   { desktop: Elektro, mobile: Elektro, name: 'Elektro' },
   { desktop: Engelsk, mobile: Engelsk, name: 'Engelsk' },
+  {
+    desktop: EngelskVg1,
+    mobile: EngelskVg1,
+    name: 'Engelsk Vg1',
+  },
   {
     desktop: Helsearbeiderfag,
     mobile: Helsearbeiderfag,
@@ -177,5 +185,15 @@ export default [
     desktop: RestaurantOgMatfag,
     mobile: RestaurantOgMatfag,
     name: 'Restaurant- og matfag Vg1',
+  },
+  {
+    desktop: DesignOgHandverk,
+    mobile: DesignOgHandverk,
+    name: 'Design og Håndverk Vg1',
+  },
+  {
+    desktop: Norsk,
+    mobile: Norsk,
+    name: 'Norsk',
   },
 ];

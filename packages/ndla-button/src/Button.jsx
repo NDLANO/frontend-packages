@@ -131,6 +131,8 @@ const buttonStyle = css`
   font-family: ${fonts.sans};
   font-weight: ${fonts.weight.bold};
   transition: ${misc.transition.default};
+  box-shadow: none;
+  text-align: center;
   &:hover,
   &:focus {
     color: white;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -31,6 +31,7 @@ export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';
 export { default as Information } from './Information';
+export { default as InformationOutline } from './InformationOutline';
 export { default as Link } from './Link';
 export { default as Menu } from './Menu';
 export { default as Pause } from './Pause';

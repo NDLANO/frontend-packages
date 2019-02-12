@@ -101,7 +101,7 @@ const messages = {
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
       coreRelevance: 'Kjernestoff',
-      supplementaryRelevance: 'tilleggsstoff',
+      supplementaryRelevance: 'Tilleggsstoff',
     },
   },
   subjectPage: {
@@ -279,10 +279,10 @@ const messages = {
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
-    multipleAuthorsLabel: 'Opphavere av artikkel:',
-    multipleAuthorsLabelAria: 'Opphavere av artikkelen er {names}',
+    multipleAuthorsLabel: 'Rettighetshavere:',
+    multipleAuthorsLabelAria: 'Rettighetshavere er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'Opphaver av artikkelen er {name}',
+    singleAuthorsLabelAria: 'Rettighetshaver av artikkelen er {name}',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

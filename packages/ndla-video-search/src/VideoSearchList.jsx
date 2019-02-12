@@ -42,7 +42,7 @@ const VideoSearchList = props => {
     if (selectedType === 'youtube') {
       return videos.map(video => (
         <VideoSearchResultYouTube
-          key={video.pagemap.videoobject[0].videoid}
+          key={video.cacheId}
           video={video}
           onVideoPreview={onVideoPreview}
           selectedVideo={selectedVideo}

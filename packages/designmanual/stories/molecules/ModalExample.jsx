@@ -153,7 +153,7 @@ class ModalExample extends Component {
         messages={[
           'Kommer med 3 hjelpe komponenter; <ModalHeader>, <ModalBody> og <ModalCloseButton>',
           'Hjelpekomponentene er ment å hjelpe for å få et mer unisont design.',
-          'Vil etterhvert erstatte <ClickToggle /> og <Dialog /> komponentene.',
+          'Vil etterhvert erstatte <Dialog /> komponenten.',
         ]}>
         <p>
           Modal som håndterer åpne/lukke states og håndterer automatisk lås av

@@ -98,6 +98,26 @@ export const updateIFrameDimensions = (init = true, topNode = null) => {
   );
 };
 
+export const addEventListenerForFigureZoomButton = () => {
+  forEachElement('button[data-figure-button]', el => {
+    const target = el;
+    target.onclick = () => {
+      const parentFigure = target.closest('figure');
+      if (target.dataset.expanded) {
+        target.setAttribute('aria-label', target.dataset.aria);
+        target.classList.remove('c-figure__fullscreen-btn--expanded');
+        parentFigure.classList.add(target.dataset.classtype);
+        delete target.dataset.expanded;
+      } else {
+        target.setAttribute('aria-label', target.dataset.ariaexpanded);
+        parentFigure.classList.remove(target.dataset.classtype);
+        target.classList.add('c-figure__fullscreen-btn--expanded');
+        target.dataset.expanded = true;
+      }
+    };
+  });
+};
+
 const handler = () => updateIFrameDimensions(false);
 
 export const addEventListenerForResize = () => {

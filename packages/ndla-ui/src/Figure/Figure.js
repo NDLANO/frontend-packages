@@ -104,8 +104,10 @@ FigureCaption.defaultProps = {
 
 const Figure = ({ children, type, resizeIframe, noFigcaption, t, ...rest }) => {
   const typeClass = `u-float-${type}`;
-  const ariaLabel = t('license.images.itemImage.zoomOutImageButtonLabel');
-  const ariaLabelExpanded = t('license.images.itemImage.zoomImageButtonLabel');
+  const ariaLabel = t('license.images.itemImage.zoomImageButtonLabel');
+  const ariaLabelExpanded = t(
+    'license.images.itemImage.zoomOutImageButtonLabel',
+  );
 
   return (
     <figure {...classes('', 'resize', typeClass)} {...rest}>
@@ -113,22 +115,11 @@ const Figure = ({ children, type, resizeIframe, noFigcaption, t, ...rest }) => {
         <button
           {...classes('fullscreen-btn')}
           type="button"
-          aria-label={ariaLabel}
-          onClick={e => {
-            const btn = e.currentTarget;
-            const parentFigure = btn.closest('figure');
-            if (btn.dataset.expanded) {
-              btn.setAttribute('aria-label', ariaLabel);
-              btn.classList.remove('c-figure__fullscreen-btn--expanded');
-              parentFigure.classList.add(typeClass);
-              delete btn.dataset.expanded;
-            } else {
-              btn.setAttribute('aria-label', ariaLabelExpanded);
-              parentFigure.classList.remove(typeClass);
-              btn.classList.add('c-figure__fullscreen-btn--expanded');
-              btn.dataset.expanded = true;
-            }
-          }}>
+          data-figure-button
+          data-classtype={typeClass}
+          data-aria={ariaLabel}
+          data-ariaexpanded={ariaLabelExpanded}
+          aria-label={ariaLabel}>
           <ArrowCollapse className="expanded-icon" />
           <ZoomOutMap className="contracted-icon" />
         </button>

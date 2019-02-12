@@ -15,6 +15,7 @@ import {
   addEventListenerForResize,
   updateIFrameDimensions,
   toggleLicenseInfoBox,
+  addEventListenerForFigureZoomButton,
 } from '@ndla/article-scripts';
 
 import {
@@ -40,6 +41,7 @@ class FigureWithLicense extends Component {
       updateIFrameDimensions();
       addEventListenerForResize();
       toggleLicenseInfoBox();
+      addEventListenerForFigureZoomButton();
     }
   }
 

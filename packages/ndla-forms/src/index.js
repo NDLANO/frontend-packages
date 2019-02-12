@@ -6,6 +6,7 @@ import FormSplitter from './FormSplitter';
 import FormRemoveButton from './FormRemoveButton';
 import RadiobuttonItem from './RadiobuttonItem';
 import CheckboxItem from './CheckboxItem';
+import { FormHeaderIconClass, StyledButtonWrapper } from './Styles';
 
 export {
   FormHeader,
@@ -16,4 +17,6 @@ export {
   FormRemoveButton,
   RadiobuttonItem,
   CheckboxItem,
+  FormHeaderIconClass,
+  StyledButtonWrapper,
 };

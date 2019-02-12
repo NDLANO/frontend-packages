@@ -23,6 +23,7 @@ import FormExampleAuthors from './FormExampleAuthors';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
 import { Center } from '../helpers';
+import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -162,6 +163,14 @@ storiesOf('Produksjonssystem', module)
         <Spinner />
         <Spinner size="medium" />
         <Spinner size="normal" />
+      </Center>
+    </div>
+  ))
+  .add('Ndla film editor', () => (
+    <div>
+      <StoryIntro title="Redigering av NDLA Film forside" />
+      <Center>
+        <NdlaFilmEditorExample />
       </Center>
     </div>
   ));

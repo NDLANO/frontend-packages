@@ -137,6 +137,7 @@ class FilmFrontpage extends Component {
       aboutNDLAVideo,
       moviesByType,
       fetchingMoviesByType,
+      language,
       t,
     } = this.props;
     const {
@@ -242,8 +243,8 @@ class FilmFrontpage extends Component {
           ) : (
             themes.map(theme => (
               <FilmMovieList
-                key={theme.name}
-                name={theme.name}
+                key={theme.name[language]}
+                name={theme.name[language]}
                 movies={theme.movies}
                 columnsPrSlide={columnsPrSlide}
                 columnWidth={columnWidth}
@@ -262,7 +263,9 @@ class FilmFrontpage extends Component {
               <h1>{t('ndlaFilm.about.heading')}</h1>
               <p>{t('ndlaFilm.about.text')}</p>
               <Modal
-                activateButton={<Button link>Les mer om NDLA film</Button>}>
+                activateButton={
+                  <Button link>{t('ndlaFilm.about.more')}</Button>
+                }>
                 {onClose => (
                   <>
                     <ModalHeader>

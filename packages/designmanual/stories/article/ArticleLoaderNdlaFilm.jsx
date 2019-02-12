@@ -76,7 +76,7 @@ class ArticleLoaderNdlaFilm extends Component {
     const articleChildren = [];
 
     if (showSubTopics) {
-      articleChildren.push(<Topics ndlaFilm />);
+      articleChildren.push(<Topics key="film" ndlaFilm />);
     }
 
     if (!hideResources) {

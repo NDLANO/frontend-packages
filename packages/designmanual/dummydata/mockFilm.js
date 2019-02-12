@@ -272,7 +272,12 @@ export const movieTopics = [
 
 export const movieThemes = [
   {
-    name: 'Mest sett',
+    id: uuid(),
+    name: {
+      nb: 'Eksempel 1',
+      nn: 'Eksempel 1',
+      en: 'Example 1',
+    },
     movies: [
       documentaries[0],
       tvSeries[0],
@@ -283,7 +288,12 @@ export const movieThemes = [
     ],
   },
   {
-    name: 'Tema eksempel',
+    id: uuid(),
+    name: {
+      nb: 'Eksempel 2',
+      nn: 'Eksempel 2',
+      en: 'Example 2',
+    },
     movies: [
       documentaries[3],
       tvSeries[1],
@@ -297,7 +307,12 @@ export const movieThemes = [
     ],
   },
   {
-    name: 'Tema eksempel 2',
+    id: uuid(),
+    name: {
+      nb: 'Eksempel 3',
+      nn: 'Eksempel 3',
+      en: 'Example 3',
+    },
     movies: [
       movies[6],
       movies[1],

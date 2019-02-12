@@ -9,6 +9,13 @@
 import SlateBlockMenu from './SlateBlockMenu';
 import Spinner from './Spinner';
 import Structure from './Structure';
-import NdlaFilmEditor from './NdlaFilmEditor';
+import NdlaFilmMovieList from './ndlaFilm/MovieList';
+import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
-export { SlateBlockMenu, Structure, Spinner, NdlaFilmEditor };
+export {
+  SlateBlockMenu,
+  Structure,
+  Spinner,
+  NdlaFilmMovieList,
+  NdlaFilmThemeEditorModal,
+};

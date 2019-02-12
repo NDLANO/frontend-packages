@@ -11,7 +11,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import {
-  NdlaFilmHero,
   SubjectMaterialHero,
   TasksAndActivitiesHero,
   SubjectHero,
@@ -44,7 +43,6 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
-import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
@@ -435,12 +433,5 @@ storiesOf('Ndla film', module)
         />
       </Content>
       <FooterExample inverted />
-    </PageContainer>
-  ))
-  .add('Ndla film editor', () => (
-    <PageContainer>
-      <Content>
-        <NdlaFilmEditorExample />
-      </Content>
     </PageContainer>
   ));

@@ -131,7 +131,17 @@
     display: none;
   }
 
+  .expanded-icon {
+    display: none;
+  }
+
   &--expanded {
+    .contracted-icon {
+      display: none;
+    }
+    .expanded-icon {
+      display: flex;
+    }
     right: $spacing;
     ~ .c-figure__caption--hidden-caption {
       display: block;

@@ -102,62 +102,41 @@ FigureCaption.defaultProps = {
   link: null,
 };
 
-class Figure extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-      expanded: false,
-    };
-  }
+const Figure = ({ children, type, resizeIframe, noFigcaption, t, ...rest }) => {
+  const typeClass = `u-float-${type}`;
+  const ariaLabel = t('license.images.itemImage.zoomOutImageButtonLabel');
+  const ariaLabelExpanded = t('license.images.itemImage.zoomImageButtonLabel');
 
-  render() {
-    const {
-      children,
-      type,
-      resizeIframe,
-      noFigcaption,
-      t,
-      ...rest
-    } = this.props;
-
-    const { expanded } = this.state;
-
-    const typeClass = `u-float-${type}`;
-    const modifiers = [];
-
-    if (!expanded) {
-      if (resizeIframe) {
-        modifiers.push('resize');
-      }
-      if (type === 'full-column') {
-        modifiers.push('full-column');
-      }
-    }
-
-    const ariaLabel = expanded
-      ? t('license.images.itemImage.zoomOutImageButtonLabel')
-      : t('license.images.itemImage.zoomImageButtonLabel');
-
-    return (
-      <figure {...classes('', modifiers, !expanded && typeClass)} {...rest}>
-        {noFigcaption ? (
-          <button
-            {...classes('fullscreen-btn', expanded ? 'expanded' : '')}
-            type="button"
-            aria-label={ariaLabel}
-            onClick={() =>
-              this.setState(prevState => ({
-                expanded: !prevState.expanded,
-              }))
-            }>
-            {expanded ? <ArrowCollapse /> : <ZoomOutMap />}
-          </button>
-        ) : null}
-        {children}
-      </figure>
-    );
-  }
-}
+  return (
+    <figure {...classes('', 'resize', typeClass)} {...rest}>
+      {noFigcaption ? (
+        <button
+          {...classes('fullscreen-btn')}
+          type="button"
+          aria-label={ariaLabel}
+          onClick={e => {
+            const btn = e.currentTarget;
+            const parentFigure = btn.closest('figure');
+            if (btn.dataset.expanded) {
+              btn.setAttribute('aria-label', ariaLabel);
+              btn.classList.remove('c-figure__fullscreen-btn--expanded');
+              parentFigure.classList.add(typeClass);
+              delete btn.dataset.expanded;
+            } else {
+              btn.setAttribute('aria-label', ariaLabelExpanded);
+              parentFigure.classList.remove(typeClass);
+              btn.classList.add('c-figure__fullscreen-btn--expanded');
+              btn.dataset.expanded = true;
+            }
+          }}>
+          <ArrowCollapse className="expanded-icon" />
+          <ZoomOutMap className="contracted-icon" />
+        </button>
+      ) : null}
+      {children}
+    </figure>
+  );
+};
 
 Figure.propTypes = {
   id: PropTypes.string.isRequired,

@@ -57,7 +57,7 @@
     "cross-spawn": "^6.0.4",
     "emotion": "^9.2.10",
     "eslint": "^5.9.0",
-    "focus-trap-react": "^4.0.0",
+    "focus-trap-react": "^6.0.0",
     "jest": "^24.1.0",
     "jest-dom": "^3.1.1",
     "jest-emotion": "9.2.11",

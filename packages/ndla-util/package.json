@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "defined": "1.0.0",
-    "pdfmake": "^0.1.38"
+    "pdfmake": "^0.1.51"
   },
   "publishConfig": {
     "access": "public"

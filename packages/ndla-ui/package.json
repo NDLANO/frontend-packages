@@ -43,11 +43,11 @@
     "jump.js": "^1.0.2",
     "lodash": "^4.17.5",
     "react-bem-helper": "1.4.1",
-    "react-device-detect": "^1.6.1",
+    "react-device-detect": "^1.6.2",
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
     "react-slick": "^0.23.2",
-    "react-transition-group": "^2.5.1"
+    "react-transition-group": "^2.5.3"
   },
   "peerDependencies": {
     "emotion": "^9.2.10",

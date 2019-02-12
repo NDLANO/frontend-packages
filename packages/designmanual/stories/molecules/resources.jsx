@@ -122,6 +122,7 @@ class Resources extends Component {
         {resourceGroups.map(group => (
           <ResourceGroup
             key={group.id}
+            currentPageId="urn:resource:a7a49c0a-32ea-4343-8b11-bd6d65c24f87"
             title={group.title}
             resources={group.resources}
             showAdditionalResources={showAdditionalResources}

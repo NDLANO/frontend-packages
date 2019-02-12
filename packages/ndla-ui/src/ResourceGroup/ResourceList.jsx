@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
@@ -21,6 +21,18 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const LinkContent = ({ icon, resource, currentPage, youAreHere }) => (
+  <>
+    <div {...classes('icon o-flag__img')}>{icon}</div>
+    <h1 {...classes('title')}>
+      <span>
+        {resource.name}
+        {currentPage && <small>{youAreHere}</small>}
+      </span>
+    </h1>
+  </>
+);
+
 const Resource = ({
   resource,
   icon,
@@ -29,26 +41,9 @@ const Resource = ({
   id,
   contentTypeDescription,
   youAreHere,
+  currentPage,
 }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
-  // Designmanual is in iframe, test to get location
-  const currentPage = window.frameElement
-    ? document.referrer.includes(resource.contentUri)
-    : window.location.pathname.includes(resource.contentUri);
-
-  console.log(currentPage, resource.name);
-
-  const linkContent = (
-    <Fragment>
-      <div {...classes('icon o-flag__img')}>{icon}</div>
-      <h1 {...classes('title')}>
-        <span>
-          {resource.name}
-          {currentPage && <small>{youAreHere}</small>}
-        </span>
-      </h1>
-    </Fragment>
-  );
 
   return (
     <li
@@ -60,14 +55,24 @@ const Resource = ({
       <div {...classes('body o-flag__body')}>
         {currentPage ? (
           <div {...classes('link o-flag o-flag--top', '', 'currentPage')}>
-            {linkContent}
+            <LinkContent
+              youAreHere={youAreHere}
+              icon={icon}
+              resource={resource}
+              currentPage={currentPage}
+            />
           </div>
         ) : (
           <SafeLink
             {...resourceToLinkProps(resource)}
             {...classes('link o-flag o-flag--top')}
             aria-describedby={id}>
-            {linkContent}
+            <LinkContent
+              youAreHere={youAreHere}
+              icon={icon}
+              resource={resource}
+              currentPage={currentPage}
+            />
           </SafeLink>
         )}
         <span id={id} hidden>
@@ -97,6 +102,7 @@ Resource.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   contentTypeDescription: PropTypes.string.isRequired,
+  currentPage: PropTypes.bool,
 };
 
 injectT(Resource);
@@ -107,6 +113,7 @@ const ResourceList = ({
   type,
   title,
   showAdditionalResources,
+  currentPageId,
   t,
   ...rest
 }) => {
@@ -121,6 +128,7 @@ const ResourceList = ({
         {resources.map((resource, index) => (
           <Resource
             key={resource.id}
+            currentPage={resource.id === currentPageId}
             type={type}
             showAdditionalResources={showAdditionalResources}
             {...rest}
@@ -158,6 +166,7 @@ ResourceList.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  currentPageId: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
 };
 

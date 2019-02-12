@@ -26,6 +26,7 @@ const ResourceGroup = ({
   showAdditionalResources,
   resourceToLinkProps,
   contentType,
+  currentPageId,
 }) => (
   <section
     {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
@@ -40,6 +41,7 @@ const ResourceGroup = ({
         showAdditionalResources={showAdditionalResources}
         icon={icon}
         resources={resources}
+        currentPageId={currentPageId}
       />
     ) : null}
   </section>
@@ -55,6 +57,7 @@ ResourceGroup.propTypes = {
   hideResourceToggleFilter: PropTypes.bool,
   empty: PropTypes.bool,
   showAdditionalResources: PropTypes.bool,
+  currentPageId: PropTypes.string.isRequired,
 };
 
 ResourceGroup.defaultProps = {

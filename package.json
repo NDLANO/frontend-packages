@@ -64,7 +64,7 @@
     "lerna": "^3.4.3",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.11.0",
-    "prettier": "^1.10.2",
+    "prettier": "^1.16.4",
     "prop-types": "15.7.1",
     "react": "^16.8.1",
     "react-bem-helper": "1.4.1",

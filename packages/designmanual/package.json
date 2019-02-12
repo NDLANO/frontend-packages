@@ -28,7 +28,7 @@
     "@storybook/addon-options": "4.0.6",
     "@storybook/react": "4.0.6",
     "autoprefixer": "^9.3.1",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "btoa": "^1.1.2",
     "classnames": "2.2.6",
     "css-loader": "^2.1.0",

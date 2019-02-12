@@ -177,6 +177,7 @@ export default class TopicMenu extends Component {
       searchFieldComponent,
       toFrontpage,
       locale,
+      isOnSubjectFrontPage,
     } = this.props;
     const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -217,8 +218,6 @@ export default class TopicMenu extends Component {
 
     const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
     const toSubjectUrl = toSubject();
-
-    const isOnSubjectFrontPage = window.location.pathname === toSubjectUrl;
 
     return (
       <Trans>
@@ -512,6 +511,7 @@ TopicMenu.propTypes = {
   competenceGoals: PropTypes.node,
   searchFieldComponent: PropTypes.node,
   locale: PropTypes.string,
+  isOnSubjectFrontPage: PropTypes.bool,
 };
 
 TopicMenu.defaultProps = {

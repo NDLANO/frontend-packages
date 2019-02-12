@@ -18,11 +18,11 @@
   ],
   "author": "ndla@knowit.no",
   "dependencies": {
-    "babel-eslint": "10.0.1",
-    "eslint-config-react-app": "^3.0.6",
+    "babel-eslint": "9.0.0",
+    "eslint-config-react-app": "^3.0.7",
     "eslint-plugin-flowtype": "2.x",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.3"
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
   }
 }

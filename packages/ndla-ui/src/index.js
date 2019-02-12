@@ -75,7 +75,6 @@ export {
   SearchResultList,
   SearchResultItem,
   SearchFilter,
-  SearchFilterWrapper,
   SearchPopoverFilter,
   ActiveFilters,
   ToggleSearchButton,

@@ -170,7 +170,7 @@ class NdlaFilmExample extends Component {
   }
 
   render() {
-    const { mainMovies, themes, editingThemeIndex } = this.state;
+    const { mainMovies, themes } = this.state;
 
     const { t } = this.props;
 

@@ -60,22 +60,22 @@ class ModalExample extends Component {
     return (
       <ComponentInfo
         reactCode={`
-          import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+  import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 
-          <Modal
-            activateButton={<Button>Open modal</Button>}
-          >
-            {(onClose) => (
-              <ModalHeader>
-                <ModalCloseButton onClick={onClose}>
-              </ModalHeader>
-              <ModalBody>
-                <h1>Modal example</h1>
-                <hr />
-                <p>Enkelt eksempel med ModalHeader og ModalBody samt ModalCloseButton. Disse er valgfrie hjelpe komponenter for å hjelpe til med styling/padding etc.</p>
-              </ModalBody>
-            )}
-          </Modal>
+  <Modal
+    activateButton={<Button>Open modal</Button>}
+  >
+    {(onClose) => (
+      <ModalHeader>
+        <ModalCloseButton onClick={onClose}>
+      </ModalHeader>
+      <ModalBody>
+        <h1>Modal example</h1>
+        <hr />
+        <p>Enkelt eksempel med ModalHeader og ModalBody samt ModalCloseButton. Disse er valgfrie hjelpe komponenter for å hjelpe til med styling/padding etc.</p>
+      </ModalBody>
+    )}
+  </Modal>
         `}
         usesPropTypes={[
           {

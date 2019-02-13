@@ -45,6 +45,7 @@
     "react-prop-types": "0.4.0",
     "react-syntax-highlighter": "^10.1.2",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.29.3"
+    "webpack": "^4.29.3",
+    "webpack-bundle-analyzer": "^3.0.4"
   }
 }

@@ -44,7 +44,7 @@ const buttonCSS = css`
   }
 `;
 
-const FormFieldRemoveButton = ({ children, type, ...rest }) => (
+const FieldRemoveButton = ({ children, type, ...rest }) => (
   // eslint-disable-next-line
   <button className={buttonCSS} type={type} {...rest}>
     <Cross className="c-icon--medium" />
@@ -52,13 +52,13 @@ const FormFieldRemoveButton = ({ children, type, ...rest }) => (
   </button>
 );
 
-FormFieldRemoveButton.propTypes = {
+FieldRemoveButton.propTypes = {
   children: PropTypes.node,
   type: PropTypes.string,
 };
 
-FormFieldRemoveButton.defaultProps = {
+FieldRemoveButton.defaultProps = {
   type: 'button',
 };
 
-export default FormFieldRemoveButton;
+export default FieldRemoveButton;

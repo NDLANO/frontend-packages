@@ -10,12 +10,12 @@ import React, { Component, Fragment } from 'react';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import {
-  FormFieldHeader,
-  FormFieldSection,
-  FormFieldInput,
-  FormFieldDropdown,
-  FormFieldSplitter,
-  FormFieldRemoveButton,
+  FieldHeader,
+  FieldSection,
+  Input,
+  Dropdown,
+  FieldSplitter,
+  FieldRemoveButton,
 } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 
@@ -94,16 +94,12 @@ class FormExampleAuthors extends Component {
     const { authors } = this.state;
     return (
       <Fragment>
-        <FormFieldHeader
-          title="Form heading"
-          subTitle="example"
-          width={3 / 4}
-        />
+        <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         {authors.map((author, index) => (
-          <FormFieldSection key={author.key}>
+          <FieldSection key={author.key}>
             <div>
-              <FormFieldSplitter>
-                <FormFieldInput
+              <FieldSplitter>
+                <Input
                   warningText={
                     author.name === '' ? 'Du må oppgi navn på forfatter' : null
                   }
@@ -114,7 +110,7 @@ class FormExampleAuthors extends Component {
                   value={author.name}
                   onChange={e => this.handleInputChange(e.target.value, index)}
                 />
-                <FormFieldDropdown
+                <Dropdown
                   value={author.role}
                   onChange={e => this.handleUpdateRole(e.target.value, index)}>
                   <option value="">Tildel rolle</option>
@@ -123,60 +119,51 @@ class FormExampleAuthors extends Component {
                       {titleRole}
                     </option>
                   ))}
-                </FormFieldDropdown>
-              </FormFieldSplitter>
+                </Dropdown>
+              </FieldSplitter>
             </div>
             <div>
-              <FormFieldRemoveButton
-                onClick={() => this.handleRemoveAuthor(index)}>
+              <FieldRemoveButton onClick={() => this.handleRemoveAuthor(index)}>
                 Ta bort
-              </FormFieldRemoveButton>
+              </FieldRemoveButton>
             </div>
-          </FormFieldSection>
+          </FieldSection>
         ))}
         <Button outline onClick={this.handleAddAuthor}>
           Legg til
         </Button>
-        <FormFieldHeader
-          title="Form heading"
-          subTitle="example"
-          width={3 / 4}
-        />
-        <FormFieldSection>
+        <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
+        <FieldSection>
           <div>
-            <FormFieldSplitter>
-              <FormFieldInput
+            <FieldSplitter>
+              <Input
                 iconRight={<SearchIcon />}
                 container="div"
                 type="text"
                 placeholder="Skriv navn"
               />
-            </FormFieldSplitter>
+            </FieldSplitter>
           </div>
           <div>
-            <FormFieldRemoveButton>Ta bort</FormFieldRemoveButton>
+            <FieldRemoveButton>Ta bort</FieldRemoveButton>
           </div>
-        </FormFieldSection>
-        <FormFieldHeader
-          title="Form heading"
-          subTitle="example"
-          width={3 / 4}
-        />
-        <FormFieldSection>
+        </FieldSection>
+        <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
+        <FieldSection>
           <div>
-            <FormFieldSplitter>
-              <FormFieldInput
+            <FieldSplitter>
+              <Input
                 container="div"
                 type="text"
                 placeholder="Skriv navn"
                 autoExpand
               />
-            </FormFieldSplitter>
+            </FieldSplitter>
           </div>
           <div>
-            <FormFieldRemoveButton>Ta bort</FormFieldRemoveButton>
+            <FieldRemoveButton>Ta bort</FieldRemoveButton>
           </div>
-        </FormFieldSection>
+        </FieldSection>
       </Fragment>
     );
   }

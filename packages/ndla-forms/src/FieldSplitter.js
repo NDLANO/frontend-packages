@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
 import { spacing } from '@ndla/core';
 
-const FormFieldSplitterCSS = css`
+const FieldSplitterCSS = css`
   display: flex;
   > * {
     flex-grow: 1;
@@ -27,12 +27,12 @@ const FormFieldSplitterCSS = css`
   }
 `;
 
-const FormFieldSplitter = ({ children }) => (
-  <div className={FormFieldSplitterCSS}>{children}</div>
+const FieldSplitter = ({ children }) => (
+  <div css={FieldSplitterCSS}>{children}</div>
 );
 
-FormFieldSplitter.propTypes = {
+FieldSplitter.propTypes = {
   children: PropTypes.node,
 };
 
-export default FormFieldSplitter;
+export default FieldSplitter;

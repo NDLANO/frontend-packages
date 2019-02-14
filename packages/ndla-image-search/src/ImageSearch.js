@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
-import { FormFieldInput } from '@ndla/forms';
+import { Input } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
 
@@ -367,7 +367,7 @@ class ImageSearch extends React.Component {
 
     return (
       <ImageSearchWrapper>
-        <FormFieldInput
+        <Input
           placeholder={searchPlaceholder}
           focusOnMount
           iconRight={

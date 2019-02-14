@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
     "@ndla/licenses": "^0.4.3",
     "@ndla/modal": "^0.2.10",
     "@ndla/tooltip": "^0.1.4",
-    "@ndla/ui": "^0.19.14"
+    "@ndla/ui": "^0.19.15"
   },
   "peerDependencies": {
     "emotion": "^9.2.10",

@@ -7,10 +7,9 @@
  */
 
 import Modal from './Modal';
-import ModalHeader from './ModalHeader';
-import ModalBody from './ModalBody';
-import ModalCloseButton from './ModalCloseButton';
-
-export { ModalHeader, ModalBody, ModalCloseButton };
+export { default as ModalHeader } from './ModalHeader';
+export { default as ModalBody } from './ModalBody';
+export { default as ModalCloseButton } from './ModalCloseButton';
+export { Backdrop } from './Backdrop';
 
 export default Modal;

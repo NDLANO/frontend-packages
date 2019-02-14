@@ -5,7 +5,6 @@ export const articleResources = [
     name: 'Hva er en idé?',
     resourceTypes: [],
     contentUri: 'urn:article:339',
-    title: 'Hva er en idé?',
     introduction:
       'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
@@ -19,7 +18,6 @@ export const articleResources = [
     contentUri: 'urn:article:165',
     introduction:
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
-    title: 'Ideer og idéutvikling',
     tag: 'Film',
     type: 'Fagstoff',
   },
@@ -29,7 +27,7 @@ export const articleResources = [
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:article:340',
-    title: 'Refleksjonsoppgave om ideer og idéutvikling',
+    active: true,
     introduction:
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
     type: 'Fagstoff',
@@ -40,7 +38,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer?',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer?',
     introduction:
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
     type: 'Fagstoff',
@@ -52,7 +49,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 2',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer 2',
     introduction:
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
     type: 'Fagstoff',
@@ -64,7 +60,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 3',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer 3',
     type: 'Fagstoff',
     additional: true,
   },
@@ -74,7 +69,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 4',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer 4',
     type: 'Fagstoff',
     additional: true,
   },
@@ -84,7 +78,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 5',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
     additional: true,
   },
@@ -94,7 +87,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 6',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
     additional: true,
   },
@@ -104,7 +96,6 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 7',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    title: 'Hvordan oppstår ideer?',
     type: 'Fagstoff',
     additional: true,
   },
@@ -116,7 +107,6 @@ export const articleResources = [
     contentUri: 'urn:article:166',
     introduction:
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',
-    title: 'Kreativ kommunikasjon',
     tag: 'Film',
     type: 'Fagstoff',
   },
@@ -130,7 +120,6 @@ export const learningPathResources = [
     resourceTypes: [],
     contentUri: 'urn:learningpath:30',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/tegner_ide.png',
-    title: 'Teknikker for idéutvikling',
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Læringsstier',
@@ -149,7 +138,6 @@ export const learningPathResources = [
     ],
     contentUri: 'urn:learningpath:91',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
-    title: 'Klar, ferdig, kreativ!',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
     additional: true,
   },
@@ -166,7 +154,6 @@ export const learningPathResources = [
     ],
     contentUri: 'urn:learningpath:340',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
-    title: 'Refleksjonsoppgave om ideer og idéutvikling',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
     additional: true,
   },
@@ -180,7 +167,6 @@ export const exerciseResources = [
     resourceTypes: [],
     contentUri: 'urn:exercises:30',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/tegner_ide.png',
-    title: 'Teknikker for idéutvikling',
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Oppgaver og aktiviteter',
@@ -199,7 +185,6 @@ export const exerciseResources = [
     ],
     contentUri: 'urn:exercises:91',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
-    title: 'Klar, ferdig, kreativ!',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
   },
   {
@@ -215,7 +200,6 @@ export const exerciseResources = [
     ],
     contentUri: 'urn:exercises:340',
     coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
-    title: 'Refleksjonsoppgave om ideer og idéutvikling',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
   },
 ];
@@ -224,11 +208,9 @@ export const assessmentResources = [
   {
     id: 'urn:resource:883281e0-c5ec-42d8-8365-abc',
     name: 'Vurderingsressurs 1',
-    title: 'Vurderingsressurs 1',
   },
   {
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dce',
     name: 'Vurderingsressurs 2',
-    title: 'Vurderingsressurs 2',
   },
 ];

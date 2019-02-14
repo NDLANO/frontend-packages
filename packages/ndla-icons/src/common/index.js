@@ -31,6 +31,7 @@ export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';
 export { default as Information } from './Information';
+export { default as InformationOutline } from './InformationOutline';
 export { default as Link } from './Link';
 export { default as Menu } from './Menu';
 export { default as Pause } from './Pause';

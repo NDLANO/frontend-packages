@@ -77,15 +77,12 @@ export const sendPageView = ({ title, dimensions }) => {
 
   const dim = dimensions || { ga: {}, gtm: {} };
 
-  window.ga(
-    'send',
-    {
-      hitType: 'pageview',
-      page: current.url,
-      title,
-    },
-    dim.ga,
-  );
+  window.ga('send', {
+    hitType: 'pageview',
+    page: current.url,
+    title,
+    ...dim.ga,
+  });
 
   window.dataLayer.push({
     page_title: title,

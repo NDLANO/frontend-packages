@@ -81,6 +81,9 @@
     li {
       background-color: $subject-material-light;
     }
+    li:before {
+      background-color: $subject-material-dark;
+    }
     .c-topic-resource__item--additional {
       background-color: $subject-material-additional;
       border: 1px dashed rgba($subject-material-dark, 0.4);
@@ -90,6 +93,9 @@
   &--tasks-and-activities {
     li {
       background-color: $tasks-and-activities-light;
+    }
+    li:before {
+      background-color: $tasks-and-activities-dark;
     }
     .c-topic-resource__item--additional {
       background-color: $tasks-and-activities-additional;
@@ -101,6 +107,9 @@
     li {
       background-color: $assessment-resource-light;
     }
+    li:before {
+      background-color: $assessment-resource-dark;
+    }
     .c-topic-resource__item--additional {
       background-color: $assessment-resource-additional;
       border: 1px dashed $assessment-resource-dark;
@@ -110,6 +119,9 @@
   &--learning-path {
     li {
       background-color: $learning-path-background;
+    }
+    li:before {
+      background-color: $learning-path-dark;
     }
     .c-topic-resource__item--additional {
       background-color: $learning-path-background-additional;

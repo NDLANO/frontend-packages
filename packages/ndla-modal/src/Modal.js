@@ -20,6 +20,7 @@ import {
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
 import Button from '@ndla/button';
+import { Backdrop } from './Backdrop';
 
 const modalAnimations = `
   @keyframes modal-zoomIn {
@@ -225,20 +226,7 @@ const ModalWrapper = styled.div`
       background: ${colors.brand.lighter};
     }
   }
-  .backdrop {
-    position: fixed;
-    z-index: 9000;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(1, 1, 1, 0.3);
-    animation-name: fadeOut;
-    animation-duration: 400ms;
-    &.in {
-      animation-name: fadeIn;
-    }
-  }
+
   .modal-header {
     display: flex;
     align-items: flex-start;
@@ -437,20 +425,14 @@ const Portal = ({
           })}>
           {children(closeModal)}
         </div>
-        {!noBackdrop && (
-          <div
-            role="button"
-            tabIndex={-1}
-            onKeyDown={() => {}}
-            onTouchStart={e => e.preventDefault()}
-            onTouchMove={e => e.preventDefault()}
-            onTouchEnd={e => e.preventDefault()}
-            onClick={closeOnBackdrop && closeModal}
-            style={{ animationDuration: `${animationDuration}ms` }}
-            className={cx('backdrop', { in: animateIn })}
-          />
-        )}
       </ModalWrapper>
+      {!noBackdrop && (
+        <Backdrop
+          onClick={closeOnBackdrop && closeModal}
+          animationDuration={`${animationDuration}ms`}
+          animateIn={animateIn}
+        />
+      )}
     </FocusTrapReact>
   );
   return createUniversalPortal(content, 'body');

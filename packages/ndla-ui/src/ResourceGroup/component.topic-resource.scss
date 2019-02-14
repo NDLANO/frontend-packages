@@ -5,7 +5,7 @@
 
 .c-topic-resource {
   @include mq($from: desktop) {
-    @include grids-expand(4,6,2);
+    @include grids-expand(4, 6, 2);
     margin-top: $spacing--large;
   }
 
@@ -30,7 +30,7 @@
   &__item {
     max-width: 100%;
     margin-bottom: $spacing--small / 4;
-    &--currentPage {
+    &--active {
       .c-topic-resource__link {
         color: $brand-grey-dark;
         span {
@@ -43,7 +43,7 @@
       }
       &:before {
         @include mq(tablet) {
-          content: "";
+          content: '';
           display: block;
           position: absolute;
           width: $spacing--small;

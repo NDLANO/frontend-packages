@@ -139,7 +139,10 @@ class SubtopicLinkList extends Component {
           to={toTopic(topic.id)}>
           <span {...classes('link-label')}>{t('masthead.menu.goTo')}: </span>
           <span {...classes('link-target')}>
-            {topic.name} <span {...classes('arrow')}>›</span>
+            {topic.name}{' '}
+            <span>
+              <ChevronRight className="c-icon--22" />
+            </span>
           </span>
           <ChevronRight />
         </SafeLink>

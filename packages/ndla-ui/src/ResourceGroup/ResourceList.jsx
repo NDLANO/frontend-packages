@@ -21,7 +21,48 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const ResourceLink = ({
+  t,
+  icon,
+  children,
+  active,
+  component: Component,
+  youAreHere,
+  ...rest
+}) => (
+  <Component
+    {...classes('link o-flag o-flag--top', '', {
+      active,
+    })}
+    {...rest}>
+    <div {...classes('icon o-flag__img')}>{icon}</div>
+    <h1 {...classes('title')}>
+      <span>
+        {children}
+        {active && <small>{t('resource.youAreHere')}</small>}
+      </span>
+    </h1>
+  </Component>
+);
+
+ResourceLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  t: PropTypes.func.isRequired,
+  icon: PropTypes.node.isRequired,
+  active: PropTypes.bool,
+  component: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+};
+
+ResourceLink.defaultProps = {
+  component: SafeLink,
+};
+
 const Resource = ({
+  t,
   resource,
   icon,
   resourceToLinkProps,
@@ -36,17 +77,18 @@ const Resource = ({
       {...classes('item', {
         hidden,
         additional: resource.additional,
+        active: resource.active,
       })}>
       <div {...classes('body o-flag__body')}>
-        <SafeLink
-          {...resourceToLinkProps(resource)}
-          {...classes('link o-flag o-flag--top')}
-          aria-describedby={id}>
-          <div {...classes('icon o-flag__img')}>{icon}</div>
-          <h1 {...classes('title')}>
-            <span>{resource.name}</span>
-          </h1>
-        </SafeLink>
+        <ResourceLink
+          component={resource.active ? 'div' : SafeLink}
+          icon={icon}
+          t={t}
+          aria-describedby={id}
+          active={resource.active}
+          {...resourceToLinkProps(resource)}>
+          {resource.name}
+        </ResourceLink>
         <span id={id} hidden>
           {contentTypeDescription}
         </span>
@@ -74,6 +116,7 @@ Resource.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   contentTypeDescription: PropTypes.string.isRequired,
+  currentPage: PropTypes.bool,
 };
 
 injectT(Resource);
@@ -98,10 +141,12 @@ const ResourceList = ({
         {resources.map((resource, index) => (
           <Resource
             key={resource.id}
+            active={resource.active}
             type={type}
             showAdditionalResources={showAdditionalResources}
             {...rest}
             resource={resource}
+            t={t}
             contentTypeDescription={
               resource.additional
                 ? t('resource.tooltipAdditionalTopic')

@@ -207,6 +207,7 @@ const messages = {
       subjectOverview: 'Alle fag',
       title: 'Meny',
       subjectPage: 'Fagforside',
+      backToSubjectFrontpage: 'Tilbake til fagforsida',
       openFilter: 'Filter',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
@@ -270,6 +271,7 @@ const messages = {
       'Tilleggsstoff er innhald i faget som du kan velje i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordjupe deg i et emne eller tilnærma deg emnet på en anna måte.',
     showLess: 'Vis mindre',
     showMore: 'Vis mer',
+    youAreHere: 'Du er her',
   },
   article: {
     lastUpdated: 'Sist oppdatert',

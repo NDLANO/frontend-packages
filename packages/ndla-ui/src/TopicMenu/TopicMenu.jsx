@@ -217,7 +217,6 @@ export default class TopicMenu extends Component {
       this.state.isNarrowScreen && competenceGoalsOpen;
 
     const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
-    const toSubjectUrl = toSubject();
 
     return (
       <Trans>
@@ -283,7 +282,7 @@ export default class TopicMenu extends Component {
                               <ChevronRight className="c-icon--22" />
                             </button>
                           ) : (
-                            <SafeLink to={toSubjectUrl}>
+                            <SafeLink to={toSubject()}>
                               {subjectTitle}
                               <ChevronRight className="c-icon--22" />
                             </SafeLink>

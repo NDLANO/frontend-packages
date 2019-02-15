@@ -14,11 +14,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { isFunction } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
-import {
-  ZoomOutMap,
-  ArrowCollapse,
-  Link as LinkIcon,
-} from '@ndla/icons/common';
+import { Link as LinkIcon } from '@ndla/icons/common';
 import LicenseByline from '../LicenseByline';
 import SafeLink from '../common/SafeLink';
 
@@ -103,28 +99,11 @@ FigureCaption.defaultProps = {
   link: null,
 };
 
-const Figure = ({ children, type, resizeIframe, noFigcaption, t, ...rest }) => {
+const Figure = ({ children, type, t, ...rest }) => {
   const typeClass = `u-float-${type}`;
-  const ariaLabel = t('license.images.itemImage.zoomImageButtonLabel');
-  const ariaLabelExpanded = t(
-    'license.images.itemImage.zoomOutImageButtonLabel',
-  );
 
   return (
     <figure {...classes('', 'resize', typeClass)} {...rest}>
-      {noFigcaption ? (
-        <button
-          {...classes('fullscreen-btn')}
-          type="button"
-          data-figure-button
-          data-classtype={typeClass}
-          data-aria={ariaLabel}
-          data-ariaexpanded={ariaLabelExpanded}
-          aria-label={ariaLabel}>
-          <ArrowCollapse className="expanded-icon" />
-          <ZoomOutMap className="contracted-icon" />
-        </button>
-      ) : null}
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
@@ -152,8 +131,6 @@ Figure.propTypes = {
 
 Figure.defaultProps = {
   type: 'full',
-  resizeIframe: false,
-  noFigcaption: false,
 };
 
 export default injectT(Figure);

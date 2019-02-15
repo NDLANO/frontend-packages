@@ -117,14 +117,12 @@ storiesOf('Enkle komponenter', module)
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FigureWithLicense
+        <FigureImage
           type="left"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -151,15 +149,12 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-
-        <FigureWithLicense
+        <FigureImage
           type="right"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -185,14 +180,13 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense
+        <FigureImage
           type="small-right"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          hasHiddenCaption
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -224,16 +218,13 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense
-          noFigcaption
+        <FigureImage
           type="small-left"
-          hideFigcaption
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          hasHiddenCaption
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -284,14 +275,11 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense
+        <FigureImage
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          runScripts>
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          alt=""
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
       </StoryBody>
     </div>
   ))
@@ -389,12 +377,11 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureWithLicense type="right" authors="" caption="" runScripts>
-              <Image
-                alt=""
-                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-              />
-            </FigureWithLicense>
+            <FigureImage
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+              type="right"
+            />
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
               pitcher, blir idéen og historien i den filmen du planlegger å

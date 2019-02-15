@@ -99,11 +99,10 @@ FigureCaption.defaultProps = {
   link: null,
 };
 
-const Figure = ({ children, type, t, ...rest }) => {
+const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
   const typeClass = `u-float-${type}`;
-
   return (
-    <figure {...classes('', 'resize', typeClass)} {...rest}>
+    <figure {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );

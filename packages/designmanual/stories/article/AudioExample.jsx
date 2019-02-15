@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  AudioPlayer,
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-} from '@ndla/ui';
-import Button from '@ndla/button';
+import { AudioPlayer, Figure } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import {
@@ -14,6 +8,7 @@ import {
   addShowDialogClickListeners,
   initAudioPlayers,
 } from '@ndla/article-scripts';
+import { FigureCaptionExample } from './FigureCaptionExample';
 
 class AudioExample extends Component {
   constructor(props) {
@@ -38,11 +33,10 @@ class AudioExample extends Component {
       learnAboutLicenses: license.linkText,
       source: 'Kilde',
       title: 'Tittel',
+      mediaType: 'lydklipp',
     };
 
     const caption = 'Familien som spela vekk jula';
-    const reuseLabel = 'Bruk lydklipp';
-    const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
 
     const figureId = `figure-${this.id}`;
 
@@ -54,27 +48,11 @@ class AudioExample extends Component {
           title={caption}
           typeLabel="Hørespill"
         />
-        <FigureLicenseDialog
-          id={this.id}
-          key="details"
-          license={license}
-          authors={authors}
-          origin="https://www.wikimedia.com"
-          title={caption}
-          locale="nb"
-          messages={messages}>
-          <Button outline>Kopier referanse</Button>
-          <Button outline>Last ned lydklipp</Button>
-        </FigureLicenseDialog>
-        <FigureCaption
+        <FigureCaptionExample
+          caption={caption}
           figureId={figureId}
           id={this.id}
-          locale="nb"
-          key="caption"
-          caption={caption}
-          reuseLabel={reuseLabel}
-          licenseRights={license.rights}
-          authors={authors}
+          messages={messages}
         />
       </Figure>
     );

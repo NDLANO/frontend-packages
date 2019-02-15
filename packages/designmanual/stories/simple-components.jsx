@@ -13,7 +13,6 @@ import {
   Logo,
   LayoutItem,
   LicenseByline,
-  Image,
   AudioPlayer,
   OneColumn,
 } from '@ndla/ui';
@@ -41,9 +40,11 @@ const floatVideo = left => (
     <FigureWithLicense
       type={left ? 'left' : 'right'}
       resizeIframe
-      isEmbed
       caption="Utholdenhet - animasjon av oksygentransporten"
-      reuseLabel="videoen">
+      messages={{
+        mediaType: 'videoen',
+        modelPremission: null,
+      }}>
       <iframe
         title="Video: Utholdenhet - animasjon av oksygentransporten"
         height="270"
@@ -487,7 +488,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe runScripts isEmbed noFigcaption>
+        <FigureWithLicense resizeIframe runScripts hasHiddenCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Title"
@@ -502,7 +503,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe isEmbed noFigcaption>
+        <FigureWithLicense resizeIframe hasHiddenCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
@@ -514,9 +515,11 @@ storiesOf('Enkle komponenter', module)
         </h2>
         <FigureWithLicense
           resizeIframe
-          isEmbed
           caption="Utholdenhet - animasjon av oksygentransporten"
-          reuseLabel="videoen">
+          messages={{
+            mediaType: 'videoen',
+            modelPremission: null,
+          }}>
           <iframe
             title="Video: Utholdenhet - animasjon av oksygentransporten"
             height="270"
@@ -554,9 +557,10 @@ storiesOf('Enkle komponenter', module)
         <FigureWithLicense
           resizeIframe
           noCaption
-          type="full-column"
-          isEmbed
-          reuseLabel="videoen">
+          messages={{
+            mediaType: 'videoen',
+            modelPremission: null,
+          }}>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

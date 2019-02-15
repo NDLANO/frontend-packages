@@ -13,7 +13,6 @@ import {
   PageContainer,
   Content,
   LayoutItem,
-  Image,
   Translation,
   TranslationLine,
   ArticleByline,

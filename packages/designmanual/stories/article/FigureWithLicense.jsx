@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { uuid } from '@ndla/util';
 import {
   addCloseDialogClickListeners,
@@ -18,15 +17,8 @@ import {
   addEventListenerForFigureZoomButton,
 } from '@ndla/article-scripts';
 
-import {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  makeSrcQueryString,
-} from '@ndla/ui';
-import Button from '@ndla/button';
-
-const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
+import { Figure } from '@ndla/ui';
+import { FigureCaptionExample } from './FigureCaptionExample';
 
 class FigureWithLicense extends Component {
   constructor(props) {
@@ -46,70 +38,28 @@ class FigureWithLicense extends Component {
   }
 
   render() {
-    const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
-    const { resizeIframe, type } = this.props;
-
-    const messages = {
-      close: 'Lukk',
-      rulesForUse: 'Regler for bruk av bildet',
-      learnAboutLicenses: license.linkText,
-      modelPremission:
-        'Personen(e) på bildet har godkjent at det kan brukes videre.',
-      source: 'Kilde',
-      title: 'Tittel',
-    };
-
-    const caption = this.props.caption ? this.props.caption : ``;
-    const reuseLabel = this.props.reuseLabel
-      ? `Bruk ${this.props.reuseLabel}`
-      : 'Bruk bildet';
+    const {
+      hasHiddenCaption,
+      messages,
+      resizeIframe,
+      caption,
+      type,
+    } = this.props;
 
     const figureId = `figure-${this.id}`;
 
     return (
-      <Figure
-        id={figureId}
-        resizeIframe={resizeIframe}
-        type={type}
-        noFigcaption={this.props.noFigcaption}>
-        {!this.props.noFigcaption ? (
-          <a
-            target="_blank"
-            href={`${this.props.children.props.src}?${makeSrcQueryString(
-              2720,
-              this.props.children.props.crop,
-              this.props.children.props.focalPoint,
-            )}`}
-            aria-label="Åpne bilde i et nytt vindu"
-            rel="noopener noreferrer">
-            {this.props.children}
-          </a>
-        ) : (
-          this.props.children
-        )}
-        <FigureCaption
-          hideFigcaption={this.props.noFigcaption}
-          figureId={figureId}
-          id={this.id}
-          key="caption"
-          locale="nb"
-          caption={caption}
-          reuseLabel={reuseLabel}
-          licenseRights={license.rights}
-          authors={authors}>
-          <FigureLicenseDialog
+      <Figure id={figureId} resizeIframe={resizeIframe} type={type}>
+        {this.props.children}
+        {!hasHiddenCaption && (
+          <FigureCaptionExample
             id={this.id}
-            key="details"
-            authors={authors}
-            license={license}
-            origin="https://www.wikimedia.com"
-            title="Mann med lupe"
-            locale="nb"
-            messages={messages}>
-            <Button outline>Kopier referanse</Button>
-            <Button outline>Last ned bilde</Button>
-          </FigureLicenseDialog>
-        </FigureCaption>
+            figureId={figureId}
+            caption={caption}
+            messages={messages}
+            hasHiddenCaption={hasHiddenCaption}
+          />
+        )}
       </Figure>
     );
   }
@@ -120,9 +70,9 @@ FigureWithLicense.propTypes = {
   caption: PropTypes.string,
   reuseLabel: PropTypes.string,
   runScripts: PropTypes.bool,
-  noCaption: PropTypes.bool,
   resizeIframe: PropTypes.bool,
-  noFigcaption: PropTypes.bool,
+  hasHiddenCaption: PropTypes.bool,
+  messages: PropTypes.object,
   type: PropTypes.oneOf([
     'full',
     'full-column',
@@ -136,9 +86,10 @@ FigureWithLicense.propTypes = {
 };
 
 FigureWithLicense.defaultProps = {
+  caption: '',
   runScripts: false,
-  noCaption: false,
   noFigcaption: false,
+  hasHiddenCaption: false,
 };
 
 export default FigureWithLicense;

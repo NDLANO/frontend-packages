@@ -7,7 +7,6 @@
 
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import {
@@ -19,15 +18,8 @@ import {
   addEventListenerForFigureZoomButton,
 } from '@ndla/article-scripts';
 
-import {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  Image,
-  FigureExpandButton,
-  ImageLink,
-} from '@ndla/ui';
-import Button from '@ndla/button';
+import { Figure, Image, FigureExpandButton, ImageLink } from '@ndla/ui';
+import { FigureCaptionExample } from './FigureCaptionExample';
 
 const mountedInstances = [];
 
@@ -78,19 +70,6 @@ export function FigureImage({ type, alt, src, caption, hasHiddenCaption }) {
     };
   }, []);
 
-  const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
-
-  const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
-  const messages = {
-    close: 'Lukk',
-    rulesForUse: 'Regler for bruk av bildet',
-    learnAboutLicenses: license.linkText,
-    modelPremission:
-      'Personen(e) på bildet har godkjent at det kan brukes videre.',
-    source: 'Kilde',
-    title: 'Tittel',
-  };
-
   const id = idRef.current;
   const figureId = `figure-${id}`;
 
@@ -107,27 +86,12 @@ export function FigureImage({ type, alt, src, caption, hasHiddenCaption }) {
                 src={src}>
                 <Image alt={alt} src={src} />
               </ImageWrapper>
-              <FigureCaption
-                hideFigcaption={hasHiddenCaption}
-                figureId={figureId}
+              <FigureCaptionExample
                 id={id}
-                locale="nb"
+                figureId={figureId}
                 caption={caption}
-                reuseLabel="Bruk bilde"
-                licenseRights={license.rights}
-                authors={authors}>
-                <FigureLicenseDialog
-                  id={id}
-                  authors={authors}
-                  license={license}
-                  origin="https://www.wikimedia.com"
-                  title="Mann med lupe"
-                  locale="nb"
-                  messages={messages}>
-                  <Button outline>Kopier referanse</Button>
-                  <Button outline>Last ned bilde</Button>
-                </FigureLicenseDialog>
-              </FigureCaption>
+                hasHiddenCaption={hasHiddenCaption}
+              />
             </>
           )}
         </Figure>

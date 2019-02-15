@@ -12,20 +12,17 @@ import { ZoomOutMap, ArrowCollapse } from '@ndla/icons/common';
 
 export function FigureExpandButton({ children, messages, typeClass }) {
   return (
-    <>
-      <button
-        className="c-figure__fullscreen-btn"
-        type="button"
-        data-figure-button
-        data-classtype={typeClass}
-        data-aria={messages.zoomImageButtonLabel}
-        data-ariaexpanded={messages.zoomOutImageButtonLabel}
-        aria-label={messages.zoomImageButtonLabel}>
-        <ArrowCollapse className="expanded-icon" />
-        <ZoomOutMap className="contracted-icon" />
-      </button>
-      {children}
-    </>
+    <button
+      className="c-figure__fullscreen-btn"
+      type="button"
+      data-figure-button
+      data-classtype={typeClass}
+      data-aria={messages.zoomImageButtonLabel}
+      data-ariaexpanded={messages.zoomOutImageButtonLabel}
+      aria-label={messages.zoomImageButtonLabel}>
+      <ArrowCollapse className="expanded-icon" />
+      <ZoomOutMap className="contracted-icon" />
+    </button>
   );
 }
 

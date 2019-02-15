@@ -12,6 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { isFunction } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
 import {
   ZoomOutMap,
@@ -124,14 +125,17 @@ const Figure = ({ children, type, resizeIframe, noFigcaption, t, ...rest }) => {
           <ZoomOutMap className="contracted-icon" />
         </button>
       ) : null}
-      {children}
+      {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
 };
 
 Figure.propTypes = {
   id: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.node.isRequired,
+    PropTypes.func.isRequired,
+  ]).isRequired,
   type: PropTypes.oneOf([
     'full',
     'full-column',

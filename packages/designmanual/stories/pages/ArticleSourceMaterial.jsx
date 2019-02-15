@@ -18,7 +18,7 @@ import {
   SourceMaterialBadge,
 } from '@ndla/ui';
 
-import FigureWithImage from '../article/FigureWithImage';
+import { FigureImage } from '../article/FigureImage';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
@@ -43,7 +43,7 @@ export default () => (
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithImage
+        <FigureImage
           alt=""
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           type="left"
@@ -79,7 +79,7 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithImage
+        <FigureImage
           alt=""
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           caption=""

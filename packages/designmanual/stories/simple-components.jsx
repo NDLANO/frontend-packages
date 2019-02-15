@@ -20,7 +20,7 @@ import {
 
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
-import FigureWithImage from './article/FigureWithImage';
+import { FigureImage } from './article/FigureImage';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
@@ -100,7 +100,7 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithImage
+        <FigureImage
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
           alt="Forstørrelsesglass"
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
@@ -247,7 +247,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2>Flyt til høyre, ekstra liten versjon</h2>
-        <FigureWithImage
+        <FigureImage
           type="xsmall-right"
           hasHiddenCaption
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."

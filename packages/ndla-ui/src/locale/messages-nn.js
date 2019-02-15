@@ -323,6 +323,8 @@ const messages = {
       rules: 'Regler for bruk av bildet:',
       itemImage: {
         ariaLabel: 'Opne bilde i eit nytt vindauge',
+        zoomImageButtonLabel: 'Forstørr bilde',
+        zoomOutImageButtonLabel: 'Forminsk bilde',
       },
       source: 'Kjelde',
       title: 'Tittel',

@@ -19,3 +19,4 @@ export {
   breakpoints,
 } from './getCurrentBreakpoint';
 export { createUniversalPortal } from './createUniversalPortal';
+export { isFunction } from './isFunction';

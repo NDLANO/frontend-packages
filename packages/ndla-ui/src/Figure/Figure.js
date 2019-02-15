@@ -12,7 +12,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ZoomOutMap, Link as LinkIcon } from '@ndla/icons/common';
+import { isFunction } from '@ndla/util';
+import { injectT } from '@ndla/i18n';
+import { Link as LinkIcon } from '@ndla/icons/common';
 import LicenseByline from '../LicenseByline';
 import SafeLink from '../common/SafeLink';
 
@@ -31,8 +33,9 @@ export const FigureCaption = ({
   licenseRights,
   locale,
   link,
+  hideFigcaption,
 }) => (
-  <figcaption {...classes('caption')}>
+  <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
@@ -89,46 +92,28 @@ FigureCaption.propTypes = {
     external: PropTypes.bool,
   }),
   locale: PropTypes.string,
+  hideFigcaption: PropTypes.bool,
 };
 
 FigureCaption.defaultProps = {
   link: null,
 };
 
-export const Figure = ({
-  children,
-  type,
-  resizeIframe,
-  noFigcaption,
-  ...rest
-}) => {
+const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
   const typeClass = `u-float-${type}`;
-
-  const modifiers = [];
-
-  if (resizeIframe) {
-    modifiers.push('resize');
-  }
-
-  if (type === 'full-column') {
-    modifiers.push('full-column');
-  }
-
   return (
-    <figure {...classes('', modifiers, typeClass)} {...rest}>
-      {noFigcaption ? (
-        <div {...classes('fullscreen-btn')}>
-          <ZoomOutMap />
-        </div>
-      ) : null}
-      {children}
+    <figure {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
+      {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
 };
 
 Figure.propTypes = {
   id: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.node.isRequired,
+    PropTypes.func.isRequired,
+  ]).isRequired,
   type: PropTypes.oneOf([
     'full',
     'full-column',
@@ -145,8 +130,6 @@ Figure.propTypes = {
 
 Figure.defaultProps = {
   type: 'full',
-  resizeIframe: false,
-  noFigcaption: false,
 };
 
-export default Figure;
+export default injectT(Figure);

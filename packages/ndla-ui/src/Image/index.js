@@ -8,5 +8,6 @@
 
 import Image from './Image';
 export { makeSrcQueryString } from './Image';
+export { ImageLink } from './ImageLink';
 
 export default Image;

@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import moment from 'moment';
+import format from 'date-fns/format';
 import {
   OneColumn,
   Article,
@@ -82,9 +82,8 @@ class ArticleLoader extends Component {
     fetchArticle(articleId)
       .then(data => {
         const article = data;
-        article.updated = moment(article.updated).format('DD/MM/YYYY');
         this.setState({
-          article,
+          article: { article, updated: format(article.updated, 'DD.MM.YYYY') },
           message: '',
         });
       })

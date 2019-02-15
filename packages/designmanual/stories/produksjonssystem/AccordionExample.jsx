@@ -37,26 +37,26 @@ class AccordionExample extends Component {
     return (
       <ComponentInfo
         reactCode={`
-    <Accordion openIndexes={[0]}>
-      {({ getBarProps }) => (
-        <AccordionWrapper>
-          {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-            <React.Fragment key={item}>
-              <AccordionBar
-                {...getBarProps(index)}
-                ariaLabel={\`Panel \${index + 1}\`}>
-                Panel {index + 1}
-              </AccordionBar>
-              <AccordionPanel {...getPanelProps(index)}>
-                <div>
-                  <p>{item}</p>
-                </div>
-              </AccordionPanel>
-            </React.Fragment>
-          ))}
-        </AccordionWrapper>
-      )}
-    </Accordion>
+  <Accordion openIndexes={[0]}>
+    {({ getBarProps }) => (
+      <AccordionWrapper>
+        {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
+          <React.Fragment key={item}>
+            <AccordionBar
+              {...getBarProps(index)}
+              ariaLabel={\`Panel \${index + 1}\`}>
+              Panel {index + 1}
+            </AccordionBar>
+            <AccordionPanel {...getPanelProps(index)}>
+              <div>
+                <p>{item}</p>
+              </div>
+            </AccordionPanel>
+          </React.Fragment>
+        ))}
+      </AccordionWrapper>
+    )}
+  </Accordion>
           `}
         usesPropTypes={[
           {

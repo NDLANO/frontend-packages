@@ -45,14 +45,13 @@ class Tabs extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { index } = this.state;
-
     if (
-      nextProps.selectedIndex !== undefined &&
-      nextProps.selectedIndex !== index
+      this.props.selectedIndex !== undefined &&
+      this.props.selectedIndex !== index
     ) {
-      this.setState({ index: nextProps.selectedIndex });
+      this.setState({ index: this.props.selectedIndex });
     }
   }
 

@@ -31,7 +31,7 @@ const withTracker = WrappedComponent => {
       sendPageView({ title, dimensions });
     }
 
-    componentWillMount() {
+    componentDidMount() {
       mountedInstances.push(WrappedComponent);
 
       if (!WrappedComponent.getDocumentTitle) {
@@ -39,9 +39,7 @@ const withTracker = WrappedComponent => {
           `Tracker expects a static getDocumentTitle function on the WrappedComponent.`,
         );
       }
-    }
 
-    componentDidMount() {
       if (WrappedComponent.willTrackPageView) {
         WrappedComponent.willTrackPageView(Tracker.trackPageView, this.props);
       } else {

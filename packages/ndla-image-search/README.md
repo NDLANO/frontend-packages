@@ -13,9 +13,9 @@ $ npm install ndla-image-search
 ```js
 import ImageSearch from '@ndla/image-search';
 
-const imageSelector = (image) => {
+const imageSelector = image => {
   // handle image
-}
+};
 
-<ImageSearch onImageSelect={imageSelector} />
+<ImageSearch onImageSelect={imageSelector} />;
 ```

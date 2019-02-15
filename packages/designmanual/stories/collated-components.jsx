@@ -314,17 +314,17 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <ComponentInfo
           reactCode={`
-            <RadioButtonGroup
-              options={[
-                { title: '1T', value: '1T' },
-                { title: 'R1', value: 'R1' },
-                { title: 'R2', value: 'R2' },
-                { title: 'S1', value: 'S1' },
-              ]}
-              onChange={(value) => {
-                console.log('changed to', value);
-              }}
-            />
+  <RadioButtonGroup
+    options={[
+      { title: '1T', value: '1T' },
+      { title: 'R1', value: 'R1' },
+      { title: 'R2', value: 'R2' },
+      { title: 'S1', value: 'S1' },
+    ]}
+    onChange={(value) => {
+      console.log('changed to', value);
+    }}
+  />
           `}
           usesPropTypes={[
             {

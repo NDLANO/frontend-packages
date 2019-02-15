@@ -48,7 +48,6 @@ export default () => (
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           type="left"
           caption=""
-          runScripts
         />
         <p>
           333Du har en kjempegod idé til en kortfilm. Men det koster mange

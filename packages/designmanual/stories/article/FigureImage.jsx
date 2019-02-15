@@ -5,23 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
-import {
-  addCloseDialogClickListeners,
-  addShowDialogClickListeners,
-  addEventListenerForResize,
-  updateIFrameDimensions,
-  toggleLicenseInfoBox,
-  addEventListenerForFigureZoomButton,
-} from '@ndla/article-scripts';
+import { initArticleScripts } from '@ndla/article-scripts';
 
 import { Figure, Image, FigureExpandButton, ImageLink } from '@ndla/ui';
 import { FigureCaptionExample } from './FigureCaptionExample';
-
-const mountedInstances = [];
+import { useRunOnlyOnce } from './useRunOnlyOnce';
 
 function ImageWrapper({ typeClass, src, hasHiddenCation, children, t }) {
   if (hasHiddenCation) {
@@ -51,26 +43,9 @@ function ImageWrapper({ typeClass, src, hasHiddenCation, children, t }) {
 }
 
 export function FigureImage({ type, alt, src, caption, hasHiddenCaption }) {
-  const idRef = useRef(uuid());
-
-  useEffect(() => {
-    mountedInstances.push(idRef.current);
-    if (mountedInstances.length === 1) {
-      addShowDialogClickListeners();
-      addCloseDialogClickListeners();
-      updateIFrameDimensions();
-      addEventListenerForResize();
-      toggleLicenseInfoBox();
-      addEventListenerForFigureZoomButton();
-    }
-
-    return () => {
-      const index = mountedInstances.indexOf(idRef.current);
-      mountedInstances.splice(index, 1);
-    };
-  }, []);
-
-  const id = idRef.current;
+  const id = useRunOnlyOnce(uuid(), () => {
+    initArticleScripts();
+  });
   const figureId = `figure-${id}`;
 
   return (

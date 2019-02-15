@@ -412,7 +412,6 @@ storiesOf('Sammensatte moduler', module)
         <FigureImage
           alt=""
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          runScripts
         />
       </LayoutItem>
     </Center>

@@ -289,7 +289,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Lydavspiller" />
       <StoryBody>
         <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
-        <AudioExample runScripts />
+        <AudioExample />
         <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
         <table>
           <thead>
@@ -488,7 +488,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe runScripts hasHiddenCaption>
+        <FigureWithLicense resizeIframe hasHiddenCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Title"

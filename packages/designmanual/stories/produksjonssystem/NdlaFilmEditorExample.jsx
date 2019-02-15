@@ -208,7 +208,6 @@ class NdlaFilmExample extends Component {
             narrow
             onClick={() => {
               this.setState({
-                editingThemeIndex: -1,
                 newTheme: {
                   name: {
                     nb: '',
@@ -247,7 +246,6 @@ class NdlaFilmExample extends Component {
                   narrow
                   onClick={() => {
                     this.setState({
-                      editingThemeIndex: index,
                       newTheme: {
                         name: {
                           nb: theme.name.nb,

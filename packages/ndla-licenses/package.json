@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "@ndla/core": "^0.4.8",
-    "defined": "1.0.0"
+    "defined": "1.0.0",
+    "react-bem-helper": "1.4.1"
   },
   "publishConfig": {
     "access": "public"

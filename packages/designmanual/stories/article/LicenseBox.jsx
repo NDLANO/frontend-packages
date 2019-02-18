@@ -9,7 +9,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@ndla/tabs';
-import { uuid, downloadPdf } from '@ndla/util';
+import { uuid } from '@ndla/util';
 
 import { injectT } from '@ndla/i18n';
 import {
@@ -28,9 +28,10 @@ import { COPYRIGHTED, metaTypes } from '@ndla/licenses';
 import { mockDownloadArticleText } from '../../dummydata';
 import H5PExamples from '../../images/h5p-contenttype';
 
-const triggerDownloadText = () => {
-  // TODO: Fetch texts and name from article..
+const triggerDownloadText = async () => {
+  const { default: downloadPdf } = await import('./downloadPdf');
   downloadPdf({ content: mockDownloadArticleText, title: 'Eksempel artikkel' });
+  // TODO: Fetch texts and name from article..
 };
 
 const byncndLicenseAbbreviation = 'CC-BY-ND-4.0';

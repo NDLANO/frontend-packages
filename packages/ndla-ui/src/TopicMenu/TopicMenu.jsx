@@ -177,6 +177,7 @@ export default class TopicMenu extends Component {
       searchFieldComponent,
       toFrontpage,
       locale,
+      isOnSubjectFrontPage,
     } = this.props;
     const { competenceGoalsOpen } = this.state;
     const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
@@ -270,10 +271,22 @@ export default class TopicMenu extends Component {
                       })}>
                       <div {...classes('subject__header')}>
                         <h1>
-                          <SafeLink to={toSubject()}>
-                            {subjectTitle}
-                            <ChevronRight />
-                          </SafeLink>
+                          {isOnSubjectFrontPage ? (
+                            <button
+                              type="button"
+                              onClick={closeMenu}
+                              aria-label={t(
+                                'masthead.menu.backToSubjectFrontpage',
+                              )}>
+                              {subjectTitle}
+                              <ChevronRight className="c-icon--22" />
+                            </button>
+                          ) : (
+                            <SafeLink to={toSubject()}>
+                              {subjectTitle}
+                              <ChevronRight className="c-icon--22" />
+                            </SafeLink>
+                          )}
                         </h1>
                         {competenceGoals &&
                           !this.state.isNarrowScreen &&
@@ -351,7 +364,9 @@ export default class TopicMenu extends Component {
                           </span>
                           <span {...classes('link-target')}>
                             {t('masthead.menu.subjectPage')}
-                            <span {...classes('arrow')}>›</span>
+                            <span>
+                              <ChevronRight className="c-icon--22" />
+                            </span>
                           </span>
                         </SafeLink>
                         <ul {...classes('list')}>
@@ -495,6 +510,7 @@ TopicMenu.propTypes = {
   competenceGoals: PropTypes.node,
   searchFieldComponent: PropTypes.node,
   locale: PropTypes.string,
+  isOnSubjectFrontPage: PropTypes.bool,
 };
 
 TopicMenu.defaultProps = {

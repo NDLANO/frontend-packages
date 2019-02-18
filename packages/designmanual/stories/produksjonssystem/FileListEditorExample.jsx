@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { FileListEditor } from '@ndla/editor';
 
 class StructureExample extends Component {

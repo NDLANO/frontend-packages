@@ -7,12 +7,12 @@ import ComponentInfo from '../ComponentInfo';
 const TooltipExample = () => (
   <ComponentInfo
     reactCode={`
-      <Tooltip
-        align="right"
-        delay={300}
-      >
-        {children}
-      </Tooltip>
+  <Tooltip
+    align="right"
+    delay={300}
+  >
+    {children}
+  </Tooltip>
     `}
     usesPropTypes={[
       {

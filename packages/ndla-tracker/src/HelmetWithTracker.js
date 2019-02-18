@@ -18,9 +18,9 @@ import withTracker from './withTracker';
  * Since we only can track a page once, changes to the title prop will trigger a warning.
  */
 class HelmetWithTracker extends Component {
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps, prevState) {
     warning(
-      !(nextProps.title !== this.props.title),
+      !(prevProps.title !== this.props.title),
       'N.B! Title changes are not supported because of page view tracking. \n\n Please use willTrackPageView provided by withTracker for more lowlevel control over which title to track.',
     );
   }

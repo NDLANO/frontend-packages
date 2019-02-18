@@ -13,7 +13,6 @@ import {
   PageContainer,
   Content,
   LayoutItem,
-  Image,
   Translation,
   TranslationLine,
   ArticleByline,
@@ -24,7 +23,7 @@ import Pager from '@ndla/pager';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
-import FigureWithLicense from './article/FigureWithLicense';
+import { FigureImage } from './article/FigureImage';
 import { topicList } from '../dummydata/index';
 import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
@@ -314,17 +313,17 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <ComponentInfo
           reactCode={`
-            <RadioButtonGroup
-              options={[
-                { title: '1T', value: '1T' },
-                { title: 'R1', value: 'R1' },
-                { title: 'R2', value: 'R2' },
-                { title: 'S1', value: 'S1' },
-              ]}
-              onChange={(value) => {
-                console.log('changed to', value);
-              }}
-            />
+  <RadioButtonGroup
+    options={[
+      { title: '1T', value: '1T' },
+      { title: 'R1', value: 'R1' },
+      { title: 'R2', value: 'R2' },
+      { title: 'S1', value: 'S1' },
+    ]}
+    onChange={(value) => {
+      console.log('changed to', value);
+    }}
+  />
           `}
           usesPropTypes={[
             {
@@ -410,12 +409,10 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureWithLicense runScripts>
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+        <FigureImage
+          alt=""
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
       </LayoutItem>
     </Center>
   ))

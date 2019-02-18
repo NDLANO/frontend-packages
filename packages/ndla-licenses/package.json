@@ -22,6 +22,7 @@
     "react": "^15.6.0 || ^16.0.0"
   },
   "dependencies": {
+    "@ndla/core": "^0.4.8",
     "defined": "1.0.0"
   },
   "publishConfig": {

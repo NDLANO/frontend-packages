@@ -3,7 +3,16 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { LicenseByline, BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import {
+  LicenseByline,
+  BY,
+  SA,
+  NC,
+  ND,
+  PD,
+  CC0,
+  COPYRIGHTED,
+} from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,

@@ -8,15 +8,28 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-
+import { colors, spacing } from '@ndla/core';
+import styled from 'react-emotion';
 import LicenseIconList from './LicenseIconList';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
 
-const classes = new BEMHelper({
-  name: 'license-byline',
-  prefix: 'c-',
-});
+const StyledLicenseByline = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const StyledModelpermission = styled.div`
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: ${spacing.small};
+  }
+  margin-top: ${spacing.small / 2};
+  padding-top: ${spacing.small / 1.5};
+  border-top: 2px solid ${colors.brand.light};
+`;
 
 const LicenseByline = ({
   children,
@@ -26,7 +39,7 @@ const LicenseByline = ({
   messages,
   locale,
 }) => (
-  <div {...classes()}>
+  <StyledLicenseByline>
     {!withDescription ? (
       <LicenseIconList
         className={className}
@@ -41,14 +54,14 @@ const LicenseByline = ({
           locale={locale}
         />
         {messages && messages.modelPremission && (
-          <div className="c-license-icons__modelpermission">
+          <StyledModelpermission>
             {messages.modelPremission}
-          </div>
+          </StyledModelpermission>
         )}
       </div>
     )}
     {children}
-  </div>
+  </StyledLicenseByline>
 );
 
 LicenseByline.propTypes = {

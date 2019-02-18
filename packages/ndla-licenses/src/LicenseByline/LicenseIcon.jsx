@@ -8,7 +8,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { COPYRIGHTED, BY, SA, NC, ND, PD, CC0, CC } from '../licenseRights';
 import {
   By,
   Cc,
@@ -19,6 +18,7 @@ import {
   Publicdomain,
   Copyright,
 } from '@ndla/icons/licenses';
+import { COPYRIGHTED, BY, SA, NC, ND, PD, CC0, CC } from '../licenseRights';
 
 const LicenseIcon = ({ licenseRight, description, className }) => {
   switch (licenseRight) {

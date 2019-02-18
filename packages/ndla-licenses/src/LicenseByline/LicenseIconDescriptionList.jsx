@@ -8,27 +8,56 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 import BEMHelper from 'react-bem-helper';
+import { spacing } from '@ndla/core';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-
 const classes = new BEMHelper({
   name: 'license-icons',
   prefix: 'c-',
 });
 
+const StyledLicenseIconList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledLicenseIconItem = styled.li`
+  display: flex;
+  padding-bottom: 5px;
+  margin-bottom: 0;
+  margin-right: 0.2em;
+  line-height: 1.3rem;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+`;
+
+const StyledLicenseLabel = styled.span`
+  margin-left: ${spacing.small};
+`;
+
 const LicenseIconItem = ({ licenseRight, locale }) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <li {...classes('item')}>
+    <StyledLicenseIconItem {...classes('item')}>
       <LicenseIcon
         licenseRight={licenseRight}
         description={description}
         {...classes('icon')}
       />
-      <span className="c-license-icons__licenselabel">{description}</span>
-    </li>
+      <StyledLicenseLabel className="c-license-icons__licenselabel">
+        {description}
+      </StyledLicenseLabel>
+    </StyledLicenseIconItem>
   );
 };
 
@@ -38,7 +67,7 @@ LicenseIconItem.propTypes = {
 };
 
 const LicenseIconDescriptionList = ({ licenseRights, className, locale }) => (
-  <ul {...classes('list', '', className)}>
+  <StyledLicenseIconList {...classes('list', '', className)}>
     {licenseRights.map(licenseRight => (
       <LicenseIconItem
         key={licenseRight}
@@ -46,7 +75,7 @@ const LicenseIconDescriptionList = ({ licenseRights, className, locale }) => (
         locale={locale}
       />
     ))}
-  </ul>
+  </StyledLicenseIconList>
 );
 
 LicenseIconDescriptionList.propTypes = {

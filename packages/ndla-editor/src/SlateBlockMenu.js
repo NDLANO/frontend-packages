@@ -125,7 +125,7 @@ const buttonCSS = css`
   }
 `;
 
-const FocusWrapper = ({ isOpen, onToggleOpen, children }) => (
+const FocusWrapper = ({ onToggleOpen, children }) => (
   <FocusTrapReact
     focusTrapOptions={{
       onDeactivate: e => {
@@ -156,7 +156,7 @@ const SlateBlockMenu = React.forwardRef(
         <Plus />
       </button>
       {isOpen && (
-        <FocusWrapper isOpen={isOpen} onToggleOpen={onToggleOpen}>
+        <FocusWrapper onToggleOpen={onToggleOpen}>
           <Wrapper>
             <div>
               <HeaderLabel>{heading}</HeaderLabel>

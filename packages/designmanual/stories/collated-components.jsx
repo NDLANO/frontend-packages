@@ -3,12 +3,11 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import { LicenseByline, BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
   Footer,
-  LicenseByline,
   TopicIntroductionList,
   PageContainer,
   Content,

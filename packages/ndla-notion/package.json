@@ -21,8 +21,7 @@
   "dependencies": {
     "@ndla/core": "^0.4.8",
     "@ndla/licenses": "^0.4.3",
-    "@ndla/modal": "^0.2.11",
-    "@ndla/ui": "^0.20.1"
+    "@ndla/modal": "^0.2.11"
   },
   "peerDependencies": {
     "emotion": "^9.2.10",

@@ -6,13 +6,12 @@ import * as contentTypeIcons from '@ndla/icons/contentType';
 import * as commonIcons from '@ndla/icons/common';
 import * as editorIcons from '@ndla/icons/editor';
 import * as actionIcons from '@ndla/icons/action';
-import { BY, NC, ND } from '@ndla/licenses';
+import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 import {
   Aside,
   FactBox,
   Logo,
   LayoutItem,
-  LicenseByline,
   AudioPlayer,
   OneColumn,
 } from '@ndla/ui';

@@ -15,7 +15,7 @@ import BEMHelper from 'react-bem-helper';
 import { isFunction } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
 import { Link as LinkIcon } from '@ndla/icons/common';
-import LicenseByline from '../LicenseByline';
+import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({

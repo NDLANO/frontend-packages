@@ -95,7 +95,6 @@ export {
   PageContainer,
   Content,
 } from './Layout';
-export { default as LicenseByline } from './LicenseByline';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';

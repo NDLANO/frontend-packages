@@ -1,6 +1,6 @@
 import React from 'react';
-import { FactBox, LicenseByline } from '@ndla/ui';
-import { BY, NC, ND } from '@ndla/licenses';
+import { FactBox } from '@ndla/ui';
+import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 
 const FactBoxExample = () => (
   <FactBox>

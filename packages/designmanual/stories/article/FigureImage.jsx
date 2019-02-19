@@ -42,7 +42,14 @@ function ImageWrapper({ typeClass, src, hasHiddenCation, children, t }) {
   );
 }
 
-export function FigureImage({ type, alt, src, caption, hasHiddenCaption }) {
+export function FigureImage({
+  type,
+  alt,
+  src,
+  caption,
+  hasHiddenCaption,
+  link,
+}) {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -66,6 +73,7 @@ export function FigureImage({ type, alt, src, caption, hasHiddenCaption }) {
                 figureId={figureId}
                 caption={caption}
                 hasHiddenCaption={hasHiddenCaption}
+                link={link}
               />
             </>
           )}

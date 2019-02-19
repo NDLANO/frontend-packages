@@ -25,11 +25,10 @@ export const FormHeaderIconClass = css`
 
 export const StyledButtonWrapper = styled.div`
   display: flex;
-  margin-top: ${spacing.medium};
+  justify-content: flex-end;
+  margin: ${spacing.normal} 0;
 
-  > button {
-    margin-right: ${spacing.small};
+  > button + button {
+    margin-left: ${spacing.small};
   }
-  padding-left: ${props =>
-    props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0};
 `;

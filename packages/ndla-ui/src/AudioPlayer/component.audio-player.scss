@@ -29,13 +29,15 @@
     }
   }
 
-  &--speach {
+  &--speech {
     .c-audio-player {
       &__play {
         color: $brand-color;
         margin-right: 0;
 
-        &:hover, &:active, &:focus {
+        &:hover,
+        &:active,
+        &:focus {
           color: $brand-color--secondary;
         }
       }
@@ -97,7 +99,8 @@
     flex: 1 1 auto;
   }
 
-  &__progress-background, &__progress-played {
+  &__progress-background,
+  &__progress-played {
     position: absolute;
     top: 13px;
     left: 0;
@@ -110,6 +113,6 @@
   }
 
   &__progress-played {
-   background: $primary-color;
+    background: $primary-color;
   }
 }

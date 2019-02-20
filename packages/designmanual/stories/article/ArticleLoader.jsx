@@ -83,7 +83,10 @@ class ArticleLoader extends Component {
       .then(data => {
         const article = data;
         this.setState({
-          article: { article, updated: format(article.updated, 'DD.MM.YYYY') },
+          article: {
+            ...article,
+            updated: format(article.updated, 'DD.MM.YYYY'),
+          },
           message: '',
         });
       })

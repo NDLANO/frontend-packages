@@ -35,9 +35,9 @@ const triggerDownloadText = async () => {
 };
 
 const byncndLicenseAbbreviation = 'CC-BY-ND-4.0';
-const bysaLicenseAbbreviation = 'CC-BY-SA-40';
+const bysaLicenseAbbreviation = 'CC-BY-SA-4.0';
 
-const VideoContent = injectT(({ t }) => (
+const VideoContent = ({ t }) => (
   <div>
     <h2>{t('license.video.heading')}</h2>
     <p>{t('license.video.description')}</p>
@@ -87,9 +87,13 @@ const VideoContent = injectT(({ t }) => (
       ))}
     </MediaList>
   </div>
-));
+);
 
-export const TextContent = injectT(({ t }) => (
+VideoContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export const TextContent = ({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.text.heading')}</h2>
@@ -108,7 +112,7 @@ export const TextContent = injectT(({ t }) => (
             license={bysaLicenseAbbreviation}
             title={t('license.text.rules')}
             resourceUrl=""
-            locale="nn"
+            locale="nb"
             resourceType="text">
             <MediaListItemActions>
               <div className="c-medialist__ref">
@@ -153,9 +157,13 @@ export const TextContent = injectT(({ t }) => (
       ))}
     </MediaList>
   </div>
-));
+);
 
-const AudioContent = injectT(({ t }) => (
+TextContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+const AudioContent = ({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.audio.heading')}</h2>
@@ -174,6 +182,7 @@ const AudioContent = injectT(({ t }) => (
             license={bysaLicenseAbbreviation}
             title={t('license.audio.rules')}
             resourceUrl=""
+            locale="nb"
             resourceType="audio">
             <MediaListItemActions>
               <div className="c-medialist__ref">
@@ -207,9 +216,13 @@ const AudioContent = injectT(({ t }) => (
       ))}
     </MediaList>
   </div>
-));
+);
 
-export const ImageContent = injectT(({ t }) => (
+AudioContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export const ImageContent = ({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.images.heading')}</h2>
@@ -232,6 +245,7 @@ export const ImageContent = injectT(({ t }) => (
               modelPremission:
                 'Personen(e) på bildet har godkjent at det kan brukes videre.',
             }}
+            locale="nb"
             resourceUrl={src}
             resourceType="image">
             <MediaListItemActions>
@@ -284,6 +298,7 @@ export const ImageContent = injectT(({ t }) => (
         </MediaListItemImage>
         <MediaListItemBody
           license={byncndLicenseAbbreviation}
+          locale="nb"
           title={t('license.images.rules')}>
           <MediaListItemActions>
             <div className="c-medialist__ref">
@@ -316,9 +331,13 @@ export const ImageContent = injectT(({ t }) => (
       </MediaListItem>
     </MediaList>
   </div>
-));
+);
 
-const OtherContent = injectT(({ t }) => (
+ImageContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+const OtherContent = ({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.other.heading')}</h2>
@@ -368,9 +387,13 @@ const OtherContent = injectT(({ t }) => (
       ))}
     </MediaList>
   </div>
-));
+);
 
-const Files = injectT(({ t }) => (
+OtherContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+const Files = ({ t }) => (
   <div>
     <div className="u-introduction">
       <h2>{t('license.files.heading')}</h2>
@@ -421,24 +444,9 @@ const Files = injectT(({ t }) => (
       ))}
     </MediaList>
   </div>
-));
+);
 
-TextContent.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-ImageContent.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-VideoContent.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-AudioContent.propTypes = {
-  t: PropTypes.func.isRequired,
-};
 Files.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-OtherContent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
@@ -448,12 +456,12 @@ const LicenseBox = ({ t }) => (
     <Tabs
       singleLine
       tabs={[
-        { title: t('license.tabs.text'), content: <TextContent /> },
-        { title: t('license.tabs.images'), content: <ImageContent /> },
-        { title: t('license.tabs.video'), content: <VideoContent /> },
-        { title: t('license.tabs.audio'), content: <AudioContent /> },
-        { title: t('license.tabs.files'), content: <Files /> },
-        { title: t('license.tabs.other'), content: <OtherContent /> },
+        { title: t('license.tabs.text'), content: <TextContent t={t} /> },
+        { title: t('license.tabs.images'), content: <ImageContent t={t} /> },
+        { title: t('license.tabs.video'), content: <VideoContent t={t} /> },
+        { title: t('license.tabs.audio'), content: <AudioContent t={t} /> },
+        { title: t('license.tabs.files'), content: <Files t={t} /> },
+        { title: t('license.tabs.other'), content: <OtherContent t={t} /> },
       ]}
     />
   </Fragment>

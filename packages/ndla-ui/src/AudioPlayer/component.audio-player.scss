@@ -29,13 +29,15 @@
     }
   }
 
-  &--speach {
+  &--speech {
     .c-audio-player {
       &__play {
         color: $brand-color;
         margin-right: 0;
 
-        &:hover, &:active, &:focus {
+        &:hover,
+        &:active,
+        &:focus {
           color: $brand-color--secondary;
         }
       }
@@ -69,15 +71,6 @@
     font-family: $font;
   }
 
-  &__type {
-    margin: 0;
-    text-transform: uppercase;
-    @include inuit-font-size(14px, 1);
-    font-weight: 400;
-    font-family: $font;
-    color: $brand-grey;
-  }
-
   &--playing {
     .c-audio-player {
       &__play-icon {
@@ -97,7 +90,8 @@
     flex: 1 1 auto;
   }
 
-  &__progress-background, &__progress-played {
+  &__progress-background,
+  &__progress-played {
     position: absolute;
     top: 13px;
     left: 0;
@@ -110,6 +104,6 @@
   }
 
   &__progress-played {
-   background: $primary-color;
+    background: $primary-color;
   }
 }

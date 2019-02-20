@@ -146,7 +146,7 @@ class NotionExample extends Component {
                                 content: (
                                   <Fragment>
                                     <NotionDialogImage
-                                      src="https://test.api.ndla.no/image-api/raw/futrue%2520padawan.jpg?width=800"
+                                      src="https://api.ndla.no/image-api/raw/futrue%20padawan.jpg?width=800"
                                       alt="Normer i samfunnet"
                                     />
                                     <NotionDialogText>

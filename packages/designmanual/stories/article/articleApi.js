@@ -6,34 +6,12 @@
  *
  */
 
-import fetch from 'isomorphic-fetch';
-import { headerWithAccessToken, getToken } from '../apiFunctions';
+export async function fetchArticle(id) {
+  const response = await fetch(
+    `https://api.ndla.no/article-converter/json/nb/${id}/`,
+  );
 
-export const fetchArticle = id =>
-  new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(`https://staging.api.ndla.no/article-converter/json/nb/${id}/`, {
-        headers: headerWithAccessToken(token),
-      }).then(res => {
-        if (res.ok) {
-          return res.json().then(article => resolve(article));
-        }
-        return res.json().then(json => reject(json));
-      });
-    });
-  });
+  const json = response.json();
 
-export const fetchWithToken = apiUrl =>
-  new Promise((resolve, reject) => {
-    getToken().then(token => {
-      fetch(apiUrl, {
-        method: 'GET',
-        headers: headerWithAccessToken(token),
-      }).then(res => {
-        if (res.ok) {
-          return res.json().then(image => resolve(image));
-        }
-        return res.json().then(json => reject(json));
-      });
-    });
-  });
+  return json;
+}

@@ -71,15 +71,6 @@
     font-family: $font;
   }
 
-  &__type {
-    margin: 0;
-    text-transform: uppercase;
-    @include inuit-font-size(14px, 1);
-    font-weight: 400;
-    font-family: $font;
-    color: $brand-grey;
-  }
-
   &--playing {
     .c-audio-player {
       &__play-icon {

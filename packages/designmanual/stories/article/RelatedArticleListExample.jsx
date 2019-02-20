@@ -23,14 +23,14 @@ import { articleResources, exerciseResources } from '../../dummydata/index';
 export const RelatedArticleExerciseList = () => (
   <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
     <RelatedArticle
-      title={exerciseResources[0].title}
+      title={exerciseResources[0].name}
       icon={<TasksAndActivitiesBadge background />}
       modifier="tasks-and-activities"
       introduction={exerciseResources[0].introduction}
       to="#"
     />
     <RelatedArticle
-      title={exerciseResources[1].title}
+      title={exerciseResources[1].name}
       icon={<TasksAndActivitiesBadge background />}
       modifier="tasks-and-activities"
       introduction={exerciseResources[1].introduction}
@@ -42,14 +42,14 @@ export const RelatedArticleExerciseList = () => (
 export const RelatedArticleMixedList = () => (
   <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
     <RelatedArticle
-      title={exerciseResources[0].title}
+      title={exerciseResources[0].name}
       icon={<TasksAndActivitiesBadge background />}
       modifier="tasks-and-activities"
       introduction={exerciseResources[0].introduction}
       to="#"
     />
     <RelatedArticle
-      title={articleResources[1].title}
+      title={articleResources[1].name}
       icon={<SubjectMaterialBadge background />}
       modifier="subject-material"
       introduction={articleResources[1].introduction}
@@ -87,45 +87,45 @@ class ExpandExample extends Component {
   render() {
     const articles = [
       <RelatedArticle
-        title={articleResources[0].title}
+        title={articleResources[0].name}
         icon={<SubjectMaterialBadge background />}
         modifier="subject-material"
         introduction={articleResources[0].introduction}
         to="#"
-        key={articleResources[0].title}
+        key={articleResources[0].name}
       />,
       <RelatedArticle
-        title={articleResources[1].title}
+        title={articleResources[1].name}
         icon={<SubjectMaterialBadge background />}
         modifier="subject-material"
         introduction={articleResources[1].introduction}
         to="#"
-        key={articleResources[1].title}
+        key={articleResources[1].name}
       />,
       <RelatedArticle
-        title={articleResources[2].title}
+        title={articleResources[2].name}
         icon={<SourceMaterialBadge background />}
         modifier="source-material"
         introduction={articleResources[2].introduction}
         to="#"
-        key={articleResources[2].title}
+        key={articleResources[2].name}
       />,
       <RelatedArticle
-        title={articleResources[3].title}
+        title={articleResources[3].name}
         icon={<AssessmentResourcesBadge background />}
         modifier="assessment-resources"
         introduction={articleResources[3].introduction}
         to="#"
-        key={articleResources[3].title}
+        key={articleResources[3].name}
       />,
 
       <RelatedArticle
-        title={articleResources[4].title}
+        title={articleResources[4].name}
         icon={<SubjectBadge background />}
         modifier="subject"
         introduction={articleResources[4].introduction}
         to="#"
-        key={articleResources[4].title}
+        key={articleResources[4].name}
       />,
     ];
 

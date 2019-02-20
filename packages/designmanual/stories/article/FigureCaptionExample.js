@@ -30,6 +30,7 @@ export function FigureCaptionExample({
   authors,
   licenseAbbreviation,
   hasHiddenCaption,
+  link,
 }) {
   const license = getLicenseByAbbreviation(licenseAbbreviation, 'nb');
   const messages = {
@@ -49,7 +50,8 @@ export function FigureCaptionExample({
           caption={caption}
           reuseLabel={`Bruk ${messages.mediaType}`}
           licenseRights={license.rights}
-          authors={authors}>
+          authors={authors}
+          link={link}>
           <FigureLicenseDialog
             id={id}
             authors={authors}

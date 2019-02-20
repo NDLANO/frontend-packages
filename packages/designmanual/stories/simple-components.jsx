@@ -105,6 +105,12 @@ storiesOf('Enkle komponenter', module)
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
           alt="Forstørrelsesglass"
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          link={{
+            text: 'Videoproduksjon i praksis',
+            description: '(Lenken tar deg til et annet nettsted)',
+            url: 'https://staging.api.ndla.no',
+            external: true,
+          }}
         />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du

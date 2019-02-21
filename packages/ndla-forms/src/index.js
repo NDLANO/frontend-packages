@@ -4,8 +4,10 @@ import FormSections from './FormSections';
 import FormInput from './FormInput';
 import FormSplitter from './FormSplitter';
 import FormRemoveButton from './FormRemoveButton';
+import { FormPill, FormPills } from './FormPill';
 import RadiobuttonItem from './RadiobuttonItem';
 import CheckboxItem from './CheckboxItem';
+import Typeahead from './Typeahead';
 
 export {
   FormHeader,
@@ -16,4 +18,7 @@ export {
   FormRemoveButton,
   RadiobuttonItem,
   CheckboxItem,
+  Typeahead,
+  FormPill,
+  FormPills,
 };

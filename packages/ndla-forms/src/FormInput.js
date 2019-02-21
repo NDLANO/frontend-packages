@@ -13,9 +13,10 @@ import { colors, spacing, fonts, misc } from '@ndla/core';
 
 const inputWrapperCSS = css`
   display: flex;
+  flex-wrap: wrap;
   background: ${colors.brand.greyLightest};
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border: 1px solid ${colors.brand.greyLighter};
   transition: border-color 100ms ease;
   border-radius: ${misc.borderRadius};

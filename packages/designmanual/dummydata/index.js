@@ -34,6 +34,8 @@ import { mockDownloadArticleText } from './mockDownloadArticleText';
 import contentCards from './mockContentCards';
 import { mockListView } from './mockListView';
 
+import { mockTypeahead } from './mockTypeahead';
+
 export {
   topicMenu,
   topicList,
@@ -59,4 +61,5 @@ export {
   contentCards,
   mockDownloadArticleText,
   mockListView,
+  mockTypeahead,
 };

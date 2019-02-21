@@ -23,6 +23,7 @@ import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
+import TypeaheadExample from './TypeaheadExample';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
@@ -135,6 +136,16 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <FormExampleAuthors />
+      </StoryBody>
+    </div>
+  ))
+  .add('Typeahead', () => (
+    <div>
+      <StoryIntro title="Typeahead input">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <TypeaheadExample />
       </StoryBody>
     </div>
   ))

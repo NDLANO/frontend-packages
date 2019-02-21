@@ -8,24 +8,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { colors, fonts, spacing } from '@ndla/core';
 import styled from 'react-emotion';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-
-const classes = new BEMHelper({
-  name: 'license-icons',
-  prefix: 'c-',
-});
-
-export const StyledLicenseIconList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-`;
+import StyledLicenseIconList from './StyledLicenseIconList';
 
 const StyledLicenseIconItem = styled.li`
   display: flex;
@@ -74,13 +61,9 @@ const LicenseIconItem = ({ licenseRight, locale }) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight);
 
   return (
-    <StyledLicenseIconItem {...classes('item')}>
-      <LicenseIcon
-        licenseRight={licenseRight}
-        description={description}
-        {...classes('icon', 'hover')}
-      />
-      <span className="c-license-icons__hover">
+    <StyledLicenseIconItem>
+      <LicenseIcon licenseRight={licenseRight} description={description} />
+      <span>
         {getLicenseRightByAbbreviation(licenseRight, locale).description}
       </span>
     </StyledLicenseIconItem>
@@ -91,8 +74,8 @@ LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
 };
 
-const LicenseIconList = ({ licenseRights, className, locale }) => (
-  <StyledLicenseIconList {...classes('list', '', className)}>
+const LicenseIconList = ({ licenseRights, appearances, locale }) => (
+  <StyledLicenseIconList appearances={appearances}>
     {licenseRights.map(licenseRight => (
       <LicenseIconItem
         key={licenseRight}
@@ -105,8 +88,10 @@ const LicenseIconList = ({ licenseRights, className, locale }) => (
 
 LicenseIconList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  className: PropTypes.string,
   locale: PropTypes.string,
+  appearances: PropTypes.arrayOf(
+    PropTypes.oneOf(['horizontal', 'vertical', 'grey', 'marginRight']),
+  ),
 };
 
 export default LicenseIconList;

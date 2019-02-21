@@ -21,6 +21,7 @@ const FactBoxExample = () => (
     <div className="c-source-list">
       <LicenseByline
         className="c-source-list__item"
+        appearances={['horizontal']}
         locale="nb"
         licenseRights={[BY, NC, ND]}
       />

@@ -72,6 +72,7 @@ export const FigureLicenseByline = ({ messages, license, locale }) => [
     withDescription
     locale={locale}
     messages={messages}
+    appearances={['vertical', 'firstChildBlue']}
     licenseRights={license.rights}
   />,
   <a

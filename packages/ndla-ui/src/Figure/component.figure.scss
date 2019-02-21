@@ -40,10 +40,6 @@
   }
   transition: transform 0.4s, width 0.4s, height 0.4s;
 
-  .c-license-icons__list {
-    margin-right: $spacing--small;
-  }
-
   &--full-column {
     left: auto !important;
     right: auto !important;
@@ -82,21 +78,10 @@
   display: flex;
   align-items: center;
 
-  .c-license-icons__list {
-    flex-direction: row;
-    text-align: center;
-    justify-content: center;
-  }
-
   .c-figure__captionbtn {
     svg {
       display: none;
     }
-  }
-
-  .c-license-icons__licenselabel {
-    // remove license descriptions
-    display: none;
   }
 }
 

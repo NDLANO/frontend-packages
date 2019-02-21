@@ -367,7 +367,7 @@ storiesOf('Enkle komponenter', module)
             </p>
             <div className="c-source-list">
               <LicenseByline
-                className="c-source-list__item"
+                appearances={['horizontal', 'grey', 'marginRight']}
                 locale="nb"
                 licenseRights={[BY, NC, ND]}
               />
@@ -702,8 +702,8 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-source-list">
             <LicenseByline
-              className="c-source-list__item"
               locale="nb"
+              appearances={['horizontal', 'grey', 'marginRight']}
               licenseRights={[BY, NC, ND]}
             />
             <span className="c-source-list__item">Gary Waters</span>

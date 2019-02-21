@@ -110,6 +110,7 @@ export const MediaListItemBody = ({
         locale={locale}
         messages={messages}
         licenseRights={license.rights}
+        appearances={['vertical', 'firstChildBlue']}
       />
       <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}

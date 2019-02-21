@@ -9,22 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import BEMHelper from 'react-bem-helper';
 import { spacing } from '@ndla/core';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-const classes = new BEMHelper({
-  name: 'license-icons',
-  prefix: 'c-',
-});
-
-const StyledLicenseIconList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-`;
+import StyledLicenseIconList from './StyledLicenseIconList';
 
 const StyledLicenseIconItem = styled.li`
   display: flex;
@@ -48,15 +36,9 @@ const LicenseIconItem = ({ licenseRight, locale }) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem {...classes('item')}>
-      <LicenseIcon
-        licenseRight={licenseRight}
-        description={description}
-        {...classes('icon')}
-      />
-      <StyledLicenseLabel className="c-license-icons__licenselabel">
-        {description}
-      </StyledLicenseLabel>
+    <StyledLicenseIconItem>
+      <LicenseIcon licenseRight={licenseRight} description={description} />
+      <StyledLicenseLabel>{description}</StyledLicenseLabel>
     </StyledLicenseIconItem>
   );
 };
@@ -66,8 +48,8 @@ LicenseIconItem.propTypes = {
   locale: PropTypes.string,
 };
 
-const LicenseIconDescriptionList = ({ licenseRights, className, locale }) => (
-  <StyledLicenseIconList {...classes('list', '', className)}>
+const LicenseIconDescriptionList = ({ licenseRights, locale, appearances }) => (
+  <StyledLicenseIconList appearances={appearances}>
     {licenseRights.map(licenseRight => (
       <LicenseIconItem
         key={licenseRight}
@@ -80,7 +62,9 @@ const LicenseIconDescriptionList = ({ licenseRights, className, locale }) => (
 
 LicenseIconDescriptionList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  className: PropTypes.string,
+  appearances: PropTypes.arrayOf(
+    PropTypes.oneOf(['horizontal', 'vertical', 'grey', 'marginRight']),
+  ),
   locale: PropTypes.string,
 };
 

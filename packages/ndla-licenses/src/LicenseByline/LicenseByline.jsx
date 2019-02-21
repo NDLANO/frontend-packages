@@ -35,23 +35,23 @@ const LicenseByline = ({
   children,
   withDescription,
   licenseRights,
-  className,
   messages,
   locale,
+  appearances,
 }) => (
   <StyledLicenseByline>
     {!withDescription ? (
       <LicenseIconList
-        className={className}
+        appearances={appearances}
         licenseRights={licenseRights}
         locale={locale}
       />
     ) : (
       <div>
         <LicenseIconDescriptionList
-          className={className}
           licenseRights={licenseRights}
           locale={locale}
+          appearances={appearances}
         />
         {messages && messages.modelPremission && (
           <StyledModelpermission>
@@ -73,6 +73,9 @@ LicenseByline.propTypes = {
   }),
   className: PropTypes.string,
   locale: PropTypes.string,
+  appearances: PropTypes.arrayOf(
+    PropTypes.oneOf(['horizontal', 'vertical', 'grey', 'marginRight']),
+  ),
 };
 
 LicenseByline.defaultProps = {

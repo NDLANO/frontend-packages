@@ -39,7 +39,10 @@ export const FigureCaption = ({
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={licenseRights} locale={locale}>
+        <LicenseByline
+          licenseRights={licenseRights}
+          locale={locale}
+          appearances={['horizontal', 'marginRight']}>
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>

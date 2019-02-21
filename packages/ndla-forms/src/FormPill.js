@@ -43,11 +43,11 @@ const StyledPill = styled.div`
 `;
 
 const StyledPillsWrapper = styled.div`
-  padding: 0 0 0 calc(${spacing.small} - 2px);
   display: flex;
   flex-direction: row;
   align-items: stretch;
   flex-wrap: wrap;
+  margin: ${spacing.normal} 0 ${spacing.normal} -${spacing.xsmall};
 `;
 
 export const FormPill = ({ label, id, onClick }) => (

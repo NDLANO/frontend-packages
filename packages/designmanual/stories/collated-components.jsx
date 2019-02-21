@@ -195,7 +195,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Emnebeskrivelse', () => (
     <Center>
-      <ArticleLoader articleId="149" reset />
+      <ArticleLoader articleId="13661" reset />
     </Center>
   ))
   .add('Emneliste', () => (

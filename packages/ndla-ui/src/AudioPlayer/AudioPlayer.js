@@ -18,7 +18,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const AudioPlayer = ({ type, src, title, typeLabel, speech }) => {
+const AudioPlayer = ({ type, src, title, speech }) => {
   if (speech) {
     return (
       <section {...classes('', 'speech')}>
@@ -32,7 +32,6 @@ const AudioPlayer = ({ type, src, title, typeLabel, speech }) => {
 
   return (
     <section {...classes()}>
-      {typeLabel && <p {...classes('type')}>{typeLabel}</p>}
       <h1 {...classes('title')}>{title}</h1>
       <audio type={type} src={src} title={title} preload="metadata" />
       <div {...classes('controls')}>

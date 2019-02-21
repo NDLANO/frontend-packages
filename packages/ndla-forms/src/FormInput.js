@@ -11,9 +11,17 @@ import PropTypes from 'prop-types';
 import styled, { css, cx } from 'react-emotion';
 import { colors, spacing, fonts, misc } from '@ndla/core';
 
+const Wrapper = styled.div`
+  margin-top: ${spacing.xsmall};
+  &:first-child {
+    margin-top: 0;
+  }
+`;
+
 const inputWrapperCSS = css`
   display: flex;
   flex-wrap: wrap;
+  flex-grow: 1;
   background: ${colors.brand.greyLightest};
   align-items: center;
   justify-content: flex-start;
@@ -59,10 +67,27 @@ const whiteCSS = css`
   background: #fff;
 `;
 
+const ComponentWrapper = styled.div`
+  display: flex;
+  label {
+    width: ${spacing.spacingUnit * 4}px;
+    max-width: ${spacing.spacingUnit * 4}px;
+    padding: 20px ${spacing.small} ${spacing.small} 0;
+    text-transform: uppercase;
+    font-weight: ${fonts.weight.semibold};
+    ${fonts.sizes(14, 1.1)};
+  }
+`;
+
 const FormWarningText = styled.span`
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
+  ${props =>
+    props.withLabel &&
+    css`
+      padding-left: ${spacing.spacingUnit * 4}px;
+    `}
 `;
 
 class FormInput extends React.Component {
@@ -119,49 +144,55 @@ class FormInput extends React.Component {
       white,
       autoExpand,
       value,
+      label,
       ...rest
     } = this.props;
 
     const InputComponent = autoExpand ? 'textarea' : 'input';
 
     return (
-      <div>
-        <Component
-          className={cx(
-            { [inputWrapperCSS]: true },
-            { [hasFocusCSS]: this.state.hasFocus },
-            { [whiteCSS]: white },
-          )}
-          ref={this.wrapperRef}>
-          {tags && tags}
-          {iconLeft && !tags && iconLeft}
-          <InputComponent
-            ref={this.inputRef}
-            onChange={e => {
-              this.onCheckHeight();
-              if (onChange) {
-                onChange(e);
-              }
-            }}
-            onFocus={e => {
-              this.handleFocus();
-              if (onFocus) {
-                onFocus(e);
-              }
-            }}
-            onBlur={e => {
-              this.handleBlur();
-              if (onBlur) {
-                onBlur(e);
-              }
-            }}
-            value={value}
-            {...rest}
-          />
-          {iconRight && iconRight}
-        </Component>
-        {warningText && <FormWarningText>{warningText}</FormWarningText>}
-      </div>
+      <Wrapper>
+        <ComponentWrapper>
+          {label && <label>{label}</label>}
+          <Component
+            className={cx(
+              { [inputWrapperCSS]: true },
+              { [hasFocusCSS]: this.state.hasFocus },
+              { [whiteCSS]: white },
+            )}
+            ref={this.wrapperRef}>
+            {tags && tags}
+            {iconLeft && !tags && iconLeft}
+            <InputComponent
+              ref={this.inputRef}
+              onChange={e => {
+                this.onCheckHeight();
+                if (onChange) {
+                  onChange(e);
+                }
+              }}
+              onFocus={e => {
+                this.handleFocus();
+                if (onFocus) {
+                  onFocus(e);
+                }
+              }}
+              onBlur={e => {
+                this.handleBlur();
+                if (onBlur) {
+                  onBlur(e);
+                }
+              }}
+              value={value}
+              {...rest}
+            />
+            {iconRight && iconRight}
+          </Component>
+        </ComponentWrapper>
+        {warningText && (
+          <FormWarningText withLabel={label}>{warningText}</FormWarningText>
+        )}
+      </Wrapper>
     );
   }
 }

@@ -326,7 +326,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="4824"
+          articleId="29"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           hideResources
@@ -350,7 +350,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="4853"
+          articleId="60"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
         />

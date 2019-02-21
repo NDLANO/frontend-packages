@@ -821,9 +821,11 @@ storiesOf('Grunnstiler', module)
         </p>
         <table>
           <thead>
-            <th>Teksttype</th>
-            <th>Størrelse på stor skjerm</th>
-            <th>Størrelse på liten skjerm</th>
+            <tr>
+              <th>Teksttype</th>
+              <th>Størrelse på stor skjerm</th>
+              <th>Størrelse på liten skjerm</th>
+            </tr>
           </thead>
           <tbody>
             <tr>

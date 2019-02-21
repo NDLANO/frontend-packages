@@ -37,6 +37,7 @@ export default () => (
         <FigureImage
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           type="left"
+          alt="Lupe"
         />
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å

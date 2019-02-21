@@ -8,6 +8,8 @@ import { FormPill, FormPills } from './FormPill';
 import RadiobuttonItem from './RadiobuttonItem';
 import CheckboxItem from './CheckboxItem';
 import Typeahead from './Typeahead';
+import UploadDropZone from './UploadDropZone';
+import { FormHeaderIconClass, StyledButtonWrapper } from './Styles';
 
 export {
   FormHeader,
@@ -21,4 +23,7 @@ export {
   Typeahead,
   FormPill,
   FormPills,
+  UploadDropZone,
+  FormHeaderIconClass,
+  StyledButtonWrapper,
 };

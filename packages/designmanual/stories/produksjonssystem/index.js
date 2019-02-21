@@ -24,6 +24,8 @@ import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
 import TypeaheadExample from './TypeaheadExample';
+import UploaderExample from './UploaderExample';
+import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 
 storiesOf('Produksjonssystem', module)
@@ -149,6 +151,16 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
+  .add('Uploader', () => (
+    <div>
+      <StoryIntro title="Form elementer">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <UploaderExample />
+      </StoryBody>
+    </div>
+  ))
   .add('Editor', () => (
     <div>
       <StoryIntro title="Editor komponenter">
@@ -156,6 +168,16 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <SlateBlockMenuExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('FileListEditor', () => (
+    <div>
+      <StoryIntro title="Editor for redigering av fillister">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <FileListEditorExample />
       </StoryBody>
     </div>
   ))

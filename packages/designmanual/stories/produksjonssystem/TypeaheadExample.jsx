@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { FormHeader, Typeahead, FormPills } from '@ndla/forms';
+import { FormHeader, Typeahead, FormPills, FormPill } from '@ndla/forms';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
 
 import { mockTypeahead } from '../../dummydata';
@@ -33,8 +33,7 @@ class TypeaheadExample extends Component {
       useTags: '1',
       keepOpen: '1',
     };
-    this.onAddElement = this.onAddElement.bind(this);
-    this.onRemoveElement = this.onRemoveElement.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
@@ -57,22 +56,39 @@ class TypeaheadExample extends Component {
     }
   }
 
-  onAddElement(el) {
-    this.setState(prevState => {
-      const { addedData } = prevState;
-      addedData.push(el);
+  onChange(addedData) {
+    this.setState({
+      addedData,
+    });
+  }
+
+  getPillItems() {
+    const { addedData } = this.state;
+    return addedData.map(id => {
+      const item = mockTypeahead.find(dataItem => dataItem.id === id);
       return {
-        addedData,
+        id: item.id,
+        label: item.title,
       };
     });
   }
 
-  onRemoveElement(el) {
-    this.setState(prevState => {
-      const { addedData } = prevState;
-      return {
-        addedData: addedData.filter(added => added.id !== el.id),
-      };
+  renderTags() {
+    return this.state.addedData.map(id => {
+      const item = mockTypeahead.find(dataItem => dataItem.id === id);
+      return (
+        <FormPill
+          id={item.id}
+          label={item.title}
+          onClick={id => {
+            this.setState(prevState => ({
+              addedData: prevState.addedData.filter(
+                addedItemId => addedItemId !== id,
+              ),
+            }));
+          }}
+        />
+      );
     });
   }
 
@@ -143,27 +159,26 @@ class TypeaheadExample extends Component {
         {useTags !== '1' && (
           <FormPills
             onClick={id => {
-              const el = addedData.find(addedItem => addedItem.id === id);
-              this.onRemoveElement(el);
+              this.setState(prevState => ({
+                addedData: prevState.addedData.filter(
+                  addedItemId => addedItemId !== id,
+                ),
+              }));
             }}
-            labels={addedData.map(addedItem => ({
-              id: addedItem.id,
-              label: addedItem.title,
-            }))}
+            labels={this.getPillItems()}
           />
         )}
         <FormHeader title="Countries" subTitle="in Europe" />
         <Typeahead
           data={useLayout === '2' ? dataWithIcons : data}
-          addedData={addedData}
+          value={addedData}
           onSearch={this.onSearch}
-          onAddElement={this.onAddElement}
-          onRemoveElement={this.onRemoveElement}
+          onChange={this.onChange}
           placeholder="Type a name"
           focusOnMount
           closeOnSelect={keepOpen === '1'}
           loading={loading}
-          renderSelected={useTags === '1'}
+          tags={useTags === '1' && this.renderTags()}
           renderImage={useLayout === '1' || useLayout === '2'}
           renderDescription={useLayout !== '4'}
           messages={{

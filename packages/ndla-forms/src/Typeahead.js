@@ -16,7 +16,6 @@ import { Search as SearchIcon } from '@ndla/icons/common';
 import { Check } from '@ndla/icons/editor';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import FormInput from './FormInput';
-import { FormPill } from './FormPill';
 
 const StyledDropDownContainer = styled.div`
   font-family: ${fonts.sans};
@@ -244,23 +243,21 @@ class Typeahead extends React.Component {
 
     const {
       data,
-      addedData,
+      value: addedData,
       maxRender,
-      onAddElement,
-      onRemoveElement,
+      onChange,
       placeholder,
       focusOnMount,
       maxSleeveHeight,
       closeOnSelect,
       onSearch,
       loading,
-      renderSelected,
       messages,
       renderImage,
       renderDescription,
+      tags,
     } = this.props;
     const withFocusTrap = data.length > 0 && value !== '';
-
     return (
       <UseWrapper
         withFocusTrap={withFocusTrap}
@@ -274,22 +271,7 @@ class Typeahead extends React.Component {
               iconRight={
                 loading ? <Spinner size="normal" margin="0" /> : <SearchIcon />
               }
-              tags={
-                renderSelected
-                  ? addedData.map(added => (
-                      <FormPill
-                        id={added.id}
-                        label={added.title}
-                        onClick={id => {
-                          const el = addedData.find(
-                            addedItem => addedItem.id === id,
-                          );
-                          onRemoveElement(el);
-                        }}
-                      />
-                    ))
-                  : undefined
-              }
+              tags={tags}
               container="div"
               placeholder={placeholder}
               onChange={this.onChangeInput}
@@ -310,21 +292,28 @@ class Typeahead extends React.Component {
               <div>
                 <div>
                   {data.slice(0, maxRender).map(el => {
-                    const alreadyAdded = addedData.some(
-                      added => added.id === el.id,
-                    );
+                    const added = addedData.includes(el.id);
                     return (
                       <StyledItemButton
                         key={el.id}
                         type="button"
-                        added={alreadyAdded}
+                        added={added}
                         ariaLabel={
-                          alreadyAdded
+                          added
                             ? messages.addItemLabel
                             : messages.removeItemLabel
                         }
                         onClick={() => {
-                          alreadyAdded ? onRemoveElement(el) : onAddElement(el);
+                          if (added) {
+                            onChange(
+                              addedData.filter(
+                                addedItemId => addedItemId !== el.id,
+                              ),
+                            );
+                          } else {
+                            addedData.push(el.id);
+                            onChange(addedData);
+                          }
                           if (closeOnSelect) {
                             this.setState({
                               value: '',
@@ -341,7 +330,7 @@ class Typeahead extends React.Component {
                           )}
                         </StyledText>
                         <StyledAdded>
-                          {alreadyAdded && (
+                          {added && (
                             <>
                               {messages.addedItem}
                               <Check />
@@ -374,18 +363,18 @@ Typeahead.propTypes = {
       }),
     }),
   ),
+  value: PropTypes.arrayOf(PropTypes.string).isRequired,
   initalValue: PropTypes.string,
   maxRender: PropTypes.number,
   onSearch: PropTypes.func.isRequired,
-  onAddElement: PropTypes.func.isRequired,
-  onRemoveElement: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   closeOnSelect: PropTypes.bool,
   focusOnMount: PropTypes.bool,
   maxSleeveHeight: PropTypes.number,
   loading: PropTypes.bool,
-  renderSelected: PropTypes.bool,
   renderImage: PropTypes.bool,
   renderDescription: PropTypes.bool,
+  tags: PropTypes.node,
   messages: PropTypes.shape({
     matches: PropTypes.func,
     searching: PropTypes.string,

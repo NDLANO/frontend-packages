@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import FocusTrapReact from 'focus-trap-react';
 import debounce from 'lodash/debounce';
 import { Spinner } from '@ndla/editor';

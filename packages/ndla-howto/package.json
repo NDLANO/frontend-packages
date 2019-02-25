@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@ndla/button": "^0.2.8",
     "@ndla/core": "^0.4.10",
-    "@ndla/editor": "^0.3.17",
+    "@ndla/editor": "^0.3.18",
     "@ndla/icons": "^0.6.8",
     "@ndla/licenses": "^0.4.3",
     "@ndla/modal": "^0.2.13",

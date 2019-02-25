@@ -267,7 +267,7 @@ class MastheadWithTopicMenu extends Component {
             }}
           </Modal>
           <DisplayOnPageYOffset yOffsetMin={150}>
-            <BreadcrumbBlock />
+            <BreadcrumbBlock singlelineBreadcrumb />
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>

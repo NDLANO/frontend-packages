@@ -30,6 +30,21 @@
   display: inline-block;
   list-style: none;
   text-align: left;
+
+  &--singleline {
+    .c-breadcrumb-block__item {
+      &:not(:first-child) {
+        display: inline-flex;
+        align-items: center;
+        a, span {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          display: inline-block;
+        }
+      }
+    }
+  }
 }
 .c-breadcrumb-block__item {
   display: inline-block;

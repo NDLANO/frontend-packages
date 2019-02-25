@@ -20,15 +20,15 @@ const items = [
     to: '#',
   },
   {
-    name: 'Hovedemne',
+    name: 'Hovedemne tittel',
     to: '#',
   },
   {
-    name: 'Underemne',
+    name: 'Underemne tittel',
     to: '#',
   },
   {
-    name: 'Tittel på side',
+    name: 'Tittel på side/ressursen',
     to: '#',
   },
 ];
@@ -55,6 +55,10 @@ BreadcrumbDefault.propTypes = {
 
 export default BreadcrumbDefault;
 
-export const BreadcrumbBlock = () => (
-  <BreadcrumbBlockUI items={items.slice(1)} toTopic={() => '#'} />
+export const BreadcrumbBlock = ({ singlelineBreadcrumb }) => (
+  <BreadcrumbBlockUI
+    singlelineBreadcrumb={singlelineBreadcrumb}
+    items={items.slice(1)}
+    toTopic={() => '#'}
+  />
 );

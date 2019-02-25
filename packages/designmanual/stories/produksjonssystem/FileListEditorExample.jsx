@@ -47,13 +47,18 @@ class StructureExample extends Component {
       ],
     };
     this.onUpdateFileName = this.onUpdateFileName.bind(this);
-    this.onUpdateFiles = this.onUpdateFiles.bind(this);
+    this.onMovedFile = this.onMovedFile.bind(this);
+    this.onDeleteFile = this.onDeleteFile.bind(this);
   }
 
-  onUpdateFiles(addedFiles) {
-    this.setState({
-      addedFiles,
-    });
+  onMovedFile(from, to) {
+    this.setState(({ addedFiles }) => ({
+      addedFiles: addedFiles.map((file, i) => {
+        if (i === from) return addedFiles[to];
+        if (i === to) return addedFiles[from];
+        return file;
+      }),
+    }));
   }
 
   onUpdateFileName(index, value) {
@@ -67,6 +72,12 @@ class StructureExample extends Component {
     });
   }
 
+  onDeleteFile(index) {
+    this.setState(prevState => ({
+      addedFiles: prevState.addedFiles.filter((_, i) => i !== index),
+    }));
+  }
+
   render() {
     const { addedFiles } = this.state;
 
@@ -74,7 +85,8 @@ class StructureExample extends Component {
       <FileListEditor
         files={addedFiles}
         onEditFileName={this.onUpdateFileName}
-        onUpdateFiles={this.onUpdateFiles}
+        onMovedFile={this.onMovedFile}
+        onDeleteFile={this.onDeleteFile}
       />
     );
   }

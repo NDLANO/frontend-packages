@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?Source+Sans+Pro:400,600|Source+Serif+Pro:400,600&subset=latin-ext');
+
 $font: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体,
   KaiU, DFKai-SB, 標楷體, SongTi, 宋体, sans-serif;
-$font-serif: 'Source Serif Pro', Georgia, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU,
+$font-serif: 'Source Serif Pro', Times, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU,
   DFKai-SB, 標楷體, SongTi, 宋体, serif;
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -14,7 +16,7 @@ $font-weight-bold: 700;
 :root {
   --font: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体,
     KaiU, DFKai-SB, 標楷體, SongTi, 宋体, sans-serif;
-  --font-serif: 'Source Serif Pro', Georgia, STKaiti, 华文楷体, KaiTi, SimKai, 楷体,
+  --font-serif: 'Source Serif Pro', Times, STKaiti, 华文楷体, KaiTi, SimKai, 楷体,
     KaiU, DFKai-SB, 標楷體, SongTi, 宋体, serif;
   --font-weight-light: 300;
   --font-weight-normal: 400;

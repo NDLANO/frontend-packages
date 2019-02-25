@@ -438,6 +438,14 @@ const messages = {
   notions: {
     closeNotion: 'Lukk',
   },
+  editorial: {
+    fileList: {
+      placeholder: 'Oppgi et filnamn',
+      changeOrder: 'Endre rekkjefølgje',
+      changeName: 'Endre namn',
+      removeFile: 'Ta bort fil',
+    },
+  },
 };
 
 export default messages;

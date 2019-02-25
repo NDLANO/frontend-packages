@@ -86,6 +86,7 @@ const LinkButton = styled.button`
   border: 0;
   background: none;
   cursor: pointer;
+  transform: translateY(-2px);
   span {
     text-transform: uppercase;
   }

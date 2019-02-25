@@ -439,6 +439,14 @@ const messages = {
   notions: {
     closeNotion: 'Close',
   },
+  editorial: {
+    fileList: {
+      placeholder: 'Add filename',
+      changeOrder: 'Change order',
+      changeName: 'Edit name',
+      removeFile: 'Remove file',
+    },
+  },
 };
 
 export default messages;

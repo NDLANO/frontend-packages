@@ -40,11 +40,11 @@ export default [
     feature: 'String.prototype.endsWith',
   },
   {
-    test: `('isInteger' in Number.prototype)`,
-    feature: 'Number.prototype.isInteger',
+    test: `('isInteger' in Number)`,
+    feature: 'Number.isInteger',
   },
   {
-    test: `('isNaN' in Number.prototype)`,
-    feature: 'Number.prototype.isNaN',
+    test: `('isNaN' in Number)`,
+    feature: 'Number.isNaN',
   },
 ];

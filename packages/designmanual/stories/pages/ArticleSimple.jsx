@@ -14,11 +14,10 @@ import {
   ArticleTitle,
   ArticleWrapper,
   ArticleIntroduction,
-  Image,
   ArticleHeaderWrapper,
 } from '@ndla/ui';
 
-import FigureWithLicense from '../article/FigureWithLicense';
+import { FigureImage } from '../article/FigureImage';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
@@ -35,12 +34,11 @@ export default () => (
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureWithLicense type="left" caption="" runScripts>
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+        <FigureImage
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          type="left"
+          alt="Lupe"
+        />
         <p>
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
@@ -69,12 +67,10 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="" classes="u-float-right">
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+        <FigureImage
+          alt=""
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få

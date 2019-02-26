@@ -7,6 +7,7 @@ import FormRemoveButton from './FormRemoveButton';
 import RadiobuttonItem from './RadiobuttonItem';
 import CheckboxItem from './CheckboxItem';
 import { FormHeaderIconClass, StyledButtonWrapper } from './Styles';
+import UploadDropZone from './UploadDropZone';
 
 export {
   FormHeader,
@@ -17,6 +18,7 @@ export {
   FormRemoveButton,
   RadiobuttonItem,
   CheckboxItem,
+  UploadDropZone,
   FormHeaderIconClass,
   StyledButtonWrapper,
 };

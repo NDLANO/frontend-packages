@@ -206,6 +206,7 @@ const messages = {
       goTo: 'Go to',
       search: 'Search',
       subjectOverview: 'All subjects',
+      backToSubjectFrontpage: 'Back to subject frontpage',
       title: 'Menu',
       subjectPage: 'Subject front page',
       openFilter: 'Filter',
@@ -268,6 +269,7 @@ const messages = {
       'Additional content is content in the subject that you can choose in addition to the core material. Through the additional subject, you can immerse yourself in a topic or approach yourself in a different way.',
     showLess: 'Show less',
     showMore: 'Show more',
+    youAreHere: 'You are here',
   },
   article: {
     author: 'Author',
@@ -316,6 +318,8 @@ const messages = {
       rules: 'Rules for use of image:',
       itemImage: {
         ariaLabel: 'Open image in new window',
+        zoomImageButtonLabel: 'Expand image',
+        zoomOutImageButtonLabel: 'Shrink image',
       },
       source: 'Source',
       title: 'Title',

@@ -89,14 +89,7 @@ ArticleIntroduction.propTypes = {
 };
 
 export const Article = ({
-  article: {
-    title,
-    introduction,
-    updated,
-    content,
-    footNotes,
-    copyright: { license: licenseObj, creators, rightsholders, processors },
-  },
+  article,
   icon,
   additional,
   licenseBox,
@@ -106,6 +99,15 @@ export const Article = ({
   locale,
   competenceGoals,
 }) => {
+  const {
+    title,
+    introduction,
+    updated,
+    content,
+    footNotes,
+    copyright: { license: licenseObj, creators, rightsholders, processors },
+  } = article;
+
   const license = getLicenseByAbbreviation(licenseObj.license, locale)
     .abbreviation;
 

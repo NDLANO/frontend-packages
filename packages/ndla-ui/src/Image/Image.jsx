@@ -11,7 +11,7 @@ import defined from 'defined';
 import PropTypes from 'prop-types';
 import LazyLoadImage from './LazyLoadImage';
 
-const makeSrcQueryString = (width, crop, focalPoint) => {
+export const makeSrcQueryString = (width, crop, focalPoint) => {
   const cropParams = crop
     ? `&cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${
         crop.startY

@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import moment from 'moment';
+import format from 'date-fns/format';
 import {
   OneColumn,
   Article,
@@ -48,6 +48,8 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
     <TopicIntroductionList
       toTopic={() => '#'}
       topics={topicList}
+      toggleAdditionalCores={toggleAdditionalCores}
+      showAdditionalCores={showAdditionalCores}
       messages={{
         shortcutButtonText: 'Lærestoff',
       }}
@@ -63,7 +65,6 @@ ResourcesSubTopics.propTypes = {
 class ArticleLoader extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       showAdditionalCores: false,
       article: undefined,
@@ -78,29 +79,29 @@ class ArticleLoader extends Component {
     }
   }
 
-  handleSubmit(articleId) {
-    fetchArticle(articleId)
-      .then(data => {
-        const article = data;
-        article.updated = moment(article.updated).format('DD/MM/YYYY');
-        this.setState({
-          article,
-          message: '',
-        });
-      })
-      .catch(error => {
-        console.error(error); // eslint-disable-line no-console
-        this.setState({
-          message: error.message,
-        });
+  handleSubmit = async articleId => {
+    try {
+      const article = await fetchArticle(articleId);
+      this.setState({
+        article: {
+          ...article,
+          updated: format(article.updated, 'DD.MM.YYYY'),
+        },
+        message: '',
       });
-  }
+    } catch (error) {
+      console.error(error); // eslint-disable-line no-console
+      this.setState({
+        message: error.message,
+      });
+    }
+  };
 
-  toggleAdditionalCores() {
+  toggleAdditionalCores = () => {
     this.setState(prevState => ({
       showAdditionalCores: !prevState.showAdditionalCores,
     }));
-  }
+  };
 
   render() {
     const { article, message } = this.state;

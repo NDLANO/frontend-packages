@@ -37,7 +37,6 @@ export const FigureLicenseDialog = ({
         <h3 id={headingLabelId} {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-
         <FigureLicenseByline
           license={license}
           messages={messages}
@@ -70,5 +69,5 @@ FigureLicenseDialog.propTypes = {
   }).isRequired,
   title: PropTypes.string,
   license: LicenseShape.isRequired,
-  locale: PropTypes.string,
+  locale: PropTypes.string.isRequired,
 };

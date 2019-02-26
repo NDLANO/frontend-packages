@@ -275,6 +275,7 @@ class MastheadWithTopicMenu extends Component {
                       expandedSubtopicsId,
                     });
                   }}
+                  {...this.props.topicMenuProps}
                 />
               );
             }}
@@ -303,6 +304,7 @@ MastheadWithTopicMenu.propTypes = {
   hideSearchButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
+  topicMenuProps: PropTypes.object,
   t: PropTypes.func.isRequired,
   ndlaFilm: PropTypes.bool,
 };

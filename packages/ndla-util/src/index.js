@@ -18,5 +18,5 @@ export {
   default as getCurrentBreakpoint,
   breakpoints,
 } from './getCurrentBreakpoint';
-export { default as downloadPdf } from './downloadPdf';
 export { createUniversalPortal } from './createUniversalPortal';
+export { isFunction } from './isFunction';

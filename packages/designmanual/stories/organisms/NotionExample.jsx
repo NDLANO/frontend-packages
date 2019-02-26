@@ -7,7 +7,7 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { OneColumn, LayoutItem, Image } from '@ndla/ui';
+import { OneColumn, LayoutItem } from '@ndla/ui';
 import Notion, {
   NotionDialogContent,
   NotionDialogText,
@@ -17,8 +17,8 @@ import Notion, {
 import Tabs from '@ndla/tabs';
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 
-import FigureWithLicense from '../article/FigureWithLicense';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
+import { FigureImage } from '../article/FigureImage';
 
 class NotionExample extends Component {
   componentDidMount() {
@@ -82,12 +82,11 @@ class NotionExample extends Component {
                   sosialiseringen er at de enkelte menneskene skal kunne skille
                   mellom godt og ondt, og rett og galt.
                 </p>
-                <FigureWithLicense type="right" caption="" runScripts>
-                  <Image
-                    alt="liten jente holder sine foreldres hender. foto."
-                    src="https://staging.api.ndla.no/image-api/raw/jente%2520mellom%2520foreldre_0.jpg"
-                  />
-                </FigureWithLicense>
+                <FigureImage
+                  alt="liten jente holder sine foreldres hender. foto."
+                  src="https://api.ndla.no/image-api/raw/sx21c7f8.jpg"
+                  type="right"
+                />
                 <h2>Normer og normsendere</h2>
                 <p>
                   Normer er regler som forteller hvordan man skal oppføre seg og
@@ -147,7 +146,7 @@ class NotionExample extends Component {
                                 content: (
                                   <Fragment>
                                     <NotionDialogImage
-                                      src="https://test.api.ndla.no/image-api/raw/futrue%2520padawan.jpg?width=800"
+                                      src="https://api.ndla.no/image-api/raw/futrue%20padawan.jpg?width=800"
                                       alt="Normer i samfunnet"
                                     />
                                     <NotionDialogText>

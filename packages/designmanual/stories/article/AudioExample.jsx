@@ -1,87 +1,48 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {
-  AudioPlayer,
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-} from '@ndla/ui';
-import Button from '@ndla/button';
+import React from 'react';
+import { AudioPlayer, Figure } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import {
-  addCloseDialogClickListeners,
-  addShowDialogClickListeners,
-  initAudioPlayers,
-} from '@ndla/article-scripts';
+import { initArticleScripts } from '@ndla/article-scripts';
+import { FigureCaptionExample } from './FigureCaptionExample';
+import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-class AudioExample extends Component {
-  constructor(props) {
-    super(props);
-    this.id = uuid();
-  }
+function AudioExample() {
+  const id = useRunOnlyOnce(uuid(), () => {
+    initArticleScripts();
+  });
+  const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
 
-  componentDidMount() {
-    if (this.props.runScripts) {
-      addShowDialogClickListeners();
-      addCloseDialogClickListeners();
-      initAudioPlayers();
-    }
-  }
+  const messages = {
+    close: 'Lukk',
+    rulesForUse: 'Regler for bruk av lydklippet',
+    learnAboutLicenses: license.linkText,
+    source: 'Kilde',
+    title: 'Tittel',
+    mediaType: 'lydklipp',
+  };
 
-  render() {
-    const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
+  const caption = 'Familien som spela vekk jula';
 
-    const messages = {
-      close: 'Lukk',
-      rulesForUse: 'Regler for bruk av lydklippet',
-      learnAboutLicenses: license.linkText,
-      source: 'Kilde',
-      title: 'Tittel',
-    };
+  const figureId = `figure-${id}`;
 
-    const caption = 'Familien som spela vekk jula';
-    const reuseLabel = 'Bruk lydklipp';
-    const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
-
-    const figureId = `figure-${this.id}`;
-
-    return (
-      <Figure id={figureId} type="full-column">
-        <AudioPlayer
-          src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
-          type="audio/mpeg"
-          title={caption}
-          typeLabel="Hørespill"
-        />
-        <FigureLicenseDialog
-          id={this.id}
-          key="details"
-          license={license}
-          authors={authors}
-          origin="https://www.wikimedia.com"
-          title={caption}
-          messages={messages}>
-          <Button outline>Kopier referanse</Button>
-          <Button outline>Last ned lydklipp</Button>
-        </FigureLicenseDialog>
-        <FigureCaption
-          figureId={figureId}
-          id={this.id}
-          locale="nb"
-          key="caption"
-          caption={caption}
-          reuseLabel={reuseLabel}
-          licenseRights={license.rights}
-          authors={authors}
-        />
-      </Figure>
-    );
-  }
+  return (
+    <Figure id={figureId} type="full-column">
+      <AudioPlayer
+        src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
+        type="audio/mpeg"
+        title={caption}
+        typeLabel="Hørespill"
+      />
+      <FigureCaptionExample
+        caption={caption}
+        figureId={figureId}
+        id={id}
+        messages={messages}
+      />
+    </Figure>
+  );
 }
 
-AudioExample.propTypes = {
-  runScripts: PropTypes.bool,
-};
+AudioExample.propTypes = {};
 
 export default AudioExample;

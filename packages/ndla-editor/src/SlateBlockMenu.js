@@ -114,6 +114,7 @@ const buttonCSS = css`
     .c-icon {
       transform: rotate(135deg);
     }
+    pointer-events: none;
   }
   &:hover,
   &:focus {
@@ -124,16 +125,15 @@ const buttonCSS = css`
   }
 `;
 
-const FocusWrapper = ({ isOpen, onToggleOpen, children }) => (
+const FocusWrapper = ({ onToggleOpen, children }) => (
   <FocusTrapReact
     focusTrapOptions={{
-      onDeactivate: () => {
+      onDeactivate: e => {
         onToggleOpen(false);
       },
       clickOutsideDeactivates: true,
       escapeDeactivates: true,
-    }}
-    active={isOpen}>
+    }}>
     {children}
   </FocusTrapReact>
 );
@@ -146,38 +146,38 @@ FocusWrapper.propTypes = {
 
 const SlateBlockMenu = React.forwardRef(
   ({ heading, actions, clickItem, onToggleOpen, isOpen, cy }, ref) => (
-    <FocusWrapper isOpen={isOpen} onToggleOpen={onToggleOpen}>
+    <>
       <button
         ref={ref}
         className={cx(buttonCSS, { '--open': isOpen })}
         type="button"
         data-cy={cy}
-        onClick={() => {
-          onToggleOpen(!isOpen);
-        }}>
+        onClick={() => onToggleOpen(!isOpen)}>
         <Plus />
       </button>
       {isOpen && (
-        <Wrapper>
-          <div>
-            <HeaderLabel>{heading}</HeaderLabel>
-            {actions.map(action => (
-              <Item key={action.data.object}>
-                <button
-                  className={itemButton}
-                  data-cy={`create-${action.data.object}`}
-                  type="button"
-                  onClick={() => clickItem(action.data)}>
-                  {action.icon && action.icon}
-                  <span>{action.label}</span>
-                </button>
-                {action.helpIcon}
-              </Item>
-            ))}
-          </div>
-        </Wrapper>
+        <FocusWrapper onToggleOpen={onToggleOpen}>
+          <Wrapper>
+            <div>
+              <HeaderLabel>{heading}</HeaderLabel>
+              {actions.map(action => (
+                <Item key={action.data.object}>
+                  <button
+                    className={itemButton}
+                    data-cy={`create-${action.data.object}`}
+                    type="button"
+                    onClick={() => clickItem(action.data)}>
+                    {action.icon && action.icon}
+                    <span>{action.label}</span>
+                  </button>
+                  {action.helpIcon}
+                </Item>
+              ))}
+            </div>
+          </Wrapper>
+        </FocusWrapper>
       )}
-    </FocusWrapper>
+    </>
   ),
 );
 

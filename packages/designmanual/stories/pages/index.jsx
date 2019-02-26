@@ -284,7 +284,9 @@ storiesOf('Emnesider', module)
   .add('2. Fag', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu
+          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        />
         <Subject />
       </Content>
       <FooterExample />
@@ -293,7 +295,9 @@ storiesOf('Emnesider', module)
   .add('3. Fag med to kolonner', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu
+          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        />
         <SubjectWithTwoColumn />
       </Content>
       <FooterExample />
@@ -302,7 +306,9 @@ storiesOf('Emnesider', module)
   .add('4. Fagforside språk', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu
+          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        />
         <SubjectLanguage />
       </Content>
       <FooterExample />
@@ -322,7 +328,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="4824"
+          articleId="29"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           hideResources
@@ -346,7 +352,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
-          articleId="4853"
+          articleId="60"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
         />

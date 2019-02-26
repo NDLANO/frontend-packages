@@ -29,6 +29,12 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: flex-end;
   }
+  button {
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -47,8 +53,8 @@ const Title = styled.h2`
   }
 `;
 
-const FormHeader = ({ title, subTitle, width, children }) => (
-  <Wrapper wrapperWidth={width * 100}>
+const FormHeader = ({ title, subTitle, width, children, ...rest }) => (
+  <Wrapper wrapperWidth={width * 100} {...rest}>
     <Title>
       {title}
       {subTitle && <span>{subTitle}</span>}

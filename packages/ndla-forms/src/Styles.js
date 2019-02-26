@@ -27,6 +27,7 @@ export const FormHeaderIconClass = css`
 
 export const StyledButtonWrapper = styled.div`
   display: flex;
+  justify-content: flex-end;
   margin-top: ${spacing.medium};
 
   > button {
@@ -35,3 +36,5 @@ export const StyledButtonWrapper = styled.div`
   padding-left: ${props =>
     props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0};
 `;
+
+ 

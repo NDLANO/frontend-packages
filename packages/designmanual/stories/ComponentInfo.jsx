@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/styles/hljs';
-
 import Tabs from '@ndla/tabs';
+import { Spinner } from '@ndla/editor';
 import { uuid, copyTextToClipboard } from '@ndla/util';
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
@@ -18,6 +16,10 @@ const statusMessages = {
 };
 
 const classes = BEMHelper('c-componentinfo');
+
+const SyntaxHighlighter = React.lazy(() =>
+  import('./wrappers/SyntaxHiglighter'),
+);
 
 class ComponentInfo extends Component {
   constructor(props) {
@@ -68,9 +70,10 @@ class ComponentInfo extends Component {
                 {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
               </Fragment>
             </Button>
-            <SyntaxHighlighter language="jsx" style={docco}>
-              {reactCode}
-            </SyntaxHighlighter>
+
+            <Suspense fallback={<Spinner />}>
+              <SyntaxHighlighter code={reactCode} />
+            </Suspense>
           </Fragment>
         ),
       },

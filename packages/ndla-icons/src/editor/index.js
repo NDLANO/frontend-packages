@@ -46,7 +46,7 @@ export { default as LastUsed } from './LastUsed';
 export { default as Learningpath } from './Learningpath';
 export { default as LearningResource } from './LearningResource';
 export { default as Link } from './Link';
-export { default as ListAlphebetical } from './ListAlphebetical';
+export { default as ListAlphabetical } from './ListAlphabetical';
 export { default as ListCircle } from './ListCircle';
 export { default as ListNumbered } from './ListNumbered';
 export { default as ListSquare } from './ListSquare';

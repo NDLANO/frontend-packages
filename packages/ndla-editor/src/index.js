@@ -9,16 +9,15 @@
 import SlateBlockMenu from './SlateBlockMenu';
 import Spinner from './Spinner';
 import Structure from './Structure';
-import Spinner from './Spinner';
 import FileListEditor from './FileListEditor';
-import NdlaFilmMovieList from './ndlaFilm/MovieList';
+import MovieList from './ndlaFilm/MovieList';
 import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
 export {
   SlateBlockMenu,
   Structure,
   Spinner,
-  NdlaFilmMovieList,
+  MovieList,
   NdlaFilmThemeEditorModal,
-  FileListEditor
+  FileListEditor,
 };

@@ -8,53 +8,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
-import { spacing, colors, fonts, animations, shadows } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
+import styled from 'react-emotion';
+import { spacing, shadows } from '@ndla/core';
+
+import MovieListItem from './MovieListItem';
 
 const MOVIE_HEIGHT = 69;
-const MOVIE_MARGIN = 4;
-
-const StyledMovieImage = styled.img`
-  width: ${MOVIE_HEIGHT * 1.33}px;
-  height: ${MOVIE_HEIGHT - spacing.spacingUnit / 2}px;
-  object-fit: cover;
-  margin-right: ${spacing.small};
-`;
-
-const StyledMovieItem = styled.li`
-  margin: ${MOVIE_MARGIN}px 0 0;
-  padding: 0;
-  background: ${colors.brand.greyLighter};
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: ${MOVIE_HEIGHT - MOVIE_MARGIN}px;
-  max-width: 100%;
-  box-sizing: border-box;
-  ${fonts.sizes(18, 1.1)};
-  font-weight: ${fonts.weight.semibold};
-  font-family: ${fonts.sans};
-  > div {
-    display: flex;
-    align-items: center;
-    padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
-    &:first-child {
-      flex-grow: 1;
-      padding-left: ${spacing.xsmall};
-    }
-    svg {
-      width: 18px;
-      height: 18px;
-    }
-  }
-  ${props =>
-    props.delete &&
-    css`
-      ${animations.fadeOut()}
-    `}
-`;
 
 const Wrapper = styled.div`
   margin: ${spacing.normal} 0;
@@ -72,39 +31,6 @@ const ListWrapper = styled.ul`
   list-style: none;
 `;
 
-const ButtonIcons = styled.button`
-  border: 0;
-  background: none;
-  color: ${colors.brand.primary};
-  width: ${spacing.medium};
-  height: ${spacing.medium};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  border-radius: 100%;
-  transition: background 200ms ease;
-  &:hover,
-  &:focus {
-    background: ${colors.brand.light};
-  }
-  ${props =>
-    props.delete &&
-    css`
-      color: ${colors.support.red};
-      &:hover,
-      &:focus {
-        background: ${colors.support.redLight};
-      }
-    `}
-  ${props =>
-    props.draggable &&
-    css`
-      cursor: grabbing;
-    `};
-`;
-
 class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -113,8 +39,10 @@ class MovieList extends Component {
       deleteIndex: -1,
     };
     this.wrapperRef = React.createRef();
+    this.onDragStart = this.onDragStart.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.onDragging = this.onDragging.bind(this);
+    this.deleteFile = this.deleteFile.bind(this);
     this.executeDeleteFile = this.executeDeleteFile.bind(this);
   }
 
@@ -233,63 +161,24 @@ class MovieList extends Component {
   }
 
   render() {
-    const {
-      movies,
-      messages: { removeFilm, dragFilm },
-    } = this.props;
-    const { draggingIndex, deleteIndex } = this.state;
+    const { movies, messages } = this.props;
+    const { draggingIndex } = this.state;
 
     return (
       <Wrapper>
         <ListWrapper innerRef={this.wrapperRef} draggingIndex={draggingIndex}>
           {movies.map((movie, index) => (
-            <StyledMovieItem
-              key={movie.id}
-              delete={deleteIndex === index}
-              onAnimationEnd={
-                deleteIndex === index ? this.executeDeleteFile : undefined
-              }>
-              <div>
-                <StyledMovieImage
-                  src={movie.metaImage.url}
-                  alt={movie.metaImage.alt}
-                />
-                {movie.title}
-              </div>
-              <div>
-                {movies.length > 1 &&
-                  (draggingIndex === -1 ? (
-                    <Tooltip tooltip={dragFilm}>
-                      <ButtonIcons
-                        draggable
-                        tabIndex={-1}
-                        type="button"
-                        onMouseDown={e => this.onDragStart(e, index)}
-                        onMouseUp={this.onDragEnd}>
-                        <DragHorizontal />
-                      </ButtonIcons>
-                    </Tooltip>
-                  ) : (
-                    <ButtonIcons
-                      draggable
-                      tabIndex={-1}
-                      type="button"
-                      onMouseDown={e => this.onDragStart(e, index)}
-                      onMouseUp={this.onDragEnd}>
-                      <DragHorizontal />
-                    </ButtonIcons>
-                  ))}
-                <Tooltip tooltip={removeFilm}>
-                  <ButtonIcons
-                    tabIndex={-1}
-                    type="button"
-                    onClick={() => this.deleteFile(index)}
-                    delete>
-                    <DeleteForever />
-                  </ButtonIcons>
-                </Tooltip>
-              </div>
-            </StyledMovieItem>
+            <MovieListItem
+              movie={movie}
+              messages={messages}
+              index={index}
+              executeDeleteFile={this.executeDeleteFile}
+              showDragTooltip={movies.length > 1 && draggingIndex === -1}
+              onDragEnd={this.onDragEnd}
+              onDragStart={this.onDragStart}
+              deleteFile={this.deleteFile}
+              {...this.state}
+            />
           ))}
         </ListWrapper>
       </Wrapper>

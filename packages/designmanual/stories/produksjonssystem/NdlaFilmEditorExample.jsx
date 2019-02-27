@@ -182,7 +182,7 @@ class NdlaFilmExample extends Component {
             title={t('ndlaFilm.editor.slideshowTitle')}
             subTitle={t('ndlaFilm.editor.slideshowSubTitle')}
           />
-          <NdlaFilmMovieList
+          <MovieList
             id="slideshowId"
             movies={mainMovies}
             messages={{
@@ -312,7 +312,7 @@ class NdlaFilmExample extends Component {
                   </button>
                 </Tooltip>
               </FormHeader>
-              <NdlaFilmMovieList
+              <MovieList
                 movies={theme.movies}
                 messages={{
                   dragFilm: t('ndlaFilm.editor.changeOrder'),

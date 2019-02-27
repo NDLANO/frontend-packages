@@ -1,5 +1,5 @@
 import FormHeader from './FormHeader';
-import FormDropdown from './FormDropdown';
+import FormSelect from './FormSelect';
 import FormSections from './FormSections';
 import FormInput from './FormInput';
 import FormSplitter from './FormSplitter';
@@ -11,7 +11,6 @@ import UploadDropZone from './UploadDropZone';
 
 export {
   FormHeader,
-  FormDropdown,
   FormSections,
   FormInput,
   FormSplitter,
@@ -21,4 +20,5 @@ export {
   UploadDropZone,
   FormHeaderIconClass,
   StyledButtonWrapper,
+  FormSelect,
 };

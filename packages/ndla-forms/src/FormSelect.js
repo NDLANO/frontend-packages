@@ -32,13 +32,13 @@ const FormSelectWrapper = styled.select`
   }
 `;
 
-const FormDropdown = ({ children, ...rest }) => (
+const FormSelect = ({ children, ...rest }) => (
   <FormSelectWrapper {...rest}>{children}</FormSelectWrapper>
 );
 
-FormDropdown.propTypes = {
+FormSelect.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func.isRequired,
 };
 
-export default FormDropdown;
+export default FormSelect;

@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import { NdlaFilmMovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
-import { FormHeader, FormDropdown, FormHeaderIconClass } from '@ndla/forms';
+import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
+import { FormHeader, FormSelect, FormHeaderIconClass } from '@ndla/forms';
 import { uuid } from '@ndla/util';
 import Modal from '@ndla/modal';
 import { spacing } from '@ndla/core';
@@ -53,8 +53,11 @@ class NdlaFilmExample extends Component {
         },
       },
     };
-    this.onSaveThemeChanges = this.onSaveThemeChanges.bind(this);
-    this.onEditTheme = this.onEditTheme.bind(this);
+    this.onMoveTheme = this.onMoveTheme.bind(this);
+    this.onDeleteTheme = this.onDeleteTheme.bind(this);
+    this.onAddMovieToTheme = this.onAddMovieToTheme.bind(this);
+    this.movieThemeUpdate = this.movieThemeUpdate.bind(this);
+    this.renderAddMovieOptions = this.renderAddMovieOptions.bind(this);
   }
 
   onMoveTheme(index, direction) {
@@ -80,46 +83,6 @@ class NdlaFilmExample extends Component {
       themes.splice(index, 1);
       return {
         themes,
-      };
-    });
-  }
-
-  onSaveThemeChanges() {
-    // Only allow if all fields are filled in and return ok status
-    const { name } = this.state.newTheme;
-    const errors = Object.keys(name).filter(key => name[key].length < 2);
-    if (errors.length === 0) {
-      this.setState(prevState => {
-        const { themes, editingThemeIndex, newTheme } = prevState;
-        if (editingThemeIndex === -1) {
-          newTheme.movies = [];
-          newTheme.id = uuid();
-          themes.unshift(newTheme);
-        } else {
-          themes[editingThemeIndex].name = newTheme.name;
-        }
-        return {
-          themes,
-        };
-      });
-      return true;
-    }
-    this.setState(prevState => {
-      const { newTheme } = prevState;
-      newTheme.warnings.nb = errors.includes('nb') ? 'error' : undefined;
-      newTheme.warnings.nn = errors.includes('nn') ? 'error' : undefined;
-      newTheme.warnings.en = errors.includes('en') ? 'error' : undefined;
-    });
-    return false;
-  }
-
-  onEditTheme({ value, lang }) {
-    this.setState(prevState => {
-      const { newTheme } = prevState;
-      newTheme.name[lang] = value;
-      newTheme.warnings[lang] = undefined;
-      return {
-        newTheme,
       };
     });
   }
@@ -195,12 +158,12 @@ class NdlaFilmExample extends Component {
               });
             }}
           />
-          <FormDropdown
+          <FormSelect
             value=""
             onChange={e => this.onAddMovieToSlideshow(e.target.value)}>
             <option value="">{t('ndlaFilm.editor.addMovieToSlideshow')}</option>
             {this.renderAddMovieOptions(mainMovies)}
-          </FormDropdown>
+          </FormSelect>
         </StyledSection>
         <StyledSection>
           <h1>{t('ndlaFilm.editor.movieGroupHeader')}</h1>
@@ -226,9 +189,9 @@ class NdlaFilmExample extends Component {
             {onClose => (
               <NdlaFilmThemeEditorModal
                 onClose={onClose}
-                onSave={this.onSaveThemeChanges}
+                onEditName={() => {}}
+                onSave={() => {}}
                 theme={this.state.newTheme}
-                onEditName={this.onEditTheme}
                 messages={{
                   save: t('ndlaFilm.editor.createThemeGroup'),
                   cancel: t('ndlaFilm.editor.cancel'),
@@ -273,9 +236,9 @@ class NdlaFilmExample extends Component {
                   {onClose => (
                     <NdlaFilmThemeEditorModal
                       onClose={onClose}
-                      onSave={this.onSaveThemeChanges}
+                      onEditName={() => {}}
+                      onSave={() => {}}
                       theme={this.state.newTheme}
-                      onEditName={this.onEditTheme}
                       messages={{
                         save: t('ndlaFilm.editor.saveNameChanges'),
                         cancel: t('ndlaFilm.editor.cancel'),
@@ -323,7 +286,7 @@ class NdlaFilmExample extends Component {
                   this.movieThemeUpdate(updates, index)
                 }
               />
-              <FormDropdown
+              <FormSelect
                 value=""
                 onChange={e => this.onAddMovieToTheme(e.target.value, index)}>
                 <option value="">
@@ -332,7 +295,7 @@ class NdlaFilmExample extends Component {
                   })}
                 </option>
                 {this.renderAddMovieOptions(theme.movies)}
-              </FormDropdown>
+              </FormSelect>
             </StyledThemeWrapper>
           ))}
         </StyledSection>

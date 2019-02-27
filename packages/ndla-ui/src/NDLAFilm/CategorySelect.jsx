@@ -125,6 +125,13 @@ class CategorySelect extends React.Component {
   }
 }
 
-CategorySelect.propTypes = {};
+CategorySelect.propTypes = {
+  resourceTypes: PropTypes.arrayOf(PropTypes.object),
+  resourceTypeSelected: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  ariaControlId: PropTypes.string,
+};
 
 export default injectT(CategorySelect);

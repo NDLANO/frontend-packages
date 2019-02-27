@@ -12,23 +12,17 @@ import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
-import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import Button from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 import { movieShape, topicShape } from './shapes';
 import FilmSlideshow from './FilmSlideshow';
 import FilmMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
 import FrontpagePlaceholder from './FrontpagePlaceholder';
-import { AboutNDLAFilmNb, AboutNDLAFilmNn, AboutNDLAFilmEn } from './aboutNDLA';
+import MovieGrid from './MovieGrid';
+import AboutNdlaFilm from './aboutNDLA/AboutNdlaFilm';
 
 const classes = new BEMHelper({
   name: 'film-frontpage',
-  prefix: 'c-',
-});
-
-const movieListClasses = new BEMHelper({
-  name: 'film-movielist',
   prefix: 'c-',
 });
 
@@ -115,19 +109,6 @@ class FilmFrontpage extends Component {
     /* eslint react/no-did-mount-set-state: 1 */
   }
 
-  renderAboutNDLA() {
-    const { language } = this.props;
-    if (language === 'nb') {
-      return <AboutNDLAFilmNb />;
-    }
-    if (language === 'nn') {
-      return <AboutNDLAFilmNn />;
-    }
-    if (language === 'en') {
-      return <AboutNDLAFilmEn />;
-    }
-  }
-
   render() {
     const {
       highlighted,
@@ -145,6 +126,7 @@ class FilmFrontpage extends Component {
       columnWidth,
       columnsPrSlide,
       margin,
+      loadingPlaceholderHeight,
     } = this.state;
 
     if (highlighted.length === 0) {
@@ -169,77 +151,18 @@ class FilmFrontpage extends Component {
         />
         <div id={ARIA_FILMCATEGORY_ID} ref={this.movieListRef}>
           {resourceTypeSelected ? (
-            <section>
-              <h1
-                {...movieListClasses('heading')}
-                style={{ marginLeft: `${margin + 7}px` }}>
-                {resourceTypeName && resourceTypeName.name}
-                <small>
-                  {fetchingMoviesByType
-                    ? t('ndlaFilm.loadingMovies')
-                    : `${moviesByType.length} ${t(
-                        'ndlaFilm.movieMatchInCategory',
-                      )}`}
-                </small>
-              </h1>
-              <div
-                {...classes('movie-listing')}
-                style={{ marginLeft: `${margin}px` }}>
-                {fetchingMoviesByType && (
-                  <div
-                    style={{ height: this.state.loadingPlaceholderHeight }}
-                  />
-                )}
-                {!fetchingMoviesByType &&
-                  moviesByType.map(movie => (
-                    <a
-                      href={movie.url}
-                      key={movie.id}
-                      {...classes(
-                        'movie-item',
-                        '',
-                        'c-film-movielist__slide-item',
-                      )}
-                      style={{ width: `${columnWidth}px` }}>
-                      <div
-                        {...movieListClasses('slidecolumn-image')}
-                        role="img"
-                        aria-label={movie.metaImage ? movie.metaImage.alt : ''}
-                        style={{
-                          height: `${columnWidth * 0.5625}px`,
-                          backgroundImage: `url(${
-                            movie.metaImage && movie.metaImage.url
-                              ? movie.metaImage.url
-                              : ''
-                          })`,
-                        }}>
-                        <div {...movieListClasses('movie-tags-wrapper')}>
-                          {Object.keys(movie.movieTypes).map(movieType => {
-                            const resource = resourceTypes.find(
-                              resourceType => resourceType.id === movieType,
-                            );
-                            return resource ? (
-                              <span
-                                {...movieListClasses('movie-tags')}
-                                key={movieType}>
-                                {
-                                  resourceTypes.find(
-                                    resourceType =>
-                                      resourceType.id === movieType,
-                                  ).name
-                                }
-                              </span>
-                            ) : null;
-                          })}
-                        </div>
-                      </div>
-                      <h2 {...movieListClasses('movie-title')}>
-                        {movie.title}
-                      </h2>
-                    </a>
-                  ))}
-              </div>
-            </section>
+            <MovieGrid
+              {...{
+                margin,
+                resourceTypeName,
+                fetchingMoviesByType,
+                moviesByType,
+                classes,
+                columnWidth,
+                resourceTypes,
+                loadingPlaceholderHeight,
+              }}
+            />
           ) : (
             themes.map(theme => (
               <FilmMovieList
@@ -256,28 +179,7 @@ class FilmFrontpage extends Component {
             ))
           )}
         </div>
-        <div className="o-wrapper">
-          <aside className="c-film-frontpage__about">
-            <div>{aboutNDLAVideo}</div>
-            <div>
-              <h1>{t('ndlaFilm.about.heading')}</h1>
-              <p>{t('ndlaFilm.about.text')}</p>
-              <Modal
-                activateButton={
-                  <Button link>{t('ndlaFilm.about.more')}</Button>
-                }>
-                {onClose => (
-                  <>
-                    <ModalHeader>
-                      <ModalCloseButton onClick={onClose} title="Lukk" />
-                    </ModalHeader>
-                    <ModalBody>{this.renderAboutNDLA()}</ModalBody>
-                  </>
-                )}
-              </Modal>
-            </div>
-          </aside>
-        </div>
+        <AboutNdlaFilm language={language} aboutNDLAVideo={aboutNDLAVideo} />
       </div>
     );
   }

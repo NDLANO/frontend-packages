@@ -24,6 +24,11 @@ const NdlaFilmArticleHero = ({ withBackgroundImage, article }) => {
   );
 };
 
-NdlaFilmArticleHero.propTypes = {};
+NdlaFilmArticleHero.propTypes = {
+  withBackgroundImage: PropTypes.bool,
+  article: PropTypes.shape({
+    metaImage: PropTypes.object,
+  }),
+};
 
 export default NdlaFilmArticleHero;

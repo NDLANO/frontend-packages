@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
 import { FormHeader, FormSelect, FormHeaderIconClass } from '@ndla/forms';
-import { uuid } from '@ndla/util';
 import Modal from '@ndla/modal';
 import { spacing } from '@ndla/core';
 import Button from '@ndla/button';

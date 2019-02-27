@@ -36,5 +36,3 @@ export const StyledButtonWrapper = styled.div`
   padding-left: ${props =>
     props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0};
 `;
-
- 

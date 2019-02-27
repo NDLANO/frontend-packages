@@ -1,103 +1,69 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import React, { Component } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import debounce from 'lodash/debounce';
-import { uuid } from '@ndla/util';
 import BreadcrumbItem from './BreadcrumbItem';
+import { useWindowSize } from './useWindowSize';
 
 const classes = BEMHelper({
   name: 'breadcrumb-block',
   prefix: 'c-',
 });
 
-class BreadcrumbBlock extends Component {
-  constructor(props) {
-    super(props);
-    this.breadCrumbRef = React.createRef();
-    this.checkBreadcrumbSizes = this.checkBreadcrumbSizes.bind(this);
-    this.checkBreadcrumbSizesDebounce = debounce(
-      () => this.checkBreadcrumbSizes(),
-      100,
-    );
-  }
+const BreadcrumbBlock = ({ children, items }) => {
+  let ref = useRef(null);
+  let size = useWindowSize(ref);
 
-  componentDidUpdate() {
-    if (this.props.singlelineBreadcrumb) {
-      this.checkBreadcrumbSizes();
-    }
-  }
+  useLayoutEffect(() => {
+    const container = ref.current;
 
-  componentDidMount() {
-    if (this.props.singlelineBreadcrumb) {
-      window.addEventListener('resize', this.checkBreadcrumbSizesDebounce);
-    }
-  }
+    // Get all breadcrumb text items (a or span) except first element
+    const elements = Array.from(container.querySelectorAll('li'))
+      .slice(1)
+      .map(el => el.children[0]);
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.checkBreadcrumbSizesDebounce);
-  }
-
-  shortenBreadcrumb(elements, totalWidth) {
-    const elementsLength = elements
-      .map(el => el.clientWidth)
-      .reduce((sum, count) => sum + count);
-
-    return totalWidth < elementsLength;
-  }
-
-  checkBreadcrumbSizes() {
-    const container = this.breadCrumbRef.current;
-    const elements = Array.from(
-      container.querySelectorAll('li:not(:first-child)'),
-    );
-    container.querySelectorAll('li:not(:first-child)').forEach((el, index) => {
-      const tagName = index < elements.length - 1 ? 'a' : 'span';
-      const breadCrumbName = el.querySelector(tagName);
-      breadCrumbName.style.maxWidth = 'none';
+    // Clear max width on all elements
+    elements.forEach((el, index) => {
+      el.style.maxWidth = 'none';
     });
 
+    // Set maxWidth on breadcrumb text items iteratively until
+    // the ordered list fits on a single line. Its on a single line
+    // if height less then 70.
     let counter = 0;
     while (counter < elements.length && container.offsetHeight > 70) {
-      const tagName = counter < elements.length - 1 ? 'a' : 'span';
-      elements[counter].querySelector(tagName).style.maxWidth = '40px';
+      elements[counter].style.maxWidth = '40px';
       counter++;
     }
-  }
+  }, [size]);
 
-  render() {
-    const { children, singlelineBreadcrumb, items } = this.props;
-    return (
-      <div {...classes('')}>
-        {children}
-        <ol
-          {...classes('list', [singlelineBreadcrumb ? 'singleline' : ''])}
-          ref={this.breadCrumbRef}>
-          {items.map((item, i) => (
-            <BreadcrumbItem
-              classes={classes}
-              key={uuid()}
-              isCurrent={i === items.length - 1}
-              to={item.to}>
-              {item.name}
-            </BreadcrumbItem>
-          ))}
-        </ol>
-      </div>
-    );
-  }
-}
+  return (
+    <div {...classes('')}>
+      {children}
+      <ol {...classes('list')} ref={ref}>
+        {items.map((item, i) => (
+          <BreadcrumbItem
+            classes={classes}
+            key={i}
+            isCurrent={i === items.length - 1}
+            to={item.to}>
+            {item.name}
+          </BreadcrumbItem>
+        ))}
+      </ol>
+    </div>
+  );
+};
 
 BreadcrumbBlock.propTypes = {
   children: PropTypes.node,
-  singlelineBreadcrumb: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       to: PropTypes.string.isRequired,

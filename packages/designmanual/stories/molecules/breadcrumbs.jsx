@@ -55,10 +55,6 @@ BreadcrumbDefault.propTypes = {
 
 export default BreadcrumbDefault;
 
-export const BreadcrumbBlock = ({ singlelineBreadcrumb }) => (
-  <BreadcrumbBlockUI
-    singlelineBreadcrumb={singlelineBreadcrumb}
-    items={items.slice(1)}
-    toTopic={() => '#'}
-  />
+export const BreadcrumbBlock = () => (
+  <BreadcrumbBlockUI items={items.slice(1)} toTopic={() => '#'} />
 );

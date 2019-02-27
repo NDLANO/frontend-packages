@@ -31,7 +31,6 @@ import Subject, { SubjectWithTwoColumn, SubjectLanguage } from './Subject';
 
 import FooterExample from '../molecules/footers';
 import ArticleLoader from '../article/ArticleLoader';
-import ArticleLoaderNdlaFilm from '../article/ArticleLoaderNdlaFilm';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
@@ -416,11 +415,12 @@ storiesOf('Ndla film', module)
     <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
-        <ArticleLoaderNdlaFilm
+        <ArticleLoader
           articleId="3396"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           withBackgroundImage
+          ndlaFilm
         />
       </Content>
       <FooterExample inverted />
@@ -430,12 +430,13 @@ storiesOf('Ndla film', module)
     <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
-        <ArticleLoaderNdlaFilm
+        <ArticleLoader
           articleId="4824"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           hideResources
           showSubTopics
+          ndlaFilm
         />
       </Content>
       <FooterExample inverted />

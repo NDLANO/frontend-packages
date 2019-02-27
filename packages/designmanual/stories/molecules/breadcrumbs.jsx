@@ -12,24 +12,20 @@ import { Breadcrumb, BreadcrumbBlock as BreadcrumbBlockUI } from '@ndla/ui';
 
 const items = [
   {
-    name: 'Til forsiden',
-    to: '#',
-  },
-  {
     name: 'Fag',
-    to: '#',
+    to: '#1',
   },
   {
     name: 'Hovedemne tittel',
-    to: '#',
+    to: '#2',
   },
   {
     name: 'Underemne tittel',
-    to: '#',
+    to: '#3',
   },
   {
     name: 'Tittel på side/ressursen',
-    to: '#',
+    to: '#4',
   },
 ];
 
@@ -56,5 +52,5 @@ BreadcrumbDefault.propTypes = {
 export default BreadcrumbDefault;
 
 export const BreadcrumbBlock = () => (
-  <BreadcrumbBlockUI items={items.slice(1)} toTopic={() => '#'} />
+  <BreadcrumbBlockUI items={items} toTopic={() => '#'} />
 );

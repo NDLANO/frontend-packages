@@ -18,40 +18,44 @@ const classes = BEMHelper({
 });
 
 const BreadcrumbBlock = ({ children, items }) => {
-  let ref = useRef(null);
-  let size = useWindowSize(ref);
+  const olRef = useRef(null);
+  // No idiomatic way of dealing with sets of refs yet
+  // See: https://github.com/facebook/react/issues/14072#issuecomment-446777406
+  const breadcrumbItemRefs = useRef(new Map()).current;
+  const size = useWindowSize(olRef);
 
   useLayoutEffect(() => {
-    const container = ref.current;
+    // Create an array of all breadcrumb item refs
+    const items = Array.from(breadcrumbItemRefs).map(([key, value]) => value);
 
-    // Get all breadcrumb text items (a or span) except first element
-    const elements = Array.from(container.querySelectorAll('li'))
-      .slice(1)
-      .map(el => el.children[0]);
-
-    // Clear max width on all elements
-    elements.forEach((el, index) => {
-      el.style.maxWidth = 'none';
+    // Clear max width on all items
+    items.forEach(el => {
+      el.setMaxWidth('none');
     });
 
     // Set maxWidth on breadcrumb text items iteratively until
-    // the ordered list fits on a single line. Its on a single line
-    // if height less then 70.
-    let counter = 0;
-    while (counter < elements.length && container.offsetHeight > 70) {
-      elements[counter].style.maxWidth = '40px';
-      counter++;
-    }
+    // the ordered list fits on a single line. It's on a single line
+    // if the height of the list is less then 70.
+    items.forEach(el => {
+      if (olRef.current.offsetHeight > 70) {
+        el.setMaxWidth('40px');
+      }
+    });
   }, [size]);
 
   return (
     <div {...classes('')}>
       {children}
-      <ol {...classes('list')} ref={ref}>
+      <ol {...classes('list')} ref={olRef}>
         {items.map((item, i) => (
           <BreadcrumbItem
+            ref={element =>
+              element === null || i === 0 // skip first item which is never truncated
+                ? breadcrumbItemRefs.delete(item.to)
+                : breadcrumbItemRefs.set(item.to, element)
+            }
             classes={classes}
-            key={i}
+            key={item.to}
             isCurrent={i === items.length - 1}
             to={item.to}>
             {item.name}

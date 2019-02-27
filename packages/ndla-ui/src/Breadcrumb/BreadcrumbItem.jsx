@@ -6,23 +6,33 @@
  *
  */
 
-import React from 'react';
+import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronRight } from '@ndla/icons/common';
 
 import SafeLink from '../common/SafeLink';
 
-const BreadcrumbItem = ({ to, children, classes, isCurrent, home, name }) => (
-  <li {...classes('item', { home })}>
-    {isCurrent ? (
-      <span>{children}</span>
-    ) : (
-      <SafeLink to={to} aria-label={home ? name : null}>
-        {children}
-      </SafeLink>
-    )}
-    {!home && <ChevronRight />}
-  </li>
+const BreadcrumbItem = React.forwardRef(
+  ({ to, children, classes, isCurrent, home, name }, ref) => {
+    const liRef = useRef();
+    useImperativeHandle(ref, () => ({
+      setMaxWidth: maxWidth => {
+        liRef.current.children[0].style.maxWidth = maxWidth;
+      },
+    }));
+    return (
+      <li {...classes('item', { home })} ref={liRef}>
+        {isCurrent ? (
+          <span>{children}</span>
+        ) : (
+          <SafeLink to={to} aria-label={home ? name : null}>
+            {children}
+          </SafeLink>
+        )}
+        {!home && <ChevronRight />}
+      </li>
+    );
+  },
 );
 
 BreadcrumbItem.propTypes = {

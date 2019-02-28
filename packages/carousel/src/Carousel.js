@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipe from 'react-swipe-component';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
@@ -143,9 +143,7 @@ class Carousel extends Component {
                 transform: `translateX(${this.swipeDistance +
                   slideIndex * (columnWidth + distanceBetweenItems)}px)`,
               }}>
-              {items.map(slide => (
-                <Fragment key={slide.id}>{slide.children}</Fragment>
-              ))}
+              {items.map(slide => slide.children)}
             </div>
           </div>
         </Swipe>

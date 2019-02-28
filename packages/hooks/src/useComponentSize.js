@@ -49,6 +49,14 @@ export function useComponentSize(ref = { current: undefined }) {
         resizeObserver.disconnect(ref.current);
         resizeObserver = null;
       };
+    } else {
+      // We should explore including a ResizeObserver polyfill
+      // See: https://github.com/WICG/ResizeObserver/issues/3
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     }
   }, [ref.current]);
 

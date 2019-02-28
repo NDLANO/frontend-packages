@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Swipe from 'react-swipe-component';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
@@ -96,11 +96,9 @@ class Carousel extends Component {
       margin,
       slideBackwardsLabel,
       slideForwardsLabel,
-      imageFormat,
     } = this.props;
     const { slideIndex, swiping } = this.state;
     const hideButtons = columnsPrSlide >= items.length;
-    const imageHeight = columnWidth * imageFormat;
     const marginString = `${margin}px`;
 
     return (
@@ -145,12 +143,9 @@ class Carousel extends Component {
                 transform: `translateX(${this.swipeDistance +
                   slideIndex * (columnWidth + distanceBetweenItems)}px)`,
               }}>
-              {items.map(slide =>
-                slide.children({
-                  imageWidth: columnWidth,
-                  imageHeight,
-                }),
-              )}
+              {items.map(slide => (
+                <Fragment key={slide.id}>{slide.children}</Fragment>
+              ))}
             </div>
           </div>
         </Swipe>
@@ -163,8 +158,7 @@ Carousel.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      toLinkProps: PropTypes.func,
+      children: PropTypes.node.isRequired,
     }),
   ),
   columnsPrSlide: PropTypes.number.isRequired,
@@ -172,13 +166,11 @@ Carousel.propTypes = {
   distanceBetweenItems: PropTypes.number.isRequired,
   slideBackwardsLabel: PropTypes.string.isRequired,
   slideForwardsLabel: PropTypes.string.isRequired,
-  imageFormat: PropTypes.number,
   margin: PropTypes.number,
 };
 
 Carousel.defaultProps = {
   items: [],
-  imageFormat: 0.5625,
   margin: 0,
 };
 

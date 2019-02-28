@@ -58,7 +58,7 @@ export const mockMovieResourceTypes = [
 const returnMovie = ({ title, image, metaDescription, movieTypes }) => ({
   title,
   id: uuid(),
-  toLinkProps: () => ({ to: '#' }),
+  url: '#',
   metaDescription: {
     metaDescription,
   },

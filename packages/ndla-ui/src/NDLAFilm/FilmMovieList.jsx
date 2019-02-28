@@ -38,21 +38,20 @@ const FilmMovieList = ({
       columnsPrSlide={columnsPrSlide}
       slideBackwardsLabel={slideBackwardsLabel}
       slideForwardsLabel={slideForwardsLabel}
-      imageFormat={0.5625}
       distanceBetweenItems={13}
       margin={margin}
       items={movies.map(movie => ({
-        toLinkProps: () => ({ to: movie.url }),
-        children: ({ imageHeight, imageWidth }) => (
-          <div {...classes('slide-item')}>
-            <SafeLink {...movie.toLinkProps()}>
+        id: movie.id,
+        children: (
+          <div {...classes('slide-item')} key={movie.id}>
+            <SafeLink to={movie.url}>
               <div
                 {...classes('slidecolumn-image')}
                 role="img"
                 aria-label={(movie.metaImage && movie.metaImage.alt) || ''}
                 style={{
-                  height: `${imageHeight}px`,
-                  width: `${imageWidth}px`,
+                  height: `${columnWidth * 0.5625}px`,
+                  width: `${columnWidth}px`,
                   backgroundImage: `url(${(movie.metaImage &&
                     movie.metaImage.url) ||
                     ''})`,

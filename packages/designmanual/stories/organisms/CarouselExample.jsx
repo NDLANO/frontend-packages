@@ -13,10 +13,9 @@ const CarouselExample = () => (
     distanceBetweenItems={26}
     slideBackwardsLabel="tilbake"
     slideForwardsLabel="framover"
-    imageFormat={0.5625}
     items={contentCards.map(content => ({
-      children: ({ imageHeight, imageWidth }) => (
-        <article {...classes()}>
+      children: (
+        <article {...classes()} key={content.id}>
           <SafeLink
             {...content.toLinkProps()}
             title={content.title}
@@ -28,8 +27,8 @@ const CarouselExample = () => (
                   role="img"
                   aria-label="some label"
                   style={{
-                    height: `${imageHeight}px`,
-                    width: `${imageWidth}px`,
+                    height: `${200 * 0.5625}px`,
+                    width: `${200}px`,
                     backgroundImage: `url(${content.image})`,
                   }}
                 />

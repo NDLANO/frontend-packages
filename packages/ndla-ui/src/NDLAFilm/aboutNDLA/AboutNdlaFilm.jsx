@@ -5,7 +5,7 @@ import Button from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 import { AboutNDLAFilmNb, AboutNDLAFilmNn, AboutNDLAFilmEn } from './';
 
-const AboutNdlaFilml = ({ aboutNDLAVideo, language, t }) => {
+const AboutNdlaFilm = ({ aboutNDLAVideo, language, t }) => {
   return (
     <div className="o-wrapper">
       <aside className="c-film-frontpage__about">
@@ -34,8 +34,8 @@ const AboutNdlaFilml = ({ aboutNDLAVideo, language, t }) => {
   );
 };
 
-AboutNdlaFilml.propTypes = {
-  aboutNDLAVideo: PropTypes.string,
+AboutNdlaFilm.propTypes = {
+  aboutNDLAVideo: PropTypes.shape({}),
 };
 
-export default injectT(AboutNdlaFilml);
+export default injectT(AboutNdlaFilm);

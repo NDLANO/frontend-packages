@@ -9,8 +9,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipe from 'react-swipe-component';
-import styled, { css, cx } from 'react-emotion';
-import { colors, spacing, fonts, misc } from '@ndla/core';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
 

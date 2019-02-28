@@ -6,15 +6,14 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, fonts, colors, shadows, animations } from '@ndla/core';
-import { createUniversalPortal } from '@ndla/util';
-import { Download } from '@ndla/icons/common';
+import FileNameInput from './FileNameInput';
 
 const FILE_HEIGHT = 69;
 const FILE_MARGIN = 4;
@@ -57,27 +56,6 @@ const StyledFile = styled.li`
         color: ${colors.support.red};
       }
     `}
-`;
-
-const LinkButton = styled.button`
-  font-family: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  font-size: inherit;
-  margin: 0 0 0 ${spacing.xsmall};
-  padding: 0;
-  color: ${colors.brand.primary};
-  box-shadow: inset 0 -1px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  span {
-    text-transform: uppercase;
-  }
-  &:hover,
-  &:focus {
-    box-shadow: none;
-  }
 `;
 
 const ListWrapper = styled.ul`
@@ -125,55 +103,6 @@ const ButtonIcons = styled.button`
     `};
 `;
 
-const StyledInput = styled.input`
-  height: ${spacing.medium};
-  position: absolute;
-  z-index: 9999;
-  ${fonts.sizes(18, 1.1)};
-  font-weight: ${fonts.weight.normal};
-  font-family: ${fonts.sans};
-`;
-
-/* We need to use a portal so we can edit names when inside Slate editor */
-
-class InputComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
-  componentDidMount() {
-    // Get position from props.forwardedRef.
-    if (this.props.usePortal) {
-      const rect = this.props.forwardedRef.current.childNodes[
-        this.props.childIndex
-      ].firstChild.getBoundingClientRect();
-      this.inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
-      this.inputRef.current.style.left = `${rect.left +
-        spacing.spacingUnit * 0.75}px`;
-      this.inputRef.current.style.width = `${rect.width -
-        spacing.spacingUnit}px`;
-    }
-    this.inputRef.current.focus();
-    this.inputRef.current.select();
-  }
-
-  render() {
-    const { forwardedRef, usePortal, ...rest } = this.props;
-
-    if (!usePortal) {
-      return <StyledInput innerRef={this.inputRef} {...rest} />;
-    }
-    return createUniversalPortal(
-      <StyledInput innerRef={this.inputRef} {...rest} />,
-      'body',
-    );
-  }
-}
-
-const InputForwardRef = React.forwardRef((props, ref) => {
-  return <InputComponent {...props} forwardedRef={ref} />;
-});
-
 class FileListEditor extends Component {
   constructor(props) {
     super(props);
@@ -196,14 +125,10 @@ class FileListEditor extends Component {
   }
 
   executeDeleteFile() {
-    const { files } = this.props;
-    files.splice(this.state.deleteIndex, 1);
-    this.setState(
-      {
-        deleteIndex: -1,
-      },
-      () => this.props.onUpdateFiles(files),
-    );
+    this.props.onDeleteFile(this.state.deleteIndex);
+    this.setState({
+      deleteIndex: -1,
+    });
   }
 
   editFile(e, editFileIndex) {
@@ -235,7 +160,6 @@ class FileListEditor extends Component {
     e.preventDefault();
     this.mouseMovement = -FILE_HEIGHT + dragIndex * FILE_HEIGHT;
     this.initialPosition = dragIndex;
-
     this.updateTransforms(dragIndex);
 
     this.DraggingFile = this.filesWrapperRef.current.childNodes[dragIndex];
@@ -271,14 +195,8 @@ class FileListEditor extends Component {
   onDragEnd() {
     window.removeEventListener('mousemove', this.onDragging);
     window.removeEventListener('mouseup', this.onDragEnd);
-    const { files } = this.props;
-    // Rearrange files
-    const toIndex = this.state.draggingIndex;
-    const moveFile = files[this.initialPosition];
-    files.splice(this.initialPosition, 1);
-    files.splice(toIndex, 0, moveFile);
-    this.props.onUpdateFiles(files);
 
+    this.props.onMovedFile(this.initialPosition, this.state.draggingIndex);
     this.setState({
       draggingIndex: -1,
     });
@@ -318,7 +236,7 @@ class FileListEditor extends Component {
   }
 
   render() {
-    const { files, onEditFileName, onUpdateFiles, usePortal } = this.props;
+    const { files, onEditFileName, usePortal, messages } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
     return (
@@ -333,61 +251,38 @@ class FileListEditor extends Component {
             onAnimationEnd={
               deleteIndex === index ? this.executeDeleteFile : undefined
             }>
+            <FileNameInput
+              ref={this.filesWrapperRef}
+              file={file}
+              editMode={editFileIndex === index}
+              value={file.title}
+              childIndex={index}
+              usePortal={usePortal}
+              type="text"
+              placeholder={messages.placeholder}
+              onChange={e => {
+                onEditFileName(index, e.target.value);
+              }}
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  e.target.blur();
+                }
+              }}
+              onBlur={this.exitEditFileName}
+            />
+
             <div>
-              {editFileIndex === index ? (
-                <InputForwardRef
-                  ref={this.filesWrapperRef}
-                  value={file.title}
-                  childIndex={index}
-                  usePortal={usePortal}
-                  type="text"
-                  placeholder="Oppgi et filnavn"
-                  onChange={e => {
-                    this.props.onEditFileName(index, e.target.value);
-                  }}
-                  onKeyDown={e => {
-                    if (e.key === 'Enter') {
-                      e.target.blur();
-                    }
-                  }}
-                  onBlur={this.exitEditFileName}
-                />
-              ) : (
-                <Fragment>
-                  <Download />
-                  <LinkButton
-                    type="button"
-                    onClick={() => window.open(file.path)}>
-                    {file.title === '' ? '[Mangler filnavn]' : file.title}
-                    {` `}
-                    <span>({file.type})</span>
-                  </LinkButton>
-                </Fragment>
-              )}
-            </div>
-            {onEditFileName && onUpdateFiles && (
-              <div>
-                <Tooltip tooltip="Endre navn">
-                  <ButtonIcons
-                    tabIndex={-1}
-                    type="button"
-                    onClick={e => this.editFile(e, index)}>
-                    <Pencil />
-                  </ButtonIcons>
-                </Tooltip>
-                {files.length > 1 &&
-                  (draggingIndex === -1 ? (
-                    <Tooltip tooltip="Endre rekkefølge">
-                      <ButtonIcons
-                        draggable
-                        tabIndex={-1}
-                        type="button"
-                        onMouseDown={e => this.onDragStart(e, index)}
-                        onMouseUp={this.onDragEnd}>
-                        <DragHorizontal />
-                      </ButtonIcons>
-                    </Tooltip>
-                  ) : (
+              <Tooltip tooltip={messages.changeName}>
+                <ButtonIcons
+                  tabIndex={-1}
+                  type="button"
+                  onClick={e => this.editFile(e, index)}>
+                  <Pencil />
+                </ButtonIcons>
+              </Tooltip>
+              {files.length > 1 &&
+                (draggingIndex === -1 ? (
+                  <Tooltip tooltip={messages.changeOrder}>
                     <ButtonIcons
                       draggable
                       tabIndex={-1}
@@ -396,18 +291,27 @@ class FileListEditor extends Component {
                       onMouseUp={this.onDragEnd}>
                       <DragHorizontal />
                     </ButtonIcons>
-                  ))}
-                <Tooltip tooltip="Ta bort fil">
+                  </Tooltip>
+                ) : (
                   <ButtonIcons
+                    draggable
                     tabIndex={-1}
                     type="button"
-                    onClick={() => this.deleteFile(index)}
-                    delete>
-                    <DeleteForever />
+                    onMouseDown={e => this.onDragStart(e, index)}
+                    onMouseUp={this.onDragEnd}>
+                    <DragHorizontal />
                   </ButtonIcons>
-                </Tooltip>
-              </div>
-            )}
+                ))}
+              <Tooltip tooltip={messages.removeFile}>
+                <ButtonIcons
+                  tabIndex={-1}
+                  type="button"
+                  onClick={() => this.deleteFile(index)}
+                  delete>
+                  <DeleteForever />
+                </ButtonIcons>
+              </Tooltip>
+            </div>
           </StyledFile>
         ))}
       </ListWrapper>
@@ -424,8 +328,9 @@ FileListEditor.propTypes = {
     }),
   ),
   sortable: PropTypes.bool,
-  onEditFileName: PropTypes.func,
-  onUpdateFiles: PropTypes.func,
+  onEditFileName: PropTypes.func.isRequired,
+  onDeleteFile: PropTypes.func.isRequired,
+  onMovedFile: PropTypes.func.isRequired,
   usePortal: PropTypes.bool,
 };
 

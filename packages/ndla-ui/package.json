@@ -33,6 +33,7 @@
     "@ndla/i18n": "^0.4.2",
     "@ndla/icons": "^0.6.8",
     "@ndla/licenses": "^0.4.3",
+    "@ndla/hooks": "^0.0.0",
     "@ndla/modal": "^0.2.12",
     "@ndla/tabs": "^0.10.1",
     "@ndla/tooltip": "^0.1.6",

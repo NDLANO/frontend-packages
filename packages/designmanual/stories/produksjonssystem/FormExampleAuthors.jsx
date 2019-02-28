@@ -10,12 +10,12 @@ import React, { Component, Fragment } from 'react';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import {
-  FormHeader,
-  FormSections,
-  FormInput,
-  FormDropdown,
-  FormSplitter,
-  FormRemoveButton,
+  FieldHeader,
+  FieldSection,
+  Input,
+  Dropdown,
+  FieldSplitter,
+  FieldRemoveButton,
 } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 
@@ -94,12 +94,12 @@ class FormExampleAuthors extends Component {
     const { authors } = this.state;
     return (
       <Fragment>
-        <FormHeader title="Form heading" subTitle="example" width={3 / 4} />
+        <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         {authors.map((author, index) => (
-          <FormSections key={author.key}>
+          <FieldSection key={author.key}>
             <div>
-              <FormSplitter>
-                <FormInput
+              <FieldSplitter>
+                <Input
                   warningText={
                     author.name === '' ? 'Du må oppgi navn på forfatter' : null
                   }
@@ -110,7 +110,7 @@ class FormExampleAuthors extends Component {
                   value={author.name}
                   onChange={e => this.handleInputChange(e.target.value, index)}
                 />
-                <FormDropdown
+                <Dropdown
                   value={author.role}
                   onChange={e => this.handleUpdateRole(e.target.value, index)}>
                   <option value="">Tildel rolle</option>
@@ -119,51 +119,51 @@ class FormExampleAuthors extends Component {
                       {titleRole}
                     </option>
                   ))}
-                </FormDropdown>
-              </FormSplitter>
+                </Dropdown>
+              </FieldSplitter>
             </div>
             <div>
-              <FormRemoveButton onClick={() => this.handleRemoveAuthor(index)}>
+              <FieldRemoveButton onClick={() => this.handleRemoveAuthor(index)}>
                 Ta bort
-              </FormRemoveButton>
+              </FieldRemoveButton>
             </div>
-          </FormSections>
+          </FieldSection>
         ))}
         <Button outline onClick={this.handleAddAuthor}>
           Legg til
         </Button>
-        <FormHeader title="Form heading" subTitle="example" width={3 / 4} />
-        <FormSections>
+        <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
+        <FieldSection>
           <div>
-            <FormSplitter>
-              <FormInput
+            <FieldSplitter>
+              <Input
                 iconRight={<SearchIcon />}
                 container="div"
                 type="text"
                 placeholder="Skriv navn"
               />
-            </FormSplitter>
+            </FieldSplitter>
           </div>
           <div>
-            <FormRemoveButton>Ta bort</FormRemoveButton>
+            <FieldRemoveButton>Ta bort</FieldRemoveButton>
           </div>
-        </FormSections>
-        <FormHeader title="Form heading" subTitle="example" width={3 / 4} />
-        <FormSections>
+        </FieldSection>
+        <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
+        <FieldSection>
           <div>
-            <FormSplitter>
-              <FormInput
+            <FieldSplitter>
+              <Input
                 container="div"
                 type="text"
                 placeholder="Skriv navn"
                 autoExpand
               />
-            </FormSplitter>
+            </FieldSplitter>
           </div>
           <div>
-            <FormRemoveButton>Ta bort</FormRemoveButton>
+            <FieldRemoveButton>Ta bort</FieldRemoveButton>
           </div>
-        </FormSections>
+        </FieldSection>
       </Fragment>
     );
   }

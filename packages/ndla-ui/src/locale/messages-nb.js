@@ -450,14 +450,6 @@ const messages = {
   notions: {
     closeNotion: 'Lukk',
   },
-  editorial: {
-    fileList: {
-      placeholder: 'Oppgi et filnavn',
-      changeOrder: 'Endre rekkefølge',
-      changeName: 'Endre navn',
-      removeFile: 'Ta bort fil',
-    },
-  },
 };
 
 export default messages;

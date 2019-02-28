@@ -21,7 +21,7 @@ $ yarn @ndla/hooks
 
 ```js
 import { useRef } from 'react';
-import useComponentSize from '@rehooks/component-size';
+import useComponentSize from '@ndla/component-size';
 
 function MyComponent() {
   let ref = useRef(null);
@@ -41,17 +41,24 @@ function MyComponent() {
 ### useWindowSize
 
 ```js
-import useWindowSize from '@rehooks/window-size';
+import useWindowSize from '@ndla/window-size';
 
 function MyComponent() {
-  let windowSize = useWindowSize();
+  let windowSize = useWindowSize(100); // Optional throttle wait time (in ms)
   // {
   //   innerWidth: window.innerWidth,
   //   innerHeight: window.innerHeight,
   //   outerWidth: window.outerWidth,
   //   outerHeight: window.outerHeight,
   // }
-
-  // ...
+  return (
+    <div>
+      {windowSize.innerWidth < 768 ? (
+        <p>This document is less than 768px wide</p>
+      ) : (
+        <p>The document is at least 768px wide.</p>
+      )}
+    </div>
+  );
 }
 ```

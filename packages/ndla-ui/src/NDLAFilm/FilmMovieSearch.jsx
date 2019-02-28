@@ -44,8 +44,6 @@ const FilmMovieSearch = ({ topics, t, ...props }) => (
           </ul>
         </nav>
       </div>
-    </OneColumn>
-    <OneColumn>
       <CategorySelect {...props} />
     </OneColumn>
   </div>

@@ -1,3 +1,11 @@
+@mixin set-animations() {
+  @for $i from 1 through 20 {
+    > a:nth-child(#{$i + 1}) {
+      animation-delay: #{$i * 50}ms;
+    }
+  }
+}
+
 .c-film-movielist {
   margin-bottom: $spacing;
   @include mq(tablet) {
@@ -94,6 +102,13 @@
     &--swiping {
       transition: none;
     }
+    @include set-animations();
+    a {
+      opacity: 0;
+      animation-fill-mode: forwards;
+      animation-name: fadeIn;
+      animation-duration: 300ms;
+    }
   }
   &__slide-navigation {
     background: #091a2a80;
@@ -144,6 +159,34 @@
     }
     @include mq($until: tablet) {
       display: none;
+    }
+  }
+  &__movie-listing {
+    display: flex;
+    flex-wrap: wrap;
+    margin: $spacing--small -$spacing--small / 2;
+    @include set-animations();
+    a {
+      opacity: 0;
+      animation-fill-mode: forwards;
+      animation-name: fadeIn;
+      animation-duration: 300ms;
+    }
+  }
+  &__movie-item {
+    box-shadow: none;
+    padding: $spacing--small / 2;
+    @include mq(tablet) {
+      margin-bottom: $spacing--large;
+    }
+    @include mq($from: tablet) {
+      width: 25%;
+    }
+    @include mq($from: mobileWide, $until: tablet) {
+      width: 33.3%;
+    }
+    @include mq($until: mobileWide) {
+      width: 50%;
     }
   }
 }

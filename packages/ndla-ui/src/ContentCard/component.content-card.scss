@@ -1,17 +1,13 @@
 .c-content-card {
   position: relative;
+  margin: $spacing--small;
 
   &__image-wrapper {
     width: 100%;
     border-radius: 5px;
     position: relative;
-    height: 72px;
     overflow: hidden;
     background: $background-color--gray-dark;
-
-    @include mq(tablet) {
-      height: 125px;
-    }
   }
 
   &__link {
@@ -95,5 +91,10 @@
         width: 25px;
       }
     }
+  }
+
+  &__background-image {
+    background-position: center center;
+    background-size: cover;
   }
 }

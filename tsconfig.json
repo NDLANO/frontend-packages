@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "esnext",
     "esModuleInterop": true,
-    "allowJs": true,
+    "isolatedModules": true,
+    // "allowJs": true,
     "noEmit": true,
     "strict": true,
     "moduleResolution": "node",
     "noLib": false,
     "sourceMap": true,
     "lib": ["es2018", "esnext.asynciterable", "dom"]
-  },
-  "exclude": ["node_modules"]
+  }
   // "preset": "ts-jest"
 }

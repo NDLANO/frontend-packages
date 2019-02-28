@@ -89,7 +89,7 @@ const FormWarningText = styled.span`
     `}
 `;
 
-class FormInput extends React.Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -196,7 +196,7 @@ class FormInput extends React.Component {
   }
 }
 
-FormInput.propTypes = {
+Input.propTypes = {
   iconRight: PropTypes.node,
   iconLeft: PropTypes.node,
   tags: PropTypes.node,
@@ -211,10 +211,10 @@ FormInput.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-FormInput.defaultProps = {
+Input.defaultProps = {
   container: 'form',
   autoExpand: false,
   value: '',
 };
 
-export default FormInput;
+export default Input;

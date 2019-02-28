@@ -87,6 +87,12 @@ class StructureExample extends Component {
         onEditFileName={this.onUpdateFileName}
         onMovedFile={this.onMovedFile}
         onDeleteFile={this.onDeleteFile}
+        messages={{
+          placeholder: 'Oppgi et filnavn',
+          changeName: 'Endre navn',
+          changeOrder: 'Endre rekkefølge',
+          removeFile: 'Ta bort fil',
+        }}
       />
     );
   }

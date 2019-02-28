@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { injectT } from '@ndla/i18n';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
@@ -161,7 +160,6 @@ class FileListEditor extends Component {
     e.preventDefault();
     this.mouseMovement = -FILE_HEIGHT + dragIndex * FILE_HEIGHT;
     this.initialPosition = dragIndex;
-
     this.updateTransforms(dragIndex);
 
     this.DraggingFile = this.filesWrapperRef.current.childNodes[dragIndex];
@@ -238,7 +236,7 @@ class FileListEditor extends Component {
   }
 
   render() {
-    const { files, onEditFileName, usePortal, t } = this.props;
+    const { files, onEditFileName, usePortal, messages } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
     return (
@@ -261,7 +259,7 @@ class FileListEditor extends Component {
               childIndex={index}
               usePortal={usePortal}
               type="text"
-              placeholder={t('editorial.fileList.placeholder')}
+              placeholder={messages.placeholder}
               onChange={e => {
                 onEditFileName(index, e.target.value);
               }}
@@ -274,7 +272,7 @@ class FileListEditor extends Component {
             />
 
             <div>
-              <Tooltip tooltip={t('editorial.fileList.changeName')}>
+              <Tooltip tooltip={messages.changeName}>
                 <ButtonIcons
                   tabIndex={-1}
                   type="button"
@@ -284,7 +282,7 @@ class FileListEditor extends Component {
               </Tooltip>
               {files.length > 1 &&
                 (draggingIndex === -1 ? (
-                  <Tooltip tooltip={t('editorial.fileList.changeOrder')}>
+                  <Tooltip tooltip={messages.changeOrder}>
                     <ButtonIcons
                       draggable
                       tabIndex={-1}
@@ -304,7 +302,7 @@ class FileListEditor extends Component {
                     <DragHorizontal />
                   </ButtonIcons>
                 ))}
-              <Tooltip tooltip={t('editorial.fileList.removeFile')}>
+              <Tooltip tooltip={messages.removeFile}>
                 <ButtonIcons
                   tabIndex={-1}
                   type="button"
@@ -336,4 +334,4 @@ FileListEditor.propTypes = {
   usePortal: PropTypes.bool,
 };
 
-export default injectT(FileListEditor);
+export default FileListEditor;

@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
 import { isMobile } from 'react-device-detect';
-import isFunction from 'lodash/isFunction';
+import { isFunction } from '@ndla/util';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -45,14 +45,13 @@ class Tabs extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { index } = this.state;
-
     if (
-      nextProps.selectedIndex !== undefined &&
-      nextProps.selectedIndex !== index
+      this.props.selectedIndex !== undefined &&
+      this.props.selectedIndex !== index
     ) {
-      this.setState({ index: nextProps.selectedIndex });
+      this.setState({ index: this.props.selectedIndex });
     }
   }
 

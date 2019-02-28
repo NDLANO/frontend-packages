@@ -7,30 +7,16 @@
  */
 
 import React from 'react';
-import { css } from 'react-emotion';
-import { spacing, colors } from '@ndla/core';
-import { FieldHeader } from '@ndla/forms';
+import { FieldHeader, FieldHeaderIconStyle } from '@ndla/forms';
 import { InformationOutline } from '@ndla/icons/common';
 import { ArticleInModal } from '@ndla/howto';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
-
-const iconClass = css`
-  color: ${colors.brand.tertiary};
-  width: ${26 * 1.5}px;
-  height: ${26 * 1.5}px;
-  padding: ${spacing.xsmall};
-
-  &:hover,
-  &:focus {
-    color: ${colors.brand.primary};
-  }
-`;
 
 const renderArticleInModal = ({ pageId, tooltip }) => (
   <ArticleInModal
     pageId={pageId}
     tooltip={tooltip}
-    activateButton={<InformationOutline className={iconClass} />}
+    activateButton={<InformationOutline css={FieldHeaderIconStyle} />}
   />
 );
 

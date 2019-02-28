@@ -60,22 +60,22 @@ class ModalExample extends Component {
     return (
       <ComponentInfo
         reactCode={`
-          import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+  import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 
-          <Modal
-            activateButton={<Button>Open modal</Button>}
-          >
-            {(onClose) => (
-              <ModalHeader>
-                <ModalCloseButton onClick={onClose}>
-              </ModalHeader>
-              <ModalBody>
-                <h1>Modal example</h1>
-                <hr />
-                <p>Enkelt eksempel med ModalHeader og ModalBody samt ModalCloseButton. Disse er valgfrie hjelpe komponenter for å hjelpe til med styling/padding etc.</p>
-              </ModalBody>
-            )}
-          </Modal>
+  <Modal
+    activateButton={<Button>Open modal</Button>}
+  >
+    {(onClose) => (
+      <ModalHeader>
+        <ModalCloseButton onClick={onClose}>
+      </ModalHeader>
+      <ModalBody>
+        <h1>Modal example</h1>
+        <hr />
+        <p>Enkelt eksempel med ModalHeader og ModalBody samt ModalCloseButton. Disse er valgfrie hjelpe komponenter for å hjelpe til med styling/padding etc.</p>
+      </ModalBody>
+    )}
+  </Modal>
         `}
         usesPropTypes={[
           {
@@ -153,7 +153,7 @@ class ModalExample extends Component {
         messages={[
           'Kommer med 3 hjelpe komponenter; <ModalHeader>, <ModalBody> og <ModalCloseButton>',
           'Hjelpekomponentene er ment å hjelpe for å få et mer unisont design.',
-          'Vil etterhvert erstatte <ClickToggle /> og <Dialog /> komponentene.',
+          'Vil etterhvert erstatte <Dialog /> komponenten.',
         ]}>
         <p>
           Modal som håndterer åpne/lukke states og håndterer automatisk lås av

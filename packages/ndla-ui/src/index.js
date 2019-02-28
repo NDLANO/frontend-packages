@@ -35,8 +35,6 @@ export { default as ContentCard } from './ContentCard';
 
 export { InfoBox } from './InfoBox';
 
-export { default as BetaNavigation, BetaNotification } from './Beta';
-
 export {
   SubjectHeader,
   SubjectContent,
@@ -75,7 +73,6 @@ export {
   SearchResultList,
   SearchResultItem,
   SearchFilter,
-  SearchFilterWrapper,
   SearchPopoverFilter,
   ActiveFilters,
   ToggleSearchButton,
@@ -97,7 +94,6 @@ export {
   Content,
 } from './Layout';
 export { default as LicenseByline } from './LicenseByline';
-export { default as ClickToggle } from './common/ClickToggle';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
@@ -137,7 +133,7 @@ export {
   Figure,
   FigureCaption,
   FigureLicenseDialog,
-  FigureFullscreenDialog,
+  FigureExpandButton,
 } from './Figure';
 export {
   MediaList,
@@ -150,7 +146,8 @@ export {
 
 export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
 
-export { default as Image } from './Image';
+export { default as Image, ImageLink } from './Image';
+export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 

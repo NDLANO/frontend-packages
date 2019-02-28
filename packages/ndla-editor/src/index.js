@@ -9,5 +9,6 @@
 import SlateBlockMenu from './SlateBlockMenu';
 import Structure from './Structure';
 import Spinner from './Spinner';
+import FileListEditor from './FileListEditor';
 
-export { SlateBlockMenu, Structure, Spinner };
+export { SlateBlockMenu, Structure, Spinner, FileListEditor };

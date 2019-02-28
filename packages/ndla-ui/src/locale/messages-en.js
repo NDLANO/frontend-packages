@@ -318,6 +318,8 @@ const messages = {
       rules: 'Rules for use of image:',
       itemImage: {
         ariaLabel: 'Open image in new window',
+        zoomImageButtonLabel: 'Expand image',
+        zoomOutImageButtonLabel: 'Shrink image',
       },
       source: 'Source',
       title: 'Title',

@@ -13,13 +13,13 @@ import {
   Logo,
   LayoutItem,
   LicenseByline,
-  Image,
   AudioPlayer,
   OneColumn,
 } from '@ndla/ui';
 
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
+import { FigureImage } from './article/FigureImage';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
@@ -40,9 +40,11 @@ const floatVideo = left => (
     <FigureWithLicense
       type={left ? 'left' : 'right'}
       resizeIframe
-      isEmbed
       caption="Utholdenhet - animasjon av oksygentransporten"
-      reuseLabel="videoen">
+      messages={{
+        mediaType: 'videoen',
+        modelPremission: null,
+      }}>
       <iframe
         title="Video: Utholdenhet - animasjon av oksygentransporten"
         height="270"
@@ -99,14 +101,17 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense
+        <FigureImage
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          runScripts>
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+          link={{
+            text: 'Videoproduksjon i praksis',
+            description: '(Lenken tar deg til et annet nettsted)',
+            url: 'https://staging.api.ndla.no',
+            external: true,
+          }}
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -119,14 +124,12 @@ storiesOf('Enkle komponenter', module)
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <FigureWithLicense
+        <FigureImage
           type="left"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -153,15 +156,12 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-
-        <FigureWithLicense
+        <FigureImage
           type="right"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -187,14 +187,13 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense
+        <FigureImage
           type="small-right"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          hasHiddenCaption
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -226,16 +225,13 @@ storiesOf('Enkle komponenter', module)
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense
-          noFigcaption
+        <FigureImage
           type="small-left"
-          hideFigcaption
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          hasHiddenCaption
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -249,15 +245,13 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2>Flyt til høyre, ekstra liten versjon</h2>
-        <FigureWithLicense
-          noFigcaption
+        <FigureImage
           type="xsmall-right"
-          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.">
-          <Image
-            alt="Forstørrelsesglass"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          hasHiddenCaption
+          caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
+          alt="Forstørrelsesglass"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -288,14 +282,11 @@ storiesOf('Enkle komponenter', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <FigureWithLicense
+        <FigureImage
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-          runScripts>
-          <Image
-            alt=""
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+          alt=""
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
       </StoryBody>
     </div>
   ))
@@ -304,7 +295,7 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Lydavspiller" />
       <StoryBody>
         <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
-        <AudioExample runScripts />
+        <AudioExample />
         <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
         <table>
           <thead>
@@ -393,12 +384,11 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureWithLicense type="right" authors="" caption="" runScripts>
-              <Image
-                alt=""
-                src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-              />
-            </FigureWithLicense>
+            <FigureImage
+              alt=""
+              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+              type="right"
+            />
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
               pitcher, blir idéen og historien i den filmen du planlegger å
@@ -504,7 +494,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe runScripts isEmbed noFigcaption>
+        <FigureWithLicense resizeIframe hasHiddenCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Title"
@@ -519,7 +509,7 @@ storiesOf('Enkle komponenter', module)
           klassen.
         </p>
         <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
-        <FigureWithLicense resizeIframe isEmbed noFigcaption>
+        <FigureWithLicense resizeIframe hasHiddenCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"
@@ -531,9 +521,11 @@ storiesOf('Enkle komponenter', module)
         </h2>
         <FigureWithLicense
           resizeIframe
-          isEmbed
           caption="Utholdenhet - animasjon av oksygentransporten"
-          reuseLabel="videoen">
+          messages={{
+            mediaType: 'videoen',
+            modelPremission: null,
+          }}>
           <iframe
             title="Video: Utholdenhet - animasjon av oksygentransporten"
             height="270"
@@ -571,9 +563,10 @@ storiesOf('Enkle komponenter', module)
         <FigureWithLicense
           resizeIframe
           noCaption
-          type="full-column"
-          isEmbed
-          reuseLabel="videoen">
+          messages={{
+            mediaType: 'videoen',
+            modelPremission: null,
+          }}>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

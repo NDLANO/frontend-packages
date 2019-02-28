@@ -35,4 +35,39 @@ export default {
               opacity: 1;
             }
           }`,
+  fadeInScaled: duration => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    animation-name: fadeInScaled;
+        @keyframes fadeInScaled {
+            0% {
+              transform: scale(0.5);
+              opacity: 0;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }`,
+  fadeOut: duration => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    animation-name: fadeOut;
+        @keyframes fadeOut {
+            0% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0;
+            }
+          }`,
+  fadeIn: duration => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    animation-name: fadeOut;
+        @keyframes fadeOut {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }`,
 };

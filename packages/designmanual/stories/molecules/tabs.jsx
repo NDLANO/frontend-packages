@@ -25,6 +25,11 @@ export class TabsControlled extends Component {
       <div>
         <Tabs
           selectedIndex={this.state.selectedIndex}
+          onSelect={selectedIndex => {
+            this.setState({
+              selectedIndex,
+            });
+          }}
           tabs={[
             { title: 'Bilde', content: <p>Bilde innhold</p> },
             { title: 'Video', content: <p>Video innhold</p> },

@@ -29,6 +29,12 @@ const StyledFieldHeaderWrapper = styled.div`
     align-items: center;
     justify-content: flex-end;
   }
+  button {
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: 0;
+  }
 `;
 
 const StyledTitle = styled.h2`
@@ -47,8 +53,8 @@ const StyledTitle = styled.h2`
   }
 `;
 
-const FieldHeader = ({ title, subTitle, width, children }) => (
-  <StyledFieldHeaderWrapper wrapperWidth={width * 100}>
+const FieldHeader = ({ title, subTitle, width, children, ...rest }) => (
+  <StyledFieldHeaderWrapper wrapperWidth={width * 100} {...rest}>
     <StyledTitle>
       {title}
       {subTitle && <span>{subTitle}</span>}

@@ -32,18 +32,19 @@
 }
 .c-figure {
   margin: $spacing 0 $spacing;
+  position: relative;
 
   @include mq($from: desktop) {
     margin: $spacing--large 0 $spacing--large;
     @include grids-expand(4,6,2);
   }
-  transition: transform 0.2s, width 0.2s, height 0.2s;
+  transition: transform 0.4s, width 0.4s, height 0.4s;
 
   .c-license-icons__list {
     margin-right: $spacing--small;
   }
 
-  &--full-column {
+  &--full-column, &.u-float-full {
     left: auto !important;
     right: auto !important;
     width: auto !important;
@@ -119,11 +120,38 @@
 .c-figure__fullscreen-btn {
   cursor: pointer;
   position: absolute;
+  z-index: 1;
   bottom: 0;
   right: 0;
-  padding: 5px $spacing--small 8px;
+  padding: $spacing--small;
   transition: all 0.3s ease-out;
   background: rgba($white, 0.2);
+
+  ~ .c-figure__caption--hidden-caption {
+    display: none;
+  }
+
+  .expanded-icon {
+    display: none;
+  }
+
+  &--expanded {
+    .contracted-icon {
+      display: none;
+    }
+    .expanded-icon {
+      display: flex;
+    }
+    right: $spacing;
+    ~ .c-figure__caption--hidden-caption {
+      display: block;
+      opacity: 0;
+      animation-delay: 50ms;
+      animation-name: fadeIn;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+    }
+  }
 
   svg {
     transition: transform 0.4s ease-out;

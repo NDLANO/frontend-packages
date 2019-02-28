@@ -8,7 +8,7 @@
 
 import { copyTextToClipboard } from '@ndla/util';
 
-import { forEachElement, getElementOffset } from './domHelpers';
+import { forEachElement } from './domHelpers';
 
 export const toggleLicenseInfoBox = () => {
   forEachElement('.c-dialog', el => {
@@ -34,51 +34,6 @@ export const toggleLicenseInfoBox = () => {
         }
       };
     }
-  });
-};
-
-const panEventHandler = event => {
-  const target = event.currentTarget;
-
-  const image = target.querySelector('img');
-
-  const offset = getElementOffset(target);
-
-  let touch;
-
-  if (event.touches) {
-    [touch] = event.touches;
-  }
-
-  const posX = event.pageX || touch.pageX;
-  const posY = event.pageY || touch.pageY;
-
-  const transformOrigin = `${((posX - offset.left) / image.clientWidth) *
-    100}% ${((posY - offset.top) / image.clientHeight) * 100}%`;
-
-  image.style.transformOrigin = transformOrigin;
-};
-
-const toggleZoomImage = event => {
-  const target = event.currentTarget;
-
-  const zoomClass = 'c-figure-license__image-wrapper--zoom';
-  const zoomed = target.classList.contains(zoomClass);
-
-  if (zoomed) {
-    target.classList.remove(zoomClass);
-    target.removeEventListener('mousemove', panEventHandler);
-    target.removeEventListener('touchmove', panEventHandler);
-  } else {
-    target.classList.add(zoomClass);
-    target.addEventListener('mousemove', panEventHandler);
-    target.addEventListener('touchmove', panEventHandler);
-  }
-};
-
-export const addZoomImageListeners = () => {
-  forEachElement('.c-figure-license__image-wrapper', el => {
-    el.addEventListener('click', toggleZoomImage);
   });
 };
 
@@ -141,6 +96,26 @@ export const updateIFrameDimensions = (init = true, topNode = null) => {
     },
     topNode,
   );
+};
+
+export const addEventListenerForFigureZoomButton = () => {
+  forEachElement('button[data-figure-button]', el => {
+    const target = el;
+    target.onclick = () => {
+      const parentFigure = target.closest('figure');
+      if (target.dataset.expanded) {
+        target.setAttribute('aria-label', target.dataset.aria);
+        target.classList.remove('c-figure__fullscreen-btn--expanded');
+        parentFigure.classList.add(target.dataset.classtype);
+        delete target.dataset.expanded;
+      } else {
+        target.setAttribute('aria-label', target.dataset.ariaexpanded);
+        parentFigure.classList.remove(target.dataset.classtype);
+        target.classList.add('c-figure__fullscreen-btn--expanded');
+        target.dataset.expanded = true;
+      }
+    };
+  });
 };
 
 const handler = () => updateIFrameDimensions(false);

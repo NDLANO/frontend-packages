@@ -15,15 +15,14 @@ import {
   ArticleWrapper,
   ArticleIntroduction,
   ArticleHeaderWrapper,
-  Image,
   TasksAndActivitiesBadge,
 } from '@ndla/ui';
 
-import FigureWithLicense from '../article/FigureWithLicense';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
+import { FigureImage } from '../article/FigureImage';
 
 export default () => (
   <OneColumn cssModifier="narrow">
@@ -59,12 +58,10 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-        <FigureWithLicense caption="" runScripts>
-          <Image
-            alt="alt"
-            src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          />
-        </FigureWithLicense>
+        <FigureImage
+          alt="alt"
+          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
+        />
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få

@@ -408,24 +408,29 @@ const Portal = ({
   onScroll,
 }) => {
   const content = (
-    <FocusTrapReact>
-      <ModalWrapper
-        className={cx(className, { narrow, scrollFixIOS: isIosDeviceSafari })}>
-        <div
-          role="dialog"
-          onScroll={onScroll}
-          data-modal={uuidData}
-          style={{ animationDuration: `${animationDuration}ms`, minHeight }}
-          onAnimationEnd={onAnimationEnd}
-          className={cx('animation-container', {
-            [animation]: true,
-            animateIn,
-            [size]: true,
-            [backgroundColor]: true,
+    <>
+      <FocusTrapReact>
+        <ModalWrapper
+          className={cx(className, {
+            narrow,
+            scrollFixIOS: isIosDeviceSafari,
           })}>
-          {children(closeModal)}
-        </div>
-      </ModalWrapper>
+          <div
+            role="dialog"
+            onScroll={onScroll}
+            data-modal={uuidData}
+            style={{ animationDuration: `${animationDuration}ms`, minHeight }}
+            onAnimationEnd={onAnimationEnd}
+            className={cx('animation-container', {
+              [animation]: true,
+              animateIn,
+              [size]: true,
+              [backgroundColor]: true,
+            })}>
+            {children(closeModal)}
+          </div>
+        </ModalWrapper>
+      </FocusTrapReact>
       {!noBackdrop && (
         <Backdrop
           onClick={closeOnBackdrop && closeModal}
@@ -433,7 +438,7 @@ const Portal = ({
           animateIn={animateIn}
         />
       )}
-    </FocusTrapReact>
+    </>
   );
   return createUniversalPortal(content, 'body');
 };

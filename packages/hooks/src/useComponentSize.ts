@@ -8,7 +8,7 @@
 
 import { useCallback, useState, useLayoutEffect } from 'react';
 
-function getSize(el) {
+function getSize(el?: HTMLElement) {
   if (!el) {
     return {
       width: 0,
@@ -22,9 +22,12 @@ function getSize(el) {
   };
 }
 
-export function useComponentSize(ref = { current: undefined }) {
-  let [componentSize, setComponentSize] = useState(getSize(ref.current));
+interface Ref {
+  current?: HTMLElement;
+}
 
+export function useComponentSize(ref: Ref = { current: undefined }) {
+  let [componentSize, setComponentSize] = useState(getSize(ref.current));
   const handleResize = useCallback(
     function handleResize() {
       if (ref.current) {
@@ -33,24 +36,21 @@ export function useComponentSize(ref = { current: undefined }) {
     },
     [ref],
   );
-
   useLayoutEffect(() => {
     if (!ref.current) {
       return;
     }
-
     handleResize();
-
+    // @ts-ignore ResizeObserver
     if (typeof ResizeObserver === 'function') {
+      // @ts-ignore ResizeObserver
       let resizeObserver = new ResizeObserver(() => handleResize());
       resizeObserver.observe(ref.current);
-
       return () => {
         resizeObserver.disconnect(ref.current);
         resizeObserver = null;
       };
     }
   }, [ref.current]);
-
   return componentSize;
 }

@@ -9,7 +9,7 @@
 import styled, { css } from 'react-emotion';
 import { spacing, colors } from '@ndla/core';
 
-export const FormHeaderIconClass = css`
+export const FieldHeaderIconStyle = css`
   color: ${colors.brand.tertiary};
   width: ${spacing.normal};
   height: ${spacing.normal};

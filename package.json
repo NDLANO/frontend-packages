@@ -9,8 +9,9 @@
     "lint-es": "eslint --cache --ext .js --ext .jsx --max-warnings=0 ./packages --ignore-path .gitignore",
     "format": "node ./scripts/prettier.js write",
     "format-check": "node ./scripts/prettier.js lint",
+    "types-check": "tsc",
     "test": "cross-env BABEL_ENV=test NODE_ENV=unittest jest",
-    "check-all": "yarn format-check && yarn lint-es && yarn test",
+    "check-all": "yarn types-check && yarn format-check && yarn lint-es && yarn test",
     "deploy": "now --token $NDLA_NOW_TOKEN alias frontend-packages-master.ndla.sh designmanual.ndla.sh",
     "clean": "rm -rf ./packages/*/es ./packages/*/lib ./packages/*/dist",
     "bootstrap": "lerna bootstrap && yarn build && lerna run prepublish",
@@ -43,6 +44,9 @@
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/lodash": "^4.14.121",
+    "@types/react": "^16.8.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "babel-plugin-emotion": "^9.2.11",
@@ -84,6 +88,7 @@
     "serve": "^10.1.2",
     "sinon": "^7.2.3",
     "string-length": "^2.0.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "typescript": "^3.3.3333"
   }
 }

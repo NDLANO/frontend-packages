@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "esnext",
     "esModuleInterop": true,
+    // isolatedModules and declaration are not allowed togther atm
+    // See: https://github.com/Microsoft/TypeScript/issues/29490
     // "isolatedModules": true,
     "declaration": true,
-    // "noEmit": true,
     "strict": true,
     "moduleResolution": "node",
     "noLib": false,

@@ -6,7 +6,16 @@
  *
  */
 
-import FilmFrontpage from './FilmFrontpage';
 import FilmSlideshow from './FilmSlideshow';
+import MovieGrid from './MovieGrid';
+import AboutNdlaFilm from './AboutNdlaFilm';
+import FilmMovieSearch from './FilmMovieSearch';
+import FilmMovieList from './FilmMovieList';
 
-export { FilmFrontpage, FilmSlideshow };
+export {
+  FilmSlideshow,
+  MovieGrid,
+  AboutNdlaFilm,
+  FilmMovieSearch,
+  FilmMovieList,
+};

@@ -8,23 +8,18 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import { css } from 'react-emotion';
 import debounce from 'lodash/debounce';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
-import { movieShape, topicShape } from './shapes';
-import FilmSlideshow from './FilmSlideshow';
-import FilmMovieSearch from './FilmMovieSearch';
-import FilmMovieList from './FilmMovieList';
-import FrontpagePlaceholder from './FrontpagePlaceholder';
-import MovieGrid from './MovieGrid';
-import AboutNdlaFilm from './aboutNDLA/AboutNdlaFilm';
-
-const classes = new BEMHelper({
-  name: 'film-frontpage',
-  prefix: 'c-',
-});
+import {
+  FilmSlideshow,
+  MovieGrid,
+  AboutNdlaFilm,
+  FilmMovieSearch,
+  FilmMovieList,
+} from '@ndla/ui';
 
 const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
 
@@ -118,6 +113,7 @@ class FilmFrontpage extends Component {
       aboutNDLAVideo,
       moviesByType,
       fetchingMoviesByType,
+      moreAboutNdlaFilm,
       language,
       t,
     } = this.props;
@@ -129,10 +125,6 @@ class FilmFrontpage extends Component {
       loadingPlaceholderHeight,
     } = this.state;
 
-    if (highlighted.length === 0) {
-      return <FrontpagePlaceholder />;
-    }
-
     const resourceTypeName =
       resourceTypeSelected &&
       resourceTypes.find(
@@ -140,7 +132,11 @@ class FilmFrontpage extends Component {
       );
 
     return (
-      <div {...classes()}>
+      <div
+        css={css`
+          background: #091a2a;
+          padding-bottom: $spacing--large;
+        `}>
         <FilmSlideshow slideshow={highlighted} />
         <FilmMovieSearch
           ariaControlId={ARIA_FILMCATEGORY_ID}
@@ -157,7 +153,6 @@ class FilmFrontpage extends Component {
                 resourceTypeName,
                 fetchingMoviesByType,
                 moviesByType,
-                classes,
                 columnWidth,
                 resourceTypes,
                 loadingPlaceholderHeight,
@@ -179,7 +174,10 @@ class FilmFrontpage extends Component {
             ))
           )}
         </div>
-        <AboutNdlaFilm language={language} aboutNDLAVideo={aboutNDLAVideo} />
+        <AboutNdlaFilm
+          aboutNDLAVideo={aboutNDLAVideo}
+          moreAboutNdlaFilm={moreAboutNdlaFilm}
+        />
       </div>
     );
   }
@@ -187,19 +185,15 @@ class FilmFrontpage extends Component {
 
 FilmFrontpage.propTypes = {
   fetchingMoviesByType: PropTypes.bool,
-  moviesByType: PropTypes.arrayOf(movieShape),
-  highlighted: PropTypes.arrayOf(movieShape),
+  moviesByType: PropTypes.arrayOf(PropTypes.object),
+  highlighted: PropTypes.arrayOf(PropTypes.object),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.shape({
-        nb: PropTypes.string,
-        nn: PropTypes.string,
-        en: PropTypes.string,
-      }).isRequired,
-      movies: PropTypes.arrayOf(movieShape),
+      name: PropTypes.string.isRequired,
+      movies: PropTypes.arrayOf(PropTypes.object),
     }),
   ),
-  topics: PropTypes.arrayOf(topicShape),
+  topics: PropTypes.arrayOf(PropTypes.object),
   resourceTypes: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

@@ -13,7 +13,6 @@ const MovieGrid = ({
   resourceTypeName,
   fetchingMoviesByType,
   moviesByType,
-  classes,
   columnWidth,
   resourceTypes,
   loadingPlaceholderHeight,
@@ -31,7 +30,9 @@ const MovieGrid = ({
             : `${moviesByType.length} ${t('ndlaFilm.movieMatchInCategory')}`}
         </small>
       </h1>
-      <div {...classes('movie-listing')} style={{ marginLeft: `${margin}px` }}>
+      <div
+        {...movieListClasses('movie-listing')}
+        style={{ marginLeft: `${margin}px` }}>
         {fetchingMoviesByType && (
           <div style={{ height: loadingPlaceholderHeight }} />
         )}
@@ -40,7 +41,7 @@ const MovieGrid = ({
             <a
               href={movie.url}
               key={movie.id}
-              {...classes('movie-item', '', 'c-film-movielist__slide-item')}
+              {...movieListClasses('movie-item', '', 'slide-item')}
               style={{ width: `${columnWidth}px` }}>
               <div
                 {...movieListClasses('slidecolumn-image')}

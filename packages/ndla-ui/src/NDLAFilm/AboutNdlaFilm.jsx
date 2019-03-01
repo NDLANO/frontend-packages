@@ -1,14 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { colors, spacing, fonts } from '@ndla/core';
 import Button from '@ndla/button';
+import styled from 'react-emotion';
 import { injectT } from '@ndla/i18n';
-import { AboutNDLAFilmNb, AboutNDLAFilmNn, AboutNDLAFilmEn } from './';
 
-const AboutNdlaFilm = ({ aboutNDLAVideo, language, t }) => {
+const StyledAside = styled.aside`
+  background: #184673;
+  color: #fff;
+  display: flex;
+  padding: ${spacing.normal};
+  > div {
+    padding: ${spacing.normal};
+    width: 50%;
+    h1 {
+      @include font-size(22px, 26px);
+      font-weight: ${fonts.weight.bold};
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin: ${spacing.small} 0;
+    }
+  }
+  button {
+    color: #fff;
+    &:hover,
+    &:focus {
+      color: ${colors.brand.light};
+    }
+  }
+`;
+
+const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
   return (
     <div className="o-wrapper">
-      <aside className="c-film-frontpage__about">
+      <StyledAside>
         <div>{aboutNDLAVideo}</div>
         <div>
           <h1>{t('ndlaFilm.about.heading')}</h1>
@@ -20,22 +47,18 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, language, t }) => {
                 <ModalHeader>
                   <ModalCloseButton onClick={onClose} title="Lukk" />
                 </ModalHeader>
-                <ModalBody>
-                  {language === 'nb' && <AboutNDLAFilmNb />}
-                  {language === 'nn' && <AboutNDLAFilmNn />}
-                  {language === 'en' && <AboutNDLAFilmEn />}
-                </ModalBody>
+                <ModalBody>{moreAboutNdlaFilm}</ModalBody>
               </>
             )}
           </Modal>
         </div>
-      </aside>
+      </StyledAside>
     </div>
   );
 };
 
 AboutNdlaFilm.propTypes = {
-  aboutNDLAVideo: PropTypes.shape({}),
+  aboutNDLAVideo: PropTypes.string,
 };
 
 export default injectT(AboutNdlaFilm);

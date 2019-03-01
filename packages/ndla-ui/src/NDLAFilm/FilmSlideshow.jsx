@@ -12,6 +12,7 @@ import Swipe from 'react-swipe-component';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn } from '@ndla/ui';
+import { Spinner } from '@ndla/editor';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import { movieShape } from './shapes';
 
@@ -159,7 +160,13 @@ class FilmSlideshow extends Component {
     const { slideIndex, slideIndexTarget, animationComplete } = this.state;
 
     if (slideshow.length === 0) {
-      return null;
+      return (
+        <div>
+          <div {...classes('slideshow')}>
+            <Spinner inverted />
+          </div>
+        </div>
+      );
     }
     const slideshowWidth = `${(slideshow.length + 2) * 100}vw`;
     let activeSlide = slideIndex;

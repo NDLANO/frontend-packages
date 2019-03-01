@@ -167,4 +167,10 @@ export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
 
-export { FilmFrontpage, FilmSlideshow } from './NDLAFilm';
+export {
+  FilmSlideshow,
+  MovieGrid,
+  AboutNdlaFilm,
+  FilmMovieSearch,
+  FilmMovieList,
+} from './NDLAFilm';

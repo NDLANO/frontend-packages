@@ -1,0 +1,27 @@
+{
+  "name": "@ndla/hooks",
+  "version": "0.0.0",
+  "description": "Collection of React hooks used by NDLA",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/hooks/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

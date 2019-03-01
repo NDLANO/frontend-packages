@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "esnext",
     "esModuleInterop": true,
-    "isolatedModules": true,
-    // "allowJs": true,
-    "noEmit": true,
+    // "isolatedModules": true,
+    "declaration": true,
+    // "noEmit": true,
     "strict": true,
     "moduleResolution": "node",
     "noLib": false,

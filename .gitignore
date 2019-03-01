@@ -5,6 +5,7 @@ node_modules
 .eslintcache
 es/
 lib/
+types/
 dist/
 storybook-static/
 .DS_Store

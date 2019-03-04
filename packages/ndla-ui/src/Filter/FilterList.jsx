@@ -62,7 +62,6 @@ class FilterList extends Component {
             const itemModifiers = [];
 
             const checked = values.some(value => value === option.value);
-            console.log('filterlist', values, option, checked);
 
             if (!showAll && !checked && index + 1 > this.state.visibleCount) {
               itemModifiers.push('hidden');

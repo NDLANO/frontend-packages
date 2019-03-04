@@ -26,6 +26,7 @@ const SearchFilterList = ({
   onSubfilterChange,
   preid,
   noFilterSelectedLabel,
+  subjectValues,
   children,
 }) => {
   const modifiers = [];
@@ -45,15 +46,12 @@ const SearchFilterList = ({
   if (labelNotVisible) {
     labelModifiers.push('hidden');
   }
-
+  
   return (
     <div className={searchFilterClasses('', modifiers)}>
       <div>
         {options.map((option, index) => {
           const itemModifiers = [];
-
-          console.log('searchfilterlist', values, option.subjectFilters);
-
           const checked = values.some(value => value === option.value);
 
           if (!showAll && !checked && index + 1 > this.state.visibleCount) {
@@ -65,6 +63,7 @@ const SearchFilterList = ({
           if (disabled) {
             itemModifiers.push('no-results');
           }
+
           return (
             <>
               <ToggleItem
@@ -95,13 +94,13 @@ const SearchFilterList = ({
                   options={option.subjectFilters}
                   label={label}
                   labelNotVisible={true}
-                  values={option.subjectFilters}
+                  values={subjectValues[option.value]}
                   defaultVisibleCount={defaultVisibleCount}
                   modifiers={!contextFilter ? 'search' : null}
                   showLabel={showLabel}
                   hideLabel={hideLabel}
-                  onChange={(subjectFilters, subjectFilter) =>
-                    onSubfilterChange(subjectFilters, subjectFilter)
+                  onChange={(subjectFilters, subjectFilter) => 
+                    onSubfilterChange(option.value, subjectFilters, subjectFilter)
                   }
                   alignedGroup
                   noFilterSelectedLabel={noFilterSelectedLabel}

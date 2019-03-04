@@ -305,17 +305,12 @@ class SearchPageExample extends Component {
               onChange={values => {
                 this.setState({ filter_subjects: values });
               }}
+              subjectValues={this.state.filter_subject_values}
               values={this.state.filter_subjects}
-              onSubfilterChange={(values, subjectValue) => {
+              onSubfilterChange={(key, values, subjectValue) => {
                 this.setState(prevState => {
                   const newValues = prevState.filter_subject_values;
-                  newValues[subjectValue] = values;
-                  console.log(
-                    'setstate',
-                    newValues[subjectValue],
-                    values,
-                    subjectValue,
-                  );
+                  newValues[key] = values;
                   return {
                     filter_subject_values: newValues,
                   };

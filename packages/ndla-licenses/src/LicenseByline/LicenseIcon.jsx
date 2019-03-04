@@ -20,24 +20,24 @@ import {
 } from '@ndla/icons/licenses';
 import { COPYRIGHTED, BY, SA, NC, ND, PD, CC0, CC } from '../licenseRights';
 
-const LicenseIcon = ({ licenseRight, description, className }) => {
+const LicenseIcon = ({ licenseRight, description }) => {
   switch (licenseRight) {
     case CC:
-      return <Cc className={className} aria-label={description} />;
+      return <Cc aria-label={description} />;
     case BY:
-      return <By className={className} aria-label={description} />;
+      return <By aria-label={description} />;
     case NC:
-      return <Nc className={className} aria-label={description} />;
+      return <Nc aria-label={description} />;
     case ND:
-      return <Nd className={className} aria-label={description} />;
+      return <Nd aria-label={description} />;
     case SA:
-      return <Sa className={className} aria-label={description} />;
+      return <Sa aria-label={description} />;
     case CC0:
-      return <Zero className={className} aria-label={description} />;
+      return <Zero aria-label={description} />;
     case PD:
-      return <Publicdomain className={className} aria-label={description} />;
+      return <Publicdomain aria-label={description} />;
     case COPYRIGHTED:
-      return <Copyright className={className} aria-label={description} />;
+      return <Copyright aria-label={description} />;
     default:
       return undefined;
   }
@@ -46,7 +46,6 @@ const LicenseIcon = ({ licenseRight, description, className }) => {
 LicenseIcon.propTypes = {
   licenseRight: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
 };
 
 export default LicenseIcon;

@@ -19,12 +19,7 @@ const FactBoxExample = () => (
       artikkel, og den kan inneholde lisensiering om eksternt innhold er brukt.
     </p>
     <div className="c-source-list">
-      <LicenseByline
-        className="c-source-list__item"
-        appearances={['horizontal']}
-        locale="nb"
-        licenseRights={[BY, NC, ND]}
-      />
+      <LicenseByline marginRight locale="nb" licenseRights={[BY, NC, ND]} />
       <span className="c-source-list__item">Gary Waters</span>
       <span className="c-source-list__item">Kilde: SNL.no</span>
     </div>

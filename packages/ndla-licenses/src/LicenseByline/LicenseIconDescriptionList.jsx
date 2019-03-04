@@ -48,8 +48,13 @@ LicenseIconItem.propTypes = {
   locale: PropTypes.string,
 };
 
-const LicenseIconDescriptionList = ({ licenseRights, locale, appearances }) => (
-  <StyledLicenseIconList appearances={appearances}>
+const LicenseIconDescriptionList = ({
+  licenseRights,
+  locale,
+  color,
+  highlightCC,
+}) => (
+  <StyledLicenseIconList color={color} highlightCC={highlightCC}>
     {licenseRights.map(licenseRight => (
       <LicenseIconItem
         key={licenseRight}
@@ -62,9 +67,8 @@ const LicenseIconDescriptionList = ({ licenseRights, locale, appearances }) => (
 
 LicenseIconDescriptionList.propTypes = {
   licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  appearances: PropTypes.arrayOf(
-    PropTypes.oneOf(['horizontal', 'vertical', 'grey', 'marginRight']),
-  ),
+  highlightCC: PropTypes.bool,
+  color: PropTypes.string,
   locale: PropTypes.string,
 };
 

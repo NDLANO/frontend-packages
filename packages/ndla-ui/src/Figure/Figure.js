@@ -42,7 +42,7 @@ export const FigureCaption = ({
         <LicenseByline
           licenseRights={licenseRights}
           locale={locale}
-          appearances={['horizontal', 'marginRight']}>
+          marginRight>
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>

@@ -40,7 +40,8 @@ const NotionDialogLicenses = ({
       {licenseRights.length > 0 && (
         <LicenseByline
           locale={locale}
-          appearances={['horizontal', 'grey', 'marginRight']}
+          marginRight
+          color={colors.brand.grey}
           licenseRights={licenseRights}
         />
       )}

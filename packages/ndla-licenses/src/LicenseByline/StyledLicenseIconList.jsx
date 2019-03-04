@@ -11,61 +11,57 @@ import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
 import styled, { css } from 'react-emotion';
 
-const styleAppearances = {
-  vertical: css`
-    flex-direction: column;
-  `,
-  horizontal: css`
-    flex-direction: row;
-  `,
-  marginRight: css`
-    margin-right: ${spacing.small};
-  `,
-  grey: css`
-    color: ${colors.brand.grey};
-    fill: ${colors.brand.grey};
-  `,
-  /* Hack to differentiate CC-icon because it's not a license. Perhaps give it a class? */
-  firstChildBlue: css`
-    & li:first-child {
-      margin-bottom: ${spacing.small};
-      border-bottom: 1px solid ${colors.brand.tertiary};
-      padding-bottom: ${spacing.small};
-      svg {
-        fill: ${colors.brand.primary};
-      }
-    }
-  `,
-};
-
 export const StyledList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  ${p => p.appearance};
+  ${p =>
+    p.highlightCC
+      ? css`
+          & li:first-child {
+            margin-bottom: ${spacing.small};
+            border-bottom: 1px solid ${colors.brand.tertiary};
+            padding-bottom: ${spacing.small};
+            svg {
+              fill: ${colors.brand.primary};
+            }
+          }
+        `
+      : ''};
+  flex-direction: ${p => (p.horizontal ? 'row' : 'column')};
+  color: ${p => p.color || 'black'};
+  fill: ${p => p.color || 'black'};
+  margin-right: ${p => (p.marginRight ? spacing.small : 0)};
 `;
 
-const getAppearances = appearances =>
-  appearances
-    .filter(appearance => !!styleAppearances[appearance])
-    .map(appearance => styleAppearances[appearance]);
-
-const StyledLicenseIconList = ({ appearances, children }) => {
+const StyledLicenseIconList = ({
+  highlightCC,
+  horizontal,
+  color,
+  marginRight,
+  children,
+}) => {
   return (
-    <StyledList appearance={getAppearances(appearances)}>{children}</StyledList>
+    <StyledList
+      marginRight={marginRight}
+      color={color}
+      horizontal={horizontal}
+      highlightCC={highlightCC}>
+      {children}
+    </StyledList>
   );
 };
 
 StyledLicenseIconList.propTypes = {
-  appearances: PropTypes.arrayOf(
-    PropTypes.oneOf(['horizontal', 'vertical', 'grey', 'marginRight']),
-  ),
+  horizontal: PropTypes.bool,
+  highlightCC: PropTypes.bool,
+  color: PropTypes.string,
+  marginRight: PropTypes.bool,
 };
 
 StyledLicenseIconList.defaultProps = {
-  appearances: ['vertical'],
+  horizontal: false,
 };
 
 export default StyledLicenseIconList;

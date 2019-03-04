@@ -15,7 +15,7 @@ import {
   AudioPlayer,
   OneColumn,
 } from '@ndla/ui';
-
+import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
 import { FigureImage } from './article/FigureImage';
@@ -367,7 +367,8 @@ storiesOf('Enkle komponenter', module)
             </p>
             <div className="c-source-list">
               <LicenseByline
-                appearances={['horizontal', 'grey', 'marginRight']}
+                marginRight
+                color={colors.brand.grey}
                 locale="nb"
                 licenseRights={[BY, NC, ND]}
               />
@@ -703,7 +704,8 @@ storiesOf('Enkle komponenter', module)
           <div className="c-source-list">
             <LicenseByline
               locale="nb"
-              appearances={['horizontal', 'grey', 'marginRight']}
+              marginRight
+              color={colors.brand.grey}
               licenseRights={[BY, NC, ND]}
             />
             <span className="c-source-list__item">Gary Waters</span>

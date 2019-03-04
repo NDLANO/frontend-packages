@@ -26,7 +26,7 @@ export {
 
 export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
 
-export { default as LicenseByline } from './LicenseByline';
+export { LicenseByline, LicenseDescription } from './LicenseByline';
 
 export {
   contributorTypes,

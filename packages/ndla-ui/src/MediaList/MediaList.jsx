@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  LicenseByline,
+  LicenseDescription,
   getLicenseByAbbreviation,
   resourceTypes,
   getResourceTypeNamespace,
@@ -105,12 +105,12 @@ export const MediaListItemBody = ({
         />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-      <LicenseByline
+      <LicenseDescription
         withDescription
         locale={locale}
         messages={messages}
         licenseRights={license.rights}
-        appearances={['vertical', 'firstChildBlue']}
+        highlightCC
       />
       <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}

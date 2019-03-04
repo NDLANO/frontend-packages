@@ -11,6 +11,7 @@
     "strict": true,
     "moduleResolution": "node",
     "noLib": false,
+    "noEmit": true,
     "sourceMap": true,
     "lib": ["es2018", "esnext.asynciterable", "dom"],
     "paths": {

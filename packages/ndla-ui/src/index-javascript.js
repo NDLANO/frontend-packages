@@ -151,7 +151,6 @@ export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 
-export { default as ErrorMessage } from './ErrorMessage';
 export { default as ContentLoader } from './ContentLoader';
 
 export { default as constants } from './model';

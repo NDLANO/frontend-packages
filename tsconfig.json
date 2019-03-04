@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "esnext",
     "esModuleInterop": true,
+    "jsx": "react",
     // isolatedModules and declaration are not allowed togther atm
     // See: https://github.com/Microsoft/TypeScript/issues/29490
     // "isolatedModules": true,
@@ -10,7 +12,10 @@
     "moduleResolution": "node",
     "noLib": false,
     "sourceMap": true,
-    "lib": ["es2018", "esnext.asynciterable", "dom"]
+    "lib": ["es2018", "esnext.asynciterable", "dom"],
+    "paths": {
+      "*": ["node_modules"]
+    }
   }
   // "preset": "ts-jest"
 }

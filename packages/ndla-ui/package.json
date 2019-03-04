@@ -8,8 +8,9 @@
   "jsnext:main": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn build:css",
+    "build": "yarn build:css && yarn build:types",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:types": "tsc --emitDeclarationOnly",
     "prepublish": "yarn build"
   },
   "repository": {

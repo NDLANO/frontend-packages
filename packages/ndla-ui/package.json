@@ -26,7 +26,8 @@
   "files": [
     "lib",
     "src",
-    "es"
+    "es",
+    "types"
   ],
   "dependencies": {
     "@ndla/button": "^0.2.8",

@@ -8,7 +8,6 @@
 
 import * as React from 'react';
 import styled from 'react-emotion';
-// @ts-ignore
 import { colors, spacing, mq } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
 

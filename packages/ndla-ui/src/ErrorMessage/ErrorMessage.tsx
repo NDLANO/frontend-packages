@@ -10,7 +10,6 @@ import * as React from 'react';
 import styled from 'react-emotion';
 // @ts-ignore
 import { colors, spacing, mq } from '@ndla/core';
-// @ts-ignore
 import SafeLink from '../common/SafeLink';
 
 const StyledErrorMessage = styled('article')`

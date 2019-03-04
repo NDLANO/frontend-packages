@@ -9,9 +9,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
-import debounce from 'lodash/debounce';
+import { spacing } from '@ndla/core';
 
-import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
 import {
   FilmSlideshow,
@@ -28,24 +27,9 @@ class FilmFrontpage extends Component {
     super(props);
     this.state = {
       resourceTypeSelected: null,
-      columnWidth: 260,
-      columnsPrSlide: 1,
-      margin: 26,
     };
     this.onChangeResourceType = this.onChangeResourceType.bind(this);
-    this.setScreenSize = this.setScreenSize.bind(this);
-    this.setScreenSizeDebounced = debounce(() => this.setScreenSize(false), 50);
     this.movieListRef = React.createRef();
-  }
-
-  componentDidMount() {
-    this.setScreenSize();
-    window.addEventListener('resize', this.setScreenSizeDebounced);
-  }
-
-  componentWillUnmount() {
-    this.setScreenSizeDebounced.cancel();
-    window.removeEventListener('resize', this.setScreenSizeDebounced);
   }
 
   onChangeResourceType(resourceTypeSelected) {
@@ -63,47 +47,6 @@ class FilmFrontpage extends Component {
     });
   }
 
-  setScreenSize() {
-    const screenWidth =
-      window.innerWidth || document.documentElement.clientWidth;
-
-    const currentBreakpoint = getCurrentBreakpoint();
-    let margin;
-    let itemSize;
-    if (screenWidth < 385) {
-      margin = 26;
-      itemSize = 130;
-    } else if (screenWidth < 450) {
-      margin = 26;
-      itemSize = 160;
-    } else if (currentBreakpoint === breakpoints.mobile) {
-      margin = 26;
-      itemSize = 200;
-    } else if (currentBreakpoint === breakpoints.tablet) {
-      margin = 52;
-      itemSize = 220;
-    } else if (currentBreakpoint === breakpoints.desktop) {
-      margin = 78;
-      itemSize = 240;
-    } else if (screenWidth < 1600) {
-      margin = 104;
-      itemSize = 260;
-    } else {
-      margin = 104;
-      itemSize = 300;
-    }
-
-    const columnsPrSlide = Math.floor((screenWidth - margin * 2) / itemSize);
-
-    /* eslint react/no-did-mount-set-state: 0 */
-    this.setState({
-      columnWidth: (screenWidth - margin * 2) / columnsPrSlide,
-      columnsPrSlide,
-      margin,
-    });
-    /* eslint react/no-did-mount-set-state: 1 */
-  }
-
   render() {
     const {
       highlighted,
@@ -117,13 +60,7 @@ class FilmFrontpage extends Component {
       language,
       t,
     } = this.props;
-    const {
-      resourceTypeSelected,
-      columnWidth,
-      columnsPrSlide,
-      margin,
-      loadingPlaceholderHeight,
-    } = this.state;
+    const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
 
     const resourceTypeName =
       resourceTypeSelected &&
@@ -135,7 +72,7 @@ class FilmFrontpage extends Component {
       <div
         css={css`
           background: #091a2a;
-          padding-bottom: $spacing--large;
+          padding-bottom: ${spacing.large};
         `}>
         <FilmSlideshow slideshow={highlighted} />
         <FilmMovieSearch
@@ -149,11 +86,9 @@ class FilmFrontpage extends Component {
           {resourceTypeSelected ? (
             <MovieGrid
               {...{
-                margin,
                 resourceTypeName,
                 fetchingMoviesByType,
                 moviesByType,
-                columnWidth,
                 resourceTypes,
                 loadingPlaceholderHeight,
               }}
@@ -164,9 +99,6 @@ class FilmFrontpage extends Component {
                 key={theme.name[language]}
                 name={theme.name[language]}
                 movies={theme.movies}
-                columnsPrSlide={columnsPrSlide}
-                columnWidth={columnWidth}
-                margin={margin}
                 slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
                 slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
                 resourceTypes={resourceTypes}

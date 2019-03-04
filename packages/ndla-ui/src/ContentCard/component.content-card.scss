@@ -1,18 +1,23 @@
 .c-content-card {
   position: relative;
-  margin: $spacing--small;
 
   &__image-wrapper {
     width: 100%;
+    height: 72px;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
     background: $background-color--gray-dark;
+
+    @include mq(tablet) {
+      height: 125px;
+    }
   }
 
   &__link {
     color: $primary-color;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .c-content-card__heading {
         text-decoration: underline;
       }

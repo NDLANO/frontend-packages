@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Carousel from '@ndla/carousel';
-import { SafeLink } from '@ndla/ui';
+import FilmContentCard from './FilmContentCard';
 import { movieShape } from './shapes';
 
 const classes = new BEMHelper({
@@ -19,61 +19,29 @@ const classes = new BEMHelper({
 });
 
 const FilmMovieList = ({
-  columnWidth,
-  columnsPrSlide,
   name,
   movies,
   slideBackwardsLabel,
   slideForwardsLabel,
   resourceTypes,
-  margin,
 }) => (
   <section {...classes()}>
-    <h1 {...classes('heading')} style={{ marginLeft: `${margin + 7}px` }}>
+    <h1 {...classes('heading')} style={{ marginLeft: `${7}px` }}>
       {name}
     </h1>
     <Carousel
       padding
-      columnWidth={columnWidth}
-      columnsPrSlide={columnsPrSlide}
       slideBackwardsLabel={slideBackwardsLabel}
       slideForwardsLabel={slideForwardsLabel}
-      distanceBetweenItems={13}
-      margin={margin}
-      items={movies.map(movie => ({
-        id: movie.id,
-        children: (
-          <div {...classes('slide-item')} key={movie.id}>
-            <SafeLink to={movie.url}>
-              <div
-                {...classes('slidecolumn-image')}
-                role="img"
-                aria-label={(movie.metaImage && movie.metaImage.alt) || ''}
-                style={{
-                  height: `${columnWidth * 0.5625}px`,
-                  width: `${columnWidth}px`,
-                  backgroundImage: `url(${(movie.metaImage &&
-                    movie.metaImage.url) ||
-                    ''})`,
-                }}>
-                <div {...classes('movie-tags-wrapper')}>
-                  {Object.keys(movie.movieTypes).map(movieType => {
-                    const resource = resourceTypes.find(
-                      resourceType => resourceType.id === movieType,
-                    );
-                    return resource ? (
-                      <span {...classes('movie-tags')} key={movieType}>
-                        {resource.name}
-                      </span>
-                    ) : null;
-                  })}
-                </div>
-              </div>
-              <h2 {...classes('movie-title')}>{movie.title}</h2>
-            </SafeLink>
-          </div>
-        ),
-      }))}
+      distanceBetweenItems={13}>
+      {movies.map(movie => (
+        <FilmContentCard
+          movie={movie}
+          columnWidth={260}
+          resourceTypes={resourceTypes}
+        />
+      ))}
+    </Carousel>
     />
   </section>
 );

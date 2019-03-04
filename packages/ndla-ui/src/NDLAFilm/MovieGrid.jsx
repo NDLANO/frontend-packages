@@ -2,22 +2,61 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
+import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import FilmContentCard from './FilmContentCard';
 
 const movieListClasses = new BEMHelper({
   name: 'film-movielist',
   prefix: 'c-',
 });
 
+const setScreenSize = (startingWidth = 260) => {
+  const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  const currentBreakpoint = getCurrentBreakpoint();
+  let margin;
+  let itemSize;
+  if (screenWidth < 385) {
+    margin = 26;
+    itemSize = startingWidth / 2;
+  } else if (screenWidth < 450) {
+    margin = 26;
+    itemSize = startingWidth * 0.61;
+  } else if (currentBreakpoint === breakpoints.mobile) {
+    margin = 26;
+    itemSize = startingWidth * 0.75;
+  } else if (currentBreakpoint === breakpoints.tablet) {
+    margin = 52;
+    itemSize = startingWidth * 0.85;
+  } else if (currentBreakpoint === breakpoints.desktop) {
+    margin = 78;
+    itemSize = startingWidth * 0.95;
+  } else if (screenWidth < 1600) {
+    margin = 104;
+    itemSize = startingWidth;
+  } else {
+    margin = 104;
+    itemSize = startingWidth * 1.15;
+  }
+
+  const columnsPrSlide = Math.floor((screenWidth - margin * 2) / itemSize);
+
+  return {
+    columnWidth: (screenWidth - margin * 2) / columnsPrSlide,
+    columnsPrSlide,
+    margin,
+  };
+};
+
 const MovieGrid = ({
-  margin,
   resourceTypeName,
   fetchingMoviesByType,
   moviesByType,
-  columnWidth,
   resourceTypes,
   loadingPlaceholderHeight,
   t,
 }) => {
+  const { margin, columnWidth } = setScreenSize();
   return (
     <section>
       <h1
@@ -38,42 +77,11 @@ const MovieGrid = ({
         )}
         {!fetchingMoviesByType &&
           moviesByType.map(movie => (
-            <a
-              href={movie.url}
-              key={movie.id}
-              {...movieListClasses('movie-item', '', 'slide-item')}
-              style={{ width: `${columnWidth}px` }}>
-              <div
-                {...movieListClasses('slidecolumn-image')}
-                role="img"
-                aria-label={movie.metaImage ? movie.metaImage.alt : ''}
-                style={{
-                  height: `${columnWidth * 0.5625}px`,
-                  backgroundImage: `url(${
-                    movie.metaImage && movie.metaImage.url
-                      ? movie.metaImage.url
-                      : ''
-                  })`,
-                }}>
-                <div {...movieListClasses('movie-tags-wrapper')}>
-                  {Object.keys(movie.movieTypes).map(movieType => {
-                    const resource = resourceTypes.find(
-                      resourceType => resourceType.id === movieType,
-                    );
-                    return resource ? (
-                      <span {...movieListClasses('movie-tags')} key={movieType}>
-                        {
-                          resourceTypes.find(
-                            resourceType => resourceType.id === movieType,
-                          ).name
-                        }
-                      </span>
-                    ) : null;
-                  })}
-                </div>
-              </div>
-              <h2 {...movieListClasses('movie-title')}>{movie.title}</h2>
-            </a>
+            <FilmContentCard
+              movie={movie}
+              columnWidth={columnWidth}
+              resourceTypes={resourceTypes}
+            />
           ))}
       </div>
     </section>

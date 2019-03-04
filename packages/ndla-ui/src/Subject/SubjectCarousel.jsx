@@ -2,93 +2,48 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { breakpoints } from '@ndla/util';
+import Carousel from '@ndla/carousel';
 
 import ContentCard from '../ContentCard';
 import { SubjectSectionTitle } from './Subject';
-import Carousel from '../Carousel';
 
 const classes = BEMHelper('c-subject-carousel');
 
-const getSettings = (maxCol = null) => ({
-  slidesToShow: 5.5,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 3000,
-      settings: { slidesToShow: maxCol || 7.5, slidesToScroll: 4 },
-    },
-    {
-      breakpoint: 1800,
-      settings: {
-        slidesToShow: maxCol && maxCol < 6 ? maxCol : 5.5,
-        slidesToScroll: 4,
-      },
-    },
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: maxCol && maxCol === 4 ? maxCol : 4.25,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 1000,
-      settings: { slidesToShow: 3.25, slidesToScroll: 3 },
-    },
-    {
-      breakpoint: 720,
-      settings: { slidesToShow: 2.5, slidesToScroll: 2 },
-    },
-    {
-      breakpoint: 600,
-      settings: { slidesToShow: 3.25, slidesToScroll: 2 },
-    },
-    {
-      breakpoint: 400,
-      settings: { slidesToShow: 2.25, slidesToScroll: 2 },
-    },
-  ],
-});
-
 const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
-  const slides = subjects.map(subject => (
-    <div key={`slide-${subject.id}`}>
-      <ContentCard
-        toLinkProps={subject.toLinkProps}
-        heading={subject.title}
-        description={subject.text}
-        isFilm={subject.isFilm}
-        type={subject.type}
-        images={[
-          {
-            url: subject.image,
-            types: Object.keys(breakpoints),
-          },
-        ]}
-      />
-    </div>
-  ));
-
   const modifiers = { narrowScreen, wideScreen };
-  let settings = getSettings();
 
   if (wideScreen) {
-    if (slides.length <= 4) {
+    if (subjects.length <= 4) {
       modifiers.center = true;
-      settings = getSettings(4);
-    } else if (slides.length === 5) {
+    } else if (subjects.length === 5) {
       modifiers.center5Col = true;
-      settings = getSettings(5);
-    } else if (slides.length === 6) {
-      settings = getSettings(6);
+    } else if (subjects.length === 6) {
     }
   }
-
+  const itemWidth = 260 * 0.8;
   return (
     <section {...classes('', modifiers)}>
       <SubjectSectionTitle>{title}</SubjectSectionTitle>
-      <Carousel {...classes('slider')} settings={settings}>
-        {slides}
+      <Carousel startingWidth={itemWidth} distanceBetweenItems={13}>
+        {subjects.map(subject => (
+          <div
+            style={{ width: `${itemWidth}px`, paddingRight: '26px' }}
+            key={`slide-${subject.id}`}>
+            <ContentCard
+              toLinkProps={subject.toLinkProps}
+              heading={subject.title}
+              description={subject.text}
+              isFilm={subject.isFilm}
+              type={subject.type}
+              images={[
+                {
+                  url: subject.image,
+                  types: Object.keys(breakpoints),
+                },
+              ]}
+            />
+          </div>
+        ))}
       </Carousel>
     </section>
   );

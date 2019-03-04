@@ -11,11 +11,51 @@ import PropTypes from 'prop-types';
 import Swipe from 'react-swipe-component';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
+import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
+import debounce from 'lodash/debounce';
 
 const classes = new BEMHelper({
   name: 'film-movielist',
   prefix: 'c-',
 });
+
+const setScreenSize = (startingWidth = 260) => {
+  const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  const currentBreakpoint = getCurrentBreakpoint();
+  let margin;
+  let itemSize;
+  if (screenWidth < 385) {
+    margin = 26;
+    itemSize = startingWidth / 2;
+  } else if (screenWidth < 450) {
+    margin = 26;
+    itemSize = startingWidth * 0.61;
+  } else if (currentBreakpoint === breakpoints.mobile) {
+    margin = 26;
+    itemSize = startingWidth * 0.75;
+  } else if (currentBreakpoint === breakpoints.tablet) {
+    margin = 52;
+    itemSize = startingWidth * 0.85;
+  } else if (currentBreakpoint === breakpoints.desktop) {
+    margin = 78;
+    itemSize = startingWidth * 0.95;
+  } else if (screenWidth < 1600) {
+    margin = 104;
+    itemSize = startingWidth;
+  } else {
+    margin = 104;
+    itemSize = startingWidth * 1.15;
+  }
+
+  const columnsPrSlide = Math.floor((screenWidth - margin * 2) / itemSize);
+
+  return {
+    columnWidth: (screenWidth - margin * 2) / columnsPrSlide,
+    columnsPrSlide,
+    margin,
+  };
+};
 
 class Carousel extends Component {
   constructor(props) {
@@ -23,17 +63,37 @@ class Carousel extends Component {
     this.state = {
       slideIndex: 0,
       swiping: false,
+      columnWidth: 260,
+      columnsPrSlide: 1,
+      margin: 0,
     };
     this.swipeDistance = 0;
     this.slideshow = React.createRef();
     this.onSwipeEnd = this.onSwipeEnd.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
+    this.setScreenSize = this.setScreenSize.bind(this);
+    this.setScreenSizeDebounced = debounce(() => this.setScreenSize(), 50);
+  }
+
+  componentDidMount() {
+    this.setScreenSize();
+    window.addEventListener('resize', this.setScreenSizeDebounced);
+  }
+
+  componentWillUnmount() {
+    this.setScreenSizeDebounced.cancel();
+    window.removeEventListener('resize', this.setScreenSizeDebounced);
+  }
+
+  setScreenSize() {
+    this.setState({ ...setScreenSize(this.props.startingWidth) });
   }
 
   onSwipeEnd() {
+    const { columnWidth, columnsPrSlide } = this.state;
+    const { distanceBetweenItems, children } = this.props;
     const moved = Math.round(
-      this.swipeDistance /
-        (this.props.columnWidth + this.props.distanceBetweenItems),
+      this.swipeDistance / (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
     if (moved !== 0) {
@@ -41,10 +101,8 @@ class Carousel extends Component {
         let slideIndex = prevState.slideIndex + moved;
         if (slideIndex > 0) {
           slideIndex = 0;
-        } else if (
-          slideIndex < -(this.props.items.length - this.props.columnsPrSlide)
-        ) {
-          slideIndex = -(this.props.items.length - this.props.columnsPrSlide);
+        } else if (slideIndex < -(children.length - columnsPrSlide)) {
+          slideIndex = -(children.length - columnsPrSlide);
         }
         return {
           slideIndex,
@@ -59,26 +117,26 @@ class Carousel extends Component {
   }
 
   onSwipe(e) {
+    const { columnWidth } = this.state;
     this.setState({
       swiping: true,
     });
     this.swipeDistance = e[0];
     this.slideshow.current.style.transform = `translateX(${this.swipeDistance +
       this.state.slideIndex *
-        (this.props.columnWidth + this.props.distanceBetweenItems)}px)`;
+        (columnWidth + this.props.distanceBetweenItems)}px)`;
   }
 
   slidePage(direction) {
-    if (this.props.columnsPrSlide < this.props.items.length) {
+    const { columnsPrSlide } = this.state;
+    const length = this.props.children.length;
+    if (columnsPrSlide < length) {
       this.setState(prevState => {
-        let slideIndex =
-          prevState.slideIndex + this.props.columnsPrSlide * direction;
+        let slideIndex = prevState.slideIndex + columnsPrSlide * direction;
         if (slideIndex > 0) {
           slideIndex = 0;
-        } else if (
-          slideIndex < -(this.props.items.length - this.props.columnsPrSlide)
-        ) {
-          slideIndex = -(this.props.items.length - this.props.columnsPrSlide);
+        } else if (slideIndex < -(length - columnsPrSlide)) {
+          slideIndex = -(length - columnsPrSlide);
         }
         return {
           slideIndex,
@@ -89,16 +147,16 @@ class Carousel extends Component {
 
   render() {
     const {
-      items,
-      columnWidth,
-      columnsPrSlide,
+      children,
       distanceBetweenItems,
-      margin,
-      slideBackwardsLabel,
-      slideForwardsLabel,
+      slideBackwardsLabel = '',
+      slideForwardsLabel = '',
+      padding,
     } = this.props;
+    const { margin, columnWidth, columnsPrSlide } = this.state;
     const { slideIndex, swiping } = this.state;
-    const hideButtons = columnsPrSlide >= items.length;
+    const length = children.length;
+    const hideButtons = columnsPrSlide >= length;
     const marginString = `${margin}px`;
 
     return (
@@ -127,8 +185,7 @@ class Carousel extends Component {
               {...classes('slide-navigation', {
                 next: true,
                 hidden:
-                  hideButtons ||
-                  slideIndex === -(items.length - columnsPrSlide),
+                  hideButtons || slideIndex === -(length - columnsPrSlide),
               })}
               onClick={() => this.slidePage(-1)}>
               <ChevronRight />
@@ -137,13 +194,13 @@ class Carousel extends Component {
               {...classes('slide-content', swiping ? 'swiping' : '')}
               ref={this.slideshow}
               style={{
-                padding: `0 ${marginString}`,
-                width: `${items.length * (columnWidth + distanceBetweenItems) +
+                padding: padding ? `0 ${marginString}` : '',
+                width: `${length * (columnWidth + distanceBetweenItems) +
                   margin * 2}px`,
                 transform: `translateX(${this.swipeDistance +
                   slideIndex * (columnWidth + distanceBetweenItems)}px)`,
               }}>
-              {items.map(slide => slide.children)}
+              {children}
             </div>
           </div>
         </Swipe>
@@ -153,12 +210,7 @@ class Carousel extends Component {
 }
 
 Carousel.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      children: PropTypes.node.isRequired,
-    }),
-  ),
+  children: PropTypes.arrayOf(PropTypes.node.isRequired),
   columnsPrSlide: PropTypes.number.isRequired,
   columnWidth: PropTypes.number.isRequired,
   distanceBetweenItems: PropTypes.number.isRequired,
@@ -168,7 +220,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-  items: [],
+  children: [],
   margin: 0,
 };
 

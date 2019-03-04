@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "yarn build:types",
     "build:types": "tsc --emitDeclarationOnly",

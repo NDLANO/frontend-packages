@@ -17,6 +17,7 @@
     "clean": "rm -rf ./packages/*/es ./packages/*/lib  ./packages/*/dist",
     "bootstrap": "lerna bootstrap && yarn build && lerna run prepublish",
     "publish": "yarn clean && yarn bootstrap && lerna publish",
+    "pre-release": "yarn clean && yarn bootstrap && lerna publish --canary minor --no-git-tag-version --dist-tag next ",
     "watch": "node ./scripts/watch.js",
     "start": "yarn build && concurrently -k -p \"[{name}]\" -n \"Babel,Storybook,Typescript\" -c \"yellow.bold,magenta.bold,blue.bold\" \"yarn watch\" \"yarn start-storybook\" \"yarn type-check-watch\"",
     "start-storybook": "node ./scripts/startStorybook.js",

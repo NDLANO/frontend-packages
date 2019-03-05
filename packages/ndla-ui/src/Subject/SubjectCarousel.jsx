@@ -1,98 +1,114 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { breakpoints } from '@ndla/util';
-
-import ContentCard from '../ContentCard';
+import Carousel, { CarouselAutosize } from '@ndla/carousel';
+import { SafeLink } from '@ndla/ui';
+import { Play } from '@ndla/icons/common';
+import { spacing } from '@ndla/core';
 import { SubjectSectionTitle } from './Subject';
-import Carousel from '../Carousel';
 
-const classes = BEMHelper('c-subject-carousel');
+const classes = BEMHelper('c-content-card');
+const subjectCarouselClasses = BEMHelper('c-subject-carousel');
 
-const getSettings = (maxCol = null) => ({
-  slidesToShow: 5.5,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 3000,
-      settings: { slidesToShow: maxCol || 7.5, slidesToScroll: 4 },
-    },
-    {
-      breakpoint: 1800,
-      settings: {
-        slidesToShow: maxCol && maxCol < 6 ? maxCol : 5.5,
-        slidesToScroll: 4,
-      },
-    },
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: maxCol && maxCol === 4 ? maxCol : 4.25,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 1000,
-      settings: { slidesToShow: 3.25, slidesToScroll: 3 },
-    },
-    {
-      breakpoint: 720,
-      settings: { slidesToShow: 2.5, slidesToScroll: 2 },
-    },
-    {
-      breakpoint: 600,
-      settings: { slidesToShow: 3.25, slidesToScroll: 2 },
-    },
-    {
-      breakpoint: 400,
-      settings: { slidesToShow: 2.25, slidesToScroll: 2 },
-    },
-  ],
-});
-
-const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => {
-  const slides = subjects.map(subject => (
-    <div key={`slide-${subject.id}`}>
-      <ContentCard
-        toLinkProps={subject.toLinkProps}
-        heading={subject.title}
-        description={subject.text}
-        isFilm={subject.isFilm}
-        type={subject.type}
-        images={[
-          {
-            url: subject.image,
-            types: Object.keys(breakpoints),
-          },
-        ]}
-      />
-    </div>
-  ));
-
-  const modifiers = { narrowScreen, wideScreen };
-  let settings = getSettings();
-
-  if (wideScreen) {
-    if (slides.length <= 4) {
-      modifiers.center = true;
-      settings = getSettings(4);
-    } else if (slides.length === 5) {
-      modifiers.center5Col = true;
-      settings = getSettings(5);
-    } else if (slides.length === 6) {
-      settings = getSettings(6);
-    }
-  }
-
-  return (
-    <section {...classes('', modifiers)}>
-      <SubjectSectionTitle>{title}</SubjectSectionTitle>
-      <Carousel {...classes('slider')} settings={settings}>
-        {slides}
-      </Carousel>
-    </section>
-  );
-};
+const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => (
+  <section {...subjectCarouselClasses('', { narrowScreen, wideScreen })}>
+    <SubjectSectionTitle {...subjectCarouselClasses('title')}>{title}</SubjectSectionTitle>
+    <CarouselAutosize
+      breakPoints={[
+        {
+          until: 'mobile',
+          columnsPrSlide: 1.25,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 26,
+          arrowRightOffset: 26,
+          margin: 0,
+        },
+        {
+          until: 'mobileWide',
+          columnsPrSlide: 2.25,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 26,
+          arrowRightOffset: 26,
+          margin: 0,
+        },
+        {
+          until: 'tablet',
+          columnsPrSlide: 3.25,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 26,
+          arrowRightOffset: 26,
+          margin: spacing.spacingUnit * 2.5,
+        },
+        {
+          until: 'desktop',
+          columnsPrSlide: 4.25,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 26,
+          arrowRightOffset: 26,
+          margin: spacing.spacingUnit * 2.5,
+        },
+        {
+          until: 'wide',
+          columnsPrSlide: 5.25,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 26,
+          arrowRightOffset: 26,
+          margin: spacing.spacingUnit * 2.5,
+        },
+        {
+          columnsPrSlide: 6.25,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 26,
+          arrowRightOffset: 26,
+          margin: spacing.spacingUnit * 2.5,
+        }
+      ]}
+    >
+      {autoSizedProps => (
+        <Carousel
+          slideBackwardsLabel="tilbake"
+          slideForwardsLabel="framover"
+          buttonClass="c-carousel__arrow"
+          items={
+            subjects.map(subject => ({
+              children: (
+                <article {...classes()} key={subject.id}>
+                  <SafeLink
+                    {...subject.toLinkProps()}
+                    title={subject.title}
+                    {...classes('link')}>
+                    <header>
+                      <div {...classes('image-wrapper')}>
+                        <div
+                          {...classes('background-image')}
+                          role="img"
+                          aria-label="some label"
+                          style={{
+                            width: `${autoSizedProps.columnWidth}px`,
+                            backgroundImage: `url(${subject.image})`,
+                          }}
+                        />
+                        {subject.isFilm && (
+                          <div {...classes('play-background')}>
+                            <Play />
+                          </div>
+                        )}
+                        <p {...classes('type')}>{subject.type}</p>
+                      </div>
+                      <h1 {...classes('heading')}>{subject.title}</h1>
+                    </header>
+                    <p {...classes('description')}>{subject.text}</p>
+                  </SafeLink>
+                </article>
+              ),
+              ...subject,
+            }))}
+          {...autoSizedProps}
+        />)
+      }
+    </CarouselAutosize>
+  </section>
+);
 
 SubjectCarousel.propTypes = {
   subjects: PropTypes.arrayOf(

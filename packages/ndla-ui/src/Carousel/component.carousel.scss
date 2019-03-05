@@ -14,8 +14,7 @@
   }
 
   &__arrow {
-    display: none;
-    position: absolute;
+    display: flex;
     top: $spacing;
     height: 76px;
     width: 76px;
@@ -31,14 +30,6 @@
       color: $white;
       width: 64px;
       height: 64px;
-    }
-
-    &--prev {
-      left: $spacing;
-    }
-
-    &--next {
-      right: $spacing;
     }
   }
 

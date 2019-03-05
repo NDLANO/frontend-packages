@@ -1,5 +1,6 @@
 .c-content-card {
   position: relative;
+  margin: $spacing--small;
 
   &__image-wrapper {
     width: 100%;
@@ -95,5 +96,11 @@
         width: 25px;
       }
     }
+  }
+  &__background-image {
+    display: flex;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
   }
 }

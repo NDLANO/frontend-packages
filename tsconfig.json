@@ -18,6 +18,5 @@
       "*": ["node_modules"]
     }
   },
-  "exclude": ["./packages/*/lib"]
-  // "preset": "ts-jest"
+  "exclude": ["./packages/*/lib", "**/*-test.*"]
 }

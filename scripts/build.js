@@ -20,7 +20,7 @@ const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
 
 babelOptions.babelrc = false;
 const SRC_DIR = 'src';
-const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts)';
+const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const OK = chalk.reset.inverse.bold.green(' DONE ');
 
@@ -48,6 +48,11 @@ function resolveDestPath(file, dest) {
   if (destPath.endsWith('.jsx')) {
     // JSX file should be transformed to js files
     return destPath.substring(0, destPath.length - 1);
+  }
+
+  if (destPath.endsWith('.tsx')) {
+    // TSX file should be transformed to js files
+    return destPath.substring(0, destPath.length - 3) + 'js';
   }
 
   if (destPath.endsWith('.ts')) {

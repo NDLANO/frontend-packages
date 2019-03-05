@@ -13,7 +13,7 @@ const { buildFile, removeBuildFile } = require('./build');
 const getPackages = require('./_getPackages');
 
 const SRC_DIR = 'src';
-const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts)';
+const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const winRegExp = new RegExp(/\\/g);
 

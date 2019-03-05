@@ -12,3 +12,4 @@
 // @ts-ignore
 export * from './index-javascript';
 export { default as ErrorMessage } from './ErrorMessage';
+export { default as SafeLink } from './common/SafeLink';

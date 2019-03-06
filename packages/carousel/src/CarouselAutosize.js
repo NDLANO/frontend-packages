@@ -43,8 +43,6 @@ class CarouselAutosizeWrapper extends Component {
         (a.until ? parseFloat(breakPointFromCore[a.until]) : 9999) < (b.until ? parseFloat(breakPointFromCore[b.until]) : 9999) ?
           -1 : 1
       );
-  
-    console.log(useBreakPoint);
     
     this.setState({
       useBreakPoint: useBreakPoint[0],
@@ -54,7 +52,7 @@ class CarouselAutosizeWrapper extends Component {
   calculateCarouselProps() {
     const wrapperWidth = this.autosizeRef.current.offsetWidth;
     const { useBreakPoint } = this.state;
-    const columnWidth = (wrapperWidth - (useBreakPoint.margin || 0) - ((useBreakPoint.columnsPrSlide - 1) * (useBreakPoint.distanceBetweenItems || 0))) / (useBreakPoint.columnsPrSlide);
+    const columnWidth = (wrapperWidth - (useBreakPoint.margin * 2 || 0) - ((useBreakPoint.columnsPrSlide) * (useBreakPoint.distanceBetweenItems || 0))) / (useBreakPoint.columnsPrSlide);
 
     return {
       columnsPrSlide: useBreakPoint.columnsPrSlide,

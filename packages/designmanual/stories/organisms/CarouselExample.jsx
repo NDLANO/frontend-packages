@@ -1,49 +1,72 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
-import Carousel from '@ndla/carousel';
-import { SafeLink } from '@ndla/ui';
-import { contentCards } from '../../dummydata';
+import { css } from 'react-emotion';
+import { colors, misc, fonts, spacing } from '@ndla/core';
+import Carousel, { CarouselAutosize } from '@ndla/carousel';
+import { uuid } from '@ndla/util';
 
-const classes = BEMHelper('c-content-card');
+const cards = [
+  uuid(),
+  uuid(),
+  uuid(),
+  uuid(),
+  uuid(),
+  uuid(),
+  uuid(),
+];
+
+const cardCSS = css`
+  background: ${colors.brand.tertiary};
+  border-radius: ${misc.borderRadius};
+  color: #fff;
+  ${fonts.sizes(22, 1.1)};
+  font-weight: ${fonts.weight.semibold};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  margin: ${spacing.small};
+`;
 
 const CarouselExample = () => (
-  <Carousel
-    columnsPrSlide={3}
-    columnWidth={200}
-    distanceBetweenItems={26}
-    slideBackwardsLabel="tilbake"
-    slideForwardsLabel="framover"
-    buttonClass="test"
-    margin={78}
-    items={contentCards.map(content => ({
-      children: (
-        <article {...classes()} key={content.id}>
-          <SafeLink
-            {...content.toLinkProps()}
-            title={content.title}
-            {...classes('link')}>
-            <header>
-              <div {...classes('image-wrapper')}>
-                <div
-                  {...classes('background-image')}
-                  role="img"
-                  aria-label="some label"
-                  style={{
-                    width: `${200}px`,
-                    backgroundImage: `url(${content.image})`,
-                  }}
-                />
-                <p {...classes('type')}>{content.type}</p>
-              </div>
-              <h1 {...classes('heading')}>{content.title}</h1>
-            </header>
-            <p {...classes('description')}>{content.text}</p>
-          </SafeLink>
-        </article>
-      ),
-      ...content,
-    }))}
-  />
+  <section style={{ border: '1px solid green' }}>
+    <CarouselAutosize
+      breakPoints={[
+        {
+          until: 'mobile',
+          columnsPrSlide: 2,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 0,
+          arrowRightOffset: 0,
+          margin: 92,
+        },
+        {
+          columnsPrSlide: 3,
+          distanceBetweenItems: 26,
+          arrowLeftOffset: 0,
+          arrowRightOffset: 0,
+          margin: 92,
+        }
+      ]}
+    >
+    {autoSizedProps => (
+      <Carousel
+        {...autoSizedProps}
+        slideBackwardsLabel="tilbake"
+        slideForwardsLabel="framover"
+        items={cards.map((cardKey, index) => (
+          <div
+            style={{
+              width: `${autoSizedProps.columnWidth}px`,
+              height: `${autoSizedProps.columnWidth}px`,
+            }}
+            key={cardKey}
+            className={cardCSS}
+          >{index}</div>
+        ))}
+      />
+    )}
+    </CarouselAutosize>
+  </section>
 );
 
 export default CarouselExample;

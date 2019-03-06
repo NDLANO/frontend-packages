@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 
@@ -46,7 +46,7 @@ const SearchFilterList = ({
   if (labelNotVisible) {
     labelModifiers.push('hidden');
   }
-  
+
   return (
     <div className={searchFilterClasses('', modifiers)}>
       <div>
@@ -65,11 +65,10 @@ const SearchFilterList = ({
           }
 
           return (
-            <>
+            <Fragment key={option.value}>
               <ToggleItem
                 modifiers={itemModifiers}
                 id={preid + option.value}
-                key={option.value}
                 value={option.value}
                 disabled={disabled}
                 tabIndex={disabled ? -1 : 0}
@@ -99,14 +98,18 @@ const SearchFilterList = ({
                   modifiers={!contextFilter ? 'search' : null}
                   showLabel={showLabel}
                   hideLabel={hideLabel}
-                  onChange={(subjectFilters, subjectFilter) => 
-                    onSubfilterChange(option.value, subjectFilters, subjectFilter)
+                  onChange={(subjectFilters, subjectFilter) =>
+                    onSubfilterChange(
+                      option.value,
+                      subjectFilters,
+                      subjectFilter,
+                    )
                   }
                   alignedGroup
                   noFilterSelectedLabel={noFilterSelectedLabel}
                 />
               </div>
-            </>
+            </Fragment>
           );
         })}
       </div>

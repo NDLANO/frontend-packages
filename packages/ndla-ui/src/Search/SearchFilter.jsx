@@ -73,7 +73,6 @@ SearchFilter.propTypes = {
   noFilterSelectedLabel: PropTypes.string,
   contextFilter: PropTypes.bool,
   children: PropTypes.node,
-  showSublist: PropTypes.bool,
 };
 
 SearchFilter.defaultProps = {

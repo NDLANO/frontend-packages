@@ -57,6 +57,18 @@
     }
   }
 
+  &:not(:first-child) {
+    display: inline-flex;
+    align-items: center;
+    a,
+    span {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+
   &:last-child {
     .c-icon {
       display: none;

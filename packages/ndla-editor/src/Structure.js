@@ -55,8 +55,8 @@ const ItemsList = styled.li`
   ${props =>
     props.greyedOut &&
     css`
-      > div {
-        opacity: 0.5;
+      > div > button {
+        color: rgb(32, 88, 143, 0.5);
       }
     `};
 `;

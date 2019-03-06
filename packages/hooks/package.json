@@ -1,14 +1,14 @@
 {
-  "name": "@ndla/core",
-  "version": "0.4.10",
-  "description": "UI component library for NDLA.",
+  "name": "@ndla/hooks",
+  "version": "0.0.1",
+  "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-core/"
+    "url": "https://github.com/NDLANO/frontend-packages.git/hooks/"
   },
   "keywords": [
     "ndla"
@@ -16,14 +16,10 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "es",
-    "scss"
+    "es"
   ],
   "dependencies": {
-    "facepaint": "^1.2.1",
-    "inuitcss": "6.0.0-beta.4",
-    "polished": "^2.3.3",
-    "sass-mq": "^5.0.0"
+    "lodash": "^4.17.11"
   },
   "publishConfig": {
     "access": "public"

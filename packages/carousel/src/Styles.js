@@ -65,7 +65,7 @@ export const StyledButton = styled.button`
   ${props => props.prev && css`left: ${props.arrowLeftOffset}px;`};
   ${props => props.next && css`right: ${props.arrowRightOffset}px;`};
   ${props => props.dontShow && css`
-    display: none;
+    display: none !important;
   `}
 `;
 

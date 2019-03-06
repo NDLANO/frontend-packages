@@ -5,23 +5,32 @@ import { Play } from '@ndla/icons/common';
 
 import SafeLink from '../common/SafeLink';
 
-import BackgroundImage from '../BackgroundImage';
-
 const classes = BEMHelper('c-content-card');
 
 const ContentCard = ({
-  heading,
-  images,
-  description,
+  title,
+  text,
+  image,
   type,
   isFilm,
   toLinkProps,
+  columnWidth,
 }) => (
-  <article {...classes()}>
-    <SafeLink {...toLinkProps()} {...classes('link')}>
+  <article {...classes()} style={{ width: `${columnWidth}px`}}>
+    <SafeLink
+      {...toLinkProps()}
+      title={title}
+      {...classes('link')}>
       <header>
         <div {...classes('image-wrapper')}>
-          <BackgroundImage images={images} />
+          <div
+            {...classes('background-image')}
+            role="img"
+            aria-label={title}
+            style={{
+              backgroundImage: `url(${image})`,
+            }}
+          />
           {isFilm && (
             <div {...classes('play-background')}>
               <Play />
@@ -29,18 +38,18 @@ const ContentCard = ({
           )}
           <p {...classes('type')}>{type}</p>
         </div>
-        <h1 {...classes('heading')}>{heading}</h1>
+        <h1 {...classes('heading')}>{title}</h1>
       </header>
-      <p {...classes('description')}>{description}</p>
+      <p {...classes('description')}>{text}</p>
     </SafeLink>
   </article>
 );
 
 ContentCard.propTypes = {
-  heading: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  images: BackgroundImage.propTypes.images,
+  image: PropTypes.string.isRequired,
   isFilm: PropTypes.bool,
   toLinkProps: PropTypes.func.isRequired,
 };

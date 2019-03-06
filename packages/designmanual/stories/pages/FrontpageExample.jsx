@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
+import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
   FrontpageHeader,
   FrontpageSubjects,
-  FrontpageHighlighted,
   ContentCard,
   OneColumn,
   FrontpageInfo,
@@ -13,13 +12,16 @@ import {
   FrontpageFilm,
   InfoWidget,
   SafeLink,
+  SubjectSectionTitle,
 } from '@ndla/ui';
-import { breakpoints } from '@ndla/util';
+import Carousel, { CarouselAutosize } from '@ndla/carousel';
 
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 
 import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
+
+const classes = BEMHelper('c-frontpage-section');
 
 const FrontpageExample = ({ t }) => (
   <Fragment>
@@ -71,25 +73,58 @@ const FrontpageExample = ({ t }) => (
           onSearch={() => {}}
           onSearchFieldChange={() => {}}
         />
-        <FrontpageHighlighted heading={t('welcomePage.highlighted')}>
-          {contentCards.slice(0, 4).map(card => (
-            <div key={`slide-${card.id}`}>
-              <ContentCard
-                toLinkProps={card.toLinkProps}
-                heading={card.title}
-                description={card.text}
-                isFilm={card.isFilm}
-                type={card.type}
-                images={[
-                  {
-                    url: card.image,
-                    types: Object.keys(breakpoints),
-                  },
-                ]}
-              />
-            </div>
-          ))}
-        </FrontpageHighlighted>
+        <section {...classes()}>
+          <SubjectSectionTitle>{t('welcomePage.highlighted')}</SubjectSectionTitle>
+          <CarouselAutosize
+            breakPoints={[
+              {
+                until: 'mobile',
+                columnsPrSlide: 1,
+                distanceBetweenItems: 26,
+                arrowLeftOffset: 13,
+                arrowRightOffset: 13,
+              },
+              {
+                until: 'mobileWide',
+                columnsPrSlide: 2,
+                distanceBetweenItems: 26,
+                arrowLeftOffset: 13,
+                arrowRightOffset: 13,
+              },
+              {
+                until: 'tabletWide',
+                columnsPrSlide: 3,
+                distanceBetweenItems: 26,
+                arrowLeftOffset: 26,
+                arrowRightOffset: 26,
+              },
+              {
+                columnsPrSlide: 4,
+                distanceBetweenItems: 26,
+                arrowLeftOffset: 26,
+                arrowRightOffset: 26,
+              }
+            ]}
+          >
+            {autoSizedProps => (
+              <Carousel
+                slideBackwardsLabel="tilbake"
+                slideForwardsLabel="framover"
+                buttonClass="c-carousel__arrow"
+                wrapperClass="c-carousel__wrapper"
+                items={
+                  contentCards.map(subject => (
+                    <ContentCard
+                      {...subject}
+                      columnWidth={autoSizedProps.columnWidth}
+                      key={subject.id}
+                    />
+                  ))}
+                {...autoSizedProps}
+              />)
+            }
+          </CarouselAutosize>
+        </section>
         <FrontpageFilm
           imageUrl={NdlaFilmIllustration}
           url="https://ndla.no/nb/film"

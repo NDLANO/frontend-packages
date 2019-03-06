@@ -36,26 +36,25 @@ class CarouselAutosizeWrapper extends Component {
 
     const useBreakPoint = breakPoints
       .filter(breakPointItem => {
-        const until = breakPointItem.until ? parseFloat(breakPointFromCore[breakPointItem.until]) : 0;
-        return until <= wrapperWidthInEm;
+        const until = breakPointItem.until ? parseFloat(breakPointFromCore[breakPointItem.until]) : 9999;
+        return until >= wrapperWidthInEm;
       })
       .sort((a, b) => 
-        (a.until ? parseFloat(breakPointFromCore[a.until]) : -1) < (b.until ? parseFloat(breakPointFromCore[b.until]) : -1) ?
+        (a.until ? parseFloat(breakPointFromCore[a.until]) : 9999) < (b.until ? parseFloat(breakPointFromCore[b.until]) : 9999) ?
           -1 : 1
       );
-
-    console.log('available breakpoints', useBreakPoint);
-    console.log(breakPointFromCore);
+  
+    console.log(useBreakPoint);
     
     this.setState({
-      useBreakPoint: useBreakPoint[useBreakPoint.length - 1],
+      useBreakPoint: useBreakPoint[0],
     });
   }
 
   calculateCarouselProps() {
     const wrapperWidth = this.autosizeRef.current.offsetWidth;
     const { useBreakPoint } = this.state;
-    const columnWidth = (wrapperWidth - (useBreakPoint.margin || 0) - (useBreakPoint.columnsPrSlide * (useBreakPoint.distanceBetweenItems || 0))) / (useBreakPoint.columnsPrSlide);
+    const columnWidth = (wrapperWidth - (useBreakPoint.margin || 0) - ((useBreakPoint.columnsPrSlide - 1) * (useBreakPoint.distanceBetweenItems || 0))) / (useBreakPoint.columnsPrSlide);
 
     return {
       columnsPrSlide: useBreakPoint.columnsPrSlide,
@@ -68,9 +67,6 @@ class CarouselAutosizeWrapper extends Component {
   }
 
   render() {
-    if (this.state.useBreakPoint) {
-      console.log(this.calculateCarouselProps())
-    }
     return (
       <div ref={this.autosizeRef}>
         {this.state.useBreakPoint && this.props.children(this.calculateCarouselProps())}

@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swipe } from 'react-swipe-component';
+import { cx } from 'react-emotion';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 
 import {
@@ -25,7 +26,7 @@ class Carousel extends Component {
       swiping: false,
     };
     this.swipeDistance = 0;
-    this.slideshow = React.createRef();
+    this.slideshowRef = React.createRef();
     this.onSwipeEnd = this.onSwipeEnd.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
   }
@@ -62,10 +63,11 @@ class Carousel extends Component {
     this.setState({
       swiping: true,
     });
-    this.swipeDistance = e[0];
-    this.slideshow.current.style.transform = `translateX(${this.swipeDistance +
-      this.state.slideIndex *
-        (this.props.columnWidth + this.props.distanceBetweenItems)}px)`;
+    this.swipeDistance = e.x || e[0];
+    const transformX = this.swipeDistance +
+    this.state.slideIndex *
+      (this.props.columnWidth + this.props.distanceBetweenItems);
+    this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
   }
 
   slidePage(direction) {
@@ -73,6 +75,7 @@ class Carousel extends Component {
       this.setState(prevState => {
         let slideIndex =
           prevState.slideIndex + Math.floor(this.props.columnsPrSlide) * direction;
+        
         if (slideIndex > 0) {
           slideIndex = 0;
         } else if (
@@ -99,21 +102,23 @@ class Carousel extends Component {
       arrowLeftOffset,
       arrowRightOffset,
       buttonClass,
+      wrapperClass,
     } = this.props;
     const { slideIndex, swiping } = this.state;
     const hideButtons = columnsPrSlide >= items.length;
 
-    console.log('slideIndex', items.length + slideIndex);
-    console.log(Math.floor(columnsPrSlide));
+    const transformX = this.swipeDistance +
+      slideIndex * (columnWidth + distanceBetweenItems);
 
     return (
       <section>
         <Swipe
           nodeName="div"
-          mouseSwipe={false}
+          detectMouse={false}
+          detectTouch
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
-          <div className={slideWrapperCSS}>
+          <div className={cx(slideWrapperCSS, wrapperClass)}>
             <StyledButton
               type="button"
               aria-label={slideBackwardsLabel}
@@ -138,15 +143,14 @@ class Carousel extends Component {
             </StyledButton>
             <StyledSlideContent
               swiping={swiping}
-              ref={this.slideshow}
+              innerRef={this.slideshowRef}
               style={{
                 padding: `0 ${margin}px`,
                 width: `${items.length * (columnWidth + distanceBetweenItems) +
                   margin * 2}px`,
-                transform: `translateX(${this.swipeDistance +
-                  slideIndex * (columnWidth + distanceBetweenItems)}px)`,
+                transform: `translateX(${transformX}px)`,
               }}>
-              {items.map(slide => slide.children)}
+              {items.map(item => item)}
             </StyledSlideContent>
           </div>
         </Swipe>
@@ -156,12 +160,7 @@ class Carousel extends Component {
 }
 
 Carousel.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      children: PropTypes.node.isRequired,
-    }),
-  ),
+  items: PropTypes.arrayOf(PropTypes.node).isRequired,
   columnsPrSlide: PropTypes.number.isRequired,
   columnWidth: PropTypes.number.isRequired,
   distanceBetweenItems: PropTypes.number.isRequired,
@@ -170,6 +169,8 @@ Carousel.propTypes = {
   arrowLeftOffset: PropTypes.number,
   arrowRightOffset: PropTypes.number,
   margin: PropTypes.number,
+  buttonClass: PropTypes.string,
+  wrapperClass: PropTypes.string,
 };
 
 Carousel.defaultProps = {
@@ -177,6 +178,8 @@ Carousel.defaultProps = {
   margin: 0,
   arrowLeftOffset: 0,
   arrowRightOffset: 0,
+  buttonClass: '',
+  wrapperClass: '',
 };
 
 

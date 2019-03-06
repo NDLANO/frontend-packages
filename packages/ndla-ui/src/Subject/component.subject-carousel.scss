@@ -6,14 +6,14 @@
   }
 
   &__title {
-    margin-left: $spacing;
+    // margin-left: $spacing !important;
 
     @include mq(tablet) {
-      margin-left: $spacing--medium;
+      margin-left: $spacing--medium !important;
     }
 
     @include mq(desktop) {
-      margin-left: $spacing--large + $spacing;
+      margin-left: $spacing--large + $spacing--small !important;
     }
   }
 

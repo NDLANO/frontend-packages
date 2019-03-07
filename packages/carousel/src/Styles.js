@@ -62,8 +62,8 @@ export const StyledButton = styled.button`
   `}
   position: absolute;
   z-index: 1;
-  ${props => props.prev && css`left: ${props.arrowLeftOffset}px;`};
-  ${props => props.next && css`right: ${props.arrowRightOffset}px;`};
+  ${props => props.prev && css`left: ${props.arrowOffset}px;`};
+  ${props => props.next && css`right: ${props.arrowOffset}px;`};
   ${props => props.dontShow && css`
     display: none !important;
   `}
@@ -71,5 +71,6 @@ export const StyledButton = styled.button`
 
 export const StyledSlideContent = styled.div`
   display: flex;
+  justify-content: space-between;
   transition: ${props => props.swiping ? 'none' : 'transform 600ms ease'};
 `;

@@ -31,10 +31,32 @@ class Carousel extends Component {
     this.onSwipe = this.onSwipe.bind(this);
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { columnsPrSlide, items } = nextProps;
+    const { slideIndex } = prevState;
+    // Check if resize caused carousel to be scrolled to far.
+    if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
+      const adjustedSlideIndex = slideIndex + ((Math.floor(columnsPrSlide) - items.length) - slideIndex);
+      return {
+        slideIndex: adjustedSlideIndex,
+      };
+    }
+
+    return null;
+  }
+
   onSwipeEnd() {
+    const {
+      columnsPrSlide,
+      columnWidth,
+      distanceBetweenItems,
+      items,
+    } = this.props;
+    const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
+
     const moved = Math.round(
       this.swipeDistance /
-        (this.props.columnWidth + this.props.distanceBetweenItems),
+        (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
     if (moved !== 0) {
@@ -43,9 +65,9 @@ class Carousel extends Component {
         if (slideIndex > 0) {
           slideIndex = 0;
         } else if (
-          slideIndex < -(this.props.items.length - this.props.columnsPrSlide)
+          slideIndex < -(items.length - columnsPrSlide)
         ) {
-          slideIndex = -(this.props.items.length - this.props.columnsPrSlide);
+          slideIndex = -(items.length - roundedColumnsPrSlide);
         }
         return {
           slideIndex,
@@ -66,22 +88,27 @@ class Carousel extends Component {
     this.swipeDistance = e.x || e[0];
     const transformX = this.swipeDistance +
     this.state.slideIndex *
-      (this.props.columnWidth + this.props.distanceBetweenItems);
+      (this.props.columnWidth);
     this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
   }
 
   slidePage(direction) {
-    if (Math.floor(this.props.columnsPrSlide) < this.props.items.length) {
+    const {
+      columnsPrSlide,
+      items,
+    } = this.props;
+    const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
+    if (roundedColumnsPrSlide < items.length) {
       this.setState(prevState => {
         let slideIndex =
-          prevState.slideIndex + Math.floor(this.props.columnsPrSlide) * direction;
+          prevState.slideIndex + roundedColumnsPrSlide * direction;
         
         if (slideIndex > 0) {
           slideIndex = 0;
         } else if (
-          slideIndex < -(this.props.items.length - this.props.columnsPrSlide)
+          slideIndex < -(items.length - roundedColumnsPrSlide)
         ) {
-          slideIndex = -(this.props.items.length - Math.floor(this.props.columnsPrSlide));
+          slideIndex = -(items.length - roundedColumnsPrSlide);
         }
         return {
           slideIndex,
@@ -95,20 +122,20 @@ class Carousel extends Component {
       items,
       columnWidth,
       columnsPrSlide,
-      distanceBetweenItems,
       margin,
+      distanceBetweenItems,
       slideBackwardsLabel,
       slideForwardsLabel,
-      arrowLeftOffset,
-      arrowRightOffset,
+      arrowOffset,
       buttonClass,
       wrapperClass,
+      disableScroll,
     } = this.props;
     const { slideIndex, swiping } = this.state;
     const hideButtons = columnsPrSlide >= items.length;
 
     const transformX = this.swipeDistance +
-      slideIndex * (columnWidth + distanceBetweenItems);
+      (slideIndex * (columnWidth + distanceBetweenItems));
 
     return (
       <section>
@@ -119,35 +146,39 @@ class Carousel extends Component {
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
           <div className={cx(slideWrapperCSS, wrapperClass)}>
-            <StyledButton
-              type="button"
-              aria-label={slideBackwardsLabel}
-              className={buttonClass}
-              customClass={buttonClass}
-              prev
-              arrowLeftOffset={arrowLeftOffset}
-              dontShow={slideIndex === 0 || hideButtons}
-              onClick={() => this.slidePage(1)}>
-              <ChevronLeft />
-            </StyledButton>
-            <StyledButton
-              type="button"
-              aria-label={slideForwardsLabel}
-              className={buttonClass}
-              customClass={buttonClass}
-              dontShow={hideButtons || Math.floor(columnsPrSlide) === (items.length + slideIndex)}
-              next
-              arrowRightOffset={arrowRightOffset}
-              onClick={() => this.slidePage(-1)}>
-              <ChevronRight />
-            </StyledButton>
+            {!disableScroll && (
+              <>
+                <StyledButton
+                  type="button"
+                  aria-label={slideBackwardsLabel}
+                  className={buttonClass}
+                  customClass={buttonClass}
+                  prev
+                  arrowOffset={arrowOffset}
+                  dontShow={slideIndex === 0 || hideButtons}
+                  onClick={() => this.slidePage(1)}>
+                  <ChevronLeft />
+                </StyledButton>
+                <StyledButton
+                  type="button"
+                  aria-label={slideForwardsLabel}
+                  className={buttonClass}
+                  customClass={buttonClass}
+                  dontShow={hideButtons || Math.floor(columnsPrSlide) === (items.length + slideIndex)}
+                  next
+                  arrowOffset={arrowOffset}
+                  onClick={() => this.slidePage(-1)}>
+                  <ChevronRight />
+                </StyledButton>
+              </>
+            )}
             <StyledSlideContent
               swiping={swiping}
               innerRef={this.slideshowRef}
               style={{
                 padding: `0 ${margin}px`,
-                width: `${items.length * (columnWidth + distanceBetweenItems) +
-                  margin * 2}px`,
+                width: `${items.length * columnWidth +
+                  (distanceBetweenItems * (items.length - 1)) + (margin * 2)}px`,
                 transform: `translateX(${transformX}px)`,
               }}>
               {items.map(item => item)}
@@ -163,21 +194,21 @@ Carousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.node).isRequired,
   columnsPrSlide: PropTypes.number.isRequired,
   columnWidth: PropTypes.number.isRequired,
-  distanceBetweenItems: PropTypes.number.isRequired,
+  distanceBetweenItems: PropTypes.number,
   slideBackwardsLabel: PropTypes.string.isRequired,
   slideForwardsLabel: PropTypes.string.isRequired,
-  arrowLeftOffset: PropTypes.number,
-  arrowRightOffset: PropTypes.number,
+  arrowOffset: PropTypes.number,
   margin: PropTypes.number,
   buttonClass: PropTypes.string,
   wrapperClass: PropTypes.string,
+  disableScroll: PropTypes.bool,
 };
 
 Carousel.defaultProps = {
   items: [],
   margin: 0,
-  arrowLeftOffset: 0,
-  arrowRightOffset: 0,
+  distanceBetweenItems: 0,
+  arrowOffset: 0,
   buttonClass: '',
   wrapperClass: '',
 };

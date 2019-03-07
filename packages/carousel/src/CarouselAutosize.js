@@ -50,24 +50,46 @@ class CarouselAutosizeWrapper extends Component {
   }
 
   calculateCarouselProps() {
-    const wrapperWidth = this.autosizeRef.current.offsetWidth;
-    const { useBreakPoint } = this.state;
-    const columnWidth = (wrapperWidth - (useBreakPoint.margin * 2 || 0) - ((useBreakPoint.columnsPrSlide) * (useBreakPoint.distanceBetweenItems || 0))) / (useBreakPoint.columnsPrSlide);
+    const {
+      columnsPrSlide,
+      distanceBetweenItems,
+      arrowLeftOffset,
+      arrowRightOffset,
+      margin,
+      maxColumnWidth,
+    } = this.state.useBreakPoint;
 
+    const wrapperWidth = this.autosizeRef.current.offsetWidth;
+    const columnWidthDynamic = ((wrapperWidth - ((margin || 0) * 2) - (columnsPrSlide - 1) * Math.floor(distanceBetweenItems))) / columnsPrSlide;
+    const columnWidth = maxColumnWidth ? Math.min(columnWidthDynamic, maxColumnWidth) : columnWidthDynamic;
+
+    console.log('columnWidth', columnWidth);
     return {
-      columnsPrSlide: useBreakPoint.columnsPrSlide,
-      columnWidth,
-      distanceBetweenItems: useBreakPoint.distanceBetweenItems || 0,
-      arrowLeftOffset: useBreakPoint.arrowLeftOffset,
-      arrowRightOffset: useBreakPoint.arrowRightOffset,
-      margin: useBreakPoint.margin || 0,
+      columnsPrSlide: columnsPrSlide,
+      columnWidth: columnWidth,
+      distanceBetweenItems: distanceBetweenItems,
+      arrowLeftOffset: arrowLeftOffset,
+      arrowRightOffset: arrowRightOffset,
+      margin: margin || 0,
+      maxColumnWidth,
     };
   }
 
   render() {
+    const calulatedCarouselProps = this.state.useBreakPoint ? this.calculateCarouselProps() : null;
+    let wrapperWidth = 'auto';
+    if (this.props.centered && calulatedCarouselProps && calulatedCarouselProps.maxColumnWidth === calulatedCarouselProps.columnWidth) {
+      wrapperWidth = `${(calulatedCarouselProps.columnWidth * calulatedCarouselProps.columnsPrSlide) +
+        (calulatedCarouselProps.distanceBetweenItems * (calulatedCarouselProps.columnsPrSlide - 1)) +
+        (calulatedCarouselProps.margin || 0) * 2}px`;
+    }
     return (
       <div ref={this.autosizeRef}>
-        {this.state.useBreakPoint && this.props.children(this.calculateCarouselProps())}
+        {this.state.useBreakPoint && (
+          <div style={{ margin: '0 auto', width: wrapperWidth }}>
+            {this.props.children(calulatedCarouselProps)}
+          </div>
+        )}
       </div>
     );
   }
@@ -84,6 +106,15 @@ CarouselAutosizeWrapper.propTypes = {
       margin: PropTypes.number,
     }),
   ).isRequired,
+  centered: PropTypes.bool,
+  itemsLength: (props, propName, componentName) => {
+    if (typeof props[propName] !== 'number' && props.centered) {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}. Must be a number when ${componentName} centered prop is set to true`,
+      );
+    }
+    return null;
+  },
 };
 
 export default CarouselAutosizeWrapper;

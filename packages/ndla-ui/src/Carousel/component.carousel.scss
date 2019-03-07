@@ -41,14 +41,6 @@
   }
 
   &__wrapper {
-    .c-content-card:first-child {
-      margin-left: 0;
-    }
-   
-    .c-content-card:last-child {
-      margin-right: 0;
-    }
-
     &:hover {
       .c-carousel__arrow {
         opacity: 1;

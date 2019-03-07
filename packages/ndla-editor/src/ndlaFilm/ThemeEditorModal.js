@@ -12,7 +12,7 @@ import styled, { css } from 'react-emotion';
 import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing } from '@ndla/core';
 import Button from '@ndla/button';
-import { FormInput } from '@ndla/forms';
+import { Input } from '@ndla/forms';
 import { injectT } from '@ndla/i18n';
 
 const StyledInputWrapper = styled('div')`
@@ -43,7 +43,7 @@ const ThemeEditorModal = ({
       <h1>{title}</h1>
       <StyledInputWrapper>
         <div>
-          <FormInput
+          <Input
             iconLeft={
               <LanguageIndicator style={{ padding: '13px' }}>
                 {t('languages.nb')}:
@@ -61,7 +61,7 @@ const ThemeEditorModal = ({
           />
         </div>
         <div>
-          <FormInput
+          <Input
             iconLeft={
               <LanguageIndicator style={{ padding: '13px' }}>
                 {t('languages.nn')}:
@@ -78,7 +78,7 @@ const ThemeEditorModal = ({
           />
         </div>
         <div>
-          <FormInput
+          <Input
             iconLeft={
               <LanguageIndicator style={{ padding: '13px' }}>
                 {t('languages.en')}:

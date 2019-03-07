@@ -29,7 +29,7 @@ const FilmMovieList = ({
   margin,
 }) => (
   <section {...classes()}>
-    <h1 {...classes('heading')} style={{ marginLeft: `${7}px` }}>
+    <h1 {...classes('heading')} style={{ marginLeft: `${margin + 7}px` }}>
       {name}
     </h1>
     <Carousel
@@ -43,7 +43,7 @@ const FilmMovieList = ({
       {movies.map(movie => (
         <FilmContentCard
           movie={movie}
-          columnWidth={260}
+          columnWidth={columnWidth}
           resourceTypes={resourceTypes}
         />
       ))}

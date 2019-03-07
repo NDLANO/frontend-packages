@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
-import { FormHeader, Select, FormHeaderIconClass } from '@ndla/forms';
+import { FieldHeader, Select, FieldHeaderIconStyle } from '@ndla/forms';
 import Modal from '@ndla/modal';
 import { spacing } from '@ndla/core';
 import Button from '@ndla/button';
@@ -140,7 +140,7 @@ class NdlaFilmExample extends Component {
       <>
         <StyledSection>
           <h1>{t('ndlaFilm.editor.slideshowHeader')}</h1>
-          <FormHeader
+          <FieldHeader
             title={t('ndlaFilm.editor.slideshowTitle')}
             subTitle={t('ndlaFilm.editor.slideshowSubTitle')}
           />
@@ -201,7 +201,7 @@ class NdlaFilmExample extends Component {
           </Modal>
           {themes.map((theme, index) => (
             <StyledThemeWrapper key={theme.id}>
-              <FormHeader
+              <FieldHeader
                 title={theme.name.nb}
                 subTitle={` | ${theme.name.nn} | ${theme.name.en}`}>
                 <Modal
@@ -228,7 +228,7 @@ class NdlaFilmExample extends Component {
                     </Tooltip>
                   )}
                   activateButton={
-                    <button className={FormHeaderIconClass} tabIndex={-1}>
+                    <button className={FieldHeaderIconStyle} tabIndex={-1}>
                       <Pencil />
                     </button>
                   }>
@@ -251,7 +251,7 @@ class NdlaFilmExample extends Component {
                     name: theme.name.nb,
                   })}>
                   <button
-                    className={FormHeaderIconClass}
+                    className={FieldHeaderIconStyle}
                     tabIndex={-1}
                     onClick={() => this.onDeleteTheme(index)}>
                     <DeleteForever />
@@ -259,7 +259,7 @@ class NdlaFilmExample extends Component {
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupUp')}>
                   <button
-                    className={FormHeaderIconClass}
+                    className={FieldHeaderIconStyle}
                     tabIndex={-1}
                     onClick={() => this.onMoveTheme(index, -1)}>
                     <ChevronUp />
@@ -267,13 +267,13 @@ class NdlaFilmExample extends Component {
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupDown')}>
                   <button
-                    className={FormHeaderIconClass}
+                    className={FieldHeaderIconStyle}
                     tabIndex={-1}
                     onClick={() => this.onMoveTheme(index, 1)}>
                     <ChevronDown />
                   </button>
                 </Tooltip>
-              </FormHeader>
+              </FieldHeader>
               <MovieList
                 movies={theme.movies}
                 messages={{

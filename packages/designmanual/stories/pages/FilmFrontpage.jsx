@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
 import debounce from 'lodash/debounce';
+import { spacing } from '@ndla/core';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
@@ -135,7 +136,7 @@ class FilmFrontpage extends Component {
       <div
         css={css`
           background: #091a2a;
-          padding-bottom: $spacing--large;
+          padding-bottom: ${spacing.large};
         `}>
         <FilmSlideshow slideshow={highlighted} />
         <FilmMovieSearch

@@ -3,9 +3,9 @@
 
   &__image-wrapper {
     width: 100%;
+    height: 72px;
     border-radius: 5px;
     position: relative;
-    height: 72px;
     overflow: hidden;
     background: $background-color--gray-dark;
 
@@ -16,7 +16,8 @@
 
   &__link {
     color: $primary-color;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .c-content-card__heading {
         text-decoration: underline;
       }
@@ -95,5 +96,10 @@
         width: 25px;
       }
     }
+  }
+
+  &__background-image {
+    background-position: center center;
+    background-size: cover;
   }
 }

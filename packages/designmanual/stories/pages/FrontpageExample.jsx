@@ -81,35 +81,31 @@ const FrontpageExample = ({ t }) => (
                 until: 'mobile',
                 columnsPrSlide: 1,
                 distanceBetweenItems: 26,
-                arrowLeftOffset: 13,
-                arrowRightOffset: 13,
+                arrowOffset: 13,
               },
               {
                 until: 'mobileWide',
                 columnsPrSlide: 2,
                 distanceBetweenItems: 26,
-                arrowLeftOffset: 13,
-                arrowRightOffset: 13,
+                arrowOffset: 13,
               },
               {
                 until: 'tabletWide',
                 columnsPrSlide: 3,
                 distanceBetweenItems: 26,
-                arrowLeftOffset: 26,
-                arrowRightOffset: 26,
+                arrowOffset: 26,
               },
               {
                 columnsPrSlide: 4,
                 distanceBetweenItems: 26,
-                arrowLeftOffset: 26,
-                arrowRightOffset: 26,
+                arrowOffset: 26,
               }
             ]}
           >
             {autoSizedProps => (
               <Carousel
-                slideBackwardsLabel="tilbake"
-                slideForwardsLabel="framover"
+                slideBackwardsLabel={t('carousel.back')}
+                slideForwardsLabel={t('carousel.forward')}
                 buttonClass="c-carousel__arrow"
                 wrapperClass="c-carousel__wrapper"
                 items={

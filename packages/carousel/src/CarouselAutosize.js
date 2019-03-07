@@ -53,8 +53,7 @@ class CarouselAutosizeWrapper extends Component {
     const {
       columnsPrSlide,
       distanceBetweenItems,
-      arrowLeftOffset,
-      arrowRightOffset,
+      arrowOffset,
       margin,
       maxColumnWidth,
     } = this.state.useBreakPoint;
@@ -68,8 +67,7 @@ class CarouselAutosizeWrapper extends Component {
       columnsPrSlide: columnsPrSlide,
       columnWidth: columnWidth,
       distanceBetweenItems: distanceBetweenItems,
-      arrowLeftOffset: arrowLeftOffset,
-      arrowRightOffset: arrowRightOffset,
+      arrowOffset,
       margin: margin || 0,
       maxColumnWidth,
     };
@@ -101,8 +99,7 @@ CarouselAutosizeWrapper.propTypes = {
       until: PropTypes.oneOf(Object.keys(breakPointFromCore)),
       columnsPrSlide: PropTypes.number.isRequired,
       distanceBetweenItems: PropTypes.number,
-      arrowLeftOffset: PropTypes.number,
-      arrowRightOffset: PropTypes.number,
+      arrowOffset: PropTypes.number,
       margin: PropTypes.number,
     }),
   ).isRequired,

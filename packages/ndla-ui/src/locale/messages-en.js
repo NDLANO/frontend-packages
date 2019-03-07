@@ -439,6 +439,10 @@ const messages = {
   notions: {
     closeNotion: 'Close',
   },
+  carousel: {
+    back: 'Slide backwards',
+    forward: 'Slide forwards',
+  },
 };
 
 export default messages;

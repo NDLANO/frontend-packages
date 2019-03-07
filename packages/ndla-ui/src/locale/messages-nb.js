@@ -450,6 +450,10 @@ const messages = {
   notions: {
     closeNotion: 'Lukk',
   },
+  carousel: {
+    back: 'Bla tilbake',
+    forward: 'Bla fremover',
+  },
 };
 
 export default messages;

@@ -137,6 +137,8 @@ class Carousel extends Component {
     const transformX = this.swipeDistance +
       (slideIndex * (columnWidth + distanceBetweenItems));
 
+    console.log('arrowOffset', arrowOffset);
+
     return (
       <section>
         <Swipe

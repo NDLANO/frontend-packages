@@ -4,11 +4,12 @@ import BEMHelper from 'react-bem-helper';
 import Carousel, { CarouselAutosize } from '@ndla/carousel';
 import { ContentCard } from '@ndla/ui';
 import { spacing } from '@ndla/core';
+import { injectT } from '@ndla/i18n';
 import { SubjectSectionTitle } from './Subject';
 
 const subjectCarouselClasses = BEMHelper('c-subject-carousel');
 
-const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => (
+const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
   <section {...subjectCarouselClasses('', { narrowScreen, wideScreen })}>
     <CarouselAutosize
       breakPoints={[
@@ -75,8 +76,8 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen }) => (
           <SubjectSectionTitle {...subjectCarouselClasses('title')}>{title}</SubjectSectionTitle>
           <Carousel
             disableScroll={autoSizedProps.columnsPrSlide >= subjects.length}
-            slideBackwardsLabel="tilbake"
-            slideForwardsLabel="framover"
+            slideBackwardsLabel={t('carousel.back')}
+            slideForwardsLabel={t('carousel.forward')}
             buttonClass="c-carousel__arrow"
             wrapperClass="c-carousel__wrapper"
             items={
@@ -117,4 +118,4 @@ SubjectCarousel.defaultProps = {
   wideScreen: false,
 };
 
-export default SubjectCarousel;
+export default injectT(SubjectCarousel);

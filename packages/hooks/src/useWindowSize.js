@@ -7,6 +7,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import throttle from 'lodash/throttle';
 
 function getSize() {
   return {
@@ -17,7 +18,7 @@ function getSize() {
   };
 }
 
-export function useWindowSize() {
+export function useWindowSize(wait) {
   let [windowSize, setWindowSize] = useState(getSize());
 
   function handleResize() {
@@ -25,9 +26,11 @@ export function useWindowSize() {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    // Throttle if wait param is provided
+    const fn = wait ? throttle(handleResize, wait) : handleResize;
+    window.addEventListener('resize', fn);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', fn);
     };
   }, []);
 

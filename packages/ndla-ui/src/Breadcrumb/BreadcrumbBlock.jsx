@@ -9,8 +9,8 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { useWindowSize } from '@ndla/hooks';
 import BreadcrumbItem from './BreadcrumbItem';
-import { useWindowSize } from './useWindowSize';
 
 const classes = BEMHelper({
   name: 'breadcrumb-block',
@@ -22,7 +22,7 @@ const BreadcrumbBlock = ({ children, items }) => {
   // No idiomatic way of dealing with sets of refs yet
   // See: https://github.com/facebook/react/issues/14072#issuecomment-446777406
   const breadcrumbItemRefs = useRef(new Map()).current;
-  const size = useWindowSize(olRef);
+  const size = useWindowSize(100);
 
   useLayoutEffect(() => {
     // Create an array of all breadcrumb item refs

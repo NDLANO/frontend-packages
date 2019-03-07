@@ -9,9 +9,6 @@
 export { default as uuid } from './uuid';
 export { default as getComponentName } from './getComponentName';
 export { copyTextToClipboard } from './copyTextToClipboard';
-export {
-  default as convertFieldWithFallback,
-} from './convertFieldWithFallback';
 export { tagsI18N } from './i18nFieldFinder';
 export { default as noScroll, isIosDeviceSafari } from './noScroll';
 export {

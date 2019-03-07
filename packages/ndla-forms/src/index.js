@@ -1,24 +1,24 @@
-import FormHeader from './FormHeader';
-import FormSelect from './FormSelect';
-import FormSections from './FormSections';
-import FormInput from './FormInput';
-import FormSplitter from './FormSplitter';
-import FormRemoveButton from './FormRemoveButton';
+import FieldHeader from './FieldHeader';
+import Select from './Select';
+import FieldSection from './FieldSection';
+import Input from './Input';
+import FieldSplitter from './FieldSplitter';
+import FieldRemoveButton from './FieldRemoveButton';
 import RadiobuttonItem from './RadiobuttonItem';
 import CheckboxItem from './CheckboxItem';
-import { FormHeaderIconClass, StyledButtonWrapper } from './Styles';
 import UploadDropZone from './UploadDropZone';
+import { FieldHeaderIconStyle, StyledButtonWrapper } from './Styles';
 
 export {
-  FormHeader,
-  FormSections,
-  FormInput,
-  FormSplitter,
-  FormRemoveButton,
+  FieldHeader,
+  FieldSection,
+  FieldSplitter,
+  FieldRemoveButton,
+  Input,
   RadiobuttonItem,
   CheckboxItem,
   UploadDropZone,
-  FormHeaderIconClass,
+  FieldHeaderIconStyle,
   StyledButtonWrapper,
-  FormSelect,
+  Select,
 };

@@ -89,10 +89,10 @@
     font-weight: $font-weight-normal;
     display: flex;
     height: $masthead-height;
+    justify-content: space-between;
 
     @include mq(tablet) {
       flex-direction: row;
-      justify-content: space-between;
       padding: $spacing--small $spacing;
     }
     @include mq(desktop) {
@@ -128,10 +128,19 @@
 
   &__left {
     display: flex;
+    button {
+      white-space: nowrap;
+    }
+    > div:last-child {
+      flex-grow: 1;
+    }
+    @include mq(desktop) {
+      flex-grow: 1;
+      text-align: left;
+    }
   }
 
   &__right {
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -139,10 +148,6 @@
     @include mq(tablet) {
       padding: $spacing--small 0;
       padding: 0;
-    }
-    @include mq(desktop) {
-      text-align: right;
-      flex-grow: 1;
     }
   }
 }

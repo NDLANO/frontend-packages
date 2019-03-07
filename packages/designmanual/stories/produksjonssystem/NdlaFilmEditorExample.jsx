@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
-import { FormHeader, FormSelect, FormHeaderIconClass } from '@ndla/forms';
+import { FormHeader, Select, FormHeaderIconClass } from '@ndla/forms';
 import Modal from '@ndla/modal';
 import { spacing } from '@ndla/core';
 import Button from '@ndla/button';
@@ -157,12 +157,12 @@ class NdlaFilmExample extends Component {
               });
             }}
           />
-          <FormSelect
+          <Select
             value=""
             onChange={e => this.onAddMovieToSlideshow(e.target.value)}>
             <option value="">{t('ndlaFilm.editor.addMovieToSlideshow')}</option>
             {this.renderAddMovieOptions(mainMovies)}
-          </FormSelect>
+          </Select>
         </StyledSection>
         <StyledSection>
           <h1>{t('ndlaFilm.editor.movieGroupHeader')}</h1>
@@ -285,7 +285,7 @@ class NdlaFilmExample extends Component {
                   this.movieThemeUpdate(updates, index)
                 }
               />
-              <FormSelect
+              <Select
                 value=""
                 onChange={e => this.onAddMovieToTheme(e.target.value, index)}>
                 <option value="">
@@ -294,7 +294,7 @@ class NdlaFilmExample extends Component {
                   })}
                 </option>
                 {this.renderAddMovieOptions(theme.movies)}
-              </FormSelect>
+              </Select>
             </StyledThemeWrapper>
           ))}
         </StyledSection>

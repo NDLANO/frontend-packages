@@ -24,6 +24,9 @@ const FilmMovieList = ({
   slideBackwardsLabel,
   slideForwardsLabel,
   resourceTypes,
+  columnsPrSlide,
+  columnWidth,
+  margin,
 }) => (
   <section {...classes()}>
     <h1 {...classes('heading')} style={{ marginLeft: `${7}px` }}>
@@ -31,6 +34,9 @@ const FilmMovieList = ({
     </h1>
     <Carousel
       padding
+      columnsPrSlide={columnsPrSlide}
+      columnWidth={columnWidth}
+      margin={margin}
       slideBackwardsLabel={slideBackwardsLabel}
       slideForwardsLabel={slideForwardsLabel}
       distanceBetweenItems={13}>

@@ -107,6 +107,13 @@ const StyledTagWrapper = styled.div`
   bottom: 0;
 `;
 
-FilmContentCard.propTypes = {};
+FilmContentCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.string,
+    url: PropTypes.string,
+  }),
+  columnWidth: PropTypes.number,
+  resourceTypes: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default FilmContentCard;

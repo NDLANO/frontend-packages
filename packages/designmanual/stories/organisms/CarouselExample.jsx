@@ -8,7 +8,8 @@ const classes = BEMHelper('c-content-card');
 
 const CarouselExample = () => (
   <Carousel
-    startingWidth={200}
+    columnsPrSlide={3}
+    columnWidth={200}
     distanceBetweenItems={26}
     slideBackwardsLabel="tilbake"
     slideForwardsLabel="framover">

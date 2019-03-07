@@ -74,7 +74,9 @@ const FrontpageExample = ({ t }) => (
           onSearchFieldChange={() => {}}
         />
         <section {...classes()}>
-          <SubjectSectionTitle>{t('welcomePage.highlighted')}</SubjectSectionTitle>
+          <SubjectSectionTitle>
+            {t('welcomePage.highlighted')}
+          </SubjectSectionTitle>
           <CarouselAutosize
             breakPoints={[
               {
@@ -99,26 +101,24 @@ const FrontpageExample = ({ t }) => (
                 columnsPrSlide: 4,
                 distanceBetweenItems: 26,
                 arrowOffset: 26,
-              }
-            ]}
-          >
+              },
+            ]}>
             {autoSizedProps => (
               <Carousel
                 slideBackwardsLabel={t('carousel.back')}
                 slideForwardsLabel={t('carousel.forward')}
                 buttonClass="c-carousel__arrow"
                 wrapperClass="c-carousel__wrapper"
-                items={
-                  contentCards.map(subject => (
-                    <ContentCard
-                      {...subject}
-                      columnWidth={autoSizedProps.columnWidth}
-                      key={subject.id}
-                    />
-                  ))}
+                items={contentCards.map(subject => (
+                  <ContentCard
+                    {...subject}
+                    columnWidth={autoSizedProps.columnWidth}
+                    key={subject.id}
+                  />
+                ))}
                 {...autoSizedProps}
-              />)
-            }
+              />
+            )}
           </CarouselAutosize>
         </section>
         <FrontpageFilm

@@ -16,11 +16,8 @@ const ContentCard = ({
   toLinkProps,
   columnWidth,
 }) => (
-  <article {...classes()} style={{ width: `${columnWidth}px`}}>
-    <SafeLink
-      {...toLinkProps()}
-      title={title}
-      {...classes('link')}>
+  <article {...classes()} style={{ width: `${columnWidth}px` }}>
+    <SafeLink {...toLinkProps()} title={title} {...classes('link')}>
       <header>
         <div {...classes('image-wrapper')}>
           <div

@@ -12,11 +12,7 @@ import { Swipe } from 'react-swipe-component';
 import { cx } from 'react-emotion';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 
-import {
-  slideWrapperCSS,
-  StyledButton,
-  StyledSlideContent,
-} from './Styles';
+import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
 
 class Carousel extends Component {
   constructor(props) {
@@ -36,7 +32,8 @@ class Carousel extends Component {
     const { slideIndex } = prevState;
     // Check if resize caused carousel to be scrolled to far.
     if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
-      const adjustedSlideIndex = slideIndex + ((Math.floor(columnsPrSlide) - items.length) - slideIndex);
+      const adjustedSlideIndex =
+        slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
       return {
         slideIndex: adjustedSlideIndex,
       };
@@ -55,8 +52,7 @@ class Carousel extends Component {
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
 
     const moved = Math.round(
-      this.swipeDistance /
-        (columnWidth + distanceBetweenItems),
+      this.swipeDistance / (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
     if (moved !== 0) {
@@ -64,9 +60,7 @@ class Carousel extends Component {
         let slideIndex = prevState.slideIndex + moved;
         if (slideIndex > 0) {
           slideIndex = 0;
-        } else if (
-          slideIndex < -(items.length - columnsPrSlide)
-        ) {
+        } else if (slideIndex < -(items.length - columnsPrSlide)) {
           slideIndex = -(items.length - roundedColumnsPrSlide);
         }
         return {
@@ -86,28 +80,22 @@ class Carousel extends Component {
       swiping: true,
     });
     this.swipeDistance = e.x || e[0];
-    const transformX = this.swipeDistance +
-    this.state.slideIndex *
-      (this.props.columnWidth);
+    const transformX =
+      this.swipeDistance + this.state.slideIndex * this.props.columnWidth;
     this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
   }
 
   slidePage(direction) {
-    const {
-      columnsPrSlide,
-      items,
-    } = this.props;
+    const { columnsPrSlide, items } = this.props;
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
     if (roundedColumnsPrSlide < items.length) {
       this.setState(prevState => {
         let slideIndex =
           prevState.slideIndex + roundedColumnsPrSlide * direction;
-        
+
         if (slideIndex > 0) {
           slideIndex = 0;
-        } else if (
-          slideIndex < -(items.length - roundedColumnsPrSlide)
-        ) {
+        } else if (slideIndex < -(items.length - roundedColumnsPrSlide)) {
           slideIndex = -(items.length - roundedColumnsPrSlide);
         }
         return {
@@ -134,8 +122,8 @@ class Carousel extends Component {
     const { slideIndex, swiping } = this.state;
     const hideButtons = columnsPrSlide >= items.length;
 
-    const transformX = this.swipeDistance +
-      (slideIndex * (columnWidth + distanceBetweenItems));
+    const transformX =
+      this.swipeDistance + slideIndex * (columnWidth + distanceBetweenItems);
 
     console.log('arrowOffset', arrowOffset);
 
@@ -166,7 +154,10 @@ class Carousel extends Component {
                   aria-label={slideForwardsLabel}
                   className={buttonClass}
                   customClass={buttonClass}
-                  dontShow={hideButtons || Math.floor(columnsPrSlide) === (items.length + slideIndex)}
+                  dontShow={
+                    hideButtons ||
+                    Math.floor(columnsPrSlide) === items.length + slideIndex
+                  }
                   next
                   arrowOffset={arrowOffset}
                   onClick={() => this.slidePage(-1)}>
@@ -180,7 +171,8 @@ class Carousel extends Component {
               style={{
                 padding: `0 ${margin}px`,
                 width: `${items.length * columnWidth +
-                  (distanceBetweenItems * (items.length - 1)) + (margin * 2)}px`,
+                  distanceBetweenItems * (items.length - 1) +
+                  margin * 2}px`,
                 transform: `translateX(${transformX}px)`,
               }}>
               {items.map(item => item)}
@@ -214,8 +206,5 @@ Carousel.defaultProps = {
   buttonClass: '',
   wrapperClass: '',
 };
-
-
-
 
 export default Carousel;

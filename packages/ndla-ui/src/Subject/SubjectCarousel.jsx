@@ -66,28 +66,28 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
           arrowOffset: 26,
           margin: spacing.spacingUnit * 2.5,
           maxColumnWidth: 200,
-        }
+        },
       ]}
       centered
-      itemsLength={subjects.length}
-    >
+      itemsLength={subjects.length}>
       {autoSizedProps => (
         <>
-          <SubjectSectionTitle {...subjectCarouselClasses('title')}>{title}</SubjectSectionTitle>
+          <SubjectSectionTitle {...subjectCarouselClasses('title')}>
+            {title}
+          </SubjectSectionTitle>
           <Carousel
             disableScroll={autoSizedProps.columnsPrSlide >= subjects.length}
             slideBackwardsLabel={t('carousel.back')}
             slideForwardsLabel={t('carousel.forward')}
             buttonClass="c-carousel__arrow"
             wrapperClass="c-carousel__wrapper"
-            items={
-              subjects.map(subject => (
-                <ContentCard
-                  columnWidth={autoSizedProps.columnWidth}
-                  key={subject.id}
-                  {...subject}
-                />
-              ))}
+            items={subjects.map(subject => (
+              <ContentCard
+                columnWidth={autoSizedProps.columnWidth}
+                key={subject.id}
+                {...subject}
+              />
+            ))}
             {...autoSizedProps}
           />
         </>

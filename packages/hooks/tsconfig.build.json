@@ -2,7 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "declarationDir": "./lib"
+    "emitDeclarationOnly": true,
+    "declarationDir": "./lib",
+    "rootDir": "./src",
+    "baseUrl": "./"
   },
   "include": ["./src"]
 }

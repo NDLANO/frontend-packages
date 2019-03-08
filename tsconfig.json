@@ -15,6 +15,7 @@
     "sourceMap": true,
     "lib": ["es2018", "esnext.asynciterable", "dom"],
     "paths": {
+      "@ndla/*": ["./packages/*/src"],
       "*": ["node_modules"]
     }
   },

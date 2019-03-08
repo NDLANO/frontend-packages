@@ -8,7 +8,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "yarn build:types",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
   "sideEffects": false,

@@ -10,7 +10,7 @@
   "scripts": {
     "build": "yarn build:css && yarn build:types",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
   "repository": {

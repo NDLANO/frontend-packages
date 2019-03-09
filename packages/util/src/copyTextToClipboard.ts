@@ -6,7 +6,7 @@
  *
  */
 
-export function copyTextToClipboard(text, el = document.body) {
+export function copyTextToClipboard(text: string, el = document.body) {
   if (!window || !document) {
     return false;
   }
@@ -14,9 +14,9 @@ export function copyTextToClipboard(text, el = document.body) {
   const textArea = document.createElement('textarea');
 
   textArea.style.position = 'fixed';
-  textArea.style.top = 0;
-  textArea.style.left = 0;
-  textArea.style.padding = 0;
+  textArea.style.top = '0';
+  textArea.style.left = '0';
+  textArea.style.padding = '0';
   textArea.style.border = 'none';
   textArea.style.outline = 'none';
   textArea.style.boxShadow = 'none';

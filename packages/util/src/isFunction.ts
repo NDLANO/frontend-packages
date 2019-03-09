@@ -6,6 +6,6 @@
  *
  */
 
-export function isFunction(object) {
+export function isFunction(object: any) {
   return object && {}.toString.call(object) === '[object Function]';
 }

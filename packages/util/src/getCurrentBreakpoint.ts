@@ -1,8 +1,14 @@
-const getCurrentBreakpoint = () =>
-  window
-    .getComputedStyle(document.querySelector('body'), ':before')
+const getCurrentBreakpoint = () => {
+  const body = document.querySelector('body');
+  if (!body) {
+    return '';
+  }
+
+  return window
+    .getComputedStyle(body, ':before')
     .getPropertyValue('content')
     .replace(/"/g, '');
+};
 
 export default getCurrentBreakpoint;
 

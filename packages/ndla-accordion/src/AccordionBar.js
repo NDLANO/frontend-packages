@@ -13,51 +13,49 @@ import { css } from '@emotion/core';
 import { ChevronRight } from '@ndla/icons/common';
 import { colors, spacing, fonts } from '@ndla/core';
 
-const StyledAccordionBar = styled.div`
-  background: ${colors.brand.light};
-  padding: ${spacing.small} ${spacing.normal} ${spacing.small}
-    calc(${spacing.xsmall} * 3);
-  color: ${colors.brand.primary};
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  border: 0;
-  transition: color 100ms ease, background 100ms ease;
-  .c-icon {
-    transition: transform 100ms ease;
-    transform: rotate(0deg);
-    margin-right: ${spacing.small};
-  }
-
-  ${props =>
-    props.isOpen &&
-    css`
-      .c-icon {
-        transform: rotate(90deg);
-      }
-      background: #fff;
-    `};
-
-  ${props =>
+const StyledAccordionBar = styled.div(
+  {
+    background: colors.brand.light,
+    padding: `${spacing.small} ${spacing.normal} ${spacing.small} calc(${
+      spacing.xsmall
+    } * 3)`,
+    color: colors.brand.primary,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    border: 0,
+    transition: 'color 100ms ease, background 100ms ease,',
+    '.c-icon': {
+      transition: 'transform 100ms ease',
+      transform: 'rotate(0deg)',
+      marginRight: spacing.small,
+    },
+  },
+  props =>
+    props.isOpen && {
+      '.c-icon': {
+        transform: 'rotate(90deg)',
+      },
+      background: '#fff',
+    },
+  props =>
+    props.hasError && {
+      border: `2px solid ${colors.support.redLight}`,
+      padding: `calc(${spacing.small} - 2px) calc(${spacing.normal} - 2px)
+      calc(${spacing.small} - 2px) calc((${spacing.xsmall} * 3) - 2px)`,
+    },
+  props =>
     props.hasError &&
-    css`
-      border: 2px solid ${colors.support.redLight};
-      padding: calc(${spacing.small} - 2px) calc(${spacing.normal} - 2px)
-        calc(${spacing.small} - 2px) calc((${spacing.xsmall} * 3) - 2px);
-    `};
-
-  ${props =>
+    props.isOpen && {
+      borderBottom: 0,
+      paddingBottom: spacing.normal,
+    },
+  props =>
     props.hasError &&
-    props.isOpen &&
-    css`
-      border-bottom: 0;
-      padding-bottom: ${spacing.normal};
-    `};
-  ${props =>
-    props.hasError &&
-    !props.isOpen &&
-    `background: ${colors.support.redLight}`};
-`;
+    !props.isOpen && {
+      background: colors.support.redLight,
+    },
+);
 
 const accordionButtonCss = css`
   border: 0;
@@ -95,7 +93,7 @@ export const AccordionBar = ({
       aria-expanded={isOpen}
       aria-controls={panelId}
       onClick={onClick}
-      className={accordionButtonCss}>
+      css={accordionButtonCss}>
       <ChevronRight className="c-icon--medium" />
       <span>{children}</span>
     </button>

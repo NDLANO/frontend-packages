@@ -13,8 +13,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
+import { LicenseDescription } from '@ndla/licenses';
 import { ContributorShape, LicenseShape } from '../shapes';
-import LicenseByline from '../LicenseByline';
 
 export const classLicenses = new BEMHelper({
   name: 'figure-license',
@@ -67,9 +67,9 @@ FigureLicenseCta.propTypes = {
 };
 
 export const FigureLicenseByline = ({ messages, license, locale }) => [
-  <LicenseByline
+  <LicenseDescription
     key="byline"
-    withDescription
+    highlightCC
     locale={locale}
     messages={messages}
     licenseRights={license.rights}

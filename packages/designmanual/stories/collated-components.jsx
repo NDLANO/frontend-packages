@@ -3,12 +3,20 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import {
+  LicenseDescription,
+  BY,
+  SA,
+  NC,
+  ND,
+  PD,
+  CC0,
+  COPYRIGHTED,
+} from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
   Footer,
-  LicenseByline,
   TopicIntroductionList,
   PageContainer,
   Content,
@@ -396,13 +404,12 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseByline
+          <LicenseDescription
             locale="nb"
             messages={{
               modelPremission:
                 'Personen(e) på bildet har godkjent at det kan brukes videre.',
             }}
-            withDescription
             licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
           />
         </div>

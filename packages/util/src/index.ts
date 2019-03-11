@@ -16,3 +16,4 @@ export {
 } from './getCurrentBreakpoint';
 export { createUniversalPortal } from './createUniversalPortal';
 export { isFunction } from './isFunction';
+export { resizeObserver } from './resizeObserver';

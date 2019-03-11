@@ -10,7 +10,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import elementType from 'react-prop-types/lib/elementType';
 import Link from 'react-router-dom/Link';
-import styled, { css, cx } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import rgba from 'polished/lib/color/rgba';
 import { colors } from '@ndla/core';
 
@@ -61,13 +62,13 @@ export const PageItem = ({
 
   if (Component === SafeLink || Component === Link) {
     return (
-      <SafeLink className={pageItemStyle} onClick={handleClick} to={linkToPage}>
+      <SafeLink css={pageItemStyle} onClick={handleClick} to={linkToPage}>
         {children}
       </SafeLink>
     );
   }
   return (
-    <Component className={pageItemStyle} onClick={handleClick}>
+    <Component css={pageItemStyle} onClick={handleClick}>
       {children}
     </Component>
   );
@@ -97,7 +98,7 @@ export default function Pager(props) {
   const PageItems = steps.map(n => {
     if (n === page) {
       return (
-        <span key={n} className={cx(pageItemStyle, pageItemActiveStyle)}>
+        <span key={n} css={[pageItemStyle, pageItemActiveStyle]}>
           {n}
         </span>
       );

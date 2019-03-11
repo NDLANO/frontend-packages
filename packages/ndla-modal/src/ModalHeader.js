@@ -8,10 +8,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cx } from 'react-emotion';
 
 const ModalHeader = ({ children, modifier }) => (
-  <div className={cx('modal-header', modifier)}>{children}</div>
+  <div className={`modal-header ${modifier}`}>{children}</div>
 );
 
 ModalHeader.propTypes = {

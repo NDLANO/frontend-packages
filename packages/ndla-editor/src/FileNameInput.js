@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, fonts, colors } from '@ndla/core';
 import { Download } from '@ndla/icons/common';

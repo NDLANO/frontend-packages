@@ -8,10 +8,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cx } from 'react-emotion';
 
 const ModalBody = ({ children, modifier }) => (
-  <div className={cx('modal-body', modifier)}>{children}</div>
+  <div className={`modal-body ${modifier}`}>{children}</div>
 );
 
 ModalBody.propTypes = {

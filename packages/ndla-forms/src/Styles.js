@@ -6,7 +6,8 @@
  *
  */
 
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { spacing, colors } from '@ndla/core';
 
 export const FieldHeaderIconStyle = css`

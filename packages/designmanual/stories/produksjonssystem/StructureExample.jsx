@@ -8,7 +8,8 @@
 
 import React, { Component, Fragment } from 'react';
 import { Structure, Spinner } from '@ndla/editor';
-import styled, { cx, css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
 import {
@@ -241,7 +242,7 @@ class StructureExample extends Component {
         return null;
       }
       return (
-        <div className={cx('filestructure')}>
+        <div className={'filestructure'}>
           <AddTitle show>Filtrer emner:</AddTitle>
           {availableFilters[paths[0]].map(filter => (
             <ConnectionButton
@@ -284,7 +285,7 @@ class StructureExample extends Component {
       );
     }
     return (
-      <div className={cx('filestructure')}>
+      <div className={'filestructure'}>
         <Button outline className={buttonAddition} onClick={() => {}}>
           Emne funksjon
         </Button>

@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 import { Cross } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 

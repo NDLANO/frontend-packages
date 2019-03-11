@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { fonts, spacing, colors } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LicenseByline } from '@ndla/ui';

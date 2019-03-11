@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { cx } from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
 
@@ -142,9 +142,9 @@ class ListItem extends Component {
     const { item } = this.props;
     return (
       <Fragment>
-        <span className={cx('item-subject')}>{item.subject[0].title}</span>
-        <h3 className={cx('item-name')}>{item.name}</h3>
-        <p className={cx('item-description')}>{item.description}</p>
+        <span className={'item-subject'}>{item.subject[0].title}</span>
+        <h3 className={'item-name'}>{item.name}</h3>
+        <p className={'item-description'}>{item.description}</p>
       </Fragment>
     );
   }
@@ -158,9 +158,9 @@ class ListItem extends Component {
         role="button"
         className={viewStyle}
         tabIndex={0}>
-        <div className={cx('item-image')}>
+        <div className={'item-image'}>
           {item.image ? <img src={item.image} alt={item.description} /> : null}
-          <span className={cx('item-category')}>{item.category.title}</span>
+          <span className={'item-category'}>{item.category.title}</span>
         </div>
         {viewStyle === 'grid' ? (
           this.renderItem()

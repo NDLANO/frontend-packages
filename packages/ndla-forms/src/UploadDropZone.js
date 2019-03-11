@@ -8,7 +8,8 @@
 
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Spinner } from '@ndla/editor';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
@@ -251,7 +252,7 @@ class UploadDropZone extends Component {
     const { dropAllowed, draggedOver, errorMessage } = this.state;
     return (
       <Fragment>
-        <Wrapper className={cx(draggedOver && cssHover, loading && cssLoading)}>
+        <Wrapper css={[draggedOver && cssHover, loading && cssLoading]}>
           <DropZone dropAllowed={dropAllowed} innerRef={this.dropZoneRef}>
             <InputField
               type="file"

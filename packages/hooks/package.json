@@ -26,6 +26,7 @@
     "es"
   ],
   "dependencies": {
+    "@ndla/util": "^0.3.2",
     "lodash": "^4.17.11"
   },
   "publishConfig": {

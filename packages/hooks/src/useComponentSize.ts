@@ -7,6 +7,7 @@
  */
 
 import { useCallback, useState, useLayoutEffect } from 'react';
+import { resizeObserver } from '@ndla/util';
 
 function getSize(el?: HTMLElement) {
   if (!el) {
@@ -41,24 +42,7 @@ export function useComponentSize(ref: Ref = { current: undefined }) {
       return;
     }
     handleResize();
-    // @ts-ignore ResizeObserver
-    if (typeof ResizeObserver === 'function') {
-      // @ts-ignore ResizeObserver
-      let resizeObserver = new ResizeObserver(() => handleResize());
-      resizeObserver.observe(ref.current);
-      return () => {
-        resizeObserver.disconnect(ref.current);
-        resizeObserver = null;
-      };
-    } else {
-      // We should explore including a ResizeObserver polyfill
-      // See: https://github.com/WICG/ResizeObserver/issues/3
-      window.addEventListener('resize', handleResize);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
+    return resizeObserver(ref.current, handleResize);
   }, [ref.current]);
   return componentSize;
 }

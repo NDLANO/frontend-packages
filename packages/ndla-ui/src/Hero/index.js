@@ -14,4 +14,5 @@ export {
   ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
+  NdlaFilmHero,
 } from './Hero';

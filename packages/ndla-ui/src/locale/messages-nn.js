@@ -438,6 +438,42 @@ const messages = {
   notions: {
     closeNotion: 'Lukk',
   },
+  ndlaFilm: {
+    slideBackwardsLabel: 'Scroll bakover',
+    slideForwardsLabel: 'Scroll fremover',
+    about: {
+      heading: 'Om NDLA Film',
+      more: 'Les meir om NDLA film',
+      text:
+        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+    },
+    search: {
+      placeholder: 'Søk på filmnavn',
+      categoryButton: 'Velg filmkategori',
+      subjectButton: 'Gå til emne',
+    },
+    editor: {
+      slideshowHeader: 'Slideshow:',
+      slideshowTitle: 'Filmer i slideshow',
+      slideshowSubTitle: 'på forsida',
+      movieGroupHeader: 'Film grupperingar:',
+      addMovieToSlideshow: 'Legg til film i slideshow',
+      addMovieToGroup: 'Legg til film i "{name}"',
+      editMovieGroupName: 'Endre navnene til filmgruppa',
+      deleteMovieGroup: 'Slett "{name}"',
+      moveMovieGroupUp: 'Flytt opp',
+      moveMovieGroupDown: 'Flytt ned',
+      changeOrder: 'Endre rekkjefølgje',
+      removeMovieFromGroup: 'Ta vekk film fra gruppe',
+      removeMovieFromSlideshow: 'Ta vekk film fra slideshow',
+      createThemeGroup: 'Opprett gruppe',
+      saveNameChanges: 'Lagre endringar',
+      cancel: 'Avbryt',
+      groupNamePlaceholder: 'Skriv navn på {lang}',
+      editGroupTitle: 'Endre navn(ene) på filmgruppa:',
+      newGroupTitle: 'Kva skal gruppen hete?',
+    },
+  },
 };
 
 export default messages;

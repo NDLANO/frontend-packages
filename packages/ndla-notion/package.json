@@ -1,6 +1,6 @@
 {
   "name": "@ndla/notion",
-  "version": "0.1.34",
+  "version": "0.1.35",
   "description": "Notions and dictionary-notions for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

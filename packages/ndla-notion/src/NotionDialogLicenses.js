@@ -2,8 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { fonts, spacing, colors } from '@ndla/core';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { LicenseByline } from '@ndla/ui';
+import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
 
 const NotionDialogLicensesWrapper = styled.div`
   border-top: 1px solid ${colors.brand.tertiary};
@@ -41,7 +40,8 @@ const NotionDialogLicenses = ({
       {licenseRights.length > 0 && (
         <LicenseByline
           locale={locale}
-          className="c-source-list__item"
+          marginRight
+          color={colors.brand.grey}
           licenseRights={licenseRights}
         />
       )}

@@ -11,6 +11,7 @@ const chalk = require('chalk');
 const path = require('path');
 const { buildFile, removeBuildFile } = require('./build');
 const getPackages = require('./_getPackages');
+const babelOptions = require('../babel.config');
 
 const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*.js*';
@@ -34,18 +35,20 @@ const watcher = chokidar.watch(packagePatterns, {
   ignored: [IGNORE_PATTERN],
 });
 
-const handlBuildFile = file => {
+const handleBuildFile = file => {
   buildFile(file, 'es');
   buildFile(file, 'lib', {
-    plugins: ['transform-es2015-modules-commonjs'],
+    override: {
+      presets: ['@babel/preset-env', ...babelOptions.presets.slice(1)],
+    },
   });
 };
 
 watcher
-  .on('change', handlBuildFile)
+  .on('change', handleBuildFile)
   .on('ready', () => {
     // Attach add event listner after initial scan is completed.
-    watcher.on('add', handlBuildFile);
+    watcher.on('add', handleBuildFile);
   })
   .on('unlink', file => {
     removeBuildFile(file, 'es');

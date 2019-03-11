@@ -96,23 +96,21 @@ $small-viewport: '(max-width: 600px)';
     display: inline-block;
     padding-left: 2rem;
   }
+
   &__information > * {
     margin-top: 0.5rem;
   }
+
   &__information h2 {
     margin-top: 0;
     line-height: 1;
   }
+
   &__title {
     padding-top: 0;
     margin: 0;
   }
-  &__license ul {
-    flex-direction: row;
-  }
-  &__license ul li {
-    display: inline-block;
-  }
+
   &__tags > b {
     display: block;
     margin-bottom: 1em;

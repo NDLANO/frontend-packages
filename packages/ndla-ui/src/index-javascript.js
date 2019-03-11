@@ -93,7 +93,6 @@ export {
   PageContainer,
   Content,
 } from './Layout';
-export { default as LicenseByline } from './LicenseByline';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';

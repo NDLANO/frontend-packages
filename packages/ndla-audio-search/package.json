@@ -22,7 +22,6 @@
     "@ndla/button": "^0.2.8",
     "@ndla/core": "^0.4.10",
     "@ndla/licenses": "^0.4.3",
-    "@ndla/ui": "^0.20.6",
     "@ndla/util": "^0.3.2"
   },
   "peerDependencies": {

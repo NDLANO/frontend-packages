@@ -20,7 +20,7 @@ const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
 
 babelOptions.babelrc = false;
 const SRC_DIR = 'src';
-const JS_FILES_PATTERN = '**/*.js*';
+const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const OK = chalk.reset.inverse.bold.green(' DONE ');
 
@@ -45,9 +45,19 @@ function resolveDestPath(file, dest) {
   const relativeToSrcPath = path.relative(packageSrcPath, file);
   const destPath = path.resolve(packageBuildPath, relativeToSrcPath);
 
-  if (destPath.indexOf('.jsx') > -1) {
+  if (destPath.endsWith('.jsx')) {
     // JSX file should be transformed to js files
     return destPath.substring(0, destPath.length - 1);
+  }
+
+  if (destPath.endsWith('.tsx')) {
+    // TSX file should be transformed to js files
+    return destPath.substring(0, destPath.length - 3) + 'js';
+  }
+
+  if (destPath.endsWith('.ts')) {
+    // ts file should be transformed to js files
+    return destPath.substring(0, destPath.length - 2) + 'js';
   }
   return destPath;
 }
@@ -73,8 +83,7 @@ function buildFile(file, dest, { silent = false, plugins = [] } = {}) {
     fs.writeFileSync(destPath, transformed);
     if (!silent) {
       process.stdout.write(
-        `${chalk.green('\u2022 ') +
-          path.relative(PACKAGES_DIR, file) +
+        `${path.relative(PACKAGES_DIR, file) +
           chalk.green(' \u21D2  ') +
           path.relative(PACKAGES_DIR, destPath)}\n`,
       );

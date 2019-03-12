@@ -10,7 +10,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import StaticRouter from 'react-router/StaticRouter';
+import { StaticRouter } from 'react-router';
 import Safelink, { isOldNdlaLink } from '../SafeLink';
 
 test('SafeLink renderers normal link correctly when router context is not present', () => {
@@ -31,7 +31,9 @@ test('SafeLink renderers Link correctly if router context is present', () => {
   );
 
   expect(component.toJSON()).toMatchSnapshot();
-  expect(component.toJSON().children[0].props.onClick).toBeInstanceOf(Function);
+  expect(component.toJSON()!.children![0].props.onClick).toBeInstanceOf(
+    Function,
+  );
 });
 
 test('SafeLink defaults to normal link if to prop is an external link', () => {
@@ -47,7 +49,7 @@ test('SafeLink defaults to normal link if to prop is an external link', () => {
   );
 
   expect(component.toJSON()).toMatchSnapshot();
-  expect(component.toJSON().children[0].props.onClick).toBeUndefined();
+  expect(component.toJSON()!.children![0].props.onClick).toBeUndefined();
 });
 
 test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
@@ -62,7 +64,7 @@ test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
     </StaticRouter>,
   );
 
-  expect(component.toJSON().children[0].props.onClick).toBeUndefined();
+  expect(component.toJSON()!.children![0].props.onClick).toBeUndefined();
 });
 
 test('isOldNdlaLink checks', () => {
@@ -72,5 +74,5 @@ test('isOldNdlaLink checks', () => {
   expect(isOldNdlaLink('/nb/nde/12')).toBe(false);
   expect(isOldNdlaLink('/subjects')).toBe(false);
   expect(isOldNdlaLink('/sanodesd43/')).toBe(false);
-  expect(isOldNdlaLink({ someUrl: '/sanodesd43/' })).toBe(false);
+  expect(isOldNdlaLink({ pathname: '/sanodesd43/' })).toBe(false);
 });

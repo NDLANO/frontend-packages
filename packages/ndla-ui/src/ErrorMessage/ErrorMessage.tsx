@@ -1,13 +1,12 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import styled from 'react-emotion';
 import { colors, spacing, mq } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
@@ -36,7 +35,24 @@ const Description = styled('p')(
   }),
 );
 
-export const ErrorMessage = ({ children, messages, illustration }) => (
+interface Props {
+  messages: {
+    title: string;
+    description?: string;
+    linksTitle?: string;
+    back: string;
+    goToFrontPage: string;
+  };
+  illustration: {
+    url: string;
+    altText: string;
+  };
+}
+export const ErrorMessage: React.FunctionComponent<Props> = ({
+  children,
+  messages,
+  illustration,
+}) => (
   <StyledErrorMessage>
     <Illustration src={illustration.url} alt={illustration.altText} />
     <h1>{messages.title}</h1>
@@ -59,20 +75,5 @@ export const ErrorMessage = ({ children, messages, illustration }) => (
     {children}
   </StyledErrorMessage>
 );
-
-ErrorMessage.propTypes = {
-  children: PropTypes.node,
-  messages: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    goToFrontPage: PropTypes.string,
-    linksTitle: PropTypes.string,
-    back: PropTypes.string,
-  }),
-  illustration: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    altText: PropTypes.string.isRequired,
-  }),
-};
 
 export default ErrorMessage;

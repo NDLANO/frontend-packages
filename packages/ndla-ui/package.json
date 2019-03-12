@@ -5,11 +5,12 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "jsnext:main": "es/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn build:css",
+    "build": "yarn build:css && yarn build:types",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
   "repository": {
@@ -25,7 +26,8 @@
   "files": [
     "lib",
     "src",
-    "es"
+    "es",
+    "types"
   ],
   "dependencies": {
     "@ndla/button": "^0.2.8",

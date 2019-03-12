@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import em from 'polished/lib/helpers/em';
 import debounce from 'lodash/debounce';
 import { breakpoints as breakPointFromCore } from '@ndla/core';
+import { StyledWrapperAutosizer } from './Styles';
 
 class CarouselAutosizeWrapper extends Component {
   constructor(props) {
@@ -64,7 +65,6 @@ class CarouselAutosizeWrapper extends Component {
       maxColumnWidth,
     } = this.state.useBreakPoint;
 
-    console.log('wrapper width', this.autosizeRef.current.offsetWidth);
     const wrapperWidth = 
       this.autosizeRef.current.offsetWidth -
       ((columnsPrSlide - 1) * distanceBetweenItems) -
@@ -74,10 +74,6 @@ class CarouselAutosizeWrapper extends Component {
     const columnWidth = maxColumnWidth
       ? Math.min(columnWidthDynamic, maxColumnWidth)
       : columnWidthDynamic;
-
-    console.log('wrapper width', wrapperWidth);
-    console.log('columnsPrSlide', columnsPrSlide);
-    console.log('columnWidth', columnWidth);
     
     return {
       columnsPrSlide: columnsPrSlide,
@@ -109,9 +105,9 @@ class CarouselAutosizeWrapper extends Component {
     return (
       <div ref={this.autosizeRef}>
         {this.state.useBreakPoint && (
-          <div style={{ margin: '0 auto', width: wrapperWidth }}>
+          <StyledWrapperAutosizer wrapperWidth={wrapperWidth}>
             {this.props.children(calulatedCarouselProps)}
-          </div>
+          </StyledWrapperAutosizer>
         )}
       </div>
     );

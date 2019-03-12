@@ -40,3 +40,8 @@ export const StyledSlideContent = styled.div`
   justify-content: space-between;
   transition: ${props => (props.swiping ? 'none' : 'transform 600ms ease')};
 `;
+
+export const StyledWrapperAutosizer = styled.div`
+  margin: 0 auto;
+  width: ${props => (props.wrapperWidth)};
+`;

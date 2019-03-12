@@ -22,6 +22,7 @@ class Carousel extends Component {
       swiping: false,
     };
     this.swipeDistance = 0;
+    this.swipeSpeed = 0;
     this.slideshowRef = React.createRef();
     this.onSwipeEnd = this.onSwipeEnd.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
@@ -42,7 +43,8 @@ class Carousel extends Component {
     return null;
   }
 
-  onSwipeEnd() {
+  onSwipeEnd(e) {
+    console.log(this.swipeSpeed);
     const {
       columnsPrSlide,
       columnWidth,
@@ -52,7 +54,7 @@ class Carousel extends Component {
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
 
     const moved = Math.round(
-      this.swipeDistance / (columnWidth + distanceBetweenItems),
+      ((-this.swipeSpeed * 20) + this.swipeDistance) / (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
     if (moved !== 0) {
@@ -79,7 +81,9 @@ class Carousel extends Component {
     this.setState({
       swiping: true,
     });
-    this.swipeDistance = e.x || e[0];
+    const moved = e.x || e[0];
+    this.swipeSpeed = this.swipeDistance - moved;
+    this.swipeDistance = moved;
     const transformX =
       this.swipeDistance + this.state.slideIndex * this.props.columnWidth;
     this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;

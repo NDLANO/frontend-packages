@@ -6,8 +6,7 @@
  *
  */
 
-/** @jsx jsx */
-import { jsx, css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';

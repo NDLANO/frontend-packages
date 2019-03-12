@@ -482,7 +482,6 @@ class Modal extends React.Component {
   }
 
   onAnimationEnd() {
-    console.log('HEIHEI');
     if (!this.state.animateIn && this.state.isOpen) {
       this.setState(
         {

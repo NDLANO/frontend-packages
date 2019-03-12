@@ -16,12 +16,7 @@ const SearchFilterList = ({
   label,
   options,
   values,
-  defaultVisibleCount,
-  showLabel,
-  hideLabel,
   narrowScreenOnly,
-  labelNotVisible,
-  contextFilter,
   onChange,
   onSubfilterChange,
   preid,
@@ -29,32 +24,14 @@ const SearchFilterList = ({
   subjectValues,
   children,
 }) => {
-  const modifiers = [];
-
-  if (narrowScreenOnly) {
-    modifiers.push('narrow-screen-only');
-  }
-
-  if (contextFilter) {
-    modifiers.push('context-filter');
-  }
-
-  const showAll =
-    defaultVisibleCount === null || options.length <= defaultVisibleCount;
-  const labelModifiers = [];
-
-  if (labelNotVisible) {
-    labelModifiers.push('hidden');
-  }
-
   return (
-    <div className={searchFilterClasses('', modifiers)}>
+    <div className={searchFilterClasses('')}>
       <div>
         {options.map((option, index) => {
           const itemModifiers = [];
           const checked = values.some(value => value === option.value);
 
-          if (!showAll && !checked && index + 1 > this.state.visibleCount) {
+          if (!checked && index + 1 > this.state.visibleCount) {
             itemModifiers.push('hidden');
           }
 
@@ -88,16 +65,12 @@ const SearchFilterList = ({
                   }
                 }}
               />
-              <div className={searchFilterClasses('', modifiers)}>
+              <div className={searchFilterClasses()}>
                 <FilterList
                   options={option.subjectFilters}
                   label={label}
-                  labelNotVisible={true}
+                  labelNotVisible
                   values={subjectValues[option.value]}
-                  defaultVisibleCount={defaultVisibleCount}
-                  modifiers={!contextFilter ? 'search' : null}
-                  showLabel={showLabel}
-                  hideLabel={hideLabel}
                   onChange={(subjectFilters, subjectFilter) =>
                     onSubfilterChange(
                       option.value,
@@ -128,16 +101,10 @@ SearchFilterList.propTypes = {
     }),
   ).isRequired,
   values: PropTypes.arrayOf(valueShape),
-  defaultVisibleCount: PropTypes.number,
   onChange: PropTypes.func,
   onSubfilterChange: PropTypes.func,
-  showLabel: PropTypes.string,
-  hideLabel: PropTypes.string,
-  narrowScreenOnly: PropTypes.bool,
   noFilterSelectedLabel: PropTypes.string,
-  contextFilter: PropTypes.bool,
   children: PropTypes.node,
-  showAll: PropTypes.bool,
 };
 
 SearchFilterList.defaultProps = {

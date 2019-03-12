@@ -1,6 +1,6 @@
 .c-search-filter {
   @include mq(mobileWide) {
-    +.c-search-filter {
+    + .c-search-filter {
       margin-top: $spacing--medium;
     }
   }
@@ -48,7 +48,7 @@
 
   @include mq($from: mobileWide, $until: desktop) {
     .c-search-filter {
-      +.c-filter__item {
+      + .c-filter__item {
         margin-top: $spacing;
       }
 
@@ -64,5 +64,4 @@
       width: 235px - $spacing;
     }
   }
-
 }

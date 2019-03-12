@@ -9,6 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  LicenseDescription,
   getLicenseByAbbreviation,
   resourceTypes,
   getResourceTypeNamespace,
@@ -17,7 +18,6 @@ import {
 } from '@ndla/licenses';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
-import LicenseByline from '../LicenseByline';
 
 const oClasses = new BEMHelper({
   name: 'media',
@@ -105,11 +105,12 @@ export const MediaListItemBody = ({
         />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-      <LicenseByline
+      <LicenseDescription
         withDescription
         locale={locale}
         messages={messages}
         licenseRights={license.rights}
+        highlightCC
       />
       <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}

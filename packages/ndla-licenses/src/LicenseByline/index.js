@@ -7,5 +7,5 @@
  */
 
 import LicenseByline from './LicenseByline';
-
-export default LicenseByline;
+import LicenseDescription from './LicenseDescription';
+export { LicenseByline, LicenseDescription };

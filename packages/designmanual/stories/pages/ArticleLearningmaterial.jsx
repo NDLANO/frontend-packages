@@ -25,7 +25,7 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import { FigureImage } from '../article/FigureImage';
 
-export default () => (
+const ArticleLearningMaterial = () => (
   <OneColumn>
     <ArticleWrapper>
       <LayoutItem layout="center">
@@ -48,11 +48,6 @@ export default () => (
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
           type="left"
         />
-        <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-        </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
@@ -99,3 +94,5 @@ export default () => (
     </ArticleWrapper>
   </OneColumn>
 );
+
+export default ArticleLearningMaterial;

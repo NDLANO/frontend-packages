@@ -9,7 +9,7 @@ export default {
     normal: DURATION_DEFAULT,
     slow: '600ms',
   },
-  fadeInLeft: duration => `
+  fadeInLeft: (duration: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeIn;
         @keyframes fadeIn {
@@ -22,7 +22,7 @@ export default {
               opacity: 1;
             }
           }`,
-  fadeInBottom: duration => `
+  fadeInBottom: (duration: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInBottom;
         @keyframes fadeInBottom {
@@ -35,7 +35,7 @@ export default {
               opacity: 1;
             }
           }`,
-  fadeInScaled: duration => `
+  fadeInScaled: (duration: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInScaled;
         @keyframes fadeInScaled {
@@ -48,7 +48,7 @@ export default {
               opacity: 1;
             }
           }`,
-  fadeOut: duration => `
+  fadeOut: (duration: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeOut;
         @keyframes fadeOut {
@@ -59,7 +59,7 @@ export default {
               opacity: 0;
             }
           }`,
-  fadeIn: duration => `
+  fadeIn: (duration: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeOut;
         @keyframes fadeOut {

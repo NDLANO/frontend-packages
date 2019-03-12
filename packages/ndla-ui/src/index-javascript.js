@@ -72,6 +72,7 @@ export {
   SearchResultList,
   SearchResultItem,
   SearchFilter,
+  SearchFilterList,
   SearchPopoverFilter,
   ActiveFilters,
   ToggleSearchButton,
@@ -93,7 +94,6 @@ export {
   Content,
 } from './Layout';
 export { createUniversalPortal } from './utils/createUniversalPortal';
-export { default as SafeLink } from './common/SafeLink';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
 export {
@@ -150,7 +150,6 @@ export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 
-export { default as ErrorMessage } from './ErrorMessage';
 export { default as ContentLoader } from './ContentLoader';
 
 export { default as constants } from './model';

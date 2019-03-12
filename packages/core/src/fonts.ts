@@ -4,9 +4,9 @@ const baseLineHeightUnit = 26;
 /**
  * Should do the same as: https://github.com/inuitcss/inuitcss/blob/c14029caf75b7b69d7551a5e22036ec280b02e9f/tools/_tools.font-size.scss
  */
-function sizes(fontSize, lineHeight) {
-  const fontSizeUnit = parseInt(fontSize, 10);
-  const fontSizeRem = parseInt(fontSize, 10) / baseFontSizeUnit;
+function sizes(fontSize: string | number, lineHeight?: string | number) {
+  const fontSizeUnit = parseInt(fontSize as string, 10);
+  const fontSizeRem = parseInt(fontSize as string, 10) / baseFontSizeUnit;
 
   const fontSizeStyling = `font-size: ${fontSize};font-size: ${fontSizeRem}rem;`;
   if (lineHeight) {

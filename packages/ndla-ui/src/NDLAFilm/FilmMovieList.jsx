@@ -27,7 +27,9 @@ const FilmMovieList = ({
   autoSizedProps,
 }) => (
   <section {...classes()}>
-    <h1 {...classes('heading')} style={{ marginLeft: `${autoSizedProps.margin}px` }}>
+    <h1
+      {...classes('heading')}
+      style={{ marginLeft: `${autoSizedProps.margin}px` }}>
       {name}
     </h1>
     <Carousel
@@ -37,6 +39,7 @@ const FilmMovieList = ({
       wrapperClass="c-film-movielist__carousel-wrapper-buttons"
       items={movies.map(movie => (
         <FilmContentCard
+          key={movie.id}
           movie={movie}
           columnWidth={autoSizedProps.columnWidth}
           resourceTypes={resourceTypes}

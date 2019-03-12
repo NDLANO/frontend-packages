@@ -4,8 +4,16 @@ import { spacing, colors, fonts, misc, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import styled from 'react-emotion';
 
-const FilmContentCard = ({ movie, columnWidth, distanceBetweenItems, resourceTypes }) => (
-  <StyledSlideWrapper key={movie.id} columnWidth={columnWidth} style={{ marginRight: `${distanceBetweenItems}px` }}>
+const FilmContentCard = ({
+  movie,
+  columnWidth,
+  distanceBetweenItems,
+  resourceTypes,
+}) => (
+  <StyledSlideWrapper
+    key={movie.id}
+    columnWidth={columnWidth}
+    style={{ marginRight: `${distanceBetweenItems}px` }}>
     <SafeLink to={movie.url}>
       <StyledImage
         role="img"
@@ -21,9 +29,7 @@ const FilmContentCard = ({ movie, columnWidth, distanceBetweenItems, resourceTyp
               resourceType => resourceType.id === movieType,
             );
             return resource ? (
-              <StyledMovieTags key={movieType}>
-                {resource.name}
-              </StyledMovieTags>
+              <StyledMovieTags key={movieType}>{resource.name}</StyledMovieTags>
             ) : null;
           })}
         </StyledTagWrapper>

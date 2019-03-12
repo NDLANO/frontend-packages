@@ -7,7 +7,6 @@
  */
 
 import styled, { css } from 'react-emotion';
-import { spacing, breakpoints, mq } from '@ndla/core';
 
 export const slideWrapperCSS = css`
   width: 100%;
@@ -43,5 +42,5 @@ export const StyledSlideContent = styled.div`
 
 export const StyledWrapperAutosizer = styled.div`
   margin: 0 auto;
-  width: ${props => (props.wrapperWidth)};
+  width: ${props => props.wrapperWidth};
 `;

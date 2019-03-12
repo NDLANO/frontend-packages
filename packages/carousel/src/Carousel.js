@@ -44,7 +44,6 @@ class Carousel extends Component {
   }
 
   onSwipeEnd(e) {
-    console.log(this.swipeSpeed);
     const {
       columnsPrSlide,
       columnWidth,
@@ -54,7 +53,9 @@ class Carousel extends Component {
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
 
     const moved = Math.round(
-      ((-this.swipeSpeed * 20) + this.swipeDistance) / (columnWidth + distanceBetweenItems),
+      (-Math.min(this.props.columnWidth / 2, this.swipeSpeed * 5) +
+        this.swipeDistance) /
+        (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
     if (moved !== 0) {

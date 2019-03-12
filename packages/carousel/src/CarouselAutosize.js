@@ -65,16 +65,16 @@ class CarouselAutosizeWrapper extends Component {
       maxColumnWidth,
     } = this.state.useBreakPoint;
 
-    const wrapperWidth = 
+    const wrapperWidth =
       this.autosizeRef.current.offsetWidth -
-      ((columnsPrSlide - 1) * distanceBetweenItems) -
+      (columnsPrSlide - 1) * distanceBetweenItems -
       (margin || 0) * 2;
 
     const columnWidthDynamic = wrapperWidth / columnsPrSlide;
     const columnWidth = maxColumnWidth
       ? Math.min(columnWidthDynamic, maxColumnWidth)
       : columnWidthDynamic;
-    
+
     return {
       columnsPrSlide: columnsPrSlide,
       columnWidth: columnWidth,

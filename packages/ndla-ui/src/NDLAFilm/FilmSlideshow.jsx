@@ -55,6 +55,7 @@ class FilmSlideshow extends Component {
     this.onSwipe = this.onSwipe.bind(this);
     this.gotoSlide = this.gotoSlide.bind(this);
     this.onChangedSlide = this.onChangedSlide.bind(this);
+    this.onTransitionEnd = this.onTransitionEnd.bind(this);
 
     this.timer = null;
     this.onChangedSlideBlock = false;
@@ -122,7 +123,7 @@ class FilmSlideshow extends Component {
 
   onSwipe(e) {
     clearTimeout(this.timer);
-    this.swipeDistance = e[0];
+    this.swipeDistance = e.x || e[0];
     this.slideRef.current.style.transition = 'none';
     this.slideRef.current.style.transform = this.getSlidePosition(
       this.state.slideIndexTarget,
@@ -130,6 +131,27 @@ class FilmSlideshow extends Component {
     const opacityText = 1 - Math.min(100, Math.abs(this.swipeDistance)) / 100;
     this.slideText.current.style.transition = 'none';
     this.slideText.current.style.opacity = opacityText;
+  }
+
+  onTransitionEnd() {
+    const slideshowLength = this.props.slideshow.length;
+    if (this.state.slideIndex === -1) {
+      this.slideRef.current.style.transition = 'none';
+      this.slideRef.current.style.transform = this.getSlidePosition(
+        slideshowLength - 1,
+      );
+      this.setState({
+        slideIndex: slideshowLength - 1,
+        slideIndexTarget: slideshowLength - 1,
+      });
+    } else if (this.state.slideIndex >= slideshowLength) {
+      this.slideRef.current.style.transition = 'none';
+      this.slideRef.current.style.transform = this.getSlidePosition(0);
+      this.setState({
+        slideIndex: 0,
+        slideIndexTarget: 0,
+      });
+    }
   }
 
   getSlidePosition(target) {
@@ -156,7 +178,6 @@ class FilmSlideshow extends Component {
   }
 
   render() {
-    
     const { slideshow } = this.props;
     const { slideIndex, slideIndexTarget, animationComplete } = this.state;
 
@@ -171,9 +192,9 @@ class FilmSlideshow extends Component {
     }
     const slideshowWidth = `${(slideshow.length + 2) * 100}vw`;
     let activeSlide = slideIndex;
-    if (activeSlide === -1) {
+    if (activeSlide < 0) {
       activeSlide = slideshow.length - 1;
-    } else if (activeSlide === slideshow.length) {
+    } else if (activeSlide >= slideshow.length) {
       activeSlide = 0;
     }
 
@@ -185,8 +206,7 @@ class FilmSlideshow extends Component {
           detectMouse={false}
           detectTouch
           onSwipeEnd={this.onSwipeEnd}
-          onSwipe={this.onSwipe}
-        >
+          onSwipe={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <a
@@ -240,9 +260,8 @@ class FilmSlideshow extends Component {
               role="img"
               onAnimationEnd={this.onChangedSlide}
               style={{
-                backgroundImage: `url(${(slideshow[slideIndexTarget]
-                  .metaImage &&
-                  slideshow[slideIndexTarget].metaImage.url) ||
+                backgroundImage: `url(${(slideshow[activeSlide].metaImage &&
+                  slideshow[activeSlide].metaImage.url) ||
                   ''})`,
               }}
             />
@@ -250,6 +269,7 @@ class FilmSlideshow extends Component {
           <div
             ref={this.slideRef}
             {...classes('item-wrapper')}
+            onTransitionEnd={this.onTransitionEnd}
             style={{
               width: slideshowWidth,
               transform: this.getSlidePosition(slideIndex),
@@ -266,7 +286,7 @@ class FilmSlideshow extends Component {
               type="button"
               {...classes(
                 'indicator-dot',
-                index === slideIndexTarget ? 'active' : '',
+                index === activeSlide ? 'active' : '',
               )}
               onClick={() => !isMobile && this.gotoSlide(index, true)}>
               <span />

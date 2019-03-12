@@ -13,7 +13,7 @@
   }
   &__heading {
     @include font-size(22px, 26px);
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-semibold;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #fff;

@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { spacing, shadows } from '@ndla/core';
 
 import MovieListItem from './MovieListItem';

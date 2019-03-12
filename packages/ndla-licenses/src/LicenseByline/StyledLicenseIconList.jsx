@@ -9,7 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
-import styled, { css } from 'react-emotion';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 export const StyledList = styled.ul`
   list-style: none;

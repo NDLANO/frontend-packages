@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
 import { FieldHeader, Select, FieldHeaderIconStyle } from '@ndla/forms';
 import Modal from '@ndla/modal';

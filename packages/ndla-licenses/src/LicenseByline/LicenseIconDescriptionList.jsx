@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';

@@ -1,5 +1,5 @@
 import FieldHeader from './FieldHeader';
-import Dropdown from './Dropdown';
+import Select from './Select';
 import FieldSection from './FieldSection';
 import Input from './Input';
 import FieldSplitter from './FieldSplitter';
@@ -14,11 +14,11 @@ export {
   FieldSection,
   FieldSplitter,
   FieldRemoveButton,
-  Dropdown,
   Input,
   RadiobuttonItem,
   CheckboxItem,
   UploadDropZone,
   FieldHeaderIconStyle,
   StyledButtonWrapper,
+  Select,
 };

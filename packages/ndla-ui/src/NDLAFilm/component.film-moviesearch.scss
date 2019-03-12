@@ -1,0 +1,127 @@
+.c-film-moviesearch {
+  margin: $spacing 0 $spacing--large;
+  &__topic-navigation {
+    margin: $spacing 0;
+    @include mq(tablet) {
+      display: flex;
+      align-items: flex-start;
+      padding: 0 $spacing;
+    }
+    ul {
+      list-style-type: none;
+      list-style-image: none;
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: $spacing--small 0;
+      @include mq(tablet) {
+        padding-left: $spacing;
+      }
+      li {
+        padding: 0;
+        width: 100%;
+        @include mq(tablet) {
+          width: 50%;
+        }
+        a {
+          color: #fff;
+          &:hover,
+          &:focus {
+            color: $brand-color--light;
+          }
+        }
+      }
+    }
+  }
+  &__dropdown-button {
+    border-radius: $border-radius;
+    @include font-size(22px, 26px);
+    border: 0;
+    text-transform: uppercase;
+    background: $film-color-bright;
+    color: #fff;
+    padding: $spacing--small $spacing--small * 1.5;
+    font-weight: $font-weight-semibold;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: space-between;
+    width: 100%;
+    letter-spacing: 0.05em;
+    @include mq(tablet) {
+      padding: $spacing--small $spacing;
+    }
+    div:first-child {
+      @include mq($until: tablet) {
+        display: flex;
+        flex-direction: column;
+        small {
+          padding: 0;
+        }
+      }
+    }
+    small {
+      text-transform: none;
+      padding-left: $spacing--small;
+      font-weight: normal;
+    }
+  }
+  &__dropdown-container {
+    position: relative;
+    margin: 0 0 $spacing;
+  }
+  &__dropdown-wrapper {
+    .c-film-moviesearch__dropdown-button {
+      border-radius: 0;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    display: flex;
+    flex-direction: column;
+    padding: $spacing--small 0;
+    background: #deebf6;
+    border-radius: $border-radius;
+    left: 0;
+    right: 0;
+    animation: zoomInSelect 200ms ease;
+    box-shadow: 0 0 30px rgba($black, 0.6);
+    position: absolute;
+    z-index: 9999;
+    button,
+    a {
+      color: $primary-color;
+      border: 0;
+      outline: 0;
+      text-align: left;
+      background: transparent;
+      padding: $spacing--small;
+      padding-left: $spacing;
+      font-weight: $font-weight-semibold;
+      text-decoration: none;
+      box-shadow: none;
+      transition: background 200ms ease;
+      &:hover,
+      &:focus {
+        color: $brand-color;
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+@keyframes zoomInSelect {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    transform: scale3d(0.95, 0.95, 0.95);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}

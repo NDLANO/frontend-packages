@@ -1,6 +1,6 @@
 import React from 'react';
-import { FactBox, LicenseByline } from '@ndla/ui';
-import { BY, NC, ND } from '@ndla/licenses';
+import { FactBox } from '@ndla/ui';
+import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 
 const FactBoxExample = () => (
   <FactBox>
@@ -19,11 +19,7 @@ const FactBoxExample = () => (
       artikkel, og den kan inneholde lisensiering om eksternt innhold er brukt.
     </p>
     <div className="c-source-list">
-      <LicenseByline
-        className="c-source-list__item"
-        locale="nb"
-        licenseRights={[BY, NC, ND]}
-      />
+      <LicenseByline marginRight locale="nb" licenseRights={[BY, NC, ND]} />
       <span className="c-source-list__item">Gary Waters</span>
       <span className="c-source-list__item">Kilde: SNL.no</span>
     </div>

@@ -38,6 +38,32 @@ const strippedStyle = css`
 `;
 
 const appearances = {
+  inverted: css`
+    background: #0f2b47;
+    color: #fff;
+    .c-icon {
+      fill: #fff;
+    }
+  `,
+  invertedOutline: css`
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    font-weight: ${fonts.weight.bold};
+    box-shadow: none;
+    &:hover,
+    &:focus {
+      color: white;
+      background-color: ${colors.brand.primary};
+      border: 2px solid transparent;
+      transform: translateY(0) translateX(0);
+    }
+    &:disabled {
+      border: 2px solid transparent;
+      cursor: not-allowed;
+      transform: translateY(0) translateX(0);
+    }
+  `,
   lighter: css`
     ${fonts.sizes('12px', '15px')};
     background-color: ${colors.brand.lighter};
@@ -149,6 +175,8 @@ export const Button = ({
   appearance,
   children,
   disabled,
+  inverted,
+  invertedOutline,
   ...rest
 }) => {
   const modifiers = {
@@ -156,6 +184,8 @@ export const Button = ({
     outline,
     lighter,
     stripped,
+    inverted,
+    invertedOutline,
   };
   const styledAppearance = appearance || modifierToApperance(modifiers);
 
@@ -185,7 +215,14 @@ Button.propTypes = {
   lighter: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
-  appearance: PropTypes.oneOf(['outline', 'link', 'stripped', 'lighter']),
+  appearance: PropTypes.oneOf([
+    'outline',
+    'link',
+    'stripped',
+    'lighter',
+    'inverted',
+    'invertedOutline',
+  ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

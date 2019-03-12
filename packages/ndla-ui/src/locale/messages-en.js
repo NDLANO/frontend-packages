@@ -439,6 +439,42 @@ const messages = {
   notions: {
     closeNotion: 'Close',
   },
+  ndlaFilm: {
+    slideBackwardsLabel: 'Scroll backwards',
+    slideForwardsLabel: 'Scroll forwards',
+    about: {
+      heading: 'About NDLA Film',
+      more: 'Read more about NDLA film',
+      text:
+        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+    },
+    search: {
+      placeholder: 'Search on moviename',
+      categoryButton: 'Choose category',
+      subjectButton: 'Go to subject',
+    },
+    editor: {
+      slideshowHeader: 'Slideshow:',
+      slideshowTitle: 'Movies on slideshow',
+      slideshowSubTitle: 'on frontpage',
+      movieGroupHeader: 'Movies themes:',
+      addMovieToSlideshow: 'Add movie to slideshow',
+      addMovieToGroup: 'Add a movie to "{name}"',
+      editMovieGroupName: 'Change the names on this movie group',
+      deleteMovieGroup: 'Delete "{name}"',
+      moveMovieGroupUp: 'Move up',
+      moveMovieGroupDown: 'Move down',
+      changeOrder: 'Change order',
+      removeMovieFromGroup: 'Remove movie from group',
+      removeMovieFromSlideshow: 'Remove movie from slideshow',
+      createThemeGroup: 'Create new movie group',
+      saveNameChanges: 'Save changes',
+      cancel: 'Cancel',
+      groupNamePlaceholder: 'Write name in {lang}',
+      editGroupTitle: 'Change the name(s) in this movie group:',
+      newGroupTitle: 'What shall we call the new movie group?',
+    },
+  },
 };
 
 export default messages;

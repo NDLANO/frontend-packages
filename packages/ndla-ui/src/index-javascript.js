@@ -73,6 +73,7 @@ export {
   SearchResultList,
   SearchResultItem,
   SearchFilter,
+  SearchFilterList,
   SearchPopoverFilter,
   ActiveFilters,
   ToggleSearchButton,
@@ -93,7 +94,6 @@ export {
   PageContainer,
   Content,
 } from './Layout';
-export { default as LicenseByline } from './LicenseByline';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
@@ -126,6 +126,7 @@ export {
   ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
+  NdlaFilmHero,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
@@ -163,3 +164,11 @@ export { default as messagesNN } from './locale/messages-nn';
 export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
+
+export {
+  FilmSlideshow,
+  MovieGrid,
+  AboutNdlaFilm,
+  FilmMovieSearch,
+  FilmMovieList,
+} from './NDLAFilm';

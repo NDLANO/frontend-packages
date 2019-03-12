@@ -30,6 +30,12 @@ export default {
   /**
    * Content type colors
    */
+
+  ndlaFilm: {
+    filmColor: '#091a2a',
+    filmColorBright: '#20588f',
+  },
+
   subject: {
     light: brandLight,
     dark: brandDark,

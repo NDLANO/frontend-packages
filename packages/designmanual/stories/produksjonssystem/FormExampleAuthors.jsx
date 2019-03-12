@@ -13,7 +13,7 @@ import {
   FieldHeader,
   FieldSection,
   Input,
-  Dropdown,
+  Select,
   FieldSplitter,
   FieldRemoveButton,
 } from '@ndla/forms';
@@ -110,7 +110,7 @@ class FormExampleAuthors extends Component {
                   value={author.name}
                   onChange={e => this.handleInputChange(e.target.value, index)}
                 />
-                <Dropdown
+                <Select
                   value={author.role}
                   onChange={e => this.handleUpdateRole(e.target.value, index)}>
                   <option value="">Tildel rolle</option>
@@ -119,7 +119,7 @@ class FormExampleAuthors extends Component {
                       {titleRole}
                     </option>
                   ))}
-                </Dropdown>
+                </Select>
               </FieldSplitter>
             </div>
             <div>

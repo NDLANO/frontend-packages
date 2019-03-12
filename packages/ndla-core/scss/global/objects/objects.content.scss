@@ -12,4 +12,9 @@
       background-color: $brand-grey--lightest;
     }
   }
+
+  &--ndlaFilm {
+    background-color: $film-color;
+    min-height: 100vh;
+  }
 }

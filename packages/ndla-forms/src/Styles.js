@@ -17,6 +17,8 @@ export const FieldHeaderIconStyle = css`
   padding: 0;
   margin: 0 ${spacing.spacingUnit / 8}px -5px;
   transform: translate(${spacing.spacingUnit / 8}px, -4px);
+  border: 0;
+  background: 0;
 
   &:hover,
   &:focus {
@@ -27,9 +29,11 @@ export const FieldHeaderIconStyle = css`
 export const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: ${spacing.normal} 0;
+  margin-top: ${spacing.medium};
 
-  > button + button {
-    margin-left: ${spacing.small};
+  > button {
+    margin-right: ${spacing.small};
   }
+  padding-left: ${props =>
+    props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0};
 `;

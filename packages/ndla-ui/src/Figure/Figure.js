@@ -15,7 +15,7 @@ import BEMHelper from 'react-bem-helper';
 import { isFunction } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
 import { Link as LinkIcon } from '@ndla/icons/common';
-import LicenseByline from '../LicenseByline';
+import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '../common/SafeLink';
 
 const classes = new BEMHelper({
@@ -39,7 +39,10 @@ export const FigureCaption = ({
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={licenseRights} locale={locale}>
+        <LicenseByline
+          licenseRights={licenseRights}
+          locale={locale}
+          marginRight>
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>

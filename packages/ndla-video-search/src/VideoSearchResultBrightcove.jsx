@@ -8,9 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LicenseByline } from '@ndla/ui';
 import Button from '@ndla/button';
-import { getLicenseByNBTitle } from '@ndla/licenses';
+import { LicenseByline, getLicenseByNBTitle } from '@ndla/licenses';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 import { LicenseShape, BrightcoveShape } from './shapes';

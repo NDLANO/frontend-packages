@@ -3,12 +3,20 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import {
+  LicenseDescription,
+  BY,
+  SA,
+  NC,
+  ND,
+  PD,
+  CC0,
+  COPYRIGHTED,
+} from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
   Footer,
-  LicenseByline,
   TopicIntroductionList,
   PageContainer,
   Content,
@@ -46,6 +54,7 @@ import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
 import ListViewExample from './organisms/ListViewExample';
+import CarouselExample from './organisms/CarouselExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -396,13 +405,12 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseByline
+          <LicenseDescription
             locale="nb"
             messages={{
               modelPremission:
                 'Personen(e) på bildet har godkjent at det kan brukes videre.',
             }}
-            withDescription
             licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
           />
         </div>
@@ -526,6 +534,11 @@ storiesOf('Sammensatte moduler', module)
           Nettstedet er utarbeidet av NDLA med åpen kildekode.
         </Footer.Text>
       </Footer>
+    </Center>
+  ))
+  .add('Bilde karusell', () => (
+    <Center>
+      <CarouselExample />
     </Center>
   ))
   .add('Tilleggsstoff', () => (

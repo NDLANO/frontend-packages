@@ -20,8 +20,6 @@ const style = css`
   padding-right: ${spacing.normal};
   padding-left: ${spacing.normal};
   font-weight: ${fonts.weight.normal};
-  color: ${colors.brand.primary};
-  border: 2px solid ${colors.brand.primary};
 
   svg {
     width: 16px;
@@ -42,16 +40,15 @@ const style = css`
   }
 `;
 
-const TopicMenuButton = ({ children, ...rest }) => {
-  return (
-    <Button apperance="outline" css={style} {...rest}>
-      <Menu /> {children}
-    </Button>
-  );
-};
+const TopicMenuButton = ({ ndlaFilm, children, ...rest }) => (
+  <Button invertedOutline={ndlaFilm} outline={!ndlaFilm} css={style} {...rest}>
+    <Menu /> {children}
+  </Button>
+);
 
 TopicMenuButton.propTypes = {
   children: PropTypes.node.isRequired,
+  ndlaFilm: PropTypes.bool,
 };
 
 export default TopicMenuButton;

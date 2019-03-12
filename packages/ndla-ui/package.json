@@ -32,6 +32,7 @@
   "dependencies": {
     "@ndla/button": "^0.2.9",
     "@ndla/core": "^0.5.0",
+    "@ndla/carousel": "^0.0.2",
     "@ndla/hooks": "^0.1.0",
     "@ndla/i18n": "^0.4.2",
     "@ndla/icons": "^0.6.9",

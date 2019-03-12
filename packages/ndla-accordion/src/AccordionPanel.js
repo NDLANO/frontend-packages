@@ -29,6 +29,7 @@ const StyledAccordionPanel = styled.section`
       padding: 0;
       border: 0;
       max-height: 0;
+      overflow: hidden;
       opacity: 0;
     `};
   ${props =>

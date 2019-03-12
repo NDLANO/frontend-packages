@@ -83,7 +83,7 @@ PageItem.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-const StyledPager = styled('div')`
+const StyledPager = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

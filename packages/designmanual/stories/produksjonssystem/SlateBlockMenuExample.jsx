@@ -33,7 +33,7 @@ const iconClass = css`
 const renderArticleInModal = pageId => (
   <ArticleInModal
     pageId={pageId}
-    activateButton={<InformationOutline className={iconClass} />}
+    activateButton={<InformationOutline css={iconClass} />}
   />
 );
 

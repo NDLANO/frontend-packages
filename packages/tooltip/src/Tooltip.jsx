@@ -17,7 +17,7 @@ const TooltipWrapper = styled.div`
   position: relative;
 `;
 
-const TooltipElement = css`
+const tooltipCss = css`
   display: block;
   color: #fff;
   position: absolute;
@@ -160,7 +160,7 @@ class Tooltip extends Component {
         <Fade animateIn={this.state.showTooltip} delay={this.props.delay}>
           <span
             role="tooltip"
-            className={TooltipElement}
+            css={tooltipCss}
             style={this.getPosition()}
             ref={this.tooltipRef}>
             {this.props.tooltip}

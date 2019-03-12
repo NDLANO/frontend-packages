@@ -276,7 +276,7 @@ ${mq.range({ from: breakpoints.wide })} {
 }
 `;
 
-const searchIconClass = css`
+const searchIconCss = css`
   border: 0;
   background: transparent;
   margin: 0;
@@ -373,7 +373,7 @@ class ImageSearch extends React.Component {
           focusOnMount
           iconRight={
             <button
-              className={searchIconClass}
+              css={searchIconCss}
               aria-label={searchButtonTitle}
               type="button"
               onClick={() => {

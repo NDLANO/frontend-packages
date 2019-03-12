@@ -83,7 +83,7 @@ const ItemName = ({
   lastItemClickable,
   id,
 }) => (
-  <div className={itemNameStyling}>
+  <div css={itemNameStyling}>
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"

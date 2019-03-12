@@ -286,7 +286,7 @@ class StructureExample extends Component {
     }
     return (
       <div className={'filestructure'}>
-        <Button outline className={buttonAddition} onClick={() => {}}>
+        <Button outline css={buttonAddition} onClick={() => {}}>
           Emne funksjon
         </Button>
       </div>

@@ -165,7 +165,7 @@ const SlateBlockMenu = React.forwardRef(
               {actions.map(action => (
                 <Item key={action.data.object}>
                   <button
-                    className={itemButton}
+                    css={itemButton}
                     data-cy={`create-${action.data.object}`}
                     type="button"
                     onClick={() => clickItem(action.data)}>

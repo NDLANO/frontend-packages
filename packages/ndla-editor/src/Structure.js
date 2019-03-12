@@ -102,7 +102,7 @@ const Structure = ({
             return (
               <ItemsList
                 key={pathToString}
-                className={listClass}
+                css={listClass}
                 level={level}
                 highlight={
                   highlightMainActive ? isMainActive : isOpen && level === 0

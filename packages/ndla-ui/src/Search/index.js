@@ -17,6 +17,7 @@ import {
 } from './SearchResult';
 
 import SearchFilter from './SearchFilter';
+import SearchFilterList from './SearchFilterList';
 import SearchPopoverFilter from './SearchPopoverFilter';
 import ContentTypeResult from './ContentTypeResult';
 import SearchResultAuthor from './SearchResultAuthor';
@@ -32,6 +33,7 @@ export {
   SearchResultItem,
   SearchResultList,
   SearchFilter,
+  SearchFilterList,
   SearchPopoverFilter,
   ContentTypeResult,
   SearchResultAuthor,

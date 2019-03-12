@@ -73,6 +73,7 @@ export {
   SearchResultList,
   SearchResultItem,
   SearchFilter,
+  SearchFilterList,
   SearchPopoverFilter,
   ActiveFilters,
   ToggleSearchButton,

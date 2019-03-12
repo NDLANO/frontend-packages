@@ -19,7 +19,7 @@ import FileNameInput from './FileNameInput';
 const FILE_HEIGHT = 69;
 const FILE_MARGIN = 4;
 
-const StyledFile = styled.li`
+const fileCss = css`
   margin: ${FILE_MARGIN}px 0 0;
   padding: 0;
   background: ${colors.brand.greyLighter};
@@ -44,19 +44,13 @@ const StyledFile = styled.li`
       height: 18px;
     }
   }
-  ${props =>
-    props.delete &&
-    css`
-      ${animations.fadeOut()}
-    `}
-  ${props =>
-    props.error &&
-    css`
-      background: ${colors.support.redLight};
-      > div:first-child button {
-        color: ${colors.support.red};
-      }
-    `}
+`;
+
+const fileErrorCss = css`
+  background: ${colors.support.redLight};
+  > div:first-child button {
+    color: ${colors.support.red};
+  }
 `;
 
 const ListWrapper = styled.ul`
@@ -74,7 +68,7 @@ const ListWrapper = styled.ul`
 const ButtonIcons = styled.button`
   border: 0;
   background: none;
-  color: ${colors.brand.primary};
+  color: ${props => (props.delete ? colors.support.red : colors.brand.primary)};
   width: ${spacing.medium};
   height: ${spacing.medium};
   display: flex;
@@ -84,24 +78,17 @@ const ButtonIcons = styled.button`
   padding: 0;
   border-radius: 100%;
   transition: background 200ms ease;
+  cursor: ${props => (props.draggable ? 'grabbing' : 'auto')};
+
   &:hover,
   &:focus {
-    background: ${colors.brand.light};
+    background: ${props =>
+      props.delete ? colors.support.redLight : colors.brand.light};
   }
-  ${props =>
-    props.delete &&
-    css`
-      color: ${colors.support.red};
-      &:hover,
-      &:focus {
-        background: ${colors.support.redLight};
-      }
-    `}
-  ${props =>
-    props.draggable &&
-    css`
-      cursor: grabbing;
-    `};
+`;
+
+const fadeOutAnimation = css`
+  ${animations.fadeOut()}
 `;
 
 class FileListEditor extends Component {
@@ -245,10 +232,13 @@ class FileListEditor extends Component {
         innerRef={this.filesWrapperRef}
         draggingIndex={draggingIndex}>
         {files.map((file, index) => (
-          <StyledFile
+          <li
             key={file.path}
-            delete={deleteIndex === index}
-            error={editFileIndex !== index && file.title === ''}
+            css={[
+              fileCss,
+              deleteIndex === index && fadeOutAnimation,
+              editFileIndex !== index && file.title === '' && fileErrorCss,
+            ]}
             onAnimationEnd={
               deleteIndex === index ? this.executeDeleteFile : undefined
             }>
@@ -313,7 +303,7 @@ class FileListEditor extends Component {
                 </ButtonIcons>
               </Tooltip>
             </div>
-          </StyledFile>
+          </li>
         ))}
       </ListWrapper>
     );

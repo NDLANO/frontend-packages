@@ -11,8 +11,8 @@ export default {
   },
   fadeInLeft: duration => `
   animation-duration: ${duration || DURATION_DEFAULT};
-    animation-name: fadeIn;
-        @keyframes fadeIn {
+    animation-name: fadeInLeft;
+        @keyframes fadeInLeft {
             0% {
               transform: translateX(-${spacing.small});
               opacity: 0;
@@ -61,8 +61,8 @@ export default {
           }`,
   fadeIn: duration => `
   animation-duration: ${duration || DURATION_DEFAULT};
-    animation-name: fadeOut;
-        @keyframes fadeOut {
+    animation-name: fadeIn;
+        @keyframes fadeIn {
             0% {
               opacity: 0;
             }

@@ -124,7 +124,8 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${modalAnimations} .animation-container {
+  ${modalAnimations}
+  .animation-container {
     z-index: 9001;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -419,7 +420,8 @@ const Portal = ({
             data-modal={uuidData}
             style={{ animationDuration: `${animationDuration}ms`, minHeight }}
             onAnimationEnd={onAnimationEnd}
-            className={`animation-container ${animation} ${animateIn} ${size} ${backgroundColor}`}>
+            className={`animation-container ${animation} ${animateIn &&
+              'animateIn'} ${size} ${backgroundColor}`}>
             {children(closeModal)}
           </div>
         </ModalWrapper>
@@ -480,6 +482,7 @@ class Modal extends React.Component {
   }
 
   onAnimationEnd() {
+    console.log('HEIHEI');
     if (!this.state.animateIn && this.state.isOpen) {
       this.setState(
         {

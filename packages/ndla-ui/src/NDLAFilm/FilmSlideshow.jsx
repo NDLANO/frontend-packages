@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swipe from 'react-swipe-component';
+import { Swipe } from 'react-swipe-component';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn } from '@ndla/ui';
@@ -156,6 +156,7 @@ class FilmSlideshow extends Component {
   }
 
   render() {
+    
     const { slideshow } = this.props;
     const { slideIndex, slideIndexTarget, animationComplete } = this.state;
 
@@ -181,9 +182,11 @@ class FilmSlideshow extends Component {
         <Swipe
           {...classes('')}
           nodeName="div"
-          mouseSwipe={false}
+          detectMouse={false}
+          detectTouch
           onSwipeEnd={this.onSwipeEnd}
-          onSwipe={this.onSwipe}>
+          onSwipe={this.onSwipe}
+        >
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <a

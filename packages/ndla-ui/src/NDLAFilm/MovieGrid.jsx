@@ -15,15 +15,14 @@ const MovieGrid = ({
   moviesByType,
   resourceTypes,
   loadingPlaceholderHeight,
-  margin,
-  columnWidth,
+  autoSizedProps,
   t,
 }) => {
   return (
     <section>
       <h1
         {...movieListClasses('heading')}
-        style={{ marginLeft: `${margin + 7}px` }}>
+        style={{ marginLeft: `${autoSizedProps.margin}px` }}>
         {resourceTypeName && resourceTypeName.name}
         <small>
           {fetchingMoviesByType
@@ -33,7 +32,9 @@ const MovieGrid = ({
       </h1>
       <div
         {...movieListClasses('movie-listing')}
-        style={{ marginLeft: `${margin}px` }}>
+        style={{
+          marginLeft: `${autoSizedProps.margin}px`,
+        }}>
         {fetchingMoviesByType && (
           <div style={{ height: loadingPlaceholderHeight }} />
         )}
@@ -41,7 +42,8 @@ const MovieGrid = ({
           moviesByType.map(movie => (
             <FilmContentCard
               movie={movie}
-              columnWidth={columnWidth}
+              columnWidth={autoSizedProps.columnWidth}
+              distanceBetweenItems={autoSizedProps.distanceBetweenItems}
               resourceTypes={resourceTypes}
             />
           ))}
@@ -51,14 +53,13 @@ const MovieGrid = ({
 };
 
 MovieGrid.propTypes = {
-  margin: PropTypes.number,
+  autoSizedProps: PropTypes.shape({}),
   resourceTypeName: PropTypes.shape({
     name: PropTypes.string,
   }),
   fetchingMoviesByType: PropTypes.bool,
   moviesByType: PropTypes.array,
   classes: PropTypes.func,
-  columnWidth: PropTypes.number,
   resourceTypes: PropTypes.array,
   loadingPlaceholderHeight: PropTypes.string,
 };

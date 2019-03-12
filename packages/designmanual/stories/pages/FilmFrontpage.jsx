@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { css } from 'react-emotion';
 import debounce from 'lodash/debounce';
 import { spacing } from '@ndla/core';
+import { CarouselAutosize } from '@ndla/carousel';
 
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
@@ -147,33 +148,72 @@ class FilmFrontpage extends Component {
           onChangeResourceType={this.onChangeResourceType}
         />
         <div id={ARIA_FILMCATEGORY_ID} ref={this.movieListRef}>
-          {resourceTypeSelected ? (
-            <MovieGrid
-              {...{
-                margin,
-                resourceTypeName,
-                fetchingMoviesByType,
-                moviesByType,
-                columnWidth,
-                resourceTypes,
-                loadingPlaceholderHeight,
-              }}
-            />
-          ) : (
-            themes.map(theme => (
-              <FilmMovieList
-                key={theme.name[language]}
-                name={theme.name[language]}
-                movies={theme.movies}
-                columnsPrSlide={columnsPrSlide}
-                columnWidth={columnWidth}
-                margin={margin}
-                slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
-                slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
-                resourceTypes={resourceTypes}
-              />
-            ))
-          )}
+          <CarouselAutosize
+            breakPoints={[
+              {
+                until: 'mobile',
+                columnsPrSlide: 1,
+                distanceBetweenItems: 13,
+                margin: 26,
+              },
+              {
+                until: 'mobileWide',
+                columnsPrSlide: 2,
+                distanceBetweenItems: 13,
+                margin: 26,
+              },
+              {
+                until: 'tablet',
+                columnsPrSlide: 2,
+                distanceBetweenItems: 13,
+                margin: 26,
+              },
+              {
+                until: 'tabletWide',
+                columnsPrSlide: 3,
+                distanceBetweenItems: 26,
+                margin: 26,
+              },
+              {
+                until: 'desktop',
+                columnsPrSlide: 4,
+                distanceBetweenItems: 26,
+                margin: 92,
+              },
+              {
+                columnsPrSlide: 5,
+                distanceBetweenItems: 26,
+                margin: 92,
+              },
+            ]}
+          >
+            {autoSizedProps => (
+              resourceTypeSelected ? (
+                <MovieGrid
+                  autoSizedProps={autoSizedProps}
+                  {...{
+                    resourceTypeName,
+                    fetchingMoviesByType,
+                    moviesByType,
+                    resourceTypes,
+                    loadingPlaceholderHeight,
+                  }}
+                />
+              ) : (
+                themes.map(theme => (
+                  <FilmMovieList
+                    key={theme.name[language]}
+                    name={theme.name[language]}
+                    movies={theme.movies}
+                    autoSizedProps={autoSizedProps}
+                    slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
+                    slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
+                    resourceTypes={resourceTypes}
+                  />
+                ))
+              )
+            )}
+          </CarouselAutosize>
         </div>
         <AboutNdlaFilm
           aboutNDLAVideo={aboutNDLAVideo}

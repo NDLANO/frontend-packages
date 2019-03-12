@@ -183,7 +183,7 @@ class Carousel extends Component {
 }
 
 Carousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.node).isRequired,
+  items: PropTypes.arrayOf(PropTypes.node),
   columnsPrSlide: PropTypes.number.isRequired,
   columnWidth: PropTypes.number.isRequired,
   distanceBetweenItems: PropTypes.number,

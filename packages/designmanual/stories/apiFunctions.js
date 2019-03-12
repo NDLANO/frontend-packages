@@ -18,9 +18,9 @@ export const getToken = () =>
     },
     body: JSON.stringify({
       grant_type: 'client_credentials',
-      client_id: 'IxLzDBlvwmHBUMfLaGfJshD6Kahb362L',
+      client_id: 'yQoTsCl47nSr72ixETlIlVgnDdQemE2M',
       client_secret:
-        'w9P-niyBUZK9fadBt5yNkG-7KMBULm59HB8GnJJPgwvT_gwlG98nfvdik2sVW9d_',
+        'xrCvq_nPYcXpHwBPG5NNbjj12iG4XK9stwA5WoKGWM6UwHbWc88pLwOsCid_On8C',
       audience: 'ndla_system',
     }),
     json: true,

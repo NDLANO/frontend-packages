@@ -54,8 +54,8 @@ FooterEditor.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-const Footer = ({ lang, children }) => (
-  <footer className="footer">
+const Footer = ({ lang, children, inverted }) => (
+  <footer className={inverted ? 'inverted footer' : 'footer'}>
     {children}
     <FooterPrivacy lang={lang} />
   </footer>
@@ -64,6 +64,7 @@ const Footer = ({ lang, children }) => (
 Footer.propTypes = {
   children: PropTypes.node.isRequired,
   lang: PropTypes.oneOf(['nb', 'nn', 'en']),
+  inverted: PropTypes.bool,
 };
 
 Footer.defaultProps = {

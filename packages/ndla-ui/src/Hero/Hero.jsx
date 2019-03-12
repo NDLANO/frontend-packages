@@ -45,3 +45,9 @@ export const ExternalLearningResourcesHero = props => (
 export const SourceMaterialHero = props => (
   <Hero contentType={contentTypes.SOURCE_MATERIAL} {...props} />
 );
+export const NdlaFilmHero = ({ hasImage, ...rest }) => (
+  <Hero
+    contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'}
+    {...rest}
+  />
+);

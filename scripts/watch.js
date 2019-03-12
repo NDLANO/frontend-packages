@@ -14,7 +14,7 @@ const getPackages = require('./_getPackages');
 const babelOptions = require('../babel.config');
 
 const SRC_DIR = 'src';
-const JS_FILES_PATTERN = '**/*.js*';
+const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const winRegExp = new RegExp(/\\/g);
 

@@ -53,7 +53,7 @@ const StyledMovieTags = styled.span`
 `;
 const StyledMovieTitle = styled.h2`
   ${fonts.sizes('14px', '20px')};
-  font-weight: ${fonts.weight.bold};
+  font-weight: ${fonts.weight.semibold};
   color: #fff;
   margin: ${spacing.xsmall} 0 ${spacing.small};
   @media (min-width: ${breakpoints.mobileWide}) {

@@ -1,0 +1,125 @@
+@mixin set-animations() {
+  @for $i from 1 through 20 {
+    > a:nth-child(#{$i + 1}) {
+      animation-delay: #{$i * 50}ms;
+    }
+  }
+}
+
+.c-film-movielist {
+  margin-bottom: $spacing;
+  @include mq(tablet) {
+    margin-bottom: $spacing--large;
+  }
+  &__heading {
+    @include font-size(22px, 26px);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: $spacing--small 0;
+    small {
+      font-weight: normal;
+      padding-left: $spacing--small;
+      color: $brand-grey--light;
+    }
+  }
+  &__slide-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  &__slide-content {
+    display: flex;
+    transition: transform 600ms ease;
+    &--swiping {
+      transition: none;
+    }
+    @include set-animations();
+    a {
+      opacity: 0;
+      animation-fill-mode: forwards;
+      animation-name: fadeIn;
+      animation-duration: 300ms;
+    }
+  }
+  &__slide-navigation {
+    background: #091a2a80;
+    border: 0;
+    outline: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    .c-icon {
+      fill: #fff;
+      opacity: 0;
+      width: 78px;
+      height: 78px;
+      transition: transform 200ms ease, opacity 200ms ease;
+    }
+    &--prev {
+      left: 0;
+      .c-icon {
+        opacity: 0.7;
+        transform: translate(-$spacing--small / 2, -$spacing--medium);
+      }
+    }
+    &--next {
+      right: 0;
+      .c-icon {
+        opacity: 0.7;
+        transform: translate($spacing--small / 2, -$spacing--medium);
+      }
+    }
+    &:focus {
+      .c-icon {
+        opacity: 0.7;
+        transform: translate(0, -$spacing--medium);
+      }
+    }
+    &:hover {
+      .c-icon {
+        opacity: 1;
+        transform: translate(0, -$spacing--medium);
+      }
+    }
+    &--hidden {
+      display: none;
+    }
+    @include mq($until: tablet) {
+      display: none;
+    }
+  }
+  &__movie-listing {
+    display: flex;
+    flex-wrap: wrap;
+    margin: $spacing--small -$spacing--small / 2;
+    @include set-animations();
+    a {
+      opacity: 0;
+      animation-fill-mode: forwards;
+      animation-name: fadeIn;
+      animation-duration: 300ms;
+    }
+  }
+  &__movie-item {
+    box-shadow: none;
+    padding: $spacing--small / 2;
+    @include mq(tablet) {
+      margin-bottom: $spacing--large;
+    }
+    @include mq($from: tablet) {
+      width: 25%;
+    }
+    @include mq($from: mobileWide, $until: tablet) {
+      width: 33.3%;
+    }
+    @include mq($until: mobileWide) {
+      width: 50%;
+    }
+  }
+}

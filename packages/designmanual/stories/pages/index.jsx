@@ -41,6 +41,7 @@ import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
+import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
@@ -398,5 +399,46 @@ storiesOf('Emnesider', module)
         />
       </Content>
       <FooterExample />
+    </PageContainer>
+  ));
+storiesOf('Ndla film', module)
+  .add('Fag forside', () => (
+    <PageContainer ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <NdlaFilmFrontpage />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Film (emne side)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <ArticleLoader
+          articleId="3396"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          withBackgroundImage
+          ndlaFilm
+        />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Film emne (over film)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm />
+        <ArticleLoader
+          articleId="4824"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+          ndlaFilm
+        />
+      </Content>
+      <FooterExample inverted />
     </PageContainer>
   ));

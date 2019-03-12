@@ -54,6 +54,7 @@ import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
 import ListViewExample from './organisms/ListViewExample';
+import CarouselExample from './organisms/CarouselExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -533,6 +534,11 @@ storiesOf('Sammensatte moduler', module)
           Nettstedet er utarbeidet av NDLA med åpen kildekode.
         </Footer.Text>
       </Footer>
+    </Center>
+  ))
+  .add('Bilde karusell', () => (
+    <Center>
+      <CarouselExample />
     </Center>
   ))
   .add('Tilleggsstoff', () => (

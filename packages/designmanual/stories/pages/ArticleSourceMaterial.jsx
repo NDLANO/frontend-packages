@@ -50,10 +50,9 @@ export default () => (
           caption=""
         />
         <p>
-          333Du har en kjempegod idé til en kortfilm. Men det koster mange
-          penger å produsere filmen. Derfor er du avhengig av at noen tenner på
-          idéen din og bestemmer seg for å bruke ressurser på nettopp dette
-          prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
+          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
+          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell

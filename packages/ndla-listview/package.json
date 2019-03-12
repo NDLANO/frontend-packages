@@ -25,7 +25,8 @@
     "@ndla/ui": "^0.20.6"
   },
   "peerDependencies": {
-    "emotion": "^10.0.9",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
     "prop-types": "^15.6.0",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",

@@ -20,7 +20,8 @@
   ],
   "peerDependencies": {
     "classnames": "^2.2.6",
-    "emotion": "^10.0.9",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
     "react": "^16.4.2",
     "react-bem-helper": "^1.4.1",
      

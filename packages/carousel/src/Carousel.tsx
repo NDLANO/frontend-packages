@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 // @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
-import { Swipe } from './Swipe';
+import { Swipe, Position } from './Swipe';
 
 interface Child {
   id: string;
@@ -77,11 +77,13 @@ export class Carousel extends Component<Props, State> {
     }
   };
 
-  onSwipe = (e: any) => {
+  onSwipe = (p: Position) => {
     this.setState({
       swiping: true,
     });
-    this.swipeDistance = e[0];
+
+    this.swipeDistance = p.x;
+
     if (this.slideshow.current) {
       this.slideshow.current.style.transform = `translateX(${this
         .swipeDistance +
@@ -126,7 +128,6 @@ export class Carousel extends Component<Props, State> {
       <section>
         <Swipe
           nodeName="div"
-          detectMouse={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
           <div {...classes('slide-wrapper')}>

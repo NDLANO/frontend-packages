@@ -120,9 +120,9 @@ class FilmSlideshow extends Component {
     }));
   }
 
-  onSwipe(e) {
+  onSwipe(p) {
     clearTimeout(this.timer);
-    this.swipeDistance = e[0];
+    this.swipeDistance = p.x;
     this.slideRef.current.style.transition = 'none';
     this.slideRef.current.style.transform = this.getSlidePosition(
       this.state.slideIndexTarget,
@@ -181,7 +181,6 @@ class FilmSlideshow extends Component {
         <Swipe
           {...classes('')}
           nodeName="div"
-          mouseSwipe={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>

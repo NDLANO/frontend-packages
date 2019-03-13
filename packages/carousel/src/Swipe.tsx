@@ -1,3 +1,5 @@
+// Based on from https://github.com/exelban/react-swipe-component
+
 import React from 'react';
 
 interface Props {
@@ -34,7 +36,7 @@ interface State {
   detected: boolean;
   delta: number;
 }
-interface Position {
+export interface Position {
   x: number;
   y: number;
 }
@@ -46,7 +48,7 @@ const isTouchEvent = (event: any): boolean => {
   return event.touches !== undefined;
 };
 
-class Swipe extends React.Component<Props, {}> {
+class Swipe extends React.Component<Props, State> {
   private store: State = {
     x: 0,
     y: 0,
@@ -57,8 +59,8 @@ class Swipe extends React.Component<Props, {}> {
   static readonly defaultProps = {
     delta: 50,
 
-    detectMouse: true,
-    detectTouch: false,
+    detectMouse: false,
+    detectTouch: true,
 
     preventDefault: false,
     stopPropagation: false,

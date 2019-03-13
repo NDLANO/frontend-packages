@@ -10,7 +10,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ModalHeader = ({ children, modifier }) => (
-  <div className={`modal-header ${modifier}`}>{children}</div>
+  <div
+    className={`modal-header ${
+      Array.isArray(modifier) ? modifier.join(' ') : modifier
+    }`}>
+    {children}
+  </div>
 );
 
 ModalHeader.propTypes = {

@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 // @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
-import { cx } from 'react-emotion';
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
 import { Swipe, Position } from './Swipe';
 
@@ -167,7 +166,7 @@ export class Carousel extends Component<Props, State> {
           detectTouch
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
-          <div className={cx(slideWrapperCSS, wrapperClass)}>
+          <div css={slideWrapperCSS} className={wrapperClass}>
             {!disableScroll && (
               <>
                 <StyledButton
@@ -197,7 +196,7 @@ export class Carousel extends Component<Props, State> {
             )}
             <StyledSlideContent
               swiping={swiping}
-              innerRef={this.slideshowRef}
+              ref={this.slideshowRef}
               style={{
                 padding: `0 ${margin}px`,
                 width: `${items.length * columnWidth +

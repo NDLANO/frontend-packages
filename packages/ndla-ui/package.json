@@ -51,7 +51,6 @@
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
     "react-slick": "^0.23.2",
-    "react-swipe-component": "^2.1.0",
     "react-transition-group": "^2.5.3"
   },
   "peerDependencies": {

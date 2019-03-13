@@ -3,9 +3,15 @@
   "version": "0.0.2",
   "description": "Carousel for NDLA",
   "license": "GPL-3.0",
+  "sideEffects": false,
   "main": "lib/index.js",
   "module": "es/index.js",
-  "sideEffects": false,
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-carousel/"

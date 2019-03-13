@@ -7,30 +7,46 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Swipe from 'react-swipe-component';
+// @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
+import { Swipe, Position } from './Swipe';
+
+interface Child {
+  id: string;
+  children: React.ReactNode;
+}
+
+interface Props {
+  children: Child[];
+  columnsPrSlide: number;
+  columnWidth: number;
+  distanceBetweenItems: number;
+  slideBackwardsLabel: string;
+  slideForwardsLabel: string;
+  margin: number;
+}
+
+interface State {
+  slideIndex: number;
+  swiping: boolean;
+}
 
 const classes = new BEMHelper({
   name: 'film-movielist',
   prefix: 'c-',
 });
 
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slideIndex: 0,
-      swiping: false,
-    };
-    this.swipeDistance = 0;
-    this.slideshow = React.createRef();
-    this.onSwipeEnd = this.onSwipeEnd.bind(this);
-    this.onSwipe = this.onSwipe.bind(this);
-  }
+export class Carousel extends Component<Props, State> {
+  static defaultProps = { margin: 0 };
+  swipeDistance = 0;
+  slideshow = React.createRef<HTMLDivElement>();
+  state: State = {
+    slideIndex: 0,
+    swiping: false,
+  };
 
-  onSwipeEnd() {
+  onSwipeEnd = () => {
     const {
       children,
       columnsPrSlide,
@@ -59,19 +75,24 @@ class Carousel extends Component {
         swiping: false,
       });
     }
-  }
+  };
 
-  onSwipe(e) {
+  onSwipe = (p: Position) => {
     this.setState({
       swiping: true,
     });
-    this.swipeDistance = e[0];
-    this.slideshow.current.style.transform = `translateX(${this.swipeDistance +
-      this.state.slideIndex *
-        (this.props.columnWidth + this.props.distanceBetweenItems)}px)`;
-  }
 
-  slidePage(direction) {
+    this.swipeDistance = p.x;
+
+    if (this.slideshow.current) {
+      this.slideshow.current.style.transform = `translateX(${this
+        .swipeDistance +
+        this.state.slideIndex *
+          (this.props.columnWidth + this.props.distanceBetweenItems)}px)`;
+    }
+  };
+
+  slidePage = (direction: number) => {
     const { children, columnsPrSlide } = this.props;
     if (columnsPrSlide < children.length) {
       this.setState(prevState => {
@@ -86,7 +107,7 @@ class Carousel extends Component {
         };
       });
     }
-  }
+  };
 
   render() {
     const {
@@ -107,7 +128,6 @@ class Carousel extends Component {
       <section>
         <Swipe
           nodeName="div"
-          mouseSwipe={false}
           onSwipeEnd={this.onSwipeEnd}
           onSwipe={this.onSwipe}>
           <div {...classes('slide-wrapper')}>
@@ -154,24 +174,3 @@ class Carousel extends Component {
     );
   }
 }
-
-Carousel.propTypes = {
-  children: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      children: PropTypes.node.isRequired,
-    }),
-  ),
-  columnsPrSlide: PropTypes.number.isRequired,
-  columnWidth: PropTypes.number.isRequired,
-  distanceBetweenItems: PropTypes.number.isRequired,
-  slideBackwardsLabel: PropTypes.string.isRequired,
-  slideForwardsLabel: PropTypes.string.isRequired,
-  margin: PropTypes.number,
-};
-
-Carousel.defaultProps = {
-  margin: 0,
-};
-
-export default Carousel;

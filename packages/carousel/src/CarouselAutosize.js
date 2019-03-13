@@ -13,7 +13,7 @@ import debounce from 'lodash/debounce';
 import { breakpoints as breakPointFromCore } from '@ndla/core';
 import { StyledWrapperAutosizer } from './Styles';
 
-class CarouselAutosizeWrapper extends Component {
+export class CarouselAutosize extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -114,7 +114,7 @@ class CarouselAutosizeWrapper extends Component {
   }
 }
 
-CarouselAutosizeWrapper.propTypes = {
+CarouselAutosize.propTypes = {
   breakPoints: PropTypes.arrayOf(
     PropTypes.shape({
       until: PropTypes.oneOf(Object.keys(breakPointFromCore)),
@@ -134,5 +134,3 @@ CarouselAutosizeWrapper.propTypes = {
     return null;
   },
 };
-
-export default CarouselAutosizeWrapper;

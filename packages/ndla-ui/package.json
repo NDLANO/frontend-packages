@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "0.21.1",
+  "version": "0.21.2",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "@ndla/button": "^0.2.9",
-    "@ndla/carousel": "^0.0.2",
+    "@ndla/carousel": "^0.1.0",
     "@ndla/core": "^0.5.0",
     "@ndla/hooks": "^0.1.0",
     "@ndla/i18n": "^0.4.2",
@@ -50,7 +50,7 @@
     "react-device-detect": "^1.6.2",
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
-    "react-swipe-component": "^3.0.0",
+    "react-slick": "^0.23.2",
     "react-transition-group": "^2.5.3"
   },
   "peerDependencies": {

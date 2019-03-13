@@ -7,28 +7,52 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Swipe } from 'react-swipe-component';
-import { cx } from 'react-emotion';
+// @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
-
+import { cx } from 'react-emotion';
+// @ts-ignore
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
+import { Swipe, Position } from './Swipe';
 
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slideIndex: 0,
-      swiping: false,
-    };
-    this.swipeDistance = 0;
-    this.swipeSpeed = 0;
-    this.slideshowRef = React.createRef();
-    this.onSwipeEnd = this.onSwipeEnd.bind(this);
-    this.onSwipe = this.onSwipe.bind(this);
-  }
+interface Props {
+  items: React.ReactNode[];
+  columnsPrSlide: number;
+  columnWidth: number;
+  distanceBetweenItems: number;
+  slideBackwardsLabel: string;
+  slideForwardsLabel: string;
+  arrowOffset: number;
+  margin: number;
+  buttonClass: string;
+  wrapperClass: string;
+  disableScroll: boolean;
+}
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+interface State {
+  slideIndex: number;
+  swiping: boolean;
+}
+
+export class Carousel extends Component<Props, State> {
+  static defaultProps = {
+    items: [],
+    margin: 0,
+    distanceBetweenItems: 0,
+    arrowOffset: 0,
+    buttonClass: '',
+    wrapperClass: '',
+  };
+
+  swipeDistance = 0;
+  swipeSpeed = 0;
+  slideshowRef = React.createRef<HTMLDivElement>();
+
+  state: State = {
+    slideIndex: 0,
+    swiping: false,
+  };
+
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const { columnsPrSlide, items } = nextProps;
     const { slideIndex } = prevState;
     // Check if resize caused carousel to be scrolled to far.
@@ -43,7 +67,7 @@ class Carousel extends Component {
     return null;
   }
 
-  onSwipeEnd(e) {
+  onSwipeEnd = () => {
     const {
       columnsPrSlide,
       columnWidth,
@@ -76,21 +100,24 @@ class Carousel extends Component {
         swiping: false,
       });
     }
-  }
+  };
 
-  onSwipe(e) {
+  onSwipe = (p: Position) => {
     this.setState({
       swiping: true,
     });
-    const moved = e.x || e[0];
+    const moved = p.x;
     this.swipeSpeed = this.swipeDistance - moved;
     this.swipeDistance = moved;
     const transformX =
       this.swipeDistance + this.state.slideIndex * this.props.columnWidth;
-    this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
-  }
 
-  slidePage(direction) {
+    if (this.slideshowRef.current) {
+      this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
+    }
+  };
+
+  slidePage = (direction: number) => {
     const { columnsPrSlide, items } = this.props;
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
     if (roundedColumnsPrSlide < items.length) {
@@ -108,7 +135,7 @@ class Carousel extends Component {
         };
       });
     }
-  }
+  };
 
   render() {
     const {
@@ -186,28 +213,3 @@ class Carousel extends Component {
     );
   }
 }
-
-Carousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.node),
-  columnsPrSlide: PropTypes.number.isRequired,
-  columnWidth: PropTypes.number.isRequired,
-  distanceBetweenItems: PropTypes.number,
-  slideBackwardsLabel: PropTypes.string.isRequired,
-  slideForwardsLabel: PropTypes.string.isRequired,
-  arrowOffset: PropTypes.number,
-  margin: PropTypes.number,
-  buttonClass: PropTypes.string,
-  wrapperClass: PropTypes.string,
-  disableScroll: PropTypes.bool,
-};
-
-Carousel.defaultProps = {
-  items: [],
-  margin: 0,
-  distanceBetweenItems: 0,
-  arrowOffset: 0,
-  buttonClass: '',
-  wrapperClass: '',
-};
-
-export default Carousel;

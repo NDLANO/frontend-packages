@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Carousel from '@ndla/carousel';
+import { Carousel } from '@ndla/carousel';
 import FilmContentCard from './FilmContentCard';
 import { movieShape } from './shapes';
 

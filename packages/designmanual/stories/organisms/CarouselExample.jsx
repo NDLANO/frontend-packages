@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from 'react-emotion';
 import { colors, misc, fonts, spacing } from '@ndla/core';
-import Carousel, { CarouselAutosize } from '@ndla/carousel';
+import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { uuid } from '@ndla/util';
 
 import ComponentInfo from '../ComponentInfo';
@@ -100,7 +100,7 @@ const CarouselExample = () => (
                 }}
                 key={cardKey}
               >{index}</div>
-            ))} 
+            ))}
           />
         )}
       </CarouselAutosize>

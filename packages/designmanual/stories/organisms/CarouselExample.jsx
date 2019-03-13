@@ -1,6 +1,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import Carousel from '@ndla/carousel';
+import { Carousel } from '@ndla/carousel';
 import { SafeLink } from '@ndla/ui';
 import { contentCards } from '../../dummydata';
 

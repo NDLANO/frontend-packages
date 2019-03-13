@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
-import Carousel from '../Carousel';
+import { Carousel } from '../Carousel';
 import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-frontpage-highlighted');

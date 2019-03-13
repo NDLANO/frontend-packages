@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swipe from 'react-swipe-component';
+import { Swipe } from '@ndla/carousel';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn } from '@ndla/ui';

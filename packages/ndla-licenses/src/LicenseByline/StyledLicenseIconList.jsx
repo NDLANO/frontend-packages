@@ -20,7 +20,7 @@ export const StyledList = styled.ul`
   ${p =>
     p.highlightCC
       ? css`
-          & li:first-child {
+          & li:first-of-type {
             margin-bottom: ${spacing.small};
             border-bottom: 1px solid ${colors.brand.tertiary};
             padding-bottom: ${spacing.small};

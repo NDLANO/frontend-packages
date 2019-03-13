@@ -36,7 +36,7 @@ const fileCss = css`
     display: flex;
     align-items: center;
     padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
-    &:first-child {
+    &:first-of-type {
       flex-grow: 1;
     }
     svg {
@@ -48,7 +48,7 @@ const fileCss = css`
 
 const fileErrorCss = css`
   background: ${colors.support.redLight};
-  > div:first-child button {
+  > div:first-of-type button {
     color: ${colors.support.red};
   }
 `;
@@ -228,9 +228,7 @@ class FileListEditor extends Component {
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
     return (
-      <ListWrapper
-        innerRef={this.filesWrapperRef}
-        draggingIndex={draggingIndex}>
+      <ListWrapper ref={this.filesWrapperRef} draggingIndex={draggingIndex}>
         {files.map((file, index) => (
           <li
             key={file.path}
@@ -243,7 +241,6 @@ class FileListEditor extends Component {
               deleteIndex === index ? this.executeDeleteFile : undefined
             }>
             <FileNameInput
-              ref={this.filesWrapperRef}
               file={file}
               editMode={editFileIndex === index}
               value={file.title}

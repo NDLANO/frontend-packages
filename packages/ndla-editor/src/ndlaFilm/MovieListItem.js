@@ -82,7 +82,7 @@ const StyledMovieItem = styled.li`
     display: flex;
     align-items: center;
     padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
-    &:first-child {
+    &:first-of-type {
       flex-grow: 1;
       padding-left: ${spacing.xsmall};
     }

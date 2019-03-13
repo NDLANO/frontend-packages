@@ -16,7 +16,7 @@ const CheckboxInput = styled.input`
   opacity: 0;
   cursor: pointer;
   &:checked {
-    & + label > span:first-child {
+    & + label > span:first-of-type {
       border: 2px solid ${colors.brand.primary};
       background: ${colors.brand.primary};
       &:before {
@@ -46,7 +46,7 @@ const CheckboxLabel = styled.label`
   &:not(:last-child) {
     margin-right: ${spacing.medium};
   }
-  > span:first-child {
+  > span:first-of-type {
     content: '';
     display: inline-block;
     position: relative;
@@ -89,7 +89,7 @@ const CheckboxLabel = styled.label`
   }
   &:hover,
   &:focus {
-    > span:first-child {
+    > span:first-of-type {
       border: 2px solid ${colors.brand.tertiary};
       &:before {
         width: 5px;

@@ -13,13 +13,6 @@ import { spacing } from '@ndla/core';
 
 const FieldSplitterCSS = css`
   display: flex;
-  > * {
-    flex-grow: 1;
-    flex-basis: 0;
-    &:not(:first-child) {
-      margin-left: ${spacing.small};
-    }
-  }
   &:only-child {
     > * {
       flex-basis: 1;
@@ -28,7 +21,17 @@ const FieldSplitterCSS = css`
 `;
 
 const FieldSplitter = ({ children }) => (
-  <div css={FieldSplitterCSS}>{children}</div>
+  <div css={FieldSplitterCSS}>
+    {React.Children.map(children, (child, i) =>
+      React.cloneElement(child, {
+        css: {
+          flexGrow: 1,
+          flexBasis: 0,
+          marginLeft: i !== 0 ? spacing.small : 0,
+        },
+      }),
+    )}
+  </div>
 );
 
 FieldSplitter.propTypes = {

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   margin-bottom: ${spacing.small};
   display: flex;
   > div {
-    &:first-child {
+    &:first-of-type {
       width: 75%;
       + div {
         width: 25%;
@@ -35,7 +35,7 @@ const siblingCSS = css`
   + ${Wrapper} {
     > div {
       padding-top: ${spacing.small};
-      &:first-child {
+      &:first-of-type {
         border-top: 1px solid ${colors.brand.greyLight};
       }
     }

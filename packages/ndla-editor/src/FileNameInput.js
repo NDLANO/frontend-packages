@@ -37,10 +37,10 @@ class InputComponent extends Component {
     const { forwardedRef, usePortal, ...rest } = this.props;
 
     if (!usePortal) {
-      return <StyledInput innerRef={this.inputRef} {...rest} />;
+      return <StyledInput ref={this.inputRef} {...rest} />;
     }
     return createUniversalPortal(
-      <StyledInput innerRef={this.inputRef} {...rest} />,
+      <StyledInput ref={this.inputRef} {...rest} />,
       'body',
     );
   }

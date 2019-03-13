@@ -119,19 +119,19 @@ const ConnectionButton = styled('button')`
   &:disabled {
     color: ${colors.brand.light};
   }
-  > span:first-child {
+  > span:first-of-type {
     ${checkboxItemCSS};
   }
   &:not(:disabled) {
     &:hover,
     &:focus {
-      > span:first-child {
+      > span:first-of-type {
         ${checkboxItemHoverCSS};
       }
     }
   }
   &.checkboxItem--checked {
-    > span:first-child {
+    > span:first-of-type {
       ${checkboxItemSelectedCSS};
     }
   }

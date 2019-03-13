@@ -166,7 +166,7 @@ class MovieList extends Component {
 
     return (
       <Wrapper>
-        <ListWrapper innerRef={this.wrapperRef} draggingIndex={draggingIndex}>
+        <ListWrapper ref={this.wrapperRef} draggingIndex={draggingIndex}>
           {movies.map((movie, index) => (
             <MovieListItem
               movie={movie}

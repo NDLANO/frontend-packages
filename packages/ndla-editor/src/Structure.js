@@ -181,7 +181,7 @@ Structure.propTypes = {
   ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
-  listClass: PropTypes.string,
+  listClass: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fileStructureFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
 };

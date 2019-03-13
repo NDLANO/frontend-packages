@@ -14,7 +14,7 @@ import { colors, spacing, fonts, misc } from '@ndla/core';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.xsmall};
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 `;

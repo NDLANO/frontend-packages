@@ -132,7 +132,7 @@ const ListViewWrapper = styled.div`
   }
   .list-style {
     display: flex;
-    > button:first-child {
+    > button:first-of-type {
       margin-right: ${spacing.xsmall};
     }
   }

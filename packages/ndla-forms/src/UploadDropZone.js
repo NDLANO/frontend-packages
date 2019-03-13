@@ -253,7 +253,7 @@ class UploadDropZone extends Component {
     return (
       <Fragment>
         <Wrapper css={[draggedOver && cssHover, loading && cssLoading]}>
-          <DropZone dropAllowed={dropAllowed} innerRef={this.dropZoneRef}>
+          <DropZone dropAllowed={dropAllowed} ref={this.dropZoneRef}>
             <InputField
               type="file"
               name={name}
@@ -264,7 +264,7 @@ class UploadDropZone extends Component {
               onDrop={this.onDrop}
               onDragEnter={this.onDragEnter}
               onDragLeave={this.onDragLeave}
-              innerRef={this.inputRef}
+              ref={this.inputRef}
               disabled={loading}
             />
             <ContentWrapper>

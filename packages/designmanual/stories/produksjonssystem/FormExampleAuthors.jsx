@@ -135,14 +135,12 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <FieldSplitter>
-              <Input
-                iconRight={<SearchIcon />}
-                container="div"
-                type="text"
-                placeholder="Skriv navn"
-              />
-            </FieldSplitter>
+            <Input
+              iconRight={<SearchIcon />}
+              container="div"
+              type="text"
+              placeholder="Skriv navn"
+            />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>
@@ -151,14 +149,12 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <FieldSplitter>
-              <Input
-                container="div"
-                type="text"
-                placeholder="Skriv navn"
-                autoExpand
-              />
-            </FieldSplitter>
+            <Input
+              container="div"
+              type="text"
+              placeholder="Skriv navn"
+              autoExpand
+            />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>

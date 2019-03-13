@@ -10,23 +10,15 @@ import React, { Component } from 'react';
 import em from 'polished/lib/helpers/em';
 import { breakpoints as breakpointFromCore, Breakpoint } from '@ndla/core';
 import { StyledWrapperAutosizer } from './Styles';
+import { CalculatedProps as CalculatedCarouselProps } from './Carousel';
 
 interface CaruselBreakpoint {
-  until: Breakpoint;
+  until?: Breakpoint;
   columnsPrSlide: number;
   distanceBetweenItems: number;
-  arrowOffset?: number;
+  arrowOffset: number;
   margin?: number;
   maxColumnWidth?: number;
-}
-
-interface CalculatedCarouselProps {
-  columnsPrSlide: number;
-  columnWidth: number;
-  distanceBetweenItems: number;
-  arrowOffset: number | undefined;
-  margin: number;
-  maxColumnWidth: number | undefined;
 }
 
 interface Props {
@@ -38,7 +30,7 @@ interface Props {
 }
 
 interface State {
-  useBreakPoint?: CaruselBreakpoint;
+  carouselBreakpoint?: CaruselBreakpoint;
 }
 
 export class CarouselAutosize extends Component<Props, State> {
@@ -74,12 +66,14 @@ export class CarouselAutosize extends Component<Props, State> {
       );
 
     this.setState({
-      useBreakPoint: useBreakpoint[0],
+      carouselBreakpoint: useBreakpoint[0],
     });
   };
 
-  calculateCarouselProps = (): CalculatedCarouselProps | null => {
-    if (!this.state.useBreakPoint || !this.autosizeRef.current) {
+  calculateCarouselProps = (
+    breakpoint: CaruselBreakpoint,
+  ): CalculatedCarouselProps | null => {
+    if (!this.state.carouselBreakpoint || !this.autosizeRef.current) {
       return null;
     }
     const {
@@ -88,7 +82,7 @@ export class CarouselAutosize extends Component<Props, State> {
       arrowOffset,
       margin,
       maxColumnWidth,
-    } = this.state.useBreakPoint;
+    } = breakpoint;
 
     const wrapperWidth =
       this.autosizeRef.current.offsetWidth -
@@ -101,25 +95,32 @@ export class CarouselAutosize extends Component<Props, State> {
       : columnWidthDynamic;
 
     return {
-      columnsPrSlide: columnsPrSlide,
-      columnWidth: columnWidth,
-      distanceBetweenItems: distanceBetweenItems,
+      columnsPrSlide,
+      columnWidth,
+      distanceBetweenItems,
       arrowOffset,
       margin: margin || 0,
-      maxColumnWidth,
     };
   };
 
   render() {
-    const calculatedCarouselProps = this.state.useBreakPoint
-      ? this.calculateCarouselProps()
-      : null;
+    const { carouselBreakpoint } = this.state;
+    if (!carouselBreakpoint) {
+      return <div ref={this.autosizeRef} />;
+    }
+
+    const calculatedCarouselProps = this.calculateCarouselProps(
+      carouselBreakpoint,
+    );
+
+    const maxColumnWidth = carouselBreakpoint.maxColumnWidth;
+
     let wrapperWidth = 'auto';
+
     if (
       this.props.centered &&
       calculatedCarouselProps &&
-      calculatedCarouselProps.maxColumnWidth ===
-        calculatedCarouselProps.columnWidth
+      maxColumnWidth === calculatedCarouselProps.columnWidth
     ) {
       wrapperWidth = `${calculatedCarouselProps.columnWidth *
         calculatedCarouselProps.columnsPrSlide +
@@ -127,9 +128,10 @@ export class CarouselAutosize extends Component<Props, State> {
           (calculatedCarouselProps.columnsPrSlide - 1) +
         (calculatedCarouselProps.margin || 0) * 2}px`;
     }
+
     return (
       <div ref={this.autosizeRef}>
-        {this.state.useBreakPoint && (
+        {carouselBreakpoint && (
           <StyledWrapperAutosizer width={wrapperWidth}>
             {this.props.children(calculatedCarouselProps)}
           </StyledWrapperAutosizer>

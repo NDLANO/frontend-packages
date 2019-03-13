@@ -13,15 +13,18 @@ import { cx } from 'react-emotion';
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
 import { Swipe, Position } from './Swipe';
 
-interface Props {
-  items: React.ReactNode[];
+export interface CalculatedProps {
   columnsPrSlide: number;
   columnWidth: number;
   distanceBetweenItems: number;
-  slideBackwardsLabel: string;
-  slideForwardsLabel: string;
   arrowOffset: number;
   margin: number;
+}
+
+interface Props extends CalculatedProps {
+  items: React.ReactNode[];
+  slideBackwardsLabel: string;
+  slideForwardsLabel: string;
   buttonClass: string;
   wrapperClass: string;
   disableScroll: boolean;

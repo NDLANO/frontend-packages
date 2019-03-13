@@ -31,7 +31,7 @@ const wrapperCSS = css`
 const DemoExample = () => (
   <section>
     <CarouselAutosize
-      breakPoints={[
+      breakpoints={[
         {
           until: 'mobile',
           columnsPrSlide: 2,
@@ -69,11 +69,11 @@ const DemoExample = () => (
 const CarouselExample = () => (
   <ComponentInfo
     reactCode={`
-      import Carousel, { CarouselAutosize } from '@ndla/carousel';
+      import  { Carousel, CarouselAutosize } from '@ndla/carousel';
       import { spacing } from '@ndla/core';
 
       <CarouselAutosize
-        breakPoints={[
+        breakpoints={[
           {
             until: 'tablet',
             columnsPrSlide: 2,

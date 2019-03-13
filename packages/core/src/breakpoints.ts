@@ -1,6 +1,17 @@
 import em from 'polished/lib/helpers/em';
 
-export default {
+export type Breakpoint =
+  | 'mobile'
+  | 'mobileWide'
+  | 'tablet'
+  | 'tabletWide'
+  | 'desktop'
+  | 'wide'
+  | 'ultraWide';
+
+export type Breakpoints = { [key in Breakpoint]: string };
+
+const breakpoints: Breakpoints = {
   mobile: em('320px'),
   mobileWide: em('476px'),
   tablet: em('601px'),
@@ -9,3 +20,5 @@ export default {
   wide: em('1301px'),
   ultraWide: em('1601px'),
 };
+
+export default breakpoints;

@@ -78,7 +78,7 @@ const FrontpageExample = ({ t }) => (
             {t('welcomePage.highlighted')}
           </SubjectSectionTitle>
           <CarouselAutosize
-            breakPoints={[
+            breakpoints={[
               {
                 until: 'mobile',
                 columnsPrSlide: 1,

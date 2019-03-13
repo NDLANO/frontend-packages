@@ -89,7 +89,7 @@ class FilmFrontpage extends Component {
             margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
           `}>
           <CarouselAutosize
-            breakPoints={[
+            breakpoints={[
               {
                 until: 'mobile',
                 columnsPrSlide: 1,

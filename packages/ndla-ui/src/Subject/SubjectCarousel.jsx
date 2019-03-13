@@ -12,7 +12,7 @@ const subjectCarouselClasses = BEMHelper('c-subject-carousel');
 const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
   <section {...subjectCarouselClasses('', { narrowScreen, wideScreen })}>
     <CarouselAutosize
-      breakPoints={[
+      breakpoints={[
         {
           until: 'mobile',
           columnsPrSlide: 1,

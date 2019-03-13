@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 // @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import { cx } from 'react-emotion';
-// @ts-ignore
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
 import { Swipe, Position } from './Swipe';
 
@@ -172,7 +171,6 @@ export class Carousel extends Component<Props, State> {
                   type="button"
                   aria-label={slideBackwardsLabel}
                   className={buttonClass}
-                  customClass={buttonClass}
                   prev
                   arrowOffset={arrowOffset}
                   dontShow={slideIndex === 0 || hideButtons}
@@ -183,7 +181,6 @@ export class Carousel extends Component<Props, State> {
                   type="button"
                   aria-label={slideForwardsLabel}
                   className={buttonClass}
-                  customClass={buttonClass}
                   dontShow={
                     hideButtons ||
                     Math.floor(columnsPrSlide) === items.length + slideIndex

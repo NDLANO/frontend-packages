@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 import { colors, misc, fonts, spacing } from '@ndla/core';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { uuid } from '@ndla/util';

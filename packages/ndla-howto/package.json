@@ -28,9 +28,10 @@
     "@ndla/ui": "^0.21.2"
   },
   "peerDependencies": {
-    "emotion": "^9.2.10",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
     "react": "^16.7.0",
-    "react-emotion": "^9.2.10",
+     
     "react-prop-types": "0.4.0"
   },
   "publishConfig": {

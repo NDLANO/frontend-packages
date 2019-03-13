@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 import { spacing, colors } from '@ndla/core';
 import { SlateBlockMenu } from '@ndla/editor';
 import {
@@ -33,7 +33,7 @@ const iconClass = css`
 const renderArticleInModal = pageId => (
   <ArticleInModal
     pageId={pageId}
-    activateButton={<InformationOutline className={iconClass} />}
+    activateButton={<InformationOutline css={iconClass} />}
   />
 );
 

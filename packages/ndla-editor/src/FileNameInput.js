@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, fonts, colors } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
@@ -37,10 +37,10 @@ class InputComponent extends Component {
     const { forwardedRef, usePortal, ...rest } = this.props;
 
     if (!usePortal) {
-      return <StyledInput innerRef={this.inputRef} {...rest} />;
+      return <StyledInput ref={this.inputRef} {...rest} />;
     }
     return createUniversalPortal(
-      <StyledInput innerRef={this.inputRef} {...rest} />,
+      <StyledInput ref={this.inputRef} {...rest} />,
       'body',
     );
   }

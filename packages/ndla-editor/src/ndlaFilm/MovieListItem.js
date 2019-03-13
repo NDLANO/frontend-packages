@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { spacing, colors, fonts, animations } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
@@ -81,7 +82,7 @@ const StyledMovieItem = styled.li`
     display: flex;
     align-items: center;
     padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
-    &:first-child {
+    &:first-of-type {
       flex-grow: 1;
       padding-left: ${spacing.xsmall};
     }

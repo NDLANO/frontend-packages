@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { cx } from 'react-emotion';
+import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
@@ -69,18 +69,18 @@ const SelectWrapper = styled.div`
 /* TODO: USE NDLA-FORM WHEN FORM IS OUT! */
 const Select = ({ children, label, value, id, onChange }) => (
   <SelectWrapper>
-    <label htmlFor={id} className={cx('select-label')}>
+    <label htmlFor={id} className={'select-label'}>
       {label}
     </label>
-    <div className={cx('select-wrapper')}>
+    <div className={'select-wrapper'}>
       <select
-        className={cx('select-input')}
+        className={'select-input'}
         value={value}
         onChange={onChange}
         name={id}>
         {children}
       </select>
-      <span className={cx('symbol')}>
+      <span className={'symbol'}>
         <ChevronDown />
       </span>
     </div>
@@ -132,7 +132,7 @@ const ListViewWrapper = styled.div`
   }
   .list-style {
     display: flex;
-    > button:first-child {
+    > button:first-of-type {
       margin-right: ${spacing.xsmall};
     }
   }
@@ -273,11 +273,11 @@ const ListView = ({
         ))}
       </div>
     )}
-    <div className={cx('sorting')}>
+    <div className={'sorting'}>
       {(sortBy || !disableSearch) && (
-        <div className={cx('sorting-wrapper')}>
+        <div className={'sorting-wrapper'}>
           {sortBy && (
-            <div className={cx('sortBy')}>
+            <div className={'sortBy'}>
               <Select
                 label={sortBy.label}
                 value={sortBy.value}
@@ -292,7 +292,7 @@ const ListView = ({
             </div>
           )}
           {!disableSearch && (
-            <div className={cx('search')}>
+            <div className={'search'}>
               <div {...searchFieldClasses()}>
                 <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
                   <input
@@ -309,16 +309,16 @@ const ListView = ({
         </div>
       )}
       {!disableViewOption && (
-        <div className={cx('list-style')}>
+        <div className={'list-style'}>
           <button
             type="button"
-            className={cx('style-button', { active: viewStyle === 'list' })}
+            className={`style-button ${viewStyle === 'list' && 'active'}`}
             onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
             <ListIcon />
           </button>
           <button
             type="button"
-            className={cx('style-button', { active: viewStyle === 'grid' })}
+            className={`style-button ${viewStyle === 'grid' && 'active'}`}
             onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
             <GridIcon />
           </button>
@@ -326,15 +326,13 @@ const ListView = ({
       )}
 
       {viewStyle === 'list' && selectedLetterCallback ? (
-        <ul className={cx('alphabet')}>
+        <ul className={'alphabet'}>
           {Object.keys(alphabet).map(letter => (
-            <li key={`letter-${letter}`} className={cx('letter')}>
+            <li key={`letter-${letter}`} className={'letter'}>
               <button
                 type="button"
-                className={cx('letter-button', {
-                  active: selectedLetter === letter,
-                  disabled: !alphabet[letter],
-                })}
+                className={`letter-button ${selectedLetter === letter &&
+                  'active'} ${!alphabet[letter] && 'disabled'}`}
                 onClick={() =>
                   selectedLetter === letter
                     ? selectedLetterCallback('')
@@ -348,8 +346,8 @@ const ListView = ({
       ) : null}
     </div>
 
-    <div className={cx('content-wrapper')}>
-      <div className={cx('content', { [viewStyle]: true })}>
+    <div className={'content-wrapper'}>
+      <div className={`content ${viewStyle}`}>
         {items.map(item => (
           <ListItem
             item={item}

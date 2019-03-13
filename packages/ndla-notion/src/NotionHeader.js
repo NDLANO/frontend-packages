@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 

@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Trans } from '@ndla/i18n';
 import debounce from 'lodash/debounce';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { mq, breakpoints, spacing, fonts, colors } from '@ndla/core';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';

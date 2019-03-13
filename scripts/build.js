@@ -72,14 +72,15 @@ function removeBuildFile(file, dest) {
   );
 }
 
-function buildFile(file, dest, { silent = false, plugins = [] } = {}) {
+function buildFile(file, dest, { silent = false, override = {} } = {}) {
   const destPath = resolveDestPath(file, dest);
   mkdirp.sync(path.dirname(destPath));
   try {
-    const transformed = babel.transformFileSync(file, {
+    const options = {
       ...babelOptions,
-      plugins: [...babelOptions.plugins, ...plugins],
-    }).code;
+      ...override,
+    };
+    const transformed = babel.transformFileSync(file, options).code;
     fs.writeFileSync(destPath, transformed);
     if (!silent) {
       process.stdout.write(
@@ -107,7 +108,9 @@ function buildNodePackage(p) {
     buildFile(file, 'es', { silent: true });
     buildFile(file, 'lib', {
       silent: true,
-      plugins: ['transform-es2015-modules-commonjs'],
+      override: {
+        presets: ['@babel/preset-env', ...babelOptions.presets.slice(1)],
+      },
     });
   });
   process.stdout.write(`${OK}\n`);

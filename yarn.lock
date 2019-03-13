@@ -11479,14 +11479,6 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
-react-swipe-component@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-swipe-component/-/react-swipe-component-2.1.0.tgz#aa8926b1b0ad929810525ccc6321166b96ce1b1e"
-  integrity sha512-+ZW3EhH5NrnrGknA3lfD05DPlqd1G821zzjaj/E2l6hE2jk2pqQA998mrEU3WleX2Qtam3M3CCbMROGfcDSc4Q==
-  dependencies:
-    prop-types "^15.6.1"
-    react "^16.3.2"
-
 react-syntax-highlighter@^10.1.2:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.2.0.tgz#c44c2a1e89326bbd808cf7a8b2f08dc5ed025d91"
@@ -11555,7 +11547,17 @@ react-treebeard@^3.1.0:
     shallowequal "^1.1.0"
     velocity-react "^1.4.1"
 
-react@^16.3.2, react@^16.6.3, react@^16.7.0, react@^16.8.1:
+react@^16.6.3:
+  version "16.7.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"
+  integrity sha512-StCz3QY8lxTb5cl2HJxjwLFOXPIFQp+p+hxQfc8WE0QiLfCtIlKj8/+5tjjKm8uSTlAW+fCPaavGFS06V9Ar3A==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.12.0"
+
+react@^16.7.0, react@^16.8.1:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.4.tgz#fdf7bd9ae53f03a9c4cd1a371432c206be1c4768"
   integrity sha512-0GQ6gFXfUH7aZcjGVymlPOASTuSjlQL4ZtVC5YKH+3JL6bBLCVO21DknzmaPlI90LN253ojj02nsapy+j7wIjg==

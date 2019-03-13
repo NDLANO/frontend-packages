@@ -12,8 +12,8 @@ import { Swipe } from '@ndla/carousel';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn } from '@ndla/ui';
-import { Spinner } from '@ndla/editor';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
+import Spinner from '../Spinner';
 import { movieShape } from './shapes';
 
 const classes = new BEMHelper({

@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing } from '@ndla/core';
 import Button from '@ndla/button';

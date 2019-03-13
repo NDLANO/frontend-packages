@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 import { spacing } from '@ndla/core';
 import { CarouselAutosize } from '@ndla/carousel';
 import { injectT } from '@ndla/i18n';

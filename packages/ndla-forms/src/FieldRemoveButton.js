@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 import { Cross } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 
@@ -46,7 +46,7 @@ const buttonCSS = css`
 
 const FieldRemoveButton = ({ children, type, ...rest }) => (
   // eslint-disable-next-line
-  <button className={buttonCSS} type={type} {...rest}>
+  <button css={buttonCSS} type={type} {...rest}>
     <Cross className="c-icon--medium" />
     <span>{children}</span>
   </button>

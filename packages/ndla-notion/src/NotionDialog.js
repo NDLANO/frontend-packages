@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { cx } from 'react-emotion';
+import styled from '@emotion/styled';
 import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';
@@ -40,10 +40,10 @@ const NotionDialogTagWrapper = styled.div`
 export const NotionDialogTags = ({ tags }) =>
   tags ? (
     <NotionDialogTagWrapper>
-      <div className={cx('tags')}>
+      <div className={'tags'}>
         {tags && <span>Brukes i:</span>}
         {tags.map(tag => (
-          <span className={cx('tag')} key={`key-${tag}`}>
+          <span className={'tag'} key={`key-${tag}`}>
             {tag}
           </span>
         ))}

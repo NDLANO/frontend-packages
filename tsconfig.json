@@ -14,6 +14,7 @@
     "noEmit": true,
     "sourceMap": true,
     "lib": ["es2018", "esnext.asynciterable", "dom"],
+    "types": ["@emotion/core", "jest"],
     "paths": {
       "@ndla/*": ["./packages/*/src"],
       "*": ["node_modules"]

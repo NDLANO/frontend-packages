@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';

@@ -12,7 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import { StyledButton } from '@ndla/button';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 import SafeLink from '../common/SafeLink';
 

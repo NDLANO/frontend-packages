@@ -8,12 +8,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { colors, spacing, fonts, misc } from '@ndla/core';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.xsmall};
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 `;
@@ -154,11 +155,11 @@ class Input extends React.Component {
         <ComponentWrapper>
           {label && <label>{label}</label>}
           <Component
-            className={cx(
-              { [inputWrapperCSS]: true },
-              { [hasFocusCSS]: this.state.hasFocus },
-              { [whiteCSS]: white },
-            )}
+            css={[
+              inputWrapperCSS,
+              this.state.hasFocus && hasFocusCSS,
+              white && whiteCSS,
+            ]}
             ref={this.wrapperRef}>
             {tags && tags}
             {iconLeft && !tags && iconLeft}

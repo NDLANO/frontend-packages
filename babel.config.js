@@ -3,9 +3,9 @@ module.exports = {
     ['@babel/preset-env', { modules: false }],
     '@babel/preset-typescript',
     '@babel/preset-react',
+    '@emotion/babel-preset-css-prop',
   ],
   plugins: [
-    'emotion',
     'polished',
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-proposal-class-properties',
@@ -23,9 +23,6 @@ module.exports = {
           },
         ],
       ],
-    },
-    commonjs: {
-      plugins: [['transform-es2015-modules-commonjs']],
     },
   },
 };

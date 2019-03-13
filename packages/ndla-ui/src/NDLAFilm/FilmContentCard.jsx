@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { spacing, colors, fonts, misc, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const FilmContentCard = ({
   movie,

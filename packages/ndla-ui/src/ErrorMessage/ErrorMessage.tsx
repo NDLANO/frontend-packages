@@ -7,11 +7,11 @@
  */
 
 import * as React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { colors, spacing, mq } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
 
-const StyledErrorMessage = styled('article')`
+const StyledErrorMessage = styled.article`
   text-align: center;
   a {
     color: ${colors.brand.primary};

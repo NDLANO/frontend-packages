@@ -9,7 +9,8 @@
 import React from 'react';
 import FocusTrapReact from 'focus-trap-react';
 import PropTypes from 'prop-types';
-import styled, { css, cx } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { spacing, colors, fonts, shadows, animations } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
 
@@ -110,12 +111,6 @@ const buttonCSS = css`
     transition: transform 300ms ease;
     padding: 7px;
   }
-  &.--open {
-    .c-icon {
-      transform: rotate(135deg);
-    }
-    pointer-events: none;
-  }
   &:hover,
   &:focus {
     background: ${colors.brand.tertiary};
@@ -123,6 +118,13 @@ const buttonCSS = css`
   &:active {
     transform: scale(0.9);
   }
+`;
+
+const buttonOpen = css`
+  .c-icon {
+    transform: rotate(135deg);
+  }
+  pointer-events: none;
 `;
 
 const FocusWrapper = ({ onToggleOpen, children }) => (
@@ -149,7 +151,7 @@ const SlateBlockMenu = React.forwardRef(
     <>
       <button
         ref={ref}
-        className={cx(buttonCSS, { '--open': isOpen })}
+        css={[buttonCSS, isOpen && buttonOpen]}
         type="button"
         data-cy={cy}
         onClick={() => onToggleOpen(!isOpen)}>
@@ -163,7 +165,7 @@ const SlateBlockMenu = React.forwardRef(
               {actions.map(action => (
                 <Item key={action.data.object}>
                   <button
-                    className={itemButton}
+                    css={itemButton}
                     data-cy={`create-${action.data.object}`}
                     type="button"
                     onClick={() => clickItem(action.data)}>

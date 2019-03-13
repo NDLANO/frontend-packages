@@ -14,7 +14,7 @@ import {
   SafeLink,
   SubjectSectionTitle,
 } from '@ndla/ui';
-import Carousel, { CarouselAutosize } from '@ndla/carousel';
+import { Carousel, CarouselAutosize } from '@ndla/carousel';
 
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 

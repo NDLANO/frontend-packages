@@ -241,7 +241,7 @@ class FileListEditor extends Component {
               deleteIndex === index ? this.executeDeleteFile : undefined
             }>
             <FileNameInput
-              ref={this.filesWrapperRef}
+              useRef={this.filesWrapperRef}
               file={file}
               editMode={editFileIndex === index}
               value={file.title}

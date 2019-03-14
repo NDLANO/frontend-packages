@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "0.20.6",
+  "version": "0.22.2",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,15 +30,16 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^0.2.8",
-    "@ndla/core": "^0.4.10",
-    "@ndla/hooks": "^0.0.1",
+    "@ndla/button": "^0.3.0",
+    "@ndla/carousel": "^0.2.0",
+    "@ndla/core": "^0.6.0",
+    "@ndla/hooks": "^0.1.0",
     "@ndla/i18n": "^0.4.2",
     "@ndla/icons": "^0.6.9",
-    "@ndla/licenses": "^0.4.3",
-    "@ndla/modal": "^0.2.13",
-    "@ndla/tabs": "^0.10.2",
-    "@ndla/tooltip": "^0.1.7",
+    "@ndla/licenses": "^0.6.0",
+    "@ndla/modal": "^0.3.1",
+    "@ndla/tabs": "^0.11.0",
+    "@ndla/tooltip": "^0.2.0",
     "@ndla/util": "^0.3.2",
     "classnames": "2.2.6",
     "focus-trap": "^4.0.2",
@@ -49,15 +50,14 @@
     "react-device-detect": "^1.6.2",
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
-    "react-slick": "^0.23.2",
-    "react-swipe-component": "^2.1.0",
+    "react-swipeable": "^5.0.1",
     "react-transition-group": "^2.5.3"
   },
   "peerDependencies": {
-    "emotion": "^9.2.10",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
     "prop-types": "^15.6.0",
-    "react": "^16.3.2",
-    "react-emotion": "^9.2.10"
+    "react": "^16.3.2"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",

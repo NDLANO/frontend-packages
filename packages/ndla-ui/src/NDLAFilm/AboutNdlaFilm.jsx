@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts } from '@ndla/core';
 import Button from '@ndla/button';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
 
 const StyledAside = styled.aside`

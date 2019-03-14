@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import em from 'polished/lib/helpers/em';
-import styled, { cx } from 'react-emotion';
+import styled from '@emotion/styled';
 import {
   noScroll,
   uuid,
@@ -124,7 +124,8 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${modalAnimations} .animation-container {
+  ${modalAnimations}
+  .animation-container {
     z-index: 9001;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -411,22 +412,16 @@ const Portal = ({
     <>
       <FocusTrapReact>
         <ModalWrapper
-          className={cx(className, {
-            narrow,
-            scrollFixIOS: isIosDeviceSafari,
-          })}>
+          className={`${className} ${narrow && 'narrow'} ${isIosDeviceSafari &&
+            'scrollFixIOS'}`}>
           <div
             role="dialog"
             onScroll={onScroll}
             data-modal={uuidData}
             style={{ animationDuration: `${animationDuration}ms`, minHeight }}
             onAnimationEnd={onAnimationEnd}
-            className={cx('animation-container', {
-              [animation]: true,
-              animateIn,
-              [size]: true,
-              [backgroundColor]: true,
-            })}>
+            className={`animation-container ${animation} ${animateIn &&
+              'animateIn'} ${size} ${backgroundColor}`}>
             {children(closeModal)}
           </div>
         </ModalWrapper>

@@ -1,11 +1,17 @@
 {
   "name": "@ndla/carousel",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Carousel for NDLA",
   "license": "GPL-3.0",
+  "sideEffects": false,
   "main": "lib/index.js",
   "module": "es/index.js",
-  "sideEffects": false,
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-carousel/"
@@ -19,12 +25,13 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.4.10"
+    "@ndla/core": "^0.6.0",
+    "react-swipeable": "^5.0.1"
   },
   "peerDependencies": {
-    "emotion": "^9.2.10",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
     "react": "^16.8.0",
-    "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"
   },
   "publishConfig": {

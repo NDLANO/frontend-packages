@@ -6,7 +6,7 @@ import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import { spacing } from '@ndla/core';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 import { OneColumn } from '../Layout';
 import SafeLink from '../common/SafeLink';

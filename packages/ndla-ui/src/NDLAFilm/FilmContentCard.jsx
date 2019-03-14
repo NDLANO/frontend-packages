@@ -2,56 +2,60 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { spacing, colors, fonts, misc, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
-const FilmContentCard = ({ movie, columnWidth, resourceTypes }) => {
-  return (
-    <StyledSlideWrapper key={movie.id}>
-      <SafeLink to={movie.url}>
-        <StyledImage
-          role="img"
-          columnWidth={columnWidth}
-          aria-label={(movie.metaImage && movie.metaImage.alt) || ''}
-          style={{
-            backgroundImage: `url(${(movie.metaImage && movie.metaImage.url) ||
-              ''})`,
-          }}>
-          <StyledTagWrapper>
-            {Object.keys(movie.movieTypes).map(movieType => {
-              const resource = resourceTypes.find(
-                resourceType => resourceType.id === movieType,
-              );
-              return resource ? (
-                <StyledMovieTags key={movieType}>
-                  {resource.name}
-                </StyledMovieTags>
-              ) : null;
-            })}
-          </StyledTagWrapper>
-        </StyledImage>
-        <StyledMovieTitle>{movie.title}</StyledMovieTitle>
-      </SafeLink>
-    </StyledSlideWrapper>
-  );
-};
+const FilmContentCard = ({
+  movie,
+  columnWidth,
+  distanceBetweenItems,
+  resourceTypes,
+}) => (
+  <StyledSlideWrapper
+    key={movie.id}
+    columnWidth={columnWidth}
+    style={{ marginRight: `${distanceBetweenItems}px` }}>
+    <SafeLink to={movie.url}>
+      <StyledImage
+        role="img"
+        columnWidth={columnWidth}
+        aria-label={(movie.metaImage && movie.metaImage.alt) || ''}
+        style={{
+          backgroundImage: `url(${(movie.metaImage && movie.metaImage.url) ||
+            ''})`,
+        }}>
+        <StyledTagWrapper>
+          {Object.keys(movie.movieTypes).map(movieType => {
+            const resource = resourceTypes.find(
+              resourceType => resourceType.id === movieType,
+            );
+            return resource ? (
+              <StyledMovieTags key={movieType}>{resource.name}</StyledMovieTags>
+            ) : null;
+          })}
+        </StyledTagWrapper>
+      </StyledImage>
+      <StyledMovieTitle>{movie.title}</StyledMovieTitle>
+    </SafeLink>
+  </StyledSlideWrapper>
+);
 
 const StyledMovieTags = styled.span`
   transition: opacity 200ms ease;
   background: ${colors.brand.greyLight};
-  padding: ${spacing.small} / 4 ${spacing.small} / 2;
+  padding: calc(${spacing.xsmall} / 2) ${spacing.xsmall};
   ${fonts.sizes('14px', '16px')};
   font-weight: ${fonts.weight.semibold};
   border-radius: ${misc.borderRadius};
-  color: ${colors.brand.primary};
-  margin-right: ${spacing.small} / 2;
-  margin-bottom: ${spacing.small} / 4;
+  color: ${colors.text.primary};
+  margin-right: ${spacing.spacingUnit / 4}px;
+  margin-bottom: ${spacing.spacingUnit / 8}px;
   opacity: 0;
 `;
 const StyledMovieTitle = styled.h2`
   ${fonts.sizes('14px', '20px')};
-  font-weight: ${fonts.weight.bold};
+  font-weight: ${fonts.weight.semibold};
   color: #fff;
-  margin: calc(${spacing.small} / 2) 0 ${spacing.small};
+  margin: ${spacing.xsmall} 0 ${spacing.small};
   @media (min-width: ${breakpoints.mobileWide}) {
     ${fonts.sizes('16px', '22px')};
   }
@@ -62,7 +66,6 @@ const StyledMovieTitle = styled.h2`
 `;
 const StyledImage = styled.div`
   height: ${props => props.columnWidth * 0.5625}px;
-  width: ${props => props.columnWidth}px;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
@@ -82,7 +85,7 @@ const StyledImage = styled.div`
 `;
 
 const StyledSlideWrapper = styled.div`
-  padding: calc(${spacing.small} / 2);
+  width: ${props => props.columnWidth}px;
   color: #fff;
   box-shadow: none;
   &:hover,
@@ -100,7 +103,7 @@ const StyledSlideWrapper = styled.div`
 `;
 
 const StyledTagWrapper = styled.div`
-  padding: ${spacing.small} / 2 ${spacing.small};
+  padding: ${spacing.xsmall} ${spacing.xsmall};
   flex-flow: wrap;
   display: flex;
   position: absolute;
@@ -113,6 +116,7 @@ FilmContentCard.propTypes = {
     url: PropTypes.string,
   }),
   columnWidth: PropTypes.number,
+  distanceBetweenItems: PropTypes.number,
   resourceTypes: PropTypes.arrayOf(PropTypes.object),
 };
 

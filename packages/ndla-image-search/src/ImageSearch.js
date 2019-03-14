@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
 import { Input } from '@ndla/forms';
@@ -275,7 +276,7 @@ ${mq.range({ from: breakpoints.wide })} {
 }
 `;
 
-const searchIconClass = css`
+const searchIconCss = css`
   border: 0;
   background: transparent;
   margin: 0;
@@ -372,7 +373,7 @@ class ImageSearch extends React.Component {
           focusOnMount
           iconRight={
             <button
-              className={searchIconClass}
+              css={searchIconCss}
               aria-label={searchButtonTitle}
               type="button"
               onClick={() => {

@@ -41,7 +41,7 @@ import { breakpoints } from '@ndla/util';
 
 import exampleBackground from '../../images/banners/Salg-service-og-sikkerhet.svg';
 import chineseBackground from '../../images/banners/Kinesisk.svg';
-import article, { contentCards } from '../../dummydata/index';
+import { contentCards } from '../../dummydata/index';
 
 import TopicListExample from '../molecules/TopicListExample';
 import TwoColumnsExample from '../molecules/TwoColumnsExample';

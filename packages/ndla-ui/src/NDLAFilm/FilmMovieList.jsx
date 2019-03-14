@@ -24,31 +24,28 @@ const FilmMovieList = ({
   slideBackwardsLabel,
   slideForwardsLabel,
   resourceTypes,
-  columnsPrSlide,
-  columnWidth,
-  margin,
+  autoSizedProps,
 }) => (
   <section {...classes()}>
-    <h1 {...classes('heading')} style={{ marginLeft: `${margin + 7}px` }}>
+    <h1
+      {...classes('heading')}
+      style={{ marginLeft: `${autoSizedProps.margin}px` }}>
       {name}
     </h1>
     <Carousel
-      padding
-      columnsPrSlide={columnsPrSlide}
-      columnWidth={columnWidth}
-      margin={margin}
       slideBackwardsLabel={slideBackwardsLabel}
       slideForwardsLabel={slideForwardsLabel}
-      distanceBetweenItems={13}>
-      {movies.map(movie => (
+      buttonClass="c-film-movielist__carousel-buttons"
+      wrapperClass="c-film-movielist__carousel-wrapper-buttons"
+      items={movies.map(movie => (
         <FilmContentCard
           key={movie.id}
           movie={movie}
-          columnWidth={columnWidth}
+          columnWidth={autoSizedProps.columnWidth}
           resourceTypes={resourceTypes}
         />
       ))}
-    </Carousel>
+      {...autoSizedProps}
     />
   </section>
 );
@@ -56,9 +53,6 @@ const FilmMovieList = ({
 FilmMovieList.propTypes = {
   movies: PropTypes.arrayOf(movieShape),
   name: PropTypes.string.isRequired,
-  columnsPrSlide: PropTypes.number.isRequired,
-  columnWidth: PropTypes.number.isRequired,
-  margin: PropTypes.number.isRequired,
   slideBackwardsLabel: PropTypes.string.isRequired,
   slideForwardsLabel: PropTypes.string.isRequired,
   resourceTypes: PropTypes.arrayOf(
@@ -67,6 +61,7 @@ FilmMovieList.propTypes = {
       id: PropTypes.id,
     }),
   ),
+  autoSizedProps: PropTypes.shape({}),
 };
 
 FilmMovieList.defaultProps = {

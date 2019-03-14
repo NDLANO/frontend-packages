@@ -439,6 +439,10 @@ const messages = {
   notions: {
     closeNotion: 'Close',
   },
+  carousel: {
+    back: 'Slide backwards',
+    forward: 'Slide forwards',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',

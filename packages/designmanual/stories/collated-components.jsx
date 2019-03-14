@@ -537,9 +537,17 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Bilde karusell', () => (
-    <Center>
-      <CarouselExample />
-    </Center>
+    <div>
+      <StoryIntro title="Bilde karusell">
+        <p>
+          Bilde karusell består av 2 komponenter. En Wrapper komponent for
+          automatisk utregning av størrelser, og selve bildekarusellen.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <CarouselExample />
+      </StoryBody>
+    </div>
   ))
   .add('Tilleggsstoff', () => (
     <div>

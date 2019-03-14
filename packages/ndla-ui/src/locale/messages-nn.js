@@ -438,6 +438,10 @@ const messages = {
   notions: {
     closeNotion: 'Lukk',
   },
+  carousel: {
+    back: 'Bla tilbake',
+    forward: 'Bla framover',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',

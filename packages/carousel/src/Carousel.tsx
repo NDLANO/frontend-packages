@@ -9,22 +9,24 @@
 import React, { Component } from 'react';
 // @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
-import BEMHelper from 'react-bem-helper';
-import { Swipe, Position } from './Swipe';
+import { Swipeable, EventData } from 'react-swipeable';
+import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
 
-interface Child {
-  id: string;
-  children: React.ReactNode;
-}
-
-interface Props {
-  children: Child[];
+export interface CalculatedProps {
   columnsPrSlide: number;
   columnWidth: number;
   distanceBetweenItems: number;
+  arrowOffset: number;
+  margin: number;
+}
+
+interface Props extends CalculatedProps {
+  items: React.ReactNode[];
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
-  margin: number;
+  buttonClass: string;
+  wrapperClass: string;
+  disableScroll: boolean;
 }
 
 interface State {
@@ -32,29 +34,57 @@ interface State {
   swiping: boolean;
 }
 
-const classes = new BEMHelper({
-  name: 'film-movielist',
-  prefix: 'c-',
-});
-
 export class Carousel extends Component<Props, State> {
-  static defaultProps = { margin: 0 };
+  static defaultProps = {
+    items: [],
+    margin: 0,
+    distanceBetweenItems: 0,
+    arrowOffset: 0,
+    buttonClass: '',
+    wrapperClass: '',
+  };
+
   swipeDistance = 0;
-  slideshow = React.createRef<HTMLDivElement>();
+  swipeSpeed = 0;
+  slideshowRef = React.createRef<HTMLDivElement>();
+
   state: State = {
     slideIndex: 0,
     swiping: false,
   };
 
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    const { columnsPrSlide, items } = nextProps;
+    const { slideIndex } = prevState;
+    // Check if resize caused carousel to be scrolled to far.
+    if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
+      const adjustedSlideIndex =
+        slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
+      return {
+        slideIndex: adjustedSlideIndex,
+      };
+    }
+
+    return null;
+  }
+
   onSwipeEnd = () => {
     const {
-      children,
       columnsPrSlide,
       columnWidth,
       distanceBetweenItems,
+      items,
     } = this.props;
+    if (!this.state.swiping) {
+      return;
+    }
+
+    const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
+
     const moved = Math.round(
-      this.swipeDistance / (columnWidth + distanceBetweenItems),
+      (-Math.min(this.props.columnWidth / 2, this.swipeSpeed * 5) +
+        this.swipeDistance) /
+        (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
     if (moved !== 0) {
@@ -62,8 +92,8 @@ export class Carousel extends Component<Props, State> {
         let slideIndex = prevState.slideIndex + moved;
         if (slideIndex > 0) {
           slideIndex = 0;
-        } else if (slideIndex < -(children.length - columnsPrSlide)) {
-          slideIndex = -(children.length - columnsPrSlide);
+        } else if (slideIndex < -(items.length - columnsPrSlide)) {
+          slideIndex = -(items.length - roundedColumnsPrSlide);
         }
         return {
           slideIndex,
@@ -77,30 +107,40 @@ export class Carousel extends Component<Props, State> {
     }
   };
 
-  onSwipe = (p: Position) => {
+  onSwipe = (eventData: EventData) => {
+    const moved = -eventData.deltaX;
+    if (
+      Math.abs(moved) < 15 ||
+      eventData.dir === 'Up' ||
+      eventData.dir === 'Down'
+    ) {
+      return;
+    }
     this.setState({
       swiping: true,
     });
+    this.swipeSpeed = this.swipeDistance - moved;
+    this.swipeDistance = moved;
+    const transformX =
+      this.swipeDistance + this.state.slideIndex * this.props.columnWidth;
 
-    this.swipeDistance = p.x;
-
-    if (this.slideshow.current) {
-      this.slideshow.current.style.transform = `translateX(${this
-        .swipeDistance +
-        this.state.slideIndex *
-          (this.props.columnWidth + this.props.distanceBetweenItems)}px)`;
+    if (this.slideshowRef.current) {
+      this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
     }
   };
 
   slidePage = (direction: number) => {
-    const { children, columnsPrSlide } = this.props;
-    if (columnsPrSlide < children.length) {
+    const { columnsPrSlide, items } = this.props;
+    const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
+    if (roundedColumnsPrSlide < items.length) {
       this.setState(prevState => {
-        let slideIndex = prevState.slideIndex + columnsPrSlide * direction;
+        let slideIndex =
+          prevState.slideIndex + roundedColumnsPrSlide * direction;
+
         if (slideIndex > 0) {
           slideIndex = 0;
-        } else if (slideIndex < -(children.length - columnsPrSlide)) {
-          slideIndex = -(children.length - columnsPrSlide);
+        } else if (slideIndex < -(items.length - roundedColumnsPrSlide)) {
+          slideIndex = -(items.length - roundedColumnsPrSlide);
         }
         return {
           slideIndex,
@@ -111,65 +151,69 @@ export class Carousel extends Component<Props, State> {
 
   render() {
     const {
-      children,
+      items,
       columnWidth,
       columnsPrSlide,
-      distanceBetweenItems,
       margin,
+      distanceBetweenItems,
       slideBackwardsLabel,
       slideForwardsLabel,
+      arrowOffset,
+      buttonClass,
+      wrapperClass,
+      disableScroll,
     } = this.props;
     const { slideIndex, swiping } = this.state;
-    const numberOfSlides = children.length;
-    const hideButtons = columnsPrSlide >= numberOfSlides;
-    const marginString = `${margin}px`;
+    const hideButtons = columnsPrSlide >= items.length;
+
+    const transformX =
+      this.swipeDistance + slideIndex * (columnWidth + distanceBetweenItems);
 
     return (
       <section>
-        <Swipe
-          nodeName="div"
-          onSwipeEnd={this.onSwipeEnd}
-          onSwipe={this.onSwipe}>
-          <div {...classes('slide-wrapper')}>
-            <button
-              type="button"
-              aria-label={slideBackwardsLabel}
-              style={{ width: marginString }}
-              {...classes('slide-navigation', {
-                prev: true,
-                hidden: slideIndex === 0 || hideButtons,
-              })}
-              onClick={() => this.slidePage(1)}>
-              <ChevronLeft />
-            </button>
-            <button
-              type="button"
-              aria-label={slideForwardsLabel}
-              style={{ width: marginString }}
-              {...classes('slide-navigation', {
-                next: true,
-                hidden:
-                  hideButtons ||
-                  slideIndex === -(numberOfSlides - columnsPrSlide),
-              })}
-              onClick={() => this.slidePage(-1)}>
-              <ChevronRight />
-            </button>
-            <div
-              {...classes('slide-content', swiping ? 'swiping' : '')}
-              ref={this.slideshow}
+        <Swipeable onSwiped={this.onSwipeEnd} onSwiping={this.onSwipe}>
+          <div css={slideWrapperCSS} className={wrapperClass}>
+            {!disableScroll && (
+              <>
+                <StyledButton
+                  type="button"
+                  aria-label={slideBackwardsLabel}
+                  className={buttonClass}
+                  prev
+                  arrowOffset={arrowOffset}
+                  dontShow={slideIndex === 0 || hideButtons}
+                  onClick={() => this.slidePage(1)}>
+                  <ChevronLeft />
+                </StyledButton>
+                <StyledButton
+                  type="button"
+                  aria-label={slideForwardsLabel}
+                  className={buttonClass}
+                  dontShow={
+                    hideButtons ||
+                    Math.floor(columnsPrSlide) === items.length + slideIndex
+                  }
+                  next
+                  arrowOffset={arrowOffset}
+                  onClick={() => this.slidePage(-1)}>
+                  <ChevronRight />
+                </StyledButton>
+              </>
+            )}
+            <StyledSlideContent
+              swiping={swiping}
+              ref={this.slideshowRef}
               style={{
-                padding: `0 ${marginString}`,
-                width: `${numberOfSlides *
-                  (columnWidth + distanceBetweenItems) +
+                padding: `0 ${margin}px`,
+                width: `${items.length * columnWidth +
+                  distanceBetweenItems * (items.length - 1) +
                   margin * 2}px`,
-                transform: `translateX(${this.swipeDistance +
-                  slideIndex * (columnWidth + distanceBetweenItems)}px)`,
+                transform: `translateX(${transformX}px)`,
               }}>
-              {children}
-            </div>
+              {items.map(item => item)}
+            </StyledSlideContent>
           </div>
-        </Swipe>
+        </Swipeable>
       </section>
     );
   }

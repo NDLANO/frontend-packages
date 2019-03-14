@@ -24,10 +24,6 @@ const cardCSS = css`
   flex-basis: 100%;
 `;
 
-const wrapperCSS = css`
-  border: 1px solid #ccc;
-`;
-
 const DemoExample = () => (
   <section>
     <CarouselAutosize
@@ -49,14 +45,15 @@ const DemoExample = () => (
           {...autoSizedProps}
           slideBackwardsLabel="tilbake"
           slideForwardsLabel="framover"
-          wrapperClass={wrapperCSS}
+          wrapperClass="c-carousel__wrapper"
+          buttonClass="c-carousel__arrow"
           items={cards.map((cardKey, index) => (
             <div
               style={{
                 height: `${autoSizedProps.columnWidth}px`,
               }}
               key={cardKey}
-              className={cardCSS}>
+              css={cardCSS}>
               <div>{index}</div>
             </div>
           ))}
@@ -92,6 +89,8 @@ const CarouselExample = () => (
             {...autoSizedProps}
             slideBackwardsLabel="tilbake"
             slideForwardsLabel="framover"
+            wrapperClass="c-carousel__wrapper"
+            buttonClass="c-carousel__arrow"
             items={cards.map((cardKey, index) => (
               <div
                 style={{

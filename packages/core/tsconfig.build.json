@@ -2,6 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
+    "isolatedModules": false,
+    "declaration": true,
     "emitDeclarationOnly": true,
     "declarationDir": "./lib",
     "rootDir": "./src",

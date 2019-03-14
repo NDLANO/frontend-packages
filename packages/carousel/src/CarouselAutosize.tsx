@@ -8,7 +8,8 @@
 
 import React, { Component } from 'react';
 import em from 'polished/lib/helpers/em';
-import { breakpoints as breakpointFromCore, Breakpoint } from '@ndla/core';
+import { breakpoints as breakpointFromCore } from '@ndla/core';
+import { Breakpoint } from '@ndla/core/types';
 import { StyledWrapperAutosizer } from './Styles';
 import { CalculatedProps as CalculatedCarouselProps } from './Carousel';
 

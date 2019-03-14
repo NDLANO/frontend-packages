@@ -1,15 +1,5 @@
 import em from 'polished/lib/helpers/em';
-
-export type Breakpoint =
-  | 'mobile'
-  | 'mobileWide'
-  | 'tablet'
-  | 'tabletWide'
-  | 'desktop'
-  | 'wide'
-  | 'ultraWide';
-
-export type Breakpoints = { [key in Breakpoint]: string };
+import { Breakpoints } from '../types';
 
 const breakpoints: Breakpoints = {
   mobile: em('320px'),

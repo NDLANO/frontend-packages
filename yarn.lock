@@ -11450,6 +11450,13 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
+react-swipeable@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-5.0.1.tgz#e2876b27f31bd4b95a4cd273befa093c74b1fd7b"
+  integrity sha512-TRBBlAA5xJi5ISqhhxYA+K/6r+ibsMXI3l/en7XbiqzAMC8CqAH3v44Al7OND0lWMT6jAUkC2WKPtQSX6CUKPQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-syntax-highlighter@^10.1.2:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.2.0.tgz#c44c2a1e89326bbd808cf7a8b2f08dc5ed025d91"

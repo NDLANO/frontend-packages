@@ -9,8 +9,8 @@
 import React, { Component } from 'react';
 // @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
+import { Swipeable, EventData } from 'react-swipeable';
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
-import { Swipe, Position } from './Swipe';
 
 export interface CalculatedProps {
   columnsPrSlide: number;
@@ -75,6 +75,10 @@ export class Carousel extends Component<Props, State> {
       distanceBetweenItems,
       items,
     } = this.props;
+    if (!this.state.swiping) {
+      return;
+    }
+
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
 
     const moved = Math.round(
@@ -103,11 +107,18 @@ export class Carousel extends Component<Props, State> {
     }
   };
 
-  onSwipe = (p: Position) => {
+  onSwipe = (eventData: EventData) => {
+    const moved = -eventData.deltaX;
+    if (
+      Math.abs(moved) < 15 ||
+      eventData.dir === 'Up' ||
+      eventData.dir === 'Down'
+    ) {
+      return;
+    }
     this.setState({
       swiping: true,
     });
-    const moved = p.x;
     this.swipeSpeed = this.swipeDistance - moved;
     this.swipeDistance = moved;
     const transformX =
@@ -160,12 +171,7 @@ export class Carousel extends Component<Props, State> {
 
     return (
       <section>
-        <Swipe
-          nodeName="div"
-          detectMouse={false}
-          detectTouch
-          onSwipeEnd={this.onSwipeEnd}
-          onSwipe={this.onSwipe}>
+        <Swipeable onSwiped={this.onSwipeEnd} onSwiping={this.onSwipe}>
           <div css={slideWrapperCSS} className={wrapperClass}>
             {!disableScroll && (
               <>
@@ -207,7 +213,7 @@ export class Carousel extends Component<Props, State> {
               {items.map(item => item)}
             </StyledSlideContent>
           </div>
-        </Swipe>
+        </Swipeable>
       </section>
     );
   }

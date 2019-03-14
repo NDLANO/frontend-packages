@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Swipe } from '@ndla/carousel';
+import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn } from '@ndla/ui';
@@ -105,7 +105,7 @@ class FilmSlideshow extends Component {
     let slide;
     if (this.swipeDistance > 40) {
       slide = -1;
-    } else if (this.swipeDistance < 40) {
+    } else if (this.swipeDistance < -40) {
       slide = 1;
     } else {
       slide = 0;
@@ -115,15 +115,27 @@ class FilmSlideshow extends Component {
     this.slideText.current.style.opacity = 1;
     this.swipeDistance = 0;
     this.initTimer();
-    this.setState(prevState => ({
-      slideIndex: prevState.slideIndex + slide,
-      slideIndexTarget: prevState.slideIndex + slide,
-    }));
+    if (slide !== 0) {
+      this.setState(prevState => {
+        return {
+          slideIndex: prevState.slideIndex + slide,
+          slideIndexTarget: prevState.slideIndex + slide,
+        };
+      });
+    } else {
+      // Reset transfrom
+      this.slideRef.current.style.transform = this.getSlidePosition(
+        this.state.slideIndex + slide,
+      );
+    }
   }
 
-  onSwipe(p) {
+  onSwipe(eventData) {
+    if (eventData.dir === 'Up' || eventData.dir === 'Down') {
+      return;
+    }
     clearTimeout(this.timer);
-    this.swipeDistance = p.x;
+    this.swipeDistance = -eventData.deltaX;
     this.slideRef.current.style.transition = 'none';
     this.slideRef.current.style.transform = this.getSlidePosition(
       this.state.slideIndexTarget,
@@ -172,6 +184,7 @@ class FilmSlideshow extends Component {
   initTimer() {
     if (this.props.autoSlide) {
       this.timer = setTimeout(() => {
+        console.log('called');
         this.gotoSlide(this.state.slideIndex + 1);
       }, this.props.slideInterval);
     }
@@ -200,11 +213,10 @@ class FilmSlideshow extends Component {
 
     return (
       <section>
-        <Swipe
+        <Swipeable
           {...classes('')}
-          nodeName="div"
-          onSwipeEnd={this.onSwipeEnd}
-          onSwipe={this.onSwipe}>
+          onSwiped={this.onSwipeEnd}
+          onSwiping={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <a
@@ -276,7 +288,7 @@ class FilmSlideshow extends Component {
             {slideshow.map(renderSlideItem)}
             {renderSlideItem(slideshow[0], slideshow.length)}
           </div>
-        </Swipe>
+        </Swipeable>
         <div {...classes('indicator-wrapper')}>
           {slideshow.map((slide, index) => (
             <button

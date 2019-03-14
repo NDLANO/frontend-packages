@@ -7,5 +7,4 @@
  */
 
 export { Carousel } from './Carousel';
-export { Swipe } from './Swipe';
 export { CarouselAutosize } from './CarouselAutosize';

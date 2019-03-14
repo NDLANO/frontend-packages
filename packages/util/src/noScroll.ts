@@ -1,4 +1,4 @@
-let scrollbarWidth = null;
+let scrollbarWidth: number | null = null;
 
 const getScrollbarWidth = () => {
   if (scrollbarWidth) {
@@ -33,17 +33,20 @@ const getBodyScrollTop = () => {
   return el.scrollTop;
 };
 
-const setBodyScrollTop = top => {
+const setBodyScrollTop = (top: number) => {
   const el = document.scrollingElement || document.documentElement;
   el.scrollTop = top;
 };
 
-let currentScrollPosition;
+let currentScrollPosition: number;
 
-const scrollTargets = [];
+const scrollTargets: string[] = [];
 
-const noScroll = (enable, uuid) => {
-  const htmlElement = document.querySelector('html');
+const noScroll = (enable: boolean, uuid: string): void => {
+  const htmlElement = document.querySelector('html') as HTMLElement;
+  if (htmlElement === null) {
+    return;
+  }
   if (enable) {
     if (!scrollTargets.includes(uuid)) {
       scrollTargets.push(uuid);
@@ -51,13 +54,15 @@ const noScroll = (enable, uuid) => {
       currentScrollPosition = getBodyScrollTop();
       htmlElement.style.overflow = 'hidden';
       htmlElement.style.paddingRight = `${scrollWidth}px`;
-      const mastHead = document.querySelector('.c-masthead--fixed');
+      const mastHead = document.querySelector(
+        '.c-masthead--fixed',
+      ) as HTMLElement;
       if (mastHead) {
         mastHead.style.paddingRight = `${scrollWidth}px`;
       }
       htmlElement.style.position = isIosDeviceSafari ? 'fixed' : 'static'; // iOS scrolling fix
-      htmlElement.style.left = 0;
-      htmlElement.style.right = 0;
+      htmlElement.style.left = '0';
+      htmlElement.style.right = '0';
     }
   } else {
     if (scrollTargets.indexOf(uuid) !== -1) {
@@ -66,10 +71,12 @@ const noScroll = (enable, uuid) => {
     if (scrollTargets.length === 0) {
       htmlElement.style.overflow = 'visible';
       htmlElement.style.position = 'static';
-      htmlElement.style.paddingRight = 0;
-      const mastHead = document.querySelector('.c-masthead--fixed');
+      htmlElement.style.paddingRight = '0';
+      const mastHead = document.querySelector(
+        '.c-masthead--fixed',
+      ) as HTMLElement;
       if (mastHead) {
-        mastHead.style.paddingRight = 0;
+        mastHead.style.paddingRight = '0';
       }
       htmlElement.style.left = 'auto';
       htmlElement.style.right = 'auto';

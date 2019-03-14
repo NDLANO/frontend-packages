@@ -8,7 +8,7 @@
 
 // N.B This helper is intended to be used in https://github.com/ndlano/article-converter. It is not a general soultion for using portals in SSR applications.
 
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 
 const canUseDOM = () =>
@@ -19,9 +19,13 @@ const canUseDOM = () =>
     !window.document.hidden
   ); // window.document.hidden === jsdom check
 
-export function createUniversalPortal(children, selector) {
+export function createUniversalPortal(
+  children: React.ReactNode,
+  selector: string,
+) {
   if (!canUseDOM()) {
     return <div data-react-universal-portal>{children}</div>;
   }
-  return ReactDOM.createPortal(children, document.querySelector(selector));
+  const el = document.querySelector(selector) as Element;
+  return ReactDOM.createPortal(children, el);
 }

@@ -6,7 +6,8 @@
  *
  */
 
-const getComponentName = component =>
+import * as React from 'react';
+const getComponentName = (component: React.ComponentClass) =>
   component.displayName || component.name || 'Component';
 
 export default getComponentName;

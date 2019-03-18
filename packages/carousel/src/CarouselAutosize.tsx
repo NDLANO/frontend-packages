@@ -36,6 +36,9 @@ interface State {
 }
 
 export class CarouselAutosize extends Component<Props, State> {
+  static defaultProps = {
+    itemsLength: 999,
+  };
   autosizeRef = React.createRef<HTMLDivElement>();
   state: State = {};
 
@@ -117,9 +120,6 @@ export class CarouselAutosize extends Component<Props, State> {
     );
 
     let wrapperWidth = 'auto';
-
-    console.log('is centered', centered);
-    console.log('calculatedCarouselProps', calculatedCarouselProps);
 
     if (
       centered &&

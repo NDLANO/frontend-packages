@@ -10,7 +10,7 @@ import SafeLink from '../common/SafeLink';
 const classes = BEMHelper('c-frontpage-film');
 
 const FrontpageFilm = ({ url, imageUrl, t }) => (
-  <section {...classes('')}>
+  <section {...classes('ndla-frontpage')}>
     <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
     <div {...classes('image')} style={{ backgroundImage: `url(${imageUrl})` }}>
       <span {...classes('film-text', 'wide')}>

@@ -25,6 +25,7 @@ interface CaruselBreakpoint {
 interface Props {
   breakpoints: CaruselBreakpoint[];
   centered?: boolean;
+  itemsLength: number;
   children: (
     calculatedProps: CalculatedCarouselProps | null,
   ) => React.ReactNode;
@@ -106,6 +107,7 @@ export class CarouselAutosize extends Component<Props, State> {
 
   render() {
     const { carouselBreakpoint } = this.state;
+    const { children, centered, itemsLength } = this.props;
     if (!carouselBreakpoint) {
       return <div ref={this.autosizeRef} />;
     }
@@ -114,17 +116,17 @@ export class CarouselAutosize extends Component<Props, State> {
       carouselBreakpoint,
     );
 
-    const maxColumnWidth = carouselBreakpoint.maxColumnWidth;
-
     let wrapperWidth = 'auto';
 
+    console.log('is centered', centered);
+    console.log('calculatedCarouselProps', calculatedCarouselProps);
+
     if (
-      this.props.centered &&
-      calculatedCarouselProps &&
-      maxColumnWidth === calculatedCarouselProps.columnWidth
+      centered &&
+      calculatedCarouselProps
     ) {
       wrapperWidth = `${calculatedCarouselProps.columnWidth *
-        calculatedCarouselProps.columnsPrSlide +
+        Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength)  +
         calculatedCarouselProps.distanceBetweenItems *
           (calculatedCarouselProps.columnsPrSlide - 1) +
         (calculatedCarouselProps.margin || 0) * 2}px`;
@@ -134,7 +136,7 @@ export class CarouselAutosize extends Component<Props, State> {
       <div ref={this.autosizeRef}>
         {carouselBreakpoint && (
           <StyledWrapperAutosizer width={wrapperWidth}>
-            {this.props.children(calculatedCarouselProps)}
+            {children(calculatedCarouselProps)}
           </StyledWrapperAutosizer>
         )}
       </div>

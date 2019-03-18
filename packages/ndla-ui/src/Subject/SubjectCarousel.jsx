@@ -70,28 +70,31 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
       ]}
       centered
       itemsLength={subjects.length}>
-      {autoSizedProps => (
-        <>
-          <SubjectSectionTitle {...subjectCarouselClasses('title')}>
-            {title}
-          </SubjectSectionTitle>
-          <Carousel
-            disableScroll={autoSizedProps.columnsPrSlide >= subjects.length}
-            slideBackwardsLabel={t('carousel.back')}
-            slideForwardsLabel={t('carousel.forward')}
-            buttonClass="c-carousel__arrow"
-            wrapperClass="c-carousel__wrapper"
-            items={subjects.map(subject => (
-              <ContentCard
-                columnWidth={autoSizedProps.columnWidth}
-                key={subject.id}
-                {...subject}
-              />
-            ))}
-            {...autoSizedProps}
-          />
-        </>
-      )}
+      {autoSizedProps => {
+        console.log(autoSizedProps);
+        return (
+          <>
+            <SubjectSectionTitle {...subjectCarouselClasses('title')}>
+              {title}
+            </SubjectSectionTitle>
+            <Carousel
+              disableScroll={autoSizedProps.columnsPrSlide >= subjects.length}
+              slideBackwardsLabel={t('carousel.back')}
+              slideForwardsLabel={t('carousel.forward')}
+              buttonClass="c-carousel__arrow"
+              wrapperClass="c-carousel__wrapper"
+              items={subjects.map(subject => (
+                <ContentCard
+                  columnWidth={autoSizedProps.columnWidth}
+                  key={subject.id}
+                  {...subject}
+                />
+              ))}
+              {...autoSizedProps}
+            />
+          </>
+        );
+      }}
     </CarouselAutosize>
   </section>
 );

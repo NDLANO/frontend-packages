@@ -241,6 +241,7 @@ class FileListEditor extends Component {
               deleteIndex === index ? this.executeDeleteFile : undefined
             }>
             <FileNameInput
+              useRef={this.filesWrapperRef}
               file={file}
               editMode={editFileIndex === index}
               value={file.title}
@@ -258,7 +259,6 @@ class FileListEditor extends Component {
               }}
               onBlur={this.exitEditFileName}
             />
-
             <div>
               <Tooltip tooltip={messages.changeName}>
                 <ButtonIcons

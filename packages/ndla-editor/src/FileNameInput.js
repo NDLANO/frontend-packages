@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, fonts, colors } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
@@ -37,20 +37,20 @@ class InputComponent extends Component {
     const { forwardedRef, usePortal, ...rest } = this.props;
 
     if (!usePortal) {
-      return <StyledInput innerRef={this.inputRef} {...rest} />;
+      return <StyledInput ref={this.inputRef} {...rest} />;
     }
     return createUniversalPortal(
-      <StyledInput innerRef={this.inputRef} {...rest} />,
+      <StyledInput ref={this.inputRef} {...rest} />,
       'body',
     );
   }
 }
 
-const FileNameInput = React.forwardRef(({ editMode, file, ...rest }, ref) => {
+const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
   if (editMode)
     return (
       <div>
-        <InputComponent {...rest} forwardedRef={ref} />
+        <InputComponent {...rest} forwardedRef={useRef} />
       </div>
     );
   return (
@@ -63,7 +63,7 @@ const FileNameInput = React.forwardRef(({ editMode, file, ...rest }, ref) => {
       </LinkButton>
     </div>
   );
-});
+};
 
 const StyledInput = styled.input`
   height: ${spacing.medium};

@@ -54,6 +54,7 @@ import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
 import ListViewExample from './organisms/ListViewExample';
+import CarouselExample from './organisms/CarouselExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -534,6 +535,19 @@ storiesOf('Sammensatte moduler', module)
         </Footer.Text>
       </Footer>
     </Center>
+  ))
+  .add('Bilde karusell', () => (
+    <div>
+      <StoryIntro title="Bilde karusell">
+        <p>
+          Bilde karusell består av 2 komponenter. En Wrapper komponent for
+          automatisk utregning av størrelser, og selve bildekarusellen.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <CarouselExample />
+      </StoryBody>
+    </div>
   ))
   .add('Tilleggsstoff', () => (
     <div>

@@ -8,7 +8,8 @@
 
 import React, { Component, Fragment } from 'react';
 import { Structure, Spinner } from '@ndla/editor';
-import styled, { cx, css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
 import {
@@ -118,19 +119,19 @@ const ConnectionButton = styled('button')`
   &:disabled {
     color: ${colors.brand.light};
   }
-  > span:first-child {
+  > span:first-of-type {
     ${checkboxItemCSS};
   }
   &:not(:disabled) {
     &:hover,
     &:focus {
-      > span:first-child {
+      > span:first-of-type {
         ${checkboxItemHoverCSS};
       }
     }
   }
   &.checkboxItem--checked {
-    > span:first-child {
+    > span:first-of-type {
       ${checkboxItemSelectedCSS};
     }
   }
@@ -241,7 +242,7 @@ class StructureExample extends Component {
         return null;
       }
       return (
-        <div className={cx('filestructure')}>
+        <div className={'filestructure'}>
           <AddTitle show>Filtrer emner:</AddTitle>
           {availableFilters[paths[0]].map(filter => (
             <ConnectionButton
@@ -284,8 +285,8 @@ class StructureExample extends Component {
       );
     }
     return (
-      <div className={cx('filestructure')}>
-        <Button outline className={buttonAddition} onClick={() => {}}>
+      <div className={'filestructure'}>
+        <Button outline css={buttonAddition} onClick={() => {}}>
           Emne funksjon
         </Button>
       </div>

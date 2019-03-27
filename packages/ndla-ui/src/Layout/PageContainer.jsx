@@ -15,19 +15,28 @@ const classes = new BEMHelper({
   prefix: 'o-',
 });
 
-export const PageContainer = ({ children, background, backgroundWide }) => (
-  <div {...classes('', { background, backgroundWide })}>{children}</div>
+export const PageContainer = ({
+  children,
+  background,
+  backgroundWide,
+  ndlaFilm,
+}) => (
+  <div {...classes('', { background, backgroundWide, ndlaFilm })}>
+    {children}
+  </div>
 );
 
 PageContainer.propTypes = {
   children: PropTypes.node,
   background: PropTypes.bool,
   backgroundWide: PropTypes.bool,
+  ndlaFilm: PropTypes.bool,
 };
 
 PageContainer.defaultProps = {
   background: false,
   backgroundWide: false,
+  ndlaFilm: false,
 };
 
 export default PageContainer;

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { colors, fonts, spacing } from '@ndla/core';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';

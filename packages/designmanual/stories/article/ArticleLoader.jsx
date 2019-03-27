@@ -22,10 +22,15 @@ import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import { topicList } from '../../dummydata/index';
+import { topicList, topicListFilm } from '../../dummydata/index';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
+import NdlaFilmArticleHero from './NdlaFilmArticleHero';
 
-const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
+const ResourcesSubTopics = ({
+  showAdditionalCores,
+  toggleAdditionalCores,
+  ndlaFilm,
+}) => (
   <ResourcesWrapper
     header={
       <ResourcesTopicTitle
@@ -47,7 +52,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
     }>
     <TopicIntroductionList
       toTopic={() => '#'}
-      topics={topicList}
+      topics={ndlaFilm ? topicListFilm : topicList}
       toggleAdditionalCores={toggleAdditionalCores}
       showAdditionalCores={showAdditionalCores}
       messages={{
@@ -60,6 +65,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
 ResourcesSubTopics.propTypes = {
   showAdditionalCores: PropTypes.bool,
   toggleAdditionalCores: PropTypes.func,
+  ndlaFilm: PropTypes.bool,
 };
 
 class ArticleLoader extends Component {
@@ -112,6 +118,8 @@ class ArticleLoader extends Component {
       label,
       hideResources,
       showSubTopics,
+      ndlaFilm,
+      withBackgroundImage,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -129,6 +137,7 @@ class ArticleLoader extends Component {
           key="subTopic"
           toggleAdditionalCores={this.toggleAdditionalCores}
           showAdditionalCores={this.state.showAdditionalCores}
+          ndlaFilm={ndlaFilm}
         />,
       );
     }
@@ -138,41 +147,49 @@ class ArticleLoader extends Component {
     }
 
     return (
-      <div>
-        <Helmet script={scripts} />
-        {article ? (
-          <OneColumn>
-            <Article
-              icon={icon}
-              article={article}
-              modifier={reset ? 'clean' : ''}
-              messages={{
-                edition: 'Utgave',
-                publisher: 'Utgiver',
-                authorLabel: 'Opphavsmann',
-                authorDescription:
-                  'Denne artikkelen er laget av flere opphavsmenn',
-                close: 'Lukk',
-                label,
-              }}
-              licenseBox={<LicenseBox />}
-              competenceGoals={<CompetenceGoalListExample />}>
-              {articleChildren}
-            </Article>
-          </OneColumn>
-        ) : (
-          <SimpleSubmitForm
-            onSubmit={this.handleSubmit}
-            errorMessage={message}
-            labelText="Artikkel ID:"
+      <>
+        {ndlaFilm && (
+          <NdlaFilmArticleHero
+            article={article}
+            withBackgroundImage={withBackgroundImage}
           />
         )}
-        {article && closeButton ? (
-          <Button onClick={() => this.setState({ article: undefined })}>
-            Lukk
-          </Button>
-        ) : null}
-      </div>
+        <div>
+          <Helmet script={scripts} />
+          {article ? (
+            <OneColumn>
+              <Article
+                icon={icon}
+                article={article}
+                modifier={reset ? 'clean' : ''}
+                messages={{
+                  edition: 'Utgave',
+                  publisher: 'Utgiver',
+                  authorLabel: 'Opphavsmann',
+                  authorDescription:
+                    'Denne artikkelen er laget av flere opphavsmenn',
+                  close: 'Lukk',
+                  label,
+                }}
+                licenseBox={<LicenseBox />}
+                competenceGoals={<CompetenceGoalListExample />}>
+                {articleChildren}
+              </Article>
+            </OneColumn>
+          ) : (
+            <SimpleSubmitForm
+              onSubmit={this.handleSubmit}
+              errorMessage={message}
+              labelText="Artikkel ID:"
+            />
+          )}
+          {article && closeButton ? (
+            <Button onClick={() => this.setState({ article: undefined })}>
+              Lukk
+            </Button>
+          ) : null}
+        </div>
+      </>
     );
   }
 }
@@ -185,6 +202,7 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
+  ndlaFilm: PropTypes.bool,
 };
 
 ArticleLoader.defaultProps = {

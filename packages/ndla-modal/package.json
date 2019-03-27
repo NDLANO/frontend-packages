@@ -1,6 +1,6 @@
 {
   "name": "@ndla/modal",
-  "version": "0.2.13",
+  "version": "0.3.2",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -19,15 +19,15 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^0.2.8",
-    "@ndla/core": "^0.4.10",
-    "@ndla/util": "^0.3.2",
+    "@ndla/button": "^0.3.1",
+    "@ndla/core": "^0.6.1",
+    "@ndla/util": "^0.3.3",
     "focus-trap-react": "^6.0.0"
   },
   "peerDependencies": {
-    "emotion": "^9.2.10",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
     "react": "^16.4.2",
-    "react-emotion": "^9.2.10",
     "react-prop-types": "0.4.0"
   },
   "publishConfig": {

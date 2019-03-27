@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const StyledLicenseByline = styled.div`
   display: flex;

@@ -65,6 +65,18 @@
     }
   }
 
+  &--ndlaFilm {
+    background: $film-color;
+    border: 0;
+    .c-breadcrumb-block,
+    .c-breadcrumb-block__item,
+    .c-breadcrumb-block__item a,
+    .c-breadcrumb-block__item span,
+    .c-breadcrumb-block__item .c-icon {
+      color: #fff;
+    }
+  }
+
   &__placeholder {
     min-height: $masthead-height;
     width: 100%;

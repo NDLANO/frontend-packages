@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, cx } from 'react-emotion';
+import { css } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
@@ -54,11 +54,11 @@ const NotionCSS = css`
 `;
 
 const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
-  <span className={NotionCSS} id={id} data-notion>
+  <span css={NotionCSS} id={id} data-notion>
     <button
       type="button"
       aria-label={ariaLabel}
-      className={cx('link')}
+      className={'link'}
       data-notion-link>
       {children}
     </button>

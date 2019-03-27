@@ -13,7 +13,7 @@ import {
   FieldHeader,
   FieldSection,
   Input,
-  Dropdown,
+  Select,
   FieldSplitter,
   FieldRemoveButton,
 } from '@ndla/forms';
@@ -110,7 +110,7 @@ class FormExampleAuthors extends Component {
                   value={author.name}
                   onChange={e => this.handleInputChange(e.target.value, index)}
                 />
-                <Dropdown
+                <Select
                   value={author.role}
                   onChange={e => this.handleUpdateRole(e.target.value, index)}>
                   <option value="">Tildel rolle</option>
@@ -119,7 +119,7 @@ class FormExampleAuthors extends Component {
                       {titleRole}
                     </option>
                   ))}
-                </Dropdown>
+                </Select>
               </FieldSplitter>
             </div>
             <div>
@@ -135,14 +135,12 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <FieldSplitter>
-              <Input
-                iconRight={<SearchIcon />}
-                container="div"
-                type="text"
-                placeholder="Skriv navn"
-              />
-            </FieldSplitter>
+            <Input
+              iconRight={<SearchIcon />}
+              container="div"
+              type="text"
+              placeholder="Skriv navn"
+            />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>
@@ -151,14 +149,12 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <FieldSplitter>
-              <Input
-                container="div"
-                type="text"
-                placeholder="Skriv navn"
-                autoExpand
-              />
-            </FieldSplitter>
+            <Input
+              container="div"
+              type="text"
+              placeholder="Skriv navn"
+              autoExpand
+            />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>

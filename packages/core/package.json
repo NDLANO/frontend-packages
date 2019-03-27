@@ -1,0 +1,38 @@
+{
+  "name": "@ndla/core",
+  "version": "0.6.1",
+  "description": "UI component library for NDLA.",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-core/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es",
+    "scss",
+    "types"
+  ],
+  "dependencies": {
+    "facepaint": "^1.2.1",
+    "inuitcss": "6.0.0-beta.4",
+    "polished": "^2.3.3",
+    "sass-mq": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

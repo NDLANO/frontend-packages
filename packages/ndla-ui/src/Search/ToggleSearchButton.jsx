@@ -8,16 +8,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { spacing, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import Button from '@ndla/button';
 
-const style = hideOnNarrowScreen => css`
-  background: ${colors.brand.greyLighter};
+const style = (hideOnNarrowScreen, ndlaFilm) => css`
+  background: ${ndlaFilm
+    ? colors.ndlaFilm.filmColorBright
+    : colors.brand.greyLighter};
   border-radius: ${misc.borderRadius};
   border: 0;
-  color: ${colors.brand.primary};
+  color: ${ndlaFilm ? '#fff' : colors.brand.primary};
   padding: ${spacing.xsmall} ${spacing.small};
   ${hideOnNarrowScreen &&
     css`
@@ -51,18 +53,22 @@ const style = hideOnNarrowScreen => css`
   }
 `;
 
-const ToggleSearchButton = ({ children, hideOnNarrowScreen, ...rest }) => {
-  return (
-    <Button type="button" css={style(hideOnNarrowScreen)} {...rest}>
-      <span css={{ marginRight: spacing.normal }}>{children}</span>
-      <Search />
-    </Button>
-  );
-};
+const ToggleSearchButton = ({
+  children,
+  ndlaFilm,
+  hideOnNarrowScreen,
+  ...rest
+}) => (
+  <Button type="button" css={style(hideOnNarrowScreen, ndlaFilm)} {...rest}>
+    <span css={{ marginRight: spacing.normal }}>{children}</span>
+    <Search />
+  </Button>
+);
 
 ToggleSearchButton.propTypes = {
   children: PropTypes.node.isRequired,
   hideOnNarrowScreen: PropTypes.bool,
+  ndlaFilm: PropTypes.bool,
 };
 
 export default ToggleSearchButton;

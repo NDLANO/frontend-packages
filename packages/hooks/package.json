@@ -1,10 +1,16 @@
 {
   "name": "@ndla/hooks",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Collection of React hooks used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -16,9 +22,11 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
+    "types",
     "es"
   ],
   "dependencies": {
+    "@ndla/util": "^0.3.3",
     "lodash": "^4.17.11"
   },
   "publishConfig": {

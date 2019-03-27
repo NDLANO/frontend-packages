@@ -53,8 +53,9 @@
   "peerDependencies": {
     "emotion": "^9.2.10",
     "prop-types": "^15.6.0",
-    "react": "^16.3.2",
-    "react-emotion": "^9.2.10"
+    "react": "^16.8.4",
+    "react-emotion": "^9.2.10",
+    "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",

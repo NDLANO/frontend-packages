@@ -286,15 +286,17 @@ class MastheadWithTopicMenu extends Component {
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
-          <MastheadLanguageSelector
-            autoOpen={this.props.languageSelectorOpen}
-            urls={{
-              nb: '#',
-              nn: '#',
-              en: '#',
-            }}
-            currentLanguage="nb"
-          />
+          <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
+            <MastheadLanguageSelector
+              autoOpen={this.props.languageSelectorOpen}
+              urls={{
+                nb: '#',
+                nn: '#',
+                en: '#',
+              }}
+              currentLanguage="nb"
+            />
+          </DisplayOnPageYOffset>
           {this.renderSearchButtonView(true)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"

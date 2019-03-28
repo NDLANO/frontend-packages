@@ -154,6 +154,9 @@
   &__change-language-wrapper {
     position: relative;
     padding-right: $spacing--large;
+    @include mq($until: desktop) {
+      display: none;
+    }
   }
 
   &__change-language-modal {

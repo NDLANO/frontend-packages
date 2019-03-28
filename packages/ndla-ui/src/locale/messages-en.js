@@ -433,6 +433,13 @@ const messages = {
     zh: 'Chinese',
     unknown: 'Unknown',
   },
+  changeLanguage: 'Change language to {language}',
+  currentLanguageText: {
+    nb: 'Sidene vises på bokmål',
+    nn: 'Sidane vises på nynorsk',
+    en:
+      'Not all pages are available in English. These will be shown in Norwegian',
+  },
   breadcrumb: {
     toFrontpage: 'To the frontpage',
   },

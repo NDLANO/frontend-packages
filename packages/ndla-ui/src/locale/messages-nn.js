@@ -432,6 +432,13 @@ const messages = {
     zh: 'Kinesisk',
     unknown: 'Ukjent',
   },
+  changeLanguage: 'Endre språk til {language}',
+  currentLanguageText: {
+    nb: 'Sidene vises på bokmål',
+    nn: 'Sidane vises på nynorsk',
+    en:
+      'Not all pages are available in English. These will be shown in Norwegian',
+  },
   breadcrumb: {
     toFrontpage: 'Til framsida',
   },

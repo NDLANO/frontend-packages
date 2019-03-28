@@ -57,7 +57,7 @@
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
     "prop-types": "^15.6.0",
-    "react": "^16.3.2"
+    "react": "^16.8.4"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",

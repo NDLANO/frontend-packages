@@ -28,6 +28,10 @@ export default [
     feature: 'Object.assign',
   },
   {
+    test: `('remove' in Element.prototype)`,
+    feature: 'Element.prototype.remove',
+  },
+  {
     test: `('includes' in String.prototype)`,
     feature: 'String.prototype.includes',
   },

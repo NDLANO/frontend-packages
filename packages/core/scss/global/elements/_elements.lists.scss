@@ -24,6 +24,9 @@ li ul,
 li ol {
   margin-top: $spacing;
   margin-left: $spacing;
+  > p:only-child {
+    margin: 0;
+  }
 }
 ol {
   counter-reset: item;

@@ -78,6 +78,12 @@ const HowToExamples = () => (
     <FieldHeader title="Metabilde">
       {renderArticleInModal({ pageId: 'MetaImage', tooltip: 'Hva er dette?' })}
     </FieldHeader>
+    <br />
+    <br />
+    <h1>Status:</h1>
+    <FieldHeader title="Statusforklaringer">
+      {renderArticleInModal({ pageId: 'status', tooltip: 'Hva er dette?' })}
+    </FieldHeader>
   </div>
 );
 

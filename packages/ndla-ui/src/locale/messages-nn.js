@@ -198,6 +198,7 @@ const messages = {
   meta: {
     description:
       'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for videregåande opplæring',
+    keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff',
   },
   masthead: {
     menu: {

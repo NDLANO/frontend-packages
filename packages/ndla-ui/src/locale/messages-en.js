@@ -199,6 +199,7 @@ const messages = {
   },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',
+    keywords: 'open educational resources,teaching,learning',
   },
   masthead: {
     menu: {

@@ -88,9 +88,8 @@ class MastheadLanguageSelector extends Component {
                           onMouseOut={() => {
                             this.toggleLanguage();
                           }}
-                          aria-label={t(`changeLanguage.${key}`)}
-                          {...classes('selected')}>
-                          {t(`languages.${key}`)}
+                          aria-label={t(`changeLanguage.${key}`)}>
+                          {options[key].name}
                         </a>
                       )}
                     </li>

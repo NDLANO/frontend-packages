@@ -433,7 +433,11 @@ const messages = {
     zh: 'Chinese',
     unknown: 'Unknown',
   },
-  changeLanguage: 'Change language to {language}',
+  changeLanguage: {
+    nb: 'Endre språk til bokmål',
+    nn: 'Endre språk til nynorsk',
+    en: 'Change language to English',
+  },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidane vises på nynorsk',

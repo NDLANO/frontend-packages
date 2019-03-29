@@ -23,7 +23,7 @@ class MastheadLanguageSelector extends Component {
     super(props);
     this.state = {
       isOpen: props.autoOpen,
-      manualOpen: false,
+      infoLocale: props.currentLanguage,
     };
     this.handleOpen = this.handleOpen.bind(this);
   }
@@ -31,13 +31,19 @@ class MastheadLanguageSelector extends Component {
   handleOpen() {
     this.setState({
       isOpen: true,
-      manualOpen: true,
+    });
+  }
+
+  toggleLanguage(lang) {
+    const infoLocale = lang || this.props.currentLanguage;
+    this.setState({
+      infoLocale,
     });
   }
 
   render() {
-    const { urls, currentLanguage, t } = this.props;
-    const { isOpen, manualOpen } = this.state;
+    const { options, currentLanguage, t } = this.props;
+    const { isOpen, infoLocale } = this.state;
     return (
       <div {...classes('change-language-wrapper')}>
         <Button link onClick={this.handleOpen}>
@@ -49,39 +55,40 @@ class MastheadLanguageSelector extends Component {
             focusTrapOptions={{
               onDeactivate: () => {
                 this.setState({
-                  manualOpen: false,
                   isOpen: false,
                 });
               },
               clickOutsideDeactivates: true,
               escapeDeactivates: true,
             }}>
-            <div
-              {...classes('change-language-modal', manualOpen && 'animate-in')}>
+            <div {...classes('change-language-modal', isOpen && 'animate-in')}>
               <Button
                 link
                 onClick={() => {
                   this.setState({
                     isOpen: false,
-                    manualOpen: false,
                   });
                 }}>
                 {t('masthead.menu.close')}
               </Button>
               <nav>
                 <ul>
-                  {Object.keys(urls).map(key => (
+                  {Object.keys(options).map(key => (
                     <li key={key}>
                       {key === currentLanguage ? (
                         <span {...classes('selected')}>
-                          {t(`languages.${key}`)}
+                          {options[key].name}
                         </span>
                       ) : (
                         <a
-                          href={`${urls[key].url}?langselector=true`}
-                          aria-label={t('changeLanguage', {
-                            language: t(`languages.${key}`),
-                          })}
+                          href={options[key].url}
+                          onMouseOver={() => {
+                            this.toggleLanguage(key);
+                          }}
+                          onMouseOut={() => {
+                            this.toggleLanguage();
+                          }}
+                          aria-label={t(`changeLanguage.${key}`)}
                           {...classes('selected')}>
                           {t(`languages.${key}`)}
                         </a>
@@ -89,7 +96,7 @@ class MastheadLanguageSelector extends Component {
                     </li>
                   ))}
                 </ul>
-                <p>{t(`currentLanguageText.${currentLanguage}`)}</p>
+                <p>{t(`currentLanguageText.${infoLocale}`)}</p>
               </nav>
             </div>
           </FocusTrapReact>
@@ -100,9 +107,13 @@ class MastheadLanguageSelector extends Component {
 }
 
 MastheadLanguageSelector.propTypes = {
-  urls: PropTypes.objectOf(PropTypes.string).isRequired,
+  options: PropTypes.objectOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      url: PropTypes.string,
+    }),
+  ).isRequired,
   currentLanguage: PropTypes.string.isRequired,
-  autoOpen: PropTypes.bool,
 };
 
 export default injectT(MastheadLanguageSelector);

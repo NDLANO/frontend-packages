@@ -288,11 +288,19 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <MastheadLanguageSelector
-              autoOpen={this.props.languageSelectorOpen}
-              urls={{
-                nb: '#',
-                nn: '#',
-                en: '#',
+              options={{
+                nb: {
+                  name: 'Bokmål',
+                  url: '#',
+                },
+                nn: {
+                  name: 'Nynorsk',
+                  url: '#',
+                },
+                en: {
+                  name: 'English',
+                  url: '#',
+                },
               }}
               currentLanguage="nb"
             />

@@ -14,7 +14,6 @@ import {
   LayoutItem,
   AudioPlayer,
   OneColumn,
-  Table,
 } from '@ndla/ui';
 import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';

@@ -14,6 +14,7 @@ import {
   LayoutItem,
   AudioPlayer,
   OneColumn,
+  Table,
 } from '@ndla/ui';
 import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
@@ -24,6 +25,7 @@ import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
+import SolutionTableExample from './molecules/SolutionExample';
 
 const floatVideo = left => (
   <Fragment>
@@ -739,6 +741,31 @@ storiesOf('Enkle komponenter', module)
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
+        </details>
+      </StoryBody>
+    </div>
+  ))
+  .add('Fasitboks', () => (
+    <div>
+      <StoryIntro title="Fasitboks" />
+      <StoryBody>
+        <details className="c-details--solution-box ">
+          <summary>Vis fasit (ekspanderende på desktop)</summary>
+          <div class="c-details__content">
+            <SolutionTableExample />
+          </div>
+        </details>
+
+        <details className="c-details--solution-box ">
+          <summary>Vis fasit</summary>
+          <div class="c-details__content">
+            f(x) = x<sup>2</sup> + 10x - 20
+            <FigureImage
+              caption="Eksempel på graf"
+              alt="Matematisk graf"
+              src="https://api.ndla.no/image-api/raw/oppg_2_2_a_vekstfart_spraknoytral.png"
+            />
+          </div>
         </details>
       </StoryBody>
     </div>

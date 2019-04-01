@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioPlayerExamples from './components/AudioExample';
 import FactboxExample from './components/FactboxExample';
+import SolutionExample from './components/SolutionExample';
 
 export const stories = {
   Paragraph: {
@@ -40,6 +41,17 @@ export const stories = {
     title: 'Ekspanderbar boks',
     lead:
       'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
+  },
+  SolutionBox: {
+    title: 'Vis fasit boks',
+    lead:
+      'En ekspanderbar boks består av en tittel som er synlig og en løsning på en oppgave som vises ved klikk på "Vis fasit".',
+    body: [
+      {
+        type: 'component',
+        content: <SolutionExample />,
+      },
+    ],
   },
   Images: {
     title: 'Bilder',

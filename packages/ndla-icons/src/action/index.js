@@ -11,6 +11,7 @@ export { default as Copy } from './Copy';
 export { default as Cross } from './Cross';
 export { default as ExpandLess } from './ExpandLess';
 export { default as ExpandMore } from './ExpandMore';
+export { default as FileCompare } from './FileCompare';
 export { default as ForwardArrow } from './ForwardArrow';
 export { default as Grid } from './Grid';
 export { default as List } from './List';

@@ -248,6 +248,13 @@ $overlay-height: 136px;
     margin: 0 0 $spacing 0;
   }
 
+  &__search-result-infotext {
+    @include font-size(14px, 18px);
+    display: block;
+    margin: -$spacing--small 0 $spacing--small 0;
+    color: $text-light-color;
+  }
+
   &__search-result-content {
     display: flex;
     justify-content: space-between;

@@ -151,6 +151,10 @@ const messages = {
   welcomePage: {
     search: 'Søk',
     resetSearch: 'Tilbakestill søk',
+    topicsNotAvailableFromSearch:
+      '{topic} er ikke flyttet over til nye NDLA.no og vil ikke gi treff i dette søket.',
+    topicsNotAvailableFromSearchMany:
+      '{topics} og {lastTopic} er ikke flyttet over til nye NDLA.no og vil ikke gi treff i dette søket.',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',

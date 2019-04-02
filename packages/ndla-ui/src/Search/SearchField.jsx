@@ -42,12 +42,14 @@ const SearchResult = ({
   onNavigate,
   hideColumnHeader,
   singleColumn,
+  infoText,
   t,
 }) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {t('searchPage.searchField.searchResultHeading')}
     </h1>
+    {infoText && <span {...classes('search-result-infotext')}>{infoText}</span>}
     <div
       {...classes(
         'search-result-content',
@@ -92,6 +94,7 @@ SearchResult.propTypes = {
   onNavigate: PropTypes.func,
   hideColumnHeader: PropTypes.bool,
   singleColumn: PropTypes.bool,
+  infoText: PropTypes.string,
   t: PropTypes.func.isRequired,
 };
 
@@ -148,6 +151,7 @@ class SearchField extends Component {
       withCancelButton,
       hideColumnHeader,
       singleColumn,
+      infoText,
       t,
     } = this.props;
 
@@ -168,6 +172,7 @@ class SearchField extends Component {
           hideColumnHeader={hideColumnHeader}
           onNavigate={onNavigate}
           singleColumn={singleColumn}
+          infoText={infoText}
           t={t}
         />
       );
@@ -260,6 +265,7 @@ SearchField.propTypes = {
   withCancelButton: PropTypes.bool,
   hideColumnHeader: PropTypes.bool,
   singleColumn: PropTypes.bool,
+  infoText: PropTypes.string,
 };
 
 SearchField.defaultProps = {

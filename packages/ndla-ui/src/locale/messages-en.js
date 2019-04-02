@@ -153,6 +153,10 @@ const messages = {
   welcomePage: {
     search: 'Search',
     resetSearch: 'Reset search',
+    topicsNotAvailableFromSearch:
+      '{topic} hasnt been moved to the new NDLA.no webpage and will not give any matches in this search.',
+    topicsNotAvailableFromSearchMany:
+      '{topics} and {lastTopic} havent been moved to the new NDLA.no webpage and will not give any matches in this search.',
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',

@@ -23,6 +23,13 @@ import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const classes = BEMHelper('c-frontpage-section');
 
+const exampleTopicsNotInNDLA = [
+  'Kokk og servitørfag Vg2',
+  'Biologi 1',
+  'Sosiologi og sosialantropologi',
+  'Transport og logistikk Vg2',
+];
+
 class FrontpageExample extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +63,25 @@ class FrontpageExample extends Component {
   render() {
     const { t } = this.props;
     const { searchFieldValue, inputHasFocus } = this.state;
+    const needInfoTextInSearchSuggestions = exampleTopicsNotInNDLA.length > 0;
+    let infoText = '';
+    if (needInfoTextInSearchSuggestions) {
+      if (exampleTopicsNotInNDLA.length === 1) {
+        infoText = t('welcomePage.topicsNotAvailableFromSearch', {
+          topic: exampleTopicsNotInNDLA.toString(),
+        });
+      } else {
+        const lastTopic =
+          exampleTopicsNotInNDLA[exampleTopicsNotInNDLA.length - 1];
+        const topics = [...exampleTopicsNotInNDLA]
+          .splice(0, exampleTopicsNotInNDLA.length - 1)
+          .join(', ');
+        infoText = t('welcomePage.topicsNotAvailableFromSearchMany', {
+          topics,
+          lastTopic,
+        });
+      }
+    }
     return (
       <>
         <FrontpageHeader
@@ -67,11 +93,13 @@ class FrontpageExample extends Component {
           onSearch={e => {
             e.preventDefault();
           }}
+          allResultUrl={`search?query=${searchFieldValue}`}
           onSearchInputFocus={this.onSearchInputFocus}
           onSearchDeactiveFocusTrap={this.onSearchDeactiveFocusTrap}
           searchFieldPlaceholder={t(
             'welcomePage.heading.searchFieldPlaceholder',
           )}
+          infoText={needInfoTextInSearchSuggestions && infoText}
           inputHasFocus={inputHasFocus}
           searchResult={
             searchFieldValue.length > 2
@@ -80,31 +108,31 @@ class FrontpageExample extends Component {
                     title: 'Title here..',
                     resources: [
                       {
-                        path: '#',
+                        path: '#1',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: '#',
+                        path: '#2',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: '#',
+                        path: '#3',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: '#',
+                        path: '#4',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: '#',
+                        path: '#5',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: '#',
+                        path: '#6',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: '#',
+                        path: '#7',
                         name: 'Fag > emne > underemne > navn på ressurs',
                       },
                     ],

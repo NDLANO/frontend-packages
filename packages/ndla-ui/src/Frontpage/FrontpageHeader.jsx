@@ -35,6 +35,8 @@ const FrontpageHeader = ({
   onSearchInputFocus,
   onSearchDeactiveFocusTrap,
   inputHasFocus,
+  infoText,
+  allResultUrl,
   t,
 }) => (
   <header {...classes()}>
@@ -127,6 +129,7 @@ const FrontpageHeader = ({
                         ? ['no-left-margin', 'absolute-position-sleeve']
                         : ['absolute-position-sleeve']
                     }
+                    infoText={infoText}
                     filters={false}
                     value={searchFieldValue}
                     onChange={onSearchFieldChange}
@@ -134,7 +137,7 @@ const FrontpageHeader = ({
                     messages={messages}
                     onSearch={onSearch}
                     searchResult={searchResult}
-                    allResultUrl="#"
+                    allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
                     withCancelButton
                     hideColumnHeader
@@ -148,12 +151,12 @@ const FrontpageHeader = ({
           {!hideSearch && !inputHasFocus && (
             <SearchField
               value={searchFieldValue}
-              onChange={() => {}}
+              onChange={onSearchFieldChange}
               onFocus={onSearchInputFocus}
               placeholder={searchFieldPlaceholder}
               messages={messages}
               onSearch={onSearch}
-              allResultUrl=""
+              allResultUrl={allResultUrl}
               resourceToLinkProps={() => {}}
               withCancelButton
             />
@@ -189,6 +192,7 @@ FrontpageHeader.propTypes = {
   onSearchInputFocus: PropTypes.func,
   onSearchDeactiveFocusTrap: PropTypes.func,
   inputHasFocus: PropTypes.bool,
+  infoText: PropTypes.string,
 };
 
 FrontpageHeader.defaultProps = {

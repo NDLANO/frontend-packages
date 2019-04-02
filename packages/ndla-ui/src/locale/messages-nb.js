@@ -150,6 +150,7 @@ const messages = {
   },
   welcomePage: {
     search: 'Søk',
+    resetSearch: 'Tilbakestill søk',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',

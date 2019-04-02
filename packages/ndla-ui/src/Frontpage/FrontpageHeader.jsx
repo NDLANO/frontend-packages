@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import FocusTrapReact from 'focus-trap-react';
 import { Cross } from '@ndla/icons/action';
 import Modal, { ModalHeader } from '@ndla/modal';
 import Button from '@ndla/button';
@@ -10,6 +11,7 @@ import SafeLink from '../common/SafeLink';
 import { OneColumn } from '../Layout';
 import { SearchField } from '../Search';
 import Logo from '../Logo';
+import { ContentTypeResultShape } from '../shapes';
 
 const classes = BEMHelper('c-frontpage-header');
 const classesMenu = new BEMHelper({
@@ -29,6 +31,10 @@ const FrontpageHeader = ({
   menuSubject,
   hideSearch,
   hideMenu,
+  searchResult,
+  onSearchInputFocus,
+  onSearchDeactiveFocusTrap,
+  inputHasFocus,
   t,
 }) => (
   <header {...classes()}>
@@ -94,21 +100,59 @@ const FrontpageHeader = ({
               )}
             </Modal>
           )}
-          <Logo
-            to={logoTo}
-            large
-            color="currentColor"
-            label={t('logo.altText')}
-            cssModifier="white"
-            locale={locale}
-          />
-          {!hideSearch && (
+          {!inputHasFocus && (
+            <Logo
+              to={logoTo}
+              large
+              color="currentColor"
+              label={t('logo.altText')}
+              cssModifier="white"
+              locale={locale}
+            />
+          )}
+          {!hideSearch && inputHasFocus && (
+            <>
+              <FocusTrapReact
+                focusTrapOptions={{
+                  onDeactivate: () => {
+                    onSearchDeactiveFocusTrap();
+                  },
+                  clickOutsideDeactivates: true,
+                  escapeDeactivates: true,
+                }}>
+                <div {...classes('active-search-wrapper')}>
+                  <SearchField
+                    modifiers={
+                      inputHasFocus
+                        ? ['no-left-margin', 'absolute-sleeve']
+                        : ['absolute-sleeve']
+                    }
+                    value={searchFieldValue}
+                    onChange={onSearchFieldChange}
+                    placeholder={searchFieldPlaceholder}
+                    messages={messages}
+                    onSearch={onSearch}
+                    searchResult={searchResult}
+                    allResultUrl="#"
+                    resourceToLinkProps={() => {}}
+                    withCancelButton
+                  />
+                </div>
+              </FocusTrapReact>
+              <div {...classes('actice-search-background')} />
+            </>
+          )}
+          {!hideSearch && !inputHasFocus && (
             <SearchField
               value={searchFieldValue}
-              onChange={onSearchFieldChange}
+              onChange={() => {}}
+              onFocus={onSearchInputFocus}
               placeholder={searchFieldPlaceholder}
               messages={messages}
               onSearch={onSearch}
+              allResultUrl=""
+              resourceToLinkProps={() => {}}
+              withCancelButton
             />
           )}
         </div>
@@ -124,6 +168,7 @@ FrontpageHeader.propTypes = {
   onSearchFieldChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func,
   searchFieldPlaceholder: PropTypes.string.isRequired,
+  searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   logoTo: PropTypes.string,
   locale: PropTypes.string,
   messages: PropTypes.shape({
@@ -138,11 +183,15 @@ FrontpageHeader.propTypes = {
     }),
   ).isRequired,
   t: PropTypes.func.isRequired,
+  onSearchInputFocus: PropTypes.func,
+  onSearchDeactiveFocusTrap: PropTypes.func,
+  inputHasFocus: PropTypes.bool,
 };
 
 FrontpageHeader.defaultProps = {
   hideSearch: true,
   hideMenu: true,
+  inputHasFocus: false,
 };
 
 export default injectT(FrontpageHeader);

@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
+import { Cross } from '@ndla/icons/action';
 import { injectT } from '@ndla/i18n';
 import { StyledButton } from '@ndla/button';
 import { css } from '@emotion/core';
@@ -100,12 +101,18 @@ class SearchField extends Component {
     this.setState({
       inputHasFocus: false,
     });
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
   }
 
   onInputFocus() {
     this.setState({
       inputHasFocus: true,
     });
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
   }
 
   handleOnFilterRemove(value, filterName) {
@@ -127,10 +134,10 @@ class SearchField extends Component {
       small,
       autofocus,
       onNavigate,
+      modifiers,
+      withCancelButton,
       t,
     } = this.props;
-
-    const modifiers = [];
 
     const hasSearchResult = searchResult && searchResult.length > 0;
 
@@ -188,6 +195,17 @@ class SearchField extends Component {
               />
             </div>
           )}
+          {withCancelButton && value !== '' && (
+            <button
+              {...classes('button', 'close')}
+              type="button"
+              aria-label={t('welcomePage.resetSearch')}
+              onClick={() => {
+                onChange({ target: { value: '' } });
+              }}>
+              <Cross className="c-icon--medium" />
+            </button>
+          )}
           <button
             tabIndex="-1"
             {...classes('button')}
@@ -222,6 +240,14 @@ SearchField.propTypes = {
   autofocus: PropTypes.bool,
   onNavigate: PropTypes.func,
   t: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  modifiers: PropTypes.arrayOf(PropTypes.string),
+  withCancelButton: PropTypes.bool,
+};
+
+SearchField.defaultProps = {
+  modifiers: [],
 };
 
 export default injectT(SearchField);

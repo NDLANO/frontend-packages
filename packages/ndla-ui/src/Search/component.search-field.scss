@@ -93,6 +93,20 @@ $overlay-height: 136px;
     }
   }
 
+  
+  &--no-left-margin {
+    margin-left: 0 !important;
+  }
+
+  &--absolute-sleeve {
+    position: relative;
+    .c-search-field__search-result {
+      z-index: 9999;
+      position: absolute;
+      top: 58px;
+    }
+  }
+
   &__filters {
     display: flex;
     height: 48px;

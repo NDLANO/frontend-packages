@@ -17,16 +17,11 @@
 }
 
 .c-frontpage-header {
-  height: 150px;
   background: linear-gradient(45deg, #153758 0%, $brand-color 49%, #217389 85%);
   background-size: 180% 300%;
 
   animation: aurora 10s infinite;
   position: relative;
-
-  @include mq(tablet) {
-    height: 310px;
-  }
 
   &__wrapper {
     position: relative;
@@ -66,20 +61,53 @@
 
   .c-logo {
     max-width: 120px;
+    margin-top: $spacing--medium;
 
     @include mq(tablet) {
+      max-width: 180px;
+      margin-top: 0;
+    }
+
+    @include mq(desktop) {
       max-width: none;
     }
   }
 
+  &__active-search-wrapper {
+    .c-search-field {
+      z-index: 9001;
+    }
+  }
+
+  &__actice-search-background {
+    position: fixed;
+    z-index: 9000;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    background: rgba(1, 1, 1, 0.3);
+  }
+
   &__content {
     display: flex;
-    padding: $spacing--medium $spacing $spacing--large;
+    padding: 0 $spacing;
     justify-content: space-between;
+    min-height: 150px;
 
     @include mq(tablet) {
-      padding: $spacing--medium $spacing--large $spacing--large;
+      padding: 0 $spacing--large $spacing--large;
       align-items: center;
+    }
+
+    @include mq(tablet) {
+      min-height: 240px;
+    }
+
+    > div {
+      width: 100%;
     }
 
     .c-search-field {
@@ -92,7 +120,19 @@
       }
 
       .c-search-field__button {
-        right: 0;
+        right: $spacing--small / 2;
+      }
+
+      .c-search-field__button--close {
+        right: $spacing--medium + $spacing--small;
+        svg {
+          color: $text-light-color;
+        }
+        &:hover, &:focus {
+          svg {
+            color: $brand-color;
+          }
+        }
       }
 
       @include mq(tablet) {

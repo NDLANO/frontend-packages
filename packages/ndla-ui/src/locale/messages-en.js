@@ -152,6 +152,7 @@ const messages = {
   },
   welcomePage: {
     search: 'Search',
+    resetSearch: 'Reset search',
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',

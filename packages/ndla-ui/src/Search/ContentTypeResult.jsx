@@ -47,6 +47,7 @@ class ContentTypeResult extends Component {
       resourceToLinkProps,
       showAdditionalResources,
       messages,
+      hideColumnHeader,
     } = this.props;
     let view = null;
 
@@ -127,10 +128,12 @@ class ContentTypeResult extends Component {
               outline
             />
           )}
-          <h1>
-            {contentTypeResult.title}{' '}
-            <span {...classes('total-count')}>({totalCount})</span>
-          </h1>
+          {!hideColumnHeader && (
+            <h1>
+              {contentTypeResult.title}{' '}
+              <span {...classes('total-count')}>({totalCount})</span>
+            </h1>
+          )}
         </header>
         {view}
       </section>
@@ -144,6 +147,7 @@ ContentTypeResult.propTypes = {
   contentTypeResult: ContentTypeResultShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   showAdditionalResources: PropTypes.bool,
+  hideColumnHeader: PropTypes.bool,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,
@@ -156,6 +160,7 @@ ContentTypeResult.propTypes = {
 ContentTypeResult.defaultProps = {
   defaultCount: 3,
   showAdditionalResources: false,
+  hideColumnHeader: false,
 };
 
 export default injectT(ContentTypeResult);

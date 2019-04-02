@@ -19,8 +19,10 @@ const style = (hideOnNarrowScreen, ndlaFilm) => css`
     : colors.brand.greyLighter};
   border-radius: ${misc.borderRadius};
   border: 0;
+  display: flex;
   color: ${ndlaFilm ? '#fff' : colors.brand.primary};
-  padding: ${spacing.xsmall} ${spacing.small};
+  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small}
+    ${spacing.normal};
   ${hideOnNarrowScreen &&
     css`
       display: none;
@@ -29,21 +31,15 @@ const style = (hideOnNarrowScreen, ndlaFilm) => css`
   align-items: center;
 
   .c-icon {
-    height: 18px;
-    width: 18px;
-
-    ${mq.range({ from: breakpoints.desktop })} {
-      height: 24px;
-      width: 24px;
-    }
+    height: 24px;
+    width: 24px;
   }
 
-  ${fonts.sizes('16px', '22px')};
+  ${fonts.sizes('18px', '32px')};
 
   ${mq.range({ from: breakpoints.desktop })} {
     display: flex;
     margin-right: ${spacing.medium};
-    ${fonts.sizes('18px', '32px')};
     padding: ${spacing.small} ${spacing.normal};
   }
   &:hover,
@@ -60,7 +56,10 @@ const ToggleSearchButton = ({
   ...rest
 }) => (
   <Button type="button" css={style(hideOnNarrowScreen, ndlaFilm)} {...rest}>
-    <span css={{ marginRight: spacing.normal }}>{children}</span>
+    <span
+      css={{ marginRight: spacing.normal, fontWeight: fonts.weight.normal }}>
+      {children}
+    </span>
     <Search />
   </Button>
 );

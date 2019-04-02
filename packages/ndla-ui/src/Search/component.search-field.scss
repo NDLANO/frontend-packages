@@ -98,7 +98,7 @@ $overlay-height: 136px;
     margin-left: 0 !important;
   }
 
-  &--absolute-sleeve {
+  &--absolute-position-sleeve {
     position: relative;
     .c-search-field__search-result {
       z-index: 9999;
@@ -255,9 +255,11 @@ $overlay-height: 136px;
     margin: 0;
     padding-bottom: $spacing;
 
-    .c-content-type-result {
-      @include mq(desktop) {
-        flex: 0 0 30%;
+    &--multiple-columned {
+      .c-content-type-result {
+        @include mq(desktop) {
+          flex: 0 0 30%;
+        }
       }
     }
     @include mq($until: desktop) {

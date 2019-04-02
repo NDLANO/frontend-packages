@@ -124,9 +124,10 @@ const FrontpageHeader = ({
                   <SearchField
                     modifiers={
                       inputHasFocus
-                        ? ['no-left-margin', 'absolute-sleeve']
-                        : ['absolute-sleeve']
+                        ? ['no-left-margin', 'absolute-position-sleeve']
+                        : ['absolute-position-sleeve']
                     }
+                    filters={false}
                     value={searchFieldValue}
                     onChange={onSearchFieldChange}
                     placeholder={searchFieldPlaceholder}
@@ -136,6 +137,8 @@ const FrontpageHeader = ({
                     allResultUrl="#"
                     resourceToLinkProps={() => {}}
                     withCancelButton
+                    hideColumnHeader
+                    singleColumn
                   />
                 </div>
               </FocusTrapReact>

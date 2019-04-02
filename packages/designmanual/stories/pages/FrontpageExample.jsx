@@ -80,12 +80,32 @@ class FrontpageExample extends Component {
                     title: 'Title here..',
                     resources: [
                       {
-                        path: 'Path here',
-                        name: 'Name here > test',
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
                       },
                       {
-                        path: 'Path2 here',
-                        name: 'Name2 here',
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
+                      },
+                      {
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
+                      },
+                      {
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
+                      },
+                      {
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
+                      },
+                      {
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
+                      },
+                      {
+                        path: '#',
+                        name: 'Fag > emne > underemne > navn på ressurs',
                       },
                     ],
                   },

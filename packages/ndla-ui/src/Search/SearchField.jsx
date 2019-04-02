@@ -21,6 +21,7 @@ import ActiveFilters from './ActiveFilters';
 import ContentTypeResult from './ContentTypeResult';
 
 import { ContentTypeResultShape } from '../shapes';
+import { preProcessFile } from 'typescript';
 
 const classes = new BEMHelper('c-search-field');
 
@@ -39,13 +40,19 @@ const SearchResult = ({
   allResultUrl,
   resourceToLinkProps,
   onNavigate,
+  hideColumnHeader,
+  singleColumn,
   t,
 }) => (
   <section {...classes('search-result')}>
     <h1 {...classes('search-result-heading')}>
       {t('searchPage.searchField.searchResultHeading')}
     </h1>
-    <div {...classes('search-result-content')}>
+    <div
+      {...classes(
+        'search-result-content',
+        singleColumn ? '' : 'multiple-columned',
+      )}>
       {result.map(contentTypeResult => (
         <ContentTypeResult
           onNavigate={onNavigate}
@@ -53,6 +60,7 @@ const SearchResult = ({
           resourceToLinkProps={resourceToLinkProps}
           defaultCount={window.innerWidth > 980 ? 7 : 3}
           key={contentTypeResult.title}
+          hideColumnHeader={hideColumnHeader}
           messages={{
             allResultLabel: t(
               'searchPage.searchField.contentTypeResultShowMoreLabel',
@@ -82,6 +90,8 @@ SearchResult.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   allResultUrl: PropTypes.string.isRequired,
   onNavigate: PropTypes.func,
+  hideColumnHeader: PropTypes.bool,
+  singleColumn: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 
@@ -136,6 +146,8 @@ class SearchField extends Component {
       onNavigate,
       modifiers,
       withCancelButton,
+      hideColumnHeader,
+      singleColumn,
       t,
     } = this.props;
 
@@ -153,7 +165,9 @@ class SearchField extends Component {
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
           autofocus={autofocus}
+          hideColumnHeader={hideColumnHeader}
           onNavigate={onNavigate}
+          singleColumn={singleColumn}
           t={t}
         />
       );
@@ -244,6 +258,8 @@ SearchField.propTypes = {
   onBlur: PropTypes.func,
   modifiers: PropTypes.arrayOf(PropTypes.string),
   withCancelButton: PropTypes.bool,
+  hideColumnHeader: PropTypes.bool,
+  singleColumn: PropTypes.bool,
 };
 
 SearchField.defaultProps = {

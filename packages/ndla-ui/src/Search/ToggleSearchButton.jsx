@@ -13,7 +13,7 @@ import { spacing, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import Button from '@ndla/button';
 
-const style = (hideOnNarrowScreen, ndlaFilm) => css`
+const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
   background: ${ndlaFilm
     ? colors.ndlaFilm.filmColorBright
     : colors.brand.greyLighter};
@@ -38,7 +38,7 @@ const style = (hideOnNarrowScreen, ndlaFilm) => css`
   ${fonts.sizes('18px', '32px')};
 
   ${mq.range({ from: breakpoints.desktop })} {
-    display: flex;
+    display: ${hideOnWideScreen ? 'none' : 'flex'};
     margin-right: ${spacing.medium};
     padding: ${spacing.small} ${spacing.normal};
   }
@@ -53,9 +53,13 @@ const ToggleSearchButton = ({
   children,
   ndlaFilm,
   hideOnNarrowScreen,
+  hideOnWideScreen,
   ...rest
 }) => (
-  <Button type="button" css={style(hideOnNarrowScreen, ndlaFilm)} {...rest}>
+  <Button
+    type="button"
+    css={style(hideOnNarrowScreen, hideOnWideScreen, ndlaFilm)}
+    {...rest}>
     <span
       css={{ marginRight: spacing.normal, fontWeight: fonts.weight.normal }}>
       {children}
@@ -67,6 +71,7 @@ const ToggleSearchButton = ({
 ToggleSearchButton.propTypes = {
   children: PropTypes.node.isRequired,
   hideOnNarrowScreen: PropTypes.bool,
+  hideOnWideScreen: PropTypes.bool,
   ndlaFilm: PropTypes.bool,
 };
 

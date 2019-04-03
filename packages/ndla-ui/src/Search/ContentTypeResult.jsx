@@ -47,7 +47,7 @@ class ContentTypeResult extends Component {
       resourceToLinkProps,
       showAdditionalResources,
       messages,
-      hideColumnHeader,
+      ignoreContentTypeBadge,
     } = this.props;
     let view = null;
 
@@ -70,7 +70,13 @@ class ContentTypeResult extends Component {
             if (linkProps && linkProps.href) {
               return (
                 <li key={item.path}>
-                  <a {...linkProps}>{item.name}</a>
+                  <a {...linkProps}>
+                    <span>
+                      {item.boldName && <strong>{item.boldName}</strong>}
+                      {item.name}
+                    </span>
+                    {item.subName && <small> {item.subName}</small>}
+                  </a>
                 </li>
               );
             }
@@ -87,7 +93,11 @@ class ContentTypeResult extends Component {
                       onNavigate();
                     }
                   }}>
-                  {item.name}
+                  <span>
+                    {item.boldName && <strong>{item.boldName}</strong>}
+                    {item.name}
+                  </span>
+                  {item.subName && <small> {item.subName}</small>}
                   {renderAdditionalIcon(
                     item.additional,
                     this.props.t('resource.additionalTooltip'),
@@ -120,7 +130,7 @@ class ContentTypeResult extends Component {
     return (
       <section {...classes()}>
         <header>
-          {contentTypeResult.contentType && (
+          {!ignoreContentTypeBadge && contentTypeResult.contentType && (
             <ContentTypeBadge
               type={contentTypeResult.contentType}
               size="x-small"
@@ -128,12 +138,10 @@ class ContentTypeResult extends Component {
               outline
             />
           )}
-          {!hideColumnHeader && (
-            <h1>
-              {contentTypeResult.title}{' '}
-              <span {...classes('total-count')}>({totalCount})</span>
-            </h1>
-          )}
+          <h1>
+            {contentTypeResult.title}{' '}
+            <span {...classes('total-count')}>({totalCount})</span>
+          </h1>
         </header>
         {view}
       </section>
@@ -145,9 +153,9 @@ ContentTypeResult.propTypes = {
   defaultCount: PropTypes.number,
   onNavigate: PropTypes.func,
   contentTypeResult: ContentTypeResultShape.isRequired,
+  ignoreContentTypeBadge: PropTypes.bool,
   resourceToLinkProps: PropTypes.func.isRequired,
   showAdditionalResources: PropTypes.bool,
-  hideColumnHeader: PropTypes.bool,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string.isRequired,
@@ -160,7 +168,6 @@ ContentTypeResult.propTypes = {
 ContentTypeResult.defaultProps = {
   defaultCount: 3,
   showAdditionalResources: false,
-  hideColumnHeader: false,
 };
 
 export default injectT(ContentTypeResult);

@@ -74,12 +74,13 @@
   }
 
   &__active-search-wrapper {
+    display: flex;
     .c-search-field {
       z-index: 9001;
     }
   }
 
-  &__actice-search-background {
+  &__active-search-background {
     position: fixed;
     z-index: 9000;
     top: 0px;
@@ -91,11 +92,40 @@
     background: rgba(1, 1, 1, 0.3);
   }
 
+  &__close-button {
+    color: $brand-color--light;
+    display: flex;
+    padding: $spacing--small;
+    border: 0;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    background: none;
+    cursor: pointer;
+    z-index: 9999;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover, &:focus {
+      color: #fff;
+    }
+    @include mq($until: tablet) {
+      margin-right: -$spacing--small;
+    }
+  }
+
   &__content {
     display: flex;
-    padding: 0 $spacing;
+    padding: $spacing $spacing 0;
     justify-content: space-between;
     min-height: 150px;
+    align-items: flex-start;
+
+    @include mq($until: tablet) {
+      .c-logo {
+        margin-top: 0;
+      }
+    }
 
     @include mq(tablet) {
       padding: 0 $spacing--large $spacing--large;
@@ -113,7 +143,26 @@
     .c-search-field {
       flex: 1 0 auto;
       margin-left: $spacing--large * 2;
-      display: none;
+      &:not(.c-search-field--absolute-position-sleeve) {
+        @include mq($until: desktop) {
+          display: none;
+        }
+      }
+
+      &.c-search-field--absolute-position-sleeve {
+        .c-search-field__input-wrapper {
+          @include mq($until: desktop) {
+            padding: 0;
+          }
+        }
+        .c-search-field__search-result {
+          @include mq($until: tablet) {
+            margin-left: -$spacing;
+            left: 0;
+            width: calc(100% + 90px);
+          }
+        }
+      }
 
       .c-search-field__input-wrapper {
         padding-right: 0;
@@ -125,17 +174,15 @@
 
       .c-search-field__button--close {
         right: $spacing--medium + $spacing--small;
-        svg {
-          color: $text-light-color;
-        }
+        @include font-size(14px, 18px);
+        text-transform: uppercase;
+        color: $text-light-color;
         &:hover, &:focus {
-          svg {
-            color: $brand-color;
-          }
+          color: $brand-color;
         }
       }
 
-      @include mq(tablet) {
+      @include mq(desktop) {
         display: flex;
       }
     }

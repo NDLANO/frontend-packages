@@ -11,6 +11,7 @@ import SafeLink from '../common/SafeLink';
 import { OneColumn } from '../Layout';
 import { SearchField } from '../Search';
 import Logo from '../Logo';
+import { ToggleSearchButton } from '../Search';
 import { ContentTypeResultShape } from '../shapes';
 
 const classes = BEMHelper('c-frontpage-header');
@@ -129,8 +130,8 @@ const FrontpageHeader = ({
                         ? ['no-left-margin', 'absolute-position-sleeve']
                         : ['absolute-position-sleeve']
                     }
+                    ignoreContentTypeBadge
                     infoText={infoText}
-                    filters={undefined}
                     value={searchFieldValue}
                     onChange={onSearchFieldChange}
                     placeholder={searchFieldPlaceholder}
@@ -140,26 +141,37 @@ const FrontpageHeader = ({
                     allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
                     withCancelButton
-                    hideColumnHeader
                     singleColumn
+                    hideSleeveHeader
                   />
+                  <button
+                    type="button"
+                    onClick={onSearchDeactiveFocusTrap}
+                    {...classes('close-button')}>
+                    <Cross />
+                  </button>
                 </div>
               </FocusTrapReact>
-              <div {...classes('actice-search-background')} />
+              <div {...classes('active-search-background')} />
             </>
           )}
           {!hideSearch && !inputHasFocus && (
-            <SearchField
-              value={searchFieldValue}
-              onChange={onSearchFieldChange}
-              onFocus={onSearchInputFocus}
-              placeholder={searchFieldPlaceholder}
-              messages={messages}
-              onSearch={onSearch}
-              allResultUrl={allResultUrl}
-              resourceToLinkProps={() => {}}
-              withCancelButton
-            />
+            <>
+              <SearchField
+                value={searchFieldValue}
+                onChange={onSearchFieldChange}
+                onFocus={onSearchInputFocus}
+                placeholder={searchFieldPlaceholder}
+                messages={messages}
+                onSearch={onSearch}
+                allResultUrl={allResultUrl}
+                resourceToLinkProps={() => {}}
+                withCancelButton
+              />
+              <ToggleSearchButton hideOnWideScreen onClick={onSearchInputFocus}>
+                Søk
+              </ToggleSearchButton>
+            </>
           )}
         </div>
       </OneColumn>
@@ -192,7 +204,7 @@ FrontpageHeader.propTypes = {
   onSearchInputFocus: PropTypes.func,
   onSearchDeactiveFocusTrap: PropTypes.func,
   inputHasFocus: PropTypes.bool,
-  infoText: PropTypes.string,
+  infoText: PropTypes.node,
 };
 
 FrontpageHeader.defaultProps = {

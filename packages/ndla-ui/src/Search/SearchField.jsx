@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
-import { Cross } from '@ndla/icons/action';
 import { injectT } from '@ndla/i18n';
 import { StyledButton } from '@ndla/button';
 import { css } from '@emotion/core';
@@ -39,16 +38,21 @@ const SearchResult = ({
   allResultUrl,
   resourceToLinkProps,
   onNavigate,
-  hideColumnHeader,
+  hideSleeveHeader,
   singleColumn,
   infoText,
+  ignoreContentTypeBadge,
   t,
 }) => (
   <section {...classes('search-result')}>
-    <h1 {...classes('search-result-heading')}>
-      {t('searchPage.searchField.searchResultHeading')}
-    </h1>
-    {infoText && <span {...classes('search-result-infotext')}>{infoText}</span>}
+    {!hideSleeveHeader && (
+      <h1 {...classes('search-result-heading')}>
+        {t('searchPage.searchField.searchResultHeading')}
+      </h1>
+    )}
+    {infoText && (
+      <aside {...classes('search-result-infotext')}>{infoText}</aside>
+    )}
     <div
       {...classes(
         'search-result-content',
@@ -56,12 +60,12 @@ const SearchResult = ({
       )}>
       {result.map(contentTypeResult => (
         <ContentTypeResult
+          ignoreContentTypeBadge={ignoreContentTypeBadge}
           onNavigate={onNavigate}
           contentTypeResult={contentTypeResult}
           resourceToLinkProps={resourceToLinkProps}
           defaultCount={window.innerWidth > 980 ? 7 : 3}
           key={contentTypeResult.title}
-          hideColumnHeader={hideColumnHeader}
           messages={{
             allResultLabel: t(
               'searchPage.searchField.contentTypeResultShowMoreLabel',
@@ -91,9 +95,10 @@ SearchResult.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   allResultUrl: PropTypes.string.isRequired,
   onNavigate: PropTypes.func,
-  hideColumnHeader: PropTypes.bool,
+  hideSleeveHeader: PropTypes.bool,
   singleColumn: PropTypes.bool,
   infoText: PropTypes.string,
+  ignoreContentTypeBadge: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 
@@ -103,7 +108,7 @@ class SearchField extends Component {
     this.state = {
       inputHasFocus: false,
     };
-    this.inputRef = null;
+    this.inputRef = React.createRef();
     this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
     this.onInputBlur = this.onInputBlur.bind(this);
     this.onInputFocus = this.onInputFocus.bind(this);
@@ -129,7 +134,7 @@ class SearchField extends Component {
 
   handleOnFilterRemove(value, filterName) {
     this.props.onFilterRemove(value, filterName);
-    this.inputRef.focus();
+    this.inputRef.current.focus();
   }
 
   render() {
@@ -146,11 +151,12 @@ class SearchField extends Component {
       small,
       autofocus,
       onNavigate,
-      modifiers,
+      modifiers: modifiersProp,
       withCancelButton,
-      hideColumnHeader,
+      hideSleeveHeader,
       singleColumn,
       infoText,
+      ignoreContentTypeBadge,
       t,
     } = this.props;
 
@@ -158,17 +164,20 @@ class SearchField extends Component {
 
     let searchResultView = null;
 
+    const modifiers = [...modifiersProp];
+
     if (hasSearchResult) {
       modifiers.push('has-search-result');
 
       searchResultView = (
         <SearchResult
+          ignoreContentTypeBadge={ignoreContentTypeBadge}
           result={searchResult}
           searchString={value}
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
           autofocus={autofocus}
-          hideColumnHeader={hideColumnHeader}
+          hideSleeveHeader={hideSleeveHeader}
           onNavigate={onNavigate}
           singleColumn={singleColumn}
           infoText={infoText}
@@ -188,9 +197,7 @@ class SearchField extends Component {
       <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
         <div {...classes('input-wrapper')}>
           <input
-            ref={ref => {
-              this.inputRef = ref;
-            }}
+            ref={this.inputRef}
             title={messages.searchFieldTitle}
             type="search"
             {...classes('input', { small })}
@@ -201,7 +208,7 @@ class SearchField extends Component {
             placeholder={placeholder}
             aria-label={placeholder}
             value={value}
-            onChange={onChange}
+            onChange={e => onChange(e.target.value)}
             onBlur={this.onInputBlur}
             onFocus={this.onInputFocus}
           />
@@ -213,15 +220,15 @@ class SearchField extends Component {
               />
             </div>
           )}
-          {withCancelButton && value !== '' && (
+          {value !== '' && (
             <button
               {...classes('button', 'close')}
               type="button"
-              aria-label={t('welcomePage.resetSearch')}
               onClick={() => {
-                onChange({ target: { value: '' } });
+                onChange('');
+                this.inputRef.current.focus();
               }}>
-              <Cross className="c-icon--medium" />
+              {t('welcomePage.resetSearch')}
             </button>
           )}
           <button
@@ -262,9 +269,10 @@ SearchField.propTypes = {
   onBlur: PropTypes.func,
   modifiers: PropTypes.arrayOf(PropTypes.string),
   withCancelButton: PropTypes.bool,
-  hideColumnHeader: PropTypes.bool,
+  hideSleeveHeader: PropTypes.bool,
   singleColumn: PropTypes.bool,
-  infoText: PropTypes.string,
+  infoText: PropTypes.node,
+  ignoreContentTypeBadge: PropTypes.bool,
 };
 
 SearchField.defaultProps = {

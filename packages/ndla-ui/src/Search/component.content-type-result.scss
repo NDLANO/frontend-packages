@@ -52,6 +52,19 @@
     }
   }
 
+  &--results-frontpage {
+    a {
+      span {
+        box-shadow: $link;
+      }
+    }
+    a:hover, a:focus {
+      span {
+        box-shadow: none;
+      }
+    } 
+  }
+
   ul {
     margin: 0;
     padding: 0;
@@ -67,15 +80,27 @@
     }
 
     a {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: space-between;
       box-shadow: none;
       padding: $spacing--small/2 $spacing--small;
-      flex-grow: 1;
       transition: background 200ms ease;
       .c-content-type-result__additional-icon {
         padding-right: $spacing--small;
+      }
+      strong {
+        padding-right: $spacing--small / 2;
+        @include mq($until: tablet) {
+          @include font-size(12px, 23px);
+        }
+      }
+      small {
+        padding-left: $spacing--small;
+        color: $primary-color;
+        @include mq($until: tablet) {
+          display: none;
+        }
       }
     }
     .c-icon {

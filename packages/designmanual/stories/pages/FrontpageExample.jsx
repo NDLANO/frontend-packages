@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
@@ -15,10 +15,7 @@ import {
   SubjectSectionTitle,
 } from '@ndla/ui';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
-
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-
-import { SearchButtonView } from '../molecules/mastheads';
 import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
@@ -55,34 +52,38 @@ class FrontpageExample extends Component {
     });
   }
 
-  searchFieldValue(e) {
+  searchFieldValue(searchFieldValue) {
     this.setState({
-      searchFieldValue: e.target.value,
+      searchFieldValue,
     });
+  }
+
+  renderInfoText() {
+    const { t } = this.props;
+    return (
+      <span>
+        {exampleTopicsNotInNDLA.map((topic, index) => {
+          const isLastTopic = index === exampleTopicsNotInNDLA.length - 1;
+          return (
+            <Fragment key={topic}>
+              {isLastTopic && `${t('welcomePage.topicsConjunction')} `}
+              <strong key={topic}>
+                {topic}
+                {index < exampleTopicsNotInNDLA.length - 2 && ','}{' '}
+              </strong>
+            </Fragment>
+          );
+        })}
+        {t('welcomePage.topicsNotAvailableFromSearch')}
+      </span>
+    );
   }
 
   render() {
     const { t } = this.props;
     const { searchFieldValue, inputHasFocus } = this.state;
     const needInfoTextInSearchSuggestions = exampleTopicsNotInNDLA.length > 0;
-    let infoText = '';
-    if (needInfoTextInSearchSuggestions) {
-      if (exampleTopicsNotInNDLA.length === 1) {
-        infoText = t('welcomePage.topicsNotAvailableFromSearch', {
-          topic: exampleTopicsNotInNDLA.toString(),
-        });
-      } else {
-        const lastTopic =
-          exampleTopicsNotInNDLA[exampleTopicsNotInNDLA.length - 1];
-        const topics = [...exampleTopicsNotInNDLA]
-          .splice(0, exampleTopicsNotInNDLA.length - 1)
-          .join(', ');
-        infoText = t('welcomePage.topicsNotAvailableFromSearchMany', {
-          topics,
-          lastTopic,
-        });
-      }
-    }
+
     return (
       <>
         <FrontpageHeader
@@ -100,41 +101,124 @@ class FrontpageExample extends Component {
           searchFieldPlaceholder={t(
             'welcomePage.heading.searchFieldPlaceholder',
           )}
-          infoText={needInfoTextInSearchSuggestions && infoText}
+          infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
           inputHasFocus={inputHasFocus}
           searchResult={
             searchFieldValue.length > 2
               ? [
                   {
-                    title: 'Title here..',
+                    title: 'Fag:',
+                    contentType: 'results-frontpage',
+                    resources: [
+                      {
+                        path: '#f1',
+                        boldName: 'Yrkesfag:',
+                        name: 'Design og håndverk',
+                        subName: 'Vg3',
+                      },
+                      {
+                        path: '#f2',
+                        boldName: 'Yrkesfag:',
+                        name: 'Helsearbeiderfag',
+                        subName: 'Vg1',
+                      },
+                      {
+                        path: '#f2',
+                        boldName: 'Fellesfag:',
+                        name: 'Samfunnsfag',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Emner:',
+                    contentType: 'results-frontpage',
+                    resources: [
+                      {
+                        path: '#e1',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Politikk og demokrati',
+                      },
+                      {
+                        path: '#e2',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Internasjonale forhold',
+                      },
+                      {
+                        path: '#e3',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Arbeidsliv- og næring',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Læringsressurser:',
+                    contentType: 'results-frontpage',
                     resources: [
                       {
                         path: '#1',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Samfunnskontrakten: Å bli voksen',
+                        subName: 'Fagstoff',
                       },
                       {
                         path: '#2',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Ulike metoder',
+                        subName: 'Fagstoff',
                       },
                       {
                         path: '#3',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Dette er NAV',
+                        subName: 'Fagstoff',
                       },
                       {
                         path: '#4',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Samfunnsfag:',
+                        name: 'Oppsummeringsoppgave, tema, Urfolk',
+                        subName: 'Oppgaver og aktiviteter',
                       },
                       {
                         path: '#5',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Utvilking av ny design',
+                        subName: 'Fagstoff',
                       },
                       {
                         path: '#6',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Presentasjonsteknikk - demonstrasjon',
+                        subName: 'Oppgaver og aktiviteter',
                       },
                       {
                         path: '#7',
-                        name: 'Fag > emne > underemne > navn på ressurs',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Form og funksjon',
+                        subName: 'Læringssti',
+                      },
+                      {
+                        path: '#8',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Form og funksjon',
+                        subName: 'Læringssti',
+                      },
+                      {
+                        path: '#9',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Form og funksjon',
+                        subName: 'Læringssti',
+                      },
+                      {
+                        path: '#10',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Form og funksjon',
+                        subName: 'Læringssti',
+                      },
+                      {
+                        path: '#11',
+                        boldName: 'Design og håndverk Vg1:',
+                        name: 'Form og funksjon',
+                        subName: 'Læringssti',
                       },
                     ],
                   },

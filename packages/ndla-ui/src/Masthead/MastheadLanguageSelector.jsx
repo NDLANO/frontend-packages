@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 import { injectT } from '@ndla/i18n';
-import Button from '@ndla/Button';
+import Button from '@ndla/button';
 
 const classes = new BEMHelper({
   name: 'masthead',

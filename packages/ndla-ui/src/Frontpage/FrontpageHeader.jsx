@@ -130,7 +130,7 @@ const FrontpageHeader = ({
                         : ['absolute-position-sleeve']
                     }
                     infoText={infoText}
-                    filters={false}
+                    filters={undefined}
                     value={searchFieldValue}
                     onChange={onSearchFieldChange}
                     placeholder={searchFieldPlaceholder}

@@ -21,7 +21,6 @@ import ActiveFilters from './ActiveFilters';
 import ContentTypeResult from './ContentTypeResult';
 
 import { ContentTypeResultShape } from '../shapes';
-import { preProcessFile } from 'typescript';
 
 const classes = new BEMHelper('c-search-field');
 

@@ -18,6 +18,7 @@ import { Carousel, CarouselAutosize } from '@ndla/carousel';
 
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 
+import { SearchButtonView } from '../molecules/mastheads';
 import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 

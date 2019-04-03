@@ -172,8 +172,7 @@ const FrontpageHeader = ({
               <ToggleSearchButton
                 hideOnWideScreen
                 onClick={onSearchInputFocus}
-                aria-label={t('welcomePage.heading.searchFieldPlaceholder')}
-              >
+                aria-label={t('welcomePage.heading.searchFieldPlaceholder')}>
                 {t('welcomePage.heading.messages.searchFieldTitle')}
               </ToggleSearchButton>
             </>

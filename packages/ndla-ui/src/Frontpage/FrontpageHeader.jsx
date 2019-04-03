@@ -147,6 +147,7 @@ const FrontpageHeader = ({
                   <button
                     type="button"
                     onClick={onSearchDeactiveFocusTrap}
+                    aria-label={t('welcomePage.closeSearch')}
                     {...classes('close-button')}>
                     <Cross />
                   </button>
@@ -168,8 +169,12 @@ const FrontpageHeader = ({
                 resourceToLinkProps={() => {}}
                 withCancelButton
               />
-              <ToggleSearchButton hideOnWideScreen onClick={onSearchInputFocus}>
-                Søk
+              <ToggleSearchButton
+                hideOnWideScreen
+                onClick={onSearchInputFocus}
+                aria-label={t('welcomePage.heading.searchFieldPlaceholder')}
+              >
+                {t('welcomePage.heading.messages.searchFieldTitle')}
               </ToggleSearchButton>
             </>
           )}

@@ -197,6 +197,7 @@ const messages = {
   meta: {
     description:
       'Kvalitetssikrede fritt tilgjengelige nettbaserte læremidler for videregående opplæring',
+    keywords: 'læremiddel,fag,skole,videregående,lærling,pensum,fagstoff',
   },
   masthead: {
     menu: {

@@ -140,7 +140,6 @@ const FrontpageHeader = ({
                     searchResult={searchResult}
                     allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
-                    withCancelButton
                     singleColumn
                     hideSleeveHeader
                   />
@@ -167,7 +166,6 @@ const FrontpageHeader = ({
                 onSearch={onSearch}
                 allResultUrl={allResultUrl}
                 resourceToLinkProps={() => {}}
-                withCancelButton
               />
               <ToggleSearchButton
                 hideOnWideScreen

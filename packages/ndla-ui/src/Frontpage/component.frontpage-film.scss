@@ -14,6 +14,10 @@
       }
     }
   }
+  &__ndla-frontpage {
+    margin-top: $spacing--large;
+    margin-bottom: $spacing--large;
+  }
   &__image {
     background: $brand-color--lighter;
     background-size: contain;

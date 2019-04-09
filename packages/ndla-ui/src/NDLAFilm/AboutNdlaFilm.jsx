@@ -44,7 +44,7 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
         </div>
         <div>
           <h1>{aboutNDLAVideo.title}</h1>
-          <p>{t(aboutNDLAVideo.description)}</p>
+          <p>{aboutNDLAVideo.description}</p>
           <Modal
             activateButton={<Button link>{t('ndlaFilm.about.more')}</Button>}>
             {onClose => (

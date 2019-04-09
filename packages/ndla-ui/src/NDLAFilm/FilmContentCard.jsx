@@ -5,27 +5,26 @@ import { SafeLink } from '@ndla/ui';
 import styled from '@emotion/styled';
 
 const FilmContentCard = ({
-  movie,
+  movie: { metaImage, resourceTypes: movieResourceTypes, title, id, path },
   columnWidth,
   distanceBetweenItems,
   resourceTypes,
 }) => (
   <StyledSlideWrapper
-    key={movie.id}
+    key={id}
     columnWidth={columnWidth}
     style={{ marginRight: `${distanceBetweenItems}px` }}>
-    <SafeLink to={`/subjects${movie.path}`}>
+    <SafeLink to={`/subjects${path}`}>
       <StyledImage
         role="img"
         columnWidth={columnWidth}
-        aria-label={(movie.metaImage && movie.metaImage.alt) || ''}
+        aria-label={(metaImage && metaImage.alt) || ''}
         style={{
-          backgroundImage: `url(${(movie.metaImage && movie.metaImage.url) ||
-            ''})`,
+          backgroundImage: `url(${(metaImage && metaImage.url) || ''})`,
         }}>
         <StyledTagWrapper>
-          {(movie.resourceTypes ? movie.resourceTypes : []).map(
-            movieResourceType => {
+          {Array.isArray(movieResourceTypes) &&
+            movieResourceTypes.map(movieResourceType => {
               const resource = resourceTypes.find(
                 resourceType => resourceType.id === movieResourceType.id,
               );
@@ -34,11 +33,10 @@ const FilmContentCard = ({
                   {resource.name}
                 </StyledMovieTags>
               ) : null;
-            },
-          )}
+            })}
         </StyledTagWrapper>
       </StyledImage>
-      <StyledMovieTitle>{movie.title}</StyledMovieTitle>
+      <StyledMovieTitle>{title}</StyledMovieTitle>
     </SafeLink>
   </StyledSlideWrapper>
 );
@@ -118,7 +116,7 @@ FilmContentCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.string,
     url: PropTypes.string,
-  }),
+  }).isRequired,
   columnWidth: PropTypes.number,
   distanceBetweenItems: PropTypes.number,
   resourceTypes: PropTypes.arrayOf(PropTypes.object),

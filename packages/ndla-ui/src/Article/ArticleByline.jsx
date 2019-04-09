@@ -36,7 +36,14 @@ class ArticleByline extends Component {
   }
 
   render() {
-    const { authors, license, licenseBox, published, additional, t } = this.props;
+    const {
+      authors,
+      license,
+      licenseBox,
+      published,
+      additional,
+      t,
+    } = this.props;
     const { showAuthor } = this.state;
     const authorsLinkable =
       authors.length > 1 ||

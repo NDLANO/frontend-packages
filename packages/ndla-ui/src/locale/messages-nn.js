@@ -478,6 +478,33 @@ const messages = {
       newGroupTitle: 'Kva skal gruppen hete?',
     },
   },
+  filmfrontpage: {
+    resourcetype: {
+      documentary: 'Dokumentar',
+      featureFilm: 'Spillefilm',
+      series: 'Tv-serie',
+      shortFilm: 'Kortfilm',
+    },
+    moreAboutNdlaFilm: {
+      header: 'NDLA Film',
+      firstParagraph:
+        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS og Norsk filminstitutt.',
+      secondParagraph:
+        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
+      thirdParagraph:
+        'Filmane er copyrightmerka. Dei kan fritt avspelast på ndla.no, men ikkje lastes ned eller distribuerast vidare i andre publikasjoner. Alle rettighetshavere honoreres for dei avspelinger som gjeres.',
+      secondHeading: 'Bruk film i undervisninga',
+      fourthParagraph:
+        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokon av dei mest effektive visuelle verkemidla som finnes; bevegelige bilder og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
+      fifthParagraph:
+        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmer etisk orienteringsevne og estetisk sans.',
+      tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønsker på',
+      tipSectionPt2: 'Facebook-sida',
+      ariaLabel: 'Besøk Facebooksida til NDLA-film',
+      tipSectionPt3: 'vår',
+      ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
+    },
+  },
 };
 
 export default messages;

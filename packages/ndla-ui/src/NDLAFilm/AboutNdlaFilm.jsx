@@ -36,10 +36,15 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
   return (
     <div className="o-wrapper">
       <StyledAside>
-        <div>{aboutNDLAVideo}</div>
         <div>
-          <h1>{t('ndlaFilm.about.heading')}</h1>
-          <p>{t('ndlaFilm.about.text')}</p>
+          <img
+            src={aboutNDLAVideo.visualElement.url}
+            alt={aboutNDLAVideo.visualElement.alt}
+          />
+        </div>
+        <div>
+          <h1>{aboutNDLAVideo.title}</h1>
+          <p>{t(aboutNDLAVideo.description)}</p>
           <Modal
             activateButton={<Button link>{t('ndlaFilm.about.more')}</Button>}>
             {onClose => (

@@ -175,7 +175,12 @@ FilmFrontpage.propTypes = {
   highlighted: PropTypes.arrayOf(PropTypes.object),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      name: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+          language: PropTypes.string,
+        }),
+      ),
       movies: PropTypes.arrayOf(PropTypes.object),
     }),
   ),

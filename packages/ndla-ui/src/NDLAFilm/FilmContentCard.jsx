@@ -14,7 +14,7 @@ const FilmContentCard = ({
     key={movie.id}
     columnWidth={columnWidth}
     style={{ marginRight: `${distanceBetweenItems}px` }}>
-    <SafeLink to={movie.url}>
+    <SafeLink to={`/subjects${movie.path}`}>
       <StyledImage
         role="img"
         columnWidth={columnWidth}
@@ -24,14 +24,18 @@ const FilmContentCard = ({
             ''})`,
         }}>
         <StyledTagWrapper>
-          {Object.keys(movie.movieTypes).map(movieType => {
-            const resource = resourceTypes.find(
-              resourceType => resourceType.id === movieType,
-            );
-            return resource ? (
-              <StyledMovieTags key={movieType}>{resource.name}</StyledMovieTags>
-            ) : null;
-          })}
+          {(movie.resourceTypes ? movie.resourceTypes : []).map(
+            movieResourceType => {
+              const resource = resourceTypes.find(
+                resourceType => resourceType.id === movieResourceType.id,
+              );
+              return resource ? (
+                <StyledMovieTags key={movieResourceType}>
+                  {resource.name}
+                </StyledMovieTags>
+              ) : null;
+            },
+          )}
         </StyledTagWrapper>
       </StyledImage>
       <StyledMovieTitle>{movie.title}</StyledMovieTitle>

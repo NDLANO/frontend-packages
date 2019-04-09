@@ -36,7 +36,7 @@ const FilmMovieSearch = ({ topics, t, ...props }) => (
           <ul>
             {topics.map(topic => (
               <li key={topic.id}>
-                <SafeLink to="#" key={topic.id}>
+                <SafeLink to={`/subjects${topic.path}`} key={topic.id}>
                   <span>{topic.name}</span>
                 </SafeLink>
               </li>

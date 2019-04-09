@@ -24,6 +24,23 @@ import 'core-js/fn/number/is-nan';
 // polyfill for <details></details> and <summary></summary> html elements used in articles.
 import 'details-polyfill';
 
+// polyfill for Element .remove() in ie11
+(function(arr) {
+  arr.forEach(function(item) {
+    if (item.hasOwnProperty('remove')) {
+      return;
+    }
+    Object.defineProperty(item, 'remove', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function remove() {
+        if (this.parentNode !== null) this.parentNode.removeChild(this);
+      },
+    });
+  });
+})([Element.prototype]);
+
 // Check for ie and add .ie class to <html> tag
 if (/Trident\/|MSIE /.test(window.navigator.userAgent)) {
   document.documentElement.classList.add('ie');

@@ -46,11 +46,11 @@ class InputComponent extends Component {
   }
 }
 
-const FileNameInput = React.forwardRef(({ editMode, file, ...rest }, ref) => {
+const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
   if (editMode)
     return (
       <div>
-        <InputComponent {...rest} forwardedRef={ref} />
+        <InputComponent {...rest} forwardedRef={useRef} />
       </div>
     );
   return (
@@ -63,7 +63,7 @@ const FileNameInput = React.forwardRef(({ editMode, file, ...rest }, ref) => {
       </LinkButton>
     </div>
   );
-});
+};
 
 const StyledInput = styled.input`
   height: ${spacing.medium};

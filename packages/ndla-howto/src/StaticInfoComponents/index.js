@@ -210,4 +210,8 @@ export const stories = {
     lead:
       'Alle ressurser må ha ett eller fagfilter. Fagfilterene du kan velge mellom blir gitt utfra emnetilknytningen og derav faget det tilhører. Itillegg til å velge fagfilter kan velge om ressursen skal være tilleggsstoff og kjernestoff under hvert av fagfilterene.',
   },
+  status: {
+    title: 'Forklaring for ulike statuser',
+    lead: 'Denne teksten kommer snart..',
+  },
 };

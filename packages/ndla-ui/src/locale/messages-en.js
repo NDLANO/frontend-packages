@@ -199,6 +199,7 @@ const messages = {
   },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',
+    keywords: 'open educational resources,teaching,learning',
   },
   masthead: {
     menu: {
@@ -477,6 +478,34 @@ const messages = {
       groupNamePlaceholder: 'Write name in {lang}',
       editGroupTitle: 'Change the name(s) in this movie group:',
       newGroupTitle: 'What shall we call the new movie group?',
+    },
+  },
+  filmfrontpage: {
+    resourcetype: {
+      documentary: 'Documentary',
+      featureFilm: 'Feature film',
+      series: 'Series',
+      shortFilm: 'Short film',
+    },
+    moreAboutNdlaFilm: {
+      header: 'NDLA Film',
+      firstParagraph:
+        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS and the Norwegian Film Institute.",
+      secondParagraph:
+        'You can watch the films if you are connected to the Internet via your computer, tablet or smartphone. We have done the work with rights clearance and payment. All you have to do is press play.',
+      thirdParagraph:
+        'The films are copyrighted. They can be played freely on ndla.no, but not downloaded or distributed in other publications. All licensees are remunerated for the replays made.',
+      secondHeading: 'Use film in teaching',
+      fourthParagraph:
+        'A film tells stories in ways that engage and touch us. In film, some of the most effective visuals are used; moving images and sound. A good film can show sides of the present and give visions of the future or comment on the past. Therefore, films can often give us a better understanding of events, cultural meetings and history than a text.',
+      fifthParagraph:
+        'By watching films, the students are better equipped to read the film language, so that the film gets a value beyond the purely entertaining. The general part of the curriculum emphasizes that the students should meet art and cultural forms that stimulate, inspire their own creativity, and promote ethical orientation ability and aesthetic sense.',
+      tipSectionPt1:
+        'Please give tips, ask questions or wish for new movies at our',
+      tipSectionPt2: 'Facebook page.',
+      ariaLabel: 'Visit NDLA-films Facebook page',
+      tipSectionPt3: '',
+      ending: 'We wish all movie lovers a good and educational experience!',
     },
   },
 };

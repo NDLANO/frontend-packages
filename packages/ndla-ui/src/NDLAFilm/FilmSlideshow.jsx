@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
-import { OneColumn } from '@ndla/ui';
+import { OneColumn, SafeLink } from '@ndla/ui';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import Spinner from '../Spinner';
 import { movieShape } from './shapes';
@@ -219,19 +219,16 @@ class FilmSlideshow extends Component {
           onSwiping={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
-              <a
-                href={slideshow[activeSlide].url}
-                ref={this.slideText}
+              <SafeLink
+                to={`/subjects${slideshow[activeSlide].url}`}
                 {...classes('item-wrapper', 'text', {
                   out: !animationComplete,
                 })}>
                 <div {...classes('slide-info')}>
                   <h1>{slideshow[activeSlide].title}</h1>
-                  <p>
-                    {slideshow[activeSlide].metaDescription.metaDescription}
-                  </p>
+                  <p>{slideshow[activeSlide].metaDescription}</p>
                 </div>
-              </a>
+              </SafeLink>
             </OneColumn>
           </div>
           <div {...classes('navigation-arrows')}>

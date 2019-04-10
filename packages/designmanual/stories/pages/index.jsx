@@ -269,6 +269,24 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Endret språk (popup åpen)', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu languageSelectorOpen />
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLearningmaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));
 
 storiesOf('Emnesider', module)

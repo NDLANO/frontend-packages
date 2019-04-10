@@ -66,7 +66,6 @@ export const Masthead = ({
           <MastheadInfo>{infoContent}</MastheadInfo>
         </DisplayOnPageYOffset>
       )}
-
       <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
     </div>
   </Fragment>

@@ -10,11 +10,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
-import { isMobile } from 'react-device-detect';
 import { OneColumn, SafeLink } from '@ndla/ui';
 import Spinner from '../Spinner';
 import { movieShape } from './shapes';
 import NavigationArrow from './NavigationArrow';
+import SlideshowIndicator from './SlideshowIndicator';
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -269,20 +269,11 @@ class FilmSlideshow extends Component {
             {renderSlideItem(slideshow[0], slideshow.length)}
           </div>
         </Swipeable>
-        <div {...classes('indicator-wrapper')}>
-          {slideshow.map((slide, index) => (
-            <button
-              key={`indicator_${index}`} // eslint-disable-line react/no-array-index-key
-              type="button"
-              {...classes(
-                'indicator-dot',
-                index === activeSlide ? 'active' : '',
-              )}
-              onClick={() => !isMobile && this.gotoSlide(index, true)}>
-              <span />
-            </button>
-          ))}
-        </div>
+        <SlideshowIndicator
+          slideshow={slideshow}
+          activeSlide={activeSlide}
+          gotoSlide={this.gotoSlide}
+        />
       </section>
     );
   }

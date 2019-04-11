@@ -12,9 +12,9 @@ import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
 import { OneColumn, SafeLink } from '@ndla/ui';
-import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import Spinner from '../Spinner';
 import { movieShape } from './shapes';
+import NavigationArrow from './NavigationArrow';
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -231,36 +231,19 @@ class FilmSlideshow extends Component {
               </SafeLink>
             </OneColumn>
           </div>
-          <div {...classes('navigation-arrows')}>
-            <button
-              type="button"
-              tabIndex={-1}
-              onClick={() => {
-                this.gotoSlide(
-                  slideIndexTarget > 0
-                    ? slideIndexTarget - 1
-                    : slideshow.length - 1,
-                  true,
-                );
-              }}>
-              <ChevronLeft />
-            </button>
-          </div>
-          <div {...classes('navigation-arrows', 'right')}>
-            <button
-              type="button"
-              tabIndex={-1}
-              onClick={() => {
-                this.gotoSlide(
-                  slideIndexTarget < slideshow.length - 1
-                    ? slideIndexTarget + 1
-                    : 0,
-                  true,
-                );
-              }}>
-              <ChevronRight />
-            </button>
-          </div>
+          <NavigationArrow
+            slideIndexTarget={
+              slideIndexTarget > 0 ? slideIndexTarget - 1 : slideshow.length - 1
+            }
+            gotoSlide={this.gotoSlide}
+          />
+          <NavigationArrow
+            slideIndexTarget={
+              slideIndexTarget < slideshow.length - 1 ? slideIndexTarget + 1 : 0
+            }
+            gotoSlide={this.gotoSlide}
+            rightArrow
+          />
           {!animationComplete && (
             <div
               {...classes('item', 'fade-over')}

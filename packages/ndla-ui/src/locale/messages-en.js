@@ -356,7 +356,7 @@ const messages = {
       },
     },
     h5p: {
-      heading: 'How to use H5p content from the article',
+      heading: 'How to use H5P content from the article',
       description:
         'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5P:',

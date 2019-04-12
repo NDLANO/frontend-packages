@@ -312,7 +312,7 @@ const messages = {
       images: 'Bilder',
       audio: 'Lyd',
       video: 'Video',
-      h5p:  'H5P',
+      h5p: 'H5P',
       files: 'Filer',
       other: 'Annet innhold',
     },
@@ -362,7 +362,7 @@ const messages = {
       heading: 'Slik bruker du H5p innhold fra artikkelen',
       description:
         'Du finner retningslinjene for bruk av innholdet i H5p elementet',
-      rules:'Regler for bruk av H5p:'
+      rules: 'Regler for bruk av H5p:',
     },
     files: {
       heading: 'Slik bruker du filer fra artikkelen',

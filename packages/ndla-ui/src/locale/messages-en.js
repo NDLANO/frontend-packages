@@ -309,7 +309,7 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
-      h5p:  'H5P',
+      h5p: 'H5P',
       files: 'Files',
       other: 'Other content',
     },
@@ -359,7 +359,7 @@ const messages = {
       heading: 'How to use H5p content from the article',
       description:
         'You will find guidelines for use of H5p content in the asset',
-      rules:'Rules for use of H5p:'
+      rules: 'Rules for use of H5p:',
     },
     files: {
       heading: 'How to use files from the article',

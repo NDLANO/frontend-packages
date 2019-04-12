@@ -312,6 +312,7 @@ const messages = {
       images: 'Bilder',
       audio: 'Lyd',
       video: 'Video',
+      h5p: 'H5P',
       files: 'Filer',
       other: 'Annet innhold',
     },
@@ -356,6 +357,12 @@ const messages = {
       itemImage: {
         ariaLabel: 'Åpne i nytt vindu',
       },
+    },
+    h5p: {
+      heading: 'Slik bruker du H5P-innhold fra artikkelen',
+      description:
+        'Du finner retningslinjene for bruk av innholdet i H5P-elementet',
+      rules: 'Regler for bruk av H5P:',
     },
     files: {
       heading: 'Slik bruker du filer fra artikkelen',

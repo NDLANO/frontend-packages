@@ -314,6 +314,7 @@ const messages = {
       images: 'Bilde',
       audio: 'Lyd',
       video: 'Video',
+      h5p: 'H5P',
       files: 'Filer',
       other: 'Anna innhald',
     },
@@ -358,6 +359,12 @@ const messages = {
       itemImage: {
         ariaLabel: 'Åpne i nytt vindauge',
       },
+    },
+    h5p: {
+      heading: 'Slik bruker du H5P-innhold frå artikkelen',
+      description:
+        'Du finn retningslinjene for bruk av innholdet i H5P-elementet.',
+      rules: 'Regler for bruk av H5P:',
     },
     files: {
       heading: 'Slik bruker du filer frå artikkelen',

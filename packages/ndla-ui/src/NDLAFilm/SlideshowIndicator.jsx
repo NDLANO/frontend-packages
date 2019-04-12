@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { isMobile } from 'react-device-detect';
+import { movieShape } from './shapes';
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -36,8 +37,8 @@ class SlideshowIndicator extends Component {
 }
 
 SlideshowIndicator.propTypes = {
-  slideshow: PropTypes.object,
-  activeSlide: PropTypes.object,
+  slideshow: PropTypes.arrayOf(movieShape),
+  activeSlide: PropTypes.number,
 };
 
 export default SlideshowIndicator;

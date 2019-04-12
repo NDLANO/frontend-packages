@@ -220,7 +220,7 @@ class FilmSlideshow extends Component {
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <SafeLink
-                to={`/subjects${slideshow[activeSlide].url}`}
+                to={`/subjects${slideshow[activeSlide].path}`}
                 {...classes('item-wrapper', 'text', {
                   out: !animationComplete,
                 })}>
@@ -288,7 +288,7 @@ FilmSlideshow.propTypes = {
 
 FilmSlideshow.defaultProps = {
   autoSlide: false,
-  randomStart: true,
+  randomStart: false,
   slideshow: [],
   slideInterval: 5000,
 };

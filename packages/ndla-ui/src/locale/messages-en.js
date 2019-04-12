@@ -309,6 +309,7 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
+      h5p:  'H5P',
       files: 'Files',
       other: 'Other content',
     },
@@ -353,6 +354,12 @@ const messages = {
       itemImage: {
         ariaLabel: 'Open video in new window',
       },
+    },
+    h5p: {
+      heading: 'How to use H5p content from the article',
+      description:
+        'You will find guidelines for use of H5p content in the asset',
+      rules:'Rules for use of H5p:'
     },
     files: {
       heading: 'How to use files from the article',

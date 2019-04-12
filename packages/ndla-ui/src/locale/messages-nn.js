@@ -364,7 +364,7 @@ const messages = {
       heading: 'Slik bruker du H5P-innhold frå artikkelen',
       description:
         'Du finn retningslinjene for bruk av innholdet i H5P-elementet.',
-      rules: 'Regler for bruk av H5p:',
+      rules: 'Regler for bruk av H5P:',
     },
     files: {
       heading: 'Slik bruker du filer frå artikkelen',

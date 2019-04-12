@@ -358,7 +358,7 @@ const messages = {
     h5p: {
       heading: 'How to use H5p content from the article',
       description:
-        'You will find guidelines for use of H5p content in the asset',
+        'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5p:',
     },
     files: {

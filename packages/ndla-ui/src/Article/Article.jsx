@@ -102,7 +102,7 @@ export const Article = ({
   const {
     title,
     introduction,
-    updated,
+    published,
     content,
     footNotes,
     copyright: { license: licenseObj, creators, rightsholders, processors },
@@ -130,7 +130,7 @@ export const Article = ({
           <ArticleByline
             {...{
               authors,
-              updated,
+              published,
               license,
               additional,
               licenseBox,

@@ -77,6 +77,13 @@ class AccordionExample extends Component {
             default: 'false',
             description: 'Vis kun et panel omgangen',
           },
+          {
+            name: 'sidePadding',
+            type: 'Number',
+            default: 'undefined',
+            description:
+              'Custom padding på sidene til AccordionPanel komponenten. Brukes feks av Ed panel for sideredigeringen.',
+          },
         ]}
         status={2}>
         <h2>Eksempel</h2>

@@ -18,8 +18,12 @@ const StyledAccordionPanel = styled.section`
   opacity: 1;
   margin-bottom: ${spacing.normal};
   background: #fff;
-  padding-left: calc(${spacing.large} + ${spacing.small});
-  padding-right: ${spacing.large};
+  padding-left: ${props =>
+    props.sidePadding
+      ? `${props.sidePadding}px`
+      : `calc(${spacing.large} + ${spacing.small})`};
+  padding-right: ${props =>
+    props.sidePadding ? `${props.sidePadding}px` : spacing.large};
   padding-bottom: ${spacing.large};
   max-height: auto;
   ${props =>
@@ -53,4 +57,5 @@ AccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   hasError: PropTypes.bool,
   isOpen: PropTypes.bool,
+  sidePadding: PropTypes.number,
 };

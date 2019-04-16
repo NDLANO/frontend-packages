@@ -73,7 +73,7 @@ const ArticleBylineExample = ({ multipleAuthors, useRealText, additional }) => {
   return (
     <ArticleByline
       authors={multipleAuthors ? useAuthors : [useAuthors[0]]}
-      updated={useRealText ? '24.04.2018' : '[dato]'}
+      published={useRealText ? '24.04.2018' : '[dato]'}
       license={useRealText ? 'CC BY-SA' : '[lisens]'}
       licenseBox={<LicenseBox />}
       additional={additional}

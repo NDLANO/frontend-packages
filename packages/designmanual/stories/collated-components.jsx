@@ -82,7 +82,7 @@ storiesOf('Sammensatte moduler', module)
               role: 'Manusforfatter',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
         />
         <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
@@ -93,7 +93,7 @@ storiesOf('Sammensatte moduler', module)
               shortName: 'Cecilie',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
@@ -116,7 +116,7 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
@@ -169,7 +169,7 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
@@ -177,7 +177,7 @@ storiesOf('Sammensatte moduler', module)
           Linje uten opphavere detaljert informasjon
         </h2>
         <ArticleByline
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />

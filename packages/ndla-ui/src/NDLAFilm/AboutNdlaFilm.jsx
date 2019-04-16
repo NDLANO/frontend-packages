@@ -63,7 +63,16 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
 };
 
 AboutNdlaFilm.propTypes = {
-  aboutNDLAVideo: PropTypes.node,
+  aboutNDLAVideo: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    langugae: PropTypes.string,
+    visualElement: PropTypes.shape({
+      type: PropTypes.string,
+      url: PropTypes.string,
+      alt: PropTypes.string,
+    }),
+  }),
 };
 
 export default injectT(AboutNdlaFilm);

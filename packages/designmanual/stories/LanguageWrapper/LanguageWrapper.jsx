@@ -9,13 +9,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import IntlProvider, { formatNestedMessages } from '@ndla/i18n';
-import { messagesNB, messagesNN, messagesEN } from '@ndla/ui';
+import { messagesNB, messagesNN, messagesEN, messagesVariantsNB, messagesVariantsNN, messagesVariantsEN } from '@ndla/ui';
 
 const messages = {
   nb: formatNestedMessages(messagesNB),
   nn: formatNestedMessages(messagesNN),
   en: formatNestedMessages(messagesEN),
 };
+const variants = {
+  nb: formatNestedMessages(messagesVariantsNB),
+  nn: formatNestedMessages(messagesVariantsNN),
+  en: formatNestedMessages(messagesVariantsEN),
+}
 export const LanguageContext = React.createContext();
 
 class LanguageWrapperProvider extends Component {
@@ -51,7 +56,7 @@ const LanguageWrapper = storyFn => (
   <LanguageWrapperProvider>
     <LanguageContext.Consumer>
       {context => (
-        <IntlProvider locale={context.lang} messages={messages[context.lang]}>
+        <IntlProvider locale={context.lang} messages={messages[context.lang]} variants={variants[context.lang]}>
           {storyFn()}
         </IntlProvider>
       )}

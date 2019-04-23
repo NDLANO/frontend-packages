@@ -496,4 +496,14 @@ const messages = {
   },
 };
 
+export const messagesVariants = {
+  1: {
+    welcomePage: {
+      film: {
+        linkLabel: 'Hello from AB-test',
+      },
+    },
+  },
+};
+
 export default messages;

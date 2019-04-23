@@ -1,0 +1,25 @@
+{
+  "name": "@ndla/abtest",
+  "version": "0.0.1",
+  "description": "AB-test Context",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-abtest/"
+  },
+  "keywords": [
+    "ndla",
+    "AB-test"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

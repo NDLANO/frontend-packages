@@ -10,35 +10,15 @@ import { ExperimentShape, VariationsShape } from './Experiment';
 
 export interface ExperimentShapeClean {
   id: string;
-  name: string;
-  startTime: number;
-  endTime: number;
-  winnerFound: boolean;
   variations: VariationsShape[]; 
 };
 
 export function cleanupExperiments(experiments: ExperimentShapeClean[], cookieExperiments: ExperimentShape[]) {
   return experiments.map(experiment => {
     const {
-      winnerFound,
-      startTime,
-      endTime,
       id,
       variations,
     } = experiment;
-    if (winnerFound) {
-      // send Id + winner from variations.
-      return {
-        id,
-        variations: variations.find((variation: VariationsShape) => (
-          variation.won
-        )),
-      }
-    }
-    if (startTime > Date.now() || endTime < Date.now()) {
-      // Experiment not active, return null! (this above winnerFound?)
-      return null;
-    }
     if (cookieExperiments) {
       const experimentInCookie = cookieExperiments.find((cookieExperiments: ExperimentShape) => cookieExperiments.id === id);
       if (experimentInCookie) {
@@ -47,17 +27,22 @@ export function cleanupExperiments(experiments: ExperimentShapeClean[], cookieEx
     }
     const pickVariant = Math.random();
     let variationsWeightCounter = 0;
-    const winner = variations.find(variation => {
-      if (variationsWeightCounter + variation.weight > pickVariant) {
+    const variationsTotal = variations.length - 1;
+    const winner = variations.find((variation: VariationsShape, index: number) => {
+      if (variationsWeightCounter + (variation.weight || 0) > pickVariant || index === variationsTotal) {
         return true;
       } else {
-        variationsWeightCounter += variation.weight;
+        variationsWeightCounter += (variation.weight || 0);
         return false;
       }
     });
-    return {
-      id,
-      variations: winner,
+    
+    if (typeof winner === 'object') {
+      winner.index = variations.findIndex(variant => variant.name === winner.name);
+      return {
+        id,
+        variant: winner,
+      }
     }
-  }).filter(experiment => experiment !== null)
+  })
 };

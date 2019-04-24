@@ -158,9 +158,9 @@ export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';
 
-export { default as messagesNB, messagesVariants as messagesVariantsNB } from './locale/messages-nb';
-export { default as messagesNN, messagesVariants as messagesVariantsNN } from './locale/messages-nn';
-export { default as messagesEN, messagesVariants as messagesVariantsEN } from './locale/messages-en';
+export { default as messagesNB } from './locale/messages-nb';
+export { default as messagesNN } from './locale/messages-nn';
+export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
 

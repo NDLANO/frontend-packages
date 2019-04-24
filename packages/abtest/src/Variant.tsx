@@ -8,17 +8,23 @@
 
 import React from 'react';
 import { Context } from './Context';
+import { VariationsShape } from './Experiment';
 
 interface Props  {
-  id: number;
-  fallback?: boolean;
+  name: string;
+  original?: boolean;
+  children: React.ReactNode[];
 }
 
-export const Variant: React.FC<Props> = ({ id, fallback, children }) => {
+export const Variant: React.FC<Props> = ({ name, original, children }) => {
   const { Consumer } = Context;
   return (
     <Consumer>
-      {value => ((value === id || value === null && fallback) ? children : null)}
+      {(value: VariationsShape) => (
+        ((value.name && value.name.localeCompare(name, undefined, { sensitivity: 'base' }) === 0) ||
+        (!value.name && original))
+        ? children : null
+      )}
     </Consumer>
   )
 };

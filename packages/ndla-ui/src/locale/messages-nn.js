@@ -480,10 +480,4 @@ const messages = {
   },
 };
 
-export const messagesVariants = {
-  variant1: {
-    'welcomePage.film.linkLabel': 'Hello from AB-test',
-  },
-};
-
 export default messages;

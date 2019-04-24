@@ -17,10 +17,6 @@ function initializeGA(gaTrackingId) {
   window.ga('create', gaTrackingId, 'auto');
 }
 
-function setCookieId(cookieId) {
-  document.cookie = cookieId;
-}
-
 function resetDataLayer(googleTagManagerId) {
   if (window.dataLayer && window.google_tag_manager && googleTagManagerId) {
     window.google_tag_manager[googleTagManagerId].dataLayer.reset();
@@ -34,7 +30,6 @@ export const configureTracker = ({
   gaTrackingId,
   googleTagManagerId,
 }) => {
-  setCookieId('itsMoi!');
   initializeGA(gaTrackingId);
   // Push current page and start listning
   pageViewHistory.push({

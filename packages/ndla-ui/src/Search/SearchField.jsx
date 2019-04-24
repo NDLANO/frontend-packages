@@ -38,15 +38,29 @@ const SearchResult = ({
   allResultUrl,
   resourceToLinkProps,
   onNavigate,
+  hideSleeveHeader,
+  singleColumn,
+  infoText,
+  ignoreContentTypeBadge,
   t,
 }) => (
   <section {...classes('search-result')}>
-    <h1 {...classes('search-result-heading')}>
-      {t('searchPage.searchField.searchResultHeading')}
-    </h1>
-    <div {...classes('search-result-content')}>
+    {!hideSleeveHeader && (
+      <h1 {...classes('search-result-heading')}>
+        {t('searchPage.searchField.searchResultHeading')}
+      </h1>
+    )}
+    {infoText && (
+      <aside {...classes('search-result-infotext')}>{infoText}</aside>
+    )}
+    <div
+      {...classes(
+        'search-result-content',
+        singleColumn ? '' : 'multiple-columned',
+      )}>
       {result.map(contentTypeResult => (
         <ContentTypeResult
+          ignoreContentTypeBadge={ignoreContentTypeBadge}
           onNavigate={onNavigate}
           contentTypeResult={contentTypeResult}
           resourceToLinkProps={resourceToLinkProps}
@@ -81,6 +95,10 @@ SearchResult.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   allResultUrl: PropTypes.string.isRequired,
   onNavigate: PropTypes.func,
+  hideSleeveHeader: PropTypes.bool,
+  singleColumn: PropTypes.bool,
+  infoText: PropTypes.string,
+  ignoreContentTypeBadge: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 
@@ -90,7 +108,7 @@ class SearchField extends Component {
     this.state = {
       inputHasFocus: false,
     };
-    this.inputRef = null;
+    this.inputRef = React.createRef();
     this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
     this.onInputBlur = this.onInputBlur.bind(this);
     this.onInputFocus = this.onInputFocus.bind(this);
@@ -100,17 +118,23 @@ class SearchField extends Component {
     this.setState({
       inputHasFocus: false,
     });
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
   }
 
   onInputFocus() {
     this.setState({
       inputHasFocus: true,
     });
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
   }
 
   handleOnFilterRemove(value, filterName) {
     this.props.onFilterRemove(value, filterName);
-    this.inputRef.focus();
+    this.inputRef.current.focus();
   }
 
   render() {
@@ -127,26 +151,35 @@ class SearchField extends Component {
       small,
       autofocus,
       onNavigate,
+      modifiers: modifiersProp,
+      hideSleeveHeader,
+      singleColumn,
+      infoText,
+      ignoreContentTypeBadge,
       t,
     } = this.props;
-
-    const modifiers = [];
 
     const hasSearchResult = searchResult && searchResult.length > 0;
 
     let searchResultView = null;
+
+    const modifiers = [...modifiersProp];
 
     if (hasSearchResult) {
       modifiers.push('has-search-result');
 
       searchResultView = (
         <SearchResult
+          ignoreContentTypeBadge={ignoreContentTypeBadge}
           result={searchResult}
           searchString={value}
           allResultUrl={allResultUrl}
           resourceToLinkProps={resourceToLinkProps}
           autofocus={autofocus}
+          hideSleeveHeader={hideSleeveHeader}
           onNavigate={onNavigate}
+          singleColumn={singleColumn}
+          infoText={infoText}
           t={t}
         />
       );
@@ -163,9 +196,7 @@ class SearchField extends Component {
       <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
         <div {...classes('input-wrapper')}>
           <input
-            ref={ref => {
-              this.inputRef = ref;
-            }}
+            ref={this.inputRef}
             title={messages.searchFieldTitle}
             type="search"
             {...classes('input', { small })}
@@ -176,7 +207,7 @@ class SearchField extends Component {
             placeholder={placeholder}
             aria-label={placeholder}
             value={value}
-            onChange={onChange}
+            onChange={e => onChange(e.target.value)}
             onBlur={this.onInputBlur}
             onFocus={this.onInputFocus}
           />
@@ -187,6 +218,17 @@ class SearchField extends Component {
                 onFilterRemove={this.handleOnFilterRemove}
               />
             </div>
+          )}
+          {value !== '' && (
+            <button
+              {...classes('button', 'close')}
+              type="button"
+              onClick={() => {
+                onChange('');
+                this.inputRef.current.focus();
+              }}>
+              {t('welcomePage.resetSearch')}
+            </button>
           )}
           <button
             tabIndex="-1"
@@ -222,6 +264,17 @@ SearchField.propTypes = {
   autofocus: PropTypes.bool,
   onNavigate: PropTypes.func,
   t: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  modifiers: PropTypes.arrayOf(PropTypes.string),
+  hideSleeveHeader: PropTypes.bool,
+  singleColumn: PropTypes.bool,
+  infoText: PropTypes.node,
+  ignoreContentTypeBadge: PropTypes.bool,
+};
+
+SearchField.defaultProps = {
+  modifiers: [],
 };
 
 export default injectT(SearchField);

@@ -112,9 +112,9 @@ class MastheadWithTopicMenu extends Component {
         placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
         value={this.state.value}
         autofocus
-        onChange={event => {
+        onChange={value => {
           this.setState({
-            value: event.currentTarget.value,
+            value,
           });
         }}
         onSearch={e => {

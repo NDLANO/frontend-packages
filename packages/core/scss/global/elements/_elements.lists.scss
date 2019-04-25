@@ -19,14 +19,14 @@ ul {
 li {
   line-height: 1.7rem;
   margin-bottom: $spacing--small;
+  > p:only-child {
+    margin: 0;
+  }
 }
 li ul,
 li ol {
   margin-top: $spacing;
   margin-left: $spacing;
-  > p:only-child {
-    margin: 0;
-  }
 }
 ol {
   counter-reset: item;

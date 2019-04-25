@@ -479,6 +479,15 @@ const messages = {
       newGroupTitle: 'What shall we call the new movie group?',
     },
   },
+  abTests: {
+    masthead: {
+      menu: {
+        titleVariantA: 'Content',
+        titleVariantB: 'Overview',
+        titleVariantC: 'Subject overview',
+      },
+    },
+  },
 };
 
 export default messages;

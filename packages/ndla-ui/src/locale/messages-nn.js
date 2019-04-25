@@ -478,6 +478,15 @@ const messages = {
       newGroupTitle: 'Kva skal gruppen hete?',
     },
   },
+  abTests: {
+    masthead: {
+      menu: {
+        titleVariantA: 'Innhald',
+        titleVariantB: 'Oversikt',
+        titleVariantC: 'Fagoversikt',
+      },
+    },
+  },
 };
 
 export default messages;

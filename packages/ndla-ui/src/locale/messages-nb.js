@@ -497,9 +497,9 @@ const messages = {
   abTests: {
     masthead: {
       menu: {
-        titleVariantA: 'Innhold',
-        titleVariantB: 'Oversikt',
-        titleVariantC: 'Fagoversikt',
+        content: 'Innhold',
+        overview: 'Oversikt',
+        subjectOverview: 'Fagoversikt',
       },
     },
   },

@@ -482,9 +482,9 @@ const messages = {
   abTests: {
     masthead: {
       menu: {
-        titleVariantA: 'Content',
-        titleVariantB: 'Overview',
-        titleVariantC: 'Subject overview',
+        content: 'Content',
+        overview: 'Overview',
+        subjectOverview: 'Subject overview',
       },
     },
   },

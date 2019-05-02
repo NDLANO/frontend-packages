@@ -55,16 +55,17 @@ export const Masthead = ({
   fixed,
   infoContent,
   showLoaderWhenNeeded,
+  ndlaFilm,
 }) => (
   <Fragment>
     <div {...classes('placeholder', { infoContent })} />
-    <div {...classes('', { fixed, infoContent, showLoaderWhenNeeded })}>
+    <div
+      {...classes('', { fixed, infoContent, showLoaderWhenNeeded, ndlaFilm })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>
         </DisplayOnPageYOffset>
       )}
-
       <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
     </div>
   </Fragment>
@@ -75,6 +76,7 @@ Masthead.propTypes = {
   fixed: PropTypes.bool,
   showLoaderWhenNeeded: PropTypes.bool,
   infoContent: PropTypes.node,
+  ndlaFilm: PropTypes.bool,
 };
 
 Masthead.defaultProps = {

@@ -1,0 +1,22 @@
+/**
+* Copyright (c) 2016-present, NDLA.
+*
+* This source code is licensed under the GPLv3 license found in the
+* LICENSE file in the root directory of this source tree.
+*
+*/
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  input {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+  }
+}
+
+/* IE-10+ fix for footer */
+html.ie #root {
+  height: 100%;
+  overflow-x: visible; // fix for window.addEventListener('scroll')
+}

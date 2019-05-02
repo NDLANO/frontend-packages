@@ -1,5 +1,6 @@
 .c-frontpage-film {
   margin-top: $spacing--large;
+  margin-bottom: $spacing--large;
   &__film-text {
     &--narrow {
       @include mq(tabletWide) {
@@ -11,6 +12,10 @@
         display: none;
       }
     }
+  }
+  &__ndla-frontpage {
+    margin-top: $spacing--large;
+    margin-bottom: $spacing--large;
   }
   &__image {
     background: $brand-color--lighter;

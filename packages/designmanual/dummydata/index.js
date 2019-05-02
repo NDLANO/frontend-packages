@@ -3,6 +3,7 @@ import {
   subtopicList,
   topicList,
   topicListChinese,
+  topicListFilm,
 } from './mockTopics';
 import {
   learningPathResources,
@@ -34,12 +35,22 @@ import { mockDownloadArticleText } from './mockDownloadArticleText';
 import contentCards from './mockContentCards';
 import { mockListView } from './mockListView';
 
+import {
+  mockAllMovies,
+  mockHighlightedMovies,
+  movieTopics,
+  movieThemes,
+  mockMovieTopics,
+  mockMovieResourceTypes,
+} from './mockFilm';
+
 import { mockTypeahead } from './mockTypeahead';
 
 export {
   topicMenu,
   topicList,
   topicListChinese,
+  topicListFilm,
   subjectList,
   subjectConcepts,
   categories,
@@ -61,5 +72,11 @@ export {
   contentCards,
   mockDownloadArticleText,
   mockListView,
+  mockAllMovies,
+  mockHighlightedMovies,
+  movieTopics,
+  movieThemes,
+  mockMovieTopics,
+  mockMovieResourceTypes,
   mockTypeahead,
 };

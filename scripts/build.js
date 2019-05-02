@@ -20,7 +20,7 @@ const PACKAGES_DIR = path.resolve(__dirname, '..', './packages');
 
 babelOptions.babelrc = false;
 const SRC_DIR = 'src';
-const JS_FILES_PATTERN = '**/*.js*';
+const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const OK = chalk.reset.inverse.bold.green(' DONE ');
 
@@ -45,9 +45,19 @@ function resolveDestPath(file, dest) {
   const relativeToSrcPath = path.relative(packageSrcPath, file);
   const destPath = path.resolve(packageBuildPath, relativeToSrcPath);
 
-  if (destPath.indexOf('.jsx') > -1) {
+  if (destPath.endsWith('.jsx')) {
     // JSX file should be transformed to js files
     return destPath.substring(0, destPath.length - 1);
+  }
+
+  if (destPath.endsWith('.tsx')) {
+    // TSX file should be transformed to js files
+    return destPath.substring(0, destPath.length - 3) + 'js';
+  }
+
+  if (destPath.endsWith('.ts')) {
+    // ts file should be transformed to js files
+    return destPath.substring(0, destPath.length - 2) + 'js';
   }
   return destPath;
 }
@@ -62,19 +72,19 @@ function removeBuildFile(file, dest) {
   );
 }
 
-function buildFile(file, dest, { silent = false, plugins = [] } = {}) {
+function buildFile(file, dest, { silent = false, override = {} } = {}) {
   const destPath = resolveDestPath(file, dest);
   mkdirp.sync(path.dirname(destPath));
   try {
-    const transformed = babel.transformFileSync(file, {
+    const options = {
       ...babelOptions,
-      plugins: [...babelOptions.plugins, ...plugins],
-    }).code;
+      ...override,
+    };
+    const transformed = babel.transformFileSync(file, options).code;
     fs.writeFileSync(destPath, transformed);
     if (!silent) {
       process.stdout.write(
-        `${chalk.green('\u2022 ') +
-          path.relative(PACKAGES_DIR, file) +
+        `${path.relative(PACKAGES_DIR, file) +
           chalk.green(' \u21D2  ') +
           path.relative(PACKAGES_DIR, destPath)}\n`,
       );
@@ -98,7 +108,9 @@ function buildNodePackage(p) {
     buildFile(file, 'es', { silent: true });
     buildFile(file, 'lib', {
       silent: true,
-      plugins: ['transform-es2015-modules-commonjs'],
+      override: {
+        presets: ['@babel/preset-env', ...babelOptions.presets.slice(1)],
+      },
     });
   });
   process.stdout.write(`${OK}\n`);

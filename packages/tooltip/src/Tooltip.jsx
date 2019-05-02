@@ -9,14 +9,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isMobile, isIE } from 'react-device-detect';
-import styled, { css, cx } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
 
 const TooltipWrapper = styled.div`
   position: relative;
 `;
 
-const TooltipElement = css`
+const tooltipCss = css`
   display: block;
   color: #fff;
   position: absolute;
@@ -159,7 +160,7 @@ class Tooltip extends Component {
         <Fade animateIn={this.state.showTooltip} delay={this.props.delay}>
           <span
             role="tooltip"
-            className={TooltipElement}
+            css={tooltipCss}
             style={this.getPosition()}
             ref={this.tooltipRef}>
             {this.props.tooltip}
@@ -176,7 +177,8 @@ class Tooltip extends Component {
           onFocus={this.handleShowTooltip}
           onKeyPress={this.handleKeyPress}
           onBlur={this.handleHideTooltip}
-          className={cx(contentCSS, this.props.className)}>
+          css={contentCSS}
+          className={this.props.className}>
           {this.props.children}
         </div>
       </TooltipWrapper>

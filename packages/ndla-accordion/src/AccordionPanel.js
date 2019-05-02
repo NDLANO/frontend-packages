@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { colors, spacing } from '@ndla/core';
 
 const StyledAccordionPanel = styled.section`
@@ -17,8 +18,12 @@ const StyledAccordionPanel = styled.section`
   opacity: 1;
   margin-bottom: ${spacing.normal};
   background: #fff;
-  padding-left: calc(${spacing.large} + ${spacing.small});
-  padding-right: ${spacing.large};
+  padding-left: ${props =>
+    props.sidePadding
+      ? `${props.sidePadding}px`
+      : `calc(${spacing.large} + ${spacing.small})`};
+  padding-right: ${props =>
+    props.sidePadding ? `${props.sidePadding}px` : spacing.large};
   padding-bottom: ${spacing.large};
   max-height: auto;
   ${props =>
@@ -28,6 +33,7 @@ const StyledAccordionPanel = styled.section`
       padding: 0;
       border: 0;
       max-height: 0;
+      overflow: hidden;
       opacity: 0;
     `};
   ${props =>
@@ -51,4 +57,5 @@ AccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   hasError: PropTypes.bool,
   isOpen: PropTypes.bool,
+  sidePadding: PropTypes.number,
 };

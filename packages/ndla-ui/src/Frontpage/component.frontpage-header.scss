@@ -17,16 +17,11 @@
 }
 
 .c-frontpage-header {
-  height: 150px;
   background: linear-gradient(45deg, #153758 0%, $brand-color 49%, #217389 85%);
   background-size: 180% 300%;
 
   animation: aurora 10s infinite;
   position: relative;
-
-  @include mq(tablet) {
-    height: 310px;
-  }
 
   &__wrapper {
     position: relative;
@@ -66,36 +61,128 @@
 
   .c-logo {
     max-width: 120px;
+    margin-top: $spacing--medium;
 
     @include mq(tablet) {
+      max-width: 180px;
+      margin-top: 0;
+    }
+
+    @include mq(desktop) {
       max-width: none;
+    }
+  }
+
+  &__active-search-wrapper {
+    display: flex;
+    .c-search-field {
+      z-index: 9001;
+    }
+  }
+
+  &__active-search-background {
+    position: fixed;
+    z-index: 9000;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    background: rgba(1, 1, 1, 0.3);
+  }
+
+  &__close-button {
+    color: $brand-color--light;
+    display: flex;
+    padding: $spacing--small;
+    border: 0;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    background: none;
+    cursor: pointer;
+    z-index: 9999;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover, &:focus {
+      color: #fff;
+    }
+    @include mq($until: tablet) {
+      margin-right: -$spacing--small;
     }
   }
 
   &__content {
     display: flex;
-    padding: $spacing--medium $spacing $spacing--large;
+    padding: $spacing $spacing 0;
     justify-content: space-between;
+    min-height: 150px;
+    align-items: flex-start;
+
+    @include mq($until: tablet) {
+      .c-logo {
+        margin-top: 0;
+      }
+    }
 
     @include mq(tablet) {
-      padding: $spacing--medium $spacing--large $spacing--large;
+      padding: 0 $spacing--large $spacing--large;
       align-items: center;
+    }
+
+    @include mq(tablet) {
+      min-height: 240px;
+    }
+
+    > div {
+      width: 100%;
     }
 
     .c-search-field {
       flex: 1 0 auto;
       margin-left: $spacing--large * 2;
-      display: none;
+      &:not(.c-search-field--absolute-position-sleeve) {
+        @include mq($until: desktop) {
+          display: none;
+        }
+      }
+
+      &.c-search-field--absolute-position-sleeve {
+        .c-search-field__input-wrapper {
+          @include mq($until: desktop) {
+            padding: 0;
+          }
+        }
+        .c-search-field__search-result {
+          @include mq($until: tablet) {
+            margin-left: -$spacing;
+            left: 0;
+            width: calc(100% + 90px);
+          }
+        }
+      }
 
       .c-search-field__input-wrapper {
         padding-right: 0;
       }
 
       .c-search-field__button {
-        right: 0;
+        right: $spacing--small / 2;
       }
 
-      @include mq(tablet) {
+      .c-search-field__button--close {
+        right: $spacing--medium + $spacing--small;
+        @include font-size(14px, 18px);
+        text-transform: uppercase;
+        color: $text-light-color;
+        &:hover, &:focus {
+          color: $brand-color;
+        }
+      }
+
+      @include mq(desktop) {
         display: flex;
       }
     }

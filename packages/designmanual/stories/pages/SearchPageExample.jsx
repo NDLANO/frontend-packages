@@ -6,6 +6,7 @@ import {
   SearchPage,
   SearchResult,
   SearchResultList,
+  SearchFilterList,
   SearchFilter,
   SearchResultAuthor,
   SearchPopoverFilter,
@@ -169,6 +170,7 @@ class SearchPageExample extends Component {
       filter_contentTypeFilter: [],
       filter_languageFilter: [],
       filter_createdByFilter: [],
+      searchString: 'Ideskaping',
     };
   }
 
@@ -260,12 +262,12 @@ class SearchPageExample extends Component {
     const hasAuthor = authorTablet !== null;
     const searchString = this.props.competenceGoals
       ? 'Kompetansemål'
-      : 'Ideskaping';
+      : this.state.searchString;
 
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
-        onSearchFieldChange={() => {}}
+        onSearchFieldChange={searchString => this.setState({ searchString })}
         onSearchFieldFilterRemove={(value, filterName) => {
           if (this.state[filterName]) {
             this.setState(prevState => ({
@@ -295,7 +297,7 @@ class SearchPageExample extends Component {
         resourceToLinkProps={() => {}}
         filters={
           <Fragment>
-            <SearchFilter
+            <SearchFilterList
               label={t('searchPage.label.subjects')}
               noFilterSelectedLabel={t('searchPage.label.noFilter')}
               options={searchFilterOptions.subjects.filter(option =>
@@ -304,7 +306,17 @@ class SearchPageExample extends Component {
               onChange={values => {
                 this.setState({ filter_subjects: values });
               }}
-              values={this.state.filter_subjects}>
+              subjectValues={this.state.filter_subject_values}
+              values={this.state.filter_subjects}
+              onSubfilterChange={(key, values, subjectValue) => {
+                this.setState(prevState => {
+                  const newValues = prevState.filter_subject_values;
+                  newValues[key] = values;
+                  return {
+                    filter_subject_values: newValues,
+                  };
+                });
+              }}>
               <SearchPopoverFilter
                 messages={{
                   backButton: t('searchPage.searchFilterMessages.backButton'),
@@ -326,29 +338,8 @@ class SearchPageExample extends Component {
                   this.setState({ filter_subjects: values });
                 }}
               />
-            </SearchFilter>
-            {this.state.filter_subjects.map(subjectValue => {
-              const subjectOption = searchFilterOptions.subjects.find(
-                option => option.value === subjectValue,
-              );
-              return (
-                <SearchFilter
-                  key={subjectValue}
-                  label={`${subjectOption.title}:`}
-                  options={subjectOption.subjectFilters}
-                  values={this.state.filter_subject_values[subjectValue]}
-                  onChange={values => {
-                    this.setState(prevState => {
-                      const newValues = prevState.filter_subject_values;
-                      newValues[subjectValue] = values;
-                      return {
-                        filter_subject_values: newValues,
-                      };
-                    });
-                  }}
-                />
-              );
-            })}
+            </SearchFilterList>
+
             <SearchFilter
               label={t('searchPage.label.contentTypes')}
               narrowScreenOnly

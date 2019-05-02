@@ -27,6 +27,7 @@ import TypeaheadExample from './TypeaheadExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
+import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 
 storiesOf('Produksjonssystem', module)
   .add('Trekkspill', () => (
@@ -206,6 +207,14 @@ storiesOf('Produksjonssystem', module)
         <Spinner />
         <Spinner size="medium" />
         <Spinner size="normal" />
+      </Center>
+    </div>
+  ))
+  .add('Ndla film editor', () => (
+    <div>
+      <StoryIntro title="Redigering av NDLA Film forside" />
+      <Center>
+        <NdlaFilmEditorExample />
       </Center>
     </div>
   ));

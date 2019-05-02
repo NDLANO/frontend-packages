@@ -3,12 +3,20 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
+import {
+  LicenseDescription,
+  BY,
+  SA,
+  NC,
+  ND,
+  PD,
+  CC0,
+  COPYRIGHTED,
+} from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
   Footer,
-  LicenseByline,
   TopicIntroductionList,
   PageContainer,
   Content,
@@ -46,6 +54,7 @@ import cecilie from '../images/cecilie.png';
 import ComponentInfo from './ComponentInfo';
 
 import ListViewExample from './organisms/ListViewExample';
+import CarouselExample from './organisms/CarouselExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -73,7 +82,7 @@ storiesOf('Sammensatte moduler', module)
               role: 'Manusforfatter',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
         />
         <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
@@ -84,7 +93,7 @@ storiesOf('Sammensatte moduler', module)
               shortName: 'Cecilie',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
@@ -107,7 +116,7 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
@@ -160,7 +169,7 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
@@ -168,7 +177,7 @@ storiesOf('Sammensatte moduler', module)
           Linje uten opphavere detaljert informasjon
         </h2>
         <ArticleByline
-          updated="21.06.2018"
+          published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
@@ -396,13 +405,12 @@ storiesOf('Sammensatte moduler', module)
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
         <div className="o-wrapper--inner">
-          <LicenseByline
+          <LicenseDescription
             locale="nb"
             messages={{
               modelPremission:
                 'Personen(e) på bildet har godkjent at det kan brukes videre.',
             }}
-            withDescription
             licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
           />
         </div>
@@ -527,6 +535,19 @@ storiesOf('Sammensatte moduler', module)
         </Footer.Text>
       </Footer>
     </Center>
+  ))
+  .add('Bilde karusell', () => (
+    <div>
+      <StoryIntro title="Bilde karusell">
+        <p>
+          Bilde karusell består av 2 komponenter. En Wrapper komponent for
+          automatisk utregning av størrelser, og selve bildekarusellen.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <CarouselExample />
+      </StoryBody>
+    </div>
   ))
   .add('Tilleggsstoff', () => (
     <div>

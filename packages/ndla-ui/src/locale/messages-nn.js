@@ -151,6 +151,11 @@ const messages = {
   },
   welcomePage: {
     search: 'Søk',
+    resetSearch: 'Tøm søk',
+    closeSearch: 'Lukk søk',
+    topicsConjunction: 'og',
+    topicsNotAvailableFromSearch:
+      'er ikkje flyttet over til nye NDLA.no og vil ikkje gi treff i dette søket.',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
@@ -198,6 +203,7 @@ const messages = {
   meta: {
     description:
       'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for videregåande opplæring',
+    keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff',
   },
   masthead: {
     menu: {
@@ -313,6 +319,7 @@ const messages = {
       images: 'Bilde',
       audio: 'Lyd',
       video: 'Video',
+      h5p: 'H5P',
       files: 'Filer',
       other: 'Anna innhald',
     },
@@ -357,6 +364,12 @@ const messages = {
       itemImage: {
         ariaLabel: 'Åpne i nytt vindauge',
       },
+    },
+    h5p: {
+      heading: 'Slik bruker du H5P-innhold frå artikkelen',
+      description:
+        'Du finn retningslinjene for bruk av innholdet i H5P-elementet.',
+      rules: 'Regler for bruk av H5P:',
     },
     files: {
       heading: 'Slik bruker du filer frå artikkelen',
@@ -432,11 +445,89 @@ const messages = {
     zh: 'Kinesisk',
     unknown: 'Ukjent',
   },
+  changeLanguage: {
+    nb: 'Endre språk til bokmål',
+    nn: 'Endre språk til nynorsk',
+    en: 'Change language to English',
+  },
+  currentLanguageText: {
+    nb: 'Sidene vises på bokmål',
+    nn: 'Sidane vises på nynorsk',
+    en:
+      'Not all pages are available in English. These will be shown in Norwegian',
+  },
   breadcrumb: {
     toFrontpage: 'Til framsida',
   },
   notions: {
     closeNotion: 'Lukk',
+  },
+  carousel: {
+    back: 'Bla tilbake',
+    forward: 'Bla framover',
+  },
+  ndlaFilm: {
+    slideBackwardsLabel: 'Scroll bakover',
+    slideForwardsLabel: 'Scroll fremover',
+    about: {
+      heading: 'Om NDLA Film',
+      more: 'Les meir om NDLA film',
+      text:
+        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+    },
+    search: {
+      placeholder: 'Søk på filmnavn',
+      categoryButton: 'Velg filmkategori',
+      subjectButton: 'Gå til emne',
+    },
+    editor: {
+      slideshowHeader: 'Slideshow:',
+      slideshowTitle: 'Filmer i slideshow',
+      slideshowSubTitle: 'på forsida',
+      movieGroupHeader: 'Film grupperingar:',
+      addMovieToSlideshow: 'Legg til film i slideshow',
+      addMovieToGroup: 'Legg til film i "{name}"',
+      editMovieGroupName: 'Endre navnene til filmgruppa',
+      deleteMovieGroup: 'Slett "{name}"',
+      moveMovieGroupUp: 'Flytt opp',
+      moveMovieGroupDown: 'Flytt ned',
+      changeOrder: 'Endre rekkjefølgje',
+      removeMovieFromGroup: 'Ta vekk film fra gruppe',
+      removeMovieFromSlideshow: 'Ta vekk film fra slideshow',
+      createThemeGroup: 'Opprett gruppe',
+      saveNameChanges: 'Lagre endringar',
+      cancel: 'Avbryt',
+      groupNamePlaceholder: 'Skriv navn på {lang}',
+      editGroupTitle: 'Endre navn(ene) på filmgruppa:',
+      newGroupTitle: 'Kva skal gruppen hete?',
+    },
+  },
+  filmfrontpage: {
+    resourcetype: {
+      documentary: 'Dokumentar',
+      featureFilm: 'Spillefilm',
+      series: 'Tv-serie',
+      shortFilm: 'Kortfilm',
+    },
+    moreAboutNdlaFilm: {
+      header: 'NDLA Film',
+      firstParagraph:
+        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS og Norsk filminstitutt.',
+      secondParagraph:
+        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
+      thirdParagraph:
+        'Filmane er copyrightmerka. Dei kan fritt avspelast på ndla.no, men ikkje lastes ned eller distribuerast vidare i andre publikasjoner. Alle rettighetshavere honoreres for dei avspelinger som gjeres.',
+      secondHeading: 'Bruk film i undervisninga',
+      fourthParagraph:
+        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokon av dei mest effektive visuelle verkemidla som finnes; bevegelige bilder og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
+      fifthParagraph:
+        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmer etisk orienteringsevne og estetisk sans.',
+      tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønsker på',
+      tipSectionPt2: 'Facebook-sida',
+      ariaLabel: 'Besøk Facebooksida til NDLA-film',
+      tipSectionPt3: 'vår',
+      ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
+    },
   },
 };
 

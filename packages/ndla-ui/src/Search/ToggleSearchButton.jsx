@@ -8,17 +8,21 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { spacing, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import Button from '@ndla/button';
 
-const style = hideOnNarrowScreen => css`
-  background: ${colors.brand.greyLighter};
+const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
+  background: ${ndlaFilm
+    ? colors.ndlaFilm.filmColorBright
+    : colors.brand.greyLighter};
   border-radius: ${misc.borderRadius};
   border: 0;
-  color: ${colors.brand.primary};
-  padding: ${spacing.xsmall} ${spacing.small};
+  display: flex;
+  color: ${ndlaFilm ? '#fff' : colors.brand.primary};
+  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small}
+    ${spacing.normal};
   ${hideOnNarrowScreen &&
     css`
       display: none;
@@ -27,21 +31,15 @@ const style = hideOnNarrowScreen => css`
   align-items: center;
 
   .c-icon {
-    height: 18px;
-    width: 18px;
-
-    ${mq.range({ from: breakpoints.desktop })} {
-      height: 24px;
-      width: 24px;
-    }
+    height: 24px;
+    width: 24px;
   }
 
-  ${fonts.sizes('16px', '22px')};
+  ${fonts.sizes('18px', '32px')};
 
   ${mq.range({ from: breakpoints.desktop })} {
-    display: flex;
+    display: ${hideOnWideScreen ? 'none' : 'flex'};
     margin-right: ${spacing.medium};
-    ${fonts.sizes('18px', '32px')};
     padding: ${spacing.small} ${spacing.normal};
   }
   &:hover,
@@ -51,18 +49,30 @@ const style = hideOnNarrowScreen => css`
   }
 `;
 
-const ToggleSearchButton = ({ children, hideOnNarrowScreen, ...rest }) => {
-  return (
-    <Button type="button" css={style(hideOnNarrowScreen)} {...rest}>
-      <span css={{ marginRight: spacing.normal }}>{children}</span>
-      <Search />
-    </Button>
-  );
-};
+const ToggleSearchButton = ({
+  children,
+  ndlaFilm,
+  hideOnNarrowScreen,
+  hideOnWideScreen,
+  ...rest
+}) => (
+  <Button
+    type="button"
+    css={style(hideOnNarrowScreen, hideOnWideScreen, ndlaFilm)}
+    {...rest}>
+    <span
+      css={{ marginRight: spacing.normal, fontWeight: fonts.weight.normal }}>
+      {children}
+    </span>
+    <Search />
+  </Button>
+);
 
 ToggleSearchButton.propTypes = {
   children: PropTypes.node.isRequired,
   hideOnNarrowScreen: PropTypes.bool,
+  hideOnWideScreen: PropTypes.bool,
+  ndlaFilm: PropTypes.bool,
 };
 
 export default ToggleSearchButton;

@@ -6,19 +6,11 @@
  *
  */
 
+import { css, Global } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
-import { css } from 'emotion';
-import { injectGlobal } from 'emotion';
 import { mq, breakpoints } from '@ndla/core';
-
-injectGlobal`
-  /* Hide default launcher so that we can provide our own. */
-  .zEWidget-launcher {
-    display:none;
-  }
-`;
 
 const styling = css`
   border-radius: 2px;
@@ -66,14 +58,24 @@ class ZendeskButton extends React.Component {
     const { children, locale, isMobile, ...rest } = this.props;
 
     return (
-      <Button
-        type="button"
-        css={styling}
-        onClick={this.handleClick}
-        appearance="outline"
-        {...rest}>
-        {children}
-      </Button>
+      <>
+        <Global
+          styles={css`
+            /* Hide default launcher so that we can provide our own. */
+            .zEWidget-launcher {
+              display: none;
+            }
+          `}
+        />
+        <Button
+          type="button"
+          css={styling}
+          onClick={this.handleClick}
+          appearance="outline"
+          {...rest}>
+          {children}
+        </Button>
+      </>
     );
   }
 }

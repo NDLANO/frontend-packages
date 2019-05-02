@@ -188,6 +188,8 @@
   &__ingress {
     margin: 0 0 $spacing 0;
     max-width: 600px;
+    width: 100%;
+    
     @include font-size(14px, 22px);
     flex-grow: 1;
     font-family: $font-serif;

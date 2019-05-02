@@ -6,17 +6,16 @@ import * as contentTypeIcons from '@ndla/icons/contentType';
 import * as commonIcons from '@ndla/icons/common';
 import * as editorIcons from '@ndla/icons/editor';
 import * as actionIcons from '@ndla/icons/action';
-import { BY, NC, ND } from '@ndla/licenses';
+import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 import {
   Aside,
   FactBox,
   Logo,
   LayoutItem,
-  LicenseByline,
   AudioPlayer,
   OneColumn,
 } from '@ndla/ui';
-
+import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
 import { FigureImage } from './article/FigureImage';
@@ -368,7 +367,8 @@ storiesOf('Enkle komponenter', module)
             </p>
             <div className="c-source-list">
               <LicenseByline
-                className="c-source-list__item"
+                marginRight
+                color={colors.brand.grey}
                 locale="nb"
                 licenseRights={[BY, NC, ND]}
               />
@@ -703,8 +703,9 @@ storiesOf('Enkle komponenter', module)
           </p>
           <div className="c-source-list">
             <LicenseByline
-              className="c-source-list__item"
               locale="nb"
+              marginRight
+              color={colors.brand.grey}
               licenseRights={[BY, NC, ND]}
             />
             <span className="c-source-list__item">Gary Waters</span>

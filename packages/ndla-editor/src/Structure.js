@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { spacing, colors } from '@ndla/core';
 import Spinner from './Spinner';
 import ItemName from './ItemName';
@@ -55,8 +56,8 @@ const ItemsList = styled.li`
   ${props =>
     props.greyedOut &&
     css`
-      > div {
-        opacity: 0.5;
+      > div > button {
+        color: rgb(32, 88, 143, 0.5);
       }
     `};
 `;
@@ -101,7 +102,7 @@ const Structure = ({
             return (
               <ItemsList
                 key={pathToString}
-                className={listClass}
+                css={listClass}
                 level={level}
                 highlight={
                   highlightMainActive ? isMainActive : isOpen && level === 0
@@ -180,7 +181,7 @@ Structure.propTypes = {
   ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
-  listClass: PropTypes.string,
+  listClass: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fileStructureFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
 };

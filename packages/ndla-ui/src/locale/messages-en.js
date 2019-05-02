@@ -152,6 +152,11 @@ const messages = {
   },
   welcomePage: {
     search: 'Search',
+    resetSearch: 'Empty search',
+    closeSearch: 'Close search',
+    topicsConjunction: 'and',
+    topicsNotAvailableFromSearch:
+      'hasnt been moved to the new NDLA.no webpage and will not give any matches in this search.',
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',
@@ -199,6 +204,7 @@ const messages = {
   },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',
+    keywords: 'open educational resources,teaching,learning',
   },
   masthead: {
     menu: {
@@ -308,6 +314,7 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
+      h5p: 'H5P',
       files: 'Files',
       other: 'Other content',
     },
@@ -352,6 +359,12 @@ const messages = {
       itemImage: {
         ariaLabel: 'Open video in new window',
       },
+    },
+    h5p: {
+      heading: 'How to use H5P content from the article',
+      description:
+        'You will find guidelines for use of H5P content in the asset',
+      rules: 'Rules for use of H5P:',
     },
     files: {
       heading: 'How to use files from the article',
@@ -433,11 +446,90 @@ const messages = {
     zh: 'Chinese',
     unknown: 'Unknown',
   },
+  changeLanguage: {
+    nb: 'Endre språk til bokmål',
+    nn: 'Endre språk til nynorsk',
+    en: 'Change language to English',
+  },
+  currentLanguageText: {
+    nb: 'Sidene vises på bokmål',
+    nn: 'Sidane vises på nynorsk',
+    en:
+      'Not all pages are available in English. These will be shown in Norwegian',
+  },
   breadcrumb: {
     toFrontpage: 'To the frontpage',
   },
   notions: {
     closeNotion: 'Close',
+  },
+  carousel: {
+    back: 'Slide backwards',
+    forward: 'Slide forwards',
+  },
+  ndlaFilm: {
+    slideBackwardsLabel: 'Scroll backwards',
+    slideForwardsLabel: 'Scroll forwards',
+    about: {
+      heading: 'About NDLA Film',
+      more: 'Read more about NDLA film',
+      text:
+        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+    },
+    search: {
+      placeholder: 'Search on moviename',
+      categoryButton: 'Choose category',
+      subjectButton: 'Go to subject',
+    },
+    editor: {
+      slideshowHeader: 'Slideshow:',
+      slideshowTitle: 'Movies on slideshow',
+      slideshowSubTitle: 'on frontpage',
+      movieGroupHeader: 'Movies themes:',
+      addMovieToSlideshow: 'Add movie to slideshow',
+      addMovieToGroup: 'Add a movie to "{name}"',
+      editMovieGroupName: 'Change the names on this movie group',
+      deleteMovieGroup: 'Delete "{name}"',
+      moveMovieGroupUp: 'Move up',
+      moveMovieGroupDown: 'Move down',
+      changeOrder: 'Change order',
+      removeMovieFromGroup: 'Remove movie from group',
+      removeMovieFromSlideshow: 'Remove movie from slideshow',
+      createThemeGroup: 'Create new movie group',
+      saveNameChanges: 'Save changes',
+      cancel: 'Cancel',
+      groupNamePlaceholder: 'Write name in {lang}',
+      editGroupTitle: 'Change the name(s) in this movie group:',
+      newGroupTitle: 'What shall we call the new movie group?',
+    },
+  },
+  filmfrontpage: {
+    resourcetype: {
+      documentary: 'Documentary',
+      featureFilm: 'Feature film',
+      series: 'Series',
+      shortFilm: 'Short film',
+    },
+    moreAboutNdlaFilm: {
+      header: 'NDLA Film',
+      firstParagraph:
+        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS and the Norwegian Film Institute.",
+      secondParagraph:
+        'You can watch the films if you are connected to the Internet via your computer, tablet or smartphone. We have done the work with rights clearance and payment. All you have to do is press play.',
+      thirdParagraph:
+        'The films are copyrighted. They can be played freely on ndla.no, but not downloaded or distributed in other publications. All licensees are remunerated for the replays made.',
+      secondHeading: 'Use film in teaching',
+      fourthParagraph:
+        'A film tells stories in ways that engage and touch us. In film, some of the most effective visuals are used; moving images and sound. A good film can show sides of the present and give visions of the future or comment on the past. Therefore, films can often give us a better understanding of events, cultural meetings and history than a text.',
+      fifthParagraph:
+        'By watching films, the students are better equipped to read the film language, so that the film gets a value beyond the purely entertaining. The general part of the curriculum emphasizes that the students should meet art and cultural forms that stimulate, inspire their own creativity, and promote ethical orientation ability and aesthetic sense.',
+      tipSectionPt1:
+        'Please give tips, ask questions or wish for new movies at our',
+      tipSectionPt2: 'Facebook page.',
+      ariaLabel: 'Visit NDLA-films Facebook page',
+      tipSectionPt3: '',
+      ending: 'We wish all movie lovers a good and educational experience!',
+    },
   },
 };
 

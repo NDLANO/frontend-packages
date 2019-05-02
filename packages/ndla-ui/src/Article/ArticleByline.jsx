@@ -36,7 +36,14 @@ class ArticleByline extends Component {
   }
 
   render() {
-    const { authors, license, licenseBox, updated, additional, t } = this.props;
+    const {
+      authors,
+      license,
+      licenseBox,
+      published,
+      additional,
+      t,
+    } = this.props;
     const { showAuthor } = this.state;
     const authorsLinkable =
       authors.length > 1 ||
@@ -125,7 +132,7 @@ class ArticleByline extends Component {
             <Time />
           </span>
           <span {...classes('date')}>
-            {t('article.lastUpdated')} {updated}
+            {t('article.lastUpdated')} {published}
           </span>
         </span>
         {additional && (
@@ -176,7 +183,7 @@ ArticleByline.propTypes = {
       urlAuthor: PropTypes.string,
     }),
   ),
-  updated: PropTypes.string.isRequired,
+  published: PropTypes.string.isRequired,
   license: PropTypes.string.isRequired,
   licenseBox: PropTypes.node,
   additional: PropTypes.bool,

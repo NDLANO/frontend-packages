@@ -8,14 +8,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
 import debounce from 'lodash/debounce';
 import { Spinner } from '@ndla/editor';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { Check } from '@ndla/icons/editor';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
-import FormInput from './FormInput';
+import Input from './Input';
 
 const StyledDropDownContainer = styled.div`
   font-family: ${fonts.sans};
@@ -266,7 +267,7 @@ class Typeahead extends React.Component {
         }}>
         <div>
           <div ref={this.containerRef}>
-            <FormInput
+            <Input
               focusOnMount={focusOnMount}
               iconRight={
                 loading ? <Spinner size="normal" margin="0" /> : <SearchIcon />

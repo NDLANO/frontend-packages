@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { FormHeader, Typeahead, FormPills, FormPill } from '@ndla/forms';
+import { FieldHeader, Typeahead, FormPills, FormPill } from '@ndla/forms';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
 
 import { mockTypeahead } from '../../dummydata';
@@ -168,7 +168,7 @@ class TypeaheadExample extends Component {
             labels={this.getPillItems()}
           />
         )}
-        <FormHeader title="Countries" subTitle="in Europe" />
+        <FieldHeader title="Countries" subTitle="in Europe" />
         <Typeahead
           data={useLayout === '2' ? dataWithIcons : data}
           value={addedData}

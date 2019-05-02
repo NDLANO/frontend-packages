@@ -452,7 +452,7 @@ const messages = {
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
-    nn: 'Sidane vises på nynorsk',
+    nn: 'Sidene vises på nynorsk',
     en:
       'Not all pages are available in English. These will be shown in Norwegian',
   },
@@ -468,7 +468,7 @@ const messages = {
   },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
-    slideForwardsLabel: 'Scroll fremover',
+    slideForwardsLabel: 'Scroll framover',
     about: {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',

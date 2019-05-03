@@ -531,6 +531,10 @@ const messages = {
       ending: 'We wish all movie lovers a good and educational experience!',
     },
   },
+  dropdown: {
+    numberHits: `Search returned {hits} hits`,
+    searching: 'Searching...',
+  },
 };
 
 export default messages;

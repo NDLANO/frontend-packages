@@ -10,6 +10,8 @@ import CheckboxItem from './CheckboxItem';
 import Typeahead from './Typeahead';
 import UploadDropZone from './UploadDropZone';
 import { FieldHeaderIconStyle, StyledButtonWrapper } from './Styles';
+import DropdownInput from './DropdownInput';
+import DropdownMenu from './DropdownMenu';
 
 export {
   FieldHeader,
@@ -26,4 +28,6 @@ export {
   FieldHeaderIconStyle,
   StyledButtonWrapper,
   Select,
+  DropdownInput,
+  DropdownMenu,
 };

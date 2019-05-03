@@ -33,6 +33,7 @@ const inputWrapperCSS = css`
   padding-right: ${spacing.small};
   input,
   textarea {
+    width: inherit;
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
     ${fonts.sizes(18, 1.3)};

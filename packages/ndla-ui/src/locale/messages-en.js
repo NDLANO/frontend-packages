@@ -470,6 +470,9 @@ const messages = {
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',
+    movieMatchInCategory: 'Matches',
+    loadingMovies: 'Loading movies..',
+    subjectsInMovies: 'Subjects in film',
     about: {
       heading: 'About NDLA Film',
       more: 'Read more about NDLA film',
@@ -478,6 +481,7 @@ const messages = {
     },
     search: {
       placeholder: 'Search on moviename',
+      categoryFromNdla: 'Selected resources from NDLA',
       categoryButton: 'Choose category',
       subjectButton: 'Go to subject',
     },

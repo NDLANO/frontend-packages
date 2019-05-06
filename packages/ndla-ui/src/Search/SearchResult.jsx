@@ -9,6 +9,7 @@ import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { FilterTabs } from '@ndla/tabs';
 import SafeLink from '../common/SafeLink';
+import Spinner from '../../lib/Spinner';
 
 const resultClasses = BEMHelper('c-search-result');
 
@@ -238,8 +239,17 @@ SearchResultItem.propTypes = {
   subjectsLabel: PropTypes.string.isRequired,
 };
 
-export const SearchResultList = ({ results, component: Component }) => {
-  if (!results) return <article className="c-search-result-list__empty" />;
+export const SearchResultList = ({
+  results,
+  component: Component,
+  loading,
+}) => {
+  if (loading) {
+    return <Spinner />;
+  }
+  if (!results) {
+    return <article className="c-search-result-list__empty" />;
+  }
   return (
     <Trans>
       {({ t }) =>
@@ -278,4 +288,5 @@ SearchResultList.defaultProps = {
 
 SearchResultList.propTypes = {
   results: PropTypes.arrayOf(searchResultItemShape),
+  loading: PropTypes.bool,
 };

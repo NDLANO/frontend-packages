@@ -469,6 +469,9 @@ const messages = {
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll framover',
+    movieMatchInCategory: 'Treff',
+    loadingMovies: 'Henter filmer..',
+    subjectsInMovies: 'Emner i film',
     about: {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
@@ -477,6 +480,7 @@ const messages = {
     },
     search: {
       placeholder: 'Søk på filmnavn',
+      categoryFromNdla: 'Utvalg fra NDLA',
       categoryButton: 'Velg filmkategori',
       subjectButton: 'Gå til emne',
     },

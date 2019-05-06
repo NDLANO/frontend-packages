@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 import { injectT } from '@ndla/i18n';
+import { css } from '@emotion/core';
 import Button from '@ndla/button';
 
 const classes = new BEMHelper({
@@ -18,12 +19,24 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const MastheadLanguageSelector = ({ options, currentLanguage, t }) => {
+const cssWhiteButton = css`
+  color: #fff;
+`;
+
+const MastheadLanguageSelector = ({
+  ndlaFilm,
+  options,
+  currentLanguage,
+  t,
+}) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div {...classes('change-language-wrapper')}>
-      <Button link onClick={() => setIsOpen(true)}>
+      <Button
+        css={ndlaFilm && cssWhiteButton}
+        link
+        onClick={() => setIsOpen(true)}>
         Change language
       </Button>
       {isOpen && (
@@ -83,6 +96,7 @@ MastheadLanguageSelector.propTypes = {
     }),
   ).isRequired,
   currentLanguage: PropTypes.string.isRequired,
+  ndlaFilm: PropTypes.bool,
 };
 
 export default injectT(MastheadLanguageSelector);

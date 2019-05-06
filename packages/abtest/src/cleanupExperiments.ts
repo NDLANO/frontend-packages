@@ -19,12 +19,14 @@ export function cleanupExperiments(experiments: ExperimentShapeClean[], cookieEx
       id,
       variations,
     } = experiment;
+
     if (cookieExperiments) {
       const experimentInCookie = cookieExperiments.find((cookieExperiments: ExperimentShape) => cookieExperiments.id === id);
       if (experimentInCookie) {
         return experimentInCookie;
       }
     }
+
     const pickVariant = Math.random();
     let variationsWeightCounter = 0;
     const variationsTotal = variations.length - 1;
@@ -44,5 +46,6 @@ export function cleanupExperiments(experiments: ExperimentShapeClean[], cookieEx
         variant: winner,
       }
     }
-  })
+    return null;
+  }).filter(experiment => experiment);
 };

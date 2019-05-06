@@ -454,6 +454,7 @@ class Modal extends React.Component {
     this.containerRef = React.createRef();
     this.scrollPosition = null;
     this.el = null;
+    this.wasOpen = false;
     this.uuid = uuid();
   }
 
@@ -489,8 +490,9 @@ class Modal extends React.Component {
         },
         this.removedModal,
       );
-    } else if (this.state.animateIn && this.state.isOpen) {
+    } else if (this.state.animateIn && this.state.isOpen && !this.wasOpen) {
       this.el = document.body.querySelector(`[data-modal='${this.uuid}']`);
+      this.wasOpen = true;
       if (this.props.onOpen) {
         this.props.onOpen();
       }
@@ -531,6 +533,7 @@ class Modal extends React.Component {
 
   removedModal() {
     this.scrollPosition = 0;
+    this.wasOpen = false;
     if (uuidList.indexOf(this.uuid) !== -1) {
       noScroll(false, this.uuid);
       uuidList.splice(uuidList.indexOf(this.uuid), 1);

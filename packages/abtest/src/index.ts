@@ -7,6 +7,6 @@
  */
 
 export { Context } from './Context';
-export { Experiment } from './Experiment';
+export { Experiment, fetchVariantIndex } from './Experiment';
 export { Variant } from './Variant';
 export { cleanupExperiments } from './cleanupExperiments';

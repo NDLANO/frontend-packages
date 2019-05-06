@@ -40,15 +40,20 @@ const style = css`
   }
 `;
 
-const TopicMenuButton = ({ ndlaFilm, children, ...rest }) => (
+const TopicMenuButton = ({ ndlaFilm, children, Icon, ...rest }) => (
   <Button invertedOutline={ndlaFilm} outline={!ndlaFilm} css={style} {...rest}>
-    <Menu /> {children}
+    {Icon} {children}
   </Button>
 );
 
 TopicMenuButton.propTypes = {
   children: PropTypes.node.isRequired,
   ndlaFilm: PropTypes.bool,
+  Icon: PropTypes.node,
+};
+
+TopicMenuButton.defaultProps = {
+  Icon: <Menu />,
 };
 
 export default TopicMenuButton;

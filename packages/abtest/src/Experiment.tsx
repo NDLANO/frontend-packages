@@ -11,8 +11,9 @@ import React from 'react';
 import { Context } from './Context';
 
 export interface VariationsShape {
-  weight?: number;
   index?: number;
+  name?: string;
+  weight?: number;
 };
 
 export interface ExperimentShape {
@@ -24,12 +25,12 @@ interface Props {
   experiments: ExperimentShape[];
   id: string;
   googleAccountId: string;
-  logPageView?: boolean;
   trackerName: string;
+  onRenderVariant?: void;
   children: React.ReactNode[];
 };
 
-export const Experiment: React.FC<Props> = ({ logPageView, trackerName, experiments, id: experimentId, googleAccountId, children }) => {
+export const Experiment: React.FC<Props> = ({ trackerName, experiments, id: experimentId, googleAccountId, onRenderVariant, children }) => {
   const { Provider } = Context;
   const useVariant = experiments.find(experiment => experiment.id.localeCompare(experimentId, undefined, { sensitivity: 'base' }) === 0);
   return (
@@ -38,10 +39,20 @@ export const Experiment: React.FC<Props> = ({ logPageView, trackerName, experime
         variant: useVariant ? useVariant.variant : {},
         googleAccountId,
         experimentId,
-        logPageView,
         trackerName,
+        onRenderVariant,
       }}>
       {children}
     </Provider>
   )
 };
+
+interface fetchVariantIndexShape {
+  id: string;
+  experiments: ExperimentShape[];
+};
+
+export const fetchVariantIndex = ({ experiments, id: experimentId }: fetchVariantIndexShape) => {
+  const useVariant = experiments.find(experiment => experiment.id.localeCompare(experimentId, undefined, { sensitivity: 'base' }) === 0);
+  return useVariant ? useVariant.variant : {};
+}

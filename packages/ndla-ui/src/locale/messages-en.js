@@ -534,6 +534,7 @@ const messages = {
   dropdown: {
     numberHits: `Search returned {hits} hits`,
     searching: 'Searching...',
+    create: 'Create new keyword',
   },
 };
 

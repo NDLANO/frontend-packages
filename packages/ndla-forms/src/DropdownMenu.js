@@ -37,6 +37,19 @@ const StyledDropDownContainer = styled.div`
   }
 `;
 
+const CreateButton = styled.button`
+  border: 0;
+  border-bottom: 1px solid ${colors.brand.greyLightest};
+  border-top: 1px solid ${colors.brand.greyLightest};
+  padding: ${spacing.small};
+  width: 100%;
+  transition: background 200ms ease;
+  &:focus,
+  &:hover {
+    background: ${colors.brand.lighter};
+  }
+`;
+
 const StyledResult = styled.div`
   ${fonts.sizes(14, 1.1)};
   color: ${colors.text.light};
@@ -46,6 +59,7 @@ const DropdownMenu = ({
   items,
   isOpen,
   selectedItem,
+  selectedItems,
   loading,
   renderImage,
   renderDescription,
@@ -54,35 +68,59 @@ const DropdownMenu = ({
   getItemProps,
   getMenuProps,
   t,
-  ...props
+  maxRender,
+  multiSelect,
+  onCreate,
 }) => {
+  const checkIsSelected = item => {
+    if (multiSelect) {
+      return selectedItems.includes(item.title);
+    } else if (typeof selectedItem === 'string') {
+      return selectedItem === item.title;
+    }
+    return selectedItem && selectedItem.id === item.id;
+  };
+
   if (!isOpen || (dontShowOnEmptyFilter && !inputValue)) return null;
   return (
     <StyledDropDownContainer data-testid="dropdown-items">
-      <div>
-        <div {...getMenuProps({ isOpen })}>
-          {items.map(item => {
-            const isSelected = selectedItem && selectedItem.id === item.id;
-            return (
-              <DropdownMenuItem
-                {...getItemProps({ item, isSelected })}
-                item={item}
-                renderImage={renderImage}
-                renderDescription={renderDescription}
-              />
-            );
-          })}
-        </div>
+      <div {...getMenuProps({ isOpen })}>
+        {items.slice(0, maxRender).map(item => {
+          const isSelected = checkIsSelected(item);
+          return (
+            <DropdownMenuItem
+              {...getItemProps({ item, isSelected })}
+              item={item}
+              renderImage={renderImage}
+              renderDescription={renderDescription}
+            />
+          );
+        })}
         <StyledResult>
           {loading
             ? t('dropdown.searching')
             : t('dropdown.numberHits', { hits: items.length })}
         </StyledResult>
+        {onCreate && (
+          <CreateButton type="button" onClick={onCreate}>
+            {t('dropdown.create')}
+          </CreateButton>
+        )}
       </div>
     </StyledDropDownContainer>
   );
 };
 
-DropdownMenu.propTypes = {};
+DropdownMenu.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+    }),
+  ),
+};
+
+DropdownMenu.defaultProps = {
+  maxRender: 10,
+};
 
 export default injectT(DropdownMenu);

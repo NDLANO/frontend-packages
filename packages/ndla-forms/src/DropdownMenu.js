@@ -19,24 +19,15 @@ const StyledDropDownContainer = styled.div`
   border-radius: ${misc.borderRadius};
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
-  ${props => props.positionAbsolute && 'position: absolute;'}
+  ${props => props.positionAbsolute && 'position: absolute; z-index: 1;'}
+  width: 100%;
+`;
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    > div {
-      &:first-child {
-        flex-grow: 1;
-        overflow-y: scroll;
-        ${animations.fadeInLeft(animations.durations.fast)};
-        border-top: 1px solid ${colors.brand.greyLightest};
-      }
-      &:last-child {
-        padding: ${spacing.small};
-        border-top: 1px solid ${colors.brand.greyLightest};
-      }
-    }
-  }
+const StyledResultList = styled.div`
+  overflow-y: scroll;
+  ${animations.fadeInLeft(animations.durations.fast)};
+  border-top: 1px solid ${colors.brand.greyLightest};
+  max-height: ${props => props.menuHeight}px;
 `;
 
 const CreateButton = styled.button`
@@ -52,9 +43,11 @@ const CreateButton = styled.button`
   }
 `;
 
-const StyledResult = styled.div`
+const StyledResultFooter = styled.div`
   ${fonts.sizes(14, 1.1)};
   color: ${colors.text.light};
+  padding: ${spacing.small};
+  border-top: 1px solid ${colors.brand.greyLightest};
 `;
 
 const DropdownMenu = ({
@@ -70,6 +63,7 @@ const DropdownMenu = ({
   multiSelect,
   onCreate,
   positionAbsolute,
+  menuHeight,
 }) => {
   const checkIsSelected = item => {
     if (multiSelect) {
@@ -84,8 +78,9 @@ const DropdownMenu = ({
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}
+      {...getMenuProps({ isOpen })}
       data-testid="dropdown-items">
-      <div {...getMenuProps({ isOpen })}>
+      <StyledResultList menuHeight={menuHeight}>
         {items.slice(0, maxRender).map(item => {
           const isSelected = checkIsSelected(item);
           return (
@@ -95,17 +90,17 @@ const DropdownMenu = ({
             />
           );
         })}
-        <StyledResult>
-          {loading
-            ? t('dropdown.searching')
-            : t('dropdown.numberHits', { hits: items.length })}
-        </StyledResult>
-        {onCreate && (
-          <CreateButton type="button" onClick={onCreate}>
-            {t('dropdown.create')}
-          </CreateButton>
-        )}
-      </div>
+      </StyledResultList>
+      <StyledResultFooter>
+        {loading
+          ? t('dropdown.searching')
+          : t('dropdown.numberHits', { hits: items.length })}
+      </StyledResultFooter>
+      {onCreate && (
+        <CreateButton type="button" onClick={onCreate}>
+          {t('dropdown.create')}
+        </CreateButton>
+      )}
     </StyledDropDownContainer>
   );
 };
@@ -130,6 +125,7 @@ DropdownMenu.propTypes = {
 
 DropdownMenu.defaultProps = {
   maxRender: 10,
+  menuHeight: 500,
 };
 
 export default injectT(DropdownMenu);

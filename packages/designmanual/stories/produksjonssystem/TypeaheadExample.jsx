@@ -7,9 +7,12 @@
  */
 
 import React, { Component } from 'react';
-import { FieldHeader, Typeahead, FormPills, FormPill } from '@ndla/forms';
+import Downshift from 'downshift';
+import { css } from '@emotion/core';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
-
+import { DropdownMenu, Input, FieldHeader, FormPills } from '@ndla/forms';
+import { Spinner } from '@ndla/editor';
+import { Search } from '@ndla/icons/common';
 import { mockTypeahead } from '../../dummydata';
 
 const fetchData = lowerCaseValue => {
@@ -32,9 +35,11 @@ class TypeaheadExample extends Component {
       useLayout: '1',
       useTags: '1',
       keepOpen: '1',
+      isOpen: false,
     };
     this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
   }
 
   async onSearch(value) {
@@ -62,34 +67,16 @@ class TypeaheadExample extends Component {
     });
   }
 
-  getPillItems() {
-    const { addedData } = this.state;
-    return addedData.map(id => {
-      const item = mockTypeahead.find(dataItem => dataItem.id === id);
-      return {
-        id: item.id,
-        label: item.title,
-      };
-    });
-  }
+  handleStateChange(changes) {
+    const { isOpen, type } = changes;
 
-  renderTags() {
-    return this.state.addedData.map(id => {
-      const item = mockTypeahead.find(dataItem => dataItem.id === id);
-      return (
-        <FormPill
-          id={item.id}
-          label={item.title}
-          onClick={id => {
-            this.setState(prevState => ({
-              addedData: prevState.addedData.filter(
-                addedItemId => addedItemId !== id,
-              ),
-            }));
-          }}
-        />
-      );
-    });
+    if (type === Downshift.stateChangeTypes.mouseUp) {
+      this.setState({ isOpen });
+    }
+
+    if (type === Downshift.stateChangeTypes.keyDownEnter) {
+      this.setState({ inputValue: '' });
+    }
   }
 
   render() {
@@ -100,6 +87,7 @@ class TypeaheadExample extends Component {
       useLayout,
       useTags,
       keepOpen,
+      isOpen,
     } = this.state;
     // Populate with icon for example
     let dataWithIcons;
@@ -109,6 +97,12 @@ class TypeaheadExample extends Component {
         image: <SubjectMaterialBadge background />,
       }));
     }
+
+    const inputProps = {
+      value: addedData,
+      onChange: this.onSearch,
+      placeholder: 'Type a name',
+    };
 
     return (
       <>
@@ -169,24 +163,34 @@ class TypeaheadExample extends Component {
           />
         )}
         <FieldHeader title="Countries" subTitle="in Europe" />
-        <Typeahead
-          data={useLayout === '2' ? dataWithIcons : data}
-          value={addedData}
-          onSearch={this.onSearch}
+        <Downshift
           onChange={this.onChange}
-          placeholder="Type a name"
-          focusOnMount
-          closeOnSelect={keepOpen === '1'}
-          loading={loading}
-          tags={useTags === '1' && this.renderTags()}
-          renderImage={useLayout === '1' || useLayout === '2'}
-          renderDescription={useLayout !== '4'}
-          messages={{
-            matches: hits => `Søket gav ${hits} treff`,
-            searching: 'Søker..',
-            addedItem: 'Lagt til',
+          onStateChange={this.handleStateChange}
+          isOpen={isOpen}>
+          {({ getInputProps, getRootProps, ...downshiftProps }) => {
+            return (
+              <div
+                {...getRootProps({
+                  css: css`
+                    position: relative;
+                  `,
+                })}>
+                <Input
+                  {...getInputProps({ inputProps })}
+                  data-testid={'dropdownInput'}
+                  iconRight={
+                    loading ? <Spinner size="normal" margin="0" /> : <Search />
+                  }
+                />
+                <DropdownMenu
+                  {...downshiftProps}
+                  items={useLayout === '2' ? dataWithIcons : data}
+                  positionAbsolute
+                />
+              </div>
+            );
           }}
-        />
+        </Downshift>
       </>
     );
   }

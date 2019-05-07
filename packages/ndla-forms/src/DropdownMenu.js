@@ -19,6 +19,8 @@ const StyledDropDownContainer = styled.div`
   border-radius: ${misc.borderRadius};
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
+  ${props => props.positionAbsolute && 'position: absolute;'}
+
   > div {
     display: flex;
     flex-direction: column;
@@ -61,16 +63,13 @@ const DropdownMenu = ({
   selectedItem,
   selectedItems,
   loading,
-  renderImage,
-  renderDescription,
-  dontShowOnEmptyFilter,
-  inputValue,
   getItemProps,
   getMenuProps,
   t,
   maxRender,
   multiSelect,
   onCreate,
+  positionAbsolute,
 }) => {
   const checkIsSelected = item => {
     if (multiSelect) {
@@ -81,9 +80,11 @@ const DropdownMenu = ({
     return selectedItem && selectedItem.id === item.id;
   };
 
-  if (!isOpen || (dontShowOnEmptyFilter && !inputValue)) return null;
+  if (!isOpen) return null;
   return (
-    <StyledDropDownContainer data-testid="dropdown-items">
+    <StyledDropDownContainer
+      positionAbsolute={positionAbsolute}
+      data-testid="dropdown-items">
       <div {...getMenuProps({ isOpen })}>
         {items.slice(0, maxRender).map(item => {
           const isSelected = checkIsSelected(item);
@@ -91,8 +92,6 @@ const DropdownMenu = ({
             <DropdownMenuItem
               {...getItemProps({ item, isSelected })}
               item={item}
-              renderImage={renderImage}
-              renderDescription={renderDescription}
             />
           );
         })}
@@ -116,7 +115,17 @@ DropdownMenu.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
     }),
-  ),
+  ).isRequired,
+  absolute: PropTypes.bool,
+  onCreate: PropTypes.func,
+  isOpen: PropTypes.bool,
+  multiSelect: PropTypes.bool,
+  selectedItem: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  selectedItems: PropTypes.array,
+  loading: PropTypes.bool,
+  getItemProps: PropTypes.func.isRequired,
+  getMenuProps: PropTypes.func.isRequired,
+  maxRender: PropTypes.number,
 };
 
 DropdownMenu.defaultProps = {

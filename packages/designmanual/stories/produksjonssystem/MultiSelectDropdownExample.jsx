@@ -30,7 +30,7 @@ const fetchData = lowerCaseValue => {
   });
 };
 
-class TypeaheadExample extends Component {
+class MultiSelectDropdownExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -221,4 +221,4 @@ class TypeaheadExample extends Component {
   }
 }
 
-export default TypeaheadExample;
+export default MultiSelectDropdownExample;

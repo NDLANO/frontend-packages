@@ -23,7 +23,7 @@ import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
-import TypeaheadExample from './TypeaheadExample';
+import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
@@ -142,13 +142,13 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Typeahead', () => (
+  .add('Dropdown with multiselect', () => (
     <div>
-      <StoryIntro title="Typeahead input">
+      <StoryIntro title="Dropdown with multiselect">
         <p>Tekst kommer</p>
       </StoryIntro>
       <StoryBody>
-        <TypeaheadExample />
+        <MultiSelectDropdownExample />
       </StoryBody>
     </div>
   ))

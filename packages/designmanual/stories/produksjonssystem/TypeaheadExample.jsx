@@ -8,9 +8,13 @@
 
 import React, { Component } from 'react';
 import Downshift from 'downshift';
-import { css } from '@emotion/core';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
-import { DropdownMenu, Input, FieldHeader, FormPills } from '@ndla/forms';
+import {
+  DropdownMenu,
+  DropdownInput,
+  FieldHeader,
+  FormPills,
+} from '@ndla/forms';
 import { Spinner } from '@ndla/editor';
 import { Search } from '@ndla/icons/common';
 import { mockTypeahead } from '../../dummydata';
@@ -40,17 +44,25 @@ class TypeaheadExample extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
-  async onSearch(value) {
+  async onSearch(e) {
+    const {
+      target: { value },
+    } = e;
     if (value === '') {
       this.setState({
         data: [],
         loading: false,
+        value,
+        isOpen: false,
       });
     } else {
       this.setState({
         loading: true,
+        isOpen: true,
+        value,
       });
       const lowerCaseValue = value.toLowerCase();
       const data = await fetchData(lowerCaseValue);
@@ -61,10 +73,11 @@ class TypeaheadExample extends Component {
     }
   }
 
-  onChange(addedData) {
-    this.setState({
-      addedData,
-    });
+  onChange(selected) {
+    this.setState(prevState => ({
+      addedData: [...prevState.addedData, selected.title],
+      value: '',
+    }));
   }
 
   handleStateChange(changes) {
@@ -75,8 +88,15 @@ class TypeaheadExample extends Component {
     }
 
     if (type === Downshift.stateChangeTypes.keyDownEnter) {
-      this.setState({ inputValue: '' });
+      this.setState({ value: '' });
     }
+  }
+
+  removeItem(item) {
+    console.log(item);
+    this.setState(prevState => ({
+      addedData: prevState.addedData.filter(it => it !== item),
+    }));
   }
 
   render() {
@@ -88,18 +108,21 @@ class TypeaheadExample extends Component {
       useTags,
       keepOpen,
       isOpen,
+      value,
     } = this.state;
-    // Populate with icon for example
-    let dataWithIcons;
-    if (useLayout === '2') {
-      dataWithIcons = data.map(item => ({
-        ...item,
-        image: <SubjectMaterialBadge background />,
-      }));
-    }
+
+    const dataFormatted = data.map(item => ({
+      title: item.title,
+      description: useLayout !== '4' && item.description,
+      image:
+        useLayout === '1'
+          ? item.image
+          : useLayout === '2' && <SubjectMaterialBadge background />,
+      alt: item.alt,
+    }));
 
     const inputProps = {
-      value: addedData,
+      value,
       onChange: this.onSearch,
       placeholder: 'Type a name',
     };
@@ -159,33 +182,35 @@ class TypeaheadExample extends Component {
                 ),
               }));
             }}
-            labels={this.getPillItems()}
+            labels={addedData}
           />
         )}
         <FieldHeader title="Countries" subTitle="in Europe" />
         <Downshift
           onChange={this.onChange}
+          itemToString={item => item.title || ''}
           onStateChange={this.handleStateChange}
           isOpen={isOpen}>
-          {({ getInputProps, getRootProps, ...downshiftProps }) => {
+          {({ getInputProps, getRootProps, getMenuProps, getItemProps }) => {
             return (
-              <div
-                {...getRootProps({
-                  css: css`
-                    position: relative;
-                  `,
-                })}>
-                <Input
-                  {...getInputProps({ inputProps })}
+              <div>
+                <DropdownInput
+                  multiSelect={useTags === '1'}
+                  {...getInputProps(inputProps)}
                   data-testid={'dropdownInput'}
                   iconRight={
                     loading ? <Spinner size="normal" margin="0" /> : <Search />
                   }
+                  values={useTags === '1' && addedData}
+                  removeItem={this.removeItem}
                 />
                 <DropdownMenu
-                  {...downshiftProps}
-                  items={useLayout === '2' ? dataWithIcons : data}
-                  positionAbsolute
+                  getMenuProps={getMenuProps}
+                  getItemProps={getItemProps}
+                  isOpen={isOpen}
+                  multiSelect
+                  selectedItems={addedData}
+                  items={dataFormatted}
                 />
               </div>
             );

@@ -10,7 +10,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing, misc } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { Check } from '@ndla/icons/editor';
 import { DropdownMenuImage } from './DropdownMenuImage';
 

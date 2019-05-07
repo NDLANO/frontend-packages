@@ -549,6 +549,7 @@ const messages = {
     numberHits: `Søket gav {hits} treff`,
     searching: 'Søker...',
     create: 'Opprett nytt nøkkelord',
+    isSelectedItem: 'Lagt til',
   },
 };
 

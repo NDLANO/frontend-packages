@@ -14,45 +14,59 @@ export interface VariationsShape {
   index?: number;
   name?: string;
   weight?: number;
-};
+}
 
 export interface ExperimentShape {
   id: string;
   variant: VariationsShape;
-};
+}
 
 interface Props {
   experiments: ExperimentShape[];
   id: string;
-  googleAccountId: string;
-  trackerName: string;
-  onRenderVariant?: void;
+  onVariantMount?: void;
   children: React.ReactNode[];
-};
+}
 
-export const Experiment: React.FC<Props> = ({ trackerName, experiments, id: experimentId, googleAccountId, onRenderVariant, children }) => {
+export const Experiment: React.FC<Props> = ({
+  experiments,
+  id: experimentId,
+  onVariantMount,
+  children,
+}) => {
   const { Provider } = Context;
-  const useVariant = experiments.find(experiment => experiment.id.localeCompare(experimentId, undefined, { sensitivity: 'base' }) === 0);
+  const useVariant = experiments.find(
+    experiment =>
+      experiment.id.localeCompare(experimentId, undefined, {
+        sensitivity: 'base',
+      }) === 0,
+  );
   return (
     <Provider
       value={{
         variant: useVariant ? useVariant.variant : {},
-        googleAccountId,
         experimentId,
-        trackerName,
-        onRenderVariant,
+        onVariantMount,
       }}>
       {children}
     </Provider>
-  )
+  );
 };
 
 interface fetchVariantIndexShape {
   id: string;
   experiments: ExperimentShape[];
-};
-
-export const fetchVariantIndex = ({ experiments, id: experimentId }: fetchVariantIndexShape) => {
-  const useVariant = experiments.find(experiment => experiment.id.localeCompare(experimentId, undefined, { sensitivity: 'base' }) === 0);
-  return useVariant ? useVariant.variant : {};
 }
+
+export const fetchVariantIndex = ({
+  experiments,
+  id: experimentId,
+}: fetchVariantIndexShape) => {
+  const useVariant = experiments.find(
+    experiment =>
+      experiment.id.localeCompare(experimentId, undefined, {
+        sensitivity: 'base',
+      }) === 0,
+  );
+  return useVariant ? useVariant.variant : {};
+};

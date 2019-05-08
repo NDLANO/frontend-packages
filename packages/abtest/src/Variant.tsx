@@ -13,54 +13,44 @@ import { VariationsShape } from './Experiment';
 interface Props {
   variantIndex: number;
   original?: boolean;
-  onRenderVariant?: void;
+  onVariantMount?: void;
   children: React.ReactNode[];
 }
 
 interface ValueShape {
   experimentId?: string;
-  googleAccountId?: string;
   variant?: VariationsShape;
-  trackerName?: string;
 }
 
 export class Variant extends React.Component<Props> {
   componentDidMount() {
-    const {
-      googleAccountId,
-      trackerName,
-      experimentId,
-      variant,
-      onRenderVariant,
-    } = this.context;
+    const { experimentId, variant, onVariantMount } = this.context;
     if (this.isActive(this.context)) {
-      if (onRenderVariant) {
-        onRenderVariant({
-          googleAccountId,
-          trackerName,
+      if (onVariantMount) {
+        onVariantMount({
           expId: experimentId,
           expVar: variant.index,
-        })
+        });
       }
     }
   }
   isActive(value: ValueShape) {
     const { variantIndex, original } = this.props;
     return (
-      (!value.variant && original)) ||
-      ((value.variant && value.variant.index === variantIndex)
+      (!value.variant && original) ||
+      (value.variant && value.variant.index === variantIndex)
     );
   }
   render() {
     const { Consumer } = Context;
     return (
       <Consumer>
-        {(value: ValueShape) => (
+        {(value: ValueShape) =>
           this.isActive(value) ? this.props.children : null
-        )}
+        }
       </Consumer>
-    )
+    );
   }
-};
+}
 
 Variant.contextType = Context;

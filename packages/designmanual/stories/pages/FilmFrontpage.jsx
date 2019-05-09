@@ -89,7 +89,57 @@ class FilmFrontpage extends Component {
           css={css`
             margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
           `}>
-          <CarouselAutosize ndlaFilm>
+          <CarouselAutosize
+            breakpoints={[
+              {
+                until: 'mobile',
+                columnsPrSlide: 1,
+                distanceBetweenItems: spacing.spacingUnit / 2,
+                margin: spacing.spacingUnit,
+                arrowOffset: 13,
+              },
+              {
+                until: 'mobileWide',
+                columnsPrSlide: 2,
+                distanceBetweenItems: spacing.spacingUnit / 2,
+                margin: spacing.spacingUnit,
+                arrowOffset: 13,
+              },
+              {
+                until: 'tabletWide',
+                columnsPrSlide: 3,
+                distanceBetweenItems: spacing.spacingUnit / 2,
+                margin: spacing.spacingUnit,
+                arrowOffset: 13,
+              },
+              {
+                until: 'desktop',
+                columnsPrSlide: 4,
+                distanceBetweenItems: spacing.spacingUnit,
+                margin: spacing.spacingUnit * 2,
+                arrowOffset: 0,
+              },
+              {
+                until: 'wide',
+                columnsPrSlide: 4,
+                distanceBetweenItems: spacing.spacingUnit,
+                margin: spacing.spacingUnit * 2,
+                arrowOffset: 0,
+              },
+              {
+                until: 'ultraWide',
+                columnsPrSlide: 4,
+                distanceBetweenItems: spacing.spacingUnit,
+                margin: spacing.spacingUnit * 3.5,
+                arrowOffset: 0,
+              },
+              {
+                columnsPrSlide: 6,
+                distanceBetweenItems: spacing.spacingUnit,
+                margin: spacing.spacingUnit * 3.5,
+                arrowOffset: 0,
+              },
+            ]}>
             {autoSizedProps =>
               resourceTypeSelected ? (
                 <MovieGrid
@@ -145,7 +195,14 @@ FilmFrontpage.propTypes = {
     }),
   ),
   onSelectedMovieByType: PropTypes.func.isRequired,
-  aboutNDLAVideo: PropTypes.node.isRequired,
+  aboutNDLAVideo: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    visualElement: PropTypes.shape({
+      url: PropTypes.string,
+      alt: PropTypes.string,
+    }),
+  }),
   language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
   t: PropTypes.func.isRequired,
 };

@@ -35,7 +35,7 @@ const StyledAside = styled.aside`
     flex-direction: column;
     > div {
       width: auto;
-      &:first-child {
+      &:first-of-type {
         padding-bottom: 0;
       }
     }

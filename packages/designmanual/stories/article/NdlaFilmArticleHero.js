@@ -4,7 +4,6 @@ import { OneColumn, NdlaFilmHero } from '@ndla/ui';
 import Breadcrumb from '../molecules/breadcrumbs';
 
 const NdlaFilmArticleHero = ({ withBackgroundImage, article }) => {
-  console.log(article);
   const backgroundImage = article && article.metaImage && article.metaImage.url;
 
   return (

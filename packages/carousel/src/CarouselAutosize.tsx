@@ -12,7 +12,6 @@ import { breakpoints as breakpointFromCore } from '@ndla/core';
 import { Breakpoint } from '@ndla/core/types';
 import { StyledWrapperAutosizer } from './Styles';
 import { CalculatedProps as CalculatedCarouselProps } from './Carousel';
-import { ndlaFilmBreakpoints, standardBreakpoints } from './Breakpoints';
 
 export interface CaruselBreakpoint {
   until?: Breakpoint;
@@ -27,6 +26,7 @@ interface Props {
   ndlaFilm: boolean;
   centered?: boolean;
   itemsLength: number;
+  breakpoints: CaruselBreakpoint[],
   children: (
     calculatedProps: CalculatedCarouselProps | null,
   ) => React.ReactNode;
@@ -43,10 +43,6 @@ export class CarouselAutosize extends Component<Props, State> {
   autosizeRef = React.createRef<HTMLDivElement>();
   state: State = {};
 
-  getBreakpoints = () => {
-    return this.props.ndlaFilm ? ndlaFilmBreakpoints : standardBreakpoints;
-  };
-
   componentDidMount() {
     window.addEventListener('resize', this.updateSizes);
     this.updateSizes();
@@ -59,7 +55,7 @@ export class CarouselAutosize extends Component<Props, State> {
   updateSizes = () => {
     const node = this.autosizeRef.current!;
     const wrapperWidthInEm = parseFloat(em(node.offsetWidth));
-    const breakpoints: CaruselBreakpoint[] = this.getBreakpoints();
+    const breakpoints: CaruselBreakpoint[] = this.props.breakpoints;
 
     const useBreakpoint = breakpoints
       .filter(breakpointItem => {
@@ -96,7 +92,7 @@ export class CarouselAutosize extends Component<Props, State> {
 
     const wrapperWidth =
       this.autosizeRef.current.offsetWidth -
-      (columnsPrSlide) * distanceBetweenItems -
+      (columnsPrSlide - 1) * distanceBetweenItems -
       (margin || 0) * 2;
 
     const columnWidthDynamic = wrapperWidth / columnsPrSlide;

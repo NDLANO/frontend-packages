@@ -66,7 +66,7 @@ class NdlaFilmExample extends Component {
           description:
             'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
           visualElement: {
-            url: 'images/filmposter-aboutNDLA.png',
+            url: Poster,
             alt: 'NDLA film',
           },
         }}

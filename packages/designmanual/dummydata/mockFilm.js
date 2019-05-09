@@ -58,10 +58,8 @@ export const mockMovieResourceTypes = [
 const returnMovie = ({ title, image, metaDescription, movieTypes }) => ({
   title,
   id: uuid(),
-  url: '#',
-  metaDescription: {
-    metaDescription,
-  },
+  path: '#',
+  metaDescription,
   metaImage: {
     url: image,
     alt: 'Image alt-text',
@@ -73,7 +71,8 @@ export const tvSeries = [
   returnMovie({
     title: 'Tørk aldri tårer uten hansker',
     image: TorkAldriTorer,
-    metaDescription: 'Lorem ipsum..',
+    metaDescription:
+      'Tørk aldri tårer uten hansker er en svensk TV-serie i tre deler basert på romantrilogien med samme tittel skrevet av Jonas Gardell. Handlingen gir et innblikk i livet til en gruppe homofile menn i Stockholm på begynnelsen av 80-tallet, hvor den nye sykdommen aids er i ferd med å bre seg ut i miljøet.',
     movieTypes: {
       [TVSERIES_CONTENTTYPE_ID]: true,
     },
@@ -81,7 +80,8 @@ export const tvSeries = [
   returnMovie({
     title: 'Krigens unge hjerter',
     image: KrigensUngeHjerter,
-    metaDescription: 'Lorem ipsum..',
+    metaDescription:
+      'Krigens unge hjerter er en tysk fjernsynsserie som over tre 90-minutters episoder viser fem unge berlineres opplevelser under andre verdenskrig.',
     movieTypes: {
       [TVSERIES_CONTENTTYPE_ID]: true,
     },
@@ -89,7 +89,8 @@ export const tvSeries = [
   returnMovie({
     title: 'Kampen om tungtvannet',
     image: KampenOmTungtvannet,
-    metaDescription: 'Lorem ipsum..',
+    metaDescription:
+      'Dramaserie omhandler tungtvannsaksjonen mot Norsk Hydros fabrikk på Vemork ved Rjukan under andre verdenskrig.',
     movieTypes: {
       [TVSERIES_CONTENTTYPE_ID]: true,
     },
@@ -97,7 +98,8 @@ export const tvSeries = [
   returnMovie({
     title: 'Halvbroren',
     image: Halvbroren,
-    metaDescription: 'Lorem ipsum..',
+    metaDescription:
+      'LHalvbroren er en norsk dramaserie fra 2013, basert på Lars Saabye Christensens roman ved samme navn',
     movieTypes: {
       [TVSERIES_CONTENTTYPE_ID]: true,
     },
@@ -304,6 +306,9 @@ export const movieThemes = [
       documentaries[2],
       movies[4],
       movies[5],
+      movies[0],
+      tvSeries[2],
+      movies[7],
     ],
   },
   {

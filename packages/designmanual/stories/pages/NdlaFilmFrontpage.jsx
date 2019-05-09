@@ -61,7 +61,15 @@ class NdlaFilmExample extends Component {
         topics={mockMovieTopics}
         resourceTypes={mockMovieResourceTypes}
         onSelectedMovieByType={this.onSelectedMovieByType}
-        aboutNDLAVideo={<img src={Poster} alt="example of video" />}
+        aboutNDLAVideo={{
+          title: 'Om NDLA film',
+          description:
+            'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+          visualElement: {
+            url: 'images/filmposter-aboutNDLA.png',
+            alt: 'NDLA film',
+          },
+        }}
         fetchingMoviesByType={fetchingMoviesByType}
         moreAboutNdlaFilm={
           <>

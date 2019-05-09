@@ -60,6 +60,7 @@ class FilmFrontpage extends Component {
       language,
       t,
     } = this.props;
+
     const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
 
     const resourceTypeName =
@@ -88,50 +89,7 @@ class FilmFrontpage extends Component {
           css={css`
             margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
           `}>
-          <CarouselAutosize
-            breakpoints={[
-              {
-                until: 'mobile',
-                columnsPrSlide: 1,
-                distanceBetweenItems: spacing.spacingUnit / 2,
-                margin: spacing.spacingUnit,
-              },
-              {
-                until: 'mobileWide',
-                columnsPrSlide: 2,
-                distanceBetweenItems: spacing.spacingUnit / 2,
-                margin: spacing.spacingUnit,
-              },
-              {
-                until: 'tabletWide',
-                columnsPrSlide: 3,
-                distanceBetweenItems: spacing.spacingUnit / 2,
-                margin: spacing.spacingUnit,
-              },
-              {
-                until: 'desktop',
-                columnsPrSlide: 4,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 2,
-              },
-              {
-                until: 'wide',
-                columnsPrSlide: 4,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 2,
-              },
-              {
-                until: 'ultraWide',
-                columnsPrSlide: 4,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 3.5,
-              },
-              {
-                columnsPrSlide: 6,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 3.5,
-              },
-            ]}>
+          <CarouselAutosize ndlaFilm>
             {autoSizedProps =>
               resourceTypeSelected ? (
                 <MovieGrid
@@ -175,12 +133,7 @@ FilmFrontpage.propTypes = {
   highlighted: PropTypes.arrayOf(PropTypes.object),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string,
-          language: PropTypes.string,
-        }),
-      ),
+      name: PropTypes.objectOf(PropTypes.string),
       movies: PropTypes.arrayOf(PropTypes.object),
     }),
   ),

@@ -96,7 +96,7 @@ export class CarouselAutosize extends Component<Props, State> {
 
     const wrapperWidth =
       this.autosizeRef.current.offsetWidth -
-      (columnsPrSlide - 1) * distanceBetweenItems -
+      (columnsPrSlide) * distanceBetweenItems -
       (margin || 0) * 2;
 
     const columnWidthDynamic = wrapperWidth / columnsPrSlide;

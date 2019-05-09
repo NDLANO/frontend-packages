@@ -184,7 +184,6 @@ class FilmSlideshow extends Component {
   initTimer() {
     if (this.props.autoSlide) {
       this.timer = setTimeout(() => {
-        console.log('called');
         this.gotoSlide(this.state.slideIndex + 1);
       }, this.props.slideInterval);
     }

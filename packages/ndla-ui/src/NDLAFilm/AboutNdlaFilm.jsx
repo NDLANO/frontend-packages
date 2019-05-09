@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import { colors, spacing, fonts } from '@ndla/core';
+import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button from '@ndla/button';
 import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
@@ -24,15 +24,25 @@ const StyledAside = styled.aside`
     }
   }
   button {
+    text-align: left;
     color: #fff;
     &:hover,
     &:focus {
       color: ${colors.brand.light};
     }
   }
+  ${mq.range({ until: breakpoints.tablet })} {
+    flex-direction: column;
+    > div {
+      width: auto;
+      &:first-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
 `;
 
-const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
+const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm, t }) => {
   return (
     <div className="o-wrapper">
       <StyledAside>
@@ -66,9 +76,7 @@ AboutNdlaFilm.propTypes = {
   aboutNDLAVideo: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    langugae: PropTypes.string,
     visualElement: PropTypes.shape({
-      type: PropTypes.string,
       url: PropTypes.string,
       alt: PropTypes.string,
     }),

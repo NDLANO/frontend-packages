@@ -434,7 +434,7 @@ storiesOf('Ndla film', module)
       <Content>
         <MastheadWithTopicMenu ndlaFilm />
         <ArticleLoader
-          articleId="3396"
+          articleId="3683"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
           withBackgroundImage

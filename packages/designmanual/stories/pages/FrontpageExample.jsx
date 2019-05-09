@@ -276,24 +276,24 @@ class FrontpageExample extends Component {
                 breakpoints={[
                   {
                     until: 'mobile',
-                    columnsPrSlide: 1,
+                    columnsPrSlide: 1.25,
                     distanceBetweenItems: 26,
                     arrowOffset: 13,
                   },
                   {
                     until: 'mobileWide',
-                    columnsPrSlide: 2,
+                    columnsPrSlide: 2.25,
                     distanceBetweenItems: 26,
                     arrowOffset: 13,
                   },
                   {
                     until: 'tabletWide',
-                    columnsPrSlide: 3,
+                    columnsPrSlide: 3.25,
                     distanceBetweenItems: 26,
                     arrowOffset: 26,
                   },
                   {
-                    columnsPrSlide: 4,
+                    columnsPrSlide: 4.25,
                     distanceBetweenItems: 26,
                     arrowOffset: 26,
                   },

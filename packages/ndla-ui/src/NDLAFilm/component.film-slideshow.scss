@@ -159,12 +159,13 @@
     background: none;
     background-color: rgba(3, 23, 43, 0.7);
     border-radius: $border-radius;
-    padding: $spacing--medium $spacing;
+    padding: $spacing--medium $spacing--large * 2 $spacing--medium $spacing;
     margin: 0 -20px;
     width: 100vw;
     @include mq(mobileWide) {
       margin: 0;
       width: 100%;
+      padding: $spacing--medium $spacing--large $spacing--medium $spacing;
     }
     h1 {
       @include font-size(22px, 30px);

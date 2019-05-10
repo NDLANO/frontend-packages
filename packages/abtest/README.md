@@ -15,7 +15,7 @@ $ npm i --save ndla-abtest
 ## Usage
 
 ```js
-import { Context as StaticContext, Experiment, Variant } from '@ndla/abtest';
+import { ExperimentsContext, Experiment, Variant } from '@ndla/abtest';
 
 // clean experiments returned from Experiments service
 const cleanExperiments = [
@@ -39,13 +39,13 @@ const cleanExperiments = [
 
 const experimentId = 'gKKvagBlQ5SyhxWP4TqK0g';
 
-<StaticContext.Provider
+<ExperimentsContext.Provider
   value={{
     experiments: cleanExperiments,
   }}>
   <App>
     <h1>Testing button title in app</h1>
-    <StaticContext.Consumer>
+    <ExperimentsContext.Consumer>
       {({ experiments }) => (
         <Experiment
           id={experimentId}
@@ -60,7 +60,7 @@ const experimentId = 'gKKvagBlQ5SyhxWP4TqK0g';
           <Variant variantIndex={2}>Test 3</Variant>
         </Experiment>
       )}
-    </StaticContext.Consumer>
+    </ExperimentsContext.Consumer>
   </App>
-</StaticContext.Provider>;
+</ExperimentsContext.Provider>;
 ```

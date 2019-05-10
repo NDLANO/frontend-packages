@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { Context } from './Context';
+import { ExperimentsContext } from './Context';
 
 export interface VariationsShape {
   index?: number;
@@ -34,7 +34,7 @@ export const Experiment: React.FC<Props> = ({
   onVariantMount,
   children,
 }) => {
-  const { Provider } = Context;
+  const { Provider } = ExperimentsContext;
   const useVariant = experiments.find(
     experiment =>
       experiment.id.localeCompare(experimentId, undefined, {
@@ -69,4 +69,11 @@ export const fetchVariantIndex = ({
       }) === 0,
   );
   return useVariant ? useVariant.variant : {};
+};
+
+export const isValidExperiment = ({
+  experiments,
+  id,
+}: fetchVariantIndexShape) => {
+  return experiments && experiments.find(ex => ex.id === id);
 };

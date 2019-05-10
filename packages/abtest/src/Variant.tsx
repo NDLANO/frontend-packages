@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Context } from './Context';
+import { ExperimentsContext } from './Context';
 import { VariationsShape } from './Experiment';
 
 interface Props {
@@ -25,13 +25,13 @@ interface ValueShape {
 export class Variant extends React.Component<Props> {
   componentDidMount() {
     const { experimentId, variant, onVariantMount } = this.context;
-    if (this.isActive(this.context)) {
-      if (onVariantMount) {
-        onVariantMount({
-          expId: experimentId,
-          expVar: variant.index,
-        });
-      }
+    const isActiveExperiment = this.isActive(this.context);
+    if (isActiveExperiment && onVariantMount) {
+      onVariantMount({
+        expId: experimentId,
+        expVar: variant.index,
+        isActiveExperiment: isActiveExperiment,
+      });
     }
   }
   isActive(value: ValueShape) {
@@ -42,7 +42,7 @@ export class Variant extends React.Component<Props> {
     );
   }
   render() {
-    const { Consumer } = Context;
+    const { Consumer } = ExperimentsContext;
     return (
       <Consumer>
         {(value: ValueShape) =>
@@ -53,4 +53,4 @@ export class Variant extends React.Component<Props> {
   }
 }
 
-Variant.contextType = Context;
+Variant.contextType = ExperimentsContext;

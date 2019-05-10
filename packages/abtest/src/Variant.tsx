@@ -30,7 +30,7 @@ export class Variant extends React.Component<Props> {
       onVariantMount({
         expId: experimentId,
         expVar: variant.index,
-        isActiveExperiment: isActiveExperiment,
+        isActiveExperiment,
       });
     }
   }

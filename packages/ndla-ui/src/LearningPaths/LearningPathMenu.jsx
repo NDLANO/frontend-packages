@@ -85,6 +85,20 @@ const StyledMenuItem = styled.li`
       padding-left: ${spacing.xsmall};
     }
   }
+  ${props => props.current && props.isOpen && `
+    a {
+      background: #fff;
+      &:before {
+        position: absolute;
+        content: '';
+        display: block;
+        background: #fff;
+        height: 60px;
+        width: ${spacing.small};
+        transform: translateX(-${spacing.normal});
+      }
+    }
+  `}
   ${props => props.current && `
     &:before {
       content: '';
@@ -167,14 +181,14 @@ const ContentTypeCSS = css`
   margin-right: ${spacing.small};
 `;
 
-const renderMenuItems = menuItems => {
+const renderMenuItems = ({ menuItems, isOpen }) => {
   let foundCurrent = false;
   return menuItems.map(({ url, name, contentType, current }) => {
     if (current) {
       foundCurrent = true;
     }
     return (
-      <StyledMenuItem current={current} afterCurrent={foundCurrent && !current} key={url}>
+      <StyledMenuItem current={current} afterCurrent={foundCurrent && !current} key={url} isOpen={isOpen}>
         <SafeLink to={url}>
           <div css={ContentTypeCSS}>
             <ContentTypeBadge type={contentType} background />
@@ -207,7 +221,7 @@ export const LearningPathMenu = ({ menuItems, name, estimatedTime, lastUpdated, 
       </StyledMenuIntro>
       <nav>
         <ul>
-          {renderMenuItems(menuItems)}
+          {renderMenuItems({ menuItems, isOpen })}
         </ul>
       </nav>
       <aside>

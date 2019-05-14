@@ -17,6 +17,7 @@ const StyledWrapper = styled.section`
   margin: 0 auto;
   .o-wrapper {
     padding-right: 0;
+    padding-left: ${spacing.small};
   }
 `;
 

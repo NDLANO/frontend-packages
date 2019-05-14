@@ -8,21 +8,40 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { colors, spacing, animations } from '@ndla/core';
+import { SafeLink } from '@ndla/ui';
 
-const classes = new BEMHelper({
-  name: 'learningpath',
-  prefix: 'c-',
-});
+const StyledFooter = styled.nav`
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  padding: 0 ${spacing.medium};
+  background: ${colors.brand.lighter};
+  align-items: center;
+  justify-content: space-between;
+  ${animations.fadeInBottom()}
+`;
 
 export const LearningPathSticky = ({ children }) => (
-  <div {...classes('wrapper')}>{children}</div>
+  <StyledFooter>{children}</StyledFooter>
 );
 
 LearningPathSticky.propTypes = {
   children: PropTypes.node,
 };
 
-export const LearningPathStickySibling = ({ children }) => (
-  <div {...classes('wrapper')}>{children}</div>
+export const LearningPathStickySibling = ({ name, to }) => (
+  <SafeLink to={to}>
+    {name}
+  </SafeLink>
 );
+
+LearningPathSticky.propTypes = {
+  name: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};

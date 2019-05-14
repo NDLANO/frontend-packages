@@ -18,6 +18,7 @@ import {
   ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
+  LearningPathHero,
   SubjectBadge,
   ErrorMessage,
   OneColumn,
@@ -42,6 +43,7 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
+import LearningPathExample from './LearningPathExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
@@ -270,20 +272,11 @@ storiesOf('Læringsressurser', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Endret språk (popup åpen)', () => (
+  .add('Læringssti', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu languageSelectorOpen />
-        <SubjectMaterialHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectMaterialHero>
-        <ArticleLearningmaterial />
+        <MastheadWithTopicMenu />
+        <LearningPathExample />
       </Content>
       <FooterExample />
     </PageContainer>

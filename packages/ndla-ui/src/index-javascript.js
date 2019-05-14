@@ -126,6 +126,7 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  LearningPathHero,
 } from './Hero';
 export {
   default as Masthead,
@@ -175,3 +176,11 @@ export {
   FilmMovieSearch,
   FilmMovieList,
 } from './NDLAFilm';
+
+export {
+  LearningPathWrapper,
+  LearningPathContent,
+  LearningPathMenu,
+  LearningPathSticky,
+  LearningPathStickySibling,
+} from './LearningPaths';

@@ -9,12 +9,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { mq, breakpoints } from '@ndla/core';
+import { mq, breakpoints, colors, spacing } from '@ndla/core';
 
 const StyledContent = styled.div`
   ${mq.range({ from: breakpoints.tabletWide })} {
     display: flex;
   }
+  border-top: 1px solid ${colors.brand.greyLight};
+  margin-top: ${spacing.small};
+  padding-top: ${spacing.spacingUnit * 0.75}px;
   .c-article {
     // remove margin-top rule for .c-articles
     margin-top: 0;

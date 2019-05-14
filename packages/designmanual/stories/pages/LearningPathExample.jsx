@@ -49,15 +49,19 @@ const menuItems = [
 
 const LearningPathExample = () => (
   <LearningPathWrapper>
-    <LearningPathHero>
-      <div className="c-hero__content">
-        <section>
-          <Breadcrumb />
-        </section>
-      </div>
-    </LearningPathHero>
+    <div className="c-hero__content">
+      <section>
+        <Breadcrumb />
+      </section>
+    </div>
     <LearningPathContent>
-      <LearningPathMenu menuItems={menuItems} estimatedTime={3} />
+      <LearningPathMenu
+        menuItems={menuItems}
+        estimatedTime={3}
+        lastUpdated={"21.06.2019"}
+        authors={['Ivar Borthen']}
+        license="CC-BY-SA"
+      />
       <ArticleLearningmaterial />
     </LearningPathContent>
     <LearningPathSticky>

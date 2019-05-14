@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { SafeLink, ContentTypeBadge } from '@ndla/ui';
-import Button from '@ndla/button';
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
 
@@ -25,6 +24,19 @@ const StyledMenu = styled.div`
       padding: 0;
     }
   }
+  > aside {
+    display: none;
+    flex-direction: column;
+    padding-left: ${spacing.spacingUnit * 2.25}px;
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      ${props => props.isOpen && `
+        display: flex;
+      `}
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      display: flex;
+    }
+  }
   ${mq.range({ until: breakpoints.desktop })} {
     ${props => !props.isOpen && `
       width: 60px;
@@ -32,7 +44,7 @@ const StyledMenu = styled.div`
         display: none;
       }
       ${StyledMenuItem} {
-        a, small {
+        span {
           display: none;
         }
         &:first-of-type {
@@ -40,9 +52,12 @@ const StyledMenu = styled.div`
             display: none;
           }
         }
-        &:hover {
+        a:hover, a:focus {
+          position: relative;
+          z-index: 1;
+          width: 378px;
           background: ${colors.brand.greyLighter};
-          a, small {
+          span {
             display: flex;
           }
         }
@@ -52,18 +67,23 @@ const StyledMenu = styled.div`
 `;
 
 const StyledMenuItem = styled.li`
-  height: 60px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: ${spacing.small};
-  small {
-    ${typography.smallHeading}
-  }
   a {
-    ${fonts.sizes(14, 1.2)};
-    font-weight: ${fonts.weight.semibold};
-    color: ${colors.brand.primary};
+    box-shadow: none;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: ${spacing.small};
+    span {
+      ${fonts.sizes(14, 1.2)};
+      font-weight: ${fonts.weight.semibold};
+      color: ${colors.brand.primary};
+      align-items: center;
+    }
+    small {
+      ${typography.smallHeading}
+      padding-left: ${spacing.xsmall};
+    }
   }
   ${props => props.current && `
     &:before {
@@ -74,28 +94,35 @@ const StyledMenuItem = styled.li`
       background: red;
       position: absolute;
       border-radius: 100%;
-      transform: translateX(-${spacing.small});
+      transform: translate(0, 27px);
+      z-index: 2;
     }
   `}
+  &:after {
+    content: '';
+    display: block;
+    height: 60px;
+    width: 2px;
+    background: ${colors.brand.greyLight};
+    position: absolute;
+    transform: translate(29px, -90px);
+  }
   ${props => !props.afterCurrent && `
     a {
       font-weight: ${fonts.weight.normal};
       color: ${colors.text.primary};
     }
     &:after {
-      content: '';
-      display: block;
-      height: 60px;
       width: 4px;
       background: ${colors.brand.grey};
-      position: absolute;
-      transform: translate(15px, -30px);
+      transform: translate(28px, -90px);
     }
   `}
 `;
 
 const StyledMenuIntro = styled.div`
     margin-left: 28px;
+    margin-top: ${spacing.normal};
     border-left: 4px solid ${colors.brand.grey};
     &:before {
       content: '';
@@ -108,7 +135,7 @@ const StyledMenuIntro = styled.div`
       transform: translate(-8px, -8px);
     }
     > div {
-      padding: ${spacing.medium} 0 ${spacing.medium} 50px;
+      padding: 0 0 ${spacing.medium} ${spacing.normal};
     }
 `;
 
@@ -122,6 +149,15 @@ const StyledTimeBox = styled.div`
   display: inline-flex;
   svg {
     margin-right: ${spacing.xsmall};
+  }
+`;
+
+const StyledToggleMenubutton = styled.button`
+  background: ${colors.brand.primary};
+  color: #fff;
+  display: none;
+  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
+    display: flex;
   }
 `;
 
@@ -139,23 +175,27 @@ const renderMenuItems = menuItems => {
     }
     return (
       <StyledMenuItem current={current} afterCurrent={foundCurrent && !current} key={url}>
-        <div css={ContentTypeCSS}>
-          <ContentTypeBadge type={contentType} background />
-        </div>
-        <SafeLink to={url}>{name}</SafeLink>
-        {current && <small>Du er her</small>}
+        <SafeLink to={url}>
+          <div css={ContentTypeCSS}>
+            <ContentTypeBadge type={contentType} background />
+          </div>
+          <span>
+            {name}
+            {current && <small>Du er her</small>}
+          </span>
+        </SafeLink>
       </StyledMenuItem>
     );
   });
 };
 
-export const LearningPathMenu = ({ menuItems, name, estimatedTime }) => {
+export const LearningPathMenu = ({ menuItems, name, estimatedTime, lastUpdated, authors, license }) => {
   const [isOpen, toggleOpenState] = useState(false);
   return (
     <StyledMenu isOpen={isOpen}>
-      <Button onClick={() => toggleOpenState(!isOpen)}>
-        OPEN MENU
-      </Button>
+      <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
+        {!isOpen ? 'OPEN' : 'CLOSE'}
+      </StyledToggleMenubutton>
       <StyledMenuIntro>
         <div>
           <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
@@ -170,6 +210,13 @@ export const LearningPathMenu = ({ menuItems, name, estimatedTime }) => {
           {renderMenuItems(menuItems)}
         </ul>
       </nav>
+      <aside>
+        sist oppdatert: {lastUpdated}
+        {authors.map(author => (
+          <p>{author}</p>
+        ))}
+        {license}
+      </aside>
     </StyledMenu>
   );
 };
@@ -179,6 +226,9 @@ LearningPathMenu.propTypes = {
   isOpen: PropTypes.bool,
   name: PropTypes.string.isRequired,
   estimatedTime: PropTypes.number,
+  lastUpdated: PropTypes.string.isRequired,
+  license: PropTypes.string.isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
   menuItems: PropTypes.arrayOf(PropTypes.shape({
     url: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,

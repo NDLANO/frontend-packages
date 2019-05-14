@@ -13,8 +13,11 @@ import { spacing } from '@ndla/core';
 
 const StyledWrapper = styled.section`
   max-width: ${1402 + spacing.spacingUnit}px;
-  padding: 0 0 0 ${spacing.normal};
+  padding: 0 ${spacing.normal};
   margin: 0 auto;
+  .o-wrapper {
+    padding-right: 0;
+  }
 `;
 
 export const LearningPathWrapper = ({ children }) => (

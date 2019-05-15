@@ -241,16 +241,16 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
         activateButton={
           <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningStepsTotal}</button>
         }>
-        {(onClose) => (
+        {(onClose: Function) => (
           <div>
-            <button onClick={onClose}>Close</button>
+            <button onClick={() => onClose()}>Close</button>
             {children}
           </div>
         )}
       </Modal>
       <div css={typography.smallHeading}>Du er nå inne i en læringssti</div>
     </div>
-  ) : children
+  ) : <>{children}</>
 );
 
 type StepProps = {
@@ -266,7 +266,7 @@ interface Props {
   name: string;
   estimatedTime: number;
   lastUpdated: string[];
-  authors: string;
+  authors: string[];
   license: string;
 }
 

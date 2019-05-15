@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { spacing, breakpoints, mq } from '@ndla/core';
 
 const StyledWrapper = styled.section`
   max-width: ${1402 + spacing.spacingUnit}px;
@@ -18,6 +18,14 @@ const StyledWrapper = styled.section`
   .o-wrapper {
     padding-right: 0;
     padding-left: ${spacing.small};
+  }
+  .c-hero__content {
+    display: none;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    .c-hero__content {
+      display: flex;
+    }
   }
 `;
 

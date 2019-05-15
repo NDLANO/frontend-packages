@@ -12,12 +12,12 @@ import styled from '@emotion/styled';
 import { mq, breakpoints, colors, spacing } from '@ndla/core';
 
 const StyledContent = styled.div`
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
+    border-top: 1px solid ${colors.brand.greyLight};
+    margin-top: ${spacing.small};
+    padding-top: ${spacing.spacingUnit * 0.75}px;
   }
-  border-top: 1px solid ${colors.brand.greyLight};
-  margin-top: ${spacing.small};
-  padding-top: ${spacing.spacingUnit * 0.75}px;
   .c-article {
     // remove margin-top rule for .c-articles
     margin-top: 0;

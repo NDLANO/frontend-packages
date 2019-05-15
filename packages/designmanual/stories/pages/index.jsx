@@ -18,7 +18,6 @@ import {
   ExternalLearningResourcesHero,
   SourceMaterialHero,
   Hero,
-  LearningPathHero,
   SubjectBadge,
   ErrorMessage,
   OneColumn,

@@ -11,58 +11,85 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { SafeLink, ContentTypeBadge } from '@ndla/ui';
+import { useWindowSize } from '@ndla/hooks';
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
+import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
+import Modal from '@ndla/modal';
 
 const StyledMenu = styled.div`
-  max-width: 378px;
-  width: 378px;
-  > nav {
-    > ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+  width: 100%;
+  ${mq.range({ from: breakpoints.tablet })} {
+    max-width: 378px;
+    width: 378px;
   }
-  > aside {
-    display: none;
-    flex-direction: column;
-    padding-left: ${spacing.spacingUnit * 2.25}px;
-    ${mq.range({ from: breakpoints.tabletWide })} {
-      ${props => props.isOpen && `
-        display: flex;
-      `}
-    }
-    ${mq.range({ from: breakpoints.desktop })} {
-      display: flex;
-    }
-  }
-  ${mq.range({ until: breakpoints.desktop })} {
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     ${props => !props.isOpen && `
       width: 60px;
       ${StyledMenuIntro} {
         display: none;
       }
-      ${StyledMenuItem} {
-        span {
-          display: none;
-        }
-        &:first-of-type {
-          &:after {
-            display: none;
-          }
-        }
-        a:hover, a:focus {
-          position: relative;
-          z-index: 1;
-          width: 378px;
-          background: ${colors.brand.greyLighter};
-          span {
-            display: flex;
-          }
+    `}
+  }
+`;
+
+const numbersButtonCSS = css`
+  display: flex;
+  align-items: center;
+  background: ${colors.brand.light};
+  padding: ${spacing.xsmall} ${spacing.small};
+  color: ${colors.brand.primary};
+  font-weight: ${fonts.weight.semibold};
+  border-radius: ${misc.borderRadius};
+  small {
+    display: flex;
+    padding: 0 3px;
+  }
+`;
+
+const navCSS = css`
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+const navCSSClosed = css`
+  ${mq.range({ until: breakpoints.desktop })} {
+    ${StyledMenuItem} {
+      span {
+        display: none;
+      }
+      &:first-child {
+        &:after {
+          display: none !important;
         }
       }
+      a:hover, a:focus {
+        position: relative;
+        z-index: 1;
+        width: 378px;
+        background: ${colors.brand.greyLighter};
+        span {
+          display: flex;
+        }
+      }
+    }
+  }
+`;
+
+const asideCSS = css`
+  display: none;
+  flex-direction: column;
+  padding-left: ${spacing.spacingUnit * 2.25}px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${props => props.isOpen && `
+      display: flex;
     `}
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    display: flex;
   }
 `;
 
@@ -170,7 +197,7 @@ const StyledToggleMenubutton = styled.button`
   background: ${colors.brand.primary};
   color: #fff;
   display: none;
-  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     display: flex;
   }
 `;
@@ -181,56 +208,90 @@ const ContentTypeCSS = css`
   margin-right: ${spacing.small};
 `;
 
-const renderMenuItems = ({ menuItems, isOpen }) => {
-  let foundCurrent = false;
-  return menuItems.map(({ url, name, contentType, current }) => {
-    if (current) {
-      foundCurrent = true;
-    }
-    return (
-      <StyledMenuItem current={current} afterCurrent={foundCurrent && !current} key={url} isOpen={isOpen}>
-        <SafeLink to={url}>
-          <div css={ContentTypeCSS}>
-            <ContentTypeBadge type={contentType} background />
+const wrapperCSS = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 -${spacing.normal} ${spacing.medium};
+  background: ${colors.brand.lighter};
+  padding: ${spacing.xsmall} ${spacing.normal};
+`;
+
+const ModalWrapperComponent = ({ innerWidth, currentIndex, menuItemsTotal, children }) => (
+  innerWidth < 601 ? (
+    <div css={wrapperCSS}>
+      <Modal
+        backgroundColor="grey"
+        animation="slide-up"
+        animationDuration={200}
+        size="fullscreen"
+        activateButton={
+          <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{menuItemsTotal}</button>
+        }>
+        {onClose => (
+          <div>
+            <button onClick={onClose}>Close</button>
+            {children}
           </div>
-          <span>
-            {name}
-            {current && <small>Du er her</small>}
-          </span>
-        </SafeLink>
-      </StyledMenuItem>
-    );
-  });
-};
+        )}
+      </Modal>
+      <div css={typography.smallHeading}>Du er nå inne i en læringssti</div>
+    </div>
+  ) : children
+);
+
+const renderMenu = ({ menuItems, currentIndex, isOpen }) => (
+  <nav css={[navCSS, !isOpen && navCSSClosed]}>
+    <ul>
+      {menuItems.map(({ url, name, contentType, current }, index) => (
+        <StyledMenuItem
+          key={url}
+          current={index === currentIndex}
+          afterCurrent={index > currentIndex}
+          isOpen={isOpen}>
+          <SafeLink to={url}>
+            <div css={ContentTypeCSS}>
+              <ContentTypeBadge type={contentType} background />
+            </div>
+            <span>
+              {name}
+              {current && <small>Du er her</small>}
+            </span>
+          </SafeLink>
+        </StyledMenuItem>
+      ))}
+    </ul>
+  </nav>
+);
 
 export const LearningPathMenu = ({ menuItems, name, estimatedTime, lastUpdated, authors, license }) => {
   const [isOpen, toggleOpenState] = useState(false);
+  const { innerWidth } = useWindowSize(100);
+  const currentIndex = menuItems.findIndex(menuItem => menuItem.current);
   return (
     <StyledMenu isOpen={isOpen}>
-      <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
-        {!isOpen ? 'OPEN' : 'CLOSE'}
-      </StyledToggleMenubutton>
-      <StyledMenuIntro>
-        <div>
-          <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
-          <h1>{name}</h1>
-          <StyledTimeBox>
-            <Time /> {Math.round((estimatedTime / 0.75) * 10) / 10} Skoletimer = {estimatedTime * 60} min
-          </StyledTimeBox>
-        </div>
-      </StyledMenuIntro>
-      <nav>
-        <ul>
-          {renderMenuItems({ menuItems, isOpen })}
-        </ul>
-      </nav>
-      <aside>
-        sist oppdatert: {lastUpdated}
-        {authors.map(author => (
-          <p>{author}</p>
-        ))}
-        {license}
-      </aside>
+      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} menuItemsTotal={menuItems.length}>
+        <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
+          {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
+        </StyledToggleMenubutton>
+        <StyledMenuIntro isOpen={isOpen}>
+          <div>
+            <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
+            <h1>{name}</h1>
+            <StyledTimeBox>
+              <Time /> {Math.round((estimatedTime / 0.75) * 10) / 10} Skoletimer = {estimatedTime * 60} min
+            </StyledTimeBox>
+          </div>
+        </StyledMenuIntro>
+        {renderMenu({ menuItems, isOpen, currentIndex })}
+        <aside css={asideCSS}>
+          sist oppdatert: {lastUpdated}
+          {authors.map(author => (
+            <p>{author}</p>
+          ))}
+          {license}
+        </aside>
+      </ModalWrapperComponent>
     </StyledMenu>
   );
 };

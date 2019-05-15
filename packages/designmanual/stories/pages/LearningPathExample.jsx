@@ -13,7 +13,6 @@ import {
   LearningPathMenu,
   LearningPathSticky,
   LearningPathStickySibling,
-  LearningPathHero,
   LearningPathContent,
   constants,
 } from '@ndla/ui';
@@ -26,23 +25,23 @@ const { contentTypes } = constants;
 const menuItems = [
   {
     name: 'Introduksjon',
-    url: '#',
+    url: '#1',
     contentType: contentTypes.SUBJECT_MATERIAL,
   },
   {
     name: 'Introduksjon2',
-    url: '#',
+    url: '#2',
     contentType: contentTypes.SUBJECT_MATERIAL,
   },
   {
     name: 'Introduksjon3',
-    url: '#',
+    url: '#3',
     current: true,
     contentType: contentTypes.SUBJECT_MATERIAL,
   },
   {
     name: 'Introduksjon4',
-    url: '#',
+    url: '#4',
     contentType: contentTypes.SUBJECT_MATERIAL,
   },
 ];
@@ -65,8 +64,8 @@ const LearningPathExample = () => (
       <ArticleLearningmaterial />
     </LearningPathContent>
     <LearningPathSticky>
-      <LearningPathStickySibling to="#" name="Gå til neste" />
-      <LearningPathStickySibling to="#" name="Gå til neste" />
+      <LearningPathStickySibling arrow="left" label="forrige" to="#" name="Gå til neste" />
+      <LearningPathStickySibling arrow="right" label="neste" to="#" name="Gå til neste" />
     </LearningPathSticky>
   </LearningPathWrapper>
 );

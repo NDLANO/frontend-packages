@@ -126,7 +126,6 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
-  LearningPathHero,
 } from './Hero';
 export {
   default as Masthead,

@@ -15,5 +15,4 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
-  LearningPathHero,
 } from './Hero';

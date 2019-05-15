@@ -51,6 +51,3 @@ export const NdlaFilmHero = ({ hasImage, ...rest }) => (
     {...rest}
   />
 );
-export const LearningPathHero = props => (
-  <Hero contentType={contentTypes.LEARNING_PATH} {...props} /> 
-);

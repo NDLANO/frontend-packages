@@ -23,19 +23,18 @@ export const isOldNdlaLink = (to?: LocationDescriptor) =>
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 const SafeLink: React.FunctionComponent<
   LinkProps & React.HTMLAttributes<HTMLElement>
-> = (props, context) => {
-  if (!context.router || isExternalLink(props.to) || isOldNdlaLink(props.to)) {
-    const { to, ...rest } = props;
+> = ({ to, children, ...rest }, context) => {
+  if (!context.router || isExternalLink(to) || isOldNdlaLink(to)) {
     delete rest.replace;
     const href = typeof to === 'string' ? to : '#';
     return (
       <a href={href} {...rest}>
-        {props.children}
+        {children}
       </a>
     );
   }
 
-  return <Link {...props}>{props.children}</Link>;
+  return <Link to={to} {...rest}>{children}</Link>;
 };
 
 SafeLink.contextTypes = {

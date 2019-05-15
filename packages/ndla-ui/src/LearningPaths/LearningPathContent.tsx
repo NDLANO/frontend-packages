@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors, spacing } from '@ndla/core';
 
@@ -24,10 +23,12 @@ const StyledContent = styled.div`
   }
 `;
 
-export const LearningPathContent = ({ children }) => (
+interface Props {
+  children: React.ReactNode;
+}
+
+export const LearningPathContent: React.FunctionComponent<Props> = ({
+  children,
+}) => (
   <StyledContent>{children}</StyledContent>
 );
-
-LearningPathContent.propTypes = {
-  children: PropTypes.node.isRequired,
-};

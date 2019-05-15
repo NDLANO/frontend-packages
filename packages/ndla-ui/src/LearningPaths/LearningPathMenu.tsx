@@ -7,7 +7,6 @@
  */
 
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { SafeLink, ContentTypeBadge } from '@ndla/ui';
@@ -17,7 +16,11 @@ import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import Modal from '@ndla/modal';
 
-const StyledMenu = styled.div`
+type StyledMenuProps = {
+  isOpen?: Boolean;
+};
+
+const StyledMenu = styled.div<StyledMenuProps>`
   width: 100%;
   ${mq.range({ from: breakpoints.tablet })} {
     max-width: 378px;
@@ -55,45 +58,22 @@ const navCSS = css`
   }
 `;
 
-const navCSSClosed = css`
-  ${mq.range({ until: breakpoints.desktop })} {
-    ${StyledMenuItem} {
-      span {
-        display: none;
-      }
-      &:first-child {
-        &:after {
-          display: none !important;
-        }
-      }
-      a:hover, a:focus {
-        position: relative;
-        z-index: 1;
-        width: 378px;
-        background: ${colors.brand.greyLighter};
-        span {
-          display: flex;
-        }
-      }
-    }
-  }
-`;
-
 const asideCSS = css`
   display: none;
   flex-direction: column;
   padding-left: ${spacing.spacingUnit * 2.25}px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    ${props => props.isOpen && `
-      display: flex;
-    `}
-  }
   ${mq.range({ from: breakpoints.desktop })} {
     display: flex;
   }
 `;
 
-const StyledMenuItem = styled.li`
+type StyledMenuItemProps = {
+  current?: boolean;
+  isOpen: boolean;
+  afterCurrent: boolean;
+}
+
+const StyledMenuItem = styled.li<StyledMenuItemProps>`
   a {
     box-shadow: none;
     height: 60px;
@@ -202,6 +182,30 @@ const StyledToggleMenubutton = styled.button`
   }
 `;
 
+const navCSSClosed = css`
+  ${mq.range({ until: breakpoints.desktop })} {
+    ${StyledMenuItem} {
+      span {
+        display: none;
+      }
+      &:first-child {
+        &:after {
+          display: none !important;
+        }
+      }
+      a:hover, a:focus {
+        position: relative;
+        z-index: 1;
+        width: 378px;
+        background: ${colors.brand.greyLighter};
+        span {
+          display: flex;
+        }
+      }
+    }
+  }
+`;
+
 const ContentTypeCSS = css`
   position: relative;
   z-index: 1;
@@ -217,7 +221,16 @@ const wrapperCSS = css`
   padding: ${spacing.xsmall} ${spacing.normal};
 `;
 
-const ModalWrapperComponent = ({ innerWidth, currentIndex, learningStepsTotal, children }) => (
+interface ModalWrapperProps {
+  innerWidth: number;
+  currentIndex: number;
+  learningStepsTotal: number;
+  children: React.ReactNode;
+};
+
+const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
+  innerWidth, currentIndex, learningStepsTotal, children
+}) => (
   innerWidth < 601 ? (
     <div css={wrapperCSS}>
       <Modal
@@ -228,7 +241,7 @@ const ModalWrapperComponent = ({ innerWidth, currentIndex, learningStepsTotal, c
         activateButton={
           <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningStepsTotal}</button>
         }>
-        {onClose => (
+        {(onClose) => (
           <div>
             <button onClick={onClose}>Close</button>
             {children}
@@ -240,10 +253,33 @@ const ModalWrapperComponent = ({ innerWidth, currentIndex, learningStepsTotal, c
   ) : children
 );
 
-const renderMenu = ({ learningSteps, currentIndex, isOpen }) => (
+type StepProps = {
+  url: string;
+  title: string;
+  type: string;
+  id: string | number;
+  current?: boolean;
+}
+
+interface Props {
+  learningSteps: StepProps[];
+  name: string;
+  estimatedTime: number;
+  lastUpdated: string[];
+  authors: string;
+  license: string;
+}
+
+type renderMenuProps = {
+  learningSteps: StepProps[];
+  isOpen: boolean;
+  currentIndex: number;
+}
+
+const renderMenu = ({ learningSteps, currentIndex, isOpen }:renderMenuProps) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
-      {learningSteps.map(({ id, url, title, type, current }, index) => (
+      {learningSteps.map(({ id, url, title, type, current }:StepProps, index:number) => (
         <StyledMenuItem
           key={id}
           current={index === currentIndex}
@@ -264,17 +300,19 @@ const renderMenu = ({ learningSteps, currentIndex, isOpen }) => (
   </nav>
 );
 
-export const LearningPathMenu = ({ learningSteps, name, estimatedTime, lastUpdated, authors, license }) => {
+export const LearningPathMenu: React.FunctionComponent<Props> = ({
+  learningSteps, name, estimatedTime, lastUpdated, authors, license,
+}) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
-  const currentIndex = learningSteps.findIndex(menuItem => menuItem.current);
+  const currentIndex = learningSteps.findIndex(learningStep => learningStep.current);
   return (
     <StyledMenu isOpen={isOpen}>
       <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningStepsTotal={learningSteps.length}>
         <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
           {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
         </StyledToggleMenubutton>
-        <StyledMenuIntro isOpen={isOpen}>
+        <StyledMenuIntro>
           <div>
             <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
             <h1>{name}</h1>
@@ -294,21 +332,4 @@ export const LearningPathMenu = ({ learningSteps, name, estimatedTime, lastUpdat
       </ModalWrapperComponent>
     </StyledMenu>
   );
-};
-
-LearningPathMenu.propTypes = {
-  children: PropTypes.node,
-  isOpen: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  estimatedTime: PropTypes.number,
-  lastUpdated: PropTypes.string.isRequired,
-  license: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  learningSteps: PropTypes.arrayOf(PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    current: PropTypes.bool,
-  })).isRequired,
 };

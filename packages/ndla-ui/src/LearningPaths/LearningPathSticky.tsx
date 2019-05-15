@@ -30,7 +30,11 @@ const StyledFooter = styled.nav`
   ${animations.fadeInBottom()}
 `;
 
-export const LearningPathSticky = ({ children }) => (
+interface Props {
+  children: React.ReactNode;
+}
+
+export const LearningPathSticky = ({ children }:Props) => (
   <StyledFooter>{children}</StyledFooter>
 );
 
@@ -73,22 +77,20 @@ const SafeLinkCSS = css`
   }
 `;
 
+interface PropsSiblings {
+  title: string;
+  to: string;
+  arrow?: 'left' | 'right';
+  label: string;
+}
 
-
-export const LearningPathStickySibling = ({ title, to, arrow, label }) => (
+export const LearningPathStickySibling = ({ title, to, arrow, label }:PropsSiblings) => (
   <SafeLink to={to} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
-      <span css={typography.smallHeading}>{label || ''}</span>
+      <span css={typography.smallHeading}>{label}</span>
       <span>{title}</span>
     </div>
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>
 );
-
-LearningPathSticky.propTypes = {
-  title: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  arrow: PropTypes.oneOf(['left', 'right']),
-  label: PropTypes.string,
-};

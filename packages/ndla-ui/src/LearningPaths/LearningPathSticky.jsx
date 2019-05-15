@@ -75,19 +75,19 @@ const SafeLinkCSS = css`
 
 
 
-export const LearningPathStickySibling = ({ name, to, arrow, label }) => (
+export const LearningPathStickySibling = ({ title, to, arrow, label }) => (
   <SafeLink to={to} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
       <span css={typography.smallHeading}>{label || ''}</span>
-      <span>{name}</span>
+      <span>{title}</span>
     </div>
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>
 );
 
 LearningPathSticky.propTypes = {
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   arrow: PropTypes.oneOf(['left', 'right']),
   label: PropTypes.string,

@@ -217,7 +217,7 @@ const wrapperCSS = css`
   padding: ${spacing.xsmall} ${spacing.normal};
 `;
 
-const ModalWrapperComponent = ({ innerWidth, currentIndex, menuItemsTotal, children }) => (
+const ModalWrapperComponent = ({ innerWidth, currentIndex, learningStepsTotal, children }) => (
   innerWidth < 601 ? (
     <div css={wrapperCSS}>
       <Modal
@@ -226,7 +226,7 @@ const ModalWrapperComponent = ({ innerWidth, currentIndex, menuItemsTotal, child
         animationDuration={200}
         size="fullscreen"
         activateButton={
-          <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{menuItemsTotal}</button>
+          <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningStepsTotal}</button>
         }>
         {onClose => (
           <div>
@@ -240,21 +240,21 @@ const ModalWrapperComponent = ({ innerWidth, currentIndex, menuItemsTotal, child
   ) : children
 );
 
-const renderMenu = ({ menuItems, currentIndex, isOpen }) => (
+const renderMenu = ({ learningSteps, currentIndex, isOpen }) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
-      {menuItems.map(({ url, name, contentType, current }, index) => (
+      {learningSteps.map(({ id, url, title, type, current }, index) => (
         <StyledMenuItem
-          key={url}
+          key={id}
           current={index === currentIndex}
           afterCurrent={index > currentIndex}
           isOpen={isOpen}>
           <SafeLink to={url}>
             <div css={ContentTypeCSS}>
-              <ContentTypeBadge type={contentType} background />
+              <ContentTypeBadge type={type} background />
             </div>
             <span>
-              {name}
+              {title}
               {current && <small>Du er her</small>}
             </span>
           </SafeLink>
@@ -264,13 +264,13 @@ const renderMenu = ({ menuItems, currentIndex, isOpen }) => (
   </nav>
 );
 
-export const LearningPathMenu = ({ menuItems, name, estimatedTime, lastUpdated, authors, license }) => {
+export const LearningPathMenu = ({ learningSteps, name, estimatedTime, lastUpdated, authors, license }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
-  const currentIndex = menuItems.findIndex(menuItem => menuItem.current);
+  const currentIndex = learningSteps.findIndex(menuItem => menuItem.current);
   return (
     <StyledMenu isOpen={isOpen}>
-      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} menuItemsTotal={menuItems.length}>
+      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningStepsTotal={learningSteps.length}>
         <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
           {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
         </StyledToggleMenubutton>
@@ -283,7 +283,7 @@ export const LearningPathMenu = ({ menuItems, name, estimatedTime, lastUpdated, 
             </StyledTimeBox>
           </div>
         </StyledMenuIntro>
-        {renderMenu({ menuItems, isOpen, currentIndex })}
+        {renderMenu({ learningSteps, isOpen, currentIndex })}
         <aside css={asideCSS}>
           sist oppdatert: {lastUpdated}
           {authors.map(author => (
@@ -304,10 +304,11 @@ LearningPathMenu.propTypes = {
   lastUpdated: PropTypes.string.isRequired,
   license: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  menuItems: PropTypes.arrayOf(PropTypes.shape({
+  learningSteps: PropTypes.arrayOf(PropTypes.shape({
     url: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    contentType: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     current: PropTypes.bool,
   })).isRequired,
 };

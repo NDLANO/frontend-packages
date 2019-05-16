@@ -30,7 +30,8 @@ details {
 
   &.c-details--solution-box {
     summary {
-      background: $brand-grey--lighter;
+      background: $brand-color--lightest;
+      font-family: $font;
     }
   }
 }

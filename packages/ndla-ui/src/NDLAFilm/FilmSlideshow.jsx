@@ -172,7 +172,6 @@ class FilmSlideshow extends Component {
   }
 
   gotoSlide(slideIndexTarget, useAnimation) {
-    console.log('???');
     this.swipeDistance = 0;
     clearTimeout(this.timer);
     this.initTimer();

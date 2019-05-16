@@ -55,21 +55,27 @@ export class Carousel extends Component<Props, State> {
 
   // Todo: All slides ar left aligned when the (number of) slides does not fill
   // the entire screen. Can be reproduced by limiting the number of slides in the carousel
-  // static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-  //   const { columnsPrSlide, items } = nextProps;
-  //   const { slideIndex } = prevState;
-
-  //   // Check if resize caused carousel to be scrolled to far.
-  //   if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
-  //     const adjustedSlideIndex =
-  //       slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
-  //     return {
-  //       slideIndex: adjustedSlideIndex,
-  //     };
-  //   }
-
-  //   return null;
-  // }
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    const { columnsPrSlide, items } = nextProps;
+    const { slideIndex } = prevState;
+    
+    // Check if resize caused carousel to be scrolled to far.
+    if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
+      const adjustedSlideIndex =
+        slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
+      
+      if (items.length < columnsPrSlide) {
+        return {
+          slideIndex: 0,
+        }
+      }
+      return {
+        slideIndex: adjustedSlideIndex,
+      };
+    }
+    
+    return null;
+  }
 
   onSwipeEnd = () => {
     const {

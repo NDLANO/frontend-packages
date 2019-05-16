@@ -91,7 +91,7 @@ class ArticleLoader extends Component {
       this.setState({
         article: {
           ...article,
-          updated: format(article.updated, 'DD.MM.YYYY'),
+          published: format(article.published, 'DD.MM.YYYY'),
         },
         message: '',
       });

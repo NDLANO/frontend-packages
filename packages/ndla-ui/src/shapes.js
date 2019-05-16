@@ -49,7 +49,7 @@ export const ArticleShape = PropTypes.shape({
     authors: PropTypes.array,
     creators: PropTypes.arrayOf(ContributorShape),
   }).isRequired,
-  updated: PropTypes.string.isRequired,
+  published: PropTypes.string.isRequired,
 });
 
 export const ResourceShape = PropTypes.shape({

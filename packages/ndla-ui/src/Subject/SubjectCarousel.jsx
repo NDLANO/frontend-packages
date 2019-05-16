@@ -41,7 +41,7 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
         },
         {
           until: 'desktop',
-          columnsPrSlide: 4,
+          columnsPrSlide: 4.25,
           distanceBetweenItems: 26,
           arrowOffset: 26,
           margin: spacing.spacingUnit * 1.25,

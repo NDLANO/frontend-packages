@@ -14,6 +14,7 @@ import { injectT } from '@ndla/i18n';
 import {
   Masthead,
   MastheadItem,
+  MastheadLanguageSelector,
   Logo,
   TopicMenu,
   DisplayOnPageYOffset,
@@ -111,9 +112,9 @@ class MastheadWithTopicMenu extends Component {
         placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
         value={this.state.value}
         autofocus
-        onChange={event => {
+        onChange={value => {
           this.setState({
-            value: event.currentTarget.value,
+            value,
           });
         }}
         onSearch={e => {
@@ -285,6 +286,26 @@ class MastheadWithTopicMenu extends Component {
           </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
+          <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
+            <MastheadLanguageSelector
+              ndlaFilm={this.props.ndlaFilm}
+              options={{
+                nb: {
+                  name: 'Bokmål',
+                  url: '#',
+                },
+                nn: {
+                  name: 'Nynorsk',
+                  url: '#',
+                },
+                en: {
+                  name: 'English',
+                  url: '#',
+                },
+              }}
+              currentLanguage="nb"
+            />
+          </DisplayOnPageYOffset>
           {this.renderSearchButtonView(true)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"

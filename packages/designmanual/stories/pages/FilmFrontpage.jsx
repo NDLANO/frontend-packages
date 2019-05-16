@@ -60,6 +60,7 @@ class FilmFrontpage extends Component {
       language,
       t,
     } = this.props;
+
     const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
 
     const resourceTypeName =
@@ -95,41 +96,48 @@ class FilmFrontpage extends Component {
                 columnsPrSlide: 1,
                 distanceBetweenItems: spacing.spacingUnit / 2,
                 margin: spacing.spacingUnit,
+                arrowOffset: 13,
               },
               {
                 until: 'mobileWide',
                 columnsPrSlide: 2,
                 distanceBetweenItems: spacing.spacingUnit / 2,
                 margin: spacing.spacingUnit,
+                arrowOffset: 13,
               },
               {
                 until: 'tabletWide',
                 columnsPrSlide: 3,
                 distanceBetweenItems: spacing.spacingUnit / 2,
                 margin: spacing.spacingUnit,
+                arrowOffset: 13,
               },
               {
                 until: 'desktop',
                 columnsPrSlide: 4,
                 distanceBetweenItems: spacing.spacingUnit,
                 margin: spacing.spacingUnit * 2,
+                arrowOffset: 0,
               },
               {
                 until: 'wide',
                 columnsPrSlide: 4,
                 distanceBetweenItems: spacing.spacingUnit,
                 margin: spacing.spacingUnit * 2,
+                arrowOffset: 0,
               },
               {
                 until: 'ultraWide',
                 columnsPrSlide: 4,
                 distanceBetweenItems: spacing.spacingUnit,
                 margin: spacing.spacingUnit * 3.5,
+                arrowOffset: 0,
               },
               {
                 columnsPrSlide: 6,
                 distanceBetweenItems: spacing.spacingUnit,
                 margin: spacing.spacingUnit * 3.5,
+                arrowOffset: 0,
               },
             ]}>
             {autoSizedProps =>
@@ -175,7 +183,7 @@ FilmFrontpage.propTypes = {
   highlighted: PropTypes.arrayOf(PropTypes.object),
   themes: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      name: PropTypes.objectOf(PropTypes.string),
       movies: PropTypes.arrayOf(PropTypes.object),
     }),
   ),
@@ -187,7 +195,14 @@ FilmFrontpage.propTypes = {
     }),
   ),
   onSelectedMovieByType: PropTypes.func.isRequired,
-  aboutNDLAVideo: PropTypes.node.isRequired,
+  aboutNDLAVideo: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    visualElement: PropTypes.shape({
+      url: PropTypes.string,
+      alt: PropTypes.string,
+    }),
+  }),
   language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
   t: PropTypes.func.isRequired,
 };

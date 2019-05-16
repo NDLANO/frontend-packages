@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-import { colors, spacing, fonts } from '@ndla/core';
+import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button from '@ndla/button';
 import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
@@ -24,22 +24,37 @@ const StyledAside = styled.aside`
     }
   }
   button {
+    text-align: left;
     color: #fff;
     &:hover,
     &:focus {
       color: ${colors.brand.light};
     }
   }
+  ${mq.range({ until: breakpoints.tablet })} {
+    flex-direction: column;
+    > div {
+      width: auto;
+      &:first-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
 `;
 
-const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
+const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm, t }) => {
   return (
     <div className="o-wrapper">
       <StyledAside>
-        <div>{aboutNDLAVideo}</div>
         <div>
-          <h1>{t('ndlaFilm.about.heading')}</h1>
-          <p>{t('ndlaFilm.about.text')}</p>
+          <img
+            src={aboutNDLAVideo.visualElement.url}
+            alt={aboutNDLAVideo.visualElement.alt}
+          />
+        </div>
+        <div>
+          <h1>{aboutNDLAVideo.title}</h1>
+          <p>{aboutNDLAVideo.description}</p>
           <Modal
             activateButton={<Button link>{t('ndlaFilm.about.more')}</Button>}>
             {onClose => (
@@ -58,7 +73,14 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, language, moreAboutNdlaFilm, t }) => {
 };
 
 AboutNdlaFilm.propTypes = {
-  aboutNDLAVideo: PropTypes.string,
+  aboutNDLAVideo: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    visualElement: PropTypes.shape({
+      url: PropTypes.string,
+      alt: PropTypes.string,
+    }),
+  }),
 };
 
 export default injectT(AboutNdlaFilm);

@@ -93,6 +93,20 @@ $overlay-height: 136px;
     }
   }
 
+  
+  &--no-left-margin {
+    margin-left: 0 !important;
+  }
+
+  &--absolute-position-sleeve {
+    position: relative;
+    .c-search-field__search-result {
+      z-index: 9999;
+      position: absolute;
+      top: 58px;
+    }
+  }
+
   &__filters {
     display: flex;
     height: 48px;
@@ -118,7 +132,7 @@ $overlay-height: 136px;
     .c-active-filters {
       display: none;
 
-      @include mq(tablet) {
+      @include mq(tabletWide) {
         display: flex;
         li {
           margin-bottom: 0;
@@ -234,16 +248,38 @@ $overlay-height: 136px;
     margin: 0 0 $spacing 0;
   }
 
+  &__search-result-infotext {
+    @include font-size(14px, 18px);
+    display: block;
+    margin: 0 0 $spacing--large;
+    color: $primary-color;
+    padding: $spacing $spacing--large $spacing $spacing;
+    background: $yellow-light;
+    border-radius: $border-radius;
+    span {
+      display: block;
+      max-width: 600px;
+    }
+  }
+
   &__search-result-content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     border-bottom: 1px solid $brand-color--light;
     margin: 0;
     padding-bottom: $spacing;
 
-    .c-content-type-result {
-      @include mq(desktop) {
-        flex: 0 0 30%;
+    &--multiple-columned {
+      flex-direction: row;
+      .c-content-type-result {
+        a {
+          display: flex;
+          flex-grow: 1;
+        }
+        @include mq(desktop) {
+          flex: 0 0 30%;
+        }
       }
     }
     @include mq($until: desktop) {
@@ -265,6 +301,18 @@ $overlay-height: 136px;
     padding: 0;
     margin: 0 auto;
   }
+  &__button--close {
+    right: $spacing--large;
+    @include mq(tablet) {
+      transform: translateY(3px);
+    }
+    @include font-size(14px, 16px);
+    text-transform: uppercase;
+    color: $text-light-color;
+    &:hover, &:focus {
+      color: $brand-color;
+    }
+  }
   &__header-container {
     display: flex;
     padding-top: $spacing--small;
@@ -277,6 +325,11 @@ $overlay-height: 136px;
     > .c-search-field {
       width: 100%;
       margin-right: -$spacing--large;
+      @include mq($until: tablet) {
+        .c-search-field__button--close {
+          right: $spacing--large + $spacing--medium;
+        }
+      }
     }
     > button {
       width: $spacing--large;

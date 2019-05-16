@@ -13,7 +13,7 @@ import { Breakpoint } from '@ndla/core/types';
 import { StyledWrapperAutosizer } from './Styles';
 import { CalculatedProps as CalculatedCarouselProps } from './Carousel';
 
-interface CaruselBreakpoint {
+export interface CaruselBreakpoint {
   until?: Breakpoint;
   columnsPrSlide: number;
   distanceBetweenItems: number;
@@ -23,8 +23,10 @@ interface CaruselBreakpoint {
 }
 
 interface Props {
-  breakpoints: CaruselBreakpoint[];
+  ndlaFilm: boolean;
   centered?: boolean;
+  itemsLength: number;
+  breakpoints: CaruselBreakpoint[],
   children: (
     calculatedProps: CalculatedCarouselProps | null,
   ) => React.ReactNode;
@@ -35,6 +37,9 @@ interface State {
 }
 
 export class CarouselAutosize extends Component<Props, State> {
+  static defaultProps = {
+    itemsLength: 999,
+  };
   autosizeRef = React.createRef<HTMLDivElement>();
   state: State = {};
 
@@ -50,7 +55,7 @@ export class CarouselAutosize extends Component<Props, State> {
   updateSizes = () => {
     const node = this.autosizeRef.current!;
     const wrapperWidthInEm = parseFloat(em(node.offsetWidth));
-    const { breakpoints } = this.props;
+    const breakpoints: CaruselBreakpoint[] = this.props.breakpoints;
 
     const useBreakpoint = breakpoints
       .filter(breakpointItem => {
@@ -106,6 +111,7 @@ export class CarouselAutosize extends Component<Props, State> {
 
   render() {
     const { carouselBreakpoint } = this.state;
+    const { children, centered, itemsLength } = this.props;
     if (!carouselBreakpoint) {
       return <div ref={this.autosizeRef} />;
     }
@@ -114,17 +120,14 @@ export class CarouselAutosize extends Component<Props, State> {
       carouselBreakpoint,
     );
 
-    const maxColumnWidth = carouselBreakpoint.maxColumnWidth;
-
     let wrapperWidth = 'auto';
 
     if (
-      this.props.centered &&
-      calculatedCarouselProps &&
-      maxColumnWidth === calculatedCarouselProps.columnWidth
+      centered &&
+      calculatedCarouselProps
     ) {
       wrapperWidth = `${calculatedCarouselProps.columnWidth *
-        calculatedCarouselProps.columnsPrSlide +
+        Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength)  +
         calculatedCarouselProps.distanceBetweenItems *
           (calculatedCarouselProps.columnsPrSlide - 1) +
         (calculatedCarouselProps.margin || 0) * 2}px`;
@@ -134,7 +137,7 @@ export class CarouselAutosize extends Component<Props, State> {
       <div ref={this.autosizeRef}>
         {carouselBreakpoint && (
           <StyledWrapperAutosizer width={wrapperWidth}>
-            {this.props.children(calculatedCarouselProps)}
+            {children(calculatedCarouselProps)}
           </StyledWrapperAutosizer>
         )}
       </div>

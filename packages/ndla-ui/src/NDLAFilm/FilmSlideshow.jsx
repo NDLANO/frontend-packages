@@ -10,11 +10,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
-import { isMobile } from 'react-device-detect';
-import { OneColumn } from '@ndla/ui';
-import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
+import { OneColumn, SafeLink } from '@ndla/ui';
 import Spinner from '../Spinner';
 import { movieShape } from './shapes';
+import NavigationArrow from './NavigationArrow';
+import SlideshowIndicator from './SlideshowIndicator';
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -184,7 +184,6 @@ class FilmSlideshow extends Component {
   initTimer() {
     if (this.props.autoSlide) {
       this.timer = setTimeout(() => {
-        console.log('called');
         this.gotoSlide(this.state.slideIndex + 1);
       }, this.props.slideInterval);
     }
@@ -219,51 +218,31 @@ class FilmSlideshow extends Component {
           onSwiping={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
-              <a
-                href={slideshow[activeSlide].url}
-                ref={this.slideText}
+              <SafeLink
+                to={`/subjects${slideshow[activeSlide].path}`}
                 {...classes('item-wrapper', 'text', {
                   out: !animationComplete,
                 })}>
                 <div {...classes('slide-info')}>
                   <h1>{slideshow[activeSlide].title}</h1>
-                  <p>
-                    {slideshow[activeSlide].metaDescription.metaDescription}
-                  </p>
+                  <p>{slideshow[activeSlide].metaDescription}</p>
                 </div>
-              </a>
+              </SafeLink>
             </OneColumn>
           </div>
-          <div {...classes('navigation-arrows')}>
-            <button
-              type="button"
-              tabIndex={-1}
-              onClick={() => {
-                this.gotoSlide(
-                  slideIndexTarget > 0
-                    ? slideIndexTarget - 1
-                    : slideshow.length - 1,
-                  true,
-                );
-              }}>
-              <ChevronLeft />
-            </button>
-          </div>
-          <div {...classes('navigation-arrows', 'right')}>
-            <button
-              type="button"
-              tabIndex={-1}
-              onClick={() => {
-                this.gotoSlide(
-                  slideIndexTarget < slideshow.length - 1
-                    ? slideIndexTarget + 1
-                    : 0,
-                  true,
-                );
-              }}>
-              <ChevronRight />
-            </button>
-          </div>
+          <NavigationArrow
+            slideIndexTarget={
+              slideIndexTarget > 0 ? slideIndexTarget - 1 : slideshow.length - 1
+            }
+            gotoSlide={this.gotoSlide}
+          />
+          <NavigationArrow
+            slideIndexTarget={
+              slideIndexTarget < slideshow.length - 1 ? slideIndexTarget + 1 : 0
+            }
+            gotoSlide={this.gotoSlide}
+            rightArrow
+          />
           {!animationComplete && (
             <div
               {...classes('item', 'fade-over')}
@@ -289,20 +268,11 @@ class FilmSlideshow extends Component {
             {renderSlideItem(slideshow[0], slideshow.length)}
           </div>
         </Swipeable>
-        <div {...classes('indicator-wrapper')}>
-          {slideshow.map((slide, index) => (
-            <button
-              key={`indicator_${index}`} // eslint-disable-line react/no-array-index-key
-              type="button"
-              {...classes(
-                'indicator-dot',
-                index === activeSlide ? 'active' : '',
-              )}
-              onClick={() => !isMobile && this.gotoSlide(index, true)}>
-              <span />
-            </button>
-          ))}
-        </div>
+        <SlideshowIndicator
+          slideshow={slideshow}
+          activeSlide={activeSlide}
+          gotoSlide={this.gotoSlide}
+        />
       </section>
     );
   }
@@ -317,7 +287,7 @@ FilmSlideshow.propTypes = {
 
 FilmSlideshow.defaultProps = {
   autoSlide: false,
-  randomStart: true,
+  randomStart: false,
   slideshow: [],
   slideInterval: 5000,
 };

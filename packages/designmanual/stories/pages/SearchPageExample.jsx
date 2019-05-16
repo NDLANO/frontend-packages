@@ -170,6 +170,7 @@ class SearchPageExample extends Component {
       filter_contentTypeFilter: [],
       filter_languageFilter: [],
       filter_createdByFilter: [],
+      searchString: 'Ideskaping',
     };
   }
 
@@ -261,12 +262,12 @@ class SearchPageExample extends Component {
     const hasAuthor = authorTablet !== null;
     const searchString = this.props.competenceGoals
       ? 'Kompetansemål'
-      : 'Ideskaping';
+      : this.state.searchString;
 
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
-        onSearchFieldChange={() => {}}
+        onSearchFieldChange={searchString => this.setState({ searchString })}
         onSearchFieldFilterRemove={(value, filterName) => {
           if (this.state[filterName]) {
             this.setState(prevState => ({

@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { isMobile } from 'react-device-detect';
 import { movieShape } from './shapes';
 
 const classes = new BEMHelper({
@@ -27,7 +26,7 @@ class SlideshowIndicator extends Component {
             key={`indicator_${index}`} // eslint-disable-line react/no-array-index-key
             type="button"
             {...classes('indicator-dot', index === activeSlide ? 'active' : '')}
-            onClick={() => !isMobile && gotoSlide(index, true)}>
+            onClick={() => gotoSlide(index, true)}>
             <span />
           </button>
         ))}

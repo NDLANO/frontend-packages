@@ -72,7 +72,7 @@ export const tvSeries = [
     title: 'Tørk aldri tårer uten hansker',
     image: TorkAldriTorer,
     metaDescription:
-      'Tørk aldri tårer uten hansker er en svensk TV-serie i tre deler basert på romantrilogien med samme tittel skrevet av Jonas Gardell. Handlingen gir et innblikk i livet til en gruppe homofile menn i Stockholm på begynnelsen av 80-tallet, hvor den nye sykdommen aids er i ferd med å bre seg ut i miljøet.',
+      'Tørk aldri tårer uten hansker er en svensk TV-serie i tre deler basert på romantrilogien med samme tittel skrevet av Jonas Gardell. Handlingen gir et innblikk i livet til en gruppe homofile menn i Stockholm på begynnelsen av 80-tallet.',
     movieTypes: {
       [TVSERIES_CONTENTTYPE_ID]: true,
     },
@@ -99,7 +99,7 @@ export const tvSeries = [
     title: 'Halvbroren',
     image: Halvbroren,
     metaDescription:
-      'LHalvbroren er en norsk dramaserie fra 2013, basert på Lars Saabye Christensens roman ved samme navn',
+      'Halvbroren er en norsk dramaserie fra 2013, basert på Lars Saabye Christensens roman ved samme navn',
     movieTypes: {
       [TVSERIES_CONTENTTYPE_ID]: true,
     },

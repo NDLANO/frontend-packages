@@ -172,6 +172,7 @@ class FilmSlideshow extends Component {
   }
 
   gotoSlide(slideIndexTarget, useAnimation) {
+    console.log('???');
     this.swipeDistance = 0;
     clearTimeout(this.timer);
     this.initTimer();
@@ -223,7 +224,7 @@ class FilmSlideshow extends Component {
                 {...classes('item-wrapper', 'text', {
                   out: !animationComplete,
                 })}>
-                <div {...classes('slide-info')}>
+                <div {...classes('slide-info')} ref={this.slideText}>
                   <h1>{slideshow[activeSlide].title}</h1>
                   <p>{slideshow[activeSlide].metaDescription}</p>
                 </div>

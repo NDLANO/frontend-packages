@@ -2,7 +2,6 @@ details {
   transition-duration: 150ms;
   transition-property: left, right, width;
   margin: $spacing--large 0;
-  overflow: hidden;
   width: 100%;
   position: relative;
   left: 0;
@@ -56,13 +55,8 @@ details+details {
 }
 
 summary {
-  &:focus {
-    outline: none;
-  }
-
   color: $brand-color;
   cursor: pointer;
-  cursor: hand;
   padding: $spacing;
 }
 

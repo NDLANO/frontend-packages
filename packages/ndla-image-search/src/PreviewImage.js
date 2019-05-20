@@ -11,8 +11,9 @@ import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { getSrcSets } from './util/imageUtil';
+import { convertFieldWithFallback } from './util/convertFieldWithFallback';
 
-export default function PreviewImage({ image, onSelectImage, useImageTitle, convertFieldWithFallback }) {
+export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
   const tags = convertFieldWithFallback(image, 'tags', []);
   return (
     <div className="image-preview">
@@ -73,5 +74,4 @@ PreviewImage.propTypes = {
   }).isRequired,
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
-  convertFieldWithFallback: PropTypes.func.isRequired,
 };

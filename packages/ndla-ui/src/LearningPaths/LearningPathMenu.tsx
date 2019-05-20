@@ -261,7 +261,9 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
 
 type StepProps = {
   url: string;
-  title: string;
+  title: {
+    title: string;
+  },
   type: string;
   id: string | number;
   current?: boolean;
@@ -307,7 +309,7 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
               <LearningPathIcon type={type} />
             </div>
             <span>
-              <span>{title}</span>
+              <span>{title.title}</span>
               {index === currentIndex && <small>Du er her</small>}
             </span>
           </SafeLink>
@@ -318,10 +320,11 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
 );
 
 export const LearningPathMenu: React.FunctionComponent<Props> = ({
-  learningsteps, name, duration, lastUpdated, copyright, stepId, language,
+  learningsteps, name, duration, lastUpdated, copyright, stepId,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
+  console.log('learningsteps', learningsteps);
   const currentIndex = learningsteps.findIndex(learningStep => learningStep.id === stepId);
   return (
     <StyledMenu isOpen={isOpen}>

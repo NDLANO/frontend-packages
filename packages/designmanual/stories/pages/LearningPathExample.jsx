@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import {
   LearningPathWrapper,
@@ -21,7 +21,7 @@ import ArticleLearningPaths from './ArticleLearningPaths';
 import Breadcrumb from '../molecules/breadcrumbs';
 
 // Dummy data
-import { StepsInformationData, LearningPathData } from '../../dummydata/mockLearningPaths';
+import { StepsInformationData, LearningPathData, fetchLearningPathArticle, mockedAPIData } from '../../dummydata/mockLearningPaths';
 
 const infoCSS = css`
   display: block;
@@ -45,8 +45,6 @@ const updateSeqNo = (currentSeqNo, code) => {
     return currentSeqNo;
   }
 
-  console.log(currentSeqNo, direction)
-
   if (currentSeqNo + direction < 0 || currentSeqNo + direction >= LearningPathData.learningsteps.length) {
     return currentSeqNo;
   }
@@ -55,22 +53,34 @@ const updateSeqNo = (currentSeqNo, code) => {
 
 const LearningPathExample = () => {
   const [currentSeqNo, setSeqNo] = useReducer(updateSeqNo, 0);
-  const { learningsteps, duration, lastUpdated, copyright } = LearningPathData;
+  const { duration, lastUpdated, copyright } = LearningPathData;
+  const { learningsteps } = mockedAPIData;
   const { title, description, license, showTitle } = StepsInformationData[currentSeqNo];
   const stepId = learningsteps[currentSeqNo].id; // should be fetched from url
   const currentIndex = learningsteps.findIndex(learningStep => learningStep.current);
   const lastUpdatedDate = new Date(lastUpdated);
   const lastUpdatedString = `${lastUpdatedDate.getDate()}.${lastUpdatedDate.getMonth() < 10 ? '0' : ''}${lastUpdatedDate.getMonth()}.${lastUpdatedDate.getFullYear()}`;
-
+  console.log('learningsteps', learningsteps);
+  async function fetchData(params) {
+    // You can await here
+    const data = await fetchLearningPathArticle(params);
+    console.log('got data', data);
+  }
+  
   useEffect(() => {
     const onKeyUpEvent = (e) => {
       setSeqNo(e.code);
     }
     window.addEventListener('keyup', onKeyUpEvent);
+    fetchData({ stepId: 3249, learningPathId: 434 });
     return () => {
       window.removeEventListener('keyup', onKeyUpEvent);
     };
   }, []);
+
+  useEffect(() => {
+    console.log('updated currentSeqNo', mockedAPIData[currentSeqNo]);
+  }, [currentSeqNo]);
 
   return (
     <>
@@ -103,8 +113,8 @@ const LearningPathExample = () => {
             <LearningPathStickySibling
               arrow="left"
               label="forrige"
-              to={learningsteps[currentIndex - 1].url}
-              title={learningsteps[currentIndex - 1].title}
+              to={learningsteps[currentIndex - 1].metaUrl}
+              title={learningsteps[currentIndex - 1].title.title}
             /> :
             <div />
           }
@@ -112,8 +122,8 @@ const LearningPathExample = () => {
             <LearningPathStickySibling
               arrow="right"
               label="neste"
-              to={learningsteps[currentIndex + 1].url}
-              title={learningsteps[currentIndex + 1].title}
+              to={learningsteps[currentIndex + 1].metaUrl}
+              title={learningsteps[currentIndex + 1].title.title}
             /> :
             <div>YOU ARE DONE</div>
           }

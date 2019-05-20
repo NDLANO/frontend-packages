@@ -9,13 +9,14 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { SafeLink, ContentTypeBadge } from '@ndla/ui';
+import { SafeLink } from '@ndla/ui';
 import { useWindowSize } from '@ndla/hooks';
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import Modal from '@ndla/modal';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LearningPathIcon } from './LearningPathIcon';
 
 type StyledMenuProps = {
   isOpen?: Boolean;
@@ -303,7 +304,7 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
           isOpen={isOpen}>
           <SafeLink to={url}>
             <div css={ContentTypeCSS}>
-              <ContentTypeBadge type={type} background />
+              <LearningPathIcon type={type} />
             </div>
             <span>
               <span>{title}</span>

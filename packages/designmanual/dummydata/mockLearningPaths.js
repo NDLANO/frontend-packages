@@ -204,7 +204,7 @@ export const StepsInformationData = [
   }
 ];
 
-const { contentTypes } = constants;
+const { learningPathTypes } = constants;
 
 export const LearningPathData = {
   duration: 360,
@@ -231,49 +231,49 @@ export const LearningPathData = {
       id: 5806,
       title: 'Introduksjon',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'INTRODUCTION',
     },
     {
       id: 5808,
       title: 'Noe å lure på!',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'TASK',
     },
     {
       id: 5809,
       title: 'Enkel taledisposisjon',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'MULTIMEDIA',
     },
     {
       id: 5810,
       title: 'Eksempeltale',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'QUIZ',
     },
     {
       id: 5811,
       title: 'Bruk etos, logos og patos!',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'TEXT',
     },
     {
       id: 5812,
       title: 'Hold en tale!',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'TEXT',
     },
     {
       id: 5813,
       title: 'Noen tips for viderekomne',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'TEXT',
     },
     {
       id: 5814,
       title: 'Egenvurdering',
       url: '#',
-      type: contentTypes.SUBJECT_MATERIAL,
+      type: 'SUMMARY',
     },
   ],
 };

@@ -11,6 +11,14 @@ export { default as AssessmentResource } from './AssessmentResource';
 export {
   default as ExternalLearningResource,
 } from './ExternalLearningResource';
+export { default as LearningPathArticle } from './LearningPathArticle';
+export {
+  default as LearningPathIntroduction,
+} from './LearningPathIntroduction';
+export { default as LearningPathMultimedia } from './LearningPathMultimedia';
+export { default as LearningPathQuiz } from './LearningPathQuiz';
+export { default as LearningPathSummary } from './LearningPathSummary';
+export { default as LearningPathTask } from './LearningPathTask';
 export { default as LearningPath } from './LearningPath';
 export { default as SharedResource } from './SharedResource';
 export { default as SubjectMaterial } from './SubjectMaterial';

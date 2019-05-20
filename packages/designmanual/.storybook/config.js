@@ -15,7 +15,6 @@ setOptions({
   showSearchBox: false,
   addonPanelInRight: false,
   theme: {
-    ...themes.normal,
     mainFill: colors.background.default,
     mainBackground: colors.background.default,
     mainBorder: `1px solid ${colors.brand.light}`,

@@ -9,11 +9,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
-import { uuid, convertFieldWithFallback } from '@ndla/util';
+import { uuid } from '@ndla/util';
 import { getSrcSets } from './util/imageUtil';
 
 export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
-  const tags = convertFieldWithFallback(image, 'tags', []);
+  const tags = image.tags || [];
   return (
     <div className="image-preview">
       <div className="image">
@@ -26,9 +26,7 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
         />
       </div>
       <div className="information">
-        <h2 className="title">
-          {convertFieldWithFallback(image, 'title', '')}
-        </h2>
+        <h2 className="title">{image.title}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
             <span className="text right">

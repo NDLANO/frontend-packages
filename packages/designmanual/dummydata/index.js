@@ -44,6 +44,8 @@ import {
   mockMovieResourceTypes,
 } from './mockFilm';
 
+import { mockTypeahead } from './mockTypeahead';
+
 export {
   topicMenu,
   topicList,
@@ -76,4 +78,5 @@ export {
   movieThemes,
   mockMovieTopics,
   mockMovieResourceTypes,
+  mockTypeahead,
 };

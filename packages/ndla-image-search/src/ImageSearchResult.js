@@ -18,6 +18,7 @@ export default function ImageSearchResult({
   selectedImage,
   onSelectImage,
   useImageTitle,
+  convertFieldWithFallback,
 }) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
@@ -39,6 +40,7 @@ export default function ImageSearchResult({
           image={selectedImage}
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
+          convertFieldWithFallback={convertFieldWithFallback}
         />
       ) : (
         ''
@@ -58,4 +60,5 @@ ImageSearchResult.propTypes = {
   }),
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
+  convertFieldWithFallback: PropTypes.func.isRequired,
 };

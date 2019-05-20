@@ -92,14 +92,14 @@ function DropdownMenuItem({ item, isSelected, t, ...rest }) {
           <StyledDescription>{item.description}</StyledDescription>
         )}
       </StyledText>
-      <StyledisSelected>
-        {isSelected && (
+      {isSelected && (
+        <StyledisSelected>
           <>
             {t('dropdown.isSelectedItem')}
             <Check />
           </>
-        )}
-      </StyledisSelected>
+        </StyledisSelected>
+      )}
     </StyledItemButton>
   );
 }

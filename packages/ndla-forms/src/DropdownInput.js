@@ -27,7 +27,7 @@ const DropdownInput = ({
       tags={
         multiSelect &&
         values.map(value => (
-          <FormPill label={value} id={value} onClick={removeItem} />
+          <FormPill label={value} key={value} id={value} onClick={removeItem} />
         ))
       }
       data-testid={testid}

@@ -23,7 +23,9 @@ const StyledImageContainer = styled.div`
 `;
 
 export function DropdownMenuImage({ image, alt }) {
-  if (!image) return null;
+  if (!image) {
+    return null;
+  }
   return (
     <StyledImageContainer>
       {typeof image === 'string' ? (

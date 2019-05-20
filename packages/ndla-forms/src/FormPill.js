@@ -74,7 +74,7 @@ export const FormPills = ({ labels, onClick }) => (
 );
 
 FormPills.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   labels: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,

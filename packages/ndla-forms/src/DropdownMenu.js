@@ -30,7 +30,7 @@ const StyledResultList = styled.div`
   max-height: ${props => props.menuHeight}px;
 `;
 
-const CreateButton = styled.button`
+const StyledCreateButton = styled.button`
   border: 0;
   border-bottom: 1px solid ${colors.brand.greyLightest};
   border-top: 1px solid ${colors.brand.greyLightest};
@@ -74,22 +74,22 @@ const DropdownMenu = ({
     return selectedItem && selectedItem.id === item.id;
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}
       {...getMenuProps({ isOpen })}
       data-testid="dropdown-items">
       <StyledResultList menuHeight={menuHeight}>
-        {items.slice(0, maxRender).map(item => {
-          const isSelected = checkIsSelected(item);
-          return (
-            <DropdownMenuItem
-              {...getItemProps({ item, isSelected })}
-              item={item}
-            />
-          );
-        })}
+        {items.slice(0, maxRender).map((item, index) => (
+          <DropdownMenuItem
+            {...getItemProps({ item, isSelected: checkIsSelected(item) })}
+            item={item}
+            key={`${item.title}${index}`}
+          />
+        ))}
       </StyledResultList>
       <StyledResultFooter>
         {loading
@@ -97,9 +97,9 @@ const DropdownMenu = ({
           : t('dropdown.numberHits', { hits: items.length })}
       </StyledResultFooter>
       {onCreate && (
-        <CreateButton type="button" onClick={onCreate}>
+        <StyledCreateButton type="button" onClick={onCreate}>
           {t('dropdown.create')}
-        </CreateButton>
+        </StyledCreateButton>
       )}
     </StyledDropDownContainer>
   );

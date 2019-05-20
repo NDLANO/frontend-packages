@@ -13,7 +13,7 @@ import { uuid } from '@ndla/util';
 import { getSrcSets } from './util/imageUtil';
 
 export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
-  const tags = (image && image.tags) || [];
+  const tags = image.tags || [];
   return (
     <div className="image-preview">
       <div className="image">
@@ -26,7 +26,7 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
         />
       </div>
       <div className="information">
-        <h2 className="title">{(image && image.title) || []}</h2>
+        <h2 className="title">{image.title}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
             <span className="text right">

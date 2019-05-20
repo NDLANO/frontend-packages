@@ -78,13 +78,13 @@ const StyledItemButton = styled.button`
     `}
 `;
 
-function DropdownMenuItem({ item, isSelected, t, ...props }) {
+function DropdownMenuItem({ item, isSelected, t, ...rest }) {
   return (
     <StyledItemButton
       key={item.id}
       type="button"
       isSelected={isSelected}
-      {...props}>
+      {...rest}>
       {<DropdownMenuImage image={item.image} alt={item.alt} />}
       <StyledText>
         <StyledTitle>{item.title}</StyledTitle>

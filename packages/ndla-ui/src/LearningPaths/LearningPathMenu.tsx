@@ -15,6 +15,7 @@ import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import Modal from '@ndla/modal';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 
 type StyledMenuProps = {
   isOpen?: Boolean;
@@ -224,12 +225,12 @@ const wrapperCSS = css`
 interface ModalWrapperProps {
   innerWidth: number;
   currentIndex: number;
-  learningStepsTotal: number;
+  learningstepsTotal: number;
   children: React.ReactNode;
 };
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
-  innerWidth, currentIndex, learningStepsTotal, children
+  innerWidth, currentIndex, learningstepsTotal, children
 }) => (
   innerWidth < 601 ? (
     <div css={wrapperCSS}>
@@ -239,7 +240,7 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
         animationDuration={200}
         size="fullscreen"
         activateButton={
-          <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningStepsTotal}</button>
+          <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningstepsTotal}</button>
         }>
         {(onClose: Function) => (
           <div>
@@ -262,24 +263,35 @@ type StepProps = {
 }
 
 interface Props {
-  learningSteps: StepProps[];
+  learningsteps: StepProps[];
+  stepId: string | number;
   name: string;
-  estimatedTime: number;
+  duration: number;
   lastUpdated: string[];
-  authors: string[];
-  license: string;
+  language: string;
+  copyright: {
+    contributors: {
+      type: string;
+      name: string;
+    }[],
+    license: {
+      license: string;
+      description: string;
+      url: string;
+    },
+  },
 }
 
 type renderMenuProps = {
-  learningSteps: StepProps[];
+  learningsteps: StepProps[];
   isOpen: boolean;
   currentIndex: number;
 }
 
-const renderMenu = ({ learningSteps, currentIndex, isOpen }:renderMenuProps) => (
+const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
-      {learningSteps.map(({ id, url, title, type, current }:StepProps, index:number) => (
+      {learningsteps.map(({ id, url, title, type, current }:StepProps, index:number) => (
         <StyledMenuItem
           key={id}
           current={index === currentIndex}
@@ -301,14 +313,14 @@ const renderMenu = ({ learningSteps, currentIndex, isOpen }:renderMenuProps) => 
 );
 
 export const LearningPathMenu: React.FunctionComponent<Props> = ({
-  learningSteps, name, estimatedTime, lastUpdated, authors, license,
+  learningsteps, name, duration, lastUpdated, copyright, stepId, language,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
-  const currentIndex = learningSteps.findIndex(learningStep => learningStep.current);
+  const currentIndex = learningsteps.findIndex(learningStep => learningStep.id === stepId);
   return (
     <StyledMenu isOpen={isOpen}>
-      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningStepsTotal={learningSteps.length}>
+      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningstepsTotal={learningsteps.length}>
         <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
           {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
         </StyledToggleMenubutton>
@@ -317,17 +329,17 @@ export const LearningPathMenu: React.FunctionComponent<Props> = ({
             <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
             <h1>{name}</h1>
             <StyledTimeBox>
-              <Time /> {Math.round((estimatedTime / 0.75) * 10) / 10} Skoletimer = {estimatedTime * 60} min
+              <Time /> {Math.round((duration / 45) * 10) / 10} Skoletimer = {duration} min
             </StyledTimeBox>
           </div>
         </StyledMenuIntro>
-        {renderMenu({ learningSteps, isOpen, currentIndex })}
+        {renderMenu({ learningsteps, isOpen, currentIndex })}
         <aside css={asideCSS}>
           sist oppdatert: {lastUpdated}
-          {authors.map(author => (
-            <p>{author}</p>
+          {copyright.contributors && copyright.contributors.map(contributor => (
+            <p>{contributor.name}</p>
           ))}
-          {license}
+          {copyright.license.license}
         </aside>
       </ModalWrapperComponent>
     </StyledMenu>

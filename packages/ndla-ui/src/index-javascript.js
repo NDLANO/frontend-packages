@@ -181,5 +181,6 @@ export {
   LearningPathContent,
   LearningPathMenu,
   LearningPathSticky,
+  LearningPathInformation,
   LearningPathStickySibling,
 } from './LearningPaths';

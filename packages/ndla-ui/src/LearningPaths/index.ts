@@ -9,4 +9,5 @@
 export { LearningPathWrapper } from './LearningPathWrapper';
 export { LearningPathContent } from './LearningPathContent';
 export { LearningPathMenu } from './LearningPathMenu';
+export { LearningPathInformation } from './LearningPathInformation';
 export { LearningPathSticky, LearningPathStickySibling } from './LearningPathSticky';

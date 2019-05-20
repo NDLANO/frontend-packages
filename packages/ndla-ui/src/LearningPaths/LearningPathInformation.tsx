@@ -6,17 +6,10 @@
  *
  */
 
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { SafeLink, ContentTypeBadge } from '@ndla/ui';
-import { useWindowSize } from '@ndla/hooks';
-import { Time } from '@ndla/icons/common';
-import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
-import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
+import React from 'react';
 
 interface Props {
-  description: string;
+  description?: string;
   title: string;
   license?: {
     license: string,
@@ -35,8 +28,8 @@ export const LearningPathInformation: React.FunctionComponent<Props> = ({
       </h1>
       {license && license.license}
     </div>
-    <div
+    {description && <div
       dangerouslySetInnerHTML={{ __html: description }}
-    />
+    />}
   </div>
 );

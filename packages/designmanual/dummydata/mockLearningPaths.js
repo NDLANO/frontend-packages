@@ -3,10 +3,73 @@ import { constants } from '@ndla/ui';
 export const StepsInformationData = [
   { 
     canEdit: false,
+    id: 947,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: true,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
+    id: 948,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: false,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
     description: {
       description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
     },
-    id: 947,
+    id: 949,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: false,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
+    description: {
+      description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
+    },
+    id: 950,
     url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
     embedUrl: {
       embedType: 'oembed',
@@ -29,7 +92,99 @@ export const StepsInformationData = [
     description: {
       description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
     },
-    id: 947,
+    id: 951,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: false,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
+    description: {
+      description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
+    },
+    id: 952,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: false,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
+    description: {
+      description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
+    },
+    id: 953,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: false,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
+    description: {
+      description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
+    },
+    id: 954,
+    url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
+    embedUrl: {
+      embedType: 'oembed',
+      url: 'https://ndla.no/nb/subjects/subject:9/topic:1:182163/topic:1:154342/resource:1:169373',
+    },
+    license: {
+      license: 'CC-BY-SA-4.0',
+      description: 'Creative Commons Attribution-ShareAlike 4.0 International',
+      url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    },
+    seqNo: 1,
+    showTitle: false,
+    title: {
+      language: 'nb',
+      title: 'Høvdingsamfunnet – vennskap og allianser',
+    },
+  },
+  {
+    canEdit: false,
+    description: {
+      description: '<p>Etter at du har fullført denne læringsstien, skal du:</p><ul><li>kunne gi kjennetegn på høvdingsamfunnet i tidlig norsk middelalder</li><li>vite hvordan innføringen av kristendommen i Norge skjedde, og hvordan det påvirket både maktforholdene og folk flest</li><li>kunne drøfte hvordan vikingtiden har blitt brukt som politisk middel i ettertiden</li></ul>',
+    },
+    id: 955,
     url: "https://ndla-frontend.test.api.ndla.no/nb/article/712",
     embedUrl: {
       embedType: 'oembed',

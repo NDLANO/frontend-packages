@@ -15,7 +15,6 @@ import {
   LearningPathStickySibling,
   LearningPathContent,
   LearningPathInformation,
-  constants,
 } from '@ndla/ui';
 
 import ArticleLearningPaths from './ArticleLearningPaths';
@@ -33,6 +32,7 @@ const infoCSS = css`
   z-index: 9999;
   border: 4px solid red;
   border-radius: 10px;
+  position: fixed;
 `;
 
 const updateSeqNo = (currentSeqNo, code) => {
@@ -44,6 +44,8 @@ const updateSeqNo = (currentSeqNo, code) => {
   } else {
     return currentSeqNo;
   }
+
+  console.log(currentSeqNo, direction)
 
   if (currentSeqNo + direction < 0 || currentSeqNo + direction >= LearningPathData.learningsteps.length) {
     return currentSeqNo;
@@ -85,12 +87,12 @@ const LearningPathExample = () => {
             lastUpdated={lastUpdatedString}
             copyright={copyright}
             stepId={stepId}
-            setSeqNo={setSeqNo}
+            currentIndex={currentIndex}
           />
           <div>
             {showTitle && <LearningPathInformation
               title={title.title}
-              description={description.description}
+              description={description && description.description}
               license={license}
             />}
             <ArticleLearningPaths />

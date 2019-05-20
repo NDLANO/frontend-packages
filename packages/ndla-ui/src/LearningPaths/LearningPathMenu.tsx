@@ -78,11 +78,10 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   a {
     box-shadow: none;
     height: 60px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    width: 100%;
     padding: ${spacing.small};
-    span {
+    > span {
       ${fonts.sizes(14, 1.2)};
       font-weight: ${fonts.weight.semibold};
       color: ${colors.brand.primary};
@@ -91,6 +90,11 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     small {
       ${typography.smallHeading}
       padding-left: ${spacing.xsmall};
+    }
+    &:hover, &:focus {
+      > span > span {
+        box-shadow: ${colors.link};
+      }
     }
   }
   ${props => props.current && props.isOpen && `
@@ -291,7 +295,7 @@ type renderMenuProps = {
 const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
-      {learningsteps.map(({ id, url, title, type, current }:StepProps, index:number) => (
+      {learningsteps.map(({ id, url, title, type }:StepProps, index:number) => (
         <StyledMenuItem
           key={id}
           current={index === currentIndex}
@@ -302,8 +306,8 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
               <ContentTypeBadge type={type} background />
             </div>
             <span>
-              {title}
-              {current && <small>Du er her</small>}
+              <span>{title}</span>
+              {index === currentIndex && <small>Du er her</small>}
             </span>
           </SafeLink>
         </StyledMenuItem>

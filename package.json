@@ -80,7 +80,7 @@
     "react-bem-helper": "1.4.1",
     "react-collapse": "^4.0.3",
     "react-device-detect": "^1.6.2",
-    "react-dom": "^16.8.1",
+    "react-dom": "^16.8.4",
     "react-height": "3.0.0",
     "react-helmet": "^5.2.0",
     "react-motion": "0.5.2",

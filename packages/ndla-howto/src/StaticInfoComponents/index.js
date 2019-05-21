@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioPlayerExamples from './components/AudioExample';
 import FactboxExample from './components/FactboxExample';
+import SolutionExample from './components/SolutionExample';
 
 export const stories = {
   Paragraph: {
@@ -41,10 +42,17 @@ export const stories = {
     lead:
       'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
   },
+
   Blueprint: {
     title: 'Fasitboks',
     lead:
       'En ekspanderende fasitboks, primært tiltenkt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
+    body: [
+      {
+        type: 'component',
+        content: <SolutionExample />,
+      },
+    ],
   },
   Images: {
     title: 'Bilder',

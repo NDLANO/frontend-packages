@@ -43,7 +43,7 @@ export const stories = {
       'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
   },
   SolutionBox: {
-    title: 'Vis fasit boks',
+    title: 'Vis fasitboks',
     lead:
       'En ekspanderbar boks består av en tittel som er synlig og en løsning på en oppgave som vises ved klikk på "Vis fasit".',
     body: [

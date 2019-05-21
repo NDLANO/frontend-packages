@@ -14,6 +14,7 @@ import {
   PlayBoxOutline,
   PresentationPlay,
   RelatedArticle,
+  Keyhole,
 } from '@ndla/icons/editor';
 import { ArticleInModal } from '@ndla/howto';
 import { VolumeUp, Download, InformationOutline } from '@ndla/icons/common';
@@ -67,6 +68,12 @@ const actions = [
     label: 'Ekspanderbar boks',
     icon: <ArrowExpand />,
     helpIcon: renderArticleInModal('Details'),
+  },
+  {
+    data: { type: 'blueprint', object: 'blueprint' },
+    label: 'Fasit boks',
+    icon: <Keyhole />,
+    helpIcon: renderArticleInModal('Blueprint'),
   },
   {
     data: { type: 'embed', object: 'image' },

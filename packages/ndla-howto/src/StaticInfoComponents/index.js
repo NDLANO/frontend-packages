@@ -44,7 +44,7 @@ export const stories = {
   Blueprint: {
     title: 'Fasit boks',
     lead:
-      'En ekspanderende fasit boks, primært tiltengt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
+      'En ekspanderende fasit boks, primært tiltenkt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
   },
   Images: {
     title: 'Bilder',

@@ -29,8 +29,10 @@ const StyledMenu = styled.div<StyledMenuProps>`
     width: 378px;
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+    min-width: 378px;
     ${props => !props.isOpen && `
       width: 60px;
+      min-width: 60px;
       ${StyledMenuIntro} {
         display: none;
       }

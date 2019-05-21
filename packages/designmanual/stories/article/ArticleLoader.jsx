@@ -120,6 +120,7 @@ class ArticleLoader extends Component {
       showSubTopics,
       ndlaFilm,
       withBackgroundImage,
+      hideForm,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -146,6 +147,14 @@ class ArticleLoader extends Component {
       articleChildren.push(<Resources key="resources" />);
     }
 
+    if (article && article.status) {
+      return (
+        <OneColumn>
+          <h1>Error fetching article..</h1>
+        </OneColumn>
+      );
+    }
+
     return (
       <>
         {ndlaFilm && (
@@ -156,7 +165,7 @@ class ArticleLoader extends Component {
         )}
         <div>
           <Helmet script={scripts} />
-          {article ? (
+          {article && (
             <OneColumn>
               <Article
                 icon={icon}
@@ -176,13 +185,14 @@ class ArticleLoader extends Component {
                 {articleChildren}
               </Article>
             </OneColumn>
-          ) : (
+          )}
+          {!article && !hideForm &&
             <SimpleSubmitForm
               onSubmit={this.handleSubmit}
               errorMessage={message}
               labelText="Artikkel ID:"
             />
-          )}
+          }
           {article && closeButton ? (
             <Button onClick={() => this.setState({ article: undefined })}>
               Lukk
@@ -199,6 +209,7 @@ ArticleLoader.propTypes = {
   label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
+  hideForm: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,

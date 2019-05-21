@@ -43,6 +43,7 @@ export { default as ImageSmall } from './ImageSmall';
 export { default as ImageXsmall } from './ImageXsmall';
 export { default as ImageXxSmall } from './ImageXxSmall';
 export { default as Italic } from './Italic';
+export { default as Keyhole } from './Keyhole';
 export { default as LastUsed } from './LastUsed';
 export { default as Learningpath } from './Learningpath';
 export { default as LearningResource } from './LearningResource';

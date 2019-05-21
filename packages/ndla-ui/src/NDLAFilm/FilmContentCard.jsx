@@ -65,7 +65,8 @@ const StyledMovieTitle = styled.h2`
   ${fonts.sizes('14px', '20px')};
   font-weight: ${fonts.weight.semibold};
   color: #fff;
-  margin: ${spacing.xsmall} 0 ${spacing.small};
+  margin: ${spacing.xsmall} 0 ${spacing.normal};
+  min-height: ${spacing.large};
   @media (min-width: ${breakpoints.mobileWide}) {
     ${fonts.sizes('16px', '22px')};
   }

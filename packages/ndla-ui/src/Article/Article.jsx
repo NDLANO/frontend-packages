@@ -25,7 +25,9 @@ const classes = new BEMHelper({
 });
 
 export const ArticleWrapper = ({ children, modifier, id }) => (
-  <article id={id} {...classes(undefined, modifier)}>{children}</article>
+  <article id={id} {...classes(undefined, modifier)}>
+    {children}
+  </article>
 );
 
 ArticleWrapper.propTypes = {

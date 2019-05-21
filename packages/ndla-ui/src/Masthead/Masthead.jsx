@@ -60,7 +60,11 @@ export const Masthead = ({
   t,
 }) => (
   <Fragment>
-    {skipToMainContentId && <a href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>{t('masthead.skipToContent')}</a>}
+    {skipToMainContentId && (
+      <a href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
+        {t('masthead.skipToContent')}
+      </a>
+    )}
     <div {...classes('placeholder', { infoContent })} />
     <div
       {...classes('', { fixed, infoContent, showLoaderWhenNeeded, ndlaFilm })}>

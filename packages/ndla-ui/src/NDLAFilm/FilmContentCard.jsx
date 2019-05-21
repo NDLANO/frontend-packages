@@ -47,7 +47,7 @@ const FilmContentCard = ({
       </SafeLink>
     </StyledSlideWrapper>
   );
-}
+};
 
 const StyledMovieTags = styled.span`
   transition: opacity 200ms ease;

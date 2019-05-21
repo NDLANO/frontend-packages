@@ -33,8 +33,8 @@ import { BreadcrumbBlock } from './breadcrumbs';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 
-export const MastheadWithLogo = () => (
-  <Masthead fixed>
+export const MastheadWithLogo = ({ skipToMainContentId }) => (
+  <Masthead fixed skipToMainContentId={skipToMainContentId}>
     <MastheadItem right>
       <Logo to="#" label="Nasjonal digital læringsarena" />
     </MastheadItem>
@@ -201,6 +201,7 @@ class MastheadWithTopicMenu extends Component {
     return (
       <Masthead
         fixed
+        skipToMainContentId={this.props.skipToMainContentId}
         ndlaFilm={this.props.ndlaFilm}
         hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
@@ -328,6 +329,7 @@ MastheadWithTopicMenu.propTypes = {
   topicMenuProps: PropTypes.object,
   t: PropTypes.func.isRequired,
   ndlaFilm: PropTypes.bool,
+  skipToMainContentId: PropTypes.string,
 };
 
 MastheadWithTopicMenu.defaultProps = {

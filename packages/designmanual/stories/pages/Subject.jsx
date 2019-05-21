@@ -180,7 +180,7 @@ const some = (
   </SubjectSocialContent>
 );
 
-export default () => (
+export default ({ id }) => (
   <article>
     <SubjectHeader
       heading="Medieuttrykk og mediesamfunnet"
@@ -194,6 +194,7 @@ export default () => (
     <OneColumn wide>
       <SubjectContent breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
+          id={id}
           subjectPage
           header={<ResourcesTitle>Emner</ResourcesTitle>}>
           <TopicListExample />
@@ -283,7 +284,7 @@ export default () => (
   </article>
 );
 
-export const SubjectWithTwoColumn = () => (
+export const SubjectWithTwoColumn = ({ id }) => (
   <article>
     <SubjectHeader
       heading="Medieuttrykk og mediesamfunnet"
@@ -297,6 +298,7 @@ export const SubjectWithTwoColumn = () => (
     <OneColumn wide>
       <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
+          id={id}
           subjectPage
           header={<ResourcesTitle>Emner</ResourcesTitle>}>
           <TwoColumnsExample />
@@ -399,7 +401,7 @@ export const SubjectWithTwoColumn = () => (
   </article>
 );
 
-export const SubjectLanguage = () => (
+export const SubjectLanguage = ({ id }) => (
   <article>
     <SubjectHeader
       heading="Kinesisk"
@@ -413,6 +415,7 @@ export const SubjectLanguage = () => (
     <OneColumn wide>
       <SubjectContent twoColumns breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
+          id={id}
           subjectPage
           header={<ResourcesTitle>Emner</ResourcesTitle>}>
           <TwoColumnsLanguageExample />

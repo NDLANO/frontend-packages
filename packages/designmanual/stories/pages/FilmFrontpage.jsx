@@ -59,6 +59,7 @@ class FilmFrontpage extends Component {
       moreAboutNdlaFilm,
       resizeThumbnailImages,
       language,
+      id,
       t,
     } = this.props;
 
@@ -72,6 +73,7 @@ class FilmFrontpage extends Component {
 
     return (
       <div
+        id={id}
         css={css`
           background: #091a2a;
           padding-bottom: ${spacing.large};
@@ -207,6 +209,7 @@ FilmFrontpage.propTypes = {
     }),
   }),
   resizeThumbnailImages: PropTypes.bool,
+  id: PropTypes.string,
   language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
   t: PropTypes.func.isRequired,
 };

@@ -10,7 +10,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
-
+import { injectT } from '@ndla/i18n';
 import { DisplayOnPageYOffset } from '../Animation';
 
 const classes = new BEMHelper({
@@ -56,8 +56,11 @@ export const Masthead = ({
   infoContent,
   showLoaderWhenNeeded,
   ndlaFilm,
+  skipToMainContentId,
+  t,
 }) => (
   <Fragment>
+    {skipToMainContentId && <a href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>{t('masthead.skipToContent')}</a>}
     <div {...classes('placeholder', { infoContent })} />
     <div
       {...classes('', { fixed, infoContent, showLoaderWhenNeeded, ndlaFilm })}>
@@ -77,10 +80,11 @@ Masthead.propTypes = {
   showLoaderWhenNeeded: PropTypes.bool,
   infoContent: PropTypes.node,
   ndlaFilm: PropTypes.bool,
+  skipToMainContentId: PropTypes.string,
 };
 
 Masthead.defaultProps = {
   showLoaderWhenNeeded: true,
 };
 
-export default Masthead;
+export default injectT(Masthead);

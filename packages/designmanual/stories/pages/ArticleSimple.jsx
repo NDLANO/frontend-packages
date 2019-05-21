@@ -22,7 +22,7 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
-    <ArticleWrapper>
+    <ArticleWrapper id="mainContentId">
       <LayoutItem layout="center">
         <ArticleHeaderWrapper>
           <ArticleTitle label="Artikkel">Tittel</ArticleTitle>

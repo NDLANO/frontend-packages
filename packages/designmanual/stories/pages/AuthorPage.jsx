@@ -13,7 +13,7 @@ import Button from '@ndla/button';
 
 export default () => (
   <OneColumn>
-    <ArticleWrapper>
+    <ArticleWrapper id="mainContentId">
       <LayoutItem layout="center">
         <AuthorInfo
           authorName="Cecilie Isaksen Eftedal"

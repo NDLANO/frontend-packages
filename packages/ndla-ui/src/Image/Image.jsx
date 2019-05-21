@@ -63,7 +63,6 @@ const Image = ({
   const fallbackWidth = defined(rest.fallbackWidth, 1024);
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
 
-  console.log('widths', getSrcSet(src, crop, focalPoint));
   if (contentType && contentType === 'image/gif') {
     return <img alt={alt} src={`${src}`} {...rest} />;
   }

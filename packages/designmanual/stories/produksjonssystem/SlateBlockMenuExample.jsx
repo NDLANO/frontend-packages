@@ -71,7 +71,7 @@ const actions = [
   },
   {
     data: { type: 'blueprint', object: 'blueprint' },
-    label: 'Fasit boks',
+    label: 'Fasitboks',
     icon: <Keyhole />,
     helpIcon: renderArticleInModal('Blueprint'),
   },

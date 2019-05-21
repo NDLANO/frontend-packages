@@ -42,9 +42,9 @@ export const stories = {
       'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
   },
   Blueprint: {
-    title: 'Fasit boks',
+    title: 'Fasitboks',
     lead:
-      'En ekspanderende fasit boks, primært tiltenkt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
+      'En ekspanderende fasitboks, primært tiltenkt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
   },
   Images: {
     title: 'Bilder',

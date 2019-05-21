@@ -9,37 +9,45 @@ const FilmContentCard = ({
   columnWidth,
   distanceBetweenItems,
   resourceTypes,
-}) => (
-  <StyledSlideWrapper
-    key={id}
-    columnWidth={columnWidth}
-    style={{ marginRight: `${distanceBetweenItems}px` }}>
-    <SafeLink to={`/subjects${path}`}>
-      <StyledImage
-        role="img"
-        columnWidth={columnWidth}
-        aria-label={(metaImage && metaImage.alt) || ''}
-        style={{
-          backgroundImage: `url(${(metaImage && metaImage.url) || ''})`,
-        }}>
-        <StyledTagWrapper>
-          {Array.isArray(movieResourceTypes) &&
-            movieResourceTypes.map(movieResourceType => {
-              const resource = resourceTypes.find(
-                resourceType => resourceType.id === movieResourceType.id,
-              );
-              return resource ? (
-                <StyledMovieTags key={movieResourceType}>
-                  {resource.name}
-                </StyledMovieTags>
-              ) : null;
-            })}
-        </StyledTagWrapper>
-      </StyledImage>
-      <StyledMovieTitle>{title}</StyledMovieTitle>
-    </SafeLink>
-  </StyledSlideWrapper>
-);
+  resizeThumbnailImages,
+}) => {
+  let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
+  if (!resizeThumbnailImages && metaImage) {
+    backgroundImage += '?width=480';
+  }
+  console.log(backgroundImage);
+  return (
+    <StyledSlideWrapper
+      key={id}
+      columnWidth={columnWidth}
+      style={{ marginRight: `${distanceBetweenItems}px` }}>
+      <SafeLink to={`/subjects${path}`}>
+        <StyledImage
+          role="img"
+          columnWidth={columnWidth}
+          aria-label={(metaImage && metaImage.alt) || ''}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
+          <StyledTagWrapper>
+            {Array.isArray(movieResourceTypes) &&
+              movieResourceTypes.map(movieResourceType => {
+                const resource = resourceTypes.find(
+                  resourceType => resourceType.id === movieResourceType.id,
+                );
+                return resource ? (
+                  <StyledMovieTags key={movieResourceType}>
+                    {resource.name}
+                  </StyledMovieTags>
+                ) : null;
+              })}
+          </StyledTagWrapper>
+        </StyledImage>
+        <StyledMovieTitle>{title}</StyledMovieTitle>
+      </SafeLink>
+    </StyledSlideWrapper>
+  );
+}
 
 const StyledMovieTags = styled.span`
   transition: opacity 200ms ease;
@@ -120,6 +128,7 @@ FilmContentCard.propTypes = {
   columnWidth: PropTypes.number,
   distanceBetweenItems: PropTypes.number,
   resourceTypes: PropTypes.arrayOf(PropTypes.object),
+  resizeThumbnailImages: PropTypes.bool,
 };
 
 export default FilmContentCard;

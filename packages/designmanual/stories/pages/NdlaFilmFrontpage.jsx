@@ -61,6 +61,7 @@ class NdlaFilmExample extends Component {
         topics={mockMovieTopics}
         resourceTypes={mockMovieResourceTypes}
         onSelectedMovieByType={this.onSelectedMovieByType}
+        resizeThumbnailImages={false}
         aboutNDLAVideo={{
           title: 'Om NDLA film',
           description:

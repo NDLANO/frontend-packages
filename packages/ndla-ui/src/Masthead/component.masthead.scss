@@ -66,8 +66,10 @@
   }
 
   &--ndlaFilm {
-    background: $film-color;
+    background: $film-color-light;
+    background-image: linear-gradient(bottom, $film-color-light, $film-color);
     border: 0;
+    border-bottom: 1px solid $film-color-lighter;
     .c-breadcrumb-block,
     .c-breadcrumb-block__item,
     .c-breadcrumb-block__item a,

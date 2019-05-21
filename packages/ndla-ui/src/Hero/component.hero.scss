@@ -40,7 +40,7 @@
     .c-hero__content {
       .c-breadcrumb__item,
       .c-breadcrumb__item--home:after,
-      a {
+      a, a:focus, a:hover {
         color: #fff;
       }
     }

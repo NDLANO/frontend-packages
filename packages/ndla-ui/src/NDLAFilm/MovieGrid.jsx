@@ -16,6 +16,7 @@ const MovieGrid = ({
   resourceTypes,
   loadingPlaceholderHeight,
   autoSizedProps,
+  resizeThumbnailImages,
   t,
 }) => {
   return (
@@ -45,6 +46,7 @@ const MovieGrid = ({
               columnWidth={autoSizedProps.columnWidth}
               distanceBetweenItems={autoSizedProps.distanceBetweenItems}
               resourceTypes={resourceTypes}
+              resizeThumbnailImages={resizeThumbnailImages}
             />
           ))}
       </div>

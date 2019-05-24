@@ -10,12 +10,12 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { SafeLink } from '@ndla/ui';
+import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import Modal from '@ndla/modal';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { LearningPathIcon } from './LearningPathIcon';
 
 type StyledMenuProps = {
@@ -182,11 +182,22 @@ const StyledTimeBox = styled.div`
 `;
 
 const StyledToggleMenubutton = styled.button`
-  background: ${colors.brand.primary};
-  color: #fff;
+  background: ${colors.brand.light};
+  color: ${colors.brand.primary};
+  width: ${spacing.medium};
+  height: ${spacing.medium};
+  margin-left: ${spacing.small};
+  align-items: center;
+  justify-content: center;
+  border-radius: ${misc.borderRadius};
   display: none;
+  border: none;
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     display: flex;
+    &:hover, &:focus {
+      background: ${colors.brand.primary};
+      color: #fff;
+    }
   }
 `;
 
@@ -326,14 +337,15 @@ export const LearningPathMenu: React.FunctionComponent<Props> = ({
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
-  console.log('learningsteps', learningsteps);
   const currentIndex = learningsteps.findIndex(learningStep => learningStep.id === stepId);
   return (
     <StyledMenu isOpen={isOpen}>
       <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningstepsTotal={learningsteps.length}>
-        <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
-          {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
-        </StyledToggleMenubutton>
+        <Tooltip align="right" tooltip="åpne">
+          <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
+            {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
+          </StyledToggleMenubutton>
+        </Tooltip>
         <StyledMenuIntro>
           <div>
             <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { isMobile, isIE } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors, fonts } from '@ndla/core';
+import { spacing, colors, fonts, animation } from '@ndla/core';
 
 const TooltipWrapper = styled.div`
   position: relative;
@@ -70,13 +70,13 @@ class Tooltip extends Component {
     };
     this.handleShowTooltip = this.handleShowTooltip.bind(this);
     this.handleHideTooltip = this.handleHideTooltip.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.contentRef = React.createRef();
     this.tooltipRef = React.createRef();
   }
 
   getPosition() {
     const currentStyles = {};
+    const { align } = this.props;
     if (this.state.showTooltip) {
       const widthRef = this.contentRef.current.offsetWidth;
       const heightRef = this.contentRef.current.offsetHeight;
@@ -91,10 +91,10 @@ class Tooltip extends Component {
           2}px`;
         currentStyles.top = `-${this.tooltipRef.current.offsetHeight + 10}px`;
       } else if (
-        this.props.align === 'top' ||
-        this.props.align === 'bottom' ||
-        (this.props.align === 'left' && leftRef - tooltipWidth < 20) ||
-        (this.props.align === 'right' &&
+        align === 'top' ||
+        align === 'bottom' ||
+        (align === 'left' && leftRef - tooltipWidth < 20) ||
+        (align === 'right' &&
           leftRef + widthRef + tooltipWidth > window.innerWidth - 40)
       ) {
         const centeredLeft = leftRef + widthRef / 2;
@@ -105,14 +105,14 @@ class Tooltip extends Component {
         if (moveHorizontal === 0) {
           moveHorizontal = Math.min(-(tooltipWidth / 2 - centeredLeft + 20), 0);
         }
-        if (this.props.align === 'bottom') {
+        if (align === 'bottom') {
           currentStyles.transform = `translate(calc(-50% + ${widthRef / 2 -
             moveHorizontal}px), calc(${heightRef}px + ${spacing.xsmall}))`;
         } else {
           currentStyles.transform = `translate(calc(-50% + ${widthRef / 2 -
             moveHorizontal}px), calc(-100% - ${spacing.xsmall}))`;
         }
-      } else if (this.props.align === 'left') {
+      } else if (align === 'left') {
         currentStyles.transform = `translate(calc(-100% - ${
           spacing.xsmall
         }), calc(-50% + ${heightRef / 2}px))`;
@@ -125,6 +125,17 @@ class Tooltip extends Component {
     return currentStyles;
   }
 
+  componentDidMount() {
+    this.focusableChild = this.contentRef.current.querySelector('a, button, [role="button"]');
+    this.focusableChild.addEventListener('focusin', this.handleShowTooltip);
+    this.focusableChild.addEventListener('focusout', this.handleHideTooltip);
+  }
+
+  componentWillUnmount() {
+    this.focusableChild.removeEventListener('focusin', this.handleShowTooltip);
+    this.focusableChild.removeEventListener('focusout', this.handleHideTooltip);
+  }
+
   handleShowTooltip() {
     this.setState({ showTooltip: !this.props.disabled });
   }
@@ -133,53 +144,36 @@ class Tooltip extends Component {
     this.setState({ showTooltip: false });
   }
 
-  handleKeyPress(e) {
-    if (e.key === 'Enter') {
-      try {
-        this.contentRef.current
-          .querySelectorAll('[type="button"], a')[0]
-          .click();
-      } catch (err) {
-        console.log('error', err); // eslint-disable-line no-console
-      }
-    }
-  }
-
   render() {
+    const { tooltipContainerClass, className, delay, tooltip, children } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
-        <div className={this.props.tooltipContainerClass}>
-          <span className={this.props.className}>{this.props.children}</span>
+        <div className={tooltipContainerClass}>
+          <span className={className}>{children}</span>
         </div>
       );
     }
 
     return (
-      <TooltipWrapper className={this.props.tooltipContainerClass}>
-        <Fade animateIn={this.state.showTooltip} delay={this.props.delay}>
+      <TooltipWrapper className={tooltipContainerClass}>
+        <Fade animateIn={this.state.showTooltip} delay={delay}>
           <span
             role="tooltip"
             css={tooltipCss}
             style={this.getPosition()}
             ref={this.tooltipRef}>
-            {this.props.tooltip}
+            {tooltip}
           </span>
         </Fade>
         <div
-          role="button"
-          tabIndex={0}
-          aria-label={this.props.tooltip}
+          aria-label={tooltip}
           ref={this.contentRef}
           onMouseEnter={this.handleShowTooltip}
-          onMouseOut={this.handleHideTooltip}
-          onMouseMove={this.handleShowTooltip}
-          onFocus={this.handleShowTooltip}
-          onKeyPress={this.handleKeyPress}
-          onBlur={this.handleHideTooltip}
+          onMouseLeave={this.handleHideTooltip}
           css={contentCSS}
-          className={this.props.className}>
-          {this.props.children}
+          className={className}>
+            {children}
         </div>
       </TooltipWrapper>
     );

@@ -48,12 +48,12 @@ const SafeLinkCSS = css`
   align-items: center;
   color: ${colors.brand.primary};
   height: ${FOOTER_HEIGHT}px;
-  padding: 0 ${spacing.medium} 0 ${spacing.medium};
+  padding: 0 ${spacing.normal} 0 ${spacing.normal};
   transition: background 200ms ease;
   > .c-icon--medium {
     transition: transform 200ms ease;
   }
-  > div {
+  div {
     display: flex;
     flex-direction: column;
     padding: 0 ${spacing.small};
@@ -61,10 +61,16 @@ const SafeLinkCSS = css`
       box-shadow: inset 0 -1px;
     }
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
+    hr {
+      opacity: 0;
+    }
     background: rgba(0,0,0,0.1);
-    > div span:last-child {
-      box-shadow: none:
+    div {
+      span:last-child {
+        box-shadow: none;
+      }
     }
     > .c-icon--medium {
       transform: translateX(${spacing.xsmall});
@@ -77,16 +83,32 @@ const SafeLinkCSS = css`
   }
 `;
 
+const lineCSS = css`
+  height: ${spacing.large};
+  width: 1px;
+  background: ${colors.brand.tertiary};
+  margin-right: ${spacing.normal};
+  margin-left: -${spacing.normal};
+  border: 0;
+  transition: opacity 200ms ease;
+  &:before {
+    display: none;
+  }
+`;
+
 interface PropsSiblings {
   title: string;
   to: string;
   arrow?: 'left' | 'right';
   label: string;
+  icon?: React.ReactNode;
 }
 
-export const LearningPathStickySibling = ({ title, to, arrow, label }:PropsSiblings) => (
+export const LearningPathStickySibling = ({ title, to, arrow, label, icon }:PropsSiblings) => (
   <SafeLink to={to} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
+    {icon && <hr css={lineCSS} />}
+    {icon && icon}
     <div>
       <span css={typography.smallHeading}>{label}</span>
       <span>{title}</span>

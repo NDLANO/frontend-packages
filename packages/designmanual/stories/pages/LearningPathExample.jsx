@@ -15,6 +15,7 @@ import {
   LearningPathStickySibling,
   LearningPathContent,
   LearningPathInformation,
+  SubjectBadge,
 } from '@ndla/ui';
 
 import ArticleLearningPaths from './ArticleLearningPaths';
@@ -62,7 +63,7 @@ const LearningPathExample = () => {
   const currentIndex = learningsteps.findIndex(learningStep => learningStep.current);
   const lastUpdatedDate = new Date(lastUpdated);
   const lastUpdatedString = `${lastUpdatedDate.getDate()}.${lastUpdatedDate.getMonth() < 10 ? '0' : ''}${lastUpdatedDate.getMonth()}.${lastUpdatedDate.getFullYear()}`;
-  console.log('learningPathData', learningPathData);
+
   async function fetchData(params) {
     // You can await here
     const data = await fetchLearningPathArticle(params);
@@ -94,6 +95,8 @@ const LearningPathExample = () => {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
   }
 
+  console.log(articleId);
+
   return (
     <>
       <LearningPathWrapper>
@@ -117,27 +120,32 @@ const LearningPathExample = () => {
               description={learningPathData.description && learningPathData.description.description}
               license={learningPathData.license}
             />}
-            {articleId && <ArticleLoader hideResources hideForm articleId={articleId} />}
+            {<ArticleLoader hideResources hideForm articleId={'7719'} />}
           </div>}
         </LearningPathContent>
         <LearningPathSticky>
-          {currentIndex > 0 ?
+          {currentSeqNo > 0 ?
             <LearningPathStickySibling
               arrow="left"
               label="forrige"
-              to={learningsteps[currentIndex - 1].metaUrl}
-              title={learningsteps[currentIndex - 1].title.title}
+              to={learningsteps[currentSeqNo - 1].metaUrl}
+              title={learningsteps[currentSeqNo - 1].title.title}
             /> :
             <div />
           }
-          {currentIndex < learningsteps.length - 1 ?
+          {currentSeqNo < learningsteps.length - 1 ?
             <LearningPathStickySibling
               arrow="right"
               label="neste"
-              to={learningsteps[currentIndex + 1].metaUrl}
-              title={learningsteps[currentIndex + 1].title.title}
+              to={learningsteps[currentSeqNo + 1].metaUrl}
+              title={learningsteps[currentSeqNo + 1].title.title}
             /> :
-            <div>YOU ARE DONE</div>
+            <LearningPathStickySibling
+              label="Gå videre til emne"
+              to="#"
+              title={"Navn på emne"}
+              icon={<SubjectBadge background />}
+            />
           }
         </LearningPathSticky>
       </LearningPathWrapper>

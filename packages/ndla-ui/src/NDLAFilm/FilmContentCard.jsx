@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { spacing, colors, fonts, misc, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import styled from '@emotion/styled';
+import FilmContentCardTags from './FilmContentCardTags';
 
 const FilmContentCard = ({
   movie: { metaImage, resourceTypes: movieResourceTypes, title, id, path },
@@ -12,10 +13,10 @@ const FilmContentCard = ({
   resizeThumbnailImages,
 }) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
-  if (!resizeThumbnailImages && metaImage) {
+  if (resizeThumbnailImages && metaImage) {
     backgroundImage += '?width=480';
   }
-  console.log(backgroundImage);
+
   return (
     <StyledSlideWrapper
       key={id}
@@ -29,19 +30,12 @@ const FilmContentCard = ({
           style={{
             backgroundImage: `url(${backgroundImage})`,
           }}>
-          <StyledTagWrapper>
-            {Array.isArray(movieResourceTypes) &&
-              movieResourceTypes.map(movieResourceType => {
-                const resource = resourceTypes.find(
-                  resourceType => resourceType.id === movieResourceType.id,
-                );
-                return resource ? (
-                  <StyledMovieTags key={movieResourceType}>
-                    {resource.name}
-                  </StyledMovieTags>
-                ) : null;
-              })}
-          </StyledTagWrapper>
+          {movieResourceTypes && (
+            <FilmContentCardTags
+              movieResourceTypes={movieResourceTypes}
+              resourceTypes={resourceTypes}
+            />
+          )}
         </StyledImage>
         <StyledMovieTitle>{title}</StyledMovieTitle>
       </SafeLink>
@@ -49,18 +43,6 @@ const FilmContentCard = ({
   );
 };
 
-const StyledMovieTags = styled.span`
-  transition: opacity 200ms ease;
-  background: ${colors.brand.greyLight};
-  padding: calc(${spacing.xsmall} / 2) ${spacing.xsmall};
-  ${fonts.sizes('14px', '16px')};
-  font-weight: ${fonts.weight.semibold};
-  border-radius: ${misc.borderRadius};
-  color: ${colors.text.primary};
-  margin-right: ${spacing.spacingUnit / 4}px;
-  margin-bottom: ${spacing.spacingUnit / 8}px;
-  opacity: 0;
-`;
 const StyledMovieTitle = styled.h2`
   ${fonts.sizes('14px', '20px')};
   font-weight: ${fonts.weight.semibold};
@@ -81,6 +63,8 @@ const StyledImage = styled.div`
   background-position-x: center;
   background-position-y: center;
   position: relative;
+  display: flex;
+  align-items: flex-end;
   &:before {
     content: '';
     transition: 200ms ease;
@@ -104,21 +88,15 @@ const StyledSlideWrapper = styled.div`
     ${StyledMovieTitle} {
       text-decoration: underline;
     }
-    ${StyledMovieTags} {
-      opacity: 1;
-    }
-    ${StyledImage}:before {
-      opacity: 0.3;
+    ${StyledImage} {
+      &:before {
+        opacity: 0.3;
+      }
+      > div {
+        opacity: 1;
+      }
     }
   }
-`;
-
-const StyledTagWrapper = styled.div`
-  padding: ${spacing.xsmall} ${spacing.xsmall};
-  flex-flow: wrap;
-  display: flex;
-  position: absolute;
-  bottom: 0;
 `;
 
 FilmContentCard.propTypes = {

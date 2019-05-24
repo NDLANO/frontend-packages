@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Image } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button from '@ndla/button';
@@ -47,7 +48,7 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm, t }) => {
     <div className="o-wrapper">
       <StyledAside>
         <div>
-          <img
+          <Image
             src={aboutNDLAVideo.visualElement.url}
             alt={aboutNDLAVideo.visualElement.alt}
           />

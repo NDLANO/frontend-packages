@@ -95,7 +95,7 @@
 
   &--ndlaFilm {
     background: $film-color-light;
-    background-image: linear-gradient(bottom, $film-color-light, $film-color);
+    background-image: linear-gradient(0deg, $film-color-light, $film-color);
     border: 0;
     border-bottom: 1px solid $film-color-lighter;
     .c-breadcrumb-block,

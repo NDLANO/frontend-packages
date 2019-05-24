@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
@@ -59,7 +59,7 @@ export const Masthead = ({
   skipToMainContentId,
   t,
 }) => (
-  <Fragment>
+  <>
     {skipToMainContentId && (
       <a href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
         {t('masthead.skipToContent')}
@@ -75,7 +75,7 @@ export const Masthead = ({
       )}
       <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
     </div>
-  </Fragment>
+  </>
 );
 
 Masthead.propTypes = {

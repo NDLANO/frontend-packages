@@ -232,7 +232,6 @@ export const sourceMaterialResources = [
   },
 ];
 
-
 export const externalLearningResources = [
   {
     id: 'urn:resource:883281e0-c5ec-42d8-8365-abx',

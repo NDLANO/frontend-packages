@@ -159,7 +159,7 @@ const NotionDialog = ({ title, children, id, subTitle, ariaHidden }) => (
 
 NotionDialog.propTypes = {
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   closeCallback: PropTypes.func,
   subTitle: PropTypes.string,
   ariaHidden: PropTypes.bool,

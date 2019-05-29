@@ -56,7 +56,7 @@ const ItemTitleButton = styled.button`
     css`
       cursor: pointer;
     `};
-  ${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
+  ${props => !props.hasSubtopics && !props.isSubject && itemTitleLinked};
   &:before {
     transition: transform 200ms ease;
     transform: rotate(
@@ -79,7 +79,7 @@ const ItemName = ({
   toggleOpen,
   hasSubtopics,
   isOpen,
-  level,
+  isSubject,
   lastItemClickable,
   id,
 }) => (
@@ -89,7 +89,7 @@ const ItemName = ({
         type="button"
         id={id}
         hasSubtopics={hasSubtopics}
-        level={level}
+        isSubject={isSubject}
         lastItemClickable={lastItemClickable}
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}>
@@ -111,7 +111,7 @@ ItemName.propTypes = {
   isOpen: PropTypes.bool,
   lastItemClickable: PropTypes.bool,
   id: PropTypes.string,
-  level: PropTypes.number,
+  isSubject: PropTypes.bool,
 };
 
 export default ItemName;

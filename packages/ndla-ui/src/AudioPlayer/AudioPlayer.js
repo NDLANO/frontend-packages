@@ -18,12 +18,16 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const stopPropagation = evt => {
+  evt.stopPropagation();
+};
+
 const AudioPlayer = ({ type, src, title, speech }) => {
   if (speech) {
     return (
       <section {...classes('', 'speech')}>
         <audio type={type} src={src} title={title} preload="metadata" />
-        <button type="button" {...classes('play')}>
+        <button type="button" {...classes('play')} onClick={stopPropagation}>
           <VolumeUp role="img" aria-label="play" title="play" />
         </button>
       </section>
@@ -35,7 +39,7 @@ const AudioPlayer = ({ type, src, title, speech }) => {
       <h1 {...classes('title')}>{title}</h1>
       <audio type={type} src={src} title={title} preload="metadata" />
       <div {...classes('controls')}>
-        <button type="button" {...classes('play')}>
+        <button type="button" {...classes('play')} onClick={stopPropagation}>
           <span {...classes('play-icon')}>
             <Play role="img" aria-label="play" title="play" />
           </span>

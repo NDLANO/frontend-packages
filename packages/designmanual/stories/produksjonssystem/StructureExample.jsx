@@ -146,32 +146,26 @@ const buttonAddition = css`
   ${fonts.sizes(14, 1.1)};
 `;
 
-const listClass = css`
-  > div {
-    > .filestructure {
-      display: flex;
-      &:focus-within {
-        > button {
-          opacity: 1;
-        }
-      }
-    }
-    &:hover {
-      background: #f1f5f8;
-      .filestructure {
-        > button,
-        > span {
-          opacity: 1;
-        }
-      }
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  &:focus-within {
+    > button {
+      opacity: 1;
     }
   }
-  &.active {
-    .filestructure {
-      > button,
-      > span {
-        opacity: 1;
-      }
+
+  div:hover > & {
+    background: #f1f5f8;
+    > button,
+    > span {
+      opacity: 1;
+    }
+  }
+
+  div:active > & {
+    > button,
+    > span {
+      opacity: 1;
     }
   }
 `;
@@ -242,7 +236,7 @@ class StructureExample extends Component {
         return null;
       }
       return (
-        <div className={'filestructure'}>
+        <StyledButtonWrapper>
           <AddTitle show>Filtrer emner:</AddTitle>
           {availableFilters[subjectId].map(filter => (
             <ConnectionButton
@@ -281,15 +275,15 @@ class StructureExample extends Component {
               <span>{filter.name}</span>
             </ConnectionButton>
           ))}
-        </div>
+        </StyledButtonWrapper>
       );
     }
     return (
-      <div className={'filestructure'}>
+      <StyledButtonWrapper>
         <Button outline css={buttonAddition} onClick={() => {}}>
           Emne funksjon
         </Button>
-      </div>
+      </StyledButtonWrapper>
     );
   }
 
@@ -319,7 +313,6 @@ class StructureExample extends Component {
             });
           }}
           renderListItems={this.renderListItems}
-          listClass={listClass}
           activeFilters={activeFilters}
           filters={availableFilters}
         />

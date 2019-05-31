@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors } from '@ndla/core';
 import Spinner from './Spinner';
-import ItemName from './ItemName';
+import ItemNameBar from './ItemNameBar';
 
 const StructureWrapper = styled.ul`
   margin: 0;
@@ -24,17 +24,6 @@ const StyledStructureItem = styled.li`
   padding: 0;
   display: flex;
   flex-direction: column;
-  > div {
-    padding: 0 ${spacing.small} 0
-      calc(${props => props.level} * 17px + ${spacing.small});
-    height: 40px;
-    border-bottom: 1px solid ${colors.brand.greyLighter};
-
-    &:hover {
-      background: ${props =>
-        props.highlight ? colors.brand.light : '#f1f5f8'};
-    }
-  }
   > ul {
     display: none;
   }
@@ -46,6 +35,7 @@ const StyledStructureItem = styled.li`
         display: block;
       }
     `};
+
   ${props =>
     props.highlight &&
     css`
@@ -53,6 +43,7 @@ const StyledStructureItem = styled.li`
         background: ${colors.brand.light};
       }
     `};
+
   ${props =>
     props.greyedOut &&
     css`
@@ -64,7 +55,6 @@ const StyledStructureItem = styled.li`
 
 const Structure = ({
   renderListItems,
-  listClass,
   activeFilters,
   filters: subjectFilters,
   structure,
@@ -101,14 +91,13 @@ const Structure = ({
           return (
             <StyledStructureItem
               key={pathToString}
-              css={listClass}
               level={currentPath.length}
               highlight={
                 highlightMainActive ? isMainActive : isOpen && isSubject
               }
-              greyedOut={!isOpen && isSubject && openedPaths.length > 0}
-              isOpen={isOpen}>
-              <ItemName
+              isOpen={isOpen}
+              greyedOut={!isOpen && isSubject && openedPaths.length > 0}>
+              <ItemNameBar
                 isOpen={isOpen}
                 title={name}
                 lastItemClickable={highlightMainActive}
@@ -134,7 +123,7 @@ const Structure = ({
                     name,
                     ...rest,
                   })}
-              </ItemName>
+              </ItemNameBar>
               {children && (
                 <Structure
                   structure={children}
@@ -184,7 +173,6 @@ Structure.propTypes = {
   ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
-  listClass: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   activeFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
 };

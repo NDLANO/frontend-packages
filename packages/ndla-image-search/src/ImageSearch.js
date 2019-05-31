@@ -314,7 +314,6 @@ class ImageSearch extends React.Component {
     if (!selectedImage || image.id !== selectedImage.id) {
       fetchImage(image.id)
         .then(result => {
-          console.log(result);
           this.setState({ selectedImage: result });
         })
         .catch(err => {

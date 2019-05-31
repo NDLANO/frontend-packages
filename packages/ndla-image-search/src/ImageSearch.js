@@ -332,9 +332,9 @@ class ImageSearch extends React.Component {
   }
 
   searchImages(queryObject) {
-    const { searchImages, onError } = this.props;
+    const { searchImages, onError, locale } = this.props;
     this.setState({ searching: true });
-    searchImages(queryObject.query, queryObject.page, this.props.locale)
+    searchImages(queryObject.query, queryObject.page, locale)
       .then(result => {
         this.setState({
           queryObject: {

@@ -41,13 +41,14 @@ import Norsk from './Norsk.svg';
 import Biologi1 from './Biologi-1.svg';
 import ReligionOgEtikk from './Religion-og-Etikk.svg';
 import SosiologiOgSosialantropologi from './Sosiologi-og-Sosialantropologi.svg';
+religion og etikk, sosiologi og sosialantropologi og biologi 1
 
 export default [
   { desktop: Biologi1, mobile: Biologi1, name: 'Biologi 1' },
   {
     desktop: ReligionOgEtikk,
     mobile: ReligionOgEtikk,
-    name: 'Religion og Etikk',
+    name: 'Religion og etikk',
   },
   {
     desktop: SosiologiOgSosialantropologi,

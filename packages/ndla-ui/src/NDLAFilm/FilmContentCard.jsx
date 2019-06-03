@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { spacing, colors, fonts, misc, breakpoints } from '@ndla/core';
+import { spacing, colors, fonts, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import styled from '@emotion/styled';
 import FilmContentCardTags from './FilmContentCardTags';

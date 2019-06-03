@@ -19,6 +19,7 @@ const classes = new BEMHelper({
 });
 
 const stopPropagation = evt => {
+  evt.preventDefault();
   evt.stopPropagation();
 };
 

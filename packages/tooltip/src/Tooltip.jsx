@@ -20,8 +20,6 @@ const TooltipWrapper = styled.div`
 const tooltipCss = css`
   display: block;
   color: #fff;
-  position: absolute;
-  z-index: 9999;
   background: ${colors.brand.primary};
   border-radius: 2px;
   padding: ${spacing.xsmall} ${spacing.small};
@@ -31,7 +29,6 @@ const tooltipCss = css`
   text-align: center;
   white-space: nowrap;
   max-width: calc(100vw - #{${spacing.normal}});
-  pointer-events: none;
 `;
 
 const contentCSS = css`
@@ -40,6 +37,9 @@ const contentCSS = css`
 
 const Fade = styled.div`
   opacity: 0;
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
   @keyframes fadeInTooltip {
     0% {
       opacity: 0;
@@ -127,13 +127,17 @@ class Tooltip extends Component {
 
   componentDidMount() {
     this.focusableChild = this.contentRef.current.querySelector('a, button, [role="button"]');
-    this.focusableChild.addEventListener('focusin', this.handleShowTooltip);
-    this.focusableChild.addEventListener('focusout', this.handleHideTooltip);
+    if (this.focusableChild) {
+      this.focusableChild.addEventListener('focusin', this.handleShowTooltip);
+      this.focusableChild.addEventListener('focusout', this.handleHideTooltip);
+    }
   }
 
   componentWillUnmount() {
-    this.focusableChild.removeEventListener('focusin', this.handleShowTooltip);
-    this.focusableChild.removeEventListener('focusout', this.handleHideTooltip);
+    if (this.focusableChild) {
+      this.focusableChild.removeEventListener('focusin', this.handleShowTooltip);
+      this.focusableChild.removeEventListener('focusout', this.handleHideTooltip);
+    }
   }
 
   handleShowTooltip() {

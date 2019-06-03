@@ -13,7 +13,7 @@ import { SafeLink } from '@ndla/ui';
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
 import { Time } from '@ndla/icons/common';
-import { colors, spacing, fonts, misc, typography, mq, breakpoints } from '@ndla/core';
+import { colors, spacing, fonts, misc, typography, mq, breakpoints, animations } from '@ndla/core';
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import Modal from '@ndla/modal';
 import { LearningPathIcon } from './LearningPathIcon';
@@ -24,6 +24,7 @@ type StyledMenuProps = {
 
 const StyledMenu = styled.div<StyledMenuProps>`
   width: 100%;
+  transition: all 200ms ease;
   ${mq.range({ from: breakpoints.tablet })} {
     max-width: 378px;
     width: 378px;
@@ -75,6 +76,7 @@ type StyledMenuItemProps = {
   current?: boolean;
   isOpen: boolean;
   afterCurrent: boolean;
+  indexNumber: number;
 }
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
@@ -98,6 +100,23 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       > span > span {
         box-shadow: ${colors.link};
       }
+    }
+  }
+  ${mq.range({ until: breakpoints.desktop })} {
+    ${props => !props.isOpen && `
+      margin-bottom: -${spacing.xsmall};
+      margin-top: -${spacing.xsmall};
+      transition: margin ${animations.durations.superFast} ease;
+    `}
+    ${props => props.isOpen && `
+      a span {
+        ${animations.fadeInLeftFromZero()}
+        animation-delay: ${parseInt(animations.durations.superFast) * 1.5 + 20 * props.indexNumber}ms;
+      }
+    `}
+    &:first-of-type, &:last-of-type {
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
   ${props => props.current && props.isOpen && `
@@ -149,7 +168,11 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   `}
 `;
 
-const StyledMenuIntro = styled.div`
+type StyledMenuIntroProps = {
+  isOpen?: Boolean;
+};
+
+const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     margin-left: 28px;
     margin-top: ${spacing.normal};
     border-left: 4px solid ${colors.brand.grey};
@@ -165,6 +188,33 @@ const StyledMenuIntro = styled.div`
     }
     > div {
       padding: 0 0 ${spacing.medium} ${spacing.normal};
+    }
+    ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+      ${props => props.isOpen && css`
+        animation-duration: ${animations.durations.superFast};
+        animation-name: StyledMenuIntroAnimationHeight;
+        @keyframes StyledMenuIntroAnimationHeight {
+          0% {
+            height: ${spacing.normal};
+            width: 0;
+          }
+          99% {
+            overflow: hidden;
+            height: 118px;
+            width: 200px;
+          }
+          100% {
+            height: auto;
+            width: auto;
+          }
+        }
+        > * {
+          opacity: 0;
+          ${animations.fadeInBottom()}
+          animation-fill-mode: forwards;
+          animation-delay: ${animations.durations.superFast};
+        }
+        `
     }
 `;
 
@@ -238,6 +288,11 @@ const wrapperCSS = css`
   margin: 0 -${spacing.normal} ${spacing.medium};
   background: ${colors.brand.lighter};
   padding: ${spacing.xsmall} ${spacing.normal};
+`;
+
+const styledIntroHeaderCSS = css`
+  ${fonts.sizes(18, 1.1)};
+  line-height: 20px;
 `;
 
 interface ModalWrapperProps {
@@ -316,7 +371,8 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
           key={id}
           current={index === currentIndex}
           afterCurrent={index > currentIndex}
-          isOpen={isOpen}>
+          isOpen={isOpen}
+          indexNumber={index}>
           <SafeLink to={url}>
             <div css={ContentTypeCSS}>
               <LearningPathIcon type={type} />
@@ -346,10 +402,10 @@ export const LearningPathMenu: React.FunctionComponent<Props> = ({
             {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
           </StyledToggleMenubutton>
         </Tooltip>
-        <StyledMenuIntro>
+        <StyledMenuIntro isOpen={isOpen}>
           <div>
             <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
-            <h1>{name}</h1>
+            <h1 css={styledIntroHeaderCSS}>{name}</h1>
             <StyledTimeBox>
               <Time /> {Math.round((duration / 45) * 10) / 10} Skoletimer = {duration} min
             </StyledTimeBox>

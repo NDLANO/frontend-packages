@@ -67,6 +67,7 @@ const LearningPathExample = () => {
   async function fetchData(params) {
     // You can await here
     const data = await fetchLearningPathArticle(params);
+    console.log('got data', data);
     setLearningPathData(data);
   }
   
@@ -95,7 +96,7 @@ const LearningPathExample = () => {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
   }
 
-  console.log(articleId);
+  console.log('mocked', mockedAPIData);
 
   return (
     <>
@@ -113,6 +114,7 @@ const LearningPathExample = () => {
             copyright={copyright}
             stepId={stepId}
             currentIndex={currentIndex}
+            name={mockedAPIData.title.title}
           />
           {learningPathData && <div>
             {learningPathData.showTitle && <LearningPathInformation

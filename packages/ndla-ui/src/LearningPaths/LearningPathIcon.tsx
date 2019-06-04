@@ -15,6 +15,7 @@ import {
   LearningPathQuiz,
   LearningPathSummary,
   LearningPathTask,
+  LearningPathRead,
 } from '@ndla/icons/contentType';
 
 import { colors } from '@ndla/core';
@@ -61,6 +62,9 @@ export const LearningPathIcon: React.FunctionComponent<Props> = ({
       break;
     case 'TASK':
       icon = <LearningPathTask />;
+      break;
+    case 'HASREAD':
+      icon = <LearningPathRead />;
       break;
     default:
       break;

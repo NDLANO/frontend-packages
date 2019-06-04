@@ -18,19 +18,23 @@ import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import Modal from '@ndla/modal';
 import { LearningPathIcon } from './LearningPathIcon';
 
+const SIDE_NAV_WIDTH = '372px';
+
 type StyledMenuProps = {
   isOpen?: Boolean;
 };
 
 const StyledMenu = styled.div<StyledMenuProps>`
   width: 100%;
+  flex-shrink: 0;
   transition: all 200ms ease;
   ${mq.range({ from: breakpoints.tablet })} {
-    max-width: 378px;
-    width: 378px;
+    max-width: ${SIDE_NAV_WIDTH};
+    width: ${SIDE_NAV_WIDTH};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-    min-width: 378px;
+    min-width: ${SIDE_NAV_WIDTH};
+    margin-right: ${spacing.xsmall};
     ${props => !props.isOpen && `
       width: 60px;
       min-width: 60px;
@@ -38,6 +42,9 @@ const StyledMenu = styled.div<StyledMenuProps>`
         display: none;
       }
     `}
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-right: ${spacing.small};
   }
 `;
 
@@ -77,6 +84,7 @@ type StyledMenuItemProps = {
   isOpen: boolean;
   afterCurrent: boolean;
   indexNumber: number;
+  hasRead?: boolean;
 }
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
@@ -90,11 +98,12 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       ${fonts.sizes(14, 1.2)};
       font-weight: ${fonts.weight.semibold};
       color: ${colors.brand.primary};
-      align-items: center;
     }
     small {
       ${typography.smallHeading}
       padding-left: ${spacing.xsmall};
+      flex-grow: 1;
+      flex-shrink: 0;
     }
     &:hover, &:focus {
       > span > span {
@@ -121,7 +130,6 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   }
   ${props => props.current && props.isOpen && `
     a {
-      background: #fff;
       &:before {
         position: absolute;
         content: '';
@@ -134,16 +142,8 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     }
   `}
   ${props => props.current && `
-    &:before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      background: red;
-      position: absolute;
-      border-radius: 100%;
-      transform: translate(0, 27px);
-      z-index: 2;
+    ${mq.range({ from: breakpoints.desktop })} {
+      background: #fff;
     }
   `}
   &:after {
@@ -157,12 +157,14 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   }
   ${props => !props.afterCurrent && `
     a {
-      font-weight: ${fonts.weight.normal};
+      > span {
+        font-weight: ${fonts.weight.normal};
+      }
       color: ${colors.text.primary};
     }
     &:after {
       width: 4px;
-      background: ${colors.brand.grey};
+      background: ${colors.brand.primary};
       transform: translate(28px, -90px);
     }
   `}
@@ -175,11 +177,11 @@ type StyledMenuIntroProps = {
 const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     margin-left: 28px;
     margin-top: ${spacing.normal};
-    border-left: 4px solid ${colors.brand.grey};
+    border-left: 4px solid ${colors.brand.primary};
     &:before {
       content: '';
       display: block;
-      background: ${colors.brand.grey};
+      background: ${colors.brand.primary};
       border-radius: 100%;
       height: 12px;
       width: 12px;
@@ -265,7 +267,7 @@ const navCSSClosed = css`
       a:hover, a:focus {
         position: relative;
         z-index: 1;
-        width: 378px;
+        width: ${SIDE_NAV_WIDTH};
         background: ${colors.brand.greyLighter};
         span {
           display: flex;
@@ -354,16 +356,22 @@ interface Props {
       description: string;
       url: string;
     },
-  },
+  };
+  cookies: {
+    [key: string]: string;
+  };
 }
 
 type renderMenuProps = {
   learningsteps: StepProps[];
   isOpen: boolean;
   currentIndex: number;
+  cookies: {
+    [key: string]: string;
+  };
 }
 
-const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => (
+const renderMenu = ({ learningsteps, currentIndex, isOpen, cookies }:renderMenuProps) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
       {learningsteps.map(({ id, url, title, type }:StepProps, index:number) => (
@@ -375,11 +383,10 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
           indexNumber={index}>
           <SafeLink to={url}>
             <div css={ContentTypeCSS}>
-              <LearningPathIcon type={type} />
+              <LearningPathIcon type={cookies[id] ? 'HASREAD' : type} />
             </div>
             <span>
               <span>{title.title}</span>
-              {index === currentIndex && <small>Du er her</small>}
             </span>
           </SafeLink>
         </StyledMenuItem>
@@ -389,11 +396,12 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen }:renderMenuProps) => 
 );
 
 export const LearningPathMenu: React.FunctionComponent<Props> = ({
-  learningsteps, name, duration, lastUpdated, copyright, stepId,
+  learningsteps, name, duration, lastUpdated, copyright, stepId, cookies,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
   const currentIndex = learningsteps.findIndex(learningStep => learningStep.id === stepId);
+
   return (
     <StyledMenu isOpen={isOpen}>
       <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningstepsTotal={learningsteps.length}>
@@ -411,11 +419,11 @@ export const LearningPathMenu: React.FunctionComponent<Props> = ({
             </StyledTimeBox>
           </div>
         </StyledMenuIntro>
-        {renderMenu({ learningsteps, isOpen, currentIndex })}
+        {renderMenu({ learningsteps, isOpen, currentIndex, cookies })}
         <aside css={asideCSS}>
           sist oppdatert: {lastUpdated}
           {copyright.contributors && copyright.contributors.map(contributor => (
-            <p>{contributor.name}</p>
+            <p id={contributor.name}>{contributor.name}</p>
           ))}
           {copyright.license.license}
         </aside>

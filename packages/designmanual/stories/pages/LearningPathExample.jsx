@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useReducer, useEffect, useState } from 'react';
+import React, { useReducer, useEffect, useState, useMemo } from 'react';
 import { css } from '@emotion/core';
 import {
   LearningPathWrapper,
@@ -17,13 +17,22 @@ import {
   LearningPathInformation,
   SubjectBadge,
 } from '@ndla/ui';
+import {
+  getCookie,
+  setCookie,
+} from '@ndla/util';
 
-import ArticleLearningPaths from './ArticleLearningPaths';
 import ArticleLoader from '../article/ArticleLoader';
 import Breadcrumb from '../molecules/breadcrumbs';
 
 // Dummy data
-import { StepsInformationData, LearningPathData, fetchLearningPathArticle, mockedAPIData } from '../../dummydata/mockLearningPaths';
+import { fetchLearningPathArticle, fetchLearningPathLearningSteps } from '../../dummydata/mockLearningPaths';
+
+const LEARNING_PATHS_COOKIES_KEY = 'LEARNING_PATHS_COOKIES_KEY';
+const UPDATE_SEQUENCE_NUMBER = 'UPDATE_SEQUENCE_NUMBER';
+const UPDATE_LEARNING_PATH_STEP = 'UPDATE_LEARNING_PATH_STEP';
+const UPDATE_LEARNING_PATH_DATA = 'UPDATE_LEARNING_PATH_DATA';
+const DEMO_LEARNING_PATH_ID = 434;
 
 const infoCSS = css`
   display: block;
@@ -37,67 +46,106 @@ const infoCSS = css`
   position: fixed;
 `;
 
-const updateSeqNo = (currentSeqNo, code) => {
+const updateLearningStepNumber = ({ learningStepsData, currentLearningStepNumber }, code) => {
   let direction;
   if (code === 'ArrowLeft') {
     direction = -1;
   } else if (code === 'ArrowRight') {
     direction = 1;
   } else {
-    return currentSeqNo;
+    return currentLearningStepNumber || 0;
   }
+  if (currentLearningStepNumber + direction < 0 || currentLearningStepNumber + direction >= learningStepsData.learningsteps.length) {
+    return currentLearningStepNumber;
+  }
+  
+  return currentLearningStepNumber + direction;
+};
 
-  if (currentSeqNo + direction < 0 || currentSeqNo + direction >= LearningPathData.learningsteps.length) {
-    return currentSeqNo;
+const dataReducer = (state, action) => {
+  switch (action.type) {
+    case UPDATE_SEQUENCE_NUMBER:
+      return {
+        ...state,
+        currentLearningStepNumber: updateLearningStepNumber(state, action.code),
+      };
+    case UPDATE_LEARNING_PATH_STEP:
+      return {
+        ...state,
+        currentLearningStep: action.data,
+      };
+    case UPDATE_LEARNING_PATH_DATA:
+      return {
+        ...state,
+        learningStepsData: action.data,
+      };
+    default:
+      throw new Error();
   }
-  return currentSeqNo + direction;
-}
+};
 
 const LearningPathExample = () => {
-  const [currentSeqNo, setSeqNo] = useReducer(updateSeqNo, 0);
-  const [learningPathData, setLearningPathData] = useState(null);
-  const { duration, lastUpdated, copyright } = LearningPathData;
-  const { learningsteps } = mockedAPIData;
-  const { license } = StepsInformationData[currentSeqNo];
-  const stepId = learningsteps[currentSeqNo].id; // should be fetched from url
-  const currentIndex = learningsteps.findIndex(learningStep => learningStep.current);
-  const lastUpdatedDate = new Date(lastUpdated);
-  const lastUpdatedString = `${lastUpdatedDate.getDate()}.${lastUpdatedDate.getMonth() < 10 ? '0' : ''}${lastUpdatedDate.getMonth()}.${lastUpdatedDate.getFullYear()}`;
+  const [currentState, dispatch] = useReducer(dataReducer, {});
+  const { currentLearningStepNumber, currentLearningStep, learningStepsData } = currentState;
 
   async function fetchData(params) {
-    // You can await here
     const data = await fetchLearningPathArticle(params);
-    console.log('got data', data);
-    setLearningPathData(data);
+    dispatch({ type: UPDATE_LEARNING_PATH_STEP, data });
+  }
+
+  async function fetchLearningSteps(params) {
+    const data = await fetchLearningPathLearningSteps(params);
+    dispatch({ type: UPDATE_LEARNING_PATH_DATA, data });
+    dispatch({ type: UPDATE_SEQUENCE_NUMBER });
   }
   
   useEffect(() => {
     const onKeyUpEvent = (e) => {
-      setSeqNo(e.code);
+      dispatch({ type: UPDATE_SEQUENCE_NUMBER, code: e.code });
     }
     window.addEventListener('keyup', onKeyUpEvent);
-    fetchData({ stepId: 3249, learningPathId: 434 });
+    fetchLearningSteps({ learningPathId: DEMO_LEARNING_PATH_ID });
     return () => {
       window.removeEventListener('keyup', onKeyUpEvent);
     };
   }, []);
 
   useEffect(() => {
-    setLearningPathData(null);
-    fetchData({ stepId: learningsteps[currentSeqNo].id, learningPathId: 434 })
-  }, [currentSeqNo]);
+    if (learningsteps && currentLearningStepNumber !== undefined) {
+      dispatch({ type: UPDATE_LEARNING_PATH_STEP });
+      fetchData({ stepId: learningsteps[currentLearningStepNumber].id, learningPathId: DEMO_LEARNING_PATH_ID });
+      // Set cookies
+      const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${DEMO_LEARNING_PATH_ID}`;
+      const currentCookie = getCookie(cookieKey, document.cookie);
+      let updatedCookie = currentCookie ? JSON.parse(currentCookie) : {};
+      updatedCookie[learningsteps[currentLearningStepNumber].id] = true;
+      setCookie(
+        cookieKey,
+        JSON.stringify(updatedCookie),
+      );
+    }
+  }, [currentLearningStepNumber]);
 
-  console.log(learningPathData);
+  if (!learningStepsData || currentLearningStepNumber === undefined) {
+    return <div>LOADING</div>
+  }
 
-  let articleId = learningPathData && learningPathData.embedUrl ?
-    learningPathData.embedUrl.url.substr(learningPathData.embedUrl.url.lastIndexOf('/') + 1) : null;
+  const { duration, lastUpdated, copyright, learningsteps } = learningStepsData;
+  const stepId = learningsteps[currentLearningStepNumber].id; // should be fetched from url
+  const currentIndex = learningsteps.findIndex(learningStep => learningStep.current);
+  const lastUpdatedDate = new Date(lastUpdated);
+  const lastUpdatedString = `${lastUpdatedDate.getDate()}.${lastUpdatedDate.getMonth() < 10 ? '0' : ''}${lastUpdatedDate.getMonth()}.${lastUpdatedDate.getFullYear()}`;
+
+  let articleId = currentLearningStep && currentLearningStep.embedUrl ?
+    currentLearningStep.embedUrl.url.substr(currentLearningStep.embedUrl.url.lastIndexOf('/') + 1) : null;
 
   if (articleId && articleId.indexOf(':') !== -1) {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
   }
 
-  console.log('mocked', mockedAPIData);
-
+  const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${DEMO_LEARNING_PATH_ID}`;
+  const fetchedCookies = getCookie(cookieKey, document.cookie);
+  const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   return (
     <>
       <LearningPathWrapper>
@@ -114,33 +162,34 @@ const LearningPathExample = () => {
             copyright={copyright}
             stepId={stepId}
             currentIndex={currentIndex}
-            name={mockedAPIData.title.title}
+            name={learningStepsData.title.title}
+            cookies={useCookies}
           />
-          {learningPathData && <div>
-            {learningPathData.showTitle && <LearningPathInformation
-              title={learningPathData.title.title}
-              description={learningPathData.description && learningPathData.description.description}
-              license={learningPathData.license}
+          {currentLearningStep && <div>
+            {currentLearningStep.showTitle && <LearningPathInformation
+              title={currentLearningStep.title.title}
+              description={currentLearningStep.description && currentLearningStep.description.description}
+              license={currentLearningStep.license}
             />}
-            {<ArticleLoader hideResources hideForm articleId={'7719'} />}
+            {articleId && <ArticleLoader hideResources hideForm articleId={articleId} />}
           </div>}
         </LearningPathContent>
         <LearningPathSticky>
-          {currentSeqNo > 0 ?
+          {currentLearningStepNumber > 0 ?
             <LearningPathStickySibling
               arrow="left"
               label="forrige"
-              to={learningsteps[currentSeqNo - 1].metaUrl}
-              title={learningsteps[currentSeqNo - 1].title.title}
+              to={learningsteps[currentLearningStepNumber - 1].metaUrl}
+              title={learningsteps[currentLearningStepNumber - 1].title.title}
             /> :
             <div />
           }
-          {currentSeqNo < learningsteps.length - 1 ?
+          {currentLearningStepNumber < learningsteps.length - 1 ?
             <LearningPathStickySibling
               arrow="right"
               label="neste"
-              to={learningsteps[currentSeqNo + 1].metaUrl}
-              title={learningsteps[currentSeqNo + 1].title.title}
+              to={learningsteps[currentLearningStepNumber + 1].metaUrl}
+              title={learningsteps[currentLearningStepNumber + 1].title.title}
             /> :
             <LearningPathStickySibling
               label="Gå videre til emne"
@@ -153,6 +202,7 @@ const LearningPathExample = () => {
       </LearningPathWrapper>
       <div css={infoCSS}>
         Use Key arrows to simulate navigation
+        <input type="text" />
       </div>
     </>
   )

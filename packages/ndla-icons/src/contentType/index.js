@@ -17,6 +17,7 @@ export {
 } from './LearningPathIntroduction';
 export { default as LearningPathMultimedia } from './LearningPathMultimedia';
 export { default as LearningPathQuiz } from './LearningPathQuiz';
+export { default as LearningPathRead } from './LearningPathRead';
 export { default as LearningPathSummary } from './LearningPathSummary';
 export { default as LearningPathTask } from './LearningPathTask';
 export { default as LearningPath } from './LearningPath';

@@ -1,15 +1,37 @@
 details {
+  transition-duration: 150ms;
+  transition-property: left, right, width;
   margin: $spacing--large 0;
-  border: 1px solid $brand-grey--light;
-  overflow: hidden;
+  width: 100%;
+  position: relative;
+  left: 0;
+
+  &:not(.c-details--solution-box) {
+    border: 1px solid $brand-grey--light;
+
+    &[open] {
+      padding: $spacing;
+
+      summary {
+        padding: 0 0 $spacing 0;
+      }
+    }
+  }
 
   // summary is first child, 2 child is content
-  > *:nth-child(2) {
+  >*:nth-child(2) {
     margin-top: 0;
   }
 
-  > *:last-child {
+  >*:last-child {
     margin-bottom: 0;
+  }
+
+  &.c-details--solution-box {
+    summary {
+      background: $brand-color--lightest;
+      font-family: $font;
+    }
   }
 }
 
@@ -28,26 +50,29 @@ details .ol-list--roman {
   }
 }
 
-details + details {
+details+details {
   margin-top: $spacing !important;
 }
 
 summary {
-  &:focus {
-    outline: none;
-  }
   color: $brand-color;
   cursor: pointer;
-  cursor: hand;
   padding: $spacing;
 }
 
-details[open] {
+details[open].c-details--solution-box {
   summary {
-    padding: 0 0 $spacing 0;
+    padding: $spacing;
   }
 
-  padding: $spacing;
+  .c-details__content {
+    padding: $spacing--small;
+    background-color: $table-bg;
+  }
+
+  .c-table__wrapper {
+    margin: 0;
+  }
 }
 
 details .c-figure {
@@ -55,4 +80,17 @@ details .c-figure {
   padding-left: 0;
   padding-right: 0;
   left: 0 !important;
+}
+
+details.c-details--exploded {
+  @include mq(desktop) {
+    @include grids-expand(4, 6, 2);
+
+    .c-details__content {
+      opacity: 0;
+      animation: fadeIn 150ms;
+      animation-delay: 150ms;
+      animation-fill-mode: forwards;
+    }
+  }
 }

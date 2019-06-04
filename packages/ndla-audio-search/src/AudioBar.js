@@ -10,12 +10,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-
-const classes = new BEMHelper({
-  name: 'audio-bar',
-  prefix: 'c-',
-});
 
 class AudioBar extends Component {
   constructor(props) {
@@ -28,9 +22,13 @@ class AudioBar extends Component {
     this.loadAudio = this.loadAudio.bind(this);
   }
 
+  componentDidMount() {
+    this.loadAudio();
+  }
+
   loadAudio() {
-    this.props
-      .fetchAudio(this.props.audio.id)
+    const { fetchAudio, audio, onError } = this.props;
+    fetchAudio(audio.id)
       .then(result => {
         this.setState({
           audioSource: result.audioFile.url,
@@ -38,22 +36,16 @@ class AudioBar extends Component {
         });
       })
       .catch(err => {
-        this.props.onError(err);
+        onError(err);
       });
   }
 
   render() {
     const { audioSource, audioType } = this.state;
     return (
-      <div {...classes()}>
-        <audio controls autoPlay onPlay={!audioSource && this.loadAudio}>
-          {audioSource ? (
-            <source src={audioSource} type={audioType} />
-          ) : (
-            undefined
-          )}
-        </audio>
-      </div>
+      <audio controls>
+        {audioSource && <source src={audioSource} type={audioType} />}
+      </audio>
     );
   }
 }

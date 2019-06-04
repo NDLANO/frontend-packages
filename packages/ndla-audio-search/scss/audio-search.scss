@@ -59,25 +59,8 @@
         padding-bottom: 1em;
         border-bottom: 1px solid $brand-color--lighter;
       }
-
-      &-inner {
-        .c-audio-bar {
-          margin-bottom: 10px;
-
-          // The 'audio' tag is implemented with a download button in Chrome > 58.
-          // Make it so that this button doesn't show.
-          audio::-webkit-media-controls {
-            overflow: hidden !important;
-          }
-          audio::-webkit-media-controls-enclosure {
-            width: calc(100% + 32px);
-            margin-left: auto;
-          }
-        }
-
-        h2 {
-          margin-top: 30px;
-        }
+      &-inner h2 {
+        margin-top: 30px;
       }
     }
   }

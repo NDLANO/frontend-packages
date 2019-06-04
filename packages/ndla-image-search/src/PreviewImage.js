@@ -12,8 +12,13 @@ import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { getSrcSets } from './util/imageUtil';
 
-export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
-  const tags = image.tags || [];
+const convertWithFallBack = (fieldName, value, fallback) =>
+  value[fieldName] && value[fieldName][fieldName]
+    ? value[fieldName][fieldName]
+    : fallback;
+
+const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
+  const tags = convertWithFallBack('tags', image.tags, []);
   return (
     <div className="image-preview">
       <div className="image">
@@ -26,7 +31,9 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
         />
       </div>
       <div className="information">
-        <h2 className="title">{image.title}</h2>
+        <h2 className="title">
+          {convertWithFallBack('title', image.title, '')}
+        </h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
             <span className="text right">
@@ -49,13 +56,18 @@ export default function PreviewImage({ image, onSelectImage, useImageTitle }) {
       <div className="clear" />
     </div>
   );
-}
+};
 
 PreviewImage.propTypes = {
   image: PropTypes.shape({
     imageUrl: PropTypes.string.isRequired,
     title: PropTypes.shape({
       title: PropTypes.string,
+      language: PropTypes.string,
+    }),
+    tags: PropTypes.shape({
+      tags: PropTypes.arrayOf(PropTypes.string),
+      language: PropTypes.string,
     }),
     copyright: PropTypes.shape({
       license: PropTypes.shape({
@@ -72,3 +84,5 @@ PreviewImage.propTypes = {
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
 };
+
+export default PreviewImage;

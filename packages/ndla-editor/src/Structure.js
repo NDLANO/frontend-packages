@@ -6,11 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors } from '@ndla/core';
+import { colors } from '@ndla/core';
 import Spinner from './Spinner';
 import ItemNameBar from './ItemNameBar';
 
@@ -71,17 +71,22 @@ const Structure = ({
       activeFilters.includes(filter.id),
     );
 
+  const filteredStructure = useMemo(
+    () =>
+      structure.filter(
+        subjectOrTopic =>
+          ignoreFilter ||
+          subjectOrTopic.filters.some(topicFilter =>
+            activeFilters.includes(topicFilter.id),
+          ),
+      ),
+    [structure],
+  );
+
   return (
     <StructureWrapper>
-      {structure
-        .filter(
-          subjectOrTopic =>
-            ignoreFilter ||
-            subjectOrTopic.filters.some(topicFilter =>
-              activeFilters.includes(topicFilter.id),
-            ),
-        )
-        .map(({ id, name, topics, subtopics, filters, loading, ...rest }) => {
+      {filteredStructure.map(
+        ({ id, name, topics, subtopics, filters, loading, ...rest }) => {
           const currentPathIds = [...currentPath, id];
           const children = topics || subtopics;
           const pathToString = currentPathIds.join('/');
@@ -144,7 +149,8 @@ const Structure = ({
               )}
             </StyledStructureItem>
           );
-        })}
+        },
+      )}
     </StructureWrapper>
   );
 };

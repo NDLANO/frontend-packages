@@ -38,8 +38,22 @@ import KokkOgServitor from './Kokk-og-servitor.svg';
 import RestaurantOgMatfag from './Restaurant-og-matfag.svg';
 import DesignOgHandverk from './Design-og-Handverk.svg';
 import Norsk from './Norsk.svg';
+import Biologi1 from './Biologi-1.svg';
+import ReligionOgEtikk from './Religion-og-Etikk.svg';
+import SosiologiOgSosialantropologi from './Sosiologi-og-Sosialantropologi.svg';
 
 export default [
+  { desktop: Biologi1, mobile: Biologi1, name: 'Biologi 1' },
+  {
+    desktop: ReligionOgEtikk,
+    mobile: ReligionOgEtikk,
+    name: 'Religion og etikk',
+  },
+  {
+    desktop: SosiologiOgSosialantropologi,
+    SosiologiOgSosialantropologi: Elektro,
+    name: 'Sosiologi og sosialantropologi',
+  },
   { desktop: Broennteknikk, mobile: Broennteknikk, name: 'Brønnteknikk' },
   {
     desktop: ByggOgAnleggsteknikk,

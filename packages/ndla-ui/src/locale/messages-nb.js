@@ -545,6 +545,12 @@ const messages = {
       ending: 'Vi ønsker alle filmelskere en god og lærerik opplevelse!',
     },
   },
+  dropdown: {
+    numberHits: `Søket gav {hits} treff`,
+    searching: 'Søker...',
+    create: 'Opprett nytt nøkkelord',
+    isSelectedItem: 'Lagt til',
+  },
 };
 
 export default messages;

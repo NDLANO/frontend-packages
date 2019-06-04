@@ -482,7 +482,7 @@ const messages = {
     search: {
       placeholder: 'Search on moviename',
       categoryFromNdla: 'Selected resources from NDLA',
-      categoryButton: 'Choose category',
+      chooseCategory: 'Choose category',
       subjectButton: 'Go to subject',
     },
     editor: {

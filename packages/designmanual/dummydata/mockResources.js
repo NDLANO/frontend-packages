@@ -123,7 +123,6 @@ export const learningPathResources = [
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Læringsstier',
-    additional: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -210,7 +209,40 @@ export const assessmentResources = [
     name: 'Vurderingsressurs 1',
   },
   {
-    id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dce',
+    id: 'urn:resource:883281e0-c5ec-42d8-8365-a2bc',
     name: 'Vurderingsressurs 2',
+  },
+  {
+    id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dce',
+    name: 'Vurderingsressurs 3',
+    additional: true,
+  },
+];
+
+export const sourceMaterialResources = [
+  {
+    id: 'urn:resource:883281e0-c5ec-42d8-8365-ab2',
+    name: 'Kildemateriale 1',
+  },
+  {
+    id: 'urn:resource:883281e0-c5ec-42d8-8365-ab2',
+    name: 'Kildemateriale 2',
+  },
+  {
+    id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dc4',
+    name: 'Kildemateriale 3',
+    additional: true,
+  },
+];
+
+export const externalLearningResources = [
+  {
+    id: 'urn:resource:883281e0-c5ec-42d8-8365-abx',
+    name: 'Ekstern læringsressurs 1',
+    additional: true,
+  },
+  {
+    id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dcb',
+    name: 'Ekstern læringsressurs 2',
   },
 ];

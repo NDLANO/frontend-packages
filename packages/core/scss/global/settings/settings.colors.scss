@@ -45,12 +45,7 @@ $subject-material-additional: rgba($subject-material-light, 0.4);
 $external-learning-resource-background: #d0e8de;
 $external-learning-resource-light: #e6f3ed;
 $external-learning-resource-dark: #4f7d76;
-$external-learning-resource-additional: rgba($external-learning-resource-background,
-  0.4);
-
-$source-material-light: #dce5e0;
-$source-material-dark: #636e68;
-$source-material-additional: rgba($source-material-light, 0.4);
+$external-learning-resource-additional: rgba($external-learning-resource-background, 0.4);
 
 $tasks-and-activities-background: #f8e0c4;
 $tasks-and-activities-light: #fbeddc;
@@ -66,6 +61,11 @@ $learning-path-background: #f2efef;
 $learning-path-light: $brand-grey--light;
 $learning-path-dark: #797979;
 $learning-path-background-additional: rgba($learning-path-light, 0.4);
+
+$source-material-background: #EEF5F1;
+$source-material-light: #DCE5E0;
+$source-material-dark: #636E68;
+$source-material-additional: rgba($source-material-background, 0.4);
 
 /**
  * Supplementary colors,

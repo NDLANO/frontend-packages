@@ -10,6 +10,8 @@ import {
   articleResources,
   exerciseResources,
   assessmentResources,
+  sourceMaterialResources,
+  externalLearningResources,
 } from './mockResources';
 import { subjectList, subjectConcepts, categories } from './mockSubjects';
 import {
@@ -65,6 +67,8 @@ export {
   secondYouTubeList,
   youTubeMockVideo,
   assessmentResources,
+  sourceMaterialResources,
+  externalLearningResources,
   contentTypeResults,
   searchTabOptions,
   searchTabFilterOptions,

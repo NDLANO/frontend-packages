@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useReducer, useEffect, useState, useMemo } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import {
   LearningPathWrapper,
@@ -21,12 +21,25 @@ import {
   getCookie,
   setCookie,
 } from '@ndla/util';
+import {
+  colors,
+} from '@ndla/core';
+import Button from '@ndla/button';
 
 import ArticleLoader from '../article/ArticleLoader';
 import Breadcrumb from '../molecules/breadcrumbs';
 
-// Dummy data
-import { fetchLearningPathArticle, fetchLearningPathLearningSteps } from '../../dummydata/mockLearningPaths';
+async function fetchLearningPathArticle({ learningPathId, stepId }) {
+  return await fetch(
+    `https://api.ndla.no/learningpath-api/v2/learningpaths/${learningPathId}/learningsteps/${stepId}?language=nb&fallback=true`,
+  ).then(data => data.json());
+}
+
+async function fetchLearningPathLearningSteps({ learningPathId }) {
+  return await fetch(
+    `https://api.ndla.no/learningpath-api/v2/learningpaths/${learningPathId}?language=nb&fallback=true`
+  ).then((data) => data.json());
+}
 
 const LEARNING_PATHS_COOKIES_KEY = 'LEARNING_PATHS_COOKIES_KEY';
 const UPDATE_SEQUENCE_NUMBER = 'UPDATE_SEQUENCE_NUMBER';
@@ -41,7 +54,7 @@ const infoCSS = css`
   top: 78px;
   background: #fff;
   z-index: 9999;
-  border: 4px solid red;
+  border: 4px solid ${colors.support.red};
   border-radius: 10px;
   position: fixed;
 `;
@@ -86,6 +99,7 @@ const dataReducer = (state, action) => {
 
 const LearningPathExample = () => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
+  const [hideHelp, toggleHelp] = useState(true);
   const [learningPathId, updateLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
   const [tempLearningPathId, updateTempLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
   const { currentLearningStepNumber, currentLearningStep, learningStepsData } = currentState;
@@ -209,13 +223,14 @@ const LearningPathExample = () => {
           }
         </LearningPathSticky>
       </LearningPathWrapper>
-      <div
+      {hideHelp && (<div
         css={infoCSS}
       >
-        Use Key arrows to simulate navigation
+        Simulate navigation with arrow keys
         <input
           type="text"
           name="article"
+          placeholder="enter learningpath id to load"
           value={tempLearningPathId}
           onChange={e => updateTempLearningPathId(e.target.value)}
           onKeyDown={(e) => {
@@ -225,8 +240,8 @@ const LearningPathExample = () => {
             }
           }}
         />
-        <input hidden type="submit" value="submit" />
-      </div>
+        <Button onClick={() => toggleHelp(false)}>Close</Button>
+      </div>)}
     </>
   )
 };

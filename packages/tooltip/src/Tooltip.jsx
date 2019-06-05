@@ -31,10 +31,6 @@ const tooltipCss = css`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
-const contentCSS = css`
-  display: inline-block;
-`;
-
 const Fade = styled.div`
   opacity: 0;
   position: absolute;
@@ -78,9 +74,9 @@ class Tooltip extends Component {
     const currentStyles = {};
     const { align } = this.props;
     if (this.state.showTooltip) {
-      const widthRef = this.contentRef.current.offsetWidth;
-      const heightRef = this.contentRef.current.offsetHeight;
-      const elementRect = this.contentRef.current.getBoundingClientRect();
+      const widthRef = this.focusableChild.offsetWidth;
+      const heightRef = this.focusableChild.offsetHeight;
+      const elementRect = this.focusableChild.getBoundingClientRect();
       const leftRef = elementRect.left;
       const tooltipWidth = this.tooltipRef.current.offsetWidth;
 
@@ -175,7 +171,6 @@ class Tooltip extends Component {
           ref={this.contentRef}
           onMouseEnter={this.handleShowTooltip}
           onMouseLeave={this.handleHideTooltip}
-          css={contentCSS}
           className={className}>
             {children}
         </div>

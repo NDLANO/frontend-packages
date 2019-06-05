@@ -147,7 +147,11 @@ export {
   MediaListItemMeta,
 } from './MediaList';
 
-export { EmbeddedTwitter, EmbeddedFacebook } from './Embedded';
+export {
+  EmbeddedTwitter,
+  EmbeddedFacebook,
+  EmbeddedFacebookPage,
+} from './Embedded';
 
 export { default as Image, ImageLink } from './Image';
 export { makeSrcQueryString } from './Image';

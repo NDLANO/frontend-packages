@@ -309,14 +309,15 @@ class ImageSearch extends React.Component {
   }
 
   onImageClick(image) {
-    if (!this.state.selectedImage || image.id !== this.state.selectedImage.id) {
-      this.props
-        .fetchImage(image.id)
+    const { onError, fetchImage } = this.props;
+    const { selectedImage } = this.state;
+    if (!selectedImage || image.id !== selectedImage.id) {
+      fetchImage(image.id)
         .then(result => {
           this.setState({ selectedImage: result });
         })
         .catch(err => {
-          this.props.onError(err);
+          onError(err);
         });
     }
   }
@@ -331,9 +332,9 @@ class ImageSearch extends React.Component {
   }
 
   searchImages(queryObject) {
+    const { searchImages, onError, locale } = this.props;
     this.setState({ searching: true });
-    this.props
-      .searchImages(queryObject.query, queryObject.page, this.props.locale)
+    searchImages(queryObject.query, queryObject.page, locale)
       .then(result => {
         this.setState({
           queryObject: {
@@ -347,7 +348,7 @@ class ImageSearch extends React.Component {
         });
       })
       .catch(err => {
-        this.props.onError(err);
+        onError(err);
         this.setState({ searching: false });
       });
   }
@@ -361,6 +362,7 @@ class ImageSearch extends React.Component {
       selectedImage,
       lastPage,
       searching,
+      queryString,
     } = this.state;
 
     const { page } = queryObject;
@@ -377,17 +379,17 @@ class ImageSearch extends React.Component {
               aria-label={searchButtonTitle}
               type="button"
               onClick={() => {
-                this.searchImages({ query: this.state.queryString, page: 1 });
+                this.searchImages({ query: queryString, page: 1 });
               }}>
               <SearchIcon />
             </button>
           }
           container="div"
-          value={this.state.queryString}
-          onChange={e => this.setState({ queryString: e.target.value })}
-          onKeyPress={e => {
-            if (e.key === 'Enter') {
-              this.searchImages({ query: this.state.queryString, page: 1 });
+          value={queryString}
+          onChange={evt => this.setState({ queryString: evt.target.value })}
+          onKeyPress={evt => {
+            if (evt.key === 'Enter') {
+              this.searchImages({ query: queryString, page: 1 });
             }
           }}
         />

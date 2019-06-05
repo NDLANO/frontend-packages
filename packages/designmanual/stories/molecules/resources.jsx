@@ -20,6 +20,8 @@ import {
   articleResources,
   exerciseResources,
   assessmentResources,
+  sourceMaterialResources,
+  externalLearningResources,
 } from '../../dummydata/index';
 
 const { contentTypes } = constants;
@@ -60,11 +62,29 @@ const resourceGroup4 = {
   noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
+const resourceGroup5 = {
+  id: 'source-material-resources',
+  title: 'Kildemateriale',
+  contentType: contentTypes.SOURCE_MATERIAL,
+  resources: sourceMaterialResources,
+  noContentLabel: 'Det er ikke noe kjernestoff for kildemateriale.',
+};
+
+const resourceGroup6 = {
+  id: 'external-learning-resources',
+  title: 'Eksterne læringsressurser',
+  contentType: contentTypes.EXTERNAL_LEARNING_RESOURCES,
+  resources: externalLearningResources,
+  noContentLabel: 'Det er ikke noe kjernestoff for eksterne læringssressurser.',
+};
+
 const resourceGroups = [
   resourceGroup1,
   resourceGroup2,
   resourceGroup3,
   resourceGroup4,
+  resourceGroup5,
+  resourceGroup6,
 ];
 
 class Resources extends Component {

@@ -23,6 +23,7 @@ import FormExampleAuthors from './FormExampleAuthors';
 import HowtoExamples from './HowtoExamples';
 import SlateBlockMenuExample from './SlateBlockMenuExample';
 import StructureExample from './StructureExample';
+import MultiSelectDropdownExample from './MultiSelectDropdownExample';
 import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
@@ -138,6 +139,16 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <FormExampleAuthors />
+      </StoryBody>
+    </div>
+  ))
+  .add('Dropdown with multiselect', () => (
+    <div>
+      <StoryIntro title="Dropdown with multiselect">
+        <p>Tekst kommer</p>
+      </StoryIntro>
+      <StoryBody>
+        <MultiSelectDropdownExample />
       </StoryBody>
     </div>
   ))

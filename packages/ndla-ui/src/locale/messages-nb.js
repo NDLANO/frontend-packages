@@ -554,6 +554,12 @@ const messages = {
     readTime: '{hours} Skoletimer = {minutes} min',
     pageOf: 'av',
   },
+  dropdown: {
+    numberHits: `Søket gav {hits} treff`,
+    searching: 'Søker...',
+    create: 'Opprett nytt nøkkelord',
+    isSelectedItem: 'Lagt til',
+  },
 };
 
 export default messages;

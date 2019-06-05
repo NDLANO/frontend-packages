@@ -128,4 +128,30 @@
       border: 1px dashed rgba($learning-path-dark, 0.4);
     }
   }
+
+  &--external-learning-resources {
+    li {
+      background-color: $external-learning-resource-background;
+    }
+    li:before {
+      background-color: $external-learning-resource-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $external-learning-resource-additional;
+      border: 1px dashed rgba($external-learning-resource-dark, 0.4);
+    }
+  }
+
+  &--source-material {
+    li {
+      background-color: $source-material-background;
+    }
+    li:before {
+      background-color: $source-material-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $source-material-additional;
+      border: 1px dashed rgba($source-material-dark, 0.4);
+    }
+  }
 }

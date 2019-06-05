@@ -544,6 +544,12 @@ const messages = {
     readTime: '{hours} schoolhours = {minutes} min',
     pageOf: 'of',
   },
+  dropdown: {
+    numberHits: `Search returned {hits} hits`,
+    searching: 'Searching...',
+    create: 'Create new keyword',
+    isSelectedItem: 'Added',
+  },
 };
 
 export default messages;

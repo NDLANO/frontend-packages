@@ -10,6 +10,8 @@ import {
   articleResources,
   exerciseResources,
   assessmentResources,
+  sourceMaterialResources,
+  externalLearningResources,
 } from './mockResources';
 import { subjectList, subjectConcepts, categories } from './mockSubjects';
 import {
@@ -44,6 +46,8 @@ import {
   mockMovieResourceTypes,
 } from './mockFilm';
 
+import { mockTypeahead } from './mockTypeahead';
+
 export {
   topicMenu,
   topicList,
@@ -63,6 +67,8 @@ export {
   secondYouTubeList,
   youTubeMockVideo,
   assessmentResources,
+  sourceMaterialResources,
+  externalLearningResources,
   contentTypeResults,
   searchTabOptions,
   searchTabFilterOptions,
@@ -76,4 +82,5 @@ export {
   movieThemes,
   mockMovieTopics,
   mockMovieResourceTypes,
+  mockTypeahead,
 };

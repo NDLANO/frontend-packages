@@ -21,10 +21,11 @@ const Wrapper = styled.div`
 
 const inputWrapperCSS = css`
   display: flex;
+  flex-wrap: wrap;
   flex-grow: 1;
   background: ${colors.brand.greyLightest};
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border: 1px solid ${colors.brand.greyLighter};
   transition: border-color 100ms ease;
   border-radius: ${misc.borderRadius};
@@ -32,6 +33,7 @@ const inputWrapperCSS = css`
   padding-right: ${spacing.small};
   input,
   textarea {
+    width: inherit;
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
     ${fonts.sizes(18, 1.3)};

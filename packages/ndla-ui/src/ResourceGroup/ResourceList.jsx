@@ -27,7 +27,6 @@ const ResourceLink = ({
   children,
   active,
   component: Component,
-  youAreHere,
   ...rest
 }) => (
   <Component

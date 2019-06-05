@@ -38,7 +38,7 @@ const strippedStyle = css`
   }
 `;
 
-const appearances = {
+export const appearances = {
   inverted: css`
     background: #0f2b47;
     color: #fff;
@@ -118,7 +118,7 @@ const appearances = {
   `,
 };
 
-const buttonStyle = css`
+export const buttonStyle = css`
   display: inline-block;
   color: ${colors.background.default};
   background-color: ${colors.brand.primary};
@@ -162,9 +162,9 @@ export const StyledButton = styled('button')`
   ${p => appearances[p.appearance]};
 `;
 
-function modifierToApperance(modifiers) {
-  return Object.keys(modifiers).find(key => modifiers[key]);
-}
+const modifierToApperance = (modifiers) => (
+  Object.keys(modifiers).find(key => modifiers[key])
+);
 
 export const Button = ({
   outline,
@@ -178,6 +178,7 @@ export const Button = ({
   disabled,
   inverted,
   invertedOutline,
+  safelink,
   ...rest
 }) => {
   const modifiers = {
@@ -216,6 +217,7 @@ Button.propTypes = {
   lighter: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
+  safelink: PropTypes.string,
   appearance: PropTypes.oneOf([
     'outline',
     'link',

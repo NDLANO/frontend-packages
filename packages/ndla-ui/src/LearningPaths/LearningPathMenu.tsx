@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -9,13 +9,15 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { injectT } from '@ndla/i18n';
 import { SafeLink } from '@ndla/ui';
+import { SafeLinkButton } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
-import { Time } from '@ndla/icons/common';
+import { Time, User } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints, animations } from '@ndla/core';
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
-import Modal from '@ndla/modal';
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { LearningPathIcon } from './LearningPathIcon';
 
 const SIDE_NAV_WIDTH = '372px';
@@ -36,8 +38,8 @@ const StyledMenu = styled.div<StyledMenuProps>`
     min-width: ${SIDE_NAV_WIDTH};
     margin-right: ${spacing.xsmall};
     ${props => !props.isOpen && `
-      width: 60px;
-      min-width: 60px;
+      width: ${spacing.large};
+      min-width: ${spacing.large};
       ${StyledMenuIntro} {
         display: none;
       }
@@ -45,6 +47,32 @@ const StyledMenu = styled.div<StyledMenuProps>`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin-right: ${spacing.small};
+  }
+`;
+
+const infoTextCSS = css`
+  ${fonts.sizes(18, 1.3)};
+  font-weight: ${fonts.weight.semibold};
+  width: calc(100% - ${spacing.medium});
+  border-top: 2px solid ${colors.brand.greyLight};
+  margin-top: ${spacing.normal};
+  padding: ${spacing.normal} 0 0;
+`;
+
+const learningPathDetailsCSS = css`
+  ${fonts.sizes(14, 1.1)};
+  font-weight: ${fonts.weight.normal};
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-items: flex-start;
+  margin-bottom: ${spacing.xsmall};
+  p {
+    margin: 0;
+    padding-left: ${spacing.xsmall};
+  }
+  span {
+    display: block;
   }
 `;
 
@@ -68,14 +96,30 @@ const navCSS = css`
     margin: 0;
     padding: 0;
   }
+  margin-bottom: ${spacing.medium};
 `;
 
-const asideCSS = css`
+type StyledAsideProps = {
+  isOpen: boolean;
+};
+
+const StyledAside = styled.aside<StyledAsideProps>`
   display: none;
-  flex-direction: column;
   padding-left: ${spacing.spacingUnit * 2.25}px;
   ${mq.range({ from: breakpoints.desktop })} {
-    display: flex;
+    display: block;
+  }
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+    ${props => props.isOpen && css`
+      display: block;
+      opacity: 0;
+      ${animations.fadeIn()}
+      animation-fill-mode: forwards;
+      animation-delay: 450ms;
+    `}
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: block;
   }
 `;
 
@@ -88,22 +132,16 @@ type StyledMenuItemProps = {
 }
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
+  margin: 0;
   a {
     box-shadow: none;
-    height: 60px;
+    height: ${spacing.large};
     display: inline-flex;
     align-items: center;
     padding: ${spacing.small};
     > span {
       ${fonts.sizes(14, 1.2)};
-      font-weight: ${fonts.weight.semibold};
-      color: ${colors.brand.primary};
-    }
-    small {
-      ${typography.smallHeading}
-      padding-left: ${spacing.xsmall};
-      flex-grow: 1;
-      flex-shrink: 0;
+      color: ${colors.text.primary};
     }
     &:hover, &:focus {
       > span > span {
@@ -135,9 +173,9 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
         content: '';
         display: block;
         background: #fff;
-        height: 60px;
-        width: ${spacing.small};
-        transform: translateX(-${spacing.normal});
+        height: ${spacing.large};
+        width: calc(${SIDE_NAV_WIDTH} - ${spacing.small});
+        transform: translateX(-${spacing.small});
       }
     }
   `}
@@ -149,23 +187,23 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   &:after {
     content: '';
     display: block;
-    height: 60px;
+    height: ${spacing.large};
     width: 2px;
-    background: ${colors.brand.greyLight};
+    background: ${colors.brand.primary};
     position: absolute;
-    transform: translate(29px, -90px);
+    transform: translate(29px, -${spacing.spacingUnit * 3}px);
   }
   ${props => !props.afterCurrent && `
     a {
       > span {
-        font-weight: ${fonts.weight.normal};
+        color: ${colors.text.primary};
       }
       color: ${colors.text.primary};
     }
     &:after {
       width: 4px;
       background: ${colors.brand.primary};
-      transform: translate(28px, -90px);
+      transform: translate(28px, -${spacing.spacingUnit * 3}px);
     }
   `}
 `;
@@ -254,7 +292,7 @@ const StyledToggleMenubutton = styled.button`
 `;
 
 const navCSSClosed = css`
-  ${mq.range({ until: breakpoints.desktop })} {
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     ${StyledMenuItem} {
       span {
         display: none;
@@ -280,7 +318,7 @@ const navCSSClosed = css`
 const ContentTypeCSS = css`
   position: relative;
   z-index: 1;
-  margin-right: ${spacing.small};
+  margin-right: ${spacing.spacingUnit * 0.75}px;
 `;
 
 const wrapperCSS = css`
@@ -295,17 +333,19 @@ const wrapperCSS = css`
 const styledIntroHeaderCSS = css`
   ${fonts.sizes(18, 1.1)};
   line-height: 20px;
+  margin: ${spacing.small} 0 ${spacing.normal};
 `;
 
 interface ModalWrapperProps {
   innerWidth: number;
   currentIndex: number;
   learningstepsTotal: number;
+  closeLabel: string;
   children: React.ReactNode;
 };
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
-  innerWidth, currentIndex, learningstepsTotal, children
+  innerWidth, currentIndex, learningstepsTotal, closeLabel, children
 }) => (
   innerWidth < 601 ? (
     <div css={wrapperCSS}>
@@ -318,10 +358,14 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
           <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningstepsTotal}</button>
         }>
         {(onClose: Function) => (
-          <div>
-            <button onClick={() => onClose()}>Close</button>
-            {children}
-          </div>
+          <>
+            <ModalHeader>
+              <ModalCloseButton title={closeLabel} onClick={onClose} />
+            </ModalHeader>
+            <ModalBody>
+              {children}
+            </ModalBody>
+          </>
         )}
       </Modal>
       <div css={typography.smallHeading}>Du er nå inne i en læringssti</div>
@@ -357,9 +401,11 @@ interface Props {
       url: string;
     },
   };
+  learningPathURL: string;
   cookies: {
     [key: string]: string;
   };
+  t: any;
 }
 
 type renderMenuProps = {
@@ -374,29 +420,37 @@ type renderMenuProps = {
 const renderMenu = ({ learningsteps, currentIndex, isOpen, cookies }:renderMenuProps) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
-      {learningsteps.map(({ id, url, title, type }:StepProps, index:number) => (
-        <StyledMenuItem
-          key={id}
-          current={index === currentIndex}
-          afterCurrent={index > currentIndex}
-          isOpen={isOpen}
-          indexNumber={index}>
-          <SafeLink to={url}>
-            <div css={ContentTypeCSS}>
-              <LearningPathIcon type={cookies[id] ? 'HASREAD' : type} />
-            </div>
-            <span>
-              <span>{title.title}</span>
-            </span>
-          </SafeLink>
-        </StyledMenuItem>
-      ))}
+      {learningsteps.map(({ id, url, title, type }:StepProps, index:number) => {
+        let iconType = type;
+        if (index === currentIndex) {
+          iconType = 'CURRENT';
+        } else if (cookies[id]) {
+          iconType = 'HAS_READ';
+        }
+        return (
+          <StyledMenuItem
+            key={id}
+            current={index === currentIndex}
+            afterCurrent={index > currentIndex}
+            isOpen={isOpen}
+            indexNumber={index}>
+            <SafeLink to={url}>
+              <div css={ContentTypeCSS}>
+                <LearningPathIcon type={iconType} current={index === currentIndex} beforeCurrent={index <= currentIndex} />
+              </div>
+              <span>
+                <span>{title.title}</span>
+              </span>
+            </SafeLink>
+          </StyledMenuItem>
+        );
+      })}
     </ul>
   </nav>
 );
 
-export const LearningPathMenu: React.FunctionComponent<Props> = ({
-  learningsteps, name, duration, lastUpdated, copyright, stepId, cookies,
+const LearningPathMenu: React.FunctionComponent<Props> = ({
+  learningsteps, name, duration, lastUpdated, copyright, stepId, learningPathURL, cookies, t,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
@@ -404,7 +458,7 @@ export const LearningPathMenu: React.FunctionComponent<Props> = ({
 
   return (
     <StyledMenu isOpen={isOpen}>
-      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningstepsTotal={learningsteps.length}>
+      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningstepsTotal={learningsteps.length} closeLabel={t('modal.closeModal')}>
         <Tooltip align="right" tooltip="åpne">
           <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
             {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
@@ -412,22 +466,43 @@ export const LearningPathMenu: React.FunctionComponent<Props> = ({
         </Tooltip>
         <StyledMenuIntro isOpen={isOpen}>
           <div>
-            <p css={typography.smallHeading}>Du er nå inne i en læringssti</p>
+            <p css={typography.smallHeading}>{t('learningPath.youAreInALearningPath')}</p>
             <h1 css={styledIntroHeaderCSS}>{name}</h1>
             <StyledTimeBox>
-              <Time /> {Math.round((duration / 45) * 10) / 10} Skoletimer = {duration} min
+              <Time /> {t('learningPath.readTime', {
+                  hours: Math.round((duration / 45) * 10) / 10,
+                  minutes: duration,
+                })}
             </StyledTimeBox>
           </div>
         </StyledMenuIntro>
         {renderMenu({ learningsteps, isOpen, currentIndex, cookies })}
-        <aside css={asideCSS}>
-          sist oppdatert: {lastUpdated}
-          {copyright.contributors && copyright.contributors.map(contributor => (
-            <p id={contributor.name}>{contributor.name}</p>
-          ))}
-          {copyright.license.license}
-        </aside>
+        <StyledAside isOpen={isOpen}>
+          <div css={learningPathDetailsCSS}>
+            <Time />
+            <p>
+              {t('learningPath.lastUpdated')}: {lastUpdated}
+            </p>
+          </div>
+          {copyright.contributors && (
+            <div css={learningPathDetailsCSS}>
+              <User />
+              <p>
+                {copyright.contributors.map(contributor => (
+                  <span key={contributor.name}>{contributor.name}</span>
+                ))}
+                <span>{copyright.license.license}</span>
+              </p>
+            </div>
+          )}
+          <p css={infoTextCSS}>
+            {t('learningPath.createLearningPathText')}
+          </p>
+          <SafeLinkButton to={learningPathURL} outline>{t('learningPath.createLearningPathButtonText')}</SafeLinkButton>
+        </StyledAside>
       </ModalWrapperComponent>
     </StyledMenu>
   );
 };
+
+export default injectT(LearningPathMenu);

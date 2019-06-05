@@ -8,3 +8,4 @@
 
 export { Button as default, StyledButton } from './Button';
 export { default as CopyButton } from './CopyButton';
+export { default as SafeLinkButton } from './SafeLinkButton';

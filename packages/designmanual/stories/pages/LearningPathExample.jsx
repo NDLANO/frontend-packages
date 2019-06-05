@@ -86,9 +86,11 @@ const dataReducer = (state, action) => {
 
 const LearningPathExample = () => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
+  const [learningPathId, updateLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
+  const [tempLearningPathId, updateTempLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
   const { currentLearningStepNumber, currentLearningStep, learningStepsData } = currentState;
 
-  async function fetchData(params) {
+  async function fetchLearningStep(params) {
     const data = await fetchLearningPathArticle(params);
     dispatch({ type: UPDATE_LEARNING_PATH_STEP, data });
   }
@@ -104,7 +106,7 @@ const LearningPathExample = () => {
       dispatch({ type: UPDATE_SEQUENCE_NUMBER, code: e.code });
     }
     window.addEventListener('keyup', onKeyUpEvent);
-    fetchLearningSteps({ learningPathId: DEMO_LEARNING_PATH_ID });
+    fetchLearningSteps({ learningPathId });
     return () => {
       window.removeEventListener('keyup', onKeyUpEvent);
     };
@@ -113,9 +115,9 @@ const LearningPathExample = () => {
   useEffect(() => {
     if (learningsteps && currentLearningStepNumber !== undefined) {
       dispatch({ type: UPDATE_LEARNING_PATH_STEP });
-      fetchData({ stepId: learningsteps[currentLearningStepNumber].id, learningPathId: DEMO_LEARNING_PATH_ID });
+      fetchLearningStep({ stepId: learningsteps[currentLearningStepNumber].id, learningPathId });
       // Set cookies
-      const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${DEMO_LEARNING_PATH_ID}`;
+      const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${learningPathId}`;
       const currentCookie = getCookie(cookieKey, document.cookie);
       let updatedCookie = currentCookie ? JSON.parse(currentCookie) : {};
       updatedCookie[learningsteps[currentLearningStepNumber].id] = true;
@@ -125,6 +127,12 @@ const LearningPathExample = () => {
       );
     }
   }, [currentLearningStepNumber]);
+
+  useEffect(() => {
+    dispatch({ type: UPDATE_LEARNING_PATH_DATA });
+    dispatch({ type: UPDATE_SEQUENCE_NUMBER });
+    fetchLearningSteps({ learningPathId });
+  }, [learningPathId]);
 
   if (!learningStepsData || currentLearningStepNumber === undefined) {
     return <div>LOADING</div>
@@ -164,6 +172,7 @@ const LearningPathExample = () => {
             currentIndex={currentIndex}
             name={learningStepsData.title.title}
             cookies={useCookies}
+            learningPathURL="https://www.stier.ndla.no"
           />
           {currentLearningStep && <div>
             {currentLearningStep.showTitle && <LearningPathInformation
@@ -200,9 +209,23 @@ const LearningPathExample = () => {
           }
         </LearningPathSticky>
       </LearningPathWrapper>
-      <div css={infoCSS}>
+      <div
+        css={infoCSS}
+      >
         Use Key arrows to simulate navigation
-        <input type="text" />
+        <input
+          type="text"
+          name="article"
+          value={tempLearningPathId}
+          onChange={e => updateTempLearningPathId(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.keyCode === 13) {
+              updateLearningPathId(e.target.value);
+              e.preventDefault();
+            }
+          }}
+        />
+        <input hidden type="submit" value="submit" />
       </div>
     </>
   )

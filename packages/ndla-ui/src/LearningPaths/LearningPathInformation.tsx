@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { fonts, colors, spacing, breakpoints, mq } from '@ndla/core';
+import { fonts, spacing, breakpoints, mq } from '@ndla/core';
 
 const wrapperCSS = css`
   background: transparent;
@@ -20,7 +20,6 @@ const wrapperCSS = css`
   margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
   ${mq.range({ from: breakpoints.desktop })} {
     margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
-    border-left: 4px solid ${colors.brand.greyLight};
     padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.spacingUnit * 4}px;
     ul {
       margin-left: ${spacing.normal};

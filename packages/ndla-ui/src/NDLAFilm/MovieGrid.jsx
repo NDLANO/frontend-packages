@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
+import { css } from '@emotion/core';
 import FilmContentCard from './FilmContentCard';
 
 const movieListClasses = new BEMHelper({

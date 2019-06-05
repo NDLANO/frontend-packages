@@ -38,9 +38,11 @@ const MovieGrid = ({
         margin-left: ${autoSizedProps.margin}px;
       `}>
       {fetchingMoviesByType && (
-        <div css={css`
-          height: ${loadingPlaceholderHeight};
-        `} />
+        <div
+          css={css`
+            height: ${loadingPlaceholderHeight};
+          `}
+        />
       )}
       {!fetchingMoviesByType &&
         moviesByType.map(movie => (

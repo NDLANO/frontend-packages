@@ -22,7 +22,9 @@ const MovieGrid = ({
   <section>
     <h1
       {...movieListClasses('heading')}
-      style={{ marginLeft: `${autoSizedProps.margin}px` }}>
+      css={css`
+        margin-left: ${autoSizedProps.margin}px;
+      `}>
       {resourceTypeName && resourceTypeName.name}
       <small>
         {fetchingMoviesByType
@@ -32,11 +34,13 @@ const MovieGrid = ({
     </h1>
     <div
       {...movieListClasses('movie-listing')}
-      style={{
-        marginLeft: `${autoSizedProps.margin}px`,
-      }}>
+      css={css`
+        margin-left: ${autoSizedProps.margin}px;
+      `}>
       {fetchingMoviesByType && (
-        <div style={{ height: loadingPlaceholderHeight }} />
+        <div css={css`
+          height: ${loadingPlaceholderHeight};
+        `} />
       )}
       {!fetchingMoviesByType &&
         moviesByType.map(movie => (

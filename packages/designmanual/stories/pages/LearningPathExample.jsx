@@ -17,13 +17,8 @@ import {
   LearningPathInformation,
   SubjectBadge,
 } from '@ndla/ui';
-import {
-  getCookie,
-  setCookie,
-} from '@ndla/util';
-import {
-  colors,
-} from '@ndla/core';
+import { getCookie, setCookie } from '@ndla/util';
+import { colors } from '@ndla/core';
 import Button from '@ndla/button';
 
 import ArticleLoader from '../article/ArticleLoader';
@@ -37,8 +32,8 @@ async function fetchLearningPathArticle({ learningPathId, stepId }) {
 
 async function fetchLearningPathLearningSteps({ learningPathId }) {
   return await fetch(
-    `https://api.ndla.no/learningpath-api/v2/learningpaths/${learningPathId}?language=nb&fallback=true`
-  ).then((data) => data.json());
+    `https://api.ndla.no/learningpath-api/v2/learningpaths/${learningPathId}?language=nb&fallback=true`,
+  ).then(data => data.json());
 }
 
 const LEARNING_PATHS_COOKIES_KEY = 'LEARNING_PATHS_COOKIES_KEY';
@@ -59,7 +54,10 @@ const infoCSS = css`
   position: fixed;
 `;
 
-const updateLearningStepNumber = ({ learningStepsData, currentLearningStepNumber }, code) => {
+const updateLearningStepNumber = (
+  { learningStepsData, currentLearningStepNumber },
+  code,
+) => {
   let direction;
   if (code === 'ArrowLeft') {
     direction = -1;
@@ -68,10 +66,14 @@ const updateLearningStepNumber = ({ learningStepsData, currentLearningStepNumber
   } else {
     return currentLearningStepNumber || 0;
   }
-  if (currentLearningStepNumber + direction < 0 || currentLearningStepNumber + direction >= learningStepsData.learningsteps.length) {
+  if (
+    currentLearningStepNumber + direction < 0 ||
+    currentLearningStepNumber + direction >=
+      learningStepsData.learningsteps.length
+  ) {
     return currentLearningStepNumber;
   }
-  
+
   return currentLearningStepNumber + direction;
 };
 
@@ -100,9 +102,17 @@ const dataReducer = (state, action) => {
 const LearningPathExample = () => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
-  const [learningPathId, updateLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
-  const [tempLearningPathId, updateTempLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
-  const { currentLearningStepNumber, currentLearningStep, learningStepsData } = currentState;
+  const [learningPathId, updateLearningPathId] = useState(
+    DEMO_LEARNING_PATH_ID,
+  );
+  const [tempLearningPathId, updateTempLearningPathId] = useState(
+    DEMO_LEARNING_PATH_ID,
+  );
+  const {
+    currentLearningStepNumber,
+    currentLearningStep,
+    learningStepsData,
+  } = currentState;
 
   async function fetchLearningStep(params) {
     const data = await fetchLearningPathArticle(params);
@@ -114,11 +124,11 @@ const LearningPathExample = () => {
     dispatch({ type: UPDATE_LEARNING_PATH_DATA, data });
     dispatch({ type: UPDATE_SEQUENCE_NUMBER });
   }
-  
+
   useEffect(() => {
-    const onKeyUpEvent = (e) => {
+    const onKeyUpEvent = e => {
       dispatch({ type: UPDATE_SEQUENCE_NUMBER, code: e.code });
-    }
+    };
     window.addEventListener('keyup', onKeyUpEvent);
     fetchLearningSteps({ learningPathId });
     return () => {
@@ -129,16 +139,16 @@ const LearningPathExample = () => {
   useEffect(() => {
     if (learningsteps && currentLearningStepNumber !== undefined) {
       dispatch({ type: UPDATE_LEARNING_PATH_STEP });
-      fetchLearningStep({ stepId: learningsteps[currentLearningStepNumber].id, learningPathId });
+      fetchLearningStep({
+        stepId: learningsteps[currentLearningStepNumber].id,
+        learningPathId,
+      });
       // Set cookies
       const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${learningPathId}`;
       const currentCookie = getCookie(cookieKey, document.cookie);
       let updatedCookie = currentCookie ? JSON.parse(currentCookie) : {};
       updatedCookie[learningsteps[currentLearningStepNumber].id] = true;
-      setCookie(
-        cookieKey,
-        JSON.stringify(updatedCookie),
-      );
+      setCookie(cookieKey, JSON.stringify(updatedCookie));
     }
   }, [currentLearningStepNumber]);
 
@@ -149,17 +159,25 @@ const LearningPathExample = () => {
   }, [learningPathId]);
 
   if (!learningStepsData || currentLearningStepNumber === undefined) {
-    return <div>LOADING</div>
+    return <div>LOADING</div>;
   }
 
   const { duration, lastUpdated, copyright, learningsteps } = learningStepsData;
   const stepId = learningsteps[currentLearningStepNumber].id; // should be fetched from url
-  const currentIndex = learningsteps.findIndex(learningStep => learningStep.current);
+  const currentIndex = learningsteps.findIndex(
+    learningStep => learningStep.current,
+  );
   const lastUpdatedDate = new Date(lastUpdated);
-  const lastUpdatedString = `${lastUpdatedDate.getDate()}.${lastUpdatedDate.getMonth() < 10 ? '0' : ''}${lastUpdatedDate.getMonth()}.${lastUpdatedDate.getFullYear()}`;
+  const lastUpdatedString = `${lastUpdatedDate.getDate()}.${
+    lastUpdatedDate.getMonth() < 10 ? '0' : ''
+  }${lastUpdatedDate.getMonth()}.${lastUpdatedDate.getFullYear()}`;
 
-  let articleId = currentLearningStep && currentLearningStep.embedUrl ?
-    currentLearningStep.embedUrl.url.substr(currentLearningStep.embedUrl.url.lastIndexOf('/') + 1) : null;
+  let articleId =
+    currentLearningStep && currentLearningStep.embedUrl
+      ? currentLearningStep.embedUrl.url.substr(
+          currentLearningStep.embedUrl.url.lastIndexOf('/') + 1,
+        )
+      : null;
 
   if (articleId && articleId.indexOf(':') !== -1) {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
@@ -188,62 +206,73 @@ const LearningPathExample = () => {
             cookies={useCookies}
             learningPathURL="https://www.stier.ndla.no"
           />
-          {currentLearningStep && <div>
-            {currentLearningStep.showTitle && <LearningPathInformation
-              title={currentLearningStep.title.title}
-              description={currentLearningStep.description && currentLearningStep.description.description}
-              license={currentLearningStep.license}
-            />}
-            {articleId && <ArticleLoader hideResources hideForm articleId={articleId} />}
-          </div>}
+          {currentLearningStep && (
+            <div>
+              {currentLearningStep.showTitle && (
+                <LearningPathInformation
+                  title={currentLearningStep.title.title}
+                  description={
+                    currentLearningStep.description &&
+                    currentLearningStep.description.description
+                  }
+                  license={currentLearningStep.license}
+                />
+              )}
+              {articleId && (
+                <ArticleLoader hideResources hideForm articleId={articleId} />
+              )}
+            </div>
+          )}
         </LearningPathContent>
         <LearningPathSticky>
-          {currentLearningStepNumber > 0 ?
+          {currentLearningStepNumber > 0 ? (
             <LearningPathStickySibling
               arrow="left"
               label="forrige"
               to={learningsteps[currentLearningStepNumber - 1].metaUrl}
               title={learningsteps[currentLearningStepNumber - 1].title.title}
-            /> :
+            />
+          ) : (
             <div />
-          }
-          {currentLearningStepNumber < learningsteps.length - 1 ?
+          )}
+          {currentLearningStepNumber < learningsteps.length - 1 ? (
             <LearningPathStickySibling
               arrow="right"
               label="neste"
               to={learningsteps[currentLearningStepNumber + 1].metaUrl}
               title={learningsteps[currentLearningStepNumber + 1].title.title}
-            /> :
+            />
+          ) : (
             <LearningPathStickySibling
               label="Gå videre til emne"
               to="#"
-              title={"Navn på emne"}
+              title={'Navn på emne'}
               icon={<SubjectBadge background />}
             />
-          }
+          )}
         </LearningPathSticky>
       </LearningPathWrapper>
-      {hideHelp && (<div
-        css={infoCSS}
-      >
-        Simulate navigation with arrow keys
-        <input
-          type="text"
-          name="article"
-          placeholder="enter learningpath id to load"
-          value={tempLearningPathId}
-          onChange={e => updateTempLearningPathId(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.keyCode === 13) {
-              updateLearningPathId(e.target.value);
-              e.preventDefault();
-            }
-          }}
-        />
-        <Button onClick={() => toggleHelp(false)}>Close</Button>
-      </div>)}
+      {hideHelp && (
+        <div css={infoCSS}>
+          Simulate navigation with arrow keys
+          <input
+            type="text"
+            name="article"
+            placeholder="enter learningpath id to load"
+            value={tempLearningPathId}
+            onChange={e => updateTempLearningPathId(e.target.value)}
+            onKeyDown={e => {
+              if (e.keyCode === 13) {
+                updateLearningPathId(e.target.value);
+                e.preventDefault();
+              }
+            }}
+          />
+          <Button onClick={() => toggleHelp(false)}>Close</Button>
+        </div>
+      )}
     </>
-  )
+  );
 };
 
 export default LearningPathExample;

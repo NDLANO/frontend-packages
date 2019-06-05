@@ -8,15 +8,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SafeLink } from '@ndla/ui'; 
+import { SafeLink } from '@ndla/ui';
 import { css } from '@emotion/core';
 import { buttonStyle, appearances } from './Button';
 
-const getStyles = (modifiers) => {
+const getStyles = modifiers => {
   const styles = [];
-  Object.keys(modifiers).forEach((key) => {
+  Object.keys(modifiers).forEach(key => {
     if (modifiers[key]) {
-      styles.push(appearances[key])
+      styles.push(appearances[key]);
     }
   });
   return styles;

@@ -186,13 +186,13 @@ class ArticleLoader extends Component {
               </Article>
             </OneColumn>
           )}
-          {!article && !hideForm &&
+          {!article && !hideForm && (
             <SimpleSubmitForm
               onSubmit={this.handleSubmit}
               errorMessage={message}
               labelText="Artikkel ID:"
             />
-          }
+          )}
           {article && closeButton ? (
             <Button onClick={() => this.setState({ article: undefined })}>
               Lukk

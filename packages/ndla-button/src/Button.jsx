@@ -162,9 +162,8 @@ export const StyledButton = styled('button')`
   ${p => appearances[p.appearance]};
 `;
 
-const modifierToApperance = (modifiers) => (
-  Object.keys(modifiers).find(key => modifiers[key])
-);
+const modifierToApperance = modifiers =>
+  Object.keys(modifiers).find(key => modifiers[key]);
 
 export const Button = ({
   outline,

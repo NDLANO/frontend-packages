@@ -30,8 +30,8 @@ export default ({ title, description }) => (
           <ArticleHeaderWrapper>
             <ArticleTitle>Tittel</ArticleTitle>
             <ArticleIntroduction>
-              Du har en kjempegod idé til en kortfilm. Men det koster mange penger
-              å produsere filmen.
+              Du har en kjempegod idé til en kortfilm. Men det koster mange
+              penger å produsere filmen.
             </ArticleIntroduction>
             <ArticleBylineExample id="example-article-license-id" />
           </ArticleHeaderWrapper>
@@ -42,20 +42,21 @@ export default ({ title, description }) => (
             alt="Lupe"
           />
           <p>
-            Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-            produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-            og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger
+            å produsere filmen. Derfor er du avhengig av at noen tenner på idéen
+            din og bestemmer seg for å bruke ressurser på nettopp dette
+            prosjektet.
           </p>
           <p>
             En pitch er en kortvarig framføring av en idé for en potensiell
-            samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-            andre til å <a href="#test">tenne på idéen din og se potensialet</a> i
-            den.
+            samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å{' '}
+            <a href="#test">tenne på idéen din og se potensialet</a> i den.
           </p>
           <p>
             En pitch er en kortvarig framføring av en idé for en potensiell
-            samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-            andre til å tenne på idéen din og se potensialet i den.
+            samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+            få andre til å tenne på idéen din og se potensialet i den.
           </p>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du

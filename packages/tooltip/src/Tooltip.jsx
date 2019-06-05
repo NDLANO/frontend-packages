@@ -122,7 +122,9 @@ class Tooltip extends Component {
   }
 
   componentDidMount() {
-    this.focusableChild = this.contentRef.current.querySelector('a, button, [role="button"]');
+    this.focusableChild = this.contentRef.current.querySelector(
+      'a, button, [role="button"]',
+    );
     if (this.focusableChild) {
       this.focusableChild.addEventListener('focusin', this.handleShowTooltip);
       this.focusableChild.addEventListener('focusout', this.handleHideTooltip);
@@ -131,8 +133,14 @@ class Tooltip extends Component {
 
   componentWillUnmount() {
     if (this.focusableChild) {
-      this.focusableChild.removeEventListener('focusin', this.handleShowTooltip);
-      this.focusableChild.removeEventListener('focusout', this.handleHideTooltip);
+      this.focusableChild.removeEventListener(
+        'focusin',
+        this.handleShowTooltip,
+      );
+      this.focusableChild.removeEventListener(
+        'focusout',
+        this.handleHideTooltip,
+      );
     }
   }
 
@@ -145,7 +153,13 @@ class Tooltip extends Component {
   }
 
   render() {
-    const { tooltipContainerClass, className, delay, tooltip, children } = this.props;
+    const {
+      tooltipContainerClass,
+      className,
+      delay,
+      tooltip,
+      children,
+    } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
@@ -172,7 +186,7 @@ class Tooltip extends Component {
           onMouseEnter={this.handleShowTooltip}
           onMouseLeave={this.handleHideTooltip}
           className={className}>
-            {children}
+          {children}
         </div>
       </TooltipWrapper>
     );

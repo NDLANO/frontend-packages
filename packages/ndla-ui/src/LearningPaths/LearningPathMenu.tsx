@@ -9,12 +9,17 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
+// @ts-ignore
 import { SafeLink } from '@ndla/ui';
+// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
+// @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints, animations } from '@ndla/core';
+// @ts-ignore
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import LearningPathMenuModalWrapper from './LearningPathMenuModalWrapper';
 import LearningPathMenuAside from './LearningPathMenuAside';

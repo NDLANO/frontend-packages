@@ -11,7 +11,9 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, animations, typography, mq, breakpoints } from '@ndla/core';
+// @ts-ignore
 import { SafeLink } from '@ndla/ui';
+// @ts-ignore
 import { Back, Forward } from '@ndla/icons/common';
 
 const FOOTER_HEIGHT = '87px';

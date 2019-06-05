@@ -9,8 +9,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
+// @ts-ignore
 import { SafeLinkButton } from '@ndla/button';
+// @ts-ignore
 import { Time, User } from '@ndla/icons/common';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
 

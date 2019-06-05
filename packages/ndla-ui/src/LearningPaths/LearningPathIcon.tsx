@@ -8,9 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import {
-  LearningPathRead,
-} from '@ndla/icons/contentType';
+// @ts-ignore
+import { LearningPathRead } from '@ndla/icons/contentType';
 
 import { colors } from '@ndla/core';
 

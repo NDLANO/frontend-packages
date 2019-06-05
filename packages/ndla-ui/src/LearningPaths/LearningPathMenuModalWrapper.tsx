@@ -9,6 +9,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { colors, spacing, fonts, misc, typography } from '@ndla/core';
+// @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 
 const numbersButtonCSS = css`

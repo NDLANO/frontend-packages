@@ -341,11 +341,12 @@ interface ModalWrapperProps {
   currentIndex: number;
   learningstepsTotal: number;
   closeLabel: string;
+  outOfLabel: string;
   children: React.ReactNode;
 };
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
-  innerWidth, currentIndex, learningstepsTotal, closeLabel, children
+  innerWidth, currentIndex, learningstepsTotal, closeLabel, outOfLabel, children
 }) => (
   innerWidth < 601 ? (
     <div css={wrapperCSS}>
@@ -355,7 +356,7 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
         animationDuration={200}
         size="fullscreen"
         activateButton={
-          <button type="button" css={numbersButtonCSS}>{currentIndex}<small> av </small>{learningstepsTotal}</button>
+          <button type="button" css={numbersButtonCSS}>{currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal + 1}</button>
         }>
         {(onClose: Function) => (
           <>
@@ -458,7 +459,13 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
 
   return (
     <StyledMenu isOpen={isOpen}>
-      <ModalWrapperComponent innerWidth={innerWidth} currentIndex={currentIndex} learningstepsTotal={learningsteps.length} closeLabel={t('modal.closeModal')}>
+      <ModalWrapperComponent
+        innerWidth={innerWidth}
+        currentIndex={currentIndex}
+        learningstepsTotal={learningsteps.length}
+        closeLabel={t('modal.closeModal')}
+        outOfLabel={t('learningPath.pageOf')}
+      >
         <Tooltip align="right" tooltip="åpne">
           <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
             {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}

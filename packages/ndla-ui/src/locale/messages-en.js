@@ -535,6 +535,14 @@ const messages = {
       ending: 'We wish all movie lovers a good and educational experience!',
     },
   },
+  learningPath: {
+    createLearningPathText: 'Create your own learningpath, copy this learningpath or see more learningpaths?',
+    createLearningPathButtonText: 'Go to learningpaths',
+    lastUpdated: 'Last updated',
+    youAreInALearningPath: 'You are now in a learningpath',
+    readTime: '{hours} schoolhours = {minutes} min',
+    pageOf: 'of',
+  }
 };
 
 export default messages;

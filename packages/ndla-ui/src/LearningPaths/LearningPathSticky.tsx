@@ -10,11 +10,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, animations, typography } from '@ndla/core';
+import { colors, spacing, animations, typography, mq, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import { Back, Forward } from '@ndla/icons/common';
 
-const FOOTER_HEIGHT = 87;
+const FOOTER_HEIGHT = '87px';
+const FOOTER_HEIGHT_MOBILE = spacing.large;
 
 const StyledFooter = styled.nav`
   display: flex;
@@ -23,7 +24,10 @@ const StyledFooter = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
-  height: ${FOOTER_HEIGHT}px;
+  height: ${FOOTER_HEIGHT};
+  ${mq.range({ until: breakpoints.tablet })} {
+    height: ${FOOTER_HEIGHT_MOBILE};
+  }
   background: ${colors.brand.lighter};
   align-items: center;
   justify-content: space-between;
@@ -47,7 +51,10 @@ const SafeLinkCSS = css`
   box-shadow: none;
   align-items: center;
   color: ${colors.brand.primary};
-  height: ${FOOTER_HEIGHT}px;
+  height: ${FOOTER_HEIGHT};
+  ${mq.range({ until: breakpoints.tablet })} {
+    height: ${FOOTER_HEIGHT_MOBILE};
+  }
   padding: 0 ${spacing.normal} 0 ${spacing.normal};
   transition: background 200ms ease;
   > .c-icon--medium {
@@ -96,6 +103,19 @@ const lineCSS = css`
   }
 `;
 
+const labelCSS = css`
+  ${typography.smallHeading}
+  ${mq.range({ until: breakpoints.tablet })} {
+    color: ${colors.brand.primary};
+  }
+`;
+
+const titleCSS = css`
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
+`;
+
 interface PropsSiblings {
   title: string;
   to: string;
@@ -110,8 +130,8 @@ export const LearningPathStickySibling = ({ title, to, arrow, label, icon }:Prop
     {icon && <hr css={lineCSS} />}
     {icon && icon}
     <div>
-      <span css={typography.smallHeading}>{label}</span>
-      <span>{title}</span>
+      <span css={labelCSS}>{label}</span>
+      <span css={titleCSS}>{title}</span>
     </div>
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>

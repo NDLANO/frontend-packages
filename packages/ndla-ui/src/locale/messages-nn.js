@@ -533,6 +533,14 @@ const messages = {
       ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
     },
   },
+  learningPath: {
+    createLearningPathText: 'Lag din egen læringsti, kopier denne læringstien eller sjå fleire læringsstiar?',
+    createLearningPathButtonText: 'Gå til stier',
+    lastUpdated: 'Sist oppdatert',
+    youAreInALearningPath: 'Du er nå inne i en læringssti',
+    readTime: '{hours} Skoletimar = {minutes} min',
+    pageOf: 'av',
+  }
 };
 
 export default messages;

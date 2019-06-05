@@ -551,7 +551,8 @@ const messages = {
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',
     readTime: '{hours} Skoletimer = {minutes} min',
-  }
+    pageOf: 'av',
+  },
 };
 
 export default messages;

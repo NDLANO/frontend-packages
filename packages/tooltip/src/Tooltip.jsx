@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { isMobile, isIE } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors, fonts, animation } from '@ndla/core';
+import { spacing, colors, fonts } from '@ndla/core';
 
 const TooltipWrapper = styled.div`
   position: relative;

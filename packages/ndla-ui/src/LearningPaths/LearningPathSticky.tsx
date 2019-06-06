@@ -92,19 +92,6 @@ const SafeLinkCSS = css`
   }
 `;
 
-const lineCSS = css`
-  height: ${spacing.large};
-  width: 1px;
-  background: ${colors.brand.tertiary};
-  margin-right: ${spacing.normal};
-  margin-left: -${spacing.normal};
-  border: 0;
-  transition: opacity 200ms ease;
-  &:before {
-    display: none;
-  }
-`;
-
 const labelCSS = css`
   ${typography.smallHeading}
   ${mq.range({ until: breakpoints.tablet })} {
@@ -123,14 +110,11 @@ interface PropsSiblings {
   to: string;
   arrow?: 'left' | 'right';
   label: string;
-  icon?: React.ReactNode;
 }
 
-export const LearningPathStickySibling = ({ title, to, arrow, label, icon }:PropsSiblings) => (
+export const LearningPathStickySibling = ({ title, to, arrow, label }:PropsSiblings) => (
   <SafeLink to={to} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
-    {icon && <hr css={lineCSS} />}
-    {icon && icon}
     <div>
       <span css={labelCSS}>{label}</span>
       <span css={titleCSS}>{title}</span>

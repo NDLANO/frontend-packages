@@ -15,7 +15,8 @@ import {
   LearningPathStickySibling,
   LearningPathContent,
   LearningPathInformation,
-  SubjectBadge,
+  OneColumn,
+  SafeLink,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { colors } from '@ndla/core';
@@ -221,6 +222,22 @@ const LearningPathExample = () => {
               {articleId && (
                 <ArticleLoader hideResources hideForm articleId={articleId} />
               )}
+              {currentLearningStepNumber === learningsteps.length -1 && (
+                <OneColumn>
+                  <div>
+                    Dette er siste steg i læringsstien
+                    "dsffdsff"
+                  </div>
+                  <div>
+                    Gå til faget:
+                    <SafeLink to="link">Samfunnsfag</SafeLink>
+                  </div>
+                  <div>
+                    Gå til emne:
+                    <SafeLink to="link">Emne eksempel</SafeLink>
+                  </div>
+                </OneColumn>
+              )}
             </div>
           )}
         </LearningPathContent>
@@ -235,19 +252,12 @@ const LearningPathExample = () => {
           ) : (
             <div />
           )}
-          {currentLearningStepNumber < learningsteps.length - 1 ? (
+          {currentLearningStepNumber < learningsteps.length - 1 && (
             <LearningPathStickySibling
               arrow="right"
               label="neste"
               to={learningsteps[currentLearningStepNumber + 1].metaUrl}
               title={learningsteps[currentLearningStepNumber + 1].title.title}
-            />
-          ) : (
-            <LearningPathStickySibling
-              label="Gå videre til emne"
-              to="#"
-              title={'Navn på emne'}
-              icon={<SubjectBadge background />}
             />
           )}
         </LearningPathSticky>

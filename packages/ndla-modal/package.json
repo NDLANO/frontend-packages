@@ -1,6 +1,6 @@
 {
   "name": "@ndla/modal",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -19,8 +19,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^0.3.6",
-    "@ndla/core": "^0.6.6",
+    "@ndla/button": "^0.3.7",
+    "@ndla/core": "^0.6.7",
     "@ndla/util": "^0.3.3",
     "focus-trap-react": "^6.0.0"
   },

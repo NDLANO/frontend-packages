@@ -70,7 +70,6 @@ const Structure = ({
     !subjectFilters[currentPath[0]].some(filter =>
       activeFilters.includes(filter.id),
     );
-
   const filteredStructure = useMemo(
     () =>
       structure.filter(
@@ -80,7 +79,7 @@ const Structure = ({
             activeFilters.includes(topicFilter.id),
           ),
       ),
-    [structure],
+    [structure, activeFilters],
   );
 
   return (
@@ -133,7 +132,6 @@ const Structure = ({
                 <Structure
                   structure={children}
                   currentPath={currentPathIds}
-                  subjectFilters={subjectFilters}
                   filters={subjectFilters}
                   openedPaths={openedPaths}
                   toggleOpen={toggleOpen}

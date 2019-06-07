@@ -536,7 +536,7 @@ const messages = {
   dropdown: {
     numberHits: `Søket gav {hits} treff`,
     searching: 'Søker...',
-    create: 'Opprett nytt nøkkelord',
+    create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
   },
 };

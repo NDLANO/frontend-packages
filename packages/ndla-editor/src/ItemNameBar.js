@@ -56,7 +56,7 @@ const ItemTitleButton = styled.button`
     css`
       cursor: pointer;
     `};
-  ${props => !props.hasSubtopics && props.level !== 0 && itemTitleLinked};
+  ${props => !props.hasSubtopics && !props.isSubject && itemTitleLinked};
   &:before {
     transition: transform 200ms ease;
     transform: rotate(
@@ -65,31 +65,39 @@ const ItemTitleButton = styled.button`
   }
 `;
 
-const itemNameStyling = css`
+const StyledItemBar = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 0 ${spacing.small} 0
+    calc(${props => props.level} * 17px + ${spacing.small});
+  height: 40px;
+  border-bottom: 1px solid ${colors.brand.greyLighter};
+
+  &:hover {
+    background: ${props => (props.highlight ? colors.brand.light : '#f1f5f8')};
+  }
 `;
 
 const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
-const ItemName = ({
+const ItemNameBar = ({
   title,
   children,
   path,
   toggleOpen,
   hasSubtopics,
   isOpen,
-  level,
+  isSubject,
   lastItemClickable,
   id,
 }) => (
-  <div css={itemNameStyling}>
+  <StyledItemBar>
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"
         id={id}
         hasSubtopics={hasSubtopics}
-        level={level}
+        isSubject={isSubject}
         lastItemClickable={lastItemClickable}
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}>
@@ -99,10 +107,10 @@ const ItemName = ({
       <ItemTitleSpan>{title}</ItemTitleSpan>
     )}
     {children}
-  </div>
+  </StyledItemBar>
 );
 
-ItemName.propTypes = {
+ItemNameBar.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
   path: PropTypes.string.isRequired,
@@ -111,7 +119,7 @@ ItemName.propTypes = {
   isOpen: PropTypes.bool,
   lastItemClickable: PropTypes.bool,
   id: PropTypes.string,
-  level: PropTypes.number,
+  isSubject: PropTypes.bool,
 };
 
-export default ItemName;
+export default ItemNameBar;

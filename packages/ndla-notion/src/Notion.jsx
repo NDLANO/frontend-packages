@@ -76,7 +76,7 @@ Notion.propTypes = {
   title: PropTypes.string.isRequired,
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  content: PropTypes.node.isRequired,
+  content: PropTypes.node,
 };
 
 export default Notion;

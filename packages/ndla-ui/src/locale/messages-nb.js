@@ -189,6 +189,7 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
+      heading: 'Hva lærer du?',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
     film: {

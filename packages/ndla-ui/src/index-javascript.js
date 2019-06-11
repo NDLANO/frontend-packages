@@ -25,6 +25,7 @@ export {
   FrontpageHeader,
   FrontpageSubjects,
   FrontpageSubjectsSection,
+  FrontpageCircularSubjectsSection,
   FrontpageInfo,
   FrontpageSearchSection,
   FrontpageFilm,

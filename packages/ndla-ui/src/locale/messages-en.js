@@ -192,6 +192,7 @@ const messages = {
       yrkesfag: 'Vocational',
       studiespesialiserende: 'Specialization',
       imported: 'Imported subjects',
+      heading: 'What will you learn?',
     },
     film: {
       header: 'NDLA film',

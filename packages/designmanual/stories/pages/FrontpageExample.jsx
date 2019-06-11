@@ -10,6 +10,7 @@ import {
   FrontpageInfo,
   FrontpageSearchSection,
   FrontpageFilm,
+  FrontpageCircularSubjectsSection,
   InfoWidget,
   SafeLink,
   SubjectSectionTitle,
@@ -18,6 +19,17 @@ import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
+import NdlaYrkesfagIllustration from '../../images/category_illustrations/illustrasjon_yrkesfag.svg';
+import NdlaStudieSpesialiserendeIllustration from '../../images/category_illustrations/illustrasjon_studiespesialiserende.svg';
+import NdlaFellesfagIllustration from '../../images/category_illustrations/illustrasjon_fellesfag.svg';
+import NdlaKombinertIllustration from '../../images/category_illustrations/illustrasjon_kombinert.svg';
+
+const categoryIllustrations = {
+  yrkesfag: NdlaYrkesfagIllustration,
+  studiespesialiserende: NdlaStudieSpesialiserendeIllustration,
+  fellesfag: NdlaFellesfagIllustration,
+  kombinert: NdlaKombinertIllustration,
+};
 
 const classes = BEMHelper('c-frontpage-section');
 
@@ -257,9 +269,12 @@ class FrontpageExample extends Component {
           ]}
         />
         <main>
-          <FrontpageSubjects
-            categories={categories}
-            linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
+          <FrontpageCircularSubjectsSection
+            categories={{
+              mobile: ["fellesfag", "yrkesfag", "studiespesialiserende"],
+              desktop: ["fellesfag", "studiespesialiserende", "yrkesfag"]
+            }}
+            categoryIllustrations={categoryIllustrations}
           />
           <OneColumn wide extraPadding>
             <FrontpageSearchSection

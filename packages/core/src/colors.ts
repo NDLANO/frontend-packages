@@ -2,7 +2,7 @@ import darken from 'polished/lib/color/darken';
 import rgba from 'polished/lib/color/rgba';
 
 const brandLight = '#ceddea';
-const brandLightest = '#F0F6FB'
+const brandLightest = '#F0F6FB';
 const brandDark = '#184673';
 const brandGreyLight = '#e8e3e3';
 const brandGreyLightest = '#f8f8f8';
@@ -35,6 +35,7 @@ export default {
 
   ndlaFilm: {
     filmColor: '#091a2a',
+    filmColorDark: '#03172B',
     filmColorBright: '#20588f',
   },
 

@@ -125,7 +125,7 @@ export class FrontpageSubjects extends Component {
 
   render() {
     const { categories, linkToAbout, t } = this.props;
-    console.log(categories)
+    console.log(categories);
     return (
       <OneColumn wide noPadding>
         <div {...wrapperClasses()}>

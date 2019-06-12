@@ -41,6 +41,7 @@ const StyledSafeLink = styled(SafeLink)`
   display: block;
   height: 100%;
   width: 23%;
+  border-radius: 50%;
   position: relative;
   box-shadow: none;
   z-index: 1;
@@ -88,15 +89,20 @@ const FrontpageCombinedSubjects = ({ categories, illustrationUrl }) => {
     });
   };
 
+  const toggleFullscreen = () => {
+    //open modal?
+    console.log('open modal');
+  };
+
   return (
     <Container illustrationUrl={illustrationUrl}>
       <LinkContainer>
         {categories.map((category, i) => (
           <StyledSafeLink
-            to="/"
             key={category}
             onPointerEnter={() => setIllustrationHoverFill(i)}
-            onPointerLeave={() => setIllustrationHoverFill('reset')}>
+            onPointerLeave={() => setIllustrationHoverFill('reset')}
+            onClick={toggleFullscreen}>
             <LinkText>{category}</LinkText>
           </StyledSafeLink>
         ))}

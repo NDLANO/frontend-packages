@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
-import { fonts, colors, spacing } from '@ndla/core';
+import { fonts, colors } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
 
 const StyledFigure = styled('figure')`
@@ -34,10 +34,10 @@ const StyledSafeLink = styled(SafeLink)`
 `;
 
 const FrontPageCircularSubject = ({ textValue, link, illustrationUrl }) => (
-    <StyledSafeLink to={link}>
-      <StyledFigure illustrationUrl={illustrationUrl} />
-      <StyledFigCaption>{textValue}</StyledFigCaption>
-    </StyledSafeLink>
+  <StyledSafeLink to={link}>
+    <StyledFigure illustrationUrl={illustrationUrl} />
+    <StyledFigCaption>{textValue}</StyledFigCaption>
+  </StyledSafeLink>
 );
 
 FrontPageCircularSubject.propTypes = {

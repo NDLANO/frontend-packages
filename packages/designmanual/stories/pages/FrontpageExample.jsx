@@ -4,6 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
   FrontpageHeader,
+  FrontpageHeaderNew,
   FrontpageSubjects,
   ContentCard,
   OneColumn,
@@ -268,11 +269,17 @@ class FrontpageExample extends Component {
             },
           ]}
         />
+        <FrontpageHeaderNew
+          searchFieldValue={searchFieldValue}
+          onSearchInputFocus={this.onSearchInputFocus}
+          onSearch={() => {}}
+          infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
+        />
         <main>
           <FrontpageCircularSubjectsSection
             categories={{
-              mobile: ["fellesfag", "yrkesfag", "studiespesialiserende"],
-              desktop: ["fellesfag", "studiespesialiserende", "yrkesfag"]
+              mobile: ['fellesfag', 'yrkesfag', 'studiespesialiserende'],
+              desktop: ['fellesfag', 'studiespesialiserende', 'yrkesfag'],
             }}
             categoryIllustrations={categoryIllustrations}
           />

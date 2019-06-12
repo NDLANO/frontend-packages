@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -12,15 +12,11 @@ import { SafeLink } from '@ndla/ui';
 import { css } from '@emotion/core';
 import { buttonStyle, appearances } from './Button';
 
-const getStyles = modifiers => {
-  const styles = [];
-  Object.keys(modifiers).forEach(key => {
-    if (modifiers[key]) {
-      styles.push(appearances[key]);
-    }
-  });
-  return styles;
-};
+const getStyles = modifiers => (
+  Object.keys(modifiers).map(key => 
+    modifiers[key] ? appearances[key] : undefined)
+  .filter(appearance => !!appearance)
+);
 
 const SafeLinkButton = ({
   outline,

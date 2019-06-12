@@ -18,7 +18,6 @@ const StyledContent = styled.div`
     padding-top: ${spacing.spacingUnit * 0.75}px;
   }
   .c-article {
-    // remove margin-top rule for .c-articles
     margin-top: 0;
   }
 `;

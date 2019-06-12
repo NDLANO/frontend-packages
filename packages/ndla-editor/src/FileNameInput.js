@@ -56,7 +56,7 @@ const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
   return (
     <div>
       <Download />
-      <LinkButton type="button" onClick={() => window.open(file.path)}>
+      <LinkButton type="button" onClick={() => window.open(file.url)}>
         {file.title === '' ? '[Mangler filnavn]' : file.title}
         {` `}
         <span>({file.type})</span>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { fonts, colors } from '@ndla/core';
-import SafeLink from '../common/SafeLink';
 
 const StyledFigure = styled('figure')`
   ${({ illustrationUrl }) =>
@@ -29,20 +28,21 @@ const StyledFigCaption = styled('figcaption')`
   color: ${colors.subject.dark};
 `;
 
-const StyledSafeLink = styled(SafeLink)`
+const StyledButton = styled('button')`
   box-shadow: none;
+  border: 0;
+  background: none;
 `;
 
-const FrontPageCircularSubject = ({ textValue, link, illustrationUrl }) => (
-  <StyledSafeLink to={link}>
+const FrontPageCircularSubject = ({ textValue, illustrationUrl, ...rest }) => (
+  <StyledButton type="button" {...rest}>
     <StyledFigure illustrationUrl={illustrationUrl} />
     <StyledFigCaption>{textValue}</StyledFigCaption>
-  </StyledSafeLink>
+  </StyledButton>
 );
 
 FrontPageCircularSubject.propTypes = {
   textValue: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
   illustrationUrl: PropTypes.string.isRequired,
 };
 

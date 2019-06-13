@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
-import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
 import SectionHeading from '../SectionHeading';
 
@@ -11,19 +10,6 @@ const StyledSection = styled('section')`
   margin: 0 auto;
   max-width: 1150px;
   padding: 0 ${spacing.normal};
-`;
-
-const StyledSubjectLink = styled('div')`
-  width: 50%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  padding: ${spacing.small} 0;
-  position: relative;
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    display: none;
-  }
 `;
 
 const StyledSubjects = styled('div')`
@@ -53,17 +39,10 @@ const FrontpageCircularSubjectsSection = injectT(
           {t('welcomePage.category.heading')}
         </StyledSectionHeading>
         <StyledSubjects>
-          {categories.mobile.map(category => (
-            <StyledSubjectLink key={category}>
-              <FrontpageCircularSubject
-                link="/"
-                textValue={t(`welcomePage.category.${category}`)}
-                illustrationUrl={categoryIllustrations[category]}
-              />
-            </StyledSubjectLink>
-          ))}
           <FrontpageCombinedSubjects
             illustrationUrl={categoryIllustrations['kombinert']}
+            categoryIllustrations={categoryIllustrations}
+            categoriesMobile={categories.mobile}
             categories={categories.desktop.map(category =>
               t(`welcomePage.category.${category}`),
             )}

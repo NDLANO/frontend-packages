@@ -6,6 +6,7 @@ const brandLightest = '#F0F6FB';
 const brandDark = '#184673';
 const brandGreyLight = '#e8e3e3';
 const brandGreyLightest = '#f8f8f8';
+const brandYellow = '#fde74c';
 
 export default {
   /**
@@ -19,6 +20,7 @@ export default {
     lighter: '#deebf6',
     lightest: brandLightest,
     dark: brandDark,
+    accent: brandYellow,
     /**
      * NDLA Grays
      */

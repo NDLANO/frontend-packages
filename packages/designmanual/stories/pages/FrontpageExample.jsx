@@ -271,8 +271,24 @@ class FrontpageExample extends Component {
         />
         <FrontpageHeaderNew
           searchFieldValue={searchFieldValue}
+          onSearchFieldChange={() => {}}
           onSearchInputFocus={this.onSearchInputFocus}
+          searchFieldPlaceholder={() => {}}
           onSearch={() => {}}
+          links={[
+            {
+              to: '#1',
+              text: 'Om NDLA',
+            },
+            {
+              to: '#2',
+              text: 'NDLA i sosiale medier',
+            },
+            {
+              to: '#3',
+              text: 'Nyhetsbrev',
+            },
+          ]}
           infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
         />
         <main>

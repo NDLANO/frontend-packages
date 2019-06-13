@@ -199,7 +199,7 @@ const FrontpageCombinedSubjects = ({ categories, categoriesMobile, illustrationU
           {categories.map((category, index) => (
             <StyledButton
               key={category}
-              onPointerEnter={() => setIllustrationHoverFill(i)}
+              onPointerEnter={() => setIllustrationHoverFill(index)}
               onPointerLeave={() => setIllustrationHoverFill('reset')}
               onClick={(event) => openMenu({ event, index })}>
               <LinkText>{category}</LinkText>

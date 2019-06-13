@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { spacing, colors, fonts, misc } from '@ndla/core';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 const StyledWrapperDiv = styled.div`
   transition: opacity 200ms ease;
@@ -11,7 +11,7 @@ const StyledWrapperDiv = styled.div`
   z-index: 1;
 `;
 
-const movieTagsCSS = css`
+const StyledMovieTags = styled.span`
   ${fonts.sizes('14px', '16px')};
   font-weight: ${fonts.weight.semibold};
   background: ${colors.brand.greyLight};
@@ -35,9 +35,7 @@ const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
   return (
     <StyledWrapperDiv>
       {Object.keys(resources).map(resourceName => (
-        <span css={movieTagsCSS} key={resourceName}>
-          {resourceName}
-        </span>
+        <StyledMovieTags key={resourceName}>{resourceName}</StyledMovieTags>
       ))}
     </StyledWrapperDiv>
   );

@@ -3,28 +3,7 @@ import PropTypes from 'prop-types';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 import { css } from '@emotion/core';
 
-const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
-  const resources = {};
-  movieResourceTypes.forEach(movieResourceType => {
-    const resource = resourceTypes.find(
-      resourceType => resourceType.id === movieResourceType.id,
-    );
-    if (resource) {
-      resources[resource.name] = true;
-    }
-  });
-  return (
-    <div css={wrapperCSS}>
-      {Object.keys(resources).map(resourceName => (
-        <span css={movieTagsCSS} key={resourceName}>
-          {resourceName}
-        </span>
-      ))}
-    </div>
-  );
-};
-
-const wrapperCSS = css`
+const StyledWrapperDiv = styled.div`
   transition: opacity 200ms ease;
   padding: ${spacing.xsmall} ${spacing.xsmall};
   opacity: 0;
@@ -42,6 +21,27 @@ const movieTagsCSS = css`
   margin-right: ${spacing.spacingUnit / 4}px;
   margin-bottom: ${spacing.spacingUnit / 8}px;
 `;
+
+const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
+  const resources = {};
+  movieResourceTypes.forEach(movieResourceType => {
+    const resource = resourceTypes.find(
+      resourceType => resourceType.id === movieResourceType.id,
+    );
+    if (resource) {
+      resources[resource.name] = true;
+    }
+  });
+  return (
+    <StyledWrapperDiv>
+      {Object.keys(resources).map(resourceName => (
+        <span css={movieTagsCSS} key={resourceName}>
+          {resourceName}
+        </span>
+      ))}
+    </StyledWrapperDiv>
+  );
+};
 
 FilmContentCardTags.propTypes = {
   resourceTypes: PropTypes.arrayOf(PropTypes.object).isRequired,

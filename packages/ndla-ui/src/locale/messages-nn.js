@@ -541,6 +541,13 @@ const messages = {
     youAreInALearningPath: 'Du er nå inne i en læringssti',
     readTime: '{hours} Skoletimar = {minutes} min',
     pageOf: 'av',
+    lastStep: {
+      heading: 'Siste steg i læringsstien',
+      headingSmall:
+        'Du er nå på siste steget i læringsstien {learningPathName}',
+      topicHeading: 'Gå til emne:',
+      subjectHeading: 'Gå til faget:',
+    },
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

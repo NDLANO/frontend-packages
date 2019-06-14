@@ -543,6 +543,22 @@ const messages = {
     youAreInALearningPath: 'You are now in a learningpath',
     readTime: '{hours} schoolhours = {minutes} min',
     pageOf: 'of',
+    lastStep: {
+      heading: 'Last step of this learningpath',
+      headingSmall:
+        'You are now in the last step of the learningpath {learningPathName}',
+      topicHeading: 'Go to topic:',
+      subjectHeading: 'Go to subject:',
+    },
+  },
+  learningPath: {
+    createLearningPathText:
+      'Create your own, copy this or see more learningpaths?',
+    createLearningPathButtonText: 'Go to learningpaths',
+    lastUpdated: 'Last updated',
+    youAreInALearningPath: 'You are now in a learningpath',
+    readTime: '{hours} schoolhours = {minutes} min',
+    pageOf: 'of',
   },
   dropdown: {
     numberHits: `Search returned {hits} hits`,

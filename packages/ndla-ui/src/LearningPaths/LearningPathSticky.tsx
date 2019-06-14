@@ -95,7 +95,7 @@ const SafeLinkCSS = css`
   }
 `;
 
-const labelCSS = css`
+const StyledLabel = styled.span`
   ${typography.smallHeading}
   display: none;
   ${mq.range({ until: breakpoints.tablet })} {
@@ -104,7 +104,7 @@ const labelCSS = css`
   }
 `;
 
-const titleCSS = css`
+const StyledTitle = styled.span`
   ${mq.range({ until: breakpoints.tablet })} {
     display: none;
   }
@@ -121,8 +121,8 @@ export const LearningPathStickySibling = ({ title, to, arrow, label }:PropsSibli
   <SafeLink to={to} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
-      <span css={labelCSS}>{label}</span>
-      <span css={titleCSS}>{title}</span>
+      <StyledLabel>{label}</StyledLabel>
+      <StyledTitle>{title}</StyledTitle>
     </div>
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>

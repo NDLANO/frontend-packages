@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, fonts, misc, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
@@ -60,42 +61,45 @@ interface ModalWrapperProps {
   learningstepsTotal: number;
   closeLabel: string;
   outOfLabel: string;
-  children: React.ReactNode;
+  children: JSX.Element;
   t: any;
 };
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
   innerWidth, currentIndex, learningstepsTotal, closeLabel, outOfLabel, children, t,
-}) => (
-  innerWidth < 601 ? (
-    <StyledWrapper>
-      <Modal
-        backgroundColor="grey"
-        animation="slide-up"
-        animationDuration={200}
-        size="fullscreen"
-        activateButton={
-          <StyledMobileButton type="button">
-            {currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal + 1}
-          </StyledMobileButton>
-        }>
-        {(onClose: Function) => (
-          <>
-            <ModalHeader>
-              <ModalCloseButton title={closeLabel} onClick={onClose} />
-            </ModalHeader>
-            <ModalBody>
-              {children}
-            </ModalBody>
-          </>
-        )}
-      </Modal>
-      <div>
-        <LearningPathBadge size="xx-small" background />
-        <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
-      </div>
-    </StyledWrapper>
-  ) : <>{children}</>
-);
+}) => {
+  if (innerWidth < 601) {
+    return (
+      <StyledWrapper>
+        <Modal
+          backgroundColor="grey"
+          animation="slide-up"
+          animationDuration={200}
+          size="fullscreen"
+          activateButton={
+            <StyledMobileButton type="button">
+              {currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal + 1}
+            </StyledMobileButton>
+          }>
+          {(onClose: Function) => (
+            <>
+              <ModalHeader>
+                <ModalCloseButton title={closeLabel} onClick={onClose} />
+              </ModalHeader>
+              <ModalBody>
+                {children}
+              </ModalBody>
+            </>
+          )}
+        </Modal>
+        <div>
+          <LearningPathBadge size="xx-small" background />
+          <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
+        </div>
+      </StyledWrapper>
+    );
+  }
+  return children;
+};
 
 export default injectT(ModalWrapperComponent);

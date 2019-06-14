@@ -559,6 +559,9 @@ const messages = {
     youAreInALearningPath: 'You are now in a learningpath',
     readTime: '{hours} schoolhours = {minutes} min',
     pageOf: 'of',
+    openMenuTooltip: 'Open menu',
+    previousArrow: 'Previous',
+    nextArrow: 'Next',
   },
   dropdown: {
     numberHits: `Search returned {hits} hits`,

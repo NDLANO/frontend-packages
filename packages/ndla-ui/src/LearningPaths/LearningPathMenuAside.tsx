@@ -14,8 +14,9 @@ import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { SafeLinkButton } from '@ndla/button';
 // @ts-ignore
-import { Time, User } from '@ndla/icons/common';
+import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
+import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 
 const infoTextCSS = css`
   ${fonts.sizes(18, 1.3)};
@@ -96,17 +97,7 @@ const LearningPathMenuAside: React.FunctionComponent<Props> = ({
         {t('learningPath.lastUpdated')}: {lastUpdated}
       </p>
     </div>
-    {copyright.contributors && (
-      <div css={learningPathDetailsCSS}>
-        <User />
-        <p>
-          {copyright.contributors.map(contributor => (
-            <span key={contributor.name}>{contributor.name}</span>
-          ))}
-          <span>{copyright.license.license}</span>
-        </p>
-      </div>
-    )}
+    {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
     <p css={infoTextCSS}>
       {t('learningPath.createLearningPathText')}
     </p>

@@ -44,19 +44,8 @@ export const LearningPathIcon: React.FunctionComponent<Props> = ({
   type,
   beforeCurrent,
   current,
-}) => {
-  let icon = null;
-  switch (type) {
-    case 'HAS_READ':
-      icon = <LearningPathRead />;
-      break;
-    case 'CURRENT':
-      icon = <LearningPathRead />;
-      break;
-    default:
-      break;
-  }
-  return (
-    <Icon current={current} beforeCurrent={beforeCurrent}>{icon}</Icon>
-  )
-};
+}) => (
+  <Icon current={current} beforeCurrent={beforeCurrent}>
+    {(type === 'HAS_READ' || type === 'CURRENT') && <LearningPathRead />}
+  </Icon>
+);

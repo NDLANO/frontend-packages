@@ -7,10 +7,10 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { fonts, spacing, breakpoints, mq } from '@ndla/core';
 
-const wrapperCSS = css`
+const StyledWrapper = styled.div`
   background: transparent;
   font-family: ${fonts.serif};
   h1, h2, h3, h4, h5, h6 {
@@ -48,7 +48,7 @@ export const LearningPathInformation: React.FunctionComponent<Props> = ({
   description, title, license,
 }) => (
   <section className="o-wrapper">
-    <div className="c-article" css={wrapperCSS}>
+    <StyledWrapper className="c-article">
       <div>
         <h1>
           {title}
@@ -58,6 +58,6 @@ export const LearningPathInformation: React.FunctionComponent<Props> = ({
       {description && <div
         dangerouslySetInnerHTML={{ __html: description }}
       />}
-    </div>
+    </StyledWrapper>
   </section>
 );

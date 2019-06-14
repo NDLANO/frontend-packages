@@ -560,6 +560,9 @@ const messages = {
       topicHeading: 'Gå til emne:',
       subjectHeading: 'Gå til faget:',
     },
+    openMenuTooltip: 'Åpne meny',
+    previousArrow: 'Forrige',
+    nextArrow: 'Neste',
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

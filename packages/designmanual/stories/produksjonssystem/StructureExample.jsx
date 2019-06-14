@@ -146,32 +146,26 @@ const buttonAddition = css`
   ${fonts.sizes(14, 1.1)};
 `;
 
-const listClass = css`
-  > div {
-    > .filestructure {
-      display: flex;
-      &:focus-within {
-        > button {
-          opacity: 1;
-        }
-      }
-    }
-    &:hover {
-      background: #f1f5f8;
-      .filestructure {
-        > button,
-        > span {
-          opacity: 1;
-        }
-      }
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  &:focus-within {
+    > button {
+      opacity: 1;
     }
   }
-  &.active {
-    .filestructure {
-      > button,
-      > span {
-        opacity: 1;
-      }
+
+  div:hover > & {
+    background: #f1f5f8;
+    > button,
+    > span {
+      opacity: 1;
+    }
+  }
+
+  div:active > & {
+    > button,
+    > span {
+      opacity: 1;
     }
   }
 `;
@@ -183,7 +177,7 @@ class StructureExample extends Component {
       structure: [],
       openedPaths: [],
       loadedEssentials: false,
-      fileStructureFilters: [],
+      activeFilters: [],
       availableFilters: [],
     };
     this.renderListItems = this.renderListItems.bind(this);
@@ -200,8 +194,8 @@ class StructureExample extends Component {
     });
   }
 
-  onOpenPath({ id, level }) {
-    if (level === 0) {
+  onOpenPath({ id, isSubject }) {
+    if (isSubject) {
       // already loaded?
       const index = this.state.structure.findIndex(
         subject => subject.id === id,
@@ -234,45 +228,45 @@ class StructureExample extends Component {
     }
   }
 
-  renderListItems({ paths, level, isOpen }) {
+  renderListItems({ subjectId, isSubject, isOpen }) {
     const { availableFilters } = this.state;
 
-    if (level === 0) {
-      if (!availableFilters[paths[0]] || !isOpen) {
+    if (isSubject) {
+      if (!availableFilters[subjectId] || !isOpen) {
         return null;
       }
       return (
-        <div className={'filestructure'}>
+        <StyledButtonWrapper>
           <AddTitle show>Filtrer emner:</AddTitle>
-          {availableFilters[paths[0]].map(filter => (
+          {availableFilters[subjectId].map(filter => (
             <ConnectionButton
               type="button"
               key={filter.id}
               className={
-                this.state.fileStructureFilters.some(
+                this.state.activeFilters.some(
                   StructureFilter => StructureFilter === filter.id,
                 )
                   ? 'checkboxItem--checked'
                   : ''
               }
               onClick={() => {
-                const currentIndex = this.state.fileStructureFilters.findIndex(
+                const currentIndex = this.state.activeFilters.findIndex(
                   StructureFilter => StructureFilter === filter.id,
                 );
                 if (currentIndex === -1) {
                   this.setState(prevState => {
-                    const { fileStructureFilters } = prevState;
-                    fileStructureFilters.push(filter.id);
+                    const { activeFilters } = prevState;
+                    activeFilters.push(filter.id);
                     return {
-                      fileStructureFilters,
+                      activeFilters,
                     };
                   });
                 } else {
                   this.setState(prevState => {
-                    const { fileStructureFilters } = prevState;
-                    fileStructureFilters.splice(currentIndex, 1);
+                    const { activeFilters } = prevState;
+                    activeFilters.splice(currentIndex, 1);
                     return {
-                      fileStructureFilters,
+                      activeFilters,
                     };
                   });
                 }
@@ -281,15 +275,15 @@ class StructureExample extends Component {
               <span>{filter.name}</span>
             </ConnectionButton>
           ))}
-        </div>
+        </StyledButtonWrapper>
       );
     }
     return (
-      <div className={'filestructure'}>
+      <StyledButtonWrapper>
         <Button outline css={buttonAddition} onClick={() => {}}>
           Emne funksjon
         </Button>
-      </div>
+      </StyledButtonWrapper>
     );
   }
 
@@ -297,7 +291,7 @@ class StructureExample extends Component {
     const {
       loadedEssentials,
       structure,
-      fileStructureFilters,
+      activeFilters,
       availableFilters,
     } = this.state;
 
@@ -308,19 +302,18 @@ class StructureExample extends Component {
         <Structure
           openedPaths={this.state.openedPaths}
           structure={structure}
-          toggleOpen={({ path, id, level }) => {
+          toggleOpen={({ path, id, isSubject }) => {
             this.setState(prevState => {
               const filtered = prevState.openedPaths.filter(p => p !== path);
               if (filtered.length === prevState.openedPaths.length) {
-                this.onOpenPath({ id, level });
+                this.onOpenPath({ id, isSubject });
                 return { openedPaths: [...prevState.openedPaths, path] };
               }
               return { openedPaths: filtered };
             });
           }}
           renderListItems={this.renderListItems}
-          listClass={listClass}
-          fileStructureFilters={fileStructureFilters}
+          activeFilters={activeFilters}
           filters={availableFilters}
         />
       </Fragment>

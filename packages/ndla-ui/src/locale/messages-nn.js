@@ -481,7 +481,7 @@ const messages = {
     search: {
       placeholder: 'Søk på filmnavn',
       categoryFromNdla: 'Utvalg fra NDLA',
-      categoryButton: 'Velg filmkategori',
+      chooseCategory: 'Velg filmkategori',
       subjectButton: 'Gå til emne',
     },
     editor: {
@@ -555,7 +555,7 @@ const messages = {
   dropdown: {
     numberHits: `Søket gav {hits} treff`,
     searching: 'Søker...',
-    create: 'Opprett nytt nøkkelord',
+    create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
   },
 };

@@ -389,6 +389,7 @@ class ImageSearch extends React.Component {
           onChange={evt => this.setState({ queryString: evt.target.value })}
           onKeyPress={evt => {
             if (evt.key === 'Enter') {
+              evt.preventDefault();
               this.searchImages({ query: queryString, page: 1 });
             }
           }}

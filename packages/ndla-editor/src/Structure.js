@@ -6,35 +6,24 @@
  *
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors } from '@ndla/core';
+import { colors } from '@ndla/core';
 import Spinner from './Spinner';
-import ItemName from './ItemName';
+import ItemNameBar from './ItemNameBar';
 
-const ItemListWrapper = styled.ul`
+const StructureWrapper = styled.ul`
   margin: 0;
   padding: 0;
 `;
 
-const ItemsList = styled.li`
+const StyledStructureItem = styled.li`
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  > div {
-    padding: 0 ${spacing.small} 0
-      calc(${props => props.level} * 17px + ${spacing.small});
-    height: 40px;
-    border-bottom: 1px solid ${colors.brand.greyLighter};
-
-    &:hover {
-      background: ${props =>
-        props.highlight ? colors.brand.light : '#f1f5f8'};
-    }
-  }
   > ul {
     display: none;
   }
@@ -46,6 +35,7 @@ const ItemsList = styled.li`
         display: block;
       }
     `};
+
   ${props =>
     props.highlight &&
     css`
@@ -53,6 +43,7 @@ const ItemsList = styled.li`
         background: ${colors.brand.light};
       }
     `};
+
   ${props =>
     props.greyedOut &&
     css`
@@ -64,97 +55,102 @@ const ItemsList = styled.li`
 
 const Structure = ({
   renderListItems,
-  listClass,
-  fileStructureFilters,
+  activeFilters,
   filters: subjectFilters,
   structure,
   openedPaths,
   toggleOpen,
   highlightMainActive,
+  currentPath,
 }) => {
-  const renderItems = (subjectsOrTopics, paths, subjectId) => {
-    const level = paths.length;
-    const ignoreFilter =
-      level === 0 ||
-      !subjectFilters[subjectId] ||
-      !subjectFilters[subjectId].some(filter =>
-        fileStructureFilters.includes(filter.id),
-      );
-
-    return (
-      <ItemListWrapper>
-        {subjectsOrTopics
-          .filter(
-            subjectOrTopic =>
-              ignoreFilter ||
-              subjectOrTopic.filters.some(topicFilter =>
-                fileStructureFilters.includes(topicFilter.id),
-              ),
-          )
-          .map(({ id, name, topics, subtopics, filters, loading, ...rest }) => {
-            const currentPaths = paths.slice();
-            currentPaths.push(id);
-            const children = topics || subtopics;
-            const pathToString = currentPaths.join('/');
-            const parentId = paths.slice(-1);
-            const isOpen = openedPaths.includes(pathToString);
-            const isMainActive = openedPaths.slice(-1).pop() === pathToString;
-            return (
-              <ItemsList
-                key={pathToString}
-                css={listClass}
-                level={level}
-                highlight={
-                  highlightMainActive ? isMainActive : isOpen && level === 0
-                }
-                greyedOut={!isOpen && level === 0 && openedPaths.length > 0}
-                isOpen={isOpen}>
-                <ItemName
-                  isOpen={isOpen}
-                  title={name}
-                  lastItemClickable={highlightMainActive}
-                  path={pathToString}
-                  id={id.includes('topic') ? `${parentId}/${id}` : id}
-                  hasSubtopics={!!children || level === 0}
-                  toggleOpen={() =>
-                    toggleOpen({
-                      path: pathToString,
-                      level,
-                      id,
-                    })
-                  }
-                  level={level}>
-                  {renderListItems &&
-                    renderListItems({
-                      paths: currentPaths,
-                      pathToString,
-                      filters,
-                      level,
-                      isOpen,
-                      id,
-                      name,
-                      ...rest,
-                    })}
-                </ItemName>
-                {children &&
-                  renderItems(
-                    children,
-                    currentPaths,
-                    level === 0 ? id : subjectId,
-                  )}
-                {loading && (
-                  <span>
-                    <Spinner size="normal" margin="4px 26px" />
-                  </span>
-                )}
-              </ItemsList>
-            );
-          })}
-      </ItemListWrapper>
+  const isSubject = currentPath.length === 0;
+  const ignoreFilter =
+    isSubject ||
+    !subjectFilters[currentPath[0]] ||
+    !subjectFilters[currentPath[0]].some(filter =>
+      activeFilters.includes(filter.id),
     );
-  };
+  const filteredStructure = useMemo(
+    () =>
+      structure.filter(
+        subjectOrTopic =>
+          ignoreFilter ||
+          subjectOrTopic.filters.some(topicFilter =>
+            activeFilters.includes(topicFilter.id),
+          ),
+      ),
+    [structure, activeFilters],
+  );
 
-  return renderItems(structure, []);
+  return (
+    <StructureWrapper>
+      {filteredStructure.map(
+        ({ id, name, topics, subtopics, filters, loading, ...rest }) => {
+          const currentPathIds = [...currentPath, id];
+          const children = topics || subtopics;
+          const pathToString = currentPathIds.join('/');
+          const parentId = currentPath.slice(-1);
+          const isOpen = openedPaths.includes(pathToString);
+          const isMainActive = openedPaths.slice(-1).pop() === pathToString;
+          return (
+            <StyledStructureItem
+              key={pathToString}
+              level={currentPath.length}
+              highlight={
+                highlightMainActive ? isMainActive : isOpen && isSubject
+              }
+              isOpen={isOpen}
+              greyedOut={!isOpen && isSubject && openedPaths.length > 0}>
+              <ItemNameBar
+                isOpen={isOpen}
+                title={name}
+                lastItemClickable={highlightMainActive}
+                path={pathToString}
+                id={id.includes('topic') ? `${parentId}/${id}` : id}
+                hasSubtopics={!!children || isSubject}
+                toggleOpen={() =>
+                  toggleOpen({
+                    path: pathToString,
+                    isSubject,
+                    id,
+                  })
+                }
+                isSubject={isSubject}>
+                {renderListItems &&
+                  renderListItems({
+                    pathToString,
+                    filters,
+                    isSubject,
+                    subjectId: currentPathIds[0],
+                    isOpen,
+                    id,
+                    name,
+                    ...rest,
+                  })}
+              </ItemNameBar>
+              {children && (
+                <Structure
+                  structure={children}
+                  currentPath={currentPathIds}
+                  filters={subjectFilters}
+                  openedPaths={openedPaths}
+                  toggleOpen={toggleOpen}
+                  activeFilters={activeFilters}
+                  renderListItems={renderListItems}
+                  highlightMainActive={highlightMainActive}
+                />
+              )}
+              {loading && (
+                <span>
+                  <Spinner size="normal" margin="4px 26px" />
+                </span>
+              )}
+            </StyledStructureItem>
+          );
+        },
+      )}
+    </StructureWrapper>
+  );
 };
 
 const FilterShape = PropTypes.shape({
@@ -181,15 +177,16 @@ Structure.propTypes = {
   ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
-  listClass: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  fileStructureFilters: PropTypes.arrayOf(PropTypes.string),
+  activeFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
 };
 
 Structure.defaultProps = {
   structure: [],
   className: '',
-  fileStructureFilters: [],
+  activeFilters: [],
+  isSubject: true,
+  currentPath: [],
 };
 
 export default Structure;

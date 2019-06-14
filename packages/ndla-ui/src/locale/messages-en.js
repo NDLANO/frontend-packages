@@ -482,7 +482,7 @@ const messages = {
     search: {
       placeholder: 'Search on moviename',
       categoryFromNdla: 'Selected resources from NDLA',
-      categoryButton: 'Choose category',
+      chooseCategory: 'Choose category',
       subjectButton: 'Go to subject',
     },
     editor: {
@@ -566,7 +566,7 @@ const messages = {
   dropdown: {
     numberHits: `Search returned {hits} hits`,
     searching: 'Searching...',
-    create: 'Create new keyword',
+    create: 'Create new',
     isSelectedItem: 'Added',
   },
 };

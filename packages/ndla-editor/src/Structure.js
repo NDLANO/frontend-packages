@@ -95,7 +95,6 @@ const Structure = ({
           return (
             <StyledStructureItem
               key={pathToString}
-              level={currentPath.length}
               highlight={
                 highlightMainActive ? isMainActive : isOpen && isSubject
               }
@@ -104,6 +103,7 @@ const Structure = ({
               <ItemNameBar
                 isOpen={isOpen}
                 title={name}
+                level={currentPath.length}
                 lastItemClickable={highlightMainActive}
                 path={pathToString}
                 id={id.includes('topic') ? `${parentId}/${id}` : id}

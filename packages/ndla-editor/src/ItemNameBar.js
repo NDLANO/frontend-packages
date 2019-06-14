@@ -90,8 +90,9 @@ const ItemNameBar = ({
   isSubject,
   lastItemClickable,
   id,
+  level,
 }) => (
-  <StyledItemBar>
+  <StyledItemBar level={level}>
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"

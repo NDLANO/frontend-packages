@@ -136,7 +136,7 @@ class FrontpageExample extends Component {
                         subName: 'Vg1',
                       },
                       {
-                        path: '#f2',
+                        path: '#f3',
                         boldName: 'Fellesfag:',
                         name: 'Samfunnsfag',
                       },
@@ -306,7 +306,7 @@ class FrontpageExample extends Component {
                         subName: 'Vg1',
                       },
                       {
-                        path: '#f2',
+                        path: '#f3',
                         boldName: 'Fellesfag:',
                         name: 'Samfunnsfag',
                       },

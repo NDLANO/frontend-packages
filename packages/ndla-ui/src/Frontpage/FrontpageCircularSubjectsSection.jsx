@@ -20,14 +20,10 @@ const StyledSubjects = styled('div')`
   justify-content: space-around;
   padding: 0 ${spacing.normal};
   max-width: 966px;
-  margin: 0 auto;
-`;
+  margin: ${spacing.small} auto 0 auto;
 
-const StyledSectionHeading = styled(SectionHeading)`
-  display: none;
-  margin: ${spacing.large} 0 ${spacing.small} 0;
   ${mq.range({ from: breakpoints.tablet })} {
-    display: block;
+    margin: ${spacing.large} auto ${spacing.small} auto;
   }
 `;
 
@@ -35,9 +31,6 @@ const FrontpageCircularSubjectsSection = injectT(
   ({ categories, categoryIllustrations, t }) => {
     return (
       <StyledSection>
-        <StyledSectionHeading>
-          {t('welcomePage.category.heading')}
-        </StyledSectionHeading>
         <StyledSubjects>
           <FrontpageCombinedSubjects
             illustrationUrl={categoryIllustrations['kombinert']}

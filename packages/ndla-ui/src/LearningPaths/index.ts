@@ -6,10 +6,11 @@
  *
  */
 
- import LearningPathMenu from './LearningPathMenu';
+import LearningPathMenu from './LearningPathMenu';
+import LearningPathLastStepNavigation from './LearningPathLastStepNavigation';
 
 export { LearningPathWrapper } from './LearningPathWrapper';
 export { LearningPathContent } from './LearningPathContent';
-export { LearningPathMenu };
+export { LearningPathMenu, LearningPathLastStepNavigation };
 export { LearningPathInformation } from './LearningPathInformation';
 export { LearningPathSticky, LearningPathStickySibling } from './LearningPathSticky'; 

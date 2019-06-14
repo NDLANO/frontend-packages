@@ -7,21 +7,21 @@
  */
 
 import React, { useReducer, useEffect, useState } from 'react';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import {
   LearningPathWrapper,
   LearningPathMenu,
-  LearningPathSticky,
-  LearningPathStickySibling,
   LearningPathContent,
   LearningPathInformation,
-  OneColumn,
-  SafeLink,
+  LearningPathLastStepNavigation,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
-import { colors } from '@ndla/core';
+import { colors, animations, shadows } from '@ndla/core';
 import Button from '@ndla/button';
+import { Cross } from '@ndla/icons/action';
 
+import Resources from '../molecules/resources';
 import ArticleLoader from '../article/ArticleLoader';
 import Breadcrumb from '../molecules/breadcrumbs';
 
@@ -37,22 +37,33 @@ async function fetchLearningPathLearningSteps({ learningPathId }) {
   ).then(data => data.json());
 }
 
+async function fetchTaxonomiResourceId({ resourceId }) {
+  return await fetch(
+    `https://api.ndla.no/taxonomy/v1/resources/urn:${resourceId}`,
+  ).then(data => data.json());
+}
+
 const LEARNING_PATHS_COOKIES_KEY = 'LEARNING_PATHS_COOKIES_KEY';
 const UPDATE_SEQUENCE_NUMBER = 'UPDATE_SEQUENCE_NUMBER';
 const UPDATE_LEARNING_PATH_STEP = 'UPDATE_LEARNING_PATH_STEP';
 const UPDATE_LEARNING_PATH_DATA = 'UPDATE_LEARNING_PATH_DATA';
 const DEMO_LEARNING_PATH_ID = 434;
 
-const infoCSS = css`
+const StyledInfoHelper = styled.aside`
   display: block;
-  width: 200px;
-  left: calc(50% - 100px);
+  width: 450px;
+  left: calc(50% - 225px);
   top: 78px;
   background: #fff;
   z-index: 9999;
-  border: 4px solid ${colors.support.red};
-  border-radius: 10px;
+  border-radius: 4px;
+  padding: 26px;
   position: fixed;
+  opacity: 0;
+  ${animations.fadeInBottom('1000ms')};
+  animation-fill-mode: forwards;
+  animation-delay: 1000ms;
+  box-shadow: ${shadows.levitate1};
 `;
 
 const updateLearningStepNumber = (
@@ -117,13 +128,26 @@ const LearningPathExample = () => {
 
   async function fetchLearningStep(params) {
     const data = await fetchLearningPathArticle(params);
+    const { embedUrl } = data;
+    if (
+      embedUrl &&
+      embedUrl.url.indexOf(':') !== embedUrl.url.lastIndexOf(':')
+    ) {
+      // Fetch article via /taxonomy/v1/resources/urn:resource:1:117811
+      const resourceId = embedUrl.url.substr(embedUrl.url.lastIndexOf('/') + 1);
+      const dataResourceArticleId = await fetchTaxonomiResourceId({
+        resourceId,
+      });
+      data.embedUrl.url = dataResourceArticleId.contentUri.substr(
+        dataResourceArticleId.contentUri.lastIndexOf('/') + 1,
+      );
+    }
     dispatch({ type: UPDATE_LEARNING_PATH_STEP, data });
   }
 
   async function fetchLearningSteps(params) {
     const data = await fetchLearningPathLearningSteps(params);
     dispatch({ type: UPDATE_LEARNING_PATH_DATA, data });
-    dispatch({ type: UPDATE_SEQUENCE_NUMBER });
   }
 
   useEffect(() => {
@@ -138,7 +162,7 @@ const LearningPathExample = () => {
   }, []);
 
   useEffect(() => {
-    if (learningsteps && currentLearningStepNumber !== undefined) {
+    if (learningStepsData && currentLearningStepNumber !== undefined) {
       dispatch({ type: UPDATE_LEARNING_PATH_STEP });
       fetchLearningStep({
         stepId: learningsteps[currentLearningStepNumber].id,
@@ -154,13 +178,18 @@ const LearningPathExample = () => {
   }, [currentLearningStepNumber]);
 
   useEffect(() => {
+    if (learningStepsData) {
+      dispatch({ type: UPDATE_SEQUENCE_NUMBER });
+    }
+  }, [learningStepsData]);
+
+  useEffect(() => {
     dispatch({ type: UPDATE_LEARNING_PATH_DATA });
-    dispatch({ type: UPDATE_SEQUENCE_NUMBER });
     fetchLearningSteps({ learningPathId });
   }, [learningPathId]);
 
   if (!learningStepsData || currentLearningStepNumber === undefined) {
-    return <div>LOADING</div>;
+    return null;
   }
 
   const { duration, lastUpdated, copyright, learningsteps } = learningStepsData;
@@ -187,6 +216,7 @@ const LearningPathExample = () => {
   const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${DEMO_LEARNING_PATH_ID}`;
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
+  const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
   return (
     <>
       <LearningPathWrapper>
@@ -220,66 +250,56 @@ const LearningPathExample = () => {
                 />
               )}
               {articleId && (
-                <ArticleLoader hideResources hideForm articleId={articleId} />
+                <ArticleLoader hideForm hideResources articleId={articleId} />
               )}
-              {currentLearningStepNumber === learningsteps.length -1 && (
-                <OneColumn>
-                  <div>
-                    Dette er siste steg i læringsstien
-                    "dsffdsff"
-                  </div>
-                  <div>
-                    Gå til faget:
-                    <SafeLink to="link">Samfunnsfag</SafeLink>
-                  </div>
-                  <div>
-                    Gå til emne:
-                    <SafeLink to="link">Emne eksempel</SafeLink>
-                  </div>
-                </OneColumn>
+              {isLastStep && (
+                <LearningPathLastStepNavigation
+                  learningPathName={learningStepsData.title.title}
+                  subject={{ url: '#', name: 'Samfunnsfag' }}
+                  topic={{ url: '#', name: 'Eksempel på fag' }}>
+                  <Resources key="resources" />
+                </LearningPathLastStepNavigation>
               )}
             </div>
           )}
         </LearningPathContent>
-        <LearningPathSticky>
-          {currentLearningStepNumber > 0 ? (
-            <LearningPathStickySibling
-              arrow="left"
-              label="forrige"
-              to={learningsteps[currentLearningStepNumber - 1].metaUrl}
-              title={learningsteps[currentLearningStepNumber - 1].title.title}
-            />
-          ) : (
-            <div />
-          )}
-          {currentLearningStepNumber < learningsteps.length - 1 && (
-            <LearningPathStickySibling
-              arrow="right"
-              label="neste"
-              to={learningsteps[currentLearningStepNumber + 1].metaUrl}
-              title={learningsteps[currentLearningStepNumber + 1].title.title}
-            />
-          )}
-        </LearningPathSticky>
       </LearningPathWrapper>
       {hideHelp && (
-        <div css={infoCSS}>
-          Simulate navigation with arrow keys
-          <input
-            type="text"
-            name="article"
-            placeholder="enter learningpath id to load"
-            value={tempLearningPathId}
-            onChange={e => updateTempLearningPathId(e.target.value)}
-            onKeyDown={e => {
-              if (e.keyCode === 13) {
-                updateLearningPathId(e.target.value);
-                e.preventDefault();
-              }
-            }}
-          />
-          <Button onClick={() => toggleHelp(false)}>Close</Button>
-        </div>
+        <StyledInfoHelper>
+          <Button
+            link
+            css={css`
+              float: right;
+            `}
+            onClick={() => toggleHelp(false)}>
+            <Cross /> Lukk
+          </Button>
+          <p>Demo: Bruk ⬅️➡️ tastene for å navigere</p>
+          <div>
+            Læringssti ID:
+            <input
+              type="text"
+              name="article"
+              placeholder="enter learningpath id to load"
+              value={tempLearningPathId}
+              css={css`
+                margin: 0 13px;
+                width: 100px;
+                height: 39px;
+              `}
+              onChange={e => updateTempLearningPathId(e.target.value)}
+              onKeyDown={e => {
+                if (e.keyCode === 13) {
+                  updateLearningPathId(e.target.value);
+                  e.preventDefault();
+                }
+              }}
+            />
+            <Button onClick={() => updateLearningPathId(tempLearningPathId)}>
+              Hent læringssti
+            </Button>
+          </div>
+        </StyledInfoHelper>
       )}
     </>
   );

@@ -12,11 +12,10 @@ import { SafeLink } from '@ndla/ui';
 import { css } from '@emotion/core';
 import { buttonStyle, appearances } from './Button';
 
-const getStyles = modifiers => (
-  Object.keys(modifiers).map(key => 
-    modifiers[key] ? appearances[key] : undefined)
-  .filter(appearance => !!appearance)
-);
+const getStyles = modifiers =>
+  Object.keys(modifiers)
+    .map(key => (modifiers[key] ? appearances[key] : undefined))
+    .filter(appearance => !!appearance);
 
 const SafeLinkButton = ({
   outline,

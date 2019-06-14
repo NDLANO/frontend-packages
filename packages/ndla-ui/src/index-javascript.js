@@ -187,4 +187,5 @@ export {
   LearningPathSticky,
   LearningPathInformation,
   LearningPathStickySibling,
+  LearningPathLastStepNavigation,
 } from './LearningPaths';

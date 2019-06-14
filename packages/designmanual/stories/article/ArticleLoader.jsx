@@ -116,6 +116,7 @@ class ArticleLoader extends Component {
       closeButton,
       icon,
       label,
+      articleChildrenBeforeResources,
       hideResources,
       showSubTopics,
       ndlaFilm,
@@ -131,6 +132,10 @@ class ArticleLoader extends Component {
         : [];
 
     const articleChildren = [];
+
+    if (articleChildrenBeforeResources) {
+      articleChildren.push(articleChildrenBeforeResources);
+    }
 
     if (showSubTopics) {
       articleChildren.push(
@@ -209,6 +214,7 @@ ArticleLoader.propTypes = {
   label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
+  articleChildrenBeforeResources: PropTypes.node,
   hideForm: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
@@ -219,6 +225,7 @@ ArticleLoader.propTypes = {
 ArticleLoader.defaultProps = {
   icon: null,
   label: null,
+  articleChildrenBeforeResources: null,
 };
 
 export default ArticleLoader;

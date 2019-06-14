@@ -20,6 +20,10 @@ const StyledContent = styled.div`
   .c-article {
     margin-top: 0;
   }
+
+  > div:last-child {
+    width: 100%;
+  }
 `;
 
 interface Props {

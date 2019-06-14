@@ -16,7 +16,7 @@ import { SafeLink } from '@ndla/ui';
 // @ts-ignore
 import { Back, Forward } from '@ndla/icons/common';
 
-const FOOTER_HEIGHT = '87px';
+const FOOTER_HEIGHT = '78px';
 const FOOTER_HEIGHT_MOBILE = spacing.large;
 
 const StyledFooter = styled.nav`
@@ -58,6 +58,9 @@ const SafeLinkCSS = css`
     height: ${FOOTER_HEIGHT_MOBILE};
   }
   padding: 0 ${spacing.normal} 0 ${spacing.normal};
+  ${mq.range({ until: breakpoints.tablet })} {
+    padding: 0 ${spacing.small} 0 ${spacing.small};
+  }
   transition: background 200ms ease;
   > .c-icon--medium {
     transition: transform 200ms ease;
@@ -84,7 +87,7 @@ const SafeLinkCSS = css`
     > .c-icon--medium {
       transform: translateX(${spacing.xsmall});
     }
-    &:first-child {
+    &:first-of-type {
       > .c-icon--medium {
         transform: translateX(-${spacing.xsmall});
       }
@@ -94,7 +97,9 @@ const SafeLinkCSS = css`
 
 const labelCSS = css`
   ${typography.smallHeading}
+  display: none;
   ${mq.range({ until: breakpoints.tablet })} {
+    display: flex;
     color: ${colors.brand.primary};
   }
 `;

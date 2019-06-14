@@ -7,14 +7,28 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
-import { colors, spacing, fonts, misc, typography } from '@ndla/core';
+import styled from '@emotion/styled';
+import { injectT } from '@ndla/i18n';
+import { colors, spacing, fonts, misc, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+// @ts-ignore
+import { LearningPathBadge } from '@ndla/ui';
 
-const numbersButtonCSS = css`
+const StyledMobileButton = styled.button`
+  position: fixed;
+  z-index: 999;
+  bottom: ${spacing.xsmall};
+  left: calc(50% - ${spacing.spacingUnit * 2}px);
+  width: ${spacing.spacingUnit * 4}px;
+  height: ${spacing.spacingUnit * 1.5}px;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    left: calc(50% - ${spacing.spacingUnit * 1.5}px);
+    width: ${spacing.spacingUnit * 3}px;
+  };
   display: flex;
   align-items: center;
+  justify-content: center;
   background: ${colors.brand.primary};
   padding: ${spacing.xsmall} ${spacing.small};
   color: #fff;
@@ -27,13 +41,17 @@ const numbersButtonCSS = css`
   }
 `;
 
-const wrapperCSS = css`
+const StyledWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 0 -${spacing.normal} ${spacing.medium};
   background: ${colors.brand.lighter};
-  padding: ${spacing.xsmall} ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal};
+`;
+
+const StyledMiniHeader = styled.span`
+  padding-left: ${spacing.xsmall};
+  ${fonts.sizes(16, 1.1)};
 `;
 
 interface ModalWrapperProps {
@@ -43,20 +61,23 @@ interface ModalWrapperProps {
   closeLabel: string;
   outOfLabel: string;
   children: React.ReactNode;
+  t: any;
 };
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
-  innerWidth, currentIndex, learningstepsTotal, closeLabel, outOfLabel, children
+  innerWidth, currentIndex, learningstepsTotal, closeLabel, outOfLabel, children, t,
 }) => (
   innerWidth < 601 ? (
-    <div css={wrapperCSS}>
+    <StyledWrapper>
       <Modal
         backgroundColor="grey"
         animation="slide-up"
         animationDuration={200}
         size="fullscreen"
         activateButton={
-          <button type="button" css={numbersButtonCSS}>{currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal + 1}</button>
+          <StyledMobileButton type="button">
+            {currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal + 1}
+          </StyledMobileButton>
         }>
         {(onClose: Function) => (
           <>
@@ -69,9 +90,12 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
           </>
         )}
       </Modal>
-      <div css={typography.smallHeading}>Du er nå inne i en læringssti</div>
-    </div>
+      <div>
+        <LearningPathBadge size="xx-small" background />
+        <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
+      </div>
+    </StyledWrapper>
   ) : <>{children}</>
 );
 
-export default ModalWrapperComponent;
+export default injectT(ModalWrapperComponent);

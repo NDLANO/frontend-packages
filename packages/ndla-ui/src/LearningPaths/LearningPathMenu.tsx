@@ -12,7 +12,11 @@ import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { SafeLink } from '@ndla/ui';
+import {
+  SafeLink,
+  LearningPathSticky,
+  LearningPathStickySibling,
+} from '@ndla/ui';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
@@ -243,7 +247,7 @@ const navCSSClosed = css`
       span {
         display: none;
       }
-      &:first-child {
+      &:first-of-type {
         &:after {
           display: none !important;
         }
@@ -274,10 +278,11 @@ const styledIntroHeaderCSS = css`
 `;
 
 type StepProps = {
-  url: string;
+  metaUrl: string;
   title: {
     title: string;
   },
+  metaUrl: string;
   type: string;
   id: string | number;
   current?: boolean;
@@ -320,7 +325,7 @@ type renderMenuProps = {
 const renderMenu = ({ learningsteps, currentIndex, isOpen, cookies }:renderMenuProps) => (
   <nav css={[navCSS, !isOpen && navCSSClosed]}>
     <ul>
-      {learningsteps.map(({ id, url, title, type }:StepProps, index:number) => {
+      {learningsteps.map(({ id, metaUrl, title, type }:StepProps, index:number) => {
         let iconType = type;
         if (index === currentIndex) {
           iconType = 'CURRENT';
@@ -334,7 +339,7 @@ const renderMenu = ({ learningsteps, currentIndex, isOpen, cookies }:renderMenuP
             afterCurrent={index > currentIndex}
             isOpen={isOpen}
             indexNumber={index}>
-            <SafeLink to={url}>
+            <SafeLink to={metaUrl}>
               <div css={ContentTypeCSS}>
                 <LearningPathIcon type={iconType} current={index === currentIndex} beforeCurrent={index <= currentIndex} />
               </div>
@@ -387,6 +392,26 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
         {renderMenu({ learningsteps, isOpen, currentIndex, cookies })}
         <LearningPathMenuAside isOpen={isOpen} lastUpdated={lastUpdated} copyright={copyright} learningPathURL={learningPathURL} />
       </LearningPathMenuModalWrapper>
+      <LearningPathSticky>
+        {currentIndex > 0 ? (
+          <LearningPathStickySibling
+            arrow="left"
+            label="forrige"
+            to={learningsteps[currentIndex - 1].metaUrl}
+            title={learningsteps[currentIndex - 1].title.title}
+          />
+        ) : (
+          <div />
+        )}
+        {currentIndex < learningsteps.length - 1 && (
+          <LearningPathStickySibling
+            arrow="right"
+            label="neste"
+            to={learningsteps[currentIndex + 1].metaUrl}
+            title={learningsteps[currentIndex + 1].title.title}
+          />
+        )}
+      </LearningPathSticky>
     </StyledMenu>
   );
 };

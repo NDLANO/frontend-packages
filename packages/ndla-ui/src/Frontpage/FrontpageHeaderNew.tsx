@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
+import FocusTrapReact from 'focus-trap-react';
 import {
   colors,
   spacing,
@@ -9,8 +10,9 @@ import {
   fonts,
   animations,
 } from '@ndla/core';
+import { Cross } from '@ndla/icons/action';
 import { Launch as LaunchIcon } from '@ndla/icons/common';
-import PropTypes from 'prop-types';
+import { FrontPageHeaderProps, Link } from './types';
 import SafeLink from '../common/SafeLink';
 import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelector';
 import { SearchField } from '../Search';
@@ -25,15 +27,13 @@ const StyledLinkWrapper = styled('nav')`
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
   }
-
-  .c-masthead__change-language-wrapper {
-    padding-right: 0;
-    ${fonts.sizes('14px', '18px')};
-    color: ${colors.brand.dark};
-  }
 `;
 
-const StyledLinkElement = styled('span')``;
+const StyledLinkElement = styled('span')`
+  transition: box-shadow ${animations.durations.superFast} linear;
+  box-shadow: 0px 1px 0px ${colors.brand.dark};
+  margin-right: 6px;
+`;
 
 const StyledSafeLink = styled(SafeLink)`
   display: flex;
@@ -46,19 +46,21 @@ const StyledSafeLink = styled(SafeLink)`
     margin-left: 0;
   }
 
-  ${StyledLinkElement} {
-    transition: box-shadow ${animations.durations.superFast} linear;
-    box-shadow: 0px 1px 0px ${colors.brand.dark};
-    margin-right: 6px;
-  }
-
   &:hover ${StyledLinkElement} {
     box-shadow: none;
   }
 `;
 
 const StyledLanguageSelectorWrapper = styled('div')`
-  margin-left: ${spacing.large};
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-left: ${spacing.large};
+  }
+
+  .c-masthead__change-language-wrapper {
+    padding-right: 0;
+    ${fonts.sizes('14px', '18px')};
+    color: ${colors.brand.dark};
+  }
 `;
 
 const StyledHeader = styled('div')`
@@ -98,21 +100,28 @@ const StyledHeaderWrapper = styled('header')`
   }
 `;
 
-const StyledSearchFieldWrapper = styled('section')`
+type StyledSearchFieldWrapperProps = {
+  inputHasFocus: Boolean;
+};
+
+const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
   padding: 18px 15px;
   background: ${colors.brand.accent};
   border-radius: 2px;
+
   position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 0;
-  transform: translateY(85%);
+  right: ${(props: StyledSearchFieldWrapperProps) =>
+    props.inputHasFocus ? '0px' : '20px'};
+  left: ${(props: StyledSearchFieldWrapperProps) =>
+    props.inputHasFocus ? '0px' : '20px'};
+  bottom: -73px;
+  z-index: 9001;
 
   ${mq.range({ from: breakpoints.tablet })} {
     padding: ${spacing.large} ${spacing.normal};
-    transform: translateY(50%);
     left: ${spacing.normal};
     right: ${spacing.normal};
+    bottom: -81px;
   }
   .c-search-field__input-wrapper {
     padding: 0;
@@ -121,6 +130,48 @@ const StyledSearchFieldWrapper = styled('section')`
   .c-search-field__input {
     border-color: ${colors.brand.tertiary};
   }
+
+  .c-search-field {
+    width: 100%;
+    transition: width ${animations.durations.fast} ease-in-out;
+  }
+`;
+
+const StyledSearchField = styled('div')`
+  display: flex;
+  align-self: flex-start;
+
+  .c-search-field {
+    z-index: 9001;
+    width: calc(100% - ${spacing.large});
+  }
+
+  > button {
+    color: #fff;
+    display: flex;
+    padding: 13px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    z-index: 9999;
+    ${animations.fadeIn(animations.durations.fast)};
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+`;
+
+const StyledSearchBackdrop = styled.div`
+  position: fixed;
+  z-index: 9000;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(1, 1, 1, 0.5);
+  ${animations.fadeIn(animations.durations.fast)};
 `;
 
 const StyledLogo = styled(SafeLink)`
@@ -136,84 +187,95 @@ const StyledLogo = styled(SafeLink)`
   }
 `;
 
-const FrontpageHeader = ({
+const FrontpageHeaderNew: React.SFC<FrontPageHeaderProps> = ({
   searchFieldValue,
   links,
   onSearchFieldChange,
   searchFieldPlaceholder,
+  onSearchDeactiveFocusTrap,
+  onSearchInputFocus,
   onSearch,
+  messages,
+  allResultUrl,
+  hideSearch,
+  inputHasFocus,
+  infoText,
+  searchResult,
+  languageOptions,
 }) => (
   <StyledHeaderWrapper>
     <StyledHeader>
       <StyledLinkWrapper>
-        {links.map((link: { text: string; to: string }) => (
+        {links.map((link: Link) => (
           <StyledSafeLink key={link.text} to={link.to}>
             <StyledLinkElement>{link.text}</StyledLinkElement>
             <LaunchIcon color={colors.brand.dark} />
           </StyledSafeLink>
         ))}
         <StyledLanguageSelectorWrapper>
-          <LanguageSelector
-            currentLanguage="nb"
-            options={{
-              nb: {
-                name: 'Bokmål',
-                url: '#',
-              },
-              nn: {
-                name: 'Nynorsk',
-                url: '#',
-              },
-              en: {
-                name: 'English',
-                url: '#',
-              },
-            }}
-          />
+          <LanguageSelector currentLanguage="nb" options={languageOptions} />
         </StyledLanguageSelectorWrapper>
       </StyledLinkWrapper>
       <StyledLogo to="/">
         <SvgLogo />
       </StyledLogo>
-      <StyledSearchFieldWrapper>
-        <SearchField
-          placeholder="Søk i fagstoff, oppgaver og aktiviteter eller læringsstier"
-          value={searchFieldValue}
-          onChange={onSearchFieldChange}
-          messages={{
-            searchFieldTitle: 'Søk',
-          }}
-          onSearch={onSearch}
-          searchFieldPlaceholder={searchFieldPlaceholder}
-          resourceToLinkProps={() => {}}
-        />
-        {/* && (
-            <SearchField
-              ignoreContentTypeBadge
-              infoText={infoText}
-              value={searchFieldValue}
-              onChange={onSearchFieldChange}
-              placeholder={searchFieldPlaceholder}
-              messages={messages}
-              onSearch={onSearch}
-              searchResult={searchResult}
-              allResultUrl={allResultUrl}
-              resourceToLinkProps={() => {}}
-              singleColumn
-              hideSleeveHeader
-            />
-          ) */}
+      <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
+        {!hideSearch && !inputHasFocus && (
+          <SearchField
+            value={searchFieldValue}
+            onChange={onSearchFieldChange}
+            onFocus={onSearchInputFocus}
+            placeholder={searchFieldPlaceholder}
+            messages={messages}
+            onSearch={onSearch}
+            allResultUrl={allResultUrl}
+            resourceToLinkProps={() => {}}
+          />
+        )}
+        {!hideSearch && inputHasFocus && (
+          <>
+            <StyledSearchBackdrop />
+            <FocusTrapReact
+              focusTrapOptions={{
+                onDeactivate: () => {
+                  onSearchDeactiveFocusTrap();
+                },
+                clickOutsideDeactivates: true,
+                escapeDeactivates: true,
+              }}>
+              <StyledSearchField>
+                <SearchField
+                  modifiers={
+                    inputHasFocus
+                      ? ['no-left-margin', 'absolute-position-sleeve']
+                      : ['absolute-position-sleeve']
+                  }
+                  ignoreContentTypeBadge
+                  infoText={infoText}
+                  value={searchFieldValue}
+                  onChange={onSearchFieldChange}
+                  placeholder={searchFieldPlaceholder}
+                  messages={messages}
+                  onSearch={onSearch}
+                  searchResult={searchResult}
+                  allResultUrl={allResultUrl}
+                  resourceToLinkProps={() => {}}
+                  singleColumn
+                  hideSleeveHeader
+                />
+                <button
+                  type="button"
+                  onClick={onSearchDeactiveFocusTrap}
+                  aria-label={messages.closeSearchLabel}>
+                  <Cross />
+                </button>
+              </StyledSearchField>
+            </FocusTrapReact>
+          </>
+        )}
       </StyledSearchFieldWrapper>
     </StyledHeader>
   </StyledHeaderWrapper>
 );
 
-FrontpageHeader.propTypes = {
-  searchFieldValue: PropTypes.string.isRequired,
-  onSearchInputFocus: PropTypes.func.isRequired,
-  infoText: PropTypes.node,
-  onSearchFieldChange: PropTypes.func.isRequired,
-  searchFieldPlaceholder: PropTypes.func.isRequired,
-};
-
-export default FrontpageHeader;
+export default FrontpageHeaderNew;

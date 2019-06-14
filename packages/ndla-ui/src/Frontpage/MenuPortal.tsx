@@ -12,9 +12,7 @@ import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
 import { Cross } from '@ndla/icons/action';
 
-import {
-  createUniversalPortal,
-} from '@ndla/util';
+import { createUniversalPortal } from '@ndla/util';
 import { spacing, colors, animations, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
@@ -25,7 +23,7 @@ interface elementRectProps {
   fromX: number;
   fromY: number;
   fromScale: number;
-};
+}
 
 interface ModalWrapperProps {
   elementRect: elementRectProps;
@@ -43,7 +41,7 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
   align-items: center;
   justify-content: center;
   &:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     width: 100vw;
@@ -52,33 +50,43 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
     min-height: 100vw;
     background: ${colors.brand.light};
     border-radius: 100%;
-    animation-timing-function: ${props => props.animationDirection === 'in' ? 'ease-out' : 'ease-in'};
-    animation-name: ${props => props.animationDirection === 'in' ? 'menuPortalCircleAnimation' : 'menuPortalCircleAnimationOut'};
+    animation-timing-function: ${props =>
+      props.animationDirection === 'in' ? 'ease-out' : 'ease-in'};
+    animation-name: ${props =>
+      props.animationDirection === 'in'
+        ? 'menuPortalCircleAnimation'
+        : 'menuPortalCircleAnimationOut'};
     animation-duration: ${animations.durations.fast};
     ${mq.range({ from: breakpoints.tablet })} {
-      animation-duration: ${animations.durations.normal};
+      animation-duration: ${animations.durations.fast};
     }
     animation-fill-mode: forwards;
     @keyframes menuPortalCircleAnimation {
       0% {
         ${props => css`
-          transform:
-            translate(calc(-100vw + ${props.elementRect.fromX}px), calc(-50vh + ${props.elementRect.fromY}px))
+          transform: translate(
+              calc(-100vw + ${props.elementRect.fromX}px),
+              calc(-50vh + ${props.elementRect.fromY}px)
+            )
             scale(${props.elementRect.fromScale});
         `}
       }
       100% {
-        transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw)) scale(${fullSizedCircle});
+        transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
+          scale(${fullSizedCircle});
       }
     }
     @keyframes menuPortalCircleAnimationOut {
       0% {
-        transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw)) scale(${fullSizedCircle});
+        transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
+          scale(${fullSizedCircle});
       }
       100% {
         ${props => css`
-          transform:
-            translate(calc(-100vw + ${props.elementRect.fromX}px), calc(-50vh + ${props.elementRect.fromY}px))
+          transform: translate(
+              calc(-100vw + ${props.elementRect.fromX}px),
+              calc(-50vh + ${props.elementRect.fromY}px)
+            )
             scale(${props.elementRect.fromScale});
         `}
       }
@@ -103,8 +111,9 @@ const StyledContainer = styled.div<StyledContainerProps>`
   > div {
     width: 100%;
   }
-  ${props => props.animationDirection === 'in' ? 
-    `
+  ${props =>
+    props.animationDirection === 'in'
+      ? `
       > button {
         border: 0;
         background: none;
@@ -117,12 +126,12 @@ const StyledContainer = styled.div<StyledContainerProps>`
         opacity: 0;
         ${animations.fadeInBottom()}
       }
-    ` : `
+    `
+      : `
       > button, > div {
         display: none;
       }
-    `
-  }
+    `}
 `;
 
 interface Props {
@@ -135,56 +144,53 @@ interface Props {
 }
 
 const MenuPortal: React.FunctionComponent<Props> = ({
-    children,
-    onClose,
-    onChangeAnimationDirection,
-    isOpen,
-    animationDirection,
-    fromInitalElement,
-  }) => {
-    if (!isOpen || !fromInitalElement) {
-      return null;
-    }
+  children,
+  onClose,
+  onChangeAnimationDirection,
+  isOpen,
+  animationDirection,
+  fromInitalElement,
+}) => {
+  if (!isOpen || !fromInitalElement) {
+    return null;
+  }
 
-    const fromInitalElementRect:any = fromInitalElement.getBoundingClientRect();
-    const { innerWidth } = window;
-    const elementRect = {
-      fromX: fromInitalElementRect.x + fromInitalElementRect.width / 2,
-      fromY: fromInitalElementRect.y + fromInitalElementRect.height / 2,
-      fromScale: fromInitalElementRect.width / (innerWidth * fullSizedCircle),
-    };
+  const fromInitalElementRect: any = fromInitalElement.getBoundingClientRect();
+  const { innerWidth } = window;
+  const elementRect = {
+    fromX: fromInitalElementRect.x + fromInitalElementRect.width / 2,
+    fromY: fromInitalElementRect.y + fromInitalElementRect.height / 2,
+    fromScale: fromInitalElementRect.width / (innerWidth * fullSizedCircle),
+  };
 
-    const content = (
-      <>
-        <FocusTrapReact>
-          <StyledModalWrapper
-            elementRect={elementRect}
-            animationDirection={animationDirection}
-            onAnimationEnd={() => {
-              if (animationDirection === 'out') {
-                onClose();
-              }
-            }}
-          >
-            <StyledContainer animationDirection={animationDirection}>
-              <button
-                type="button"
-                onClick={() => onChangeAnimationDirection('out')}>
-                  <Cross />
-              </button>
-              <div>
-                {children}
-              </div>
-            </StyledContainer>
-          </StyledModalWrapper>
-        </FocusTrapReact>
-        <Backdrop
-          onClick={() => onChangeAnimationDirection('out')}
-          animationDuration={animations.durations.normal}
-          animateIn={animationDirection === 'in'}
-        />
-      </>
-    );
+  const content = (
+    <>
+      <FocusTrapReact>
+        <StyledModalWrapper
+          elementRect={elementRect}
+          animationDirection={animationDirection}
+          onAnimationEnd={() => {
+            if (animationDirection === 'out') {
+              onClose();
+            }
+          }}>
+          <StyledContainer animationDirection={animationDirection}>
+            <button
+              type="button"
+              onClick={() => onChangeAnimationDirection('out')}>
+              <Cross />
+            </button>
+            <div>{children}</div>
+          </StyledContainer>
+        </StyledModalWrapper>
+      </FocusTrapReact>
+      <Backdrop
+        onClick={() => onChangeAnimationDirection('out')}
+        animationDuration={animations.durations.normal}
+        animateIn={animationDirection === 'in'}
+      />
+    </>
+  );
   return createUniversalPortal(content, 'body');
 };
 

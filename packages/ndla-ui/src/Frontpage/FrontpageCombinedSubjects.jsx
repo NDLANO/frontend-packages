@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
@@ -55,6 +56,7 @@ const LinkText = styled('span')`
 
 const StyledButton = styled('button')`
   display: block;
+  cursor: pointer;
   height: 100%;
   width: 23%;
   border-radius: 50%;
@@ -114,7 +116,13 @@ const menuReducer = (state, action) => {
   }
 };
 
-const FrontpageCombinedSubjects = ({ categories, categoriesMobile, illustrationUrl, categoryIllustrations, t }) => {
+const FrontpageCombinedSubjects = ({
+  categories,
+  categoriesMobile,
+  illustrationUrl,
+  categoryIllustrations,
+  t,
+}) => {
   const defaultFills = {
     circle1: colors.brand.lighter,
     circle2: colors.brand.lighter,
@@ -152,43 +160,55 @@ const FrontpageCombinedSubjects = ({ categories, categoriesMobile, illustrationU
     };
   }, []);
 
+  const closeMenu = event => {
+    dispatch({ type: UPDATE_MENU_OPENSTATE, data: false });
+    noScroll(false);
+  };
+
   const openMenu = ({ event, index }) => {
-    dispatch({ type: UPDATE_MENU, data: {
-      categoryIndex: index,
-      menuIsOpen: true,
-      animationDirection: 'in',
-      openedModalFromElement: event.target,
-    }});
+    dispatch({
+      type: UPDATE_MENU,
+      data: {
+        categoryIndex: index,
+        menuIsOpen: true,
+        animationDirection: 'in',
+        openedModalFromElement: event.target,
+      },
+    });
+    noScroll(true);
   };
 
   return (
     <>
       <MenuPortal
         isOpen={menuIsOpen}
-        onClose={() => dispatch({ type: UPDATE_MENU_OPENSTATE, data: false })}
+        onClose={closeMenu}
         animationDirection={animationDirection}
-        onChangeAnimationDirection={(direction) => dispatch({ type: UPDATE_MENU_ANIMATION_DIRECTION, data: 'out' })}
-        fromInitalElement={openedModalFromElement}
-      >
-        {categoryIndex && (<nav>
-          <h1>{categories[categoryIndex]}</h1>
-          <ul>
-            <li>
-              <SafeLink to="#">Example 1</SafeLink>
-            </li>
-            <li>
-              <SafeLink to="#2">Example 2</SafeLink>
-            </li>
-            <li>
-              <SafeLink to="#3">Example 3</SafeLink>
-            </li>
-          </ul>
-        </nav>)}
+        onChangeAnimationDirection={direction =>
+          dispatch({ type: UPDATE_MENU_ANIMATION_DIRECTION, data: 'out' })
+        }
+        fromInitalElement={openedModalFromElement}>
+        {categoryIndex && (
+          <nav>
+            <h1>{categories[categoryIndex]}</h1>
+            <ul>
+              <li>
+                <SafeLink to="#">Example 1</SafeLink>
+              </li>
+              <li>
+                <SafeLink to="#2">Example 2</SafeLink>
+              </li>
+              <li>
+                <SafeLink to="#3">Example 3</SafeLink>
+              </li>
+            </ul>
+          </nav>
+        )}
       </MenuPortal>
       {categoriesMobile.map((category, index) => (
         <StyledSubjectLink key={category}>
           <FrontpageCircularSubject
-            onClick={(event) => openMenu({ event, index })}
+            onClick={event => openMenu({ event, index })}
             textValue={t(`welcomePage.category.${category}`)}
             illustrationUrl={categoryIllustrations[category]}
           />
@@ -201,7 +221,7 @@ const FrontpageCombinedSubjects = ({ categories, categoriesMobile, illustrationU
               key={category}
               onPointerEnter={() => setIllustrationHoverFill(index)}
               onPointerLeave={() => setIllustrationHoverFill('reset')}
-              onClick={(event) => openMenu({ event, index })}>
+              onClick={event => openMenu({ event, index })}>
               <LinkText>{category}</LinkText>
             </StyledButton>
           ))}

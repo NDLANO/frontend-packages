@@ -550,15 +550,6 @@ const messages = {
       topicHeading: 'Go to topic:',
       subjectHeading: 'Go to subject:',
     },
-  },
-  learningPath: {
-    createLearningPathText:
-      'Create your own, copy this or see more learningpaths?',
-    createLearningPathButtonText: 'Go to learningpaths',
-    lastUpdated: 'Last updated',
-    youAreInALearningPath: 'You are now in a learningpath',
-    readTime: '{hours} schoolhours = {minutes} min',
-    pageOf: 'of',
     openMenuTooltip: 'Open menu',
     previousArrow: 'Previous',
     nextArrow: 'Next',

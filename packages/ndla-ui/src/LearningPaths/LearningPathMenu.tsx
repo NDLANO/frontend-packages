@@ -156,52 +156,7 @@ const StyledToggleMenubutton = styled.button`
   }
 `;
 
-const ContentTypeCSS = css`
-  position: relative;
-  z-index: 1;
-  margin-right: ${spacing.spacingUnit * 0.75}px;
-`;
-
-type StyledNavigationProps = {
-  isOpen: boolean;
-}
-
-const StyledNavigation = styled.nav<StyledNavigationProps>`
-  > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  margin-bottom: ${spacing.medium};
-  ${props => !props.isOpen && css`
-    ${mq.range({ until: breakpoints.tablet })} {
-      margin-left: -28px;
-    }
-    ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-      ${StyledMenuItem} {
-        span {
-          display: none;
-        }
-        &:first-of-type {
-          &:after {
-            display: none !important;
-          }
-        }
-        a:hover, a:focus {
-          position: relative;
-          z-index: 1;
-          width: ${SIDE_NAV_WIDTH};
-          background: ${colors.brand.greyLighter};
-          span {
-            display: flex;
-          }
-        }
-      }
-    }
-  `}
-`;
-
-type StepProps = {
+export type StepProps = {
   title: {
     title: string;
   },

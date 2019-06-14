@@ -17,7 +17,7 @@ import {
   LearningPathLastStepNavigation,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
-import { colors, animations, shadows } from '@ndla/core';
+import { animations, shadows } from '@ndla/core';
 import Button from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 
@@ -274,7 +274,7 @@ const LearningPathExample = () => {
             onClick={() => toggleHelp(false)}>
             <Cross /> Lukk
           </Button>
-          <p>Demo: Bruk ⬅️➡️ tastene for å navigere</p>
+          <p>Demo: Bruk pil-tastene for å navigere</p>
           <div>
             Læringssti ID:
             <input

@@ -14,8 +14,8 @@ import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { SafeLink } from '@ndla/ui';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
-// @ts-ignore
 import { LearningPathIcon } from './LearningPathIcon';
+import { StepProps } from './LearningPathMenu';
 
 const SIDE_NAV_WIDTH = '372px';
 
@@ -148,16 +148,6 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
     }
   `}
 `;
-
-type StepProps = {
-  title: {
-    title: string;
-  },
-  metaUrl: string;
-  type: string;
-  id: string | number;
-  current?: boolean;
-}
 
 type Props = {
   learningsteps: StepProps[];

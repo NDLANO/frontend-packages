@@ -16,7 +16,7 @@ import { LearningPathSticky, LearningPathStickySibling } from '@ndla/ui';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
-import { colors, spacing, fonts, misc, mq, breakpoints, animations } from '@ndla/core';
+import { colors, spacing, misc, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import LearningPathMenuModalWrapper from './LearningPathMenuModalWrapper';

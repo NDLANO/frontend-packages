@@ -12,7 +12,7 @@ import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { SafeLinkButton } from '@ndla/button';
+import { SafeLinkButton } from '@ndla/ui';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';

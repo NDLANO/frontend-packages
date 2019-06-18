@@ -7,17 +7,29 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { SafeLink } from '@ndla/ui';
 import { css } from '@emotion/core';
-import { buttonStyle, appearances } from './Button';
+// @ts-ignore
+import { buttonStyle, appearances } from '@ndla/button';
+import SafeLink from './SafeLink';
 
-const getStyles = modifiers =>
+const getStyles = (modifiers: any) =>
   Object.keys(modifiers)
     .map(key => (modifiers[key] ? appearances[key] : undefined))
     .filter(appearance => !!appearance);
 
-const SafeLinkButton = ({
+type Props = {
+  outline?: boolean;
+  stripped?: boolean;
+  link?: boolean;
+  lighter?: boolean;
+  children: React.ReactNode;
+  inverted?: boolean;
+  invertedOutline?: boolean;
+  to: string;
+  className?: string;
+};
+
+const SafeLinkButton: React.FunctionComponent<Props> = ({
   outline,
   stripped,
   link,
@@ -48,17 +60,6 @@ const SafeLinkButton = ({
       {children}
     </SafeLink>
   );
-};
-
-SafeLinkButton.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  outline: PropTypes.bool,
-  link: PropTypes.bool,
-  stripped: PropTypes.bool,
-  lighter: PropTypes.bool,
-  to: PropTypes.string.isRequired,
 };
 
 export default SafeLinkButton;

@@ -13,3 +13,4 @@
 export * from './index-javascript';
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as SafeLink } from './common/SafeLink';
+export { default as SafeLinkButton } from './common/SafeLinkButton';

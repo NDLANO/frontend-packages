@@ -12,19 +12,23 @@ import { css } from '@emotion/core';
 import { buttonStyle, appearances } from '@ndla/button';
 import SafeLink from './SafeLink';
 
-const getStyles = (modifiers: any) =>
+interface StylesProps {
+  [key: string]: boolean | undefined;
+}
+
+const getStyles = (modifiers: StylesProps) =>
   Object.keys(modifiers)
     .map(key => (modifiers[key] ? appearances[key] : undefined))
     .filter(appearance => !!appearance);
 
-type Props = {
+interface Props {
   outline?: boolean;
   stripped?: boolean;
   link?: boolean;
   lighter?: boolean;
-  children: React.ReactNode;
   inverted?: boolean;
   invertedOutline?: boolean;
+  children: React.ReactNode;
   to: string;
   className?: string;
 };

@@ -220,7 +220,7 @@ class FileListEditor extends Component {
       if (prevState.draggingIndex !== dragIndex) {
         return {
           draggingIndex: dragIndex,
-        }
+        };
       }
     });
   }

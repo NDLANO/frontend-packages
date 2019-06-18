@@ -10,11 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import em from 'polished/lib/helpers/em';
 import styled from '@emotion/styled';
-import {
-  noScroll,
-  uuid,
-  createUniversalPortal,
-} from '@ndla/util';
+import { noScroll, uuid, createUniversalPortal } from '@ndla/util';
 
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
@@ -465,7 +461,11 @@ class Modal extends React.Component {
   componentDidUpdate() {
     if (this.scrollPosition && this.el) {
       this.el.scrollTop = this.scrollPosition;
-    } else if (this.props.controllable && !this.props.isOpen && uuidList.indexOf(this.uuid) !== -1) {
+    } else if (
+      this.props.controllable &&
+      !this.props.isOpen &&
+      uuidList.indexOf(this.uuid) !== -1
+    ) {
       this.removeScroll();
     }
   }

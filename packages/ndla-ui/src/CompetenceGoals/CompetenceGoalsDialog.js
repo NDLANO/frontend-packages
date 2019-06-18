@@ -21,7 +21,12 @@ export const CompetenceGoalsDialog = ({
 }) => (
   <Trans>
     {({ t }) => (
-      <Modal {...modalProps} controllable isOpen={isOpen} onClose={onClose} narrow>
+      <Modal
+        {...modalProps}
+        controllable
+        isOpen={isOpen}
+        onClose={onClose}
+        narrow>
         {close => (
           <Fragment>
             <ModalHeader>

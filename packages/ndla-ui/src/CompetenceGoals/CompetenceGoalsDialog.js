@@ -21,15 +21,12 @@ export const CompetenceGoalsDialog = ({
 }) => (
   <Trans>
     {({ t }) => (
-      <Modal {...modalProps} controllable isOpen={isOpen} narrow>
+      <Modal {...modalProps} controllable isOpen={isOpen} onClose={onClose} narrow>
         {close => (
           <Fragment>
             <ModalHeader>
               <ModalCloseButton
-                onClick={() => {
-                  onClose();
-                  close();
-                }}
+                onClick={close}
                 title={t('competenceGoals.closeCompetenceGoals')}
               />
             </ModalHeader>

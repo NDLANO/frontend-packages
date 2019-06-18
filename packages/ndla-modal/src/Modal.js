@@ -14,7 +14,6 @@ import {
   noScroll,
   uuid,
   createUniversalPortal,
-  isIosDeviceSafari,
 } from '@ndla/util';
 
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
@@ -406,17 +405,21 @@ const Portal = ({
   className,
   uuidData,
   narrow,
-  onScroll,
 }) => {
   const content = (
     <>
-      <FocusTrapReact>
-        <ModalWrapper
-          className={`${className} ${narrow && 'narrow'} ${isIosDeviceSafari &&
-            'scrollFixIOS'}`}>
+      <ModalWrapper className={`${className} ${narrow && 'narrow'}`}>
+        <FocusTrapReact
+          focusTrapOptions={{
+            onDeactivate: () => {
+              if (closeOnBackdrop) {
+                closeModal();
+              }
+            },
+            clickOutsideDeactivates: true,
+          }}>
           <div
             role="dialog"
-            onScroll={onScroll}
             data-modal={uuidData}
             style={{ animationDuration: `${animationDuration}ms`, minHeight }}
             onAnimationEnd={onAnimationEnd}
@@ -424,11 +427,10 @@ const Portal = ({
               'animateIn'} ${size} ${backgroundColor}`}>
             {children(closeModal)}
           </div>
-        </ModalWrapper>
-      </FocusTrapReact>
+        </FocusTrapReact>
+      </ModalWrapper>
       {!noBackdrop && (
         <Backdrop
-          onClick={closeOnBackdrop && closeModal}
           animationDuration={`${animationDuration}ms`}
           animateIn={animateIn}
         />
@@ -450,7 +452,6 @@ class Modal extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.onAnimationEnd = this.onAnimationEnd.bind(this);
     this.onKeypressed = this.onKeypressed.bind(this);
-    this.onScroll = this.onScroll.bind(this);
     this.containerRef = React.createRef();
     this.scrollPosition = null;
     this.el = null;
@@ -458,20 +459,14 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    if (
-      uuidList.indexOf(this.uuid) === -1 &&
-      this.props.controllable &&
-      this.props.isOpen
-    ) {
-      noScroll(true, this.uuid);
-      uuidList.push(this.uuid);
-      window.addEventListener('keyup', this.onKeypressed, true);
-    }
+    this.manuallyUpdateUuid();
   }
 
   componentDidUpdate() {
     if (this.scrollPosition && this.el) {
       this.el.scrollTop = this.scrollPosition;
+    } else if (this.props.controllable && !this.props.isOpen && uuidList.indexOf(this.uuid) !== -1) {
+      this.removeScroll();
     }
   }
 
@@ -482,6 +477,7 @@ class Modal extends React.Component {
   }
 
   onAnimationEnd() {
+    this.manuallyUpdateUuid();
     if (!this.state.animateIn && this.state.isOpen) {
       this.setState(
         {
@@ -503,8 +499,25 @@ class Modal extends React.Component {
     }
   }
 
-  onScroll(e) {
-    this.scrollPosition = e.target.scrollTop;
+  manuallyUpdateUuid() {
+    if (
+      uuidList.indexOf(this.uuid) === -1 &&
+      this.props.controllable &&
+      this.props.isOpen
+    ) {
+      noScroll(true, this.uuid);
+      uuidList.push(this.uuid);
+      window.addEventListener('keyup', this.onKeypressed, true);
+    }
+  }
+
+  removeScroll() {
+    noScroll(false, this.uuid);
+    uuidList.splice(uuidList.indexOf(this.uuid), 1);
+    window.removeEventListener('keyup', this.onKeypressed, true);
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   }
 
   closeModal() {
@@ -512,6 +525,8 @@ class Modal extends React.Component {
       this.setState({
         animateIn: false,
       });
+    } else if (this.props.controllable && this.props.isOpen) {
+      this.props.onClose && this.props.onClose();
     }
   }
 
@@ -532,12 +547,7 @@ class Modal extends React.Component {
   removedModal() {
     this.scrollPosition = 0;
     if (uuidList.indexOf(this.uuid) !== -1) {
-      noScroll(false, this.uuid);
-      uuidList.splice(uuidList.indexOf(this.uuid), 1);
-      window.removeEventListener('keyup', this.onKeypressed, true);
-      if (this.props.onClose) {
-        this.props.onClose();
-      }
+      this.removeScroll();
     }
   }
 
@@ -614,7 +624,6 @@ class Modal extends React.Component {
               closeOnBackdrop={closeOnBackdrop}
               closeModal={this.closeModal}
               onAnimationEnd={this.onAnimationEnd}
-              onScroll={this.onScroll}
               className={className}
               uuidData={this.uuid}
               narrow={narrow}>

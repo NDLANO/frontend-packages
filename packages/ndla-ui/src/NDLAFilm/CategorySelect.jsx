@@ -51,6 +51,7 @@ class CategorySelect extends React.Component {
       resourceTypes,
       resourceTypeSelected,
       ariaControlId,
+      allMoviesSelectorId,
       t,
     } = this.props;
     const { resourceTypesIsOpen } = this.state;
@@ -117,6 +118,18 @@ class CategorySelect extends React.Component {
                   <span>{resourceType.name}</span>
                 </button>
               ))}
+              <button
+                aria-controls={ariaControlId}
+                type="button"
+                onClick={() => this.onSelect(allMoviesSelectorId)}
+                {...classes('dropdown-button', {
+                  selected:
+                    resourceTypeSelected &&
+                    resourceTypeSelected.id === resourceType.id,
+                })}
+              >
+                <span>Vis alle filmer</span>
+              </button>
             </div>
           </FocusTrapReact>
         )}
@@ -132,6 +145,7 @@ CategorySelect.propTypes = {
     name: PropTypes.string,
   }),
   ariaControlId: PropTypes.string,
+  allMoviesSelectorId: PropTypes.string,
 };
 
 export default injectT(CategorySelect);

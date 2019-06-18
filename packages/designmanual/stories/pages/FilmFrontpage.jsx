@@ -21,6 +21,8 @@ import {
 } from '@ndla/ui';
 
 const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
+export const ALL_MOVIES = 'ALL_MOVIES';
+
 
 class FilmFrontpage extends Component {
   constructor(props) {
@@ -33,6 +35,8 @@ class FilmFrontpage extends Component {
   }
 
   onChangeResourceType(resourceTypeSelected) {
+    console.log('hello', resourceTypeSelected);
+
     const loadingPlaceholderHeight = `${
       this.movieListRef.current.getBoundingClientRect().height
     }px`;
@@ -82,6 +86,7 @@ class FilmFrontpage extends Component {
           resourceTypes={resourceTypes}
           resourceTypeSelected={resourceTypeName}
           onChangeResourceType={this.onChangeResourceType}
+          allMoviesSelectorId={ALL_MOVIES}
         />
         <div
           id={ARIA_FILMCATEGORY_ID}

@@ -19,6 +19,8 @@ import {
 } from '../../dummydata';
 import Poster from '../../images/filmposter-aboutNDLA.png';
 
+import { ALL_MOVIES } from './FilmFrontpage';
+
 class NdlaFilmExample extends Component {
   constructor(props) {
     super(props);

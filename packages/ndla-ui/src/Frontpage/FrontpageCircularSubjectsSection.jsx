@@ -28,17 +28,15 @@ const StyledSubjects = styled('div')`
 `;
 
 const FrontpageCircularSubjectsSection = injectT(
-  ({ categories, categoryIllustrations, t }) => {
+  ({ categories, categoryIllustrations, categoryIllustrationsInModal, t }) => {
     return (
       <StyledSection>
         <StyledSubjects>
           <FrontpageCombinedSubjects
             illustrationUrl={categoryIllustrations['kombinert']}
             categoryIllustrations={categoryIllustrations}
-            categoriesMobile={categories.mobile}
-            categories={categories.desktop.map(category =>
-              t(`welcomePage.category.${category}`),
-            )}
+            categoryIllustrationsInModal={categoryIllustrationsInModal}
+            categories={categories}
           />
         </StyledSubjects>
       </StyledSection>
@@ -47,11 +45,8 @@ const FrontpageCircularSubjectsSection = injectT(
 );
 
 FrontpageCircularSubjectsSection.propTypes = {
-  categories: PropTypes.shape({
-    mobile: PropTypes.arrayOf(PropTypes.string),
-    desktop: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
   categoryIllustrations: PropTypes.shape({}).isRequired,
+  categoryIllustrationsInModal: PropTypes.shape({}).isRequired,
 };
 
 export default injectT(FrontpageCircularSubjectsSection);

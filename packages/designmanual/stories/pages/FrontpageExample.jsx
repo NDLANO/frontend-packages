@@ -27,6 +27,9 @@ import NdlaFellesfagIllustration from '../../images/category_illustrations/illus
 import NdlaKombinertIllustration from '../../images/category_illustrations/illustrasjon_kombinert.svg';
 import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
 import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
+import NdlaYrkesfagModalIllustration from '../../images/category_illustrations/menu_yrkesfag.svg';
+import NdlaStudieSpesialiserendeModalIllustration from '../../images/category_illustrations/menu_studiespesialiserende.svg';
+import NdlaFellesfagModalIllustration from '../../images/category_illustrations/menu_fellesfag.svg';
 
 const categoryIllustrations = {
   yrkesfag: NdlaYrkesfagIllustration,
@@ -34,6 +37,12 @@ const categoryIllustrations = {
   fellesfag: NdlaFellesfagIllustration,
   kombinert: NdlaKombinertIllustration,
 };
+
+const categoryIllustrationsInModal = {
+  yrkesfag: NdlaYrkesfagModalIllustration,
+  studiespesialiserende: NdlaStudieSpesialiserendeModalIllustration,
+  fellesfag: NdlaFellesfagModalIllustration,
+}
 
 const dummyBlogImages = [
   {
@@ -466,11 +475,9 @@ class FrontpageExample extends Component {
         />
         <main>
           <FrontpageCircularSubjectsSection
-            categories={{
-              mobile: ['fellesfag', 'yrkesfag', 'studiespesialiserende'],
-              desktop: ['fellesfag', 'studiespesialiserende', 'yrkesfag'],
-            }}
+            categories={categories}
             categoryIllustrations={categoryIllustrations}
+            categoryIllustrationsInModal={categoryIllustrationsInModal}
           />
           <OneColumn wide extraPadding>
             <FrontpageSearchSection

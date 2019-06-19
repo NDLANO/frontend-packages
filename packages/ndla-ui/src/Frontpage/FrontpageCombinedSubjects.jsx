@@ -93,6 +93,7 @@ const Container = styled('nav')`
 const UPDATE_MENU_ANIMATION_DIRECTION = 'UPDATE_MENU_ANIMATION_DIRECTION';
 const UPDATE_MENU = 'UPDATE_MENU';
 const UPDATE_MENU_OPENSTATE = 'UPDATE_MENU_OPENSTATE';
+const UPDATE_MENU_CLOSESTATE = 'UPDATE_MENU_CLOSESTATE';
 
 const menuReducer = (state, action) => {
   switch (action.type) {
@@ -111,6 +112,12 @@ const menuReducer = (state, action) => {
         ...state,
         menuIsOpen: action.data,
       };
+    case UPDATE_MENU_CLOSESTATE:
+      return {
+        ...state,
+        menuIsOpen: false,
+        categoryIndex: undefined,
+      }
     default:
       throw new Error();
   }
@@ -118,9 +125,9 @@ const menuReducer = (state, action) => {
 
 const FrontpageCombinedSubjects = ({
   categories,
-  categoriesMobile,
   illustrationUrl,
   categoryIllustrations,
+  categoryIllustrationsInModal,
   t,
 }) => {
   const defaultFills = {
@@ -160,8 +167,8 @@ const FrontpageCombinedSubjects = ({
     };
   }, []);
 
-  const closeMenu = event => {
-    dispatch({ type: UPDATE_MENU_OPENSTATE, data: false });
+  const closeMenu = () => {
+    dispatch({ type: UPDATE_MENU_CLOSESTATE });
     noScroll(false);
   };
 
@@ -184,33 +191,30 @@ const FrontpageCombinedSubjects = ({
         isOpen={menuIsOpen}
         onClose={closeMenu}
         animationDirection={animationDirection}
-        onChangeAnimationDirection={direction =>
+        onChangeAnimationDirection={() =>
           dispatch({ type: UPDATE_MENU_ANIMATION_DIRECTION, data: 'out' })
         }
         fromInitalElement={openedModalFromElement}>
-        {categoryIndex && (
+        {categoryIndex !== undefined && (
           <nav>
-            <h1>{categories[categoryIndex]}</h1>
+            <img src={categoryIllustrationsInModal[categories[categoryIndex].name]} />
+            <h1>{t(`welcomePage.category.${categories[categoryIndex].name}`)}</h1>
             <ul>
-              <li>
-                <SafeLink to="#">Example 1</SafeLink>
-              </li>
-              <li>
-                <SafeLink to="#2">Example 2</SafeLink>
-              </li>
-              <li>
-                <SafeLink to="#3">Example 3</SafeLink>
-              </li>
+              {categories[categoryIndex].subjects.map(subject => (
+                <li key={subject.url}>
+                  <SafeLink to={subject.url}>{subject.text}</SafeLink>
+                </li>
+              ))}
             </ul>
           </nav>
         )}
       </MenuPortal>
-      {categoriesMobile.map((category, index) => (
-        <StyledSubjectLink key={category}>
+      {categories.map((category, index) => (
+        <StyledSubjectLink key={category.name}>
           <FrontpageCircularSubject
             onClick={event => openMenu({ event, index })}
-            textValue={t(`welcomePage.category.${category}`)}
-            illustrationUrl={categoryIllustrations[category]}
+            textValue={t(`welcomePage.category.${category.name}`)}
+            illustrationUrl={categoryIllustrations[category.name]}
           />
         </StyledSubjectLink>
       ))}
@@ -218,11 +222,13 @@ const FrontpageCombinedSubjects = ({
         <LinkContainer>
           {categories.map((category, index) => (
             <StyledButton
-              key={category}
+              key={category.name}
               onPointerEnter={() => setIllustrationHoverFill(index)}
               onPointerLeave={() => setIllustrationHoverFill('reset')}
+              onFocus={() => setIllustrationHoverFill(index)}
+              onFocusOut={() => setIllustrationHoverFill('reset')}
               onClick={event => openMenu({ event, index })}>
-              <LinkText>{category}</LinkText>
+              <LinkText>{t(`welcomePage.category.${category.name}`)}</LinkText>
             </StyledButton>
           ))}
         </LinkContainer>
@@ -236,7 +242,7 @@ const FrontpageCombinedSubjects = ({
 
 FrontpageCombinedSubjects.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  categoriesMobile: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categoryIllustrationsInModal: PropTypes.arrayOf(PropTypes.string).isRequired,
   illustrationUrl: PropTypes.string.isRequired,
 };
 

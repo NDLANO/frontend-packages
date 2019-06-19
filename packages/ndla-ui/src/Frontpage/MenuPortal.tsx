@@ -52,18 +52,22 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
     background: ${colors.brand.light};
     border-radius: 100%;
     animation-timing-function: ${props =>
-      props.animationDirection === 'in' ? 'ease-out' : 'ease-in'};
+      props.animationDirection === 'in' ? 'cubic-bezier(0.17, 0.04, 0.03, 0.94)' : 'cubic-bezier(0.17, 0.04, 0.03, 0.94)'};
     animation-name: ${props =>
       props.animationDirection === 'in'
         ? 'menuPortalCircleAnimation'
         : 'menuPortalCircleAnimationOut'};
     animation-duration: ${animations.durations.fast};
     ${mq.range({ from: breakpoints.tablet })} {
-      animation-duration: ${animations.durations.fast};
+      animation-duration: ${props =>
+        props.animationDirection === 'in'
+          ? animations.durations.normal
+          : animations.durations.fast};
     }
     animation-fill-mode: forwards;
     @keyframes menuPortalCircleAnimation {
       0% {
+        background: ${colors.brand.tertiary};
         ${props => css`
           transform: translate(
               calc(-100vw + ${props.elementRect.fromX}px),
@@ -82,7 +86,11 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
         transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
           scale(${fullSizedCircle});
       }
+      90% {
+        opacity: 1;
+      }
       100% {
+        opacity: 0;
         ${props => css`
           transform: translate(
               calc(-100vw + ${props.elementRect.fromX}px),
@@ -161,7 +169,7 @@ const MenuPortal: React.FunctionComponent<Props> = ({
   const elementRect = {
     fromX: fromInitalElementRect.x + fromInitalElementRect.width / 2,
     fromY: fromInitalElementRect.y + fromInitalElementRect.height / 2,
-    fromScale: fromInitalElementRect.width / (innerWidth * fullSizedCircle),
+    fromScale: fromInitalElementRect.width / innerWidth,
   };
 
   const content = (
@@ -187,7 +195,7 @@ const MenuPortal: React.FunctionComponent<Props> = ({
       </FocusTrapReact>
       <Backdrop
         onClick={() => onChangeAnimationDirection('out')}
-        animationDuration={animations.durations.normal}
+        animationDuration={animationDirection === 'in' ? animations.durations.normal : animations.durations.fast}
         animateIn={animationDirection === 'in'}
       />
     </>

@@ -89,6 +89,11 @@ const StyledButton = styled.button<StyledButtonProps>`
       background: ${colors.brand.tertiary};
     }
   }
+  &:active {
+    &:before {
+      transform: scale(0.9);
+    }
+  }
 `;
 
 const StyledIllustrationContainer = styled.div`

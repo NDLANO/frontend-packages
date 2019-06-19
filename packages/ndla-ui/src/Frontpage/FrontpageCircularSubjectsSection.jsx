@@ -4,12 +4,11 @@ import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
-import SectionHeading from '../SectionHeading';
 
 const StyledSection = styled('section')`
   margin: 0 auto;
-  max-width: 1150px;
-  padding: 0 ${spacing.normal};
+  max-width: 940px;
+  padding: 0;
 `;
 
 const StyledSubjects = styled('div')`

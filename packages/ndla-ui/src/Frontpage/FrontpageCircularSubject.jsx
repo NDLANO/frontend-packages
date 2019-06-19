@@ -34,16 +34,16 @@ const StyledButton = styled('button')`
   background: none;
 `;
 
-const FrontPageCircularSubject = ({ textValue, illustrationUrl, ...rest }) => (
+const FrontpageCircularSubject = ({ textValue, illustrationUrl, ...rest }) => (
   <StyledButton type="button" {...rest}>
     <StyledFigure illustrationUrl={illustrationUrl} />
     <StyledFigCaption>{textValue}</StyledFigCaption>
   </StyledButton>
 );
 
-FrontPageCircularSubject.propTypes = {
+FrontpageCircularSubject.propTypes = {
   textValue: PropTypes.string.isRequired,
   illustrationUrl: PropTypes.string.isRequired,
 };
 
-export default FrontPageCircularSubject;
+export default FrontpageCircularSubject;

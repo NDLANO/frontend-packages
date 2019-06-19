@@ -72,10 +72,11 @@ const StyledHeader = styled('div')`
   margin: 0 auto;
   position: relative;
   min-height: 110px;
+  max-width: 940px;
   display: flex;
   align-content: center;
   justify-content: flex-end;
-  padding: 20px 20px 0 20px;
+  padding: 20px 0;
 
   ${mq.range({ from: breakpoints.tablet })} {
     justify-content: flex-start;
@@ -87,7 +88,6 @@ const StyledHeader = styled('div')`
 
   ${mq.range({ from: breakpoints.desktop })} {
     padding-top: ${spacing.large};
-    max-width: 1150px;
   }
 `;
 

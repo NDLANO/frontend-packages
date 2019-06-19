@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
@@ -34,19 +35,16 @@ const LinkContainer = styled('div')`
   align-items: center;
 
   ${mq.range({ from: breakpoints.desktop })} {
-    left: ${spacing.normal};
-    right: ${spacing.normal};
+    right: ${spacing.large};
+    left: ${spacing.large};
   }
 `;
 
-const LinkText = styled('span')`
-  display: block;
+const StyledLinkedText = styled('span')`
   ${fonts.sizes('20px', '32px')};
-  font-weight: bold;
+  font-weight: ${fonts.weight.bold};
   position: absolute;
-  left: 50%;
-  bottom: 30%;
-  transform: translate(-50%, 50%);
+  bottom: ${spacing.spacingUnit * 1.75}px;
   color: ${colors.subject.dark};
 
   ${mq.range({ from: breakpoints.desktop })} {
@@ -55,16 +53,32 @@ const LinkText = styled('span')`
 `;
 
 const StyledButton = styled('button')`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  height: 100%;
-  width: 23%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   position: relative;
   box-shadow: none;
-  z-index: 1;
   border: 0;
   background: none;
+  margin: 0;
+  padding: 0;
+  &:before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background: ${colors.brand.light};
+    transition: transform 200ms ease, background 200ms ease;
+    ${props => props.isActive && css`
+      transform: scale(1.1);
+      background: ${colors.brand.tertiary};
+    `}
+  }
 `;
 
 const StyledIllustrationContainer = styled('div')`
@@ -76,7 +90,7 @@ const StyledIllustrationContainer = styled('div')`
   }
 `;
 
-const Container = styled('nav')`
+const StyledNavContainer = styled('nav')`
   width: 100%;
   position: relative;
   display: none;
@@ -86,7 +100,7 @@ const Container = styled('nav')`
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
-    padding: 0 ${spacing.normal};
+    padding: 0 ${spacing.spacingUnit * 2.5}px;
   }
 `;
 
@@ -94,6 +108,7 @@ const UPDATE_MENU_ANIMATION_DIRECTION = 'UPDATE_MENU_ANIMATION_DIRECTION';
 const UPDATE_MENU = 'UPDATE_MENU';
 const UPDATE_MENU_OPENSTATE = 'UPDATE_MENU_OPENSTATE';
 const UPDATE_MENU_CLOSESTATE = 'UPDATE_MENU_CLOSESTATE';
+const UPDATE_ACTIVE_CIRCLES = 'UPDATE_ACTIVE_CIRCLES';
 
 const menuReducer = (state, action) => {
   switch (action.type) {
@@ -118,6 +133,11 @@ const menuReducer = (state, action) => {
         menuIsOpen: false,
         categoryIndex: undefined,
       }
+    case UPDATE_ACTIVE_CIRCLES:
+        return {
+          ...state,
+          activeCircleFills: action.data,
+        }
     default:
       throw new Error();
   }
@@ -130,29 +150,20 @@ const FrontpageCombinedSubjects = ({
   categoryIllustrationsInModal,
   t,
 }) => {
-  const defaultFills = {
-    circle1: colors.brand.lighter,
-    circle2: colors.brand.lighter,
-    circle3: colors.brand.lighter,
-  };
-  const [fills, setFills] = useState(defaultFills);
-  const [currentState, dispatch] = useReducer(menuReducer, {});
+  const [currentState, dispatch] = useReducer(menuReducer, { activeCircleFills: [false, false, false] });
   const {
     openedModalFromElement,
     menuIsOpen,
     animationDirection,
     categoryIndex,
+    activeCircleFills,
   } = currentState;
 
-  const setIllustrationHoverFill = index => {
-    if (index === 'reset') {
-      setFills(defaultFills);
-      return;
-    }
-    setFills({
-      ...fills,
-      [`circle${index + 1}`]: colors.brand.light,
-    });
+  const setActiveCircle = (index, updateToState) => {
+    const updatedCircleFills = activeCircleFills;
+    updatedCircleFills[index] = updateToState;
+    console.log('update to ', updatedCircleFills);
+    dispatch({ type: UPDATE_ACTIVE_CIRCLES, data: updatedCircleFills });
   };
 
   useEffect(() => {
@@ -184,6 +195,8 @@ const FrontpageCombinedSubjects = ({
     });
     noScroll(true);
   };
+
+  console.log(activeCircleFills);
 
   return (
     <>
@@ -218,24 +231,25 @@ const FrontpageCombinedSubjects = ({
           />
         </StyledSubjectLink>
       ))}
-      <Container illustrationUrl={illustrationUrl}>
+      <StyledNavContainer illustrationUrl={illustrationUrl}>
         <LinkContainer>
           {categories.map((category, index) => (
             <StyledButton
               key={category.name}
-              onPointerEnter={() => setIllustrationHoverFill(index)}
-              onPointerLeave={() => setIllustrationHoverFill('reset')}
-              onFocus={() => setIllustrationHoverFill(index)}
-              onFocusOut={() => setIllustrationHoverFill('reset')}
+              isActive={activeCircleFills[index]}
+              onPointerEnter={() => setActiveCircle(index, true)}
+              onPointerLeave={() => setActiveCircle(index, false)}
+              onFocus={() => setActiveCircle(index, true)}
+              onFocusOut={() => setActiveCircle(index, false)}
               onClick={event => openMenu({ event, index })}>
-              <LinkText>{t(`welcomePage.category.${category.name}`)}</LinkText>
+              <StyledLinkedText>{t(`welcomePage.category.${category.name}`)}</StyledLinkedText>
             </StyledButton>
           ))}
         </LinkContainer>
         <StyledIllustrationContainer>
-          <FrontpageSubjectIllustration fill={fills} />
+          <FrontpageSubjectIllustration />
         </StyledIllustrationContainer>
-      </Container>
+      </StyledNavContainer>
     </>
   );
 };

@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 
-const FrontpageSubjectIllustration = ({ cssStyle, fill }) => (
+const cssStyle = css`
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+`;
+
+const FrontpageSubjectIllustration = ({ activeCircleFills }) => (
   <svg
     css={cssStyle}
     viewBox="0 0 837 194"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(-573.000000, -514.000000)">
-        <g transform="translate(573.000000, 514.000000)">
-          <circle fill={fill.circle1} cx="97" cy="97" r="97" />
-          <circle fill={fill.circle2} cx="419" cy="97" r="97" />
-          <circle fill={fill.circle3} cx="740" cy="97" r="97" />
-          <g transform="translate(12.000000, 16.000000)" stroke="#000000">
+          <g transform="translate(12.000000, 22.000000)" stroke="#000000">
             <g transform="translate(0.000000, 7.000000)">
               <path
                 d="M68.5,0.9 C68.5,0.9 67.1,0.5 65.7,1.5 C64.3,2.5 62.8,4.8 62.8,10.2 C62.8,21.1 67.6,26.5 72,22 C76.4,17.5 76.2,9.8 70.7,3.6 C68.7,1.6 67.6,2.7 67.6,2.7"
@@ -185,24 +187,16 @@ const FrontpageSubjectIllustration = ({ cssStyle, fill }) => (
               />
             </g>
           </g>
-        </g>
-      </g>
     </g>
   </svg>
 );
 
 FrontpageSubjectIllustration.propTypes = {
-  cssStyle: PropTypes.shape({}),
-  fill: PropTypes.shape({}),
+  activeCircleFills: PropTypes.any,
 };
 
 FrontpageSubjectIllustration.defaultProps = {
-  cssStyle: null,
-  fill: {
-    circle1: '#deebf6',
-    circle2: '#deebf6',
-    circle3: '#deebf6',
-  },
+  activeCircleFills: [],
 };
 
 export default FrontpageSubjectIllustration;

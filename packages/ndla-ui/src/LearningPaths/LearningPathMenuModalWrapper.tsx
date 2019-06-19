@@ -14,7 +14,7 @@ import { colors, spacing, fonts, misc, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
-import { LearningPathBadge } from '@ndla/ui';
+import { LearningPathBadge } from '../index-javascript';
 
 const StyledMobileButton = styled.button`
   position: fixed;

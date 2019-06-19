@@ -12,9 +12,9 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, animations, typography, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
-import { SafeLink } from '@ndla/ui';
-// @ts-ignore
 import { Back, Forward } from '@ndla/icons/common';
+// @ts-ignore
+import { SafeLink } from '../index';
 
 const FOOTER_HEIGHT = '78px';
 const FOOTER_HEIGHT_MOBILE = spacing.large;

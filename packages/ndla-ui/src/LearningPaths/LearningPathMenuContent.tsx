@@ -11,11 +11,11 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-// @ts-ignore
-import { SafeLink } from '@ndla/ui';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
 import { LearningPathIcon } from './LearningPathIcon';
 import { StepProps } from './LearningPathMenu';
+// @ts-ignore
+import { SafeLink } from '../index';
 
 const SIDE_NAV_WIDTH = '372px';
 

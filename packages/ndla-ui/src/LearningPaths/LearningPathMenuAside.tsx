@@ -12,11 +12,10 @@ import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { SafeLinkButton } from '@ndla/ui';
-// @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
+import { SafeLinkButton } from '../index';
 
 const infoTextCSS = css`
   ${fonts.sizes(18, 1.3)};

@@ -218,7 +218,6 @@ const LearningPathExample = ({ t }) => {
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
 
-  console.log(currentLearningStepNumber);
   return (
     <>
       <LearningPathWrapper>

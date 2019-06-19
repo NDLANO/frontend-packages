@@ -13,7 +13,8 @@ import { fonts, spacing } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { SafeLink, OneColumn, LayoutItem } from '@ndla/ui';
+import { OneColumn, LayoutItem } from '../index-javascript';
+import { SafeLink } from '../index';
 
 const StyledHeader = styled.h1`
   display: flex;

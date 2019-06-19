@@ -15,8 +15,9 @@ import {
   InfoWidget,
   SafeLink,
   SubjectSectionTitle,
+  BlogPost,
+  BlogPostWrapper,
 } from '@ndla/ui';
-import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { contentCards, categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
@@ -24,6 +25,8 @@ import NdlaYrkesfagIllustration from '../../images/category_illustrations/illust
 import NdlaStudieSpesialiserendeIllustration from '../../images/category_illustrations/illustrasjon_studiespesialiserende.svg';
 import NdlaFellesfagIllustration from '../../images/category_illustrations/illustrasjon_fellesfag.svg';
 import NdlaKombinertIllustration from '../../images/category_illustrations/illustrasjon_kombinert.svg';
+import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
+import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
 
 const categoryIllustrations = {
   yrkesfag: NdlaYrkesfagIllustration,
@@ -31,6 +34,17 @@ const categoryIllustrations = {
   fellesfag: NdlaFellesfagIllustration,
   kombinert: NdlaKombinertIllustration,
 };
+
+const dummyBlogImages = [
+  {
+    url:  BlogExampleImage1,
+    alt: 'Alt-tekst eksempel til Blogg-bilde..',
+  },
+  {
+    url:  BlogExampleImage2,
+    alt: 'Alt-tekst eksempel til Blogg-bilde..',
+  }
+];
 
 const classes = BEMHelper('c-frontpage-section');
 
@@ -469,14 +483,20 @@ class FrontpageExample extends Component {
               <SubjectSectionTitle>
                 {t('welcomePage.blog')}
               </SubjectSectionTitle>
-              <BlogPosts>
+              <BlogPostWrapper>
                 <BlogPost
                   text="Hjelp til deg som skal opp i norsk"
                   image={dummyBlogImages[0]}
                   externalLink="#"
                   linkText="Besøk vår elevblogg"
                 />
-              </BlogPosts>
+                <BlogPost
+                  text="Hjelp til deg som skal opp i norsk"
+                  image={dummyBlogImages[1]}
+                  externalLink="#"
+                  linkText="Besøk vår elevblogg"
+                />
+              </BlogPostWrapper>
             </section>
             <FrontpageFilm
               imageUrl={NdlaFilmIllustration}

@@ -8,13 +8,18 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 
 const StyledGrid = styled.section`
-  background: red;
+  display: flex;
+  justify-content: space-between;
+  > * {
+    width: calc(50% - ${spacing.small});
+  }
 `;
 
 interface Props {
-  children: React.ReactNode[];
+  children: React.ReactNode;
 }
 
 export const BlogPostWrapper: React.FunctionComponent<Props> = ({

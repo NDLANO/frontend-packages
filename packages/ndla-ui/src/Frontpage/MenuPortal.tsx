@@ -6,10 +6,11 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
+// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 
 import { createUniversalPortal } from '@ndla/util';

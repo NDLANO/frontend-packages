@@ -551,7 +551,9 @@ const messages = {
     createLearningPathButtonText: 'Gå til stier',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',
-    readTime: '{hours} Skoletimer = {minutes} min',
+    readTimeHour: 'time',
+    readTimeHour_plurals: 'timer',
+    readTimeMinutesShort: 'min',
     pageOf: 'av',
     lastStep: {
       heading: 'Siste steg i læringsstien',

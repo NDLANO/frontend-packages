@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "declarationDir": "./lib",
     "rootDir": "./src",
-    "outDir": "generated"
+    "noEmit": true
   },
   "include": ["./src"]
 }

@@ -100,19 +100,23 @@ interface Props {
 
 const LearningPathMenuIntro: React.FunctionComponent<Props> = ({
   duration, isOpen, name, t,
-}) => (
-  <StyledMenuIntro isOpen={isOpen}>
-    <div>
-      <p css={typography.smallHeading}>{t('learningPath.youAreInALearningPath')}</p>
-      <StyledIntroHeader>{name}</StyledIntroHeader>
-      <StyledTimeBox>
-        <Time /> {t('learningPath.readTime', {
-            hours: Math.round((duration / 45) * 10) / 10,
-            minutes: duration,
-          })}
-      </StyledTimeBox>
-    </div>
-  </StyledMenuIntro>
-);
+}) => {
+  const hours = Math.floor(duration / 60);
+  const usePluralsForHours = hours !== 1;
+  const minutes = duration % 60;
+  return (
+    <StyledMenuIntro isOpen={isOpen}>
+      <div>
+        <p css={typography.smallHeading}>{t('learningPath.youAreInALearningPath')}</p>
+        <StyledIntroHeader>{name}</StyledIntroHeader>
+        <StyledTimeBox>
+          <Time />
+            {hours} {t(usePluralsForHours ? 'learningPath.readTimeHour_plurals' : 'learningPath.readTimeHour')}
+            {minutes > 0 && ` ${minutes} ${t('learningPath.readTimeMinutesShort')}`}
+        </StyledTimeBox>
+      </div>
+    </StyledMenuIntro>
+  );
+};
 
 export default injectT(LearningPathMenuIntro);

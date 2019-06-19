@@ -467,51 +467,16 @@ class FrontpageExample extends Component {
             />
             <section {...classes()}>
               <SubjectSectionTitle>
-                {t('welcomePage.highlighted')}
+                {t('welcomePage.blog')}
               </SubjectSectionTitle>
-              <CarouselAutosize
-                breakpoints={[
-                  {
-                    until: 'mobile',
-                    columnsPrSlide: 1.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 13,
-                  },
-                  {
-                    until: 'mobileWide',
-                    columnsPrSlide: 2.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 13,
-                  },
-                  {
-                    until: 'tabletWide',
-                    columnsPrSlide: 3.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 26,
-                  },
-                  {
-                    columnsPrSlide: 4.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 26,
-                  },
-                ]}>
-                {autoSizedProps => (
-                  <Carousel
-                    slideBackwardsLabel={t('carousel.back')}
-                    slideForwardsLabel={t('carousel.forward')}
-                    buttonClass="c-carousel__arrow"
-                    wrapperClass="c-carousel__wrapper"
-                    items={contentCards.map(subject => (
-                      <ContentCard
-                        {...subject}
-                        columnWidth={autoSizedProps.columnWidth}
-                        key={subject.id}
-                      />
-                    ))}
-                    {...autoSizedProps}
-                  />
-                )}
-              </CarouselAutosize>
+              <BlogPosts>
+                <BlogPost
+                  text="Hjelp til deg som skal opp i norsk"
+                  image={dummyBlogImages[0]}
+                  externalLink="#"
+                  linkText="Besøk vår elevblogg"
+                />
+              </BlogPosts>
             </section>
             <FrontpageFilm
               imageUrl={NdlaFilmIllustration}

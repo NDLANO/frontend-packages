@@ -199,6 +199,7 @@ const messages = {
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
+    blog: 'Fra bloggen',
   },
   meta: {
     description:

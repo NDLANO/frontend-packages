@@ -4,11 +4,15 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
-import { SafeLink } from '@ndla/ui';
+import { SafeLink } from '../index';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import FrontpageSubjectIllustration from './FrontpageSubjectIllustration';
+// @ts-ignore
 import FrontpageCircularSubject from './FrontpageCircularSubject';
 import MenuPortal from './MenuPortal';
+import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
+import { category } from './types';
 
 const StyledSubjectLink = styled('div')`
   width: 50%;
@@ -52,7 +56,11 @@ const StyledLinkedText = styled('span')`
   }
 `;
 
-const StyledButton = styled('button')`
+interface StyledButtonProps {
+  isActive: boolean;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +89,7 @@ const StyledButton = styled('button')`
   }
 `;
 
-const StyledIllustrationContainer = styled('div')`
+const StyledIllustrationContainer = styled.div`
   width: 100%;
 
   ${mq.range({ from: breakpoints.desktop })} {
@@ -90,7 +98,7 @@ const StyledIllustrationContainer = styled('div')`
   }
 `;
 
-const StyledNavContainer = styled('nav')`
+const StyledNavContainer = styled.nav`
   width: 100%;
   position: relative;
   display: none;
@@ -110,7 +118,11 @@ const UPDATE_MENU_OPENSTATE = 'UPDATE_MENU_OPENSTATE';
 const UPDATE_MENU_CLOSESTATE = 'UPDATE_MENU_CLOSESTATE';
 const UPDATE_ACTIVE_CIRCLES = 'UPDATE_ACTIVE_CIRCLES';
 
-const menuReducer = (state, action) => {
+interface State {
+  category: category;
+};
+
+const menuReducer = (state: State, action) => {
   switch (action.type) {
     case UPDATE_MENU:
       return {
@@ -143,14 +155,24 @@ const menuReducer = (state, action) => {
   }
 };
 
-const FrontpageCombinedSubjects = ({
+interface Props {
+  categories: category[];
+  illustrationUrl: any;
+  categoryIllustrations: any;
+  categoryIllustrationsInModal: any;
+  t: any;
+};
+
+const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
   illustrationUrl,
   categoryIllustrations,
   categoryIllustrationsInModal,
   t,
 }) => {
-  const [currentState, dispatch] = useReducer(menuReducer, { activeCircleFills: [false, false, false] });
+  const [currentState, dispatch] = useReducer(menuReducer, {
+    activeCircleFills: [false, false, false],
+  });
   const {
     openedModalFromElement,
     menuIsOpen,
@@ -159,15 +181,14 @@ const FrontpageCombinedSubjects = ({
     activeCircleFills,
   } = currentState;
 
-  const setActiveCircle = (index, updateToState) => {
+  const setActiveCircle = (index: number, updateToState: boolean) => {
     const updatedCircleFills = activeCircleFills;
     updatedCircleFills[index] = updateToState;
-    console.log('update to ', updatedCircleFills);
     dispatch({ type: UPDATE_ACTIVE_CIRCLES, data: updatedCircleFills });
   };
 
   useEffect(() => {
-    const onKeyUpEvent = e => {
+    const onKeyUpEvent = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
         dispatch({ type: UPDATE_MENU_ANIMATION_DIRECTION, data: 'out' });
       }
@@ -180,7 +201,7 @@ const FrontpageCombinedSubjects = ({
 
   const closeMenu = () => {
     dispatch({ type: UPDATE_MENU_CLOSESTATE });
-    noScroll(false);
+    noScroll(false, 'frontpagePortal');
   };
 
   const openMenu = ({ event, index }) => {
@@ -193,10 +214,10 @@ const FrontpageCombinedSubjects = ({
         openedModalFromElement: event.target,
       },
     });
-    noScroll(true);
+    noScroll(true, 'frontpagePortal');
   };
 
-  console.log(activeCircleFills);
+  console.log(categories);
 
   return (
     <>
@@ -209,20 +230,14 @@ const FrontpageCombinedSubjects = ({
         }
         fromInitalElement={openedModalFromElement}>
         {categoryIndex !== undefined && (
-          <nav>
-            <img src={categoryIllustrationsInModal[categories[categoryIndex].name]} />
-            <h1>{t(`welcomePage.category.${categories[categoryIndex].name}`)}</h1>
-            <ul>
-              {categories[categoryIndex].subjects.map(subject => (
-                <li key={subject.url}>
-                  <SafeLink to={subject.url}>{subject.text}</SafeLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <FrontpageSubjectsInPortal
+            illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
+            title={t(`welcomePage.category.${categories[categoryIndex].name}`)}
+            subjects={categories[categoryIndex].subjects}
+          />
         )}
       </MenuPortal>
-      {categories.map((category, index) => (
+      {categories.map((category: categoryProp, index: number) => (
         <StyledSubjectLink key={category.name}>
           <FrontpageCircularSubject
             onClick={event => openMenu({ event, index })}
@@ -233,7 +248,7 @@ const FrontpageCombinedSubjects = ({
       ))}
       <StyledNavContainer illustrationUrl={illustrationUrl}>
         <LinkContainer>
-          {categories.map((category, index) => (
+          {categories.map((category: categoryProp, index: number) => (
             <StyledButton
               key={category.name}
               isActive={activeCircleFills[index]}

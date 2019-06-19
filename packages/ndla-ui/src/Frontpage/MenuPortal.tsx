@@ -105,7 +105,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
   flex-direction: column;
   align-items: flex-end;
   margin: 0 auto;
-  width: 740px;
+  width: 940px;
   min-height: 70vh;
   max-width: 100vw;
   padding: ${spacing.large};

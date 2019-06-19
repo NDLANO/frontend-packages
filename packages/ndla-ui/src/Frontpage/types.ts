@@ -1,3 +1,5 @@
+import { string } from "prop-types";
+
 export type Link = {
   text: string;
   to: string;
@@ -20,6 +22,11 @@ export type SearchResult = {
   resources: Array<Resource>;
 };
 
+export type subjectProp = {
+  text: string;
+  url: string;
+}
+
 export type FrontPageHeaderProps = {
   searchFieldValue: string;
   links: Array<Link>;
@@ -36,3 +43,12 @@ export type FrontPageHeaderProps = {
   searchResult: Array<SearchResult>;
   languageOptions: string;
 };
+
+export type categorySubjects = {
+  name: string;
+}
+
+export type category = {
+  name: string;
+  subjects: Array<categorySubjects>;
+}

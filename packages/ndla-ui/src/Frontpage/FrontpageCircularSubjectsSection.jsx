@@ -17,8 +17,8 @@ const StyledSubjects = styled('div')`
   flex-direction: row;
   align-content: center;
   justify-content: space-around;
-  padding: 0 ${spacing.normal};
-  max-width: 966px;
+  padding: 0;
+  max-width: 940px;
   margin: ${spacing.small} auto 0 auto;
 
   ${mq.range({ from: breakpoints.tablet })} {

@@ -41,7 +41,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const LearningPathSticky = ({ children }:Props) => (
+export const LearningPathSticky: React.FunctionComponent<Props> = ({ children }) => (
   <StyledFooter>{children}</StyledFooter>
 );
 
@@ -118,7 +118,7 @@ interface PropsSiblings {
   label: string;
 }
 
-export const LearningPathStickySibling = ({ title, to, arrow, label }:PropsSiblings) => (
+export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> = ({ title, to, arrow, label }) => (
   <SafeLink to={to} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>

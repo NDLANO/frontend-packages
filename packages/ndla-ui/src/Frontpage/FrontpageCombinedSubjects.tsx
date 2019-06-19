@@ -82,10 +82,12 @@ const StyledButton = styled.button<StyledButtonProps>`
     border-radius: 100%;
     background: ${colors.brand.light};
     transition: transform 200ms ease, background 200ms ease;
-    ${props => props.isActive && css`
+  }
+  &:hover, &:focus {
+    &:before {
       transform: scale(1.1);
       background: ${colors.brand.tertiary};
-    `}
+    }
   }
 `;
 
@@ -116,7 +118,6 @@ const UPDATE_MENU_ANIMATION_DIRECTION = 'UPDATE_MENU_ANIMATION_DIRECTION';
 const UPDATE_MENU = 'UPDATE_MENU';
 const UPDATE_MENU_OPENSTATE = 'UPDATE_MENU_OPENSTATE';
 const UPDATE_MENU_CLOSESTATE = 'UPDATE_MENU_CLOSESTATE';
-const UPDATE_ACTIVE_CIRCLES = 'UPDATE_ACTIVE_CIRCLES';
 
 interface State {
   category: category;
@@ -145,11 +146,6 @@ const menuReducer = (state: State, action) => {
         menuIsOpen: false,
         categoryIndex: undefined,
       }
-    case UPDATE_ACTIVE_CIRCLES:
-        return {
-          ...state,
-          activeCircleFills: action.data,
-        }
     default:
       throw new Error();
   }
@@ -170,22 +166,13 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categoryIllustrationsInModal,
   t,
 }) => {
-  const [currentState, dispatch] = useReducer(menuReducer, {
-    activeCircleFills: [false, false, false],
-  });
+  const [currentState, dispatch] = useReducer(menuReducer, {});
   const {
     openedModalFromElement,
     menuIsOpen,
     animationDirection,
     categoryIndex,
-    activeCircleFills,
   } = currentState;
-
-  const setActiveCircle = (index: number, updateToState: boolean) => {
-    const updatedCircleFills = activeCircleFills;
-    updatedCircleFills[index] = updateToState;
-    dispatch({ type: UPDATE_ACTIVE_CIRCLES, data: updatedCircleFills });
-  };
 
   useEffect(() => {
     const onKeyUpEvent = (e: KeyboardEvent) => {
@@ -251,11 +238,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           {categories.map((category: categoryProp, index: number) => (
             <StyledButton
               key={category.name}
-              isActive={activeCircleFills[index]}
-              onPointerEnter={() => setActiveCircle(index, true)}
-              onPointerLeave={() => setActiveCircle(index, false)}
-              onFocus={() => setActiveCircle(index, true)}
-              onFocusOut={() => setActiveCircle(index, false)}
               onClick={event => openMenu({ event, index })}>
               <StyledLinkedText>{t(`welcomePage.category.${category.name}`)}</StyledLinkedText>
             </StyledButton>

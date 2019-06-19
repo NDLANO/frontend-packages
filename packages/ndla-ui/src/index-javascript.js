@@ -179,13 +179,3 @@ export {
   FilmMovieSearch,
   FilmMovieList,
 } from './NDLAFilm';
-
-export {
-  LearningPathWrapper,
-  LearningPathContent,
-  LearningPathMenu,
-  LearningPathSticky,
-  LearningPathInformation,
-  LearningPathStickySibling,
-  LearningPathLastStepNavigation,
-} from './LearningPaths';

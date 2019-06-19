@@ -12,8 +12,6 @@ import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { LearningPathSticky, LearningPathStickySibling } from '@ndla/ui';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
 import { colors, spacing, misc, mq, breakpoints } from '@ndla/core';
@@ -100,6 +98,7 @@ interface Props {
     },
   };
   learningPathURL: string;
+  currentIndex: boolean;
   cookies: {
     [key: string]: string;
   };
@@ -107,11 +106,10 @@ interface Props {
 }
 
 const LearningPathMenu: React.FunctionComponent<Props> = ({
-  learningsteps, name, duration, lastUpdated, copyright, stepId, learningPathURL, cookies, t,
+  learningsteps, currentIndex, name, duration, lastUpdated, copyright, stepId, learningPathURL, cookies, t,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
-  const currentIndex = learningsteps.findIndex(learningStep => learningStep.id === stepId);
 
   return (
     <StyledMenu isOpen={isOpen}>
@@ -133,26 +131,6 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
         <LearningPathMenuContent learningsteps={learningsteps} isOpen={isOpen} currentIndex={currentIndex} cookies={cookies} />
         <LearningPathMenuAside isOpen={isOpen} lastUpdated={lastUpdated} copyright={copyright} learningPathURL={learningPathURL} />
       </LearningPathMenuModalWrapper>
-      <LearningPathSticky>
-        {currentIndex > 0 ? (
-          <LearningPathStickySibling
-            arrow="left"
-            label={t('learningPath.previousArrow')}
-            to={learningsteps[currentIndex - 1].metaUrl}
-            title={learningsteps[currentIndex - 1].title.title}
-          />
-        ) : (
-          <div />
-        )}
-        {currentIndex < learningsteps.length - 1 && (
-          <LearningPathStickySibling
-            arrow="right"
-            label={t('learningPath.nextArrow')}
-            to={learningsteps[currentIndex + 1].metaUrl}
-            title={learningsteps[currentIndex + 1].title.title}
-          />
-        )}
-      </LearningPathSticky>
     </StyledMenu>
   );
 };

@@ -78,7 +78,7 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
           size="fullscreen"
           activateButton={
             <StyledMobileButton type="button">
-              {currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal + 1}
+              {currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal}
             </StyledMobileButton>
           }>
           {(onClose: Function) => (

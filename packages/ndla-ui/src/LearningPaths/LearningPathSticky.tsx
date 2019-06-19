@@ -21,14 +21,15 @@ const FOOTER_HEIGHT_MOBILE = spacing.large;
 
 const StyledFooter = styled.nav`
   display: flex;
-  position: fixed;
-  z-index: 2;
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: ${FOOTER_HEIGHT};
+  width: 100%;
   ${mq.range({ until: breakpoints.tablet })} {
     height: ${FOOTER_HEIGHT_MOBILE};
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
   background: ${colors.brand.lighter};
   align-items: center;

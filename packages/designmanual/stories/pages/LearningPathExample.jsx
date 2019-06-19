@@ -9,12 +9,15 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { injectT } from '@ndla/i18n';
 import {
   LearningPathWrapper,
   LearningPathMenu,
   LearningPathContent,
   LearningPathInformation,
   LearningPathLastStepNavigation,
+  LearningPathSticky,
+  LearningPathStickySibling,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -111,7 +114,7 @@ const dataReducer = (state, action) => {
   }
 };
 
-const LearningPathExample = () => {
+const LearningPathExample = ({ t }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
   const [learningPathId, updateLearningPathId] = useState(
@@ -194,9 +197,6 @@ const LearningPathExample = () => {
 
   const { duration, lastUpdated, copyright, learningsteps } = learningStepsData;
   const stepId = learningsteps[currentLearningStepNumber].id; // should be fetched from url
-  const currentIndex = learningsteps.findIndex(
-    learningStep => learningStep.current,
-  );
   const lastUpdatedDate = new Date(lastUpdated);
   const lastUpdatedString = `${lastUpdatedDate.getDate()}.${
     lastUpdatedDate.getMonth() < 10 ? '0' : ''
@@ -217,6 +217,8 @@ const LearningPathExample = () => {
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
+
+  console.log(currentLearningStepNumber);
   return (
     <>
       <LearningPathWrapper>
@@ -232,7 +234,7 @@ const LearningPathExample = () => {
             lastUpdated={lastUpdatedString}
             copyright={copyright}
             stepId={stepId}
-            currentIndex={currentIndex}
+            currentIndex={currentLearningStepNumber}
             name={learningStepsData.title.title}
             cookies={useCookies}
             learningPathURL="https://www.stier.ndla.no"
@@ -263,6 +265,26 @@ const LearningPathExample = () => {
             </div>
           )}
         </LearningPathContent>
+        <LearningPathSticky>
+          {currentLearningStepNumber > 0 ? (
+            <LearningPathStickySibling
+              arrow="left"
+              label={t('learningPath.previousArrow')}
+              to={learningsteps[currentLearningStepNumber - 1].metaUrl}
+              title={learningsteps[currentLearningStepNumber - 1].title.title}
+            />
+          ) : (
+            <div />
+          )}
+          {currentLearningStepNumber < learningsteps.length - 1 && (
+            <LearningPathStickySibling
+              arrow="right"
+              label={t('learningPath.nextArrow')}
+              to={learningsteps[currentLearningStepNumber + 1].metaUrl}
+              title={learningsteps[currentLearningStepNumber + 1].title.title}
+            />
+          )}
+        </LearningPathSticky>
       </LearningPathWrapper>
       {hideHelp && (
         <StyledInfoHelper>
@@ -305,4 +327,4 @@ const LearningPathExample = () => {
   );
 };
 
-export default LearningPathExample;
+export default injectT(LearningPathExample);

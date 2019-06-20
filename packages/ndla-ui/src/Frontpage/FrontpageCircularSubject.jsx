@@ -10,8 +10,8 @@ const StyledFigure = styled('figure')`
     css`
       background-image: url(${illustrationUrl});
       background-size: contain;
-      height: 83px;
-      width: 83px;
+      height: 30vw;
+      width: 30vw;
     `}
   border-radius: 50%;
 `;

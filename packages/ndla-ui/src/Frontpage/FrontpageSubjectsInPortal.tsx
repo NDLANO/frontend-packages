@@ -8,44 +8,43 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing, fonts } from '@ndla/core';
+import { spacing, fonts, colors } from '@ndla/core';
 import { SafeLink } from '../index';
-import { subjectProp } from './types';
 
-const StyledHeading = styled.h1`
-  margin-bottom: -${spacing.large};
+const StyledHeader = styled.h1`
+  color: ${colors.brand.primary};
+  ${fonts.sizes(32, 1)};
 `;
 
 const StyledNav = styled.nav`
-  max-width: 940px;
-  max-height: calc(100vh - 200px);
-  overflow-y: scroll;
-`;
-
-const StyledRow = styled.div`
   display: flex;
-  margin: 0 -${spacing.normal};
-  padding: ${spacing.small} 0;
-  justify-content: space-between;
-  > div {
-    width: 33.33%;
-    padding: 0 ${spacing.normal};
-    ${fonts.sizes(18, 1.1)};
-    font-weight: ${fonts.weight.semibold};
+  flex-direction: column;
+  > * {
+    width: 100%;
   }
 `;
+
+const StyledUL = styled.ul`
+  column-count: 3;
+  column-gap: ${spacing.normal};
+  list-style: none;
+  margin: ${spacing.small} 0;
+  padding: 0;
+`;
+
+const StyledLI = styled.li`
+  padding: ${spacing.small} 0;
+  ${fonts.sizes(18, 1.4)};
+  font-weight: ${fonts.weight.semibold};
+  display: inline-flex;
+  width: 100%;
+  margin: 0;
+`;
+
 interface Props {
   illustration: string;
   title: string;
   subjects: any[];
-}
-
-const splitArrayIntoBlocks = (subjects: subjectProp[]) => {
-  const chunks = [];
-  for (let i = 0; i < subjects.length; i += 3) {
-    chunks.push(subjects.slice(i, i + 3));
-  }
-  return chunks;
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
@@ -54,17 +53,15 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
   subjects,
 }) => (
   <StyledNav>
-    <StyledHeading>{title}</StyledHeading>
+    <StyledHeader>{title}</StyledHeader>
     <img src={illustration} />
-    {splitArrayIntoBlocks(subjects).map(subjectChuncks => (
-      <StyledRow key={subjectChuncks[0].url}>
-        {subjectChuncks.map((subject: subjectProp) => (
-          <div key={subject.url}>
-            <SafeLink to={subject.url}>{subject.text}</SafeLink>
-          </div>
-        ))}
-      </StyledRow>
-    ))}
+    <StyledUL>
+      {subjects.map(subject => (
+        <StyledLI key={subject.url}>
+          <SafeLink to={subject.url}>{subject.text}</SafeLink>
+        </StyledLI>
+      ))}
+    </StyledUL>
   </StyledNav>
 );
   

@@ -22,12 +22,12 @@ export default {
               opacity: 1;
             }
           }`,
-  fadeInBottom: (duration?: string) => `
+  fadeInBottom: (duration?: string, distance?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInBottom;
         @keyframes fadeInBottom {
             0% {
-              transform: translateY(${spacing.small});
+              transform: translateY(${distance || spacing.small});
               opacity: 0;
             }
             100% {

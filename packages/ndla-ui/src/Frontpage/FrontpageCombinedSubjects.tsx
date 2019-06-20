@@ -80,13 +80,13 @@ const StyledButton = styled.button<StyledButtonProps>`
     width: 200px;
     height: 200px;
     border-radius: 100%;
-    background: ${colors.brand.light};
+    background: ${colors.brand.lighter};
     transition: transform 200ms ease, background 200ms ease;
   }
   &:hover, &:focus {
     &:before {
       transform: scale(1.1);
-      background: ${colors.brand.tertiary};
+      background: ${colors.brand.light};
     }
   }
   &:active {
@@ -119,10 +119,9 @@ const StyledNavContainer = styled.nav`
   }
 `;
 
-const UPDATE_MENU_ANIMATION_DIRECTION = 'UPDATE_MENU_ANIMATION_DIRECTION';
+const CLOSE_MENU = 'CLOSE_MENU';
 const UPDATE_MENU = 'UPDATE_MENU';
-const UPDATE_MENU_OPENSTATE = 'UPDATE_MENU_OPENSTATE';
-const UPDATE_MENU_CLOSESTATE = 'UPDATE_MENU_CLOSESTATE';
+const CLOSED_MENU = 'CLOSED_MENU';
 
 interface State {
   category: category;
@@ -135,19 +134,15 @@ const menuReducer = (state: State, action) => {
         ...state,
         ...action.data,
       };
-    case UPDATE_MENU_ANIMATION_DIRECTION:
+    case CLOSE_MENU:
       return {
         ...state,
         animationDirection: action.data,
       };
-    case UPDATE_MENU_OPENSTATE:
+    case CLOSED_MENU:
       return {
         ...state,
-        menuIsOpen: action.data,
-      };
-    case UPDATE_MENU_CLOSESTATE:
-      return {
-        ...state,
+        ...action.data,
         menuIsOpen: false,
         categoryIndex: undefined,
       }
@@ -171,18 +166,20 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categoryIllustrationsInModal,
   t,
 }) => {
-  const [currentState, dispatch] = useReducer(menuReducer, {});
+  const [currentState, dispatch] = useReducer(menuReducer, { menuOpenedCounter: 0 });
   const {
-    openedModalFromElement,
+    elementRect,
+    fromInitalElement,
     menuIsOpen,
     animationDirection,
     categoryIndex,
+    menuOpenedCounter,
   } = currentState;
 
   useEffect(() => {
     const onKeyUpEvent = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
-        dispatch({ type: UPDATE_MENU_ANIMATION_DIRECTION, data: 'out' });
+        dispatch({ type: CLOSE_MENU, data: 'out' });
       }
     };
     window.addEventListener('keyup', onKeyUpEvent);
@@ -191,8 +188,27 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     };
   }, []);
 
+  const calculateScaling = (element) => {
+    const { innerWidth } = window;
+    const elementClientRect:DOMRect = element.getBoundingClientRect();
+    return {
+      fromX: elementClientRect.x + elementClientRect.width / 2,
+      fromY: elementClientRect.y + elementClientRect.height / 2,
+      fromScale: elementClientRect.width / innerWidth,
+    }
+  };
+
   const closeMenu = () => {
-    dispatch({ type: UPDATE_MENU_CLOSESTATE });
+    dispatch({ type: CLOSE_MENU, data: 'out' })
+  }
+
+  const closedMenu = () => {
+    dispatch({
+      type: CLOSED_MENU,
+      data: {
+        elementRect: calculateScaling(fromInitalElement),
+      },
+    });
     noScroll(false, 'frontpagePortal');
   };
 
@@ -203,24 +219,21 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         categoryIndex: index,
         menuIsOpen: true,
         animationDirection: 'in',
-        openedModalFromElement: event.target,
+        elementRect: calculateScaling(event.target),
+        fromInitalElement: event.target,
+        menuOpenedCounter: menuOpenedCounter + 1,
       },
     });
     noScroll(true, 'frontpagePortal');
   };
-
-  console.log(categories);
-
   return (
     <>
-      <MenuPortal
-        isOpen={menuIsOpen}
+      {menuIsOpen && <MenuPortal
+        menuOpenedCounter={menuOpenedCounter}
+        onClosed={closedMenu}
         onClose={closeMenu}
         animationDirection={animationDirection}
-        onChangeAnimationDirection={() =>
-          dispatch({ type: UPDATE_MENU_ANIMATION_DIRECTION, data: 'out' })
-        }
-        fromInitalElement={openedModalFromElement}>
+        elementRect={elementRect}>
         {categoryIndex !== undefined && (
           <FrontpageSubjectsInPortal
             illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
@@ -228,7 +241,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
             subjects={categories[categoryIndex].subjects}
           />
         )}
-      </MenuPortal>
+      </MenuPortal>}
       {categories.map((category: categoryProp, index: number) => (
         <StyledSubjectLink key={category.name}>
           <FrontpageCircularSubject

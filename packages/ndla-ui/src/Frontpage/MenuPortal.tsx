@@ -14,21 +14,23 @@ import FocusTrapReact from 'focus-trap-react';
 import { Cross } from '@ndla/icons/action';
 
 import { createUniversalPortal } from '@ndla/util';
-import { spacing, colors, animations, mq, breakpoints } from '@ndla/core';
+import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
 
-const fullSizedCircle = 1.4;
+const fullSizedCircle = 1.2;
 
-interface elementRectProps {
+type elementRectProps = {
   fromX: number;
   fromY: number;
   fromScale: number;
 }
 
-interface ModalWrapperProps {
+type ModalWrapperProps = {
   elementRect: elementRectProps;
   animationDirection: 'in' | 'out';
+  animationNameIn: string;
+  animationNameOut: string;
 }
 
 const StyledModalWrapper = styled.div<ModalWrapperProps>`
@@ -49,14 +51,10 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
     height: 100vh;
     min-width: 100vh;
     min-height: 100vw;
-    background: ${colors.brand.light};
+    background: ${colors.brand.lighter};
     border-radius: 100%;
-    animation-timing-function: ${props =>
-      props.animationDirection === 'in' ? 'cubic-bezier(0.17, 0.04, 0.03, 0.94)' : 'cubic-bezier(0.17, 0.04, 0.03, 0.94)'};
-    animation-name: ${props =>
-      props.animationDirection === 'in'
-        ? 'menuPortalCircleAnimation'
-        : 'menuPortalCircleAnimationOut'};
+    animation-timing-function: ${misc.transition.cubicBezier};
+    animation-name: ${props => props.animationDirection === 'in' ? props.animationNameIn : props.animationNameOut};
     animation-duration: ${animations.durations.fast};
     ${mq.range({ from: breakpoints.tablet })} {
       animation-duration: ${props =>
@@ -65,9 +63,10 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
           : animations.durations.fast};
     }
     animation-fill-mode: forwards;
-    @keyframes menuPortalCircleAnimation {
+    @keyframes ${props => props.animationNameIn} {
       0% {
-        background: ${colors.brand.tertiary};
+        opacity: 0;
+        background: ${colors.brand.light};
         ${props => css`
           transform: translate(
               calc(-100vw + ${props.elementRect.fromX}px),
@@ -76,15 +75,26 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
             scale(${props.elementRect.fromScale});
         `}
       }
+      10% {
+        opacity: 1;
+      }
+      20% {
+        border-radius: 100%;
+      }
       100% {
+        border-radius: 0;
         transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
           scale(${fullSizedCircle});
       }
     }
-    @keyframes menuPortalCircleAnimationOut {
+    @keyframes ${props => props.animationNameOut} {
       0% {
+        border-radius: 0;
         transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
           scale(${fullSizedCircle});
+      }
+      50% {
+        border-radius: 100%;
       }
       90% {
         opacity: 1;
@@ -109,93 +119,78 @@ interface StyledContainerProps {
 
 const StyledContainer = styled.div<StyledContainerProps>`
   transform: translate(-50vw, 0);
-  display: flex;
+  display: ${props => props.animationDirection === 'in' ? 'flex' : 'none'};
   flex-direction: column;
   align-items: flex-end;
   margin: 0 auto;
-  width: 940px;
+  width: 980px;
   min-height: 70vh;
   max-width: 100vw;
-  padding: ${spacing.large};
+  padding: ${spacing.large} 0;
   > div {
     width: 100%;
+    animation-delay: ${animations.durations.fast};
+    animation-fill-mode: forwards;
+    opacity: 0;
+    ${animations.fadeInBottom(animations.durations.fast, spacing.normal)}
+    animation-timing-function: ${misc.transition.cubicBezier};
   }
-  ${props =>
-    props.animationDirection === 'in'
-      ? `
-      > button {
-        border: 0;
-        background: none;
-        width: ${spacing.medium};
-        height: ${spacing.medium};
-      }
-      > button, > div {
-        animation-delay: ${animations.durations.fast};
-        animation-fill-mode: forwards;
-        opacity: 0;
-        ${animations.fadeInBottom()}
-      }
-    `
-      : `
-      > button, > div {
-        display: none;
-      }
-    `}
+`;
+
+const StyledButton = styled.button<StyledContainerProps>`
+  border: 0;
+  background: none;
+  width: ${spacing.medium};
+  height: ${spacing.medium};
+  display: ${props => props.animationDirection === 'in' ? 'flex' : 'none'};
 `;
 
 interface Props {
   children: React.ReactNode;
-  isOpen: boolean;
-  onClose: () => void;
-  onChangeAnimationDirection: (direction: string) => void;
-  fromInitalElement: HTMLElement;
+  onClosed: () => void;
+  onClose: (direction: string) => void;
   animationDirection: 'in' | 'out';
+  elementRect: any;
+  menuOpenedCounter: number;
 }
 
 const MenuPortal: React.FunctionComponent<Props> = ({
   children,
   onClose,
-  onChangeAnimationDirection,
-  isOpen,
+  onClosed,
   animationDirection,
-  fromInitalElement,
+  elementRect,
+  menuOpenedCounter,
 }) => {
-  if (!isOpen || !fromInitalElement) {
-    return null;
-  }
-
-  const fromInitalElementRect: any = fromInitalElement.getBoundingClientRect();
-  const { innerWidth } = window;
-  const elementRect = {
-    fromX: fromInitalElementRect.x + fromInitalElementRect.width / 2,
-    fromY: fromInitalElementRect.y + fromInitalElementRect.height / 2,
-    fromScale: fromInitalElementRect.width / innerWidth,
-  };
-
+  const animationNameIn = `menuPortalCircleAnimation_${menuOpenedCounter}`;
+  const animationNameOut = `menuPortalCircleAnimationOut_${menuOpenedCounter}`;
   const content = (
     <>
-      <FocusTrapReact>
         <StyledModalWrapper
+          animationNameIn={animationNameIn}
+          animationNameOut={animationNameOut}
           elementRect={elementRect}
           animationDirection={animationDirection}
           onAnimationEnd={() => {
             if (animationDirection === 'out') {
-              onClose();
+              onClosed();
             }
           }}>
-          <StyledContainer animationDirection={animationDirection}>
-            <button
-              type="button"
-              onClick={() => onChangeAnimationDirection('out')}>
-              <Cross />
-            </button>
-            <div>{children}</div>
-          </StyledContainer>
+          <FocusTrapReact>
+            <StyledContainer animationDirection={animationDirection}>
+              <StyledButton
+                animationDirection={animationDirection}
+                type="button"
+                onClick={() => onClose('out')}>
+                <Cross />
+              </StyledButton>
+              <div>{children}</div>
+            </StyledContainer>
+          </FocusTrapReact>
         </StyledModalWrapper>
-      </FocusTrapReact>
       <Backdrop
-        onClick={() => onChangeAnimationDirection('out')}
-        animationDuration={animationDirection === 'in' ? animations.durations.normal : animations.durations.fast}
+        onClick={() => onClose('out')}
+        animationDuration={animations.durations.fast}
         animateIn={animationDirection === 'in'}
       />
     </>

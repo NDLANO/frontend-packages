@@ -14,6 +14,7 @@ import { SafeLink } from '../index';
 const StyledHeader = styled.h1`
   color: ${colors.brand.primary};
   ${fonts.sizes(32, 1)};
+  margin-bottom: -${spacing.spacingUnit * 4}px;
 `;
 
 const StyledNav = styled.nav`

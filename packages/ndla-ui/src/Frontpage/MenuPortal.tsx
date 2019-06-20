@@ -140,9 +140,13 @@ const StyledContainer = styled.div<StyledContainerProps>`
 const StyledButton = styled.button<StyledContainerProps>`
   border: 0;
   background: none;
-  width: ${spacing.medium};
-  height: ${spacing.medium};
-  display: ${props => props.animationDirection === 'in' ? 'flex' : 'none'};
+  position: absolute;
+  z-index: 1;
+  > svg {
+    color: ${colors.brand.primary};
+    width: ${spacing.large};
+    height: ${spacing.large};
+  }
 `;
 
 interface Props {

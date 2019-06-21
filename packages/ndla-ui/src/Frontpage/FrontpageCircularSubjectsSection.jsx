@@ -16,7 +16,7 @@ const StyledSubjects = styled('div')`
   flex-wrap: wrap;
   flex-direction: row;
   align-content: center;
-  justify-content: space-around;
+  justify-content: center;
   padding: 0;
   max-width: 940px;
   margin: ${spacing.small} auto 0 auto;
@@ -27,20 +27,18 @@ const StyledSubjects = styled('div')`
 `;
 
 const FrontpageCircularSubjectsSection = injectT(
-  ({ categories, categoryIllustrations, categoryIllustrationsInModal, t }) => {
-    return (
-      <StyledSection>
-        <StyledSubjects>
-          <FrontpageCombinedSubjects
-            illustrationUrl={categoryIllustrations['kombinert']}
-            categoryIllustrations={categoryIllustrations}
-            categoryIllustrationsInModal={categoryIllustrationsInModal}
-            categories={categories}
-          />
-        </StyledSubjects>
-      </StyledSection>
-    );
-  },
+  ({ categories, categoryIllustrations, categoryIllustrationsInModal, t }) => (
+    <StyledSection>
+      <StyledSubjects>
+        <FrontpageCombinedSubjects
+          illustrationUrl={categoryIllustrations['kombinert']}
+          categoryIllustrations={categoryIllustrations}
+          categoryIllustrationsInModal={categoryIllustrationsInModal}
+          categories={categories}
+        />
+      </StyledSubjects>
+    </StyledSection>
+  )
 );
 
 FrontpageCircularSubjectsSection.propTypes = {

@@ -169,7 +169,7 @@ const StyledSearchBackdrop = styled.div`
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: rgba(1, 1, 1, 0.5);
+  background: rgba(1, 1, 1, 0.3);
   ${animations.fadeIn(animations.durations.fast)};
 `;
 
@@ -243,7 +243,7 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
         )}
         {!hideSearch && inputHasFocus && (
           <>
-            <StyledSearchBackdrop />
+            <StyledSearchBackdrop role="button" onClick={onSearchDeactiveFocusTrap} />
               <StyledSearchField>
                 <SearchField
                   modifiers={

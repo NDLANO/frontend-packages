@@ -12,7 +12,6 @@ import { css } from '@emotion/core';
 const cssStyle = css`
   position: relative;
   z-index: 1;
-  pointer-events: none;
 `;
 
 const FrontpageSubjectIllustration: React.FunctionComponent = () => (

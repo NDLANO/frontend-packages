@@ -159,7 +159,7 @@ const messages = {
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
-      searchFieldPlaceholder: 'Søk etter f.eks emne, lærestoff, nykelord...',
+      searchFieldPlaceholder: 'Kva vil du lære om i dag?',
       messages: {
         searchFieldTitle: 'Søk',
         menuButton: 'Meny',

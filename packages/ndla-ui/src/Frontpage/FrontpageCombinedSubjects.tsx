@@ -14,15 +14,20 @@ import MenuPortal from './MenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
 import { category } from './types';
 
-const StyledSubjectLink = styled('div')`
-  width: 50%;
+const StyledMobileSubjectLink = styled('div')`
   display: flex;
   align-content: center;
   justify-content: center;
   padding: ${spacing.small} 0;
   position: relative;
-
-  ${mq.range({ from: breakpoints.tablet })} {
+  width: 40%;
+  &:last-of-type {
+    margin-top: -${spacing.small};
+  }
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    width: calc(30vw + ${spacing.spacingUnit * 2}px);
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
     display: none;
   }
 `;
@@ -48,11 +53,11 @@ const StyledLinkedText = styled('span')`
   ${fonts.sizes('20px', '32px')};
   font-weight: ${fonts.weight.bold};
   position: absolute;
-  bottom: ${spacing.spacingUnit * 1.75}px;
+  bottom: ${spacing.normal};
   color: ${colors.subject.dark};
 
   ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('22px', '32px')};
+    ${fonts.sizes('24px', '32px')};
   }
 `;
 
@@ -65,8 +70,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   position: relative;
   box-shadow: none;
@@ -77,8 +82,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:before {
     content: "";
     display: block;
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     border-radius: 100%;
     background: ${colors.brand.lighter};
     transition: transform 200ms ease, background 200ms ease;
@@ -94,27 +99,36 @@ const StyledButton = styled.button<StyledButtonProps>`
       transform: scale(0.9);
     }
   }
+  ${mq.range({ from: breakpoints.desktop })} {
+    width: 200px;
+    height: 200px;
+    &:before {
+      width: 200px;
+      height: 200px;
+    }
+  }
 `;
 
 const StyledIllustrationContainer = styled.div`
   width: 100%;
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    left: ${spacing.normal};
-    right: ${spacing.normal};
+  pointer-events: none;
+  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
+    width: calc(100vw - ${spacing.spacingUnit * 6}px);
   }
 `;
 
 const StyledNavContainer = styled.nav`
-  width: 100%;
   position: relative;
+  width: 100%;
   display: none;
 
-  ${mq.range({ from: breakpoints.tablet })} {
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    width: calc(100vw - ${spacing.spacingUnit * 6}px);
     display: flex;
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
+    width: 100%;
     padding: 0 ${spacing.spacingUnit * 2.5}px;
   }
 `;
@@ -243,13 +257,13 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         )}
       </MenuPortal>}
       {categories.map((category: categoryProp, index: number) => (
-        <StyledSubjectLink key={category.name}>
+        <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject
             onClick={event => openMenu({ event, index })}
             textValue={t(`welcomePage.category.${category.name}`)}
             illustrationUrl={categoryIllustrations[category.name]}
           />
-        </StyledSubjectLink>
+        </StyledMobileSubjectLink>
       ))}
       <StyledNavContainer illustrationUrl={illustrationUrl}>
         <LinkContainer>

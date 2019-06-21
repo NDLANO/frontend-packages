@@ -156,7 +156,7 @@ export const categories = [
       },
       {
         url: '#3',
-        text: 'Bygg og annleggsteknikk',
+        text: 'Bygg og anleggsteknikk',
         yearInfo: 'Vg1',
       },
       {

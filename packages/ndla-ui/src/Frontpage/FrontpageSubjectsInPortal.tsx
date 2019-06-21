@@ -8,29 +8,77 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing, fonts, colors } from '@ndla/core';
-import { SafeLink } from '../index';
+import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
+import SafeLink from '../common/SafeLink';
 
 const StyledHeader = styled.h1`
   color: ${colors.brand.primary};
-  ${fonts.sizes(32, 1)};
-  margin-bottom: -${spacing.spacingUnit * 4}px;
+  ${fonts.sizes(24, 1)};
+  margin-top: ${spacing.large};
+  margin-bottom: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes(26, 1)};
+    margin-top: 0;
+    margin-bottom: -${spacing.spacingUnit * 2}px;
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    ${fonts.sizes(32, 1)};
+    margin-top: 0;
+    margin-bottom: -${spacing.spacingUnit * 3}px;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-top: ${spacing.normal};
+    margin-bottom: -${spacing.spacingUnit * 4}px;
+  }
+`;
+
+const StyledSafeLink = styled(SafeLink)`
+  box-shadow: none;
+  text-decoration: underline;
+  color: ${colors.brand.primary};
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+`;
+
+type StyledImageProps = {
+  mobile: boolean;
+};
+
+const StyledImage = styled.img<StyledImageProps>`
+  display: ${props => !props.mobile ? 'none' : 'block'};
+  margin-top: -136px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: ${props => props.mobile ? 'none' : 'block'};
+    margin-top: 0;
+  }
+  width: ${props => props.mobile ? '100px' : '100%'};
 `;
 
 const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
-  > * {
-    width: 100%;
+  align-items: center;
+  padding-top: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tablet })} {
+    align-items: flex-start;
   }
 `;
 
 const StyledUL = styled.ul`
-  column-count: 3;
+  column-count: 1;
   column-gap: ${spacing.normal};
   list-style: none;
   margin: ${spacing.small} 0;
-  padding: 0;
+  width: 100%;
+  padding: ${spacing.normal} 0 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: 0;
+    column-count: 2;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    column-count: 3;
+  }
 `;
 
 const StyledLI = styled.li`
@@ -44,22 +92,25 @@ const StyledLI = styled.li`
 
 interface Props {
   illustration: string;
+  illustrationMobile: string;
   title: string;
   subjects: any[];
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
   illustration,
+  illustrationMobile,
   title,
   subjects,
 }) => (
   <StyledNav>
     <StyledHeader>{title}</StyledHeader>
-    <img src={illustration} />
+    <StyledImage src={illustration} />
+    <StyledImage mobile src={illustrationMobile} />
     <StyledUL>
       {subjects.map(subject => (
         <StyledLI key={subject.url}>
-          <SafeLink to={subject.url}>{subject.text}</SafeLink>
+          <StyledSafeLink to={subject.url}>{subject.text}</StyledSafeLink>
         </StyledLI>
       ))}
     </StyledUL>

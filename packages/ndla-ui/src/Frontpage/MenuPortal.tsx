@@ -18,7 +18,7 @@ import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
 
-const fullSizedCircle = 1.2;
+const fullSizedCircle = 1.1;
 
 type elementRectProps = {
   fromX: number;
@@ -55,7 +55,10 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
     border-radius: 100%;
     animation-timing-function: ${misc.transition.cubicBezier};
     animation-name: ${props => props.animationDirection === 'in' ? props.animationNameIn : props.animationNameOut};
-    animation-duration: ${animations.durations.fast};
+    animation-duration: ${props =>
+      props.animationDirection === 'out'
+        ? animations.durations.fast
+        : animations.durations.normal};
     ${mq.range({ from: breakpoints.tablet })} {
       animation-duration: ${props =>
         props.animationDirection === 'in'
@@ -81,16 +84,20 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
       20% {
         border-radius: 100%;
       }
+      99% {
+        border-radius: 10%;
+        transform: translate(calc(-50vw), 0)
+          scale(${fullSizedCircle});
+      }
       100% {
         border-radius: 0;
-        transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
-          scale(${fullSizedCircle});
+        transform: translate(-50vw, 0);
       }
     }
     @keyframes ${props => props.animationNameOut} {
       0% {
         border-radius: 0;
-        transform: translate(calc(-50vw), calc(${(fullSizedCircle - 1) * 75}vw))
+        transform: translate(calc(-50vw), 30vh)
           scale(${fullSizedCircle});
       }
       50% {
@@ -124,12 +131,17 @@ const StyledContainer = styled.div<StyledContainerProps>`
   align-items: flex-end;
   margin: 0 auto;
   width: 980px;
-  min-height: 70vh;
-  max-width: 100vw;
+  overflow-y: scroll;
+  height: 100vh;
+  max-width: calc(100vw - ${spacing.spacingUnit * 4}px);
   padding: ${spacing.large} 0;
+  ${mq.range({ until: breakpoints.tablet })} {
+    padding-top: ${spacing.normal};
+    max-width: calc(100vw - ${spacing.spacingUnit * 2}px);
+  }
   > div {
     width: 100%;
-    animation-delay: ${animations.durations.superfast};
+    animation-delay: ${animations.durations.fast};
     animation-fill-mode: forwards;
     opacity: 0;
     ${animations.fadeInBottom(animations.durations.normal, spacing.normal)}
@@ -144,8 +156,12 @@ const StyledButton = styled.button<StyledContainerProps>`
   z-index: 1;
   > svg {
     color: ${colors.brand.primary};
-    width: ${spacing.large};
-    height: ${spacing.large};
+    width: ${spacing.medium};
+    height: ${spacing.medium};
+    ${mq.range({ from: breakpoints.desktop })} {
+      width: ${spacing.large};
+      height: ${spacing.large};
+    }
   }
 `;
 
@@ -181,15 +197,15 @@ const MenuPortal: React.FunctionComponent<Props> = ({
             }
           }}>
           <FocusTrapReact>
-            <StyledContainer animationDirection={animationDirection}>
-              <StyledButton
-                animationDirection={animationDirection}
-                type="button"
-                onClick={() => onClose('out')}>
-                <Cross />
-              </StyledButton>
-              <div>{children}</div>
-            </StyledContainer>
+              <StyledContainer animationDirection={animationDirection}>
+                <StyledButton
+                  animationDirection={animationDirection}
+                  type="button"
+                  onClick={() => onClose('out')}>
+                  <Cross />
+                </StyledButton>
+                <div>{children}</div>
+              </StyledContainer>
           </FocusTrapReact>
         </StyledModalWrapper>
       <Backdrop

@@ -251,6 +251,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         {categoryIndex !== undefined && (
           <FrontpageSubjectsInPortal
             illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
+            illustrationMobile={categoryIllustrations[categories[categoryIndex].name]}
             title={t(`welcomePage.category.${categories[categoryIndex].name}`)}
             subjects={categories[categoryIndex].subjects}
           />

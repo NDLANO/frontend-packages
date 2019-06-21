@@ -59,8 +59,10 @@ const StyledButton = styled('button')`
     }
   }
   &:active {
-    background: ${colors.brand.light};
-    transform: scale(0.9);
+    &:before {
+      background: ${colors.brand.light};
+      transform: scale(0.9);
+    }
   }
 `;
 

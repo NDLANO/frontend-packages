@@ -12,9 +12,13 @@ import { spacing, mq, breakpoints } from '@ndla/core';
 
 const StyledGrid = styled.section`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: -${spacing.normal};
   > * {
+    display: flex-inline;
     width: calc(50% - ${spacing.xsmall});
+    margin-bottom: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet })} {
     > * {

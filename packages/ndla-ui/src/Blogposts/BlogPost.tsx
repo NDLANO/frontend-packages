@@ -47,9 +47,6 @@ const StyledBlog = styled.div<StyledBlogProps>`
     right: 0;
     bottom: 0;
   }
-  ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-    margin-bottom: ${spacing.normal};
-  }
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 250px;
     padding: ${spacing.medium} ${spacing.normal};

@@ -40,7 +40,7 @@
     .c-hero__content {
       .c-breadcrumb__item,
       .c-breadcrumb__item--home:after,
-      a {
+      a, a:focus, a:hover {
         color: #fff;
       }
     }
@@ -56,6 +56,18 @@
         margin-bottom: -1800px;
         .c-hero__content {
           min-height: 190px;
+        }
+        @media (min-height: 720px) {
+          .c-hero__content {
+            min-height: 240px;
+          }
+          margin-bottom: -1750px;
+        }
+        @media (min-height: 1020px) {
+          .c-hero__content {
+            min-height: 290px;
+          }
+          margin-bottom: -1700px;
         }
       }
     }
@@ -79,6 +91,8 @@
     display: block;
     width: 100%;
     opacity: 0.4;
+    max-width: 1460px;
+    margin: 0 auto;
   }
   &:after {
     content: '';

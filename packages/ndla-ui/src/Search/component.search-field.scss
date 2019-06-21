@@ -249,7 +249,7 @@ $overlay-height: 136px;
   }
 
   &__search-result-infotext {
-    @include font-size(14px, 18px);
+    @include font-size(16px, 22px);
     display: block;
     margin: 0 0 $spacing--large;
     color: $primary-color;

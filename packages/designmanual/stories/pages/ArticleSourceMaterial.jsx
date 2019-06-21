@@ -27,7 +27,7 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default () => (
   <OneColumn>
-    <ArticleWrapper>
+    <ArticleWrapper id="mainContentId">
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle

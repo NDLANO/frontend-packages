@@ -190,7 +190,7 @@ class FileListEditor extends Component {
     });
 
     Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(
-      (node, index) => {
+      node => {
         node.style.transition = 'none';
         node.style.transform = 'none';
       },
@@ -216,11 +216,13 @@ class FileListEditor extends Component {
     this.DraggingFile.style.transform = `translateY(${this.mouseMovement +
       FILE_HEIGHT}px)`;
     this.updateTransforms(dragIndex + addToPosition);
-    if (this.state.draggingIndex !== dragIndex) {
-      this.setState({
-        draggingIndex: dragIndex,
-      });
-    }
+    this.setState(prevState => {
+      if (prevState.draggingIndex !== dragIndex) {
+        return {
+          draggingIndex: dragIndex,
+        };
+      }
+    });
   }
 
   render() {

@@ -120,6 +120,7 @@ class ArticleLoader extends Component {
       showSubTopics,
       ndlaFilm,
       withBackgroundImage,
+      id,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -159,6 +160,7 @@ class ArticleLoader extends Component {
           {article ? (
             <OneColumn>
               <Article
+                id={id}
                 icon={icon}
                 article={article}
                 modifier={reset ? 'clean' : ''}

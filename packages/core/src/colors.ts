@@ -39,6 +39,7 @@ export default {
     filmColor: '#091a2a',
     filmColorDark: '#03172B',
     filmColorBright: '#20588f',
+    filmColorLight: '#0f263b',
   },
 
   subject: {

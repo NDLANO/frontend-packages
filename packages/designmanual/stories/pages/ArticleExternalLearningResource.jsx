@@ -27,7 +27,7 @@ import { FigureImage } from '../article/FigureImage';
 
 export default () => (
   <OneColumn>
-    <ArticleWrapper>
+    <ArticleWrapper id="mainContentId">
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle

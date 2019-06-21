@@ -207,6 +207,7 @@ const messages = {
     keywords: 'læremiddel,fag,skole,videregående,lærling,pensum,fagstoff',
   },
   masthead: {
+    skipToContent: 'Hopp til innhold',
     menu: {
       close: 'Lukk',
       goTo: 'Gå til',

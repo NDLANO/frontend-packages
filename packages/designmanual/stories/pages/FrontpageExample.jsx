@@ -85,14 +85,16 @@ class FrontpageExample extends Component {
   onSearchDeactiveFocusTrap() {
     this.setState({
       inputHasFocus: false,
+      searchFieldValue: '',
     });
     console.log(this.circularSubjectsSectionRef);
   }
 
   searchFieldValue(searchFieldValue) {
-    this.setState({
+    this.setState(prevState => ({
       searchFieldValue,
-    });
+      inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
+    }));
   }
 
   renderInfoText() {

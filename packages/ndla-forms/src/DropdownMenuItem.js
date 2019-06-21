@@ -76,14 +76,20 @@ const StyledItemButton = styled.button`
         color: ${colors.text.light};
       }
     `}
+  ${props =>
+    props.disableSelected &&
+    css`
+        disabled
+      `}
 `;
 
-function DropdownMenuItem({ item, isSelected, t, ...rest }) {
+function DropdownMenuItem({ disableSelected, item, isSelected, t, ...rest }) {
   return (
     <StyledItemButton
       key={item.id}
       type="button"
       isSelected={isSelected}
+      disabled={disableSelected && isSelected}
       {...rest}>
       {<DropdownMenuImage image={item.image} alt={item.alt} />}
       <StyledText>

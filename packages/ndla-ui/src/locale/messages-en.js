@@ -208,6 +208,7 @@ const messages = {
     keywords: 'open educational resources,teaching,learning',
   },
   masthead: {
+    skipToContent: 'Skip to content',
     menu: {
       close: 'Close',
       goTo: 'Go to',

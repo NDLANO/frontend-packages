@@ -17,8 +17,11 @@
     padding: 0 $spacing;
   }
   &.inverted {
-    color: #fff;
+    color: $brand-grey--light;
     background: $film-color;
+    button {
+      color: #fff;
+    }
   }
 }
 .footer_editor {

@@ -12,7 +12,7 @@ import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
-
+import { injectT } from '@ndla/i18n';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
@@ -130,15 +130,21 @@ const StyledContainer = styled.div<StyledContainerProps>`
   flex-direction: column;
   align-items: flex-end;
   margin: 0 auto;
-  width: 980px;
-  overflow-y: scroll;
-  height: 100vh;
-  max-width: calc(100vw - ${spacing.spacingUnit * 4}px);
-  padding: ${spacing.large} 0;
+  max-width: 980px;
+  max-width: 100%;
+  }
+`;
+
+const ScrollableContent = styled.div`
+  padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
   ${mq.range({ until: breakpoints.tablet })} {
     padding-top: ${spacing.normal};
-    max-width: calc(100vw - ${spacing.spacingUnit * 2}px);
   }
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   > div {
     width: 100%;
     animation-delay: ${animations.durations.fast};
@@ -152,8 +158,6 @@ const StyledContainer = styled.div<StyledContainerProps>`
 const StyledButton = styled.button<StyledContainerProps>`
   border: 0;
   background: none;
-  position: absolute;
-  z-index: 1;
   > svg {
     color: ${colors.brand.primary};
     width: ${spacing.medium};
@@ -172,6 +176,7 @@ interface Props {
   animationDirection: 'in' | 'out';
   elementRect: any;
   menuOpenedCounter: number;
+  t: any;
 }
 
 const MenuPortal: React.FunctionComponent<Props> = ({
@@ -181,6 +186,7 @@ const MenuPortal: React.FunctionComponent<Props> = ({
   animationDirection,
   elementRect,
   menuOpenedCounter,
+  t,
 }) => {
   const animationNameIn = `menuPortalCircleAnimation_${menuOpenedCounter}`;
   const animationNameOut = `menuPortalCircleAnimationOut_${menuOpenedCounter}`;
@@ -198,13 +204,16 @@ const MenuPortal: React.FunctionComponent<Props> = ({
           }}>
           <FocusTrapReact>
               <StyledContainer animationDirection={animationDirection}>
-                <StyledButton
-                  animationDirection={animationDirection}
-                  type="button"
-                  onClick={() => onClose('out')}>
-                  <Cross />
-                </StyledButton>
-                <div>{children}</div>
+                <ScrollableContent>
+                  <StyledButton
+                    animationDirection={animationDirection}
+                    type="button"
+                    aria-label={t('masthead.menu.close')}
+                    onClick={() => onClose('out')}>
+                    <Cross />
+                  </StyledButton>
+                  <div>{children}</div>
+                </ScrollableContent>
               </StyledContainer>
           </FocusTrapReact>
         </StyledModalWrapper>
@@ -218,4 +227,4 @@ const MenuPortal: React.FunctionComponent<Props> = ({
   return createUniversalPortal(content, 'body');
 };
 
-export default MenuPortal;
+export default injectT(MenuPortal);

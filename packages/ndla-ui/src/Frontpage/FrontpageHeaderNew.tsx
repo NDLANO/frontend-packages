@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
-import FocusTrapReact from 'focus-trap-react';
 import {
   colors,
   spacing,
@@ -24,13 +23,14 @@ import { SearchField } from '../Search';
 import SvgLogo from '../Logo/SvgLogo';
 
 const StyledLinkWrapper = styled('nav')`
-  position: absolute;
   display: none;
-  right: ${spacing.normal};
-  top: ${spacing.normal};
-
+  justify-content: flex-end;
+  margin-bottom: ${spacing.large};
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-bottom: ${spacing.large};
   }
 `;
 
@@ -60,7 +60,6 @@ const StyledLanguageSelectorWrapper = styled('div')`
   ${mq.range({ from: breakpoints.desktop })} {
     margin-left: ${spacing.large};
   }
-
   .c-masthead__change-language-wrapper {
     padding-right: 0;
     ${fonts.sizes('14px', '18px')};
@@ -70,55 +69,56 @@ const StyledLanguageSelectorWrapper = styled('div')`
 
 const StyledHeader = styled('div')`
   margin: 0 auto;
-  position: relative;
-  min-height: 110px;
-  max-width: 1150px;
   display: flex;
-  align-content: center;
-  justify-content: flex-end;
-  padding: ${spacing.normal} 0;
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: ${spacing.spacingUnit * 3.5}px ${spacing.normal} 0
-      ${spacing.normal};
-    min-height: 319px;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  max-width: 1150px;
+  ${mq.range({ until: breakpoints.tablet })} {
+    align-items: flex-end;
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px;
   }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding-top: ${spacing.large};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.normal} ${spacing.large} ${spacing.spacingUnit * 4}px;
+  }
+  ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
+    padding: ${spacing.normal} ${spacing.spacingUnit * 3}px ${spacing.spacingUnit * 5}px;
+  }
+  ${mq.range({ from: breakpoints.wide })} {
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 5}px;
   }
 `;
 
 const StyledHeaderWrapper = styled('header')`
   background: ${colors.brand.lighter};
-  &::after {
-    content: '';
-    display: block;
-    background: ${colors.brand.greyLightest};
-    padding-bottom: 71px;
-
-    ${mq.range({ from: breakpoints.tablet })} {
-      padding-bottom: 84px;
-    }
+  margin-bottom: ${spacing.spacingUnit * 3}px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: ${spacing.spacingUnit * 4}px;
   }
 `;
 
 type StyledSearchFieldWrapperProps = {
-  inputHasFocus: Boolean;
-};
+  inputHasFocus: boolean;
+}
 
 const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
-  background: ${colors.brand.accent};
+  background: ${(props:StyledSearchFieldWrapperProps) => props.inputHasFocus ? 'transparent' : colors.brand.accent};
   border-radius: 2px;
   position: absolute;
-  right: ${spacing.normal};
-  left: ${spacing.normal};
-  bottom: -73px;
+  bottom: -${spacing.large};
   z-index: 9001;
-
+  padding: ${spacing.small};
+  right: ${spacing.small};
+  left: ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
+    background: ${colors.brand.accent};
+  }
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    padding: ${spacing.normal};
+    right: ${spacing.normal};
+    left: ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
     padding: ${spacing.large};
     bottom: -81px;
   }
@@ -128,6 +128,9 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
 
   .c-search-field__input {
     border-color: ${colors.brand.tertiary};
+    ${mq.range({ until: breakpoints.tablet })} {
+      padding-left: ${spacing.small};
+    }
   }
 
   .c-search-field {
@@ -142,7 +145,9 @@ const StyledSearchField = styled('div')`
 
   .c-search-field {
     z-index: 9001;
-    width: calc(100% - ${spacing.large});
+    ${mq.range({ from: breakpoints.tablet })} {
+      width: calc(100% - ${spacing.large});
+    }
   }
 
   > button {
@@ -160,6 +165,22 @@ const StyledSearchField = styled('div')`
       width: 24px;
     }
   }
+  ${mq.range({ until: breakpoints.tablet })} {
+    > button {
+      color: ${colors.brand.primary};
+    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: ${spacing.normal};
+    z-index: 9001;
+    background: ${colors.brand.accent};
+    .c-search-field__search-result {
+      margin-left: ${spacing.normal};
+      width: 100vw;
+    }
+  }
 `;
 
 const StyledSearchBackdrop = styled.div`
@@ -174,7 +195,7 @@ const StyledSearchBackdrop = styled.div`
 `;
 
 const StyledLogo = styled(SafeLink)`
-  width: 120px;
+  width: 140px;
   box-shadow: none;
 
   ${mq.range({ from: breakpoints.tablet })} {

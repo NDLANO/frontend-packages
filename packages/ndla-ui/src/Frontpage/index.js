@@ -1,4 +1,3 @@
-export { default as FrontpageHeader } from './FrontpageHeader';
 export { default as FrontpageHeaderNew } from './FrontpageHeaderNew';
 export { default as FrontpageInfo } from './FrontpageInfo';
 export { default as FrontpageSearchSection } from './FrontpageSearchSection';

@@ -129,11 +129,11 @@ const StyledContainer = styled.div<StyledContainerProps>`
   padding: ${spacing.large} 0;
   > div {
     width: 100%;
-    animation-delay: ${animations.durations.fast};
+    animation-delay: ${animations.durations.superfast};
     animation-fill-mode: forwards;
     opacity: 0;
-    ${animations.fadeInBottom(animations.durations.fast, spacing.normal)}
-    animation-timing-function: ${misc.transition.cubicBezier};
+    ${animations.fadeInBottom(animations.durations.normal, spacing.normal)}
+    animation-timing-function: ease;
   }
 `;
 

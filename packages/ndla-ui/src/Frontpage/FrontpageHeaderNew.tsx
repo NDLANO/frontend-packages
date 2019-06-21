@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import FocusTrapReact from 'focus-trap-react';
@@ -37,7 +37,7 @@ const StyledLinkWrapper = styled('nav')`
 const StyledLinkElement = styled('span')`
   transition: box-shadow ${animations.durations.superFast} linear;
   box-shadow: 0px 1px 0px ${colors.brand.dark};
-  margin-right: 6px;
+  margin-right: ${spacing.xsmall};
 `;
 
 const StyledSafeLink = styled(SafeLink)`
@@ -72,11 +72,11 @@ const StyledHeader = styled('div')`
   margin: 0 auto;
   position: relative;
   min-height: 110px;
-  max-width: 940px;
+  max-width: 1150px;
   display: flex;
   align-content: center;
   justify-content: flex-end;
-  padding: 20px 0;
+  padding: ${spacing.normal} 0;
 
   ${mq.range({ from: breakpoints.tablet })} {
     justify-content: flex-start;
@@ -110,22 +110,16 @@ type StyledSearchFieldWrapperProps = {
 };
 
 const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
-  padding: 18px 15px;
   background: ${colors.brand.accent};
   border-radius: 2px;
-
   position: absolute;
-  right: ${(props: StyledSearchFieldWrapperProps) =>
-    props.inputHasFocus ? '0px' : '20px'};
-  left: ${(props: StyledSearchFieldWrapperProps) =>
-    props.inputHasFocus ? '0px' : '20px'};
+  right: ${spacing.normal};
+  left: ${spacing.normal};
   bottom: -73px;
   z-index: 9001;
 
   ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.large} ${spacing.normal};
-    left: ${spacing.normal};
-    right: ${spacing.normal};
+    padding: ${spacing.large};
     bottom: -81px;
   }
   .c-search-field__input-wrapper {
@@ -209,6 +203,13 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
   languageOptions,
   categories,
 }) => {
+  const SearchFieldRef = React.createRef();
+  useEffect(() => {
+    if (inputHasFocus) {
+      const inputField = SearchFieldRef.current.getElementsByTagName('input')[0];
+      inputField.focus();
+    }
+  }, [inputHasFocus]);
   return (
   <StyledHeaderWrapper>
     <StyledHeader>
@@ -223,9 +224,10 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
           <LanguageSelector currentLanguage="nb" options={languageOptions} />
         </StyledLanguageSelectorWrapper>
       </StyledLinkWrapper>
-      <StyledLogo to="/">
+      <StyledLogo to="/" onFocus={onSearchDeactiveFocusTrap}>
         <SvgLogo />
       </StyledLogo>
+      <div ref={SearchFieldRef}>
       <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
         {!hideSearch && !inputHasFocus && (
           <SearchField
@@ -242,14 +244,6 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
         {!hideSearch && inputHasFocus && (
           <>
             <StyledSearchBackdrop />
-            <FocusTrapReact
-              focusTrapOptions={{
-                onDeactivate: () => {
-                  onSearchDeactiveFocusTrap();
-                },
-                clickOutsideDeactivates: true,
-                escapeDeactivates: true,
-              }}>
               <StyledSearchField>
                 <SearchField
                   modifiers={
@@ -273,14 +267,15 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
                 <button
                   type="button"
                   onClick={onSearchDeactiveFocusTrap}
+                  onBlur={onSearchDeactiveFocusTrap}
                   aria-label={messages.closeSearchLabel}>
                   <Cross />
                 </button>
               </StyledSearchField>
-            </FocusTrapReact>
           </>
         )}
       </StyledSearchFieldWrapper>
+      </div>
     </StyledHeader>
   </StyledHeaderWrapper>
 )};

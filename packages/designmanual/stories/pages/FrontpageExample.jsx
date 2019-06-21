@@ -85,7 +85,6 @@ class FrontpageExample extends Component {
       inputHasFocus: false,
       searchFieldValue: '',
     });
-    console.log(this.circularSubjectsSectionRef);
   }
 
   searchFieldValue(searchFieldValue) {

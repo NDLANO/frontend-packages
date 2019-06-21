@@ -42,10 +42,12 @@ export type FrontPageHeaderProps = {
   infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;
+  categories: Array<any>;
 };
 
 export type categorySubjects = {
   name: string;
+  url: string;
 }
 
 export type category = {

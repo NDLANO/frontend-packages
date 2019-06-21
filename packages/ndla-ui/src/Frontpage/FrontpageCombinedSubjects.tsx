@@ -1,10 +1,9 @@
 import React, { useEffect, useReducer } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import PropTypes from 'prop-types';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
-import { SafeLink } from '../index';
+import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import FrontpageSubjectIllustration from './FrontpageSubjectIllustration';
@@ -12,9 +11,9 @@ import FrontpageSubjectIllustration from './FrontpageSubjectIllustration';
 import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
-import { category } from './types';
+import { category as categoryProp } from './types';
 
-const StyledMobileSubjectLink = styled('div')`
+const StyledMobileSubjectLink = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
@@ -32,7 +31,7 @@ const StyledMobileSubjectLink = styled('div')`
   }
 `;
 
-const LinkContainer = styled('div')`
+const LinkContainer = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -49,7 +48,7 @@ const LinkContainer = styled('div')`
   }
 `;
 
-const StyledLinkedText = styled('span')`
+const StyledLinkedText = styled.span`
   ${fonts.sizes('20px', '32px')};
   font-weight: ${fonts.weight.bold};
   position: absolute;
@@ -61,11 +60,7 @@ const StyledLinkedText = styled('span')`
   }
 `;
 
-interface StyledButtonProps {
-  isActive: boolean;
-}
-
-const StyledButton = styled.button<StyledButtonProps>`
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,11 +132,31 @@ const CLOSE_MENU = 'CLOSE_MENU';
 const UPDATE_MENU = 'UPDATE_MENU';
 const CLOSED_MENU = 'CLOSED_MENU';
 
-interface State {
-  category: category;
+type elementRectType = {
+  fromX: number;
+  fromY: number;
+  fromScale: number;
 };
 
-const menuReducer = (state: State, action) => {
+type State = {
+  animationDirection?: 'in' | 'out';
+  menuIsOpen?: boolean;
+  categoryIndex?: number;
+  menuOpenedCounter?: number;
+  elementRect: elementRectType;
+  fromInitalElement?: HTMLElement;
+};
+
+type MenuReducerActionType = {
+  data: State;
+};
+
+type openMenuParameterTypes = {
+  event: MouseEvent;
+  index: number;
+};
+
+const menuReducer = (state: State, action: MenuReducerActionType) => {
   switch (action.type) {
     case UPDATE_MENU:
       return {
@@ -166,10 +181,14 @@ const menuReducer = (state: State, action) => {
 };
 
 interface Props {
-  categories: category[];
-  illustrationUrl: any;
-  categoryIllustrations: any;
-  categoryIllustrationsInModal: any;
+  categories: categoryProp[];
+  illustrationUrl: string;
+  categoryIllustrations: {
+    [key: string]: string;
+  };
+  categoryIllustrationsInModal: {
+    [key: string]: string;
+  };
   t: any;
 };
 
@@ -202,7 +221,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     };
   }, []);
 
-  const calculateScaling = (element) => {
+  const calculateScaling = (element: HTMLElement): elementRectType => {
     const { innerWidth } = window;
     const elementClientRect:DOMRect = element.getBoundingClientRect();
     return {
@@ -226,15 +245,15 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     noScroll(false, 'frontpagePortal');
   };
 
-  const openMenu = ({ event, index }) => {
+  const openMenu = (params: openMenuParameterTypes) => {
     dispatch({
       type: UPDATE_MENU,
       data: {
-        categoryIndex: index,
+        categoryIndex: params.index,
         menuIsOpen: true,
         animationDirection: 'in',
-        elementRect: calculateScaling(event.target),
-        fromInitalElement: event.target,
+        elementRect: calculateScaling(params.event.target),
+        fromInitalElement: params.event.target,
         menuOpenedCounter: menuOpenedCounter + 1,
       },
     });
@@ -260,7 +279,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject
-            onClick={event => openMenu({ event, index })}
+            onClick={(event: MouseEvent) => openMenu({ event, index })}
             textValue={t(`welcomePage.category.${category.name}`)}
             illustrationUrl={categoryIllustrations[category.name]}
           />
@@ -282,12 +301,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
       </StyledNavContainer>
     </>
   );
-};
-
-FrontpageCombinedSubjects.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  categoryIllustrationsInModal: PropTypes.arrayOf(PropTypes.string).isRequired,
-  illustrationUrl: PropTypes.string.isRequired,
 };
 
 export default injectT(FrontpageCombinedSubjects);

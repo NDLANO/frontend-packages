@@ -12,6 +12,7 @@ import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';

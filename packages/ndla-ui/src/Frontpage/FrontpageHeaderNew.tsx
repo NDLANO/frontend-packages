@@ -98,7 +98,7 @@ const StyledHeaderWrapper = styled.header`
 `;
 
 type StyledSearchFieldWrapperProps = {
-  inputHasFocus: boolean;
+  inputHasFocus?: boolean;
 }
 
 const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
@@ -221,9 +221,9 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
   languageOptions,
   categories,
 }) => {
-  const SearchFieldRef = React.createRef();
+  const SearchFieldRef = React.createRef<HTMLDivElement>();
   useEffect(() => {
-    if (inputHasFocus) {
+    if (inputHasFocus && SearchFieldRef.current) {
       const inputField = SearchFieldRef.current.getElementsByTagName('input')[0];
       inputField.focus();
       SearchFieldRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });

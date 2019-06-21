@@ -1,12 +1,13 @@
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
-// ts-ignore
-import { Forward } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
-import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// ts-ignore
+import BEMHelper from 'react-bem-helper';
+// @ts-ignore
+import { Forward } from '@ndla/icons/common';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
+import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
+// @ts-ignore
 import SectionHeading from '../SectionHeading';
 import SafeLink from '../common/SafeLink';
 
@@ -33,7 +34,7 @@ const StyledImage = styled.div<StyledImageProps>`
   padding: ${spacing.spacingUnit}px ${spacing.medium} ${spacing.spacingUnit}px
     ${spacing.spacingUnit}px;
 
-  ${props =>
+  ${(props: StyledImageProps) =>
     props.imageUrl &&
     css`
       background-image: url(${props.imageUrl});

@@ -42,18 +42,18 @@ const StyledSafeLink = styled(SafeLink)`
 `;
 
 type StyledImageProps = {
-  mobile: boolean;
+  mobile?: boolean;
 };
 
 const StyledImage = styled.img<StyledImageProps>`
   pointer-events: none;
-  display: ${props => !props.mobile ? 'none' : 'block'};
+  display: ${(props: StyledImageProps) => !props.mobile ? 'none' : 'block'};
   margin-top: -136px;
   ${mq.range({ from: breakpoints.tablet })} {
-    display: ${props => props.mobile ? 'none' : 'block'};
+    display: ${(props: StyledImageProps) => props.mobile ? 'none' : 'block'};
     margin-top: 0;
   }
-  width: ${props => props.mobile ? '100px' : '100%'};
+  width: ${(props: StyledImageProps) => props.mobile ? '100px' : '100%'};
 `;
 
 const StyledNav = styled.nav`

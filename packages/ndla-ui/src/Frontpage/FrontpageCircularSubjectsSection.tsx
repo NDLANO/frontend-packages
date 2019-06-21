@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
 

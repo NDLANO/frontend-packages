@@ -46,6 +46,7 @@ type StyledImageProps = {
 };
 
 const StyledImage = styled.img<StyledImageProps>`
+  pointer-events: none;
   display: ${props => !props.mobile ? 'none' : 'block'};
   margin-top: -136px;
   ${mq.range({ from: breakpoints.tablet })} {

@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
 
-const StyledSection = styled('section')`
+const StyledSection = styled.section`
   margin: 0 auto;
   max-width: 940px;
   padding: 0;
 `;
 
-const StyledSubjects = styled('div')`
+const StyledSubjects = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -26,7 +25,13 @@ const StyledSubjects = styled('div')`
   }
 `;
 
-const FrontpageCircularSubjectsSection = injectT(
+type Props = {
+  categories: any;
+  categoryIllustrations: any;
+  categoryIllustrationsInModal: any;
+}
+
+const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = injectT(
   ({ categories, categoryIllustrations, categoryIllustrationsInModal, t }) => (
     <StyledSection>
       <StyledSubjects>
@@ -40,10 +45,5 @@ const FrontpageCircularSubjectsSection = injectT(
     </StyledSection>
   )
 );
-
-FrontpageCircularSubjectsSection.propTypes = {
-  categoryIllustrations: PropTypes.shape({}).isRequired,
-  categoryIllustrationsInModal: PropTypes.shape({}).isRequired,
-};
 
 export default injectT(FrontpageCircularSubjectsSection);

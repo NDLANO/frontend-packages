@@ -1,10 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 
-const StyledFigure = styled('figure')`
+type StyledFigureProp = {
+  illustrationUrl: string;
+};
+
+const StyledFigure = styled.figure<StyledFigureProp>`
   ${({ illustrationUrl }) =>
     illustrationUrl &&
     css`
@@ -17,7 +20,7 @@ const StyledFigure = styled('figure')`
     `}
 `;
 
-const StyledFigCaption = styled('figcaption')`
+const StyledFigCaption = styled.figcaption`
   position: absolute;
   bottom: ${spacing.normal};
   left: 50%;
@@ -33,7 +36,7 @@ const StyledFigCaption = styled('figcaption')`
   color: ${colors.subject.dark};
 `;
 
-const StyledButton = styled('button')`
+const StyledButton = styled.button`
   box-shadow: none;
   border: 0;
   cursor: pointer;
@@ -66,16 +69,18 @@ const StyledButton = styled('button')`
   }
 `;
 
-const FrontpageCircularSubject = ({ textValue, illustrationUrl, ...rest }) => (
+type Props = {
+  textValue: string;
+  illustrationUrl: string;
+};
+
+const FrontpageCircularSubject: React.FunctionComponent<Props> = ({
+  textValue, illustrationUrl, ...rest
+}) => (
   <StyledButton type="button" {...rest}>
     <StyledFigure illustrationUrl={illustrationUrl} />
     <StyledFigCaption>{textValue}</StyledFigCaption>
   </StyledButton>
 );
-
-FrontpageCircularSubject.propTypes = {
-  textValue: PropTypes.string.isRequired,
-  illustrationUrl: PropTypes.string.isRequired,
-};
 
 export default FrontpageCircularSubject;

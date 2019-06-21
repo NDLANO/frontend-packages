@@ -22,10 +22,8 @@ export {
 export { default as AuthorInfo } from './AuthorInfo';
 
 export {
-  FrontpageHeaderNew,
   FrontpageSubjects,
   FrontpageSubjectsSection,
-  FrontpageCircularSubjectsSection,
   FrontpageInfo,
   FrontpageSearchSection,
   FrontpageFilm,

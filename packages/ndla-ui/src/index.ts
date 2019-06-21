@@ -18,3 +18,12 @@ export {
   BlogPost,
   BlogPostWrapper,
 } from './BlogPosts';
+
+export {
+  FrontpageCircularSubject,
+  FrontpageCombinedSubjects,
+  FrontpageHeaderNew,
+  FrontpageSubjectsInPortal,
+  FrontpageSubjectIllustration,
+  FrontpageCircularSubjectsSection,
+} from './Frontpage';

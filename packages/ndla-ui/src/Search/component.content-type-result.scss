@@ -62,7 +62,10 @@
       span {
         box-shadow: none;
       }
-    } 
+    }
+    li {
+      padding-bottom: $spacing--small / 2;
+    }
   }
 
   ul {

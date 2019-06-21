@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
+import { css } from '@emotion/core';
 import FilmContentCard from './FilmContentCard';
 
 const movieListClasses = new BEMHelper({
@@ -16,41 +17,47 @@ const MovieGrid = ({
   resourceTypes,
   loadingPlaceholderHeight,
   autoSizedProps,
+  resizeThumbnailImages,
   t,
-}) => {
-  return (
-    <section>
-      <h1
-        {...movieListClasses('heading')}
-        style={{ marginLeft: `${autoSizedProps.margin}px` }}>
-        {resourceTypeName && resourceTypeName.name}
-        <small>
-          {fetchingMoviesByType
-            ? t('ndlaFilm.loadingMovies')
-            : `${moviesByType.length} ${t('ndlaFilm.movieMatchInCategory')}`}
-        </small>
-      </h1>
-      <div
-        {...movieListClasses('movie-listing')}
-        style={{
-          marginLeft: `${autoSizedProps.margin}px`,
-        }}>
-        {fetchingMoviesByType && (
-          <div style={{ height: loadingPlaceholderHeight }} />
-        )}
-        {!fetchingMoviesByType &&
-          moviesByType.map(movie => (
-            <FilmContentCard
-              movie={movie}
-              columnWidth={autoSizedProps.columnWidth}
-              distanceBetweenItems={autoSizedProps.distanceBetweenItems}
-              resourceTypes={resourceTypes}
-            />
-          ))}
-      </div>
-    </section>
-  );
-};
+}) => (
+  <section>
+    <h1
+      {...movieListClasses('heading')}
+      css={css`
+        margin-left: ${autoSizedProps.margin}px;
+      `}>
+      {resourceTypeName && resourceTypeName.name}
+      <small>
+        {fetchingMoviesByType
+          ? t('ndlaFilm.loadingMovies')
+          : `${moviesByType.length} ${t('ndlaFilm.movieMatchInCategory')}`}
+      </small>
+    </h1>
+    <div
+      {...movieListClasses('movie-listing')}
+      css={css`
+        margin-left: ${autoSizedProps.margin}px;
+      `}>
+      {fetchingMoviesByType && (
+        <div
+          css={css`
+            height: ${loadingPlaceholderHeight};
+          `}
+        />
+      )}
+      {!fetchingMoviesByType &&
+        moviesByType.map(movie => (
+          <FilmContentCard
+            movie={movie}
+            columnWidth={autoSizedProps.columnWidth}
+            distanceBetweenItems={autoSizedProps.distanceBetweenItems}
+            resourceTypes={resourceTypes}
+            resizeThumbnailImages={resizeThumbnailImages}
+          />
+        ))}
+    </div>
+  </section>
+);
 
 MovieGrid.propTypes = {
   autoSizedProps: PropTypes.shape({}),

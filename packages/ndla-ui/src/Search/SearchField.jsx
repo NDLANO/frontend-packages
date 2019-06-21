@@ -156,6 +156,7 @@ class SearchField extends Component {
       singleColumn,
       infoText,
       ignoreContentTypeBadge,
+      onClick,
       t,
     } = this.props;
 
@@ -210,6 +211,7 @@ class SearchField extends Component {
             onChange={e => onChange(e.target.value)}
             onBlur={this.onInputBlur}
             onFocus={this.onInputFocus}
+            onClick={onClick}
           />
           {filters && filters.length > 0 && (
             <div {...classes('filters')}>
@@ -271,6 +273,7 @@ SearchField.propTypes = {
   singleColumn: PropTypes.bool,
   infoText: PropTypes.node,
   ignoreContentTypeBadge: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 SearchField.defaultProps = {

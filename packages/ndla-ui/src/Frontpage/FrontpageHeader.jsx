@@ -160,7 +160,7 @@ const FrontpageHeader = ({
               <SearchField
                 value={searchFieldValue}
                 onChange={onSearchFieldChange}
-                onFocus={onSearchInputFocus}
+                onClick={onSearchInputFocus}
                 placeholder={searchFieldPlaceholder}
                 messages={messages}
                 onSearch={onSearch}

@@ -8,6 +8,34 @@
   flex-flow: column;
   justify-content: flex-end;
 
+  &__skip-to-main-content {
+    left: -999px;
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+    &:focus, &:active {
+      color: #fff;
+      background: $brand-color;
+      left: auto;
+      top: auto;
+      width: 30%;
+      height: auto;
+      overflow: auto;
+      margin: 10px 35%;
+      padding: 5px;
+      border-radius: 15px;
+      border: 4px solid $brand-color--tertiary;
+      text-align: center;
+      font-size: 1.2em;
+      z-index: 9999;
+      animation-name: fadeIn;
+      animation-duration: 0.3s;
+    }
+  }
+
   &--fixed {
     top: 0;
     left: 0;
@@ -66,8 +94,10 @@
   }
 
   &--ndlaFilm {
-    background: $film-color;
+    background: $film-color-light;
+    background-image: linear-gradient(0deg, $film-color-light, $film-color);
     border: 0;
+    border-bottom: 1px solid $film-color-lighter;
     .c-breadcrumb-block,
     .c-breadcrumb-block__item,
     .c-breadcrumb-block__item a,

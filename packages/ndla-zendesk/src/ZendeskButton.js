@@ -16,6 +16,7 @@ const styling = css`
   border-radius: 2px;
   background-color: white;
   float: right;
+  z-index: 1;
   ${mq.range({ from: breakpoints.desktop })} {
     position: fixed;
     right: 2rem;

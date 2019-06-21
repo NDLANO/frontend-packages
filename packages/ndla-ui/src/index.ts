@@ -20,8 +20,8 @@ export {
 } from './BlogPosts';
 
 export {
-  FrontpageCircularSubject,
-  FrontpageCombinedSubjects,
+  FrontpageInfo,
+  FrontpageFilm,
   FrontpageHeaderNew,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,

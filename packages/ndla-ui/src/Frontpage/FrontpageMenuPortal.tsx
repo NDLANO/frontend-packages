@@ -136,10 +136,12 @@ const StyledContainer = styled.div<StyledContainerProps>`
 `;
 
 const ScrollableContent = styled.div`
-  padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
+  padding: ${spacing.normal} ${spacing.large} ${spacing.large};
   ${mq.range({ until: breakpoints.tablet })} {
-    padding-top: ${spacing.normal};
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
   }
+  width: 100%;
+  max-width: 980px;
   height: 100vh;
   overflow-y: scroll;
   display: flex;
@@ -179,7 +181,7 @@ interface Props {
   t: any;
 }
 
-const MenuPortal: React.FunctionComponent<Props> = ({
+const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
   children,
   onClose,
   onClosed,
@@ -227,4 +229,4 @@ const MenuPortal: React.FunctionComponent<Props> = ({
   return createUniversalPortal(content, 'body');
 };
 
-export default injectT(MenuPortal);
+export default injectT(FrontpageMenuPortal);

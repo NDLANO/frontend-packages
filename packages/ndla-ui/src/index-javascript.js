@@ -24,9 +24,6 @@ export { default as AuthorInfo } from './AuthorInfo';
 export {
   FrontpageSubjects,
   FrontpageSubjectsSection,
-  FrontpageInfo,
-  FrontpageSearchSection,
-  FrontpageFilm,
 } from './Frontpage';
 
 export { default as ContentCard } from './ContentCard';

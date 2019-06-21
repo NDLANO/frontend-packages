@@ -22,7 +22,7 @@ import { SearchField } from '../Search';
 // @ts-ignore
 import SvgLogo from '../Logo/SvgLogo';
 
-const StyledLinkWrapper = styled('nav')`
+const StyledLinkWrapper = styled.nav`
   display: none;
   justify-content: flex-end;
   margin-bottom: ${spacing.large};
@@ -34,7 +34,7 @@ const StyledLinkWrapper = styled('nav')`
   }
 `;
 
-const StyledLinkElement = styled('span')`
+const StyledLinkElement = styled.span`
   transition: box-shadow ${animations.durations.superFast} linear;
   box-shadow: 0px 1px 0px ${colors.brand.dark};
   margin-right: ${spacing.xsmall};
@@ -56,7 +56,7 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const StyledLanguageSelectorWrapper = styled('div')`
+const StyledLanguageSelectorWrapper = styled.div`
   ${mq.range({ from: breakpoints.desktop })} {
     margin-left: ${spacing.large};
   }
@@ -67,7 +67,7 @@ const StyledLanguageSelectorWrapper = styled('div')`
   }
 `;
 
-const StyledHeader = styled('div')`
+const StyledHeader = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ const StyledHeader = styled('div')`
   }
 `;
 
-const StyledHeaderWrapper = styled('header')`
+const StyledHeaderWrapper = styled.header`
   background: ${colors.brand.lighter};
   margin-bottom: ${spacing.spacingUnit * 3}px;
   ${mq.range({ from: breakpoints.tablet })} {
@@ -139,7 +139,7 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
   }
 `;
 
-const StyledSearchField = styled('div')`
+const StyledSearchField = styled.div`
   display: flex;
   align-self: flex-start;
 

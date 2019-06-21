@@ -8,7 +8,6 @@ import {
   ContentCard,
   OneColumn,
   FrontpageInfo,
-  FrontpageSearchSection,
   FrontpageFilm,
   FrontpageCircularSubjectsSection,
   InfoWidget,
@@ -41,17 +40,17 @@ const categoryIllustrationsInModal = {
   yrkesfag: NdlaYrkesfagModalIllustration,
   studiespesialiserende: NdlaStudieSpesialiserendeModalIllustration,
   fellesfag: NdlaFellesfagModalIllustration,
-}
+};
 
 const dummyBlogImages = [
   {
-    url:  BlogExampleImage1,
+    url: BlogExampleImage1,
     alt: 'Alt-tekst eksempel til Blogg-bilde..',
   },
   {
-    url:  BlogExampleImage2,
+    url: BlogExampleImage2,
     alt: 'Alt-tekst eksempel til Blogg-bilde..',
-  }
+  },
 ];
 
 const classes = BEMHelper('c-frontpage-section');
@@ -125,7 +124,7 @@ class FrontpageExample extends Component {
 
     return (
       <>
-      <FrontpageHeaderNew
+        <FrontpageHeaderNew
           locale="nb"
           searchFieldValue={searchFieldValue}
           logoTo="home"
@@ -314,16 +313,8 @@ class FrontpageExample extends Component {
             ref={this.circularSubjectsSectionRef}
           />
           <OneColumn wide extraPadding>
-            <FrontpageSearchSection
-              heading={t('welcomePage.heading.messages.searchFieldTitle')}
-              searchFieldValue=""
-              onSearch={() => {}}
-              onSearchFieldChange={() => {}}
-            />
             <section {...classes()}>
-              <SubjectSectionTitle>
-                {t('welcomePage.blog')}
-              </SubjectSectionTitle>
+              <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
                 <BlogPost
                   text="Hjelp til deg som skal opp i norsk"

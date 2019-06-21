@@ -1,23 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+// ts-ignore
 import { Forward } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-
+// ts-ignore
 import SectionHeading from '../SectionHeading';
 import SafeLink from '../common/SafeLink';
 
 const classes = BEMHelper('c-frontpage-film');
 
-const StyledSection = styled('section')`
+const StyledSection = styled.section`
   margin-top: ${spacing.large};
   margin-bottom: ${spacing.large};
 `;
 
-const StyledImage = styled('div')`
+type StyledImageProps = {
+  imageUrl: string;
+};
+
+const StyledImage = styled.div<StyledImageProps>`
   background: ${colors.ndlaFilm.filmColorDark};
   background-size: contain;
   background-repeat: no-repeat;
@@ -59,7 +63,13 @@ const textCss = css`
   }
 `;
 
-const FrontpageFilm = ({ url, imageUrl, t }) => (
+type Props = {
+  t: any;
+  url: string;
+  imageUrl: string;
+};
+
+const FrontpageFilm: React.FunctionComponent<Props> = ({ url, imageUrl, t }) => (
   <StyledSection>
     <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
     <StyledImage imageUrl={imageUrl}>
@@ -78,13 +88,5 @@ const FrontpageFilm = ({ url, imageUrl, t }) => (
     </div>
   </StyledSection>
 );
-
-FrontpageFilm.propTypes = {
-  t: PropTypes.func.isRequired,
-  url: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-};
-
-FrontpageFilm.defaultProps = {};
 
 export default injectT(FrontpageFilm);

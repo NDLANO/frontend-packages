@@ -10,7 +10,7 @@ import { injectT } from '@ndla/i18n';
 import FrontpageSubjectIllustration from './FrontpageSubjectIllustration';
 // @ts-ignore
 import FrontpageCircularSubject from './FrontpageCircularSubject';
-import MenuPortal from './MenuPortal';
+import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
 import { category } from './types';
 
@@ -242,7 +242,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   };
   return (
     <>
-      {menuIsOpen && <MenuPortal
+      {menuIsOpen && <FrontpageMenuPortal
         menuOpenedCounter={menuOpenedCounter}
         onClosed={closedMenu}
         onClose={closeMenu}
@@ -256,7 +256,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
             subjects={categories[categoryIndex].subjects}
           />
         )}
-      </MenuPortal>}
+      </FrontpageMenuPortal>}
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject

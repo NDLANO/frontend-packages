@@ -499,12 +499,14 @@ class FrontpageExample extends Component {
                   image={dummyBlogImages[0]}
                   externalLink="#"
                   linkText="Besøk vår elevblogg"
+                  linkTextShort="Elevblogg"
                 />
                 <BlogPost
                   text="Hjelp til deg som skal opp i norsk"
                   image={dummyBlogImages[1]}
                   externalLink="#"
-                  linkText="Besøk vår elevblogg"
+                  linkText="Besøk vår fagblogg"
+                  linkTextShort="Fagblogg"
                 />
               </BlogPostWrapper>
             </section>

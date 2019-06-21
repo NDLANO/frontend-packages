@@ -8,13 +8,24 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { spacing, mq, breakpoints } from '@ndla/core';
 
 const StyledGrid = styled.section`
   display: flex;
   justify-content: space-between;
   > * {
-    width: calc(50% - ${spacing.small});
+    width: calc(50% - ${spacing.xsmall});
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    > * {
+      width: calc(50% - ${spacing.small});
+    }
+  }
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
   }
 `;
 

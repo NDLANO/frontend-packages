@@ -151,7 +151,7 @@ const StyledSearchField = styled.div`
   }
 
   > button {
-    color: #fff;
+    color: ${colors.brand.primary};
     display: flex;
     padding: 13px;
     border: 0;
@@ -166,9 +166,6 @@ const StyledSearchField = styled.div`
     }
   }
   ${mq.range({ until: breakpoints.tablet })} {
-    > button {
-      color: ${colors.brand.primary};
-    }
     position: fixed;
     top: 0;
     left: 0;
@@ -229,6 +226,7 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
     if (inputHasFocus) {
       const inputField = SearchFieldRef.current.getElementsByTagName('input')[0];
       inputField.focus();
+      SearchFieldRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [inputHasFocus]);
   return (

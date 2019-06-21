@@ -4,7 +4,6 @@ import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
   FrontpageHeaderNew,
-  FrontpageSubjects,
   ContentCard,
   OneColumn,
   FrontpageInfo,
@@ -262,12 +261,6 @@ class FrontpageExample extends Component {
                   },
                 ]
               : []
-          }
-          menuSubject={
-            <FrontpageSubjects
-              categories={categories}
-              linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
-            />
           }
           messages={{
             searchFieldTitle: t(

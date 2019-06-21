@@ -20,14 +20,7 @@ export {
 } from './Article';
 
 export { default as AuthorInfo } from './AuthorInfo';
-
-export {
-  FrontpageSubjects,
-  FrontpageSubjectsSection,
-} from './Frontpage';
-
 export { default as ContentCard } from './ContentCard';
-
 export { InfoBox } from './InfoBox';
 
 export {

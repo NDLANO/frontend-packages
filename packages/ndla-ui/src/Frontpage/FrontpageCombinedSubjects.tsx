@@ -128,58 +128,25 @@ const StyledNavContainer = styled.nav`
   }
 `;
 
-const CLOSE_MENU = 'CLOSE_MENU';
-const UPDATE_MENU = 'UPDATE_MENU';
-const CLOSED_MENU = 'CLOSED_MENU';
-
 type elementRectType = {
   fromX: number;
   fromY: number;
   fromScale: number;
 };
 
-type State = {
+interface StateObject {
   animationDirection?: 'in' | 'out';
   menuIsOpen?: boolean;
   categoryIndex?: number;
   menuOpenedCounter?: number;
   elementRect?: elementRectType;
   fromInitalElement?: HTMLElement;
-};
+}
 
-type MenuReducerActionType = {
-  data: State;
-  type: string;
-};
-
-type openMenuParameterTypes = {
-  event: MouseEvent;
-  index: number;
-};
-
-const menuReducer = (state: State, action: MenuReducerActionType) => {
-  switch (action.type) {
-    case UPDATE_MENU:
-      return {
-        ...state,
-        ...action.data,
-      };
-    case CLOSE_MENU:
-      return {
-        ...state,
-        animationDirection: action.data,
-      };
-    case CLOSED_MENU:
-      return {
-        ...state,
-        ...action.data,
-        menuIsOpen: false,
-        categoryIndex: undefined,
-      }
-    default:
-      throw new Error();
-  }
-};
+const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
+  ...state,
+  ...data,
+});
 
 type Props = {
   categories: categoryProp[];
@@ -193,7 +160,7 @@ type Props = {
   t: any;
 };
 
-const initialState: State = {
+const initialState: StateObject = {
   menuOpenedCounter: 1,
 };
 
@@ -204,7 +171,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categoryIllustrationsInModal,
   t,
 }) => {
-  const [currentState, dispatch] = useReducer(menuReducer, initialState);
+  const [currentState, dispatch] = useReducer<React.Reducer<StateObject, StateObject>>(menuReducer, initialState);
   const {
     elementRect,
     fromInitalElement,
@@ -213,18 +180,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     categoryIndex,
     menuOpenedCounter,
   } = currentState;
-
-  useEffect(() => {
-    const onKeyUpEvent = (e: KeyboardEvent) => {
-      if (e.code === 'Escape') {
-        dispatch({ type: CLOSE_MENU, data: 'out' });
-      }
-    };
-    window.addEventListener('keyup', onKeyUpEvent);
-    return () => {
-      window.removeEventListener('keyup', onKeyUpEvent);
-    };
-  }, []);
 
   const calculateScaling = (element: HTMLElement): elementRectType => {
     const { innerWidth } = window;
@@ -237,30 +192,25 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   };
 
   const closeMenu = () => {
-    dispatch({ type: CLOSE_MENU, data: 'out' })
+    dispatch({ animationDirection: 'out' });
   }
 
   const closedMenu = () => {
     dispatch({
-      type: CLOSED_MENU,
-      data: {
-        elementRect: calculateScaling(fromInitalElement),
-      },
+      menuIsOpen: false,
+      categoryIndex: undefined,
     });
     noScroll(false, 'frontpagePortal');
   };
 
-  const openMenu = (params: openMenuParameterTypes) => {
+  const openMenu = (event: React.MouseEvent<HTMLButtonElement>, categoryIndex: number) => {
     dispatch({
-      type: UPDATE_MENU,
-      data: {
-        categoryIndex: params.index,
-        menuIsOpen: true,
-        animationDirection: 'in',
-        elementRect: calculateScaling(params.event.currentTarget),
-        fromInitalElement: params.event.currentTarget,
-        menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
-      },
+      categoryIndex,
+      menuIsOpen: true,
+      animationDirection: 'in',
+      elementRect: calculateScaling(event.currentTarget),
+      fromInitalElement: event.currentTarget,
+      menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
     });
     noScroll(true, 'frontpagePortal');
   };
@@ -284,7 +234,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject
-            onClick={(event: MouseEvent) => openMenu({ event, index })}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => openMenu(event, index)}
             textValue={t(`welcomePage.category.${category.name}`)}
             illustrationUrl={categoryIllustrations[category.name]}
           />
@@ -295,7 +245,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           {categories.map((category: categoryProp, index: number) => (
             <StyledButton
               key={category.name}
-              onClick={(event: MouseEvent) => openMenu({ event, index })}>
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => openMenu(event, index)}>
               <StyledLinkedText>{t(`welcomePage.category.${category.name}`)}</StyledLinkedText>
             </StyledButton>
           ))}

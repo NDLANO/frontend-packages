@@ -175,7 +175,7 @@ const StyledButton = styled.button<StyledContainerProps>`
 interface Props {
   children: React.ReactNode;
   onClosed: () => void;
-  onClose: (direction: string) => void;
+  onClose: () => void;
   animationDirection: 'in' | 'out';
   elementRect: any;
   menuOpenedCounter: number;
@@ -205,14 +205,19 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
               onClosed();
             }
           }}>
-          <FocusTrapReact>
+            <FocusTrapReact
+              focusTrapOptions={{
+                onDeactivate: onClose,
+                escapeDeactivates: true,
+              }}
+            >
               <StyledContainer animationDirection={animationDirection}>
                 <ScrollableContent>
                   <StyledButton
                     animationDirection={animationDirection}
                     type="button"
                     aria-label={t('masthead.menu.close')}
-                    onClick={() => onClose('out')}>
+                    onClick={onClose}>
                     <Cross />
                   </StyledButton>
                   <div>{children}</div>
@@ -221,7 +226,7 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
           </FocusTrapReact>
         </StyledModalWrapper>
       <Backdrop
-        onClick={() => onClose('out')}
+        onClick={onClose}
         animationDuration={animations.durations.fast}
         animateIn={animationDirection === 'in'}
       />

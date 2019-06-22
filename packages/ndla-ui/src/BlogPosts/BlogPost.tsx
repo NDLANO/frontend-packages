@@ -11,9 +11,9 @@ import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, colors, fonts, breakpoints, mq, misc } from '@ndla/core';
 // @ts-ignore
-import { SafeLink } from '@ndla/ui';
-// @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
+// @ts-ignore
+import SafeLink from '../common/SafeLink';
 
 interface StyledBlogProps {
   backgroundImage: string;

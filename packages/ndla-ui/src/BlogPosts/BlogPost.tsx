@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { LinkProps } from 'react-router-dom';
 import { spacing, colors, fonts, breakpoints, mq, misc } from '@ndla/core';
 // @ts-ignore
 import { SafeLink } from '@ndla/ui';
@@ -91,7 +90,7 @@ const StyledHeading = styled.h1`
   }
 `;
 
-const StyledSafeLink = styled(SafeLink)<LinkProps>`
+const StyledSafeLink = styled(SafeLink)`
   ${mq.range({ from: breakpoints.tablet })} {
     background: #fff;
     padding: ${spacing.xsmall} ${spacing.small};
@@ -143,8 +142,8 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   image,
 }) => (
   <>
-  <FromTabletSize>
-    <StyledBlog backgroundImage={image.url} aria-label={image.alt}>
+    <FromTabletSize>
+      <StyledBlog backgroundImage={image.url} aria-label={image.alt}>
         <StyledHeading>{text}</StyledHeading>
         <StyledSafeLink
           to={externalLink}
@@ -156,22 +155,22 @@ export const BlogPost: React.FunctionComponent<Props> = ({
             <LaunchIcon />
           </span>
         </StyledSafeLink>
-    </StyledBlog>
+      </StyledBlog>
     </FromTabletSize>
     <UntilTabletSize>
-        <StyledSafeLink
-          to={externalLink}
-          target="_blank"
-          aria-label={text}
-        >
-          <StyledBlog backgroundImage={image.url} aria-label={image.alt} />
-          <StyledHeading>{text}</StyledHeading>
-          <span>
-            {linkTextShort}
-            <LaunchIcon />
-          </span>
-        </StyledSafeLink>
-      </UntilTabletSize>
+      <StyledSafeLink
+        to={externalLink}
+        target="_blank"
+        aria-label={text}
+      >
+        <StyledBlog backgroundImage={image.url} aria-label={image.alt} />
+        <StyledHeading>{text}</StyledHeading>
+        <span>
+          {linkTextShort}
+          <LaunchIcon />
+        </span>
+      </StyledSafeLink>
+    </UntilTabletSize>
   </>
 );
 

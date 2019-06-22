@@ -151,7 +151,7 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
                   {t('subjectPage.subjectIsBeta.iconLabel')}
                 </Button>
               }>
-              {onClose => (
+              {(onClose: void) => (
                 <>
                   <ModalHeader>
                     <ModalCloseButton

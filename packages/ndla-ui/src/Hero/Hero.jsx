@@ -47,7 +47,7 @@ export const SourceMaterialHero = props => (
 );
 export const NdlaFilmHero = ({ hasImage, ...rest }) => (
   <Hero
-    contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'}
     {...rest}
+    contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'}
   />
 );

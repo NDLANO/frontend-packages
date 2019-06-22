@@ -122,6 +122,7 @@ class ArticleLoader extends Component {
       ndlaFilm,
       withBackgroundImage,
       hideForm,
+      id,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -173,6 +174,7 @@ class ArticleLoader extends Component {
           {article && (
             <OneColumn>
               <Article
+                id={id}
                 icon={icon}
                 article={article}
                 modifier={reset ? 'clean' : ''}

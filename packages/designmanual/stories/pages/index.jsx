@@ -111,7 +111,7 @@ storiesOf('Sidevisninger', module)
   .add('Hent artikkel med id', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -129,7 +129,7 @@ storiesOf('Sidevisninger', module)
   .add('Forenklet artikkelmal', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <Hero>
           <OneColumn>
             <div className="c-hero__content">
@@ -147,7 +147,7 @@ storiesOf('Sidevisninger', module)
   .add('Forfatter sidemal', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <Hero>
           <OneColumn>
             <div className="c-hero__content">
@@ -166,7 +166,7 @@ storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -184,7 +184,7 @@ storiesOf('Læringsressurser', module)
   .add('Oppgaver og aktiviteter', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <TasksAndActivitiesHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -202,7 +202,7 @@ storiesOf('Læringsressurser', module)
   .add('Vurderingsressurs', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <AssessmentResourcesHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -220,7 +220,7 @@ storiesOf('Læringsressurser', module)
   .add('Ekstern læringsressurs', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <ExternalLearningResourcesHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -238,7 +238,7 @@ storiesOf('Læringsressurser', module)
   .add('Kildemateriale', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SourceMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -256,7 +256,7 @@ storiesOf('Læringsressurser', module)
   .add('Tilleggsstoff', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -270,6 +270,7 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
+<<<<<<< HEAD
   ))
   .add('Læringssti', () => (
     <PageContainer backgroundWide>
@@ -279,6 +280,8 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
+=======
+>>>>>>> master
   ));
 
 storiesOf('Emnesider', module)
@@ -294,9 +297,10 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu
+          skipToMainContentId="mainContentId"
           topicMenuProps={{ isOnSubjectFrontPage: true }}
         />
-        <Subject />
+        <Subject id="mainContentId" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -305,9 +309,10 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu
+          skipToMainContentId="mainContentId"
           topicMenuProps={{ isOnSubjectFrontPage: true }}
         />
-        <SubjectWithTwoColumn />
+        <SubjectWithTwoColumn id="mainContentId" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -316,9 +321,10 @@ storiesOf('Emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu
+          skipToMainContentId="mainContentId"
           topicMenuProps={{ isOnSubjectFrontPage: true }}
         />
-        <SubjectLanguage />
+        <SubjectLanguage id="mainContentId" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -326,7 +332,7 @@ storiesOf('Emnesider', module)
   .add('5. Hovedemne', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -342,6 +348,7 @@ storiesOf('Emnesider', module)
           label="Emne"
           hideResources
           showSubTopics
+          id="mainContentId"
         />
       </Content>
       <FooterExample />
@@ -350,7 +357,7 @@ storiesOf('Emnesider', module)
   .add('6. Underemne', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -361,6 +368,7 @@ storiesOf('Emnesider', module)
           </OneColumn>
         </SubjectHero>
         <ArticleLoader
+          id="mainContentId"
           articleId="60"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
@@ -412,11 +420,11 @@ storiesOf('Emnesider', module)
     </PageContainer>
   ));
 storiesOf('Ndla film', module)
-  .add('Fag forside', () => (
+  .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>
       <Content>
-        <MastheadWithTopicMenu ndlaFilm />
-        <NdlaFilmFrontpage />
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <NdlaFilmFrontpage id="mainContentId" />
       </Content>
       <FooterExample inverted />
     </PageContainer>
@@ -424,8 +432,9 @@ storiesOf('Ndla film', module)
   .add('Film (emne side)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>
-        <MastheadWithTopicMenu ndlaFilm />
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <ArticleLoader
+          id="mainContentId"
           articleId="3683"
           icon={<SubjectBadge size="large" background />}
           label="Emne"
@@ -439,8 +448,9 @@ storiesOf('Ndla film', module)
   .add('Film emne (over film)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>
-        <MastheadWithTopicMenu ndlaFilm />
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <ArticleLoader
+          id="mainContentId"
           articleId="4824"
           icon={<SubjectBadge size="large" background />}
           label="Emne"

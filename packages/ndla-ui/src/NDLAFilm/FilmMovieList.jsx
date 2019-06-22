@@ -25,6 +25,7 @@ const FilmMovieList = ({
   slideForwardsLabel,
   resourceTypes,
   autoSizedProps,
+  resizeThumbnailImages,
 }) => (
   <section {...classes()}>
     <h1
@@ -43,6 +44,7 @@ const FilmMovieList = ({
           movie={movie}
           columnWidth={autoSizedProps.columnWidth}
           resourceTypes={resourceTypes}
+          resizeThumbnailImages={resizeThumbnailImages}
         />
       ))}
       {...autoSizedProps}

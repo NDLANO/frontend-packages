@@ -24,13 +24,16 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ArticleWrapper = ({ children, modifier }) => (
-  <article {...classes(undefined, modifier)}>{children}</article>
+export const ArticleWrapper = ({ children, modifier, id }) => (
+  <article id={id} {...classes(undefined, modifier)}>
+    {children}
+  </article>
 );
 
 ArticleWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   modifier: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export const ArticleTitle = ({ children, icon, label }) => {
@@ -98,6 +101,7 @@ export const Article = ({
   children,
   locale,
   competenceGoals,
+  id,
 }) => {
   const {
     title,
@@ -120,7 +124,7 @@ export const Article = ({
   }
 
   return (
-    <ArticleWrapper modifier={modifier}>
+    <ArticleWrapper modifier={modifier} id={id}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={competenceGoals}>
           <ArticleTitle icon={icon} label={messages.label}>
@@ -160,6 +164,7 @@ Article.propTypes = {
   additional: PropTypes.bool,
   competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node,
+  id: PropTypes.string,
   messages: PropTypes.shape({
     label: PropTypes.string,
   }).isRequired,

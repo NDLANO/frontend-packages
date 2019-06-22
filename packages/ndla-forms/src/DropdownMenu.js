@@ -64,6 +64,7 @@ const DropdownMenu = ({
   onCreate,
   positionAbsolute,
   menuHeight,
+  disableSelected,
 }) => {
   const checkIsSelected = item => {
     if (multiSelect) {
@@ -86,6 +87,7 @@ const DropdownMenu = ({
         {items.slice(0, maxRender).map((item, index) => (
           <DropdownMenuItem
             {...getItemProps({ item, isSelected: checkIsSelected(item) })}
+            disableSelected={disableSelected}
             item={item}
             key={`${item.title}${index}`}
           />
@@ -121,11 +123,13 @@ DropdownMenu.propTypes = {
   getItemProps: PropTypes.func.isRequired,
   getMenuProps: PropTypes.func.isRequired,
   maxRender: PropTypes.number,
+  disableSelected: PropTypes.bool,
 };
 
 DropdownMenu.defaultProps = {
   maxRender: 10,
   menuHeight: 500,
+  disableSelected: false,
 };
 
 export default injectT(DropdownMenu);

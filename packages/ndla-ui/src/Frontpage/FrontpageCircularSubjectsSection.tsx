@@ -22,10 +22,10 @@ const StyledSubjects = styled.div`
   max-width: 940px;
   margin: ${spacing.small} auto 0 auto;
   ${mq.range({ from: breakpoints.tablet })} {
-    margin: ${spacing.large} auto ${spacing.normal} auto;
+    margin: ${spacing.large} auto ${spacing.medium} auto;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: ${spacing.spacingUnit * 6}px auto ${spacing.large};
+    margin: ${spacing.spacingUnit * 6}px auto ${spacing.spacingUnit * 3}px;
   }
 `;
 

@@ -47,5 +47,4 @@ export type FrontPageHeaderProps = {
   infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;
-  categories: category[];
 };

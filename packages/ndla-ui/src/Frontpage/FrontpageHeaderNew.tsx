@@ -218,7 +218,6 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
   infoText,
   searchResult,
   languageOptions,
-  categories,
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
   useEffect(() => {

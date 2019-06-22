@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
   FrontpageHeaderNew,
@@ -50,8 +49,6 @@ const dummyBlogImages = [
     alt: 'Alt-tekst eksempel til Blogg-bilde..',
   },
 ];
-
-const classes = BEMHelper('c-frontpage-section');
 
 const exampleTopicsNotInNDLA = [
   'Kokk og servitørfag Vg2',
@@ -303,7 +300,7 @@ class FrontpageExample extends Component {
             linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
           />
           <OneColumn wide extraPadding>
-            <section {...classes()}>
+            <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
                 <BlogPost

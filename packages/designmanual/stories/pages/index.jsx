@@ -270,7 +270,6 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
-<<<<<<< HEAD
   ))
   .add('Læringssti', () => (
     <PageContainer backgroundWide>
@@ -280,8 +279,6 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
-=======
->>>>>>> master
   ));
 
 storiesOf('Emnesider', module)

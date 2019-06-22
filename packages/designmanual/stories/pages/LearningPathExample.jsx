@@ -174,6 +174,7 @@ const LearningPathExample = ({ t }) => {
       // Set cookies
       const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${learningPathId}`;
       const currentCookie = getCookie(cookieKey, document.cookie);
+      console.log('currentCookie', currentCookie);
       let updatedCookie = currentCookie ? JSON.parse(currentCookie) : {};
       updatedCookie[learningsteps[currentLearningStepNumber].id] = true;
       setCookie(cookieKey, JSON.stringify(updatedCookie));

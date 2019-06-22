@@ -37,8 +37,8 @@ export type FrontPageHeaderProps = {
   onSearch: (event: MouseEvent) => void;
   messages: Messages;
   allResultUrl: Array<any>;
-  hideSearch: Boolean;
-  inputHasFocus: Boolean;
+  hideSearch: boolean;
+  inputHasFocus: boolean;
   infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;

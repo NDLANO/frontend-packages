@@ -143,12 +143,13 @@ type State = {
   menuIsOpen?: boolean;
   categoryIndex?: number;
   menuOpenedCounter?: number;
-  elementRect: elementRectType;
+  elementRect?: elementRectType;
   fromInitalElement?: HTMLElement;
 };
 
 type MenuReducerActionType = {
   data: State;
+  type: string;
 };
 
 type openMenuParameterTypes = {
@@ -180,7 +181,7 @@ const menuReducer = (state: State, action: MenuReducerActionType) => {
   }
 };
 
-interface Props {
+type Props = {
   categories: categoryProp[];
   illustrationUrl: string;
   categoryIllustrations: {
@@ -192,6 +193,10 @@ interface Props {
   t: any;
 };
 
+const initialState: State = {
+  menuOpenedCounter: 1,
+};
+
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
   illustrationUrl,
@@ -199,7 +204,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categoryIllustrationsInModal,
   t,
 }) => {
-  const [currentState, dispatch] = useReducer(menuReducer, { menuOpenedCounter: 0 });
+  const [currentState, dispatch] = useReducer(menuReducer, initialState);
   const {
     elementRect,
     fromInitalElement,
@@ -223,10 +228,10 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
 
   const calculateScaling = (element: HTMLElement): elementRectType => {
     const { innerWidth } = window;
-    const elementClientRect:DOMRect = element.getBoundingClientRect();
+    const elementClientRect:ClientRect = element.getBoundingClientRect();
     return {
-      fromX: elementClientRect.x + elementClientRect.width / 2,
-      fromY: elementClientRect.y + elementClientRect.height / 2,
+      fromX: elementClientRect.left + elementClientRect.width / 2,
+      fromY: elementClientRect.top + elementClientRect.height / 2,
       fromScale: elementClientRect.width / innerWidth,
     }
   };
@@ -252,9 +257,9 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         categoryIndex: params.index,
         menuIsOpen: true,
         animationDirection: 'in',
-        elementRect: calculateScaling(params.event.target),
-        fromInitalElement: params.event.target,
-        menuOpenedCounter: menuOpenedCounter + 1,
+        elementRect: calculateScaling(params.event.currentTarget),
+        fromInitalElement: params.event.currentTarget,
+        menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
       },
     });
     noScroll(true, 'frontpagePortal');
@@ -285,12 +290,12 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           />
         </StyledMobileSubjectLink>
       ))}
-      <StyledNavContainer illustrationUrl={illustrationUrl}>
+      <StyledNavContainer>
         <LinkContainer>
           {categories.map((category: categoryProp, index: number) => (
             <StyledButton
               key={category.name}
-              onClick={event => openMenu({ event, index })}>
+              onClick={(event: MouseEvent) => openMenu({ event, index })}>
               <StyledLinkedText>{t(`welcomePage.category.${category.name}`)}</StyledLinkedText>
             </StyledButton>
           ))}

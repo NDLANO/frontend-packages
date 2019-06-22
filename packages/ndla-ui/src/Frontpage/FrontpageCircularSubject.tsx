@@ -74,7 +74,7 @@ type Props = {
   illustrationUrl: string;
 };
 
-const FrontpageCircularSubject: React.FunctionComponent<Props> = ({
+const FrontpageCircularSubject: React.FunctionComponent<Props & React.HTMLProps<HTMLButtonElement>> = ({
   textValue, illustrationUrl, ...rest
 }) => (
   <StyledButton type="button" {...rest}>

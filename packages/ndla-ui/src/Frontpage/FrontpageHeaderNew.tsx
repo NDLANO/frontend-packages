@@ -102,7 +102,7 @@ type StyledSearchFieldWrapperProps = {
 }
 
 const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
-  background: ${(props:StyledSearchFieldWrapperProps) => props.inputHasFocus ? 'transparent' : colors.brand.accent};
+  background: ${(props:StyledSearchFieldWrapperProps) => props.inputHasFocus === true ? 'transparent' : colors.brand.accent};
   border-radius: 2px;
   position: absolute;
   bottom: -${spacing.large};

@@ -4,6 +4,7 @@ import { mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
+import { category as categoryProp } from './types';
 
 const StyledSection = styled.section`
   margin: 0 auto;
@@ -29,24 +30,29 @@ const StyledSubjects = styled.div`
 `;
 
 type Props = {
-  categories: any;
-  categoryIllustrations: any;
-  categoryIllustrationsInModal: any;
+  categories: categoryProp[];
+  categoryIllustrations: {
+    [key: string]: string;
+  };
+  categoryIllustrationsInModal: {
+    [key: string]: string;
+  };
+  t: any;
 }
 
-const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = injectT(
-  ({ categories, categoryIllustrations, categoryIllustrationsInModal, t }) => (
-    <StyledSection>
-      <StyledSubjects>
-        <FrontpageCombinedSubjects
-          illustrationUrl={categoryIllustrations['kombinert']}
-          categoryIllustrations={categoryIllustrations}
-          categoryIllustrationsInModal={categoryIllustrationsInModal}
-          categories={categories}
-        />
-      </StyledSubjects>
-    </StyledSection>
-  )
+const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
+  categories, categoryIllustrations, categoryIllustrationsInModal, t,
+}) => (
+  <StyledSection>
+    <StyledSubjects>
+      <FrontpageCombinedSubjects
+        illustrationUrl={categoryIllustrations['kombinert']}
+        categoryIllustrations={categoryIllustrations}
+        categoryIllustrationsInModal={categoryIllustrationsInModal}
+        categories={categories}
+      />
+    </StyledSubjects>
+  </StyledSection>
 );
 
 export default injectT(FrontpageCircularSubjectsSection);

@@ -4,7 +4,6 @@ import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
   FrontpageHeaderNew,
-  ContentCard,
   OneColumn,
   FrontpageInfo,
   FrontpageFilm,
@@ -16,7 +15,7 @@ import {
   BlogPostWrapper,
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-import { contentCards, categories } from '../../dummydata/index';
+import { categories } from '../../dummydata/index';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import NdlaYrkesfagIllustration from '../../images/category_illustrations/illustrasjon_yrkesfag.svg';
 import NdlaStudieSpesialiserendeIllustration from '../../images/category_illustrations/illustrasjon_studiespesialiserende.svg';

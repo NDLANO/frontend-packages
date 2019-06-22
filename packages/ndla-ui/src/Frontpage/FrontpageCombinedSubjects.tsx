@@ -1,9 +1,7 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
-import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import FrontpageSubjectIllustration from './FrontpageSubjectIllustration';

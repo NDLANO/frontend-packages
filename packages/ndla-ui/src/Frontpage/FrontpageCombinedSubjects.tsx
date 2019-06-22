@@ -138,7 +138,6 @@ interface StateObject {
   categoryIndex?: number;
   menuOpenedCounter?: number;
   elementRect?: elementRectType;
-  fromInitalElement?: HTMLElement;
 }
 
 const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
@@ -174,7 +173,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   const [currentState, dispatch] = useReducer<React.Reducer<StateObject, StateObject>>(menuReducer, initialState);
   const {
     elementRect,
-    fromInitalElement,
     menuIsOpen,
     animationDirection,
     categoryIndex,
@@ -209,7 +207,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
       menuIsOpen: true,
       animationDirection: 'in',
       elementRect: calculateScaling(event.currentTarget),
-      fromInitalElement: event.currentTarget,
       menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
     });
     noScroll(true, 'frontpagePortal');

@@ -1,5 +1,3 @@
-import { string } from "prop-types";
-
 export type Link = {
   text: string;
   to: string;

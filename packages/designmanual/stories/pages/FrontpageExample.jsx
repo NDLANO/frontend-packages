@@ -15,29 +15,9 @@ import {
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { categories } from '../../dummydata/index';
-import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
-import NdlaYrkesfagIllustration from '../../images/category_illustrations/illustrasjon_yrkesfag.svg';
-import NdlaStudieSpesialiserendeIllustration from '../../images/category_illustrations/illustrasjon_studiespesialiserende.svg';
-import NdlaFellesfagIllustration from '../../images/category_illustrations/illustrasjon_fellesfag.svg';
-import NdlaKombinertIllustration from '../../images/category_illustrations/illustrasjon_kombinert.svg';
 import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
 import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
-import NdlaYrkesfagModalIllustration from '../../images/category_illustrations/menu_yrkesfag.svg';
-import NdlaStudieSpesialiserendeModalIllustration from '../../images/category_illustrations/menu_studiespesialiserende.svg';
-import NdlaFellesfagModalIllustration from '../../images/category_illustrations/menu_fellesfag.svg';
-
-const categoryIllustrations = {
-  yrkesfag: NdlaYrkesfagIllustration,
-  studiespesialiserende: NdlaStudieSpesialiserendeIllustration,
-  fellesfag: NdlaFellesfagIllustration,
-  kombinert: NdlaKombinertIllustration,
-};
-
-const categoryIllustrationsInModal = {
-  yrkesfag: NdlaYrkesfagModalIllustration,
-  studiespesialiserende: NdlaStudieSpesialiserendeModalIllustration,
-  fellesfag: NdlaFellesfagModalIllustration,
-};
+import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const dummyBlogImages = [
   {
@@ -295,8 +275,6 @@ class FrontpageExample extends Component {
         <main>
           <FrontpageCircularSubjectsSection
             categories={categories}
-            categoryIllustrations={categoryIllustrations}
-            categoryIllustrationsInModal={categoryIllustrationsInModal}
             linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
           />
           <OneColumn wide extraPadding>

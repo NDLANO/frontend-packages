@@ -1,23 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import css from '@emotion/css';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 
-type StyledFigureProp = {
-  illustrationUrl: string;
-};
-
-const StyledFigure = styled.figure<StyledFigureProp>`
-  ${({ illustrationUrl }) =>
-    illustrationUrl &&
-    css`
-      background-image: url(${illustrationUrl});
-      background-size: 90%;
-      background-position: top center;
-      height: 30vw;
-      width: 30vw;
-      transform: translateY(-${spacing.xsmall});
-    `}
+const StyledFigure = styled.figure`
+  display: flex;
+  align-item: center;
+  svg {
+    height: 30vw;
+    width: 30vw;
+    max-width: 200px;
+    max-height: 200px;
+    transform: translateY(-${spacing.xsmall});
+  }
 `;
 
 const StyledFigCaption = styled.figcaption`
@@ -45,6 +39,8 @@ const StyledButton = styled.button`
     display: block;
     width: 30vw;
     height: 30vw;
+    max-width: 200px;
+    max-height: 200px;
     position: absolute;
     background: red;
     border-radius: 100%;
@@ -54,6 +50,8 @@ const StyledButton = styled.button`
   border-radius: 100%;
   height: 30vw;
   width: 30vw;
+  max-width: 200px;
+  max-height: 200px;
   padding: 0;
   &:hover, &:focus {
     &:before {
@@ -71,14 +69,16 @@ const StyledButton = styled.button`
 
 type Props = {
   textValue: string;
-  illustrationUrl: string;
+  Illustration: any;
 };
 
 const FrontpageCircularSubject: React.FunctionComponent<Props & React.HTMLProps<HTMLButtonElement>> = ({
-  textValue, illustrationUrl, ...rest
+  textValue, Illustration, ...rest
 }) => (
   <StyledButton type="button" {...rest}>
-    <StyledFigure illustrationUrl={illustrationUrl} />
+    <StyledFigure>
+      <Illustration />
+    </StyledFigure>
     <StyledFigCaption>{textValue}</StyledFigCaption>
   </StyledButton>
 );

@@ -4,7 +4,7 @@ import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import FrontpageSubjectIllustration from './FrontpageSubjectIllustration';
+import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllustration';
 // @ts-ignore
 import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
@@ -50,7 +50,7 @@ const StyledLinkedText = styled.span`
   ${fonts.sizes('20px', '32px')};
   font-weight: ${fonts.weight.bold};
   position: absolute;
-  bottom: ${spacing.normal};
+  bottom: ${spacing.medium};
   color: ${colors.subject.dark};
 
   ${mq.range({ from: breakpoints.desktop })} {
@@ -147,12 +147,11 @@ const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
 
 type Props = {
   categories: categoryProp[];
-  illustrationUrl: string;
   categoryIllustrations: {
-    [key: string]: string;
+    [key: string]: React.ReactSVGElement;
   };
   categoryIllustrationsInModal: {
-    [key: string]: string;
+    [key: string]: React.ReactSVGElement;
   };
   linkToAbout: React.ReactNode,
   t: any;
@@ -164,7 +163,6 @@ const initialState: StateObject = {
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
-  illustrationUrl,
   categoryIllustrations,
   categoryIllustrationsInModal,
   linkToAbout,
@@ -223,8 +221,8 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         {categoryIndex !== undefined && (
           <FrontpageSubjectsInPortal
             linkToAbout={linkToAbout}
-            illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
-            illustrationMobile={categoryIllustrations[categories[categoryIndex].name]}
+            Illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
+            IllustrationMobile={categoryIllustrations[categories[categoryIndex].name]}
             title={t(`welcomePage.category.${categories[categoryIndex].name}`)}
             subjects={categories[categoryIndex].subjects}
           />
@@ -235,7 +233,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           <FrontpageCircularSubject
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => openMenu(event, index)}
             textValue={t(`welcomePage.category.${category.name}`)}
-            illustrationUrl={categoryIllustrations[category.name]}
+            Illustration={categoryIllustrations[category.name]}
           />
         </StyledMobileSubjectLink>
       ))}

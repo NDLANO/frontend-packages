@@ -60,13 +60,17 @@ type StyledImageProps = {
   mobile?: boolean;
 };
 
-const StyledImage = styled.img<StyledImageProps>`
+const StyledFigure = styled.figure<StyledImageProps>`
   pointer-events: none;
   display: ${(props: StyledImageProps) => !props.mobile ? 'none' : 'block'};
   margin-top: -136px;
   ${mq.range({ from: breakpoints.tablet })} {
     display: ${(props: StyledImageProps) => props.mobile ? 'none' : 'block'};
     margin-top: 0;
+  }
+  > svg {
+    width: 100%;
+    height: 100%;
   }
   width: ${(props: StyledImageProps) => props.mobile ? '100px' : '100%'};
 `;
@@ -108,8 +112,8 @@ const StyledLI = styled.li`
 `;
 
 interface Props {
-  illustration: string;
-  illustrationMobile: string;
+  Illustration: any,
+  IllustrationMobile: any,
   title: string;
   subjects: subjectProp[];
   linkToAbout: React.ReactNode,
@@ -117,8 +121,8 @@ interface Props {
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
-  illustration,
-  illustrationMobile,
+  Illustration,
+  IllustrationMobile,
   title,
   subjects,
   linkToAbout,
@@ -126,8 +130,12 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
 }) => (
   <StyledNav>
     <StyledHeader>{title}</StyledHeader>
-    <StyledImage src={illustration} />
-    <StyledImage mobile src={illustrationMobile} />
+    <StyledFigure>
+      <Illustration />
+    </StyledFigure>
+    <StyledFigure mobile>
+      <IllustrationMobile />
+    </StyledFigure>
     <StyledUL>
       {subjects.map(subject => (
         <StyledLI key={subject.url}>

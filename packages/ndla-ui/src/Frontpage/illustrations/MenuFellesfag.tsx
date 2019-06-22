@@ -1,8 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="940px" height="175px" viewBox="0 0 940 175" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
-    <title>MenuOpen3</title>
-    <desc>Created with Sketch.</desc>
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+ import React from 'react';
+
+const Illustration: React.FunctionComponent = () => (
+<svg width="940px" height="175px" viewBox="0 0 940 175" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="MenuOpen3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Group" transform="translate(-0.655172, 9.000000)" stroke="#000000">
             <path d="M412.399678,0.138806159 C412.399678,0.138806159 410.006291,-0.56390002 407.612903,1.19286543 C405.219516,2.94963088 402.655172,6.99019141 402.655172,16.4767248 C402.655172,35.6254682 410.861072,45.1120016 418.383147,37.2065571 C425.905222,29.3011126 425.563309,15.7740186 416.160716,4.88207287 C412.741591,1.36854197 410.861072,3.30098397 410.861072,3.30098397" id="Path" stroke-linecap="round"></path>
@@ -20,3 +27,6 @@
         </g>
     </g>
 </svg>
+);
+
+export default Illustration;

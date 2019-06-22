@@ -143,6 +143,91 @@ export const categories = [
     ],
   },
   {
+    name: 'studiespesialiserende',
+    subjects: [
+      {
+        url: '#1',
+        text: 'Biologi 1',
+      },
+      {
+        url: '#2',
+        text: 'Engelskspråklig litteratur og kultur',
+      },
+      {
+        url: '#3',
+        text: 'Internasjonal engelsk',
+      },
+      {
+        text: 'Kinesisk 1',
+        url:
+          '?selectedKind=Emnesider&selectedStory=4.%20Fagforside%20språk&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&filterexample=Kinesisk1',
+      },
+      {
+        url:
+          '?selectedKind=Emnesider&selectedStory=4.%20Fagforside%20språk&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&filterexample=Kinesisk2',
+        text: 'Kinesisk 2',
+      },
+      {
+        url: '#6',
+        text: 'Kommunikasjon og kultur 1',
+      },
+      {
+        url: '#7',
+        text: 'Kommunikasjon og kultur 2',
+      },
+      {
+        url: '#8',
+        text: 'Kommunikasjon og kultur 3',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#9',
+        text: 'Markedsføring og ledelse 1',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#10',
+        text: 'Matematikk',
+        yearInfo: 'R1',
+      },
+      {
+        url: '#11',
+        text: 'Matematikk',
+        yearInfo: 'R2',
+      },
+      {
+        url: '#12',
+        text: 'Matematikk',
+        yearInfo: 'S1',
+      },
+      {
+        url: '#13',
+        text: 'Matematikk',
+        yearInfo: 'S2',
+      },
+      {
+        url: '#14',
+        text: 'Medie- og informasjonskunnskap 1 og 2',
+      },
+      {
+        url: '#15',
+        text: 'Medieuttrykk og mediesamfunnet',
+      },
+      {
+        url: '#16',
+        text: 'Samfunnsfaglig engelsk',
+      },
+      {
+        url: '#17',
+        text: 'Tysk 1',
+      },
+      {
+        url: '#18',
+        text: 'Tysk 2',
+      },
+    ],
+  },
+  {
     name: 'yrkesfag',
     subjects: [
       {
@@ -227,91 +312,6 @@ export const categories = [
         url: '#17',
         text: 'Transport og logistikk',
         yearInfo: 'Vg2',
-      },
-    ],
-  },
-  {
-    name: 'studiespesialiserende',
-    subjects: [
-      {
-        url: '#1',
-        text: 'Biologi 1',
-      },
-      {
-        url: '#2',
-        text: 'Engelskspråklig litteratur og kultur',
-      },
-      {
-        url: '#3',
-        text: 'Internasjonal engelsk',
-      },
-      {
-        text: 'Kinesisk 1',
-        url:
-          '?selectedKind=Emnesider&selectedStory=4.%20Fagforside%20språk&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&filterexample=Kinesisk1',
-      },
-      {
-        url:
-          '?selectedKind=Emnesider&selectedStory=4.%20Fagforside%20språk&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&filterexample=Kinesisk2',
-        text: 'Kinesisk 2',
-      },
-      {
-        url: '#6',
-        text: 'Kommunikasjon og kultur 1',
-      },
-      {
-        url: '#7',
-        text: 'Kommunikasjon og kultur 2',
-      },
-      {
-        url: '#8',
-        text: 'Kommunikasjon og kultur 3',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#9',
-        text: 'Markedsføring og ledelse 1',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#10',
-        text: 'Matematikk',
-        yearInfo: 'R1',
-      },
-      {
-        url: '#11',
-        text: 'Matematikk',
-        yearInfo: 'R2',
-      },
-      {
-        url: '#12',
-        text: 'Matematikk',
-        yearInfo: 'S1',
-      },
-      {
-        url: '#13',
-        text: 'Matematikk',
-        yearInfo: 'S2',
-      },
-      {
-        url: '#14',
-        text: 'Medie- og informasjonskunnskap 1 og 2',
-      },
-      {
-        url: '#15',
-        text: 'Medieuttrykk og mediesamfunnet',
-      },
-      {
-        url: '#16',
-        text: 'Samfunnsfaglig engelsk',
-      },
-      {
-        url: '#17',
-        text: 'Tysk 1',
-      },
-      {
-        url: '#18',
-        text: 'Tysk 2',
       },
     ],
   },

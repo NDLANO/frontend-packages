@@ -1,8 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
-    <title>Artboard</title>
-    <desc>Created with Sketch.</desc>
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+ import React from 'react';
+
+const Illustration: React.FunctionComponent = () => (
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path d="M44,62.0697056 C44,62.0697056 41.634042,52.2742526 40.7199219,47.4586109 C40.6123784,46.8019325 20.7705945,46.9661021 19.1036696,47.2397181 C18.4046366,48.7719677 21.4696276,63 21.4696276,63" id="Path" stroke="#000000" stroke-width="0.5" stroke-linecap="round"></path>
         <path d="M4,69 C5.97368266,68.8880303 7.59435434,68.7604131 8.75270513,68.6209555 C19.5914009,67.3397747 -6.4105208,62.6954945 22,63.0157897" id="Path" stroke="#000000" stroke-width="0.5"></path>
@@ -16,3 +23,6 @@
         <path d="M66,61.6333945 L82,61.3666055" id="Path" stroke="#000000" stroke-width="0.5" stroke-linecap="round"></path>
     </g>
 </svg>
+);
+
+export default Illustration;

@@ -2,9 +2,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
-import { injectT } from '@ndla/i18n';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
 import { category as categoryProp } from './types';
+import {
+  categoryIllustrations,
+  categoryIllustrationsInModal,
+} from './illustrations';
 
 const StyledSection = styled.section`
   margin: 0 auto;
@@ -31,30 +34,46 @@ const StyledSubjects = styled.div`
 
 type Props = {
   categories: categoryProp[];
-  categoryIllustrations: {
-    [key: string]: string;
-  };
-  categoryIllustrationsInModal: {
-    [key: string]: string;
-  };
   linkToAbout: React.ReactNode;
   t: any;
 }
 
-const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
-  categories, categoryIllustrations, categoryIllustrationsInModal, linkToAbout, t,
-}) => (
-  <StyledSection>
-    <StyledSubjects>
-      <FrontpageCombinedSubjects
-        illustrationUrl={categoryIllustrations['kombinert']}
-        categoryIllustrations={categoryIllustrations}
-        categoryIllustrationsInModal={categoryIllustrationsInModal}
-        categories={categories}
-        linkToAbout={linkToAbout}
-      />
-    </StyledSubjects>
-  </StyledSection>
-);
+const sortCategories = (categories: categoryProp[]): categoryProp[] | null => {
+  // Illustation requires categories to be ordered in a specific way..
+  const indexFellesfag: number = categories.findIndex(category => category.name === 'fellesfag');
+  const indexYrkesfag: number = categories.findIndex(category => category.name === 'yrkesfag');
+  const indexstudieSpesialiserende: number = categories.findIndex(category => category.name === 'studiespesialiserende');
+  const allIndexedSummed: number = indexFellesfag + indexYrkesfag + indexstudieSpesialiserende;
+  if (allIndexedSummed !== 3 || indexFellesfag === -1 || indexYrkesfag === -1 || indexstudieSpesialiserende === -1) {
+    return null;
+  }
+  return [
+    categories[indexFellesfag],
+    categories[indexstudieSpesialiserende],
+    categories[indexYrkesfag],
+  ];
+}
 
-export default injectT(FrontpageCircularSubjectsSection);
+const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
+  categories, linkToAbout,
+}) => {
+  const sortedCategories: categoryProp[] | null = sortCategories(categories);
+  if (sortedCategories === null) {
+    console.warn('Category types not valid. Must have names [fellesfag, yrkesfag, studiespesialiserende] and only that.')
+    return null;
+  }
+  return (
+    <StyledSection>
+      <StyledSubjects>
+        <FrontpageCombinedSubjects
+          categoryIllustrations={categoryIllustrations}
+          categoryIllustrationsInModal={categoryIllustrationsInModal}
+          categories={sortedCategories}
+          linkToAbout={linkToAbout}
+        />
+      </StyledSubjects>
+    </StyledSection>
+  );
+}
+
+export default FrontpageCircularSubjectsSection;

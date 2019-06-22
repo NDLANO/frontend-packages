@@ -71,7 +71,6 @@ class FrontpageExample extends Component {
     this.searchFieldValue = this.searchFieldValue.bind(this);
     this.onSearchInputFocus = this.onSearchInputFocus.bind(this);
     this.onSearchDeactiveFocusTrap = this.onSearchDeactiveFocusTrap.bind(this);
-    this.circularSubjectsSectionRef = React.createRef();
   }
 
   onSearchInputFocus() {
@@ -302,7 +301,7 @@ class FrontpageExample extends Component {
             categories={categories}
             categoryIllustrations={categoryIllustrations}
             categoryIllustrationsInModal={categoryIllustrationsInModal}
-            ref={this.circularSubjectsSectionRef}
+            linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
           />
           <OneColumn wide extraPadding>
             <section {...classes()}>

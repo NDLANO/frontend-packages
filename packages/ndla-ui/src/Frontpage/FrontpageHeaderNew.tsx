@@ -106,7 +106,7 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
   border-radius: 2px;
   position: absolute;
   bottom: -${spacing.large};
-  z-index: 9001;
+  z-index: 8001;
   padding: ${spacing.small};
   right: ${spacing.small};
   left: ${spacing.small};

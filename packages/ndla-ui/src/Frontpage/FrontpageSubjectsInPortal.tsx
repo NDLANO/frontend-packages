@@ -8,8 +8,16 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
+// @ts-ignore
+import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
+// @ts-ignore
+import Button from '@ndla/button';
 import SafeLink from '../common/SafeLink';
+import { subjectProp } from './types';
 
 const StyledHeader = styled.h1`
   color: ${colors.brand.primary};
@@ -39,6 +47,13 @@ const StyledSafeLink = styled(SafeLink)`
   &:hover, &:focus {
     text-decoration: none;
   }
+`;
+
+const StyledYearInfo = styled.span`
+  ${fonts.sizes(14, 1.1)};
+  font-weight: ${fonts.weight.normal};
+  color: ${colors.brand.primary};
+  margin: 2px 0 0 ${spacing.xsmall}
 `;
 
 type StyledImageProps = {
@@ -87,6 +102,7 @@ const StyledLI = styled.li`
   ${fonts.sizes(18, 1.4)};
   font-weight: ${fonts.weight.semibold};
   display: inline-flex;
+  align-items: center;
   width: 100%;
   margin: 0;
 `;
@@ -95,7 +111,9 @@ interface Props {
   illustration: string;
   illustrationMobile: string;
   title: string;
-  subjects: any[];
+  subjects: subjectProp[];
+  linkToAbout: React.ReactNode,
+  t: any;
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
@@ -103,6 +121,8 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
   illustrationMobile,
   title,
   subjects,
+  linkToAbout,
+  t,
 }) => (
   <StyledNav>
     <StyledHeader>{title}</StyledHeader>
@@ -112,10 +132,52 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
       {subjects.map(subject => (
         <StyledLI key={subject.url}>
           <StyledSafeLink to={subject.url}>{subject.text}</StyledSafeLink>
+          {subject.yearInfo && <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>}
+          {subject.beta && (
+            <Modal
+              narrow
+              activateButton={
+                <Button
+                  lighter
+                  css={css`
+                    padding: ${spacing.xsmall};
+                    margin-left: ${spacing.xsmall};
+                    line-height: 1em;
+                    background: ${colors.brand.light};
+                  `}
+                  aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
+                    title: subject.text,
+                  })}>
+                  {t('subjectPage.subjectIsBeta.iconLabel')}
+                </Button>
+              }>
+              {onClose => (
+                <>
+                  <ModalHeader>
+                    <ModalCloseButton
+                      onClick={onClose}
+                      title={t('modal.closeModal')}
+                    />
+                  </ModalHeader>
+                  <ModalBody>
+                    <h1>
+                      {t('subjectPage.subjectIsBeta.dialogHeader', {
+                        title: subject.text,
+                      })}
+                    </h1>
+                    <hr />
+                    <p>
+                      {t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}
+                    </p>
+                  </ModalBody>
+                </>
+              )}
+            </Modal>
+          )}
         </StyledLI>
       ))}
     </StyledUL>
   </StyledNav>
 );
   
-export default FrontpageSubjectsInPortal;
+export default injectT(FrontpageSubjectsInPortal);

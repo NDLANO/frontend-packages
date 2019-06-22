@@ -157,6 +157,7 @@ type Props = {
   categoryIllustrationsInModal: {
     [key: string]: string;
   };
+  linkToAbout: React.ReactNode,
   t: any;
 };
 
@@ -169,6 +170,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   illustrationUrl,
   categoryIllustrations,
   categoryIllustrationsInModal,
+  linkToAbout,
   t,
 }) => {
   const [currentState, dispatch] = useReducer<React.Reducer<StateObject, StateObject>>(menuReducer, initialState);
@@ -214,6 +216,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     });
     noScroll(true, 'frontpagePortal');
   };
+  
   return (
     <>
       {menuIsOpen && <FrontpageMenuPortal
@@ -224,6 +227,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         elementRect={elementRect}>
         {categoryIndex !== undefined && (
           <FrontpageSubjectsInPortal
+            linkToAbout={linkToAbout}
             illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
             illustrationMobile={categoryIllustrations[categories[categoryIndex].name]}
             title={t(`welcomePage.category.${categories[categoryIndex].name}`)}

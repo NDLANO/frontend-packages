@@ -36,7 +36,7 @@ type ModalWrapperProps = {
 
 const StyledModalWrapper = styled.div<ModalWrapperProps>`
   position: fixed;
-  z-index: 9999;
+  z-index: 9001;
   left: 50%;
   top: 0;
   width: 100vw;
@@ -148,13 +148,13 @@ const ScrollableContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  animation-delay: ${animations.durations.fast};
+  animation-fill-mode: forwards;
+  opacity: 0;
+  ${animations.fadeInBottom(animations.durations.normal, spacing.normal)}
+  animation-timing-function: ease;
   > div {
     width: 100%;
-    animation-delay: ${animations.durations.fast};
-    animation-fill-mode: forwards;
-    opacity: 0;
-    ${animations.fadeInBottom(animations.durations.normal, spacing.normal)}
-    animation-timing-function: ease;
   }
 `;
 
@@ -227,7 +227,7 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
         </StyledModalWrapper>
       <Backdrop
         onClick={onClose}
-        animationDuration={animations.durations.fast}
+        animationDuration={animations.durations.normal}
         animateIn={animationDirection === 'in'}
       />
     </>

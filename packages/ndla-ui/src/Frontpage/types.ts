@@ -25,7 +25,14 @@ export type SearchResult = {
 export type subjectProp = {
   text: string;
   url: string;
-}
+  yearInfo?: string,
+  beta?: boolean,
+};
+
+export type category = {
+  name: string;
+  subjects: Array<subjectProp>;
+};
 
 export type FrontPageHeaderProps = {
   searchFieldValue: string;
@@ -42,15 +49,5 @@ export type FrontPageHeaderProps = {
   infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;
-  categories: Array<any>;
+  categories: category[];
 };
-
-export type categorySubjects = {
-  name: string;
-  url: string;
-}
-
-export type category = {
-  name: string;
-  subjects: Array<categorySubjects>;
-}

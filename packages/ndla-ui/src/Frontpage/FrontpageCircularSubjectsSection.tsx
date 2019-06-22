@@ -37,11 +37,12 @@ type Props = {
   categoryIllustrationsInModal: {
     [key: string]: string;
   };
+  linkToAbout: React.ReactNode;
   t: any;
 }
 
 const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
-  categories, categoryIllustrations, categoryIllustrationsInModal, t,
+  categories, categoryIllustrations, categoryIllustrationsInModal, linkToAbout, t,
 }) => (
   <StyledSection>
     <StyledSubjects>
@@ -50,6 +51,7 @@ const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
         categoryIllustrations={categoryIllustrations}
         categoryIllustrationsInModal={categoryIllustrationsInModal}
         categories={categories}
+        linkToAbout={linkToAbout}
       />
     </StyledSubjects>
   </StyledSection>

@@ -477,7 +477,7 @@ const messages = {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
       text:
-        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+        'NDLA film er ei nettbasert filmteneste for elevar og lærarar i videregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
     search: {
       placeholder: 'Søk på filmnavn',

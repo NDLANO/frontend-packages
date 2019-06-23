@@ -118,18 +118,6 @@ class CategorySelect extends React.Component {
                   <span>{resourceType.name}</span>
                 </button>
               ))}
-              <button
-                aria-controls={ariaControlId}
-                type="button"
-                onClick={() => this.onSelect(allMoviesSelectorId)}
-                {...classes('dropdown-button', {
-                  selected:
-                    resourceTypeSelected &&
-                    resourceTypeSelected.id === allMoviesSelectorId,
-                })}
-              >
-                <span>Vis alle filmer</span>
-              </button>
             </div>
           </FocusTrapReact>
         )}

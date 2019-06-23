@@ -19,7 +19,7 @@ import {
 } from '../../dummydata';
 import Poster from '../../images/filmposter-aboutNDLA.png';
 
-import { ALL_MOVIES } from './FilmFrontpage';
+import { ALL_MOVIES } from '../../dummydata/mockFilm';
 
 const sortAlphabetically = (movies) => (
   movies.sort((a, b) => a.title.localeCompare(b.title))

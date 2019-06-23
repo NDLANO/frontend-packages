@@ -54,7 +54,7 @@ export const mockMovieResourceTypes = [
     id: SHORTMOVIE_CONTENTTYPE_ID,
   },
   {
-    name: 'Alle filmer',
+    name: 'Alle filmer A-Å',
     id: ALL_MOVIES,
   },
 ];

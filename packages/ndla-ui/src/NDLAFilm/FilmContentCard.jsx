@@ -60,6 +60,7 @@ const StyledMovieTitle = styled.h2`
 const StyledImage = styled.div`
   height: ${props => props.columnWidth * 0.5625}px;
   background-size: cover;
+  background-color: ${colors.ndlaFilm.filmColorLight};
   background-position-x: center;
   background-position-y: center;
   position: relative;

@@ -67,6 +67,7 @@ type MovieImageType = {
 const MovieImage = styled.div<MovieImageType>`
   width: 104px;
   height: 80px;
+  background-color: ${colors.ndlaFilm.filmColorLight};
   background-image: url(${(props: MovieImageType) => props.backgroundImage});
   background-size: cover;
   background-position: center center;
@@ -156,8 +157,8 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies }) => 
               <StyledSafeLink to={`/subjects${movie.path}`}>
               <MovieImage
                 role="img"
-                backgroundImage={movie.metaImage.url}
-                aria-label={movie.metaImage.alt}
+                backgroundImage={movie.metaImage && movie.metaImage.url}
+                aria-label={movie.metaImage && movie.metaImage.alt}
                 title={movie.title}
               />
               

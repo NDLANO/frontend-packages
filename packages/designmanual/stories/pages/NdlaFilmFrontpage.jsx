@@ -21,9 +21,8 @@ import Poster from '../../images/filmposter-aboutNDLA.png';
 
 import { ALL_MOVIES } from '../../dummydata/mockFilm';
 
-const sortAlphabetically = (movies) => (
-  movies.sort((a, b) => a.title.localeCompare(b.title))
-);
+const sortAlphabetically = movies =>
+  movies.sort((a, b) => a.title.localeCompare(b.title));
 
 class NdlaFilmExample extends Component {
   constructor(props) {
@@ -49,9 +48,11 @@ class NdlaFilmExample extends Component {
           this.setState({
             showingAll,
             fetchingMoviesByType: false,
-            moviesByType: sortAlphabetically(showingAll ? mockAllMovies : mockAllMovies.filter(
-              movie => movie.movieTypes[resourceId],
-            )),
+            moviesByType: sortAlphabetically(
+              showingAll
+                ? mockAllMovies
+                : mockAllMovies.filter(movie => movie.movieTypes[resourceId]),
+            ),
           });
         }, 500);
       },

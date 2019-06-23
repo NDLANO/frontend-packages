@@ -24,7 +24,6 @@ import { ALL_MOVIES } from '../../dummydata/mockFilm';
 
 const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
 
-
 class FilmFrontpage extends Component {
   constructor(props) {
     super(props);
@@ -187,8 +186,12 @@ class FilmFrontpage extends Component {
           css={css`
             margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
           `}>
-          {showingAll ? <AllMoviesAlphabetically movies={moviesByType} /> : this.renderMovieGrid({ resourceTypeName })}
-          </div>
+          {showingAll ? (
+            <AllMoviesAlphabetically movies={moviesByType} />
+          ) : (
+            this.renderMovieGrid({ resourceTypeName })
+          )}
+        </div>
         <AboutNdlaFilm
           aboutNDLAVideo={aboutNDLAVideo}
           moreAboutNdlaFilm={moreAboutNdlaFilm}

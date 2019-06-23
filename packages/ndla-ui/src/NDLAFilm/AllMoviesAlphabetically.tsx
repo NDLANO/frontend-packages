@@ -61,7 +61,7 @@ const MovieTextWrapper = styled.div`
 `;
 
 type MovieImageType = {
-  backgroundImage: string;
+  backgroundImage?: string;
 };
 
 const MovieImage = styled.div<MovieImageType>`

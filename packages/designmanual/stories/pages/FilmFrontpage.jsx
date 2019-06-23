@@ -61,7 +61,9 @@ class FilmFrontpage extends Component {
       moviesByType,
       fetchingMoviesByType,
       moreAboutNdlaFilm,
+      resizeThumbnailImages,
       language,
+      id,
       t,
     } = this.props;
 
@@ -75,6 +77,7 @@ class FilmFrontpage extends Component {
 
     return (
       <div
+        id={id}
         css={css`
           background: #091a2a;
           padding-bottom: ${spacing.large};
@@ -155,6 +158,7 @@ class FilmFrontpage extends Component {
                     moviesByType,
                     resourceTypes,
                     loadingPlaceholderHeight,
+                    resizeThumbnailImages,
                   }}
                 />
               ) : (
@@ -167,6 +171,7 @@ class FilmFrontpage extends Component {
                     slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
                     slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
                     resourceTypes={resourceTypes}
+                    resizeThumbnailImages={resizeThumbnailImages}
                   />
                 ))
               )
@@ -208,6 +213,8 @@ FilmFrontpage.propTypes = {
       alt: PropTypes.string,
     }),
   }),
+  resizeThumbnailImages: PropTypes.bool,
+  id: PropTypes.string,
   language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
   t: PropTypes.func.isRequired,
 };
@@ -218,6 +225,7 @@ FilmFrontpage.defaultProps = {
   themes: [],
   resourceTypes: [],
   topics: [],
+  resizeThumbnailImages: true,
 };
 
 export default injectT(FilmFrontpage);

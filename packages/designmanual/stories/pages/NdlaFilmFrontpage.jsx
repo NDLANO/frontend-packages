@@ -57,12 +57,14 @@ class NdlaFilmExample extends Component {
 
     return (
       <FilmFrontpage
+        id={this.props.id}
         highlighted={mockHighlightedMovies}
         themes={movieThemes}
         moviesByType={moviesByType}
         topics={mockMovieTopics}
         resourceTypes={mockMovieResourceTypes}
         onSelectedMovieByType={this.onSelectedMovieByType}
+        resizeThumbnailImages={false}
         aboutNDLAVideo={{
           title: 'Om NDLA film',
           description:
@@ -138,6 +140,7 @@ class NdlaFilmExample extends Component {
 
 NdlaFilmExample.propTypes = {
   editor: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default NdlaFilmExample;

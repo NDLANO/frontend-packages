@@ -36,6 +36,7 @@ export default {
   ndlaFilm: {
     filmColor: '#091a2a',
     filmColorBright: '#20588f',
+    filmColorLight: '#0f263b',
   },
 
   subject: {

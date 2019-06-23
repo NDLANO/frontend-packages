@@ -49,13 +49,15 @@ class FrontpageExample extends Component {
   onSearchDeactiveFocusTrap() {
     this.setState({
       inputHasFocus: false,
+      searchFieldValue: '',
     });
   }
 
   searchFieldValue(searchFieldValue) {
-    this.setState({
+    this.setState(prevState => ({
       searchFieldValue,
-    });
+      inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
+    }));
   }
 
   renderInfoText() {

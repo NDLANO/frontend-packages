@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "1.11.11",
+  "version": "1.11.12",
   "description": "Styleguide and ui component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -50,7 +50,7 @@
     "webpack-bundle-analyzer": "^3.0.4"
   },
   "dependencies": {
-    "@ndla/forms": "^0.3.8",
+    "@ndla/forms": "^0.3.9",
     "downshift": "^3.2.2"
   }
 }

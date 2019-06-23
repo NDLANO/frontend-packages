@@ -18,6 +18,7 @@ import {
   AboutNdlaFilm,
   FilmMovieSearch,
   FilmMovieList,
+  AllMoviesAlphabetically,
 } from '@ndla/ui';
 
 const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
@@ -51,47 +52,18 @@ class FilmFrontpage extends Component {
     });
   }
 
-  render() {
+  renderMovieGrid({ resourceTypeName }) {
     const {
-      highlighted,
       themes,
       resourceTypes,
-      topics,
-      aboutNDLAVideo,
       moviesByType,
       fetchingMoviesByType,
-      moreAboutNdlaFilm,
       resizeThumbnailImages,
       language,
-      id,
       t,
     } = this.props;
-
     const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
-
-    const resourceTypeName =
-      resourceTypeSelected &&
-      resourceTypes.find(
-        resourceType => resourceType.id === resourceTypeSelected,
-      );
-
-    return (
-      <div
-        id={id}
-        css={css`
-          background: #091a2a;
-          padding-bottom: ${spacing.large};
-        `}>
-        <FilmSlideshow slideshow={highlighted} />
-        <FilmMovieSearch
-          ariaControlId={ARIA_FILMCATEGORY_ID}
-          topics={topics}
-          resourceTypes={resourceTypes}
-          resourceTypeSelected={resourceTypeName}
-          onChangeResourceType={this.onChangeResourceType}
-          allMoviesSelectorId={ALL_MOVIES}
-        />
-        <div
+    return (<div
           id={ARIA_FILMCATEGORY_ID}
           ref={this.movieListRef}
           css={css`
@@ -177,7 +149,46 @@ class FilmFrontpage extends Component {
               )
             }
           </CarouselAutosize>
-        </div>
+        </div>)
+  }
+
+  render() {
+    const {
+      highlighted,
+      resourceTypes,
+      topics,
+      aboutNDLAVideo,
+      moreAboutNdlaFilm,
+      showingAll,
+      moviesByType,
+      id,
+    } = this.props;
+
+    const { resourceTypeSelected } = this.state;
+
+    const resourceTypeName =
+      resourceTypeSelected &&
+      resourceTypes.find(
+        resourceType => resourceType.id === resourceTypeSelected,
+      );
+
+    return (
+      <div
+        id={id}
+        css={css`
+          background: #091a2a;
+          padding-bottom: ${spacing.large};
+        `}>
+        <FilmSlideshow slideshow={highlighted} />
+        <FilmMovieSearch
+          ariaControlId={ARIA_FILMCATEGORY_ID}
+          topics={topics}
+          resourceTypes={resourceTypes}
+          resourceTypeSelected={resourceTypeName}
+          onChangeResourceType={this.onChangeResourceType}
+          allMoviesSelectorId={ALL_MOVIES}
+        />
+        {showingAll ? <AllMoviesAlphabetically movies={moviesByType} /> : this.renderMovieGrid({ resourceTypeName })}
         <AboutNdlaFilm
           aboutNDLAVideo={aboutNDLAVideo}
           moreAboutNdlaFilm={moreAboutNdlaFilm}
@@ -215,6 +226,7 @@ FilmFrontpage.propTypes = {
   }),
   resizeThumbnailImages: PropTypes.bool,
   id: PropTypes.string,
+  showingAll: PropTypes.bool,
   language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
   t: PropTypes.func.isRequired,
 };

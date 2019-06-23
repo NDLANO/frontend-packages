@@ -21,6 +21,10 @@ import Poster from '../../images/filmposter-aboutNDLA.png';
 
 import { ALL_MOVIES } from './FilmFrontpage';
 
+const sortAlphabetically = (movies) => (
+  movies.sort((a, b) => a.title.localeCompare(b.title))
+);
+
 class NdlaFilmExample extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +39,7 @@ class NdlaFilmExample extends Component {
   onSelectedMovieByType(resourceId) {
     // Simulate fetching movies..
     clearInterval(this.simulateLoadingTimer);
+    const showingAll = resourceId === ALL_MOVIES;
     this.setState(
       {
         fetchingMoviesByType: true,
@@ -42,10 +47,11 @@ class NdlaFilmExample extends Component {
       () => {
         this.simulateLoadingTimer = setTimeout(() => {
           this.setState({
+            showingAll,
             fetchingMoviesByType: false,
-            moviesByType: mockAllMovies.filter(
+            moviesByType: sortAlphabetically(showingAll ? mockAllMovies : mockAllMovies.filter(
               movie => movie.movieTypes[resourceId],
-            ),
+            )),
           });
         }, 500);
       },
@@ -53,11 +59,12 @@ class NdlaFilmExample extends Component {
   }
 
   render() {
-    const { moviesByType, fetchingMoviesByType } = this.state;
+    const { moviesByType, fetchingMoviesByType, showingAll } = this.state;
 
     return (
       <FilmFrontpage
         id={this.props.id}
+        showingAll={showingAll}
         highlighted={mockHighlightedMovies}
         themes={movieThemes}
         moviesByType={moviesByType}

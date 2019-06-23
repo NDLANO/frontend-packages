@@ -125,7 +125,7 @@ class CategorySelect extends React.Component {
                 {...classes('dropdown-button', {
                   selected:
                     resourceTypeSelected &&
-                    resourceTypeSelected.id === resourceType.id,
+                    resourceTypeSelected.id === allMoviesSelectorId,
                 })}
               >
                 <span>Vis alle filmer</span>

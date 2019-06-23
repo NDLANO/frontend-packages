@@ -20,7 +20,6 @@ import {
   FilmMovieList,
   AllMoviesAlphabetically,
 } from '@ndla/ui';
-import { ALL_MOVIES } from '../../dummydata/mockFilm';
 
 const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
 
@@ -178,7 +177,6 @@ class FilmFrontpage extends Component {
           resourceTypes={resourceTypes}
           resourceTypeSelected={resourceTypeName}
           onChangeResourceType={this.onChangeResourceType}
-          allMoviesSelectorId={ALL_MOVIES}
         />
         <div
           id={ARIA_FILMCATEGORY_ID}

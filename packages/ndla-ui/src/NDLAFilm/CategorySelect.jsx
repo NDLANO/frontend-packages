@@ -51,7 +51,6 @@ class CategorySelect extends React.Component {
       resourceTypes,
       resourceTypeSelected,
       ariaControlId,
-      allMoviesSelectorId,
       t,
     } = this.props;
     const { resourceTypesIsOpen } = this.state;
@@ -133,7 +132,6 @@ CategorySelect.propTypes = {
     name: PropTypes.string,
   }),
   ariaControlId: PropTypes.string,
-  allMoviesSelectorId: PropTypes.string,
 };
 
 export default injectT(CategorySelect);

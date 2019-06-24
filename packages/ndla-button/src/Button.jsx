@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, misc, fonts } from '@ndla/core';
+import { colors, spacing, misc, fonts, animations } from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 
 const strippedStyle = css`
@@ -116,6 +116,20 @@ const appearances = {
       box-shadow: ${colors.linkHover};
     }
   `,
+  ghostPill: css`
+    ${strippedStyle};
+    padding: ${spacing.small};
+    border-radius: ${spacing.normal};
+    transition: background-color ${animations.durations.fast} ease-in-out;
+    color: ${colors.brand.dark};
+    font-weight: 600;
+    ${fonts.sizes('14px', '18px')};
+
+    &:hover {
+      transform: none;
+      background-color: ${colors.brand.light};
+    }
+  `,
 };
 
 const buttonStyle = css`
@@ -178,6 +192,7 @@ export const Button = ({
   disabled,
   inverted,
   invertedOutline,
+  ghostPill,
   ...rest
 }) => {
   const modifiers = {
@@ -187,6 +202,7 @@ export const Button = ({
     stripped,
     inverted,
     invertedOutline,
+    ghostPill,
   };
   const styledAppearance = appearance || modifierToApperance(modifiers);
 
@@ -214,6 +230,7 @@ Button.propTypes = {
   link: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
+  ghostPill: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   appearance: PropTypes.oneOf([

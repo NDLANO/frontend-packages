@@ -1,6 +1,7 @@
 import React from 'react';
 import Button, { StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
+import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 
@@ -36,8 +37,17 @@ const ButtonExample = () => {
             Knapp deaktivert
           </Button>
         </InlineContainer>
+        <h2 key="pill-heading" className="u-heading">
+          Ghost pill knapp (hover)
+        </h2>
+        <InlineContainer>
+          <Button ghostPill onClick={action('clicked')}>
+            <span>Velg språk(language): Bokmål</span>
+            <ChevronDown />
+          </Button>
+        </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
-          <h2 key="heading" className="u-heading">
+          <h2 key="alternative-button-heading" className="u-heading">
             Alternativer når UU krever en knapp
           </h2>,
           <InlineContainer key="buttons">
@@ -52,10 +62,10 @@ const ButtonExample = () => {
               ut som en knapp
             </p>
           </InlineContainer>,
-          <h2 key="heading" className="u-heading">
+          <h2 key="alternative-link-heading" className="u-heading">
             Alternativer når UU krever en link
           </h2>,
-          <InlineContainer key="buttons">
+          <InlineContainer key="buttons-2">
             <AnchorButton
               href="https://ndla.no"
               target="_blank"

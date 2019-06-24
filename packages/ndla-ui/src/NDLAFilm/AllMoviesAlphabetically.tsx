@@ -6,11 +6,17 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import throttle from 'lodash/throttle';
 import { breakpoints, mq, spacing, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
+// @ts-ignore
+import { makeSrcQueryString } from '../Image';
 import { movieType } from './types';
+
+const IMAGE_WIDTH = 143;
 
 const StyledNewLetter = styled.h2`
   color: #fff;
@@ -38,7 +44,7 @@ const StyledWrapper = styled.section`
 `;
 
 type MovieItemProps = {
-  currentIndex: number;
+  inView: boolean | null;
 };
 
 const MovieItem = styled.div<MovieItemProps>`
@@ -48,9 +54,12 @@ const MovieItem = styled.div<MovieItemProps>`
     margin-bottom: ${spacing.large};
   }
   opacity: 0;
-  animation-fill-mode: forwards;
-  animation-delay: ${(props: MovieItemProps) => props.currentIndex * 50}ms;
-  ${animations.fadeIn(animations.durations.normal)};
+  transform: translateY(${spacing.xsmall});
+  transition: all ${animations.durations.slow} ease;
+  ${(props: MovieItemProps) => props.inView && css`
+    opacity: 1;
+    transform: translateY(0);
+  `};
 `;
 
 const MovieTextWrapper = styled.div`
@@ -60,21 +69,23 @@ const MovieTextWrapper = styled.div`
   flex: 1;
 `;
 
-type MovieImageType = {
-  backgroundImage?: string;
+type movieImageType = {
+  backgroundImage?: string | null;
 };
 
-const MovieImage = styled.div<MovieImageType>`
+const MovieImage = styled.div<movieImageType>`
   width: 104px;
   height: 80px;
   background-color: ${colors.ndlaFilm.filmColorLight};
-  background-image: url(${(props: MovieImageType) => props.backgroundImage});
+  ${(props: movieImageType) => props.backgroundImage !== null && css`
+    background-image: url(${props.backgroundImage});
+  `}
   background-size: cover;
   background-position: center center;
   margin: 0 ${spacing.spacingUnit * 0.75}px 0 0;
   ${mq.range({ from: breakpoints.tablet })} {
     margin-left: ${spacing.spacingUnit * 0.75}px;
-    width: 143px;
+    width: ${IMAGE_WIDTH}px;
     height: 90px;
   }
   position: relative;
@@ -132,36 +143,79 @@ const StyledSafeLink = styled(SafeLink)`
 `;
 
 const isLetter = (title: string): boolean => {
-   const regTest: RegExp = /^[A-Za-zÅØÆåøæ]+$/;
-   const firstLetter = title.substr(0,1);
-   return !(firstLetter.match(regTest) === null);
+  const regTest: RegExp = /^[A-Za-zÅØÆåøæ]+$/;
+  const firstLetter = title.substr(0,1);
+  return !(firstLetter.match(regTest) === null);
 }
 
 interface Props {
   movies: movieType[];
 }
 
+type visibleImagesProps = {
+  [key: string]: boolean | null;
+}
+
 const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies }) => {
   // Split into Letters.
   let previousLetter = '';
+  const wrapperRef: React.RefObject<HTMLElement> = React.useRef(null);
+  const [visibleImages, setVisibleImages] = useState<visibleImagesProps>({});
+  const scrollEvent = () => {
+    const updates: visibleImagesProps = {};
+    const allChildren: NodeListOf<HTMLElement> | null = wrapperRef.current && wrapperRef.current.querySelectorAll('[role=img]');
+    const windowInnerHeight = window.innerHeight;
+    if (allChildren) {
+      let started: boolean = false;
+      let ended: boolean = false;
+      allChildren.forEach(((el: HTMLElement, index: number) => {
+        if (!ended) {
+          const rect: ClientRect = el.getBoundingClientRect();
+          if (!started) {
+            if (rect.top > -20) {
+              updates[index] = true;
+              started = true;
+            }
+          } else {
+            updates[index] = true;
+            if (rect.top > windowInnerHeight + 20) {
+              ended = true;
+            }
+          }
+        }
+      }));
+    }
+    setVisibleImages(visibleImages => ({ ...visibleImages, ...updates }));
+  }
+  const throttledScrollEvent = throttle(() => {
+    scrollEvent();
+  }, 100);
+  useEffect(() => {
+    window.addEventListener('scroll', throttledScrollEvent);
+    scrollEvent();
+    return () => {
+      window.removeEventListener('scroll', throttledScrollEvent);
+    };
+  }, []);
+
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={wrapperRef}>
       {movies.map((movie: movieType, index: number) => {
         const currentLetter = movie.title.substr(0, 1);
         const isNewLetter = currentLetter.localeCompare(previousLetter) === 1 && isLetter(movie.title);
         previousLetter = currentLetter;
+        const inView: boolean | null = visibleImages ? visibleImages[index] : null;
         return (
           <Fragment key={movie.id}>
             {isNewLetter && <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>}
-            <MovieItem currentIndex={index}>
+            <MovieItem inView={inView}>
               <StyledSafeLink to={`/subjects${movie.path}`}>
               <MovieImage
                 role="img"
-                backgroundImage={movie.metaImage && movie.metaImage.url}
+                backgroundImage={(inView && movie.metaImage && movie.metaImage.url) ? `${movie.metaImage.url}?${makeSrcQueryString(IMAGE_WIDTH * 2)}` : null}
                 aria-label={movie.metaImage && movie.metaImage.alt}
                 title={movie.title}
               />
-              
                 <MovieTextWrapper>
                   <MovieTitle>
                     {movie.title}

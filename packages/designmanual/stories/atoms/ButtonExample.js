@@ -1,7 +1,7 @@
 import React from 'react';
 import Button, { StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
-import { ChevronUp, ChevronDown } from '@ndla/icons/common';
+import { ChevronDown } from '@ndla/icons/common';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 

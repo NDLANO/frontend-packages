@@ -38,14 +38,14 @@ type Props = {
   t: any;
 }
 
-const sortCategories = (categories: categoryProp[]): categoryProp[] | null => {
+export const sortCategories = (categories: categoryProp[]): categoryProp[] | undefined => {
   // Illustation requires categories to be ordered in a specific way..
   const indexFellesfag: number = categories.findIndex(category => category.name === 'fellesfag');
   const indexYrkesfag: number = categories.findIndex(category => category.name === 'yrkesfag');
   const indexstudieSpesialiserende: number = categories.findIndex(category => category.name === 'studiespesialiserende');
   const allIndexedSummed: number = indexFellesfag + indexYrkesfag + indexstudieSpesialiserende;
   if (allIndexedSummed !== 3 || indexFellesfag === -1 || indexYrkesfag === -1 || indexstudieSpesialiserende === -1) {
-    return null;
+    return undefined;
   }
   return [
     categories[indexFellesfag],
@@ -57,8 +57,8 @@ const sortCategories = (categories: categoryProp[]): categoryProp[] | null => {
 const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
   categories, linkToAbout,
 }) => {
-  const sortedCategories: categoryProp[] | null = sortCategories(categories);
-  if (sortedCategories === null) {
+  const sortedCategories: categoryProp[] | undefined = sortCategories(categories);
+  if (!sortedCategories) {
     console.warn('Category types not valid. Must have names [fellesfag, yrkesfag, studiespesialiserende] and only that.')
     return null;
   }

@@ -48,3 +48,9 @@ export type FrontPageHeaderProps = {
   searchResult: Array<SearchResult>;
   languageOptions: string;
 };
+
+export type elementRectType = {
+  fromX: number;
+  fromY: number;
+  fromScale: number;
+};

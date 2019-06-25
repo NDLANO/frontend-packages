@@ -9,7 +9,7 @@ import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllust
 import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
-import { category as categoryProp } from './types';
+import { category as categoryProp, elementRectType } from './types';
 
 const StyledMobileSubjectLink = styled.div`
   display: flex;
@@ -126,12 +126,6 @@ const StyledNavContainer = styled.nav`
   }
 `;
 
-type elementRectType = {
-  fromX: number;
-  fromY: number;
-  fromScale: number;
-};
-
 interface StateObject {
   animationDirection?: 'in' | 'out';
   menuIsOpen?: boolean;
@@ -148,10 +142,10 @@ const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
 type Props = {
   categories: categoryProp[];
   categoryIllustrations: {
-    [key: string]: React.ReactSVGElement;
+    [key: string]: React.FunctionComponent;
   };
   categoryIllustrationsInModal: {
-    [key: string]: React.ReactSVGElement;
+    [key: string]: React.FunctionComponent;
   };
   linkToAbout: React.ReactNode,
   t: any;

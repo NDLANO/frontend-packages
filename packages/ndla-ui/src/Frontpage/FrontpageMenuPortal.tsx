@@ -177,7 +177,7 @@ interface Props {
   onClosed: () => void;
   onClose: () => void;
   animationDirection: 'in' | 'out';
-  elementRect: any;
+  elementRect: elementRect;
   menuOpenedCounter: number;
   t: any;
 }

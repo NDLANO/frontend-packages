@@ -10,7 +10,10 @@ const StyledFigure = styled.figure`
     width: 30vw;
     max-width: 200px;
     max-height: 200px;
-    transform: translateY(-${spacing.xsmall});
+    transform: translateY(-${spacing.small});
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      transform: translateY(-${spacing.spacingUnit * 0.75}px);
+    }
   }
 `;
 
@@ -59,8 +62,7 @@ const StyledButton = styled.button`
       transform: scale(1.1);
     }
   }
-  &:active {
-    &:before {
+  &:active :before {
       background: ${colors.brand.light};
       transform: scale(0.9);
     }
@@ -69,7 +71,7 @@ const StyledButton = styled.button`
 
 type Props = {
   textValue: string;
-  Illustration: any;
+  Illustration: React.FunctionComponent;
 };
 
 const FrontpageCircularSubject: React.FunctionComponent<Props & React.HTMLProps<HTMLButtonElement>> = ({

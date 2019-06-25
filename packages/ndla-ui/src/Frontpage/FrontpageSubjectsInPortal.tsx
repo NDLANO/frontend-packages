@@ -22,7 +22,6 @@ import { subjectProp } from './types';
 const StyledHeader = styled.h1`
   color: ${colors.brand.primary};
   ${fonts.sizes(24, 1)};
-  margin-top: ${spacing.large};
   margin-bottom: ${spacing.normal};
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes(26, 1)};
@@ -63,7 +62,7 @@ type StyledImageProps = {
 const StyledFigure = styled.figure<StyledImageProps>`
   pointer-events: none;
   display: ${(props: StyledImageProps) => !props.mobile ? 'none' : 'block'};
-  margin-top: -136px;
+  margin-top: -160px;
   ${mq.range({ from: breakpoints.tablet })} {
     display: ${(props: StyledImageProps) => props.mobile ? 'none' : 'block'};
     margin-top: 0;
@@ -72,7 +71,7 @@ const StyledFigure = styled.figure<StyledImageProps>`
     width: 100%;
     height: 100%;
   }
-  width: ${(props: StyledImageProps) => props.mobile ? '100px' : '100%'};
+  width: ${(props: StyledImageProps) => props.mobile ? '130px' : '100%'};
 `;
 
 const StyledNav = styled.nav`
@@ -85,7 +84,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledUL = styled.ul`
+const StyledList = styled.ul`
   column-count: 1;
   column-gap: ${spacing.normal};
   list-style: none;
@@ -101,7 +100,7 @@ const StyledUL = styled.ul`
   }
 `;
 
-const StyledLI = styled.li`
+const StyledListItem = styled.li`
   padding: ${spacing.small} 0;
   ${fonts.sizes(18, 1.4)};
   font-weight: ${fonts.weight.semibold};
@@ -112,8 +111,8 @@ const StyledLI = styled.li`
 `;
 
 interface Props {
-  Illustration: any,
-  IllustrationMobile: any,
+  Illustration: React.FunctionComponent,
+  IllustrationMobile: React.FunctionComponent,
   title: string;
   subjects: subjectProp[];
   linkToAbout: React.ReactNode,
@@ -136,9 +135,9 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
     <StyledFigure mobile>
       <IllustrationMobile />
     </StyledFigure>
-    <StyledUL>
+    <StyledList>
       {subjects.map(subject => (
-        <StyledLI key={subject.url}>
+        <StyledListItem key={subject.url}>
           <StyledSafeLink to={subject.url}>{subject.text}</StyledSafeLink>
           {subject.yearInfo && <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>}
           {subject.beta && (
@@ -182,9 +181,9 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
               )}
             </Modal>
           )}
-        </StyledLI>
+        </StyledListItem>
       ))}
-    </StyledUL>
+    </StyledList>
   </StyledNav>
 );
   

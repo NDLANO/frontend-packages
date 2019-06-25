@@ -59,11 +59,7 @@ const StyledLanguageSelectorWrapper = styled.div`
   ${mq.range({ from: breakpoints.desktop })} {
     margin-left: ${spacing.large};
   }
-  .c-masthead__change-language-wrapper {
-    padding-right: 0;
-    ${fonts.sizes('14px', '18px')};
-    color: ${colors.brand.dark};
-  }
+  ${fonts.sizes('14px', '18px')};
 `;
 
 const StyledHeader = styled.div`
@@ -121,20 +117,17 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
     padding: ${spacing.large};
     bottom: -81px;
   }
-  .c-search-field__input-wrapper {
-    padding: 0;
+  form {
+    width: 100%;
+    > div {
+      padding: 0;
+    }
   }
-
-  .c-search-field__input {
+  input {
     border-color: ${colors.brand.tertiary};
     ${mq.range({ until: breakpoints.tablet })} {
       padding-left: ${spacing.small};
     }
-  }
-
-  .c-search-field {
-    width: 100%;
-    transition: width ${animations.durations.fast} ease-in-out;
   }
 `;
 

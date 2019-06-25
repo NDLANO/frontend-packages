@@ -38,6 +38,24 @@ const strippedStyle = css`
   }
 `;
 
+const pillStyle = css`
+  padding: ${spacing.small};
+  border-radius: ${spacing.normal};
+  transition: background-color ${animations.durations.fast} ease-in-out;
+  color: ${colors.brand.dark};
+  font-weight: 600;
+  ${fonts.sizes('14px', '18px')};
+  background-color: transparent;
+  &:hover {
+    transform: none;
+  }
+  > svg {
+    margin-left: ${spacing.xsmall};
+    height: 18px;
+    width: 18px;
+  }
+`;
+
 const appearances = {
   inverted: css`
     background: #0f2b47;
@@ -116,24 +134,24 @@ const appearances = {
       box-shadow: ${colors.linkHover};
     }
   `,
-  ghostPill: css`
+  ghostPillInverted: css`
     ${strippedStyle};
-    padding: ${spacing.small};
-    border-radius: ${spacing.normal};
-    transition: background-color ${animations.durations.fast} ease-in-out;
-    color: ${colors.brand.dark};
-    font-weight: 600;
-    ${fonts.sizes('14px', '18px')};
+
+    ${pillStyle};
+    color: ${colors.brand.lightest};
+    box-shadow: 0 1px 0 ${colors.brand.lightest};
 
     &:hover {
-      transform: none;
       background-color: ${colors.brand.light};
+      box-shadow: none;
     }
+  `,
+  ghostPill: css`
+    ${strippedStyle};
+    ${pillStyle};
 
-    > svg {
-      margin-left: ${spacing.xsmall};
-      height: 18px;
-      width: 18px;
+    &:hover {
+      background-color: ${colors.brand.light};
     }
   `,
 };
@@ -199,6 +217,7 @@ export const Button = ({
   inverted,
   invertedOutline,
   ghostPill,
+  ghostPillInverted,
   ...rest
 }) => {
   const modifiers = {
@@ -209,7 +228,9 @@ export const Button = ({
     inverted,
     invertedOutline,
     ghostPill,
+    ghostPillInverted,
   };
+
   const styledAppearance = appearance || modifierToApperance(modifiers);
 
   /* eslint-disable react/button-has-type */
@@ -237,6 +258,7 @@ Button.propTypes = {
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
   ghostPill: PropTypes.bool,
+  ghostPillInverted: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   appearance: PropTypes.oneOf([
@@ -246,6 +268,8 @@ Button.propTypes = {
     'lighter',
     'inverted',
     'invertedOutline',
+    'ghostPill',
+    'ghostPillInverted',
   ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type

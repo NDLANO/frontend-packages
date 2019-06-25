@@ -142,7 +142,7 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const isLetter = (title: string): boolean => {
+export const isLetter = (title: string): boolean => {
   const regTest: RegExp = /^[A-Za-zÅØÆåøæ]+$/;
   const firstLetter = title.substr(0,1);
   return !(firstLetter.match(regTest) === null);

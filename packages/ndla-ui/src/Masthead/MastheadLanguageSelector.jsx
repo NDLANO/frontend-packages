@@ -13,18 +13,31 @@ import FocusTrapReact from 'focus-trap-react';
 import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
 import ChevronDown from '@ndla/icons/lib/common/ChevronDown';
+import css from '@emotion/css';
 
 const classes = new BEMHelper({
   name: 'masthead',
   prefix: 'c-',
 });
 
-const MastheadLanguageSelector = ({ options, currentLanguage, t }) => {
+const cssWhiteButton = css`
+  color: #fff;
+`;
+
+const MastheadLanguageSelector = ({
+  ndlaFilm,
+  options,
+  currentLanguage,
+  t,
+}) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div {...classes('change-language-wrapper')}>
-      <Button ghostPill onClick={() => setIsOpen(true)}>
+      <Button
+        css={ndlaFilm && cssWhiteButton}
+        ghostPill
+        onClick={() => setIsOpen(true)}>
         <span>Velg språk (language): {t(`languages.${infoLocale}`)}</span>
         <ChevronDown />
       </Button>

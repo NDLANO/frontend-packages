@@ -11,35 +11,36 @@
 import { sortCategories } from '../FrontpageCircularSubjectsSection';
 
 test('sortedCategories for NDLA Film', () => {
-  const correctCategoryList = [
+  const correctCategoryList = ['fellesfag', 'studiespesialiserende', 'yrkesfag2'];
+  const test1 = [
     { name: 'fellesfag' },
     { name: 'studiespesialiserende' },
     { name: 'yrkesfag' },
   ];
-  const testCategory1 = [
-    { name: 'fellesfag' },
-    { name: 'studiespesialiserende' },
-    { name: 'yrkesfag' },
-  ];
-  const testCategory2 = [
+  const test2 = [
     { name: 'yrkesfag' },
     { name: 'fellesfag' },
     { name: 'studiespesialiserende' },
   ];
-  const testCategory3 = [
+  const test3 = [
     { name: 'yrkesfag' },
     { name: 'fellesfag' },
     { name: 'studiespesialiserende' },
     { name: 'byggfag' },
   ];
-  const testCategory4 = [
+  const test4 = [
     { name: 'yrkesfag' },
     { name: 'test' },
     { name: 'studiespesialiserende' },
   ];
 
-  expect(sortCategories(testCategory1)).toEqual(correctCategoryList);
-  expect(sortCategories(testCategory2)).toEqual(correctCategoryList);
-  expect(sortCategories(testCategory3)).toEqual(undefined);
-  expect(sortCategories(testCategory4)).toEqual(undefined);
+  const sortedTest1 = sortCategories(test1);
+  const sortedTest2 = sortCategories(test2);
+  const sortedTest3 = sortCategories(test3);
+  const sortedTest4 = sortCategories(test4);
+
+  expect(sortedTest1 && sortedTest1.map(item => item.name)).toEqual(correctCategoryList);
+  expect(sortedTest2 && sortedTest1.map(item => item.name)).toEqual(correctCategoryList);
+  expect(sortedTest3).toBeUndefined();
+  expect(sortedTest4).toBeUndefined();
 });

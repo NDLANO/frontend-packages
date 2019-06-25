@@ -18,17 +18,12 @@ import { createUniversalPortal } from '@ndla/util';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
+import { elementRectType } from './types';
 
 const fullSizedCircle = 1.1;
 
-type elementRectProps = {
-  fromX: number;
-  fromY: number;
-  fromScale: number;
-}
-
 type ModalWrapperProps = {
-  elementRect: elementRectProps;
+  elementRect: elementRectType;
   animationDirection: 'in' | 'out';
   animationNameIn: string;
   animationNameOut: string;
@@ -177,7 +172,7 @@ interface Props {
   onClosed: () => void;
   onClose: () => void;
   animationDirection: 'in' | 'out';
-  elementRect: elementRect;
+  elementRect: elementRectType;
   menuOpenedCounter: number;
   t: any;
 }

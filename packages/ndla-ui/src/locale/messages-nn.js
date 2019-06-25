@@ -517,7 +517,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS og Norsk filminstitutt.',
+        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS.',
       secondParagraph:
         'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:

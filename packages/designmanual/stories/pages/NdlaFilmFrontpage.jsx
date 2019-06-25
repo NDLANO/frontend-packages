@@ -17,7 +17,6 @@ import {
   mockMovieTopics,
   mockMovieResourceTypes,
 } from '../../dummydata';
-import Poster from '../../images/filmposter-aboutNDLA.png';
 
 class NdlaFilmExample extends Component {
   constructor(props) {
@@ -67,10 +66,6 @@ class NdlaFilmExample extends Component {
           title: 'Om NDLA film',
           description:
             'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
-          visualElement: {
-            url: Poster,
-            alt: 'NDLA film',
-          },
         }}
         fetchingMoviesByType={fetchingMoviesByType}
         moreAboutNdlaFilm={

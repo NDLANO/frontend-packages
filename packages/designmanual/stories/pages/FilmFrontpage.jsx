@@ -203,10 +203,6 @@ FilmFrontpage.propTypes = {
   aboutNDLAVideo: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    visualElement: PropTypes.shape({
-      url: PropTypes.string,
-      alt: PropTypes.string,
-    }),
   }),
   resizeThumbnailImages: PropTypes.bool,
   id: PropTypes.string,

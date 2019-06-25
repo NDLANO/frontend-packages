@@ -129,6 +129,12 @@ const appearances = {
       transform: none;
       background-color: ${colors.brand.light};
     }
+
+    > svg {
+      margin-left: ${spacing.xsmall};
+      height: 18px;
+      width: 18px;
+    }
   `,
 };
 

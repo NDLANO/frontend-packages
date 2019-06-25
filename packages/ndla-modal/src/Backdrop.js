@@ -28,19 +28,19 @@ const StyledBackdrop = styled('div')`
   animation-duration: ${props => props.animationDuration};
 `;
 
-export const Backdrop = props => {
+export const Backdrop = React.forwardRef((props, ref) => {
   return (
     <StyledBackdrop
+      ref={ref}
       role="button"
       tabIndex={-1}
-      onKeyDown={() => {}}
       onTouchStart={e => e.preventDefault()}
       onTouchMove={e => e.preventDefault()}
       onTouchEnd={e => e.preventDefault()}
       {...props}
     />
   );
-};
+});
 
 Backdrop.propTypes = {
   animateIn: PropTypes.bool,

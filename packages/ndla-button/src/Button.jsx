@@ -39,20 +39,25 @@ const strippedStyle = css`
 `;
 
 const pillStyle = css`
-  padding: ${spacing.small};
+  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px;
   border-radius: ${spacing.normal};
   transition: background-color ${animations.durations.fast} ease-in-out;
-  color: ${colors.brand.dark};
-  font-weight: 600;
-  ${fonts.sizes('14px', '18px')};
+  color: ${colors.brand.primary};
+  ${fonts.sizes('16px', '18px')};
   background-color: transparent;
-  &:hover {
-    transform: none;
-  }
   > svg {
     margin-left: ${spacing.xsmall};
     height: 18px;
     width: 18px;
+  }
+  > span {
+    box-shadow: 0px 1px 0px ${colors.brand.primary};
+  }
+  &:hover {
+    transform: none;
+    > span {
+      box-shadow: none;
+    }
   }
 `;
 

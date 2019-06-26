@@ -148,7 +148,7 @@ type Props = {
     [key: string]: React.FunctionComponent;
   };
   linkToAbout: React.ReactNode,
-  t: () => void;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const initialState: StateObject = {

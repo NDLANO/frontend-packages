@@ -80,13 +80,10 @@ const Image = ({
   }
 
   return (
-    <img
-      alt={alt}
-      srcSet={srcSet}
-      sizes={sizes}
-      src={`${src}?${queryString}`}
-      {...rest}
-    />
+    <picture>
+      <source type={contentType} srcSet={srcSet} />
+      <img alt={alt} src={`${src}?${queryString}`} {...rest} />
+    </picture>
   );
 };
 

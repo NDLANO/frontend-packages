@@ -4,6 +4,7 @@ import { mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
 import { category as categoryProp } from './types';
+import { sortCategories } from './sortCategories';
 import {
   categoryIllustrations,
   categoryIllustrationsInModal,
@@ -35,28 +36,42 @@ const StyledSubjects = styled.div`
 type Props = {
   categories: categoryProp[];
   linkToAbout: React.ReactNode;
-  t: any;
-}
-
-export const sortCategories = (categories: categoryProp[]): categoryProp[] | undefined => {
-  // Illustation requires categories to be ordered in a specific way..
-  const indexFellesfag: number = categories.findIndex(category => category.name === 'fellesfag');
-  const indexYrkesfag: number = categories.findIndex(category => category.name === 'yrkesfag');
-  const indexstudieSpesialiserende: number = categories.findIndex(category => category.name === 'studiespesialiserende');
-  const allIndexedSummed: number = indexFellesfag + indexYrkesfag + indexstudieSpesialiserende;
-  if (allIndexedSummed !== 3 || indexFellesfag === -1 || indexYrkesfag === -1 || indexstudieSpesialiserende === -1) {
-    return undefined;
-  }
-  return [
-    categories[indexFellesfag],
-    categories[indexstudieSpesialiserende],
-    categories[indexYrkesfag],
-  ];
+  t: () => void;
 }
 
 const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
   categories, linkToAbout,
 }) => {
+  const testArray: categoryProp[] = [
+    {
+      name: 'fellesfag',
+      subjects: [
+        {
+          url: '#1',
+          text: 'Engelsk'
+        },
+      ]
+    },
+    {
+      name: 'studiespesialiserende',
+      subjects: [
+        {
+          url: '#1',
+          text: 'Biologi 1'
+        },
+      ]
+    },
+    {
+      name: 'yrkesfag',
+      subjects: [
+        {
+          url: '#1',
+          text: 'Barne- og undersarbeiderfag',
+        },
+      ]
+    }
+  ];
+  console.log(sortCategories(testArray));
   const sortedCategories: categoryProp[] | undefined = sortCategories(categories);
   if (!sortedCategories) {
     console.warn('Category types not valid. Must have names [fellesfag, yrkesfag, studiespesialiserende] and only that.')

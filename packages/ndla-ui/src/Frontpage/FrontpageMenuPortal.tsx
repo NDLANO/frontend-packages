@@ -174,7 +174,7 @@ interface Props {
   animationDirection: 'in' | 'out';
   elementRect: elementRectType;
   menuOpenedCounter: number;
-  t: any;
+  t: () => void;
 }
 
 const FrontpageMenuPortal: React.FunctionComponent<Props> = ({

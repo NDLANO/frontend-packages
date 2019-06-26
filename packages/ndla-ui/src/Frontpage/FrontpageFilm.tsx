@@ -72,7 +72,7 @@ const StyledText = styled.span<StyledTextProps>`
 `;
 
 type Props = {
-  t: any;
+  t: () => void;
   url: string;
   imageUrl: string;
 };

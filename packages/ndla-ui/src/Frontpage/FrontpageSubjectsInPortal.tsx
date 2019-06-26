@@ -116,7 +116,7 @@ interface Props {
   title: string;
   subjects: subjectProp[];
   linkToAbout: React.ReactNode,
-  t: any;
+  t: () => void;
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({

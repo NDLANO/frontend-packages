@@ -11,6 +11,7 @@ import MovieGrid from './MovieGrid';
 import AboutNdlaFilm from './AboutNdlaFilm';
 import FilmMovieSearch from './FilmMovieSearch';
 import FilmMovieList from './FilmMovieList';
+import AllMoviesAlphabetically from './AllMoviesAlphabetically';
 
 export {
   FilmSlideshow,
@@ -18,4 +19,5 @@ export {
   AboutNdlaFilm,
   FilmMovieSearch,
   FilmMovieList,
+  AllMoviesAlphabetically,
 };

@@ -13,3 +13,6 @@
 export * from './index-javascript';
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as SafeLink } from './common/SafeLink';
+
+// @ts-ignore
+export { AllMoviesAlphabetically } from './NDLAFilm';

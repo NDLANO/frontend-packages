@@ -513,6 +513,7 @@ const messages = {
       featureFilm: 'Spillefilm',
       series: 'Tv-serie',
       shortFilm: 'Kortfilm',
+      all: 'Alle filmar A-Å',
     },
     moreAboutNdlaFilm: {
       header: 'NDLA Film',

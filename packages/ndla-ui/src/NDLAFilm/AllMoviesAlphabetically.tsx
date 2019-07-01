@@ -10,7 +10,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import throttle from 'lodash/throttle';
-import { breakpoints, mq, spacing, colors, fonts, animations } from '@ndla/core';
+import {
+  breakpoints,
+  mq,
+  spacing,
+  colors,
+  fonts,
+  animations,
+} from '@ndla/core';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
@@ -26,11 +33,11 @@ const StyledNewLetter = styled.h2`
     text-indent: ${spacing.spacingUnit * 0.75}px;
   }
   &:after {
-    content: "";
+    content: '';
     display: block;
     height: 1px;
     background: ${colors.brand.greyDark};
-    margin-top: ${spacing.small}; 
+    margin-top: ${spacing.small};
   }
 `;
 
@@ -56,10 +63,12 @@ const MovieItem = styled.div<MovieItemProps>`
   opacity: 0;
   transform: translateY(${spacing.xsmall});
   transition: all ${animations.durations.slow} ease;
-  ${(props: MovieItemProps) => props.inView && css`
-    opacity: 1;
-    transform: translateY(0);
-  `};
+  ${(props: MovieItemProps) =>
+    props.inView &&
+    css`
+      opacity: 1;
+      transform: translateY(0);
+    `};
 `;
 
 const MovieTextWrapper = styled.div`
@@ -77,9 +86,11 @@ const MovieImage = styled.div<movieImageType>`
   width: 104px;
   height: 80px;
   background-color: ${colors.ndlaFilm.filmColorLight};
-  ${(props: movieImageType) => props.backgroundImage !== null && css`
-    background-image: url(${props.backgroundImage});
-  `}
+  ${(props: movieImageType) =>
+    props.backgroundImage !== null &&
+    css`
+      background-image: url(${props.backgroundImage});
+    `}
   background-size: cover;
   background-position: center center;
   margin: 0 ${spacing.spacingUnit * 0.75}px 0 0;
@@ -128,7 +139,8 @@ const MovieDescription = styled.p`
 const StyledSafeLink = styled(SafeLink)`
   box-shadow: none;
   display: flex;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     ${MovieTitle} {
       text-decoration: underline;
     }
@@ -144,31 +156,36 @@ const StyledSafeLink = styled(SafeLink)`
 
 export const isLetter = (title: string): boolean => {
   const regTest: RegExp = /^[A-Za-zÅØÆåøæ]+$/;
-  const firstLetter = title.substr(0,1);
+  const firstLetter = title.substr(0, 1);
   return !(firstLetter.match(regTest) === null);
-}
+};
 
 interface Props {
   movies: movieType[];
+  locale: string;
 }
 
 type visibleImagesProps = {
   [key: string]: boolean | null;
-}
+};
 
-const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies }) => {
+const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
+  movies,
+  locale,
+}) => {
   // Split into Letters.
   let previousLetter = '';
   const wrapperRef: React.RefObject<HTMLElement> = React.useRef(null);
   const [visibleImages, setVisibleImages] = useState<visibleImagesProps>({});
   const scrollEvent = () => {
     const updates: visibleImagesProps = {};
-    const allChildren: NodeListOf<HTMLElement> | null = wrapperRef.current && wrapperRef.current.querySelectorAll('[role=img]');
+    const allChildren: NodeListOf<HTMLElement> | null =
+      wrapperRef.current && wrapperRef.current.querySelectorAll('[role=img]');
     const windowInnerHeight = window.innerHeight;
     if (allChildren) {
       let started: boolean = false;
       let ended: boolean = false;
-      allChildren.forEach(((el: HTMLElement, index: number) => {
+      allChildren.forEach((el: HTMLElement, index: number) => {
         if (!ended) {
           const rect: ClientRect = el.getBoundingClientRect();
           if (!started) {
@@ -183,10 +200,10 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies }) => 
             }
           }
         }
-      }));
+      });
     }
     setVisibleImages(visibleImages => ({ ...visibleImages, ...updates }));
-  }
+  };
   const throttledScrollEvent = throttle(() => {
     scrollEvent();
   }, 100);
@@ -202,27 +219,35 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies }) => 
     <StyledWrapper ref={wrapperRef}>
       {movies.map((movie: movieType, index: number) => {
         const currentLetter = movie.title.substr(0, 1);
-        const isNewLetter = currentLetter.localeCompare(previousLetter) === 1 && isLetter(movie.title);
+        const isNewLetter =
+          currentLetter.localeCompare(previousLetter, locale) === 1 &&
+          isLetter(movie.title);
         previousLetter = currentLetter;
-        const inView: boolean | null = visibleImages ? visibleImages[index] : null;
+        const inView: boolean | null = visibleImages
+          ? visibleImages[index]
+          : null;
         return (
           <Fragment key={movie.id}>
-            {isNewLetter && <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>}
+            {isNewLetter && (
+              <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>
+            )}
             <MovieItem inView={inView}>
               <StyledSafeLink to={`/subjects${movie.path}`}>
-              <MovieImage
-                role="img"
-                backgroundImage={(inView && movie.metaImage && movie.metaImage.url) ? `${movie.metaImage.url}?${makeSrcQueryString(IMAGE_WIDTH * 2)}` : null}
-                aria-label={movie.metaImage && movie.metaImage.alt}
-                title={movie.title}
-              />
+                <MovieImage
+                  role="img"
+                  backgroundImage={
+                    inView && movie.metaImage && movie.metaImage.url
+                      ? `${movie.metaImage.url}?${makeSrcQueryString(
+                          IMAGE_WIDTH * 2,
+                        )}`
+                      : null
+                  }
+                  aria-label={movie.metaImage && movie.metaImage.alt}
+                  title={movie.title}
+                />
                 <MovieTextWrapper>
-                  <MovieTitle>
-                    {movie.title}
-                  </MovieTitle>
-                  <MovieDescription>
-                    {movie.metaDescription}
-                  </MovieDescription>
+                  <MovieTitle>{movie.title}</MovieTitle>
+                  <MovieDescription>{movie.metaDescription}</MovieDescription>
                 </MovieTextWrapper>
               </StyledSafeLink>
             </MovieItem>
@@ -231,6 +256,6 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies }) => 
       })}
     </StyledWrapper>
   );
-}
+};
 
 export default AllMoviesAlphabetically;

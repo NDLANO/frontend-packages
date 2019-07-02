@@ -11,7 +11,7 @@ const FilmContentCard = ({
   distanceBetweenItems,
   resourceTypes,
   resizeThumbnailImages,
-  showTags,
+  hideTags,
 }) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
   if (resizeThumbnailImages && metaImage) {
@@ -31,7 +31,7 @@ const FilmContentCard = ({
           style={{
             backgroundImage: `url(${backgroundImage})`,
           }}>
-          {movieResourceTypes && showTags && (
+          {movieResourceTypes && !hideTags && (
             <FilmContentCardTags
               movieResourceTypes={movieResourceTypes}
               resourceTypes={resourceTypes}
@@ -110,11 +110,11 @@ FilmContentCard.propTypes = {
   distanceBetweenItems: PropTypes.number,
   resourceTypes: PropTypes.arrayOf(PropTypes.object),
   resizeThumbnailImages: PropTypes.bool,
-  showTags: PropTypes.bool,
+  hideTags: PropTypes.bool,
 };
 
 FilmContentCard.defaultProps = {
-  showTags: true,
+  hideTags: false,
 };
 
 export default FilmContentCard;

@@ -48,7 +48,7 @@ const MovieGrid = ({
       {!fetchingMoviesByType &&
         moviesByType.map(movie => (
           <FilmContentCard
-            showTags={false}
+            hideTags
             movie={movie}
             columnWidth={autoSizedProps.columnWidth}
             distanceBetweenItems={autoSizedProps.distanceBetweenItems}

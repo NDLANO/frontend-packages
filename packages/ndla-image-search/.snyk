@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - '@ndla/forms > @ndla/ui > lodash':
+        patched: '2019-07-03T22:57:44.302Z'
+    - '@ndla/forms > @ndla/ui > @ndla/hooks > lodash':
+        patched: '2019-07-03T22:57:44.302Z'

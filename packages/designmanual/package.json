@@ -10,7 +10,9 @@
   "scripts": {
     "start": "npm run storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -c .storybook -o ../../.out"
+    "build-storybook": "build-storybook -c .storybook -o ../../.out",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -51,6 +53,8 @@
   },
   "dependencies": {
     "@ndla/forms": "^0.3.11",
-    "downshift": "^3.2.2"
-  }
+    "downshift": "^3.2.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }

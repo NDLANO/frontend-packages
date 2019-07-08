@@ -17,7 +17,11 @@ import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '../common/SafeLink';
-import { subjectProp } from './types';
+import { category as categoryProp } from './types';
+import {
+  categoryIllustrations,
+  categoryIllustrationsInModal,
+} from './illustrations';
 
 const StyledHeader = styled.h1`
   color: ${colors.brand.primary};
@@ -111,80 +115,81 @@ const StyledListItem = styled.li`
 `;
 
 interface Props {
-  Illustration: React.FunctionComponent,
-  IllustrationMobile: React.FunctionComponent,
-  title: string;
-  subjects: subjectProp[];
+  category: categoryProp;
   linkToAbout: React.ReactNode,
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
-  Illustration,
-  IllustrationMobile,
-  title,
-  subjects,
+  category,
   linkToAbout,
   t,
-}) => (
-  <StyledNav>
-    <StyledHeader>{title}</StyledHeader>
-    <StyledFigure>
-      <Illustration />
-    </StyledFigure>
-    <StyledFigure mobile>
-      <IllustrationMobile />
-    </StyledFigure>
-    <StyledList>
-      {subjects.map(subject => (
-        <StyledListItem key={subject.url}>
-          <StyledSafeLink to={subject.url}>{subject.text}</StyledSafeLink>
-          {subject.yearInfo && <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>}
-          {subject.beta && (
-            <Modal
-              narrow
-              activateButton={
-                <Button
-                  lighter
-                  css={css`
-                    padding: ${spacing.xsmall};
-                    margin-left: ${spacing.xsmall};
-                    line-height: 1em;
-                    background: ${colors.brand.light};
-                  `}
-                  aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
-                    title: subject.text,
-                  })}>
-                  {t('subjectPage.subjectIsBeta.iconLabel')}
-                </Button>
-              }>
-              {(onClose: void) => (
-                <>
-                  <ModalHeader>
-                    <ModalCloseButton
-                      onClick={onClose}
-                      title={t('modal.closeModal')}
-                    />
-                  </ModalHeader>
-                  <ModalBody>
-                    <h1>
-                      {t('subjectPage.subjectIsBeta.dialogHeader', {
-                        title: subject.text,
-                      })}
-                    </h1>
-                    <hr />
-                    <p>
-                      {t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}
-                    </p>
-                  </ModalBody>
-                </>
-              )}
-            </Modal>
-          )}
-        </StyledListItem>
-      ))}
-    </StyledList>
-  </StyledNav>
-);
+}) => {
+  // @ts-ignore
+  const Illustration = categoryIllustrationsInModal[category.name]
+  // @ts-ignore
+  const IllustrationMobile = categoryIllustrations[category.name]
+
+  return (
+    <StyledNav>
+      <StyledHeader>{t(`welcomePage.category.${category.name}`)}</StyledHeader>
+      <StyledFigure>
+        <Illustration />
+      </StyledFigure>
+      <StyledFigure mobile>
+        <IllustrationMobile />
+      </StyledFigure>
+      <StyledList>
+        {category.subjects.map(subject => (
+          <StyledListItem key={subject.url}>
+            <StyledSafeLink to={subject.url}>{subject.text}</StyledSafeLink>
+            {subject.yearInfo && <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>}
+            {subject.beta && (
+              <Modal
+                narrow
+                activateButton={
+                  <Button
+                    lighter
+                    css={css`
+                      padding: ${spacing.xsmall};
+                      margin-left: ${spacing.xsmall};
+                      line-height: 1em;
+                      background: ${colors.brand.light};
+                    `}
+                    aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
+                      title: subject.text,
+                    })}>
+                    {t('subjectPage.subjectIsBeta.iconLabel')}
+                  </Button>
+                }>
+                {(onClose: void) => (
+                  <>
+                    <ModalHeader>
+                      <ModalCloseButton
+                        onClick={onClose}
+                        title={t('modal.closeModal')}
+                      />
+                    </ModalHeader>
+                    <ModalBody>
+                      <h1>
+                        {t('subjectPage.subjectIsBeta.dialogHeader', {
+                          title: subject.text,
+                        })}
+                      </h1>
+                      <hr />
+                      <p>
+                        {t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}
+                      </p>
+                    </ModalBody>
+                  </>
+                )}
+              </Modal>
+            )}
+          </StyledListItem>
+        ))}
+      </StyledList>
+    </StyledNav>
+  )
+};
   
 export default injectT(FrontpageSubjectsInPortal);

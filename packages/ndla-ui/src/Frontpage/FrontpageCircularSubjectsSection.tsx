@@ -5,10 +5,6 @@ import { mq, breakpoints, spacing } from '@ndla/core';
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
 import { category as categoryProp } from './types';
 import { sortCategories } from './sortCategories';
-import {
-  categoryIllustrations,
-  categoryIllustrationsInModal,
-} from './illustrations';
 
 const StyledSection = styled.section`
   margin: 0 auto;
@@ -37,58 +33,32 @@ type Props = {
   categories: categoryProp[];
   linkToAbout: React.ReactNode;
   t: () => void;
-}
+};
 
 const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
-  categories, linkToAbout,
+  categories,
+  linkToAbout,
 }) => {
-  const testArray: categoryProp[] = [
-    {
-      name: 'fellesfag',
-      subjects: [
-        {
-          url: '#1',
-          text: 'Engelsk'
-        },
-      ]
-    },
-    {
-      name: 'studiespesialiserende',
-      subjects: [
-        {
-          url: '#1',
-          text: 'Biologi 1'
-        },
-      ]
-    },
-    {
-      name: 'yrkesfag',
-      subjects: [
-        {
-          url: '#1',
-          text: 'Barne- og undersarbeiderfag',
-        },
-      ]
-    }
-  ];
-  console.log(sortCategories(testArray));
-  const sortedCategories: categoryProp[] | undefined = sortCategories(categories);
-  if (!sortedCategories) {
-    console.warn('Category types not valid. Must have names [fellesfag, yrkesfag, studiespesialiserende] and only that.')
-    return null;
+
+  const sortedCategories: categoryProp[] = sortCategories(
+    categories,
+  );
+  if (!(sortedCategories && sortedCategories.length)) {
+    console.warn(
+      'Category types not valid. Must have names [fellesfag, yrkesfag, studiespesialiserende] and only that.',
+    );
+    return <></>;
   }
   return (
     <StyledSection>
       <StyledSubjects>
         <FrontpageCombinedSubjects
-          categoryIllustrations={categoryIllustrations}
-          categoryIllustrationsInModal={categoryIllustrationsInModal}
           categories={sortedCategories}
           linkToAbout={linkToAbout}
         />
       </StyledSubjects>
     </StyledSection>
   );
-}
+};
 
 export default FrontpageCircularSubjectsSection;

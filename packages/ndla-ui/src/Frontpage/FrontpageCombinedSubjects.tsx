@@ -10,6 +10,9 @@ import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
 import { category as categoryProp, elementRectType } from './types';
+import {
+  categoryIllustrations,
+} from './illustrations';
 
 const StyledMobileSubjectLink = styled.div`
   display: flex;
@@ -73,7 +76,7 @@ const StyledButton = styled.button`
   margin: 0;
   padding: 0;
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 160px;
     height: 160px;
@@ -81,7 +84,8 @@ const StyledButton = styled.button`
     background: ${colors.brand.lighter};
     transition: transform 200ms ease, background 200ms ease;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     &:before {
       transform: scale(1.1);
       background: ${colors.brand.light};
@@ -133,7 +137,6 @@ interface StateObject {
   menuOpenedCounter?: number;
   elementRect?: elementRectType;
 }
-
 const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
   ...state,
   ...data,
@@ -141,13 +144,7 @@ const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
 
 type Props = {
   categories: categoryProp[];
-  categoryIllustrations: {
-    [key: string]: React.FunctionComponent;
-  };
-  categoryIllustrationsInModal: {
-    [key: string]: React.FunctionComponent;
-  };
-  linkToAbout: React.ReactNode,
+  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -157,8 +154,6 @@ const initialState: StateObject = {
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
-  categoryIllustrations,
-  categoryIllustrationsInModal,
   linkToAbout,
   t,
 }) => {
@@ -173,17 +168,17 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
 
   const calculateScaling = (element: HTMLElement): elementRectType => {
     const { innerWidth } = window;
-    const elementClientRect:ClientRect = element.getBoundingClientRect();
+    const elementClientRect: ClientRect = element.getBoundingClientRect();
     return {
       fromX: elementClientRect.left + elementClientRect.width / 2,
       fromY: elementClientRect.top + elementClientRect.height / 2,
       fromScale: elementClientRect.width / innerWidth,
-    }
+    };
   };
 
   const closeMenu = () => {
     dispatch({ animationDirection: 'out' });
-  }
+  };
 
   const closedMenu = () => {
     dispatch({
@@ -193,7 +188,10 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     noScroll(false, 'frontpagePortal');
   };
 
-  const openMenu = (event: React.MouseEvent<HTMLButtonElement>, categoryIndex: number) => {
+  const openMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    categoryIndex: number,
+  ) => {
     dispatch({
       categoryIndex,
       menuIsOpen: true,
@@ -212,22 +210,18 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         onClose={closeMenu}
         animationDirection={animationDirection}
         elementRect={elementRect}>
-        {categoryIndex !== undefined && (
+        {categoryIndex !== undefined &&
           <FrontpageSubjectsInPortal
             linkToAbout={linkToAbout}
-            Illustration={categoryIllustrationsInModal[categories[categoryIndex].name]}
-            IllustrationMobile={categoryIllustrations[categories[categoryIndex].name]}
-            title={t(`welcomePage.category.${categories[categoryIndex].name}`)}
-            subjects={categories[categoryIndex].subjects}
+            category={categories[categoryIndex]}
           />
-        )}
+        }
       </FrontpageMenuPortal>}
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => openMenu(event, index)}
-            textValue={t(`welcomePage.category.${category.name}`)}
-            Illustration={categoryIllustrations[category.name]}
+            category={category}
           />
         </StyledMobileSubjectLink>
       ))}

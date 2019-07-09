@@ -80,7 +80,6 @@ const LicenseIconItem = ({
   removeBottomPadding,
 }) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight);
-  console.log(licenseRight, description);
 
   return (
     <StyledLicenseIconItem

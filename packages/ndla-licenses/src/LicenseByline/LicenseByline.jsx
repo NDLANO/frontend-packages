@@ -17,6 +17,7 @@ const LicenseByline = ({
   locale,
   color,
   marginRight,
+  ...rest
 }) => {
   return (
     <StyledLicenseByline>
@@ -26,6 +27,7 @@ const LicenseByline = ({
         color={color}
         marginRight={marginRight}
         horizontal
+        {...rest}
       />
       {children}
     </StyledLicenseByline>

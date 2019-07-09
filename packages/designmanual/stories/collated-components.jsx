@@ -24,6 +24,7 @@ import {
   Translation,
   TranslationLine,
   ArticleByline,
+  ArticleBylineBox,
   RadioButtonGroup,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
@@ -57,6 +58,46 @@ import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 
 storiesOf('Sammensatte moduler', module)
+  .add('Artikkel info boks', () => (
+    <div>
+      <StoryIntro title="Artikkel info boks">
+        <p>
+          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse
+          av regler ved bruk av innhold, ikon hvis artikkel er tilleggsstoff og
+          dato for forrige oppdatering.
+        </p>
+      </StoryIntro>
+      <StoryBody layout="extend">
+        <LanguageSelector />
+        <h2 className="u-heading">Artikkel info boks</h2>
+        <ArticleBylineBox
+          authors={[
+            {
+              name: 'Cecilie Isaksen Eftedal',
+              shortName: 'Cecilie',
+              role: 'Forfatter',
+              licenses: ['CC', 'BY', 'SA'],
+            },
+            {
+              name: 'Riksarkivet',
+              shortName: 'Riksarkivet',
+              role: 'Leverandør',
+              licenses: ['CC', 'BY', 'SA'],
+            },
+            {
+              name: 'Norges kvinne- og familieforbund',
+              shortName: 'NKF',
+              role: 'Opphavsperson',
+              licenses: ['CC', 'BY', 'SA'],
+            },
+          ]}
+          published="21.06.2018"
+          license={['CC', 'BY', 'SA']}
+          licenseBox={<LicenseBox />}
+        />
+      </StoryBody>
+    </div>
+  ))
   .add('Artikkel info linje', () => (
     <div>
       <StoryIntro title="Artikkel informasjonslinje">

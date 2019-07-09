@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { colors, fonts, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
+import css from '@emotion/css';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
@@ -20,6 +21,12 @@ const StyledLicenseIconItem = styled.li`
   margin-bottom: 0;
   margin-right: 0.2em;
   line-height: 1.3rem;
+
+  ${({ removeBottomPadding }) =>
+    removeBottomPadding &&
+    css`
+      padding-bottom: 0;
+    `}
 
   span {
     z-index: 1;
@@ -37,12 +44,6 @@ const StyledLicenseIconItem = styled.li`
     ${fonts.sizes('14px', '18px')};
   }
 
-  svg {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-  }
-
   &:hover {
     svg {
       color: ${colors.brand.primary};
@@ -55,13 +56,36 @@ const StyledLicenseIconItem = styled.li`
       animation-duration: 200ms;
     }
   }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    cursor: pointer;
+
+    ${({ size }) =>
+      size &&
+      css`
+        height: ${size};
+        width: ${size};
+        min-width: ${size};
+      `}
+  }
 `;
 
-const LicenseIconItem = ({ licenseRight, locale }) => {
+const LicenseIconItem = ({
+  licenseRight,
+  locale,
+  size,
+  removeBottomPadding,
+}) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight);
+  console.log(licenseRight, description);
 
   return (
-    <StyledLicenseIconItem>
+    <StyledLicenseIconItem
+      size={size}
+      removeBottomPadding={removeBottomPadding}>
       <LicenseIcon licenseRight={licenseRight} description={description} />
       <span>
         {getLicenseRightByAbbreviation(licenseRight, locale).description}
@@ -80,6 +104,8 @@ const LicenseIconList = ({
   color,
   marginRight,
   horizontal,
+  size,
+  removeBottomPadding,
 }) => (
   <StyledLicenseIconList
     marginRight={marginRight}
@@ -88,8 +114,10 @@ const LicenseIconList = ({
     {licenseRights.map(licenseRight => (
       <LicenseIconItem
         key={licenseRight}
-        licenseRight={licenseRight}
+        licenseRight={licenseRight.toLowerCase()}
+        removeBottomPadding={removeBottomPadding}
         locale={locale}
+        size={size}
       />
     ))}
   </StyledLicenseIconList>
@@ -101,6 +129,8 @@ LicenseIconList.propTypes = {
   color: PropTypes.string,
   marginRight: PropTypes.bool,
   horizontal: PropTypes.bool,
+  size: PropTypes.string,
+  removeBottomPadding: PropTypes.bool,
 };
 
 export default LicenseIconList;

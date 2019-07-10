@@ -10,6 +10,7 @@ import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
 import { category as categoryProp, elementRectType } from './types';
+import { calculateScaling } from './util';
 
 const StyledMobileSubjectLink = styled.div`
   display: flex;
@@ -131,7 +132,7 @@ interface StateObject {
   animationDirection?: 'in' | 'out';
   menuIsOpen: boolean;
   categoryIndex?: number;
-  menuOpenedCounter?: number;
+  menuOpenedCounter: number;
   elementRect?: elementRectType;
 }
 
@@ -160,16 +161,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     menuOpenedCounter,
   } = currentState;
 
-  const calculateScaling = (element: HTMLElement): elementRectType => {
-    const { innerWidth } = window;
-    const elementClientRect: ClientRect = element.getBoundingClientRect();
-    return {
-      fromX: elementClientRect.left + elementClientRect.width / 2,
-      fromY: elementClientRect.top + elementClientRect.height / 2,
-      fromScale: elementClientRect.width / innerWidth,
-    };
-  };
-
   const closeMenu = () => {
     setState(prevState => {
       return { ...prevState, animationDirection: 'out', menuIsOpen: false };
@@ -195,7 +186,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         menuIsOpen: true,
         animationDirection: 'in',
         elementRect,
-        menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
+        menuOpenedCounter: menuOpenedCounter + 1,
       };
     });
     noScroll(true, 'frontpagePortal');

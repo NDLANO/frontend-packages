@@ -201,6 +201,7 @@ const messages = {
       textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
+    blog: 'From our blog',
     errorDescription: 'Sorry, an error occurd while loading the subjects.',
   },
   meta: {

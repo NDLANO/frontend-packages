@@ -190,6 +190,7 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
+      heading: 'Kva lærar du?',
     },
     film: {
       header: 'NDLA film',
@@ -198,6 +199,7 @@ const messages = {
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
+    blog: 'Frå bloggen',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {

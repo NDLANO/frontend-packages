@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
@@ -134,10 +134,6 @@ interface StateObject {
   menuOpenedCounter?: number;
   elementRect?: elementRectType;
 }
-const menuReducer: React.Reducer<StateObject, StateObject> = (state, data) => ({
-  ...state,
-  ...data,
-});
 
 type Props = {
   categories: categoryProp[];
@@ -155,7 +151,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   linkToAbout,
   t,
 }) => {
-  const [currentState, dispatch] = useReducer<React.Reducer<StateObject, StateObject>>(menuReducer, initialState);
+  const [currentState, setState] = useState(initialState);
   const {
     elementRect,
     menuIsOpen,
@@ -175,13 +171,14 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   };
 
   const closeMenu = () => {
-    dispatch({ animationDirection: 'out', menuIsOpen: false });
+    setState(prevState => {
+      return { ...prevState, animationDirection: 'out', menuIsOpen: false };
+    });
   };
 
   const closedMenu = () => {
-    dispatch({
-      menuIsOpen: false,
-      categoryIndex: undefined,
+    setState(prevState => {
+      return { ...prevState, menuIsOpen: false, categoryIndex: undefined };
     });
     noScroll(false, 'frontpagePortal');
   };
@@ -190,12 +187,16 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     event: React.MouseEvent<HTMLButtonElement>,
     categoryIndex: number,
   ) => {
-    dispatch({
-      categoryIndex,
-      menuIsOpen: true,
-      animationDirection: 'in',
-      elementRect: calculateScaling(event.currentTarget),
-      menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
+    const elementRect = calculateScaling(event.currentTarget);
+    setState(prevState => {
+      return {
+        ...prevState,
+        categoryIndex,
+        menuIsOpen: true,
+        animationDirection: 'in',
+        elementRect,
+        menuOpenedCounter: menuOpenedCounter ? menuOpenedCounter + 1 : 1,
+      };
     });
     noScroll(true, 'frontpagePortal');
   };

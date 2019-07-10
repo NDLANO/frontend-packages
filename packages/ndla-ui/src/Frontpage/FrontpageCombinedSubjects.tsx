@@ -10,9 +10,6 @@ import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
 import { category as categoryProp, elementRectType } from './types';
-import {
-  categoryIllustrations,
-} from './illustrations';
 
 const StyledMobileSubjectLink = styled.div`
   display: flex;
@@ -32,7 +29,7 @@ const StyledMobileSubjectLink = styled.div`
   }
 `;
 
-const LinkContainer = styled.div`
+const StyledLinkContainer = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -132,7 +129,7 @@ const StyledNavContainer = styled.nav`
 
 interface StateObject {
   animationDirection?: 'in' | 'out';
-  menuIsOpen?: boolean;
+  menuIsOpen: boolean;
   categoryIndex?: number;
   menuOpenedCounter?: number;
   elementRect?: elementRectType;
@@ -150,6 +147,7 @@ type Props = {
 
 const initialState: StateObject = {
   menuOpenedCounter: 1,
+  menuIsOpen: false,
 };
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
@@ -177,7 +175,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   };
 
   const closeMenu = () => {
-    dispatch({ animationDirection: 'out' });
+    dispatch({ animationDirection: 'out', menuIsOpen: false });
   };
 
   const closedMenu = () => {
@@ -201,40 +199,48 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     });
     noScroll(true, 'frontpagePortal');
   };
-  
+
   return (
     <>
-      {menuIsOpen && <FrontpageMenuPortal
-        menuOpenedCounter={menuOpenedCounter}
-        onClosed={closedMenu}
-        onClose={closeMenu}
-        animationDirection={animationDirection}
-        elementRect={elementRect}>
-        {categoryIndex !== undefined &&
-          <FrontpageSubjectsInPortal
-            linkToAbout={linkToAbout}
-            category={categories[categoryIndex]}
-          />
-        }
-      </FrontpageMenuPortal>}
+      {menuIsOpen && (
+        <FrontpageMenuPortal
+          menuOpenedCounter={menuOpenedCounter}
+          onClosed={closedMenu}
+          onClose={closeMenu}
+          animationDirection={animationDirection}
+          elementRect={elementRect}>
+          {categoryIndex !== undefined && (
+            <FrontpageSubjectsInPortal
+              linkToAbout={linkToAbout}
+              category={categories[categoryIndex]}
+            />
+          )}
+        </FrontpageMenuPortal>
+      )}
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => openMenu(event, index)}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+              openMenu(event, index)
+            }
             category={category}
           />
         </StyledMobileSubjectLink>
       ))}
       <StyledNavContainer>
-        <LinkContainer>
+        <StyledLinkContainer>
           {categories.map((category: categoryProp, index: number) => (
             <StyledButton
               key={category.name}
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => openMenu(event, index)}>
-              <StyledLinkedText>{t(`welcomePage.category.${category.name}`)}</StyledLinkedText>
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                openMenu(event, index)
+              }>
+              <StyledLinkedText>
+                {t(`welcomePage.category.${category.name}`)}
+              </StyledLinkedText>
             </StyledButton>
           ))}
-        </LinkContainer>
+        </StyledLinkContainer>
         <StyledIllustrationContainer>
           <FrontpageSubjectIllustration />
         </StyledIllustrationContainer>

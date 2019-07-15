@@ -10,14 +10,12 @@
 
 import { sortCategories } from '../sortCategories';
 
-const arrayIsCorrect = array => {
-  return (
-    array &&
-    array[0].name === 'fellesfag' &&
-    array[1].name === 'studiespesialiserende' &&
-    array[2].name === 'yrkesfag'
-  );
-};
+const arrayIsCorrect = array =>
+  array &&
+  array.length &&
+  array[0].name === 'fellesfag' &&
+  array[1].name === 'studiespesialiserende' &&
+  array[2].name === 'yrkesfag';
 
 test('Frontpage/sortCategories function test', () => {
   // Correct input and order

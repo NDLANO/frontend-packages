@@ -45,7 +45,7 @@
     "focus-trap": "^4.0.2",
     "focus-trap-react": "^6.0.0",
     "jump.js": "^1.0.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.14",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^1.6.2",
     "react-facebook": "^6.0.15",

@@ -33,6 +33,7 @@ export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';
 export { default as Information } from './Information';
 export { default as InformationOutline } from './InformationOutline';
+export { default as Launch } from './Launch';
 export { default as Link } from './Link';
 export { default as Menu } from './Menu';
 export { default as Pause } from './Pause';

@@ -158,7 +158,7 @@ const messages = {
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
-      searchFieldPlaceholder: 'Søk etter f.eks emner, lærestoff, nøkkelord...',
+      searchFieldPlaceholder: 'Hva vil du lære om i dag?',
       messages: {
         searchFieldTitle: 'Søk',
         menuButton: 'Meny',
@@ -189,6 +189,7 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
+      heading: 'Hva lærer du?',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
     film: {
@@ -198,6 +199,7 @@ const messages = {
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
+    blog: 'Fra bloggen',
   },
   meta: {
     description:

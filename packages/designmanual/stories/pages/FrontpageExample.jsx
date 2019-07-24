@@ -1,25 +1,34 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
-  FrontpageHeader,
-  FrontpageSubjects,
-  ContentCard,
+  FrontpageHeaderNew,
   OneColumn,
   FrontpageInfo,
-  FrontpageSearchSection,
   FrontpageFilm,
+  FrontpageCircularSubjectsSection,
   InfoWidget,
   SafeLink,
   SubjectSectionTitle,
+  BlogPost,
+  BlogPostWrapper,
 } from '@ndla/ui';
-import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-import { contentCards, categories } from '../../dummydata/index';
+import { categories } from '../../dummydata/index';
+import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
+import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
-const classes = BEMHelper('c-frontpage-section');
+const dummyBlogImages = [
+  {
+    url: BlogExampleImage1,
+    alt: 'Alt-tekst eksempel til Blogg-bilde..',
+  },
+  {
+    url: BlogExampleImage2,
+    alt: 'Alt-tekst eksempel til Blogg-bilde..',
+  },
+];
 
 const exampleTopicsNotInNDLA = [
   'Kokk og servitørfag Vg2',
@@ -88,7 +97,7 @@ class FrontpageExample extends Component {
 
     return (
       <>
-        <FrontpageHeader
+        <FrontpageHeaderNew
           locale="nb"
           searchFieldValue={searchFieldValue}
           logoTo="home"
@@ -125,7 +134,7 @@ class FrontpageExample extends Component {
                         subName: 'Vg1',
                       },
                       {
-                        path: '#f2',
+                        path: '#f3',
                         boldName: 'Fellesfag:',
                         name: 'Samfunnsfag',
                       },
@@ -227,16 +236,11 @@ class FrontpageExample extends Component {
                 ]
               : []
           }
-          menuSubject={
-            <FrontpageSubjects
-              categories={categories}
-              linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
-            />
-          }
           messages={{
             searchFieldTitle: t(
               'welcomePage.heading.messages.searchFieldTitle',
             ),
+            closeSearchLabel: t('welcomePage.closeSearch'),
             menuButton: t('welcomePage.heading.messages.menuButton'),
           }}
           links={[
@@ -252,71 +256,46 @@ class FrontpageExample extends Component {
               to: '#3',
               text: 'Nyhetsbrev',
             },
-            {
-              to: '#4',
-              text: 'Change language',
-            },
           ]}
+          languageOptions={{
+            nb: {
+              name: 'Bokmål',
+              url: '#',
+            },
+            nn: {
+              name: 'Nynorsk',
+              url: '#',
+            },
+            en: {
+              name: 'English',
+              url: '#',
+            },
+          }}
         />
         <main>
-          <FrontpageSubjects
+          <FrontpageCircularSubjectsSection
             categories={categories}
             linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
           />
           <OneColumn wide extraPadding>
-            <FrontpageSearchSection
-              heading={t('welcomePage.heading.messages.searchFieldTitle')}
-              searchFieldValue=""
-              onSearch={() => {}}
-              onSearchFieldChange={() => {}}
-            />
-            <section {...classes()}>
-              <SubjectSectionTitle>
-                {t('welcomePage.highlighted')}
-              </SubjectSectionTitle>
-              <CarouselAutosize
-                breakpoints={[
-                  {
-                    until: 'mobile',
-                    columnsPrSlide: 1.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 13,
-                  },
-                  {
-                    until: 'mobileWide',
-                    columnsPrSlide: 2.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 13,
-                  },
-                  {
-                    until: 'tabletWide',
-                    columnsPrSlide: 3.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 26,
-                  },
-                  {
-                    columnsPrSlide: 4.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 26,
-                  },
-                ]}>
-                {autoSizedProps => (
-                  <Carousel
-                    slideBackwardsLabel={t('carousel.back')}
-                    slideForwardsLabel={t('carousel.forward')}
-                    buttonClass="c-carousel__arrow"
-                    wrapperClass="c-carousel__wrapper"
-                    items={contentCards.map(subject => (
-                      <ContentCard
-                        {...subject}
-                        columnWidth={autoSizedProps.columnWidth}
-                        key={subject.id}
-                      />
-                    ))}
-                    {...autoSizedProps}
-                  />
-                )}
-              </CarouselAutosize>
+            <section>
+              <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
+              <BlogPostWrapper>
+                <BlogPost
+                  text="Hjelp til deg som skal opp i norsk"
+                  image={dummyBlogImages[0]}
+                  externalLink="#"
+                  linkText="Besøk vår elevblogg"
+                  linkTextShort="Elevblogg"
+                />
+                <BlogPost
+                  text="Hjelp til deg som skal opp i norsk"
+                  image={dummyBlogImages[1]}
+                  externalLink="#"
+                  linkText="Besøk vår fagblogg"
+                  linkTextShort="Fagblogg"
+                />
+              </BlogPostWrapper>
             </section>
             <FrontpageFilm
               imageUrl={NdlaFilmIllustration}

@@ -58,6 +58,7 @@ const StyledMovieTitle = styled.h2`
     ${fonts.sizes('18px', '24px')};
   }
 `;
+
 const StyledImage = styled.div`
   height: ${props => props.columnWidth * 0.5625}px;
   background-size: cover;

@@ -192,6 +192,7 @@ const messages = {
       yrkesfag: 'Vocational',
       studiespesialiserende: 'Specialization',
       imported: 'Imported subjects',
+      heading: 'What will you learn?',
     },
     film: {
       header: 'NDLA film',
@@ -200,6 +201,7 @@ const messages = {
       textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
+    blog: 'From our blog',
     errorDescription: 'Sorry, an error occurd while loading the subjects.',
   },
   meta: {

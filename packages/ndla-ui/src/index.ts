@@ -16,3 +16,16 @@ export { default as SafeLink } from './common/SafeLink';
 
 // @ts-ignore
 export { AllMoviesAlphabetically } from './NDLAFilm';
+export {
+  BlogPost,
+  BlogPostWrapper,
+} from './BlogPosts';
+
+export {
+  FrontpageInfo,
+  FrontpageFilm,
+  FrontpageHeaderNew,
+  FrontpageSubjectsInPortal,
+  FrontpageSubjectIllustration,
+  FrontpageCircularSubjectsSection,
+} from './Frontpage';

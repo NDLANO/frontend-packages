@@ -19,6 +19,11 @@ import {
 } from '../../dummydata';
 import Poster from '../../images/filmposter-aboutNDLA.png';
 
+import { ALL_MOVIES } from '../../dummydata/mockFilm';
+
+const sortAlphabetically = movies =>
+  movies.sort((a, b) => a.title.localeCompare(b.title));
+
 class NdlaFilmExample extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +38,7 @@ class NdlaFilmExample extends Component {
   onSelectedMovieByType(resourceId) {
     // Simulate fetching movies..
     clearInterval(this.simulateLoadingTimer);
+    const showingAll = resourceId === ALL_MOVIES;
     this.setState(
       {
         fetchingMoviesByType: true,
@@ -40,9 +46,12 @@ class NdlaFilmExample extends Component {
       () => {
         this.simulateLoadingTimer = setTimeout(() => {
           this.setState({
+            showingAll,
             fetchingMoviesByType: false,
-            moviesByType: mockAllMovies.filter(
-              movie => movie.movieTypes[resourceId],
+            moviesByType: sortAlphabetically(
+              showingAll
+                ? mockAllMovies
+                : mockAllMovies.filter(movie => movie.movieTypes[resourceId]),
             ),
           });
         }, 500);
@@ -51,11 +60,12 @@ class NdlaFilmExample extends Component {
   }
 
   render() {
-    const { moviesByType, fetchingMoviesByType } = this.state;
+    const { moviesByType, fetchingMoviesByType, showingAll } = this.state;
 
     return (
       <FilmFrontpage
         id={this.props.id}
+        showingAll={showingAll}
         highlighted={mockHighlightedMovies}
         themes={movieThemes}
         moviesByType={moviesByType}
@@ -66,7 +76,7 @@ class NdlaFilmExample extends Component {
         aboutNDLAVideo={{
           title: 'Om NDLA film',
           description:
-            'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+            'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her finner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
           visualElement: {
             url: Poster,
             alt: 'NDLA film',

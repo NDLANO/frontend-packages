@@ -34,6 +34,7 @@ export const DOCUMENTARY_CONTENTTYPE_ID = 'contentTypeId:documentary';
 export const MOVIE_CONTENTTYPE_ID = 'contentTypeId:movie';
 export const TVSERIES_CONTENTTYPE_ID = 'contentTypeId:tvseries';
 export const SHORTMOVIE_CONTENTTYPE_ID = 'contentTypeId:shortmovie';
+export const ALL_MOVIES = 'ALL_MOVIES';
 
 export const mockMovieResourceTypes = [
   {
@@ -51,6 +52,10 @@ export const mockMovieResourceTypes = [
   {
     name: 'Kortfilmer',
     id: SHORTMOVIE_CONTENTTYPE_ID,
+  },
+  {
+    name: 'Alle filmer A-Å',
+    id: ALL_MOVIES,
   },
 ];
 

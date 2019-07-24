@@ -32,7 +32,7 @@ const StyledSubjects = styled.div`
 type Props = {
   categories: categoryProp[];
   linkToAbout: React.ReactNode;
-  t: () => void;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({

@@ -9,7 +9,7 @@
 export { default as uuid } from './uuid';
 export { default as getComponentName } from './getComponentName';
 export { copyTextToClipboard } from './copyTextToClipboard';
-export { default as noScroll, isIosDeviceSafari } from './noScroll';
+export { default as noScroll } from './noScroll';
 export {
   default as getCurrentBreakpoint,
   breakpoints,

@@ -24,6 +24,12 @@
     padding-right: $spacing;
   }
 
+  &--medium {
+    max-width: 680px;
+    padding-left: $spacing;
+    padding-right: $spacing;
+  }
+
   &--wide {
     max-width: 1150px;
   }

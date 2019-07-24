@@ -514,6 +514,7 @@ const messages = {
       featureFilm: 'Feature film',
       series: 'Series',
       shortFilm: 'Short film',
+      all: 'All movies A-Z',
     },
     moreAboutNdlaFilm: {
       header: 'NDLA Film',

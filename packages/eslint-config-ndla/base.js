@@ -24,6 +24,7 @@ module.exports = {
     rules: {
       camelcase: 'off',
       indent: 'off',
+      'react/prop-types': 'off',
       'no-array-constructor': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-angle-bracket-type-assertion': 'warn',

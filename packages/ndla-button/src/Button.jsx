@@ -10,10 +10,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, misc, fonts } from '@ndla/core';
+import { colors, spacing, misc, fonts, animations } from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 
-const strippedStyle = css`
+export const strippedStyle = css`
   transition: background-color none;
   padding: 0;
   border-radius: 0;
@@ -35,6 +35,29 @@ const strippedStyle = css`
   }
   &:focus {
     outline-width: medium;
+  }
+`;
+
+export const pillStyle = css`
+  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px;
+  border-radius: ${spacing.normal};
+  transition: background-color ${animations.durations.fast} ease-in-out;
+  color: ${colors.brand.primary};
+  ${fonts.sizes('16px', '18px')};
+  background-color: transparent;
+  > svg {
+    margin-left: ${spacing.xsmall};
+    height: 18px;
+    width: 18px;
+  }
+  > span {
+    box-shadow: 0px 1px 0px ${colors.brand.primary};
+  }
+  &:hover {
+    transform: none;
+    > span {
+      box-shadow: none;
+    }
   }
 `;
 
@@ -116,6 +139,26 @@ export const appearances = {
       box-shadow: ${colors.linkHover};
     }
   `,
+  ghostPillInverted: css`
+    ${strippedStyle};
+
+    ${pillStyle};
+    color: ${colors.brand.lightest};
+    box-shadow: 0 1px 0 ${colors.brand.lightest};
+
+    &:hover {
+      background-color: ${colors.brand.light};
+      box-shadow: none;
+    }
+  `,
+  ghostPill: css`
+    ${strippedStyle};
+    ${pillStyle};
+
+    &:hover {
+      background-color: ${colors.brand.light};
+    }
+  `,
 };
 
 export const buttonStyle = css`
@@ -178,6 +221,8 @@ export const Button = ({
   inverted,
   invertedOutline,
   safelink,
+  ghostPill,
+  ghostPillInverted,
   ...rest
 }) => {
   const modifiers = {
@@ -187,7 +232,10 @@ export const Button = ({
     stripped,
     inverted,
     invertedOutline,
+    ghostPill,
+    ghostPillInverted,
   };
+
   const styledAppearance = appearance || modifierToApperance(modifiers);
 
   /* eslint-disable react/button-has-type */
@@ -214,6 +262,8 @@ Button.propTypes = {
   link: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
+  ghostPill: PropTypes.bool,
+  ghostPillInverted: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   safelink: PropTypes.string,
@@ -224,6 +274,8 @@ Button.propTypes = {
     'lighter',
     'inverted',
     'invertedOutline',
+    'ghostPill',
+    'ghostPillInverted',
   ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type

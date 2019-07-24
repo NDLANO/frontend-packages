@@ -18,6 +18,7 @@ import {
   AboutNdlaFilm,
   FilmMovieSearch,
   FilmMovieList,
+  AllMoviesAlphabetically,
 } from '@ndla/ui';
 
 const ARIA_FILMCATEGORY_ID = 'movieCategoriesId';
@@ -47,23 +48,114 @@ class FilmFrontpage extends Component {
     });
   }
 
+  renderMovieGrid({ resourceTypeName }) {
+    const {
+      themes,
+      resourceTypes,
+      moviesByType,
+      fetchingMoviesByType,
+      resizeThumbnailImages,
+      language,
+      t,
+    } = this.props;
+    const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
+    return (
+      <CarouselAutosize
+        breakpoints={[
+          {
+            until: 'mobile',
+            columnsPrSlide: 1,
+            distanceBetweenItems: spacing.spacingUnit / 2,
+            margin: spacing.spacingUnit,
+            arrowOffset: 13,
+          },
+          {
+            until: 'mobileWide',
+            columnsPrSlide: 2,
+            distanceBetweenItems: spacing.spacingUnit / 2,
+            margin: spacing.spacingUnit,
+            arrowOffset: 13,
+          },
+          {
+            until: 'tabletWide',
+            columnsPrSlide: 3,
+            distanceBetweenItems: spacing.spacingUnit / 2,
+            margin: spacing.spacingUnit,
+            arrowOffset: 13,
+          },
+          {
+            until: 'desktop',
+            columnsPrSlide: 4,
+            distanceBetweenItems: spacing.spacingUnit,
+            margin: spacing.spacingUnit * 2,
+            arrowOffset: 0,
+          },
+          {
+            until: 'wide',
+            columnsPrSlide: 4,
+            distanceBetweenItems: spacing.spacingUnit,
+            margin: spacing.spacingUnit * 2,
+            arrowOffset: 0,
+          },
+          {
+            until: 'ultraWide',
+            columnsPrSlide: 4,
+            distanceBetweenItems: spacing.spacingUnit,
+            margin: spacing.spacingUnit * 3.5,
+            arrowOffset: 0,
+          },
+          {
+            columnsPrSlide: 6,
+            distanceBetweenItems: spacing.spacingUnit,
+            margin: spacing.spacingUnit * 3.5,
+            arrowOffset: 0,
+          },
+        ]}>
+        {autoSizedProps =>
+          resourceTypeSelected ? (
+            <MovieGrid
+              autoSizedProps={autoSizedProps}
+              {...{
+                resourceTypeName,
+                fetchingMoviesByType,
+                moviesByType,
+                resourceTypes,
+                loadingPlaceholderHeight,
+                resizeThumbnailImages,
+              }}
+            />
+          ) : (
+            themes.map(theme => (
+              <FilmMovieList
+                key={theme.name[language]}
+                name={theme.name[language]}
+                movies={theme.movies}
+                autoSizedProps={autoSizedProps}
+                slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
+                slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
+                resourceTypes={resourceTypes}
+                resizeThumbnailImages={resizeThumbnailImages}
+              />
+            ))
+          )
+        }
+      </CarouselAutosize>
+    );
+  }
+
   render() {
     const {
       highlighted,
-      themes,
       resourceTypes,
       topics,
       aboutNDLAVideo,
-      moviesByType,
-      fetchingMoviesByType,
       moreAboutNdlaFilm,
-      resizeThumbnailImages,
-      language,
+      showingAll,
+      moviesByType,
       id,
-      t,
     } = this.props;
 
-    const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
+    const { resourceTypeSelected } = this.state;
 
     const resourceTypeName =
       resourceTypeSelected &&
@@ -92,86 +184,11 @@ class FilmFrontpage extends Component {
           css={css`
             margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
           `}>
-          <CarouselAutosize
-            breakpoints={[
-              {
-                until: 'mobile',
-                columnsPrSlide: 1,
-                distanceBetweenItems: spacing.spacingUnit / 2,
-                margin: spacing.spacingUnit,
-                arrowOffset: 13,
-              },
-              {
-                until: 'mobileWide',
-                columnsPrSlide: 2,
-                distanceBetweenItems: spacing.spacingUnit / 2,
-                margin: spacing.spacingUnit,
-                arrowOffset: 13,
-              },
-              {
-                until: 'tabletWide',
-                columnsPrSlide: 3,
-                distanceBetweenItems: spacing.spacingUnit / 2,
-                margin: spacing.spacingUnit,
-                arrowOffset: 13,
-              },
-              {
-                until: 'desktop',
-                columnsPrSlide: 4,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 2,
-                arrowOffset: 0,
-              },
-              {
-                until: 'wide',
-                columnsPrSlide: 4,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 2,
-                arrowOffset: 0,
-              },
-              {
-                until: 'ultraWide',
-                columnsPrSlide: 4,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 3.5,
-                arrowOffset: 0,
-              },
-              {
-                columnsPrSlide: 6,
-                distanceBetweenItems: spacing.spacingUnit,
-                margin: spacing.spacingUnit * 3.5,
-                arrowOffset: 0,
-              },
-            ]}>
-            {autoSizedProps =>
-              resourceTypeSelected ? (
-                <MovieGrid
-                  autoSizedProps={autoSizedProps}
-                  {...{
-                    resourceTypeName,
-                    fetchingMoviesByType,
-                    moviesByType,
-                    resourceTypes,
-                    loadingPlaceholderHeight,
-                    resizeThumbnailImages,
-                  }}
-                />
-              ) : (
-                themes.map(theme => (
-                  <FilmMovieList
-                    key={theme.name[language]}
-                    name={theme.name[language]}
-                    movies={theme.movies}
-                    autoSizedProps={autoSizedProps}
-                    slideForwardsLabel={t('ndlaFilm.slideForwardsLabel')}
-                    slideBackwardsLabel={t('ndlaFilm.slideBackwardsLabel')}
-                    resourceTypes={resourceTypes}
-                    resizeThumbnailImages={resizeThumbnailImages}
-                  />
-                ))
-              )
-            }
-          </CarouselAutosize>
+          {showingAll ? (
+            <AllMoviesAlphabetically movies={moviesByType} />
+          ) : (
+            this.renderMovieGrid({ resourceTypeName })
+          )}
         </div>
         <AboutNdlaFilm
           aboutNDLAVideo={aboutNDLAVideo}
@@ -210,6 +227,7 @@ FilmFrontpage.propTypes = {
   }),
   resizeThumbnailImages: PropTypes.bool,
   id: PropTypes.string,
+  showingAll: PropTypes.bool,
   language: PropTypes.oneOf(['nb', 'nn', 'en']).isRequired,
   t: PropTypes.func.isRequired,
 };

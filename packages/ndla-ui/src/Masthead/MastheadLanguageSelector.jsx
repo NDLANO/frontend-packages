@@ -11,33 +11,22 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 import { injectT } from '@ndla/i18n';
-import { css } from '@emotion/core';
 import Button from '@ndla/button';
+import ChevronDown from '@ndla/icons/lib/common/ChevronDown';
 
 const classes = new BEMHelper({
   name: 'masthead',
   prefix: 'c-',
 });
 
-const cssWhiteButton = css`
-  color: #fff;
-`;
-
-const MastheadLanguageSelector = ({
-  ndlaFilm,
-  options,
-  currentLanguage,
-  t,
-}) => {
+const MastheadLanguageSelector = ({ options, currentLanguage, t }) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div {...classes('change-language-wrapper')}>
-      <Button
-        css={ndlaFilm && cssWhiteButton}
-        link
-        onClick={() => setIsOpen(true)}>
-        Change language
+      <Button ghostPill onClick={() => setIsOpen(true)}>
+        <span>{t(`languages.${infoLocale}`)}</span>
+        <ChevronDown />
       </Button>
       {isOpen && (
         <FocusTrapReact

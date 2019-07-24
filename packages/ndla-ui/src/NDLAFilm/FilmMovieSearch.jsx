@@ -60,4 +60,8 @@ FilmMovieSearch.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
+FilmMovieSearch.defaultProps = {
+  topics: [],
+};
+
 export default injectT(FilmMovieSearch);

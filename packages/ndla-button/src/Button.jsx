@@ -155,8 +155,20 @@ const appearances = {
     ${strippedStyle};
     ${pillStyle};
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: ${colors.brand.light};
+    }
+  `,
+  ghostPillOutline: css`
+    ${strippedStyle};
+    ${pillStyle};
+    border: 2px solid ${colors.brand.primary};
+    transition: ${misc.transition.default};
+    &:hover,
+    &:focus {
+      background-color: ${colors.brand.light};
+      border: 2px solid transparent;
     }
   `,
 };
@@ -223,6 +235,7 @@ export const Button = ({
   invertedOutline,
   ghostPill,
   ghostPillInverted,
+  ghostPillOutline,
   ...rest
 }) => {
   const modifiers = {
@@ -234,6 +247,7 @@ export const Button = ({
     invertedOutline,
     ghostPill,
     ghostPillInverted,
+    ghostPillOutline,
   };
 
   const styledAppearance = appearance || modifierToApperance(modifiers);
@@ -275,6 +289,7 @@ Button.propTypes = {
     'invertedOutline',
     'ghostPill',
     'ghostPillInverted',
+    'ghostPillOutline',
   ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type

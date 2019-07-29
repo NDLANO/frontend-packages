@@ -14,7 +14,7 @@ import { injectT } from '@ndla/i18n';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
-import { colors, spacing, fonts } from '@ndla/core';
+import { colors, spacing, fonts, misc } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
@@ -25,16 +25,21 @@ import PrivacyNn from './privacy_nn';
 import PrivacyEn from './privacy_en';
 import FooterLinks from './FooterLinks';
 
+const StyledFooterText = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > span {
+    padding: ${spacing.xsmall};
+  }
+`;
+
 type FooterTextProps = {
   children: React.ReactNode;
 }
 
 export const FooterText: React.FunctionComponent<FooterTextProps> = ({ children }) => (
-  <p className="footer_text">{children}</p>
-);
-
-export const FooterRuler: React.FunctionComponent = () => (
-  <div className="footer_ruler" />
+  <StyledFooterText>{children}</StyledFooterText>
 );
 
 type FooterEditorProps = {
@@ -43,8 +48,8 @@ type FooterEditorProps = {
 }
 
 export const FooterEditor: React.FunctionComponent<FooterEditorProps> = ({ title, name }) => (
-  <span className="footer_editor">
-    {title} <strong>{name}</strong>
+  <span>
+    <strong>{title}</strong> {name}
   </span>
 );
 
@@ -63,19 +68,35 @@ const privacyTexts = (lang: string) => {
   return <PrivacyNb />
 }
 
+const StyledPrivacyButton = styled.button`
+  background: none;
+  color: #fff;
+  border: 0;
+  padding: 0;
+  box-shadow: ${misc.textLinkBoxShadow};
+  cursor: pointer;
+  margin-bottom: ${spacing.large};
+  &:hover,
+  &:focus {
+    box-shadow: none;
+  }
+`;
+
 const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({ lang, label }) => (
-  <Modal
-    activateButton={<Button link>{label}</Button>}
-    size="fullscreen">
-    {(onClose: void) => (
-      <OneColumn cssModifier="medium">
-        <ModalHeader>
-          <ModalCloseButton onClick={onClose} title="Lukk" />
-        </ModalHeader>
-        <ModalBody>{privacyTexts(lang)}</ModalBody>
-      </OneColumn>
-    )}
-  </Modal>
+  <StyledFooterText>
+    <Modal
+      activateButton={<StyledPrivacyButton type="button">{label}</StyledPrivacyButton>}
+      size="fullscreen">
+      {(onClose: void) => (
+        <OneColumn cssModifier="medium">
+          <ModalHeader>
+            <ModalCloseButton onClick={onClose} title="Lukk" />
+          </ModalHeader>
+          <ModalBody>{privacyTexts(lang)}</ModalBody>
+        </OneColumn>
+      )}
+    </Modal>
+  </StyledFooterText>
 );
 
 type StyledFooterProps = {
@@ -107,6 +128,22 @@ const StyledColumns = styled.div`
   }
 `;
 
+const StyledHr = styled.hr`
+  height: 1px;
+  margin: ${spacing.normal} ${spacing.large} ${spacing.large};
+  background: ${colors.brand.primary};
+  &:before {
+    content: none;
+  }
+`;
+
+const StyledLanguageWrapper = styled.div`
+  margin: ${spacing.large} 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 type Props = {
   children: React.ReactNode;
   inverted: boolean;
@@ -117,25 +154,34 @@ type Props = {
     facebook: string;
     twitter: string;
     share?: string;
-  }
+  };
+  languageSelector?: React.ReactNode;
 }
 
-const Footer: React.FunctionComponent<Props> = ({ lang, children, inverted, t, links }) => (
-  <StyledFooter inverted={inverted}>
-    <OneColumn cssModifier="large">
-      <StyledColumns>
-        <div>
-          <StyledFooterHeaderIcon />
-        </div>
-        <div>
-          <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} />
-        </div>
-      </StyledColumns>
-      {children}
-      <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
-    </OneColumn>
-  </StyledFooter>
+const Footer: React.FunctionComponent<Props> = ({ lang, children, inverted, t, links, languageSelector }) => (
+  <>
+    {languageSelector && (
+      <StyledLanguageWrapper>
+        {languageSelector}
+      </StyledLanguageWrapper>
+    )}
+    <StyledFooter inverted={inverted}>
+      <OneColumn cssModifier="large">
+        <StyledColumns>
+          <div>
+            <StyledFooterHeaderIcon />
+          </div>
+          <div>
+            <StyledHeader>{t('footer.vision')}</StyledHeader>
+            <FooterLinks links={links} />
+          </div>
+        </StyledColumns>
+        <StyledHr />
+        {children}
+        <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
+      </OneColumn>
+    </StyledFooter>
+  </>
 );
 
 export default injectT(Footer);

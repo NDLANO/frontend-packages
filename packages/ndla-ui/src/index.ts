@@ -32,7 +32,6 @@ export {
 
 export {
   Footer,
-  FooterRuler,
   FooterEditor,
   FooterText,
 } from './Footer';

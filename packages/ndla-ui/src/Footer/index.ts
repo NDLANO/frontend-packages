@@ -6,12 +6,11 @@
  *
  */
 
-import Footer, { FooterText, FooterRuler, FooterEditor } from './Footer';
+import Footer, { FooterText, FooterEditor } from './Footer';
 
 export {
   Footer,
   FooterText,
-  FooterRuler,
   FooterEditor,
 }
 

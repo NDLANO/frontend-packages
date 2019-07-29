@@ -19,12 +19,21 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const MastheadLanguageSelector = ({ options, currentLanguage, t }) => {
+const MastheadLanguageSelector = ({
+  options,
+  currentLanguage,
+  outline,
+  center,
+  t,
+}) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div {...classes('change-language-wrapper')}>
-      <Button ghostPill onClick={() => setIsOpen(true)}>
+      <Button
+        ghostPillOutline={outline}
+        ghostPill={!outline}
+        onClick={() => setIsOpen(true)}>
         <span>{t(`languages.${infoLocale}`)}</span>
         <ChevronDown />
       </Button>
@@ -38,7 +47,11 @@ const MastheadLanguageSelector = ({ options, currentLanguage, t }) => {
             clickOutsideDeactivates: true,
             escapeDeactivates: true,
           }}>
-          <div {...classes('change-language-modal', isOpen && 'animate-in')}>
+          <div
+            {...classes('change-language-modal', [
+              isOpen && 'animate-in',
+              center && 'center',
+            ])}>
             <Button
               link
               onClick={() => {

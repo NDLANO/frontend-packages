@@ -26,8 +26,8 @@ import {
   ArticleByline,
   RadioButtonGroup,
   FooterEditor,
-  FooterRuler,
   FooterText,
+  MastheadLanguageSelector,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 
@@ -512,25 +512,31 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Sidefot', () => (
     <Center>
-      <Footer links={mockFooterLinks}>
-        <div className="footer_form">
-          {/* eslint-disable jsx-a11y/label-has-associated-control  */}
-          <label
-            htmlFor="language-select"
-            className="footer_label footer--bold">
-            Velg språk
-          </label>
-          <select id="language-select" className="footer_language-select">
-            <option value="Norsk">Norsk</option>
-            <option value="English">English</option>
-          </select>
-        </div>
-        <FooterRuler />
-        <FooterText>
-          <FooterEditor
-            title="Ansvarlig redaktør:"
-            name="Christer Gundersen"
+      <Footer
+        links={mockFooterLinks}
+        languageSelector={
+          <MastheadLanguageSelector
+            center
+            outline
+            options={{
+              nb: {
+                name: 'Bokmål',
+                url: '#',
+              },
+              nn: {
+                name: 'Nynorsk',
+                url: '#',
+              },
+              en: {
+                name: 'English',
+                url: '#',
+              },
+            }}
+            currentLanguage="nb"
           />
+        }>
+        <FooterText>
+          <FooterEditor title="Ansvarlig redaktør:" name="Christer Gundersen" />
           <FooterEditor title="Utgaveansvarlig:" name="Pål Frønsdal" />
         </FooterText>
         <FooterText>

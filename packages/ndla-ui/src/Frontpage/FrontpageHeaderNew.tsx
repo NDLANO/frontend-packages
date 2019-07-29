@@ -24,6 +24,7 @@ import SvgLogo from '../Logo/SvgLogo';
 const StyledLinkWrapper = styled.nav`
   display: none;
   justify-content: flex-end;
+  align-items: center;
   margin-bottom: ${spacing.large};
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;

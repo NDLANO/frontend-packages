@@ -13,12 +13,12 @@ import { mockFooterLinks } from '../../dummydata';
 
 const FooterExample = ({ inverted }) => (
   <Footer
-    inverted={inverted}
     links={mockFooterLinks}
     languageSelector={
       <MastheadLanguageSelector
         outline
         center
+        inverted={inverted}
         options={{
           nb: {
             name: 'Bokmål',

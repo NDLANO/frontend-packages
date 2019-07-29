@@ -141,14 +141,18 @@ const appearances = {
   `,
   ghostPillInverted: css`
     ${strippedStyle};
-
     ${pillStyle};
     color: ${colors.brand.lightest};
-    box-shadow: 0 1px 0 ${colors.brand.lightest};
-
-    &:hover {
+    > span {
+      box-shadow: 0px 1px 0px #fff;
+    }
+    &:hover,
+    &:focus {
       background-color: ${colors.brand.light};
       box-shadow: none;
+      > span {
+        box-shadow: none;
+      }
     }
   `,
   ghostPill: css`
@@ -165,10 +169,34 @@ const appearances = {
     ${pillStyle};
     border: 2px solid ${colors.brand.primary};
     transition: ${misc.transition.default};
+    > span {
+      box-shadow: none;
+    }
     &:hover,
     &:focus {
       background-color: ${colors.brand.light};
       border: 2px solid transparent;
+      > span {
+        box-shadow: none;
+      }
+    }
+  `,
+  ghostPillOutlineInverted: css`
+    ${strippedStyle};
+    ${pillStyle};
+    border: 2px solid #fff;
+    transition: ${misc.transition.default};
+    color: ${colors.brand.lightest};
+    > span {
+      box-shadow: 0px 1px 0px #fff;
+    }
+    &:hover,
+    &:focus {
+      background-color: ${colors.brand.light};
+      border: 2px solid transparent;
+      > span {
+        box-shadow: none;
+      }
     }
   `,
 };
@@ -236,6 +264,7 @@ export const Button = ({
   ghostPill,
   ghostPillInverted,
   ghostPillOutline,
+  ghostPillOutlineInverted,
   ...rest
 }) => {
   const modifiers = {
@@ -248,6 +277,7 @@ export const Button = ({
     ghostPill,
     ghostPillInverted,
     ghostPillOutline,
+    ghostPillOutlineInverted,
   };
 
   const styledAppearance = appearance || modifierToApperance(modifiers);

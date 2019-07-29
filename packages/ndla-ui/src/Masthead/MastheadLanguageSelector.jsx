@@ -24,15 +24,19 @@ const MastheadLanguageSelector = ({
   currentLanguage,
   outline,
   center,
+  inverted,
   t,
 }) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
+  console.log('ghostPillOutlineInverted!!!', !outline && inverted);
   return (
     <div {...classes('change-language-wrapper')}>
       <Button
-        ghostPillOutline={outline}
-        ghostPill={!outline}
+        ghostPillOutline={outline && !inverted}
+        ghostPill={!outline && !inverted}
+        ghostPillOutlineInverted={outline && inverted}
+        ghostPillInverted={!outline && inverted}
         onClick={() => setIsOpen(true)}>
         <span>{t(`languages.${infoLocale}`)}</span>
         <ChevronDown />
@@ -98,7 +102,7 @@ MastheadLanguageSelector.propTypes = {
     }),
   ).isRequired,
   currentLanguage: PropTypes.string.isRequired,
-  ndlaFilm: PropTypes.bool,
+  inverted: PropTypes.bool,
 };
 
 export default injectT(MastheadLanguageSelector);

@@ -99,11 +99,7 @@ const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({ lang, labe
   </StyledFooterText>
 );
 
-type StyledFooterProps = {
-  inverted: boolean;
-};
-
-const StyledFooter = styled.footer<StyledFooterProps>`
+const StyledFooter = styled.footer`
   background: ${colors.brand.dark};
   color: #fff;
 `;
@@ -146,7 +142,6 @@ const StyledLanguageWrapper = styled.div`
 
 type Props = {
   children: React.ReactNode;
-  inverted: boolean;
   lang: 'nb' | 'nn' | 'en';
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   links: {
@@ -158,14 +153,14 @@ type Props = {
   languageSelector?: React.ReactNode;
 }
 
-const Footer: React.FunctionComponent<Props> = ({ lang, children, inverted, t, links, languageSelector }) => (
+const Footer: React.FunctionComponent<Props> = ({ lang, children, t, links, languageSelector }) => (
   <>
     {languageSelector && (
       <StyledLanguageWrapper>
         {languageSelector}
       </StyledLanguageWrapper>
     )}
-    <StyledFooter inverted={inverted}>
+    <StyledFooter>
       <OneColumn cssModifier="large">
         <StyledColumns>
           <div>

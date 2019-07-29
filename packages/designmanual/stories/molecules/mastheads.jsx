@@ -289,7 +289,7 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <MastheadLanguageSelector
-              ndlaFilm={this.props.ndlaFilm}
+              inverted={this.props.ndlaFilm}
               options={{
                 nb: {
                   name: 'Bokmål',

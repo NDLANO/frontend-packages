@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-export const PrivacyEn = () => (
+const PrivacyEn: React.FunctionComponent = () => (
   <Fragment>
     <h1>Cookies Policy</h1>
     <hr />
@@ -63,3 +63,5 @@ export const PrivacyEn = () => (
     </p>
   </Fragment>
 );
+
+export default PrivacyEn;

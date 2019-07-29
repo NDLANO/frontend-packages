@@ -423,6 +423,7 @@ const messages = {
     footerInfo: 'This webapplication is developed by NDLA as Open Source code.',
     footerEditiorInChief: 'Editor in chief: ',
     footerManagingEditor: 'Managing editor: ',
+    footerPrivacyLink: 'Cookies Policy',
   },
   contentTypes: {
     all: 'All',

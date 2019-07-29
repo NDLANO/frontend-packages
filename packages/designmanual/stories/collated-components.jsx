@@ -25,6 +25,9 @@ import {
   TranslationLine,
   ArticleByline,
   RadioButtonGroup,
+  FooterEditor,
+  FooterRuler,
+  FooterText,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 
@@ -522,17 +525,17 @@ storiesOf('Sammensatte moduler', module)
             <option value="English">English</option>
           </select>
         </div>
-        <Footer.Ruler />
-        <Footer.Text>
-          <Footer.Editor
+        <FooterRuler />
+        <FooterText>
+          <FooterEditor
             title="Ansvarlig redaktør:"
             name="Christer Gundersen"
           />
-          <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
-        </Footer.Text>
-        <Footer.Text>
+          <FooterEditor title="Utgaveansvarlig:" name="Pål Frønsdal" />
+        </FooterText>
+        <FooterText>
           Nettstedet er utarbeidet av NDLA med åpen kildekode.
-        </Footer.Text>
+        </FooterText>
       </Footer>
     </Center>
   ))

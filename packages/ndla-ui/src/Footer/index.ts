@@ -6,6 +6,12 @@
  *
  */
 
-import Footer from './Footer';
+import Footer, { FooterText, FooterRuler, FooterEditor } from './Footer';
 
-export default Footer;
+export {
+  Footer,
+  FooterText,
+  FooterRuler,
+  FooterEditor,
+}
+

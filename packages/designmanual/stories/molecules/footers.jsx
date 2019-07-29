@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Footer } from '@ndla/ui';
+import { Footer, FooterRuler, FooterText, FooterEditor } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
 import { Trans } from '@ndla/i18n';
 
@@ -17,14 +17,14 @@ const FooterExample = ({ inverted }) => (
         </select>
       </label>
     </div>
-    <Footer.Ruler />
-    <Footer.Text>
-      <Footer.Editor title="Ansvarlig redaktør:" name="Christer Gundersen" />
-      <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
-    </Footer.Text>
-    <Footer.Text>
+    <FooterRuler />
+    <FooterText>
+      <FooterEditor title="Ansvarlig redaktør:" name="Christer Gundersen" />
+      <FooterEditor title="Utgaveansvarlig:" name="Pål Frønsdal" />
+    </FooterText>
+    <FooterText>
       Nettstedet er utarbeidet av NDLA med åpen kildekode.
-    </Footer.Text>
+    </FooterText>
     <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
       <Trans>{({ t }) => t('askNDLA')}</Trans>
     </ZendeskButton>

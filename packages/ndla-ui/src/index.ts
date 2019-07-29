@@ -29,3 +29,10 @@ export {
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
 } from './Frontpage';
+
+export {
+  Footer,
+  FooterRuler,
+  FooterEditor,
+  FooterText,
+} from './Footer';

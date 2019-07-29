@@ -35,7 +35,7 @@ import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import { FigureImage } from './article/FigureImage';
-import { topicList } from '../dummydata/index';
+import { topicList, mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
@@ -512,7 +512,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Sidefot', () => (
     <Center>
-      <Footer>
+      <Footer links={mockFooterLinks}>
         <div className="footer_form">
           {/* eslint-disable jsx-a11y/label-has-associated-control  */}
           <label

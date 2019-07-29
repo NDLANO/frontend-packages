@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { Footer, FooterRuler, FooterText, FooterEditor } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
 import { Trans } from '@ndla/i18n';
+import { mockFooterLinks } from '../../dummydata';
 
 const FooterExample = ({ inverted }) => (
-  <Footer inverted={inverted}>
+  <Footer inverted={inverted} links={mockFooterLinks}>
     <div className="footer_form">
       {/* eslint-disable jsx-a11y/label-has-associated-control  */}
       <label htmlFor="language-select" className="footer_label footer--bold">

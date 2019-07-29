@@ -423,6 +423,16 @@ const messages = {
     footerEditiorInChief: 'Ansvarlig redaktør: ',
     footerManagingEditor: 'Utgaveansvarlig: ',
     footerPrivacyLink: 'Personvernserklæring',
+    socialMediaLinks: {
+      facebook: 'NDLA på Facebook',
+      facebookAria: 'Besøk NDLA på Facebook',
+      newsletter: 'Med deg på vårt nyhetsbrev',
+      newsletterAria: 'Med deg på vårt nyhetsbrev',
+      twitter: 'NDLA på Twitter',
+      twitterAria: 'Besøk NDLA på Twitter',
+      sharePage: 'NDLA på Twitter',
+      sharePageAria: 'Del denne siden',
+    },
   },
   contentTypes: {
     all: 'Alle',

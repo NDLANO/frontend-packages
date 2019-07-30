@@ -7,14 +7,14 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
+import { colors, spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { OneColumn } from '@ndla/ui';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import styled from '@emotion/styled';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
-import { colors, spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 

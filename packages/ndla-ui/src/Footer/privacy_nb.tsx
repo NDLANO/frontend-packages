@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const PrivacyNb: React.FunctionComponent = () => (
-  <Fragment>
+  <>
     <h1>Personvernserklæring</h1>
     <hr />
     <h2>Cookies og lovtekst</h2>
@@ -61,7 +61,7 @@ const PrivacyNb: React.FunctionComponent = () => (
       cookies i nettleseren din. Våre sider (og mange andres) kan da slutte å
       virke optimalt.
     </p>
-  </Fragment>
+  </>
 );
 
 export default PrivacyNb;

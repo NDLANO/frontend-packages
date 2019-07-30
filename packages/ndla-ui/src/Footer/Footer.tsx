@@ -14,11 +14,9 @@ import { injectT } from '@ndla/i18n';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
-import { colors, spacing, fonts, misc } from '@ndla/core';
+import { colors, spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-// @ts-ignore
-import Button from '@ndla/button';
 
 import PrivacyNb from './privacy_nb';
 import PrivacyNn from './privacy_nn';
@@ -30,7 +28,20 @@ const StyledFooterText = styled.p`
   flex-direction: column;
   align-items: center;
   > span {
-    padding: ${spacing.xsmall};
+    padding: ${spacing.xsmall} 0;
+    text-align: center;
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    ${fonts.sizes(16, 1.5)};
+    > span {
+      padding: 0;
+    }
+  }
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    ${fonts.sizes(14, 1.3)};
+    > span {
+      padding-bottom: ${spacing.xsmall};
+    }
   }
 `;
 
@@ -105,28 +116,56 @@ const StyledFooter = styled.footer`
 `;
 
 const StyledHeader = styled.h1`
-  ${fonts.sizes(24, 1.5)};
+  ${fonts.sizes(20, 1.5)};
+  margin: 0;
   font-weight: ${fonts.weight.semibold};
-  margin-bottom: ${spacing.large}; 
+  text-align: center;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    ${fonts.sizes(24, 1.5)};
+    margin: ${spacing.normal} ${spacing.normal} ${spacing.large} 0;
+    text-align: left;
+  }
 `;
 
 const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
   color: #fff;
-  width: ${spacing.spacingUnit * 3}px;
-  height: ${spacing.spacingUnit * 3}px;
+  width: ${spacing.large};
+  height: ${spacing.large};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    width: ${spacing.spacingUnit * 3}px;
+    height: ${spacing.spacingUnit * 3}px;
+  }
 `;
 
 const StyledColumns = styled.div`
   display: flex;
-  padding: ${spacing.large} 0;
+  flex-direction: column;
+  align-items: center;
+  padding: ${spacing.large} ${spacing.large} 0 0;
   > div:first-child {
-    padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
+    padding: ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    flex-direction: row;
+    align-items: flex-start;
+    > div:first-child {
+      padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
+    }
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding: ${spacing.large} 0;
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.small};
   }
 `;
 
 const StyledHr = styled.hr`
   height: 1px;
-  margin: ${spacing.normal} ${spacing.large} ${spacing.large};
+  margin: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    margin: ${spacing.large};
+  }
   background: ${colors.brand.primary};
   &:before {
     content: none;

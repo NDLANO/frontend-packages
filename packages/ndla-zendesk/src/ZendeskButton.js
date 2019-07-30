@@ -10,18 +10,18 @@ import { css, Global } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
-import { mq, breakpoints } from '@ndla/core';
+import { mq, breakpoints, spacing } from '@ndla/core';
 
 const styling = css`
   border-radius: 2px;
   background-color: white;
-  float: right;
-  z-index: 1;
+  margin-top: ${spacing.normal};
   ${mq.range({ from: breakpoints.desktop })} {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
     padding: 0.4rem 0.6rem;
+    margin: 0;
   }
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
-import { spacing, fonts, colors } from '@ndla/core';
+import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { EmailOutline, Facebook, Twitter, Share, Forward, Launch } from '@ndla/icons/common';
 // @ts-ignore
@@ -14,7 +14,15 @@ const StyledLinksWrapper = styled.div`
   flex-direction: columns;
   align-items: flex-start;
   section:first-child {
-    margin-right: ${spacing.spacingUnit * 4}px;
+    margin-right: ${spacing.large};
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    section:first-child {
+      margin-right: ${spacing.spacingUnit * 4}px;
+    }
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
   }
 `;
 

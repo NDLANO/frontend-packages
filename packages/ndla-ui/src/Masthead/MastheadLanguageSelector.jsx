@@ -29,7 +29,7 @@ const MastheadLanguageSelector = ({
 }) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
-  console.log('ghostPillOutlineInverted!!!', !outline && inverted);
+
   return (
     <div {...classes('change-language-wrapper')}>
       <Button

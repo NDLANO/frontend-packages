@@ -40,10 +40,12 @@ const FooterExample = ({ inverted }) => (
       <FooterEditor title="Ansvarlig redaktør:" name="Christer Gundersen" />
       <FooterEditor title="Utgaveansvarlig:" name="Pål Frønsdal" />
       <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
+      <ZendeskButton
+        locale="nb"
+        widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+        <Trans>{({ t }) => t('askNDLA')}</Trans>
+      </ZendeskButton>
     </FooterText>
-    <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
-      <Trans>{({ t }) => t('askNDLA')}</Trans>
-    </ZendeskButton>
   </Footer>
 );
 

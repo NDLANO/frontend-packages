@@ -165,6 +165,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     setState(prevState => {
       return { ...prevState, animationDirection: 'out', menuIsOpen: false };
     });
+    noScroll(false, 'frontpagePortal');
   };
 
   const closedMenu = () => {

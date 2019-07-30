@@ -27,7 +27,7 @@ import {
   RadioButtonGroup,
   FooterEditor,
   FooterText,
-  MastheadLanguageSelector,
+  LanguageSelector,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 
@@ -47,7 +47,7 @@ import RelatedArticleListExample, {
   RelatedArticleMixedList,
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
-import { LanguageSelector } from './LanguageWrapper';
+import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 import ModalExample from './molecules/ModalExample';
@@ -70,7 +70,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody layout="extend">
-        <LanguageSelector />
+        <LanguageSelectorStory />
         <h2 className="u-heading">Linje artikkel enkel variant</h2>
         <ArticleByline
           authors={[
@@ -223,7 +223,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <LanguageSelector />
+        <LanguageSelectorStory />
         <TopicIntroductionList
           toTopic={() => '#'}
           topics={topicList}
@@ -515,9 +515,10 @@ storiesOf('Sammensatte moduler', module)
       <Footer
         links={mockFooterLinks}
         languageSelector={
-          <MastheadLanguageSelector
+          <LanguageSelector
             center
             outline
+            alwaysVisible
             options={{
               nb: {
                 name: 'Bokmål',

@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Footer,
-  FooterText,
-  FooterEditor,
-  MastheadLanguageSelector,
-} from '@ndla/ui';
+import { Footer, FooterText, FooterEditor, LanguageSelector } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
 import { Trans } from '@ndla/i18n';
 import { mockFooterLinks } from '../../dummydata';
@@ -15,7 +10,8 @@ const FooterExample = ({ inverted }) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
-      <MastheadLanguageSelector
+      <LanguageSelector
+        alwaysVisible
         outline
         center
         inverted={inverted}

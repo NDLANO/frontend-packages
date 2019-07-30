@@ -14,7 +14,7 @@ import { injectT } from '@ndla/i18n';
 import {
   Masthead,
   MastheadItem,
-  MastheadLanguageSelector,
+  LanguageSelector,
   Logo,
   TopicMenu,
   DisplayOnPageYOffset,
@@ -288,7 +288,7 @@ class MastheadWithTopicMenu extends Component {
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
-            <MastheadLanguageSelector
+            <LanguageSelector
               inverted={this.props.ndlaFilm}
               options={{
                 nb: {

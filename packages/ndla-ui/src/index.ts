@@ -35,3 +35,7 @@ export {
   FooterEditor,
   FooterText,
 } from './Footer';
+
+export {
+  LanguageSelector,
+} from './LanguageSelector';

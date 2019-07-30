@@ -114,11 +114,7 @@ export {
   Hero,
   NdlaFilmHero,
 } from './Hero';
-export {
-  default as Masthead,
-  MastheadItem,
-  MastheadLanguageSelector,
-} from './Masthead';
+export { default as Masthead, MastheadItem } from './Masthead';
 export {
   Figure,
   FigureCaption,

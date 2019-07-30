@@ -35,6 +35,19 @@ export default {
               opacity: 1;
             }
           }`,
+  fadeInTop: (duration?: string, distance?: string) => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    animation-name: fadeInBottom;
+        @keyframes fadeInBottom {
+            0% {
+              transform: translateY(-${distance || spacing.small});
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }`,
   fadeInScaled: (duration?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInScaled;

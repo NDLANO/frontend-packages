@@ -42,37 +42,47 @@ const OneColumnCss = css`
 
 interface Props {
   children: React.ReactNode;
-  subject: {
-    name: string,
-    url: string,
+  subject?: {
+    name: string;
+    url: string;
   };
-  topic: {
-    name: string,
-    url: string,
+  topic?: {
+    name: string;
+    url: string;
   };
   learningPathName: string;
   t: any;
 }
 
 const LearningPathLastStepNavigation: React.FunctionComponent<Props> = ({
-  subject, topic, learningPathName, children, t,
+  subject,
+  topic,
+  learningPathName,
+  children,
+  t,
 }) => (
   <OneColumn css={OneColumnCss}>
     <LayoutItem layout="center">
       <StyledHeader className="c-article__title">
         <span>{t('learningPath.lastStep.heading')}</span>
-        <StyledSmallText>{t('learningPath.lastStep.headingSmall', {
-          learningPathName
-        })}</StyledSmallText>
+        <StyledSmallText>
+          {t('learningPath.lastStep.headingSmall', {
+            learningPathName,
+          })}
+        </StyledSmallText>
       </StyledHeader>
-      <StyledLinkWrapper>
-        {t('learningPath.lastStep.subjectHeading')}
-        <SafeLink to={subject.url}>{subject.name}</SafeLink>
-      </StyledLinkWrapper>
-      <StyledLinkWrapper>
-        {t('learningPath.lastStep.topicHeading')}
-        <SafeLink to={topic.url}>{topic.name}</SafeLink>
-      </StyledLinkWrapper>
+      {subject && (
+        <StyledLinkWrapper>
+          {t('learningPath.lastStep.subjectHeading')}
+          <SafeLink to={subject.url}>{subject.name}</SafeLink>
+        </StyledLinkWrapper>
+      )}
+      {topic && (
+        <StyledLinkWrapper>
+          {t('learningPath.lastStep.topicHeading')}
+          <SafeLink to={topic.url}>{topic.name}</SafeLink>
+        </StyledLinkWrapper>
+      )}
       {children}
     </LayoutItem>
   </OneColumn>

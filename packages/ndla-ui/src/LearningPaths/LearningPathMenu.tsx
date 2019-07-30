@@ -40,7 +40,9 @@ const StyledMenu = styled.div<StyledMenuProps>`
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     min-width: ${SIDE_NAV_WIDTH};
     margin-right: ${spacing.xsmall};
-    ${props => !props.isOpen && `
+    ${props =>
+      !props.isOpen &&
+      `
       width: ${spacing.large};
       min-width: ${spacing.large};
     `}
@@ -62,7 +64,8 @@ const StyledToggleMenubutton = styled.button`
   border: none;
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     display: inline-flex;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: ${colors.brand.primary};
       color: #fff;
     }
@@ -70,18 +73,16 @@ const StyledToggleMenubutton = styled.button`
 `;
 
 export type StepProps = {
-  title: {
-    title: string;
-  },
+  title: string;
   metaUrl: string;
   type: string;
-  id: string | number;
+  id: number;
   current?: boolean;
-}
+};
 
 interface Props {
   learningsteps: StepProps[];
-  stepId: string | number;
+  stepId: number;
   name: string;
   duration: number;
   lastUpdated: string[];
@@ -90,12 +91,12 @@ interface Props {
     contributors: {
       type: string;
       name: string;
-    }[],
+    }[];
     license: {
       license: string;
       description: string;
       url: string;
-    },
+    };
   };
   learningPathURL: string;
   currentIndex: boolean;
@@ -103,10 +104,23 @@ interface Props {
     [key: string]: string;
   };
   t: any;
+  learningPathId: number;
+  toLearningPathUrl(pathId: number, stepId: number): string;
 }
 
 const LearningPathMenu: React.FunctionComponent<Props> = ({
-  learningsteps, currentIndex, name, duration, lastUpdated, copyright, stepId, learningPathURL, cookies, t,
+  learningsteps,
+  currentIndex,
+  name,
+  duration,
+  lastUpdated,
+  copyright,
+  learningPathId,
+  toLearningPathUrl,
+  stepId,
+  learningPathURL,
+  cookies,
+  t,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
@@ -118,18 +132,38 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
         currentIndex={currentIndex}
         learningstepsTotal={learningsteps.length}
         closeLabel={t('modal.closeModal')}
-        outOfLabel={t('learningPath.pageOf')}
-      >
-        <div css={css`padding-left: ${spacing.small};`}>
+        outOfLabel={t('learningPath.pageOf')}>
+        <div
+          css={css`
+            padding-left: ${spacing.small};
+          `}>
           <Tooltip align="right" tooltip={t('learningPath.openMenuTooltip')}>
-            <StyledToggleMenubutton type="button" onClick={() => toggleOpenState(!isOpen)}>
+            <StyledToggleMenubutton
+              type="button"
+              onClick={() => toggleOpenState(!isOpen)}>
               {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
             </StyledToggleMenubutton>
           </Tooltip>
         </div>
-        <LearningPathMenuIntro isOpen={isOpen} duration={duration} name={name} />
-        <LearningPathMenuContent learningsteps={learningsteps} isOpen={isOpen} currentIndex={currentIndex} cookies={cookies} />
-        <LearningPathMenuAside isOpen={isOpen} lastUpdated={lastUpdated} copyright={copyright} learningPathURL={learningPathURL} />
+        <LearningPathMenuIntro
+          isOpen={isOpen}
+          duration={duration}
+          name={name}
+        />
+        <LearningPathMenuContent
+          learningsteps={learningsteps}
+          learningPathId={learningPathId}
+          toLearningPathUrl={toLearningPathUrl}
+          isOpen={isOpen}
+          currentIndex={currentIndex}
+          cookies={cookies}
+        />
+        <LearningPathMenuAside
+          isOpen={isOpen}
+          lastUpdated={lastUpdated}
+          copyright={copyright}
+          learningPathURL={learningPathURL}
+        />
       </LearningPathMenuModalWrapper>
     </StyledMenu>
   );

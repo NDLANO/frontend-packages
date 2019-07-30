@@ -13,7 +13,14 @@ import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
-import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
+import {
+  colors,
+  spacing,
+  fonts,
+  mq,
+  breakpoints,
+  animations,
+} from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 import { SafeLinkButton } from '../index';
 
@@ -54,13 +61,15 @@ const StyledAside = styled.aside<StyledAsideProps>`
     display: block;
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-    ${props => props.isOpen && css`
-      display: block;
-      opacity: 0;
-      ${animations.fadeIn()}
-      animation-fill-mode: forwards;
-      animation-delay: 450ms;
-    `}
+    ${props =>
+      props.isOpen &&
+      css`
+        display: block;
+        opacity: 0;
+        ${animations.fadeIn()}
+        animation-fill-mode: forwards;
+        animation-delay: 450ms;
+      `}
   }
   ${mq.range({ until: breakpoints.tablet })} {
     display: block;
@@ -76,18 +85,22 @@ type Props = {
     contributors: {
       type: string;
       name: string;
-    }[],
+    }[];
     license: {
       license: string;
       description: string;
       url: string;
-    },
+    };
   };
   t: any;
-}
+};
 
 const LearningPathMenuAside: React.FunctionComponent<Props> = ({
-  lastUpdated, learningPathURL, copyright, isOpen, t,
+  lastUpdated,
+  learningPathURL,
+  copyright,
+  isOpen,
+  t,
 }) => (
   <StyledAside isOpen={isOpen}>
     <div css={learningPathDetailsCSS}>
@@ -96,11 +109,13 @@ const LearningPathMenuAside: React.FunctionComponent<Props> = ({
         {t('learningPath.lastUpdated')}: {lastUpdated}
       </p>
     </div>
-    {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
-    <p css={infoTextCSS}>
-      {t('learningPath.createLearningPathText')}
-    </p>
-    <SafeLinkButton to={learningPathURL} outline>{t('learningPath.createLearningPathButtonText')}</SafeLinkButton>
+    {copyright.contributors && (
+      <LearningPathMenuAsideCopyright copyright={copyright} />
+    )}
+    <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
+    <SafeLinkButton to={learningPathURL} outline>
+      {t('learningPath.createLearningPathButtonText')}
+    </SafeLinkButton>
   </StyledAside>
 );
 

@@ -19,6 +19,14 @@ function getSize() {
 }
 
 export function useWindowSize(wait?: number) {
+  if (typeof window === 'undefined') {
+    return {
+      innerHeight: 602,
+      innerWidth: 602,
+      outerHeight: 602,
+      outerWidth: 602,
+    };
+  }
   let [windowSize, setWindowSize] = useState(getSize());
 
   function handleResize() {

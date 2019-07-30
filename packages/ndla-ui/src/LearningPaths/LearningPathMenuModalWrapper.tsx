@@ -26,7 +26,7 @@ const StyledMobileButton = styled.button`
   ${mq.range({ until: breakpoints.mobileWide })} {
     left: calc(50% - ${spacing.spacingUnit * 1.5}px);
     width: ${spacing.spacingUnit * 3}px;
-  };
+  }
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,10 +63,16 @@ interface ModalWrapperProps {
   outOfLabel: string;
   children: JSX.Element;
   t: any;
-};
+}
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
-  innerWidth, currentIndex, learningstepsTotal, closeLabel, outOfLabel, children, t,
+  innerWidth,
+  currentIndex,
+  learningstepsTotal,
+  closeLabel,
+  outOfLabel,
+  children,
+  t,
 }) => {
   if (innerWidth < 601) {
     return (
@@ -78,7 +84,9 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
           size="fullscreen"
           activateButton={
             <StyledMobileButton type="button">
-              {currentIndex + 1}<small> {outOfLabel} </small>{learningstepsTotal}
+              {currentIndex + 1}
+              <small> {outOfLabel} </small>
+              {learningstepsTotal}
             </StyledMobileButton>
           }>
           {(onClose: Function) => (
@@ -86,15 +94,15 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
               <ModalHeader>
                 <ModalCloseButton title={closeLabel} onClick={onClose} />
               </ModalHeader>
-              <ModalBody>
-                {children}
-              </ModalBody>
+              <ModalBody>{children}</ModalBody>
             </>
           )}
         </Modal>
         <div>
           <LearningPathBadge size="xx-small" background />
-          <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
+          <StyledMiniHeader>
+            {t('learningPath.youAreInALearningPath')}
+          </StyledMiniHeader>
         </div>
       </StyledWrapper>
     );

@@ -114,6 +114,9 @@ const dataReducer = (state, action) => {
   }
 };
 
+const toLearningPathUrl = (id, locale) => {
+  return '';
+};
 const LearningPathExample = ({ t }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
@@ -213,7 +216,11 @@ const LearningPathExample = ({ t }) => {
   if (articleId && articleId.indexOf(':') !== -1) {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
   }
-
+  const mappedLearningsteps = learningsteps.map(step => ({
+    ...step,
+    title: step.title.title,
+    description: step.description ? step.description.description : '',
+  }));
   const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${DEMO_LEARNING_PATH_ID}`;
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
@@ -229,15 +236,17 @@ const LearningPathExample = ({ t }) => {
         </div>
         <LearningPathContent>
           <LearningPathMenu
-            learningsteps={learningsteps}
+            learningsteps={mappedLearningsteps}
             duration={duration}
             lastUpdated={lastUpdatedString}
             copyright={copyright}
             stepId={stepId}
+            learningPathId={3}
+            toLearningPathUrl={toLearningPathUrl}
             currentIndex={currentLearningStepNumber}
             name={learningStepsData.title.title}
             cookies={useCookies}
-            learningPathURL="https://www.stier.ndla.no"
+            learningPathURL="https://stier.ndla.no"
           />
           {currentLearningStep && (
             <div>
@@ -269,8 +278,10 @@ const LearningPathExample = ({ t }) => {
           {currentLearningStepNumber > 0 ? (
             <LearningPathStickySibling
               arrow="left"
+              toLearningPathUrl={toLearningPathUrl}
+              pathId={3}
+              stepId={learningsteps[currentLearningStepNumber - 1].id}
               label={t('learningPath.previousArrow')}
-              to={learningsteps[currentLearningStepNumber - 1].metaUrl}
               title={learningsteps[currentLearningStepNumber - 1].title.title}
             />
           ) : (
@@ -279,8 +290,10 @@ const LearningPathExample = ({ t }) => {
           {currentLearningStepNumber < learningsteps.length - 1 && (
             <LearningPathStickySibling
               arrow="right"
+              toLearningPathUrl={toLearningPathUrl}
+              pathId={3}
+              stepId={learningsteps[currentLearningStepNumber + 1].id}
               label={t('learningPath.nextArrow')}
-              to={learningsteps[currentLearningStepNumber + 1].metaUrl}
               title={learningsteps[currentLearningStepNumber + 1].title.title}
             />
           )}

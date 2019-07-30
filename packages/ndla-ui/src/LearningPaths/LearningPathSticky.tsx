@@ -8,9 +8,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { LocationDescriptorObject } from 'history';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, animations, typography, mq, breakpoints } from '@ndla/core';
+import {
+  colors,
+  spacing,
+  animations,
+  typography,
+  mq,
+  breakpoints,
+} from '@ndla/core';
 // @ts-ignore
 import { Back, Forward } from '@ndla/icons/common';
 // @ts-ignore
@@ -41,9 +49,9 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const LearningPathSticky: React.FunctionComponent<Props> = ({ children }) => (
-  <StyledFooter>{children}</StyledFooter>
-);
+export const LearningPathSticky: React.FunctionComponent<Props> = ({
+  children,
+}) => <StyledFooter>{children}</StyledFooter>;
 
 LearningPathSticky.propTypes = {
   children: PropTypes.node,
@@ -79,7 +87,7 @@ const SafeLinkCSS = css`
     hr {
       opacity: 0;
     }
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     div {
       span:last-child {
         box-shadow: none;
@@ -113,13 +121,17 @@ const StyledTitle = styled.span`
 
 interface PropsSiblings {
   title: string;
-  to: string;
+  toLearningPathUrl(pathId: number, stepId: number): string;
   arrow?: 'left' | 'right';
   label: string;
+  pathId: number;
+  stepId: number;
 }
 
-export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> = ({ title, to, arrow, label }) => (
-  <SafeLink to={to} css={SafeLinkCSS}>
+export const LearningPathStickySibling: React.FunctionComponent<
+  PropsSiblings
+> = ({ title, toLearningPathUrl, pathId, stepId, arrow, label }) => (
+  <SafeLink to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
       <StyledLabel>{label}</StyledLabel>

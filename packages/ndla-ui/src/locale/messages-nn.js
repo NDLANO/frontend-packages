@@ -543,6 +543,7 @@ const messages = {
     youAreInALearningPath: 'Du er nå inne i en læringssti',
     readTime: '{hours} Skoletimar = {minutes} min',
     pageOf: 'av',
+    readTimeHour_plurals: 'timar',
     lastStep: {
       heading: 'Siste steg i læringsstien',
       headingSmall:

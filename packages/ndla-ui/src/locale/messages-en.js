@@ -545,6 +545,7 @@ const messages = {
     youAreInALearningPath: 'You are now in a learningpath',
     readTime: '{hours} schoolhours = {minutes} min',
     pageOf: 'of',
+    readTimeHour_plurals: 'hours',
     lastStep: {
       heading: 'Last step of this learningpath',
       headingSmall:

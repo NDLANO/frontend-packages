@@ -8,7 +8,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LocationDescriptorObject } from 'history';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import {

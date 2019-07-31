@@ -23,7 +23,6 @@ import { LearningPathIcon } from './LearningPathIcon';
 import { StepProps } from './LearningPathMenu';
 // @ts-ignore
 import { SafeLink } from '../index';
-import { string } from 'prop-types';
 
 const SIDE_NAV_WIDTH = '372px';
 

@@ -97,7 +97,7 @@ SearchResult.propTypes = {
   onNavigate: PropTypes.func,
   hideSleeveHeader: PropTypes.bool,
   singleColumn: PropTypes.bool,
-  infoText: PropTypes.string,
+  infoText: PropTypes.node,
   ignoreContentTypeBadge: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };

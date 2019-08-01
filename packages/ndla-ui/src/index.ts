@@ -11,9 +11,22 @@
 
 // @ts-ignore
 export * from './index-javascript';
+
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as SafeLink } from './common/SafeLink';
+export { BlogPost, BlogPostWrapper } from './BlogPosts';
+
+export {
+  FrontpageInfo,
+  FrontpageFilm,
+  FrontpageHeaderNew,
+  FrontpageSubjectsInPortal,
+  FrontpageSubjectIllustration,
+  FrontpageCircularSubjectsSection,
+} from './Frontpage';
+
 export { default as SafeLinkButton } from './common/SafeLinkButton';
+
 export {
   LearningPathWrapper,
   LearningPathContent,

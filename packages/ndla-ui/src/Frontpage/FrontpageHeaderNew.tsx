@@ -11,11 +11,10 @@ import {
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 // @ts-ignore
-import { LanguageSelector } from '@ndla/ui';
-// @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
 import { FrontPageHeaderProps, Link } from './types';
 import SafeLink from '../common/SafeLink';
+import { LanguageSelector } from '../LanguageSelector';
 // @ts-ignore
 import { SearchField } from '../Search';
 // @ts-ignore

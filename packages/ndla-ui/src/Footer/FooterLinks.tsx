@@ -7,7 +7,7 @@ import { EmailOutline, Facebook, Twitter, Share, Forward, Launch } from '@ndla/i
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { SafeLink } from '@ndla/ui';
+import SafeLink from '../common/SafeLink';
 
 const StyledLinksWrapper = styled.div`
   display: flex;

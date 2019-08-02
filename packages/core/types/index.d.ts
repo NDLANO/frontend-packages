@@ -10,3 +10,4 @@ export type Breakpoint =
   | 'ultraWide';
 
 export type Breakpoints = { [key in Breakpoint]: string };
+export type Grids = { [key in Breakpoint]: string };

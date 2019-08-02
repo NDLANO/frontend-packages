@@ -14,32 +14,43 @@ import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 type Props = {
   reversed?: boolean;
   padding?: string | number;
+  align?: 'right' | 'center' | 'left';
 };
 
 const StyledRow = styled.div<Props>`
   display: flex;
   align-item: center;
   flex-direction: ${props => props.reversed ? 'row-reverse' : 'row'};
+  justify-content: ${props => {
+    if (props.align === 'right') {
+      return 'flex-end';
+    } else if (props.align === 'center') {
+      return 'center';
+    } else {
+      return 'flex-start';
+    }
+  }};
   margin: 0;
   width: 100%;
   flex-wrap: wrap;
-  background: red;
+  margin-top: ${spacing.small};
+  margin-bottom: ${spacing.small};
   > div {
-    padding: ${spacing.small};
-    ${props => props.padding && css`
-      padding: ${spacing.small} calc(${typeof props.padding === 'string' ? props.padding : `${props.padding}px`} / 2);
+    ${props => props.padding !== undefined && css`
+      padding-left: calc(${typeof props.padding === 'string' ? props.padding : `${props.padding}px`} / 2);
+      padding-right: calc(${typeof props.padding === 'string' ? props.padding : `${props.padding}px`} / 2);
     `}
   }
-  ${props => props.padding && css`
-    width: calc(100% + ${typeof props.padding === 'string' ? props.padding : `${props.padding}px`} - ${spacing.normal});
-    margin-left: calc((-${typeof props.padding === 'string' ? props.padding : `${props.padding}px`} / 2) + ${spacing.small});
+  ${props => props.padding !== undefined && css`
+    width: calc(100% + ${typeof props.padding === 'string' ? props.padding : `${props.padding}px`});
+    margin-left: calc((-${typeof props.padding === 'string' ? props.padding : `${props.padding}px`} / 2));
   `}
 `;
 
 const Row: React.FunctionComponent<Props> = ({
-  children, ...rest
+  padding, align, children, ...rest
 }) => (
-  <StyledRow {...rest}>
+  <StyledRow align={align || 'left'} padding={padding || spacing.normal} {...rest}>
     {children}
   </StyledRow>
 );

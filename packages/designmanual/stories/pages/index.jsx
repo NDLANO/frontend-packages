@@ -42,6 +42,7 @@ import ArticleAssessmentResource from './ArticleAssessmentResource';
 import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
+import LearningPathExample from './LearningPathExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
@@ -266,6 +267,15 @@ storiesOf('Læringsressurser', module)
           </OneColumn>
         </SubjectMaterialHero>
         <ArticleAdditional />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Læringssti', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <LearningPathExample />
       </Content>
       <FooterExample />
     </PageContainer>

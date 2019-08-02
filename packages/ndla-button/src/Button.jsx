@@ -13,7 +13,7 @@ import { css } from '@emotion/core';
 import { colors, spacing, misc, fonts, animations } from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 
-const strippedStyle = css`
+export const strippedStyle = css`
   transition: background-color none;
   padding: 0;
   border-radius: 0;
@@ -38,7 +38,7 @@ const strippedStyle = css`
   }
 `;
 
-const pillStyle = css`
+export const pillStyle = css`
   padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px;
   border-radius: ${spacing.normal};
   transition: background-color ${animations.durations.fast} ease-in-out;
@@ -61,7 +61,7 @@ const pillStyle = css`
   }
 `;
 
-const appearances = {
+export const appearances = {
   inverted: css`
     background: #0f2b47;
     color: #fff;
@@ -161,7 +161,7 @@ const appearances = {
   `,
 };
 
-const buttonStyle = css`
+export const buttonStyle = css`
   display: inline-block;
   color: ${colors.background.default};
   background-color: ${colors.brand.primary};
@@ -205,9 +205,8 @@ export const StyledButton = styled('button')`
   ${p => appearances[p.appearance]};
 `;
 
-function modifierToApperance(modifiers) {
-  return Object.keys(modifiers).find(key => modifiers[key]);
-}
+const modifierToApperance = modifiers =>
+  Object.keys(modifiers).find(key => modifiers[key]);
 
 export const Button = ({
   outline,
@@ -221,6 +220,7 @@ export const Button = ({
   disabled,
   inverted,
   invertedOutline,
+  safelink,
   ghostPill,
   ghostPillInverted,
   ...rest
@@ -266,6 +266,7 @@ Button.propTypes = {
   ghostPillInverted: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
+  safelink: PropTypes.string,
   appearance: PropTypes.oneOf([
     'outline',
     'link',

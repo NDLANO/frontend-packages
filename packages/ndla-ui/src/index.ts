@@ -19,7 +19,7 @@ export { BlogPost, BlogPostWrapper } from './BlogPosts';
 export {
   FrontpageInfo,
   FrontpageFilm,
-  FrontpageHeaderNew,
+  FrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,

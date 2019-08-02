@@ -11,13 +11,9 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
-import { StyledButton } from '@ndla/button';
-import { css } from '@emotion/core';
-
-import SafeLink from '../common/SafeLink';
+import { SearchResultSleeve } from './SearchResultSleeve';
 
 import ActiveFilters from './ActiveFilters';
-import ContentTypeResult from './ContentTypeResult';
 
 import { ContentTypeResultShape } from '../shapes';
 
@@ -30,77 +26,6 @@ const messagesShape = PropTypes.shape({
   contentTypeResultShowLessLabel: PropTypes.string,
   contentTypeResultNoHit: PropTypes.string,
 });
-
-const AnchorButton = StyledButton.withComponent(SafeLink);
-
-const SearchResult = ({
-  result,
-  allResultUrl,
-  resourceToLinkProps,
-  onNavigate,
-  hideSleeveHeader,
-  singleColumn,
-  infoText,
-  ignoreContentTypeBadge,
-  t,
-}) => (
-  <section {...classes('search-result')}>
-    {!hideSleeveHeader && (
-      <h1 {...classes('search-result-heading')}>
-        {t('searchPage.searchField.searchResultHeading')}
-      </h1>
-    )}
-    {infoText && (
-      <aside {...classes('search-result-infotext')}>{infoText}</aside>
-    )}
-    <div
-      {...classes(
-        'search-result-content',
-        singleColumn ? '' : 'multiple-columned',
-      )}>
-      {result.map(contentTypeResult => (
-        <ContentTypeResult
-          ignoreContentTypeBadge={ignoreContentTypeBadge}
-          onNavigate={onNavigate}
-          contentTypeResult={contentTypeResult}
-          resourceToLinkProps={resourceToLinkProps}
-          defaultCount={window.innerWidth > 980 ? 7 : 3}
-          key={contentTypeResult.title}
-          messages={{
-            allResultLabel: t(
-              'searchPage.searchField.contentTypeResultShowMoreLabel',
-            ),
-            showLessResultLabel: t(
-              'searchPage.searchField.contentTypeResultShowLessLabel',
-            ),
-            noHit: t('searchPage.searchField.contentTypeResultNoHit'),
-          }}
-        />
-      ))}
-    </div>
-    <div {...classes('go-to-search')}>
-      <AnchorButton
-        to={allResultUrl}
-        css={css`
-          box-shadow: none;
-        `}>
-        {t('searchPage.searchField.allResultButtonText')}
-      </AnchorButton>
-    </div>
-  </section>
-);
-
-SearchResult.propTypes = {
-  result: PropTypes.arrayOf(ContentTypeResultShape),
-  resourceToLinkProps: PropTypes.func.isRequired,
-  allResultUrl: PropTypes.string.isRequired,
-  onNavigate: PropTypes.func,
-  hideSleeveHeader: PropTypes.bool,
-  singleColumn: PropTypes.bool,
-  infoText: PropTypes.node,
-  ignoreContentTypeBadge: PropTypes.bool,
-  t: PropTypes.func.isRequired,
-};
 
 class SearchField extends Component {
   constructor(props) {
@@ -170,7 +95,7 @@ class SearchField extends Component {
       modifiers.push('has-search-result');
 
       searchResultView = (
-        <SearchResult
+        <SearchResultSleeve
           ignoreContentTypeBadge={ignoreContentTypeBadge}
           result={searchResult}
           searchString={value}

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { injectT } from '@ndla/i18n';
 import {
-  FrontpageHeaderNew,
+  FrontpageHeader,
   OneColumn,
   FrontpageInfo,
   FrontpageFilm,
@@ -97,7 +97,7 @@ class FrontpageExample extends Component {
 
     return (
       <>
-        <FrontpageHeaderNew
+        <FrontpageHeader
           locale="nb"
           searchFieldValue={searchFieldValue}
           logoTo="home"

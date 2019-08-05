@@ -419,7 +419,7 @@ const messages = {
     selectLanguage: 'Velg språk (language): ',
     vision:
       'NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
-    footerLinksHeader: 'Andre NDLA-nettsted',
+    footerLinksHeader: 'Andre NDLA nettsteder',
     footerInfo: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
     footerEditiorInChief: 'Ansvarlig redaktør: ',
     footerManagingEditor: 'Utgaveansvarlig: ',

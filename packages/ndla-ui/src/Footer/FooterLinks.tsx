@@ -22,7 +22,10 @@ const StyledLinksWrapper = styled.div`
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
-    display: none;
+    flex-direction: column;
+    > section {
+      margin-top: ${spacing.large};
+    }
   }
 `;
 

@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
@@ -22,7 +21,7 @@ import { spacing, colors, fonts, breakpoints, mq } from '@ndla/core';
 const StyledArticleBylineBox = styled('section')`
   padding: ${spacing.normal};
   background-color: ${colors.brand.lightest};
-  font-size: ${fonts.sizes('14px', '18px')};
+  ${fonts.sizes('14px', '18px')};
   font-family: ${fonts.sans};
   color: ${colors.text.primary};
 
@@ -39,6 +38,12 @@ const StyledAuthorName = styled('span')`
 const StyledAuthorRole = styled('span')`
   padding-right: 0.5em;
   margin: 0;
+  font-weight: ${fonts.weight.semibold};
+
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    width: 100%;
+    margin-top: ${spacing.small};
+  }
 `;
 
 const StyledAuthorList = styled('ul')`
@@ -51,11 +56,19 @@ const StyledAuthorRow = styled('li')`
   flex-flow: row wrap;
   width: 100%;
   margin: 0;
+
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    ${fonts.sizes('14px', '1.3')};
+
+    &:first-child ${StyledAuthorRole} {
+      margin: 0;
+    }
+  }
 `;
 
 const StyledRow = styled('div')`
   display: block;
-  margin-top: ${spacing.normal};
+  margin-top: ${spacing.large};
 
   ${mq.range({ from: breakpoints.mobileWide })} {
     display: flex;
@@ -100,7 +113,7 @@ const ArticleBylineBox = ({
             <StyledAuthorName>{author.name}</StyledAuthorName>
             <LicenseByline
               licenseRights={author.licenses}
-              size={'16px'}
+              size="16px"
               removeBottomPadding
             />
           </StyledAuthorRow>
@@ -130,35 +143,5 @@ const ArticleBylineBox = ({
     </StyledRow>
   </StyledArticleBylineBox>
 );
-
-ArticleBylineBox.propTypes = {
-  id: PropTypes.string,
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      shortName: PropTypes.string,
-      title: PropTypes.string,
-      phone: PropTypes.string,
-      email: PropTypes.string,
-      image: PropTypes.string,
-      introduction: PropTypes.string,
-      role: PropTypes.string,
-      urlContributions: PropTypes.string,
-      urlAuthor: PropTypes.string,
-      licenses: PropTypes.arrayOf(PropTypes.string),
-    }),
-  ),
-  published: PropTypes.string.isRequired,
-  license: PropTypes.arrayOf(PropTypes.string).isRequired,
-  licenseBox: PropTypes.node,
-  additional: PropTypes.bool,
-  t: PropTypes.func.isRequired,
-};
-
-ArticleBylineBox.defaultProps = {
-  authors: [],
-  id: 'article-line-id',
-  additional: false,
-};
 
 export default injectT(ArticleBylineBox);

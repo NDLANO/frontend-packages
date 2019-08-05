@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@ndla/forms": "^0.3.11",
+    "@ndla/listview": "0.2.22",
     "downshift": "^3.2.2"
   }
 }

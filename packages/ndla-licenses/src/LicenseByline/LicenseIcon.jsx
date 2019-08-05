@@ -39,7 +39,7 @@ const LicenseIcon = ({ licenseRight, description }) => {
     case COPYRIGHTED:
       return <Copyright aria-label={description} />;
     default:
-      return undefined;
+      return null;
   }
 };
 

@@ -11,6 +11,7 @@ const FilmContentCard = ({
   distanceBetweenItems,
   resourceTypes,
   resizeThumbnailImages,
+  hideTags,
 }) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
   if (resizeThumbnailImages && metaImage) {
@@ -30,7 +31,7 @@ const FilmContentCard = ({
           style={{
             backgroundImage: `url(${backgroundImage})`,
           }}>
-          {movieResourceTypes && (
+          {movieResourceTypes && !hideTags && (
             <FilmContentCardTags
               movieResourceTypes={movieResourceTypes}
               resourceTypes={resourceTypes}
@@ -57,9 +58,11 @@ const StyledMovieTitle = styled.h2`
     ${fonts.sizes('18px', '24px')};
   }
 `;
+
 const StyledImage = styled.div`
   height: ${props => props.columnWidth * 0.5625}px;
   background-size: cover;
+  background-color: ${colors.ndlaFilm.filmColorLight};
   background-position-x: center;
   background-position-y: center;
   position: relative;
@@ -108,6 +111,11 @@ FilmContentCard.propTypes = {
   distanceBetweenItems: PropTypes.number,
   resourceTypes: PropTypes.arrayOf(PropTypes.object),
   resizeThumbnailImages: PropTypes.bool,
+  hideTags: PropTypes.bool,
+};
+
+FilmContentCard.defaultProps = {
+  hideTags: false,
 };
 
 export default FilmContentCard;

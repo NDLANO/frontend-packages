@@ -158,7 +158,7 @@ const messages = {
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
-      searchFieldPlaceholder: 'Søk etter f.eks emner, lærestoff, nøkkelord...',
+      searchFieldPlaceholder: 'Hva vil du lære om i dag?',
       messages: {
         searchFieldTitle: 'Søk',
         menuButton: 'Meny',
@@ -189,6 +189,7 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
+      heading: 'Hva lærer du?',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
     film: {
@@ -198,6 +199,7 @@ const messages = {
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
+    blog: 'Fra bloggen',
   },
   meta: {
     description:
@@ -525,6 +527,7 @@ const messages = {
       featureFilm: 'Spillefilm',
       series: 'Tv-serie',
       shortFilm: 'Kortfilm',
+      all: 'Alle filmer A-Å',
     },
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
@@ -545,6 +548,27 @@ const messages = {
       tipSectionPt3: 'vår',
       ending: 'Vi ønsker alle filmelskere en god og lærerik opplevelse!',
     },
+  },
+  learningPath: {
+    createLearningPathText:
+      'Lag din egen, kopier denne eller se flere læringsstier?',
+    createLearningPathButtonText: 'Gå til stier',
+    lastUpdated: 'Sist oppdatert',
+    youAreInALearningPath: 'Du er nå inne i en læringssti',
+    readTimeHour: 'time',
+    readTimeHour_plurals: 'timer',
+    readTimeMinutesShort: 'min',
+    pageOf: 'av',
+    lastStep: {
+      heading: 'Siste steg i læringsstien',
+      headingSmall:
+        'Du er nå på siste steget i læringsstien {learningPathName}',
+      topicHeading: 'Gå til emne:',
+      subjectHeading: 'Gå til faget:',
+    },
+    openMenuTooltip: 'Åpne meny',
+    previousArrow: 'Forrige',
+    nextArrow: 'Neste',
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

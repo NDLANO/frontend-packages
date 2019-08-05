@@ -159,7 +159,7 @@ const messages = {
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
-      searchFieldPlaceholder: 'Søk etter f.eks emne, lærestoff, nykelord...',
+      searchFieldPlaceholder: 'Kva vil du lære om i dag?',
       messages: {
         searchFieldTitle: 'Søk',
         menuButton: 'Meny',
@@ -190,6 +190,7 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
+      heading: 'Kva lærar du?',
     },
     film: {
       header: 'NDLA film',
@@ -198,6 +199,7 @@ const messages = {
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
+    blog: 'Frå bloggen',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {
@@ -477,7 +479,7 @@ const messages = {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
       text:
-        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+        'NDLA film er ei nettbasert filmteneste for elevar og lærarar i videregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
     search: {
       placeholder: 'Søk på filmnavn',
@@ -513,6 +515,7 @@ const messages = {
       featureFilm: 'Spillefilm',
       series: 'Tv-serie',
       shortFilm: 'Kortfilm',
+      all: 'Alle filmar A-Å',
     },
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
@@ -533,6 +536,26 @@ const messages = {
       tipSectionPt3: 'vår',
       ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
     },
+  },
+  learningPath: {
+    createLearningPathText:
+      'Lag din egen, kopier denne eller sjå fleire læringsstiar?',
+    createLearningPathButtonText: 'Gå til stier',
+    lastUpdated: 'Sist oppdatert',
+    youAreInALearningPath: 'Du er nå inne i en læringssti',
+    readTime: '{hours} Skoletimar = {minutes} min',
+    pageOf: 'av',
+    readTimeHour_plurals: 'timar',
+    lastStep: {
+      heading: 'Siste steg i læringsstien',
+      headingSmall:
+        'Du er nå på siste steget i læringsstien {learningPathName}',
+      topicHeading: 'Gå til emne:',
+      subjectHeading: 'Gå til faget:',
+    },
+    openMenuTooltip: 'Åpne meny',
+    previousArrow: 'Forrige',
+    nextArrow: 'Neste',
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

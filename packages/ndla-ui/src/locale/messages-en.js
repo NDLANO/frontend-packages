@@ -192,6 +192,7 @@ const messages = {
       yrkesfag: 'Vocational',
       studiespesialiserende: 'Specialization',
       imported: 'Imported subjects',
+      heading: 'What will you learn?',
     },
     film: {
       header: 'NDLA film',
@@ -200,6 +201,7 @@ const messages = {
       textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
+    blog: 'From our blog',
     errorDescription: 'Sorry, an error occurd while loading the subjects.',
   },
   meta: {
@@ -514,6 +516,7 @@ const messages = {
       featureFilm: 'Feature film',
       series: 'Series',
       shortFilm: 'Short film',
+      all: 'All movies A-Z',
     },
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
@@ -535,6 +538,26 @@ const messages = {
       tipSectionPt3: '',
       ending: 'We wish all movie lovers a good and educational experience!',
     },
+  },
+  learningPath: {
+    createLearningPathText:
+      'Create your own, copy this or see more learningpaths?',
+    createLearningPathButtonText: 'Go to learningpaths',
+    lastUpdated: 'Last updated',
+    youAreInALearningPath: 'You are now in a learningpath',
+    readTime: '{hours} schoolhours = {minutes} min',
+    pageOf: 'of',
+    readTimeHour_plurals: 'hours',
+    lastStep: {
+      heading: 'Last step of this learningpath',
+      headingSmall:
+        'You are now in the last step of the learningpath {learningPathName}',
+      topicHeading: 'Go to topic:',
+      subjectHeading: 'Go to subject:',
+    },
+    openMenuTooltip: 'Open menu',
+    previousArrow: 'Previous',
+    nextArrow: 'Next',
   },
   dropdown: {
     numberHits: `Search returned {hits} hits`,

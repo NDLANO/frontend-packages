@@ -431,7 +431,7 @@ const messages = {
       newsletterAria: 'Med deg på vårt nyhetsbrev',
       twitter: 'NDLA på Twitter',
       twitterAria: 'Besøk NDLA på Twitter',
-      sharePage: 'NDLA på Twitter',
+      sharePage: 'Del denne siden',
       sharePageAria: 'Del denne siden',
     },
   },

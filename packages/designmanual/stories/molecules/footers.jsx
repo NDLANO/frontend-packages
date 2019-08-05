@@ -33,8 +33,7 @@ const FooterExample = ({ inverted }) => (
       />
     }>
     <FooterText>
-      <FooterEditor title="Ansvarlig redaktør:" name="Christer Gundersen" />
-      <FooterEditor title="Utgaveansvarlig:" name="Pål Frønsdal" />
+      <FooterEditor title="Utgaveansvarlig:" name="Sigurd Trageton" />
       <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
       <ZendeskButton
         locale="nb"

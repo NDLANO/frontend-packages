@@ -6,10 +6,9 @@ import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
+import SwitchButton from '@ndla/switch-button';
 
 import { classes } from './ResourcesWrapper';
-
-import ResourceToggleFilter from '../ResourceGroup/ResourceToggleFilter';
 
 const HelpIcon = () => (
   <div {...classes('topic-title-icon')}>
@@ -42,10 +41,11 @@ const ResourcesTopicTitle = ({
       </div>
       {hasAdditionalResources && (
         <div>
-          <ResourceToggleFilter
+          <SwitchButton
+            name="toggleAddition"
             checked={showAdditionalResources}
             label={messages.additionalFilterLabel}
-            onClick={toggleAdditionalResources}
+            onChange={toggleAdditionalResources}
           />
           <Modal
             narrow

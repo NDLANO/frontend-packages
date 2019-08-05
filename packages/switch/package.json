@@ -1,0 +1,38 @@
+{
+  "name": "@ndla/switch",
+  "version": "0.0.1",
+  "description": "Switch button for NDLA",
+  "license": "GPL-3.0",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-switch/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "@ndla/core": "^0.6.12"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
+    "react": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

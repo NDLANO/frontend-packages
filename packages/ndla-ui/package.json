@@ -30,6 +30,7 @@
     "types"
   ],
   "dependencies": {
+    "@ndla/switch": "^0.0.1",
     "@ndla/button": "^0.3.12",
     "@ndla/carousel": "^0.3.10",
     "@ndla/core": "^0.6.12",

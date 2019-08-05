@@ -223,6 +223,7 @@ FilmFrontpage.propTypes = {
     visualElement: PropTypes.shape({
       url: PropTypes.string,
       alt: PropTypes.string,
+      type: PropTypes.string,
     }),
   }),
   resizeThumbnailImages: PropTypes.bool,

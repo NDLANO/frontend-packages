@@ -14,7 +14,7 @@ import FocusTrapReact from 'focus-trap-react';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
-import { spacing, misc, colors, mq, breakpoints, animations } from '@ndla/core';
+import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
 
@@ -112,6 +112,10 @@ const StyledModal = styled.div<StyledModalProps>`
   }
 `;
 
+const StyledSpan = styled.span`
+  font-weight: ${fonts.weight.semibold};
+`;
+
 
 export type optionsProps = {
   name: string;
@@ -150,7 +154,7 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
         ghostPillOutlineInverted={outline && inverted}
         ghostPillInverted={!outline && inverted}
         onClick={() => setIsOpen(true)}>
-        <span>{t(`languages.${infoLocale}`)}</span>
+        <StyledSpan>{t(`languages.prefixChangeLanguage`)}: {t(`languages.${infoLocale}`)}</StyledSpan>
         <ChevronDown />
       </Button>
       {isOpen && (

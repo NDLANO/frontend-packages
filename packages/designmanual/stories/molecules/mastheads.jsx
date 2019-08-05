@@ -299,10 +299,6 @@ class MastheadWithTopicMenu extends Component {
                   name: 'Nynorsk',
                   url: '#',
                 },
-                en: {
-                  name: 'English',
-                  url: '#',
-                },
               }}
               currentLanguage="nb"
             />

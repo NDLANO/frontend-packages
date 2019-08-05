@@ -10,13 +10,13 @@ import { css, Global } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
-import { mq, breakpoints } from '@ndla/core';
+import { mq, breakpoints, colors } from '@ndla/core';
 
 const styling = css`
   border-radius: 2px;
   background-color: white;
   float: right;
-  z-index: 1;
+  z-index: 2;
   ${mq.range({ from: breakpoints.desktop })} {
     position: fixed;
     right: 2rem;
@@ -73,6 +73,7 @@ class ZendeskButton extends React.Component {
           css={styling}
           onClick={this.handleClick}
           appearance="outline"
+          id="zendeskButton"
           {...rest}>
           {children}
         </Button>

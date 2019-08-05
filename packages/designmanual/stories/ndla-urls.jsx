@@ -18,9 +18,7 @@ const NDLAUrls = () => (
         <p>
           Produksjon:
           <br />
-          <SafeLink to="https://ndla.no/">
-            https://ndla.no
-          </SafeLink>
+          <SafeLink to="https://ndla.no/">https://ndla.no</SafeLink>
         </p>
         <p>
           Staging:
@@ -40,9 +38,7 @@ const NDLAUrls = () => (
         <p>
           Produksjon:
           <br />
-          <SafeLink to="https://ed.ndla.no/">
-            https://ed.ndla.no
-          </SafeLink>
+          <SafeLink to="https://ed.ndla.no/">https://ed.ndla.no</SafeLink>
         </p>
         <p>
           Staging:
@@ -62,9 +58,7 @@ const NDLAUrls = () => (
         <p>
           API dokumentasjon (Swagger):
           <br />
-          <SafeLink to="https://api.ndla.no/">
-            https://api.ndla.no/
-          </SafeLink>
+          <SafeLink to="https://api.ndla.no/">https://api.ndla.no/</SafeLink>
         </p>
       </StoryBody>
     </div>

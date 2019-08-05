@@ -2,8 +2,8 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 // @ts-ignore
 import { StyledButton } from '@ndla/button';
+import { injectT } from '@ndla/i18n';
 import { css } from '@emotion/core';
-
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
@@ -31,7 +31,7 @@ interface ContentTypeResultType {
   }>;
 }
 
-export const SearchResultSleeve: React.FC<Props> = ({
+const SearchResultSleeve: React.FC<Props> = ({
   result,
   allResultUrl,
   resourceToLinkProps,
@@ -75,7 +75,7 @@ export const SearchResultSleeve: React.FC<Props> = ({
           }}
         />
       ))}
-      {!result.length && 'Ingen treff'}
+      {!result.length && t('searchPage.searchField.contentTypeResultNoHit')}
     </div>
     <div {...classes('go-to-search')}>
       <AnchorButton
@@ -88,3 +88,5 @@ export const SearchResultSleeve: React.FC<Props> = ({
     </div>
   </section>
 );
+
+export default injectT(SearchResultSleeve);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import {
   colors,
@@ -19,7 +19,6 @@ import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelecto
 
 // @ts-ignore
 import SvgLogo from '../Logo/SvgLogo';
-import { FrontPageSearch } from './FrontPageSearch';
 
 const StyledLinkWrapper = styled.nav`
   display: none;
@@ -108,52 +107,28 @@ const StyledLogo = styled(SafeLink)`
 
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
   links,
-  inputHasFocus,
-  onSearchDeactiveFocusTrap,
   languageOptions,
-  ...props
-}) => {
-  console.log('rerendering the whole header');
-  const SearchFieldRef = React.createRef<HTMLDivElement>();
-  useEffect(() => {
-    if (inputHasFocus && SearchFieldRef.current) {
-      const inputField = SearchFieldRef.current.getElementsByTagName(
-        'input',
-      )[0];
-      inputField.focus();
-      SearchFieldRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-  }, [inputHasFocus]);
-  return (
-    <StyledHeaderWrapper>
-      <StyledHeader>
-        <StyledLinkWrapper>
-          {links.map((link: Link) => (
-            <StyledSafeLink key={link.text} to={link.to}>
-              <StyledLinkElement>{link.text}</StyledLinkElement>
-              <LaunchIcon color={colors.brand.dark} />
-            </StyledSafeLink>
-          ))}
-          <StyledLanguageSelectorWrapper>
-            <LanguageSelector currentLanguage="nb" options={languageOptions} />
-          </StyledLanguageSelectorWrapper>
-        </StyledLinkWrapper>
-        <StyledLogo to="/" onFocus={onSearchDeactiveFocusTrap}>
-          <SvgLogo />
-        </StyledLogo>
-        <div ref={SearchFieldRef}>
-          <FrontPageSearch
-            inputHasFocus={inputHasFocus}
-            onSearchDeactiveFocusTrap={onSearchDeactiveFocusTrap}
-            {...props}
-          />
-        </div>
-      </StyledHeader>
-    </StyledHeaderWrapper>
-  );
-};
+  children,
+}) => (
+  <StyledHeaderWrapper>
+    <StyledHeader>
+      <StyledLinkWrapper>
+        {links.map((link: Link) => (
+          <StyledSafeLink key={link.text} to={link.to}>
+            <StyledLinkElement>{link.text}</StyledLinkElement>
+            <LaunchIcon color={colors.brand.dark} />
+          </StyledSafeLink>
+        ))}
+        <StyledLanguageSelectorWrapper>
+          <LanguageSelector currentLanguage="nb" options={languageOptions} />
+        </StyledLanguageSelectorWrapper>
+      </StyledLinkWrapper>
+      <StyledLogo to="/">
+        <SvgLogo />
+      </StyledLogo>
+      {children}
+    </StyledHeader>
+  </StyledHeaderWrapper>
+);
 
 export default FrontpageHeader;

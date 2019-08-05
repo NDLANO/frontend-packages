@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
+import BEMHelper from 'react-bem-helper';
 import {
   colors,
   spacing,
@@ -14,6 +15,9 @@ import { SearchField } from '../Search';
 
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
+import SearchResultSleeve from '../Search/SearchResultSleeve';
+
+const classes = new BEMHelper('c-search-field');
 
 type StyledSearchFieldWrapperProps = {
   inputHasFocus?: boolean;
@@ -119,9 +123,10 @@ interface Props {
   allResultUrl: any;
   searchResult: any;
   infoText: any;
+  loading: Boolean;
 }
 
-export const FrontPageSearch: React.FC<Props> = ({
+export const FrontpageSearch: React.FC<Props> = ({
   inputHasFocus,
   searchFieldValue,
   onSearchFieldChange,
@@ -133,55 +138,80 @@ export const FrontPageSearch: React.FC<Props> = ({
   allResultUrl,
   searchResult,
   infoText,
-}) => (
-  <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
-    {!inputHasFocus && (
-      <SearchField
-        value={searchFieldValue}
-        onChange={onSearchFieldChange}
-        onFocus={onSearchInputFocus}
-        placeholder={searchFieldPlaceholder}
-        messages={messages}
-        onSearch={onSearch}
-        allResultUrl={allResultUrl}
-        resourceToLinkProps={() => {}}
-      />
-    )}
-    {inputHasFocus && (
-      <>
-        <StyledSearchBackdrop
-          role="button"
-          onClick={onSearchDeactiveFocusTrap}
-        />
-        <StyledSearchField>
+  loading,
+}) => {
+  const SearchFieldRef = React.createRef<HTMLDivElement>();
+  useEffect(() => {
+    if (inputHasFocus && SearchFieldRef.current) {
+      const inputField = SearchFieldRef.current.getElementsByTagName(
+        'input',
+      )[0];
+      inputField.focus();
+      SearchFieldRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [inputHasFocus]);
+  const modifiers = inputHasFocus
+    ? ['no-left-margin', 'absolute-position-sleeve', 'input-has-focus']
+    : ['absolute-position-sleeve'];
+  return (
+    <div ref={SearchFieldRef}>
+      <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
+        {!inputHasFocus && (
           <SearchField
-            modifiers={
-              inputHasFocus
-                ? ['no-left-margin', 'absolute-position-sleeve']
-                : ['absolute-position-sleeve']
-            }
-            ignoreContentTypeBadge
-            infoText={infoText}
             value={searchFieldValue}
             onChange={onSearchFieldChange}
+            onFocus={onSearchInputFocus}
             placeholder={searchFieldPlaceholder}
             messages={messages}
-            onSearch={onSearch}
-            searchResult={searchResult}
-            allResultUrl={allResultUrl}
             resourceToLinkProps={() => {}}
-            singleColumn
-            hideSleeveHeader
           />
-          <button
-            type="button"
-            onClick={onSearchDeactiveFocusTrap}
-            onBlur={onSearchDeactiveFocusTrap}
-            aria-label={messages.closeSearchLabel}>
-            <Cross />
-          </button>
-        </StyledSearchField>
-      </>
-    )}
-  </StyledSearchFieldWrapper>
-);
+        )}
+        {inputHasFocus && (
+          <>
+            <StyledSearchBackdrop
+              role="button"
+              onClick={onSearchDeactiveFocusTrap}
+            />
+            <StyledSearchField>
+              <form
+                action="/search/"
+                {...classes('', modifiers)}
+                onSubmit={onSearch}>
+                <SearchField
+                  modifiers={modifiers}
+                  value={searchFieldValue}
+                  onChange={onSearchFieldChange}
+                  placeholder={searchFieldPlaceholder}
+                  messages={messages}
+                  singleColumn
+                />
+                {!loading && searchResult && (
+                  <SearchResultSleeve
+                    ignoreContentTypeBadge
+                    result={searchResult}
+                    searchString={searchFieldValue}
+                    allResultUrl={allResultUrl}
+                    resourceToLinkProps={() => {}}
+                    hideSleeveHeader
+                    singleColumn
+                    infoText={infoText}
+                  />
+                )}
+              </form>
+              <button
+                type="button"
+                onClick={onSearchDeactiveFocusTrap}
+                onBlur={onSearchDeactiveFocusTrap}
+                aria-label={messages.closeSearchLabel}>
+                <Cross />
+              </button>
+            </StyledSearchField>
+          </>
+        )}
+      </StyledSearchFieldWrapper>
+    </div>
+  );
+};

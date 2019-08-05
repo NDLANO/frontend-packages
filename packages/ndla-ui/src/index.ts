@@ -23,6 +23,7 @@ export {
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
+  FrontpageSearch,
 } from './Frontpage';
 
 export { default as SafeLinkButton } from './common/SafeLinkButton';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Logo, PageContainer } from '@ndla/ui';
+import { Logo, PageContainer, SafeLink } from '@ndla/ui';
 import { StoryBody } from './wrappers';
 import { Center } from './helpers';
 
@@ -18,53 +18,53 @@ const NDLAUrls = () => (
         <p>
           Produksjon:
           <br />
-          <a href="https://ndla.no/" target="_blank">
+          <SafeLink to="https://ndla.no/">
             https://ndla.no
-          </a>
+          </SafeLink>
         </p>
         <p>
           Staging:
           <br />
-          <a href="https://www.staging.api.ndla.no/" target="_blank">
+          <SafeLink to="https://www.staging.api.ndla.no/">
             https://www.staging.api.ndla.no
-          </a>
+          </SafeLink>
         </p>
         <p>
           Test:
           <br />
-          <a href="https://www.test.api.ndla.no/" target="_blank">
+          <SafeLink to="https://www.test.api.ndla.no/">
             https://www.test.api.ndla.no
-          </a>
+          </SafeLink>
         </p>
         <h2>Editorial (ED)</h2>
         <p>
           Produksjon:
           <br />
-          <a href="https://ed.ndla.no/" target="_blank">
+          <SafeLink to="https://ed.ndla.no/">
             https://ed.ndla.no
-          </a>
+          </SafeLink>
         </p>
         <p>
           Staging:
           <br />
-          <a href="https://ed.staging.api.ndla.no/" target="_blank">
+          <SafeLink to="https://ed.staging.api.ndla.no/">
             https://ed.staging.api.ndla.no
-          </a>
+          </SafeLink>
         </p>
         <p>
           Test:
           <br />
-          <a href="https://ed.test.api.ndla.no/" target="_blank">
+          <SafeLink to="https://ed.test.api.ndla.no/">
             https://ed.test.api.ndla.no
-          </a>
+          </SafeLink>
         </p>
         <h2>API</h2>
         <p>
           API dokumentasjon (Swagger):
           <br />
-          <a href="https://api.ndla.no/" target="_blank">
+          <SafeLink to="https://api.ndla.no/">
             https://api.ndla.no/
-          </a>
+          </SafeLink>
         </p>
       </StoryBody>
     </div>

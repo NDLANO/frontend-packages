@@ -540,6 +540,26 @@ const messages = {
       ending: 'We wish all movie lovers a good and educational experience!',
     },
   },
+  learningPath: {
+    createLearningPathText:
+      'Create your own, copy this or see more learningpaths?',
+    createLearningPathButtonText: 'Go to learningpaths',
+    lastUpdated: 'Last updated',
+    youAreInALearningPath: 'You are now in a learningpath',
+    readTime: '{hours} schoolhours = {minutes} min',
+    pageOf: 'of',
+    readTimeHour_plurals: 'hours',
+    lastStep: {
+      heading: 'Last step of this learningpath',
+      headingSmall:
+        'You are now in the last step of the learningpath {learningPathName}',
+      topicHeading: 'Go to topic:',
+      subjectHeading: 'Go to subject:',
+    },
+    openMenuTooltip: 'Open menu',
+    previousArrow: 'Previous',
+    nextArrow: 'Next',
+  },
   dropdown: {
     numberHits: `Search returned {hits} hits`,
     searching: 'Searching...',

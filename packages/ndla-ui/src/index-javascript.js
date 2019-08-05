@@ -161,4 +161,5 @@ export {
   AboutNdlaFilm,
   FilmMovieSearch,
   FilmMovieList,
+  AllMoviesAlphabetically,
 } from './NDLAFilm';

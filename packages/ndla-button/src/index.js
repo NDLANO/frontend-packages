@@ -6,5 +6,10 @@
  *
  */
 
-export { Button as default, StyledButton } from './Button';
+export {
+  Button as default,
+  StyledButton,
+  buttonStyle,
+  appearances,
+} from './Button';
 export { default as CopyButton } from './CopyButton';

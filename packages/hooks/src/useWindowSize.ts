@@ -19,13 +19,21 @@ function getSize() {
 }
 
 export function useWindowSize(wait?: number) {
-  let [windowSize, setWindowSize] = useState(getSize());
+  let [windowSize, setWindowSize] = useState({
+    innerHeight: -1,
+    innerWidth: -1,
+    outerHeight: -1,
+    outerWidth: -1,
+  });
 
   function handleResize() {
     setWindowSize(getSize());
   }
 
   useEffect(() => {
+    if (windowSize.innerWidth === -1) {
+      setWindowSize(getSize());
+    }
     // Throttle if wait param is provided
     const fn = wait ? throttle(handleResize, wait) : handleResize;
     window.addEventListener('resize', fn);

@@ -9,6 +9,26 @@ export default {
     normal: DURATION_DEFAULT,
     slow: '600ms',
   },
+  fadeInLeftFromZero: (duration?: string) => `
+  animation-duration: ${duration || DURATION_DEFAULT};
+    width: 0;
+    overflow: hidden;
+    animation-name: fadeInLeft;
+    animation-fill-mode: forwards;
+        @keyframes fadeInLeft {
+            0% {
+              transform: translateX(-${spacing.small});
+              opacity: 0;
+              width: inherit;
+              overflow: inherit;
+            }
+            100% {
+              transform: translateX(0);
+              opacity: 1;
+              width: inherit;
+              overflow: inherit;
+            }
+          }`,
   fadeInLeft: (duration?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInLeft;
@@ -18,7 +38,7 @@ export default {
               opacity: 0;
             }
             100% {
-                transform: translateX(0);
+              transform: translateX(0);
               opacity: 1;
             }
           }`,

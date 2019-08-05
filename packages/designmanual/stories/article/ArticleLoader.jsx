@@ -116,10 +116,12 @@ class ArticleLoader extends Component {
       closeButton,
       icon,
       label,
+      articleChildrenBeforeResources,
       hideResources,
       showSubTopics,
       ndlaFilm,
       withBackgroundImage,
+      hideForm,
       id,
     } = this.props;
     const scripts =
@@ -131,6 +133,10 @@ class ArticleLoader extends Component {
         : [];
 
     const articleChildren = [];
+
+    if (articleChildrenBeforeResources) {
+      articleChildren.push(articleChildrenBeforeResources);
+    }
 
     if (showSubTopics) {
       articleChildren.push(
@@ -147,6 +153,14 @@ class ArticleLoader extends Component {
       articleChildren.push(<Resources key="resources" />);
     }
 
+    if (article && article.status) {
+      return (
+        <OneColumn>
+          <h1>Error fetching article..</h1>
+        </OneColumn>
+      );
+    }
+
     return (
       <>
         {ndlaFilm && (
@@ -157,7 +171,7 @@ class ArticleLoader extends Component {
         )}
         <div>
           <Helmet script={scripts} />
-          {article ? (
+          {article && (
             <OneColumn>
               <Article
                 id={id}
@@ -178,7 +192,8 @@ class ArticleLoader extends Component {
                 {articleChildren}
               </Article>
             </OneColumn>
-          ) : (
+          )}
+          {!article && !hideForm && (
             <SimpleSubmitForm
               onSubmit={this.handleSubmit}
               errorMessage={message}
@@ -201,6 +216,8 @@ ArticleLoader.propTypes = {
   label: PropTypes.string,
   hideResources: PropTypes.bool,
   showSubTopics: PropTypes.bool,
+  articleChildrenBeforeResources: PropTypes.node,
+  hideForm: PropTypes.bool,
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
@@ -210,6 +227,7 @@ ArticleLoader.propTypes = {
 ArticleLoader.defaultProps = {
   icon: null,
   label: null,
+  articleChildrenBeforeResources: null,
 };
 
 export default ArticleLoader;

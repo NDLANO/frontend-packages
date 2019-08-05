@@ -551,6 +551,26 @@ const messages = {
       ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
     },
   },
+  learningPath: {
+    createLearningPathText:
+      'Lag din egen, kopier denne eller sjå fleire læringsstiar?',
+    createLearningPathButtonText: 'Gå til stier',
+    lastUpdated: 'Sist oppdatert',
+    youAreInALearningPath: 'Du er nå inne i en læringssti',
+    readTime: '{hours} Skoletimar = {minutes} min',
+    pageOf: 'av',
+    readTimeHour_plurals: 'timar',
+    lastStep: {
+      heading: 'Siste steg i læringsstien',
+      headingSmall:
+        'Du er nå på siste steget i læringsstien {learningPathName}',
+      topicHeading: 'Gå til emne:',
+      subjectHeading: 'Gå til faget:',
+    },
+    openMenuTooltip: 'Åpne meny',
+    previousArrow: 'Forrige',
+    nextArrow: 'Neste',
+  },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,
     searching: 'Søker...',

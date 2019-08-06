@@ -74,7 +74,6 @@ const StyledFigure = styled.figure<StyledImageProps>`
   > svg {
     width: 100%;
     height: 100%;
-    user-select: none;
   }
   width: ${(props: StyledImageProps) => props.mobile ? '130px' : '100%'};
 `;

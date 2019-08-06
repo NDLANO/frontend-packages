@@ -20,7 +20,6 @@ const StyledFigure = styled.figure`
     ${mq.range({ from: breakpoints.mobileWide })} {
       transform: translateY(-${spacing.spacingUnit * 0.75}px);
     }
-    user-select: none;
   }
 `;
 
@@ -44,6 +43,7 @@ const StyledButton = styled.button`
   box-shadow: none;
   border: 0;
   cursor: pointer;
+  user-select: none;
   &:before {
     content: "";
     display: block;

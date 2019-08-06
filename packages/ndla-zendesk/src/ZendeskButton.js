@@ -10,7 +10,7 @@ import { css, Global } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
-import { mq, breakpoints, colors } from '@ndla/core';
+import { mq, breakpoints } from '@ndla/core';
 
 const styling = css`
   border-radius: 2px;

@@ -99,6 +99,7 @@ class FrontpageExample extends Component {
     return (
       <>
         <FrontpageHeader
+          locale="nb"
           links={[
             {
               to: '#1',

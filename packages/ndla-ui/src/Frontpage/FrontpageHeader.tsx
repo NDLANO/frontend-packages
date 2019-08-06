@@ -107,6 +107,7 @@ const StyledLogo = styled(SafeLink)`
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
   links,
   languageOptions,
+  locale,
   children,
 }) => (
   <StyledHeaderWrapper>
@@ -119,7 +120,10 @@ const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
           </StyledSafeLink>
         ))}
         <StyledLanguageSelectorWrapper>
-          <LanguageSelector currentLanguage="nb" options={languageOptions} />
+          <LanguageSelector
+            currentLanguage={locale}
+            options={languageOptions}
+          />
         </StyledLanguageSelectorWrapper>
       </StyledLinkWrapper>
       <StyledLogo to="/">

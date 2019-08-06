@@ -15,8 +15,8 @@ import {
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { categories } from '../../dummydata/index';
-import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
-import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
+import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
+import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const dummyBlogImages = [
@@ -284,16 +284,18 @@ class FrontpageExample extends Component {
                 <BlogPost
                   text="Hjelp til deg som skal opp i norsk"
                   image={dummyBlogImages[0]}
-                  externalLink="#"
+                  externalLink="https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/"
                   linkText="Besøk vår elevblogg"
                   linkTextShort="Elevblogg"
+                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
                 />
                 <BlogPost
                   text="Hjelp til deg som skal opp i norsk"
                   image={dummyBlogImages[1]}
-                  externalLink="#"
+                  externalLink="https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/"
                   linkText="Besøk vår fagblogg"
                   linkTextShort="Fagblogg"
+                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
                 />
               </BlogPostWrapper>
             </section>

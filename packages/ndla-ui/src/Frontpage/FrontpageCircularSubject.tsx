@@ -20,6 +20,7 @@ const StyledFigure = styled.figure`
     ${mq.range({ from: breakpoints.mobileWide })} {
       transform: translateY(-${spacing.spacingUnit * 0.75}px);
     }
+    user-select: none;
   }
 `;
 

@@ -55,6 +55,7 @@ export { default as FileList, File } from './FileList';
 export {
   SearchOverlay,
   SearchField,
+  SearchResultSleeve,
   SearchPage,
   SearchResult,
   SearchResultAuthor,

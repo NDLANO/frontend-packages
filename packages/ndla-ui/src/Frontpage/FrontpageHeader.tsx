@@ -15,7 +15,6 @@ import { FrontPageHeaderProps, Link } from '../types';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelector';
-// @ts-ignore
 
 // @ts-ignore
 import SvgLogo from '../Logo/SvgLogo';

@@ -77,7 +77,8 @@ const StyledHeader = styled.div`
     padding: ${spacing.normal} ${spacing.large} ${spacing.spacingUnit * 4}px;
   }
   ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-    padding: ${spacing.normal} ${spacing.spacingUnit * 3}px ${spacing.spacingUnit * 5}px;
+    padding: ${spacing.normal} ${spacing.spacingUnit * 3}px
+      ${spacing.spacingUnit * 5}px;
   }
   ${mq.range({ from: breakpoints.wide })} {
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 5}px;
@@ -94,10 +95,11 @@ const StyledHeaderWrapper = styled.header`
 
 type StyledSearchFieldWrapperProps = {
   inputHasFocus?: boolean;
-}
+};
 
 const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
-  background: ${(props:StyledSearchFieldWrapperProps) => props.inputHasFocus === true ? 'transparent' : colors.brand.accent};
+  background: ${(props: StyledSearchFieldWrapperProps) =>
+    props.inputHasFocus === true ? 'transparent' : colors.brand.accent};
   border-radius: 2px;
   position: absolute;
   bottom: -${spacing.large};
@@ -211,83 +213,96 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
   infoText,
   searchResult,
   languageOptions,
+  locale,
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
   useEffect(() => {
     if (inputHasFocus && SearchFieldRef.current) {
-      const inputField = SearchFieldRef.current.getElementsByTagName('input')[0];
+      const inputField = SearchFieldRef.current.getElementsByTagName(
+        'input',
+      )[0];
       inputField.focus();
-      SearchFieldRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      SearchFieldRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
   }, [inputHasFocus]);
   return (
-  <StyledHeaderWrapper>
-    <StyledHeader>
-      <StyledLinkWrapper>
-        {links.map((link: Link) => (
-          <StyledSafeLink key={link.text} to={link.to}>
-            <StyledLinkElement>{link.text}</StyledLinkElement>
-            <LaunchIcon color={colors.brand.dark} />
-          </StyledSafeLink>
-        ))}
-        <StyledLanguageSelectorWrapper>
-          <LanguageSelector currentLanguage="nb" options={languageOptions} />
-        </StyledLanguageSelectorWrapper>
-      </StyledLinkWrapper>
-      <StyledLogo to="/" onFocus={onSearchDeactiveFocusTrap}>
-        <SvgLogo />
-      </StyledLogo>
-      <div ref={SearchFieldRef}>
-      <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
-        {!hideSearch && !inputHasFocus && (
-          <SearchField
-            value={searchFieldValue}
-            onChange={onSearchFieldChange}
-            onFocus={onSearchInputFocus}
-            placeholder={searchFieldPlaceholder}
-            messages={messages}
-            onSearch={onSearch}
-            allResultUrl={allResultUrl}
-            resourceToLinkProps={() => {}}
-          />
-        )}
-        {!hideSearch && inputHasFocus && (
-          <>
-            <StyledSearchBackdrop role="button" onClick={onSearchDeactiveFocusTrap} />
-              <StyledSearchField>
-                <SearchField
-                  modifiers={
-                    inputHasFocus
-                      ? ['no-left-margin', 'absolute-position-sleeve']
-                      : ['absolute-position-sleeve']
-                  }
-                  ignoreContentTypeBadge
-                  infoText={infoText}
-                  value={searchFieldValue}
-                  onChange={onSearchFieldChange}
-                  placeholder={searchFieldPlaceholder}
-                  messages={messages}
-                  onSearch={onSearch}
-                  searchResult={searchResult}
-                  allResultUrl={allResultUrl}
-                  resourceToLinkProps={() => {}}
-                  singleColumn
-                  hideSleeveHeader
-                />
-                <button
-                  type="button"
+    <StyledHeaderWrapper>
+      <StyledHeader>
+        <StyledLinkWrapper>
+          {links.map((link: Link) => (
+            <StyledSafeLink key={link.text} to={link.to}>
+              <StyledLinkElement>{link.text}</StyledLinkElement>
+              <LaunchIcon color={colors.brand.dark} />
+            </StyledSafeLink>
+          ))}
+          <StyledLanguageSelectorWrapper>
+            <LanguageSelector
+              currentLanguage={locale}
+              options={languageOptions}
+            />
+          </StyledLanguageSelectorWrapper>
+        </StyledLinkWrapper>
+        <StyledLogo to="/" onFocus={onSearchDeactiveFocusTrap}>
+          <SvgLogo />
+        </StyledLogo>
+        <div ref={SearchFieldRef}>
+          <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
+            {!hideSearch && !inputHasFocus && (
+              <SearchField
+                value={searchFieldValue}
+                onChange={onSearchFieldChange}
+                onFocus={onSearchInputFocus}
+                placeholder={searchFieldPlaceholder}
+                messages={messages}
+                onSearch={onSearch}
+                allResultUrl={allResultUrl}
+                resourceToLinkProps={() => {}}
+              />
+            )}
+            {!hideSearch && inputHasFocus && (
+              <>
+                <StyledSearchBackdrop
+                  role="button"
                   onClick={onSearchDeactiveFocusTrap}
-                  onBlur={onSearchDeactiveFocusTrap}
-                  aria-label={messages.closeSearchLabel}>
-                  <Cross />
-                </button>
-              </StyledSearchField>
-          </>
-        )}
-      </StyledSearchFieldWrapper>
-      </div>
-    </StyledHeader>
-  </StyledHeaderWrapper>
-)};
+                />
+                <StyledSearchField>
+                  <SearchField
+                    modifiers={
+                      inputHasFocus
+                        ? ['no-left-margin', 'absolute-position-sleeve']
+                        : ['absolute-position-sleeve']
+                    }
+                    ignoreContentTypeBadge
+                    infoText={infoText}
+                    value={searchFieldValue}
+                    onChange={onSearchFieldChange}
+                    placeholder={searchFieldPlaceholder}
+                    messages={messages}
+                    onSearch={onSearch}
+                    searchResult={searchResult}
+                    allResultUrl={allResultUrl}
+                    resourceToLinkProps={() => {}}
+                    singleColumn
+                    hideSleeveHeader
+                  />
+                  <button
+                    type="button"
+                    onClick={onSearchDeactiveFocusTrap}
+                    onBlur={onSearchDeactiveFocusTrap}
+                    aria-label={messages.closeSearchLabel}>
+                    <Cross />
+                  </button>
+                </StyledSearchField>
+              </>
+            )}
+          </StyledSearchFieldWrapper>
+        </div>
+      </StyledHeader>
+    </StyledHeaderWrapper>
+  );
+};
 
 export default FrontpageHeaderNew;

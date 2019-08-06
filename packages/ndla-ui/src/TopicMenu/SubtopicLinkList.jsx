@@ -12,7 +12,7 @@ import { Back, ChevronRight } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import { Switch } from '@ndla/switch';
 import { css } from '@emotion/core';
-import { mq, breakpoints, spacing } from '@ndla/core';
+import { mq, breakpoints } from '@ndla/core';
 
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
@@ -33,7 +33,7 @@ const switchSmall = css`
   margin: 0 0 0 20px;
   min-height: 0 !important;
   ${mq.range({ from: breakpoints.mobileWide })} {
-    display: none;
+    display: none !important;
   }
 `;
 

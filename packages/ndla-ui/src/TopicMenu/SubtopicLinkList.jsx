@@ -10,12 +10,32 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Back, ChevronRight } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
+import { Switch } from '@ndla/switch';
+import { css } from '@emotion/core';
+import { mq, breakpoints, spacing } from '@ndla/core';
 
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-import { ContentTypeResult, SearchToggleFilter } from '../Search';
+import { ContentTypeResult } from '../Search';
 import { renderAdditionalIcon } from './TopicMenu';
+
+const switchLarge = css`
+  display: none;
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    display: inline-flex;
+  }
+`;
+
+const switchSmall = css`
+  display: inline-flex !important;
+  align-items: normal !important;
+  margin: 0 0 0 20px;
+  min-height: 0 !important;
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    display: none;
+  }
+`;
 
 const SubtopicLink = ({
   classes,
@@ -171,12 +191,12 @@ class SubtopicLinkList extends Component {
             <div>
               <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
               {someResourcesAreAdditional && (
-                <SearchToggleFilter
-                  preid="wide-"
-                  wide
+                <Switch
+                  id="showAdditionalId"
                   checked={showAdditionalResources}
                   label={t('masthead.menu.additionalFilterLabel')}
-                  onClick={this.toggleAdditionalResources}
+                  onChange={this.toggleAdditionalResources}
+                  css={switchLarge}
                 />
               )}
             </div>
@@ -209,12 +229,12 @@ class SubtopicLinkList extends Component {
               />
             ))}
             {someResourcesAreAdditional && (
-              <SearchToggleFilter
-                preid="narrow-"
-                narrow
+              <Switch
+                id="showSomeAdditionalId"
                 checked={showAdditionalResources}
                 label={t('masthead.menu.additionalFilterLabel')}
-                onClick={this.toggleAdditionalResources}
+                onChange={this.toggleAdditionalResources}
+                css={switchSmall}
               />
             )}
           </aside>

@@ -21,7 +21,6 @@ import SearchFilterList from './SearchFilterList';
 import SearchPopoverFilter from './SearchPopoverFilter';
 import ContentTypeResult from './ContentTypeResult';
 import SearchResultAuthor from './SearchResultAuthor';
-import SearchToggleFilter from './SearchToggleFilter';
 import ActiveFilters from './ActiveFilters';
 export { default as ToggleSearchButton } from './ToggleSearchButton';
 
@@ -37,6 +36,5 @@ export {
   SearchPopoverFilter,
   ContentTypeResult,
   SearchResultAuthor,
-  SearchToggleFilter,
   ActiveFilters,
 };

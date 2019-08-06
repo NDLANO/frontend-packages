@@ -27,6 +27,7 @@ import {
   RadioButtonGroup,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
+import { Switch } from '@ndla/switch';
 
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
@@ -381,6 +382,68 @@ storiesOf('Sammensatte moduler', module)
               ]}
               uniqeIds
               label="Velg fag"
+              onChange={value => {
+                console.log('changed to', value); // eslint-disable-line no-console
+              }}
+            />
+          </div>
+        </ComponentInfo>
+      </StoryBody>
+    </div>
+  ))
+  .add('Switch kontroller', () => (
+    <div>
+      <StoryIntro title="Switch button">
+        <p>
+          Brukes istedet for checkbox når man ser endringen med engang og det
+          kun er on/off state
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <ComponentInfo
+          reactCode={`
+            <Switch
+              checked={true}
+              label="Vis tilleggsstoff"
+              id="uniqeId"
+              onChange={void}
+            />
+          `}
+          usesPropTypes={[
+            {
+              name: 'checked',
+              type: 'boolean',
+              default: 'Required',
+            },
+            {
+              name: 'label',
+              type: 'string',
+              default: 'Required',
+            },
+            {
+              name: 'id',
+              type: 'string',
+              default: 'Required',
+            },
+            {
+              name: 'onChange',
+              type: 'Function',
+              default: 'Required',
+              description: '(val) => {}',
+            },
+            {
+              name: 'disabled',
+              type: 'boolean',
+              default: 'optional',
+            },
+          ]}
+          status={2}>
+          <h2 className="u-heading">Switch eksempel</h2>
+          <div className="u-margin-top">
+            <Switch
+              label="Vis tilleggstoff"
+              id="exampleID"
+              checked={false}
               onChange={value => {
                 console.log('changed to', value); // eslint-disable-line no-console
               }}

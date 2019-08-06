@@ -10,3 +10,4 @@ $ yarn add ndla-switch
 
 ```sh
 $ npm i --save ndla-switch
+```

@@ -20,6 +20,7 @@ const StyledSwitch = styled.div`
   font-family: ${fonts.sans};
   position: relative;
   cursor: pointer;
+  display: inline-flex;
   label {
     &:after {
       content "";
@@ -98,10 +99,10 @@ type Props = {
   label: string;
   id: string;
   disabled?: boolean;
-  onChange: void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const Switch: React.FunctionComponent<Props & React.HTMLProps<HTMLElement>> = ({
+const Switch: React.FunctionComponent<Props> = ({
   onChange, checked, disabled, id, label, ...rest
 }) => (
   <StyledSwitch {...rest}>

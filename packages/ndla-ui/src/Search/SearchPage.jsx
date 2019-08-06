@@ -13,6 +13,7 @@ import ActiveFilters from './ActiveFilters';
 
 const classes = BEMHelper('c-search-page');
 const filterClasses = BEMHelper('c-filter');
+const fieldClasses = new BEMHelper('c-search-field');
 
 class SearchPage extends Component {
   constructor(props) {
@@ -70,18 +71,25 @@ class SearchPage extends Component {
     return (
       <main {...classes()}>
         <div {...classes('search-field-wrapper')}>
-          <SearchField
-            value={searchString}
-            onChange={onSearchFieldChange}
-            onSearch={onSearch}
-            placeholder={t('searchPage.searchFieldPlaceholder')}
-            filters={searchFieldFilters}
-            onFilterRemove={onSearchFieldFilterRemove}
-            resourceToLinkProps={resourceToLinkProps}
-            messages={{
-              searchFieldTitle: t('searchPage.search'),
-            }}
-          />
+          <form
+            action="/search/"
+            {...fieldClasses(
+              '',
+              searchFieldFilters.length ? ['has-filter'] : [],
+            )}
+            onSubmit={onSearch}>
+            <SearchField
+              value={searchString}
+              onChange={onSearchFieldChange}
+              placeholder={t('searchPage.searchFieldPlaceholder')}
+              filters={searchFieldFilters}
+              onFilterRemove={onSearchFieldFilterRemove}
+              resourceToLinkProps={resourceToLinkProps}
+              messages={{
+                searchFieldTitle: t('searchPage.search'),
+              }}
+            />
+          </form>
         </div>
         {author}
         <div {...classes('filter-result-wrapper')}>

@@ -20,11 +20,19 @@ export type SearchResult = {
   resources: Array<Resource>;
 };
 
+export interface ContentTypeResultType {
+  title: string;
+  resources: Array<{
+    path: string;
+    name: string;
+  }>;
+}
+
 export type subjectProp = {
   text: string;
   url: string;
-  yearInfo?: string,
-  beta?: boolean,
+  yearInfo?: string;
+  beta?: boolean;
 };
 
 export type category = {

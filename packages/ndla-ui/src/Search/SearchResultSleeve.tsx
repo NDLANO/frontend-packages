@@ -2,35 +2,27 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 // @ts-ignore
 import { StyledButton } from '@ndla/button';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { css } from '@emotion/core';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
-
+import { ContentTypeResultType } from '../types';
 const AnchorButton = StyledButton.withComponent(SafeLink);
 const classes = new BEMHelper('c-search-field');
 
 interface Props {
-  result: any;
-  allResultUrl: any;
-  resourceToLinkProps: any;
-  onNavigate: any;
-  hideSleeveHeader: any;
-  singleColumn: any;
-  infoText: any;
-  ignoreContentTypeBadge: any;
-  t: any;
+  result: Array<ContentTypeResultType>;
+  allResultUrl: string;
+  resourceToLinkProps: () => {};
+  onNavigate: () => {};
+  hideSleeveHeader: boolean;
+  singleColumn: boolean;
+  infoText: string;
+  ignoreContentTypeBadge: boolean;
+  t: (v: string) => {};
 }
-
-interface ContentTypeResultType {
-  title: string;
-  resources: Array<{
-    path: string;
-    name: string;
-  }>;
-}
-
 const SearchResultSleeve: React.FC<Props> = ({
   result,
   allResultUrl,

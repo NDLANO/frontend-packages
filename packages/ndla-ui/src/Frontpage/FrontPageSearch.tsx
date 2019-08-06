@@ -1,22 +1,16 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
-import {
-  colors,
-  spacing,
-  mq,
-  breakpoints,
-  fonts,
-  animations,
-} from '@ndla/core';
+import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
+// @ts-ignore
+import { Cross } from '@ndla/icons/action';
 
 // @ts-ignore
 import { SearchField } from '../Search';
 
 // @ts-ignore
-import { Cross } from '@ndla/icons/action';
 import SearchResultSleeve from '../Search/SearchResultSleeve';
-
+import { ContentTypeResultType } from '../types';
 const classes = new BEMHelper('c-search-field');
 
 type StyledSearchFieldWrapperProps = {
@@ -112,17 +106,17 @@ const StyledSearchBackdrop = styled.div`
 `;
 
 interface Props {
-  inputHasFocus: any;
-  searchFieldValue: any;
-  onSearchFieldChange: any;
-  searchFieldPlaceholder: any;
-  onSearchDeactiveFocusTrap: any;
-  onSearchInputFocus: any;
-  onSearch: any;
-  messages: any;
-  allResultUrl: any;
-  searchResult: any;
-  infoText: any;
+  inputHasFocus: boolean;
+  searchFieldValue: string;
+  onSearchFieldChange: () => {};
+  searchFieldPlaceholder: string;
+  onSearchDeactiveFocusTrap: () => {};
+  onSearchInputFocus: () => {};
+  onSearch: () => {};
+  messages: { closeSearchLabel: string };
+  allResultUrl: string;
+  searchResult: Array<ContentTypeResultType>;
+  infoText: string;
   loading: Boolean;
 }
 

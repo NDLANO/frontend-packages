@@ -11,7 +11,7 @@ import {
 
 // @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
-import { FrontPageHeaderProps, Link } from './types';
+import { FrontPageHeaderProps, Link } from '../types';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelector';

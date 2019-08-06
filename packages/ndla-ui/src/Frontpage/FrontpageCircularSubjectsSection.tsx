@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
 import FrontpageCombinedSubjects from './FrontpageCombinedSubjects';
-import { category as categoryProp } from './types';
+import { category as categoryProp } from '../types';
 import { sortCategories } from './sortCategories';
 
 const StyledSection = styled.section`
@@ -39,10 +39,7 @@ const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
   categories,
   linkToAbout,
 }) => {
-
-  const sortedCategories: categoryProp[] = sortCategories(
-    categories,
-  );
+  const sortedCategories: categoryProp[] = sortCategories(categories);
   if (!(sortedCategories && sortedCategories.length)) {
     console.warn(
       'Category types not valid. Must have names [fellesfag, yrkesfag, studiespesialiserende] and only that.',

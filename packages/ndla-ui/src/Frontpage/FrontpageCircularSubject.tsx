@@ -3,10 +3,8 @@ import styled from '@emotion/styled';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import { category as categoryProp } from './types';
-import {
-  categoryIllustrations
-} from './illustrations';
+import { category as categoryProp } from '../types';
+import { categoryIllustrations } from './illustrations';
 
 const StyledFigure = styled.figure`
   display: flex;
@@ -80,19 +78,21 @@ type Props = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const FrontpageCircularSubject: React.FunctionComponent<Props & React.HTMLProps<HTMLButtonElement>> = ({
-  category, t, ...rest
-}) => {
+const FrontpageCircularSubject: React.FunctionComponent<
+  Props & React.HTMLProps<HTMLButtonElement>
+> = ({ category, t, ...rest }) => {
   // @ts-ignore
-  const Illustration = categoryIllustrations[category.name]
+  const Illustration = categoryIllustrations[category.name];
   return (
     <StyledButton type="button" {...rest}>
       <StyledFigure>
         <Illustration />
       </StyledFigure>
-      <StyledFigCaption>{t(`welcomePage.category.${category.name}`)}</StyledFigCaption>
+      <StyledFigCaption>
+        {t(`welcomePage.category.${category.name}`)}
+      </StyledFigCaption>
     </StyledButton>
-  )
+  );
 };
 
 export default injectT(FrontpageCircularSubject);

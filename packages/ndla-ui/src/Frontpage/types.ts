@@ -23,8 +23,8 @@ export type SearchResult = {
 export type subjectProp = {
   text: string;
   url: string;
-  yearInfo?: string,
-  beta?: boolean,
+  yearInfo?: string;
+  beta?: boolean;
 };
 
 export type category = {
@@ -47,6 +47,7 @@ export type FrontPageHeaderProps = {
   infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;
+  locale: string;
 };
 
 export type elementRectType = {

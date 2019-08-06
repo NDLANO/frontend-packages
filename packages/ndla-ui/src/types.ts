@@ -55,6 +55,7 @@ export type FrontPageHeaderProps = {
   infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;
+  locale: string;
 };
 
 export type elementRectType = {

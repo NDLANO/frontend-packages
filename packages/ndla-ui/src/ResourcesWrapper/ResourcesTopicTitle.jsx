@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
+import { css } from '@emotion/core';
+import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
@@ -17,6 +18,10 @@ const HelpIcon = () => (
     />
   </div>
 );
+
+const switchCSS = css`
+  margin-right: ${spacing.xsmall};
+`;
 
 const ResourcesTopicTitle = ({
   title,
@@ -42,10 +47,11 @@ const ResourcesTopicTitle = ({
       {hasAdditionalResources && (
         <div>
           <Switch
-            name="toggleAddition"
+            id="toggleAdditionID"
             checked={showAdditionalResources}
             label={messages.additionalFilterLabel}
             onChange={toggleAdditionalResources}
+            css={switchCSS}
           />
           <Modal
             narrow

@@ -17,7 +17,6 @@ import {
   mockMovieTopics,
   mockMovieResourceTypes,
 } from '../../dummydata';
-import Poster from '../../images/filmposter-aboutNDLA.png';
 
 import { ALL_MOVIES } from '../../dummydata/mockFilm';
 
@@ -78,7 +77,9 @@ class NdlaFilmExample extends Component {
           description:
             'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her finner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
           visualElement: {
-            url: Poster,
+            url:
+              'https://videoapi.streamps.net/video/ndlaseria/uai66jcyfg2e1sb',
+            type: 'brightcove',
             alt: 'NDLA film',
           },
         }}

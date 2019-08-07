@@ -14,3 +14,4 @@ require('./licenses');
 require('./produksjonssystem');
 require('./experimental');
 require('./messages');
+require('./ndla-urls');

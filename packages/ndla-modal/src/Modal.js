@@ -245,6 +245,9 @@ const ModalWrapper = styled.div`
       flex-basis: 100%;
     }
     padding: ${spacing.normal};
+    @supports (-webkit-overflow-scrolling: touch) {
+      padding-top: ${spacing.large};
+    }
     &.no-bottom-padding {
       padding-bottom: 0;
     }

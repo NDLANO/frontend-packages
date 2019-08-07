@@ -9,21 +9,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import { TFunctionValue } from 't';
 
-export const injectT = (WrappedComponent, prefix = '') => {
-  const getDisplayName = component =>
+interface Props {
+  [key: string]: any;
+}
+
+interface Context {
+  [key: string]: any;
+}
+
+export const injectT = (
+  WrappedComponent: React.ComponentType<Props>,
+  prefix?: string | '',
+) => {
+  const getDisplayName = (component: React.ComponentType) =>
     component.displayName || component.name || 'Component';
 
-  const InjectT = (props, context) => (
+  const InjectT = (props: Props, context: Context) => (
     <WrappedComponent
       {...props}
-      t={(id, value = {}) => context.formatMessage(prefix + id, value)}
+      t={(id: string, value?: TFunctionValue | {}): string =>
+        context.formatMessage(prefix + id, value)
+      }
     />
   );
-
-  InjectT.contextTypes = {
-    formatMessage: PropTypes.func.isRequired,
-  };
 
   InjectT.displayName = `InjectT(${getDisplayName(WrappedComponent)})`;
   return hoistNonReactStatics(InjectT, WrappedComponent);

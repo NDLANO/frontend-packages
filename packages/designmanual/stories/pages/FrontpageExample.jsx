@@ -15,18 +15,18 @@ import {
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { categories } from '../../dummydata/index';
-import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
-import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
+import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
+import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 const dummyBlogImages = [
   {
     url: BlogExampleImage1,
-    alt: 'Alt-tekst eksempel til Blogg-bilde..',
+    alt: 'Elever arbeider i grupper',
   },
   {
     url: BlogExampleImage2,
-    alt: 'Alt-tekst eksempel til Blogg-bilde..',
+    alt: 'Prosjektarbeid på tvers av fag',
   },
 ];
 
@@ -282,18 +282,20 @@ class FrontpageExample extends Component {
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
                 <BlogPost
-                  text="Hjelp til deg som skal opp i norsk"
+                  text="Elever arbeider i grupper"
                   image={dummyBlogImages[0]}
-                  externalLink="#"
-                  linkText="Besøk vår elevblogg"
-                  linkTextShort="Elevblogg"
-                />
-                <BlogPost
-                  text="Hjelp til deg som skal opp i norsk"
-                  image={dummyBlogImages[1]}
-                  externalLink="#"
+                  externalLink="https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/"
                   linkText="Besøk vår fagblogg"
                   linkTextShort="Fagblogg"
+                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
+                />
+                <BlogPost
+                  text="Prosjektarbeid på tvers av fag"
+                  image={dummyBlogImages[1]}
+                  externalLink="https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/"
+                  linkText="Besøk vår fagblogg"
+                  linkTextShort="Fagblogg"
+                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
                 />
               </BlogPostWrapper>
             </section>

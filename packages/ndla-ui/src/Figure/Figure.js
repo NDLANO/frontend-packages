@@ -106,7 +106,10 @@ const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
   const typeClass =
     type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   return (
-    <figure {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
+    <figure
+      data-sizetype={type}
+      {...classes('', { resize: resizeIframe }, typeClass)}
+      {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );

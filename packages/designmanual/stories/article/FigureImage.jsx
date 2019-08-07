@@ -42,6 +42,22 @@ function ImageWrapper({ typeClass, src, hasHiddenCation, children, t }) {
   );
 }
 
+const calculateSizesFromType = type => {
+  switch (type) {
+    case 'left':
+    case 'right':
+      return '470px';
+    case 'small-left':
+    case 'small-right':
+      return '320px';
+    case 'xsmall-right':
+    case 'xsmall-left':
+      return '200px';
+    default:
+      return '(min-width: 1024px) 1024px, 100vw';
+  }
+};
+
 export function FigureImage({
   type,
   alt,
@@ -54,7 +70,7 @@ export function FigureImage({
     initArticleScripts();
   });
   const figureId = `figure-${id}`;
-
+  const sizes = calculateSizesFromType(type);
   return (
     <Trans>
       {({ t }) => (
@@ -66,7 +82,7 @@ export function FigureImage({
                 typeClass={typeClass}
                 t={t}
                 src={src}>
-                <Image alt={alt} src={src} />
+                <Image alt={alt} src={src} sizes={sizes} />
               </ImageWrapper>
               <FigureCaptionExample
                 id={id}

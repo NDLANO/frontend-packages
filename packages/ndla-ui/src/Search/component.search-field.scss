@@ -266,6 +266,15 @@ $overlay-height: 136px;
     svg {
       transform: translateY(6px);
     }
+    @include mq($until: tablet) {
+      padding-right: $spacing;
+      svg {
+        display: none;
+      }
+      span {
+        padding: 0;
+      }
+    }
   }
 
   &__search-result-content {

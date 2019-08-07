@@ -73,13 +73,11 @@ const Image = ({
         alt={alt}
         src={`${src}?${queryString}`}
         srcSet={srcSet}
-        sizes={useSizes}
+        sizes={sizes}
         lazyLoadSrc={lazyLoadSrc}
       />
     );
   }
-
-  console.log('sizes', sizes);
 
   return (
     <picture>

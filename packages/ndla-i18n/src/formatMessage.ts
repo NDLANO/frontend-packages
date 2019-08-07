@@ -8,13 +8,17 @@
 
 import invariant from 'invariant';
 
+interface Messages {
+  [key: string]: string;
+}
+
 export default function formatMessage(
-  locale,
-  messages,
-  getMessageFormat,
-  id,
+  locale: string,
+  messages: Messages,
+  getMessageFormat: any,
+  id: string,
   values = {},
-) {
+): string {
   // `id` is a required parameter.
   invariant(id, 'An `id` must be provided to format a message.');
 

@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "hoist-non-react-statics": "^3.3.0",
-    "intl-format-cache": "^2.1.0",
-    "intl-messageformat": "^2.2.0",
-    "invariant": "^2.2.3"
+    "intl-format-cache": "^4.1.6",
+    "intl-messageformat": "^6.0.3",
+    "invariant": "^2.2.4"
   },
   "publishConfig": {
     "access": "public"

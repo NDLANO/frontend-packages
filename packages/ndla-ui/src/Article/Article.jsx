@@ -15,6 +15,7 @@ import isString from 'lodash/isString';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
+import ArticleBylineBox from './ArticleBylineBox';
 import LayoutItem from '../Layout';
 import { ArticleShape } from '../shapes';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
@@ -123,6 +124,11 @@ export const Article = ({
     authors = processors;
   }
 
+  authors = authors.map(author => ({
+    ...author,
+    licenses: license,
+  }));
+
   return (
     <ArticleWrapper modifier={modifier} id={id}>
       <LayoutItem layout="center">
@@ -151,6 +157,9 @@ export const Article = ({
         )}
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
+      <LayoutItem layout="center">
+        <ArticleBylineBox {...{ authors, licenseBox, published }} />
+      </LayoutItem>
     </ArticleWrapper>
   );
 };

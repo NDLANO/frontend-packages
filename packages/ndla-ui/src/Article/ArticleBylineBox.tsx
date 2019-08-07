@@ -60,7 +60,7 @@ const StyledAuthorRow = styled('li')`
   ${mq.range({ until: breakpoints.mobileWide })} {
     ${fonts.sizes('14px', '1.3')};
 
-    &:first-child ${StyledAuthorRole} {
+    &:first-of-type ${StyledAuthorRole} {
       margin: 0;
     }
   }
@@ -85,63 +85,74 @@ const StyledLastUpdated = styled('span')`
   }
 `;
 
-interface Author {
+type Author = {
   name: string;
-  role: string;
-  licenses: string[];
-}
+  role?: string;
+  type?: string;
+  licenses: string;
+};
 
-interface ArticleBylineBoxProps {
+type ArticleBylineBoxProps = {
   authors: Author[];
   licenseBox: any;
   published: string;
   t: any;
-}
+};
 
 const ArticleBylineBox = ({
   authors,
   licenseBox,
   published,
   t,
-}: ArticleBylineBoxProps) => (
-  <StyledArticleBylineBox>
-    {authors.length > 0 && (
-      <StyledAuthorList>
-        {authors.map(author => (
-          <StyledAuthorRow key={author.name}>
-            <StyledAuthorRole>{`${author.role}:`}</StyledAuthorRole>
-            <StyledAuthorName>{author.name}</StyledAuthorName>
-            <LicenseByline
-              licenseRights={author.licenses}
-              size="16px"
-              removeBottomPadding
-            />
-          </StyledAuthorRow>
-        ))}
-      </StyledAuthorList>
-    )}
-    <StyledRow>
-      <StyledLastUpdated>
-        {t('article.lastUpdated')} {published}
-      </StyledLastUpdated>
-      {licenseBox && (
-        <span>
-          <Modal
-            activateButton={<Button link>{t('article.useContent')}</Button>}
-            size="medium">
-            {(onClose: Function) => (
-              <>
-                <ModalHeader modifier="no-bottom-padding">
-                  <ModalCloseButton onClick={onClose} title="Lukk" />
-                </ModalHeader>
-                <ModalBody>{licenseBox}</ModalBody>
-              </>
-            )}
-          </Modal>
-        </span>
+}: ArticleBylineBoxProps) => {
+  return (
+    <StyledArticleBylineBox>
+      {authors.length > 0 && (
+        <StyledAuthorList>
+          {authors.map(author => (
+            <StyledAuthorRow key={author.name}>
+              <StyledAuthorRole>
+                {author.role
+                  ? `${author.role}`
+                  : t(
+                      `license.creditType.${author.type &&
+                        author.type.toLowerCase()}`,
+                    )}
+                :
+              </StyledAuthorRole>
+              <StyledAuthorName>{author.name}</StyledAuthorName>
+              <LicenseByline
+                licenseRights={author.licenses.split(' ')}
+                size="16px"
+                removeBottomPadding
+              />
+            </StyledAuthorRow>
+          ))}
+        </StyledAuthorList>
       )}
-    </StyledRow>
-  </StyledArticleBylineBox>
-);
+      <StyledRow>
+        <StyledLastUpdated>
+          {t('article.lastUpdated')} {published}
+        </StyledLastUpdated>
+        {licenseBox && (
+          <span>
+            <Modal
+              activateButton={<Button link>{t('article.useContent')}</Button>}
+              size="medium">
+              {(onClose: Function) => (
+                <>
+                  <ModalHeader modifier="no-bottom-padding">
+                    <ModalCloseButton onClick={onClose} title="Lukk" />
+                  </ModalHeader>
+                  <ModalBody>{licenseBox}</ModalBody>
+                </>
+              )}
+            </Modal>
+          </span>
+        )}
+      </StyledRow>
+    </StyledArticleBylineBox>
+  );
+};
 
 export default injectT(ArticleBylineBox);

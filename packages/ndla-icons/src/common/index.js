@@ -45,4 +45,5 @@ export { default as Time } from './Time';
 export { default as Twitter } from './Twitter';
 export { default as User } from './User';
 export { default as VolumeUp } from './VolumeUp';
+export { default as Wrench } from './Wrench';
 export { default as ZoomOutMap } from './ZoomOutMap';

@@ -69,29 +69,32 @@ const authors = {
   real: authorRealText,
 };
 
-const ArticleBylineExample = ({ multipleAuthors, useRealText, additional }) => {
+const ArticleInformationBoxExample = ({
+  multipleAuthors,
+  useRealText,
+  additional,
+}) => {
   const useAuthors = authors[useRealText ? 'real' : 'simple'];
   return (
     <ArticleBylineBox
       authors={multipleAuthors ? useAuthors : [useAuthors[0]]}
       published={useRealText ? '24.04.2018' : '[dato]'}
-      license={useRealText ? 'CC BY-SA' : '[lisens]'}
       licenseBox={<LicenseBox />}
       additional={additional}
     />
   );
 };
 
-ArticleBylineExample.propTypes = {
+ArticleInformationBoxExample.propTypes = {
   useRealText: PropTypes.bool,
   multipleAuthors: PropTypes.bool,
   additional: PropTypes.bool,
 };
 
-ArticleBylineExample.defaultProps = {
+ArticleInformationBoxExample.defaultProps = {
   multipleAuthors: false,
   useRealText: false,
   additional: false,
 };
 
-export default ArticleBylineExample;
+export default ArticleInformationBoxExample;

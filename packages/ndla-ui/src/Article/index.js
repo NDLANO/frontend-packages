@@ -12,8 +12,6 @@ import Article, {
   ArticleWrapper,
 } from './Article';
 
-export { default as ArticleByline } from './ArticleByline';
-export { default as ArticleBylineBox } from './ArticleBylineBox';
 export { default as ArticleContent } from './ArticleContent';
 export { default as ArticleFootNotes } from './ArticleFootNotes';
 export { default as ArticleHeaderWrapper } from './ArticleHeaderWrapper';

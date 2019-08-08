@@ -26,6 +26,7 @@ export {
 } from './Frontpage';
 
 export { default as SafeLinkButton } from './common/SafeLinkButton';
+export { ArticleByline, ArticleBylineBox } from './Article/index-ts';
 
 export {
   LearningPathWrapper,

@@ -9,8 +9,6 @@
 export { default as Footer } from './Footer';
 
 export {
-  ArticleByline,
-  ArticleBylineBox,
   ArticleContent,
   ArticleFootNotes,
   ArticleIntroduction,

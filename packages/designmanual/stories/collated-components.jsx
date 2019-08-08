@@ -76,23 +76,23 @@ storiesOf('Sammensatte moduler', module)
               name: 'Cecilie Isaksen Eftedal',
               shortName: 'Cecilie',
               role: 'Forfatter',
-              licenses: ['CC', 'BY', 'SA'],
+              licenses: 'CC BY-SA',
             },
             {
               name: 'Riksarkivet',
               shortName: 'Riksarkivet',
               role: 'Leverandør',
-              licenses: ['CC', 'BY', 'SA'],
+              licenses: 'CC BY-SA',
             },
             {
               name: 'Norges kvinne- og familieforbund',
               shortName: 'NKF',
               role: 'Opphavsperson',
-              licenses: ['CC', 'BY', 'SA'],
+              licenses: 'CC BY-SA',
             },
           ]}
           published="21.06.2018"
-          license={['CC', 'BY', 'SA']}
+          license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
       </StoryBody>

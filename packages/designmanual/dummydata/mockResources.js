@@ -225,7 +225,7 @@ export const sourceMaterialResources = [
     name: 'Kildemateriale 1',
   },
   {
-    id: 'urn:resource:883281e0-c5ec-42d8-8365-ab2',
+    id: 'urn:resource:883281e0-c5ec-42d8-8365-ab33',
     name: 'Kildemateriale 2',
   },
   {

@@ -151,15 +151,15 @@ const messages = {
   },
   welcomePage: {
     search: 'Søk',
+    searchDisclaimer:
+      'Vi jobbar stadig med å forbetre oss! Har du kommentarer til søket, blir vi glad om du legg dei inn i «spør NDLA» nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
     topicsConjunction: 'og',
-    topicsNotAvailableFromSearch:
-      'er ikkje flyttet over til nye NDLA.no og vil ikkje gi treff i dette søket.',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
-      searchFieldPlaceholder: 'Søk etter f.eks emne, lærestoff, nykelord...',
+      searchFieldPlaceholder: 'Kva vil du lære om i dag?',
       messages: {
         searchFieldTitle: 'Søk',
         menuButton: 'Meny',
@@ -190,6 +190,7 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studiespesialisering',
       imported: 'Spoltefag',
+      heading: 'Kva lærar du?',
     },
     film: {
       header: 'NDLA film',
@@ -198,6 +199,7 @@ const messages = {
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
+    blog: 'Frå bloggen',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {
@@ -477,7 +479,7 @@ const messages = {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
       text:
-        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+        'NDLA film er ei nettbasert filmteneste for elevar og lærarar i videregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
     search: {
       placeholder: 'Søk på filmnavn',
@@ -518,7 +520,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS og Norsk filminstitutt.',
+        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS.',
       secondParagraph:
         'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:
@@ -534,6 +536,26 @@ const messages = {
       tipSectionPt3: 'vår',
       ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
     },
+  },
+  learningPath: {
+    createLearningPathText:
+      'Lag din egen, kopier denne eller sjå fleire læringsstiar?',
+    createLearningPathButtonText: 'Gå til stier',
+    lastUpdated: 'Sist oppdatert',
+    youAreInALearningPath: 'Du er nå inne i en læringssti',
+    readTime: '{hours} Skoletimar = {minutes} min',
+    pageOf: 'av',
+    readTimeHour_plurals: 'timar',
+    lastStep: {
+      heading: 'Siste steg i læringsstien',
+      headingSmall:
+        'Du er nå på siste steget i læringsstien {learningPathName}',
+      topicHeading: 'Gå til emne:',
+      subjectHeading: 'Gå til faget:',
+    },
+    openMenuTooltip: 'Åpne meny',
+    previousArrow: 'Forrige',
+    nextArrow: 'Neste',
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

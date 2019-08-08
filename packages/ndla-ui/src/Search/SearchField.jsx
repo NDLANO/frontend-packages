@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Search as SearchIcon } from '@ndla/icons/common';
+import { Search as SearchIcon, Wrench } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import { StyledButton } from '@ndla/button';
 import { css } from '@emotion/core';
@@ -51,7 +51,10 @@ const SearchResult = ({
       </h1>
     )}
     {infoText && (
-      <aside {...classes('search-result-infotext')}>{infoText}</aside>
+      <aside {...classes('search-result-infotext')}>
+        <Wrench className="c-icon--22" />
+        <span>{infoText}</span>
+      </aside>
     )}
     <div
       {...classes(
@@ -97,7 +100,7 @@ SearchResult.propTypes = {
   onNavigate: PropTypes.func,
   hideSleeveHeader: PropTypes.bool,
   singleColumn: PropTypes.bool,
-  infoText: PropTypes.string,
+  infoText: PropTypes.node,
   ignoreContentTypeBadge: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };

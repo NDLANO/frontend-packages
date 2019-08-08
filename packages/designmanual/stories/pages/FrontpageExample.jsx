@@ -1,31 +1,33 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import {
-  FrontpageHeader,
-  FrontpageSubjects,
-  ContentCard,
+  FrontpageHeaderNew,
   OneColumn,
   FrontpageInfo,
-  FrontpageSearchSection,
   FrontpageFilm,
+  FrontpageCircularSubjectsSection,
   InfoWidget,
   SafeLink,
   SubjectSectionTitle,
+  BlogPost,
+  BlogPostWrapper,
 } from '@ndla/ui';
-import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-import { contentCards, categories } from '../../dummydata/index';
+import { categories } from '../../dummydata/index';
+import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
+import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
-const classes = BEMHelper('c-frontpage-section');
-
-const exampleTopicsNotInNDLA = [
-  'Kokk og servitørfag Vg2',
-  'Biologi 1',
-  'Sosiologi og sosialantropologi',
-  'Transport og logistikk Vg2',
+const dummyBlogImages = [
+  {
+    url: BlogExampleImage1,
+    alt: 'Elever arbeider i grupper',
+  },
+  {
+    url: BlogExampleImage2,
+    alt: 'Prosjektarbeid på tvers av fag',
+  },
 ];
 
 class FrontpageExample extends Component {
@@ -60,35 +62,13 @@ class FrontpageExample extends Component {
     }));
   }
 
-  renderInfoText() {
-    const { t } = this.props;
-    return (
-      <span>
-        {exampleTopicsNotInNDLA.map((topic, index) => {
-          const isLastTopic = index === exampleTopicsNotInNDLA.length - 1;
-          return (
-            <Fragment key={topic}>
-              {isLastTopic && `${t('welcomePage.topicsConjunction')} `}
-              <strong key={topic}>
-                {topic}
-                {index < exampleTopicsNotInNDLA.length - 2 && ','}{' '}
-              </strong>
-            </Fragment>
-          );
-        })}
-        {t('welcomePage.topicsNotAvailableFromSearch')}
-      </span>
-    );
-  }
-
   render() {
     const { t } = this.props;
     const { searchFieldValue, inputHasFocus } = this.state;
-    const needInfoTextInSearchSuggestions = exampleTopicsNotInNDLA.length > 0;
 
     return (
       <>
-        <FrontpageHeader
+        <FrontpageHeaderNew
           locale="nb"
           searchFieldValue={searchFieldValue}
           logoTo="home"
@@ -103,7 +83,6 @@ class FrontpageExample extends Component {
           searchFieldPlaceholder={t(
             'welcomePage.heading.searchFieldPlaceholder',
           )}
-          infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
           inputHasFocus={inputHasFocus}
           searchResult={
             searchFieldValue.length > 2
@@ -125,7 +104,7 @@ class FrontpageExample extends Component {
                         subName: 'Vg1',
                       },
                       {
-                        path: '#f2',
+                        path: '#f3',
                         boldName: 'Fellesfag:',
                         name: 'Samfunnsfag',
                       },
@@ -227,16 +206,11 @@ class FrontpageExample extends Component {
                 ]
               : []
           }
-          menuSubject={
-            <FrontpageSubjects
-              categories={categories}
-              linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
-            />
-          }
           messages={{
             searchFieldTitle: t(
               'welcomePage.heading.messages.searchFieldTitle',
             ),
+            closeSearchLabel: t('welcomePage.closeSearch'),
             menuButton: t('welcomePage.heading.messages.menuButton'),
           }}
           links={[
@@ -252,71 +226,48 @@ class FrontpageExample extends Component {
               to: '#3',
               text: 'Nyhetsbrev',
             },
-            {
-              to: '#4',
-              text: 'Change language',
-            },
           ]}
+          languageOptions={{
+            nb: {
+              name: 'Bokmål',
+              url: '#',
+            },
+            nn: {
+              name: 'Nynorsk',
+              url: '#',
+            },
+            en: {
+              name: 'English',
+              url: '#',
+            },
+          }}
         />
         <main>
-          <FrontpageSubjects
+          <FrontpageCircularSubjectsSection
             categories={categories}
             linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
           />
           <OneColumn wide extraPadding>
-            <FrontpageSearchSection
-              heading={t('welcomePage.heading.messages.searchFieldTitle')}
-              searchFieldValue=""
-              onSearch={() => {}}
-              onSearchFieldChange={() => {}}
-            />
-            <section {...classes()}>
-              <SubjectSectionTitle>
-                {t('welcomePage.highlighted')}
-              </SubjectSectionTitle>
-              <CarouselAutosize
-                breakpoints={[
-                  {
-                    until: 'mobile',
-                    columnsPrSlide: 1.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 13,
-                  },
-                  {
-                    until: 'mobileWide',
-                    columnsPrSlide: 2.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 13,
-                  },
-                  {
-                    until: 'tabletWide',
-                    columnsPrSlide: 3.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 26,
-                  },
-                  {
-                    columnsPrSlide: 4.25,
-                    distanceBetweenItems: 26,
-                    arrowOffset: 26,
-                  },
-                ]}>
-                {autoSizedProps => (
-                  <Carousel
-                    slideBackwardsLabel={t('carousel.back')}
-                    slideForwardsLabel={t('carousel.forward')}
-                    buttonClass="c-carousel__arrow"
-                    wrapperClass="c-carousel__wrapper"
-                    items={contentCards.map(subject => (
-                      <ContentCard
-                        {...subject}
-                        columnWidth={autoSizedProps.columnWidth}
-                        key={subject.id}
-                      />
-                    ))}
-                    {...autoSizedProps}
-                  />
-                )}
-              </CarouselAutosize>
+            <section>
+              <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
+              <BlogPostWrapper>
+                <BlogPost
+                  text="Elever arbeider i grupper"
+                  image={dummyBlogImages[0]}
+                  externalLink="https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/"
+                  linkText="Besøk vår fagblogg"
+                  linkTextShort="Fagblogg"
+                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
+                />
+                <BlogPost
+                  text="Prosjektarbeid på tvers av fag"
+                  image={dummyBlogImages[1]}
+                  externalLink="https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/"
+                  linkText="Besøk vår fagblogg"
+                  linkTextShort="Fagblogg"
+                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
+                />
+              </BlogPostWrapper>
             </section>
             <FrontpageFilm
               imageUrl={NdlaFilmIllustration}

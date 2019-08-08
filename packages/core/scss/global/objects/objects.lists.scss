@@ -2,6 +2,7 @@
   margin: 0 0 2em;
   padding: 0;
   list-style: none;
+
   li {
     margin-left: 1em;
   }
@@ -18,15 +19,18 @@ ol {
     }
   }
 }
+
 .ol-list--roman {
   counter-reset: item;
 }
-.ol-list--roman > li {
+
+.ol-list--roman>li {
   &:before {
-    content: counter(item, upper-latin);
+    content: counter(item, lower-latin);
     counter-increment: item;
   }
 }
+
 .o-list--colors {
   margin: 0;
   padding: 0;
@@ -34,6 +38,7 @@ ol {
   display: flex;
   flex-wrap: wrap;
 }
+
 .o-list__item--colors {
   list-style: none;
   margin: 0 $spacing--small/2 $spacing--small/2 0;
@@ -45,10 +50,12 @@ ol {
   list-style-position: inside;
   margin-left: -$spacing--small;
   padding: $spacing;
+
   @include mq(tablet) {
     column-count: 2;
     column-gap: $spacing;
   }
+
   @include mq(desktop) {
     padding-left: 0;
   }
@@ -59,6 +66,7 @@ ol {
   height: 120px;
   display: inline-block;
 }
+
 .o-list__label {
   display: inline-block;
   margin-bottom: $spacing;

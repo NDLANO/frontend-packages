@@ -35,7 +35,7 @@ const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
     width: 24px;
   }
 
-  ${fonts.sizes('18px', '32px')};
+  ${fonts.sizes('16px', '32px')};
 
   ${mq.range({ from: breakpoints.desktop })} {
     display: ${hideOnWideScreen ? 'none' : 'flex'};

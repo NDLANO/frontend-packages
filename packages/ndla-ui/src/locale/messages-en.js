@@ -155,8 +155,6 @@ const messages = {
     resetSearch: 'Empty search',
     closeSearch: 'Close search',
     topicsConjunction: 'and',
-    topicsNotAvailableFromSearch:
-      'hasnt been moved to the new NDLA.no webpage and will not give any matches in this search.',
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',
@@ -192,6 +190,7 @@ const messages = {
       yrkesfag: 'Vocational',
       studiespesialiserende: 'Specialization',
       imported: 'Imported subjects',
+      heading: 'What will you learn?',
     },
     film: {
       header: 'NDLA film',
@@ -200,6 +199,7 @@ const messages = {
       textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
+    blog: 'From our blog',
     errorDescription: 'Sorry, an error occurd while loading the subjects.',
   },
   meta: {
@@ -519,7 +519,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS and the Norwegian Film Institute.",
+        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS.",
       secondParagraph:
         'You can watch the films if you are connected to the Internet via your computer, tablet or smartphone. We have done the work with rights clearance and payment. All you have to do is press play.',
       thirdParagraph:
@@ -536,6 +536,26 @@ const messages = {
       tipSectionPt3: '',
       ending: 'We wish all movie lovers a good and educational experience!',
     },
+  },
+  learningPath: {
+    createLearningPathText:
+      'Create your own, copy this or see more learningpaths?',
+    createLearningPathButtonText: 'Go to learningpaths',
+    lastUpdated: 'Last updated',
+    youAreInALearningPath: 'You are now in a learningpath',
+    readTime: '{hours} schoolhours = {minutes} min',
+    pageOf: 'of',
+    readTimeHour_plurals: 'hours',
+    lastStep: {
+      heading: 'Last step of this learningpath',
+      headingSmall:
+        'You are now in the last step of the learningpath {learningPathName}',
+      topicHeading: 'Go to topic:',
+      subjectHeading: 'Go to subject:',
+    },
+    openMenuTooltip: 'Open menu',
+    previousArrow: 'Previous',
+    nextArrow: 'Next',
   },
   dropdown: {
     numberHits: `Search returned {hits} hits`,

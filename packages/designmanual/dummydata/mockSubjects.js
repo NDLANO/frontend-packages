@@ -143,94 +143,6 @@ export const categories = [
     ],
   },
   {
-    name: 'yrkesfag',
-    subjects: [
-      {
-        url: '#1',
-        text: 'Barne- og undersarbeiderfag',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#2',
-        text: 'Brønnteknikk',
-      },
-      {
-        url: '#3',
-        text: 'Bygg og annleggsteknikk',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#4',
-        text: 'Design og håndverk',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#5',
-        text: 'Elektrofag',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#6',
-        text: 'Helse- og oppvekstfag',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#7',
-        text: 'Helsearbeiderfag',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#8',
-        text: 'IKT-servicefag',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#9',
-        text: 'Kokk- og servitørfag',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#10',
-        text: 'Naturbruk',
-      },
-      {
-        url: '#11',
-        text: 'Reiseliv',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#12',
-        text: 'Restaurant- og matfag',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#13',
-        text: 'Romteknologi',
-        yearInfo: 'Vg3',
-      },
-      {
-        url: '#14',
-        text: 'Salg, service og samferdsel',
-        yearInfo: 'Vg2',
-      },
-      {
-        url: '#15',
-        text: 'Service og smaferdsel',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#16',
-        text: 'Teknikk og industriell produksjon',
-        yearInfo: 'Vg1',
-      },
-      {
-        url: '#17',
-        text: 'Transport og logistikk',
-        yearInfo: 'Vg2',
-      },
-    ],
-  },
-  {
     name: 'studiespesialiserende',
     subjects: [
       {
@@ -312,6 +224,94 @@ export const categories = [
       {
         url: '#18',
         text: 'Tysk 2',
+      },
+    ],
+  },
+  {
+    name: 'yrkesfag',
+    subjects: [
+      {
+        url: '#1',
+        text: 'Barne- og undersarbeiderfag',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#2',
+        text: 'Brønnteknikk',
+      },
+      {
+        url: '#3',
+        text: 'Bygg og anleggsteknikk',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#4',
+        text: 'Design og håndverk',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#5',
+        text: 'Elektrofag',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#6',
+        text: 'Helse- og oppvekstfag',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#7',
+        text: 'Helsearbeiderfag',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#8',
+        text: 'IKT-servicefag',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#9',
+        text: 'Kokk- og servitørfag',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#10',
+        text: 'Naturbruk',
+      },
+      {
+        url: '#11',
+        text: 'Reiseliv',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#12',
+        text: 'Restaurant- og matfag',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#13',
+        text: 'Romteknologi',
+        yearInfo: 'Vg3',
+      },
+      {
+        url: '#14',
+        text: 'Salg, service og samferdsel',
+        yearInfo: 'Vg2',
+      },
+      {
+        url: '#15',
+        text: 'Service og smaferdsel',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#16',
+        text: 'Teknikk og industriell produksjon',
+        yearInfo: 'Vg1',
+      },
+      {
+        url: '#17',
+        text: 'Transport og logistikk',
+        yearInfo: 'Vg2',
       },
     ],
   },

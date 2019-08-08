@@ -6,9 +6,9 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
+import { OneColumn } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 
@@ -33,14 +33,14 @@ export const FooterEditor = ({ title, name }) => (
 const FooterPrivacy = ({ lang }) => (
   <Modal
     activateButton={<Button link>{privacyTexts[lang].linkLabel}</Button>}
-    size="medium">
+    size="fullscreen">
     {onClose => (
-      <Fragment>
+      <OneColumn cssModifier="medium">
         <ModalHeader>
           <ModalCloseButton onClick={onClose} title="Lukk" />
         </ModalHeader>
         <ModalBody>{privacyTexts[lang].content}</ModalBody>
-      </Fragment>
+      </OneColumn>
     )}
   </Modal>
 );

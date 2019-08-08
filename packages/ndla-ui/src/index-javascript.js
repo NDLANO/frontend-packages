@@ -21,18 +21,7 @@ export {
 } from './Article';
 
 export { default as AuthorInfo } from './AuthorInfo';
-
-export {
-  FrontpageHeader,
-  FrontpageSubjects,
-  FrontpageSubjectsSection,
-  FrontpageInfo,
-  FrontpageSearchSection,
-  FrontpageFilm,
-} from './Frontpage';
-
 export { default as ContentCard } from './ContentCard';
-
 export { InfoBox } from './InfoBox';
 
 export {
@@ -179,4 +168,5 @@ export {
   AboutNdlaFilm,
   FilmMovieSearch,
   FilmMovieList,
+  AllMoviesAlphabetically,
 } from './NDLAFilm';

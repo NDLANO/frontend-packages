@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { spacing, colors, fonts, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import styled from '@emotion/styled';
+// @ts-ignore
+import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
 
 const FilmContentCard = ({
@@ -11,6 +13,7 @@ const FilmContentCard = ({
   distanceBetweenItems,
   resourceTypes,
   resizeThumbnailImages,
+  hideTags,
 }) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
   if (resizeThumbnailImages && metaImage) {
@@ -28,9 +31,11 @@ const FilmContentCard = ({
           columnWidth={columnWidth}
           aria-label={(metaImage && metaImage.alt) || ''}
           style={{
-            backgroundImage: `url(${backgroundImage})`,
+            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(
+              600,
+            )})`,
           }}>
-          {movieResourceTypes && (
+          {movieResourceTypes && !hideTags && (
             <FilmContentCardTags
               movieResourceTypes={movieResourceTypes}
               resourceTypes={resourceTypes}
@@ -57,6 +62,7 @@ const StyledMovieTitle = styled.h2`
     ${fonts.sizes('18px', '24px')};
   }
 `;
+
 const StyledImage = styled.div`
   height: ${props => props.columnWidth * 0.5625}px;
   background-size: cover;
@@ -109,6 +115,11 @@ FilmContentCard.propTypes = {
   distanceBetweenItems: PropTypes.number,
   resourceTypes: PropTypes.arrayOf(PropTypes.object),
   resizeThumbnailImages: PropTypes.bool,
+  hideTags: PropTypes.bool,
+};
+
+FilmContentCard.defaultProps = {
+  hideTags: false,
 };
 
 export default FilmContentCard;

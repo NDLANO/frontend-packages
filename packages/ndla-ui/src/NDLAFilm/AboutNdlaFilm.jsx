@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from '@ndla/ui';
+import { OneColumn } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button from '@ndla/button';
 import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
+import VisualElement from './VisualElement';
 
 const StyledAside = styled.aside`
   background: #184673;
   color: #fff;
   display: flex;
-  padding: ${spacing.normal};
+  padding: ${spacing.normal} ${spacing.normal} ${spacing.medium};
   > div {
     padding: ${spacing.normal};
     width: 50%;
@@ -21,7 +22,7 @@ const StyledAside = styled.aside`
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #fff;
-      margin: ${spacing.small} 0;
+      margin: 0 0 ${spacing.small} 0;
     }
   }
   button {
@@ -48,23 +49,21 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm, t }) => {
     <div className="o-wrapper">
       <StyledAside>
         <div>
-          <Image
-            src={aboutNDLAVideo.visualElement.url}
-            alt={aboutNDLAVideo.visualElement.alt}
-          />
+          <VisualElement visualElement={aboutNDLAVideo.visualElement} />
         </div>
         <div>
           <h1>{aboutNDLAVideo.title}</h1>
           <p>{aboutNDLAVideo.description}</p>
           <Modal
+            size="fullscreen"
             activateButton={<Button link>{t('ndlaFilm.about.more')}</Button>}>
             {onClose => (
-              <>
+              <OneColumn cssModifier="medium">
                 <ModalHeader>
                   <ModalCloseButton onClick={onClose} title="Lukk" />
                 </ModalHeader>
                 <ModalBody>{moreAboutNdlaFilm}</ModalBody>
-              </>
+              </OneColumn>
             )}
           </Modal>
         </div>
@@ -80,6 +79,7 @@ AboutNdlaFilm.propTypes = {
     visualElement: PropTypes.shape({
       url: PropTypes.string,
       alt: PropTypes.string,
+      type: PropTypes.string,
     }),
   }),
 };

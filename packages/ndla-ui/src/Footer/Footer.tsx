@@ -47,37 +47,40 @@ const StyledFooterText = styled.p`
 
 type FooterTextProps = {
   children: React.ReactNode;
-}
+};
 
-export const FooterText: React.FunctionComponent<FooterTextProps> = ({ children }) => (
-  <StyledFooterText>{children}</StyledFooterText>
-);
+export const FooterText: React.FunctionComponent<FooterTextProps> = ({
+  children,
+}) => <StyledFooterText>{children}</StyledFooterText>;
 
 type FooterEditorProps = {
   title: string;
   name: string;
-}
+};
 
-export const FooterEditor: React.FunctionComponent<FooterEditorProps> = ({ title, name }) => (
+export const FooterEditor: React.FunctionComponent<FooterEditorProps> = ({
+  title,
+  name,
+}) => (
   <span>
     <strong>{title}</strong> {name}
   </span>
 );
 
 type FooterPrivacyProps = {
-  label: string; 
+  label: string;
   lang: 'nb' | 'nn' | 'en';
-}
+};
 
 const privacyTexts = (lang: string) => {
   if (lang === 'nn') {
-    return <PrivacyNn />
+    return <PrivacyNn />;
   }
   if (lang === 'en') {
-    return <PrivacyEn />
+    return <PrivacyEn />;
   }
-  return <PrivacyNb />
-}
+  return <PrivacyNb />;
+};
 
 const StyledPrivacyButton = styled.button`
   background: none;
@@ -93,10 +96,15 @@ const StyledPrivacyButton = styled.button`
   }
 `;
 
-const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({ lang, label }) => (
+const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({
+  lang,
+  label,
+}) => (
   <StyledFooterText>
     <Modal
-      activateButton={<StyledPrivacyButton type="button">{label}</StyledPrivacyButton>}
+      activateButton={
+        <StyledPrivacyButton type="button">{label}</StyledPrivacyButton>
+      }
       size="fullscreen">
       {(onClose: void) => (
         <OneColumn cssModifier="medium">
@@ -149,7 +157,8 @@ const StyledColumns = styled.div`
     flex-direction: row;
     align-items: flex-start;
     > div:first-child {
-      padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
+      padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px
+        ${spacing.normal} ${spacing.large};
     }
   }
   ${mq.range({ from: breakpoints.desktop })} {
@@ -190,14 +199,18 @@ type Props = {
     share?: string;
   };
   languageSelector?: React.ReactNode;
-}
+};
 
-const Footer: React.FunctionComponent<Props> = ({ lang, children, t, links, languageSelector }) => (
+const Footer: React.FunctionComponent<Props> = ({
+  lang,
+  children,
+  t,
+  links,
+  languageSelector,
+}) => (
   <>
     {languageSelector && (
-      <StyledLanguageWrapper>
-        {languageSelector}
-      </StyledLanguageWrapper>
+      <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
     )}
     <StyledFooter>
       <OneColumn cssModifier="large">

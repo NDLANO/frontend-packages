@@ -2,11 +2,17 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
-import { EmailOutline, Facebook, Twitter, Share, Forward, Launch } from '@ndla/icons/common';
+import {
+  EmailOutline,
+  Facebook,
+  Twitter,
+  Share,
+  Forward,
+  Launch,
+  // @ts-ignore
+} from '@ndla/icons/common';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-// @ts-ignore
 import SafeLink from '../common/SafeLink';
 
 const StyledLinksWrapper = styled.div`
@@ -36,15 +42,15 @@ type FooterLinksProps = {
     facebook: string;
     twitter: string;
     share?: string;
-  }
+  };
 };
 
 const commonLinks = [
-  'Om.ndla.no',
-  'About.ndla.no',
-  'Blogg.ndla.no',
-  'Blogg.ndla.no/elever',
-  'Fyr.ndla.no',
+  'om.ndla.no',
+  'about.ndla.no',
+  'blogg.ndla.no',
+  'blogg.ndla.no/elever',
+  'fyr.ndla.no',
   'deling.ndla.no',
 ];
 
@@ -92,60 +98,66 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({ t, links }) => (
+const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
+  t,
+  links,
+}) => (
   <StyledLinksWrapper>
-  <section>
-    <StyledHeaderLinks>
-      {t('footer.footerLinksHeader')} <Launch />
-    </StyledHeaderLinks>
-    <StyledNav>
-      {commonLinks.map(link => (
-        <div>
-          <StyledSafeLink key={link} aria-label={link} to={`www.${link.toLowerCase}`}>
-            {link}
-          </StyledSafeLink>
-        </div>
-      ))}
-    </StyledNav>
-  </section>
-  <section>
-    <StyledNav>
-      <StyledSocialMediaLinkWrapper>
-        <StyledSocialMediaIcon>
-          <EmailOutline />
-        </StyledSocialMediaIcon>
-        <StyledSafeLink to={links.email}>
-          {t('footer.socialMediaLinks.newsletter')} <Forward />
-        </StyledSafeLink>
-      </StyledSocialMediaLinkWrapper>
-      <StyledSocialMediaLinkWrapper>
-        <StyledSocialMediaIcon>
-          <Facebook />
-        </StyledSocialMediaIcon>
-        <StyledSafeLink to={links.facebook}>
-          {t('footer.socialMediaLinks.facebook')} <Forward />
-        </StyledSafeLink>
-      </StyledSocialMediaLinkWrapper>
-      <StyledSocialMediaLinkWrapper>
-        <StyledSocialMediaIcon>
-          <Twitter />
-        </StyledSocialMediaIcon>
-        <StyledSafeLink to={links.twitter}>
-          {t('footer.socialMediaLinks.twitter')} <Forward />
-        </StyledSafeLink>
-      </StyledSocialMediaLinkWrapper>
-      {links.share && (
+    <section>
+      <StyledHeaderLinks>
+        {t('footer.footerLinksHeader')} <Launch />
+      </StyledHeaderLinks>
+      <StyledNav>
+        {commonLinks.map(link => (
+          <div>
+            <StyledSafeLink
+              key={link}
+              aria-label={link}
+              to={`www.${link.toLowerCase}`}>
+              {link}
+            </StyledSafeLink>
+          </div>
+        ))}
+      </StyledNav>
+    </section>
+    <section>
+      <StyledNav>
         <StyledSocialMediaLinkWrapper>
           <StyledSocialMediaIcon>
-            <Share />
+            <EmailOutline />
           </StyledSocialMediaIcon>
-          <StyledSafeLink to={links.share}>
-            {t('footer.socialMediaLinks.sharePage')} <Forward />
+          <StyledSafeLink to={links.email}>
+            {t('footer.socialMediaLinks.newsletter')} <Forward />
           </StyledSafeLink>
         </StyledSocialMediaLinkWrapper>
-      )}
-    </StyledNav>
-  </section>
+        <StyledSocialMediaLinkWrapper>
+          <StyledSocialMediaIcon>
+            <Facebook />
+          </StyledSocialMediaIcon>
+          <StyledSafeLink to={links.facebook}>
+            {t('footer.socialMediaLinks.facebook')} <Forward />
+          </StyledSafeLink>
+        </StyledSocialMediaLinkWrapper>
+        <StyledSocialMediaLinkWrapper>
+          <StyledSocialMediaIcon>
+            <Twitter />
+          </StyledSocialMediaIcon>
+          <StyledSafeLink to={links.twitter}>
+            {t('footer.socialMediaLinks.twitter')} <Forward />
+          </StyledSafeLink>
+        </StyledSocialMediaLinkWrapper>
+        {links.share && (
+          <StyledSocialMediaLinkWrapper>
+            <StyledSocialMediaIcon>
+              <Share />
+            </StyledSocialMediaIcon>
+            <StyledSafeLink to={links.share}>
+              {t('footer.socialMediaLinks.sharePage')} <Forward />
+            </StyledSafeLink>
+          </StyledSocialMediaLinkWrapper>
+        )}
+      </StyledNav>
+    </section>
   </StyledLinksWrapper>
 );
 

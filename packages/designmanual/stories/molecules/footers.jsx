@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Footer, FooterText, FooterEditor, LanguageSelector } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
-import { Trans } from '@ndla/i18n';
+import { injectT } from '@ndla/i18n';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted }) => (
+const FooterExample = ({ inverted, t }) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -38,7 +38,7 @@ const FooterExample = ({ inverted }) => (
       <ZendeskButton
         locale="nb"
         widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
-        <Trans>{({ t }) => t('askNDLA')}</Trans>
+        {t('askNDLA')}
       </ZendeskButton>
     </FooterText>
   </Footer>
@@ -48,4 +48,4 @@ FooterExample.propTypes = {
   inverted: PropTypes.bool,
 };
 
-export default FooterExample;
+export default injectT(FooterExample);

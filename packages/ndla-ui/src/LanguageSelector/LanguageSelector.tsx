@@ -20,22 +20,24 @@ import { ChevronDown } from '@ndla/icons/common';
 
 type StyledWrapperProps = {
   alwaysVisible?: boolean;
-}
+};
 
 const StyledWrapper = styled.div<StyledWrapperProps>`
   position: relative;
-  ${props => !props.alwaysVisible && css`
-    padding-right: ${spacing.large};
-    ${mq.range({ until: breakpoints.desktop })} {
-      display: none;
-    }
-  `}
+  ${props =>
+    !props.alwaysVisible &&
+    css`
+      padding-right: ${spacing.large};
+      ${mq.range({ until: breakpoints.desktop })} {
+        display: none;
+      }
+    `}
 `;
 
 type StyledModalProps = {
   animateIn: boolean;
   centered?: boolean;
-}
+};
 
 const StyledModal = styled.div<StyledModalProps>`
   background: ${colors.brand.light};
@@ -49,17 +51,21 @@ const StyledModal = styled.div<StyledModalProps>`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  ${props => props.animateIn && css`
-    ${animations.fadeInTop()}
-  `};
-  ${props => props.centered && css`
-    right: calc(50% - 225px);
-    left: calc(50% - 225px);
-    ${mq.range({ until: breakpoints.mobileWide })} {
-      right: calc(50% - 150px);
-      left: calc(50% - 150px);
-    }
-  `};
+  ${props =>
+    props.animateIn &&
+    css`
+      ${animations.fadeInTop()}
+    `};
+  ${props =>
+    props.centered &&
+    css`
+      right: calc(50% - 225px);
+      left: calc(50% - 225px);
+      ${mq.range({ until: breakpoints.mobileWide })} {
+        right: calc(50% - 150px);
+        left: calc(50% - 150px);
+      }
+    `};
   nav {
     width: 100%;
     padding: ${spacing.medium} ${spacing.large} ${spacing.small};
@@ -75,7 +81,8 @@ const StyledModal = styled.div<StyledModalProps>`
         margin: 0 0 ${spacing.xsmall};
         padding: 0;
       }
-      a, span {
+      a,
+      span {
         width: 100%;
         padding: ${spacing.small} ${spacing.spacingUnit * 2.5}px;
         display: flex;
@@ -88,7 +95,8 @@ const StyledModal = styled.div<StyledModalProps>`
         color: ${colors.brand.dark};
         box-shadow: none;
         transition: background 200ms ease;
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background: ${colors.brand.tertiary};
         }
       }
@@ -96,13 +104,14 @@ const StyledModal = styled.div<StyledModalProps>`
         background: ${colors.brand.primary};
         color: #fff;
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           display: block;
           @include svg_icon(done, #fff);
           width: ${spacing.normal};
           height: ${spacing.normal};
-          background-size: ${spacing.spacingUnit - 2}px ${spacing.spacingUnit - 2}px;
+          background-size: ${spacing.spacingUnit - 2}px
+            ${spacing.spacingUnit - 2}px;
           left: ${spacing.spacingUnit * 6}px;
           background-position-x: center;
           background-position-y: center;
@@ -112,15 +121,12 @@ const StyledModal = styled.div<StyledModalProps>`
   }
 `;
 
-
-export type optionsProps = {
-  name: string;
-  url: string;
-};
-
 type Props = {
   options: {
-    [key: string]: optionsProps;
+    [key: string]: {
+      name: string;
+      url: string;
+    };
   };
   currentLanguage: string;
   inverted?: boolean;

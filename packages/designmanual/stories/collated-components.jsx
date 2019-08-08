@@ -537,7 +537,7 @@ storiesOf('Sammensatte moduler', module)
           />
         }>
         <FooterText>
-          <FooterEditor title="Ansvarlig redaktør:" name="Christer Gundersen" />
+          <FooterEditor title="Ansvarlig redaktør:" name="Sigurd Trageton" />
           <FooterEditor title="Utgaveansvarlig:" name="Pål Frønsdal" />
         </FooterText>
         <FooterText>

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectT } from '@ndla/i18n';
 import {
@@ -28,13 +28,6 @@ const dummyBlogImages = [
     url: BlogExampleImage2,
     alt: 'Prosjektarbeid på tvers av fag',
   },
-];
-
-const exampleTopicsNotInNDLA = [
-  'Kokk og servitørfag Vg2',
-  'Biologi 1',
-  'Sosiologi og sosialantropologi',
-  'Transport og logistikk Vg2',
 ];
 
 class FrontpageExample extends Component {
@@ -69,31 +62,9 @@ class FrontpageExample extends Component {
     }));
   }
 
-  renderInfoText() {
-    const { t } = this.props;
-    return (
-      <span>
-        {exampleTopicsNotInNDLA.map((topic, index) => {
-          const isLastTopic = index === exampleTopicsNotInNDLA.length - 1;
-          return (
-            <Fragment key={topic}>
-              {isLastTopic && `${t('welcomePage.topicsConjunction')} `}
-              <strong key={topic}>
-                {topic}
-                {index < exampleTopicsNotInNDLA.length - 2 && ','}{' '}
-              </strong>
-            </Fragment>
-          );
-        })}
-        {t('welcomePage.topicsNotAvailableFromSearch')}
-      </span>
-    );
-  }
-
   render() {
     const { t } = this.props;
     const { searchFieldValue, inputHasFocus } = this.state;
-    const needInfoTextInSearchSuggestions = exampleTopicsNotInNDLA.length > 0;
 
     return (
       <>
@@ -112,7 +83,6 @@ class FrontpageExample extends Component {
           searchFieldPlaceholder={t(
             'welcomePage.heading.searchFieldPlaceholder',
           )}
-          infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
           inputHasFocus={inputHasFocus}
           searchResult={
             searchFieldValue.length > 2

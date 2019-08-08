@@ -9,6 +9,8 @@ import {
   animations,
 } from '@ndla/core';
 // @ts-ignore
+import { injectT } from '@ndla/i18n';
+// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 // @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
@@ -210,10 +212,10 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
   allResultUrl,
   hideSearch,
   inputHasFocus,
-  infoText,
   searchResult,
   languageOptions,
   locale,
+  t,
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
   useEffect(() => {
@@ -276,7 +278,7 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
                         : ['absolute-position-sleeve']
                     }
                     ignoreContentTypeBadge
-                    infoText={infoText}
+                    infoText={t('welcomePage.searchDisclaimer')}
                     value={searchFieldValue}
                     onChange={onSearchFieldChange}
                     placeholder={searchFieldPlaceholder}
@@ -305,4 +307,4 @@ const FrontpageHeaderNew: React.FunctionComponent<FrontPageHeaderProps> = ({
   );
 };
 
-export default FrontpageHeaderNew;
+export default injectT(FrontpageHeaderNew);

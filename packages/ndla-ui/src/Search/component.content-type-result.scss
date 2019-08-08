@@ -66,6 +66,17 @@
     li {
       padding-bottom: $spacing--small / 2;
     }
+    @include mq($until: tablet) {
+      strong {
+        display: none;
+      }
+      li {
+        padding-bottom: 0;
+      }
+      .c-content-type-result__show-all {
+        display: none;
+      }
+    }
   }
 
   ul {

@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, fonts, misc, breakpoints, mq } from '@ndla/core';
 // @ts-ignore

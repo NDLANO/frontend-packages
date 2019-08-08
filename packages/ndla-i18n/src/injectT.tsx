@@ -10,8 +10,12 @@ import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { TFunctionValue } from 't';
 
-interface Props {
+export interface ExternalProps {
   [key: string]: any;
+}
+
+export interface InjectedProps {
+  t: (id: string, value: TFunctionValue) => string;
 }
 
 interface Context {
@@ -19,16 +23,17 @@ interface Context {
   formatMessage: (...args: ConstructorParameters<any>) => any;
 }
 
-export const injectT = (
-  WrappedComponent: React.ComponentType<Props>,
+export function injectT<OriginalProps extends ExternalProps>(
+  WrappedComponent: React.ComponentType<OriginalProps & ExternalProps>,
   prefix: string = '',
-) => {
-  const getDisplayName = (component: React.ComponentType) =>
-    component.displayName || component.name || 'Component';
+) {
+  const getDisplayName = (
+    component: React.ComponentType<OriginalProps & ExternalProps>,
+  ) => component.displayName || component.name || 'Component';
 
-  const InjectT = (props: Props, context: Context) => (
+  const InjectT = (props: OriginalProps & ExternalProps, context: Context) => (
     <WrappedComponent
-      {...props}
+      {...props as any}
       t={(id: string, value: TFunctionValue = {}): string =>
         context.formatMessage(prefix + id, value)
       }
@@ -37,6 +42,6 @@ export const injectT = (
 
   InjectT.displayName = `InjectT(${getDisplayName(WrappedComponent)})`;
   return hoistNonReactStatics(InjectT, WrappedComponent);
-};
+}
 
 export default injectT;

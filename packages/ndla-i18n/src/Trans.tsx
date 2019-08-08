@@ -6,7 +6,6 @@
  *
  */
 
-import PropTypes from 'prop-types';
 import { TFunctionValue } from 't';
 
 interface Context {

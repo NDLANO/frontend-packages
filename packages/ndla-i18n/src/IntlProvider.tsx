@@ -7,13 +7,33 @@
  */
 
 import { Component, Children } from 'react';
-import PropTypes from 'prop-types';
-import IntlMessageFormat from 'intl-messageformat';
+import IntlMessageFormat, { Formats, Options } from 'intl-messageformat';
+import { MessageFormatElement } from 'intl-messageformat-parser';
 import memoizeIntlConstructor from 'intl-format-cache';
 import localFormatMessage from './formatMessage';
 
-export default class IntlProvider extends Component {
-  constructor(props, context = {}) {
+type GetMessageFormat = (
+  message: string | MessageFormatElement[],
+  locales?: string | string[] | undefined,
+  overrideFormats?: Partial<Formats> | undefined,
+  opts?: Options | undefined,
+) => any;
+
+interface Context {
+  getMessageFormat?: GetMessageFormat;
+}
+
+interface State {
+  getMessageFormat: GetMessageFormat;
+}
+
+interface Props {
+  locale: string;
+  messages: { [key: string]: string };
+}
+
+export default class IntlProvider extends Component<Props, State> {
+  constructor(props: Props, context: Context = {}) {
     super(props, context);
 
     const { getMessageFormat } = context;
@@ -44,19 +64,3 @@ export default class IntlProvider extends Component {
     return Children.only(this.props.children);
   }
 }
-
-IntlProvider.propTypes = {
-  locale: PropTypes.string.isRequired,
-  messages: PropTypes.object.isRequired, //eslint-disable-line
-  children: PropTypes.node.isRequired,
-};
-
-IntlProvider.contextTypes = {
-  getMessageFormat: PropTypes.func,
-  formatMessage: PropTypes.func,
-};
-
-IntlProvider.childContextTypes = {
-  getMessageFormat: PropTypes.func.isRequired,
-  formatMessage: PropTypes.func.isRequired,
-};

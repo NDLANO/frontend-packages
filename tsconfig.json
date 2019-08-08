@@ -16,6 +16,7 @@
     "strict": true,
     "moduleResolution": "node",
     "noLib": false,
+    "skipLibCheck": true,
     "noEmit": true,
     "sourceMap": true,
     "lib": ["es2018", "esnext.asynciterable", "dom"],

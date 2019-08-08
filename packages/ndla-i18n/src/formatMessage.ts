@@ -17,7 +17,7 @@ export default function formatMessage(
   messages: Messages,
   getMessageFormat: any,
   id: string,
-  values = {},
+  values: { [key: string]: any } = {},
 ): string {
   // `id` is a required parameter.
   invariant(id, 'An `id` must be provided to format a message.');

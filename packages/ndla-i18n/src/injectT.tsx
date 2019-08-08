@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { TFunctionValue } from 't';
 
@@ -17,11 +16,12 @@ interface Props {
 
 interface Context {
   [key: string]: any;
+  formatMessage: (...args: ConstructorParameters<any>) => any;
 }
 
 export const injectT = (
   WrappedComponent: React.ComponentType<Props>,
-  prefix?: string | '',
+  prefix: string = '',
 ) => {
   const getDisplayName = (component: React.ComponentType) =>
     component.displayName || component.name || 'Component';
@@ -29,7 +29,7 @@ export const injectT = (
   const InjectT = (props: Props, context: Context) => (
     <WrappedComponent
       {...props}
-      t={(id: string, value?: TFunctionValue | {}): string =>
+      t={(id: string, value: TFunctionValue = {}): string =>
         context.formatMessage(prefix + id, value)
       }
     />

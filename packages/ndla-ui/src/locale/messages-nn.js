@@ -429,8 +429,8 @@ const messages = {
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
-      newsletter: 'Med deg på vårt nyheitsbrev',
-      newsletterAria: 'Med deg på vårt nyheitsbrev',
+      newsletter: 'Meld deg på vårt nyheitsbrev',
+      newsletterAria: 'Meld deg på vårt nyheitsbrev',
       twitter: 'NDLA på Twitter',
       twitterAria: 'Besøk NDLA på Twitter',
       sharePage: 'Del denne sida',

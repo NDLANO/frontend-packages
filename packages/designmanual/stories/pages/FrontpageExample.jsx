@@ -100,7 +100,6 @@ class FrontpageExample extends Component {
             searchFieldPlaceholder={t(
               'welcomePage.heading.searchFieldPlaceholder',
             )}
-            infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
             inputHasFocus={inputHasFocus}
             searchResult={
               searchFieldValue.length > 2 && [

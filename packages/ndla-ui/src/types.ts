@@ -40,24 +40,6 @@ export type category = {
   subjects: Array<subjectProp>;
 };
 
-export type FrontPageHeaderProps = {
-  searchFieldValue: string;
-  links: Array<Link>;
-  onSearchFieldChange: VoidFunction;
-  searchFieldPlaceholder: string;
-  onSearchDeactiveFocusTrap: VoidFunction;
-  onSearchInputFocus: VoidFunction;
-  onSearch: (event: MouseEvent) => void;
-  messages: Messages;
-  allResultUrl: Array<any>;
-  hideSearch: boolean;
-  inputHasFocus: boolean;
-  searchResult: Array<SearchResult>;
-  languageOptions: string;
-  locale: string;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-};
-
 export type elementRectType = {
   fromX: number;
   fromY: number;

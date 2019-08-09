@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
@@ -111,17 +113,18 @@ interface Props {
   searchFieldValue: string;
   onSearchFieldChange: (searchValue: string) => {};
   searchFieldPlaceholder: string;
-  onSearchDeactiveFocusTrap: () => {};
-  onSearchInputFocus: () => {};
-  onSearch: (event: {}) => {};
+  onSearchDeactiveFocusTrap: VoidFunction;
+  onSearchInputFocus: VoidFunction;
+  onSearch: (event: {}) => void;
   messages: { closeSearchLabel: string };
   allResultUrl: string;
   searchResult: Array<ContentTypeResultType>;
   infoText: string;
   loading: Boolean;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
-export const FrontpageSearch: React.FC<Props> = ({
+const FrontpageSearch: React.FC<Props> = ({
   inputHasFocus,
   searchFieldValue,
   onSearchFieldChange,
@@ -132,8 +135,8 @@ export const FrontpageSearch: React.FC<Props> = ({
   messages,
   allResultUrl,
   searchResult,
-  infoText,
   loading,
+  t,
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
   useEffect(() => {
@@ -192,7 +195,7 @@ export const FrontpageSearch: React.FC<Props> = ({
                     resourceToLinkProps={() => {}}
                     hideSleeveHeader
                     singleColumn
-                    infoText={infoText}
+                    infoText={t('welcomePage.searchDisclaimer')}
                   />
                 )}
               </form>
@@ -210,3 +213,5 @@ export const FrontpageSearch: React.FC<Props> = ({
     </div>
   );
 };
+
+export default injectT(FrontpageSearch);

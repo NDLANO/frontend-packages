@@ -1,7 +1,7 @@
 export { default as FrontpageHeader } from './FrontpageHeader';
 export { default as FrontpageInfo } from './FrontpageInfo';
 export { default as FrontpageFilm } from './FrontpageFilm';
-export { FrontpageSearch } from './FrontpageSearch';
+export { default as FrontpageSearch } from './FrontpageSearch';
 export {
   default as FrontpageSubjectIllustration,
 } from './illustrations/FrontpageSubjectIllustration';

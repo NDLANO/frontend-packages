@@ -5,6 +5,8 @@ import { StyledButton } from '@ndla/button';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { css } from '@emotion/core';
+// @ts-ignore
+import { Wrench } from '@ndla/icons/common';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
@@ -41,7 +43,10 @@ const SearchResultSleeve: React.FC<Props> = ({
       </h1>
     )}
     {infoText && (
-      <aside {...classes('search-result-infotext')}>{infoText}</aside>
+      <aside {...classes('search-result-infotext')}>
+        <Wrench className="c-icon--22" />
+        <span>{infoText}</span>
+      </aside>
     )}
     <div
       {...classes(

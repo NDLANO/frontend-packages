@@ -11,7 +11,7 @@ import {
 
 // @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
-import { FrontPageHeaderProps, Link } from '../types';
+import { Link } from '../types';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelector';
@@ -103,6 +103,12 @@ const StyledLogo = styled(SafeLink)`
     width: 287px;
   }
 `;
+
+export type FrontPageHeaderProps = {
+  links: Array<Link>;
+  languageOptions: string;
+  locale: string;
+};
 
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
   links,

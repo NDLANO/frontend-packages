@@ -13,8 +13,7 @@ import {
 import { Launch as LaunchIcon } from '@ndla/icons/common';
 import { Link } from '../types';
 import SafeLink from '../common/SafeLink';
-// @ts-ignore
-import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelector';
+import { LanguageSelector } from '../LanguageSelector';
 
 // @ts-ignore
 import SvgLogo from '../Logo/SvgLogo';
@@ -23,6 +22,7 @@ const StyledLinkWrapper = styled.nav`
   display: none;
   justify-content: flex-end;
   margin-bottom: ${spacing.large};
+  align-items: center;
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
   }

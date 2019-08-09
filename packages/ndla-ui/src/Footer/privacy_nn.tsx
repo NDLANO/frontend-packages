@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-export const PrivacyNn = () => (
-  <Fragment>
+const PrivacyNn: React.FunctionComponent = () => (
+  <>
     <h2>Cookies og lovtekst</h2>
     <p>
       Den såkalla “cookie-paragrafen” trådde i kraft 1. juli 2013, og forpliktar
@@ -59,5 +59,7 @@ export const PrivacyNn = () => (
       cookies i nettlesaren din. Våre sider (og mange andre sine) kan då slutte
       å verke optimalt.
     </p>
-  </Fragment>
+  </>
 );
+
+export default PrivacyNn;

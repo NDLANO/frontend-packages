@@ -92,7 +92,6 @@ storiesOf('Enkle komponenter', module)
           fullversjonen av bildet.
         </p>
       </StoryIntro>
-
       <StoryBody>
         <h2>Fullbredde</h2>
         <p>

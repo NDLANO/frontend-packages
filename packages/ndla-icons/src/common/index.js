@@ -25,6 +25,7 @@ export { default as EmailOutline } from './EmailOutline';
 export { default as Facebook } from './Facebook';
 export { default as FileDocumentOutline } from './FileDocumentOutline';
 export { default as FileDownloadOutline } from './FileDownloadOutline';
+export { default as FooterHeaderIcon } from './FooterHeaderIcon';
 export { default as Forward } from './Forward';
 export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';

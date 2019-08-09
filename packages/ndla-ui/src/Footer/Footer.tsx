@@ -53,12 +53,12 @@ export const FooterText: React.FunctionComponent<FooterTextProps> = ({
   children,
 }) => <StyledFooterText>{children}</StyledFooterText>;
 
-type EditorNameInProps = {
+type EditorNameProps = {
   title: string;
   name: string;
 };
 
-export const EditorName: React.FunctionComponent<EditorNameInProps> = ({
+export const EditorName: React.FunctionComponent<EditorNameProps> = ({
   title,
   name,
 }) => (

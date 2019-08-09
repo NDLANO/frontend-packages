@@ -6,6 +6,8 @@
  *
  */
 
-import Footer, { FooterText, EditorName } from './Footer';
+import Footer from './Footer';
+import { FooterText } from './FooterText';
+import { EditorName } from './EditorName';
 
 export { Footer, FooterText, EditorName };

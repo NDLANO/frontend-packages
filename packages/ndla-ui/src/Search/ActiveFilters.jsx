@@ -7,13 +7,23 @@ const classes = BEMHelper('c-active-filters');
 
 const ActiveFilters = ({ filters, onFilterRemove }) => {
   if (filters && filters.length > 0) {
+    const filterLength = filters.filter(
+      filter => filter.filterName === 'filter_subjects' && filter.title,
+    );
+
+    let concatClass;
+    if (filterLength.length === 2) concatClass = 'concat--2';
+    if (filterLength.length > 2) concatClass = 'concat--3';
+
     const filterItems = filters.map(filter => {
       const filterKey = filter.filterName
         ? `${filter.filterName}${filter.value}`
         : filter.value;
+
       return (
         <li key={filterKey}>
           <button
+            title={`Fjern filter ${filter.title}`}
             aria-label={`Fjern filter ${filter.filterName}`}
             type="button"
             onClick={() => onFilterRemove(filter.value, filter.filterName)}>
@@ -24,7 +34,7 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
       );
     });
 
-    return <ul {...classes()}>{filterItems}</ul>;
+    return <ul {...classes('', concatClass)}>{filterItems}</ul>;
   }
 
   return null;

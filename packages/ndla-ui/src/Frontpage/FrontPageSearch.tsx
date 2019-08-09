@@ -64,21 +64,6 @@ const StyledSearchField = styled.div`
     }
   }
 
-  > button {
-    color: ${colors.brand.primary};
-    display: flex;
-    padding: 13px;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    z-index: 9999;
-    ${animations.fadeIn(animations.durations.fast)};
-
-    svg {
-      height: 24px;
-      width: 24px;
-    }
-  }
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
     top: 0;
@@ -91,6 +76,22 @@ const StyledSearchField = styled.div`
       margin-left: ${spacing.normal};
       width: 100vw;
     }
+  }
+`;
+
+const StyledCloseButton = styled.button`
+  color: ${colors.brand.primary};
+  display: flex;
+  padding: 13px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 9999;
+  ${animations.fadeIn(animations.durations.fast)};
+
+  svg {
+    height: 24px;
+    width: 24px;
   }
 `;
 
@@ -108,11 +109,11 @@ const StyledSearchBackdrop = styled.div`
 interface Props {
   inputHasFocus: boolean;
   searchFieldValue: string;
-  onSearchFieldChange: () => {};
+  onSearchFieldChange: (searchValue: string) => {};
   searchFieldPlaceholder: string;
   onSearchDeactiveFocusTrap: () => {};
   onSearchInputFocus: () => {};
-  onSearch: () => {};
+  onSearch: (event: {}) => {};
   messages: { closeSearchLabel: string };
   allResultUrl: string;
   searchResult: Array<ContentTypeResultType>;
@@ -195,13 +196,13 @@ export const FrontpageSearch: React.FC<Props> = ({
                   />
                 )}
               </form>
-              <button
+              <StyledCloseButton
                 type="button"
                 onClick={onSearchDeactiveFocusTrap}
                 onBlur={onSearchDeactiveFocusTrap}
                 aria-label={messages.closeSearchLabel}>
                 <Cross />
-              </button>
+              </StyledCloseButton>
             </StyledSearchField>
           </>
         )}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllustration';
 // @ts-ignore
@@ -133,7 +132,7 @@ interface StateObject {
   menuIsOpen: boolean;
   categoryIndex?: number;
   menuOpenedCounter: number;
-  elementRect?: elementRectType;
+  elementRect: elementRectType;
 }
 
 type Props = {
@@ -145,6 +144,11 @@ type Props = {
 const initialState: StateObject = {
   menuOpenedCounter: 1,
   menuIsOpen: false,
+  elementRect: {
+    fromX: 0,
+    fromY: 0,
+    fromScale: 0,
+  },
 };
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({

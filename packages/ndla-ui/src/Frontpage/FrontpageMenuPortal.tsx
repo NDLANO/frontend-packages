@@ -24,10 +24,10 @@ const fullSizedCircle = 1.1;
 
 type ModalWrapperProps = {
   elementRect: elementRectType;
-  animationDirection: 'in' | 'out';
+  animationDirection?: 'in' | 'out';
   animationNameIn: string;
   animationNameOut: string;
-}
+};
 
 const StyledModalWrapper = styled.div<ModalWrapperProps>`
   position: fixed;
@@ -50,7 +50,10 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
     background: ${colors.brand.lighter};
     border-radius: 100%;
     animation-timing-function: ${misc.transition.cubicBezier};
-    animation-name: ${props => props.animationDirection === 'in' ? props.animationNameIn : props.animationNameOut};
+    animation-name: ${props =>
+      props.animationDirection === 'in'
+        ? props.animationNameIn
+        : props.animationNameOut};
     animation-duration: ${props =>
       props.animationDirection === 'out'
         ? animations.durations.fast
@@ -82,8 +85,7 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
       }
       99% {
         border-radius: 10%;
-        transform: translate(calc(-50vw), 0)
-          scale(${fullSizedCircle});
+        transform: translate(calc(-50vw), 0) scale(${fullSizedCircle});
       }
       100% {
         border-radius: 0;
@@ -93,8 +95,7 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
     @keyframes ${props => props.animationNameOut} {
       0% {
         border-radius: 0;
-        transform: translate(calc(-50vw), 30vh)
-          scale(${fullSizedCircle});
+        transform: translate(calc(-50vw), 30vh) scale(${fullSizedCircle});
       }
       50% {
         border-radius: 100%;
@@ -117,12 +118,12 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
 `;
 
 interface StyledContainerProps {
-  animationDirection: 'in' | 'out';
+  animationDirection?: 'in' | 'out';
 }
 
 const StyledContainer = styled.div<StyledContainerProps>`
   transform: translate(-50vw, 0);
-  display: ${props => props.animationDirection === 'in' ? 'flex' : 'none'};
+  display: ${props => (props.animationDirection === 'in' ? 'flex' : 'none')};
   flex-direction: column;
   align-items: flex-end;
   margin: 0 auto;
@@ -171,7 +172,7 @@ interface Props {
   children: React.ReactNode;
   onClosed: () => void;
   onClose: () => void;
-  animationDirection: 'in' | 'out';
+  animationDirection?: 'in' | 'out';
   elementRect: elementRectType;
   menuOpenedCounter: number;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
@@ -190,36 +191,35 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
   const animationNameOut = `menuPortalCircleAnimationOut_${menuOpenedCounter}`;
   const content = (
     <>
-        <StyledModalWrapper
-          animationNameIn={animationNameIn}
-          animationNameOut={animationNameOut}
-          elementRect={elementRect}
-          animationDirection={animationDirection}
-          onAnimationEnd={() => {
-            if (animationDirection === 'out') {
-              onClosed();
-            }
+      <StyledModalWrapper
+        animationNameIn={animationNameIn}
+        animationNameOut={animationNameOut}
+        elementRect={elementRect}
+        animationDirection={animationDirection}
+        onAnimationEnd={() => {
+          if (animationDirection === 'out') {
+            onClosed();
+          }
+        }}>
+        <FocusTrapReact
+          focusTrapOptions={{
+            onDeactivate: onClose,
+            escapeDeactivates: true,
           }}>
-            <FocusTrapReact
-              focusTrapOptions={{
-                onDeactivate: onClose,
-                escapeDeactivates: true,
-              }}
-            >
-              <StyledContainer animationDirection={animationDirection}>
-                <ScrollableContent>
-                  <StyledButton
-                    animationDirection={animationDirection}
-                    type="button"
-                    aria-label={t('masthead.menu.close')}
-                    onClick={onClose}>
-                    <Cross />
-                  </StyledButton>
-                  <div>{children}</div>
-                </ScrollableContent>
-              </StyledContainer>
-          </FocusTrapReact>
-        </StyledModalWrapper>
+          <StyledContainer animationDirection={animationDirection}>
+            <ScrollableContent>
+              <StyledButton
+                animationDirection={animationDirection}
+                type="button"
+                aria-label={t('masthead.menu.close')}
+                onClick={onClose}>
+                <Cross />
+              </StyledButton>
+              <div>{children}</div>
+            </ScrollableContent>
+          </StyledContainer>
+        </FocusTrapReact>
+      </StyledModalWrapper>
       <Backdrop
         onClick={onClose}
         animationDuration={animations.durations.normal}

@@ -85,7 +85,7 @@ interface Props {
   stepId: number;
   name: string;
   duration: number;
-  lastUpdated: string[];
+  lastUpdated: string;
   language: string;
   copyright: {
     contributors: {
@@ -99,7 +99,7 @@ interface Props {
     };
   };
   learningPathURL: string;
-  currentIndex: boolean;
+  currentIndex: number;
   cookies: {
     [key: string]: string;
   };

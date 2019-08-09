@@ -74,16 +74,17 @@ const StyledButton = styled.button`
 
 type Props = {
   category: categoryProp;
+  onClick(event: React.MouseEvent<HTMLButtonElement>): void;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const FrontpageCircularSubject: React.FunctionComponent<
   Props & React.HTMLProps<HTMLButtonElement>
-> = ({ category, t, ...rest }) => {
+> = ({ category, onClick, t }) => {
   // @ts-ignore
   const Illustration = categoryIllustrations[category.name];
   return (
-    <StyledButton type="button" {...rest}>
+    <StyledButton type="button" onClick={onClick}>
       <StyledFigure>
         <Illustration />
       </StyledFigure>

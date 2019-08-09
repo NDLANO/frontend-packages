@@ -10,15 +10,15 @@ import { Wrench } from '@ndla/icons/common';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
-import { ContentTypeResultType } from '../types';
+import { ContentTypeResultType, Resource } from '../types';
 const AnchorButton = StyledButton.withComponent(SafeLink);
 const classes = new BEMHelper('c-search-field');
 
 interface Props {
   result: Array<ContentTypeResultType>;
   allResultUrl: string;
-  resourceToLinkProps: () => {};
-  onNavigate: () => {};
+  resourceToLinkProps: (resource: Resource) => string;
+  onNavigate: VoidFunction;
   hideSleeveHeader: boolean;
   singleColumn: boolean;
   infoText: string;
@@ -72,7 +72,8 @@ const SearchResultSleeve: React.FC<Props> = ({
           }}
         />
       ))}
-      {!result.length && t('searchPage.searchField.contentTypeResultNoHit')}
+      {result.length === 0 &&
+        t('searchPage.searchField.contentTypeResultNoHit')}
     </div>
     <div {...classes('go-to-search')}>
       <AnchorButton

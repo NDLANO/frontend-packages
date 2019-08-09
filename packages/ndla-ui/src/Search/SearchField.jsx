@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Search as SearchIcon, Wrench } from '@ndla/icons/common';
+import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 
 import ActiveFilters from './ActiveFilters';
@@ -121,7 +121,6 @@ SearchField.propTypes = {
   small: PropTypes.bool,
   autofocus: PropTypes.bool,
   onNavigate: PropTypes.func,
-  t: PropTypes.func.isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   hideSleeveHeader: PropTypes.bool,

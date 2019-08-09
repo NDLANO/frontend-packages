@@ -10,9 +10,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { OneColumn } from '../Layout';
-import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 
 import PrivacyNb from './privacy_nb';
 import PrivacyNn from './privacy_nn';

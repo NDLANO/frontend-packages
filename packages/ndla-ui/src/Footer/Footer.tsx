@@ -136,12 +136,14 @@ const StyledHeader = styled.h1`
 `;
 
 const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
-  color: #fff;
-  width: ${spacing.large};
-  height: ${spacing.large};
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    width: ${spacing.spacingUnit * 3}px;
-    height: ${spacing.spacingUnit * 3}px;
+  &&& {
+    color: #fff;
+    width: ${spacing.large};
+    height: ${spacing.large};
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      width: ${spacing.spacingUnit * 3}px;
+      height: ${spacing.spacingUnit * 3}px;
+    }
   }
 `;
 

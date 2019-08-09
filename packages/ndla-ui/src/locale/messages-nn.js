@@ -433,7 +433,7 @@ const messages = {
       newsletterAria: 'Med deg på vårt nyheitsbrev',
       twitter: 'NDLA på Twitter',
       twitterAria: 'Besøk NDLA på Twitter',
-      sharePage: 'NDLA på Twitter',
+      sharePage: 'Del denne sida',
       sharePageAria: 'Del denne sida',
     },
   },

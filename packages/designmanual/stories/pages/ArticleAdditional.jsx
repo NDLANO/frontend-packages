@@ -21,6 +21,7 @@ import {
 import Resources from '../molecules/resources';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
+import ArticleInformationBoxExample from '../molecules/ArticleInformationBoxExample';
 
 export default () => (
   <OneColumn>
@@ -210,6 +211,9 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <ArticleInformationBoxExample />
       </LayoutItem>
       <LayoutItem layout="extend">
         <Resources showTopicHeading />

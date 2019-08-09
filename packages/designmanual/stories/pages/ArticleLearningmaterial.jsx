@@ -21,6 +21,7 @@ import {
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import Topics from '../molecules/topics';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
+import ArticleInformationBoxExample from '../molecules/ArticleInformationBoxExample';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import { FigureImage } from '../article/FigureImage';
@@ -87,6 +88,9 @@ const ArticleLearningMaterial = () => (
           klassen.
         </p>
         <RelatedArticleListExample />
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <ArticleInformationBoxExample />
       </LayoutItem>
       <LayoutItem layout="extend">
         <Topics />

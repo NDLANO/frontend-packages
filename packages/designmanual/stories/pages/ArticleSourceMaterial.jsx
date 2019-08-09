@@ -24,6 +24,7 @@ import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
+import ArticleInformationBoxExample from '../molecules/ArticleInformationBoxExample';
 
 export default () => (
   <OneColumn>
@@ -94,6 +95,9 @@ export default () => (
           klassen.
         </p>
         <RelatedArticleListExample />
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <ArticleInformationBoxExample />
       </LayoutItem>
       <LayoutItem layout="extend">
         <Resources showTopicHeading />

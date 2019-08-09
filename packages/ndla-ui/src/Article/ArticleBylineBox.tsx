@@ -19,6 +19,7 @@ import styled from '@emotion/styled';
 import { spacing, colors, fonts, breakpoints, mq } from '@ndla/core';
 
 const StyledArticleBylineBox = styled('section')`
+  margin-top: ${spacing.large};
   padding: ${spacing.normal};
   background-color: ${colors.brand.lightest};
   ${fonts.sizes('14px', '18px')};

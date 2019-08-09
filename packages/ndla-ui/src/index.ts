@@ -25,6 +25,9 @@ export {
   FrontpageCircularSubjectsSection,
 } from './Frontpage';
 
+export { Footer, EditorName, FooterText } from './Footer';
+
+export { LanguageSelector } from './LanguageSelector';
 export { default as SafeLinkButton } from './common/SafeLinkButton';
 
 export {

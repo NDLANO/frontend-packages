@@ -16,8 +16,7 @@ import { Cross } from '@ndla/icons/action';
 import { Launch as LaunchIcon } from '@ndla/icons/common';
 import { FrontPageHeaderProps, Link } from './types';
 import SafeLink from '../common/SafeLink';
-// @ts-ignore
-import { default as LanguageSelector } from '../Masthead/MastheadLanguageSelector';
+import { LanguageSelector } from '../LanguageSelector';
 // @ts-ignore
 import { SearchField } from '../Search';
 // @ts-ignore
@@ -26,6 +25,7 @@ import SvgLogo from '../Logo/SvgLogo';
 const StyledLinkWrapper = styled.nav`
   display: none;
   justify-content: flex-end;
+  align-items: center;
   margin-bottom: ${spacing.large};
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;

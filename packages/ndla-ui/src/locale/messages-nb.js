@@ -417,9 +417,23 @@ const messages = {
   footer: {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Velg språk (language): ',
+    vision:
+      'NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
+    footerLinksHeader: 'Andre NDLA nettsteder',
     footerInfo: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
     footerEditiorInChief: 'Ansvarlig redaktør: ',
     footerManagingEditor: 'Utgaveansvarlig: ',
+    footerPrivacyLink: 'Personvernserklæring',
+    socialMediaLinks: {
+      facebook: 'NDLA på Facebook',
+      facebookAria: 'Besøk NDLA på Facebook',
+      newsletter: 'Meld deg på vårt nyhetsbrev',
+      newsletterAria: 'Meld deg på vårt nyhetsbrev',
+      twitter: 'NDLA på Twitter',
+      twitterAria: 'Besøk NDLA på Twitter',
+      sharePage: 'Del denne siden',
+      sharePageAria: 'Del denne siden',
+    },
   },
   contentTypes: {
     all: 'Alle',

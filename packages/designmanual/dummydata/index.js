@@ -47,6 +47,7 @@ import {
 } from './mockFilm';
 
 import { mockTypeahead } from './mockTypeahead';
+import { mockFooterLinks } from './mockFooter';
 
 export {
   topicMenu,
@@ -83,4 +84,5 @@ export {
   mockMovieTopics,
   mockMovieResourceTypes,
   mockTypeahead,
+  mockFooterLinks,
 };

@@ -3,10 +3,6 @@ import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import {
-  EmailOutline,
-  Facebook,
-  Twitter,
-  Share,
   Forward,
   Launch,
   // @ts-ignore
@@ -37,12 +33,7 @@ const StyledLinksWrapper = styled.div`
 
 type FooterLinksProps = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-  links: {
-    email: string;
-    facebook: string;
-    twitter: string;
-    share?: string;
-  };
+  links: [{ to: string; text: string; icon: React.ReactNode }];
 };
 
 const commonLinks = [
@@ -102,63 +93,40 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
   t,
   links,
 }) => (
-  <StyledLinksWrapper>
-    <section>
-      <StyledHeaderLinks>
-        {t('footer.footerLinksHeader')} <Launch />
-      </StyledHeaderLinks>
-      <StyledNav>
-        {commonLinks.map(link => (
-          <div>
-            <StyledSafeLink
-              key={link}
-              aria-label={link}
-              to={`www.${link.toLowerCase}`}>
-              {link}
-            </StyledSafeLink>
-          </div>
-        ))}
-      </StyledNav>
-    </section>
-    <section>
-      <StyledNav>
-        <StyledSocialMediaLinkWrapper>
-          <StyledSocialMediaIcon>
-            <EmailOutline />
-          </StyledSocialMediaIcon>
-          <StyledSafeLink to={links.email}>
-            {t('footer.socialMediaLinks.newsletter')} <Forward />
-          </StyledSafeLink>
-        </StyledSocialMediaLinkWrapper>
-        <StyledSocialMediaLinkWrapper>
-          <StyledSocialMediaIcon>
-            <Facebook />
-          </StyledSocialMediaIcon>
-          <StyledSafeLink to={links.facebook}>
-            {t('footer.socialMediaLinks.facebook')} <Forward />
-          </StyledSafeLink>
-        </StyledSocialMediaLinkWrapper>
-        <StyledSocialMediaLinkWrapper>
-          <StyledSocialMediaIcon>
-            <Twitter />
-          </StyledSocialMediaIcon>
-          <StyledSafeLink to={links.twitter}>
-            {t('footer.socialMediaLinks.twitter')} <Forward />
-          </StyledSafeLink>
-        </StyledSocialMediaLinkWrapper>
-        {links.share && (
-          <StyledSocialMediaLinkWrapper>
-            <StyledSocialMediaIcon>
-              <Share />
-            </StyledSocialMediaIcon>
-            <StyledSafeLink to={links.share}>
-              {t('footer.socialMediaLinks.sharePage')} <Forward />
-            </StyledSafeLink>
-          </StyledSocialMediaLinkWrapper>
-        )}
-      </StyledNav>
-    </section>
-  </StyledLinksWrapper>
+  <>
+    <StyledLinksWrapper>
+      <section>
+        <StyledHeaderLinks>
+          {t('footer.footerLinksHeader')} <Launch />
+        </StyledHeaderLinks>
+        <StyledNav>
+          {commonLinks.map(link => (
+            <div>
+              <StyledSafeLink
+                key={link}
+                aria-label={link}
+                to={`www.${link.toLowerCase}`}>
+                {link}
+              </StyledSafeLink>
+            </div>
+          ))}
+        </StyledNav>
+      </section>
+      <section>
+        <StyledNav>
+          {links.map(link => (
+            <StyledSocialMediaLinkWrapper key={link.to}>
+              <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
+              <StyledSafeLink to={link.to}>
+                {link.text}
+                <Forward />
+              </StyledSafeLink>
+            </StyledSocialMediaLinkWrapper>
+          ))}
+        </StyledNav>
+      </section>
+    </StyledLinksWrapper>
+  </>
 );
 
 export default injectT(FooterLinks);

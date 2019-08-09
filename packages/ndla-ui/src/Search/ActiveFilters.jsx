@@ -12,8 +12,8 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
     );
 
     let concatClass;
-    if (filterLength.length === 2) concatClass = 'concat--2';
-    if (filterLength.length > 2) concatClass = 'concat--3';
+    if (filterLength.length === 2) concatClass = 'concat2';
+    if (filterLength.length > 2) concatClass = 'concat3';
 
     const filterItems = filters.map(filter => {
       const filterKey = filter.filterName

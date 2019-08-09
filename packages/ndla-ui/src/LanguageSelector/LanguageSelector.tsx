@@ -17,6 +17,7 @@ import Button from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
+import LanguageSelectorContent from './LanguageSelectorContent';
 
 type StyledWrapperProps = {
   alwaysVisible?: boolean;
@@ -177,30 +178,12 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
               }}>
               {t('masthead.menu.close')}
             </Button>
-            <nav>
-              <ul>
-                {Object.keys(options).map(key => (
-                  <li key={key}>
-                    {key === currentLanguage ? (
-                      <span>{options[key].name}</span>
-                    ) : (
-                      <a
-                        href={options[key].url}
-                        onMouseOver={() => {
-                          setInfoLocale(key);
-                        }}
-                        onMouseOut={() => {
-                          setInfoLocale(currentLanguage);
-                        }}
-                        aria-label={t(`changeLanguage.${key}`)}>
-                        {options[key].name}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              <p>{t(`currentLanguageText.${infoLocale}`)}</p>
-            </nav>
+            <LanguageSelectorContent
+              options={options}
+              currentLanguage={currentLanguage}
+              setInfoLocale={setInfoLocale}
+              infoLocale={infoLocale}
+            />
           </StyledModal>
         </FocusTrapReact>
       )}

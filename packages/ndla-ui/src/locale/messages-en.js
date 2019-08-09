@@ -155,8 +155,6 @@ const messages = {
     resetSearch: 'Empty search',
     closeSearch: 'Close search',
     topicsConjunction: 'and',
-    topicsNotAvailableFromSearch:
-      'hasnt been moved to the new NDLA.no webpage and will not give any matches in this search.',
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',

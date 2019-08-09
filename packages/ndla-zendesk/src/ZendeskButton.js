@@ -16,7 +16,7 @@ const styling = css`
   border-radius: 2px;
   background-color: white;
   float: right;
-  z-index: 1;
+  z-index: 2;
   ${mq.range({ from: breakpoints.desktop })} {
     position: fixed;
     right: 2rem;
@@ -73,6 +73,7 @@ class ZendeskButton extends React.Component {
           css={styling}
           onClick={this.handleClick}
           appearance="outline"
+          id="zendeskButton"
           {...rest}>
           {children}
         </Button>

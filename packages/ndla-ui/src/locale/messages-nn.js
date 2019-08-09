@@ -151,11 +151,11 @@ const messages = {
   },
   welcomePage: {
     search: 'Søk',
+    searchDisclaimer:
+      'Vi jobbar stadig med å forbetre oss! Har du kommentarer til søket, blir vi glad om du legg dei inn i «spør NDLA» nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
     topicsConjunction: 'og',
-    topicsNotAvailableFromSearch:
-      'er ikkje flyttet over til nye NDLA.no og vil ikkje gi treff i dette søket.',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',

@@ -19,7 +19,7 @@
   &.inverted {
     color: $brand-grey--light;
     background: $film-color;
-    button {
+    button:not(#zendeskButton) {
       color: #fff;
     }
   }

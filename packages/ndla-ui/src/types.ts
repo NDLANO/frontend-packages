@@ -52,10 +52,10 @@ export type FrontPageHeaderProps = {
   allResultUrl: Array<any>;
   hideSearch: boolean;
   inputHasFocus: boolean;
-  infoText: React.ReactNode;
   searchResult: Array<SearchResult>;
   languageOptions: string;
   locale: string;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 export type elementRectType = {

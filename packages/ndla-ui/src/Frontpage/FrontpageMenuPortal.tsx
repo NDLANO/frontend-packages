@@ -135,7 +135,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
 const ScrollableContent = styled.div`
   padding: ${spacing.normal} ${spacing.large} ${spacing.large};
   ${mq.range({ until: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
+    padding: ${spacing.large} ${spacing.normal} ${spacing.large};
   }
   width: 100%;
   max-width: 980px;
@@ -157,6 +157,10 @@ const ScrollableContent = styled.div`
 const StyledButton = styled.button<StyledContainerProps>`
   border: 0;
   background: none;
+  position: absolute;
+  ${mq.range({ until: breakpoints.tablet })} {
+    transform: translateY(-${spacing.normal}) translateX(${spacing.small});
+  }
   > svg {
     color: ${colors.brand.primary};
     width: ${spacing.medium};

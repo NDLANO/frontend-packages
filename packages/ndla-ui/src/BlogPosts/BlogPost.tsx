@@ -15,9 +15,20 @@ import { Launch as LaunchIcon } from '@ndla/icons/common';
 // @ts-ignore
 import SafeLink from '../common/SafeLink';
 
-interface StyledBlogProps {
+type StyledBlogProps = {
   backgroundImage: string;
 }
+
+const StyledLicense = styled.span`
+  color: #fff;
+  position: absolute !important;
+  right: ${spacing.xsmall};
+  bottom: ${spacing.xsmall};
+  ${fonts.sizes(12, 1)};
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
+`;
 
 const UntilTabletSize = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
@@ -129,6 +140,7 @@ interface Props {
   externalLink: string;
   linkText: string;
   linkTextShort: string;
+  license: string;
   image: {
     url: string;
     alt: string;
@@ -141,6 +153,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   linkText,
   linkTextShort,
   image,
+  license,
 }) => (
   <>
     <FromTabletSize>
@@ -156,6 +169,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
             <LaunchIcon />
           </span>
         </StyledSafeLink>
+        <StyledLicense>{license}</StyledLicense>
       </StyledBlog>
     </FromTabletSize>
     <UntilTabletSize>
@@ -171,6 +185,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
           <LaunchIcon />
         </span>
       </StyledSafeLink>
+      <StyledLicense>{license}</StyledLicense>
     </UntilTabletSize>
   </>
 );

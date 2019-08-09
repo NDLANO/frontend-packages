@@ -48,6 +48,7 @@ class ContentTypeResult extends Component {
       showAdditionalResources,
       messages,
       ignoreContentTypeBadge,
+      t,
     } = this.props;
     let view = null;
 
@@ -65,27 +66,39 @@ class ContentTypeResult extends Component {
 
       view = (
         <ul {...classes('', contentTypeResult.contentType)}>
-          {resources.map(item => {
-            const linkProps = resourceToLinkProps(item);
+          {resources.map(resource => {
+            const { path, resourceTypes, name, subject, additional } = resource;
+            const linkProps = resourceToLinkProps(resource);
+            const linkContent = (
+              <>
+                {' '}
+                <span>
+                  {subject && <strong>{subject}</strong>}
+                  {name}
+                </span>
+                {resourceTypes && (
+                  <small>
+                    {' '}
+                    {resourceTypes.map(type => type.name).join(', ') || ''}
+                  </small>
+                )}
+              </>
+            );
             if (linkProps && linkProps.href) {
               return (
-                <li key={item.path}>
-                  <a {...linkProps}>
-                    <span>
-                      {item.boldName && <strong>{item.boldName}</strong>}
-                      {item.name}
-                    </span>
-                    {item.subName && <small> {item.subName}</small>}
-                  </a>
+                <li key={path}>
+                  <a {...linkProps}>{linkContent}</a>
                 </li>
               );
             }
 
             const safeLinkProps =
-              linkProps && linkProps.to ? { ...linkProps } : { to: item.path };
+              linkProps && linkProps.to
+                ? { ...linkProps }
+                : { to: resource.path };
 
             return (
-              <li key={item.path}>
+              <li key={path}>
                 <SafeLink
                   {...safeLinkProps}
                   onClick={() => {
@@ -93,14 +106,10 @@ class ContentTypeResult extends Component {
                       onNavigate();
                     }
                   }}>
-                  <span>
-                    {item.boldName && <strong>{item.boldName}</strong>}
-                    {item.name}
-                  </span>
-                  {item.subName && <small> {item.subName}</small>}
+                  {linkContent}
                   {renderAdditionalIcon(
-                    item.additional,
-                    this.props.t('resource.additionalTooltip'),
+                    additional,
+                    t('resource.additionalTooltip'),
                   )}
                 </SafeLink>
               </li>

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectT } from '@ndla/i18n';
 import {
-  FrontpageHeaderNew,
+  FrontpageHeader,
+  FrontpageSearch,
   OneColumn,
   FrontpageInfo,
   FrontpageFilm,
@@ -68,151 +69,8 @@ class FrontpageExample extends Component {
 
     return (
       <>
-        <FrontpageHeaderNew
+        <FrontpageHeader
           locale="nb"
-          searchFieldValue={searchFieldValue}
-          logoTo="home"
-          hideSearch={false}
-          onSearchFieldChange={this.searchFieldValue}
-          onSearch={e => {
-            e.preventDefault();
-          }}
-          allResultUrl={`search?query=${searchFieldValue}`}
-          onSearchInputFocus={this.onSearchInputFocus}
-          onSearchDeactiveFocusTrap={this.onSearchDeactiveFocusTrap}
-          searchFieldPlaceholder={t(
-            'welcomePage.heading.searchFieldPlaceholder',
-          )}
-          inputHasFocus={inputHasFocus}
-          searchResult={
-            searchFieldValue.length > 2
-              ? [
-                  {
-                    title: 'Fag:',
-                    contentType: 'results-frontpage',
-                    resources: [
-                      {
-                        path: '#f1',
-                        boldName: 'Yrkesfag:',
-                        name: 'Design og håndverk',
-                        subName: 'Vg3',
-                      },
-                      {
-                        path: '#f2',
-                        boldName: 'Yrkesfag:',
-                        name: 'Helsearbeiderfag',
-                        subName: 'Vg1',
-                      },
-                      {
-                        path: '#f3',
-                        boldName: 'Fellesfag:',
-                        name: 'Samfunnsfag',
-                      },
-                    ],
-                  },
-                  {
-                    title: 'Emner:',
-                    contentType: 'results-frontpage',
-                    resources: [
-                      {
-                        path: '#e1',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Politikk og demokrati',
-                      },
-                      {
-                        path: '#e2',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Internasjonale forhold',
-                      },
-                      {
-                        path: '#e3',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Arbeidsliv- og næring',
-                      },
-                    ],
-                  },
-                  {
-                    title: 'Læringsressurser:',
-                    contentType: 'results-frontpage',
-                    resources: [
-                      {
-                        path: '#1',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Samfunnskontrakten: Å bli voksen',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#2',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Ulike metoder',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#3',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Dette er NAV',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#4',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Oppsummeringsoppgave, tema, Urfolk',
-                        subName: 'Oppgaver og aktiviteter',
-                      },
-                      {
-                        path: '#5',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Utvilking av ny design',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#6',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Presentasjonsteknikk - demonstrasjon',
-                        subName: 'Oppgaver og aktiviteter',
-                      },
-                      {
-                        path: '#7',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#8',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#9',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#10',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#11',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                    ],
-                  },
-                ]
-              : []
-          }
-          messages={{
-            searchFieldTitle: t(
-              'welcomePage.heading.messages.searchFieldTitle',
-            ),
-            closeSearchLabel: t('welcomePage.closeSearch'),
-            menuButton: t('welcomePage.heading.messages.menuButton'),
-          }}
           links={[
             {
               to: '#1',
@@ -226,22 +84,166 @@ class FrontpageExample extends Component {
               to: '#3',
               text: 'Nyhetsbrev',
             },
-          ]}
-          languageOptions={{
-            nb: {
-              name: 'Bokmål',
-              url: '#',
-            },
-            nn: {
-              name: 'Nynorsk',
-              url: '#',
-            },
-            en: {
-              name: 'English',
-              url: '#',
-            },
-          }}
-        />
+          ]}>
+          <FrontpageSearch
+            locale="nb"
+            searchFieldValue={searchFieldValue}
+            logoTo="home"
+            hideSearch={false}
+            onSearchFieldChange={this.searchFieldValue}
+            onSearch={e => {
+              e.preventDefault();
+            }}
+            allResultUrl={`search?query=${searchFieldValue}`}
+            onSearchInputFocus={this.onSearchInputFocus}
+            onSearchDeactiveFocusTrap={this.onSearchDeactiveFocusTrap}
+            searchFieldPlaceholder={t(
+              'welcomePage.heading.searchFieldPlaceholder',
+            )}
+            inputHasFocus={inputHasFocus}
+            searchResult={
+              searchFieldValue.length > 2 && [
+                {
+                  title: 'Fag:',
+                  contentType: 'results-frontpage',
+                  resources: [
+                    {
+                      path: '#f1',
+                      boldName: 'Yrkesfag:',
+                      name: 'Design og håndverk',
+                      subName: 'Vg3',
+                    },
+                    {
+                      path: '#f2',
+                      boldName: 'Yrkesfag:',
+                      name: 'Helsearbeiderfag',
+                      subName: 'Vg1',
+                    },
+                    {
+                      path: '#f3',
+                      boldName: 'Fellesfag:',
+                      name: 'Samfunnsfag',
+                    },
+                  ],
+                },
+                {
+                  title: 'Emner:',
+                  contentType: 'results-frontpage',
+                  resources: [
+                    {
+                      path: '#e1',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Politikk og demokrati',
+                    },
+                    {
+                      path: '#e2',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Internasjonale forhold',
+                    },
+                    {
+                      path: '#e3',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Arbeidsliv- og næring',
+                    },
+                  ],
+                },
+                {
+                  title: 'Læringsressurser:',
+                  contentType: 'results-frontpage',
+                  resources: [
+                    {
+                      path: '#1',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Samfunnskontrakten: Å bli voksen',
+                      subName: 'Fagstoff',
+                    },
+                    {
+                      path: '#2',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Ulike metoder',
+                      subName: 'Fagstoff',
+                    },
+                    {
+                      path: '#3',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Dette er NAV',
+                      subName: 'Fagstoff',
+                    },
+                    {
+                      path: '#4',
+                      boldName: 'Samfunnsfag:',
+                      name: 'Oppsummeringsoppgave, tema, Urfolk',
+                      subName: 'Oppgaver og aktiviteter',
+                    },
+                    {
+                      path: '#5',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Utvilking av ny design',
+                      subName: 'Fagstoff',
+                    },
+                    {
+                      path: '#6',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Presentasjonsteknikk - demonstrasjon',
+                      subName: 'Oppgaver og aktiviteter',
+                    },
+                    {
+                      path: '#7',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Form og funksjon',
+                      subName: 'Læringssti',
+                    },
+                    {
+                      path: '#8',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Form og funksjon',
+                      subName: 'Læringssti',
+                    },
+                    {
+                      path: '#9',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Form og funksjon',
+                      subName: 'Læringssti',
+                    },
+                    {
+                      path: '#10',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Form og funksjon',
+                      subName: 'Læringssti',
+                    },
+                    {
+                      path: '#11',
+                      boldName: 'Design og håndverk Vg1:',
+                      name: 'Form og funksjon',
+                      subName: 'Læringssti',
+                    },
+                  ],
+                },
+              ]
+            }
+            messages={{
+              searchFieldTitle: t(
+                'welcomePage.heading.messages.searchFieldTitle',
+              ),
+              closeSearchLabel: t('welcomePage.closeSearch'),
+              menuButton: t('welcomePage.heading.messages.menuButton'),
+            }}
+            languageOptions={{
+              nb: {
+                name: 'Bokmål',
+                url: '#',
+              },
+              nn: {
+                name: 'Nynorsk',
+                url: '#',
+              },
+              en: {
+                name: 'English',
+                url: '#',
+              },
+            }}
+          />
+        </FrontpageHeader>
         <main>
           <FrontpageCircularSubjectsSection
             categories={categories}

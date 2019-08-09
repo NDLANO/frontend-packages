@@ -19,6 +19,7 @@ import {
   TopicMenu,
   DisplayOnPageYOffset,
   SearchField,
+  SearchResultSleeve,
   SafeLink,
   ToggleSearchButton,
   TopicMenuButton,
@@ -32,6 +33,8 @@ import { topicMenu, contentTypeResults } from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
+
+const classes = new BEMHelper('c-search-field');
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -104,55 +107,61 @@ class MastheadWithTopicMenu extends Component {
   }
 
   renderSearchField() {
-    const searchFieldResults =
-      this.state.value.length > 1 ? contentTypeResults : null;
-
+    const modifiers = ['has-filter'];
     return (
-      <SearchField
-        placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
-        value={this.state.value}
-        autofocus
-        onChange={value => {
-          this.setState({
-            value,
-          });
-        }}
-        onSearch={e => {
+      <form
+        {...classes('', modifiers)}
+        onSubmit={e => {
           /* eslint-disable no-console */
           console.log(
             'search for:',
             e.target.getElementsByTagName('input')[0].value,
           );
           e.preventDefault();
-        }}
-        filters={[
-          {
-            value: 'Value',
-            title: this.props.ndlaFilm
-              ? 'NDLA Film'
-              : 'Medieuttrykk og mediesamfunnet',
-          },
-        ]}
-        onFilterRemove={() => {}}
-        messages={{
-          searchFieldTitle: 'Søk',
-        }}
-        onNavigate={() => {
-          try {
-            this.closeAllModals[1]();
-          } catch (e) {
-            console.log('no search modal to close');
-          }
-          try {
-            this.closeAllModals[0]();
-          } catch (e) {
-            console.log('no menu modal to close');
-          }
-        }}
-        allResultUrl="#"
-        searchResult={searchFieldResults}
-        resourceToLinkProps={() => {}}
-      />
+        }}>
+        <SearchField
+          placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
+          value={this.state.value}
+          autofocus
+          onChange={value => {
+            this.setState({
+              value,
+            });
+          }}
+          filters={[
+            {
+              value: 'Value',
+              title: this.props.ndlaFilm
+                ? 'NDLA Film'
+                : 'Medieuttrykk og mediesamfunnet',
+            },
+          ]}
+          onFilterRemove={() => {}}
+          messages={{
+            searchFieldTitle: 'Søk',
+          }}
+          onNavigate={() => {
+            try {
+              this.closeAllModals[1]();
+            } catch (e) {
+              console.log('no search modal to close');
+            }
+            try {
+              this.closeAllModals[0]();
+            } catch (e) {
+              console.log('no menu modal to close');
+            }
+          }}
+        />
+        {this.state.value.length > 2 && (
+          <SearchResultSleeve
+            result={contentTypeResults}
+            searchString={this.state.value}
+            allResultUrl={'#'}
+            resourceToLinkProps={() => {}}
+          />
+        )}
+      </form>
     );
   }
 

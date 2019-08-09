@@ -25,7 +25,7 @@ import {
   TranslationLine,
   ArticleByline,
   RadioButtonGroup,
-  FooterEditor,
+  EditorName,
   FooterText,
   LanguageSelector,
 } from '@ndla/ui';
@@ -537,7 +537,7 @@ storiesOf('Sammensatte moduler', module)
           />
         }>
         <FooterText>
-          <FooterEditor title="Ansvarlig redaktør:" name="Sigurd Trageton" />
+          <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
         </FooterText>
         <FooterText>
           Nettstedet er utarbeidet av NDLA med åpen kildekode.

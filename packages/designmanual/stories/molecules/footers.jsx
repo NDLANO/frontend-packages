@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Footer, FooterText, FooterEditor, LanguageSelector } from '@ndla/ui';
+import { Footer, FooterText, EditorName, LanguageSelector } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
 import { injectT } from '@ndla/i18n';
 import { mockFooterLinks } from '../../dummydata';
@@ -33,7 +33,7 @@ const FooterExample = ({ inverted, t }) => (
       />
     }>
     <FooterText>
-      <FooterEditor title="Utgaveansvarlig:" name="Sigurd Trageton" />
+      <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
       <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
       <ZendeskButton
         locale="nb"

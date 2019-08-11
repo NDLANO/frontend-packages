@@ -6,13 +6,18 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { colors, fonts, spacing, utils } from '@ndla/core';
 
 const SIZE: string = '22px';
 
-const StyledSwitch = styled.div`
+type StyledSwitchProps = {
+  hasFocus: boolean;
+};
+
+const StyledSwitch = styled.div<StyledSwitchProps>`
   color: ${colors.brand.primary};
   margin: 0;
   padding-right: ${spacing.large};
@@ -21,6 +26,11 @@ const StyledSwitch = styled.div`
   position: relative;
   cursor: pointer;
   display: inline-flex;
+  min-height: ${spacing.normal};
+  align-items: center;
+  ${props => props.hasFocus && css`
+    ${utils.restoreOutline};
+  `};
   label {
     &:after {
       content "";
@@ -29,7 +39,7 @@ const StyledSwitch = styled.div`
       height: ${SIZE};
       position: absolute;
       right: 0;
-      top: -2px;
+      top: 2px;
       transform: translateX(calc(-${spacing.spacingUnit * 1.5}px + ${SIZE}));
       background: ${colors.brand.greyMedium};
       transition: all 100ms ease;
@@ -40,7 +50,7 @@ const StyledSwitch = styled.div`
       display: block;
       position: absolute;
       right: 0;
-      top: -2px;
+      top: 2px;
       width: ${spacing.spacingUnit * 1.5}px;
       height: calc(${SIZE} - 4px);
       transform: translateY(2px);
@@ -64,15 +74,10 @@ const StyledSwitch = styled.div`
         background: ${colors.brand.dark};
       }
       &:before {
-        background: ${colors.brand.tertiary};
+        background: ${colors.brand.light};
       }
     }
     &:focus {
-      + label {
-        &:before {
-          ${utils.restoreOutline};
-        }
-      }
       &:checked {
         + label {
           &:before {
@@ -92,6 +97,25 @@ const StyledSwitch = styled.div`
       }
     }
   }
+  &:hover {
+    input {
+      + label {
+        &:after {
+          background: ${colors.brand.grey};
+        }
+      }
+      &:checked {
+        + label {
+          &:before {
+            background: ${colors.brand.tertiary};
+          }
+          &:after {
+            background: ${colors.brand.dark};
+          }
+        }
+      }
+    }
+  }
 `;
 
 type Props = {
@@ -104,11 +128,14 @@ type Props = {
 
 const Switch: React.FunctionComponent<Props> = ({
   onChange, checked, disabled, id, label, ...rest
-}) => (
-  <StyledSwitch {...rest}>
-    <input onChange={onChange} id={id} type="checkbox" checked={checked} disabled={disabled} />
-    <label htmlFor={id}>{label}</label>
-  </StyledSwitch>
-);
+}) => {
+  const [hasFocus, setFocusState] = useState(false);
+  return (
+    <StyledSwitch {...rest} hasFocus={hasFocus}>
+      <input onFocus={() => setFocusState(true)} onBlur={() => setFocusState(false)} onChange={onChange} id={id} type="checkbox" checked={checked} disabled={disabled} />
+      <label htmlFor={id}>{label}</label>
+    </StyledSwitch>
+  );
+};
 
 export default Switch;

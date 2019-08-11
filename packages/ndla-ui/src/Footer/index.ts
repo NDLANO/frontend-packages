@@ -7,5 +7,7 @@
  */
 
 import Footer from './Footer';
+import { FooterText } from './FooterText';
+import { EditorName } from './EditorName';
 
-export default Footer;
+export { Footer, FooterText, EditorName };

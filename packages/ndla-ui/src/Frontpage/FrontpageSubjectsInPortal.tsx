@@ -17,7 +17,7 @@ import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '../common/SafeLink';
-import { category as categoryProp } from './types';
+import { category as categoryProp } from '../types';
 import {
   categoryIllustrations,
   categoryIllustrationsInModal,
@@ -47,7 +47,8 @@ const StyledSafeLink = styled(SafeLink)`
   box-shadow: none;
   text-decoration: underline;
   color: ${colors.brand.primary};
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 `;
@@ -56,7 +57,7 @@ const StyledYearInfo = styled.span`
   ${fonts.sizes(14, 1.1)};
   font-weight: ${fonts.weight.normal};
   color: ${colors.brand.primary};
-  margin: 2px 0 0 ${spacing.xsmall}
+  margin: 2px 0 0 ${spacing.xsmall};
 `;
 
 type StyledImageProps = {
@@ -65,17 +66,17 @@ type StyledImageProps = {
 
 const StyledFigure = styled.figure<StyledImageProps>`
   pointer-events: none;
-  display: ${(props: StyledImageProps) => !props.mobile ? 'none' : 'block'};
+  display: ${(props: StyledImageProps) => (!props.mobile ? 'none' : 'block')};
   margin-top: -160px;
   ${mq.range({ from: breakpoints.tablet })} {
-    display: ${(props: StyledImageProps) => props.mobile ? 'none' : 'block'};
+    display: ${(props: StyledImageProps) => (props.mobile ? 'none' : 'block')};
     margin-top: 0;
   }
   > svg {
     width: 100%;
     height: 100%;
   }
-  width: ${(props: StyledImageProps) => props.mobile ? '130px' : '100%'};
+  width: ${(props: StyledImageProps) => (props.mobile ? '130px' : '100%')};
 `;
 
 const StyledNav = styled.nav`
@@ -116,7 +117,7 @@ const StyledListItem = styled.li`
 
 interface Props {
   category: categoryProp;
-  linkToAbout: React.ReactNode,
+  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
@@ -126,9 +127,9 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
   t,
 }) => {
   // @ts-ignore
-  const Illustration = categoryIllustrationsInModal[category.name]
+  const Illustration = categoryIllustrationsInModal[category.name];
   // @ts-ignore
-  const IllustrationMobile = categoryIllustrations[category.name]
+  const IllustrationMobile = categoryIllustrations[category.name];
 
   return (
     <StyledNav>
@@ -143,7 +144,9 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
         {category.subjects.map(subject => (
           <StyledListItem key={subject.url}>
             <StyledSafeLink to={subject.url}>{subject.text}</StyledSafeLink>
-            {subject.yearInfo && <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>}
+            {subject.yearInfo && (
+              <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>
+            )}
             {subject.beta && (
               <Modal
                 narrow
@@ -178,7 +181,8 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
                       </h1>
                       <hr />
                       <p>
-                        {t('subjectPage.subjectIsBeta.dialogText')} {linkToAbout}
+                        {t('subjectPage.subjectIsBeta.dialogText')}{' '}
+                        {linkToAbout}
                       </p>
                     </ModalBody>
                   </>
@@ -189,7 +193,7 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
         ))}
       </StyledList>
     </StyledNav>
-  )
+  );
 };
-  
+
 export default injectT(FrontpageSubjectsInPortal);

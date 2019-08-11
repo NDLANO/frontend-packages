@@ -1,33 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Footer } from '@ndla/ui';
+import { Footer, FooterText, EditorName, LanguageSelector } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
-import { Trans } from '@ndla/i18n';
+import { injectT } from '@ndla/i18n';
+import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted }) => (
-  <Footer inverted={inverted}>
-    <div className="footer_form">
-      {/* eslint-disable jsx-a11y/label-has-associated-control  */}
-      <label htmlFor="language-select" className="footer_label footer--bold">
-        Velg språk
-        <select id="language-select" className="footer_language-select">
-          <option value="Norsk">Norsk</option>
-          <option value="English">English</option>
-        </select>
-      </label>
-    </div>
-    <Footer.Ruler />
-    <Footer.Text>
-      <Footer.Editor title="Ansvarlig redaktør:" name="Christer Gundersen" />
-      <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
-    </Footer.Text>
-    <Footer.Text>
-      Nettstedet er utarbeidet av NDLA med åpen kildekode.
-    </Footer.Text>
-    <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
-      <Trans>{({ t }) => t('askNDLA')}</Trans>
-    </ZendeskButton>
+const FooterExample = ({ inverted, t }) => (
+  <Footer
+    links={mockFooterLinks}
+    languageSelector={
+      <LanguageSelector
+        alwaysVisible
+        outline
+        center
+        inverted={inverted}
+        options={{
+          nb: {
+            name: 'Bokmål',
+            url: '#',
+          },
+          nn: {
+            name: 'Nynorsk',
+            url: '#',
+          },
+          en: {
+            name: 'English',
+            url: '#',
+          },
+        }}
+        currentLanguage="nb"
+      />
+    }>
+    <FooterText>
+      <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
+      <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
+      <ZendeskButton
+        locale="nb"
+        widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+        {t('askNDLA')}
+      </ZendeskButton>
+    </FooterText>
   </Footer>
 );
 
@@ -35,4 +48,4 @@ FooterExample.propTypes = {
   inverted: PropTypes.bool,
 };
 
-export default FooterExample;
+export default injectT(FooterExample);

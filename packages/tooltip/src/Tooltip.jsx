@@ -130,7 +130,6 @@ class Tooltip extends Component {
           2}px))`;
       }
     }
-
     return currentStyles;
   }
 
@@ -176,7 +175,7 @@ class Tooltip extends Component {
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
-        <div className={tooltipContainerClass}>
+        <div className={tooltipContainerClass} ref={this.contentRef}>
           <span className={className}>{children}</span>
         </div>
       );

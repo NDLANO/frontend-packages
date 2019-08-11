@@ -1,4 +1,4 @@
-import { elementRectType } from './types';
+import { elementRectType } from '../types';
 
 export const calculateScaling = (element: HTMLElement): elementRectType => {
   const { innerWidth } = window;

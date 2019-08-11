@@ -25,6 +25,9 @@ import {
   TranslationLine,
   ArticleByline,
   RadioButtonGroup,
+  EditorName,
+  FooterText,
+  LanguageSelector,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 import { Switch } from '@ndla/switch';
@@ -33,7 +36,7 @@ import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
 import { FigureImage } from './article/FigureImage';
-import { topicList } from '../dummydata/index';
+import { topicList, mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
@@ -45,7 +48,7 @@ import RelatedArticleListExample, {
   RelatedArticleMixedList,
   RelatedArticleExternal,
 } from './article/RelatedArticleListExample';
-import { LanguageSelector } from './LanguageWrapper';
+import { LanguageSelector as LanguageSelectorStory } from './LanguageWrapper';
 import FileListExample from './molecules/FileListExample';
 import TranslationBoxExample from './organisms/TranslationBoxExample';
 import ModalExample from './molecules/ModalExample';
@@ -68,7 +71,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody layout="extend">
-        <LanguageSelector />
+        <LanguageSelectorStory />
         <h2 className="u-heading">Linje artikkel enkel variant</h2>
         <ArticleByline
           authors={[
@@ -221,7 +224,7 @@ storiesOf('Sammensatte moduler', module)
         </p>
       </StoryIntro>
       <StoryBody>
-        <LanguageSelector />
+        <LanguageSelectorStory />
         <TopicIntroductionList
           toTopic={() => '#'}
           topics={topicList}
@@ -572,30 +575,36 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Sidefot', () => (
     <Center>
-      <Footer>
-        <div className="footer_form">
-          {/* eslint-disable jsx-a11y/label-has-associated-control  */}
-          <label
-            htmlFor="language-select"
-            className="footer_label footer--bold">
-            Velg språk
-          </label>
-          <select id="language-select" className="footer_language-select">
-            <option value="Norsk">Norsk</option>
-            <option value="English">English</option>
-          </select>
-        </div>
-        <Footer.Ruler />
-        <Footer.Text>
-          <Footer.Editor
-            title="Ansvarlig redaktør:"
-            name="Christer Gundersen"
+      <Footer
+        links={mockFooterLinks}
+        languageSelector={
+          <LanguageSelector
+            center
+            outline
+            alwaysVisible
+            options={{
+              nb: {
+                name: 'Bokmål',
+                url: '#',
+              },
+              nn: {
+                name: 'Nynorsk',
+                url: '#',
+              },
+              en: {
+                name: 'English',
+                url: '#',
+              },
+            }}
+            currentLanguage="nb"
           />
-          <Footer.Editor title="Utgaveansvarlig:" name="Pål Frønsdal" />
-        </Footer.Text>
-        <Footer.Text>
+        }>
+        <FooterText>
+          <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
+        </FooterText>
+        <FooterText>
           Nettstedet er utarbeidet av NDLA med åpen kildekode.
-        </Footer.Text>
+        </FooterText>
       </Footer>
     </Center>
   ))

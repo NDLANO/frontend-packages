@@ -6,8 +6,6 @@
  *
  */
 
-export { default as Footer } from './Footer';
-
 export {
   ArticleByline,
   ArticleContent,
@@ -55,6 +53,7 @@ export { default as FileList, File } from './FileList';
 export {
   SearchOverlay,
   SearchField,
+  SearchResultSleeve,
   SearchPage,
   SearchResult,
   SearchResultAuthor,
@@ -116,11 +115,7 @@ export {
   Hero,
   NdlaFilmHero,
 } from './Hero';
-export {
-  default as Masthead,
-  MastheadItem,
-  MastheadLanguageSelector,
-} from './Masthead';
+export { default as Masthead, MastheadItem } from './Masthead';
 export {
   Figure,
   FigureCaption,

@@ -9,7 +9,7 @@ import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllust
 import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
-import { category as categoryProp, elementRectType } from './types';
+import { category as categoryProp, elementRectType } from '../types';
 import { calculateScaling } from './util';
 
 const StyledMobileSubjectLink = styled.div`

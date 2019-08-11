@@ -155,8 +155,6 @@ const messages = {
     resetSearch: 'Empty search',
     closeSearch: 'Close search',
     topicsConjunction: 'and',
-    topicsNotAvailableFromSearch:
-      'hasnt been moved to the new NDLA.no webpage and will not give any matches in this search.',
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',
@@ -522,7 +520,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS and the Norwegian Film Institute.",
+        "The films in the film service are taken from Norwegian and international film heritage and are linked to curricula in several subjects. They have been selected by NDLA's editors in collaboration with Norgesfilm AS.",
       secondParagraph:
         'You can watch the films if you are connected to the Internet via your computer, tablet or smartphone. We have done the work with rights clearance and payment. All you have to do is press play.',
       thirdParagraph:

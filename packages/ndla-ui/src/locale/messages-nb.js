@@ -150,11 +150,11 @@ const messages = {
   },
   welcomePage: {
     search: 'Søk',
+    searchDisclaimer:
+      'Vi jobber stadig med å forbedre oss! Har du kommentarer til søket, blir vi glad om du legger dem inn i «spør NDLA» nede i høyre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
     topicsConjunction: 'og',
-    topicsNotAvailableFromSearch:
-      'er ikke flyttet over til nye NDLA.no og vil ikke gi treff i dette søket.',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
@@ -419,7 +419,7 @@ const messages = {
     selectLanguage: 'Velg språk (language): ',
     vision:
       'NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
-    footerLinksHeader: 'Andre NDLA-nettsted',
+    footerLinksHeader: 'Andre NDLA nettsteder',
     footerInfo: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
     footerEditiorInChief: 'Ansvarlig redaktør: ',
     footerManagingEditor: 'Utgaveansvarlig: ',
@@ -427,8 +427,8 @@ const messages = {
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
-      newsletter: 'Med deg på vårt nyhetsbrev',
-      newsletterAria: 'Med deg på vårt nyhetsbrev',
+      newsletter: 'Meld deg på vårt nyhetsbrev',
+      newsletterAria: 'Meld deg på vårt nyhetsbrev',
       twitter: 'NDLA på Twitter',
       twitterAria: 'Besøk NDLA på Twitter',
       sharePage: 'Del denne siden',
@@ -547,7 +547,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag. De er valgt ut av NDLAs redaksjoner i samarbeid med Norgesfilm AS og Norsk filminstitutt.',
+        'Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag. De er valgt ut av NDLAs redaksjoner i samarbeid med Norgesfilm AS.',
       secondParagraph:
         'Du kan se filmene om du er koblet til Internett via datamaskinen, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du trenger å gjøre, er å trykke play.',
       thirdParagraph:

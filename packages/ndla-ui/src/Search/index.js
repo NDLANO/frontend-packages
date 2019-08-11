@@ -7,6 +7,7 @@
  */
 
 import SearchField from './SearchField';
+import SearchResultSleeve from './SearchResultSleeve';
 import SearchOverlay from './SearchOverlay';
 import SearchPage from './SearchPage';
 
@@ -27,6 +28,7 @@ export { default as ToggleSearchButton } from './ToggleSearchButton';
 
 export {
   SearchField,
+  SearchResultSleeve,
   SearchOverlay,
   SearchPage,
   SearchResult,

@@ -250,7 +250,8 @@ $overlay-height: 136px;
 
   &__search-result-infotext {
     @include font-size(16px, 22px);
-    display: block;
+    display: flex;
+    align-items: flex-start;
     margin: 0 0 $spacing--large;
     color: $primary-color;
     padding: $spacing $spacing--large $spacing $spacing;
@@ -258,7 +259,21 @@ $overlay-height: 136px;
     border-radius: $border-radius;
     span {
       display: block;
-      max-width: 600px;
+      max-width: 700px;
+      padding-left: $spacing--small;
+      flex: 1;
+    }
+    svg {
+      transform: translateY(6px);
+    }
+    @include mq($until: tablet) {
+      padding-right: $spacing;
+      svg {
+        display: none;
+      }
+      span {
+        padding: 0;
+      }
     }
   }
 

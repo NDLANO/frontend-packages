@@ -57,8 +57,8 @@ export default {
           }`,
   fadeInTop: (duration?: string, distance?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
-    animation-name: fadeInBottom;
-        @keyframes fadeInBottom {
+    animation-name: fadeInTop;
+        @keyframes fadeInTop {
             0% {
               transform: translateY(-${distance || spacing.small});
               opacity: 0;

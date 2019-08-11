@@ -73,6 +73,7 @@ class ZendeskButton extends React.Component {
           css={styling}
           onClick={this.handleClick}
           appearance="outline"
+          id="zendeskButton"
           {...rest}>
           {children}
         </Button>

@@ -17,25 +17,28 @@ import Button from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
+import LanguageSelectorContent from './LanguageSelectorContent';
 
 type StyledWrapperProps = {
   alwaysVisible?: boolean;
-}
+};
 
 const StyledWrapper = styled.div<StyledWrapperProps>`
   position: relative;
-  ${props => !props.alwaysVisible && css`
-    padding-right: ${spacing.large};
-    ${mq.range({ until: breakpoints.desktop })} {
-      display: none;
-    }
-  `}
+  ${props =>
+    !props.alwaysVisible &&
+    css`
+      padding-right: ${spacing.large};
+      ${mq.range({ until: breakpoints.desktop })} {
+        display: none;
+      }
+    `}
 `;
 
 type StyledModalProps = {
   animateIn: boolean;
   centered?: boolean;
-}
+};
 
 const StyledModal = styled.div<StyledModalProps>`
   background: ${colors.brand.light};
@@ -49,17 +52,21 @@ const StyledModal = styled.div<StyledModalProps>`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  ${props => props.animateIn && css`
-    ${animations.fadeInTop()}
-  `};
-  ${props => props.centered && css`
-    right: calc(50% - 225px);
-    left: calc(50% - 225px);
-    ${mq.range({ until: breakpoints.mobileWide })} {
-      right: calc(50% - 150px);
-      left: calc(50% - 150px);
-    }
-  `};
+  ${props =>
+    props.animateIn &&
+    css`
+      ${animations.fadeInTop()}
+    `};
+  ${props =>
+    props.centered &&
+    css`
+      right: calc(50% - 225px);
+      left: calc(50% - 225px);
+      ${mq.range({ until: breakpoints.mobileWide })} {
+        right: calc(50% - 150px);
+        left: calc(50% - 150px);
+      }
+    `};
   nav {
     width: 100%;
     padding: ${spacing.medium} ${spacing.large} ${spacing.small};
@@ -75,7 +82,8 @@ const StyledModal = styled.div<StyledModalProps>`
         margin: 0 0 ${spacing.xsmall};
         padding: 0;
       }
-      a, span {
+      a,
+      span {
         width: 100%;
         padding: ${spacing.small} ${spacing.spacingUnit * 2.5}px;
         display: flex;
@@ -88,7 +96,8 @@ const StyledModal = styled.div<StyledModalProps>`
         color: ${colors.brand.dark};
         box-shadow: none;
         transition: background 200ms ease;
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background: ${colors.brand.tertiary};
         }
       }
@@ -96,13 +105,14 @@ const StyledModal = styled.div<StyledModalProps>`
         background: ${colors.brand.primary};
         color: #fff;
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           display: block;
           @include svg_icon(done, #fff);
           width: ${spacing.normal};
           height: ${spacing.normal};
-          background-size: ${spacing.spacingUnit - 2}px ${spacing.spacingUnit - 2}px;
+          background-size: ${spacing.spacingUnit - 2}px
+            ${spacing.spacingUnit - 2}px;
           left: ${spacing.spacingUnit * 6}px;
           background-position-x: center;
           background-position-y: center;
@@ -116,15 +126,12 @@ const StyledSpan = styled.span`
   font-weight: ${fonts.weight.semibold};
 `;
 
-
-export type optionsProps = {
-  name: string;
-  url: string;
-};
-
 type Props = {
   options: {
-    [key: string]: optionsProps;
+    [key: string]: {
+      name: string;
+      url: string;
+    };
   };
   currentLanguage: string;
   inverted?: boolean;
@@ -175,30 +182,12 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
               }}>
               {t('masthead.menu.close')}
             </Button>
-            <nav>
-              <ul>
-                {Object.keys(options).map(key => (
-                  <li key={key}>
-                    {key === currentLanguage ? (
-                      <span>{options[key].name}</span>
-                    ) : (
-                      <a
-                        href={options[key].url}
-                        onMouseOver={() => {
-                          setInfoLocale(key);
-                        }}
-                        onMouseOut={() => {
-                          setInfoLocale(currentLanguage);
-                        }}
-                        aria-label={t(`changeLanguage.${key}`)}>
-                        {options[key].name}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              <p>{t(`currentLanguageText.${infoLocale}`)}</p>
-            </nav>
+            <LanguageSelectorContent
+              options={options}
+              currentLanguage={currentLanguage}
+              setInfoLocale={setInfoLocale}
+              infoLocale={infoLocale}
+            />
           </StyledModal>
         </FocusTrapReact>
       )}

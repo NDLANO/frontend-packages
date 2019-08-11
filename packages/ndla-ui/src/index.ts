@@ -19,21 +19,16 @@ export { BlogPost, BlogPostWrapper } from './BlogPosts';
 export {
   FrontpageInfo,
   FrontpageFilm,
-  FrontpageHeaderNew,
+  FrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
+  FrontpageSearch,
 } from './Frontpage';
 
-export {
-  Footer,
-  FooterEditor,
-  FooterText,
-} from './Footer';
+export { Footer, EditorName, FooterText } from './Footer';
 
-export {
-  LanguageSelector,
-} from './LanguageSelector';
+export { LanguageSelector } from './LanguageSelector';
 export { default as SafeLinkButton } from './common/SafeLinkButton';
 
 export {

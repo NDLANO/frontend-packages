@@ -28,6 +28,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   display: inline-flex;
   min-height: ${spacing.normal};
   align-items: center;
+  cursor: pointer;
   ${props => props.hasFocus && css`
     ${utils.restoreOutline};
   `};

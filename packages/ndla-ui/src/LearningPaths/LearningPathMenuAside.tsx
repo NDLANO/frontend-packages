@@ -113,7 +113,7 @@ const LearningPathMenuAside: React.FunctionComponent<Props> = ({
       <LearningPathMenuAsideCopyright copyright={copyright} />
     )}
     <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
-    <SafeLinkButton to={learningPathURL} target="_blank" outline>
+    <SafeLinkButton to={learningPathURL} target="_blank" rel="noopener noreferrer" outline>
       {t('learningPath.createLearningPathButtonText')}
     </SafeLinkButton>
   </StyledAside>

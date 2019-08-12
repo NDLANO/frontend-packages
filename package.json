@@ -98,5 +98,8 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.0",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "utility-types": "^3.7.0"
   }
 }

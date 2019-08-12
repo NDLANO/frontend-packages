@@ -46,7 +46,7 @@ const StyledPrivacyButton = styled.button`
     box-shadow: none;
   }
 `;
-const StyledFooterText = styled.p`
+const StyledFooterText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

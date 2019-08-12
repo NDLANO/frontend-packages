@@ -33,7 +33,15 @@ const StyledLinksWrapper = styled.div`
 
 type FooterLinksProps = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-  links: [{ to: string; text: string; icon: React.ReactNode }];
+  links: [
+    {
+      to: string;
+      text: string;
+      icon: React.ReactNode;
+      facebook: string;
+      twitter: string;
+    }
+  ];
 };
 
 const commonLinks = [
@@ -101,7 +109,7 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
         </StyledHeaderLinks>
         <StyledNav>
           {commonLinks.map(link => (
-            <div>
+            <div key={link.url}>
               <StyledSafeLink
                 key={link.text}
                 aria-label={link.text}

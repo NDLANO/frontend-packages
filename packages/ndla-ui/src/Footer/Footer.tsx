@@ -99,6 +99,9 @@ type Props = {
     facebook: string;
     twitter: string;
     share?: string;
+    to: string;
+    text: string;
+    icon: React.ReactNode;
   };
   languageSelector?: React.ReactNode;
 };

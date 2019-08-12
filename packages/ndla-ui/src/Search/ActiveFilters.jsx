@@ -2,18 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Cross } from '@ndla/icons/action';
+import Tooltip from '@ndla/tooltip';
+import { injectT } from '@ndla/i18n';
 
 const classes = BEMHelper('c-active-filters');
 
-const ActiveFilters = ({ filters, onFilterRemove }) => {
+const FilterContent = ({ filter, onFilterRemove, t }) => (
+  <button
+    aria-label={t('searchPage.searchFilterMessages.removeFilter', {
+      filterName: filter.title,
+    })}
+    type="button"
+    onClick={() => onFilterRemove(filter.value, filter.filterName)}>
+    <span>{filter.title}</span>
+    <Cross />
+  </button>
+);
+
+const ActiveFilters = ({ filters, onFilterRemove, t }) => {
   if (filters && filters.length > 0) {
     const filterLength = filters.filter(
       filter => filter.filterName === 'filter_subjects' && filter.title,
-    );
+    ).length;
 
     let concatClass;
-    if (filterLength.length === 2) concatClass = 'concat2';
-    if (filterLength.length > 2) concatClass = 'concat3';
+    if (filterLength === 2) concatClass = 'concat2';
+    if (filterLength > 2) concatClass = 'concat3';
 
     const filterItems = filters.map(filter => {
       const filterKey = filter.filterName
@@ -22,14 +36,25 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
 
       return (
         <li key={filterKey}>
-          <button
-            title={`Fjern filter ${filter.title}`}
-            aria-label={`Fjern filter ${filter.filterName}`}
-            type="button"
-            onClick={() => onFilterRemove(filter.value, filter.filterName)}>
-            <span>{filter.title}</span>
-            <Cross />
-          </button>
+          {filterLength > 1 ? (
+            <Tooltip
+              align="top"
+              tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+                filterName: filter.title,
+              })}>
+              <FilterContent
+                filter={filter}
+                onFilterRemove={onFilterRemove}
+                t={t}
+              />
+            </Tooltip>
+          ) : (
+            <FilterContent
+              filter={filter}
+              onFilterRemove={onFilterRemove}
+              t={t}
+            />
+          )}
         </li>
       );
     });
@@ -41,6 +66,7 @@ const ActiveFilters = ({ filters, onFilterRemove }) => {
 };
 
 ActiveFilters.propTypes = {
+  t: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
@@ -51,4 +77,4 @@ ActiveFilters.propTypes = {
   onFilterRemove: PropTypes.func.isRequired,
 };
 
-export default ActiveFilters;
+export default injectT(ActiveFilters);

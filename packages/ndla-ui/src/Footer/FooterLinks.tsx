@@ -37,12 +37,12 @@ type FooterLinksProps = {
 };
 
 const commonLinks = [
-  'om.ndla.no',
-  'about.ndla.no',
-  'blogg.ndla.no',
-  'blogg.ndla.no/elever',
-  'fyr.ndla.no',
-  'deling.ndla.no',
+  { text: 'om.ndla.no', url: 'https://om.ndla.no' },
+  { text: 'om.ndla.no/about-ndla', url: 'https://om.ndla.no/about-ndla' },
+  { text: 'blogg.ndla.no', url: 'https://blogg.ndla.no' },
+  { text: 'blogg.ndla.no/elever', url: 'https://blogg.ndla.no/elever' },
+  { text: 'fyr.ndla.no', url: 'https://fyr.ndla.no' },
+  { text: 'deling.ndla.no', url: 'https://deling.ndla.no' },
 ];
 
 const StyledNav = styled.nav`
@@ -103,10 +103,12 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
           {commonLinks.map(link => (
             <div>
               <StyledSafeLink
-                key={link}
-                aria-label={link}
-                to={`www.${link.toLowerCase}`}>
-                {link}
+                key={link.text}
+                aria-label={link.text}
+                to={link.url}
+                target="_blank"
+                rel="noopener noreferrer">
+                {link.text}
               </StyledSafeLink>
             </div>
           ))}

@@ -104,7 +104,9 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
               <StyledSafeLink
                 key={link}
                 aria-label={link}
-                to={`https://${link}`}>
+                to={`https://${link}`}
+                target="_blank"
+                rel="noopener noreferrer">
                 {link}
               </StyledSafeLink>
             </div>

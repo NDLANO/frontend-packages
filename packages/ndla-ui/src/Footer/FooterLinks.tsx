@@ -38,7 +38,6 @@ type FooterLinksProps = {
 
 const commonLinks = [
   'om.ndla.no',
-  'about.ndla.no',
   'blogg.ndla.no',
   'blogg.ndla.no/elever',
   'fyr.ndla.no',

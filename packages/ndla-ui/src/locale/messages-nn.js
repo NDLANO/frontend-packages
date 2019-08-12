@@ -222,7 +222,7 @@ const messages = {
       closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      additionalFilterLabel: 'Vis tilleggsressursar',
+      additionalFilterLabel: 'Tilleggsressursar',
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
@@ -264,8 +264,8 @@ const messages = {
       'Det er ikkje noko kjernestoff tilgjengeleg.',
     noCoreResourcesAvailable:
       'Det er ikkje noko kjernestoff tilgjengeleg for {name}.',
-    toggleFilterLabel: 'Vis tilleggsressursar',
-    activateAdditionalResources: 'Vis tilleggsressursar',
+    toggleFilterLabel: 'Tilleggsressursar',
+    activateAdditionalResources: 'Tilleggsressursar',
     label: 'Læringsressursar',
     shortcutButtonText: 'Lærestoff',
     tooltipCoreTopic: 'Kjernestoff er fagstoff',

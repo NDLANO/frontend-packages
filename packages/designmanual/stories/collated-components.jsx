@@ -407,7 +407,7 @@ storiesOf('Sammensatte moduler', module)
           reactCode={`
             <Switch
               checked={true}
-              label="Vis tilleggsstoff"
+              label="Tilleggsstoff"
               id="uniqeId"
               onChange={void}
             />
@@ -444,7 +444,7 @@ storiesOf('Sammensatte moduler', module)
           <h2 className="u-heading">Switch eksempel</h2>
           <div className="u-margin-top">
             <Switch
-              label="Vis tilleggstoff"
+              label="Tilleggstoff"
               id="exampleID"
               checked={false}
               onChange={value => {

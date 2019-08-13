@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 // @ts-ignore
@@ -51,6 +53,8 @@ const StyledLinkedText = styled.span`
   ${fonts.sizes('20px', '32px')};
   font-weight: ${fonts.weight.bold};
   position: absolute;
+  left: 0px;
+  right: 0px;
   bottom: ${spacing.medium};
   color: ${colors.subject.dark};
 
@@ -104,9 +108,16 @@ const StyledButton = styled.button`
   }
 `;
 
+type StyledIllustrationContainerProps = {
+  isIE11: boolean;
+};
+
 const StyledIllustrationContainer = styled.div`
   width: 100%;
   pointer-events: none;
+  ${props => props.isIE11 && css`
+    transform: scale(1.2);
+  `}
   ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     width: calc(100vw - ${spacing.spacingUnit * 6}px);
   }
@@ -193,6 +204,8 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     noScroll(true, 'frontpagePortal');
   };
 
+  const isIE11 = (isIE && parseInt(browserVersion) < 12);
+
   return (
     <>
       {menuIsOpen && (
@@ -234,7 +247,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
             </StyledButton>
           ))}
         </StyledLinkContainer>
-        <StyledIllustrationContainer>
+        <StyledIllustrationContainer isIE11={isIE11}>
           <FrontpageSubjectIllustration />
         </StyledIllustrationContainer>
       </StyledNavContainer>

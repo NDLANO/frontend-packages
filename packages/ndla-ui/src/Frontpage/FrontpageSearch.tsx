@@ -66,6 +66,10 @@ const StyledSearchField = styled.div`
     }
   }
 
+  .c-search-field__search-result {
+    left: 0px;
+  }
+
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
     top: 0;
@@ -77,6 +81,7 @@ const StyledSearchField = styled.div`
     .c-search-field__search-result {
       margin-left: ${spacing.normal};
       width: 100vw;
+      left: -${spacing.large};
     }
   }
 `;

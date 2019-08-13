@@ -10,6 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
+import { isIE, browserVersion } from 'react-device-detect';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 // @ts-ignore
@@ -27,112 +28,127 @@ type ModalWrapperProps = {
   animationDirection: 'in' | 'out';
   animationNameIn: string;
   animationNameOut: string;
+  isIE11: boolean;
 };
 
 const StyledModalWrapper = styled.div<ModalWrapperProps>`
   position: fixed;
   z-index: 9001;
-  left: 50%;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    min-width: 100vh;
-    min-height: 100vw;
-    background: ${colors.brand.lighter};
-    border-radius: 100%;
-    animation-timing-function: ${misc.transition.cubicBezier};
-    animation-name: ${props =>
-      props.animationDirection === 'in'
-        ? props.animationNameIn
-        : props.animationNameOut};
-    animation-duration: ${props =>
-      props.animationDirection === 'out'
-        ? animations.durations.fast
-        : animations.durations.normal};
-    ${mq.range({ from: breakpoints.tablet })} {
-      animation-duration: ${props =>
-        props.animationDirection === 'in'
-          ? animations.durations.normal
-          : animations.durations.fast};
-    }
-    animation-fill-mode: forwards;
-    @keyframes ${props => props.animationNameIn} {
-      0% {
-        opacity: 0;
-        background: ${colors.brand.light};
-        ${props => css`
-          transform: translate(
-              calc(-100vw + ${props.elementRect.fromX}px),
-              calc(-50vh + ${props.elementRect.fromY}px)
-            )
-            scale(${props.elementRect.fromScale});
-        `}
-      }
-      10% {
-        opacity: 1;
-      }
-      20% {
+  ${props => props.isIE11 ?
+    css`
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      background: ${colors.brand.lighter};
+    ` : 
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left: 50%;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        min-width: 100vh;
+        min-height: 100vw;
+        background: ${colors.brand.lighter};
         border-radius: 100%;
+        animation-timing-function: ${misc.transition.cubicBezier};
+        animation-name: ${props.animationDirection === 'in'
+            ? props.animationNameIn
+            : props.animationNameOut};
+        animation-duration: ${props.animationDirection === 'out'
+            ? animations.durations.fast
+            : animations.durations.normal};
+        ${mq.range({ from: breakpoints.tablet })} {
+          animation-duration: ${props.animationDirection === 'in'
+              ? animations.durations.normal
+              : animations.durations.fast};
+        }
+        animation-fill-mode: forwards;
+        @keyframes ${props.animationNameIn} {
+          0% {
+            opacity: 0;
+            background: ${colors.brand.light};
+            transform: translate(
+                calc(-100vw + ${props.elementRect.fromX}px),
+                calc(-50vh + ${props.elementRect.fromY}px)
+              )
+              scale(${props.elementRect.fromScale});
+          }
+          10% {
+            opacity: 1;
+          }
+          20% {
+            border-radius: 100%;
+          }
+          99% {
+            border-radius: 10%;
+            transform: translate(calc(-50vw), 0) scale(${fullSizedCircle});
+          }
+          100% {
+            border-radius: 0;
+            transform: translate(-50vw, 0);
+          }
+        }
+        @keyframes ${props.animationNameOut} {
+          0% {
+            border-radius: 0;
+            transform: translate(calc(-50vw), 30vh) scale(${fullSizedCircle});
+          }
+          50% {
+            border-radius: 100%;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translate(
+                calc(-100vw + ${props.elementRect.fromX}px),
+                calc(-50vh + ${props.elementRect.fromY}px)
+              )
+              scale(${props.elementRect.fromScale});
+          }
+        }
       }
-      99% {
-        border-radius: 10%;
-        transform: translate(calc(-50vw), 0) scale(${fullSizedCircle});
-      }
-      100% {
-        border-radius: 0;
-        transform: translate(-50vw, 0);
-      }
-    }
-    @keyframes ${props => props.animationNameOut} {
-      0% {
-        border-radius: 0;
-        transform: translate(calc(-50vw), 30vh) scale(${fullSizedCircle});
-      }
-      50% {
-        border-radius: 100%;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        ${props => css`
-          transform: translate(
-              calc(-100vw + ${props.elementRect.fromX}px),
-              calc(-50vh + ${props.elementRect.fromY}px)
-            )
-            scale(${props.elementRect.fromScale});
-        `}
-      }
-    }
+    `
   }
 `;
 
 interface StyledContainerProps {
   animationDirection: 'in' | 'out';
+  isIE11: boolean;
 }
 
 const StyledContainer = styled.div<StyledContainerProps>`
-  transform: translate(-50vw, 0);
   display: ${props => (props.animationDirection === 'in' ? 'flex' : 'none')};
   flex-direction: column;
-  align-items: flex-end;
-  margin: 0 auto;
   max-width: 980px;
   max-width: 100%;
+  ${props => props.isIE11 ?
+    css`
+      align-items: center;
+    ` :
+    css`
+      transform: translate(-50vw, 0);
+      align-items: flex-end;
+    `
   }
 `;
 
-const ScrollableContent = styled.div`
+type ie11Props = {
+  isIE11: boolean;
+};
+
+const ScrollableContent = styled.div<ie11Props>`
   padding: ${spacing.normal} ${spacing.large} ${spacing.large};
   ${mq.range({ until: breakpoints.tablet })} {
     padding: ${spacing.large} ${spacing.normal} ${spacing.large};
@@ -141,8 +157,14 @@ const ScrollableContent = styled.div`
   max-width: 980px;
   height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  ${props => props.isIE11 && 
+    css`
+      margin: 0 auto;
+    `
+  }
   align-items: flex-end;
   animation-delay: ${animations.durations.fast};
   animation-fill-mode: forwards;
@@ -154,12 +176,12 @@ const ScrollableContent = styled.div`
   }
 `;
 
-const StyledButton = styled.button<StyledContainerProps>`
+const StyledButton = styled.button<ie11Props>`
   border: 0;
   background: none;
   position: absolute;
   ${mq.range({ until: breakpoints.tablet })} {
-    transform: translateY(-${spacing.normal}) translateX(${spacing.small});
+    transform: translateY(-${spacing.normal}) translateX(${props => props.isIE11 ? `-${spacing.normal}` : spacing.small});
   }
   > svg {
     color: ${colors.brand.primary};
@@ -193,9 +215,11 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
 }) => {
   const animationNameIn = `menuPortalCircleAnimation_${menuOpenedCounter}`;
   const animationNameOut = `menuPortalCircleAnimationOut_${menuOpenedCounter}`;
+  const isIE11 = (isIE && parseInt(browserVersion) < 12);
   const content = (
     <>
       <StyledModalWrapper
+        isIE11={isIE11}
         animationNameIn={animationNameIn}
         animationNameOut={animationNameOut}
         elementRect={elementRect}
@@ -210,10 +234,10 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
             onDeactivate: onClose,
             escapeDeactivates: true,
           }}>
-          <StyledContainer animationDirection={animationDirection}>
-            <ScrollableContent>
+          <StyledContainer animationDirection={animationDirection} isIE11={isIE11}>
+            <ScrollableContent isIE11={isIE11}>
               <StyledButton
-                animationDirection={animationDirection}
+                isIE11={isIE11}
                 type="button"
                 aria-label={t('masthead.menu.close')}
                 onClick={onClose}>

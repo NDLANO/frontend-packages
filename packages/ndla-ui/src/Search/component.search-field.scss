@@ -104,6 +104,7 @@ $overlay-height: 136px;
       z-index: 9999;
       position: absolute;
       top: 58px;
+      left: 0;
     }
   }
 
@@ -343,6 +344,11 @@ $overlay-height: 136px;
       @include mq($until: tablet) {
         .c-search-field__button--close {
           right: $spacing--large + $spacing--medium;
+          top: 16px;
+        }
+        .c-search-field__button--searchIcon {
+          right: $spacing--large;
+          top: $spacing--small;
         }
       }
     }

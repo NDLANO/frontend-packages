@@ -62,6 +62,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 250px;
     padding: ${spacing.medium} ${spacing.normal};
+    height: 100%;
     &:after {
       background: #000;
       content: "";

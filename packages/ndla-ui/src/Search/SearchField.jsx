@@ -93,7 +93,7 @@ class SearchField extends Component {
         )}
         <button
           tabIndex="-1"
-          {...classes('button')}
+          {...classes('button', 'searchIcon')}
           type="submit"
           value="Search">
           <SearchIcon />

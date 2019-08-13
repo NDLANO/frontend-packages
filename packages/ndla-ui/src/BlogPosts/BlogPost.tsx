@@ -149,8 +149,7 @@ type Props = {
   locale: string;
   image: {
     url: string;
-    alt: string;
-  }
+  };
 }
 
 export const BlogPost: React.FunctionComponent<Props> = ({

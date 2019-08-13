@@ -20,17 +20,6 @@ import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
 import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
-const dummyBlogImages = [
-  {
-    url: BlogExampleImage1,
-    alt: 'Elever arbeider i grupper',
-  },
-  {
-    url: BlogExampleImage2,
-    alt: 'Prosjektarbeid på tvers av fag',
-  },
-];
-
 class FrontpageExample extends Component {
   constructor(props) {
     super(props);
@@ -255,7 +244,9 @@ class FrontpageExample extends Component {
               <BlogPostWrapper>
                 <BlogPost
                   text={t('blogPosts.blog1.text')}
-                  image={dummyBlogImages[0]}
+                  image={{
+                    url: BlogExampleImage1,
+                  }}
                   externalLink={t('blogPosts.blog1.externalLink')}
                   linkText={t('blogPosts.blog1.linkText')}
                   license={t('blogPosts.blog1.license')}
@@ -264,7 +255,9 @@ class FrontpageExample extends Component {
                 />
                 <BlogPost
                   text={t('blogPosts.blog2.text')}
-                  image={dummyBlogImages[1]}
+                  image={{
+                    url: BlogExampleImage2,
+                  }}
                   externalLink={t('blogPosts.blog2.externalLink')}
                   linkText={t('blogPosts.blog2.linkText')}
                   license={t('blogPosts.blog2.license')}

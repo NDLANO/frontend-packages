@@ -6,7 +6,6 @@ import {
   mq,
   breakpoints,
   fonts,
-  animations,
 } from '@ndla/core';
 
 import SafeLink from '../common/SafeLink';
@@ -25,28 +24,6 @@ const StyledLinkWrapper = styled.nav`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin-bottom: ${spacing.large};
-  }
-`;
-
-const StyledLinkElement = styled.span`
-  transition: box-shadow ${animations.durations.superFast} linear;
-  box-shadow: 0px 1px 0px ${colors.brand.dark};
-  margin-right: ${spacing.xsmall};
-`;
-
-const StyledSafeLink = styled(SafeLink)`
-  display: flex;
-  ${fonts.sizes('14px', '18px')};
-  color: ${colors.brand.dark};
-  margin-left: ${spacing.normal};
-  box-shadow: none;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:hover ${StyledLinkElement} {
-    box-shadow: none;
   }
 `;
 

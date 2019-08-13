@@ -12,6 +12,7 @@ import 'react-app-polyfill/ie11';
 
 // addition polyfill for language features used in ndla frontends
 import 'core-js/fn/array/find';
+import 'core-js/fn/array/flat-map';
 import 'core-js/fn/array/find-index';
 import 'core-js/fn/array/fill';
 import 'core-js/fn/array/includes';

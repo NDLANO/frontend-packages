@@ -254,21 +254,21 @@ class FrontpageExample extends Component {
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
                 <BlogPost
-                  text="Hvordan lage gode grupper med elever"
+                  text={t('blogPosts.blog1.text')}
                   image={dummyBlogImages[0]}
-                  externalLink="https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/"
-                  linkText="Fagblogg"
-                  license="CC-BY-NC-SA-4.0"
-                  licenseAuthor="Scanpix.no"
+                  externalLink={t('blogPosts.blog1.externalLink')}
+                  linkText={t('blogPosts.blog1.linkText')}
+                  license={t('blogPosts.blog1.license')}
+                  licenseAuthor={t('blogPosts.blog1.licenseAuthor')}
                   locale="nb"
                 />
                 <BlogPost
-                  text="Prosjektarbeid på tvers av fag"
+                  text={t('blogPosts.blog2.text')}
                   image={dummyBlogImages[1]}
-                  externalLink="https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/"
-                  linkText="Fagblogg"
-                  license="CC-BY-NC-SA-4.0"
-                  licenseAuthor="Scanpix.no"
+                  externalLink={t('blogPosts.blog2.externalLink')}
+                  linkText={t('blogPosts.blog2.linkText')}
+                  license={t('blogPosts.blog2.license')}
+                  licenseAuthor={t('blogPosts.blog2.licenseAuthor')}
                   locale="nb"
                 />
               </BlogPostWrapper>

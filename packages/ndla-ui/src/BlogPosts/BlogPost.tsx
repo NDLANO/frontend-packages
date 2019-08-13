@@ -11,6 +11,8 @@ import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, colors, fonts, breakpoints, mq, misc } from '@ndla/core';
 // @ts-ignore
+import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
+// @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
 // @ts-ignore
 import SafeLink from '../common/SafeLink';
@@ -22,23 +24,30 @@ type StyledBlogProps = {
 const StyledLicense = styled.span`
   color: #fff;
   position: absolute !important;
-  right: ${spacing.xsmall};
+  background: rgba(0, 0, 0, 0.2);
   bottom: ${spacing.xsmall};
+  display: flex;
+  align-items: center;
+  padding: ${spacing.xsmall};
+  border-radius: ${spacing.normal};
+  li {
+    padding-bottom: 0 !important;
+    svg {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+    }
+    &:last-child {
+      padding-right: ${spacing.xsmall};
+    }
+  }
   ${fonts.sizes(12, 1)};
-  ${mq.range({ until: breakpoints.tablet })} {
-    display: none;
-  }
-`;
-
-const UntilTabletSize = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
-    display: none;
+    right: ${spacing.xsmall};
   }
-`;
-
-const FromTabletSize = styled.div`
   ${mq.range({ until: breakpoints.tablet })} {
-    display: none;
+    left: ${spacing.spacingUnit * 0.75}px;
+    bottom: ${spacing.small};
   }
 `;
 
@@ -59,89 +68,85 @@ const StyledBlog = styled.div<StyledBlogProps>`
     right: 0;
     bottom: 0;
   }
+  min-height: 250px;
+  padding: ${spacing.medium} ${spacing.normal};
+  height: 100%;
+  &:after {
+    background: #000;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+  }
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  min-height: 200px;
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 250px;
-    padding: ${spacing.medium} ${spacing.normal};
-    height: 100%;
-    &:after {
-      background: #000;
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      opacity: 0.3;
-    }
-    > * {
-      position: relative;
-      z-index: 1;
-    }
-  }
-  ${mq.range({ until: breakpoints.tablet })} {
-    padding: 0;
-    &:before {
-      position: static;
-      height: 30vw;
-      width: 100%;
-      border-radius: ${misc.borderRadius};
-    }
   }
 `;
 
-const StyledHeading = styled.h1`
-  color: ${colors.brand.primary};
-  ${fonts.sizes(16, 1.2)};
-  margin: ${spacing.small} 0 ${spacing.xsmall} ;
+const StyledTag = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes(26, 1.1)};
-    font-weight: ${fonts.weight.bold};
+    background: #fff;
+    padding: ${spacing.spacingUnit / 6}px ${spacing.xsmall};
+    color: ${colors.text.primary};
+    border-radius: ${misc.borderRadius};
+    ${fonts.sizes(14, 1.2)};
+    font-weight: ${fonts.weight.semibold};
+    transition: all 200ms ease;
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
     color: #fff;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-    margin: 0 ${spacing.large} ${spacing.normal} 0;
+    ${fonts.sizes(12, 1.2)};
+    text-transform: upperCase;
   }
 `;
 
 const StyledSafeLink = styled(SafeLink)<LinkProps>`
+  padding: ${spacing.xsmall} 0 ${spacing.small};
+  ${fonts.sizes(22, 1.1)};
+  font-weight: ${fonts.weight.bold};
+  color: #fff;
+  margin: 0 ${spacing.large} ${spacing.small} 0;
+  box-shadow: none;
   ${mq.range({ from: breakpoints.tablet })} {
-    background: #fff;
-    padding: ${spacing.xsmall} ${spacing.small};
-    color: ${colors.brand.primary};
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-    ${fonts.sizes(14, 1.2)};
-    transition: all 200ms ease;
-    svg {
-      margin-left: 2px;
-    }
-    &:hover, &:focus {
-      box-shadow: none;
-      background: ${colors.brand.primary};
-      color: #fff;
-    }
+    ${fonts.sizes(26, 1.1)};
+    padding: ${spacing.small} 0;
+    margin: 0 ${spacing.large} ${spacing.small} 0;
   }
-  ${mq.range({ until: breakpoints.tablet })} {
-    box-shadow: none;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    min-height: 82px;
+    margin: 0 ${spacing.large} 0 0;
+  }
+  svg {
+    margin-left: ${spacing.xsmall};
+  }
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  span {
+    text-decoration: none;
+  }
+  &:hover, &:focus {
+    text-shadow: none;
     span {
-      box-shadow: none;
-      color: ${colors.brand.grey};
-      ${fonts.sizes(14, 1.2)};
-      text-transform: upperCase;
-    }
-    &:hover, &:focus {
-      ${StyledHeading} {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   }
 `;
 
-interface Props {
+type Props = {
   text: string;
   externalLink: string;
   linkText: string;
-  linkTextShort: string;
-  license: string;
+  license?: string;
+  licenseAuthor?: string;
+  locale: string;
   image: {
     url: string;
     alt: string;
@@ -152,43 +157,39 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   text,
   externalLink,
   linkText,
-  linkTextShort,
   image,
   license,
-}) => (
-  <>
-    <FromTabletSize>
-      <StyledBlog backgroundImage={image.url} aria-label={image.alt}>
-        <StyledHeading>{text}</StyledHeading>
-        <StyledSafeLink
-          to={externalLink}
-          aria-label={text}
-          target="_blank"
-        >
-          <span>
-            {linkText}
-            <LaunchIcon />
-          </span>
-        </StyledSafeLink>
-        <StyledLicense>{license}</StyledLicense>
-      </StyledBlog>
-    </FromTabletSize>
-    <UntilTabletSize>
-      <StyledSafeLink
-        to={externalLink}
-        target="_blank"
-        aria-label={text}
-      >
-        <StyledBlog backgroundImage={image.url} aria-label={image.alt} />
-        <StyledHeading>{text}</StyledHeading>
-        <span>
-          {linkTextShort}
-          <LaunchIcon />
-        </span>
-      </StyledSafeLink>
-      <StyledLicense>{license}</StyledLicense>
-    </UntilTabletSize>
-  </>
-);
+  licenseAuthor,
+  locale,
+}) => {
+  const { rights } = getLicenseByAbbreviation(license, 'nb');
+  return (
+    <>
+      <div>
+        <StyledBlog backgroundImage={image.url} aria-label={image.alt}>
+          <StyledTag>{linkText}</StyledTag>
+          <StyledSafeLink
+            to={externalLink}
+            target="_blank"
+            aria-label={text}
+          >
+            <span>
+              {text}
+              <LaunchIcon />
+            </span>
+          </StyledSafeLink>
+          <StyledLicense>
+            <LicenseByline
+              locale={locale}
+              color="#fff"
+              licenseRights={rights}
+            />
+            {licenseAuthor}
+          </StyledLicense>
+        </StyledBlog>
+      </div>
+    </>
+  )
+};
 
 export default BlogPost;

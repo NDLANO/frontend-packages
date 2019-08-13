@@ -144,7 +144,7 @@ export const appearances = {
     ${pillStyle};
     color: ${colors.brand.lightest};
     > span {
-      box-shadow: 0px 1px 0px #fff;
+      box-shadow: none;
     }
     &:hover,
     &:focus {
@@ -158,7 +158,9 @@ export const appearances = {
   ghostPill: css`
     ${strippedStyle};
     ${pillStyle};
-
+    > span {
+      box-shadow: none;
+    }
     &:hover,
     &:focus {
       background-color: ${colors.brand.light};
@@ -188,7 +190,7 @@ export const appearances = {
     transition: ${misc.transition.default};
     color: ${colors.brand.lightest};
     > span {
-      box-shadow: 0px 1px 0px #fff;
+      box-shadow: none;
     }
     &:hover,
     &:focus {

@@ -29,7 +29,11 @@ import Button from '@ndla/button';
 
 import { Cross } from '@ndla/icons/action';
 
-import { topicMenu, contentTypeResults } from '../../dummydata';
+import {
+  topicMenu,
+  contentTypeResults,
+  dummyLanguageOptions,
+} from '../../dummydata';
 import { BreadcrumbBlock } from './breadcrumbs';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
@@ -299,16 +303,7 @@ class MastheadWithTopicMenu extends Component {
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <LanguageSelector
               inverted={this.props.ndlaFilm}
-              options={{
-                nb: {
-                  name: 'Bokmål',
-                  url: '#',
-                },
-                nn: {
-                  name: 'Nynorsk',
-                  url: '#',
-                },
-              }}
+              options={dummyLanguageOptions}
               currentLanguage="nb"
             />
           </DisplayOnPageYOffset>

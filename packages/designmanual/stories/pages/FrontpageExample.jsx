@@ -15,7 +15,7 @@ import {
   BlogPostWrapper,
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-import { categories } from '../../dummydata/index';
+import { categories, dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
 import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
@@ -69,22 +69,7 @@ class FrontpageExample extends Component {
 
     return (
       <>
-        <FrontpageHeader
-          locale="nb"
-          links={[
-            {
-              to: '#1',
-              text: 'Om NDLA',
-            },
-            {
-              to: '#2',
-              text: 'NDLA i sosiale medier',
-            },
-            {
-              to: '#3',
-              text: 'Nyhetsbrev',
-            },
-          ]}>
+        <FrontpageHeader locale="nb" languageOptions={dummyLanguageOptions}>
           <FrontpageSearch
             locale="nb"
             searchFieldValue={searchFieldValue}
@@ -228,20 +213,7 @@ class FrontpageExample extends Component {
               closeSearchLabel: t('welcomePage.closeSearch'),
               menuButton: t('welcomePage.heading.messages.menuButton'),
             }}
-            languageOptions={{
-              nb: {
-                name: 'Bokmål',
-                url: '#',
-              },
-              nn: {
-                name: 'Nynorsk',
-                url: '#',
-              },
-              en: {
-                name: 'English',
-                url: '#',
-              },
-            }}
+            languageOptions={dummyLanguageOptions}
           />
         </FrontpageHeader>
         <main>

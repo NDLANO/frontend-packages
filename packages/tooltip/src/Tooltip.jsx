@@ -70,13 +70,26 @@ class Tooltip extends Component {
     this.tooltipRef = React.createRef();
   }
 
+  getElementPosition() {
+    if (this.focusableChild) {
+      return {
+        widthRef: this.focusableChild.offsetWidth,
+        heightRef: this.focusableChild.offsetHeight,
+        elementRect: this.focusableChild.getBoundingClientRect(),
+      };
+    }
+    return {
+      widthRef: this.contentRef.current.offsetWidth,
+      heightRef: this.contentRef.current.offsetHeight,
+      elementRect: this.contentRef.current.getBoundingClientRect(),
+    };
+  }
+
   getPosition() {
     const currentStyles = {};
     const { align } = this.props;
     if (this.state.showTooltip) {
-      const widthRef = this.focusableChild.offsetWidth;
-      const heightRef = this.focusableChild.offsetHeight;
-      const elementRect = this.focusableChild.getBoundingClientRect();
+      const { widthRef, heightRef, elementRect } = this.getElementPosition();
       const leftRef = elementRect.left;
       const tooltipWidth = this.tooltipRef.current.offsetWidth;
 

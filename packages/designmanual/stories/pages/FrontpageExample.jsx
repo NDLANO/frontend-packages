@@ -37,10 +37,12 @@ class FrontpageExample extends Component {
     this.state = {
       searchFieldValue: '',
       inputHasFocus: false,
+      loading: false,
     };
     this.searchFieldValue = this.searchFieldValue.bind(this);
     this.onSearchInputFocus = this.onSearchInputFocus.bind(this);
     this.onSearchDeactiveFocusTrap = this.onSearchDeactiveFocusTrap.bind(this);
+    this.timeoutLoading = null;
   }
 
   onSearchInputFocus() {
@@ -57,15 +59,23 @@ class FrontpageExample extends Component {
   }
 
   searchFieldValue(searchFieldValue) {
+    clearInterval(this.timeoutLoading);
     this.setState(prevState => ({
       searchFieldValue,
       inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
-    }));
+      loading: true,
+    }), () => {
+      this.timeoutLoading = setTimeout(() => {
+        this.setState({
+          loading: false,
+        });
+      }, 400);
+    });
   }
 
   render() {
     const { t } = this.props;
-    const { searchFieldValue, inputHasFocus } = this.state;
+    const { searchFieldValue, inputHasFocus, loading } = this.state;
 
     return (
       <>
@@ -101,6 +111,7 @@ class FrontpageExample extends Component {
               'welcomePage.heading.searchFieldPlaceholder',
             )}
             inputHasFocus={inputHasFocus}
+            loading={loading}
             searchResult={
               searchFieldValue.length > 2 && [
                 {

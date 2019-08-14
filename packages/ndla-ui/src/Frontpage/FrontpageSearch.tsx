@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 // @ts-ignore
@@ -113,7 +113,7 @@ const StyledSearchBackdrop = styled.div`
   ${animations.fadeIn(animations.durations.fast)};
 `;
 
-interface Props {
+type Props = {
   inputHasFocus: boolean;
   searchFieldValue: string;
   onSearchFieldChange: (searchValue: string) => {};
@@ -127,9 +127,9 @@ interface Props {
   infoText: string;
   loading: Boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-}
+};
 
-const FrontpageSearch: React.FC<Props> = ({
+const FrontpageSearch: React.FunctionComponent<Props> = ({
   inputHasFocus,
   searchFieldValue,
   onSearchFieldChange,
@@ -144,6 +144,7 @@ const FrontpageSearch: React.FC<Props> = ({
   t,
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
+  const [currentKeyNavigation, setKeyNavigation] = useState(-1);
   useEffect(() => {
     if (inputHasFocus && SearchFieldRef.current) {
       const inputField = SearchFieldRef.current.getElementsByTagName(
@@ -156,6 +157,28 @@ const FrontpageSearch: React.FC<Props> = ({
       });
     }
   }, [inputHasFocus]);
+  useEffect(() => {
+    const onKeyDownEvent = (e: KeyboardEvent) => {
+      if (e.code === 'ArrowDown') {
+        setKeyNavigation(currentKeyNavigation => currentKeyNavigation + 1);
+        e.stopPropagation();
+        e.preventDefault();
+      } else if (e.code === 'ArrowUp') {
+        setKeyNavigation(currentKeyNavigation => currentKeyNavigation - 1);
+        e.stopPropagation();
+        e.preventDefault();
+      } else if (e.code === 'Enter' && currentKeyNavigation !== -1) {
+        e.stopPropagation();
+        e.preventDefault();
+        // Go to link selected.
+      }
+      console.log(e.code, currentKeyNavigation);
+    };
+    window.addEventListener('keydown', onKeyDownEvent);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownEvent);
+    };
+  }, []);
   const modifiers = inputHasFocus
     ? ['no-left-margin', 'absolute-position-sleeve', 'input-has-focus']
     : ['absolute-position-sleeve'];
@@ -190,14 +213,15 @@ const FrontpageSearch: React.FC<Props> = ({
                   placeholder={searchFieldPlaceholder}
                   messages={messages}
                 />
-                {!loading && searchResult && (
+                {searchFieldValue !== '' && (
                   <SearchResultSleeve
                     ignoreContentTypeBadge
-                    result={searchResult}
+                    result={searchResult || []}
                     searchString={searchFieldValue}
                     allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
                     hideSleeveHeader
+                    loading={loading}
                     infoText={t('welcomePage.searchDisclaimer')}
                   />
                 )}

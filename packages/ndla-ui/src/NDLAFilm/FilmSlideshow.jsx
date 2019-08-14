@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
+import { isIE, browserVersion } from 'react-device-detect';
 import BEMHelper from 'react-bem-helper';
 import { OneColumn, SafeLink } from '@ndla/ui';
 import Spinner from '../Spinner';
@@ -59,6 +60,8 @@ class FilmSlideshow extends Component {
 
     this.timer = null;
     this.onChangedSlideBlock = false;
+    this.isIE11 = (isIE && parseInt(browserVersion) < 12);
+    this.transformKey = this.isIE11 ? 'msTransform' : 'transform';
   }
 
   componentDidMount() {
@@ -68,7 +71,7 @@ class FilmSlideshow extends Component {
   onChangedSlide() {
     if (!this.state.animationComplete) {
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = `translateX(${this.state
+      this.slideRef.current.style[this.transformKey] = `translateX(${this.state
         .slideIndexTarget * 100}vw))`;
       this.setState(prevState => ({
         animationComplete: true,
@@ -77,7 +80,7 @@ class FilmSlideshow extends Component {
     } else if (this.state.slideIndexTarget === -1) {
       // Go to last slide for continuous loop
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = `translateX(${this.props.slideshow
+      this.slideRef.current.style[this.transformKey] = `translateX(${this.props.slideshow
         .length * 100}vw))`;
       this.setState({
         slideIndex: this.props.slideshow.length - 1,
@@ -87,7 +90,7 @@ class FilmSlideshow extends Component {
     } else if (this.state.slideIndexTarget === this.props.slideshow.length) {
       // Go to first slide for continuous loop
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = `translateX(100vw))`;
+      this.slideRef.current.style[this.transformKey] = `translateX(100vw)`;
       this.setState({
         slideIndex: 0,
         slideIndexTarget: 0,
@@ -124,7 +127,7 @@ class FilmSlideshow extends Component {
       });
     } else {
       // Reset transfrom
-      this.slideRef.current.style.transform = this.getSlidePosition(
+      this.slideRef.current.style[this.transformKey] = this.getSlidePosition(
         this.state.slideIndex + slide,
       );
     }
@@ -137,7 +140,7 @@ class FilmSlideshow extends Component {
     clearTimeout(this.timer);
     this.swipeDistance = -eventData.deltaX;
     this.slideRef.current.style.transition = 'none';
-    this.slideRef.current.style.transform = this.getSlidePosition(
+    this.slideRef.current.style[this.transformKey] = this.getSlidePosition(
       this.state.slideIndexTarget,
     );
     const opacityText = 1 - Math.min(100, Math.abs(this.swipeDistance)) / 100;
@@ -149,7 +152,7 @@ class FilmSlideshow extends Component {
     const slideshowLength = this.props.slideshow.length;
     if (this.state.slideIndex === -1) {
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = this.getSlidePosition(
+      this.slideRef.current.style[this.transformKey] = this.getSlidePosition(
         slideshowLength - 1,
       );
       this.setState({
@@ -158,7 +161,7 @@ class FilmSlideshow extends Component {
       });
     } else if (this.state.slideIndex >= slideshowLength) {
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = this.getSlidePosition(0);
+      this.slideRef.current.style[this.transformKey] = this.getSlidePosition(0);
       this.setState({
         slideIndex: 0,
         slideIndexTarget: 0,
@@ -167,8 +170,10 @@ class FilmSlideshow extends Component {
   }
 
   getSlidePosition(target) {
-    return `translateX(calc(${this.swipeDistance}px -
-      ${(target + 1) * 100}vw))`;
+    if (!this.isIE11) {
+      return `translateX(calc(${this.swipeDistance}px - ${(target + 1) * 100}vw))`;
+    }
+    return `translate(${this.swipeDistance}px) translate(-${(target + 1) * 100}vw))`;
   }
 
   gotoSlide(slideIndexTarget, useAnimation) {
@@ -261,7 +266,7 @@ class FilmSlideshow extends Component {
             onTransitionEnd={this.onTransitionEnd}
             style={{
               width: slideshowWidth,
-              transform: this.getSlidePosition(slideIndex),
+              [this.transformKey]: this.getSlidePosition(slideIndex),
             }}>
             {renderSlideItem(slideshow[slideshow.length - 1], -1)}
             {slideshow.map(renderSlideItem)}

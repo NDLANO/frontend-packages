@@ -165,7 +165,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   return (
     <>
       <div>
-        <StyledBlog backgroundImage={image.url} aria-label={image.alt}>
+        <StyledBlog backgroundImage={image.url}>
           <StyledTag>{linkText}</StyledTag>
           <StyledSafeLink
             to={externalLink}

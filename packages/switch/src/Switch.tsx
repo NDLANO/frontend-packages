@@ -28,11 +28,11 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   display: inline-flex;
   min-height: ${spacing.normal};
   align-items: center;
-  cursor: pointer;
   ${props => props.hasFocus && css`
     ${utils.restoreOutline};
   `};
   label {
+    cursor: pointer;
     &:after {
       content "";
       display: block;
@@ -45,6 +45,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       background: ${colors.brand.greyMedium};
       transition: all 100ms ease;
       border-radius: 100%;
+      cursor: pointer;
     }
     &:before {
       content "";
@@ -59,6 +60,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       transition: all 100ms ease;
       border-radius: ${SIZE};
       pointer-events: all;
+      cursor: pointer;
     }
   }
   input {
@@ -69,6 +71,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
     opacity: 0;
     padding: 0;
     margin: 0;
+    cursor: pointer;
     &:checked + label {
       &:after {
         transform: translateX(0);

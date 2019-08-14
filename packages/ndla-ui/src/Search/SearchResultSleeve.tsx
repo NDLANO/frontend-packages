@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 import { css } from '@emotion/core';
@@ -64,60 +64,71 @@ const SearchResultSleeve: React.FC<Props> = ({
   infoText,
   ignoreContentTypeBadge,
   t,
-}) => (
-  <StyledSearchResultsWrapper>
-    <StyledScrollableContent>
-      {!hideSleeveHeader && (
-        <h1 {...classes('search-result-heading')}>
-          {t('searchPage.searchField.searchResultHeading')}
-        </h1>
-      )}
-      {infoText && (
-        <aside {...classes('search-result-infotext')}>
-          <Wrench className="c-icon--22" />
-          <span>{infoText}</span>
-        </aside>
-      )}
-      <div>
-        {result.map((contentTypeResult: ContentTypeResultType) => (
-          <ContentTypeResult
-            ignoreContentTypeBadge={ignoreContentTypeBadge}
-            onNavigate={onNavigate}
-            contentTypeResult={contentTypeResult}
-            resourceToLinkProps={resourceToLinkProps}
-            defaultCount={window.innerWidth > 980 ? 7 : 3}
-            key={contentTypeResult.title}
-            messages={{
-              allResultLabel: t(
-                'searchPage.searchField.contentTypeResultShowMoreLabel',
-              ),
-              showLessResultLabel: t(
-                'searchPage.searchField.contentTypeResultShowLessLabel',
-              ),
-              noHit: t('searchPage.searchField.contentTypeResultNoHit'),
-            }}
-          />
-        ))}
-        {result.length === 0 &&
-          t('searchPage.searchField.contentTypeResultNoHit')}
-      </div>
-    </StyledScrollableContent>
-    <StyledFooter>
-      <AnchorButton
-        to={allResultUrl}
-        css={css`
-          box-shadow: none;
-        `}>
-        {t('searchPage.searchField.allResultButtonText')}
-      </AnchorButton>
-      <StyledInstructions>
-        <Esc />
-        <KeyboardReturn />
-        <ChevronLeft />
-        <ChevronRight />
-      </StyledInstructions>
-    </StyledFooter>
-  </StyledSearchResultsWrapper>
-);
+}) => {
+  useEffect(() => {
+    const onKeyUpEvent = (e: KeyboardEvent) => {
+      console.log(e.code);
+    };
+    window.addEventListener('keyup', onKeyUpEvent);
+    return () => {
+      window.removeEventListener('keyup', onKeyUpEvent);
+    };
+  }, []);
+  return (
+    <StyledSearchResultsWrapper>
+      <StyledScrollableContent>
+        {!hideSleeveHeader && (
+          <h1 {...classes('search-result-heading')}>
+            {t('searchPage.searchField.searchResultHeading')}
+          </h1>
+        )}
+        {infoText && (
+          <aside {...classes('search-result-infotext')}>
+            <Wrench className="c-icon--22" />
+            <span>{infoText}</span>
+          </aside>
+        )}
+        <div>
+          {result.map((contentTypeResult: ContentTypeResultType) => (
+            <ContentTypeResult
+              ignoreContentTypeBadge={ignoreContentTypeBadge}
+              onNavigate={onNavigate}
+              contentTypeResult={contentTypeResult}
+              resourceToLinkProps={resourceToLinkProps}
+              defaultCount={window.innerWidth > 980 ? 7 : 3}
+              key={contentTypeResult.title}
+              messages={{
+                allResultLabel: t(
+                  'searchPage.searchField.contentTypeResultShowMoreLabel',
+                ),
+                showLessResultLabel: t(
+                  'searchPage.searchField.contentTypeResultShowLessLabel',
+                ),
+                noHit: t('searchPage.searchField.contentTypeResultNoHit'),
+              }}
+            />
+          ))}
+          {result.length === 0 &&
+            t('searchPage.searchField.contentTypeResultNoHit')}
+        </div>
+      </StyledScrollableContent>
+      <StyledFooter>
+        <AnchorButton
+          to={allResultUrl}
+          css={css`
+            box-shadow: none;
+          `}>
+          {t('searchPage.searchField.allResultButtonText')}
+        </AnchorButton>
+        <StyledInstructions>
+          <Esc />
+          <KeyboardReturn />
+          <ChevronLeft />
+          <ChevronRight />
+        </StyledInstructions>
+      </StyledFooter>
+    </StyledSearchResultsWrapper>
+  );
+};
 
-export default injectT(SearchResultSleeve);
+  export default injectT(SearchResultSleeve);

@@ -18,12 +18,21 @@
 @keyframes fadeInAdditionals {
   0% {
     opacity: 0;
+    transform: translate3d(-10px, 0px, 0px);
+    position: absolute;
+  }
+  49% {
+    position: absolute;
+  }
+  50% {
     position: static;
+    opacity: 0;
     transform: translate3d(-10px, 0px, 0px);
   }
   100% {
-    opacity: 1;
     position: static;
+    opacity: 1;
+    height: auto;
   }
 }
 
@@ -41,11 +50,8 @@
     }
     .c-topic-resource__item--additional {
       animation-name: fadeInAdditionals;
-      animation-duration: 0.4s;
-      animation-delay: 0.4s;
+      animation-duration: 0.8s;
       animation-fill-mode: forwards;
-      opacity: 0;
-      position: absolute;
     }
   }
 

@@ -20,7 +20,6 @@ interface Props {
   resourceToLinkProps: (resource: Resource) => string;
   onNavigate: VoidFunction;
   hideSleeveHeader: boolean;
-  singleColumn: boolean;
   infoText: string;
   ignoreContentTypeBadge: boolean;
   t: (v: string) => {};
@@ -31,7 +30,6 @@ const SearchResultSleeve: React.FC<Props> = ({
   resourceToLinkProps,
   onNavigate,
   hideSleeveHeader,
-  singleColumn,
   infoText,
   ignoreContentTypeBadge,
   t,
@@ -48,11 +46,7 @@ const SearchResultSleeve: React.FC<Props> = ({
         <span>{infoText}</span>
       </aside>
     )}
-    <div
-      {...classes(
-        'search-result-content',
-        singleColumn ? '' : 'multiple-columned',
-      )}>
+    <div>
       {result.map((contentTypeResult: ContentTypeResultType) => (
         <ContentTypeResult
           ignoreContentTypeBadge={ignoreContentTypeBadge}

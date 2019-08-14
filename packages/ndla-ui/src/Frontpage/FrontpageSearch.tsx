@@ -189,7 +189,6 @@ const FrontpageSearch: React.FC<Props> = ({
                   onChange={onSearchFieldChange}
                   placeholder={searchFieldPlaceholder}
                   messages={messages}
-                  singleColumn
                 />
                 {!loading && searchResult && (
                   <SearchResultSleeve
@@ -199,7 +198,6 @@ const FrontpageSearch: React.FC<Props> = ({
                     allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
                     hideSleeveHeader
-                    singleColumn
                     infoText={t('welcomePage.searchDisclaimer')}
                   />
                 )}

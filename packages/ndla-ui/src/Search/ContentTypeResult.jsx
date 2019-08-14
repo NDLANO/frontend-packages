@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
+import { colors, spacing, fonts, misc, animation } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { Additional } from '@ndla/icons/common';
 
@@ -13,6 +15,57 @@ const classes = BEMHelper({
   prefix: 'c-',
   name: 'content-type-result',
 });
+
+const StyledWrapper = styled.section`
+  padding-bottom: ${spacing.normal};
+  padding-top: ${spacing.normal};
+`;
+
+const StyledHeader = styled.header`
+  margin-bottom: ${spacing.small};
+  display: flex;
+  align-items: center;
+  > div {
+    margin-right: ${spacing.small};
+  }
+  h1 {
+    margin: 0;
+    ${fonts.sizes(16, 1.1)};
+    small {
+      font-weight: ${fonts.weight.normal};
+      font-size: inherit;
+    }
+  }
+`;
+
+const StyledUL = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    margin: 0 -${spacing.small};
+    a {
+      box-shadow: none;
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      padding: ${spacing.xsmall} ${spacing.small};
+    }
+  }
+`;
+
+const StyledSubjectTag = styled.span`
+  background: ${colors.brand.greyLighter};
+  border-radius: ${misc.borderRadius};
+  color: ${colors.text.primary};
+  ${fonts.sizes('12px', '14px')};
+  font-weight: ${fonts.weight.semibold};
+  margin: 0 ${spacing.small};
+  height: ${spacing.normal};
+  display: flex;
+  align-items: center;
+  padding: 0 ${spacing.xsmall};
+`;
 
 const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
@@ -31,132 +84,107 @@ const renderAdditionalIcon = (isAdditional, label) => {
   return null;
 };
 
-class ContentTypeResult extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAll: false,
-    };
-  }
+const ContentTypeResult = ({
+  contentTypeResult,
+  onNavigate,
+  defaultCount,
+  resourceToLinkProps,
+  showAdditionalResources,
+  messages,
+  ignoreContentTypeBadge,
+  t,
+}) => {
+  const [showAll, toggleShowAll] = useState(false);
 
-  render() {
-    const {
-      contentTypeResult,
-      onNavigate,
-      defaultCount,
-      resourceToLinkProps,
-      showAdditionalResources,
-      messages,
-      ignoreContentTypeBadge,
-      t,
-    } = this.props;
-    let view = null;
+  const results =
+    showAdditionalResources || !contentTypeResult.resources
+      ? contentTypeResult.resources
+      : contentTypeResult.resources.filter(items => !items.additional);
 
-    const results =
-      showAdditionalResources || !contentTypeResult.resources
-        ? contentTypeResult.resources
-        : contentTypeResult.resources.filter(items => !items.additional);
+      const totalCount = results.length;
 
-    const totalCount = contentTypeResult.totalCount || results.length;
+  const resources = showAll || !defaultCount
+    ? results
+    : results.slice(0, defaultCount);
 
-    if (totalCount > 0) {
-      const resources = this.state.showAll
-        ? results
-        : results.slice(0, defaultCount);
-
-      view = (
-        <ul {...classes('', contentTypeResult.contentType)}>
-          {resources.map(resource => {
-            const { path, resourceTypes, name, subject, additional } = resource;
-            const linkProps = resourceToLinkProps(resource);
-            const linkContent = (
-              <>
-                {' '}
-                <span>
-                  {subject && <strong>{subject}</strong>}
-                  {name}
-                </span>
-                {resourceTypes && (
-                  <small>
-                    {' '}
-                    {resourceTypes.map(type => type.name).join(', ') || ''}
-                  </small>
-                )}
-              </>
-            );
-            if (linkProps && linkProps.href) {
-              return (
-                <li key={path}>
-                  <a {...linkProps}>{linkContent}</a>
-                </li>
-              );
-            }
-
-            const safeLinkProps =
-              linkProps && linkProps.to
-                ? { ...linkProps }
-                : { to: resource.path };
-
+  return (
+    <StyledWrapper>
+      <StyledHeader>
+        {!ignoreContentTypeBadge && contentTypeResult.contentType && (
+          <ContentTypeBadge
+            type={contentTypeResult.contentType}
+            size="x-small"
+            background
+            outline
+          />
+        )}
+        <h1>
+          {contentTypeResult.title}{' '}
+          <small>({totalCount})</small>
+        </h1>
+      </StyledHeader>
+      {resources.length > 0 ? (
+        <StyledUL>
+        {resources.map(resource => {
+          const { path, name, subject, additional } = resource;
+          const linkProps = resourceToLinkProps(resource);
+          const linkContent = (
+            <>
+              {' '}
+              <span>
+                <strong>{name}</strong>
+              </span>
+              {subject && <StyledSubjectTag>{subject}</StyledSubjectTag>}
+            </>
+          );
+          if (linkProps && linkProps.href) {
             return (
               <li key={path}>
-                <SafeLink
-                  {...safeLinkProps}
-                  onClick={() => {
-                    if (onNavigate) {
-                      onNavigate();
-                    }
-                  }}>
-                  {linkContent}
-                  {renderAdditionalIcon(
-                    additional,
-                    t('resource.additionalTooltip'),
-                  )}
-                </SafeLink>
+                <a {...linkProps}>{linkContent}</a>
               </li>
             );
-          })}
-          {totalCount > defaultCount && (
-            <li key="showAll" {...classes('show-all')}>
-              <button
-                type="button"
-                onClick={() => {
-                  this.setState(prevState => ({
-                    showAll: !prevState.showAll,
-                  }));
-                }}>
-                {this.state.showAll
-                  ? messages.showLessResultLabel
-                  : messages.allResultLabel}
-              </button>
-            </li>
-          )}
-        </ul>
-      );
-    } else {
-      view = <p {...classes('no-hit')}>{messages.noHit}</p>;
-    }
+          }
 
-    return (
-      <section {...classes()}>
-        <header>
-          {!ignoreContentTypeBadge && contentTypeResult.contentType && (
-            <ContentTypeBadge
-              type={contentTypeResult.contentType}
-              size="x-small"
-              background
-              outline
-            />
-          )}
-          <h1>
-            {contentTypeResult.title}{' '}
-            <span {...classes('total-count')}>({totalCount})</span>
-          </h1>
-        </header>
-        {view}
-      </section>
-    );
-  }
-}
+          const safeLinkProps =
+            linkProps && linkProps.to
+              ? { ...linkProps }
+              : { to: resource.path };
+
+          return (
+            <li key={path}>
+              <SafeLink
+                {...safeLinkProps}
+                onClick={() => {
+                  if (onNavigate) {
+                    onNavigate();
+                  }
+                }}>
+                {linkContent}
+                {renderAdditionalIcon(
+                  additional,
+                  t('resource.additionalTooltip'),
+                )}
+              </SafeLink>
+            </li>
+          );
+        })}
+        {defaultCount && totalCount > defaultCount && (
+          <li key="showAll" {...classes('show-all')}>
+            <button
+              type="button"
+              onClick={() => toggleShowAll(!showAll)}
+            >
+              {showAll
+                ? messages.showLessResultLabel
+                : messages.allResultLabel}
+            </button>
+          </li>
+        )}
+      </StyledUL>
+      ) : <p {...classes('no-hit')}>{messages.noHit}</p>}
+    </StyledWrapper>
+  );
+};
 
 ContentTypeResult.propTypes = {
   defaultCount: PropTypes.number,
@@ -167,15 +195,13 @@ ContentTypeResult.propTypes = {
   showAdditionalResources: PropTypes.bool,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
-    allResultLabel: PropTypes.string.isRequired,
-    showLessResultLabel: PropTypes.string.isRequired,
+    allResultLabel: PropTypes.string,
+    showLessResultLabel: PropTypes.string,
     noHit: PropTypes.string.isRequired,
-    filterAdditionalLabel: PropTypes.string,
   }).isRequired,
 };
 
 ContentTypeResult.defaultProps = {
-  defaultCount: 3,
   showAdditionalResources: false,
 };
 

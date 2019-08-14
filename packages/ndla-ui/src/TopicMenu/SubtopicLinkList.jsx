@@ -187,23 +187,12 @@ class SubtopicLinkList extends Component {
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  allResultLabel: t(
-                    `masthead.menu.contentTypeResultsShowMore.${
-                      result.contentType
-                    }`,
-                  ),
-                  showLessResultLabel: t(
-                    `masthead.menu.contentTypeResultsShowLess.${
-                      result.contentType
-                    }`,
-                  ),
                   noHit: t(
                     `masthead.menu.contentTypeResultsNoHit.${
                       result.contentType
                     }`,
                   ),
                 }}
-                defaultCount={defaultCount}
                 iconOnRight
                 showAdditionalResources={showAdditionalResources}
               />

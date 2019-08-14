@@ -278,32 +278,6 @@ $overlay-height: 136px;
     }
   }
 
-  &__search-result-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-bottom: 1px solid $brand-color--light;
-    margin: 0;
-    padding-bottom: $spacing;
-
-    &--multiple-columned {
-      flex-direction: row;
-      .c-content-type-result {
-        a {
-          display: flex;
-          flex-grow: 1;
-        }
-        @include mq(desktop) {
-          flex: 0 0 30%;
-        }
-      }
-    }
-    @include mq($until: desktop) {
-      flex-direction: column;
-      padding-bottom: $spacing--small;
-    }
-  }
-
   &__go-to-search {
     text-align: center;
     margin: $spacing--medium 0;

@@ -5,21 +5,6 @@
 }
 
 .c-content-type-result {
-  padding-bottom: $spacing;
-  padding-top: $spacing;
-  header {
-    margin-bottom: $spacing--small;
-    display: flex;
-    align-items: center;
-    > div {
-      margin-right: $spacing--small;
-    }
-    h1 {
-      margin: 0;
-      @include font-size(16px, 18px);
-    }
-  }
-
   &__no-hit {
     color: $text-light-color;
     margin: 0;
@@ -139,9 +124,5 @@
       border: 0;
       padding: $spacing--small;
     }
-  }
-
-  &__total-count {
-    font-weight: 400;
   }
 }

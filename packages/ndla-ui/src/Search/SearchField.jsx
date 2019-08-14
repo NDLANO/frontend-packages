@@ -124,7 +124,6 @@ SearchField.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   hideSleeveHeader: PropTypes.bool,
-  singleColumn: PropTypes.bool,
   infoText: PropTypes.node,
   ignoreContentTypeBadge: PropTypes.bool,
   onClick: PropTypes.func,

@@ -6,12 +6,8 @@ import {
   mq,
   breakpoints,
   fonts,
-  animations,
 } from '@ndla/core';
 
-// @ts-ignore
-import { Launch as LaunchIcon } from '@ndla/icons/common';
-import { Link } from '../types';
 import SafeLink from '../common/SafeLink';
 import { LanguageSelector } from '../LanguageSelector';
 
@@ -28,28 +24,6 @@ const StyledLinkWrapper = styled.nav`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     margin-bottom: ${spacing.large};
-  }
-`;
-
-const StyledLinkElement = styled.span`
-  transition: box-shadow ${animations.durations.superFast} linear;
-  box-shadow: 0px 1px 0px ${colors.brand.dark};
-  margin-right: ${spacing.xsmall};
-`;
-
-const StyledSafeLink = styled(SafeLink)`
-  display: flex;
-  ${fonts.sizes('14px', '18px')};
-  color: ${colors.brand.dark};
-  margin-left: ${spacing.normal};
-  box-shadow: none;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:hover ${StyledLinkElement} {
-    box-shadow: none;
   }
 `;
 
@@ -72,11 +46,11 @@ const StyledHeader = styled.div`
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.large} ${spacing.spacingUnit * 4}px;
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 4}px ${spacing.large};
   }
   ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-    padding: ${spacing.normal} ${spacing.spacingUnit * 3}px
-      ${spacing.spacingUnit * 5}px;
+    padding: ${spacing.normal} ${spacing.normal}
+      ${spacing.spacingUnit * 5}px ${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.wide })} {
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 5}px;
@@ -105,13 +79,11 @@ const StyledLogo = styled(SafeLink)`
 `;
 
 export type FrontPageHeaderProps = {
-  links: Array<Link>;
   languageOptions: string;
   locale: string;
 };
 
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
-  links,
   languageOptions,
   locale,
   children,
@@ -119,14 +91,9 @@ const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
   <StyledHeaderWrapper>
     <StyledHeader>
       <StyledLinkWrapper>
-        {links.map((link: Link) => (
-          <StyledSafeLink key={link.text} to={link.to}>
-            <StyledLinkElement>{link.text}</StyledLinkElement>
-            <LaunchIcon color={colors.brand.dark} />
-          </StyledSafeLink>
-        ))}
         <StyledLanguageSelectorWrapper>
           <LanguageSelector
+            alwaysVisible
             currentLanguage={locale}
             options={languageOptions}
           />

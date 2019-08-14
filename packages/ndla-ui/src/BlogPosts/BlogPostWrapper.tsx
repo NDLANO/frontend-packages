@@ -20,12 +20,7 @@ const StyledGrid = styled.section`
     width: calc(50% - ${spacing.xsmall});
     margin-bottom: ${spacing.normal};
   }
-  ${mq.range({ from: breakpoints.tablet })} {
-    > * {
-      width: calc(50% - ${spacing.small});
-    }
-  }
-  ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
     > * {
       width: 100%;

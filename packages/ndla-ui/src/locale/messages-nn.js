@@ -578,6 +578,24 @@ const messages = {
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
   },
+  blogPosts: {
+    blog1: {
+      text: 'Korleis lage gode grupper med elever',
+      externalLink:
+        'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
+    blog2: {
+      text: 'Prosjektarbeid på tvers av fag',
+      externalLink:
+        'https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
+  },
 };
 
 export default messages;

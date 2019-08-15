@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, fonts, spacing, utils } from '@ndla/core';
 
-const SIZE: string = '22px';
+const SIZE: number = 22;
 
 type StyledSwitchProps = {
   hasFocus: boolean;
@@ -36,12 +36,12 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
     &:after {
       content "";
       display: block;
-      width: ${SIZE};
-      height: ${SIZE};
+      width: ${SIZE}px;
+      height: ${SIZE}px;
       position: absolute;
       right: 0;
       top: 2px;
-      transform: translateX(calc(-${spacing.spacingUnit * 1.5}px + ${SIZE}));
+      transform: translateX(-${(spacing.spacingUnit * 1.5) - SIZE}px);
       background: ${colors.brand.greyMedium};
       transition: all 100ms ease;
       border-radius: 100%;
@@ -54,11 +54,11 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       right: 0;
       top: 2px;
       width: ${spacing.spacingUnit * 1.5}px;
-      height: calc(${SIZE} - 4px);
+      height: ${SIZE - 4}px;
       transform: translateY(2px);
       background: ${colors.brand.greyLight};
       transition: all 100ms ease;
-      border-radius: ${SIZE};
+      border-radius: ${SIZE}px;
       pointer-events: all;
       cursor: pointer;
     }

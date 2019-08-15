@@ -167,8 +167,11 @@ class FilmSlideshow extends Component {
   }
 
   getSlidePosition(target) {
-    return `translateX(calc(${this.swipeDistance}px -
-      ${(target + 1) * 100}vw))`;
+    if (this.swipeDistance !== 0) {
+      return `translateX(calc(${this.swipeDistance}px -
+        ${(target + 1) * 100}vw))`;
+    }
+    return `translateX(-${(target + 1) * 100}vw)`;
   }
 
   gotoSlide(slideIndexTarget, useAnimation) {

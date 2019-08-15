@@ -110,7 +110,7 @@
   &__carousel-buttons {
     cursor: pointer;
     display: flex;
-    background: #091a2a80;
+    background: rgba(9, 26, 42, 0.501);
     border: 0;
     outline: 0;
     bottom: 0;
@@ -142,7 +142,7 @@
       }
     }
     &:focus, &:hover {
-      background: #091a2aC2 !important;
+      background: rgba(9, 26, 42, 0.76) !important;
       .c-icon {
         opacity: 1 !important;
       }

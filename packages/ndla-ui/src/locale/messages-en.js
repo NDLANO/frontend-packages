@@ -101,6 +101,7 @@ const messages = {
       noValuesButtonText: 'Filter by subjects',
       useFilter: 'Use filter',
       closeFilter: 'Close filter',
+      removeFilter: 'Remove filter {filterName}',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
     },

@@ -100,6 +100,7 @@ const messages = {
       hasValuesButtonText: 'Fleire fag',
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
+      removeFilter: 'Fjern filter {filterName}',
       closeFilter: 'Lukk filter',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',

@@ -198,6 +198,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
   let previousLetter = '';
   const wrapperRef: React.RefObject<HTMLElement> = React.useRef(null);
   const [visibleImages, setVisibleImages] = useState<visibleImagesProps>({});
+
   const scrollEvent = () => {
     hasForEachPolyfill();
     const updates: visibleImagesProps = {};
@@ -229,6 +230,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
   const throttledScrollEvent = throttle(() => {
     scrollEvent();
   }, 100);
+
   useEffect(() => {
     window.addEventListener('scroll', throttledScrollEvent);
     scrollEvent();
@@ -236,6 +238,10 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
       window.removeEventListener('scroll', throttledScrollEvent);
     };
   }, []);
+
+  useEffect(() => {
+    scrollEvent();
+  }, [movies]);
 
   return (
     <StyledWrapper ref={wrapperRef}>

@@ -7,6 +7,7 @@
  */
 
 import React, { Fragment, useEffect, useState } from 'react';
+import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import throttle from 'lodash/throttle';
@@ -136,9 +137,16 @@ const MovieDescription = styled.p`
   -webkit-line-clamp: 2;
 `;
 
-const StyledSafeLink = styled(SafeLink)`
+type isIEProps = {
+  isIE11: boolean;
+};
+
+const StyledSafeLink = styled(SafeLink)<isIEProps>`
   box-shadow: none;
   display: flex;
+  ${props => props.isIE11 && css`
+    flex: 1;
+  `}
   &:hover,
   &:focus {
     ${MovieTitle} {
@@ -169,15 +177,30 @@ type visibleImagesProps = {
   [key: string]: boolean | null;
 };
 
+const hasForEachPolyfill = () => {
+  // Polyfill for ie11
+  if ('NodeList' in window && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+      thisArg = thisArg || window;
+      for (var i = 0; i < this.length; i++) {
+        callback.call(thisArg, this[i], i, this);
+      }
+    };
+  }
+}
+
 const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
   movies,
   locale,
 }) => {
+  const isIE11 = (isIE && parseInt(browserVersion) < 12);
   // Split into Letters.
   let previousLetter = '';
   const wrapperRef: React.RefObject<HTMLElement> = React.useRef(null);
   const [visibleImages, setVisibleImages] = useState<visibleImagesProps>({});
+
   const scrollEvent = () => {
+    hasForEachPolyfill();
     const updates: visibleImagesProps = {};
     const allChildren: NodeListOf<HTMLElement> | null =
       wrapperRef.current && wrapperRef.current.querySelectorAll('[role=img]');
@@ -207,6 +230,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
   const throttledScrollEvent = throttle(() => {
     scrollEvent();
   }, 100);
+
   useEffect(() => {
     window.addEventListener('scroll', throttledScrollEvent);
     scrollEvent();
@@ -214,6 +238,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
       window.removeEventListener('scroll', throttledScrollEvent);
     };
   }, []);
+
   useEffect(() => {
     scrollEvent();
   }, [movies]);
@@ -235,7 +260,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
               <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>
             )}
             <MovieItem inView={inView}>
-              <StyledSafeLink to={`/subjects${movie.path}`}>
+              <StyledSafeLink isIE11={isIE11} to={`/subjects${movie.path}`}>
                 <MovieImage
                   role="img"
                   backgroundImage={

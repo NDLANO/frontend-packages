@@ -105,6 +105,7 @@ class SearchPage extends Component {
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
+                alwaysShow
                 onFilterRemove={(value, filterName) =>
                   onSearchFieldFilterRemove(value, filterName)
                 }

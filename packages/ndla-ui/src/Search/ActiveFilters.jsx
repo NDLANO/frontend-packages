@@ -1,33 +1,85 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-import { Cross } from '@ndla/icons/action';
+import styled from '@emotion/styled';
+import css from '@emotion/css';
+import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { injectT } from '@ndla/i18n';
+import ActiveFilterContent, {
+  StyledActiveFilterTitle,
+} from './ActiveFilterContent';
 
-const classes = BEMHelper('c-active-filters');
+const StyledActiveFilters = styled('ul')`
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: wrap;
+  display: none;
 
-const FilterContent = ({ filter, onFilterRemove, t }) => (
-  <button
-    aria-label={t('searchPage.searchFilterMessages.removeFilter', {
-      filterName: filter.title,
-    })}
-    type="button"
-    onClick={() => onFilterRemove(filter.value, filter.filterName)}>
-    <span>{filter.title}</span>
-    <Cross />
-  </button>
-);
+  ${({ alwaysShow }) =>
+    alwaysShow &&
+    css`
+      ${mq.range({ until: breakpoints.desktop })} {
+        display: flex;
+      }
+    `}
 
-const ActiveFilters = ({ filters, onFilterRemove, t }) => {
+  ${mq.range({ from: breakpoints.desktop })} {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    ${StyledActiveFilterTitle} {
+      ${({ filterLength }) =>
+        filterLength &&
+        filterLength >= 2 &&
+        css`
+          text-overflow: ellipsis;
+          overflow: hidden;
+          padding-right: ${spacing.small};
+          display: block;
+        `}
+
+    ${({ filterLength }) =>
+      filterLength &&
+      filterLength === 2 &&
+      css`
+        max-width: 90px;
+      `}
+
+    ${({ filterLength }) =>
+      filterLength &&
+      filterLength > 2 &&
+      css`
+        max-width: 70px;
+      `}
+    }
+  }
+`;
+
+const StyledActiveFilterWrapper = styled('li')`
+  list-style: none;
+  display: flex;
+  margin-bottom: ${spacing.xsmall};
+
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin: 0 ${spacing.small} 0 0;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+`;
+
+const getFilterLength = filters =>
+  filters.filter(
+    filter => filter.filterName === 'filter_subjects' && filter.title,
+  ).length;
+
+const ActiveFilters = ({ filters, onFilterRemove, alwaysShow, t }) => {
   if (filters && filters.length > 0) {
-    const filterLength = filters.filter(
-      filter => filter.filterName === 'filter_subjects' && filter.title,
-    ).length;
-
-    let concatClass;
-    if (filterLength === 2) concatClass = 'concat2';
-    if (filterLength > 2) concatClass = 'concat3';
+    const filterLength = getFilterLength(filters);
 
     const filterItems = filters.map(filter => {
       const filterKey = filter.filterName
@@ -35,38 +87,47 @@ const ActiveFilters = ({ filters, onFilterRemove, t }) => {
         : filter.value;
 
       return (
-        <li key={filterKey}>
+        <StyledActiveFilterWrapper key={filterKey}>
           {filterLength > 1 ? (
             <Tooltip
               align="top"
               tooltip={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,
               })}>
-              <FilterContent
+              <ActiveFilterContent
                 filter={filter}
+                filterLength={filterLength}
+                ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
+                  filterName: filter.title,
+                })}
                 onFilterRemove={onFilterRemove}
-                t={t}
               />
             </Tooltip>
           ) : (
-            <FilterContent
+            <ActiveFilterContent
               filter={filter}
+              filterLength={filterLength}
               onFilterRemove={onFilterRemove}
-              t={t}
+              ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
+                filterName: filter.title,
+              })}
             />
           )}
-        </li>
+        </StyledActiveFilterWrapper>
       );
     });
 
-    return <ul {...classes('', concatClass)}>{filterItems}</ul>;
+    return (
+      <StyledActiveFilters alwaysShow={alwaysShow} filterLength={filterLength}>
+        {filterItems}
+      </StyledActiveFilters>
+    );
   }
 
   return null;
 };
 
 ActiveFilters.propTypes = {
-  t: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

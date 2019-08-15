@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 // @ts-ignore
@@ -6,6 +6,7 @@ import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
+import { noScroll } from '@ndla/util';
 
 // @ts-ignore
 import { SearchField } from '../Search';
@@ -150,10 +151,14 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
         'input',
       )[0];
       inputField.focus();
-      SearchFieldRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+      const yCoordinate = SearchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: yCoordinate,
+        behavior: 'smooth'
       });
+      noScroll(true, 'preventPageScroll');
+    } else {
+      noScroll(false, 'preventPageScroll');
     }
   }, [inputHasFocus]);
   const modifiers = inputHasFocus

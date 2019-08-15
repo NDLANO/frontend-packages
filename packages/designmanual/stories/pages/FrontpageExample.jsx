@@ -60,17 +60,20 @@ class FrontpageExample extends Component {
 
   searchFieldValue(searchFieldValue) {
     clearInterval(this.timeoutLoading);
-    this.setState(prevState => ({
-      searchFieldValue,
-      inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
-      loading: true,
-    }), () => {
-      this.timeoutLoading = setTimeout(() => {
-        this.setState({
-          loading: false,
-        });
-      }, 400);
-    });
+    this.setState(
+      prevState => ({
+        searchFieldValue,
+        inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
+        loading: true,
+      }),
+      () => {
+        this.timeoutLoading = setTimeout(() => {
+          this.setState({
+            loading: false,
+          });
+        }, 400);
+      },
+    );
   }
 
   render() {
@@ -135,6 +138,11 @@ class FrontpageExample extends Component {
                       subject: 'Fellesfag',
                       name: 'Samfunnsfag',
                     },
+                    {
+                      path: '#f4',
+                      subject: 'Fellesfag',
+                      name: 'Historie',
+                    },
                   ],
                 },
                 {
@@ -157,6 +165,11 @@ class FrontpageExample extends Component {
                       name: 'Arbeidsliv- og næring',
                     },
                   ],
+                },
+                {
+                  title: 'Oppgaver:',
+                  contentType: 'results-frontpage',
+                  resources: [],
                 },
                 {
                   title: 'Læringsressurser:',

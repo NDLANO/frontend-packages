@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, fonts, misc, animation } from '@ndla/core';
@@ -67,6 +68,11 @@ const StyledSubjectTag = styled.span`
   padding: 0 ${spacing.xsmall};
 `;
 
+const highlightedCSS = css`
+  background: ${colors.brand.primary};
+  color: #fff;
+`;
+
 const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
     return (
@@ -92,6 +98,7 @@ const ContentTypeResult = ({
   showAdditionalResources,
   messages,
   ignoreContentTypeBadge,
+  keyboardPathNavigation,
   t,
 }) => {
   const [showAll, toggleShowAll] = useState(false);
@@ -101,11 +108,10 @@ const ContentTypeResult = ({
       ? contentTypeResult.resources
       : contentTypeResult.resources.filter(items => !items.additional);
 
-      const totalCount = results.length;
+  const totalCount = results.length;
 
-  const resources = showAll || !defaultCount
-    ? results
-    : results.slice(0, defaultCount);
+  const resources =
+    showAll || !defaultCount ? results : results.slice(0, defaultCount);
 
   return (
     <StyledWrapper>
@@ -119,69 +125,74 @@ const ContentTypeResult = ({
           />
         )}
         <h1>
-          {contentTypeResult.title}{' '}
-          <small>({totalCount})</small>
+          {contentTypeResult.title} <small>({totalCount})</small>
         </h1>
       </StyledHeader>
       {resources.length > 0 ? (
         <StyledUL>
-        {resources.map(resource => {
-          const { path, name, subject, additional } = resource;
-          const linkProps = resourceToLinkProps(resource);
-          const linkContent = (
-            <>
-              {' '}
-              <span>
-                <strong>{name}</strong>
-              </span>
-              {subject && <StyledSubjectTag>{subject}</StyledSubjectTag>}
-            </>
-          );
-          if (linkProps && linkProps.href) {
+          {resources.map(resource => {
+            const { path, name, subject, additional } = resource;
+            const linkProps = resourceToLinkProps(resource);
+            const linkContent = (
+              <>
+                {' '}
+                <span>
+                  <strong>{name}</strong>
+                </span>
+                {subject && <StyledSubjectTag>{subject}</StyledSubjectTag>}
+              </>
+            );
+            if (linkProps && linkProps.href) {
+              return (
+                <li key={path}>
+                  <a
+                    {...linkProps}
+                    data-highlighted={path === keyboardPathNavigation}
+                    css={path === keyboardPathNavigation && highlightedCSS}>
+                    {linkContent}
+                  </a>
+                </li>
+              );
+            }
+
+            const safeLinkProps =
+              linkProps && linkProps.to
+                ? { ...linkProps }
+                : { to: resource.path };
+
             return (
               <li key={path}>
-                <a {...linkProps}>{linkContent}</a>
+                <SafeLink
+                  css={path === keyboardPathNavigation && highlightedCSS}
+                  data-highlighted={path === keyboardPathNavigation}
+                  {...safeLinkProps}
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate();
+                    }
+                  }}>
+                  {linkContent}
+                  {renderAdditionalIcon(
+                    additional,
+                    t('resource.additionalTooltip'),
+                  )}
+                </SafeLink>
               </li>
             );
-          }
-
-          const safeLinkProps =
-            linkProps && linkProps.to
-              ? { ...linkProps }
-              : { to: resource.path };
-
-          return (
-            <li key={path}>
-              <SafeLink
-                {...safeLinkProps}
-                onClick={() => {
-                  if (onNavigate) {
-                    onNavigate();
-                  }
-                }}>
-                {linkContent}
-                {renderAdditionalIcon(
-                  additional,
-                  t('resource.additionalTooltip'),
-                )}
-              </SafeLink>
+          })}
+          {defaultCount && totalCount > defaultCount && (
+            <li key="showAll" {...classes('show-all')}>
+              <button type="button" onClick={() => toggleShowAll(!showAll)}>
+                {showAll
+                  ? messages.showLessResultLabel
+                  : messages.allResultLabel}
+              </button>
             </li>
-          );
-        })}
-        {defaultCount && totalCount > defaultCount && (
-          <li key="showAll" {...classes('show-all')}>
-            <button
-              type="button"
-              onClick={() => toggleShowAll(!showAll)}
-            >
-              {showAll
-                ? messages.showLessResultLabel
-                : messages.allResultLabel}
-            </button>
-          </li>
-        )}
-      </StyledUL>
-      ) : <p {...classes('no-hit')}>{messages.noHit}</p>}
+          )}
+        </StyledUL>
+      ) : (
+        <p {...classes('no-hit')}>{messages.noHit}</p>
+      )}
     </StyledWrapper>
   );
 };
@@ -193,6 +204,7 @@ ContentTypeResult.propTypes = {
   ignoreContentTypeBadge: PropTypes.bool,
   resourceToLinkProps: PropTypes.func.isRequired,
   showAdditionalResources: PropTypes.bool,
+  keyboardPathNavigation: PropTypes.string,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string,

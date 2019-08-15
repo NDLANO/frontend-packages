@@ -17,8 +17,8 @@ const StyledActiveFilters = styled('ul')`
   flex-wrap: wrap;
   display: none;
 
-  ${({ alwaysShow }) =>
-    alwaysShow &&
+  ${({ showOnSmallScreen }) =>
+    showOnSmallScreen &&
     css`
       ${mq.range({ until: breakpoints.desktop })} {
         display: flex;
@@ -77,7 +77,7 @@ const getFilterLength = filters =>
     filter => filter.filterName === 'filter_subjects' && filter.title,
   ).length;
 
-const ActiveFilters = ({ filters, onFilterRemove, alwaysShow, t }) => {
+const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, t }) => {
   if (filters && filters.length > 0) {
     const filterLength = getFilterLength(filters);
 
@@ -118,7 +118,9 @@ const ActiveFilters = ({ filters, onFilterRemove, alwaysShow, t }) => {
     });
 
     return (
-      <StyledActiveFilters alwaysShow={alwaysShow} filterLength={filterLength}>
+      <StyledActiveFilters
+        showOnSmallScreen={showOnSmallScreen}
+        filterLength={filterLength}>
         {filterItems}
       </StyledActiveFilters>
     );

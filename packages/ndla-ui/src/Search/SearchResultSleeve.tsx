@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 import { css } from '@emotion/core';
@@ -59,6 +59,13 @@ type Props = {
   t: (v: string) => {};
 };
 
+const calculateIndexForKeyboardNavigation = (
+  result: Array<ContentTypeResultType>, current: string, direction: 1 | -1 | null
+): string => {
+  console.log(result);
+  return current
+};
+
 const SearchResultSleeve: React.FC<Props> = ({
   result,
   allResultUrl,
@@ -69,61 +76,89 @@ const SearchResultSleeve: React.FC<Props> = ({
   ignoreContentTypeBadge,
   loading,
   t,
-}) => (
-  <StyledSearchResultsWrapper>
-    <StyledScrollableContent>
-      {!hideSleeveHeader && (
-        <h1 {...classes('search-result-heading')}>
-          {t('searchPage.searchField.searchResultHeading')}
-        </h1>
-      )}
-      {infoText && (
-        <aside {...classes('search-result-infotext')}>
-          <Wrench className="c-icon--22" />
-          <span>{infoText}</span>
-        </aside>
-      )}
-      {loading && <Spinner size="normal" />}
-      <div>
-        {result.map((contentTypeResult: ContentTypeResultType) => (
-          <ContentTypeResult
-            ignoreContentTypeBadge={ignoreContentTypeBadge}
-            onNavigate={onNavigate}
-            contentTypeResult={contentTypeResult}
-            resourceToLinkProps={resourceToLinkProps}
-            defaultCount={window.innerWidth > 980 ? 7 : 3}
-            key={contentTypeResult.title}
-            messages={{
-              allResultLabel: t(
-                'searchPage.searchField.contentTypeResultShowMoreLabel',
-              ),
-              showLessResultLabel: t(
-                'searchPage.searchField.contentTypeResultShowLessLabel',
-              ),
-              noHit: t('searchPage.searchField.contentTypeResultNoHit'),
-            }}
-          />
-        ))}
-        {result.length === 0 &&
-          t('searchPage.searchField.contentTypeResultNoHit')}
-      </div>
-    </StyledScrollableContent>
-    <StyledFooter>
-      <AnchorButton
-        to={allResultUrl}
-        css={css`
-          box-shadow: none;
-        `}>
-        {t('searchPage.searchField.allResultButtonText')}
-      </AnchorButton>
-      <StyledInstructions>
-        <Esc />
-        <KeyboardReturn />
-        <ChevronLeft />
-        <ChevronRight />
-      </StyledInstructions>
-    </StyledFooter>
-  </StyledSearchResultsWrapper>
-);
+}) => {
+  const [currentKeyNavigation, setKeyNavigation] = useState('');
+  const onKeyDownEvent = (e: KeyboardEvent) => {
+    if (e.code === 'ArrowDown') {
+      setKeyNavigation(currentKeyNavigation => {
+        console.log(currentKeyNavigation, result);
+        return calculateIndexForKeyboardNavigation(result, 'currentKeyNavigation', 1);
+      });
+      e.stopPropagation();
+      e.preventDefault();
+    } else if (e.code === 'ArrowUp') {
+      setKeyNavigation('up');
+      e.stopPropagation();
+      e.preventDefault();
+    } else if (e.code === 'Enter' && currentKeyNavigation !== '-1') {
+      e.stopPropagation();
+      e.preventDefault();
+      // Go to link selected.
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDownEvent);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownEvent);
+    };
+  }, []);
+  console.log(result);
+  return (
+    <StyledSearchResultsWrapper>
+      <StyledScrollableContent>
+        {!hideSleeveHeader && (
+          <h1 {...classes('search-result-heading')}>
+            {t('searchPage.searchField.searchResultHeading')}
+          </h1>
+        )}
+        {infoText && (
+          <aside {...classes('search-result-infotext')}>
+            <Wrench className="c-icon--22" />
+            <span>{currentKeyNavigation} {infoText}</span>
+          </aside>
+        )}
+        {loading && <Spinner size="normal" />}
+        <div>
+          {result.map((contentTypeResult: ContentTypeResultType) => (
+            <ContentTypeResult
+              ignoreContentTypeBadge={ignoreContentTypeBadge}
+              onNavigate={onNavigate}
+              contentTypeResult={contentTypeResult}
+              resourceToLinkProps={resourceToLinkProps}
+              defaultCount={window.innerWidth > 980 ? 7 : 3}
+              key={contentTypeResult.title}
+              messages={{
+                allResultLabel: t(
+                  'searchPage.searchField.contentTypeResultShowMoreLabel',
+                ),
+                showLessResultLabel: t(
+                  'searchPage.searchField.contentTypeResultShowLessLabel',
+                ),
+                noHit: t('searchPage.searchField.contentTypeResultNoHit'),
+              }}
+            />
+          ))}
+          {result.length === 0 &&
+            t('searchPage.searchField.contentTypeResultNoHit')}
+        </div>
+      </StyledScrollableContent>
+      <StyledFooter>
+        <AnchorButton
+          to={allResultUrl}
+          css={css`
+            box-shadow: none;
+          `}>
+          {t('searchPage.searchField.allResultButtonText')}
+        </AnchorButton>
+        <StyledInstructions>
+          <Esc />
+          <KeyboardReturn />
+          <ChevronLeft />
+          <ChevronRight />
+        </StyledInstructions>
+      </StyledFooter>
+    </StyledSearchResultsWrapper>
+  );
+}
 
-  export default injectT(SearchResultSleeve);
+export default injectT(SearchResultSleeve);

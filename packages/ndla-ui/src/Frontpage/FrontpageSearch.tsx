@@ -144,7 +144,6 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   t,
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
-  const [currentKeyNavigation, setKeyNavigation] = useState(-1);
   useEffect(() => {
     if (inputHasFocus && SearchFieldRef.current) {
       const inputField = SearchFieldRef.current.getElementsByTagName(
@@ -157,28 +156,6 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       });
     }
   }, [inputHasFocus]);
-  useEffect(() => {
-    const onKeyDownEvent = (e: KeyboardEvent) => {
-      if (e.code === 'ArrowDown') {
-        setKeyNavigation(currentKeyNavigation => currentKeyNavigation + 1);
-        e.stopPropagation();
-        e.preventDefault();
-      } else if (e.code === 'ArrowUp') {
-        setKeyNavigation(currentKeyNavigation => currentKeyNavigation - 1);
-        e.stopPropagation();
-        e.preventDefault();
-      } else if (e.code === 'Enter' && currentKeyNavigation !== -1) {
-        e.stopPropagation();
-        e.preventDefault();
-        // Go to link selected.
-      }
-      console.log(e.code, currentKeyNavigation);
-    };
-    window.addEventListener('keydown', onKeyDownEvent);
-    return () => {
-      window.removeEventListener('keydown', onKeyDownEvent);
-    };
-  }, []);
   const modifiers = inputHasFocus
     ? ['no-left-margin', 'absolute-position-sleeve', 'input-has-focus']
     : ['absolute-position-sleeve'];

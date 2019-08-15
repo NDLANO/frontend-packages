@@ -2,7 +2,7 @@ import React from 'react';
 
 const PrivacyNb: React.FunctionComponent = () => (
   <>
-    <h1>Personvernserklæring</h1>
+    <h1>Personvernerklæring</h1>
     <hr />
     <h2>Cookies og lovtekst</h2>
     <p>

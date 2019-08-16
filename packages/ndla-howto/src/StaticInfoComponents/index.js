@@ -219,14 +219,13 @@ export const stories = {
       'For at en ressurs skal bli tilgjengelig i meny må den tilknyttes et (eller flere) emne.',
   },
   TaxonomyTopicConnections: {
-    title: 'Emnetilknytninger',
-    lead:
-      'For å velge hvilket emne i taksonomi emnebeskrivelsen skal ligge på, må du velge emnetilknytning under. Du kan også opprette et nytt underemne.',
+    title: 'Emneplassering',
+    lead: 'Her kan du velge hvor emnet skal ligge i taksonomi.',
     body: [
       {
         type: 'text',
         content:
-          'OBS! Viss du sletter emnetilknytning vil du ikke slette emnet i taksonomi, for å slette emnet fra strukturen må du gå inn på strukturredigeringen.',
+          'OBS! Viss du endrer plassering i taksonomi, vil ikke det gamle emnet slettes viss det har underemner eller ressurser knyttet til seg.',
       },
     ],
   },

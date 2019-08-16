@@ -100,6 +100,7 @@ const messages = {
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
+      removeFilter: 'Fjern filter {filterName}',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
     },
@@ -221,7 +222,7 @@ const messages = {
       closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      additionalFilterLabel: 'Vis tilleggsressurser',
+      additionalFilterLabel: 'Tilleggsressurser',
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mer fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
@@ -262,7 +263,7 @@ const messages = {
     noCoreResourcesAvailableUnspecific:
       'Det er ikke noe kjernestoff tilgjengelig.',
     noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {name}.',
-    activateAdditionalResources: 'Vis tilleggsstoff',
+    activateAdditionalResources: 'Tilleggsstoff',
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
     shortcutButtonText: 'Lærestoff',
@@ -590,6 +591,24 @@ const messages = {
     searching: 'Søker...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+  },
+  blogPosts: {
+    blog1: {
+      text: 'Hvordan lage gode grupper med elever',
+      externalLink:
+        'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
+    blog2: {
+      text: 'Prosjektarbeid på tvers av fag',
+      externalLink:
+        'https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
   },
 };
 

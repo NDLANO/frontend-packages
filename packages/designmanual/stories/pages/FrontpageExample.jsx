@@ -15,21 +15,10 @@ import {
   BlogPostWrapper,
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-import { categories } from '../../dummydata/index';
+import { categories, dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
 import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
-
-const dummyBlogImages = [
-  {
-    url: BlogExampleImage1,
-    alt: 'Elever arbeider i grupper',
-  },
-  {
-    url: BlogExampleImage2,
-    alt: 'Prosjektarbeid på tvers av fag',
-  },
-];
 
 class FrontpageExample extends Component {
   constructor(props) {
@@ -82,22 +71,7 @@ class FrontpageExample extends Component {
 
     return (
       <>
-        <FrontpageHeader
-          locale="nb"
-          links={[
-            {
-              to: '#1',
-              text: 'Om NDLA',
-            },
-            {
-              to: '#2',
-              text: 'NDLA i sosiale medier',
-            },
-            {
-              to: '#3',
-              text: 'Nyhetsbrev',
-            },
-          ]}>
+        <FrontpageHeader locale="nb" languageOptions={dummyLanguageOptions}>
           <FrontpageSearch
             locale="nb"
             searchFieldValue={searchFieldValue}
@@ -255,20 +229,7 @@ class FrontpageExample extends Component {
               closeSearchLabel: t('welcomePage.closeSearch'),
               menuButton: t('welcomePage.heading.messages.menuButton'),
             }}
-            languageOptions={{
-              nb: {
-                name: 'Bokmål',
-                url: '#',
-              },
-              nn: {
-                name: 'Nynorsk',
-                url: '#',
-              },
-              en: {
-                name: 'English',
-                url: '#',
-              },
-            }}
+            languageOptions={dummyLanguageOptions}
           />
         </FrontpageHeader>
         <main>
@@ -281,20 +242,26 @@ class FrontpageExample extends Component {
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
                 <BlogPost
-                  text="Elever arbeider i grupper"
-                  image={dummyBlogImages[0]}
-                  externalLink="https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/"
-                  linkText="Besøk vår fagblogg"
-                  linkTextShort="Fagblogg"
-                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
+                  text={t('blogPosts.blog1.text')}
+                  image={{
+                    url: BlogExampleImage1,
+                  }}
+                  externalLink={t('blogPosts.blog1.externalLink')}
+                  linkText={t('blogPosts.blog1.linkText')}
+                  license={t('blogPosts.blog1.license')}
+                  licenseAuthor={t('blogPosts.blog1.licenseAuthor')}
+                  locale="nb"
                 />
                 <BlogPost
-                  text="Prosjektarbeid på tvers av fag"
-                  image={dummyBlogImages[1]}
-                  externalLink="https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/"
-                  linkText="Besøk vår fagblogg"
-                  linkTextShort="Fagblogg"
-                  license="CC BY-NC-SA 4.0 Opphav: Scanpix.no"
+                  text={t('blogPosts.blog2.text')}
+                  image={{
+                    url: BlogExampleImage2,
+                  }}
+                  externalLink={t('blogPosts.blog2.externalLink')}
+                  linkText={t('blogPosts.blog2.linkText')}
+                  license={t('blogPosts.blog2.license')}
+                  licenseAuthor={t('blogPosts.blog2.licenseAuthor')}
+                  locale="nb"
                 />
               </BlogPostWrapper>
             </section>

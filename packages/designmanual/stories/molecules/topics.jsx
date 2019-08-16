@@ -47,7 +47,7 @@ class Topics extends Component {
           <ResourcesTopicTitle
             messages={{
               label: 'Emner',
-              additionalFilterLabel: 'Vis tilleggsemner',
+              additionalFilterLabel: 'Tilleggsemner',
               dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
               dialogHeading: 'Kjernestoff og tilleggsstoff',
               dialogTexts: [

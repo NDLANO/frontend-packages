@@ -28,8 +28,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   ${props =>
     !props.alwaysVisible &&
     css`
-      padding-right: ${spacing.large};
-      ${mq.range({ until: breakpoints.desktop })} {
+      ${mq.range({ until: breakpoints.wide })} {
         display: none;
       }
     `}
@@ -44,7 +43,7 @@ const StyledModal = styled.div<StyledModalProps>`
   background: ${colors.brand.light};
   position: absolute;
   z-index: 9999;
-  right: ${spacing.normal};
+  right: 0;
   top: ${-spacing.spacingUnit * 0.75}px;
   padding: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.normal};
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
@@ -55,7 +54,7 @@ const StyledModal = styled.div<StyledModalProps>`
   ${props =>
     props.animateIn &&
     css`
-      ${animations.fadeInTop()}
+      ${animations.fadeInTop(animations.durations.superFast)}
     `};
   ${props =>
     props.centered &&
@@ -152,7 +151,6 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
 }) => {
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
       <Button

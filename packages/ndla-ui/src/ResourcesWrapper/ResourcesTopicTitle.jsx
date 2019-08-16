@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
+import { css } from '@emotion/core';
+import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
+import { Switch } from '@ndla/switch';
 
 import { classes } from './ResourcesWrapper';
-
-import ResourceToggleFilter from '../ResourceGroup/ResourceToggleFilter';
 
 const HelpIcon = () => (
   <div {...classes('topic-title-icon')}>
@@ -18,6 +18,10 @@ const HelpIcon = () => (
     />
   </div>
 );
+
+const switchCSS = css`
+  margin-right: ${spacing.xsmall};
+`;
 
 const ResourcesTopicTitle = ({
   title,
@@ -42,10 +46,12 @@ const ResourcesTopicTitle = ({
       </div>
       {hasAdditionalResources && (
         <div>
-          <ResourceToggleFilter
+          <Switch
+            id="toggleAdditionID"
             checked={showAdditionalResources}
             label={messages.additionalFilterLabel}
-            onClick={toggleAdditionalResources}
+            onChange={toggleAdditionalResources}
+            css={switchCSS}
           />
           <Modal
             narrow

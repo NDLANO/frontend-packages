@@ -100,6 +100,7 @@ const messages = {
       hasValuesButtonText: 'Fleire fag',
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
+      removeFilter: 'Fjern filter {filterName}',
       closeFilter: 'Lukk filter',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
@@ -222,7 +223,7 @@ const messages = {
       closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      additionalFilterLabel: 'Vis tilleggsressursar',
+      additionalFilterLabel: 'Tilleggsressursar',
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
@@ -264,8 +265,8 @@ const messages = {
       'Det er ikkje noko kjernestoff tilgjengeleg.',
     noCoreResourcesAvailable:
       'Det er ikkje noko kjernestoff tilgjengeleg for {name}.',
-    toggleFilterLabel: 'Vis tilleggsressursar',
-    activateAdditionalResources: 'Vis tilleggsressursar',
+    toggleFilterLabel: 'Tilleggsressursar',
+    activateAdditionalResources: 'Tilleggsressursar',
     label: 'Læringsressursar',
     shortcutButtonText: 'Lærestoff',
     tooltipCoreTopic: 'Kjernestoff er fagstoff',
@@ -577,6 +578,24 @@ const messages = {
     searching: 'Søker...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+  },
+  blogPosts: {
+    blog1: {
+      text: 'Korleis lage gode grupper med elever',
+      externalLink:
+        'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
+    blog2: {
+      text: 'Prosjektarbeid på tvers av fag',
+      externalLink:
+        'https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
   },
 };
 

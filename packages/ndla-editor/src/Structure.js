@@ -113,6 +113,7 @@ const Structure = ({
                     path: pathToString,
                     isSubject,
                     id,
+                    parent: rest.parent,
                   })
                 }
                 isSubject={isSubject}>
@@ -125,6 +126,7 @@ const Structure = ({
                     isOpen,
                     id,
                     name,
+                    isMainActive,
                     ...rest,
                   })}
               </ItemNameBar>

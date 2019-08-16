@@ -181,7 +181,7 @@ const messages = {
     aboutNDLA: {
       heading: 'Om NDLA',
       description:
-        'NDLAs visjon er å lage gode, opne digitale læremiddel for alle fag i videregående opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
+        'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle fag i videregående opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
       mainLink: {
         name: 'Meir om NDLA',
       },
@@ -421,12 +421,12 @@ const messages = {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Vel språk (language): ',
     vision:
-      'NDLAs visjon er å lage gode, opne digitale læremiddel for alle faga i vidaregåande opplæring og støtte opp om elevar og lærarar i aktivt og deltakande læringsarbeid.',
+      'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle faga i vidaregåande opplæring og støtte opp om elevar og lærarar i aktivt og deltakande læringsarbeid.',
     footerLinksHeader: 'Andre NDLA nettstader',
     footerInfo: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
     footerEditiorInChief: 'Ansvarleg redaktør: ',
     footerManagingEditor: 'Utgåveansvarleg: ',
-    footerPrivacyLink: 'Personvernserklæring',
+    footerPrivacyLink: 'Personvernerklæring',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',

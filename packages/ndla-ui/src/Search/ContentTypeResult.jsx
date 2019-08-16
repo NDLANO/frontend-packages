@@ -79,11 +79,7 @@ const StyledUL = styled.ul`
   margin: 0;
   li {
     margin: 0 -${spacing.small};
-    ${props =>
-      props.animated &&
-      css`
-        ${animations.fadeInLeft(animations.durations.slow)};
-      `}
+    ${animations.fadeInLeft(animations.durations.slow)};
     a {
       color: ${colors.brand.primary};
       box-shadow: none;
@@ -123,7 +119,7 @@ const StyledUL = styled.ul`
               }
               &:hover {
                 strong {
-                  box-shadow: ${misc.textLinkBoxShadow};
+                  text-decoration: underline;
                 }
               }
             `}
@@ -170,7 +166,6 @@ const ContentTypeResult = ({
   messages,
   ignoreContentTypeBadge,
   keyboardPathNavigation,
-  animated,
   inMenu,
   t,
 }) => {
@@ -212,7 +207,7 @@ const ContentTypeResult = ({
         </h1>
       </StyledHeader>
       {resources.length > 0 ? (
-        <StyledUL animated inMenu={inMenu}>
+        <StyledUL inMenu={inMenu}>
           {resources.map(resource => {
             const { path, name, resourceTypes, subject, additional } = resource;
             const linkProps = resourceToLinkProps(resource);
@@ -294,7 +289,6 @@ ContentTypeResult.propTypes = {
   ignoreContentTypeBadge: PropTypes.bool,
   resourceToLinkProps: PropTypes.func.isRequired,
   showAdditionalResources: PropTypes.bool,
-  animated: PropTypes.bool,
   keyboardPathNavigation: PropTypes.string,
   inMenu: PropTypes.bool,
   t: PropTypes.func.isRequired,

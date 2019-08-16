@@ -60,6 +60,7 @@ const StyledSearchAll = styled(SafeLink)`
   line-height: 1.7rem;
   color: ${colors.brand.primary};
   strong {
+    font-weight: ${fonts.weight.semibold};
     margin-left: ${spacing.xsmall};
   }
   &:focus {
@@ -68,7 +69,7 @@ const StyledSearchAll = styled(SafeLink)`
   }
   &:hover {
     strong {
-      box-shadow: ${misc.textLinkBoxShadow};
+      text-decoration: underline;
     }
   }
   small {
@@ -326,7 +327,6 @@ const SearchResultSleeve: React.FC<Props> = ({
           </StyledSearchAll>
           {result.map((contentTypeResult: ContentTypeResultType) => (
             <ContentTypeResult
-              animated
               ignoreContentTypeBadge={ignoreContentTypeBadge}
               onNavigate={onNavigate}
               contentTypeResult={contentTypeResult}

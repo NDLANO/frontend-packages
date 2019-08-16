@@ -216,13 +216,13 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                 />
                 {searchFieldValue !== '' && (
                   <SearchResultSleeve
+                    frontpage
                     loading={loading}
                     ignoreContentTypeBadge
                     result={searchResult || []}
                     searchString={searchFieldValue}
                     allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
-                    hideSleeveHeader
                     infoText={t('welcomePage.searchDisclaimer')}
                   />
                 )}

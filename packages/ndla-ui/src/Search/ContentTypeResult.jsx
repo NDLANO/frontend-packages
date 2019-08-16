@@ -26,6 +26,11 @@ const StyledNoHit = styled.p`
   margin: 0;
   font-style: italic;
   ${fonts.sizes(16, 1.1)};
+  ${props => props.inMenu && css`
+    ${mq.range({ from: breakpoints.desktop })} {
+      margin-left: ${spacing.spacingUnit * 1.5}px;
+    }
+  `}
 `;
 
 const showAllButtonCss = css`
@@ -74,9 +79,6 @@ const StyledUL = styled.ul`
       flex-grow: 1;
       align-items: center;
       padding: ${spacing.xsmall} ${spacing.small};
-      strong {
-        font-weight: ${fonts.weight.semibold};
-      }
       small {
         color: ${colors.text.light};
         padding-left: ${spacing.xsmall};
@@ -87,10 +89,32 @@ const StyledUL = styled.ul`
       &:focus {
         ${highlightedCSS}
       }
-      &:hover {
-        strong {
-          box-shadow: ${misc.textLinkBoxShadow};
-        }
+      ${props => props.inMenu ? 
+        css`
+          ${mq.range({ from: breakpoints.desktop })} {
+            margin-left: ${spacing.spacingUnit * 1.5}px;
+          }
+          strong {
+            text-decoration: underline;
+            font-weight: ${fonts.weight.normal};
+          }
+          &:hover {
+            strong {
+              text-decoration: none;
+            }
+          }
+        `
+          :
+        css`
+          strong {
+            font-weight: ${fonts.weight.semibold};
+          }
+          &:hover {
+            strong {
+              box-shadow: ${misc.textLinkBoxShadow};
+            }
+          }
+        `
       }
     }
   }
@@ -139,6 +163,7 @@ const ContentTypeResult = ({
   ignoreContentTypeBadge,
   keyboardPathNavigation,
   animated,
+  inMenu,
   t,
 }) => {
   const [showAll, toggleShowAll] = useState(false);
@@ -179,7 +204,7 @@ const ContentTypeResult = ({
         </h1>
       </StyledHeader>
       {resources.length > 0 ? (
-        <StyledUL animated={animated}>
+        <StyledUL animated={animated} inMenu={inMenu}>
           {resources.map(resource => {
             const { path, name, resourceTypes, subject, additional } = resource;
             const linkProps = resourceToLinkProps(resource);
@@ -187,8 +212,8 @@ const ContentTypeResult = ({
               <>
                 {' '}
                 <strong>{name}</strong>
-                {subject && <small>{subject}</small>}
-                {resourceTypes && (
+                {!inMenu && subject && <small>{subject}</small>}
+                {!inMenu && resourceTypes && (
                   resourceTypes.map(type => <StyledTag key={type.name}>{type.name}</StyledTag>)
                 )}
               </>
@@ -247,7 +272,7 @@ const ContentTypeResult = ({
           )}
         </StyledUL>
       ) : (
-        <StyledNoHit>{messages.noHit}</StyledNoHit>
+        <StyledNoHit inMenu={inMenu}>{messages.noHit}</StyledNoHit>
       )}
     </StyledWrapper>
   );
@@ -262,6 +287,7 @@ ContentTypeResult.propTypes = {
   showAdditionalResources: PropTypes.bool,
   animated: PropTypes.bool,
   keyboardPathNavigation: PropTypes.string,
+  inMenu: PropTypes.bool,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     allResultLabel: PropTypes.string,

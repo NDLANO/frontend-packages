@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
@@ -75,7 +75,7 @@ const SearchButtonView = ({ hideSearchButton, hideOnNarrowScreen }) => {
       {onClose => {
         this.closeAllModals[1] = onClose;
         return (
-          <Fragment>
+          <>
             <div className="c-search-field__overlay-top" />
             <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
               <div {...searchFieldClasses('header-container')}>
@@ -85,7 +85,7 @@ const SearchButtonView = ({ hideSearchButton, hideOnNarrowScreen }) => {
                 </Button>
               </div>
             </div>
-          </Fragment>
+          </>
         );
       }}
     </Modal>
@@ -193,7 +193,7 @@ class MastheadWithTopicMenu extends Component {
         {onClose => {
           this.closeAllModals[1] = onClose;
           return (
-            <Fragment>
+            <>
               <div className="c-search-field__overlay-top" />
               <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
                 <div {...searchFieldClasses('header-container')}>
@@ -203,7 +203,7 @@ class MastheadWithTopicMenu extends Component {
                   </Button>
                 </div>
               </div>
-            </Fragment>
+            </>
           );
         }}
       </Modal>
@@ -335,10 +335,10 @@ MastheadWithTopicMenu.propTypes = {
 MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
   betaInfoContent: (
-    <Fragment>
+    <>
       <span>Du tester nå de nye nettsidene.</span>{' '}
       <SafeLink to="#">Les mer om nye NDLA.no</SafeLink>
-    </Fragment>
+    </>
   ),
 };
 

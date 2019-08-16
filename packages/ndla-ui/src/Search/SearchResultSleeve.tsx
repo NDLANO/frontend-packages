@@ -25,11 +25,6 @@ const StyledNoHits = styled.div`
   color: ${colors.text.primary};
 `;
 
-const StyledHeader = styled.h1`
-  ${fonts.sizes('18px', '24px')};
-  margin: 0 0 ${spacing.normal} 0;
-`;
-
 const StyledAside = styled.aside`
   ${fonts.sizes('16px', '22px')};
   display: flex;
@@ -82,9 +77,14 @@ const StyledSearchAll = styled(SafeLink)`
   }
 `;
 
-const StyledSearchResultsWrapper = styled.section`
+type WrapperProps = {
+  frontpage?: boolean;
+}
+
+const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   background: #fff;
-  position: absolute;
+  width: 100%;
+  position: ${props => props.frontpage ? 'absolute' : 'static'};
   left: 0;
   right: 0;
   top: 58px;
@@ -95,7 +95,7 @@ const StyledSearchResultsWrapper = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    top: 100px;
+    top: ${props => props.frontpage ? '100px' : '74px'};
   }
 `;
 
@@ -151,11 +151,11 @@ type Props = {
   allResultUrl: string;
   resourceToLinkProps: (resource: Resource) => string;
   onNavigate: VoidFunction;
-  hideSleeveHeader: boolean;
   infoText: string;
   ignoreContentTypeBadge: boolean;
   searchString: string;
   loading: boolean;
+  frontpage?: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -237,11 +237,11 @@ const SearchResultSleeve: React.FC<Props> = ({
   allResultUrl,
   resourceToLinkProps,
   onNavigate,
-  hideSleeveHeader,
   infoText,
   ignoreContentTypeBadge,
   searchString,
   loading,
+  frontpage,
   t,
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -306,13 +306,8 @@ const SearchResultSleeve: React.FC<Props> = ({
     }
   }, [keyboardPathNavigation]);
   return (
-    <StyledSearchResultsWrapper ref={contentRef}>
+    <StyledSearchResultsWrapper frontpage={frontpage} ref={contentRef}>
       <StyledScrollableContent>
-        {!hideSleeveHeader && (
-          <StyledHeader>
-            {t('searchPage.searchField.searchResultHeading')}
-          </StyledHeader>
-        )}
         {infoText && (
           <StyledAside>
             <Wrench className="c-icon--22" />

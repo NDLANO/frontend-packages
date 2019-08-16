@@ -161,14 +161,15 @@ const SearchResultSleeve: React.FC<Props> = ({
     const focusedElementType = document.activeElement;
     if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
       // Use path form focused element.
-      focusedElementType.blur();
+      if (focusedElementType instanceof HTMLElement) {
+        focusedElementType.blur();
+      }
       return focusedElementType.getAttribute('href');
     }
     return null;
   }
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
-      console.log(e.code);
       if (e.code === 'ArrowDown') {
         setKeyNavigation(keyboardPathNavigation => {
           const focusPath = usePathFromFocus();

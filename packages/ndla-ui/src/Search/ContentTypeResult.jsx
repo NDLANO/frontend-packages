@@ -20,6 +20,7 @@ const classes = BEMHelper({
 const highlightedCSS = css`
   background: ${colors.brand.primary};
   color: #fff;
+  display: flex !important;
 `;
 
 const StyledWrapper = styled.section`
@@ -52,28 +53,33 @@ const StyledUL = styled.ul`
     margin: 0 -${spacing.small};
     a {
       box-shadow: none;
-      display: flex;
+      display: inline-flex;
       flex-grow: 1;
       align-items: center;
       padding: ${spacing.xsmall} ${spacing.small};
       &:focus {
         ${highlightedCSS}
       }
+      &:hover {
+        strong {
+          box-shadow: ${misc.textLinkBoxShadow};
+        }
+      }
     }
   }
 `;
 
 const StyledSubjectTag = styled.span`
-  background: ${colors.brand.greyLighter};
+  background: ${colors.brand.greyLightest};
   border-radius: ${misc.borderRadius};
   color: ${colors.text.primary};
-  ${fonts.sizes('12px', '14px')};
+  ${fonts.sizes('12px', '20px')};
   font-weight: ${fonts.weight.semibold};
   margin: 0 ${spacing.small};
   height: ${spacing.normal};
   display: flex;
   align-items: center;
-  padding: 0 ${spacing.xsmall};
+  padding: 0 ${spacing.spacingUnit / 6}px;
 `;
 
 const renderAdditionalIcon = (isAdditional, label) => {

@@ -5,12 +5,6 @@
 }
 
 .c-content-type-result {
-  &__no-hit {
-    color: $text-light-color;
-    margin: 0;
-    font-style: italic;
-  }
-
   &--subject-material {
     a:hover, a:focus {
       background: $subject-material-light;

@@ -73,7 +73,7 @@ const messages = {
       contentTypeResultShowLessLabel: 'Se færre resultater',
       allResultButtonText: 'Vis alle søketreff',
       searchResultHeading: 'Forslag:',
-      contentTypeResultNoHit: 'Ingen treff',
+      contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
@@ -155,7 +155,7 @@ const messages = {
       'Vi jobber stadig med å forbedre oss! Har du kommentarer til søket, blir vi glad om du legger dem inn i «spør NDLA» nede i høyre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
-    searchAllInfo: 'Se treff på søkesiden',
+    searchAllInfo: 'Se treff alle på søk',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {

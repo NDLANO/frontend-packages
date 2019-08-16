@@ -2,20 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
+import Button from '@ndla/button';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { Additional } from '@ndla/icons/common';
+import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
 
 import SafeLink from '../common/SafeLink';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultShape } from '../shapes';
-
-const classes = BEMHelper({
-  prefix: 'c-',
-  name: 'content-type-result',
-});
 
 export const highlightedCSS = css`
   background: ${colors.brand.light};
@@ -24,6 +19,17 @@ export const highlightedCSS = css`
   small {
     color: ${colors.text.primary} !important;
   }
+`;
+
+const StyledNoHit = styled.p`
+  color: ${colors.text.light};
+  margin: 0;
+  font-style: italic;
+  ${fonts.sizes(16, 1.1)};
+`;
+
+const showAllButtonCss = css`
+  margin-left: -${spacing.xsmall};
 `;
 
 const tooltipCss = css`
@@ -68,6 +74,9 @@ const StyledUL = styled.ul`
       flex-grow: 1;
       align-items: center;
       padding: ${spacing.xsmall} ${spacing.small};
+      strong {
+        font-weight: ${fonts.weight.semibold};
+      }
       small {
         color: ${colors.text.light};
         padding-left: ${spacing.xsmall};
@@ -217,21 +226,22 @@ const ContentTypeResult = ({
             );
           })}
           {defaultCount && totalCount > defaultCount && (
-            <li key="showAll" {...classes('show-all')}>
-              <button
-                ref={showAllRef}
-                type="button"
+            <li ref={showAllRef} key="showAll">
+              <Button
+                ghostPill
+                css={showAllButtonCss}
                 onClick={() => toggleShowAll(!showAll)
               }>
                 {showAll
                   ? messages.showLessResultLabel
                   : messages.allResultLabel}
-              </button>
+                {showAll ? <ChevronUp /> : <ChevronDown />}
+              </Button>
             </li>
           )}
         </StyledUL>
       ) : (
-        <p {...classes('no-hit')}>{messages.noHit}</p>
+        <StyledNoHit>{messages.noHit}</StyledNoHit>
       )}
     </StyledWrapper>
   );

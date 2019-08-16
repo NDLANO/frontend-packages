@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+/*
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+ import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
-import BEMHelper from 'react-bem-helper';
 import { spacing, colors, misc, fonts, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
-import { Spinner } from '@ndla/editor';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
@@ -13,7 +18,17 @@ import SafeLink from '../common/SafeLink';
 import ContentTypeResult, { highlightedCSS } from './ContentTypeResult';
 import { ContentTypeResultType, Resource } from '../types';
 
-const classes = new BEMHelper('c-search-field');
+const GO_TO_SEARCHPAGE = 'GO_TO_SEARCHPAGE';
+
+const StyledNoHits = styled.div`
+  ${fonts.sizes(16, 1.1)};
+  color: ${colors.text.primary};
+`;
+
+const StyledHeader = styled.h1`
+  ${fonts.sizes('18px', '24px')};
+  margin: 0 0 ${spacing.normal} 0;
+`;
 
 const StyledAside = styled.aside`
   ${fonts.sizes('16px', '22px')};
@@ -34,13 +49,7 @@ const StyledAside = styled.aside`
     transform: translateY(6px);
   }
   ${mq.range({ until: breakpoints.tablet })} {
-    padding-right: ${spacing.normal};
-    svg {
-      display: none;
-    }
-    span {
-      padding: 0;
-    }
+    display: none;
   }
 `;
 
@@ -81,6 +90,13 @@ const StyledSearchResultsWrapper = styled.section`
   top: 58px;
   border-bottom-left-radius: ${misc.borderRadius};
   border-bottom-right-radius: ${misc.borderRadius};
+  ${mq.range({ until: breakpoints.tablet })} {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 100px;
+  }
 `;
 
 const StyledScrollableContent = styled.div`
@@ -89,10 +105,19 @@ const StyledScrollableContent = styled.div`
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   padding: ${spacing.large};
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
+    max-height: calc(100vh - 200px);
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
+    max-height: calc(100vh - 100px);
+  }
 `;
 
 const StyledFooter = styled.div`
-  display: flex;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
   flex-direction: row-reverse;
   align-items: center;
   background: ${colors.brand.greyLightest};
@@ -130,6 +155,7 @@ type Props = {
   infoText: string;
   ignoreContentTypeBadge: boolean;
   searchString: string;
+  loading: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -143,7 +169,7 @@ const findPathForKeyboardNavigation = (
     return current;
   }
   let highlightPath:string = '';
-  if (current !== '') {
+  if (current !== '' && current !== GO_TO_SEARCHPAGE) {
     result.forEach((resultBlock, blockIndex) => {
       resultBlock.resources.forEach((resource, resourceIndex) => {
         if (resource.path === current) {
@@ -159,7 +185,8 @@ const findPathForKeyboardNavigation = (
                 if (currentBlock < resultsContainingPaths.length - 1) {
                   currentBlock += 1;
                 } else {
-                  currentBlock = 0;
+                  highlightPath = GO_TO_SEARCHPAGE;
+                  break;
                 }
                 if (resultsContainingPaths[currentBlock] !== '') {
                   highlightPath = resultsContainingPaths[currentBlock];
@@ -175,7 +202,8 @@ const findPathForKeyboardNavigation = (
                 if (currentBlock > 0) {
                   currentBlock -= 1;
                 } else {
-                  currentBlock = result.length - 1;
+                  highlightPath = GO_TO_SEARCHPAGE;
+                  break;
                 }
                 if (resultsContainingPaths[currentBlock] !== '') {
                   // Get last visible LI with an A tag.
@@ -191,8 +219,15 @@ const findPathForKeyboardNavigation = (
         }
       });
     });
+  } else if (direction === 1) {
+    if (current === '') {
+      highlightPath = GO_TO_SEARCHPAGE;
+    } else {
+      highlightPath = resultsContainingPaths.find(path => path !== '') || '';
+    }
   } else {
-    highlightPath = resultsContainingPaths.find(path => path !== '') || '';
+    // go to last link..
+    highlightPath = resultsContainingPaths.reverse().find(path => path !== '') || '';
   }
   return highlightPath;
 };
@@ -206,9 +241,11 @@ const SearchResultSleeve: React.FC<Props> = ({
   infoText,
   ignoreContentTypeBadge,
   searchString,
+  loading,
   t,
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const searchAllRef = useRef<HTMLDivElement>(null);
   const [keyboardPathNavigation, setKeyNavigation] = useState('');
   const usePathFromFocus = (): string | null => {
     // Check if has focus on an element
@@ -257,7 +294,10 @@ const SearchResultSleeve: React.FC<Props> = ({
     };
   }, [result, contentRef]);
   useEffect(() => {
-    const highlightedElement = contentRef.current && contentRef.current.querySelector('[data-highlighted="true"]');
+    const highlightedElement = keyboardPathNavigation === GO_TO_SEARCHPAGE ?
+      searchAllRef.current :
+      contentRef.current && contentRef.current.querySelector('[data-highlighted="true"]');
+
     if (highlightedElement) {
       highlightedElement.scrollIntoView({
         behavior: 'smooth',
@@ -269,9 +309,9 @@ const SearchResultSleeve: React.FC<Props> = ({
     <StyledSearchResultsWrapper ref={contentRef}>
       <StyledScrollableContent>
         {!hideSleeveHeader && (
-          <h1 {...classes('search-result-heading')}>
+          <StyledHeader>
             {t('searchPage.searchField.searchResultHeading')}
-          </h1>
+          </StyledHeader>
         )}
         {infoText && (
           <StyledAside>
@@ -280,9 +320,9 @@ const SearchResultSleeve: React.FC<Props> = ({
           </StyledAside>
         )}
         <div>
-          <StyledSearchAll to={allResultUrl}>
+          <StyledSearchAll css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightedCSS} to={allResultUrl}>
             <SearchIcon className="c-icon--22" />
-            <strong>
+            <strong ref={searchAllRef}>
               {searchString}
             </strong>
             <small>
@@ -311,8 +351,11 @@ const SearchResultSleeve: React.FC<Props> = ({
               }}
             />
           ))}
-          {result.length === 0 &&
-            t('searchPage.searchField.contentTypeResultNoHit')}
+          {result.length === 0 && !loading &&
+            <StyledNoHits>
+              {t('searchPage.searchField.contentTypeResultNoHit')}
+            </StyledNoHits>
+          }
         </div>
       </StyledScrollableContent>
       <StyledFooter>

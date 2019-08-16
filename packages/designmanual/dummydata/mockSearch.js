@@ -187,11 +187,11 @@ export const contentTypeResults = [
     },
     resources: [
       {
-        path: '#1',
+        path: '#a1',
         name: 'Mediemakt',
       },
       {
-        path: '#2',
+        path: '#a2',
         name: 'Media som den fjerde statsmakt',
       },
     ],
@@ -206,63 +206,63 @@ export const contentTypeResults = [
     },
     resources: [
       {
-        path: '#1',
+        path: '#b1',
         name: 'Hva er makt?',
       },
       {
-        path: '#2',
+        path: '#b2',
         name: 'Maktfordelingsprinsippet',
         additional: true,
       },
       {
-        path: '#3',
+        path: '#b3',
         name: 'Fagstoff 3',
       },
       {
-        path: '#4',
+        path: '#b4',
         name: 'Fagstoff 4',
         additional: true,
       },
       {
-        path: '#5',
+        path: '#b5',
         name: 'Fagstoff 5',
       },
       {
-        path: '#6',
+        path: '#b6',
         name: 'Fagstoff 6',
       },
       {
-        path: '#7',
+        path: '#b7',
         name: 'Fagstoff 7',
         additional: true,
       },
       {
-        path: '#8',
+        path: '#b8',
         name: 'Fagstoff 8',
       },
       {
-        path: '#9',
+        path: '#b9',
         name: 'Fagstoff 9',
       },
       {
-        path: '#10',
+        path: '#b10',
         name: 'Fagstoff 10',
         additional: true,
       },
       {
-        path: '#11',
+        path: '#b11',
         name: 'Fagstoff 11',
       },
       {
-        path: '#12',
+        path: '#b12',
         name: 'Fagstoff 12',
       },
       {
-        path: '#13',
+        path: '#b13',
         name: 'Fagstoff 13',
       },
       {
-        path: '#14',
+        path: '#b14',
         name: 'Fagstoff 14',
       },
     ],

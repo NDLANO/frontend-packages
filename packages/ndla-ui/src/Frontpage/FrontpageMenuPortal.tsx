@@ -69,8 +69,8 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
             : animations.durations.normal};
         ${mq.range({ from: breakpoints.tablet })} {
           animation-duration: ${props.animationDirection === 'in'
-              ? animations.durations.normal
-              : animations.durations.fast};
+              ? animations.durations.slow
+              : animations.durations.normal};
         }
         animation-fill-mode: forwards;
         @keyframes ${props.animationNameIn} {
@@ -173,6 +173,9 @@ const ScrollableContent = styled.div<ie11Props>`
   animation-timing-function: ease;
   > div {
     width: 100%;
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      padding-top: ${spacing.large};
+    }
   }
 `;
 

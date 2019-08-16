@@ -77,6 +77,14 @@ const StyledButton = styled.button`
   background: none;
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
   &:before {
     content: '';
     display: block;
@@ -174,7 +182,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
 
   const closeMenu = () => {
     setState(prevState => {
-      return { ...prevState, animationDirection: 'out', menuIsOpen: false };
+      return { ...prevState, animationDirection: 'out' };
     });
     noScroll(false, 'frontpagePortal');
   };
@@ -205,7 +213,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   };
 
   const isIE11 = (isIE && parseInt(browserVersion) < 12);
-
   return (
     <>
       {menuIsOpen && (

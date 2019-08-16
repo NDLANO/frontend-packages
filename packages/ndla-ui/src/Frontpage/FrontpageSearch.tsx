@@ -44,6 +44,11 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
     padding: ${spacing.large};
     bottom: -81px;
   }
+  ${mq.range({ until: breakpoints.tablet})} {
+    .c-search-field__input-wrapper {
+      padding: 0;
+    }
+  }
   form {
     width: 100%;
     > div {
@@ -148,6 +153,17 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
 }) => {
   const SearchFieldRef = React.createRef<HTMLDivElement>();
   useEffect(() => {
+    const onKeyEsc = (e: KeyboardEvent) => {
+      if (e.code === 'Escape') {
+        onSearchDeactiveFocusTrap();
+      }
+    }
+    window.addEventListener('keydown', onKeyEsc);
+    return () => {
+      window.removeEventListener('keydown', onKeyEsc);
+    };
+  }, []);
+  useEffect(() => {
     if (inputHasFocus && SearchFieldRef.current) {
       const inputField = SearchFieldRef.current.getElementsByTagName(
         'input',
@@ -200,6 +216,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                 />
                 {searchFieldValue !== '' && (
                   <SearchResultSleeve
+                    loading={loading}
                     ignoreContentTypeBadge
                     result={searchResult || []}
                     searchString={searchFieldValue}

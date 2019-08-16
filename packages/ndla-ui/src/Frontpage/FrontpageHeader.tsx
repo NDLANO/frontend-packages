@@ -40,7 +40,7 @@ const StyledHeader = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  max-width: 1150px;
+  max-width: 1024px;
   ${mq.range({ until: breakpoints.tablet })} {
     align-items: flex-end;
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px;

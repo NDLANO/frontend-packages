@@ -99,13 +99,11 @@ class FrontpageExample extends Component {
                       path: '#f1',
                       subject: 'Yrkesfag',
                       name: 'Design og håndverk',
-                      subName: 'Vg3',
                     },
                     {
                       path: '#f2',
                       subject: 'Yrkesfag',
                       name: 'Helsearbeiderfag',
-                      subName: 'Vg1',
                     },
                     {
                       path: '#f3',
@@ -127,6 +125,14 @@ class FrontpageExample extends Component {
                       path: '#e1',
                       subject: 'Samfunnsfag',
                       name: 'Politikk og demokrati',
+                      resourceTypes: [
+                        {
+                          name: 'Kildematerial',
+                        },
+                        {
+                          name: 'Kortfilm',
+                        },
+                      ],
                     },
                     {
                       path: '#e2',
@@ -153,70 +159,74 @@ class FrontpageExample extends Component {
                       path: '#1',
                       subject: 'Samfunnsfag',
                       name: 'Samfunnskontrakten: Å bli voksen',
-                      subName: 'Fagstoff',
                     },
                     {
                       path: '#2',
                       subject: 'Samfunnsfag',
                       name: 'Ulike metoder',
-                      subName: 'Fagstoff',
+                      resourceTypes: [
+                        {
+                          name: 'Fagstoff',
+                        },
+                      ],
                     },
                     {
                       path: '#3',
                       subject: 'Samfunnsfag',
                       name: 'Dette er NAV',
-                      subName: 'Fagstoff',
+                      resourceTypes: [
+                        {
+                          name: 'Oppgaver og aktiviteter',
+                        },
+                      ],
                     },
                     {
                       path: '#4',
                       subject: 'Samfunnsfag',
                       name: 'Oppsummeringsoppgave, tema, Urfolk',
-                      subName: 'Oppgaver og aktiviteter',
+                      resourceTypes: [
+                        {
+                          name: 'Oppgaver og aktiviteter',
+                        },
+                      ],
                       additional: true,
                     },
                     {
                       path: '#5',
                       subject: 'Design og håndverk Vg1',
                       name: 'Utvilking av ny design',
-                      subName: 'Fagstoff',
                     },
                     {
                       path: '#6',
                       subject: 'Design og håndverk Vg1',
                       name: 'Presentasjonsteknikk - demonstrasjon',
-                      subName: 'Oppgaver og aktiviteter',
                     },
                     {
                       path: '#7',
                       subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                       additional: true,
                     },
                     {
                       path: '#8',
                       subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                     },
                     {
                       path: '#9',
                       subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                     },
                     {
                       path: '#10',
                       subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                       additional: true,
                     },
                     {
                       path: '#11',
                       subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                     },
                   ],
                 },
@@ -237,7 +247,7 @@ class FrontpageExample extends Component {
             categories={categories}
             linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
           />
-          <OneColumn wide extraPadding>
+          <OneColumn extraPadding>
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>

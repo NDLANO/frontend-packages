@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
-import { colors, spacing, fonts, misc, animation } from '@ndla/core';
+import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { Additional } from '@ndla/icons/common';
 
@@ -17,10 +17,17 @@ const classes = BEMHelper({
   name: 'content-type-result',
 });
 
-const highlightedCSS = css`
-  background: ${colors.brand.primary};
-  color: #fff;
+export const highlightedCSS = css`
+  background: ${colors.brand.light};
+  color: ${colors.brand.dark};
   display: flex !important;
+  small {
+    color: ${colors.text.primary} !important;
+  }
+`;
+
+const tooltipCss = css`
+  padding-left: ${spacing.xsmall};
 `;
 
 const StyledWrapper = styled.section`
@@ -51,12 +58,20 @@ const StyledUL = styled.ul`
   margin: 0;
   li {
     margin: 0 -${spacing.small};
+    ${props => props.animated && css`
+      ${animations.fadeInLeft(animations.durations.slow)};
+    `}
     a {
+      color: ${colors.brand.primary};
       box-shadow: none;
       display: inline-flex;
       flex-grow: 1;
       align-items: center;
       padding: ${spacing.xsmall} ${spacing.small};
+      small {
+        color: ${colors.text.light};
+        padding-left: ${spacing.xsmall};
+      }
       &:focus {
         ${highlightedCSS}
       }
@@ -69,13 +84,13 @@ const StyledUL = styled.ul`
   }
 `;
 
-const StyledSubjectTag = styled.span`
+const StyledTag = styled.span`
   background: ${colors.brand.greyLightest};
   border-radius: ${misc.borderRadius};
   color: ${colors.text.primary};
   ${fonts.sizes('12px', '20px')};
   font-weight: ${fonts.weight.semibold};
-  margin: 0 ${spacing.small};
+  margin: 0 0 0 ${spacing.small};
   height: ${spacing.normal};
   display: flex;
   align-items: center;
@@ -88,7 +103,7 @@ const renderAdditionalIcon = (isAdditional, label) => {
       <Tooltip
         tooltip={label}
         align="top"
-        tooltipContainerClass={classes('additional-icon').className}>
+        css={tooltipCss}>
         <Additional className="c-icon--20" />
       </Tooltip>
     );
@@ -108,9 +123,11 @@ const ContentTypeResult = ({
   messages,
   ignoreContentTypeBadge,
   keyboardPathNavigation,
+  animated,
   t,
 }) => {
   const [showAll, toggleShowAll] = useState(false);
+  const showAllRef = useRef(null);
 
   const results =
     showAdditionalResources || !contentTypeResult.resources
@@ -121,6 +138,15 @@ const ContentTypeResult = ({
 
   const resources =
     showAll || !defaultCount ? results : results.slice(0, defaultCount);
+
+  useEffect(() => {
+    if (showAll && showAllRef.current) {
+      showAllRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
+  }, [showAll]);
 
   return (
     <StyledWrapper>
@@ -138,17 +164,18 @@ const ContentTypeResult = ({
         </h1>
       </StyledHeader>
       {resources.length > 0 ? (
-        <StyledUL>
+        <StyledUL animated={animated}>
           {resources.map(resource => {
-            const { path, name, subject, additional } = resource;
+            const { path, name, resourceTypes, subject, additional } = resource;
             const linkProps = resourceToLinkProps(resource);
             const linkContent = (
               <>
                 {' '}
-                <span>
-                  <strong>{name}</strong>
-                </span>
-                {subject && <StyledSubjectTag>{subject}</StyledSubjectTag>}
+                <strong>{name}</strong>
+                {subject && <small>{subject}</small>}
+                {resourceTypes && (
+                  resourceTypes.map(type => <StyledTag key={type.name}>{type.name}</StyledTag>)
+                )}
               </>
             );
             if (linkProps && linkProps.href) {
@@ -191,7 +218,11 @@ const ContentTypeResult = ({
           })}
           {defaultCount && totalCount > defaultCount && (
             <li key="showAll" {...classes('show-all')}>
-              <button type="button" onClick={() => toggleShowAll(!showAll)}>
+              <button
+                ref={showAllRef}
+                type="button"
+                onClick={() => toggleShowAll(!showAll)
+              }>
                 {showAll
                   ? messages.showLessResultLabel
                   : messages.allResultLabel}
@@ -213,6 +244,7 @@ ContentTypeResult.propTypes = {
   ignoreContentTypeBadge: PropTypes.bool,
   resourceToLinkProps: PropTypes.func.isRequired,
   showAdditionalResources: PropTypes.bool,
+  animated: PropTypes.bool,
   keyboardPathNavigation: PropTypes.string,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({

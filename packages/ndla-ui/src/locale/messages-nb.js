@@ -155,6 +155,7 @@ const messages = {
       'Vi jobber stadig med å forbedre oss! Har du kommentarer til søket, blir vi glad om du legger dem inn i «spør NDLA» nede i høyre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
+    searchAllInfo: 'Se treff på søkesiden',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {

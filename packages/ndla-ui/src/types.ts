@@ -7,11 +7,15 @@ export type Messages = {
   closeSearchLabel: string;
 };
 
+type ResourceTypes = {
+  name: string;
+};
+
 export type Resource = {
   path: string;
-  boldName: string;
   name: string;
-  subName: string;
+  subject?: string;
+  resourceTypes?: Array<ResourceTypes>;
 };
 
 export type SearchResult = {

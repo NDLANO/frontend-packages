@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
 // @ts-ignore
+import Tooltip from '@ndla/tooltip';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
@@ -105,7 +107,7 @@ const StyledCloseButton = styled.button`
 
 const StyledSearchBackdrop = styled.div`
   position: fixed;
-  z-index: 9000;
+  z-index: 0;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -194,6 +196,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                   onChange={onSearchFieldChange}
                   placeholder={searchFieldPlaceholder}
                   messages={messages}
+                  loading={loading}
                 />
                 {searchFieldValue !== '' && (
                   <SearchResultSleeve
@@ -203,18 +206,19 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                     allResultUrl={allResultUrl}
                     resourceToLinkProps={() => {}}
                     hideSleeveHeader
-                    loading={loading}
                     infoText={t('welcomePage.searchDisclaimer')}
                   />
                 )}
               </form>
-              <StyledCloseButton
-                type="button"
-                onClick={onSearchDeactiveFocusTrap}
-                onBlur={onSearchDeactiveFocusTrap}
-                aria-label={messages.closeSearchLabel}>
-                <Cross />
-              </StyledCloseButton>
+              <Tooltip tooltip={t('welcomePage.closeSearch')}>
+                <StyledCloseButton
+                  type="button"
+                  onClick={onSearchDeactiveFocusTrap}
+                  onBlur={onSearchDeactiveFocusTrap}
+                  aria-label={messages.closeSearchLabel}>
+                  <Cross />
+                </StyledCloseButton>
+              </Tooltip>
             </StyledSearchField>
           </>
         )}

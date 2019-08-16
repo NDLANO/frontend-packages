@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
+import { Spinner } from '@ndla/editor';
 
 import ActiveFilters from './ActiveFilters';
 
@@ -51,10 +52,19 @@ class SearchField extends Component {
       t,
       onFocus,
       onBlur,
+      loading,
     } = this.props;
 
     return (
       <div {...classes('input-wrapper')}>
+        {loading && (
+          <div id="fakeInput">
+            <span>{value}</span>
+            <div>
+              <Spinner size="normal" />
+            </div>
+          </div>
+        )}
         <input
           ref={this.inputRef}
           title={messages.searchFieldTitle}
@@ -127,6 +137,7 @@ SearchField.propTypes = {
   infoText: PropTypes.node,
   ignoreContentTypeBadge: PropTypes.bool,
   onClick: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 export default injectT(SearchField);

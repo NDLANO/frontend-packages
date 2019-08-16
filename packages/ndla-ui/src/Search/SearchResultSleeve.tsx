@@ -1,23 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import BEMHelper from 'react-bem-helper';
-import { css } from '@emotion/core';
-import { spacing, colors, misc, fonts } from '@ndla/core';
+import { spacing, colors, misc, fonts, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { Spinner } from '@ndla/editor';
 // @ts-ignore
-import { StyledButton } from '@ndla/button';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import { Wrench, Esc, KeyboardReturn, ChevronUp, ChevronDown } from '@ndla/icons/common';
+import { Search as SearchIcon, Wrench, Esc, KeyboardReturn, ChevronUp, ChevronDown } from '@ndla/icons/common';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
-import ContentTypeResult from './ContentTypeResult';
+import ContentTypeResult, { highlightedCSS } from './ContentTypeResult';
 import { ContentTypeResultType, Resource } from '../types';
 
-const AnchorButton = StyledButton.withComponent(SafeLink);
 const classes = new BEMHelper('c-search-field');
+
+const StyledAside = styled.aside`
+  ${fonts.sizes('16px', '22px')};
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  color: ${colors.text.primary};
+  padding: ${spacing.normal} ${spacing.large} ${spacing.normal} ${spacing.normal};
+  background: ${colors.support.yellowLight};
+  border-radius: ${misc.borderRadius};
+  span {
+    display: block;
+    max-width: 700px;
+    padding-left: ${spacing.small};
+    flex: 1;
+  }
+  svg {
+    transform: translateY(6px);
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    padding-right: ${spacing.normal};
+    svg {
+      display: none;
+    }
+    span {
+      padding: 0;
+    }
+  }
+`;
+
+const StyledSearchAll = styled(SafeLink)`
+  box-shadow: none;
+  border: 0;
+  margin: ${spacing.normal} -${spacing.small};
+  background: transparent;
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: ${spacing.xsmall} ${spacing.small};
+  line-height: 1.7rem;
+  color: ${colors.brand.primary};
+  strong {
+    margin-left: ${spacing.xsmall};
+  }
+  &:focus {
+    ${highlightedCSS}
+    width: 100%;
+  }
+  &:hover {
+    strong {
+      box-shadow: ${misc.textLinkBoxShadow};
+    }
+  }
+  small {
+    color: ${colors.text.light};
+    padding-left: ${spacing.xsmall};
+  }
+`;
 
 const StyledSearchResultsWrapper = styled.section`
   background: #fff;
@@ -30,7 +84,7 @@ const StyledSearchResultsWrapper = styled.section`
 `;
 
 const StyledScrollableContent = styled.div`
-  max-height: calc(100vh - 240px);
+  max-height: calc(100vh - 260px);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
@@ -45,7 +99,7 @@ const StyledFooter = styled.div`
   border-top: 1px solid ${colors.brand.greyLight};
   border-bottom-left-radius: ${misc.borderRadius};
   border-bottom-right-radius: ${misc.borderRadius};
-  padding: ${spacing.small} ${spacing.large};
+  padding: ${spacing.xsmall} ${spacing.large};
 `;
 
 const StyledInstructions = styled.div`
@@ -75,8 +129,8 @@ type Props = {
   hideSleeveHeader: boolean;
   infoText: string;
   ignoreContentTypeBadge: boolean;
-  loading: boolean;
-  t: (v: string) => {};
+  searchString: string;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const findPathForKeyboardNavigation = (
@@ -151,10 +205,10 @@ const SearchResultSleeve: React.FC<Props> = ({
   hideSleeveHeader,
   infoText,
   ignoreContentTypeBadge,
-  loading,
+  searchString,
   t,
 }) => {
-  const contentRef = React.createRef<HTMLDivElement>();
+  const contentRef = useRef<HTMLDivElement>(null);
   const [keyboardPathNavigation, setKeyNavigation] = useState('');
   const usePathFromFocus = (): string | null => {
     // Check if has focus on an element
@@ -220,15 +274,24 @@ const SearchResultSleeve: React.FC<Props> = ({
           </h1>
         )}
         {infoText && (
-          <aside {...classes('search-result-infotext')}>
+          <StyledAside>
             <Wrench className="c-icon--22" />
             <span>{infoText}</span>
-          </aside>
+          </StyledAside>
         )}
-        {loading && <Spinner size="normal" />}
         <div>
+          <StyledSearchAll to={allResultUrl}>
+            <SearchIcon className="c-icon--22" />
+            <strong>
+              {searchString}
+            </strong>
+            <small>
+              {t('welcomePage.searchAllInfo')}
+            </small>
+          </StyledSearchAll>
           {result.map((contentTypeResult: ContentTypeResultType) => (
             <ContentTypeResult
+              animated
               ignoreContentTypeBadge={ignoreContentTypeBadge}
               onNavigate={onNavigate}
               contentTypeResult={contentTypeResult}
@@ -253,13 +316,6 @@ const SearchResultSleeve: React.FC<Props> = ({
         </div>
       </StyledScrollableContent>
       <StyledFooter>
-        <AnchorButton
-          to={allResultUrl}
-          css={css`
-            box-shadow: none;
-          `}>
-          {t('searchPage.searchField.allResultButtonText')}
-        </AnchorButton>
         <StyledInstructions>
           <ChevronUp />
           <ChevronDown />

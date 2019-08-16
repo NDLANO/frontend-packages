@@ -17,6 +17,11 @@ const classes = BEMHelper({
   name: 'content-type-result',
 });
 
+const highlightedCSS = css`
+  background: ${colors.brand.primary};
+  color: #fff;
+`;
+
 const StyledWrapper = styled.section`
   padding-bottom: ${spacing.normal};
   padding-top: ${spacing.normal};
@@ -51,6 +56,9 @@ const StyledUL = styled.ul`
       flex-grow: 1;
       align-items: center;
       padding: ${spacing.xsmall} ${spacing.small};
+      &:focus {
+        ${highlightedCSS}
+      }
     }
   }
 `;
@@ -66,11 +74,6 @@ const StyledSubjectTag = styled.span`
   display: flex;
   align-items: center;
   padding: 0 ${spacing.xsmall};
-`;
-
-const highlightedCSS = css`
-  background: ${colors.brand.primary};
-  color: #fff;
 `;
 
 const renderAdditionalIcon = (isAdditional, label) => {

@@ -156,27 +156,41 @@ const SearchResultSleeve: React.FC<Props> = ({
 }) => {
   const contentRef = React.createRef<HTMLDivElement>();
   const [keyboardPathNavigation, setKeyNavigation] = useState('');
+  const usePathFromFocus = (): string | null => {
+    // Check if has focus on an element
+    const focusedElementType = document.activeElement;
+    if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
+      // Use path form focused element.
+      focusedElementType.blur();
+      return focusedElementType.getAttribute('href');
+    }
+    return null;
+  }
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
+      console.log(e.code);
       if (e.code === 'ArrowDown') {
         setKeyNavigation(keyboardPathNavigation => {
-          return findPathForKeyboardNavigation(result, keyboardPathNavigation, contentRef.current, 1);
+          const focusPath = usePathFromFocus();
+          return findPathForKeyboardNavigation(result, focusPath ? focusPath : keyboardPathNavigation, contentRef.current, 1);
         });
         e.stopPropagation();
         e.preventDefault();
       } else if (e.code === 'ArrowUp') {
         setKeyNavigation(keyboardPathNavigation => {
-          return findPathForKeyboardNavigation(result, keyboardPathNavigation, contentRef.current, -1);
+          const focusPath = usePathFromFocus();
+          return findPathForKeyboardNavigation(result, focusPath ? focusPath : keyboardPathNavigation, contentRef.current, -1);
         });
         e.stopPropagation();
         e.preventDefault();
       } else if (e.code === 'Enter') {
-        const focusedElementType = document.activeElement ? document.activeElement.tagName : '';
-        if (keyboardPathNavigation && focusedElementType !== 'BUTTON' && focusedElementType !== 'A') {
+        if (keyboardPathNavigation) {
           e.stopPropagation();
           e.preventDefault();
           location.href = keyboardPathNavigation;
         }
+      } else if (e.code === 'Tab') {
+        setKeyNavigation('');
       }
     };
     window.addEventListener('keydown', onKeyDownEvent);

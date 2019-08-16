@@ -225,7 +225,7 @@ export const stories = {
       {
         type: 'text',
         content:
-          'OBS! Viss du endrer plassering i taksonomi, vil ikke det gamle emnet slettes viss det har underemner eller ressurser knyttet til seg.',
+          'OBS! Dersom du endrer plassering i taksonomi, vil ikke det gamle emnet slettes om det har underemner eller ressurser knyttet til seg.',
       },
     ],
   },

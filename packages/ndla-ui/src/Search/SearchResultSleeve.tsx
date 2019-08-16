@@ -109,7 +109,7 @@ const StyledScrollableContent = styled.div`
     max-height: calc(100vh - 200px);
   }
   ${mq.range({ until: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.normal} ${spacing.large};
+    padding: 0 ${spacing.normal} ${spacing.large};
     max-height: calc(100vh - 100px);
   }
 `;
@@ -124,7 +124,7 @@ const StyledFooter = styled.div`
   border-top: 1px solid ${colors.brand.greyLight};
   border-bottom-left-radius: ${misc.borderRadius};
   border-bottom-right-radius: ${misc.borderRadius};
-  padding: ${spacing.xsmall} ${spacing.large};
+  padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.large};
 `;
 
 const StyledInstructions = styled.div`

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
-import { colors, spacing, fonts, misc, animations } from '@ndla/core';
+import { colors, spacing, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
 
@@ -80,6 +80,9 @@ const StyledUL = styled.ul`
       small {
         color: ${colors.text.light};
         padding-left: ${spacing.xsmall};
+        ${mq.range({ until: breakpoints.tablet })} {
+          display: none;
+        }
       }
       &:focus {
         ${highlightedCSS}
@@ -104,6 +107,9 @@ const StyledTag = styled.span`
   display: flex;
   align-items: center;
   padding: 0 ${spacing.spacingUnit / 6}px;
+  ${mq.range({ until: breakpoints.desktop })} {
+    display: none;
+  }
 `;
 
 const renderAdditionalIcon = (isAdditional, label) => {

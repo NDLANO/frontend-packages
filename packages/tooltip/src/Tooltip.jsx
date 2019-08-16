@@ -171,7 +171,7 @@ class Tooltip extends Component {
       delay,
       tooltip,
       children,
-      rest
+      rest,
     } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {

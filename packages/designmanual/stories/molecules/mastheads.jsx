@@ -53,50 +53,6 @@ const searchFieldClasses = BEMHelper({
   name: 'search-field',
 });
 
-const SearchButtonView = ({ hideSearchButton, hideOnNarrowScreen }) => {
-  if (hideSearchButton) {
-    return null;
-  }
-  return (
-    <Modal
-      backgroundColor="grey"
-      animation="slide-down"
-      animationDuration={200}
-      size="custom"
-      onClose={() => {
-        this.setState({ value: '' });
-      }}
-      className="c-search-field__overlay-content"
-      activateButton={
-        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen}>
-          Søk
-        </ToggleSearchButton>
-      }>
-      {onClose => {
-        this.closeAllModals[1] = onClose;
-        return (
-          <>
-            <div className="c-search-field__overlay-top" />
-            <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
-              <div {...searchFieldClasses('header-container')}>
-                {this.renderSearchField()}
-                <Button stripped onClick={onClose}>
-                  <Cross className="c-icon--medium" />
-                </Button>
-              </div>
-            </div>
-          </>
-        );
-      }}
-    </Modal>
-  );
-};
-
-SearchButtonView.propTypes = {
-  hideOnNarrowScreen: PropTypes.bool,
-  hideSearchButton: PropTypes.bool,
-};
-
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
     super(props);
@@ -181,6 +137,7 @@ class MastheadWithTopicMenu extends Component {
         size="custom"
         onClose={() => {
           this.setState({ value: '' });
+          this.closeAllModals[1] = null;
         }}
         className="c-search-field__overlay-content"
         activateButton={
@@ -194,7 +151,10 @@ class MastheadWithTopicMenu extends Component {
           this.closeAllModals[1] = onClose;
           return (
             <>
-              <div className="c-search-field__overlay-top" />
+              <div
+                className={`c-search-field__overlay-top${this
+                  .closeAllModals[0] && ` with-backdrop`}`}
+              />
               <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
                 <div {...searchFieldClasses('header-container')}>
                   {this.renderSearchField()}
@@ -235,6 +195,7 @@ class MastheadWithTopicMenu extends Component {
                 expandedTopicId: null,
                 expandedSubtopicsId: [],
               });
+              this.closeAllModals[0] = null;
             }}>
             {onClose => {
               this.closeAllModals[0] = onClose;

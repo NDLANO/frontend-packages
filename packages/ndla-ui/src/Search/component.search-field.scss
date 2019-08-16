@@ -59,6 +59,24 @@ $overlay-height: 136px;
       height: $overlay-height;
     }
     box-shadow: 0 0 30px rgba($black, 0.2);
+    &.with-backdrop {
+      &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 136px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+        animation-name: fadeIn;
+        animation-duration: 400ms;
+        animation-delay: 100ms;
+        animation-fill-mode: forwards;
+      }
+    }
   }
 
   @include mq(desktop) {

@@ -4,7 +4,15 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 import Button from '@ndla/button';
-import { colors, spacing, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
+import {
+  colors,
+  spacing,
+  fonts,
+  misc,
+  animations,
+  mq,
+  breakpoints,
+} from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
 
@@ -26,11 +34,13 @@ const StyledNoHit = styled.p`
   margin: 0;
   font-style: italic;
   ${fonts.sizes(16, 1.1)};
-  ${props => props.inMenu && css`
-    ${mq.range({ from: breakpoints.desktop })} {
-      margin-left: ${spacing.spacingUnit * 1.5}px;
-    }
-  `}
+  ${props =>
+    props.inMenu &&
+    css`
+      ${mq.range({ from: breakpoints.desktop })} {
+        margin-left: ${spacing.spacingUnit * 1.5}px;
+      }
+    `}
 `;
 
 const showAllButtonCss = css`
@@ -69,9 +79,11 @@ const StyledUL = styled.ul`
   margin: 0;
   li {
     margin: 0 -${spacing.small};
-    ${props => props.animated && css`
-      ${animations.fadeInLeft(animations.durations.slow)};
-    `}
+    ${props =>
+      props.animated &&
+      css`
+        ${animations.fadeInLeft(animations.durations.slow)};
+      `}
     a {
       color: ${colors.brand.primary};
       box-shadow: none;
@@ -87,35 +99,34 @@ const StyledUL = styled.ul`
         }
       }
       &:focus {
-        ${highlightedCSS}
+        ${highlightedCSS};
       }
-      ${props => props.inMenu ? 
-        css`
-          ${mq.range({ from: breakpoints.desktop })} {
-            margin-left: ${spacing.spacingUnit * 1.5}px;
-          }
-          strong {
-            text-decoration: underline;
-            font-weight: ${fonts.weight.normal};
-          }
-          &:hover {
-            strong {
-              text-decoration: none;
-            }
-          }
-        `
-          :
-        css`
-          strong {
-            font-weight: ${fonts.weight.semibold};
-          }
-          &:hover {
-            strong {
-              box-shadow: ${misc.textLinkBoxShadow};
-            }
-          }
-        `
-      }
+      ${props =>
+        props.inMenu
+          ? css`
+              ${mq.range({ from: breakpoints.desktop })} {
+                margin-left: ${spacing.spacingUnit * 1.5}px;
+              }
+              strong {
+                text-decoration: underline;
+                font-weight: ${fonts.weight.normal};
+              }
+              &:hover {
+                strong {
+                  text-decoration: none;
+                }
+              }
+            `
+          : css`
+              strong {
+                font-weight: ${fonts.weight.semibold};
+              }
+              &:hover {
+                strong {
+                  box-shadow: ${misc.textLinkBoxShadow};
+                }
+              }
+            `}
     }
   }
 `;
@@ -139,10 +150,7 @@ const StyledTag = styled.span`
 const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
     return (
-      <Tooltip
-        tooltip={label}
-        align="top"
-        css={tooltipCss}>
+      <Tooltip tooltip={label} align="top" css={tooltipCss}>
         <Additional className="c-icon--20" />
       </Tooltip>
     );
@@ -204,7 +212,7 @@ const ContentTypeResult = ({
         </h1>
       </StyledHeader>
       {resources.length > 0 ? (
-        <StyledUL animated={animated} inMenu={inMenu}>
+        <StyledUL animated inMenu={inMenu}>
           {resources.map(resource => {
             const { path, name, resourceTypes, subject, additional } = resource;
             const linkProps = resourceToLinkProps(resource);
@@ -213,9 +221,11 @@ const ContentTypeResult = ({
                 {' '}
                 <strong>{name}</strong>
                 {!inMenu && subject && <small>{subject}</small>}
-                {!inMenu && resourceTypes && (
-                  resourceTypes.map(type => <StyledTag key={type.name}>{type.name}</StyledTag>)
-                )}
+                {!inMenu &&
+                  resourceTypes &&
+                  resourceTypes.map(type => (
+                    <StyledTag key={type.name}>{type.name}</StyledTag>
+                  ))}
               </>
             );
             if (linkProps && linkProps.href) {
@@ -261,8 +271,7 @@ const ContentTypeResult = ({
               <Button
                 ghostPill
                 css={showAllButtonCss}
-                onClick={() => toggleShowAll(!showAll)
-              }>
+                onClick={() => toggleShowAll(!showAll)}>
                 {showAll
                   ? messages.showLessResultLabel
                   : messages.allResultLabel}

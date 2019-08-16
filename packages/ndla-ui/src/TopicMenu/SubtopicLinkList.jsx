@@ -200,7 +200,9 @@ class SubtopicLinkList extends Component {
         {hasContentTypeResults && (
           <StyledAside>
             <HeaderWrapper>
-              <StyledHeader>{t('masthead.menu.learningResourcesHeading')}</StyledHeader>
+              <StyledHeader>
+                {t('masthead.menu.learningResourcesHeading')}
+              </StyledHeader>
               {someResourcesAreAdditional && (
                 <Switch
                   id="showAdditionalId"

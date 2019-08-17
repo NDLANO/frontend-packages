@@ -147,18 +147,18 @@ const StyledInstructions = styled.div`
   }
 `;
 
-type Props = {
-  result: Array<ContentTypeResultType>;
-  allResultUrl: string;
-  resourceToLinkProps: (resource: Resource) => string;
-  onNavigate: VoidFunction;
-  infoText: string;
-  ignoreContentTypeBadge: boolean;
-  searchString: string;
-  loading: boolean;
-  frontpage?: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-};
+const usePathFromFocus = (): string | null => {
+  // Check if has focus on an element
+  const focusedElementType = document.activeElement;
+  if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
+    // Use path form focused element.
+    if (focusedElementType instanceof HTMLElement) {
+      focusedElementType.blur();
+    }
+    return focusedElementType.getAttribute('href');
+  }
+  return null;
+}
 
 const findPathForKeyboardNavigation = (
   result: Array<ContentTypeResultType>, current: string, contentRef: HTMLDivElement | null, direction: 1 | -1 | null
@@ -233,6 +233,19 @@ const findPathForKeyboardNavigation = (
   return highlightPath;
 };
 
+type Props = {
+  result: Array<ContentTypeResultType>;
+  allResultUrl: string;
+  resourceToLinkProps: (resource: Resource) => string;
+  onNavigate: VoidFunction;
+  infoText: string;
+  ignoreContentTypeBadge: boolean;
+  searchString: string;
+  loading: boolean;
+  frontpage?: boolean;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+};
+
 const SearchResultSleeve: React.FC<Props> = ({
   result,
   allResultUrl,
@@ -248,18 +261,6 @@ const SearchResultSleeve: React.FC<Props> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
   const [keyboardPathNavigation, setKeyNavigation] = useState('');
-  const usePathFromFocus = (): string | null => {
-    // Check if has focus on an element
-    const focusedElementType = document.activeElement;
-    if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
-      // Use path form focused element.
-      if (focusedElementType instanceof HTMLElement) {
-        focusedElementType.blur();
-      }
-      return focusedElementType.getAttribute('href');
-    }
-    return null;
-  }
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
       if (e.code === 'ArrowDown') {

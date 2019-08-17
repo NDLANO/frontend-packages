@@ -41,9 +41,5 @@ export {
   LearningPathLastStepNavigation,
 } from './LearningPaths';
 
-import ContentTypeResult from './Search/ContentTypeResult';
-import SearchResultSleeve from './Search/SearchResultSleeve';
-export {
-  ContentTypeResult,
-  SearchResultSleeve,
-};
+export { default as ContentTypeResult } from './Search/ContentTypeResult';
+export { default as SearchResultSleeve } from './Search/SearchResultSleeve';

@@ -96,7 +96,7 @@ const StyledSearchResultsWrapper = styled.section<WrapperProps>`
     left: 0;
     right: 0;
     bottom: 0;
-    top: ${props => props.frontpage ? '100px' : '74px'};
+    top: 74px;
   }
 `;
 
@@ -111,7 +111,7 @@ const StyledScrollableContent = styled.div`
   }
   ${mq.range({ until: breakpoints.tablet })} {
     padding: 0 ${spacing.normal} ${spacing.large};
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 74px);
   }
 `;
 

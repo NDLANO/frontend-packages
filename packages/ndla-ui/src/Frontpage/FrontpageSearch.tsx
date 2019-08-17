@@ -83,7 +83,7 @@ const StyledSearchField = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    padding: ${spacing.normal};
+    padding: ${spacing.small} ${spacing.xsmall} ${spacing.small} ${spacing.normal};
     z-index: 9001;
     background: ${colors.brand.accent};
     .c-search-field__search-result {

@@ -40,3 +40,10 @@ export {
   LearningPathStickySibling,
   LearningPathLastStepNavigation,
 } from './LearningPaths';
+
+import ContentTypeResult from './Search/ContentTypeResult';
+import SearchResultSleeve from './Search/SearchResultSleeve';
+export {
+  ContentTypeResult,
+  SearchResultSleeve,
+};

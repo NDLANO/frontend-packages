@@ -26,9 +26,13 @@ export type SearchResult = {
 
 export interface ContentTypeResultType {
   title: string;
+  contentType?: string;
   resources: Array<{
     path: string;
     name: string;
+    subject?: string;
+    additional?: boolean;
+    resourceTypes?: Array<ResourceTypes>;
   }>;
 }
 

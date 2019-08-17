@@ -18,7 +18,7 @@ import { mq, breakpoints, fonts, spacing } from '@ndla/core';
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-import { ContentTypeResult } from '../Search';
+import ContentTypeResult from '../Search/ContentTypeResult';
 import { renderAdditionalIcon } from './TopicMenu';
 
 const switchLarge = css`

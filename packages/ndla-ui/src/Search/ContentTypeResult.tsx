@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+// @ts-ignore
 import { injectT } from '@ndla/i18n';
+// @ts-ignore
 import Button from '@ndla/button';
 import {
   colors,
@@ -13,12 +14,14 @@ import {
   mq,
   breakpoints,
 } from '@ndla/core';
+// @ts-ignore
 import Tooltip from '@ndla/tooltip';
+// @ts-ignore
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
-
 import SafeLink from '../common/SafeLink';
+// @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
-import { ContentTypeResultShape } from '../shapes';
+import { ContentTypeResultType, Resource } from '../types';
 
 export const highlightedCSS = css`
   background: ${colors.brand.light};
@@ -29,7 +32,11 @@ export const highlightedCSS = css`
   }
 `;
 
-const StyledNoHit = styled.p`
+type inMenuProps = {
+  inMenu?: boolean;
+}
+
+const StyledNoHit = styled.p<inMenuProps>`
   color: ${colors.text.light};
   margin: 0;
   font-style: italic;
@@ -73,7 +80,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const StyledUL = styled.ul`
+const StyledUL = styled.ul<inMenuProps>`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -143,7 +150,7 @@ const StyledTag = styled.span`
   }
 `;
 
-const renderAdditionalIcon = (isAdditional, label) => {
+const renderAdditionalIcon = (label: string, isAdditional?: boolean) : React.ReactElement | null => {
   if (isAdditional && label) {
     return (
       <Tooltip tooltip={label} align="top" css={tooltipCss}>
@@ -157,7 +164,24 @@ const renderAdditionalIcon = (isAdditional, label) => {
   return null;
 };
 
-const ContentTypeResult = ({
+type Props = {
+  contentTypeResult: ContentTypeResultType;
+  onNavigate: VoidFunction;
+  defaultCount?: number,
+  resourceToLinkProps: (resource: Resource) => string;
+  showAdditionalResources?: boolean;
+  messages: {
+    allResultLabel?: string;
+    showLessResultLabel?: string;
+    noHit: string;
+  },
+  ignoreContentTypeBadge: boolean;
+  keyboardPathNavigation: string;
+  inMenu?: boolean,
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+}
+
+const ContentTypeResult: React.FC<Props> = ({
   contentTypeResult,
   onNavigate,
   defaultCount,
@@ -254,8 +278,8 @@ const ContentTypeResult = ({
                   }}>
                   {linkContent}
                   {renderAdditionalIcon(
-                    additional,
                     t('resource.additionalTooltip'),
+                    additional,
                   )}
                 </SafeLink>
               </li>
@@ -280,27 +304,6 @@ const ContentTypeResult = ({
       )}
     </StyledWrapper>
   );
-};
-
-ContentTypeResult.propTypes = {
-  defaultCount: PropTypes.number,
-  onNavigate: PropTypes.func,
-  contentTypeResult: ContentTypeResultShape.isRequired,
-  ignoreContentTypeBadge: PropTypes.bool,
-  resourceToLinkProps: PropTypes.func.isRequired,
-  showAdditionalResources: PropTypes.bool,
-  keyboardPathNavigation: PropTypes.string,
-  inMenu: PropTypes.bool,
-  t: PropTypes.func.isRequired,
-  messages: PropTypes.shape({
-    allResultLabel: PropTypes.string,
-    showLessResultLabel: PropTypes.string,
-    noHit: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-ContentTypeResult.defaultProps = {
-  showAdditionalResources: false,
 };
 
 export default injectT(ContentTypeResult);

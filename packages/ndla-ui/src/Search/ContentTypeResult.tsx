@@ -196,7 +196,7 @@ const ContentTypeResult: React.FC<Props> = ({
   t,
 }) => {
   const [showAll, toggleShowAll] = useState(false);
-  const showAllRef = useRef<HTMLDivElement>(null);
+  const showAllRef = useRef<HTMLLIElement>(null);
 
   const results =
     showAdditionalResources || !contentTypeResult.resources

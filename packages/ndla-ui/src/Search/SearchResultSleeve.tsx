@@ -147,19 +147,6 @@ const StyledInstructions = styled.div`
   }
 `;
 
-const usePathFromFocus = (): string | null => {
-  // Check if has focus on an element
-  const focusedElementType = document.activeElement;
-  if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
-    // Use path form focused element.
-    if (focusedElementType instanceof HTMLElement) {
-      focusedElementType.blur();
-    }
-    return focusedElementType.getAttribute('href');
-  }
-  return null;
-}
-
 const findPathForKeyboardNavigation = (
   result: Array<ContentTypeResultType>, current: string, contentRef: HTMLDivElement | null, direction: 1 | -1 | null
 ): string => {
@@ -261,17 +248,29 @@ const SearchResultSleeve: React.FC<Props> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
   const [keyboardPathNavigation, setKeyNavigation] = useState('');
+  const pathFromFocus = (): string | null => {
+    // Check if has focus on an element
+    const focusedElementType = document.activeElement;
+    if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
+      // Use path form focused element.
+      if (focusedElementType instanceof HTMLElement) {
+        focusedElementType.blur();
+      }
+      return focusedElementType.getAttribute('href');
+    }
+    return null;
+  }
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
       if (e.code === 'ArrowDown') {
-        const focusPath = usePathFromFocus();
+        const focusPath = pathFromFocus();
         setKeyNavigation(keyboardPathNavigation => {
           return findPathForKeyboardNavigation(result, focusPath ? focusPath : keyboardPathNavigation, contentRef.current, 1);
         });
         e.stopPropagation();
         e.preventDefault();
       } else if (e.code === 'ArrowUp') {
-        const focusPath = usePathFromFocus();
+        const focusPath = pathFromFocus();
         setKeyNavigation(keyboardPathNavigation => {
           return findPathForKeyboardNavigation(result, focusPath ? focusPath : keyboardPathNavigation, contentRef.current, -1);
         });

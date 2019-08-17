@@ -81,6 +81,7 @@ class FrontpageExample extends Component {
             onSearch={e => {
               e.preventDefault();
             }}
+            resourceToLinkProps={res => ({ to: res.path })}
             allResultUrl={`search?query=${searchFieldValue}`}
             onSearchInputFocus={this.onSearchInputFocus}
             onSearchDeactiveFocusTrap={this.onSearchDeactiveFocusTrap}

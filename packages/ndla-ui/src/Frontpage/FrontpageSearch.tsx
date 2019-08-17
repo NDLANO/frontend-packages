@@ -15,7 +15,7 @@ import { SearchField } from '../Search';
 
 // @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
-import { ContentTypeResultType } from '../types';
+import { ContentTypeResultType, Resource } from '../types';
 const classes = new BEMHelper('c-search-field');
 
 type StyledSearchFieldWrapperProps = {
@@ -128,6 +128,9 @@ type Props = {
   searchFieldPlaceholder: string;
   onSearchDeactiveFocusTrap: VoidFunction;
   onSearchInputFocus: VoidFunction;
+  resourceToLinkProps: (resource: Resource) => {
+    to: string;
+  };
   onSearch: (event: {}) => void;
   messages: { closeSearchLabel: string };
   allResultUrl: string;
@@ -138,6 +141,7 @@ type Props = {
 };
 
 const FrontpageSearch: React.FunctionComponent<Props> = ({
+  resourceToLinkProps,
   inputHasFocus,
   searchFieldValue,
   onSearchFieldChange,
@@ -222,7 +226,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                     result={searchResult || []}
                     searchString={searchFieldValue}
                     allResultUrl={allResultUrl}
-                    resourceToLinkProps={() => {}}
+                    resourceToLinkProps={resourceToLinkProps}
                     infoText={t('welcomePage.searchDisclaimer')}
                   />
                 )}

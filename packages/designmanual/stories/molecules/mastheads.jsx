@@ -118,7 +118,7 @@ class MastheadWithTopicMenu extends Component {
             result={contentTypeResults}
             searchString={this.state.value}
             allResultUrl={'#'}
-            resourceToLinkProps={() => {}}
+            resourceToLinkProps={resource => ({ to: resource.path })}
           />
         )}
       </form>
@@ -230,7 +230,7 @@ class MastheadWithTopicMenu extends Component {
                       filterMenuValues: values,
                     });
                   }}
-                  resourceToLinkProps={() => {}}
+                  resourceToLinkProps={resource => ({ to: resource.path })}
                   expandedTopicId={this.state.expandedTopicId}
                   expandedSubtopicsId={this.state.expandedSubtopicsId}
                   onNavigate={(expandedTopicId, subtopicId, currentIndex) => {

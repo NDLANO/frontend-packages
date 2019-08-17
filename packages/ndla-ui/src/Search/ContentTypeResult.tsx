@@ -168,7 +168,9 @@ type Props = {
   contentTypeResult: ContentTypeResultType;
   onNavigate: VoidFunction;
   defaultCount?: number,
-  resourceToLinkProps: (resource: Resource) => string;
+  resourceToLinkProps: (resource: Resource) => {
+    to: string;
+  };
   showAdditionalResources?: boolean;
   messages: {
     allResultLabel?: string;
@@ -194,7 +196,7 @@ const ContentTypeResult: React.FC<Props> = ({
   t,
 }) => {
   const [showAll, toggleShowAll] = useState(false);
-  const showAllRef = useRef(null);
+  const showAllRef = useRef<HTMLDivElement>(null);
 
   const results =
     showAdditionalResources || !contentTypeResult.resources
@@ -237,7 +239,6 @@ const ContentTypeResult: React.FC<Props> = ({
             const linkProps = resourceToLinkProps(resource);
             const linkContent = (
               <>
-                {' '}
                 <strong>{name}</strong>
                 {!inMenu && subject && <small>{subject}</small>}
                 {!inMenu &&
@@ -247,30 +248,12 @@ const ContentTypeResult: React.FC<Props> = ({
                   ))}
               </>
             );
-            if (linkProps && linkProps.href) {
-              return (
-                <li key={path}>
-                  <a
-                    {...linkProps}
-                    data-highlighted={path === keyboardPathNavigation}
-                    css={path === keyboardPathNavigation && highlightedCSS}>
-                    {linkContent}
-                  </a>
-                </li>
-              );
-            }
-
-            const safeLinkProps =
-              linkProps && linkProps.to
-                ? { ...linkProps }
-                : { to: resource.path };
-
             return (
               <li key={path}>
                 <SafeLink
                   css={path === keyboardPathNavigation && highlightedCSS}
                   data-highlighted={path === keyboardPathNavigation}
-                  {...safeLinkProps}
+                  {...linkProps}
                   onClick={() => {
                     if (onNavigate) {
                       onNavigate();

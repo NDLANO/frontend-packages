@@ -177,14 +177,6 @@ const messages = {
         name: 'Følg oss',
       },
     },
-    aboutNDLA: {
-      heading: 'Om NDLA',
-      description:
-        'NDLA sin visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
-      mainLink: {
-        name: 'Mer om NDLA',
-      },
-    },
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',

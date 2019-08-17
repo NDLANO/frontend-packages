@@ -277,14 +277,6 @@ class FrontpageExample extends Component {
                   },
                 ]}
               />
-              <InfoWidget
-                heading={t('welcomePage.aboutNDLA.heading')}
-                description={t('welcomePage.aboutNDLA.description')}
-                mainLink={{
-                  name: t('welcomePage.aboutNDLA.mainLink.name'),
-                  url: '#5',
-                }}
-              />
             </FrontpageInfo>
           </OneColumn>
         </main>

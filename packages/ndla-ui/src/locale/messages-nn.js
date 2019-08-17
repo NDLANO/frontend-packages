@@ -178,14 +178,6 @@ const messages = {
         name: 'Følg oss',
       },
     },
-    aboutNDLA: {
-      heading: 'Om NDLA',
-      description:
-        'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle fag i videregående opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
-      mainLink: {
-        name: 'Meir om NDLA',
-      },
-    },
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
@@ -462,7 +454,7 @@ const messages = {
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
-    prefixChangeLanguage: 'Vel målføre',
+    prefixChangeLanguage: 'Vel målform',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',

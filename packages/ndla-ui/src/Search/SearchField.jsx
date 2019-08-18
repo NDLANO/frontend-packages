@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
@@ -19,99 +19,83 @@ import { ContentTypeResultShape } from '../shapes';
 
 const classes = new BEMHelper('c-search-field');
 
-const messagesShape = PropTypes.shape({
-  // required if search result
-  searchResultHeading: PropTypes.string,
-  contentTypeResultShowMoreLabel: PropTypes.string,
-  contentTypeResultShowLessLabel: PropTypes.string,
-  contentTypeResultNoHit: PropTypes.string,
-});
+const SearchField = ({
+  placeholder,
+  value,
+  onChange,
+  filters,
+  small,
+  onClick,
+  t,
+  onFocus,
+  onBlur,
+  loading,
+  autofocus,
+  onFilterRemove,
+}) => {
+  const inputRef = useRef(null);
 
-class SearchField extends Component {
-  constructor(props) {
-    super(props);
+  const handleOnFilterRemove = (value, filterName) => {
+    onFilterRemove(value, filterName);
+    inputRef.current.focus();
+  };
 
-    this.inputRef = React.createRef();
-    this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
-  }
-
-  handleOnFilterRemove(value, filterName) {
-    this.props.onFilterRemove(value, filterName);
-    this.inputRef.current.focus();
-  }
-
-  render() {
-    const {
-      placeholder,
-      value,
-      onChange,
-      filters,
-      messages,
-      small,
-      onClick,
-      t,
-      onFocus,
-      onBlur,
-      loading,
-    } = this.props;
-
-    return (
-      <div {...classes('input-wrapper')}>
-        {loading && (
-          <div id="fakeInput">
-            <span>{value}</span>
-            <div>
-              <Spinner size="normal" />
-            </div>
+  return (
+    <div {...classes('input-wrapper')}>
+      {loading && (
+        <div id="fakeInput">
+          <span>{value}</span>
+          <div>
+            <Spinner size="normal" />
           </div>
-        )}
-        <input
-          ref={this.inputRef}
-          title={messages.searchFieldTitle}
-          type="search"
-          {...classes('input', { small })}
-          aria-autocomplete="list"
-          autoComplete="off"
-          id="search"
-          name="search"
-          placeholder={placeholder}
-          aria-label={placeholder}
-          value={value}
-          onChange={e => onChange(e.target.value)}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onClick={onClick}
-        />
-        {filters && filters.length > 0 && (
-          <div {...classes('filters')}>
-            <ActiveFilters
-              filters={filters}
-              onFilterRemove={this.handleOnFilterRemove}
-            />
-          </div>
-        )}
-        {value !== '' && (
-          <button
-            {...classes('button', 'close')}
-            type="button"
-            onClick={() => {
-              onChange('');
-              this.inputRef.current.focus();
-            }}>
-            {t('welcomePage.resetSearch')}
-          </button>
-        )}
+        </div>
+      )}
+      <input
+        ref={inputRef}
+        type="search"
+        {...classes('input', { small })}
+        aria-autocomplete="list"
+        autoComplete="off"
+        id="search"
+        name="search"
+        placeholder={placeholder}
+        aria-label={placeholder}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onClick={onClick}
+        autofocus={autofocus}
+      />
+      {filters && filters.length > 0 && (
+        <div {...classes('filters')}>
+          <ActiveFilters
+            filters={filters}
+            onFilterRemove={handleOnFilterRemove}
+          />
+        </div>
+      )}
+      {value !== '' && (
         <button
-          tabIndex="-1"
-          {...classes('button', 'searchIcon')}
-          type="submit"
-          value="Search">
-          <SearchIcon />
+          {...classes('button', 'close')}
+          type="button"
+          onClick={() => {
+            onChange('');
+            inputRef.current.focus();
+          }}>
+          {t('welcomePage.resetSearch')}
         </button>
-      </div>
-    );
-  }
-}
+      )}
+      <button
+        tabIndex="-1"
+        {...classes('button', 'searchIcon')}
+        type="submit"
+        value="Search">
+        <SearchIcon />
+      </button>
+    </div>
+  );
+};
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,
@@ -123,7 +107,6 @@ SearchField.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ),
-  messages: messagesShape,
   searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
   onFilterRemove: PropTypes.func,
@@ -131,9 +114,7 @@ SearchField.propTypes = {
   onNavigate: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  hideSleeveHeader: PropTypes.bool,
-  infoText: PropTypes.node,
-  ignoreContentTypeBadge: PropTypes.bool,
+  autofocus: PropTypes.bool,
   onClick: PropTypes.func,
   loading: PropTypes.bool,
 };

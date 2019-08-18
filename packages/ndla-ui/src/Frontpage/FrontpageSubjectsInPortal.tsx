@@ -9,19 +9,24 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
-import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
+import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import Button from '@ndla/button';
 import SafeLink from '../common/SafeLink';
 import { category as categoryProp } from '../types';
 import {
   categoryIllustrations,
   categoryIllustrationsInModal,
 } from './illustrations';
+
+const StyledTag = styled.span`
+  padding: ${spacing.xsmall};
+  border-radius: ${misc.borderRadius};
+  ${fonts.sizes(12, 1)};
+  overflow: hidden;
+  white-space: nowrap;
+`;
 
 const StyledHeader = styled.h1`
   color: ${colors.brand.primary};
@@ -117,13 +122,11 @@ const StyledListItem = styled.li`
 
 interface Props {
   category: categoryProp;
-  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
 const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
   category,
-  linkToAbout,
   t,
 }) => {
   // @ts-ignore
@@ -148,46 +151,19 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
               <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>
             )}
             {subject.beta && (
-              <Modal
-                narrow
-                activateButton={
-                  <Button
-                    lighter
-                    css={css`
-                      padding: ${spacing.xsmall};
-                      margin-left: ${spacing.xsmall};
-                      line-height: 1em;
-                      background: ${colors.brand.light};
-                    `}
-                    aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
-                      title: subject.text,
-                    })}>
-                    {t('subjectPage.subjectIsBeta.iconLabel')}
-                  </Button>
-                }>
-                {(onClose: void) => (
-                  <>
-                    <ModalHeader>
-                      <ModalCloseButton
-                        onClick={onClose}
-                        title={t('modal.closeModal')}
-                      />
-                    </ModalHeader>
-                    <ModalBody>
-                      <h1>
-                        {t('subjectPage.subjectIsBeta.dialogHeader', {
-                          title: subject.text,
-                        })}
-                      </h1>
-                      <hr />
-                      <p>
-                        {t('subjectPage.subjectIsBeta.dialogText')}{' '}
-                        {linkToAbout}
-                      </p>
-                    </ModalBody>
-                  </>
-                )}
-              </Modal>
+              <StyledTag
+                lighter
+                css={css`
+                  padding: ${spacing.xsmall};
+                  margin-left: ${spacing.xsmall};
+                  line-height: 1em;
+                  background: ${colors.brand.light};
+                `}
+                aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
+                  title: subject.text,
+                })}>
+                {t('subjectPage.subjectIsBeta.iconLabel')}
+              </StyledTag>
             )}
           </StyledListItem>
         ))}

@@ -149,7 +149,6 @@ interface StateObject {
 
 type Props = {
   categories: categoryProp[];
-  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -160,7 +159,6 @@ const initialState: StateObject = {
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
-  linkToAbout,
   t,
 }) => {
   const [currentState, setState] = useState(initialState);
@@ -217,7 +215,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           elementRect={elementRect}>
           {categoryIndex !== undefined && (
             <FrontpageSubjectsInPortal
-              linkToAbout={linkToAbout}
               category={categories[categoryIndex]}
             />
           )}

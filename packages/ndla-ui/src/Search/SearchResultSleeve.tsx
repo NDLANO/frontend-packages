@@ -100,14 +100,18 @@ const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   }
 `;
 
-const StyledScrollableContent = styled.div`
-  max-height: calc(100vh - 260px);
+type StyledScrollableContentProps = {
+  extendHeight: number;
+}
+
+const StyledScrollableContent = styled.div<StyledScrollableContentProps>`
+  max-height: calc(100vh - ${props => 260 - props.extendHeight}px);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  padding: ${spacing.large};
+  padding: ${props => props.extendHeight ? spacing.normal : spacing.large} ${spacing.large} ${spacing.large} ${spacing.large};
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - ${props => 200 - props.extendHeight});
   }
   ${mq.range({ until: breakpoints.tablet })} {
     padding: 0 ${spacing.normal} ${spacing.large};
@@ -308,7 +312,7 @@ const SearchResultSleeve: React.FC<Props> = ({
   }, [keyboardPathNavigation]);
   return (
     <StyledSearchResultsWrapper frontpage={frontpage} ref={contentRef}>
-      <StyledScrollableContent>
+      <StyledScrollableContent extendHeight={frontpage ? 0 : 52}>
         {infoText && (
           <StyledAside>
             <Wrench className="c-icon--22" />

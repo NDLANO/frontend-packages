@@ -64,7 +64,13 @@ $overlay-height: 136px;
         content: '';
         display: block;
         position: fixed;
-        top: 136px;
+        top: 74px;
+        @include mq(tablet) {
+          top: 100px;
+        }
+        @include mq(desktop) {
+          top: 136px;
+        }
         bottom: 0;
         right: 0;
         left: 0;
@@ -249,6 +255,11 @@ $overlay-height: 136px;
   /** Header adjustments... */
   &__header {
     @include mq(tablet) {
+      width: $inuit-wrapper-width;
+      max-width: calc(100vw - 100px);
+      padding-right: $spacing;
+    }
+    @include mq(desktop) {
       width: $inuit-wrapper-width;
       max-width: calc(100vw - 156px);
     }

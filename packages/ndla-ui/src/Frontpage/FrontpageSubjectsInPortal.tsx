@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
@@ -26,6 +25,8 @@ const StyledTag = styled.span`
   ${fonts.sizes(12, 1)};
   overflow: hidden;
   white-space: nowrap;
+  margin: 0 0 0 ${spacing.xsmall};
+  background: ${colors.brand.light};
 `;
 
 const StyledHeader = styled.h1`
@@ -151,17 +152,7 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
               <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>
             )}
             {subject.beta && (
-              <StyledTag
-                lighter
-                css={css`
-                  padding: ${spacing.xsmall};
-                  margin-left: ${spacing.xsmall};
-                  line-height: 1em;
-                  background: ${colors.brand.light};
-                `}
-                aria-label={t('subjectPage.subjectIsBeta.dialogHeader', {
-                  title: subject.text,
-                })}>
+              <StyledTag>
                 {t('subjectPage.subjectIsBeta.iconLabel')}
               </StyledTag>
             )}

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
@@ -176,10 +177,16 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   useEffect(() => {
     if (inputHasFocus && SearchFieldRef.current) {
       const yCoordinate = SearchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: yCoordinate,
-        behavior: 'smooth'
-      });
+      const isIE11 = (isIE && parseInt(browserVersion) < 12);
+      if (isIE11) {
+        // insta move on IE
+        window.scrollTo(0, yCoordinate);
+      } else {
+        window.scrollTo({
+          top: yCoordinate,
+          behavior: 'smooth'
+        });
+      }
       noScroll(true, 'preventPageScroll');
     } else {
       noScroll(false, 'preventPageScroll');

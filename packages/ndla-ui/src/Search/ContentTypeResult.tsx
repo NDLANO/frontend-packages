@@ -34,6 +34,7 @@ export const highlightedCSS = css`
 
 type inMenuProps = {
   inMenu?: boolean;
+  animateUL?: number;
 }
 
 const StyledNoHit = styled.p<inMenuProps>`
@@ -80,13 +81,29 @@ const StyledHeader = styled.header`
   }
 `;
 
+type StyledLiProps = {
+  delayAnimation?: boolean;
+}
+
+const StyledLi = styled.li<StyledLiProps>`
+  ${props => props.delayAnimation && css`
+    ${animations.fadeInLeftFromZero()}
+    animation-delay: ${animations.durations.normal};
+  `}
+  ${props => !props.delayAnimation && animations.fadeInLeft()}
+`;
+
 const StyledUL = styled.ul<inMenuProps>`
   list-style: none;
   padding: 0;
   margin: 0;
+  ${props => {
+    if (props.animateUL && props.animateUL > 0) {
+      return animations.toggledContentWithSwitchAnimation(animations.durations.normal, `contentTypeResultAnimation${props.animateUL % 2 ? '1' : '2'}`);
+    }
+  }}
   li {
     margin: 0 -${spacing.small};
-    ${animations.fadeInLeft(animations.durations.slow)};
     a {
       color: ${colors.brand.primary};
       box-shadow: none;
@@ -180,6 +197,7 @@ type Props = {
   ignoreContentTypeBadge: boolean;
   keyboardPathNavigation: string;
   inMenu?: boolean,
+  animateUL?: number,
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
@@ -193,6 +211,7 @@ const ContentTypeResult: React.FC<Props> = ({
   ignoreContentTypeBadge,
   keyboardPathNavigation,
   inMenu,
+  animateUL,
   t,
 }) => {
   const [showAll, toggleShowAll] = useState(false);
@@ -216,7 +235,7 @@ const ContentTypeResult: React.FC<Props> = ({
       });
     }
   }, [showAll]);
-
+  console.log(animateUL);
   return (
     <StyledWrapper>
       <StyledHeader>
@@ -233,7 +252,7 @@ const ContentTypeResult: React.FC<Props> = ({
         </h1>
       </StyledHeader>
       {resources.length > 0 ? (
-        <StyledUL inMenu={inMenu}>
+        <StyledUL inMenu={inMenu} animateUL={animateUL}>
           {resources.map(resource => {
             const { path, name, resourceTypes, subject, additional } = resource;
             const linkProps = resourceToLinkProps(resource);
@@ -248,8 +267,9 @@ const ContentTypeResult: React.FC<Props> = ({
                   ))}
               </>
             );
+            const delayAnimation = (animateUL && additional === true && animateUL > 0 && showAdditionalResources === true) ? true : false;
             return (
-              <li key={path}>
+              <StyledLi key={path} delayAnimation={delayAnimation}>
                 <SafeLink
                   css={path === keyboardPathNavigation && highlightedCSS}
                   data-highlighted={path === keyboardPathNavigation}
@@ -265,11 +285,11 @@ const ContentTypeResult: React.FC<Props> = ({
                     additional,
                   )}
                 </SafeLink>
-              </li>
+              </StyledLi>
             );
           })}
           {defaultCount && totalCount > defaultCount && (
-            <li ref={showAllRef} key="showAll">
+            <StyledLi ref={showAllRef}>
               <Button
                 ghostPill
                 css={showAllButtonCss}
@@ -279,7 +299,7 @@ const ContentTypeResult: React.FC<Props> = ({
                   : messages.allResultLabel}
                 {showAll ? <ChevronUp /> : <ChevronDown />}
               </Button>
-            </li>
+            </StyledLi>
           )}
         </StyledUL>
       ) : (

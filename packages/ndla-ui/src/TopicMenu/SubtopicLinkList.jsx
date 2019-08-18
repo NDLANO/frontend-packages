@@ -103,6 +103,7 @@ class SubtopicLinkList extends Component {
     super(props);
     this.state = {
       showAdditionalResources: false,
+      animateUL: 0,
     };
     this.toggleAdditionalResources = this.toggleAdditionalResources.bind(this);
     this.containerRef = null;
@@ -125,6 +126,7 @@ class SubtopicLinkList extends Component {
   toggleAdditionalResources() {
     this.setState(prevState => ({
       showAdditionalResources: !prevState.showAdditionalResources,
+      animateUL: prevState.animateUL + 1,
     }));
   }
 
@@ -145,7 +147,7 @@ class SubtopicLinkList extends Component {
       t,
     } = this.props;
 
-    const { showAdditionalResources } = this.state;
+    const { showAdditionalResources, animateUL } = this.state;
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
     const hasContentTypeResults =
@@ -215,6 +217,7 @@ class SubtopicLinkList extends Component {
             </HeaderWrapper>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
+                animateUL={animateUL}
                 resourceToLinkProps={resourceToLinkProps}
                 onNavigate={closeMenu}
                 key={result.title}

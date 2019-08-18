@@ -181,10 +181,13 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   } = currentState;
 
   const closeMenu = () => {
-    setState(prevState => {
-      return { ...prevState, animationDirection: 'out' };
-    });
-    noScroll(false, 'frontpagePortal');
+    if (isIE) {
+      closedMenu();
+    } else {
+      setState(prevState => {
+        return { ...prevState, animationDirection: 'out' };
+      });
+    }
   };
 
   const closedMenu = () => {

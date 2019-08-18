@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
@@ -9,10 +10,8 @@ import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 import { noScroll } from '@ndla/util';
-
 // @ts-ignore
 import { SearchField } from '../Search';
-
 // @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';
@@ -63,35 +62,42 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
   }
 `;
 
-const StyledSearchField = styled.div`
-  display: flex;
-  align-self: flex-start;
+type StyledSearchFieldProps = {
+  inputHasFocus: boolean;
+};
 
-  .c-search-field {
-    z-index: 9001;
-    ${mq.range({ from: breakpoints.tablet })} {
-      width: calc(100% - ${spacing.large});
+const StyledSearchField = styled.div<StyledSearchFieldProps>`
+  ${props => props.inputHasFocus && css`
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+
+    .c-search-field {
+      z-index: 9001;
+      ${mq.range({ from: breakpoints.tablet })} {
+        width: calc(100% - ${spacing.large});
+      }
     }
-  }
 
-  .c-search-field__search-result {
-    left: 0px;
-  }
-
-  ${mq.range({ until: breakpoints.tablet })} {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: ${spacing.small} ${spacing.xsmall} ${spacing.small} ${spacing.normal};
-    z-index: 9001;
-    background: ${colors.brand.accent};
     .c-search-field__search-result {
-      margin-left: ${spacing.normal};
-      width: 100vw;
-      left: -${spacing.large};
+      left: 0px;
     }
-  }
+
+    ${mq.range({ until: breakpoints.tablet })} {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: ${spacing.small} ${spacing.xsmall} ${spacing.small} ${spacing.normal};
+      z-index: 9001;
+      background: ${colors.brand.accent};
+      .c-search-field__search-result {
+        margin-left: ${spacing.normal};
+        width: 100vw;
+        left: -${spacing.large};
+      }
+    }
+  `}
 `;
 
 const StyledCloseButton = styled.button`
@@ -169,10 +175,6 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   }, []);
   useEffect(() => {
     if (inputHasFocus && SearchFieldRef.current) {
-      const inputField = SearchFieldRef.current.getElementsByTagName(
-        'input',
-      )[0];
-      inputField.focus();
       const yCoordinate = SearchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: yCoordinate,
@@ -189,28 +191,17 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   return (
     <div ref={SearchFieldRef}>
       <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
-        {!inputHasFocus && (
-          <SearchField
-            value={searchFieldValue}
-            onChange={onSearchFieldChange}
-            onFocus={onSearchInputFocus}
-            placeholder={searchFieldPlaceholder}
-            messages={messages}
-            resourceToLinkProps={() => {}}
-          />
-        )}
-        {inputHasFocus && (
-          <>
-            <StyledSearchBackdrop
+            {inputHasFocus && <StyledSearchBackdrop
               role="button"
               onClick={onSearchDeactiveFocusTrap}
-            />
-            <StyledSearchField>
+            />}
+            <StyledSearchField inputHasFocus={inputHasFocus}>
               <form
                 action="/search/"
                 {...classes('', modifiers)}
                 onSubmit={onSearch}>
                 <SearchField
+                  onFocus={onSearchInputFocus}
                   modifiers={modifiers}
                   value={searchFieldValue}
                   onChange={onSearchFieldChange}
@@ -218,7 +209,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                   messages={messages}
                   loading={loading}
                 />
-                {searchFieldValue !== '' && (
+                {searchFieldValue !== '' && inputHasFocus && (
                   <SearchResultSleeve
                     frontpage
                     loading={loading}
@@ -231,7 +222,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                   />
                 )}
               </form>
-              <Tooltip tooltip={t('welcomePage.closeSearch')}>
+              {inputHasFocus && (<Tooltip tooltip={t('welcomePage.closeSearch')}>
                 <StyledCloseButton
                   type="button"
                   onClick={onSearchDeactiveFocusTrap}
@@ -239,10 +230,8 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
                   aria-label={messages.closeSearchLabel}>
                   <Cross />
                 </StyledCloseButton>
-              </Tooltip>
+              </Tooltip>)}
             </StyledSearchField>
-          </>
-        )}
       </StyledSearchFieldWrapper>
     </div>
   );

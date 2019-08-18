@@ -9,7 +9,6 @@ import {
   FrontpageFilm,
   FrontpageCircularSubjectsSection,
   InfoWidget,
-  SafeLink,
   SubjectSectionTitle,
   BlogPost,
   BlogPostWrapper,

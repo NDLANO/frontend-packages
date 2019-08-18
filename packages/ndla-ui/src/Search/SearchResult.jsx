@@ -168,11 +168,19 @@ export const SearchResultItem = ({
         <div {...searchResultItemClasses('content-type-wrapper')}>
           {item.contentTypeIcon}
         </div>
-        {item.contentTypeLabel && <div {...searchResultItemClasses('pills')}>{item.contentTypeLabel}</div>}
+        {item.contentTypeLabel && (
+          <div {...searchResultItemClasses('pills')}>
+            {item.contentTypeLabel}
+          </div>
+        )}
         {item.type && (
           <div {...searchResultItemClasses('pills')}>{item.type}</div>
         )}
-        {item.additional && <div {...searchResultItemClasses('pills')}>{additionalContentToolip}</div>}
+        {item.additional && (
+          <div {...searchResultItemClasses('pills')}>
+            {additionalContentToolip}
+          </div>
+        )}
         {children}
       </header>
       <div {...searchResultItemClasses('content')}>
@@ -182,23 +190,25 @@ export const SearchResultItem = ({
         />
         {item.image}
       </div>
-      {(!item.subjects || item.subjects.length === 0) && item.breadcrumb && item.breadcrumb.length > 0 && (
-        <div {...searchResultItemClasses('breadcrumb')}>
-          {item.breadcrumb.map((breadcrumbItem, index) => {
-            let icon = null;
+      {(!item.subjects || item.subjects.length === 0) &&
+        item.breadcrumb &&
+        item.breadcrumb.length > 0 && (
+          <div {...searchResultItemClasses('breadcrumb')}>
+            {item.breadcrumb.map((breadcrumbItem, index) => {
+              let icon = null;
 
-            if (index !== item.breadcrumb.length - 1) {
-              icon = <ChevronRight />;
-            }
-            return (
-              <Fragment key={uuid()}>
-                <span>{breadcrumbItem}</span>
-                {icon}
-              </Fragment>
-            );
-          })}
-        </div>
-      )}
+              if (index !== item.breadcrumb.length - 1) {
+                icon = <ChevronRight />;
+              }
+              return (
+                <Fragment key={uuid()}>
+                  <span>{breadcrumbItem}</span>
+                  {icon}
+                </Fragment>
+              );
+            })}
+          </div>
+        )}
       {item.subjects && item.subjects.length !== 0 && (
         <div {...searchResultItemClasses('subjects')}>
           <span>{subjectsLabel}</span>

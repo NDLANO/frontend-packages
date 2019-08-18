@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight, Additional } from '@ndla/icons/common';
+import { ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
-import Tooltip from '@ndla/tooltip';
 import { FilterTabs } from '@ndla/tabs';
 import SafeLink from '../common/SafeLink';
 import Spinner from '../../lib/Spinner';

@@ -10,6 +10,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { spacing, color, animations } from '@ndla/core';
 import { OneColumn, SafeLink } from '@ndla/ui';
 import Spinner from '../Spinner';
 import { movieShape } from './shapes';
@@ -21,20 +24,73 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+const StyledImage = styled.div`
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  position: absolute;
+  background-color: #222;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  ${props => props.image && css`
+    background-image: url(${props.image});
+  `}
+  animation-duration: 12000ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  @keyframes autoSizingAnimation {
+    0% {
+      opacity: 0;
+      transform: scale3d(1, 1, 1);
+    }
+    5% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale3d(1.2, 1.2, 1);
+    }
+  }
+  animation-name: ${props => props.animate ? 'autoSizingAnimation' : ''};
+`;
+
+const StyledMovieImageBackground = styled.div`
+  height: calc(100vh - 300px);
+  width: 100%;
+  border: 0;
+  position: ${props => props.fadeIn ? 'absolute' : 'relative'};
+  overflow: hidden;
+  &:before {
+    content: '';
+    opacity: 0.4;
+    background: #091a2a;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+  }
+  &:hover {
+    background: green;
+  }
+  ${animations.fadeIn()}
+`;
+
 const defaultTransitionSwipeEnd =
   'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
 const defaultTransitionText = 'opacity 600ms ease';
 
-const renderSlideItem = slide => (
-  <div
-    {...classes('item')}
+const renderSlideItem = (slide, animate) => (
+  <StyledMovieImageBackground
     key={slide.id}
     role="img"
     aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
-    style={{
-      backgroundImage: `url(${(slide.metaImage && slide.metaImage.url) || ''})`,
-    }}
-  />
+  >
+    <StyledImage animate={animate} image={slide.metaImage && slide.metaImage.url} />
+  </StyledMovieImageBackground>
 );
 
 class FilmSlideshow extends Component {
@@ -247,16 +303,13 @@ class FilmSlideshow extends Component {
             rightArrow
           />
           {!animationComplete && (
-            <div
-              {...classes('item', 'fade-over')}
+            <StyledMovieImageBackground
               role="img"
               onAnimationEnd={this.onChangedSlide}
-              style={{
-                backgroundImage: `url(${(slideshow[activeSlide].metaImage &&
-                  slideshow[activeSlide].metaImage.url) ||
-                  ''})`,
-              }}
-            />
+              fadeIn
+            >
+              <StyledImage image={(slideshow[activeSlide].metaImage && slideshow[activeSlide].metaImage.url)} />
+            </ StyledMovieImageBackground>
           )}
           <div
             ref={this.slideRef}
@@ -267,7 +320,7 @@ class FilmSlideshow extends Component {
               transform: this.getSlidePosition(slideIndex),
             }}>
             {renderSlideItem(slideshow[slideshow.length - 1], -1)}
-            {slideshow.map(renderSlideItem)}
+            {slideshow.map((slide, index) => renderSlideItem(slide, slideIndex === index))}
             {renderSlideItem(slideshow[0], slideshow.length)}
           </div>
         </Swipeable>

@@ -104,54 +104,11 @@
           text-decoration: underline;
         }
       }
+      animation: ndlaFilmTextIn 400ms ease-in-out;
       &.out {
         opacity: 0;
+        animation: ndlaFilmText 400ms ease-in-out;
       }
-      &:not(.out) {
-        animation: fadeInBottomFixed 600ms ease;
-      }
-    }
-  }
-  &__item {
-    width: 100vw;
-    height: 100vw;
-    /* aspect ratios */
-    @include mq(mobileWide) {
-      height: 100vw;
-    }
-    @include mq(tablet) {
-      height: 75vw;
-    }
-    @include mq(desktop) {
-      height: 55vw;
-    }
-    @include mq(wide) {
-      height: 40vw;
-    }
-    @include mq(ultraWide) {
-      height: 36vw;
-    }
-    background-color: '#222';
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: center;
-    border: 0;
-    position: relative;
-    &:before {
-      content: '';
-      opacity: 0.4;
-      background: #091a2a;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      position: absolute;
-      z-index: 1;
-    }
-    &--fade-over {
-      position: absolute;
-      z-index: 1;
-      animation: fadeIn 400ms ease;
     }
   }
   &__slide-info {

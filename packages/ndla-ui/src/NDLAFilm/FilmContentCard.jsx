@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { spacing, colors, fonts, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
@@ -25,16 +26,12 @@ const FilmContentCard = ({
       key={id}
       columnWidth={columnWidth}
       style={{ marginRight: `${distanceBetweenItems}px` }}>
-      <SafeLink to={`/subjects${path}`}>
+      <SafeLink css={SafeLinkCSS} to={`/subjects${path}`}>
         <StyledImage
           role="img"
           columnWidth={columnWidth}
           aria-label={(metaImage && metaImage.alt) || ''}
-          style={{
-            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(
-              600,
-            )})`,
-          }}>
+          image={`url(${backgroundImage}?${makeSrcQueryString(600)})`}>
           {movieResourceTypes && !hideTags && (
             <FilmContentCardTags
               movieResourceTypes={movieResourceTypes}
@@ -72,9 +69,10 @@ const StyledImage = styled.div`
   position: relative;
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
   &:before {
     content: '';
-    transition: 200ms ease;
+    transition: opacity 250ms ease;
     display: block;
     background: ${colors.ndlaFilm.filmColor};
     opacity: 0;
@@ -83,13 +81,27 @@ const StyledImage = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 1;
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-color: ${colors.ndlaFilm.filmColorLight};
+    background-position-x: center;
+    background-position-y: center;
+    background-image: ${props => props.image};
+    transition: transform 250ms ease;
   }
 `;
 
-const StyledSlideWrapper = styled.div`
-  width: ${props => props.columnWidth}px;
-  color: #fff;
-  box-shadow: none;
+const SafeLinkCSS = css`
+  outline: none;
   &:hover,
   &:focus {
     ${StyledMovieTitle} {
@@ -99,11 +111,20 @@ const StyledSlideWrapper = styled.div`
       &:before {
         opacity: 0.3;
       }
+      &:after {
+        transform: scale3d(1.05, 1.05, 1);
+      }
       > div {
         opacity: 1;
       }
     }
   }
+`;
+
+const StyledSlideWrapper = styled.div`
+  width: ${props => props.columnWidth}px;
+  color: #fff;
+  box-shadow: none;
 `;
 
 FilmContentCard.propTypes = {

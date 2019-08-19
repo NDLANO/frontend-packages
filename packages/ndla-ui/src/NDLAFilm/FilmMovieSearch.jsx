@@ -6,48 +6,39 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { OneColumn, SafeLink } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
+import Button from '@ndla/button';
 import CategorySelect from './CategorySelect';
 
 import { topicShape } from './shapes';
 
-const classes = new BEMHelper({
-  name: 'film-moviesearch',
-  prefix: 'c-',
-});
-
-const classesMovieList = new BEMHelper({
-  name: 'film-movielist',
-  prefix: 'c-',
-});
-
-const FilmMovieSearch = ({ topics, t, ...props }) => (
-  <div {...classes('')}>
+const FilmMovieSearch = ({ topics, t, ...props }) => {
+  const [isOpen, toggleOpenState] = useState(false);
+  return (
     <OneColumn>
-      <div {...classes('topic-navigation')}>
-        <h2 {...classesMovieList('heading', '', 'u-12/12 u-4/12@tablet')}>
-          {t('ndlaFilm.subjectsInMovies')}:
-        </h2>
-        <nav className="u-12/12 u-8/12@tablet">
-          <ul>
-            {topics.map(topic => (
-              <li key={topic.id}>
-                <SafeLink to={`/subjects${topic.path}`} key={topic.id}>
-                  <span>{topic.name}</span>
-                </SafeLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+        <Button ghostPill onClick={() => toggleOpenState(!isOpen)}>
+          hello
+        </Button>
+        {isOpen && (
+          <nav className="u-12/12 u-8/12@tablet">
+            <ul>
+              {topics.map(topic => (
+                <li key={topic.id}>
+                  <SafeLink to={`/subjects${topic.path}`} key={topic.id}>
+                    <span>{topic.name}</span>
+                  </SafeLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       <CategorySelect {...props} />
     </OneColumn>
-  </div>
-);
+  );
+};
 
 FilmMovieSearch.propTypes = {
   topics: PropTypes.arrayOf(topicShape),

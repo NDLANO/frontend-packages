@@ -14,7 +14,6 @@ import {
   colors,
   spacing,
   animations,
-  typography,
   mq,
   breakpoints,
 } from '@ndla/core';

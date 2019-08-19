@@ -17,7 +17,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
-import { LearningPath } from '@ndla/icons/ContentType'
+import { LearningPath } from '@ndla/icons/contentType';
 // @ts-ignore
 import { LearningPathBadge } from '../index-javascript';
 

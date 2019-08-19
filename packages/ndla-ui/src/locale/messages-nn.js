@@ -555,7 +555,7 @@ const messages = {
   },
   learningPath: {
     createLearningPathText:
-      'Lag din egen, kopier denne eller sjå fleire læringsstiar?',
+      'Lag din eigen, kopier denne eller sjå fleire læringsstiar?',
     createLearningPathButtonText: 'Gå til stier',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',

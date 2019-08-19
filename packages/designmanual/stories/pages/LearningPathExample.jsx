@@ -18,6 +18,7 @@ import {
   LearningPathLastStepNavigation,
   LearningPathSticky,
   LearningPathStickySibling,
+  LearningPathMobileStepInfo,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -117,6 +118,7 @@ const dataReducer = (state, action) => {
 const toLearningPathUrl = (id, locale) => {
   return '';
 };
+
 const LearningPathExample = ({ t }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
@@ -225,7 +227,6 @@ const LearningPathExample = ({ t }) => {
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
-
   return (
     <>
       <LearningPathWrapper>
@@ -281,19 +282,21 @@ const LearningPathExample = ({ t }) => {
               toLearningPathUrl={toLearningPathUrl}
               pathId={3}
               stepId={learningsteps[currentLearningStepNumber - 1].id}
-              label={t('learningPath.previousArrow')}
               title={learningsteps[currentLearningStepNumber - 1].title.title}
             />
           ) : (
             <div />
           )}
+          <LearningPathMobileStepInfo
+            total={learningsteps.length}
+            current={currentLearningStepNumber + 1}
+          />
           {currentLearningStepNumber < learningsteps.length - 1 && (
             <LearningPathStickySibling
               arrow="right"
               toLearningPathUrl={toLearningPathUrl}
               pathId={3}
               stepId={learningsteps[currentLearningStepNumber + 1].id}
-              label={t('learningPath.nextArrow')}
               title={learningsteps[currentLearningStepNumber + 1].title.title}
             />
           )}

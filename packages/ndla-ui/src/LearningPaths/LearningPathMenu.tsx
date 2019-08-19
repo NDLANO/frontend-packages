@@ -103,7 +103,7 @@ interface Props {
   cookies: {
     [key: string]: string;
   };
-  t: any;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   learningPathId: number;
   toLearningPathUrl(pathId: number, stepId: number): string;
 }
@@ -117,7 +117,6 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
   copyright,
   learningPathId,
   toLearningPathUrl,
-  stepId,
   learningPathURL,
   cookies,
   t,
@@ -130,9 +129,7 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
       <LearningPathMenuModalWrapper
         innerWidth={innerWidth}
         currentIndex={currentIndex}
-        learningstepsTotal={learningsteps.length}
-        closeLabel={t('modal.closeModal')}
-        outOfLabel={t('learningPath.pageOf')}>
+        closeLabel={t('modal.closeModal')}>
         <div
           css={css`
             padding-left: ${spacing.small};

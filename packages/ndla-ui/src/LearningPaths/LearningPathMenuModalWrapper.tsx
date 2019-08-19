@@ -8,37 +8,29 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import { colors, spacing, fonts, misc, breakpoints, mq } from '@ndla/core';
+import { colors, spacing, fonts } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
+import Button from '@ndla/button';
+// @ts-ignore
+import { LearningPath } from '@ndla/icons/ContentType'
+// @ts-ignore
 import { LearningPathBadge } from '../index-javascript';
 
-const StyledMobileButton = styled.button`
+const buttonToggleCss = css`
   position: fixed;
   z-index: 999;
   bottom: ${spacing.xsmall};
-  left: calc(50% - ${spacing.spacingUnit * 2}px);
-  width: ${spacing.spacingUnit * 4}px;
-  height: ${spacing.spacingUnit * 1.5}px;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    left: calc(50% - ${spacing.spacingUnit * 1.5}px);
-    width: ${spacing.spacingUnit * 3}px;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: ${colors.brand.primary};
-  padding: ${spacing.xsmall} ${spacing.small};
-  color: #fff;
-  font-weight: ${fonts.weight.semibold};
-  border-radius: ${misc.borderRadius};
-  border: 0;
-  small {
-    display: flex;
-    padding: 0 3px;
+  left: ${spacing.normal};
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: ${spacing.xsmall};
+    transform: translateY(-2px);
   }
 `;
 
@@ -55,22 +47,16 @@ const StyledMiniHeader = styled.span`
   ${fonts.sizes(16, 1.1)};
 `;
 
-interface ModalWrapperProps {
+type ModalWrapperProps = {
   innerWidth: number;
-  currentIndex: number;
-  learningstepsTotal: number;
   closeLabel: string;
-  outOfLabel: string;
   children: JSX.Element;
-  t: any;
-}
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+};
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
   innerWidth,
-  currentIndex,
-  learningstepsTotal,
   closeLabel,
-  outOfLabel,
   children,
   t,
 }) => {
@@ -83,11 +69,12 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
           animationDuration={200}
           size="fullscreen"
           activateButton={
-            <StyledMobileButton type="button">
-              {currentIndex + 1}
-              <small> {outOfLabel} </small>
-              {learningstepsTotal}
-            </StyledMobileButton>
+            <Button css={buttonToggleCss}>
+              <LearningPath />
+              <span>
+                Vis læringssti 
+              </span>
+            </Button>
           }>
           {(onClose: Function) => (
             <>

@@ -37,6 +37,7 @@ const StyledFooter = styled.nav`
     bottom: 0;
     left: 0;
     right: 0;
+    justify-content: flex-end;
   }
   background: ${colors.brand.lighter};
   align-items: center;
@@ -80,6 +81,9 @@ const SafeLinkCSS = css`
     span:last-child {
       box-shadow: inset 0 -1px;
     }
+    ${mq.range({ until: breakpoints.tablet })} {
+      display: none;
+    }
   }
   &:hover,
   &:focus {
@@ -92,23 +96,16 @@ const SafeLinkCSS = css`
         box-shadow: none;
       }
     }
-    > .c-icon--medium {
-      transform: translateX(${spacing.xsmall});
-    }
-    &:first-of-type {
+    ${mq.range({ from: breakpoints.tablet })} {
       > .c-icon--medium {
-        transform: translateX(-${spacing.xsmall});
+        transform: translateX(${spacing.xsmall});
+      }
+      &:first-of-type {
+        > .c-icon--medium {
+          transform: translateX(-${spacing.xsmall});
+        }
       }
     }
-  }
-`;
-
-const StyledLabel = styled.span`
-  ${typography.smallHeading}
-  display: none;
-  ${mq.range({ until: breakpoints.tablet })} {
-    display: flex;
-    color: ${colors.brand.primary};
   }
 `;
 
@@ -118,22 +115,20 @@ const StyledTitle = styled.span`
   }
 `;
 
-interface PropsSiblings {
+type PropsSiblings = {
   title: string;
   toLearningPathUrl(pathId: number, stepId: number): string;
   arrow?: 'left' | 'right';
-  label: string;
   pathId: number;
   stepId: number;
 }
 
 export const LearningPathStickySibling: React.FunctionComponent<
   PropsSiblings
-> = ({ title, toLearningPathUrl, pathId, stepId, arrow, label }) => (
+> = ({ title, toLearningPathUrl, pathId, stepId, arrow }) => (
   <SafeLink to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
-      <StyledLabel>{label}</StyledLabel>
       <StyledTitle>{title}</StyledTitle>
     </div>
     {arrow === 'right' && <Forward className="c-icon--medium" />}

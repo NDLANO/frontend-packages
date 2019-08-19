@@ -39,4 +39,5 @@ export {
   LearningPathInformation,
   LearningPathStickySibling,
   LearningPathLastStepNavigation,
+  LearningPathMobileStepInfo,
 } from './LearningPaths';

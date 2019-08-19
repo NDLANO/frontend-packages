@@ -51,7 +51,7 @@ interface Props {
     url: string;
   };
   learningPathName: string;
-  t: any;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
 const LearningPathLastStepNavigation: React.FunctionComponent<Props> = ({

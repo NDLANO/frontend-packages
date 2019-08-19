@@ -12,6 +12,7 @@ import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import DropdownMenuItem from './DropdownMenuItem';
+import { checkIfItemIsSelected } from './checkIfItemIsSelected';
 
 const StyledDropDownContainer = styled.div`
   font-family: ${fonts.sans};
@@ -52,6 +53,8 @@ const StyledResultFooter = styled.div`
 
 const DropdownMenu = ({
   items,
+  labelField,
+  idField,
   isOpen,
   selectedItem,
   selectedItems,
@@ -66,15 +69,6 @@ const DropdownMenu = ({
   menuHeight,
   disableSelected,
 }) => {
-  const checkIsSelected = item => {
-    if (multiSelect) {
-      return selectedItems.includes(item.title);
-    } else if (typeof selectedItem === 'string') {
-      return selectedItem === item.title;
-    }
-    return selectedItem && selectedItem.id === item.id;
-  };
-
   if (!isOpen) {
     return null;
   }
@@ -86,10 +80,23 @@ const DropdownMenu = ({
       <StyledResultList menuHeight={menuHeight}>
         {items.slice(0, maxRender).map((item, index) => (
           <DropdownMenuItem
-            {...getItemProps({ item, isSelected: checkIsSelected(item) })}
+            {...getItemProps({
+              item,
+              isSelected: checkIfItemIsSelected(
+                item,
+                selectedItem,
+                selectedItems,
+                multiSelect,
+                idField,
+              ),
+            })}
             disableSelected={disableSelected}
-            item={item}
-            key={`${item.title}${index}`}
+            item={
+              idField && labelField
+                ? { ...item, title: item[labelField], id: item[idField] }
+                : { title: item, id: item }
+            }
+            key={`${labelField ? item[labelField] : item}${index}`}
           />
         ))}
       </StyledResultList>
@@ -109,10 +116,10 @@ const DropdownMenu = ({
 
 DropdownMenu.propTypes = {
   items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-    }),
+    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   ).isRequired,
+  idField: PropTypes.string,
+  labelField: PropTypes.string,
   absolute: PropTypes.bool,
   onCreate: PropTypes.func,
   isOpen: PropTypes.bool,

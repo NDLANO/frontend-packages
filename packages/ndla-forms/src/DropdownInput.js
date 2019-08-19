@@ -18,27 +18,34 @@ const DropdownInput = ({
   loading,
   values,
   removeItem,
+  idField,
+  labelField,
   ...props
 }) => (
-  <React.Fragment>
-    <Input
-      {...props}
-      iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
-      tags={
-        multiSelect &&
-        values.map(value => (
-          <FormPill label={value} key={value} id={value} onClick={removeItem} />
-        ))
-      }
-      data-testid={testid}
-      container="div"
-    />
-  </React.Fragment>
+  <Input
+    {...props}
+    iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
+    tags={
+      multiSelect &&
+      values.map(value => (
+        <FormPill
+          label={labelField ? value[labelField] : value}
+          key={idField ? value[idField] : value}
+          id={idField ? value[idField] : value}
+          onClick={removeItem}
+        />
+      ))
+    }
+    data-testid={testid}
+    container="div"
+  />
 );
 
 DropdownInput.propTypes = {
   multiSelect: PropTypes.bool,
   getInputProps: PropTypes.func,
+  idField: PropTypes.string,
+  labelField: PropTypes.string,
   name: PropTypes.string,
   inputProps: PropTypes.shape({
     value: PropTypes.string,

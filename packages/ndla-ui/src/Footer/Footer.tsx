@@ -18,9 +18,45 @@ import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
 
+type AnimatedBackgroundProps = {
+  background: string;
+  reversed?: boolean;
+  animationSpeed: number;
+  scaleTarget: number;
+  pauseBetween: number;
+}
+
+const AnimatedBackground = styled.div<AnimatedBackgroundProps>`
+  display: block;
+  position: absolute;
+  background: ${props => props.background};
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: animatedFooter ${props => props.animationSpeed}ms infinite;
+  animation-direction: ${props => props.reversed ? 'alternate-reverse' : 'alternate'};
+  @keyframes animatedFooter {
+    0%, ${props => props.pauseBetween}% {
+      transform: scale(1);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(${props => props.scaleTarget});
+    }
+  }
+`;
+
+
 const StyledFooter = styled.footer`
-  background: ${colors.brand.dark};
   color: #fff;
+  position: relative;
+  background: ${colors.brand.dark};
+  overflow: hidden;
+  > div:first-of-type {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const StyledHeader = styled.h1`
@@ -36,14 +72,12 @@ const StyledHeader = styled.h1`
 `;
 
 const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
-  &&& {
-    color: #fff;
-    width: ${spacing.large};
-    height: ${spacing.large};
-    ${mq.range({ from: breakpoints.tabletWide })} {
-      width: ${spacing.spacingUnit * 3}px;
-      height: ${spacing.spacingUnit * 3}px;
-    }
+  color: #fff;
+  width: ${spacing.large};
+  height: ${spacing.large};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    width: ${spacing.spacingUnit * 3}px;
+    height: ${spacing.spacingUnit * 3}px;
   }
 `;
 
@@ -77,14 +111,14 @@ const StyledHr = styled.hr`
   ${mq.range({ from: breakpoints.tabletWide })} {
     margin: ${spacing.large};
   }
-  background: ${colors.brand.primary};
+  background: rgba(255, 255, 255, 0.1);
   &:before {
     content: none;
   }
 `;
 
 const StyledLanguageWrapper = styled.div`
-  margin: ${spacing.large} 0;
+  margin: ${spacing.large} 0 ${spacing.spacingUnit * 3}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,6 +166,10 @@ const Footer: React.FunctionComponent<Props> = ({
         {children}
         <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
       </OneColumn>
+      <AnimatedBackground pauseBetween={75} animationSpeed={25000} scaleTarget={1} reversed background={'linear-gradient(-60deg, rgba(4,29,48,1) 0%, rgba(32,88,143,0) 100%)'} />
+      <AnimatedBackground pauseBetween={50} animationSpeed={10000} scaleTarget={1.5} background={'linear-gradient(117deg, rgba(1,146,206,1) 0%, rgba(32,88,143,0) 100%)'} />
+      <AnimatedBackground pauseBetween={65} animationSpeed={15000} scaleTarget={2} background={'linear-gradient(-49deg, rgba(7,38,60,1) 0%, rgba(32,88,143,0) 100%)'} />
+      <AnimatedBackground pauseBetween={40} animationSpeed={7500} scaleTarget={2} reversed background={'linear-gradient(96deg, rgba(0,117,160,1) 0%, rgba(32,88,143,0) 100%)'} />
     </StyledFooter>
   </>
 );

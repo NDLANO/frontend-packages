@@ -15,7 +15,8 @@ import { injectT } from '@ndla/i18n';
 import { Search as SearchIcon, Wrench, Esc, KeyboardReturn, ChevronUp, ChevronDown } from '@ndla/icons/common';
 import SafeLink from '../common/SafeLink';
 // @ts-ignore
-import ContentTypeResult, { highlightedCSS } from './ContentTypeResult';
+import ContentTypeResult from './ContentTypeResult';
+import { highlightStyle } from './ContentTypeResultStyles';
 import { ContentTypeResultType, Resource } from '../types';
 
 const GO_TO_SEARCHPAGE = 'GO_TO_SEARCHPAGE';
@@ -64,7 +65,7 @@ const StyledSearchAll = styled(SafeLink)`
     margin-left: ${spacing.xsmall};
   }
   &:focus {
-    ${highlightedCSS}
+    ${highlightStyle}
     width: 100%;
   }
   &:hover {
@@ -320,7 +321,7 @@ const SearchResultSleeve: React.FC<Props> = ({
           </StyledAside>
         )}
         <div>
-          <StyledSearchAll css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightedCSS} to={allResultUrl}>
+          <StyledSearchAll css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle} to={allResultUrl}>
             <SearchIcon className="c-icon--22" />
             <strong ref={searchAllRef}>
               {searchString}

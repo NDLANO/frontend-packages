@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
-import { Spinner } from '@ndla/editor';
 
 import ActiveFilters from './ActiveFilters';
+import LoadingWrapper from './LoadingWrapper';
 
 import { ContentTypeResultShape } from '../shapes';
 
@@ -42,14 +42,7 @@ const SearchField = ({
 
   return (
     <div {...classes('input-wrapper')}>
-      {loading && (
-        <div id="fakeInput">
-          <span>{value}</span>
-          <div>
-            <Spinner size="normal" />
-          </div>
-        </div>
-      )}
+      {loading && <LoadingWrapper value={value} />}
       <input
         ref={inputRef}
         type="search"

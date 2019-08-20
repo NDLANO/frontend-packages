@@ -9,24 +9,6 @@ $overlay-height: 136px;
   flex-direction: column;
   justify-content: center;
 
-  #fakeInput {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    span {
-      opacity: 0;
-    }
-    > div {
-      animation: fadeIn 400ms;
-      transform: translateX($spacing * 1.5) translateY(-$spacing--small / 2);
-    }
-  }
-
   &__overlay-content > div:first-child {
     position: fixed;
     background: none;

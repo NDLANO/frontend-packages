@@ -11,7 +11,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
-import { Spinner } from '@ndla/editor';
+import { Spinner, Footer } from '@ndla/editor';
 import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
@@ -30,6 +30,13 @@ import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 
 storiesOf('Produksjonssystem', module)
+  .add('Footer for produksjonssystem', () => (
+    <div>
+      <StoryIntro title="Footer for produksjonssystemet">
+      </StoryIntro>
+      <Footer status="hello" />
+    </div>
+  ))
   .add('Trekkspill', () => (
     <div
       style={{

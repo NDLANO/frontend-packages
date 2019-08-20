@@ -13,11 +13,18 @@ import BEMHelper from 'react-bem-helper';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, color, animations } from '@ndla/core';
-import { OneColumn, SafeLink } from '@ndla/ui';
+import { SafeLink } from '@ndla/ui';
 import Spinner from '../Spinner';
 import { movieShape } from './shapes';
 import NavigationArrow from './NavigationArrow';
 import SlideshowIndicator from './SlideshowIndicator';
+
+const StyledLinkWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
 
 const classes = new BEMHelper({
   name: 'film-slideshow',
@@ -39,14 +46,14 @@ const StyledImage = styled.div`
     background-image: url(${props.image});
   `}
   animation-duration: 12000ms;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   @keyframes autoSizingAnimation {
     0% {
       opacity: 0;
       transform: scale3d(1, 1, 1);
     }
-    5% {
+    8% {
       opacity: 1;
     }
     100% {
@@ -73,10 +80,7 @@ const StyledMovieImageBackground = styled.div`
     position: absolute;
     z-index: 2;
   }
-  &:hover {
-    background: green;
-  }
-  ${animations.fadeIn()}
+  ${animations.fadeIn(animations.durations.slow)}
 `;
 
 const defaultTransitionSwipeEnd =
@@ -230,21 +234,27 @@ class FilmSlideshow extends Component {
     return `translateX(-${(target + 1) * 100}vw)`;
   }
 
-  gotoSlide(slideIndexTarget, useAnimation) {
+  gotoSlide(slideIndexTarget, useAnimation, keepAutoPlayActive) {
     this.swipeDistance = 0;
     clearTimeout(this.timer);
-    this.initTimer();
+    if (keepAutoPlayActive) {
+      this.initTimer();
+    }
     this.setState({
       slideIndexTarget,
       animationComplete: !useAnimation,
+    }, () => {
+      this.onChangedSlide();
     });
   }
 
   initTimer() {
-    if (this.props.autoSlide) {
+    const { autoPlay, slideInterval, slideshow } = this.props;
+    if (autoPlay) {
       this.timer = setTimeout(() => {
-        this.gotoSlide(this.state.slideIndex + 1);
-      }, this.props.slideInterval);
+        const { slideIndexTarget } = this.state;
+        this.gotoSlide(slideIndexTarget < slideshow.length - 1 ? slideIndexTarget + 1 : 0, true, true);
+      }, slideInterval);
     }
   }
 
@@ -276,7 +286,7 @@ class FilmSlideshow extends Component {
           onSwiped={this.onSwipeEnd}
           onSwiping={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>
-            <OneColumn>
+            <StyledLinkWrapper>
               <SafeLink
                 to={`/subjects${slideshow[activeSlide].path}`}
                 {...classes('item-wrapper', 'text', {
@@ -287,7 +297,7 @@ class FilmSlideshow extends Component {
                   <p>{slideshow[activeSlide].metaDescription}</p>
                 </div>
               </SafeLink>
-            </OneColumn>
+            </StyledLinkWrapper>
           </div>
           <NavigationArrow
             slideIndexTarget={
@@ -302,15 +312,6 @@ class FilmSlideshow extends Component {
             gotoSlide={this.gotoSlide}
             rightArrow
           />
-          {!animationComplete && (
-            <StyledMovieImageBackground
-              role="img"
-              onAnimationEnd={this.onChangedSlide}
-              fadeIn
-            >
-              <StyledImage image={(slideshow[activeSlide].metaImage && slideshow[activeSlide].metaImage.url)} />
-            </ StyledMovieImageBackground>
-          )}
           <div
             ref={this.slideRef}
             {...classes('item-wrapper')}
@@ -335,17 +336,17 @@ class FilmSlideshow extends Component {
 }
 
 FilmSlideshow.propTypes = {
-  autoSlide: PropTypes.bool,
+  autoPlay: PropTypes.bool,
   randomStart: PropTypes.bool,
   slideshow: PropTypes.arrayOf(movieShape),
   slideInterval: PropTypes.number,
 };
 
 FilmSlideshow.defaultProps = {
-  autoSlide: false,
-  randomStart: false,
+  autoPlay: true,
+  randomStart: true,
   slideshow: [],
-  slideInterval: 5000,
+  slideInterval: 12600,
 };
 
 export default FilmSlideshow;

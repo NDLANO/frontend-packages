@@ -14,13 +14,14 @@ import Button from '@ndla/button';
 import CategorySelect from './CategorySelect';
 
 import { topicShape } from './shapes';
+import { ChevronDown } from '@ndla/icons/lib/common';
 
 const FilmMovieSearch = ({ topics, t, ...props }) => {
   const [isOpen, toggleOpenState] = useState(false);
   return (
     <OneColumn>
         <Button ghostPill onClick={() => toggleOpenState(!isOpen)}>
-          hello
+          hello <ChevronDown />
         </Button>
         {isOpen && (
           <nav className="u-12/12 u-8/12@tablet">

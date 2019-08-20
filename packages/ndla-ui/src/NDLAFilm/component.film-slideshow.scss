@@ -7,28 +7,21 @@
   }
   &__navigation-arrows {
     opacity: 0;
-    transition: transform 800ms ease, opacity 800ms ease;
+    transition: transform 400ms ease, opacity 400ms ease;
     display: flex;
     justify-content: center;
     flex-direction: column;
     position: absolute;
     align-items: center;
     z-index: 2;
-    height: 70vw;
+    height: 70vh;
+    display: none;
     @include mq(tablet) {
-      height: 60vw;
-    }
-    @include mq(desktop) {
-      height: 55vw;
-    }
-    @include mq(wide) {
-      height: 40vw;
-    }
-    @include mq(ultraWide) {
-      height: 36vw;
+      display: flex;
     }
     transform: translate($spacing--small / 2, 0);
     .c-icon {
+      cursor: pointer;
       fill: #fff;
       width: 52px;
       height: 52px;
@@ -36,22 +29,23 @@
         width: 78px;
         height: 78px;
       }
-      opacity: 0.7;
       transition: transform 400ms ease, opacity 400ms ease;
     }
     button {
+      cursor: pointer;
       padding: $spacing 0;
       border-radius: $border-radius;
       outline: none;
-      background: transparent;
+      background: rgba(3, 23, 43, 0);
       color: #fff;
       border: 0;
+      transition: background-color 400ms ease;
       &:hover,
       &:focus {
         .c-icon {
           opacity: 1;
         }
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(3, 23, 43, 0.7);
       }
     }
     &--right {
@@ -66,23 +60,8 @@
     align-items: flex-end;
     position: absolute;
     z-index: 2;
-    height: 100vw;
+    height: calc(100vh - 300px);
     width: 100%;
-    @include mq(mobileWide) {
-      height: 100vw;
-    }
-    @include mq(tablet) {
-      height: 75vw;
-    }
-    @include mq(desktop) {
-      height: 55vw;
-    }
-    @include mq(wide) {
-      height: 40vw;
-    }
-    @include mq(ultraWide) {
-      height: 36vw;
-    }
   }
   &__item-wrapper {
     display: flex;
@@ -95,6 +74,8 @@
       }
       @include mq(tablet) {
         padding-bottom: $spacing--large;
+        width: calc(100% - 156px);
+        max-width: 972px;
       }
       @include mq(desktop) {
         padding-bottom: $spacing--large * 1.5;
@@ -104,10 +85,10 @@
           text-decoration: underline;
         }
       }
-      animation: ndlaFilmTextIn 400ms ease-in-out;
+      animation: ndlaFilmTextIn 300ms ease-in-out;
       &.out {
         opacity: 0;
-        animation: ndlaFilmText 400ms ease-in-out;
+        animation: ndlaFilmText 300ms ease-in-out;
       }
     }
   }
@@ -122,7 +103,7 @@
     @include mq(mobileWide) {
       margin: 0;
       width: 100%;
-      padding: $spacing--medium $spacing--large * 2 $spacing--medium $spacing;
+      padding: $spacing--large $spacing--large * 1.5 $spacing--large $spacing--large;
     }
     h1 {
       @include font-size(22px, 30px);
@@ -162,15 +143,12 @@
   }
   &__indicator-wrapper {
     display: flex;
+    @include mq(tablet) {
+      display: none;
+    }
     align-items: center;
     justify-content: center;
     margin: $spacing--small 0;
-    @include mq(mobileWide) {
-      margin: $spacing 0;
-    }
-    &--isMobile {
-      pointer-events: none;
-    }
   }
   &__indicator-dot {
     border: 0;

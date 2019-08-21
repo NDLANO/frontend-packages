@@ -581,7 +581,7 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Korleis lage gode grupper med elever',
+      text: 'Korleis lage gode grupper med elevar',
       externalLink:
         'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
       linkText: 'Fagblogg',

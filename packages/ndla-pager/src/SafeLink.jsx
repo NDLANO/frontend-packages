@@ -19,9 +19,8 @@ export const isOldNdlaLink = to =>
   to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
-const SafeLink = ({ to, children, ...rest }) => {
+const SafeLink = ({ to, replace, children, ...rest }) => {
   if (isExternalLink(to) || isOldNdlaLink(to)) {
-    delete rest.replace;
     const href = typeof to === 'string' ? to : '#';
     return (
       <a href={href} {...rest}>
@@ -31,7 +30,7 @@ const SafeLink = ({ to, children, ...rest }) => {
   }
 
   return (
-    <Link to={to} {...rest}>
+    <Link to={to} replace={replace} {...rest}>
       {children}
     </Link>
   );

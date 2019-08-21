@@ -11,7 +11,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
-import { Spinner, Footer } from '@ndla/editor';
+import { Spinner } from '@ndla/editor';
 import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 
@@ -28,13 +28,14 @@ import UploaderExample from './UploaderExample';
 import FileListEditorExample from './FileListEditorExample';
 import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
+import FooterExample from './FooterExample';
 
 storiesOf('Produksjonssystem', module)
   .add('Footer for produksjonssystem', () => (
     <div>
       <StoryIntro title="Footer for produksjonssystemet">
       </StoryIntro>
-      <Footer status="hello" />
+      <FooterExample />
     </div>
   ))
   .add('Trekkspill', () => (

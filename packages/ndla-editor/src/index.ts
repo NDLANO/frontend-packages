@@ -10,3 +10,4 @@
 export * from './index-javascript';
 
 export { default as Footer } from './Footer';
+export { default as FooterQualityInsurance } from './FooterQualityInsurance';

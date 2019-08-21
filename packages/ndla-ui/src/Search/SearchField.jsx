@@ -6,11 +6,13 @@
  *
  */
 
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
+import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
+import { colors, spacing, mq, breakpoints } from '@ndla/core';
 
 import ActiveFilters from './ActiveFilters';
 import LoadingWrapper from './LoadingWrapper';
@@ -18,6 +20,48 @@ import LoadingWrapper from './LoadingWrapper';
 import { ContentTypeResultShape } from '../shapes';
 
 const classes = new BEMHelper('c-search-field');
+
+const inputStyle = css`
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid ${colors.brand.greyLight};
+  border-radius: $border-radius;
+  padding-right: ${spacing.large};
+  padding-left: ${spacing.normal};
+  flex-grow: 1;
+  outline: 0;
+
+  &:focus {
+    border-color: ${colors.brand.primary};
+  }
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 58px;
+    line-height: 58px;
+    @include font-size(18px, 24px);
+  }
+`;
+
+const filterStyle = css`
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding-left: ${spacing.normal};
+  }
+  padding-left: 0;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &:focus {
+    border: 1px solid ${colors.brand.primary};
+    border-left: 0;
+
+    & + .c-search-field__filters {
+      border: 1px solid ${colors.brand.primary};
+      border-right: 0;
+    }
+  }
+`;
 
 const SearchField = ({
   placeholder,
@@ -27,25 +71,30 @@ const SearchField = ({
   small,
   onClick,
   t,
-  onFocus,
-  onBlur,
+  onFocus = () => {},
+  onBlur = () => {},
   loading,
   onFilterRemove,
   inputRef,
 }) => {
   const handleOnFilterRemove = (value, filterName) => {
     onFilterRemove(value, filterName);
-    inputRef.current.focus();
+    if (inputRef) {
+      inputRef.current.focus();
+    }
     onFocus();
   };
-
+  const hasFilters = filters && filters.length > 0;
   return (
     <div {...classes('input-wrapper')}>
       {loading && <LoadingWrapper value={value} />}
       <input
         ref={inputRef}
         type="search"
-        {...classes('input', { small })}
+        css={css`
+          ${inputStyle};
+          ${hasFilters && filterStyle}
+        `}
         aria-autocomplete="list"
         autoComplete="off"
         id="search"
@@ -58,7 +107,7 @@ const SearchField = ({
         onFocus={onFocus}
         onClick={onClick}
       />
-      {filters && filters.length > 0 && (
+      {hasFilters && (
         <div {...classes('filters')}>
           <ActiveFilters
             filters={filters}
@@ -72,8 +121,10 @@ const SearchField = ({
           type="button"
           onClick={() => {
             onChange('');
-            inputRef.current.focus();
             onFocus();
+            if (inputRef) {
+              inputRef.current.focus();
+            }
           }}>
           {t('welcomePage.resetSearch')}
         </button>

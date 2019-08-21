@@ -23,6 +23,7 @@ import {
   SafeLink,
   ToggleSearchButton,
   TopicMenuButton,
+  SearchFieldForm,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import Button from '@ndla/button';
@@ -37,8 +38,6 @@ import {
 import { BreadcrumbBlock } from './breadcrumbs';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
-
-const classes = new BEMHelper('c-search-field');
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -67,13 +66,8 @@ class MastheadWithTopicMenu extends Component {
   }
 
   renderSearchField() {
-    const modifiers = ['has-filter'];
     return (
-      <form
-        {...classes('', modifiers)}
-        onSubmit={e => {
-          e.preventDefault();
-        }}>
+      <SearchFieldForm onSubmit={e => e.preventDefault()}>
         <SearchField
           inputRef={this.inputRef}
           placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
@@ -116,7 +110,7 @@ class MastheadWithTopicMenu extends Component {
             resourceToLinkProps={resource => ({ to: resource.path })}
           />
         )}
-      </form>
+      </SearchFieldForm>
     );
   }
 

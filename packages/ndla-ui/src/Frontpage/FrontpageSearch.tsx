@@ -12,19 +12,17 @@ import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 import { Cross } from '@ndla/icons/action';
 import { noScroll } from '@ndla/util';
 // @ts-ignore
-import { SearchField } from '../Search';
+import { SearchField, SearchFieldForm } from '../Search';
 // @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';
 
-const classes = new BEMHelper('c-search-field');
-
-type StyledSearchFieldWrapperProps = {
-  inputHasFocus?: boolean;
+type StyledSearchFieldProps = {
+  inputHasFocus: boolean;
 };
 
-const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
-  background: ${(props: StyledSearchFieldWrapperProps) =>
+const StyledWrapper = styled.section<StyledSearchFieldProps>`
+  background: ${(props: StyledSearchFieldProps) =>
     props.inputHasFocus === true ? 'transparent' : colors.brand.accent};
   border-radius: 2px;
   position: absolute;
@@ -50,12 +48,6 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
       padding: 0;
     }
   }
-  form {
-    width: 100%;
-    > div {
-      padding: 0;
-    }
-  }
   input {
     border-color: ${colors.brand.tertiary};
     ${mq.range({ until: breakpoints.tablet })} {
@@ -63,10 +55,6 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
     }
   }
 `;
-
-type StyledSearchFieldProps = {
-  inputHasFocus: boolean;
-};
 
 const StyledSearchBackdrop = styled.div`
   position: fixed;
@@ -151,12 +139,9 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
     }
     return () => noScroll(false, 'preventPageScroll');
   }, [inputHasFocus]);
-  const modifiers = inputHasFocus
-    ? ['no-left-margin', 'absolute-position-sleeve', 'input-has-focus']
-    : ['absolute-position-sleeve'];
   return (
     <div ref={SearchFieldRef}>
-      <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
+      <StyledWrapper inputHasFocus={inputHasFocus}>
         {inputHasFocus && (
           <StyledSearchBackdrop
             role="button"
@@ -168,12 +153,10 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
             }}
           />
         )}
-        <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
+        <SearchFieldForm inputHasFocus={inputHasFocus} onSubmit={onSearch}>
           <SearchField
             inputRef={inputRef}
             onFocus={onSearchInputFocus}
-            onBlur={onInputBlur}
-            modifiers={modifiers}
             value={searchFieldValue}
             onChange={onSearchFieldChange}
             placeholder={searchFieldPlaceholder}
@@ -192,8 +175,8 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
               infoText={t('welcomePage.searchDisclaimer')}
             />
           )}
-        </form>
-      </StyledSearchFieldWrapper>
+        </SearchFieldForm>
+      </StyledWrapper>
     </div>
   );
 };
